@@ -20204,6 +20204,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
   src: "/storage/images/nrna_logo.jpg",
+  type: "png",
   alt: "NRNA",
   width: "250",
   height: "300"
