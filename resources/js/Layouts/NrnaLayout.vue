@@ -7,7 +7,7 @@
                 </div> 
                 <!-- <div> <link href="#"> <img  :src ="image1"  style="width:100%;" alt="slogan" /> </link> </div>   -->
                 <div id="slogan" class="w-96">  </div>  
-            </div>
+            </div> 
         </div> 
      <!-- middle  -->
        <slot> </slot> 
