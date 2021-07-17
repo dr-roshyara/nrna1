@@ -1,14 +1,6 @@
 <template>
-    <div class="flex flex-col"> 
-        <div class="flex"> 
-            <div class=" flex flex-left  p-4  bg-blue-600 md: w-full rounded border border-blue-100">
-                <!-- <div id="logo" style="background-image: url('/logo-2.png')"> </div> -->
-                <div id="logo" class="w-20">          
-                </div> 
-                <!-- <div> <link href="#"> <img  :src ="image1"  style="width:100%;" alt="slogan" /> </link> </div>   -->
-                <div id="slogan" class="w-96">  </div>  
-            </div> 
-        </div> 
+    <div class="flex flex-col">
+         <nrna-header> </nrna-header>
      <!-- middle  -->
        <slot> </slot> 
        <!-- footer  -->
@@ -17,6 +9,7 @@
 
 </template>
 <script>
+import NrnaHeader from "@/Jetstream/NrnaHeader"; 
 import NrnaFooter from "@/Jetstream/NrnaFooter"; 
 
 export default {
@@ -30,6 +23,7 @@ export default {
         }
     },
     components:{
+        NrnaHeader,
         NrnaFooter
     }
 }
@@ -45,5 +39,11 @@ export default {
       background-image: url('/images/logo-2.png');
       min-height:8rem;
       background-repeat: no-repeat;
+ }
+ #germanynepal{
+     background-image: url('/images/germanynepal.png');
+      background-repeat: no-repeat;
+      background-size: 300px 200px cover;
+
  }
 </style>
