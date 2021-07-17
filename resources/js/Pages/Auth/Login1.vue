@@ -1,7 +1,10 @@
 <template>
+   
     <jet-authentication-card>
+     
         <template #logo>
             <jet-authentication-card-logo />
+           
         </template>
 
         <jet-validation-errors class="mb-4" />
@@ -9,14 +12,32 @@
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
-
+         <!-- next -->
+         <div class=" my-2 text-gray-900 " > 
+        आदरणिय दिदी बहिनी तथा दाजुभाइहरु,<br> 
+        लगइन मा आफ्नो टेलिफोन नम्बर कन्ट्रीकोड सहित<br> 
+         <span class="text-bold"> (तर विना '+' र विना '00') </span> <br> 
+         लेख्नु होला उदाहरणको लागि  जर्मनीको कन्ट्री कोड (49) सहित तलको लग इन नम्बर हेर्नु हुनेछ। <br>
+        <span class="text-bold m-2"> लगइन: </span> 4915164322589 <br>
+        <span class="text-bold m-2"> पासवर्ड:</span> यो तपाईंहरुले एसएमएस मार्फत पाउनु भएको छ।<br> 
+         </div>    
+        <!-- next -->
         <form @submit.prevent="submit">
+            <!-- 
             <div>
                 <jet-label for="email" value="Email" />
                 <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
             </div>
-
-            <div class="mt-4">
+            -->
+            <!--next --> 
+            <div class=" my-4 text-bold text-gray-900 text-xl ">
+                <jet-label for="telephone" value="Telephone (टेलिफोन नम्बर)"  /> 
+                <jet-input id="telephone" type="text" class="mt-1 block w-full"  placeholder="4915164322589"
+                v-model="form.telephone" required autofocus />
+            </div>
+            <!--next --> 
+            
+            <div class="my-4">
                 <jet-label for="password" value="Password" />
                 <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
             </div>
@@ -24,7 +45,7 @@
             <div class="block mt-4">
                 <label class="flex items-center">
                     <jet-checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    <span class="ml-2 text-sm text-gray-900">Remember me</span>
                 </label>
             </div>
 
@@ -38,7 +59,9 @@
                 </jet-button>
             </div>
         </form>
+
     </jet-authentication-card>
+  
 </template>
 
 <script>
@@ -62,6 +85,7 @@
         },
 
         props: {
+            imagename: String,
             canResetPassword: Boolean,
             status: String
         },
@@ -70,6 +94,7 @@
             return {
                 form: this.$inertia.form({
                     email: '',
+                    telephone: '',
                     password: '',
                     remember: false
                 })
@@ -90,3 +115,16 @@
         }
     }
 </script>
+<style scoped>
+    .text-gray-900 {
+        color: #1a202c;
+        color: rgba(26, 32, 44, var(--tw-text-opacity));
+    }
+    .my-4{
+        margin: 1rem;
+    }
+    .text-bold{
+         font-weight: bold;
+    }
+    
+</style>
