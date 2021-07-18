@@ -10,12 +10,12 @@
                 </div>
                 <table class="w-full text-left rounded p-4">
                     <tr class="border-b-2 border-gray-400 bg-blue-100"> 
-                         <th class="hidden md:block p-1 md:p-3">S.N.(क्रम संख्या)</th>
+                         <th class="hidden md:block px-1 md:px-3">S.N.(क्रम संख्या)</th>
                         <!-- <th class="w-1/3 p-4">Notice Title (सुचना शिर्षक) </th> -->
-                        <th class="p-1 md:p-3">Notice Title (सुचना  शिर्षक) </th>
+                        <th class="px-1 md:px-3">Notice Title (सुचना  शिर्षक) </th>
                          <!-- <th class="w-1/3 p-4">पदहरु </th> -->
                          <th class="hidden md:block p-1 md:p-3 text-center"> Date of Notice (प्रकाशित मिती ) </th> 
-                          <th class="p-1 md:p-3"> Download</th>                        
+                          <th class="px-1 md:px-3"> Download</th>                        
                     </tr> 
                     <tr
                         v-for="(notice, noticeIndx) in notices" 
@@ -34,17 +34,17 @@
                          <!-- <td class="w-1/3 p-4">
                             {{ notice.title }} 
                         </td> -->
-                        <td class=" p-1 md:p-3"> 
+                        <td class=" px-1 md:px-3">  
                             <!-- {{notice.pdf_path}}   -->
                            <a :href="notice.url_path" > {{notice.title}}</a>   
                         </td> 
 
                         <!-- <td class="w-1/3 p-4">{{ notice.nepali_name}}</td> -->
-                        <td class="hidden md:block p-1 md:p-3 text-center">{{ notice.issued_at }}</td>
-                         <td class="block p-1 md:p-3"> 
+                        <td class="hidden md:block px-1 md:px-3 text-center">{{ notice.issued_at }}</td>
+                         <td class=" px-1 md:px-3"> 
                             <!-- {{notice.pdf_path}}   --> 
                            <a :href="notice.url_path" > 
-                               <span class=" p-1 md:p-2 bg-red-50 font-bold text-sm"> click here to download </span> 
+                               <span class=" px-1 md:px-2 bg-red-50 font-bold text-sm"> click here to download </span> 
                             </a>   
                         </td> 
                     </tr>
