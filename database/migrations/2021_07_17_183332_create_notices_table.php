@@ -17,6 +17,7 @@ class CreateNoticesTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->string('issued_at');            
             $table->string('pdf_path')->nullable();
             $table->string('picture_path')->nullable();            
             $table->timestamps();

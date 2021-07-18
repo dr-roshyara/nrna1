@@ -3,6 +3,8 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\MakeurlController;
 use Inertia\Inertia;
 
 /*
@@ -30,5 +32,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 //show posts 
-   Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
-        
+Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
+
+//notices
+Route::get('notices/index', [NoticeController::class, 'index'])->name('notice.index');
+//get resources
+Route::get('/get/{filename}', [MakeurlController::class, 'getfile']); 

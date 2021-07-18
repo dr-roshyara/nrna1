@@ -1,10 +1,10 @@
 <template>
-    <div class="flex flex-col">
-         <nrna-header> </nrna-header>
+    <div class="flex flex-col h-screen">
+         <nrna-header> </nrna-header> 
      <!-- middle  -->
-       <slot> </slot> 
+       <slot class="flex-grow"> </slot> 
        <!-- footer  -->
-     <nrna-footer class="px-4"> </nrna-footer>
+     <nrna-footer class="px-4 bottom-0 fixed"> </nrna-footer>
     </div> 
 
 </template>
