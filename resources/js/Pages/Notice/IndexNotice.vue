@@ -3,7 +3,7 @@
          <!-- here is the table 
           -->       
 
-            <div class="mx-auto flex flex-col w-full   md: p-4 text-center">
+            <div class="mx-auto flex flex-col w-full   md: p-4 text-center min-h-screen">
                 <div class=" p-2 mb-2 text-gray-900 font-bold text-lg">
                     Notices issued from Election commisssion.| 
                     निर्वाचन कमिटीले प्रकाशित गरेका सुचनाहरु 
@@ -44,7 +44,7 @@
                          <td class=" px-1 md:px-3"> 
                             <!-- {{notice.pdf_path}}   --> 
                            <a :href="notice.url_path" > 
-                               <span class=" px-1 md:px-2 bg-red-50 font-bold text-sm"> click here to download </span> 
+                               <span class=" px-1 md:px-2 bg-red-50 font-bold text-sm"> click download </span> 
                             </a>   
                         </td> 
                     </tr>
