@@ -1,4 +1,5 @@
 <template>
+   <nrna-layout>
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -31,16 +32,18 @@
                 <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
                     <jet-section-border />
 
-                    <delete-user-form class="mt-10 sm:mt-0" />
+                    <!-- <delete-user-form class="mt-10 sm:mt-0" /> -->
                 </template>
             </div>
         </div>
     </app-layout>
+    </nrna-layout>
 </template>
 
 <script>
+    import NrnaLayout from '@/Layouts/NrnaLayout'    
     import AppLayout from '@/Layouts/AppLayout'
-    import DeleteUserForm from './DeleteUserForm'
+    // import DeleteUserForm from './DeleteUserForm'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
     import LogoutOtherBrowserSessionsForm from './LogoutOtherBrowserSessionsForm'
     import TwoFactorAuthenticationForm from './TwoFactorAuthenticationForm'
@@ -52,7 +55,8 @@
 
         components: {
             AppLayout,
-            DeleteUserForm,
+            NrnaLayout,
+            // DeleteUserForm,
             JetSectionBorder,
             LogoutOtherBrowserSessionsForm,
             TwoFactorAuthenticationForm,

@@ -27,7 +27,7 @@
                     mx-auto
                     m-10
                     w-full
-                    flex flex-wrap
+                    flex flex-wrap space-x-6
                     justify-center
                     items-center
                     border border-gray-200
@@ -39,7 +39,7 @@
                 "
             >
                 <div class="w-full md:w-auto flex flex-wrap">
-                    <label class="w-full md:w-64 mt-2 text-xl"> Name </label>
+                    <label class="w-full md:w-64 mt-2 text-xl">Name </label>
                     <input
                         class="w-full md:w-80 mb-4"
                         type="text"
@@ -48,7 +48,7 @@
                 </div>
                 <!-- next -->
                  <div class="w-full md:w-auto flex flex-wrap">
-                    <label class="w-full md:w-64 mt-2 text-xl"> Membership ID </label>
+                    <label class="w-full md:w-64 mt-2 text-xl">Membership ID </label>
                     <input
                         class="w-full md:w-80 mb-4"
                         type="text"
