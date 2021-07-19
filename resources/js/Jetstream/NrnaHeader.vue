@@ -1,5 +1,6 @@
 <template>
-      <div class="flex flex-col sm:flex-col md:flex-row  justify-center p-4 item-center
+      <div class="flex flex-col"> 
+        <div class="flex flex-col sm:flex-col md:flex-row  justify-center p-4 item-center
          bg-blue-600 md: w-full rounded border border-blue-100"> 
             <div class="flex flex-start spac-x-4 items-center ">
                 <!-- <div id="logo" style="background-image: url('/logo-2.png')"> </div> -->
@@ -18,7 +19,18 @@
              <div class="w-44 m-auto h-32">
                <img class="object-cover" src="/images/germanynepal.png" width="200" height="200"/>
             </div> 
+        </div>
+         <!-- start  -->
+         <div class="flex flex-wrap justify-center m-auto space-x-4 py-2 mb-2">
+                    <inertia-link href="/candidacies/index" class=" p-2 mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"> List of Candidates </inertia-link>
+                    <inertia-link href="/candidacy/create" class=" p-2 bg-red-50 font-bold text-gray-900 rounded border border-right "> Candidacy Form </inertia-link>
+                    <inertia-link href="/posts/index" class=" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"> Name of Posts</inertia-link>
+                     <inertia-link href="/notices/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> List of Notices</inertia-link>
+
         </div> 
+
+         <!-- end  -->
+        </div>
 </template>
 <script>
 export default {
