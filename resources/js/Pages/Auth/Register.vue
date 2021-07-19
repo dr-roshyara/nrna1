@@ -7,11 +7,59 @@
         <jet-validation-errors class="mb-4" />
 
         <form @submit.prevent="submit">
-            <div>
-                <jet-label for="name" value="Name" />
-                <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
+         <!-- Add the other coulmns-->
+             <div>
+                <jet-label for="first_name" value="Firstname" />
+                <jet-input id="first_name" type="text" class="mt-1 block w-full" v-model="form.first_name" required autofocus autocomplete="first_name" />
             </div>
-
+            <!-- next -->
+             <div>
+                <jet-label for="last_name" value="Lastname" />
+                <jet-input id="last_name" type="text" class="mt-1 block w-full" v-model="form.last_name" required autofocus autocomplete="last_name" />
+            </div>
+             <!-- next -->
+             <div>
+                <jet-label for="telephone" value="Telephone" />
+                <jet-input id="telephone" type="text" class="mt-1 block w-full" v-model="form.telephone" required autofocus autocomplete="telephone" />
+            </div>
+               <!-- next -->
+             <div>
+                <jet-label for="country" value="Country" />
+                <jet-input id="Country" type="text" class="mt-1 block w-full" v-model="form.country" required autofocus autocomplete="country" />
+            </div>
+                      <!-- next -->
+             <div>
+                <jet-label for="state" value="State" />
+                <jet-input id="state" type="text" class="mt-1 block w-full" v-model="form.state" required autofocus autocomplete="state" />
+            </div>
+            <!-- next -->
+              <div>
+                <jet-label for="street" value="Street" />
+                <jet-input id="street" type="text" class="mt-1 block w-full" v-model="form.street" required autofocus autocomplete="street" />
+            </div>
+                <!-- next -->
+            <div>
+                <jet-label for="housenumber" value="House number" />
+                <jet-input id="housenumber" type="text" class="mt-1 block w-full" v-model="form.housenumber" required autofocus autocomplete="housenumber" />
+            </div>
+        
+            <!-- next -->
+                <div>
+                <jet-label for="postalcode" value="Postalcode" />
+                <jet-input id="postalcode" type="text" class="mt-1 block w-full" v-model="form.postalcode" required autofocus autocomplete="postalcode" />
+            </div>
+            <!-- next -->
+                <div>
+                <jet-label for="city" value="City" />
+                <jet-input id="city" type="text" class="mt-1 block w-full" v-model="form.city" required autofocus autocomplete="city" />
+            </div>
+              <!-- next -->
+                <div>
+                <jet-label for="nrna_id" value="Membership Id" />
+                <jet-input id="nrna_id" type="text" class="mt-1 block w-full" v-model="form.nrna_id" required autofocus autocomplete="nrna_id" />
+            </div>
+           
+            <!-- next -->
             <div class="mt-4">
                 <jet-label for="email" value="Email" />
                 <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
