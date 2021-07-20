@@ -14,8 +14,20 @@
             </div>
             <!-- next -->
              <div>
+                <jet-label for="middle_name" value="Middlename" />
+                <jet-input id="middle_name" type="text" class="mt-1 block w-full" v-model="form.middle_name" required autofocus autocomplete="middle_name" />
+            </div>
+ 
+            <!-- next -->
+             <div>
                 <jet-label for="last_name" value="Lastname" />
                 <jet-input id="last_name" type="text" class="mt-1 block w-full" v-model="form.last_name" required autofocus autocomplete="last_name" />
+            </div>
+             <!-- next -->
+              <!-- next -->
+             <div>
+                <jet-label for="gender" value="Gender" />
+                <jet-input id="gender" type="text" class="mt-1 block w-full" v-model="form.gender" required autofocus autocomplete="gender" />
             </div>
              <!-- next -->
              <div>
@@ -69,7 +81,7 @@
                 <jet-label for="password" value="Password" />
                 <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
             </div>
-
+ 
             <div class="mt-4">
                 <jet-label for="password_confirmation" value="Confirm Password" />
                 <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
@@ -123,6 +135,18 @@
         data() {
             return {
                 form: this.$inertia.form({
+                    first_name: '',
+                    middle_name: '',  
+                    last_name: '', 
+                    gender: '', 
+                    telephone: '',
+                    nrna_id: '',
+                    country: '',
+                    state: '',
+                    street : '',
+                    housenumber : '',
+                    postalcode: '',
+                    city: '',                                      
                     name: '',
                     email: '',
                     password: '',
