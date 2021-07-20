@@ -1,9 +1,6 @@
 <template>
-    <jet-authentication-card>
-        <template #logo>
-            <jet-authentication-card-logo />
-        </template>
-
+    <nrna-layout>
+    <jet-authentication-card class="mb-6">
         <jet-validation-errors class="mb-4" />
 
         <form @submit.prevent="submit">
@@ -110,9 +107,11 @@
             </div>
         </form>
     </jet-authentication-card>
+        </nrna-layout>
 </template>
 
 <script>
+    import NrnaLayout from '@/Layouts/NrnaLayout'
     import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
     import JetButton from '@/Jetstream/Button'
@@ -123,6 +122,7 @@
 
     export default {
         components: {
+            NrnaLayout,
             JetAuthenticationCard,
             JetAuthenticationCardLogo,
             JetButton,
