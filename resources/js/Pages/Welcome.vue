@@ -18,11 +18,11 @@
         </div> 
         -->
            <div v-if="!loggedIn" >      
-           <login > </login>                    
+           <login canResetPassword="true"> </login>                    
             </div>
             <div v-else>
                 <dashboard> </dashboard>
-                </div>
+            </div>
 
         
 </template>

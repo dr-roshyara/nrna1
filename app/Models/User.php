@@ -23,6 +23,11 @@ class User extends Authenticatable
      *
      * @var array
      */
+    // public $CanResetPassword;
+    public function  __construct(){
+        //  $CanResetPassword =true;
+
+    }
   
     protected $fillable = [
         'name', 

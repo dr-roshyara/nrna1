@@ -96,7 +96,7 @@
                     remember: false
                 })
             }
-        },
+        },           
 
         methods: {
             submit() {
