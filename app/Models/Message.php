@@ -12,6 +12,7 @@ class Message extends Model
     'message', 'code', 
     'message_receiver_id',
     'message_receiver_name',
-    'messager_sender_id','messager_sender_name'];  
+    'message_sender_id',
+    'message_sender_name'];  
 
 }

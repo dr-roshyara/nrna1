@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 use App\Models\User;
-//
-use Inertia\Inertia;
+
 class UserController extends Controller
 {
     /**
@@ -13,56 +14,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    //starts here 
-    public function index(Request $request)
+    public function index()
     {
-        request()->validate([
-            'direction'=> ['in:asc,desc'],
-            'field' => ['in:id,first_name,last_name,nrna_id,state,telephone,created_at']
-        ]);
-        $query =User::query();
-        // if(request('direction')){
-        //     $query->orderBy('id',request('direction'));
-
-        // }else{
-        //     $query->orderBy('id','desc');
-
-        // }
-        
-        if(request('search')){
-            $query->where('last_name', 'LIKE', '%'.request('search').'%');
-        } 
-        if(request('first_name')){
-            $query->where('first_name', 'LIKE', '%'.request('first_name').'%');
-        } 
         //
-         if(request('nrna_id')){
-            $query->where('nrna_id', 'LIKE', '%'.request('nrna_id').'%');
-        } 
-        //
-        if(request()->has(['field', 'direction'])){
-            $query->orderBy(request('field'), request('direction')); 
-        }else{
-            $query->orderBy('id','desc'); 
-        }
-        //the following lines are for the first type of search 
-
-        // $users =Message::when( $request->term, 
-        //     function($query, $term){
-        //     $query->where('to', 'LIKE', '%'.$term.'%' );
-        // })->paginate(20); 
-        
-         $users =$query->paginate(20);
-        // $users =$users->sortBy('created_at')->reverse();
-        return Inertia::render('User/Index', [
-          'users' => $users,
-          'filters' =>request()->all(['first_name','nrna_id','field','direction'])  
- 
-        ]);
-    
-
     }
-    //ends here 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -73,7 +29,6 @@ class UserController extends Controller
         //
     }
 
-  
     /**
      * Store a newly created resource in storage.
      *
@@ -268,7 +223,6 @@ class UserController extends Controller
 
     }//end of store method
 
-
     /**
      * Display the specified resource.
      *
@@ -278,12 +232,6 @@ class UserController extends Controller
     public function show($id)
     {
         //
-        $user = DB::table('users')->where('id', $id);
-        return Inertia::render('User/Profile', [
-          'user' => $user,
- 
-        ]);
-    
     }
 
     /**
@@ -319,7 +267,6 @@ class UserController extends Controller
     {
         //
     }
-    //
        public function  csv_to_array($filename='', $delimiter=';')
     {
         if(!file_exists($filename) || !is_readable($filename))
@@ -342,5 +289,3 @@ class UserController extends Controller
     }
 
 }
-
-

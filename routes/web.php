@@ -43,6 +43,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified']) 
         ->get('/voters/index', [VoterlistController::class, 'index'])->name('voters.index');
  
+//user 
+Route::middleware(['auth:sanctum', 'verified']) 
+        ->get('/users/index', [UserController::class, 'index'])->name('users.index');
 
 //create user database 
 Route::get('users',[UserController::class, 'store']);

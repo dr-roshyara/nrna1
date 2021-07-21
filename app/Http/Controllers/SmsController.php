@@ -14,17 +14,20 @@ class SmsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public $nexmo      = app('Nexmo\Client');
     public $sender     ="4917643654650"; 
     public $receiver   ="4915164322589";
+     //
     public function index(){
         
-        Nexmo::message()->send([
-        'to'   => $this->receiver,
-        'from' => $this->sender, 
-        'text' => 'Using the facade to send a message.'
-        ]);
-        echo "message sent!";
+        // Nexmo::message()->send([
+        // 'to'   => $this->receiver,
+        // 'from' => $this->sender,
+        // 'text' => 'Using the facade to send a message.'
+        // ]);
+        // echo "message sent!";
     } 
+
 
     /**
      * Show the form for creating a new resource.
@@ -32,41 +35,76 @@ class SmsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request){
-        $voteMessage = $request->validate([
-                 'from' => ['required', 'max:50'], 
-                 'to' => ['required', 'max:50'],
-                 'message' => ['required', 'max:255'],
-                 //get message _receiver id and name 
-            
-         ]);
-        
-         // $sender     =$voteMessage['from']; 
-         $sender     ="4917657994107";         
-         $receiver   =$voteMessage['to'];
-         $code        ="12345";
-         //
-         $voteMessage['message_receiver_id'] = 1  ;
-         $voteMessage['message_receiver_name'] ="";
+            $voteMessage = $request->validate([
+                'from' => ['required', 'max:50'], 
+                'to' => ['required', 'max:50'],
+                'message' => ['required', 'max:255'],
+                //'user_id'
+           
+            ]);
 
-        //  $voteMessage['user_id'] =auth()->user()->id;
-         $voteMessage['messager_sender_id'] =auth()->user()->id;
-         $voteMessage['messager_sender_name'] =auth()->user()->name;
-          
-        //    
-        //  Nexmo::message()->send([ 
-        //  'to'   => $receiver,
-        //  'from' => $sender,
-        //  'text' => 'Vote for me: Your Code is:' . $code
-        //  ]);
-         $voteMessage['code'] =$code;
-         Message::create($voteMessage );
-          // //
-           // echo "message sent!"; 
-          //    Route::get('/sms', [SmsController::class, 'index']); 
+      
+        $sender                             ="4917657994107";         
+        $receiver                           =$voteMessage['to'];
+        $code                               ="12345";
+        // $voteMessage['user_id']              ="1";
+        $voteMessage['message_sender_id']   = auth()->user()->id;
+        $voteMessage['message_sender_name']  = auth()->user()->name;
+         $voteMessage['message_receiver_id']   = 1;
+        $voteMessage['message_receiver_name']  = "test"; 
+        $voteMessage['code']                    =$code;
+        Message::create($voteMessage );
+        // send code now 
+        /**
+         * using nexmo
+         */
+        // Nexmo::message()->send([ 
+        // 'to'   => $receiver,
+        // 'from' => $sender,
+        // 'text' => 'Vote for me: Your Code is:' . $code
+        // ]);
+        
+        return redirect('/messages/index')->with('from', 'to', 'message');
          
-         // return Redirect::route('/message'); 
-      return redirect('/messages/index')->with('from', 'to', 'message');
-         // return Redirect::route('Message.Index');
+        // //till here 
+        // /**
+        //  *  $sender     =$voteMessage['from']; 
+        //         // $voteMessage = $request->validate([
+        //         //          'from' => ['required', 'max:50'], 
+        //         //          'to' => ['required', 'max:50'],
+        //         //          'message' => ['required', 'max:255'],
+        //         //          //get message _receiver id and name 
+                    
+        //         //  ]);
+        //         // form here 
+        //         // $sender     =$voteMessage['from'];  $sender     ="4917657994107";         
+        //         $receiver   =$voteMessage['to'];
+        //         $code        ="12345";
+        //         //
+        //         $voteMessage['message_receiver_id'] = 1  ;
+        //         $voteMessage['message_receiver_name'] ="";
+
+        //         //  $voteMessage['user_id'] =auth()->user()->id;
+        //         $voteMessage['messager_sender_id'] =auth()->user()->id;
+        //         $voteMessage['messager_sender_name'] =auth()->user()->name;
+                
+        //         //    
+        //         //  Nexmo::message()->send([ 
+        //         //  'to'   => $receiver,
+        //         //  'from' => $sender,
+        //         //  'text' => 'Vote for me: Your Code is:' . $code
+        //         //  ]);
+        //         $voteMessage['code'] =$code;
+        //         Message::create($voteMessage );
+        //         // //
+        //         // echo "message sent!"; 
+        //         //    Route::get('/sms', [SmsController::class, 'index']); 
+                
+        //         // return Redirect::route('/message'); 
+        //     return redirect('/messages/index')->with('from', 'to', 'message');
+        //         // return Redirect::route('Message.Index');
+        //  **/
+
  
      }
 

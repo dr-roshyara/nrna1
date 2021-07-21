@@ -16,7 +16,7 @@ class AddMoreFieldsToTableUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
 
             //
-            $table->boolean("is_voter")->default(0); 
+           $table->boolean("is_voter")->default(0); 
             $table->string('name_prefex')->nullable();
         });
     }
