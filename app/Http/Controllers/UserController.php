@@ -38,7 +38,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $csvName =storage_path("csv_files/germany_final_20210720.csv");         
+        $csvName =storage_path("csv_files/germany_final_from_glocal_20210721.csv");         
         // $file = fopen(csvName,"r");
         // $csv = array_map('str_getcsv', file($csvName));
         $csv_array = $this->csv_to_array($csvName,";");
@@ -173,15 +173,11 @@ class UserController extends Controller
                 {
                     // $user->telephone = "49".$element['telephone'];
                     if($element['telephone']!=""){
-                        $user->telephone = $element['telephone'];  
+                        $user->telephone = "49".$element['telephone'];  
                      }else{
-                         $user->telephone ="No_".$laufer;
+                         $user->telephone ="No_".$laufer;    
                      }
-                     $cuser  =$users->where('telephone', $element['telephone']);
-                     if(count($cuser)>0)
-                     {
-                         $user->telephone ="No_".$laufer;
-                     }
+                     
                 } 
                 //nrna_id;
                 if (array_key_exists('nrna_id', $element))
@@ -206,7 +202,12 @@ class UserController extends Controller
                 //
             
                 $user->postalcode =0;
-                $user->name = $user->first_name. "  ". $user->middle_name. " ". $user->last_name;
+                if($user->name_prefex!=""){
+                    $user->name = "$user->name_prefex"." ".$user->first_name. "  ". $user->middle_name. " ". $user->last_name;
+                }else{
+                    $user->name = $user->first_name. "  ". $user->middle_name. " ". $user->last_name;
+                }
+
                 // dd($user);        
                     // dd($user); 
                         
