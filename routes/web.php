@@ -8,9 +8,13 @@ use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\MakeurlController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CandidacyController;
+use App\Http\Controllers\VoterlistController;
+use \App\Http\Controllers\SmsController;
+use \App\Http\Controllers\MessageController;
 
 //Models
 use Inertia\Inertia;
+use App\Models\Message;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +39,11 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+//voters 
+Route::middleware(['auth:sanctum', 'verified']) 
+        ->get('/voters/index', [VoterlistController::class, 'index'])->name('voters.index');
+ 
+
 //create user database 
 Route::get('users',[UserController::class, 'store']);
 //show posts 
@@ -48,3 +57,15 @@ Route::get('/get/{filename}', [MakeurlController::class, 'getfile']);
 Route::get('candidacy/create', [CandidacyController::class, 'create'])->name('candidacy.create');
 Route::post('candidacies', [CandidacyController::class, 'store'])->name('candidacy.store');
 Route::get('candidacies/index', [CandidacyController::class, 'index'])->name('candidacy.index');
+
+//messages
+Route::get('/message', function (){
+    return inertia('Message', [ 
+        'messages'=>Message::all()
+    ]);
+});
+
+Route::middleware(['auth:sanctum', 'verified'])
+->get('/messages/index', [MessageController::class, 'index'])->name('messages.index');
+// Route::post('messages',[MessageController::class, 'store'])->name('messages.store');
+Route::post('/messages', [SmsController::class, 'create']);
