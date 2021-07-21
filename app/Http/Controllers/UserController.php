@@ -38,7 +38,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $csvName =storage_path("csv_files/germany_final_from_glocal_20210721.csv");         
+        $csvName  ="csv_files/germany_final_from_global_20210721_01.csv";
+        $csvName  =storage_path($csvName);         
         // $file = fopen(csvName,"r");
         // $csv = array_map('str_getcsv', file($csvName));
         $csv_array = $this->csv_to_array($csvName,";");
