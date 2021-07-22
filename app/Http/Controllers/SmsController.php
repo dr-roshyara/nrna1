@@ -48,7 +48,7 @@ class SmsController extends Controller
         $btemp      =auth()->user()->hasAnyPermission('send code');
         //  dd($btemp); 
          if($btemp){
-    
+                //
                  // $voteMessage['user_id']              ="1";
                 $voteMessage['message_sender_id']   = auth()->user()->id;
                 $voteMessage['message_sender_name']  = auth()->user()->name;
