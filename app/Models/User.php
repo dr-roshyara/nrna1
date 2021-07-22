@@ -16,6 +16,7 @@ use \App\Models\Candidacy;
 use App\Models\File;
 use App\Models\Upload;
 use App\Models\Assignment;
+use App\Models\Code;
 
 class User extends Authenticatable
 {
@@ -125,4 +126,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Upload::class);
     }
+     /**
+      * Each user has extacly one code row
+      */
+      public function code(){
+          return $this->hasOne(Code::class,  'foreign_key');
+      }
 }

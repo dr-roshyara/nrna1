@@ -38,10 +38,10 @@
                     md:py-12
                 "
             >
-                <div class="w-full md:w-auto flex flex-wrap">
-                    <label class="w-full md:w-64 mt-2 text-xl">Name </label>
+               <div class="w-full md:w-auto flex flex-wrap">
+                    <label class="w-full md:w-64 mt-2 text-xl">Name</label>
                     <input
-                        class="w-full md:w-80 mb-4"
+                          class="w-full md:w-80 mb-4"
                         type="text"
                         v-model="form.name"
                     />

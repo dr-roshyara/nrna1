@@ -78,7 +78,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr v-for ="(user, index) in users.data" :key='index' :class="{'bg-gray-200 my-6 py-2 ': index%2===0, 'my-6 py-2 bg-gray-50':index%2>0}"> 
+                      <tr v-for ="(user, index) in voters.data" :key='index' :class="{'bg-gray-200 my-6 py-2 ': index%2===0, 'my-6 py-2 bg-gray-50':index%2>0}"> 
                         <th class="px-2 py-4 m-4 text-left text-sm font-semibold">{{user.id}} </th> 
                         <th class="px-2 py-4 m-4 text-left text-sm font-semibold"> {{user.nrna_id}} </th>  
                         <th class="px-2 py-4 m-4 text-left text-sm font-semibold"> {{user.first_name}} </th>
@@ -96,11 +96,11 @@
                 
           </div>
             <div class="p-5 flex justify-end">
-            <inertia-link  v-if="users.prev_page_url" class="px-2" :href="users.prev_page_url" >Previous Page </inertia-link> 
-            <inertia-link  v-if="users.next_page_url" class="px-2" :href="users.next_page_url" >Next Page </inertia-link> 
+            <inertia-link  v-if="voters.prev_page_url" class="px-2" :href="voters.prev_page_url" >Previous Page </inertia-link> 
+            <inertia-link  v-if="voters.next_page_url" class="px-2" :href="voters.next_page_url" >Next Page </inertia-link> 
             
             </div>
-             <pagination class="mt-10" :links="users.links" />
+             <pagination class="mt-10" :links="voters.links" />
     </div>
 </nrna-layout>
 </template> 
@@ -113,7 +113,7 @@ import _ from 'lodash';
 
 export default {
     props:{
-        users: Object,
+        voters: Object,
         filters: Object,
         can_send_code: Boolean,
         // message_receiver_id:Integer 
@@ -143,7 +143,7 @@ export default {
                 });
                // the above thing can be done by using the following one line  
                 //let params =pickBy(this.params);                 
-                this.$inertia.get(route('users.index'), 
+                this.$inertia.get(route('voters.index'), 
                     params,
                     { replace:true,  preserveState: true });
                 },
@@ -152,10 +152,10 @@ export default {
     },
     methods:{
         // search(){
-        //     this.$inertia.replace(this.$route('users.index',{term: this.term}));  
+        //     this.$inertia.replace(this.$route('voters.index',{term: this.term}));  
         // }
         searching: _.throttle(function(){
-            this.$inertia.replace(route('users.index',{term: this.term}))
+            this.$inertia.replace(route('voters.index',{term: this.term}))
         }, 200),
         sort(field){
             this.params.field     =field;

@@ -15,7 +15,7 @@
                     <!-- <welcome /> -->
                     <!-- <p> Here we are </p>  -->
                     <div class="w-full">
-                        <a href="vote/create"> 
+                        <a href="code/create"> 
                             <div
                                 class="
                                     w-full
@@ -259,7 +259,7 @@
                                             md:text-2xl
                                         "
                                     >
-                                        Your Vote what you have given
+                                        Your Vote
                                     </div>
                                 </div>
                             </a>
@@ -288,14 +288,14 @@
                                         class="w-20 h-auto my-4"
                                     />
                                     <div
-                                        class="
-                                            w-full
+                                       class="
+                                         w-full
                                             text-center
                                             font-bold
                                             text-base
                                             md:text-2xl
-                                        "
-                                    >
+                                    "
+                                    > 
                                         General Information
                                     </div>
                                 </div>

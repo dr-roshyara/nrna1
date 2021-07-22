@@ -12,6 +12,8 @@ use App\Http\Controllers\VoterlistController;
 use \App\Http\Controllers\SmsController;
 use \App\Http\Controllers\MessageController;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\VoteController; 
+use App\Http\Controllers\CodeController;
 //Models
 use Inertia\Inertia;
 use App\Models\Message;
@@ -38,7 +40,7 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
+//Dashboard 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
@@ -51,7 +53,12 @@ Route::middleware(['auth:sanctum', 'verified'])
         ->get('/users/index', [UserController::class, 'index'])->name('users.index');
 
 //create user database 
+/**
+ * Herwe we write the routes related to user and voter 
+ */
 Route::get('users',[UserController::class, 'store']);
+
+
 //show posts 
 Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
 
@@ -59,12 +66,18 @@ Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
 Route::get('notices/index', [NoticeController::class, 'index'])->name('notice.index');
 //get resources
 Route::get('/get/{filename}', [MakeurlController::class, 'getfile']); 
-     //candidates
+//candidates
+/**
+ * All candidates
+ */
 Route::get('candidacy/create', [CandidacyController::class, 'create'])->name('candidacy.create');
 Route::post('candidacies', [CandidacyController::class, 'store'])->name('candidacy.store');
 Route::get('candidacies/index', [CandidacyController::class, 'index'])->name('candidacy.index');
 
 //messages
+/**
+ * Write messages
+ */
 Route::get('/message', function (){
     return inertia('Message', [ 
         'messages'=>Message::all()
@@ -76,6 +89,23 @@ Route::middleware(['auth:sanctum', 'verified'])
 // Route::post('messages',[MessageController::class, 'store'])->name('messages.store');
     Route::post('/messages', [SmsController::class, 'create']);
 
+/**
+ * Routes related to vote 
+ */
+//Route::group(['middleware' => 'auth:sanctum', 'verified'], function(){   
+// Vote  
+//code creation  
+    Route::get('code/create', [CodeController::class, 'create'])->name('code.create');
+                   
+    Route::post('codes', [CodeController::class, 'store'])->name('code.store');
+    
+    Route::get('vote/create', [VoteController::class, 'create'])->name('vote.create'); 
+    Route::post('votes', [VoteController::class, 'store'])->name('vote.store');
+    
+    Route::get('votes/index', [VoteController::class, 'index'])->name('vote.index');
+    Route::get('vote/show', [VoteController::class, 'show'])->name('vote.show');
+
+//}); 
 /**
  * Role
  */

@@ -53,16 +53,16 @@ class VoterlistController extends Controller
         }
         //the following lines are for the first type of search 
 
-        // $users =Message::when( $request->term, 
+        // $voters =Message::when( $request->term, 
         //     function($query, $term){
         //     $query->where('to', 'LIKE', '%'.$term.'%' );
         // })->paginate(20); 
         $btemp      =auth()->user()->hasAnyPermission('send code');
         // dd($btemp);
-         $users     =$query->paginate(20);
-        // $users =$users->sortBy('created_at')->reverse();
+         $voters     =$query->paginate(20);
+        // $voters =$voters->sortBy('created_at')->reverse();
         return Inertia::render('Voter/IndexVoter', [
-          'users' => $users,
+          'voters' => $voters,
           'can_send_code'=>$btemp, 
           'filters' =>request()->all(['first_name','nrna_id','field','direction'])  
  
