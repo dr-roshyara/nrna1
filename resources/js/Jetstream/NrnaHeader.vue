@@ -22,6 +22,9 @@
         </div>
          <!-- start  -->
          <div class="flex flex-wrap justify-center m-auto space-x-4 py-2 mb-2">
+                    <inertia-link href="/dashboard" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> Dashboard</inertia-link>
+                    <inertia-link href="/voters/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> Voter's List </inertia-link>
+                    <inertia-link href="/users/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> Member's List </inertia-link>
                     <inertia-link href="/candidacies/index" class=" p-2 mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"> List of Candidates </inertia-link>
                     <inertia-link href="/candidacy/create" class=" p-2 bg-red-50 font-bold text-gray-900 rounded border border-right "> Candidacy Form </inertia-link>
                     <inertia-link href="/posts/index" class=" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"> Name of Posts</inertia-link>
