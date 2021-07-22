@@ -13,6 +13,9 @@ class Message extends Model
     'message_receiver_id',
     'message_receiver_name',
     'message_sender_id',
-    'message_sender_name'];  
+    'message_sender_name',
+    // 'messager_sender_id',
+    // 'messager_sender_name'
+];  
 
 }

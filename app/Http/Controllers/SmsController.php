@@ -6,6 +6,7 @@ use App\Models\Sms;
 use Illuminate\Http\Request;
 use Nexmo\Laravel\Facade\Nexmo;
 use App\Models\Message;
+use App\Models\User;
 
 class SmsController extends Controller
 {
@@ -36,34 +37,58 @@ class SmsController extends Controller
      */
     public function create(Request $request){
             $voteMessage = $request->validate([
-                'from' => ['required', 'max:50'], 
-                'to' => ['required', 'max:50'],
-                'message' => ['required', 'max:255'],
+                'message_receiver_id'=>['required']
+                // 'from' => ['required', 'max:50'], 
+                // 'to' => ['required', 'max:50'],
+                // 'message' => ['required', 'max:255'],
                 //'user_id'
            
             ]);
 
-      
-        $sender                             ="4917657994107";         
-        $receiver                           =$voteMessage['to'];
-        $code                               ="12345";
-        // $voteMessage['user_id']              ="1";
-        $voteMessage['message_sender_id']   = auth()->user()->id;
-        $voteMessage['message_sender_name']  = auth()->user()->name;
-         $voteMessage['message_receiver_id']   = 1;
-        $voteMessage['message_receiver_name']  = "test"; 
-        $voteMessage['code']                    =$code;
-        Message::create($voteMessage );
-        // send code now 
-        /**
-         * using nexmo
-         */
-        // Nexmo::message()->send([ 
-        // 'to'   => $receiver,
-        // 'from' => $sender,
-        // 'text' => 'Vote for me: Your Code is:' . $code
-        // ]);
-        
+        $btemp      =auth()->user()->hasAnyPermission('send code');
+        //  dd($btemp); 
+         if($btemp){
+    
+                 // $voteMessage['user_id']              ="1";
+                $voteMessage['message_sender_id']   = auth()->user()->id;
+                $voteMessage['message_sender_name']  = auth()->user()->name;
+                // $voteMessage['messager_sender_id']  = auth()->user()->id;
+                // $voteMessage['messager_sender_name']  = auth()->user()->name;
+
+                // $voteMessage['message_receiver_id']   = 1;
+                //find the user 
+                 $voterId =$voteMessage["message_receiver_id"];
+                 $voter = User::find($voterId);
+                 
+                if($voter && $voter->is_voter){
+                    $sender                     ="4917657994107";         
+                    $receiver                   =$voter->telephone;                    
+                    //$code                     =$voter->code;  
+                    $code                       ="1234";  
+                    $message                    ='Vote for me: Your Code is:'. $code;                    
+                    $voteMessage['to']          = $sender; 
+                    $voteMessage['from']        = $receiver; 
+                    $voteMessage['message']     = "test"; 
+                    // $receiver                         =$voteMessage['to'];
+                    $voteMessage['code']        =$code;
+                    $voteMessage['message_receiver_name']  = $voter->name; 
+
+          
+                 // send code now 
+                /**
+                     * using nexmo
+                     */
+                     Nexmo::message()->send([ 
+                     'to'   => $receiver,
+                     'from' => $sender,
+                     'text' => $message
+                     ]);
+                 //Save the message now                  
+                 Message::create($voteMessage );
+       
+                }
+ 
+        }
         return redirect('/messages/index')->with('from', 'to', 'message');
          
         // //till here 

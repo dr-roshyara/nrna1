@@ -1,4 +1,5 @@
 <template>
+ <jet-validation-errors class="pt-1" />
   <form class="" @submit.prevent="submit">
     <!-- <div> 
     <input class="bg-gray-200"  id="from" v-model="form.from" /> 
@@ -19,15 +20,20 @@
 <script>
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
-
+import JetValidationErrors from '@/Jetstream/ValidationErrors'
 export default {
     props: {
-        vtelephone: String  
+        vtelephone: String,
+        message_receiver_id: Number,
+        // message_receiver_name: String
+
     },
   setup (props) {
     const form = reactive({ 
       from: "012345678",
       to: props.vtelephone,
+      message_receiver_id: props.message_receiver_id,
+      // message_receiver_id:props.message_receiver_name,
       message: "your code is : 1234",
     })
 
@@ -36,6 +42,9 @@ export default {
     }
 
     return { form, submit }
-  }, 
+  },
+  components:{
+    JetValidationErrors
+  } 
 }
 </script>

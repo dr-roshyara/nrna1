@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 //
 use Inertia\Inertia;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 class VoterlistController extends Controller
 {
     /**
@@ -20,8 +25,8 @@ class VoterlistController extends Controller
             'direction'=> ['in:asc,desc'],
             'field' => ['in:id,first_name,last_name,nrna_id,state,telephone,created_at']
         ]);
-        $query =User::query();
-         // $query = DB::table('users')->where('is_voter', 1);
+        // $query =User::query();
+         $query = DB::table('users')->where('is_voter', 1);
         // if(request('direction')){
         //     $query->orderBy('id',request('direction'));
 
@@ -52,11 +57,13 @@ class VoterlistController extends Controller
         //     function($query, $term){
         //     $query->where('to', 'LIKE', '%'.$term.'%' );
         // })->paginate(20); 
-        
-         $users =$query->paginate(20);
+        $btemp      =auth()->user()->hasAnyPermission('send code');
+        // dd($btemp);
+         $users     =$query->paginate(20);
         // $users =$users->sortBy('created_at')->reverse();
         return Inertia::render('Voter/IndexVoter', [
           'users' => $users,
+          'can_send_code'=>$btemp, 
           'filters' =>request()->all(['first_name','nrna_id','field','direction'])  
  
         ]);

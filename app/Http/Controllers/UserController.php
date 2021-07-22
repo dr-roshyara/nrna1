@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 //
 use Inertia\Inertia;
 class UserController extends Controller
@@ -21,6 +24,7 @@ class UserController extends Controller
             'field' => ['in:id,first_name,last_name,nrna_id,state,telephone,created_at']
         ]);
         $query =User::query();
+        
         // if(request('direction')){
         //     $query->orderBy('id',request('direction'));
 
@@ -89,8 +93,23 @@ class UserController extends Controller
         // $csv = array_map('str_getcsv', file($csvName));
         $csv_array = $this->csv_to_array($csvName,";");
         //read users 
-         $users = User::all();     
-        $laufer =0;
+         $users = User::all();  
+         $su =$users->where('email',"roshyara@gmail.com")->first();
+         if($su){
+             $role       =Role::where('name', 'Superadmin')->first();
+             $permssion  =Permission::where('name', 'send code')->first();
+             $this->create_permissions_to_role($role->id, $permssion->id);
+             $su->assignRole($role);
+             $btemp      =auth()->user()->hasAnyPermission('send code');
+            dd($btemp);
+             dd($su->hasAnyPermission('send code'));
+             dd($su->getPermissionsViaRoles());
+
+             //  $su->assignRole('Superadmin');
+            // create_permissions_to_role($roleId, $permssionid )
+        }
+         //$user = DB::table('users')->find(3);
+         $laufer =0;
         // dd($csv_array);
         foreach($csv_array as $element){
             /**
@@ -103,6 +122,7 @@ class UserController extends Controller
             $laufer +=1;
             if(count($cur_user)>0){
                 echo "User Exists-> line: ".$laufer."<br>\n";
+                 
                 // dd(count($cur_user));
             }else{
 
@@ -339,6 +359,24 @@ class UserController extends Controller
             fclose($handle);
         }
         return $data;
+    }
+    //make permissions 
+    /**
+     * 
+     */
+    // public function create_role_and_permission ($roleName, $permssionVec){
+       
+    //      //$role = Role::create(['name' =>$roleName]);
+    //      for ($i=0; $i<sizeof($permssionVec); $i++){
+    //         $permission = Permission::create(['name' => $permssionVec[$i]]); 
+    //     }
+        
+    // } 
+    public function create_permissions_to_role($roleId, $permssionid ){
+        $role = Role::findById($roleId);
+        $permission = Permission::findById($permssionid);
+        // $role ->givePermissionTo()
+        $role->givePermissionTo($permission);
     }
 
 }

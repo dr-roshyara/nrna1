@@ -195,7 +195,7 @@
                     </div>
                     <div class="w-full flex flex-wrap">
                         <div class="w-full md:w-1/2">
-                            <a href="users/index">
+                            <a href="voters/index">
                                 <div
                                     class="
                                         w-full
@@ -297,6 +297,41 @@
                                         "
                                     >
                                         General Information
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                           <div class="w-full md:w-1/2">
+                            <a href="users/index">
+                                <div
+                                    class="
+                                        w-full
+                                        p-8
+                                        my-4
+                                        mr-0
+                                        md:mr-2
+                                        border-2
+                                        rounded-lg
+                                        hover:bg-blue-100
+                                        flex flex-wrap
+                                        justify-center
+                                    "
+                                >
+                                    <img
+                                        src="/storage/images/list.png"
+                                        alt="NRNA Members List"
+                                        class="w-20 h-auto my-4"
+                                    />
+                                    <div
+                                        class="
+                                            w-full
+                                            text-center
+                                            font-bold
+                                            text-base
+                                            md:text-2xl
+                                        "
+                                    >
+                                        NRNA Member's  List
                                     </div>
                                 </div>
                             </a>

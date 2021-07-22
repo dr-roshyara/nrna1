@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class MessageController extends Controller
 {
@@ -83,14 +85,21 @@ class MessageController extends Controller
                 'message' => ['required', 'max:255'],
            
         ]);
-        Message::create(
-            $request()->validate([
-                'from' => ['required', 'max:50'], 
-                'to' => ['required', 'max:50'],
-                'message' => ['required', 'max:255'],
-            ])
-        );
-        return  redirect()->route('messages.index');
+        $btemp      =auth()->user()->hasAnyPermission('send code');
+        dd($btemp); 
+        if($btemp){
+
+            Message::create(
+                $request()->validate([
+                    'from' => ['required', 'max:50'], 
+                    'to' => ['required', 'max:50'],
+                    'message' => ['required', 'max:255'],
+                ])
+            );        
+            return  redirect()->route('messages.index');
+        }else{ 
+            echo "You can not send code";
+        }
         //  return redirect('/messages/index')->with('from', 'to', 'message');
         // return Redirect::route('Message.Index');
         /**

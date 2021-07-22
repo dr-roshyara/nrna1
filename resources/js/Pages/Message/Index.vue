@@ -1,13 +1,14 @@
 <template >
-    <div>
-    <div class="flex flex-row">
-            <div class="w-1/2"> 
+    <nrna-layout>  
+    <div class="min-h-screen ">
+    <div class="flex flex flex-col justify-center m-auto space-y-3 px-4">
+            <!-- <div class="w-1/2"> 
                     <message> </message> 
                   Message sent to 
                   
-            </div> 
-            <div class="w-1/2">
-                    <div class="flex flex-row">
+            </div>  -->
+            <!-- <div class=""> -->
+                    <div class="flex flex-row justify-center">
                     <!--  Here comes the filtering  -->
                     <div class="p-2 m-1 flex flex-col" >
 
@@ -73,7 +74,7 @@
                         <!-- here ends the row  --> 
                        </tr> 
                     </table>
-                </div>
+                <!-- </div> -->
                 
           </div>
             <div class="p-5 flex justify-end">
@@ -83,10 +84,11 @@
             </div>
              <pagination class="mt-10" :links="messages.links" />
     </div>
-   
+    </nrna-layout>
 </template>
 <script>
-import Message from "@/Pages/Message/Message.vue";
+// import Message from "@/Pages/Message/Message.vue";
+import NrnaLayout from '@/Layouts/NrnaLayout'
 import { Inertia } from '@inertiajs/inertia';
 import _ from 'lodash';
 
@@ -143,7 +145,8 @@ export default {
         }
     }, 
     components: {
-     Message 
+    //  Message  
+    NrnaLayout
     }
 }
 </script>

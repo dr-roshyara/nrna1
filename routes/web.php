@@ -11,10 +11,13 @@ use App\Http\Controllers\CandidacyController;
 use App\Http\Controllers\VoterlistController;
 use \App\Http\Controllers\SmsController;
 use \App\Http\Controllers\MessageController;
-
+use App\Http\Controllers\AssignmentController;
 //Models
 use Inertia\Inertia;
 use App\Models\Message;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -71,4 +74,12 @@ Route::get('/message', function (){
 Route::middleware(['auth:sanctum', 'verified'])
 ->get('/messages/index', [MessageController::class, 'index'])->name('messages.index');
 // Route::post('messages',[MessageController::class, 'store'])->name('messages.store');
-Route::post('/messages', [SmsController::class, 'create']);
+    Route::post('/messages', [SmsController::class, 'create']);
+
+/**
+ * Role
+ */
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('assignements/index', ['AssignmentController::class', 'index'])->name('role.index');
+
+}); //end of Role 
