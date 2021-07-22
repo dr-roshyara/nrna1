@@ -64,7 +64,8 @@ class SmsController extends Controller
                     $sender                     ="4917657994107";         
                     $receiver                   =$voter->telephone;                    
                     //$code                     =$voter->code;  
-                    $code                       ="1234";  
+                    //$code                       ="1234";   
+                    $code                       ="1234";   
                     $message                    ='Vote for me: Your Code is:'. $code;                    
                     $voteMessage['to']          = $sender; 
                     $voteMessage['from']        = $receiver; 
