@@ -10,87 +10,119 @@
       </div>
       <form @submit.prevent="submit" class=" text-center mx-auto mt-10">
         <div class="flex flex-col justify-center px-2 m-2"> 
-          <!-- <select name="cars" id="cars" form="carform"> -->       
-            <div class="flex flex-col border border-2 border-blue-300 m-2 py-4 px-6">        
-            <div>
-              <label> Please choose one  Candidate as the ICC Member. </label> 
-              <label class="p-2"> कृपया एक जना लाई आइसीसी सदस्य  चुन्नुहोस ।  </label>   
+           <!-- Two divs 
+            **First : Voting option 
+            **Second no vote option            
+            -->
+            
+              <div v-if ="!no_vote_option" class="flex flex-col">  <!-- Here starts the voting option  -->
+
+                 <!-- <select name="cars" id="cars" form="carform"> -->       
+                  <div class="flex flex-col border border-2 border-blue-300 m-2 py-4 px-6">        
+                  <div>
+                    <label> Please choose one  Candidate as the ICC Member. </label> 
+                    <label class="p-2"> कृपया एक जना लाई आइसीसी सदस्य  चुन्नुहोस ।  </label>   
+                  </div>
+                  <!-- here starts the candidate -->
+                  <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
+                      <div  v-for="(icc_member, pIndx) in icc_members" :key="pIndx"  
+                          class="flex flex-col justify-center p-4 mb-2 text-center  
+                          border border-gray-100 rounded"> 
+                          <show-candidate 
+                          :post_name ="icc_member.post_name"   
+                          :post_nepali_name ="icc_member.post_nepali_name"  
+                          :candidacy_name ="icc_member.candidacy_name"></show-candidate>              
+                                    <!-- here starts -->
+                        <div class="px-2 py-2">
+                          <input 
+                          type      ="checkbox"
+                          :id       ="icc_member.user_id"
+                          :name     ="icc_member.post_name"
+                          :value    ="icc_member.candidacy_id"  
+                          v-model   ="form.icc_member"
+                          class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                          @change  ="updateBoxes(this.icc_members,this.form.icc_member,this.icc_memberTicks)" 
+                          :disabled ="icc_member.disabled"
+                        />
+                        </div> 
+
+                      </div>
+                      
+
+                  </div> 
+                  <div  class="mb-4 p-2" v-if="form.icc_member.length"> You have selected 
+                    <span class="font-bold text-indigo-600"> {{find_selected_name(this.icc_members,this.form.icc_member)}} </span> as President of NRNA Germany!</div>
+                  </div>
+                  <!-- next -->
+                  <!-- president -->
+                <div class="flex flex-col border border-2 border-blue-300 m-2 py-4 px-6">        
+                  <div>
+                    <label> Please choose one  Candidate as the president. </label> 
+                    <label class="p-2"> कृपया एक जना लाई अद्यक्ष चुन्नुहोस । </label>   
+                  </div>
+                  <!-- here starts the candidate -->
+                  <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
+                      <div  v-for="(president, pIndx) in presidents" :key="pIndx"  
+                          class="flex flex-col justify-center p-4 mb-2 text-center  
+                          border border-gray-100 rounded"> 
+                          <show-candidate 
+                          :post_name ="president.post_name"   
+                          :post_nepali_name ="president.post_nepali_name"  
+                          :candidacy_name ="president.candidacy_name"></show-candidate>              
+                                    <!-- here starts -->
+                        <div class="px-2 py-2">
+                          <input 
+                          type      ="checkbox"
+                          :id       ="president.user_id"
+                          :name     ="president.post_name"
+                          :value    ="president.candidacy_id"  
+                          v-model   ="form.president"
+                          class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                          @change  ="updateBoxes(this.presidents,this.form.president,this.presidentTicks)" 
+                          :disabled ="president.disabled"
+                        />
+                        </div> 
+
+                      </div>
+                      
+
+                  </div> 
+                  <div  class="mb-4 p-2" v-if="form.president.length"> You have selected 
+                    <span class="font-bold text-indigo-600"> {{find_selected_name(this.presidents,this.form.president)}} </span> as President of NRNA Germany!</div>
+                  </div>
+                <!--end of  president -->
+
             </div>
-            <!-- here starts the candidate -->
-            <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
-                <div  v-for="(icc_member, pIndx) in icc_members" :key="pIndx"  
-                    class="flex flex-col justify-center p-4 mb-2 text-center  
-                    border border-gray-100 rounded"> 
-                    <show-candidate 
-                    :post_name ="icc_member.post_name"   
-                    :post_nepali_name ="icc_member.post_nepali_name"  
-                    :candidacy_name ="icc_member.candidacy_name"></show-candidate>              
-                              <!-- here starts -->
-                  <div class="px-2 py-2">
+             <!-- here starts the no vote option  -->
+             <!-- Here comes the no vote Button  -->
+              <div class="flex flex-col border border-2 border-blue-300 m-2 py-4 px-6"> 
+                <div class="py-2 mb-2 text-bold text-red-500"><p>  Option for Rejection |
+                      उमेदवारहरु लाई अस्विकार को लागि मतदान । </p> </div>
+               <div class="px-2 py-2">
                     <input 
                     type      ="checkbox"
-                    :id       ="icc_member.user_id"
-                    :name     ="icc_member.post_name"
-                    :value    ="icc_member.candidacy_id"  
-                    v-model   ="form.icc_member"
+                    :id       ="no_vote"
+                    :name     ="no_vote"
+                    :value    ="0"  
+                    v-model   ="form.no_vote"
                     class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    @change  ="updateBoxes(this.icc_members,this.form.icc_member,this.icc_memberTicks)" 
-                    :disabled ="icc_member.disabled"
+                    @change  ="update_no_vote_option()" 
                   />
                   </div> 
+                  <p> By clicking this button, I reject all the candidates.  </p>                      
+                  <p> यो भोटमा क्लिक गरेर म यो लिस्टमा उल्लेखित कुनै पनि उमेद्बारलाई  मतदानलाई नगरि आफ्नो अभिमत ""राइट टु रिजेक्ट अल क्यान्डिडेट्स" 
+                    लाई सुरक्षित गर्न चाहन्छु। 
+                   </p>
 
-                </div>
-                
-
-            </div> 
-            <div  class="mb-4 p-2" v-if="form.icc_member.length"> You have selected 
-              <span class="font-bold text-indigo-600"> {{find_selected_name(this.icc_members,this.form.icc_member)}} </span> as President of NRNA Germany!</div>
-            </div>
-            <!-- next -->
-            <!-- president -->
-          <div class="flex flex-col border border-2 border-blue-300 m-2 py-4 px-6">        
-            <div>
-              <label> Please choose one  Candidate as the president. </label> 
-              <label class="p-2"> कृपया एक जना लाई अद्यक्ष चुन्नुहोस । </label>   
-            </div>
-            <!-- here starts the candidate -->
-            <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
-                <div  v-for="(president, pIndx) in presidents" :key="pIndx"  
-                    class="flex flex-col justify-center p-4 mb-2 text-center  
-                    border border-gray-100 rounded"> 
-                    <show-candidate 
-                    :post_name ="president.post_name"   
-                    :post_nepali_name ="president.post_nepali_name"  
-                    :candidacy_name ="president.candidacy_name"></show-candidate>              
-                              <!-- here starts -->
-                  <div class="px-2 py-2">
-                    <input 
-                    type      ="checkbox"
-                    :id       ="president.user_id"
-                    :name     ="president.post_name"
-                    :value    ="president.candidacy_id"  
-                    v-model   ="form.president"
-                    class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    @change  ="updateBoxes(this.presidents,this.form.president,this.presidentTicks)" 
-                    :disabled ="president.disabled"
-                  />
-                  </div> 
-
-                </div>
-                
-
-            </div> 
-            <div  class="mb-4 p-2" v-if="form.president.length"> You have selected 
-              <span class="font-bold text-indigo-600"> {{find_selected_name(this.presidents,this.form.president)}} </span> as President of NRNA Germany!</div>
-            </div>
-
-            <!--end of  president -->
+              </div>     
+           <!--end of no vote button -->             
             <div class="mx-auto my-4 w-full"> 
             <button type="submit" class="m-2 px-2 py-2 rounded-lg bg-blue-300 w-1/2 mx-auto">Submit</button>
             </div>
-              <div class="mx-auto text-center">
-        <jet-validation-errors class="mb-4  mx-auto text-center " />
-        </div>
+             <!-- here comes the error  -->
+            <div class="mx-auto text-center">
+              <jet-validation-errors class="mb-4  mx-auto text-center " />
+            </div>
         </div>
       </form>
      
@@ -113,7 +145,8 @@ export default {
   data(){ 
       return{
         icc_member_post_id:"2021_01",
-        president_post_id:"2021_02",        
+        president_post_id:"2021_02", 
+        no_vote_option: 0,       
          icc_memberTicks:{
             limit: 1,
             ticks:[]
@@ -141,6 +174,7 @@ export default {
       supporter_name : '',
       supporter_id:'',
       image: null,
+      no_vote: 0
     })
     // this.$inertia.post(route('candidacy.store'), data); 
     function submit() {
@@ -175,6 +209,25 @@ export default {
       }
   },
   methods:{
+     /**
+      * This function changes the value of no vote option . 
+      * That means if you click on no vote option. The form will disappear 
+      * 
+      */
+       update_no_vote_option(){
+          this.no_vote_option =this.form.no_vote;
+          if(this.no_vote_option){
+            //make the default value  for form 
+            this.form.icc_member     = []
+            this.form.president      = []
+            this.form.vice_resident   = ''
+            this.form.proposer_name   =''
+            this.form.proposer_id     = '',
+            this.form.supporter_name  = '',
+            this.form.supporter_id    =''
+          }
+       },
+
      updateBoxes(candiVec, selectedVec,tickObj) {
        /**
         * @param1 : candidateVector 

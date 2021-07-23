@@ -97,10 +97,28 @@ class UserController extends Controller
          $users = User::all();  
          $su =$users->where('email',"roshyara@gmail.com")->first();
          if($su){
-             $role       =Role::where('name', 'Superadmin')->first();
-             $permssion  =Permission::where('name', 'send code')->first();
-             $this->create_permissions_to_role($role->id, $permssion->id);
+             //$role       =Role::where('name', 'Superadmin')->first();
+             //$permssion  =Permission::where('name', 'send code')->first();
+             //$this->create_permissions_to_role($role->id, $permssion->id);
+             //$su->assignRole($role);
+             //echo "found";
+             $role        = Role::where('name', 'Superadmin')->first();
+             $permission  = Permission::where('name', 'send code')->first();
+             $role->givePermissionTo($permission);
              $su->assignRole($role);
+             // return "test";:
+            $btemp      =auth()->user()->hasAnyPermission('send code');
+             //var_dump($btemp);
+            //  dd($su->hasAnyPermission('send code'));
+            //  dd($su->getPermissionsViaRoles());
+
+             //  $su->assignRole('Superadmin');
+            // create_permissions_to_role($roleId, $permssionid )
+        //}
+         //$user = DB::table('users')->find(3);
+
+
+
             //  $btemp      =auth()->user()->hasAnyPermission('send code');
             // dd($btemp);
             //  dd($su->hasAnyPermission('send code'));
