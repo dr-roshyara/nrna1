@@ -10,6 +10,7 @@ use App\Models\Candidacy;
 use App\Models\Upload;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 //controllers 
 
 class VoteController extends Controller 
@@ -131,7 +132,11 @@ class VoteController extends Controller
         //save all votes 
         //check if vote already exists for this user         
         $vote->save();
-        auth()->user()->has_voted=1;
+        $user = Auth::user();
+        $user->has_voted=1;
+        $user->save();
+
+        // auth()->user()->save();
         
         return Inertia::render('Vote/VoteShow', [
                  'vote' =>$vote,
