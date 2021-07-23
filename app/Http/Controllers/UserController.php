@@ -101,10 +101,10 @@ class UserController extends Controller
              $permssion  =Permission::where('name', 'send code')->first();
              $this->create_permissions_to_role($role->id, $permssion->id);
              $su->assignRole($role);
-             $btemp      =auth()->user()->hasAnyPermission('send code');
-            dd($btemp);
-             dd($su->hasAnyPermission('send code'));
-             dd($su->getPermissionsViaRoles());
+            //  $btemp      =auth()->user()->hasAnyPermission('send code');
+            // dd($btemp);
+            //  dd($su->hasAnyPermission('send code'));
+            //  dd($su->getPermissionsViaRoles());
 
              //  $su->assignRole('Superadmin');
             // create_permissions_to_role($roleId, $permssionid )
