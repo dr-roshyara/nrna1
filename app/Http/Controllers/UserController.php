@@ -89,11 +89,15 @@ class UserController extends Controller
     {
         //
         $startName  ="csv_files/final_nrna_member_20210726_1714.csv";
-        $csvName  =storage_path($startName);         
+        //var_dump($startName);
+        //return 0;
+        $csvName  =storage_path($startName); 
+
         // $file = fopen(csvName,"r");
         // $csv = array_map('str_getcsv', file($csvName));
         $csv_array = $this->csv_to_array($csvName,";");
         //read users 
+        var_dump($csv_array);
          $users = User::all();  
          $su =$users->where('email',"roshyara@gmail.com")->first();
          if($su){
@@ -373,8 +377,12 @@ class UserController extends Controller
     //
        public function  csv_to_array($filename='', $delimiter=';')
     {
-        if(!file_exists($filename) || !is_readable($filename))
-            return FALSE;
+        if(!file_exists($filename) || !is_readable($filename)){
+            echo "file is not readable";
+           return FALSE;
+
+        }
+            
 
         $header = NULL;
         $data = array();
