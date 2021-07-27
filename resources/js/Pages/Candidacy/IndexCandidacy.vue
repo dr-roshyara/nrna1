@@ -20,7 +20,7 @@
                 Kindest regards <br>
                 Nrna Germany e.V. <br>
                 Election Commission 2021 <br>
-                <!-- <div class="mx-auto text-center">
+                    div class="mx-auto text-center">
                     <table class="w-full m-4 text-left">
                         <tr class="border-b-2 border-gray-400">
                             <th class="w-1/3 p-4">Candidacy Name</th>
@@ -44,7 +44,7 @@
                             <td class="w-1/3 p-4">{{ candidate.post_name }}</td>
                         </tr>
                     </table>
-                </div> -->
+                </div>
         </div>
              <!-- end  -->
           </div>
