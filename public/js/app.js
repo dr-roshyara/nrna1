@@ -25305,25 +25305,73 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_1 = {
   "class": "flex flex-col mb-10 py-10"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"flex flex-rwow justify-center m-auto space-x-4 py-2 mb-2\">\r\n                   <inertia-link href=\"/candidacy/create\" class=\" p-2 bg-red-50 font-bold text-gray-900 rounded border border-right \"> Candidacy Form </inertia-link>\r\n                    <inertia-link href=\"/posts/index\" class=\" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm\"> Name of Posts</inertia-link>\r\n                     <inertia-link href=\"/notices/index\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> List of Notices</inertia-link>\r\n\r\n                </div> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "p-4 m-auto bg-gray-50"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
   "class": "font-bold text-xl text-gray-800 leading-tight text-center"
-}, " Candidates List | उमेद्बवारहरुको सुची ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" start  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "text-center mx-auto mt-4 px-4 mb-12"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Thank you very much for your Candidacy. We will contackt you soonn after verifying your details "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Kindest regards "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nrna Germany e.V. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Election Commission 2021 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"mx-auto text-center\">\r\n                    <table class=\"w-full m-4 text-left\">\r\n                        <tr class=\"border-b-2 border-gray-400\">\r\n                            <th class=\"w-1/3 p-4\">Candidacy Name</th>\r\n                            <th class=\"w-1/3 p-4\">Candidacy ID</th>\r\n                            <th class=\"w-1/3 p-4\">Post</th>\r\n                        </tr>\r\n                        <tr\r\n                            v-for=\"(candidate, candiIndx) in candidacies.data\"\r\n                            :key=\"candiIndx\"\r\n                            :class=\"{\r\n                                'bg-gray-100 border-b border-gray-100':\r\n                                    candiIndx % 2 === 0,\r\n                                'bg-white border-b border-gray-100':\r\n                                    candiIndx % 2 > 0,\r\n                            }\"\r\n                        >\r\n                            <td class=\"w-1/3 p-4\">\r\n                                {{ candidate.candidacy_name }}\r\n                            </td>\r\n                            <td class=\"w-1/3 p-4\">{{ candidate.id }}</td>\r\n                            <td class=\"w-1/3 p-4\">{{ candidate.post_name }}</td>\r\n                        </tr>\r\n                    </table>\r\n                </div> ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end  ")], -1
+}, " Candidates List | उमेद्बवारहरुको सुची ")], -1
 /* HOISTED */
 );
 
+var _hoisted_3 = {
+  "class": "text-center mx-auto mt-4 px-4 mb-12"
+};
+var _hoisted_4 = {
+  "class": "mx-auto text-center"
+};
+var _hoisted_5 = {
+  "class": "w-full m-4 text-left"
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", {
+  "class": "border-b-2 border-gray-400"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
+  "class": "w-1/3 p-4"
+}, "Candidacy Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
+  "class": "w-1/3 p-4"
+}, "Candidacy ID"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
+  "class": "w-1/3 p-4"
+}, "Post")], -1
+/* HOISTED */
+);
+
+var _hoisted_7 = {
+  "class": "w-1/3 p-4"
+};
+var _hoisted_8 = {
+  "class": "w-1/3 p-4"
+};
+var _hoisted_9 = {
+  "class": "w-1/3 p-4"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" here is the table \r\n          "), _hoisted_1];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" here is the table \r\n          "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"flex flex-rwow justify-center m-auto space-x-4 py-2 mb-2\">\r\n                   <inertia-link href=\"/candidacy/create\" class=\" p-2 bg-red-50 font-bold text-gray-900 rounded border border-right \"> Candidacy Form </inertia-link>\r\n                    <inertia-link href=\"/posts/index\" class=\" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm\"> Name of Posts</inertia-link>\r\n                     <inertia-link href=\"/notices/index\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> List of Notices</inertia-link>\r\n\r\n                </div> "), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" start  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_5, [_hoisted_6, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.candidacies.data, function (candidate, candiIndx) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tr", {
+          key: candiIndx,
+          "class": {
+            'bg-gray-100 border-b border-gray-100': candiIndx % 2 === 0,
+            'bg-white border-b border-gray-100': candiIndx % 2 > 0
+          }
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(candidate.candidacy_name), 1
+        /* TEXT */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(candidate.id), 1
+        /* TEXT */
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(candidate.post_name), 1
+        /* TEXT */
+        )], 2
+        /* CLASS */
+        );
+      }), 128
+      /* KEYED_FRAGMENT */
+      ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end  ")])];
     }),
     _: 1
     /* STABLE */
