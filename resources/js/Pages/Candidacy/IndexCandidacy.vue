@@ -2,7 +2,7 @@
     <app-layout> 
          <!-- here is the table 
           -->           
-          <div class="flex flex-col mb-10 py-10" > 
+          <div class="flex flex-col justify-center mb-10 py-10 mx-auto w-full" > 
               <!-- <div class="flex flex-rwow justify-center m-auto space-x-4 py-2 mb-2">
                    <inertia-link href="/candidacy/create" class=" p-2 bg-red-50 font-bold text-gray-900 rounded border border-right "> Candidacy Form </inertia-link>
                     <inertia-link href="/posts/index" class=" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"> Name of Posts</inertia-link>
@@ -15,8 +15,8 @@
             </h2>
              </div>
            <!-- start  -->
-               <div class="text-center mx-auto mt-4 px-4 mb-12 w-full">
-                <table class="text-left"> 
+               <div class=" mt-4 px-4 mb-12">
+                <table class="text-left mx-auto w-full"> 
                     <tr class="border-b-2 border-gray-400">
                         <th class="w-1/3 p-4">Candidacy Name</th>
                         <th class="w-1/3 p-4">Candidacy ID</th>
