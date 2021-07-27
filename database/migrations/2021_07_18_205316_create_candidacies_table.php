@@ -28,19 +28,19 @@ class CreateCandidaciesTable extends Migration
             $table->string('image_path_1')->nullable;
             $table->string('image_path_2')->nullable; 
             $table->string('image_path_3')->nullable;                         
+            
+            $table->foreign('user_id') 
+                ->references('id')->on('users') 
+                ->onDelete('cascade');
             //
-            // $table->foreign('user_id') 
-            //     ->references('id')->on('users') 
-            //     ->onDelete('cascade');
-            // //
-            //  $table->foreign('proposer_id')
-            //       ->references('id')->on('users')
-            //       ->onDelete('cascade');
-            // //
-            //  $table->foreign('supporter_id')
-            //       ->references('id')->on('users')
-            //       ->onDelete('cascade');
-            // //                  
+             $table->foreign('proposer_id')
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
+            //
+             $table->foreign('supporter_id')
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
+            //                  
             $table->foreign('post_id')
                   ->references('post_id')
                   ->on('posts')
