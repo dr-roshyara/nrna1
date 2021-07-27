@@ -176,6 +176,7 @@ class VoteController extends Controller
             array_push($candi_vec, request('no_vote_option'));
            $request->session()->put('candi_vec', $candi_vec);
            $this->vote =$candi_vec;
+        //    dd($candi_vec);
            return redirect('/vote/verify')->with('vote', $candi_vec);
 
      }
@@ -207,13 +208,15 @@ class VoteController extends Controller
              */
             //get vote from session 
             $input_data = $request->session()->get('candi_vec');
+        //    dd($input_data);
             //no_vote option is saved in 19 
              $no_vote_option  =$input_data[19];   
             if($no_vote_option) { //check if voter has given no_vote  option 
                 // Go for no vote option 
                 $vote                   =new Vote; 
                 $vote->no_vote_option   =1;
-                $vote->user_id          =$this->user_id;           
+                $vote->user_id          =$this->user_id;  
+                $vote->save();        
 
           }else{
              /**

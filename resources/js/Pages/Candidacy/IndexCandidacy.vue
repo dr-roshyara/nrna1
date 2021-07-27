@@ -15,13 +15,12 @@
             </h2>
              </div>
            <!-- start  -->
-               <div class="text-center mx-auto mt-4 px-4 mb-12">
-            <div class="mx-auto text-center">
-                <table class="w-full m-4 text-left">
+               <div class="text-center mx-auto mt-4 px-4 mb-12 w-full">
+                <table class="text-left"> 
                     <tr class="border-b-2 border-gray-400">
                         <th class="w-1/3 p-4">Candidacy Name</th>
                         <th class="w-1/3 p-4">Candidacy ID</th>
-                        <th class="w-1/3 p-4">Post</th>
+                        <th class="w-1/3 p-4">Post</th> 
                     </tr>
                     <tr
                         v-for="(candidate, candiIndx) in candidacies.data"
@@ -36,12 +35,12 @@
                         <td class="w-1/3 p-4">
                             {{ candidate.candidacy_name }}
                         </td>
-                        <td class="w-1/3 p-4">{{ candidate.id }}</td>
-                        <td class="w-1/3 p-4">{{ candidate.post_name }}</td>
+                        <td class="w-1/3 p-4">{{ candidate.candidacy_id }}</td>
+                        <td class="w-1/3 p-4">{{ candidate.post_name }}</td> 
                     </tr>
                 </table>
             </div>
-        </div>
+      
              <!-- end  -->
           </div>
     </app-layout>    

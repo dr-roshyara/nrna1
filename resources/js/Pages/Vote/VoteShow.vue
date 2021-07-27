@@ -11,9 +11,11 @@
                </p>
                <!-- {{vote}} -->
           </div>
-           <div v-if="vote.no_vote_option"> 
-                You have used your right to reject all candidates. 
-
+           <div v-if="vote.no_vote_option" class="mt-10 p-2 mx-auto "> 
+                
+                <p class =" text-xl font-bold text-gray-900"> You have used 
+                <span class="text-red-600" > your right to reject </span> all candidates.</p> 
+ 
           </div> 
           <div v-else class="flex flex-col justify-center  py-4 px-6  ">         
             <!--  here we put the candidate -->

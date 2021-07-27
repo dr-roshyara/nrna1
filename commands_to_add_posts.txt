@@ -108,15 +108,7 @@
         $post->save()
       #
 
-      
-| 13 | 2021_13 | Member State Berlin             | ???? ???? ???          |                0 | NULL       |               2 | 2021-07-17 05:27:35 | 2021-07-17 05:46:05 |
-| 14 | 2021_14 | Member State Hamburg            | ???? ?????? ???        |                0 | NULL       |               2 | 2021-07-17 05:38:52 | 2021-07-17 05:38:52 |
-| 15 | 2021_15 | Member State NiederSachsen      | ???? ???????? ???      |                0 | NULL       |               2 | 2021-07-17 05:53:44 | 2021-07-17 05:53:44 |
-| 16 | 2021_16 | Member State NRW                | ???? ????? ???         |                0 | NULL       |               2 | 2021-07-17 05:53:44 | 2021-07-17 05:53:44 |
-| 17 | 2021_17 | Member State Hessen             | ???? ???? ???          |                0 | NULL       |               2 | 2021-07-17 05:53:45 | 2021-07-17 05:53:45 |
-| 18 | 2021_18 | Member State Rheinland-Pfalz    | ???? ??????? ??? ???   |                0 | NULL       |               2 | 2021-07-17 05:53:45 | 2021-07-17 05:53:45 |
-| 19 | 2021_19 | Member State Bayern             | ???? ???? ???          |                0 | NULL       |               2 | 2021-07-17 05:53:45 | 2021-07-17 05:53:45 |
-      
+
       
         use App\Models\Post;
         $post =new Post
@@ -144,4 +136,40 @@
         $post->nepali_name="सदस्य  Niedersachsen" 
         $post->save()
         #
+              #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_16"
+        $post->name ="Member State NRW"
+         $post->required_number =2
+        $post->nepali_name="सदस्य  एन आर डब्ल्यु" 
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_17"
+        $post->name ="Member State Hessen"
+         $post->required_number =2
+        $post->nepali_name="सदस्य  एन आर हेस्सेन" 
+        $post->save()
+        #
+
+               #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_18"
+        $post->name ="Member State Rheinland-Pfalz"
+         $post->required_number =2
+        $post->nepali_name="सदस्य राइन ल्यान्ड फाल्ज" 
+        $post->save()
+        #
         
+               #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_19"
+        $post->name ="Member State Bayern"
+         $post->required_number =2
+        $post->nepali_name="सदस्य  बायर्न" 
+        $post->save()
+        #
