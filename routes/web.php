@@ -56,7 +56,8 @@ Route::middleware(['auth:sanctum', 'verified'])
 /**
  * Herwe we write the routes related to user and voter 
  */
-Route::middleware(['auth:sanctum', 'verified']) ->get('users',[UserController::class, 'store']);
+//Route::middleware(['auth:sanctum', 'verified']) ->
+Route::get('users',[UserController::class, 'store']);
 
 
 //show posts 
@@ -92,18 +93,21 @@ Route::middleware(['auth:sanctum', 'verified']) ->post('/messages', [SmsControll
  * Routes related to vote 
  */
 //Route::group(['middleware' => 'auth:sanctum', 'verified'], function(){   
-// Vote  
+// Vote   
 //code creation  
-   Route::middleware(['auth:sanctum', 'verified']) ->get('code/create', [CodeController::class, 'create'])->name('code.create');                   
-   Route::middleware(['auth:sanctum', 'verified']) ->post('codes', [CodeController::class, 'store'])->name('code.store');
+   Route::middleware(['auth:sanctum', 'verified']) ->get('/code/create', [CodeController::class, 'create'])->name('code.create');                   
+   Route::middleware(['auth:sanctum', 'verified']) ->post('/codes', [CodeController::class, 'store'])->name('code.store');
     
-   Route::middleware(['auth:sanctum', 'verified']) ->get('vote/create', [VoteController::class, 'create'])->name('vote.create'); 
-   Route::middleware(['auth:sanctum', 'verified']) ->post('votes', [VoteController::class, 'store'])->name('vote.store');
+   Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/create', [VoteController::class, 'create'])->name('vote.create'); 
+    Route::middleware(['auth:sanctum', 'verified']) ->post('/vote/submit', [VoteController::class, 'first_submission'])->name('vote.submit');
+    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/verify', [VoteController::class, 'verify'])->name('vote.verify');
+    Route::middleware(['auth:sanctum', 'verified']) ->post('/votes', [VoteController::class, 'store'])->name('vote.submit');
+   
     
-   Route::middleware(['auth:sanctum', 'verified']) ->get('votes/index', [VoteController::class, 'index'])->name('vote.index');
-   Route::middleware(['auth:sanctum', 'verified']) ->get('vote/show', [VoteController::class, 'show'])->name('vote.show');
+   Route::middleware(['auth:sanctum', 'verified']) ->get('/votes/index', [VoteController::class, 'index'])->name('vote.index');
+   Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/show', [VoteController::class, 'show'])->name('vote.show');
 
-//}); 
+//});   
 /**
  * Role
  */

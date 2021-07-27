@@ -21,6 +21,32 @@
                                     Dashboard
                                 </jet-nav-link>
                             </div>
+                            <!-- next --link --> 
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('vote.show')" :active="route().current('vote.show')">
+                                     Your Vote
+                                </jet-nav-link>
+                            </div>
+                             <!-- next --link --> 
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('voters.index')" :active="route().current('voters.index')">
+                                     Voter's List
+                                </jet-nav-link>
+                            </div>
+                            <!-- next --link --> 
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('users.index')" :active="route().current('users.index')">
+                                     Member's List
+                                </jet-nav-link>
+                            </div>
+
+                            <!-- next --link --> 
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('users.index')" :active="route().current('users.index')">
+                                     Candidacy Form 
+                                </jet-nav-link>
+                            </div>
+                            
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

@@ -88,7 +88,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $startName  ="csv_files/germany_final_from_global_20210721_01.csv";
+        $startName  ="csv_files/final_nrna_member_20210726_1714.csv";
         $csvName  =storage_path($startName);         
         // $file = fopen(csvName,"r");
         // $csv = array_map('str_getcsv', file($csvName));
@@ -104,10 +104,10 @@ class UserController extends Controller
              //echo "found";
              $role        = Role::where('name', 'Superadmin')->first();
              $permission  = Permission::where('name', 'send code')->first();
-             $role->givePermissionTo($permission);
-             $su->assignRole($role);
+            //  $role->givePermissionTo($permission);
+            //  $su->assignRole($role);
              // return "test";:
-            $btemp      =auth()->user()->hasAnyPermission('send code');
+            // $btemp      =auth()->user()->hasAnyPermission('send code');
              //var_dump($btemp);
             //  dd($su->hasAnyPermission('send code'));
             //  dd($su->getPermissionsViaRoles());
@@ -281,9 +281,9 @@ class UserController extends Controller
                     if($element['additional_address']!=""){
                         $user->additional_address = $element['additional_address'];  
                      }else{
-                         $user->additional_address ="-";
+                         $user->additional_address ="";
                      }
-                }
+                } 
                 //
             
                 $user->postalcode =0;
@@ -292,6 +292,18 @@ class UserController extends Controller
                 }else{
                     $user->name = $user->first_name. "  ". $user->middle_name. " ". $user->last_name;
                 }
+                // lcc 
+                  //lcc
+                if (array_key_exists('lcc', $element))
+                {
+                    // $user->additional_address = $element['additional_address'];
+                    if($element['lcc']!=""){
+                        $user->lcc = $element['lcc'];  
+                     }else{
+                         $user->lcc ="";
+                     }
+                }
+                //
 
                 // dd($user);        
                     // dd($user); 

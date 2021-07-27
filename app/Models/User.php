@@ -57,9 +57,10 @@ class User extends Authenticatable
         'nrna_id',
         'can_vote_now',
         'has_voted',
-        'has_candidacy',
+        'has_candidacy', 
+        'lcc'  
         
-    ];
+    ]; 
 
     /**
      * The attributes that should be hidden for arrays.
@@ -95,6 +96,7 @@ class User extends Authenticatable
      *      */
     public function vote (){
         return $this->hasone(Vote::class);
+        // return $this->hasOne(Code::class,  'foreign_key');
         // you can also write $this->hasone('App\Vote')
     }
     
