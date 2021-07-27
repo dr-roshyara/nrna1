@@ -7,7 +7,8 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 //
 use Inertia\Inertia;
 class UserController extends Controller
@@ -88,7 +89,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $startName  ="csv_files/final_nrna_member_20210726_1714.csv";
+        $startName  ="csv_files/final_nrna_member_20210726_1715_1.csv";
         //var_dump($startName);
         //return 0;
         $csvName  =storage_path($startName); 
@@ -97,7 +98,7 @@ class UserController extends Controller
         // $csv = array_map('str_getcsv', file($csvName));
         $csv_array = $this->csv_to_array($csvName,";");
         //read users 
-        var_dump($csv_array);
+        //var_dump($csv_array);
          $users = User::all();  
          $su =$users->where('email',"roshyara@gmail.com")->first();
          if($su){

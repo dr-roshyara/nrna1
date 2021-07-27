@@ -1,0 +1,147 @@
+   $post =new Post
+        $post->post_id ="2021_01"
+        $post->name ="ICC Member"
+        $post->nepali_name ="आइसीसी सदस्य"
+        $post->required_number =1
+        
+        $post->save()
+    #
+    use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_02"
+        $post->name ="President"
+        $post->nepali_name ="अद्यक्ष" 
+        $post->required_number =1
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_03"
+        $post->name ="Vice President" 
+       $post->required_number =2
+        $post->nepali_name ="उपाध्यक्ष" 
+        $post->save()
+        #
+        #  
+      
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_04"
+        $post->required_number =1
+         $post->is_national_wide =1
+        $post->name ="Woman Vice President"
+        $post->nepali_name ="महिला उपाद्यक्ष"
+        $post->save()
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_05"
+        $post->required_number =1
+        $post->is_national_wide =1
+        $post->name ="General Secretary"
+        $post->nepali_name ="महासचिव"
+        $post->save()
+       #
+         use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_06"
+        $post->required_number =2
+        $post->is_national_wide =1
+        $post->name ="Secretary"
+        $post->nepali_name ="सचिव"
+        $post->save()
+       #
+       
+
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_07"
+        $post->name ="Treasure"
+         $post->required_number =1
+        $post->is_national_wide =1
+        $post->nepali_name ="कोषाध्यक्ष"
+        $post->save()
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_08"
+        $post->required_number =1
+        $post->is_national_wide =1        
+        $post->name ="Woman Coordinator"
+        $post->nepali_name ="महिला कोर्डिनेटर"
+        $post->save()
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_09"
+        $post->name ="Youth Coordinator"
+        $post->required_number =1
+        $post->is_national_wide =1  
+        $post->nepali_name ="युथ कोर्डिनेटर" 
+        $post->save()
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_10"
+        $post->name ="Culture Coordinator"
+        $post->required_number =1
+        $post->is_national_wide =1  
+        $post->nepali_name ="सान्स्कृतिक कोर्डिनेटर" 
+        $post->save()
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_11"
+        $post->name ="Langugae & Children Coordinator"
+        $post->required_number =1
+        $post->is_national_wide =1  
+        $post->nepali_name ="भाषा साहित्य तथा बालबालिका कोर्डिनेटर" 
+        $post->save()
+      #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_12"
+        $post->name ="Student Coordinator"
+        $post->required_number =1
+        $post->is_national_wide =1  
+        $post->nepali_name =" विद्यार्थी कोर्डिनेटर" 
+        $post->save()
+      #
+
+      
+| 13 | 2021_13 | Member State Berlin             | ???? ???? ???          |                0 | NULL       |               2 | 2021-07-17 05:27:35 | 2021-07-17 05:46:05 |
+| 14 | 2021_14 | Member State Hamburg            | ???? ?????? ???        |                0 | NULL       |               2 | 2021-07-17 05:38:52 | 2021-07-17 05:38:52 |
+| 15 | 2021_15 | Member State NiederSachsen      | ???? ???????? ???      |                0 | NULL       |               2 | 2021-07-17 05:53:44 | 2021-07-17 05:53:44 |
+| 16 | 2021_16 | Member State NRW                | ???? ????? ???         |                0 | NULL       |               2 | 2021-07-17 05:53:44 | 2021-07-17 05:53:44 |
+| 17 | 2021_17 | Member State Hessen             | ???? ???? ???          |                0 | NULL       |               2 | 2021-07-17 05:53:45 | 2021-07-17 05:53:45 |
+| 18 | 2021_18 | Member State Rheinland-Pfalz    | ???? ??????? ??? ???   |                0 | NULL       |               2 | 2021-07-17 05:53:45 | 2021-07-17 05:53:45 |
+| 19 | 2021_19 | Member State Bayern             | ???? ???? ???          |                0 | NULL       |               2 | 2021-07-17 05:53:45 | 2021-07-17 05:53:45 |
+      
+      
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_13"
+        $post->name ="Member State Berlin"
+         $post->required_number =2
+        $post->nepali_name="सदस्य  बर्लिन " 
+        $post->save()
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_14"
+        $post->name ="Member State Hamburg"
+         $post->required_number =2
+        $post->nepali_name="सदस्य  ह्याम्बर्ग" 
+        $post->save()
+
+       #     
+      #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_15"
+        $post->name ="Member State NiederSachsen"
+         $post->required_number =2
+        $post->nepali_name="सदस्य  Niedersachsen" 
+        $post->save()
+        #
+        

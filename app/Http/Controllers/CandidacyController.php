@@ -76,6 +76,7 @@ class CandidacyController extends Controller
         //
           $query =Post::all();
         //   dd($query->pluck('post_id'));
+        return redirect()->route('candidacy.index');
          return Inertia::render('Candidacy/CreateCandidacy', [
             'posts' =>$query,  
             'name'  => ""
@@ -121,10 +122,10 @@ class CandidacyController extends Controller
         //  $this.validate_input($candidacy); 
         //   dd($candidacy); 
         $candidacy['user_id'] = 1; 
-         $candidacy['candidacy_id'] = $request['nrna_id']; 
-        $candidacy['candidacy_name']  =$request['name'];                  
-        $candidacy['post_name']       =$post_name; 
-         $candidacy['post_nepali_name']       =$post_nepali_name; 
+         $candidacy['candidacy_id']         = $request['nrna_id']; 
+        $candidacy['candidacy_name']        =$request['name'];                  
+        $candidacy['post_name']             =$post_name; 
+         $candidacy['post_nepali_name']      =$post_nepali_name; 
        /** change psot id according to the post  otherwise it wont work
          * look at the post controller id*/ 
         $candidacy['post_id']         =$request['post_id']; 
@@ -134,8 +135,8 @@ class CandidacyController extends Controller
         $candidacy['supporter_id']    =$request['supporter_id'];   
         $candidacy['supporter_name']   =$request['supporter_name'];  
         $candidacy['image_path_1']     =$filename ;
-        $candidacy['image_path_2']   ="test";
-        $candidacy['image_path_3']  ="test";
+        $candidacy['image_path_2']     ="test";
+        $candidacy['image_path_3']     ="test";
         // $candidacy['image_path_1']      =$request->input('image') ? $request->file('image')->store('images', 'public'): null;
         //save 
         // dd($candidacy);
