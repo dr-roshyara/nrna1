@@ -24,7 +24,7 @@
                     <table class=" m-4 text-left" v-if="vote">
                         <tr class="border-b-2 border-gray-400">
                              <th class="w-1/3 p-4">Post</th>
-                              <th class="w-1/3 p-4">Candidacy ID</th>
+                              <th class="w-1/3 p-4">User ID</th>
                               <th class="w-1/3 p-4">Candidacy Name</th>
 
                         </tr>

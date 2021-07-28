@@ -1,63 +1,74 @@
 <template>
     <nrna-layout>
-    <jet-authentication-card class="rounded ">
-        <div class="mb-1">
-            <jet-validation-errors class="pt-1" />
-            <div v-if="status" class=" font-medium text-sm text-green-600">
-            {{ status }}
-             </div>
-        </div> 
-         <!-- next -->
-         <div class="text-gray-900 text-xl" > 
-        आदरणिय दिदी बहिनी तथा दाजुभाइहरु,<br> 
-        लगइन मा आफ्नो टेलिफोन नम्बर कन्ट्रीकोड सहित<br> 
-         <span class="text-bold"> (तर विना '+' र विना '00') </span> <br> 
-         लेख्नु होला । उदाहरणको लागि  जर्मनीको कन्ट्री कोड (49) सहित तलको लग इन नम्बर हेर्नु हुनेछ। <br>
-        <span class="text-bold m-2"> लगइन: </span> 4915164322589 <br>
-        <span class="text-bold m-2"> पासवर्ड:</span> यो तपाईंहरुले एसएमएस मार्फत पाउनु भएको छ।<br> 
-         </div>    
-        <!-- next -->
-        <form @submit.prevent="submit">
-            <!-- 
-            <div>
-                <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
-            </div>
-            -->
-            <!--next --> 
-            <div class=" my-4 text-bold text-gray-900 text-xl ">
-                <jet-label for="telephone" value="Telephone (टेलिफोन नम्बर)"  /> 
-                <jet-input id="telephone" type="text" class="mt-1 block w-full"  placeholder="4915164322589"
-                v-model="form.telephone" required autofocus />
-            </div>
-            <!--next --> 
+    <div>     
+        
+        <jet-authentication-card class="rounded ">
             
-            <div class="my-4">
-                <jet-label for="password" value="Password" />
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
-            </div>
+            <div class="mb-1">
+                <jet-validation-errors class="pt-1" />
+                <div v-if="status" class=" font-medium text-sm text-green-600">
+                {{ status }}
+                </div>
+            </div> 
+             <p class="px-auto mx-auto py-4 my-4
+              text-red-800 font-bold text-2xl text-center"> 
+                 सदस्य लगइन  </p>
+            <!-- next -->
+            <div class="text-gray-900 text-lg" > 
+            आदरणिय दिदी बहिनी तथा दाजुभाइहरु,<br> 
+            लगइन मा आफ्नो टेलिफोन नम्बर कन्ट्रीकोड सहित<br> 
+            <span class="text-bold"> (तर विना '+' र विना '00') </span> <br> 
+            लेख्नु होला । उदाहरणको लागि  जर्मनीको कन्ट्री कोड (49) सहित तलको लग इन नम्बर हेर्नु हुनेछ। <br>
+            <span class="text-bold m-2"> लगइन उदाहरणको लागि: </span> 4915164322589 <br>
+            <span class="text-bold m-2"> पासवर्ड:</span> 
+            यस्को पासवर्ड तपाईंले लिन्क <br/>  
+             <inertia-link href="http://127.0.0.1:8000/forgot-password">
+            <span class="text-gray-900 font-bold text-sm">  GET YOUR PASSWORD </span> </inertia-link> मा क्लिक गरेर पाउन सक्नु  हुन्छ।<br> 
+            </div>    
+            <!-- next -->
+            <form @submit.prevent="submit">
+                <!-- 
+                <div>
+                    <jet-label for="email" value="Email" />
+                    <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
+                </div>
+                -->
+                <!--next --> 
+                <div class=" my-4 text-bold text-gray-900 text-xl ">
+                    <jet-label for="telephone" value="Telephone (टेलिफोन नम्बर)"  /> 
+                    <jet-input id="telephone" type="text" class="mt-1 block w-full"  placeholder="4915164322589"
+                    v-model="form.telephone" required autofocus />
+                </div>
+                <!--next --> 
+                
+                <div class="my-4">
+                    <jet-label for="password" value="Password" />
+                    <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
+                </div>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <jet-checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-900">Remember me</span>
-                </label>
-            </div>
+                <div class="block mt-4">
+                    <label class="flex items-center">
+                        <jet-checkbox name="remember" v-model:checked="form.remember" />
+                        <span class="ml-2 text-sm text-gray-900">Remember me</span>
+                    </label>
+                </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <inertia-link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
-                </inertia-link>
+                <div class="flex items-center justify-end mt-4 ">
+                    <inertia-link 
+                    v-if="canResetPassword" :href="route('password.request')" class="underline font-bold text-lg text-gray-900 hover:text-gray-900">
+                        Get  your password here
+                    </inertia-link> 
 
-                <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </jet-button>
-            </div>
-        </form>
+                    <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        Log in
+                    </jet-button>
+                </div>
+            </form>
 
-    </jet-authentication-card>
-    </nrna-layout>
-  
+        </jet-authentication-card>
+         </div>
+        </nrna-layout>
+    
 </template>
 
 <script>

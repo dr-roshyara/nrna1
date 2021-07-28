@@ -1,0 +1,99 @@
+php artisan tinker 
+Use App\Models\Notice;
+$notice = new Notice;
+$notice->title= "First Notice"
+$notice->issued_at ="2021-06-28"
+$notice->description ="";
+$notice->pdf_path ="election_notice_01_20210628"
+$notice->save();
+#
+Use App\Models\Notice;
+$notice = new Notice;
+$notice->title= "Second Notice"
+$notice->issued_at ="2021-07-12"
+$notice->description ="";
+$notice->pdf_path ="election_notice_02_20210712"
+$notice->save();
+#
+Use App\Models\Notice;
+$notice = new Notice;
+$notice->title= "Third Notice"
+$notice->issued_at ="2021-07-16"
+$notice->description ="";
+$notice->pdf_path ="election_notice_03_20210716_01"
+$notice->save();
+#
+#notice 4 
+Use App\Models\Notice;
+$notice = new Notice;
+$notice->title= "Fourth Notice"
+$notice->issued_at ="2021-07-18"
+$notice->description ="";
+$notice->pdf_path ="election_notice_04_20210718"
+$notice->save();
+#
+#notice 5 
+Use App\Models\Notice;
+$notice = new Notice;
+$notice->title= "Fifth Notice"
+$notice->issued_at ="2021-07-19"
+$notice->description ="";
+$notice->pdf_path ="election_notice_05_20210720_02"
+$notice->save();
+#
+#notice 6
+Use App\Models\Notice;
+$notice = new Notice;
+$notice->title= "Sixth Notice"
+$notice->issued_at ="2021-07-20"
+$notice->description ="";
+$notice->pdf_path ="election_notice_06_20210720"
+$notice->save();
+#
+#notice 7
+Use App\Models\Notice;
+$notice = new Notice;
+$notice->title= "Seventh Notice"
+$notice->issued_at ="2021-07-21"
+$notice->description ="";
+$notice->pdf_path ="election_notice_07_20210720"
+$notice->save();
+#
+#
+#notice 8
+Use App\Models\Notice;
+$notice = new Notice;
+$notice->title= "Eighth Notice"
+$notice->issued_at ="2021-07-21"
+$notice->description ="";
+$notice->pdf_path ="election_notice_08_20210722_01"
+$notice->save();
+#
+#
+
+#notice 9
+Use App\Models\Notice;
+$notice = new Notice;
+$notice->title= "Ninth Notice"
+$notice->issued_at ="2021-07-21"
+$notice->description ="";
+$notice->pdf_path ="election_notice_09_20210725_02"
+$notice->save();
+#"
+$notice->save();
+#
+#notice 10
+Use App\Models\Notice;
+$notice = new Notice;
+$notice->title= "Tenth Notice"
+$notice->issued_at ="2021-07-27"
+$notice->description ="";
+$notice->pdf_path ="election_notice_10_20210728_01"
+$notice->save();
+#"
+$notice->save();
+
+
+election_notice_01_20210628
+election_notice_02_20210712
+election_notice_03_20210716_01

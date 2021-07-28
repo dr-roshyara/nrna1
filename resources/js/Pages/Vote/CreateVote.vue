@@ -105,7 +105,7 @@
                   <div id="first_vote_window" 
                     class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">        
                    <div class="flex flex-col text-xl text-gray-900 font-bold">
-                      <label> Please choose one  Candidate as the president. </label> 
+                      <label> Please choose one  Candidate as the Vice-president. </label> 
                       <label class="p-2"> कृपया दुई जना लाई उपाद्यक्ष  चुन्नुहोस । </label>   
                     </div>
                     <!-- candidate part --> 
@@ -190,7 +190,7 @@
                   <div id="first_vote_window"  v-if="this. general_secretarys.length>0" 
                   class="flex flex-col border border-3 border-blue-300 m-2 py-4 px-6">        
                  <div class="flex flex-col text-xl text-gray-900 font-bold">
-                      <label> Please choose one  Candidate as the president. </label> 
+                      <label> Please choose one  Candidate as the General Secretary. </label> 
                       <label class="p-2"> कृपया एक जनालाई महासचिव चुन्नुहोस । </label>   
                     </div>
                     <!-- candidate part --> 
@@ -235,7 +235,7 @@
                   class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-blue-50 shadow-md my-4">   
                       
                     <div class="flex flex-col text-xl font-bold text-gray-900">
-                      <label> Please Choose any two candidates</label> 
+                      <label> Please Choose any two candidates as Secretarys</label> 
                       <label class="p-2"> कृपया दुई जना लाई सचिव छान्नु होस । </label>   
                     </div>
                     <!-- candidate part --> 
@@ -846,10 +846,9 @@
               <div  id="second_vote_window"
                class="flex flex-col border border-2 border-blue-300 m-2 py-4 px-6"> 
                 <div class=" flex flex-col items-center justify-center py-2 mb-2 text-bold text-red-500 text-xl">
-                 <p> कुनै पनि उमेद्बारहरुलाई स्विकार गर्न नचाहने हरुका लागि मात्र </p> 
-                <p>  Option for Rejection</p>
-                <p>
-                      उमेदवारहरु लाई अस्विकार को लागि मतदान । </p> 
+                 <p> !!कुनै पनि उमेद्बारहरुलाई स्विकार गर्न नचाहने हरुका लागि मात्र !!</p> 
+                <p>  !! Attention Please!, This is option only for the Rejection!!</p>
+                <p> !! उमेदवारहरु लाई अस्विकार को लागि मतदान । !!!</p> 
                 </div>
                <div class="px-2 py-2">
                     <input 

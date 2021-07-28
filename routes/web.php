@@ -31,6 +31,22 @@ use Spatie\Permission\Models\Permission;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/storage/images/{filename}', function ($filename)
+{
+    $path = storage_path('images/' . $filename);
+ 
+    if (!File::exists($path)) {
+        abort(404);
+    }
+ 
+    $file = File::get($path);
+    $type = File::mimeType($path);
+ 
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+ 
+    return $response;
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [

@@ -21350,7 +21350,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100"
+  "class": " flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100"
 };
 var _hoisted_2 = {
   "class": "w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg"
@@ -22227,98 +22227,32 @@ var _hoisted_1 = {
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex flex-col sm:flex-col md:flex-row  justify-center p-4 item-center\r\n         bg-blue-600 md: w-full rounded border border-blue-100\"><div class=\"flex flex-start spac-x-4 items-center \"><!-- &lt;div id=&quot;logo&quot; style=&quot;background-image: url(&#39;/logo-2.png&#39;)&quot;&gt; &lt;/div&gt; --><div id=\"logo\" class=\"w-24 h-20\"><a href=\"/\"><img class=\"object-cover\" src=\"/images/logo-2.png\" width=\"200\" height=\"200\"></a></div><!-- &lt;div&gt; &lt;link href=&quot;#&quot;&gt; &lt;img  :src =&quot;image1&quot;  style=&quot;width:100%;&quot; alt=&quot;slogan&quot; /&gt; &lt;/link&gt; &lt;/div&gt;   --><div id=\"slogan\" class=\"ml-4 px-2 w-96\"><a href=\"/\"><img class=\"object-cover\" src=\"/images/slogan.png\"></a></div></div><div class=\"hidden sm:block m-auto text-white font-bold text-xl\"><a href=\"/\"> NRNA GERMANY </a></div><div class=\"w-44 m-auto h-32\"><img class=\"object-cover\" src=\"/images/germanynepal.png\" width=\"200\" height=\"200\"></div></div>", 1);
 
-var _hoisted_3 = {
-  "class": "flex flex-wrap justify-center m-auto space-x-4 py-2 mb-2"
-};
-
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard");
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Voter's List ");
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Member's List ");
-
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" List of Candidates ");
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Candidacy Form ");
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Name of Posts");
-
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" List of Notices");
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": " flex flex-col h-64 py-2 m-auto text-center px-10 w-full"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "w-full text-center text-gray-900 font-bold"
+}, " VOTE HERE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+  src: "/storage/images/ballot.png",
+  width: "200",
+  height: "200"
+})], -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" start  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: "/dashboard",
-    "class": " p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" start  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+    href: "#",
+    "class": "m-auto"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_4];
+      return [_hoisted_3];
     }),
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: "/voters/index",
-    "class": " p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_5];
-    }),
-    _: 1
-    /* STABLE */
-
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: "/users/index",
-    "class": " p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_6];
-    }),
-    _: 1
-    /* STABLE */
-
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: "/candidacies/index",
-    "class": " p-2 mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_7];
-    }),
-    _: 1
-    /* STABLE */
-
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: "/candidacy/create",
-    "class": " p-2 bg-red-50 font-bold text-gray-900 rounded border border-right "
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_8];
-    }),
-    _: 1
-    /* STABLE */
-
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: "/posts/index",
-    "class": " p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_9];
-    }),
-    _: 1
-    /* STABLE */
-
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: "/notices/index",
-    "class": " p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_10];
-    }),
-    _: 1
-    /* STABLE */
-
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end  ")]);
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <inertia-link href=\"/dashboard\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> Dashboard</inertia-link>\r\n                    <inertia-link href=\"/voters/index\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> Voter's List </inertia-link>\r\n                    <inertia-link href=\"/users/index\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> Member's List </inertia-link>\r\n                    <inertia-link href=\"/candidacies/index\" class=\" p-2 mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm\"> List of Candidates </inertia-link>\r\n                    <inertia-link href=\"/candidacy/create\" class=\" p-2 bg-red-50 font-bold text-gray-900 rounded border border-right \"> Candidacy Form </inertia-link>\r\n                    <inertia-link href=\"/posts/index\" class=\" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm\"> Name of Posts</inertia-link>\r\n                     <inertia-link href=\"/notices/index\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> List of Notices</inertia-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end  ")]);
 }
 
 /***/ }),
@@ -24000,57 +23934,121 @@ var _hoisted_2 = {
   "class": " font-medium text-sm text-green-600"
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "text-gray-900 text-xl"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" आदरणिय दिदी बहिनी तथा दाजुभाइहरु,"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" लगइन मा आफ्नो टेलिफोन नम्बर कन्ट्रीकोड सहित"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "text-bold"
-}, " (तर विना '+' र विना '00') "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" लेख्नु होला । उदाहरणको लागि जर्मनीको कन्ट्री कोड (49) सहित तलको लग इन नम्बर हेर्नु हुनेछ। "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "text-bold m-2"
-}, " लगइन: "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 4915164322589 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "text-bold m-2"
-}, " पासवर्ड:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" यो तपाईंहरुले एसएमएस मार्फत पाउनु भएको छ।"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br")], -1
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "px-auto mx-auto py-4 my-4\r\n              text-red-800 font-bold text-2xl text-center"
+}, " सदस्य लगइन ", -1
 /* HOISTED */
 );
 
 var _hoisted_4 = {
+  "class": "text-gray-900 text-lg"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" आदरणिय दिदी बहिनी तथा दाजुभाइहरु,");
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" लगइन मा आफ्नो टेलिफोन नम्बर कन्ट्रीकोड सहित");
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-bold"
+}, " (तर विना '+' र विना '00') ", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)();
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" लेख्नु होला । उदाहरणको लागि जर्मनीको कन्ट्री कोड (49) सहित तलको लग इन नम्बर हेर्नु हुनेछ। ");
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-bold m-2"
+}, " लगइन उदाहरणको लागि: ", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 4915164322589 ");
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-bold m-2"
+}, " पासवर्ड:", -1
+/* HOISTED */
+);
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" यस्को पासवर्ड तपाईंले लिन्क ");
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-900 font-bold text-sm"
+}, " GET YOUR PASSWORD ", -1
+/* HOISTED */
+);
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" मा क्लिक गरेर पाउन सक्नु हुन्छ।");
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_23 = {
   "class": " my-4 text-bold text-gray-900 text-xl "
 };
-var _hoisted_5 = {
+var _hoisted_24 = {
   "class": "my-4"
 };
-var _hoisted_6 = {
+var _hoisted_25 = {
   "class": "block mt-4"
 };
-var _hoisted_7 = {
+var _hoisted_26 = {
   "class": "flex items-center"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2 text-sm text-gray-900"
 }, "Remember me", -1
 /* HOISTED */
 );
 
-var _hoisted_9 = {
-  "class": "flex items-center justify-end mt-4"
+var _hoisted_28 = {
+  "class": "flex items-center justify-end mt-4 "
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Forgot your password? ");
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Get your password here ");
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log in ");
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log in ");
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_validation_errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-validation-errors");
 
+  var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
+
   var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
 
   var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
 
   var _component_jet_checkbox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-checkbox");
-
-  var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
   var _component_jet_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-button");
 
@@ -24060,7 +24058,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_nrna_layout, null, {
     "default": _withId(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_authentication_card, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_authentication_card, {
         "class": "rounded "
       }, {
         "default": _withId(function () {
@@ -24068,11 +24066,20 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
             "class": "pt-1"
           }), $props.status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.status), 1
           /* TEXT */
-          )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next "), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+          )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [_hoisted_5, _hoisted_6, _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16, _hoisted_17, _hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+            href: "http://127.0.0.1:8000/forgot-password"
+          }, {
+            "default": _withId(function () {
+              return [_hoisted_20];
+            }),
+            _: 1
+            /* STABLE */
+
+          }), _hoisted_21, _hoisted_22]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
             onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
               return $options.submit && $options.submit.apply($options, arguments);
             }, ["prevent"]))
-          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" \r\n            <div>\r\n                <jet-label for=\"email\" value=\"Email\" />\r\n                <jet-input id=\"email\" type=\"email\" class=\"mt-1 block w-full\" v-model=\"form.email\" required autofocus />\r\n            </div>\r\n            "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" \r\n                <div>\r\n                    <jet-label for=\"email\" value=\"Email\" />\r\n                    <jet-input id=\"email\" type=\"email\" class=\"mt-1 block w-full\" v-model=\"form.email\" required autofocus />\r\n                </div>\r\n                "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
             "for": "telephone",
             value: "Telephone (टेलिफोन नम्बर)"
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -24088,7 +24095,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
             autofocus: ""
           }, null, 8
           /* PROPS */
-          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
             "for": "password",
             value: "Password"
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -24103,7 +24110,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
             autocomplete: "current-password"
           }, null, 8
           /* PROPS */
-          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
+          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
             name: "remember",
             checked: $data.form.remember,
             "onUpdate:checked": _cache[3] || (_cache[3] = function ($event) {
@@ -24111,13 +24118,13 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
             })
           }, null, 8
           /* PROPS */
-          , ["checked"]), _hoisted_8])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [$props.canResetPassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
+          , ["checked"]), _hoisted_27])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_28, [$props.canResetPassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
             key: 0,
             href: _ctx.route('password.request'),
-            "class": "underline text-sm text-gray-600 hover:text-gray-900"
+            "class": "underline font-bold text-lg text-gray-900 hover:text-gray-900"
           }, {
             "default": _withId(function () {
-              return [_hoisted_10];
+              return [_hoisted_29];
             }),
             _: 1
             /* STABLE */
@@ -24131,7 +24138,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
             disabled: $data.form.processing
           }, {
             "default": _withId(function () {
-              return [_hoisted_11];
+              return [_hoisted_30];
             }),
             _: 1
             /* STABLE */
@@ -24145,7 +24152,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
         _: 1
         /* STABLE */
 
-      })];
+      })])];
     }),
     _: 1
     /* STABLE */
@@ -28272,7 +28279,7 @@ var _hoisted_25 = {
 
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "flex flex-col text-xl text-gray-900 font-bold"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", null, " Please choose one Candidate as the president. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", null, " Please choose one Candidate as the Vice-president. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "p-2"
 }, " कृपया दुई जना लाई उपाद्यक्ष चुन्नुहोस । ")], -1
 /* HOISTED */
@@ -28338,7 +28345,7 @@ var _hoisted_41 = {
 
 var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "flex flex-col text-xl text-gray-900 font-bold"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", null, " Please choose one Candidate as the president. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", null, " Please choose one Candidate as the General Secretary. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "p-2"
 }, " कृपया एक जनालाई महासचिव चुन्नुहोस । ")], -1
 /* HOISTED */
@@ -28371,7 +28378,7 @@ var _hoisted_49 = {
 
 var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "flex flex-col text-xl font-bold text-gray-900"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", null, " Please Choose any two candidates"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", null, " Please Choose any two candidates as Secretarys"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "p-2"
 }, " कृपया दुई जना लाई सचिव छान्नु होस । ")], -1
 /* HOISTED */
@@ -28833,7 +28840,7 @@ var _hoisted_161 = {
 
 var _hoisted_162 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": " flex flex-col items-center justify-center py-2 mb-2 text-bold text-red-500 text-xl"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " कुनै पनि उमेद्बारहरुलाई स्विकार गर्न नचाहने हरुका लागि मात्र "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " Option for Rejection"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " उमेदवारहरु लाई अस्विकार को लागि मतदान । ")], -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " !!कुनै पनि उमेद्बारहरुलाई स्विकार गर्न नचाहने हरुका लागि मात्र !!"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " !! Attention Please!, This is option only for the Rejection!!"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " !! उमेदवारहरु लाई अस्विकार को लागि मतदान । !!!")], -1
 /* HOISTED */
 );
 
@@ -29593,7 +29600,7 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
   "class": "w-1/3 p-4"
 }, "Post"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
   "class": "w-1/3 p-4"
-}, "Candidacy ID"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
+}, "User ID"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
   "class": "w-1/3 p-4"
 }, "Candidacy Name")], -1
 /* HOISTED */
