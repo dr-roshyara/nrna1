@@ -130,3 +130,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('assignements/index', ['AssignmentController::class', 'index'])->name('role.index');
 
 }); //end of Role 
+
+//election result 
+Route::get('vote/thankyou', [VoteController::Class , 'thankyou'])->name('vote.thankyou');

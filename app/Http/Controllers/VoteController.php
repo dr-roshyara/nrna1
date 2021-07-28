@@ -640,6 +640,16 @@ class VoteController extends Controller
             $user->has_voted=1;
             $user->save();
     }
+    //vote thanks 
+    public function thankyou(){
+           return Inertia::render('Thankyou/Thankyou', [
+                //  'vote' =>$vote,
+                //  'name'=>auth()->user()->name,
+                //  'nrna_id'=>auth()->user()->nrna_id,
+                //  'state' =>auth()->user()->state              
+        ]);
+                   
+    }
 
 }//end of the controller 
 /**********************************************************************+************************************ */
