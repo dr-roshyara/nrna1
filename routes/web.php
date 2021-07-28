@@ -33,8 +33,7 @@ use Spatie\Permission\Models\Permission;
 */
 Route::get('/storage/images/{filename}', function ($filename)
 {
-    $path = storage_path('images/' . $filename);
- 
+    $path = storage_path('images/' . $filename); 
     if (!File::exists($path)) {
         abort(404);
     }
@@ -117,7 +116,7 @@ Route::middleware(['auth:sanctum', 'verified']) ->post('/messages', [SmsControll
    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/create', [VoteController::class, 'create'])->name('vote.create'); 
     Route::middleware(['auth:sanctum', 'verified']) ->post('/vote/submit', [VoteController::class, 'first_submission'])->name('vote.submit');
     Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/verify', [VoteController::class, 'verify'])->name('vote.verify');
-    Route::middleware(['auth:sanctum', 'verified']) ->post('/votes', [VoteController::class, 'store'])->name('vote.submit');
+    Route::middleware(['auth:sanctum', 'verified']) ->post('/votes', [VoteController::class, 'store'])->name('vote.store'); 
    
     
    Route::middleware(['auth:sanctum', 'verified']) ->get('/votes/index', [VoteController::class, 'index'])->name('vote.index');
