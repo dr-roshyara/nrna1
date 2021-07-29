@@ -305,3 +305,280 @@ $candi->image_path_1     ="tilicho"
 $candi->image_path_2     ="-"
 $candi->image_path_3     ="-"
 $candi->save()
+#************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2916
+$candi->candidacy_id    ="Nepal_18";
+$candi->candidacy_name  ="Chitwan National Park";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="General Secretary"
+$candi->post_nepali_name  ="माहासचिव"
+
+$candi->Post_id          ="2021_05"
+$candi->image_path_1     ="chitwan"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+#************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2917
+$candi->candidacy_id    ="Nepal_19";
+$candi->candidacy_name  ="Khaptad National Park";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="General Secretary"
+$candi->post_nepali_name  ="माहासचिव"
+
+$candi->Post_id          ="2021_05"
+$candi->image_path_1     ="khaptad"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+#************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2918
+$candi->candidacy_id    ="Nepal_20";
+$candi->candidacy_name  ="Bardiya National Park";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="General Secretary"
+$candi->post_nepali_name  ="माहासचिव"
+
+$candi->Post_id          ="2021_05"
+$candi->image_path_1     ="bardiaya"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+#
+#************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2919
+$candi->candidacy_id    ="Nepal_21";
+$candi->candidacy_name  ="Shivapuri Nagarjun National Park";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="General Secretary"
+$candi->post_nepali_name  ="माहासचिव"
+
+$candi->Post_id          ="2021_05"
+$candi->image_path_1     ="shivapuri"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+#
+
+#secretary 
+#************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2920
+$candi->candidacy_id    ="Nepal_22";
+$candi->candidacy_name  ="Chandragiri Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="General Secretary"
+$candi->post_nepali_name  ="माहासचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="chandragiri"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+#
+#secretary 
+#************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2921
+$candi->candidacy_id    ="Nepal_23";
+$candi->candidacy_name  ="Sarangkot Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Secretary"
+$candi->post_nepali_name  ="सचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="sarangkot"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+
+#************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2922
+$candi->candidacy_id    ="Nepal_24";
+$candi->candidacy_name  ="Pun Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Secretary"
+$candi->post_nepali_name  ="सचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="punhill"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()#
+#************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2922
+$candi->candidacy_id    ="Nepal_24";
+$candi->candidacy_name  ="Pun Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Secretary"
+$candi->post_nepali_name  ="सचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="punhill"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()#
+#************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2923
+$candi->candidacy_id    ="Nepal_25";
+$candi->candidacy_name  ="Bandipur Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Secretary"
+$candi->post_nepali_name  ="सचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="bandipur"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()#
+
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2924
+$candi->candidacy_id    ="Nepal_26";
+$candi->candidacy_name  ="Ilam Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Secretary"
+$candi->post_nepali_name  ="सचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="ilam"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()#
+#
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2925
+$candi->candidacy_id    ="Nepal_27";
+$candi->candidacy_name  ="Chitlang Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Secretary"
+$candi->post_nepali_name  ="सचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="chitlang"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()#
+#
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2926
+$candi->candidacy_id    ="Nepal_28";
+$candi->candidacy_name  ="Nagarkot Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Secretary"
+$candi->post_nepali_name  ="सचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="nagarkot"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()#
+#
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2927
+$candi->candidacy_id    ="Nepal_29";
+$candi->candidacy_name  ="Dulikhel Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Secretary"
+$candi->post_nepali_name  ="सचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="dhulikhel"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()#
+#
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2927
+$candi->candidacy_id    ="Nepal_29";
+$candi->candidacy_name  ="Dulikhel Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Secretary"
+$candi->post_nepali_name  ="सचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="dhulikhel"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()#
+#******************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2927
+$candi->candidacy_id    ="Nepal_29";
+$candi->candidacy_name  ="Dulikhel Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Secretary"
+$candi->post_nepali_name  ="सचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="dhulikhel"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()#

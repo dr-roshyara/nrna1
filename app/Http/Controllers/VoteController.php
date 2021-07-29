@@ -70,7 +70,18 @@ class VoteController extends Controller
         $has_voted      =false;      
         $btemp          = $can_vote_now & !$has_voted;
         $lcc             =auth()->user()->lcc;
-        $lcc             ="Berlin";
+        // $lcc             ="Berlin";
+         if(!$can_vote_now){
+                echo "Your code can not be verified";
+                abort(404);
+            return abort(404);
+        }
+         if($has_voted){
+                 echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
+                You have already voted! Please check your Vote </div>';
+                abort(404);
+                return abort(404);
+             } 
         
      if($btemp){   
         return Inertia::render('Vote/CreateVote', [
@@ -82,17 +93,6 @@ class VoteController extends Controller
                 'user_lcc'=>$lcc
                 
             ]); 
-        }else{
-             if(!$can_vote_now){
-                echo "Your code can not be verified";
-                abort(404);
-
-             }
-             if($has_voted){
-                 echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-                You have already voted! Please check your Vote </div>';
-                abort(404);
-             }
         } 
         //    {name: "Hari Bahadur", photo: "test1.png",  post: ["President", "अद्यक्ष"], id:"hari", checked: false, disabled: false },
   
