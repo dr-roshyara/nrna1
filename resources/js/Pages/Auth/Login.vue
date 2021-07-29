@@ -1,14 +1,14 @@
 <template>
     <nrna-layout>
     <div class="flex flex-col">     
-                   <inertia-link href="https://www.civiciti.com/ww/nrnagermany" class="m-auto" > 
+                   <a href="https://www.civiciti.com/ww/nrnagermany" class="m-auto" > 
                       <div class=" flex flex-col h-64 py-2 m-auto text-center px-10 w-full">
                        <p class="w-full text-center text-gray-900 font-bold"> 
                          VOTE  HERE </p> 
                        <img src="/storage/images/ballot.png" width="200" height="200" />
                     </div> 
 
-            </inertia-link>
+            </a>
          
         <jet-authentication-card class="rounded min-h-screen border-t border-blue-500 mb-2">
             <div class="p-2 text-sm text-blue-600 font-semibold" >

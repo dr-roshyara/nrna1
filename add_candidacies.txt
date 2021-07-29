@@ -84,7 +84,7 @@ Use App\Models\Candidacy;
 $candi =new Candidacy
 $candi->user_id         =2900 
 $candi->candidacy_id    ="DE_TEST_06";
-$candi->candidacy_name  ="Milan Raj Panta";
+$candi->candidacy_name  ="Kathmandu City";
 $candi->proposer_name   ="Bhima Nani Shrestha"
 $candi->proposer_id     ="DE11000011"
 $candi->supporter_name  ="Krishna Prasad Gaire"
@@ -92,7 +92,25 @@ $candi->supporter_id    ="DE08000016"
 $candi->post_name        ="President"
 $candi->post_nepali_name  ="अद्यक्ष"
 $candi->Post_id          ="2021_02"
-$candi->image_path_1     ="-"
+$candi->image_path_1     ="Kathmandu.jpg"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+#
+
+Use App\Models\Candidacy; 
+$candi =new Candidacy
+$candi->user_id         =2901 
+$candi->candidacy_id    ="DE_TEST_07";
+$candi->candidacy_name  ="Pokhara ";
+$candi->proposer_name   ="Bhima Nani Shrestha"
+$candi->proposer_id     ="DE11000011"
+$candi->supporter_name  ="Krishna Prasad Gaire"
+$candi->supporter_id    ="DE08000016"
+$candi->post_name        ="President"
+$candi->post_nepali_name  ="अद्यक्ष"
+$candi->Post_id          ="2021_02"
+$candi->image_path_1     ="pokhara.jpg"
 $candi->image_path_2     ="-"
 $candi->image_path_3     ="-"
 $candi->save()
@@ -101,9 +119,9 @@ $candi->save()
 
 Use App\Models\Candidacy; 
 $candi                  =new Candidacy
-$candi->user_id         =1524 
-$candi->candidacy_id    ="DE10000003";
-$candi->candidacy_name  ="Ninamma Rai";
+$candi->user_id         =2902
+$candi->candidacy_id    ="NEPAL_08";
+$candi->candidacy_name  ="Humla Simikot ";
 $candi->proposer_name   ="Radha Sigdel"
 $candi->proposer_id     ="	DE10000001"
 $candi->supporter_name  ="Dhurba Sharma"
@@ -112,27 +130,63 @@ $candi->post_name        ="President"
 $candi->post_nepali_name  ="अद्यक्ष"
 
 $candi->Post_id          ="2021_02"
-$candi->image_path_1     ="-"
+$candi->image_path_1     ="simikot"
 $candi->image_path_2     ="-"
 $candi->image_path_3     ="-"
 $candi->save()
 
 #
-#vice president 
 Use App\Models\Candidacy; 
-$candi =new Candidacy
-$candi->user_id         =2761 
-$candi->candidacy_id    ="DE07000072";
-$candi->candidacy_name  ="Tulsi Man Shrestha";
-$candi->proposer_name   ="Samir Shrestha"
-$candi->proposer_id     ="DE07000009"
-$candi->supporter_name  ="Padam Sundar Shrestha"
-$candi->supporter_id    ="DE06000101"
+$candi                  =new Candidacy
+$candi->user_id         =2905
+$candi->candidacy_id    ="NEPAL_09";
+$candi->candidacy_name  ="Janakpur City ";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="	DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="President"
+$candi->post_nepali_name  ="अद्यक्ष"
+
+$candi->Post_id          ="2021_02"
+$candi->image_path_1     ="janakpur"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+
+#
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2904
+$candi->candidacy_id    ="Nepal_10";
+$candi->candidacy_name  ="Palpa  - City";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
 $candi->post_name        ="Vice President"
 $candi->post_nepali_name  ="उपाद्यक्ष"
-#
+
 $candi->Post_id          ="2021_03"
-$candi->image_path_1     ="-"
+$candi->image_path_1     ="palpa"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+# here next 
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2904
+$candi->candidacy_id    ="Nepal_10";
+$candi->candidacy_name  ="Palpa  - City";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Vice President"
+$candi->post_nepali_name  ="उपाद्यक्ष"
+
+$candi->Post_id          ="2021_03"
+$candi->image_path_1     ="palpa"
 $candi->image_path_2     ="-"
 $candi->image_path_3     ="-"
 $candi->save()
