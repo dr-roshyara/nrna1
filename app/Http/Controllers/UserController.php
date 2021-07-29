@@ -89,7 +89,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $startName  ="csv_files/final_nrna_member_20210726_1715_1.csv";
+        $startName  ="csv_files/candidates_as_user.csv";
         //var_dump($startName);
         //return 0;
         $csvName  =storage_path($startName); 

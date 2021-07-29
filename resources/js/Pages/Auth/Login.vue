@@ -1,8 +1,8 @@
 <template>
     <nrna-layout>
-    <div>     
+    <div class="">     
         
-        <jet-authentication-card class="rounded ">
+        <jet-authentication-card class="rounded min-h-screen">
             
             <div class="mb-1">
                 <jet-validation-errors class="pt-1" />

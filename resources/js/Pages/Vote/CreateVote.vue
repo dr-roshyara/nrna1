@@ -32,8 +32,9 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
+                            :candidacy_image_path ="icc_member.image_path_1"
                             :post_name          ="icc_member.post_name"   
-                            :post_nepali_name   ="icc_member.post_nepali_name"  
+                            post_nepali_name   ="आइसीसी सदस्यको उमेदवार"  
                             :candidacy_name     ="icc_member.candidacy_name">
                             </show-candidate>              
                                       <!-- here starts -->
