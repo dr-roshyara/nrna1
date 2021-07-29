@@ -67,20 +67,21 @@ class VoteController extends Controller
         // dd(auth()->user());
         $can_vote_now   =auth()->user()->can_vote_now;
         $has_voted      = auth()->user()->has_voted;  
-        $has_voted      =false;      
-        $btemp          = $can_vote_now & !$has_voted;
+        // $has_voted      =false;      
+        $btemp          = $can_vote_now && !$has_voted;
         $lcc             =auth()->user()->lcc;
         // $lcc             ="Berlin";
+        dd($btemp);
          if(!$can_vote_now){
                 echo "Your code can not be verified";
                 abort(404);
-            return abort(404);
+            return (404);
         }
          if($has_voted){
                  echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
                 You have already voted! Please check your Vote </div>';
                 abort(404);
-                return abort(404);
+               return (404);
              } 
         
      if($btemp){   
@@ -90,9 +91,11 @@ class VoteController extends Controller
                 "candidacies" =>$candidacies,
                 'user_name'=>auth()->user()->name,
                 'user_id'=>auth()->user()->id,
-                'user_lcc'=>$lcc
+                'user_lcc'=>$lcc 
                 
             ]); 
+        }else{
+            return redirect()->route('vote.show');
         } 
         //    {name: "Hari Bahadur", photo: "test1.png",  post: ["President", "अद्यक्ष"], id:"hari", checked: false, disabled: false },
   
