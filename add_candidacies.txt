@@ -1,0 +1,120 @@
+
+#milan raj panta 
+#$candi->created_at      ="2021-07-27 10:34:02"
+#$candi->updated_at      ="2021-07-27 10:34:02"
+#icc 
+# Shankar Dangi 
+
+Use App\Models\Candidacy; 
+$candi =new Candidacy
+$candi->user_id         =2012 
+$candi->candidacy_id    ="DE10000059";
+$candi->candidacy_name  ="Shankar Dangi";
+$candi->proposer_name   ="Hari Aryal"
+$candi->proposer_id     ="DE10000216"
+$candi->supporter_name  ="Rabindra Karki"
+$candi->supporter_id    ="DE10000218"
+$candi->post_name        ="ICC Member"
+$candi->post_nepali_name  ="आइसीसी सदस्य"
+$candi->Post_id          ="2021_01"
+$candi->image_path_1     ="-"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+#
+Use App\Models\Candidacy; 
+$candi =new Candidacy
+$candi->user_id         =1531 
+$candi->candidacy_id    ="DE08000035";
+$candi->candidacy_name  ="Milan Raj Panta";
+$candi->proposer_name   ="Bhima Nani Shrestha"
+$candi->proposer_id     ="DE11000011"
+$candi->supporter_name  ="Krishna Prasad Gaire"
+$candi->supporter_id    ="DE08000016"
+$candi->post_name        ="President"
+$candi->post_nepali_name  ="अद्यक्ष"
+$candi->Post_id          ="2021_02"
+$candi->image_path_1     ="-"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+
+# Ninamma Rai 
+
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         =1524 
+$candi->candidacy_id    ="DE10000003";
+$candi->candidacy_name  ="Ninamma Rai";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="	DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="President"
+$candi->post_nepali_name  ="अद्यक्ष"
+
+$candi->Post_id          ="2021_02"
+$candi->image_path_1     ="-"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+
+#
+#vice president 
+Use App\Models\Candidacy; 
+$candi =new Candidacy
+$candi->user_id         =2761 
+$candi->candidacy_id    ="DE07000072";
+$candi->candidacy_name  ="Tulsi Man Shrestha";
+$candi->proposer_name   ="Samir Shrestha"
+$candi->proposer_id     ="DE07000009"
+$candi->supporter_name  ="Padam Sundar Shrestha"
+$candi->supporter_id    ="DE06000101"
+$candi->post_name        ="Vice President"
+$candi->post_nepali_name  ="उपाद्यक्ष"
+#
+$candi->Post_id          ="2021_03"
+$candi->image_path_1     ="-"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+#
+#vice president 2
+Use App\Models\Candidacy; 
+$candi =new Candidacy
+$candi->user_id         = 1596 
+$candi->candidacy_id    ="DE06000003";
+$candi->candidacy_name  ="Arjun Oli";
+$candi->proposer_name   ="Bijay Bikram shahi"
+$candi->proposer_id     ="-"
+$candi->supporter_name  ="Narendra shrestha"
+$candi->supporter_id    ="-"
+$candi->post_name        ="Vice President"
+$candi->post_nepali_name  ="उपाद्यक्ष"
+#
+$candi->Post_id          ="2021_03"
+$candi->image_path_1     ="-"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+# vice president -3
+Use App\Models\Candidacy; 
+$candi =new Candidacy
+$candi->user_id         = 2625 
+$candi->candidacy_id    ="DE07000017";
+$candi->candidacy_name  ="Lok Mani Dhakal";
+$candi->proposer_name   ="Bijay Bikram shahi"
+$candi->proposer_id     ="-"
+$candi->supporter_name  ="Narendra shrestha"
+$candi->supporter_id    ="-"
+$candi->post_name        ="Vice President"
+$candi->post_nepali_name  ="उपाद्यक्ष"
+#
+$candi->Post_id          ="2021_03"
+$candi->image_path_1     ="-"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+
+
+

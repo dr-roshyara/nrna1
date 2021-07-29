@@ -38,10 +38,10 @@
             यस्को पासवर्ड तपाईंले लिन्क <br/>  
              <inertia-link href="http://127.0.0.1:8000/forgot-password">
             <span class="text-gray-900 font-bold text-sm">  GET YOUR PASSWORD </span> </inertia-link> मा क्लिक गरेर पाउन सक्नु  हुन्छ।<br> 
-            </div>    
+            </div>     
             <!-- next -->
             <form @submit.prevent="submit" class="mb-4">
-                <!-- 
+                <!--  
                 <div>
                     <jet-label for="email" value="Email" />
                     <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
