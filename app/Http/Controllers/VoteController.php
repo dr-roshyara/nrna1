@@ -67,11 +67,11 @@ class VoteController extends Controller
         // dd(auth()->user());
         $can_vote_now   =auth()->user()->can_vote_now;
         $has_voted      = auth()->user()->has_voted;  
-        // $has_voted      =false;      
+        // $has_voted      =false;       
         $btemp          = $can_vote_now && !$has_voted;
         $lcc             =auth()->user()->lcc;
         // $lcc             ="Berlin";
-        dd($btemp);
+        // dd($btemp);
          if(!$can_vote_now){
                 echo "Your code can not be verified";
                 abort(404);
