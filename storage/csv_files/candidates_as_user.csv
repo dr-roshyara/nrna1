@@ -1,11 +1,11 @@
-name_prefex;first_name;middle_name;last_name;gender;country;password;city;state;email;telephone;nrna_id;additional_address
-;Mt.;Everest ;Sagarmatha;Male;germany;12345678;Munster;Nordrhein-Westfalen;test1@test1.de;1231;DE_TEST_01;Von der tinnen str 32
-;Mt.;;Kanchenjunga;Male;germany;12345678;Frankfurt;Hessen;test2@test2.de;1232;DE_TEST_02;
-;;;Machhapuchhre ;Male;germany;12345678;Munich;Bayern;test3@test3.de;1233;DE_TEST_03;
-;Api;;Mountain;Male;germany;12345678;Munich;Bayern;test4@test4.de;1234;DE_TEST_04;
-;Mt.;;Kailash;Male;germany;12345678;Frankfurt;Hessen;test5@test5.de;1235;DE_TEST_05;
-;Kathmandu;;City;Male;germany;12345678;Frankfurt;Hessen;test1@test.de;1236;DE_TEST_06;
-;Pokhara;;City;Male;germany;12345678;Frankfurt;Hessen;test2@test.de;1237;DE_TEST_07;
-;Humla;;City;Male;germany;12345678;Frankfurt;Hessen;test3@test.de;1238;DE_TEST_08;
-;Jomsom;;City;Male;germany;12345678;Frankfurt;Hessen;test3@test.de;1238;DE_TEST_08;
-;palpa;;City;Male;germany;12345678;Frankfurt;Hessen;test4@test.de;1239;DE_TEST_09;
+name_prefex;first_name;middle_name;last_name;gender;country;password;city;state;lcc;email;telephone;nrna_id;additional_address
+;Mt.;Everest ;Sagarmatha;Male;germany;12345678;Munster;Nordrhein-Westfalen;NRW;test1@test1.de;1231;DE_TEST_01;Von der tinnen str 32
+;Mt.;;Kanchenjunga;Male;germany;12345678;Frankfurt;Hessen;Hessen;test2@test2.de;1232;DE_TEST_02;
+;;;Machhapuchhre ;Male;germany;12345678;Munich;Bayern;Bayern;test3@test3.de;1233;DE_TEST_03;
+;Api;;Mountain;Male;germany;12345678;Munich;Bayern;Bayern;test4@test4.de;1234;DE_TEST_04;
+;Mt.;;Kailash;Male;germany;12345678;Frankfurt;Hessen;Hessen;test5@test5.de;1235;DE_TEST_05;
+;Kathmandu;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test1@test.de;1236;DE_TEST_06;
+;Pokhara;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test2@test.de;1237;DE_TEST_07;
+;Humla;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test3@test.de;1238;DE_TEST_08;
+;Jomsom;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test4@test.de;1239;DE_TEST_09;
+;palpa;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test5@test.de;12310;DE_TEST_010;
