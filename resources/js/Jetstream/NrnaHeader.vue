@@ -19,14 +19,14 @@
              <div class="w-44 m-auto h-32">
                <img class="object-cover" src="/images/germanynepal.png" width="200" height="200"/>
             </div> 
-        </div>
+        </div> 
          <!-- start  -->
             <!--        <inertia-link href="#" class="m-auto" > 
                       <div class=" flex flex-col h-64 py-2 m-auto text-center px-10 w-full">
                        <p class="w-full text-center text-gray-900 font-bold"> 
                          VOTE  HERE </p> 
                        <img src="/storage/images/ballot.png" width="200" height="200" />
-                    </div> 
+                    </div>  
 
             </inertia-link>-->
                     <!-- <inertia-link href="/dashboard" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> Dashboard</inertia-link>

@@ -1,7 +1,7 @@
 <template>
     <nrna-layout>
     <div class="flex flex-col">     
-                   <inertia-link href="#" class="m-auto" > 
+                   <inertia-link href="https://www.civiciti.com/ww/nrnagermany" class="m-auto" > 
                       <div class=" flex flex-col h-64 py-2 m-auto text-center px-10 w-full">
                        <p class="w-full text-center text-gray-900 font-bold"> 
                          VOTE  HERE </p> 
@@ -26,7 +26,7 @@
              <p class="px-auto mx-auto py-4 my-4
               text-red-800 font-bold text-2xl text-center"> 
                  सदस्य लगइन  </p>
-            <!-- next -->
+            <!-- next --> 
             
             <div class="text-gray-900 " > 
             आदरणिय दिदी बहिनी तथा दाजुभाइहरु,<br> 
