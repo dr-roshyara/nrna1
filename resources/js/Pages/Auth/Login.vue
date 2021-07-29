@@ -1,10 +1,23 @@
 <template>
     <nrna-layout>
-    <div class="">     
-        
-        <jet-authentication-card class="rounded min-h-screen">
-            
-            <div class="mb-1">
+    <div class="flex flex-col">     
+                   <inertia-link href="#" class="m-auto" > 
+                      <div class=" flex flex-col h-64 py-2 m-auto text-center px-10 w-full">
+                       <p class="w-full text-center text-gray-900 font-bold"> 
+                         VOTE  HERE </p> 
+                       <img src="/storage/images/ballot.png" width="200" height="200" />
+                    </div> 
+
+            </inertia-link>
+         
+        <jet-authentication-card class="rounded min-h-screen border-t border-blue-500 mb-2">
+            <div class="p-2 text-sm text-blue-600 font-semibold" >
+                <p class="py-2">यहाँको नाम एनआरएनए को भोटिङ लिस्टमा परेन ? केही छैन, यहाँले तलको पेजमा लगइन गरेर भोट हाल्न सक्नु हुन्छ। 
+                 </p>
+                 <p class="py-2"> You are not included in the voter list? Don't worry, you can follow the instruction below to login and vote there.</p> 
+            </div>
+
+            <div class="mb-1"> 
                 <jet-validation-errors class="pt-1" />
                 <div v-if="status" class=" font-medium text-sm text-green-600">
                 {{ status }}
@@ -14,7 +27,8 @@
               text-red-800 font-bold text-2xl text-center"> 
                  सदस्य लगइन  </p>
             <!-- next -->
-            <div class="text-gray-900 text-lg" > 
+            
+            <div class="text-gray-900 " > 
             आदरणिय दिदी बहिनी तथा दाजुभाइहरु,<br> 
             लगइन मा आफ्नो टेलिफोन नम्बर कन्ट्रीकोड सहित<br> 
             <span class="text-bold"> (तर विना '+' र विना '00') </span> <br> 
@@ -26,7 +40,7 @@
             <span class="text-gray-900 font-bold text-sm">  GET YOUR PASSWORD </span> </inertia-link> मा क्लिक गरेर पाउन सक्नु  हुन्छ।<br> 
             </div>    
             <!-- next -->
-            <form @submit.prevent="submit">
+            <form @submit.prevent="submit" class="mb-4">
                 <!-- 
                 <div>
                     <jet-label for="email" value="Email" />

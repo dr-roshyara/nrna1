@@ -21,14 +21,14 @@
             </div> 
         </div>
          <!-- start  -->
-                    <inertia-link href="#" class="m-auto" > 
+            <!--        <inertia-link href="#" class="m-auto" > 
                       <div class=" flex flex-col h-64 py-2 m-auto text-center px-10 w-full">
                        <p class="w-full text-center text-gray-900 font-bold"> 
                          VOTE  HERE </p> 
                        <img src="/storage/images/ballot.png" width="200" height="200" />
                     </div> 
 
-            </inertia-link>
+            </inertia-link>-->
                     <!-- <inertia-link href="/dashboard" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> Dashboard</inertia-link>
                     <inertia-link href="/voters/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> Voter's List </inertia-link>
                     <inertia-link href="/users/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> Member's List </inertia-link>

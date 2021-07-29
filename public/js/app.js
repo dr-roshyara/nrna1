@@ -22262,32 +22262,8 @@ var _hoisted_1 = {
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex flex-col sm:flex-col md:flex-row  justify-center p-4 item-center\r\n         bg-blue-600 md: w-full rounded border border-blue-100\"><div class=\"flex flex-start spac-x-4 items-center \"><!-- &lt;div id=&quot;logo&quot; style=&quot;background-image: url(&#39;/logo-2.png&#39;)&quot;&gt; &lt;/div&gt; --><div id=\"logo\" class=\"w-24 h-20\"><a href=\"/\"><img class=\"object-cover\" src=\"/images/logo-2.png\" width=\"200\" height=\"200\"></a></div><!-- &lt;div&gt; &lt;link href=&quot;#&quot;&gt; &lt;img  :src =&quot;image1&quot;  style=&quot;width:100%;&quot; alt=&quot;slogan&quot; /&gt; &lt;/link&gt; &lt;/div&gt;   --><div id=\"slogan\" class=\"ml-4 px-2 w-96\"><a href=\"/\"><img class=\"object-cover\" src=\"/images/slogan.png\"></a></div></div><div class=\"hidden sm:block m-auto text-white font-bold text-xl\"><a href=\"/\"> NRNA GERMANY </a></div><div class=\"w-44 m-auto h-32\"><img class=\"object-cover\" src=\"/images/germanynepal.png\" width=\"200\" height=\"200\"></div></div>", 1);
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": " flex flex-col h-64 py-2 m-auto text-center px-10 w-full"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
-  "class": "w-full text-center text-gray-900 font-bold"
-}, " VOTE HERE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
-  src: "/storage/images/ballot.png",
-  width: "200",
-  height: "200"
-})], -1
-/* HOISTED */
-);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" start  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
-    href: "#",
-    "class": "m-auto"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3];
-    }),
-    _: 1
-    /* STABLE */
-
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <inertia-link href=\"/dashboard\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> Dashboard</inertia-link>\r\n                    <inertia-link href=\"/voters/index\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> Voter's List </inertia-link>\r\n                    <inertia-link href=\"/users/index\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> Member's List </inertia-link>\r\n                    <inertia-link href=\"/candidacies/index\" class=\" p-2 mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm\"> List of Candidates </inertia-link>\r\n                    <inertia-link href=\"/candidacy/create\" class=\" p-2 bg-red-50 font-bold text-gray-900 rounded border border-right \"> Candidacy Form </inertia-link>\r\n                    <inertia-link href=\"/posts/index\" class=\" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm\"> Name of Posts</inertia-link>\r\n                     <inertia-link href=\"/notices/index\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> List of Notices</inertia-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end  ")]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" start  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <inertia-link href=\"#\" class=\"m-auto\" > \r\n                      <div class=\" flex flex-col h-64 py-2 m-auto text-center px-10 w-full\">\r\n                       <p class=\"w-full text-center text-gray-900 font-bold\"> \r\n                         VOTE  HERE </p> \r\n                       <img src=\"/storage/images/ballot.png\" width=\"200\" height=\"200\" />\r\n                    </div> \r\n\r\n            </inertia-link>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <inertia-link href=\"/dashboard\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> Dashboard</inertia-link>\r\n                    <inertia-link href=\"/voters/index\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> Voter's List </inertia-link>\r\n                    <inertia-link href=\"/users/index\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> Member's List </inertia-link>\r\n                    <inertia-link href=\"/candidacies/index\" class=\" p-2 mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm\"> List of Candidates </inertia-link>\r\n                    <inertia-link href=\"/candidacy/create\" class=\" p-2 bg-red-50 font-bold text-gray-900 rounded border border-right \"> Candidacy Form </inertia-link>\r\n                    <inertia-link href=\"/posts/index\" class=\" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm\"> Name of Posts</inertia-link>\r\n                     <inertia-link href=\"/notices/index\" class=\" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm\"> List of Notices</inertia-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end  ")]);
 }
 
 /***/ }),
@@ -23962,125 +23938,148 @@ var _withId = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.withScopeId)("dat
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-a2ac2cea");
 
 var _hoisted_1 = {
-  "class": ""
+  "class": "flex flex-col"
 };
-var _hoisted_2 = {
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": " flex flex-col h-64 py-2 m-auto text-center px-10 w-full"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "w-full text-center text-gray-900 font-bold"
+}, " VOTE HERE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+  src: "/storage/images/ballot.png",
+  width: "200",
+  height: "200"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "p-2 text-sm text-blue-600 font-semibold"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "py-2"
+}, "यहाँको नाम एनआरएनए को भोटिङ लिस्टमा परेन ? केही छैन, यहाँले तलको पेजमा लगइन गरेर भोट हाल्न सक्नु हुन्छ। "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "py-2"
+}, " You are not included in the voter list? Don't worry, you can follow the instruction below to login and vote there.")], -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
   "class": "mb-1"
 };
-var _hoisted_3 = {
+var _hoisted_5 = {
   key: 0,
   "class": " font-medium text-sm text-green-600"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "px-auto mx-auto py-4 my-4\r\n              text-red-800 font-bold text-2xl text-center"
 }, " सदस्य लगइन ", -1
 /* HOISTED */
 );
 
-var _hoisted_5 = {
-  "class": "text-gray-900 text-lg"
+var _hoisted_7 = {
+  "class": "text-gray-900 "
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" आदरणिय दिदी बहिनी तथा दाजुभाइहरु,");
-
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" लगइन मा आफ्नो टेलिफोन नम्बर कन्ट्रीकोड सहित");
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" आदरणिय दिदी बहिनी तथा दाजुभाइहरु,");
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" लगइन मा आफ्नो टेलिफोन नम्बर कन्ट्रीकोड सहित");
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-bold"
 }, " (तर विना '+' र विना '00') ", -1
 /* HOISTED */
 );
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)();
-
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" लेख्नु होला । उदाहरणको लागि जर्मनीको कन्ट्री कोड (49) सहित तलको लग इन नम्बर हेर्नु हुनेछ। ");
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)();
 
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" लेख्नु होला । उदाहरणको लागि जर्मनीको कन्ट्री कोड (49) सहित तलको लग इन नम्बर हेर्नु हुनेछ। ");
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-bold m-2"
 }, " लगइन उदाहरणको लागि: ", -1
 /* HOISTED */
 );
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 4915164322589 ");
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 4915164322589 ");
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-bold m-2"
 }, " पासवर्ड:", -1
 /* HOISTED */
 );
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" यस्को पासवर्ड तपाईंले लिन्क ");
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" यस्को पासवर्ड तपाईंले लिन्क ");
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-gray-900 font-bold text-sm"
 }, " GET YOUR PASSWORD ", -1
 /* HOISTED */
 );
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" मा क्लिक गरेर पाउन सक्नु हुन्छ।");
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" मा क्लिक गरेर पाउन सक्नु हुन्छ।");
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_24 = {
+var _hoisted_26 = {
   "class": " my-4 text-bold text-gray-900 text-xl "
 };
-var _hoisted_25 = {
+var _hoisted_27 = {
   "class": "my-4"
 };
-var _hoisted_26 = {
+var _hoisted_28 = {
   "class": "block mt-4"
 };
-var _hoisted_27 = {
+var _hoisted_29 = {
   "class": "flex items-center"
 };
 
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2 text-sm text-gray-900"
 }, "Remember me", -1
 /* HOISTED */
 );
 
-var _hoisted_29 = {
+var _hoisted_31 = {
   "class": "flex items-center justify-end mt-4 "
 };
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Get your password here ");
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Get your password here ");
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log in ");
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Log in ");
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
 
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_jet_validation_errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-validation-errors");
-
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
+
+  var _component_jet_validation_errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-validation-errors");
 
   var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
 
@@ -24096,28 +24095,39 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_nrna_layout, null, {
     "default": _withId(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_authentication_card, {
-        "class": "rounded min-h-screen"
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+        href: "#",
+        "class": "m-auto"
       }, {
         "default": _withId(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_validation_errors, {
+          return [_hoisted_2];
+        }),
+        _: 1
+        /* STABLE */
+
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_authentication_card, {
+        "class": "rounded min-h-screen border-t border-blue-500 mb-2"
+      }, {
+        "default": _withId(function () {
+          return [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_validation_errors, {
             "class": "pt-1"
-          }), $props.status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.status), 1
+          }), $props.status ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.status), 1
           /* TEXT */
-          )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16, _hoisted_17, _hoisted_18, _hoisted_19, _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+          )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [_hoisted_8, _hoisted_9, _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16, _hoisted_17, _hoisted_18, _hoisted_19, _hoisted_20, _hoisted_21, _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
             href: "http://127.0.0.1:8000/forgot-password"
           }, {
             "default": _withId(function () {
-              return [_hoisted_21];
+              return [_hoisted_23];
             }),
             _: 1
             /* STABLE */
 
-          }), _hoisted_22, _hoisted_23]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+          }), _hoisted_24, _hoisted_25]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
             onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
               return $options.submit && $options.submit.apply($options, arguments);
-            }, ["prevent"]))
-          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" \r\n                <div>\r\n                    <jet-label for=\"email\" value=\"Email\" />\r\n                    <jet-input id=\"email\" type=\"email\" class=\"mt-1 block w-full\" v-model=\"form.email\" required autofocus />\r\n                </div>\r\n                "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+            }, ["prevent"])),
+            "class": "mb-4"
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" \r\n                <div>\r\n                    <jet-label for=\"email\" value=\"Email\" />\r\n                    <jet-input id=\"email\" type=\"email\" class=\"mt-1 block w-full\" v-model=\"form.email\" required autofocus />\r\n                </div>\r\n                "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
             "for": "telephone",
             value: "Telephone (टेलिफोन नम्बर)"
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -24133,7 +24143,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
             autofocus: ""
           }, null, 8
           /* PROPS */
-          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("next "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
             "for": "password",
             value: "Password"
           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
@@ -24148,7 +24158,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
             autocomplete: "current-password"
           }, null, 8
           /* PROPS */
-          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
+          , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_checkbox, {
             name: "remember",
             checked: $data.form.remember,
             "onUpdate:checked": _cache[3] || (_cache[3] = function ($event) {
@@ -24156,13 +24166,13 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
             })
           }, null, 8
           /* PROPS */
-          , ["checked"]), _hoisted_28])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_29, [$props.canResetPassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
+          , ["checked"]), _hoisted_30])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_31, [$props.canResetPassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_inertia_link, {
             key: 0,
             href: _ctx.route('password.request'),
             "class": "underline font-bold text-lg text-gray-900 hover:text-gray-900"
           }, {
             "default": _withId(function () {
-              return [_hoisted_30];
+              return [_hoisted_32];
             }),
             _: 1
             /* STABLE */
@@ -24176,7 +24186,7 @@ var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data,
             disabled: $data.form.processing
           }, {
             "default": _withId(function () {
-              return [_hoisted_31];
+              return [_hoisted_33];
             }),
             _: 1
             /* STABLE */
