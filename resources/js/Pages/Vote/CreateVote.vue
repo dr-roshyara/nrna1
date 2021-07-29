@@ -116,7 +116,7 @@
                             border border-gray-100 rounded"> 
                             <show-candidate 
                             :post_name          ="vice_president.post_name"   
-                            :post_nepali_name   ="उपाद्यक्ष"  
+                            post_nepali_name   ="उपाद्यक्ष"  
                             :candidacy_name     ="vice_president.candidacy_name">
                             </show-candidate>              
                             <!-- checkobx -->
