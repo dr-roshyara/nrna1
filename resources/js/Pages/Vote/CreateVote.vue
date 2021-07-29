@@ -34,7 +34,7 @@
                             <show-candidate 
                             :candidacy_image_path ="icc_member.image_path_1"
                             :post_name          ="icc_member.post_name"   
-                            post_nepali_name   ="आइसीसी सदस्यको उमेदवार"  
+                            post_nepali_name   ="आइसीसी सदस्य"  
                             :candidacy_name     ="icc_member.candidacy_name">
                             </show-candidate>              
                                       <!-- here starts -->
@@ -75,7 +75,7 @@
                             border border-gray-100 rounded"> 
                             <show-candidate 
                             :post_name          ="president.post_name"   
-                            :post_nepali_name   ="president.post_nepali_name"  
+                              post_nepali_name   ="अध्यक्ष"  
                             :candidacy_name     ="president.candidacy_name">
                             </show-candidate>              
                             <!-- checkobx -->
@@ -116,7 +116,7 @@
                             border border-gray-100 rounded"> 
                             <show-candidate 
                             :post_name          ="vice_president.post_name"   
-                            :post_nepali_name   ="vice_president.post_nepali_name"  
+                            :post_nepali_name   ="उपाद्यक्ष"  
                             :candidacy_name     ="vice_president.candidacy_name">
                             </show-candidate>              
                             <!-- checkobx -->
@@ -159,7 +159,7 @@
                             border border-gray-100 rounded"> 
                             <show-candidate 
                             :post_name          ="wvp.post_name"   
-                            :post_nepali_name   ="wvp.post_nepali_name"  
+                            post_nepali_name   ="महिला उपाद्यक्ष "  
                             :candidacy_name     ="wvp.candidacy_name">
                             </show-candidate>              
                             <!-- checkobx --> 
@@ -201,7 +201,7 @@
                             border border-gray-100 rounded"> 
                             <show-candidate 
                             :post_name          ="general_secretary.post_name"   
-                            :post_nepali_name   ="general_secretary.post_nepali_name"  
+                            post_nepali_name   ="महासचिव"  
                             :candidacy_name     ="general_secretary.candidacy_name">
                             </show-candidate>              
                             <!-- checkobx -->
@@ -246,7 +246,7 @@
                             border border-gray-100 rounded"> 
                             <show-candidate 
                             :post_name          ="secretary.post_name"   
-                            :post_nepali_name   ="secretary.post_nepali_name"  
+                            post_nepali_name   ="सचिव"  
                             :candidacy_name     ="secretary.candidacy_name">
                             </show-candidate>              
                             <!-- checkobx --> 
@@ -291,7 +291,7 @@
                             border border-gray-100 rounded"> 
                             <show-candidate 
                             :post_name          ="treasure.post_name"   
-                            :post_nepali_name   ="treasure.post_nepali_name"  
+                            post_nepali_name   ="कोषाद्यक्ष"  
                             :candidacy_name     ="treasure.candidacy_name">
                             </show-candidate>              
                             <!-- checkobx --> 
@@ -333,7 +333,7 @@
                             border border-gray-100 rounded"> 
                             <show-candidate 
                             :post_name          ="w_coordinator.post_name"   
-                            :post_nepali_name   ="w_coordinator.post_nepali_name"  
+                            post_nepali_name   ="महिला कोर्डिनेटर"  
                             :candidacy_name     ="w_coordinator.candidacy_name">
                             </show-candidate>              
                             <!-- checkobx --> 

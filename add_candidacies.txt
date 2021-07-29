@@ -173,11 +173,12 @@ $candi->image_path_2     ="-"
 $candi->image_path_3     ="-"
 $candi->save()
 # here next 
+#**************************************************
 Use App\Models\Candidacy; 
 $candi                  =new Candidacy
-$candi->user_id         = 2904
-$candi->candidacy_id    ="Nepal_10";
-$candi->candidacy_name  ="Palpa  - City";
+$candi->user_id         = 2909
+$candi->candidacy_id    ="Nepal_11";
+$candi->candidacy_name  ="Dharan - City";
 $candi->proposer_name   ="Radha Sigdel"
 $candi->proposer_id     ="DE10000001"
 $candi->supporter_name  ="Dhurba Sharma"
@@ -186,47 +187,121 @@ $candi->post_name        ="Vice President"
 $candi->post_nepali_name  ="उपाद्यक्ष"
 
 $candi->Post_id          ="2021_03"
-$candi->image_path_1     ="palpa"
+$candi->image_path_1     ="dharan"
 $candi->image_path_2     ="-"
 $candi->image_path_3     ="-"
 $candi->save()
 #
-#vice president 2
+# here next 
+#**************************************************
 Use App\Models\Candidacy; 
-$candi =new Candidacy
-$candi->user_id         = 1596 
-$candi->candidacy_id    ="DE06000003";
-$candi->candidacy_name  ="Arjun Oli";
-$candi->proposer_name   ="Bijay Bikram shahi"
-$candi->proposer_id     ="-"
-$candi->supporter_name  ="Narendra shrestha"
-$candi->supporter_id    ="-"
+$candi                  =new Candidacy
+$candi->user_id         = 2910
+$candi->candidacy_id    ="Nepal_12";
+$candi->candidacy_name  ="Dadeldhura City";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
 $candi->post_name        ="Vice President"
 $candi->post_nepali_name  ="उपाद्यक्ष"
-#
+
 $candi->Post_id          ="2021_03"
-$candi->image_path_1     ="-"
+$candi->image_path_1     ="dadeldhura"
 $candi->image_path_2     ="-"
 $candi->image_path_3     ="-"
 $candi->save()
-# vice president -3
+#
+#**************************************************
 Use App\Models\Candidacy; 
-$candi =new Candidacy
-$candi->user_id         = 2625 
-$candi->candidacy_id    ="DE07000017";
-$candi->candidacy_name  ="Lok Mani Dhakal";
-$candi->proposer_name   ="Bijay Bikram shahi"
-$candi->proposer_id     ="-"
-$candi->supporter_name  ="Narendra shrestha"
-$candi->supporter_id    ="-"
+$candi                  =new Candidacy
+$candi->user_id         = 2911
+$candi->candidacy_id    ="Nepal_13";
+$candi->candidacy_name  ="Bhaktapur City";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
 $candi->post_name        ="Vice President"
 $candi->post_nepali_name  ="उपाद्यक्ष"
-#
+
 $candi->Post_id          ="2021_03"
-$candi->image_path_1     ="-"
+$candi->image_path_1     ="bhaktapur"
 $candi->image_path_2     ="-"
 $candi->image_path_3     ="-"
 $candi->save()
+#
+#**************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2912
+$candi->candidacy_id    ="Nepal_14";
+$candi->candidacy_name  ="Fewa Lake";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Woman Vice President"
+$candi->post_nepali_name  ="महिला उपाद्यक्ष"
 
+$candi->Post_id          ="2021_04"
+$candi->image_path_1     ="bhaktapur"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+####################################################
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2913
+$candi->candidacy_id    ="Nepal_15";
+$candi->candidacy_name  ="Rara Lake";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Woman Vice President"
+$candi->post_nepali_name  ="महिला उपाद्यक्ष"
 
+$candi->Post_id          ="2021_04"
+$candi->image_path_1     ="rara"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+####################################################
 
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2914
+$candi->candidacy_id    ="Nepal_16";
+$candi->candidacy_name  ="Phoksundo Lake";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Woman Vice President"
+$candi->post_nepali_name  ="महिला उपाद्यक्ष"
+
+$candi->Post_id          ="2021_04"
+$candi->image_path_1     ="rara"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+####################################################
+
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2915
+$candi->candidacy_id    ="Nepal_17";
+$candi->candidacy_name  ="Tilicho  Lake";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="Woman Vice President"
+$candi->post_nepali_name  ="महिला उपाद्यक्ष"
+
+$candi->Post_id          ="2021_04"
+$candi->image_path_1     ="tilicho"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
