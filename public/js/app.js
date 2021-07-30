@@ -20952,9 +20952,79 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /*!****************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Vote/VoteVerify.vue?vue&type=script&lang=js ***!
   \****************************************************************************************************************************************************************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\laravel\\nrna1\\nrna1\\resources\\js\\Pages\\Vote\\VoteVerify.vue: Unexpected token, expected \",\" (14:36)\n\n  12 |      const form = useForm({\n  13 |             voting_code: '',\n> 14 |             vote: this.voteSubmitted;    \n     |                                     ^\n  15 |         })\n  16 |     // this.$inertia.post(route('candidacy.store'), data); \n  17 |     function submit() {\n    at Parser._raise (C:\\xampp\\htdocs\\laravel\\nrna1\\nrna1\\node_modules\\@babel\\parser\\lib\\index.js:816:17)\n    at Parser.raiseWithData (C:\\xampp\\htdocs\\laravel\\nrna1\\nrna1\\node_modules\\@babel\\parser\\lib\\index.js:809:17)\n    at Parser.raise (C:\\xampp\\htdocs\\laravel\\nrna1\\nrna1\\node_modules\\@babel\\parser\\lib\\index.js:770:17)\n    at Parser.unexpected (C:\\xampp\\htdocs\\laravel\\nrna1\\nrna1\\node_modules\\@babel\\parser\\lib\\index.js:9893:16)\n    at Parser.expect (C:\\xampp\\htdocs\\laravel\\nrna1\\nrna1\\node_modules\\@babel\\parser\\lib\\index.js:9867:28)\n    at Parser.parseObjectLike (C:\\xampp\\htdocs\\laravel\\nrna1\\nrna1\\node_modules\\@babel\\parser\\lib\\index.js:11691:14)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\laravel\\nrna1\\nrna1\\node_modules\\@babel\\parser\\lib\\index.js:11223:23)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\laravel\\nrna1\\nrna1\\node_modules\\@babel\\parser\\lib\\index.js:10881:23)\n    at Parser.parseUpdate (C:\\xampp\\htdocs\\laravel\\nrna1\\nrna1\\node_modules\\@babel\\parser\\lib\\index.js:10861:21)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\laravel\\nrna1\\nrna1\\node_modules\\@babel\\parser\\lib\\index.js:10839:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Shared_VotedPost__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Shared/VotedPost */ "./resources/js/Shared/VotedPost.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Layouts_NrnaLayout__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Layouts/NrnaLayout */ "./resources/js/Layouts/NrnaLayout.vue");
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    vote: Object
+  },
+  setup: function setup() {
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
+      voting_code: '',
+      vote: this.voteSubmitted
+    }); // this.$inertia.post(route('candidacy.store'), data); 
+
+    function submit() {
+      // console.log(this.voting_code);
+      form.post('/votes');
+    }
+
+    return {
+      form: form,
+      submit: submit
+    };
+  },
+  data: function data() {
+    return {
+      icc_member: this.vote[0],
+      president: this.vote[1],
+      vp: this.vote[2],
+      wwp: this.vote[3],
+      general_secretary: this.vote[4],
+      secretary: this.vote[5],
+      treasure: this.vote[6],
+      w_coordinator: this.vote[7],
+      y_coordinator: this.vote[8],
+      cult_coordinator: this.vote[9],
+      child_coordinator: this.vote[10],
+      studt_coordinator: this.vote[11],
+      member_berlin: this.vote[12],
+      member_hamburg: this.vote[13],
+      member_nsachsen: this.vote[14],
+      member_nrw: this.vote[15],
+      member_hessen: this.vote[16],
+      member_rhein_pfalz: this.vote[17],
+      member_bayern: this.vote[18],
+      no_vote_option: this.vote[19]
+    };
+  },
+  computed: {
+    voteSubmitted: function voteSubmitted() {
+      return this.vote;
+    }
+  },
+  components: {
+    VotedPost: _Shared_VotedPost__WEBPACK_IMPORTED_MODULE_0__.default,
+    NrnaLayout: _Layouts_NrnaLayout__WEBPACK_IMPORTED_MODULE_4__.default,
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_3__.default,
+    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_2__.default
+  }
+});
 
 /***/ }),
 
@@ -21059,9 +21129,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Pages_Auth_Login__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Pages/Auth/Login */ "./resources/js/Pages/Auth/Login.vue");
-/* harmony import */ var _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Dashboard */ "./resources/js/Pages/Dashboard.vue");
-
+/* harmony import */ var _Layouts_NrnaLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/NrnaLayout */ "./resources/js/Layouts/NrnaLayout.vue");
+// import Login from '@/Pages/Auth/Login'
+//  import Dashboard from '@/Pages/Dashboard'
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -21073,8 +21143,9 @@ __webpack_require__.r(__webpack_exports__);
     loggedIn: Boolean
   },
   components: {
-    Login: _Pages_Auth_Login__WEBPACK_IMPORTED_MODULE_0__.default,
-    Dashboard: _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_1__.default
+    // Login,
+    // Dashboard,
+    NrnaLayout: _Layouts_NrnaLayout__WEBPACK_IMPORTED_MODULE_0__.default
   }
 });
 
@@ -21168,6 +21239,25 @@ __webpack_require__.r(__webpack_exports__);
         this.$emit("update:checked", val); //  this.$emit(val);
       }
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/VotedPost.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/VotedPost.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    candidate: Object
   }
 });
 
@@ -30250,7 +30340,7 @@ var _hoisted_12 = {
   key: 1,
   "class": " mx-auto w-full"
 };
-function render(_ctx, _cache) {
+function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_validation_errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-validation-errors");
 
   var _component_voted_post = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("voted-post");
@@ -30267,7 +30357,7 @@ function render(_ctx, _cache) {
             "class": "mb-4  mx-auto text-center "
           })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
             onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-              return _ctx.submit && _ctx.submit.apply(_ctx, arguments);
+              return $setup.submit && $setup.submit.apply($setup, arguments);
             }, ["prevent"])),
             "class": " text-center mx-auto "
           }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
@@ -30275,84 +30365,84 @@ function render(_ctx, _cache) {
             id: "voting_id",
             placeholder: "PLEASE ENTER HERE YOUR VOTING CODE",
             "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-              return _ctx.form.voting_code = $event;
+              return $setup.form.voting_code = $event;
             })
           }, null, 512
           /* NEED_PATCH */
-          ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.form.voting_code]])]), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_validation_errors, {
+          ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.voting_code]])]), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_validation_errors, {
             "class": "mb-4  mx-auto text-center "
           })])])], 32
           /* HYDRATE_EVENTS */
-          )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, _ctx.no_vote_option ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_11, " You have selected a no vote option .Please conform it ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.icc_member
+          )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, $data.no_vote_option ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_11, " You have selected a no vote option .Please conform it ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
+            candidate: $data.icc_member
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.president
+            candidate: $data.president
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.vp
+            candidate: $data.vp
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.general_secretary
+            candidate: $data.general_secretary
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.secretary
+            candidate: $data.secretary
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.treasure
+            candidate: $data.treasure
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.w_coordinator
+            candidate: $data.w_coordinator
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.y_coordinator
+            candidate: $data.y_coordinator
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.cult_coordinator
+            candidate: $data.cult_coordinator
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.child_coordinator
+            candidate: $data.child_coordinator
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.studt_coordinator
+            candidate: $data.studt_coordinator
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.member_berlin
+            candidate: $data.member_berlin
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.member_hamburg
+            candidate: $data.member_hamburg
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.member_nsachsen
+            candidate: $data.member_nsachsen
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.member_nrw
+            candidate: $data.member_nrw
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.member_hessen
+            candidate: $data.member_hessen
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.member_rhein_pfalz
+            candidate: $data.member_rhein_pfalz
           }, null, 8
           /* PROPS */
           , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: _ctx.member_bayern
+            candidate: $data.member_bayern
           }, null, 8
           /* PROPS */
           , ["candidate"])]))])])];
@@ -31015,20 +31105,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  key: 0
-};
-var _hoisted_2 = {
-  key: 1
-};
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "m-auto text-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "https://www.civiciti.com/ww/nrnagermany",
+  "class": "m-auto min-h-screen"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": " flex flex-col h-64 py-2 m-auto text-center px-10 w-full"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "w-full text-center text-gray-900 font-bold"
+}, " VOTE HERE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+  src: "/storage/images/ballot.png",
+  width: "200",
+  height: "200"
+})])])], -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_login = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("login");
+  var _component_nrna_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("nrna-layout");
 
-  var _component_dashboard = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("dashboard");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_nrna_layout, null, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_1];
+    }),
+    _: 1
+    /* STABLE */
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0\">\r\n        <div v-if=\"canLogin\" class=\"hidden fixed top-0 right-0 px-6 py-4 sm:block\">\r\n            <inertia-link v-if=\"$page.props.user\" href=\"/dashboard\" class=\"text-sm text-gray-700 underline\">\r\n                Dashboard\r\n            </inertia-link>\r\n\r\n            <template v-else>\r\n                <inertia-link :href=\"route('login')\" class=\"text-sm text-gray-700 underline\">\r\n                    Log in\r\n                </inertia-link>\r\n\r\n                <inertia-link v-if=\"canRegister\" :href=\"route('register')\" class=\"ml-4 text-sm text-gray-700 underline\">\r\n                    Register\r\n                </inertia-link>\r\n               \r\n            </template>\r\n        </div> \r\n        "), !$props.loggedIn ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_login, {
-    canResetPassword: "true"
-  })])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_dashboard)]))], 2112
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0\">\r\n        <div v-if=\"canLogin\" class=\"hidden fixed top-0 right-0 px-6 py-4 sm:block\">\r\n            <inertia-link v-if=\"$page.props.user\" href=\"/dashboard\" class=\"text-sm text-gray-700 underline\">\r\n                Dashboard\r\n            </inertia-link>\r\n\r\n            <template v-else>\r\n                <inertia-link :href=\"route('login')\" class=\"text-sm text-gray-700 underline\">\r\n                    Log in\r\n                </inertia-link>\r\n\r\n                <inertia-link v-if=\"canRegister\" :href=\"route('register')\" class=\"ml-4 text-sm text-gray-700 underline\">\r\n                    Register\r\n                </inertia-link>\r\n               \r\n            </template>\r\n        </div> \r\n        "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <div v-if=\"!loggedIn\" >      \r\n         <login canResetPassword=\"true\"> </login>               \r\n        //     </div>\r\n        //     <div v-else>\r\n        //         <dashboard> </dashboard>\r\n        //     </div>\r\n        ")], 2112
   /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   );
 }
@@ -31379,6 +31484,54 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["value"])), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $options.proxyChecked]]);
 }
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/VotedPost.vue?vue&type=template&id=69e4d1ce&scoped=true":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/VotedPost.vue?vue&type=template&id=69e4d1ce&scoped=true ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _withId = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.withScopeId)("data-v-69e4d1ce");
+
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-69e4d1ce");
+
+var _hoisted_1 = {
+  key: 0,
+  "class": "px-2"
+};
+var _hoisted_2 = {
+  "class": " text-gray-900 font-bold "
+};
+var _hoisted_3 = {
+  "class": ""
+};
+
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
+
+var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
+  return $props.candidate.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.candidate, function (candi, candiIdx) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+      "class": "flex flex-wrap justify-left  space-x-4  divide-y divide-light-blue-400",
+      key: candiIdx
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(candi.post_name), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(candi.candidacy_name), 1
+    /* TEXT */
+    )]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true);
+});
 
 /***/ }),
 
@@ -57675,6 +57828,33 @@ _ShowCheckbox_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default._
 
 /***/ }),
 
+/***/ "./resources/js/Shared/VotedPost.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/Shared/VotedPost.vue ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _VotedPost_vue_vue_type_template_id_69e4d1ce_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VotedPost.vue?vue&type=template&id=69e4d1ce&scoped=true */ "./resources/js/Shared/VotedPost.vue?vue&type=template&id=69e4d1ce&scoped=true");
+/* harmony import */ var _VotedPost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VotedPost.vue?vue&type=script&lang=js */ "./resources/js/Shared/VotedPost.vue?vue&type=script&lang=js");
+
+
+
+_VotedPost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _VotedPost_vue_vue_type_template_id_69e4d1ce_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
+_VotedPost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__scopeId = "data-v-69e4d1ce"
+/* hot reload */
+if (false) {}
+
+_VotedPost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Shared/VotedPost.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_VotedPost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Jetstream/ActionMessage.vue?vue&type=script&lang=js":
 /*!**************************************************************************!*\
   !*** ./resources/js/Jetstream/ActionMessage.vue?vue&type=script&lang=js ***!
@@ -58711,6 +58891,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ShowCheckbox_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ShowCheckbox_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ShowCheckbox.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/ShowCheckbox.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Shared/VotedPost.vue?vue&type=script&lang=js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Shared/VotedPost.vue?vue&type=script&lang=js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VotedPost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VotedPost_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./VotedPost.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/VotedPost.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -59831,6 +60027,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ShowCheckbox_vue_vue_type_template_id_7186e53c__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ShowCheckbox_vue_vue_type_template_id_7186e53c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ShowCheckbox.vue?vue&type=template&id=7186e53c */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/ShowCheckbox.vue?vue&type=template&id=7186e53c");
+
+
+/***/ }),
+
+/***/ "./resources/js/Shared/VotedPost.vue?vue&type=template&id=69e4d1ce&scoped=true":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/Shared/VotedPost.vue?vue&type=template&id=69e4d1ce&scoped=true ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VotedPost_vue_vue_type_template_id_69e4d1ce_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_VotedPost_vue_vue_type_template_id_69e4d1ce_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./VotedPost.vue?vue&type=template&id=69e4d1ce&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/VotedPost.vue?vue&type=template&id=69e4d1ce&scoped=true");
 
 
 /***/ }),

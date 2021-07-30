@@ -128,7 +128,7 @@ export default {
         voteSubmitted(){
             return this.vote;
         }
-    }
+    },
     components:{
         VotedPost,
          NrnaLayout,
