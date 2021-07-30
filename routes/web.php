@@ -89,7 +89,7 @@ Route::get('/get/{filename}', [MakeurlController::class, 'getfile']);
 Route::get('candidacy/create', [CandidacyController::class, 'create'])->name('candidacy.create');
 Route::post('candidacies', [CandidacyController::class, 'store'])->name('candidacy.store');
 Route::get('candidacies/index', [CandidacyController::class, 'index'])->name('candidacy.index');
-
+Route::get('candidacy/update', [CandidacyController::class, 'update'])->name('candidacy.update');
 //messages
 /**
  * Write messages
