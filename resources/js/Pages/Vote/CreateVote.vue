@@ -1300,7 +1300,8 @@ export default {
     },
     create_candidates(pid){
       let candiArray =[]; 
-        //let pres =this.candidacies.data.find(item=>item.candidacy_id===1) 
+        //let pres =this.candidacies.data.find(item=>item.candidacy_id===1)
+        // console.log(candi) 
         let candi =this.candidacies.data.filter(item=>item.post_id===pid) 
       if(candi.length>1){
           candi[0].disabled =false
@@ -1311,7 +1312,7 @@ export default {
           candiArray=candi
 
         }
-        console.log("candidate array:"+pid)
+        console.log("candidate array: "+pid)
         console.log(candiArray.length);
         return candiArray;
     },

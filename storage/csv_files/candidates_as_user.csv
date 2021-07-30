@@ -1,39 +1,55 @@
-name_prefex;first_name;middle_name;last_name;gender;country;password;city;state;lcc;email;telephone;nrna_id;additional_address
-;Mt.;Everest ;Sagarmatha;Male;germany;12345678;Munster;Nordrhein-Westfalen;NRW;test1@test1.de;1231;Nepal_01;Von der tinnen str 32
-;Mt.;;Kanchenjunga;Male;germany;12345678;Frankfurt;Hessen;Hessen;test2@test2.de;1232;Nepal_02;
-;;;Machhapuchhre ;Male;germany;12345678;Munich;Bayern;Bayern;test3@test3.de;1233;Nepal_03;
-;Api;;Mountain;Male;germany;12345678;Munich;Bayern;Bayern;test4@test4.de;1234;Nepal_04;
-;Mt.;;Kailash;Male;germany;12345678;Frankfurt;Hessen;Hessen;test5@test5.de;1235;Nepal_05;
-;Kathmandu;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test1@test.de;1236;Nepal_06;
-;Pokhara;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test2@test.de;1237;Nepal_07;
-;Humla;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test3@test.de;1238;Nepal_08;
-;Janakpur;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test4@test.de;1239;Nepal_09;
-;Palpa;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test5@test.de;1240;Nepal_10;
-;Dhanran;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test6@test.de;1241;Nepal_11;
-;Dadeldhura;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test7@test.de;1242;Nepal_12;
-;Bhaktapur;;City;Male;germany;12345678;Frankfurt;Hessen;Hessen;test8@test.de;1243;Nepal_13;
-;Fewa;;Lake;Female;germany;12345678;Frankfurt;Hessen;Hessen;test9@test.de;1244;Nepal_14;
-;Rara;;Lake;Female;germany;12345678;Frankfurt;Hessen;Hessen;test10@test.de;1245;Nepal_15;
-;Phoksundo;;Lake;Female;germany;12345678;Frankfurt;Hessen;Hessen;test11@test.de;1246;Nepal_16;
-;Tilicho ;;Lake;Female;germany;12345678;Frankfurt;Hessen;Hessen;test12@test.de;1247;Nepal_17;
-;Chitwan ;;National Park;Female;germany;12345678;Frankfurt;Hessen;Hessen;test13@test.de;1248;Nepal_18;
-;Khaptad ;;National Park;Female;germany;12345678;Frankfurt;Hessen;Hessen;test14@test.de;1249;Nepal_19;
-;Baridya ;;National Park;Female;germany;12345678;Frankfurt;Hessen;Hessen;test15@test.de;1250;Nepal_20;
-;Shivapur Nagarjun;;National Park;Female;germany;12345678;Frankfurt;Hessen;Hessen;test16@test.de;1251;Nepal_21;
-;Chandragiri;;Hill;Male;germany;12345678;Frankfurt;Hessen;Hessen;test17@test.de;1252;Nepal_22;
-;Sarankot;;Hill;Male;germany;12345678;Frankfurt;Hessen;Hessen;test18@test.de;1253;Nepal_23;
-;Pun;;Hill;Male;germany;12345678;Frankfurt;Hessen;Hessen;test19@test.de;1254;Nepal_24;
-;Bandipur;;Hill;Male;germany;12345678;Frankfurt;Hessen;Hessen;test20@test.de;1255;Nepal_25;
-;Ilam;;Hill;Male;germany;12345678;Frankfurt;Hessen;Hessen;test21@test.de;1256;Nepal_26;
-;Chitlang.;;Hill;Male;germany;12345678;Frankfurt;Hessen;Hessen;test22@test.de;1257;Nepal_27;
-;Nagarkot;;Hill;Male;germany;12345678;Frankfurt;Hessen;Hessen;test23@test.de;1258;Nepal_28;
-;Dhulikhel;;Hill;Male;germany;12345678;Frankfurt;Hessen;Hessen;test24@test.de;1259;Nepal_29;
-;Kali Gandagi;;River;Female;germany;12345678;Frankfurt;Hessen;Hessen;test25@test.de;1260;Nepal_30;
-;saptakoshi;;River;Female;germany;12345678;Frankfurt;Hessen;Hessen;test26@test.de;1261;Nepal_31;
-;Karnali;;River;Female;germany;12345678;Frankfurt;Hessen;Hessen;test27@test.de;1262;Nepal_32;
-;Mahakali;;River;Female;germany;12345678;Frankfurt;Hessen;Hessen;test28@test.de;1263;Nepal_33;
-;Biratnagar;;City;Male;Germany;12345678;Frankfurt;Hessen;Hessen;test29@test.de;1264;Nepal_34;
-;Bhairawa;;City;Female;germany;12345678;Frankfurt;Hessen;Hessen;test30@test.de;1265;Nepal_35;
-;Mustang ;;City;Female;germany;12345678;Frankfurt;Hessen;Hessen;test31@test.de;1266;Nepal_36;
-;Manag;;City;Male;Germany;12345678;Frankfurt;Hessen;Hessen;test32@test.de;1267;Nepal_37;
-;Dhangadi;;City;Female;germany;12345678;Frankfurt;Hessen;Hessen;test33@test.de;1268;Nepal_38;
+user_id;candidacy_id;candidacy_name;proposer_id;proposer_name;supporter_id;supporter_name;post_name; post_nepali_name;post_id;image_path_1;image_path_2;image_path_3
+2928;Nepal_30;Kali Gandagi River;DE07000015;Nab Roshyraa;DE07000015;Nab Roshyraa;Woman Coordinator;-; 2021_08;kaliriver.jpg;-;-
+2929;Nepal_31;saptakoshi River;DE07000016;Nab Roshyraa;DE07000016;Nab Roshyraa;Woman Coordinator;-; 2021_08;saptakoshi.jpg;-;-
+2930;Nepal_32;Karnali River;DE07000017;Nab Roshyraa;DE07000017;Nab Roshyraa;Woman Coordinator;-; 2021_08;Karnali.jpg;-;-
+2931;Nepal_33;Mahakali River;DE07000018;Nab Roshyraa;DE07000018;Nab Roshyraa;Woman Coordinator;-; 2021_08;mahakali;-;-
+2932;Nepal_34;Biratnagar City;DE07000019;Nab Roshyraa;DE07000019;Nab Roshyraa;Treasure;-; 2021_07;biratnagar;-;-
+2933;Nepal_35;Bhairawa City;DE07000020;Nab Roshyraa;DE07000020;Nab Roshyraa;Treasure;-; 2021_07;bhairawa;-;-
+2934;Nepal_36;Mustang  District;DE07000021;Nab Roshyraa;DE07000021;Nab Roshyraa;Treasure;-; 2021_07;mustang;-;-
+2935;Nepal_37;Manag District;DE07000022;Nab Roshyraa;DE07000022;Nab Roshyraa;Treasure;-; 2021_07;manag;-;-
+2936;Nepal_38;Dhangadi City;DE07000023;Nab Roshyraa;DE07000023;Nab Roshyraa;Treasure;-; 2021_07;dhangadi;-;-
+2937;Nepal_39;Baasuri  ;DE07000024;Nab Roshyraa;DE07000024;Nab Roshyraa;Culture Coordinator;-; 2021_08;baasuri .jpg;-;-
+2938;Nepal_40;Maadal ;DE07000025;Nab Roshyraa;DE07000025;Nab Roshyraa;Culture Coordinator;-; 2021_08;maadal.jpg;-;-
+2939;Nepal_41;Saarangi  ;DE07000026;Nab Roshyraa;DE07000026;Nab Roshyraa;Culture Coordinator;-; 2021_08;saarangi .jpg;-;-
+2940;Nepal_42;Kabaddi ;DE07000027;Nab Roshyraa;DE07000027;Nab Roshyraa;Youth Coordinator;-; 2021_09;kabaddi.jpg;-;-
+2941;Nepal_43;Cricket  ;DE07000028;Nab Roshyraa;DE07000028;Nab Roshyraa;Youth Coordinator;-; 2021_09;cricket .jpg;-;-
+2942;Nepal_44;Football ;DE07000029;Nab Roshyraa;DE07000029;Nab Roshyraa;Youth Coordinator;-; 2021_09;football.jpg;-;-
+2943;Nepal_45;Basketball ;DE07000030;Nab Roshyraa;DE07000030;Nab Roshyraa;Youth Coordinator;-; 2021_09;basketball.jpg;-;-
+2944;Nepal_46;Nepali  Bhasha;DE07000031;Nab Roshyraa;DE07000031;Nab Roshyraa;Language Coordinator;-; 2021_10;nepali .jpg;-;-
+2945;Nepal_47;Maithali  Bhasha;DE07000032;Nab Roshyraa;DE07000032;Nab Roshyraa;Language Coordinator;-; 2021_10;maithali .jpg;-;-
+2946;Nepal_48;Newari  Bhasha;DE07000033;Nab Roshyraa;DE07000033;Nab Roshyraa;Language Coordinator;-; 2021_10;newari .jpg;-;-
+2947;Nepal_49;Gurung Bhasha;DE07000034;Nab Roshyraa;DE07000034;Nab Roshyraa;Language Coordinator;-; 2021_10;gurung.jpg;-;-
+2948;Nepal_50;Sherpa Bhasha;DE07000035;Nab Roshyraa;DE07000035;Nab Roshyraa;Language Coordinator;-; 2021_10;sherpa.jpg;-;-
+2949;Nepal_51;Rai Bhasha;DE07000036;Nab Roshyraa;DE07000036;Nab Roshyraa;Language Coordinator;-; 2021_10;rai.jpg;-;-
+2950;Nepal_52;limbu Bhasha;DE07000037;Nab Roshyraa;DE07000037;Nab Roshyraa;Language Coordinator;-; 2021_10;limbu.jpg;-;-
+2951;Nepal_53;Dotyaali Bhasha;DE07000038;Nab Roshyraa;DE07000038;Nab Roshyraa;Language Coordinator;-; 2021_10;dotyaali.jpg;-;-
+2952;Nepal_54;Khash  Bhasha;DE07000039;Nab Roshyraa;DE07000039;Nab Roshyraa;Language Coordinator;-; 2021_10;khash .jpg;-;-
+2953;Nepal_55;Tamang Bhasha;DE07000040;Nab Roshyraa;DE07000040;Nab Roshyraa;Language Coordinator;-; 2021_10;tamang.jpg;-;-
+2954;Nepal_56;Bhojpuri Bhasha;DE07000041;Nab Roshyraa;DE07000041;Nab Roshyraa;Language Coordinator;-; 2021_10;bhojpuri.jpg;-;-
+2955;Nepal_57;Tribhuwan  University;DE07000042;Nab Roshyraa;DE07000042;Nab Roshyraa;Student Coordinator;-; 2021_11;tribhuwan .jpg;-;-
+2956;Nepal_58;Kathmandu University;DE07000043;Nab Roshyraa;DE07000043;Nab Roshyraa;Student Coordinator;-; 2021_11;kathmandu.jpg;-;-
+2957;Nepal_59;Pokhara University;DE07000044;Nab Roshyraa;DE07000044;Nab Roshyraa;Student Coordinator;-; 2021_11;pokhara.jpg;-;-
+2958;Nepal_60;Purwanchal University;DE07000045;Nab Roshyraa;DE07000045;Nab Roshyraa;Student Coordinator;-; 2021_11;purwanchal.jpg;-;-
+2959;Nepal_61;Pachimanchal University;DE07000046;Nab Roshyraa;DE07000046;Nab Roshyraa;Student Coordinator;-; 2021_11;pachimanchal.jpg;-;-
+2960;Nepal_62;Farwest  University;DE07000047;Nab Roshyraa;DE07000047;Nab Roshyraa;Student Coordinator;-; 2021_11;farwest .jpg;-;-
+2961;Nepal_63;Munich  City;DE07000048;Nab Roshyraa;DE07000048;Nab Roshyraa;Mmeber Bayern;-; 2021_32;munich .jpg;-;-
+2962;Nepal_64;Nuernbreg City;DE07000049;Nab Roshyraa;DE07000049;Nab Roshyraa;Mmeber Bayern;-; 2021_33;nuernbreg.jpg;-;-
+2963;Nepal_65;Bamberg City;DE07000050;Nab Roshyraa;DE07000050;Nab Roshyraa;Mmeber Bayern;-; 2021_34;bamberg.jpg;-;-
+2964;Nepal_66;Kaiserslautern City;DE07000051;Nab Roshyraa;DE07000051;Nab Roshyraa;Member Rheinland-pfalz;-; 2021_35;kaiserslautern.jpg;-;-
+2965;Nepal_67;Heidelberg City;DE07000052;Nab Roshyraa;DE07000052;Nab Roshyraa;Member Rheinland-pfalz;-; 2021_36;heidelberg.jpg;-;-
+2966;Nepal_68;Freiburg City;DE07000053;Nab Roshyraa;DE07000053;Nab Roshyraa;Member Rheinland-pfalz;-; 2021_37;freiburg.jpg;-;-
+2967;Nepal_69;Frankfurt City;DE07000054;Nab Roshyraa;DE07000054;Nab Roshyraa;Member Hessen;-; 2021_38;frankfurt.jpg;-;-
+2968;Nepal_70;Wiesbaden City;DE07000055;Nab Roshyraa;DE07000055;Nab Roshyraa;Member Hessen;-; 2021_39;wiesbaden.jpg;-;-
+2969;Nepal_71;Erfurt City;DE07000056;Nab Roshyraa;DE07000056;Nab Roshyraa;Member Hessen;-; 2021_40;erfurt.jpg;-;-
+2970;Nepal_72;Muenster  City;DE07000057;Nab Roshyraa;DE07000057;Nab Roshyraa;Member NRW ;-; 2021_41;muenster .jpg;-;-
+2971;Nepal_73;Koeln  City;DE07000058;Nab Roshyraa;DE07000058;Nab Roshyraa;Member NRW ;-; 2021_42;koeln .jpg;-;-
+2972;Nepal_74;Duesseldorf City;DE07000059;Nab Roshyraa;DE07000059;Nab Roshyraa;Member NRW ;-; 2021_43;duesseldorf.jpg;-;-
+2973;Nepal_75;Goettingen City;DE07000060;Nab Roshyraa;DE07000060;Nab Roshyraa;Member Niedersachsen;-; 2021_44;goettingen.jpg;-;-
+2974;Nepal_76;Bremen City;DE07000061;Nab Roshyraa;DE07000061;Nab Roshyraa;Member Niedersachsen;-; 2021_45;bremen.jpg;-;-
+2975;Nepal_77;Norden City;DE07000062;Nab Roshyraa;DE07000062;Nab Roshyraa;Member Niedersachsen;-; 2021_46;norden.jpg;-;-
+2976;Nepal_78;Hamburg City;DE07000063;Nab Roshyraa;DE07000063;Nab Roshyraa;Member Hamburg;-; 2021_47;hamburg.jpg;-;-
+2977;Nepal_79;Kiel City;DE07000064;Nab Roshyraa;DE07000064;Nab Roshyraa;Member Hamburg;-; 2021_48;kiel.jpg;-;-
+2978;Nepal_80;Luebeck City;DE07000065;Nab Roshyraa;DE07000065;Nab Roshyraa;Member Hamburg;-; 2021_49;luebeck.jpg;-;-
+2979;Nepal_81;Berlin City;DE07000066;Nab Roshyraa;DE07000066;Nab Roshyraa;Member Berlin;-; 2021_50;berlin.jpg;-;-
+2980;Nepal_82;Leipzig City;DE07000067;Nab Roshyraa;DE07000067;Nab Roshyraa;Member Berlin;-; 2021_51;leipzig.jpg;-;-
+2981;Nepal_83;Weimar City;DE07000068;Nab Roshyraa;DE07000068;Nab Roshyraa;Member Berlin;-; 2021_10;weimar.jpg;-;-
