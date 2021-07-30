@@ -85,8 +85,10 @@ export default {
     },
     setup () {
      const form = useForm({
-        voting_code: '',
+            voting_code: '',
+            vote: this.voteSubmitted;    
         })
+
     // this.$inertia.post(route('candidacy.store'), data); 
     function submit() {
         // console.log(this.voting_code);
@@ -94,7 +96,7 @@ export default {
     }
 
     return { form, submit }
-  },    
+  }, 
     data(){
         return {
            icc_member:               this.vote[0],
@@ -116,12 +118,17 @@ export default {
            member_hessen:               this.vote[16],
            member_rhein_pfalz:          this.vote[17],          
            member_bayern:               this.vote[18],
-            no_vote_option:               this.vote[19]
+            no_vote_option:             this.vote[19]
          
          
            
         }
     },
+    computed:{
+        voteSubmitted(){
+            return this.vote;
+        }
+    }
     components:{
         VotedPost,
          NrnaLayout,

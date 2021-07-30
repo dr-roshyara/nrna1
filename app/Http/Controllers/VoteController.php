@@ -138,7 +138,7 @@ class VoteController extends Controller
         if($has_voted)
         {
         
-                  
+            return redirect()->route('vote.show');       
             $validator->after(function ($validator) {
                   $validator->errors()->add('Vote: ',
                   'You have already Voted. Thank you! Please check your Vote!');              
@@ -177,11 +177,46 @@ class VoteController extends Controller
            array_push($candi_vec,  $this->get_candidate('member_rhein_pfalz'));
             array_push($candi_vec,  $this->get_candidate('member_bayern'));
             array_push($candi_vec, request('no_vote_option'));
-           $request->session()->put('vote', $vote);
-            $this->vote =$candi_vec;
-        //    dd($candi_vec);
-           return redirect('/vote/verify')->with('vote', $candi_vec);
+            //dd($candi_vec);
+            //   $request->session()->put('vote', $candi_vec);
+            // session(['vote'=>$candi_vec]);
+            //$request->session()->put('key', 'value');
+            //session(['key' => 'value']);
+            // return redirect()->route('vote.verfiy');
 
+        //$this->in_code   =auth()->user()->code2;
+        //$this->in_code    ="4321";
+        //$this->out_code   = $request['voting_code'];
+        //$this->user_id    =auth()->user()->id;
+        //$validator        =$this->verify_vote_submit();
+        //$validator->validate($request);
+        /****
+         * Now save the code and show directly 
+         */
+        $input_data = $candi_vec;
+        $this->user_id    =auth()->user()->id;
+         //    dd($input_data);
+            //no_vote option is saved in 19 
+             $no_vote_option  =$input_data[19];   
+            if($no_vote_option) { //check if voter has given no_vote  option 
+                // Go for no vote option 
+                $vote                   =new Vote; 
+                $vote->no_vote_option   =1;
+                $vote->user_id          =$this->user_id;  
+                $vote->save();        
+
+          }else{
+             /**
+              * Here you save the vote finally :
+              * G
+              */ 
+                $vote                = new Vote;
+                $vote->user_id       = $this->user_id;
+                $this->save_vote($input_data);
+               
+            }    
+            //save the vote and save the user has voted
+            return redirect()->route('vote.show'); 
      }
 
     /**
@@ -381,7 +416,10 @@ class VoteController extends Controller
        return $_candivec; 
     }
     public function verify(){
-       $vote = request()->session()->pull('vote');
+    //    $vote = request()->session()->get('vote');
+       //$value = $request->session()->get('key');
+       // global helper method
+        $vote = session('vote');
         // dd($vote);
         return Inertia::render('Vote/VoteVerify', [
                  'vote' =>$vote,

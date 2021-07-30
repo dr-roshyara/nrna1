@@ -16,8 +16,9 @@
             <div class="flex flex-col justify-center px-2 m-2"> 
                 <div class="flex flex-col justify-center space-x-4 items-center p-4 mb-2 m-auto font-bold text-gray-900 ">
                    <label for="voting_code"  class="px-4 py-2 mb-3"> 
+                      <p> Your voting code is: 1234 </p> 
                       <p> Please enter your voting Code.</p>
-                      <p> यहाँलाई पाउनु भएको भोटिङ कोड तलको खाली ठाउमा भरेर वटन थिच्नु होला । </p>  
+                      <p> यहाँलाई पाउनु भएको यो  भोटिङ कोड तलको खाली ठाउमा भरेर वटन थिच्नु होला । </p>  
                    </label>   
                   <input class=" px-4 py-6 rounded-lg bg-gray-200 w-96 
                    font-bold border border-blue-400  text-gray-900 font-bold text-xl" 
