@@ -153,7 +153,7 @@ class VoteController extends Controller
           * 
            */
 
-           $vote = $request->all();
+           $vote = request()->all();
         
         //    $request->session()->put('vote', $vote);
            $candi_vec =[];
@@ -177,8 +177,8 @@ class VoteController extends Controller
            array_push($candi_vec,  $this->get_candidate('member_rhein_pfalz'));
             array_push($candi_vec,  $this->get_candidate('member_bayern'));
             array_push($candi_vec, request('no_vote_option'));
-           $request->session()->put('candi_vec', $candi_vec);
-           $this->vote =$candi_vec;
+           $request->session()->put('vote', $vote);
+            $this->vote =$candi_vec;
         //    dd($candi_vec);
            return redirect('/vote/verify')->with('vote', $candi_vec);
 
