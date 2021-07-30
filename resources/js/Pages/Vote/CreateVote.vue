@@ -74,6 +74,7 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
+                             :candidacy_image_path ="president.image_path_1"
                             :post_name          ="president.post_name"   
                               post_nepali_name   ="अध्यक्ष"  
                             :candidacy_name     ="president.candidacy_name">
@@ -115,8 +116,9 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
-                            :post_name          ="vice_president.post_name"   
-                            post_nepali_name   ="उपाद्यक्ष"  
+                              :candidacy_image_path ="vice_president.image_path_1"
+                              :post_name          ="vice_president.post_name"   
+                              post_nepali_name   ="उपाद्यक्ष"  
                             :candidacy_name     ="vice_president.candidacy_name">
                             </show-candidate>              
                             <!-- checkobx -->
@@ -158,7 +160,8 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
-                            :post_name          ="wvp.post_name"   
+                             :candidacy_image_path ="wvp.image_path_1"
+                             :post_name          ="wvp.post_name"   
                             post_nepali_name   ="महिला उपाद्यक्ष "  
                             :candidacy_name     ="wvp.candidacy_name">
                             </show-candidate>              
@@ -200,7 +203,8 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
-                            :post_name          ="general_secretary.post_name"   
+                             :candidacy_image_path ="general_secretary.image_path_1"
+                             :post_name          ="general_secretary.post_name"   
                             post_nepali_name   ="महासचिव"  
                             :candidacy_name     ="general_secretary.candidacy_name">
                             </show-candidate>              
@@ -245,7 +249,8 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
-                            :post_name          ="secretary.post_name"   
+                             :candidacy_image_path ="secretary.image_path_1"
+                             :post_name          ="secretary.post_name"   
                             post_nepali_name   ="सचिव"  
                             :candidacy_name     ="secretary.candidacy_name">
                             </show-candidate>              
@@ -290,6 +295,7 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
+                            :candidacy_image_path ="treasure.image_path_1"
                             :post_name          ="treasure.post_name"   
                             post_nepali_name   ="कोषाद्यक्ष"  
                             :candidacy_name     ="treasure.candidacy_name">
@@ -332,6 +338,7 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
+                             :candidacy_image_path ="w_coordinator.image_path_1"
                             :post_name          ="w_coordinator.post_name"   
                             post_nepali_name   ="महिला कोर्डिनेटर"  
                             :candidacy_name     ="w_coordinator.candidacy_name">
@@ -374,6 +381,7 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
+                             :candidacy_image_path ="y_coordinator.image_path_1"
                             :post_name          ="y_coordinator.post_name"   
                             :post_nepali_name   ="y_coordinator.post_nepali_name"  
                             :candidacy_name     ="y_coordinator.candidacy_name">
@@ -416,7 +424,8 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
-                            :post_name          ="cult_coordinator.post_name"   
+                             :candidacy_image_path ="cult_coordinator.image_path_1"
+                             :post_name          ="cult_coordinator.post_name"   
                             :post_nepali_name   ="cult_coordinator.post_nepali_name"  
                             :candidacy_name     ="cult_coordinator.candidacy_name">
                             </show-candidate>              
@@ -459,7 +468,8 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
-                            :post_name          ="child_coordinator.post_name"   
+                             :candidacy_image_path ="child_coordinator.image_path_1"
+                             :post_name          ="child_coordinator.post_name"   
                             :post_nepali_name   ="child_coordinator.post_nepali_name"  
                             :candidacy_name     ="child_coordinator.candidacy_name">
                             </show-candidate>              
@@ -502,6 +512,7 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
+                            :candidacy_image_path ="studt_coordinator.image_path_1"
                             :post_name          ="studt_coordinator.post_name"   
                             :post_nepali_name   ="studt_coordinator.post_nepali_name"  
                             :candidacy_name     ="studt_coordinator.candidacy_name">
@@ -545,6 +556,7 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
+                            :candidacy_image_path ="member_berlin.image_path_1"
                             :post_name          ="member_berlin.post_name"   
                             :post_nepali_name   ="member_berlin.post_nepali_name"  
                             :candidacy_name     ="member_berlin.candidacy_name">
@@ -588,6 +600,7 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
+                            :candidacy_image_path ="member_hamburg.image_path_1"
                             :post_name          ="member_hamburg.post_name"   
                             :post_nepali_name   ="member_hamburg.post_nepali_name"  
                             :candidacy_name     ="member_hamburg.candidacy_name">
@@ -632,7 +645,8 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
-                            :post_name          ="member_nsachsen.post_name"   
+                             :candidacy_image_path ="member_nsachsen.image_path_1"
+                             :post_name          ="member_nsachsen.post_name"   
                             :post_nepali_name   ="member_nsachsen.post_nepali_name"  
                             :candidacy_name     ="member_nsachsen.candidacy_name">
                             </show-candidate>              
@@ -676,7 +690,8 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
-                            :post_name          ="member_nrw.post_name"   
+                             :candidacy_image_path ="member_nrw.image_path_1"
+                             :post_name          ="member_nrw.post_name"   
                             :post_nepali_name   ="member_nrw.post_nepali_name"  
                             :candidacy_name     ="member_nrw.candidacy_name">
                             </show-candidate>              
@@ -720,7 +735,8 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
-                            :post_name          ="member_hessen.post_name"   
+                             :candidacy_image_path ="member_hessen.image_path_1"
+                             :post_name          ="member_hessen.post_name"   
                             :post_nepali_name   ="member_hessen.post_nepali_name"  
                             :candidacy_name     ="member_hessen.candidacy_name">
                             </show-candidate>              
@@ -764,6 +780,7 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
+                            :candidacy_image_path ="member_rhein_pfalz.image_path_1"
                             :post_name          ="member_rhein_pfalz.post_name"   
                             :post_nepali_name   ="member_rhein_pfalz.post_nepali_name"  
                             :candidacy_name     ="member_rhein_pfalz.candidacy_name">
@@ -808,6 +825,7 @@
                             class="flex flex-col justify-center p-4 mb-2 text-center  
                             border border-gray-100 rounded"> 
                             <show-candidate 
+                            :candidacy_image_path ="member_bayern.image_path_1"
                             :post_name          ="member_bayern.post_name"   
                             :post_nepali_name   ="member_bayern.post_nepali_name"  
                             :candidacy_name     ="member_bayern.candidacy_name">
