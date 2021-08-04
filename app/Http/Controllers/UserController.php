@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
+
 //
 use Inertia\Inertia;
 class UserController extends Controller

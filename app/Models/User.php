@@ -18,7 +18,7 @@ use App\Models\Upload;
 use App\Models\Assignment;
 use App\Models\Code;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;

@@ -15,7 +15,7 @@ class AddMoreTablesToCandidaciesTable extends Migration
     {
         Schema::table('candidacies', function (Blueprint $table) {
             //
-              $table->timestamps();
+              //$table->timestamps();
         });
     }
 

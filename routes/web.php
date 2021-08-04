@@ -55,6 +55,8 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+
 //Dashboard 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -63,7 +65,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified']) 
         ->get('/voters/index', [VoterlistController::class, 'index'])->name('voters.index');
  
-//user 
+/****
+ * user 
+ * 
+*/
+//user registratration 
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
 Route::middleware(['auth:sanctum', 'verified']) 
         ->get('/users/index', [UserController::class, 'index'])->name('users.index');
 

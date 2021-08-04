@@ -13,9 +13,13 @@ class AddMoreColumnToUsersTable extends Migration
      */
     public function up()
     {
-        //
-        $table->string('lcc');
-    }
+            //
+            Schema::table('users', function (Blueprint $table) {
+                //
+                //    $table->string('lcc');
+            }); 
+
+     }
 
     /**
      * Reverse the migrations.
