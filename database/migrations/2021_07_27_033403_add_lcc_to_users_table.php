@@ -15,7 +15,7 @@ class AddLccToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-                $table->string('lcc');
+              //  $table->string('lcc');
         }); 
     }
 

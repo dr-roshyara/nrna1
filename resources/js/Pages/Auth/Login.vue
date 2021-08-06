@@ -1,21 +1,21 @@
 <template>
     <nrna-layout>
     <div class="flex flex-col">     
-                   <a href="https://www.civiciti.com/ww/nrnagermany" class="m-auto" > 
+                   <!-- <a href="https://www.civiciti.com/ww/nrnagermany" class="m-auto" > 
                       <div class=" flex flex-col h-64 py-2 m-auto text-center px-10 w-full">
                        <p class="w-full text-center text-gray-900 font-bold"> 
                          VOTE  HERE </p> 
                        <img src="/storage/images/ballot.png" width="200" height="200" />
                     </div> 
 
-            </a>
+            </a> -->
          
         <jet-authentication-card class="rounded min-h-screen border-t border-blue-500 mb-2">
-            <div class="p-2 text-sm text-blue-600 font-semibold" >
+            <!-- <div class="p-2 text-sm text-blue-600 font-semibold" >
                 <p class="py-2">यहाँको नाम एनआरएनए को भोटिङ लिस्टमा परेन ? केही छैन, यहाँले तलको पेजमा लगइन गरेर भोट हाल्न सक्नु हुन्छ। 
                  </p>
                  <p class="py-2"> You are not included in the voter list? Don't worry, you can follow the instruction below to login and vote there.</p> 
-            </div>
+            </div> --> 
 
             <div class="mb-1"> 
                 <jet-validation-errors class="pt-1" />

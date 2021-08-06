@@ -71,7 +71,7 @@ Route::middleware(['auth:sanctum', 'verified'])
 */
 //user registratration 
 Route::get('/email/verify', function () {
-    return view('auth.verify-email');
+    return inertia('Auth/VerifyEmail'); 
 })->middleware('auth')->name('verification.notice');
 
 Route::middleware(['auth:sanctum', 'verified']) 
