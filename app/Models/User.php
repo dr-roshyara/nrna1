@@ -58,7 +58,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'can_vote_now',
         'has_voted',
         'has_candidacy', 
-        'lcc'  
+        'lcc',
+        'profile_photo_path'  
         
     ]; 
 
@@ -91,6 +92,17 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * The relationship that should always be loaded 
+     * 
+     */
+
+      protected $with =[
+        //   'profile',
+    
+        ];  
+
     /**
      * Each user has one and only one Vote :
      *      */

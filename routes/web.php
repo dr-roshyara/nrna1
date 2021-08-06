@@ -46,6 +46,26 @@ Route::get('/storage/images/{filename}', function ($filename)
  
     return $response;
 });
+/**
+ * For profile photos create routes
+ * Profile photso are in <storage/profile-photos>
+ */
+
+Route::get('storage/profile-photos/{filename}', function ($filename)
+{
+    $path = public_path('profile-photos/' . $filename); 
+    if (!File::exists($path)) {
+        abort(404); 
+    }
+ 
+    $file = File::get($path);
+    $type = File::mimeType($path);
+ 
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+ 
+    return $response;
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
