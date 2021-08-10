@@ -9,9 +9,9 @@ use App\Http\Controllers\MakeurlController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CandidacyController;
 use App\Http\Controllers\VoterlistController;
-use \App\Http\Controllers\SmsController;
-use \App\Http\Controllers\MessageController;
-use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\SmsController;
+use App\Http\Controllers\MessageController;
+// use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\VoteController; 
 use App\Http\Controllers\CodeController;
 //Models
@@ -158,7 +158,7 @@ Route::middleware(['auth:sanctum', 'verified']) ->post('/messages', [SmsControll
  * Role
  */
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('assignements/index', ['AssignmentController::class', 'index'])->name('role.index');
+    // Route::get('assignements/index', ['AssignmentController::class', 'index'])->name('role.index'); 
 
 }); //end of Role 
 

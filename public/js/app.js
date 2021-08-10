@@ -21062,8 +21062,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   setup: function setup() {
     var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
-      voting_code: '',
-      vote: this.voteSubmitted
+      voting_code: '' // vote: this.voteSubmitted
+
     }); // this.$inertia.post(route('candidacy.store'), data); 
 
     function submit() {
