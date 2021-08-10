@@ -46,6 +46,7 @@ Route::get('/storage/images/{filename}', function ($filename)
  
     return $response;
 });
+
 /**
  * For profile photos create routes
  * Profile photso are in <storage/profile-photos>
@@ -163,3 +164,10 @@ Route::group(['middleware' => ['auth']], function() {
 
 //election result 
 Route::get('vote/thankyou', [VoteController::Class , 'thankyou'])->name('vote.thankyou');
+
+Route::get('timeline', function (){
+     return Inertia::render('Timeline/TimelineIndex', [
+        //   'user' => $user,
+ 
+        ]); 
+}); 

@@ -20,7 +20,7 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" v-show="! photoPreview">
-                    <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-32 w-32 object-cover">
+                    <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-32 w-32 align-middle object-cover">
                 </div>
 
                 <!-- New Profile Photo Preview -->
