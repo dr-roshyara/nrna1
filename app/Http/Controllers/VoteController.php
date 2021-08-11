@@ -178,11 +178,11 @@ class VoteController extends Controller
             array_push($candi_vec,  $this->get_candidate('member_bayern'));
             array_push($candi_vec, request('no_vote_option'));
             //dd($candi_vec);
-            //   $request->session()->put('vote', $candi_vec);
+              $request->session()->put('vote', $candi_vec);
             // session(['vote'=>$candi_vec]);
             //$request->session()->put('key', 'value');
             //session(['key' => 'value']);
-            // return redirect()->route('vote.verfiy');
+            return redirect()->route('vote.verfiy');
 
         //$this->in_code   =auth()->user()->code2;
         //$this->in_code    ="4321";
@@ -245,7 +245,7 @@ class VoteController extends Controller
              * He has not voted before 
              */
             //get vote from session 
-            $input_data = $request->session()->get('candi_vec');
+            $input_data = $request->session()->get('vote');
         //    dd($input_data);
             //no_vote option is saved in 19 
              $no_vote_option  =$input_data[19];   
@@ -416,10 +416,10 @@ class VoteController extends Controller
        return $_candivec; 
     }
     public function verify(){
-    //    $vote = request()->session()->get('vote');
+       $vote = request()->session()->get('vote');
        //$value = $request->session()->get('key');
        // global helper method
-        $vote = session('vote');
+        // $vote = session('vote');
         // dd($vote);
         return Inertia::render('Vote/VoteVerify', [
                  'vote' =>$vote,
@@ -684,7 +684,7 @@ class VoteController extends Controller
     //vote thanks 
     public function thankyou(){
            return Inertia::render('Thankyou/Thankyou', [
-                //  'vote' =>$vote,
+                 'vote' =>$vote,
                 //  'name'=>auth()->user()->name,
                 //  'nrna_id'=>auth()->user()->nrna_id,
                 //  'state' =>auth()->user()->state              

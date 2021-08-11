@@ -86,7 +86,7 @@ export default {
     setup () {
      const form = useForm({
             voting_code: '',
-            vote: this.voteSubmitted
+            // vote: this.voteSubmitted
         })
 
     // this.$inertia.post(route('candidacy.store'), data); 

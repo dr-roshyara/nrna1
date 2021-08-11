@@ -9,9 +9,9 @@ use App\Http\Controllers\MakeurlController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CandidacyController;
 use App\Http\Controllers\VoterlistController;
-use \App\Http\Controllers\SmsController;
-use \App\Http\Controllers\MessageController;
-use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\SmsController;
+use App\Http\Controllers\MessageController;
+// use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\VoteController; 
 use App\Http\Controllers\CodeController;
 //Models
@@ -47,6 +47,27 @@ Route::get('/storage/images/{filename}', function ($filename)
     return $response;
 });
 
+/**
+ * For profile photos create routes
+ * Profile photso are in <storage/profile-photos>
+ */
+
+Route::get('storage/profile-photos/{filename}', function ($filename)
+{
+    $path = public_path('profile-photos/' . $filename); 
+    if (!File::exists($path)) {
+        abort(404); 
+    }
+ 
+    $file = File::get($path);
+    $type = File::mimeType($path);
+ 
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+ 
+    return $response;
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -71,7 +92,7 @@ Route::middleware(['auth:sanctum', 'verified'])
 */
 //user registratration 
 Route::get('/email/verify', function () {
-    return view('auth.verify-email');
+    return inertia('Auth/VerifyEmail'); 
 })->middleware('auth')->name('verification.notice');
 
 Route::middleware(['auth:sanctum', 'verified']) 
@@ -137,9 +158,16 @@ Route::middleware(['auth:sanctum', 'verified']) ->post('/messages', [SmsControll
  * Role
  */
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('assignements/index', ['AssignmentController::class', 'index'])->name('role.index');
+    // Route::get('assignements/index', ['AssignmentController::class', 'index'])->name('role.index'); 
 
 }); //end of Role 
 
 //election result 
 Route::get('vote/thankyou', [VoteController::Class , 'thankyou'])->name('vote.thankyou');
+
+Route::get('timeline', function (){
+     return Inertia::render('Timeline/TimelineIndex', [
+        //   'user' => $user,
+ 
+        ]); 
+}); 

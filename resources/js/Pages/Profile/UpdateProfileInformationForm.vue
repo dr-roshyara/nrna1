@@ -20,7 +20,7 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" v-show="! photoPreview">
-                    <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover">
+                    <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-32 w-32 align-middle object-cover">
                 </div>
 
                 <!-- New Profile Photo Preview -->
@@ -47,7 +47,14 @@
                 <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" autocomplete="name" />
                 <jet-input-error :message="form.errors.name" class="mt-2" />
             </div>
-
+            <!--  change of telphone --> 
+            
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="telephone" value="Telephone" />
+                <jet-input id="telephone" type="text" class="mt-1 block w-full" v-model="form.telephone" autocomplete="telephone" />
+                <jet-input-error :message="form.errors.telephone" class="mt-2" />
+            </div>
+ 
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
                 <jet-label for="email" value="Email" />
@@ -96,6 +103,7 @@
                     _method: 'PUT',
                     name: this.user.name,
                     email: this.user.email,
+                    telephone:this.user.telephone,
                     photo: null,
                 }),
 

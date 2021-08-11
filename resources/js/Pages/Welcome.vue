@@ -1,6 +1,6 @@
 <template>
- <nrna-layout>
-    <div class="m-auto text-center"> 
+ <!-- <nrna-layout> -->
+    <!-- <div class="m-auto text-center"> 
            <a href="https://www.civiciti.com/ww/nrnagermany" class="m-auto min-h-screen" > 
                       <div class=" flex flex-col h-64 py-2 m-auto text-center px-10 w-full">
                        <p class="w-full text-center text-gray-900 font-bold"> 
@@ -9,8 +9,8 @@
                     </div> 
 
             </a>
-    </div> 
-     </nrna-layout>
+    </div>  -->
+     <!-- </nrna-layout> -->
     <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
         <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             <inertia-link v-if="$page.props.user" href="/dashboard" class="text-sm text-gray-700 underline">
@@ -29,21 +29,21 @@
             </template>
         </div> 
         -->
-        <!--  <div v-if="!loggedIn" >      
+         <div v-if="!loggedIn" >      
          <login canResetPassword="true"> </login>               
-        //     </div>
-        //     <div v-else>
-        //         <dashboard> </dashboard>
-        //     </div>
-        -->
-
+             </div>
+             <div v-else>
+                <dashboard> </dashboard> 
+                </div> 
+       
+     <!-- </nrna-layout> -->
         
 </template>
 
 <script>
-    // import Login from '@/Pages/Auth/Login'
-    //  import Dashboard from '@/Pages/Dashboard'
-         import NrnaLayout from "@/Layouts/NrnaLayout";  
+    import Login from '@/Pages/Auth/Login'
+    import Dashboard from '@/Pages/Dashboard'  
+    // import NrnaLayout from "@/Layouts/NrnaLayout";  
     export default {
         props: {
             canLogin: Boolean,
@@ -54,9 +54,9 @@
             loggedIn: Boolean 
         },
         components:{
-            // Login,
-            // Dashboard,
-            NrnaLayout
+            Login,
+            Dashboard,
+            // NrnaLayout
         }
     }
 </script>
