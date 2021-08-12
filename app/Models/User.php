@@ -12,6 +12,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 //models 
 use App\Models\Vote;
+use App\Models\DeligateVote;
 use \App\Models\Candidacy;
 use App\Models\File;
 use App\Models\Upload;
@@ -112,6 +113,15 @@ class User extends Authenticatable implements MustVerifyEmail
         // you can also write $this->hasone('App\Vote')
     }
     
+     /**
+     * Each user has one and only one Vote :
+     *      */
+    public function deligatevote (){
+        return $this->hasone(DeligateVote::class);
+        // return $this->hasOne(Code::class,  'foreign_key');
+        // you can also write $this->hasone('App\Vote')
+    }
+    
     /**
      * Each user can have one and only candidacy 
      */
@@ -146,4 +156,10 @@ class User extends Authenticatable implements MustVerifyEmail
       public function code(){
           return $this->hasOne(Code::class,  'foreign_key');
       }
+      /**
+      * Each user has extacly one code row
+      */
+      public function deligatecode(){
+        return $this->hasOne(Code::class,  'foreign_key');
+    }
 }

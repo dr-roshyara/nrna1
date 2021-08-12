@@ -14,7 +14,7 @@
                     <div class="flex flex-col justify-center space-x-4 items-center p-4 mb-2 m-auto font-bold text-gray-900 ">
                     <label for="voting_code"  class="px-4 py-2 mb-3"> 
                         <p> Vote Conformation  Code </p>
-                        <p> Please check the vote what you have casted. Finally conform it by inserting the code  you got  sencod time. </p> 
+                        <p> Please check the deligatevote what you have casted. Finally conform it by inserting the code  you got  sencod time. </p> 
                         <p>यहाँले गर्नु भएको मतदान यो पेजमा देखाइएको छ। साथी यहाँको एसएमएसमा पनि पठाइएको छ। अब यहाँले गर्नु भएको मतदान अली त्यो एसएमएस मा पठाइएको पुस्टी कोड हालेर आफ्नो मतदान लाई सेभ गर्न बत्तन थिच्नुहोस्। </p>  
                     </label>   
                     <input class=" px-4 py-6 rounded-lg bg-gray-200 w-auto
@@ -26,7 +26,7 @@
                     <div class="mx-auto my-4 w-full"> 
                         <button type="submit" 
                         class="m-2 px-2 py-4 rounded-lg bg-blue-300 w-96 mx-auto font-bold text-gray-900">
-                        SEND CODE TO save your vote </button> 
+                        SEND CODE TO save your deligatevote </button> 
                         </div>
                             <div class="mx-auto text-center">
                     <jet-validation-errors class="mb-4  mx-auto text-center " />
@@ -38,9 +38,9 @@
         </div>
          <!-- next  -->           
          <div class="flex flex-col px-2 mt-6 w-full bg-gray-50 ml-2">
-           <p class="p-2 mx-auto text-xl text-gray-900 font-bold"> Your vote  </p>  
+           <p class="p-2 mx-auto text-xl text-gray-900 font-bold"> Your deligatevote  </p>  
             
-         <div v-if="no_vote_option" class="text-center">   
+        <div v-if="no_vote_option" class="text-center">   
              You have selected a <span class="text-red-800 font-bold " >  VOTE FOR NO ONE </span>option .<br>
             <span class="text-gray-900 font-bold">  Please conform it </span>
         </div>
@@ -82,44 +82,44 @@ import AppLayout from '@/Layouts/AppLayout'
 import NrnaLayout from '@/Layouts/NrnaLayout'
 export default {  
     props:{
-        vote : Object
+        deligatevote : Object
     },
     setup () {
      const form = useForm({
             voting_code: '',
-            // vote: this.voteSubmitted
+            // deligatevote: this.voteSubmitted
         })
 
     // this.$inertia.post(route('candidacy.store'), data); 
     function submit() {
         // console.log(this.voting_code);
-      form.post('/votes')
+      form.post('/deligatevotes')
     }
 
     return { form, submit }
   }, 
     data(){
         return {
-           icc_member:               this.vote[0],
-           president:                this.vote[1],
-           vp:                       this.vote[2],
-           wwp:                      this.vote[3],
-           general_secretary:        this.vote[4],
-           secretary:                this.vote[5],
-           treasure:                  this.vote[6],
-           w_coordinator:             this.vote[7],
-           y_coordinator:              this.vote[8],  
-           cult_coordinator:          this.vote[9],
-           child_coordinator:          this.vote[10],
-           studt_coordinator:          this.vote[11],
-           member_berlin:              this.vote[12],
-           member_hamburg:              this.vote[13],
-           member_nsachsen:             this.vote[14],
-           member_nrw:                  this.vote[15],
-           member_hessen:               this.vote[16],
-           member_rhein_pfalz:          this.vote[17],          
-           member_bayern:               this.vote[18],
-            no_vote_option:             this.vote[19]
+           icc_member:               this.deligatevote[0],
+           president:                this.deligatevote[1],
+           vp:                       this.deligatevote[2],
+           wwp:                      this.deligatevote[3],
+           general_secretary:        this.deligatevote[4],
+           secretary:                this.deligatevote[5],
+           treasure:                  this.deligatevote[6],
+           w_coordinator:             this.deligatevote[7],
+           y_coordinator:              this.deligatevote[8],  
+           cult_coordinator:          this.deligatevote[9],
+           child_coordinator:          this.deligatevote[10],
+           studt_coordinator:          this.deligatevote[11],
+           member_berlin:              this.deligatevote[12],
+           member_hamburg:              this.deligatevote[13],
+           member_nsachsen:             this.deligatevote[14],
+           member_nrw:                  this.deligatevote[15],
+           member_hessen:               this.deligatevote[16],
+           member_rhein_pfalz:          this.deligatevote[17],          
+           member_bayern:               this.deligatevote[18],
+            no_vote_option:             this.deligatevote[19]
          
          
            
@@ -127,7 +127,7 @@ export default {
     },
     computed:{
         voteSubmitted(){
-            return this.vote;
+            return this.deligatevote;
         }
     },
     components:{
