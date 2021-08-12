@@ -25,32 +25,32 @@
                       v-if ="this.icc_members.length>0" 
                      class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">      
                     <div class="flex flex-col text-xl font-bold text-gray-900">
-                      <label> Please choose one  Candidate as the ICC Member. </label> 
-                      <label class="p-2"> कृपया एक जना लाई आइसीसी सदस्य  चुन्नुहोस ।  </label>   
+                      <label> Please choose 30 deligates  for the ICC global conference</label> 
+                      <label class="p-2"> कृपया ३० जना डेलिगेटहरु  चुन्नुहोस ।  </label>   
                     </div>
                       <!-- here starts: icc -->
                       <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
-                          <div  v-for="(icc_member, pIndx) in icc_members" :key="pIndx"  
+                          <div  v-for="(member, pIndx) in icc_members" :key="pIndx"  
                               class="flex flex-col justify-center p-4 mb-2 text-center  
                               border border-gray-100 rounded"> 
                               <show-candidate 
-                              :candidacy_image_path ="icc_member.image_path_1"
-                              :post_name          ="icc_member.post_name"   
+                              :candidacy_image_path ="member.image_path_1"
+                              :post_name          ="member.post_name"   
                               post_nepali_name   ="आइसीसी सदस्य"  
-                              :candidacy_name     ="icc_member.candidacy_name">
+                              :candidacy_name     ="member.candidacy_name">
                               </show-candidate>              
                                         <!-- here starts -->
                             <div class="px-2 py-2">
                               <input 
                               type      ="checkbox"
-                              :id       ="icc_member.user_id"
-                              :name     ="icc_member.post_name"
-                              :value    ="icc_member.candidacy_id"  
-                              v-model   ="form.icc_member"
+                              :id       ="member.user_id"
+                              :name     ="member.post_name"
+                              :value    ="member.candidacy_id"  
+                              v-model   ="form.member"
                               class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 
                               focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                              @change    ="updateBoxes(this.icc_members,this.form.icc_member,this.icc_memberTicks)" 
-                              :disabled ="icc_member.disabled"
+                              @change    ="updateBoxes(this.members,this.form.member,this.memberTicks)" 
+                              :disabled ="member.disabled"
                             />
                             </div> 
 
@@ -58,8 +58,8 @@
                           
 
                       </div> 
-                        <div  class="mb-4 p-2" v-if="form.icc_member.length"> You have selected 
-                        <span class="font-bold text-indigo-600"> {{find_selected_name(this.icc_members,this.form.icc_member)}} </span> as President of NRNA Germany!
+                        <div  class="mb-4 p-2" v-if="form.member.length"> You have selected 
+                        <span class="font-bold text-indigo-600"> {{find_selected_name(this.icc_members,this.form.member)}} </span> as President of NRNA Germany!
                       </div>
                    </div>
                     <!-- next -->
@@ -68,8 +68,6 @@
           </div>  <!-- End of Voting option   --> 
              
              <!-- ****************NO vode option ******************************************************************************************* -->       
-      <!-- ****************NO vode option ******************************************************************************************* -->       
-            <!-- ****************NO vode option ******************************************************************************************* -->       
          
              
               <!-- Here comes the no vote Button  -->
@@ -119,7 +117,8 @@
                   <p>  By clicking this button, I conform that I have chosen the candidates correctly and I followed the online rules to vote the candidates. </p>
                 <p>यो बटनमा थिचेर मैले माथि छाने आनुसार  मतदान गरेको साचो हो। मैले बिद्दुतिय नियम हरुलाई पलना गरेर आफ्नो मत जाहेर गरेर मतदान गरेको कुरा स्विकार्छु। </p> 
              
-                   <button type="submit" class="mx-2 my-4 px-2 py-6 rounded-lg bg-blue-300 w-full mx-auto shadow-sm text-xl font-bold text-gray-900">
+                   <button type="submit" 
+                     class="mx-2 my-4 px-2 py-6 rounded-lg bg-blue-300 w-full mx-auto shadow-sm text-xl font-bold text-gray-900">
                    Submit
                    </button>
               
@@ -161,6 +160,7 @@ export default {
         *  They are saved in posts table . 
         */
         icc_member_post_id:           "2021_01",
+         member_post_id:               "1",
         
       //+---------------------------------+---------+  
    
@@ -175,6 +175,11 @@ export default {
             limit: 1,
             ticks:[]
           },
+         
+         memberTicks:{
+            limit: 3,
+            ticks:[]
+          },
         
 
           //end of ticks 
@@ -184,7 +189,8 @@ export default {
   },
   setup (props) {
     const form = useForm({
-      user_id:          props.user_id,
+      user_id:           props.user_id,
+      member:                [],
       icc_member:             [],
       president:              [],
       vice_president:         [], 
@@ -232,7 +238,12 @@ export default {
       //  return this.create_candidates(this.icc_member_post_id).sorty(this.sortByName)
      
       },
-
+      members (){
+        // return pres1;        
+        return this.create_candidates(this.member_post_id)
+        //  return this.create_candidates(this.icc_member_post_id).sorty(this.sortByName)
+     
+      },
       /***************************************************************************/
       get_selected_name(candiVec,selected_id){
           /**
@@ -263,6 +274,7 @@ export default {
           if(this.no_vote_option){
             //make the default value  for form 
             this.form.icc_member          = []
+            this.form.member              = []
           }
        },
 

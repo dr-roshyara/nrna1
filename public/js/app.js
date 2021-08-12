@@ -19603,6 +19603,55 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _Layouts_NrnaLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Layouts/NrnaLayout */ "./resources/js/Layouts/NrnaLayout.vue");
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    name: String,
+    nrna_id: String,
+    state: String
+  },
+  setup: function setup() {
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm)({
+      voting_code: ''
+    }); // this.$inertia.post(route('candidacy.store'), data); 
+
+    function submit() {
+      // console.log(this.voting_code);
+      form.post('/deligatecodes');
+    }
+
+    return {
+      form: form,
+      submit: submit
+    };
+  },
+  components: {
+    NrnaLayout: _Layouts_NrnaLayout__WEBPACK_IMPORTED_MODULE_3__.default,
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_2__.default,
+    JetValidationErrors: _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_1__.default
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/DeligateVote/CreateDeligateVote.vue?vue&type=script&lang=js":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/DeligateVote/CreateDeligateVote.vue?vue&type=script&lang=js ***!
@@ -19642,6 +19691,7 @@ __webpack_require__.r(__webpack_exports__);
       *  They are saved in posts table . 
       */
       icc_member_post_id: "2021_01",
+      member_post_id: "1",
       //+---------------------------------+---------+  
       no_vote_option: 0,
 
@@ -19653,6 +19703,10 @@ __webpack_require__.r(__webpack_exports__);
         limit: 1,
         ticks: []
       },
+      memberTicks: {
+        limit: 3,
+        ticks: []
+      },
       //end of ticks 
       ticks: []
     };
@@ -19660,6 +19714,7 @@ __webpack_require__.r(__webpack_exports__);
   setup: function setup(props) {
     var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm)({
       user_id: props.user_id,
+      member: [],
       icc_member: [],
       president: [],
       vice_president: [],
@@ -19705,6 +19760,10 @@ __webpack_require__.r(__webpack_exports__);
       // return pres1;
       return this.create_candidates(this.icc_member_post_id); //  return this.create_candidates(this.icc_member_post_id).sorty(this.sortByName)
     },
+    members: function members() {
+      // return pres1;        
+      return this.create_candidates(this.member_post_id); //  return this.create_candidates(this.icc_member_post_id).sorty(this.sortByName)
+    },
 
     /***************************************************************************/
     get_selected_name: function get_selected_name(candiVec, selected_id) {
@@ -19734,6 +19793,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.no_vote_option) {
         //make the default value  for form 
         this.form.icc_member = [];
+        this.form.member = [];
       }
     },
     updateBoxes: function updateBoxes(candiVec, selectedVec, tickObj) {
@@ -19925,26 +19985,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      icc_member: this.deligatevote[0],
-      president: this.deligatevote[1],
-      vp: this.deligatevote[2],
-      wwp: this.deligatevote[3],
-      general_secretary: this.deligatevote[4],
-      secretary: this.deligatevote[5],
-      treasure: this.deligatevote[6],
-      w_coordinator: this.deligatevote[7],
-      y_coordinator: this.deligatevote[8],
-      cult_coordinator: this.deligatevote[9],
-      child_coordinator: this.deligatevote[10],
-      studt_coordinator: this.deligatevote[11],
-      member_berlin: this.deligatevote[12],
-      member_hamburg: this.deligatevote[13],
-      member_nsachsen: this.deligatevote[14],
-      member_nrw: this.deligatevote[15],
-      member_hessen: this.deligatevote[16],
-      member_rhein_pfalz: this.deligatevote[17],
-      member_bayern: this.deligatevote[18],
-      no_vote_option: this.deligatevote[19]
+      no_vote_option: this.deligatevote[0],
+      member: this.deligatevote[1]
     };
   },
   computed: {
@@ -26362,6 +26404,97 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=template&id=63c79235":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=template&id=63c79235 ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "flex flex-col justify-center mt-10"
+};
+var _hoisted_2 = {
+  "class": "m-auto"
+};
+var _hoisted_3 = {
+  "class": "flex flex-col justify-center px-2 m-2"
+};
+var _hoisted_4 = {
+  "class": "flex flex-col justify-center space-x-4 items-center p-4 mb-2 m-auto font-bold text-gray-900 "
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "for": "voting_code",
+  "class": "px-4 py-2 mb-3"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " Your voting code is: 1234 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " Please enter your voting Code."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " यहाँलाई पाउनु भएको यो भोटिङ कोड तलको खाली ठाउमा भरेर वटन थिच्नु होला । ")], -1
+/* HOISTED */
+);
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "mx-auto my-4 w-full"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  type: "submit",
+  "class": "m-2 px-2 py-4 rounded-lg bg-blue-300 w-96 mx-auto font-bold text-gray-900"
+}, " SEND CODE TO GET VOTING FORM")], -1
+/* HOISTED */
+);
+
+var _hoisted_7 = {
+  "class": "mx-auto text-center"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_jet_validation_errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-validation-errors");
+
+  var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
+
+  var _component_nrna_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("nrna-layout");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_nrna_layout, null, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_app_layout, null, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_validation_errors, {
+            "class": "mb-4  mx-auto text-center "
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\r\n                  //   {{name}}\r\n                  //  {{nrna_id}}\r\n                  //    {{state}}\r\n                  ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+            onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+              return $setup.submit && $setup.submit.apply($setup, arguments);
+            }, ["prevent"])),
+            "class": " text-center mx-auto mt-10"
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+            "class": " px-4 py-6 rounded-lg bg-gray-200 w-96 \r\n                   font-bold border border-blue-400  text-gray-900 font-bold text-xl",
+            id: "voting_id",
+            placeholder: "PLEASE ENTER HERE YOUR VOTING CODE",
+            "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+              return $setup.form.voting_code = $event;
+            })
+          }, null, 512
+          /* NEED_PATCH */
+          ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.voting_code]])]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_validation_errors, {
+            "class": "mb-4  mx-auto text-center "
+          })])])], 32
+          /* HYDRATE_EVENTS */
+          )])];
+        }),
+        _: 1
+        /* STABLE */
+
+      })];
+    }),
+    _: 1
+    /* STABLE */
+
+  });
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/DeligateVote/CreateDeligateVote.vue?vue&type=template&id=34cb70b2":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/DeligateVote/CreateDeligateVote.vue?vue&type=template&id=34cb70b2 ***!
@@ -26414,9 +26547,9 @@ var _hoisted_9 = {
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "flex flex-col text-xl font-bold text-gray-900"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", null, " Please choose one Candidate as the ICC Member. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", null, " Please choose 30 deligates for the ICC global conference"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "p-2"
-}, " कृपया एक जना लाई आइसीसी सदस्य चुन्नुहोस । ")], -1
+}, " कृपया ३० जना डेलिगेटहरु चुन्नुहोस । ")], -1
 /* HOISTED */
 );
 
@@ -26524,38 +26657,38 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return $setup.submit && $setup.submit.apply($setup, arguments);
             }, ["prevent"])),
             "class": " text-center mx-auto mt-10"
-          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Two divs \r\n            **First : Voting option \r\n            **Second no vote option            \r\n            "), !_this.no_vote_option ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Here starts the voting option  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ****************ICC Member ******************************************************************************************************** "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div id=\"first_vote_window\"  "), _this.icc_members.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" here starts: icc "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.icc_members, function (icc_member, pIndx) {
+          }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Two divs \r\n            **First : Voting option \r\n            **Second no vote option            \r\n            "), !_this.no_vote_option ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Here starts the voting option  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ****************ICC Member ******************************************************************************************************** "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div id=\"first_vote_window\"  "), _this.icc_members.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" here starts: icc "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.icc_members, function (member, pIndx) {
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
               key: pIndx,
               "class": "flex flex-col justify-center p-4 mb-2 text-center  \r\n                              border border-gray-100 rounded"
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_show_candidate, {
-              candidacy_image_path: icc_member.image_path_1,
-              post_name: icc_member.post_name,
+              candidacy_image_path: member.image_path_1,
+              post_name: member.post_name,
               post_nepali_name: "आइसीसी सदस्य",
-              candidacy_name: icc_member.candidacy_name
+              candidacy_name: member.candidacy_name
             }, null, 8
             /* PROPS */
             , ["candidacy_image_path", "post_name", "candidacy_name"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" here starts "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
               type: "checkbox",
-              id: icc_member.user_id,
-              name: icc_member.post_name,
-              value: icc_member.candidacy_id,
+              id: member.user_id,
+              name: member.post_name,
+              value: member.candidacy_id,
               "onUpdate:modelValue": function onUpdateModelValue($event) {
-                return $setup.form.icc_member = $event;
+                return $setup.form.member = $event;
               },
               "class": "p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 \r\n                              focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
               onChange: function onChange($event) {
-                return $options.updateBoxes(_this.icc_members, _this.form.icc_member, _this.icc_memberTicks);
+                return $options.updateBoxes(_this.members, _this.form.member, _this.memberTicks);
               },
-              disabled: icc_member.disabled
+              disabled: member.disabled
             }, null, 40
             /* PROPS, HYDRATE_EVENTS */
-            , ["id", "name", "value", "onUpdate:modelValue", "onChange", "disabled"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.form.icc_member]])])]);
+            , ["id", "name", "value", "onUpdate:modelValue", "onChange", "disabled"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.form.member]])])]);
           }), 128
           /* KEYED_FRAGMENT */
-          ))]), $setup.form.icc_member.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.find_selected_name(_this.icc_members, _this.form.icc_member)), 1
+          ))]), $setup.form.member.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.find_selected_name(_this.icc_members, _this.form.member)), 1
           /* TEXT */
-          ), _hoisted_16])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End of Voting option   "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ****************NO vode option ******************************************************************************************* "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ****************NO vode option ******************************************************************************************* "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ****************NO vode option ******************************************************************************************* "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Here comes the no vote Button  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+          ), _hoisted_16])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next ")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End of Voting option   "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ****************NO vode option ******************************************************************************************* "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Here comes the no vote Button  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
             type: "checkbox",
             id: $data.no_vote_option,
             name: $data.no_vote_option,
@@ -27271,7 +27404,7 @@ var _hoisted_5 = {
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "for": "voting_code",
   "class": "px-4 py-2 mb-3"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " Vote Conformation Code "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " Please check the deligatevote what you have casted. Finally conform it by inserting the code you got sencod time. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "यहाँले गर्नु भएको मतदान यो पेजमा देखाइएको छ। साथी यहाँको एसएमएसमा पनि पठाइएको छ। अब यहाँले गर्नु भएको मतदान अली त्यो एसएमएस मा पठाइएको पुस्टी कोड हालेर आफ्नो मतदान लाई सेभ गर्न बत्तन थिच्नुहोस्। ")], -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " Deligate Vote Conformation Code "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, " Please check first the deligates you have selected. Finally conform it by inserting the code . Your code : 4321 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "यहाँले गर्नु भएको मतदान यो पेजमा देखाइएको छ। अब यहाँले गर्नु भएको मतदान लाई पुस्टी कोड हालेर आफ्नो मतदान लाई सेभ गर्न बत्तन थिच्नुहोस्। ")], -1
 /* HOISTED */
 );
 
@@ -27360,75 +27493,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           })])])], 32
           /* HYDRATE_EVENTS */
           )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" next  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, $data.no_vote_option ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_11, [_hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.icc_member
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.president
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.vp
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.general_secretary
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.secretary
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.treasure
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.w_coordinator
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.y_coordinator
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.cult_coordinator
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.child_coordinator
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.studt_coordinator
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.member_berlin
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.member_hamburg
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.member_nsachsen
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.member_nrw
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.member_hessen
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.member_rhein_pfalz
-          }, null, 8
-          /* PROPS */
-          , ["candidate"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_voted_post, {
-            candidate: $data.member_bayern
+            candidate: $data.member
           }, null, 8
           /* PROPS */
           , ["candidate"])]))])])];
@@ -60147,6 +60212,32 @@ _IndexDeligateCandidacy_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__
 
 /***/ }),
 
+/***/ "./resources/js/Pages/DeligateVote/CreateDeligateCode.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/Pages/DeligateVote/CreateDeligateCode.vue ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CreateDeligateCode_vue_vue_type_template_id_63c79235__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateDeligateCode.vue?vue&type=template&id=63c79235 */ "./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=template&id=63c79235");
+/* harmony import */ var _CreateDeligateCode_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateDeligateCode.vue?vue&type=script&lang=js */ "./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=script&lang=js");
+
+
+
+_CreateDeligateCode_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _CreateDeligateCode_vue_vue_type_template_id_63c79235__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_CreateDeligateCode_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/DeligateVote/CreateDeligateCode.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_CreateDeligateCode_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/DeligateVote/CreateDeligateVote.vue":
 /*!****************************************************************!*\
   !*** ./resources/js/Pages/DeligateVote/CreateDeligateVote.vue ***!
@@ -61666,6 +61757,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=script&lang=js":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateDeligateCode_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateDeligateCode_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CreateDeligateCode.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/DeligateVote/CreateDeligateVote.vue?vue&type=script&lang=js":
 /*!****************************************************************************************!*\
   !*** ./resources/js/Pages/DeligateVote/CreateDeligateVote.vue?vue&type=script&lang=js ***!
@@ -62930,6 +63037,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=template&id=63c79235":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=template&id=63c79235 ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateDeligateCode_vue_vue_type_template_id_63c79235__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_CreateDeligateCode_vue_vue_type_template_id_63c79235__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./CreateDeligateCode.vue?vue&type=template&id=63c79235 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/DeligateVote/CreateDeligateCode.vue?vue&type=template&id=63c79235");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/DeligateVote/CreateDeligateVote.vue?vue&type=template&id=34cb70b2":
 /*!**********************************************************************************************!*\
   !*** ./resources/js/Pages/DeligateVote/CreateDeligateVote.vue?vue&type=template&id=34cb70b2 ***!
@@ -63794,6 +63917,8 @@ var map = {
 	"./Dashboard_backup. copy.vue": "./resources/js/Pages/Dashboard_backup. copy.vue",
 	"./DeligateCandidacy/IndexDeligateCandidacy": "./resources/js/Pages/DeligateCandidacy/IndexDeligateCandidacy.vue",
 	"./DeligateCandidacy/IndexDeligateCandidacy.vue": "./resources/js/Pages/DeligateCandidacy/IndexDeligateCandidacy.vue",
+	"./DeligateVote/CreateDeligateCode": "./resources/js/Pages/DeligateVote/CreateDeligateCode.vue",
+	"./DeligateVote/CreateDeligateCode.vue": "./resources/js/Pages/DeligateVote/CreateDeligateCode.vue",
 	"./DeligateVote/CreateDeligateVote": "./resources/js/Pages/DeligateVote/CreateDeligateVote.vue",
 	"./DeligateVote/CreateDeligateVote.vue": "./resources/js/Pages/DeligateVote/CreateDeligateVote.vue",
 	"./DeligateVote/ShowDeligateVote": "./resources/js/Pages/DeligateVote/ShowDeligateVote.vue",

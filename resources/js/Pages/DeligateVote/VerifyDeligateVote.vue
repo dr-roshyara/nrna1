@@ -13,9 +13,9 @@
                 <div class="flex flex-col justify-center px-2 m-2"> 
                     <div class="flex flex-col justify-center space-x-4 items-center p-4 mb-2 m-auto font-bold text-gray-900 ">
                     <label for="voting_code"  class="px-4 py-2 mb-3"> 
-                        <p> Vote Conformation  Code </p>
-                        <p> Please check the deligatevote what you have casted. Finally conform it by inserting the code  you got  sencod time. </p> 
-                        <p>यहाँले गर्नु भएको मतदान यो पेजमा देखाइएको छ। साथी यहाँको एसएमएसमा पनि पठाइएको छ। अब यहाँले गर्नु भएको मतदान अली त्यो एसएमएस मा पठाइएको पुस्टी कोड हालेर आफ्नो मतदान लाई सेभ गर्न बत्तन थिच्नुहोस्। </p>  
+                        <p> Deligate Vote Conformation  Code </p>
+                        <p> Please check first the deligates  you have selected. Finally conform it by inserting the code . Your code : 4321 </p> 
+                        <p>यहाँले गर्नु भएको मतदान यो पेजमा देखाइएको छ। अब यहाँले गर्नु भएको मतदान लाई  पुस्टी कोड हालेर आफ्नो मतदान लाई सेभ गर्न बत्तन थिच्नुहोस्। </p>  
                     </label>   
                     <input class=" px-4 py-6 rounded-lg bg-gray-200 w-auto
                     font-bold border border-blue-400  text-gray-900 font-bold text-xl" 
@@ -45,24 +45,8 @@
             <span class="text-gray-900 font-bold">  Please conform it </span>
         </div>
         <div v-else class=" mx-auto w-full">
-             <voted-post v-bind:candidate ="icc_member"></voted-post> 
-            <voted-post v-bind:candidate ="president"></voted-post> 
-           <voted-post v-bind:candidate ="vp"></voted-post> 
-            <voted-post v-bind:candidate ="general_secretary"></voted-post>     
-             <voted-post v-bind:candidate ="secretary"></voted-post> 
-              <voted-post v-bind:candidate ="treasure"></voted-post>
-               <voted-post v-bind:candidate ="w_coordinator"></voted-post>  
-                <voted-post v-bind:candidate ="y_coordinator"></voted-post>      
-                 <voted-post v-bind:candidate ="cult_coordinator"></voted-post>  
-                  <voted-post v-bind:candidate ="child_coordinator"></voted-post>  
-                <voted-post v-bind:candidate ="studt_coordinator"></voted-post>
-                <voted-post v-bind:candidate ="member_berlin"></voted-post>
-                <voted-post v-bind:candidate ="member_hamburg"></voted-post>
-                <voted-post v-bind:candidate ="member_nsachsen"></voted-post>
-                <voted-post v-bind:candidate ="member_nrw"></voted-post>
-                <voted-post v-bind:candidate ="member_hessen"></voted-post>
-                <voted-post v-bind:candidate ="member_rhein_pfalz"></voted-post>
-                <voted-post v-bind:candidate ="member_bayern"></voted-post>
+             <voted-post v-bind:candidate ="member"></voted-post> 
+           
 
         </div> 
          </div>
@@ -100,26 +84,8 @@ export default {
   }, 
     data(){
         return {
-           icc_member:               this.deligatevote[0],
-           president:                this.deligatevote[1],
-           vp:                       this.deligatevote[2],
-           wwp:                      this.deligatevote[3],
-           general_secretary:        this.deligatevote[4],
-           secretary:                this.deligatevote[5],
-           treasure:                  this.deligatevote[6],
-           w_coordinator:             this.deligatevote[7],
-           y_coordinator:              this.deligatevote[8],  
-           cult_coordinator:          this.deligatevote[9],
-           child_coordinator:          this.deligatevote[10],
-           studt_coordinator:          this.deligatevote[11],
-           member_berlin:              this.deligatevote[12],
-           member_hamburg:              this.deligatevote[13],
-           member_nsachsen:             this.deligatevote[14],
-           member_nrw:                  this.deligatevote[15],
-           member_hessen:               this.deligatevote[16],
-           member_rhein_pfalz:          this.deligatevote[17],          
-           member_bayern:               this.deligatevote[18],
-            no_vote_option:             this.deligatevote[19]
+            no_vote_option:             this.deligatevote[0],
+            member:                    this.deligatevote[1]
          
          
            

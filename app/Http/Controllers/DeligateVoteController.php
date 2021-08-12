@@ -98,25 +98,9 @@ class DeligateVoteController extends Controller
         //    dd($input_data);
 
             //no_vote option is saved in 19 
-             $no_vote_option  =$input_data[19];   
-            if($no_vote_option) { //check if voter has given no_vote  option 
-                // Go for no deligatevote option 
-                $deligatevote                   =new DeligateVote; 
-                $deligatevote->no_vote_option   =1;
-                $deligatevote->user_id          =$this->user_id;  
-                $deligatevote->save();        
-
-          }else{
-             /**
-              * Here you save the deligatevote finally :
-              * G
-              */ 
-                $deligatevote                = new DeligateVote;
-                $deligatevote->user_id       = $this->user_id;
-                $this->save_vote($input_data);
-               
-            }    
-            //save the deligatevote and save the user has voted
+            
+             $this->save_vote($input_data);   
+        
           
 
         }else{
@@ -227,7 +211,7 @@ class DeligateVoteController extends Controller
        }    
        if(!$btemp){
            $validator->after(function ($validator) {
-                 $validator->errors()->add('Nothing_Slected: ',"You must either deligatevote at least one canidate or use your right to reject all candidates!");              
+                 $validator->errors()->add('Nothing_Slected: ',"You must either select at least one deligate or use your right to reject all deligates!");              
            });
        }    
                
@@ -261,26 +245,8 @@ class DeligateVoteController extends Controller
        
        //    $request->session()->put('deligatevote', $deligatevote);
           $candi_vec =[];
-          array_push($candi_vec,  $this->get_candidate('icc_member'));
-          array_push($candi_vec,  $this->get_candidate('president'));
-          array_push($candi_vec, $this->get_candidate('vice_president'));
-          array_push($candi_vec, $this->get_candidate('wvp'));
-          array_push($candi_vec, $this->get_candidate('general_secretary'));
-          array_push($candi_vec, $this->get_candidate('secretary'));
-          array_push($candi_vec, $this->get_candidate('treasure'));
-          array_push($candi_vec, $this->get_candidate('w_coordinator'));
-          array_push($candi_vec, $this->get_candidate('y_coordinator'));
-          array_push($candi_vec, $this->get_candidate('cult_coordinator'));
-          array_push($candi_vec, $this->get_candidate('child_coordinator'));
-          array_push($candi_vec, $this->get_candidate('studt_coordinator'));
-            array_push($candi_vec, $this->get_candidate('member_berlin'));
-          array_push($candi_vec, $this->get_candidate('member_hamburg'));
-          array_push($candi_vec, $this->get_candidate('member_nsachsen'));
-          array_push($candi_vec, $this->get_candidate('member_nrw'));
-          array_push($candi_vec, $this->get_candidate('member_hessen'));
-          array_push($candi_vec,  $this->get_candidate('member_rhein_pfalz'));
-           array_push($candi_vec,  $this->get_candidate('member_bayern'));
-           array_push($candi_vec, request('no_vote_option'));
+          array_push($candi_vec, request('no_vote_option'));
+          array_push($candi_vec,  $this->get_candidate('member'));
         //    dd($candi_vec);
              $request->session()->put('deligatevote', $candi_vec);
            // session(['deligatevote'=>$candi_vec]);
@@ -322,25 +288,8 @@ class DeligateVoteController extends Controller
    
     $btemp = false; 
     $btemp =request('no_vote_option');
-    $btemp =$btemp | sizeof(request('icc_member'))>0;
-    $btemp =$btemp | sizeof(request('president'))>0;
-     $btemp =$btemp | sizeof(request('vice_president'))>0;
-    $btemp =$btemp | sizeof(request('wvp'))>0;
-    $btemp =$btemp | sizeof(request('general_secretary'))>0;
-    $btemp =$btemp | sizeof(request('secretary'))>0;
-    $btemp =$btemp | sizeof(request('treasure'))>0;
-    $btemp =$btemp | sizeof(request('w_coordinator'))>0;
-    $btemp =$btemp | sizeof(request('y_coordinator'))>0;
-    $btemp =$btemp | sizeof(request('cult_coordinator'))>0;
-    $btemp =$btemp | sizeof(request('child_coordinator'))>0;
-    $btemp =$btemp | sizeof(request('studt_coordinator'))>0;
-    $btemp =$btemp | sizeof(request('member_berlin'))>0;
-    $btemp =$btemp | sizeof(request('member_hamburg'))>0;
-    $btemp =$btemp | sizeof(request('member_nsachsen'))>0;
-    $btemp =$btemp | sizeof(request('member_nrw'))>0;
-    $btemp =$btemp | sizeof(request('member_hessen'))>0;
-    $btemp =$btemp | sizeof(request('member_rhein_pfalz'))>0;
-    $btemp =$btemp | sizeof(request('member_bayern'))>0;
+    $btemp =$btemp | sizeof(request('member'))>0;
+  
 
 
     return $btemp;
@@ -432,209 +381,30 @@ public function verify_vote_submit()
 //save all candidates 
 public function save_vote($input_data){
             
-            $deligatevote                =new DeligateVote;
-            $deligatevote->user_id       =$this->user_id;
-            // dd($input_data);
-            //icc member 
-            $icc_member                =$input_data[0];
+             dd($input_data);
+             $no_vote_option                 =$input_data[19];   
+             $deligatevote                   =new DeligateVote; 
+             $deligatevote->user_id          =$this->user_id;               
+            if($no_vote_option) { //check if voter has given no_vote  option 
+                // Go for no deligatevote option 
+                $deligatevote->no_vote_option   =1;
+                $deligatevote->save();        
+
+             }else{
+    
+             $post                =$input_data[0];
             if(sizeof($icc_member)>0){
                 //   dd($icc_member[0]["candidacy_name"]);
-                $deligatevote['icc_member1_name']  =$icc_member[0]["candidacy_name"];
-                $deligatevote['icc_member1_id']    =$icc_member[0]["candidacy_id"];
+                $deligatevote['icc_member1_name']  =$post[0]["candidacy_name"];
+                $deligatevote['icc_member1_id']    =$post[0]["candidacy_id"];
 
-            }
-
-             // president 
-            $president                    =$input_data[1];
-            if(sizeof($president)>0){
-                $deligatevote['president_name']  =$president[0]["candidacy_name"];
-                $deligatevote['president_id']    =$president[0]["candidacy_id"];
-
-            }
-            
-             //Vice President  
-            $post                              =$input_data[2];
-            if(sizeof($president)>0){
-                $deligatevote['vice_president1_name']  =$post[0]["candidacy_name"];
-                $deligatevote['vice_president1_id']    =$post[0]["candidacy_id"];
-
-            }
-            //Vice President  
-            if(sizeof($post)>1){
-                $deligatevote['vice_president2_name']  =$post[1]["candidacy_name"];
-                $deligatevote['vice_president2_id']    =$post[1]["candidacy_id"];
-
-            }
-          
-              $post                             =$input_data[3];
-            if(sizeof($post)>0){
-                $deligatevote['woman_vice_president_id']  =$post[0]["candidacy_id"];
-                $deligatevote['woman_vice_president_name']    =$post[0]["candidacy_name"];
-
-            }
-            //general secretary  4th data 
-            $post                             =$input_data[4];
-            if(sizeof($post)>0){
-                $deligatevote['general_secretary_id']  =$post[0]["candidacy_id"];
-                $deligatevote['general_secretary_name']    =$post[0]["candidacy_name"];
-
-            }
-            //Secretary 
-            $post                              =$input_data[5];
-            if(sizeof($post)>0){
-                $deligatevote['secretary1_id']          =$post[0]["candidacy_id"];
-                $deligatevote['secretary1_name']        =$post[0]["candidacy_name"];
-
-            }
-               //Secretary 
-               if(sizeof($post)>1){
-                $deligatevote['secretary2_id']   =$post[1]["candidacy_id"];
-                $deligatevote['secretary2_name']   =$post[1]["candidacy_name"];
-
-            }
-            //Treasure 
-              $post                              =$input_data[6];
-             if(sizeof($post)>0){
-                $deligatevote['treasure_id']   =$post[0]["candidacy_id"];
-                $deligatevote['treasure_name']   =$post[0]["candidacy_name"];
-
-            }
-            //woman_coordinator_id 
-              $post                              =$input_data[7];
-             if(sizeof($post)>0){
-                $deligatevote['woman_coordinator_id']   =$post[0]["candidacy_id"];
-                $deligatevote['woman_coordinator_name']   =$post[0]["candidacy_name"];
-
-            }
-         //youth_coordinator_id 
-              $post                              =$input_data[8];
-             if(sizeof($post)>0){
-                $deligatevote['youth_coordinator_id']   =$post[0]["candidacy_id"];
-                $deligatevote['youth_coordinator_name']   =$post[0]["candidacy_name"];
-
-            }
-            //culture_coordinator_id 
-              $post                              =$input_data[9];
-             if(sizeof($post)>0){
-                $deligatevote['culture_coordinator_id']   =$post[0]["candidacy_id"];
-                $deligatevote['culture_coordinator_name']   =$post[0]["candidacy_name"];
-
-            }
-             //children_coordinator_id 
-              $post                                 =$input_data[10];
-             if(sizeof($post)>0){
-                $deligatevote['children_coordinator_id']    =$post[0]["candidacy_id"];
-                $deligatevote['children_coordinator_name']   =$post[0]["candidacy_name"];
-
-            }
-             //student_coordinator_id 
-              $post                              =$input_data[11];
-             if(sizeof($post)>0){
-                $deligatevote['student_coordinator_id']   =$post[0]["candidacy_id"];
-                $deligatevote['student_coordinator_name']   =$post[0]["candidacy_name"];
-
-            }
-            //member_berlin1_id 
-              $post                              =$input_data[12];
-             if(sizeof($post)>0){
-                $deligatevote['member_berlin1_id']   =$post[0]["candidacy_id"];
-                $deligatevote['member_berlin1_name']   =$post[0]["candidacy_name"];
-
-            }
-
-             if(sizeof($post)>1){
-                $deligatevote['member_berlin2_id']   =$post[1]["candidacy_id"];
-                $deligatevote['member_berlin2_name']   =$post[1]["candidacy_name"];
-
-            }
-            //member_hamburg1_id 
-              $post                              =$input_data[13];
-             if(sizeof($post)>0){
-                $deligatevote['member_hamburg1_id']   =$post[0]["candidacy_id"];
-                $deligatevote['member_hamburg1_id']   =$post[0]["candidacy_name"];
-
-            }
-
-              if(sizeof($post)>1){
-                $deligatevote['member_hamburg2_id']   =$post[1]["candidacy_id"];
-                $deligatevote['member_hamburg2_id']   =$post[1]["candidacy_name"];
-
-            } 
-            //  'member_niedersachsen1_id
-            
-              $post                              =$input_data[14];
-             if(sizeof($post)>0){
-                $deligatevote['member_niedersachsen1_id']   =$post[0]["candidacy_id"];
-                $deligatevote['member_niedersachsen1_name']   =$post[0]["candidacy_name"];
-
-            }
-
-               if(sizeof($post)>1){
-                $deligatevote['member_niedersachsen2_id']   =$post[1]["candidacy_id"];
-                $deligatevote['member_niedersachsen2_name']   =$post[1]["candidacy_name"];
-
-            }
-
-            //member_nrw1_id
-              $post                              =$input_data[15];
-             if(sizeof($post)>0){
-                $deligatevote['member_nrw1_id']   =$post[0]["candidacy_id"];
-                $deligatevote['member_nrw1_name']   =$post[0]["candidacy_name"];
-
-            }
-
-              if(sizeof($post)>1){
-                $deligatevote['member_nrw2_id']   =$post[1]["candidacy_id"];
-                $deligatevote['member_nrw2_name']   =$post[1]["candidacy_name"];
-
-            }
-            //member_hessen1_id 
-              $post                              =$input_data[16];
-             if(sizeof($post)>0){
-                $deligatevote['member_hessen1_id']   =$post[0]["candidacy_id"];
-                $deligatevote['member_hessen1_name']   =$post[0]["candidacy_name"];
-
-            }
-
-            if(sizeof($post)>1){
-                $deligatevote['member_hessen2_id']   =$post[1]["candidacy_id"];
-                $deligatevote['member_hessen2_name']   =$post[1]["candidacy_name"];
-
-            }
-            //member_rheinland_pfalz1_id 
-              $post                              =$input_data[17];
-             if(sizeof($post)>0){
-                $deligatevote['member_rheinland_pfalz1_id']   =$post[0]["candidacy_id"];
-                $deligatevote['member_rheinland_pfalz1_name']   =$post[0]["candidacy_name"];
-
-            }
-
-               if(sizeof($post)>1){
-                $deligatevote['member_rheinland_pfalz2_id']   =$post[1]["candidacy_id"];
-                $deligatevote['member_rheinland_pfalz2_name']   =$post[1]["candidacy_name"];
-
-            }
-            //member_bayern1_id 
-              $post                              =$input_data[18];
-          
-             if(sizeof($post)>0){
-                $deligatevote['member_bayern1_id']   =$post[0]["candidacy_id"];
-                $deligatevote['member_bayern1_name']   =$post[0]["candidacy_name"];
-
-            }
-             if(sizeof($post)>1){
-                $deligatevote['member_bayern2_id']   =$post[1]["candidacy_id"];
-                $deligatevote['member_bayern2_name']   =$post[1]["candidacy_name"];
-
-            }
-            
-
-
-          //  
+            }         //  
+         }
         $deligatevote->save();
         $user =Auth::user();
         $user->has_voted=1;
         $user->save();
+     
 }
 //deligatevote thanks 
 public function thankyou(){
