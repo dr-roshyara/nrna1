@@ -22,68 +22,77 @@ class CreateDeligateVotesTable extends Migration
             $table->boolean('no_vote_option')->default(0);
             
             //member #1
-            $table->BigInteger('mmeber1_id')->unsigned()->nullable();
+            $table->string('member1_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber2_id')->unsigned()->nullable();
+            $table->string('member2_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber3_id')->unsigned()->nullable();
+            $table->string('member3_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber4_id')->unsigned()->nullable();
+            $table->string('member4_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber5_id')->unsigned()->nullable();
+            $table->string('member5_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber6_id')->unsigned()->nullable();
+            $table->string('member6_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber7_id')->unsigned()->nullable();
+            $table->string('member7_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber8_id')->unsigned()->nullable();
+            $table->string('member8_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber9_id')->unsigned()->nullable();
+            $table->string('member9_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber10_id')->unsigned()->nullable();
+            $table->string('member10_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber11_id')->unsigned()->nullable();
+            $table->string('member11_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber12_id')->unsigned()->nullable();
+            $table->string('member12_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber13_id')->unsigned()->nullable();
+            $table->string('member13_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber14_id')->unsigned()->nullable();
+            $table->string('member14_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber15_id')->unsigned()->nullable();
+            $table->string('member15_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber16_id')->unsigned()->nullable();
+            $table->string('member16_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber17_id')->unsigned()->nullable();
+            $table->string('member17_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber18_id')->unsigned()->nullable();
+            $table->string('member18_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber19_id')->unsigned()->nullable();
+            $table->string('member19_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber20_id')->unsigned()->nullable();
+            $table->string('member20_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber21_id')->unsigned()->nullable();
+            $table->string('member21_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber22_id')->unsigned()->nullable();
+            $table->string('member22_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber23_id')->unsigned()->nullable();
+            $table->string('member23_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber24_id')->unsigned()->nullable();
+            $table->string('member24_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber25_id')->unsigned()->nullable();
+            $table->string('member25_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber26_id')->unsigned()->nullable();
+            $table->string('member26_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber27_id')->unsigned()->nullable();
+            $table->string('member27_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber28_id')->unsigned()->nullable();
+            $table->string('member28_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber29_id')->unsigned()->nullable();
+            $table->string('member29_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber30_id')->unsigned()->nullable();
+            $table->string('member30_id')->nullable();
             //member #1
-            $table->BigInteger('mmeber31_id')->unsigned()->nullable();
-
+            $table->string('member31_id')->nullable();
+            //member #1
+            $table->string('member32_id')->nullable();
+            //member #1
+            $table->string('member33_id')->nullable();
+            //member #1
+            $table->string('member34_id')->nullable();
+            //member #1
+            $table->string('member35_id')->nullable();
+            
+            //member #1
             $table->timestamps();
 
             $table->foreign('user_id') 

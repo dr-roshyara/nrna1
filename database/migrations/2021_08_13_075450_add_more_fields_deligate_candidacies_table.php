@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeligatePostsTable extends Migration
+class AddMoreFieldsDeligateCandidaciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateDeligatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('deligate_posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
-        });
-        
+        //
+        Schema::table('deligate_candidacies', function (Blueprint $table) {
+            $table->string('image_path_1')->nullable();
+        });   
     }
 
     /**
@@ -28,6 +26,6 @@ class CreateDeligatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deligate_posts');
+        Schema::dropIfExists('deligate_candidacies');
     }
 }

@@ -38,7 +38,7 @@
         </div>
          <!-- next  -->           
          <div class="flex flex-col px-2 mt-6 w-full bg-gray-50 ml-2">
-           <p class="p-2 mx-auto text-xl text-gray-900 font-bold"> Your deligatevote  </p>  
+           <p class="p-2 mx-auto text-xl text-gray-900 font-bold"> You have selected the following deligates </p>  
             
         <div v-if="no_vote_option" class="text-center">   
              You have selected a <span class="text-red-800 font-bold " >  VOTE FOR NO ONE </span>option .<br>
@@ -59,7 +59,7 @@
     </nrna-layout> 
 </template>
 <script>
-import VotedPost from "@/Shared/VotedPost"
+import VotedPost from "@/Shared/DeligateVotedPost"
 import { useForm } from '@inertiajs/inertia-vue3'
 import JetValidationErrors from '@/Jetstream/ValidationErrors' 
 import AppLayout from '@/Layouts/AppLayout'

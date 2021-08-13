@@ -2,28 +2,12 @@
 <nrna-layout>
      <app-layout>
      <div class="mt-6 text-center">  
-          <div class="m-auto text-center bg-blue-200 py-4 ">  
-               <p class="m-auto text-blue-700 font-bold text-sm"> Congratulation {{user_name}}! </p> 
-               <p class="m-auto"> Thank You for your deligatevote. Please keep your passowrd very secret. Also please do not  ask others to show their deligatevote. 
-                    For verification of the result, this deligatevote will be deleted only after one month. </p>
-               <p>यहाँले मतदान गर्नु भएकोमा धेरै धन्यवाद। आफ्नो मतलाई गोप्य राख्नु यहाँको कर्तब्य हो । यसैले कृपया आफ्नो पासवर्ड अरुलाई नदिनु होला ।  
-                    प्राप्त मतहरुको पुनर्पुष्ठी गर्नको लाई यहाँको यो मत  अबको एक महिना पछी मात्रा डिलेट हुने छ। 
-               </p>
         
-          </div>
-           <!-- {{deligatevote}} -->
-           <div v-if="deligatevote.no_vote_option" class="mt-10 p-2 mx-auto "> 
-                
-                <p class =" text-xl font-bold text-gray-900"> You have used 
-                <span class="text-red-600" > your right to reject </span> all candidates.</p> 
- 
-          </div> 
-         
-          <div v-else class="flex flex-col justify-center  py-4 px-6  ">         
+          <div  class="flex flex-col justify-center  py-4 px-6  ">          
             <!--  here we put the candidate -->
                      <p class="px-2 mx-auto py-2 text-gray-900 font-bold text-xl"> 
-                          Your Vote  </p>
-                    <table class=" m-4 text-left" v-if="deligatevote">
+                          Final Result </p>
+                    <table class=" m-4 text-left" v-if="deligate_result">
                         <tr class="border-b-2 border-gray-400">
                            <th class="p-1">S.N.</th>
                              <th class="p-1">Post</th>
@@ -31,15 +15,17 @@
                               <th class="p-1">NRNA ID</th>
                                 <th class="p-1">State</th>
                               <th class="p-1">Deligate Name</th>
+                              <th class="p-1">Total Vote </th>
 
                         </tr>
-                        <tr v-for="(deligate, deliIdx) in  deligatevote.deligatevote" >
+                        <tr v-for="(deligate, deliIdx) in  deligate_result" >
                             <td class="p-1">{{ deliIdx+1 }}</td>
                             <td  class="p-1">Diligate Member</td>
                              <td class="p-1">{{ deligate.id }}</td>
                              <td class="p-1">{{ deligate.nrna_id }}</td>
                              <td class="p-1">{{ deligate.state }}</td>
                              <td  class="p-1"> {{ deligate.name }} </td>
+                             <td  class="p-1"> {{ deligate.vote }} </td> 
                         </tr>                            
                     </table>
           </div>
@@ -54,7 +40,7 @@ import AppLayout  from '@/Layouts/AppLayout'
 export default {
   components: { NrnaLayout }, 
     props:{
-         deligatevote: Object 
+         deligate_result: Object 
     },
     data(){
          return {

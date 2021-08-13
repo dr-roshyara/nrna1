@@ -21,8 +21,9 @@
 
                   <!-- ****************ICC Member ******************************************************************************************************** -->       
                     <!-- <div id="first_vote_window"  -->
+                      <!-- {{members}} -->
                   <div id="first_vote_window" 
-                      v-if ="this.icc_members.length>0" 
+                      v-if ="this.members.length>0" 
                      class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">      
                     <div class="flex flex-col text-xl font-bold text-gray-900">
                       <label> Please choose 30 deligates  for the ICC global conference</label> 
@@ -30,14 +31,14 @@
                     </div>
                       <!-- here starts: icc -->
                       <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
-                          <div  v-for="(member, pIndx) in icc_members" :key="pIndx"  
+                          <div  v-for="(member, pIndx) in members" :key="pIndx"  
                               class="flex flex-col justify-center p-4 mb-2 text-center  
                               border border-gray-100 rounded"> 
                               <show-candidate 
                               :candidacy_image_path ="member.image_path_1"
-                              :post_name          ="member.post_name"   
-                              post_nepali_name   ="आइसीसी सदस्य"  
-                              :candidacy_name     ="member.candidacy_name">
+                              post_name          ="Deligate Member"   
+                              post_nepali_name   ="डेलिगेट सदस्य"  
+                              :candidacy_name     ="member.name">
                               </show-candidate>              
                                         <!-- here starts -->
                             <div class="px-2 py-2">
@@ -45,7 +46,7 @@
                               type      ="checkbox"
                               :id       ="member.user_id"
                               :name     ="member.post_name"
-                              :value    ="member.candidacy_id"  
+                              :value    ="member.nrna_id"  
                               v-model   ="form.member"
                               class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 
                               focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -59,7 +60,7 @@
 
                       </div> 
                         <div  class="mb-4 p-2" v-if="form.member.length"> You have selected 
-                        <span class="font-bold text-indigo-600"> {{find_selected_name(this.icc_members,this.form.member)}} </span> as President of NRNA Germany!
+                        <span class="font-bold text-indigo-600"> {{find_selected_name(this.members,this.form.member)}} </span> as President of NRNA Germany!
                       </div>
                    </div>
                     <!-- next -->
@@ -160,7 +161,7 @@ export default {
         *  They are saved in posts table . 
         */
         icc_member_post_id:           "2021_01",
-         member_post_id:               "1",
+         member_post_id:               1,
         
       //+---------------------------------+---------+  
    
@@ -177,7 +178,7 @@ export default {
           },
          
          memberTicks:{
-            limit: 3,
+            limit:10,
             ticks:[]
           },
         
@@ -289,8 +290,8 @@ export default {
         //
       
       // update the number of ticks...
-      // this.ticks = this.icc_members.filter(box => this.form.president.includes(box.candidacy_id));
-       tickObj.ticks = candiVec.filter(box => selectedVec.includes(box.candidacy_id));
+      // this.ticks = this.members.filter(box => this.form.president.includes(box.nrna_id));
+       tickObj.ticks = candiVec.filter(box => selectedVec.includes(box.nrna_id));
       // console.log("tick length: "+tickObj.ticks.length);
       
       // re-enable checkboxes if back under the limit...
@@ -303,18 +304,18 @@ export default {
       // disable empty checkboxes if at the limit...
       if (tickObj.ticks.length == tickObj.limit) {
         candiVec.forEach(box => {
-          // console.log("candidacy id: "+box.candidacy_id)
+          // console.log("candidacy id: "+box.nrna_id)
           // console.log(selectedVec); 
-          if (!selectedVec.includes(box.candidacy_id)) box.disabled = true;
+          if (!selectedVec.includes(box.nrna_id)) box.disabled = true;
         });
       }
      
     },
     create_candidates(pid){
       let candiArray =[]; 
-        //let pres =this.candidacies.data.find(item=>item.candidacy_id===1)
+        //let pres =this.candidacies.data.find(item=>item.nrna_id===1)
         // console.log(candi) 
-        let candi =this.candidacies.data.filter(item=>item.post_id===pid) 
+        let candi =this.candidacies.filter(item=>item.post_id===pid) 
       if(candi.length>1){
           candi[0].disabled =false
           candiArray  =candi
@@ -333,10 +334,10 @@ export default {
         // console.log(selected_id)
          let selected_names =[]
          candiVec.forEach(box => {
-          // console.log("candidacy id: "+box.candidacy_id) 
+          // console.log("candidacy id: "+box.nrna_id) 
           
           // console.log(selectedVec); 
-          if (selectedVec.includes(box.candidacy_id))  selected_names.push(box.candidacy_name);
+          if (selectedVec.includes(box.nrna_id))  selected_names.push(box.name);
         });
         let  elected_names =selected_names.join(',');
         return elected_names
@@ -347,9 +348,9 @@ export default {
         // console.log(selected_id)
          let selected_ids =[]
          candiVec.forEach(box => {
-          // console.log("candidacy id: "+box.candidacy_id)
+          // console.log("candidacy id: "+box.nrna_id)
           // console.log(selectedVec); 
-          if (selectedVec.includes(box.candidacy_id))  selected_ids.push(box.user_id);
+          if (selectedVec.includes(box.nrna_id))  selected_ids.push(box.user_id);
         });
         let  elected_user_ids =selected_ids.join(',');
         return elected_user_ids
@@ -367,7 +368,7 @@ export default {
         
 },
     SortByName(x,y) {
-      return ((x.candidacy_name == y.candidacy_name) ? 0 : ((x.candidacy_name > y.candidacy_name) ? 1 : -1 ));
+      return ((x.name == y.name) ? 0 : ((x.name > y.name) ? 1 : -1 ));
     },
 
     // Call Sort By Name

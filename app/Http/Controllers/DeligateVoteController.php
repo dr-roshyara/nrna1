@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DeligateVote;
 use App\Models\Candidacy;
+use App\Models\DeligateCandidacy;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -14,6 +15,52 @@ use Illuminate\Routing\Redirector;
 
 class DeligateVoteController extends Controller
 {
+    
+    public $deligatevote ; 
+    public $has_voted;
+    public $in_code ; 
+    public $out_code;
+    public $user_id;
+    public $member_keys;
+    
+    public function __construct(){
+        $this->member_keys =array(
+            "member1_id",
+            "member2_id",
+            "member3_id",
+            "member4_id",
+            "member5_id",
+            "member6_id",
+            "member7_id",
+            "member8_id",
+            "member9_id",
+            "member10_id",
+            "member11_id",
+            "member12_id",
+            "member13_id",
+            "member14_id",
+            "member15_id",
+            "member16_id",
+            "member17_id",
+            "member18_id",
+            "member19_id",
+            "member21_id",
+            "member22_id",
+            "member23_id",
+            "member24_id",
+            "member25_id",
+            "member26_id",
+            "member27_id",
+            "member28_id",
+            "member29_id",
+            "member30_id",
+            "member31_id",
+            "member32_id",
+            "member33_id",
+            "member34_id",
+            "member35_id");    
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -31,9 +78,9 @@ class DeligateVoteController extends Controller
      */
     public function create()
     {
-        //$candidacies = DB::table('candidacies')->get();     
-        $query =Candidacy::query();
-        $candidacies =$query->paginate(120); 
+        $candidacies = DB::table('deligate_candidacies')->get();     
+        // $query =DeligateCandidacy::query();
+        // $candidacies =$query->paginate(50); 
         $can_vote_now   =auth()->user()->can_vote_now;
         $has_voted      = auth()->user()->has_voted;  
         // $has_voted      =false;       
@@ -41,6 +88,7 @@ class DeligateVoteController extends Controller
         $lcc             =auth()->user()->lcc;
         // $lcc             ="Berlin";
         // dd($btemp);
+        // dd($candidacies);
         if(!$can_vote_now){
                 echo "Your code can not be verified";
                 abort(404);
@@ -137,13 +185,21 @@ class DeligateVoteController extends Controller
         //
         //   $deligatevote =auth()->user()->deligatevote();
         $this->user_id =auth()->user()->id;
-        $deligatevote  =User::find($this->user_id)->deligatevote;
+        $deligateVote  =User::find($this->user_id)->deligatevote;
         // $deligatevote  =['no_vote_option'=>1];
-        if($deligatevote){
+        if($deligateVote){
+     
+
+             $deligates =$this->prepare_deligate_vote($deligateVote);
+            
+             
+            //  dd($conformation_code); 
+            //    $vote_id =$deligateVote;
+
             return Inertia::render('DeligateVote/ShowDeligateVote', [
                 //    "presidents" => $presidents,
                 //    "vicepresidents" => $vicepresidents,
-                    'deligatevote' =>$deligatevote,
+                    'deligatevote' =>$deligates,
                     'name'=>auth()->user()->name 
                     
             ]);
@@ -234,7 +290,7 @@ class DeligateVoteController extends Controller
            //run validation which will redirect on failure
        }
        $validator->validate($request);  
-       // dd($request);
+    //    dd($request);
 
         /**
          *Here you come only if  the user votes for the first time 
@@ -245,7 +301,7 @@ class DeligateVoteController extends Controller
        
        //    $request->session()->put('deligatevote', $deligatevote);
           $candi_vec =[];
-          array_push($candi_vec, request('no_vote_option'));
+          array_push($candi_vec, request('no_vote_option'));          
           array_push($candi_vec,  $this->get_candidate('member'));
         //    dd($candi_vec);
              $request->session()->put('deligatevote', $candi_vec);
@@ -300,19 +356,21 @@ public function get_candidate($key){
     if(sizeof($submit_vec)>0)
     {
             
-        
+            // dd($submit_vec);
             for($i=0; $i<sizeof($submit_vec); ++$i){
                 //    var_dump($submit_vec[$i] );
-                $_candi                      = DB::table('candidacies')->where([
-                ['candidacy_id', '=',  $submit_vec[$i] ], 
+                $_candi                      = DB::table('deligate_candidacies')->where([
+                ['nrna_id', '=',  $submit_vec[$i] ], 
                 // ['post_id',        '=',  $_postid]
                 ])->get()->first();
 
                         // dd($_candi); 
                    $myvec = array(
-                            'post_name' =>$_candi->post_name,
-                            'candidacy_id'     =>$_candi->user_id,
-                              'candidacy_name'  => $_candi->candidacy_name
+                            // 'post_name' =>"Deligate Member",
+                            'user_id'     =>$_candi->user_id,
+                            'post_id'     =>$_candi->post_id,
+                            'nrna_id'     =>$_candi->nrna_id,
+                            'name'         => $_candi->name
                     );
                     
                 array_push($_candivec,   $myvec);         
@@ -343,15 +401,7 @@ public function verify_vote_submit()
     $validator =  Validator::make(request()->all(), [
                 'voting_code' =>['required'],                    
             ]);
-    //        
-    //  $thvoting_code   =request('voting_code');   
-    //  $code1         =auth()->user()->code1;
-    //  $has_voted      =auth()->user()->has_voted ;
-    //    //$has_voted      =false;
-     // auth()->user()->has_voted ;
-     
-    // $code1          ="1234";         
-    // //hook to add additional rules by calling the ->after method
+  
      $validator->after(function ($validator) {
             /**
              * Here we chan change the code condition 
@@ -381,10 +431,13 @@ public function verify_vote_submit()
 //save all candidates 
 public function save_vote($input_data){
             
-             dd($input_data);
-             $no_vote_option                 =$input_data[19];   
+            //  dd($input_data);
+             $no_vote_option                 =$input_data[0];   
              $deligatevote                   =new DeligateVote; 
-             $deligatevote->user_id          =$this->user_id;               
+            //this id is not of the person who has been selected but of the person who has voted
+             $deligatevote->user_id              =$this->user_id; 
+             $deligatevote->conformation_code    =$this->in_code; 
+
             if($no_vote_option) { //check if voter has given no_vote  option 
                 // Go for no deligatevote option 
                 $deligatevote->no_vote_option   =1;
@@ -392,13 +445,21 @@ public function save_vote($input_data){
 
              }else{
     
-             $post                =$input_data[0];
-            if(sizeof($icc_member)>0){
-                //   dd($icc_member[0]["candidacy_name"]);
-                $deligatevote['icc_member1_name']  =$post[0]["candidacy_name"];
-                $deligatevote['icc_member1_id']    =$post[0]["candidacy_id"];
+             $post                =$input_data[1];
+            //save the votes 
+             for ($i=0; $i<sizeof($this->member_keys); $i++){
+                             // save the first vote 
+                if(sizeof($post)>$i){
+                    $_key ="member". ($i+1) ."_id";
+                    // dd($_key);
+                    $deligatevote[$_key]  =$post[$i]["nrna_id"];
+                }     
 
-            }         //  
+
+            }    
+            
+
+
          }
         $deligatevote->save();
         $user =Auth::user();
@@ -416,5 +477,121 @@ public function thankyou(){
     ]);
                
 }
+// 
+/**
+ *  Call deligate vote and prepare name, nrna id  etc 
+ * 
+ */
+    public function prepare_deligate_vote (DeligateVote $deligateVote){
+        $deligates =[];
+        $deli_vote  =[];      
+        $no_vote_option =$deligateVote->no_vote_option;
+        $conformation_code =$deligateVote->conformation_code;
+        $deligates['conformation_code'] =$conformation_code;          
+        $deligates['no_vote_option'] =$no_vote_option;         
+        // $deligates['no_vote_option']     =1;          
+        // $_nsize  = sizeof($deligateVote->getOriginal());
+        //deligate 1 
+        // dd($deligateVote);
+           //save the votes 
+        for ($i=0; $i<sizeof($this->member_keys); $i++){
+            $_key ="member". ($i+1) ."_id";
+           
+             $deli =$this->find_name_nrnaId($deligateVote->getOriginal($_key));        
+             if($deli){ array_push($deli_vote, $deli); }     
+        }  
+
+         $deligates['deligatevote'] =$deli_vote;
+
+
+        return $deligates;
+
+ }
+  public function find_name_nrnaId($nrna_id){
+
+    $_user =User::where('nrna_id', $nrna_id)->first();
+    if($_user){
+        return array(
+            'id' =>$_user->id,
+            'name'=>$_user->name,
+            'nrna_id'=>$_user->nrna_id,
+            'lcc'=>$_user->lcc,
+            'state'=>$_user->state
+                       
+        );
+    
+    }
+  
+}
+ 
+/**
+ * count the result 
+ */
+
+    public function count(){
+        $_deliVote   = DB::table('deligate_votes')->get();
+    
+        //  echo gettype($_deliVote[0]); 
+        //  dd(array_intersect_key((array)$_deliVote[0],(array)$_deliVote[0]));
+        
+        // dd($_deliVote);
+        $result =[];
+
+        $sumArray = array();
+        foreach ($_deliVote  as $k=>$subArray) {
+                $_subObject =$subArray;
+                // dd($_subObject);
+            foreach ($_subObject as $id=>$value) {
+                /**
+                 * if the key lies in pre_names then sum up 
+                 */
+                    // dd($id);
+                if( in_array($id, $this->member_keys) ){ 
+                        // dd($id);  
+                    $result_key =array_keys($result);
+                    if(in_array($value, $result_key)){
+                        $result[$value]+=1;
+                    }else{
+                        if($value!=""){
+                                $result[$value]=1;
+                        }
+                        
+                    }    
+                    
+
+                }
+
+            }
+            
+    }
+        return($result);
+
+  }
+
+  /**
+   * 
+   * Get the result final way 
+   */
+    public function result (){
+        $result             =$this->count();
+        arsort( $result);
+        // dd($result);
+        $deligate_result    =[];
+        foreach ($result as $nrna_id=>$voteCount){
+
+            $_deli_info =$this->find_name_nrnaId($nrna_id);
+            $_deli_info['vote'] =$voteCount;
+            array_push($deligate_result,$_deli_info);
+        }
+
+
+
+     
+        return Inertia::render('DeligateVote/ResultDeligateVote', [
+            'deligate_result' =>$deligate_result,
+           
+        ]);     
+
+    }
 
 } //end of controller

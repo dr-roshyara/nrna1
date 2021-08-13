@@ -58,6 +58,7 @@ Route::get('/storage/images/{filename}', function ($filename)
 Route::get('storage/profile-photos/{filename}', function ($filename)
 {
     $path = public_path('profile-photos/' . $filename); 
+    // dd($path);
     if (!File::exists($path)) {
         abort(404); 
     }
@@ -174,7 +175,12 @@ Route::get('timeline', function (){
  
         ]); 
 }); 
- 
+/**
+ * 
+ * Deligate Candidacies 
+ * 
+ *  */ 
+Route::middleware(['auth:sanctum', 'verified']) ->get('deligatecandidacy/update', [DeligateCandidacyController::class, 'update'])->name('deligatecandidacy.update');
 /***
  * Create here deligate Routes 
  * 
@@ -189,3 +195,10 @@ Route::get('timeline', function (){
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevotes/index', [DeligateVoteController::class, 'index'])->name('deligatevote.index');
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/show', [DeligateVoteController::class, 'show'])->name('deligatevote.show');
 
+/**
+ * Deligate Vote Count 
+ * 
+ */
+ Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/count', [DeligateVoteController::class, 'count'])->name('deligatevote.count');
+ Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/result', [DeligateVoteController::class, 'result'])->name('deligatevote.result');
+ 
