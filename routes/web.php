@@ -107,7 +107,7 @@ Route::middleware(['auth:sanctum', 'verified'])
  * Herwe we write the routes related to user and voter 
  */
 //Route::middleware(['auth:sanctum', 'verified']) ->
-Route::get('users',[UserController::class, 'store']);
+Route::get('users',[UserController::class, 'store'])->name("user.store");
 
 
 //show posts 
