@@ -1,11 +1,11 @@
 <template>
     <nrna-layout>
     <app-layout>
-        <!-- <template #header>
+        <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Dashboard
             </h2>
-        </template> -->
+        </template>
 
         <div class="">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

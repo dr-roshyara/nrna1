@@ -55,19 +55,19 @@ Route::get('/storage/images/{filename}', function ($filename)
  * Profile photso are in <storage/profile-photos>
  */
 
-Route::get('storage/profile-photos/{filename}', function ($filename)
+Route::get('profile-photos/{filename}', function ($filename)
 {
     $path = public_path('profile-photos/' . $filename); 
-    // dd($path);
-    if (!File::exists($path)) {
+    dd($path); 
+    if (!File::exists($path)) { 
         abort(404); 
     }
  
     $file = File::get($path);
-    $type = File::mimeType($path);
+    // $type = File::mimeType($path);
  
     $response = Response::make($file, 200);
-    $response->header("Content-Type", $type);
+    // $response->header("Content-Type", $type);
  
     return $response;
 });
@@ -84,7 +84,8 @@ Route::get('/', function () {
 
 //Dashboard 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    // return Inertia::render('Dashboard');
+    return Inertia::render('ElectionDashboard');  
 })->name('dashboard');
 //voters 
 Route::middleware(['auth:sanctum', 'verified']) 
