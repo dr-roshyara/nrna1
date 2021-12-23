@@ -2,7 +2,7 @@
     <nrna-layout>
     <jet-authentication-card class="mb-6">
         <jet-validation-errors class="mb-4" />
-
+           <p class="text-gray-900 font-bold text-2xl p-2 my-2 mx-auto text-center"> User Registration </p> 
         <form @submit.prevent="submit">
           <!-- add name    -->
            <div>
