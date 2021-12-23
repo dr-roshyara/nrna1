@@ -14,10 +14,22 @@
                 </div>  
             </div> 
              <div class="hidden sm:block m-auto text-white font-bold text-xl"> 
-                <a href="/"> NRNA GERMANY </a>
+                <!-- <a href="/"> Non Resident Nepali Association </a> -->
+
              </div>
-             <div class="w-44 m-auto h-32">
-               <img class="object-cover" src="/images/germanynepal.png" width="200" height="200"/>
+             <div class="w-44 m-auto h-32 text-white  font-bold align-bottom">
+                <inertia-link v-if="canLogin"  
+                  :href="route('login')" 
+                class="text-sm underline">
+                    Log in
+                </inertia-link>
+
+                <inertia-link v-if="canRegister" 
+                  :href="route('register')" 
+                  class="ml-4 text-sm underline">
+                    Register 
+                </inertia-link>
+               <!-- <img class="object-cover" src="/images/germanynepal.png" width="200" height="200"/> -->
             </div> 
         </div> 
          <!-- start  -->
@@ -43,6 +55,9 @@
 </template>
 <script>
 export default {
-    
+    props:{
+        canLogin: Boolean,
+        canRegister: Boolean,
+    }
 }
 </script>

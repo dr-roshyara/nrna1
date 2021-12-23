@@ -4,70 +4,36 @@
         <jet-validation-errors class="mb-4" />
 
         <form @submit.prevent="submit">
-         <!-- Add the other coulmns-->
-             <div>
-                <jet-label for="first_name" value="Firstname" />
-                <jet-input id="first_name" type="text" class="mt-1 block w-full" v-model="form.first_name" required autofocus autocomplete="first_name" />
+          <!-- add name    -->
+           <div>
+                <jet-label for="name" value="Name" />
+                <jet-input id="name" type="text" 
+                class="mt-1 block w-full" 
+                v-model="form.name" 
+                required autofocus autocomplete="name" />
             </div>
-            <!-- next -->
-             <div>
-                <jet-label for="middle_name" value="Middlename" />
-                <jet-input id="middle_name" type="text" class="mt-1 block w-full" v-model="form.middle_name" required autofocus autocomplete="middle_name" />
+              <!-- here starts the region selection  -->
+              <div class="mt-4">
+                   <jet-label for="region" value="Region" />
+              <div class="border-gray-300 focus:border-indigo-300 focus:ring
+     focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
+            <select name ="region" id="region"  
+              v-model="form.region"  
+            class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                <option>Europe </option>
+                <option>America </option>
+                 <option>Africa  </option>
+                <option>Asia  </option>
+                <option>Asia Pacific</option>
+                 <option>Middle East Asia</option>
+                 <option>Oceania </option>
+             </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
             </div>
- 
-            <!-- next -->
-             <div>
-                <jet-label for="last_name" value="Lastname" />
-                <jet-input id="last_name" type="text" class="mt-1 block w-full" v-model="form.last_name" required autofocus autocomplete="last_name" />
             </div>
-             <!-- next -->
-              <!-- next -->
-             <div>
-                <jet-label for="gender" value="Gender" />
-                <jet-input id="gender" type="text" class="mt-1 block w-full" v-model="form.gender" required autofocus autocomplete="gender" />
-            </div>
-             <!-- next -->
-             <div>
-                <jet-label for="telephone" value="Telephone" />
-                <jet-input id="telephone" type="text" class="mt-1 block w-full" v-model="form.telephone" required autofocus autocomplete="telephone" />
-            </div>
-               <!-- next -->
-             <div>
-                <jet-label for="country" value="Country" />
-                <jet-input id="Country" type="text" class="mt-1 block w-full" v-model="form.country" required autofocus autocomplete="country" />
-            </div>
-                      <!-- next -->
-             <div>
-                <jet-label for="state" value="State" />
-                <jet-input id="state" type="text" class="mt-1 block w-full" v-model="form.state" required autofocus autocomplete="state" />
-            </div>
-            <!-- next -->
-              <div>
-                <jet-label for="street" value="Street" />
-                <jet-input id="street" type="text" class="mt-1 block w-full" v-model="form.street" required autofocus autocomplete="street" />
-            </div>
-                <!-- next -->
-            <div>
-                <jet-label for="housenumber" value="House number" />
-                <jet-input id="housenumber" type="text" class="mt-1 block w-full" v-model="form.housenumber" required autofocus autocomplete="housenumber" />
-            </div>
-        
-            <!-- next -->
-                <div>
-                <jet-label for="postalcode" value="Postalcode" />
-                <jet-input id="postalcode" type="text" class="mt-1 block w-full" v-model="form.postalcode" required autofocus autocomplete="postalcode" />
-            </div>
-            <!-- next -->
-                <div>
-                <jet-label for="city" value="City" />
-                <jet-input id="city" type="text" class="mt-1 block w-full" v-model="form.city" required autofocus autocomplete="city" />
-            </div>
-              <!-- next -->
-                <div>
-                <jet-label for="nrna_id" value="Membership Id" />
-                <jet-input id="nrna_id" type="text" class="mt-1 block w-full" v-model="form.nrna_id" required autofocus autocomplete="nrna_id" />
-            </div>
-           
+              </div>
+
             <!-- next -->
             <div class="mt-4">
                 <jet-label for="email" value="Email" />
@@ -75,7 +41,10 @@
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Password" />
+            <div class="flex flex-wrap space-x-2">
+            <jet-label for="password" value="Password"  /> 
+                <span class="text-red-500 text-sm" >(min 8 characters)</span> 
+             </div> 
                 <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
             </div>
  
@@ -135,23 +104,13 @@
         data() {
             return {
                 form: this.$inertia.form({
-                    first_name: '',
-                    middle_name: '',  
-                    last_name: '', 
-                    gender: '', 
-                    telephone: '',
-                    nrna_id: '',
-                    country: '',
-                    state: '',
-                    street : '',
-                    housenumber : '',
-                    postalcode: '',
-                    city: '',                                      
+                                                       
                     name: '',
                     email: '',
                     password: '',
                     password_confirmation: '',
                     terms: false,
+                    'region': ''
                 })
             }
         },

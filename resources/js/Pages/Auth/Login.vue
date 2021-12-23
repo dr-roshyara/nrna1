@@ -1,5 +1,5 @@
 <template>
-    <nrna-layout>
+    <nrna-layout :canRegister="canRegister" :canLogin="canLogin">
     <div class="flex flex-col">     
                    <!-- <a href="https://www.civiciti.com/ww/nrnagermany" class="m-auto" > 
                       <div class=" flex flex-col h-64 py-2 m-auto text-center px-10 w-full">
@@ -28,7 +28,7 @@
                  सदस्य लगइन  </p>
             <!-- next --> 
             
-            <div class="text-gray-900 " > 
+            <!-- <div class="text-gray-900 " > 
             आदरणिय दिदी बहिनी तथा दाजुभाइहरु,<br> 
             लगइन मा आफ्नो टेलिफोन नम्बर कन्ट्रीकोड सहित<br> 
             <span class="text-bold"> (तर विना '+' र विना '00') </span> <br> 
@@ -38,7 +38,8 @@
             यस्को पासवर्ड तपाईंले लिन्क <br/>  
              <inertia-link href="http://127.0.0.1:8000/forgot-password">
             <span class="text-gray-900 font-bold text-sm">  GET YOUR PASSWORD </span> </inertia-link> मा क्लिक गरेर पाउन सक्नु  हुन्छ।<br> 
-            </div>     
+            </div> 
+                 -->
             <!-- next -->
             <form @submit.prevent="submit" class="mb-4">
                 <!--  
@@ -49,9 +50,20 @@
                 -->
                 <!--next --> 
                 <div class=" my-4 text-bold text-gray-900 text-xl ">
-                    <jet-label for="telephone" value="Telephone (टेलिफोन नम्बर)"  /> 
-                    <jet-input id="telephone" type="text" class="mt-1 block w-full"  placeholder="4915164322589"
+                    <jet-label for="email" value="Email" /> 
+                    
+                    <!-- <jet-input id="telephone" type="text" 
+                    class="mt-1 block w-full"  
+                    placeholder="4915164322589"
                     v-model="form.telephone" required autofocus />
+                     -->
+                    <jet-input id="email" 
+                     type="text" 
+                     class="mt-1 block w-full"  
+                     placeholder="roshyara@gmail.com"
+                    v-model="form.email" 
+                    required autofocus />
+                
                 </div>
                 <!--next --> 
                 
@@ -78,7 +90,14 @@
                     </jet-button>
                 </div>
             </form>
-
+            <div v-if="canRegister"  class="flex flex-col m-2  justify-center"> 
+                <p> If you are not registered yet, please get registered first.</p> 
+                    <inertia-link 
+                        :href="route('register')" 
+                        class="m-auto text-sm  font-bold px-6 py-1 bg-gray-200">
+                            Register 
+                        </inertia-link>
+                </div> 
         </jet-authentication-card>
          </div>
         </nrna-layout>
@@ -109,7 +128,9 @@
         props: {
             imagename: String,
             canResetPassword: Boolean,
-            status: String
+            status: String,
+            canLogin: Boolean,
+            canRegister: Boolean,
         },
 
         data() {

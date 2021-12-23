@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col min-h-screen">
-         <nrna-header> </nrna-header> 
+         <nrna-header :canRegister="canRegister" :canLogin="canLogin"> </nrna-header> 
      <!-- middle  -->
        <slot class="flex-grow min-h-screen"> </slot> 
        <!-- footer  -->
@@ -14,7 +14,9 @@ import NrnaFooter from "@/Jetstream/NrnaFooter";
 
 export default {
     props: {
-        image2:String
+        image2:String,
+        canLogin: Boolean,
+        canRegister: Boolean,
     },
     data(){
         return {

@@ -25,11 +25,11 @@ class AddMoreFieldsToUsersTable extends Migration
             $table->string('state')->nullable();
             $table->string('street')->nullable();
             $table->string('housenumber')->nullable();                        
-            $table->string('postalcode')->nullabe();                        
+            $table->string('postalcode')->nullable();                         
             $table->string('city')->nullable();
-            $table->string('additional_address')->nullabe(); 
-            $table->string('nrna_id')->unique(); 
-            $table->string('telephone')->unique(); 
+            $table->string('additional_address')->nullable(); 
+            $table->string('nrna_id')->unique()->nullable(); 
+            $table->string('telephone')->unique()->nullable(); 
          
         });
     }

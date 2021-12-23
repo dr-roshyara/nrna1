@@ -23,7 +23,7 @@ class AddMoreColumnsToUsersTable extends Migration
             $table->string('code2')->unique()->nullable();
             $table->boolean('has_used_code1')->default(0);
             $table->boolean('has_used_code2')->default(0);
-            $table->string('lcc');
+            $table->string('lcc')->nullable();
 
         });
     }

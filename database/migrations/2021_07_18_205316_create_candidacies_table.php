@@ -18,33 +18,17 @@ class CreateCandidaciesTable extends Migration
             $table->bigInteger('user_id')->unsigned()->nullabe();   
             $table->string('candidacy_id'); 
             $table->string('candidacy_name');            
-            $table->string('proposer_id');
-            $table->string('proposer_name');
-            $table->string('supporter_id');             
-            $table->string('supporter_name'); 
+            $table->bigInteger('proposer_id')->unsigned()->nullable();
+            $table->string('proposer_name')->nullable();
+            $table->bigInteger('supporter_id')->unsigned()->nullable();             
+            $table->string('supporter_name')->nullable(); 
             $table->string('post_name');
             $table->string('post_nepali_name')->nullable;
             $table->string('post_id')->nullable;
             $table->string('image_path_1')->nullable;
             $table->string('image_path_2')->nullable; 
             $table->string('image_path_3')->nullable;                         
-            
-            $table->foreign('user_id') 
-                ->references('id')->on('users') 
-                ->onDelete('cascade');
-            //
-             $table->foreign('proposer_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
-            //
-             $table->foreign('supporter_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
-            //                  
-            $table->foreign('post_id')
-                  ->references('post_id')
-                  ->on('posts')
-                  ->onDelete('cascade');
+         
             // here 
             $table->timestamps();
         });
