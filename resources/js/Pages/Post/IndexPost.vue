@@ -2,7 +2,7 @@
     <app-layout> 
          <!-- here is the table 
           -->           
-            <div class="mx-auto w-full   px-4 text-center">
+            <div class="mx-auto w-full   px-4 text-center min-h-screen">
                 <table class="w-full text-left rounded p-4">
                     <tr class="border-b-2 border-gray-400 bg-blue-100"> 
                          <th class="w-1/3 p-4">S.N. (क्रम संख्या ) </th>

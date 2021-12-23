@@ -49,6 +49,48 @@
                             </div>
                         </a>
                     </div>
+                    <!-- Election post    -->
+                      <div class="w-full flex flex-wrap">
+                      
+                        <div class="w-full md:w-1/2 pl-0 md:pl-2">
+                            <a href="posts/index">
+                                <div
+                                    class="
+                                        w-full
+                                        p-8
+                                        my-4
+                                        ml-0
+                                        md:ml-2
+                                        border-2
+                                        rounded-lg
+                                        hover:bg-blue-100
+                                        flex flex-wrap
+                                        justify-center
+                                    "
+                                >
+                                    <img
+                                        src="/storage/images/form.png"
+                                        alt="Candidacy Form"
+                                        class="w-20 h-auto my-4"
+                                    />
+                                    <div
+                                        class="
+                                            w-full
+                                            text-center
+                                            font-bold
+                                            text-base
+                                            md:text-2xl
+                                        "
+                                    >
+                                         List of Candidacy Posts 
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                     <!-- end of elction posts  -->
+                     
+                     <!-- Here starts teh candidacy list  -->
                     <div class="w-full flex flex-wrap">
                         <div class="w-full md:w-1/2">
                             <a href="candidacies/index">

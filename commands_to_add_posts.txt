@@ -6,7 +6,7 @@
         
         $post->save()
     #
-    use App\Models\Post;
+      use App\Models\Post;
         $post =new Post
         $post->post_id ="2021_02"
         $post->name ="President"
@@ -18,7 +18,7 @@
         $post =new Post
         $post->post_id ="2021_03"
         $post->name ="Vice President" 
-       $post->required_number =2
+       $post->required_number =4
         $post->nepali_name ="उपाध्यक्ष" 
         $post->save()
         #
@@ -32,6 +32,16 @@
         $post->name ="Woman Vice President"
         $post->nepali_name ="महिला उपाद्यक्ष"
         $post->save()
+       #
+         use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_05"
+        $post->required_number =1
+         $post->is_national_wide =1
+        $post->name ="Youth Vice President"
+        $post->nepali_name ="युबा उपाद्यक्ष"
+        $post->save()
+
        #
         use App\Models\Post;
         $post =new Post
