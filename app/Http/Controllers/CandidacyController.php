@@ -72,7 +72,7 @@ class CandidacyController extends Controller
         // return $query->pluck('name');
         // return();
         }]);
-           dd(posts); 
+           dd($posts); 
         request()->validate([
             'direction'=> ['in:asc,desc'],
             'field' => ['in:id,post_name,proposer_name,supporter_name']

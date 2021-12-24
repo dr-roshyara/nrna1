@@ -17,6 +17,7 @@
         "laravelcollective/html": "^6.2",
         "nexmo/laravel": "^2.4",
         "spatie/laravel-permission": "^4.2",
+        "spatie/laravel-query-builder": "^4.0",
         "tightenco/ziggy": "^1.0",
         "vonage/client": "^2.4"
     },
