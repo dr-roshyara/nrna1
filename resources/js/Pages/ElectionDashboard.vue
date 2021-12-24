@@ -50,7 +50,7 @@
                         </a>
                     </div>
                     <!-- Election post    -->
-                      <div class="w-full flex flex-wrap">
+                    <div class="w-full flex flex-wrap">
                       
                         <div class="w-full md:w-1/2 pl-0 md:pl-2">
                             <a href="posts/index">
@@ -69,7 +69,7 @@
                                     "
                                 >
                                     <img
-                                        src="/storage/images/form.png"
+                                        src='/storage/images/list.png'
                                         alt="Candidacy Form"
                                         class="w-20 h-auto my-4"
                                     />

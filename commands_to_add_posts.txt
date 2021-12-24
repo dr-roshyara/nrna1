@@ -45,27 +45,39 @@
        #
         use App\Models\Post;
         $post =new Post
-        $post->post_id ="2021_05"
+        $post->post_id ="2021_06"
         $post->required_number =1
         $post->is_national_wide =1
         $post->name ="General Secretary"
         $post->nepali_name ="महासचिव"
         $post->save()
        #
-         use App\Models\Post;
+        use App\Models\Post;
         $post =new Post
-        $post->post_id ="2021_06"
-        $post->required_number =2
+        $post->post_id ="2021_07"
+        $post->required_number =3
         $post->is_national_wide =1
         $post->name ="Secretary"
         $post->nepali_name ="सचिव"
         $post->save()
+
        #
+       use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_08"
+        $post->required_number =1
+        $post->is_national_wide =1
+        $post->name ="Women Secretary"
+        $post->nepali_name ="महिला सचिव"
+        $post->save()
+
+       #
+       *
        
 
         use App\Models\Post;
         $post =new Post
-        $post->post_id ="2021_07"
+        $post->post_id ="2021_09"
         $post->name ="Treasure"
          $post->required_number =1
         $post->is_national_wide =1
@@ -74,7 +86,17 @@
        #
         use App\Models\Post;
         $post =new Post
-        $post->post_id ="2021_08"
+        $post->post_id ="2021_10"
+        $post->name ="Joint Treasurer"
+         $post->required_number =1
+        $post->is_national_wide =1
+        $post->nepali_name ="सह कोषाध्यक्ष"
+        $post->save()
+
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_11"
         $post->required_number =1
         $post->is_national_wide =1        
         $post->name ="Woman Coordinator"
@@ -83,7 +105,7 @@
        #
         use App\Models\Post;
         $post =new Post
-        $post->post_id ="2021_09"
+        $post->post_id ="2021_12"
         $post->name ="Youth Coordinator"
         $post->required_number =1
         $post->is_national_wide =1  
@@ -92,12 +114,29 @@
        #
         use App\Models\Post;
         $post =new Post
-        $post->post_id ="2021_10"
-        $post->name ="Culture Coordinator"
+        $post->post_id ="2021_13"
+        $post->name ="Regional Coordinator Europe"
         $post->required_number =1
-        $post->is_national_wide =1  
-        $post->nepali_name ="सान्स्कृतिक कोर्डिनेटर" 
+        $post->nepali_name ="" 
         $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_14"
+        $post->name ="Regional Coordinator Americas"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_15"
+        $post->name ="Regional Coordinator Oceania"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+                
        #
         use App\Models\Post;
         $post =new Post

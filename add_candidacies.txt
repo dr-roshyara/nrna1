@@ -45,7 +45,7 @@ Use App\Models\Candidacy;
 $candi =new Candidacy
 $candi->user_id         =2897 
 $candi->candidacy_id    =" DE_TEST_03";
-$candi->candidacy_name  ="Mt. Machhapuchhre ";
+$candi->candidacy_name  ="Mt. Machhapuchhre";
 $candi->proposer_name   ="Hari Aryal"
 $candi->proposer_id     ="DE10000216"
 $candi->supporter_name  ="Rabindra Karki"
@@ -65,7 +65,7 @@ Use App\Models\Candidacy;
 $candi =new Candidacy
 $candi->user_id         =2898 
 $candi->candidacy_id    =" DE_TEST_04";
-$candi->candidacy_name  ="Api Himal  ";
+$candi->candidacy_name  ="Api Himal";
 $candi->proposer_name   ="Hari Aryal"
 $candi->proposer_id     ="DE10000216"
 $candi->supporter_name  ="Rabindra Karki"
@@ -102,7 +102,7 @@ Use App\Models\Candidacy;
 $candi =new Candidacy
 $candi->user_id         =2901 
 $candi->candidacy_id    ="DE_TEST_07";
-$candi->candidacy_name  ="Pokhara ";
+$candi->candidacy_name  ="Pokhara";
 $candi->proposer_name   ="Bhima Nani Shrestha"
 $candi->proposer_id     ="DE11000011"
 $candi->supporter_name  ="Krishna Prasad Gaire"

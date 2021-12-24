@@ -16,7 +16,7 @@ class Candidacy extends Model
      * Each Candidacy  belongs to only  one user 
      * Get the user 
      */
-    public function user(){
+     public function user(){
            return $this->belongsTo(User::class);
        }
      /**
@@ -35,7 +35,7 @@ class Candidacy extends Model
         */
         public function votes() 
         {
-        return $this->morphToMany(Vote::class, 'votable');
+            return $this->morphToMany(Vote::class, 'votable');
         }
     //  herer 
 }

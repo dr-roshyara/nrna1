@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
+//use Illuminate\Support\Facades\Hash;
 
 //
 use Inertia\Inertia;
@@ -92,21 +93,25 @@ class UserController extends Controller
         //
         // $startName  ="csv_files/selected_nrna_members_20210802_01.csv";
         $startName  ="csv_files/germany_july28_final_02.csv";
-        //var_dump($startName);
+        $startName  ="csv_files//global_candidates.csv";
+       // var_dump($startName);
         //return 0;
         $csvName  =storage_path($startName); 
-
+        // var_dump($csvName);
+      
         // $file = fopen(csvName,"r");
         // $csv = array_map('str_getcsv', file($csvName));
         $csv_array = $this->csv_to_array($csvName,";");
         //read users 
-        // var_dump($csv_array);
+        //var_dump($csv_array);
+        // dd($csv_array);
          $users = User::all();  
          $su =$users->where('email',"roshyara@gmail.com")->first();
-         if($su){
+        //  dd($su);
+         if(!$su){
              $role       =Role::where('name', 'Superadmin')->first();
              $permssion  =Permission::where('name', 'send code')->first();
-            //  $this->create_permissions_to_role($role->id, $permssion->id);
+             $this->create_permissions_to_role($role->id, $permssion->id);
              $su->assignRole($role);
              //echo "found";
              $role        = Role::where('name', 'Superadmin')->first();
@@ -142,18 +147,40 @@ class UserController extends Controller
             * each row is a user . So we need to create a user 
             *@user : new USER  
             */
+            // dd($element);
             $laufer +=1;
             $cur_user1  =User::where('nrna_id', trim($element['nrna_id']))->first();
+            // $cur_user1  =User::where('nrna_id', trim($element['nrna_id']))->first();
             // dd($cur_user1);
             // $cur_user1  =$users->where('telephone', '49'.$element['telephone']);
             //  $n2 =count($cur_user1);
              if($cur_user1){
                   
-                // echo "User Exists-> line: ".$laufer.", user name ". $cur_user1->name. "<br>\n";
-                $cur_user1->is_voter =1;
-                $cur_user1->save();
+                echo "User Exists-> line: ".$laufer.", user name ". $cur_user1->name. "<br>\n";
+                // $cur_user1->is_voter =1;
+                // $cur_user1->save();
 
             }else{
+                /***
+                 * 
+                 * create new user here 
+                 * 
+                 */
+                  $user             = new User; 
+                  $user->name       =$element ['name'];
+                  $user->email      =$element ['email'];
+                  $user->region     =$element ['region'];
+                //   $user->password   =$element ['password'];
+                  $user->password   =Hash::make($element ['password']);
+ 
+                  $user->nrna_id    =$element ['nrna_id'];
+                  $user->is_voter   =$element ['is_voter'];
+                //dd($user);
+                  $user->save();
+                  
+                  
+                  
+                    
                 echo  $element ['nrna_id'].'<br/>'; 
             }
         }

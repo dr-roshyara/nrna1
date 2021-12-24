@@ -1,3 +1,7 @@
- sn;name;email;region;password; is_voter;
-1;Surya prasad Tiwari;Nordrhein-Westfalen;DE10000236;1
-
+sn;name;email;region;password;nrna_id;is_voter
+1;Mt. Everest (Sagarmatha);test1@test.de;Europe;12345678;nrna_01;0
+2;Mt. Kanchenjunga;test2@test.de;Americas;12345678;nrna_02;0
+3;Machhapuchhre;test3@test.de;Africa;12345678;nrna_03;0
+4;Api Himal;test4@test.de;Asia Pacific;12345678;nrna_04;0
+5;Kathmandu City;test5@test.de;Middle East;12345678;nrna_05;0
+6;Pokhara;test6@test.de;Oceania;12345678;nrna_06;0

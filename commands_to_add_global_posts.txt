@@ -1,0 +1,382 @@
+
+    #
+      use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_02"
+        $post->name ="President"
+        $post->nepali_name ="अद्यक्ष" 
+        $post->required_number =1
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_03"
+        $post->name ="Vice President" 
+       $post->required_number =4
+        $post->nepali_name ="उपाध्यक्ष" 
+        $post->save()
+        #
+        #  
+      
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_04"
+        $post->required_number =1
+         $post->is_national_wide =1
+        $post->name ="Woman Vice President"
+        $post->nepali_name ="महिला उपाद्यक्ष"
+        $post->save()
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_05"
+        $post->required_number =1
+         $post->is_national_wide =1
+        $post->name ="Youth Vice President"
+        $post->nepali_name ="युबा उपाद्यक्ष"
+        $post->save()
+
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_06"
+        $post->required_number =1
+        $post->is_national_wide =1
+        $post->name ="General Secretary"
+        $post->nepali_name ="महासचिव"
+        $post->save()
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_07"
+        $post->required_number =3
+        $post->is_national_wide =1
+        $post->name ="Secretary"
+        $post->nepali_name ="सचिव"
+        $post->save()
+
+       #
+       use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_08"
+        $post->required_number =1
+        $post->is_national_wide =1
+        $post->name ="Women Secretary"
+        $post->nepali_name ="महिला सचिव"
+        $post->save()
+
+       #
+       *
+       
+
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_09"
+        $post->name ="Treasure"
+         $post->required_number =1
+        $post->is_national_wide =1
+        $post->nepali_name ="कोषाध्यक्ष"
+        $post->save()
+       #
+         #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_10"
+        $post->name ="Joint Treasurer"
+         $post->required_number =1
+         $post->is_national_wide =1
+         $post->nepali_name ="सह कोषाध्यक्ष"
+         $post->save()
+     
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_43"
+        $post->name ="Women Joint Treasurer"
+         $post->required_number =1
+         $post->is_national_wide =1
+         $post->nepali_name ="सह कोषाध्यक्ष"
+         $post->save()
+        #
+
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_11"
+        $post->required_number =1
+        $post->is_national_wide =1        
+        $post->name ="Woman Coordinator"
+        $post->nepali_name ="महिला कोर्डिनेटर"
+        $post->save()
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_12"
+        $post->name ="Youth Coordinator"
+        $post->required_number =1
+        $post->is_national_wide =1  
+        $post->nepali_name ="युथ कोर्डिनेटर" 
+        $post->save()
+       #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_13"
+        $post->name ="Regional Coordinator Europe"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_14"
+        $post->name ="Regional Coordinator Americas"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_15"
+        $post->name ="Regional Coordinator Oceania"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+          #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_16"
+        $post->name ="Regional Coordinator Asia Pacific"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #     #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_17"
+        $post->name ="Regional Coordinator  Middle East"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #  
+           #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_18"
+        $post->name ="Regional Coordinator Africa"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #  
+
+        #
+         use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_19"
+        $post->name ="Regional Women Coordinator Europe"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_20"
+        $post->name ="Regional Women Coordinator Americas"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_21"
+        $post->name ="Regional Women Coordinator Oceania"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+          #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_22"
+        $post->name ="Regional Women Coordinator Asia Pacific"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #     #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_23"
+        $post->name ="Regional Women Coordinator  Middle East"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #  
+           #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_24"
+        $post->name ="Regional Women Coordinator Africa"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #  
+        # here starts regional  sub Coordinator
+          use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_25"
+        $post->name ="Regional Women Deputy-coordinator Europe"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+      
+        
+        
+
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_26"
+        $post->name ="Regional Women Deputy-coordinator Americas"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_27"
+        $post->name ="Regional Women Deputy-coordinator Oceania"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+          #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_28"
+        $post->name ="Regional Women Deputy-coordinator Asia Pacific"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #     #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_29"
+        $post->name ="Regional Women Deputy-coordinator  Middle East"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #  
+           #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_30"
+        $post->name ="Regional Women Deputy-coordinator Africa"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #  
+     # Regional youth sub coordinator 
+     # here starts regional  sub Coordinator
+          use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_31"
+        $post->name ="Regional Youth Deputy-coordinator Europe"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_32"
+        $post->name ="Regional Youth Deputy-coordinator Americas"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_33"
+        $post->name ="Regional Youth Deputy-coordinator Oceania"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+          #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_34"
+        $post->name ="Regional Youth Deputy-coordinator Asia Pacific"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #     #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_35"
+        $post->name ="Regional Youth Deputy-coordinator  Middle East"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #  
+           #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_36"
+        $post->name ="Regional Youth Deputy-coordinator Africa"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #  
+#
+# here starts regional  sub Coordinator
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_37"
+        $post->name ="Regional Deputy-coordinator Europe"
+        $post->required_number =3
+        $post->nepali_name ="" 
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_38"
+        $post->name ="Regional  Deputy-coordinator Americas"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_39"
+        $post->name ="Regional Deputy-coordinator Oceania"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #
+          #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_40"
+        $post->name ="Regional Deputy-coordinator Asia Pacific"
+        $post->required_number =2
+        $post->nepali_name ="" 
+        $post->save()
+        #     #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_41"
+        $post->name ="Regional Deputy-coordinator  Middle East"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #  
+           #
+        use App\Models\Post;
+        $post =new Post
+        $post->post_id ="2021_42"
+        $post->name ="Regional  Deputy-coordinator Africa"
+        $post->required_number =1
+        $post->nepali_name ="" 
+        $post->save()
+        #  
+       

@@ -12,7 +12,12 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\UploadController;
 use Storage; 
 use Throwable;
-
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
+// use Spatie\QueryBuilder\AllowedFilter; 
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 // use App\Http\Controllers\Redirect;
 
 
@@ -26,6 +31,48 @@ class CandidacyController extends Controller
      //starts here 
     public function index(Request $request)
     {
+        
+        
+        /***
+        * 
+        *Global search 
+        */
+        $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
+            $query->where(function ($query) use ($value) {
+                $query->where('post_id', 'LIKE', "%{$value}%");
+                // $query->where('itemId', "{$value}");
+                // ->orWhere('variationId', 'LIKE', "%{$value}%");
+                
+            });
+        });
+         
+        /***
+        *
+        *Get Variations from variation table 
+        *
+        **/
+        $posts = QueryBuilder::for(Post::class)
+        ->defaultSort('post_id')
+        ->allowedSorts(['post.name', 'candidacy_id',"item.keywords"])
+        ->allowedFilters(['post.name','candidacy_id', 'post.name',  $globalSearch])
+        ->paginate(50) 
+        ->withQueryString();
+        
+          /**
+         * 
+         * Load user 
+         */
+        $posts->load(['user' => function ($query) {
+            $query->select(['id','name', 'email']);
+            $query->withTraced()->select('name');
+            //$query->orderBy('published_date', 'asc');
+            // return($query->get('name'));
+        //  $qs =$query->select('name');
+        //  dd($qs);
+        // return $query->pluck('name');
+        // return();
+        }]);
+           dd(posts); 
         request()->validate([
             'direction'=> ['in:asc,desc'],
             'field' => ['in:id,post_name,proposer_name,supporter_name']
@@ -75,8 +122,9 @@ class CandidacyController extends Controller
     {
         //
           $query =Post::all();
+
         //   dd($query->pluck('post_id'));
-        return redirect()->route('candidacy.index');
+        // return redirect()->route('candidacy.index');
          return Inertia::render('Candidacy/CreateCandidacy', [
             'posts' =>$query,  
             'name'  => ""
@@ -98,13 +146,13 @@ class CandidacyController extends Controller
         //  dd($request->all());
        $request->validate([
             'name'=>['required'],
-             'proposer_name'=>['required'],
+            //  'proposer_name'=>['required'],
              'proposer_id'=>['required'],
-             'supporter_name'=>['required'],
+            //  'supporter_name'=>['required'],
              'supporter_id'=>['required'], 
             //  'post_name' =>['required'],            
-            'image' =>['image'],
-            'name' =>['required'],
+            // 'image' =>['image'],
+            // 'name' =>['required'],
             
             // 'name' =>['unique:candidacies,candidacy_name'],
             // 'user_id'=>'unique:candidacies, user_id'
@@ -113,9 +161,12 @@ class CandidacyController extends Controller
         // dd($request->all());
         $post               =Post::all()->where('post_id', $request['post_id']);
         $post_name          =$post->first()->name;
-        $post_nepali_name   =$post->first()->nepali_name;        
-         $uploadedFile      = $request->file('image');
-         $filename          =time().$uploadedFile->getClientOriginalName();
+        // $post_nepali_name   =$post->first()->nepali_name;        
+        if($request->file('image')){
+             $uploadedFile      = $request->file('image');
+             $filename          =time().$uploadedFile->getClientOriginalName();
+        
+        } 
         // $candidacy           =['user_id' => auth()->user()->id,
         // 'candidacy_id'       => auth()->user()->id];
          $candidacy          =new  Candidacy;
@@ -124,8 +175,8 @@ class CandidacyController extends Controller
         $candidacy['user_id'] = 1; 
          $candidacy['candidacy_id']         = $request['nrna_id']; 
         $candidacy['candidacy_name']        =$request['name'];                  
-        $candidacy['post_name']             =$post_name; 
-         $candidacy['post_nepali_name']      =$post_nepali_name; 
+        // $candidacy['post_name']             =$post_name; 
+        //  $candidacy['post_nepali_name']      =$post_nepali_name; 
        /** change psot id according to the post  otherwise it wont work
          * look at the post controller id*/ 
         $candidacy['post_id']         =$request['post_id']; 
@@ -135,8 +186,8 @@ class CandidacyController extends Controller
         $candidacy['supporter_id']    =$request['supporter_id'];   
         $candidacy['supporter_name']   =$request['supporter_name'];  
         $candidacy['image_path_1']     =$filename ;
-        $candidacy['image_path_2']     ="test";
-        $candidacy['image_path_3']     ="test";
+        // $candidacy['image_path_2']     ="test";
+        // $candidacy['image_path_3']     ="test";
         // $candidacy['image_path_1']      =$request->input('image') ? $request->file('image')->store('images', 'public'): null;
         //save 
         // dd($candidacy);
@@ -190,7 +241,7 @@ class CandidacyController extends Controller
     public function update(Request $request, Candidacy $candidacy)
     {
         //
-        $startName  ="csv_files/candidates_upload.csv";
+        $startName  ="csv_files/global_candidacy.csv";
         var_dump($startName);
         //return 0;
         $csvName  =storage_path($startName); 
@@ -215,7 +266,7 @@ class CandidacyController extends Controller
             // dd($cur_user);
             $laufer +=1;
             if(count($cur_candi)>0){
-                echo "Candis Exists-> line: ".$laufer."<br>\n";
+                echo "<p>\n Candis Exists-> line: ". $laufer. ", user_id:". $element['user_id'] ."</p>\n";
                  
                 // dd(count($cur_user));
             }else{
@@ -304,7 +355,7 @@ class CandidacyController extends Controller
 
                 }
         
-                $candi->post_nepali_name="-";
+                // $candi->post_nepali_name="-";
                     //   //candi name  
                 if (array_key_exists('post_id', $element))
                 {
@@ -346,7 +397,7 @@ class CandidacyController extends Controller
 
                 }
                             
-           
+                // dd($candi);
                 $candi->save();
          
 
@@ -373,17 +424,19 @@ class CandidacyController extends Controller
     {
         //
         // $uploadedFile = $request->file($fileKey);
-         $filename = time().$uploadedFile->getClientOriginalName();
-        Storage::disk('local')->putFileAs(
-        'upload_files/'.$filename, 
-            $uploadedFile, 
-            $filename
-        );
-        $upload = new Upload;
-        $upload->filename = $filename;
-        $upload->user_id=1;
-        // $upload->user()->associate(auth()->user());
-         $upload->save();
+        if($uploadedFile){
+            $filename = time().$uploadedFile->getClientOriginalName();
+            Storage::disk('local')->putFileAs(
+            'upload_files/'.$filename, 
+                $uploadedFile, 
+                $filename
+            );
+            $upload = new Upload;
+            $upload->filename = $filename;
+            $upload->user_id=1;
+            // $upload->user()->associate(auth()->user());
+            $upload->save();
+        }
     }
     public function validate_input($myArray){ 
     //      $validator = Validator::make($myArray, 

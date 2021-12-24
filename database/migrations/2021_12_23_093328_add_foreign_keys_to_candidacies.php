@@ -29,7 +29,7 @@ class AddForeignKeysToCandidacies extends Migration
                   ->onDelete('cascade');
             //                  
             $table->foreign('post_id')
-                  ->references('post_id')
+                  ->references('id')
                   ->on('posts')
                   ->onDelete('cascade');
 

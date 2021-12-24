@@ -1,4 +1,5 @@
 <template>
+   <nrna-layout>
     <app-layout> 
          <!-- here is the table 
           -->           
@@ -35,10 +36,13 @@
 
         <!-- ends of table  -->
     </app-layout> 
+    </nrna-layout>
     <!-- <div> <footer> </footer></div>  -->
 </template>
 <script>
-import AppLayout from "@/Layouts/NrnaLayout";  
+// import AppLayout from "@/Layouts/NrnaLayout";  
+import NrnaLayout from '@/Layouts/NrnaLayout'
+import AppLayout from "@/Layouts/AppLayout";
 // import AppLayout from "@/Jetstream/Header";
 // import Footer from "@/Jetstream/Footer";
 export default {
@@ -51,7 +55,8 @@ export default {
   
     components: {
         // NrnaLayout,
-        AppLayout
+        AppLayout,
+        NrnaLayout
         
     },
 };
