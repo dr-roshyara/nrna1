@@ -15,11 +15,8 @@ use Throwable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
-// use Spatie\QueryBuilder\AllowedFilter; 
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
-// use App\Http\Controllers\Redirect;
-
 
 class CandidacyController extends Controller
 {
@@ -31,85 +28,74 @@ class CandidacyController extends Controller
      //starts here 
     public function index(Request $request)
     {
-        
-        
-        /***
-        * 
-        *Global search 
-        */
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
-                $query->where('post_id', 'LIKE', "%{$value}%");
+                $query->where('candidacy_id', 'LIKE', "%{$value}%");
                 // $query->where('itemId', "{$value}");
-                // ->orWhere('variationId', 'LIKE', "%{$value}%");
-                
+                // ->orWhere('warehouseId', 'LIKE', "%{$value}%");
             });
         });
-         
-        /***
-        *
-        *Get Variations from variation table 
-        *
-        **/
-        $posts = QueryBuilder::for(Post::class)
+
+        $candidacies = QueryBuilder::for(Candidacy::class)
         ->defaultSort('post_id')
-        ->allowedSorts(['post.name', 'candidacy_id',"item.keywords"])
-        ->allowedFilters(['post.name','candidacy_id', 'post.name',  $globalSearch])
-        ->paginate(50) 
+        ->allowedSorts(['candidacy_id', 'post.name', 'post.post_id', 'user.name', "user.nrna_id"])
+        ->allowedFilters(['user.name','candidacy_id',  $globalSearch])
+        ->paginate(100) 
         ->withQueryString();
-        
-          /**
+       
+        /**
          * 
-         * Load user 
+         * Load User 
          */
-        $posts->load(['user' => function ($query) {
-            $query->select(['id','name', 'email']);
-            $query->withTraced()->select('name');
+        $candidacies->load(['user' => function ($query) {
+            $query->select(['id','name', 'nrna_id']);
+            // $query->withTraced()->select('name');
             //$query->orderBy('published_date', 'asc');
             // return($query->get('name'));
         //  $qs =$query->select('name');
-        //  dd($qs);
+        //  dd($query);
         // return $query->pluck('name');
         // return();
         }]);
-           dd($posts); 
-        request()->validate([
-            'direction'=> ['in:asc,desc'],
-            'field' => ['in:id,post_name,proposer_name,supporter_name']
-        ]);
-        $query =Candidacy::query();
-        // if(request('direction')){
-        //     $query->orderBy('id',request('direction'));
-
-        // }else{
-        //     $query->orderBy('id','desc');
-
-        // }
+        /**
+         * 
+         * Load Post 
+         */
+        $candidacies->load(['post' => function ($query) {
+            $query->select(['id','post_id','name','is_national_wide', 'is_national_wide']);
+            // $query->withTraced()->select('name');
+            //$query->orderBy('published_date', 'asc');
+            // return($query->get('name'));
+            //  $qs =$query->select('name');
+            //  dd($query);
+            // return $query->pluck('name');
+            // return();
+        }]);
         
-        if(request('search')){
-            $query->where('post_name', 'LIKE', '%'.request('search').'%');
-        } 
-        //
-        if(request()->has(['field', 'direction'])){
-            $query->orderBy(request('field'), request('direction')); 
-        }else{
-            $query->orderBy('id','desc'); 
-        }
-        //the following lines are for the first type of search 
+        return Inertia::render('Candidacy/Index', [
+            'candidacies'=>$candidacies
+        ])->table(function (InertiaTable $table) {
+            $table->addSearchRows([                
+                'user.name' => 'Candidate Name',
+                // 'warehouse.name'  => 'Warehouse ',
+                // 'variationId'   => 'Variation Id',
+                // 'itemId'   =>  'Item Id',
+            ])->addFilter('warehouseId', 'Warehouse', [
+                // '3' => 'Sulzbach',
+                // '4' => 'Flörsheim',
+                // 'manufacturer.name' =>'Manufacturer',
+                // 'nl' => 'Nederlands',
+            ])->addColumns([
+                'candidacy_id'        => 'Candidacy Id',
+                'post_id'             => 'Post Id',
+                'post_name'            =>'Post Name',
+                'nrna_id'              =>"Candidate's NRNAID Name",
+                'user_name'            =>"Candidate's Name",
+                
+            ]);
+        });
 
-        // $users =Message::when( $request->term, 
-        //     function($query, $term){
-        //     $query->where('to', 'LIKE', '%'.$term.'%' );
-        // })->paginate(20); 
-        
-         $candidacies =$query->paginate(120);
-        // $users =$users->sortBy('created_at')->reverse(); 
-        return Inertia::render('Candidacy/IndexCandidacy', [
-          'candidacies' => $candidacies,
-          'filters' =>request()->all(['search', 'field','direction'])   
-        ]);
-    
-
+        //ends  
     }
     //ends here 
     

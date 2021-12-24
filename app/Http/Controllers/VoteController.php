@@ -8,11 +8,15 @@ use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Candidacy;
 use App\Models\Upload;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Redirector;
 //controllers 
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class VoteController extends Controller 
 {
@@ -45,22 +49,49 @@ class VoteController extends Controller
     public function create()
     {
          
-         $candidacies = DB::table('candidacies')->get();
+        $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
+            $query->where(function ($query) use ($value) {
+                $query->where('candidacy_id', 'LIKE', "%{$value}%");
+                // $query->where('itemId', "{$value}");
+                // ->orWhere('warehouseId', 'LIKE', "%{$value}%");
+            });
+        });
 
-            //  $candidacies = Candidacy::query();
-                // $presidents=DB::table('candidacies')->pluck('post_name');
-                // ->pluck('title');
-            // $presidents =$candidacies->where('post_name',"president");
-        //    for ($i=0; $i<sizeof($presidents); $i++){
-        //         dd($presidents[$i]);
-        //         dd(gettype($candidacies[$i]));   
-        //         //   $candidacies[$i]["checbox"] =>"dispabled";
-        //    } 
-        //  dd($candidacies);
-         $query =Candidacy::query();
-        $candidacies =$query->paginate(120);
-         
-            
+        $candidacies = QueryBuilder::for(Candidacy::class)
+        ->defaultSort('post_id')
+        ->allowedSorts(['candidacy_id', 'post.name', 'post.post_id', 'user.name', "user.nrna_id"])
+        ->allowedFilters(['user.name','candidacy_id',  $globalSearch])
+        ->paginate(100) 
+        ->withQueryString();
+        /**
+         * 
+         * Load User 
+         */
+        $candidacies->load(['user' => function ($query) {
+            $query->select(['id','name', 'region', 'nrna_id']);
+            // $query->withTraced()->select('name');
+            //$query->orderBy('published_date', 'asc');
+            // return($query->get('name'));
+        //  $qs =$query->select('name');
+        //  dd($query);
+        // return $query->pluck('name');
+        // return();
+        }]);
+        /**
+         * 
+         * Load Post 
+         */
+        $candidacies->load(['post' => function ($query) {
+            $query->select(['id','post_id','name','required_number', 'is_national_wide']);
+            // $query->withTraced()->select('name');
+            //$query->orderBy('published_date', 'asc');
+            // return($query->get('name'));
+            //  $qs =$query->select('name');
+            //  dd($query);
+            // return $query->pluck('name');
+            // return();
+        }]);
+        
         //  Inertia::render("Vote/IndexVote", [
         //     "candidacies" => $candidacies 
         // ]); 
@@ -69,7 +100,7 @@ class VoteController extends Controller
         $has_voted      = auth()->user()->has_voted;  
         // $has_voted      =false;       
         $btemp          = $can_vote_now && !$has_voted;
-        $lcc             =auth()->user()->lcc;
+        // $lcc             =auth()->user()->lcc;
         // $lcc             ="Berlin";
         // dd($btemp);
          if(!$can_vote_now){
@@ -85,13 +116,13 @@ class VoteController extends Controller
              } 
         
      if($btemp){   
-        return Inertia::render('Vote/CreateVote', [
+        return Inertia::render('Vote/Create', [
             //    "presidents" => $presidents,
             //    "vicepresidents" => $vicepresidents,
                 "candidacies" =>$candidacies,
                 'user_name'=>auth()->user()->name,
                 'user_id'=>auth()->user()->id,
-                'user_lcc'=>$lcc 
+                // 'user_lcc'=>$lcc 
                 
             ]); 
         }else{
