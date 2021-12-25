@@ -1,4 +1,11 @@
 <template>
+     <div id="first_vote_window" 
+          class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">      
+          <div class="flex flex-col text-xl font-bold text-gray-900 mx-auto text-center justify-center">
+                      <label> Please choose <span>   {{get_required_number(this.candidates)}} </span>   Candidate as the <span class="text-gray-900 font-bold"> {{get_post_name(this.candidates)}} </span>. </label> 
+                      <label class="p-2"> कृपया <span>   {{get_required_number(this.candidates)}} </span> जना लाई  <span class="text-gray-900 font-bold"> {{get_post_name(this.candidates)}} </span> चुन्नुहोस ।  </label>   
+          </div>
+                   
     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
             <!-- {{candidates.length}} -->
             <!-- {{candidates}} -->
@@ -46,7 +53,7 @@
                       as <span class="font-bold text-lg text-gray-900"> {{this.get_post_name(this.candidates)}} </span>  of NRNA !
              
     </div> 
-                    
+     </div>                 
 
 </template>
 
@@ -108,6 +115,11 @@ export default {
         //   console.log(candiVec[0]);
           return candiVec[0].post.name;
       },
+      get_required_number(candiVec){
+        //   console.log(candiVec[0]);
+          return candiVec[0].post.required_number;
+      },
+      
       updateBoxes(candiVec, selectedVec,tickObj) {
        /**
         * @param1  : candidateVector 

@@ -55,29 +55,29 @@ class CreateNewUser implements CreatesNewUsers
             $user->password  =Hash::make($input['password']);
             $user->save();
             return ($user);
-        return User::create([
-            'name'       => $input['name'],
-            'email'      => $input['email'],
-            'region'     => $input['region'],
-            'password'   => Hash::make($input['password'])
+        // return User::create([
+        //     'name'       => $input['name'],
+        //     'email'      => $input['email'],
+        //     'region'     => $input['region'],
+        //     'password'   => Hash::make($input['password'])
 
-            //
-            //    'first_name'             => $input['first_name'],
-            //    'middle_name'             => $input['middle_name'],
-            //     'last_name'             => $input['last_name'],
-            //     'gender'                => $input['gender'],
-            //     'telephone'             => $input['telephone'],
-            //     'country'               => $input['country'],
-            //     'state'                 => $input['state'],
-            //     'street'                =>$input['street'],
-            //     'housenumber'           =>$input['housenumber'],
-            //     'postalcode'            =>$input['postalcode'],
-            //     'city'                   =>$input['city'], 
-            //     'nrna_id'                =>$input['nrna_id'],
-            //     'name'                   => $input['first_name']." ".$input['last_name'],
-            //     'additional_address'     => $input['street']." ".$input['housenumber']." ".$input['postalcode']." ".$input['city'],    
-            //     'email'                 => $input['email'],
-            //     'password'              => Hash::make($input['password']),
-        ]);
+        //     //
+        //     //    'first_name'             => $input['first_name'],
+        //     //    'middle_name'             => $input['middle_name'],
+        //     //     'last_name'             => $input['last_name'],
+        //     //     'gender'                => $input['gender'],
+        //     //     'telephone'             => $input['telephone'],
+        //     //     'country'               => $input['country'],
+        //     //     'state'                 => $input['state'],
+        //     //     'street'                =>$input['street'],
+        //     //     'housenumber'           =>$input['housenumber'],
+        //     //     'postalcode'            =>$input['postalcode'],
+        //     //     'city'                   =>$input['city'], 
+        //     //     'nrna_id'                =>$input['nrna_id'],
+        //     //     'name'                   => $input['first_name']." ".$input['last_name'],
+        //     //     'additional_address'     => $input['street']." ".$input['housenumber']." ".$input['postalcode']." ".$input['city'],    
+        //     //     'email'                 => $input['email'],
+        //     //     'password'              => Hash::make($input['password']),
+        // ]);
     }
 }
