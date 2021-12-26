@@ -248,10 +248,10 @@ class CandidacyController extends Controller
             *@user : new USER  
             */
             //first check if user already exists
-            $cur_candi  =$candis->where('user_id', $element['user_id']);
-            // dd($cur_user);
+            $candi  =$candis->where('user_id', $element['user_id'])->first();
+            // dd($cur_candi);
             $laufer +=1;
-            if(count($cur_candi)>0){
+            if($candi){
                 echo "<p>\n Candis Exists-> line: ". $laufer. ", user_id:". $element['user_id'] ."</p>\n";
                  
                 // dd(count($cur_user));
@@ -259,7 +259,8 @@ class CandidacyController extends Controller
 
                 // dd($element);    
                 $candi = new Candidacy;
-                 //User_id
+            } 
+            {    //User_id
                  if (array_key_exists('user_id', $element))
                  {
                      if($element['user_id']){
@@ -388,7 +389,7 @@ class CandidacyController extends Controller
          
 
 
-        }    
+            }    
     }
      
 

@@ -56,7 +56,7 @@ class VoteController extends Controller
                 // ->orWhere('warehouseId', 'LIKE', "%{$value}%");
             });
         });
-
+        
         $candidacies = QueryBuilder::for(Candidacy::class)
         ->defaultSort('post_id')
         ->allowedSorts(['candidacy_id', 'post.name', 'post.post_id', 'user.name', "user.nrna_id"])
@@ -137,6 +137,7 @@ class VoteController extends Controller
         $validator =  Validator::make(request()->all(), [
                     'user_id' =>['required'],                    
                 ]);
+        // dd(request()->all());
         $user_id            =request('user_id');
         $has_voted          =auth()->user()->has_voted;
         $has_voted          =false;
@@ -145,7 +146,8 @@ class VoteController extends Controller
         
         // dd($nothing_selected);
         //first check if at least one check box selected 
-        $btemp = $this->at_least_one_vote_casted();
+        // $btemp = $this->at_least_one_vote_casted();
+        $btemp=true;
 
         if(!$agree_button){
             $validator->after(function ($validator) {
@@ -187,34 +189,35 @@ class VoteController extends Controller
            $vote = request()->all();
         
         //    $request->session()->put('vote', $vote);
-           $candi_vec =[];
-           array_push($candi_vec,  $this->get_candidate('icc_member'));
-           array_push($candi_vec,  $this->get_candidate('president'));
-           array_push($candi_vec, $this->get_candidate('vice_president'));
-           array_push($candi_vec, $this->get_candidate('wvp'));
-           array_push($candi_vec, $this->get_candidate('general_secretary'));
-           array_push($candi_vec, $this->get_candidate('secretary'));
-           array_push($candi_vec, $this->get_candidate('treasure'));
-           array_push($candi_vec, $this->get_candidate('w_coordinator'));
-           array_push($candi_vec, $this->get_candidate('y_coordinator'));
-           array_push($candi_vec, $this->get_candidate('cult_coordinator'));
-           array_push($candi_vec, $this->get_candidate('child_coordinator'));
-           array_push($candi_vec, $this->get_candidate('studt_coordinator'));
-             array_push($candi_vec, $this->get_candidate('member_berlin'));
-           array_push($candi_vec, $this->get_candidate('member_hamburg'));
-           array_push($candi_vec, $this->get_candidate('member_nsachsen'));
-           array_push($candi_vec, $this->get_candidate('member_nrw'));
-           array_push($candi_vec, $this->get_candidate('member_hessen'));
-           array_push($candi_vec,  $this->get_candidate('member_rhein_pfalz'));
-            array_push($candi_vec,  $this->get_candidate('member_bayern'));
-            array_push($candi_vec, request('no_vote_option'));
-            //dd($candi_vec);
-              $request->session()->put('vote', $candi_vec);
+        //    $candi_vec =[];
+        //    array_push($candi_vec,  $this->get_candidate('icc_member'));
+        //    array_push($candi_vec,  $this->get_candidate('president'));
+        //    array_push($candi_vec, $this->get_candidate('vice_president'));
+        //    array_push($candi_vec, $this->get_candidate('wvp'));
+        //    array_push($candi_vec, $this->get_candidate('general_secretary'));
+        //    array_push($candi_vec, $this->get_candidate('secretary'));
+        //    array_push($candi_vec, $this->get_candidate('treasure'));
+        //    array_push($candi_vec, $this->get_candidate('w_coordinator'));
+        //    array_push($candi_vec, $this->get_candidate('y_coordinator'));
+        //    array_push($candi_vec, $this->get_candidate('cult_coordinator'));
+        //    array_push($candi_vec, $this->get_candidate('child_coordinator'));
+        //    array_push($candi_vec, $this->get_candidate('studt_coordinator'));
+        //      array_push($candi_vec, $this->get_candidate('member_berlin'));
+        //    array_push($candi_vec, $this->get_candidate('member_hamburg'));
+        //    array_push($candi_vec, $this->get_candidate('member_nsachsen'));
+        //    array_push($candi_vec, $this->get_candidate('member_nrw'));
+        //    array_push($candi_vec, $this->get_candidate('member_hessen'));
+        //    array_push($candi_vec,  $this->get_candidate('member_rhein_pfalz'));
+        //     array_push($candi_vec,  $this->get_candidate('member_bayern'));
+        //     array_push($candi_vec, request('no_vote_option'));
+        //     //dd($candi_vec);
+          //$request->session()->put('vote', $candi_vec);
+               $request->session()->put('vote', $vote);
             // session(['vote'=>$candi_vec]);
             //$request->session()->put('key', 'value');
             //session(['key' => 'value']);
             return redirect()->route('vote.verfiy');
-
+            dd("test");
         //$this->in_code   =auth()->user()->code2;
         //$this->in_code    ="4321";
         //$this->out_code   = $request['voting_code'];
@@ -277,7 +280,7 @@ class VoteController extends Controller
              */
             //get vote from session 
             $input_data = $request->session()->get('vote');
-        //    dd($input_data);
+             dd($input_data);
             //no_vote option is saved in 19 
              $no_vote_option  =$input_data[19];   
             if($no_vote_option) { //check if voter has given no_vote  option 
@@ -452,8 +455,9 @@ class VoteController extends Controller
        // global helper method
         // $vote = session('vote');
         // dd($vote);
-        return Inertia::render('Vote/VoteVerify', [
-                 'vote' =>$vote,
+        // return Inertia::render('Vote/VoteVerify', [
+        return Inertia::render('Vote/Verify', [
+                'vote' =>$vote,
                  'name'=>auth()->user()->name,
                  'nrna_id'=>auth()->user()->nrna_id,
                  'state' =>auth()->user()->state              

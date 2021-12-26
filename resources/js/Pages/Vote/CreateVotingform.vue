@@ -33,11 +33,12 @@
                             focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         v-model= "selected"
                         @change    ="updateBoxes(candidates, 
-                                    this.selected,
+                                    this.selected, 
                                     this.icc_memberTicks)" 
                         :disabled  ="candidate.disabled"
-                             
+                        v-on:change   ="inform_selected_candidates()"     
                     />
+                  
                 </div> 
 
                  <!-- here the voting form ends  -->
@@ -63,6 +64,7 @@ export default {
  props:{
      candidates: Array
  },
+
  components:{
      ShowCandidate
  },
@@ -104,12 +106,26 @@ export default {
     
  },
  methods:{
-     
+       inform_selected_candidates(){
+        this.$emit('add_selected_candidates', this.selected);
+    },    
      get_nepali_name(post_id){
        //president 
-        if(post_id==1){
+        if(post_id=="1"){
             return "आइसीसी अद्यक्ष" 
         }
+        if(post_id=="2"){
+            return "उपाध्यक्ष" 
+        }
+        if(post_id=="3"){
+            return "महिला  उपाध्यक्ष" 
+        }
+        
+        if(post_id=="4"){
+            return "युबा  उपाध्यक्ष" 
+        }
+        
+        
      },
      get_post_name(candiVec){
         //   console.log(candiVec[0]);
@@ -175,7 +191,6 @@ export default {
          candiVec.forEach(box => {
           // console.log("candidacy id: "+box.candidacy_id) 
           
-          // console.log(selectedVec); 
           if (selectedVec.includes(box.candidacy_id))  selected_names.push(box.user.name);
         });
         let  elected_names =selected_names.join(',');

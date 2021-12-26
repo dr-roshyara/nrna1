@@ -5,3 +5,13 @@ sn;name;email;region;password;nrna_id;is_voter
 4;Api Himal;test4@test.de;Asia Pacific;12345678;nrna_04;0
 5;Kathmandu City;test5@test.de;Middle East;12345678;nrna_05;0
 6;Pokhara;test6@test.de;Oceania;12345678;nrna_06;0
+7;Humla Simikot;test7@test.de;Europe;12345678;nrna_07;0
+8;Janakpur City;test8@test.de;Europe;12345678;nrna_08;0
+9;Palpa City;test9@test.de;Europe;12345678;nrna_09;0
+10;Dadeldhura City;test10@test.de;Africa;12345678;nrna_10;0
+11;Bhaktapur City;test11@test.de;Oceania;12345678;nrna_11;0
+12;Dharan City;test12@test.de;Asia Pacific;12345678;nrna_12;0
+13;Dhangadi City;test13@test.de;Asia Pacific;12345678;nrna_13;0
+14;Biratnagar City;test14@test.de;Asia Pacific;12345678;nrna_14;0
+15;Jomsom City;test15@test.de;Asia Pacific;12345678;nrna_15;0
+16;Lalitpur City;test16@test.de;Americas;12345678;nrna_16;0
