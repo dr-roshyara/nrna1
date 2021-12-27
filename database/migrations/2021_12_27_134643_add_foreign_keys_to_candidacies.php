@@ -20,15 +20,15 @@ class AddForeignKeysToCandidacies extends Migration
                 ->on('users') 
                 ->onDelete('cascade');
             //
-             $table->foreign('proposer_id')
-                  ->references('user_id')
-                  ->on('users')
-                  ->onDelete('cascade');
-            //
-             $table->foreign('supporter_id')
-                  ->references('user_id')
-                  ->on('users')
-                  ->onDelete('cascade');
+            //  $table->foreign('proposer_id')
+            //       ->references('user_id')
+            //       ->on('users')
+            //       ->onDelete('cascade');
+            // //
+            //  $table->foreign('supporter_id')
+            //       ->references('user_id')
+            //       ->on('users')
+            //       ->onDelete('cascade');
             //                  
             $table->foreign('post_id')
                   ->references('post_id')
