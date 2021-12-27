@@ -30,6 +30,7 @@ class AddMoreFieldsToUsersTable extends Migration
             $table->string('additional_address')->nullable(); 
             $table->string('nrna_id')->unique()->nullable(); 
             $table->string('telephone')->unique()->nullable(); 
+            $table->string('user_id')->unique()->nullable()->after('id');
          
         });
     }
