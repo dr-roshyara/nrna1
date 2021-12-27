@@ -1,6 +1,6 @@
 <template>
    <nrna-layout>
-    <!-- <app-layout>  -->
+    <app-layout> 
          <!-- {{candidacies}}  -->
                  <div class="py-2 flex flex-row justify-between "> 
             <Link  v-if="candidacies.prev_page_url" class="m-2 px-2 py-2 bg-gray-300 rounded" :href="candidacies.prev_page_url" >Previous Page </Link> 
@@ -55,7 +55,7 @@
     <!-- //end of the table  -->
     </Table>
     </div>
-    <!-- </app-layout>  -->
+    </app-layout> 
    </nrna-layout>
 </template> 
 

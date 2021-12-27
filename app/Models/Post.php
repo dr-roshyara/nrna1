@@ -13,6 +13,6 @@ class Post extends Model
         //return $this->hasMany(Comment::class, 'foreign_key');
         //return $this->hasMany(Comment::class, 'foreign_key', 'local_key');
 
-        return $this->hasMnay(Candidacy::class, 'post_id', 'post_id');
+        return $this->hasMany(Candidacy::class, 'post_id', 'post_id');
     }
 }

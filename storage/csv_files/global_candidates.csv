@@ -1,17 +1,43 @@
-sn;name;email;region;password;nrna_id;is_voter
-1;Mt. Everest (Sagarmatha);test1@test.de;Europe;12345678;nrna_01;0
-2;Mt. Kanchenjunga;test2@test.de;Americas;12345678;nrna_02;0
-3;Machhapuchhre;test3@test.de;Africa;12345678;nrna_03;0
-4;Api Himal;test4@test.de;Asia Pacific;12345678;nrna_04;0
-5;Kathmandu City;test5@test.de;Middle East;12345678;nrna_05;0
-6;Pokhara;test6@test.de;Oceania;12345678;nrna_06;0
-7;Humla Simikot;test7@test.de;Europe;12345678;nrna_07;0
-8;Janakpur City;test8@test.de;Europe;12345678;nrna_08;0
-9;Palpa City;test9@test.de;Europe;12345678;nrna_09;0
-10;Dadeldhura City;test10@test.de;Africa;12345678;nrna_10;0
-11;Bhaktapur City;test11@test.de;Oceania;12345678;nrna_11;0
-12;Dharan City;test12@test.de;Asia Pacific;12345678;nrna_12;0
-13;Dhangadi City;test13@test.de;Asia Pacific;12345678;nrna_13;0
-14;Biratnagar City;test14@test.de;Asia Pacific;12345678;nrna_14;0
-15;Jomsom City;test15@test.de;Asia Pacific;12345678;nrna_15;0
-16;Lalitpur City;test16@test.de;Americas;12345678;nrna_16;0
+sn;name;user_id;email;region;password;nrna_id;is_voter
+1;Mt. Everest (Sagarmatha);nrna_01;test1@test.de;Europe;12345678;nrna_01;0
+2;Mt. Kanchenjunga;nrna_02;test2@test.de;Americas;12345678;nrna_02;0
+3;Machhapuchhre;nrna_03;test3@test.de;Africa;12345678;nrna_03;0
+4;Api Himal;nrna_04;test4@test.de;Asia Pacific;12345678;nrna_04;0
+5;Kathmandu City;nrna_05;test5@test.de;Middle East;12345678;nrna_05;0
+6;Pokhara;nrna_06;test6@test.de;Oceania;12345678;nrna_06;0
+7;Humla Simikot;nrna_07;test7@test.de;Europe;12345678;nrna_07;0
+8;Janakpur City;nrna_08;test8@test.de;Europe;12345678;nrna_08;0
+9;Palpa City;nrna_09;test9@test.de;Europe;12345678;nrna_09;0
+10;Dadeldhura City;nrna_10;test10@test.de;Africa;12345678;nrna_10;0
+11;Bhaktapur City;nrna_11;test11@test.de;Oceania;12345678;nrna_11;0
+12;Dharan City;nrna_12;test12@test.de;Europe;12345678;nrna_12;0
+13;Dhangadi City;nrna_13;test13@test.de;Asia Pacific;12345678;nrna_13;0
+14;Biratnagar City;nrna_14;test14@test.de;Europe;12345678;nrna_14;0
+15;Jomsom City;nrna_15;test15@test.de;Asia Pacific;12345678;nrna_15;0
+16;Lalitpur City;nrna_16;test16@test.de;Americas;12345678;nrna_16;0
+17;Chitwan National Park;nrna_17;test17@test.de;Americas;12345678;nrna_17;0
+18;Khaptad National Park;nrna_18;test18@test.de;Europe;12345678;nrna_18;0
+19;Bardiya National Park;nrna_19;test19@test.de;Africa;12345678;nrna_19;0
+20;Shivapuri Nagarjun National Park;nrna_20;test20@test.de;Middle East;12345678;nrna_20;0
+21;Chandra Giri Hill;nrna_21;test21@test.de;Americas;12345678;nrna_21;0
+22;Punn Hill;nrna_22;test22@test.de;Americas;12345678;nrna_22;0
+23;Sarangkot Hill;nrna_23;test23@test.de;Asia Pacific;12345678;nrna_23;0
+24;Bandipur Hill;nrna_24;test24@test.de;Americas;12345678;nrna_24;0
+25;Ilam Hill;nrna_25;test25@test.de;Africa;12345678;nrna_25;0
+26;Chitlang Hill;nrna_26;test26@test.de;Americas;12345678;nrna_26;0
+27;Nagarot  Hill;nrna_27;test27@test.de;Europe;12345678;nrna_27;0
+28;Dulikhel Hill;nrna_28;test28@test.de;Americas;12345679;nrna_28;0
+29;Rara Lake;nrna_29;test29@test.de;Europe;12345680;nrna_29;0
+30;Fewa Lake ;nrna_30;test30@test.de;Europe;12345681;nrna_30;0
+31;Rupa Lake;nrna_31;test31@test.de;Americas;12345682;nrna_31;0
+32;Tilicho Lake;nrna_32;test32@test.de;Europe;12345683;nrna_32;0
+33;Ek Rupaya;nrna_33;test33@test.de;Europe;12345684;nrna_33;0
+34;5 Rupaya;nrna_34;test34@test.de;Africa;12345685;nrna_34;0
+35;25  Rupaya ;nrna_35;test35@test.de;Europe;12345686;nrna_35;0
+36;50 Rupaya ;nrna_36;test36@test.de;Africa;12345687;nrna_36;0
+37;1000 Rupaya;nrna_37;test37@test.de;Europe;12345688;nrna_37;0
+38;Coin 10 Rupaya;nrna_38;test38@test.de;Europe;12345689;nrna_38;0
+39;Coin 250 Rupaya;nrna_39;test39@test.de;Africa;12345690;nrna_39;0
+40;Coin 500 Rupaya;nrna_40;test40@test.de;Europe;12345691;nrna_40;0
+41;Coin 5 Rupaya ;nrna_41;test41@test.de;Americas;12345692;nrna_41;0
+42;Coin 2 Rupaya;nrna_42;test42@test.de;Europe;12345693;nrna_42;0

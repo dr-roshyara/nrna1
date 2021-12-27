@@ -68,7 +68,7 @@ class VoteController extends Controller
          * Load User 
          */
         $candidacies->load(['user' => function ($query) {
-            $query->select(['id','name', 'region', 'nrna_id']);
+            $query->select(['id','name', 'region', 'user_id', 'nrna_id']);
             // $query->withTraced()->select('name');
             //$query->orderBy('published_date', 'asc');
             // return($query->get('name'));

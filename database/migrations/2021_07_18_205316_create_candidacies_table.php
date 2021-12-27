@@ -16,15 +16,15 @@ class CreateCandidaciesTable extends Migration
         Schema::create('candidacies', function (Blueprint $table) {
             $table->id();
             //candidacy id is just an extra . 
-            $table->string('candidacy_id'); 
+            $table->string('candidacy_id')->unique(); 
             //foreign key user 
-            $table->bigInteger('user_id')->unsigned();   
+            $table->string('user_id')->unique();   
             //foreign key post 
-            $table->bigInteger('post_id')->unsigned();
+            $table->string('post_id');
             // $table->string('candidacy_name')->nullable();            
-            $table->bigInteger('proposer_id')->unsigned()->nullable();
+            $table->string('proposer_id')->unique()->nullable();
             // $table->string('proposer_name')->nullable();
-            $table->bigInteger('supporter_id')->unsigned()->nullable();             
+            $table->string('supporter_id')->unique()->nullable();             
             // $table->string('supporter_name')->nullable(); 
             // $table->string('post_name')->nullable();
             // $table->string('post_nepali_name')->nullable();

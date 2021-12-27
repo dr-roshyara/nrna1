@@ -17,14 +17,14 @@ class Candidacy extends Model
      * Get the user 
      */
      public function user(){
-           return $this->belongsTo(User::class);
+           return $this->belongsTo(User::class, 'user_id','user_id');
        }
      /**
       * One Candidacy belongs to One Post 
       * Get the post 
        */
       public function post(){ 
-           return $this->belongsTo(Post::class);
+           return $this->belongsTo(Post::class, 'post_id','post_id');
        }
        /**
         * A candidacy has many votes. Also A Vote is for many posts so 

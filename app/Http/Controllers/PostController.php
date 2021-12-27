@@ -21,9 +21,9 @@ class PostController extends Controller
              $query =Post::query();
              $posts =$query->paginate(120); 
             //  dd($posts);
-        return Inertia::render('Post/IndexPost', [
-          'posts' => $posts,
-         ]);
+            return Inertia::render('Post/IndexPost', [
+            'posts' => $posts,
+            ]);
      
 
 
@@ -82,6 +82,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+
     }
 
     /**
@@ -94,4 +95,59 @@ class PostController extends Controller
     {
         //
     }
+     /***
+      * 
+      *Cerate mass assignment 
+      */
+      public function  assign(){
+        // here stats the assgin function 
+         $startName  ="csv_files//global_posts.csv";
+        
+         //return 0;
+        $csvName  =storage_path($startName); 
+        // var_dump($csvName);
+      
+        $csv_array = csv_to_array($csvName,";");
+        //read users 
+        // dd($csv_array);
+        $posts = Post::all();  
+        $laufer =0;
+        // dd($csv_array);
+        foreach($csv_array as $element){
+            /**
+            *each row is a post . So we need to create a post 
+            *@post : new  post 
+            */
+            // dd($element);
+            $laufer +=1;
+            $post  =Post::where('post_id', trim($element['post_id']))->first();
+            if($post){
+                  
+                echo "Post Exists-> line: ".$laufer.", post name ". $post->name. ", post id: ". $post->post_id ."<br>\n";
+
+            }else{
+                /***
+                 * 
+                 * create new user here 
+                 * 
+                 */
+                $post                     = new Post; 
+                   
+                echo  $element ['post_id'].'<br/>'; 
+            }
+            $post->name               =$element ['name'];
+            $post->post_id            =$element['post_id']; 
+            $post->nepali_name        =$element['nepali_name'];
+            $post->required_number    =$element['required_number'];
+            $post->is_national_wide   =$element['is_national_wide']; 
+           
+            // dd($post);
+            $post->save();
+        }    
+       
+
+ 
+
+        //here ends the assign function . 
+      }
 }

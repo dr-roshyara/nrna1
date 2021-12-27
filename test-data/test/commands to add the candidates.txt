@@ -1,0 +1,95 @@
+#commands to add the  candidates 
+use App\Models\Candidacy; 
+$candi =new Candidacy 
+$candi->user_id = 10872 
+$candi->candidacy_id ="DE_TEST_01"
+$candi->candidacy_id= "DE_TEST_01"
+$candi->candidacy_name= "Mt. Everest"
+$candi->proposer_id= "test1"
+$candi->proposer_name= "test1"
+$candi->supporter_id= "test2"
+$candi->supporter_name= "test2"
+$candi->post_name= "ICC Member"
+$candi->post_nepali_name= "आइसस सदस्य"
+$candi->post_id= "2021_01"
+$candi->image_path_1= "mt_everest.jpg"
+$candi->image_path_2= "test"
+$candi->image_path_3= "test"
+$candi->save()
+#
+#commands to add the  candidates 
+use App\Models\Candidacy; 
+$candi =new Candidacy 
+$candi->user_id = 10872 
+$candi->candidacy_id ="DE_TEST_02"
+$candi->candidacy_id= "DE_TEST_02"
+$candi->candidacy_name= "Mt. Machhapuchhre"
+$candi->proposer_id= "test1"
+$candi->proposer_name= "test1"
+$candi->supporter_id= "test2"
+$candi->supporter_name= "test2"
+$candi->post_name= "ICC Member"
+$candi->post_nepali_name= "आइसीसी सदस्य"
+$candi->post_id= "2021_01"
+$candi->image_path_1= "machapuchre.jpg"
+$candi->image_path_2= "test"
+$candi->image_path_3= "test"
+$candi->save()
+
+#
+#commands to add the  candidates 
+use App\Models\Candidacy; 
+$candi =new Candidacy 
+$candi->user_id = 10874 
+$candi->candidacy_id ="DE_TEST_03"
+$candi->candidacy_id= "DE_TEST_03"
+$candi->candidacy_name= "Mt. Kanchenjunga"
+$candi->proposer_id= "test1"
+$candi->proposer_name= "test1"
+$candi->supporter_id= "test2"
+$candi->supporter_name= "test2"
+$candi->post_name= "ICC Member"
+$candi->post_nepali_name= "आइसीसी सदस्य"
+$candi->post_id= "2021_01"
+$candi->image_path_1= "kanchanjangha.jpg"
+$candi->image_path_2= "test"
+$candi->image_path_3= "test"
+$candi->save()
+#
+#commands to add the  candidates 
+use App\Models\Candidacy; 
+$candi =new Candidacy 
+$candi->user_id         =  10883 
+$candi->candidacy_id    ="DE_TEST_06"
+$candi->candidacy_id    = "DE_TEST_06"
+$candi->candidacy_name  = "Kathmandu City"
+$candi->proposer_id = "test1"
+$candi->proposer_name= "test1"
+$candi->supporter_id= "test2"
+$candi->supporter_name= "test2"
+$candi->post_name= "President"
+$candi->post_nepali_name    = "अद्यक्ष"
+$candi->post_id         = "2021_02"
+$candi->image_path_1= "kathmandu.jpg"
+$candi->image_path_2= "test"
+$candi->image_path_3= "test"
+$candi->save()
+
+# president 
+use App\Models\Candidacy; 
+$candi =new Candidacy 
+$candi->user_id = 10879 
+$candi->candidacy_id ="DE_TEST_07"
+$candi->candidacy_id= "DE_TEST_07"
+$candi->candidacy_name= "Pokhara City"
+$candi->proposer_id= "test1"
+$candi->proposer_name= "test1"
+$candi->supporter_id= "test2"
+$candi->supporter_name= "test2"
+$candi->post_name= "President"
+$candi->post_nepali_name= "अद्यक्ष"
+$candi->post_id= "2021_02"
+$candi->image_path_1= "pokhara.jpg"
+$candi->image_path_2= "test"
+$candi->image_path_3= "test"
+$candi->save()

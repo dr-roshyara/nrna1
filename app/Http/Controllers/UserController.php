@@ -101,7 +101,7 @@ class UserController extends Controller
       
         // $file = fopen(csvName,"r");
         // $csv = array_map('str_getcsv', file($csvName));
-        $csv_array = $this->csv_to_array($csvName,";");
+        $csv_array = csv_to_array($csvName,";");
         //read users 
         //var_dump($csv_array);
         // dd($csv_array);
@@ -149,30 +149,28 @@ class UserController extends Controller
             */
             // dd($element);
             $laufer +=1;
-            $cur_user1  =User::where('nrna_id', trim($element['nrna_id']))->first();
-            // $cur_user1  =User::where('nrna_id', trim($element['nrna_id']))->first();
-            // dd($cur_user1);
-            // $cur_user1  =$users->where('telephone', '49'.$element['telephone']);
-            //  $n2 =count($cur_user1);
-             if($cur_user1){
+            $user  =User::where('nrna_id', trim($element['nrna_id']))->first();
+            
+             if($user){
                   
-                echo "User Exists-> line: ".$laufer.", user name ". $cur_user1->name. "<br>\n";
-                // $cur_user1->is_voter =1;
-                // $cur_user1->save();
-
+                echo "User Exists-> line: ".$laufer.", user name ". $user->name. ", user_id:". $user->user_id ."<br>\n";
+      
             }else{
                 /***
                  * 
                  * create new user here 
                  * 
                  */
-                  $user             = new User; 
+                $user             = new User; 
+                echo  $element ['user_id'].'<br/>'; 
+
+            }  
                   $user->name       =$element ['name'];
                   $user->email      =$element ['email'];
                   $user->region     =$element ['region'];
                 //   $user->password   =$element ['password'];
                   $user->password   =Hash::make($element ['password']);
- 
+                  $user->user_id    =$element ['user_id'];
                   $user->nrna_id    =$element ['nrna_id'];
                   $user->is_voter   =$element ['is_voter'];
                 //dd($user);
@@ -181,8 +179,8 @@ class UserController extends Controller
                   
                   
                     
-                echo  $element ['nrna_id'].'<br/>'; 
-            }
+              
+            
         }
 
 
@@ -240,31 +238,9 @@ class UserController extends Controller
     {
         //
     }
-    //
-       public function  csv_to_array($filename='', $delimiter=';')
-    {
-        if(!file_exists($filename) || !is_readable($filename)){
-            echo "file is not readable";
-           return FALSE;
+ 
+ 
 
-        }
-            
-
-        $header = NULL;
-        $data = array();
-        if (($handle = fopen($filename, 'r')) !== FALSE)
-        {
-            while (($row = fgetcsv($handle, 1000, $delimiter)) !== FALSE)
-            {
-                if(!$header)
-                    $header = $row;
-                else
-                    $data[] = array_combine($header, $row);
-            }
-            fclose($handle);
-        }
-        return $data;
-    }
     //make permissions 
     /**
      * 

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidacy;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
-use App\Models\Post;
 use App\Models\Upload;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\UploadController;
@@ -28,6 +28,12 @@ class CandidacyController extends Controller
      //starts here 
     public function index(Request $request)
     {
+        //  dd(Candidacy::all());
+        //  $candi = Candidacy::where('candidacy_id','2021_02')->first();
+        //  echo $candi;
+        //  dd($candi->user);
+          
+
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
                 $query->where('candidacy_id', 'LIKE', "%{$value}%");
@@ -48,7 +54,7 @@ class CandidacyController extends Controller
          * Load User 
          */
         $candidacies->load(['user' => function ($query) {
-            $query->select(['id','name', 'nrna_id']);
+            $query->select(['id','name','user_id', 'nrna_id']);
             // $query->withTraced()->select('name');
             //$query->orderBy('published_date', 'asc');
             // return($query->get('name'));
@@ -62,7 +68,7 @@ class CandidacyController extends Controller
          * Load Post 
          */
         $candidacies->load(['post' => function ($query) {
-            $query->select(['id','post_id','name','is_national_wide', 'is_national_wide']);
+            $query->select(['id','post_id','name','is_national_wide']);
             // $query->withTraced()->select('name');
             //$query->orderBy('published_date', 'asc');
             // return($query->get('name'));
@@ -71,7 +77,7 @@ class CandidacyController extends Controller
             // return $query->pluck('name');
             // return();
         }]);
-        
+        // dd($candidacies);
         return Inertia::render('Candidacy/Index', [
             'candidacies'=>$candidacies
         ])->table(function (InertiaTable $table) {
@@ -436,30 +442,182 @@ class CandidacyController extends Controller
     //         return redirect()->back()->withInput();
     //    }
     }
-    //save array
-    public function  csv_to_array($filename='', $delimiter=';')
+        /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Candidacy  $candidacy
+     * @return \Illuminate\Http\Response
+     */
+    public function assign()
     {
-        if(!file_exists($filename) || !is_readable($filename)){
-            echo "file is not readable";
-           return FALSE;
+        //
+        $startName  ="csv_files/global_candidacy.csv";
+        var_dump($startName);
+        //return 0;
+        $csvName  =storage_path($startName); 
 
-        }
-            
+        // $file = fopen(csvName,"r");
+        // $csv = array_map('str_getcsv', file($csvName));
+        $csv_array = csv_to_array($csvName,";");
+    //here starts 
+    
+    /******************************* */ 
+         //$user = DB::table('users')->find(3);
+         $candis = Candidacy::all();
+         $laufer =0;
+        // dd($csv_array);
+        foreach($csv_array as $element){
+            /**
+            * each row is a user . So we need to create a user 
+            *@user : new USER  
+            */
+            //first check if user already exists
+            $candi  =$candis->where('user_id', $element['user_id'])->first();
+            // dd($cur_candi);
+            $laufer +=1;
+            if($candi){
+                echo "<p>\n Candis Exists-> line: ". $laufer. ", user_id:". $element['user_id'] ."</p>\n";
+   
+            }else{
 
-        $header = NULL;
-        $data = array();
-        if (($handle = fopen($filename, 'r')) !== FALSE)
-        {
-            while (($row = fgetcsv($handle, 1000, $delimiter)) !== FALSE)
-            {
-                if(!$header)
-                    $header = $row;
-                else
-                    $data[] = array_combine($header, $row);
-            }
-            fclose($handle);
-        }
-        return $data;
+                // dd($element);    
+                $candi = new Candidacy;
+            } 
+            {    //User_id
+                 if (array_key_exists('user_id', $element))
+                 {
+                     if($element['user_id']){
+                        $candi->user_id = $element['user_id'];  
+                     }else{
+                         dd("Problem with adding the line user_id");
+                     }
+
+                 }    
+                //candidacyid 
+                if (array_key_exists('candidacy_id', $element))
+                 {
+                     if($element['candidacy_id']){
+                        $candi->candidacy_id = $element['candidacy_id'];  
+                     }else{
+                         dd("Problem with adding the line candidacy_id");
+                     }
+
+                 }  
+                //candi name  
+                if (array_key_exists('candidacy_name', $element))
+                 {
+                     if($element['candidacy_name']){
+                        $candi->candidacy_name = $element['candidacy_name'];  
+                     }else{
+                         dd("Problem with adding the line candidacy_name");
+                     }
+
+                 }  
+               //candi name  
+               if (array_key_exists('proposer_name', $element))
+               {
+                   if($element['proposer_name']){
+                      $candi->proposer_name = $element['proposer_name'];  
+                   }else{
+                       dd("Problem with adding the line proposer_name");
+                   }
+
+               }  
+                //candi name  
+                if (array_key_exists('proposer_id', $element))
+                {
+                    if($element['proposer_id']){
+                    $candi->proposer_id = $element['proposer_id'];  
+                    }else{
+                        dd("Problem with adding the line proposer_id");
+                    }
+
+                }  
+                    //candi name  
+                if (array_key_exists('supporter_id', $element))
+                    {
+                        if($element['supporter_id']){
+                            $candi->supporter_id = $element['supporter_id'];  
+                        }else{
+                            dd("Problem with adding the line supporter_id");
+                        }
+
+                    }  
+                //
+                    //candi name  
+                    if (array_key_exists('supporter_name', $element))
+                    {
+                        if($element['supporter_name']){
+                            $candi->supporter_name = $element['supporter_name'];  
+                        }else{
+                            dd("Problem with adding the line supporter_name");
+                        }
+
+                    }  
+                //   //candi name  
+                if (array_key_exists('post_name', $element))
+                {
+                    if($element['post_name']){
+                        $candi->post_name = $element['post_name'];  
+                    }else{
+                        dd("Problem with adding the line post_name");
+                    }
+
+                }
+        
+                // $candi->post_nepali_name="-";
+                    //   //candi name  
+                if (array_key_exists('post_id', $element))
+                {
+                    if($element['post_id']){
+                        $candi->post_id = $element['post_id'];  
+                    }else{
+                        dd("Problem with adding the line post_id");
+                    }
+
+                }
+                
+                if (array_key_exists('image_path_1', $element))
+                {
+                    if($element['image_path_1']){
+                        $candi->image_path_1 = $element['image_path_1'];  
+                    }else{
+                        dd("Problem with adding the line image_path_1");
+                    }
+
+                }
+                
+                if (array_key_exists('image_path_2', $element))
+                {
+                    if($element['image_path_2']){
+                        $candi->image_path_2 = $element['image_path_2'];  
+                    }else{
+                        dd("Problem with adding the line image_path_2");
+                    }
+
+                }
+                // next 
+                if (array_key_exists('image_path_3', $element))
+                {
+                    if($element['image_path_3']){
+                        $candi->image_path_3 = $element['image_path_3'];  
+                    }else{
+                        dd("Problem with adding the line image_path_3");
+                    }
+
+                }
+                            
+                // dd($candi);
+                $candi->save();
+         
+
+
+            }    
+    }
+     
+
+    //  here ends     
     }
 
     //ends here

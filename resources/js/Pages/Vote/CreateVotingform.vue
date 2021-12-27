@@ -111,18 +111,24 @@ export default {
     },    
      get_nepali_name(post_id){
        //president 
-        if(post_id=="1"){
+        if(post_id=="2021_01"){
             return "आइसीसी अद्यक्ष" 
         }
-        if(post_id=="2"){
+        if(post_id=="2021_02"){
             return "उपाध्यक्ष" 
         }
-        if(post_id=="3"){
+        if(post_id=="2021_03"){
             return "महिला  उपाध्यक्ष" 
         }
         
-        if(post_id=="4"){
+        if(post_id=="2021_04"){
             return "युबा  उपाध्यक्ष" 
+        }
+         if(post_id=="2021_05"){
+            return "महासचिव" 
+        }
+         if(post_id=="2021_06"){
+            return "सचिव" 
         }
         
         

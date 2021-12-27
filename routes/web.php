@@ -113,12 +113,14 @@ Route::get('users',[UserController::class, 'store'])->name("user.store");
 
 //show posts 
 Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
+Route::get('posts/assign', [PostController::class, 'assign'])->name('post.assign'); 
 
 //notices
 Route::get('notices/index', [NoticeController::class, 'index'])->name('notice.index');
 //get resources
 Route::get('/get/{filename}', [MakeurlController::class, 'getfile']); 
 //candidates
+
 /**
  * All candidates
  */
@@ -126,6 +128,7 @@ Route::get('candidacy/create', [CandidacyController::class, 'create'])->name('ca
 Route::post('candidacies', [CandidacyController::class, 'store'])->name('candidacy.store');
 Route::get('candidacies/index', [CandidacyController::class, 'index'])->name('candidacy.index');
 Route::get('candidacy/update', [CandidacyController::class, 'update'])->name('candidacy.update');
+Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('candidacy.assign');
 //messages
 /**
  * Write messages
