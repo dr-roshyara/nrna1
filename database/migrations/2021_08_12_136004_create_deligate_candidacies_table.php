@@ -22,14 +22,14 @@ class CreateDeligateCandidaciesTable extends Migration
             $table->bigInteger('post_id')->unsigned();
             $table->string('image_path_1')->nullable();
             //
-            $table->foreign('user_id') 
-                ->references('id')->on('users') 
-                ->onDelete('cascade');
-            //
-            $table->foreign('post_id')
-                  ->references('id')
-                  ->on('deligate_posts')
-                  ->onDelete('cascade');
+            // $table->foreign('user_id') 
+            //     ->references('id')->on('users')  
+            //     ->onDelete('cascade');
+            // //
+            // $table->foreign('post_id')
+            //       ->references('id')
+            //       ->on('deligate_posts')
+            //       ->onDelete('cascade');
             // here 
             $table->timestamps();
         });
