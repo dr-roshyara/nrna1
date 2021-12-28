@@ -162,14 +162,15 @@ class UserController extends Controller
                  * 
                  */
                 $user             = new User; 
-                echo  $element ['user_id'].'<br/>'; 
+                $user->email      =$element ['email'];
+                $user->password   =Hash::make($element ['password']);
+                echo  $element ['user_id'].'<br/>';  
 
-            }  
+                }  
                   $user->name       =$element ['name'];
-                  $user->email      =$element ['email'];
                   $user->region     =$element ['region'];
                 //   $user->password   =$element ['password'];
-                  $user->password   =Hash::make($element ['password']);
+                 
                   $user->user_id    =$element ['user_id'];
                   $user->nrna_id    =$element ['nrna_id'];
                   $user->is_voter   =$element ['is_voter'];
