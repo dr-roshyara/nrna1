@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Candidacy;
+use App\Models\Post;
 use App\Models\Upload;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -57,12 +58,45 @@ class VoteController extends Controller
             });
         });
         
-        $candidacies = QueryBuilder::for(Candidacy::class)
+        // $candidacies = QueryBuilder::for(Candidacy::class)
+        $national_posts = QueryBuilder::for(Post::with('candidates.user'))
         ->defaultSort('post_id')
-        ->allowedSorts(['candidacy_id', 'post.name', 'post.post_id', 'user.name', "user.nrna_id"])
-        ->allowedFilters(['user.name','candidacy_id',  $globalSearch])
-        ->paginate(100) 
+        ->allowedSorts(['name', 'is_national_wide', 'state_name', 'required_number'])
+        ->where ('is_national_wide',1)
+        ->paginate(50) 
         ->withQueryString();
+        //regional posts
+        $regional_posts = QueryBuilder::for(Post::with('candidates.user'))
+        ->defaultSort('post_id')
+        ->allowedSorts(['name', 'is_national_wide', 'state_name', 'required_number'])
+        ->where ('is_national_wide',0)
+        ->paginate(50) 
+        ->withQueryString();
+        
+        // dd($posts);
+        /***
+         * 
+         * load candidacies
+         * 
+         */
+        // $posts->load(['candidates' => function ($query) {
+        //     $query->select(['id','post_id','user_id', 'candidacy_id','image_path_1']);
+        // }]);
+
+        // $candidacies = QueryBuilder::for(Candidacy::class)
+        // ->defaultSort('post_id')
+        // ->allowedFilters(['user.name','candidacy_id',  $globalSearch])
+        // >paginate(100) 
+        // ->withQueryString();
+
+        // $candidacies =Candidacy::where('post_id', "2021_36")->first();
+        // $candidacies =Candidacy::all()->get(['post_id','candidacy_id','image_path_1']);
+        $candidacies = QueryBuilder::for(Candidacy::Class)
+        ->defaultSort('post_id')
+        ->allowedSorts(['name', 'is_national_wide', 'state_name', 'required_number'])
+        ->paginate(150) 
+        ->withQueryString();
+        
         /**
          * 
          * Load User 
@@ -84,14 +118,14 @@ class VoteController extends Controller
         $candidacies->load(['post' => function ($query) {
             $query->select(['id','post_id','name','required_number', 'is_national_wide']);
             // $query->withTraced()->select('name');
-            //$query->orderBy('published_date', 'asc');
+            // return  $query->where('is_national_wide', 1);
             // return($query->get('name'));
             //  $qs =$query->select('name');
             //  dd($query);
             // return $query->pluck('name');
             // return();
         }]);
-        
+        // dd($candidacies);
         //  Inertia::render("Vote/IndexVote", [
         //     "candidacies" => $candidacies 
         // ]); 
@@ -114,12 +148,14 @@ class VoteController extends Controller
                 abort(404);
                return (404);
              } 
-        
+            //  dd($candidacies);
      if($btemp){   
         return Inertia::render('Vote/Create', [
             //    "presidents" => $presidents,
             //    "vicepresidents" => $vicepresidents,
                 "candidacies" =>$candidacies,
+                "national_posts" =>$national_posts,
+                "regional_posts" =>$regional_posts,                                
                 'user_name'=>auth()->user()->name,
                 'user_id'=>auth()->user()->id,
                 // 'user_lcc'=>$lcc 

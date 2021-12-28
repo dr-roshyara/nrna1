@@ -10,10 +10,12 @@
             <p> यहाँले दिएको भोटिङ कोड सही भएको प्रमाणित भाईसकेको छ। कृपया अब आफ्नो इच्छा अनुसार मतदान गर्न सक्नु हुने छ। </p>
             </div>  
           </div>
-        
+                    <!-- {{regional_posts.data}}  
+                    {{candidate_post_ids(candidacies.data)}} -->
           <!-- {{candidacies.data}}   -->
           <form @submit.prevent="submit" class=" text-center mx-auto mt-10">
-      
+       
+            <!-- here ends the post idea   -->
           <div v-if ="!this.no_vote_option" 
            v-for ="(post_id, pId) in candidate_post_ids(candidacies.data)" :key="pId"
             :class="[pId%2==0? 'second_vote_window flex flex-col': 'first_vote_window flex flex-col']"
@@ -81,6 +83,8 @@ components:{
 },
 props:{
     candidacies: Array,
+    regional_posts: Array,
+    national_posts:Array,
      user_name : String,
      user_id : Number, 
 },

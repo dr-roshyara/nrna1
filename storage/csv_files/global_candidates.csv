@@ -93,5 +93,22 @@ sn;name;user_id;email;region;password;nrna_id;is_voter
 92;Ani Choying Drolma;nrna_92;test92@test.de;Europe;12345703;nrna_92;0
 93;Nisha Adhikari;nrna_93;test93@test.de;Oceania;12345703;nrna_93;0
 94;Dilip Rayamajhi ;nrna_94;test94@test.de;Europe;12345703;nrna_94;0
-95;Dipak Raj Giri;nrna_95;test95@test.de;Europe;12345704;nrna_95;1
-96;;nrna_96;test96@test.de;Europe;12345705;nrna_96;2
+95;Dipak Raj Giri;nrna_95;test95@test.de;Oceania;12345703;nrna_95;0
+96;Bijaya Kumar;nrna_96;test96@test.de;Europe;12345703;nrna_96;0
+97;Sudheer Sharma;nrna_97;test97@test.de;Oceania;12345703;nrna_97;0
+98;Amit Dhakal;nrna_98;test98@test.de;Europe;12345703;nrna_98;0
+99;Kishor Shrestha;nrna_99;test99@test.de;Oceania;12345703;nrna_99;0
+100;Bidyaa Chapagai;nrna_100;test100@test.de;Europe;12345703;nrna_100;0
+101;Suman Kharel;nrna_101;test101@test.de;Oceania;12345703;nrna_101;0
+102;Manoj Gajurel;nrna_102;test102@test.de;Europe;12345703;nrna_102;0
+103;Kedar Ghimire;nrna_103;test103@test.de;Oceania;12345703;nrna_103;0
+104;Madan Krishna Shrestha;nrna_104;test104@test.de;Europe;12345703;nrna_104;0
+105;Hari Bansa Acharya;nrna_105;test105@test.de;Oceania;12345703;nrna_105;0
+106;Wilson Bikram Rai;nrna_106;test106@test.de;Europe;12345703;nrna_106;0
+107;Sitaram Kattel;nrna_107;test107@test.de;Oceania;12345703;nrna_107;0
+108;Pasupati Sharma;nrna_108;test108@test.de;Oceania;12345703;nrna_108;0
+109;Rajesh Payal Rai;nrna_109;test109@test.de;Europe;12345703;nrna_109;0
+110;Shiva Pariyar;nrna_110;test110@test.de;Oceania;12345703;nrna_110;0
+111;Rita Thapa Magar;nrna_111;test111@test.de;Oceania;12345703;nrna_111;0
+112;Indira Joshi;nrna_112;test112@test.de;Europe;12345703;nrna_112;0
+113;Kunti Moktan;nrna_113;test113@test.de;Oceania;12345703;nrna_113;0
