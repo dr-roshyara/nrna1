@@ -10,27 +10,39 @@
             <p> यहाँले दिएको भोटिङ कोड सही भएको प्रमाणित भाईसकेको छ। कृपया अब आफ्नो इच्छा अनुसार मतदान गर्न सक्नु हुने छ। </p>
             </div>  
           </div>
-                    <!-- {{posts.data}}   -->
-                    <!-- {{candidate_post_ids(candidacies.data)}} -->
-          <!-- {{candidacies.data}}   -->
+               <!-- <p class="text-center">  {{regional_posts.data.length}} </p>  
+               <p class="text-center">  {{national_posts.data.length}} </p>   -->
+               
           <form @submit.prevent="submit" class=" text-center mx-auto mt-10">
-      
-          <div v-if ="!this.no_vote_option" 
-           v-for ="(post_id, pId) in candidate_post_ids(candidacies.data)" :key="pId"
-            :class="[pId%2==0? 'second_vote_window flex flex-col': 'first_vote_window flex flex-col']"
+                <div 
+                v-for ="(post, pId) in national_posts.data" :key="pId"
+                :class="[pId%2==0? 'second_vote_window flex flex-col': 'first_vote_window flex flex-col']"
             > 
-            <create-votingform 
-            :candidates=" select_candidates_for_a_post(candidacies.data, post_id)"
-            @add_selected_candidates = "this.form.selected_candidates[pId] = add_selected_to_form_submission(selectedArray=$event)"
-            > 
+                <create-post
+                    :post ="post"
+                     @add_selected_candidates = "this.form.natioanal_selected_candidates[pId] = add_selected_to_form_submission(post,selectedArray=$event)"
+                  > 
 
-          </create-votingform>
-        
-        
-        </div>
-             <!-- Here we write the div for accepting the voting action .  -->
-            <div class="flex flex-col items-center mx-auto my-4 w-full by-4 " 
-            style="background-color: #F1F1F1;"> 
+                </create-post>
+            </div>
+    
+              <div class="text-red-600" > reading <hr/>  </div>
+             <!-- here for regional data  -->
+             <div 
+                v-for ="(post, pId) in regional_posts.data" :key="pId"                
+                :class="[pId%2==0? 'second_vote_window flex flex-col': 'first_vote_window flex flex-col']"
+            > 
+                <create-post
+                :post ="post"
+                @add_selected_candidates = "this.form.regional_selected_candidates[pId] = add_selected_to_form_submission(post,selectedArray=$event)"
+                > 
+
+                </create-post>
+            </div>
+            
+ 
+            <!-- Here we write the div for accepting the voting action .  -->
+            <div class="flex flex-col items-center mx-auto my-4 w-full by-4 " style="background-color: #F1F1F1;"> 
               <!-- Here comes the no vote Button  -->
                 <div  class="flex flex-col w-full border border-3 border-blue-300 mx-2 my-4 py-4 px-6"> 
                      <div class=" flex flex-col items-center justify-center py-2 mb-2 text-bold text-red-700 text-xl">
@@ -61,6 +73,7 @@
               <jet-validation-errors class="mb-4  mx-auto text-center " />
             </div>
    
+   
           </form>
         </app-layout>
     </nrna-layout>
@@ -68,7 +81,7 @@
 <script>
  import AppLayout from '@/Layouts/AppLayout'
  import NrnaLayout from '@/Layouts/NrnaLayout'    
- import  CreateVotingform from '@/Pages/Vote/CreateVotingform.vue'
+ import  CreatePost from '@/Pages/Vote/CreatePost.vue'
  import { useForm } from '@inertiajs/inertia-vue3'
 import JetInput from '@/Jetstream/Input'
 import ShowCheckbox from "@/Shared/ShowCheckbox";
@@ -78,12 +91,12 @@ export default {
 components:{
     AppLayout,
     NrnaLayout,
-    CreateVotingform
+    CreatePost
 
 },
 props:{
-    candidacies: Array,
-    posts: Array,
+     national_posts: Array,
+     regional_posts: Array,
      user_name : String,
      user_id : Number, 
 },
@@ -91,7 +104,8 @@ setup (props) {
     const form = useForm({
       user_id:              props.user_id,
     //   president:            [],
-      selected_candidates:  new Array(candidate_post_ids(props.candidacies.data).length), 
+      natioanal_selected_candidates:  new Array(props.national_posts.data.length),
+      regional_selected_candidates:   new Array(props.regional_posts.data.length),
       no_vote_option:       false,
       agree_button:         false,     
       
@@ -114,20 +128,23 @@ setup (props) {
           return $post_ids.filter(onlyUnique);    
         }
 
-     function add_selected_to_form_submission(selectedArray){
+     function add_selected_to_form_submission(curPost,selectedArray){
         //    console.log(typeof(selectedArray));
-        let candiVec =[];
+            console.log(selectedArray);
+            // console.log("form selected");
+            // console.log(form.president);
+             let candiVec =[];
            let ids = Object.values(selectedArray);
         //    console.log(ids.length);
-           let tot_posts = posts.data;
-           let candiArray =props.candidacies.data; 
+         
+           let candiArray =curPost.candidates; 
            let selected_candis =[];
            if(ids.length==0){
                candiVec =[];
             //    console.log(candiVec);
            }else{
                  
-                selected_candis= candiArray.filter(candidate => {
+                selected_candis = candiArray.filter(candidate => {
                 //   console.log(ids.includes(candidate.candidacy_id));
                   return ids.includes(candidate.candidacy_id)
                 });
@@ -138,67 +155,14 @@ setup (props) {
                 }   
                 // console.log(form.selected_candidates);
 
-           }
-            // console.log("form selected");
-            // console.log(form.president);
+           } 
            return candiVec;    
           
         }
         
 
-    return { form, submit,add_selected_to_form_submission, candidate_post_ids }
+    return { form, submit, add_selected_to_form_submission, candidate_post_ids }
   },
-data(){
-    return {
-        // candidate_post_ids =[]
-        presient_post_id : 1
-    }
-},
-computed:{
-    /***
-     * pluck the  post_ids 
-     * const countries = [
-        { name: 'France', capital: 'Paris'  },
-        { name: 'Spain',  capital: 'Madrid' },
-        { name: 'Italy',  capital: 'Rome'   }
-        ]
-
-        // we can extract the attributes with individual arrow functions
-        countries.map(country => country.name)     // ⇒ ['France', 'Spain', 'Italy']
-        countries.map(country => country.capital)  // ⇒ ['Paris', 'Madrid', 'Rome']
-
-        // this function allows us to write that arrow function shorter
-        const pluck = property => element => element[property]
-
-        countries.map(pluck('name'))     // ⇒ ['France', 'Spain', 'Italy']
-        countries.map(pluck('capital'))  // ⇒ ['Paris', 'Madrid', 'Rome']
-    */
-    sscandidate_post_ids(candidacies){
-       let $post_ids =[] 
-       candidacies.forEach(candidate =>{
-          if(candidate.post_id){
-                $post_ids.push(candidate.post_id)
-          } 
-          });
-       return $post_ids.filter(this.onlyUnique);    
-       }
-
-},
-methods:{
-
-        select_candidates_for_a_post(candidacies,pid){
-            let candiArray =[];
-            candidacies.forEach(item=>{
-                 if(item.post_id===pid){
-                     let newItem =item;
-                     newItem.disabled =false;
-                     candiArray.push(newItem);  
-                 }
-            }); 
-            return candiArray;
-        },
-}
-
 //end     
 }
 </script>

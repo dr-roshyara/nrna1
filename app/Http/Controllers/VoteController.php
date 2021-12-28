@@ -61,19 +61,19 @@ class VoteController extends Controller
         // $candidacies = QueryBuilder::for(Candidacy::class)
         $national_posts = QueryBuilder::for(Post::with('candidates.user'))
         ->defaultSort('post_id')
-        ->allowedSorts(['name', 'is_national_wide', 'state_name', 'required_number'])
+        // ->allowedSorts(['name', 'is_national_wide', 'state_name', 'required_number'])
         ->where ('is_national_wide',1)
         ->paginate(50) 
         ->withQueryString();
         //regional posts
         $regional_posts = QueryBuilder::for(Post::with('candidates.user'))
-        ->defaultSort('post_id')
-        ->allowedSorts(['name', 'is_national_wide', 'state_name', 'required_number'])
-        ->where ('is_national_wide',0)
-        ->paginate(50) 
+                        ->defaultSort('post_id')
+                        ->where ('is_national_wide',0)
+                        // ->where('state_name', auth()->user()->region)
+                        ->paginate(50) 
         ->withQueryString();
-        
-        // dd($posts);
+         
+        //  dd($regional_posts); 
         /***
          * 
          * load candidacies
@@ -150,14 +150,14 @@ class VoteController extends Controller
              } 
             //  dd($candidacies);
      if($btemp){   
-        return Inertia::render('Vote/Create', [
+        return Inertia::render('Vote/CreateNew', [
             //    "presidents" => $presidents,
-            //    "vicepresidents" => $vicepresidents,
-                "candidacies" =>$candidacies,
+            //    "vicepresidents" => $vicepresidents, 
                 "national_posts" =>$national_posts,
                 "regional_posts" =>$regional_posts,                                
                 'user_name'=>auth()->user()->name,
                 'user_id'=>auth()->user()->id,
+                'user_region'=>auth()->user()->region,
                 // 'user_lcc'=>$lcc 
                 
             ]); 

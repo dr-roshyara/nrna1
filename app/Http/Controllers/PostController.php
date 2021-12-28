@@ -135,11 +135,19 @@ class PostController extends Controller
                    
                 echo  $element ['post_id'].'<br/>'; 
             }
-            $post->name               =$element ['name'];
-            $post->post_id            =$element['post_id']; 
-            $post->nepali_name        =$element['nepali_name'];
-            $post->required_number    =$element['required_number'];
-            $post->is_national_wide   =$element['is_national_wide']; 
+                $post->name               =$element ['name'];
+                $post->post_id            =$element['post_id']; 
+                $post->nepali_name        =$element['nepali_name'];
+                $post->required_number    =$element['required_number'];
+                $post->is_national_wide   =$element['is_national_wide']; 
+        
+            if (array_key_exists('state_name', $element))
+                 {
+                     if($element['state_name']){
+                        $post->state_name = $element['state_name'];  
+                     }
+
+                 }    
            
             // dd($post);
             $post->save();
