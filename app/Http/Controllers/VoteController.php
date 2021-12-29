@@ -73,22 +73,7 @@ class VoteController extends Controller
                         ->paginate(250) 
                         ->withQueryString();
          
-        //  dd($regional_posts); 
-        /***
-         * 
-         * load candidacies
-         * 
-         */
-        // $posts->load(['candidates' => function ($query) {
-        //     $query->select(['id','post_id','user_id', 'candidacy_id','image_path_1']);
-        // }]);
-
-        // $candidacies = QueryBuilder::for(Candidacy::class)
-        // ->defaultSort('post_id')
-        // ->allowedFilters(['user.name','candidacy_id',  $globalSearch])
-        // >paginate(100) 
-        // ->withQueryString();
-
+        
         // $candidacies =Candidacy::where('post_id', "2021_36")->first();
         // $candidacies =Candidacy::all()->get(['post_id','candidacy_id','image_path_1']);
         $candidacies = QueryBuilder::for(Candidacy::Class)
@@ -97,34 +82,34 @@ class VoteController extends Controller
         ->paginate(150) 
         ->withQueryString();
         
-        /**
-         * 
-         * Load User 
-         */
-        $candidacies->load(['user' => function ($query) {
-            $query->select(['id','name', 'region', 'user_id', 'nrna_id']);
-            // $query->withTraced()->select('name');
-            //$query->orderBy('published_date', 'asc');
-            // return($query->get('name'));
-        //  $qs =$query->select('name');
-        //  dd($query);
-        // return $query->pluck('name');
-        // return();
-        }]);
+        // /**
+        //  * 
+        //  * Load User 
+        //  */
+        // $candidacies->load(['user' => function ($query) {
+        //     $query->select(['id','name', 'region', 'user_id', 'nrna_id']);
+        //     // $query->withTraced()->select('name');
+        //     //$query->orderBy('published_date', 'asc');
+        //     // return($query->get('name'));
+        // //  $qs =$query->select('name');
+        // //  dd($query);
+        // // return $query->pluck('name');
+        // // return();
+        // }]);
         /**
          * 
          * Load Post 
          */
-        $candidacies->load(['post' => function ($query) {
-            $query->select(['id','post_id','name','required_number', 'is_national_wide']);
-            // $query->withTraced()->select('name');
-            // return  $query->where('is_national_wide', 1);
-            // return($query->get('name'));
-            //  $qs =$query->select('name');
-            //  dd($query);
-            // return $query->pluck('name');
-            // return();
-        }]);
+        // $candidacies->load(['post' => function ($query) {
+        //     $query->select(['id','post_id','name','required_number', 'is_national_wide']);
+        //     // $query->withTraced()->select('name');
+        //     // return  $query->where('is_national_wide', 1);
+        //     // return($query->get('name'));
+        //     //  $qs =$query->select('name');
+        //     //  dd($query);
+        //     // return $query->pluck('name');
+        //     // return();
+        // }]);
         // dd($candidacies);
         //  Inertia::render("Vote/IndexVote", [
         //     "candidacies" => $candidacies 
@@ -167,7 +152,13 @@ class VoteController extends Controller
         //    {name: "Hari Bahadur", photo: "test1.png",  post: ["President", "अद्यक्ष"], id:"hari", checked: false, disabled: false },
   
     }     
- 
+
+
+    /***
+     * 
+     * This is the first submisson of vote 
+     * 
+     */
     Public function  first_submission (Request $request){
          //
         $validator =  Validator::make(request()->all(), [
@@ -253,7 +244,7 @@ class VoteController extends Controller
             //$request->session()->put('key', 'value');
             //session(['key' => 'value']);
             return redirect()->route('vote.verfiy');
-            dd("test");
+            // dd("test");
         //$this->in_code   =auth()->user()->code2;
         //$this->in_code    ="4321";
         //$this->out_code   = $request['voting_code'];
@@ -305,6 +296,12 @@ class VoteController extends Controller
         $validator        =$this->verify_vote_submit();
         $validator->validate($request);
         //
+        if($this->has_voted){
+            // auth()->user()->save();
+            $request->session()->forget('vote');
+            return redirect()->route('vote.show'); 
+
+        }
         if($this->in_code==$this->out_code & !$this->has_voted)
         {
             /**
@@ -316,9 +313,10 @@ class VoteController extends Controller
              */
             //get vote from session 
             $input_data = $request->session()->get('vote');
-             dd($input_data);
+            $no_vote_option = $input_data["no_vote_option"];
+            // dd($input_data);
             //no_vote option is saved in 19 
-             $no_vote_option  =$input_data[19];   
+            //  $no_vote_option  =$input_data[19];   
             if($no_vote_option) { //check if voter has given no_vote  option 
                 // Go for no vote option 
                 $vote                   =new Vote; 
@@ -331,13 +329,25 @@ class VoteController extends Controller
               * Here you save the vote finally :
               * G
               */ 
-                $vote                = new Vote;
-                $vote->user_id       = $this->user_id;
-                $this->save_vote($input_data);
-               
+                // $vote                = new Vote;
+                // $vote->user_id       = $this->user_id;
+                $vote                =new Vote;
+                $vote->user_id       =$this->user_id;
+                $vote->post_id       =$this->user_id;
+                $vote->voting_code   =$this->in_code;
+                // dd($input_data);
+                $all_candidates =$input_data["natioanal_selected_candidates"];
+                $all_candidates =array_merge($all_candidates, $input_data["regional_selected_candidates"]);
+                
+                $this->save_vote( $vote, $all_candidates);
+                // dd($input_data);
             }    
             //save the vote and save the user has voted
-          
+            $vote->save();
+            $user =Auth::user();
+            $user->has_voted=1;
+            $user->save();
+            return redirect()->route('vote.show'); 
 
         }else{
             if($this->has_voted){
@@ -353,25 +363,17 @@ class VoteController extends Controller
         } 
            
        
-   
+        /***
+         * 
+         * Finally forget the vote session and redirect to show the vote 
+         * 
+         */
        
         // auth()->user()->save();
         $request->session()->forget('vote');
          return redirect()->route('vote.show'); 
 
-        // //   return redirect('/vote/verify')->with('vote', $candi_vec
-        // return Inertia::render('Vote/VoteShow', [
-        //          'vote' =>$vote,
-        //          'name'=>auth()->user()->name,
-        //          'nrna_id'=>auth()->user()->nrna_id,
-        //          'state' =>auth()->user()->state              
-        //      ]);
-                   
-
-       
-        
-        
-
+     
     }
 
     /**
@@ -385,12 +387,36 @@ class VoteController extends Controller
         //
         //   $vote =auth()->user()->vote();
           $this->user_id =auth()->user()->id;
-          $vote  =User::find($this->user_id)->vote;
+          $selected_candidates =[];
+        //   dd(auth()->user()->has_voted);
+          if(auth()->user()->has_voted)
+          {
+            $vote  =User::find($this->user_id)->vote;
+            $vote->voting_code="";
+            //   dd(json_decode($vote));
+            $vote     =(array) json_decode($vote);
+            $arr_keys =array_keys($vote);
+            $key_string ="candidate";
+           
+            foreach($arr_keys as $kstring){
+              // echo $kstring .", ";
+              // echo stristr($kstring, $key_string). "\n <br>";
+              if(stristr($kstring, $key_string)!=false ){
+                  if($vote[$kstring]){
+                      array_push($selected_candidates, $vote[$kstring]);
+              
+                  }
+              } 
+            }
+        
+          }
+        
+        //   dd($selected_candidates); 
           
         return Inertia::render('Vote/VoteShow', [
             //    "presidents" => $presidents,
             //    "vicepresidents" => $vicepresidents,
-                'vote' =>$vote,
+                'vote' => $selected_candidates,
                 'name'=>auth()->user()->name 
               
          ]);
@@ -546,211 +572,34 @@ class VoteController extends Controller
         return $validator;
     }
     //save all candidates 
-    public function save_vote($input_data){
+    public function save_vote(&$vote, $input_data){
+        // dd($input_data);     
+        for ($i=0; $i<sizeof($input_data); $i++){
+             $col_name = "candidate"; 
+             $json=[];
+            if($i<9){ 
+                $col_name .="_0".strval($i+1);
+            }else{
+                $col_name .="_".strval($i+1);
+            }
+
+
+            if($input_data[$i] ===null){
+                $json["candidates"] = null; 
+                $json["no_vote"]    =true ;
                 
-                $vote                =new Vote;
-                $vote->user_id       =$this->user_id;
-                // dd($input_data);
-                //icc member 
-                $icc_member                =$input_data[0];
-                if(sizeof($icc_member)>0){
-                    //   dd($icc_member[0]["candidacy_name"]);
-                    $vote['icc_member1_name']  =$icc_member[0]["candidacy_name"];
-                    $vote['icc_member1_id']    =$icc_member[0]["candidacy_id"];
+            }else{
+                $json = $input_data[$i] ;
+                $json["no_vote"] =false;
+               
+            }
+            $vote->$col_name = json_encode($json); 
+           
+        }       
+         $vote->save();
+        //   dd($input_data);
 
-                }
- 
-                 // president 
-                $president                    =$input_data[1];
-                if(sizeof($president)>0){
-                    $vote['president_name']  =$president[0]["candidacy_name"];
-                    $vote['president_id']    =$president[0]["candidacy_id"];
-
-                }
-                
-                 //Vice President  
-                $post                              =$input_data[2];
-                if(sizeof($president)>0){
-                    $vote['vice_president1_name']  =$post[0]["candidacy_name"];
-                    $vote['vice_president1_id']    =$post[0]["candidacy_id"];
-
-                }
-                //Vice President  
-                if(sizeof($post)>1){
-                    $vote['vice_president2_name']  =$post[1]["candidacy_name"];
-                    $vote['vice_president2_id']    =$post[1]["candidacy_id"];
-
-                }
-              
-                  $post                             =$input_data[3];
-                if(sizeof($post)>0){
-                    $vote['woman_vice_president_id']  =$post[0]["candidacy_id"];
-                    $vote['woman_vice_president_name']    =$post[0]["candidacy_name"];
-
-                }
-                //general secretary  4th data 
-                $post                             =$input_data[4];
-                if(sizeof($post)>0){
-                    $vote['general_secretary_id']  =$post[0]["candidacy_id"];
-                    $vote['general_secretary_name']    =$post[0]["candidacy_name"];
-
-                }
-                //Secretary 
-                $post                              =$input_data[5];
-                if(sizeof($post)>0){
-                    $vote['secretary1_id']          =$post[0]["candidacy_id"];
-                    $vote['secretary1_name']        =$post[0]["candidacy_name"];
-
-                }
-                   //Secretary 
-                   if(sizeof($post)>1){
-                    $vote['secretary2_id']   =$post[1]["candidacy_id"];
-                    $vote['secretary2_name']   =$post[1]["candidacy_name"];
-
-                }
-                //Treasure 
-                  $post                              =$input_data[6];
-                 if(sizeof($post)>0){
-                    $vote['treasure_id']   =$post[0]["candidacy_id"];
-                    $vote['treasure_name']   =$post[0]["candidacy_name"];
-
-                }
-                //woman_coordinator_id 
-                  $post                              =$input_data[7];
-                 if(sizeof($post)>0){
-                    $vote['woman_coordinator_id']   =$post[0]["candidacy_id"];
-                    $vote['woman_coordinator_name']   =$post[0]["candidacy_name"];
-
-                }
-             //youth_coordinator_id 
-                  $post                              =$input_data[8];
-                 if(sizeof($post)>0){
-                    $vote['youth_coordinator_id']   =$post[0]["candidacy_id"];
-                    $vote['youth_coordinator_name']   =$post[0]["candidacy_name"];
-
-                }
-                //culture_coordinator_id 
-                  $post                              =$input_data[9];
-                 if(sizeof($post)>0){
-                    $vote['culture_coordinator_id']   =$post[0]["candidacy_id"];
-                    $vote['culture_coordinator_name']   =$post[0]["candidacy_name"];
-
-                }
-                 //children_coordinator_id 
-                  $post                                 =$input_data[10];
-                 if(sizeof($post)>0){
-                    $vote['children_coordinator_id']    =$post[0]["candidacy_id"];
-                    $vote['children_coordinator_name']   =$post[0]["candidacy_name"];
-
-                }
-                 //student_coordinator_id 
-                  $post                              =$input_data[11];
-                 if(sizeof($post)>0){
-                    $vote['student_coordinator_id']   =$post[0]["candidacy_id"];
-                    $vote['student_coordinator_name']   =$post[0]["candidacy_name"];
-
-                }
-                //member_berlin1_id 
-                  $post                              =$input_data[12];
-                 if(sizeof($post)>0){
-                    $vote['member_berlin1_id']   =$post[0]["candidacy_id"];
-                    $vote['member_berlin1_name']   =$post[0]["candidacy_name"];
-
-                }
- 
-                 if(sizeof($post)>1){
-                    $vote['member_berlin2_id']   =$post[1]["candidacy_id"];
-                    $vote['member_berlin2_name']   =$post[1]["candidacy_name"];
-
-                }
-                //member_hamburg1_id 
-                  $post                              =$input_data[13];
-                 if(sizeof($post)>0){
-                    $vote['member_hamburg1_id']   =$post[0]["candidacy_id"];
-                    $vote['member_hamburg1_id']   =$post[0]["candidacy_name"];
-
-                }
- 
-                  if(sizeof($post)>1){
-                    $vote['member_hamburg2_id']   =$post[1]["candidacy_id"];
-                    $vote['member_hamburg2_id']   =$post[1]["candidacy_name"];
-
-                } 
-                //  'member_niedersachsen1_id
-                
-                  $post                              =$input_data[14];
-                 if(sizeof($post)>0){
-                    $vote['member_niedersachsen1_id']   =$post[0]["candidacy_id"];
-                    $vote['member_niedersachsen1_name']   =$post[0]["candidacy_name"];
-
-                }
- 
-                   if(sizeof($post)>1){
-                    $vote['member_niedersachsen2_id']   =$post[1]["candidacy_id"];
-                    $vote['member_niedersachsen2_name']   =$post[1]["candidacy_name"];
-
-                }
- 
-                //member_nrw1_id
-                  $post                              =$input_data[15];
-                 if(sizeof($post)>0){
-                    $vote['member_nrw1_id']   =$post[0]["candidacy_id"];
-                    $vote['member_nrw1_name']   =$post[0]["candidacy_name"];
-
-                }
- 
-                  if(sizeof($post)>1){
-                    $vote['member_nrw2_id']   =$post[1]["candidacy_id"];
-                    $vote['member_nrw2_name']   =$post[1]["candidacy_name"];
-
-                }
-                //member_hessen1_id 
-                  $post                              =$input_data[16];
-                 if(sizeof($post)>0){
-                    $vote['member_hessen1_id']   =$post[0]["candidacy_id"];
-                    $vote['member_hessen1_name']   =$post[0]["candidacy_name"];
-
-                }
- 
-                if(sizeof($post)>1){
-                    $vote['member_hessen2_id']   =$post[1]["candidacy_id"];
-                    $vote['member_hessen2_name']   =$post[1]["candidacy_name"];
-
-                }
-                //member_rheinland_pfalz1_id 
-                  $post                              =$input_data[17];
-                 if(sizeof($post)>0){
-                    $vote['member_rheinland_pfalz1_id']   =$post[0]["candidacy_id"];
-                    $vote['member_rheinland_pfalz1_name']   =$post[0]["candidacy_name"];
-
-                }
- 
-                   if(sizeof($post)>1){
-                    $vote['member_rheinland_pfalz2_id']   =$post[1]["candidacy_id"];
-                    $vote['member_rheinland_pfalz2_name']   =$post[1]["candidacy_name"];
-
-                }
-                //member_bayern1_id 
-                  $post                              =$input_data[18];
-              
-                 if(sizeof($post)>0){
-                    $vote['member_bayern1_id']   =$post[0]["candidacy_id"];
-                    $vote['member_bayern1_name']   =$post[0]["candidacy_name"];
-
-                }
-                 if(sizeof($post)>1){
-                    $vote['member_bayern2_id']   =$post[1]["candidacy_id"];
-                    $vote['member_bayern2_name']   =$post[1]["candidacy_name"];
-
-                }
-                
-
- 
-              //  
-            $vote->save();
-            $user =Auth::user();
-            $user->has_voted=1;
-            $user->save();
+            
     }
     //vote thanks 
     public function thankyou(){
