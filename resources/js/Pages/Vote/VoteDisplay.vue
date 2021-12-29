@@ -1,7 +1,7 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template> 
 <div class="flex flex-col"> 
-        <!-- {{vote}} -->
+        {{vote}}
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -14,9 +14,9 @@
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Designation 
               </th> 
-                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                 <!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Region
-              </th>
+              </th> -->
               <!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Role
               </th>
@@ -54,9 +54,9 @@
                 <div class="text-sm text-gray-900">{{candidate["post_name"] }}</div> 
                 <div class="text-sm text-gray-500">post ID: {{candidate["post_id"] }}</div>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-                   {{candiVote.user.region }}
-               </td>
+              <!-- <td class="px-6 py-4 whitespace-nowrap">
+                    {{candiVote.user.region }} 
+               </td> -->
               
             </tr>
             </template>
