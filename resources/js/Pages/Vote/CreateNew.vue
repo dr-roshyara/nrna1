@@ -136,7 +136,7 @@ setup (props) {
              let candiVec ={};
               candiVec.post_name =curPost.name;
               candiVec.post_id   =curPost.post_id; 
-              candiVec.region   =curPost.region;   
+              candiVec.region    =curPost.state_name;   
            let ids = Object.values(selectedArray);
         //    console.log(ids.length);
          
