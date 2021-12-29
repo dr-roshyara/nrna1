@@ -1,17 +1,18 @@
 <template>
 <nrna-layout> 
  <app-layout>
-    <div class="flex flex-col ites-center md:mx-auto md:flex-row  md:space-x-6 ">
-        <div class="flex flex-col justify-center bg-blue-100 ">
+    <div class="flex flex-col  md:mx-auto md:flex-row  md:space-x-6 ">
+        <div class="flex flex-col mt-10 align-top bg-blue-100 ">
                 
-                <div class="m-auto">
+                <div class="mx-auto">
                 <jet-validation-errors class="mb-4  mx-auto text-center " /> 
                   
                 </div>
-                
-            <form @submit.prevent="submit" class=" text-center mx-auto ">
+    
+            <form @submit.prevent="submit" class=" text-center mx-auto align-top">
                 <div class="flex flex-col justify-center px-2 m-2"> 
-                    <div class="flex flex-col justify-center space-x-4 items-center p-4 mb-2 mx-auto 
+                    <div class="flex flex-col justify-center space-x-4 
+                  p-4 mb-2 mx-auto 
                     font-bold text-gray-900 ">
                     <label for="voting_code"  class="px-4 py-2 mb-3"> 
                         <p> Vote Conformation  Code </p>
@@ -24,10 +25,10 @@
                     placeholder="PLEASE ENTER HERE YOUR VOTING CODE"  
                         v-model ="form.voting_code"/> 
                     </div>  
-                    <div class="mx-auto my-4 w-full"> 
+                    <div class="my-4 w-full"> 
                         <button type="submit" 
-                        class="m-2 px-2 py-4 rounded-lg bg-blue-300 w-96 mx-auto font-bold text-gray-900">
-                        SEND CODE TO save your vote </button> 
+                        class="w-full  px-4 py-4 rounded-lg bg-blue-300 font-extrabold text-gray-900">
+                        PLEASE CLICK HERE  &  SAVE YOUR VOTE </button> 
                         </div>
                             <div class="mx-auto text-center">
                     <jet-validation-errors class="mb-4  mx-auto text-center " />
@@ -45,11 +46,8 @@
              You have selected a <span class="text-red-800 font-bold " >  VOTE FOR NO ONE </span>option .<br>
             <span class="text-gray-900 font-bold">  Please conform it </span>
         </div>
-            <div class="pre">
-                {{JSON.stringify(vote, null, 2)}}
-            <!-- <pre><code id=acct></code></pre> -->
-            <!-- <pre><code id="planets"></code></pre> -->
-            </div>
+               <!-- Here we display the casted vote   -->
+              <vote-display :vote="vote"> </vote-display>
         </div>   
     </div>   
       </app-layout>    
@@ -57,6 +55,7 @@
     </template>
 <script>
 import VotedPost from "@/Shared/VotedPost"
+import VoteDisplay from "@/Pages/Vote/VoteDisplay"
 import { useForm } from '@inertiajs/inertia-vue3'
 import JetValidationErrors from '@/Jetstream/ValidationErrors' 
 import AppLayout from '@/Layouts/AppLayout'
@@ -86,6 +85,7 @@ export default {
     },
     components:{
         VotedPost,
+        VoteDisplay,
          NrnaLayout,
      AppLayout,
      JetValidationErrors

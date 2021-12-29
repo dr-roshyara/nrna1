@@ -63,15 +63,15 @@ class VoteController extends Controller
         ->defaultSort('post_id')
         // ->allowedSorts(['name', 'is_national_wide', 'state_name', 'required_number'])
         ->where ('is_national_wide',1)
-        ->paginate(50) 
+        ->paginate(250) 
         ->withQueryString();
         //regional posts
         $regional_posts = QueryBuilder::for(Post::with('candidates.user'))
                         ->defaultSort('post_id')
                         ->where ('is_national_wide',0)
                         // ->where('state_name', auth()->user()->region)
-                        ->paginate(50) 
-        ->withQueryString();
+                        ->paginate(250) 
+                        ->withQueryString();
          
         //  dd($regional_posts); 
         /***

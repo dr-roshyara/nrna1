@@ -133,14 +133,17 @@ setup (props) {
             console.log(selectedArray);
             // console.log("form selected");
             // console.log(form.president);
-             let candiVec =[];
+             let candiVec ={};
+              candiVec.post_name =curPost.name;
+              candiVec.post_id   =curPost.post_id; 
+              candiVec.region   =curPost.region;   
            let ids = Object.values(selectedArray);
         //    console.log(ids.length);
          
            let candiArray =curPost.candidates; 
            let selected_candis =[];
            if(ids.length==0){
-               candiVec =[];
+               candiVec.candidates =[];
             //    console.log(candiVec);
            }else{
                  
@@ -151,7 +154,7 @@ setup (props) {
               if(selected_candis.length>0){
                      //  console.log(selected_candis);
                     // console.log(selected_candis[0]);
-                    candiVec =selected_candis;                   
+                    candiVec.candidates =selected_candis;                   
                 }   
                 // console.log(form.selected_candidates);
 
