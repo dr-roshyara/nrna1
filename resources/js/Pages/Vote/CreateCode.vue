@@ -18,7 +18,7 @@
                    <label for="voting_code"  class="px-4 py-2 mb-3"> 
                       <p> Your voting code is: 1234 </p> 
                       <p> Please enter your voting Code.</p>
-                      <p> यहाँलाई पाउनु भएको यो  भोटिङ कोड तलको खाली ठाउमा भरेर वटन थिच्नु होला । </p>  
+                      <p> यहाँले पाउनु भएको यो  भोटिङ कोड तलको खाली ठाउंमा भरेर सेन्ड वटन थिच्नु होला । </p>  
                    </label>   
                   <input class=" px-4 py-6 rounded-lg bg-gray-200 w-96 
                    font-bold border border-blue-400  text-gray-900 font-bold text-xl" 
@@ -29,7 +29,7 @@
                  <div class="mx-auto my-4 w-full"> 
                     <button type="submit" 
                     class="m-2 px-2 py-4 rounded-lg bg-blue-300 w-96 mx-auto font-bold text-gray-900">
-                    SEND CODE TO GET VOTING FORM</button> 
+                    PRESS HERE TO GET VOTING FORM</button> 
                     </div>
                            <div class="mx-auto text-center">
                 <jet-validation-errors class="mb-4  mx-auto text-center " />
