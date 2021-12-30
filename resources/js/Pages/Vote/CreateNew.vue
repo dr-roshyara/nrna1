@@ -26,7 +26,7 @@
                 </create-post>
             </div>
     
-              <div class="text-red-600" > reading <hr/>  </div>
+              <!-- <div class="text-red-600" > reading <hr/>  </div> -->
              <!-- here for regional data  -->
              <div 
                 v-for ="(post, pId) in regional_posts.data" :key="pId"                

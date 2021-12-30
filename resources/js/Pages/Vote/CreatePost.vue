@@ -176,7 +176,9 @@ methods:{
          if(post_id=="2021_06"){
             return "सचिव" 
         }
-        
+           if(post_id=="2021_49"){
+            return "प्याट्रोन काउन्सिल सदश्य" 
+        }
         
      },
         fillArray(value, len) {

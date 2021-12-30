@@ -1,131 +1,145 @@
-sn;name;user_id;email;region;password;nrna_id;is_voter
-1;Mt. Everest (Sagarmatha);nrna_01;test1@test.de;Europe;12345678;nrna_01;0
-2;Mt. Kanchenjunga;nrna_02;test2@test.de;Americas;12345678;nrna_02;0
-3;Machhapuchhre;nrna_03;test3@test.de;Africa;12345678;nrna_03;0
-4;Api Himal;nrna_04;test4@test.de;Asia Pacific;12345678;nrna_04;0
-5;Kathmandu City;nrna_05;test5@test.de;Middle East;12345678;nrna_05;0
-6;Pokhara;nrna_06;test6@test.de;Oceania;12345678;nrna_06;0
-7;Humla Simikot;nrna_07;test7@test.de;Europe;12345678;nrna_07;0
-8;Janakpur City;nrna_08;test8@test.de;Europe;12345678;nrna_08;0
-9;Palpa City;nrna_09;test9@test.de;Europe;12345678;nrna_09;0
-10;Dadeldhura City;nrna_10;test10@test.de;Africa;12345678;nrna_10;0
-11;Bhaktapur City;nrna_11;test11@test.de;Oceania;12345678;nrna_11;0
-12;Dharan City;nrna_12;test12@test.de;Europe;12345678;nrna_12;0
-13;Dhangadi City;nrna_13;test13@test.de;Asia Pacific;12345678;nrna_13;0
-14;Biratnagar City;nrna_14;test14@test.de;Europe;12345678;nrna_14;0
-15;Jomsom City;nrna_15;test15@test.de;Asia Pacific;12345678;nrna_15;0
-16;Lalitpur City;nrna_16;test16@test.de;Americas;12345678;nrna_16;0
-17;Chitwan National Park;nrna_17;test17@test.de;Americas;12345678;nrna_17;0
-18;Khaptad National Park;nrna_18;test18@test.de;Europe;12345678;nrna_18;0
-19;Bardiya National Park;nrna_19;test19@test.de;Africa;12345678;nrna_19;0
-20;Shivapuri Nagarjun National Park;nrna_20;test20@test.de;Middle East;12345678;nrna_20;0
-21;Chandra Giri Hill;nrna_21;test21@test.de;Americas;12345678;nrna_21;0
-22;Punn Hill;nrna_22;test22@test.de;Americas;12345678;nrna_22;0
-23;Sarangkot Hill;nrna_23;test23@test.de;Asia Pacific;12345678;nrna_23;0
-24;Bandipur Hill;nrna_24;test24@test.de;Americas;12345678;nrna_24;0
-25;Ilam Hill;nrna_25;test25@test.de;Africa;12345678;nrna_25;0
-26;Chitlang Hill;nrna_26;test26@test.de;Americas;12345678;nrna_26;0
-27;Nagarot  Hill;nrna_27;test27@test.de;Europe;12345678;nrna_27;0
-28;Dulikhel Hill;nrna_28;test28@test.de;Americas;12345679;nrna_28;0
-29;Rara Lake;nrna_29;test29@test.de;Europe;12345680;nrna_29;0
-30;Fewa Lake ;nrna_30;test30@test.de;Europe;12345681;nrna_30;0
-31;Rupa Lake;nrna_31;test31@test.de;Americas;12345682;nrna_31;0
-32;Tilicho Lake;nrna_32;test32@test.de;Europe;12345683;nrna_32;0
-33;Ek Rupaya;nrna_33;test33@test.de;Europe;12345684;nrna_33;0
-34;5 Rupaya;nrna_34;test34@test.de;Africa;12345685;nrna_34;0
-35;25  Rupaya ;nrna_35;test35@test.de;Europe;12345686;nrna_35;0
-36;50 Rupaya ;nrna_36;test36@test.de;Africa;12345687;nrna_36;0
-37;1000 Rupaya;nrna_37;test37@test.de;Europe;12345688;nrna_37;0
-38;Coin 10 Rupaya;nrna_38;test38@test.de;Europe;12345689;nrna_38;0
-39;Coin 250 Rupaya;nrna_39;test39@test.de;Africa;12345690;nrna_39;0
-40;Coin 500 Rupaya;nrna_40;test40@test.de;Europe;12345691;nrna_40;0
-41;Coin 5 Rupaya ;nrna_41;test41@test.de;Americas;12345692;nrna_41;0
-42;Coin 2 Rupaya;nrna_42;test42@test.de;Europe;12345693;nrna_42;0
-43;Parijaat;nrna_43;test43@test.de;Americas;12345694;nrna_43;0
-44;Pasang Lhamu Sherpa;nrna_44;test44@test.de;Europe;12345695;nrna_44;0
-45;Sushila Karki;nrna_45;test45@test.de;Americas;12345696;nrna_45;0
-46;Himani Shaha;nrna_46;test46@test.de;Europe;12345697;nrna_46;0
-47;Football;nrna_47;test47@test.de;Americas;12345698;nrna_47;0
-48;Kapardi;nrna_48;test48@test.de;Europe;12345699;nrna_48;0
-49;Cricket ;nrna_49;test49@test.de;Americas;12345700;nrna_49;0
-50;Basketball;nrna_50;test50@test.de;Europe;12345701;nrna_50;0
-51;Elephant Polo;nrna_51;test51@test.de;Americas;12345702;nrna_51;0
-52;Volleyball;nrna_52;test52@test.de;Americas;12345703;nrna_52;0
-53;1 Rupaya Coin;nrna_53;test53@test.de;Afria;12345703;nrna_53;0
-54;Mahakali River ;nrna_54;test54@test.de;Americas;12345703;nrna_54;0
-55;Sapta Gandki River ;nrna_55;test55@test.de;Afria;12345703;nrna_55;0
-56;Koshi River ;nrna_56;test56@test.de;Americas;12345703;nrna_56;0
-57;Narayani River ;nrna_57;test57@test.de;Europe;12345703;nrna_57;0
-58;Karnali River;nrna_58;test58@test.de;Afria;12345703;nrna_58;0
-59;One and Half Mohar;nrna_59;test59@test.de;Asia Pacific;12345703;nrna_59;0
-60;Moti Ram Bhatta ;nrna_60;test60@test.de;Europe;12345703;nrna_60;0
-61;Laxmi Prasad Devkota;nrna_61;test61@test.de;Asia Pacific;12345703;nrna_61;0
-62;Bhanu Bhakta Acharya;nrna_62;test62@test.de;Afria;12345703;nrna_62;0
-63;Bhupi Sherchan;nrna_63;test63@test.de;Americas;12345703;nrna_63;0
-64;Satya Mohan Joshi;nrna_64;test64@test.de;Afria;12345703;nrna_64;0
-65;Melina Rai ;nrna_65;test65@test.de;Europe;12345703;nrna_65;0
-66;Anamol KC;nrna_66;test66@test.de;Oceania;12345703;nrna_66;0
-67;Jitu Nepal ;nrna_67;test67@test.de;Afria;12345703;nrna_67;0
-68;Priyanka Karki;nrna_68;test68@test.de;Oceania;12345703;nrna_68;0
-69;Swastima Khadka ;nrna_69;test69@test.de;Oceania;12345703;nrna_69;0
-70;Gaurika Singh ;nrna_70;test70@test.de;Europe;12345703;nrna_70;0
-71;Dipashree Niraula;nrna_71;test71@test.de;Europe;12345703;nrna_71;0
-72;Rekha Thapa;nrna_72;test72@test.de;Europe;12345703;nrna_72;0
-73;Rajesh Hamal;nrna_73;test73@test.de;Europe;12345703;nrna_73;0
-74;Karishma Manandhar ;nrna_74;test74@test.de;Europe;12345703;nrna_74;0
-75;Seweta Khadka;nrna_75;test75@test.de;Oceania;12345703;nrna_75;0
-76;Shiva Shrestha;nrna_76;test76@test.de;Europe;12345703;nrna_76;0
-77;Manisha Koirala;nrna_77;test77@test.de;Asia Pacific;12345703;nrna_77;0
-78;Dayahang Rai;nrna_78;test78@test.de;Europe;12345703;nrna_78;0
-79;Bhuwan KC;nrna_79;test79@test.de;Oceania;12345703;nrna_79;0
-80;Jhamak Ghimire;nrna_80;test80@test.de;Europe;12345703;nrna_80;0
-81;Bhagwan Koirala;nrna_81;test81@test.de;Europe;12345703;nrna_81;0
-82;Sanduk Ruit;nrna_82;test82@test.de;Europe;12345703;nrna_82;0
-83;Gobinda KC ;nrna_83;test83@test.de;Oceania;12345703;nrna_83;0
-84;Puspa Basnet;nrna_84;test84@test.de;Europe;12345703;nrna_84;0
-85;Anuradha Koirala;nrna_85;test85@test.de;Oceania;12345703;nrna_85;0
-86;Mahabir Pun ;nrna_86;test86@test.de;Europe;12345703;nrna_86;0
-87;Narayan Gopal ;nrna_87;test87@test.de;Europe;12345703;nrna_87;0
-88;Kali Prasad Baskota ;nrna_88;test88@test.de;Europe;12345703;nrna_88;0
-89;Anju Panta;nrna_89;test89@test.de;Oceania;12345703;nrna_89;0
-90;Bhakta Raj Acharya;nrna_90;test90@test.de;Europe;12345703;nrna_90;0
-91;Bishnu Majhi ;nrna_91;test91@test.de;Oceania;12345703;nrna_91;0
-92;Ani Choying Drolma;nrna_92;test92@test.de;Europe;12345703;nrna_92;0
-93;Nisha Adhikari;nrna_93;test93@test.de;Oceania;12345703;nrna_93;0
-94;Dilip Rayamajhi ;nrna_94;test94@test.de;Europe;12345703;nrna_94;0
-95;Dipak Raj Giri;nrna_95;test95@test.de;Oceania;12345703;nrna_95;0
-96;Bijaya Kumar;nrna_96;test96@test.de;Europe;12345703;nrna_96;0
-97;Sudheer Sharma;nrna_97;test97@test.de;Oceania;12345703;nrna_97;0
-98;Amit Dhakal;nrna_98;test98@test.de;Europe;12345703;nrna_98;0
-99;Kishor Shrestha;nrna_99;test99@test.de;Oceania;12345703;nrna_99;0
-100;Bidyaa Chapagai;nrna_100;test100@test.de;Europe;12345703;nrna_100;0
-101;Suman Kharel;nrna_101;test101@test.de;Oceania;12345703;nrna_101;0
-102;Manoj Gajurel;nrna_102;test102@test.de;Europe;12345703;nrna_102;0
-103;Kedar Ghimire ;nrna_103;test103@test.de;Oceania;12345703;nrna_103;0
-104;Madan Krishna Shrestha;nrna_104;test104@test.de;Europe;12345703;nrna_104;0
-105;Hari Bansa Acharya;nrna_105;test105@test.de;Oceania;12345703;nrna_105;0
-106;Wilson Bikram Rai;nrna_106;test106@test.de;Europe;12345703;nrna_106;0
-107;Sitaram Kattel;nrna_107;test107@test.de;Oceania;12345703;nrna_107;0
-108;Pasupati Sharma;nrna_108;test108@test.de;Oceania;12345703;nrna_108;0
-109;Rajesh Payal Rai;nrna_109;test109@test.de;Europe;12345703;nrna_109;0
-110;Shiva Pariyar;nrna_110;test110@test.de;Oceania;12345703;nrna_110;0
-111;Rita Thapa Magar;nrna_111;test111@test.de;Oceania;12345703;nrna_111;0
-112;Indira Joshi;nrna_112;test112@test.de;Europe;12345703;nrna_112;0
-113;Kunti Moktan;nrna_113;test113@test.de;Oceania;12345703;nrna_113;0
-114;Bhuwan Chanda;nrna_114;test114@test.de;Europe;12345703;nrna_114;0
-115;Mithila Sharma;nrna_115;test115@test.de;Oceania;12345703;nrna_115;0
-116;Bandana Rana ;nrna_116;test116@test.de;Europe;12345703;nrna_116;0
-117;Bhawani Rana;nrna_117;test117@test.de;Oceania;12345703;nrna_117;0
-118;Raveena Desraj Shrestha;nrna_118;test118@test.de;Europe;12345703;nrna_118;0
-119;Hari Devi Koirala;nrna_119;test119@test.de;Oceania;12345703;nrna_119;0
-120;Yankila Sherpa;nrna_120;test120@test.de;Europe;12345703;nrna_120;0
-121;Ranju Darshana;nrna_121;test121@test.de;Europe;12345703;nrna_121;0
-122;Shrinkhala Khatiwada;nrna_122;test122@test.de;Americas;12345703;nrna_122;0
-123;Sapana Malla Pradhan;nrna_123;test123@test.de;Oceania;12345703;nrna_123;0
-124;Dr. Aruna Upreti;nrna_124;test124@test.de;Oceania;12345703;nrna_124;0
-125;Sharada Sharma;nrna_125;test125@test.de;Europe;12345703;nrna_125;0
-126;Babita Basnet;nrna_126;test126@test.de;Oceania;12345703;nrna_126;0
-127;Phupu Lhamu Khatri;nrna_127;test127@test.de;Oceania;12345703;nrna_127;0
-128;Ramesh Prasai;nrna_128;test128@test.de;Europe;12345703;nrna_128;0
-129;Nirmala Panta;nrna_129;test129@test.de;Oceania;12345703;nrna_129;0
-130;Uma Singh;nrna_130;test130@test.de;Oceania;12345703;nrna_130;0
+sn;user_id;name;email;region;password;nrna_id;is_voter
+1;nrna_01;Mt. Everest (Sagarmatha);test1@test.de;Europe;12345678;nrna_01;0
+2;nrna_02;Mt. Kanchenjunga;test2@test.de;Americas;12345678;nrna_02;0
+3;nrna_03;Machhapuchhre;test3@test.de;Africa;12345678;nrna_03;0
+4;nrna_04;Api Himal;test4@test.de;Asia Pacific;12345678;nrna_04;0
+5;nrna_05;Kathmandu City;test5@test.de;Middle East;12345678;nrna_05;0
+6;nrna_06;Pokhara;test6@test.de;Oceania;12345678;nrna_06;0
+7;nrna_07;Humla Simikot;test7@test.de;Europe;12345678;nrna_07;0
+8;nrna_08;Janakpur City;test8@test.de;Europe;12345678;nrna_08;0
+9;nrna_09;Palpa City;test9@test.de;Europe;12345678;nrna_09;0
+10;nrna_10;Dadeldhura City;test10@test.de;Africa;12345678;nrna_10;0
+11;nrna_11;Bhaktapur City;test11@test.de;Oceania;12345678;nrna_11;0
+12;nrna_12;Dharan City;test12@test.de;Europe;12345678;nrna_12;0
+13;nrna_13;Dhangadi City;test13@test.de;Asia Pacific;12345678;nrna_13;0
+14;nrna_14;Biratnagar City;test14@test.de;Europe;12345678;nrna_14;0
+15;nrna_15;Jomsom City;test15@test.de;Asia Pacific;12345678;nrna_15;0
+16;nrna_16;Lalitpur City;test16@test.de;Americas;12345678;nrna_16;0
+17;nrna_17;Chitwan National Park;test17@test.de;Americas;12345678;nrna_17;0
+18;nrna_18;Khaptad National Park;test18@test.de;Europe;12345678;nrna_18;0
+19;nrna_19;Bardiya National Park;test19@test.de;Africa;12345678;nrna_19;0
+20;nrna_20;Shivapuri Nagarjun National Park;test20@test.de;Middle East;12345678;nrna_20;0
+21;nrna_21;Chandra Giri Hill;test21@test.de;Americas;12345678;nrna_21;0
+22;nrna_22;Punn Hill;test22@test.de;Americas;12345678;nrna_22;0
+23;nrna_23;Sarangkot Hill;test23@test.de;Asia Pacific;12345678;nrna_23;0
+24;nrna_24;Bandipur Hill;test24@test.de;Americas;12345678;nrna_24;0
+25;nrna_25;Ilam Hill;test25@test.de;Africa;12345678;nrna_25;0
+26;nrna_26;Chitlang Hill;test26@test.de;Americas;12345678;nrna_26;0
+27;nrna_27;Nagarot  Hill;test27@test.de;Europe;12345678;nrna_27;0
+28;nrna_28;Dulikhel Hill;test28@test.de;Americas;12345679;nrna_28;0
+29;nrna_29;Rara Lake;test29@test.de;Europe;12345680;nrna_29;0
+30;nrna_30;Fewa Lake ;test30@test.de;Europe;12345681;nrna_30;0
+31;nrna_31;Rupa Lake;test31@test.de;Americas;12345682;nrna_31;0
+32;nrna_32;Tilicho Lake;test32@test.de;Europe;12345683;nrna_32;0
+33;nrna_33;Ek Rupaya;test33@test.de;Europe;12345684;nrna_33;0
+34;nrna_34;5 Rupaya;test34@test.de;Africa;12345685;nrna_34;0
+35;nrna_35;25  Rupaya ;test35@test.de;Europe;12345686;nrna_35;0
+36;nrna_36;50 Rupaya ;test36@test.de;Africa;12345687;nrna_36;0
+37;nrna_37;1000 Rupaya;test37@test.de;Europe;12345688;nrna_37;0
+38;nrna_38;Coin 10 Rupaya;test38@test.de;Europe;12345689;nrna_38;0
+39;nrna_39;Coin 250 Rupaya;test39@test.de;Africa;12345690;nrna_39;0
+40;nrna_40;Coin 500 Rupaya;test40@test.de;Europe;12345691;nrna_40;0
+41;nrna_41;Coin 5 Rupaya ;test41@test.de;Americas;12345692;nrna_41;0
+42;nrna_42;Coin 2 Rupaya;test42@test.de;Europe;12345693;nrna_42;0
+43;nrna_43;Parijaat;test43@test.de;Americas;12345694;nrna_43;0
+44;nrna_44;Pasang Lhamu Sherpa;test44@test.de;Europe;12345695;nrna_44;0
+45;nrna_45;Sushila Karki;test45@test.de;Americas;12345696;nrna_45;0
+46;nrna_46;Himani Shaha;test46@test.de;Europe;12345697;nrna_46;0
+47;nrna_47;Football;test47@test.de;Americas;12345698;nrna_47;0
+48;nrna_48;Kapardi;test48@test.de;Europe;12345699;nrna_48;0
+49;nrna_49;Cricket ;test49@test.de;Americas;12345700;nrna_49;0
+50;nrna_50;Basketball;test50@test.de;Europe;12345701;nrna_50;0
+51;nrna_51;Elephant Polo;test51@test.de;Americas;12345702;nrna_51;0
+52;nrna_52;Volleyball;test52@test.de;Americas;12345703;nrna_52;0
+53;nrna_53;1 Rupaya Coin;test53@test.de;Afria;12345703;nrna_53;0
+54;nrna_54;Mahakali River ;test54@test.de;Americas;12345703;nrna_54;0
+55;nrna_55;Sapta Gandki River ;test55@test.de;Afria;12345703;nrna_55;0
+56;nrna_56;Koshi River ;test56@test.de;Americas;12345703;nrna_56;0
+57;nrna_57;Narayani River ;test57@test.de;Europe;12345703;nrna_57;0
+58;nrna_58;Karnali River;test58@test.de;Afria;12345703;nrna_58;0
+59;nrna_59;One and Half Mohar;test59@test.de;Asia Pacific;12345703;nrna_59;0
+60;nrna_60;Moti Ram Bhatta ;test60@test.de;Europe;12345703;nrna_60;0
+61;nrna_61;Laxmi Prasad Devkota;test61@test.de;Asia Pacific;12345703;nrna_61;0
+62;nrna_62;Bhanu Bhakta Acharya;test62@test.de;Afria;12345703;nrna_62;0
+63;nrna_63;Bhupi Sherchan;test63@test.de;Americas;12345703;nrna_63;0
+64;nrna_64;Satya Mohan Joshi;test64@test.de;Afria;12345703;nrna_64;0
+65;nrna_65;Melina Rai ;test65@test.de;Europe;12345703;nrna_65;0
+66;nrna_66;Anamol KC;test66@test.de;Oceania;12345703;nrna_66;0
+67;nrna_67;Jitu Nepal ;test67@test.de;Afria;12345703;nrna_67;0
+68;nrna_68;Priyanka Karki;test68@test.de;Oceania;12345703;nrna_68;0
+69;nrna_69;Swastima Khadka ;test69@test.de;Oceania;12345703;nrna_69;0
+70;nrna_70;Gaurika Singh ;test70@test.de;Europe;12345703;nrna_70;0
+71;nrna_71;Dipashree Niraula;test71@test.de;Europe;12345703;nrna_71;0
+72;nrna_72;Rekha Thapa;test72@test.de;Europe;12345703;nrna_72;0
+73;nrna_73;Rajesh Hamal;test73@test.de;Europe;12345703;nrna_73;0
+74;nrna_74;Karishma Manandhar ;test74@test.de;Europe;12345703;nrna_74;0
+75;nrna_75;Seweta Khadka;test75@test.de;Oceania;12345703;nrna_75;0
+76;nrna_76;Shiva Shrestha;test76@test.de;Europe;12345703;nrna_76;0
+77;nrna_77;Manisha Koirala;test77@test.de;Asia Pacific;12345703;nrna_77;0
+78;nrna_78;Dayahang Rai;test78@test.de;Europe;12345703;nrna_78;0
+79;nrna_79;Bhuwan KC;test79@test.de;Oceania;12345703;nrna_79;0
+80;nrna_80;Jhamak Ghimire;test80@test.de;Europe;12345703;nrna_80;0
+81;nrna_81;Bhagwan Koirala;test81@test.de;Europe;12345703;nrna_81;0
+82;nrna_82;Sanduk Ruit;test82@test.de;Europe;12345703;nrna_82;0
+83;nrna_83;Gobinda KC ;test83@test.de;Oceania;12345703;nrna_83;0
+84;nrna_84;Puspa Basnet;test84@test.de;Europe;12345703;nrna_84;0
+85;nrna_85;Anuradha Koirala;test85@test.de;Oceania;12345703;nrna_85;0
+86;nrna_86;Mahabir Pun ;test86@test.de;Europe;12345703;nrna_86;0
+87;nrna_87;Narayan Gopal ;test87@test.de;Europe;12345703;nrna_87;0
+88;nrna_88;Kali Prasad Baskota ;test88@test.de;Europe;12345703;nrna_88;0
+89;nrna_89;Anju Panta;test89@test.de;Oceania;12345703;nrna_89;0
+90;nrna_90;Bhakta Raj Acharya;test90@test.de;Europe;12345703;nrna_90;0
+91;nrna_91;Bishnu Majhi ;test91@test.de;Oceania;12345703;nrna_91;0
+92;nrna_92;Ani Choying Drolma;test92@test.de;Europe;12345703;nrna_92;0
+93;nrna_93;Nisha Adhikari;test93@test.de;Oceania;12345703;nrna_93;0
+94;nrna_94;Dilip Rayamajhi ;test94@test.de;Europe;12345703;nrna_94;0
+95;nrna_95;Dipak Raj Giri;test95@test.de;Oceania;12345703;nrna_95;0
+96;nrna_96;Bijaya Kumar;test96@test.de;Europe;12345703;nrna_96;0
+97;nrna_97;Sudheer Sharma;test97@test.de;Oceania;12345703;nrna_97;0
+98;nrna_98;Amit Dhakal;test98@test.de;Europe;12345703;nrna_98;0
+99;nrna_99;Kishor Shrestha;test99@test.de;Oceania;12345703;nrna_99;0
+100;nrna_100;Bidyaa Chapagai;test100@test.de;Europe;12345703;nrna_100;0
+101;nrna_101;Suman Kharel;test101@test.de;Oceania;12345703;nrna_101;0
+102;nrna_102;Manoj Gajurel;test102@test.de;Europe;12345703;nrna_102;0
+103;nrna_103;Kedar Ghimire ;test103@test.de;Oceania;12345703;nrna_103;0
+104;nrna_104;Madan Krishna Shrestha;test104@test.de;Europe;12345703;nrna_104;0
+105;nrna_105;Hari Bansa Acharya;test105@test.de;Oceania;12345703;nrna_105;0
+106;nrna_106;Wilson Bikram Rai;test106@test.de;Europe;12345703;nrna_106;0
+107;nrna_107;Sitaram Kattel;test107@test.de;Oceania;12345703;nrna_107;0
+108;nrna_108;Pasupati Sharma;test108@test.de;Oceania;12345703;nrna_108;0
+109;nrna_109;Rajesh Payal Rai;test109@test.de;Europe;12345703;nrna_109;0
+110;nrna_110;Shiva Pariyar;test110@test.de;Oceania;12345703;nrna_110;0
+111;nrna_111;Rita Thapa Magar;test111@test.de;Oceania;12345703;nrna_111;0
+112;nrna_112;Indira Joshi;test112@test.de;Europe;12345703;nrna_112;0
+113;nrna_113;Kunti Moktan;test113@test.de;Oceania;12345703;nrna_113;0
+114;nrna_114;Bhuwan Chanda;test114@test.de;Europe;12345703;nrna_114;0
+115;nrna_115;Mithila Sharma;test115@test.de;Oceania;12345703;nrna_115;0
+116;nrna_116;Bandana Rana ;test116@test.de;Europe;12345703;nrna_116;0
+117;nrna_117;Bhawani Rana;test117@test.de;Oceania;12345703;nrna_117;0
+118;nrna_118;Raveena Desraj Shrestha;test118@test.de;Europe;12345703;nrna_118;0
+119;nrna_119;Hari Devi Koirala;test119@test.de;Oceania;12345703;nrna_119;0
+120;nrna_120;Yankila Sherpa;test120@test.de;Europe;12345703;nrna_120;0
+121;nrna_121;Ranju Darshana;test121@test.de;Europe;12345703;nrna_121;0
+122;nrna_122;Shrinkhala Khatiwada;test122@test.de;Americas;12345703;nrna_122;0
+123;nrna_123;Sapana Malla Pradhan;test123@test.de;Oceania;12345703;nrna_123;0
+124;nrna_124;Dr. Aruna Upreti;test124@test.de;Oceania;12345703;nrna_124;0
+125;nrna_125;Sharada Sharma;test125@test.de;Europe;12345703;nrna_125;0
+126;nrna_126;Babita Basnet;test126@test.de;Oceania;12345703;nrna_126;0
+127;nrna_127;Phupu Lhamu Khatri;test127@test.de;Oceania;12345703;nrna_127;0
+128;nrna_128;Ramesh Prasai;test128@test.de;Europe;12345703;nrna_128;0
+129;nrna_129;Nirmala Panta;test129@test.de;Oceania;12345703;nrna_129;0
+130;nrna_130;Uma Singh;test130@test.de;Oceania;12345703;nrna_130;0
+131;nrna_131;Upendra Mahato;test131@test.de;Europe;12345703;nrna_131;0
+132;nrna_132;Dev Man Hirachan;test132@test.de;Asia Pacific;12345703;nrna_132;0
+133;nrna_133;Jiba Lamichhane;test133@test.de;Europe;12345703;nrna_133;0
+134;nrna_134;Shesh Ghale;test134@test.de;Oceania;12345703;nrna_134;0
+135;nrna_135;Bhawan Bhatta;test135@test.de;Asia Pacific;12345703;nrna_135;0
+136;nrna_136;Kumar Panta;test136@test.de;Europe;12345703;nrna_136;0
+137;nrna_137;Ram Pratap Thapa;test137@test.de;Europe;12345703;nrna_137;0
+138;nrna_138;Prithvi Narayan Shah;test138@test.de;Oceania;12345704;nrna_138;0
+139;nrna_139;Araniko;test139@test.de;Oceania;12345705;nrna_139;0
+140;nrna_140;King Janak ;test140@test.de;Oceania;12345706;nrna_140;0
+141;nrna_141;Princes Bhrikuti ;test141@test.de;Oceania;12345707;nrna_141;0
+142;nrna_142;Siddhi Charan Shrestha;test142@test.de;Europe;12345708;nrna_142;0
+143;nrna_143;Madhav Prasad Ghimire;test143@test.de;Oceania;12345709;nrna_143;0
+144;nrna_144;;test144@test.de;Oceania;12345709;nrna_144;0
