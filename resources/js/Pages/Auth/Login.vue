@@ -97,6 +97,13 @@
                         class="m-auto text-sm  font-bold px-6 py-1 bg-gray-200">
                             Register 
                         </inertia-link>
+                        <p class ="my-2  py-1"> यदि यहाँले पहिलो चाेटि यो वेवसाइट खोल्नु भाको हो भने सवै भन्दा पहिला 
+                            <inertia-link 
+                        :href="route('register')" 
+                        class="font-bold px-2 text-gray-700 ">
+                           यो  रजिस्टर  लिन्कमा   क्लिक गरेर 
+                         </inertia-link>
+                         आफुलाइ रजिस्टर गर्नु होला। </p> 
                 </div> 
         </jet-authentication-card>
          </div>
