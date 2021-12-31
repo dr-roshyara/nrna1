@@ -94,7 +94,7 @@
                 <p> If you are not registered yet, please get registered first.</p> 
                     <inertia-link 
                         :href="route('register')" 
-                        class="m-auto text-sm  font-bold px-6 py-1 bg-gray-200">
+                        class="m-auto text-sm  font-bold px-6 py-1 bg-gray-200 w-1/2 text-center">
                             Register 
                         </inertia-link>
                         <p class ="my-2  py-1"> यदि यहाँले पहिलो चाेटि यो वेवसाइट खोल्नु भाको हो भने सवै भन्दा पहिला 

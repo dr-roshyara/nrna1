@@ -17,7 +17,7 @@
                 <!-- <a href="/"> Non Resident Nepali Association </a> -->
 
              </div>
-             <div class="w-44 m-auto h-32 text-white  font-bold align-bottom">
+             <div class="w-44 m-auto h-32 text-white  font-bold align-bottom sm:hidden md:block">
                 <inertia-link v-if="canLogin"  
                   :href="route('login')" 
                 class="text-sm underline">

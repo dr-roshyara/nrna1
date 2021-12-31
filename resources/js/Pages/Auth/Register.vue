@@ -37,19 +37,29 @@
             <!-- next -->
             <div class="mt-4">
                 <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required />
+                <jet-input id="email" type="email" 
+                class="mt-1 block w-full" v-model="form.email" required />
             </div>
 
             <div class="mt-4">
             <div class="flex flex-wrap space-x-2">
             <jet-label for="password" value="Password"  /> 
-                <span class="text-red-500 text-sm" >(min 8 characters)</span> 
+                <span class="text-red-500 text-sm" >
+                    (Please choose a password with minimum 8 characters)</span><br>
+                 <span class="text-gray-700 text-sm" >
+                     कम्तिमा आठ अक्षर भएको एक नया पासवर्ड सोचेर तल भर्नुहोस।</span><br>
+                
              </div> 
-                <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
+                <jet-input id="password" type="password" class="mt-1 block w-full" 
+                v-model="form.password" required autocomplete="new-password" />
             </div>
  
-            <div class="mt-4">
+            <div class="mt-4 ">
                 <jet-label for="password_confirmation" value="Confirm Password" />
+                 <div flex flex-wrap> <span> Please retype your password. </span> 
+                  <span class="text-gray-700 text-sm" >
+                  माथि भरेकाे पारवर्ड फेरी लेख्नुहाेस
+                  </span> </div>
                 <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
             </div>
 
@@ -63,11 +73,13 @@
                         </div>
                     </div>
                 </jet-label>
+                <div class="text-sm text-gray-600 py-1">
+                     कृपया माथीकाे सानो चेकबक्स मा क्लीक गरेर एनआाएनएको नमुना निर्वाचनमा भाग लिनलाइ सहमती दिनुस </div> 
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 <inertia-link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered?
+                    Already registered? Please  Go to Log in.
                 </inertia-link>
 
                 <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">

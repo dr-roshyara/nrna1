@@ -6,16 +6,16 @@
 
         <div class="mb-4 text-sm text-gray-600">
             <p > 
-                <span class="text-gray-900 font-semibold"> 
-                Thanks for signing up!</span> <br> 
-             You have been registerd now. We have just sent you an email. 
+                <span class="text-gray-900 font-semibold "> 
+                Please check your email Now. कृपया अव आफ्नो इमेल चेक गर्नुहाेस। </span> <br> 
+             Thanks for signing up! You have been registerd now. We have just sent you an email. 
             Before getting started, could you please verify your email address?. For this you need to check 
             your mailbox and click  on the link we just emailed to you. 
             If you didn't receive the email, we will gladly send you another.</p> 
             <p class="mt-2 mb-2 text-gray-800 text-"> 
                 यहाँले आफुलाईलाई रजिस्टर गर्नु भएकोमा  बिशेष धन्यवाद छ। 
                 भर्खरै हामीले तपाईं लाई एउटा ईमेल पठाएका छौ । 
-                त्यो ईमेल मा यहाँको ईमेल ठेगाना ठीक छ कि छैन भनेर जाँच गर्न लाई एउटा लिन्क पनि पठाइएको छ। 
+                त्यो ईमेलमा यहाँको ईमेल ठेगाना ठीक छ कि छैन भनेर जाँच गर्न लाई एउटा लिन्क पनि पठाइएको छ। 
                 आफ्नो ईमेल खोलेर यहाँले  त्यो लिन्कमा क्लिक गर्नु हुने छ । 
                  अनी यहाँको ईमेल सही भएको प्रमाणित हुने छ। 
                  त्यस्पछी आफ्नो ईमेल र पासवर्ड प्रयोग गरेर लग इन गर्न सक्नु हुनेछ। 
