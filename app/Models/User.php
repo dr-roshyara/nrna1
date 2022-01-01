@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -155,7 +156,7 @@ class User extends Authenticatable implements MustVerifyEmail
       * Each user has extacly one code row
       */
       public function code(){
-          return $this->hasOne(Code::class,  'foreign_key');
+          return $this->hasOne(Code::class);
       }
       /**
       * Each user has extacly one code row

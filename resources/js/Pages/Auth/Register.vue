@@ -74,12 +74,12 @@
                     </div>
                 </jet-label>
                 <div class="text-sm text-gray-600 py-1">
-                     कृपया माथीकाे सानो चेकबक्स मा क्लीक गरेर एनआाएनएको नमुना निर्वाचनमा भाग लिनलाइ सहमती दिनुस </div> 
+                     कृपया माथीकाे सानो चेकबक्स मा क्लीक गरेर एनआाएनएको नमुना निर्वाचनमा भाग लिनलाइ सहमती दिनुस । </div> 
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 <inertia-link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered? Please  Go to Log in.
+                    Already registered? Please  go to Log in.
                 </inertia-link>
 
                 <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">

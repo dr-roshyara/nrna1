@@ -158,7 +158,7 @@ methods:{
      get_nepali_name(post_id){
        //president 
         if(post_id=="2021_01"){
-            return "आइसीसी अद्यक्ष" 
+            return "आइसीसी अध्यक्ष" 
         }
         if(post_id=="2021_02"){
             return "उपाध्यक्ष" 
@@ -175,6 +175,9 @@ methods:{
         }
          if(post_id=="2021_06"){
             return "सचिव" 
+        }
+          if(post_id=="2021_07"){
+            return "महिला सचिव" 
         }
            if(post_id=="2021_49"){
             return "प्याट्रोन काउन्सिल सदश्य" 

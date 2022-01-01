@@ -2,7 +2,15 @@
    <nrna-layout> 
     <app-layout>
            <div class="flex flex-col justify-center mt-10">
-            
+                      <p class="p-2 my-2 text-2xl text-gray-900 font-bold  bg-blue-50 text-center mx-auto"> 
+                        Check your email Now </p>
+                      <div class="text-center"> 
+                        <p> We have just sent you an email mentioning your voting code.</p>
+                         <p class="text-red-700 font-semibold text-sm"> 
+                           If you don't see email in your mailbox , then please check your Spam mail also.<br/>  
+                           तपाइले आफ्नो मेल वक्समा एनआरएनएको मेल भेट्टाउनु भएन भने स्पाम मेलमा गएर वसेको हुन सक्छ, त्यसैले स्पाम मेल पनि चेक गर्नुहोस। 
+                        </p> 
+                      </div>
              <div class="m-auto">
              <jet-validation-errors class="mb-4  mx-auto text-center " /> 
                  <!--
@@ -16,9 +24,10 @@
             <div class="flex flex-col justify-center px-2 m-2"> 
                 <div class="flex flex-col justify-center space-x-4 items-center p-4 mb-2 m-auto font-bold text-gray-900 ">
                    <label for="voting_code"  class="px-4 py-2 mb-3"> 
-                      <p> Your voting code is: 1234 </p> 
-                      <p> Please enter your voting Code.</p>
-                      <p> यहाँले पाउनु भएको यो  भोटिङ कोड तलको खाली ठाउंमा भरेर सेन्ड वटन थिच्नु होला । </p>  
+                      <p> Please check your email now,  and enter your voting Code.</p>
+                      <p> यो फर्मलाइ एकछिन यत्तिकै राखेर अव यहाँले आफ्नो इमेलमा चेक गर्नुहोस । <br>
+                        आफ्नो  इमेलमा प्राप्त भएको  भोटिङ कोड थाहा पाउनु हाेस र 
+                        उक्त भोटिङ कोड तलको खाली ठाउंमा भरेर सेन्ड वटन थिच्नु होस । </p>  
                    </label>   
                   <input class=" px-4 py-6 rounded-lg bg-gray-200 w-96 
                    font-bold border border-blue-400  text-gray-900 font-bold text-xl" 

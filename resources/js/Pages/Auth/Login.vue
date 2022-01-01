@@ -25,7 +25,7 @@
             </div> 
              <p class="px-auto mx-auto py-4 my-4
               text-red-800 font-bold text-2xl text-center"> 
-                 सदस्य लगइन  </p>
+               नमुना मतदानकाे लागि  सदस्य लगइन  </p>
             <!-- next --> 
             
             <!-- <div class="text-gray-900 " > 

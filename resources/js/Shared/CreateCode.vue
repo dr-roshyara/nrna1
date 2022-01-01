@@ -8,7 +8,7 @@
                  <!--
                   //   {{name}}
                   //  {{nrna_id}}
-                  //    {{state}}
+                  //    {{state}} 
                   -->
             </div>
             
@@ -25,13 +25,14 @@
                    placeholder="PLEASE ENTER HERE YOUR VOTING CODE"  
                     v-model ="form.voting_code"/> 
                 </div>  
+                 <div v-if="errors.voting_code">{{ errors.voting_code }}</div>
                  <div class="mx-auto my-4 w-full"> 
                     <button type="submit" 
                     class="m-2 px-2 py-4 rounded-lg bg-blue-300 w-96 mx-auto font-bold text-gray-900">
                     SEND CODE TO GET VOTING FORM</button> 
                     </div>
-                           <div class="mx-auto text-center">
-                <jet-validation-errors class="mb-4  mx-auto text-center " />
+                    <div class="mx-auto text-center">
+                    <jet-validation-errors class="mb-4  mx-auto text-center " />
                 </div>
              </div>
             </form>
@@ -52,7 +53,8 @@ export default {
     props:{
         name: String,
         nrna_id: String, 
-        state: String
+        state: String,
+        errors: Object,
 
     },   
      setup () {

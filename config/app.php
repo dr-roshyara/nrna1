@@ -14,6 +14,18 @@ return [
     */
 
     'name' => env('APP_NAME', 'NRNA'),
+      /*
+    |--------------------------------------------------------------------------
+    | Application Name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the name of your application. This value is used when the
+    | framework needs to place the application's name in a notification or
+    | any other location as required by the application or its packages.
+    |
+    */
+
+    'logo' => env('APP_LOGO', '/images/logo-2.png'),
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +189,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+      
 
     ],
 
@@ -231,6 +244,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+    
 
     ],
 

@@ -152,7 +152,10 @@ Route::middleware(['auth:sanctum', 'verified']) ->post('/messages', [SmsControll
    Route::middleware(['auth:sanctum', 'verified']) ->get('/code/create', [CodeController::class, 'create'])->name('code.create');                   
    Route::middleware(['auth:sanctum', 'verified']) ->post('/codes', [CodeController::class, 'store'])->name('code.store');
     
-   Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/create', [VoteController::class, 'create'])->name('vote.create'); 
+  
+    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/create', [VoteController::class, 'create'])->name('vote.create'); 
+   
+
     Route::middleware(['auth:sanctum', 'verified']) ->post('/vote/submit', [VoteController::class, 'first_submission'])->name('vote.submit');
     Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/verify', [VoteController::class, 'verify'])->name('vote.verfiy');
     Route::middleware(['auth:sanctum', 'verified']) ->post('/votes', [VoteController::class, 'store'])->name('vote.store'); 

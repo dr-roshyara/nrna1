@@ -12,6 +12,8 @@ use App\Models\Upload;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Redirector;
+
+
 //controllers 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -50,6 +52,10 @@ class VoteController extends Controller
     public function create()
     {
          
+         $tfValue= is_url_only_after_first('code/create','/vote/create');
+      
+        //  dd($tfValue);
+        
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
                 $query->where('candidacy_id', 'LIKE', "%{$value}%");
