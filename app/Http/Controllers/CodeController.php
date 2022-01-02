@@ -80,8 +80,9 @@ class CodeController extends Controller
             $random = substr(md5(mt_rand()), 0, 5);
             $form_opening_code = rand(1,9).strtoupper($random);            
             // echo($form_opening_code);
-            $code->user_id  =$user_id ;
-            $code->code1    =$form_opening_code ;
+            $code->user_id          =$user_id ;
+            $code->code1            =$form_opening_code ;
+            $code->has_code1_used   =1; 
             
                
              /***
@@ -89,7 +90,7 @@ class CodeController extends Controller
               *Finally: save the vote form opening code 
               *
               */
-            $code->save();
+                $code->save();
             /****
              * 
              * send the vote opening code via email here 

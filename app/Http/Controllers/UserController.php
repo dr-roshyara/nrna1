@@ -149,7 +149,7 @@ class UserController extends Controller
             */
             // dd($element);
             $laufer +=1;
-            $user  =User::where('nrna_id', trim($element['nrna_id']))->first();
+            $user  =User::where('user_id', trim($element['user_id']))->first();
             
              if($user){
                   
@@ -172,7 +172,7 @@ class UserController extends Controller
                 //   $user->password   =$element ['password'];
                  
                   $user->user_id    =$element ['user_id'];
-                  $user->nrna_id    =$element ['nrna_id'];
+                //   $user->nrna_id    =$element ['nrna_id'];
                   $user->is_voter   =$element ['is_voter'];
                 //dd($user);
                   $user->save();

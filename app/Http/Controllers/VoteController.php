@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Candidacy;
 use App\Models\Post;
+use App\Models\Code;
 use App\Models\Upload;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +56,19 @@ class VoteController extends Controller
          $tfValue= is_url_only_after_first('code/create','/vote/create');
       
         //  dd($tfValue);
+         $code =auth()->user()->code;
+            // dd($code->has_code1_used); 
+         if(!$code->has_code1_used ){
+
+           return  redirect()->route('code.create'); 
+        }
+        // dd($code->has_code1_used); 
+        if($code->has_code1_used){
+            $code->has_code1_used =0;
+            $code->save();
+
+         } 
+         
         
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
