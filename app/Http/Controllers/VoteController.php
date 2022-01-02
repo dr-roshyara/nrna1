@@ -67,12 +67,20 @@ class VoteController extends Controller
     {
          
          $tfValue= is_url_only_after_first('code/create','/vote/create');
-      
+        if(!$tfValue){
+            /****
+             * 
+             * Go to dash board again 
+             * 
+             * 
+             **/ 
+            return redirect()->route('dashboard');
+        }
         //  dd($tfValue);
          $auth_user      =auth()->user();
          $code           =$auth_user->code;
          $can_vote_now   =$auth_user->can_vote_now;
-         $code              =$auth_user->code;
+         $code           =$auth_user->code;
          /***
           * if there is no code then return to dashboard 
           * 
@@ -516,7 +524,7 @@ class VoteController extends Controller
             
             }
         }
-        //   dd($selected_candidates); 
+        //   dd($selected_candidates);
           
         return Inertia::render('Vote/VoteShow', [
             //    "presidents" => $presidents,

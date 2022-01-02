@@ -1,6 +1,6 @@
 sn,user_id,name,email,region,password,nrna_id,is_voter
-1,nrna_01,Mt. Everest (Sagarmatha),test1@test.de,Europe,12345678,nrna_01,0
-2,nrna_02,Mt. Kanchenjunga,test2@test.de,Americas,12345678,nrna_02,0
+1,nrna_01,Mt. Everest (8848.86 M),test1@test.de,Europe,12345678,nrna_01,0
+2,nrna_02,Mt. Kanchenjunga (8586M),test2@test.de,Americas,12345678,nrna_02,0
 3,nrna_03,Machhapuchhre,test3@test.de,Africa,12345678,nrna_03,0
 4,nrna_04,Api Himal,test4@test.de,Asia Pacific,12345678,nrna_04,0
 5,nrna_05,Kathmandu City,test5@test.de,Middle East,12345678,nrna_05,0
@@ -44,7 +44,7 @@ sn,user_id,name,email,region,password,nrna_id,is_voter
 43,nrna_43,Parijaat,test43@test.de,Americas,12345694,nrna_43,0
 44,nrna_44,Pasang Lhamu Sherpa,test44@test.de,Europe,12345695,nrna_44,0
 45,nrna_45,Sushila Karki,test45@test.de,Americas,12345696,nrna_45,0
-46,nrna_46,Himani Shaha,test46@test.de,Europe,12345697,nrna_46,0
+46,nrna_46,Himani Shaha ,test46@test.de,Europe,12345697,nrna_46,0
 47,nrna_47,Football,test47@test.de,Americas,12345698,nrna_47,0
 48,nrna_48,Kapardi,test48@test.de,Europe,12345699,nrna_48,0
 49,nrna_49,Cricket ,test49@test.de,Americas,12345700,nrna_49,0
@@ -144,3 +144,29 @@ sn,user_id,name,email,region,password,nrna_id,is_voter
 143,nrna_143,Madhav Prasad Ghimire,test143@test.de,Oceania,12345709,nrna_143,0
 144,nrna_144,Sandip Chhetri,test144@test.de,Americas,12345709,nrna_144,0
 145,nrna_145,Gautam Buddha,test145@test.de,Americas,12345710,nrna_145,0
+146,nrna_146,Princes Janaki (Sita),test146@test.de,Americas,12345710,nrna_146,0
+147,nrna_147,Nirmal Purja,test147@test.de,Americas,12345710,nrna_147,0
+148,nrna_148,Prabal Gurung,test148@test.de,Americas,12345710,nrna_148,0
+149,nrna_149,Dr. Ram Baran Yadav,test149@test.de,Americas,12345710,nrna_149,0
+150,nrna_150,Mukesh Kayastha (living Marytr of Nepal),test150@test.de,Americas,12345710,nrna_150,0
+151,nrna_151,Bal Krishna Acharya,test151@test.de,Europe,12345710,nrna_151,0
+152,nrna_152,MT. LHOTSE (8516 M),test152@test.de,Europe,12345711,nrna_152,0
+153,nrna_153,MT.  Makalu (8463 M),test153@test.de,Americas,12345711,nrna_153,0
+154,nrna_154,Phoksundo Lake,test154@test.de,Americas,12345712,nrna_154,0
+155,nrna_155,Dhurmus Suntali Foundation,test155@test.de,Europe,12345712,nrna_155,0
+156,nrna_156,Binod Chaudhary,test156@test.de,Americas,12345712,nrna_156,0
+157,nrna_157,Anil Keshari Shah,test157@test.de,Americas,12345712,nrna_157,0
+158,nrna_158,Kulman Ghising ,test158@test.de,Americas,12345712,nrna_158,0
+159,nrna_159,Ram Kumari Jhakri,test159@test.de,Americas,12345712,nrna_159,0
+160,nrna_160,Yogesh Kumar Bhattarai,test160@test.de,Americas,12345712,nrna_160,0
+161,nrna_161,Gangan Kumar Thapa,test161@test.de,Americas,12345712,nrna_161,0
+162,nrna_162,Sandeep Lamichhane,test162@test.de,Americas,12345712,nrna_162,0
+163,nrna_163,Pradesh 1 ,test163@test.de,Americas,12345713,nrna_163,0
+164,nrna_164,Pradesh 2,test164@test.de,Americas,12345714,nrna_164,0
+165,nrna_165,Pradesh 3,test165@test.de,Americas,12345715,nrna_165,0
+166,nrna_166,Pradesh 4,test166@test.de,Americas,12345716,nrna_166,0
+167,nrna_167,Pradesh 5,test167@test.de,Americas,12345717,nrna_167,0
+168,nrna_168,Pradesh 6,test168@test.de,Americas,12345718,nrna_168,0
+169,nrna_169,Pradesh 7,test169@test.de,Americas,12345719,nrna_169,0
+170,nrna_170,Barsha Man Pun,test170@test.de,Americas,12345719,nrna_170,0
+171,nrna_171,Ambika Shrestha,test171@test.de,Americas,12345719,nrna_171,0

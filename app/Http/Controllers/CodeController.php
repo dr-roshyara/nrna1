@@ -42,7 +42,7 @@ class CodeController extends Controller
           
         $auth_user       = auth()->user();
         $totalDuration   = 0;
-        $code_expires_in =15;
+        $code_expires_in =30;
         // dd($user);
         $user_id        = $auth_user->id ;
         // $user_email =$auth_user->email;
@@ -65,7 +65,7 @@ class CodeController extends Controller
              $updated_at    = Carbon::parse($code->updated_at);
              $current       = Carbon::now();
              $totalDuration = $current->diffInMinutes($updated_at);
-              if($totalDuration>15){
+              if($totalDuration>$code_expires_in){
                 $code->is_code1_usable =0; 
                 $totalDuration  =0;       
               }
@@ -81,7 +81,10 @@ class CodeController extends Controller
        
         if($code->has_voted){
                 echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-                You have already voted! Please check your Vote </div>';
+                    <p> You have already voted! </p>
+                     <p > <a href="/vote/show"> Please click here to see your vote.</a> </p> 
+
+                </div>';
                 abort(404);
     
         }

@@ -1,0 +1,146 @@
+user_id,name,candidacy_id,proposer_id,supporter_id,post_id,post name,image_path_1,required_number,is_national_wide,state_name
+nrna_01,Mt. Everest (Sagarmatha),2021_01,2021_pr_01,2021_su_01,2021_01,President,everest.jpg,1,1,0
+nrna_05,Kathmandu City,2021_05,2021_pr_05,2021_su_05,2021_01,President,kathmandu.jpg,1,1,0
+nrna_17,Chitwan National Park,2021_17,2021_pr_17,2021_su_17,2021_01,President,chitwan.jpg,1,1,0
+nrna_58,Karnali River,2021_58,2021_pr_58,2021_su_58,2021_01,President,karnali_river.jpg,1,1,0
+nrna_138,Dhangadi City,2021_138,2021_pr_138,2021_su_138,2021_01,President,prithvi_narayan.jpg,1,1,0
+nrna_139,Dhangadi City,2021_139,2021_pr_139,2021_su_139,2021_01,President,araniko.jpg,1,1,0
+nrna_140,Biratnagar City,2021_140,2021_pr_140,2021_su_140,2021_01,President,janak_raja.jpg,1,1,0
+nrna_02,Mt. Kanchenjunga,2021_02,2021_pr_02,2021_su_02,2021_02,Vice President,kanchanjangha.jpg,2,1,0
+nrna_06,Pokhara,2021_06,2021_pr_06,2021_su_06,2021_02,Vice President,pokhara.jpg,2,1,0
+nrna_18,Khaptad National Park,2021_18,2021_pr_18,2021_su_18,2021_02,Vice President,khaptad.jpg,2,1,0
+nrna_56,Koshi River ,2021_56,2021_pr_56,2021_su_56,2021_02,Vice President,koshi_river.jpg,2,1,0
+nrna_82,Sandip Chhetri,2021_82,2021_pr_82,2021_su_82,2021_02,Vice President,sanduk_Ruit.jpg,2,1,0
+nrna_142,Biratnagar City,2021_142,2021_pr_142,2021_su_142,2021_02,Vice President,Siddhi-Charan-Shrestha.jpg,2,1,0
+nrna_03,Machhapuchhre,2021_03,2021_pr_03,2021_su_03,2021_03,Woman Vice President,machapuchre.jpg,1,1,0
+nrna_07,Humla Simikot,2021_07,2021_pr_07,2021_su_07,2021_03,Woman Vice President,simikot.jpg,1,1,0
+nrna_43,Parijaat,2021_43,2021_pr_43,2021_su_43,2021_03,Woman Vice President,parijat.jpg,1,1,0
+nrna_45,Sushila Karki,2021_45,2021_pr_45,2021_su_45,2021_03,Woman Vice President,sushila_karki.jpg,1,1,0
+nrna_141,Biratnagar City,2021_141,2021_pr_141,2021_su_141,2021_03,Woman Vice President,bhrikuti.jpg,1,1,0
+nrna_47,Football,2021_47,2021_pr_47,2021_su_47,2021_04,Youth Vice President,football.jpg,1,1,0
+nrna_48,Kapardi,2021_48,2021_pr_48,2021_su_48,2021_04,Youth Vice President,kabadi.jpg,1,1,0
+nrna_49,Cricket ,2021_49,2021_pr_49,2021_su_49,2021_04,Youth Vice President,cricket.jpg,1,1,0
+nrna_50,Basketball,2021_50,2021_pr_50,2021_su_50,2021_04,Youth Vice President,basketball.jpg,1,1,0
+nrna_51,Elephant Polo,2021_51,2021_pr_51,2021_su_51,2021_04,Youth Vice President,elephant_polo.jpg,1,1,0
+nrna_52,Volleyball,2021_52,2021_pr_52,2021_su_52,2021_04,Youth Vice President,volleyball.jpg,1,1,0
+nrna_73,Rajesh Hamal,2021_73,2021_pr_73,2021_su_73,2021_04,Youth Vice President,rajesh_hamal.jpg,1,1,0
+nrna_86,Sandip Chhetri,2021_86,2021_pr_86,2021_su_86,2021_04,Youth Vice President,mahabir_pun.jpg,1,1,0
+nrna_04,Api Himal,2021_04,2021_pr_04,2021_su_04,2021_05,General Secretary,api.jpg,1,1,0
+nrna_11,Bhaktapur City,2021_11,2021_pr_11,2021_su_11,2021_05,General Secretary,bhaktapur.jpg,1,1,0
+nrna_20,Shivapuri Nagarjun National Park,2021_20,2021_pr_20,2021_su_20,2021_05,General Secretary,shivapuri.jpg,1,1,0
+nrna_55,Sapta Gandki River ,2021_55,2021_pr_55,2021_su_55,2021_05,General Secretary,gandaki_river.jpg,1,1,0
+nrna_61,Laxmi Prasad Devkota,2021_61,2021_pr_61,2021_su_61,2021_05,General Secretary,laxmi_prasad_devkota.jpg,1,1,0
+nrna_81,Sandip Chhetri,2021_81,2021_pr_81,2021_su_81,2021_05,General Secretary,bhagwan_koirala.jpg,1,1,0
+nrna_10,Dadeldhura City,2021_10,2021_pr_10,2021_su_10,2021_06,Secretary,dadeldhura.jpg,3,1,0
+nrna_19,Bardiya National Park,2021_19,2021_pr_19,2021_su_19,2021_06,Secretary,bardiya.jpg,3,1,0
+nrna_21,Chandra Giri Hill,2021_21,2021_pr_21,2021_su_21,2021_06,Secretary,chandragiri.jpg,3,1,0
+nrna_54,Mahakali River ,2021_54,2021_pr_54,2021_su_54,2021_06,Secretary,mahakali_river.jpg,3,1,0
+nrna_83,Sandip Chhetri,2021_83,2021_pr_83,2021_su_83,2021_06,Secretary,gobinda_kc.jpg,3,1,0
+nrna_143,Biratnagar City,2021_143,2021_pr_143,2021_su_143,2021_06,Secretary,madhv_prasad_ghimire.jpg,3,1,0
+nrna_08,Janakpur City,2021_08,2021_pr_08,2021_su_08,2021_07,Woman Secretary,janakpur.jpg,1,1,0
+nrna_29,Rara Lake,2021_29,2021_pr_29,2021_su_29,2021_07,Woman Secretary,rara.jpeg,1,1,0
+nrna_44,Pasang Lhamu Sherpa,2021_44,2021_pr_44,2021_su_44,2021_07,Woman Secretary,pasang_lamu_sherpa.jpg,1,1,0
+nrna_57,Narayani River ,2021_57,2021_pr_57,2021_su_57,2021_07,Woman Secretary,narayani_river.jpg,1,1,0
+nrna_123,Dharan City,2021_123,2021_pr_123,2021_su_123,2021_07,Woman Secretary,sapana_malla_pradhan.jpg,1,1,0
+nrna_33,Ek Rupaya,2021_33,2021_pr_33,2021_su_33,2021_08,Treasurer,rupaya_eka.jpg,1,1,0
+nrna_34,5 Rupaya,2021_34,2021_pr_34,2021_su_34,2021_08,Treasurer,rupaya_paanch.jpg,1,1,0
+nrna_35,25  Rupaya ,2021_35,2021_pr_35,2021_su_35,2021_08,Treasurer,rupaya_pachhisa.jpg,1,1,0
+nrna_36,50 Rupaya ,2021_36,2021_pr_36,2021_su_36,2021_08,Treasurer,rupaya_pachasa.jpg,1,1,0
+nrna_37,1000 Rupaya,2021_37,2021_pr_37,2021_su_37,2021_08,Treasurer,rupaya_ek_hajaar.jpeg,1,1,0
+nrna_62,Bhanu Bhakta Acharya,2021_62,2021_pr_62,2021_su_62,2021_08,Treasurer,bhanu_bhakta_acharya.jpg,1,1,0
+nrna_87,Sandip Chhetri,2021_87,2021_pr_87,2021_su_87,2021_08,Treasurer,narayan_gopal.jpg,1,1,0
+nrna_117,Bhaktapur City,2021_117,2021_pr_117,2021_su_117,2021_08,Treasurer,bhawani_rana.jpg,1,1,0
+nrna_144,Biratnagar City,2021_144,2021_pr_144,2021_su_144,2021_08,Treasurer,sandip_chhetri.jpg,1,1,0
+nrna_38,Coin 10 Rupaya,2021_38,2021_pr_38,2021_su_38,2021_09,Joint Treasurer,coin_10_rupee.jpeg,1,1,0
+nrna_39,Coin 250 Rupaya,2021_39,2021_pr_39,2021_su_39,2021_09,Joint Treasurer,coin_250_rupee.jpg,1,1,0
+nrna_40,Coin 500 Rupaya,2021_40,2021_pr_40,2021_su_40,2021_09,Joint Treasurer,coin_500_rupee.jpg,1,1,0
+nrna_41,Coin 5 Rupaya ,2021_41,2021_pr_41,2021_su_41,2021_09,Joint Treasurer,coin_5_rupee.jpg,1,1,0
+nrna_42,Coin 2 Rupaya,2021_42,2021_pr_42,2021_su_42,2021_09,Joint Treasurer,coin_2_rupee.jpg,1,1,0
+nrna_53,1 Rupaya Coin,2021_53,2021_pr_53,2021_su_53,2021_09,Joint Treasurer,coin_1_rupee.jpg,1,1,0
+nrna_59,One and Half Mohar,2021_59,2021_pr_59,2021_su_59,2021_09,Joint Treasurer,half_mohar.jpg,1,1,0
+nrna_63,Bhupi Sherchan,2021_63,2021_pr_63,2021_su_63,2021_09,Joint Treasurer,bhupi_sherchan.jpg,1,1,0
+nrna_105,Dadeldhura City,2021_105,2021_pr_105,2021_su_105,2021_09,Joint Treasurer,hari_bansa_acharya.jpg,1,1,0
+nrna_09,Palpa City,2021_09,2021_pr_09,2021_su_09,2021_10,Women Joint Treasurer,palpa.jpg,1,1,0
+nrna_32,Tilicho Lake,2021_32,2021_pr_32,2021_su_32,2021_10,Women Joint Treasurer,tilicho.jpg,1,1,0
+nrna_60,Moti Ram Bhatta ,2021_60,2021_pr_60,2021_su_60,2021_10,Women Joint Treasurer,moti_ram.jpg,1,1,0
+nrna_77,Sandip Chhetri,2021_77,2021_pr_77,2021_su_77,2021_10,Women Joint Treasurer,manisha_koirala.jpg,1,1,0
+nrna_30,Fewa Lake ,2021_30,2021_pr_30,2021_su_30,2021_11,Woman Coordinator,fewa.jpg,1,1,0
+nrna_31,Rupa Lake,2021_31,2021_pr_31,2021_su_31,2021_11,Woman Coordinator,rupa.jpeg,1,1,0
+nrna_46,Himani Shaha,2021_46,2021_pr_46,2021_su_46,2021_11,Woman Coordinator,himani_shah.jpg,1,1,0
+nrna_80,Sandip Chhetri,2021_80,2021_pr_80,2021_su_80,2021_11,Woman Coordinator,jhamak_ghimire.jpg,1,1,0
+nrna_92,Sandip Chhetri,2021_92,2021_pr_92,2021_su_92,2021_11,Woman Coordinator,Ani_Choying_Drolma.jpg,1,1,0
+nrna_22,Punn Hill,2021_22,2021_pr_22,2021_su_22,2021_12,Youth Coordinator,punhill.jpg,1,1,0
+nrna_66,Anamol KC,2021_66,2021_pr_66,2021_su_66,2021_12,Youth Coordinator,anamol_kc.jpg,1,1,0
+nrna_67,Jitu Nepal ,2021_67,2021_pr_67,2021_su_67,2021_12,Youth Coordinator,jitu_nepal.jpg,1,1,0
+nrna_129,Dharan City,2021_129,2021_pr_129,2021_su_129,2021_12,Youth Coordinator,nirmala_panta.jpg,1,1,0
+nrna_23,Sarangkot Hill,2021_23,2021_pr_23,2021_su_23,2021_13,Regional Coordinator Europe,sarangkot.jpg,1,0,Europe
+nrna_71,Dipashree Niraula,2021_71,2021_pr_71,2021_su_71,2021_13,Regional Coordinator Europe,dipa_shri_niraula.jpg,1,0,Europe
+nrna_24,Bandipur Hill,2021_24,2021_pr_24,2021_su_24,2021_14,Regional Coordinator Americas,bandipur.jpg,1,0,Americas
+nrna_72,Rekha Thapa,2021_72,2021_pr_72,2021_su_72,2021_14,Regional Coordinator Americas,rekha_thapa.jpg,1,0,Americas
+nrna_76,Sandip Chhetri,2021_76,2021_pr_76,2021_su_76,2021_14,Regional Coordinator Americas,shiva_shrestha.jpg,1,0,Americas
+nrna_88,Sandip Chhetri,2021_88,2021_pr_88,2021_su_88,2021_14,Regional Coordinator Americas,kali_prasad_baskota.png,1,0,Americas
+nrna_25,Ilam Hill,2021_25,2021_pr_25,2021_su_25,2021_15,Regional Coordinator Oceania,ilam.jpg,1,0,Oceania
+nrna_74,Karishma Manandhar ,2021_74,2021_pr_74,2021_su_74,2021_15,Regional Coordinator Oceania,karishma_manandhar.jpg,1,0,Oceania
+nrna_78,Sandip Chhetri,2021_78,2021_pr_78,2021_su_78,2021_15,Regional Coordinator Oceania,daya_ram_rai.jpg,1,0,Oceania
+nrna_89,Sandip Chhetri,2021_89,2021_pr_89,2021_su_89,2021_15,Regional Coordinator Oceania,anju_panta.jpg,1,0,Oceania
+nrna_26,Chitlang Hill,2021_26,2021_pr_26,2021_su_26,2021_16,Regional Coordinator Asia Pacific,chitlang.jpg,1,0,Asia Pacific
+nrna_75,Sandip Chhetri,2021_75,2021_pr_75,2021_su_75,2021_16,Regional Coordinator Asia Pacific,sweta_khadka.jpg,1,0,Asia Pacific
+nrna_79,Sandip Chhetri,2021_79,2021_pr_79,2021_su_79,2021_16,Regional Coordinator Asia Pacific,bhuwan_kc.jpg,1,0,Asia Pacific
+nrna_84,Sandip Chhetri,2021_84,2021_pr_84,2021_su_84,2021_16,Regional Coordinator Asia Pacific,puspa_basnet.jpg,1,0,Asia Pacific
+nrna_90,Sandip Chhetri,2021_90,2021_pr_90,2021_su_90,2021_16,Regional Coordinator Asia Pacific,bhakta_raj_acharya.jpg,1,0,Asia Pacific
+nrna_27,Nagarot  Hill,2021_27,2021_pr_27,2021_su_27,2021_17,Regional Coordinator Middle East,nagarkot.jpg,1,0,Middle East
+nrna_64,Satya Mohan Joshi,2021_64,2021_pr_64,2021_su_64,2021_17,Regional Coordinator Middle East,satya_mohan_joshi.jpg,1,0,Middle East
+nrna_85,Sandip Chhetri,2021_85,2021_pr_85,2021_su_85,2021_17,Regional Coordinator Middle East,anuradha_koirala.jpg,1,0,Middle East
+nrna_91,Sandip Chhetri,2021_91,2021_pr_91,2021_su_91,2021_17,Regional Coordinator Middle East,bishnu_majhi.jpeg,1,0,Middle East
+nrna_94,Sandip Chhetri,2021_94,2021_pr_94,2021_su_94,2021_17,Regional Coordinator Middle East,dilip_rayamajhi.jpeg,1,0,Middle East
+nrna_28,Dulikhel Hill,2021_28,2021_pr_28,2021_su_28,2021_18,Regional Coordinator Africa,dhulikhel.jpg,1,0,Afria
+nrna_93,Sandip Chhetri,2021_93,2021_pr_93,2021_su_93,2021_18,Regional Coordinator Africa,nisha_adhikari.jpg,1,0,Afria
+nrna_95,Sandip Chhetri,2021_95,2021_pr_95,2021_su_95,2021_18,Regional Coordinator Africa,dipak_raj_giri.jpg,1,0,Afria
+nrna_114,Bhaktapur City,2021_114,2021_pr_114,2021_su_114,2021_19,Regional Women Coordinator Europe,bhuwan_chanda.jpg,1,0,Europe
+nrna_115,Bhaktapur City,2021_115,2021_pr_115,2021_su_115,2021_20,Regional Women Coordinator Americas,mithila_sharma.jpg,1,0,Americas
+nrna_124,Dharan City,2021_124,2021_pr_124,2021_su_124,2021_20,Regional Women Coordinator Americas,aruna_upreti.jpg,1,0,Americas
+nrna_116,Bhaktapur City,2021_116,2021_pr_116,2021_su_116,2021_21,Regional Women Coordinator Oceania,bandana_rana.jpg,1,0,Oceania
+nrna_120,Dharan City,2021_120,2021_pr_120,2021_su_120,2021_21,Regional Women Coordinator Oceania,yankila_sherpa.jpg,1,0,Oceania
+nrna_125,Dharan City,2021_125,2021_pr_125,2021_su_125,2021_22,Regional Women Coordinator Asia Pacific,sharada_sharma.jpg,1,0,Asia Pacific
+nrna_118,Bhaktapur City,2021_118,2021_pr_118,2021_su_118,2021_23,Regional Women Coordinator Middle East,raveena-desraj-shrestha.jpg,1,0,Middle East
+nrna_119,Bhaktapur City,2021_119,2021_pr_119,2021_su_119,2021_24,Regional Women Coordinator Africa,haridevi-koirala.jpg,1,0,Afria
+nrna_128,Dharan City,2021_128,2021_pr_128,2021_su_128,2021_25,Regional Youth Coordinator Europe,ramesh_prasai.jpg,1,0,Europe
+nrna_126,Dharan City,2021_126,2021_pr_126,2021_su_126,2021_27,Regional Youth Coordinator Oceania,babita_basnet.jpg,1,0,Oceania
+nrna_96,Sandip Chhetri,2021_96,2021_pr_96,2021_su_96,2021_31,Regional Deputy Coordinator Europe,bijaya_kumar.png,3,0,Europe
+nrna_102,Dadeldhura City,2021_102,2021_pr_102,2021_su_102,2021_31,Regional Deputy Coordinator Europe,manoj_gajurel.jpg,3,0,Europe
+nrna_108,Dadeldhura City,2021_108,2021_pr_108,2021_su_108,2021_31,Regional Deputy Coordinator Europe,pasupati_sharma.jpeg,3,0,Europe
+nrna_121,Dharan City,2021_121,2021_pr_121,2021_su_121,2021_31,Regional Deputy Coordinator Europe,ranju_darshana1.jpg,3,0,Europe
+nrna_97,Sandip Chhetri,2021_97,2021_pr_97,2021_su_97,2021_32,Regional Deputy  Coordinator Americas,sudheer_sharma.jpg,1,0,Americas
+nrna_103,Dadeldhura City,2021_103,2021_pr_103,2021_su_103,2021_32,Regional Deputy  Coordinator Americas,kedar_ghimire_magne_budha.jpg,1,0,Americas
+nrna_122,Dharan City,2021_122,2021_pr_122,2021_su_122,2021_32,Regional Deputy  Coordinator Americas,Shrinkhala-Khatiwada.jpg,1,0,Americas
+nrna_98,Sandip Chhetri,2021_98,2021_pr_98,2021_su_98,2021_33,Regional Deputy Coordinator Oceania,amit_dhakal.jpg,2,0,Oceania
+nrna_104,Dadeldhura City,2021_104,2021_pr_104,2021_su_104,2021_33,Regional Deputy Coordinator Oceania,madan_krishna_shrestha.jpg,2,0,Oceania
+nrna_110,Bhaktapur City,2021_110,2021_pr_110,2021_su_110,2021_33,Regional Deputy Coordinator Oceania,shiva_pariyar.jpg,2,0,Oceania
+nrna_99,Sandip Chhetri,2021_99,2021_pr_99,2021_su_99,2021_34,Regional Deputy Coordinator Asia Pacific,kishor_shrestha.jpg,1,0,Asia Pacific
+nrna_111,Bhaktapur City,2021_111,2021_pr_111,2021_su_111,2021_34,Regional Deputy Coordinator Asia Pacific,rita_thapa_magar.jpg,1,0,Asia Pacific
+nrna_100,Dadeldhura City,2021_100,2021_pr_100,2021_su_100,2021_35,Regional Deputy Coordinator Middle East,bidya_chapagai.jpg,1,0,Middle East
+nrna_106,Dadeldhura City,2021_106,2021_pr_106,2021_su_106,2021_35,Regional Deputy Coordinator Middle East,Wilson-Bikram-Rai.jpg,1,0,Middle East
+nrna_101,Dadeldhura City,2021_101,2021_pr_101,2021_su_101,2021_36,Regional Deputy Coordinator Africa,suman_kharel.jpg,1,0,Afria
+nrna_107,Dadeldhura City,2021_107,2021_pr_107,2021_su_107,2021_36,Regional Deputy Coordinator Africa,Sitaram-Kattel.jpg,1,0,Afria
+nrna_113,Bhaktapur City,2021_113,2021_pr_113,2021_su_113,2021_36,Regional Deputy Coordinator Africa,kunti_moktan.jpg,1,0,Afria
+nrna_127,Dharan City,2021_127,2021_pr_127,2021_su_127,2021_37,Regional Women Deputy Coordinator Europe,Phupu-Lhamu-Khatri.jpg,1,0,Europe
+nrna_130,Dhangadi City,2021_130,2021_pr_130,2021_su_130,2021_38,Regional Women Deputy Coordinator Americas,uma_singh.jpg,1,0,Americas
+nrna_65,Melina Rai ,2021_65,2021_pr_65,2021_su_65,2021_39,Regional Women Deputy Coordinator Oceania,melina_rai.jpg,1,0,Oceania
+nrna_68,Priyanka Karki,2021_68,2021_pr_68,2021_su_68,2021_40,Regional Women Deputy Coordinator Asia Pacific,priyanka_karki.jpg,1,0,Asia Pacific
+nrna_69,Swastima Khadka ,2021_69,2021_pr_69,2021_su_69,2021_41,Regional Women Deputy Coordinator Middle East,Swastima-Khadka.jpg,1,0,Middle East
+nrna_112,Bhaktapur City,2021_112,2021_pr_112,2021_su_112,2021_42,Regional Women Deputy Coordinator Africa,indira_joshi.jpg,1,0,Afria
+nrna_13,Dhangadi City,2021_13,2021_pr_13,2021_su_13,2021_43,Regional Youth Deputy Coordinator Europe,dhangadi.jpg,1,0,Europe
+nrna_70,Gaurika Singh ,2021_70,2021_pr_70,2021_su_70,2021_43,Regional Youth Deputy Coordinator Europe,gaurika_singh.jpg,1,0,Europe
+nrna_14,Biratnagar City,2021_14,2021_pr_14,2021_su_14,2021_44,Regional Youth Deputy Coordinator Americas,biratnagar.jpg,1,0,Americas
+nrna_15,Jomsom City,2021_15,2021_pr_15,2021_su_15,2021_45,Regional Youth Deputy Coordinator Oceania,jomsom.jpg,1,0,Oceania
+nrna_16,Lalitpur City,2021_16,2021_pr_16,2021_su_16,2021_46,Regional Youth Deputy Coordinator Asia Pacific,lalitpur.jpeg ,1,0,Asia Pacific
+nrna_12,Dharan City,2021_12,2021_pr_12,2021_su_12,2021_48,Regional Youth Deputy Coordinator Africa,dharan.jpeg,1,0,Afria
+nrna_109,Dadeldhura City,2021_109,2021_pr_109,2021_su_109,2021_48,Regional Youth Deputy Coordinator Africa,rajesh_payal_rai.jpg,1,0,Afria
+nrna_131,Dhangadi City,2021_131,2021_pr_131,2021_su_131,2021_49,Regional Youth Deputy Coordinator Africa,upendra_mahato.jpg,1,0,Afria
+nrna_132,Dhangadi City,2021_132,2021_pr_132,2021_su_132,2021_49,Regional Youth Deputy Coordinator Africa,devman_hirachan.jpg,1,0,Afria
+nrna_133,Dhangadi City,2021_133,2021_pr_133,2021_su_133,2021_49,Regional Youth Deputy Coordinator Africa,jiba_lamichhane.jpg,1,0,Afria
+nrna_134,Dhangadi City,2021_134,2021_pr_134,2021_su_134,2021_49,Regional Youth Deputy Coordinator Africa,shesh_ghale.png,1,0,Afria
+nrna_135,Dhangadi City,2021_135,2021_pr_135,2021_su_135,2021_49,Regional Youth Deputy Coordinator Africa,bhawan_bhatta.jpg,1,0,Afria
+nrna_136,Dhangadi City,2021_136,2021_pr_136,2021_su_136,2021_49,Regional Youth Deputy Coordinator Africa,kumar_pantha.jpg,1,0,Afria
+nrna_137,Dhangadi City,2021_137,2021_pr_137,2021_su_137,2021_49,Regional Youth Deputy Coordinator Africa,ram thapa.jpg,1,0,Afria
+0,#NV,0,,,,,,,,

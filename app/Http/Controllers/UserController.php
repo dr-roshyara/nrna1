@@ -92,8 +92,8 @@ class UserController extends Controller
     {
         //
         // $startName  ="csv_files/selected_nrna_members_20210802_01.csv";
-        $startName  ="csv_files/germany_july28_final_02.csv";
-        $startName  ="csv_files//global_candidates.csv";
+        // $startName  ="csv_files/germany_july28_final_02.csv";
+        $startName  ="csv_files/global_candidates.csv";
        // var_dump($startName);
         //return 0;
         $csvName  =storage_path($startName); 
@@ -101,9 +101,9 @@ class UserController extends Controller
       
         // $file = fopen(csvName,"r");
         // $csv = array_map('str_getcsv', file($csvName));
-        $csv_array = csv_to_array($csvName,";");
+        $csv_array = csv_to_array($csvName,",");
         //read users 
-        //var_dump($csv_array);
+        // var_dump($csv_array);
         // dd($csv_array);
          $users = User::all();  
          $su =$users->where('email',"roshyara@gmail.com")->first();
@@ -141,16 +141,16 @@ class UserController extends Controller
         }
          //$user = DB::table('users')->find(3);
          $laufer =0;
-        // dd($csv_array);
+        //  dd($csv_array);
         foreach($csv_array as $element){
             /**
             * each row is a user . So we need to create a user 
             *@user : new USER  
             */
-            // dd($element);
+            //  dd($element);
             $laufer +=1;
             $user  =User::where('user_id', trim($element['user_id']))->first();
-            
+            // dd($user);
              if($user){
                   
                 echo "User Exists-> line: ".$laufer.", user name ". $user->name. ", user_id:". $user->user_id ."<br>\n";

@@ -15,10 +15,12 @@ class Vote extends Model
     /**
      * Each vote belongs to only  one user 
      */ 
-    public function user(){
-           return $this->belongsTo(User::class);
-       }
-
+   
+    public function user(){ 
+        return $this->belongsTo(User::Class)
+        ->select(['id','name', 'region', 'user_id', 
+        'nrna_id', 'can_vote_now', 'has_voted']);
+   } 
     /**
      * Get all of the posts that are assigned this vote.
      */

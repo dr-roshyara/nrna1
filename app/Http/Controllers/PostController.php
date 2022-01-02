@@ -107,7 +107,7 @@ class PostController extends Controller
         $csvName  =storage_path($startName); 
         // var_dump($csvName);
       
-        $csv_array = csv_to_array($csvName,";");
+        $csv_array = csv_to_array($csvName,",");
         //read users 
         // dd($csv_array);
         $posts = Post::all();  
