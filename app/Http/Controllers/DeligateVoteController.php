@@ -82,7 +82,7 @@ class DeligateVoteController extends Controller
         // $query =DeligateCandidacy::query();
         // $candidacies =$query->paginate(50); 
         $can_vote_now   =auth()->user()->can_vote_now;
-        $has_voted      = auth()->user()->has_voted;  
+        $has_voted      = $code->has_voted;  
         // $has_voted      =false;       
         $btemp          = $can_vote_now && !$has_voted;
         $lcc             =auth()->user()->lcc;

@@ -6,23 +6,23 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Carbon\Carbon;
-class SendFirstVerificationCode extends Notification
+
+class SecondVerificationCode extends Notification
 {
     use Queueable;
-    public $code;
     public $user;
+    public $code;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct( $user)
+    public function __construct($user)
     {
         //
         $this->user =$user;
-        $this->code =$user->code;
+        $this->code =$this->user->code;
     }
 
     /**
@@ -33,7 +33,6 @@ class SendFirstVerificationCode extends Notification
      */
     public function via($notifiable)
     {
-        // return ['mail', 'database'];
         return ['mail'];
     }
 
@@ -45,10 +44,11 @@ class SendFirstVerificationCode extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->markdown('mail.send_first_verification_code',[
-            'code' => $this->code->code1,
-            'user'=>$this->user,
-        ]) ->subject('Code to open voting form');
+        return (new MailMessage)->markdown('mail.send_second_verification_code', [
+            'user' => $this->user,
+            'code' => $this->code->code2,
+        ])
+        ->subject('Vote Conformation Code');
     }
 
     /**
@@ -61,12 +61,6 @@ class SendFirstVerificationCode extends Notification
     {
         return [
             //
-            // 'info'=>[
-            //     'message' =>'You have received the verification code in your email.',
-            //     'code'=>$this->code->code1,
-            //     'sent'=>Carbon::now()
-
-            // ]
         ];
     }
 }

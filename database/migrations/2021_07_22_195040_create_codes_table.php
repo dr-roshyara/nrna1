@@ -21,10 +21,12 @@ class CreateCodesTable extends Migration
             $table->string('code3')->nullable();
             $table->string('code4')->nullable();
             $table->string('vote_show_code')->nullable();
-            $table->boolean('has_code1_used')->default(0);
-            $table->boolean('has_code2_used')->default(0);
-            $table->boolean('has_code3_used')->default(0);
-            $table->boolean('has_code4_used')->default(0);
+            //
+            $table->boolean('is_code1_usable')->default(0);
+            $table->boolean('is_code2_usable')->default(0);
+            $table->boolean('is_code3_usable')->default(0);
+            $table->boolean('is_code4_usable')->default(0);
+            //
             $table->boolean('can_vote_now')->default(0);
             $table->boolean('has_voted')->default(0);            
             $table->date('vote_last_seen')->nullable();

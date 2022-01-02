@@ -13,7 +13,7 @@ use App\Models\Upload;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Redirector;
-
+use App\Notifications\SecondVerificationCode;
 
 //controllers 
 use Illuminate\Support\Facades\Log;
@@ -29,6 +29,18 @@ class VoteController extends Controller
     public $in_code ; 
     public $out_code;
     public $user_id;
+
+    /***
+     * 
+     * construct 
+     * 
+     */
+    public function __construct(){
+         $this->in_code  ='';
+        //  $this->user_id = auth()->user()->id;
+
+     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -56,19 +68,37 @@ class VoteController extends Controller
          $tfValue= is_url_only_after_first('code/create','/vote/create');
       
         //  dd($tfValue);
-         $code =auth()->user()->code;
-            // dd($code->has_code1_used); 
-         if(!$code->has_code1_used ){
+         $auth_user      =auth()->user();
+         $code           =$auth_user->code;
+         $can_vote_now   =$auth_user->can_vote_now;
+         $code              =$auth_user->code;
+         /***
+          * if there is no code then return to dashboard 
+          * 
+          */
+         if($code==null){
+                    /*** 
+              * 
+              * if the code is not usable you can not proceed further
+              * you should redirect the form in dashboard
+              * 
+              */
+             return redirect()->route('dashboard');
+         }
+         
+         $has_voted      = $code->has_voted;  
+            // dd($code->is_code1_usable); 
+         if(!$code->is_code1_usable ){
 
            return  redirect()->route('code.create'); 
         }
-        // dd($code->has_code1_used); 
-        if($code->has_code1_used){
-            $code->has_code1_used =0;
+        // dd($code->is_code1_usable); 
+        if($code->is_code1_usable){
+            $code->is_code1_usable =0;
             $code->save();
 
-         } 
-         
+         }  
+          
         
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
@@ -135,9 +165,8 @@ class VoteController extends Controller
         //     "candidacies" => $candidacies 
         // ]); 
         // dd(auth()->user());
-        $can_vote_now   =auth()->user()->can_vote_now;
-        $has_voted      = auth()->user()->has_voted;  
-        // $has_voted      =false;       
+      
+              
         $btemp          = $can_vote_now && !$has_voted;
         // $lcc             =auth()->user()->lcc;
         // $lcc             ="Berlin";
@@ -160,9 +189,9 @@ class VoteController extends Controller
             //    "vicepresidents" => $vicepresidents, 
                 "national_posts" =>$national_posts,
                 "regional_posts" =>$regional_posts,                                
-                'user_name'=>auth()->user()->name,
-                'user_id'=>auth()->user()->id,
-                'user_region'=>auth()->user()->region,
+                'user_name'=>$auth_user->name,
+                'user_id'=>$auth_user->id,
+                'user_region'=>$auth_user->region,
                 // 'user_lcc'=>$lcc 
                 
             ]); 
@@ -186,7 +215,19 @@ class VoteController extends Controller
                 ]);
         // dd(request()->all());
         $user_id            =request('user_id');
-        $has_voted          =auth()->user()->has_voted;
+        $auth_user          =auth()->user();
+        /***
+         * 
+         * Get the voting Code here  
+         * 
+         */
+        $code =$auth_user->code;
+        if($code==null){
+            // if code is not given then redirect to dashboard   
+            return redirect()->route('dashboard'); 
+        } 
+        
+        $has_voted          =$code->has_voted;
         $has_voted          =false;
         $nothing_selected   =request('nothing_selected'); 
         $agree_button        =request('agree_button');
@@ -207,7 +248,7 @@ class VoteController extends Controller
             });
         }    
                 
-        if($user_id !=auth()->user()->id)
+        if($user_id !=$auth_user->id)
         {
                              
             $validator->after(function ($validator) {
@@ -235,69 +276,39 @@ class VoteController extends Controller
 
            $vote = request()->all();
         
-        //    $request->session()->put('vote', $vote);
-        //    $candi_vec =[];
-        //    array_push($candi_vec,  $this->get_candidate('icc_member'));
-        //    array_push($candi_vec,  $this->get_candidate('president'));
-        //    array_push($candi_vec, $this->get_candidate('vice_president'));
-        //    array_push($candi_vec, $this->get_candidate('wvp'));
-        //    array_push($candi_vec, $this->get_candidate('general_secretary'));
-        //    array_push($candi_vec, $this->get_candidate('secretary'));
-        //    array_push($candi_vec, $this->get_candidate('treasure'));
-        //    array_push($candi_vec, $this->get_candidate('w_coordinator'));
-        //    array_push($candi_vec, $this->get_candidate('y_coordinator'));
-        //    array_push($candi_vec, $this->get_candidate('cult_coordinator'));
-        //    array_push($candi_vec, $this->get_candidate('child_coordinator'));
-        //    array_push($candi_vec, $this->get_candidate('studt_coordinator'));
-        //      array_push($candi_vec, $this->get_candidate('member_berlin'));
-        //    array_push($candi_vec, $this->get_candidate('member_hamburg'));
-        //    array_push($candi_vec, $this->get_candidate('member_nsachsen'));
-        //    array_push($candi_vec, $this->get_candidate('member_nrw'));
-        //    array_push($candi_vec, $this->get_candidate('member_hessen'));
-        //    array_push($candi_vec,  $this->get_candidate('member_rhein_pfalz'));
-        //     array_push($candi_vec,  $this->get_candidate('member_bayern'));
-        //     array_push($candi_vec, request('no_vote_option'));
-        //     //dd($candi_vec);
-          //$request->session()->put('vote', $candi_vec);
-               $request->session()->put('vote', $vote);
-            // session(['vote'=>$candi_vec]);
-            //$request->session()->put('key', 'value');
-            //session(['key' => 'value']);
-            return redirect()->route('vote.verfiy');
-            // dd("test");
-        //$this->in_code   =auth()->user()->code2;
-        //$this->in_code    ="4321";
-        //$this->out_code   = $request['voting_code'];
-        //$this->user_id    =auth()->user()->id;
-        //$validator        =$this->verify_vote_submit();
-        //$validator->validate($request);
-        /****
-         * Now save the code and show directly 
+     
+        /***
+         * 
+         * save the vote in  Session 
+         *  
          */
-        $input_data = $candi_vec;
-        $this->user_id    =auth()->user()->id;
-         //    dd($input_data);
-            //no_vote option is saved in 19 
-             $no_vote_option  =$input_data[19];   
-            if($no_vote_option) { //check if voter has given no_vote  option 
-                // Go for no vote option 
-                $vote                   =new Vote; 
-                $vote->no_vote_option   =1;
-                $vote->user_id          =$this->user_id;  
-                $vote->save();        
+        $request->session()->put('vote', $vote);
+        
+       
+        /***
+        *
+        *Create the second code 
+        * 
+        */
+        $voting_code            = get_random_string (6);
+        $code->code2            =$voting_code;
+        $code->is_code2_usable  =1; 
+        $code->save();
 
-          }else{
-             /**
-              * Here you save the vote finally :
-              * G
-              */ 
-                $vote                = new Vote;
-                $vote->user_id       = $this->user_id;
-                $this->save_vote($input_data);
-               
-            }    
-            //save the vote and save the user has voted
-            return redirect()->route('vote.show'); 
+        /***
+         * 
+         * send email to the user 
+         * 
+         */
+        //   $auth_user->notify(new Second)   
+          $auth_user->notify(new SecondVerificationCode($auth_user));
+        /***
+         * 
+         * redirect the web to vote verify 
+         * 
+         **/  
+        return redirect()->route('vote.verfiy'); 
+        
      }
 
     /**
@@ -308,16 +319,61 @@ class VoteController extends Controller
      */
     public function store(Request $request)
     {
-        $this->has_voted =auth()->user()->has_voted;
-        $this->in_code   =auth()->user()->code2;
-        $this->in_code    ="4321";
-        $this->out_code   = $request['voting_code'];
-        $this->user_id    =auth()->user()->id;
+        // $this->in_code    ="4321";
+       
+        $this->out_code    = trim($request['voting_code']);
+        $auth_user         = auth()->user();
+        $this->user_id     =$auth_user->id;
+        $code              =$auth_user->code;
+        
+        /***
+         * 
+         * Check if the voter has already voted or in any case vote is already saved 
+         *  
+         */
+        $vote =$auth_user->vote;
+        if($vote !=null){
+            return redirect()->route('dashboard');
+        } 
+        
+        /***
+         * if there is no code then return to dashboard 
+         * 
+         */
+        if($code==null){
+                   /*** 
+             * 
+             * if the code is not usable you can not proceed further
+             * you should redirect the form in dashboard
+             * 
+             */
+            return redirect()->route('dashboard');
+        }
+
+        $this->has_voted   =$code->has_voted;
+        if($code->is_code2_usable){
+            $this->in_code  =$code->code2;
+            
+        }else{
+            /*** 
+             * 
+             * if the code is not usable you can not proceed further
+             * you should redirect the form in dashboard
+             * 
+             */
+            return redirect()->route('dashboard');
+        }
+
+        /**
+        * 
+        *Validate the voting code
+        *
+        */
         $validator        =$this->verify_vote_submit();
         $validator->validate($request);
-        //
+     
         if($this->has_voted){
-            // auth()->user()->save();
+            // $auth_user->save();
             $request->session()->forget('vote');
             return redirect()->route('vote.show'); 
 
@@ -341,8 +397,7 @@ class VoteController extends Controller
                 // Go for no vote option 
                 $vote                   =new Vote; 
                 $vote->no_vote_option   =1;
-                $vote->user_id          =$this->user_id;  
-                $vote->save();        
+                $vote->user_id          =$this->user_id;        
 
           }else{
              /**
@@ -364,9 +419,9 @@ class VoteController extends Controller
             }    
             //save the vote and save the user has voted
             $vote->save();
-            $user =Auth::user();
-            $user->has_voted=1;
-            $user->save();
+            $code->has_voted       =1;
+            $code->is_code2_usable =0;
+            $code->save();
             return redirect()->route('vote.show'); 
 
         }else{
@@ -389,7 +444,7 @@ class VoteController extends Controller
          * 
          */
        
-        // auth()->user()->save();
+        // $auth_user->save();
         $request->session()->forget('vote');
          return redirect()->route('vote.show'); 
 
@@ -404,40 +459,44 @@ class VoteController extends Controller
      */
     public function show(Vote $vote)
     {
+         
         //
-        //   $vote =auth()->user()->vote();
-          $this->user_id =auth()->user()->id;
-          $selected_candidates =[];
-        //   dd(auth()->user()->has_voted);
-          if(auth()->user()->has_voted)
-          {
-            $vote  =User::find($this->user_id)->vote;
-            $vote->voting_code="";
-            //   dd(json_decode($vote));
-            $vote     =(array) json_decode($vote);
-            $arr_keys =array_keys($vote);
-            $key_string ="candidate";
-           
-            foreach($arr_keys as $kstring){
-              // echo $kstring .", ";
-              // echo stristr($kstring, $key_string). "\n <br>";
-              if(stristr($kstring, $key_string)!=false ){
-                  if($vote[$kstring]){
-                      array_push($selected_candidates, $vote[$kstring]);
-              
-                  }
-              } 
+        //   $vote =$auth_user->vote();
+          $auth_user            = auth()->user();
+          $code                 = $auth_user->code;
+          $this->user_id        =$auth_user->id;
+          $selected_candidates  =[];
+          if($code!=null){       
+            //   dd($code->has_voted);
+            if($code->has_voted)
+            {
+                $vote  =$auth_user->vote;
+                $vote->voting_code="";
+                //   dd(json_decode($vote));  
+                $vote     =(array) json_decode($vote);
+                $arr_keys =array_keys($vote);
+                $key_string ="candidate";
+            
+                foreach($arr_keys as $kstring){
+                // echo $kstring .", ";
+                // echo stristr($kstring, $key_string). "\n <br>";
+                if(stristr($kstring, $key_string)!=false ){
+                    if($vote[$kstring]){
+                        array_push($selected_candidates, $vote[$kstring]);
+                
+                    }
+                } 
+                }
+            
             }
-        
-          }
-        
+        }
         //   dd($selected_candidates); 
           
         return Inertia::render('Vote/VoteShow', [
             //    "presidents" => $presidents,
             //    "vicepresidents" => $vicepresidents,
                 'vote' => $selected_candidates,
-                'name'=>auth()->user()->name 
+                'name'=>$auth_user->name 
               
          ]);
     }
@@ -533,6 +592,7 @@ class VoteController extends Controller
     }
     public function verify(){
        $vote = request()->session()->get('vote');
+       $auth_user =auth()->user();
        //$value = $request->session()->get('key');
        // global helper method
         // $vote = session('vote');
@@ -540,9 +600,9 @@ class VoteController extends Controller
         // return Inertia::render('Vote/VoteVerify', [
         return Inertia::render('Vote/Verify', [
                 'vote' =>$vote,
-                 'name'=>auth()->user()->name,
-                 'nrna_id'=>auth()->user()->nrna_id,
-                 'state' =>auth()->user()->state              
+                 'name'=>$auth_user->name,
+                 'nrna_id'=>$auth_user->nrna_id,
+                 'state' =>$auth_user->state              
         ]);
                    
      
@@ -554,10 +614,10 @@ class VoteController extends Controller
                 ]);
         //        
         //  $thvoting_code   =request('voting_code');   
-        //  $code1         =auth()->user()->code1;
-        //  $has_voted      =auth()->user()->has_voted ;
+        //  $code1         =$auth_user->code1;
+        //  $has_voted      =$auth_user->has_voted ;
         //    //$has_voted      =false;
-         // auth()->user()->has_voted ;
+         // $auth_user->has_voted ;
          
         // $code1          ="1234";         
         // //hook to add additional rules by calling the ->after method

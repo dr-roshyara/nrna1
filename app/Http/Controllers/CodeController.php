@@ -51,7 +51,7 @@ class CodeController extends Controller
        
         // dd($user);
         $code =Code::where('user_id','=',$user_id)->first();
-        // dd($code->has_code1_used); 
+        // dd($code->is_code1_usable); 
         
 
         if($code==null){
@@ -76,13 +76,13 @@ class CodeController extends Controller
          * 
          * Assign the new  code value only if it has not been used 
          */
-         if(!$code->has_code1_used & !$code->has_voted){
-            $random = substr(md5(mt_rand()), 0, 5);
-            $form_opening_code = rand(1,9).strtoupper($random);            
+         if(!$code->is_code1_usable & !$code->has_voted){
+          
+            $form_opening_code = get_random_string (6);       
             // echo($form_opening_code);
             $code->user_id          =$user_id ;
             $code->code1            =$form_opening_code ;
-            $code->has_code1_used   =1; 
+            $code->is_code1_usable   =1; 
             
                
              /***
@@ -253,13 +253,7 @@ class CodeController extends Controller
         $validator =  Validator::make(request()->all(), [
                     'voting_code' =>['required'],                    
                 ]);
-        //        
-        //  $thvoting_code   =request('voting_code');   
-        //  $code1         =auth()->user()->code1;
-        //  $has_voted      =auth()->user()->has_voted ;
-        //    //$has_voted      =false;
-         // auth()->user()->has_voted ;
-         
+        
         // $code1          ="1234";         
         // //hook to add additional rules by calling the ->after method
          $validator->after(function ($validator) {

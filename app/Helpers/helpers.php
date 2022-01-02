@@ -62,3 +62,17 @@ if(! function_exists('is_url_only_after_first')){
         return true; 
     }
 }
+
+/***
+ * 
+ * Get random string of any size 
+ * @param $nchar: no of characters that is to be defined
+ * @return : String  
+ */
+   if(! function_exists('get_random_string')){
+       function get_random_string ($nChar){
+        $random = substr(md5(mt_rand()), 0, $nChar-1);
+        $random = rand(1,9).strtoupper($random);
+        return $random ;
+       }
+   }
