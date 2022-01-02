@@ -3,21 +3,45 @@
  <app-layout>
     <div class="flex flex-col  md:mx-auto md:flex-row  md:space-x-6 ">
         <div class="flex flex-col mt-10 align-top bg-blue-100 ">
-                
+                   
                 <div class="mx-auto">
                 <jet-validation-errors class="mb-4  mx-auto text-center " /> 
                   
                 </div>
-    
+                <!-- {{vote}} -->
+                <!-- {{code_expires_in}} -->
+                 <div class="p-2 mx-auto text-center my-2 text-2xl font-bold text-gray-900 "> 
+                     <p> Check your email & submit the vote conformation code</p> 
+                </div>
             <form @submit.prevent="submit" class=" text-center mx-auto align-top">
                 <div class="flex flex-col justify-center px-2 m-2"> 
                     <div class="flex flex-col justify-center space-x-4 
                   p-4 mb-2 mx-auto 
                     font-bold text-gray-900 ">
                     <label for="voting_code"  class="px-4 py-2 mb-3"> 
-                        <p> Vote Conformation  Code </p>
-                        <p> Please check the vote what you have casted. Finally conform it by inserting the code  you got  sencod time. </p> 
-                        <p>यहाँले गर्नु भएको मतदान यो पेजमा देखाइएको छ। साथी यहाँको एसएमएसमा पनि पठाइएको छ। अब यहाँले गर्नु भएको मतदान अली त्यो एसएमएस मा पठाइएको पुस्टी कोड हालेर आफ्नो मतदान लाई सेभ गर्न बत्तन थिच्नुहोस्। </p>  
+                        <p> First of all, please  check below the vote what you have casted. 
+                            Finally conform it by inserting the code  you got  sencod time in your email. 
+                            We have just sent you an email 
+                            <span class="text-red-500 font-bold "> {{vote.totalDuration}} </span> 
+                          minutes ago, mentioning your vote conformation code. 
+                           You can use this code for the next 
+                          <span class="text-red-500 font-bold ">
+                            {{vote.code_expires_in - vote.totalDuration}}  minutes 
+                            </span>
+                          to save your vote.<br>
+                        </p> 
+                         <p> यहाँले गर्नु भएको मतदान यो पेजमा देखाइएको छ। सवै भन्दा पहिला आफ्नो मतदान लाइ जाँच गर्नुहोस। 
+                              अनि तपाइलाइ हामीले  भर्खरै 
+                          <span class="text-red-500 font-bold ">
+                            {{vote.totalDuration }}  मिनेट  
+                          </span> 
+                          अघाडी एउटा इमेल पठाएका छाैं। आफ्नो मतदान सेभ गर्नको लागि 
+                          त्यो कोड लाइ अर्काे 
+                          <span class="text-red-500 font-bold "> 
+                            {{vote.code_expires_in - vote.totalDuration}} 
+                            </span>
+                            मिनेट सम्म प्रयाेग गरिसक्नु पर्ने छ। 
+                         अब यहाँले प्राप्त गर्नु भएको मतदान पुष्टी कोड हालेर आफ्नो मतदान लाई सेभ गर्न  तलको बट्टन थिच्नुहोस्। </p>  
                     </label>   
                     <input class=" px-4 py-6 rounded-lg bg-gray-200 w-auto
                     font-bold border border-blue-400  text-gray-900 font-bold text-xl" 
@@ -62,7 +86,9 @@ import AppLayout from '@/Layouts/AppLayout'
 import NrnaLayout from '@/Layouts/NrnaLayout'
 export default {  
     props:{
-        vote : Object
+        vote        :   Object,
+        totalDuration:  Number,
+        code_expires_in:Number     
     },
    setup () {
      const form = useForm({

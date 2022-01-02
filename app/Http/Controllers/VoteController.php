@@ -10,6 +10,7 @@ use App\Models\Candidacy;
 use App\Models\Post;
 use App\Models\Code;
 use App\Models\Upload;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Redirector;
@@ -216,6 +217,7 @@ class VoteController extends Controller
         // dd(request()->all());
         $user_id            =request('user_id');
         $auth_user          =auth()->user();
+        $code_expires_in    =25;
         /***
          * 
          * Get the voting Code here  
@@ -230,7 +232,7 @@ class VoteController extends Controller
         $has_voted          =$code->has_voted;
         $has_voted          =false;
         $nothing_selected   =request('nothing_selected'); 
-        $agree_button        =request('agree_button');
+        $agree_button       =request('agree_button');
         
         // dd($nothing_selected);
         //first check if at least one check box selected 
@@ -277,23 +279,43 @@ class VoteController extends Controller
            $vote = request()->all();
         
      
-        /***
-         * 
-         * save the vote in  Session 
-         *  
-         */
-        $request->session()->put('vote', $vote);
-        
+       
        
         /***
         *
         *Create the second code 
         * 
         */
-        $voting_code            = get_random_string (6);
-        $code->code2            =$voting_code;
-        $code->is_code2_usable  =1; 
-        $code->save();
+        /**
+         * 
+         * 
+         */
+
+        $updated_at    = Carbon::parse($code->updated_at);
+        $current       = Carbon::now();
+        $totalDuration = $current->diffInMinutes($updated_at);
+       
+        if(!$code->is_code2_usable || ($code->is_code2_usable & $totalDuration>15 ))
+        {
+            $voting_code            = get_random_string (6);
+            $code->code2            =$voting_code;
+            $code->is_code2_usable  =1;      
+            $totalDuration          =0;
+            $code->save();
+        }
+        
+        $vote["totalDuration"]   =$totalDuration;
+        $vote["code_expires_in"] =$code_expires_in;
+        
+        /***
+         * 
+         * save the vote in  Session 
+         *  
+         */
+         $request->session()->put('vote', $vote);
+        
+       
+            
 
         /***
          * 
@@ -307,7 +329,11 @@ class VoteController extends Controller
          * redirect the web to vote verify 
          * 
          **/  
-        return redirect()->route('vote.verfiy'); 
+        return redirect()->route('vote.verfiy')
+                ->with([
+                    'totalDuration'=>$totalDuration, 
+                    'code_expires_in'=> $code_expires_in
+                ]); 
         
      }
 

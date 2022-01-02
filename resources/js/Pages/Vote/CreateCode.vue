@@ -5,10 +5,26 @@
                       <p class="p-2 my-2 text-2xl text-gray-900 font-bold  bg-blue-50 text-center mx-auto"> 
                         Check your email Now </p>
                       <div class="text-center"> 
-                        <p> We have just sent you an email mentioning your voting code.</p>
-                         <p class="text-red-700 font-semibold text-sm"> 
+                        <p> We have sent you an email  <span class="text-red-500 font-bold "> {{code_duration }} </span> minutes ago, mentioning your voting code. 
+                          You can use this code for the next 
+                          <span class="text-red-500 font-bold ">
+                            {{code_expires_in- code_duration}}  minutes 
+                            </span>
+                          to open the voting form.<br> 
+                          तपाइलाइ हामीले  भर्खरै 
+                          <span class="text-red-500 font-bold ">
+                            {{code_duration }}  मिनेट 
+                          </span> 
+                          अघाडी एउटा इमेल पठाएका छाैं। 
+                          भोटिङ पर्म खोल्नको लागि त्यो कोड लाइ अर्काे 
+                          <span class="text-red-500 font-bold "> 
+                            {{code_expires_in- code_duration}} 
+                            </span>
+                            मिनेट सम्म प्रयाेग गरिसक्नु पर्ने छ। </p>
+                         
+                          <p class="text-red-700 font-semibold text-sm"> 
                            If you don't see email in your mailbox , then please check your Spam mail also.<br/>  
-                           तपाइले आफ्नो मेल वक्समा एनआरएनएको मेल भेट्टाउनु भएन भने स्पाम मेलमा गएर वसेको हुन सक्छ, त्यसैले स्पाम मेल पनि चेक गर्नुहोस। 
+                           तपाइले आफ्नो मेल वक्समा एनआरएनएको इमेल भेट्टाउनु भएन भने स्पाम मेलमा गएर वसेको हुन सक्छ, त्यसैले स्पाम मेल पनि चेक गर्नुहोस। 
                         </p> 
                       </div>
              <div class="m-auto">
@@ -62,8 +78,9 @@ export default {
     props:{
         name: String,
         nrna_id: String, 
-        state: String
-
+        state:  String,
+        code_duration: Number,
+        code_expires_in: Number,
     },   
      setup () {
      const form = useForm({

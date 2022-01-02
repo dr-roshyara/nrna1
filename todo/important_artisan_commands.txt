@@ -1,5 +1,6 @@
-  php artisan migrate:rollback  --path=database/migrations/2021_07_18_205316_create_candidacies_table.php
-  php artisan migrate:rollback  --path=database/migrations/2021_12_23_093328_add_foreign_keys_to_candidacies.php
+   php artisan migrate:refresh --path=database/migrations/2021_07_18_205316_create_candidacies_table.php
+  php artisan migrate:refresh  --path=database/migrations/2021_12_23_093328_add_foreign_keys_to_candidacies.php
  #
   php artisan migrate   --path=database/migrations/2021_07_18_205316_create_candidacies_table.php
   php artisan migrate   --path=database/migrations/2021_12_23_093328_add_foreign_keys_to_candidacies.php
+Pasang Lhamu Sherpa

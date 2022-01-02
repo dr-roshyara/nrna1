@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 Use App\Models\User;
 use App\Models\Code;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use App\Notifications\SendFirstVerificationCode;
 
@@ -39,9 +40,11 @@ class CodeController extends Controller
     public function create()
     {
           
-        $auth_user = auth()->user();
+        $auth_user       = auth()->user();
+        $totalDuration   = 0;
+        $code_expires_in =15;
         // dd($user);
-        $user_id    = $auth_user->id ;
+        $user_id        = $auth_user->id ;
         // $user_email =$auth_user->email;
         /***
          * 
@@ -55,8 +58,19 @@ class CodeController extends Controller
         
 
         if($code==null){
-            $code = new Code;
+            $code           = new Code;
+            $totalDuration  = 0;
             // dd($code);
+        }else{
+             $updated_at    = Carbon::parse($code->updated_at);
+             $current       = Carbon::now();
+             $totalDuration = $current->diffInMinutes($updated_at);
+              if($totalDuration>15){
+                $code->is_code1_usable =0; 
+                $totalDuration  =0;       
+              }
+
+           
         }
         
         /***
@@ -80,8 +94,8 @@ class CodeController extends Controller
           
             $form_opening_code = get_random_string (6);       
             // echo($form_opening_code);
-            $code->user_id          =$user_id ;
-            $code->code1            =$form_opening_code ;
+            $code->user_id           =$user_id ;
+            $code->code1             =$form_opening_code ;
             $code->is_code1_usable   =1; 
             
                
@@ -90,7 +104,7 @@ class CodeController extends Controller
               *Finally: save the vote form opening code 
               *
               */
-                $code->save();
+             $code->save();
             /****
              * 
              * send the vote opening code via email here 
@@ -105,10 +119,11 @@ class CodeController extends Controller
           return Inertia::render('Vote/CreateCode', [
         //    "presidents" => $presidents,
         //    "vicepresidents" => $vicepresidents,
-             'name'=>auth()->user()->name,
-             'nrna_id'=>auth()->user()->nrna_id,
-             'state' =>auth()->user()->state,
-            //  'form_opening_code' =>$form_opening_code              
+             'name'     =>$auth_user->name,
+             'nrna_id'  =>$auth_user->nrna_id,
+             'state'    =>$auth_user->state,
+             'code_duration' =>$totalDuration,
+             'code_expires_in'=>$code_expires_in
          ]);
     }
 

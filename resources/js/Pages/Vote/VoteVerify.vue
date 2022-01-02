@@ -3,7 +3,7 @@
     <app-layout>
      <div class="flex flex-col ites-center md:mx-auto md:flex-row  md:space-x-6 ">
         <div class="flex flex-col justify-center bg-blue-100 ">
-                
+                    {{vote}} 
                 <div class="m-auto">
                 <jet-validation-errors class="mb-4  mx-auto text-center " /> 
                   
