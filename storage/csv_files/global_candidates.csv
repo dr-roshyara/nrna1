@@ -170,3 +170,8 @@ sn,user_id,name,email,region,password,nrna_id,is_voter
 169,nrna_169,Pradesh 7,test169@test.de,Americas,12345719,nrna_169,0
 170,nrna_170,Barsha Man Pun,test170@test.de,Americas,12345719,nrna_170,0
 171,nrna_171,Ambika Shrestha,test171@test.de,Americas,12345719,nrna_171,0
+172,nrna_172,Nikita Acharya,test172@test.de,Americas,12345719,nrna_172,0
+173,nrna_173,Nepali Khaja,test173@test.de,Americas,12345719,nrna_173,0
+174,nrna_174,Nepali Momo ,test174@test.de,Americas,12345720,nrna_174,1
+175,nrna_175,Nepali Traditional  Khana,test175@test.de,Americas,12345721,nrna_175,2
+176,nrna_176,Nepali Dhido,test176@test.de,Americas,12345722,nrna_176,3

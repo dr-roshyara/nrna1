@@ -10,6 +10,9 @@ use Inertia\Inertia;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class VoterlistController extends Controller
 {
@@ -21,9 +24,69 @@ class VoterlistController extends Controller
     //starts here 
     public function index(Request $request)
     {
+        
+         // dd(DB::table('users')->first());
+         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
+            $query->where(function ($query) use ($value) {
+                $query->where('id', 'LIKE', "%{$value}%");
+                // $query->where('itemId', "{$value}");
+
+                   
+                // ->orWhere('variationId', 'LIKE', "%{$value}%");
+                
+            });
+        });
+        /***
+         * 
+         * allow sorting 
+         * 
+         */
+    
+        $query = User::where('can_vote_now', 1);
+        $users = QueryBuilder::for($query)
+        ->defaultSort('name')
+        ->allowedSorts(['name','nrna_id', "region"])
+        ->allowedFilters(['name','nrna_id', 'region',  $globalSearch])
+        ->paginate(50) 
+        ->withQueryString();
+        // chain on any of Laravel's query builder methods
+        
+        // dd($users);
+         /***
+          * 
+          *return 
+          */
+        return Inertia::render('Voter/IndexVoter', [
+            'voters'=>$users
+        ])->table(function (InertiaTable $table) {
+            $table->addSearchRows([                
+                'name'              => 'Name',
+                'user_id'           => 'User ID',
+                'region'             => 'Region',
+                // 'item.keywords'          => 'Keywords',
+                // 'variationId'            => 'Variation Id',
+                // 'itemId'   =>  'Item Id',
+            ])->addFilter('mainWarehouseId', 'Warehouse', [
+                '25' => 'Keramag',
+                 
+                // 'manufacturer.name' =>'Manufacturer',
+                // 'nl' => 'Nederlands',
+            ])->addColumns([
+                'sn'                  => 'S.N.',
+                'use_id'              => 'User ID',
+                'name'                => 'Name',
+                'region'              => 'Region'
+                
+
+            ]);
+        });
+        
+        
+        
+        
         request()->validate([
             'direction'=> ['in:asc,desc'],
-            'field' => ['in:id,first_name,last_name,nrna_id,state,telephone,created_at']
+            'field' => ['in:id,name,last_name,nrna_id,state,telephone,created_at']
         ]);
         // $query =User::query();
          $query = DB::table('users')->where('is_voter', 1);
@@ -38,8 +101,8 @@ class VoterlistController extends Controller
         if(request('search')){
             $query->where('last_name', 'LIKE', '%'.request('search').'%');
         } 
-        if(request('first_name')){
-            $query->where('first_name', 'LIKE', '%'.request('first_name').'%');
+        if(request('name')){
+            $query->where('name', 'LIKE', '%'.request('name').'%');
         } 
         //
          if(request('nrna_id')){
@@ -64,7 +127,7 @@ class VoterlistController extends Controller
         return Inertia::render('Voter/IndexVoter', [
           'voters' => $voters,
           'can_send_code'=>$btemp, 
-          'filters' =>request()->all(['first_name','nrna_id','field','direction'])  
+          'filters' =>request()->all(['name','nrna_id','field','direction'])  
  
         ]);
     

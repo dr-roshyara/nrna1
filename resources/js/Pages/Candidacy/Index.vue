@@ -2,7 +2,7 @@
    <nrna-layout>
     <app-layout> 
          <!-- {{candidacies}}  -->
-                 <div class="py-2 flex flex-row justify-between "> 
+        <div class="py-2 flex flex-row justify-between "> 
             <Link  v-if="candidacies.prev_page_url" class="m-2 px-2 py-2 bg-gray-300 rounded" :href="candidacies.prev_page_url" >Previous Page </Link> 
             <Link  v-if="candidacies.next_page_url" class="m-2 px-2 py-2 bg-gray-300 rounded" :href="candidacies.next_page_url">Next Page </Link> 
         </div>
@@ -10,16 +10,18 @@
 
         <!-- {{candidacies.next_page_url}} -->
     <!-- <pagination class="mt-10" :links="candidacies.links" /> -->
+    <!-- Here is the links for prvious and next --> 
     <div class=" flex flex-col  justify-center items-center overscroll-x-contain ">
-     
+    
+      <!-- Here starts the table  -->
     <Table
-    :filters="queryBuilderProps.filters"
-    :search="queryBuilderProps.search"
-    :columns="queryBuilderProps.columns"
-    :on-update="setQueryBuilder"
-    :meta="candidacies"
-     class="relative w-full border mx-auto"
-  >
+      :filters="queryBuilderProps.filters"
+      :search="queryBuilderProps.search"
+      :columns="queryBuilderProps.columns"
+      :on-update="setQueryBuilder"
+      :meta="candidacies"  
+      class="relative w-full border"
+    >
      <!-- head of the table  -->
       <template #head>
       <tr>

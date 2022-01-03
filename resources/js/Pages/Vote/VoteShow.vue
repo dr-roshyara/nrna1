@@ -2,7 +2,7 @@
 <nrna-layout>
      <app-layout>
      <div class="mt-6 text-center">  
-          <div class="m-auto text-center bg-blue-200 py-4 ">  
+          <div v-if="vote.candidate" class="m-auto text-center bg-blue-200 py-4 ">  
                <p class="m-auto text-blue-700 font-bold text-sm"> Congratulation {{user_name}}! </p> 
                <p class="m-auto"> Thank You for your vote. Please keep your passowrd very secret. Also please do not  ask others to show their vote. 
                     For verification of the result, this vote will be deleted only after one month. </p>

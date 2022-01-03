@@ -49,7 +49,70 @@ class VoteController extends Controller
      */
     public function index() 
     {
-         return Inertia::render('Vote/VoteIndex', [
+         
+        //  // dd(DB::table('orders')->first());
+        //  $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
+        //     $query->where(function ($query) use ($value) {
+        //         $query->where('id', 'LIKE', "%{$value}%");
+        //         // $query->where('itemId', "{$value}");
+
+                   
+        //         // ->orWhere('variationId', 'LIKE', "%{$value}%");
+                
+        //     });
+        // });
+        // /***
+        //  * 
+        //  * allow sorting 
+        //  * 
+        //  */
+    
+        // $orders = QueryBuilder::for(Order::class)
+        // ->defaultSort('id')
+        // ->allowedSorts(['name','nrna_id'])
+        // ->allowedFilters(['name','nrna_id', 'region',  $globalSearch])
+        // ->paginate(50) 
+        // ->withQueryString();
+        
+
+        //  /***
+        //   * 
+        //   *return 
+        //   */
+        // return Inertia::render('Orders/Index', [
+        //     'orders'=>$orders
+        // ])->table(function (InertiaTable $table) {
+        //     $table->addSearchRows([                
+        //         'paymentType'           => 'Payment Type',
+        //         'deleveryCountry'       => 'Delevery Country',
+        //         'billNo'                => 'Bill Number',
+        //         'externalId'            => 'External Id',
+        //         // 'item.keywords'          => 'Keywords',
+        //         // 'variationId'            => 'Variation Id',
+        //         // 'itemId'   =>  'Item Id',
+        //     ])->addFilter('mainWarehouseId', 'Warehouse', [
+        //         '25' => 'Keramag',
+        //         '17' => 'Hochheim',
+        //         '4' => 'Flörsheim',
+        //         '3' => 'Sulzbach',
+        //         '8' => 'Vormontage',                
+        //         // 'manufacturer.name' =>'Manufacturer',
+        //         // 'nl' => 'Nederlands',
+        //     ])->addColumns([
+        //         'orderId'               => 'Order Id',
+        //         'createdAt'             =>'Created At',
+        //         'statusName'            =>'Status Name',
+        //         'paymentType'           =>'Payment Type',
+        //         'grossTotal'            =>'Gross Total',
+        //         'deleveryCountry'       => 'Delevery Country',
+        //         'billNo'                => 'Bill Number',
+        //         'externalId'            => 'External Id'
+
+        //     ]);
+        // });
+        
+        //  here ends 
+        return Inertia::render('Vote/VoteIndex', [
             //    "presidents" => $presidents,
             //   "vicepresidents" => $vicepresidents,
                 // 'name'=>auth()->user()->name 

@@ -2,7 +2,7 @@
 <nrna-layout>
      <app-layout>
      <div class="mt-6 text-center">  
-          <div class="m-auto text-center bg-blue-200 py-4 ">  
+          <div v-if="vote" class="m-auto text-center bg-blue-200 py-4 ">   
                <p class="m-auto text-blue-700 font-bold text-sm"> Congratulation {{user_name}}! </p> 
                <p class="m-auto"> Thank You for your vote. Please keep your passowrd very secret. Also please do not  ask others to show their vote. 
                     For verification of the result, this vote will be deleted only after one month. </p>
@@ -21,7 +21,7 @@
             <!--  here we put the candidate -->
                      <p class="px-2 mx-auto py-2 text-gray-900 font-bold text-xl"> 
                           Your Vote  </p>
-                          {{vote.candidate_01}}
+                          <!-- {{vote.candidate_01}} -->
                     <table class=" m-4 text-left" v-if="vote">
                         <tr class="border-b-2 border-gray-400">
                              <th class="w-1/3 p-4">Post</th>

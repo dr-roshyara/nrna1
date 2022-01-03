@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 //
 use App\Models\Post;
 use Inertia\Inertia;
+use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 class PostController extends Controller
 {
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,15 +20,38 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-            // dd(Post::all());
-            //$query =Post::query();
-             $query =Post::query();
-             $posts =$query->paginate(120); 
-            //  dd($posts);
+        
+        $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
+            $query->where(function ($query) use ($value) {
+                $query->where('name', 'LIKE', "%{$value}%");
+                // ->orWhere('email', 'LIKE', "%{$value}%");
+            });
+        });
+        $posts = QueryBuilder::for(Post::class)
+            ->defaultSort('post_id')
+            ->allowedSorts(['name','post_id', 'is_national_wide', 'required_number'])
+            ->allowedFilters(['post_id', 'name', 'is_national_wide', 'required_number', $globalSearch])
+            ->paginate(100)
+            ->withQueryString();
+            //
             return Inertia::render('Post/IndexPost', [
-            'posts' => $posts,
-            ]);
+                'posts' => $posts,
+            ])->table(function (InertiaTable $table) {
+                $table->addSearchRows([
+                    'name'      => 'Name',
+                    'post_id'  => 'Post ID',
+                ])->addFilter('name', 'Name', [
+                    // 'en' => 'Engels',
+                    // 'nl' => 'Nederlands',
+                ])->addColumns([
+                    'sn'                => 'S.N.',
+                    'post_id'            => 'Post ID',
+                    'name'              => 'Name',
+                    'required_number'   => "Required Number",
+                    'state_name'        => "Scope"
+                ]);
+            });
+           
      
 
 

@@ -172,7 +172,7 @@ class CandidacyController extends Controller
        /** change psot id according to the post  otherwise it wont work
          * look at the post controller id*/ 
         $candidacy['post_id']         =$request['post_id']; 
-        // $candidacy['post_id']         =$request['nrna_id']; 
+        $candidacy['nrna_id']         =$request['nrna_id']; 
         $candidacy['proposer_id']      =$request['proposer_id'];  
         $candidacy['proposer_name']   =$request['proposer_name']; 
         $candidacy['supporter_id']    =$request['supporter_id'];   

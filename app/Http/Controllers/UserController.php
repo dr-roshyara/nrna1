@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         request()->validate([
             'direction'=> ['in:asc,desc'],
-            'field' => ['in:id,first_name,last_name,nrna_id,state,telephone,created_at']
+            'field' => ['in:id,name,last_name,nrna_id,state,telephone,created_at']
         ]);
         $query =User::query();
         
@@ -40,8 +40,8 @@ class UserController extends Controller
         if(request('search')){
             $query->where('last_name', 'LIKE', '%'.request('search').'%');
         } 
-        if(request('first_name')){
-            $query->where('first_name', 'LIKE', '%'.request('first_name').'%');
+        if(request('name')){
+            $query->where('name', 'LIKE', '%'.request('name').'%');
         } 
         //
          if(request('nrna_id')){
@@ -64,7 +64,7 @@ class UserController extends Controller
         // $users =$users->sortBy('created_at')->reverse();
         return Inertia::render('User/Index', [
           'users' => $users,
-          'filters' =>request()->all(['first_name','nrna_id','field','direction'])  
+          'filters' =>request()->all(['name','nrna_id','field','direction'])  
  
         ]);
     
@@ -172,7 +172,7 @@ class UserController extends Controller
                 //   $user->password   =$element ['password'];
                  
                   $user->user_id    =$element ['user_id'];
-                //   $user->nrna_id    =$element ['nrna_id'];
+                  $user->nrna_id    =$element ['nrna_id']; 
                   $user->is_voter   =$element ['is_voter'];
                 //dd($user);
                   $user->save();
