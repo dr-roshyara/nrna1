@@ -53,6 +53,7 @@ class CreateNewUser implements CreatesNewUsers
             $user->email     =$input['email'];
             $user->region   =$input['region'];
             $user->password  =Hash::make($input['password']);
+           
             $user->save();
             return ($user);
         // return User::create([

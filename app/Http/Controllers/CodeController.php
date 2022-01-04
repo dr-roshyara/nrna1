@@ -41,6 +41,18 @@ class CodeController extends Controller
     {
           
         $auth_user       = auth()->user();
+         
+        /**
+             * Normally user must be verified and then 
+             * However , we dont have a verification system now that's why 
+             * the user can vote directly  
+             */
+         if(!$auth_user->can_vote_now){
+            $auth_user->can_vote_now  =1;
+            $auth_user->save();  
+
+        }
+           
         $totalDuration   = 0;
         $code_expires_in =30;
         // dd($user);
@@ -60,6 +72,7 @@ class CodeController extends Controller
         if($code==null){
             $code           = new Code;
             $totalDuration  = 0;
+
             // dd($code);
         }else{
              $updated_at    = Carbon::parse($code->updated_at);
@@ -99,7 +112,8 @@ class CodeController extends Controller
             // echo($form_opening_code);
             $code->user_id           =$user_id ;
             $code->code1             =$form_opening_code ;
-            $code->is_code1_usable   =1; 
+            $code->is_code1_usable   =1;
+            $code->code1_used_at     =Carbon::now();
             
                
              /***
@@ -108,6 +122,7 @@ class CodeController extends Controller
               *
               */
              $code->save();
+            //  dd($code);  
             /****
              * 
              * send the vote opening code via email here 

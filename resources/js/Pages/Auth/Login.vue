@@ -81,7 +81,8 @@
 
                 <div class="flex items-center justify-end mt-4 ">
                     <inertia-link 
-                    v-if="canResetPassword" :href="route('password.request')" class="underline font-bold text-lg text-gray-900 hover:text-gray-900">
+                    v-if="canResetPassword" :href="route('password.request')" 
+                    class="underline font-bold  text-gray-900 hover:text-gray-900">
                         Get  your password here
                     </inertia-link> 
 
