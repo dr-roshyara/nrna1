@@ -373,6 +373,10 @@ class VoteController extends Controller
          */
         $vote =$auth_user->vote;
         if($vote !=null){
+            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
+           You have already voted and your vote is already saved! See below
+            </div>';
+            dd($vote->getOriginal());
             return redirect()->route('dashboard');
         } 
         
@@ -387,6 +391,9 @@ class VoteController extends Controller
              * you should redirect the form in dashboard
              * 
              */
+            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
+              Your code is wrong. Send the screenshot to administrator!             </div>';
+              return ('404');
             return redirect()->route('dashboard');
         }
 
@@ -401,6 +408,9 @@ class VoteController extends Controller
              * you should redirect the form in dashboard
              * 
              */
+            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
+            Your code has Problem .Please Send the screenshot to administrator!             </div>';
+            return ('404');
             return redirect()->route('dashboard');
         }
 
@@ -460,6 +470,8 @@ class VoteController extends Controller
             //save the vote and save the user has voted
             $vote->save();
             $code->has_voted       =1;
+            $code->can_vote_now    =0;
+            $code->can_vote_now    =0;
             $code->is_code2_usable =0;
             $code->save();
             return redirect()->route('vote.show'); 

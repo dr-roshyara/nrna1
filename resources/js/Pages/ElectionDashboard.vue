@@ -44,7 +44,8 @@
                                         md:text-2xl
                                     "
                                 >
-                                    Vote Here
+                                    <p class="mx-auto mb-1"> Vote Here</p> 
+                                     <p class="py-2 mb-2 mx-auto"> नमुना मतदान गर्न यहाँ क्लिक गर्नुहोस। </p> 
                                 </div>
                             </div>
                         </a>
