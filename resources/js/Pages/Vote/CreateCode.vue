@@ -5,7 +5,9 @@
                       <p class="p-2 my-2 text-2xl text-gray-900 font-bold  bg-blue-50 text-center mx-auto"> 
                         Check your email Now </p>
                       <div class="text-center"> 
-                        <p> We have sent you an email  <span class="text-red-500 font-bold "> {{code_duration }} </span> minutes ago, mentioning your voting code. 
+                        <p> We have sent you an email  
+                          <span class="text-red-500 font-bold "> {{code_duration }} </span> 
+                          minutes ago, mentioning your voting code. 
                           You can use this code for the next 
                           <span class="text-red-500 font-bold ">
                             {{code_expires_in- code_duration}}  minutes 

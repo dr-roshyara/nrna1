@@ -19,8 +19,9 @@ class CreateCandidaciesTable extends Migration
             $table->string('candidacy_id')->unique(); 
             //foreign key user 
             $table->string('user_id')->unique();   
-  
-            $table->string('post_id');            
+            //foreign key post 
+            $table->string('post_id');
+            // $table->string('candidacy_name')->nullable();            
             $table->string('proposer_id')->unique()->nullable();
             $table->string('supporter_id')->unique()->nullable();             
       

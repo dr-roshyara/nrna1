@@ -31,7 +31,7 @@ sn,user_id,name,email,region,password,nrna_id,is_voter
 30,nrna_30,Fewa Lake ,test30@test.de,Europe,12345681,nrna_30,0
 31,nrna_31,Rupa Lake,test31@test.de,Americas,12345682,nrna_31,0
 32,nrna_32,Tilicho Lake,test32@test.de,Europe,12345683,nrna_32,0
-33,nrna_33,Ek Rupaya,test33@test.de,Europe,12345684,nrna_33,0
+33,nrna_33,Nabin K Bhattarai,test33@test.de,Europe,12345684,nrna_33,0
 34,nrna_34,5 Rupaya,test34@test.de,Africa,12345685,nrna_34,0
 35,nrna_35,25  Rupaya ,test35@test.de,Europe,12345686,nrna_35,0
 36,nrna_36,50 Rupaya ,test36@test.de,Africa,12345687,nrna_36,0
@@ -172,6 +172,16 @@ sn,user_id,name,email,region,password,nrna_id,is_voter
 171,nrna_171,Ambika Shrestha,test171@test.de,Americas,12345719,nrna_171,0
 172,nrna_172,Nikita Acharya,test172@test.de,Americas,12345719,nrna_172,0
 173,nrna_173,Nepali Khaja,test173@test.de,Americas,12345719,nrna_173,0
-174,nrna_174,Nepali Momo ,test174@test.de,Americas,12345720,nrna_174,1
-175,nrna_175,Nepali Traditional  Khana,test175@test.de,Americas,12345721,nrna_175,2
-176,nrna_176,Nepali Dhido,test176@test.de,Americas,12345722,nrna_176,3
+174,nrna_174,Nepali Momo ,test174@test.de,Americas,12345720,nrna_174,0
+175,nrna_175,Nepali Traditional  Khana,test175@test.de,Americas,12345721,nrna_175,0
+176,nrna_176,Nepali Dhido,test176@test.de,Americas,12345722,nrna_176,0
+177,nrna_177,Nawaraj Parajuli,test177@test.de,Americas,12345723,nrna_177,0
+178,nrna_178,Bharat Mani  Poudel,test178@test.de,Americas,12345724,nrna_178,0
+179,nrna_179,Tara Devi ,test179@test.de,Americas,12345724,nrna_179,0
+180,nrna_180,Rajendra Baniya,test180@test.de,Americas,12345724,nrna_180,0
+181,nrna_181,Dil Bhusan Pathak,test181@test.de,Americas,12345724,nrna_181,0
+182,nrna_182,Bhusan Dahal,test182@test.de,Americas,12345724,nrna_182,0
+183,nrna_183,Indra Lohani,test183@test.de,Americas,12345724,nrna_183,0
+184,nrna_184,Yubaraj Ghimire,test184@test.de,Americas,12345724,nrna_184,0
+185,nrna_185,Ganga Maya Adhikari,test185@test.de,Americas,12345724,nrna_185,0
+186,nrna_186,Chari Maya Tamang,test186@test.de,Americas,12345724,nrna_186,0
