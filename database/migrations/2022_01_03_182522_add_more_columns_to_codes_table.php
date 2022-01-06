@@ -18,7 +18,8 @@ class AddMoreColumnsToCodesTable extends Migration
              $table->timestamp('code1_used_at')->nullable();
              $table->timestamp('code2_used_at')->nullable();
              $table->timestamp('code3_used_at')->nullable();
-             $table->timestamp('code4_used_at')->nullable();
+             $table->timestamp('code4_used_at')->nullable();             //
+             $table->integer('voting_time_in_minutes')->unsigned()->nullable()->after('has_voted');
           
         });
     }

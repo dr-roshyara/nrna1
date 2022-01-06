@@ -49,6 +49,7 @@ class CodeController extends Controller
              */
          if(!$auth_user->can_vote_now){
             $auth_user->can_vote_now  =1;
+           
             $auth_user->save();  
 
         }
@@ -80,6 +81,7 @@ class CodeController extends Controller
              $totalDuration = $current->diffInMinutes($updated_at);
               if($totalDuration>$code_expires_in){
                 $code->is_code1_usable =0; 
+                $code->is_code2_usable =0; 
                 $totalDuration  =0;       
               }
 
@@ -113,7 +115,8 @@ class CodeController extends Controller
             $code->user_id           =$user_id ;
             $code->code1             =$form_opening_code ;
             $code->is_code1_usable   =1;
-            $code->code1_used_at     =Carbon::now();
+            $code->is_code2_usable   =0; 
+            // $code->code1_used_at     =Carbon::now();
             
                
              /***
@@ -218,7 +221,10 @@ class CodeController extends Controller
              * He has not voted before 
              */
             // auth()->user()->can_vote_now =1;
-            $code->can_vote_now =1;
+            $code->can_vote_now             =1;
+            $code->code1_used_at            =Carbon::now();
+            $code->voting_time_in_minutes   =30;
+            $code->is_code1_usable          =0;
             $code->save();
             return redirect()->route('vote.create');
 

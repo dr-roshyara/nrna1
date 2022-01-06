@@ -2,7 +2,7 @@
     <nrna-layout>
         <app-layout>
            <div class="mt-6 text-center"> 
-            <jet-validation-errors class="mb-4  mx-auto text-center " />  
+          
             <div class="m-auto text-center bg-blue-200 py-4 ">  
             <p class="m-auto text-blue-700 font-bold text-sm"> Congratulation {{user_name}}! </p> 
             <p> You have given the correct voting code. you can Vote now!</p>
@@ -13,6 +13,8 @@
                     <!-- {{posts.data}}   -->
                     <!-- {{candidate_post_ids(candidacies.data)}} -->
           <!-- {{candidacies.data}}   -->
+            <jet-validation-errors class="mb-4  mx-auto text-center " />
+              {{this.page.errors}}
           <form @submit.prevent="submit" class=" text-center mx-auto mt-10">
       
           <div v-if ="!this.no_vote_option" 
@@ -50,7 +52,7 @@
                   </div> 
                     <p>  By clicking this button, I conform that I have chosen the candidates correctly and I followed the online rules to vote the candidates. </p>
                     <p>यो बटनमा थिचेर मैले माथि छाने आनुसार  मतदान गरेको साचो हो। मैले बिद्दुतिय नियम हरुलाई पलना गरेर आफ्नो मत जाहेर गरेर मतदान गरेको कुरा स्विकार्छु। </p> 
-             
+                      <div v-if="errors.agree_button">{{ errors.agree_button }} </div>
                    <button type="submit" class="mx-2 my-4 px-2 py-6 rounded-lg bg-blue-300 w-full mx-auto shadow-sm text-xl font-bold text-gray-900">
                    Submit
                    </button>
@@ -78,7 +80,8 @@ export default {
 components:{
     AppLayout,
     NrnaLayout,
-    CreateVotingform
+    CreateVotingform,
+    JetValidationErrors
 
 },
 props:{

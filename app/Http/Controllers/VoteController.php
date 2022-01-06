@@ -68,48 +68,34 @@ class VoteController extends Controller
      */
     public function create()
     {
-         
-         $tfValue= is_url_only_after_first('code/create','/vote/create');
-        if(!$tfValue){
-            /****
-             * 
-             * Go to dash board again 
-             * 
-             * 
-             **/ 
-            return redirect()->route('dashboard');
-        }
-        //  dd($tfValue);
-         $auth_user      =auth()->user();
-         $code           =$auth_user->code;
+        $auth_user      =auth()->user();
+        $code           =$auth_user->code;
+        // dd($code->is_code1_usable); 
+
+        //$tfValue= is_url_only_after_first('code/create','/vote/create');
+        // if(!$tfValue){
+        //     /****
+        //      * 
+        //      * Go to dash board again 
+        //      * 
+        //      * 
+        //      **/ 
+        //     return redirect()->route('code/create');
+        // }
+   
+        
          $can_vote_now   =$auth_user->can_vote_now;
          $code           =$auth_user->code;
-         /***
-          * if there is no code then return to dashboard 
-          * 
-          */
-         if($code==null){
-                    /*** 
-              * 
-              * if the code is not usable you can not proceed further
-              * you should redirect the form in dashboard
-              * 
-              */
-             return redirect()->route('dashboard');
-         }
-         
          $has_voted      = $code->has_voted;  
-            // dd($code->is_code1_usable); 
-         if(!$code->is_code1_usable ){
-
-           return  redirect()->route('code.create'); 
-        }
+        //  dd($code->is_code1_usable); 
+         $this->vote_pre_check($code);
+          
         // dd($code->is_code1_usable); 
-        if($code->is_code1_usable){
-            $code->is_code1_usable =0;
-            $code->save();
-
-         }  
+        /***
+         * Now check if the code 1 is usable or not 
+         * 
+         */
+        
           
         
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
@@ -144,44 +130,12 @@ class VoteController extends Controller
         ->paginate(150) 
         ->withQueryString();
         
-        // /**
-        //  * 
-        //  * Load User 
-        //  */
-        // $candidacies->load(['user' => function ($query) {
-        //     $query->select(['id','name', 'region', 'user_id', 'nrna_id']);
-        //     // $query->withTraced()->select('name');
-        //     //$query->orderBy('published_date', 'asc');
-        //     // return($query->get('name'));
-        // //  $qs =$query->select('name');
-        // //  dd($query);
-        // // return $query->pluck('name');
-        // // return();
-        // }]);
-        /**
-         * 
-         * Load Post 
-         */
-        // $candidacies->load(['post' => function ($query) {
-        //     $query->select(['id','post_id','name','required_number', 'is_national_wide']);
-        //     // $query->withTraced()->select('name');
-        //     // return  $query->where('is_national_wide', 1);
-        //     // return($query->get('name'));
-        //     //  $qs =$query->select('name');
-        //     //  dd($query);
-        //     // return $query->pluck('name');
-        //     // return();
-        // }]);
-        // dd($candidacies);
-        //  Inertia::render("Vote/IndexVote", [
-        //     "candidacies" => $candidacies 
-        // ]); 
-        // dd(auth()->user());
+       
       
               
         $btemp          = $can_vote_now && !$has_voted;
-        // $lcc             =auth()->user()->lcc;
-        // $lcc             ="Berlin";
+        // $btemp          =$btemp & ($totalDuration<$voting_time);
+       
         // dd($btemp);
          if(!$can_vote_now){
             echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
@@ -226,23 +180,26 @@ class VoteController extends Controller
     Public function  first_submission (Request $request){
          //
         $validator =  Validator::make(request()->all(), [
-                    'user_id' =>['required'],                    
+                    'user_id' =>['required'],
+                    'agree_button'=>['required']                    
                 ]);
         // dd(request()->all());
         $user_id            =request('user_id');
         $auth_user          =auth()->user();
-        $code_expires_in    =25;
+        $code_expires_in    =30;
         /***
          * 
          * Get the voting Code here  
          * 
          */
         $code =$auth_user->code;
-        if($code==null){
-            // if code is not given then redirect to dashboard   
-            return redirect()->route('dashboard'); 
-        } 
-        
+        // dd("test");
+        $return_to =$this->vote_pre_check($code);
+        // dd($return_to);
+        if($return_to!=""){
+            return redirect()->route($return_to);
+        }
+
         $has_voted          =$code->has_voted;
         $has_voted          =false;
         $nothing_selected   =request('nothing_selected'); 
@@ -251,18 +208,22 @@ class VoteController extends Controller
         // dd($nothing_selected);
         //first check if at least one check box selected 
         // $btemp = $this->at_least_one_vote_casted();
-        $btemp=true;
+        // $btemp=true;
+        $validator->after(function ($validator) {
+              
+            $agree_button =request('agree_button');
+          if (!$agree_button ) {
+              //add custom error to the Validator
+              $validator->errors()->add('agree_button',
+              "You have not clicked on Agree Button. 
+              Please click on the agree Button and accept that you  are submitting the vote! 
+               तपाइले एग्री वटनमा क्लीक गरेर भोट गरेको कुरा स्वीकार गर्नु भएन। ");
+          }
+      
 
-        if(!$agree_button){
-            $validator->after(function ($validator) {
-                  $validator->errors()->add('Without_Agreement: ', " You must agree the voting terms and conditions.!");              
-            });
-        }    
-        if(!$btemp){
-            $validator->after(function ($validator) {
-                  $validator->errors()->add('Nothing_Slected: ',"You must either vote at least one canidate or use your right to reject all candidates!");              
-            });
-        }    
+      });
+
+       
                 
         if($user_id !=$auth_user->id)
         {
@@ -365,39 +326,27 @@ class VoteController extends Controller
         $auth_user         = auth()->user();
         $this->user_id     =$auth_user->id;
         $code              =$auth_user->code;
+        $this->has_voted   =$code->has_voted;
+        $vote              =$auth_user->vote;
+        $return_to         =$this->vote_post_check($auth_user, $code);
         
-        /***
-         * 
-         * Check if the voter has already voted or in any case vote is already saved 
-         *  
-         */
-        $vote =$auth_user->vote;
-        if($vote !=null){
-            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-           You have already voted and your vote is already saved! See below
-            </div>';
-            dd($vote->getOriginal());
-            return redirect()->route('dashboard');
-        } 
+        if($return_to=='404'){
+            return '404';
+        }
+        if($return_to!=""){
+            
+            return redirect()->route($return_to);
+        }
+        
+        
         
         /***
          * if there is no code then return to dashboard 
          * 
          */
-        if($code==null){
-                   /*** 
-             * 
-             * if the code is not usable you can not proceed further
-             * you should redirect the form in dashboard
-             * 
-             */
-            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-              Your code is wrong. Send the screenshot to administrator!             </div>';
-              return ('404');
-            return redirect()->route('dashboard');
-        }
+       
 
-        $this->has_voted   =$code->has_voted;
+       
         if($code->is_code2_usable){
             $this->in_code  =$code->code2;
             
@@ -471,8 +420,9 @@ class VoteController extends Controller
             $vote->save();
             $code->has_voted       =1;
             $code->can_vote_now    =0;
-            $code->can_vote_now    =0;
             $code->is_code2_usable =0;
+            $code->code2_used_at   =Carbon::now();
+            
             $code->save();
             return redirect()->route('vote.show'); 
 
@@ -645,6 +595,8 @@ class VoteController extends Controller
     public function verify(){
        $vote = request()->session()->get('vote');
        $auth_user =auth()->user();
+       $code =$auth_user->code;
+    //    $this->vote_pre_check($code);
        //$value = $request->session()->get('key');
        // global helper method
         // $vote = session('vote');
@@ -674,18 +626,7 @@ class VoteController extends Controller
         // $code1          ="1234";         
         // //hook to add additional rules by calling the ->after method
          $validator->after(function ($validator) {
-                /**
-                 * Here we chan change the code condition 
-                 * mention where the code is saved 
-                 * call the code 
-                 * compare the code 
-                 * If code is not equal ,then reject   
-                 *  */  
-                //   $code1 =auth()->user()->code1; 
-                  // just for test 
-                 // $code1_1 ="1234"; 
-                  //$has_voted= auth()->user()->has_voted ;
-                    // $code1_1 =$code1;
+              
                   $voting_code =request('voting_code');
                 if ($this->in_code!= $this->out_code ) {
                     //add custom error to the Validator
@@ -744,35 +685,100 @@ class VoteController extends Controller
                    
     }
 
+ /****
+  **
+  * Code pre Checking  
+  
+  */    
+    public function vote_pre_check(&$code){
+                    
+        $return_to       ="";
+        $current         = Carbon::now();
+        $code1_used_at   =$code->code1_used_at;
+        $voting_time     =$code->voting_time_in_minutes;
+        $totalDuration   = $current->diffInMinutes($code1_used_at );
+        // dd($totalDuration);  
+        /***
+        * if there is no code then return to dashboard 
+        * 
+        */
+       if($code==null){
+            /*** 
+            * 
+            * if the code is not usable you can not proceed further
+             * you should redirect the form in dashboard
+            * 
+            */
+          return   $return_to ="code.create";
+            
+       }
+    //    dd($code->can_vote_now);  
+       // dd($code->can_vote_now);
+        if(!$code->can_vote_now){
+            return     $return_to ="dashboard";
+        }
+        // dd("test1"); 
+        if($code->has_voted){
+
+            return     $return_to ="dashboard";
+        }      
+    
+        if($code->is_code1_usable ){
+
+            return   $return_to ="code.create";
+        }
+            /***
+             * 
+             * check when the first code was verified last time . 
+             * If the time after first verification is longer thean the 
+             * voting period then, we should return to code and send a new code 
+             * s
+             */
+       
+        if($totalDuration>$voting_time)
+         {
+            $code->can_vote_now     =0;
+            $code->is_code1_usable  =0;
+            $code->save();
+            $return_to = "code.create";     
+        }
+        return  $return_to;    
+    } 
+   
+    /***
+     * 
+     * post check
+     * Check after submitting the code 
+     *  
+     */
+    public function vote_post_check($auth_user,&$code){
+        $return_to ="";
+        if($code==null){
+            /*** 
+             * 
+            * if the code is not usable you can not proceed further
+            * you should redirect the form in dashboard
+            * 
+            */
+            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
+            Your code is wrong. Send the screenshot to administrator!             </div>';
+            $return_to ='404';
+
+        }
+        /***
+         * 
+         * Check if the voter has already voted or in any case vote is already saved 
+         *  
+         */
+          $vote =$auth_user->vote;
+        if($vote !=null){
+            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
+           You have already voted and your vote is already saved! See below
+            </div>';
+            dd($vote->getOriginal());
+            $return_to ='dashboard';
+        } 
+        return $return_to ;
+    }
+
 }//end of the controller 
-/**********************************************************************+************************************ */
-
- // $icc_member          =  $this->get_candidate('icc_member');
-                // $president           =  $this->get_candidate('president');
-                // $vice_president      =  $this->get_candidate('vice_president');
-                // $w_vice_president    =  $this->get_candidate('wvp');
-                // $general_secretary   =  $this->get_candidate('general_secretary');
-                // $secretary           =  $this->get_candidate('secretary');
-                // $treasure           = $this->get_candidate('treasure');
-                // $w_coordinator      = $this->get_candidate('w_coordinator');
-                // $y_coordinator      = $this->get_candidate('y_coordinator');
-                // $cult_coordinator   = $this->get_candidate('cult_coordinator');
-                // $child_coordinator  = $this->get_candidate('child_coordinator');
-                // $studt_coordinator  = $this->get_candidate('studt_coordinator');
-                // $member_berlin      = $this->get_candidate('member_berlin');
-                // $member_hamburg     = $this->get_candidate('member_hamburg');
-                // $member_nsachsen    = $this->get_candidate('member_nsachsen');
-                // $member_nrw         = $this->get_candidate('member_nrw');
-                // $member_hessen      = $this->get_candidate('member_hessen');
-                // $member_rhein_pfalz = $this->get_candidate('member_rhein_pfalz');
-                // $member_bayern      = $this->get_candidate('member_bayern');
-                // //icc member 
-                // $vote['icc_member1_name']  =$icc_member->candidacy_name;
-                // $vote['icc_member1_id']     =$icc_member->user_id;
- 
-                // //president 
-                //  $vote['president_name']  =$president->candidacy_name;
-                //  $vote['president_id']     =$president->user_id;
-
-              //  
-          

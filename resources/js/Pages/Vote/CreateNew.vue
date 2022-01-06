@@ -12,7 +12,9 @@
           </div>
                <!-- <p class="text-center">  {{regional_posts.data.length}} </p>  
                <p class="text-center">  {{national_posts.data.length}} </p>   -->
-               
+                   <div v-if="$page.props.errors.agree_button">
+                       {{ $page.props.errors.agree_button }} 
+                       </div>
           <form @submit.prevent="submit" class=" text-center mx-auto mt-10">
                 <div 
                 v-for ="(post, pId) in national_posts.data" :key="pId"
@@ -62,6 +64,9 @@
                   </div> 
                     <p>  By clicking this button, I conform that I have chosen the candidates correctly and I followed the online rules to vote the candidates. </p>
                     <p>यो बटनमा थिचेर मैले माथि छाने आनुसार  मतदान गरेको साचो हो। मैले बिद्दुतिय नियम हरुलाई पलना गरेर आफ्नो मत जाहेर गरेर मतदान गरेको कुरा स्विकार्छु। </p> 
+                     <div v-if="$page.props.errors.agree_button">
+                       {{ $page.props.errors.agree_button }} 
+                       </div>
              
                    <button type="submit" class="mx-2 my-4 px-2 py-6 rounded-lg bg-blue-300 w-full mx-auto shadow-sm text-xl font-bold text-gray-900">
                    Submit
@@ -91,7 +96,8 @@ export default {
 components:{
     AppLayout,
     NrnaLayout,
-    CreatePost
+    CreatePost,
+    JetValidationErrors
 
 },
 props:{
@@ -99,6 +105,7 @@ props:{
      regional_posts: Array,
      user_name : String,
      user_id : Number, 
+     errors: Object
 },
 setup (props) {
     const form = useForm({
