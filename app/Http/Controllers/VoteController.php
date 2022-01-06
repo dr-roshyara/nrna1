@@ -88,8 +88,12 @@ class VoteController extends Controller
          $code           =$auth_user->code;
          $has_voted      = $code->has_voted;  
         //  dd($code->is_code1_usable); 
-         $this->vote_pre_check($code);
-          
+        //  $this->vote_pre_check($code);
+         $return_to =$this->vote_pre_check($code);
+         // dd($return_to);
+         if($return_to!=""){
+             return redirect()->route($return_to);
+         }
         // dd($code->is_code1_usable); 
         /***
          * Now check if the code 1 is usable or not 

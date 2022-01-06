@@ -2,14 +2,14 @@
 <nrna-layout>
      <app-layout>
      <div class="mt-6 text-center">  
-          <div v-if="vote.candidate" class="m-auto text-center bg-blue-200 py-4 ">  
+          <div v-if="vote.length" class="m-auto text-center bg-blue-200 py-4 ">  
                <p class="m-auto text-blue-700 font-bold text-sm"> Congratulation {{user_name}}! </p> 
                <p class="m-auto"> Thank You for your vote. Please keep your passowrd very secret. Also please do not  ask others to show their vote. 
                     For verification of the result, this vote will be deleted only after one month. </p>
                <p>यहाँले मतदान गर्नु भएकोमा धेरै धन्यवाद। आफ्नो मतलाई गोप्य राख्नु यहाँको कर्तब्य हो । यसैले कृपया आफ्नो पासवर्ड अरुलाई नदिनु होला ।  
                     प्राप्त मतहरुको पुनर्पुष्ठी गर्नको लाई यहाँको यो मत  अबको एक महिना पछी मात्रा डिलेट हुने छ। 
                </p>
-               <!-- {{vote}} -->
+               <!-- {{vote}}  -->
           </div>
            <div v-if="vote.no_vote_option" class="mt-10 p-2 mx-auto "> 
                 

@@ -47,7 +47,7 @@
                 <span class="text-red-500 text-sm" >
                     (Please choose a password with minimum 8 characters)</span><br>
                  <span class="text-gray-700 text-sm" >
-                     कम्तिमा आठ अक्षर भएको एक नया पासवर्ड सोचेर तल भर्नुहोस।</span><br>
+                 कम्तिमा आठ अक्षर भएको  एक नयाँ पासवर्ड तलको कोठाभित्र भर्नुहोला।</span><br>
                 
              </div> 
                 <jet-input id="password" type="password" class="mt-1 block w-full" 
@@ -58,7 +58,7 @@
                 <jet-label for="password_confirmation" value="Confirm Password" />
                  <div flex flex-wrap> <span> Please retype your password. </span> 
                   <span class="text-gray-700 text-sm" >
-                  माथि भरेकाे पारवर्ड फेरी लेख्नुहाेस
+                  माथि भरेकाे पासवर्ड पुनः लेख्नुहोला।
                   </span> </div>
                 <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
             </div>
@@ -74,7 +74,8 @@
                     </div>
                 </jet-label>
                 <div class="text-sm text-gray-600 py-1">
-                     कृपया माथीकाे सानो चेकबक्स मा क्लीक गरेर एनआाएनएको नमुना निर्वाचनमा भाग लिनलाइ सहमती दिनुस । </div> 
+                    कृपया माथिकाे सानो चेकबक्समा क्लिक गरी एनआरएनए नमूना निर्वाचनमा भाग लिन सहमति जनाउनु होला।
+                </div> 
             </div>
 
             <div class="flex items-center justify-end mt-4">

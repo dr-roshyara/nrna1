@@ -11,7 +11,7 @@ sn,user_id,name,email,region,password,nrna_id,is_voter
 10,nrna_10,Dadeldhura City,test10@test.de,Africa,12345678,nrna_10,0
 11,nrna_11,Bhaktapur City,test11@test.de,Oceania,12345678,nrna_11,0
 12,nrna_12,Dharan City,test12@test.de,Europe,12345678,nrna_12,0
-13,nrna_13,Dhangadi City,test13@test.de,Asia Pacific,12345678,nrna_13,0
+13,nrna_13,Bimal Gharti Magar,test13@test.de,Asia Pacific,12345678,nrna_13,0
 14,nrna_14,Biratnagar City,test14@test.de,Europe,12345678,nrna_14,0
 15,nrna_15,Jomsom City,test15@test.de,Asia Pacific,12345678,nrna_15,0
 16,nrna_16,Lalitpur City,test16@test.de,Americas,12345678,nrna_16,0
@@ -32,15 +32,15 @@ sn,user_id,name,email,region,password,nrna_id,is_voter
 31,nrna_31,Rupa Lake,test31@test.de,Americas,12345682,nrna_31,0
 32,nrna_32,Tilicho Lake,test32@test.de,Europe,12345683,nrna_32,0
 33,nrna_33,Nabin K Bhattarai,test33@test.de,Europe,12345684,nrna_33,0
-34,nrna_34,5 Rupaya,test34@test.de,Africa,12345685,nrna_34,0
-35,nrna_35,25  Rupaya ,test35@test.de,Europe,12345686,nrna_35,0
-36,nrna_36,50 Rupaya ,test36@test.de,Africa,12345687,nrna_36,0
-37,nrna_37,1000 Rupaya,test37@test.de,Europe,12345688,nrna_37,0
-38,nrna_38,Coin 10 Rupaya,test38@test.de,Europe,12345689,nrna_38,0
-39,nrna_39,Coin 250 Rupaya,test39@test.de,Africa,12345690,nrna_39,0
-40,nrna_40,Coin 500 Rupaya,test40@test.de,Europe,12345691,nrna_40,0
-41,nrna_41,Coin 5 Rupaya ,test41@test.de,Americas,12345692,nrna_41,0
-42,nrna_42,Coin 2 Rupaya,test42@test.de,Europe,12345693,nrna_42,0
+34,nrna_34,Jagadish Ghimire,test34@test.de,Africa,12345685,nrna_34,0
+35,nrna_35,Saru Bhakta,test35@test.de,Europe,12345686,nrna_35,0
+36,nrna_36,Dhurba Chandra Gautam,test36@test.de,Africa,12345687,nrna_36,0
+37,nrna_37,Khagendra Sangraula,test37@test.de,Europe,12345688,nrna_37,0
+38,nrna_38,Ramesh Kharel,test38@test.de,Europe,12345689,nrna_38,0
+39,nrna_39,Bijaya Lama,test39@test.de,Africa,12345690,nrna_39,0
+40,nrna_40,Dr. Upendra Devkota,test40@test.de,Europe,12345691,nrna_40,0
+41,nrna_41,Krishna Prasad Bhandari,test41@test.de,Americas,12345692,nrna_41,0
+42,nrna_42,Krishna Dharabasi,test42@test.de,Europe,12345693,nrna_42,0
 43,nrna_43,Parijaat,test43@test.de,Americas,12345694,nrna_43,0
 44,nrna_44,Pasang Lhamu Sherpa,test44@test.de,Europe,12345695,nrna_44,0
 45,nrna_45,Sushila Karki,test45@test.de,Americas,12345696,nrna_45,0
@@ -51,7 +51,7 @@ sn,user_id,name,email,region,password,nrna_id,is_voter
 50,nrna_50,Basketball,test50@test.de,Europe,12345701,nrna_50,0
 51,nrna_51,Elephant Polo,test51@test.de,Americas,12345702,nrna_51,0
 52,nrna_52,Volleyball,test52@test.de,Americas,12345703,nrna_52,0
-53,nrna_53,1 Rupaya Coin,test53@test.de,Afria,12345703,nrna_53,0
+53,nrna_53,Kiran Chemjong,test53@test.de,Afria,12345703,nrna_53,0
 54,nrna_54,Mahakali River ,test54@test.de,Americas,12345703,nrna_54,0
 55,nrna_55,Sapta Gandki River ,test55@test.de,Afria,12345703,nrna_55,0
 56,nrna_56,Koshi River ,test56@test.de,Americas,12345703,nrna_56,0
@@ -105,7 +105,7 @@ sn,user_id,name,email,region,password,nrna_id,is_voter
 104,nrna_104,Madan Krishna Shrestha,test104@test.de,Europe,12345703,nrna_104,0
 105,nrna_105,Hari Bansa Acharya,test105@test.de,Oceania,12345703,nrna_105,0
 106,nrna_106,Wilson Bikram Rai,test106@test.de,Europe,12345703,nrna_106,0
-107,nrna_107,Sitaram Kattel,test107@test.de,Oceania,12345703,nrna_107,0
+107,nrna_107,Sangina Baidya,test107@test.de,Oceania,12345703,nrna_107,0
 108,nrna_108,Pasupati Sharma,test108@test.de,Oceania,12345703,nrna_108,0
 109,nrna_109,Rajesh Payal Rai,test109@test.de,Europe,12345703,nrna_109,0
 110,nrna_110,Shiva Pariyar,test110@test.de,Oceania,12345703,nrna_110,0
@@ -185,3 +185,12 @@ sn,user_id,name,email,region,password,nrna_id,is_voter
 184,nrna_184,Yubaraj Ghimire,test184@test.de,Americas,12345724,nrna_184,0
 185,nrna_185,Ganga Maya Adhikari,test185@test.de,Americas,12345724,nrna_185,0
 186,nrna_186,Chari Maya Tamang,test186@test.de,Americas,12345724,nrna_186,0
+187,nrna_187,Mallika Subba,test187@test.de,Americas,12345724,nrna_187,0
+188,nrna_188,Anushka Shrestha,test188@test.de,Americas,12345724,nrna_188,0
+189,nrna_189,Abhi Subedi,test189@test.de,Americas,12345724,nrna_189,0
+190,nrna_190,Manjushri Thapa,test190@test.de,Americas,12345724,nrna_190,0
+191,nrna_191,Sapana Roka Magar,test191@test.de,Americas,12345724,nrna_191,0
+192,nrna_192,Amar Neupane,test192@test.de,Americas,12345724,nrna_192,0
+193,nrna_193,Subin Bhattarai,test193@test.de,Americas,12345724,nrna_193,0
+194,nrna_194,Buddhi Sagar,test194@test.de,Americas,12345724,nrna_194,0
+195,nrna_195,Rabi Lamichhane,test195@test.de,Americas,12345724,nrna_195,0
