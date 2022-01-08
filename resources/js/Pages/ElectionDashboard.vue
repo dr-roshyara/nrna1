@@ -83,7 +83,9 @@
                                             md:text-2xl
                                         "
                                     >
-                                         List of Candidacy Posts 
+                                     <p> List of Candidacy Posts </p>
+                                      <p class="py-2 mb-2 mx-auto"> उमेद्वारीका पदहरू  </p>  
+
                                     </div>
                                 </div>
                             </a>
@@ -123,7 +125,10 @@
                                             md:text-2xl
                                         "
                                     >
-                                        Candidacy List
+                                        <p> Candidacy List</p>
+                                       <p class="py-2 mb-2 mx-auto"> उमेद्ववारहरूको नामावली </p> 
+                      
+
                                     </div>
                                 </div>
                             </a>
@@ -158,7 +163,8 @@
                                             md:text-2xl
                                         "
                                     >
-                                        Candidacy Form
+                                        <p> Candidacy Form </p>
+                                           <p class="py-2 mb-2 mx-auto"> उमेदवारी फराम </p> 
                                     </div>
                                 </div>
                             </a>
@@ -195,7 +201,8 @@
                                             md:text-2xl
                                         "
                                     >
-                                        Election Committee
+                                        <p> Election Committee </p>
+                                         <p class="py-2 mb-2 mx-auto"> निर्वाचन कमिटी </p> 
                                     </div>
                                 </div>
                             </a>
@@ -230,7 +237,9 @@
                                             md:text-2xl
                                         "
                                     >
-                                        Election Result
+                                        <p> Election Result </p>
+                                        <p> मत परिणाम</p>
+
                                     </div>
                                 </div>
                             </a>
@@ -267,7 +276,9 @@
                                             md:text-2xl
                                         "
                                     >
-                                        Voter List
+                                     <p> Voter List </p> 
+                                      <p class="py-2 mb-2 mx-auto"> मतदाताहरूको नामावली </p> 
+
                                     </div>
                                 </div>
                             </a>
@@ -302,7 +313,8 @@
                                             md:text-2xl
                                         "
                                     >
-                                        Your Vote
+                                      <p>   Your Vote </p>
+                                       <p class="py-2 mb-2 mx-auto">  तपाइको मत</p> 
                                     </div>
                                 </div>
                             </a>
@@ -339,7 +351,9 @@
                                             md:text-2xl
                                     "
                                     > 
-                                        General Information
+                                        <p> General Information</p> 
+                                          <p class="py-2 mb-2 mx-auto">  </p> 
+
                                     </div>
                                 </div>
                             </a>
