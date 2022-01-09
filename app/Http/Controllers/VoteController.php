@@ -121,7 +121,7 @@ class VoteController extends Controller
         $regional_posts = QueryBuilder::for(Post::with('candidates.user'))
                         ->defaultSort('post_id')
                         ->where ('is_national_wide',0)
-                        // ->where('state_name', auth()->user()->region)
+                        ->where('state_name', auth()->user()->region)
                         ->paginate(250) 
                         ->withQueryString();
          

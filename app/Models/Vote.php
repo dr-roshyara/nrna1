@@ -15,7 +15,9 @@ class Vote extends Model
     /**
      * Each vote belongs to only  one user 
      */ 
-   
+     
+    protected $hidden = ['user_id'];
+      
     public function user(){ 
         return $this->belongsTo(User::Class)
         ->select(['id','name', 'region', 'user_id', 

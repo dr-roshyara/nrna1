@@ -13,6 +13,7 @@ use App\Http\Controllers\SmsController;
 use App\Http\Controllers\MessageController;
 // use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\VoteController; 
+use App\Http\Controllers\ResultController; 
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\DeligateCandidacyController;
 use App\Http\Controllers\DeligateVoteController;
@@ -163,6 +164,7 @@ Route::middleware(['auth:sanctum', 'verified']) ->post('/messages', [SmsControll
     
    Route::middleware(['auth:sanctum', 'verified']) ->get('/votes/index', [VoteController::class, 'index'])->name('vote.index');
    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/show', [VoteController::class, 'show'])->name('vote.show');
+   Route::middleware(['auth:sanctum', 'verified']) ->get('/election/result', [ResultController::class, 'index'])->name('result.index');
 
 //});   
 /**
@@ -171,17 +173,18 @@ Route::middleware(['auth:sanctum', 'verified']) ->post('/messages', [SmsControll
 Route::group(['middleware' => ['auth']], function() {
     // Route::get('assignements/index', ['AssignmentController::class', 'index'])->name('role.index'); 
 
+
+    //election result 
+    Route::get('vote/thankyou', [VoteController::Class , 'thankyou'])->name('vote.thankyou');   
+
+    Route::get('timeline', function (){
+        return Inertia::render('Timeline/TimelineIndex', [
+            //   'user' => $user,
+    
+            ]); 
+    }); 
 }); //end of Role 
 
-//election result 
-Route::get('vote/thankyou', [VoteController::Class , 'thankyou'])->name('vote.thankyou');
-
-Route::get('timeline', function (){
-     return Inertia::render('Timeline/TimelineIndex', [
-        //   'user' => $user,
- 
-        ]); 
-}); 
 /**
  * 
  * Deligate Candidacies 
