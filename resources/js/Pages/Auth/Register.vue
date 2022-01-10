@@ -23,7 +23,7 @@
                 <option>Europe </option>
                 <option>America </option>
                  <option>Africa  </option>
-                <option>Asia  </option>
+                <!-- <option>Asia  </option> -->
                 <option>Asia Pacific</option>
                  <option>Middle East Asia</option>
                  <option>Oceania </option>
