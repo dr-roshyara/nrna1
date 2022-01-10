@@ -46,6 +46,7 @@ class CandidacyController extends Controller
         ->defaultSort('post_id')
         ->allowedSorts(['candidacy_id', 'post.name', 'post.post_id', 'user.name', "user.nrna_id"])
         ->allowedFilters(['user.name','candidacy_id',  $globalSearch])
+        // ->where('region', trim(auth()->user()->region))
         ->paginate(100) 
         ->withQueryString();
        

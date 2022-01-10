@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 //models 
 use App\Models\Vote;
 use App\Models\DeligateVote;
@@ -110,7 +111,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * Each user has one and only one Vote :
      *      */
     public function vote (){
-        return $this->hasone(Vote::class);
+        return $this->hasone(Vote::class, );
         // return $this->hasOne(Code::class,  'foreign_key');
         // you can also write $this->hasone('App\Vote')
     }

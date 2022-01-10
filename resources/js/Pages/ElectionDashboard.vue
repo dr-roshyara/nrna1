@@ -284,7 +284,7 @@
                             </a>
                         </div>
                         <div class="w-full md:w-1/2 pl-0 md:pl-2">
-                            <a href="vote/show">
+                            <a href="vote/verify_to_show"> 
                                 <div
                                     class="
                                         w-full

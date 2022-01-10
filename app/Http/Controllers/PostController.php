@@ -135,7 +135,7 @@ class PostController extends Controller
         $csvName  =storage_path($startName); 
         // var_dump($csvName);
       
-        $csv_array = csv_to_array($csvName,",");
+        $csv_array = csv_to_array($csvName,";");
         //read users 
         // dd($csv_array);
         $posts = Post::all();  
@@ -149,6 +149,7 @@ class PostController extends Controller
             // dd($element);
             $laufer +=1;
             $post  =Post::where('post_id', trim($element['post_id']))->first();
+            // dd($post);
             if($post){
                   
                 echo "Post Exists-> line: ".$laufer.", post name ". $post->name. ", post id: ". $post->post_id ."<br>\n";

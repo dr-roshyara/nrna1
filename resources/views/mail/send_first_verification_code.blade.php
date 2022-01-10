@@ -16,6 +16,6 @@ Please go to the url where you are supposed to give the code.</p>
  {{ $code }} 
 @endcomponent
 
-Thanks,<br>
+धन्यवाद / Thanks,<br>
 {{ config('app.name') }}
 @endcomponent

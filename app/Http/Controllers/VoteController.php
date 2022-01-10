@@ -15,10 +15,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Redirector;
 use App\Notifications\SecondVerificationCode;
-
+use App\Notifications\SendVoteSavingCode;
 //controllers 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -30,6 +31,7 @@ class VoteController extends Controller
     public $in_code ; 
     public $out_code;
     public $user_id;
+    public $verify_final_vote;
 
     /***
      * 
@@ -38,6 +40,7 @@ class VoteController extends Controller
      */
     public function __construct(){
          $this->in_code  ='';
+         $this->verify_final_vote=false;
         //  $this->user_id = auth()->user()->id;
 
      }
@@ -86,14 +89,21 @@ class VoteController extends Controller
         
          $can_vote_now   =$auth_user->can_vote_now;
          $code           =$auth_user->code;
-         $has_voted      = $code->has_voted;  
-        //  dd($code->is_code1_usable); 
-        //  $this->vote_pre_check($code);
-         $return_to =$this->vote_pre_check($code);
-         // dd($return_to);
-         if($return_to!=""){
-             return redirect()->route($return_to);
+         if($code){
+            $has_voted      = $code->has_voted;
+            //  dd($code->is_code1_usable); 
+            //  $this->vote_pre_check($code);
+             $return_to =$this->vote_pre_check($code);
+           
+             // dd($return_to);
+             if($return_to!=""){
+                 return redirect()->route($return_to);
+             }
+         }else{
+             return redirect()->route('dashboard');
          }
+       
+       
         // dd($code->is_code1_usable); 
         /***
          * Now check if the code 1 is usable or not 
@@ -328,7 +338,7 @@ class VoteController extends Controller
        
         $this->out_code    = trim($request['voting_code']);
         $auth_user         = auth()->user();
-        $this->user_id     =$auth_user->id;
+        $this->user_id     = $auth_user->id;
         $code              =$auth_user->code;
         $this->has_voted   =$code->has_voted;
         $vote              =$auth_user->vote;
@@ -378,7 +388,7 @@ class VoteController extends Controller
         if($this->has_voted){
             // $auth_user->save();
             $request->session()->forget('vote');
-            return redirect()->route('vote.show'); 
+            return redirect()->route('vote.verify_to_show'); 
 
         }
         if($this->in_code==$this->out_code & !$this->has_voted)
@@ -393,9 +403,8 @@ class VoteController extends Controller
             //get vote from session 
             $input_data = $request->session()->get('vote');
             $no_vote_option = $input_data["no_vote_option"];
-            // dd($input_data);
-            //no_vote option is saved in 19 
-            //  $no_vote_option  =$input_data[19];   
+           
+           
             if($no_vote_option) { //check if voter has given no_vote  option 
                 // Go for no vote option 
                 $vote                   =new Vote; 
@@ -409,19 +418,31 @@ class VoteController extends Controller
               */ 
                 // $vote                = new Vote;
                 // $vote->user_id       = $this->user_id;
-                $vote                =new Vote;
-                $vote->user_id       =$this->user_id;
+                $vote                = new Vote;
+                $vote->user_id       = Hash::make($this->user_id);
                 $vote->post_id       =$this->user_id;
                 $vote->voting_code   =$this->in_code;
-                // dd($input_data);
+            
                 $all_candidates =$input_data["natioanal_selected_candidates"];
                 $all_candidates =array_merge($all_candidates, $input_data["regional_selected_candidates"]);
-                
+                // dd($all_candidates);
                 $this->save_vote( $vote, $all_candidates);
                 // dd($input_data);
             }    
-            //save the vote and save the user has voted
+            //step1 : save the vote and save the user has voted
             $vote->save();
+            //Step 2: GET The vOTE ID 
+             $vote_id =$vote->id; 
+             //step3 : Get a random string and make private Key
+              $random_key =get_random_string(6); 
+              $private_key =$random_key."_".$vote_id;
+             //Step4: Hash the voted securely 
+              $hashed_voteId =  Hash::make( $private_key);
+             //step4: Save the hashed key: 
+              $code->code_for_vote =$hashed_voteId;
+             //Inform the user about his private key 
+             $auth_user->notify(new SendVoteSavingCode($private_key));          
+             
             $code->has_voted       =1;
             $code->can_vote_now    =0;
             $code->is_code2_usable =0;
@@ -457,6 +478,23 @@ class VoteController extends Controller
      
     }
 
+     public function verify_to_show(){
+        //
+        //   $vote =$auth_user->vote();
+        $auth_user            = auth()->user();
+        $code                 = $auth_user->code;
+        $this->user_id        =$auth_user->id;        
+        $has_voted            = $code->has_voted;
+      //   dd($selected_candidates);
+        
+      return Inertia::render('Vote/VoteShowVerify', [
+         
+              'name'=>$auth_user->name,
+              'has_voted'=>$has_voted,                             
+       ]);    
+
+     }
+    
     /**
      * Display the specified resource.
      *
@@ -465,46 +503,41 @@ class VoteController extends Controller
      */
     public function show(Vote $vote)
     {
-         
-        //
-        //   $vote =$auth_user->vote();
-          $auth_user            = auth()->user();
-          $code                 = $auth_user->code;
-          $this->user_id        =$auth_user->id;
-          $selected_candidates  =[];
-          if($code!=null){       
-            //   dd($code->has_voted);
-            if($code->has_voted)
-            {
-                $vote  =$auth_user->vote;
-                $vote->voting_code="";
-                //   dd(json_decode($vote));  
-                $vote     =(array) json_decode($vote);
-                $arr_keys =array_keys($vote);
-                $key_string ="candidate";
-            
-                foreach($arr_keys as $kstring){
-                // echo $kstring .", ";
-                // echo stristr($kstring, $key_string). "\n <br>";
-                if(stristr($kstring, $key_string)!=false ){
-                    if($vote[$kstring]){
-                        array_push($selected_candidates, $vote[$kstring]);
-                
-                    }
-                } 
-                }
-            
+        $vote =[];
+        $has_voted=false;
+        $name ='';
+        $verify_final_vote =false;
+        $final_vote = request()->session()->get('final_vote');
+        // dd($final_vote);
+        // dd(gettype($final_vote));
+        if($final_vote==null){
+            return redirect()->route('vote.verify_to_show');
+        }
+        if($final_vote){
+            if(array_key_exists('name', $final_vote)){
+                $name = $final_vote["name"]; 
+            }
+
+            if(array_key_exists('selected_candidates', $final_vote)){
+                $vote = $final_vote["selected_candidates"]; 
+            }
+
+            if(array_key_exists('has_voted', $final_vote)){
+                $has_voted = $final_vote["has_voted"]; 
+            }
+            if(array_key_exists('verify_final_vote', $final_vote)){
+                $verify_final_vote = $final_vote["verify_final_vote"]; 
             }
         }
-        //   dd($selected_candidates);
-          
-        return Inertia::render('Vote/VoteShow', [
-            //    "presidents" => $presidents,
-            //    "vicepresidents" => $vicepresidents,
-                'vote' => $selected_candidates,
-                'name'=>$auth_user->name 
-              
-         ]);
+         
+        return Inertia::render('Vote/VoteShow',[
+            'vote'=>  $vote, 
+            'name'=> $name,
+            'has_voted' => $has_voted,
+            'verify_final_vote'=>$verify_final_vote
+               
+        ]);
+
     }
 
     /**
@@ -689,6 +722,93 @@ class VoteController extends Controller
                    
     }
 
+    // 
+    public function verify_final_vote(Request $request){
+
+        $this->out_code         = trim($request['voting_code']);
+        $auth_user              = auth()->user();
+        $this->user_id          = $auth_user->id;      
+        $code                   =$auth_user->code;
+        $selected_candidates    =[];
+        $verify_final_vote  =false;
+        if($code==null  ){
+            return redirect()->back();
+        }
+         
+           
+            $this->has_voted   =$code->has_voted;
+            // $vote              =$auth_user->vote;
+            $this->in_code      =$code->code_for_vote;  
+            $validator          =$this->verify_code_to_check_vote();
+            $validator->validate($request);
+             if (Hash::check($this->out_code, $this->in_code)) {
+                $this->verify_final_vote =true;
+                $str_pos =strpos($this->out_code,"_")+1;
+                $voting_id =(int)substr($this->out_code, $str_pos);
+                // dd($voting_id);
+                $vote  =Vote::find($voting_id);
+                $vote     =(array) json_decode($vote);
+                $arr_keys =array_keys($vote);
+                $key_string ="candidate";
+                foreach($arr_keys as $kstring){
+                    // echo $kstring .", ";
+                    // echo stristr($kstring, $key_string). "\n <br>";
+                    if(stristr($kstring, $key_string)!=false ){
+                        if($vote[$kstring]){
+                            array_push($selected_candidates, $vote[$kstring]);
+                    
+                        }
+                    } 
+                    }
+                // $vote  =DB::table('votes')
+                // -> where('id','=', $voting_id)
+                // ->get();
+                // // dd($vote);
+           
+                // $vote   =$vote;
+            
+            }
+            $final_vote['selected_candidates']  =$selected_candidates;
+            $final_vote['name']                  =$auth_user->name;
+            $final_vote['has_voted']             =$this->has_voted;
+            $final_vote['verify_final_vote'] =$this->verify_final_vote;
+            // dd( $final_vote);
+            $request->session()->put('final_vote', $final_vote);
+            return redirect()->route('vote.show');
+                // ->with([
+                //     'vote'=>$selected_candidates, 
+                //     'name'=>$auth_user->name,
+                //     'has_voted' =>$this->has_voted,
+                //     'verify_final_vote'=> $verify_final_vote
+                // ]); 
+       
+     
+                
+                
+        
+
+    } //end of function : final_vote_verify
+    
+ 
+    //
+    public function verify_code_to_check_vote(){
+        $validator =  Validator::make(request()->all(), [
+            'voting_code' =>['required'],                    
+        ]);
+         $validator->after(function ($validator) {
+      
+            $voting_code =request('voting_code');
+            if (!Hash::check($this->out_code, $this->in_code)) {
+                // The passwords match...
+                //add custom error to the Validator
+                $validator->errors()->add('code_to_check_vote',"Sorry, you have submitted wrong Voting Code!");
+            }
+        });
+
+       
+        return $validator;
+    }
+
  /****
   **
   * Code pre Checking  
@@ -784,5 +904,6 @@ class VoteController extends Controller
         } 
         return $return_to ;
     }
+    //
 
 }//end of the controller 

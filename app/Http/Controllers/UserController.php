@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 //use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Crypt;
 //
 use Inertia\Inertia;
 class UserController extends Controller
@@ -90,6 +90,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+        // $privatekey =get_random_string(10);
+        // $privatekey ="testing";
+        // $encryptedValue =Crypt::encryptString($privatekey);
+        // $decrypted = Crypt::decryptString($encryptedValue);
+        // echo $encryptedValue;
+        // dd($decrypted); 
+       
         //
         // $startName  ="csv_files/selected_nrna_members_20210802_01.csv";
         // $startName  ="csv_files/germany_july28_final_02.csv";

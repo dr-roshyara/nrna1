@@ -160,11 +160,12 @@ Route::middleware(['auth:sanctum', 'verified']) ->post('/messages', [SmsControll
     Route::middleware(['auth:sanctum', 'verified']) ->post('/vote/submit', [VoteController::class, 'first_submission'])->name('vote.submit');
     Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/verify', [VoteController::class, 'verify'])->name('vote.verfiy');
     Route::middleware(['auth:sanctum', 'verified']) ->post('/votes', [VoteController::class, 'store'])->name('vote.store'); 
-   
+    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/verify_to_show' , [VoteController::class, 'verify_to_show'])->name('vote.verify_to_show');  
+    Route::middleware(['auth:sanctum', 'verified']) ->post('/verify_final_vote' , [VoteController::class, 'verify_final_vote'])->name('vote.verify_final_vote');  
     
    Route::middleware(['auth:sanctum', 'verified']) ->get('/votes/index', [VoteController::class, 'index'])->name('vote.index');
    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/show', [VoteController::class, 'show'])->name('vote.show');
-   Route::middleware(['auth:sanctum', 'verified']) ->get('/election/result', [ResultController::class, 'index'])->name('result.index');
+   Route::middleware(['auth:sanctum', 'verified']) ->get('/election/result', [ResultController  ::class, 'index'])->name('result.index');
 
 //});   
 /**
