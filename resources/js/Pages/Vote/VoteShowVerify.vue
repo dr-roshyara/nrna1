@@ -30,7 +30,7 @@
                          
                          </label>   
                          <input class=" px-4 py-6 rounded-lg bg-gray-200 w-auto
-                         font-bold border border-blue-400  text-gray-300 font-bold text-sm" 
+                         font-bold border border-blue-400  text-gray-900 font-bold " 
                          id="voting_id" 
                          placeholder="ENTER HERE YOUR  CODE TO CHECK THE VOTE"  
                          v-model ="form.voting_code"/> 

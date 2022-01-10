@@ -503,33 +503,38 @@ class VoteController extends Controller
      */
     public function show(Vote $vote)
     {
-        $vote =[];
-        $has_voted=false;
-        $name ='';
+        $vote               =[];
+        $has_voted          =false;
+        $name               ='';
         $verify_final_vote =false;
-        $final_vote = request()->session()->get('final_vote');
-        // dd($final_vote);
-        // dd(gettype($final_vote));
-        if($final_vote==null){
-            return redirect()->route('vote.verify_to_show');
-        }
-        if($final_vote){
-            if(array_key_exists('name', $final_vote)){
-                $name = $final_vote["name"]; 
+        $code              =auth()->user()->code;        
+        if($code!=null){
+                
+            
+            $final_vote = request()->session()->get('final_vote');
+            // dd($final_vote);
+            // dd(gettype($final_vote));
+            if($final_vote==null){
+                return redirect()->route('vote.verify_to_show');
             }
+            if($final_vote){
+                if(array_key_exists('name', $final_vote)){
+                    $name = $final_vote["name"]; 
+                }
 
-            if(array_key_exists('selected_candidates', $final_vote)){
-                $vote = $final_vote["selected_candidates"]; 
-            }
+                if(array_key_exists('selected_candidates', $final_vote)){
+                    $vote = $final_vote["selected_candidates"]; 
+                }
 
-            if(array_key_exists('has_voted', $final_vote)){
-                $has_voted = $final_vote["has_voted"]; 
+                if(array_key_exists('has_voted', $final_vote)){
+                    $has_voted = $final_vote["has_voted"]; 
+                }
+                if(array_key_exists('verify_final_vote', $final_vote)){
+                    $verify_final_vote = $final_vote["verify_final_vote"]; 
+                }
             }
-            if(array_key_exists('verify_final_vote', $final_vote)){
-                $verify_final_vote = $final_vote["verify_final_vote"]; 
-            }
-        }
-         
+            request()->session()->forget('final_vote');
+         }
         return Inertia::render('Vote/VoteShow',[
             'vote'=>  $vote, 
             'name'=> $name,
@@ -629,17 +634,12 @@ class VoteController extends Controller
             
        return $_candivec; 
     }
+
     public function verify(){
        $vote = request()->session()->get('vote');
        $auth_user =auth()->user();
        $code =$auth_user->code;
-    //    $this->vote_pre_check($code);
-       //$value = $request->session()->get('key');
-       // global helper method
-        // $vote = session('vote');
-        // dd($vote);
-        // return Inertia::render('Vote/VoteVerify', [
-        return Inertia::render('Vote/Verify', [
+            return Inertia::render('Vote/Verify', [
                 'vote' =>$vote,
                  'name'=>$auth_user->name,
                  'nrna_id'=>$auth_user->nrna_id,
