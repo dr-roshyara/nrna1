@@ -109,7 +109,7 @@ class UserController extends Controller
       
         // $file = fopen(csvName,"r");
         // $csv = array_map('str_getcsv', file($csvName));
-        $csv_array = csv_to_array($csvName,",");
+        $csv_array = csv_to_array($csvName,";");
         //read users 
         // var_dump($csv_array);
         // dd($csv_array);

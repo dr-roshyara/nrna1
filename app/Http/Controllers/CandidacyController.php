@@ -307,7 +307,7 @@ class CandidacyController extends Controller
 
         // $file = fopen(csvName,"r");
         // $csv = array_map('str_getcsv', file($csvName));
-        $csv_array = csv_to_array($csvName,",");
+        $csv_array = csv_to_array($csvName,";");
     //here starts 
     
     /******************************* */ 
