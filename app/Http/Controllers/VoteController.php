@@ -131,7 +131,7 @@ class VoteController extends Controller
         $regional_posts = QueryBuilder::for(Post::with('candidates.user'))
                         ->defaultSort('post_id')
                         ->where ('is_national_wide',0)
-                        // ->where('state_name', trim(auth()->user()->region))
+                        ->where('state_name', trim(auth()->user()->region))
                         ->paginate(250) 
                         ->withQueryString();
          
@@ -430,25 +430,37 @@ class VoteController extends Controller
                 // dd($input_data);
             }    
             //step1 : save the vote and save the user has voted
-            $vote->save();
-            //Step 2: GET The vOTE ID 
+             $vote->save();
+            //Step 2: GET The VOTE ID 
              $vote_id =$vote->id; 
-             //step3 : Get a random string and make private Key
+            //step3 : Get a unkown random string and make private Key
               $random_key =get_random_string(6); 
               $private_key =$random_key."_".$vote_id;
-             //Step4: Hash the voted securely 
+             /*******
+              * Step4: Hash the voted id very securely
+              ** After hashing, nobody can detect what is inside.
+              **One can only compare this hashed key with the orginal private key.
+              **The original private will not be saved in database and given directly
+              **to the voter. If the voter loose his private key, nobody can detect 
+              **the voter associated with his/her vote 
+              **and find if the given text is correct or not.
+             **/
               $hashed_voteId =  Hash::make( $private_key);
-             //step4: Save the hashed key: 
+             //step4: Save the hashed key in database  
               $code->code_for_vote =$hashed_voteId;
-             //Inform the user about his private key 
+             // step 5: Inform the voter the private in human readable format 
+            //  After sending the key to voter, one can never know the hashed 
+            // key without this value about his private key 
              $auth_user->notify(new SendVoteSavingCode($private_key));          
-             
+            //step 6: Save that the voter has voted and he/she cannot vote again.
+            //Also save the date and time of voting .             
             $code->has_voted       =1;
             $code->can_vote_now    =0;
             $code->is_code2_usable =0;
-            $code->code2_used_at   =Carbon::now();
-            
+            $code->code2_used_at   =Carbon::now();            
             $code->save();
+            //Stp 7: Forward the voter to show the vote. Vote can be 
+            //shown only if the voter give the correct private key.             
             return redirect()->route('vote.show'); 
 
         }else{
