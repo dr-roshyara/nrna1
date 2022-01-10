@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vote;
 use App\Models\Post;
+use App\Models\Result;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
@@ -15,29 +16,56 @@ class ResultController extends Controller
     //
        
     public function index(){
-         $votes =Vote::all();
-        //  $votes =DB::table('users')->get(); 
-         dd($votes);
-
-        $globalSearch = AllowedFilter::callback('global', 
-        function ($query, $value) {
-            $query->where(function ($query) use ($value) {
-                // $query->where('candidacy_id', 'LIKE', "%{$value}%");
-                // $query->where('itemId', "{$value}");
-                // ->orWhere('warehouseId', 'LIKE', "%{$value}%");
-            });
-        });
+          
+      $posts        = Post::all() ;
+      $candidates   =[]; 
+    //   $results =Result::query();
+        $results = DB::table('results')
+              ->selectRaw(' count(*) as total ');
+          
+        $results =$results->selectRaw('COUNT(DISTINCT vote_id) as total_votes');
+        // dd($results->get());
         
-        // $candidacies = QueryBuilder::for(Candidacy::class)
-        // $posts = QueryBuilder::for(Post::with('candidates'))
-        $votes = QueryBuilder::for(Vote::class)
-        // ->defaultSort('candidac')
-        // ->allowedSorts(['post_id'])            
-        ->paginate(1) 
-        ->withQueryString();
+        //       SELECT 
+        //       SUM(IF(name = ?, 1, 0)) AS name_count,
+        //       SUM(IF(address = ? AND port = ?, 1, 0)) AS addr_count
+        //   FROM 
+        //       table_nam
+    // Here I used his suggestion: 
+    // https://reinink.ca/articles/calculating-totals-in-laravel-using-conditional-aggregates
+    foreach($posts as $post){
+        $_expr ="SUM( IF(post_id='"; 
+        $_expr .= $post->post_id."', 1, 0))  as ".$post->post_id;
+        $results =$results->selectRaw($_expr ); 
+        //expressioin for candidates 
+        $post_candidates =$post->candidates;
+        foreach ($post_candidates as $candidate){
+            $_candi_condition ="post_id = '";
+            $_candi_condition .=$post->post_id."'";
+            $_candi_condition .= " AND candidacy_id = '";
+            $_candi_condition .= $candidate->candidacy_id;
+            $_candi_condition .= "' ";
+            // dd($_candi_condition);             
+             $_candi_expr = "SUM( IF( ". $_candi_condition;
+             
+             $_candi_expr .= ", 1, 0)) as ";
+             $_candi_expr .= $post->post_id."_and_".$candidate->candidacy_id;
+            //  dd($_candi_expr);
+              
+            $results =$results->selectRaw($_candi_expr); 
+         }
+            
+        
+        
+    }
+    //  dd($results->get());
+    
+      $final_result =$results->get();
 
-        return Inertia::render('Vote/Result', [
-            'votes' =>$votes
+     return Inertia::render('Result/Index', [
+            'final_result' =>$final_result,
+            'posts'=> $posts,
+            'candidates'=>$candidates 
         ]);
     }
 }

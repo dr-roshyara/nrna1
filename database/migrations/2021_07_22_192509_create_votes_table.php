@@ -16,7 +16,7 @@ class CreateVotesTable extends Migration
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
-            $table->string('post_id');
+            // $table->string('post_id');
               //no vote  option 
             $table->boolean('no_vote_option')->default(0);
             $table->string('voting_code');

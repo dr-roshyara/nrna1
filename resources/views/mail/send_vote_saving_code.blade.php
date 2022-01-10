@@ -20,9 +20,9 @@ Please click here to see your vote </a>
  मतदानको पहिचान गराउने एक मात्र माध्यम तल उल्लेखित कोड हो र त्यस विना कसैले पनि यहाँले गर्नु भएको मतदानकाे 
  पहिचान गर्न सक्ने छैन। यसैले तपाइले गर्नु भएको मतदान पुर्ण रूपमा गोप्य रहने छ।  </p> 
  <p style="margin-top: 2px; margin-bottom:2px; text-align:center;"> 
- <a href="{{ route('vote.verify_to_show ') }}" 
+ <a href="{{ route('vote.verify_to_show') }}" 
  style="color:#1E90FF; font-weight:bold; "> 
- आफ्नो मत हेर्न यहाँ क्लिक गर्नुहोस। </a>
+ आफ्नो मत हेर्न यहाँ क्लिक गर्नुहोस। </a> 
 
 </p> 
 @component('mail::button', ['url' => ''])

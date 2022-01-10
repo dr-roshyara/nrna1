@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Candidacy;
 use App\Models\Post;
+use App\Models\Result;
 use App\Models\Code;
 use App\Models\Upload;
 use Carbon\Carbon;
@@ -32,6 +33,7 @@ class VoteController extends Controller
     public $out_code;
     public $user_id;
     public $verify_final_vote;
+    public $vote_id_for_voter;
 
     /***
      * 
@@ -340,12 +342,13 @@ class VoteController extends Controller
         $auth_user         = auth()->user();
         $this->user_id     = $auth_user->id;
         $code              =$auth_user->code;
+        // dd($code);
         $this->has_voted   =$code->has_voted;
-        $vote              =$auth_user->vote;
+        // $vote              =$auth_user->vote;
         $return_to         =$this->vote_post_check($auth_user, $code);
         
         if($return_to=='404'){
-            return '404';
+            abort(404);
         }
         if($return_to!=""){
             
@@ -402,40 +405,13 @@ class VoteController extends Controller
              */
             //get vote from session 
             $input_data = $request->session()->get('vote');
-            $no_vote_option = $input_data["no_vote_option"];
-           
-           
-            if($no_vote_option) { //check if voter has given no_vote  option 
-                // Go for no vote option 
-                $vote                   =new Vote; 
-                $vote->no_vote_option   =1;
-                $vote->user_id          =$this->user_id;        
-
-          }else{
-             /**
-              * Here you save the vote finally :
-              * G
-              */ 
-                // $vote                = new Vote;
-                // $vote->user_id       = $this->user_id;
-                $vote                = new Vote;
-                $vote->user_id       = Hash::make($this->user_id);
-                $vote->post_id       =$this->user_id;
-                $vote->voting_code   =$this->in_code;
-            
-                $all_candidates =$input_data["natioanal_selected_candidates"];
-                $all_candidates =array_merge($all_candidates, $input_data["regional_selected_candidates"]);
-                // dd($all_candidates);
-                $this->save_vote( $vote, $all_candidates);
-                // dd($input_data);
-            }    
-            //step1 : save the vote and save the user has voted
-             $vote->save();
-            //Step 2: GET The VOTE ID 
-             $vote_id =$vote->id; 
+             
+            //Step1 : save the vote and get the voting id
+            $this->save_vote($input_data);            
+            // $vote_id =$vote->id; 
             //step3 : Get a unkown random string and make private Key
               $random_key =get_random_string(6); 
-              $private_key =$random_key."_".$vote_id;
+              $private_key =$random_key."_".$this->vote_id_for_voter;
              /*******
               * Step4: Hash the voted id very securely
               ** After hashing, nobody can detect what is inside.
@@ -648,10 +624,16 @@ class VoteController extends Controller
     }
 
     public function verify(){
-       $vote = request()->session()->get('vote');
-       $auth_user =auth()->user();
-       $code =$auth_user->code;
-            return Inertia::render('Vote/Verify', [
+
+       $vote        = request()->session()->get('vote');
+       $auth_user   =auth()->user();
+       $code        =$auth_user->code;
+       $return_to   =$this->vote_post_check($auth_user, $code);
+        
+        if($return_to=='404'){
+            abort(404);
+        }
+       return Inertia::render('Vote/Verify', [
                 'vote' =>$vote,
                  'name'=>$auth_user->name,
                  'nrna_id'=>$auth_user->nrna_id,
@@ -694,31 +676,74 @@ class VoteController extends Controller
         return $validator;
     }
     //save all candidates 
-    public function save_vote(&$vote, $input_data){
-        // dd($input_data);     
-        for ($i=0; $i<sizeof($input_data); $i++){
-             $col_name = "candidate"; 
-             $json=[];
-            if($i<9){ 
-                $col_name .="_0".strval($i+1);
-            }else{
-                $col_name .="_".strval($i+1);
-            }
-
-
-            if($input_data[$i] ===null){
-                $json["candidates"] = null; 
-                $json["no_vote"]    =true ;
-                
-            }else{
-                $json = $input_data[$i] ;
-                $json["no_vote"] =false;
-               
-            }
-            $vote->$col_name = json_encode($json); 
+    public function save_vote($input_data){
+        // dd($input_data); 
+        $no_vote_option     = $input_data["no_vote_option"];
+        $vote               =new Vote;
+        $vote->user_id      = Hash::make($this->user_id); 
+        $vote->voting_code  =$this->out_code;       
+        $vote->save();   //save the vote first
+        //save the $this->vote_id_for_voter  it to voter ;
+        $this->vote_id_for_voter =$vote->id; 
+        if($no_vote_option) { 
+            //check if voter has given no_vote  option 
+            // Go for no vote option 
+            $vote->no_vote_option   =1;
+      }else{
+         /**
+          * Here you save the all candidates finally :
+          * 
+          */ 
+            $all_candidates =$input_data["natioanal_selected_candidates"];
+            $all_candidates =array_merge($all_candidates, 
+                            $input_data["regional_selected_candidates"]);
            
-        }       
-         $vote->save();
+            for ($i=0; $i<sizeof($all_candidates); $i++)
+            {
+                $col_name = "candidate"; 
+                $_vote_json=[];
+                if($i<9){ 
+                    $col_name .="_0".strval($i+1);
+                }else{
+                    $col_name .="_".strval($i+1);
+                }
+
+
+                if($all_candidates[$i] ==null){
+                    $_vote_json["candidates"] = null; 
+                    $_vote_json["no_vote"]  =true ;
+                    
+                }else{
+                    $_vote_json             = $all_candidates[$i] ;
+                    $_vote_json["no_vote"]  =false;
+                    //Here save the vote result one by one in Result 
+                    $post_id                = $_vote_json['post_id'];
+                    $candidates             =$_vote_json["candidates"];
+                    // dd($candidates);
+                    for($j=0;$j<sizeof($candidates);$j++){
+                      //save each selected candidates in the result
+                      $result                = new Result; 
+                      $result->vote_id       =$vote->id;
+                      $result->post_id       =$post_id;
+                      $result->candidacy_id  =$candidates[$j]['candidacy_id'];
+                      $result->save();
+
+                    }
+                    
+                 
+                
+                }
+                //save the vote again  
+              
+                $vote->$col_name = json_encode($_vote_json); 
+            
+            }       
+      
+            // dd($input_data);
+        } //end of else 
+        
+        $vote->save();
+        
         //   dd($input_data);
 
             
@@ -888,6 +913,7 @@ class VoteController extends Controller
      *  
      */
     public function vote_post_check($auth_user,&$code){
+        // dd($code);
         $return_to ="";
         if($code==null){
             /*** 
@@ -902,17 +928,33 @@ class VoteController extends Controller
 
         }
         /***
+         *
+         * Check 2: if the user has already voted then
+         *  then return back to the vote 
+         * 
+         *  */
+        $_error_already_voted = '<div style="margin:auto; color:red; padding:20px; 
+                        font-weight:bold; text-align:center;"> 
+                    <p>You have already voted and your vote is already saved! See below</p>';
+        $_error_already_voted .='<p style="text-align: center margin: 2px 0px 2px 0px; font-weight:bold;">';
+        $_error_already_voted .= '<a href="'. route('vote.verify_to_show').'" > Click here to see your vote</a>';
+        $_error_already_voted .= '</p></div>'; 
+        if($code->has_voted){
+            echo $_error_already_voted;
+             $return_to ='404';
+           
+            }
+        /***
          * 
          * Check if the voter has already voted or in any case vote is already saved 
          *  
          */
           $vote =$auth_user->vote;
-        if($vote !=null){
-            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-           You have already voted and your vote is already saved! See below
-            </div>';
-            dd($vote->getOriginal());
-            $return_to ='dashboard';
+        if($vote !=null)
+        {
+            echo $_error_already_voted;
+            
+            $return_to ='404';
         } 
         return $return_to ;
     }
