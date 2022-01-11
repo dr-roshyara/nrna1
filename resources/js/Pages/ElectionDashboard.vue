@@ -90,6 +90,45 @@
                                 </div>
                             </a>
                         </div>
+                        <!-- Here comes the second  -->
+                          <div class="w-full md:w-1/2 pl-0 md:pl-2">
+                            <a href="election/result">
+                                <div
+                                    class="
+                                        w-full
+                                        p-8
+                                        my-4
+                                        ml-0
+                                        md:ml-2
+                                        border-2
+                                        rounded-lg
+                                        hover:bg-blue-100
+                                        flex flex-wrap
+                                        justify-center
+                                    "
+                                >
+                                    <img
+                                        src="/storage/images/result.png"
+                                        alt="Election Result"
+                                        class="w-20 h-auto my-4"
+                                    />
+                                    <div
+                                        class="
+                                            w-full
+                                            text-center
+                                            font-bold
+                                            text-base
+                                            md:text-2xl
+                                        "
+                                    >
+                                        <p> Election Result </p>
+                                        <p> मत परिणाम</p>
+
+                                    </div>
+                                </div>
+                            </a>
+                        </div>  
+
                     </div>
                      <!-- end of elction posts  -->
                      
@@ -207,43 +246,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="w-full md:w-1/2 pl-0 md:pl-2">
-                            <a href="election/result">
-                                <div
-                                    class="
-                                        w-full
-                                        p-8
-                                        my-4
-                                        ml-0
-                                        md:ml-2
-                                        border-2
-                                        rounded-lg
-                                        hover:bg-blue-100
-                                        flex flex-wrap
-                                        justify-center
-                                    "
-                                >
-                                    <img
-                                        src="/storage/images/result.png"
-                                        alt="Election Result"
-                                        class="w-20 h-auto my-4"
-                                    />
-                                    <div
-                                        class="
-                                            w-full
-                                            text-center
-                                            font-bold
-                                            text-base
-                                            md:text-2xl
-                                        "
-                                    >
-                                        <p> Election Result </p>
-                                        <p> मत परिणाम</p>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        
                     </div>
                     <div class="w-full flex flex-wrap">
                         <div class="w-full md:w-1/2">

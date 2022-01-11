@@ -18,32 +18,37 @@
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                    Dashboard<br/>
+                                    ड्यासवोर्ड
                                 </jet-nav-link>
                             </div>
                             <!-- next --link --> 
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('vote.show')" :active="route().current('vote.show')">
-                                     Your Vote
+                                <jet-nav-link :href="route('vote.verify_to_show')" :active="route().current('vote.verify_to_show')">
+                                     Your Vote <br/>
+                                     तपाइको मत
                                 </jet-nav-link>
                             </div>
                              <!-- next --link --> 
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('voters.index')" :active="route().current('voters.index')">
-                                     Voter's List
+                                     Voter's List<br/> 
+                                     मतदता नामावली
                                 </jet-nav-link>
                             </div>
                             <!-- next --link --> 
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('users.index')" :active="route().current('users.index')">
-                                     Member's List
+                                     Member's List<br>  
+                                     सदश्यता नामावली
                                 </jet-nav-link>
                             </div>
 
                             <!-- next --link --> 
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('users.index')" :active="route().current('users.index')">
-                                     Candidacy Form 
+                                <jet-nav-link :href="route('result.index')" :active="route().current('result.index')">
+                                     Election Result<br>
+                                      निर्वाचन परिणाम
                                 </jet-nav-link>
                             </div>
                             
