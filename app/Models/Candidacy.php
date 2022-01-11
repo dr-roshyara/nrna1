@@ -17,7 +17,8 @@ class Candidacy extends Model
      * Get the user 
      */
      public function user(){
-           return $this->belongsTo(User::class, 'user_id','user_id');
+           return $this->belongsTo(User::class, 'user_id','user_id')
+                  ->select(['id','user_id','name','region']);
        }
      /**
       * One Candidacy belongs to One Post 
