@@ -18,11 +18,11 @@ class SecondVerificationCode extends Notification
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user, $code)
     {
         //
         $this->user =$user;
-        $this->code =$this->user->code;
+        $this->code =$code;
     }
 
     /**
@@ -46,7 +46,7 @@ class SecondVerificationCode extends Notification
     {
         return (new MailMessage)->markdown('mail.send_second_verification_code', [
             'user' => $this->user,
-            'code' => $this->code->code2,
+            'code' => $this->code, 
         ])
         ->subject('Vote Conformation Code');
     }

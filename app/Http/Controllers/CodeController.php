@@ -7,6 +7,7 @@ use Inertia\Inertia;
 Use App\Models\User;
 use App\Models\Code;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Notifications\SendFirstVerificationCode;
 
@@ -40,8 +41,8 @@ class CodeController extends Controller
     public function create()
     {
           
-        $auth_user       = auth()->user();
-         
+        $auth_user          = auth()->user();
+        $form_opening_code  ='';
         /**
              * Normally user must be verified and then 
              * However , we dont have a verification system now that's why 
@@ -71,21 +72,12 @@ class CodeController extends Controller
         
 
         if($code==null){
-            $code           = new Code;
-            $totalDuration  = 0;
-
+            $code                           = new Code;           
+            $code->voting_time_in_minutes   = $code_expires_in;
+            $totalDuration                  = 0;
+            $code->user_id                  =$user_id;
+            $code->save();
             // dd($code);
-        }else{
-             $updated_at    = Carbon::parse($code->updated_at);
-             $current       = Carbon::now();
-             $totalDuration = $current->diffInMinutes($updated_at);
-              if($totalDuration>$code_expires_in){
-                $code->is_code1_usable =0; 
-                $code->is_code2_usable =0; 
-                $totalDuration  =0;       
-              }
-
-           
         }
         
         /***
@@ -103,28 +95,49 @@ class CodeController extends Controller
                 abort(404);
     
         }
-        
+        if($code->has_code1_sent){
+            /***
+             * 
+             * if the code has already been sent then check its validity.
+             * 
+             */
+            
+            if(!$code->is_code1_usable){
+                $code->has_code1_sent=0;
+            }else{
+                $code_expires_in    =$code->voting_time_in_minutes;
+                $updated_at         = Carbon::parse($code->updated_at);
+                $current            = Carbon::now();
+                $totalDuration      = $current->diffInMinutes($updated_at);
+                     if($totalDuration>$code_expires_in){
+                       $code->is_code1_usable =0; 
+                       $code->is_code2_usable =0; 
+                       $code->has_code1_sent  =0;
+                       $code->can_vote_now    =0;
+                           
+                }
+            }
+     
+           
+   
+          
+            
+        }
+
         /***
          * 
          * Assign the new  code value only if it has not been used 
          */
-         if(!$code->is_code1_usable & !$code->has_voted){
+         if(!$code->has_code1_sent){
           
             $form_opening_code = get_random_string (6);       
             // echo($form_opening_code);
             $code->user_id           =$user_id ;
-            $code->code1             =$form_opening_code ;
-            $code->is_code1_usable   =1;
-            $code->is_code2_usable   =0; 
+            $code->code1             =Hash::make($form_opening_code) ;
+        
             // $code->code1_used_at     =Carbon::now();
             
-               
-             /***
-              * 
-              *Finally: save the vote form opening code 
-              *
-              */
-             $code->save();
+            
             //  dd($code);  
             /****
              * 
@@ -132,19 +145,26 @@ class CodeController extends Controller
              *  
              */            
 
-            $auth_user->notify(new SendFirstVerificationCode($auth_user));
-
+            $auth_user->notify(new SendFirstVerificationCode($auth_user, $form_opening_code));
+            
+            //save the code info 
+            $code->is_code1_usable   =1;
+            $code->is_code2_usable   =0; 
+            $code->has_code2_sent    =0;
+            $code->has_code1_sent    =1;
+            $code->can_vote_now      =0;
+            $code->save();
          }
         
         //
           return Inertia::render('Vote/CreateCode', [
         //    "presidents" => $presidents,
         //    "vicepresidents" => $vicepresidents,
-             'name'     =>$auth_user->name,
-             'nrna_id'  =>$auth_user->nrna_id,
-             'state'    =>$auth_user->state,
-             'code_duration' =>$totalDuration,
-             'code_expires_in'=>$code_expires_in
+             'name'             =>$auth_user->name,
+             'nrna_id'          =>$auth_user->nrna_id,
+             'state'            =>$auth_user->state,
+             'code_duration'    =>$totalDuration,
+             'code_expires_in'  =>$code_expires_in
          ]);
     }
 
@@ -198,7 +218,7 @@ class CodeController extends Controller
         
         $this->out_code   = $request['voting_code'];
         $validator          =$this->verify_vote_submit($code->code1);
-        if($this->in_code!=$this->out_code){
+        if(!Hash::check( $this->out_code, $this->in_code)){
             $validator->errors()->add('voting_code', 
             'Your code is wrong. Please check your email. If you do not have any code, then go to Dashboard and start form the begning.');
          }
@@ -211,7 +231,7 @@ class CodeController extends Controller
         //  dd($request->all());
             // var_dump($code1);    
         // dd(request()->all());
-        if($this->in_code==$this->out_code & !$this->has_voted)
+        if(Hash::check($this->out_code,$this->in_code) & !$this->has_voted)
         {
             /**
              * Here you go to voting form. 
@@ -309,7 +329,7 @@ class CodeController extends Controller
                   //$has_voted= auth()->user()->has_voted ;
                     // $code1_1 =$code1;
                   $voting_code =request('voting_code');
-                if ($this->in_code!= $voting_code) {
+                if (!Hash::check( $voting_code,$this->in_code)) {
                     //add custom error to the Validator
                     $validator->errors()->add('voting_code',
                     "You have submitted  wrong voting code .  

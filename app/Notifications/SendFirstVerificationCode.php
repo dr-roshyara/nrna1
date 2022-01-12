@@ -10,19 +10,20 @@ use Carbon\Carbon;
 class SendFirstVerificationCode extends Notification
 {
     use Queueable;
-    public $code;
+    
     public $user;
+    public $code;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct( $user)
+    public function __construct($user, $code)
     {
         //
         $this->user =$user;
-        $this->code =$user->code;
+        $this->code =$code;
     }
 
     /**
@@ -46,8 +47,8 @@ class SendFirstVerificationCode extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)->markdown('mail.send_first_verification_code',[
-            'code' => $this->code->code1,
-            'user'=>$this->user,
+           'user'=>$this->user, 
+           'code' => $this->code,
         ]) ->subject('Code to open voting form');
     }
 

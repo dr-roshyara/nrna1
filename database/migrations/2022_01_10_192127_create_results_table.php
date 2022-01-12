@@ -15,9 +15,9 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('vote_id')->unsiged();
+            $table->bigInteger('vote_id')->unsigned();
             $table->string('post_id'); 
-            $table->string('candidacy_id');
+            $table->string('candidacy_id'); 
             $table->timestamps();
         });
     }

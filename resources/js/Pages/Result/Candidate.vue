@@ -1,5 +1,5 @@
 <template>
-     <div class="w-full flex flex-col justify-center px-2 md:px-6 py-4  ">
+     <div class="w-full flex flex-col justify-center px-2 md:px-6 py-4 shadow-inner ">
           <div class="text-center my-2 mx-auto text-xl font-bold text-gray-900">  {{post.name}}</div>
         <bar-chart class="w-full m-auto" :entries="entries" :columns="columns" :format="format"> </bar-chart> 
         

@@ -2,9 +2,10 @@
 <nrna-layout>
      <app-layout>
      <div class="mt-6 text-center">  
-          <div v-if="has_voted" class="m-auto text-center bg-blue-200 py-4 ">  
-               <p class="m-auto text-blue-700 font-bold text-sm"> Congratulation {{user_name}}! </p> 
-               <p class="m-auto"> Thank You for your vote. 
+          <div v-if="has_voted" class="m-auto text-center bg-blue-200 py-4 w-full ">  
+               <p class="m-auto text-blue-700 font-bold text-xl"> Congratulation {{user_name}}! </p> 
+                <div class="w-full md:w-2/3 mx-auto mb-4 py-4"> 
+                    <p class="m-auto"> Thank You for your vote. 
                     If you want to check your vote again, please submit the 
                     <span class="text-gray-900 text-lg font-bold"> code to check your vote.</span> 
                     Please  keep your passowrd very secret. Also please do not  ask others to show their vote. </p>
@@ -12,24 +13,25 @@
                     यसैले कृपया आफ्नो पासवर्ड अरुलाई नदिनु होला ।  
                   
                </p>
+                </div>
                <jet-validation-errors class="mb-4  mx-auto text-center " />
           </div>
-          <div class=" flex flex-col m-auto" > 
+          <div class=" flex flex-col m-auto py-2 my-2 shadow border  w-full md:w-2/3" > 
                <div class="p-2 mx-auto text-center my-2 text-2xl font-bold text-gray-900 "> 
                      <p> Check your email & submit the code to see and check your vote </p> 
                 </div>
                
-               <form @submit.prevent="submit" class=" text-center mx-auto align-top">
-                    <div class="flex flex-col justify-center px-2 m-2"> 
-                         <div class="flex flex-col justify-center space-x-4 
-                    p-4 mb-2 mx-auto 
+               <form @submit.prevent="submit" class=" text-center  align-top">
+                    <div class="flex flex-col justify-center px-2 my-2"> 
+                         <div class="flex flex-col justify-center
+                              p-4 mb-2 
                          font-bold text-gray-900 ">
                          <label for="voting_code"  class="px-4 py-2 mb-3"> 
-                         <p> Please insert the code to see and check your vote.<br>
+                         <p>  Code to check your vote
                          </p> 
                          
                          </label>   
-                         <input class=" px-4 py-6 rounded-lg bg-gray-200 w-auto
+                         <input class="mx-auto px-4 py-6 rounded-lg bg-gray-200 w-full md:w-2/3
                          font-bold border border-blue-400  text-gray-900 font-bold " 
                          id="voting_id" 
                          placeholder="ENTER HERE YOUR  CODE TO CHECK THE VOTE"  
@@ -37,7 +39,7 @@
                          </div>  
                     <div class="my-4 w-full"> 
                         <button type="submit" 
-                        class="w-full  px-4 py-4 rounded-lg bg-blue-300 font-extrabold text-gray-900">
+                        class="w-full md:w-2/3  px-4 py-4 rounded-lg bg-blue-300 font-extrabold text-gray-900">
                         PLEASE CLICK HERE  &  GET YOUR VOTE </button> 
                         </div>
                             <div class="mx-auto text-center">
@@ -67,6 +69,7 @@ export default {
     props:{
          vote: Object,
          has_voted:Boolean,
+         user_name:String
         
     },
       setup () {

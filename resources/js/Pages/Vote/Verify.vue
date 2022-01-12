@@ -1,8 +1,8 @@
 <template>
 <nrna-layout> 
  <app-layout>
-    <div class="flex flex-col  md:mx-auto md:flex-row  md:space-x-6 ">
-        <div class="flex flex-col mt-10 align-top bg-blue-100 ">
+    <div class="flex flex-col  md:mx-auto md:flex-row  md:space-x-6 mx-2 ">
+        <div class="flex flex-col mt-5 align-top bg-blue-100 md:mx-2 px-2">
                    
                 <div class="mx-auto">
                 <jet-validation-errors class="mb-4  mx-auto text-center " /> 
@@ -10,40 +10,42 @@
                 </div>
                 <!-- {{vote}} -->
                 <!-- {{code_expires_in}} -->
-                 <div class="p-2 mx-auto text-center my-2 text-2xl font-bold text-gray-900 "> 
-                     <p> Check your email & submit the vote conformation code</p> 
-                </div>
-            <form @submit.prevent="submit" class=" text-center mx-auto align-top">
-                <div class="flex flex-col justify-center px-2 m-2"> 
-                    <div class="flex flex-col justify-center space-x-4 
-                  p-4 mb-2 mx-auto 
-                    font-bold text-gray-900 ">
-                    <label for="voting_code"  class="px-4 py-2 mb-3"> 
-                        <p> First of all, please  check below the vote what you have casted. 
+                 <div class="flex flex-col px-2"> 
+                     <p class="p-2 mx-auto text-center my-2 text-2xl font-bold text-gray-900 "> 
+                         Check your email & submit the vote conformation code</p> 
+                      <p> First of all, please  check below the vote what you have casted. 
                             Finally conform it by inserting the code  you got  sencod time in your email. 
                             We have just sent you an email 
-                            <span class="text-red-500 font-bold "> {{vote.totalDuration}} </span> 
+                            <span class="text-red-500 font-bold "> {{totalDuration}} </span> 
                           minutes ago, mentioning your vote conformation code. 
                            You can use this code for the next 
                           <span class="text-red-500 font-bold ">
-                            {{vote.code_expires_in - vote.totalDuration}}  minutes 
+                            {{code_expires_in - totalDuration}}  minutes 
                             </span>
                           to save your vote.<br>
-                        </p> 
-                         <p> यहाँले गर्नु भएको मतदान यो पेजमा देखाइएको छ। सवै भन्दा पहिला आफ्नो मतदान लाइ जाँच गर्नुहोस। 
+                        </p>
+                        <p class="py-2 my-1"> यहाँले गर्नु भएको मतदान यो पेजमा देखाइएको छ। सवै भन्दा पहिला आफ्नो मतदान लाइ जाँच गर्नुहोस। 
                               अनि तपाइलाइ हामीले  भर्खरै 
                           <span class="text-red-500 font-bold ">
-                            {{vote.totalDuration }}  मिनेट  
+                            {{totalDuration }}  मिनेट  
                           </span> 
                           अघाडी एउटा इमेल पठाएका छाैं। आफ्नो मतदान सेभ गर्नको लागि 
                           त्यो कोड लाइ अर्काे 
                           <span class="text-red-500 font-bold "> 
-                            {{vote.code_expires_in - vote.totalDuration}} 
+                            {{code_expires_in - totalDuration}} 
                             </span>
                             मिनेट सम्म प्रयाेग गरिसक्नु पर्ने छ। 
                          अब यहाँले प्राप्त गर्नु भएको मतदान पुष्टी कोड हालेर आफ्नो मतदान लाई सेभ गर्न  तलको बट्टन थिच्नुहोस्। </p>  
+                </div>
+            <form @submit.prevent="submit" class="align-top">
+                <div class="flex flex-col justify-center px-2 "> 
+                    <div class="p-4 mb-2  text-gray-900 ">
+                    <label for="voting_code"  
+                    class="px-4 py-2 mb-3 text-gray-900 text-xl font-bold "> 
+                        <p class="text-center"> Vote Conformation Code</p>
+                         
                     </label>   
-                    <input class=" px-4 py-6 rounded-lg bg-gray-200 w-auto
+                    <input class=" px-4 py-6 rounded-lg bg-gray-200 w-full
                     font-bold border border-blue-400  text-gray-900 font-bold text-xl" 
                         id="voting_id" 
                     placeholder="PLEASE ENTER HERE YOUR VOTING CODE"  
@@ -63,7 +65,7 @@
                 
         </div>
          <!-- next  -->
-         <div class="flex flex-col px-2 mt-6 w-full bg-gray-50 ml-2">
+         <div class="flex flex-col px-2 mt-5 w-full bg-gray-50 ml-2">
            <p class="p-2 mx-auto text-xl text-gray-900 font-bold"> Your vote  </p>  
             
          <div v-if="no_vote_option" class="text-center">   

@@ -38,6 +38,11 @@ class VoteController extends Controller
     /***
      * 
      * construct 
+     * Voting processs 
+     * 1. Vote.Create 
+     * 2. get post request to first_submission 
+     * 3. vote.verify 
+     * 4.
      * 
      */
     public function __construct(){
@@ -98,9 +103,13 @@ class VoteController extends Controller
              $return_to =$this->vote_pre_check($code);
            
              // dd($return_to);
-             if($return_to!=""){
-                 return redirect()->route($return_to);
+            if($return_to!=""){
+                if($return_to=='404'){
+                    abort(404);
+                } 
+                return redirect()->route($return_to);
              }
+             
          }else{
              return redirect()->route('dashboard');
          }
@@ -158,7 +167,7 @@ class VoteController extends Controller
                     You are not elegible to vote . Please first ask the administrators to keep you in the voter lists!
                     तपाइकाे नाम मतदाता  नामावलीमा समावेस गरिएको छैन। 
                     </div>';
-                abort(404);
+             
             return (404);
         }
          if($has_voted){
@@ -194,132 +203,63 @@ class VoteController extends Controller
      * 
      */
     Public function  first_submission (Request $request){
-         //
-        $validator =  Validator::make(request()->all(), [
-                    'user_id' =>['required'],
-                    'agree_button'=>['required']                    
-                ]);
+       
         // dd(request()->all());
-        $user_id            =request('user_id');
+     
         $auth_user          =auth()->user();
-        $code_expires_in    =30;
+        $return_to           ='';
+      
         /***
          * 
-         * Get the voting Code here  
+         * Get the voting Code here  and set as submitted
+         * 
          * 
          */
-        $code =$auth_user->code;
-        // dd("test");
-        $return_to =$this->vote_pre_check($code);
-        // dd($return_to);
+        $code                       =$auth_user->code;
+        $code->vote_submitted       =1;
+        $code->vote_submitted_at     = Carbon::now();
+    
+        /****
+         * 
+         *Check the code  
+         */
+         $return_to =$this->vote_pre_check($code);
+         
+         /***
+          * 
+          *Check the Submit 
+          */
+         $this->verify_first_submission($request, $code , $auth_user) ;
+       
         if($return_to!=""){
+            if($return_to=='404'){
+                abort(404);
+            } 
             return redirect()->route($return_to);
         }
 
-        $has_voted          =$code->has_voted;
-        $has_voted          =false;
-        $nothing_selected   =request('nothing_selected'); 
-        $agree_button       =request('agree_button');
-        
-        // dd($nothing_selected);
-        //first check if at least one check box selected 
-        // $btemp = $this->at_least_one_vote_casted();
-        // $btemp=true;
-        $validator->after(function ($validator) {
-              
-            $agree_button =request('agree_button');
-          if (!$agree_button ) {
-              //add custom error to the Validator
-              $validator->errors()->add('agree_button',
-              "You have not clicked on Agree Button. 
-              Please click on the agree Button and accept that you  are submitting the vote! 
-               तपाइले एग्री वटनमा क्लीक गरेर भोट गरेको कुरा स्वीकार गर्नु भएन। ");
-          }
+         
       
-
-      });
-
-       
-                
-        if($user_id !=$auth_user->id)
-        {
-                             
-            $validator->after(function ($validator) {
-                  $validator->errors()->add('Longin_User: ',"Login usser is different than you!");              
-            });
-        } 
-        //      
-        if($has_voted)
-        {
-        
-            return redirect()->route('vote.show');       
-            $validator->after(function ($validator) {
-                  $validator->errors()->add('Vote: ',
-                  'You have already Voted. Thank you! Please check your Vote!');              
-            });
-            //run validation which will redirect on failure
-        }
-        $validator->validate($request);  
-        // dd($request);
-
          /**
           *Here you come only if  the user votes for the first time 
           * 
            */
 
            $vote = request()->all();
-        
-     
-       
-       
-        /***
-        *
-        *Create the second code 
-        * 
-        */
-        /**
-         * 
-         * 
-         */
 
-        $updated_at    = Carbon::parse($code->updated_at);
-        $current       = Carbon::now();
-        $totalDuration = $current->diffInMinutes($updated_at);
-       
-        if(!$code->is_code2_usable || ($code->is_code2_usable & $totalDuration>15 ))
-        {
-            $voting_code            = get_random_string (6);
-            $code->code2            =$voting_code;
-            $code->is_code2_usable  =1;      
-            $totalDuration          =0;
-            $code->save();
-        }
-        
-        $vote["totalDuration"]   =$totalDuration;
-        $vote["code_expires_in"] =$code_expires_in;
-        
-        /***
-         * 
-         * save the vote in  Session 
-         *  
-         */
-         $request->session()->put('vote', $vote);
-        
-       
-            
+           //check the validity of vote 
 
-        /***
-         * 
-         * send email to the user 
-         * 
-         */
-        //   $auth_user->notify(new Second)   
-          $auth_user->notify(new SecondVerificationCode($auth_user));
-        /***
-         * 
-         * redirect the web to vote verify 
-         * 
-         **/  
+           //send the second verification code 
+           $totalDuration =$this->send_second_voting_code($code, $auth_user);        
+
+          
+          //save the vote in Session
+          $code_expires_in          =$code->voting_time_in_minutes;
+          $vote["totalDuration"]    =$totalDuration;
+          $vote["code_expires_in"]  =$code_expires_in;
+          $request->session()->put('vote', $vote);
+
+        //redirect to the verification 
         return redirect()->route('vote.verfiy')
                 ->with([
                     'totalDuration'=>$totalDuration, 
@@ -339,24 +279,29 @@ class VoteController extends Controller
         // $this->in_code    ="4321";
        
         $this->out_code    = trim($request['voting_code']);
+        //get vote from session 
+        $input_data = $request->session()->get('vote');
+             
         $auth_user         = auth()->user();
         $this->user_id     = $auth_user->id;
         $code              =$auth_user->code;
         // dd($code);
         $this->has_voted   =$code->has_voted;
         // $vote              =$auth_user->vote;
-        $return_to         =$this->vote_post_check($auth_user, $code);
-        
-        if($return_to=='404'){
+        $_error   =$this->vote_post_check($auth_user, $code,$input_data);
+        // dd("test");
+        if($_error["error_message"]!=""){
+            echo $_error["error_message"];
             abort(404);
         }
-        if($return_to!=""){
+        if($_error["return_to"]!=""){
+           
             
-            return redirect()->route($return_to);
+           return redirect()->route($_error["return_to"]);
+        
         }
         
-        
-        
+        // dd("test");
         /***
          * if there is no code then return to dashboard 
          * 
@@ -376,7 +321,7 @@ class VoteController extends Controller
              */
             echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
             Your code has Problem .Please Send the screenshot to administrator!             </div>';
-            return ('404');
+            abort ('404');
             return redirect()->route('dashboard');
         }
 
@@ -394,7 +339,7 @@ class VoteController extends Controller
             return redirect()->route('vote.verify_to_show'); 
 
         }
-        if($this->in_code==$this->out_code & !$this->has_voted)
+        if(Hash::check($this->out_code,$this->in_code) & !$this->has_voted)
         {
             /**
              *Here Everything is checked . you save the vote. 
@@ -403,9 +348,7 @@ class VoteController extends Controller
              * the code must be true 
              * He has not voted before 
              */
-            //get vote from session 
-            $input_data = $request->session()->get('vote');
-             
+         
             //Step1 : save the vote and get the voting id
             $this->save_vote($input_data);            
             // $vote_id =$vote->id; 
@@ -470,14 +413,18 @@ class VoteController extends Controller
         //
         //   $vote =$auth_user->vote();
         $auth_user            = auth()->user();
-        $code                 = $auth_user->code;
-        $this->user_id        =$auth_user->id;        
-        $has_voted            = $code->has_voted;
+        $code                 = $auth_user->code;        
+        $this->user_id        =$auth_user->id;
+        $has_voted            =false;
+        if($code!=null) {
+            $has_voted            = $code->has_voted;
+        }       
+        
       //   dd($selected_candidates);
         
       return Inertia::render('Vote/VoteShowVerify', [
          
-              'name'=>$auth_user->name,
+              'user_name'=>$auth_user->name,
               'has_voted'=>$has_voted,                             
        ]);    
 
@@ -494,8 +441,8 @@ class VoteController extends Controller
         $vote               =[];
         $has_voted          =false;
         $name               ='';
-        $verify_final_vote =false;
-        $code              =auth()->user()->code;        
+        $verify_final_vote  =false;
+        $code               =auth()->user()->code;        
         if($code!=null){
                 
             
@@ -628,20 +575,48 @@ class VoteController extends Controller
        $vote        = request()->session()->get('vote');
        $auth_user   =auth()->user();
        $code        =$auth_user->code;
-       $return_to   =$this->vote_post_check($auth_user, $code);
-        
-        if($return_to=='404'){
+        //    dd("test");
+       $_error   =$this->vote_post_check($auth_user, $code,$vote);
+        // dd("test");
+        // dd($_error);
+        if($_error["error_message"]!=""){
+            echo $_error["error_message"];
             abort(404);
         }
+        if($_error["return_to"]!=""){
+           
+            
+           return redirect()->route($_error["return_to"]);
+        
+        }
+        // dd("test");
+        //check coding  
+        $_message           =$this->second_code_check($code);       
+        $code_expires_in    = $code->voting_time_in_minutes;
+      
+        if($_message["error_message"]!=""){
+                echo $_message["error_message"];
+                abort(404);
+        }
+
+        if( $_message["return_to"]!=""){
+          
+            return redirect()->route($_message["return_to"]);
+        }
+        // dd("testsa");
        return Inertia::render('Vote/Verify', [
-                'vote' =>$vote,
-                 'name'=>$auth_user->name,
-                 'nrna_id'=>$auth_user->nrna_id,
-                 'state' =>$auth_user->state              
+                'vote'              =>$vote,
+                 'name'             =>$auth_user->name,
+                 'nrna_id'          =>$auth_user->nrna_id,
+                 'state'            =>$auth_user->state,
+                 'totalDuration'    =>$_message["totalDuration"],
+                 'code_expires_in'  =>$code_expires_in,             
         ]);
                    
      
-    }
+    } //end of verify
+
+
     public function verify_vote_submit()
     {
         $validator =  Validator::make(request()->all(), [
@@ -659,9 +634,11 @@ class VoteController extends Controller
          $validator->after(function ($validator) {
               
                   $voting_code =request('voting_code');
-                if ($this->in_code!= $this->out_code ) {
+                if (!Hash::check($this->out_code,$this->in_code )) {
                     //add custom error to the Validator
-                    $validator->errors()->add('voting_code',"You have submitted wrong Voting Code!");
+                    $validator->errors()->add('voting_code',
+                    "You have submitted wrong Voting Code! <br> 
+                    यहाँले दिनु भएको कोड सही प्रमाणित हुन सकेन। यसैले आफ्नो इमेल चेक गरेर  सहि कोड हालेर फेरी वटन थिच्नुहोस। ");
                 }
                 if ($this->has_voted ) {
                     //add custom error to the Validator
@@ -680,7 +657,7 @@ class VoteController extends Controller
         // dd($input_data); 
         $no_vote_option     = $input_data["no_vote_option"];
         $vote               =new Vote;
-        $vote->user_id      = Hash::make($this->user_id); 
+        // $vote->user_id      = Hash::make($this->user_id); 
         $vote->voting_code  =$this->out_code;       
         $vote->save();   //save the vote first
         //save the $this->vote_id_for_voter  it to voter ;
@@ -763,21 +740,17 @@ class VoteController extends Controller
     public function verify_final_vote(Request $request){
 
         $this->out_code         = trim($request['voting_code']);
+        // dd($this->out_code);
         $auth_user              = auth()->user();
         $this->user_id          = $auth_user->id;      
         $code                   =$auth_user->code;
         $selected_candidates    =[];
         $verify_final_vote  =false;
-        if($code==null  ){
-            return redirect()->back();
-        }
-         
-           
-            $this->has_voted   =$code->has_voted;
-            // $vote              =$auth_user->vote;
-            $this->in_code      =$code->code_for_vote;  
-            $validator          =$this->verify_code_to_check_vote();
-            $validator->validate($request);
+   
+             
+        $validator          =$this->verify_code_to_check_vote($code);
+        $validator->validate($request);
+     
              if (Hash::check($this->out_code, $this->in_code)) {
                 $this->verify_final_vote =true;
                 $str_pos =strpos($this->out_code,"_")+1;
@@ -828,17 +801,38 @@ class VoteController extends Controller
     
  
     //
-    public function verify_code_to_check_vote(){
+    public function verify_code_to_check_vote($code){
+
         $validator =  Validator::make(request()->all(), [
             'voting_code' =>['required'],                    
         ]);
+        if($code==null  ){
+             
+            $validator->errors()->add('code_to_check_vote',
+            "Sorry, you have submitted wrong Voting Code! 
+            यहाँले दिनु भएको कोड सही प्रमाणित हुन सकेन। यसैले आफ्नो इमेल चेक गरेर  सहि कोड हालेर फेरी वटन थिच्नुहोस। ");
+             
+        }
+        if($code!=null){
+            $this->has_voted   =$code->has_voted;
+           $this->in_code      =$code->code_for_vote;
+            
+        }
+        if(!$this->has_voted){
+            $validator->errors()->add('code_to_check_vote',
+            "Sorry, It seems like that you have not voted yet. Please do vote first. Then only you can see and check your vote. <br>
+             यहाँले मतदानमा भागनै नलिएको जस्ताे देखियो। कृपया पहिले मतदान गर्नुहोस। ");
+             
+        }
+      
          $validator->after(function ($validator) {
       
             $voting_code =request('voting_code');
             if (!Hash::check($this->out_code, $this->in_code)) {
                 // The passwords match...
                 //add custom error to the Validator
-                $validator->errors()->add('code_to_check_vote',"Sorry, you have submitted wrong Voting Code!");
+                $validator->errors()->add('code_to_check_vote',"Sorry, you have submitted wrong Voting Code! 
+                यहाँले दिनु भएको कोड सही प्रमाणित हुन सकेन। यसैले आफ्नो इमेल चेक गरेर  सहि कोड हालेर फेरी वटन थिच्नुहोस। ");
             }
         });
 
@@ -846,11 +840,10 @@ class VoteController extends Controller
         return $validator;
     }
 
- /****
-  **
-  * Code pre Checking  
-  
-  */    
+    /****
+     **
+    * Code pre Checking 
+    */    
     public function vote_pre_check(&$code){
                     
         $return_to       ="";
@@ -858,11 +851,11 @@ class VoteController extends Controller
         $code1_used_at   =$code->code1_used_at;
         $voting_time     =$code->voting_time_in_minutes;
         $totalDuration   = $current->diffInMinutes($code1_used_at );
-        // dd($totalDuration);  
-        /***
+        
+       /***
         * if there is no code then return to dashboard 
         * 
-        */
+       */
        if($code==null){
             /*** 
             * 
@@ -873,7 +866,7 @@ class VoteController extends Controller
           return   $return_to ="code.create";
             
        }
-    //    dd($code->can_vote_now);  
+        //    dd($code->can_vote_now);  
        // dd($code->can_vote_now);
         if(!$code->can_vote_now){
             return     $return_to ="dashboard";
@@ -883,7 +876,12 @@ class VoteController extends Controller
 
             return     $return_to ="dashboard";
         }      
-    
+        //if code1 is not sent then return to code create
+        if(!$code->has_code1_sent ){
+
+            return   $return_to ="code.create";
+        }
+        //if code 1 is still usable and you havent used it, then use it first.
         if($code->is_code1_usable ){
 
             return   $return_to ="code.create";
@@ -900,21 +898,30 @@ class VoteController extends Controller
          {
             $code->can_vote_now     =0;
             $code->is_code1_usable  =0;
+            $code->is_code2_usable  =0;
+            $code->has_code1_sent   =0;
+            $code->has_code2_sent   =0;
             $code->save();
             $return_to = "code.create";     
         }
         return  $return_to;    
-    } 
+    } //end of vote_pre_check
    
+    
     /***
      * 
      * post check
      * Check after submitting the code 
      *  
      */
-    public function vote_post_check($auth_user,&$code){
+    public function vote_post_check($auth_user, &$code, $vote){
         // dd($code);
-        $return_to ="";
+        $_error                  =[];
+        $_error["return_to"]     ="";
+        $_error["error_message"]  ="";
+       
+        //  dd($code);
+
         if($code==null){
             /*** 
              * 
@@ -922,10 +929,23 @@ class VoteController extends Controller
             * you should redirect the form in dashboard
             * 
             */
-            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-            Your code is wrong. Send the screenshot to administrator!             </div>';
-            $return_to ='404';
+            $error_message = '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
+            Either Your code is wrong or you have not voted properly. Send the screenshot to administrator!          
+                <p> <a href="';
+                $error_message .= route('dashboard') .'"> Click here to go to the main Dashboard </a></p>
+            </div>';
+            $_error['error_message']   =$error_message;
+            //  dd($_error);
+           return  $_error;
 
+        }
+
+        if(!$code->is_code2_usable){
+            $code->is_code1_usable      =0;
+            $code->has_code1_sent       =0;                
+            $_error['return_to']       ='vote.create';
+           //  dd($_error);
+          return  $_error;
         }
         /***
          *
@@ -939,9 +959,11 @@ class VoteController extends Controller
         $_error_already_voted .='<p style="text-align: center margin: 2px 0px 2px 0px; font-weight:bold;">';
         $_error_already_voted .= '<a href="'. route('vote.verify_to_show').'" > Click here to see your vote</a>';
         $_error_already_voted .= '</p></div>'; 
+        // dd($code->has_voted);
         if($code->has_voted){
-            echo $_error_already_voted;
-             $return_to ='404';
+            $_error['error_message']   =$_error_already_voted;
+             
+            return  $_error;
            
             }
         /***
@@ -949,15 +971,158 @@ class VoteController extends Controller
          * Check if the voter has already voted or in any case vote is already saved 
          *  
          */
-          $vote =$auth_user->vote;
-        if($vote !=null)
+        
+        /***
+         * 
+         * check if the vote is there or not 
+         * 
+         */
+        $_error_no_voted = '<div style="margin:auto; color:red; padding:20px; 
+        font-weight:bold; text-align:center;"> 
+        <p>We could not find your vote. Please contact the administrator. You can start also to vote again </p>';
+        $_error_no_voted  .='<p style="text-align: center margin: 2px 0px 2px 0px; font-weight:bold;">';
+        $_error_no_voted  .= '<a href="'. route('code.create').'" > Click here to vote</a>';
+        $_error_no_voted  .= '</p></div>'; 
+        if($vote ==null)
         {
-            echo $_error_already_voted;
-            
-            $return_to ='404';
+            $_error['error_message'] =$_error_no_voted;
+           //  dd($_error);
+          return  $_error;
         } 
-        return $return_to ;
+        return $_error ;
+    } //end of vote_post_check
+    
+    public function second_code_check(&$code){
+        $_message                  = [];
+        $_message['error_message'] = "";
+        $_message['return_to']     ="";
+        $_message['totalDuration'] =0;
+      
+        $code_expires_in        = $code->voting_time_in_minutes;
+        $current                = Carbon::now();
+        $code1_used_at          = $code->code1_used_at;       
+        $totalDuration          = $current->diffInMinutes($code1_used_at );
+        $_message['totalDuration']=$totalDuration;
+        if($totalDuration> $code_expires_in| $code->is_code1_usable){
+            $code->is_code1_usable      =0;
+            $code-> has_code2_sent      =0;
+            $code->vote_submitted       =0;
+            $code->save();
+            $return_to                  = 'code.create';
+            $_message["return_to"]      = $return_to ;
+            $_message["totalDuration"]  = $totalDuration ;
+            return $_message;
+        }
+        if(!$code->vote_submitted){
+            $code->is_code1_usable      =0;
+            $code->is_code2_usable      =0;
+            $code-> has_code2_sent      =0;
+            $code->save();
+            $_message["return_to"]      ='vote.create';
+            $_message["totalDuration"]  = $totalDuration ;
+            return $_message;
+        }
+      return $_message;
     }
-    //
+
+    /***
+     * 
+     * @params1 : Code Object 
+     * @return : String  where to redirect.
+     */
+    public function verify_first_submission(Request $request, &$code, $auth_user ){
+          //
+          $user_id            =$request['user_id'];
+        $validator =  Validator::make(request()->all(), [
+            'user_id' =>['required'],
+            'agree_button'=>['required']                    
+        ]);
+        $has_voted          =$code->has_voted;      
+        $nothing_selected   =request('nothing_selected'); 
+        $agree_button       =request('agree_button');        
+        $return_to          ='';
+          // dd($nothing_selected);
+        //first check if at least one check box selected 
+        // $btemp = $this->at_least_one_vote_casted();
+        // $btemp=true;
+        $validator->after(function ($validator) {
+              
+            $agree_button =request('agree_button');
+          if (!$agree_button ) {
+              //add custom error to the Validator
+              $validator->errors()->add('agree_button',
+              "You have not clicked on Agree Button. 
+              Please click on the agree Button and accept that you  are submitting the vote! 
+               तपाइले एग्री वटनमा क्लीक गरेर भोट गरेको कुरा स्वीकार गर्नु भएन। ");
+          }
+      
+
+      });
+
+       
+                
+        if($user_id !=$auth_user->id)
+        {
+                             
+            $validator->after(function ($validator) {
+                  $validator->errors()->add('Longin_User: ',"Login usser is different than you!");              
+            });
+        } 
+        //      
+        if($has_voted)
+        {
+        
+            $return_to  = 'vote.show';       
+            $validator->after(function ($validator) {
+                  $validator->errors()->add('Vote: ',
+                  'You have already Voted. Thank you! Please check your Vote!');              
+            });
+            //run validation which will redirect on failure
+        }
+        $validator->validate($request);  
+       return  $return_to ;
+
+    }
+
+     /***
+      * 
+      * @params1: Code Object 
+    *   @returns: time in minutes Integer
+      */
+     public function send_second_voting_code(&$code, $auth_user){
+        $code1_used_at  = Carbon::parse($code->code1_used_at);
+        $current        = Carbon::now();
+        $totalDuration  = $current->diffInMinutes($code1_used_at);
+        if(!$code->is_code2_usable){
+            $code->has_code2_sent=0;
+        }else{
+     
+
+            if($totalDuration<$code->voting_time_in_minutes ){
+                $code->has_code2_sent   =0;
+                $code->is_code2_usable  =0;
+
+            }
+
+        }
+       
+       
+        if(!$code->has_code2_sent)
+        {
+            $voting_code            = get_random_string (6);
+            $code->code2            = Hash::make($voting_code);
+            $totalDuration          =0;
+            $auth_user->notify(new SecondVerificationCode($auth_user, $voting_code));
+            
+            $code->has_code2_sent   =1;
+            $code->is_code1_usable  =0; 
+            $code->is_code2_usable   =1;  
+            $code->save();
+        }
+
+       
+        return $totalDuration;
+        
+     }
 
 }//end of the controller 
