@@ -1,6 +1,6 @@
 <template>
    <div class=" text-center m-auto w-full" >  
-         
+         <!-- {{full_image_name}} -->
          <img v-if="imageGiven" :src="full_image_name"  
             class="mx-auto py-1 sm:h-40 sm:w-40  md:h-96 md:w-96 rounded-lg object-cover" />
             <p class="mx-auto text-gray-900 font-bold " > {{ candidacy_name}} </p> 

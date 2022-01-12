@@ -12,8 +12,8 @@
         <div  v-for="(candidate, candiIndx) in candidates" :key="candiIndx"  
              class="flex flex-col justify-center p-4 mb-2 text-center  
               border border-gray-100 rounded"> 
-                <!-- {{candidate.image_path_1}}
-                {{candidate.post.name}}
+               <!-- test: {{candidate.image_path_1}}  -->
+                <!-- {{candidate.post.name}}
                 {{candidate.user.name}} -->
 
                 <show-candidate 

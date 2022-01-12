@@ -14,6 +14,6 @@ class Post extends Model
         //return $this->hasMany(Comment::class, 'foreign_key', 'local_key');
 
         return $this->hasMany(Candidacy::class, 'post_id', 'post_id')
-                     ->select(['candidacy_id','user_id', 'post_id']);
+                     ->select(['candidacy_id','user_id', 'post_id','image_path_1']);
     }
 }
