@@ -34,12 +34,12 @@ class ResultController extends Controller
     // https://reinink.ca/articles/calculating-totals-in-laravel-using-conditional-aggregates
     foreach($posts as $post){
         //  dd($post);
-        $_expr ="SUM( IF(post_id='"; 
-        $_expr .= $post->post_id."', 1, 0) )  as ".$post->post_id;
-        $_expr  =  'COUNT(DISTINCT vote_id)* '. $post->required_number;
-        $_expr  .="  as ".$post->post_id;
+        // $_expr ="SUM( IF(post_id='"; 
+        // $_expr .= $post->post_id."', 1, 0) )  as ".$post->post_id;
+        // $_expr  =  'COUNT(DISTINCT vote_id)* '. $post->required_number;
+        // $_expr  .="  as ".$post->post_id;
         // dd($_expr);
-        $results =$results->selectRaw($_expr ); 
+        // $results =$results->selectRaw($_expr ); 
         //expressioin for candidates 
         $post_candidates =$post->candidates;
         

@@ -31,7 +31,7 @@ export default {
      }
     function get_vote_percent(post_id, candidacy_id){
           let _key      = post_id+"_and_"+candidacy_id;
-          let total     =props.final_result[post_id];
+          let total     =props.final_result["total_votes"];
           let voteCout  =props.final_result[_key];
            return  voteCout/total;
           

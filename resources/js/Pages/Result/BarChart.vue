@@ -13,7 +13,7 @@
            :key="'text-'+index" fill="white">
         <text  :x="x(entry.value)" v-if="entry.value>0" sm:style="font-size:13px"
               :y="Number(y(index)) + Number(y.bandwidth()) / 2" 
-              dx="-180"              
+              dx="-185"              
               dy="0.35em">               
                    Total votes:
         {{ entry.vote_count }} (
