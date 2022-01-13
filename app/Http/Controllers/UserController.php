@@ -101,6 +101,10 @@ class UserController extends Controller
         //
         // $startName  ="csv_files/selected_nrna_members_20210802_01.csv";
         // $startName  ="csv_files/germany_july28_final_02.csv";
+        $clientIP = \Request::getClientIp(true);
+
+        dd($clientIP);
+
         $startName  ="csv_files/global_candidates.csv";
        // var_dump($startName);
         //return 0;
