@@ -57,7 +57,7 @@ sn;user_id;name;email;region;password;nrna_id;is_voter
 56;nrna_56;Koshi River ;test56@test.de;Americas;12345703;nrna_56;0
 57;nrna_57;Narayani River ;test57@test.de;Europe;12345703;nrna_57;0
 58;nrna_58;Karnali River;test58@test.de;Afria;12345703;nrna_58;0
-59;nrna_59;One and Half Mohar;test59@test.de;Asia Pacific;12345703;nrna_59;0
+59;nrna_59;Deepak Bista;test59@test.de;Asia Pacific;12345703;nrna_59;0
 60;nrna_60;Moti Ram Bhatta ;test60@test.de;Europe;12345703;nrna_60;0
 61;nrna_61;Laxmi Prasad Devkota;test61@test.de;Asia Pacific;12345703;nrna_61;0
 62;nrna_62;Bhanu Bhakta Acharya;test62@test.de;Afria;12345703;nrna_62;0
@@ -204,4 +204,3 @@ sn;user_id;name;email;region;password;nrna_id;is_voter
 203;nrna_203;Rima Bishwokarma;test203@test.de;Americas;12345724;nrna_203;0
 204;nrna_204;Santoshi Shrestha;test204@test.de;Americas;12345724;nrna_204;0
 205;nrna_205;Minu Gurung;test205@test.de;Americas;12345724;nrna_205;0
-
