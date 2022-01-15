@@ -442,7 +442,10 @@ class VoteController extends Controller
         $has_voted          =false;
         $name               ='';
         $verify_final_vote  =false;
-        $code               =auth()->user()->code;        
+        $code               =auth()->user()->code;    
+      
+        // echo $code->has_voted ;
+        // dd($code);
         if($code!=null){
                 
             
@@ -939,7 +942,16 @@ class VoteController extends Controller
            return  $_error;
 
         }
-
+        // dd($code);
+        // check the ip address 
+        $clientIP             =\Request::getClientIp(true);
+        $max_use_clientIP     =config('app.max_use_clientIP');
+        $_message= check_ip_address($clientIP,$max_use_clientIP);
+        if($_message['error_message']!=""){
+            echo $_message['error_message'];
+            abort(404);
+        }
+        
         if(!$code->is_code2_usable){
             $code->is_code1_usable      =0;
             $code->has_code1_sent       =0;                

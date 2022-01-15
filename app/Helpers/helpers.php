@@ -1,5 +1,6 @@
 <?php 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 /*****
  * 
  * @function name : csv_to_array 
@@ -76,3 +77,57 @@ if(! function_exists('is_url_only_after_first')){
         return $random ;
        }
    }
+
+   /***
+    * 
+    *Check Ip Address 
+    * @params1 : string : ip address 
+    *@params2:  Number :maximum no of ip address used.
+    *@return : array of string of  size 2. 
+    * with error_message and return to
+    */
+    if(! function_exists('check_ip_address')){
+        function check_ip_address($clientIP, $max_use_clientIP){
+        $_message                   =[];
+        $_message['error_message']  =""; 
+        $_message['return_to']      = "";
+        $ip_condition               =  "client_ip ='". $clientIP."' ";
+        $ip_condition               .=  " AND has_voted"; 
+        // dd($ip_condition);
+            
+        
+        $select_statement           = "count(case when ";
+        $select_statement           .= $ip_condition." ";
+        $select_statement           .= " then 1 end) as ipCount";
+        // dd( $select_statement); 
+        $times_ip_used              = DB::table('codes')
+                                    ->selectRaw($select_statement)
+                                    ->get();
+        // dd($times_ip_used);
+        // dd(max_use_clientIP);
+        $times_use_cleintIP = $times_ip_used[0]->ipCount;
+        // if($times_use_cleintIP>$max_use_clientIP){
+        if($times_use_cleintIP >=$max_use_clientIP){
+            $_message['error_message'] ='<div style="margin:auto; color:red; 
+                padding:20px; font-weight:bold; text-align:center;">';
+                $_message['error_message'] .="<p> There are alerady more than " ;
+                $_message['error_message'] .=$max_use_clientIP ;
+                $_message['error_message'] .=" Votes casted from your ip address: "; 
+                $_message['error_message'] .='<br> <span style="font-weight:bold; color: black;"> '.$clientIP."</span><br>";
+                $_message['error_message'] .="We are sorry to say that You can not vote 
+                any more using this ip address.</p>";
+                $_message['error_message'] .=" 
+                 <p> तपाइको आइपी एड्रेस वाट पहिले नै ".$max_use_clientIP.
+                 ' पटक भाेट हाली  सकिएको छ। माफ गर्नु होला,  हाम्राे नियम अनुसार एउटा आइपि एड्रेस वाट त्यस भन्दा वढी भोट हाल्न मिल्दैन।  </p>
+                 
+                 <p style="margin-top: 4px; color:#1E90FF; font-weight:bold;">  
+                    <a href="'.route('dashboard'). '"> Go to the Dashboard </a> </p> 
+                    </div>
+                 ';
+            $_message['return_to'] ='404';
+            // dd($_message);
+           
+          }
+        return $_message;        
+    }
+}

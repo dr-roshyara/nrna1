@@ -47,7 +47,9 @@
                 <span class="text-red-500 text-sm" >
                     (Please choose a password with minimum 8 characters)</span><br>
                  <span class="text-gray-700 text-sm" >
-                 कम्तिमा आठ अक्षर भएको  एक नयाँ पासवर्ड तलको कोठाभित्र भर्नुहोला।</span><br>
+                 कम्तिमा आठ अक्षर भएको  कुनै एक नयाँ पासवर्ड तलको कोठाभित्र भर्नुहोला।
+                  साथै भरेको पासवर्डलाइ संझेर राख्नु होला । 
+                  यहाँ भरेकाे पासवर्ड विना यहाँले लगइन गर्न सक्नु हुने छैन। </span><br>
                 
              </div> 
                 <jet-input id="password" type="password" class="mt-1 block w-full" 
@@ -58,7 +60,7 @@
                 <jet-label for="password_confirmation" value="Confirm Password" />
                  <div flex flex-wrap> <span> Please retype your password. </span> 
                   <span class="text-gray-700 text-sm" >
-                  माथि भरेकाे पासवर्ड पुनः लेख्नुहोला।
+                  माथि भरेकाे पासवर्ड पुनः लेख्नुहोस।
                   </span> </div>
                 <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
             </div>

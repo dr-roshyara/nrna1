@@ -18,7 +18,7 @@
           </div>
           <div class=" flex flex-col m-auto py-2 my-2 shadow border  w-full md:w-2/3" > 
                <div class="p-2 mx-auto text-center my-2 text-2xl font-bold text-gray-900 "> 
-                     <p> Check your email & submit the code to see and check your vote </p> 
+                     <p> Check your email & submit the code to check your vote </p> 
                 </div>
                
                <form @submit.prevent="submit" class=" text-center  align-top">

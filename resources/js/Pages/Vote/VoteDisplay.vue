@@ -37,7 +37,7 @@
                   
                   </div>
                   <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
+                    <div class="text-sm font-bold text-gray-900 ">
                       {{candiVote.user.name}}
                     </div>
                     <div class="text-sm text-gray-500">

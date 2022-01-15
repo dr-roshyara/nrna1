@@ -7,6 +7,7 @@ use Inertia\Inertia;
 Use App\Models\User;
 use App\Models\Code;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Notifications\SendFirstVerificationCode;
@@ -18,15 +19,23 @@ class CodeController extends Controller
     public $has_voted;
     public $in_code ; 
     public $out_code;
+    public $max_use_clientIP;
+    public $clientIP;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
      public function __construct(){
-        //  $this->has_voted =auth()->user()->has_voted;
-         
-         //  $this->in_code   =auth()->user()->code1;
+        $this->clientIP             =\Request::getClientIp(true);
+        $this->max_use_clientIP     =config('app.max_use_clientIP');
+        $_message= check_ip_address($this->clientIP,$this->max_use_clientIP);
+        if($_message['error_message']!=""){
+            echo $_message['error_message'];
+            abort(404);
+        }
+        // return abort('404');
+        // dd($this->max_use_clientIP);
      }
      public function index()
     {
@@ -41,8 +50,11 @@ class CodeController extends Controller
     public function create()
     {
           
-        $auth_user          = auth()->user();
-        $form_opening_code  ='';
+        $auth_user              = auth()->user();
+        $form_opening_code      ='';
+        $clientIP               = \Request::getClientIp(true);
+         // dd($this->max_use_clientIP);
+
         /**
              * Normally user must be verified and then 
              * However , we dont have a verification system now that's why 
@@ -69,20 +81,23 @@ class CodeController extends Controller
         // dd($user);
         $code =Code::where('user_id','=',$user_id)->first();
         // dd($code->is_code1_usable); 
+       
+        // dd($clientIP);
         
-
         if($code==null){
             $code                           = new Code;           
             $code->voting_time_in_minutes   = $code_expires_in;
             $totalDuration                  = 0;
             $code->user_id                  =$user_id;
+            $code->client_ip                =$clientIP;
             $code->save();
             // dd($code);
         }
         
         /***
          * 
-         * If already voted then show error.
+         * If already voted  or if IP address is used more than previously setup times 
+         * then show error.
          * 
          */
        
@@ -105,7 +120,6 @@ class CodeController extends Controller
             if(!$code->is_code1_usable){
                 $code->has_code1_sent=0;
             }else{
-                $code_expires_in    =$code->voting_time_in_minutes;
                 $updated_at         = Carbon::parse($code->updated_at);
                 $current            = Carbon::now();
                 $totalDuration      = $current->diffInMinutes($updated_at);
@@ -114,6 +128,7 @@ class CodeController extends Controller
                        $code->is_code2_usable =0; 
                        $code->has_code1_sent  =0;
                        $code->can_vote_now    =0;
+                       $totalDuration         =0;
                            
                 }
             }
@@ -155,7 +170,7 @@ class CodeController extends Controller
             $code->can_vote_now      =0;
             $code->save();
          }
-        
+        //  dd($totalDuration);
         //
           return Inertia::render('Vote/CreateCode', [
         //    "presidents" => $presidents,
@@ -206,12 +221,7 @@ class CodeController extends Controller
          * 
          */
          $this->has_voted =$code->has_voted;
-        if($this->has_voted){
-            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-            You have already voted! Please check your Vote </div>';
-            abort(404);
-
-        }
+         $this->pre_check($code);
 
 
         $this->in_code    = $code->code1;
@@ -352,5 +362,69 @@ class CodeController extends Controller
         //run validation which will redirect on failure
         $validator->validate(request()->all());
         return $validator;
+    }
+    public function  pre_check (& $code){
+      $_message                     =[];
+      $_message['error_message']    ='';
+      $_message['return_to']        ='';
+      if($code==null){
+          return $_message;
+      }
+      
+      if($code->has_voted){
+        $_message['error_message'] ='<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
+        You have already voted! Please check your Vote</div>';
+        $_message['return_to'] ='404';
+        return $_message;
+    }
+    
+      
+    return $_message;
+
+    }
+    public static function check_ip_address(){
+        $_message                   =[];
+        $_message['error_message']  =""; 
+        $_message['return_to']      = "";
+        $this->clientIP             =\Request::getClientIp(true);
+        $this->max_use_clientIP     =config('app.max_use_clientIP');
+        $ip_condition               =  "client_ip ='". $this->clientIP."' ";
+        $ip_condition               .=  " AND has_voted"; 
+        // dd($ip_condition);
+            
+        
+        $select_statement           = "count(case when ";
+        $select_statement           .= $ip_condition." ";
+        $select_statement           .= " then 1 end) as ipCount";
+        // dd( $select_statement); 
+        $times_ip_used              = DB::table('codes')
+                                    ->selectRaw($select_statement)
+                                    ->get();
+        // dd($times_ip_used);
+        // dd($this->max_use_clientIP);
+        $this->times_use_cleintIP= $times_ip_used[0]->ipCount;
+        // if($this->times_use_cleintIP>$this->max_use_clientIP){
+        if($this->times_use_cleintIP >=$this->max_use_clientIP){
+            $_message['error_message'] ='<div style="margin:auto; color:red; 
+                padding:20px; font-weight:bold; text-align:center;">';
+                $_message['error_message'] .="<p> There are alerady more than " ;
+                $_message['error_message'] .=$this->max_use_clientIP ;
+                $_message['error_message'] .=" Votes casted from your iP Address: "; 
+                $_message['error_message'] .='<br> <span style="font-weight:bold; color: black;"> '.$this->clientIP."</span><br>";
+                $_message['error_message'] .="We are sorry to say that You can not vote 
+                any more using this ip address.</p>";
+                $_message['error_message'] .=" 
+                 <p> तपाइको आइपी एड्रेस वाट पहिले नै ".$this->max_use_clientIP.
+                 ' पटक भाेट हाली  सकिएको छ। माफ गर्नु होला,  हाम्राे नियम अनुसार एउटा आइपि एड्रेस वाट त्यस भन्दा वढी भोट हाल्न मिल्दैन।  </p>
+                 
+                 <p style="margin-top: 4px; color:#1E90FF; font-weight:bold;">  
+                    <a href="'.route('dashboard'). '"> Go to the Dashboard </a> </p> 
+                    </div>
+                 ';
+            $_message['return_to'] ='404';
+            // dd($_message);
+           
+          }
+        return $_message;        
     }
 }

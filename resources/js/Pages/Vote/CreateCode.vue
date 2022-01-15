@@ -46,7 +46,7 @@
                 <div class="p-2 mb-1 font-bold text-gray-900 ">
                    <label for="voting_code"  class="p-2 md:p-4"> 
                         <p class="text-xl text-gray-900 font-bold text-center"> 
-                     First Voting Code</p>                 
+                     First voting code</p>                 
                    </label>   
                   <input class="p-2 md:px-4 md:py-6 rounded-lg bg-gray-200 w-full md:w-1/2 
                    font-bold border border-blue-400  text-gray-900 font-bold text-xl" 

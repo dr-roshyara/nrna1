@@ -32,7 +32,7 @@
                      :src="full_image_name(candiVec.image_path_1)" alt="">                  
                   </div>
                   <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
+                    <div class="text-sm font-bold text-gray-900">
                       {{candiVec.user.name }}
                     </div>
                     <div class="text-sm text-gray-500">
