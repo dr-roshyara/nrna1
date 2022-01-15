@@ -95,10 +95,10 @@
                 <p> If you are not registered yet, please get registered first.</p> 
                     <inertia-link 
                         :href="route('register')" 
-                        class="m-auto text-sm  font-bold px-6 py-1 bg-gray-200 w-1/2 text-center">
+                        class="m-auto text-sm  font-bold px-6 py-1 bg-gray-600 w-1/2 text-center text-white">
                             Register 
                         </inertia-link>
-                        <p class ="my-2  py-1"> 
+                        <p class ="my-2  py-1 text-red-500 font-bold"> 
                            यदि तपाईंले पहिलो पल्ट यो वेवसाइट खोल्नु भाको हो भने,सबैभन्दा पहिले 
                             <inertia-link 
                         :href="route('register')" 
