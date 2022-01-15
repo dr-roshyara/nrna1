@@ -113,15 +113,19 @@ if(! function_exists('is_url_only_after_first')){
                 $_message['error_message'] .="<p> There are alerady more than " ;
                 $_message['error_message'] .=$max_use_clientIP ;
                 $_message['error_message'] .=" Votes casted from your ip address: "; 
-                $_message['error_message'] .='<br> <span style="font-weight:bold; color: black;"> '.$clientIP."</span><br>";
+                $_message['error_message'] .='<br> <span style="font-weight:bold; color: black;"> '
+                .$clientIP."</span><br>";
                 $_message['error_message'] .="We are sorry to say that You can not vote 
                 any more using this ip address.</p>";
                 $_message['error_message'] .=" 
-                 <p> तपाइको आइपी एड्रेस वाट पहिले नै ".$max_use_clientIP.
-                 ' पटक भाेट हाली  सकिएको छ। माफ गर्नु होला,  हाम्राे नियम अनुसार एउटा आइपि एड्रेस वाट त्यस भन्दा वढी भोट हाल्न मिल्दैन।  </p>
+                 <p> तपाइको आइपी एड्रेस ".$clientIP. " वाट पहिले नै "
+                 .$max_use_clientIP.
+                 ' पटक भाेट हाली  सकिएको छ। माफ गर्नु होला,  हाम्राे नियम अनुसार एउटा आइपि एड्रेस वाट '
+                 .$max_use_clientIP.
+                 ' भन्दा वढी भोट हाल्न मिल्दैन।  </p>
                  
                  <p style="margin-top: 4px; color:#1E90FF; font-weight:bold;">  
-                    <a href="'.route('dashboard'). '"> Go to the Dashboard </a> </p> 
+                    <a href="'.route('dashboard'). '"> Go to the Dashboard | ड्यास वोर्डमा जानलाइ यहाँ क्लिक गर्नुहोस।</a> </p> 
                     </div>
                  ';
             $_message['return_to'] ='404';
