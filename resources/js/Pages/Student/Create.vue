@@ -3,12 +3,12 @@
     <Head title="बालवालिकाहरूका लागि आइटी  " />
     <div class="min-h-screen px-2  w-full ">
             <div class="mt-2 mb-2 py-2 flex flex-col items-center "> 
-                <p class="mx-auto text-center text-xl text-gray-900 font-bold"> बालवालिकाहरूका लागि आइटी  </p>
+                <p class="mx-auto text-center text-xl text-gray-900 font-bold"> युरोपमा बालवालिकाहरूका लागि आइटी  </p>
                 <p > Please fill the form below if you are interested  in  your child joins online IT Class</p>
               <jet-validation-errors class="mb-4  mx-auto text-center " /> 
             
             </div> 
-            <form @submit.prevent="submit" class="w-full md:max-w-lg  mx-auto   mt-6 mb-4 ">
+            <form @submit.prevent="submit" class="w-full md:w-1/2 mx-auto   mt-6 mb-4 ">
              <div class="w-full  flex flex-col md:flex-row   mb-2 "> 
                     <label class="w-full md:w-1/3" for="first_name">First name</label>
                     <jet-input class="w-full  md:w-2/3 bg-green-50  border border-blue-100 focus:ring-indigo-300  md:mx-2 py-2" 
