@@ -11,6 +11,7 @@ use App\Http\Controllers\CandidacyController;
 use App\Http\Controllers\VoterlistController;
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\StudentController;
 // use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\VoteController; 
 use App\Http\Controllers\ResultController; 
@@ -18,6 +19,7 @@ use App\Http\Controllers\CodeController;
 use App\Http\Controllers\DeligateCandidacyController;
 use App\Http\Controllers\DeligateVoteController;
 use App\Http\Controllers\DeligateCodeController;
+use App\Http\Controllers\TestController;
 //Models
 use Inertia\Inertia;
 use App\Models\Message;
@@ -213,3 +215,17 @@ Route::middleware(['auth:sanctum', 'verified']) ->get('deligatecandidacy/update'
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/count', [DeligateVoteController::class, 'count'])->name('deligatevote.count');
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/result', [DeligateVoteController::class, 'result'])->name('deligatevote.result');
  
+
+ /***
+  * 
+  * test 
+  */
+  Route::middleware(['auth:sanctum', 'verified']) ->get('/test', [TestController::class, 'index'])->name('test.index');
+
+  /***
+   * 
+   * Student Controller 
+   */
+  Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
+  Route::post('/student/store', [StudentController::class, 'store'])->name('student.store');
+  Route::get('/student/show', [StudentController::class, 'show'])->name('student.show'); 
