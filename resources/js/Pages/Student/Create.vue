@@ -1,10 +1,25 @@
 <template>
-    <nrna-layout>
-    <Head title="बालवालिकाहरूका लागि आइटी  " />
+    <nrna-layout >
+    <!-- <Head title="बालवालिकाहरूका लागि आइटी  " /> -->
+    <Head>
+        <title>Your page title</title>
+        <meta name="description" content="Your page description">
+    </Head>
     <div class="min-h-screen px-2  w-full ">
             <div class="mt-2 mb-2 py-2 flex flex-col items-center "> 
-                <p class="mx-auto text-center text-xl text-gray-900 font-bold"> युरोपमा बालवालिकाहरूका लागि आइटी  </p>
-                <p > Please fill the form below if you are interested  in  your child joins online IT Class</p>
+                <p class="mx-auto  text-xl text-gray-900 font-bold mb-2"> युरोपमा बालवालिकाहरूका लागि आइटी  </p>
+                <div class="p-3 md:p-4 border border-green-50 shadow-md mb-2 text-gray-900 bg-blue-50">
+                <p> <b>सुरुवात मितीः</b> ७ फ्रेबुअरी २०२२<br>
+                <b>समयः</b> विहान ७-८ वजे सम्म (युरोप सेन्ट्रल समय) <br>                      
+                <b>स्थान/माध्यमः</b> अनलाइन जुम कक्षा<br>
+                <b>उमेर समुह:</b> १३ देखि २० वर्ष सम्मका वालवालिकाहरू<br> 
+                <b>शुल्कः</b> निशुल्क (परोपकारी काम अन्तर्गत)<br>
+                <b>शिक्षकः</b> डा. नवराज रोस्यारा <br>
+                <b>भाषा माध्यम:</b> अंग्रेजी, नेपाली र जर्मन <br>
+                <b>अभिवावक स्रहितको पहिलो भेटघाटः</b> २९ जनवरी २०२२ शनिवार । </p>
+                </div>
+               <p > Please fill the form below if you are interested  in  your child joins online IT Class</p>
+              
               <jet-validation-errors class="mb-4  mx-auto text-center " /> 
             
             </div> 
@@ -81,8 +96,28 @@
                 <jet-button type="submit" class="mt-2 w-full ">
                     <span class="mx-auto  py-2"> Submit</span></jet-button>
             </form>
+             <div class="p-2 mt-2 mb-2 w-full md:w-2/3 mx-auto">
+               आदरणिय दिदी वहिनी तथा दाजुभाइहरू,<br>
+गैर आवासिय नेपाली सेघ जर्मनी  भाषा तथा वालवालीका विभाग र एनआरएनएका पुर्व अध्यक्ष डा० नवराज रोस्यारा सेगको सहकार्यमा  नव निर्वचित कमिटी वने देखि नै वालवालीकाहरूको लागि कक्षा सेचालन सेम्वन्धमा छलफल चलिरहेको  थियो। छलफलमा एनआरएनए ग्लोवलको निर्वाचन पश्चात अनलाइन कक्षा संचालन गर्ने निश्कर्ष हामीले निकालेका थियौ । तर एनआरएनए ग्लोवलको निर्वाचन सर्दै गएको र अझै पनि निश्चत भै नसकेको अवस्थामा वालवालिकाको लागि संचालन गरिने कक्षाहरू अव कक्षा संचालनको कार्यलाइ अघि वढाउने निर्णय गरेका छौ।  
+कक्षा सेचालन गर्ने क्रममा पहिलो पल्ट हामी तेह्र देखि वीस वर्ष सम्मका वाल वालीकाहरूका लागि आइटी कोर्ष संचालन गर्न गइरहेका छौ । आइटी कोर्षको  कक्षा हरेक शनिवार विहान सात वजे देखि आठ वजे सम्म अनलाइन कक्षा गरिनेछ। आइटी कक्षामा निरन्तर एकवर्ष सहभागि भएका विध्यार्थीहरूले निम्न ज्ञान हासिल गर्न सक्नेछन। 
+<ul class="px-2 m-2"> 
+<li class="list-disc"> कम्प्युटरको आधारभुत आर्केटेक्चर, कम्प्युटरमा प्रोग्रामहरू इन्सटल डिइन्स्टल गर्ने तरिका</li>
+<li class="list-disc">	प्रोग्रामिड० भनेको केहो ? कसरी लेख्ने? प्रोग्रामिड० गर्न चाहिने आधारभुत सिपहरू </li>
+<li class="list-disc">	मानिसको दैनिक जिवनमा आइटिको प्रयोग र देनिकीमा आधारित विभिन्न उदाहरणहरूको समाधान।</li>
+<li class="list-disc">	कुनै एउटा प्रेग्रामको प्रयोग गरेर प्रोजेक्ट वर्क अभ्यास </li>
+</ul>
+यदि यहाँहरूका छोरा छोरीहरू तेह्र देखि वीस वर्ष सम्मका छन र
+ कम्युटरको ज्ञान लिन इच्छुक छन भने उनिहरूका लागि यो कक्षा एकदमै उपयुक्त् हुन सक्छ।
+   यो कक्षामा यस्मा यहाँहरूको रूचि रह्यो भने आफ्ना छोरा छोरीहरू संग सर सल्लाह गरेर 
+    कृपया निम्न लिन्कको फर्ममा गएर अभिभावकहरूले
+     भाग लिने वच्चाहरूको जानकारि दिनुहुनेछ।  <br><br>
+मिरा पौडेल अधिकारी <br>
+भाषा तथा वालवालीका कोर्डिनेटर <br>
+गैर आवासिय नेपाली सेघ जर्मनी  
+
+                </div>
             </div>
-       
+          
      
 </nrna-layout>
 </template>
@@ -96,7 +131,7 @@ import ShowCheckbox from "@/Shared/ShowCheckbox";
 import JetValidationErrors from '@/Jetstream/ValidationErrors' 
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
-import { Head } from '@inertiajs/inertia-vue3';
+import { Head } from '@inertiajs/inertia-vue3'
 export default {
 components:{
     AppLayout,

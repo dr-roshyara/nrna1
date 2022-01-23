@@ -66,7 +66,8 @@ class StudentController extends Controller
             'email' => $request['email']
            
         ]);
-        redirect()->route('student.show');
+        // dd($student);
+        return redirect()->route('student.show');
     }
 
     /**
