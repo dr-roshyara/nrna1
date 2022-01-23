@@ -13,6 +13,7 @@ class Student extends Model
         'family_name',
         'child_name',
         'child_grade',
+        'birth_year',
         'child_language',
         'city',
         'country',

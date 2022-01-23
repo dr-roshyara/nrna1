@@ -4,7 +4,10 @@
            <div class="min-h-screen">  
  
          
-            <p class="mx-auto text-center mt-10">    Thank you Very much for your registration. We will contact you personally. 
+            <p class="mx-auto text-center mt-10">    
+                Thank you Very much for your registration.<br>
+                 We will contact you personally. <br>
+                    
                NRNA </p> 
            </div>
       </nrna-layout>

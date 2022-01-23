@@ -16,7 +16,7 @@
                 <b>शुल्कः</b> निशुल्क (परोपकारी काम अन्तर्गत)<br>
                 <b>शिक्षकः</b> डा. नवराज रोस्यारा <br>
                 <b>भाषा माध्यम:</b> अंग्रेजी, नेपाली र जर्मन <br>
-                <b>अभिवावक स्रहितको पहिलो भेटघाटः</b> २९ जनवरी २०२२ शनिवार । </p>
+                <b>अभिवावक सहितको पहिलो भेटघाटः</b> २९ जनवरी २०२२ शनिवार । </p>
                 </div>
                <p > Please fill the form below if you are interested  in  your child joins online IT Class</p>
               
@@ -46,6 +46,13 @@
                     <label class="w-full md:w-1/3" for="child_grade">Child's grade</label>
                     <jet-input class="w-full md:w-2/3 bg-green-50  border border-blue-100 md:mx-2 py-2" 
                         id="child_grade" type="text" v-model="form.child_grade" required  />
+                </div> 
+                  <!-- next  -->
+                   <div class="w-full w-full flex flex-col md:flex-row   mb-2 "> 
+                    <label class="w-full md:w-1/3" for="birth_year">
+                    Child's birth year</label>
+                    <jet-input class="w-full md:w-2/3 bg-green-50  border border-blue-100 md:mx-2 py-2" 
+                        id="birth_year" type="month" v-model="form.birth_year" required  />
                 </div> 
                 <!-- next  -->
                    <div class="w-full w-full flex flex-col md:flex-row   mb-2 "> 
@@ -152,6 +159,7 @@ setup () {
       last_name: null,
       child_name:null,
       child_grade:null,
+      birth_year:null,
       child_language:null,
       city:null,
       country:null,      
