@@ -1,13 +1,13 @@
 <template>
      <nrna-layout>
-     <Head title="बालवालिकाहरूका लागि आइटी  " />
+     <Head title="बालवालिकाहरूका लागि निशुल्क आइटी  " />
            <div class="min-h-screen">  
  
          
             <p class="mx-auto text-center mt-10">    
                 Thank you Very much for your registration.<br>
                  We will contact you personally. <br>
-                    
+
                NRNA </p> 
            </div>
       </nrna-layout>
