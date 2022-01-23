@@ -7,7 +7,8 @@
     </Head>
     <div class="min-h-screen px-2  w-full ">
             <div class="mt-2 mb-2 py-2 flex flex-col items-center "> 
-                <p class="mx-auto  text-xl text-gray-900 font-bold mb-2"> युरोपमा बालवालिकाहरूका लागि आइटी  </p>
+                <p class="mx-auto  text-xl text-gray-900 font-bold mb-2"> 
+                    युरोपमा बालवालिकाहरूका लागि निशुल्क आइटी  </p>
                 <div class="p-3 md:p-4 border border-green-50 shadow-md mb-2 text-gray-900 bg-blue-50">
                 <p> <b>सुरुवात मितीः</b> ७ फ्रेबुअरी २०२२<br>
                 <b>समयः</b> विहान ७-८ वजे सम्म (युरोप सेन्ट्रल समय) <br>                      
