@@ -15,7 +15,8 @@ class AddBirthYearToStudents extends Migration
     {
         Schema::table('students', function (Blueprint $table) {
             //
-            $table->string('birth_year');
+            $table->string('birth_year'); 
+            
         });
     }
 
