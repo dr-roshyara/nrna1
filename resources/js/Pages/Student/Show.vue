@@ -1,6 +1,6 @@
 <template>
      <nrna-layout>
-     <Head title="बालवालिकाहरूका लागि निशुल्क आइटी  " />
+     <!-- <Head title="बालवालिकाहरूका लागि निशुल्क आइटी  " /> -->
            <div class="min-h-screen">  
  
          
@@ -16,7 +16,7 @@
 import AppLayout from '@/Layouts/AppLayout'
 import NrnaLayout from '@/Layouts/NrnaLayout'  
 import { Inertia } from '@inertiajs/inertia'
-import { Head } from '@inertiajs/inertia-vue3';  
+// import { Head } from '@inertiajs/inertia-vue3';  
 export default {
     props:{
         student:Object 
@@ -24,7 +24,7 @@ export default {
     components:{
         AppLayout,
         NrnaLayout,
-        Head 
+        // Head 
     }
 }
 </script>

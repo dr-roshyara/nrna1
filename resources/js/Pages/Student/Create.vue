@@ -1,10 +1,10 @@
 <template>
     <nrna-layout >
     <!-- <Head title="बालवालिकाहरूका लागि आइटी  " /> -->
-    <Head>
+    <!-- <Head>
         <title>Your page title</title>
         <meta name="description" content="Your page description">
-    </Head>
+    </Head> -->
     <div class="min-h-screen px-2  w-full ">
             <div class="mt-2 mb-2 py-2 flex flex-col items-center "> 
                 <p class="mx-auto  text-xl text-gray-900 font-bold mb-2"> 
@@ -143,7 +143,7 @@ import ShowCheckbox from "@/Shared/ShowCheckbox";
 import JetValidationErrors from '@/Jetstream/ValidationErrors' 
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
-import { Head } from '@inertiajs/inertia-vue3'
+// import { Head } from '@inertiajs/inertia-vue3'
 export default {
 components:{
     AppLayout,
@@ -151,7 +151,7 @@ components:{
     JetInput,
     JetButton,
     JetValidationErrors,
-    Head
+    // Head
 
 },
 props:{
