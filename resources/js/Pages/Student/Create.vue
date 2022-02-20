@@ -21,7 +21,7 @@
                 <b>सम्पर्कको लागि </b><br> 
                   मिरा अधिकारी<br>
                   email: mpoudel@hotmail.de<br>
-                  whatsapp: +4915164322589<br>               
+                  Whatsapp: +4915164322589<br>                 
                 
                 </p>
                 </div>
