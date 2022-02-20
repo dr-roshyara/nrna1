@@ -32,6 +32,12 @@
                <!-- <img class="object-cover" src="/images/germanynepal.png" width="200" height="200"/> -->
             </div> 
         </div> 
+         <div class="mt-5"> 
+          <div class="ml-2 p-2"> 
+            <inertia-link href="/student/create" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> IT Classes</inertia-link>
+            </div>     
+
+         </div>
          <!-- start  -->
             <!--        <inertia-link href="#" class="m-auto" > 
                       <div class=" flex flex-col h-64 py-2 m-auto text-center px-10 w-full">
