@@ -4,7 +4,7 @@
        
         <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 text-center">
             <div class="text-white text-sm font-bold">
-                Copyright &copy;2021 NRNA Germany. All Rights Reserved by NRNA
+                Copyright &copy;2021 NRNA . All Rights Reserved by NRNA
                 Germany
             </div> 
         </div>
