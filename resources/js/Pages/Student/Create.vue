@@ -17,7 +17,13 @@
                 <b>शुल्कः</b> निशुल्क (परोपकारी काम अन्तर्गत)<br>
                 <b>शिक्षकः</b> डा. नवराज रोस्यारा <br>
                 <b>भाषा माध्यम:</b> अंग्रेजी, नेपाली र जर्मन <br>
-                <b>अभिवावक सहितको पहिलो भेटघाटः</b> २९ जनवरी २०२२ शनिवार । </p>
+                <b>अभिवावक सहितको पहिलो भेटघाटः</b> २९ जनवरी २०२२ शनिवार ।  <br>
+                <b>सम्पर्कको लागि </b><br> 
+                  मिरा अधिकारी<br>
+                  email: mpoudel@hotmail.de<br>
+                  whatsapp: +4915164322589<br>               
+                
+                </p>
                 </div>
                <p > Please fill the form below if you are interested  in  your child joins online IT Class</p>
               
