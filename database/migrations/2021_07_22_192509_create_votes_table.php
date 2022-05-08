@@ -15,12 +15,12 @@ class CreateVotesTable extends Migration
     {
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
-            // $table->string('user_id');
+            $table->string('user_id');
             // $table->string('post_id');
-              //no vote  option 
+              //no vote  option
             $table->boolean('no_vote_option')->default(0);
             $table->string('voting_code');
-            
+
             $table->json("candidate_01")->nullable();
             $table->json("candidate_02")->nullable();
             $table->json("candidate_03")->nullable();
@@ -61,7 +61,7 @@ class CreateVotesTable extends Migration
             $table->json("candidate_37")->nullable();
             $table->json("candidate_38")->nullable();
             $table->json("candidate_39")->nullable();
-            $table->json("candidate_40")->nullable();            
+            $table->json("candidate_40")->nullable();
             //
             $table->json("candidate_41")->nullable();
             $table->json("candidate_42")->nullable();
@@ -72,7 +72,7 @@ class CreateVotesTable extends Migration
             $table->json("candidate_47")->nullable();
             $table->json("candidate_48")->nullable();
             $table->json("candidate_49")->nullable();
-            $table->json("candidate_50")->nullable();            
+            $table->json("candidate_50")->nullable();
             //
             $table->json("candidate_51")->nullable();
             $table->json("candidate_52")->nullable();
@@ -83,7 +83,7 @@ class CreateVotesTable extends Migration
             $table->json("candidate_57")->nullable();
             $table->json("candidate_58")->nullable();
             $table->json("candidate_59")->nullable();
-            $table->json("candidate_60")->nullable(); 
+            $table->json("candidate_60")->nullable();
             //
             $table->timestamps();
         });
