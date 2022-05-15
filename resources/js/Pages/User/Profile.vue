@@ -1,7 +1,8 @@
 <template>
 <profile-layout>
 <div>
-{{user}}
+<!-- {{user}} -->
+
 test
 </div>
 </profile-layout>

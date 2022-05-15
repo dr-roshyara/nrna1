@@ -1,18 +1,51 @@
 <template>
-      <div class="flex flex-col">
+      <div class="flex flex-col bg-gray-50">
         <div class="flex flex-col  md:flex-row
-            justify-center p-2 lg:py-4
+            justify-center p-2
             item-center
               md: w-full rounded border border-blue-50">
-            <div class="flex flex-center space-x-4 items-center ">
+            <div class="flex flex-center space-x-4 items-center  ">
                 <!-- <div id="logo" style="background-image: url('/logo-2.png')"> </div> -->
-                <div id="logo" class="w-24 h-20">
+                <div id="logo" class="w-16 h-16 flex-none">
                   <a href="/">
                       <img class="object-cover" src="/images/logo-2.png" width="100" height="100" />
                   </a>
                 </div>
-                <div id="slogan" class="ml-4 px-2 w-96">
-                   test
+                <div  class="ml-4 px-2 w-96">
+                    <div class="flex flex-wrap  justify-around  items-center   sm:mt-0 space-x-3">
+
+                        <div class="flex flex-col items-center">
+                            <svg class="h-8 w-8 text-blue-600 my-auto"  fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                            <span class="text-sm">start</span>
+                         </div>
+
+                        <div class="flex flex-col items-center self-end">
+                            <svg class="w-6 h-6 text-blue-600 my-auto" aria-hidden="true" focusable="false"
+                            data-prefix="fas" data-icon="search"
+                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                            </svg>
+                             <span class="text-sm">Search</span>
+
+                        </div>
+                        <div class="flex flex-col items-center self-end">
+                            <svg class="h-8 w-8 text-blue-600"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                            <span class="text-sm">Friends</span>
+                        </div>
+                        <div class="flex flex-col items-center ">
+                            <svg class="h-10 w-10 text-blue-600"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                            </svg>
+                            <span class="text-sm">Menu</span>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
@@ -59,10 +92,16 @@
         </div>
 </template>
 <script>
+import SearchLoop from '@/Components/SearchLoop.vue';
+
 export default {
     props:{
         canLogin: Boolean,
         canRegister: Boolean,
+    },
+    components:{
+        SearchLoop
     }
+
 }
 </script>
