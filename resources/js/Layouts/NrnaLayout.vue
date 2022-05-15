@@ -1,16 +1,16 @@
 <template>
-    <div class="flex flex-col min-h-screen">
-         <nrna-header :canRegister="canRegister" :canLogin="canLogin"> </nrna-header> 
+    <div class="flex flex-col min-h-screen lg:h-full">
+         <nrna-header :canRegister="canRegister" :canLogin="canLogin"> </nrna-header>
      <!-- middle  -->
-       <slot class="flex-grow min-h-screen"> </slot> 
+       <slot class="flex-grow min-h-screen"> </slot>
        <!-- footer  -->
      <nrna-footer class="px-4 "> </nrna-footer>
-    </div> 
+    </div>
 
 </template>
 <script>
-import NrnaHeader from "@/Jetstream/NrnaHeader"; 
-import NrnaFooter from "@/Jetstream/NrnaFooter"; 
+import NrnaHeader from "@/Jetstream/NrnaHeader";
+import NrnaFooter from "@/Jetstream/NrnaFooter";
 
 export default {
     props: {

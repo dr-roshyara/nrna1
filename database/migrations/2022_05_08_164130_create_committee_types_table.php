@@ -15,6 +15,10 @@ class CreateCommitteeTypesTable extends Migration
     {
         Schema::create('committee_types', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('hierarchical_number')->unsigned()->nullable(false);
+            $table->string('short_name')->nullable();
+            $table->string('full_name');
+            $table->string('scope'); 
             $table->timestamps();
         });
     }

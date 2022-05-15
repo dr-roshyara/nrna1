@@ -2,23 +2,31 @@
     <nrna-layout>
     <jet-authentication-card class="mb-6">
         <jet-validation-errors class="mb-4" />
-           <p class="text-gray-900 font-bold text-2xl p-2 my-2 mx-auto text-center"> User Registration </p> 
+           <p class="text-gray-900 font-bold text-2xl p-2 my-2 mx-auto text-center"> User Registration </p>
         <form @submit.prevent="submit">
-          <!-- add name    -->
-           <div>
-                <jet-label for="name" value="Name" />
-                <jet-input id="name" type="text" 
-                class="mt-1 block w-full" 
-                v-model="form.name" 
-                required autofocus autocomplete="name" />
+          <!-- first and middle name    -->
+           <div class="pb-1">
+                <jet-label for="firstname" value="First  and Middle Name" />
+                <jet-input id="firstname" type="text"
+                class="mt-1 block w-full"
+                v-model="form.firstName"
+                required autofocus autocomplete="firstName" />
+            </div>
+              <!-- Last name  -->
+              <div class="mt-4">
+                <jet-label for="lastName" value="Last Name" />
+                <jet-input id="lastName" type="text"
+                class="mt-1 block w-full"
+                v-model="form.lastName"
+                required autofocus autocomplete="lastName" />
             </div>
               <!-- here starts the region selection  -->
               <div class="mt-4">
                    <jet-label for="region" value="Region" />
               <div class="border-gray-300 focus:border-indigo-300 focus:ring
-     focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
-            <select name ="region" id="region"  
-              v-model="form.region"  
+                focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" >
+            <select name ="region" id="region"
+              v-model="form.region"
             class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                 <option>Europe </option>
                 <option>America </option>
@@ -37,28 +45,28 @@
             <!-- next -->
             <div class="mt-4">
                 <jet-label for="email" value="Email" />
-                <jet-input id="email" type="email" 
+                <jet-input id="email" type="email"
                 class="mt-1 block w-full" v-model="form.email" required />
             </div>
 
             <div class="mt-4">
             <div class="flex flex-wrap space-x-2">
-            <jet-label for="password" value="Password"  /> 
+            <jet-label for="password" value="Password"  />
                 <span class="text-red-500 text-sm" >
                     (Please choose a password with minimum 8 characters)</span><br>
                  <span class="text-gray-700 text-sm" >
                  कम्तिमा आठ अक्षर भएको  कुनै एक नयाँ पासवर्ड तलको कोठाभित्र भर्नुहोला।
-                  साथै भरेको पासवर्डलाइ संझेर राख्नु होला । 
+                  साथै भरेको पासवर्डलाइ संझेर राख्नु होला ।
                   यहाँ भरेकाे पासवर्ड विना यहाँले लगइन गर्न सक्नु हुने छैन। </span><br>
-                
-             </div> 
-                <jet-input id="password" type="password" class="mt-1 block w-full" 
+
+             </div>
+                <jet-input id="password" type="password" class="mt-1 block w-full"
                 v-model="form.password" required autocomplete="new-password" />
             </div>
- 
+
             <div class="mt-4 ">
                 <jet-label for="password_confirmation" value="Confirm Password" />
-                 <div flex flex-wrap> <span> Please retype your password. </span> 
+                 <div flex flex-wrap> <span> Please retype your password. </span>
                   <span class="text-gray-700 text-sm" >
                   माथि भरेकाे पासवर्ड पुनः लेख्नुहोस।
                   </span> </div>
@@ -77,7 +85,7 @@
                 </jet-label>
                 <div class="text-sm text-gray-600 py-1">
                     कृपया माथिकाे सानो चेकबक्समा क्लिक गरी एनआरएनए नमूना निर्वाचनमा भाग लिन सहमति जनाउनु होला।
-                </div> 
+                </div>
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -119,8 +127,9 @@
         data() {
             return {
                 form: this.$inertia.form({
-                                                       
-                    name: '',
+
+                    firstName: '',
+                    lastName: '',
                     email: '',
                     password: '',
                     password_confirmation: '',

@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
 //use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 //
 use Inertia\Inertia;
 class UserController extends Controller
@@ -20,7 +21,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    //starts here 
+    //starts here
     public function index(Request $request)
     {
         request()->validate([
@@ -28,7 +29,7 @@ class UserController extends Controller
             'field' => ['in:id,name,last_name,nrna_id,state,telephone,created_at']
         ]);
         $query =User::query();
-        
+
         // if(request('direction')){
         //     $query->orderBy('id',request('direction'));
 
@@ -36,41 +37,41 @@ class UserController extends Controller
         //     $query->orderBy('id','desc');
 
         // }
-        
+
         if(request('search')){
             $query->where('last_name', 'LIKE', '%'.request('search').'%');
-        } 
+        }
         if(request('name')){
             $query->where('name', 'LIKE', '%'.request('name').'%');
-        } 
+        }
         //
          if(request('nrna_id')){
             $query->where('nrna_id', 'LIKE', '%'.request('nrna_id').'%');
-        } 
+        }
         //
         if(request()->has(['field', 'direction'])){
-            $query->orderBy(request('field'), request('direction')); 
+            $query->orderBy(request('field'), request('direction'));
         }else{
-            $query->orderBy('id','desc'); 
+            $query->orderBy('id','desc');
         }
-        //the following lines are for the first type of search 
+        //the following lines are for the first type of search
 
-        // $users =Message::when( $request->term, 
+        // $users =Message::when( $request->term,
         //     function($query, $term){
         //     $query->where('to', 'LIKE', '%'.$term.'%' );
-        // })->paginate(20); 
-        
+        // })->paginate(20);
+
          $users =$query->paginate(20);
         // $users =$users->sortBy('created_at')->reverse();
         return Inertia::render('User/Index', [
           'users' => $users,
-          'filters' =>request()->all(['name','nrna_id','field','direction'])  
- 
+          'filters' =>request()->all(['name','nrna_id','field','direction'])
+
         ]);
-    
+
 
     }
-    //ends here 
+    //ends here
     /**
      * Show the form for creating a new resource.
      *
@@ -81,7 +82,7 @@ class UserController extends Controller
         //
     }
 
-  
+
     /**
      * Store a newly created resource in storage.
      *
@@ -96,26 +97,26 @@ class UserController extends Controller
         // $encryptedValue =Crypt::encryptString($privatekey);
         // $decrypted = Crypt::decryptString($encryptedValue);
         // echo $encryptedValue;
-        // dd($decrypted); 
-       
+        // dd($decrypted);
+
         //
         // $startName  ="csv_files/selected_nrna_members_20210802_01.csv";
         // $startName  ="csv_files/germany_july28_final_02.csv";
-      
+
 
         $startName  ="csv_files/global_candidates.csv";
        // var_dump($startName);
         //return 0;
-        $csvName  =storage_path($startName); 
+        $csvName  =storage_path($startName);
         // var_dump($csvName);
-      
+
         // $file = fopen(csvName,"r");
         // $csv = array_map('str_getcsv', file($csvName));
         $csv_array = csv_to_array($csvName,";");
-        //read users 
+        //read users
         // var_dump($csv_array);
         // dd($csv_array);
-         $users = User::all();  
+         $users = User::all();
          $su =$users->where('email',"roshyara@gmail.com")->first();
         //  dd($su);
          if(!$su){
@@ -154,44 +155,44 @@ class UserController extends Controller
         //  dd($csv_array);
         foreach($csv_array as $element){
             /**
-            * each row is a user . So we need to create a user 
-            *@user : new USER  
+            * each row is a user . So we need to create a user
+            *@user : new USER
             */
             //  dd($element);
             $laufer +=1;
             $user  =User::where('user_id', trim($element['user_id']))->first();
             // dd($user);
              if($user){
-                  
+
                 echo "User Exists-> line: ".$laufer.", user name ". $user->name. ", user_id:". $user->user_id ."<br>\n";
-      
+
             }else{
                 /***
-                 * 
-                 * create new user here 
-                 * 
+                 *
+                 * create new user here
+                 *
                  */
-                $user             = new User; 
+                $user             = new User;
                 $user->email      =$element ['email'];
                 $user->password   =Hash::make($element ['password']);
-                echo  $element ['user_id'].'<br/>';   
+                echo  $element ['user_id'].'<br/>';
 
-                }  
+                }
                   $user->name       =$element ['name'];
                   $user->region     =$element ['region'];
                 //   $user->password   =$element ['password'];
-                 
+
                   $user->user_id    =$element ['user_id'];
-                  $user->nrna_id    =$element ['nrna_id']; 
+                  $user->nrna_id    =$element ['nrna_id'];
                   $user->is_voter   =$element ['is_voter'];
                 //dd($user);
                   $user->save();
-                  
-                  
-                  
-                    
-              
-            
+
+
+
+
+
+
         }
 
 
@@ -205,15 +206,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($userid)
     {
         //
-        $user = DB::table('users')->where('id', $id);
+        $user = DB::table('users')->where('user_id', $userid)->first();
+        if(!isset($user)){
+                return Response(['error'=>'Resources not found'],404);
+
+        }
+            // dd($user);
+            // $results = Cart::with('users')->where('status',1)->getOrFail();
         return Inertia::render('User/Profile', [
           'user' => $user,
- 
+
         ]);
-    
+
     }
 
     /**
@@ -249,21 +256,21 @@ class UserController extends Controller
     {
         //
     }
- 
- 
 
-    //make permissions 
+
+
+    //make permissions
     /**
-     * 
+     *
      */
     // public function create_role_and_permission ($roleName, $permssionVec){
-       
+
     //      //$role = Role::create(['name' =>$roleName]);
     //      for ($i=0; $i<sizeof($permssionVec); $i++){
-    //         $permission = Permission::create(['name' => $permssionVec[$i]]); 
+    //         $permission = Permission::create(['name' => $permssionVec[$i]]);
     //     }
-        
-    // } 
+
+    // }
     public function create_permissions_to_role($roleId, $permssionid ){
         $role = Role::findById($roleId);
         $permission = Permission::findById($permssionid);

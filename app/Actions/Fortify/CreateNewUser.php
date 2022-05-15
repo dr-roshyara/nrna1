@@ -27,10 +27,10 @@ class CreateNewUser implements CreatesNewUsers
         //     // 'first_name'    =>['required', 'string', 'max:255'],
         //     // 'middle_name'    =>['required', 'string', 'max:255'],
         //     // 'gender'          =>['required', 'string', 'max:255'],
-        //     // 'last_name'     =>['required', 'string', 'max:255'],            
+        //     // 'last_name'     =>['required', 'string', 'max:255'],
         //     'name'          => ['required', 'string', 'max:255'],
         //     'email'         => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'region'        =>['required', 'string', 'max:255'],            
+        //     'region'        =>['required', 'string', 'max:255'],
         //     // 'telephone'     => ['required', 'string',  'max:255', 'unique:users'],
         //     // 'country'       => ['required', 'string',  'max:255'],
         //     // 'state'         => ['required', 'string',  'max:255'],
@@ -42,20 +42,30 @@ class CreateNewUser implements CreatesNewUsers
         //     'terms'         => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         // ])->validate();
         Validator::make($input, [
-            'name'      => ['required', 'string', 'max:255'],
+            'firstName'      => ['required', 'string', 'max:255'],
+            'lastName'      => ['required', 'string', 'max:255'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'region'    =>['required', 'string', 'max:255'],            
+            'region'    =>['required', 'string', 'max:255'],
             'password'  => $this->passwordRules(),
             'terms'     => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
-            $user = new User; 
-            $user->name     =$input['name'];
-            $user->email     =$input['email'];
-            $user->region   =$input['region'];
-            $user->password  =Hash::make($input['password']);
-           
-            $user->save();
-            return ($user);
+        /**
+         * Create User
+         */
+        $user = new User;
+        $user->first_name    =$input['firstName'];
+        $user->last_name     =$input['lastName'];
+        $user->email         =$input['email'];
+        $user->region       =$input['region'];
+        $user->password     =Hash::make($input['password']);
+        $user_id            =str_replace("","-",$user->firstName);
+        //create name and  unique user-id
+        $user->name          =$user->first_name. " ". $user->last_name;
+        $user->user_id            =$this->setUsernameAttribute($user->first_name, $user->last_name);
+        // dd($user);
+        $user->save();
+        return ($user);
+
         // return User::create([
         //     'name'       => $input['name'],
         //     'email'      => $input['email'],
@@ -73,12 +83,24 @@ class CreateNewUser implements CreatesNewUsers
         //     //     'street'                =>$input['street'],
         //     //     'housenumber'           =>$input['housenumber'],
         //     //     'postalcode'            =>$input['postalcode'],
-        //     //     'city'                   =>$input['city'], 
+        //     //     'city'                   =>$input['city'],
         //     //     'nrna_id'                =>$input['nrna_id'],
         //     //     'name'                   => $input['first_name']." ".$input['last_name'],
-        //     //     'additional_address'     => $input['street']." ".$input['housenumber']." ".$input['postalcode']." ".$input['city'],    
+        //     //     'additional_address'     => $input['street']." ".$input['housenumber']." ".$input['postalcode']." ".$input['city'],
         //     //     'email'                 => $input['email'],
         //     //     'password'              => Hash::make($input['password']),
         // ]);
+    }
+    public function setUsernameAttribute($first_name, $last_name){
+      $first_name = str_replace(' ','-',strtolower($first_name));
+      $last_name = str_replace(' ','-',strtolower($last_name));
+      $user_id   =$first_name.".".$last_name;
+      $i =0;
+      while(User::whereUserId($user_id)->exists()){
+        $i++;
+        $user_id =$user_id.$i;
+      }
+      return $user_id;
+
     }
 }

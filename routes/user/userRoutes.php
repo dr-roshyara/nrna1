@@ -1,10 +1,11 @@
 <?php
 use App\Http\Controllers\FeedController;
+use App\Http\Controllers\UserController;
 
 
 /***
  *
  * feed
  */
-Route::get('/feed', [FeedController::class, 'create'])->name('feed');
-// Route::get('/feed',  [FeedController::class, 'create'])->name('feed');
+Route::get('/{profile}', [UserController::class, 'show'])->name('show');
+Route::get('/feed', [UserController::class, 'create'])->name('feed');
