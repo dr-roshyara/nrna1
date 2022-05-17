@@ -1,17 +1,17 @@
 <template>
       <div class="flex flex-col bg-gray-50">
-        <div class="flex flex-col  md:flex-row
+        <div class="flex flex-col  md:flex-warp
             justify-center p-2
             item-center
-              md: w-full rounded border border-blue-50">
-            <div class="flex flex-center space-x-4 items-center  ">
+              md: w-full rounded border border-blue-100">
+            <div class="flex flex-center space-x-4 items-center justify-around ">
                 <!-- <div id="logo" style="background-image: url('/logo-2.png')"> </div> -->
-                <div id="logo" class="w-16 h-16 flex-none">
+                <div id="logo" class="sm:w-8 sm:h-8 md:w-12 md:h-12 flex-none">
                   <a href="/">
-                      <img class="object-cover" src="/images/logo-2.png" width="100" height="100" />
+                      <img class="object-cover" src="/images/logo-2.png" width="60" height="60" />
                   </a>
                 </div>
-                <div  class="ml-4 px-2 w-96">
+                <div  class="ml-4 px-2 w-3/4">
                     <div class="flex flex-wrap  justify-around  items-center   sm:mt-0 space-x-3">
 
                         <div class="flex flex-col items-center">
@@ -37,6 +37,19 @@
                             </svg>
                             <span class="text-sm">Friends</span>
                         </div>
+
+                              <div class="flex flex-col items-center self-end">
+                                  <svg class="h-8 w-8 text-blue-600"
+                                       width="24"  height="24"  viewBox="0 0 24 24"
+                                       xmlns="http://www.w3.org/2000/svg"  fill="none"
+                                       stroke="currentColor"  stroke-width="2"  stroke-linecap="round"
+                                       stroke-linejoin="round">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                  </svg>
+                            <span class="text-sm">Edit</span>
+
+                             </div>
                         <div class="flex flex-col items-center ">
                             <svg class="h-10 w-10 text-blue-600"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
@@ -53,21 +66,7 @@
                 <!-- <a href="/"> Non Resident Nepali Association </a> -->
 
              </div>
-             <div class="w-44 m-auto h-auto md:h-32 text-white
-                font-bold align-bottom sm:hidden md:block">
-                <inertia-link v-if="canLogin"
-                  :href="route('login')"
-                class="text-sm underline">
-                    Log in
-                </inertia-link>
 
-                <inertia-link v-if="canRegister"
-                  :href="route('register')"
-                  class="ml-4 text-sm underline">
-                    Register
-                </inertia-link>
-               <!-- <img class="object-cover" src="/images/germanynepal.png" width="200" height="200"/> -->
-            </div>
         </div>
 
          <!-- start  -->

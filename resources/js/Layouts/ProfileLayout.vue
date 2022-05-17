@@ -1,8 +1,8 @@
 <template>
-    <div class="flex flex-col min-h-screen lg:h-full">
+    <div class="relative flex flex-col min-h-screen lg:h-full">
          <profile-header :canRegister="canRegister" :canLogin="canLogin"> </profile-header>
      <!-- middle  -->
-       <slot class="flex-grow min-h-screen"> </slot>
+       <slot class="flex-grow min-h-screen relative"> </slot>
        <!-- footer  -->
      <nrna-footer class="px-2 "> </nrna-footer>
     </div>

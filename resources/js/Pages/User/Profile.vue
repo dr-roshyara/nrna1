@@ -1,22 +1,22 @@
 <template>
 <profile-layout>
-<div>
-<!-- {{user}} -->
-
-test
+<div >
+  <main-content :user="user"> </main-content>
 </div>
 </profile-layout>
 
 </template>
 <script>
 import ProfileLayout from "@/Layouts/ProfileLayout.vue"
+import MainContent from "@/Components/Profile/MainContent.vue"
 
 export default{
     props:{
         user: Array
     },
     components:{
-        ProfileLayout
+        ProfileLayout,
+        MainContent
     }
 
 }
