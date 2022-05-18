@@ -112,8 +112,12 @@ export default{
         },
     methods: {
             submit() {
-                this.form.post(this.route('edit'), {
-                    onFinish: () => this.form.reset('password', 'password_confirmation'),
+                this.$inertia.put(this.route('user.update',
+                {id: this.user.id}),
+                this.form,
+                {
+                //    log("success");
+                   // onFinish: () => this.form.reset('password', 'password_confirmation'),
                 })
             }
     }
