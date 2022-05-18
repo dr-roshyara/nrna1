@@ -40,6 +40,8 @@ use Spatie\Permission\Models\Permission;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Auth::routes();
+
 Route::get('/storage/images/{filename}', function ($filename)
 {
     $path = storage_path('images/' . $filename);

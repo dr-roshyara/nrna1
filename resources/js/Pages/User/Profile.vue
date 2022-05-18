@@ -1,6 +1,6 @@
 <template>
-<profile-layout>
-<div >
+<profile-layout :isLoggedIn="isLoggedIn">
+<div class="min-h-screen">
   <main-content :user="user"> </main-content>
 </div>
 </profile-layout>
@@ -12,7 +12,8 @@ import MainContent from "@/Components/Profile/MainContent.vue"
 
 export default{
     props:{
-        user: Array
+        user: Array,
+        isLoggedIn:Boolean
     },
     components:{
         ProfileLayout,

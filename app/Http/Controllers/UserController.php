@@ -12,6 +12,7 @@ use Illuminate\Routing\Redirector;
 //use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 //
 use Inertia\Inertia;
 class UserController extends Controller
@@ -218,6 +219,7 @@ class UserController extends Controller
             // $results = Cart::with('users')->where('status',1)->getOrFail();
         return Inertia::render('User/Profile', [
           'user' => $user,
+          'isLoggedIn'=> Auth::check()
 
         ]);
 
@@ -232,6 +234,39 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        if(!auth()->check()){
+            return Response(['error'=>'Resources not found'],404);
+        }
+        $user = User::where('id',$id)->first();
+         if(!isset($user)){
+            return Response(['error'=>'Resources not found'],404);
+        }
+
+          $user= $user->only(['id',
+            'first_name',
+            'middle_name',
+            'last_name',
+            'name',
+            'gender',
+            'region',
+            'country',
+            'state',
+            'street',
+            'hosuenumber',
+            'postalcode',
+            'city',
+            'nrna_id',
+            'telephone',
+            'email',
+            'password',
+            'profile_photo_path',
+            'profile_bg_photo_path',
+            'designation',
+            ]);
+        return Inertia::render('User/EditProfile', [
+                'user' => $user,
+                'isLoggedIn'=> Auth::check()
+              ]);
     }
 
     /**

@@ -31,7 +31,7 @@
        </div>
 
   </div>
-  <section class="status border border-lime-300 mb-2">
+  <section class="status border border-lime-300 my-2">
     status
     Currently: I am working on nrna profile
   </section>
