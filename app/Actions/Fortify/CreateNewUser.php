@@ -92,9 +92,16 @@ class CreateNewUser implements CreatesNewUsers
         // ]);
     }
     public function setUsernameAttribute($first_name, $last_name){
-      $first_name = str_replace(' ','-',strtolower($first_name));
-      $last_name = str_replace(' ','-',strtolower($last_name));
-      $user_id   =$first_name.".".$last_name;
+        $user_id ="";
+        if(isset($first_name)){
+            $user_id  = str_replace(' ','-',strtolower($first_name));
+        }
+        if(isset($middle_name)){
+            $user_id .="-".$middle_name;
+        }
+        if(isset($last_name)){
+            $user_id .= str_replace(' ','-',strtolower($last_name));
+        }
       $i =0;
       while(User::whereUserId($user_id)->exists()){
         $i++;

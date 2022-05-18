@@ -13,6 +13,8 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 //
 use Inertia\Inertia;
 class UserController extends Controller
@@ -211,6 +213,9 @@ class UserController extends Controller
     {
         //
         $user = DB::table('users')->where('user_id', $userid)->first();
+        // dd(config('app.name'));
+        // config('app.name') ="test";
+        config(['app.name' => "Home Page of ". $user->name ]);
         if(!isset($user)){
                 return Response(['error'=>'Resources not found'],404);
 
@@ -243,6 +248,7 @@ class UserController extends Controller
         }
 
           $user= $user->only(['id',
+            'name_prefex',
             'first_name',
             'middle_name',
             'last_name',
@@ -278,9 +284,92 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user =User::where('id',$id)->first();
+        //if the following variables are null, change them empty string.
+        if(!isset($request->name_prefex)){
+            $request['name_prefex'] ='';
+        }
+        if(!isset($request->gender)){
+            $request['gender'] ='';
+        }
+        if(!isset($request->state)){
+            $request['state'] ='';
+        }
+        if(!isset($request->street)){
+            $request['street'] ='';
+        }
+        if(!isset($request->postalcode )){
+            $request['postalcode'] ='';
+        }
+        if(!isset($request->designation )){
+            $request['designation'] ='';
+        }
+
+        Validator::make($request->all(), [
+            'name_prefex'       => ['string', 'max:10'],
+            'firstName'         => ['required', 'string', 'max:255'],
+            'lastName'          => ['required', 'string', 'max:255'],
+            // 'email'             => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email'             => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'telephone'         => ['required',  'max:18', Rule::unique('users')->ignore($user->id)],
+            'region'            =>['required', 'string', 'max:255'],
+            // 'name'         =>['required', 'string', 'max:255', 'unique:users'],
+            // 'nrna_id'       =>['required', 'string', 'max:255', 'unique:users'],
+            // 'first_name'    =>['required', 'string', 'max:255'],
+            // 'middle_name'    =>['required', 'string', 'max:255'],
+            'gender'            =>[ 'string', 'max:255'],
+            'telephone'         => ['string',  'max:255', 'unique:users'],
+            'country'           => ['required', 'string',  'max:255'],
+            'state'             => ['string',  'max:255'],
+            'street'            => ['string',  'max:255'],
+            'housenumber'       => ['string',  'max:20'],
+            'postalcode'        => ['string',  'max:20'],
+            'city'              => ['required', 'string',  'max:255'],
+            'designation'        => ['string',  'max:255'],
+            // 'terms'         => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+        ])->validate();
+        //set the name
+        $_name ="";
+        if($request['name_prefex']!=""){
+            $_name =$request['name_prefex'];
+        }
+        if($request['firstName']!=""){
+            $_name .=" ".$request['firstName'];
+        }
+        if($request['middleName']!=""){
+            $_name .=" ".$request['middleName'];
+        }
+        if($request['lastName']!=""){
+            $_name .=" ".$request['lastName'];
+        }
+        $_name =trim($_name);
+
         //
-        var_dump($id);
-         dd($request->all());
+        if ($request['email'] !== $user->email &&
+        $user instanceof MustVerifyEmail) {
+        $this->updateVerifiedUser($user, $input);
+        } else {
+            $user->forceFill([
+                'name_prefex'    => $request['name_prefex'],
+                'first_name'    => $request['firstName'],
+                'middle_name'   => $request['middleName'],
+                'last_name'     => $request['lastName'],
+                'name'          => $_name,
+                'email'         => $request['email'],
+                'telephone'     => $request['telephone'],
+                'gender'        =>$request['gender'],
+                'country'       =>$request['country'],
+                'state'         =>$request['state'],
+                'city'          =>$request['city'],
+                'street'        =>$request['street'],
+                'housenumber'   =>$request['housenumber'],
+                'postalcode'    =>$request['postalcode'],
+                'designation'    =>$request['designation'],
+
+            ])->save();
+        }
+        return redirect()->route('user.show', ['profile' => $user->user_id]);
+
     }
 
     /**
