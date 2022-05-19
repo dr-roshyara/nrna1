@@ -1,12 +1,12 @@
 <template>
  <main class="profile-page ">
-  <section class="relative block flex flex-col w-full mb-1">
-   <div class="">
+  <section class="flex flex-col relative block  h-40 md:h-60 w-full mb-1 bg-[url('/storage/users/background.jpg')]">
+   <div class="flex align-center  justify-center min-h-40  w-full h-full ">
     <!-- src="images/background_images/nab_raj_roshyara.JPG" -->
     <img
      :src ="user.profile_bg_photo_path"
     class="object-cover w-full rounded max-h-40 md:max-h-80">
-    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
+    <div class="top-auto bottom-0 left-0 right-0 w-full  absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
       <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
         <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
       </svg>
@@ -38,12 +38,12 @@
                         </svg>   <span>  Upload new picture </span>
             </div>
 
-            <div class="max-w-60 text-sm rounded-lg py-2 mt-1 mb-2 flex flex-wrap items-center ring-2 bg-blue-300 ring-blue-400/50 ">
+            <!-- <div class="max-w-60 text-sm rounded-lg py-2 mt-1 mb-2 flex flex-wrap items-center ring-2 bg-blue-300 ring-blue-400/50 ">
 
                     <svg class="h-8 w-8 text-blue-600"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z"/>
                     </svg>   <span>Select new  picture </span>
-            </div>
+            </div> -->
         </div>
 
 

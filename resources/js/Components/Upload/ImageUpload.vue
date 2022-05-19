@@ -1,12 +1,12 @@
 <template>
-   <div class="absolute z-20 bottom-0  translate-y-0 bg-green-200 rounded w-full h-full">
+   <div class="absolute z-20 bottom-0  translate-y-0 bg-gray-50  rounded w-full h-full">
         <img
             v-if="url"
             :src="url"
             class="w-full  h-full"
         />
        <div class="mx-auto w-full h-full ">
-                <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                <div class="overflow-hidden bg-gray-50 shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <form @submit.prevent="submit">
                             <div>
