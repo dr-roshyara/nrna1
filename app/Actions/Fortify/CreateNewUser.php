@@ -104,6 +104,9 @@ class CreateNewUser implements CreatesNewUsers
         }
       $i =0;
       while(User::whereUserId($user_id)->exists()){
+        if(!User::whereUserId($user_id)->exists()){
+            break;
+        }
         $i++;
         $user_id =$user_id.$i;
       }

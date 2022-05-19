@@ -212,10 +212,38 @@ class UserController extends Controller
     public function show($userid)
     {
         //
-        $user = DB::table('users')->where('user_id', $userid)->first();
+        $user = User::where('user_id', $userid)
+                ->with('images')
+                ->get()->first();
+
+            $user= $user->only(['id',
+                'name_prefex',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'name',
+                'gender',
+                'region',
+                'country',
+                'state',
+                'street',
+                'hosuenumber',
+                'postalcode',
+                'city',
+                'nrna_id',
+                'telephone',
+                'email',
+                'password',
+                'profile_photo_path',
+                'profile_bg_photo_path',
+                'designation',
+                'images'
+        ]);
+        // dd($user);
+                // ->join('images', 'images.user_id', '=', 'users.id');
         // dd(config('app.name'));
         // config('app.name') ="test";
-        config(['app.name' => "Home Page of ". $user->name ]);
+        config(['app.name' => "Home Page of ". $user['name']]);
         if(!isset($user)){
                 return Response(['error'=>'Resources not found'],404);
 

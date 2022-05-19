@@ -12,7 +12,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
-//models 
+//models
 use App\Models\Vote;
 use App\Models\DeligateVote;
 use \App\Models\Candidacy;
@@ -20,13 +20,14 @@ use App\Models\File;
 use App\Models\Upload;
 use App\Models\Assignment;
 use App\Models\Code;
+use App\Models\Image;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
-    use Notifiable; 
+    use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
 
@@ -40,16 +41,16 @@ class User extends Authenticatable implements MustVerifyEmail
         //  $CanResetPassword =true;
 
     }
-  
+
     protected $fillable = [
         'name',
-        'region', 
-        'email', 
+        'region',
+        'email',
         'password',
         'telephone',
         'first_name',
         'middle_name',
-        'gender',        
+        'gender',
         'last_name',
         'country',
         'state',
@@ -61,11 +62,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'nrna_id',
         'can_vote_now',
         'has_voted',
-        'has_candidacy', 
+        'has_candidacy',
         'lcc',
-        'profile_photo_path'  
-        
-    ]; 
+        'profile_photo_path'
+
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -98,14 +99,14 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * The relationship that should always be loaded 
-     * 
+     * The relationship that should always be loaded
+     *
      */
 
       protected $with =[
         //   'profile',
-    
-        ];  
+
+        ];
 
     /**
      * Each user has one and only one Vote :
@@ -115,7 +116,7 @@ class User extends Authenticatable implements MustVerifyEmail
         // return $this->hasOne(Code::class,  'foreign_key');
         // you can also write $this->hasone('App\Vote')
     }
-    
+
      /**
      * Each user has one and only one Vote :
      *      */
@@ -124,22 +125,22 @@ class User extends Authenticatable implements MustVerifyEmail
         // return $this->hasOne(Code::class,  'foreign_key');
         // you can also write $this->hasone('App\Vote')
     }
-    
+
     /**
-     * Each user can have one and only candidacy 
+     * Each user can have one and only candidacy
      */
        public function candidacy(){
            return $this->hasone(candidacy::class);
        }
        /**
-        * Assignments and Roles A user can be assigned to many roles 
+        * Assignments and Roles A user can be assigned to many roles
         */
           public function assignments(){
               return $this->belongsToMany(Assignment::class);
           }
-         
+
      /**
-        * User has many files 
+        * User has many files
      */
     public function files()
     {
@@ -147,7 +148,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * A user has many uploads 
+     * A user has many uploads
      */
     public function uploads()
     {
@@ -164,5 +165,12 @@ class User extends Authenticatable implements MustVerifyEmail
       */
       public function deligatecode(){
         return $this->hasOne(Code::class,  'foreign_key');
+    }
+    /**
+     *  images
+     */
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 }

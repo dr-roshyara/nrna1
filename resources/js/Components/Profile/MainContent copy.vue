@@ -14,7 +14,7 @@
   </section>
   <section class="relative py-16 bg-blueGray-200">
     <div class="container mx-auto px-4">
-      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg 
+      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg
       -mt-64">
         <div class="px-6">
           <div class="flex flex-wrap justify-center">
@@ -91,7 +91,10 @@
 </main>
 </template>
 <script>
+import ImageUpload  from "@/Components/Upload/ImageUpload.vue"
 export default{
-
+    components:{
+        ImageUpload
+    }
 }
 </script>
