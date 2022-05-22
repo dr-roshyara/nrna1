@@ -1,9 +1,24 @@
 <template>
 <profile-layout>
   <main class="min-h-screen">
+      <profile-image
+    :user="user"
+    :isLoggedIn="isLoggedIn">
+  </profile-image>
+        <div relative class="h-40 grid place-items-center">
+                  <!-- Upload icon  -->
+            <div class="absolute h-40 w-full grid place-items-center">
+                <icon-upload image_type="icon"
+                    class="absolute rounded-full bottom-0 grid place-items-center w-96">
+                </icon-upload>
+
+            </div>
+        </div>
       <jet-authentication-card class="mb-6">
           <jet-validation-errors class="mb-4" />
           <form @submit.prevent="submit">
+                  <!-- name prefex  -->
+
                 <!-- name prefex  -->
                 <div class="mt-4">
                     <jet-label for="name_prefex" value="Name Prefex (optional)" />
@@ -170,27 +185,30 @@
 </template>
 <script>
 import ProfileLayout from "@/Layouts/ProfileLayout.vue"
+import ProfileImage  from "@/Components/Profile/ProfileImage.vue"
 import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
  import JetValidationErrors from '@/Jetstream/ValidationErrors'
    import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
     import JetCheckbox from "@/Jetstream/Checkbox";
     import JetLabel from '@/Jetstream/Label'
+import IconUpload  from "@/Components/Upload/IconUpload.vue"
 export default{
    props:{
        'user':Array,
        'isLoggedIn':Boolean
    },
    components:{
-       ProfileLayout,
-       JetAuthenticationCard,
-       JetValidationErrors,
-       JetLabel,
-       JetCheckbox,
-       JetInput,
-       JetButton
-
-   },
+    ProfileLayout,
+    ProfileImage,
+    JetAuthenticationCard,
+    JetValidationErrors,
+    JetLabel,
+    JetCheckbox,
+    JetInput,
+    JetButton,
+    IconUpload
+},
    data() {
             return {
                 form: this.$inertia.form({

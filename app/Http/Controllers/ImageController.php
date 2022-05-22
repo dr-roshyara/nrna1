@@ -133,16 +133,22 @@ class ImageController extends Controller
 
           */
           $_baseDir = "users/".Auth::user()->user_id;
-            if($type="profile"){
+        if($type=="profile"){
                 $target_dir = "profile";
                 $_baseDir.="/". $target_dir;
            }
+        if($type=="avatar"){
+             $target_dir = "avatar";
+             $_baseDir.="/". $target_dir;
+        }
 
             // dd($_baseDir);
             $_tfValue = is_dir($_baseDir);
+            // dd( $_tfValue);
             if(!$_tfValue){
                 var_dump($_baseDir);
                 mkdir($_baseDir, 0770, true);
+                // dd($_baseDir);
             }
 
             $date = new \DateTime();
@@ -154,6 +160,8 @@ class ImageController extends Controller
          */
             $target_filename = $date->getTimestamp()."_". basename($file->getClientOriginalName());
             $target_filename = preg_replace('/\s+/', '_', $target_filename);
+            $target_filename =strtolower($target_filename);
+            // dd( toLower($target_filename));
 
         /**
         * storeAs function has three parameters
@@ -167,9 +175,30 @@ class ImageController extends Controller
 
         // $file_path = $file->storeAs($_baseDir, $target_filename, 'public');
         $file_path = $file->storeAs($_baseDir, $target_filename, 'public');
-
+        //   dd("test");
 
         return $file_path;
+    }
+
+    public function avatarUpload(Request $request){
+        //    return ("tessting ");
+    //    dd($request->all());
+    //    $_file =$request['avatar1'];
+       $_file =$request->file('avatar1');
+    //    dd($_file);
+        $_image_path ='';
+        $user = Auth::user();
+       $_imageType ="avatar";
+       $_image_path =$this->save_and_get_filename($_file, $_imageType);
+       $user->profile_icon_photo_path ="storage/".$_image_path;
+            // Create Image Model
+        $_image =new Image();
+        $_image->path =$_image_path;
+        $_image->type =$_imageType ;
+        $_image->user_id= $user->id;
+        $_image->save();
+        $user->save();
+        return "success ";
     }
 
 

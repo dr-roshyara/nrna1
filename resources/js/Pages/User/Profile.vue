@@ -1,7 +1,8 @@
 <template>
-<profile-layout :isLoggedIn="isLoggedIn">
+<profile-layout :isLoggedIn="isLoggedIn"
+   :user="user">
 <div class="min-h-screen">
-  <main-content :user="user"> </main-content>
+  <main-content :user="user" :isLoggedIn="isLoggedIn"> </main-content>
 </div>
 </profile-layout>
 

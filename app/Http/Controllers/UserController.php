@@ -235,11 +235,21 @@ class UserController extends Controller
                 'email',
                 'password',
                 'profile_photo_path',
+                'profile_icon_photo_path',
                 'profile_bg_photo_path',
                 'designation',
                 'images'
         ]);
-        // dd($user);
+         if(!isset($user['profile_photo_path'])){
+            $user['profile_photo_path']='';
+         }
+         if(!isset($user['profile_icon_photo_path'])){
+            $user['profile_icon_photo_path']='';
+         }
+         if(!isset($user['profile_bg_photo_path'])){
+            $user['profile_bg_photo_path']='';
+         }
+         $user['profileEditUrl'] =$user['id']."/edit";
                 // ->join('images', 'images.user_id', '=', 'users.id');
         // dd(config('app.name'));
         // config('app.name') ="test";
@@ -424,8 +434,9 @@ class UserController extends Controller
     //         $permission = Permission::create(['name' => $permssionVec[$i]]);
     //     }
 
-    // }
+    //
     public function create_permissions_to_role($roleId, $permssionid ){
+        // $data=['_token'=>csrf_token()];
         $role = Role::findById($roleId);
         $permission = Permission::findById($permssionid);
         // $role ->givePermissionTo()

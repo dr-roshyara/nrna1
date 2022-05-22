@@ -38,7 +38,8 @@
                             <span class="text-sm">Friends</span>
                         </div>
                          <!--edit form  -->
-                        <div v-if="isLoggedIn" class="flex flex-col items-center self-end">
+                         <a v-if="isLoggedIn" :href="user.profileEditUrl">
+                        <div  class="flex flex-col items-center self-end">
                                   <svg class="h-8 w-8 text-blue-600"
                                        width="24"  height="24"  viewBox="0 0 24 24"
                                        xmlns="http://www.w3.org/2000/svg"  fill="none"
@@ -50,6 +51,7 @@
                             <span class="text-sm">Edit</span>
 
                         </div>
+                        </a>
                         <div class="flex flex-col items-center ">
                             <svg class="h-10 w-10 text-blue-600"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
@@ -97,7 +99,8 @@ export default {
     props:{
         canLogin: Boolean,
         canRegister: Boolean,
-        isLoggedIn:Boolean
+        isLoggedIn:Boolean,
+        user:Array
     },
     components:{
         SearchLoop

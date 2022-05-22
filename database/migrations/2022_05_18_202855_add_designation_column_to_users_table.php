@@ -15,8 +15,9 @@ class AddDesignationColumnToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('designation')->nullable();
+            $table->string('profile_icon_photo_path')->after('profile_photo_path')->unique()->nullable();
             $table->string('profile_bg_photo_path')->after('profile_photo_path')->unique()->nullable();
+            $table->string('designation')->nullable();
 
         });
     }

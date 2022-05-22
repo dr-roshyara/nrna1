@@ -1,6 +1,11 @@
 <template>
     <div class="relative flex flex-col min-h-screen lg:h-full">
-         <profile-header :canRegister="canRegister" :canLogin="canLogin" :isLoggedIn="isLoggedIn"> </profile-header>
+         <profile-header :canRegister="canRegister"
+         :canLogin="canLogin"
+         :isLoggedIn="isLoggedIn"
+         :user="user"
+         >
+         </profile-header>
      <!-- middle  -->
        <slot class="flex-grow min-h-screen relative"> </slot>
        <!-- footer  -->
@@ -17,7 +22,8 @@ export default {
         image2:String,
         canLogin: Boolean,
         canRegister: Boolean,
-        isLoggedIn : Boolean
+        isLoggedIn : Boolean,
+        user:Array
     },
     data(){
         return {

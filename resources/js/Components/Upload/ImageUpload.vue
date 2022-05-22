@@ -5,7 +5,7 @@
             :src="url"
             class="w-full  h-full"
         />
-       <div class="mx-auto w-full h-full ">
+    <div class="mx-auto w-full h-full ">
                 <div class="overflow-hidden bg-gray-50 shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <form @submit.prevent="submit">
@@ -52,7 +52,7 @@
                         </form>
                     </div>
                 </div>
-        </div>
+    </div>
 
 
 
@@ -63,6 +63,7 @@
 <script>
 import Label from '@/Jetstream/Label'
 import { useForm } from "@inertiajs/inertia-vue3";
+import { processSlotOutlet } from '@vue/compiler-core';
 export default {
       props: {
        user: Array,
@@ -79,10 +80,11 @@ export default {
       url: null,
     }
   },
-    setup() {
+    setup(props) {
         const form = useForm({
             image: null,
-            image_tpye: 'profile'
+            image_tpye: props.image_tpye,
+
         });
 
         return { form };
