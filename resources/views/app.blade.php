@@ -6,26 +6,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
         {{-- <title>{{ config('app.name', 'Non Resident Nepali Association') }}</title> --}}
-
-        {{--
-            *include  meta tags
-
-         --}}
-        <title>{{ config('meta.title') }}</title>
-        <meta name="description" content=" {{config('meta.description')}} " />
-        <meta http-equiv="content-language" content="{{ config('meta.content_language') }}" />
-        <meta http-equiv="content-script-type" content="text/javascript" />
-        <meta http-equiv="content-style-type" content="text/css" />
-        <meta http-equiv="window-target" content="_top" />
-        <meta property="og:type" content="Organisation" />
-        <meta property="og:title" content="Non resident Nepali Association " />
-        <meta property="og:description" content="Nepali Diaspora around the world" />
-        <meta property="og:locale" content="{{ config('meta.og_locale') }}" />
-        <meta property="og:url" content="{{config('meta.og_url') }}" />
-        <meta property="og:site_name" content="nrna.eu" />
-
-
-
+        {{-- include meta info --}}
+        @include('meta.meta-info')
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         {{-- <link rel="stylesheet" href="css/css_debugger.css"> --}}

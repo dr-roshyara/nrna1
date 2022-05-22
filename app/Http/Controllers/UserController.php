@@ -286,6 +286,7 @@ class UserController extends Controller
         }
 
           $user= $user->only(['id',
+          'google_id',
             'name_prefex',
             'first_name',
             'middle_name',

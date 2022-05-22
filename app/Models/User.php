@@ -21,6 +21,7 @@ use App\Models\Upload;
 use App\Models\Assignment;
 use App\Models\Code;
 use App\Models\Image;
+use App\Models\GoogleAccount;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -43,6 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     protected $fillable = [
+        'google_id',
         'name',
         'region',
         'email',
@@ -173,4 +175,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Image::class);
     }
+    /***
+     * google accoun t
+     */
+     public function googleAccounts(){
+         return $this->hasMany(GoogleAccount::class);
+     }
 }
