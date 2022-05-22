@@ -81,6 +81,7 @@ Route::get('profile-photos/{filename}', function ($filename)
 });
 
 Route::get('/', function () {
+    //defile title
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),

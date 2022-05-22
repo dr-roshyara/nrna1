@@ -1,6 +1,7 @@
 <template>
     <div class="flex flex-col min-h-screen lg:h-full">
-         <nrna-header :canRegister="canRegister" :canLogin="canLogin"> </nrna-header>
+
+     <nrna-header :canRegister="canRegister" :canLogin="canLogin"> </nrna-header>
      <!-- middle  -->
        <slot class="flex-grow min-h-screen"> </slot>
        <!-- footer  -->
@@ -10,6 +11,7 @@
 </template>
 <script>
 import NrnaHeader from "@/Jetstream/NrnaHeader";
+import profileHeader from "@/Jetstream/ProfileHeader";
 import NrnaFooter from "@/Jetstream/NrnaFooter";
 
 export default {
@@ -26,6 +28,7 @@ export default {
     },
     components:{
         NrnaHeader,
+        profileHeader,
         NrnaFooter
     }
 }
