@@ -8,7 +8,7 @@
             <candidate
                 :post="post"
                 :final_result="final_result[0]"
-                :class="{ 'pIndx%5==0': bg - blue - 100 }"
+                :class="{ 'pIndx%5==0': 'bg-blue-100' }"
             >
             </candidate>
         </div>
