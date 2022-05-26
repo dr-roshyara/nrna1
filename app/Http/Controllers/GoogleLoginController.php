@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Actions\Fortify\CreateNewUser;
+use Carbon\Carbon;
 class GoogleLoginController extends Controller
 {
     /**
@@ -55,6 +56,7 @@ class GoogleLoginController extends Controller
                 $newUser->name          =$user->name;
                 $newUser->email         =$user->email;
                 $newUser->google_id     = $user->id;
+                $newUser->email_verified_at=Carbon::now();
                 $newUser->password      = 'dummypass';
                 $newUser->user_id       =CreateNewUser::setUsernameAttribute($newUser);
                 $newUser->save();
