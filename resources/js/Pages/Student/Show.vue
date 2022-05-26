@@ -1,30 +1,29 @@
 <template>
-     <nrna-layout>
-     <!-- <Head title="बालवालिकाहरूका लागि निशुल्क आइटी  " /> -->
-           <div class="min-h-screen">  
- 
-         
-            <p class="mx-auto text-center mt-10">    
-                Thank you Very much for your registration.<br>
-                 We will contact you personally. <br>
+    <nrna-layout>
+        <!-- <Head title="बालवालिकाहरूका लागि निशुल्क आइटी  " /> -->
+        <div class="min-h-screen">
+            <p class="mx-auto mt-10 text-center">
+                Thank you Very much for your registration.<br />
+                We will contact you personally. <br />
 
-               NRNA </p> 
-           </div>
-      </nrna-layout>
+                NRNA
+            </p>
+        </div>
+    </nrna-layout>
 </template>
 <script>
-import AppLayout from '@/Layouts/AppLayout'
-import NrnaLayout from '@/Layouts/NrnaLayout'  
-import { Inertia } from '@inertiajs/inertia'
-// import { Head } from '@inertiajs/inertia-vue3';  
+import AppLayout from "@/Layouts/AppLayout";
+import NrnaLayout from "@/Layouts/LoginLayout";
+import { Inertia } from "@inertiajs/inertia";
+// import { Head } from '@inertiajs/inertia-vue3';
 export default {
-    props:{
-        student:Object 
+    props: {
+        student: Object,
     },
-    components:{
+    components: {
         AppLayout,
         NrnaLayout,
-        // Head 
-    }
-}
+        // Head
+    },
+};
 </script>
