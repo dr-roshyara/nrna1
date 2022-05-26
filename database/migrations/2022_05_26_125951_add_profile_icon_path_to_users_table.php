@@ -15,7 +15,7 @@ class AddProfileIconPathToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-            $table->string('profile_icon_photo_path', 2048);
+            $table->string('profile_icon_photo_path', 2048)->nullable();
         });
     }
 
