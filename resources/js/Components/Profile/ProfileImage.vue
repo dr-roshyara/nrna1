@@ -84,7 +84,7 @@
             <div class="absolute bottom-0">
                 <div
                     @click="uploadBackground = !uploadBackground"
-                    class="max-w-80 mt-1 mb-2 flex flex-wrap items-center rounded-lg bg-blue-300 py-2 px-4 text-sm ring-2 ring-blue-400/50"
+                    class="max-w-80 mt-2 mb-2 flex flex-wrap items-center rounded-lg bg-blue-300 py-2 px-4 text-sm ring-2 ring-blue-400/50"
                 >
                     <svg
                         class="h-8 w-8 text-blue-600"
@@ -102,7 +102,7 @@
                     <span> Upload new background picture </span>
                 </div>
 
-                <div
+                <!-- <div
                     @click="uploadIcon = !uploadIcon"
                     class="max-w-80 mt-1 mb-2 flex flex-wrap items-center rounded-lg bg-blue-300 py-2 px-4 text-sm ring-2 ring-blue-400/50"
                 >
@@ -120,7 +120,7 @@
                         />
                     </svg>
                     <span> Upload new icon picture in the middle </span>
-                </div>
+                </div> -->
 
                 <!-- <div class="max-w-60 text-sm rounded-lg py-2 mt-1 mb-2 flex flex-wrap items-center ring-2 bg-blue-300 ring-blue-400/50 ">
 
