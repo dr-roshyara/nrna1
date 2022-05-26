@@ -82,6 +82,9 @@ Route::get('profile-photos/{filename}', function ($filename)
 
 Route::get('/', function () {
     //defile title
+    if(auth()->user()){
+         return Inertia::render('ElectionDashboard');
+    }
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
