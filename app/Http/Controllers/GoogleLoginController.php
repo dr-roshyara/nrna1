@@ -59,6 +59,7 @@ class GoogleLoginController extends Controller
                 $newUser->email_verified_at=Carbon::now();
                 $newUser->password      = 'dummypass';
                 $newUser->user_id       =CreateNewUser::setUsernameAttribute($newUser);
+                $newUser->profile_icon_photo_path='';
                 $newUser->save();
                 Auth::login($newUser);
 
