@@ -34,7 +34,8 @@ return [
         'client_id' => '242995957239-eqjp3enak044ij7jifgalvqsm4739otv.apps.googleusercontent.com',//'871065955282-eqbg9o2n96947qcj9r84mk36jje9fsh6.apps.googleusercontent.com',
         'client_secret' => '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',//'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',
         // 'redirect' => 'http://127.0.0.1:8000/login/google/callback',
-        'redirect'=>env('GOOGLE_REDIRECT')
+        'redirect' => 'https://nrna.eu/login/google/callback',
+        // 'redirect'=>env('GOOGLE_REDIRECT')
     ],
     /***
     'google' => [
