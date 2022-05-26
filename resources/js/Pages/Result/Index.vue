@@ -3,7 +3,7 @@
         <div
             v-for="(post, pIndx) in posts"
             :key="pIndx"
-            class="my-4 mx-auto flex flex-col justify-center border border-lime-300 py-2 shadow-xl"
+            class="my-4 flex flex-col justify-center border border-lime-300 py-2 shadow-xl"
         >
             <candidate
                 :post="post"
