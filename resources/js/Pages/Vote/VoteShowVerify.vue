@@ -1,92 +1,82 @@
 <template>
     <nrna-layout>
-        <app-layout>
-            <div class="mt-6 text-center">
-                <div
-                    v-if="has_voted"
-                    class="m-auto text-center bg-blue-200 py-4 w-full"
-                >
-                    <p class="m-auto text-blue-700 font-bold text-xl">
-                        Congratulation {{ user_name }}!
+        <div class="mt-6 text-center">
+            <div
+                v-if="has_voted"
+                class="m-auto w-full bg-blue-200 py-4 text-center"
+            >
+                <p class="m-auto text-xl font-bold text-blue-700">
+                    Congratulation {{ user_name }}!
+                </p>
+                <div class="mx-auto mb-4 w-full py-4 md:w-2/3">
+                    <p class="m-auto">
+                        Thank You for your vote. If you want to check your vote
+                        again, please submit the
+                        <span class="text-lg font-bold text-gray-900">
+                            code to check your vote.</span
+                        >
+                        Please keep your passowrd very secret. Also please do
+                        not ask others to show their vote.
                     </p>
-                    <div class="w-full md:w-2/3 mx-auto mb-4 py-4">
-                        <p class="m-auto">
-                            Thank You for your vote. If you want to check your
-                            vote again, please submit the
-                            <span class="text-gray-900 text-lg font-bold">
-                                code to check your vote.</span
-                            >
-                            Please keep your passowrd very secret. Also please
-                            do not ask others to show their vote.
-                        </p>
-                        <p>
-                            यहाँले मतदान गर्नु भएकोमा धेरै धन्यवाद। आफ्नो मतलाई
-                            गोप्य राख्नु यहाँको कर्तब्य हो । यसैले कृपया आफ्नो
-                            पासवर्ड अरुलाई नदिनु होला ।
-                        </p>
-                    </div>
-                    <jet-validation-errors class="mb-4 mx-auto text-center" />
+                    <p>
+                        यहाँले मतदान गर्नु भएकोमा धेरै धन्यवाद। आफ्नो मतलाई
+                        गोप्य राख्नु यहाँको कर्तब्य हो । यसैले कृपया आफ्नो
+                        पासवर्ड अरुलाई नदिनु होला ।
+                    </p>
                 </div>
-                <div
-                    class="flex flex-col m-auto py-2 my-2 shadow border w-full md:w-2/3"
-                >
-                    <div
-                        class="p-2 mx-auto text-center my-2 text-2xl font-bold text-gray-900"
-                    >
-                        <p>
-                            Check your email & submit the code to check your
-                            vote
-                        </p>
-                    </div>
-
-                    <form
-                        @submit.prevent="submit"
-                        class="text-center align-top"
-                    >
-                        <div class="flex flex-col justify-center px-2 my-2">
-                            <div
-                                class="flex flex-col justify-center p-4 mb-2 font-bold text-gray-900"
-                            >
-                                <label for="voting_code" class="px-4 py-2 mb-3">
-                                    <p>Code to check your vote</p>
-                                </label>
-                                <input
-                                    class="mx-auto px-4 py-6 rounded-lg bg-gray-200 w-full md:w-2/3 font-bold border border-blue-400 text-gray-900 font-bold"
-                                    id="voting_id"
-                                    placeholder="ENTER HERE YOUR  CODE TO CHECK THE VOTE"
-                                    v-model="form.voting_code"
-                                />
-                            </div>
-                            <div class="my-4 w-full">
-                                <button
-                                    type="submit"
-                                    class="w-full md:w-2/3 px-4 py-4 rounded-lg bg-blue-300 font-extrabold text-gray-900"
-                                >
-                                    PLEASE CLICK HERE & GET YOUR VOTE
-                                </button>
-                            </div>
-                            <div class="mx-auto text-center">
-                                <jet-validation-errors
-                                    class="mb-4 mx-auto text-center"
-                                />
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                <jet-validation-errors class="mx-auto mb-4 text-center" />
             </div>
-        </app-layout>
+            <div
+                class="m-auto my-2 flex w-full flex-col border py-2 shadow md:w-2/3"
+            >
+                <div
+                    class="mx-auto my-2 p-2 text-center text-2xl font-bold text-gray-900"
+                >
+                    <p>Check your email & submit the code to check your vote</p>
+                </div>
+
+                <form @submit.prevent="submit" class="text-center align-top">
+                    <div class="my-2 flex flex-col justify-center px-2">
+                        <div
+                            class="mb-2 flex flex-col justify-center p-4 font-bold text-gray-900"
+                        >
+                            <label for="voting_code" class="mb-3 px-4 py-2">
+                                <p>Code to check your vote</p>
+                            </label>
+                            <input
+                                class="mx-auto w-full rounded-lg border border-blue-400 bg-gray-200 px-4 py-6 font-bold font-bold text-gray-900 md:w-2/3"
+                                id="voting_id"
+                                placeholder="ENTER HERE YOUR  CODE TO CHECK THE VOTE"
+                                v-model="form.voting_code"
+                            />
+                        </div>
+                        <div class="my-4 w-full">
+                            <button
+                                type="submit"
+                                class="w-full rounded-lg bg-blue-300 px-4 py-4 font-extrabold text-gray-900 md:w-2/3"
+                            >
+                                PLEASE CLICK HERE & GET YOUR VOTE
+                            </button>
+                        </div>
+                        <div class="mx-auto text-center">
+                            <jet-validation-errors
+                                class="mx-auto mb-4 text-center"
+                            />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </nrna-layout>
 </template>
 <script>
-import NrnaLayout from "@/Layouts/NrnaLayout.vue";
-import AppLayout from "@/Layouts/AppLayout";
+import NrnaLayout from "@/Layouts/ElectionLayout.vue";
 import VoteFinal from "@/Pages/Vote/VoteFinal";
 import { useForm } from "@inertiajs/inertia-vue3";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 export default {
     components: {
         NrnaLayout,
-        AppLayout,
         VoteFinal,
         JetValidationErrors,
     },

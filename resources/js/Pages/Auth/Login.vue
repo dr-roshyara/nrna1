@@ -164,7 +164,7 @@ import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
-import NrnaLayout from "@/Layouts/NrnaLayout";
+import NrnaLayout from "@/Layouts/LoginLayout";
 export default {
     components: {
         JetAuthenticationCard,

@@ -2,7 +2,7 @@
     <div class="flex flex-col lg:h-full">
         <nrna-header :canRegister="canRegister" :canLogin="canLogin">
         </nrna-header>
-        <navigation></navigation>
+
         <!-- middle  -->
         <slot class="min-h-screen flex-grow"> </slot>
         <!-- footer  -->
@@ -13,7 +13,6 @@
 import NrnaHeader from "@/Jetstream/NrnaHeader";
 import profileHeader from "@/Jetstream/ProfileHeader";
 import NrnaFooter from "@/Jetstream/NrnaFooter";
-import Navigation from "@/Components/Header/Navigation.vue";
 export default {
     props: {
         image2: String,
@@ -30,7 +29,6 @@ export default {
         NrnaHeader,
         profileHeader,
         NrnaFooter,
-        Navigation,
     },
 };
 </script>

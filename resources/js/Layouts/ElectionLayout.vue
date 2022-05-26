@@ -13,7 +13,7 @@
 import NrnaHeader from "@/Jetstream/NrnaHeader";
 import profileHeader from "@/Jetstream/ProfileHeader";
 import NrnaFooter from "@/Jetstream/NrnaFooter";
-import Navigation from "@/Components/Header/Navigation.vue";
+import Navigation from "@/Components/Header/ElectionNavigation.vue";
 export default {
     props: {
         image2: String,

@@ -1,123 +1,103 @@
 <template>
     <nrna-layout>
-        <app-layout>
-            <div
-                class="flex flex-col ites-center md:mx-auto md:flex-row md:space-x-6"
-            >
-                <div class="flex flex-col justify-center bg-blue-100">
-                    {{ vote }}
-                    <div class="m-auto">
-                        <jet-validation-errors
-                            class="mb-4 mx-auto text-center"
-                        />
-                    </div>
-
-                    <form @submit.prevent="submit" class="text-center mx-auto">
-                        <div class="flex flex-col justify-center px-2 m-2">
-                            <div
-                                class="flex flex-col justify-center space-x-4 items-center p-4 mb-2 m-auto font-bold text-gray-900"
-                            >
-                                <label for="voting_code" class="px-4 py-2 mb-3">
-                                    <p>Vote Conformation Code</p>
-                                    <p>
-                                        Please check the vote what you have
-                                        casted. Finally conform it by inserting
-                                        the code you got sencod time.
-                                    </p>
-                                    <p>
-                                        यहाँले गर्नु भएको मतदान यो पेजमा
-                                        देखाइएको छ। साथी यहाँको एसएमएसमा पनि
-                                        पठाइएको छ। अब यहाँले गर्नु भएको मतदान
-                                        अली त्यो एसएमएस मा पठाइएको पुस्टी कोड
-                                        हालेर आफ्नो मतदान लाई सेभ गर्न बत्तन
-                                        थिच्नुहोस्।
-                                    </p>
-                                </label>
-                                <input
-                                    class="px-4 py-6 rounded-lg bg-gray-200 w-auto font-bold border border-blue-400 text-gray-900 font-bold text-xl"
-                                    id="voting_id"
-                                    placeholder="PLEASE ENTER HERE YOUR VOTING CODE"
-                                    v-model="form.voting_code"
-                                />
-                            </div>
-                            <div class="mx-auto my-4 w-full">
-                                <button
-                                    type="submit"
-                                    class="m-2 px-2 py-4 rounded-lg bg-blue-300 w-96 mx-auto font-bold text-gray-900"
-                                >
-                                    SEND CODE TO save your vote
-                                </button>
-                            </div>
-                            <div class="mx-auto text-center">
-                                <jet-validation-errors
-                                    class="mb-4 mx-auto text-center"
-                                />
-                            </div>
-                        </div>
-                    </form>
+        <div
+            class="ites-center flex flex-col md:mx-auto md:flex-row md:space-x-6"
+        >
+            <div class="flex flex-col justify-center bg-blue-100">
+                {{ vote }}
+                <div class="m-auto">
+                    <jet-validation-errors class="mx-auto mb-4 text-center" />
                 </div>
-                <!-- next  -->
-                <div class="flex flex-col px-2 mt-6 w-full bg-gray-50 ml-2">
-                    <p class="p-2 mx-auto text-xl text-gray-900 font-bold">
-                        Your vote
-                    </p>
 
-                    <div v-if="no_vote_option" class="text-center">
-                        You have selected a
-                        <span class="text-red-800 font-bold">
-                            VOTE FOR NO ONE </span
-                        >option .<br />
-                        <span class="text-gray-900 font-bold">
-                            Please conform it
-                        </span>
+                <form @submit.prevent="submit" class="mx-auto text-center">
+                    <div class="m-2 flex flex-col justify-center px-2">
+                        <div
+                            class="m-auto mb-2 flex flex-col items-center justify-center space-x-4 p-4 font-bold text-gray-900"
+                        >
+                            <label for="voting_code" class="mb-3 px-4 py-2">
+                                <p>Vote Conformation Code</p>
+                                <p>
+                                    Please check the vote what you have casted.
+                                    Finally conform it by inserting the code you
+                                    got sencod time.
+                                </p>
+                                <p>
+                                    यहाँले गर्नु भएको मतदान यो पेजमा देखाइएको छ।
+                                    साथी यहाँको एसएमएसमा पनि पठाइएको छ। अब
+                                    यहाँले गर्नु भएको मतदान अली त्यो एसएमएस मा
+                                    पठाइएको पुस्टी कोड हालेर आफ्नो मतदान लाई सेभ
+                                    गर्न बत्तन थिच्नुहोस्।
+                                </p>
+                            </label>
+                            <input
+                                class="w-auto rounded-lg border border-blue-400 bg-gray-200 px-4 py-6 text-xl font-bold font-bold text-gray-900"
+                                id="voting_id"
+                                placeholder="PLEASE ENTER HERE YOUR VOTING CODE"
+                                v-model="form.voting_code"
+                            />
+                        </div>
+                        <div class="mx-auto my-4 w-full">
+                            <button
+                                type="submit"
+                                class="m-2 mx-auto w-96 rounded-lg bg-blue-300 px-2 py-4 font-bold text-gray-900"
+                            >
+                                SEND CODE TO save your vote
+                            </button>
+                        </div>
+                        <div class="mx-auto text-center">
+                            <jet-validation-errors
+                                class="mx-auto mb-4 text-center"
+                            />
+                        </div>
                     </div>
-                    <div v-else class="mx-auto w-full">
-                        <voted-post v-bind:candidate="icc_member"></voted-post>
-                        <voted-post v-bind:candidate="president"></voted-post>
-                        <voted-post v-bind:candidate="vp"></voted-post>
-                        <voted-post
-                            v-bind:candidate="general_secretary"
-                        ></voted-post>
-                        <voted-post v-bind:candidate="secretary"></voted-post>
-                        <voted-post v-bind:candidate="treasure"></voted-post>
-                        <voted-post
-                            v-bind:candidate="w_coordinator"
-                        ></voted-post>
-                        <voted-post
-                            v-bind:candidate="y_coordinator"
-                        ></voted-post>
-                        <voted-post
-                            v-bind:candidate="cult_coordinator"
-                        ></voted-post>
-                        <voted-post
-                            v-bind:candidate="child_coordinator"
-                        ></voted-post>
-                        <voted-post
-                            v-bind:candidate="studt_coordinator"
-                        ></voted-post>
-                        <voted-post
-                            v-bind:candidate="member_berlin"
-                        ></voted-post>
-                        <voted-post
-                            v-bind:candidate="member_hamburg"
-                        ></voted-post>
-                        <voted-post
-                            v-bind:candidate="member_nsachsen"
-                        ></voted-post>
-                        <voted-post v-bind:candidate="member_nrw"></voted-post>
-                        <voted-post
-                            v-bind:candidate="member_hessen"
-                        ></voted-post>
-                        <voted-post
-                            v-bind:candidate="member_rhein_pfalz"
-                        ></voted-post>
-                        <voted-post
-                            v-bind:candidate="member_bayern"
-                        ></voted-post>
-                    </div>
+                </form>
+            </div>
+            <!-- next  -->
+            <div class="mt-6 ml-2 flex w-full flex-col bg-gray-50 px-2">
+                <p class="mx-auto p-2 text-xl font-bold text-gray-900">
+                    Your vote
+                </p>
+
+                <div v-if="no_vote_option" class="text-center">
+                    You have selected a
+                    <span class="font-bold text-red-800"> VOTE FOR NO ONE </span
+                    >option .<br />
+                    <span class="font-bold text-gray-900">
+                        Please conform it
+                    </span>
+                </div>
+                <div v-else class="mx-auto w-full">
+                    <voted-post v-bind:candidate="icc_member"></voted-post>
+                    <voted-post v-bind:candidate="president"></voted-post>
+                    <voted-post v-bind:candidate="vp"></voted-post>
+                    <voted-post
+                        v-bind:candidate="general_secretary"
+                    ></voted-post>
+                    <voted-post v-bind:candidate="secretary"></voted-post>
+                    <voted-post v-bind:candidate="treasure"></voted-post>
+                    <voted-post v-bind:candidate="w_coordinator"></voted-post>
+                    <voted-post v-bind:candidate="y_coordinator"></voted-post>
+                    <voted-post
+                        v-bind:candidate="cult_coordinator"
+                    ></voted-post>
+                    <voted-post
+                        v-bind:candidate="child_coordinator"
+                    ></voted-post>
+                    <voted-post
+                        v-bind:candidate="studt_coordinator"
+                    ></voted-post>
+                    <voted-post v-bind:candidate="member_berlin"></voted-post>
+                    <voted-post v-bind:candidate="member_hamburg"></voted-post>
+                    <voted-post v-bind:candidate="member_nsachsen"></voted-post>
+                    <voted-post v-bind:candidate="member_nrw"></voted-post>
+                    <voted-post v-bind:candidate="member_hessen"></voted-post>
+                    <voted-post
+                        v-bind:candidate="member_rhein_pfalz"
+                    ></voted-post>
+                    <voted-post v-bind:candidate="member_bayern"></voted-post>
                 </div>
             </div>
-        </app-layout>
+        </div>
     </nrna-layout>
 </template>
 <script>
@@ -125,7 +105,7 @@ import VotedPost from "@/Shared/VotedPost";
 import { useForm } from "@inertiajs/inertia-vue3";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import AppLayout from "@/Layouts/AppLayout";
-import NrnaLayout from "@/Layouts/NrnaLayout";
+import NrnaLayout from "@/Layouts/ElectionLayout";
 export default {
     props: {
         vote: Object,
