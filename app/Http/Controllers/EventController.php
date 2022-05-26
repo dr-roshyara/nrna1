@@ -14,7 +14,18 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        // dd('test');
+        // dd(auth()->user());
+
+        $events = auth()->user()->events();
+
+        // ->orderBy('started_at', 'desc')
+        // ->get();
+
+        dd($events);
+
+        return view('events', compact('events'));
+
     }
 
     /**

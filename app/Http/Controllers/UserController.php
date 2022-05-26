@@ -215,8 +215,12 @@ class UserController extends Controller
         $user = User::where('user_id', $userid)
                 ->with('images')
                 ->get()->first();
-
+            // dd($user);
+        if(!isset($user)){
+            abort(404, "User not found");
+        }
             $user= $user->only(['id',
+                'google_id',
                 'name_prefex',
                 'first_name',
                 'middle_name',
@@ -286,7 +290,7 @@ class UserController extends Controller
         }
 
           $user= $user->only(['id',
-          'google_id',
+           'google_id',
             'name_prefex',
             'first_name',
             'middle_name',
@@ -306,6 +310,7 @@ class UserController extends Controller
             'password',
             'profile_photo_path',
             'profile_bg_photo_path',
+            'profile_icon_photo_path',
             'designation',
             ]);
         return Inertia::render('User/EditProfile', [

@@ -9,4 +9,5 @@
     composer require laravel/socialite
     followed this guide
     https://therealprogrammer.com/laravel-9-socialite-login-with-google-gmail-account/
-
+    https://web-tuts.com/laravel-9-socialite-login-with-google-example/
+    

@@ -1,24 +1,36 @@
 <template>
-  <div>
-    <a class="btn" @click="toggleShow">Set Avatar</a>
-    <img class="avatar" v-if="avatarUrl2"
-            :src="avatarUrl2" v-show="true" style="display: none;">
+    <div>
+        <a class="btn" @click="toggleShow">Set Avatar</a>
+        <img
+            class="avatar"
+            v-if="avatarUrl2"
+            :src="avatarUrl2"
+            v-show="true"
+            style="display: none"
+        />
         <div class="item">
-			<a class="btn" @click="toggleShow3">аватара</a>
-			<img class="avatar" v-if="avatarUrl3" :src="avatarUrl3" v-show="true" style="display: none;">
-			<my-upload url="/avatar/upload"
-				@crop-success="cropSuccess"
-				@crop-upload-success="cropUploadSuccess"
-				@crop-upload-fail="cropUploadFail"
-				:no-circle="true"
-				field="avatar3"
-				ki="0"
-				lang_type="en"
-				v-model="show3"
-				></my-upload>
-		</div>
-  <img :src="imgDataUrl">
-</div>
+            <a class="btn" @click="toggleShow3">аватара</a>
+            <img
+                class="avatar"
+                v-if="avatarUrl3"
+                :src="avatarUrl3"
+                v-show="true"
+                style="display: none"
+            />
+            <my-upload
+                url="/avatar/upload"
+                @crop-success="cropSuccess"
+                @crop-upload-success="cropUploadSuccess"
+                @crop-upload-fail="cropUploadFail"
+                :no-circle="true"
+                field="avatar3"
+                ki="0"
+                lang_type="en"
+                v-model="show3"
+            ></my-upload>
+        </div>
+        <img :src="imgDataUrl" />
+    </div>
 </template>
 
 <script>
@@ -30,7 +42,7 @@
  *
  *
  */
-  /** Here is changed part of the code :
+/** Here is changed part of the code :
    * This change in vue-upload file upload-3.vue
    *  Changed is written as comment within this comment
 			that.reset();
@@ -83,53 +95,50 @@
 			);
 		}
     **/
-import myUpload from 'vue-image-crop-upload';
-export default{
- components:{
-     myUpload
- },
-
-  data() {
-        return {
-        show: false,
-        params: {
-        token: '12321',
-        name: 'avatar'
-        },
-        headers: {
-        smail: '*_~'
-        },
-        imgDataUrl: '',
-
-
-        }
+import myUpload from "vue-image-crop-upload";
+export default {
+    components: {
+        myUpload,
     },
-     methods: {
 
-       toggleShow() {
+    data() {
+        return {
+            show: false,
+            params: {
+                token: "12321",
+                name: "avatar",
+            },
+            headers: {
+                smail: "*_~",
+            },
+            imgDataUrl: "",
+        };
+    },
+    methods: {
+        toggleShow() {
             this.show = !this.show;
         },
-            /**
+        /**
          * crop success
          *
          * [param] imgDataUrl
          * [param] field
          */
-        cropSuccess(imgDataUrl, field){
-        console.log('-------- crop success --------');
-        this.imgDataUrl = imgDataUrl;
+        cropSuccess(imgDataUrl, field) {
+            console.log("-------- crop success --------");
+            this.imgDataUrl = imgDataUrl;
         },
 
-            /**
+        /**
          * upload success
          *
          * [param] jsonData  server api return data, already json encode
          * [param] field
          */
-        cropUploadSuccess(jsonData, field){
-        console.log('-------- upload success --------');
-        console.log(jsonData);
-        console.log('field: ' + field);
+        cropUploadSuccess(jsonData, field) {
+            console.log("-------- upload success --------");
+            console.log(jsonData);
+            console.log("field: " + field);
         },
         /**
          * upload fail
@@ -137,125 +146,116 @@ export default{
          * [param] status    server api return error status, like 500
          * [param] field
          */
-        cropUploadFail(status, field){
-        console.log('-------- upload fail --------');
-        console.log(status);
-        console.log('field: ' + field);
-        }
+        cropUploadFail(status, field) {
+            console.log("-------- upload fail --------");
+            console.log(status);
+            console.log("field: " + field);
+        },
         //end of methods
     },
-    props:{
-                // field name
+    props: {
+        // field name
         field: {
-        type: String,
-        'default': 'avatar'
+            type: String,
+            default: "avatar",
         },
         // unique key
         ki: {
-        type: String,
-        'default': '0'
+            type: String,
+            default: "0",
         },
         // shows the component
         modelValue: {
-        type: Boolean,
-        'default': true
+            type: Boolean,
+            default: true,
         },
         // upload url
         url: {
-        type: String,
-        'default': ''
+            type: String,
+            default: "",
         },
         // more object parameters
         params: {
-        type: Object,
-        'default': ()=>null
+            type: Object,
+            default: () => null,
         },
         // add custom headers
         headers: {
-        type: Object,
-        'default': ()=>null
+            type: Object,
+            default: () => null,
         },
         // width
         width: {
-        type: Number,
-        default: 200
+            type: Number,
+            default: 200,
         },
         // height
         height: {
-        type: Number,
-        default: 200
+            type: Number,
+            default: 200,
         },
         // disable rotate
         noRotate: {
-        type: Boolean,
-        default: true
+            type: Boolean,
+            default: true,
         },
         // disable circle image
         noCircle: {
-        type: Boolean,
-        default: false
+            type: Boolean,
+            default: false,
         },
         // disable square image
         noSquare: {
-        type: Boolean,
-        default: false
+            type: Boolean,
+            default: false,
         },
         // max size
         maxSize: {
-        type: Number,
-        'default': 10240
+            type: Number,
+            default: 10240,
         },
         // language
         langType: {
             type: String,
-            'default': 'en'
+            default: "en",
         },
 
         // language package
         langExt: {
             type: Object,
-            'default': ()=>null
+            default: () => null,
         },
 
         // image format
         imgFormat: {
-        type: String,
-        'default': 'png'
+            type: String,
+            default: "png",
         },
         // image background
         imgBgc: {
-        type: String,
-        'default': '#fff'
+            type: String,
+            default: "#fff",
         },
         // allows cross domain
         withCredentials: {
-        type: Boolean,
-        'default': false
+            type: Boolean,
+            default: false,
         },
         // upload method
         method: {
-        type: String,
-        'default': 'POST'
+            type: String,
+            default: "POST",
         },
         // initial image url
         initialImgUrl: {
-        type: String,
-        'default': ''
+            type: String,
+            default: "",
         },
         // allowed image format
         allowImgFormat: {
-        type: Array,
-        'default': ()=>[
-            'gif',
-            'jpg',
-            'png'
-        ]
+            type: Array,
+            default: () => ["gif", "jpg", "png"],
         },
-
-
-
-    }
-
-
-}
+    },
+};
 </script>

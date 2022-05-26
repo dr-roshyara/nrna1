@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Calander;
+use App\Models\Calendar;
 use Illuminate\Http\Request;
 
-class CalanderController extends Controller
+class CalendarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CalanderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Calander  $calander
+     * @param  \App\Models\Calendar  $calendar
      * @return \Illuminate\Http\Response
      */
-    public function show(Calander $calander)
+    public function show(Calendar $calendar)
     {
         //
     }
@@ -52,10 +52,10 @@ class CalanderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Calander  $calander
+     * @param  \App\Models\Calendar  $calendar
      * @return \Illuminate\Http\Response
      */
-    public function edit(Calander $calander)
+    public function edit(Calendar $calendar)
     {
         //
     }
@@ -64,10 +64,10 @@ class CalanderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Calander  $calander
+     * @param  \App\Models\Calendar  $calendar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Calander $calander)
+    public function update(Request $request, Calendar $calendar)
     {
         //
     }
@@ -75,10 +75,10 @@ class CalanderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Calander  $calander
+     * @param  \App\Models\Calendar  $calendar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Calander $calander)
+    public function destroy(Calendar $calendar)
     {
         //
     }

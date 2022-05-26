@@ -8,16 +8,12 @@ use App\Http\Controllers\ImageController;
  *
  * feed
  */
-Route::get('/{profile}', [UserController::class, 'show'])->name('user.show');
+Route::get('/user/{profile}', [UserController::class, 'show'])->name('user.show');
 
 Route::get('/{id}/edit',        [UserController::class, 'edit'])->name('edit');
 Route::get('/profile/edit',     [UserController::class, 'editProfile'])->name('user.editProfile');
 Route::post('/images/store',    [ImageController::class, 'store'])->name('image.store');
-Route::post('/avatar/upload',
-    //  [ImageController::class, 'avatarUpload'])->name('avatar.upload');
-    function(){
-        reutrn ("testing ");
-    });
+Route::post('/avatar/upload',   [ImageController::class, 'avatarUpload'])->name('avatar.upload');
 
 // Profile Information...
 Route::put('/users/update/{id}', [UserController::class, 'update'])

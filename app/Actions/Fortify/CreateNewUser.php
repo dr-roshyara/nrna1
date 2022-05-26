@@ -61,7 +61,7 @@ class CreateNewUser implements CreatesNewUsers
         $user_id            =str_replace("","-",$user->firstName);
         //create name and  unique user-id
         $user->name          =$user->first_name. " ". $user->last_name;
-        $user->user_id            =$this->setUsernameAttribute($user->first_name, $user->last_name);
+        $user->user_id            =$this->setUsernameAttribute($user);
         // dd($user);
         $user->save();
         return ($user);
@@ -91,17 +91,25 @@ class CreateNewUser implements CreatesNewUsers
         //     //     'password'              => Hash::make($input['password']),
         // ]);
     }
-    public function setUsernameAttribute($first_name, $last_name){
+    public static function setUsernameAttribute($user){
         $user_id ="";
-        if(isset($first_name)){
-            $user_id  = str_replace(' ','-',strtolower($first_name));
+        if(isset($user->name)&strlen($user->name)>2){
+            // dd($user->name);
+             $user_id = str_replace(' ','-',strtolower($user->name));
+        }else{
+             $first_name =$user->first_name;
+            $last_name =$user->last_name;
+            if(isset($first_name)){
+                $user_id  = str_replace(' ','-',strtolower($first_name));
+            }
+            if(isset($middle_name)){
+                $user_id .="-".$middle_name;
+            }
+            if(isset($last_name)){
+                $user_id .= str_replace(' ','-',strtolower($last_name));
+            }
         }
-        if(isset($middle_name)){
-            $user_id .="-".$middle_name;
-        }
-        if(isset($last_name)){
-            $user_id .= str_replace(' ','-',strtolower($last_name));
-        }
+
       $i =0;
       while(User::whereUserId($user_id)->exists()){
         if(!User::whereUserId($user_id)->exists()){

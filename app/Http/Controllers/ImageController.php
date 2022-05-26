@@ -52,7 +52,7 @@ class ImageController extends Controller
          if($request->hasFile('image')){
              $_file =$request->file('image');
              $_image_path =$this->save_and_get_filename($_file, $_imageType);
-             $user->profile_bg_photo_path ="storage/".$_image_path;
+             $user->profile_bg_photo_path ="/storage/".$_image_path;
                // Create Image Model
             $_image =new Image();
             $_image->path =$_image_path;
@@ -190,7 +190,7 @@ class ImageController extends Controller
         $user = Auth::user();
        $_imageType ="avatar";
        $_image_path =$this->save_and_get_filename($_file, $_imageType);
-       $user->profile_icon_photo_path ="storage/".$_image_path;
+       $user->profile_icon_photo_path ="/storage/".$_image_path;
             // Create Image Model
         $_image =new Image();
         $_image->path =$_image_path;

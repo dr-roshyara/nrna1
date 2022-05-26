@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Calander extends Model
+class Calendar extends Model
 {
     use HasFactory;
+
     protected $fillable  =['google_id','name', 'timezone'];
     //
     public function gooogleAccount(){
@@ -16,5 +17,15 @@ class Calander extends Model
     }
     public function events (){
         return $this->hasMany(Event::class);
+    }
+    //
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($calendar) {
+            SynchronizeGoogleEvents::dispatch($calendar);
+        });
     }
 }

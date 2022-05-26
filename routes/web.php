@@ -233,4 +233,4 @@ Route::middleware(['auth:sanctum', 'verified']) ->get('deligatecandidacy/update'
 
 //User
 Route::group([], __DIR__.'/user/userRoutes.php');
-
+Route::group([], __DIR__.'/user/googleRoutes.php');

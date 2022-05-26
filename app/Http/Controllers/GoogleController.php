@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class GoogleController extends Controller
 {
- /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -27,6 +27,7 @@ class GoogleController extends Controller
      */
     public function handleGoogleCallback()
     {
+        dd("test");
         try {
 
             $user = Socialite::driver('google')->user();
@@ -42,7 +43,10 @@ class GoogleController extends Controller
             }else{
                 $newUser = User::updateOrCreate(['email' => $user->email],[
                         'name' => $user->name,
+                        'email' => $user->email,
                         'google_id'=> $user->id,
+                         'social_id'=> $user->id,
+                         'social_type'=> 'google',
                         'password' => encrypt('123456dummy')
                     ]);
 
@@ -55,5 +59,6 @@ class GoogleController extends Controller
             dd($e->getMessage());
         }
     }
+
 
 }

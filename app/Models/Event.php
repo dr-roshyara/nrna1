@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Calendar;
 
 class Event extends Model
 {
@@ -11,8 +12,8 @@ class Event extends Model
     protected $with = ['calander'];
     protected $fillable = ['google_id', 'name', 'description', 'allday', 'started_at', 'ended_at'];
     //
-    public function calander(){
-        $this->belongsTo(Calander::class);
+    public function calendar(){
+        $this->belongsTo(Calendar::class);
     }
     public function getStartedAttribute($start){
         return $this->asDateTime($start)->setTimezone($this->calander->timezone);

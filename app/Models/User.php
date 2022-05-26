@@ -22,6 +22,8 @@ use App\Models\Assignment;
 use App\Models\Code;
 use App\Models\Image;
 use App\Models\GoogleAccount;
+use App\Models\Calendar;
+use App\Models\Event;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -66,7 +68,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'has_voted',
         'has_candidacy',
         'lcc',
-        'profile_photo_path'
+        'profile_photo_path',
+        'social_id',
+        'social_type',
+        'google_id'
 
     ];
 
@@ -181,4 +186,21 @@ class User extends Authenticatable implements MustVerifyEmail
      public function googleAccounts(){
          return $this->hasMany(GoogleAccount::class);
      }
+     public function events()
+    {
+        // // dd("events");
+        //  $query = Event::whereHas('calendar');
+        //  dd($query);
+        return Event::whereHas('calendar', function ($calendarQuery) {
+            dd($calendarQuery);
+            if(!isset($calendarQuery)){
+                return null;
+            }
+            $calendarQuery->whereHas('googleAccount', function ($accountQuery) {
+                $accountQuery->whereHas('user', function ($userQuery) {
+                    $userQuery->where('id', $this->id);
+                });
+            });
+        });
+    }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventsTable extends Migration
+class CreateCalendarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,22 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('calendars', function (Blueprint $table) {
             $table->id();
-
+            //Relationship
+            $table->unsignedBigInteger('google_account_id');
+            //Relationship
+            $table->foreign('google_account_id')
+                ->references('id')->on('google_accounts')
+                ->onDelete('cascade');
             //Data
             $table->string('google_id');
             $table->string('name');
-            $table->text('description')->nullable();
-            $table->boolean('allday')->default(false);
-            //Time Stamps
-            $table->datetime('started_at');
-            $table->datetime('ended_at');
-
+            $table->string('color');
+            $table->string('timezone');
+            //Time stamps
             $table->timestamps();
+
         });
     }
 
@@ -36,6 +39,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('calendars');
     }
 }

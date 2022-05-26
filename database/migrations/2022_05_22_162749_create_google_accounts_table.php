@@ -15,6 +15,16 @@ class CreateGoogleAccountsTable extends Migration
     {
         Schema::create('google_accounts', function (Blueprint $table) {
             $table->id();
+            // Relationships.
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                   ->references('id')->on('users')
+                   ->onDelete('cascade');
+            //Data
+            $table->string('google_id');
+            $table->string('name');
+            $table->json('token');
+            //Time Stamps
             $table->timestamps();
         });
     }
