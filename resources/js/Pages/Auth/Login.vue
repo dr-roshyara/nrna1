@@ -43,8 +43,8 @@
             <span class="text-bold m-2"> लगइन उदाहरणको लागि: </span> 4915164322589 <br>
             <span class="text-bold m-2"> पासवर्ड:</span>
             यस्को पासवर्ड तपाईंले लिन्क <br/>
-             <inertia-link href="http://127.0.0.1:8000/forgot-password">
-            <span class="text-gray-900 font-bold text-sm">  GET YOUR PASSWORD </span> </inertia-link> मा क्लिक गरेर पाउन सक्नु  हुन्छ।<br>
+             <Link href="http://127.0.0.1:8000/forgot-password">
+            <span class="text-gray-900 font-bold text-sm">  GET YOUR PASSWORD </span> </Link> मा क्लिक गरेर पाउन सक्नु  हुन्छ।<br>
             </div>
                  -->
                 <!-- next -->
@@ -101,13 +101,13 @@
                     </div>
 
                     <div class="mt-4 flex items-center justify-end">
-                        <inertia-link
+                        <Link
                             v-if="canResetPassword"
                             :href="route('password.request')"
                             class="font-bold text-gray-900 underline hover:text-gray-900"
                         >
                             Get your password here
-                        </inertia-link>
+                        </Link>
 
                         <jet-button
                             class="ml-4"
@@ -126,21 +126,21 @@
                         If you are not registered yet, please get registered
                         first.
                     </p>
-                    <inertia-link
+                    <Link
                         :href="route('register')"
                         class="m-auto w-1/2 bg-gray-600 px-6 py-1 text-center text-sm font-bold text-white"
                     >
                         Register
-                    </inertia-link>
+                    </Link>
                     <p class="my-2 py-1 font-bold text-red-500">
                         यदि तपाईंले पहिलो पल्ट यो वेवसाइट खोल्नु भाको हो
                         भने,सबैभन्दा पहिले
-                        <inertia-link
+                        <Link
                             :href="route('register')"
                             class="px-2 font-bold text-gray-700"
                         >
                             यो रजिस्टर लिन्कमा क्लिक गरेर
-                        </inertia-link>
+                        </Link>
                         आफुलाई रजिस्टर गर्नुहोला।
                     </p>
                 </div>
@@ -165,6 +165,7 @@ import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import NrnaLayout from "@/Layouts/LoginLayout";
+import { Link } from "@inertiajs/inertia-vue3";
 export default {
     components: {
         JetAuthenticationCard,
@@ -175,6 +176,7 @@ export default {
         JetLabel,
         JetValidationErrors,
         NrnaLayout,
+        Link,
     },
 
     props: {
