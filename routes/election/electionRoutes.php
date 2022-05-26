@@ -9,7 +9,7 @@ use App\Http\Controllers\DeligateCandidacyController;
 use App\Http\Controllers\DeligateVoteController;
 use App\Http\Controllers\DeligateCodeController;
 Route::middleware(['auth:sanctum', 'verified']) ->get('/election', function(){
-    return Inertia::render('WDashboard/ElectionDashboard', [
+    return Inertia::render('Dashboard/ElectionDashboard', [
 
     ]);
 })->name('election.dashboard');
