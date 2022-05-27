@@ -30,30 +30,29 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'google' => [
-        // 'client_id' => '242995957239-eqjp3enak044ij7jifgalvqsm4739otv.apps.googleusercontent.com',//'871065955282-eqbg9o2n96947qcj9r84mk36jje9fsh6.apps.googleusercontent.com',
-        // 'client_secret' => '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',//'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',
-        /***
-         * client id for server
-            GOOGLE_CLIENT_ID='617960766981-fdvvu501pu3ddld6d4ujkvvmus9cqo2q.apps.googleusercontent.com'
-            GOOGLE_CLIENT_SECRET='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'
-        **/
-        'client_id'=> env('GOOGLE_CLIENT_ID'),
-        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+    // 'google' => [
+    //     // 'client_id' => '242995957239-eqjp3enak044ij7jifgalvqsm4739otv.apps.googleusercontent.com',//'871065955282-eqbg9o2n96947qcj9r84mk36jje9fsh6.apps.googleusercontent.com',
+    //     // 'client_secret' => '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',//'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',
+    //     /***
+    //      * client id for server
+    //         GOOGLE_CLIENT_ID='617960766981-fdvvu501pu3ddld6d4ujkvvmus9cqo2q.apps.googleusercontent.com'
+    //         GOOGLE_CLIENT_SECRET='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'
+    //     **/
+    //     'client_id'=> env('GOOGLE_CLIENT_ID'),
+    //     'client_secret' => env('GOOGLE_CLIENT_SECRET'),
 
-        // 'redirect' => 'http://127.0.0.1:8000/login/google/callback',
-        // 'redirect' => 'https://nrna.eu/login/google/callback',
-        'redirect'=>env('GOOGLE_REDIRECT')
-    ],
-    /***
+    //     // 'redirect' => 'http://127.0.0.1:8000/login/google/callback',
+    //     // 'redirect' => 'https://nrna.eu/login/google/callback',
+    //     'redirect'=>env('GOOGLE_REDIRECT')
+    // ],
     'google' => [
         // Our Google API credentials.
-        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_id'=> env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect'=>env('GOOGLE_REDIRECT'),
 
         // The URL to redirect to after the OAuth process.
         'redirect_uri' => env('GOOGLE_REDIRECT_URI'),
-         'redirect' => env('GOOGLE_AUTH_REDIRECT_URI'),
         // The URL that listens to Google webhook notifications (Part 3).
         'webhook_uri' => env('GOOGLE_WEBHOOK_URI'),
 
@@ -73,6 +72,6 @@ return [
         // Enables incremental scopes (useful if in the future we need access to another type of data).
         'include_granted_scopes' => true,
     ],
-    **/
+
 
 ];

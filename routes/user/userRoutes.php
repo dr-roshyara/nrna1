@@ -3,7 +3,6 @@ use App\Http\Controllers\FeedController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageController;
 
-
 /***
  *
  * feed

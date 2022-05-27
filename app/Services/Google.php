@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
-use App\Calendar;
-use App\GoogleAccount;
+use App\Models\Calendar;
+use App\Models\GoogleAccount;
 class Google
 {
     protected $client;

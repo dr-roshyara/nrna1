@@ -4,7 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Calendar;
+use App\Models\User;
+use App\Concerns\Synchronizable;
+use App\Jobs\SynchronizeGoogleCalendars;
+use App\Jobs\WatchGoogleCalendars;
+use App\Services\Google;
 class GoogleAccount extends Model
 {
     use HasFactory;

@@ -2,57 +2,31 @@
 
 namespace App\Jobs;
 
+use App\Jobs\SynchronizeGoogleResource;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-// class SynchronizeGoogleResource implements ShouldQueue
 class SynchronizeGoogleCalendars extends SynchronizeGoogleResource implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $googleAccount;
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct($googleAccount)
-    {
-        //
-        $this->googleAccount =$googleAccount;
-    }
-
-    /**
-     * Execute the job.
-     *
-     * @return void
-     */
-    public function getGoogleService()
-    {
-        // TODO
-        return app(Google::class)
-        ->connectUsing($this->googleAccount->token)
-        ->service('Calendar');
-    }
 
     public function getGoogleRequest($service, $options)
     {
-        //
         return $service->calendarList->listCalendarList($options);
     }
 
     public function syncItem($googleCalendar)
     {
         if ($googleCalendar->deleted) {
-            return $this->googleAccount->calendars()
+            return $this->synchronizable->calendars()
                 ->where('google_id', $googleCalendar->id)
                 ->get()->each->delete();
         }
 
-        $this->googleAccount->calendars()->updateOrCreate(
+        $this->synchronizable->calendars()->updateOrCreate(
             [
                 'google_id' => $googleCalendar->id,
             ],
@@ -62,5 +36,11 @@ class SynchronizeGoogleCalendars extends SynchronizeGoogleResource implements Sh
                 'timezone' => $googleCalendar->timeZone,
             ]
         );
+    }
+
+    public function dropAllSyncedItems()    
+    {
+        // Here we use `each->delete()` to make sure model listeners are called.
+        $this->synchronizable->calendars->each->delete();   
     }
 }

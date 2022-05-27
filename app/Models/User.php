@@ -192,7 +192,7 @@ class User extends Authenticatable implements MustVerifyEmail
         //  $query = Event::whereHas('calendar');
         //  dd($query);
         return Event::whereHas('calendar', function ($calendarQuery) {
-            dd($calendarQuery);
+            // dd($calendarQuery);
             if(!isset($calendarQuery)){
                 return null;
             }
