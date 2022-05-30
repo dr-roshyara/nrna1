@@ -1,5 +1,5 @@
 <template>
-    <a class="rouned-lg mt-2 bg-slate-100 p-2 px-4" href="/google/oauth">
+    <a class="rouned-lg m-2 mt-4 bg-slate-200 p-2 px-4" href="/google/oauth">
         Add account
     </a>
     <div>

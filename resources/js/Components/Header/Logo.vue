@@ -6,6 +6,7 @@
                 src="/images/logo-2.png"
                 width="60"
                 height="60"
+                alt="NRNA Non Resident Nepali Association Home page"
             />
         </a>
     </div>

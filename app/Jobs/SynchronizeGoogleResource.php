@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Jobs;
-
 abstract class SynchronizeGoogleResource
-{
-    protected $synchronizable;
+{protected $synchronizable;
     protected $synchronization;
 
     public function __construct($synchronizable)
@@ -17,20 +15,20 @@ abstract class SynchronizeGoogleResource
     {
         $pageToken = null;
         $syncToken = $this->synchronization->token;
-        $service = $this->synchronizable->getGoogleService('Calendar');
+        $service = $this->getGoogleService();
 
         do {
             $tokens = compact('pageToken', 'syncToken');
 
             try {
-                $list = $this->getGoogleRequest($service, $tokens); 
-            } catch (\Google_Service_Exception $e) {    
+                $list = $this->getGoogleRequest($service, $tokens);
+            } catch (\Google_Service_Exception $e) {
                 if ($e->getCode() === 410) {
-                    $this->synchronization->update(['token' => null]);  
-                    $this->dropAllSyncedItems();    
-                    return $this->handle(); 
-                }   
-                throw $e;   
+                    $this->synchronization->update(['token' => null]);
+                    $this->dropAllSyncedItems();
+                    return $this->handle();
+                }
+                throw $e;
             }
 
             foreach ($list->getItems() as $item) {
@@ -46,6 +44,7 @@ abstract class SynchronizeGoogleResource
         ]);
     }
 
+    abstract public function getGoogleService();
     abstract public function getGoogleRequest($service, $options);
     abstract public function syncItem($item);
     abstract public function dropAllSyncedItems();

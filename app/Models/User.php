@@ -181,21 +181,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Image::class);
     }
     /***
-     * google accoun t
+     * google accounts
      */
-     public function googleAccounts(){
-         return $this->hasMany(GoogleAccount::class);
-     }
-     public function events()
+       public function googleAccounts()
     {
-        // // dd("events");
-        //  $query = Event::whereHas('calendar');
-        //  dd($query);
+        return $this->hasMany(GoogleAccount::class);
+    }
+    public function events()
+    {
         return Event::whereHas('calendar', function ($calendarQuery) {
-            // dd($calendarQuery);
-            if(!isset($calendarQuery)){
-                return null;
-            }
             $calendarQuery->whereHas('googleAccount', function ($accountQuery) {
                 $accountQuery->whereHas('user', function ($userQuery) {
                     $userQuery->where('id', $this->id);

@@ -1,8 +1,12 @@
 <title>{{ config('meta.title') }}</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="NRNA, Non resident nepali Association, Nepali Network, Nepali Diaspora, Nepalese living abroad">
 <meta http-equiv="content-language" content="de" />
 <meta http-equiv="content-script-type" content="text/javascript" />
 <meta http-equiv="content-style-type" content="text/css" />
 <meta http-equiv="window-target" content="_top" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="referrer" content="origin-when-cross-origin" />
 <meta name="description" content=" {{config('meta.description')}} " />
 <meta http-equiv="content-language" content="{{ config('meta.content_language') }}" />
 <meta http-equiv="content-script-type" content="text/javascript" />

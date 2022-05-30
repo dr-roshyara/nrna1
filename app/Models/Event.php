@@ -9,25 +9,30 @@ use App\Models\Calendar;
 class Event extends Model
 {
     use HasFactory;
-    protected $with = ['calander'];
-    protected $fillable = ['google_id', 'name', 'description', 'allday', 'started_at', 'ended_at'];
-    //
-    public function calendar(){
-        $this->belongsTo(Calendar::class);
-    }
-    public function getStartedAttribute($start){
-        return $this->asDateTime($start)->setTimezone($this->calander->timezone);
+    protected $with = ['calendar'];
 
-    }
-    public function getEndedAttribute($end){
-        return $this->asDateTime($end)->setTimezone($this->calander->timezone);
+    protected $fillable = [
+        'google_id', 'name', 'description', 'allday', 'started_at', 'ended_at',
+    ];
 
+    public function calendar()
+    {
+        return $this->belongsTo(Calendar::class);
     }
 
-    public function getDurationAttribute(){
-        return $this->started_at->diffForHumans($this->ended_at,true);
-
+    public function getStartedAtAttribute($start)
+    {
+        return $this->asDateTime($start)->setTimezone($this->calendar->timezone);
     }
 
+    public function getEndedAtAttribute($end)
+    {
+        return $this->asDateTime($end)->setTimezone($this->calendar->timezone);
+    }
+
+    public function getDurationAttribute()
+    {
+        return $this->started_at->diffForHumans($this->ended_at, true);
+    }
 
 }

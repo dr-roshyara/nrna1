@@ -8,128 +8,60 @@ use Inertia\Inertia;
 use App\Services\Google;
 class GoogleAccountController extends Controller
 {
-    //make middleware
     public function __construct()
     {
         $this->middleware('auth');
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display a listing of the google accounts.
      */
     public function index()
     {
-
-        //
-        // dd(['accounts'=>auth()->user()->googleAccounts]);
-        return Inertia::render('User/GoogleAccount.vue', [
+        return Inertia::render('User/GoogleAccount',[
+             'accounts' => auth()->user()->googleAccounts]);
+        return view('accounts', [
             'accounts' => auth()->user()->googleAccounts,
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Handle the OAuth connection which leads to
+     * the creating of a new Google Account.
      */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-      public function store(Request $request, Google $google)
+    public function store(Request $request, Google $google)
     {
         if (! $request->has('code')) {
             return redirect($google->createAuthUrl());
         }
 
         $google->authenticate($request->get('code'));
-
-        $account = $google->service('Oauth2');
-        $userInfo = $account->userinfo->get();
-
-
+        $account = $google->service('Plus')->people->get('me');
 
         auth()->user()->googleAccounts()->updateOrCreate(
             [
-                'google_id' => $userInfo->id,
+                'google_id' => $account->id,
             ],
             [
-                'name' =>$userInfo->email,
+                'name' => head($account->emails)->value,
                 'token' => $google->getAccessToken(),
             ]
         );
 
         return redirect()->route('google.index');
-
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\GoogleAccount  $googleAccount
-     * @return \Illuminate\Http\Response
+     * Revoke the account's token and delete the it locally.
      */
-    public function show(GoogleAccount $googleAccount)
+    public function destroy(GoogleAccount $googleAccount, Google $google)
     {
-        //
-    }
+        $googleAccount->calendars->each->delete();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\GoogleAccount  $googleAccount
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(GoogleAccount $googleAccount)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\GoogleAccount  $googleAccount
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, GoogleAccount $googleAccount)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\GoogleAccount  $googleAccount
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(GoogleAccount $googleAccount)
-    {
-        //
-         // TODO:
-        // - Revoke the authentication token.
-        // - Delete the Google Account.
         $googleAccount->delete();
-         // Event though it has been deleted from our database,
-        // we still have access to $googleAccount as an object in memory.
+
         $google->revokeToken($googleAccount->token);
 
         return redirect()->back();
-    }
-    //
-    public function revokeToken($token = null)
-    {
-        $token = $token ?? $this->client->getAccessToken();
-
-        return $this->client->revokeToken($token);
     }
 }

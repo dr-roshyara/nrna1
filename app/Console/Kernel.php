@@ -27,7 +27,6 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->job(new PeriodicSynchronizations())->everyFifteenMinutes();
-        $schedule->job(new RefreshWebhookSynchronizations())->daily();
     }
 
     /**

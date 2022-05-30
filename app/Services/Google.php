@@ -4,6 +4,7 @@ use App\Models\Calendar;
 use App\Models\GoogleAccount;
 class Google
 {
+
     protected $client;
 
     function __construct()
