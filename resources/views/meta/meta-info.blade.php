@@ -1,6 +1,8 @@
 <title>{{ config('meta.title') }}</title>
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="keywords" content="{{config('meta.keywords')}}">
+<meta name="robots" content="noindex,nofollow">
+{{-- <meta name="google-site-verification" content="+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34="/> --}}
 <meta http-equiv="content-language" content="de" />
 <meta http-equiv="content-script-type" content="text/javascript" />
 <meta http-equiv="content-style-type" content="text/css" />
@@ -13,8 +15,8 @@
 <meta http-equiv="content-style-type" content="text/css" />
 <meta http-equiv="window-target" content="_top" />
 <meta property="og:type" content="Organisation" />
-<meta property="og:title" content="Non resident Nepali Association " />
-<meta property="og:description" content="Nepali Diaspora around the world" />
+<meta property="og:title" content="Non resident Nepali Association" />
+<meta property="og:description" content="{{config('meta.og_description') }}" />
 <meta property="og:locale" content="{{ config('meta.og_locale') }}" />
 <meta property="og:url" content="{{config('meta.og_url') }}" />
 <meta property="og:site_name" content="nrna.eu" />
