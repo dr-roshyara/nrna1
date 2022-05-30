@@ -1,6 +1,6 @@
 <title>{{ config('meta.title') }}</title>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="keywords" content="NRNA, Non resident nepali Association, Nepali Network, Nepali Diaspora, Nepalese living abroad">
+<meta name="keywords" content="{{config('meta.keywords')}}">
 <meta http-equiv="content-language" content="de" />
 <meta http-equiv="content-script-type" content="text/javascript" />
 <meta http-equiv="content-style-type" content="text/css" />

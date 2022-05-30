@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Config;
 //
 use Inertia\Inertia;
 class UserController extends Controller
@@ -257,12 +258,37 @@ class UserController extends Controller
                 // ->join('images', 'images.user_id', '=', 'users.id');
         // dd(config('app.name'));
         // config('app.name') ="test";
-        config(['app.name' => "Home Page of ". $user['name']]);
+
         if(!isset($user)){
                 return Response(['error'=>'Resources not found'],404);
 
         }
-            // dd($user);
+            /**
+         * Define Meta Tag
+         *
+         */
+        $_title = "Homepage of ".$user['name'];
+        $_keywords= $user['name'].",  Homepage, Nepal ";
+        $_description =$user['name']." is from Nepal. ";
+        if(isset($user['region'])){
+            $_description .="He is currently living in  ". $user['region'];
+        }
+        if(isset($user['country'])){
+            $_description .=", and country ". $user['country'];
+        }
+
+
+        config(['meta.title'=>$_title,
+               'meta.keywords'=>$_keywords,
+               'meta.description'=>$_description,
+        ]);
+        //  dd(config('app.name'));
+        //  Config::set('app.name', 'Home Page');
+        // config('app.name') ="Home Page of ";
+        //  config('app.name') = "Home Page of ". $user['name'];
+        // config(['meta.keywords' => "Home Page, Nepal ". $user['name']]);
+
+        // dd($user);
             // $results = Cart::with('users')->where('status',1)->getOrFail();
         return Inertia::render('User/Profile', [
           'user' => $user,

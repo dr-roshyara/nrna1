@@ -14,6 +14,8 @@ return [
     'content_language'=>'de',
     'og_url' => 'https://nrna.eu/',
     'og_locale'=>'de_DE',
+    'keywords' =>'NRNA, Non resident nepali Association, Nepali Network, Nepali Diaspora, Nepalese living abroad',
+
 
 
 ];
