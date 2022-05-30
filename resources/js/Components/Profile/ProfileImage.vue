@@ -6,7 +6,7 @@
      -->
     <section
         v-if="bgUrlValid | iconUrlValid | isLoggedIn"
-        class="relative mb-1 block flex w-full flex-col bg-[url('/storage/users/background.jpg')] md:h-64"
+        class="relative mb-1 flex w-full flex-col bg-[url('/storage/users/background.jpg')] md:h-64"
     >
         <div class="align-center min-h-40 flex h-full w-full justify-center">
             <!-- src="images/background_images/nab_raj_roshyara.JPG" -->
@@ -16,7 +16,7 @@
                 :src="user.profile_bg_photo_path"
                 @error="onBgImageError"
                 class="md:max-h-100 max-h-64 w-full rounded object-cover"
-                alt="{{user.name}}, Home Page, "
+                :alt="user.name + ' Home Page Nepal'"
             />
             <div
                 class="h-70-px pointer-events-none absolute top-auto bottom-0 left-0 right-0 w-full overflow-hidden"
@@ -49,7 +49,7 @@
                 :src="user.profile_icon_photo_path"
                 @error="onIconImageError"
                 class="h-28 w-28 -translate-x-1/2 translate-y-1/2 rounded-full object-cover"
-                alt=" {{user.name}}, Home Page, "
+                :alt="user.name + ' Home Page Nepal'"
             />
         </div>
         <div
@@ -161,6 +161,9 @@ export default {
         },
         onIconImageError() {
             this.iconUrlValid = false;
+        },
+        getImageAlt() {
+            return this.user.name + ", Home Page Nepal";
         },
     },
 };
