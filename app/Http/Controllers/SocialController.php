@@ -26,7 +26,9 @@ class SocialController extends Controller
         try {
 
             $user = Socialite::driver('facebook')->user();
-            $isUser = User::where('facebook_id', $user->facebook_id)->first();
+            // $isUser = User::where('facebook_id', $user->facebook_id)->first();
+            $isUser =User::where('facebook_id', $user->id)->first();
+
 
             if($isUser){
                 Auth::login($isUser);
