@@ -72,6 +72,11 @@ return [
         // Enables incremental scopes (useful if in the future we need access to another type of data).
         'include_granted_scopes' => true,
     ],
+    'facebook' =>[
+        'client_id'  => env('FACEBOOK_ID'),
+        'client_secret'=>env('FACEBOOK_SECRET_KEY'),
+        'redirect'=>env('FACEBOOK_REDIRECT')
+    ],
 
 
 ];

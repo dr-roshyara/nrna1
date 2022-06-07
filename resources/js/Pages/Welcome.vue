@@ -32,14 +32,15 @@
 
     <div v-if="!loggedIn">
         <nrna-layout :canRegister="canRegister" :canLogin="canLogin">
-            <div class="grid grid-cols-1">
+            <div class="flex min-h-screen flex-col">
                 <join-network></join-network>
-                <login
+                <upcoming-events></upcoming-events>
+                <!-- <login
                     canResetPassword="true"
                     :canRegister="canRegister"
                     :canLogin="canLogin"
                 >
-                </login>
+                </login> -->
             </div>
         </nrna-layout>
     </div>
@@ -54,6 +55,7 @@
 import Login from "@/Components/Auth/Login";
 import Dashboard from "@/Pages/Dashboard";
 import JoinNetwork from "@/components/General/JoinNetwork.vue";
+import UpcomingEvents from "@/Shared/Events/UpcomingEvents.vue";
 import NrnaLayout from "@/Layouts/LoginLayout";
 export default {
     props: {
@@ -69,6 +71,7 @@ export default {
         Dashboard,
         JoinNetwork,
         NrnaLayout,
+        UpcomingEvents,
     },
 };
 </script>

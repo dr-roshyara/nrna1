@@ -71,7 +71,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_path',
         'social_id',
         'social_type',
-        'google_id'
+        'google_id',
+        'facebook_id'
 
     ];
 
