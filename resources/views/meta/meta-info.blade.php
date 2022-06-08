@@ -1,7 +1,7 @@
 <title>{{ config('meta.title') }}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="keywords" content="{{config('meta.keywords')}}">
-<meta name="robots" content="noindex,nofollow">
+{{-- <meta name="robots" content="noindex,nofollow"> --}}
 {{-- <meta name="google-site-verification" content="+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34="/> --}}
 <meta http-equiv="content-language" content="de" />
 <meta http-equiv="content-script-type" content="text/javascript" />
