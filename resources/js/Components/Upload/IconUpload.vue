@@ -79,6 +79,7 @@ export default {
         toggleShow3: function toggleShow3() {
             var show3 = this.show3;
             this.show3 = !show3;
+            // console.log("closing");
         },
         cropSuccess: function cropSuccess(data, field, key) {
             if (field == "avatar1") {
@@ -91,10 +92,12 @@ export default {
             console.log("-------- 剪裁成功 --------");
         },
         cropUploadSuccess: function cropUploadSuccess(data, field, key) {
-            console.log("-------- 上传成功 --------");
+            console.log("-------- success message --------");
             console.log(data);
             console.log("field: " + field);
             console.log("key: " + key);
+            // this.route("user.show", this.user.user_id).click();
+            this.$emit("icon-uploaded");
         },
         cropUploadFail: function cropUploadFail(status, field, key) {
             console.log("-------- 上传失败 --------");

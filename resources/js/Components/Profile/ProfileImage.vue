@@ -49,14 +49,16 @@
                 :src="user.profile_icon_photo_path"
                 @error="onIconImageError"
                 class="h-28 w-28 -translate-x-1/2 translate-y-1/2 rounded-full object-cover"
-                :alt="user.name + ' Home Page Nepal'"
+                :alt="user.name + ' Home Page, NRNA'"
             />
         </div>
+        <!-- The following Div to show the Camera Icon   -->
         <div
             @click="editBackground = !editBackground"
             v-if="isLoggedIn"
             class="absolute bottom-0 ml-2"
         >
+            <!-- svg is for Camera Icon  -->
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6"
@@ -132,7 +134,11 @@
             </div>
         </div>
         <!-- Upload back groud  -->
-        <image-upload v-if="uploadBackground" image_type="profile">
+        <image-upload
+            v-if="uploadBackground"
+            image_type="profile"
+            @image-uploaded="image_uploaded"
+        >
         </image-upload>
     </section>
 </template>
@@ -164,6 +170,10 @@ export default {
         },
         getImageAlt() {
             return this.user.name + ", Home Page Nepal";
+        },
+        image_uploaded() {
+            this.editBackground = false;
+            this.uploadBackground = false;
         },
     },
 };

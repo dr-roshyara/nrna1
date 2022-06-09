@@ -10,6 +10,7 @@
                 <!-- Upload icon  -->
                 <div class="absolute grid h-40 w-full place-items-center">
                     <icon-upload
+                        @icon-uploaded="incon_uploaded"
                         image_type="icon"
                         class="absolute bottom-0 grid w-96 place-items-center rounded-full"
                     >
@@ -286,7 +287,13 @@
                     </div>
                 </form>
             </jet-authentication-card>
-            {{ user }}
+            <a
+                v-show="clickUserProfile"
+                id="clickUserProfile"
+                :href="route('user.show', $page.props.user.user_id)"
+            >
+                user profile
+            </a>
         </main>
     </profile-layout>
 </template>
@@ -318,6 +325,7 @@ export default {
     },
     data() {
         return {
+            clickUserProfile: false,
             form: this.$inertia.form({
                 _method: "PUT",
                 firstName: this.user.first_name,
@@ -352,6 +360,14 @@ export default {
                     // onFinish: () => this.form.reset('password', 'password_confirmation'),
                 }
             );
+        },
+        incon_uploaded() {
+            // console.log(this.user.user_id);
+            // console.log(this.user);
+            this.clickUserProfile = true;
+            var el = document.getElementById("clickUserProfile");
+            el.click();
+            // console.log(this.route("user.show", this.user.user_id));
         },
     },
 };
