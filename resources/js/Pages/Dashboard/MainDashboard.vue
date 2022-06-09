@@ -2,7 +2,7 @@
     <nrna-layout>
         <div class="min-h-screen p-2">
             <!-- <join-network></join-network>4 -->
-            <h1>Main Dashboard</h1>
+            <h1>Here we will post our views and openions</h1>
         </div>
     </nrna-layout>
 </template>

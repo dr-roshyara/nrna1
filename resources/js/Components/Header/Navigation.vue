@@ -1,7 +1,43 @@
 <template>
     <nav class="border-b border-gray-100 bg-white">
         <!-- Primary Navigation Menu -->
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="w-full p-2 sm:hidden sm:px-6 md:max-w-7xl lg:px-8">
+            <div
+                class="grid h-16 grid-cols-3 justify-between justify-items-center"
+            >
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <jet-nav-link
+                        :href="
+                            route('user.show', {
+                                profile: $page.props.user.user_id,
+                            })
+                        "
+                    >
+                        Personal Profile<br />
+                        व्यक्तिगत बिवरण
+                    </jet-nav-link>
+                </div>
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <jet-nav-link
+                        :href="route('dashboard')"
+                        :active="route().current('dashboard')"
+                    >
+                        Discussion<br />
+                        छलफल
+                    </jet-nav-link>
+                </div>
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <jet-nav-link
+                        :href="route('activities')"
+                        :active="route().current('activities')"
+                    >
+                        Activities<br />
+                        गतिबिधीहरू
+                    </jet-nav-link>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto hidden max-w-7xl px-4 sm:block sm:px-6 lg:px-8">
             <div class="flex h-16 justify-between">
                 <div class="flex">
                     <!-- Logo -->
@@ -17,18 +53,17 @@
                             :href="route('dashboard')"
                             :active="route().current('dashboard')"
                         >
-                            Dashboard<br />
-                            ड्यासवोर्ड
+                            Discussion<br />
+                            छलफल
                         </jet-nav-link>
                     </div>
-                    <!-- next --link -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <jet-nav-link
-                            :href="route('election.dashboard')"
-                            :active="route().current('election.dashboard')"
+                            :href="route('activities')"
+                            :active="route().current('activities')"
                         >
-                            Election Dashboard <br />
-                            मतदान मुख्य पाना
+                            Activities<br />
+                            गतिबिधीहरू
                         </jet-nav-link>
                     </div>
 
@@ -47,6 +82,16 @@
                         >
                             Personal Profile<br />
                             व्यक्तिगत बिवरण
+                        </jet-nav-link>
+                    </div>
+                    <!-- next --link -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <jet-nav-link
+                            :href="route('election.dashboard')"
+                            :active="route().current('election.dashboard')"
+                        >
+                            Election Dashboard <br />
+                            मतदान मुख्य पाना
                         </jet-nav-link>
                     </div>
                 </div>

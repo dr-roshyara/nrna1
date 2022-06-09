@@ -96,11 +96,7 @@ Route::get('/', function () {
 });
 
 
-//Dashboard
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    // return Inertia::render('Dashboard');
-    return Inertia::render('Dashboard/MainDashboard');
-})->name('dashboard');
+
 //voters
 Route::middleware(['auth:sanctum', 'verified'])
         ->get('/voters/index', [VoterlistController::class, 'index'])->name('voters.index');
@@ -182,3 +178,6 @@ Route::group([], __DIR__.'/user/userRoutes.php');
 Route::group([], __DIR__.'/user/googleRoutes.php');
 //election
 Route::group([], __DIR__.'/election/electionRoutes.php');
+//Openion
+Route::group([], __DIR__.'/openion/openionRoutes.php');
+Route::group([], __DIR__.'/committee/committeeRoutes.php');
