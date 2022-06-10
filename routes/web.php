@@ -28,7 +28,7 @@ use Inertia\Inertia;
 use App\Models\Message;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-
+use App\Http\Controllers\OpenionController;
 
 /*
 |--------------------------------------------------------------------------
