@@ -16,6 +16,3 @@ use App\Http\Controllers\OpenionController;
 Route::get('/openions', [OpenionController::class, 'index'])
         ->name('openions.index');
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->post('/openions', [OpenionController::class, 'store'])
-      ->name('openions.store');

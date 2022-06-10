@@ -166,3 +166,6 @@ Route::group([], __DIR__.'/election/electionRoutes.php');
 // Route::group([], __DIR__.'/openion/openionRoutes.php');
 Route::group([], __DIR__.'/committee/committeeRoutes.php');
 // Route::group([], __DIR__.'/openion/openionRoutes.php');
+Route::middleware(['auth:sanctum', 'verified'])
+    ->post('/openions', [OpenionController::class, 'store'])
+      ->name('openions.store');
