@@ -191,7 +191,8 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-
+        // Intervention\Image\ImageServiceProvider::class,
+        Intervention\Image\ImageServiceProviderLaravelRecent::class,
 
 
     ],
@@ -248,6 +249,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'ImageManager' => 'Intervention\Image\Facades\Image'
 
     ],
 

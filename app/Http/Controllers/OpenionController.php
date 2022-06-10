@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Openion;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 class OpenionController extends Controller
 {
     /**
@@ -14,8 +16,13 @@ class OpenionController extends Controller
      */
     public function index()
     {
+        $openions =DB::table('openions')
+        ->orderBy('id', 'desc')
+        ->get();
+
+        return response($openions->toJson());
         //
-        return Inertia::render('Dashboard/MainDashboard');
+        // return Inertia::render('Dashboard/MainDashboard');
         // echo " Here we will display different openions";
     }
 
@@ -37,7 +44,22 @@ class OpenionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd(Auth::user());
+
+        $request->validate([
+            'body'=> ['required'],
+        ]);
+        $openion = new Openion();
+        if(isset($request['title'])){
+            $openion->title =$request['title'];
+        }
+        $openion ->body =$request['body'];
+        // dd($openion);
+         $openion->user_id =auth()->user()->id;
+        // dd($openion);
+        $openion->save();
+        //  return redirect()->route('user.show', ['profile' => $user->user_id]);
+         return redirect()->route('dashboard');
     }
 
     /**

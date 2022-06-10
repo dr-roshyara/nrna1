@@ -1,15 +1,6 @@
 <template>
     <nrna-layout :canRegister="canRegister" :canLogin="canLogin">
         <div class="flex flex-col">
-            <!-- <a href="https://www.civiciti.com/ww/nrnagermany" class="m-auto" >
-                      <div class=" flex flex-col h-64 py-2 m-auto text-center px-10 w-full">
-                       <p class="w-full text-center text-gray-900 font-bold">
-                         VOTE  HERE </p>
-                       <img src="/storage/images/ballot.png" width="200" height="200" />
-                    </div>
-
-            </a> -->
-
             <jet-authentication-card
                 class="mb-2 min-h-screen rounded border-t border-blue-500"
             >

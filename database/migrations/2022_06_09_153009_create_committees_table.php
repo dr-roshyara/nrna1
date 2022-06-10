@@ -15,6 +15,13 @@ class CreateCommitteesTable extends Migration
     {
         Schema::create('committees', function (Blueprint $table) {
             $table->id();
+            $table->string('hierarchal_label');
+            $table->string('name');
+            $table->string('short_name')->nullable();
+            $table->dateTime('period_from')->nullable();
+            $table->dateTime('period_to')->nullable();
+            $table->unsignedInteger('period_number')->nullable();
+            $table->dateTime('election_date')->nullable();
             $table->timestamps();
         });
     }

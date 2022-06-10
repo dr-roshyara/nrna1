@@ -3,6 +3,31 @@ use App\Http\Controllers\FeedController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\SocialController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
+
+/**
+ * For profile photos create routes
+ * Profile photso are in <storage/profile-photos>
+ */
+
+Route::get('profile-photos/{filename}', function ($filename)
+{
+    $path = public_path('profile-photos/' . $filename);
+    dd($path);
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    // $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    // $response->header("Content-Type", $type);
+
+    return $response;
+});
 
 /***
  *

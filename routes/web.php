@@ -58,27 +58,6 @@ Route::get('/storage/images/{filename}', function ($filename)
     return $response;
 });
 
-/**
- * For profile photos create routes
- * Profile photso are in <storage/profile-photos>
- */
-
-Route::get('profile-photos/{filename}', function ($filename)
-{
-    $path = public_path('profile-photos/' . $filename);
-    dd($path);
-    if (!File::exists($path)) {
-        abort(404);
-    }
-
-    $file = File::get($path);
-    // $type = File::mimeType($path);
-
-    $response = Response::make($file, 200);
-    // $response->header("Content-Type", $type);
-
-    return $response;
-});
 
 Route::get('/', function () {
     //defile title
@@ -94,6 +73,11 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    // return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard/MainDashboard');
+})->name('dashboard');
 
 
 
@@ -179,5 +163,6 @@ Route::group([], __DIR__.'/user/googleRoutes.php');
 //election
 Route::group([], __DIR__.'/election/electionRoutes.php');
 //Openion
-Route::group([], __DIR__.'/openion/openionRoutes.php');
+// Route::group([], __DIR__.'/openion/openionRoutes.php');
 Route::group([], __DIR__.'/committee/committeeRoutes.php');
+// Route::group([], __DIR__.'/openion/openionRoutes.php');

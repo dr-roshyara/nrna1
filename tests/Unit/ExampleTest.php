@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
-
+// use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
@@ -14,7 +14,8 @@ class ExampleTest extends TestCase
     public function test_example()
     {
         // $response =$this->get('/');
+         $response = $this->get('/');
         // $response->$this->assertStatus(200);
-        $this->assertTrue(true);
+         $response->assertStatus(200);
     }
 }
