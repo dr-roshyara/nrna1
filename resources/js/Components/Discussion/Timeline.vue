@@ -13,7 +13,7 @@
                     autocomplete="title"
                 />
             </div>
-            <div class="grow-wrap pb-1">
+            <div class="grow-wrap">
                 <textarea
                     class="border border-gray-100"
                     name="text"
@@ -23,6 +23,18 @@
                     required
                     @input="growWithInput"
                 ></textarea>
+            </div>
+            <!-- This is for has tag  -->
+            <div class="pb-1">
+                <jet-input
+                    id="hash_tag"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.hash_tag"
+                    autofocus
+                    placeholder="Put hash tags here"
+                    autocomplete="hash_tag"
+                />
             </div>
             <jet-button
                 class="mt-1 text-center"
@@ -61,6 +73,7 @@ export default {
             form: this.$inertia.form({
                 title: "",
                 body: "",
+                hash_tag: "",
                 processing: false,
             }),
         };

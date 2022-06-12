@@ -48,7 +48,7 @@ export default {
         //         Accept: "application/json",
         //     },
         // };
-        window.axios.get(this.route("openions.index")).then((response) => {
+        axios.get(this.route("openions.index")).then((response) => {
             this.openions = response.data;
         });
     },

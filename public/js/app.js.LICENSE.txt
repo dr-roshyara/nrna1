@@ -8,6 +8,18 @@
  * @license  MIT
  */
 
+/*! Copyright (c) 2016 Naufal Rabbani (http://github.com/BosNaufal)
+  * Licensed Under MIT (http://opensource.org/licenses/MIT)
+  *
+  * Vue Image Compressor @ Version 0.0.1
+  *
+  * refs:
+  * https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+  * https://davidwalsh.name/convert-canvas-image
+  * https://beta.webcomponents.org/element/3mp3ri0r/cpol-image
+  *
+  */
+
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /**

@@ -161,7 +161,7 @@ class ImageController extends Controller
             $target_filename = $date->getTimestamp()."_". basename($file->getClientOriginalName());
             $target_filename = preg_replace('/\s+/', '_', $target_filename);
             $target_filename =strtolower($target_filename);
-            // dd( toLower($target_filename));
+            dd( toLower($target_filename));
 
         /**
         * storeAs function has three parameters

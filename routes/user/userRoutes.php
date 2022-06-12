@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 
+Route::middleware(['auth:sanctum', 'verified'])
+        ->get('/users/index', [UserController::class, 'index'])->name('users.index');
+
+
 /**
  * For profile photos create routes
  * Profile photso are in <storage/profile-photos>

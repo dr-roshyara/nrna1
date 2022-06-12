@@ -13,6 +13,12 @@ Route::middleware(['auth:sanctum', 'verified']) ->get('/election', function(){
 
     ]);
 })->name('election.dashboard');
+
+//voters
+Route::middleware(['auth:sanctum', 'verified'])
+        ->get('/voters/index', [VoterlistController::class, 'index'])->name('voters.index');
+
+
 /**
  * All candidates
  */
@@ -75,3 +81,7 @@ Route::middleware(['auth:sanctum', 'verified']) ->get('deligatecandidacy/update'
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/count', [DeligateVoteController::class, 'count'])->name('deligatevote.count');
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/result', [DeligateVoteController::class, 'result'])->name('deligatevote.result');
 
+
+//show posts
+Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
+Route::get('posts/assign', [PostController::class, 'assign'])->name('post.assign');

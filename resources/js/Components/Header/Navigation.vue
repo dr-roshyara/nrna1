@@ -3,7 +3,7 @@
         <!-- Primary Navigation Menu -->
         <div class="w-full p-2 sm:hidden sm:px-6 md:max-w-7xl lg:px-8">
             <div
-                class="grid h-16 grid-cols-3 justify-between justify-items-center"
+                class="grid h-16 grid-cols-4 justify-between justify-items-center"
             >
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <jet-nav-link
@@ -13,8 +13,8 @@
                             })
                         "
                     >
-                        Personal Profile<br />
-                        व्यक्तिगत बिवरण
+                        Profile<br />
+                        बिवरण
                     </jet-nav-link>
                 </div>
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -33,6 +33,15 @@
                     >
                         Activities<br />
                         गतिबिधीहरू
+                    </jet-nav-link>
+                </div>
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <jet-nav-link
+                        :href="route('student.create')"
+                        :active="route().current('student.create')"
+                    >
+                        IT Class<br />
+                        आइटी कक्षा
                     </jet-nav-link>
                 </div>
             </div>
