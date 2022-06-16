@@ -21,7 +21,7 @@
                 v-if="openion.hash_tag"
                 class="absolute bottom-0 ml-0 text-sm font-bold tracking-tighter text-teal-800"
             >
-                #{{ openion.hash_tag }}}
+                #{{ openion.hash_tag }}
             </p>
 
             <!-- {{ openion }} -->
