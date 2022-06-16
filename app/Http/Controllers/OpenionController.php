@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 class OpenionController extends Controller
 {
     /**
@@ -16,10 +18,13 @@ class OpenionController extends Controller
      */
     public function index()
     {
-        $openions =DB::table('openions')
-        ->orderBy('id', 'desc')
-        ->get();
-
+         $openions = QueryBuilder::for(Openion::class)
+         ->with(['user'])
+        ->orderBy('id', 'desc')->get();
+        //  $openions->load(['user'=>function($query){
+        //     // $query->select(['id']);
+        // }]);
+        //   dd($openions->get());
         return response($openions->toJson());
         //
         // return Inertia::render('Dashboard/MainDashboard');
@@ -52,6 +57,9 @@ class OpenionController extends Controller
         $openion = new Openion();
         if(isset($request['title'])){
             $openion->title =$request['title'];
+        }
+          if(isset($request['hash_tag'])){
+            $openion->hash_tag =$request['hash_tag'];
         }
         $openion ->body =$request['body'];
         // dd($openion);

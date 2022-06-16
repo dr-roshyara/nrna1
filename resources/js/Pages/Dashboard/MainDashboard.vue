@@ -2,19 +2,7 @@
     <nrna-layout>
         <div class="min-h-screen p-2">
             <timeline></timeline>
-            <!-- <h1>Here we will post our views and openions</h1> -->
-            <div class="mx-auto mt-2 max-w-xl py-2">
-                <div
-                    v-for="openion in openions"
-                    class="m-2 rounded-md border p-2 shadow-md"
-                >
-                    <p class="px-1 pb-1 text-center font-bold text-blue-800">
-                        {{ openion.title }}
-                    </p>
-                    <p>{{ openion.body }}</p>
-                    <!-- {{ openion }} -->
-                </div>
-            </div>
+            <openions></openions>
         </div>
         <!-- <join-network></join-network>4 -->
     </nrna-layout>
@@ -26,7 +14,7 @@ import AppLayout from "@/Layouts/AppLayout";
 import Welcome from "@/Jetstream/Welcome";
 import JoinNetwork from "@/components/General/JoinNetwork.vue";
 import Timeline from "@/components/Discussion/Timeline.vue";
-
+import Openions from "@/Components/Discussion/Openions";
 export default {
     components: {
         NrnaLayout,
@@ -34,24 +22,7 @@ export default {
         Welcome,
         JoinNetwork,
         Timeline,
+        Openions,
     },
-    data() {
-        return {
-            openions: {},
-        };
-    },
-    mounted() {
-        // const token = localStorage.getItem("test_token");
-        // const headers = {
-        //     headers: {
-        //         Authorization: `Bearer ${token}`,
-        //         Accept: "application/json",
-        //     },
-        // };
-        axios.get(this.route("openions.index")).then((response) => {
-            this.openions = response.data;
-        });
-    },
-    methods: {},
 };
 </script>

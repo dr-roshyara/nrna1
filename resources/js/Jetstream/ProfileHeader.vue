@@ -17,7 +17,7 @@
                 </div>
                 <div class="ml-4 w-3/4 px-2">
                     <div
-                        class="flex flex-wrap items-center justify-around space-x-3 sm:mt-0"
+                        class="flex flex-row items-center justify-around sm:mt-0"
                     >
                         <Link
                             class="flex flex-col items-center"
@@ -38,8 +38,8 @@
                             </svg>
                             <span class="text-sm">start</span>
                         </Link>
-
-                        <div class="flex flex-col items-center self-end">
+                        <!-- The following icon is for search  -->
+                        <!-- <div class="flex flex-col items-center self-end">
                             <svg
                                 class="my-auto h-6 w-6 text-blue-600"
                                 aria-hidden="true"
@@ -56,7 +56,7 @@
                                 ></path>
                             </svg>
                             <span class="text-sm">Search</span>
-                        </div>
+                        </div> -->
                         <div class="flex flex-col items-center self-end">
                             <svg
                                 class="h-8 w-8 text-blue-600"

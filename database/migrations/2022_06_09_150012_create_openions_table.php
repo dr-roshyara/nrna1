@@ -17,7 +17,7 @@ class CreateOpenionsTable extends Migration
             $table->id();
             $table->string('title', 400)->nullable();
             $table->longText('body');
-            $table->string('hash_tag', 600);
+            $table->string('hash_tag', 600)->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')
                    ->references('id')->on('users')
