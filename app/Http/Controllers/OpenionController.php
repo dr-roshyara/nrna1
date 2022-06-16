@@ -61,7 +61,12 @@ class OpenionController extends Controller
           if(isset($request['hash_tag'])){
             $openion->hash_tag =$request['hash_tag'];
         }
-        $openion ->body =$request['body'];
+         $_body     =$request['body'];
+        // $_body      =nl2br($_body);
+        $_body       = preg_replace("/\r\n|\r|\n/", '<br/>', $_body);
+        // $_body =str_replace(PHP_EOL, '<br/>', $_body);
+        // dd($_body);
+        $openion ->body =$_body;
         // dd($openion);
          $openion->user_id =auth()->user()->id;
         // dd($openion);

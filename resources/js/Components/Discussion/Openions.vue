@@ -16,7 +16,7 @@
             <p class="px-1 pb-1 text-center font-bold text-blue-800">
                 {{ openion.title }}
             </p>
-            <p class="mb-4 pb-2">{{ openion.body }}</p>
+            <div class="mb-4 pb-2" v-html="openion.body"></div>
             <p
                 v-if="openion.hash_tag"
                 class="absolute bottom-0 ml-0 text-sm font-bold tracking-tighter text-teal-800"
