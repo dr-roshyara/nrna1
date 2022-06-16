@@ -2,7 +2,10 @@
     <nrna-layout>
         <div class="min-h-screen p-2">
             <timeline></timeline>
-            <openions></openions>
+            <openions
+                openionRoute="openions.index"
+                :user="$page.props.user"
+            ></openions>
         </div>
         <!-- <join-network></join-network>4 -->
     </nrna-layout>

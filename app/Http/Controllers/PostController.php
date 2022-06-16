@@ -11,8 +11,8 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 class PostController extends Controller
 {
-    
-    
+
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        
+
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
                 $query->where('name', 'LIKE', "%{$value}%");
@@ -51,8 +51,8 @@ class PostController extends Controller
                     'state_name'        => "Scope"
                 ]);
             });
-           
-     
+
+
 
 
     }
@@ -124,67 +124,67 @@ class PostController extends Controller
         //
     }
      /***
-      * 
-      *Cerate mass assignment 
+      *
+      *Cerate mass assignment
       */
       public function  assign(){
-        // here stats the assgin function 
+        // here stats the assgin function
          $startName  ="csv_files//global_posts.csv";
-        
+
          //return 0;
-        $csvName  =storage_path($startName); 
+        $csvName  =storage_path($startName);
         // var_dump($csvName);
-      
+
         $csv_array = csv_to_array($csvName,";");
-        //read users 
+        //read users
         // dd($csv_array);
-        $posts = Post::all();  
+        $posts = Post::all();
         $laufer =0;
         // dd($csv_array);
         foreach($csv_array as $element){
             /**
-            *each row is a post . So we need to create a post 
-            *@post : new  post 
+            *each row is a post . So we need to create a post
+            *@post : new  post
             */
             // dd($element);
             $laufer +=1;
             $post  =Post::where('post_id', trim($element['post_id']))->first();
             // dd($post);
             if($post){
-                  
+
                 echo "Post Exists-> line: ".$laufer.", post name ". $post->name. ", post id: ". $post->post_id ."<br>\n";
 
             }else{
                 /***
-                 * 
-                 * create new user here 
-                 * 
+                 *
+                 * create new user here
+                 *
                  */
-                $post                     = new Post; 
-                   
-                echo  $element ['post_id'].'<br/>'; 
+                $post                     = new Post;
+
+                echo  $element ['post_id'].'<br/>';
             }
                 $post->name               =$element ['name'];
-                $post->post_id            =$element['post_id']; 
+                $post->post_id            =$element['post_id'];
                 $post->nepali_name        =$element['nepali_name'];
                 $post->required_number    =$element['required_number'];
-                $post->is_national_wide   =$element['is_national_wide']; 
-        
+                $post->is_national_wide   =$element['is_national_wide'];
+
             if (array_key_exists('state_name', $element))
                  {
                      if($element['state_name']){
-                        $post->state_name = $element['state_name'];  
+                        $post->state_name = $element['state_name'];
                      }
 
-                 }    
-           
+                 }
+
             // dd($post);
             $post->save();
-        }    
-       
+        }
 
- 
 
-        //here ends the assign function . 
+
+
+        //here ends the assign function .
       }
 }

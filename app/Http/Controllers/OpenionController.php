@@ -11,6 +11,23 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 class OpenionController extends Controller
 {
+    /***
+     *
+     * Openion
+     */
+    public function userOpenions(){
+
+        // dd("test");
+        // dd(auth()->user());
+        $openions = QueryBuilder::for(Openion::class)
+                ->allowedIncludes(['user'])
+                ->with('user')
+                ->where('openions.user_id','=', Auth::user()->id)
+                // ->join('users', 'users.id','=','openions.user_id')
+                ->orderBy('id', 'desc')->get();
+
+        return response($openions->toJson());
+    }
     /**
      * Display a listing of the resource.
      *

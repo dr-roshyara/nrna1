@@ -8,6 +8,8 @@ use App\Http\Controllers\CodeController;
 use App\Http\Controllers\DeligateCandidacyController;
 use App\Http\Controllers\DeligateVoteController;
 use App\Http\Controllers\DeligateCodeController;
+use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'verified']) ->get('/election', function(){
     return Inertia::render('Dashboard/ElectionDashboard', [
 
