@@ -6,20 +6,33 @@
      -->
     <section
         v-if="bgUrlValid | iconUrlValid | isLoggedIn"
-        class="relative mb-1 flex w-full flex-col bg-[url('/storage/users/background.jpg')] md:h-64"
+        class="relative mb-1 flex w-full flex-col bg-[url('/storage/users/background.jpg')] md:max-h-fit"
     >
-        <div class="align-center min-h-40 flex h-full w-full justify-center">
+        <div
+            class="align-center min-h-40 flex w-full justify-center overflow-hidden"
+        >
             <!-- src="images/background_images/nab_raj_roshyara.JPG" -->
             <!-- {{ user.profile_bg_photo_path }} -->
             <img
                 v-if="bgUrlValid"
                 :src="user.profile_bg_photo_path"
                 @error="onBgImageError"
-                class="md:max-h-100 max-h-64 w-full rounded object-cover"
+                class="object-fit h-full w-full rounded md:object-cover"
                 :alt="user.name + ' Home Page Nepal'"
+                srcset="user.profile_bg_photo_path + ' 480w',
+                     user.profile_bg_photo_path + ' 480w 2x',
+                     user.profile_bg_photo_path + ' 768w',
+                     user.profile_bg_photo_path + ' 768w 2x',
+                      user.profile_bg_photo_path + ' 960w ',
+                      user.profile_bg_photo_path + ' 960w 2x'
+                      user.profile_bg_photo_path + ' 1260w ',
+                      user.profile_bg_photo_path + ' 1260w 2x'
+
+                "
+                sizes="(max-width: 600px) 200px, 50vw"
             />
             <div
-                class="h-70-px pointer-events-none absolute top-auto bottom-0 left-0 right-0 w-full overflow-hidden"
+                class="h-70-px pointer-events-none absolute top-auto bottom-0 left-0 right-0 w-full overflow-hidden bg-slate-100"
                 style="transform: translateZ(0px)"
             >
                 <!-- Camera icon  -->
@@ -41,7 +54,7 @@
         </div>
         <div
             v-if="iconUrlValid"
-            class="absolute bottom-0 mr-2"
+            class="absolute bottom-0 z-10 mr-2"
             style="left: 50%"
         >
             <img
