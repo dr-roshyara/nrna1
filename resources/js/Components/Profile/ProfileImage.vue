@@ -69,7 +69,7 @@
         <div
             @click="editBackground = !editBackground"
             v-if="isLoggedIn"
-            class="absolute bottom-0 ml-2"
+            class="absolute bottom-0 z-10 ml-2 rounded-xl bg-gray-100 p-1 shadow-lg"
         >
             <!-- svg is for Camera Icon  -->
             <svg
