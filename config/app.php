@@ -191,6 +191,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        App\Providers\RepositoryServiceProvider::class,
         // Intervention\Image\ImageServiceProvider::class,
         Intervention\Image\ImageServiceProviderLaravelRecent::class,
 

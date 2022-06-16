@@ -28,9 +28,6 @@
                                     @change="onChange"
                                     multiple
                                 />
-                                <div class="text-center" v-if="img">
-                                    <img v-if="img" src="" alt="" :src="img" />
-                                </div>
                             </div>
 
                             <div v-if="errors" class="font-bold text-red-600">
@@ -124,6 +121,17 @@ export default {
         onChange(e) {
             // get the file
             this.file = e.target.files[0];
+            let imgSize = this.file.size / 1024;
+            // console.log("imgSize: " + imgSize);
+            /** change the quality of the imsage depending on the
+             * kb size of the image . If the image is very large then reduce the quality very
+             * largly.
+             */
+            if (imgSize > 280) {
+                this.quality = (280 / imgSize) * 100;
+            } else {
+                this.quality = 100;
+            }
             this.url = URL.createObjectURL(this.file);
             // Validation
             let type = this.file.type;
@@ -196,6 +204,7 @@ export default {
             let img = new Image();
             img.src = imgUrl;
             // Image Size After Scaling
+            console.log("image size: " + img.width * img.height * 1024);
             let scale = this.scale / 100;
             let width = img.width * scale;
             let height = img.height * scale;
@@ -203,6 +212,9 @@ export default {
             this.canvas.setAttribute("width", width);
             this.canvas.setAttribute("height", height);
             ctx.drawImage(img, 0, 0, width, height);
+
+            // this.canvas = this.convertImageToScaledCanvas(img, this.scale);
+
             // Quality Of Image
             let quality = this.quality ? this.quality / 100 : 1;
             // If all files have been proceed
@@ -253,7 +265,7 @@ export default {
             this.result = fileInfo;
             // DrawImage
             this.drawImage(this.result.base64);
-            console.log(this.result);
+            // console.log(this.result);
         },
         // Convert Base64 to Blob
         toBlob(imgUrl) {
@@ -266,12 +278,19 @@ export default {
             return new File([blob], name);
         },
         // Converts image to canvas; returns new canvas element
-        convertImageToCanvas(image) {
-            var canvas = document.createElement("canvas");
-            canvas.width = image.width;
-            canvas.height = image.height;
-            canvas.getContext("2d").drawImage(image, 0, 0);
-
+        convertImageToScaledCanvas(image, scale) {
+            // Recreate Canvas Element
+            let canvas = document.createElement("canvas");
+            // Set Canvas Context
+            let ctx = canvas.getContext("2d");
+            // Create New Image
+            // Image Size After Scaling
+            let width = image.width * scale;
+            let height = image.height * scale;
+            // Set Canvas Height And Width According to Image Size And Scale
+            canvas.setAttribute("width", width);
+            canvas.setAttribute("height", height);
+            ctx.drawImage(image, 0, 0, width, height);
             return canvas;
         },
         // Converts canvas to an image

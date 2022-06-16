@@ -9,9 +9,18 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-
+use App\Interfaces\ImageRepositoryInterface;
+use Illuminate\Support\Facades\Validator;
 class ImageController extends Controller
 {
+
+    //
+    private $imageRepositoy;
+     public function __construct(ImageRepositoryInterface $imageRepositoy )
+     {
+        $this->imageRepositoy =$imageRepositoy;
+        // dd($this->imageRepositoy);
+     }
     /**
      * Display a listing of the resource.
      *
@@ -40,29 +49,34 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
+        $validator=Validator::make($request->all(),[
+            'image'       =>'required',
+            'profile_type'=>'required'
+        ]);
+        //  if($validator->fails()){
+        //     return response()->json([
+        //         'success'=>false,
+        //         'message'=>$validator->errors()->first(),
+        //     ],400);
+        // }
+         $_imageType = $request['image_tpye'];
+          $_image_path ='';
         // dd($request->all());
-        //
-         $_image_path ='';
-         $user = Auth::user();
-         //save the image and get the image path
-           $_imageType = $request['image_tpye'];
-        //    dd($request->all());
-        //    $this->save_and_get_filename($request->file('image'), $_imageType);
+        // dd(base64_encode($request['image']['file']));
 
-         if($request->hasFile('image')){
-             $_file =$request->file('image');
-             $_image_path =$this->save_and_get_filename($_file, $_imageType);
-             $user->profile_bg_photo_path ="/storage/".$_image_path;
-               // Create Image Model
+          $_image_path= $this->imageRepositoy
+        ->upload_image($request['image'], $_imageType);
+        //save user
+        $user = Auth::user();
+        $user->profile_bg_photo_path ="/storage/".$_image_path;
+        $user->save();
+       // Create Image Model
             $_image =new Image();
             $_image->path =$_image_path;
             $_image->type =$_imageType ;
             $_image->user_id= $user->id;
              $_image->save();
-             $user->save();
-         }
 
-        //  dd("test");
         //finally return back to the page
         //  return redirect('user.show', ['user_id'=> $user->user_id]);
          return redirect()->route('user.show', ['profile' => $user->user_id]);
@@ -132,6 +146,7 @@ class ImageController extends Controller
           *storage/app/public/users
 
           */
+        //   dd($file);
           $_baseDir = "users/".Auth::user()->user_id;
         if($type=="profile"){
                 $target_dir = "profile";
@@ -161,7 +176,7 @@ class ImageController extends Controller
             $target_filename = $date->getTimestamp()."_". basename($file->getClientOriginalName());
             $target_filename = preg_replace('/\s+/', '_', $target_filename);
             $target_filename =strtolower($target_filename);
-            // dd( toLower($target_filename));
+            // dd( strtolower($target_filename));
 
         /**
         * storeAs function has three parameters

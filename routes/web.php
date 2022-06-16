@@ -81,9 +81,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 
-//voters
-Route::middleware(['auth:sanctum', 'verified'])
-        ->get('/voters/index', [VoterlistController::class, 'index'])->name('voters.index');
 
 /****
  * user
@@ -94,8 +91,6 @@ Route::get('/email/verify', function () {
     return inertia('Auth/VerifyEmail');
 })->middleware('auth')->name('verification.notice');
 
-Route::middleware(['auth:sanctum', 'verified'])
-        ->get('/users/index', [UserController::class, 'index'])->name('users.index');
 
 //create user database
 /**
@@ -104,10 +99,6 @@ Route::middleware(['auth:sanctum', 'verified'])
 //Route::middleware(['auth:sanctum', 'verified']) ->
 Route::get('users',[UserController::class, 'store'])->name("user.store");
 
-
-//show posts
-Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
-Route::get('posts/assign', [PostController::class, 'assign'])->name('post.assign');
 
 //notices
 Route::get('notices/index', [NoticeController::class, 'index'])->name('notice.index');
