@@ -7,10 +7,9 @@ use Illuminate\Support\Facades\Auth;
 class ImageRepository implements ImageRepositoryInterface
 {
   // define a method to upload our image
-    public function upload_image($base64_image,$image_type){
+    public function upload_image($image_64, $image_type){
 
-        $image_64 = $base64_image["compressed"];
-        $extension = explode('/',$image_64['type']);
+       $extension = explode('/',$image_64['type']);
         $extension = $extension[1];
        $file_name= $this->save_and_get_filename($image_64,$extension, $image_type);
        return $file_name;
@@ -51,11 +50,12 @@ class ImageRepository implements ImageRepositoryInterface
              $_filename =$_baseDir."/".$target_filename;
             //take the base24 string first
             $base64Image = explode(";base64,", $file["base64"]);
+            // dd($base64Image[1]);
             if(isset($base64Image[1])){
                 Storage::disk('public')->put($_filename , base64_decode($base64Image[1]));
 
             }
-            Storage::disk('public')->put($_filename , base64_decode($base64Image[1]));
+            // Storage::disk('public')->put($_filename , base64_decode($base64Image[1]));
             // Storage::disk('public')->put($_filename, base64_encode($file->getClientMimeType()));
             // dd("test");
             /**

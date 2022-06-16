@@ -125,8 +125,8 @@ export default {
             // on reader load somthing...
             this.reader.onload = this.fileOnLoad;
             // convas = this.convertImageToCanvas(this.file);
-            console.log("Test");
-            console.log(this.reader);
+            // console.log("Test");
+            // console.log(this.reader);
         },
         dataURItoBlob(dataURI) {
             // convert base64 to raw binary data held in a string
@@ -158,7 +158,7 @@ export default {
             let img = new Image();
             img.src = imgUrl;
             // Image Size After Scaling
-            console.log("image size: " + img.width * img.height * 1024);
+            // console.log("image size: " + img.width * img.height * 1024);
             let scale = this.scale / 100;
             let width = img.width * scale;
             let height = img.height * scale;
@@ -196,7 +196,8 @@ export default {
                 Math.round(objToPass.compressed.file.size / 1000) + " kB";
             objToPass.compressed.type = "image/jpeg";
             // this.done(objToPass);
-            return objToPass;
+            // console.log(objToPass);
+            return objToPass.compressed;
         },
         /*
         Redraw the canvas
