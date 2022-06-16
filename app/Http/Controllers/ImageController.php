@@ -53,29 +53,27 @@ class ImageController extends Controller
             'image'       =>'required',
             'profile_type'=>'required'
         ]);
-        //  if($validator->fails()){
-        //     return response()->json([
-        //         'success'=>false,
-        //         'message'=>$validator->errors()->first(),
-        //     ],400);
-        // }
-         $_imageType = $request['image_tpye'];
-          $_image_path ='';
-        // dd($request->all());
-        // dd(base64_encode($request['image']['file']));
 
-          $_image_path= $this->imageRepositoy
-        ->upload_image($request['image'], $_imageType);
-        //save user
-        $user = Auth::user();
-        $user->profile_bg_photo_path ="/storage/".$_image_path;
-        $user->save();
-       // Create Image Model
+        $_imageType = $request['image_tpye'];
+        $_image_path ='';
+        // dd($request->all());
+        /***
+         * if image for for profile background then do the follwoing */
+        if($_imageType=="profile"){
+            $_image_path= $this->imageRepositoy
+            ->upload_image($request['image'], $_imageType);
+            //save user
+            $user = Auth::user();
+            $user->profile_bg_photo_path ="/storage/".$_image_path;
+            $user->save();
+            // Create Image Model
             $_image =new Image();
             $_image->path =$_image_path;
             $_image->type =$_imageType ;
             $_image->user_id= $user->id;
              $_image->save();
+
+        }
 
         //finally return back to the page
         //  return redirect('user.show', ['user_id'=> $user->user_id]);

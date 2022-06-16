@@ -12,14 +12,6 @@
                                 <label for="File">File Upload</label>
                             </div>
                             <div>
-                                <!-- <button @click="upload">Upload</button> -->
-                                <!-- <image-compressor
-                                    :done="getFiles"
-                                    :scale="scale"
-                                    :quality="quality"
-                                    ref="compressor"
-                                    @change="previewImage"
-                                ></image-compressor> -->
                                 <input
                                     type="file"
                                     accept=".jpg, .jpeg, .png"
