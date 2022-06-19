@@ -10,7 +10,7 @@
             >
                 <div class="flex flex-row items-center justify-start">
                     <img
-                        :src="user.profile_icon_photo_path"
+                        :src="openion.user.profile_icon_photo_path"
                         :alt="user.name"
                         height="40"
                         width="40"
