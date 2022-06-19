@@ -9,20 +9,27 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Models\User;
 class OpenionController extends Controller
 {
     /***
      *
      * Openion
      */
-    public function userOpenions(){
-
-        // dd("test");
+    public function userOpenions($user_id){
+        //  return response($user_id);
+        //  $userId =Auth::user()->user_id;
+         if(!isset($user_id)){
+            return null;
+         }
+         $user = User::where('id', $user_id)->first();
+        // return response($user);
+         // dd("test");
         // dd(auth()->user());
         $openions = QueryBuilder::for(Openion::class)
                 ->allowedIncludes(['user'])
                 ->with('user')
-                ->where('openions.user_id','=', Auth::user()->id)
+                ->where('openions.user_id','=', $user->id)
                 // ->join('users', 'users.id','=','openions.user_id')
                 ->orderBy('id', 'desc')->get();
 
@@ -135,5 +142,12 @@ class OpenionController extends Controller
     public function destroy(Openion $openion)
     {
         //
+    }
+
+    public function search(Request $request){
+
+        return "test";
+
+
     }
 }

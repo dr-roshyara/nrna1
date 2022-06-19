@@ -41,7 +41,7 @@
 
         <section class="aboutme mb-2 border border-lime-200">my review</section>
         <section class="review mb-2 border border-lime-200">
-            <openions openionRoute="user.openions" :user="user"></openions>
+            <openions :openionRoute="openionRoute" :user="user"></openions>
         </section>
     </main>
 </template>
@@ -59,6 +59,14 @@ export default {
         // ImageUpload,
         ProfileImage,
         Openions,
+    },
+    computed: {
+        userId() {
+            return this.user.id;
+        },
+        openionRoute() {
+            return "/openions/" + this.userId;
+        },
     },
     data() {
         return {

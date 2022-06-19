@@ -1,5 +1,7 @@
 <template>
-    <section class="mx-auto max-w-xl">
+    <section
+        class="mx-auto w-full rounded-lg border-2 border-red-50 bg-slate-50 p-2 shadow"
+    >
         <form @submit.prevent="submit" class="flex flex-col justify-center">
             <!-- first and middle name    -->
             <div class="pb-1">
@@ -36,13 +38,22 @@
                     autocomplete="hash_tag"
                 />
             </div>
-            <jet-button
-                class="mt-1 text-center"
-                :class="{ 'opacity-25': form.processing }"
-                :disabled="form.processing"
-            >
-                <span class="mx-auto"> Post your openion</span>
-            </jet-button>
+            <div class="grid grid-cols-2 items-center">
+                <img
+                    :src="user.profile_icon_photo_path"
+                    :alt="user.name"
+                    height="50"
+                    width="50"
+                    class="rounded-full"
+                />
+                <jet-button
+                    class="mt-1 text-center"
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                >
+                    <span class="mx-auto"> Post your openion</span>
+                </jet-button>
+            </div>
         </form>
     </section>
 </template>
@@ -67,7 +78,9 @@ export default {
         JetLabel,
         JetValidationErrors,
     },
-
+    props: {
+        user: Object,
+    },
     data() {
         return {
             form: this.$inertia.form({

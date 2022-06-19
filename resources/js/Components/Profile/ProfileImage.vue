@@ -17,18 +17,9 @@
                 v-if="bgUrlValid"
                 :src="user.profile_bg_photo_path"
                 @error="onBgImageError"
-                class="object-fit h-full w-full rounded md:object-cover"
+                class="object-fit w-full rounded md:object-cover"
                 :alt="user.name + ' Home Page Nepal'"
-                srcset="user.profile_bg_photo_path + ' 480w',
-                     user.profile_bg_photo_path + ' 480w 2x',
-                     user.profile_bg_photo_path + ' 768w',
-                     user.profile_bg_photo_path + ' 768w 2x',
-                      user.profile_bg_photo_path + ' 960w ',
-                      user.profile_bg_photo_path + ' 960w 2x'
-                      user.profile_bg_photo_path + ' 1260w ',
-                      user.profile_bg_photo_path + ' 1260w 2x'
-
-                "
+                :srcset="srcsetElement"
                 sizes="(max-width: 600px) 200px, 50vw"
             />
             <div
@@ -173,6 +164,28 @@ export default {
             bgUrlValid: true,
             iconUrlValid: true,
         };
+    },
+    computed: {
+        srcsetElement() {
+            return (
+                this.user.profile_bg_photo_path +
+                    " 480w," +
+                    this.user.profile_bg_photo_path +
+                    " 480w 2x,",
+                this.user.profile_bg_photo_path +
+                    " 768w," +
+                    this.user.profile_bg_photo_path +
+                    " 768w 2x",
+                this.user.profile_bg_photo_path +
+                    " 960w, " +
+                    this.user.profile_bg_photo_path +
+                    " 960w 2x," +
+                    this.user.profile_bg_photo_path +
+                    " 1260w, " +
+                    this.user.profile_bg_photo_path +
+                    " 1260w 2x"
+            );
+        },
     },
     methods: {
         onBgImageError() {

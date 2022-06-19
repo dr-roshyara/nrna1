@@ -24,7 +24,6 @@ use App\Models\Image;
 use App\Models\GoogleAccount;
 use App\Models\Calendar;
 use App\Models\Event;
-
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;

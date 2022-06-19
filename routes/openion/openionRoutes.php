@@ -16,7 +16,7 @@ use App\Http\Controllers\OpenionController;
 Route::get('/openions', [OpenionController::class, 'index'])
         ->name('openions.index');
 
-Route::get('/openions/user', [OpenionController::class, 'userOpenions'])
+Route::get('/openions/{user_id}', [OpenionController::class, 'userOpenions'])
         ->name('user.openions');
 Route::middleware(['auth:sanctum', 'verified'])
     ->post('/openions', [OpenionController::class, 'store'])

@@ -1,20 +1,32 @@
 <template>
-    <div class="mx-auto mt-2 max-w-xl py-2">
+    <div class="mx-auto mt-4 w-full py-2">
         <div
             v-for="openion in openions"
-            class="relative my-2 rounded-md border p-2 shadow-md"
+            class="my-2 rounded-md border p-2 shadow-md"
         >
             <!-- {{ openions }} -->
             <div
                 class="flex flex-row justify-between border-b border-slate-100 pt-1 font-bold"
             >
-                <div>
-                    <a
-                        class="text-blue-800"
-                        :href="'/user/' + openion.user.user_id"
-                        >{{ openion.user.name }}</a
-                    >
-                    says...
+                <div class="flex flex-row items-center justify-start">
+                    <img
+                        :src="user.profile_icon_photo_path"
+                        :alt="user.name"
+                        height="40"
+                        width="40"
+                        class="mr-2 rounded-full"
+                    />
+                    <div class="grid grid-cols-1">
+                        <a
+                            class="text-blue-800"
+                            :href="'/user/' + openion.user.user_id"
+                            >{{ openion.user.name }} says ..</a
+                        >
+
+                        <span class="text-sm tracking-tighter text-gray-600"
+                            >{{ getUpdatedAt(openion.updated_at) }}
+                        </span>
+                    </div>
                 </div>
                 <div class="mr-0" v-if="$page.props.user.id == openion.user.id">
                     <!-- Edit Icon to edit a post  -->
@@ -45,7 +57,7 @@
             <div class="mb-4 pb-2" v-html="openion.body"></div>
             <p
                 v-if="openion.hash_tag"
-                class="absolute bottom-0 ml-0 text-sm font-bold tracking-tighter text-teal-800"
+                class="bottom-0 ml-0 text-sm font-bold tracking-tighter text-teal-800"
             >
                 #{{ openion.hash_tag }}
             </p>
@@ -55,11 +67,23 @@
     </div>
 </template>
 <script>
+import axios from "axios";
+
 export default {
     props: {
+        user: {
+            type: Object,
+        },
         openionRoute: {
             type: String,
-            default: "user.openions",
+            default: "/openions",
+        },
+    },
+    computed: {
+        userId() {
+            console.log("user");
+            console.log(this.user);
+            return this.user.id;
         },
     },
     data() {
@@ -75,15 +99,46 @@ export default {
         //         Accept: "application/json",
         //     },
         // };
-        axios.get(this.route(this.openionRoute)).then((response) => {
+        axios.get(this.openionRoute, {}).then((response) => {
+            // console.log("response");
+            // console.log(response);
             this.openions = response.data;
-            // console.log("user");
-            // console.log(this.openions);
+            // // console.log("user");
+            console.log(this.openions);
             // console.log("auth:user ");
             // console.log(this.$page.props.user);
             // console.log(this.$page.user.id);
         });
     },
-    methods: {},
+    methods: {
+        getUpdatedAt(date) {
+            let _date = new Date(date);
+            let _today = new Date();
+            let _difference = _date.getTime() - _today.getTime();
+            let _days = Math.ceil(_difference / (1000 * 3600 * 24));
+            let _newDate = null;
+            console.log(_days);
+            if (_days == 0) {
+                _newDate =
+                    "Today at " + _date.getHours() + ":" + _date.getMinutes();
+                return _newDate;
+                console.log(_newDate);
+            }
+            if (_days == 1) {
+                _newDate =
+                    "Yesterday at " +
+                    _date.getHours() +
+                    ":" +
+                    _date.getMinutes();
+                return _newDate;
+            } else {
+                _newDate = _date.toDateString();
+
+                return _newDate;
+            }
+
+            return null;
+        },
+    },
 };
 </script>
