@@ -11,6 +11,7 @@
                 <openions
                     openionRoute="/openions"
                     :user="$page.props.user"
+                    :authUser="authUser"
                     class="mb-2"
                 ></openions>
             </div>
@@ -43,5 +44,9 @@ export default {
         RightBar,
         LeftBar,
     },
+    props: {
+        authUser: Array,
+    },
+    computed: {},
 };
 </script>

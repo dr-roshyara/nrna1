@@ -34,7 +34,7 @@
                 </div>
                 <action-on-message
                     :user="openion.user"
-                    :userLoggedIn="userLoggedIn"
+                    :userLoggedIn="canEdit(openion.user.id)"
                 ></action-on-message>
             </div>
             <p class="px-1 pb-1 text-center font-bold text-blue-800">
@@ -64,7 +64,13 @@ export default {
         user: {
             type: Object,
         },
-        userLoggedIn: Boolean,
+        authUser: {
+            type: Array,
+        },
+        userLoggedIn: {
+            type: Boolean,
+            default: false,
+        },
         openionRoute: {
             type: String,
             default: "/openions",
@@ -73,11 +79,12 @@ export default {
     watch: {},
     computed: {
         userId() {
-            console.log("user");
-            console.log(this.user);
+            // console.log("user");
+            // console.log(this.user);
             return this.user.id;
         },
     },
+
     data() {
         return {
             openions: {},
@@ -98,13 +105,28 @@ export default {
             // console.log(response);
             this.openions = response.data;
             // // console.log("user");
-            console.log(this.openions);
+            // console.log(this.openions);
             // console.log("auth:user ");
             // console.log(this.$page.props.user);
             // console.log(this.$page.user.id);
         });
     },
     methods: {
+        canEdit(userId) {
+            let canEdit = false;
+            if (this.userLoggedIn) {
+                canEdit = true;
+                return true;
+            } else {
+                // console.log(this.authUser);
+                if (this.authUser != undefined) {
+                    if (this.authUser.id === userId) {
+                        canEdit = true;
+                    }
+                }
+            }
+            return canEdit;
+        },
         isIconValid(imagePath) {
             // console.log(imagePath);
             if (typeof imagePath === "undefined") {

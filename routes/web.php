@@ -23,6 +23,7 @@ use App\Http\Controllers\DeligateCandidacyController;
 use App\Http\Controllers\DeligateVoteController;
 use App\Http\Controllers\DeligateCodeController;
 use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Auth;
 //Models
 use Inertia\Inertia;
 use App\Models\Message;
@@ -76,7 +77,15 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // return Inertia::render('Dashboard');
-    return Inertia::render('Dashboard/MainDashboard');
+    $authUser =null;
+    if(Auth::check()){
+        $authUser =Auth::user();
+
+    }
+    // dd($authUser);
+    return Inertia::render('Dashboard/MainDashboard',[
+        'authUser'=>$authUser,
+    ]);
 })->name('dashboard');
 
 
