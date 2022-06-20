@@ -9,13 +9,19 @@
                 class="flex flex-row justify-between border-b border-slate-100 pt-1 font-bold"
             >
                 <div class="flex flex-row items-center justify-start">
-                    <img
-                        :src="openion.user.profile_icon_photo_path"
-                        :alt="user.name"
-                        height="40"
-                        width="40"
-                        class="mr-2 rounded-full"
-                    />
+                    <div
+                        v-show="
+                            isIconValid(openion.user.profile_icon_photo_path)
+                        "
+                    >
+                        <img
+                            :src="openion.user.profile_icon_photo_path"
+                            :alt="openion.user.name"
+                            height="40"
+                            width="40"
+                            class="mr-2 rounded-full"
+                        />
+                    </div>
                     <div class="grid grid-cols-1">
                         <a
                             class="text-blue-800"
@@ -79,6 +85,7 @@ export default {
             default: "/openions",
         },
     },
+    watch: {},
     computed: {
         userId() {
             console.log("user");
@@ -89,6 +96,8 @@ export default {
     data() {
         return {
             openions: {},
+            bgUrlValid: true,
+            iconUrlValid: true,
         };
     },
     mounted() {
@@ -111,6 +120,26 @@ export default {
         });
     },
     methods: {
+        isIconValid(imagePath) {
+            console.log(imagePath);
+            if (imagePath == null) {
+                return false;
+            }
+            if (imagePath == undefined) {
+                return false;
+            }
+
+            // if (imagePath != "") {
+            //     return true;
+            // }
+            return true;
+        },
+        onBgImageError() {
+            this.bgUrlValid = false;
+        },
+        onIconImageError() {
+            this.iconUrlValid = false;
+        },
         getUpdatedAt(date) {
             let _date = new Date(date);
             let _today = new Date();

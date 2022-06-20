@@ -13,17 +13,26 @@
         >
             <!-- src="images/background_images/nab_raj_roshyara.JPG" -->
             <!-- {{ user.profile_bg_photo_path }} -->
-            <img
-                v-if="bgUrlValid"
-                :src="user.profile_bg_photo_path"
-                @error="onBgImageError"
-                class="object-fit w-full rounded md:object-cover"
-                :alt="user.name + ' Home Page Nepal'"
-                :srcset="srcsetElement"
-                sizes="(max-width: 600px) 200px, 50vw"
-            />
+            <div v-if="isBgImageValid">
+                <img
+                    v-if="isBgImageValid"
+                    :src="user.profile_bg_photo_path"
+                    @error="onBgImageError"
+                    class="object-fit w-full rounded md:object-cover"
+                    :alt="user.name + ' Home Page sNRNA'"
+                    :srcset="srcsetElement"
+                    sizes="(max-width: 600px) 200px, 50vw"
+                />
+            </div>
+            <div v-else class="h-40 w-full">
+                <img
+                    src="storage/users/background.jpg"
+                    class="object-fit h-40 w-full rounded md:object-cover"
+                />
+                <span v-show="false">x </span>
+            </div>
             <div
-                class="h-70-px pointer-events-none absolute top-auto bottom-0 left-0 right-0 w-full overflow-hidden bg-slate-100"
+                class="h-70-px pointer-events-none absolute top-auto bottom-0 left-0 right-0 w-full overflow-hidden bg-slate-200"
                 style="transform: translateZ(0px)"
             >
                 <!-- Camera icon  -->
@@ -56,6 +65,7 @@
                 :alt="user.name + ' Home Page, NRNA'"
             />
         </div>
+
         <!-- The following Div to show the Camera Icon   -->
         <div
             @click="editBackground = !editBackground"
@@ -166,6 +176,20 @@ export default {
         };
     },
     computed: {
+        isBgImageValid() {
+            if (this.user.profile_bg_photo_path != "") {
+                return true;
+            }
+            return false;
+        },
+
+        isIconValid() {
+            if (this.user.profile_icon_photo_path != "") {
+                return true;
+            }
+            return false;
+        },
+
         srcsetElement() {
             return (
                 this.user.profile_bg_photo_path +
