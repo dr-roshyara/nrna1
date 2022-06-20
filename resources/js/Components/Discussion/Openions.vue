@@ -35,6 +35,7 @@
                 <action-on-message
                     :user="openion.user"
                     :userLoggedIn="canEdit(openion.user.id)"
+                    @deleteOpenion="deleteOpenion(openion)"
                 ></action-on-message>
             </div>
             <p class="px-1 pb-1 text-center font-bold text-blue-800">
@@ -90,6 +91,9 @@ export default {
             openions: {},
             bgUrlValid: true,
             iconUrlValid: true,
+            form: this.$inertia.form({
+                openion: {},
+            }),
         };
     },
     mounted() {
@@ -180,6 +184,10 @@ export default {
             }
 
             return null;
+        },
+        deleteOpenion(openion) {
+            this.form.openion = openion;
+            this.form.post(this.route("openion.destroy"));
         },
     },
 };

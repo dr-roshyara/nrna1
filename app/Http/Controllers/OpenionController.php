@@ -139,9 +139,44 @@ class OpenionController extends Controller
      * @param  \App\Models\Openion  $openion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Openion $openion)
+    public function destroy(Request $request)
     {
-        //
+
+        $request->validate([
+            'openion'=> ['required'],
+        ]);
+        //check if $id is given
+        if($request==null){
+            return redirect()->back();
+
+        }
+         $user =Auth::user();
+         $openion =$request['openion'];
+
+        if(isset($openion["user"])){
+            if($user->id !=$openion["user"]["id"]){
+             return redirect()->back();
+          }else{
+              $id               = $openion["id"];
+              $_deleteOpenion   =Openion::find($id);
+              if($_deleteOpenion!=null){
+                 $_deleteOpenion->delete();
+
+              }
+              return redirect()->route('user.show', ['profile' => auth()->user()->user_id]);
+          }
+
+          }
+           return redirect()->back();
+
+        return redirect()->route('user.show', ['profile' => auth()->user()->user_id]);
+
+
+        //check if auth user has the openion $id
+        //destroy it.
+        // dd($id);
+
+
     }
 
     public function search(Request $request){
