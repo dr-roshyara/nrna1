@@ -10,9 +10,7 @@
             >
                 <div class="flex flex-row items-center justify-start">
                     <div
-                        v-show="
-                            isIconValid(openion.user.profile_icon_photo_path)
-                        "
+                        v-if="isIconValid(openion.user.profile_icon_photo_path)"
                     >
                         <img
                             :src="openion.user.profile_icon_photo_path"
@@ -121,18 +119,22 @@ export default {
     },
     methods: {
         isIconValid(imagePath) {
-            console.log(imagePath);
-            if (imagePath == null) {
+            // console.log(imagePath);
+            if (typeof imagePath === "undefined") {
+                return false;
+            } else {
+                if (imagePath != "") {
+                    return true;
+                }
+            }
+            if (imagePath === null) {
                 return false;
             }
-            if (imagePath == undefined) {
+            if (imagePath === undefined) {
                 return false;
             }
 
-            // if (imagePath != "") {
-            //     return true;
-            // }
-            return true;
+            return false;
         },
         onBgImageError() {
             this.bgUrlValid = false;
