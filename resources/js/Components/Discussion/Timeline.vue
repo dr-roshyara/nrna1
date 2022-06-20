@@ -51,7 +51,7 @@
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
-                    <span class="mx-auto max-w-xs py-2">
+                    <span class="mx-auto max-w-xs py-1">
                         Post your openion</span
                     >
                 </jet-button>
@@ -63,7 +63,7 @@
 import NrnaLayout from "@/Layouts/LoginLayout";
 import JetAuthenticationCard from "@/Jetstream/AuthenticationCard";
 import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
-import JetButton from "@/Jetstream/Button";
+import JetButton from "@/Jetstream/FormButton";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
 import JetLabel from "@/Jetstream/Label";
