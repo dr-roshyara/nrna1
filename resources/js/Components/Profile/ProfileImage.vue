@@ -9,24 +9,27 @@
         class="relative mb-1 flex w-full flex-col bg-[url('/storage/users/background.jpg')] md:max-h-fit"
     >
         <div
-            class="align-center min-h-40 flex w-full justify-center overflow-hidden"
+            class="align-center min-h-40 flex max-h-96 justify-center overflow-hidden"
         >
             <!-- src="images/background_images/nab_raj_roshyara.JPG" -->
             <!-- {{ user.profile_bg_photo_path }} -->
-            <div v-if="this.isImageValid(user.profile_bg_photo_path)">
+            <div
+                v-if="this.isImageValid(user.profile_bg_photo_path)"
+                class="min-w-full"
+            >
                 <img
                     :src="user.profile_bg_photo_path"
                     @error="onBgImageError"
-                    class="object-fit w-full rounded md:object-cover"
+                    class="my-auto min-w-full rounded object-cover"
                     :alt="user.name + ' Home Page sNRNA'"
-                    :srcset="srcsetElement"
                     sizes="(max-width: 600px) 200px, 50vw"
                 />
+                <!-- :srcset="srcsetElement" -->
             </div>
             <div v-else class="h-40 w-full">
                 <img
                     src="/storage/users/background.jpg"
-                    class="object-fit h-40 w-full rounded md:object-cover"
+                    class="h-40 min-w-full rounded object-cover"
                 />
                 <span v-show="false">x </span>
             </div>
