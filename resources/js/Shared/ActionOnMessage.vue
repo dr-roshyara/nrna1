@@ -27,13 +27,13 @@
         </div>
         <div
             :class="showActionBar ? 'block' : 'hidden'"
-            class="max-w-96 absolute z-10 -translate-x-full"
+            class="absolute z-10 ml-4 w-3/4 -translate-x-full rounded border-b border-slate-50 bg-zinc-100"
         >
-            <ul class="mb-2 grid grid-cols-1 justify-end border">
-                <li class="p-2" v-if="$page.props.user.id == user.id">
+            <ul class="z-20 mb-2 grid grid-cols-1 justify-end border">
+                <li class="px-2" v-if="$page.props.user.id == user.id">
                     <a href="/openion/edit">
                         <div
-                            class="flex flex-row items-center justify-start space-x-1"
+                            class="bottom-1 flex flex-row items-center justify-start space-x-1 border-b border-stone-50"
                         >
                             <!-- Edit Icon to edit a post  -->
 
