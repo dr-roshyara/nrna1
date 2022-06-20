@@ -95,8 +95,8 @@ class OpenionController extends Controller
          $openion->user_id =auth()->user()->id;
         // dd($openion);
         $openion->save();
-        //  return redirect()->route('user.show', ['profile' => $user->user_id]);
-         return redirect()->route('dashboard');
+         return redirect()->route('user.show', ['profile' => auth()->user()->user_id]);
+        //  return redirect()->route('dashboard')->with('success');
     }
 
     /**

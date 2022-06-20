@@ -150,7 +150,7 @@ export default {
             let _difference = _date.getTime() - _today.getTime();
             let _days = Math.ceil(_difference / (1000 * 3600 * 24));
             let _newDate = null;
-            console.log(_days);
+            // console.log(_days);
             if (_date.toDateString() == _today.toDateString()) {
                 _newDate =
                     "Today at " + _date.getHours() + ":" + _date.getMinutes();

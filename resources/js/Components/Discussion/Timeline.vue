@@ -95,8 +95,11 @@ export default {
     methods: {
         submit() {
             this.form.post(this.route("openions.store"), {
-                // onFinish: () =>
-                //     this.form.reset("password", "password_confirmation"),
+                onFinish: () => {
+                    // console.log(this.form);
+                    this.form.reset();
+                    this.form.reset("title", "body", "hash_tag");
+                },
             });
         },
         growWithInput() {
