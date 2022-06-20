@@ -290,8 +290,13 @@ class UserController extends Controller
 
         // dd($user);
             // $results = Cart::with('users')->where('status',1)->getOrFail();
+         $loggedUser =null;
+         if(Auth::check()){
+            $loggedUser =Auth::user();
+         }
         return Inertia::render('User/Profile', [
           'user' => $user,
+          'loggedUser'=>$loggedUser,
           'isLoggedIn'=> Auth::check()
 
         ]);

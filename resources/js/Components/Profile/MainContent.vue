@@ -1,6 +1,11 @@
 <template>
     <main class="profile-page">
-        <profile-image :user="user" :isLoggedIn="isLoggedIn"> </profile-image>
+        <profile-image
+            :user="user"
+            :isLoggedIn="isLoggedIn"
+            :userLoggedIn="userLoggedIn"
+        >
+        </profile-image>
         <section class="mx-2">
             <div class="flex items-start justify-between pt-2 text-gray-900">
                 <div class="flex flex-col">
@@ -41,7 +46,11 @@
 
         <section class="aboutme mb-2 border border-lime-200">my review</section>
         <section class="review mb-2 border border-lime-200">
-            <openions :openionRoute="openionRoute" :user="user"></openions>
+            <openions
+                :openionRoute="openionRoute"
+                :user="user"
+                :userLoggedIn="userLoggedIn"
+            ></openions>
         </section>
     </main>
 </template>
@@ -52,8 +61,9 @@ import Openions from "@/Components/Discussion/Openions.vue";
 
 export default {
     props: {
-        user: Object,
+        user: Array,
         isLoggedIn: Boolean,
+        userLoggedIn: Boolean,
     },
     components: {
         // ImageUpload,

@@ -69,8 +69,8 @@
 
         <!-- The following Div to show the Camera Icon   -->
         <div
+            v-if="userLoggedIn"
             @click="editBackground = !editBackground"
-            v-if="isLoggedIn"
             class="absolute bottom-0 z-10 ml-2 rounded-xl bg-gray-100 p-1 shadow-lg"
         >
             <!-- svg is for Camera Icon  -->
@@ -163,6 +163,7 @@ export default {
     props: {
         user: Array,
         isLoggedIn: Boolean,
+        userLoggedIn: Boolean,
     },
     components: {
         ImageUpload,
@@ -219,6 +220,7 @@ export default {
             this.editBackground = false;
             this.uploadBackground = false;
         },
+
         isImageValid(imagePath) {
             // console.log(imagePath);
             if (imagePath === undefined) {

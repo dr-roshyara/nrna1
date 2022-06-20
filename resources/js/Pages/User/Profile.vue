@@ -1,7 +1,12 @@
 <template>
     <profile-layout :isLoggedIn="isLoggedIn" :user="user">
         <div class="min-h-screen">
-            <main-content :user="user" :isLoggedIn="isLoggedIn"> </main-content>
+            <main-content
+                :user="user"
+                :isLoggedIn="isLoggedIn"
+                :userLoggedIn="userLoggedIn"
+            >
+            </main-content>
         </div>
     </profile-layout>
 </template>
@@ -13,10 +18,31 @@ export default {
     props: {
         user: Array,
         isLoggedIn: Boolean,
+        loggedUser: Array,
     },
     components: {
         ProfileLayout,
         MainContent,
+    },
+    computed: {
+        userLoggedIn() {
+            let userLoggedIn = false;
+            if (!this.isLoggedIn) {
+                userLoggedIn = false;
+                return userLoggedIn;
+            }
+            if (this.isLoggedIn) {
+                if (this.user.id === this.loggedUser.id) {
+                    userLoggedIn = true;
+                }
+                return userLoggedIn;
+            }
+
+            // console.log(this.$props.user);
+            // console.log(this.user);
+
+            return userLoggedIn;
+        },
     },
 };
 </script>

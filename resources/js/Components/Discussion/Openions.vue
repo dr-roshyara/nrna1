@@ -32,7 +32,10 @@
                         </span>
                     </div>
                 </div>
-                <action-on-message :user="openion.user"></action-on-message>
+                <action-on-message
+                    :user="openion.user"
+                    :userLoggedIn="userLoggedIn"
+                ></action-on-message>
             </div>
             <p class="px-1 pb-1 text-center font-bold text-blue-800">
                 {{ openion.title }}
@@ -61,6 +64,7 @@ export default {
         user: {
             type: Object,
         },
+        userLoggedIn: Boolean,
         openionRoute: {
             type: String,
             default: "/openions",
