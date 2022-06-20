@@ -27,7 +27,7 @@
         </div>
         <div
             :class="showActionBar ? 'block' : 'hidden'"
-            class="absolute z-10 ml-4 w-3/4 -translate-x-full rounded border-b border-slate-50 bg-zinc-100"
+            class="absolute z-10 ml-4 w-3/4 -translate-x-full rounded border-b border-slate-50 bg-zinc-100 sm:max-w-sm"
         >
             <ul class="z-20 mb-2 grid grid-cols-1 justify-end border">
                 <li class="px-2" v-if="$page.props.user.id == user.id">
