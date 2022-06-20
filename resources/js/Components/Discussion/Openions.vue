@@ -145,17 +145,19 @@ export default {
         getUpdatedAt(date) {
             let _date = new Date(date);
             let _today = new Date();
+            let _yesterday = new Date();
+            _yesterday.setDate(_today.getDate() - 1);
             let _difference = _date.getTime() - _today.getTime();
             let _days = Math.ceil(_difference / (1000 * 3600 * 24));
             let _newDate = null;
             console.log(_days);
-            if (_days == 0) {
+            if (_date.toDateString() == _today.toDateString()) {
                 _newDate =
                     "Today at " + _date.getHours() + ":" + _date.getMinutes();
                 return _newDate;
-                console.log(_newDate);
+                // console.log(_newDate);
             }
-            if (_days == 1) {
+            if (_date.toDateString() == _yesterday.toDateString()) {
                 _newDate =
                     "Yesterday at " +
                     _date.getHours() +
