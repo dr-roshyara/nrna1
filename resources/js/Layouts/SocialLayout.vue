@@ -1,10 +1,10 @@
 <template>
-    <div class="flex flex-col lg:h-full">
-        <div class="fixed grid w-full grid-cols-1 overflow-hidden">
+    <div class="relative flex flex-col lg:h-full">
+        <div class="z-100 fixed grid w-full grid-cols-1 overflow-hidden">
             <nrna-header
                 :canRegister="canRegister"
                 :canLogin="canLogin"
-                class=""
+                class="relative"
             >
             </nrna-header>
             <navigation class="md:hidden"></navigation>

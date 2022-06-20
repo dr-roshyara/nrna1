@@ -32,28 +32,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="mr-0" v-if="$page.props.user.id == openion.user.id">
-                    <!-- Edit Icon to edit a post  -->
-                    <a href="/openion/edit">
-                        <svg
-                            class="h-4 w-6 text-blue-500"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        >
-                            <path d="M12 20h9" />
-                            <path
-                                d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
-                            />
-                        </svg>
-                    </a>
-                </div>
+                <action-on-message :user="openion.user"></action-on-message>
             </div>
             <p class="px-1 pb-1 text-center font-bold text-blue-800">
                 {{ openion.title }}
@@ -72,8 +51,12 @@
 </template>
 <script>
 import axios from "axios";
+import ActionOnMessage from "@/Shared/ActionOnMessage.vue";
 
 export default {
+    components: {
+        ActionOnMessage,
+    },
     props: {
         user: {
             type: Object,
