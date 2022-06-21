@@ -25,11 +25,16 @@
                 >
             </button>
         </div>
+        <button
+            v-if="showActionBar"
+            @click="this.showActionBar = false"
+            class="fixed top-0 bottom-0 left-0 right-0 h-full w-full bg-gray-100 opacity-20"
+        ></button>
         <div
             :class="showActionBar ? 'block' : 'hidden'"
-            class="absolute z-10 ml-4 w-3/4 -translate-x-full rounded border-b border-slate-50 bg-zinc-100 sm:max-w-sm"
+            class="absolute ml-4 w-3/4 -translate-x-full rounded border-b border-slate-50 bg-zinc-100 sm:max-w-sm"
         >
-            <ul class="z-20 mb-2 grid grid-cols-1 justify-end border">
+            <ul class="mb-2 grid grid-cols-1 justify-end border">
                 <li class="px-2" v-if="userLoggedIn">
                     <a href="/openion/edit">
                         <div
