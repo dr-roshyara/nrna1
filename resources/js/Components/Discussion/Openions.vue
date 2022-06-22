@@ -55,7 +55,7 @@
                 :id="openionKey + '_' + openion.id"
                 ref="openionKey+' '+ openion.id"
                 class="translate-y-50 relative top-0 bottom-0 left-0 right-0 hidden min-h-screen bg-slate-300"
-                v-show="show_edit_modal"
+                v-if="show_edit_modal"
             >
                 <openion-edit
                     :openion="form.openion"
@@ -106,7 +106,7 @@ export default {
             openions: {},
             bgUrlValid: true,
             iconUrlValid: true,
-            show_edit_modal: false,
+            show_edit_modal: true,
             form: this.$inertia.form({
                 openion: {},
                 openionKey: "",
@@ -246,7 +246,10 @@ export default {
             // console.log(openion);
         },
         closeEditModal() {
+            let element_id = this.form.openionKey + "_" + this.form.openion.id;
             this.show_edit_modal = false;
+            element.classList.remove("hidden");
+            element.classList.add("block");
         },
         submitModal() {
             alert("We are working on it");
