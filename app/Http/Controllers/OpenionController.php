@@ -116,9 +116,43 @@ class OpenionController extends Controller
      * @param  \App\Models\Openion  $openion
      * @return \Illuminate\Http\Response
      */
-    public function edit(Openion $openion)
+    public function edit(Request $request)
     {
-        //
+        $request->validate([
+            'openion'=> ['required'],
+        ]);
+        //check if $id is given
+        if($request==null){
+            return redirect()->back();
+
+        }
+        $user =Auth::user();
+        $openion =$request['openion'];
+
+        if(isset($openion["user"])){
+            if($user->id !=$openion["user"]["id"]){
+                return redirect()->back()->with('rejected');
+            }else{
+                $id               = $openion["id"];
+                $_deleteOpenion   =Openion::find($id);
+
+                if($_deleteOpenion!=null){
+                     return redirect()->back()->with('message', "validation_success");
+
+                    // return Inertia::render('Openion/Edit', [
+                    //     'openion' => $openion,
+                    //     'authUser'=>$user,
+                    //     'isLoggedIn'=> Auth::check()
+                    // ]);
+
+                }
+                return redirect()->back()->with('rejected');
+
+            }
+        }
+           return redirect()->back()->with('rejected');
+
+
     }
 
     /**

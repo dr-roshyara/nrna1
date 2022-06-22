@@ -1,10 +1,11 @@
 <template>
-    <div class="mx-auto mt-4 w-full py-2">
+    <div class="mt-4 w-full p-2">
         <div
-            v-for="openion in openions"
+            v-for="(openion, openionKey) in openions"
+            :key="openionKey"
             class="my-2 rounded-md border p-2 shadow-md"
         >
-            <!-- {{ openions }} -->
+            key: {{ openionKey }}
             <div
                 class="flex flex-row justify-between border-b border-slate-100 pt-1 font-bold"
             >
@@ -35,6 +36,7 @@
                 <action-on-message
                     :user="openion.user"
                     :userLoggedIn="canEdit(openion.user.id)"
+                    @editOpenion="editOpenion(openion, openionKey)"
                     @deleteOpenion="deleteOpenion(openion)"
                 ></action-on-message>
             </div>
@@ -49,17 +51,30 @@
                 #{{ openion.hash_tag }}
             </p>
 
-            <!-- {{ openion }} -->
+            <div
+                :id="openionKey + '_' + openion.id"
+                ref="openionKey+' '+ openion.id"
+                class="translate-y-50 relative top-0 bottom-0 left-0 right-0 hidden min-h-screen bg-slate-300"
+                v-show="show_edit_modal"
+            >
+                <openion-edit
+                    :openion="form.openion"
+                    @closeEditModal="closeEditModal"
+                    @submitModal="submitModal"
+                    class="mx-auto h-full w-full bg-blue-200"
+                ></openion-edit>
+            </div>
         </div>
     </div>
 </template>
 <script>
 import axios from "axios";
 import ActionOnMessage from "@/Shared/ActionOnMessage.vue";
-
+import OpenionEdit from "@/Components/Openion/Edit.vue";
 export default {
     components: {
         ActionOnMessage,
+        OpenionEdit,
     },
     props: {
         user: {
@@ -91,8 +106,10 @@ export default {
             openions: {},
             bgUrlValid: true,
             iconUrlValid: true,
+            show_edit_modal: false,
             form: this.$inertia.form({
                 openion: {},
+                openionKey: "",
             }),
         };
     },
@@ -188,6 +205,69 @@ export default {
         deleteOpenion(openion) {
             this.form.openion = openion;
             this.form.post(this.route("openion.destroy"));
+        },
+        editOpenion(openion, openionKey) {
+            // console.log(openion);
+            // console.log(openionKey);
+            this.form.openion = openion;
+            this.form.openionKey = openionKey;
+            this.form.post(this.route("openion.edit"), {
+                preserveScroll: true,
+                resetOnSuccess: false,
+                onSuccess: (response) => this.showEditModal(response),
+            });
+        },
+        showEditModal(response) {
+            console.log(response.props.message);
+
+            let _messgae = response.props.message;
+            if (_messgae == "validation_success") {
+                // console.log("test");
+                let element_id =
+                    this.form.openionKey + "_" + this.form.openion.id;
+                console.log("element : " + element_id);
+                let element = document.getElementById(element_id);
+                element.classList.remove("hidden");
+                element.classList.add("block");
+                this.show_edit_modal = true;
+                // this.$refs.$input.focus();
+                element.focus();
+                element.scrollIntoView({
+                    behavior: "auto",
+                    block: "center",
+                    inline: "center",
+                });
+                // const element = document.getElementById("middle");
+                const elementRect = element.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.pageYOffset;
+                const middle = absoluteElementTop - window.innerHeight / 2;
+                window.scrollTo(0, middle);
+            }
+            // console.log(openion);
+        },
+        closeEditModal() {
+            this.show_edit_modal = false;
+        },
+        submitModal() {
+            alert("We are working on it");
+            // this.form.post(this.route("openion.edit"), {
+            //     preserveScroll: true,
+            //     resetOnSuccess: false,
+            //     onSuccess: (response) => this.showEditModal(response),
+            // });
+        },
+        showModal(openionKey) {
+            console.log(openionKey);
+            // console.log(openion);
+            if (!this.show_edit_modal) {
+                return false;
+            }
+            if (this.show_edit_modal) {
+                if (openionKey == this.form.openionKey) {
+                    return true;
+                }
+            }
+            return false;
         },
     },
 };

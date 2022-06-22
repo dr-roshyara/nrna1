@@ -74,7 +74,10 @@
                             <span class="text-sm">Friends</span>
                         </div>
                         <!--edit form  -->
-                        <a v-if="isLoggedIn" :href="user.profileEditUrl">
+                        <a
+                            v-if="this.isLoggedIn && this.userLoggedIn"
+                            :href="user.profileEditUrl"
+                        >
                             <div class="flex flex-col items-center self-end">
                                 <svg
                                     class="h-8 w-8 text-blue-600"
@@ -152,6 +155,7 @@ export default {
         canRegister: Boolean,
         isLoggedIn: Boolean,
         user: Array,
+        userLoggedIn: Boolean,
     },
     components: {
         SearchLoop,

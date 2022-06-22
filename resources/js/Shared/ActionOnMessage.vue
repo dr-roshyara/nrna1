@@ -36,32 +36,31 @@
         >
             <ul class="mb-2 grid grid-cols-1 justify-end border">
                 <li class="px-2" v-if="userLoggedIn">
-                    <a href="/openion/edit">
-                        <div
-                            class="bottom-1 flex flex-row items-center justify-start space-x-1 border-b border-stone-50"
-                        >
-                            <!-- Edit Icon to edit a post  -->
+                    <Button
+                        @click="editOpenion"
+                        class="flex flex-row items-center justify-start space-x-1 border-b border-stone-50"
+                    >
+                        <!-- Edit Icon to edit a post  -->
 
-                            <svg
-                                class="h-4 w-6 text-blue-500"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path d="M12 20h9" />
-                                <path
-                                    d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
-                                />
-                            </svg>
-                            <span> Edit post </span>
-                        </div>
-                    </a>
+                        <svg
+                            class="h-4 w-6 text-blue-500"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M12 20h9" />
+                            <path
+                                d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
+                            />
+                        </svg>
+                        <span> Edit post </span>
+                    </Button>
                 </li>
                 <!-- Delete icon  -->
 
@@ -165,8 +164,13 @@ export default {
 
         deleteOpenion() {
             this.showActionBar = false;
-            console.log("delete");
+            // console.log("delete");
             this.$emit("deleteOpenion");
+        },
+        editOpenion() {
+            this.showActionBar = false;
+            console.log("Edit");
+            this.$emit("editOpenion");
         },
     },
 };

@@ -1,5 +1,9 @@
 <template>
-    <profile-layout :isLoggedIn="isLoggedIn" :user="user">
+    <profile-layout
+        :isLoggedIn="isLoggedIn"
+        :user="user"
+        :userLoggedIn="userLoggedIn"
+    >
         <div class="min-h-screen">
             <main-content
                 :user="user"

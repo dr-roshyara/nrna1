@@ -21,7 +21,11 @@ Route::get('/openions/{user_id}', [OpenionController::class, 'userOpenions'])
 Route::middleware(['auth:sanctum', 'verified'])
     ->post('/openions', [OpenionController::class, 'store'])
       ->name('openions.store');
-
+//edit
+Route::middleware(['auth:sanctum', 'verified'])
+    ->post('/openion/edit', [OpenionController::class, 'edit'])
+      ->name('openion.edit');
+//destroy
 Route::middleware(['auth:sanctum', 'verified'])
     ->post('/openion/destroy', [OpenionController::class, 'destroy'])
       ->name('openion.destroy');
