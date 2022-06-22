@@ -240,7 +240,7 @@ export default {
                 // const element = document.getElementById("middle");
                 const elementRect = element.getBoundingClientRect();
                 const absoluteElementTop = elementRect.top + window.pageYOffset;
-                const middle = absoluteElementTop - window.innerHeight / 2;
+                const middle = absoluteElementTop - window.innerHeight / 3;
                 window.scrollTo(0, middle);
             }
             // console.log(openion);
