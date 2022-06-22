@@ -1,12 +1,12 @@
 <template>
     <section
         id="modalEditOpenion"
-        class="absolute mx-auto h-full w-full rounded-lg border-2 border-green-50 p-2 shadow"
+        class="absolute mx-auto h-full w-full rounded-lg border-2 border-green-50 shadow"
     >
         <!-- {{ openion }} -->
         <form
             @submit.prevent="submit"
-            class="mx-auto flex h-full w-full flex-col bg-stone-100 px-2 py-2 opacity-100"
+            class="mx-auto flex h-full w-full flex-col bg-stone-100 p-2 opacity-100"
         >
             <!-- first and middle name    -->
             <div class="bg-gray-50 pb-1">
