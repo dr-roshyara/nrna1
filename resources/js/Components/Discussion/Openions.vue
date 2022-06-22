@@ -248,8 +248,8 @@ export default {
         closeEditModal() {
             let element_id = this.form.openionKey + "_" + this.form.openion.id;
             // this.show_edit_modal = false;
-            element.classList.remove("hidden");
-            element.classList.add("block");
+            element.classList.remove("block");
+            element.classList.add("hidden");
         },
         submitModal() {
             alert("We are working on it");
