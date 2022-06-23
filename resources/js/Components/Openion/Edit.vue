@@ -33,7 +33,7 @@
                     class="grow-wrap w-full border border-gray-200"
                     style="min-height: 45vh"
                     placeholder="Your saying"
-                    v-bind:value="openion.body"
+                    v-bind:v-html="openion.body"
                     name="body"
                     required
                 ></textarea>
