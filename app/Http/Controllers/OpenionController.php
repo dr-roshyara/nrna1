@@ -162,9 +162,59 @@ class OpenionController extends Controller
      * @param  \App\Models\Openion  $openion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Openion $openion)
+    public function update(Request $request)
     {
-        //
+        /***
+         * What to do ?
+         * 1. First check if the submitted openion id belongs to auth user or not
+         * 2. Assign new title , body and hash_tags
+         * 3. save
+         */
+
+       $request->validate([
+            'openion' => ['required'],
+            'authUser'=> ['required'],
+
+        ]);
+
+         $openion =$request['openion'];
+         $authUser =$request['authUser'];
+        if(isset($openion['id'])){
+            $openionId =$openion['id'];
+            $_openion =Openion::where('id','=',$openionId)->first();
+            // dd($_openion);
+            //check user ;
+            $_user_validity =Auth::check(); //if logged in
+            $_user_validity =$_user_validity &&(Auth::user()->id===$authUser["id"]); //if logeduser is same is authuser
+            $_user_validity =$_user_validity &&($authUser["id"] ==$_openion->user_id ); // if openion belongs to authuser .
+            if($_user_validity && ($openion["id"] ===$_openion->id))
+            {
+                //go ahead
+                if(isset($openion['title'])){
+                            $_openion->title =$openion['title'];
+                }
+                if(isset($openion['body'])){
+                    $_body          =$openion['body'];
+                    // $_body        =nl2br($_body);
+                    $_body          = preg_replace("/\r\n|\r|\n/", '<br/>', $_body);
+                    $_openion->body =$_body ;
+                }
+                if(isset($openion['hash_tag'])){
+                            $_openion->hash_tag =$openion['hash_tag'];
+                }
+                $_openion->save();
+                return redirect()->back()->with(["message"=>"openion saved"]);
+
+
+            }else{
+                return redirect()->back()->with(['message'=>'Not saved']);
+            }
+
+
+        }else{
+            return redirect()->back();
+        }
+
     }
 
     /**

@@ -25,6 +25,9 @@ Route::middleware(['auth:sanctum', 'verified'])
 Route::middleware(['auth:sanctum', 'verified'])
     ->post('/openion/edit', [OpenionController::class, 'edit'])
       ->name('openion.edit');
+Route::middleware(['auth:sanctum', 'verified'])
+    ->post('/openion/update', [OpenionController::class, 'update'])
+      ->name('openion.update');
 //destroy
 Route::middleware(['auth:sanctum', 'verified'])
     ->post('/openion/destroy', [OpenionController::class, 'destroy'])

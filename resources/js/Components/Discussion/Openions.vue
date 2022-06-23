@@ -5,7 +5,7 @@
             :key="openionKey"
             class="my-2 rounded-md border p-2 shadow-md"
         >
-            key: {{ openionKey }}
+            <!-- key: {{ openionKey }} -->
             <div
                 class="flex flex-row justify-between border-b border-slate-100 pt-1 font-bold"
             >
@@ -54,14 +54,16 @@
             <div
                 :id="openionKey + '_' + openion.id"
                 ref="openionKey+' '+ openion.id"
-                class="translate-y-50 relative top-0 bottom-0 left-0 right-0 hidden min-h-screen bg-slate-300"
+                style="min-height: 70vh"
+                class="translate-y-50 relative top-0 bottom-0 left-0 right-0 hidden bg-slate-100"
                 v-if="show_edit_modal"
             >
                 <openion-edit
-                    :openion="form.openion"
+                    :openion="openion"
+                    :authUser="authUser"
                     @closeEditModal="closeEditModal"
                     @submitModal="submitModal"
-                    class="mx-auto h-full w-full bg-blue-200"
+                    class="mx-auto h-full w-full bg-blue-100"
                 ></openion-edit>
             </div>
         </div>
@@ -210,6 +212,7 @@ export default {
             // console.log(openion);
             // console.log(openionKey);
             this.form.openion = openion;
+            // console.log(this.form.openion);
             this.form.openionKey = openionKey;
             this.form.post(this.route("openion.edit"), {
                 preserveScroll: true,
@@ -218,7 +221,7 @@ export default {
             });
         },
         showEditModal(response) {
-            console.log(response.props.message);
+            // console.log(response.props.message);
 
             let _messgae = response.props.message;
             if (_messgae == "validation_success") {
@@ -240,10 +243,9 @@ export default {
                 // const element = document.getElementById("middle");
                 const elementRect = element.getBoundingClientRect();
                 const absoluteElementTop = elementRect.top + window.pageYOffset;
-                const middle = absoluteElementTop - window.innerHeight / 3;
+                const middle = absoluteElementTop - window.innerHeight / 4;
                 window.scrollTo(0, middle);
             }
-            // console.log(openion);
         },
         closeEditModal() {
             let element_id = this.form.openionKey + "_" + this.form.openion.id;
