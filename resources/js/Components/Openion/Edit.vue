@@ -168,6 +168,8 @@ export default {
             // let _str = this.decodeHtml(str);
             let _str = str.replace(/^\s+|\s+$/gm, "");
             _str = this.decodeHtml(_str);
+            // $breaks = array("<br />", "<br>", "<br/>");
+            // _str = str_ireplace($breaks, "\r\n", _str);
             _str = _str.replace("<br>", "\r\n");
             _str = _str.replace("<br/ >", "\r\n");
             _str = _str.replace("<br />", "\r\n");
