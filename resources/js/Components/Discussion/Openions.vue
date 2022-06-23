@@ -54,7 +54,7 @@
             <div
                 :id="openionKey + '_' + openion.id"
                 ref="openionKey+' '+ openion.id"
-                style="min-height: 70vh"
+                style="min-height: 75vh"
                 class="translate-y-50 relative top-0 bottom-0 left-0 right-0 hidden bg-slate-100"
                 v-if="show_edit_modal"
             >
