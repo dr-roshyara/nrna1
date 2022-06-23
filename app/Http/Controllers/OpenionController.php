@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Models\User;
+use Carbon\Carbon;
 class OpenionController extends Controller
 {
     /***
@@ -44,7 +45,7 @@ class OpenionController extends Controller
     {
          $openions = QueryBuilder::for(Openion::class)
          ->with(['user'])
-        ->orderBy('id', 'desc')->get();
+        ->orderBy('updated_at', 'desc')->get();
         //  $openions->load(['user'=>function($query){
         //     // $query->select(['id']);
         // }]);
@@ -207,6 +208,7 @@ class OpenionController extends Controller
                 if(isset($openion['hash_tag'])){
                             $_openion->hash_tag =$openion['hash_tag'];
                 }
+                $_openion->updated_at=Carbon::now();
                 $_openion->save();
                 return redirect()->back()->with(["message"=>"openion saved"]);
 

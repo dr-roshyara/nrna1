@@ -175,6 +175,7 @@ export default {
             _str = _str.replace("<br />", "\r\n");
             _str = _str.replace("<br/>", "\r\n");
             _str = _str.replace("<br/ >", "\r\n");
+            _str = _str.replace(" <br/ > ", "\r\n");
             return _str;
         },
     },

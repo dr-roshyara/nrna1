@@ -124,14 +124,8 @@ export default {
         //     },
         // };
         axios.get(this.openionRoute, {}).then((response) => {
-            // console.log("response");
             // console.log(response);
             this.openions = response.data;
-            // // console.log("user");
-            // console.log(this.openions);
-            // console.log("auth:user ");
-            // console.log(this.$page.props.user);
-            // console.log(this.$page.user.id);
         });
     },
     methods: {
@@ -283,6 +277,7 @@ export default {
                 "&quot;": '"',
                 "&#039;": "'",
             };
+
             return str.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function (m) {
                 return map[m];
             });
