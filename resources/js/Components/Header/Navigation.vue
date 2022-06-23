@@ -44,6 +44,15 @@
                         आइटी कक्षा
                     </jet-nav-link>
                 </div>
+                <!-- logout  -->
+                <!-- Authentication -->
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <form @submit.prevent="logout">
+                        <jet-dropdown-link as="button">
+                            Log Out
+                        </jet-dropdown-link>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="mx-auto hidden max-w-7xl px-4 sm:block sm:px-6 lg:px-8">

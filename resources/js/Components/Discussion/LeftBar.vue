@@ -18,6 +18,19 @@
                     </jet-nav-link>
                 </div>
             </li>
+            <!-- organisation structure  -->
+            <li>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <!-- {{ $props.user }} -->
+                    <jet-nav-link :href="route('dashboard')">
+                        <span class="p-2 px-4 text-lg font-bold">
+                            Organisational Structure<br />
+                            संस्थागत संरचना
+                        </span>
+                    </jet-nav-link>
+                </div>
+            </li>
+            <!-- personal page  -->
             <li>
                 <div v-if="$page.props.user" class="sm:-my-px sm:ml-10 sm:flex">
                     <!-- {{ $props.user }} -->

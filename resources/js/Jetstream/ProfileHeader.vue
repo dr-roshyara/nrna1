@@ -101,6 +101,27 @@
                                 <span class="text-sm">Edit</span>
                             </div>
                         </a>
+
+                        <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <form @submit.prevent="logout">
+                                <jet-dropdown-link as="button">
+                                    <svg
+                                        class="h-8 w-8 text-blue-600"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                                        ></path>
+                                    </svg>
+                                </jet-dropdown-link>
+                            </form>
+                        </div>
                         <div class="flex flex-col items-center">
                             <svg
                                 class="h-10 w-10 text-blue-600"
@@ -147,6 +168,7 @@
     </div>
 </template>
 <script>
+import JetDropdownLink from "@/Jetstream/DropdownLink";
 import SearchLoop from "@/Components/SearchLoop.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 export default {
@@ -160,6 +182,12 @@ export default {
     components: {
         SearchLoop,
         Link,
+        JetDropdownLink,
+    },
+    methods: {
+        logout() {
+            this.$inertia.post(route("logout"));
+        },
     },
 };
 </script>
