@@ -30,10 +30,11 @@
             <div class="grow-wrap">
                 <textarea
                     id="openionBody"
+                    type="text/html"
                     class="grow-wrap w-full border border-gray-200"
                     style="min-height: 45vh"
                     placeholder="Your saying"
-                    v-bind:v-html="openion.body"
+                    v-bind:value="openion.body"
                     name="body"
                     required
                 ></textarea>
@@ -150,6 +151,11 @@ export default {
                     grower.dataset.replicatedValue = textarea.value;
                 });
             });
+        },
+        ConvertStringToHTML(str) {
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(str, "text/html");
+            return doc.body;
         },
     },
 };
