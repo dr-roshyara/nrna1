@@ -32,9 +32,13 @@
 
     <div v-if="!loggedIn">
         <nrna-layout :canRegister="canRegister" :canLogin="canLogin">
-            <div class="flex min-h-screen flex-col">
+            <div class="mx-auto">
                 <join-network></join-network>
-                <upcoming-events></upcoming-events>
+                <div id="calendar">
+                    <upcoming-events
+                        class="mb-4 w-full max-w-full py-2"
+                    ></upcoming-events>
+                </div>
                 <!-- <login
                     canResetPassword="true"
                     :canRegister="canRegister"
@@ -75,3 +79,7 @@ export default {
     },
 };
 </script>
+<style scoped>
+#calendar {
+}
+</style>

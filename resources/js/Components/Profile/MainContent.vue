@@ -21,11 +21,12 @@
                 </div>
             </div>
             <div class="py-2 text-gray-900">
-                <h2 class="text-bold mb-0 text-sm md:text-2xl">
+                <h2 class="mb-0 text-sm font-bold md:text-2xl">
                     {{ user.name }}
                 </h2>
                 <p v-if="user.country">
-                    Living in: <span v-if="user.city"> {{ user.city }} </span>
+                    <span class="font-bold text-gray-800">Living in: </span>
+                    <span v-if="user.city"> {{ user.city }} </span>
                     <span v-if="user.country" class=""
                         >, {{ user.country }}
                     </span>
@@ -35,17 +36,19 @@
                 </p>
             </div>
         </section>
-        <section class="status my-2 border border-lime-200">
-            status Currently: I am working on nrna profile
+        <section class="mx-2 mb-2 border border-stone-100 py-2">
+            <span class="font-bold text-gray-800"> status- </span> I am working
+            on nrna profile
         </section>
-        <section class="pinned mb-2 border border-lime-200">
+        <!-- <section class="pinned mb-2 border border-lime-200">
             pinned text
+        </section> -->
+        <section class="min-h-20 mx-2 mb-2 border border-stone-100 py-2">
+            About me
         </section>
 
-        <section class="aboutme mb-2 border border-lime-200">about me</section>
-
-        <section class="aboutme mb-2 border border-lime-200">my review</section>
-        <section class="review mb-2 border border-lime-200">
+        <section class="mx-2 mb-2 border border-stone-100">My reviews</section>
+        <section class="mb-2 border border-stone-100">
             <openions
                 :openionRoute="openionRoute"
                 :user="user"

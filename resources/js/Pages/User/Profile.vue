@@ -4,7 +4,7 @@
         :user="user"
         :userLoggedIn="userLoggedIn"
     >
-        <div class="min-h-screen">
+        <div class="min-h-screen md:px-4">
             <main-content
                 :user="user"
                 :isLoggedIn="isLoggedIn"

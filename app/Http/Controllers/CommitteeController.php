@@ -89,4 +89,9 @@ class CommitteeController extends Controller
 
         ]);
     }
+    public function showCalendar(){
+        return Inertia::render('Committee/Calendar',[
+
+        ]);
+    }
 }

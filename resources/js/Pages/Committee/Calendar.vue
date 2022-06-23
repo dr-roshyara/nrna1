@@ -7,13 +7,7 @@
                 <left-bar></left-bar>
             </div>
             <div class="flex-1 md:w-1/2">
-                <timeline :user="$page.props.user"> </timeline>
-                <openions
-                    openionRoute="/openions"
-                    :user="$page.props.user"
-                    :authUser="authUser"
-                    class="mb-2"
-                ></openions>
+                <calendar></calendar>
             </div>
             <div class="hidden sm:block md:w-1/4">
                 <right-bar></right-bar>
@@ -25,6 +19,7 @@
 
 <script>
 // import NrnaLayout from "@/Layouts/NrnaLayout";
+import Calendar from "@/Components/Committee/Calendar.vue";
 import SocialLayout from "@/Layouts/SocialLayout";
 import RightBar from "@/components/Discussion/RightBar.vue";
 import LeftBar from "@/components/Discussion/LeftBar.vue";
@@ -43,6 +38,7 @@ export default {
         Openions,
         RightBar,
         LeftBar,
+        Calendar,
     },
     props: {
         authUser: Array,
@@ -50,3 +46,28 @@ export default {
     computed: {},
 };
 </script>
+<style scoped>
+#google_calendar {
+    @media only screen and (max-width: 640px) {
+        width: "350";
+        height: "650";
+    }
+}
+.container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+</style>

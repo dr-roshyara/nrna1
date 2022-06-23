@@ -11,7 +11,7 @@
         </div>
 
         <!-- middle  -->
-        <section class="mx-auto mt-48 sm:mt-20">
+        <section class="mt-48 sm:mt-20">
             <slot class="min-h-screen flex-grow overflow-hidden"> </slot>
         </section>
         <!-- footer  -->
