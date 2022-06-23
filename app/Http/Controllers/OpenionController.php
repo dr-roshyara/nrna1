@@ -87,8 +87,8 @@ class OpenionController extends Controller
         }
          $_body     =$request['body'];
         // $_body      =nl2br($_body);
-        $_body        = preg_replace("/\r\n|\r|\n/", ' &lt;br/ &gt; ', $_body);
-        $_body        = htmlspecialchars($_body, ENT_QUOTES);
+        $_body        = preg_replace("/\r\n|\r|\n/", ' &lt;br/&gt; ', $_body);
+        // $_body        = htmlspecialchars($_body, ENT_QUOTES);
         // $_body =str_replace(PHP_EOL, '<br/>', $_body);
         // dd($_body);
         $openion ->body =$_body;
@@ -198,8 +198,8 @@ class OpenionController extends Controller
                     $_body          =$openion['body'];
                     // dd($_body);
                     // $_body        =nl2br($_body);
+                    // $_body        = htmlspecialchars($_body, ENT_QUOTES);
                     $_body        = preg_replace("/\r\n|\r|\n/", ' &lt;br/ &gt; ', $_body);
-                    $_body        = htmlspecialchars($_body, ENT_QUOTES);
                     //  dd($_body);
                     $_openion->body =$_body ;
                 }

@@ -165,23 +165,15 @@ export default {
             });
         },
         br2nl(str) {
-            let _str = this.decodeHtml(str);
-            var mapObj = {
-                "<br>": "\r\n",
-                "<br/ >": "\r\n",
-                "<br/>": "\r\n",
-                "<br />": "\r\n",
-            };
+            // let _str = this.decodeHtml(str);
+            let _str = str.replace(/^\s+|\s+$/gm, "");
+            _str = this.decodeHtml(_str);
             _str = _str.replace("<br>", "\r\n");
             _str = _str.replace("<br/ >", "\r\n");
             _str = _str.replace("<br />", "\r\n");
             _str = _str.replace("<br/>", "\r\n");
             _str = _str.replace("<br/ >", "\r\n");
-
-            console.log(_str);
             return _str;
-            // $st_no_lb = preg_replace("/\r|\n/", "", $st);
-            // return preg_replace("/<br(\s+)?\/?>/i", "\n", $st_no_lb);
         },
     },
 };
