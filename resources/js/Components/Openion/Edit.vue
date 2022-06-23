@@ -30,11 +30,11 @@
             <div class="grow-wrap">
                 <textarea
                     id="openionBody"
-                    type="text/html"
+                    type="text"
                     class="grow-wrap w-full break-all border border-gray-200"
                     style="min-height: 45vh"
                     placeholder="Your saying"
-                    v-bind:value="openion.body"
+                    v-bind:value="br2nl(openion.body)"
                     name="body"
                     required
                 ></textarea>
@@ -152,10 +152,36 @@ export default {
                 });
             });
         },
-        ConvertStringToHTML(str) {
-            let parser = new DOMParser();
-            let doc = parser.parseFromString(str, "text/html");
-            return doc.body;
+        decodeHtml(str) {
+            var map = {
+                "&amp;": "&",
+                "&lt;": " <",
+                "&gt;": "> ",
+                "&quot;": '"',
+                "&#039;": "'",
+            };
+            return str.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function (m) {
+                return map[m];
+            });
+        },
+        br2nl(str) {
+            let _str = this.decodeHtml(str);
+            var mapObj = {
+                "<br>": "\r\n",
+                "<br/ >": "\r\n",
+                "<br/>": "\r\n",
+                "<br />": "\r\n",
+            };
+            _str = _str.replace("<br>", "\r\n");
+            _str = _str.replace("<br/ >", "\r\n");
+            _str = _str.replace("<br />", "\r\n");
+            _str = _str.replace("<br/>", "\r\n");
+            _str = _str.replace("<br/ >", "\r\n");
+
+            console.log(_str);
+            return _str;
+            // $st_no_lb = preg_replace("/\r|\n/", "", $st);
+            // return preg_replace("/<br(\s+)?\/?>/i", "\n", $st_no_lb);
         },
     },
 };

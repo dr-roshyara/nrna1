@@ -43,7 +43,7 @@
             <p class="px-1 pb-1 text-center font-bold text-blue-800">
                 {{ openion.title }}
             </p>
-            <div class="mb-4 pb-2" v-html="openion.body"></div>
+            <div class="mb-4 pb-2" v-html="decodeHtml(openion.body)"></div>
             <p
                 v-if="openion.hash_tag"
                 class="bottom-0 ml-0 text-sm font-bold tracking-tighter text-teal-800"
@@ -274,6 +274,18 @@ export default {
                 }
             }
             return false;
+        },
+        decodeHtml(str) {
+            var map = {
+                "&amp;": "&",
+                "&lt;": " <",
+                "&gt;": "> ",
+                "&quot;": '"',
+                "&#039;": "'",
+            };
+            return str.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function (m) {
+                return map[m];
+            });
         },
     },
 };
