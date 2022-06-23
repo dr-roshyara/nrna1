@@ -54,8 +54,8 @@
             <div
                 :id="openionKey + '_' + openion.id"
                 ref="openionKey+' '+ openion.id"
-                style="min-height: 75vh"
-                class="translate-y-50 relative top-0 bottom-0 left-0 right-0 hidden bg-slate-100"
+                style="min-height: 80vh"
+                class="translate-y-50 relative top-0 bottom-0 left-0 right-0 hidden h-4/6 bg-slate-100 md:h-4/5"
                 v-if="show_edit_modal"
             >
                 <openion-edit
