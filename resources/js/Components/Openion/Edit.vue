@@ -31,7 +31,7 @@
                 <textarea
                     id="openionBody"
                     type="text/html"
-                    class="grow-wrap w-full border border-gray-200"
+                    class="grow-wrap w-full break-all border border-gray-200"
                     style="min-height: 45vh"
                     placeholder="Your saying"
                     v-bind:value="openion.body"

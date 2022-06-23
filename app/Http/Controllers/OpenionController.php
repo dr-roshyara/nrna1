@@ -196,8 +196,10 @@ class OpenionController extends Controller
                 }
                 if(isset($openion['body'])){
                     $_body          =$openion['body'];
+                    // dd($_body);
                     // $_body        =nl2br($_body);
-                    $_body          = preg_replace("/\r\n|\r|\n/", '<br/>', $_body);
+                       $_body       = preg_replace("/\r\n|\r|\n/", '&lt;br/ &gt;', $_body);
+                    $_body       =  htmlspecialchars($_body, ENT_QUOTES);
                     $_openion->body =$_body ;
                 }
                 if(isset($openion['hash_tag'])){
