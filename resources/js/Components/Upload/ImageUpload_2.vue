@@ -2,6 +2,13 @@
     <div
         class="absolute bottom-0 z-20 h-full w-full translate-y-0 rounded bg-gray-50"
     >
+        <!--
+        ***
+        **This image has also a posibility to reduce the size of the image and
+        **upload it
+        ** While reducing the size, it will keep the quality as it is .
+        */
+        -->
         <img v-if="url" :src="url" class="h-full w-full" />
         <div class="mx-auto h-full w-full">
             <div class="overflow-hidden bg-gray-50 shadow-sm sm:rounded-lg">
@@ -12,14 +19,6 @@
                                 <label for="File">File Upload</label>
                             </div>
                             <div>
-                                <!-- <button @click="upload">Upload</button> -->
-                                <!-- <image-compressor
-                                    :done="getFiles"
-                                    :scale="scale"
-                                    :quality="quality"
-                                    ref="compressor"
-                                    @change="previewImage"
-                                ></image-compressor> -->
                                 <input
                                     type="file"
                                     accept=".jpg, .jpeg, .png"
@@ -63,21 +62,6 @@ export default {
             type: String,
             default: "profile",
         },
-        // // Image Scale Percentage (1 - 100)
-        // scale: {
-        //     type: Number,
-        //     default: 100,
-        // },
-        // // Image Scale Percentage (1 - 100)
-        // quality: {
-        //     type: Number,
-        //     default: 100,
-        // },
-        // Pass the files info when it's done
-        // done: {
-        //     type: Function,
-        //     default: () => {},
-        // },
     },
     components: {
         Label,
@@ -87,8 +71,9 @@ export default {
         return {
             url: null,
             img: "",
-            scale: 100,
-            quality: 50,
+            scale: 99,
+            quality: 60,
+            changeQuality: true,
             originalSize: true,
             original: {},
             //file
@@ -96,6 +81,7 @@ export default {
             result: {},
             reader: {},
             imgSrc: "",
+            canvas: null,
         };
     },
     setup(props) {
@@ -110,7 +96,6 @@ export default {
             this.form.image = this.redraw();
             if (this.form.image) {
                 // this.form.image = this.$refs.photo.files[0];
-                // // this.form.image_tpye =this.image_tpye;
                 this.$emit("image-uploaded");
                 this.form.post(route("image.store"));
             }
@@ -124,13 +109,15 @@ export default {
             let imgSize = this.file.size / 1024;
             // console.log("imgSize: " + imgSize);
             /** change the quality of the imsage depending on the
-             * kb size of the image . If the image is very large then reduce the quality very
-             * largly.
+             * kb size of the image . If the image is very larger than 280,
+             *  reduce the quality. by its ratio with the image size
              */
             if (imgSize > 280) {
                 this.quality = (280 / imgSize) * 100;
+                this.changeQuality = true;
             } else {
-                this.quality = 100;
+                this.quality = 1;
+                this.changeQuality = false;
             }
             this.url = URL.createObjectURL(this.file);
             // Validation
@@ -145,21 +132,8 @@ export default {
             // on reader load somthing...
             this.reader.onload = this.fileOnLoad;
             // convas = this.convertImageToCanvas(this.file);
-            console.log("Test");
-            console.log(this.reader);
-        },
-        previewImage(e) {
-            const file = e.target.files[0];
-            this.url = URL.createObjectURL(file);
-        },
-        getFiles(obj) {
-            console.log(obj);
-            this.form.image = obj;
-        },
-        getFiles1(obj) {
-            this.img = obj.compressed.blob;
-            this.original = obj.original;
-            this.compressed = obj.compressed;
+            // console.log("Test");
+            // console.log(this.reader);
         },
         dataURItoBlob(dataURI) {
             // convert base64 to raw binary data held in a string
@@ -176,20 +150,7 @@ export default {
             var blob = new Blob([dataView], { type: mimeString });
             return blob;
         },
-        uploadImages(file) {
-            if (!file) return false;
-            // Validation
-            let type = this.file.type;
-            let valid = type.indexOf("image") !== -1;
-            if (!valid)
-                throw "File Type Is Not Supported. Upload an image instead";
-            // Make new FileReader
-            this.reader = new FileReader();
-            // Convert the file to base64 text
-            this.reader.readAsDataURL(this.file);
-            // on reader load somthing...
-            this.reader.onload = this.fileOnLoad;
-        },
+
         /*
         Draw And Compress The Image
         @params {String} imgUrl
@@ -204,7 +165,7 @@ export default {
             let img = new Image();
             img.src = imgUrl;
             // Image Size After Scaling
-            console.log("image size: " + img.width * img.height * 1024);
+            // console.log("image size: " + img.width * img.height * 1024);
             let scale = this.scale / 100;
             let width = img.width * scale;
             let height = img.height * scale;
@@ -218,7 +179,13 @@ export default {
             // Quality Of Image
             let quality = this.quality ? this.quality / 100 : 1;
             // If all files have been proceed
-            let base64 = this.canvas.toDataURL("image/jpeg", quality);
+            let base64 = null;
+            if (this.changeQuality) {
+                base64 = this.canvas.toDataURL("image/jpeg", quality);
+            } else {
+                base64 = this.canvas.toDataURL("image/jpeg");
+            }
+
             let fileName = this.result.file.name;
             let lastDot = fileName.lastIndexOf(".");
             fileName = fileName.substr(0, lastDot) + ".jpeg";
@@ -236,7 +203,8 @@ export default {
                 Math.round(objToPass.compressed.file.size / 1000) + " kB";
             objToPass.compressed.type = "image/jpeg";
             // this.done(objToPass);
-            return objToPass;
+            // console.log(objToPass);
+            return objToPass.compressed;
         },
         /*
         Redraw the canvas

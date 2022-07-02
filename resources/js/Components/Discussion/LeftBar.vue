@@ -48,13 +48,21 @@
                     </jet-nav-link>
                 </div>
             </li>
+            <!-- Dashboard for Financial  -->
+            <!-- personal page  -->
             <li>
                 <div v-if="$page.props.user" class="sm:-my-px sm:ml-10 sm:flex">
                     <!-- {{ $props.user }} -->
-                    <jet-nav-link :href="route('election.dashboard')">
+                    <jet-nav-link
+                        :href="
+                            route('user.show', {
+                                profile: $page.props.user.user_id,
+                            })
+                        "
+                    >
                         <span class="p-2 px-4 text-lg font-bold">
-                            Election Dashboard<br />
-                            निर्वाचन पाना
+                            Financial Description<br />
+                            आर्थिक बिवरण
                         </span>
                     </jet-nav-link>
                 </div>
@@ -79,6 +87,17 @@
                         <span class="p-2 px-4 text-lg font-bold">
                             Coming Activities <br />
                             आगामी कार्ययोजनाहरू
+                        </span>
+                    </jet-nav-link>
+                </div>
+            </li>
+            <li>
+                <div v-if="$page.props.user" class="sm:-my-px sm:ml-10 sm:flex">
+                    <!-- {{ $props.user }} -->
+                    <jet-nav-link :href="route('election.dashboard')">
+                        <span class="p-2 px-4 text-lg font-bold">
+                            Election Dashboard<br />
+                            निर्वाचन पाना
                         </span>
                     </jet-nav-link>
                 </div>

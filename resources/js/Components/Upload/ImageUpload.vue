@@ -1,42 +1,11 @@
 <template>
-    <div
-        class="absolute bottom-0 z-20 h-full w-full translate-y-0 rounded bg-gray-50"
-    >
-        <img v-if="url" :src="url" class="h-full w-full" />
-        <div class="mx-auto h-full w-full">
-            <div class="overflow-hidden bg-gray-50 shadow-sm sm:rounded-lg">
-                <div class="border-b border-gray-200 bg-white p-6">
-                    <form @submit.prevent="submit">
-                        <div>
-                            <div>
-                                <label for="File">File Upload</label>
-                            </div>
-                            <div>
-                                <input
-                                    type="file"
-                                    accept=".jpg, .jpeg, .png"
-                                    ref="photo"
-                                    class="mt-2 w-full rounded-md border px-4 py-2 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                                    @change="onChange"
-                                    multiple
-                                />
-                            </div>
-
-                            <div v-if="errors" class="font-bold text-red-600">
-                                {{ errors }}
-                            </div>
-                        </div>
-
-                        <div class="mt-4 flex items-center">
-                            <button
-                                class="rounded bg-gray-900 px-6 py-2 text-white"
-                            >
-                                Save
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <div class="example">
+        <cropper
+            src="https://images.pexels.com/photos/226746/pexels-photo-226746.jpeg"
+            ref="cropper"
+        />
+        <div class="button-wrapper">
+            <span class="button" @click="cropImage">Crop image</span>
         </div>
     </div>
 </template>
@@ -47,6 +16,8 @@ import { useForm } from "@inertiajs/inertia-vue3";
 import { processSlotOutlet } from "@vue/compiler-core";
 import ImageCompressor from "vue-image-compressor";
 import base64toblob from "base64toblob";
+import { Cropper } from "vue-advanced-cropper";
+import "vue-advanced-cropper/dist/style.css";
 export default {
     props: {
         user: Array,
@@ -59,11 +30,11 @@ export default {
     components: {
         Label,
         ImageCompressor,
+        Cropper,
     },
     data() {
         return {
             url: null,
-            img: "",
             scale: 99,
             quality: 60,
             changeQuality: true,
@@ -75,6 +46,13 @@ export default {
             reader: {},
             imgSrc: "",
             canvas: null,
+            coordinates: {
+                width: 0,
+                height: 0,
+                left: 0,
+                top: 0,
+            },
+            image: null,
         };
     },
     setup(props) {
@@ -85,6 +63,13 @@ export default {
         return { form };
     },
     methods: {
+        onChangeCrops({ coordinates, canvas }) {
+            this.coordinates = coordinates;
+            // You able to do different manipulations at a canvas
+            // but there we just get a cropped image, that can be used
+            // as src for <img/> to preview result
+            this.image = canvas.toDataURL();
+        },
         submit() {
             this.form.image = this.redraw();
             if (this.form.image) {
@@ -270,3 +255,41 @@ export default {
     },
 };
 </script>
+<style scoped>
+.example-cropper {
+    border: solid 1px #eee;
+    min-height: 300px;
+    width: 100%;
+    height: 85vh;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 17px;
+}
+
+.button {
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    background: #35b392;
+    cursor: pointer;
+    transition: background 0.5s;
+    font-family: Open Sans, Arial;
+    margin: 0 10px;
+}
+
+.button:hover {
+    background: #38d890;
+}
+
+.button input {
+    display: none;
+}
+.cropper {
+    height: 600px;
+    width: 600px;
+    background: #ddd;
+}
+</style>

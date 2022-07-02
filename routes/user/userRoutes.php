@@ -6,6 +6,13 @@ use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
+use Inertia\Inertia;
+//test photo
+Route::get('/test', function(){
+     return Inertia::render('Crop.vue');
+});
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])
         ->get('/users/index', [UserController::class, 'index'])->name('users.index');

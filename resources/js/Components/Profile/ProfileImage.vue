@@ -11,8 +11,11 @@
         <div
             class="align-center min-h-40 flex max-h-96 justify-center overflow-hidden"
         >
-            <!-- src="images/background_images/nab_raj_roshyara.JPG" -->
-            <!-- {{ user.profile_bg_photo_path }} -->
+            <!-- Here is to show uploaded background image
+            **1: <div v-if:  show the updloaded image if it is given
+            **2: <div v-else: Show the background.jpg if the image is not updated.
+
+             -->
             <div
                 v-if="this.isImageValid(user.profile_bg_photo_path)"
                 class="min-w-full"
@@ -54,6 +57,9 @@
                 </svg>
             </div>
         </div>
+        <!-- Here is profile icon .
+            ** this will display only if icon is given
+             -->
         <div
             v-if="isImageValid(user.profile_icon_photo_path)"
             class="absolute bottom-0 z-10 mr-2"
@@ -94,6 +100,10 @@
                 />
             </svg>
         </div>
+        <!--
+            **The follwoing div is to upload the background image
+
+        -->
         <div
             v-show="isLoggedIn"
             class="absolute bottom-0 z-10 h-full w-full translate-y-0 rounded bg-blue-100"
@@ -148,7 +158,7 @@
             </div> -->
             </div>
         </div>
-        <!-- Upload back groud  -->
+        <!-- Upload backgroud  -->
         <image-upload
             v-if="uploadBackground"
             image_type="profile"
