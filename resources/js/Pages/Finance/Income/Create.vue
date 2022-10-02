@@ -122,7 +122,7 @@
                     <jet-input
                         id="membership_fee"
                         type="decimal"
-                        class="mt-1 block w-full"
+                        class="mt-1 block w-full border border-blue-100"
                         v-model="form.membership_fee"
                         required
                     />
@@ -133,9 +133,124 @@
                     <jet-input
                         id="nomination_fee"
                         type="decimal"
-                        class="mt-1 block w-full"
+                        class="mt-1 block w-full border border-blue-100"
                         v-model="form.nomination_fee"
                         required
+                    />
+                </div>
+                <!-- sponser fee  -->
+                <div class="mt-4">
+                    <jet-label for="sponser_fee" value="Sponser Fee" />
+                    <jet-input
+                        id="sponser_fee"
+                        type="decimal"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.sponser_fee"
+                        required
+                    />
+                </div>
+                <!-- sponser fee  -->
+                <div class="mt-4">
+                    <jet-label for="sponser_fee" value="Sponser Fee" />
+                    <jet-input
+                        id="sponser_fee"
+                        type="decimal"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.sponser_fee"
+                        required
+                    />
+                </div>
+                <!-- sponser fee  -->
+                <div class="mt-4">
+                    <jet-label for="donation" value="Donation" />
+                    <jet-input
+                        id="donation"
+                        type="decimal"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.donation"
+                    />
+                </div>
+
+                <!-- Levy -->
+                <div class="mt-4">
+                    <jet-label for="levy" value="Levy" />
+                    <jet-input
+                        id="levy"
+                        type="levy"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.levy"
+                    />
+                </div>
+
+                <div class="mt-4">
+                    <jet-label
+                        for="event_contribution"
+                        value="Event contribution"
+                    />
+                    <jet-input
+                        id="event_contribution"
+                        type="event_contribution"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.event_contribution"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label
+                        for="interest_income"
+                        value="Income from Interest"
+                    />
+                    <jet-input
+                        id="interest_income"
+                        type="interest_income"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.interest_income"
+                    />
+                </div>
+
+                <div class="mt-4">
+                    <jet-label for="event_income" value="Event sale" />
+                    <jet-input
+                        id="event_income"
+                        type="event_income"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.event_income"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label
+                        for="business_income"
+                        value="Income from Business"
+                    />
+                    <jet-input
+                        id="business_income"
+                        type="business_income"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.business_income"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label
+                        for="deligate_contribution"
+                        value="Contribution form the deligates"
+                    />
+                    <jet-input
+                        id="deligate_contribution"
+                        type="deligate_contribution"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.deligate_contribution"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="other_incomes" value="Other incomes" />
+                    <jet-input
+                        id="other_incomes"
+                        type="other_incomes"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.other_incomes"
                     />
                 </div>
 
