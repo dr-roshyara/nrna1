@@ -7,13 +7,25 @@
                 class="relative"
             >
             </nrna-header>
-            <navigation class="md:hidden"></navigation>
+            <navigation class="md:hidden"> </navigation>
         </div>
 
         <!-- middle  -->
-        <section class="mt-48 sm:mt-20">
-            <slot class="min-h-screen flex-grow overflow-hidden"> </slot>
+        <section class="mt-48 min-h-screen flex-grow overflow-hidden sm:mt-20">
+            <!-- <slot class="min-h-screen flex-grow overflow-hidden"> </slot> -->
+            <div
+                class="flex flex-row p-2 sm:flex-row sm:justify-between md:px-4"
+            >
+                <div class="hidden sm:block md:w-1/4">
+                    <left-bar></left-bar>
+                </div>
+                <slot class="flex-1 md:w-1/2"></slot>
+                <div class="hidden sm:block md:w-1/4">
+                    <right-bar></right-bar>
+                </div>
+            </div>
         </section>
+
         <!-- footer  -->
         <nrna-footer class="px-2"> </nrna-footer>
     </div>
@@ -23,6 +35,9 @@ import NrnaHeader from "@/Jetstream/NrnaHeader";
 import profileHeader from "@/Jetstream/ProfileHeader";
 import NrnaFooter from "@/Jetstream/NrnaFooter";
 import Navigation from "@/Components/Header/Navigation.vue";
+import RightBar from "@/components/Discussion/RightBar.vue";
+import LeftBar from "@/components/Discussion/LeftBar.vue";
+
 export default {
     props: {
         image2: String,
@@ -40,6 +55,8 @@ export default {
         profileHeader,
         NrnaFooter,
         Navigation,
+        LeftBar,
+        RightBar,
     },
 };
 </script>

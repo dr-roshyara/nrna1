@@ -5,7 +5,7 @@
             <p
                 class="my-2 mx-auto p-2 text-center text-2xl font-bold text-gray-900"
             >
-                Income Formula
+                Expenditure Formula
             </p>
             <form @submit.prevent="submit">
                 <!-- here starts the region selection  -->
@@ -128,17 +128,6 @@
                         required
                     />
                 </div>
-                <!-- next -->
-                <div class="mt-4">
-                    <jet-label for="nomination_fee" value="Nomination Fee" />
-                    <jet-input
-                        id="nomination_fee"
-                        type="decimal"
-                        class="mt-1 block w-full border border-blue-100"
-                        v-model="form.nomination_fee"
-                        required
-                    />
-                </div>
                 <!-- sponser fee  -->
                 <div class="mt-4">
                     <jet-label for="sponser_fee" value="Sponser Fee" />
@@ -147,6 +136,17 @@
                         type="decimal"
                         class="mt-1 block w-full border border-blue-100"
                         v-model="form.sponser_fee"
+                        required
+                    />
+                </div>
+                <!-- next -->
+                <div class="mt-4">
+                    <jet-label for="deligate_fee" value="Deligate Fee" />
+                    <jet-input
+                        id="deligate_fee"
+                        type="decimal"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.deligate_fee"
                         required
                     />
                 </div>
@@ -161,109 +161,229 @@
                     />
                 </div>
 
-                <!-- Levy -->
+                <!-- salaray -->
                 <div class="mt-4">
-                    <jet-label for="levy" value="Levy" />
+                    <jet-label for="salaray" value="Salaray" />
                     <jet-input
-                        id="levy"
-                        type="levy"
+                        id="salaray"
+                        type="salaray"
                         class="mt-1 block w-full border border-blue-100"
-                        v-model="form.levy"
+                        v-model="form.salaray"
                     />
                 </div>
 
                 <!-- next  -->
                 <div class="mt-4">
-                    <jet-label
-                        for="interest_income"
-                        value="Income from Interest"
-                    />
+                    <jet-label for="rent" value="Rent" />
                     <jet-input
-                        id="interest_income"
-                        type="interest_income"
+                        id="rent"
+                        type="rent"
                         class="mt-1 block w-full border border-blue-100"
-                        v-model="form.interest_income"
+                        v-model="form.rent"
                     />
                 </div>
                 <!-- next  -->
                 <div class="mt-4">
-                    <jet-label for="event_fee" value="Event Fee" />
+                    <jet-label for="event_cost" value="Event Cost" />
                     <jet-input
-                        id="event_fee"
-                        type="event_fee"
+                        id="event_cost"
+                        type="event_cost"
                         class="mt-1 block w-full border border-blue-100"
-                        v-model="form.event_fee"
+                        v-model="form.event_cost"
                     />
                 </div>
                 <!-- // -->
                 <div class="mt-4">
-                    <jet-label
-                        for="event_contribution"
-                        value="Event contribution"
-                    />
+                    <jet-label for="software" value="Software" />
                     <jet-input
-                        id="event_contribution"
-                        type="event_contribution"
+                        id="software"
+                        type="software"
                         class="mt-1 block w-full border border-blue-100"
-                        v-model="form.event_contribution"
+                        v-model="form.software"
                     />
                 </div>
 
                 <!-- // -->
                 <div class="mt-4">
-                    <jet-label for="event_income" value="Event sale" />
+                    <jet-label for="communication" value="Communication" />
                     <jet-input
-                        id="event_income"
-                        type="event_income"
+                        id="communication"
+                        type="communication"
                         class="mt-1 block w-full border border-blue-100"
-                        v-model="form.event_income"
+                        v-model="form.communication"
                     />
                 </div>
                 <!-- next   -->
                 <div class="mt-4">
-                    <jet-label for="deligate_fee" value="Deligate fee" />
+                    <jet-label for="office_cost" value="Office cost" />
                     <jet-input
-                        id="deligate_fee"
-                        type="deligate_fee"
+                        id="office_cost"
+                        type="office_cost"
                         class="mt-1 block w-full border border-blue-100"
-                        v-model="form.deligate_fee"
+                        v-model="form.office_cost"
+                    />
+                </div>
+
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="postage" value="Postage" />
+                    <jet-input
+                        id="postage"
+                        type="postage"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.postage"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="bank_charge" value="Bank charge" />
+                    <jet-input
+                        id="bank_charge"
+                        type="bank_charge"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.bank_charge"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="election_cost" value="Election cost" />
+                    <jet-input
+                        id="election_cost"
+                        type="election_cost"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.election_cost"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="equipment" value="Equipment cost" />
+                    <jet-input
+                        id="equipment"
+                        type="equipment"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.equipment"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="vechicle" value="Vechicle cost" />
+                    <jet-input
+                        id="vechicle"
+                        type="vechicle"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.vechicle"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="website" value="Website cost" />
+                    <jet-input
+                        id="website"
+                        type="website"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.website"
                     />
                 </div>
 
                 <!-- next  -->
                 <div class="mt-4">
                     <jet-label
-                        for="deligate_contribution"
-                        value="Deligate contribution"
+                        for="consulting_charge"
+                        value="Consulting charge"
                     />
                     <jet-input
-                        id="deligate_contribution"
-                        type="deligate_contribution"
+                        id="consulting_charge"
+                        type="consulting_charge"
                         class="mt-1 block w-full border border-blue-100"
-                        v-model="form.deligate_contribution"
+                        v-model="form.consulting_charge"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="training_chrage" value="Training charge" />
+                    <jet-input
+                        id="training_chrage"
+                        type="training_chrage"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.training_chrage"
                     />
                 </div>
                 <!-- next  -->
                 <div class="mt-4">
                     <jet-label
-                        for="business_income"
-                        value="Income from Business"
+                        for="insurance_charge"
+                        value="Insurance charge"
                     />
                     <jet-input
-                        id="business_income"
-                        type="business_income"
+                        id="insurance_charge"
+                        type="insurance_charge"
                         class="mt-1 block w-full border border-blue-100"
-                        v-model="form.business_income"
+                        v-model="form.insurance_charge"
+                    />
+                </div>
+
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label
+                        for="guest_invitation"
+                        value="Guest invitation cost"
+                    />
+                    <jet-input
+                        id="guest_invitation"
+                        type="guest_invitation"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.guest_invitation"
+                    />
+                </div>
+
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="tax_charge" value="Tax charges" />
+                    <jet-input
+                        id="tax_charge"
+                        type="tax_charge"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.tax_charge"
                     />
                 </div>
                 <!-- next  -->
                 <div class="mt-4">
-                    <jet-label for="other_incomes" value="Other incomes" />
+                    <jet-label for="drink" value="Drinks" />
                     <jet-input
-                        id="other_incomes"
-                        type="other_incomes"
+                        id="drink"
+                        type="drink"
                         class="mt-1 block w-full border border-blue-100"
-                        v-model="form.other_incomes"
+                        v-model="form.drink"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="food" value="Food" />
+                    <jet-input
+                        id="food"
+                        type="food"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.food"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="investment" value="Investment" />
+                    <jet-input
+                        id="investment"
+                        type="investment"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.investment"
+                    />
+                </div>
+                <!-- next  -->
+                <div class="mt-4">
+                    <jet-label for="other_expense" value="Other expenses" />
+                    <jet-input
+                        id="other_expense"
+                        type="other_expense"
+                        class="mt-1 block w-full border border-blue-100"
+                        v-model="form.other_expense"
                     />
                 </div>
 
@@ -311,25 +431,37 @@ export default {
                 period_from: "",
                 period_to: "",
                 membership_fee: 0.0,
-                nomination_fee: 0.0,
                 deligate_fee: 0.0,
                 sponser_fee: 0.0,
                 donation: 0.0,
-                levy: 0.0,
-                interest_income: 0.0,
-                event_fee: 0.0,
-                event_contribution: 0.0,
-                event_income: 0.0,
-                business_income: 0.0,
-                deligate_contribution: 0.0,
-                other_incomes: 0.0,
+                salary: 0.0,
+                rent: 0.0,
+                software: 0.0,
+                communication: 0.0,
+                office_cost: 0.0,
+                postage: 0.0,
+                bank_charge: 0.0,
+                election_cost: 0.0,
+                equipment: 0.0,
+                vechicle: 0.0,
+                website: 0.0,
+                consulting_charge: 0.0,
+                training_charge: 0.0,
+                insurance_charge: 0.0,
+                guest_invitation: 0.0,
+                tax_charge: 0.0,
+                drink: 0.0,
+                food: 0.0,
+                event_cost: 0.0,
+                investment: 0.0,
+                other_expense: 0.0,
             }),
         };
     },
 
     methods: {
         submit() {
-            this.form.post(this.route("finance.income.store"), {
+            this.form.post(this.route("finance.outcome.store"), {
                 onFinish: () => this.form.reset(),
             });
         },

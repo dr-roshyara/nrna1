@@ -24,11 +24,13 @@ class CreateIncomeTable extends Migration
             $table->float('sponser_fee')->nullable();
             $table->float('donation')->nullable();
             $table->float('levy')->nullable();
-            $table->float('event_contribution')->nullable();
+            $table->float('event_fee')->nullable();
             $table->float('event_income')->nullable();
+            $table->float('event_contribution')->nullable();
+            $table->float('deligate_fee')->nullable();
+            $table->float('deligate_contribution')->nullable();
             $table->float('interest_income')->nullable();
             $table->float('business_income')->nullable();
-            $table->float('deligate_contribution')->nullable();
             $table->float('other_incomes')->nullable();
 
 

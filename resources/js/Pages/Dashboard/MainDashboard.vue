@@ -1,5 +1,15 @@
 <template>
     <social-layout>
+        <div class="flex-1 md:w-1/2">
+            <timeline :user="$page.props.user"> </timeline>
+            <openions
+                openionRoute="/openions"
+                :user="$page.props.user"
+                :authUser="authUser"
+                class="mb-2"
+            ></openions>
+        </div>
+        <!--
         <div
             class="flex min-h-screen flex-row p-2 sm:flex-row sm:justify-between md:px-4"
         >
@@ -18,7 +28,7 @@
             <div class="hidden sm:block md:w-1/4">
                 <right-bar></right-bar>
             </div>
-        </div>
+        </div> -->
         <!-- <join-network></join-network>4 -->
     </social-layout>
 </template>

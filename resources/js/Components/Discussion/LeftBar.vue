@@ -55,7 +55,7 @@
                     <!-- {{ $props.user }} -->
                     <jet-nav-link
                         :href="
-                            route('user.show', {
+                            route('finance.index', {
                                 profile: $page.props.user.user_id,
                             })
                         "
