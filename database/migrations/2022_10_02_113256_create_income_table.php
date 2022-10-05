@@ -15,6 +15,7 @@ class CreateIncomeTable extends Migration
     {
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('country');
             $table->string('committee_name');
             $table->string('period_from');

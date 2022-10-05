@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 class OutcomeController extends Controller
 {
     /**
@@ -30,7 +31,32 @@ class OutcomeController extends Controller
         return Inertia::render('Finance/Outcome/Create');
 
     }
+     public function submit(Request $request){
+        // dd("tets");
+        //make validation
+        $validator = Validator::make($request->all(), [
+            'country' => ['required', 'string', 'max:255'],
+            'committee_name' => ['required', 'string', 'max:255'],
+            'period_from' => ['required'],
+            'period_from' => ['required'],
+              ]);
 
+
+        $validator->validate();
+        $request->session()->put('outcome', $request->all());
+        return redirect()->route('finance.outcome.verify');
+        // dd( $request->all());
+        //end
+    }
+
+    //verify
+    public function verify(){
+        $outcome =request()->session()->get('outcome');
+        return Inertia::render('Finance/Outcome/Verify',[
+            'outcome' =>$outcome
+        ]);
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -40,159 +66,162 @@ class OutcomeController extends Controller
     public function store(Request $request)
     {
 
-        Validator::make($request->all(), [
-            'country' => ['required', 'string', 'max:255'],
-            'committee_name' => ['required', 'string', 'max:255'],
-            'period_from' => ['required'],
-            'period_from' => ['required'],
-              ])->validate();
-
+        // Validator::make($request->all(), [
+        //     'country' => ['required', 'string', 'max:255'],
+        //     'committee_name' => ['required', 'string', 'max:255'],
+        //     'period_from' => ['required'],
+        //     'period_from' => ['required'],
+        //       ])->validate();
+        $outcomeInfo = $request->session()->get('outcome');
+        // $request->session()->forget('outcome');
+        // dd($outcomeInfo);
         $outcome =  new Outcome ();
-        $outcome->country        = $request['country'];
-        $outcome->committee_name =$request['committee_name'];
-        $outcome->period_from    =$request['period_from'];
-        $outcome->period_to      =$request['period_to'];
-        if(isset($request['membership_fee'])){
-            $outcome->membership_fee =(float)$request['membership_fee'];
+        $outcome->user_id =auth()->user()->id;
+        $outcome->country        = $outcomeInfo['country'];
+        $outcome->committee_name =$outcomeInfo['committee_name'];
+        $outcome->period_from    =$outcomeInfo['period_from'];
+        $outcome->period_to      =$outcomeInfo['period_to'];
+        if(isset($outcomeInfo['membership_fee'])){
+            $outcome->membership_fee =(float)$outcomeInfo['membership_fee'];
 
         }
 
         //
-        if(isset($request['sponser_fee'])){
-            $outcome->sponser_fee =(float)$request['sponser_fee'];
+        if(isset($outcomeInfo['sponser_fee'])){
+            $outcome->sponser_fee =(float)$outcomeInfo['sponser_fee'];
 
         }
 
         //
-        if(isset($request['deligate_fee'])){
-            $outcome->deligate_fee =(float)$request['deligate_fee'];
+        if(isset($outcomeInfo['deligate_fee'])){
+            $outcome->deligate_fee =(float)$outcomeInfo['deligate_fee'];
 
         }
 
         //
-        if(isset($request['donation'])){
-            $outcome->donation =(float)$request['donation'];
+        if(isset($outcomeInfo['donation'])){
+            $outcome->donation =(float)$outcomeInfo['donation'];
 
         }
         //
-        if(isset($request['event_fee'])){
-            $outcome->event_fee =(float)$request['event_fee'];
+        if(isset($outcomeInfo['event_fee'])){
+            $outcome->event_fee =(float)$outcomeInfo['event_fee'];
 
         }
         //
-        if(isset($request['salary'])){
-            $outcome->salary =(float)$request['salary'];
+        if(isset($outcomeInfo['salary'])){
+            $outcome->salary =(float)$outcomeInfo['salary'];
 
         }
         //
-        if(isset($request['rent'])){
-            $outcome->rent =(float)$request['rent'];
+        if(isset($outcomeInfo['rent'])){
+            $outcome->rent =(float)$outcomeInfo['rent'];
 
         }
         //
-        if(isset($request['software'])){
-            $outcome->software =(float)$request['software'];
+        if(isset($outcomeInfo['software'])){
+            $outcome->software =(float)$outcomeInfo['software'];
 
         }
         //
-        if(isset($request['communication'])){
-            $outcome->communication =(float)$request['communication'];
+        if(isset($outcomeInfo['communication'])){
+            $outcome->communication =(float)$outcomeInfo['communication'];
 
         }
         //
-        if(isset($request['office_cost'])){
-            $outcome->office_cost =(float)$request['office_cost'];
+        if(isset($outcomeInfo['office_cost'])){
+            $outcome->office_cost =(float)$outcomeInfo['office_cost'];
 
         }
         //
-        if(isset($request['postage'])){
-            $outcome->postage =(float)$request['postage'];
+        if(isset($outcomeInfo['postage'])){
+            $outcome->postage =(float)$outcomeInfo['postage'];
 
         }
         //next
-        if(isset($request['bank_charge'])){
-            $outcome->bank_charge =(float)$request['bank_charge'];
+        if(isset($outcomeInfo['bank_charge'])){
+            $outcome->bank_charge =(float)$outcomeInfo['bank_charge'];
 
         }
         //next
-        if(isset($request['election_cost'])){
-            $outcome->election_cost =(float)$request['election_cost'];
+        if(isset($outcomeInfo['election_cost'])){
+            $outcome->election_cost =(float)$outcomeInfo['election_cost'];
 
         }
         //equipment
-        if(isset($request['equipment'])){
-            $outcome->equipment =(float)$request['equipment'];
+        if(isset($outcomeInfo['equipment'])){
+            $outcome->equipment =(float)$outcomeInfo['equipment'];
 
         }
         //vechicle
-        if(isset($request['vechicle'])){
-            $outcome->vechicle =(float)$request['vechicle'];
+        if(isset($outcomeInfo['vechicle'])){
+            $outcome->vechicle =(float)$outcomeInfo['vechicle'];
 
         }
         //website
-        if(isset($request['website'])){
-            $outcome->website =(float)$request['website'];
+        if(isset($outcomeInfo['website'])){
+            $outcome->website =(float)$outcomeInfo['website'];
 
         }
         //consulting_charge
-        if(isset($request['consulting_charge'])){
-            $outcome->consulting_charge =(float)$request['consulting_charge'];
+        if(isset($outcomeInfo['consulting_charge'])){
+            $outcome->consulting_charge =(float)$outcomeInfo['consulting_charge'];
 
         }
         //training_charge
-        if(isset($request['training_charge'])){
-            $outcome->training_charge =(float)$request['training_charge'];
+        if(isset($outcomeInfo['training_charge'])){
+            $outcome->training_charge =(float)$outcomeInfo['training_charge'];
 
         }
         //insurance_charge
-        if(isset($request['insurance_charge'])){
-            $outcome->insurance_charge =(float)$request['insurance_charge'];
+        if(isset($outcomeInfo['insurance_charge'])){
+            $outcome->insurance_charge =(float)$outcomeInfo['insurance_charge'];
 
         }
         //guest_invitation
-        if(isset($request['guest_invitation'])){
-            $outcome->guest_invitation =(float)$request['guest_invitation'];
+        if(isset($outcomeInfo['guest_invitation'])){
+            $outcome->guest_invitation =(float)$outcomeInfo['guest_invitation'];
 
         }
         //tax_charge
-        if(isset($request['tax_charge'])){
-            $outcome->tax_charge =(float)$request['tax_charge'];
+        if(isset($outcomeInfo['tax_charge'])){
+            $outcome->tax_charge =(float)$outcomeInfo['tax_charge'];
 
         }
         //drink
-        if(isset($request['drink'])){
-            $outcome->drink =(float)$request['drink'];
+        if(isset($outcomeInfo['drink'])){
+            $outcome->drink =(float)$outcomeInfo['drink'];
 
         }
         //food
-        if(isset($request['food'])){
-            $outcome->food =(float)$request['food'];
+        if(isset($outcomeInfo['food'])){
+            $outcome->food =(float)$outcomeInfo['food'];
 
         }
         //investment
-        if(isset($request['investment'])){
-            $outcome->investment =(float)$request['investment'];
+        if(isset($outcomeInfo['investment'])){
+            $outcome->investment =(float)$outcomeInfo['investment'];
 
         }
         //investment
-        if(isset($request['other_expense'])){
-            $outcome->other_expense =(float)$request['other_expense'];
+        if(isset($outcomeInfo['other_expense'])){
+            $outcome->other_expense =(float)$outcomeInfo['other_expense'];
 
         }
         //website
-        if(isset($request['website'])){
-            $outcome->website =(float)$request['website'];
+        if(isset($outcomeInfo['website'])){
+            $outcome->website =(float)$outcomeInfo['website'];
 
         }
 
 
 
 
-        // var_dump($request->all());
+        // var_dump($outcomeInfo->all());
         //dd($outcome);
 
         $outcome->save();
-
+        $request->session()->forget('outcome');
        return redirect(route('finance.thankyou'));
 
         // dd($outcome);

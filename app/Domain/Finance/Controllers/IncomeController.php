@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 class IncomeController extends Controller
 {
     /**
@@ -31,6 +32,31 @@ class IncomeController extends Controller
         return Inertia::render('Finance/Income/Create');
 
     }
+    public function submit(Request $request){
+        //make validation
+        $validator = Validator::make($request->all(), [
+            'country' => ['required', 'string', 'max:255'],
+            'committee_name' => ['required', 'string', 'max:255'],
+            'period_from' => ['required'],
+            'period_from' => ['required'],
+              ]);
+
+
+        $validator->validate();
+        $request->session()->put('income', $request->all());
+        return redirect()->route('finance.income.verify');
+
+        //end
+    }
+
+    //verify
+    public function verify(){
+        $income =request()->session()->get('income');
+        return Inertia::render('Finance/Income/Verify',[
+            'income' =>$income
+        ]);
+
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -41,87 +67,91 @@ class IncomeController extends Controller
     public function store(Request $request)
     {
 
-        Validator::make($request->all(), [
-            'country' => ['required', 'string', 'max:255'],
-            'committee_name' => ['required', 'string', 'max:255'],
-            'period_from' => ['required'],
-            'period_from' => ['required'],
-              ])->validate();
+        // Validator::make($request->all(), [
+        //     'country' => ['required', 'string', 'max:255'],
+        //     'committee_name' => ['required', 'string', 'max:255'],
+        //     'period_from' => ['required'],
+        //     'period_from' => ['required'],
+        //       ])->validate();
 
         // dd($request->all());
+        $incomeInfo = $request->session()->get('income');
+        $request->session()->forget('income');
+        // dd($incomeInfo);
         $income =  new Income ();
-        $income->country        = $request['country'];
-        $income->committee_name =$request['committee_name'];
-        $income->period_from    =$request['period_from'];
-        $income->period_to      =$request['period_to'];
-        if(isset($request['membership_fee'])){
-            $income->membership_fee =(float)$request['membership_fee'];
+        $income->user_id =Auth::user()->id;
+        $income->country        = $incomeInfo['country'];
+        $income->committee_name =$incomeInfo['committee_name'];
+        $income->period_from    =$incomeInfo['period_from'];
+        $income->period_to      =$incomeInfo['period_to'];
+        if(isset($incomeInfo['membership_fee'])){
+            $income->membership_fee =(float)$incomeInfo['membership_fee'];
 
         }
 
-        if(isset($request['nomination_fee'])){
-            $income->nomination_fee =(float)$request['nomination_fee'];
+        if(isset($incomeInfo['nomination_fee'])){
+            $income->nomination_fee =(float)$incomeInfo['nomination_fee'];
 
         }
         //
-        if(isset($request['sponser_fee'])){
-            $income->sponser_fee =(float)$request['sponser_fee'];
-
-        }
-
-        //
-        if(isset($request['deligate_fee'])){
-            $income->deligate_fee =(float)$request['deligate_fee'];
+        if(isset($incomeInfo['sponser_fee'])){
+            $income->sponser_fee =(float)$incomeInfo['sponser_fee'];
 
         }
 
         //
-        if(isset($request['donation'])){
-            $income->donation =(float)$request['donation'];
+        if(isset($incomeInfo['deligate_fee'])){
+            $income->deligate_fee =(float)$incomeInfo['deligate_fee'];
+
+        }
+
+        //
+        if(isset($incomeInfo['donation'])){
+            $income->donation =(float)$incomeInfo['donation'];
 
         }
         //
-        if(isset($request['levy'])){
-            $income->levy =(float)$request['levy'];
+        if(isset($incomeInfo['levy'])){
+            $income->levy =(float)$incomeInfo['levy'];
 
         }
         //
-        if(isset($request['event_fee'])){
-            $income->event_fee =(float)$request['event_fee'];
+        if(isset($incomeInfo['event_fee'])){
+            $income->event_fee =(float)$incomeInfo['event_fee'];
 
         }
         //
-        if(isset($request['event_contribution'])){
-            $income->event_contribution =(float)$request['event_contribution'];
+        if(isset($incomeInfo['event_contribution'])){
+            $income->event_contribution =(float)$incomeInfo['event_contribution'];
 
         }
         //
-        if(isset($request['event_income'])){
-            $income->event_income =(float)$request['event_income'];
+        if(isset($incomeInfo['event_income'])){
+            $income->event_income =(float)$incomeInfo['event_income'];
 
         }
         //
-        if(isset($request['interest_income'])){
-            $income->interest_income =(float)$request['interest_income'];
+        if(isset($incomeInfo['interest_income'])){
+            $income->interest_income =(float)$incomeInfo['interest_income'];
 
         }
         //
-        if(isset($request['business_income'])){
-            $income->business_income =(float)$request['business_income'];
+        if(isset($incomeInfo['business_income'])){
+            $income->business_income =(float)$incomeInfo['business_income'];
 
         }
         //
-        if(isset($request['deligate_contribution'])){
-            $income->deligate_contribution =(float)$request['deligate_contribution'];
+        if(isset($incomeInfo['deligate_contribution'])){
+            $income->deligate_contribution =(float)$incomeInfo['deligate_contribution'];
 
         }
                 //
-        if(isset($request['other_incomes'])){
-            $income->other_incomes =(float)$request['other_incomes'];
+        if(isset($incomeInfo['other_incomes'])){
+            $income->other_incomes =(float)$incomeInfo['other_incomes'];
 
         }
 
-        // var_dump($request->all());
+
         // dd($income);
 
         $income->save();

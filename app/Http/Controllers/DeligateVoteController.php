@@ -15,14 +15,14 @@ use Illuminate\Routing\Redirector;
 
 class DeligateVoteController extends Controller
 {
-    
-    public $deligatevote ; 
+
+    public $deligatevote ;
     public $has_voted;
-    public $in_code ; 
+    public $in_code ;
     public $out_code;
     public $user_id;
     public $member_keys;
-    
+
     public function __construct(){
         $this->member_keys =array(
             "member1_id",
@@ -58,9 +58,9 @@ class DeligateVoteController extends Controller
             "member32_id",
             "member33_id",
             "member34_id",
-            "member35_id");    
+            "member35_id");
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -78,12 +78,12 @@ class DeligateVoteController extends Controller
      */
     public function create()
     {
-        $candidacies = DB::table('deligate_candidacies')->get();     
+        $candidacies = DB::table('deligate_candidacies')->get();
         // $query =DeligateCandidacy::query();
-        // $candidacies =$query->paginate(50); 
+        // $candidacies =$query->paginate(50);
         $can_vote_now   =auth()->user()->can_vote_now;
-        $has_voted      = $code->has_voted;  
-        // $has_voted      =false;       
+        $has_voted      = $code->has_voted;
+        // $has_voted      =false;
         $btemp          = $can_vote_now && !$has_voted;
         $lcc             =auth()->user()->lcc;
         // $lcc             ="Berlin";
@@ -95,23 +95,23 @@ class DeligateVoteController extends Controller
             return (404);
         }
         if($has_voted){
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
+                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;">
                 You have already voted! Please check your deligatevote </div>';
                 abort(404);
             return (404);
-            } 
-        
-    if($btemp){   
+            }
+
+    if($btemp){
         return Inertia::render('DeligateVote/CreateDeligateVote', [
                 "candidacies" =>$candidacies,
                 'user_name'=>auth()->user()->name,
                 'user_id'=>auth()->user()->id,
-                'user_lcc'=>$lcc 
-                
-            ]); 
+                'user_lcc'=>$lcc
+
+            ]);
         }else{
             return redirect()->route('deligatevote.show');
-        } 
+        }
         //    {name: "Hari Bahadur", photo: "test1.png",  post: ["President", "अद्यक्ष"], id:"hari", checked: false, disabled: false },
 
     }
@@ -135,43 +135,43 @@ class DeligateVoteController extends Controller
         if($this->in_code==$this->out_code & !$this->has_voted)
         {
             /**
-             *Here Everything is checked . you save the deligatevote. 
+             *Here Everything is checked . you save the deligatevote.
              * One can't come here easly
              * He must be authnicated user ;
-             * the code must be true 
-             * He has not voted before 
+             * the code must be true
+             * He has not voted before
              */
-            //get deligatevote from session 
+            //get deligatevote from session
             $input_data = $request->session()->get('deligatevote');
         //    dd($input_data);
 
-            //no_vote option is saved in 19 
-            
-             $this->save_vote($input_data);   
-        
-          
+            //no_vote option is saved in 19
+
+             $this->save_vote($input_data);
+
+
 
         }else{
             if($this->has_voted){
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
+                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;">
                 You have already voted! Please check your deligatevote </div>';
                 abort(404);
 
              }else{
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
+                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;">
                 Your code can not be verified </div>';
                 abort(404);
              }
-        } 
-           
-       
-   
-       
+        }
+
+
+
+
         // auth()->user()->save();
         $request->session()->forget('deligatevote');
-         return redirect()->route('deligatevote.show'); 
+         return redirect()->route('deligatevote.show');
 
-       
+
     }
 
     /**
@@ -188,27 +188,27 @@ class DeligateVoteController extends Controller
         $deligateVote  =User::find($this->user_id)->deligatevote;
         // $deligatevote  =['no_vote_option'=>1];
         if($deligateVote){
-     
+
 
              $deligates =$this->prepare_deligate_vote($deligateVote);
-            
-             
-            //  dd($conformation_code); 
+
+
+            //  dd($conformation_code);
             //    $vote_id =$deligateVote;
 
             return Inertia::render('DeligateVote/ShowDeligateVote', [
                 //    "presidents" => $presidents,
                 //    "vicepresidents" => $vicepresidents,
                     'deligatevote' =>$deligates,
-                    'name'=>auth()->user()->name 
-                    
+                    'name'=>auth()->user()->name
+
             ]);
 
         }else{
 
             abort(404);
         }
-        
+
     }
 
     /**
@@ -248,60 +248,60 @@ class DeligateVoteController extends Controller
     Public function  first_submission (Request $request){
         //
        $validator =  Validator::make(request()->all(), [
-                   'user_id' =>['required'],                    
+                   'user_id' =>['required'],
                ]);
        $user_id            =request('user_id');
        $has_voted          =auth()->user()->has_voted;
        $has_voted          =false;
-       $nothing_selected   =request('nothing_selected'); 
+       $nothing_selected   =request('nothing_selected');
        $agree_button        =request('agree_button');
-       
+
        // dd($nothing_selected);
-       //first check if at least one check box selected 
+       //first check if at least one check box selected
        $btemp = $this->at_least_one_vote_casted();
 
        if(!$agree_button){
            $validator->after(function ($validator) {
-                 $validator->errors()->add('Without_Agreement: ', " You must agree the voting terms and conditions.!");              
+                 $validator->errors()->add('Without_Agreement: ', " You must agree the voting terms and conditions.!");
            });
-       }    
+       }
        if(!$btemp){
            $validator->after(function ($validator) {
-                 $validator->errors()->add('Nothing_Slected: ',"You must either select at least one deligate or use your right to reject all deligates!");              
+                 $validator->errors()->add('Nothing_Slected: ',"You must either select at least one deligate or use your right to reject all deligates!");
            });
-       }    
-               
+       }
+
        if($user_id !=auth()->user()->id)
        {
-                            
+
            $validator->after(function ($validator) {
-                 $validator->errors()->add('Longin_User: ',"Login usser is different than you!");              
+                 $validator->errors()->add('Longin_User: ',"Login usser is different than you!");
            });
-       } 
-       //      
+       }
+       //
        if($has_voted)
        {
-       
-           return redirect()->route('deligatevote.show');       
+
+           return redirect()->route('deligatevote.show');
            $validator->after(function ($validator) {
                  $validator->errors()->add('deligatevote: ',
-                 'You have already Voted. Thank you! Please check your deligatevote!');              
+                 'You have already Voted. Thank you! Please check your deligatevote!');
            });
            //run validation which will redirect on failure
        }
-       $validator->validate($request);  
+       $validator->validate($request);
     //    dd($request);
 
         /**
-         *Here you come only if  the user votes for the first time 
-         * 
+         *Here you come only if  the user votes for the first time
+         *
           */
 
           $deligatevote = request()->all();
-       
+
        //    $request->session()->put('deligatevote', $deligatevote);
           $candi_vec =[];
-          array_push($candi_vec, request('no_vote_option'));          
+          array_push($candi_vec, request('no_vote_option'));
           array_push($candi_vec,  $this->get_candidate('member'));
         //    dd($candi_vec);
              $request->session()->put('deligatevote', $candi_vec);
@@ -311,41 +311,41 @@ class DeligateVoteController extends Controller
            return redirect()->route('deligatevote.verfiy');
 
        /****
-        * Now save the code and show directly 
+        * Now save the code and show directly
         */
        $input_data = $candi_vec;
        $this->user_id    =auth()->user()->id;
         //    dd($input_data);
-           //no_vote option is saved in 19 
-            $no_vote_option  =$input_data[19];   
-           if($no_vote_option) { //check if voter has given no_vote  option 
-               // Go for no deligatevote option 
-               $deligatevote                   =new deligatevote; 
+           //no_vote option is saved in 19
+            $no_vote_option  =$input_data[19];
+           if($no_vote_option) { //check if voter has given no_vote  option
+               // Go for no deligatevote option
+               $deligatevote                   =new deligatevote;
                $deligatevote->no_vote_option   =1;
-               $deligatevote->user_id          =$this->user_id;  
-               $deligatevote->save();        
+               $deligatevote->user_id          =$this->user_id;
+               $deligatevote->save();
 
          }else{
             /**
              * Here you save the deligatevote finally :
              * G
-             */ 
+             */
                $deligatevote                = new DeligateVote;
                $deligatevote->user_id       = $this->user_id;
                $this->save_vote($input_data);
-              
-           }    
+
+           }
            //save the deligatevote and save the user has voted
-           return redirect()->route('deligatevote.show'); 
+           return redirect()->route('deligatevote.show');
     }
 
-   // helper functions 
+   // helper functions
    public function at_least_one_vote_casted(){
-   
-    $btemp = false; 
+
+    $btemp = false;
     $btemp =request('no_vote_option');
     $btemp =$btemp | sizeof(request('member'))>0;
-  
+
 
 
     return $btemp;
@@ -355,16 +355,16 @@ public function get_candidate($key){
      $submit_vec =request($key);
     if(sizeof($submit_vec)>0)
     {
-            
+
             // dd($submit_vec);
             for($i=0; $i<sizeof($submit_vec); ++$i){
                 //    var_dump($submit_vec[$i] );
                 $_candi                      = DB::table('deligate_candidacies')->where([
-                ['nrna_id', '=',  $submit_vec[$i] ], 
+                ['nrna_id', '=',  $submit_vec[$i] ],
                 // ['post_id',        '=',  $_postid]
                 ])->get()->first();
 
-                        // dd($_candi); 
+                        // dd($_candi);
                    $myvec = array(
                             // 'post_name' =>"Deligate Member",
                             'user_id'     =>$_candi->user_id,
@@ -372,14 +372,14 @@ public function get_candidate($key){
                             'nrna_id'     =>$_candi->nrna_id,
                             'name'         => $_candi->name
                     );
-                    
-                array_push($_candivec,   $myvec);         
-                
+
+                array_push($_candivec,   $myvec);
+
             }
 
         }
-        
-   return $_candivec; 
+
+   return $_candivec;
 }
 public function verify(){
    $deligatevote = request()->session()->get('deligatevote');
@@ -391,26 +391,26 @@ public function verify(){
              'deligatevote' =>$deligatevote,
              'name'=>auth()->user()->name,
              'nrna_id'=>auth()->user()->nrna_id,
-             'state' =>auth()->user()->state              
+             'state' =>auth()->user()->state
     ]);
-               
- 
+
+
 }
 public function verify_vote_submit()
 {
     $validator =  Validator::make(request()->all(), [
-                'voting_code' =>['required'],                    
+                'voting_code' =>['required'],
             ]);
-  
+
      $validator->after(function ($validator) {
             /**
-             * Here we chan change the code condition 
-             * mention where the code is saved 
-             * call the code 
-             * compare the code 
-             * If code is not equal ,then reject   
-             *  */  
-       
+             * Here we chan change the code condition
+             * mention where the code is saved
+             * call the code
+             * compare the code
+             * If code is not equal ,then reject
+             *  */
+
               $voting_code =request('voting_code');
             if ($this->in_code!= $this->out_code ) {
                 //add custom error to the Validator
@@ -420,7 +420,7 @@ public function verify_vote_submit()
                 //add custom error to the Validator
                 $validator->errors()->add('Your_Vote',"You have already voted! Please check your deligatevote");
             }
-            
+
 
         });
 
@@ -428,36 +428,36 @@ public function verify_vote_submit()
     // $validator->validate($request);
     return $validator;
 }
-//save all candidates 
+//save all candidates
 public function save_vote($input_data){
-            
-            //  dd($input_data);
-             $no_vote_option                 =$input_data[0];   
-             $deligatevote                   =new DeligateVote; 
-            //this id is not of the person who has been selected but of the person who has voted
-             $deligatevote->user_id              =$this->user_id; 
-             $deligatevote->conformation_code    =$this->in_code; 
 
-            if($no_vote_option) { //check if voter has given no_vote  option 
-                // Go for no deligatevote option 
+            //  dd($input_data);
+             $no_vote_option                 =$input_data[0];
+             $deligatevote                   =new DeligateVote;
+            //this id is not of the person who has been selected but of the person who has voted
+             $deligatevote->user_id              =$this->user_id;
+             $deligatevote->conformation_code    =$this->in_code;
+
+            if($no_vote_option) { //check if voter has given no_vote  option
+                // Go for no deligatevote option
                 $deligatevote->no_vote_option   =1;
-                $deligatevote->save();        
+                $deligatevote->save();
 
              }else{
-    
+
              $post                =$input_data[1];
-            //save the votes 
+            //save the votes
              for ($i=0; $i<sizeof($this->member_keys); $i++){
-                             // save the first vote 
+                             // save the first vote
                 if(sizeof($post)>$i){
                     $_key ="member". ($i+1) ."_id";
                     // dd($_key);
                     $deligatevote[$_key]  =$post[$i]["nrna_id"];
-                }     
+                }
 
 
-            }    
-            
+            }
+
 
 
          }
@@ -465,41 +465,41 @@ public function save_vote($input_data){
         $user =Auth::user();
         $user->has_voted=1;
         $user->save();
-     
+
 }
-//deligatevote thanks 
+//deligatevote thanks
 public function thankyou(){
        return Inertia::render('Thankyou/Thankyou', [
              'deligatevote' =>$deligatevote,
             //  'name'=>auth()->user()->name,
             //  'nrna_id'=>auth()->user()->nrna_id,
-            //  'state' =>auth()->user()->state              
+            //  'state' =>auth()->user()->state
     ]);
-               
+
 }
-// 
+//
 /**
- *  Call deligate vote and prepare name, nrna id  etc 
- * 
+ *  Call deligate vote and prepare name, nrna id  etc
+ *
  */
     public function prepare_deligate_vote (DeligateVote $deligateVote){
         $deligates =[];
-        $deli_vote  =[];      
+        $deli_vote  =[];
         $no_vote_option =$deligateVote->no_vote_option;
         $conformation_code =$deligateVote->conformation_code;
-        $deligates['conformation_code'] =$conformation_code;          
-        $deligates['no_vote_option'] =$no_vote_option;         
-        // $deligates['no_vote_option']     =1;          
+        $deligates['conformation_code'] =$conformation_code;
+        $deligates['no_vote_option'] =$no_vote_option;
+        // $deligates['no_vote_option']     =1;
         // $_nsize  = sizeof($deligateVote->getOriginal());
-        //deligate 1 
+        //deligate 1
         // dd($deligateVote);
-           //save the votes 
+           //save the votes
         for ($i=0; $i<sizeof($this->member_keys); $i++){
             $_key ="member". ($i+1) ."_id";
-           
-             $deli =$this->find_name_nrnaId($deligateVote->getOriginal($_key));        
-             if($deli){ array_push($deli_vote, $deli); }     
-        }  
+
+             $deli =$this->find_name_nrnaId($deligateVote->getOriginal($_key));
+             if($deli){ array_push($deli_vote, $deli); }
+        }
 
          $deligates['deligatevote'] =$deli_vote;
 
@@ -517,23 +517,23 @@ public function thankyou(){
             'nrna_id'=>$_user->nrna_id,
             'lcc'=>$_user->lcc,
             'state'=>$_user->state
-                       
+
         );
-    
+
     }
-  
+
 }
- 
+
 /**
- * count the result 
+ * count the result
  */
 
     public function count(){
         $_deliVote   = DB::table('deligate_votes')->get();
-    
-        //  echo gettype($_deliVote[0]); 
+
+        //  echo gettype($_deliVote[0]);
         //  dd(array_intersect_key((array)$_deliVote[0],(array)$_deliVote[0]));
-        
+
         // dd($_deliVote);
         $result =[];
 
@@ -543,11 +543,11 @@ public function thankyou(){
                 // dd($_subObject);
             foreach ($_subObject as $id=>$value) {
                 /**
-                 * if the key lies in pre_names then sum up 
+                 * if the key lies in pre_names then sum up
                  */
                     // dd($id);
-                if( in_array($id, $this->member_keys) ){ 
-                        // dd($id);  
+                if( in_array($id, $this->member_keys) ){
+                        // dd($id);
                     $result_key =array_keys($result);
                     if(in_array($value, $result_key)){
                         $result[$value]+=1;
@@ -555,22 +555,22 @@ public function thankyou(){
                         if($value!=""){
                                 $result[$value]=1;
                         }
-                        
-                    }    
-                    
+
+                    }
+
 
                 }
 
             }
-            
+
     }
         return($result);
 
   }
 
   /**
-   * 
-   * Get the result final way 
+   *
+   * Get the result final way
    */
     public function result (){
         $result             =$this->count();
@@ -586,11 +586,11 @@ public function thankyou(){
 
 
 
-     
+
         return Inertia::render('DeligateVote/ResultDeligateVote', [
             'deligate_result' =>$deligate_result,
-           
-        ]);     
+
+        ]);
 
     }
 

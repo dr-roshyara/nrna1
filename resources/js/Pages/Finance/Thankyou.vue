@@ -1,5 +1,5 @@
 <template>
-    <nrna-layout>
+    <social-layout>
         <div class="flex min-h-screen flex-col items-center">
             <div class="mx-auto py-2 text-gray-800">
                 <p class="mx-auto text-xl text-red-500">
@@ -10,17 +10,17 @@
                         If you would like to see more feature of the website,
                         please click on the register button.
                     </p>
-                    <JetButton class="">
+                    <!-- <JetButton class="">
                         <a :href="route('register')"> Register</a>
-                    </JetButton>
+                    </JetButton> -->
                 </div>
             </div>
         </div>
-    </nrna-layout>
+    </social-layout>
 </template>
 
 <script>
-import NrnaLayout from "@/Layouts/LoginLayout";
+import SocialLayout from "@/Layouts/SocialLayout";
 import JetAuthenticationCard from "@/Jetstream/AuthenticationCard";
 import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
 import JetButton from "@/Jetstream/Button";
@@ -31,7 +31,7 @@ import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
     components: {
-        NrnaLayout,
+        SocialLayout,
         JetButton,
     },
 };

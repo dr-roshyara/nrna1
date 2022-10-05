@@ -1,6 +1,6 @@
 <template>
-    <nrna-layout>
-        <jet-authentication-card class="mb-6">
+    <social-layout>
+        <div class="mx-auto flex max-w-md flex-col sm:w-full">
             <jet-validation-errors class="mb-4" />
             <p
                 class="my-2 mx-auto p-2 text-center text-2xl font-bold text-gray-900"
@@ -277,12 +277,12 @@
                     </jet-button>
                 </div>
             </form>
-        </jet-authentication-card>
-    </nrna-layout>
+        </div>
+    </social-layout>
 </template>
 
 <script>
-import NrnaLayout from "@/Layouts/LoginLayout";
+import SocialLayout from "@/Layouts/SocialLayout";
 import JetAuthenticationCard from "@/Jetstream/AuthenticationCard";
 import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
 import JetButton from "@/Jetstream/Button";
@@ -293,7 +293,7 @@ import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
     components: {
-        NrnaLayout,
+        SocialLayout,
         JetAuthenticationCard,
         JetAuthenticationCardLogo,
         JetButton,
@@ -329,7 +329,7 @@ export default {
 
     methods: {
         submit() {
-            this.form.post(this.route("finance.income.store"), {
+            this.form.post(this.route("finance.income.submit"), {
                 onFinish: () => this.form.reset(),
             });
         },
