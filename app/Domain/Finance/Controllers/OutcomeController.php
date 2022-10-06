@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Domain\Finance\Notifications\FinanceNotification;
+use Illuminate\Support\Facades\Notification;
 class OutcomeController extends Controller
 {
     /**
@@ -221,7 +223,22 @@ class OutcomeController extends Controller
         //dd($outcome);
 
         $outcome->save();
-        $request->session()->forget('outcome');
+
+        //send notification to treasurer
+       $user       =auth()->user();
+       $emails     =[
+            'mathematikboy@yahoo.com',
+            // 'treasurer@nrna.org',
+            'treasurer2@nrna.org',
+            // 'treasurer3@nrna.org',
+             $user->email,
+            ];
+
+        $type       ="Outcome";
+        Notification::route('mail', $emails)
+        ->notify(new FinanceNotification($user,$outcomeInfo, $type));
+          $request->session()->forget('outcome');
+
        return redirect(route('finance.thankyou'));
 
         // dd($outcome);

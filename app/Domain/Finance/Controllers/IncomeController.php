@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+// use \App\Domain\Finance\Services\FinanceNotificationService as EmailNotice;
+use App\Domain\Finance\Notifications\FinanceNotification;
+use Illuminate\Support\Facades\Notification;
 class IncomeController extends Controller
 {
     /**
@@ -76,7 +79,6 @@ class IncomeController extends Controller
 
         // dd($request->all());
         $incomeInfo = $request->session()->get('income');
-        $request->session()->forget('income');
         // dd($incomeInfo);
         $income =  new Income ();
         $income->user_id =Auth::user()->id;
@@ -151,10 +153,26 @@ class IncomeController extends Controller
 
         }
 
-
         // dd($income);
 
         $income->save();
+        //send notification to treasurer
+        // $notificationService   =new EmailNotice();
+        // $notificationService->notify_finance($income);
+        $user       =auth()->user();
+        $emails     =[
+            'mathematikboy@yahoo.com',
+            // 'treasurer@nrna.org',
+            'treasurer2@nrna.org',
+            // 'treasurer3@nrna.org',
+            $user->email,
+            ];
+
+        $type       ="Income";
+        Notification::route('mail', $emails)
+        ->notify(new FinanceNotification($user,$incomeInfo, $type));
+
+         $request->session()->forget('income');
 
         return redirect(route('finance.thankyou'));
         // dd($income);
