@@ -227,7 +227,7 @@ class OutcomeController extends Controller
         //send notification to treasurer
        $user       =auth()->user();
        $emails     =[
-            'mathematikboy@yahoo.com',
+            // 'mathematikboy@yahoo.com',
             // 'treasurer@nrna.org',
             'treasurer2@nrna.org',
             // 'treasurer3@nrna.org',

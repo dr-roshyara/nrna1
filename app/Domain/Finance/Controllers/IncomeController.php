@@ -161,7 +161,7 @@ class IncomeController extends Controller
         // $notificationService->notify_finance($income);
         $user       =auth()->user();
         $emails     =[
-            'mathematikboy@yahoo.com',
+            // 'mathematikboy@yahoo.com',
             // 'treasurer@nrna.org',
             'treasurer2@nrna.org',
             // 'treasurer3@nrna.org',
@@ -171,6 +171,7 @@ class IncomeController extends Controller
         $type       ="Income";
         Notification::route('mail', $emails)
         ->notify(new FinanceNotification($user,$incomeInfo, $type));
+
 
          $request->session()->forget('income');
 

