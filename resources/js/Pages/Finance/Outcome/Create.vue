@@ -163,12 +163,12 @@
 
                 <!-- salaray -->
                 <div class="mt-4">
-                    <jet-label for="salaray" value="Salaray" />
+                    <jet-label for="salary" value="Salary" />
                     <jet-input
-                        id="salaray"
-                        type="salaray"
+                        id="salary"
+                        type="salary"
                         class="mt-1 block w-full border border-blue-100"
-                        v-model="form.salaray"
+                        v-model="form.salary"
                     />
                 </div>
 
@@ -300,12 +300,12 @@
                 </div>
                 <!-- next  -->
                 <div class="mt-4">
-                    <jet-label for="training_chrage" value="Training charge" />
+                    <jet-label for="training_charge" value="Training charge" />
                     <jet-input
-                        id="training_chrage"
-                        type="training_chrage"
+                        id="training_charge"
+                        type="training_charge"
                         class="mt-1 block w-full border border-blue-100"
-                        v-model="form.training_chrage"
+                        v-model="form.training_charge"
                     />
                 </div>
                 <!-- next  -->
