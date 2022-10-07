@@ -26,13 +26,22 @@
                         छलफल
                     </jet-nav-link>
                 </div>
-                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <!-- <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <jet-nav-link
                         :href="route('activities')"
                         :active="route().current('activities')"
                     >
                         Activities<br />
                         गतिबिधीहरू
+                    </jet-nav-link>
+                </div> -->
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <jet-nav-link
+                        :href="route('finance.index')"
+                        :active="route().current('finance.index')"
+                    >
+                        Finance<br />
+                        आर्थिक
                     </jet-nav-link>
                 </div>
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -44,6 +53,21 @@
                         आइटी कक्षा
                     </jet-nav-link>
                 </div>
+                <!-- Economic activities  -->
+                <!-- <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <jet-nav-link
+                        :href="
+                            route('finance.index', {
+                                profile: $page.props.user.user_id,
+                            })
+                        "
+                    >
+                        <span class="p-2 px-4 text-lg font-bold">
+                            Financial Description<br />
+                            आर्थिक बिवरण
+                        </span>
+                    </jet-nav-link>
+                </div> -->
                 <!-- logout  -->
                 <!-- Authentication -->
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
