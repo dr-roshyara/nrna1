@@ -1,11 +1,13 @@
 <template>
     <nav class="border-b border-gray-100 bg-white">
         <!-- Primary Navigation Menu -->
-        <div class="w-full p-2 sm:hidden sm:px-6 md:max-w-7xl lg:px-8">
+        <div
+            class="flex w-full flex-row p-2 sm:hidden sm:px-6 md:max-w-7xl lg:px-8"
+        >
             <div
-                class="grid h-16 grid-cols-4 justify-between justify-items-center"
+                class="mb-2 grid h-16 grid-cols-4 grid-rows-2 justify-between justify-items-center gap-y-2 pb-4"
             >
-                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="mb-2 space-x-8 pb-2 sm:-my-px sm:ml-10 sm:flex">
                     <jet-nav-link
                         :href="
                             route('user.show', {
@@ -17,7 +19,7 @@
                         बिवरण
                     </jet-nav-link>
                 </div>
-                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="mb-2 space-x-8 pb-2 sm:-my-px sm:ml-10 sm:flex">
                     <jet-nav-link
                         :href="route('dashboard')"
                         :active="route().current('dashboard')"
@@ -44,13 +46,13 @@
                         आर्थिक
                     </jet-nav-link>
                 </div>
-                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="space-x-8 text-sm sm:-my-px sm:ml-10 sm:flex">
                     <jet-nav-link
                         :href="route('student.create')"
                         :active="route().current('student.create')"
                     >
-                        IT Class<br />
-                        आइटी कक्षा
+                        Skill Share<br />
+                        ज्ञान-सिप साटासाट
                     </jet-nav-link>
                 </div>
                 <!-- Economic activities  -->
@@ -70,7 +72,7 @@
                 </div> -->
                 <!-- logout  -->
                 <!-- Authentication -->
-                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="mb-1 py-2 sm:ml-10 sm:flex">
                     <form @submit.prevent="logout">
                         <jet-dropdown-link as="button">
                             Log Out
