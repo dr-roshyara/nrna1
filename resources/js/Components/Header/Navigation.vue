@@ -1,8 +1,7 @@
 <template>
     <nav class="border-b border-gray-100 bg-white">
         <!-- Primary Navigation Menu -->
-        <div
-            class="flex w-full flex-row p-2 sm:hidden sm:px-6 md:max-w-7xl lg:px-8"
+        <div  v-if="$page.props.user" class="flex w-full flex-row p-2 sm:hidden sm:px-6 md:max-w-7xl lg:px-8"
         >
             <div
                 class="mb-2 grid h-16 grid-cols-4 grid-rows-2 justify-between justify-items-center gap-y-2 pb-4"
@@ -408,7 +407,7 @@
             </div>
 
             <!-- Responsive Settings Options -->
-            <div class="border-t border-gray-200 pt-4 pb-1">
+            <div v-if="$page.props.user" class="border-t border-gray-200 pt-4 pb-1">
                 <div class="flex items-center px-4">
                     <div
                         v-if="$page.props.jetstream.managesProfilePhotos"
