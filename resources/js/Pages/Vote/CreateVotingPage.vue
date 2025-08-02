@@ -43,6 +43,12 @@
                     </div>
                 </div>
 
+                <!-- Vote Summary -->
+                <vote-summary 
+                    :national-selections="form.national_selected_candidates"
+                    :regional-selections="form.regional_selected_candidates"
+                />
+
                 <!-- Agreement Section -->
                 <div class="flex flex-col items-center mx-auto my-4 w-full py-4" 
                      style="background-color: #F1F1F1;"> 
@@ -94,6 +100,7 @@
 import AppLayout from '@/Layouts/AppLayout'
 import NrnaLayout from '@/Layouts/NrnaLayout'    
 import CreateVotingform from '@/Pages/Vote/CreateVotingform.vue'
+import VoteSummary from '@/Pages/Vote/VoteSummary.vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 import JetValidationErrors from '@/Jetstream/ValidationErrors'
 
@@ -104,6 +111,7 @@ export default {
         AppLayout,
         NrnaLayout,
         CreateVotingform,
+        VoteSummary,
         JetValidationErrors
     },
     
@@ -138,6 +146,7 @@ export default {
             user_id: props.user_id,
             national_selected_candidates: [],
             regional_selected_candidates: [],
+            no_vote_option: false, // Global no vote option (if needed)
             agree_button: false,
         });
 
@@ -150,14 +159,43 @@ export default {
         }
 
         function submit() {
+            // Validate that user has made some selections or explicitly chosen no vote for all positions
+            const hasNationalSelections = form.national_selected_candidates.some(selection => 
+                selection && (selection.candidates.length > 0 || selection.no_vote)
+            );
+            
+            const hasRegionalSelections = form.regional_selected_candidates.some(selection => 
+                selection && (selection.candidates.length > 0 || selection.no_vote)
+            );
+
+            // Check if user has made at least one choice (either candidate selection or no vote)
+            const totalNationalPosts = props.national_posts?.length || 0;
+            const totalRegionalPosts = props.regional_posts?.length || 0;
+            const totalPosts = totalNationalPosts + totalRegionalPosts;
+            
+            const nationalChoices = form.national_selected_candidates.filter(selection => 
+                selection && (selection.candidates.length > 0 || selection.no_vote)
+            ).length;
+            
+            const regionalChoices = form.regional_selected_candidates.filter(selection => 
+                selection && (selection.candidates.length > 0 || selection.no_vote)
+            ).length;
+            
+            const totalChoices = nationalChoices + regionalChoices;
+            
+            if (totalChoices === 0) {
+                alert('Please make at least one selection or choose "No Vote" for the positions.');
+                return;
+            }
+            
             form.post('/vote/submit');
         }
 
-        function handleCandidateSelection(type, postIndex, selectedCandidates) {
+        function handleCandidateSelection(type, postIndex, selectionData) {
             if (type === 'national') {
-                form.national_selected_candidates[postIndex] = selectedCandidates;
+                form.national_selected_candidates[postIndex] = selectionData;
             } else if (type === 'regional') {
-                form.regional_selected_candidates[postIndex] = selectedCandidates;
+                form.regional_selected_candidates[postIndex] = selectionData;
             }
         }
 

@@ -17,11 +17,33 @@
                 चुन्नुहोस्।
             </label>   
         </div>
+
+        <!-- No Vote Option -->
+        <div class="flex flex-col items-center mx-auto my-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
+            <div class="flex flex-col text-center mb-3">
+                <label class="text-lg font-semibold text-gray-800">No Vote Option</label>
+                <label class="text-sm text-gray-600">मतदान नगर्ने विकल्प</label>
+            </div>
+            <div class="flex items-center">
+                <input 
+                    type="checkbox"
+                    :id="`no_vote_${post.post_id}`"
+                    name="no_vote_option"
+                    v-model="noVoteSelected"
+                    @change="handleNoVoteChange"
+                    class="h-5 w-5 text-red-600 border-2 border-red-400 rounded focus:ring-red-500"
+                />
+                <label :for="`no_vote_${post.post_id}`" class="ml-2 text-sm font-medium text-gray-700">
+                    I choose not to vote for this position / यस पदका लागि मतदान नगर्ने
+                </label>
+            </div>
+        </div>
                    
         <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
             <div v-for="(candidate, candiIndex) in candidatesWithState" 
                  :key="candidate.candidacy_id"  
-                 class="flex flex-col justify-center p-4 mb-2 text-center border border-gray-100 rounded"> 
+                 class="flex flex-col justify-center p-4 mb-2 text-center border border-gray-100 rounded"
+                 :class="{ 'opacity-50': noVoteSelected }"> 
                 
                 <show-candidate 
                     :candidacy_image_path="candidate.image_path_1"
@@ -40,19 +62,29 @@
                         class="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         v-model="selected"
                         @change="updateBoxes()"
-                        :disabled="candidate.disabled"
+                        :disabled="candidate.disabled || noVoteSelected"
                     />
                 </div> 
             </div>
         </div>
         
         <!-- Selection summary -->
-        <div class="mb-4 p-2 text-center mx-auto" v-if="selected.length"> 
-            You have selected 
-            <span class="font-bold text-indigo-600"> 
-                {{ getSelectedNames() }}
-            </span> 
-            as <span class="font-bold text-lg text-gray-900">{{ post.name }}</span> of NRNA!
+        <div class="mb-4 p-2 text-center mx-auto">
+            <div v-if="noVoteSelected" class="text-red-600 font-semibold">
+                You have chosen not to vote for {{ post.name }}
+                <br>
+                <span class="text-sm">तपाईंले {{ post.nepali_name || post.name }} का लागि मतदान नगर्ने रोज्नुभएको छ</span>
+            </div>
+            <div v-else-if="selected.length" class="text-green-600"> 
+                You have selected 
+                <span class="font-bold text-indigo-600"> 
+                    {{ getSelectedNames() }}
+                </span> 
+                as <span class="font-bold text-lg text-gray-900">{{ post.name }}</span> of NRNA!
+            </div>
+            <div v-else class="text-gray-500">
+                No selection made for {{ post.name }}
+            </div>
         </div> 
     </div>                 
 </template>
@@ -82,7 +114,8 @@ export default {
     data() {
         return {
             selected: [],
-            candidatesWithState: []
+            candidatesWithState: [],
+            noVoteSelected: false
         }
     },
     
@@ -114,26 +147,65 @@ export default {
     methods: {
         informSelectedCandidates() {
             // Emit the selected candidate objects, not just IDs
-            const selectedCandidates = this.candidatesWithState.filter(candidate => 
-                this.selected.includes(candidate.candidacy_id)
-            );
+            let selectionData;
             
-            const selectionData = {
-                post_id: this.post.post_id,
-                post_name: this.post.name,
-                required_number: this.post.required_number,
-                candidates: selectedCandidates.map(candidate => ({
-                    candidacy_id: candidate.candidacy_id,
-                    user_id: candidate.user?.user_id || candidate.user?.id,
-                    name: candidate.user?.name,
-                    post_id: candidate.post_id
-                }))
-            };
+            if (this.noVoteSelected) {
+                // When no vote is selected, send a special structure
+                selectionData = {
+                    post_id: this.post.post_id,
+                    post_name: this.post.name,
+                    required_number: this.post.required_number,
+                    no_vote: true,
+                    candidates: []
+                };
+            } else {
+                // Normal candidate selection
+                const selectedCandidates = this.candidatesWithState.filter(candidate => 
+                    this.selected.includes(candidate.candidacy_id)
+                );
+                
+                selectionData = {
+                    post_id: this.post.post_id,
+                    post_name: this.post.name,
+                    required_number: this.post.required_number,
+                    no_vote: false,
+                    candidates: selectedCandidates.map(candidate => ({
+                        candidacy_id: candidate.candidacy_id,
+                        user_id: candidate.user?.user_id || candidate.user?.id,
+                        name: candidate.user?.name,
+                        post_id: candidate.post_id
+                    }))
+                };
+            }
             
             this.$emit('add_selected_candidates', selectionData);
         },
         
+        handleNoVoteChange() {
+            if (this.noVoteSelected) {
+                // Clear all candidate selections when no vote is selected
+                this.selected = [];
+                // Disable all candidate checkboxes
+                this.candidatesWithState.forEach(candidate => {
+                    candidate.disabled = true;
+                });
+            } else {
+                // Re-enable candidate checkboxes when no vote is deselected
+                this.candidatesWithState.forEach(candidate => {
+                    candidate.disabled = false;
+                });
+            }
+            
+            // Inform parent component about the change
+            this.informSelectedCandidates();
+        },
+        
         updateBoxes() {
+            // If no vote is selected, don't allow candidate selection
+            if (this.noVoteSelected) {
+                return;
+            }
+            
             // Re-enable all checkboxes first
             this.candidatesWithState.forEach(candidate => {
                 candidate.disabled = false;
@@ -150,6 +222,10 @@ export default {
         },
         
         getSelectedNames() {
+            if (this.noVoteSelected) {
+                return 'No Vote';
+            }
+            
             const selectedCandidates = this.candidatesWithState.filter(candidate => 
                 this.selected.includes(candidate.candidacy_id)
             );

@@ -198,6 +198,9 @@ class VoteController extends Controller
 
 // Add these updated methods to your VoteController class
 
+// Make sure to add this import at the top of your VoteController file:
+// use Illuminate\Support\Facades\Schema;
+
 /**
  * Render the grouped voting form for an eligible and authenticated user.
  * Access only allowed after passing first submission (via session flag).
@@ -304,7 +307,6 @@ public function cast_vote(Request $request)
         'user_region'    => $auth_user->region,
     ]);
 }
-
 
 
 
