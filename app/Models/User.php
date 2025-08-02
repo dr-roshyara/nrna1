@@ -131,7 +131,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasone(DeligateVote::class);
         // return $this->hasOne(Code::class,  'foreign_key');
         // you can also write $this->hasone('App\Vote')
+  
     }
+    public function candidacies()
+{
+    // If 'post_id' is the foreign key in Candidacy and 'post_id' is the key in Post:
+    return $this->hasMany(\App\Models\Candidacy::class, 'post_id', 'post_id');
+}
 
     /**
      * Each user can have one and only candidacy
@@ -196,5 +202,48 @@ class User extends Authenticatable implements MustVerifyEmail
                 });
             });
         });
+
     }
+
+/**
+ * Reset all voting-related state for this user and their associated voting code.
+ *
+ * Intended for development, QA, or testing purposes only.
+ * Allows a developer to reset a voter's status and related code object for repeated testing of the voting flow.
+ *
+ * Usage (in tinker):
+ *   $user = App\Models\User::find(1);
+ *   $user->resetVotingState();
+ *
+ * @return $this
+ */
+public function resetVotingState()
+{
+    // Reset primary voting flags for the user
+    $this->can_vote_now    = 1;   // Allow voting immediately
+    $this->can_vote        = 1;   // User is eligible to vote
+    $this->has_voted       = 0;   // Mark as NOT having voted
+    $this->has_used_code1  = 0;   // Mark as NOT having used Code-1
+    $this->has_used_code2  = 0;   // Mark as NOT having used Code-2
+    $this->is_voter        = 1;   // Ensure this user is a registered voter
+    $this->code1           = null; // Clear Code-1 (optional, if code is stored here)
+    $this->code2           = null; // Clear Code-2 (optional, if code is stored here)
+    $this->save();
+
+    // Optionally reset any related Code model (if exists via a relationship)
+    // This assumes a one-to-one relationship: User hasOne Code
+    if (method_exists($this, 'code') || $this->relationLoaded('code')) {
+        $code = $this->code;
+        if ($code) {
+            $code->vote_submitted    = 0;    // Mark vote as NOT submitted
+            $code->vote_submitted_at = null; // Clear submission timestamp
+            // Add any additional voting or code state resets as needed here
+            $code->save();
+        }
+    }
+
+    // Return the user instance for chaining or inspection
+    return $this;
+}
+
 }

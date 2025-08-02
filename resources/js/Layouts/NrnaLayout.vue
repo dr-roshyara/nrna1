@@ -2,7 +2,7 @@
     <div class="min-h-screen flex flex-col">
         <nrna-header :canRegister="canRegister" :canLogin="canLogin">
         </nrna-header>
-        <navigation></navigation>
+        <!-- <navigation></navigation> -->
         
         <!-- Main content area (grows to fill space) -->
         <main class="flex-grow">

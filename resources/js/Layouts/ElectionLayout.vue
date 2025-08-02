@@ -1,12 +1,17 @@
 <template>
-    <div class="flex flex-col lg:h-full">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header - sticks to top -->
         <nrna-header :canRegister="canRegister" :canLogin="canLogin">
         </nrna-header>
         <navigation></navigation>
-        <!-- middle  -->
-        <slot class="min-h-screen flex-grow"> </slot>
-        <!-- footer  -->
-        <nrna-footer class="px-4"> </nrna-footer>
+        
+        <!-- Main content - grows to fill space -->
+        <main class="flex-1">
+            <slot></slot>
+        </main>
+        
+        <!-- Footer - sticks to bottom -->
+        <nrna-footer class="px-4"></nrna-footer>
     </div>
 </template>
 <script>

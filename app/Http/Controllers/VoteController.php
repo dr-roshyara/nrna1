@@ -196,18 +196,165 @@ class VoteController extends Controller
   
     }     
 
+// Add these updated methods to your VoteController class
+
+/**
+ * Render the grouped voting form for an eligible and authenticated user.
+ * Access only allowed after passing first submission (via session flag).
+ * Regional/national posts are split for frontend data binding.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Inertia\Response|\Illuminate\Http\RedirectResponse
+ */
+public function cast_vote(Request $request)
+{
+    $auth_user = $request->user();
+    $code      = $auth_user->code;
+
+    // --- Block direct access unless redirected from verify_first_submission ---
+    if (!session('vote_access_granted')) {
+        return redirect()->route('dashboard')
+            ->withErrors(['vote' => 'Direct access to the voting form is not allowed.']);
+    }
+
+    // --- Defense in depth: Repeat all eligibility checks ---
+    if (
+        !$auth_user ||
+        $auth_user->is_voter != 1 ||
+        $auth_user->can_vote_now != 1 ||
+        $auth_user->can_vote != 1 ||
+        $auth_user->has_used_code1 != 1 ||
+        $auth_user->has_used_code2 != 0 ||
+        $auth_user->has_voted == 1
+    ) {
+        return redirect()->route('vote.show')
+            ->withErrors(['vote' => 'You are not permitted to access the voting form.']);
+    }
+
+    // --- Fetch National Posts and Candidates ---
+    $national_posts = QueryBuilder::for(Post::with('candidates.user'))
+        ->where('is_national_wide', 1)
+        ->orderBy('post_id')
+        ->get()
+        ->map(function ($post) {
+            return [
+                'post_id'         => $post->post_id,
+                'name'            => $post->name,
+                'nepali_name'     => $post->nepali_name,
+                'required_number' => $post->required_number,
+                'candidates'      => $post->candidates->map(function ($c) {
+                    return [
+                        'candidacy_id' => $c->candidacy_id,
+                        'user'         => [
+                            'id'      => $c->user->id ?? null,
+                            'user_id' => $c->user->user_id ?? null,
+                            'name'    => $c->user->name ?? '',
+                            'region'  => $c->user->region ?? '',
+                        ],
+                        'post_id'      => $c->post_id,
+                        'image_path_1' => $c->image_path_1,
+                        'candidacy_name' => $c->candidacy_name,
+                        'proposer_name' => $c->proposer_name,
+                        'supporter_name' => $c->supporter_name,
+                    ];
+                })->values(),
+            ];
+        })->values();
+
+    // --- Fetch Regional Posts for this user's region ---
+    $regional_posts = collect();
+    if (!empty($auth_user->region)) {
+        $regional_posts = QueryBuilder::for(Post::with('candidates.user'))
+            ->where('is_national_wide', 0)
+            ->where('state_name', trim($auth_user->region))
+            ->orderBy('post_id')
+            ->get()
+            ->map(function ($post) {
+                return [
+                    'post_id'         => $post->post_id,
+                    'name'            => $post->name,
+                    'nepali_name'     => $post->nepali_name,
+                    'required_number' => $post->required_number,
+                    'candidates'      => $post->candidates->map(function ($c) {
+                        return [
+                            'candidacy_id' => $c->candidacy_id,
+                            'user'         => [
+                                'id'      => $c->user->id ?? null,
+                                'user_id' => $c->user->user_id ?? null,
+                                'name'    => $c->user->name ?? '',
+                                'region'  => $c->user->region ?? '',
+                            ],
+                            'post_id'      => $c->post_id,
+                            'image_path_1' => $c->image_path_1,
+                            'candidacy_name' => $c->candidacy_name,
+                            'proposer_name' => $c->proposer_name,
+                            'supporter_name' => $c->supporter_name,
+                        ];
+                    })->values(),
+                ];
+            })->values();
+    }
+
+    // --- Render the Inertia voting page ---
+    return Inertia::render('Vote/CreateVotingPage', [
+        'national_posts' => $national_posts,
+        'regional_posts' => $regional_posts,
+        'user_name'      => $auth_user->name,
+        'user_id'        => $auth_user->id,
+        'user_region'    => $auth_user->region,
+    ]);
+}
+
+
+
+
+    /**
+ * Handles the very first submission of the vote (after Code-1 check).
+ */
+public function first_submission(Request $request)
+{
+    $auth_user = auth()->user();
+
+    // Get the code model and set as submitted
+    $code = $auth_user->code;
+    $code->vote_submitted    = 1;
+    $code->vote_submitted_at = \Carbon\Carbon::now();
+    $code->save(); // Save the state!
+
+    // Pre-checks (time, code usability, etc.)
+    $pre_check_route = $this->vote_pre_check($code);
+    if ($pre_check_route && $pre_check_route != "") {
+        if ($pre_check_route == '404') {
+            abort(404);
+        }
+        return redirect()->route($pre_check_route);
+    }
+
+    // Run verify_first_submission; this can return a route name or a RedirectResponse
+    $verify_result = $this->verify_first_submission($request, $code, $auth_user);
+
+    if ($verify_result instanceof \Illuminate\Http\RedirectResponse) {
+        return $verify_result; // Redirect back with errors
+    }
+
+    // At this point, $verify_result is a route string: 'vote.cast' or 'vote.show'
+    return redirect()->route($verify_result);
+}
+
+
 
     /***
      * 
      * This is the first submisson of vote 
      * 
      */
-    Public function  first_submission (Request $request){
+    Public function  first_submission_later(Request $request){
        
-        // dd(request()->all());
+        //dd(request()->all());
      
         $auth_user          =auth()->user();
         $return_to           ='';
+        
       
         /***
          * 
@@ -230,7 +377,8 @@ class VoteController extends Controller
           *Check the Submit 
           */
          $this->verify_first_submission($request, $code , $auth_user) ;
-       
+
+         //dd($return_to);
         if($return_to!=""){
             if($return_to=='404'){
                 abort(404);
@@ -268,7 +416,9 @@ class VoteController extends Controller
         
      }
 
-    /**
+    ////////////////////////////////////////////////// 
+    
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -854,7 +1004,8 @@ class VoteController extends Controller
         $code1_used_at   =$code->code1_used_at;
         $voting_time     =$code->voting_time_in_minutes;
         $totalDuration   = $current->diffInMinutes($code1_used_at );
-        
+       //dd($code);
+
        /***
         * if there is no code then return to dashboard 
         * 
@@ -870,7 +1021,7 @@ class VoteController extends Controller
             
        }
         //    dd($code->can_vote_now);  
-       // dd($code->can_vote_now);
+       ($code->can_vote_now);
         if(!$code->can_vote_now){
             return     $return_to ="dashboard";
         }
@@ -885,6 +1036,7 @@ class VoteController extends Controller
             return   $return_to ="code.create";
         }
         //if code 1 is still usable and you havent used it, then use it first.
+        //dd($code);
         if($code->is_code1_usable ){
 
             return   $return_to ="code.create";
@@ -1037,66 +1189,83 @@ class VoteController extends Controller
       return $_message;
     }
 
-    /***
-     * 
-     * @params1 : Code Object 
-     * @return : String  where to redirect.
+    /**
+     * Validate the user's eligibility and status before allowing vote casting.
+     * If any condition fails, redirects back with detailed errors.
+     * If already voted, returns the route to the vote summary page.
+     * If all checks pass, sets a session flag to grant one-time access to the voting form and returns the voting route.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $code
+     * @param  \App\Models\User  $auth_user
+     * @return string|\Illuminate\Http\RedirectResponse
      */
-    public function verify_first_submission(Request $request, &$code, $auth_user ){
-          //
-          $user_id            =$request['user_id'];
-        $validator =  Validator::make(request()->all(), [
-            'user_id' =>['required'],
-            'agree_button'=>['required']                    
-        ]);
-        $has_voted          =$code->has_voted;      
-        $nothing_selected   =request('nothing_selected'); 
-        $agree_button       =request('agree_button');        
-        $return_to          ='';
-          // dd($nothing_selected);
-        //first check if at least one check box selected 
-        // $btemp = $this->at_least_one_vote_casted();
-        // $btemp=true;
-        $validator->after(function ($validator) {
-              
-            $agree_button =request('agree_button');
-          if (!$agree_button ) {
-              //add custom error to the Validator
-              $validator->errors()->add('agree_button',
-              "You have not clicked on Agree Button. 
-              Please click on the agree Button and accept that you  are submitting the vote! 
-               तपाइले एग्री वटनमा क्लीक गरेर भोट गरेको कुरा स्वीकार गर्नु भएन। ");
-          }
-      
-
-      });
-
-       
-                
-        if($user_id !=$auth_user->id)
-        {
-                             
-            $validator->after(function ($validator) {
-                  $validator->errors()->add('Longin_User: ',"Login usser is different than you!");              
-            });
-        } 
-        //      
-        if($has_voted)
-        {
-        
-            $return_to  = 'vote.show';       
-            $validator->after(function ($validator) {
-                  $validator->errors()->add('Vote: ',
-                  'You have already Voted. Thank you! Please check your Vote!');              
-            });
-            //run validation which will redirect on failure
+    public function verify_first_submission(Request $request, &$code, $auth_user)
+    {
+        // Abort if not authenticated (defensive check)
+        if (!$auth_user) {
+            abort(403, 'Not authenticated.');
         }
-        $validator->validate($request);  
-       return  $return_to ;
 
+        // Gather inputs from request
+        $user_id      = $request->input('user_id');
+        $agree_button = $request->input('agree_button');
+        $errors       = [];
+
+        // 1. User must be a registered voter
+        if ($auth_user->is_voter != 1) {
+            $errors['is_voter'] = 'You are not registered as a voter.';
+        }
+
+        // 2. Voting window must be open for this user
+        if ($auth_user->can_vote_now != 1) {
+            $errors['can_vote_now'] = 'Voting is not open for you at this time.';
+        }
+
+        // 3. User must be eligible to vote
+        if ($auth_user->can_vote != 1) {
+            $errors['can_vote'] = 'You are not eligible to vote.';
+        }
+
+        // 4. User must have used Code-1 to reach this step
+        if ($auth_user->has_used_code1 != 1) {
+            $errors['has_used_code1'] = 'You have not used your first voting code yet.';
+        }
+
+        // 5. User must NOT have used Code-2 (should be 0)
+        if ($auth_user->has_used_code2 != 0) {
+            $errors['has_used_code2'] = 'You have already confirmed your vote with Code-2.';
+        }
+
+        // 6. User must NOT have already voted
+        if ($auth_user->has_voted == 1) {
+            // Instead of redirecting back, return the 'vote.show' route for already-voted users
+            return 'vote.show';
+        }
+
+        // 7. Ensure the submitted user ID matches the authenticated user
+        if ((int)$user_id !== (int)$auth_user->id) {
+            $errors['user_id'] = 'Login user does not match form user.';
+        }
+
+        // 8. User must agree before proceeding (checkbox)
+        if (!$agree_button) {
+            $errors['agree_button'] = 'You must agree before proceeding.';
+        }
+
+        // If there are any errors, redirect back to the form with all error messages and old input
+        if (!empty($errors)) {
+            return redirect()->back()->withErrors($errors)->withInput();
+        }
+
+        // Grant one-time session access for the voting form
+        session(['vote_access_granted' => true]);
+
+        // Return the route name to render the voting form
+        return 'vote.cast';
     }
-
-     /***
+    
+    /***
       * 
       * @params1: Code Object 
     *   @returns: time in minutes Integer

@@ -77,7 +77,7 @@ class ImageController extends Controller
 
         //finally return back to the page
         //  return redirect('user.show', ['user_id'=> $user->user_id]);
-         return redirect()->route('user.show', ['profile' => $user->user_id]);
+         return redirect()->route('user.show', ['profile' =>auth()->user()->user_id]);
     }
 
     /**

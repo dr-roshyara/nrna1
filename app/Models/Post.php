@@ -16,4 +16,14 @@ class Post extends Model
         return $this->hasMany(Candidacy::class, 'post_id', 'post_id')
                      ->select(['candidacy_id','user_id', 'post_id','image_path_1']);
     }
+
+     /**
+     * Get all candidacies for this post (each candidacy is a candidate for this post).
+     */
+    public function candidacies()
+    {
+        // post_id is the foreign key in candidacies, post_id is the primary key in posts
+        return $this->hasMany(Candidacy::class, 'post_id', 'post_id')->select([ 'id','candidacy_id','user_id', 'post_id','image_path_1']);
+    }
+
 }

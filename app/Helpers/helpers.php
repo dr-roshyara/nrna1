@@ -109,28 +109,72 @@
             $times_use_cleintIP = $times_ip_used[0]->ipCount;
             // if($times_use_cleintIP>$max_use_clientIP){
             if($times_use_cleintIP >=$max_use_clientIP){
-                $_message['error_message'] ='<div style="margin:auto; color:red;
-                    padding:20px; font-weight:bold; text-align:center;">';
-                    $_message['error_message'] .="<p> There are alerady more than " ;
-                    $_message['error_message'] .=$max_use_clientIP ;
-                    $_message['error_message'] .=" Votes casted from your ip address: ";
-                    $_message['error_message'] .='<br> <span style="font-weight:bold; color: black;"> '
-                    .$clientIP."</span><br>";
-                    $_message['error_message'] .="We are sorry to say that You can not vote
-                    any more using this ip address.</p>";
-                    $_message['error_message'] .="
-                    <p> तपाइको आइपी एड्रेस ".$clientIP. " वाट पहिले नै "
-                    .$max_use_clientIP.
-                    ' पटक भाेट हाली  सकिएको छ। माफ गर्नु होला,  हाम्राे नियम अनुसार एउटा आइपि एड्रेस वाट '
-                    .$max_use_clientIP.
-                    ' भन्दा वढी भोट हाल्न मिल्दैन।  </p>
+                $_message['error_message'] = '
+<div style="
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #fff;
+    border-left: 5px solid #e74c3c;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+">
+    <div style="margin-bottom: 20px;">
+        <svg style="width: 40px; height: 40px; margin-bottom: 10px;" fill="none" stroke="#e74c3c" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+        </svg>
+        <h3 style="color: #e74c3c; font-size: 22px; margin: 10px 0; font-weight: 600;">
+            Voting Limit Exceeded
+        </h3>
+    </div>
 
-                    <p style="margin-top: 4px; color:#1E90FF; font-weight:bold;">
-                        <a href="'.route('dashboard'). '"> Go to the Dashboard | ड्यास वोर्डमा जानलाइ यहाँ क्लिक गर्नुहोस।</a> </p>
-                        </div>
-                    ';
-                $_message['return_to'] ='404';
-                // dd($_message);
+    <div style="color: #333; line-height: 1.6; margin-bottom: 20px;">
+        <p style="margin-bottom: 15px;">
+            There are already more than '.$max_use_clientIP.' votes cast from your IP address:
+            <br>
+            <span style="font-weight: 700; color: #000; background: #f5f5f5; padding: 3px 8px; border-radius: 3px; display: inline-block; margin: 8px 0;">
+                '.$clientIP.'
+            </span>
+            <br>
+            We are sorry to say that you cannot vote any more using this IP address.
+        </p>
+        
+        <p style="
+            margin: 20px 0;
+            padding: 12px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            font-size: 15px;
+            color: #555;
+        ">
+            तपाइको आइपी एड्रेस <strong>'.$clientIP.'</strong> वाट पहिले नै '.$max_use_clientIP.' पटक भोट हाली सकिएको छ। 
+            माफ गर्नु होला, हाम्राे नियम अनुसार एउटा आइपि एड्रेस वाट '.$max_use_clientIP.' भन्दा वढी भोट हाल्न मिल्दैन।
+        </p>
+    </div>
+
+    <div style="margin-top: 25px;">
+        <a href="'.route('dashboard').'" style="
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        " onmouseover="this.style.background=\'#2980b9\';this.style.transform=\'translateY(-2px)\'" 
+        onmouseout="this.style.background=\'#3498db\';this.style.transform=\'translateY(0)\'">
+            <svg style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Go to Dashboard | ड्यासबोर्डमा जानुहोस्
+        </a>
+    </div>
+</div>';
+
+$_message['return_to'] = '404';
 
             }
             return $_message;
