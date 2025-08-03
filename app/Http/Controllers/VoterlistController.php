@@ -42,7 +42,7 @@ class VoterlistController extends Controller
          * 
          */
     
-        $query = User::where('can_vote_now', 1);
+        $query = User::where('is_voter', 1);
         $users = QueryBuilder::for($query)
         ->defaultSort('name')
         ->allowedSorts(['name','nrna_id', "region"])
@@ -57,7 +57,8 @@ class VoterlistController extends Controller
           *return 
           */
         return Inertia::render('Voter/IndexVoter', [
-            'voters'=>$users
+            'voters'=>$users,
+            'isCommitteeMember' => auth()->user()->is_committee_member ?? false,
         ])->table(function (InertiaTable $table) {
             $table->addSearchRows([                
                 'name'              => 'Name',
@@ -75,8 +76,10 @@ class VoterlistController extends Controller
                 'sn'                  => 'S.N.',
                 'use_id'              => 'User ID',
                 'name'                => 'Name',
-                'region'              => 'Region'
-                
+                'region'              => 'Region',
+                'status'              => 'Voting Status',
+                'approved_by'         => 'Approved By',
+                'actions'             => 'Actions'
 
             ]);
         });
@@ -127,12 +130,79 @@ class VoterlistController extends Controller
         return Inertia::render('Voter/IndexVoter', [
           'voters' => $voters,
           'can_send_code'=>$btemp, 
+          'isCommitteeMember' => auth()->user()->is_committee_member ?? false,
           'filters' =>request()->all(['name','nrna_id','field','direction'])  
  
         ]);
     
 
     }
+
+    /**
+     * Approve voter - Set can_vote = 1 and store approver name
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function approveVoter($id)
+    {
+        try {
+            // Check if current user is committee member
+            if (!auth()->user()->is_committee_member) {
+                return back()->withErrors(['error' => 'Unauthorized. Only committee members can approve voters.']);
+            }
+
+            // Find the user
+            $user = User::findOrFail($id);
+
+            // Check if user is a voter
+            if (!$user->is_voter) {
+                return back()->withErrors(['error' => 'User is not registered as a voter.']);
+            }
+
+            // Update can_vote to 1 and set approvedBy with committee member's name
+            $user->update([
+                'can_vote' => 1,
+                'approvedBy' => auth()->user()->name
+            ]);
+
+            return back()->with('success', $user->name . ' has been approved to vote by ' . auth()->user()->name);
+            
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Error approving voter: ' . $e->getMessage()]);
+        }
+    }
+
+    /**
+     * Reject/Suspend voter - Set can_vote = 0 and clear approver
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function rejectVoter($id)
+    {
+        try {
+            // Check if current user is committee member
+            if (!auth()->user()->is_committee_member) {
+                return back()->withErrors(['error' => 'Unauthorized. Only committee members can reject voters.']);
+            }
+
+            // Find the user
+            $user = User::findOrFail($id);
+
+            // Update can_vote to 0 and clear approvedBy
+            $user->update([
+                'can_vote' => 0,
+                'approvedBy' => null
+            ]);
+
+            return back()->with('success', $user->name . ' voting access has been suspended by ' . auth()->user()->name);
+            
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Error suspending voter: ' . $e->getMessage()]);
+        }
+    }
+    
     //ends here 
     /**
      * Show the form for creating a new resource.

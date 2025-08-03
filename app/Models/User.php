@@ -64,6 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'additional_address',
         'nrna_id',
         'can_vote_now',
+        'can_vote',
         'has_voted',
         'has_candidacy',
         'lcc',
@@ -71,7 +72,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'social_id',
         'social_type',
         'google_id',
-        'facebook_id'
+        'facebook_id',
+        'approvedBy', 
 
     ];
 

@@ -20,7 +20,12 @@ Route::middleware(['auth:sanctum', 'verified']) ->get('/election', function(){
 Route::middleware(['auth:sanctum', 'verified'])
         ->get('/voters/index', [VoterlistController::class, 'index'])->name('voters.index');
 
+// ✅ IMPORTANT: Add these exact routes
+Route::middleware(['auth:sanctum', 'verified'])
+        ->post('/voters/{id}/approve', [VoterlistController::class, 'approveVoter'])->name('voters.approve');
 
+Route::middleware(['auth:sanctum', 'verified'])
+        ->post('/voters/{id}/reject', [VoterlistController::class, 'rejectVoter'])->name('voters.reject');        
 /**
  * All candidates
  */
