@@ -35,8 +35,8 @@ import NrnaHeader from "@/Jetstream/NrnaHeader";
 import profileHeader from "@/Jetstream/ProfileHeader";
 import NrnaFooter from "@/Jetstream/NrnaFooter";
 import Navigation from "@/Components/Header/Navigation.vue";
-import RightBar from "@/components/Discussion/RightBar.vue";
-import LeftBar from "@/components/Discussion/LeftBar.vue";
+import RightBar from "@/Components/Discussion/RightBar.vue";
+import LeftBar from "@/Components/Discussion/LeftBar.vue";
 
 export default {
     props: {
