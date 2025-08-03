@@ -58,7 +58,7 @@
 <script>
 import Login from "@/Components/Auth/Login";
 import Dashboard from "@/Pages/Dashboard";
-import JoinNetwork from "General/JoinNetwork.vue";
+import JoinNetwork from "@/Components/General/JoinNetwork.vue";
 import UpcomingEvents from "@/Shared/Events/UpcomingEvents.vue";
 import NrnaLayout from "@/Layouts/LoginLayout";
 export default {
