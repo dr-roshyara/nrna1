@@ -203,7 +203,118 @@ class User extends Authenticatable implements MustVerifyEmail
             });
         });
 
+
     }
+    /**
+ * Get the voter record associated with the user.
+ * 
+ * @return \Illuminate\Database\Eloquent\Relations\HasOne
+ */
+public function voter()
+{
+    return $this->hasOne(Voter::class);
+}
+/**
+ * Get the election committee member record associated with the user.
+ * 
+ * @return \Illuminate\Database\Eloquent\Relations\HasOne
+ */
+public function electionCommitteeMember()
+{
+    return $this->hasOne(ElectionCommitteeMember::class);
+}
+
+
+/**
+ * Check if user is a voter
+ * 
+ * @return bool
+ */
+public function isVoter()
+{
+    return $this->is_voter && $this->voter()->exists();
+}
+/**
+ * Check if user is an election committee member
+ * 
+ * @return bool
+ */
+public function isCommitteeMember()
+{
+    return $this->is_committee_member && $this->electionCommitteeMember()->exists();
+}
+
+/**
+ * Check if user can vote (is voter and approved)
+ * 
+ * @return bool
+ */
+public function canVote()
+{
+    return $this->isVoter() && 
+           $this->voter->can_vote && 
+           $this->voter->is_active;
+}
+
+/**
+ * Check if user has committee permission
+ * 
+ * @param string $permission
+ * @return bool
+ */
+public function hasCommitteePermission($permission)
+{
+    if (!$this->isCommitteeMember()) {
+        return false;
+    }
+    
+    $permissions = $this->electionCommitteeMember->permissions ?? [];
+    return in_array($permission, $permissions);
+}
+/**
+ * Get user's committee role
+ * 
+ * @return string|null
+ */
+public function getCommitteeRole()
+{
+    return $this->electionCommitteeMember?->role;
+}
+
+/**
+ * Scope: Get only voters
+ * 
+ * @param \Illuminate\Database\Eloquent\Builder $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+public function scopeVoters($query)
+{
+    return $query->where('is_voter', true)->whereHas('voter');
+}
+
+/**
+ * Scope: Get only committee members
+ * 
+ * @param \Illuminate\Database\Eloquent\Builder $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+public function scopeCommitteeMembers($query)
+{
+    return $query->where('is_committee_member', true)->whereHas('electionCommitteeMember');
+}
+
+/**
+ * Scope: Get users who can vote
+ * 
+ * @param \Illuminate\Database\Eloquent\Builder $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+public function scopeEligibleVoters($query)
+{
+    return $query->voters()->whereHas('voter', function($q) {
+        $q->where('can_vote', true)->where('is_active', true);
+    });
+}
 
 /**
  * Reset all voting-related state for this user and their associated voting code.
@@ -244,6 +355,8 @@ public function resetVotingState()
 
     // Return the user instance for chaining or inspection
     return $this;
+
 }
+
 
 }
