@@ -83,12 +83,20 @@ Route::middleware(['auth:sanctum', 'verified']) ->get('deligatecandidacy/update'
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevotes/index', [DeligateVoteController::class, 'index'])->name('deligatevote.index');
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/show', [DeligateVoteController::class, 'show'])->name('deligatevote.show');
 
-/**
+// election committe
+    Route::middleware(['auth:sanctum', 'verified'])->get('/election/committee', function () {
+                    return Inertia::render('Election/ElectionCommittee');
+                })
+                ->name('election.committee');
+   
+ /**
  * Deligate Vote Count
  *
  */
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/count', [DeligateVoteController::class, 'count'])->name('deligatevote.count');
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/result', [DeligateVoteController::class, 'result'])->name('deligatevote.result');
+
+
 
 
 //show posts

@@ -1041,6 +1041,7 @@ private function has_valid_selections($selections)
 
      }
     
+  
     /**
      * Display the specified resource.
      *
@@ -1575,70 +1576,55 @@ private function generate_verification_summary($processed_vote_data)
     }
 
     // 
-    public function verify_final_vote(Request $request){
 
-        $this->out_code         = trim($request['voting_code']);
-        // dd($this->out_code);
-        $auth_user              = auth()->user();
-        $this->user_id          = $auth_user->id;      
-        $code                   =$auth_user->code;
-        $selected_candidates    =[];
-        $verify_final_vote  =false;
-   
-             
-        $validator          =$this->verify_code_to_check_vote($code);
-        $validator->validate($request);
-     
-             if (Hash::check($this->out_code, $this->in_code)) {
-                $this->verify_final_vote =true;
-                $str_pos =strpos($this->out_code,"_")+1;
-                $voting_id =(int)substr($this->out_code, $str_pos);
-                // dd($voting_id);
-                $vote  =Vote::find($voting_id);
-                $vote     =(array) json_decode($vote);
-                $arr_keys =array_keys($vote);
-                $key_string ="candidate";
-                foreach($arr_keys as $kstring){
-                    // echo $kstring .", ";
-                    // echo stristr($kstring, $key_string). "\n <br>";
-                    if(stristr($kstring, $key_string)!=false ){
-                        if($vote[$kstring]){
-                            array_push($selected_candidates, $vote[$kstring]);
-                    
-                        }
-                    } 
-                    }
-                // $vote  =DB::table('votes')
-                // -> where('id','=', $voting_id)
-                // ->get();
-                // // dd($vote);
-           
-                // $vote   =$vote;
-            
-            }
-            $final_vote['selected_candidates']  =$selected_candidates;
-            $final_vote['name']                  =$auth_user->name;
-            $final_vote['has_voted']             =$this->has_voted;
-            $final_vote['verify_final_vote'] =$this->verify_final_vote;
-            // dd( $final_vote);
-            $request->session()->put('final_vote', $final_vote);
-            return redirect()->route('vote.show');
-                // ->with([
-                //     'vote'=>$selected_candidates, 
-                //     'name'=>$auth_user->name,
-                //     'has_voted' =>$this->has_voted,
-                //     'verify_final_vote'=> $verify_final_vote
-                // ]); 
-       
-     
-                
-                
+public function verify_final_vote(Request $request)
+{
+    $this->out_code = trim($request['voting_code']);
+    $auth_user = auth()->user();
+    $code = $auth_user->code;
+
+    $validator = $this->verify_code_to_check_vote($code);
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator);
+    }
+
+    $final_vote = [
+        'selected_candidates' => [],
+        'name' => $auth_user->name,
+        'has_voted' => $code->has_voted,
+        'verify_final_vote' => Hash::check($this->out_code, $code->code_for_vote)
+    ];
+
+    if ($final_vote['verify_final_vote']) {
+        $str_pos = strpos($this->out_code, "_") + 1;
+        $voting_id = (int)substr($this->out_code, $str_pos);
+        $vote = Vote::find($voting_id);
         
+        if ($vote) {
+            $vote_data = $vote->toArray();
+            $final_vote['selected_candidates'] = array_filter($vote_data, function($key) {
+                return strpos($key, 'candidate') === 0;
+            }, ARRAY_FILTER_USE_KEY);
+        }
+    }
 
-    } //end of function : final_vote_verify
-    
- 
-    //
+    // Store in multiple ways for redundancy
+    $request->session()->put('final_vote', $final_vote);
+    session(['final_vote' => $final_vote]); // Alternative method
+    $request->session()->save(); // Force immediate save 
+
+    // Also store in database as backup
+    //$code->vote_show_data = json_encode($final_vote);
+    $code->save();
+
+    \Log::debug('Session ID during save:', ['id' => session()->getId()]);
+    \Log::debug('Final vote data saved:', $final_vote);
+
+    return redirect()->route('vote.show')->with([
+        '_final_vote' => $final_vote // Flash data as additional backup
+    ]);
+}
+//
     public function verify_code_to_check_vote($code){
 
         $validator =  Validator::make(request()->all(), [
