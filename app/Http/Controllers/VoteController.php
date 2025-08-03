@@ -2147,6 +2147,7 @@ private function process_vote_selections($vote)
 
 /**
  * Enrich selection data with candidate and post information
+ * Get candidate names from User table through relationship
  * 
  * @param array $selection_data
  * @return array|null
@@ -2172,19 +2173,41 @@ private function enrich_selection_data($selection_data)
             $candidacy_id = $candidate_data['candidacy_id'] ?? null;
             
             if ($candidacy_id) {
-                $candidacy = Candidacy::with('user')->where('candidacy_id', $candidacy_id)->first();
+                // Load candidacy WITH user relationship
+                $candidacy = Candidacy::with('user')
+                    ->where('candidacy_id', $candidacy_id)
+                    ->first();
                 
                 if ($candidacy) {
+                    // Get candidate name from User table through relationship
+                    $candidate_name = $this->getCandidateNameFromCandidacy($candidacy);
+                    
                     $enriched['candidates'][] = [
                         'candidacy_id' => $candidacy->candidacy_id,
-                        'candidacy_name' => $candidacy->candidacy_name,
+                        'candidacy_name' => $candidate_name,  // ✅ FROM USER TABLE
                         'proposer_name' => $candidacy->proposer_name,
                         'supporter_name' => $candidacy->supporter_name,
                         'image_path_1' => $candidacy->image_path_1,
                         'user_info' => [
+                            'id' => $candidacy->user->id ?? null,
                             'name' => $candidacy->user->name ?? 'Unknown',
                             'user_id' => $candidacy->user->user_id ?? 'N/A',
                             'region' => $candidacy->user->region ?? 'N/A',
+                        ]
+                    ];
+                } else {
+                    // Fallback if candidacy not found in database
+                    $enriched['candidates'][] = [
+                        'candidacy_id' => $candidacy_id,
+                        'candidacy_name' => 'Candidate ' . str_replace(['_', '-'], ' ', $candidacy_id),
+                        'proposer_name' => 'Unknown',
+                        'supporter_name' => 'Unknown',
+                        'image_path_1' => '',
+                        'user_info' => [
+                            'id' => null,
+                            'name' => 'Unknown',
+                            'user_id' => 'N/A',
+                            'region' => 'N/A',
                         ]
                     ];
                 }
@@ -2199,9 +2222,56 @@ private function enrich_selection_data($selection_data)
             'error' => $e->getMessage()
         ]);
         
-        return null;
+        // Return basic structure with available data
+        return [
+            'post_id' => $selection_data['post_id'] ?? 'Unknown',
+            'post_name' => $selection_data['post_name'] ?? 'Unknown Position',
+            'post_nepali_name' => $selection_data['post_nepali_name'] ?? '',
+            'no_vote' => $selection_data['no_vote'] ?? false,
+            'candidates' => []
+        ];
     }
 }
+
+/**
+ * Get candidate name from Candidacy model using User relationship
+ * 
+ * @param \App\Models\Candidacy $candidacy
+ * @return string
+ */
+private function getCandidateNameFromCandidacy($candidacy)
+{
+    // Priority 1: Get name from related User
+    if ($candidacy->user && !empty($candidacy->user->name)) {
+        return $candidacy->user->name;
+    }
+    
+    // Priority 2: Construct from first_name + last_name if available
+    if ($candidacy->user && (!empty($candidacy->user->first_name) || !empty($candidacy->user->last_name))) {
+        $fullName = trim(($candidacy->user->first_name ?? '') . ' ' . ($candidacy->user->last_name ?? ''));
+        if (!empty($fullName)) {
+            return $fullName;
+        }
+    }
+    
+    // Priority 3: Use user_name field from candidacy table (backup)
+    if (!empty($candidacy->user_name)) {
+        return $candidacy->user_name;
+    }
+    
+    // Priority 4: Use name field from candidacy table (backup)
+    if (!empty($candidacy->name)) {
+        return $candidacy->name;
+    }
+    
+    // Priority 5: Generate from candidacy_id
+    if (!empty($candidacy->candidacy_id)) {
+        return 'Candidate ' . str_replace(['_', '-'], ' ', $candidacy->candidacy_id);
+    }
+    
+    return 'Unknown Candidate';
+}
+
 
 /**
  * Display the verified vote record

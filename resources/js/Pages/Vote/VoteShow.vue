@@ -177,14 +177,14 @@
                                             <!-- Candidate Image -->
                                             <div class="flex-shrink-0">
                                                 <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-                                                    {{ candidate.candidacy_name ? candidate.candidacy_name.charAt(0).toUpperCase() : 'C' }}
+                                                    {{ getCandidateInitial(candidate) }}
                                                 </div>
                                             </div>
                                             
                                             <!-- Candidate Info -->
                                             <div class="flex-1 min-w-0">
                                                 <h5 class="text-lg font-bold text-gray-900 mb-1">
-                                                    {{ candidate.candidacy_name || 'Unknown Candidate' }}
+                                                    {{ getCandidateName(candidate) }}
                                                 </h5>
                                                 
                                                 <div class="grid md:grid-cols-2 gap-4 text-sm">
@@ -317,6 +317,56 @@ export default {
         
         goToDashboard() {
             this.$inertia.visit(route('dashboard'));
+        },
+
+        /**
+         * Get the best available name for a candidate
+         * Name should come from User table, not candidacy table
+         */
+        getCandidateName(candidate) {
+            // Priority 1: Get name from user_info.name (User table)
+            if (candidate.user_info && candidate.user_info.name && 
+                candidate.user_info.name.trim() !== '' && 
+                candidate.user_info.name !== 'Unknown') {
+                return candidate.user_info.name;
+            }
+            
+            // Priority 2: Use candidacy_name (this now comes from User table via backend)
+            if (candidate.candidacy_name && 
+                candidate.candidacy_name.trim() !== '' && 
+                !candidate.candidacy_name.includes('Unknown')) {
+                return candidate.candidacy_name;
+            }
+            
+            // Priority 3: Use user_name field (backup in candidacy table)
+            if (candidate.user_name && candidate.user_name.trim() !== '') {
+                return candidate.user_name;
+            }
+            
+            // Priority 4: Use name field (backup in candidacy table)
+            if (candidate.name && candidate.name.trim() !== '') {
+                return candidate.name;
+            }
+            
+            // Priority 5: Generate from candidacy_id
+            if (candidate.candidacy_id) {
+                // Convert "DE_TEST_2025_07" to "Candidate DE TEST 2025 07"
+                const cleaned = candidate.candidacy_id.replace(/[_-]/g, ' ');
+                return `Candidate ${cleaned}`;
+            }
+            
+            return 'Unknown Candidate';
+        },
+
+        /**
+         * Get the first letter of candidate name for avatar
+         */
+        getCandidateInitial(candidate) {
+            const name = this.getCandidateName(candidate);
+            if (name && name.length > 0 && !name.includes('Unknown')) {
+                return name.charAt(0).toUpperCase();
+            }
+            return 'C';
         }
     },
 
