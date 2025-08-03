@@ -61,6 +61,7 @@ export default {
             type: Boolean,
             default: false,
         },
+        user_name: String, // Add this line
     },
 };
 </script>

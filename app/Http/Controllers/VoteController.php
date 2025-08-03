@@ -349,12 +349,11 @@ public function first_submission(Request $request)
  * STEP 6: Handle the submission of candidate selections
  * Process vote data, validate selections, send second verification code,
  * and redirect to verification page
- *
- * @param  \Illuminate\Http\Request  $request
- * @return \Illuminate\Http\RedirectResponse
  */
 public function second_submission(Request $request)
 {
+    DB::beginTransaction();
+    
     try {
         $auth_user = auth()->user();
         
@@ -374,19 +373,21 @@ public function second_submission(Request $request)
                 ->withErrors(['code' => 'Voting code not found. Please start the voting process again.']);
         }
 
-        // Log the submission attempt for debugging
-        Log::info('Second submission started', [
-            'user_id' => $auth_user->id,
-            'user_name' => $auth_user->name,
-            'has_used_code1' => $auth_user->has_used_code1 ?? 'null',
-            'has_used_code2' => $auth_user->has_used_code2 ?? 'null', 
-            'is_voter' => $auth_user->is_voter ?? 'null',
-            'can_vote' => $auth_user->can_vote ?? 'null',
-            'can_vote_now' => $auth_user->can_vote_now ?? 'null',
-            'request_data_keys' => array_keys($request->all())
-        ]);
+        // Pre-submission timing and eligibility checks
+        $pre_check_result = $this->vote_pre_check($code);
+        if ($pre_check_result && $pre_check_result !== "") {
+            Log::warning('Pre-check failed during second submission', [
+                'user_id' => $auth_user->id,
+                'redirect_to' => $pre_check_result
+            ]);
+            
+            if ($pre_check_result === '404') {
+                abort(404, 'Voting session expired or invalid');
+            }
+            return redirect()->route($pre_check_result);
+        }
 
-        // Validate the basic request structure
+        // Validate request structure
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|integer',
             'national_selected_candidates' => 'nullable|array',
@@ -418,23 +419,17 @@ public function second_submission(Request $request)
                 ->withInput();
         }
 
-        // Basic eligibility checks
-        if (!$auth_user->can_vote_now) {
+        // Enhanced eligibility verification
+        $eligibility_errors = $this->validateVotingEligibility($auth_user, $code);
+        if (!empty($eligibility_errors)) {
             return redirect()->route('dashboard')
-                ->withErrors(['eligibility' => 'Voting is not currently available for you.']);
+                ->withErrors($eligibility_errors);
         }
 
-        // Check if user has already voted
-        if ($code->has_voted) {
-            return redirect()->route('vote.show')
-                ->with('info', 'You have already completed your vote.');
-        }
-
-        // Get all vote data
+        // Get and validate vote data
         $vote_data = $request->all();
-
-        // Validate vote selections (ensure user made some choices)
         $validation_errors = $this->validate_candidate_selections($vote_data);
+        
         if (!empty($validation_errors)) {
             Log::warning('Vote selection validation failed', [
                 'user_id' => $auth_user->id,
@@ -446,44 +441,88 @@ public function second_submission(Request $request)
                 ->withInput();
         }
 
-        // Set vote as submitted with timestamp
+        // Additional vote integrity checks
+        $integrity_errors = $this->validateVoteIntegrity($vote_data, $auth_user);
+        if (!empty($integrity_errors)) {
+            Log::error('Vote integrity validation failed', [
+                'user_id' => $auth_user->id,
+                'errors' => $integrity_errors
+            ]);
+            
+            return redirect()->back()
+                ->withErrors($integrity_errors)
+                ->withInput();
+        }
+
+        // Update submission status
         $code->vote_submitted = 1;
         $code->vote_submitted_at = Carbon::now();
         $code->save();
 
-        // Send the second verification code
-        $totalDuration = $this->send_second_voting_code($code, $auth_user);
+        // Send second verification code with error handling
+        $code_result = $this->send_second_voting_code($code, $auth_user);
+        
+        if (isset($code_result['error'])) {
+            Log::error('Failed to send second verification code', [
+                'user_id' => $auth_user->id,
+                'error' => $code_result['error']
+            ]);
+            
+            return redirect()->back()
+                ->withErrors(['code' => 'Failed to send verification code. Please try again.'])
+                ->withInput();
+        }
 
-        // Prepare session data with metadata
-        $code_expires_in = $code->voting_time_in_minutes ?? 15; // Default 15 minutes if not set
-        $vote_data["totalDuration"] = $totalDuration;
-        $vote_data["code_expires_in"] = $code_expires_in;
-        $vote_data["submission_timestamp"] = Carbon::now()->toISOString();
-        $vote_data["user_id"] = $auth_user->id;
-        $vote_data["user_name"] = $auth_user->name;
+        $totalDuration = $code_result['duration'] ?? 0;
 
-        // Store vote data in session for verification step
-        $request->session()->put('vote', $vote_data);
+        // Prepare comprehensive session data
+        $session_data = $this->prepareSessionData($vote_data, $auth_user, $totalDuration, $code);
+        
+        // Store in session with error handling
+        try {
+            $request->session()->put('vote', $session_data);
+            
+            // Verify session storage
+            $stored_data = $request->session()->get('vote');
+            if (!$stored_data) {
+                throw new \Exception('Session storage verification failed');
+            }
+            
+        } catch (\Exception $e) {
+            Log::error('Session storage failed during vote submission', [
+                'user_id' => $auth_user->id,
+                'error' => $e->getMessage()
+            ]);
+            
+            return redirect()->back()
+                ->withErrors(['session' => 'Failed to store vote data. Please try again.'])
+                ->withInput();
+        }
 
-        // Log successful submission
+        // Log successful submission with detailed info
         Log::info('Vote second submission completed successfully', [
             'user_id' => $auth_user->id,
             'user_name' => $auth_user->name,
             'total_duration' => $totalDuration,
             'national_posts_count' => count($vote_data['national_selected_candidates'] ?? []),
             'regional_posts_count' => count($vote_data['regional_selected_candidates'] ?? []),
-            'session_stored' => true
+            'session_id' => $request->session()->getId(),
+            'timestamp' => Carbon::now()->toISOString()
         ]);
 
-        // Redirect to verification page
+        DB::commit();
+
+        // Redirect to verification with success message
         return redirect()->route('vote.verify')
             ->with([
                 'totalDuration' => $totalDuration,
-                'code_expires_in' => $code_expires_in,
+                'code_expires_in' => $code->voting_time_in_minutes ?? 15,
                 'success' => 'Vote submitted successfully. Please check your email for verification code.'
             ]);
 
     } catch (\Throwable $e) {
+        DB::rollBack();
+        
         // Comprehensive error logging
         Log::error('Second submission failed with exception', [
             'user_id' => auth()->id(),
@@ -491,7 +530,7 @@ public function second_submission(Request $request)
             'error_file' => $e->getFile(),
             'error_line' => $e->getLine(),
             'stack_trace' => $e->getTraceAsString(),
-            'request_data' => $request->except(['_token']) // Log request data but exclude token
+            'request_data' => $request->except(['_token'])
         ]);
 
         return redirect()->back()
@@ -499,6 +538,212 @@ public function second_submission(Request $request)
             ->withInput();
     }
 }
+
+/**
+ * Enhanced voting eligibility validation
+ */
+private function validateVotingEligibility($auth_user, $code)
+{
+    $errors = [];
+    
+    if (!$auth_user->can_vote_now) {
+        $errors['eligibility'] = 'Voting is not currently available for you.';
+    }
+    
+    if ($code->has_voted) {
+        $errors['already_voted'] = 'You have already completed your vote.';
+    }
+    
+    if (!$code->is_code1_usable && $code->vote_submitted) {
+        // Check if we're in the valid submission window
+        $submission_window = $code->voting_time_in_minutes ?? 15;
+        $elapsed = Carbon::now()->diffInMinutes($code->code1_used_at);
+        
+        if ($elapsed > $submission_window) {
+            $errors['expired'] = 'Your voting session has expired. Please start again.';
+        }
+    }
+    
+    return $errors;
+}
+
+/**
+ * Validate vote data integrity against available posts and candidates
+ */
+private function validateVoteIntegrity($vote_data, $auth_user)
+{
+    $errors = [];
+    
+    try {
+        // Get available posts for verification
+        $available_national_posts = Post::where('is_national_wide', 1)->pluck('post_id')->toArray();
+        $available_regional_posts = Post::where('is_national_wide', 0)
+            ->where('state_name', trim($auth_user->region))
+            ->pluck('post_id')->toArray();
+        
+        // Validate national selections
+        foreach ($vote_data['national_selected_candidates'] ?? [] as $index => $selection) {
+            if ($selection && !$selection['no_vote']) {
+                $post_id = $selection['post_id'] ?? null;
+                
+                if (!in_array($post_id, $available_national_posts)) {
+                    $errors["national_integrity_{$index}"] = "Invalid national post selection detected.";
+                    continue;
+                }
+                
+                // Validate candidates exist for this post
+                foreach ($selection['candidates'] ?? [] as $candidate) {
+                    $candidacy_exists = Candidacy::where('candidacy_id', $candidate['candidacy_id'])
+                        ->where('post_id', $post_id)
+                        ->exists();
+                    
+                    if (!$candidacy_exists) {
+                        $errors["national_candidate_{$index}"] = "Invalid candidate selection detected.";
+                    }
+                }
+            }
+        }
+        
+        // Validate regional selections
+        foreach ($vote_data['regional_selected_candidates'] ?? [] as $index => $selection) {
+            if ($selection && !$selection['no_vote']) {
+                $post_id = $selection['post_id'] ?? null;
+                
+                if (!in_array($post_id, $available_regional_posts)) {
+                    $errors["regional_integrity_{$index}"] = "Invalid regional post selection detected.";
+                    continue;
+                }
+                
+                // Validate candidates exist for this post
+                foreach ($selection['candidates'] ?? [] as $candidate) {
+                    $candidacy_exists = Candidacy::where('candidacy_id', $candidate['candidacy_id'])
+                        ->where('post_id', $post_id)
+                        ->exists();
+                    
+                    if (!$candidacy_exists) {
+                        $errors["regional_candidate_{$index}"] = "Invalid candidate selection detected.";
+                    }
+                }
+            }
+        }
+        
+    } catch (\Exception $e) {
+        Log::error('Vote integrity validation error', [
+            'user_id' => $auth_user->id,
+            'error' => $e->getMessage()
+        ]);
+        $errors['integrity'] = 'Unable to validate vote integrity. Please try again.';
+    }
+    
+    return $errors;
+}
+
+/**
+ * Prepare comprehensive session data
+ */
+private function prepareSessionData($vote_data, $auth_user, $totalDuration, $code)
+{
+    $code_expires_in = $code->voting_time_in_minutes ?? 15;
+    
+    return [
+        'user_id' => $auth_user->id,
+        'user_name' => $auth_user->name,
+        'user_region' => $auth_user->region,
+        'national_selected_candidates' => $vote_data['national_selected_candidates'] ?? [],
+        'regional_selected_candidates' => $vote_data['regional_selected_candidates'] ?? [],
+        'agree_button' => $vote_data['agree_button'] ?? false,
+        'totalDuration' => $totalDuration,
+        'code_expires_in' => $code_expires_in,
+        'submission_timestamp' => Carbon::now()->toISOString(),
+        'session_id' => session()->getId(),
+        'vote_integrity_hash' => $this->generateVoteHash($vote_data),
+    ];
+}
+
+/**
+ * Generate hash for vote integrity verification
+ */
+private function generateVoteHash($vote_data)
+{
+    $hash_data = [
+        'national' => $vote_data['national_selected_candidates'] ?? [],
+        'regional' => $vote_data['regional_selected_candidates'] ?? [],
+        'timestamp' => Carbon::now()->timestamp,
+    ];
+    
+    return hash('sha256', serialize($hash_data));
+}
+
+/**
+ * Enhanced second code sending with better error handling
+ */
+public function send_second_voting_code(&$code, $auth_user)
+{
+    try {
+        $code1_used_at = Carbon::parse($code->code1_used_at);
+        $current = Carbon::now();
+        $totalDuration = $current->diffInMinutes($code1_used_at);
+        
+        // Check if we're within the valid voting window
+        $voting_window = $code->voting_time_in_minutes ?? 15;
+        if ($totalDuration >= $voting_window) {
+            return [
+                'error' => 'Voting window expired',
+                'duration' => $totalDuration
+            ];
+        }
+        
+        // Check if we need to send a new code
+        if (!$code->has_code2_sent || !$code->is_code2_usable) {
+            $voting_code = get_random_string(6);
+            $code->code2 = Hash::make($voting_code);
+            $code->has_code2_sent = 1;
+            $code->is_code1_usable = 0; 
+            $code->is_code2_usable = 1;
+            $code->code2_sent_at = Carbon::now();
+            $code->save();
+            
+            // Send notification with error handling
+            try {
+                $auth_user->notify(new SecondVerificationCode($auth_user, $voting_code));
+                
+                Log::info('Second verification code sent successfully', [
+                    'user_id' => $auth_user->id,
+                    'duration' => $totalDuration
+                ]);
+                
+            } catch (\Exception $e) {
+                Log::error('Failed to send second verification code notification', [
+                    'user_id' => $auth_user->id,
+                    'error' => $e->getMessage()
+                ]);
+                
+                return [
+                    'error' => 'Failed to send verification code email',
+                    'duration' => $totalDuration
+                ];
+            }
+        }
+        
+        return [
+            'success' => true,
+            'duration' => $totalDuration
+        ];
+        
+    } catch (\Exception $e) {
+        Log::error('Exception in send_second_voting_code', [
+            'user_id' => $auth_user->id,
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
+        ]);
+        
+        return [
+            'error' => 'Code generation failed',
+            'duration' => 0
+        ];
+    }
+}
+
 
 /**
  * Simplified validation for candidate selections
@@ -1243,10 +1488,13 @@ private function generate_verification_summary($processed_vote_data)
     }
     //save all candidates 
     public function save_vote($input_data){
-        // dd($input_data); 
-        $no_vote_option     = $input_data["no_vote_option"];
+        $no_vote_option     = 0; 
         $vote               =new Vote;
-        // $vote->user_id      = Hash::make($this->user_id); 
+        $vote->user_id      = $this->user_id;
+
+        // $vote->user_id      = Hash::make($this->user_id);
+        // $vote->user_id      = Hash::make($vote->user_id);         
+
         $vote->voting_code  =$this->out_code;       
         $vote->save();   //save the vote first
         //save the $this->vote_id_for_voter  it to voter ;
@@ -1260,7 +1508,8 @@ private function generate_verification_summary($processed_vote_data)
           * Here you save the all candidates finally :
           * 
           */ 
-            $all_candidates =$input_data["natioanal_selected_candidates"];
+             //dd($input_data);
+            $all_candidates =$input_data["national_selected_candidates"];
             $all_candidates =array_merge($all_candidates, 
                             $input_data["regional_selected_candidates"]);
            
@@ -1505,93 +1754,66 @@ private function generate_verification_summary($processed_vote_data)
      * Check after submitting the code 
      *  
      */
-    public function vote_post_check($auth_user, &$code, $vote){
-        // dd($code);
-        $_error                  =[];
-        $_error["return_to"]     ="";
-        $_error["error_message"]  ="";
-       
-        //  dd($code);
+ public function vote_post_check($auth_user, &$code, $vote)
+{
+    $_error = [
+        "return_to" => "",
+        "error_message" => "",
+    ];
 
-        if($code==null){
-            /*** 
-             * 
-            * if the code is not usable you can not proceed further
-            * you should redirect the form in dashboard
-            * 
-            */
-            $error_message = '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-            Either Your code is wrong or you have not voted properly. Send the screenshot to administrator!          
-                <p> <a href="';
-                $error_message .= route('dashboard') .'"> Click here to go to the main Dashboard </a></p>
-            </div>';
-            $_error['error_message']   =$error_message;
-            //  dd($_error);
-           return  $_error;
+    // 1. Code is missing or invalid
+    if ($code === null) {
+        $_error['error_message'] = view('components.error_message', [
+            'message' => 'Either your code is wrong or you have not voted properly. Send the screenshot to administrator!',
+            'link' => route('dashboard'),
+            'link_text' => 'Click here to go to the main Dashboard',
+        ])->render();
+        return $_error;
+    }
 
-        }
-        // dd($code);
-        // check the ip address 
-        $clientIP             =\Request::getClientIp(true);
-        $max_use_clientIP     =config('app.max_use_clientIP');
-        $_message= check_ip_address($clientIP,$max_use_clientIP);
-        if($_message['error_message']!=""){
-            echo $_message['error_message'];
-            abort(404);
-        }
-        
-        if(!$code->is_code2_usable){
-            $code->is_code1_usable      =0;
-            $code->has_code1_sent       =0;                
-            $_error['return_to']       ='vote.create';
-           //  dd($_error);
-          return  $_error;
-        }
-        /***
-         *
-         * Check 2: if the user has already voted then
-         *  then return back to the vote 
-         * 
-         *  */
-        $_error_already_voted = '<div style="margin:auto; color:red; padding:20px; 
-                        font-weight:bold; text-align:center;"> 
-                    <p>You have already voted and your vote is already saved! See below</p>';
-        $_error_already_voted .='<p style="text-align: center margin: 2px 0px 2px 0px; font-weight:bold;">';
-        $_error_already_voted .= '<a href="'. route('vote.verify_to_show').'" > Click here to see your vote</a>';
-        $_error_already_voted .= '</p></div>'; 
-        // dd($code->has_voted);
-        if($code->has_voted){
-            $_error['error_message']   =$_error_already_voted;
-             
-            return  $_error;
-           
-            }
-        /***
-         * 
-         * Check if the voter has already voted or in any case vote is already saved 
-         *  
-         */
-        
-        /***
-         * 
-         * check if the vote is there or not 
-         * 
-         */
-        $_error_no_voted = '<div style="margin:auto; color:red; padding:20px; 
-        font-weight:bold; text-align:center;"> 
-        <p>We could not find your vote. Please contact the administrator. You can start also to vote again </p>';
-        $_error_no_voted  .='<p style="text-align: center margin: 2px 0px 2px 0px; font-weight:bold;">';
-        $_error_no_voted  .= '<a href="'. route('code.create').'" > Click here to vote</a>';
-        $_error_no_voted  .= '</p></div>'; 
-        if($vote ==null)
-        {
-            $_error['error_message'] =$_error_no_voted;
-           //  dd($_error);
-          return  $_error;
-        } 
-        return $_error ;
-    } //end of vote_post_check
-    
+    // 2. IP address check
+    $clientIP = \Request::getClientIp(true);
+    $max_use_clientIP = config('app.max_use_clientIP');
+    $_message = check_ip_address($clientIP, $max_use_clientIP);
+
+    if (!empty($_message['error_message'])) {
+        // Just return the error, let the controller handle the redirect/flash
+        $_error['error_message'] = $_message['error_message'];
+        return $_error;
+    }
+
+    // 3. Code is not usable
+    if (!$code->is_code2_usable) {
+        $code->is_code1_usable = 0;
+        $code->has_code1_sent = 0;
+        $_error['return_to'] = 'vote.create';
+        return $_error;
+    }
+
+    // 4. User already voted
+    if ($code->has_voted) {
+        $_error['error_message'] = view('components.error_message', [
+            'message' => 'You have already voted and your vote is already saved! See below',
+            'link' => route('vote.verify_to_show'),
+            'link_text' => 'Click here to see your vote',
+        ])->render();
+        return $_error;
+    }
+
+    // 5. Vote is missing (should never happen if code is valid and hasn't voted)
+    if ($vote === null) {
+        $_error['error_message'] = view('components.error_message', [
+            'message' => 'We could not find your vote. Please contact the administrator. You can also start to vote again.',
+            'link' => route('code.create'),
+            'link_text' => 'Click here to vote',
+        ])->render();
+        return $_error;
+    }
+
+    // No error
+    return $_error;
+}
+
     public function second_code_check(&$code){
         $_message                  = [];
         $_message['error_message'] = "";
@@ -1701,45 +1923,6 @@ private function generate_verification_summary($processed_vote_data)
         return 'vote.cast';
     }
     
-    /***
-      * 
-      * @params1: Code Object 
-    *   @returns: time in minutes Integer
-      */
-     public function send_second_voting_code(&$code, $auth_user){
-        $code1_used_at  = Carbon::parse($code->code1_used_at);
-        $current        = Carbon::now();
-        $totalDuration  = $current->diffInMinutes($code1_used_at);
-        if(!$code->is_code2_usable){
-            $code->has_code2_sent=0;
-        }else{
-     
 
-            if($totalDuration<$code->voting_time_in_minutes ){
-                $code->has_code2_sent   =0;
-                $code->is_code2_usable  =0;
-
-            }
-
-        }
-       
-       
-        if(!$code->has_code2_sent)
-        {
-            $voting_code            = get_random_string (6);
-            $code->code2            = Hash::make($voting_code);
-            $totalDuration          =0;
-            $auth_user->notify(new SecondVerificationCode($auth_user, $voting_code));
-            
-            $code->has_code2_sent   =1;
-            $code->is_code1_usable  =0; 
-            $code->is_code2_usable   =1;  
-            $code->save();
-        }
-
-       
-        return $totalDuration;
-        
-     }
 
 }//end of the controller 

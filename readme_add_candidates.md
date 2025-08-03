@@ -44,95 +44,213 @@ $candidateUser->id = 2900; // Assuming you can set the ID, otherwise it's auto-i
 // Add other required fields...
 $candidateUser->save();
 
-#
-Use App\Models\Candidacy; 
-$candi =new Candidacy
-$candi->user_id         =2
-$candi->candidacy_id    ="DE_TEST_02";
-$candi->candidacy_name  ="Kathmandu City";
-$candi->proposer_name   ="Bhima Nani Shrestha"
-$candi->proposer_id     ="DE11000011"
-$candi->supporter_name  ="Krishna Prasad Gaire"
-$candi->supporter_id    ="DE08000016"
-$candi->post_name        ="President"
-$candi->post_nepali_name  ="अद्यक्ष"
-$candi->Post_id          ="2025_02"
-$candi->image_path_1     ="Kathmandu.jpg"
-$candi->image_path_2     ="-"
-$candi->image_path_3     ="-"
-$candi->save()
+##
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = 2; // Link to the candidate's user ID
+$candi->candidacy_id = "DE_TEST_2025_02";
+$candi->post_id = "2025_02";
+$candi->proposer_id = "DE10000217"; // Link to the proposer's nrna_id
+$candi->supporter_id = "DE10000218"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "kathmandu.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
 #
 #************************************
+#************************************
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-Use App\Models\Candidacy; 
-$candi =new Candidacy
-$candi->user_id         =2901 
-$candi->candidacy_id    ="DE_TEST_03";
-$candi->candidacy_name  ="Pokhara";
-$candi->proposer_name   ="Bhima Nani Shrestha"
-$candi->proposer_id     ="DE11000011"
-$candi->supporter_name  ="Krishna Prasad Gaire"
-$candi->supporter_id    ="DE08000016"
-$candi->post_name        ="President"
-$candi->post_nepali_name  ="अद्यक्ष"
-$candi->Post_id          ="2025_02"
-$candi->image_path_1     ="pokhara.jpg"
-$candi->image_path_2     ="-"
-$candi->image_path_3     ="-"
-$candi->save()
+// Create the user who is the candidate
+$candidateUser = new User;
+$candidateUser->name = "Pokhara";
+$candidateUser->user_id =3
+$candidateUser->first_name = "Pokhara";
+$candidateUser->last_name = "City";
+$candidateUser->email = "pokhara@example.com";
+$candidateUser->password = Hash::make('password');
+// Add other required fields...
+$candidateUser->save();
+
+##
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = 3; // Link to the candidate's user ID
+$candi->candidacy_id = "DE_TEST_2025_03";
+$candi->post_id = "2025_02";
+$candi->proposer_id = "DE10000218"; // Link to the proposer's nrna_id
+$candi->supporter_id = "DE10000219"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "pokhara.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
 
 
-Use App\Models\Candidacy; 
-$candi                  =new Candidacy
-$candi->user_id         =2902
-$candi->candidacy_id    ="DE_TEST_04";
-$candi->candidacy_name  ="Humla Simikot ";
-$candi->proposer_name   ="Radha Sigdel"
-$candi->proposer_id     ="	DE10000001"
-$candi->supporter_name  ="Dhurba Sharma"
-$candi->supporter_id    ="DE10000245"
-$candi->post_name        ="President"
-$candi->post_nepali_name  ="अद्यक्ष"
+#************************************
+#************************************
+#************************************
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-$candi->Post_id          ="2025_02"
-$candi->image_path_1     ="simikot"
-$candi->image_path_2     ="-"
-$candi->image_path_3     ="-"
-$candi->save()
+// Create the user who is the candidate
+$candidateUser = new User;
+$candidateUser->name = "Dadelhura";
+$candidateUser->user_id =4
+$candidateUser->first_name = "Dadeldhura";
+$candidateUser->last_name = "City";
+$candidateUser->email = "dadeldhura@example.com";
+$candidateUser->password = Hash::make('password');
+$candidateUser->save();
 
+##
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = 4; // Link to the candidate's user ID
+$candi->candidacy_id = "DE_TEST_2025_04";
+$candi->post_id = "2025_02";
+$candi->proposer_id = "DE10000219"; // Link to the proposer's nrna_id
+$candi->supporter_id = "DE10000229"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "dadelhura.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+#################################################
+#######################################################################################################
+// Create the user who is the candidate
+$candidateUser = new User;
+$candidateUser->name = "Chitwan National Park";
+$candidateUser->user_id =5
+$candidateUser->first_name = "Chitwan";
+$candidateUser->last_name = "National Park";
+$candidateUser->email = "cn@example.com";
+$candidateUser->password = Hash::make('password');
+$candidateUser->save();
+
+##
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = 5; // Link to the candidate's user ID
+$candi->candidacy_id = "DE_TEST_2025_05";
+$candi->post_id = "2025_06";
+$candi->proposer_id = "DE1000021"; // Link to the proposer's nrna_id
+$candi->supporter_id = "DE10000222"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "chitawan.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
 #
+
+#************************************************
+#************************************************
+$candidateUser = new User;
+$candidateUser->name = "Khaptad National Park";
+$candidateUser->user_id =5
+$candidateUser->first_name = "Khaptad";
+$candidateUser->last_name = "National Park";
+$candidateUser->email = "khaptad@example.com";
+$candidateUser->password = Hash::make('password');
+$candidateUser->save();
+
+##
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = 5; // Link to the candidate's user ID
+$candi->candidacy_id = "DE_TEST_2025_06";
+$candi->post_id = "2025_06";
+$candi->proposer_id = "DE1000022"; // Link to the proposer's nrna_id
+$candi->supporter_id = "DE100023"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "chitawan.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+#
+
+#************************************************
+#************************************************
+#************************************************
+$candidateUser = new User;
+$candidateUser->name = "Bardia National Park";
+$candidateUser->user_id =7
+$candidateUser->first_name = "Bardia";
+$candidateUser->last_name = "National Park";
+$candidateUser->email = "bardia@example.com";
+$candidateUser->password = Hash::make('password');
+$candidateUser->save();
+
+##
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = 7; // Link to the candidate's user ID
+$candi->candidacy_id = "DE_TEST_2025_07";
+$candi->post_id = "2025_06";
+$candi->proposer_id = "DE128"; // Link to the proposer's nrna_id
+$candi->supporter_id = "DE129"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "bardia.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+#
+#************************************************
+
+
 Use App\Models\Candidacy; 
 $candi                  =new Candidacy
-$candi->user_id         =2905
-$candi->candidacy_id    ="DE_TEST_05";
-$candi->candidacy_name  ="Janakpur City ";
+$candi->user_id         = 2918
+$candi->candidacy_id    ="Nepal_20";
+$candi->candidacy_name  ="Bardiya National Park";
 $candi->proposer_name   ="Radha Sigdel"
-$candi->proposer_id     ="	DE10000001"
+$candi->proposer_id     ="DE10000001"
 $candi->supporter_name  ="Dhurba Sharma"
 $candi->supporter_id    ="DE10000245"
-$candi->post_name        ="President"
-$candi->post_nepali_name  ="अद्यक्ष"
+$candi->post_name        ="General Secretary"
+$candi->post_nepali_name  ="माहासचिव"
 
-$candi->Post_id          ="2021_02"
-$candi->image_path_1     ="janakpur"
+$candi->Post_id          ="2021_05"
+$candi->image_path_1     ="bardiaya"
 $candi->image_path_2     ="-"
 $candi->image_path_3     ="-"
 $candi->save()
-
+#
+#************************************************
 Use App\Models\Candidacy; 
 $candi                  =new Candidacy
-$candi->user_id         =2905
-$candi->candidacy_id    ="DE_TEST_06";
-$candi->candidacy_name  ="Dadeldhura City ";
+$candi->user_id         = 2919
+$candi->candidacy_id    ="Nepal_21";
+$candi->candidacy_name  ="Shivapuri Nagarjun National Park";
 $candi->proposer_name   ="Radha Sigdel"
-$candi->proposer_id     ="	DE10000001"
+$candi->proposer_id     ="DE10000001"
 $candi->supporter_name  ="Dhurba Sharma"
 $candi->supporter_id    ="DE10000245"
-$candi->post_name        ="President"
-$candi->post_nepali_name  ="अद्यक्ष"
+$candi->post_name        ="General Secretary"
+$candi->post_nepali_name  ="माहासचिव"
 
-$candi->Post_id          ="2025_02"
-$candi->image_path_1     ="janakpur"
+$candi->Post_id          ="2021_05"
+$candi->image_path_1     ="shivapuri"
 $candi->image_path_2     ="-"
 $candi->image_path_3     ="-"
 $candi->save()
+#
+
+#secretary 
+#************************************************
+Use App\Models\Candidacy; 
+$candi                  =new Candidacy
+$candi->user_id         = 2920
+$candi->candidacy_id    ="Nepal_22";
+$candi->candidacy_name  ="Chandragiri Hill";
+$candi->proposer_name   ="Radha Sigdel"
+$candi->proposer_id     ="DE10000001"
+$candi->supporter_name  ="Dhurba Sharma"
+$candi->supporter_id    ="DE10000245"
+$candi->post_name        ="General Secretary"
+$candi->post_nepali_name  ="माहासचिव"
+
+$candi->Post_id          ="2021_06"
+$candi->image_path_1     ="chandragiri"
+$candi->image_path_2     ="-"
+$candi->image_path_3     ="-"
+$candi->save()
+#
+
+
