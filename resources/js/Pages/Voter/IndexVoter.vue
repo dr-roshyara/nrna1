@@ -92,7 +92,7 @@
                             class="sticky top-0 border-r border-green-200"
                             v-show="showColumn('approved_by')"
                         >
-                            Approved By
+                            Status Details
                         </th>
                         <!-- Actions column - only show if committee member -->
                         <th 
@@ -159,17 +159,39 @@
                                 {{ voter.can_vote == 1 ? 'Approved' : 'Pending Approval' }}
                             </span>
                         </td>
-                        <!-- Approved By -->
+                        <!-- Status Details (Approved By / Suspended By) -->
                         <td
                             class="border-r border-green-200 p-2"
                             v-show="showColumn('approved_by')"
                         >
-                            <span v-if="voter.approvedBy" class="text-sm text-gray-600">
-                                {{ voter.approvedBy }}
-                            </span>
-                            <span v-else class="text-sm text-gray-400 italic">
-                                Not approved yet
-                            </span>
+                            <!-- If voter is approved (can_vote = 1) -->
+                            <div v-if="voter.can_vote == 1">
+                                <span v-if="voter.approvedBy" class="text-sm text-green-600">
+                                    ✅ Approved by: {{ voter.approvedBy }}
+                                </span>
+                                <span v-else class="text-sm text-gray-400 italic">
+                                    Approved (no record)
+                                </span>
+                            </div>
+                            
+                            <!-- If voter is suspended (can_vote = 0 and has suspension info) -->
+                            <div v-else-if="voter.can_vote == 0 && voter.suspendedBy">
+                                <div class="text-sm">
+                                    <div class="text-red-600">
+                                        ❌ Suspended by: {{ voter.suspendedBy }}
+                                    </div>
+                                    <div v-if="voter.approvedBy" class="text-gray-500 text-xs mt-1">
+                                        Originally approved by: {{ voter.approvedBy }}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- If voter is pending (never approved) -->
+                            <div v-else>
+                                <span class="text-sm text-gray-400 italic">
+                                    Pending approval
+                                </span>
+                            </div>
                         </td>
                         <!-- Actions - only show if committee member -->
                         <td 

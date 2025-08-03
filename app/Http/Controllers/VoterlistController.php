@@ -160,10 +160,12 @@ class VoterlistController extends Controller
                 return back()->withErrors(['error' => 'User is not registered as a voter.']);
             }
 
-            // Update can_vote to 1 and set approvedBy with committee member's name
+            // Update can_vote to 1, set approver, and clear suspension info
             $user->update([
                 'can_vote' => 1,
-                'approvedBy' => auth()->user()->name
+                'approvedBy' => auth()->user()->name,
+                'suspendedBy' => null,      // Clear suspension info when approved
+                'suspended_at' => null      // Clear suspension timestamp
             ]);
 
             return back()->with('success', $user->name . ' has been approved to vote by ' . auth()->user()->name);
@@ -174,7 +176,7 @@ class VoterlistController extends Controller
     }
 
     /**
-     * Reject/Suspend voter - Set can_vote = 0 and clear approver
+     * Suspend voter - Set can_vote = 0 and store who suspended (keep approver info)
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -184,16 +186,18 @@ class VoterlistController extends Controller
         try {
             // Check if current user is committee member
             if (!auth()->user()->is_committee_member) {
-                return back()->withErrors(['error' => 'Unauthorized. Only committee members can reject voters.']);
+                return back()->withErrors(['error' => 'Unauthorized. Only committee members can suspend voters.']);
             }
 
             // Find the user
             $user = User::findOrFail($id);
 
-            // Update can_vote to 0 and clear approvedBy
+            // Update can_vote to 0 and track suspension (KEEP approvedBy info)
             $user->update([
                 'can_vote' => 0,
-                'approvedBy' => null
+                'suspendedBy' => auth()->user()->name,  // Track who suspended
+                'suspended_at' => now()                 // Track when suspended
+                // approvedBy stays unchanged - keeps original approver info
             ]);
 
             return back()->with('success', $user->name . ' voting access has been suspended by ' . auth()->user()->name);
@@ -202,8 +206,8 @@ class VoterlistController extends Controller
             return back()->withErrors(['error' => 'Error suspending voter: ' . $e->getMessage()]);
         }
     }
-    
-    //ends here 
+
+//ends here 
     /**
      * Show the form for creating a new resource.
      *

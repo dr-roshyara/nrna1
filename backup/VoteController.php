@@ -550,60 +550,8 @@ public function first_submission(Request $request)
 
      }
     
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Vote  $vote
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Vote $vote)
-    {
-        $vote               =[];
-        $has_voted          =false;
-        $name               ='';
-        $verify_final_vote  =false;
-        $code               =auth()->user()->code;    
-      
-        // echo $code->has_voted ;
-        // dd($code);
-        if($code!=null){
-                
-            
-            $final_vote = request()->session()->get('final_vote');
-            // dd($final_vote);
-            // dd(gettype($final_vote));
-            if($final_vote==null){
-                return redirect()->route('vote.verify_to_show');
-            }
-            if($final_vote){
-                if(array_key_exists('name', $final_vote)){
-                    $name = $final_vote["name"]; 
-                }
 
-                if(array_key_exists('selected_candidates', $final_vote)){
-                    $vote = $final_vote["selected_candidates"]; 
-                }
-
-                if(array_key_exists('has_voted', $final_vote)){
-                    $has_voted = $final_vote["has_voted"]; 
-                }
-                if(array_key_exists('verify_final_vote', $final_vote)){
-                    $verify_final_vote = $final_vote["verify_final_vote"]; 
-                }
-            }
-            request()->session()->forget('final_vote');
-         }
-        return Inertia::render('Vote/VoteShow',[
-            'vote'=>  $vote, 
-            'name'=> $name,
-            'has_voted' => $has_voted,
-            'verify_final_vote'=>$verify_final_vote
-               
-        ]);
-
-    }
-
-    /**
+     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Vote  $vote
@@ -1275,5 +1223,440 @@ public function first_submission(Request $request)
         return $totalDuration;
         
      }
+
+    // Add these methods to your VoteController class
+
+/**
+ * Process vote verification code and display the associated vote
+ * 
+ * @param \Illuminate\Http\Request $request
+ * @return \Illuminate\Http\RedirectResponse
+ */
+public function submit_code_to_view_vote(Request $request)
+{
+    try {
+        // Validate request input
+        $request->validate([
+            'voting_code' => 'required|string|min:3|max:50'
+        ], [
+            'voting_code.required' => 'Verification code is required.',
+            'voting_code.min' => 'Verification code is too short.',
+            'voting_code.max' => 'Verification code is too long.'
+        ]);
+
+        $auth_user = auth()->user();
+        $submitted_code = trim($request->input('voting_code'));
+        
+        // Get user's code record
+        $code = $auth_user->code;
+        
+        if (!$code) {
+            return redirect()->back()
+                ->withErrors(['voting_code' => 'No voting record found. Please contact administrator.'])
+                ->withInput();
+        }
+
+        // Validate the verification code
+        $validation_result = $this->validate_vote_verification_code($submitted_code, $code, $auth_user);
+        
+        if (!$validation_result['success']) {
+            return redirect()->back()
+                ->withErrors(['voting_code' => $validation_result['message']])
+                ->withInput();
+        }
+
+        // Extract vote ID from the verification code
+        $vote_data = $this->extract_vote_data_from_code($submitted_code);
+        
+        if (!$vote_data['success']) {
+            return redirect()->back()
+                ->withErrors(['voting_code' => 'Invalid verification code format.'])
+                ->withInput();
+        }
+
+        // Retrieve the actual vote record
+        $vote_record = $this->retrieve_vote_record($vote_data['vote_id']);
+        
+        if (!$vote_record['success']) {
+            return redirect()->back()
+                ->withErrors(['voting_code' => 'Vote record not found.'])
+                ->withInput();
+        }
+
+        // Prepare vote display data
+        $display_data = $this->prepare_vote_display_data($vote_record['vote'], $auth_user, $submitted_code);
+        
+        // Store in session for display
+        $request->session()->put('vote_display_data', $display_data);
+        
+        // Log successful verification
+        Log::info('Vote verification successful', [
+            'user_id' => $auth_user->id,
+            'vote_id' => $vote_data['vote_id'],
+            'verification_timestamp' => now()->toISOString()
+        ]);
+
+        return redirect()->route('vote.show')
+            ->with('success', 'Vote verification successful.');
+
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        return redirect()->back()
+            ->withErrors($e->errors())
+            ->withInput();
+            
+    } catch (\Exception $e) {
+        Log::error('Vote verification failed', [
+            'user_id' => auth()->id(),
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
+        ]);
+
+        return redirect()->back()
+            ->withErrors(['voting_code' => 'Verification failed. Please try again or contact support.'])
+            ->withInput();
+    }
+}
+
+/**
+ * Validate the submitted verification code against stored hash
+ * 
+ * @param string $submitted_code
+ * @param object $code
+ * @param object $auth_user
+ * @return array
+ */
+private function validate_vote_verification_code($submitted_code, $code, $auth_user)
+{
+    // Check if user has voted
+    if (!$code->has_voted) {
+        return [
+            'success' => false,
+            'message' => 'You have not voted yet. Please vote first before verifying.'
+        ];
+    }
+
+    // Check if verification code exists
+    if (!$code->code_for_vote) {
+        return [
+            'success' => false,
+            'message' => 'No verification code found. Please contact administrator.'
+        ];
+    }
+
+    // Verify the code against stored hash
+    if (!Hash::check($submitted_code, $code->code_for_vote)) {
+        return [
+            'success' => false,
+            'message' => 'Invalid verification code. Please check your email and try again.'
+        ];
+    }
+
+    return [
+        'success' => true,
+        'message' => 'Code verified successfully.'
+    ];
+}
+
+/**
+ * Extract vote ID from verification code format (e.g., "ABC123_456")
+ * 
+ * @param string $verification_code
+ * @return array
+ */
+private function extract_vote_data_from_code($verification_code)
+{
+    // Check if code contains underscore separator
+    if (!str_contains($verification_code, '_')) {
+        return [
+            'success' => false,
+            'message' => 'Invalid code format.'
+        ];
+    }
+
+    // Extract vote ID from after the underscore
+    $parts = explode('_', $verification_code);
+    
+    if (count($parts) < 2) {
+        return [
+            'success' => false,
+            'message' => 'Invalid code format.'
+        ];
+    }
+
+    $vote_id = (int) end($parts);
+    
+    if ($vote_id <= 0) {
+        return [
+            'success' => false,
+            'message' => 'Invalid vote ID in code.'
+        ];
+    }
+
+    return [
+        'success' => true,
+        'vote_id' => $vote_id,
+        'random_part' => $parts[0]
+    ];
+}
+
+/**
+ * Retrieve vote record from database
+ * 
+ * @param int $vote_id
+ * @return array
+ */
+private function retrieve_vote_record($vote_id)
+{
+    try {
+        $vote = Vote::with('user')->find($vote_id);
+        
+        if (!$vote) {
+            return [
+                'success' => false,
+                'message' => 'Vote record not found in database.'
+            ];
+        }
+
+        return [
+            'success' => true,
+            'vote' => $vote
+        ];
+        
+    } catch (\Exception $e) {
+        Log::error('Failed to retrieve vote record', [
+            'vote_id' => $vote_id,
+            'error' => $e->getMessage()
+        ]);
+
+        return [
+            'success' => false,
+            'message' => 'Database error while retrieving vote.'
+        ];
+    }
+}
+
+/**
+ * Prepare comprehensive vote data for display
+ * 
+ * @param object $vote
+ * @param object $auth_user
+ * @param string $verification_code
+ * @return array
+ */
+private function prepare_vote_display_data($vote, $auth_user, $verification_code)
+{
+    // Get voter information (might be different from auth user if they're viewing someone else's vote)
+    $voter_user = $vote->user;
+    
+    // Process vote candidates from JSON columns
+    $vote_selections = $this->process_vote_selections($vote);
+    
+    // Determine if this is the current user's own vote
+    $is_own_vote = $voter_user && $voter_user->id === $auth_user->id;
+    
+    return [
+        'vote_id' => $vote->id,
+        'verification_code' => $verification_code,
+        'verification_timestamp' => now()->toISOString(),
+        'verification_successful' => true,
+        'is_own_vote' => $is_own_vote,
+        'voter_info' => [
+            'name' => $voter_user->name ?? 'Unknown Voter',
+            'user_id' => $voter_user->user_id ?? 'N/A',
+            'region' => $voter_user->region ?? 'N/A',
+        ],
+        'vote_info' => [
+            'voted_at' => $vote->created_at ? $vote->created_at->format('M j, Y \a\t g:i A') : 'Unknown',
+            'no_vote_option' => $vote->no_vote_option ?? false,
+            'voting_code_used' => $vote->voting_code ?? 'N/A',
+        ],
+        'vote_selections' => $vote_selections,
+        'summary' => [
+            'total_positions' => count($vote_selections),
+            'positions_voted' => count(array_filter($vote_selections, function($selection) {
+                return !empty($selection['candidates']) || $selection['no_vote'];
+            })),
+            'candidates_selected' => array_sum(array_map(function($selection) {
+                return count($selection['candidates'] ?? []);
+            }, $vote_selections))
+        ]
+    ];
+}
+
+/**
+ * Process vote selections from database JSON columns
+ * 
+ * @param object $vote
+ * @return array
+ */
+private function process_vote_selections($vote)
+{
+    $selections = [];
+    
+    // Process all candidate columns (candidate_01, candidate_02, etc.)
+    for ($i = 1; $i <= 30; $i++) {
+        $column_name = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
+        
+        if (isset($vote->$column_name) && !empty($vote->$column_name)) {
+            $selection_data = json_decode($vote->$column_name, true);
+            
+            if ($selection_data && is_array($selection_data)) {
+                // Enrich candidate data with additional information
+                $enriched_selection = $this->enrich_selection_data($selection_data);
+                
+                if ($enriched_selection) {
+                    $selections[] = $enriched_selection;
+                }
+            }
+        }
+    }
+    
+    return $selections;
+}
+
+/**
+ * Enrich selection data with candidate and post information
+ * 
+ * @param array $selection_data
+ * @return array|null
+ */
+private function enrich_selection_data($selection_data)
+{
+    try {
+        $enriched = [
+            'post_id' => $selection_data['post_id'] ?? 'Unknown',
+            'post_name' => $selection_data['post_name'] ?? 'Unknown Position',
+            'post_nepali_name' => $selection_data['post_nepali_name'] ?? '',
+            'no_vote' => $selection_data['no_vote'] ?? false,
+            'candidates' => []
+        ];
+
+        // If no vote was selected, return early
+        if ($enriched['no_vote'] || empty($selection_data['candidates'])) {
+            return $enriched;
+        }
+
+        // Enrich candidate information
+        foreach ($selection_data['candidates'] as $candidate_data) {
+            $candidacy_id = $candidate_data['candidacy_id'] ?? null;
+            
+            if ($candidacy_id) {
+                $candidacy = Candidacy::with('user')->where('candidacy_id', $candidacy_id)->first();
+                
+                if ($candidacy) {
+                    $enriched['candidates'][] = [
+                        'candidacy_id' => $candidacy->candidacy_id,
+                        'candidacy_name' => $candidacy->candidacy_name,
+                        'proposer_name' => $candidacy->proposer_name,
+                        'supporter_name' => $candidacy->supporter_name,
+                        'image_path_1' => $candidacy->image_path_1,
+                        'user_info' => [
+                            'name' => $candidacy->user->name ?? 'Unknown',
+                            'user_id' => $candidacy->user->user_id ?? 'N/A',
+                            'region' => $candidacy->user->region ?? 'N/A',
+                        ]
+                    ];
+                }
+            }
+        }
+
+        return $enriched;
+        
+    } catch (\Exception $e) {
+        Log::warning('Failed to enrich selection data', [
+            'selection_data' => $selection_data,
+            'error' => $e->getMessage()
+        ]);
+        
+        return null;
+    }
+}
+
+/**
+ * Display the verified vote record
+ * 
+ * @return \Inertia\Response|\Illuminate\Http\RedirectResponse
+ */
+public function show()
+{
+    try {
+        $auth_user = auth()->user();
+        
+        // Get vote display data from session
+        $vote_display_data = request()->session()->get('vote_display_data');
+        
+        // Check if we have vote data to display
+        if (!$vote_display_data) {
+            return redirect()->route('vote.verify_to_show')
+                ->withErrors(['session' => 'No vote data found. Please verify your code again.']);
+        }
+
+        // Validate vote display data structure
+        if (!$this->is_valid_vote_display_data($vote_display_data)) {
+            request()->session()->forget('vote_display_data');
+            return redirect()->route('vote.verify_to_show')
+                ->withErrors(['data' => 'Invalid vote data. Please verify your code again.']);
+        }
+
+        // Log vote display access
+        Log::info('Vote display accessed', [
+            'viewing_user_id' => $auth_user->id,
+            'vote_id' => $vote_display_data['vote_id'] ?? 'unknown',
+            'is_own_vote' => $vote_display_data['is_own_vote'] ?? false,
+            'access_timestamp' => now()->toISOString()
+        ]);
+
+        // Clear session data after successful retrieval (optional security measure)
+        // request()->session()->forget('vote_display_data');
+
+        return Inertia::render('Vote/VoteShow', [
+            'vote_data' => $vote_display_data,
+            'viewing_user' => [
+                'id' => $auth_user->id,
+                'name' => $auth_user->name,
+                'user_id' => $auth_user->user_id ?? 'N/A'
+            ]
+        ]);
+
+    } catch (\Exception $e) {
+        Log::error('Vote show page error', [
+            'user_id' => auth()->id(),
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
+        ]);
+
+        return redirect()->route('vote.verify_to_show')
+            ->withErrors(['system' => 'An error occurred while displaying the vote. Please try again.']);
+    }
+}
+
+/**
+ * Validate vote display data structure
+ * 
+ * @param mixed $data
+ * @return bool
+ */
+private function is_valid_vote_display_data($data)
+{
+    if (!is_array($data)) {
+        return false;
+    }
+
+    $required_keys = [
+        'vote_id',
+        'verification_successful',
+        'voter_info',
+        'vote_info',
+        'vote_selections'
+    ];
+
+    foreach ($required_keys as $key) {
+        if (!array_key_exists($key, $data)) {
+            return false;
+        }
+    }
+
+    return true;
+} 
 
 }//end of the controller 
