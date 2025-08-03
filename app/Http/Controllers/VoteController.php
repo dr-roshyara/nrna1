@@ -345,79 +345,293 @@ public function first_submission(Request $request)
 
 
 
-    /***
-     * 
-     * This is the first submisson of vote 
-     * 
-     */
-    Public function  first_submission_later(Request $request){
-       
-        //dd(request()->all());
-     
-        $auth_user          =auth()->user();
-        $return_to           ='';
+/**
+ * STEP 6: Handle the submission of candidate selections
+ * Process vote data, validate selections, send second verification code,
+ * and redirect to verification page
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\RedirectResponse
+ */
+public function second_submission(Request $request)
+{
+    try {
+        $auth_user = auth()->user();
         
-      
-        /***
-         * 
-         * Get the voting Code here  and set as submitted
-         * 
-         * 
-         */
-        $code                       =$auth_user->code;
-        $code->vote_submitted       =1;
-        $code->vote_submitted_at     = Carbon::now();
-    
-        /****
-         * 
-         *Check the code  
-         */
-         $return_to =$this->vote_pre_check($code);
-         
-         /***
-          * 
-          *Check the Submit 
-          */
-         $this->verify_first_submission($request, $code , $auth_user) ;
-
-         //dd($return_to);
-        if($return_to!=""){
-            if($return_to=='404'){
-                abort(404);
-            } 
-            return redirect()->route($return_to);
+        // Basic authentication check
+        if (!$auth_user) {
+            Log::error('Second submission attempted without authentication');
+            return redirect()->route('dashboard')
+                ->withErrors(['auth' => 'Authentication required. Please log in again.']);
         }
 
-         
-      
-         /**
-          *Here you come only if  the user votes for the first time 
-          * 
-           */
-
-           $vote = request()->all();
-
-           //check the validity of vote 
-
-           //send the second verification code 
-           $totalDuration =$this->send_second_voting_code($code, $auth_user);        
-
-          
-          //save the vote in Session
-          $code_expires_in          =$code->voting_time_in_minutes;
-          $vote["totalDuration"]    =$totalDuration;
-          $vote["code_expires_in"]  =$code_expires_in;
-          $request->session()->put('vote', $vote);
-
-        //redirect to the verification 
-        return redirect()->route('vote.verfiy')
-                ->with([
-                    'totalDuration'=>$totalDuration, 
-                    'code_expires_in'=> $code_expires_in
-                ]); 
+        $code = $auth_user->code;
         
-     }
+        // Check if user has a code record
+        if (!$code) {
+            Log::error('Second submission attempted without code record', ['user_id' => $auth_user->id]);
+            return redirect()->route('code.create')
+                ->withErrors(['code' => 'Voting code not found. Please start the voting process again.']);
+        }
 
+        // Log the submission attempt for debugging
+        Log::info('Second submission started', [
+            'user_id' => $auth_user->id,
+            'user_name' => $auth_user->name,
+            'has_used_code1' => $auth_user->has_used_code1 ?? 'null',
+            'has_used_code2' => $auth_user->has_used_code2 ?? 'null', 
+            'is_voter' => $auth_user->is_voter ?? 'null',
+            'can_vote' => $auth_user->can_vote ?? 'null',
+            'can_vote_now' => $auth_user->can_vote_now ?? 'null',
+            'request_data_keys' => array_keys($request->all())
+        ]);
+
+        // Validate the basic request structure
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required|integer',
+            'national_selected_candidates' => 'nullable|array',
+            'regional_selected_candidates' => 'nullable|array', 
+            'agree_button' => 'required|boolean|accepted',
+        ]);
+
+        if ($validator->fails()) {
+            Log::warning('Second submission validation failed', [
+                'user_id' => $auth_user->id,
+                'errors' => $validator->errors()->toArray()
+            ]);
+            
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Verify user ID matches authenticated user
+        $submitted_user_id = $request->input('user_id');
+        if ((int)$submitted_user_id !== (int)$auth_user->id) {
+            Log::error('User ID mismatch in second submission', [
+                'auth_user_id' => $auth_user->id,
+                'submitted_user_id' => $submitted_user_id
+            ]);
+            
+            return redirect()->back()
+                ->withErrors(['user_id' => 'User verification failed. Please try again.'])
+                ->withInput();
+        }
+
+        // Basic eligibility checks
+        if (!$auth_user->can_vote_now) {
+            return redirect()->route('dashboard')
+                ->withErrors(['eligibility' => 'Voting is not currently available for you.']);
+        }
+
+        // Check if user has already voted
+        if ($code->has_voted) {
+            return redirect()->route('vote.show')
+                ->with('info', 'You have already completed your vote.');
+        }
+
+        // Get all vote data
+        $vote_data = $request->all();
+
+        // Validate vote selections (ensure user made some choices)
+        $validation_errors = $this->validate_candidate_selections($vote_data);
+        if (!empty($validation_errors)) {
+            Log::warning('Vote selection validation failed', [
+                'user_id' => $auth_user->id,
+                'errors' => $validation_errors
+            ]);
+            
+            return redirect()->back()
+                ->withErrors($validation_errors)
+                ->withInput();
+        }
+
+        // Set vote as submitted with timestamp
+        $code->vote_submitted = 1;
+        $code->vote_submitted_at = Carbon::now();
+        $code->save();
+
+        // Send the second verification code
+        $totalDuration = $this->send_second_voting_code($code, $auth_user);
+
+        // Prepare session data with metadata
+        $code_expires_in = $code->voting_time_in_minutes ?? 15; // Default 15 minutes if not set
+        $vote_data["totalDuration"] = $totalDuration;
+        $vote_data["code_expires_in"] = $code_expires_in;
+        $vote_data["submission_timestamp"] = Carbon::now()->toISOString();
+        $vote_data["user_id"] = $auth_user->id;
+        $vote_data["user_name"] = $auth_user->name;
+
+        // Store vote data in session for verification step
+        $request->session()->put('vote', $vote_data);
+
+        // Log successful submission
+        Log::info('Vote second submission completed successfully', [
+            'user_id' => $auth_user->id,
+            'user_name' => $auth_user->name,
+            'total_duration' => $totalDuration,
+            'national_posts_count' => count($vote_data['national_selected_candidates'] ?? []),
+            'regional_posts_count' => count($vote_data['regional_selected_candidates'] ?? []),
+            'session_stored' => true
+        ]);
+
+        // Redirect to verification page
+        return redirect()->route('vote.verify')
+            ->with([
+                'totalDuration' => $totalDuration,
+                'code_expires_in' => $code_expires_in,
+                'success' => 'Vote submitted successfully. Please check your email for verification code.'
+            ]);
+
+    } catch (\Throwable $e) {
+        // Comprehensive error logging
+        Log::error('Second submission failed with exception', [
+            'user_id' => auth()->id(),
+            'error_message' => $e->getMessage(),
+            'error_file' => $e->getFile(),
+            'error_line' => $e->getLine(),
+            'stack_trace' => $e->getTraceAsString(),
+            'request_data' => $request->except(['_token']) // Log request data but exclude token
+        ]);
+
+        return redirect()->back()
+            ->withErrors(['submission' => 'An error occurred while processing your vote. Please try again.'])
+            ->withInput();
+    }
+}
+
+/**
+ * Simplified validation for candidate selections
+ * Focuses on actual data structure rather than complex flow checks
+ *
+ * @param array $vote_data
+ * @return array
+ */
+private function validate_candidate_selections($vote_data)
+{
+    $errors = [];
+
+    // Get selections
+    $national_selections = $vote_data['national_selected_candidates'] ?? [];
+    $regional_selections = $vote_data['regional_selected_candidates'] ?? [];
+
+    // Check if user made any selections at all
+    $has_any_selection = false;
+
+    // Check national selections
+    foreach ($national_selections as $index => $selection) {
+        if ($selection) {
+            if (isset($selection['no_vote']) && $selection['no_vote']) {
+                $has_any_selection = true;
+            } elseif (isset($selection['candidates']) && is_array($selection['candidates']) && count($selection['candidates']) > 0) {
+                $has_any_selection = true;
+                
+                // Validate candidate count doesn't exceed required number
+                $required_count = $selection['required_number'] ?? 1;
+                $candidate_count = count($selection['candidates']);
+                
+                if ($candidate_count > $required_count) {
+                    $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
+                    $errors["national_post_{$index}"] = "Too many candidates selected for {$post_name}. Maximum: {$required_count}";
+                }
+            }
+        }
+    }
+
+    // Check regional selections
+    foreach ($regional_selections as $index => $selection) {
+        if ($selection) {
+            if (isset($selection['no_vote']) && $selection['no_vote']) {
+                $has_any_selection = true;
+            } elseif (isset($selection['candidates']) && is_array($selection['candidates']) && count($selection['candidates']) > 0) {
+                $has_any_selection = true;
+                
+                // Validate candidate count doesn't exceed required number
+                $required_count = $selection['required_number'] ?? 1;
+                $candidate_count = count($selection['candidates']);
+                
+                if ($candidate_count > $required_count) {
+                    $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
+                    $errors["regional_post_{$index}"] = "Too many candidates selected for {$post_name}. Maximum: {$required_count}";
+                }
+            }
+        }
+    }
+
+    // Ensure user made at least one selection or no-vote choice
+    if (!$has_any_selection) {
+        $errors['no_selections'] = 'Please make at least one selection or choose "Skip" for the positions you wish to abstain from.';
+    }
+
+    return $errors;
+}
+/**
+ * Validate vote selections to ensure proper choices are made
+ *
+ * @param array $vote_data
+ * @return array
+ */
+private function validate_vote_selections($vote_data)
+{
+    $errors = [];
+
+    // Get selections
+    $national_selections = $vote_data['national_selected_candidates'] ?? [];
+    $regional_selections = $vote_data['regional_selected_candidates'] ?? [];
+
+    // Validate that user has made at least some choices
+    $has_national_choices = $this->has_valid_selections($national_selections);
+    $has_regional_choices = $this->has_valid_selections($regional_selections);
+
+    if (!$has_national_choices && !$has_regional_choices) {
+        $errors['no_selections'] = 'Please make at least one selection or choose "Skip" for the positions you wish to abstain from.';
+    }
+
+    // Validate individual selections
+    foreach ($national_selections as $index => $selection) {
+        if ($selection && !$selection['no_vote']) {
+            $candidate_count = count($selection['candidates'] ?? []);
+            $required_count = $selection['required_number'] ?? 1;
+            
+            if ($candidate_count > $required_count) {
+                $errors["national_post_{$index}"] = "Too many candidates selected for {$selection['post_name']}. Maximum allowed: {$required_count}";
+            }
+        }
+    }
+
+    foreach ($regional_selections as $index => $selection) {
+        if ($selection && !$selection['no_vote']) {
+            $candidate_count = count($selection['candidates'] ?? []);
+            $required_count = $selection['required_number'] ?? 1;
+            
+            if ($candidate_count > $required_count) {
+                $errors["regional_post_{$index}"] = "Too many candidates selected for {$selection['post_name']}. Maximum allowed: {$required_count}";
+            }
+        }
+    }
+
+    return $errors;
+}
+
+/**
+ * Check if selections array has any valid choices (either candidates or no_vote)
+ *
+ * @param array $selections
+ * @return bool
+ */
+private function has_valid_selections($selections)
+{
+    foreach ($selections as $selection) {
+        if ($selection) {
+            // Valid if either no_vote is true OR candidates array has items
+            if ($selection['no_vote'] || (!empty($selection['candidates']) && count($selection['candidates']) > 0)) {
+                return true;
+            }
+        }
+    }
+    return false;
+} 
+ 
     ////////////////////////////////////////////////// 
     
      /**
@@ -725,52 +939,272 @@ public function first_submission(Request $request)
        return $_candivec; 
     }
 
-    public function verify(){
 
-       $vote        = request()->session()->get('vote');
-       $auth_user   =auth()->user();
-       $code        =$auth_user->code;
-        //    dd("test");
-       $_error   =$this->vote_post_check($auth_user, $code,$vote);
-        // dd("test");
-        // dd($_error);
-        if($_error["error_message"]!=""){
-            echo $_error["error_message"];
-            abort(404);
-        }
-        if($_error["return_to"]!=""){
-           
-            
-           return redirect()->route($_error["return_to"]);
+/**
+ * STEP 7: Display the vote verification page where users confirm their selections
+ * and enter the second verification code to finalize their vote
+ * 
+ * This function handles the verification step after candidate selections have been submitted
+ *
+ * @return \Inertia\Response|\Illuminate\Http\RedirectResponse
+ */
+public function verify()
+{
+    try {
+        $auth_user = auth()->user();
+        $code = $auth_user->code;
         
-        }
-        // dd("test");
-        //check coding  
-        $_message           =$this->second_code_check($code);       
-        $code_expires_in    = $code->voting_time_in_minutes;
-      
-        if($_message["error_message"]!=""){
-                echo $_message["error_message"];
-                abort(404);
+        // Get vote data from session (stored by second_submission)
+        $vote_data = request()->session()->get('vote');
+        
+        // Critical check: Ensure we have vote data in session
+        if (!$vote_data) {
+            Log::warning('Vote verification attempted without session data', [
+                'user_id' => $auth_user->id,
+                'session_id' => request()->session()->getId()
+            ]);
+            
+            return redirect()->route('vote.create')
+                ->withErrors(['session' => 'Vote session expired. Please start the voting process again.']);
         }
 
-        if( $_message["return_to"]!=""){
-          
+        // Perform comprehensive post-submission checks
+        $_error = $this->vote_post_check($auth_user, $code, $vote_data);
+        
+        if ($_error["error_message"] != "") {
+            Log::error('Vote verification post-check failed', [
+                'user_id' => $auth_user->id,
+                'error' => $_error["error_message"]
+            ]);
+            
+            return redirect()->route('dashboard')
+                ->withErrors(['verification' => 'Vote verification failed. Please contact support if this persists.']);
+        }
+        
+        if ($_error["return_to"] != "") {
+            Log::info('Vote verification redirecting user', [
+                'user_id' => $auth_user->id,
+                'redirect_to' => $_error["return_to"]
+            ]);
+            return redirect()->route($_error["return_to"]);
+        }
+
+        // Check second code timing and validity
+        $_message = $this->second_code_check($code);
+        $code_expires_in = $code->voting_time_in_minutes;
+        
+        if ($_message["error_message"] != "") {
+            Log::error('Second code check failed during verification', [
+                'user_id' => $auth_user->id,
+                'error' => $_message["error_message"],
+                'total_duration' => $_message["totalDuration"] ?? 'unknown'
+            ]);
+            
+            return redirect()->route('code.create')
+                ->withErrors(['code' => 'Verification code expired. Please restart the voting process.']);
+        }
+
+        if ($_message["return_to"] != "") {
             return redirect()->route($_message["return_to"]);
         }
-        // dd("testsa");
-       return Inertia::render('Vote/Verify', [
-                'vote'              =>$vote,
-                 'name'             =>$auth_user->name,
-                 'nrna_id'          =>$auth_user->nrna_id,
-                 'state'            =>$auth_user->state,
-                 'totalDuration'    =>$_message["totalDuration"],
-                 'code_expires_in'  =>$code_expires_in,             
-        ]);
-                   
-     
-    } //end of verify
 
+        // Process and structure vote data for clean display
+        $processed_vote_data = $this->process_vote_data_for_verification($vote_data);
+
+        // Calculate remaining time for user awareness
+        $remaining_time = max(0, $code_expires_in - $_message["totalDuration"]);
+        
+        // Prepare comprehensive user information
+        $user_info = [
+            'name' => $auth_user->name,
+            'nrna_id' => $auth_user->nrna_id ?? 'N/A',
+            'state' => $auth_user->state ?? 'N/A',
+            'region' => $auth_user->region ?? 'N/A',
+        ];
+
+        // Generate voting summary for quick overview
+        $voting_summary = $this->generate_verification_summary($processed_vote_data);
+
+        // Log successful verification page load
+        Log::info('Vote verification page loaded successfully', [
+            'user_id' => $auth_user->id,
+            'remaining_time' => $remaining_time,
+            'total_posts' => $voting_summary['total_posts'],
+            'voted_posts' => $voting_summary['voted_posts']
+        ]);
+
+        return Inertia::render('Vote/Verify', [
+            'vote_data' => $processed_vote_data,
+            'user_info' => $user_info,
+            'timing_info' => [
+                'total_duration' => $_message["totalDuration"],
+                'code_expires_in' => $code_expires_in,
+                'remaining_time' => $remaining_time,
+                'submission_time' => $vote_data['submission_timestamp'] ?? Carbon::now()->toISOString(),
+                'code_sent_at' => Carbon::now()->subMinutes($_message["totalDuration"])->format('H:i:s')
+            ],
+            'voting_summary' => $voting_summary,
+        ]);
+
+    } catch (\Exception $e) {
+        Log::error('Verify function encountered unexpected error', [
+            'user_id' => auth()->id(),
+            'error' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'trace' => $e->getTraceAsString()
+        ]);
+
+        return redirect()->route('dashboard')
+            ->withErrors(['system' => 'System error during verification. Please try again or contact support.']);
+    }
+}
+
+/**
+ * Process vote data specifically for verification display
+ * Handles both the new data structure and ensures backward compatibility
+ *
+ * @param array $vote_data
+ * @return array
+ */
+private function process_vote_data_for_verification($vote_data)
+{
+    $processed = [
+        'national_posts' => [],
+        'regional_posts' => [],
+        'has_national_votes' => false,
+        'has_regional_votes' => false,
+        'submission_metadata' => [
+            'user_id' => $vote_data['user_id'] ?? null,
+            'user_name' => $vote_data['user_name'] ?? 'Unknown',
+            'submission_timestamp' => $vote_data['submission_timestamp'] ?? null,
+            'agree_button' => $vote_data['agree_button'] ?? false
+        ]
+    ];
+
+    // Process national posts selections
+    if (isset($vote_data['national_selected_candidates']) && is_array($vote_data['national_selected_candidates'])) {
+        foreach ($vote_data['national_selected_candidates'] as $index => $selection) {
+            if ($selection && is_array($selection)) {
+                $post_data = [
+                    'post_id' => $selection['post_id'] ?? "unknown_national_{$index}",
+                    'post_name' => $selection['post_name'] ?? 'Unknown National Post',
+                    'required_number' => $selection['required_number'] ?? 1,
+                    'no_vote' => $selection['no_vote'] ?? false,
+                    'candidates' => $selection['candidates'] ?? [],
+                    'selection_type' => 'national'
+                ];
+                
+                $processed['national_posts'][] = $post_data;
+                
+                // Check if this post has actual candidate votes
+                if (!$post_data['no_vote'] && !empty($post_data['candidates'])) {
+                    $processed['has_national_votes'] = true;
+                }
+            }
+        }
+    }
+
+    // Process regional posts selections
+    if (isset($vote_data['regional_selected_candidates']) && is_array($vote_data['regional_selected_candidates'])) {
+        foreach ($vote_data['regional_selected_candidates'] as $index => $selection) {
+            if ($selection && is_array($selection)) {
+                $post_data = [
+                    'post_id' => $selection['post_id'] ?? "unknown_regional_{$index}",
+                    'post_name' => $selection['post_name'] ?? 'Unknown Regional Post',
+                    'required_number' => $selection['required_number'] ?? 1,
+                    'no_vote' => $selection['no_vote'] ?? false,
+                    'candidates' => $selection['candidates'] ?? [],
+                    'selection_type' => 'regional'
+                ];
+                
+                $processed['regional_posts'][] = $post_data;
+                
+                // Check if this post has actual candidate votes
+                if (!$post_data['no_vote'] && !empty($post_data['candidates'])) {
+                    $processed['has_regional_votes'] = true;
+                }
+            }
+        }
+    }
+
+    return $processed;
+}
+
+/**
+ * Generate comprehensive voting summary for verification page
+ *
+ * @param array $processed_vote_data
+ * @return array
+ */
+private function generate_verification_summary($processed_vote_data)
+{
+    $summary = [
+        'total_posts' => 0,
+        'voted_posts' => 0,
+        'no_vote_posts' => 0,
+        'candidate_selections' => 0,
+        'completion_percentage' => 0,
+        'national_summary' => [
+            'total' => 0, 
+            'voted' => 0, 
+            'no_vote' => 0,
+            'candidates' => 0
+        ],
+        'regional_summary' => [
+            'total' => 0, 
+            'voted' => 0, 
+            'no_vote' => 0,
+            'candidates' => 0
+        ],
+    ];
+
+    // Count national posts
+    foreach ($processed_vote_data['national_posts'] as $post) {
+        $summary['total_posts']++;
+        $summary['national_summary']['total']++;
+        
+        if ($post['no_vote']) {
+            $summary['no_vote_posts']++;
+            $summary['national_summary']['no_vote']++;
+        } else {
+            $candidate_count = count($post['candidates']);
+            if ($candidate_count > 0) {
+                $summary['voted_posts']++;
+                $summary['national_summary']['voted']++;
+                $summary['candidate_selections'] += $candidate_count;
+                $summary['national_summary']['candidates'] += $candidate_count;
+            }
+        }
+    }
+
+    // Count regional posts
+    foreach ($processed_vote_data['regional_posts'] as $post) {
+        $summary['total_posts']++;
+        $summary['regional_summary']['total']++;
+        
+        if ($post['no_vote']) {
+            $summary['no_vote_posts']++;
+            $summary['regional_summary']['no_vote']++;
+        } else {
+            $candidate_count = count($post['candidates']);
+            if ($candidate_count > 0) {
+                $summary['voted_posts']++;
+                $summary['regional_summary']['voted']++;
+                $summary['candidate_selections'] += $candidate_count;
+                $summary['regional_summary']['candidates'] += $candidate_count;
+            }
+        }
+    }
+
+    // Calculate completion percentage
+    if ($summary['total_posts'] > 0) {
+        $completed_posts = $summary['voted_posts'] + $summary['no_vote_posts'];
+        $summary['completion_percentage'] = round(($completed_posts / $summary['total_posts']) * 100, 1);
+    }
+
+    return $summary;
+}
 
     public function verify_vote_submit()
     {

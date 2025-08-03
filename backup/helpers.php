@@ -79,6 +79,52 @@
        }
    }
 
+
+
+ // new helper functions
+
+if (!function_exists('get_random_string')) {
+    /**
+     * Generate a random string of specified length
+     *
+     * @param int $length
+     * @return string
+     */
+    function get_random_string($length = 6)
+    {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        
+        return $randomString;
+    }
+}
+
+if (!function_exists('check_ip_address')) {
+    /**
+     * Check IP address for rate limiting (placeholder implementation)
+     *
+     * @param string $clientIP
+     * @param int $maxUse
+     * @return array
+     */
+    function check_ip_address($clientIP, $maxUse)
+    {
+        // Simple implementation - you can enhance this
+        return [
+            'error_message' => '',
+            'usage_count' => 1
+        ];
+    }
+}
+ 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
    /***
     *
     *Check Ip Address

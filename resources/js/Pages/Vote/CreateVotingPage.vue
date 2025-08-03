@@ -188,7 +188,7 @@ export default {
                 return;
             }
             
-            form.post('/vote/submit');
+            form.post('/vote/submit_seleccted');
         }
 
         function handleCandidateSelection(type, postIndex, selectionData) {

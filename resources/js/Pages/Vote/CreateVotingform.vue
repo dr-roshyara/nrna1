@@ -17,33 +17,13 @@
                 चुन्नुहोस्।
             </label>   
         </div>
-
-        <!-- No Vote Option -->
-        <div class="flex flex-col items-center mx-auto my-4 p-4 bg-yellow-50 border border-yellow-300 rounded-lg">
-            <div class="flex flex-col text-center mb-3">
-                <label class="text-lg font-semibold text-gray-800">No Vote Option</label>
-                <label class="text-sm text-gray-600">मतदान नगर्ने विकल्प</label>
-            </div>
-            <div class="flex items-center">
-                <input 
-                    type="checkbox"
-                    :id="`no_vote_${post.post_id}`"
-                    name="no_vote_option"
-                    v-model="noVoteSelected"
-                    @change="handleNoVoteChange"
-                    class="h-5 w-5 text-red-600 border-2 border-red-400 rounded focus:ring-red-500"
-                />
-                <label :for="`no_vote_${post.post_id}`" class="ml-2 text-sm font-medium text-gray-700">
-                    I choose not to vote for this position / यस पदका लागि मतदान नगर्ने
-                </label>
-            </div>
-        </div>
                    
+        <!-- Candidates Section -->
         <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
             <div v-for="(candidate, candiIndex) in candidatesWithState" 
                  :key="candidate.candidacy_id"  
-                 class="flex flex-col justify-center p-4 mb-2 text-center border border-gray-100 rounded"
-                 :class="{ 'opacity-50': noVoteSelected }"> 
+                 class="flex flex-col justify-center p-4 mb-2 text-center border border-gray-100 rounded transition-opacity duration-200"
+                 :class="{ 'opacity-40 pointer-events-none': noVoteSelected }"> 
                 
                 <show-candidate 
                     :candidacy_image_path="candidate.image_path_1"
@@ -59,7 +39,7 @@
                         :id="candidate.candidacy_id"
                         :name="post.name"
                         :value="candidate.candidacy_id"  
-                        class="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        class="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 transition-all duration-200"
                         v-model="selected"
                         @change="updateBoxes()"
                         :disabled="candidate.disabled || noVoteSelected"
@@ -68,8 +48,8 @@
             </div>
         </div>
         
-        <!-- Selection summary -->
-        <div class="mb-4 p-2 text-center mx-auto">
+        <!-- Selection Summary -->
+        <div class="mb-4 p-3 text-center mx-auto border-t border-gray-200 pt-4">
             <div v-if="noVoteSelected" class="text-red-600 font-semibold">
                 You have chosen not to vote for {{ post.name }}
                 <br>
@@ -82,10 +62,36 @@
                 </span> 
                 as <span class="font-bold text-lg text-gray-900">{{ post.name }}</span> of NRNA!
             </div>
-            <div v-else class="text-gray-500">
-                No selection made for {{ post.name }}
+            <div v-else class="text-gray-500 text-sm">
+                Please select your preferred candidate(s) for {{ post.name }}
+                <br>
+                <span class="text-xs">कृपया {{ post.nepali_name || post.name }} का लागि आफ्नो मनपर्ने उम्मेदवार छान्नुहोस्</span>
             </div>
-        </div> 
+        </div>
+
+        <!-- No Vote Option - Placed at the bottom in smaller form -->
+        <div class="flex justify-center mx-auto mt-2 mb-2">
+            <div class="bg-gray-200 border border-gray-300 rounded-md px-4 py-2 text-sm">
+                <div class="flex items-center space-x-2">
+                    <input 
+                        type="checkbox"
+                        :id="`no_vote_${post.post_id}`"
+                        name="no_vote_option"
+                        v-model="noVoteSelected"
+                        @change="handleNoVoteChange"
+                        class="h-4 w-4 text-gray-500 border border-gray-400 rounded focus:ring-gray-400 focus:ring-1"
+                    />
+                    <label :for="`no_vote_${post.post_id}`" class="text-xs text-gray-600 cursor-pointer">
+                      I want to skip this position / म यो पदमा मतदान गर्न इच्छुक छैन। 
+                    </label>
+                </div>
+                <div class="text-xs text-gray-500 mt-1 text-center">
+                    (Choose this only if you don't wish to vote for any candidate)
+                    <br>
+                    <span class="text-xs">(कुनै पनि उम्मेदवारलाई मत दिन नचाहेमा मात्र यो छान्नुहोस्)</span>
+                </div>
+            </div>
+        </div>
     </div>                 
 </template>
 
@@ -141,6 +147,12 @@ export default {
             handler() {
                 this.informSelectedCandidates();
             }
+        },
+        
+        noVoteSelected: {
+            handler() {
+                this.informSelectedCandidates();
+            }
         }
     },
     
@@ -173,7 +185,7 @@ export default {
                         candidacy_id: candidate.candidacy_id,
                         user_id: candidate.user?.user_id || candidate.user?.id,
                         name: candidate.user?.name,
-                        post_id: candidate.post_id
+                        post_id: candidate.post_id || this.post.post_id
                     }))
                 };
             }
@@ -185,7 +197,7 @@ export default {
             if (this.noVoteSelected) {
                 // Clear all candidate selections when no vote is selected
                 this.selected = [];
-                // Disable all candidate checkboxes
+                // Disable all candidate checkboxes (handled by :disabled in template)
                 this.candidatesWithState.forEach(candidate => {
                     candidate.disabled = true;
                 });
@@ -247,5 +259,24 @@ export default {
 input[type="checkbox"]:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+/* Smooth transitions for when no vote is selected */
+.transition-opacity {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Make candidates visually de-emphasized when no vote is selected */
+.opacity-40 {
+    opacity: 0.4;
+}
+
+.pointer-events-none {
+    pointer-events: none;
+}
+
+/* Style the no vote section to be less prominent */
+.no-vote-section {
+    background: linear-gradient(to right, #f9fafb, #f3f4f6);
 }
 </style>

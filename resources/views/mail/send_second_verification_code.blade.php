@@ -10,7 +10,7 @@ Please go to the url where you are supposed to give the code.
  and give the voting code
  </p> 
 <p style="margin-top: 2px; margin-bottom:2px; text-align:center;"> 
- <a href="{{ route('vote.verfiy') }}" 
+ <a href="{{ route('vote.verify') }}" 
  style="color:#1E90FF; font-weight:bold; "> 
   मतदान पुर्ण रूपमा सेभ गर्नलाइ  यहाँ क्लिक गर्नुहोस। </a> 
 </p> 
@@ -23,7 +23,7 @@ Please go to the url where you are supposed to give the code.
 अघि देखाएको पर्ममा पुग्न सकिन्छ। 
 </p> 
 <p style="margin-top: 2px; margin-bottom:2px; text-align:center;"> 
- <a href="{{ route('vote.verfiy') }}" 
+ <a href="{{ route('vote.verify') }}" 
  style="color:#1E90FF; font-weight:bold; "> 
   मतदान पुर्ण रूपमा सेभ गर्नलाइ  यहाँ क्लिक गर्नुहोस। </a> 
 </p> 

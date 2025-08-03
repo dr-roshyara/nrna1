@@ -378,7 +378,7 @@ public function first_submission(Request $request)
           $request->session()->put('vote', $vote);
 
         //redirect to the verification 
-        return redirect()->route('vote.verfiy')
+        return redirect()->route('vote.verifiy')
                 ->with([
                     'totalDuration'=>$totalDuration, 
                     'code_expires_in'=> $code_expires_in
