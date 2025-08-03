@@ -64,6 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'additional_address',
         'nrna_id',
         'can_vote_now',
+        'can_vote',
         'has_voted',
         'has_candidacy',
         'lcc',
@@ -71,7 +72,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'social_id',
         'social_type',
         'google_id',
-        'facebook_id'
+        'facebook_id',
+        'approvedBy', 
 
     ];
 
@@ -131,7 +133,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasone(DeligateVote::class);
         // return $this->hasOne(Code::class,  'foreign_key');
         // you can also write $this->hasone('App\Vote')
+  
     }
+    public function candidacies()
+{
+    // If 'post_id' is the foreign key in Candidacy and 'post_id' is the key in Post:
+    return $this->hasMany(\App\Models\Candidacy::class, 'post_id', 'post_id');
+}
 
     /**
      * Each user can have one and only candidacy
@@ -196,5 +204,161 @@ class User extends Authenticatable implements MustVerifyEmail
                 });
             });
         });
+
+
     }
+    /**
+ * Get the voter record associated with the user.
+ * 
+ * @return \Illuminate\Database\Eloquent\Relations\HasOne
+ */
+public function voter()
+{
+    return $this->hasOne(Voter::class);
+}
+/**
+ * Get the election committee member record associated with the user.
+ * 
+ * @return \Illuminate\Database\Eloquent\Relations\HasOne
+ */
+public function electionCommitteeMember()
+{
+    return $this->hasOne(ElectionCommitteeMember::class);
+}
+
+
+/**
+ * Check if user is a voter
+ * 
+ * @return bool
+ */
+public function isVoter()
+{
+    return $this->is_voter && $this->voter()->exists();
+}
+/**
+ * Check if user is an election committee member
+ * 
+ * @return bool
+ */
+public function isCommitteeMember()
+{
+    return $this->is_committee_member && $this->electionCommitteeMember()->exists();
+}
+
+/**
+ * Check if user can vote (is voter and approved)
+ * 
+ * @return bool
+ */
+public function canVote()
+{
+    return $this->isVoter() && 
+           $this->voter->can_vote && 
+           $this->voter->is_active;
+}
+
+/**
+ * Check if user has committee permission
+ * 
+ * @param string $permission
+ * @return bool
+ */
+public function hasCommitteePermission($permission)
+{
+    if (!$this->isCommitteeMember()) {
+        return false;
+    }
+    
+    $permissions = $this->electionCommitteeMember->permissions ?? [];
+    return in_array($permission, $permissions);
+}
+/**
+ * Get user's committee role
+ * 
+ * @return string|null
+ */
+public function getCommitteeRole()
+{
+    return $this->electionCommitteeMember?->role;
+}
+
+/**
+ * Scope: Get only voters
+ * 
+ * @param \Illuminate\Database\Eloquent\Builder $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+public function scopeVoters($query)
+{
+    return $query->where('is_voter', true)->whereHas('voter');
+}
+
+/**
+ * Scope: Get only committee members
+ * 
+ * @param \Illuminate\Database\Eloquent\Builder $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+public function scopeCommitteeMembers($query)
+{
+    return $query->where('is_committee_member', true)->whereHas('electionCommitteeMember');
+}
+
+/**
+ * Scope: Get users who can vote
+ * 
+ * @param \Illuminate\Database\Eloquent\Builder $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+public function scopeEligibleVoters($query)
+{
+    return $query->voters()->whereHas('voter', function($q) {
+        $q->where('can_vote', true)->where('is_active', true);
+    });
+}
+
+/**
+ * Reset all voting-related state for this user and their associated voting code.
+ *
+ * Intended for development, QA, or testing purposes only.
+ * Allows a developer to reset a voter's status and related code object for repeated testing of the voting flow.
+ *
+ * Usage (in tinker):
+ *   $user = App\Models\User::find(1);
+ *   $user->resetVotingState();
+ *
+ * @return $this
+ */
+public function resetVotingState()
+{
+    // Reset primary voting flags for the user
+    $this->can_vote_now    = 1;   // Allow voting immediately
+    $this->can_vote        = 1;   // User is eligible to vote
+    $this->has_voted       = 0;   // Mark as NOT having voted
+    $this->has_used_code1  = 0;   // Mark as NOT having used Code-1
+    $this->has_used_code2  = 0;   // Mark as NOT having used Code-2
+    $this->is_voter        = 1;   // Ensure this user is a registered voter
+    $this->code1           = null; // Clear Code-1 (optional, if code is stored here)
+    $this->code2           = null; // Clear Code-2 (optional, if code is stored here)
+    $this->save();
+
+    // Optionally reset any related Code model (if exists via a relationship)
+    // This assumes a one-to-one relationship: User hasOne Code
+    if (method_exists($this, 'code') || $this->relationLoaded('code')) {
+        $code = $this->code;
+        if ($code) {
+            $code->vote_submitted    = 0;    // Mark vote as NOT submitted
+            $code->vote_submitted_at = null; // Clear submission timestamp
+            // Add any additional voting or code state resets as needed here
+            $code->save();
+        }
+    }
+
+    // Return the user instance for chaining or inspection
+    return $this;
+
+}
+
+
 }

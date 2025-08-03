@@ -405,23 +405,80 @@ class CodeController extends Controller
         $this->times_use_cleintIP= $times_ip_used[0]->ipCount;
         // if($this->times_use_cleintIP>$this->max_use_clientIP){
         if($this->times_use_cleintIP >=$this->max_use_clientIP){
-            $_message['error_message'] ='<div style="margin:auto; color:red;
-                padding:20px; font-weight:bold; text-align:center;">';
-                $_message['error_message'] .="<p> There are alerady more than " ;
-                $_message['error_message'] .=$this->max_use_clientIP ;
-                $_message['error_message'] .=" Votes casted from your iP Address: ";
-                $_message['error_message'] .='<br> <span style="font-weight:bold; color: black;"> '.$this->clientIP."</span><br>";
-                $_message['error_message'] .="We are sorry to say that You can not vote
-                any more using this ip address.</p>";
-                $_message['error_message'] .="
-                 <p> तपाइको आइपी एड्रेस वाट पहिले नै ".$this->max_use_clientIP.
-                 ' पटक भाेट हाली  सकिएको छ। माफ गर्नु होला,  हाम्राे नियम अनुसार एउटा आइपि एड्रेस वाट त्यस भन्दा वढी भोट हाल्न मिल्दैन।  </p>
+           
+           if ($this->times_use_clientIP >= $this->max_use_clientIP) {
+    $css = '
+        <style>
+            .vote-error-container {
+                max-width: 600px;
+                margin: 2rem auto;
+                padding: 2rem;
+                background-color: #fff;
+                border: 1px solid #e2e8f0;
+                border-radius: 0.5rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                font-family: Arial, sans-serif;
+            }
+            .vote-error-message {
+                color: #e53e3e;
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+                line-height: 1.6;
+            }
+            .vote-error-message-nepali {
+                color: #4a5568;
+                margin-bottom: 1.5rem;
+                line-height: 1.6;
+                font-size: 0.95rem;
+            }
+            .vote-error-ip {
+                color: #2d3748;
+                font-weight: 700;
+                display: inline-block;
+                margin: 0.5rem 0;
+            }
+            .vote-error-link {
+                margin-top: 1rem;
+            }
+            .vote-error-link a {
+                color: #3182ce;
+                font-weight: 600;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .vote-error-link a:hover {
+                color: #2c5282;
+                text-decoration: underline;
+            }
+        </style>
+    ';
 
-                 <p style="margin-top: 4px; color:#1E90FF; font-weight:bold;">
-                    <a href="'.route('dashboard'). '"> Go to the Dashboard </a> </p>
-                    </div>
-                 ';
-            $_message['return_to'] ='404';
+    $html = '
+        <div class="vote-error-container">
+            <p class="vote-error-message">
+                There are already more than ' . $this->max_use_clientIP . ' votes cast from your IP Address:
+                <br>
+                <span class="vote-error-ip">' . $this->clientIP . '</span>
+                <br>
+                We are sorry to say that you cannot vote any more using this IP address.
+            </p>
+            
+            <p class="vote-error-message-nepali">
+               aas ---तपाइको आइपी एड्रेस वाट पहिले नै ' . $this->max_use_clientIP . ' पटक भोट हाली सकिएको छ। 
+                माफ गर्नु होला, हाम्राे नियम अनुसार एउटा आइपि एड्रेस वाट त्यस भन्दा वढी भोट हाल्न मिल्दैन।
+            </p>
+            
+            <p class="vote-error-link">
+                <a href="' . route('dashboard') . '">Go to the Dashboard</a>
+            </p>
+        </div>
+    ';
+
+    $_message['error_message'] = $css . $html;
+    $_message['return_to'] = '404';
+    return $_message;
+}    $_message['return_to'] ='404';
             // dd($_message);
 
           }

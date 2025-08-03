@@ -308,7 +308,7 @@ class DeligateVoteController extends Controller
            // session(['deligatevote'=>$candi_vec]);
            //$request->session()->put('key', 'value');
            //session(['key' => 'value']);
-           return redirect()->route('deligatevote.verfiy');
+           return redirect()->route('deligatevote.verifiy');
 
        /****
         * Now save the code and show directly

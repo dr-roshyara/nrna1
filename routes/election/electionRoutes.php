@@ -20,7 +20,12 @@ Route::middleware(['auth:sanctum', 'verified']) ->get('/election', function(){
 Route::middleware(['auth:sanctum', 'verified'])
         ->get('/voters/index', [VoterlistController::class, 'index'])->name('voters.index');
 
+// ✅ IMPORTANT: Add these exact routes
+Route::middleware(['auth:sanctum', 'verified'])
+        ->post('/voters/{id}/approve', [VoterlistController::class, 'approveVoter'])->name('voters.approve');
 
+Route::middleware(['auth:sanctum', 'verified'])
+        ->post('/voters/{id}/reject', [VoterlistController::class, 'rejectVoter'])->name('voters.reject');        
 /**
  * All candidates
  */
@@ -39,21 +44,39 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
    Route::middleware(['auth:sanctum', 'verified']) ->get('/code/create', [CodeController::class, 'create'])->name('code.create');
    Route::middleware(['auth:sanctum', 'verified']) ->post('/codes', [CodeController::class, 'store'])->name('code.store');
 
-
+    //it actually created Agreement create i accept. 
     Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/create', [VoteController::class, 'create'])->name('vote.create');
-
-
+    //submit I accept sh
     Route::middleware(['auth:sanctum', 'verified']) ->post('/vote/submit', [VoteController::class, 'first_submission'])->name('vote.submit');
-    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/verify', [VoteController::class, 'verify'])->name('vote.verfiy');
-    Route::middleware(['auth:sanctum', 'verified']) ->post('/votes', [VoteController::class, 'store'])->name('vote.store');
-    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/verify_to_show' , [VoteController::class, 'verify_to_show'])->name('vote.verify_to_show');
+  
+    //After successful open the vote ballet now 
+    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/cast', [VoteController::class, 'cast_vote'])->name('vote.cast');
+    //submit the vote with selected candidates 
+    Route::middleware(['auth:sanctum', 'verified']) ->post('/vote/submit_seleccted', [VoteController::class, 'second_submission'])->name('vote.submit_seleccted');
+    
+    //verify
+    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/verify', [VoteController::class, 'verify'])->name('vote.verify');
+
+    Route::middleware(['auth:sanctum', 'verified'])->post('/votes', [VoteController::class, 'store'])->name('vote.store');
+
+    //
+    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/verify_to_show', [VoteController::class, 'verify_to_show'])->name('vote.verify_to_show');
+
+    Route::middleware(['auth:sanctum', 'verified'])->post('/vote/submit_code_to_view_vote', [VoteController::class, 'submit_code_to_view_vote'])->name('vote.submit_code_to_view_vote');
+
     Route::middleware(['auth:sanctum', 'verified']) ->post('/verify_final_vote' , [VoteController::class, 'verify_final_vote'])->name('vote.verify_final_vote');
 
-   Route::middleware(['auth:sanctum', 'verified']) ->get('/votes/index', [VoteController::class, 'index'])->name('vote.index');
-   Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/show', [VoteController::class, 'show'])->name('vote.show');
+   Route::middleware(['auth:sanctum', 'verified'])->get('/votes/index', [VoteController::class, 'index'])->name('vote.index');
+   Route::middleware(['auth:sanctum', 'verified'])->get('/vote/show', [VoteController::class, 'show'])->name('vote.show');
+   
    Route::middleware(['auth:sanctum', 'verified']) ->get('/election/result', [ResultController  ::class, 'index'])->name('result.index');
 
-//});
+// Vote verification and display routes
+
+
+
+
+   //});
 //election result
 Route::get('vote/thankyou', [VoteController::Class , 'thankyou'])->name('vote.thankyou');
 /**
@@ -71,17 +94,25 @@ Route::middleware(['auth:sanctum', 'verified']) ->get('deligatecandidacy/update'
  Route::middleware(['auth:sanctum', 'verified']) ->get('deligatecandidacies/index', [DeligateCandidacyController::class, 'index'])->name('deligatecandidacy.index');
  Route::middleware(['auth:sanctum', 'verified']) ->get('deligatevote/create', [DeligateVoteController::class, 'create'])->name('deligatevote.create');
  Route::middleware(['auth:sanctum', 'verified']) ->post('/deligatevote/submit', [DeligateVoteController::class, 'first_submission'])->name('deligatevote.submit');
- Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/verify', [DeligateVoteController::class, 'verify'])->name('deligatevote.verfiy');
+ Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/verify', [DeligateVoteController::class, 'verify'])->name('deligatevote.verifiy');
  Route::middleware(['auth:sanctum', 'verified']) ->post('/deligatevotes', [DeligateVoteController::class, 'store'])->name('deligatevote.store');
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevotes/index', [DeligateVoteController::class, 'index'])->name('deligatevote.index');
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/show', [DeligateVoteController::class, 'show'])->name('deligatevote.show');
 
-/**
+// election committe
+    Route::middleware(['auth:sanctum', 'verified'])->get('/election/committee', function () {
+                    return Inertia::render('Election/ElectionCommittee');
+                })
+                ->name('election.committee');
+   
+ /**
  * Deligate Vote Count
  *
  */
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/count', [DeligateVoteController::class, 'count'])->name('deligatevote.count');
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/result', [DeligateVoteController::class, 'result'])->name('deligatevote.result');
+
+
 
 
 //show posts

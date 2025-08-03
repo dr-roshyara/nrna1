@@ -23,12 +23,12 @@
 // import NrnaLayout from "@/Layouts/NrnaLayout";
 import Calendar from "@/Components/Committee/Calendar.vue";
 import SocialLayout from "@/Layouts/SocialLayout";
-import RightBar from "@/components/Discussion/RightBar.vue";
-import LeftBar from "@/components/Discussion/LeftBar.vue";
+import RightBar from "@/Components/Discussion/RightBar.vue";
+import LeftBar from "@/Components/Discussion/LeftBar.vue";
 import AppLayout from "@/Layouts/AppLayout";
 import Welcome from "@/Jetstream/Welcome";
-import JoinNetwork from "@/components/General/JoinNetwork.vue";
-import Timeline from "@/components/Discussion/Timeline.vue";
+import JoinNetwork from "@/Components/General/JoinNetwork.vue";
+import Timeline from "@/Components/Discussion/Timeline.vue";
 import Openions from "@/Components/Discussion/Openions";
 export default {
     components: {

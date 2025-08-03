@@ -122,7 +122,7 @@
                                 <span class="px-2 bg-white text-gray-500">Or continue with</span>
                             </div>
                         </div>
-
+<!-- 
                         <div class="mt-6">
                             <a 
                                 href="/login/google"
@@ -136,7 +136,7 @@
                                 </svg>
                                 <span class="ml-2">Sign in with Google</span>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- Registration Section -->

@@ -64,7 +64,9 @@ Route::get('/', function () {
     //defile title
     // dd(auth()->user());
     if( auth()->user()!=null ){
-         return Inertia::render('Dashboard/MainDashboard');
+        return Inertia::render('Dashboard/ElectionDashboard');
+    
+        //  return Inertia::render('Dashboard/MainDashboard');
     }
 
     return Inertia::render('Welcome', [
@@ -76,12 +78,14 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    // return Inertia::render('Dashboard');
     $authUser =null;
     if(Auth::check()){
         $authUser =Auth::user();
 
     }
+    return Inertia::render('Dashboard/ElectionDashboard',[
+        'authUser'=>$authUser,
+    ]);
     // dd($authUser);
     return Inertia::render('Dashboard/MainDashboard',[
         'authUser'=>$authUser,

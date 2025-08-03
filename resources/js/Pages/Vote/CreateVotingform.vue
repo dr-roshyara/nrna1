@@ -1,240 +1,282 @@
 <template>
-     <div id="first_vote_window" 
-          class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">      
-          <div class="flex flex-col text-xl font-bold text-gray-900 mx-auto text-center justify-center">
-                      <label> Please choose <span>   {{get_required_number(this.candidates)}} </span>   Candidate as the <span class="text-gray-900 font-bold"> {{get_post_name(this.candidates)}} </span>. </label> 
-                      <label class="p-2"> कृपया <span>   {{get_required_number(this.candidates)}} </span> जना लाई  <span class="text-gray-900 font-bold"> {{get_post_name(this.candidates)}} </span> चुन्नुहोस ।  </label>   
-          </div>
+    <div id="vote_window" 
+         class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">      
+        
+        <div class="flex flex-col text-xl font-bold text-gray-900 mx-auto text-center justify-center">
+            <label>
+                Please choose 
+                <span class="text-indigo-600">{{ post.required_number }}</span> 
+                candidate(s) as the 
+                <span class="text-gray-900 font-bold">{{ post.name }}</span>.
+            </label> 
+            <label class="p-2">
+                कृपया 
+                <span class="text-indigo-600">{{ post.required_number }}</span> 
+                जना लाई  
+                <span class="text-gray-900 font-bold">{{ post.nepali_name || post.name }}</span> 
+                चुन्नुहोस्।
+            </label>   
+        </div>
                    
-    <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
-            <!-- {{candidates.length}} -->
-            <!-- {{candidates}} -->
-        <div  v-for="(candidate, candiIndx) in candidates" :key="candiIndx"  
-             class="flex flex-col justify-center p-4 mb-2 text-center  
-              border border-gray-100 rounded"> 
-               <!-- test: {{candidate.image_path_1}}  -->
-                <!-- {{candidate.post.name}}
-                {{candidate.user.name}} -->
-
+        <!-- Candidates Section -->
+        <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
+            <div v-for="(candidate, candiIndex) in candidatesWithState" 
+                 :key="candidate.candidacy_id"  
+                 class="flex flex-col justify-center p-4 mb-2 text-center border border-gray-100 rounded transition-opacity duration-200"
+                 :class="{ 'opacity-40 pointer-events-none': noVoteSelected }"> 
+                
                 <show-candidate 
-                    :candidacy_image_path ="candidate.image_path_1"
-                    :post_name            ="candidate.post.name"   
-                     :post_nepali_name     ="get_nepali_name(candidate.post_id)"  
-                    :candidacy_name       ="candidate.user.name">
-                </show-candidate>              
-                <!-- here starts  voting form -->
+                    :candidacy_image_path="candidate.image_path_1"
+                    :post_name="post.name"   
+                    :post_nepali_name="post.nepali_name"  
+                    :candidacy_name="candidate.user?.name || 'Unknown Candidate'"
+                />
+                
+                <!-- Voting checkbox -->
                 <div class="px-2 py-2">
                     <input 
-                        type      ="checkbox"
-                        :id       ="candidate.candidacy_id"
-                        :name     ="candidate.post.name"
-                        :value    ="candidate.candidacy_id"  
-                        class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 
-                            focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                        v-model= "selected"
-                        @change    ="updateBoxes(candidates, 
-                                    this.selected, 
-                                    this.icc_memberTicks)" 
-                        :disabled  ="candidate.disabled"
-                        v-on:change   ="inform_selected_candidates()"     
+                        type="checkbox"
+                        :id="candidate.candidacy_id"
+                        :name="post.name"
+                        :value="candidate.candidacy_id"  
+                        class="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 transition-all duration-200"
+                        v-model="selected"
+                        @change="updateBoxes()"
+                        :disabled="candidate.disabled || noVoteSelected"
                     />
-                  
                 </div> 
-
-                 <!-- here the voting form ends  -->
-                
+            </div>
         </div>
-                        
+        
+        <!-- Selection Summary -->
+        <div class="mb-4 p-3 text-center mx-auto border-t border-gray-200 pt-4">
+            <div v-if="noVoteSelected" class="text-red-600 font-semibold">
+                You have chosen not to vote for {{ post.name }}
+                <br>
+                <span class="text-sm">तपाईंले {{ post.nepali_name || post.name }} का लागि मतदान नगर्ने रोज्नुभएको छ</span>
+            </div>
+            <div v-else-if="selected.length" class="text-green-600"> 
+                You have selected 
+                <span class="font-bold text-indigo-600"> 
+                    {{ getSelectedNames() }}
+                </span> 
+                as <span class="font-bold text-lg text-gray-900">{{ post.name }}</span> of NRNA!
+            </div>
+            <div v-else class="text-gray-500 text-sm">
+                Please select your preferred candidate(s) for {{ post.name }}
+                <br>
+                <span class="text-xs">कृपया {{ post.nepali_name || post.name }} का लागि आफ्नो मनपर्ने उम्मेदवार छान्नुहोस्</span>
+            </div>
+        </div>
 
-    </div>
-     <div  class="mb-4 p-2 text-center mx-auto" v-if="selected.length"> 
-         You have selected 
-                      <span class="font-bold text-indigo-600"> 
-                          {{find_selected_name(this.candidates,selected)}} </span> 
-                      as <span class="font-bold text-lg text-gray-900"> {{this.get_post_name(this.candidates)}} </span>  of NRNA !
-             
-    </div> 
-     </div>                 
-
+        <!-- No Vote Option - Placed at the bottom in smaller form -->
+        <div class="flex justify-center mx-auto mt-2 mb-2">
+            <div class="bg-gray-200 border border-gray-300 rounded-md px-4 py-2 text-sm">
+                <div class="flex items-center space-x-2">
+                    <input 
+                        type="checkbox"
+                        :id="`no_vote_${post.post_id}`"
+                        name="no_vote_option"
+                        v-model="noVoteSelected"
+                        @change="handleNoVoteChange"
+                        class="h-4 w-4 text-gray-500 border border-gray-400 rounded focus:ring-gray-400 focus:ring-1"
+                    />
+                    <label :for="`no_vote_${post.post_id}`" class="text-xs text-gray-600 cursor-pointer">
+                      I want to skip this position / म यो पदमा मतदान गर्न इच्छुक छैन। 
+                    </label>
+                </div>
+                <div class="text-xs text-gray-500 mt-1 text-center">
+                    (Choose this only if you don't wish to vote for any candidate)
+                    <br>
+                    <span class="text-xs">(कुनै पनि उम्मेदवारलाई मत दिन नचाहेमा मात्र यो छान्नुहोस्)</span>
+                </div>
+            </div>
+        </div>
+    </div>                 
 </template>
 
 <script>
 import ShowCandidate from '@/Shared/ShowCandidate'
+
 export default {
- props:{
-     candidates: Array
- },
-
- components:{
-     ShowCandidate
- },
- data(){
-    return {
-     selected: [],
-     icc_member_post_id:           "2021_01",
-     icc_memberTicks:{
-            limit: 1,
-            ticks:[]
+    name: 'CreateVotingform',
+    
+    components: {
+        ShowCandidate
     },
-
-    }
- },
- computed:{
-    getSelectionLength(){        
-            return this.selected.length;
+    
+    props: {
+        candidates: {
+            type: Array,
+            required: true,
+            default: () => []
         },
-     
-     /***************************************************************************/
-      get_selected_name(candiVec,selected_id){
-          /**
-           *@input1 : candidacy vector , 
-           *@input2: selected id
-           */
-          return this.find_selected_name(candiVec, selected_id);
-        // return selected_name
-      },
-       get_selected_ids(candiVec,selected_id){
-          /**
-           *@input1 : candidacy vector , 
-           *@input2: selected id
-           */
-          return this.find_selected_ids(candiVec, selected_id);
-        // return selected_name
-      },
-      
-
-    
- },
- methods:{
-       inform_selected_candidates(){
-        this.$emit('add_selected_candidates', this.selected);
-    },    
-     get_nepali_name(post_id){
-       //president 
-        if(post_id=="2021_01"){
-            return "आइसीसी अद्यक्ष" 
+        post: {
+            type: Object,
+            required: true
         }
-        if(post_id=="2021_02"){
-            return "उपाध्यक्ष" 
-        }
-        if(post_id=="2021_03"){
-            return "महिला  उपाध्यक्ष" 
-        }
-        
-        if(post_id=="2021_04"){
-            return "युबा  उपाध्यक्ष" 
-        }
-         if(post_id=="2021_05"){
-            return "महासचिव" 
-        }
-         if(post_id=="2021_06"){
-            return "सचिव" 
-        }
-        
-        
-     },
-     get_post_name(candiVec){
-        //   console.log(candiVec[0]);
-          return candiVec[0].post.name;
-      },
-      get_required_number(candiVec){
-        //   console.log(candiVec[0]);
-          return candiVec[0].post.required_number;
-      },
-      
-      updateBoxes(candiVec, selectedVec,tickObj) {
-       /**
-        * @param1  : candidateVector 
-        * @param2  : selected vector 
-        * @tickobj : ticks defined in the data. 
-        * 
-        * 
-        */
-        //
-      
-      // update the number of ticks...
-      // this.ticks = this.icc_members.filter(box => this.form.president.includes(box.candidacy_id));
-       /***
-        * 
-        * first determine how many ticks  are allwed .
-        * The number of ticks are given in the post.required_number  
-        * this is given in the required number of for each post . 
-        * 
-        */
-        tickObj.limit =candiVec[0].post.required_number
-
-        /**
-         * 
-         *Get the selected candidates in ticks
-         */
-        tickObj.ticks = candiVec.filter(box => selectedVec.includes(box.candidacy_id));
-       
-        // console.log("tick length: "+tickObj.ticks.length);
-        // console.log(tickObj.ticks);
-       
-      // re-enable checkboxes if back under the limit...
-      if (tickObj.ticks.length < tickObj.limit) {
-         candiVec.forEach(box => {
-          if (!selectedVec.includes(box.post_id)) box.disabled = false;
-        });
-      }
-
-      // disable empty checkboxes if at the limit...
-      if (tickObj.ticks.length == tickObj.limit) {
-        candiVec.forEach(box => {
-          // console.log("candidacy id: "+box.candidacy_id)
-          // console.log(selectedVec); 
-          if (!selectedVec.includes(box.candidacy_id)) box.disabled = true;
-        });
-      }
-     
     },
     
-    find_selected_name(candiVec, selectedVec){
-        // console.log(candiVec)
-        // console.log(selected_id)
-         let selected_names =[]
-         candiVec.forEach(box => {
-          // console.log("candidacy id: "+box.candidacy_id) 
-          
-          if (selectedVec.includes(box.candidacy_id))  selected_names.push(box.user.name);
-        });
-        let  elected_names =selected_names.join(',');
-        return elected_names
-
-     },
-      find_selected_user_id(candiVec,selectedVec){
-        // console.log(candiVec)
-        // console.log(selected_id)
-         let selected_ids =[]
-         candiVec.forEach(box => {
-          // console.log("candidacy id: "+box.candidacy_id)
-          // console.log(selectedVec); 
-          if (selectedVec.includes(box.candidacy_id))  selected_ids.push(box.user_id);
-        });
-        let  elected_user_ids =selected_ids.join(',');
-        return elected_user_ids
-
-     },
-      getSortOrder(prop) {    
-            return function(a, b) {    
-                if (a[prop] > b[prop]) {    
-                    return 1;    
-                } else if (a[prop] < b[prop]) {    
-                    return -1;    
-                }    
-                return 0;    
+    data() {
+        return {
+            selected: [],
+            candidatesWithState: [],
+            noVoteSelected: false
+        }
+    },
+    
+    computed: {
+        maxSelections() {
+            return this.post?.required_number || 1;
+        }
+    },
+    
+    watch: {
+        candidates: {
+            immediate: true,
+            handler(newCandidates) {
+                // Initialize candidates with disabled state
+                this.candidatesWithState = newCandidates.map(candidate => ({
+                    ...candidate,
+                    disabled: false
+                }));
             }
-                
         },
-    SortByName(x,y) {
-      return ((x.candidacy_name == y.candidacy_name) ? 0 : ((x.candidacy_name > y.candidacy_name) ? 1 : -1 ));
+        
+        selected: {
+            handler() {
+                this.informSelectedCandidates();
+            }
+        },
+        
+        noVoteSelected: {
+            handler() {
+                this.informSelectedCandidates();
+            }
+        }
     },
-
     
-
-    // here ends 
- }, //end of methods 
-
+    methods: {
+        informSelectedCandidates() {
+            // Emit the selected candidate objects, not just IDs
+            let selectionData;
+            
+            if (this.noVoteSelected) {
+                // When no vote is selected, send a special structure
+                selectionData = {
+                    post_id: this.post.post_id,
+                    post_name: this.post.name,
+                    required_number: this.post.required_number,
+                    no_vote: true,
+                    candidates: []
+                };
+            } else {
+                // Normal candidate selection
+                const selectedCandidates = this.candidatesWithState.filter(candidate => 
+                    this.selected.includes(candidate.candidacy_id)
+                );
+                
+                selectionData = {
+                    post_id: this.post.post_id,
+                    post_name: this.post.name,
+                    required_number: this.post.required_number,
+                    no_vote: false,
+                    candidates: selectedCandidates.map(candidate => ({
+                        candidacy_id: candidate.candidacy_id,
+                        user_id: candidate.user?.user_id || candidate.user?.id,
+                        name: candidate.user?.name,
+                        post_id: candidate.post_id || this.post.post_id
+                    }))
+                };
+            }
+            
+            this.$emit('add_selected_candidates', selectionData);
+        },
+        
+        handleNoVoteChange() {
+            if (this.noVoteSelected) {
+                // Clear all candidate selections when no vote is selected
+                this.selected = [];
+                // Disable all candidate checkboxes (handled by :disabled in template)
+                this.candidatesWithState.forEach(candidate => {
+                    candidate.disabled = true;
+                });
+            } else {
+                // Re-enable candidate checkboxes when no vote is deselected
+                this.candidatesWithState.forEach(candidate => {
+                    candidate.disabled = false;
+                });
+            }
+            
+            // Inform parent component about the change
+            this.informSelectedCandidates();
+        },
+        
+        updateBoxes() {
+            // If no vote is selected, don't allow candidate selection
+            if (this.noVoteSelected) {
+                return;
+            }
+            
+            // Re-enable all checkboxes first
+            this.candidatesWithState.forEach(candidate => {
+                candidate.disabled = false;
+            });
+            
+            // If we've reached the limit, disable unselected checkboxes
+            if (this.selected.length >= this.maxSelections) {
+                this.candidatesWithState.forEach(candidate => {
+                    if (!this.selected.includes(candidate.candidacy_id)) {
+                        candidate.disabled = true;
+                    }
+                });
+            }
+        },
+        
+        getSelectedNames() {
+            if (this.noVoteSelected) {
+                return 'No Vote';
+            }
+            
+            const selectedCandidates = this.candidatesWithState.filter(candidate => 
+                this.selected.includes(candidate.candidacy_id)
+            );
+            return selectedCandidates.map(candidate => candidate.user?.name || 'Unknown').join(', ');
+        }
+    }
 }
 </script>
+
+<style scoped>
+#vote_window {
+    transition: all 0.3s ease;
+}
+
+#vote_window:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+input[type="checkbox"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Smooth transitions for when no vote is selected */
+.transition-opacity {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Make candidates visually de-emphasized when no vote is selected */
+.opacity-40 {
+    opacity: 0.4;
+}
+
+.pointer-events-none {
+    pointer-events: none;
+}
+
+/* Style the no vote section to be less prominent */
+.no-vote-section {
+    background: linear-gradient(to right, #f9fafb, #f3f4f6);
+}
+</style>

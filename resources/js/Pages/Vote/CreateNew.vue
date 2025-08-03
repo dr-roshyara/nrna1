@@ -1,86 +1,89 @@
 <template>
     <nrna-layout>
         <app-layout>
-           <div class="mt-6 text-center"> 
-            <jet-validation-errors class="mb-4  mx-auto text-center " />  
-            <div class="m-auto text-center bg-blue-200 py-4 ">  
-            <p class="m-auto text-blue-700 font-bold text-sm"> Congratulation {{user_name}}! </p> 
-            <p> You have given the correct voting code. you can Vote now!</p>
-            <p class="m-auto"> Please select the correct candidates of your choice</p>
-            <p> यहाँले दिएको भोटिङ कोड सही भएको प्रमाणित भाईसकेको छ। कृपया अब आफ्नो इच्छा अनुसार मतदान गर्न सक्नु हुने छ। </p>
-            </div>  
-          </div>
-               <!-- <p class="text-center">  {{regional_posts.data.length}} </p>  
-               <p class="text-center">  {{national_posts.data.length}} </p>   -->
-                   <div v-if="$page.props.errors.agree_button">
-                       {{ $page.props.errors.agree_button }} 
-                       </div>
-          <form @submit.prevent="submit" class=" text-center mx-auto mt-10">
-                <div 
-                v-for ="(post, pId) in national_posts.data" :key="pId"
-                :class="[pId%2==0? 'second_vote_window flex flex-col': 'first_vote_window flex flex-col']"
-            > 
-                <create-post
-                    :post ="post"
-                     @add_selected_candidates = "this.form.natioanal_selected_candidates[pId] = add_selected_to_form_submission(post,selectedArray=$event)"
-                  > 
+<div class="mt-6 text-center"> 
+    <!-- <jet-validation-errors class="mb-4 mx-auto text-center" />  
+     -->
+    <!-- Just better styling for success message -->
+    <div class="m-auto text-center bg-gradient-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg max-w-4xl">  
+        <div class="text-3xl mb-2">🎉</div>
+        <p class="text-xl font-bold mb-2">Congratulation {{user_name}}!</p> 
+        <p class="text-lg mb-2">You have given the correct voting code. You can Vote now!</p>
+        <p class="mb-3">Please select the correct candidates of your choice</p>
+        <p class="text-sm opacity-90">यहाँले दिएको भोटिङ कोड सही भएको प्रमाणित भाईसकेको छ। कृपया अब आफ्नो इच्छा अनुसार मतदान गर्न सक्नु हुने छ।</p>
+    </div>  
+</div>
 
-                </create-post>
-            </div>
+<!-- Better error styling -->
+<div v-if="$page.props.errors.agree_button" class="max-w-4xl mx-auto mb-4">
+    <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-center">
+        {{ $page.props.errors.agree_button }}
+    </div>
+</div>
+
+<form @submit.prevent="submit" class="text-center mx-auto mt-10 max-w-6xl px-4">
     
-              <!-- <div class="text-red-600" > reading <hr/>  </div> -->
-             <!-- here for regional data  -->
-             <div 
-                v-for ="(post, pId) in regional_posts.data" :key="pId"                
-                :class="[pId%2==0? 'second_vote_window flex flex-col': 'first_vote_window flex flex-col']"
-            > 
-                <create-post
-                :post ="post"
-                @add_selected_candidates = "this.form.regional_selected_candidates[pId] = add_selected_to_form_submission(post,selectedArray=$event)"
-                > 
-
-                </create-post>
+    <!-- Agreement section - better styling -->
+    <div class="flex flex-col items-center mx-auto my-8 w-full max-w-4xl bg-white rounded-xl shadow-lg"> 
+        <div class="flex flex-col w-full border-2 border-blue-300 mx-2 my-4 py-6 px-6 rounded-lg bg-blue-50"> 
+            
+            <!-- Header -->
+            <div class="flex flex-col items-center justify-center py-2 mb-4">
+                <div class="text-3xl mb-2">✅</div>
+                <p class="text-xl font-bold text-red-700">Button for Agreement</p> 
+                <p class="text-lg font-semibold text-red-700">मतदान गरेको स्विकार</p>  
+            </div>
+            <!-- Checkbox -->
+             <div class="flex justify-center mb-4">
+        <label class="flex items-center cursor-pointer bg-white p-3 rounded-lg border" 
+               :class="{'border-gray-300': !$page.props.errors.agree_button, 'border-red-500': $page.props.errors.agree_button}">
+            <input 
+                type="checkbox"
+                id="agree_button"
+                name="agree_button"
+                :value="true"
+                v-model="form.agree_button"
+                @change="clearAgreeError" 
+                class="w-5 h-5 text-blue-600 border-2 border-gray-400 rounded focus:ring-blue-500 focus:ring-2"
+            />
+            <span class="ml-3 text-lg font-medium text-gray-900">I agree / म स्विकार  गर्छु।
+            
+            </span>
+        </label>
+    </div> 
+    
+            <!-- Agreement text -->
+            <div class="bg-white rounded-lg p-4 border border-gray-200 mb-4">
+                <p class="text-gray-700 mb-3 leading-relaxed">By clicking this button, I conform that I have chosen the candidates correctly and I followed the online rules to vote the candidates.</p>
+                <p class="text-gray-700 text-sm leading-relaxed">यो बटनमा थिचेर मैले माथि छाने आनुसार मतदान गरेको साचो हो। मैले बिद्दुतिय नियम हरुलाई पलना गरेर आफ्नो मत जाहेर गरेर मतदान गरेको कुरा स्विकार्छु।</p> 
             </div>
             
- 
-            <!-- Here we write the div for accepting the voting action .  -->
-            <div class="flex flex-col items-center mx-auto my-4 w-full by-4 " style="background-color: #F1F1F1;"> 
-              <!-- Here comes the no vote Button  -->
-                <div  class="flex flex-col w-full border border-3 border-blue-300 mx-2 my-4 py-4 px-6"> 
-                     <div class=" flex flex-col items-center justify-center py-2 mb-2 text-bold text-red-700 text-xl">
-                      <p> Button for Agreement </p> 
-                     <p> मतदान गरेको स्विकार </p>  
-                     </div>
-                    <div class="px-2 py-2">
-                        <input 
-                        type      ="checkbox"
-                        :id       ="agree_button"
-                        :name     ="agree_button"
-                        :value    =true
-                        v-model   ="form.agree_button"
-                        class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    
-                        />
-                  </div> 
-                    <p>  By clicking this button, I conform that I have chosen the candidates correctly and I followed the online rules to vote the candidates. </p>
-                    <p>यो बटनमा थिचेर मैले माथि छाने आनुसार  मतदान गरेको साचो हो। मैले बिद्दुतिय नियम हरुलाई पलना गरेर आफ्नो मत जाहेर गरेर मतदान गरेको कुरा स्विकार्छु। </p> 
-                     <div v-if="$page.props.errors.agree_button">
-                       {{ $page.props.errors.agree_button }} 
-                       </div>
-             
-                   <button type="submit" class="mx-2 my-4 px-2 py-6 rounded-lg bg-blue-300 w-full mx-auto shadow-sm text-xl font-bold text-gray-900">
-                   Submit
-                   </button>
+            <!-- Error -->
+            <div v-if="$page.props.errors.agree_button" class="mb-4">
+                <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-center">
+                    {{ $page.props.errors.agree_button }}
                 </div>
             </div>
-            <!-- here comes the error  -->
-            <div class="mx-auto text-center">
-              <jet-validation-errors class="mb-4  mx-auto text-center " />
-            </div>
-   
-   
-          </form>
-        </app-layout>
+
+            <!-- Submit button -->
+            <button 
+                type="submit" 
+                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-xl py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
+            >
+                <span class="mr-2">🗳️</span>
+                Submit
+            </button>
+        </div>
+    </div>
+    
+    <!-- Final errors -->
+    <div class="mx-auto text-center">
+        <jet-validation-errors class="mb-4 mx-auto text-center" />
+    </div>
+</form>
+          
+          
+ </app-layout>
     </nrna-layout>
 </template>
 <script>
@@ -106,6 +109,7 @@ props:{
      user_name : String,
      user_id : Number, 
      errors: Object
+     
 },
 setup (props) {
     const form = useForm({
@@ -117,11 +121,19 @@ setup (props) {
       agree_button:         false,     
       
     })
+     function clearAgreeError() {
+            if (form.agree_button && props.errors?.agree_button) {
+                // Remove the agree_button error when checkbox is checked
+                props.errors.agree_button = null;
+            }
+        }
+
     // this.$inertia.post(route('candidacy.store'), data); 
     function submit() {
    
       form.post('/vote/submit')
     }
+
     function onlyUnique(value, index, self) {
              return self.indexOf(value) === index;
         }
@@ -171,7 +183,7 @@ setup (props) {
         }
         
 
-    return { form, submit, add_selected_to_form_submission, candidate_post_ids }
+    return { form, submit, add_selected_to_form_submission, candidate_post_ids , clearAgreeError}
   },
 //end     
 }
