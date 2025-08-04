@@ -21,7 +21,7 @@ class Vote extends Model
     public function user(){ 
         return $this->belongsTo(User::Class)
         ->select(['id','name', 'region', 'user_id', 
-        'nrna_id', 'can_vote_now', 'has_voted']);
+        'nrna_id',  'has_voted']);
    } 
     /**
      * Get all of the posts that are assigned this vote.

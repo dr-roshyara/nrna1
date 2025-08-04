@@ -356,7 +356,7 @@ export default {
             }
             
             // If voting session is active (can_vote_now), continue voting
-            if (this.votingStatus && this.votingStatus.can_vote_now) {
+            if (this.votingStatus && this.votingStatus.can_vote) {
                 return 'vote/create';
             }
             
@@ -374,7 +374,7 @@ export default {
                 return 'आफ्नो मत हेर्नुहोस्';
             }
             
-            if (this.votingStatus && this.votingStatus.can_vote_now) {
+            if (this.votingStatus && this.votingStatus.can_vote) {
                 return 'मतदान जारी राख्नुहोस्';
             }
             
@@ -391,7 +391,7 @@ export default {
                 return 'View Your Vote';
             }
             
-            if (this.votingStatus && this.votingStatus.can_vote_now) {
+            if (this.votingStatus && this.votingStatus.can_vote) {
                 return 'Continue Voting';
             }
             

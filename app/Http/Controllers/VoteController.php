@@ -94,7 +94,7 @@ class VoteController extends Controller
         // }
    
         
-         $can_vote_now   =$auth_user->can_vote_now;
+         $can_vote_now   =$code->can_vote_now;
          $code           =$auth_user->code;
          if($code){
             $has_voted      = $code->has_voted;
@@ -224,11 +224,11 @@ public function cast_vote(Request $request)
     if (
         !$auth_user ||
         $auth_user->is_voter != 1 ||
-        $auth_user->can_vote_now != 1 ||
-        $auth_user->can_vote != 1 ||
-        $auth_user->has_used_code1 != 1 ||
-        $auth_user->has_used_code2 != 0 ||
-        $auth_user->has_voted == 1
+        $code->can_vote_now != 1 ||
+        $code->can_vote != 1 ||
+        $code->has_used_code1 != 1 ||
+        $code->has_used_code2 != 0 ||
+        $code->has_voted == 1
     ) {
         return redirect()->route('vote.show')
             ->withErrors(['vote' => 'You are not permitted to access the voting form.']);
@@ -546,7 +546,7 @@ private function validateVotingEligibility($auth_user, $code)
 {
     $errors = [];
     
-    if (!$auth_user->can_vote_now) {
+    if (!$code->can_vote_now) {
         $errors['eligibility'] = 'Voting is not currently available for you.';
     }
     
@@ -1808,7 +1808,7 @@ public function verify_final_vote(Request $request)
         }
 
         // 2. Voting window must be open for this user
-        if ($auth_user->can_vote_now != 1) {
+        if ($code->can_vote_now != 1) {
             $errors['can_vote_now'] = 'Voting is not open for you at this time.';
         }
 

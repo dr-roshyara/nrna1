@@ -63,7 +63,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'city',
         'additional_address',
         'nrna_id',
-        'can_vote_now',
         'can_vote',
         'has_voted',
         'has_candidacy',
@@ -441,7 +440,6 @@ public function scopeEligibleVoters($query)
 public function resetVotingState()
 {
     // Reset primary voting flags for the user
-    $this->can_vote_now    = 1;   // Allow voting immediately
     $this->can_vote        = 1;   // User is eligible to vote
     $this->has_voted       = 0;   // Mark as NOT having voted
     $this->has_used_code1  = 0;   // Mark as NOT having used Code-1

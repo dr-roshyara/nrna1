@@ -16,6 +16,13 @@ class ElectionController extends Controller
         // Authenticated user: Show Election Dashboard
         if ($authUser) {
             $authUser->makeVisible(['is_voter', 'can_vote']);
+            $ballotAccess = [
+                'can_access'=> $authUser->canAccessBallot(),
+                error_title=> '',
+                error_message_nepali=> '',
+                error_message_english=> ''
+            
+            ];
             $electionStatus = [
                 'is_active' => false,
                 'results_published' => false
