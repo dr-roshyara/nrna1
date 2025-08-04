@@ -21,258 +21,308 @@ class CodeController extends Controller
     public $out_code;
     public $max_use_clientIP;
     public $clientIP;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-     public function __construct(){
-        $this->clientIP             =\Request::getClientIp(true);
-        $this->max_use_clientIP     =config('app.max_use_clientIP');
-        $_message= check_ip_address($this->clientIP,$this->max_use_clientIP);
-        if($_message['error_message']!=""){
-            echo $_message['error_message'];
-            // return abort('404');
-        }
-        // return abort('404');
-        // dd($this->max_use_clientIP);
-     }
+    public $voting_time_in_minutes =20;
+    
+     public function __construct()
+    {
+        $this->clientIP = \Request::getClientIp(true);
+        $this->max_use_clientIP = config('app.max_use_clientIP', 3);
+        
+        // Check IP rate limiting
+        $this->checkIPRateLimit();
+    }
+
+
+
      public function index()
     {
         //
     }
 
+    
     /**
-     * Show the form for creating a new resource.
+     * STEP 1: Initial ballot access request
+     * Generate and send code1 via email
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-
-        $auth_user              = auth()->user();
-        $form_opening_code      ='';
-        $clientIP               = \Request::getClientIp(true);
-         // dd($this->max_use_clientIP);
-
-        /**
-             * Normally user must be verified and then
-             * However , we dont have a verification system now that's why
-             * the user can vote directly
-             */
-         if(!$auth_user->can_vote_now){
-            $auth_user->can_vote_now  =1;
-
-            $auth_user->save();
-
+        $auth_user = auth()->user();
+        $voting_time_in_minutes =$this->voting_time_in_minutes  ;
+        
+        // **ELIGIBILITY CHECK**: is_voter = true AND can_vote = true
+        if (!$auth_user->canAccessBallot()) {
+            $accessStatus = $auth_user->getBallotAccessStatus();
+            
+            return Inertia::render('Vote/BallotAccessDenied', [
+                'error_type' => $accessStatus['error_type'],
+                'error_title' => $accessStatus['error_title'],
+                'error_message_nepali' => $accessStatus['error_message_nepali'],
+                'error_message_english' => $accessStatus['error_message_english'],
+                'user_name' => $auth_user->name
+            ]);
         }
 
-        $totalDuration   = 0;
-        $code_expires_in =30;
-        // dd($user);
-        $user_id        = $auth_user->id ;
-        // $user_email =$auth_user->email;
-        /***
-         *
-         * If the user has already voted then it should show error.
-         *
-         */
+        // Get or create Code record (anonymization layer)
+        $code = Code::firstOrCreate(
+            ['user_id' => $auth_user->id],
+            [
+                'client_ip' => $this->clientIP,
+                'voting_time_in_minutes' => $this->voting_time_in_minutes, // 20 minutes as per architecture
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        );
 
-        // dd($user);
-        $code =Code::where('user_id','=',$user_id)->first();
-        // dd($code->is_code1_usable);
-
-        // dd($clientIP);
-
-        if($code==null){
-            $code                           = new Code;
-            $code->voting_time_in_minutes   = $code_expires_in;
-            $totalDuration                  = 0;
-            $code->user_id                  =$user_id;
-            $code->client_ip                =$clientIP;
-            $code->save();
-            // dd($code);
+        // Check if already completed voting
+        if ($code->has_voted) {
+            return Inertia::render('Vote/AlreadyVoted', [
+                'user_name' => $auth_user->name,
+                'message_nepali' => 'तपाईंले पहिले नै मतदान गरिसक्नुभएको छ!',
+                'message_english' => 'You have already voted!',
+                'vote_show_code' => $code->vote_show_code
+            ]);
         }
 
-        /***
-         *
-         * If already voted  or if IP address is used more than previously setup times
-         * then show error.
-         *
-         */
+        // Handle code1 generation and sending
+        $totalDuration = 0;
+        $code_expires_in = $this->voting_time_in_minutes;
 
-        if($code->has_voted){
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;">
-                    <p> You have already voted! </p>
-                     <p > <a href="/vote/show"> Please click here to see your vote.</a> </p>
-
-                </div>';
-                abort(404);
-
-        }
-        if($code->has_code1_sent){
-            /***
-             *
-             * if the code has already been sent then check its validity.
-             *
-             */
-
-            if(!$code->is_code1_usable){
-                $code->has_code1_sent=0;
-            }else{
-                $updated_at         = Carbon::parse($code->updated_at);
-                $current            = Carbon::now();
-                $totalDuration      = $current->diffInMinutes($updated_at);
-                     if($totalDuration>$code_expires_in){
-                       $code->is_code1_usable =0;
-                       $code->is_code2_usable =0;
-                       $code->has_code1_sent  =0;
-                       $code->can_vote_now    =0;
-                       $totalDuration         =0;
-
-                }
+        if ($code->has_code1_sent && $code->is_code1_usable) {
+            // Check if existing code1 is still valid
+            $updated_at = Carbon::parse($code->updated_at);
+            $current = Carbon::now();
+            $totalDuration = $current->diffInMinutes($updated_at);
+            
+            if ($totalDuration > $code_expires_in) {
+                // Code expired, reset
+                $this->resetCode1($code);
+                $totalDuration = 0;
             }
-
-
-
-
-
         }
 
-        /***
-         *
-         * Assign the new  code value only if it has not been used
-         */
-         if(!$code->has_code1_sent){
+        // Generate new code1 if not sent or expired
+        if (!$code->has_code1_sent || !$code->is_code1_usable) {
+            $form_opening_code = $this->generateRandomString(6);
+            
+            // Save code1 (hashed for security)
+            $code->update([
+                'code1' => Hash::make($form_opening_code),
+                'is_code1_usable' => true,
+                'has_code1_sent' => true,
+                'can_vote_now' => false, // Not yet - needs verification first
+                'client_ip' => $this->clientIP,
+                'updated_at' => now()
+            ]);
 
-            $form_opening_code = get_random_string (6);
-            // echo($form_opening_code);
-            $code->user_id           =$user_id ;
-            $code->code1             =Hash::make($form_opening_code) ;
-
-            // $code->code1_used_at     =Carbon::now();
-
-
-            //  dd($code);
-            /****
-             *
-             * send the vote opening code via email here
-             *
-             */
-
+            // Send email with code1
             $auth_user->notify(new SendFirstVerificationCode($auth_user, $form_opening_code));
+        }
 
-            //save the code info
-            $code->is_code1_usable   =1;
-            $code->is_code2_usable   =0;
-            $code->has_code2_sent    =0;
-            $code->has_code1_sent    =1;
-            $code->can_vote_now      =0;
-            $code->save();
-         }
-        //  dd($totalDuration);
-        //
-          return Inertia::render('Vote/CreateCode', [
-        //    "presidents" => $presidents,
-        //    "vicepresidents" => $vicepresidents,
-             'name'             =>$auth_user->name,
-             'nrna_id'          =>$auth_user->nrna_id,
-             'state'            =>$auth_user->state,
-             'code_duration'    =>$totalDuration,
-             'code_expires_in'  =>$code_expires_in
-         ]);
+        return Inertia::render('Vote/CreateCode', [
+            'user_name' => $auth_user->name,
+            'nrna_id' => $auth_user->nrna_id,
+            'state' => $auth_user->state,
+            'code_duration' => $totalDuration,
+            'code_expires_in' => $code_expires_in,
+            'instructions_nepali' => 'तपाईंको इमेलमा भर्खै एउटा कोड पठाइएको छ। कृपया त्यो कोड यहाँ प्रविष्ट गर्नुहोस्।',
+            'instructions_english' => 'A verification code has been sent to your email. Please enter the code here.'
+        ]);
     }
 
+    
+
     /**
-     * Store a newly created resource in storage.
+     * STEP 2: Verify code1 and enable voting session
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
-
-        /***
-         *
-         * Firstly, get the code for vote opening form
-         */
-        $user_id = auth()->user()->id ;
-        // dd($user);
-        $code =Code::where('user_id','=',$user_id)->first();
-        // dd($code);
-        if($code==null){
-           /**
-            * Normally this condidtion never comes but just in case
-            * if it comes then Redirect back to the creating voting code
-            *
-            */
-            return redirect()->route('code.create');
+        $auth_user = auth()->user();
+        
+        // Re-check eligibility
+        if (!$auth_user->canAccessBallot()) {
+            return redirect()->route('dashboard')
+                ->with('error', 'You are not eligible to access the ballot.');
         }
 
-        /***
-         *
-         * Secondly check if this user has already voted .
-         *
-         */
-         /***
-         *
-         * If the user has already voted then it should show error.
-         *
-         */
-         $this->has_voted =$code->has_voted;
-         $this->pre_check($code);
-
-
-        $this->in_code    = $code->code1;
-
-        $this->out_code   = $request['voting_code'];
-        $validator          =$this->verify_vote_submit($code->code1);
-        if(!Hash::check( $this->out_code, $this->in_code)){
-            $validator->errors()->add('voting_code',
-            'Your code is wrong. Please check your email. If you do not have any code, then go to Dashboard and start form the begning.');
-         }
-
-        $validator->validate($request);
-        // dd($validator);
-
-
-
-        //  dd($request->all());
-            // var_dump($code1);
-        // dd(request()->all());
-        if(Hash::check($this->out_code,$this->in_code) & !$this->has_voted)
-        {
-            /**
-             * Here you go to voting form.
-             * One can't come here easly
-             * He must be authnicated user ;
-             * the code must be true
-             * He has not voted before
-             */
-            // auth()->user()->can_vote_now =1;
-            $code->can_vote_now             =1;
-            $code->code1_used_at            =Carbon::now();
-            $code->voting_time_in_minutes   =30;
-            $code->is_code1_usable          =0;
-            $code->save();
-            return redirect()->route('vote.create');
-
-        }else{
-            if($this->has_voted){
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;">
-                You have already voted! Please check your Vote </div>';
-                abort(404);
-
-             }else{
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;">
-                Your code can not be verified </div>';
-                abort(404);
-             }
+        $code = Code::where('user_id', $auth_user->id)->first();
+        
+        if (!$code) {
+            return redirect()->route('code.create')
+                ->with('error', 'Please start the voting process from the beginning.');
         }
 
+        // Check if already voted
+        if ($code->has_voted) {
+            return redirect()->route('vote.show')
+                ->with('info', 'You have already completed voting.');
+        }
+
+        // Validate the submitted code
+        $request->validate([
+            'voting_code' => 'required|string|min:6|max:6'
+        ]);
+
+        $submitted_code = $request->input('voting_code');
+
+        // Verify code1
+        if (!Hash::check($submitted_code, $code->code1) || !$code->is_code1_usable) {
+            return back()->withErrors([
+                'voting_code' => 'Invalid or expired code. Please check your email or request a new code.'
+            ])->withInput();
+        }
+
+        // **CODE1 VERIFIED** - Update Code model as per architecture
+        $code->update([
+            'can_vote_now' => true,           // Enable voting session
+            'is_code1_usable' => false,       // Code1 used, no longer valid
+            'code1_used_at' => now(),         // Track when code1 was used
+            'voting_time_in_minutes' => 20,   // Set 20-minute voting session
+            'client_ip' => $this->clientIP,   // Update IP for audit
+            'updated_at' => now()
+        ]);
+
+        // Redirect to agreement page
+        return redirect()->route('vote.agreement');
+    }
+    
+    /**
+     * STEP 3: Show agreement page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showAgreement()
+    {
+        $auth_user = auth()->user();
+        $code = Code::where('user_id', $auth_user->id)->first();
+
+        // Security checks
+        if (!$code || !$code->can_vote_now || $code->has_voted) {
+            return redirect()->route('dashboard')
+                ->with('error', 'Invalid voting session.');
+        }
+
+        return Inertia::render('Vote/Agreement', [
+            'user_name' => $auth_user->name,
+            'voting_time_minutes' => $code->voting_time_in_minutes,
+            'agreement_text_nepali' => 'म यो अनलाइन मतदान प्रणालीमा स्वेच्छाले भाग लिइरहेको छु र मेरो मत गोप्य राखिनेछ भन्ने कुरामा सहमत छु।',
+            'agreement_text_english' => 'I voluntarily participate in this online voting system and agree that my vote will remain secret and secure.'
+        ]);
     }
 
+    /**
+     * STEP 4: Process agreement submission
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function submitAgreement(Request $request)
+    {
+        $auth_user = auth()->user();
+        $code = Code::where('user_id', $auth_user->id)->first();
+
+        // Security checks
+        if (!$code || !$code->can_vote_now || $code->has_voted) {
+            return redirect()->route('dashboard')
+                ->with('error', 'Invalid voting session.');
+        }
+
+        $request->validate([
+            'agreement' => 'required|accepted'
+        ]);
+
+        // **AGREEMENT ACCEPTED** - Update Code model
+        $code->update([
+            'has_agreed_to_start_vote' => true,
+            'voting_started_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        // Redirect to actual voting page (VoteController)
+        return redirect()->route('vote.create');
+    }
+
+     /**
+     * STEP 5: Send code2 after first vote submission
+     * Called by VoteController after temporary vote storage
+     *
+     * @param  Code  $code
+     * @return bool
+     */
+    public function sendSecondCode(Code $code)
+    {
+        $user = User::find($code->user_id);
+        $second_code = $this->generateRandomString(6);
+
+        // Update Code model
+        $code->update([
+            'code2' => Hash::make($second_code),
+            'is_code2_usable' => true,
+            'has_code2_sent' => true,
+            'code2_sent_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        // Send email with code2
+        $user->notify(new SendSecondVerificationCode($user, $second_code));
+
+        return true;
+    }
+    /**
+     * STEP 6: Verify code2 for final submission
+     * Called by VoteController
+     *
+     * @param  string  $submitted_code2
+     * @param  Code    $code
+     * @return bool
+     */
+    public function verifySecondCode($submitted_code2, Code $code)
+    {
+        if (!Hash::check($submitted_code2, $code->code2) || !$code->is_code2_usable) {
+            return false;
+        }
+
+        // **CODE2 VERIFIED** - Mark as used
+        $code->update([
+            'code2_used_at' => now(),
+            'is_code2_usable' => false,
+            'updated_at' => now()
+        ]);
+
+        return true;
+    }
+    /**
+     * STEP 7: Finalize voting process
+     * Called by VoteController after vote is saved
+     *
+     * @param  Code  $code
+     * @return string vote_show_code
+     */
+    public function finalizeVoting(Code $code)
+    {
+        // Generate vote show code for receipt
+        $vote_show_code = $this->generateRandomString(8);
+
+        // **VOTING COMPLETED** - Final update
+        $code->update([
+            'has_voted' => true,
+            'vote_submitted' => true,
+            'vote_submitted_at' => now(),
+            'vote_show_code' => $vote_show_code,
+            'updated_at' => now()
+        ]);
+
+        // Send receipt email
+        $user = User::find($code->user_id);
+        // $user->notify(new SendVoteReceipt($user, $vote_show_code));
+
+        return $vote_show_code;
+    }
+    
     /**
      * Display the specified resource.
      *
@@ -382,6 +432,71 @@ class CodeController extends Controller
     return $_message;
 
     }
+
+        /**
+         * Helper: Check IP rate limiting
+         */
+        private function checkIPRateLimit()
+        {
+            $votes_from_ip = Code::where('client_ip', $this->clientIP)
+                ->where('has_voted', true)
+                ->count();
+
+            if ($votes_from_ip >= $this->max_use_clientIP) {
+                $error_html = $this->generateIPLimitError();
+                echo $error_html;
+                abort(403);
+            }
+        }
+
+       /**
+     * Helper: Generate random string for codes
+     *
+     * @param  int  $length
+     * @return string
+     */
+    private function generateRandomString($length = 6)
+    {
+        return strtoupper(Str::random($length));
+    }
+
+    /**
+     * Helper: Reset expired code1
+     *
+     * @param  Code  $code
+     */
+    private function resetCode1(Code $code)
+    {
+        $code->update([
+            'code1' => null,
+            'is_code1_usable' => false,
+            'has_code1_sent' => false,
+            'can_vote_now' => false
+        ]);
+    }
+    /**
+     * Helper: Generate IP limit error HTML
+     *
+     * @return string
+     */
+    private function generateIPLimitError()
+    {
+        return '
+        <div style="max-width: 600px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; font-family: Arial, sans-serif;">
+            <h2 style="color: #e53e3e; margin-bottom: 1rem;">मतदान सीमा पूरा | Voting Limit Reached</h2>
+            <p style="color: #4a5568; margin-bottom: 1rem; line-height: 1.6;">
+                तपाइको आइपी एड्रेस <strong>' . $this->clientIP . '</strong> बाट पहिले नै ' . $this->max_use_clientIP . ' पटक मतदान भएको छ।
+            </p>
+            <p style="color: #4a5568; margin-bottom: 1.5rem; line-height: 1.6;">
+                Your IP address <strong>' . $this->clientIP . '</strong> has already been used for ' . $this->max_use_clientIP . ' votes.
+            </p>
+            <a href="' . route('dashboard') . '" style="display: inline-block; background: #3182ce; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 4px; font-weight: 600;">
+                Dashboard मा जानुहोस् | Go to Dashboard
+            </a>
+        </div>';
+    }
+
+        
     public static function check_ip_address(){
         $_message                   =[];
         $_message['error_message']  ="";

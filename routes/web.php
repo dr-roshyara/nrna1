@@ -31,6 +31,8 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\OpenionController;
 
+use App\Http\Controllers\Election\ElectionController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,22 +62,21 @@ Route::get('/storage/images/{filename}', function ($filename)
 });
 
 
-Route::get('/', function () {
-    //defile title
-    // dd(auth()->user());
-    if( auth()->user()!=null ){
-        return Inertia::render('Dashboard/ElectionDashboard');
-    
-        //  return Inertia::render('Dashboard/MainDashboard');
-    }
 
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Home route: If authenticated, show election dashboard. Else, show welcome page.
+Route::get('/', [ElectionController::class, 'dashboard'])->name('electiondashboard');
+
+// Route::get('/', function () {
+//     if( auth()->user()!=null ){ return Inertia::render('Dashboard/MainDashboard'); }
+
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $authUser =null;

@@ -41,7 +41,7 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
 //Route::group(['middleware' => 'auth:sanctum', 'verified'], function(){
 // Vote
 //code creation
-   Route::middleware(['auth:sanctum', 'verified']) ->get('/code/create', [CodeController::class, 'create'])->name('code.create');
+   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility'])->get('/code/create', [CodeController::class, 'create'])->name('code.create');
    Route::middleware(['auth:sanctum', 'verified']) ->post('/codes', [CodeController::class, 'store'])->name('code.store');
 
     //it actually created Agreement create i accept. 
