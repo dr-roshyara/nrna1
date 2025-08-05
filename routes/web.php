@@ -77,21 +77,22 @@ Route::get('/', [ElectionController::class, 'dashboard'])->name('electiondashboa
 //     ]);
 // });
 
+Route::get('/dashboard', [ElectionController::class, 'dashboard'])->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    $authUser =null;
-    if(Auth::check()){
-        $authUser =Auth::user();
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     $authUser =null;
+//     if(Auth::check()){
+//         $authUser =Auth::user();
 
-    }
-    return Inertia::render('Dashboard/ElectionDashboard',[
-        'authUser'=>$authUser,
-    ]);
-    // dd($authUser);
-    return Inertia::render('Dashboard/MainDashboard',[
-        'authUser'=>$authUser,
-    ]);
-})->name('dashboard');
+//     }
+//     return Inertia::render('Dashboard/ElectionDashboard',[
+//         'authUser'=>$authUser,
+//     ]);
+//     // dd($authUser);
+//     return Inertia::render('Dashboard/MainDashboard',[
+//         'authUser'=>$authUser,
+//     ]);
+// })->name('dashboard');
 
 
 

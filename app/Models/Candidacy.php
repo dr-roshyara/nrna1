@@ -10,7 +10,7 @@ class Candidacy extends Model
     use HasFactory;
      use HasFactory;
     protected $fillable =[
-        'name','user_id','user_name','candidacy_id','candidacy_name', 
+        'user_id','user_name','candidacy_id','candidacy_name', 
         'proposer_name', 'proposer_id', 'supporter_id','supporter_name', 
         'post_id','post_nepali_name','post_name', 'image_path_1', 
         'image_path_2', 'image_path_3'

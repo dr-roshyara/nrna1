@@ -76,7 +76,7 @@ class VoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create1()
     {
         $auth_user      =auth()->user();
         $code           =$auth_user->code;
@@ -102,7 +102,6 @@ class VoteController extends Controller
             //  $this->vote_pre_check($code);
              $return_to =$this->vote_pre_check($code);
            
-             // dd($return_to);
             if($return_to!=""){
                 if($return_to=='404'){
                     abort(404);
@@ -151,7 +150,7 @@ class VoteController extends Controller
         // $candidacies =Candidacy::all()->get(['post_id','candidacy_id','image_path_1']);
         $candidacies = QueryBuilder::for(Candidacy::Class)
         ->defaultSort('post_id')
-        ->allowedSorts(['name', 'is_national_wide', 'state_name', 'required_number'])
+        ->allowedSorts(['is_national_wide', 'state_name', 'required_number'])
         ->paginate(150) 
         ->withQueryString();
         
@@ -196,65 +195,70 @@ class VoteController extends Controller
   
     }     
 
-// Add these updated methods to your VoteController class
 
-// Make sure to add this import at the top of your VoteController file:
-// use Illuminate\Support\Facades\Schema;
 
-/**
- * Render the grouped voting form for an eligible and authenticated user.
- * Access only allowed after passing first submission (via session flag).
- * Regional/national posts are split for frontend data binding.
- *
- * @param  \Illuminate\Http\Request  $request
- * @return \Inertia\Response|\Illuminate\Http\RedirectResponse
- */
-public function cast_vote(Request $request)
+
+public function create(Request $request)
 {
     $auth_user = $request->user();
-    $code      = $auth_user->code;
-
-    // --- Block direct access unless redirected from verify_first_submission ---
-    if (!session('vote_access_granted')) {
-        return redirect()->route('dashboard')
-            ->withErrors(['vote' => 'Direct access to the voting form is not allowed.']);
-    }
-
-    // --- Defense in depth: Repeat all eligibility checks ---
-    if (
-        !$auth_user ||
-        $auth_user->is_voter != 1 ||
-        $code->can_vote_now != 1 ||
-        $code->can_vote != 1 ||
-        $code->has_used_code1 != 1 ||
-        $code->has_used_code2 != 0 ||
-        $code->has_voted == 1
-    ) {
-        return redirect()->route('vote.show')
-            ->withErrors(['vote' => 'You are not permitted to access the voting form.']);
-    }
+    $code = $auth_user->code;
 
     // --- Fetch National Posts and Candidates ---
-    $national_posts = QueryBuilder::for(Post::with('candidates.user'))
-        ->where('is_national_wide', 1)
+    $national_posts = QueryBuilder::for(Post::with(['candidates' => function($query) {
+        $query->join('users', 'users.user_id', '=', 'candidacies.user_id')
+              ->select('candidacies.*', 'users.name as user_name');
+    }]))
+    ->where('is_national_wide', 1)
+    ->orderBy('post_id')
+    ->get()
+    ->map(function ($post) {
+        return [
+            'post_id' => $post->post_id,
+            'name' => $post->name,
+            'nepali_name' => $post->nepali_name,
+            'required_number' => $post->required_number,
+            'candidates' => $post->candidates->map(function ($c) {
+                return [
+                    'candidacy_id' => $c->candidacy_id,
+                    'user' => [
+                        'id' => $c->user_id,
+                        'name' => $c->user_name, // Now using the joined user name
+                    ],
+                    'post_id' => $c->post_id,
+                    'image_path_1' => $c->image_path_1,
+                    'candidacy_name' => $c->candidacy_name,
+                    'proposer_name' => $c->proposer_name,
+                    'supporter_name' => $c->supporter_name,
+                ];
+            })->values(),
+        ];
+    })->values();
+
+    // Similarly update the regional posts query
+    $regional_posts = collect();
+    if (!empty($auth_user->region)) {
+        $regional_posts = QueryBuilder::for(Post::with(['candidates' => function($query) {
+            $query->join('users', 'users.id', '=', 'candidacies.user_id')
+                  ->select('candidacies.*', 'users.name as user_name');
+        }]))
+        ->where('is_national_wide', 0)
+        ->where('state_name', trim($auth_user->region))
         ->orderBy('post_id')
         ->get()
         ->map(function ($post) {
             return [
-                'post_id'         => $post->post_id,
-                'name'            => $post->name,
-                'nepali_name'     => $post->nepali_name,
+                'post_id' => $post->post_id,
+                'name' => $post->name,
+                'nepali_name' => $post->nepali_name,
                 'required_number' => $post->required_number,
-                'candidates'      => $post->candidates->map(function ($c) {
+                'candidates' => $post->candidates->map(function ($c) {
                     return [
                         'candidacy_id' => $c->candidacy_id,
-                        'user'         => [
-                            'id'      => $c->user->id ?? null,
-                            'user_id' => $c->user->user_id ?? null,
-                            'name'    => $c->user->name ?? '',
-                            'region'  => $c->user->region ?? '',
+                        'user' => [
+                            'id' => $c->user_id,
+                            'name' => $c->user_name,
                         ],
-                        'post_id'      => $c->post_id,
+                        'post_id' => $c->post_id,
                         'image_path_1' => $c->image_path_1,
                         'candidacy_name' => $c->candidacy_name,
                         'proposer_name' => $c->proposer_name,
@@ -263,51 +267,16 @@ public function cast_vote(Request $request)
                 })->values(),
             ];
         })->values();
-
-    // --- Fetch Regional Posts for this user's region ---
-    $regional_posts = collect();
-    if (!empty($auth_user->region)) {
-        $regional_posts = QueryBuilder::for(Post::with('candidates.user'))
-            ->where('is_national_wide', 0)
-            ->where('state_name', trim($auth_user->region))
-            ->orderBy('post_id')
-            ->get()
-            ->map(function ($post) {
-                return [
-                    'post_id'         => $post->post_id,
-                    'name'            => $post->name,
-                    'nepali_name'     => $post->nepali_name,
-                    'required_number' => $post->required_number,
-                    'candidates'      => $post->candidates->map(function ($c) {
-                        return [
-                            'candidacy_id' => $c->candidacy_id,
-                            'user'         => [
-                                'id'      => $c->user->id ?? null,
-                                'user_id' => $c->user->user_id ?? null,
-                                'name'    => $c->user->name ?? '',
-                                'region'  => $c->user->region ?? '',
-                            ],
-                            'post_id'      => $c->post_id,
-                            'image_path_1' => $c->image_path_1,
-                            'candidacy_name' => $c->candidacy_name,
-                            'proposer_name' => $c->proposer_name,
-                            'supporter_name' => $c->supporter_name,
-                        ];
-                    })->values(),
-                ];
-            })->values();
     }
 
-    // --- Render the Inertia voting page ---
     return Inertia::render('Vote/CreateVotingPage', [
         'national_posts' => $national_posts,
         'regional_posts' => $regional_posts,
-        'user_name'      => $auth_user->name,
-        'user_id'        => $auth_user->id,
-        'user_region'    => $auth_user->region,
+        'user_name' => $auth_user->name,
+        'user_id' => $auth_user->id,
+        'user_region' => $auth_user->region,
     ]);
 }
-
 
 
     /**
@@ -877,6 +846,20 @@ private function has_valid_selections($selections)
     return false;
 } 
  
+
+/**
+ * Handle vote errors consistently
+ * 
+ * @param string $message
+ * @return \Illuminate\Http\RedirectResponse
+ */
+protected function handleVoteError(string $message)
+{
+    return redirect()->back()
+        ->withErrors(['vote_error' => $message])
+        ->withInput();
+}
+
     ////////////////////////////////////////////////// 
     
      /**
@@ -885,140 +868,231 @@ private function has_valid_selections($selections)
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        // $this->in_code    ="4321";
-       
-        $this->out_code    = trim($request['voting_code']);
-        //get vote from session 
-        $input_data = $request->session()->get('vote');
-             
-        $auth_user         = auth()->user();
-        $this->user_id     = $auth_user->id;
-        $code              =$auth_user->code;
-        // dd($code);
-        $this->has_voted   =$code->has_voted;
-        // $vote              =$auth_user->vote;
-        $_error   =$this->vote_post_check($auth_user, $code,$input_data);
-        // dd("test");
-        if($_error["error_message"]!=""){
-            echo $_error["error_message"];
-            abort(404);
+/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+  /**
+ * Store a newly created vote resource without any user identification.
+ * 
+ * This handles the final submission of an anonymized vote after verification.
+ * It validates the voting code, saves the vote without user info, generates a private key,
+ * and marks the user as having voted.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\RedirectResponse
+ */
+/**
+ * Store a newly created vote resource
+ */
+public function store(Request $request)
+{
+    DB::beginTransaction();
+
+    try {
+        $auth_user = auth()->user();
+        if (!$auth_user) {
+            throw new \Exception('User not authenticated');
         }
-        if($_error["return_to"]!=""){
-           
-            
-           return redirect()->route($_error["return_to"]);
+
+        $code = $auth_user->code;
+        if (!$code) {
+            throw new \Exception('Voting code record not found');
+        }
+
+        $voting_code = trim($request->input('voting_code'));
+        $vote_data = $request->session()->get('vote');
+
+        // Debug logging
+        Log::debug('Vote submission started', [
+            'user_id' => $auth_user->id,
+            'has_voted' => $code->has_voted,
+            'code_usable' => $code->is_code2_usable
+        ]);
+
+        // 1. Validate pre-conditions
+        $pre_check = $this->vote_post_check($auth_user, $code, $vote_data);
+        if (!empty($pre_check['error_message'])) {
+            throw new \Exception($pre_check['error_message']);
+        }
         
+        if (!empty($pre_check['return_to'])) {
+            return redirect()->route($pre_check['return_to']);
         }
-        
-        // dd("test");
-        /***
-         * if there is no code then return to dashboard 
-         * 
-         */
-       
 
-       
-        if($code->is_code2_usable){
-            $this->in_code  =$code->code2;
+        // 2. Verify code usability
+        if (!$code->is_code2_usable) {
+            throw new \Exception('Verification code is no longer usable');
+        }
+
+        // 3. Validate the voting code format
+        $validator = $this->verify_vote_submit();
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // 4. Verify code hash
+        if (!Hash::check($voting_code, $code->code2)) {
+            throw new \Exception('Invalid verification code');
+        }
+
+        // 5. Save vote
+        $vote = new Vote();
+        $vote->voting_code = $voting_code;
+        $vote->save();
+
+        // 6. Save candidate selections if exists
+        if (!empty($vote_data['national_selected_candidates']) || 
+            !empty($vote_data['regional_selected_candidates'])) {
             
-        }else{
-            /*** 
-             * 
-             * if the code is not usable you can not proceed further
-             * you should redirect the form in dashboard
-             * 
-             */
-            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-            Your code has Problem .Please Send the screenshot to administrator!             </div>';
-            abort ('404');
-            return redirect()->route('dashboard');
+            $this->saveCandidateSelections($vote, $vote_data);
         }
 
-        /**
-        * 
-        *Validate the voting code
-        *
-        */
-        $validator        =$this->verify_vote_submit();
-        $validator->validate($request);
-     
-        if($this->has_voted){
-            // $auth_user->save();
-            $request->session()->forget('vote');
-            return redirect()->route('vote.verify_to_show'); 
+        // 7. Generate verification key
+        $private_key = $this->generateVerificationKey($vote->id);
+        $code->code_for_vote = Hash::make($private_key);
 
+        // 8. Update voting status
+        $code->update([
+            'has_voted' => true,
+            'can_vote_now' => false,
+            'is_code2_usable' => false,
+            'code2_used_at' => now()
+        ]);
+
+        // 9. Send notification
+        try {
+            $auth_user->notify(new SendVoteSavingCode($private_key));
+        } catch (\Exception $e) {
+            Log::error('Failed to send notification', [
+                'user_id' => $auth_user->id,
+                'error' => $e->getMessage()
+            ]);
+            // Continue despite notification failure
         }
-        if(Hash::check($this->out_code,$this->in_code) & !$this->has_voted)
-        {
-            /**
-             *Here Everything is checked . you save the vote. 
-             * One can't come here easly
-             * He must be authnicated user ;
-             * the code must be true 
-             * He has not voted before 
-             */
-         
-            //Step1 : save the vote and get the voting id
-            $this->save_vote($input_data);            
-            // $vote_id =$vote->id; 
-            //step3 : Get a unkown random string and make private Key
-              $random_key =get_random_string(6); 
-              $private_key =$random_key."_".$this->vote_id_for_voter;
-             /*******
-              * Step4: Hash the voted id very securely
-              ** After hashing, nobody can detect what is inside.
-              **One can only compare this hashed key with the orginal private key.
-              **The original private will not be saved in database and given directly
-              **to the voter. If the voter loose his private key, nobody can detect 
-              **the voter associated with his/her vote 
-              **and find if the given text is correct or not.
-             **/
-              $hashed_voteId =  Hash::make( $private_key);
-             //step4: Save the hashed key in database  
-              $code->code_for_vote =$hashed_voteId;
-             // step 5: Inform the voter the private in human readable format 
-            //  After sending the key to voter, one can never know the hashed 
-            // key without this value about his private key 
-             $auth_user->notify(new SendVoteSavingCode($private_key));          
-            //step 6: Save that the voter has voted and he/she cannot vote again.
-            //Also save the date and time of voting .             
-            $code->has_voted       =1;
-            $code->can_vote_now    =0;
-            $code->is_code2_usable =0;
-            $code->code2_used_at   =Carbon::now();            
-            $code->save();
-            //Stp 7: Forward the voter to show the vote. Vote can be 
-            //shown only if the voter give the correct private key.             
-            return redirect()->route('vote.show'); 
 
-        }else{
-            if($this->has_voted){
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-                You have already voted! Please check your Vote </div>';
-                abort(404);
+        DB::commit();
 
-             }else{
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-                Your code can not be verified </div>';
-                abort(404);
-             }
-        } 
-           
-       
-        /***
-         * 
-         * Finally forget the vote session and redirect to show the vote 
-         * 
-         */
-       
-        // $auth_user->save();
+        // 10. Clean up
         $request->session()->forget('vote');
-         return redirect()->route('vote.show'); 
+        return redirect()->route('vote.show')
+            ->with('success', 'Vote submitted successfully!');
 
-     
+    } catch (\Exception $e) {
+        DB::rollBack();
+        Log::error('Vote processing failed', [
+            'user_id' => auth()->id(),
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
+        ]);
+        
+        return redirect()->back()
+            ->withErrors(['vote_error' => $e->getMessage()])
+            ->withInput();
     }
+}
+
+/**
+ * Generate verification key
+ */
+protected function generateVerificationKey(int $vote_id): string
+{
+    return bin2hex(random_bytes(6)) . '_' . $vote_id;
+}
+
+/**
+ * Save candidate selections
+ */
+protected function saveCandidateSelections(Vote $vote, array $vote_data)
+{
+    $all_candidates = array_merge(
+        $vote_data['national_selected_candidates'] ?? [],
+        $vote_data['regional_selected_candidates'] ?? []
+    );
+
+    foreach ($all_candidates as $index => $selection) {
+        $column = 'candidate_' . str_pad($index + 1, 2, '0', STR_PAD_LEFT);
+        $vote->$column = json_encode([
+            'candidates' => $selection['candidates'] ?? [],
+            'no_vote' => $selection['no_vote'] ?? false,
+            'post_id' => $selection['post_id'] ?? null
+        ]);
+    }
+
+    $vote->save();
+}
+
+/**
+ * Save an anonymized vote record without any user identification
+ * 
+ * @param string $voting_code
+ * @param array $vote_data
+ * @return Vote
+ */
+protected function saveAnonymizedVote(string $voting_code, array $vote_data): Vote
+{
+    $vote = new Vote();
+    
+    // Store only the voting code, no user identification
+    $vote->voting_code = $voting_code;
+    $vote->save();
+
+    if (!empty($vote_data['national_selected_candidates']) || !empty($vote_data['regional_selected_candidates'])) {
+        $this->saveCandidateSelections($vote, $vote_data);
+    }
+
+    return $vote;
+}
+
+
+/**
+ * Generate and store the vote verification key with proper hashing
+ * 
+ * @param Code $code
+ * @param int $vote_id
+ * @return string Returns the unhashed private key for one-time notification
+ */
+protected function generateAndStoreVerificationKey(Code $code, int $vote_id): string
+{
+    // Generate a secure random key component
+    $random_key = bin2hex(random_bytes(16)); // 32-character random string
+    
+    // Create the composite private key
+    $private_key = $random_key . '_' . $vote_id;
+    
+    // Hash the private key using Laravel's secure Hash facade
+    $hashed_key = Hash::make($private_key);
+    
+    // Store only the hashed version in the database
+    $code->code_for_vote = $hashed_key;
+    $code->save();
+    
+    // Return the unhashed version only for the one-time notification
+    return $private_key;
+}
+
+/**
+ * Verify the submitted voting code against the hashed version
+ * 
+ * @param string $submitted_code
+ * @param Code $code
+ * @return bool
+ */
+public function verifyVotingCode(string $submitted_code, Code $code): bool
+{
+    // Security checks before verification
+    if (empty($submitted_code) || empty($code->code_for_vote)) {
+        return false;
+    }
+    
+    // Timing attack resistant comparison
+    return Hash::check($submitted_code, $code->code_for_vote);
+}
+
 
      public function verify_to_show(){
         //
@@ -1398,48 +1472,56 @@ private function generate_verification_summary($processed_vote_data)
     return $summary;
 }
 
-    public function verify_vote_submit()
-    {
-        $validator =  Validator::make(request()->all(), [
-                    'voting_code' =>['required'],                    
-                ]);
-        //        
-        //  $thvoting_code   =request('voting_code');   
-        //  $code1         =$auth_user->code1;
-        //  $has_voted      =$auth_user->has_voted ;
-        //    //$has_voted      =false;
-         // $auth_user->has_voted ;
-         
-        // $code1          ="1234";         
-        // //hook to add additional rules by calling the ->after method
-         $validator->after(function ($validator) {
-              
-                  $voting_code =request('voting_code');
-                if (!Hash::check($this->out_code,$this->in_code )) {
-                    //add custom error to the Validator
-                    $validator->errors()->add('voting_code',
-                    "You have submitted wrong Voting Code! <br> 
-                    यहाँले दिनु भएको कोड सही प्रमाणित हुन सकेन। यसैले आफ्नो इमेल चेक गरेर  सहि कोड हालेर फेरी वटन थिच्नुहोस। ");
-                }
-                if ($this->has_voted ) {
-                    //add custom error to the Validator
-                    $validator->errors()->add('Your_Vote',"You have already voted! Please check your vote");
-                }
-                
+/**
+ * Validate the voting code submission with proper error handling
+ * 
+ * @return \Illuminate\Validation\Validator
+ */
+/**
+ * Validate the voting code submission
+ * 
+ * @return \Illuminate\Validation\Validator
+ */
+public function verify_vote_submit()
+{
+    $validator = Validator::make(request()->all(), [
+        'voting_code' => 'required|string|size:6' // Exact 6-character code
+    ]);
 
-            });
+    $validator->after(function ($validator) {
+        $user = auth()->user();
+        $code = $user->code;
+        $submittedCode = trim(request('voting_code'));
 
-        //run validation which will redirect on failure
-        // $validator->validate($request);
-        return $validator;
-    }
-    //save all candidates 
+        // Already voted check
+        if ($code->has_voted) {
+            $validator->errors()->add('voting_code', 'You have already voted!');
+            return;
+        }
+
+        // Code usability check
+        if (!$code->is_code2_usable) {
+            $validator->errors()->add('voting_code', 'This code is no longer valid');
+            return;
+        }
+
+        // Hash verification
+        if (!Hash::check($submittedCode, $code->code2)) {
+            $validator->errors()->add('voting_code', 
+                'Invalid code. Please check your 6-digit verification code.');
+        }
+    });
+
+    return $validator;
+}
+
+//save all candidates 
     public function save_vote($input_data){
         $no_vote_option     = 0; 
         $vote               =new Vote;
-        $vote->user_id      = $this->user_id;
-
-        // $vote->user_id      = Hash::make($this->user_id);
+        $vote->user_id       ="DO_NOT_SAVE";   
+        // $vote->user_id      = $this->user_id;
+         // $vote->user_id      = Hash::make($this->user_id);
         // $vote->user_id      = Hash::make($vote->user_id);         
 
         $vote->voting_code  =$this->out_code;       
@@ -2259,10 +2341,7 @@ private function getCandidateNameFromCandidacy($candidacy)
         return $candidacy->user_name;
     }
     
-    // Priority 4: Use name field from candidacy table (backup)
-    if (!empty($candidacy->name)) {
-        return $candidacy->name;
-    }
+  
     
     // Priority 5: Generate from candidacy_id
     if (!empty($candidacy->candidacy_id)) {

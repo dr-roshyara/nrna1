@@ -16,13 +16,9 @@ class Vote extends Model
      * Each vote belongs to only  one user 
      */ 
      
-    protected $hidden = ['user_id'];
       
-    public function user(){ 
-        return $this->belongsTo(User::Class)
-        ->select(['id','name', 'region', 'user_id', 
-        'nrna_id',  'has_voted']);
-   } 
+     protected $fillable = ['voting_code']; // Only what you need
+    
     /**
      * Get all of the posts that are assigned this vote.
      */

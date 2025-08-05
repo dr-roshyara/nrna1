@@ -11,27 +11,38 @@
                     <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
                 </header>
 
+                <!-- Temporary debug info - remove after testing -->
+
                 <!-- Primary Actions Section -->
                 <section class="mb-16" aria-labelledby="primary-actions">
                     <h2 id="primary-actions" class="text-3xl font-semibold text-gray-900 text-center mb-10">
                         मुख्य कार्यहरू | Main Actions
                     </h2>
+                        <div v-if="true" class="p-4 bg-gray-100 text-xs">
+                        Debug: {{ debugVotingStatus }}
+                    </div>
+                    <!-- Add this temporarily to see which user is logged in -->
+                    <div class="p-4 bg-yellow-100 text-xs">
+                        Logged in as: {{ authUser?.id }} ({{ authUser?.name }})
+                        Expected: 2908 (Demo 1 NRNA Germany)
+                    </div>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                        <!-- Vote Here - Dynamic based on eligibility and status -->
-                        <div class="relative">
+                        <!-- 🗳️ VOTING SECTION - FIXED DISPLAY -->
+                        <div class="relative w-full">
+                            <!-- Voting Button/Card -->
                             <component 
                                 :is="canAccessVoting ? 'a' : 'div'"
-                                :href="canAccessVoting ? votingLink : null"
-                                :class="[
-                                    'group relative overflow-hidden rounded-3xl p-10 text-white shadow-2xl transition-all duration-300',
-                                    canAccessVoting 
-                                        ? 'bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-700 hover:via-blue-800 hover:to-indigo-800 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-300' 
-                                        : 'bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed'
-                                ]"
+                                :href="canAccessVoting ? votingLink : undefined"
+                                :class="votingCardClasses"
                                 :aria-label="votingAriaLabel"
+                                :tabindex="canAccessVoting ? 0 : -1"
+                                @click="handleVotingClick"
+                                @keydown.enter="handleVotingClick"
+                                @keydown.space.prevent="handleVotingClick"
                             >
-                                <div class="relative z-10">
+                                <div class="relative z-10 w-full">
+                                    <!-- Voting Icon -->
                                     <div class="flex items-center justify-center mb-6">
                                         <div class="bg-white/20 rounded-full p-6">
                                             <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 24 24">
@@ -39,49 +50,70 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <h3 class="text-3xl font-bold text-center mb-3">{{ votingTitle }}</h3>
-                                    <p class="text-xl text-center opacity-90 mb-2">{{ votingSubtitle }}</p>
-                                    <p class="text-sm text-center opacity-75">{{ votingDescription }}</p>
+                                    
+                                    <!-- Voting Title & Description -->
+                                    <h3 class="text-3xl font-bold text-center mb-3 text-white">{{ votingTitle }}</h3>
+                                    <p class="text-xl text-center opacity-90 mb-2 text-white">{{ votingSubtitle }}</p>
+                                    <p class="text-sm text-center opacity-75 text-white mb-4">{{ votingDescription }}</p>
                                     
                                     <!-- Session Timer (if active) -->
-                                    <div v-if="votingStatus && votingStatus.voting_time_remaining > 0" class="mt-4 text-center">
+                                    <div v-if="showVotingTimer" class="mt-4 text-center">
                                         <div class="bg-white/20 rounded-lg p-3">
-                                            <p class="text-sm font-semibold">समय बाँकी | Time Remaining</p>
-                                            <p class="text-lg font-bold">{{ votingStatus.voting_time_remaining }} मिनेट | minutes</p>
+                                            <p class="text-sm font-semibold text-white">समय बाँकी | Time Remaining</p>
+                                            <p class="text-lg font-bold text-white">{{ votingTimeRemaining }} मिनेट | minutes</p>
                                         </div>
                                     </div>
+                                    
+                                    <!-- Access Status Indicator -->
+                                    <div class="mt-4 text-center">
+                                        <span v-if="canAccessVoting" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/20 text-white">
+                                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                            </svg>
+                                            पहुँच उपलब्ध | Access Available
+                                        </span>
+                                        <span v-else class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/20 text-white">
+                                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                            </svg>
+                                            पहुँच अनुपलब्ध | Access Unavailable
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors duration-300"></div>
+                                
+                                <!-- Hover effect overlay -->
+                                <div :class="canAccessVoting ? 'absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors duration-300' : ''"></div>
                             </component>
                             
-                            <!-- Error/Status Message for Voting -->
-                            <div v-if="!canAccessVoting" class="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl">
+                            <!-- 🚨 ERROR MESSAGE - ONLY SHOWN WHEN ACCESS IS DENIED -->
+                            <div v-if="!canAccessVoting && ballotAccess" class="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl">
                                 <div class="flex items-start">
                                     <svg class="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
                                     </svg>
                                     <div class="text-sm">
-                                        <p class="font-semibold text-red-800 mb-1">{{ ballotAccess.error_title }}</p>
-                                        <p class="text-red-700 mb-1">{{ ballotAccess.error_message_nepali }}</p>
-                                        <p class="text-red-700">{{ ballotAccess.error_message_english }}</p>
+                                        <p class="font-semibold text-red-800 mb-1">{{ ballotAccess.error_title || 'मतदान अनुपलब्ध | Voting Unavailable' }}</p>
+                                        <p v-if="ballotAccess.error_message_nepali" class="text-red-700 mb-1">{{ ballotAccess.error_message_nepali }}</p>
+                                        <p v-if="ballotAccess.error_message_english" class="text-red-700">{{ ballotAccess.error_message_english }}</p>
+                                        
+                                        <!-- Additional helpful info -->
+                                        <div class="mt-2 text-xs text-red-600 space-y-1">
+                                            <p v-if="!authUser?.is_voter">• You are not registered as a voter</p>
+                                            <p v-if="authUser?.is_voter && !authUser?.can_vote">• Your voter status is pending approval</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Election Results - Controlled by backend -->
-                        <div class="relative">
+                        <div class="relative w-full">
                             <component
                                 :is="electionStatus.results_published ? 'a' : 'div'"
-                                :href="electionStatus.results_published ? 'election/result' : null"
-                                :class="[
-                                    'group relative overflow-hidden rounded-3xl p-10 text-white shadow-2xl transition-all duration-300',
-                                    electionStatus.results_published
-                                        ? 'bg-gradient-to-br from-green-600 via-green-700 to-emerald-700 hover:from-green-700 hover:via-green-800 hover:to-emerald-800 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-4 focus:ring-green-300'
-                                        : 'bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed'
-                                ]"
+                                :href="electionStatus.results_published ? route('result.index') : undefined"
+                                :class="resultsCardClasses"
                             >
-                                <div class="relative z-10">
+                                <div class="relative z-10 w-full">
                                     <div class="flex items-center justify-center mb-6">
                                         <div class="bg-white/20 rounded-full p-6">
                                             <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 24 24">
@@ -89,10 +121,10 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <h3 class="text-3xl font-bold text-center mb-3">चुनाव परिणाम</h3>
-                                    <p class="text-xl text-center opacity-90 mb-2">Election Results</p>
-                                    <p class="text-sm text-center opacity-75">
-                                        {{ electionStatus.results_published ? 'परिणाम उपलब्ध' : 'परिणाम अनुपलब्ध' }}
+                                    <h3 class="text-3xl font-bold text-center mb-3 text-white">चुनाव परिणाम</h3>
+                                    <p class="text-xl text-center opacity-90 mb-2 text-white">Election Results</p>
+                                    <p class="text-sm text-center opacity-75 text-white">
+                                        {{ electionStatus.results_published ? 'परिणाम उपलब्ध | Results Available' : 'परिणाम अनुपलब्ध | Results Unavailable' }}
                                     </p>
                                 </div>
                             </component>
@@ -115,7 +147,7 @@
 
                 <!-- Candidate Information Section -->
                 <section class="mb-16" aria-labelledby="candidate-info">
-                    <h2 id="candidate-info" class="text-3xl font-semibold text-gray-900 mb-10">
+                    <h2 id="candidate-info" class="text-3xl font-semibold text-gray-900 text-center mb-10">
                         उम्मेदवार सम्बन्धी जानकारी | Candidate Information
                     </h2>
                     
@@ -172,7 +204,7 @@
 
                 <!-- Voter Information Section -->
                 <section class="mb-16" aria-labelledby="voter-info">
-                    <h2 id="voter-info" class="text-3xl font-semibold text-gray-900 mb-10">
+                    <h2 id="voter-info" class="text-3xl font-semibold text-gray-900 text-center mb-10">
                         मतदाता सम्बन्धी जानकारी | Voter Information
                     </h2>
                     
@@ -229,7 +261,7 @@
 
                 <!-- Administrative Section -->
                 <section class="mb-16" aria-labelledby="admin-functions">
-                    <h2 id="admin-functions" class="text-3xl font-semibold text-gray-900 mb-10">
+                    <h2 id="admin-functions" class="text-3xl font-semibold text-gray-900 text-center mb-10">
                         प्रशासनिक कार्यहरू | Administrative Functions
                     </h2>
                     
@@ -314,16 +346,11 @@ export default {
             default: () => null
         },
         ballotAccess: {
-            type: Object,
-            default: () => ({
-                can_access: false,
-                error_title: '',
-                error_message_nepali: '',
-                error_message_english: ''
-            })
+            type: [Object, null],
+            default: () => null
         },
         votingStatus: {
-            type: Object,
+            type: [Object, null],
             default: () => null
         },
         electionStatus: {
@@ -336,32 +363,84 @@ export default {
     },
     
     computed: {
+        // Add this to computed properties in ElectionDashboard.vue
+        debugVotingStatus() {
+            return {
+                has_ballot_access: this.canAccessVoting,
+                has_code_record: this.votingStatus?.has_code,
+                has_voted_per_code: this.votingStatus?.has_voted,
+                can_vote_now_per_code: this.votingStatus?.can_vote_now,
+                determined_link: this.votingLink
+            };
+        },
+
         /**
-         * Check if user can access voting based on corrected architecture
-         * Uses ballotAccess prop from backend (is_voter && can_vote)
+         * ✅ ROBUST: Check if user can access voting
          */
         canAccessVoting() {
-            return this.ballotAccess && this.ballotAccess.can_access;
+            if (!this.ballotAccess || typeof this.ballotAccess !== 'object') {
+                return false;
+            }
+            
+            const canAccess = this.ballotAccess.can_access;
+            
+            // Handle different data types
+            if (typeof canAccess === 'boolean') return canAccess;
+            if (typeof canAccess === 'string') return canAccess === 'true' || canAccess === '1';
+            if (typeof canAccess === 'number') return canAccess === 1;
+            
+            return false;
         },
         
         /**
-         * Determine the appropriate voting link based on status
+         * ✅ IMPROVED: Dynamic CSS classes for voting card
+         */
+        votingCardClasses() {
+            const baseClasses = 'group relative overflow-hidden rounded-3xl p-10 text-white shadow-2xl transition-all duration-300 w-full min-h-[400px] flex flex-col justify-center';
+            
+            if (this.canAccessVoting) {
+                return `${baseClasses} bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-700 hover:via-blue-800 hover:to-indigo-800 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-300`;
+            } else {
+                return `${baseClasses} bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
+            }
+        },
+        
+        /**
+         * ✅ IMPROVED: Dynamic CSS classes for results card  
+         */
+        resultsCardClasses() {
+            const baseClasses = 'group relative overflow-hidden rounded-3xl p-10 text-white shadow-2xl transition-all duration-300 w-full min-h-[400px] flex flex-col justify-center';
+            
+            if (this.electionStatus.results_published) {
+                return `${baseClasses} bg-gradient-to-br from-green-600 via-green-700 to-emerald-700 hover:from-green-700 hover:via-green-800 hover:to-emerald-800 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-4 focus:ring-green-300`;
+            } else {
+                return `${baseClasses} bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
+            }
+        },
+        
+        /**
+         * ✅ Determine the appropriate voting link
          */
         votingLink() {
-            if (!this.canAccessVoting) return null;
+            if (!this.canAccessVoting) return '#';
             
             // If user has voted, go to vote verification
-            if (this.votingStatus && this.votingStatus.has_voted) {
-                return 'vote/verify_to_show';
+            if (this.votingStatus?.has_voted) {
+                console.log("vote/show")
+                
+                return this.route ? this.route('vote.verify_to_show') : 'vote/verify_to_show';
             }
             
-            // If voting session is active (can_vote_now), continue voting
-            if (this.votingStatus && this.votingStatus.can_vote) {
-                return 'vote/create';
+            // If voting session is active, continue voting
+            if (this.votingStatus?.can_vote_now) {
+                console.log("vote/Create")
+                return this.route ? this.route('vote.create') : 'vote/create';
+
             }
-            
+            console.log("Code       /Create")
+                
             // Otherwise, start with code generation
-            return 'code/create';
+            return this.route ? this.route('code.create') : 'code/create';
         },
         
         /**
@@ -370,11 +449,11 @@ export default {
         votingTitle() {
             if (!this.canAccessVoting) return 'मतदान अनुपलब्ध';
             
-            if (this.votingStatus && this.votingStatus.has_voted) {
+            if (this.votingStatus?.has_voted) {
                 return 'आफ्नो मत हेर्नुहोस्';
             }
             
-            if (this.votingStatus && this.votingStatus.can_vote) {
+            if (this.votingStatus?.can_vote_now) {
                 return 'मतदान जारी राख्नुहोस्';
             }
             
@@ -387,11 +466,11 @@ export default {
         votingSubtitle() {
             if (!this.canAccessVoting) return 'Voting Unavailable';
             
-            if (this.votingStatus && this.votingStatus.has_voted) {
+            if (this.votingStatus?.has_voted) {
                 return 'View Your Vote';
             }
             
-            if (this.votingStatus && this.votingStatus.can_vote) {
+            if (this.votingStatus?.can_vote_now) {
                 return 'Continue Voting';
             }
             
@@ -402,13 +481,13 @@ export default {
          * Dynamic voting description
          */
         votingDescription() {
-            if (!this.canAccessVoting) return 'मतदान अनुपलब्ध';
+            if (!this.canAccessVoting) return 'मतदान गर्न सकिने अवस्था छैन';
             
-            if (this.votingStatus && this.votingStatus.has_voted) {
+            if (this.votingStatus?.has_voted) {
                 return 'तपाईंले मतदान गरिसक्नुभएको छ';
             }
             
-            if (this.votingStatus && this.votingStatus.can_vote_now) {
+            if (this.votingStatus?.can_vote_now) {
                 return 'तपाईंको मतदान सत्र सक्रिय छ';
             }
             
@@ -423,11 +502,27 @@ export default {
                 return 'मतदान अनुपलब्ध - Voting not available';
             }
             
-            if (this.votingStatus && this.votingStatus.has_voted) {
+            if (this.votingStatus?.has_voted) {
                 return 'आफ्नो मत हेर्नुहोस् - View your vote';
             }
             
             return 'मतदान गर्नुहोस् - Click to vote';
+        },
+        
+        /**
+         * Show voting timer condition
+         */
+        showVotingTimer() {
+            return this.votingStatus && 
+                   this.votingStatus.can_vote_now && 
+                   this.votingStatus.voting_time_remaining > 0;
+        },
+        
+        /**
+         * Formatted voting time remaining
+         */
+        votingTimeRemaining() {
+            return this.votingStatus?.voting_time_remaining || 0;
         }
     },
     
@@ -435,14 +530,45 @@ export default {
         this.setupAccessibility();
         
         // Auto-refresh timer if voting session is active
-        if (this.votingStatus && this.votingStatus.can_vote_now && this.votingStatus.voting_time_remaining > 0) {
+        if (this.showVotingTimer) {
             this.startSessionTimer();
         }
     },
     
     methods: {
+        /**
+         * ✅ Handle voting card clicks with better UX
+         */
+        handleVotingClick(event) {
+            if (!this.canAccessVoting) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                // Show helpful feedback by highlighting error message
+                this.$nextTick(() => {
+                    const errorDiv = document.querySelector('.bg-red-50');
+                    if (errorDiv) {
+                        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        errorDiv.classList.add('ring-2', 'ring-red-400', 'ring-opacity-75');
+                        setTimeout(() => {
+                            errorDiv.classList.remove('ring-2', 'ring-red-400', 'ring-opacity-75');
+                        }, 3000);
+                    }
+                });
+                
+                return false;
+            }
+            
+            // For keyboard events, navigate programmatically
+            if (event.type === 'keydown' && this.votingLink && this.votingLink !== '#') {
+                window.location.href = this.votingLink;
+            }
+        },
+        
+        /**
+         * Setup accessibility features
+         */
         setupAccessibility() {
-            // Announce page load for screen readers
             const announcement = document.createElement('div');
             announcement.setAttribute('aria-live', 'polite');
             announcement.className = 'sr-only';
@@ -456,17 +582,27 @@ export default {
             }, 1000);
         },
         
+        /**
+         * Start session timer for active voting sessions
+         */
         startSessionTimer() {
-            // Refresh page every minute to update remaining time
             setInterval(() => {
                 if (this.votingStatus && this.votingStatus.voting_time_remaining > 0) {
-                    // Could implement real-time countdown here
-                    // For now, just refresh the page every 5 minutes to get updated data
                     if (this.votingStatus.voting_time_remaining % 5 === 0) {
                         window.location.reload();
                     }
                 }
-            }, 60000); // Every minute
+            }, 60000);
+        },
+        
+        /**
+         * Helper method for route generation
+         */
+        route(name) {
+            if (typeof route !== 'undefined') {
+                return route(name);
+            }
+            return name;
         }
     }
 };
@@ -485,6 +621,17 @@ export default {
     border: 0;
 }
 
+/* Improved focus styles */
+.focus\:ring-4:focus {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5);
+}
+
+/* Ensure cards maintain proper sizing */
+.min-h-\[400px\] {
+    min-height: 400px;
+}
+
+/* Animation improvements */
 @media (prefers-reduced-motion: reduce) {
     .transition-all,
     .transition-colors {
@@ -497,10 +644,41 @@ export default {
     }
 }
 
+/* High contrast mode */
 @media (prefers-contrast: high) {
     .border-gray-100 {
         border-color: #000000 !important;
         border-width: 2px !important;
     }
+}
+
+/* Error highlight animation */
+.ring-2 {
+    animation: highlight 3s ease-in-out;
+}
+
+@keyframes highlight {
+    0%, 100% { transform: scale(1); }
+    10%, 90% { transform: scale(1.02); }
+}
+
+/* Ensure proper grid layout */
+.grid {
+    display: grid;
+}
+
+.grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 1024px) {
+    .lg\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Ensure cards are properly sized */
+.relative.w-full {
+    width: 100%;
 }
 </style>
