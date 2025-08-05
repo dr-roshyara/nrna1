@@ -19,10 +19,6 @@ class AddMoreColumnsToUsersTable extends Migration
             $table->boolean('can_vote')->default(0);
             $table->boolean('has_voted')->default(0);
             $table->boolean('has_candidacy')->default(0);
-            $table->string('code1')->unique()->nullable();
-            $table->string('code2')->unique()->nullable();
-            $table->boolean('has_used_code1')->default(0);
-            $table->boolean('has_used_code2')->default(0);
             $table->string('lcc')->nullable();
 
         });

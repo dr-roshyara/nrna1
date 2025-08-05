@@ -34,6 +34,7 @@ class VoteController extends Controller
     public $user_id;
     public $verify_final_vote;
     public $vote_id_for_voter;
+    public $session_name;
 
     /***
      * 
@@ -426,6 +427,8 @@ public function second_submission(Request $request)
         // Update submission status
         $code->vote_submitted = 1;
         $code->vote_submitted_at = Carbon::now();
+         $code->session_name = 'vote_' . $code->id."_". auth()->id();
+
         $code->save();
 
         // Send second verification code with error handling
@@ -449,13 +452,18 @@ public function second_submission(Request $request)
         
         // Store in session with error handling
         try {
-            $request->session()->put('vote', $session_data);
+              
+            $session_name =$code->session_name;
+
+            $request->session()->put($session_name, $session_data);
+            
             
             // Verify session storage
-            $stored_data = $request->session()->get('vote');
+            $stored_data = $request->session()->get($session_name);
             if (!$stored_data) {
                 throw new \Exception('Session storage verification failed');
             }
+            $code->senssion_name=$session_name;
             
         } catch (\Exception $e) {
             Log::error('Session storage failed during vote submission', [
@@ -862,20 +870,34 @@ private function has_valid_selections($selections)
      */
     public function store(Request $request)
     {
-        $this->has_voted =auth()->user()->has_voted;
-        $this->in_code   =auth()->user()->code2;
-        $this->out_code   = $request['voting_code'];
-        $this->user_id    =auth()->user()->id;
-        $validator        =$this->verify_vote_submit();
-        $validator->validate($request);
-        //
-        //dd($this->in_code==$this->out_code );
+    DB::beginTransaction();
+    
+    try {
+   
+        $auth_user          = auth()->user();
+        $code               = $auth_user->code;
+        $voting_session_name =Hash::make($code->code2);
+
+        //everything take from Code Model
+        $this->has_voted    =$code->has_voted;
+        $this->in_code      =$code->code2;
+        $this->out_code     = $request['voting_code'];
+        $voting_code        = trim($request->input('voting_code'));
+       
+        $this->user_id      =$code->user_id;
+        $code->session_name = 'vote_' . $code->id."_". auth()->id();
+        $code->save();
+        $session_name       =$code->session_name;
+        //get deligatevote from session
+        $vote_data = $request->session()->get($session_name);
+
+        // dd($vote_data["national_selected_candidates"]);
+        // 1. Validate pre-conditions
+        $pre_check = $this->vote_post_check($auth_user, $code, $vote_data);
         
-        //dd(!$this->has_voted);
-        //if($this->in_code==$this->out_code & !$this->has_voted)
-        if(true)
-        {
-            /**
+            
+
+        /**
              *Here Everything is checked . you save the deligatevote.
              * One can't come here easly
              * He must be authnicated user ;
@@ -883,38 +905,166 @@ private function has_valid_selections($selections)
              * He has not voted before
              */
             //get deligatevote from session
-            $input_data = $request->session()->get('deligatevote');
-        //    dd($input_data);
+            // 6. Generate and store verification key
 
-            //no_vote option is saved in 19
-
-             $this->save_vote($input_data);
+            $this->save_vote($vote_data);
 
 
-
-        }else{
-            if($this->has_voted){
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;">
-                You have already voted! Please check your deligatevote </div>';
-                abort(404);
-
-             }else{
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;">
-                Your code can not be verified </div>';
-                abort(404);
-             }
-        }
+ 
+             // 6. Save the vote WITHOUT user information
+            // $vote = $this->saveAnonymizedVote($prviate_key, $vote_data);
+            // 7. Save the vote and related data
+            // $vote = $this->saveVoteTransactionally($auth_user, $private_key, $vote_data);
 
 
+            $private_key = $this->generateAndStoreVerificationKey($code);
+             $hashed_key = Hash::make($private_key);
 
+        
+            // 8. Mark user as voted and update code status
+                $this->markUserAsVoted($code, $hashed_key);
 
-        // auth()->user()->save();
-        $request->session()->forget('deligatevote');
-         return redirect()->route('deligatevote.show');
+                // 9. Send verification notification
+                $auth_user->notify(new SendVoteSavingCode($private_key));
 
+                DB::commit();
+        
+        // $request->session()->forget('vote');     
+        return redirect()->route('vote.show')->with('success', 'Your vote has been successfully submitted.');
 
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        DB::rollBack();
+        return redirect()->back()->withErrors($e->errors())->withInput();
+        
+    } catch (\Exception $e) {
+        DB::rollBack();
+        Log::error('Vote submission failed', [
+            'user_id' => auth()->id(),
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
+        ]);
+        
+        return $this->handleVoteError('An error occurred while processing your vote. Please try again.');
     }
-    
+
+
+
+}
+
+/**
+ * Mark user as having voted and update code status
+ * 
+ * @param Code $code
+ */
+ function markUserAsVoted(Code $code, string $primary_key )
+{
+    $code->update([
+        'has_voted' => true,
+        'vote_for_code'=>$primary_key,
+        'vote_show_code'=>$primary_key,
+        'can_vote_now' => false,
+        'is_code2_usable' => false,
+        'code2_used_at' => now()
+    ]);
+}
+
+/**
+ * Prepare vote data for storage
+ * 
+ * @param array|null $selection
+ * @return array|null
+ */
+protected function prepareVoteData(?array $selection): ?array
+{
+    if ($selection === null) {
+        return ['candidates' => null, 'no_vote' => true];
+    }
+
+    return [
+        'candidates' => $selection['candidates'] ?? [],
+        'no_vote' => $selection['no_vote'] ?? false,
+        'post_id' => $selection['post_id'] ?? null,
+        'post_name' => $selection['post_name'] ?? null
+    ];
+}
+/**
+ * Save individual candidate results
+ * 
+ * @param int $vote_id
+ * @param array $selection
+ */
+protected function saveCandidateResults(int $vote_id, array $selection)
+{
+    foreach ($selection['candidates'] as $candidate) {
+        Result::create([
+            'vote_id' => $vote_id,
+            'post_id' => $selection['post_id'],
+            'candidacy_id' => $candidate['candidacy_id']
+        ]);
+    }
+}
+
+protected function handleVoteError(string $message)
+{
+    return redirect()->back()
+        ->withErrors(['vote_error' => $message])
+        ->withInput();
+}
+
+/**
+ * Save the vote and related candidate selections in a transaction
+ * 
+ * @param User $user
+ * @param string $voting_code
+ * @param array $vote_data
+ * @return Vote
+ */
+protected function saveVoteTransactionally(User $user, string $voting_code, array $vote_data): Vote
+{
+    $vote = new Vote();
+    $vote->user_id = $user->id; // Store actual user ID
+    $vote->voting_code = $voting_code;
+    $vote->save();
+
+    if (!empty($vote_data['national_selected_candidates']) || !empty($vote_data['regional_selected_candidates'])) {
+        $this->saveCandidateSelections($vote, $vote_data);
+    }
+
+    return $vote;
+}
+
+/**
+ * Save all candidate selections for the vote
+ * 
+ * @param Vote $vote
+ * @param array $vote_data
+ */
+protected function saveCandidateSelections(Vote $vote, array $vote_data)
+{
+    $all_candidates = array_merge(
+        $vote_data['national_selected_candidates'] ?? [],
+        $vote_data['regional_selected_candidates'] ?? []
+    );
+
+    foreach ($all_candidates as $index => $selection) {
+        $column_name = 'candidate_' . str_pad($index + 1, 2, '0', STR_PAD_LEFT);
+        $vote_data = $this->prepareVoteData($selection);
+        
+        if ($vote_data) {
+            $vote->$column_name = json_encode($vote_data);
+            
+            // Save individual candidate results if selection exists
+            if (!empty($selection['candidates'])) {
+                $this->saveCandidateResults($vote->id, $selection);
+            }
+        }
+    }
+
+    $vote->save();
+}
+
+
+
     /**
  * Save an anonymized vote record without any user identification
  * 
@@ -943,14 +1093,15 @@ protected function saveAnonymizedVote(string $voting_code, array $vote_data): Vo
  * @param int $vote_id
  * @return string Returns the unhashed private key for one-time notification
  */
-protected function generateAndStoreVerificationKey(Code $code, int $vote_id): string
+ function generateAndStoreVerificationKey(Code $code): string
 {
+
     // Generate a secure random key component
     $random_key = bin2hex(random_bytes(16)); // 32-character random string
     
     // Create the composite private key
-    $private_key = $random_key . '_' . $vote_id;
-    
+    $private_key = $random_key . '_' . $code->id;
+    $this->out_code=$private_key;
     // Hash the private key using Laravel's secure Hash facade
     $hashed_key = Hash::make($private_key);
     
@@ -1108,7 +1259,7 @@ public function verify()
         $code = $auth_user->code;
         
         // Get vote data from session (stored by second_submission)
-        $vote_data = request()->session()->get('vote');
+        $vote_data = request()->session()->get($code->session_name);
         
         // Critical check: Ensure we have vote data in session
         if (!$vote_data) {
@@ -1369,66 +1520,81 @@ private function generate_verification_summary($processed_vote_data)
  * 
  * @return \Illuminate\Validation\Validator
  */
-public function verify_vote_submit()
+public function verifyVoteSubmit(): array
 {
-    $validator = Validator::make(request()->all(), [
-        'voting_code' => 'required|string|size:6' // Exact 6-character code
+
+    $request = request();
+
+    $auth_user = auth()->user();
+    $code      =$auth_user->code;
+    $in_code  = $code->code2;
+  
+    $submittedCode = trim($request->input('voting_code'));
+
+    $isCodeValid = false;
+
+    $validator = Validator::make($request->all(), [
+        'voting_code' => 'required|string|size:6'
     ]);
+ 
+    $validator->after(function ($validator) use ($code, $submittedCode, &$isCodeValid) {
+        if (!$code) {
+            $validator->errors()->add('voting_code', 'Verification record missing.');
+            return;
+        }
 
-    $validator->after(function ($validator) {
-        $user = auth()->user();
-        $code = $user->code;
-        $submittedCode = trim(request('voting_code'));
-
-        // Already voted check
         if ($code->has_voted) {
-            $validator->errors()->add('voting_code', 'You have already voted!');
+            $validator->errors()->add('voting_code', 'You have already voted.');
             return;
         }
 
-        // Code usability check
         if (!$code->is_code2_usable) {
-            $validator->errors()->add('voting_code', 'This code is no longer valid');
+            $validator->errors()->add('voting_code', 'This code is no longer valid.');
+            return;
+        }
+        
+        if (!Hash::check($submittedCode, $in_code)) {
+            $validator->errors()->add('voting_code', 'Incorrect code. Please try again.');
             return;
         }
 
-        // Hash verification
-        if (!Hash::check($submittedCode, $code->code2)) {
-            $validator->errors()->add('voting_code', 
-                'Invalid code. Please check your 6-digit verification code.');
-        }
+        $isCodeValid = true; // ✅ Set your flag
     });
-
-    return $validator;
+    // Run validation logic
+    $validator->validate(); // Triggers after callbacks
+      return [
+        'validator' => $validator,
+        'is_code_valid' => $isCodeValid
+    ];
 }
+
 
 //save all candidates 
     public function save_vote($input_data){
         $no_vote_option     = 0; 
         $vote               =new Vote;
-        $vote->user_id       ="DO_NOT_SAVE";   
         // $vote->user_id      = $this->user_id;
          // $vote->user_id      = Hash::make($this->user_id);
-        // $vote->user_id      = Hash::make($vote->user_id);         
-
+        // $vote->user_id      = Hash::make($vote->user_id);        
+        $vote->no_vote_option=0; 
         $vote->voting_code  =$this->out_code;       
         $vote->save();   //save the vote first
+        
         //save the $this->vote_id_for_voter  it to voter ;
-        $this->vote_id_for_voter =$vote->id; 
-        if($no_vote_option) { 
-            //check if voter has given no_vote  option 
-            // Go for no vote option 
-            $vote->no_vote_option   =1;
-      }else{
+        {
          /**
           * Here you save the all candidates finally :
           * 
           */ 
-             //dd($input_data);
+        //  dd($input_data["candidacies"]);
+
+            // dd($input_data);
+
             $all_candidates =$input_data["national_selected_candidates"];
+                    
+ 
             $all_candidates =array_merge($all_candidates, 
                             $input_data["regional_selected_candidates"]);
-           
             for ($i=0; $i<sizeof($all_candidates); $i++)
             {
                 $col_name = "candidate"; 
@@ -1470,13 +1636,11 @@ public function verify_vote_submit()
             
             }       
       
-            // dd($input_data);
         } //end of else 
         
         $vote->save();
-        
-        //   dd($input_data);
-
+      
+    
             
     }
     //vote thanks 
@@ -1590,7 +1754,6 @@ public function verify_final_vote(Request $request)
         $code1_used_at   =$code->code1_used_at;
         $voting_time     =$code->voting_time_in_minutes;
         $totalDuration   = $current->diffInMinutes($code1_used_at );
-       //dd($code);
 
        /***
         * if there is no code then return to dashboard 
@@ -1710,8 +1873,8 @@ public function verify_final_vote(Request $request)
         ])->render();
         return $_error;
     }
-
-    // No error
+     
+        // No error
     return $_error;
 }
 
