@@ -13,7 +13,7 @@ return [
     */
 
     // ✅ Is the election system currently active?
-    'is_active' => env('ELECTION_IS_ACTIVE', true),
+    'is_active' => env('ELECTION_IS_ACTIVE', true), 
 
     // ✅ Are election results published?
     'results_published' => env('ELECTION_RESULTS_PUBLISHED', false),

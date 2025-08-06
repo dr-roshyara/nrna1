@@ -922,7 +922,7 @@ private function has_valid_selections($selections)
 
         
             // 8. Mark user as voted and update code status
-                $this->markUserAsVoted($code, $hashed_key);
+                $this->markUserAsVoted($code, $hashed_key); 
 
                 // 9. Send verification notification
                 $auth_user->notify(new SendVoteSavingCode($private_key));
