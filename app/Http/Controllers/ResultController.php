@@ -19,9 +19,19 @@ class ResultController extends Controller
           
       $posts        = Post::get(['id','post_id','name','state_name','required_number']) ;
       $candidates   =[]; 
+      // Check if results should be published
+        $electionCompleted = false; /* your logic to check if election is completed */;
+        
+        if (!$electionCompleted) {
+            return redirect()->back()->with('error', 
+                'Election results will be available after the election is completed.'
+            );
+        }
+
     //   $results   =Result::query();
         $results    = DB::table('results')
                     ->selectRaw(' count(*) as total ');
+
           
         $results =$results->selectRaw('COUNT(DISTINCT vote_id) as total_votes');
         // dd($results->get());

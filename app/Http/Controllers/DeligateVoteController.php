@@ -117,62 +117,114 @@ class DeligateVoteController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $this->has_voted =auth()->user()->has_voted;
-        $this->in_code   =auth()->user()->code2;
-        $this->in_code    ="4321";
-        $this->out_code   = $request['voting_code'];
-        $this->user_id    =auth()->user()->id;
-        $validator        =$this->verify_vote_submit();
-        $validator->validate($request);
-        //
-        if($this->in_code==$this->out_code & !$this->has_voted)
-        {
-            /**
-             *Here Everything is checked . you save the deligatevote.
-             * One can't come here easly
-             * He must be authnicated user ;
-             * the code must be true
-             * He has not voted before
-             */
-            //get deligatevote from session
-            $input_data = $request->session()->get('deligatevote');
-        //    dd($input_data);
+ * Store a newly created vote resource without any user identification.
+ * 
+ * This handles the final submission of an anonymized vote after verification.
+ * It validates the voting code, saves the vote without user info, generates a private key,
+ * and marks the user as having voted.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\RedirectResponse
+ */
+public function store(Request $request)
+{
+    DB::beginTransaction();
+    
+    try {
+        $auth_user = auth()->user();
+        $code = $auth_user->code;
+        $voting_code = trim($request->input('voting_code'));
+        $vote_data = $request->session()->get('vote');
 
-            //no_vote option is saved in 19
-
-             $this->save_vote($input_data);
-
-
-
-        }else{
-            if($this->has_voted){
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;">
-                You have already voted! Please check your deligatevote </div>';
-                abort(404);
-
-             }else{
-                echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;">
-                Your code can not be verified </div>';
-                abort(404);
-             }
+        // 1. Validate pre-conditions
+        $pre_check = $this->vote_post_check($auth_user, $code, $vote_data);
+        
+        if (!empty($pre_check['error_message'])) {
+            return $this->handleVoteError($pre_check['error_message']);
+        }
+        
+        if (!empty($pre_check['return_to'])) {
+            return redirect()->route($pre_check['return_to']);
         }
 
+        // 2. Verify code usability
+        if (!$code->is_code2_usable) {
+            return $this->handleVoteError('Your code has a problem. Please contact the administrator.');
+        }
 
+        // 3. Validate the voting code submission
+        $validator = $this->verify_vote_submit();
+        $validator->validate();
 
+        // 4. Check if user has already voted (redundant check for safety)
+        if ($code->has_voted) {
+            $request->session()->forget('vote');
+            return redirect()->route('vote.verify_to_show');
+        }
 
-        // auth()->user()->save();
-        $request->session()->forget('deligatevote');
-         return redirect()->route('deligatevote.show');
+        // 5. Verify the code hash
+        if (!Hash::check($voting_code, $code->code2)) {
+            return $this->handleVoteError($code->has_voted 
+                ? 'You have already voted! Please check your vote'
+                : 'Your code could not be verified');
+        }
 
+        // 6. Save the vote WITHOUT user information
+        $vote = $this->saveAnonymizedVote($voting_code, $vote_data);
 
+        // 7. Generate and store verification key
+        $private_key = $this->generateAndStoreVerificationKey($code, $vote->id);
+
+        // 8. Mark user as voted and update code status
+        $this->markUserAsVoted($code);
+
+        // 9. Send verification notification
+        $auth_user->notify(new SendVoteSavingCode($private_key));
+
+        DB::commit();
+
+        // 10. Clean up and redirect
+        $request->session()->forget('vote');
+        return redirect()->route('vote.show')->with('success', 'Your vote has been successfully submitted.');
+
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        DB::rollBack();
+        return redirect()->back()->withErrors($e->errors())->withInput();
+        
+    } catch (\Exception $e) {
+        DB::rollBack();
+        Log::error('Vote submission failed', [
+            'user_id' => auth()->id(),
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
+        ]);
+        
+        return $this->handleVoteError('An error occurred while processing your vote. Please try again.');
     }
+}
+
+/**
+ * Save an anonymized vote record without any user identification
+ * 
+ * @param string $voting_code
+ * @param array $vote_data
+ * @return Vote
+ */
+protected function saveAnonymizedVote(string $voting_code, array $vote_data): Vote
+{
+    $vote = new Vote();
+    
+    // Store only the voting code, no user identification
+    $vote->voting_code = $voting_code;
+    $vote->save();
+
+    if (!empty($vote_data['national_selected_candidates']) || !empty($vote_data['regional_selected_candidates'])) {
+        $this->saveCandidateSelections($vote, $vote_data);
+    }
+
+    return $vote;
+}
+
 
     /**
      * Display the specified resource.

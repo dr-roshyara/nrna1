@@ -41,23 +41,43 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
 //Route::group(['middleware' => 'auth:sanctum', 'verified'], function(){
 // Vote
 //code creation
-   Route::middleware(['auth:sanctum', 'verified']) ->get('/code/create', [CodeController::class, 'create'])->name('code.create');
-   Route::middleware(['auth:sanctum', 'verified']) ->post('/codes', [CodeController::class, 'store'])->name('code.store');
+   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility'])->get('/code/create', [CodeController::class, 'create'])->name('code.create');
+   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->post('/codes', [CodeController::class, 'store'])->name('code.store');
+   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/agreement', [CodeController::class, 'showAgreement'])->name('code.agreement');
+   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->post('/code/agreement', [CodeController::class, 'submitAgreement'])->name('code.agreement.submit');
+   
+  // Vote denial route
+    Route::get('/vote/denied', function() {
+        // This route can be used for direct access to denial page if needed
+        return Inertia::render('Vote/VoteDenied', [
+            'title_english' => 'Access Denied',
+            'title_nepali' => 'पहुँच अस्वीकृत',
+            'message_english' => 'Your voting access has been restricted.',
+            'message_nepali' => 'तपाईंको मतदान पहुँच प्रतिबन्धित गरिएको छ।',
+        ]);
+    })->name('vote.denied');
+    
+        // IP statistics route (for debugging/admin)
+        Route::get('/admin/ip-stats', [CodeController::class, 'getIPStatistics'])
+                ->name('admin.ip.stats')
+                ->middleware('can:admin'); // Add appropriate permission middleware
+       
 
     //it actually created Agreement create i accept. 
-    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/create', [VoteController::class, 'create'])->name('vote.create');
+      Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/create', [VoteController::class, 'create'])->name('vote.create');
+
     //submit I accept sh
-    Route::middleware(['auth:sanctum', 'verified']) ->post('/vote/submit', [VoteController::class, 'first_submission'])->name('vote.submit');
+       Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->post('/vote/submit', [VoteController::class, 'first_submission'])->name('vote.submit');
   
     //After successful open the vote ballet now 
-    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/cast', [VoteController::class, 'cast_vote'])->name('vote.cast');
+       Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/cast', [VoteController::class, 'cast_vote'])->name('vote.cast');
     //submit the vote with selected candidates 
-    Route::middleware(['auth:sanctum', 'verified']) ->post('/vote/submit_seleccted', [VoteController::class, 'second_submission'])->name('vote.submit_seleccted');
+      Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility'])  ->post('/vote/submit_seleccted', [VoteController::class, 'second_submission'])->name('vote.submit_seleccted');
     
     //verify
-    Route::middleware(['auth:sanctum', 'verified']) ->get('/vote/verify', [VoteController::class, 'verify'])->name('vote.verify');
+       Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/verify', [VoteController::class, 'verify'])->name('vote.verify');
 
-    Route::middleware(['auth:sanctum', 'verified'])->post('/votes', [VoteController::class, 'store'])->name('vote.store');
+       Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->post('/votes', [VoteController::class, 'store'])->name('vote.store');
 
     //
     Route::middleware(['auth:sanctum', 'verified'])->get('/vote/verify_to_show', [VoteController::class, 'verify_to_show'])->name('vote.verify_to_show');

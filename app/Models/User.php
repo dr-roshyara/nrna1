@@ -63,7 +63,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'city',
         'additional_address',
         'nrna_id',
-        'can_vote_now',
         'can_vote',
         'has_voted',
         'has_candidacy',
@@ -117,14 +116,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
         ];
 
-    /**
-     * Each user has one and only one Vote :
-     *      */
-    public function vote (){
-        return $this->hasone(Vote::class, );
-        // return $this->hasOne(Code::class,  'foreign_key');
-        // you can also write $this->hasone('App\Vote')
-    }
 
      /**
      * Each user has one and only one Vote :
@@ -207,24 +198,185 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
     }
+
+    // In your User model (App\Models\User.php)
+
     /**
- * Get the voter record associated with the user.
- * 
- * @return \Illuminate\Database\Eloquent\Relations\HasOne
- */
-public function voter()
+     * Determine if the user is fully eligible to vote.
+     * A user is eligible if both 'is_voter' and 'can_vote' are set to true (1).
+     *
+     * @return bool
+     */
+ public function isEligibleToVote()
 {
-    return $this->hasOne(Voter::class);
+    // Convert database integers to booleans properly
+    return (bool) $this->is_voter && (bool) $this->can_vote;
 }
-/**
- * Get the election committee member record associated with the user.
+    
+    /**
+     * Check if user can ACCESS the ballot (eligibility only)
+     * This is just the first gate - actual voting is controlled by Code model
+     * 
+     * @return bool
+     */
+   /**
+ * Check if user can ACCESS the ballot 
+ * Handles both voting and viewing scenarios based on Code model
  * 
- * @return \Illuminate\Database\Eloquent\Relations\HasOne
+ * @return bool
  */
-public function electionCommitteeMember()
-{
-    return $this->hasOne(ElectionCommitteeMember::class);
-}
+    public function canAccessBallot()
+    {
+        // Basic eligibility check
+        if (!(bool) $this->is_voter || !(bool) $this->can_vote) {
+            return false;
+        }
+        
+        // Election must be active
+        if (!config('election.is_active', true)) {
+            return false;
+        }
+        
+        // If user has can_vote = 1, they can access ballot
+        // (either to vote or to view their vote)
+        return true;
+    }
+    
+        /**
+     * Get ballot access status with detailed error messages
+     * Now checks Code model for voting status
+     * 
+     * @return array
+     */
+    public function getBallotAccessStatus()
+    {
+        $status = [
+            'can_access' => false,
+            'error_type' => null,
+            'error_title' => '',
+            'error_message_nepali' => '',
+            'error_message_english' => ''
+        ];
+        
+        $isVoter = (bool) $this->is_voter;
+        $canVote = (bool) $this->can_vote;
+        
+        // Check 1: Must be a voter
+        if (!$isVoter) {
+            $status['error_type'] = 'not_voter';
+            $status['error_title'] = 'मतदाता नभएको | Not a Voter';
+            $status['error_message_nepali'] = 'तपाईंको नाम मतदाता नामाबलीमा छैन।';
+            $status['error_message_english'] = 'You are not a registered voter.';
+            return $status; 
+        }
+        
+        // Check 2: Must be approved (can_vote = 1)
+        if (!$canVote) {
+            $status['error_type'] = 'not_verified';
+            $status['error_title'] = 'प्रमाणीकरण आवश्यक | Verification Required';
+            $status['error_message_nepali'] = 'तपाईं प्रमाणित मतदाता हुनुहुन्न। निर्वाचन समितिले प्रमाणीकरण गर्नुपर्छ।';
+            $status['error_message_english'] = 'You are not a verified voter. Election committee must approve you first.';
+            return $status;
+        }
+        
+        // Check 3: Election must be active
+        $electionActive = config('election.is_active', true);
+        if (!$electionActive) {
+            $status['error_type'] = 'election_inactive';
+            $status['error_title'] = 'निर्वाचन निष्क्रिय | Election Inactive';
+            $status['error_message_nepali'] = 'निर्वाचन अहिले सक्रिय छैन।';
+            $status['error_message_english'] = 'Election is not currently active.';
+            return $status;
+        }
+
+        // ✅ NEW: Check Code model for voting status
+        $code = $this->code; // Using the relationship
+        
+        if ($code && $code->has_voted == 1) {
+            // User has voted - can access to view vote
+            $status['can_access'] = true;
+            $status['error_type'] = 'already_voted';
+            return $status;
+        }
+        
+        // User can vote (either no Code or Code->has_voted = 0)
+        $status['can_access'] = true;
+        $status['error_type'] = null;
+        return $status;
+    }
+    
+
+   
+   /**
+     * Check if user is committee member who can approve voters
+     * 
+     * @return bool
+     */
+    public function canApproveVoters()
+    {
+        return $this->is_committee_member == 1;
+    }
+    /**
+     * Get or create the Code model for this user (anonymization layer)
+     * 
+     * @return Code
+     */
+    public function getVotingCode()
+    {
+        return $this->hasOne(Code::class)->first() ?? 
+            Code::create(['user_id' => $this->id, 'client_ip' => request()->ip()]);
+    }
+
+
+    /**
+     * Get a descriptive status of the user's voting eligibility.
+     * Returns:
+     * - 'not_in_list'   : User is neither marked as a voter nor approved.
+     * - 'not_verified'  : User is a voter but not yet verified/approved.
+     * - 'eligible'      : User is both a voter and verified/approved.
+     * - 'ineligible'    : Any other case (should rarely occur, added for safety).
+     *
+     * @return string
+     */
+    public function getVoteEligibilityStatus()
+    {
+        // Not in voter list and not approved: not eligible to vote at all.
+        if (!$this->is_voter && !$this->can_vote) {
+            return 'not_in_list';
+        }
+
+        // In voter list but not yet approved/verified by committee.
+        if ($this->is_voter && !$this->can_vote) {
+            return 'not_verified';
+        }
+
+        // In voter list and approved: eligible to vote.
+        if ($this->is_voter && $this->can_vote) {
+            return 'eligible';
+        }
+
+        // Catch-all for unusual or inconsistent data.
+        return 'ineligible';
+    }
+
+    /**
+     * Get the voter record associated with the user.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function voter()
+    {
+        return $this->hasOne(Voter::class);
+    }
+    /**
+     * Get the election committee member record associated with the user.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function electionCommitteeMember()
+    {
+        return $this->hasOne(ElectionCommitteeMember::class);
+    }
 
 
 /**
@@ -333,7 +485,6 @@ public function scopeEligibleVoters($query)
 public function resetVotingState()
 {
     // Reset primary voting flags for the user
-    $this->can_vote_now    = 1;   // Allow voting immediately
     $this->can_vote        = 1;   // User is eligible to vote
     $this->has_voted       = 0;   // Mark as NOT having voted
     $this->has_used_code1  = 0;   // Mark as NOT having used Code-1
