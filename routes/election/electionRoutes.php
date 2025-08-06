@@ -120,7 +120,7 @@ Route::middleware(['auth:sanctum', 'verified']) ->get('deligatecandidacy/update'
  Route::middleware(['auth:sanctum', 'verified']) ->get('/deligatevote/show', [DeligateVoteController::class, 'show'])->name('deligatevote.show');
 
 // election committe
-    Route::middleware(['auth:sanctum', 'verified'])->get('/election/committee', function () {
+Route::get('/election/committee', function () {
                     return Inertia::render('Election/ElectionCommittee');
                 })
                 ->name('election.committee');
