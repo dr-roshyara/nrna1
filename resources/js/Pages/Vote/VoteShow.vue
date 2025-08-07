@@ -304,10 +304,7 @@ export default {
             type: Object,
             required: true
         },
-        viewing_user: {
-            type: Object,
-            required: true
-        }
+        
     },
 
     methods: {
