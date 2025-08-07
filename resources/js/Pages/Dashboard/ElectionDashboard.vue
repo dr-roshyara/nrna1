@@ -10,7 +10,6 @@
                     <p class="text-xl text-gray-600 mb-4">Election Center</p>
                     <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
                 </header>
-
                 <!-- Temporary debug info - remove after testing -->
 
                 <!-- Primary Actions Section -->
@@ -18,16 +17,56 @@
                     <h2 id="primary-actions" class="text-3xl font-semibold text-gray-900 text-center mb-10">
                         मुख्य कार्यहरू | Main Actions
                     </h2>
-                        <div v-if="true" class="p-4 bg-gray-100 text-xs">
+                        <!-- <div v-if="true" class="p-4 bg-gray-100 text-xs">
                         Debug: {{ debugVotingStatus }}
-                    </div>
+                    </div> -->
                     <!-- Add this temporarily to see which user is logged in -->
-                    <div class="p-4 bg-yellow-100 text-xs">
+                    <!-- <div class="p-4 bg-yellow-100 text-xs">
                         Logged in as: {{ authUser?.id }} ({{ authUser?.name }})
                         Expected: 2908 (Demo 1 NRNA Germany)
                     </div>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                     -->
+                    <div class="max-w-md mx-auto mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl shadow-lg overflow-hidden">
+                        <div class="bg-blue-600 px-6 py-3">
+                            <div class="flex items-center justify-center text-white">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="font-semibold text-sm uppercase tracking-wide">System Information</span>
+                            </div>
+                        </div>
+                        
+                        <div class="px-6 py-4 space-y-3">
+                            <!-- IP Address Section -->
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Client IP Address</p>
+                                    <p class="text-sm font-bold text-gray-900 font-mono">{{ ipAddress }}</p>
+                                </div>
+                            </div>
+                            
+                            <!-- User Info Section -->
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Authenticated User</p>
+                                    <p class="text-sm font-semibold text-gray-900">
+                                        {{ authUser?.name }} 
+                                        <span class="text-xs text-gray-500 font-normal">(ID: {{ authUser?.id }})</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
                         <!-- 🗳️ VOTING SECTION - FIXED DISPLAY -->
                         <div class="relative w-full">
                             <!-- Voting Button/Card -->
@@ -345,6 +384,7 @@ export default {
             type: Object,
             default: () => null
         },
+        ipAddress: '', 
         ballotAccess: {
             type: [Object, null],
             default: () => null
@@ -437,7 +477,7 @@ export default {
                 return this.route ? this.route('vote.create') : 'vote/create';
 
             }
-            console.log("Code       /Create")
+            console.log("Code/Create")
                 
             // Otherwise, start with code generation
             return this.route ? this.route('code.create') : 'code/create';

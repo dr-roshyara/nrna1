@@ -35,6 +35,7 @@ class VoteController extends Controller
     public $verify_final_vote;
     public $vote_id_for_voter;
     public $session_name;
+    public $session_id_for_verify_vote;
 
     /***
      * 
@@ -190,7 +191,7 @@ class VoteController extends Controller
                 
             ]); 
         }else{
-            return redirect()->route('vote.show');
+            return redirect()->route('vote.verify_to_show');
         } 
         //    {name: "Hari Bahadur", photo: "test1.png",  post: ["President", "अद्यक्ष"], id:"hari", checked: false, disabled: false },
   
@@ -309,7 +310,7 @@ public function first_submission(Request $request)
         return $verify_result; // Redirect back with errors
     }
 
-    // At this point, $verify_result is a route string: 'vote.cast' or 'vote.show'
+    // At this point, $verify_result is a route string: 'vote.cast' or 'vote.verify_to_show'
     return redirect()->route($verify_result);
 }
 
@@ -907,7 +908,6 @@ private function has_valid_selections($selections)
             //get deligatevote from session
             // 6. Generate and store verification key
 
-            $this->save_vote($vote_data);
 
 
  
@@ -916,21 +916,34 @@ private function has_valid_selections($selections)
             // 7. Save the vote and related data
             // $vote = $this->saveVoteTransactionally($auth_user, $private_key, $vote_data);
 
+            // Generate a secure random key component
+            //$random_key = bin2hex(random_bytes(16)); // 32-character random string
+            // $private_key = $this->generateAndStoreVerificationKey($code);
+            $private_key = bin2hex(random_bytes(16)); // 32-character random string
+            $hashed_key = password_hash ($private_key,PASSWORD_BCRYPT);
+             //dd(password_verify($private_key, $hashed_key));         
+             //dd($hashed_key);
 
-            $private_key = $this->generateAndStoreVerificationKey($code);
-             $hashed_key = Hash::make($private_key);
+            #
+            Log::info('private_key', [
+                'user_id' => $private_key
+            ]);
+             $vote_hashed_key =$hashed_key; 
+           
+            $this->save_vote($vote_data, $vote_hashed_key);    
+             $vote_private_key=$private_key."_".$this->out_code;
 
-        
+            
             // 8. Mark user as voted and update code status
-                $this->markUserAsVoted($code, $hashed_key); 
-
+                $this->markUserAsVoted($code, $hashed_key);
+                
                 // 9. Send verification notification
-                $auth_user->notify(new SendVoteSavingCode($private_key));
+                $auth_user->notify(new SendVoteSavingCode($vote_private_key));
 
                 DB::commit();
         
         // $request->session()->forget('vote');     
-        return redirect()->route('vote.show')->with('success', 'Your vote has been successfully submitted.');
+        return redirect()->route('vote.verify_to_show')->with('success', 'Your vote has been successfully submitted.');
 
     } catch (\Illuminate\Validation\ValidationException $e) {
         DB::rollBack();
@@ -956,16 +969,18 @@ private function has_valid_selections($selections)
  * 
  * @param Code $code
  */
- function markUserAsVoted(Code $code, string $primary_key )
+ function markUserAsVoted(Code $code, string $hashed_key )
 {
     $code->update([
         'has_voted' => true,
-        'vote_for_code'=>$primary_key,
-        'vote_show_code'=>$primary_key,
         'can_vote_now' => false,
         'is_code2_usable' => false,
-        'code2_used_at' => now()
+        'code2_used_at' => now(),
+        'vote_completed_at'=>now()
+       
     ]);
+    $code->save();
+    // dd($code);
 }
 
 /**
@@ -1100,7 +1115,8 @@ protected function saveAnonymizedVote(string $voting_code, array $vote_data): Vo
     $random_key = bin2hex(random_bytes(16)); // 32-character random string
     
     // Create the composite private key
-    $private_key = $random_key . '_' . $code->id;
+    $private_key = $random_key; 
+    // . '_' . $code->id;
     $this->out_code=$private_key;
     // Hash the private key using Laravel's secure Hash facade
     $hashed_key = Hash::make($private_key);
@@ -1127,7 +1143,7 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
         return false;
     }
     
-    // Timing attack resistant comparison
+    // Timing attack resistant comparison code_for_vote
     return Hash::check($submitted_code, $code->code_for_vote);
 }
 
@@ -1570,16 +1586,19 @@ public function verifyVoteSubmit(): array
 
 
 //save all candidates 
-    public function save_vote($input_data){
+    public function save_vote($input_data, $hashed_voting_key){
         $no_vote_option     = 0; 
         $vote               =new Vote;
         // $vote->user_id      = $this->user_id;
          // $vote->user_id      = Hash::make($this->user_id);
         // $vote->user_id      = Hash::make($vote->user_id);        
-        $vote->no_vote_option=0; 
-        $vote->voting_code  =$this->out_code;       
-        $vote->save();   //save the vote first
         
+        
+        $vote->no_vote_option=0; 
+        $vote->voting_code  =$hashed_voting_key;       
+     
+        $vote->save();   //save the vote first
+        $this->out_code =$vote->getkey();  
         //save the $this->vote_id_for_voter  it to voter ;
         {
          /**
@@ -1961,8 +1980,8 @@ public function verify_final_vote(Request $request)
 
         // 6. User must NOT have already voted
         if ($auth_user->has_voted == 1) {
-            // Instead of redirecting back, return the 'vote.show' route for already-voted users
-            return 'vote.show';
+            // Instead of redirecting back, return the 'vote.verify_to_show' route for already-voted users
+            return 'vote.verify_to_show';
         }
 
         // 7. Ensure the submitted user ID matches the authenticated user
@@ -1989,6 +2008,17 @@ public function verify_final_vote(Request $request)
  
 // Add these methods to your VoteController class
 
+public function verify_code_saved_in_vote($voting_code, $hashed_voting_code)
+{
+    if (!password_verify($voting_code, $hashed_voting_code)) {
+        // If the codes do not match, redirect back with error and input
+        return redirect()->back()
+            ->withErrors(['voting_code' => 'Invalid verification code.'])
+            ->withInput();
+    }
+    // If matched, you can return true or handle success as you wish
+    return true;
+}
 /**
  * Process vote verification code and display the associated vote
  * 
@@ -2000,7 +2030,7 @@ public function submit_code_to_view_vote(Request $request)
     try {
         // Validate request input
         $request->validate([
-            'voting_code' => 'required|string|min:3|max:50'
+            'voting_code' => 'required|string|min:3|max:500'
         ], [
             'voting_code.required' => 'Verification code is required.',
             'voting_code.min' => 'Verification code is too short.',
@@ -2009,29 +2039,11 @@ public function submit_code_to_view_vote(Request $request)
 
         $auth_user = auth()->user();
         $submitted_code = trim($request->input('voting_code'));
-        
-        // Get user's code record
-        $code = $auth_user->code;
-        
-        if (!$code) {
-            return redirect()->back()
-                ->withErrors(['voting_code' => 'No voting record found. Please contact administrator.'])
-                ->withInput();
-        }
-
-        // Validate the verification code
-        $validation_result = $this->validate_vote_verification_code($submitted_code, $code, $auth_user);
-        
-        if (!$validation_result['success']) {
-            return redirect()->back()
-                ->withErrors(['voting_code' => $validation_result['message']])
-                ->withInput();
-        }
-
-        // Extract vote ID from the verification code
+         // Extract vote ID from the verification code
         $vote_data = $this->extract_vote_data_from_code($submitted_code);
         
-        if (!$vote_data['success']) {
+        
+          if (!$vote_data['success']) {
             return redirect()->back()
                 ->withErrors(['voting_code' => 'Invalid verification code format.'])
                 ->withInput();
@@ -2048,19 +2060,32 @@ public function submit_code_to_view_vote(Request $request)
 
         // Prepare vote display data
         $display_data = $this->prepare_vote_display_data($vote_record['vote'], $auth_user, $submitted_code);
-        
         // Store in session for display
-        $request->session()->put('vote_display_data', $display_data);
+        $this->session_id_for_verify_vote = "vote_display_data_".$vote_data['vote_id'];
+        $voting_code =$vote_data["random_part"]; 
+        $hashed_voting_code =$display_data["vote_info"]["voting_code_used"];
+         $result = $this->verify_code_saved_in_vote($voting_code, $hashed_voting_code);
+        if ($result === true) {
+            $request->session()->put($this->session_id_for_verify_vote,$display_data);
+        }else{
+
+            return redirect()->back()
+                ->withErrors(['voting_code' => 'Vote record not found.'])
+                ->withInput();
         
+        }        // Log successful verification
+	
+        
+
         // Log successful verification
         Log::info('Vote verification successful', [
             'user_id' => $auth_user->id,
             'vote_id' => $vote_data['vote_id'],
             'verification_timestamp' => now()->toISOString()
         ]);
-
-        return redirect()->route('vote.show')
+        return redirect()->route('vote.show', ['vote_id' => $vote_data['vote_id']])
             ->with('success', 'Vote verification successful.');
+
 
     } catch (\Illuminate\Validation\ValidationException $e) {
         return redirect()->back()
@@ -2088,7 +2113,7 @@ public function submit_code_to_view_vote(Request $request)
  * @param object $auth_user
  * @return array
  */
-private function validate_vote_verification_code($submitted_code, $code, $auth_user)
+private function validate_vote_verification_code($submitted_code, $vote, $auth_user)
 {
     // Check if user has voted
     if (!$code->has_voted) {
@@ -2097,17 +2122,10 @@ private function validate_vote_verification_code($submitted_code, $code, $auth_u
             'message' => 'You have not voted yet. Please vote first before verifying.'
         ];
     }
-
-    // Check if verification code exists
-    if (!$code->code_for_vote) {
-        return [
-            'success' => false,
-            'message' => 'No verification code found. Please contact administrator.'
-        ];
-    }
-
+    
+        dd(password_verify($submitted_code,$vote->voiting_code));
     // Verify the code against stored hash
-    if (!Hash::check($submitted_code, $code->code_for_vote)) {
+    if (!Hash::check(trim($submitted_code), trim($code->code_for_vote))) {
         return [
             'success' => false,
             'message' => 'Invalid verification code. Please check your email and try again.'
@@ -2171,7 +2189,7 @@ private function extract_vote_data_from_code($verification_code)
 private function retrieve_vote_record($vote_id)
 {
     try {
-        $vote = Vote::with('user')->find($vote_id);
+        $vote = Vote::find($vote_id);
         
         if (!$vote) {
             return [
@@ -2401,58 +2419,31 @@ private function getCandidateNameFromCandidacy($candidacy)
     return 'Unknown Candidate';
 }
 
-
-/**
- * Display the verified vote record
- * 
- * @return \Inertia\Response|\Illuminate\Http\RedirectResponse
- */
-public function show()
+public function show($vote_id)
 {
     try {
-        $auth_user = auth()->user();
-        
-        // Get vote display data from session
-        $vote_display_data = request()->session()->get('vote_display_data');
-        
-        // Check if we have vote data to display
-        if (!$vote_display_data) {
+        $sessionKey = 'vote_display_data_' . $vote_id;
+        $voteDisplayData = session()->get($sessionKey);
+
+        if (!$voteDisplayData) {
             return redirect()->route('vote.verify_to_show')
                 ->withErrors(['session' => 'No vote data found. Please verify your code again.']);
         }
 
-        // Validate vote display data structure
-        if (!$this->is_valid_vote_display_data($vote_display_data)) {
-            request()->session()->forget('vote_display_data');
+        if (!$this->isValidVoteDisplayData($voteDisplayData)) {
+            session()->forget($sessionKey);
             return redirect()->route('vote.verify_to_show')
                 ->withErrors(['data' => 'Invalid vote data. Please verify your code again.']);
         }
 
-        // Log vote display access
-        Log::info('Vote display accessed', [
-            'viewing_user_id' => $auth_user->id,
-            'vote_id' => $vote_display_data['vote_id'] ?? 'unknown',
-            'is_own_vote' => $vote_display_data['is_own_vote'] ?? false,
-            'access_timestamp' => now()->toISOString()
-        ]);
-
-        // Clear session data after successful retrieval (optional security measure)
-        // request()->session()->forget('vote_display_data');
-
+        // No user logging, no user info passed
         return Inertia::render('Vote/VoteShow', [
-            'vote_data' => $vote_display_data,
-            'viewing_user' => [
-                'id' => $auth_user->id,
-                'name' => $auth_user->name,
-                'user_id' => $auth_user->user_id ?? 'N/A'
-            ]
+            'vote_data' => $voteDisplayData,
         ]);
-
-    } catch (\Exception $e) {
+    } catch (\Throwable $e) {
         Log::error('Vote show page error', [
-            'user_id' => auth()->id(),
             'error' => $e->getMessage(),
-            'trace' => $e->getTraceAsString()
+            'trace' => $e->getTraceAsString(),
         ]);
 
         return redirect()->route('vote.verify_to_show')
@@ -2460,27 +2451,28 @@ public function show()
     }
 }
 
+
 /**
- * Validate vote display data structure
- * 
+ * Validate the structure of vote display data.
+ *
  * @param mixed $data
  * @return bool
  */
-private function is_valid_vote_display_data($data)
+private function isValidVoteDisplayData($data)
 {
     if (!is_array($data)) {
         return false;
     }
 
-    $required_keys = [
+    $requiredKeys = [
         'vote_id',
         'verification_successful',
         'voter_info',
         'vote_info',
-        'vote_selections'
+        'vote_selections',
     ];
 
-    foreach ($required_keys as $key) {
+    foreach ($requiredKeys as $key) {
         if (!array_key_exists($key, $data)) {
             return false;
         }
@@ -2488,6 +2480,7 @@ private function is_valid_vote_display_data($data)
 
     return true;
 }
+
 
 
 }//end of the controller 

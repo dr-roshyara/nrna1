@@ -73,6 +73,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'google_id',
         'facebook_id',
         'approvedBy', 
+        'user_ip',
 
     ];
 

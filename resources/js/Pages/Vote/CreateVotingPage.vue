@@ -210,15 +210,7 @@ export default {
                 return;
             }
             
-            // Show confirmation dialog
-            const confirmation = confirm(
-                'Are you sure you want to submit your vote? This action cannot be undone.\n\n' +
-                'के तपाईं आफ्नो मत पेश गर्न निश्चित हुनुहुन्छ? यो कार्य फिर्ता गर्न सकिदैन।'
-            );
-            
-            if (!confirmation) {
-                return;
-            }
+          
             
             form.post('/vote/submit_seleccted', {
                 onSuccess: () => {
