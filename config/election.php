@@ -27,6 +27,7 @@ return [
     // ✅ Election dates
     'start_date' => env('ELECTION_START_DATE', null),
     'end_date' => env('ELECTION_END_DATE', null),
+    'voting_time_in_minutes' => env('VOTING_TIME_IN_MINUTES', 20),
 
     // ✅ Committee permissions
     'committee_permissions' => [

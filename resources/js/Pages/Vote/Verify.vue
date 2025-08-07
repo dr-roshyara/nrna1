@@ -13,7 +13,7 @@
                     <div class="mt-4 inline-flex items-center px-4 py-2 bg-blue-100 rounded-full">
                         <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                        </svg>
+                            </svg>
                         <span class="text-blue-800 font-medium">Secure Verification Process</span>
                     </div>
                 </div>
@@ -22,122 +22,221 @@
                 <div class="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
                     
                     <!-- Left Column - Verification Form -->
-                    <div class="order-2 lg:order-1">
-                        <div class="bg-white rounded-2xl shadow-xl p-8">
-                            
-                            <!-- Timing Information -->
-                            <div class="mb-6 p-4 bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-400 rounded-lg">
-                                <div class="flex items-center mb-2">
-                                    <svg class="w-5 h-5 text-amber-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <!-- Enhanced Instructions Section - Replaces the existing instructions div in left column -->
+                    <!-- Enhanced Instructions Section - Replaces the existing instructions div in left column -->
+                    <div class="mb-8">
+                        <!-- Critical Status Alert -->
+                        <div class="mb-6 p-5 bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-300 rounded-xl shadow-lg">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <svg class="w-7 h-7 text-red-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
                                     </svg>
-                                    <span class="font-semibold text-amber-800">Time Remaining</span>
                                 </div>
-                                <div class="text-2xl font-bold text-amber-900 mb-1">
-                                    {{ formatTime(timing_info.remaining_time) }}
-                                </div>
-                                <p class="text-sm text-amber-700">
-                                    Code sent {{ timing_info.total_duration }} minutes ago
-                                    <br>
-                                    <span class="text-xs">कोड {{ timing_info.total_duration }} मिनेट अघि पठाइएको</span>
-                                </p>
-                            </div>
-
-                            <!-- Instructions -->
-                            <div class="mb-8">
-                                <h2 class="text-2xl font-bold text-gray-800 mb-4">
-                                    Enter Verification Code
-                                </h2>
-                                <p class="text-gray-600 mb-4 leading-relaxed">
-                                    Please check your email for the verification code we sent {{ timing_info.total_duration }} minutes ago. 
-                                    Enter the code below to confirm and save your vote.
-                                </p>
-                                <p class="text-gray-500 text-sm leading-relaxed">
-                                    कृपया आफ्नो इमेल चेक गर्नुहोस् र तल दिइएको ठाउँमा प्राप्त भएको कोड हाल्नुहोस्। 
-                                    यसले तपाईंको मतदानलाई पुष्टि र सुरक्षित गर्नेछ।
-                                </p>
-                            </div>
-
-                            <!-- Validation Errors -->
-                            <div v-if="hasErrors" class="mb-6">
-                                <jet-validation-errors class="mb-4" />
-                            </div>
-
-                            <!-- Verification Form -->
-                            <form @submit.prevent="submit" class="space-y-6">
-                                <div>
-                                    <label for="voting_code" class="block text-sm font-medium text-gray-700 mb-2">
-                                        Verification Code / पुष्टिकरण कोड
-                                    </label>
-                                    <div class="relative">
-                                        <input
-                                            id="voting_code"
-                                            type="text"
-                                            v-model="form.voting_code"
-                                            class="block w-full px-4 py-4 text-lg font-mono text-center tracking-widest border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 uppercase"
-                                            placeholder="ENTER 6-DIGIT CODE"
-                                            maxlength="6"
-                                            :class="{
-                                                'border-red-300 focus:border-red-500 focus:ring-red-500': form.errors.voting_code,
-                                                'border-green-300 focus:border-green-500 focus:ring-green-500': form.voting_code && form.voting_code.length === 6
-                                            }"
-                                            autocomplete="off"
-                                        />
-                                        <div v-if="form.voting_code && form.voting_code.length === 6" class="absolute right-3 top-1/2 transform -translate-y-1/2">
-                                            <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <p class="mt-2 text-sm text-gray-500">
-                                        Enter the 6-digit code from your email
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-bold text-red-800 mb-2">
+                                        ⚠️ CRITICAL: Your Vote Is NOT Saved Yet!
+                                    </h3>
+                                    <p class="text-red-700 font-medium text-sm leading-relaxed">
+                                        <strong>महत्वपूर्ण: तपाईंको मत अझै सुरक्षित भएको छैन!</strong><br>
+                                        Without the code below, your vote will be completely lost.
                                     </p>
                                 </div>
+                            </div>
+                        </div>
 
-                                <!-- Submit Button -->
-                                <button
-                                    type="submit"
-                                    :disabled="form.processing || !form.voting_code || form.voting_code.length !== 6"
-                                    class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
-                                >
-                                    <span v-if="form.processing" class="flex items-center justify-center">
-                                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                        </svg>
-                                        Verifying...
-                                    </span>
-                                    <span v-else class="flex items-center justify-center">
-                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                        Confirm & Save Vote
-                                    </span>
-                                </button>
-                            </form>
+                        <!-- Main Title -->
+                        <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
+                            <svg class="w-6 h-6 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Final Step: Enter Voting Code
+                        </h2>
+                        <p class="text-lg font-semibold text-gray-700 mb-6">
+                            अन्तिम चरण: मतदान कोड प्रविष्ट गर्नुहोस्
+                        </p>
 
-                            <!-- Security Note -->
-                            <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                                <div class="flex items-start">
-                                    <svg class="w-5 h-5 text-gray-400 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <!-- Process Status -->
+                        <div class="mb-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="font-semibold text-green-800">✓ Vote Selections Complete</span>
+                            </div>
+                            <p class="text-green-700 text-sm">
+                                सबै छनौटहरू पूरा भएका छन् • All your voting choices have been recorded
+                            </p>
+
+                        </div>
+
+                        <!-- English Instructions -->
+                        <div class="mb-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                            <h4 class="font-bold text-blue-800 mb-2 flex items-center">
+                                <span class="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold mr-2">EN</span>
+                                IMPORTANT: Final Verification Required
+                            </h4>
+                            <p class="text-blue-700 font-medium leading-relaxed text-sm">
+                                <strong>To save your vote permanently:</strong> 
+                                Check your email for a 6-digit verification code 
+                                and enter it below. 
+                                Your vote selections will be completely lost if you don't complete this step.
+                            </p>
+                            
+                        </div>
+
+                        <!-- Nepali Instructions -->
+                        <div class="mb-6 p-4 bg-orange-50 rounded-lg border-l-4 border-orange-400">
+                            <h4 class="font-bold text-orange-800 mb-2 flex items-center">
+                                <span class="w-5 h-5 bg-orange-600 text-white rounded-full flex items-center justify-center text-xs font-bold mr-2">नेपाली</span>
+                                महत्वपूर्ण: अन्तिम प्रमाणीकरण आवश्यक
+                            </h4>
+                            <p class="text-orange-700 font-medium leading-relaxed text-sm" style="line-height: 1.7;">
+                                <strong>आफ्नो मत स्थायी रूपमा सुरक्षित गर्न:</strong> आफ्नो इमेलमा आएको  ६ अंकको प्रमाणीकरण कोड  
+                                तल प्रविष्ट गर्नुहोस्।
+                                यो चरण पूरा नगरेसम्म तपाईंका मत छनौटहरू पूर्णतया हराउनेछन्।
+                            </p>
+                        </div>
+
+                        <!-- Action Required Banner -->
+                        <div class="mb-6 p-3 bg-gradient-to-r from-yellow-100 to-amber-100 border border-yellow-300 rounded-lg">
+                            <div class="flex items-center justify-center text-center">
+                                <svg class="w-5 h-5 text-amber-600 mr-2" fill="none" 
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" 
+                                    stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z">
+                                </path>
+                                </svg>
+                                <span class="font-semibold text-amber-800 text-sm">
+                                    ⚡ Action Required: Enter code to save your vote permanently
+                                </span>
+                            </div>
+                            
+                        </div>
+                        
+
+                    <!-- Enhanced Verification Form -->
+                    <form @submit.prevent="submit" class="space-y-6">
+                        <div class="relative">
+                            <!-- Form Label with Enhanced Styling -->
+                            <label for="voting_code" class="block text-base font-bold text-gray-800 mb-3">
+                                <div class="flex items-center mb-2">
+                                    <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+
+                                        </path>
                                     </svg>
-                                    <div>
-                                        <p class="text-sm text-gray-600">
-                                            <strong>Security Notice:</strong> Your vote is encrypted and anonymous. 
-                                            The verification code ensures only you can confirm your selections.
-                                        </p>
-                                        <p class="text-xs text-gray-500 mt-1">
-                                            सुरक्षा सूचना: तपाईंको मत गुप्त र सुरक्षित छ।
-                                        </p>
+                                    <span class="text-gray-800">Enter Verification Code</span>
+                                </div>
+                                <span class="text-base font-medium text-gray-600">
+                                    प्रमाणीकरण कोड प्रविष्ट गर्नुहोस्
+                                </span>
+                            </label>
+
+                            <!-- Enhanced Input Field -->
+                            <div class="relative">
+                                <input
+                                    id="voting_code"
+                                    type="text"
+                                    v-model="form.voting_code"
+                                    class="block w-full px-6 py-5 text-2xl font-mono text-center tracking-widest border-3 border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 uppercase shadow-lg hover:shadow-xl"
+                                    placeholder="ENTER 6-DIGIT CODE"
+                                    maxlength="6"
+                                    :class="{
+                                        'border-red-400 focus:border-red-500 focus:ring-red-200 bg-red-50': form.errors.voting_code,
+                                        'border-green-400 focus:border-green-500 focus:ring-green-200 bg-green-50': form.voting_code && form.voting_code.length === 6,
+                                        'hover:border-blue-400': !form.errors.voting_code && (!form.voting_code || form.voting_code.length !== 6)
+                                    }"
+                                    autocomplete="off"
+                                />
+                                
+                                <!-- Success Checkmark -->
+                                <div v-if="form.voting_code && form.voting_code.length === 6" class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                                    <div class="bg-green-500 rounded-full p-1">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- Input Helper Text -->
+                                <div class="mt-3 flex items-center justify-between">
+                                    <p class="text-sm text-gray-600 flex items-center">
+                                        <svg class="w-4 h-4 mr-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        </svg>
+                                        Check your email for the 6-digit code
+                                    </p>
+                                    <div class="text-xs text-gray-500">
+                                        {{ form.voting_code ? form.voting_code.length : 0 }}/6
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Enhanced Submit Button -->
+                        <div class="pt-4">
+                            <button
+                                type="submit"
+                                :disabled="form.processing || !form.voting_code || form.voting_code.length !== 6"
+                                class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-5 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-xl hover:shadow-2xl"
+                            >
+                                <span v-if="form.processing" class="flex items-center justify-center">
+                                    <svg class="animate-spin -ml-1 mr-3 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    <span class="text-lg">Saving Your Vote...</span>
+                                </span>
+                                <span v-else class="flex items-center justify-center">
+                                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold">🗳️ CONFIRM & SAVE VOTE</div>
+                                        <div class="text-sm opacity-90">मत पुष्टि गरी सुरक्षित गर्नुहोस्</div>
+                                    </div>
+                                </span>
+                            </button>
+
+                            <!-- Button Help Text -->
+                            <div class="mt-3 text-center">
+                                <p class="text-xs text-gray-500" v-if="!form.voting_code || form.voting_code.length !== 6">
+                                    Button will activate when you enter the complete 6-digit code
+                                </p>
+                                <p class="text-xs text-green-600 font-medium" v-else>
+                                    ✓ Ready to save your vote permanently
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+
                     </div>
 
+                    <!-- Validation Errors -->
+                    <div v-if="hasErrors" class="mb-6">
+                        <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="text-sm font-semibold text-red-800 mb-1">
+                                        Verification Error / प्रमाणीकरण त्रुटि
+                                    </h3>
+                                    <jet-validation-errors class="text-red-700" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                  
+                                        
                     <!-- Right Column - Vote Summary -->
                     <div class="order-1 lg:order-2">
+                        
                         <div class="bg-white rounded-2xl shadow-xl p-8 sticky top-8">
                             
                             <!-- User Info -->
@@ -274,6 +373,7 @@
                                 <p class="text-gray-500">No vote data found</p>
                             </div>
                         </div>
+               
                     </div>
                 </div>
             </div>

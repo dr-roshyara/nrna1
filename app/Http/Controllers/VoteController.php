@@ -433,18 +433,18 @@ public function second_submission(Request $request)
         $code->save();
 
         // Send second verification code with error handling
-        $code_result = $this->send_second_voting_code($code, $auth_user);
+        // $code_result = $this->send_second_voting_code($code, $auth_user);
         
-        if (isset($code_result['error'])) {
-            Log::error('Failed to send second verification code', [
-                'user_id' => $auth_user->id,
-                'error' => $code_result['error']
-            ]);
+        // if (isset($code_result['error'])) {
+        //     Log::error('Failed to send second verification code', [
+        //         'user_id' => $auth_user->id,
+        //         'error' => $code_result['error']
+        //     ]);
             
-            return redirect()->back()
-                ->withErrors(['code' => 'Failed to send verification code. Please try again.'])
-                ->withInput();
-        }
+        //     return redirect()->back()
+        //         ->withErrors(['code' => 'Failed to send verification code. Please try again.'])
+        //         ->withInput();
+        // }
 
         $totalDuration = $code_result['duration'] ?? 0;
 
@@ -871,7 +871,7 @@ private function has_valid_selections($selections)
      */
     public function store(Request $request)
     {
-    DB::beginTransaction();
+        DB::beginTransaction();
     
     try {
    
@@ -881,16 +881,46 @@ private function has_valid_selections($selections)
 
         //everything take from Code Model
         $this->has_voted    =$code->has_voted;
-        $this->in_code      =$code->code2;
+        $this->in_code      =$code->code1;
         $this->out_code     = $request['voting_code'];
         $voting_code        = trim($request->input('voting_code'));
-       
+        /********************************************************** */
+        //verify second  submission code:
+             // Validate request input
+            $request->validate([
+                'voting_code' => 'required|string|min:6|max:6'
+            ], [
+                'voting_code.required' => 'Please enter the verification code.',
+                'voting_code.min' => 'Code must be exactly 6 characters.',
+                'voting_code.max' => 'Code must be exactly 6 characters.',
+            ]);
+
+            $_codeVerified =$this->verify_submitted_code($this->in_code, $this->out_code);
+            // Use the verification method
+            if (!$_codeVerified) {
+            
+                \Log::warning('Code verification failed - returning with error', 
+                [
+                'user_id' => $user_id,
+                'nrna_id' => $auth_user->nrna_id ?? null,
+                'submitted_code_length' => strlen($request['voting_code'] ?? ''),
+                'failed_at' => now()
+                ]);
+            
+            // Return back with your specified error message
+            return back()->withErrors([
+                'voting_code' => 'Submitted code is false. Please check your email and try again.'
+            ])->withInput();
+        }
+        /*********************************************************** */
         $this->user_id      =$code->user_id;
         $code->session_name = 'vote_' . $code->id."_". auth()->id();
         $code->save();
         $session_name       =$code->session_name;
         //get deligatevote from session
         $vote_data = $request->session()->get($session_name);
+
+        // check the  voting codes 
 
         // dd($vote_data["national_selected_candidates"]);
         // 1. Validate pre-conditions
@@ -1273,7 +1303,6 @@ public function verify()
     try {
         $auth_user = auth()->user();
         $code = $auth_user->code;
-        
         // Get vote data from session (stored by second_submission)
         $vote_data = request()->session()->get($code->session_name);
         
@@ -1287,6 +1316,7 @@ public function verify()
             return redirect()->route('vote.create')
                 ->withErrors(['session' => 'Vote session expired. Please start the voting process again.']);
         }
+       
 
         // Perform comprehensive post-submission checks
         $_error = $this->vote_post_check($auth_user, $code, $vote_data);
@@ -1865,13 +1895,13 @@ public function verify_final_vote(Request $request)
         return $_error;
     }
 
-    // 3. Code is not usable
-    if (!$code->is_code2_usable) {
-        $code->is_code1_usable = 0;
-        $code->has_code1_sent = 0;
-        $_error['return_to'] = 'vote.create';
-        return $_error;
-    }
+    // // 3. Code is not usable
+    // if (!$code->is_code2_usable) {
+    //     $code->is_code1_usable = 0;
+    //     $code->has_code1_sent = 0;
+    //     $_error['return_to'] = 'vote.create';
+    //     return $_error;
+    // }
 
     // 4. User already voted
     if ($code->has_voted) {
@@ -2000,7 +2030,7 @@ public function verify_final_vote(Request $request)
         }
 
         // Grant one-time session access for the voting form
-        session(['vote_access_granted' => true]);
+        // session(['vote_access_granted' => true]);
 
         // Return the route name to render the voting form
         return 'vote.cast';
@@ -2479,6 +2509,68 @@ private function isValidVoteDisplayData($data)
     }
 
     return true;
+}
+
+/**
+ * Verify submitted voting code against stored hashed code
+ * 
+ * @param string $in_code The hashed code stored in database (e.g., $code->code1)
+ * @param string $submitted_code The code submitted by user from form (e.g., $request['voting_code'])
+ * @return bool True if codes match, false otherwise
+ */
+public function verify_submitted_code($in_code, $submitted_code)
+{
+    // Input validation
+    if (empty($in_code) || empty($submitted_code)) {
+        \Log::warning('Code verification failed: empty parameters', [
+            'in_code_empty' => empty($in_code),
+            'submitted_code_empty' => empty($submitted_code),
+            'user_id' => auth()->id() ?? 'unknown',
+        ]);
+        return false;
+    }
+
+    // Clean and format submitted code (uppercase, trim whitespace)
+    $clean_submitted_code = strtoupper(trim($submitted_code));
+    
+    // Log verification attempt for audit trail
+    \Log::info('Code verification attempt', [
+        'user_id' => auth()->id() ?? 'unknown',
+        'submitted_code_length' => strlen($clean_submitted_code),
+        'submitted_code_format' => ctype_alnum($clean_submitted_code) ? 'valid_format' : 'invalid_format',
+        'has_stored_hash' => !empty($in_code),
+        'attempted_at' => now(),
+    ]);
+
+    try {
+        // Use Laravel's Hash facade to verify the code
+        $verification_result = Hash::check($clean_submitted_code, $in_code);
+        // Log the result for audit trail
+        if ($verification_result) {
+            \Log::info('✅ Code verification successful', [
+                'user_id' => auth()->id() ?? 'unknown',
+                'verified_at' => now(),
+            ]);
+        } else {
+            \Log::warning('❌ Code verification failed - Hash mismatch', [
+                'user_id' => auth()->id() ?? 'unknown',
+                'submitted_code_length' => strlen($clean_submitted_code),
+                'failed_at' => now(),
+            ]);
+        }
+        
+        return $verification_result;
+        
+    } catch (\Exception $e) {
+        // Handle any unexpected errors during verification
+        \Log::error('Code verification error', [
+            'user_id' => auth()->id() ?? 'unknown',
+            'error_message' => $e->getMessage(),
+            'error_trace' => $e->getTraceAsString(),
+        ]);
+        
+        return false;
+    }
 }
 
 

@@ -1,19 +1,41 @@
 
 what should  Create method in Code Controller do ? 
+#1
 Checks if you are allowed to vote.
 	If you aren’t eligible, it shows you a message saying you can’t vote, and explains why.
+ if allowed to vote go ahead .
 
+#2 check if the code for that particular voter is already there! 
+ if already there then check if the code is valid 
+   when is the code_model valid 
+    $code->is_codemodel_valid=true ; 
+    a) Check the time (time from code1_sent_at till now)
+   b) Check if it has already voted 
+   c) is_code1_usable=true 
+   c) check if it has alrady got code2_set 
+   d) 
+ # 3: Read ip address and check if ip address this time same as the ip address saved in  
+   User model 
+   - If ip address does not match then redirect to vode deneid page 
+   - 
 
-If not, it creates a new record for you, which keeps track of your voting session.
+# case: code does not exisits 
+it creates a new record for you, which keeps track of your voting session.
  when  sending email it should  do the following : 
-	 1) save code1 as hashed
+	 2) set is_codemodel =true
+    1) save code1 as hashed
 	 2)set    is_code1_usable: 1 
 	 3) has_code1_sent: 1,
-     4)save client_ip: 
+   4)save client_ip: 
 	 5) code1_sent_at =now() 
-	 6) set voting_time_in_minutes: 20,
+	 6) set voting_time_in_minutes: $this->voting_time_in_minutes,
 	send notification         $auth_user->notify(new SendFirstVerificationCode($auth_user, $form_opening_code));
-	shouldSendCode is true only if has_code1_sent is false. That means we sent only one timie. 
+	shouldSendCode is true only if has_code1_sent is false. That means we sent only one time. 
+   Code is sent only once . 
+
+   if code is not reached to voter then 
+   code1 time is longer than voting_time_in_minutes , then he should contact the administrator : 
+   forward to Denial page
 	
 
 Checks if you have already voted.
@@ -56,3 +78,5 @@ code fields:
     has_code1_sent: 1,
     has_code2_sent: 1,
     client_ip: "127.0.0.1",
+    is_codemodel_valid: true
+    
