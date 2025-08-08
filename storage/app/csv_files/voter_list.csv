@@ -1,0 +1,5 @@
+sn;user_id;name;email;region;country;state;city;telephone;password;nrna_id;is_voter
+1;DE_MIS_ 1;Nab Raj Roshyara;roshyara@gmail.com;Europe;Germany;Hessen;Wiesbaden;4915164322589;Namaste!13#;nrna_01;1
+2;DE_MIS_ 3;Nab Raj Roshyara;roshyara1@gmail.com;Europe;Germany;Hessen;Wiesbaden;4915164322589;Namaste!13#;nrna_01;1
+3;DE_MIS_ 2;Nab Raj Roshyara;roshyara2@gmail.com;Europe;Germany;Hessen;Wiesbaden;49151643225891;Namaste!13#;nrna_03;1
+

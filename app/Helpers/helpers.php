@@ -183,3 +183,61 @@ $_message['return_to'] = '404';
     }
 
 
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
+if (!function_exists('validateVotingIpWithResponse')) {
+    /**
+     * Validate voting IP and return full denial response if mismatch occurs
+     * 
+     * @return array|\Inertia\Response
+     * Returns array with validation data if IP matches
+     * Returns Inertia response if IP doesn't match
+     */
+    function validateVotingIpWithResponse()
+    {
+        $auth_user = Auth::user();
+        $current_ip = request()->ip();
+
+        // Check if user exists and has voting_ip set
+        if (!isset($auth_user->voting_ip) || empty($auth_user->voting_ip)) {
+            return [
+                'valid' => true,
+                'skip_reason' => 'no_voting_ip_set',
+                'current_ip' => $current_ip,
+                'registered_ip' => null
+            ];
+        }
+
+        // Compare IPs
+        if ($auth_user->voting_ip !== $current_ip) {
+            \Log::warning('IP mismatch with User model', [
+                'user_id' => $auth_user->id,
+                'user_stored_ip' => $auth_user->voting_ip,
+                'current_ip' => $current_ip,
+            ]);
+            
+            return Inertia::render('Vote/VoteDenied', [
+                'denial_type' => 'IP Address Mismatch',
+                'error_title' => 'Vote Denied - IP Address Changed',
+                'title_english' => 'Vote Denied - IP Address Changed',
+                'title_nepali' => 'मतदान अस्वीकृत - IP एड्रेस फेरिएको',
+                'error_message_english' => 'Your IP address does not match the IP address saved in your user profile. For security reasons, voting must be done from the registered IP address.',
+                'error_message_nepali' => 'तपाईंको IP एड्रेस तपाईंको प्रयोगकर्ता प्रोफाइलमा सुरक्षित IP एड्रेससँग मेल खाँदैन। सुरक्षा कारणले, दर्ता गरिएको IP एड्रेसबाट मतदान गर्नुपर्छ।',
+                'solution_english' => 'Please return to your registered network connection and try again, or contact the election committee.',
+                'solution_nepali' => 'कृपया आफ्नो दर्ता गरिएको नेटवर्क जडानमा फर्कनुहोस् र फेरि प्रयास गर्नुहोस्, वा निर्वाचन समितिलाई सम्पर्क गर्नुहोस्।',
+                'user_name' => $auth_user->name,
+                'current_ip' => $current_ip,
+                'registered_ip' => $auth_user->voting_ip,
+            ]);
+        }
+
+        return [
+            'valid' => true,
+            'current_ip' => $current_ip,
+            'registered_ip' => $auth_user->voting_ip
+        ];
+    }
+}
+

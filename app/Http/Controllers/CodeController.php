@@ -162,10 +162,9 @@ public function create()
     // ==========================================
     // #3: IP ADDRESS VALIDATION
     // ==========================================
-    
     // Check if IP address matches saved IP in User model
-    if (isset($auth_user->client_ip) && !empty($auth_user->client_ip)) {
-        if ($auth_user->client_ip !== $this->clientIP) {
+    if (isset($auth_user->voting_ip) && !empty($auth_user->voting_ip)) {
+        if ($auth_user->voting_ip !== "$this->clientIP") {
             \Log::warning('IP mismatch with User model during create', [
                 'user_id' => $auth_user->id,
                 'user_stored_ip' => $auth_user->client_ip,
@@ -612,7 +611,6 @@ if (isset($auth_user->client_ip) && !empty($auth_user->client_ip)) {
             'voting_time_minutes' => $this->voting_time_minutes,
             'updated_at' => now(),
         ]);
-        dd("test");
         // ✅ SUCCESS: Redirect to agreement page
         return redirect()->route('code.agreement')
             ->with('success', '✅ Code verified successfully! Please read and accept the voting agreement to continue. / कोड सफलतापूर्वक प्रमाणित! कृपया जारी राख्नको लागि मतदान सम्झौता पढ्नुहोस् र स्वीकार गर्नुहोस्।');

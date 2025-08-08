@@ -204,7 +204,13 @@ public function create(Request $request)
 {
     $auth_user = $request->user();
     $code = $auth_user->code;
-
+    
+    // IP validation - single line replacement
+    $ipValidation = validateVotingIpWithResponse();
+    if ($ipValidation instanceof \Inertia\Response) {
+        return $ipValidation; // Returns the denial response
+    }
+ 
     // --- Fetch National Posts and Candidates ---
     $national_posts = QueryBuilder::for(Post::with(['candidates' => function($query) {
         $query->join('users', 'users.user_id', '=', 'candidacies.user_id')
@@ -879,6 +885,13 @@ private function has_valid_selections($selections)
         $code               = $auth_user->code;
         $voting_session_name =Hash::make($code->code2);
 
+         // IP validation - single line replacement
+            $ipValidation = validateVotingIpWithResponse();
+            if ($ipValidation instanceof \Inertia\Response) {
+                return $ipValidation; // Returns the denial response
+            }
+
+
         //everything take from Code Model
         $this->has_voted    =$code->has_voted;
         $this->in_code      =$code->code1;
@@ -1119,6 +1132,12 @@ protected function saveCandidateSelections(Vote $vote, array $vote_data)
  */
 protected function saveAnonymizedVote(string $voting_code, array $vote_data): Vote
 {
+     // IP validation - single line replacement
+    $ipValidation = validateVotingIpWithResponse();
+    if ($ipValidation instanceof \Inertia\Response) {
+        return $ipValidation; // Returns the denial response
+    }
+    
     $vote = new Vote();
     
     // Store only the voting code, no user identification
