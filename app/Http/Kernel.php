@@ -68,7 +68,8 @@ class Kernel extends HttpKernel
 		'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
 		'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'vote.eligibility' => \App\Http\Middleware\VoteEligibility::class,
-        'no.cache' =>\App\Http\Middleware\NoCacheMiddleware::class
+        'no.cache' =>\App\Http\Middleware\NoCacheMiddleware::class,
+        'committee.member' => \App\Http\Middleware\EnsureCommitteeMember::class,
 
     ];
 }

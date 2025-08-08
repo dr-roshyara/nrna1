@@ -56,6 +56,14 @@
                         >
                             S.N.
                         </th>
+                        <!-- User ID-->
+                        <th
+                            class="sticky top-0 border-r border-green-200"
+                            v-show="showColumn('user_id')"
+                            @click.prevent="sortBy('user_id')"
+                        >
+                            User ID
+                        </th>
                         <!-- Name -->
                         <th
                             class="sticky top-0 border-r border-green-200"
@@ -65,21 +73,7 @@
                             Name
                         </th>
 
-                        <th
-                            class="sticky top-0 border-r border-green-200"
-                            v-show="showColumn('user_id')"
-                            @click.prevent="sortBy('user_id')"
-                        >
-                            User ID
-                        </th>
-                        <!-- region    -->
-                        <th
-                            class="sticky top-0 border-r border-green-200"
-                            v-show="showColumn('region')"
-                            @click.prevent="sortBy('region')"
-                        >
-                            Region
-                        </th>
+                        <!-- REMOVED REGION COLUMN -->
                         <!-- Voting Status -->
                         <th
                             class="sticky top-0 border-r border-green-200"
@@ -93,6 +87,13 @@
                             v-show="showColumn('approved_by')"
                         >
                             Status Details
+                        </th>
+                        <!-- NEW: Voting IP -->
+                        <th
+                            class="sticky top-0 border-r border-green-200"
+                            v-show="showColumn('voting_ip')"
+                        >
+                            Voting IP
                         </th>
                         <!-- Actions column - only show if committee member -->
                         <th 
@@ -137,13 +138,7 @@
                         >
                             {{ voter.name }}
                         </td>
-                        <!-- region  -->
-                        <td
-                            class="border-r border-green-200 p-2"
-                            v-show="showColumn('region')"
-                        >
-                            {{ voter.region }}
-                        </td>
+                        <!-- REMOVED REGION COLUMN -->
                         <!-- Voting Status -->
                         <td
                             class="border-r border-green-200 p-2"
@@ -192,6 +187,20 @@
                                     Pending approval
                                 </span>
                             </div>
+                        </td>
+                        <!-- NEW: Voting IP -->
+                        <td
+                            class="border-r border-green-200 p-2"
+                            v-show="showColumn('voting_ip')"
+                        >
+                            <div v-if="voter.voting_ip">
+                                <span class="text-sm text-gray-900">{{ voter.voting_ip }}</span>
+                                <!-- Show if current IP is different from voting IP -->
+                                <div v-if="voter.user_ip && voter.user_ip !== voter.voting_ip" class="text-xs text-gray-500 mt-1">
+                                    Current: {{ voter.user_ip }}
+                                </div>
+                            </div>
+                            <span v-else class="text-sm text-gray-400 italic">Not approved</span>
                         </td>
                         <!-- Actions - only show if committee member -->
                         <td 

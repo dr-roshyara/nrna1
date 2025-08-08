@@ -165,7 +165,7 @@ class UserController extends Controller
             //  dd($element);
             $laufer +=1;
             $user  =User::where('user_id', trim($element['user_id']))->first();
-            // dd($user);
+            dd($user);
              if($user){
 
                 echo "User Exists-> line: ".$laufer.", user name ". $user->name. ", user_id:". $user->user_id ."<br>\n";

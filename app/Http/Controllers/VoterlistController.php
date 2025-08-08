@@ -21,7 +21,6 @@ class VoterlistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    //starts here 
     public function index(Request $request)
     {
         
@@ -45,8 +44,8 @@ class VoterlistController extends Controller
         $query = User::where('is_voter', 1);
         $users = QueryBuilder::for($query)
         ->defaultSort('name')
-        ->allowedSorts(['name','nrna_id', "region"])
-        ->allowedFilters(['name','nrna_id', 'region',  $globalSearch])
+        ->allowedSorts(['name','nrna_id', 'voting_ip', 'approvedBy'])
+        ->allowedFilters(['name','nrna_id', 'voting_ip', 'approvedBy', $globalSearch])
         ->paginate(50) 
         ->withQueryString();
         // chain on any of Laravel's query builder methods
@@ -63,7 +62,8 @@ class VoterlistController extends Controller
             $table->addSearchRows([                
                 'name'              => 'Name',
                 'user_id'           => 'User ID',
-                'region'             => 'Region',
+                'voting_ip'         => 'Voting IP',
+                'approvedBy'        => 'Approved By',
                 // 'item.keywords'          => 'Keywords',
                 // 'variationId'            => 'Variation Id',
                 // 'itemId'   =>  'Item Id',
@@ -74,11 +74,11 @@ class VoterlistController extends Controller
                 // 'nl' => 'Nederlands',
             ])->addColumns([
                 'sn'                  => 'S.N.',
-                'use_id'              => 'User ID',
+                'user_id'             => 'User ID',
                 'name'                => 'Name',
-                'region'              => 'Region',
                 'status'              => 'Voting Status',
-                'approved_by'         => 'Approved By',
+                'approved_by'         => 'Status Details',
+                'voting_ip'           => 'Voting IP',
                 'actions'             => 'Actions'
 
             ]);
@@ -125,7 +125,7 @@ class VoterlistController extends Controller
         // })->paginate(20); 
         $btemp      =auth()->user()->hasAnyPermission('send code');
         // dd($btemp);
-         $voters     =$query->paginate(20);
+         $voters     =$query->paginate(50);
         // $voters =$voters->sortBy('created_at')->reverse();
         return Inertia::render('Voter/IndexVoter', [
           'voters' => $voters,
@@ -160,9 +160,10 @@ class VoterlistController extends Controller
                 return back()->withErrors(['error' => 'User is not registered as a voter.']);
             }
 
-            // Update can_vote to 1, set approver, and clear suspension info
+            // Update can_vote to 1, set approver, and capture voting_ip from user_ip, and clear suspension info
             $user->update([
                 'can_vote' => 1,
+                'voting_ip'=>$user->user_ip,  // Save user's current IP as voting IP
                 'approvedBy' => auth()->user()->name,
                 'suspendedBy' => null,      // Clear suspension info when approved
                 'suspended_at' => null      // Clear suspension timestamp
@@ -207,7 +208,6 @@ class VoterlistController extends Controller
         }
     }
 
-//ends here 
     /**
      * Show the form for creating a new resource.
      *
@@ -238,7 +238,7 @@ class VoterlistController extends Controller
     public function show($id)
     {
         //
-        $user = DB::table('users')->where('id', $id);
+        $user = DB::table('users')->where('id', $id)->first();
         return Inertia::render('User/Profile', [
           'user' => $user,
  

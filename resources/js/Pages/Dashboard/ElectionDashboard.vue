@@ -69,11 +69,22 @@
                                 <div class="ml-3">
                                     <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Authenticated User</p>
                                     <p class="text-sm font-semibold text-gray-900">
+                                        
                                         {{ authUser?.name }} 
-                                        <span class="text-xs text-gray-500 font-normal">(ID: {{ authUser?.id }})</span>
+                                        <span class="text-xs text-gray-800 font-medium">(ID: {{ authUser?.id }})</span>
                                     </p>
                                 </div>
+                                	
                             </div>
+                            <!-- User Email with Icon -->
+                                    <div class="flex items-center mt-1">
+                                        <svg class="w-3 h-3 text-gray-400 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                        </svg>
+                                        <span class="text-xs text-gray-600">{{ authUser?.email }}</span>
+                                    </div>
+
                         </div>
                     </div>                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
                         <!-- 🗳️ VOTING SECTION - FIXED DISPLAY -->

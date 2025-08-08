@@ -4,7 +4,7 @@
 # VOTE  VERIFICATION CODE 
 <p> 
 Namaskar  {{$user->name}}! <br> 
-Your first voting code is given below. 
+Your voting code is given below. 
 With this code you can open the voting form. 
 Please go to the previous form  to submit the code.<br> 
  <span style="font-weight:bold;"> Note:</span>  You can also click the following link
