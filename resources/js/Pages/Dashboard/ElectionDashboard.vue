@@ -18,7 +18,7 @@
                         मुख्य कार्यहरू | Main Actions
                     </h2>
                         <div class="flex justify-center mb-6">
-                        <a v-if="showStartButton" @click="showStartButton = false"
+                        <a v-if="showStartButton"
                             href="/dashboard"
                             class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-bold rounded-lg shadow-lg animate-bounce hover:animate-none transition-all duration-300"
                         >
@@ -402,10 +402,6 @@ export default {
             type: [Object, null],
             default: () => null
         },
-         showStartButton:{
-            type: Boolean,
-            default: true
-         },
         electionStatus: {
             type: Object,
             default: () => ({
@@ -425,7 +421,13 @@ export default {
                 can_vote_now_per_code: this.votingStatus?.can_vote_now,
                 determined_link: this.votingLink
             };
+            
+
         },
+
+        showStartButton() {
+                return this.$page.url === '/';
+            },
 
         /**
          * ✅ ROBUST: Check if user can access voting
