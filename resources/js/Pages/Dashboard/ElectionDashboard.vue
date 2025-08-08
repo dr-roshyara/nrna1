@@ -426,7 +426,7 @@ export default {
         },
 
         showStartButton() {
-                return this.$page.url === '/';
+                return this.$page.url === '/election';
             },
 
         /**
