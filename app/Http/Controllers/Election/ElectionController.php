@@ -16,6 +16,7 @@ class ElectionController extends Controller
     {
         $authUser = Auth::user();
         $ipAddress = $this->getUserIpAddr();
+         
  
         // ✅ Not authenticated: Show welcome page
         if ($authUser) {

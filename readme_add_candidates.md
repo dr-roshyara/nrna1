@@ -3,19 +3,20 @@ use Illuminate\Support\Facades\Hash;
 
 $user = new User;
 $user->name = "Manag Mustang";
-$user->email = "manag@example.com";
+$user->user_id="nrna_1110"
+$user->email = "manang@example.com";
 $user->password = Hash::make('password'); // Always hash passwords
 $user->first_name = "Manag";
 $user->last_name = "Mustang";
 $user->nrna_id = "DE_TEST_2025_01";
-$user->is_voter = 1;
+$user->is_voter = 0;
 // Add other required user fields here...
 $user->save();
 #
 use App\Models\Candidacy;
 $candi = new Candidacy;
-$candi->user_id = 2; // Link to the candidate's user ID
-$candi->candidacy_id = "DE_TEST_2025_01";
+$candi->user_id = "nrna_1110";
+$candi->candidacy_id = "DE_TEST_2025_123";
 $candi->post_id = "2025_02";
 $candi->proposer_id = "DE10000216"; // Link to the proposer's nrna_id
 $candi->supporter_id = "DE10000216"; // Link to the supporter's nrna_id
@@ -119,10 +120,10 @@ $candi->save();
 #######################################################################################################
 // Create the user who is the candidate
 $candidateUser = new User;
-$candidateUser->name = "Chitwan National Park";
-$candidateUser->user_id =5
-$candidateUser->first_name = "Chitwan";
-$candidateUser->last_name = "National Park";
+$candidateUser->name = "Ani Choying Drolma";
+$candidateUser->user_id ="nrna_205"
+$candidateUser->first_name = "Ani Choying";
+$candidateUser->last_name = " Drolma";
 $candidateUser->email = "cn@example.com";
 $candidateUser->password = Hash::make('password');
 $candidateUser->save();
@@ -130,12 +131,12 @@ $candidateUser->save();
 ##
 use App\Models\Candidacy;
 $candi = new Candidacy;
-$candi->user_id = 5; // Link to the candidate's user ID
-$candi->candidacy_id = "DE_TEST_2025_05";
+$candi->user_id = "nrna_205";
+$candi->candidacy_id = "DE_TEST_2025_205";
 $candi->post_id = "2025_06";
 $candi->proposer_id = "DE1000021"; // Link to the proposer's nrna_id
 $candi->supporter_id = "DE10000222"; // Link to the supporter's nrna_id
-$candi->image_path_1 = "chitawan.jpg";
+$candi->image_path_1 = "anidhoing.jpg";
 $candi->image_path_2 = "-";
 $candi->image_path_3 = "-";
 $candi->save();

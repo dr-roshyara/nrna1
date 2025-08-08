@@ -1,7 +1,7 @@
 
 @component('mail::message')
 
-# First Voting Code 
+# VOTE  VERIFICATION CODE 
 <p> 
 Namaskar  {{$user->name}}! <br> 
 Your first voting code is given below. 

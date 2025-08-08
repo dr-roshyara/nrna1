@@ -28,16 +28,19 @@
                         <div class="max-w-2xl mx-auto">
                             <div class="bg-white bg-opacity-10 rounded-xl p-6 mb-6">
                                 <p class="text-lg md:text-xl mb-4 leading-relaxed">
-                                    Thank you for participating in the election! Your vote has been successfully recorded. 
-                                    To verify your vote, please enter the <span class="font-bold text-yellow-200">verification code</span> 
+                                    Thank you for participating in the election!
+                                     Your vote has been successfully recorded. 
+                                    To view  your vote, please enter 
+                                    the <span class="font-bold text-yellow-200"> new verification code</span> 
                                     sent to your email.
                                 </p>
                                 
                                 <!-- Nepali Text -->
                                 <div class="pt-4 border-t border-white border-opacity-20">
                                     <p class="text-base opacity-90 leading-relaxed">
-                                        मतदान गर्नुभएकोमा धन्यवाद! आफ्नो मत प्रमाणित गर्न तल दिइएको कोड भर्नुहोस्। 
-                                        कृपया आफ्नो पासवर्ड गोप्य राख्नुहोस् र अरूलाई नदिनुहोस्।
+                                        मतदान गर्नुभएकोमा धन्यवाद! आफ्नो मत हेर्न यहाँलाइ इमेल मार्फत पठाइएको नयाँ कोड 
+                                        तलको कोठामा भर्नुहोस ।   कृपया आफ्नो पासवर्ड र कोड गोप्य राख्नुहोस् । 
+                                         अरूलाई पनि नदिनुहोस्।
                                     </p>
                                 </div>
                             </div>

@@ -64,7 +64,10 @@ Route::get('/storage/images/{filename}', function ($filename)
 
 
 // Home route: If authenticated, show election dashboard. Else, show welcome page.
-Route::get('/', [ElectionController::class, 'dashboard'])->name('electiondashboard');
+Route::get('/', 
+[ElectionController::class, 'dashboard'])
+->name('electiondashboard')
+->middleware('no.cache');
 
 // Route::get('/', function () {
 //     if( auth()->user()!=null ){ return Inertia::render('Dashboard/MainDashboard'); }
@@ -77,8 +80,9 @@ Route::get('/', [ElectionController::class, 'dashboard'])->name('electiondashboa
 //     ]);
 // });
 
-Route::get('/dashboard', [ElectionController::class, 'dashboard'])->name('dashboard');
-
+Route::get('/dashboard', [ElectionController::class, 'dashboard'])
+        ->name('dashboard')
+        ->middleware('no.cache');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     $authUser =null;
 //     if(Auth::check()){
