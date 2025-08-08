@@ -101,7 +101,118 @@ class ResultController extends Controller
         'final_result' => $results,
         'posts' => $posts
     ]);
+  }
+
+ //
+ public function statisticalVerification($postId)
+{
+    // 1. Check total votes consistency
+    $officialTotal = DB::table('results')
+        ->where('post_id', $postId)
+        ->count(DB::raw('DISTINCT vote_id'));
+    
+    $voteTableTotal = Vote::count();
+    
+    // 2. Check vote distribution
+    $candidates = DB::table('results')
+        ->select('candidacy_id', DB::raw('COUNT(*) as votes'))
+        ->where('post_id', $postId)
+        ->groupBy('candidacy_id')
+        ->get();
+    
+    $stats = [
+        'vote_counts' => $candidates->pluck('votes', 'candidacy_id'),
+        'average' => $candidates->avg('votes'),
+        'standard_deviation' => $this->calculateStdDev($candidates->pluck('votes')->toArray())
+    ];
+    
+    return [
+        'total_votes_match' => $officialTotal == $voteTableTotal,
+        'official_total' => $officialTotal,
+        'vote_table_total' => $voteTableTotal,
+        'statistics' => $stats,
+        'anomalies' => $this->detectAnomalies($stats)
+    ];
 }
 
+private function calculateStdDev($array)
+{
+    $count = count($array);
+    if ($count === 0) return 0;
+    
+    $average = array_sum($array) / $count;
+    $sum = 0;
+    
+    foreach ($array as $value) {
+        $sum += pow($value - $average, 2);
+    }
+    
+    return sqrt($sum / $count);
+}
+
+private function detectAnomalies($stats)
+{
+    $anomalies = [];
+    $threshold = $stats['average'] + (2 * $stats['standard_deviation']);
+    
+    foreach ($stats['vote_counts'] as $candId => $votes) {
+        if ($votes > $threshold) {
+            $anomalies[$candId] = [
+                'votes' => $votes,
+                'threshold' => $threshold
+            ];
+        }
+    }
+    
+    return $anomalies;
+}
+ 
+  //Verification: 
+  public function verifyResults($postId)
+  {
+      // 1. Get official results
+      $officialResults = DB::table('results')
+          ->select('candidacy_id', DB::raw('COUNT(*) as vote_count'))
+          ->where('post_id', $postId)
+          ->groupBy('candidacy_id')
+          ->get()
+          ->keyBy('candidacy_id');
+
+      // 2. Get raw votes from votes table
+      $rawVotes = [];
+      $votes = Vote::whereNotNull('candidate_01')->get(); // Adjust based on your structure
+      
+      foreach ($votes as $vote) {
+          for ($i = 1; $i <= 20; $i++) {
+              $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
+              $data = json_decode($vote->$field, true);
+              
+              if ($data && $data['post_id'] === $postId) {
+                  foreach ($data['candidates'] as $candidate) {
+                      $candidacyId = $candidate['candidacy_id'];
+                      $rawVotes[$candidacyId] = ($rawVotes[$candidacyId] ?? 0) + 1;
+                  }
+              }
+          }
+      }
+
+      // 3. Compare results
+      $discrepancies = [];
+      foreach ($officialResults as $candidacyId => $official) {
+          if (($rawVotes[$candidacyId] ?? 0) !== $official->vote_count) {
+              $discrepancies[$candidacyId] = [
+                  'official' => $official->vote_count,
+                  'raw' => $rawVotes[$candidacyId] ?? 0
+              ];
+          }
+      }
+
+      return [
+          'official_results' => $officialResults,
+          'raw_vote_counts' => $rawVotes,
+          'discrepancies' => $discrepancies,
+          'match' => empty($discrepancies)
+      ];
+  } 
 
 }
