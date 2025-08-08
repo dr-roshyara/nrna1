@@ -17,6 +17,15 @@
                     <h2 id="primary-actions" class="text-3xl font-semibold text-gray-900 text-center mb-10">
                         मुख्य कार्यहरू | Main Actions
                     </h2>
+                        <div class="flex justify-center mb-6">
+                        <a v-if="showStartButton" @click="showStartButton = false"
+                            href="/dashboard"
+                            class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-bold rounded-lg shadow-lg animate-bounce hover:animate-none transition-all duration-300"
+                        >
+                            <span class="mr-2">▶️</span>
+                            यहाँ क्लिक गरेर शुरू गर्नुहोस् | Start clicing here 
+                        </a>
+                    </div>
                         <!-- <div v-if="true" class="p-4 bg-gray-100 text-xs">
                         Debug: {{ debugVotingStatus }}
                     </div> -->
@@ -393,6 +402,10 @@ export default {
             type: [Object, null],
             default: () => null
         },
+         showStartButton:{
+            type: Boolean,
+            default: true
+         },
         electionStatus: {
             type: Object,
             default: () => ({
