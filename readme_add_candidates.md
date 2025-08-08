@@ -18,9 +18,9 @@ $candi = new Candidacy;
 $candi->user_id = "nrna_1110";
 $candi->candidacy_id = "DE_TEST_2025_123";
 $candi->post_id = "2025_02";
-$candi->proposer_id = "DE10000216"; // Link to the proposer's nrna_id
+$candi->proposer_id = "DE10216"; // Link to the proposer's nrna_id
 $candi->supporter_id = "DE10000216"; // Link to the supporter's nrna_id
-$candi->image_path_1 = "manag_mustang.jpg";
+$candi->image_path_1 = "manag.jpg";
 $candi->image_path_2 = "-";
 $candi->image_path_3 = "-";
 $candi->save();
@@ -121,7 +121,7 @@ $candi->save();
 // Create the user who is the candidate
 $candidateUser = new User;
 $candidateUser->name = "Ani Choying Drolma";
-$candidateUser->user_id ="nrna_205"
+$candidateUser->user_id ="nrna_2050"
 $candidateUser->first_name = "Ani Choying";
 $candidateUser->last_name = " Drolma";
 $candidateUser->email = "cn@example.com";
@@ -131,11 +131,11 @@ $candidateUser->save();
 ##
 use App\Models\Candidacy;
 $candi = new Candidacy;
-$candi->user_id = "nrna_205";
+$candi->user_id = "nrna_2050";
 $candi->candidacy_id = "DE_TEST_2025_205";
 $candi->post_id = "2025_06";
-$candi->proposer_id = "DE1000021"; // Link to the proposer's nrna_id
-$candi->supporter_id = "DE10000222"; // Link to the supporter's nrna_id
+$candi->proposer_id = "DE100121"; // Link to the proposer's nrna_id
+$candi->supporter_id = "DE100122"; // Link to the supporter's nrna_id
 $candi->image_path_1 = "anidhoing.jpg";
 $candi->image_path_2 = "-";
 $candi->image_path_3 = "-";

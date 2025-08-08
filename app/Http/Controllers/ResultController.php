@@ -13,79 +13,95 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 class ResultController extends Controller
 {
-    //
-       
-    public function index(){
-          
-      $posts        = Post::get(['id','post_id','name','state_name','required_number']) ;
-      $candidates   =[]; 
-      // Check if results should be published
-        $electionCompleted = false; /* your logic to check if election is completed */;
-        
-        if (!$electionCompleted) {
-            return redirect()->back()->with('error', 
-                'Election results will be available after the election is completed.'
-            );
+    public function index() {
+    // Load posts with basic information
+    $posts = Post::get(['id', 'post_id', 'name', 'state_name', 'required_number']);
+
+    // Check if results should be published
+    $electionCompleted = true; /* your election completion logic */
+    
+    if (!$electionCompleted) {
+        return redirect()->back()->with('error', 
+            'Election results will be available after the election is completed.'
+        );
+    }
+
+    // Initialize results array
+    $results = [
+        'total_votes' => Vote::count(),
+        'posts' => []
+    ];
+
+    // Process votes for each post
+    foreach ($posts as $post) {
+        $postResults = [
+            'post_id' => $post->post_id,
+            'post_name' => $post->name,
+            'candidates' => [],
+            'total_votes_for_post' => 0
+        ];
+
+        // Temporary array to aggregate candidate votes
+        $candidateVotes = [];
+
+        // Get all votes that contain this post in any candidate field
+        $votes = Vote::where(function($query) use ($post) {
+            for ($i = 1; $i <= 60; $i++) { // Adjust to 60 fields as per your schema
+                $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
+                $query->orWhereJsonContains($field, ['post_id' => $post->post_id]);
+            }
+        })->get();
+
+        foreach ($votes as $vote) {
+            // Check all candidate fields for this post
+            for ($i = 1; $i <= 60; $i++) {
+                $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
+                $candidateData = json_decode($vote->$field, true);
+
+                // Skip if this field doesn't contain data for our current post
+                if (!$candidateData || ($candidateData['post_id'] ?? null) !== $post->post_id) {
+                    continue;
+                }
+
+                // Process each candidate in the candidates array
+                foreach ($candidateData['candidates'] ?? [] as $candidate) {
+                    $candidateId = $candidate['candidacy_id'] ?? null;
+                    $candidateName = $candidate['name'] ?? 'Unknown';
+
+                    if ($candidateId) {
+                        if (!isset($candidateVotes[$candidateId])) {
+                            $candidateVotes[$candidateId] = [
+                                'name' => $candidateName,
+                                'count' => 0
+                            ];
+                        }
+                        $candidateVotes[$candidateId]['count']++;
+                        $postResults['total_votes_for_post']++;
+                    }
+                }
+            }
         }
 
-    //   $results   =Result::query();
-        $results    = DB::table('results')
-                    ->selectRaw(' count(*) as total ');
+        // Format results for this post
+        foreach ($candidateVotes as $candidateId => $data) {
+            $postResults['candidates'][] = [
+                'candidacy_id' => $candidateId,
+                'name' => $data['name'],
+                'vote_count' => $data['count'],
+                'vote_percent' => $results['total_votes'] > 0 
+                    ? round(($data['count'] / $results['total_votes']) * 100, 2)
+                    : 0
+            ];
+        }
 
-          
-        $results =$results->selectRaw('COUNT(DISTINCT vote_id) as total_votes');
-        // dd($results->get());
-        //       SELECT 
-        //       SUM(IF(name = ?, 1, 0)) AS name_count,
-        //       SUM(IF(address = ? AND port = ?, 1, 0)) AS addr_count
-        //   FROM 
-        //       table_nam
-    // Here I used his suggestion: 
-    // https://reinink.ca/articles/calculating-totals-in-laravel-using-conditional-aggregates
-    foreach($posts as $post){
-        //  dd($post);
-        // $_expr ="SUM( IF(post_id='"; 
-        // $_expr .= $post->post_id."', 1, 0) )  as ".$post->post_id;
-        // $_expr  =  'COUNT(DISTINCT vote_id)* '. $post->required_number;
-        // $_expr  .="  as ".$post->post_id;
-        // dd($_expr);
-        // $results =$results->selectRaw($_expr ); 
-        //expressioin for candidates 
-        $post_candidates =$post->candidates;
-        
-       
-        foreach ($post_candidates as $candidate){
-            $_candi_condition ="post_id = '";
-            $_candi_condition .=$post->post_id."'";
-            $_candi_condition .= " AND candidacy_id = '";
-            $_candi_condition .= $candidate->candidacy_id;
-            $_candi_condition .= "' ";
-            // dd($_candi_condition);             
-             $_candi_expr = "SUM( IF( ". $_candi_condition;
-             
-             $_candi_expr .= ", 1, 0)) as ";
-             $_candi_expr .= $post->post_id."_and_".$candidate->candidacy_id;
-            //  dd($_candi_expr);
-              
-            $results =$results->selectRaw($_candi_expr); 
-         }
+        $results['posts'][] = $postResults;
+    }
 
-         //load users in candidates 
-           $post_candidates->load(['user'=>function($query){
-             return  $query->select('name', 'user_id');
-           }]);
-           $candidates =array_merge($candidates,(array)$post_candidates);
-        
-        
-    }
-    //  dd($results->get());
-    
-      $final_result =$results->get();
-        // dd($final_result);
-     return Inertia::render('Result/Index', [
-            'final_result' =>$final_result,
-            'posts'=> $posts,
-            'candidates'=>$candidates  
-        ]);
-    }
+    return Inertia::render('Result/Index', [
+        'final_result' => $results,
+        'posts' => $posts
+    ]);
+}
+
+
 }
