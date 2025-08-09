@@ -8,6 +8,8 @@ use App\Http\Controllers\CodeController;
 use App\Http\Controllers\DeligateCandidacyController;
 use App\Http\Controllers\DeligateVoteController;
 use App\Http\Controllers\DeligateCodeController;
+use App\Http\Controllers\Election\ElectionResultController;
+
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'verified']) ->get('/election', function(){
@@ -93,6 +95,7 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
    Route::middleware(['auth:sanctum', 'verified']) ->get('/election/result', [ResultController  ::class, 'index'])->name('result.index');
 
 // Vote verification and display routes
+   Route::middleware(['auth:sanctum', 'verified']) ->get('/results', [ElectionResultController  ::class, 'index'])->name('election-result.index');
 
 
 // Voter management routes (require authentication and committee member permissions)
@@ -125,6 +128,18 @@ Route::get('vote/thankyou', [VoteController::Class , 'thankyou'])->name('vote.th
  *
  *  */
 Route::middleware(['auth:sanctum', 'verified']) ->get('deligatecandidacy/update', [DeligateCandidacyController::class, 'update'])->name('deligatecandidacy.update');
+
+// Result publication routes
+Route::get('/result/index', [ElectionResultController::class, 'index'])->name('result.index');
+Route::get('/api/authorization-progress', [ElectionResultController::class, 'getAuthorizationProgress']);
+ 
+// API routes for real-time updates
+
+// Admin routes (committee only)
+Route::middleware(['auth', 'role:election-committee'])->group(function () {
+    Route::post('/admin/verify-results', [ElectionResultController::class, 'verifyResults']);
+    Route::post('/admin/emergency-publish', [ElectionResultController::class, 'emergencyPublish']);
+});
 
 
 /***
