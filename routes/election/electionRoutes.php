@@ -108,9 +108,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/voters/{id}/reject', [VoterlistController::class, 'rejectVoter'])->name('voters.reject');
 });
 
+/*************************************************************************************** */
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/election/result', [ResultController::class, 'index'])->name('result.index');
+    Route::get('/api/verify-results/{postId}', [ResultController::class, 'verifyResults']);
+    Route::get('/api/statistical-verification/{postId}', [ResultController::class, 'statisticalVerification']);
+});
 
+/*************************************************************************************** */
 
-   //});
 //election result
 Route::get('vote/thankyou', [VoteController::Class , 'thankyou'])->name('vote.thankyou');
 /**
@@ -119,6 +125,8 @@ Route::get('vote/thankyou', [VoteController::Class , 'thankyou'])->name('vote.th
  *
  *  */
 Route::middleware(['auth:sanctum', 'verified']) ->get('deligatecandidacy/update', [DeligateCandidacyController::class, 'update'])->name('deligatecandidacy.update');
+
+
 /***
  * Create here deligate Routes
  *

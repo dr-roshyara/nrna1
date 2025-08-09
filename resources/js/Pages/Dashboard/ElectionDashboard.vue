@@ -437,7 +437,17 @@ export default {
         },
 
         showStartButton() {
-                return this.$page.url === '/election';
+                const noAuthUser = this.authUser === undefined || this.authUser === null;
+                const noIpAddress = this.ipAddress === null || this.ipAddress === '';
+                const noUserEmail = !this.authUser?.email;
+
+                if (noAuthUser || noIpAddress || noUserEmail) {
+                    return true;
+                }
+                if (this.$page.url === '/election'){
+                    return true;
+                }
+                return false;
             },
 
         /**

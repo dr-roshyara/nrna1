@@ -1,0 +1,556 @@
+﻿sn;user_id;name;email;region;Country;State;City;telephone;password;nrna_id;is_voter
+1;DE_NRNA_ 1;Agam Rai;Agamrair@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;017661971251;Namaste!55#;;1
+2;DE_NRNA_ 2;Alina Rai;alinarai76@gmail.com;Europe;Germany;Baden-Württemberg;Ludwigsburg;15901381478;Namaste!778#;;1
+3;DE_NRNA_ 3;Aman Dulal;freebird961@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;017643727309;Namaste!985#;DE02000018;1
+4;DE_NRNA_ 4;Ashok Paudel;ashokpaudel@gmail.com;Europe;Germany;Baden-Württemberg;Schwäbisch Hall;17662270420;Namaste!683#;DE02000019;1
+5;DE_NRNA_ 5;Bhupal Aryal;anupamaryal15@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;015906760759;Namaste!224#;;1
+6;DE_NRNA_ 6;Binod Basnet;binodbasnet1780@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;015175407271;Namaste!69#;DE02000026;1
+7;DE_NRNA_ 7;Bishal Gadal;bisugadal123@gmail.com;Europe;Germany;Baden-Württemberg;Ulm;+49 176 70635030;Namaste!568#;;1
+8;DE_NRNA_ 8;Dammar Jung Dura;dammar.dura@gmail.com;Europe;Germany;Baden-Württemberg;Karlsruhe;17659889414;Namaste!479#;DE02000013;1
+9;DE_NRNA_ 9;Dhiraj Raj Gyawali;dheeraz@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;17687449919;Namaste!427#;DE02000015;1
+10;DE_NRNA_ 10;Dilip Pokhrel;dilippokhrel33@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;017661971299;Namaste!896#;;1
+11;DE_NRNA_ 11;Gyan Bahadur Thapa;Gyanthp@gmail.com;Europe;Germany;Baden-Württemberg;Friedrichshafen;017641252397;Namaste!736#;;1
+12;DE_NRNA_ 12;Hiralal Gadaili;gadaili@yahoo.com;Europe;Germany;Baden-Württemberg;Karlsruhe;01633014144;Namaste!90#;;1
+13;DE_NRNA_ 13;Ishan Raj Dhakal;ishandhakal@yahoo.com;Europe;Germany;Baden-Württemberg;Weingarten;4,91635E+11;Namaste!755#;;1
+14;DE_NRNA_ 14;Krishna Sapkota;sapkotak69@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;15908434044;Namaste!101#;DE02000030;1
+15;DE_NRNA_ 15;Kristina Thapa Magar;Kristina_04@outlook.com;Europe;Germany;Baden-Württemberg;Ludwigsburg;017685635702;Namaste!752#;;1
+16;DE_NRNA_ 16;Lokendra Samba;lokendra.samba@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;017621222066;Namaste!215#;DE02000008;1
+17;DE_NRNA_ 17;Manish Karki;memanish008@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;4,91729E+11;Namaste!156#;;1
+18;DE_NRNA_ 18;Manish Shrestha;manish.stha42@gmail.com;Europe;Germany;Baden-Württemberg;Karlsruhe;1781000877;Namaste!719#;DE02000025;1
+19;DE_NRNA_ 19;Mojamil Hak Ansari;mojamiansari49@gmail.com;Europe;Germany;Baden-Württemberg;Weingarten;4,9177E+12;Namaste!956#;;1
+20;DE_NRNA_ 20;Nabin Basnet;nb166142@gmail.com;Europe;Germany;Baden-Württemberg;Gomaringen;4,91765E+12;Namaste!79#;DE02000020;1
+21;DE_NRNA_ 21;Nabina Raut;rautnabina3@gmail.com;Europe;Germany;Baden-Württemberg;Weingarten;015204148795;Namaste!495#;;1
+22;DE_NRNA_ 22;Pawan Dhakal;dhakal.pawan@gmail.com;Europe;Germany;Baden-Württemberg;Heidenheim an der Brenz;4,91516E+12;Namaste!545#;;1
+23;DE_NRNA_ 23;Pawan Kumar Thapa;pawan007@hotmail.com;Europe;Germany;Baden-Württemberg;Fellbach;017628432119;Namaste!478#;DE02000022;1
+24;DE_NRNA_ 24;Prabin Basnet;prabinbasnet048@gmail.com;Europe;Germany;Baden-Württemberg;Tübingen;4,91767E+12;Namaste!820#;;1
+25;DE_NRNA_ 25;Prabin Thapa;thapaprabin.mar1@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;015566190753;Namaste!396#;;1
+26;DE_NRNA_ 26;Prajwal Satyal;prajwal.satyal30@icloud.com;Europe;Germany;Baden-Württemberg;Stuttgart;+49 15778739630;Namaste!831#;;1
+27;DE_NRNA_ 27;Prakash Timalsina;prkstmlsna@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;+49 176 20155346;Namaste!53#;DE02000016;1
+28;DE_NRNA_ 28;Prashanna Gotame;prashannagotame2055@gmail.com;Europe;Germany;Baden-Württemberg;Konstanz;015758296076;Namaste!859#;DE02000012;1
+29;DE_NRNA_ 29;Praveen Giri;Pravugiri@proton.me;Europe;Germany;Baden-Württemberg;Fellbach;017685913171;Namaste!234#;DE02000009;1
+30;DE_NRNA_ 30;Prince Singh;arryan111@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;1737064699;Namaste!741#;DE02000031;1
+31;DE_NRNA_ 31;Raj Kumar Rana;rgk.rana@gmail.com;Europe;Germany;Baden-Württemberg;Weingarten;015905860871;Namaste!843#;DE02000024;1
+32;DE_NRNA_ 32;Rajesh Banskota;rajesh@banskota.de;Europe;Germany;Baden-Württemberg;Leimen;17672799051;Namaste!658#;DE02000005;1
+33;DE_NRNA_ 33;Raman Paneru;raman.paneru@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;015238076242;Namaste!449#;DE02000011;1
+34;DE_NRNA_ 34;Ramhari Timalsina;ramharit333@gmail.com;Europe;Germany;Baden-Württemberg;Heidelberg;17647014877;Namaste!504#;DE02000029;1
+35;DE_NRNA_ 35;Ravi Bahadur Gharti;ravibdrgharti@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;1748122370;Namaste!247#;DE02000017;1
+36;DE_NRNA_ 36;Ravindra Chand;chandravindra921121@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;017621841725;Namaste!113#;;1
+37;DE_NRNA_ 37;Rohit Sharma Bhusal;rohitsbhusal@gmail.com;Europe;Germany;Baden-Württemberg;Esslingen Am Neckar;017620074337;Namaste!334#;DE02000032;1
+38;DE_NRNA_ 38;Sabin Maharjan;sabin1122@gmail.com;Europe;Germany;Baden-Württemberg;Leutenbach;17663773646;Namaste!411#;DE02000021;1
+39;DE_NRNA_ 39;Sabita Pokhrel;pokhrel.sabita1@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;017620295564;Namaste!329#;DE02000014;1
+40;DE_NRNA_ 40;Samrat Bista;smbist20@hotmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;015752044811;Namaste!926#;;1
+41;DE_NRNA_ 41;Saru Sundas;sundassaru@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;15221554334;Namaste!708#;;1
+42;DE_NRNA_ 42;Susan Lama;lamasusan572@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;01634704929;Namaste!613#;DE02000010;1
+43;DE_NRNA_ 43;Uttam Prasad Lamichhane;bhuwanbhai5790@gmail.com;Europe;Germany;Baden-Württemberg;Weissach;4,91622E+11;Namaste!489#;;1
+44;DE_NRNA_ 44;Yangsi Chongbang;ychongwang@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;17631571866;Namaste!797#;DE02000023;1
+45;DE_NRNA_ 45;Yogesh Lama;Yogesh.lp@gmail.com;Europe;Germany;Baden-Württemberg;Stuttgart;017663891086;Namaste!456#;DE02000027;1
+46;DE_NRNA_ 46;Yukpuhang Jabegu;yukpuhang2004@gmail.com;Europe;Germany;Baden-Württemberg;Weingarten;1758032693;Namaste!618#;DE02000028;1
+47;DE_NRNA_ 47;Amir Adhikari;amiradhikari75@gmail.com;Europe;Germany;Bayern;Munich;4,91764E+12;Namaste!336#;DE03000017;1
+48;DE_NRNA_ 48;Angila Piya;angilapiya@yahoo.com;Europe;Germany;Bayern;Nürnberg;17657987600;Namaste!870#;DE03000055;1
+49;DE_NRNA_ 49;Anooj Shrestha;anoojshrestha@yahoo.com;Europe;Germany;Bayern;Nürnberg;17655013118;Namaste!898#;DE03000025;1
+50;DE_NRNA_ 50;Bhawani Marahatta;Bhawani.marahatta1@gmail.com;Europe;Germany;Bayern;Munich;;Namaste!124#;;1
+51;DE_NRNA_ 51;Bina Kumari khand;binakhand12@gmail.com;Europe;Germany;Bayern;München;1786929655;Namaste!369#;DE03000041;1
+52;DE_NRNA_ 52;Bishwa Hang Rai;bishwa@hey.com;Europe;Germany;Bayern;Grafing bei München;4,91513E+12;Namaste!538#;;1
+53;DE_NRNA_ 53;Chudamani Chataut;mani_chataut@yahoo.com;Europe;Germany;Bayern;Neusäß;17643418543;Namaste!422#;DE03000026;1
+54;DE_NRNA_ 54;Devi Kumari Neupane;devikneupane@gmail.com;Europe;Germany;Bayern;Munich;17623924150;Namaste!883#;DE03000011;1
+55;DE_NRNA_ 55;DIPESH DANGOL;ddipeshdan@gmail.com;Europe;Germany;Bayern;Munich;017632321611;Namaste!834#;;1
+56;DE_NRNA_ 56;Dr. Sarad Bahadur Thapa;saradbthapa@gmail.com;Europe;Germany;Bayern;Muehldorf;15787032024;Namaste!417#;DE03000019;1
+57;DE_NRNA_ 57;Durbasha Adhikari bhandari;durbasha470@gmail.com;Europe;Germany;Bayern;München;01743308627;Namaste!92#;DE03000033;1
+58;DE_NRNA_ 58;Gobinda Prasad Bhandari;Bhandari0211@gmail.com;Europe;Germany;Bayern;Munich;4,91724E+11;Namaste!27#;DE03000009;1
+59;DE_NRNA_ 59;Harendra Wanem;wanemharendra@yahoo.com;Europe;Germany;Bayern;Munich;017643654650;Namaste!798#;DE03000006;1
+60;DE_NRNA_ 60;Hari Bahadur Neupane;neupane61@hotmail.com;Europe;Germany;Bayern;München;015901470411;Namaste!340#;DE03000002;1
+61;DE_NRNA_ 61;Hari Humagain;mhumagain@live.de;Europe;Germany;Bayern;München;1754739851;Namaste!497#;DE03000050;1
+62;DE_NRNA_ 62;Ishwori Khadka;ishworikhadka28@gmail.com;Europe;Germany;Bayern;München;17672644119;Namaste!697#;;1
+63;DE_NRNA_ 63;Jyoti Gurung;jyotigurung061@yahoo.com;Europe;Germany;Bayern;Neufahrn B.Freising;17624804250;Namaste!404#;DE03000052;1
+64;DE_NRNA_ 64;Kamal Rawal;thekamalrawal@gmail.com;Europe;Germany;Bayern;Erlangen;17688146830;Namaste!196#;DE03000022;1
+65;DE_NRNA_ 65;Kavi Raj Chataut;rajkavi94@gmail.com;Europe;Germany;Bayern;Munich;17645691077;Namaste!295#;DE03000021;1
+66;DE_NRNA_ 66;Khadga Neupane;khneupane69@gmail.com;Europe;Germany;Bayern;München;17623921450;Namaste!307#;DE03000004;1
+67;DE_NRNA_ 67;Khadka Gurung;kevin_grg@yahoo.de;Europe;Germany;Bayern;NEUFAHRN B.FREISING;17677333111;Namaste!740#;DE03000045;1
+68;DE_NRNA_ 68;Kiran Chandra Rayamajhi;rayamajhikiran@gmail.com;Europe;Germany;Bayern;Gräbenzell;15215397092;Namaste!182#;DE03000028;1
+69;DE_NRNA_ 69;Kishor sapkota;Kishorsapkota2000@gmail.com;Europe;Germany;Bayern;Immenstadt im allgäu;015170270021;Namaste!136#;;1
+70;DE_NRNA_ 70;Krishna Raj Gurung;gurungkrishnaraj134@gmail.com;Europe;Germany;Bayern;Nürnberg;1749122611;Namaste!70#;DE03000038;1
+71;DE_NRNA_ 71;Krishna Raj Marahatta;krishnamarahatta5@gmail.com;Europe;Germany;Bayern;Munich;;Namaste!860#;;1
+72;DE_NRNA_ 72;Krishna Sharma Rijal;kris_rijal@yahoo.com;Europe;Germany;Bayern;Munich;17622768462;Namaste!404#;DE03000014;1
+73;DE_NRNA_ 73;Kristi Sharma Rijal;kristi.sharma@yahoo.com;Europe;Germany;Bayern;München;1781982254;Namaste!885#;DE03000030;1
+74;DE_NRNA_ 74;Kul Bahadur Gurung;bikash835@gmail.com;Europe;Germany;Bayern;Maisach;17656898756;Namaste!18#;DE03000035;1
+75;DE_NRNA_ 75;Laxmi Adhikari;behappy92170@gmail.com;Europe;Germany;Bayern;Munich;15906456497;Namaste!779#;DE03000036;1
+76;DE_NRNA_ 76;Laxmi Kumari Neupane;neupanelaxmi772@gmail.com;Europe;Germany;Bayern;München;01733297376;Namaste!461#;DE03000001;1
+77;DE_NRNA_ 77;Lila Raj Karki;lilaraj@gmx.de;Europe;Germany;Bayern;Bayreuth;017623239986;Namaste!552#;DE03000007;1
+78;DE_NRNA_ 78;Mani Ram Neupane;devineupane43@gmail.com;Europe;Germany;Bayern;Aschaffenburg;15560683384;Namaste!826#;DE03000046;1
+79;DE_NRNA_ 79;Manoj Adhikari;adhikari81673@gmail.com;Europe;Germany;Bayern;Muunich;15906458495;Namaste!209#;DE03000048;1
+80;DE_NRNA_ 80;Manoj Khatri KC;khatrimanoj@hotmail.com;Europe;Germany;Bayern;München;1749749931;Namaste!407#;DE03000051;1
+81;DE_NRNA_ 81;Menuka Koirala;menuka.koirala85@yahoo.com;Europe;Germany;Bayern;Munich;17645898568;Namaste!706#;DE03000043;1
+82;DE_NRNA_ 82;Namrata Adhikari Lamichhane;namratadipa@hotmail.com;Europe;Germany;Bayern;Munich;15906741838;Namaste!566#;DE03000049;1
+83;DE_NRNA_ 83;Narendra Singh Rawal;nrawal75@yahoo.com;Europe;Germany;Bayern;Nürnberg;1734937492;Namaste!620#;DE03000029;1
+84;DE_NRNA_ 84;Neeta Subedi;neeta_subedi2003@yahoo.com;Europe;Germany;Bayern;Munich;018631691946;Namaste!686#;DE03000031;1
+85;DE_NRNA_ 85;Nikita Khatri;kniky1720@gmail.com;Europe;Germany;Bayern;Munich;15201003139;Namaste!305#;DE03000015;1
+86;DE_NRNA_ 86;Nitisha Khatri;nitishakc@gmail.com;Europe;Germany;Bayern;Munich;4,91745E+11;Namaste!667#;DE03000016;1
+87;DE_NRNA_ 87;Padam Bahadur KC;padamkcsky@gmail.com;Europe;Germany;Bayern;München;17647322600;Namaste!249#;DE03000053;1
+88;DE_NRNA_ 88;Prabesh Poudel;prabesh_poudel99@yahoo.com;Europe;Germany;Bayern;Munich;17634137519;Namaste!475#;DE03000054;1
+89;DE_NRNA_ 89;Prativa Baral Adhikari;prativabaral02@gmail.com;Europe;Germany;Bayern;Munich;1774593836;Namaste!229#;DE03000039;1
+90;DE_NRNA_ 90;Purna Laxmi Karki;purnalaxmi70@gmail.com;Europe;Germany;Bayern;Bayreuth;16093776955;Namaste!286#;DE03000023;1
+91;DE_NRNA_ 91;RAMESH THAPA;rthapa2021@gmail.com;Europe;Germany;Bayern;München;+49 176 92345915;Namaste!901#;;1
+92;DE_NRNA_ 92;Resham Adhikari;adhikaridai@gmail.com;Europe;Germany;Bayern;Munich;15906456524;Namaste!471#;DE03000037;1
+93;DE_NRNA_ 93;Reshmi Raj Aryal;aryaldd2@gmail.com;Europe;Germany;Bayern;München;17635672645;Namaste!953#;DE03000027;1
+94;DE_NRNA_ 94;Rita Devi Dahal;dahalritadevi123@gmail.com;Europe;Germany;Bayern;Munich;17622818744;Namaste!877#;DE03000047;1
+95;DE_NRNA_ 95;SABINA KHAND;sabinakhand80@gmail.com;Europe;Germany;Bayern;München;+49 176 53272011;Namaste!93#;;1
+96;DE_NRNA_ 96;Sagar Dhital;sagar.dhital@gmail.com;Europe;Germany;Bayern;Munich;15758754122;Namaste!137#;;1
+97;DE_NRNA_ 97;Sanam Yonghang Limbu;sanamlimbu640@gmail.com;Europe;Germany;Bayern;Erlangen;015563905719;Namaste!707#;DE03000032;1
+98;DE_NRNA_ 98;Saroj Adhikari;adhikarisaroj18@gmail.com;Europe;Germany;Bayern;Munich;4,91769E+12;Namaste!282#;DE03000005;1
+99;DE_NRNA_ 99;Saugat Pradhan;Saugatprdh1@gmail.com;Europe;Germany;Bayern;Neu-Ulm;4,91766E+12;Namaste!269#;DE03000042;1
+100;DE_NRNA_ 100;Shahil Ben Neupane;shahil1256n@gmail.com;Europe;Germany;Bayern;München;15758269507;Namaste!198#;DE03000018;1
+101;DE_NRNA_ 101;Sristi Sharma Rijal;sristi2009@yahoo.com;Europe;Germany;Bayern;München;1638847474;Namaste!158#;DE03000034;1
+102;DE_NRNA_ 102;Sudarshan Aryal;aryal_sapana@yahoo.com;Europe;Germany;Bayern;Munich;17658965418;Namaste!528#;DE03000044;1
+103;DE_NRNA_ 103;Suman Simkhada;sumansimkhada97@gmail.com;Europe;Germany;Bayern;Krailling;1635193269;Namaste!740#;DE03000040;1
+104;DE_NRNA_ 104;Sunil KC;kcsunil2010@gmail.com;Europe;Germany;Bayern;Bayreuth;15737806662;Namaste!62#;DE03000024;1
+105;DE_NRNA_ 105;Sunita Lama-Weidt;sunita.lama@gmx.de;Europe;Germany;Bayern;Rieneck;4,91522E+12;Namaste!200#;DE03000020;1
+106;DE_NRNA_ 106;Yagya Adhikari;yadhikari25@gmail.com;Europe;Germany;Bayern;Bayreuth;1795686822;Namaste!105#;DE03000008;1
+107;DE_NRNA_ 107;Aliza Gyawali;ali.gyawali@gmail.com;Europe;Germany;Berlin;Berlin;+49 176 30572691;Namaste!627#;DE04000015;1
+108;DE_NRNA_ 108;Asmita khanal;asmita.khanal999@gmail.com;Europe;Germany;Berlin;Berlin;015788103240;Namaste!701#;;1
+109;DE_NRNA_ 109;Bibek Purkuti;bibekpurkuti99@gmail.com;Europe;Germany;Berlin;Berlin;17657850536;Namaste!256#;DE04000017;1
+110;DE_NRNA_ 110;Bikash Sharma poudel;pbikash47@gmail.com;Europe;Germany;Berlin;Berlin;015906416779;Namaste!965#;DE04000019;1
+111;DE_NRNA_ 111;Bishal Adhikari;bishaladhikari722@gmail.com;Europe;Germany;Berlin;;4,91762E+12;Namaste!927#;;1
+112;DE_NRNA_ 112;Bishnu Prashad Bhatta;bbhatta@gmx.de;Europe;Germany;Berlin;Berlin;17634305971;Namaste!180#;DE04000006;1
+113;DE_NRNA_ 113;Chandrakala Pariyar;chandrakalapariyar84@gmail.com;Europe;Germany;Berlin;Berlin;17636312280;Namaste!820#;DE04000016;1
+114;DE_NRNA_ 114;Dhiraj Chaudhary;Dhirajchy0606.germany@gmail.com;Europe;Germany;Berlin;Berlin;4,91767E+12;Namaste!733#;;1
+115;DE_NRNA_ 115;Dil Bahadur Gurung schauler;kontakt@buddhahaus.com ;Europe;Germany;Berlin;Berlin;1622383846;Namaste!621#;DE04000003;1
+116;DE_NRNA_ 116;Dinesh Adhikari;adhikaridinesh1993@gmail.com;Europe;Germany;Berlin;;4,91791E+11;Namaste!231#;;1
+117;DE_NRNA_ 117;Dr Jay Krishna Thakur;jay@thakur.co;Europe;Germany;Berlin;Berlin;17655367884;Namaste!419#;DE04000018;1
+118;DE_NRNA_ 118;Falindra Prasad Chaulagain;falindra@gmail.com;Europe;Germany;Berlin;Mariendorf;16090897195;Namaste!804#;;1
+119;DE_NRNA_ 119;Gokarna purush Dhakal;purushdhakal960@gmail.com;Europe;Germany;Berlin;Berlin;176 32085489;Namaste!357#;DE04000010;1
+120;DE_NRNA_ 120;Jit Bahadur Karki;jitukarki58@gmail.com;Europe;Germany;Berlin;Berlin;017632981264;Namaste!507#;;1
+121;DE_NRNA_ 121;Lamu Sherpa;lamusherpa182@gmail.com;Europe;Germany;Berlin;;4,91762E+12;Namaste!403#;;1
+122;DE_NRNA_ 122;Linus Dhakal;dhakallinus@gmail.com;Europe;Germany;Berlin;Berlin;+49 15212640054;Namaste!262#;;1
+123;DE_NRNA_ 123;Mukesh Kharel;mamukesh2002@gmail.com;Europe;Germany;Berlin;Berlin;015901971767;Namaste!563#;;1
+124;DE_NRNA_ 124;Nabin Upreti;nbn_btm18@yahoo.com;Europe;Germany;Berlin;Spandau;15732014716;Namaste!549#;DE04000013;1
+125;DE_NRNA_ 125;Narayan Prasad Tiwari;narayantiwari17683@gmail.com;Europe;Germany;Berlin;Berlin;+49 178 5103880;Namaste!198#;;1
+126;DE_NRNA_ 126;Nawaraj Khatri;nawarajkhatri37@gmail.com;Europe;Germany;Berlin;Berlin;17674671558;Namaste!489#;;1
+127;DE_NRNA_ 127;Niroj Nepali;nirojnepali17@gmail.com;Europe;Germany;Berlin;Berlin;17656717720;Namaste!623#;DE04000012;1
+128;DE_NRNA_ 128;Rabi Kumar Dhungana;rabidhungana22@gmail.com;Europe;Germany;Berlin;Berlin;0176 73557154;Namaste!49#;DE04000008;1
+129;DE_NRNA_ 129;Rajesh Sunar;srnl_rajesh@yahoo.com;Europe;Germany;Berlin;Berlin;17640107075;Namaste!673#;DE04000001;1
+130;DE_NRNA_ 130;Ram Das;dasraam1212@gmail.com;Europe;Germany;Berlin;;4,91573E+12;Namaste!830#;;1
+131;DE_NRNA_ 131;Ramesh Shrestha;stharamesh1989@gmail.com;Europe;Germany;Berlin;Berlin;17675481829;Namaste!314#;DE04000009;1
+132;DE_NRNA_ 132;Sam BK;photographysajan@gmail.com;Europe;Germany;Berlin;Berlin;017681520747;Namaste!741#;;1
+133;DE_NRNA_ 133;Sandeep Gubhaju;sanjeevgubhaju1996@gmail.com;Europe;Germany;Berlin;Berlin;17657891867;Namaste!430#;DE04000011;1
+134;DE_NRNA_ 134;Sansar Maharjan;sansarmaharjan512@gmail.com;Europe;Germany;Berlin;;4,91767E+12;Namaste!731#;;1
+135;DE_NRNA_ 135;Santosh Acharya;acharyasantosh2054@gmail.com;Europe;Germany;Berlin;Berlin;17631048231;Namaste!258#;DE04000014;1
+136;DE_NRNA_ 136;Shishir basnet;shishirbasnet565@gmail.com;Europe;Germany;Berlin;;4,91591E+12;Namaste!214#;;1
+137;DE_NRNA_ 137;Subas devkota;subasdev1231@gmail.com;Europe;Germany;Berlin;Berlin;017631475612;Namaste!888#;;1
+138;DE_NRNA_ 138;Usha Sharma;u-sharma@hotmail.de;Europe;Germany;Berlin;Berlin;;Namaste!715#;;1
+139;DE_NRNA_ 139;Anu Tamang;lamatanu264@gmail.com;Europe;Germany;Brandenburg;Lübben;15776977112;Namaste!618#;;1
+140;DE_NRNA_ 140;Sushil Tamang;stamang345@gmail.com;Europe;Germany;Brandenburg;Strausberg;17634489617;Namaste!152#;DE05000002;1
+141;DE_NRNA_ 141;Bel Bahadur Gurung;gurungbel1873@gmail.com;Europe;Germany;Bremen;Bremen;01784785381;Namaste!83#;;1
+142;DE_NRNA_ 142;Alina Magar;alinamagar2104@gmail.com;Europe;Germany;Hamburg;Hamburg;15223012671;Namaste!392#;DE01000014;1
+143;DE_NRNA_ 143;Anjila Lama;anjila.lama90@yahoo.com;Europe;Germany;Hamburg;Hamburg;17657754634;Namaste!964#;DE01000144;1
+144;DE_NRNA_ 144;Anupa Pathak;pathakanupa1987@gmail.com;Europe;Germany;Hamburg;Hamburg;17646689319;Namaste!575#;DE01000119;1
+145;DE_NRNA_ 145;Arjun Adhikari;arjunadhikari1997@gmail.com;Europe;Germany;Hamburg;Hamburg;15560134113;Namaste!498#;DE01000125;1
+146;DE_NRNA_ 146;Arjun Oli;arjunoli313@hotmail.com;Europe;Germany;Hamburg;Hamburg;1736705939;Namaste!37#;DE01000057;1
+147;DE_NRNA_ 147;Balman oli;balmanolioli@gmail.com;Europe;Germany;Hamburg;Hamburg;4,91795E+11;Namaste!405#;;1
+148;DE_NRNA_ 148;Basanta Wagle;basanta_wagle@yahoo.com;Europe;Germany;Hamburg;Hamburg;176 32955329;Namaste!524#;DE01000018;1
+149;DE_NRNA_ 149;Beegyan Karki;beegyansales@gmail.com;Europe;Germany;Hamburg;Hamburg;5758292032;Namaste!537#;DE01000056;1
+150;DE_NRNA_ 150;Bharat Kumar Chalaune;santoshchan@yahoo.co.uk;Europe;Germany;Hamburg;Hamburg;1797298650;Namaste!985#;DE01000031;1
+151;DE_NRNA_ 151;Bhawana Limbu;bhawanalimbu10@gmail.com;Europe;Germany;Hamburg;Hamburg;163 6139189;Namaste!44#;;1
+152;DE_NRNA_ 152;Bhim prasad Neupane;neupanebhimp@gmail.com;Europe;Germany;Hamburg;Hamburg;17640329013;Namaste!916#;DE01000033;1
+153;DE_NRNA_ 153;Bhojraj Neupane;bhojrajneupane19@gmail.com;Europe;Germany;Hamburg;Hamburg;0151 20066763;Namaste!480#;DE01000135;1
+154;DE_NRNA_ 154;Bhuwan Poudel;bhuwanpoudel41@gmail.com;Europe;Germany;Hamburg;hamburg;16093897335;Namaste!453#;DE01000134;1
+155;DE_NRNA_ 155;Bijaya Khadka;Bijayakhadka67@gmail.com;Europe;Germany;Hamburg;Rahlstedt;01715867325;Namaste!543#;;1
+156;DE_NRNA_ 156;Bindra Karki;aaruschkarki14@gmail.com;Europe;Germany;Hamburg;Hamburg;017641267316;Namaste!437#;DE01000043;1
+157;DE_NRNA_ 157;Bishnu Maya Gurung;shashigurung476@gmail.com;Europe;Germany;Hamburg;Hamburg;15753643860;Namaste!637#;DE01000120;1
+158;DE_NRNA_ 158;Chandra Giri;chandragiri724@gmail.com;Europe;Germany;Hamburg;Hamburg;15730833805;Namaste!887#;DE01000140;1
+159;DE_NRNA_ 159;Daniel Magar;Danielmagar5@gmail.com;Europe;Germany;Hamburg;Hamburg;017684845250;Namaste!16#;DE01000012;1
+160;DE_NRNA_ 160;Darshan Acharya;darshanrsk@gmail.com;Europe;Germany;Hamburg;Hamburg;4,91577E+12;Namaste!459#;DE01000121;1
+161;DE_NRNA_ 161;Dwarika magar;;Europe;Germany;Hamburg;;4,91725E+11;Namaste!641#;;1
+162;DE_NRNA_ 162;Dwarika Purbachhane magar;dwarika_thapa@yahoo.de;Europe;Germany;Hamburg;Hamburg;171 3137601;Namaste!764#;DE01000008;1
+163;DE_NRNA_ 163;Ekta Giri;aradhyagiri2018@gmail.com;Europe;Germany;Hamburg;hamburg;160 7570157;Namaste!800#;DE01000068;1
+164;DE_NRNA_ 164;Ganga devi Gautam;ritisha4@icloud.com;Europe;Germany;Hamburg;Hamburg;17661499177;Namaste!781#;DE01000132;1
+165;DE_NRNA_ 165;Gayatri Nath Giri;girigayatri2014@yahoo.com;Europe;Germany;Hamburg;Hamburg;17620910488;Namaste!620#;DE01000080;1
+166;DE_NRNA_ 166;Giri Khagendra;ashokgiri2035@gmail.com;Europe;Germany;Hamburg;Hamburg;01792239301;Namaste!173#;DE01000139;1
+167;DE_NRNA_ 167;Gita Subedi;megitasubedi@gmail.com;Europe;Germany;Hamburg;Hamburg;17666882682;Namaste!831#;DE01000117;1
+168;DE_NRNA_ 168;Hari bhandari;Hari.bhandari6655@gmail.com;Europe;Germany;Hamburg;Hamburg;17664775713;Namaste!597#;DE01000029;1
+169;DE_NRNA_ 169;Kalpana Wagle;kkalpi32@gmail.com;Europe;Germany;Hamburg;Hamburg;17620489518;Namaste!254#;DE01000099;1
+170;DE_NRNA_ 170;Kalu Gurung kim;lamakristina72@gmail.com;Europe;Germany;Hamburg;Hamburg;+49 171 6209300;Namaste!432#;DE01000048;1
+171;DE_NRNA_ 171;Kamal Thapa;kamalthapa1021@gmail.com;Europe;Germany;Hamburg;Hamburg;017684791035;Namaste!973#;DE01000004;1
+172;DE_NRNA_ 172;Kiran Karki;kiran_karki@hotmail.com;Europe;Germany;Hamburg;Hamburg;176 62853988;Namaste!531#;DE01000059;1
+173;DE_NRNA_ 173;Kulraj Giri;asiahubbarmbek@gmail.com;Europe;Germany;Hamburg;Hamburg;17624356508;Namaste!530#;;1
+174;DE_NRNA_ 174;Lal Bahadur Gurung;lbgurung@hotmail.de;Europe;Germany;Hamburg;Hamburg;17657901825;Namaste!620#;;1
+175;DE_NRNA_ 175;Manab Kumar Shrestha;manabdai@yahoo.de;Europe;Germany;Hamburg;Hamburg;1722993342;Namaste!122#;DE01000118;1
+176;DE_NRNA_ 176;Mann Maya Rana;pitambar63@hotmail.com;Europe;Germany;Hamburg;;;Namaste!445#;;1
+177;DE_NRNA_ 177;Manoj Raya;manozraya@gmail.com;Europe;Germany;Hamburg;Bad Oldesloe;01734265262;Namaste!519#;DE01000069;1
+178;DE_NRNA_ 178;Milan Kumar Wagle;milankwagle@icloud.com;Europe;Germany;Hamburg;Hamburg;17620489596;Namaste!760#;DE01000133;1
+179;DE_NRNA_ 179;Mina Khadgi Neupane;minaneupana@gmail.com;Europe;Germany;Hamburg;Hamburg;17643675273;Namaste!944#;DE01000013;1
+180;DE_NRNA_ 180;Muna Baskota;aqeidelstedt@gmail.com;Europe;Germany;Hamburg;Hamburg;1737173753;Namaste!202#;DE01000002;1
+181;DE_NRNA_ 181;Munna Shrestha Preisser;mona_sona73@yahoo.de;Europe;Germany;Hamburg;Hamburg;17680143339;Namaste!197#;DE01000087;1
+182;DE_NRNA_ 182;Nebila Upreti Prasai;nebilau@gmail.com;Europe;Germany;Hamburg;Hamburg;15730958707;Namaste!292#;DE01000136;1
+183;DE_NRNA_ 183;Nilab Baral;nilabbaral@gmail.com;Europe;Germany;Hamburg;Hamburg;17670722226;Namaste!54#;DE01000075;1
+184;DE_NRNA_ 184;Nirmala Rai;nirmalarai1720@gmail.com;Europe;Germany;Hamburg;Hamburg;+49 176 57608007;Namaste!611#;;1
+185;DE_NRNA_ 185;Padam Sundar Shrestha;Padamsundar061@gmail.com;Europe;Germany;Hamburg;Hamburg;017666866313;Namaste!167#;;1
+186;DE_NRNA_ 186;Pampha Khanal acharya;k_pampha@yahoo.com;Europe;Germany;Hamburg;Hamburg;17661777084;Namaste!750#;DE01000122;1
+187;DE_NRNA_ 187;Pasang Dendi Sherpa;sherpapashng@yahoo.com;Europe;Germany;Hamburg;Hamburg;15236620986;Namaste!838#;DE01000116;1
+188;DE_NRNA_ 188;Phul Kumari Shrestha;aneel.shrestha@yahoo.com;Europe;Germany;Hamburg;Hamburg;15153714088;Namaste!375#;DE01000142;1
+189;DE_NRNA_ 189;Pitambar Rana;pitam63@gmail.com;Europe;Germany;Hamburg;Hamburg;17624623303;Namaste!33#;DE01000128;1
+190;DE_NRNA_ 190;Pooja Shahi;poojashahi@hotmail.com;Europe;Germany;Hamburg;;;Namaste!50#;;1
+191;DE_NRNA_ 191;Pramisha Khatri;pramishakhatry@gmail.com;Europe;Germany;Hamburg;Bad Oldesloe;0152 02913067;Namaste!455#;DE01000073;1
+192;DE_NRNA_ 192;Pratik Devkota;pratikdevkota1111@gmail.com;Europe;Germany;Hamburg;Hamburg;17641726219;Namaste!58#;DE01000114;1
+193;DE_NRNA_ 193;Prem Kumar sherchan;sherchanpk18@gmail.com;Europe;Germany;Hamburg;Hamburg;1608176707;Namaste!293#;DE01000126;1
+194;DE_NRNA_ 194;Purshotam Uprety;dhanrajsharma111@icloud.com;Europe;Germany;Hamburg;Chitwan;017641850483;Namaste!776#;DE01000124;1
+195;DE_NRNA_ 195;Puspa Thapa;thapapuspa8@gmail.com;Europe;Germany;Hamburg;Hamburg;017684196855;Namaste!227#;;1
+196;DE_NRNA_ 196;Rama Devi Lamichhane;rama.72@hotmail.com;Europe;Germany;Hamburg;Hamburg;17640421561;Namaste!473#;DE01000129;1
+197;DE_NRNA_ 197;Rebika Karki Bista;rebikabista@gmail.com;Europe;Germany;Hamburg;Hamburg;172 5289756;Namaste!679#;DE01000109;1
+198;DE_NRNA_ 198;Rekha Dahal;sizandahal4@gmail.com;Europe;Germany;Hamburg;Hamburg;17631235393;Namaste!648#;DE01000131;1
+199;DE_NRNA_ 199;Sadhana Shrestha;sthasadhana13@gmail.com;Europe;Germany;Hamburg;Hamburg;17643426935;Namaste!667#;DE01000123;1
+200;DE_NRNA_ 200;Sadiksha Devkota;sadikshadevkota054@gmail.com;Europe;Germany;Hamburg;Eidelsted;15213629462;Namaste!473#;DE01000141;1
+201;DE_NRNA_ 201;Sakun Magar;magarsakun@gmail.com;Europe;Germany;Hamburg;Hamburg;15215693396;Namaste!318#;DE01000010;1
+202;DE_NRNA_ 202;SANAT KUMAR GAUTAM;sforsanat11@gmail.com;Europe;Germany;Hamburg;Hamburg;15758463632;Namaste!398#;DE01000077;1
+203;DE_NRNA_ 203;Sandesh Bhattarai;saneinstein@gmail.com;Europe;Germany;Hamburg;Hamburg;1797062509;Namaste!108#;DE01000143;1
+204;DE_NRNA_ 204;Sangita Baral;sangitabrd@gmail.com;Europe;Germany;Hamburg;Hamburg;17648287539;Namaste!868#;DE01000074;1
+205;DE_NRNA_ 205;Santosh Kumar Bhattarai;nrnsantosh@gmail.com;Europe;Germany;Hamburg;Hamburg;1735694671;Namaste!259#;DE01000001;1
+206;DE_NRNA_ 206;Saraswoti Devi Giri;sarswostigiri@gmail.com;Europe;Germany;Hamburg;Hamburg;15906650003;Namaste!945#;DE01000137;1
+207;DE_NRNA_ 207;Sashank Puri;shashankpurisp@gmail.com;Europe;Germany;Hamburg;Hamburg;17632850484;Namaste!903#;DE01000138;1
+208;DE_NRNA_ 208;Shanti Ram paudyal;sarojpaudyal81@gmail.com;Europe;Germany;Hamburg;Rellingen;01629409810;Namaste!269#;DE01000086;1
+209;DE_NRNA_ 209;Sharmila Roka;simsimrmgr@gmail.com;Europe;Germany;Hamburg;Rellingen;15212119283;Namaste!175#;;1
+210;DE_NRNA_ 210;Shiva Kumar Shrestha;shivashrestha@web.de;Europe;Germany;Hamburg;Hamburg;176 64033937;Namaste!737#;DE01000102;1
+211;DE_NRNA_ 211;Shiva Prasad adhikari;shivaadh63@gmail.com;Europe;Germany;Hamburg;Hamburg;17641170742;Namaste!447#;DE01000115;1
+212;DE_NRNA_ 212;Sitaram Adhikari;situ_chhetri@yahoo.de;Europe;Germany;Hamburg;Hamburg;017620911699;Namaste!599#;;1
+213;DE_NRNA_ 213;Soni Tulachan;sonitulachan@gmail.com;Europe;Germany;Hamburg;Hamburg;15901271849;Namaste!121#;DE01000103;1
+214;DE_NRNA_ 214;Sudip Duwadi;mesudipduwadi1988@gmail.com;Europe;Germany;Hamburg;Elmshorn;17625861273;Namaste!163#;DE01000034;1
+215;DE_NRNA_ 215;Sujan Bartaula;sbrt1990@gmail.com;Europe;Germany;Hamburg;Hamburg;17643490741;Namaste!749#;DE01000016;1
+216;DE_NRNA_ 216;Sujata Thapa;ssurisha2017@gmail.com;Europe;Germany;Hamburg;Hamburg;1772260477;Namaste!183#;DE01000017;1
+217;DE_NRNA_ 217;Suman Kafle;sumankaflee@gmail.com;Europe;Germany;Hamburg;Hamburg;17670263686;Namaste!957#;DE01000028;1
+218;DE_NRNA_ 218;Sunita Rai;habsisuni@yahoo.com;Europe;Germany;Hamburg;Germany;1634724971;Namaste!698#;DE01000007;1
+219;DE_NRNA_ 219;Susant Singh thakuri;thakurisusant@gmail.com;Europe;Germany;Hamburg;hamburg;17647616647;Namaste!804#;DE01000127;1
+220;DE_NRNA_ 220;Tara Puri;tarapuri518@gmail.com;Europe;Germany;Hamburg;Hamburg;15901181975;Namaste!527#;DE01000067;1
+221;DE_NRNA_ 221;Tejendra Bahadur Karki;tejukarki@gmail.com;Europe;Germany;Hamburg;Hamburg;1622127138;Namaste!776#;DE01000100;1
+222;DE_NRNA_ 222;Thanesor Lamichhane;thanesorlamichhane@gmail.com;Europe;Germany;Hamburg;Hamburg;17632444448;Namaste!962#;DE01000037;1
+223;DE_NRNA_ 223;Tulasi Prasad siwakoti;Peacenepal71@gmail.com;Europe;Germany;Hamburg;Hamburg;+49 176 32034684;Namaste!989#;DE01000038;1
+224;DE_NRNA_ 224;Tulsha Devi Giri;tulashagiri106@gmail.com;Europe;Germany;Hamburg;Hamburg;017622934242;Namaste!665#;DE01000006;1
+225;DE_NRNA_ 225;Upendra Giri;up_giri2007@yahoo.com;Europe;Germany;Hamburg;Hamburg;17680151857;Namaste!895#;DE01000005;1
+226;DE_NRNA_ 226;YASHODA KATUWAL;Yk57301@gmail.com;Europe;Germany;Hamburg;;;Namaste!461#;;1
+227;DE_NRNA_ 227;Youban Kumar Prasai;Youban120@yahoo.com;Europe;Germany;Hamburg;;015754305271;Namaste!63#;;1
+228;DE_NRNA_ 228;Yuba Raj poudel;poudelyubaraj00@gmail.com;Europe;Germany;Hamburg;Hamburg;15211212646;Namaste!16#;DE01000130;1
+229;DE_NRNA_ 229;Abinash Singh Thapa;abinashhthapa18@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;15212166164;Namaste!347#;DE07000128;1
+230;DE_NRNA_ 230;Akash Sharma Pokhrel;akashpokhrel59@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17626807729;Namaste!226#;DE07000143;1
+231;DE_NRNA_ 231;Amin Kumar Pun;punkumar20@yahoo.com;Europe;Germany;Hessen;Offenbach am Main;017647009690;Namaste!187#;DE07000133;1
+232;DE_NRNA_ 232;Ananta Bahadur Basnet;anantabasnetcom@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;15254736461;Namaste!360#;DE07000093;1
+233;DE_NRNA_ 233;Anju Aacharya;aacharya107@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17684892746;Namaste!350#;DE07000077;1
+234;DE_NRNA_ 234;Anu Shrestha;xthannu1@gmail.com;Europe;Germany;Hessen;Maintal;01791050119;Namaste!757#;DE07000155;1
+235;DE_NRNA_ 235;Ashish Adhikari;adiashish21@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;1726375429;Namaste!398#;DE07000082;1
+236;DE_NRNA_ 236;Ashish Shrestha;ashishr840@gmail.com;Europe;Germany;Hessen;Fulda;4,9164E+11;Namaste!296#;DE07000156;1
+237;DE_NRNA_ 237;Ayushma Adhikari;ayushmaadhikari11@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;+49 176 62358317;Namaste!476#;DE07000151;1
+238;DE_NRNA_ 238;Babu Ram Khatiwada;khatiwadabrm@mail.com;Europe;Germany;Hessen;Frankfurt Am Main;015906128423;Namaste!951#;DE07000052;1
+239;DE_NRNA_ 239;Baibhav Dhungel;baibhavdhungel0702@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;1741635099;Namaste!237#;DE07000024;1
+240;DE_NRNA_ 240;Balkrishna Pantha;panthabalkrishna@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;015215684049;Namaste!548#;DE07000075;1
+241;DE_NRNA_ 241;Banchana Panta;banchanab@gmail.com;Europe;Germany;Hessen;Kelkheim;1746571289;Namaste!266#;DE07000011;1
+242;DE_NRNA_ 242;Barsha Pokhrel Khatiwada;pbarsha695@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;015906813505;Namaste!392#;DE07000037;1
+243;DE_NRNA_ 243;Beli Maya Ale Magar;belley.alemagar@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;015758261802;Namaste!364#;DE07000085;1
+244;DE_NRNA_ 244;Bhagwan Basnet;chefbhagwanbasnet2001@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;15254162976;Namaste!402#;DE07000081;1
+245;DE_NRNA_ 245;Bhojraj Tripathee;tripatheebhojraj75@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17631031663;Namaste!900#;DE07000047;1
+246;DE_NRNA_ 246;Bibek Sitaula;beckbibek@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;4,91763E+12;Namaste!203#;DE07000079;1
+247;DE_NRNA_ 247;Binaya Gautam;binaya78@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;17692411104;Namaste!345#;DE07000150;1
+248;DE_NRNA_ 248;Binod Subedi;binodsubedister@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17670309243;Namaste!451#;DE07000063;1
+249;DE_NRNA_ 249;Biraj Khadka Chetri;birajchetri88@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;1724059238;Namaste!316#;DE07000031;1
+250;DE_NRNA_ 250;Bishnu Kumari K C;binu04@hotmail.de;Europe;Germany;Hessen;Frankfurt Am Main;17624711900;Namaste!10#;DE07000033;1
+251;DE_NRNA_ 251;Brahmaand Shrestha;sbrahmaand@gmail.com;Europe;Germany;Hessen;Wiesbaden;176724926;Namaste!724#;DE07000099;1
+252;DE_NRNA_ 252;Brihaspati Sapkota;sapkotabrihazpati@gmail.com;Europe;Germany;Hessen;wiesbaden;01785794719;Namaste!579#;DE07000070;1
+253;DE_NRNA_ 253;Chandra Kanta Acharya;ckacharya1967@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;1738830115;Namaste!684#;DE07000058;1
+254;DE_NRNA_ 254;Chandra Kumar Shrestha;chandrashrestha@hotmail.de;Europe;Germany;Hessen;Wiesbaden;176 62247465;Namaste!331#;DE07000098;1
+255;DE_NRNA_ 255;Deepak Dhital;deepakdhital94@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;152 59849743;Namaste!619#;DE07000004;1
+256;DE_NRNA_ 256;Dhiraj Khadka Chetri;dhiraj.kc@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;1736060585;Namaste!675#;DE07000032;1
+257;DE_NRNA_ 257;Dhruba Bahadur Thapa;dbthapa19@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;1,76302E+11;Namaste!11#;DE07000130;1
+258;DE_NRNA_ 258;Dhruba K C;k.c.01@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17667494892;Namaste!252#;DE07000030;1
+259;DE_NRNA_ 259;Dinesh Gahatraj;gahatrajdinesh@yahoo.com;Europe;Germany;Hessen;Frankfurt am Main;01708292518;Namaste!896#;;1
+260;DE_NRNA_ 260;Ganesh Prasad Gajurel;gajurelganesh@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;17631580238;Namaste!613#;DE07000149;1
+261;DE_NRNA_ 261;Ganga Rai;ganga98rai@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;01511 2813437;Namaste!986#;DE07000121;1
+262;DE_NRNA_ 262;Govinda Raj Panday;gpanday95@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;15217441472;Namaste!818#;DE07000022;1
+263;DE_NRNA_ 263;Gyanendra Paudel;chefgyanendra1@gmail.com;Europe;Germany;Hessen;Hirschhorn;1622738603;Namaste!414#;DE07000110;1
+264;DE_NRNA_ 264;Hem Raj Joshi;hemraj_55@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;176 47315867;Namaste!23#;DE07000015;1
+265;DE_NRNA_ 265;Hemanta Lo;hemantjack2@gmail.com;Europe;Germany;Hessen;Kelsterbach;015735440336;Namaste!375#;;1
+266;DE_NRNA_ 266;Hom Katrischetri;homsktm@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;17696424855;Namaste!905#;DE07000112;1
+267;DE_NRNA_ 267;Impress Singh;singh.imu@web.de;Europe;Germany;Hessen;;015217549094;Namaste!451#;;1
+268;DE_NRNA_ 268;Ishwor Kapri;ishworkapri77@gmail.com;Europe;Germany;Hessen;Darmstadt;15904896254;Namaste!785#;DE07000122;1
+269;DE_NRNA_ 269;Iswori Tripathee;isworitripathee1130@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;176 31031664;Namaste!471#;DE07000040;1
+270;DE_NRNA_ 270;Jasch Dhungel;carpetcomfy@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;15557432527;Namaste!12#;DE07000028;1
+271;DE_NRNA_ 271;Jaya Laxmi Rai;jaya-rai@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;15752388028;Namaste!264#;DE07000135;1
+272;DE_NRNA_ 272;Jiba Nath Lamichhane;jibalamichhane@gmail.com;Europe;Germany;Hessen;Frankfurt;17682370310;Namaste!501#;;1
+273;DE_NRNA_ 273;Jivan Babu Dhakal;jivandhakal58@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;1743020863;Namaste!416#;DE07000036;1
+274;DE_NRNA_ 274;Jyoti Rai;srjyotirai@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17645601154;Namaste!768#;DE07000001;1
+275;DE_NRNA_ 275;Kabita Bhattarai;gyawalikabi14@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;01772769634;Namaste!422#;DE07000140;1
+276;DE_NRNA_ 276;Kalpana KC;kckalpana107@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;15901310267;Namaste!247#;DE07000088;1
+277;DE_NRNA_ 277;Kalpana Limbu;yonghangkalpana1@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;176 21540289;Namaste!418#;DE07000092;1
+278;DE_NRNA_ 278;Kamla Joshi;kamlaj63@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;017676672285;Namaste!839#;DE07000046;1
+279;DE_NRNA_ 279;Kedar Prasad Gautam;kedar_gautam@hotmail.com;Europe;Germany;Hessen;Wiesbaden;17634955558;Namaste!380#;DE07000019;1
+280;DE_NRNA_ 280;Keshav Gaire;gkeshavhere@gmail.com;Europe;Germany;Hessen;Offenbach, Frankfurt;015208232147;Namaste!982#;;1
+281;DE_NRNA_ 281;Khanal Mani ram;manirk69@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17681181323;Namaste!816#;DE07000009;1
+282;DE_NRNA_ 282;Khob Nath Neupane;khobnathneupane@yahoo.de;Europe;Germany;Hessen;Frankfurt Am Main;17680008997;Namaste!953#;DE07000076;1
+283;DE_NRNA_ 283;Kosh Bahadur ale;ale_kushal@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;01623483877;Namaste!24#;DE07000069;1
+284;DE_NRNA_ 284;Kumar Prasad Panta;kumarpanta@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;1708365010;Namaste!629#;DE07000014;1
+285;DE_NRNA_ 285;Kumar Prasad Tripathee;kumartripathee30@gmail.com;Europe;Germany;Hessen;69434 Hirschhorn , Hessen;1622725672;Namaste!737#;DE07000109;1
+286;DE_NRNA_ 286;Kumbha Regmi;kumbharegmi2018@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;017624494433;Namaste!421#;DE07000067;1
+287;DE_NRNA_ 287;Laxmi Prasai;laxmi-gautam@web.de;Europe;Germany;Hessen;Frankfurt Am Main;17644486943;Namaste!404#;DE07000146;1
+288;DE_NRNA_ 288;Lok Mani Dhakal;lok_mani@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17663071150;Namaste!66#;DE07000003;1
+289;DE_NRNA_ 289;Mahima Raut;rautmahima@yahoo.com;Europe;Germany;Hessen;Offenbach am main;17662825221;Namaste!637#;DE07000126;1
+290;DE_NRNA_ 290;Mani Kumar Rai;raimani@outlook.de;Europe;Germany;Hessen;Frankfurt Am Main;151 51315159;Namaste!839#;DE07000104;1
+291;DE_NRNA_ 291;Manis Khanal;maniskhanal@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;15772535409;Namaste!851#;DE07000111;1
+292;DE_NRNA_ 292;Manjil Shrestha;shrestha.manjil27@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;4,91556E+12;Namaste!104#;DE07000124;1
+293;DE_NRNA_ 293;Marshal Shrestha;Marshal.stha@gmail.com;Europe;Germany;Hessen;Wiesbaden;017623678175;Namaste!40#;DE07000125;1
+294;DE_NRNA_ 294;Maya Bhusal Pandey;mayabhusalpandey8@gmail.com;Europe;Germany;Hessen;Friedberg;015906702898;Namaste!940#;DE07000144;1
+295;DE_NRNA_ 295;Menaka Tripathi;carpetcomfy2@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;15536900495;Namaste!474#;DE07000026;1
+296;DE_NRNA_ 296;Milan Raj Panta;pantamr@hotmail.com;Europe;Germany;Hessen;Wiedbaden;1736085379;Namaste!394#;DE07000107;1
+297;DE_NRNA_ 297;Mira Adhikari;pamiraadhikari@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17630354294;Namaste!437#;DE07000039;1
+298;DE_NRNA_ 298;Nab Raj Roshyara;roshyara@gmail.com;Europe;Germany;Hessen;Wiesbaden;15164322589;Namaste!456#;DE07000017;1
+299;DE_NRNA_ 299;Narayan Adhikari;nadhikari@hotmail.de;Europe;Germany;Hessen;Frankfurt Am Main;1736647755;Namaste!750#;DE07000025;1
+300;DE_NRNA_ 300;Navina Shrestha Duwal;navinashrestha4@gmail.com;Europe;Germany;Hessen;Schwalbach am Taunus;017687301722;Namaste!472#;;1
+301;DE_NRNA_ 301;Nima Rajbhandari;sarmilaraj@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;17621912854;Namaste!927#;DE07000091;1
+302;DE_NRNA_ 302;Niraj Shrestha;nirajshrestha17@gmail.com;Europe;Germany;Hessen;Butzbach;17620494580;Namaste!207#;DE07000132;1
+303;DE_NRNA_ 303;Nisha Pasakhala;nishanewap@gmail.com;Europe;Germany;Hessen;Frankfurt;1638816164;Namaste!822#;DE07000127;1
+304;DE_NRNA_ 304;Nishan Phuyal;phuyalnishan@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;0174 8956015;Namaste!826#;DE07000049;1
+305;DE_NRNA_ 305;Padam Lal Pandey;padampandeymr@gmail.com;Europe;Germany;Hessen;Friedberg;15212124393;Namaste!638#;DE07000153;1
+306;DE_NRNA_ 306;Parbati Shrestha;partamra@hotmail.com;Europe;Germany;Hessen;Wiesbaden;17666869227;Namaste!104#;DE07000100;1
+307;DE_NRNA_ 307;Prakash Chandra Lohani;malekhu@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17655608281;Namaste!715#;DE07000074;1
+308;DE_NRNA_ 308;Pramod Poudel;pramodpoudel2013@gmail.com;Europe;Germany;Hessen;Kassel;1752358997;Namaste!736#;DE07000062;1
+309;DE_NRNA_ 309;Pranesh Karki;praneshkarki444@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;4,91767E+12;Namaste!412#;DE07000097;1
+310;DE_NRNA_ 310;Pranita Karki;karkipranita15@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;1623487574;Namaste!649#;DE07000080;1
+311;DE_NRNA_ 311;Prasansha Shrestha;prasishrestha07@gmail.com;Europe;Germany;Hessen;Wiesbaden;17672492649;Namaste!914#;DE07000101;1
+312;DE_NRNA_ 312;Prava Shrestha Bulum;vastha7.ps@gmail.com;Europe;Germany;Hessen;Frankfurt;017657984616;Namaste!412#;;1
+313;DE_NRNA_ 313;Probisha Baskota panta;probisha@gmail.com;Europe;Germany;Hessen;Hirschhorn;1736085380;Namaste!32#;DE07000108;1
+314;DE_NRNA_ 314;Rabi Kiran Kafle;rabscrz@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17645692654;Namaste!480#;DE07000154;1
+315;DE_NRNA_ 315;Rabin Lamichhane;rabilal2@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;1751520165;Namaste!73#;DE07000013;1
+316;DE_NRNA_ 316;Rachit Sharma;mairachit@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17657712915;Namaste!573#;DE07000148;1
+317;DE_NRNA_ 317;Raj Kumar Khadka;raj_khadka@hotmail.com;Europe;Germany;Hessen;Main Taunus-kreis;4,91737E+11;Namaste!489#;DE07000029;1
+318;DE_NRNA_ 318;Raj Kumar Poudel;Rajupoudel461@gmail.com;Europe;Germany;Hessen;;;Namaste!884#;;1
+319;DE_NRNA_ 319;Raja Ram Raut;raut420@yahoo.de;Europe;Germany;Hessen;Frankfurt Am Main;17663428685;Namaste!472#;DE07000072;1
+320;DE_NRNA_ 320;Rajan Devi Gautam;rajandevi@hotmail.de;Europe;Germany;Hessen;Wiesbaden;15908607706;Namaste!506#;DE07000016;1
+321;DE_NRNA_ 321;Rajkumar Ghimire;rajgar@hotmail.com;Europe;Germany;Hessen;Steinbach Taunus;17657712385;Namaste!991#;DE07000139;1
+322;DE_NRNA_ 322;Rajkumar Shrestha;wrazshrestha@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17682196636;Namaste!32#;DE07000113;1
+323;DE_NRNA_ 323;Raju Adhikari;rajuadhikarii1234@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17687965816;Namaste!386#;DE07000094;1
+324;DE_NRNA_ 324;Ram Kala Pantha;prakashkala25@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;1637718683;Namaste!243#;DE07000023;1
+325;DE_NRNA_ 325;Ramesh Aryal;aryalramesh2012@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17624095462;Namaste!267#;DE07000086;1
+326;DE_NRNA_ 326;Ramesh Gyawali;ramu_gyawali@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;1772769646;Namaste!295#;DE07000152;1
+327;DE_NRNA_ 327;Ramji Kumar Shrestha;rkshresta@hotmail.com;Europe;Germany;Hessen;Wiesbaden;15756268031;Namaste!49#;DE07000129;1
+328;DE_NRNA_ 328;Ran Bahadur bk;runbdrsen@gmail.com;Europe;Germany;Hessen;Heppeheim;17680409161;Namaste!907#;DE07000064;1
+329;DE_NRNA_ 329;Rishi Dhan Rai;rishidhan1977@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17661256354;Namaste!893#;DE07000105;1
+330;DE_NRNA_ 330;Robin Gautam;robin_gautam@hotmail.com;Europe;Germany;Hessen;Wiesbaden;1774752811;Namaste!526#;DE07000018;1
+331;DE_NRNA_ 331;Roma Pathak;r.roma2015@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;1729168589;Namaste!725#;DE07000141;1
+332;DE_NRNA_ 332;Rudra Bahadur KC;kcrudrabahadur@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;15906819273;Namaste!124#;DE07000044;1
+333;DE_NRNA_ 333;Sabin Devkota;sabindevkota05@gmail.com;Europe;Germany;Hessen;Goettingen;15210915034;Namaste!453#;DE07000134;1
+334;DE_NRNA_ 334;Sabina Yonghang Limbu Rai;yonghangsabina@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17655014457;Namaste!900#;DE07000021;1
+335;DE_NRNA_ 335;SABITRA ACHARYA;acharya.sabitra72@gmail.com;Europe;Germany;Hessen;;4,9173E+11;Namaste!160#;;1
+336;DE_NRNA_ 336;Sagar Kharel;kharelsagar91@yahoo.com;Europe;Germany;Hessen;Hanau;+49 170 4937533;Namaste!906#;DE07000114;1
+337;DE_NRNA_ 337;Sager Shresth;shrsager@gmail.com;Europe;Germany;Hessen;Bad schwalbach;+176 80137621;Namaste!803#;DE07000116;1
+338;DE_NRNA_ 338;Samir kumar Shrestha;tentse@live.de;Europe;Germany;Hessen;Frankfurt Am Main;157 35646176;Namaste!699#;DE07000006;1
+339;DE_NRNA_ 339;Samrat Bikram Shah;samratbs76@gmail.com;Europe;Germany;Hessen;Offenbach am Main;1754984251;Namaste!343#;DE07000095;1
+340;DE_NRNA_ 340;Sangita Bhuwanji;sangitabhuwanji@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17643669452;Namaste!812#;DE07000087;1
+341;DE_NRNA_ 341;Santosh Bhatta;bhatta-santosh@outlook.de;Europe;Germany;Hessen;Eschborn;1627767152;Namaste!717#;DE07000117;1
+342;DE_NRNA_ 342;Sapunam Rai;sapunamrai@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17622207145;Namaste!930#;DE07000142;1
+343;DE_NRNA_ 343;Sarada Devkota;sddevkota@gmail.com;Europe;Germany;Hessen;Wiesbaden;1573130258;Namaste!510#;DE07000078;1
+344;DE_NRNA_ 344;Shakuntala Khanal;khanalshakun@icloud.com;Europe;Germany;Hessen;Frankfurt Am Main;15775000548;Namaste!896#;DE07000061;1
+345;DE_NRNA_ 345;Shambhu Prasad Pokhrel;pokhrelsagar@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;1799376118;Namaste!798#;DE07000035;1
+346;DE_NRNA_ 346;Shankar Singh Darlami Magar;shankar.darlami@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;1635171669;Namaste!89#;DE07000102;1
+347;DE_NRNA_ 347;Shiksha Nyaupane Bhattarai;shiksha1987@yahoo.com;Europe;Germany;Hessen;Obertshausen;4,91577E+12;Namaste!700#;DE07000090;1
+348;DE_NRNA_ 348;Shiv Kala Gurung;shivkalagurung@gmail.com;Europe;Germany;Hessen;Ginsheim;017683083780;Namaste!392#;;1
+349;DE_NRNA_ 349;Shiva Ram Adhikari;godshiva25@yahoo.com;Europe;Germany;Hessen;Frankfurt;1729158825;Namaste!520#;;1
+350;DE_NRNA_ 350;Shyam Kumar Khanal;shyamkhanal@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;1624187091;Namaste!528#;DE07000041;1
+351;DE_NRNA_ 351;Siddhartha Puri;purisiddhartha360@gmail.com;Europe;Germany;Hessen;Fulda;17623631892;Namaste!194#;DE07000137;1
+352;DE_NRNA_ 352;Sirish Shakya;crisshakya@gmail.com;Europe;Germany;Hessen;Maintal;15758177448;Namaste!531#;DE07000136;1
+353;DE_NRNA_ 353;Sita Devi Gurung;Raynsi1419@gmail.com;Europe;Germany;Hessen;;017632188348;Namaste!269#;;1
+354;DE_NRNA_ 354;Smriti Adhikari;asmriti28@gmail.com;Europe;Germany;Hessen;Wiesbaden;17620942525;Namaste!235#;DE07000056;1
+355;DE_NRNA_ 355;Sneha Joshi;joshisneha901@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17636391206;Namaste!754#;DE07000038;1
+356;DE_NRNA_ 356;Soni Maharjan;ss3096639@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17666559537;Namaste!255#;DE07000147;1
+357;DE_NRNA_ 357;Sudeep Amatya;su.deep05@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;4,91768E+12;Namaste!210#;DE07000096;1
+358;DE_NRNA_ 358;Sudip Dongol;dongol.sudip@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;17655284687;Namaste!31#;DE07000089;1
+359;DE_NRNA_ 359;Suja Dhakal;suja_607@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;176 62246342;Namaste!715#;DE07000048;1
+360;DE_NRNA_ 360;Sujata Raut;sujataghimireraut@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17663428685;Namaste!514#;DE07000073;1
+361;DE_NRNA_ 361;Suman Bhattarai;sbhattarai1983@yahoo.com;Europe;Germany;Hessen;Obertshausen;1794168692;Namaste!177#;DE07000068;1
+362;DE_NRNA_ 362;Suman Shrestha;suman.game@hotmail.de;Europe;Germany;Hessen;Bad schwalbach;17623878952;Namaste!596#;DE07000115;1
+363;DE_NRNA_ 363;Sunita Baral Lamsal;sunita-baral@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;176 21391420;Namaste!775#;DE07000145;1
+364;DE_NRNA_ 364;Susmita Neupane;susmitansn@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17663058946;Namaste!773#;DE07000071;1
+365;DE_NRNA_ 365;Swastika Kapri;swastikakapri518@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;15215415686;Namaste!221#;DE07000120;1
+366;DE_NRNA_ 366;Tara Adhikari;taraadhikari029@gmail.com;Europe;Germany;Hessen;Wiesbaden;17620942521;Namaste!10#;DE07000054;1
+367;DE_NRNA_ 367;Tenzin Tsepel Shrestha;tsepshrestha@gmail.com;Europe;Germany;Hessen;Niedernhausen;4,9164E+11;Namaste!841#;DE07000084;1
+368;DE_NRNA_ 368;Tija Rai;t.r.business@outlook.com;Europe;Germany;Hessen;Frankfurt Am Main;1639833582;Namaste!226#;DE07000138;1
+369;DE_NRNA_ 369;Tony Kafle;tonykafle123@gmail.com;Europe;Germany;Hessen;GieÃŸen;0172 8061789;Namaste!106#;DE07000103;1
+370;DE_NRNA_ 370;Tulasi Shrestha;tulasi.shrestha@hotmail.de;Europe;Germany;Hessen;Bad schwalbach;1631186671;Namaste!195#;DE07000106;1
+371;DE_NRNA_ 371;Um Bahadur Gurung;umbahardur14.ug@icloud.com;Europe;Germany;Hessen;Frankfurt Am Main;17630400140;Namaste!201#;;1
+372;DE_NRNA_ 372;Umesh Jung Bogati;umeshbogati87@gmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17678253502;Namaste!175#;DE07000118;1
+373;DE_NRNA_ 373;Uttam Lamsal;uttam-lamsal@hotmail.com;Europe;Germany;Hessen;Frankfurt Am Main;17647097421;Namaste!366#;DE07000083;1
+374;DE_NRNA_ 374;Yaku Maya Aryal;mayab0611@gmail.com;Europe;Germany;Hessen;Bad Homurg;15218749036;Namaste!190#;DE07000131;1
+375;DE_NRNA_ 375;Yam Bahadur Pakhrin Tamang;yamtamang88@gmail.com;Europe;Germany;Hessen;Frankfurt am Main;017631324061;Namaste!884#;;1
+376;DE_NRNA_ 376;Yang Chen Tsering Shrestha;shresthanum@yahoo.com;Europe;Germany;Hessen;Frankfurt Am Main;157 35646174;Namaste!259#;DE07000007;1
+377;DE_NRNA_ 377;Yub Raj Adhikari;supriti183@gmail.com;Europe;Germany;Hessen;Wiesbaden;15750143898;Namaste!993#;;1
+378;DE_NRNA_ 378;Divya Bhattarai;divyaji121@gmail.com;Europe;Germany;Mecklenburg-Vorpommern;Greifswald;15734784167;Namaste!305#;DE08000001;1
+379;DE_NRNA_ 379;Nikita Rayamajhi;nikitarayamajhi012@gmail.com;Europe;Germany;Mecklenburg-Vorpommern;Greifswald;17635352912;Namaste!956#;DE08000002;1
+380;DE_NRNA_ 380;Abhishek Guvaju;abhishekguvaju85@gmail.com;Europe;Germany;Niedersachsen;Darmstadt;17664197459;Namaste!782#;DE09000096;1
+381;DE_NRNA_ 381;Alex Gaire;alexprivat070@gmail.com;Europe;Germany;Niedersachsen;Hannover;15906173331;Namaste!545#;DE09000061;1
+382;DE_NRNA_ 382;Alisha Gaire;alishabasnet2201@gmail.com;Europe;Germany;Niedersachsen;Hanover;17645275410;Namaste!734#;DE09000010;1
+383;DE_NRNA_ 383;Ambika Kafle Neupane;jagkriti0kafle@gmail.com;Europe;Germany;Niedersachsen;Wardenburg;17655743644;Namaste!550#;DE09000082;1
+384;DE_NRNA_ 384;Amrit Poudel;pouamr@gmail.com;Europe;Germany;Niedersachsen;Göttingen;1725424961;Namaste!165#;DE09000005;1
+385;DE_NRNA_ 385;Amuna Magar;magaramuna12@gmail.com;Europe;Germany;Niedersachsen;Hannover;17622621736;Namaste!20#;DE09000055;1
+386;DE_NRNA_ 386;Ankush Lohani;ankushlohani022@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15219615337;Namaste!316#;DE09000039;1
+387;DE_NRNA_ 387;Arjun Dahal;arjundahal04@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15739674538;Namaste!822#;DE09000068;1
+388;DE_NRNA_ 388;Ashim Pokhrel;ashimpokhrel864@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15906732446;Namaste!31#;DE09000069;1
+389;DE_NRNA_ 389;Ashmita Poudel;poudelasmita00@gmail.com;Europe;Germany;Niedersachsen;Hannover;1796751445;Namaste!996#;DE09000050;1
+390;DE_NRNA_ 390;Bandana Dhakal;bandanadhkl@gmail.com;Europe;Germany;Niedersachsen;Goettingen;17689201351;Namaste!125#;DE09000087;1
+391;DE_NRNA_ 391;Bhesh Narayan Shrestha;a0102bin@icloud.com;Europe;Germany;Niedersachsen;Hannover;17656834727;Namaste!959#;DE09000049;1
+392;DE_NRNA_ 392;Bhibhi Rani Tamang;lamasapana36@gmail.com;Europe;Germany;Niedersachsen;Göttingen;17655741303;Namaste!105#;DE09000054;1
+393;DE_NRNA_ 393;Bigita Aryal;bigitaaryal@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15908466236;Namaste!722#;DE09000064;1
+394;DE_NRNA_ 394;Bikash Subedi;bikash064@yahoo.com;Europe;Germany;Niedersachsen;Wilhelmshaven;17647114382;Namaste!69#;DE09000002;1
+395;DE_NRNA_ 395;Bikram Sunar;rambik14559@gmail.com;Europe;Germany;Niedersachsen;Göttingen;162162471;Namaste!724#;;1
+396;DE_NRNA_ 396;Binod Dhakal;binoddhakal@web.de;Europe;Germany;Niedersachsen;GeorgsmarienhÃ¼tte;1793195749;Namaste!184#;DE09000095;1
+397;DE_NRNA_ 397;Bipana Gurung;bipana924@gmail.com;Europe;Germany;Niedersachsen;Hannover;17631142795;Namaste!558#;DE09000047;1
+398;DE_NRNA_ 398;Chandra Shekhar Badu;baduchandrashekhar@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15752493078;Namaste!343#;DE09000032;1
+399;DE_NRNA_ 399;Chandra Tamang;babaalchandra98@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15758537947;Namaste!96#;DE09000053;1
+400;DE_NRNA_ 400;Deepak Budha;deepakbudha1520@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15774651212;Namaste!764#;DE09000060;1
+401;DE_NRNA_ 401;Deepak Pandey;saideepak0408@gmail.com;Europe;Germany;Niedersachsen;Göttingen;17614835554;Namaste!598#;DE09000037;1
+402;DE_NRNA_ 402;Diksha Rayamajhi;diksharayamajhi95@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15211776873;Namaste!724#;DE09000059;1
+403;DE_NRNA_ 403;Dinesh Timsina;dineshtimsina@yahoo.com;Europe;Germany;Niedersachsen;Norden;4,91766E+12;Namaste!757#;DE09000025;1
+404;DE_NRNA_ 404;Dipankar Dahal;dpankar.dahal@hotmail.com;Europe;Germany;Niedersachsen;Göttingen;15222426840;Namaste!717#;DE09000086;1
+405;DE_NRNA_ 405;Dipesh Sah;dipesh053@gmail.com;Europe;Germany;Niedersachsen;Hannover;17647016270;Namaste!783#;DE09000045;1
+406;DE_NRNA_ 406;Durga Devi Bhandari Devkota;bhandaridurga116@gmail.com;Europe;Germany;Niedersachsen;Göttingen;1731932170;Namaste!658#;DE09000041;1
+407;DE_NRNA_ 407;Hem Kumari Khatiwada;hemuktm@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15120232222;Namaste!723#;DE09000024;1
+408;DE_NRNA_ 408;Ishwar Shrestha;eeshan11@yahoo.com;Europe;Germany;Niedersachsen;Hannover;0176 35593598;Namaste!670#;DE09000001;1
+409;DE_NRNA_ 409;Ishwor Panday;ishworpanday995@gmail.com;Europe;Germany;Niedersachsen;Hannover;17621478270;Namaste!734#;DE09000077;1
+410;DE_NRNA_ 410;Jeevan Bartaula;jbartaula44@gmail.com;Europe;Germany;Niedersachsen;Hannover;4,91763E+12;Namaste!24#;DE09000007;1
+411;DE_NRNA_ 411;Jeevan Budha;budhaj41@gmail.com;Europe;Germany;Niedersachsen;Hannover;17626634470;Namaste!270#;DE09000028;1
+412;DE_NRNA_ 412;Kamal Kafle;lotuskafle56@gmail.com;Europe;Germany;Niedersachsen;Gottingen;15560660209;Namaste!96#;DE09000084;1
+413;DE_NRNA_ 413;Kamal KC;kamalkc55@gmail.com;Europe;Germany;Niedersachsen;Goettingen;15257288976;Namaste!998#;DE09000003;1
+414;DE_NRNA_ 414;Kamal Prajapati;kamalprjpt33@gmail.com;Europe;Germany;Niedersachsen;Ronnenberg;1738218150;Namaste!99#;DE09000094;1
+415;DE_NRNA_ 415;Keshav Prasad Neupane;ksvnpn@gmail.com;Europe;Germany;Niedersachsen;Wardenburg;17621439407;Namaste!526#;DE09000066;1
+416;DE_NRNA_ 416;Kewal Gurung;contactgurung@gmail.com;Europe;Germany;Niedersachsen;Hannover;1792084192;Namaste!664#;DE09000078;1
+417;DE_NRNA_ 417;Kiran Koirala;kirankoirala@gmx.de;Europe;Germany;Niedersachsen;Stuhr;;Namaste!712#;;1
+418;DE_NRNA_ 418;Kishor Prasad Bhatta;kissorprasadbhatta@gmail.com;Europe;Germany;Niedersachsen;Göttingen;1796070191;Namaste!574#;DE09000030;1
+419;DE_NRNA_ 419;Kishwor Gandharba;kishwor2015@gmail.com;Europe;Germany;Niedersachsen;Göttingen;176 89201351;Namaste!954#;DE09000031;1
+420;DE_NRNA_ 420;Krishna Devkota;kdevkota71@gmail.com;Europe;Germany;Niedersachsen;Göttingen;1735661121;Namaste!971#;DE09000026;1
+421;DE_NRNA_ 421;Krishna Prasad Gaire;kpgaire1311@gmail.com;Europe;Germany;Niedersachsen;Hannover;15773551349;Namaste!472#;DE09000006;1
+422;DE_NRNA_ 422;Kritika Wagle;Kritikawagle@gmx.de;Europe;Germany;Niedersachsen;Stuhr;;Namaste!878#;;1
+423;DE_NRNA_ 423;Kul bahadur Maski rana;kt0875332@gmail.com;Europe;Germany;Niedersachsen;Hannover;15758210097;Namaste!919#;DE09000079;1
+424;DE_NRNA_ 424;Maheswor Puri;purimaheswor@gmail.com;Europe;Germany;Niedersachsen;Northeim;15214684891;Namaste!175#;DE09000090;1
+425;DE_NRNA_ 425;Manisha Joshi;joshimanisha987@gmail.com;Europe;Germany;Niedersachsen;Hannover;17663600593;Namaste!284#;DE09000012;1
+426;DE_NRNA_ 426;Manisha Koirala;manishachandra66@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15753604081;Namaste!624#;DE09000046;1
+427;DE_NRNA_ 427;Netra Bahadur Bhandari;nbhanda@gwdg.de;Europe;Germany;Niedersachsen;Göttingen;15231828502;Namaste!254#;DE09000035;1
+428;DE_NRNA_ 428;Nischal Kunwar;funkynick40@gmail.com;Europe;Germany;Niedersachsen;Hannover;1635246464;Namaste!561#;DE09000076;1
+429;DE_NRNA_ 429;Nisha Rai;nishaarai456@gmail.com;Europe;Germany;Niedersachsen;Hannover;17664981031;Namaste!767#;DE09000048;1
+430;DE_NRNA_ 430;Om Prakash Joshi;omprakasjoshi@gmail.com;Europe;Germany;Niedersachsen;Hannover;17663600594;Namaste!693#;DE09000015;1
+431;DE_NRNA_ 431;Pallav Joshi;jocpallav123@gmail.com;Europe;Germany;Niedersachsen;Hannover;15736610171;Namaste!182#;DE09000071;1
+432;DE_NRNA_ 432;Pingala Pokhrel;pokhrelpingala28@gmail.com;Europe;Germany;Niedersachsen;Oldenburg;17685957006;Namaste!179#;DE09000091;1
+433;DE_NRNA_ 433;Pitamber Kharal;anumprikh@gmail.com;Europe;Germany;Niedersachsen;Gottingen;1783729429;Namaste!419#;DE09000016;1
+434;DE_NRNA_ 434;Prabin Kumar Giri;thepokhrelian@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15738985220;Namaste!942#;DE09000067;1
+435;DE_NRNA_ 435;Pradip Rana;pradipjungrana111@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15738295915;Namaste!896#;DE09000057;1
+436;DE_NRNA_ 436;Prakash Basnet;prakashnature@gmail.com;Europe;Germany;Niedersachsen;Göttingen;17688458923;Namaste!477#;DE09000034;1
+437;DE_NRNA_ 437;Promin Raj Panta;prominpanta@gmail.com;Europe;Germany;Niedersachsen;Göttingen;1601172823;Namaste!586#;DE09000089;1
+438;DE_NRNA_ 438;Rajesh Lal Shrestha;rjsth65@gmail.com;Europe;Germany;Niedersachsen;Hannover;1751986274;Namaste!141#;DE09000029;1
+439;DE_NRNA_ 439;Ramesh Lama;rameshtamang380@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15560728538;Namaste!198#;DE09000040;1
+440;DE_NRNA_ 440;Reshma Ghimire;ghimirereshma@gmail.com;Europe;Germany;Niedersachsen;Hannover;15733923930;Namaste!286#;DE09000058;1
+441;DE_NRNA_ 441;Roshan Khadka;roshankhadka1988@gmail.com;Europe;Germany;Niedersachsen;Göttingen;17630485545;Namaste!769#;DE09000056;1
+442;DE_NRNA_ 442;Roshan Shrestha;shrestharoshan376@gmail.com;Europe;Germany;Niedersachsen;LÃ¼neburg;1626722993;Namaste!910#;DE09000092;1
+443;DE_NRNA_ 443;Roshani Shrestha;rosnishrestha68@gmail.com;Europe;Germany;Niedersachsen;Hannover;15901613911;Namaste!416#;DE09000075;1
+444;DE_NRNA_ 444;Sajan Kumar magar;sajanmagar102@gmail.com;Europe;Germany;Niedersachsen;Goslar;15566094113;Namaste!94#;DE09000063;1
+445;DE_NRNA_ 445;Samarpan Rai;raisamarpan01@gmail.com;Europe;Germany;Niedersachsen;Jhapa;15730120655;Namaste!513#;DE09000052;1
+446;DE_NRNA_ 446;Samrat Paudyal;scientistpaudyal@gmail.com;Europe;Germany;Niedersachsen;Hannover;1778711293;Namaste!184#;DE09000072;1
+447;DE_NRNA_ 447;Sandesh K C;sandessone07@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15563406571;Namaste!141#;DE09000083;1
+448;DE_NRNA_ 448;Sangita Sapkota;sangitasapkota019@gmail.com;Europe;Germany;Niedersachsen;Osnabruck;17656396477;Namaste!961#;DE09000044;1
+449;DE_NRNA_ 449;Sanu Risal;sanurizal@googlemail.com;Europe;Germany;Niedersachsen;Hannover;15229900309;Namaste!147#;DE09000093;1
+450;DE_NRNA_ 450;Saraswoti Gandharba;saraswotigandharba123@gmail.com;Europe;Germany;Niedersachsen;Göttingen;17677349142;Namaste!429#;DE09000036;1
+451;DE_NRNA_ 451;Saroj Kandel;gorkhasaroz@gmail.com;Europe;Germany;Niedersachsen;Hannover;15560075046;Namaste!205#;DE09000073;1
+452;DE_NRNA_ 452;Saroj Tripathi;sarvhanta@gmail.com;Europe;Germany;Niedersachsen;Hannover;17643238671;Namaste!804#;DE09000051;1
+453;DE_NRNA_ 453;Satya Devi Shresta;sforsatya11@gmail.com;Europe;Germany;Niedersachsen;Buxtehude;4,91574E+12;Namaste!204#;DE09000027;1
+454;DE_NRNA_ 454;Shankar Bhattarai;shankarmisis2022@gmail.com;Europe;Germany;Niedersachsen;Hannover;15217505663;Namaste!943#;DE09000074;1
+455;DE_NRNA_ 455;Shiva Bahadur thapa;shivathapa123@hotmail.com;Europe;Germany;Niedersachsen;Melle;1739114081;Namaste!382#;DE09000042;1
+456;DE_NRNA_ 456;Shiva Raj Dhakal;shiwadhakal@gmail.com;Europe;Germany;Niedersachsen;Hildesheim;17637828095;Namaste!242#;DE09000020;1
+457;DE_NRNA_ 457;Shristi Neupane;neupaneshristi15@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15758530931;Namaste!187#;DE09000085;1
+458;DE_NRNA_ 458;Som Nath Adhikari;somadh2023@gmail.com;Europe;Germany;Niedersachsen;Göttingen;17647003523;Namaste!191#;DE09000038;1
+459;DE_NRNA_ 459;Soni Lama;waiba36@gmail.com;Europe;Germany;Niedersachsen;Oldenburg;17621401236;Namaste!233#;DE09000080;1
+460;DE_NRNA_ 460;Sujan Dhakal;dhakalszn12@gmail.com;Europe;Germany;Niedersachsen;Goettingen;15906146230;Namaste!343#;DE09000033;1
+461;DE_NRNA_ 461;Sumeru Panta;sumerupanta128@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15258399832;Namaste!380#;DE09000081;1
+462;DE_NRNA_ 462;Surya Bahadur Bhandari;kesharbag06@gmail.com;Europe;Germany;Niedersachsen;Hannover;15786866792;Namaste!685#;DE09000004;1
+463;DE_NRNA_ 463;Surya Bahadur Tamang Tamang;suryatmg550@gmail.com;Europe;Germany;Niedersachsen;Northeim;15215679566;Namaste!363#;DE09000097;1
+464;DE_NRNA_ 464;Surya Bdr Bhandari;bigthink79@yahoo.de;Europe;Germany;Niedersachsen;Hannover;157 86866792;Namaste!344#;DE09000022;1
+465;DE_NRNA_ 465;Suyasha Sapkota;suyashasapkota66@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15120231222;Namaste!417#;DE09000043;1
+466;DE_NRNA_ 466;Tanku Maya Thapa;rukutrust7@gmail.com;Europe;Germany;Niedersachsen;Bad harzburg;17684961201;Namaste!880#;DE09000065;1
+467;DE_NRNA_ 467;Tej Bahadur Basnet khattri;tejbnet26@yahoo.com;Europe;Germany;Niedersachsen;Göttingen;15212226167;Namaste!632#;DE09000062;1
+468;DE_NRNA_ 468;Tubal Nath Sapkota;newstubal@gmail.com;Europe;Germany;Niedersachsen;Göttingen;15170811620;Namaste!546#;DE09000013;1
+469;DE_NRNA_ 469;Udip Pandey;udippandey01@gmail.com;Europe;Germany;Niedersachsen;Hannover;15781936141;Namaste!779#;DE09000088;1
+470;DE_NRNA_ 470;Yaban Regmi;yonjanregmeewb@gmail.com;Europe;Germany;Niedersachsen;Hannover;15906130032;Namaste!17#;DE09000070;1
+471;DE_NRNA_ 471;Amala Dahal;kamalagautam1927@gmail.com;Europe;Germany;Nordrhein-Westfalen;Castrop Rauxel;;Namaste!454#;;1
+472;DE_NRNA_ 472;Ashish Gurung;ashishgurung70@icloud.com;Europe;Germany;Nordrhein-Westfalen;Bochum;0163 8440313;Namaste!643#;DE10000006;1
+473;DE_NRNA_ 473;Bal krishna Subedi;peace_rap3@yahoo.com;Europe;Germany;Nordrhein-Westfalen;Essen;17623673485;Namaste!688#;DE10000049;1
+474;DE_NRNA_ 474;Bhakta Narayan Shrestha;bshrest100@yahoo.com;Europe;Germany;Nordrhein-Westfalen;Dueren;17653364312;Namaste!701#;DE10000053;1
+475;DE_NRNA_ 475;Bijay Basnet;basnetbijay80@gmail.com;Europe;Germany;Nordrhein-Westfalen;Dortmund;1732434570;Namaste!203#;DE10000011;1
+476;DE_NRNA_ 476;Bijay Moktan;sadhinick@hotmail.com;Europe;Germany;Nordrhein-Westfalen;Dortmund;17660899584;Namaste!882#;DE10000003;1
+477;DE_NRNA_ 477;Bijaya Tamang dong;dongvijaya2011@gmail.com;Europe;Germany;Nordrhein-Westfalen;Northeim;15215995144;Namaste!729#;DE10000060;1
+478;DE_NRNA_ 478;Bikram Limbu;iambikram53@gmail.com;Europe;Germany;Nordrhein-Westfalen;Mulheim an der Ruhr;1727045840;Namaste!466#;;1
+479;DE_NRNA_ 479;Bipeen Dhakal;bpndhakal23@gmail.com;Europe;Germany;Nordrhein-Westfalen;Luedenscheid;17684885833;Namaste!955#;DE10000034;1
+480;DE_NRNA_ 480;Deepak Lama;deepeyezus@gmail.com;Europe;Germany;Nordrhein-Westfalen;Bochum;017662881350;Namaste!310#;;1
+481;DE_NRNA_ 481;Dipendra Kapali;davidkapali@gmail.com;Europe;Germany;Nordrhein-Westfalen;Wuppertal;17647177115;Namaste!246#;DE10000048;1
+482;DE_NRNA_ 482;Dorik Kumar BK;dorikkumarbk@gmail.com;Europe;Germany;Nordrhein-Westfalen;Kullenhofstr. Aachen;015782367764;Namaste!249#;;1
+483;DE_NRNA_ 483;Dr. Rishi Ram Adhikari;rishiadhikari@gmail.com;Europe;Germany;Nordrhein-Westfalen;Duisburg;17640545953;Namaste!997#;DE10000039;1
+484;DE_NRNA_ 484;Harilal Bhattarai;bhattaraihari26@gmail.com;Europe;Germany;Nordrhein-Westfalen;Bonn;15735328227;Namaste!423#;DE10000061;1
+485;DE_NRNA_ 485;Hom Sharma;sharmahom46@gmail.com;Europe;Germany;Nordrhein-Westfalen;Herne;1,75782E+11;Namaste!252#;DE10000058;1
+486;DE_NRNA_ 486;Jeevan Puri;jeevanpuri9@gmail.com;Europe;Germany;Nordrhein-Westfalen;Hamminkeln 46499;17634503419;Namaste!679#;DE10000044;1
+487;DE_NRNA_ 487;Jyoti Dhungana;jyotidhungana440@yahoo.com;Europe;Germany;Nordrhein-Westfalen;Koeln;173 2305237;Namaste!668#;DE10000030;1
+488;DE_NRNA_ 488;Karishma Thapa;karishmathapa142@gmail.com;Europe;Germany;Nordrhein-Westfalen;Munster;17663877711;Namaste!623#;;1
+489;DE_NRNA_ 489;Karma Dhindup Tamang;deny.tamang@gmx.de;Europe;Germany;Nordrhein-Westfalen;Soest;4,9159E+12;Namaste!245#;DE10000035;1
+490;DE_NRNA_ 490;Kiran shrestha;kiran.shrestha@web.de;Europe;Germany;Nordrhein-Westfalen;Bonn;00491782943463;Namaste!431#;;1
+491;DE_NRNA_ 491;Laxman Basnet;basnetl094@gmail.com;Europe;Germany;Nordrhein-Westfalen;MÃ¼nster;17620571535;Namaste!757#;DE10000065;1
+492;DE_NRNA_ 492;LAXMAN KUMAR JOSHI;joshilaxman@hotmail.de;Europe;Germany;Nordrhein-Westfalen;MÃœNSTER;1737129319;Namaste!103#;DE10000001;1
+493;DE_NRNA_ 493;Laxmi Narayan Rijal;rijalsaral666@gmail.com;Europe;Germany;Nordrhein-Westfalen;Coesfeld;0170 4098925;Namaste!410#;DE10000005;1
+494;DE_NRNA_ 494;Madan Dahal;mkdahal @yahoo.de;Europe;Germany;Nordrhein-Westfalen;Castrop Rauxel;;Namaste!638#;;1
+495;DE_NRNA_ 495;Madhab Raj Neupane;mneupanenepal@gmail.com;Europe;Germany;Nordrhein-Westfalen;Dortmund;1782172230;Namaste!843#;DE10000018;1
+496;DE_NRNA_ 496;Manoj Basnet;basnetm28@gmail.com;Europe;Germany;Nordrhein-Westfalen;Münster;017620571535;Namaste!933#;;1
+497;DE_NRNA_ 497;Manoj Paneru;manoj_paneru@yahoo.com;Europe;Germany;Nordrhein-Westfalen;Warrendorf;17670235441;Namaste!389#;DE10000057;1
+498;DE_NRNA_ 498;Nagendra Man khatri;nagendramankhatri@gmail.com;Europe;Germany;Nordrhein-Westfalen;Krefeld;17683584259;Namaste!575#;DE10000045;1
+499;DE_NRNA_ 499;Nagendra Prasad poudyal;nagendrapoudyal@yahoo.com;Europe;Germany;Nordrhein-Westfalen;MÃ¼nster;17630486195;Namaste!775#;DE10000054;1
+500;DE_NRNA_ 500;Ninamma Rai;ninamma@hotmail.com;Europe;Germany;Nordrhein-Westfalen;Unna;1705555609;Namaste!281#;DE10000009;1
+501;DE_NRNA_ 501;Prakash Sharma;chitwan68@yahoo.com;Europe;Germany;Nordrhein-Westfalen;Dortmund;15753239585;Namaste!945#;DE10000014;1
+502;DE_NRNA_ 502;Pramod Parajuli;pramod_mail@yahoo.com;Europe;Germany;Nordrhein-Westfalen;Essen;1773068236;Namaste!917#;DE10000056;1
+503;DE_NRNA_ 503;Purna Bahadur Nembang;nembangpurna@gmail.com;Europe;Germany;Nordrhein-Westfalen;Bochum;17655570572;Namaste!416#;DE10000050;1
+504;DE_NRNA_ 504;Radha Sigdel;ksconnectnow@yahoo.com;Europe;Germany;Nordrhein-Westfalen;Witten;15737912357;Namaste!668#;DE10000004;1
+505;DE_NRNA_ 505;Raju Samsher thapa;rajusamsherthapa@gmail.com;Europe;Germany;Nordrhein-Westfalen;Munster;19211269536;Namaste!182#;DE10000064;1
+506;DE_NRNA_ 506;Ram Thapa;thapa@web.de;Europe;Germany;Nordrhein-Westfalen;Bonn;1752042123;Namaste!767#;DE10000023;1
+507;DE_NRNA_ 507;Ramesh Banstola;rbanstola2020@gmail.com;Europe;Germany;Nordrhein-Westfalen;MÃ¼nster;1749763495;Namaste!908#;DE10000052;1
+508;DE_NRNA_ 508;Rana Bahadur Saud;ranabahadursaud29@gmail.com;Europe;Germany;Nordrhein-Westfalen;Dortmund;017663708133;Namaste!726#;;1
+509;DE_NRNA_ 509;Sabita Shrestha;sabitashrestha57@gmail.com;Europe;Germany;Nordrhein-Westfalen;Essen;1791236455;Namaste!832#;DE10000055;1
+510;DE_NRNA_ 510;Sajina Shrestha;Shrestha.sajina42@gmail.com;Europe;Germany;Nordrhein-Westfalen;Essen;017657894009;Namaste!340#;;1
+511;DE_NRNA_ 511;Sapila Rajbhandari;sapilaraj@gmail.com;Europe;Germany;Nordrhein-Westfalen;Bergheim;17658850170;Namaste!843#;DE10000062;1
+512;DE_NRNA_ 512;Shankar Dangi;peterbin_7@hotmail.com;Europe;Germany;Nordrhein-Westfalen;Herne;15731302357;Namaste!100#;DE10000002;1
+513;DE_NRNA_ 513;Sharan K c;sharankc@outlook.com;Europe;Germany;Nordrhein-Westfalen;Dusseldorf;17659613031;Namaste!495#;DE10000019;1
+514;DE_NRNA_ 514;Shikhar Khadka;Shikharkhadka@yahoo.de;Europe;Germany;Nordrhein-Westfalen;Münster;0157 32706657;Namaste!421#;;1
+515;DE_NRNA_ 515;Shiva Ram Dhakal;dshivar9@gmail.com;Europe;Germany;Nordrhein-Westfalen;Witten;1738738553;Namaste!147#;DE10000042;1
+516;DE_NRNA_ 516;Shobha Adhikari khatri;shobhaadikharikhatri@gmail.com;Europe;Germany;Nordrhein-Westfalen;Krefeld;15753069563;Namaste!466#;DE10000046;1
+517;DE_NRNA_ 517;Sijan Dahal;czn.dahal@yahoo.com;Europe;Germany;Nordrhein-Westfalen;Essen RÃ¼ttenschied;179 2119331;Namaste!60#;DE10000015;1
+518;DE_NRNA_ 518;Sudip Sapkota;sudipanhalt@gmail.com;Europe;Germany;Nordrhein-Westfalen;Essen;1752330017;Namaste!869#;DE10000020;1
+519;DE_NRNA_ 519;Surendra Shrestha;neon_shrestha@hotmail.com;Europe;Germany;Nordrhein-Westfalen;Essen;17662232477;Namaste!863#;DE10000051;1
+520;DE_NRNA_ 520;Surya Adhikari;surya_bipen@yahoo.com;Europe;Germany;Nordrhein-Westfalen;Duisburg;17662073611;Namaste!513#;DE10000063;1
+521;DE_NRNA_ 521;Surya Prasad poudel;suryapoudel46@hotmail.com;Europe;Germany;Nordrhein-Westfalen;Essen;17668306286;Namaste!565#;DE10000025;1
+522;DE_NRNA_ 522;Surya Tiwari;suryatiwari980@gmail.com;Europe;Germany;Nordrhein-Westfalen;Meunster;17666807612;Namaste!126#;DE10000031;1
+523;DE_NRNA_ 523;TSERING LAMA-JOSHI;tseringlamajoshi@gmail.com;Europe;Germany;Nordrhein-Westfalen;MÃœNSTER;1735148917;Namaste!949#;DE10000047;1
+524;DE_NRNA_ 524;Upendra Shahi;shahupen09@gmail.com;Europe;Germany;Nordrhein-Westfalen;Mülheim;;Namaste!806#;;1
+525;DE_NRNA_ 525;Achut Giree;achutag@gmail.com;Europe;Germany;Rheinland-Pfalz;Kaiserslautern;17673821163;Namaste!864#;DE11000002;1
+526;DE_NRNA_ 526;Astha Dhakal;asthadhakal100@gmail.com;Europe;Germany;Rheinland-Pfalz;Wirges;15252593849;Namaste!328#;DE11000015;1
+527;DE_NRNA_ 527;Bimala Tiwari;bimala.tiwari@yahoo.de;Europe;Germany;Rheinland-Pfalz;Kaiserslautern;15730617168;Namaste!781#;DE11000009;1
+528;DE_NRNA_ 528;Chaitya Ratna Kansakar;info@kansakar-hotel.de;Europe;Germany;Rheinland-Pfalz;Kaiserslautern;01726859511;Namaste!565#;;1
+529;DE_NRNA_ 529;Devendra Adhikari;deven60@hotmail.com;Europe;Germany;Rheinland-Pfalz;Kaiserslautern;1629415900;Namaste!970#;DE11000005;1
+530;DE_NRNA_ 530;Elisa Rai;lixsxrai@gmail.com;Europe;Germany;Rheinland-Pfalz;Zweibruecken;1637191608;Namaste!646#;DE11000017;1
+531;DE_NRNA_ 531;Inisha Jung;inishau20@gmail.com;Europe;Germany;Rheinland-Pfalz;Ingelheim;1747187119;Namaste!482#;DE11000014;1
+532;DE_NRNA_ 532;Karuna Rai;rai.karuna@hotmail.de;Europe;Germany;Rheinland-Pfalz;Zweibruecken;15754085308;Namaste!798#;DE11000004;1
+533;DE_NRNA_ 533;Lisa Rai;lisrai88@gmail.com;Europe;Germany;Rheinland-Pfalz;Koblenz;15736159121;Namaste!769#;DE11000011;1
+534;DE_NRNA_ 534;Netra Pandey;nppandey@aol.com;Europe;Germany;Rheinland-Pfalz;Kaiserlautern;17640717401;Namaste!539#;DE11000007;1
+535;DE_NRNA_ 535;Subash Basnet;yasubash@gmail.com;Europe;Germany;Rheinland-Pfalz;Kasierslautern;15901404954;Namaste!261#;DE11000010;1
+536;DE_NRNA_ 536;Sudarshan Tiwari;tiwarisudarshan2018@gmail.com;Europe;Germany;Rheinland-Pfalz;Kaiserslautern;1738003646;Namaste!513#;DE11000001;1
+537;DE_NRNA_ 537;Tika Maya Pandey;Tikamayamuse@gmail.com;Europe;Germany;Rheinland-Pfalz;Kaiserslautern;01772319997;Namaste!548#;;1
+538;DE_NRNA_ 538;Vivash Dawadi;vivashdawadi91@gmail.com;Europe;Germany;Rheinland-Pfalz;Worms;15210482649;Namaste!320#;DE11000016;1
+539;DE_NRNA_ 539;Pranil Devkota;devkotapranil126@gmail.com;Europe;Germany;Sachsen;Dresden;15563173261;Namaste!510#;DE13000002;1
+540;DE_NRNA_ 540;Shristi Regmi;imgershristi@gmail.com;Europe;Germany;Sachsen;Dresden;15560741074;Namaste!871#;DE13000001;1
+541;DE_NRNA_ 541;Bimal Bhandari;bimalbhandari2004@gmail.com;Europe;Germany;Sachsen-Anhalt;Magdeburg;15781303248;Namaste!176#;DE14000001;1
+542;DE_NRNA_ 542;Dilli sher Rai;rai.dilli@hotmail.de;Europe;Germany;Sarland;Zweibrucken;17572014611;Namaste!116#;DE06000001;1
+543;DE_NRNA_ 543;Alisha Sprenger;alisha.sprenger@wtnet.de;Europe;Germany;Schleswig-Holstein;Norderstedt;15703030718;Namaste!387#;DE15000017;1
+544;DE_NRNA_ 544;Bijay Tiwari;maheshtiwari260@gmail.com;Europe;Germany;Schleswig-Holstein;Quickborn;17621342796;Namaste!908#;DE15000018;1
+545;DE_NRNA_ 545;Dhaula bahadur Tamang;akkal1984@gmail.com;Europe;Germany;Schleswig-Holstein;Rellingen;1607601132;Namaste!952#;DE15000002;1
+546;DE_NRNA_ 546;Hem Bahadur Motra;hbmotra@gmail.com;Europe;Germany;Schleswig-Holstein;Kiel;17656510446;Namaste!682#;DE15000015;1
+547;DE_NRNA_ 547;Kedar Gajurel;kedargajurel@gmail.com;Europe;Germany;Schleswig-Holstein;Rellingen;17632643315;Namaste!120#;DE15000014;1
+548;DE_NRNA_ 548;Krishna Raj Prasai;krishnaprasai22@gmail.com;Europe;Germany;Schleswig-Holstein;Schenefeld;1797495933;Namaste!59#;DE15000004;1
+549;DE_NRNA_ 549;Prasant Gautam;prasantg32@gmail.com;Europe;Germany;Schleswig-Holstein;Elmshorn;17646640442;Namaste!710#;DE15000019;1
+550;DE_NRNA_ 550;Ramesh Prasai;kribs345@gmail.com;Europe;Germany;Schleswig-Holstein;Hamburg;15730958857;Namaste!940#;DE15000005;1
+551;DE_NRNA_ 551;Sandip Waiba;waibasandip@yahoo.com;Europe;Germany;Schleswig-Holstein;oldenburg;17643426025;Namaste!496#;DE15000001;1
+552;DE_NRNA_ 552;Sanjita Prasai;team57235@gmail.com;Europe;Germany;Schleswig-Holstein;Schenfeld;17684603880;Namaste!654#;DE15000020;1
+553;DE_NRNA_ 553;Sharmila AdhiKari;sim5272017@gmail.com;Europe;Germany;Schleswig-Holstein;Glinde;0176 30321293;Namaste!478#;DE15000007;1
+554;DE_NRNA_ 554;Sunita ThapaKrahn;sunita34@hotmail.com;Europe;Germany;Schleswig-Holstein;Schenefeld;4,91626E+11;Namaste!223#;DE15000016;1
+555;DE_NRNA_ 555;Hem Raj Adhikari;adhikarihemraj@yahoo.de;Europe;Germany;Thüringen;98744 Schwarzatal;15560605755;Namaste!922#;DE16000001;1

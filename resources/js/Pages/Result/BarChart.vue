@@ -1,116 +1,81 @@
 <template>
-  <div class="w-full mx-0 text-lg md:text-sm  bg-gray-50 rounded border border-lime-100 shadow-inner ">
-    <svg :viewBox="`0 0 ${width} ${height}`" xmlns="http://www.w3.org/2000/svg">
-        <!-- Here is the bar  -->
-      <g v-for="(entry, index) in entries" 
-        :key="'bar-'+index" fill="#696969" class="rounded">
-        <rect :x="x(0)" :y="y(index)" 
-            :width="Number(x(entry.value)) - Number(x(0))" 
-            :height="y.bandwidth()" />
-      </g>
-        <!-- Here  is the percentage value  -->
-      <g v-for="(entry, index) in entries" 
-           :key="'text-'+index" fill="white">
-        <text  :x="x(entry.value)" v-if="entry.value>0" sm:style="font-size:13px"
-              :y="Number(y(index)) + Number(y.bandwidth()) / 2" 
-              dx="-185"              
-              dy="0.35em">               
-                   Total votes:
-        {{ entry.vote_count }} (
-              
-        {{ formattedText(entry.value) }})
-        </text>
-       
-      </g>
+  <div class="w-full">
+    <svg :viewBox="`0 0 ${width} ${height}`">
+      <!-- Bars -->
+      <g v-for="(entry, index) in entries" :key="index">
+        <rect
+          class="bar"
+          :x="margin.left"
+          :y="y(index)"
+          :width="x(entry.value)"
+          :height="y.bandwidth()"
+          :fill="colors[index % colors.length]"
+        />
         
-        <!-- Here is to put the exact value 
-          <g v-for="(entry, index) in entries" 
-           :key="'text-'+index" fill="white">
-        <text :x="x(entry.value)" v-if="entry.value>0"
-              class="text-sm"
-              :y="Number(y(index)) + Number(y.bandwidth()) / 2" dx="-180" 
-              dy="0.35em">
-              Total votes:
-        {{ entry.vote_count }} | </text>
-      </g> -->
-         <!-- Here is the  ticks  -->
-      <g :transform="`translate(175, ${margin.top})`">
-        <g v-for="(num, index) in maxNumber" :key="'x-'+num" opacity="1" 
-            :transform="`translate(${Number(x(index)) / 101 + 20}, 0)`"
-             class="">
-          <line stroke="red" opacity="0.5"  y2="-6"></line>
-            <text v-if="index%5==0" fill="darkgreen" x="0" y="-20" dy="0em" 
-                style="font-weight:bold">
-              {{ index + format }}
-              </text>
-              
-        </g>
-      </g>
-        <!-- Here are the names -->
-      <g :transform="`translate(${margin.left}, 0)`">
-        <path class="domain" stroke="#1E90FF" d="M0.5,30.5V683.5"></path>
-        <g v-for="(entry, index) in entries" :key="'y-'+index" opacity="1" 
-        :transform="`translate(0, ${Number(y(index)) + 15  })`">
-          <line stroke="red" opacity="0.5" x2="-6"></line>
-          <text fill="blue" x="-175" dy="0.3em" 
-          tyle="font-weight:bold"
-          >{{ get_name(entry.name) }}</text>
-        </g>
+        <!-- Candidate Name -->
+        <text
+          class="candidate-label"
+          :x="margin.left - 10"
+          :y="y(index) + y.bandwidth() / 2"
+          text-anchor="end"
+        >
+          {{ entry.name }}
+        </text>
+        
+        <!-- Vote Count -->
+        <text
+          class="vote-count"
+          :x="margin.left + x(entry.value) + 10"
+          :y="y(index) + y.bandwidth() / 2"
+        >
+          {{ entry.vote_count }} ({{ (entry.value * 100).toFixed(1) }}%)
+        </text>
       </g>
     </svg>
   </div>
 </template>
 
 <script>
-import { computed } from 'vue'
-import { scaleLinear, scaleBand, max, range } from 'd3'
-export default{
-    props: { 
-    entries: Array,
-    columns: Array,
-    format: String
-  },
-  methods:{ 
-       get_name(name){
-         let names= name.split("(");
-          return names[0];
-       }
+import { scaleLinear, scaleBand } from 'd3';
 
+export default {
+  props: {
+    entries: Array,
+    postName: String
   },
   setup(props) {
-    const margin = {
-      top: 50,
-      right: 50,
-      bottom: 20,
-      left: 200
-    }
-    const barHeight = 50
-    const width = 1000
-    const height = Math.round((props.entries.length + 0.1) * barHeight) + margin.top + margin.bottom
-
-    const x = computed(() => scaleLinear().domain([0, max(props.entries, (d) => d.value)]).range([margin.left, width - margin.right]))
-
-    const y = computed(() => scaleBand().domain(range(props.entries.length)).rangeRound([margin.top, height - margin.bottom]).padding(0.2))
-
-    const formattedText = computed(() => x.value.tickFormat(300, props.format))
-
-    const maxNumber = computed(() => {
-      const formatNumber = formattedText.value(max(props.entries, d => d.value)).slice(0, -1)
-      return Math.round(Number(formatNumber).toFixed(3))
-    })
-
-    return {
-      margin,
-      barHeight,
-      width,
-      height,
-      x,
-      y,
-      formattedText,
-      maxNumber
-    }
-  },
- 
-
-}
+    const margin = { top: 20, right: 20, bottom: 30, left: 150 };
+    const height = Math.max(300, props.entries.length * 40 + margin.top + margin.bottom);
+    const width = 800;
+    
+    const colors = ['#4f46e5', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+    
+    const x = scaleLinear()
+      .domain([0, 1])
+      .range([0, width - margin.left - margin.right]);
+      
+    const y = scaleBand()
+      .domain(props.entries.map((_, i) => i))
+      .range([margin.top, height - margin.bottom])
+      .padding(0.2);
+      
+    return { margin, height, width, colors, x, y };
+  }
+};
 </script>
+
+<style>
+.bar {
+  transition: width 0.3s ease;
+}
+.candidate-label {
+  font-size: 14px;
+  fill: #374151;
+  dominant-baseline: middle;
+}
+.vote-count {
+  font-size: 13px;
+  fill: #6b7280;
+  dominant-baseline: middle;
+}
+</style>
