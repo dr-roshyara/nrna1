@@ -18,7 +18,7 @@ class ResultController extends Controller
     $posts = Post::get(['id', 'post_id', 'name', 'state_name', 'required_number']);
 
     // Check if results should be published
-    $electionCompleted = true; /* your election completion logic */
+    $electionCompleted = false; /* your election completion logic */
     
     if (!$electionCompleted) {
         return redirect()->back()->with('error', 
