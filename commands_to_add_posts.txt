@@ -6,7 +6,7 @@
         
         $post->save()
     #
-      use App\Models\Post;
+        use App\Models\Post;
         $post =new Post
         $post->post_id ="2025_02"
         $post->name ="President"

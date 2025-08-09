@@ -12,6 +12,9 @@ use App\Http\Controllers\Election\ElectionResultController;
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PublisherAuthorizationController;
+use App\Http\Controllers\Admin\ElectionCommitteeController;
+
 Route::middleware(['auth:sanctum', 'verified']) ->get('/election', function(){
     return Inertia::render('Dashboard/ElectionDashboard', [
 
@@ -142,6 +145,160 @@ Route::middleware(['auth', 'role:election-committee'])->group(function () {
 });
 
 
+// // ========================================
+// // 1. PUBLIC ROUTES (No middleware)
+// // ========================================
+// Route::get('/', [ElectionController::class, 'dashboard'])->name('electiondashboard');
+// Route::get('/result/index', [ElectionResultController::class, 'index'])->name('result.index');
+
+// // ========================================
+// // 2. AUTHENTICATED ROUTES (Basic auth required)
+// // ========================================
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/dashboard', [ElectionController::class, 'dashboard'])->name('dashboard');
+//     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+// });
+
+// // ========================================
+// // 3. VOTER ROUTES (Role: voter)
+// // ========================================
+// Route::middleware(['auth', 'role:voter'])->group(function () {
+//     Route::get('/vote/create', [VoteController::class, 'create'])->name('vote.create');
+//     Route::post('/vote/store', [VoteController::class, 'store'])->name('vote.store');
+//     Route::get('/vote/verify_to_show', [VoteController::class, 'verifyToShow'])->name('vote.verify_to_show');
+// });
+
+
+//publisher : 
+// ========================================
+// 4. PUBLISHER ROUTES (Custom publisher middleware)
+// ========================================
+Route::middleware(['auth', 'publisher'])->group(function () {
+    Route::get('/publisher/authorize', [PublisherAuthorizationController::class, 'index'])
+        ->name('publisher.authorize.index');
+    
+    Route::post('/publisher/authorize', [PublisherAuthorizationController::class, 'authorize'])
+        ->name('publisher.authorize.submit');
+    
+    Route::get('/publisher/status', [PublisherAuthorizationController::class, 'status'])
+        ->name('publisher.status');
+});
+
+// Real-time progress API
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/api/authorization-progress', [PublisherAuthorizationController::class, 'progress'])
+        ->name('api.authorization.progress');
+});
+
+// Committee routes
+Route::middleware(['auth:sanctum', 'verified', 'role:election-committee,super-admin'])->group(function () {
+    Route::post('/committee/election/start-sealing', [PublisherAuthorizationController::class, 'startSealing'])
+        ->name('committee.election.start-sealing');
+});
+// Publisher authorization routes
+
+
+// ========================================
+// 5. ELECTION COMMITTEE ROUTES (Role: election-committee)
+// ========================================
+Route::middleware(['auth', 'role:election-committee,super-admin'])->prefix('admin')->group(function () {
+    // Result verification and publishing
+    Route::post('/verify-results', [ElectionResultController::class, 'verifyResults'])
+        ->name('admin.verify.results');
+    
+    Route::post('/emergency-publish', [ElectionResultController::class, 'emergencyPublish'])
+        ->name('admin.emergency.publish');
+    
+    // Publisher management
+    Route::get('/publishers', [PublisherController::class, 'index'])
+        ->name('admin.publishers.index');
+    
+    Route::post('/publishers', [PublisherController::class, 'store'])
+        ->name('admin.publishers.store');
+    
+    Route::put('/publishers/{publisher}', [PublisherController::class, 'update'])
+        ->name('admin.publishers.update');
+});
+// ========================================
+// 6. VERIFICATION COMMITTEE ROUTES (Role: verification-committee)
+// ========================================
+Route::middleware(['auth', 'role:verification-committee,election-committee,super-admin'])->group(function () {
+    Route::get('/verification/dashboard', [VerificationController::class, 'dashboard'])
+        ->name('verification.dashboard');
+    
+    Route::post('/verification/approve', [VerificationController::class, 'approve'])
+        ->name('verification.approve');
+});
+// ========================================
+// 7. PERMISSION-BASED ROUTES (Using permissions instead of roles)
+// ========================================
+Route::middleware(['auth', 'permission:manage-publishers'])->group(function () {
+    Route::delete('/admin/publishers/{publisher}', [PublisherController::class, 'destroy'])
+        ->name('admin.publishers.destroy');
+    
+    Route::post('/admin/publishers/{publisher}/reset-password', [PublisherController::class, 'resetPassword'])
+        ->name('admin.publishers.reset_password');
+});
+
+Route::middleware(['auth', 'permission:emergency-publish'])->group(function () {
+    Route::post('/admin/force-publish', [ElectionResultController::class, 'forcePublish'])
+        ->name('admin.force.publish');
+});
+
+// ========================================
+// 8. MULTIPLE ROLE OPTIONS (User needs ANY of these roles)
+// ========================================
+Route::middleware(['auth', 'role:election-committee,super-admin,technical-admin'])->group(function () {
+    Route::get('/admin/system-status', [SystemController::class, 'status'])
+        ->name('admin.system.status');
+    
+    Route::get('/admin/logs', [LogController::class, 'index'])
+        ->name('admin.logs.index');
+});
+// ========================================
+// 9. API ROUTES WITH ROLE PROTECTION
+// ========================================
+Route::middleware(['auth:sanctum', 'role:election-committee'])->prefix('api')->group(function () {
+    Route::get('/authorization-progress', [ElectionResultController::class, 'getAuthorizationProgress']);
+    Route::post('/start-authorization', [ElectionController::class, 'startAuthorization']);
+});
+
+// ========================================
+// 10. COMPLEX MIDDLEWARE COMBINATIONS
+// ========================================
+
+// Route that requires BOTH a role AND a permission
+Route::middleware(['auth', 'role:election-committee', 'permission:manage-elections'])->group(function () {
+    Route::post('/admin/elections', [ElectionController::class, 'store'])
+        ->name('admin.elections.store');
+});
+
+// Route with custom logic in controller (alternative approach)
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
+//         ->name('admin.dashboard')
+//         ->middleware(function ($request, $next) {
+//             // Custom authorization logic
+//             if (!$request->user()->hasAnyRole(['election-committee', 'super-admin'])) {
+//                 abort(403, 'Access denied');
+//             }
+//             return $next($request);
+//         });
+// });
+
+// ========================================
+// 11. CONDITIONAL ROUTES BASED ON SETTINGS
+// ========================================
+Route::middleware(['auth'])->group(function () {
+    // Only show this route if emergency publishing is enabled
+    Route::get('/admin/emergency-controls', function () {
+        if (!\App\Models\Setting::isEnabled('emergency_controls_enabled')) {
+            abort(404);
+        }
+        return view('admin.emergency-controls');
+    })->middleware('role:super-admin');
+});
+
 /***
  * Create here deligate Routes
  *
@@ -175,3 +332,4 @@ Route::get('/election/committee', function () {
 //show posts
 Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
 Route::get('posts/assign', [PostController::class, 'assign'])->name('post.assign');
+

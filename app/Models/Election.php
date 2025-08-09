@@ -29,7 +29,10 @@ class Election extends Model
         'results_published',
         'results_published_at',
         'published_by',
-        'publication_summary'
+        'publication_summary',
+        'phase',
+        
+
     ];
 
     protected $casts = [
@@ -44,9 +47,117 @@ class Election extends Model
         'authorization_completed_at' => 'datetime',
         'results_published' => 'boolean',
         'results_published_at' => 'datetime',
-        'publication_summary' => 'array'
+        'publication_summary' => 'array',
+        'phase' => 'string', 
     ];
 
+    // Add this method to your Election.php model
+
+    /**
+     * 🎯 MASTER METHOD: Determines if results can be viewed
+     * This is your SINGLE SOURCE OF TRUTH for the seal/unseal system
+     */
+    public function canViewResults(): bool
+    {
+        
+        // Emergency override (committee can force publication)
+        if (Setting::isEnabled('results_published')) {
+            return true;
+        }
+
+        $emergencyOverride = Setting::where('key', 'results_published')
+            ->where('value', 'emergency_override')
+            ->exists();
+        
+        if ($emergencyOverride) {
+            return true;
+        }
+        
+        // Phase-based logic (your seal/unseal system)
+        switch ($this->getCurrentPhase()) {
+            case 'sealed':
+                return false;  // Before election: results sealed
+            
+            case 'voting':
+                return false;  // During election: results locked
+            
+            case 'unsealing':
+                return false;  // After election: waiting for publishers to unseal
+            
+            case 'published':
+                // Must have proper authorization completion
+                return $this->results_published && $this->authorization_complete;
+            
+            default:
+                return false;
+        }
+    }
+
+    // Add to existing Election model:
+
+       /**
+         * Enhanced startSealing method
+         */
+        public function startSealing(): bool
+        {
+            if ($this->getCurrentPhase() !== 'sealed') {
+                $this->update(['phase' => 'sealed']);
+            }
+
+            $result = $this->startAuthorization();
+            
+            if ($result['success']) {
+                Log::info('Sealing process started', [
+                    'election_id' => $this->id,
+                    'session_id' => $result['session_id']
+                ]);
+                return true;
+            }
+            
+            return false;
+        }
+        /**
+         * Complete sealing and enable voting
+         */
+        public function completeSealingProcess(): bool
+        {
+            $this->update([
+                'phase' => 'voting',
+                'authorization_complete' => true,
+                'authorization_completed_at' => now(),
+                'status' => 'active', // Enable voting system
+            ]);
+            
+            Log::info('Sealing completed - Voting system activated', [
+                'election_id' => $this->id,
+                'phase_transition' => 'sealed → voting'
+            ]);
+            
+            return true;
+        }
+
+        public function startVoting(): bool  
+        {
+            // Reset for unsealing phase
+            Publisher::where('should_agree', true)->update(['agreed' => false]);
+            $this->update(['phase' => 'voting']);
+            return true;
+        }
+
+        public function startUnsealing(): bool
+        {
+            // Reuse existing authorization logic
+            $this->update(['phase' => 'unsealing']);
+            return $this->startAuthorization(); // Same code!
+        }
+        public function getCurrentPhase(): string
+        {
+            // Use actual phase column instead of calculated logic
+            return $this->phase ?? 'sealed';
+        }
+
+  
+   
     /**
      * Relationship: Election has many result authorizations
      */
@@ -373,6 +484,22 @@ class Election extends Model
      */
     public function areResultsPublished(): bool
     {
+        
+        // Emergency override (highest priority)
+        if (Setting::isEnabled('results_published')) {
+            return true;
+        }
+
+        $election = Election::current();
+        if (!$election) {
+            return false;
+        }
+         // Need to add: Block during voting phase
+            if ($this->getCurrentPhase() === 'voting') {
+                return false; // YOUR KEY REQUIREMENT
+            }
+            
+
         return $this->results_published && 
                $this->results_published_at &&
                $this->authorization_complete;

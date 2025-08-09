@@ -513,4 +513,62 @@ public function resetVotingState()
 }
 
 
+    /**
+     * Check if user has any of the specified roles
+     */
+    public function hasAnyRole($roles): bool
+    {
+        if (is_string($roles)) {
+            return $this->hasRole($roles);
+        }
+
+        foreach ($roles as $role) {
+            if ($this->hasRole($role)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if user is a publisher
+     */
+    public function isPublisher(): bool
+    {
+        return $this->hasRole('publisher');
+    }
+
+    /**
+     * Check if user is election committee member
+     */
+    public function isElectionCommittee(): bool
+    {
+        return $this->hasRole(['election-committee', 'super-admin']);
+    }
+
+    /**
+     * Check if user can verify results
+     */
+    public function canVerifyResults(): bool
+    {
+        return $this->hasRole(['election-committee', 'verification-committee', 'super-admin']);
+    }
+
+    /**
+     * Check if user can authorize result publication
+     */
+    public function canAuthorizePublication(): bool
+    {
+        return $this->hasRole('publisher') && $this->publisher && $this->publisher->should_agree;
+    }
+
+    /**
+     * Relationship: User can be a publisher
+     */
+    public function publisher()
+    {
+        return $this->hasOne(Publisher::class);
+    }
+
 }

@@ -20,76 +20,67 @@ class ElectionResultController extends Controller
      */
     public function index()
     {
-        dd("test");
-        try {
-            // 🔒 SECURITY: Check if results should be published
-            if (!$this->areResultsPublished()) {
-                return redirect()->back()->with('error', 
-                    'निर्वाचन परिणाम निर्वाचन समाप्त भएपछि उपलब्ध हुनेछ। | Election results will be available after the election is completed.'
-                );
-            }
+        // 🎯 ONE LINE: Ask the model
+        if (!$this->canShowResults()) {
+            return $this->showResultsBlockedMessage();
+        }
 
-            // Get election data with caching for performance
+        // Show results
+        return $this->renderResults();
+    }
+
+ 
+
+    private function showResultsBlockedMessage()
+        {
+            $election = Election::current();
+            $phase = $election ? $election->getCurrentPhase() : 'unknown';
+            
+            $messages = [
+                'sealed' => 'परिणामहरू सील गरिएको छ। | Results are sealed.',
+                'voting' => 'मतदान चलिरहेको छ। | Voting is in progress.',
+                'unsealing' => 'प्रकाशकहरूले परिणाम खोल्ने प्रतीक्षामा छ। | Waiting for publishers to unseal results.',
+                'unknown' => 'परिणामहरू उपलब्ध छैनन्। | Results not available.'
+            ];
+
+            return redirect()->back()->with('error', $messages[$phase] ?? $messages['unknown']);
+        }
+
+        private function renderResults()
+        {
             $electionData = Cache::remember('election_results_data', 600, function () {
                 return $this->getElectionResultsData();
             });
-            dd("test");
 
             return Inertia::render('Result/ResultPublish', $electionData);
-
-        } catch (\Exception $e) {
-            Log::error('Election results error: ' . $e->getMessage());
-            
-            return redirect()->back()->with('error', 
-                'परिणाम लोड गर्दा त्रुटि भयो। | Error loading results. Please try again.'
-            );
         }
-    }
 
     /**
-     * 🎯 MAIN LOGIC: Check if results are published
+     * 🎯 MAIN LOGIC: Check if results are published (with seal-unlock)
      */
     private function areResultsPublished(): bool
-    {
-        // Check 1: Manual override by committee
-        $manualPublish = Setting::where('key', 'results_published')
-            ->value('value');
-        
-        if ($manualPublish === 'true' || $manualPublish === '1') {
-            return true;
-        }
-
-        // Check 2: Automatic publication criteria
-        $currentElection = Election::current();
-        
-        if (!$currentElection) {
-            return false;
-        }
-
-        // Voting must have ended
-        if ($currentElection->voting_end_time > now()) {
-            return false;
-        }
-
-        // Results must be verified
-        if (!$currentElection->results_verified_at) {
-            return false;
-        }
-
-        // No pending challenges
-        $pendingChallenges = DB::table('election_challenges')
-            ->where('election_id', $currentElection->id)
-            ->where('status', 'pending')
-            ->count();
-
-        if ($pendingChallenges > 0) {
-            return false;
-        }
-
-        // All criteria met
+{
+    // Manual override (highest priority)
+    if (Setting::isEnabled('results_published')) {
         return true;
     }
 
+    $election = Election::current();
+    if (!$election) {
+        return false;
+    }
+
+    // 🎯 KEY: Use your phase system directly
+    $phase = $election->getCurrentPhase();
+    
+    // Block during voting phase (your seal requirement)
+    if ($phase === 'voting') {
+        return false;
+    }
+    
+    // Must be in 'published' phase
+    return $phase === 'published';
+}
     /**
      * Get comprehensive election results data
      */
@@ -125,6 +116,15 @@ class ElectionResultController extends Controller
             'results_published_at' => now()->toDateTimeString(),
         ];
     }
+    /**
+     * 🎯 SIMPLE: Just ask the model
+     */
+    private function canShowResults(): bool
+    {
+        $election = Election::current();
+        return $election ? $election->canViewResults() : false;
+    }
+
 
     /**
      * Calculate results for a specific post

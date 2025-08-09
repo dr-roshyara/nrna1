@@ -51,7 +51,7 @@ sn;user_id;name;email;region;password;nrna_id;is_voter
 50;nrna_50;Basketball;test50@test.de;Europe;12345701;nrna_50;0
 51;nrna_51;Elephant Polo;test51@test.de;Americas;12345702;nrna_51;0
 52;nrna_52;Volleyball;test52@test.de;Americas;12345703;nrna_52;0
-53;nrna_53;Kiran Chemjong;test53@test.de;Afria;12345703;nrna_53;0
+53;nrna_53;Kiran Chemjong;test53@f.de;Afria;12345703;nrna_53;0
 54;nrna_54;Mahakali River ;test54@test.de;Americas;12345703;nrna_54;0
 55;nrna_55;Sapta Gandki River ;test55@test.de;Afria;12345703;nrna_55;0
 56;nrna_56;Koshi River ;test56@test.de;Americas;12345703;nrna_56;0

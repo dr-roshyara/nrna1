@@ -20,7 +20,9 @@ class Publisher extends Model
         'authorization_password',
         'is_active',
         'priority_order',
-        'notes'
+        'notes',
+        'agreed',
+        'agreed_at'
     ];
 
     protected $casts = [
@@ -53,7 +55,25 @@ class Publisher extends Model
         $this->attributes['authorization_password'] = Hash::make($value);
     }
 
+
+    // Add helper methods
+    public function hasAgreed(): bool
+    {
+        return $this->agreed === true;
+    }
+
+    public function authorize(): bool
+    {
+        $this->update([
+            'agreed' => true,
+            'agreed_at' => now(),
+        ]);
+        
+        return true;
+    }
+
     /**
+     * 
      * Verify authorization password
      */
     public function verifyAuthorizationPassword(string $password): bool

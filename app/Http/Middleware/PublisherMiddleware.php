@@ -50,7 +50,7 @@ class PublisherMiddleware
             return redirect()->route('dashboard')->with('error', 'No active election found.');
         }
 
-        // Check if authorization has started 
+        // Check if authorization has started
         if (!$election->authorization_started) {
             return redirect()->route('dashboard')->with('info', 'Result authorization has not started yet.');
         }

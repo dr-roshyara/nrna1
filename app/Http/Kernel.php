@@ -70,6 +70,9 @@ class Kernel extends HttpKernel
         'vote.eligibility' => \App\Http\Middleware\VoteEligibility::class,
         'no.cache' =>\App\Http\Middleware\NoCacheMiddleware::class,
         'committee.member' => \App\Http\Middleware\EnsureCommitteeMember::class,
+        'custom.role.' => \App\Http\Middleware\RoleMiddleware::class,
+        'custom.permission' => \App\Http\Middleware\PermissionMiddleware::class,
+        'publisher' => \App\Http\Middleware\PublisherMiddleware::class
 
     ];
 }
