@@ -46,7 +46,7 @@ class VoterlistController extends Controller
         ->defaultSort('name')
         ->allowedSorts(['name','nrna_id', 'voting_ip', 'approvedBy'])
         ->allowedFilters(['name','nrna_id', 'voting_ip', 'approvedBy', $globalSearch])
-        ->paginate(50) 
+        ->paginate(2000) 
         ->withQueryString();
         // chain on any of Laravel's query builder methods
         
