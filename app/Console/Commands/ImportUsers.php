@@ -14,7 +14,7 @@ use Spatie\Permission\Models\Permission;
 
 class ImportUsers extends Command
 {
-    protected $signature = 'users:import {file=user_info.csv} {--force : Skip confirmation prompts} {--inspect : Just show CSV headers without importing} {--delimiter=; : CSV delimiter (semicolon, comma, tab, etc)} {--debug : Show debug information during import}';
+    protected $signature = 'users:import {file=user_info.csv} {--force : Skip confirmation prompts} {--inspect : Just show CSV headers without importing} {--delimiter=; : CSV delimiter (semicolon, comma, tab, etc)} {--debug : Show debug information during import} {--env-check : Check environment compatibility}';
     protected $description = 'Import users from a CSV file into the database';
 
     private array $importedUsers = [];
@@ -47,12 +47,41 @@ class ImportUsers extends Command
         $fileName = $this->argument('file');
         $csvPath = storage_path("app/csv_files/{$fileName}");
 
+        // Environment compatibility check
+        if ($this->option('env-check')) {
+            return $this->performEnvironmentCheck();
+        }
+
         if (!file_exists($csvPath)) {
             $this->error("CSV file not found: {$csvPath}");
+            $this->line("Looking in: " . storage_path("app/csv_files/"));
+            $this->line("Available files:");
+            $files = glob(storage_path("app/csv_files/*.csv"));
+            foreach ($files as $file) {
+                $this->line("  - " . basename($file));
+            }
             return self::FAILURE;
         }
 
-        $this->info("Starting user import from: {$fileName}");
+        // Test database connection and User model
+        try {
+            $this->info("Starting user import from: {$fileName}");
+            $this->line("Testing database connection...");
+            
+            // Simple database test
+            $userCount = User::count();
+            $this->line("✅ Database connected. Current users: {$userCount}");
+            
+        } catch (\Exception $e) {
+            $this->error("❌ Database connection failed: " . $e->getMessage());
+            $this->newLine();
+            $this->info("Please check:");
+            $this->line("- Database connection settings in .env");
+            $this->line("- User model exists and is properly configured");
+            $this->line("- Database migrations have been run");
+            return self::FAILURE;
+        }
+
         $this->bootstrapSuperadmin();
 
         // Determine CSV delimiter
@@ -172,6 +201,139 @@ class ImportUsers extends Command
         $this->displayResults();
 
         return empty($this->failedUsers) ? self::SUCCESS : self::FAILURE;
+    }
+
+    /**
+     * Perform comprehensive environment check
+     */
+    private function performEnvironmentCheck(): int
+    {
+        $this->info("=== ENVIRONMENT COMPATIBILITY CHECK ===");
+        $this->newLine();
+
+        // 1. PHP Version
+        $this->info("1. PHP Version:");
+        $this->line("   Current: " . PHP_VERSION);
+        $this->line("   Required: >= 7.3");
+        
+        // 2. Laravel Version
+        $this->info("2. Laravel Version:");
+        $laravelVersion = app()->version();
+        $this->line("   Current: " . $laravelVersion);
+        
+        // 3. Required Extensions
+        $this->info("3. PHP Extensions:");
+        $required = ['pdo', 'mbstring', 'tokenizer', 'xml', 'ctype', 'json'];
+        foreach ($required as $ext) {
+            $status = extension_loaded($ext) ? "✅" : "❌";
+            $this->line("   {$ext}: {$status}");
+        }
+
+        // 4. Database Connection
+        $this->info("4. Database Connection:");
+        try {
+            $connection = \DB::connection();
+            $dbName = $connection->getDatabaseName();
+            $driver = $connection->getDriverName();
+            $this->line("   ✅ Connected to: {$driver} - {$dbName}");
+            
+            // Check SQL Mode
+            if ($driver === 'mysql') {
+                $sqlMode = \DB::select("SELECT @@sql_mode as mode")[0]->mode;
+                $this->line("   SQL Mode: {$sqlMode}");
+                if (strpos($sqlMode, 'STRICT_TRANS_TABLES') !== false) {
+                    $this->line("   ⚠️  STRICT_TRANS_TABLES is enabled (may cause issues)");
+                }
+            }
+        } catch (\Exception $e) {
+            $this->line("   ❌ Error: " . $e->getMessage());
+        }
+
+        // 5. User Table Structure
+        $this->info("5. User Table Structure:");
+        try {
+            $columns = \DB::select("DESCRIBE users");
+            $this->line("   Columns found:");
+            foreach ($columns as $col) {
+                $nullable = $col->Null === 'YES' ? 'NULL' : 'NOT NULL';
+                $default = $col->Default ? "DEFAULT: {$col->Default}" : 'NO DEFAULT';
+                $this->line("     - {$col->Field} ({$col->Type}) {$nullable} {$default}");
+            }
+        } catch (\Exception $e) {
+            $this->line("   ❌ Error: " . $e->getMessage());
+        }
+
+        // 6. User Model Configuration
+        $this->info("6. User Model Configuration:");
+        try {
+            $user = new User();
+            $fillable = $user->getFillable();
+            $guarded = $user->getGuarded();
+            
+            $this->line("   Fillable fields: " . (empty($fillable) ? "None (all fields allowed)" : implode(', ', $fillable)));
+            $this->line("   Guarded fields: " . (empty($guarded) ? "None" : implode(', ', $guarded)));
+            
+            // Check if mass assignment is completely disabled
+            if (in_array('*', $guarded)) {
+                $this->line("   ⚠️  Mass assignment completely disabled (guarded: ['*'])");
+            }
+        } catch (\Exception $e) {
+            $this->line("   ❌ Error: " . $e->getMessage());
+        }
+
+        // 7. Required Packages
+        $this->info("7. Required Packages:");
+        $packages = [
+            'spatie/laravel-permission' => class_exists('Spatie\Permission\Models\Role'),
+            'league/csv' => class_exists('League\Csv\Reader'),
+        ];
+        
+        foreach ($packages as $package => $exists) {
+            $status = $exists ? "✅" : "❌";
+            $this->line("   {$package}: {$status}");
+        }
+
+        // 8. File Permissions
+        $this->info("8. File System:");
+        $storagePath = storage_path("app/csv_files/");
+        $this->line("   CSV directory: {$storagePath}");
+        $this->line("   Directory exists: " . (is_dir($storagePath) ? "✅" : "❌"));
+        $this->line("   Directory writable: " . (is_writable($storagePath) ? "✅" : "❌"));
+        
+        // List CSV files
+        if (is_dir($storagePath)) {
+            $files = glob($storagePath . "*.csv");
+            $this->line("   CSV files found: " . count($files));
+            foreach ($files as $file) {
+                $this->line("     - " . basename($file));
+            }
+        }
+
+        // 9. Environment Variables
+        $this->info("9. Environment Configuration:");
+        $envVars = ['APP_ENV', 'DB_CONNECTION', 'DB_HOST', 'DB_DATABASE'];
+        foreach ($envVars as $var) {
+            $value = env($var, 'NOT SET');
+            $this->line("   {$var}: {$value}");
+        }
+
+        $this->newLine();
+        $this->info("=== RECOMMENDATIONS ===");
+        
+        // Check for common issues
+        try {
+            $testUser = User::first();
+            if ($testUser) {
+                $this->line("✅ User model working - found existing user");
+            } else {
+                $this->line("⚠️  No users in database - this is expected for fresh install");
+            }
+        } catch (\Exception $e) {
+            $this->error("❌ User model issue: " . $e->getMessage());
+            $this->line("💡 This might be the cause of your import failure");
+        }
+
+        return self::SUCCESS;
     }
 
     /**
@@ -735,34 +897,61 @@ class ImportUsers extends Command
     {
         $superEmail = config('import.superadmin_email', 'roshyara@gmail.com');
 
-        $superadmin = User::firstOrCreate(
-            ['email' => $superEmail],
-            [
-                'password' => Hash::make(Str::random(16)),
-                'name'     => 'Super Admin',
-                'user_id'  => 'superadmin',
-                'nrna_id'  => 'superadmin',
-                'region'   => 'Global',
-                'country'  => 'Global',
-                'telephone' => '',
-                'is_voter' => false,
-            ]
-        );
+        try {
+            // Check if superadmin already exists
+            $superadmin = User::where('email', $superEmail)->first();
+            
+            if (!$superadmin) {
+                // Create superadmin user with explicit field assignment
+                $superadmin = new User();
+                $superadmin->email = $superEmail;
+                $superadmin->password = Hash::make(Str::random(16));
+                $superadmin->name = 'Super Admin';
+                $superadmin->user_id = 'superadmin';
+                $superadmin->nrna_id = 'superadmin';
+                $superadmin->region = 'Global';
+                $superadmin->country = 'Global';
+                $superadmin->telephone = '';
+                $superadmin->state = '';
+                $superadmin->city = '';
+                $superadmin->is_voter = false;
+                $superadmin->email_verified_at = now();
+                
+                $superadmin->save();
+                $this->line("✅ Created superadmin user: {$superadmin->email}");
+            } else {
+                $this->line("✅ Superadmin user already exists: {$superadmin->email}");
+            }
 
-        // Create role and permission if they don't exist
-        $role = Role::firstOrCreate(['name' => 'Superadmin']);
-        $permission = Permission::firstOrCreate(['name' => 'send code']);
-        
-        // Ensure role has permission
-        if (!$role->hasPermissionTo($permission)) {
-            $role->givePermissionTo($permission);
+            // Create role and permission if they don't exist
+            $role = Role::firstOrCreate(['name' => 'Superadmin']);
+            $permission = Permission::firstOrCreate(['name' => 'send code']);
+            
+            // Ensure role has permission
+            if (!$role->hasPermissionTo($permission)) {
+                $role->givePermissionTo($permission);
+                $this->line("✅ Granted 'send code' permission to Superadmin role");
+            }
+
+            // Ensure user has role
+            if (!$superadmin->hasRole($role)) {
+                $superadmin->assignRole($role);
+                $this->line("✅ Assigned Superadmin role to user");
+            }
+
+        } catch (\Exception $e) {
+            $this->error("Failed to bootstrap superadmin user: " . $e->getMessage());
+            
+            // Show helpful debug info
+            $this->newLine();
+            $this->info("Debug information:");
+            $this->line("- Attempting to create/verify user: {$superEmail}");
+            $this->line("- Make sure your User model allows these fields:");
+            $this->line("  email, password, name, user_id, nrna_id, region, country, telephone, state, city, is_voter");
+            $this->newLine();
+            $this->info("Check your User model's \$fillable array or remove \$guarded restrictions.");
+            
+            throw $e; // Re-throw to stop execution
         }
-
-        // Ensure user has role
-        if (!$superadmin->hasRole($role)) {
-            $superadmin->assignRole($role);
-        }
-
-        $this->line("Superadmin user ensured: {$superadmin->email}");
     }
 }
