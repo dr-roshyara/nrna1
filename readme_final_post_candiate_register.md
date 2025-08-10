@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Hash;
 
 
 $user = new User;
-$user->name = "Manag Mustang";
+$user->name = "J";
 $user->user_id="nrna_1110"
 $user->email = "manang@example.com";
 $user->password = Hash::make('password'); // Always hash passwords
@@ -38,17 +38,32 @@ $user->save();
 #
 use App\Models\Candidacy;
 $candi =                new Candidacy;
-$candi->user_id         = "nrna_1110";
+$candi->user_id         = "DE_NRNA__274";
 $candi->candidacy_id    = "DE_2025_1";
 $candi->post_id         = "2025_02"; // president 
-$candi->proposer_id     = "DE10216"; // Link to the proposer's nrna_id
-$candi->supporter_id    = "DE10000216"; // Link to the supporter's nrna_id
-$candi->image_path_1    = "manang.jpg";
+$candi->proposer_id     = "DE_NRNA__254"; // Link to the proposer's nrna_id
+$candi->supporter_id    = "DE_NRNA__341"; // Link to the supporter's nrna_id
+$candi->image_path_1    = "jyoti.jpg";
 $candi->image_path_2    = "-";
 $candi->image_path_3    = "-";
 $candi->save();
 
+
 #
+
+use App\Models\Candidacy;
+$candi =                new Candidacy;
+$candi->user_id         = "DE_NRNA__288";
+$candi->candidacy_id    = "DE_2025_2";
+$candi->post_id         = "2025_02"; // president 
+$candi->proposer_id     = "DE_NRNA__238"; // Link to the proposer's nrna_id
+$candi->supporter_id    = "DE_NRNA__377"; // Link to the supporter's nrna_id
+$candi->image_path_1    = "lokmani.jpg";
+$candi->image_path_2    = "-";
+$candi->image_path_3    = "-";
+$candi->save();
+
+
 
 #######################################################################################################
 // Create the user who is the candidate

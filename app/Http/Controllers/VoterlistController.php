@@ -125,7 +125,7 @@ class VoterlistController extends Controller
         // })->paginate(20); 
         $btemp      =auth()->user()->hasAnyPermission('send code');
         // dd($btemp);
-         $voters     =$query->paginate(50);
+         $voters     =$query->paginate(2000);
         // $voters =$voters->sortBy('created_at')->reverse();
         return Inertia::render('Voter/IndexVoter', [
           'voters' => $voters,
