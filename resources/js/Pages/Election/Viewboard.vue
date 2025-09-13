@@ -228,6 +228,99 @@
                     </div>
                 </section>
 
+                <!-- Bulk Voter Management - Only for users with manage settings permission -->
+                <section v-if="permissions.canManageSettings" class="mb-12">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                        <h2 class="text-2xl font-semibold text-gray-900 mb-6 text-center">
+                            मतदाता व्यवस्थापन | Voter Management
+                        </h2>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Bulk Approve Section -->
+                            <div class="bg-green-50 p-6 rounded-xl border border-green-200">
+                                <h3 class="text-lg font-semibold text-green-800 mb-4 text-center">
+                                    बल्क स्वीकृति | Bulk Approval
+                                </h3>
+
+                                <div class="space-y-4">
+                                    <!-- IP Check Option -->
+                                    <div class="flex items-center justify-between p-3 bg-white rounded-lg border">
+                                        <label for="enable-ip-check" class="text-sm font-medium text-gray-700">
+                                            IP Address Checking
+                                        </label>
+                                        <input
+                                            id="enable-ip-check"
+                                            type="checkbox"
+                                            v-model="bulkApproveSettings.enableIpCheck"
+                                            class="rounded border-gray-300 text-green-600 focus:ring-green-500"
+                                        />
+                                    </div>
+
+                                    <p class="text-xs text-gray-600">
+                                        <span v-if="bulkApproveSettings.enableIpCheck">🔒 Voters must vote from registered IP</span>
+                                        <span v-else>🔓 Voters can vote from any IP address</span>
+                                    </p>
+
+                                    <!-- Approve Button -->
+                                    <button
+                                        @click="bulkApproveVoters"
+                                        :disabled="isLoading"
+                                        class="w-full inline-flex items-center justify-center px-4 py-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white font-semibold rounded-lg shadow-lg transition-colors duration-200"
+                                    >
+                                        <svg v-if="isLoading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        <span v-if="!isLoading">✅ सबै स्वीकृत गर्नुहोस् | Approve All</span>
+                                        <span v-else>Approving...</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Bulk Disapprove Section -->
+                            <div class="bg-red-50 p-6 rounded-xl border border-red-200">
+                                <h3 class="text-lg font-semibold text-red-800 mb-4 text-center">
+                                    बल्क अस्वीकार | Bulk Disapproval
+                                </h3>
+
+                                <div class="space-y-4">
+                                    <!-- Include Voted Option -->
+                                    <div class="flex items-center justify-between p-3 bg-white rounded-lg border">
+                                        <label for="include-voted" class="text-sm font-medium text-gray-700">
+                                            Include Voted Users
+                                        </label>
+                                        <input
+                                            id="include-voted"
+                                            type="checkbox"
+                                            v-model="bulkDisapproveSettings.includeVoted"
+                                            class="rounded border-gray-300 text-red-600 focus:ring-red-500"
+                                        />
+                                    </div>
+
+                                    <p class="text-xs text-gray-600">
+                                        <span v-if="bulkDisapproveSettings.includeVoted">⚠️ Will disapprove ALL voters (including voted)</span>
+                                        <span v-else>🛡️ Will preserve voters who have already voted</span>
+                                    </p>
+
+                                    <!-- Disapprove Button -->
+                                    <button
+                                        @click="bulkDisapproveVoters"
+                                        :disabled="isLoading"
+                                        class="w-full inline-flex items-center justify-center px-4 py-3 bg-red-600 hover:bg-red-700 disabled:bg-gray-400 text-white font-semibold rounded-lg shadow-lg transition-colors duration-200"
+                                    >
+                                        <svg v-if="isLoading" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 714 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        <span v-if="!isLoading">❌ सबै अस्वीकार गर्नुहोस् | Disapprove All</span>
+                                        <span v-else>Disapproving...</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Voting Period Control - Only for users with manage settings permission -->
                 <section v-if="permissions.canManageSettings" class="mb-12">
                     <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
@@ -390,6 +483,12 @@ export default {
     data() {
         return {
             isLoading: false,
+            bulkApproveSettings: {
+                enableIpCheck: false
+            },
+            bulkDisapproveSettings: {
+                includeVoted: false
+            }
         };
     },
 
@@ -450,6 +549,93 @@ export default {
                     alert('✅ Voting period has been ended successfully!');
                 } else {
                     alert('❌ Error: ' + (data.error || 'Failed to end voting period'));
+                }
+            } catch (error) {
+                alert('❌ Error: ' + error.message);
+            } finally {
+                this.isLoading = false;
+            }
+        },
+
+        async bulkApproveVoters() {
+            const ipCheckMsg = this.bulkApproveSettings.enableIpCheck
+                ? 'with IP address checking enabled'
+                : 'with IP address checking disabled';
+
+            if (!confirm(`Are you sure you want to bulk approve all pending voters ${ipCheckMsg}? This will allow them to vote.`)) {
+                return;
+            }
+
+            this.isLoading = true;
+
+            try {
+                const response = await fetch('/election/bulk-approve-voters', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({
+                        enable_ip_check: this.bulkApproveSettings.enableIpCheck,
+                        exclude_voted: false // Always include all for web interface
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    this.$inertia.reload();
+                    // Show success message with details
+                    const ipMsg = data.ip_check_enabled ? 'IP checking enabled' : 'IP checking disabled';
+                    alert(`✅ Successfully approved ${data.approved_count} voters (${ipMsg})`);
+                } else {
+                    alert('❌ Error: ' + (data.error || 'Failed to approve voters'));
+                }
+            } catch (error) {
+                alert('❌ Error: ' + error.message);
+            } finally {
+                this.isLoading = false;
+            }
+        },
+
+        async bulkDisapproveVoters() {
+            const voteMsg = this.bulkDisapproveSettings.includeVoted
+                ? 'including those who have already voted'
+                : 'excluding those who have already voted';
+
+            if (!confirm(`Are you sure you want to bulk disapprove all approved voters (${voteMsg})? This will prevent them from voting.`)) {
+                return;
+            }
+
+            // Extra confirmation for dangerous operation
+            if (this.bulkDisapproveSettings.includeVoted) {
+                if (!confirm('⚠️ WARNING: This will disapprove voters who have already voted! Are you absolutely sure?')) {
+                    return;
+                }
+            }
+
+            this.isLoading = true;
+
+            try {
+                const response = await fetch('/election/bulk-disapprove-voters', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({
+                        include_voted: this.bulkDisapproveSettings.includeVoted
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    this.$inertia.reload();
+                    // Show success message with details
+                    alert(`✅ Successfully disapproved ${data.disapproved_count} voters`);
+                } else {
+                    alert('❌ Error: ' + (data.error || 'Failed to disapprove voters'));
                 }
             } catch (error) {
                 alert('❌ Error: ' + error.message);

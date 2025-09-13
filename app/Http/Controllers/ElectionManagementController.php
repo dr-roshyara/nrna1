@@ -182,6 +182,146 @@ class ElectionManagementController extends Controller
     }
 
     /**
+     * Bulk approve all voters via web interface
+     */
+    public function bulkApproveVoters(Request $request)
+    {
+        // Check permission
+        if (!auth()->user()->can('manage-election-settings')) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
+        $enableIpCheck = $request->boolean('enable_ip_check', false);
+        $excludeVoted = $request->boolean('exclude_voted', false);
+
+        try {
+            // Build query for registered voters
+            $query = User::where('is_voter', true);
+
+            // Option to exclude already voted users
+            if ($excludeVoted) {
+                $query->where('has_voted', false);
+            }
+
+            // Get voters who are not yet approved
+            $votersToApprove = $query->where('can_vote', false)->get();
+
+            if ($votersToApprove->count() === 0) {
+                return response()->json(['error' => 'All eligible voters are already approved'], 400);
+            }
+
+            $approved = 0;
+            $adminName = auth()->user()->name ?? 'System Admin';
+
+            foreach ($votersToApprove as $voter) {
+                try {
+                    // Prepare update data
+                    $updateData = [
+                        'can_vote' => true,
+                        'approvedBy' => $adminName,
+                        'suspendedBy' => null,
+                        'suspended_at' => null
+                    ];
+
+                    // Conditionally set voting_ip based on flag
+                    if ($enableIpCheck) {
+                        $updateData['voting_ip'] = $voter->user_ip; // Enable IP checking
+                    } else {
+                        $updateData['voting_ip'] = null; // Disable IP checking
+                    }
+
+                    // Update voter approval
+                    $voter->update($updateData);
+                    $approved++;
+                } catch (\Exception $e) {
+                    \Log::error("Failed to approve voter {$voter->name} (ID: {$voter->id}): " . $e->getMessage());
+                }
+            }
+
+            $message = "Successfully approved {$approved} voters";
+            if ($enableIpCheck) {
+                $message .= " with IP checking enabled";
+            } else {
+                $message .= " with IP checking disabled";
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => $message,
+                'approved_count' => $approved,
+                'ip_check_enabled' => $enableIpCheck
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to bulk approve voters: ' . $e->getMessage()], 500);
+        }
+    }
+
+    /**
+     * Bulk disapprove all voters via web interface
+     */
+    public function bulkDisapproveVoters(Request $request)
+    {
+        // Check permission
+        if (!auth()->user()->can('manage-election-settings')) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
+        $includeVoted = $request->boolean('include_voted', false);
+
+        try {
+            // Build query for registered voters
+            $query = User::where('is_voter', true);
+
+            // By default, exclude users who have already voted (safety measure)
+            if (!$includeVoted) {
+                $query->where('has_voted', false);
+            }
+
+            // Get voters who are currently approved
+            $votersToDisapprove = $query->where('can_vote', true)->get();
+
+            if ($votersToDisapprove->count() === 0) {
+                return response()->json(['error' => 'No eligible voters to disapprove'], 400);
+            }
+
+            $disapproved = 0;
+            $adminName = auth()->user()->name ?? 'System Admin';
+
+            foreach ($votersToDisapprove as $voter) {
+                try {
+                    // Update voter disapproval
+                    $voter->update([
+                        'can_vote' => false,
+                        'suspendedBy' => $adminName,
+                        'suspended_at' => now(),
+                        'approvedBy' => null,
+                        // Note: We keep voting_ip for audit trail
+                    ]);
+                    $disapproved++;
+                } catch (\Exception $e) {
+                    \Log::error("Failed to disapprove voter {$voter->name} (ID: {$voter->id}): " . $e->getMessage());
+                }
+            }
+
+            $message = "Successfully disapproved {$disapproved} voters";
+            if (!$includeVoted) {
+                $message .= " (voters who have already voted were preserved)";
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => $message,
+                'disapproved_count' => $disapproved,
+                'included_voted' => $includeVoted
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to bulk disapprove voters: ' . $e->getMessage()], 500);
+        }
+    }
+
+    /**
      * Get current election status
      */
     public function status()

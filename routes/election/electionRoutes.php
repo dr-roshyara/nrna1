@@ -186,3 +186,9 @@ Route::middleware(['auth:sanctum', 'verified', 'can:manage-election-settings'])-
     Route::post('/election/start-voting', [ElectionManagementController::class, 'startVoting'])->name('election.start-voting');
     Route::post('/election/end-voting', [ElectionManagementController::class, 'endVoting'])->name('election.end-voting');
 });
+
+// Bulk Voter Management (Committee Only)
+Route::middleware(['auth:sanctum', 'verified', 'can:manage-election-settings'])->group(function () {
+    Route::post('/election/bulk-approve-voters', [ElectionManagementController::class, 'bulkApproveVoters'])->name('election.bulk-approve-voters');
+    Route::post('/election/bulk-disapprove-voters', [ElectionManagementController::class, 'bulkDisapproveVoters'])->name('election.bulk-disapprove-voters');
+});

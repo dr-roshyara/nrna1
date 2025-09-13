@@ -21,7 +21,7 @@ class BulkDisapproveVoters extends Command
      *
      * @var string
      */
-    protected $description = 'Bulk disapprove all voters by setting can_vote=false for all registered voters';
+    protected $description = 'Bulk disapprove all voters by setting can_vote=false for all registered voters. Alternative: Use web interface at /election/viewboard';
 
     /**
      * Execute the console command.

@@ -22,7 +22,7 @@ class BulkApproveVoters extends Command
      *
      * @var string
      */
-    protected $description = 'Bulk approve all voters by setting can_vote=true for all registered voters';
+    protected $description = 'Bulk approve all voters by setting can_vote=true for all registered voters. Alternative: Use web interface at /election/viewboard';
 
     /**
      * Execute the console command.
