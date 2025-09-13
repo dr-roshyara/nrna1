@@ -167,7 +167,7 @@ public function create()
         if ($auth_user->voting_ip !== "$this->clientIP") {
             \Log::warning('IP mismatch with User model during create', [
                 'user_id' => $auth_user->id,
-                'user_stored_ip' => $auth_user->client_ip,
+                'user_stored_ip' => $auth_user->voting_ip,
                 'current_ip' => $this->clientIP,
             ]);
             
@@ -182,7 +182,7 @@ public function create()
                 'solution_nepali' => 'कृपया आफ्नो दर्ता गरिएको नेटवर्क जडानमा फर्कनुहोस् र फेरि प्रयास गर्नुहोस्, वा निर्वाचन समितिलाई सम्पर्क गर्नुहोस्।',
                 'user_name' => $auth_user->name,
                 'current_ip' => $this->clientIP,
-                'registered_ip' => $auth_user->client_ip,
+                'registered_ip' => $auth_user->voting_ip,
             ]);
         }
     }
