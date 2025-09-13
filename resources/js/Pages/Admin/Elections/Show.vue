@@ -739,15 +739,32 @@ export default {
         deleteElection() {
             if (this.isDeleting) return;
             
+            // Check if route exists before calling it
+            try {
+                const deleteRoute = route('admin.elections.destroy', this.election.id);
+                console.log('Delete route:', deleteRoute);
+            } catch (error) {
+                console.error('Route admin.elections.destroy not found:', error);
+                alert('Delete functionality not available. Please contact administrator.');
+                return;
+            }
+            
             this.isDeleting = true;
             
             Inertia.delete(route('admin.elections.destroy', this.election.id), {
-                onSuccess: () => {
+                onSuccess: (page) => {
                     this.isDeleting = false;
+                    this.showDeleteConfirmation = false;
+                    // Redirect to elections index with success message
                 },
-                onError: () => {
+                onError: (errors) => {
                     this.isDeleting = false;
+                    console.error('Delete failed:', errors);
+                    alert('Failed to delete election. Check console for details.');
                 },
+                onFinish: () => {
+                    this.isDeleting = false;
+                }
             });
         },
     },

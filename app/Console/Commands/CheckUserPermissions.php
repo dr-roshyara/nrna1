@@ -7,7 +7,7 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-class CheckUserPermissionsCommand extends Command
+class CheckUserPermissions extends Command
 {
     protected $signature = 'user:check-permissions {email? : User email address}';
     protected $description = 'Check roles and permissions for a user';
@@ -48,12 +48,12 @@ class CheckUserPermissionsCommand extends Command
         // Show direct permissions
         $permissions = $user->permissions;
         if ($permissions->count() > 0) {
-            $this->info("🔑 Direct Permissions:");
+            $this->info("🔒 Direct Permissions:");
             $permissions->each(function($permission) {
                 $this->line("   ✅ {$permission->name}");
             });
         } else {
-            $this->line("🔑 Direct Permissions: None assigned");
+            $this->line("🔒 Direct Permissions: None assigned");
         }
 
         $this->newLine();

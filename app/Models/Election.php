@@ -31,7 +31,19 @@ class Election extends Model
         'published_by',
         'publication_summary',
         'phase',
-        
+        'database_name',
+        'database_host', 
+        'database_port',
+        'database_username',
+        'database_password',
+        'database_created_at',
+        'database_status',
+        'slug',
+        'subdomain',
+        'database_size_bytes',
+        'total_users',
+        'total_votes',
+        'last_database_backup'
 
     ];
 
@@ -49,6 +61,12 @@ class Election extends Model
         'results_published_at' => 'datetime',
         'publication_summary' => 'array',
         'phase' => 'string', 
+        'database_created_at' => 'datetime',
+        'last_database_backup' => 'datetime',
+    ];
+
+    protected $hidden = [
+        'database_password', // Keep password encrypted and hidden
     ];
 
     // Add this method to your Election.php model

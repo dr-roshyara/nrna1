@@ -72,7 +72,9 @@ class Kernel extends HttpKernel
         'committee.member' => \App\Http\Middleware\EnsureCommitteeMember::class,
         'custom.role.' => \App\Http\Middleware\RoleMiddleware::class,
         'custom.permission' => \App\Http\Middleware\PermissionMiddleware::class,
-        'publisher' => \App\Http\Middleware\PublisherMiddleware::class
+        'publisher' => \App\Http\Middleware\PublisherMiddleware::class,
+         'election.context' => \App\Http\Middleware\SetElectionContextMiddleware::class,
+
 
     ];
 }

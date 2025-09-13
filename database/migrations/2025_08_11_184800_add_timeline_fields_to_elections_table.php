@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('elections', function (Blueprint $table) {
             // Timeline Management Fields
             $table->string('timezone')->default('UTC')->after('description');
+
             
             // Registration Phase
             $table->timestamp('registration_start')->nullable()->after('timezone');

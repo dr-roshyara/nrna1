@@ -50,6 +50,13 @@ Route::middleware(['auth:sanctum', 'verified', 'role:Superadmin'])->prefix('admi
     Route::get('/elections/{election}', [ElectionConfigController::class, 'show'])
         ->name('admin.elections.show');
     
+    // Added missing update and delete routes
+    Route::put('/elections/{election}', [ElectionConfigController::class, 'update'])
+        ->name('admin.elections.update');
+    
+    Route::delete('/elections/{election}', [ElectionConfigController::class, 'destroy'])
+        ->name('admin.elections.destroy');
+    
     // Additional election management routes
     Route::put('/elections/{election}/timeline', [ElectionConfigController::class, 'updateTimeline'])
         ->name('admin.elections.timeline.update');
@@ -88,7 +95,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/election', function(){
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Voter list and management
     Route::get('/voters/index', [VoterlistController::class, 'index'])->name('voters.index');
-    Route::get('/voters', [VoterlistController::class, 'index'])->name('voters.index');
+    // Route::get('/voters', [VoterlistController::class, 'index'])->name('voters.index');
     Route::get('/voters/{id}', [VoterlistController::class, 'show'])->name('voters.show');
     
     // Committee member actions
@@ -162,8 +169,10 @@ Route::middleware(['auth', 'publisher'])->group(function () {
 // ========================================
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/election/result', [ResultController::class, 'index'])->name('result.index');
-    Route::get('/results', [ElectionResultController::class, 'index'])->name('election-result.index');
-    Route::get('/result/index', [ElectionResultController::class, 'index'])->name('result.index');
+    
+    // Route::get('/results', [ElectionResultController::class, 'index'])->name('election-result.index');
+    // Route::get('/result/index', [ElectionResultController::class, 'index'])->name('result.index');
+
 });
 
 // API routes for results

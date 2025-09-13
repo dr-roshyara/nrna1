@@ -88,6 +88,27 @@
                             </div>
 
                             <div>
+                                <label for="constituency" class="block text-sm font-medium text-gray-700">Constituency</label>
+                                <select
+                                    id="constituency"
+                                    name="constituency"
+                                    v-model="form.constituency"
+                                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                                    required
+                                >
+                                    <option value="">Select Constituency</option>
+                                    <option v-for="(label, value) in availableConstituencies" :key="value" :value="value">
+                                        {{ label }}
+                                    </option>
+                                </select>
+                                <div v-if="form.errors.constituency" class="mt-2 text-sm text-red-600">{{ form.errors.constituency }}</div>
+                                <!-- Debug info -->
+                                <div v-if="Object.keys(availableConstituencies).length === 0" class="mt-2 text-sm text-orange-600">
+                                    Debug: No constituencies loaded. Check backend data.
+                                </div>
+                            </div>
+
+                            <div>
                                 <label for="timezone" class="block text-sm font-medium text-gray-700">Timezone</label>
                                 <select
                                     id="timezone"
@@ -142,9 +163,10 @@
                         <div class="mt-6 p-4 bg-blue-50 rounded-lg">
                             <h3 class="text-sm font-medium text-blue-900">Registration Phase Details</h3>
                             <ul class="mt-2 text-sm text-blue-800 space-y-1">
-                                <li>• Voters can register and submit their information</li>
+                                <li>• Voters can register for this specific constituency</li>
                                 <li>• Election committee reviews and approves voter applications</li>
-                                <li>• Approved voters can participate in the election</li>
+                                <li>• Approved voters receive unique voting links for this election</li>
+                                <li>• Multiple elections can run simultaneously for different constituencies</li>
                             </ul>
                         </div>
                     </div>
@@ -232,7 +254,9 @@
                             <ul class="mt-2 text-sm text-green-800 space-y-1">
                                 <li>• 6-step secure voting process: Code1 → Agreement → Vote → Code2</li>
                                 <li>• 20-minute voting window per session</li>
+                                <li>• Unique voting links for each voter and election</li>
                                 <li>• Real-time monitoring and security tracking</li>
+                                <li>• Isolated voting sessions for each constituency</li>
                             </ul>
                         </div>
                     </div>
@@ -274,9 +298,10 @@
                         <div class="mt-6 p-4 bg-orange-50 rounded-lg">
                             <h3 class="text-sm font-medium text-orange-900">Post-Election Phase Details</h3>
                             <ul class="mt-2 text-sm text-orange-800 space-y-1">
-                                <li>• 3 publishers must authorize result publication</li>
+                                <li>• 3 publishers must authorize result publication per election</li>
+                                <li>• Election-specific authorization sessions</li>
                                 <li>• Results compiled and verified automatically</li>
-                                <li>• Public result publication after authorization</li>
+                                <li>• Independent result publication for each constituency</li>
                             </ul>
                         </div>
 
@@ -388,6 +413,15 @@ export default {
             type: Object,
             required: true,
         },
+        constituencies: {
+            type: Object,
+            default: () => ({
+                'general': 'General Election',
+                'europe': 'NRNA Europe',
+                'americas': 'NRNA Americas',
+                'asia_pacific': 'NRNA Asia Pacific',
+            }),
+        },
         defaultTimeline: {
             type: Object,
             required: true,
@@ -398,6 +432,7 @@ export default {
         const form = useForm({
             name: '',
             description: '',
+            constituency: 'general',
             timezone: 'UTC',
             registration_start: props.defaultTimeline.registration_start,
             registration_end: props.defaultTimeline.registration_end,
@@ -426,6 +461,35 @@ export default {
                 { id: 5, name: 'Post-Election' },
             ],
         };
+    },
+    
+    computed: {
+        availableConstituencies() {
+            // Fallback constituencies if backend doesn't provide them
+            if (!this.constituencies || Object.keys(this.constituencies).length === 0) {
+                return {
+                    'general': 'General Election',
+                    'europe': 'NRNA Europe',
+                    'americas': 'NRNA Americas',
+                    'asia_pacific': 'NRNA Asia Pacific',
+                    'middle_east': 'NRNA Middle East',
+                    'africa': 'NRNA Africa',
+                    'oceania': 'NRNA Oceania',
+                    'youth': 'NRNA Youth Committee',
+                    'women': 'NRNA Women Committee',
+                };
+            }
+            return this.constituencies;
+        },
+    },
+    
+    mounted() {
+        // Debug: Check if props are received correctly
+        console.log('Create Election - Props received:', {
+            constituencies: this.constituencies,
+            timezones: this.timezones,
+            defaultTimeline: this.defaultTimeline
+        });
     },
     
     methods: {
