@@ -11,17 +11,16 @@ use Illuminate\Support\Facades\DB;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Services\ElectionService;
 class ResultController extends Controller
 {
     public function index() {
     // Load posts with basic information
     $posts = Post::get(['id', 'post_id', 'name', 'state_name', 'required_number']);
 
-    // Check if results should be published
-    $electionCompleted = false; /* your election completion logic */
-    
-    if (!$electionCompleted) {
-        return redirect()->back()->with('error', 
+    // Double check: Route registration AND controller check for extra security
+    if (!ElectionService::canViewResults()) {
+        return redirect()->back()->with('error',
             'Election results will be available after the election is completed.'
         );
     }

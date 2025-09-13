@@ -15,8 +15,8 @@ return [
     // ✅ Is the election system currently active?
     'is_active' => env('ELECTION_IS_ACTIVE', true), 
 
-    // ✅ Are election results published?
-    'results_published' => env('ELECTION_RESULTS_PUBLISHED', false),
+    // ✅ Are election results published? (Now handled by ElectionService using permissions)
+    // 'results_published' => env('ELECTION_RESULTS_PUBLISHED', 'false') === 'true',
 
     // ✅ Voting session timeout (in minutes)
     'voting_timeout_minutes' => env('ELECTION_VOTING_TIMEOUT', 20),

@@ -62,11 +62,11 @@
                         </jet-nav-link>
                     </div>
 
-                    <!-- next --link -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <!-- Results link - only show when results are published -->
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" v-if="resultsArePublished">
                         <jet-nav-link
-                            :href="route('result.index')"
-                            :active="route().current('result.index')"
+                            :href="'/election/result'"
+                            :active="$page.url === '/election/result'"
                         >
                             Result<br />
                             परिणाम
@@ -492,6 +492,14 @@ export default {
         return {
             showingNavigationDropdown: false,
         };
+    },
+
+    computed: {
+        resultsArePublished() {
+            // Check if electionStatus prop exists and results are published
+            const electionStatus = this.$page.props.electionStatus;
+            return electionStatus && electionStatus.results_published;
+        }
     },
 
     methods: {

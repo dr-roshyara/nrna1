@@ -154,11 +154,31 @@
                                         <p class="font-semibold text-red-800 mb-1">{{ ballotAccess.error_title || 'मतदान अनुपलब्ध | Voting Unavailable' }}</p>
                                         <p v-if="ballotAccess.error_message_nepali" class="text-red-700 mb-1">{{ ballotAccess.error_message_nepali }}</p>
                                         <p v-if="ballotAccess.error_message_english" class="text-red-700">{{ ballotAccess.error_message_english }}</p>
-                                        
+
                                         <!-- Additional helpful info -->
                                         <div class="mt-2 text-xs text-red-600 space-y-1">
                                             <p v-if="!authUser?.is_voter">• You are not registered as a voter</p>
                                             <p v-if="authUser?.is_voter && !authUser?.can_vote">• Your voter status is pending approval</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 🔒 VOTING PERIOD INACTIVE MESSAGE - SHOWN WHEN USER IS ELIGIBLE BUT VOTING PERIOD IS INACTIVE -->
+                            <div v-if="!canAccessVoting && ballotAccess?.can_access && !electionStatus?.voting_period_active && !votingStatus?.has_voted" class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-xl">
+                                <div class="flex items-start">
+                                    <svg class="w-5 h-5 text-yellow-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <div class="text-sm">
+                                        <p class="font-semibold text-yellow-800 mb-1">⏱️ मतदान अवधि सक्रिय छैन | Voting Period Not Active</p>
+                                        <p class="text-yellow-700 mb-1">तपाईं मतदान गर्न योग्य हुनुहुन्छ तर मतदान अवधि अझै सुरु भएको छैन।</p>
+                                        <p class="text-yellow-700">You are eligible to vote, but the voting period has not started yet.</p>
+
+                                        <!-- Additional helpful info -->
+                                        <div class="mt-2 text-xs text-yellow-600">
+                                            <p>• निर्वाचन प्रशासकले मतदान सुरु गरेपछि यो बटन सक्रिय हुनेछ</p>
+                                            <p>• This button will become active when voting is started by election administrators</p>
                                         </div>
                                     </div>
                                 </div>
@@ -169,21 +189,22 @@
                         <div class="relative w-full">
                             <component
                                 :is="electionStatus.results_published ? 'a' : 'div'"
-                                :href="electionStatus.results_published ? route('result.index') : undefined"
+                                :href="electionStatus.results_published ? getResultsRoute() : undefined"
                                 :class="resultsCardClasses"
                             >
                                 <div class="relative z-10 w-full">
                                     <div class="flex items-center justify-center mb-6">
-                                        <div class="bg-white/20 rounded-full p-6">
+                                        <div class="bg-white/20 rounded-full p-8">
                                             <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 24 24">
                                                 <path d="M16,11V3H8v6H2v12h20V11H16z M10,5h4v14h-4V5z M4,11h4v8H4V11z M20,19h-4v-6h4V19z"/>
                                             </svg>
+                                           <div class="text-center mx-auto text-xxl">🔒 </div> 
                                         </div>
                                     </div>
                                     <h3 class="text-3xl font-bold text-center mb-3 text-white">चुनाव परिणाम</h3>
                                     <p class="text-xl text-center opacity-90 mb-2 text-white">Election Results</p>
                                     <p class="text-sm text-center opacity-75 text-white">
-                                        {{ electionStatus.results_published ? 'परिणाम उपलब्ध | Results Available' : 'परिणाम अनुपलब्ध | Results Unavailable' }}
+                                        {{ electionStatus.results_published ? 'परिणाम उपलब्ध | Results Available' : '🔒  परिणाम अनुपलब्ध | Results Unavailable' }}
                                     </p>
                                 </div>
                             </component>
@@ -452,20 +473,44 @@ export default {
 
         /**
          * ✅ ROBUST: Check if user can access voting
+         * Users can access voting in two scenarios:
+         * 1. They can vote (all conditions met + voting period active)
+         * 2. They have already voted (can view their vote regardless of voting period)
          */
         canAccessVoting() {
             if (!this.ballotAccess || typeof this.ballotAccess !== 'object') {
                 return false;
             }
-            
+
             const canAccess = this.ballotAccess.can_access;
-            
-            // Handle different data types
-            if (typeof canAccess === 'boolean') return canAccess;
-            if (typeof canAccess === 'string') return canAccess === 'true' || canAccess === '1';
-            if (typeof canAccess === 'number') return canAccess === 1;
-            
-            return false;
+            let hasAccess = false;
+
+            // Handle different data types for can_access
+            if (typeof canAccess === 'boolean') hasAccess = canAccess;
+            if (typeof canAccess === 'string') hasAccess = canAccess === 'true' || canAccess === '1';
+            if (typeof canAccess === 'number') hasAccess = canAccess === 1;
+
+            if (!hasAccess) {
+                // Special case: If user has voted, they can still view their vote
+                // even if voting period is inactive
+                if (this.votingStatus?.has_voted) {
+                    return true;
+                }
+                return false;
+            }
+
+            // User has access - now check if it's for voting or viewing
+            // If user has already voted, they can always access (to view vote)
+            if (this.votingStatus?.has_voted) {
+                return true;
+            }
+
+            // For new voting, check if voting period is active
+            if (!this.electionStatus?.voting_period_active) {
+                return false;
+            }
+
+            return true;
         },
         
         /**
@@ -523,16 +568,22 @@ export default {
          * Dynamic voting title based on status
          */
         votingTitle() {
-            if (!this.canAccessVoting) return 'मतदान अनुपलब्ध';
-            
             if (this.votingStatus?.has_voted) {
                 return 'आफ्नो मत हेर्नुहोस्';
             }
-            
+
+            if (!this.canAccessVoting) {
+                // Check if it's because voting period is inactive
+                if (this.ballotAccess?.can_access && !this.electionStatus?.voting_period_active) {
+                    return 'मतदान अवधि निष्क्रिय';
+                }
+                return 'मतदान अनुपलब्ध';
+            }
+
             if (this.votingStatus?.can_vote_now) {
                 return 'मतदान जारी राख्नुहोस्';
             }
-            
+
             return 'मतदान गर्नुहोस्';
         },
         
@@ -540,16 +591,22 @@ export default {
          * Dynamic voting subtitle
          */
         votingSubtitle() {
-            if (!this.canAccessVoting) return 'Voting Unavailable';
-            
             if (this.votingStatus?.has_voted) {
                 return 'View Your Vote';
             }
-            
+
+            if (!this.canAccessVoting) {
+                // Check if it's because voting period is inactive
+                if (this.ballotAccess?.can_access && !this.electionStatus?.voting_period_active) {
+                    return 'Voting Period Inactive';
+                }
+                return 'Voting Unavailable';
+            }
+
             if (this.votingStatus?.can_vote_now) {
                 return 'Continue Voting';
             }
-            
+
             return 'Vote Here';
         },
         
@@ -557,16 +614,22 @@ export default {
          * Dynamic voting description
          */
         votingDescription() {
-            if (!this.canAccessVoting) return 'मतदान गर्न सकिने अवस्था छैन';
-            
             if (this.votingStatus?.has_voted) {
                 return 'तपाईंले मतदान गरिसक्नुभएको छ';
             }
-            
+
+            if (!this.canAccessVoting) {
+                // Check if it's because voting period is inactive
+                if (this.ballotAccess?.can_access && !this.electionStatus?.voting_period_active) {
+                    return 'मतदान अवधि सुरु भएको छैन वा समाप्त भएको छ';
+                }
+                return 'मतदान गर्न सकिने अवस्था छैन';
+            }
+
             if (this.votingStatus?.can_vote_now) {
                 return 'तपाईंको मतदान सत्र सक्रिय छ';
             }
-            
+
             return 'यहाँ क्लिक गरेर मतदान गर्नुहोस्';
         },
         
@@ -679,6 +742,18 @@ export default {
                 return route(name);
             }
             return name;
+        },
+
+        /**
+         * Safe method to get results route - avoid Ziggy route helper entirely
+         */
+        getResultsRoute() {
+            // Don't use route() helper at all to avoid Ziggy errors
+            // Use direct URL path based on publication status
+            if (this.electionStatus && this.electionStatus.results_published) {
+                return '/election/result';
+            }
+            return '#';
         }
     }
 };

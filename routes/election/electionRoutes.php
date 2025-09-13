@@ -9,12 +9,12 @@ use App\Http\Controllers\DeligateCandidacyController;
 use App\Http\Controllers\DeligateVoteController;
 use App\Http\Controllers\DeligateCodeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ElectionManagementController;
+use App\Http\Controllers\Election\ElectionController;
+use App\Services\ElectionService;
 use Illuminate\Support\Facades\Route;
-Route::middleware(['auth:sanctum', 'verified']) ->get('/election', function(){
-    return Inertia::render('Dashboard/ElectionDashboard', [
 
-    ]);
-})->name('election.dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/election', [ElectionController::class, 'dashboard'])->name('election.dashboard');
 
 //voters
 Route::middleware(['auth:sanctum', 'verified'])
@@ -90,7 +90,10 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
 //    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/show', [VoteController::class, 'show'])->name('vote.show');
    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/show/{vote_id}', [VoteController::class, 'show'])->name('vote.show');
 
-   Route::middleware(['auth:sanctum', 'verified']) ->get('/election/result', [ResultController  ::class, 'index'])->name('result.index');
+   // Conditionally register result route only if results are published
+   if (ElectionService::areResultsPublished()) {
+       Route::middleware(['auth:sanctum', 'verified'])->get('/election/result', [ResultController::class, 'index'])->name('result.index');
+   }
 
 // Vote verification and display routes
 
@@ -109,8 +112,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 /*************************************************************************************** */
+// Additional result routes (verification endpoints - always available for committee members)
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/election/result', [ResultController::class, 'index'])->name('result.index');
     Route::get('/api/verify-results/{postId}', [ResultController::class, 'verifyResults']);
     Route::get('/api/statistical-verification/{postId}', [ResultController::class, 'statisticalVerification']);
 });
@@ -160,3 +163,26 @@ Route::get('/election/committee', function () {
 //show posts
 Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
 Route::get('posts/assign', [PostController::class, 'assign'])->name('post.assign');
+
+// Election Management Routes (Committee Only)
+Route::middleware(['auth:sanctum', 'verified', 'can:manage-election-settings'])->group(function () {
+    Route::get('/election/management', [ElectionManagementController::class, 'index'])->name('election.management');
+    Route::get('/election/status', [ElectionManagementController::class, 'status'])->name('election.status');
+});
+
+// Election Viewboard Routes (View Rights Only)
+Route::middleware(['auth:sanctum', 'verified', 'can:view-election-results'])->group(function () {
+    Route::get('/election/viewboard', [ElectionManagementController::class, 'viewboard'])->name('election.viewboard');
+});
+
+// Election Result Management (Committee Only)
+Route::middleware(['auth:sanctum', 'verified', 'can:publish-election-results'])->group(function () {
+    Route::post('/election/publish-results', [ElectionManagementController::class, 'publishResults'])->name('election.publish');
+    Route::post('/election/unpublish-results', [ElectionManagementController::class, 'unpublishResults'])->name('election.unpublish');
+});
+
+// Election Voting Period Control (Committee Only)
+Route::middleware(['auth:sanctum', 'verified', 'can:manage-election-settings'])->group(function () {
+    Route::post('/election/start-voting', [ElectionManagementController::class, 'startVoting'])->name('election.start-voting');
+    Route::post('/election/end-voting', [ElectionManagementController::class, 'endVoting'])->name('election.end-voting');
+});

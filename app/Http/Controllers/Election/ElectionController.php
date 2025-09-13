@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\Code;
 use App\Http\Controllers\Controller;
+use App\Services\ElectionService;
 
 class ElectionController extends Controller
 {
@@ -69,10 +70,7 @@ class ElectionController extends Controller
         }
         
         // ✅ Election system status
-        $electionStatus = [
-            'is_active' => config('election.is_active', true),
-            'results_published' => config('election.results_published', false)
-        ];
+        $electionStatus = ElectionService::getElectionStatus();
         
         return Inertia::render('Dashboard/ElectionDashboard', [
             'authUser' => $authUser,
@@ -128,6 +126,17 @@ class ElectionController extends Controller
                 'access_type' => 'view_vote',
                 'message_nepali' => 'तपाईंले पहिले नै मतदान गरिसक्नुभएको छ।',
                 'message_english' => 'You have already voted.'
+            ];
+        }
+
+        // Check if voting period is active (new users can only vote if voting period is active)
+        if (!ElectionService::isVotingPeriodActive()) {
+            return [
+                'can_access' => false,
+                'error_type' => 'voting_period_inactive',
+                'error_title' => 'मतदान समय सक्रिय छैन | Voting Period Inactive',
+                'error_message_nepali' => 'मतदान अवधि सक्रिय छैन। मतदान सुरु भएपछि फेरि प्रयास गर्नुहोस्।',
+                'error_message_english' => 'Voting period is not active. Please try again when voting has started.'
             ];
         }
 
