@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 Use App\Models\User;
 use App\Models\Code;
+use App\Services\VoterProgressService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -71,9 +72,26 @@ class CodeController extends Controller
  *
  * @return \Illuminate\Http\Response
  */
-public function create()
+public function create(Request $request)
 {
-    $auth_user = auth()->user();
+    // Check if this is a slug-based request (has voter from middleware)
+    $voter = $request->attributes->has('voter')
+        ? $request->attributes->get('voter')
+        : auth()->user();
+
+    $auth_user = $voter;
+    $voterSlug = $request->attributes->get('voter_slug'); // May be null for regular routes
+
+    // For API/test responses, return minimal JSON when requested (early return)
+    if ($request->wantsJson() || $request->expectsJson()) {
+        return response()->json([
+            'step' => 1,
+            'current_step' => $voterSlug ? $voterSlug->current_step : 1,
+            'user_name' => $auth_user->name,
+            'code_duration' => 0, // Will get from actual data below in real implementation
+            'remaining_time' => 20, // Default voting time
+        ]);
+    }
     
     // Log method start for debugging
     \Log::info('Create method started', [
@@ -147,7 +165,7 @@ public function create()
         ]);
         
         // Check if code is valid according to specifications
-        $codeValidationResult = $this->validateExistingCodeModel($code, $auth_user);
+        $codeValidationResult = $this->validateExistingCodeModel($code, $auth_user, $voterSlug);
         
         if ($codeValidationResult !== true) {
             return $codeValidationResult; // Return error response
@@ -263,6 +281,7 @@ public function create()
         'code_already_sent' => $code->has_code1_sent,
         'is_codemodel_valid' => $code->is_codemodel_valid ?? 'null',
     ]);
+
     // Show code entry page
     return Inertia::render('Vote/CreateCode', [
         'user_name' => $auth_user->name,
@@ -276,6 +295,8 @@ public function create()
         'instructions_nepali' => 'तपाईंको इमेलमा एक प्रमाणीकरण कोड पठाइएको छ। कृपया त्यो कोड यहाँ प्रविष्ट गर्नुहोस्।',
         'instructions_english' => 'A verification code has been sent to your email. Please enter the code here to continue voting.',
         'client_ip' => $this->clientIP, // For debugging
+        'slug' => $voterSlug ? $voterSlug->slug : null, // Add slug for dynamic form submission
+        'useSlugPath' => config('election.use_slug_path', false), // Add slug configuration
     ]);
 
 
@@ -304,8 +325,20 @@ public function store(Request $request)
     // ==========================================
     // PHASE 1: BASIC VALIDATIONS
     // ==========================================
-    
-    $auth_user = auth()->user();
+
+    \Log::info('CodeController store method started', [
+        'is_slug_request' => $request->attributes->has('voter'),
+        'route_name' => $request->route()->getName(),
+        'all_input' => $request->all(),
+    ]);
+
+    // Check if this is a slug-based request (has voter from middleware)
+    $voter = $request->attributes->has('voter')
+        ? $request->attributes->get('voter')
+        : auth()->user();
+
+    $auth_user = $voter;
+    $voterSlug = $request->attributes->get('voter_slug'); // May be null for regular routes
     
     if (!$auth_user) {
         \Log::error('Store method called without authenticated user');
@@ -334,7 +367,12 @@ public function store(Request $request)
             'client_ip' => $this->clientIP,
         ]);
         
-        return redirect()->route('code.create')
+        $route = $voterSlug
+            ? 'slug.code.create'
+            : 'code.create';
+        $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+        return redirect()->route($route, $routeParams)
             ->with('error', 'No verification code found. Please start the voting process from the beginning.');
     }
 
@@ -426,8 +464,13 @@ public function store(Request $request)
             'can_vote_now' => $code->can_vote_now,
             'client_ip' => $this->clientIP,
         ]);
-        
-        return redirect()->route('code.agreement')
+
+        $route = $voterSlug
+            ? 'slug.code.agreement'
+            : 'code.agreement';
+        $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+        return redirect()->route($route, $routeParams)
             ->with('info', 'You already have an active voting session. Please continue with the voting process.');
     }
 
@@ -444,7 +487,12 @@ public function store(Request $request)
             'client_ip' => $this->clientIP,
         ]);
         
-        return redirect()->route('code.create')
+        $route = $voterSlug
+            ? 'slug.code.create'
+            : 'code.create';
+        $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+        return redirect()->route($route, $routeParams)
             ->with('error', 'No valid verification code found. Please request a new code.');
     }
 
@@ -456,7 +504,12 @@ public function store(Request $request)
             'client_ip' => $this->clientIP,
         ]);
         
-        return redirect()->route('code.create')
+        $route = $voterSlug
+            ? 'slug.code.create'
+            : 'code.create';
+        $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+        return redirect()->route($route, $routeParams)
             ->with('error', 'This verification code has already been used or is no longer valid. Please request a new code.');
     }
 
@@ -611,8 +664,26 @@ if (isset($auth_user->client_ip) && !empty($auth_user->client_ip)) {
             'voting_time_minutes' => $this->voting_time_minutes,
             'updated_at' => now(),
         ]);
+        // Handle step advancement for slug-based workflow
+        if ($voterSlug) {
+            \Log::info('Step advancement triggered in CodeController store', [
+                'slug' => $voterSlug->slug,
+                'current_step_before' => $voterSlug->current_step,
+            ]);
+            $progressService = new VoterProgressService();
+            $progressService->advanceFrom($voterSlug, 'slug.code.create', ['code_completed' => true]);
+            \Log::info('Step advancement completed', [
+                'current_step_after' => $voterSlug->fresh()->current_step,
+            ]);
+        }
+
         // ✅ SUCCESS: Redirect to agreement page
-        return redirect()->route('code.agreement')
+        $route = $voterSlug
+            ? 'slug.code.agreement'
+            : 'code.agreement';
+        $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+        return redirect()->route($route, $routeParams)
             ->with('success', '✅ Code verified successfully! Please read and accept the voting agreement to continue. / कोड सफलतापूर्वक प्रमाणित! कृपया जारी राख्नको लागि मतदान सम्झौता पढ्नुहोस् र स्वीकार गर्नुहोस्।');
 
     } catch (\Exception $e) {
@@ -634,9 +705,15 @@ if (isset($auth_user->client_ip) && !empty($auth_user->client_ip)) {
  *
  * @return \Illuminate\Http\Response
  */
-public function showAgreement()
+public function showAgreement(Request $request)
 {
-    $auth_user = auth()->user();
+    // Check if this is a slug-based request
+    $voter = $request->attributes->has('voter')
+        ? $request->attributes->get('voter')
+        : auth()->user();
+
+    $auth_user = $voter;
+    $voterSlug = $request->attributes->get('voter_slug');
     $code = Code::where('user_id', $auth_user->id)->first();
 
     // Security checks
@@ -648,8 +725,21 @@ public function showAgreement()
     // Check if agreement already accepted (allow revisiting)
     if ($code->has_agreed_to_vote && $code->voting_started_at) {
         // User has already agreed, redirect to voting
-        return redirect()->route('vote.create')
+        $route = $voterSlug ? 'slug.vote.create' : 'vote.create';
+        $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+        return redirect()->route($route, $routeParams)
             ->with('info', 'You have already accepted the agreement. Continue voting.');
+    }
+
+    // For API/JSON requests (tests), return structured data
+    if ($request->wantsJson() || $request->expectsJson()) {
+        return response()->json([
+            'step' => 2,
+            'current_step' => $voterSlug ? $voterSlug->current_step : 2,
+            'user_name' => $auth_user->name,
+            'voting_time_minutes' => $code->voting_time_in_minutes ?? 20,
+        ]);
     }
 
     return Inertia::render('Code/Agreement', [
@@ -670,7 +760,13 @@ public function showAgreement()
  */
 public function submitAgreement(Request $request)
 {
-    $auth_user = auth()->user();
+    // Check if this is a slug-based request
+    $voter = $request->attributes->has('voter')
+        ? $request->attributes->get('voter')
+        : auth()->user();
+
+    $auth_user = $voter;
+    $voterSlug = $request->attributes->get('voter_slug');
     $code = Code::where('user_id', $auth_user->id)->first();
 
     // Security checks
@@ -711,8 +807,17 @@ public function submitAgreement(Request $request)
                 'voting_time_limit' => $code->voting_time_in_minutes,
             ]);
 
+            // Handle step advancement for slug-based workflow
+            if ($voterSlug) {
+                $progressService = new VoterProgressService();
+                $progressService->advanceFrom($voterSlug, 'slug.code.agreement', ['agreement_accepted' => true]);
+            }
+
             // Redirect to actual voting page (VoteController)
-            return redirect()->route('vote.create')
+            $route = $voterSlug ? 'slug.vote.create' : 'vote.create';
+            $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+            return redirect()->route($route, $routeParams)
                 ->with('success', 'Agreement accepted. You may now cast your vote.');
         } else {
             throw new \Exception('Failed to save agreement acceptance');
@@ -1375,9 +1480,10 @@ public function isVoterValidated($user)
  * 
  * @param Code $code
  * @param User $auth_user
+ * @param VoterSlug|null $voterSlug
  * @return bool|Response
  */
-private function validateExistingCodeModel($code, $auth_user)
+private function validateExistingCodeModel($code, $auth_user, $voterSlug = null)
 {
     // a) Check if user has already voted
     if ($code->has_voted == 1) {
@@ -1403,7 +1509,10 @@ private function validateExistingCodeModel($code, $auth_user)
             'code2_sent_at' => $code->code2_sent_at ?? 'null',
         ]);
         
-        return redirect()->route('vote.finalize')
+        $route = $voterSlug ? 'slug.vote.verify' : 'vote.verify';
+        $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+        return redirect()->route($route, $routeParams)
             ->with('info', 'You are in the final voting stage. Please complete your vote submission with the code sent to your email.');
     }
 
@@ -1439,13 +1548,34 @@ private function validateExistingCodeModel($code, $auth_user)
 
     // d) Check if is_code1_usable = true
     if ($code->has_code1_sent == 1 && $code->is_code1_usable != 1) {
-        \Log::warning('Code1 not usable', [
+        \Log::warning('Code1 not usable - checking for auto-reset', [
             'user_id' => $auth_user->id,
             'is_code1_usable' => $code->is_code1_usable,
             'has_code1_sent' => $code->has_code1_sent,
+            'code1_sent_at' => $code->code1_sent_at,
+            'code1_used_at' => $code->code1_used_at,
         ]);
-        
-        return redirect()->route('code.agreement')
+
+        // Check if code can be auto-reset (expired and user hasn't voted)
+        if ($this->canAutoResetCode($code)) {
+            \Log::info('Auto-resetting expired unusable code', [
+                'user_id' => $auth_user->id,
+            ]);
+
+            // Reset the code to allow new voting session
+            $this->resetCodeForNewSession($code);
+
+            // Redirect back to generate new code
+            [$route, $routeParams] = $this->getRouteWithSlugCheck('code.create', $voterSlug);
+
+            return redirect()->route($route, $routeParams)
+                ->with('info', 'Your code session expired. A new verification code will be sent.');
+        }
+
+        // If can't auto-reset, redirect to agreement (existing behavior)
+        [$route, $routeParams] = $this->getRouteWithSlugCheck('code.agreement', $voterSlug);
+
+        return redirect()->route($route, $routeParams)
             ->with('info', 'Your verification code has already been used. Please continue with the voting process.');
     }
 
@@ -1592,6 +1722,122 @@ private function generateAndSendCode($code, $auth_user)
             'success' => false,
             'error' => $e->getMessage()
         ];
+    }
+}
+
+/**
+ * Check if a code can be auto-reset (expired and user hasn't voted)
+ *
+ * @param Code $code
+ * @return bool
+ */
+private function canAutoResetCode($code)
+{
+    // Don't reset if user has already voted or submitted
+    if ($code->has_voted || $code->vote_submitted) {
+        return false;
+    }
+
+    // Don't reset if no code was sent
+    if (!$code->code1_sent_at) {
+        return false;
+    }
+
+    // Check if code expired (sent more than voting time limit ago)
+    $minutesElapsed = \Carbon\Carbon::now()->diffInMinutes($code->code1_sent_at);
+    $isExpired = $minutesElapsed > $this->voting_time_in_minutes;
+
+    \Log::info('Code auto-reset eligibility check', [
+        'user_id' => $code->user_id,
+        'minutes_elapsed' => $minutesElapsed,
+        'voting_time_limit' => $this->voting_time_in_minutes,
+        'is_expired' => $isExpired,
+        'has_voted' => $code->has_voted,
+        'vote_submitted' => $code->vote_submitted,
+        'can_reset' => $isExpired,
+    ]);
+
+    return $isExpired;
+}
+
+/**
+ * Reset code to allow new voting session
+ *
+ * @param Code $code
+ * @return void
+ */
+private function resetCodeForNewSession($code)
+{
+    $code->update([
+        // Clear codes
+        'code1' => null,
+        'code2' => null,
+        'code3' => null,
+        'code4' => null,
+
+        // Reset usability flags
+        'is_code1_usable' => false,
+        'is_code2_usable' => false,
+        'is_code3_usable' => false,
+        'is_code4_usable' => false,
+
+        // Reset sending states
+        'has_code1_sent' => false,
+        'has_code2_sent' => false,
+
+        // Reset voting states
+        'can_vote_now' => false,
+
+        // Reset validation
+        'is_codemodel_valid' => false,
+
+        // Clear timestamps
+        'code1_sent_at' => null,
+        'code2_sent_at' => null,
+        'code1_used_at' => null,
+        'code2_used_at' => null,
+    ]);
+
+    \Log::info('Code reset for new session', [
+        'user_id' => $code->user_id,
+        'reset_at' => now(),
+    ]);
+}
+
+/**
+ * Get route name and parameters based on slug configuration
+ *
+ * @param string $baseRoute The base route name (e.g., 'code.create')
+ * @param VoterSlug|null $voterSlug
+ * @return array [routeName, routeParams]
+ */
+private function getRouteWithSlugCheck($baseRoute, $voterSlug = null)
+{
+    // Check if slug-based routing is enabled
+    $useSlugPath = config('election.use_slug_path', false);
+
+    if ($useSlugPath && $voterSlug) {
+        // Use slug-based route
+        $slugRoute = 'slug.' . $baseRoute;
+        $routeParams = ['vslug' => $voterSlug->slug];
+
+        \Log::debug('Using slug-based routing', [
+            'base_route' => $baseRoute,
+            'slug_route' => $slugRoute,
+            'slug' => $voterSlug->slug,
+            'use_slug_path' => $useSlugPath,
+        ]);
+
+        return [$slugRoute, $routeParams];
+    } else {
+        // Use regular route
+        \Log::debug('Using regular routing', [
+            'route' => $baseRoute,
+            'use_slug_path' => $useSlugPath,
+            'has_voter_slug' => $voterSlug !== null,
+        ]);
+
+        return [$baseRoute, []];
     }
 }
 

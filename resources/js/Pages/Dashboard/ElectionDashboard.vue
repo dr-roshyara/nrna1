@@ -440,6 +440,10 @@ export default {
                 is_active: false,
                 results_published: false
             })
+        },
+        useSlugPath: {
+            type: Boolean,
+            default: false
         }
     },
     
@@ -540,28 +544,28 @@ export default {
         },
         
         /**
-         * ✅ Determine the appropriate voting link
+         * ✅ Determine the appropriate voting link with conditional slug-based routing
          */
         votingLink() {
             if (!this.canAccessVoting) return '#';
-            
-            // If user has voted, go to vote verification
+
+            // If user has voted, go to vote verification (this remains the same)
             if (this.votingStatus?.has_voted) {
-                console.log("vote/show")
-                
+                console.log("vote/verify_to_show")
                 return this.route ? this.route('vote.verify_to_show') : 'vote/verify_to_show';
             }
-            
-            // If voting session is active, continue voting
-            if (this.votingStatus?.can_vote_now) {
-                console.log("vote/Create")
-                return this.route ? this.route('vote.create') : 'vote/create';
 
+            // Check if slug-based routing is enabled
+            if (this.useSlugPath) {
+                // For active voting or new voting sessions, redirect to slug generation
+                // The backend will handle generating the slug and redirecting to the appropriate step
+                console.log("Generate voting slug and start voting")
+                return this.route ? this.route('voter.start') : '/voter/start';
+            } else {
+                // Use traditional non-slug routing
+                console.log("Start voting without slug")
+                return this.route ? this.route('code.create') : '/code/create';
             }
-            console.log("Code/Create")
-                
-            // Otherwise, start with code generation
-            return this.route ? this.route('code.create') : 'code/create';
         },
         
         /**

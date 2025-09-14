@@ -77,7 +77,8 @@ class ElectionController extends Controller
             'ballotAccess' => $ballotAccess,
             'votingStatus' => $votingStatus,
             'electionStatus' => $electionStatus,
-            'ipAddress' => $ipAddress
+            'ipAddress' => $ipAddress,
+            'useSlugPath' => config('election.use_slug_path', false)
         ]);
     }
 

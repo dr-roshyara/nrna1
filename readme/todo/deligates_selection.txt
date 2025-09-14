@@ -1,0 +1,21 @@
+#Todo: deligates selection 
+1. You need a list of Deligates 
+2. You need a list of voters 
+3. Display the list of deligates
+    a) create deligate post 
+        php artisan make:model DeligatePost  
+    b) create a table for the diligate_candidates 
+        php artisan make:model DeligateCandidacy -mr 
+    b)  Enter them to the deligate post list 
+         php artisan tinker 
+         $deli  = new App\Models\DeligatePost
+         $deli->name ="member" 
+         $deli->save () 
+    c)  create route for publishing deligate DeligateCandidacies 
+        go to web.php file 
+     d) create route 
+     e) display the DeligateCandidacies   
+4. create voting form 
+    a) create model 
+    php artisan make:model DeligateVote -mr 
+5. 

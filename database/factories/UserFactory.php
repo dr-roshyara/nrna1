@@ -26,11 +26,20 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-             'first_name'=>$this->faker->firstName(),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+            'is_voter' => false,
+            'can_vote' => false,
+            'has_voted' => false,
+            'has_candidacy' => false,
+            'user_ip' => $this->faker->ipv4(),
+            'country' => $this->faker->country(),
+            'city' => $this->faker->city(),
+            'telephone' => $this->faker->phoneNumber(),
         ];
     }
 

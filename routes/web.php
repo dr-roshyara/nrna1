@@ -32,6 +32,12 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\OpenionController;
 
 use App\Http\Controllers\Election\ElectionController;
+use App\Models\VoterSlug;
+
+// Route binding for voter slugs
+Route::bind('vslug', function (string $value) {
+    return VoterSlug::with('user')->where('slug', $value)->first();
+});
 
 /*
 |--------------------------------------------------------------------------

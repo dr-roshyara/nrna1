@@ -98,15 +98,27 @@ export default {
         state: String,
         code_duration: Number,
         code_expires_in: Number,
+        slug: String, // Add slug prop for slug-based routing
+        useSlugPath: Boolean, // Configuration to enable/disable slug paths
     },
-    setup() {
+    setup(props) {
         const form = useForm({
             voting_code: "",
         });
-        // this.$inertia.post(route('candidacy.store'), data);
+
         function submit() {
-            console.log(this.voting_code);
-            form.post("/codes");
+            console.log(form.voting_code);
+
+            // Use slug-based route only if both slug exists AND slug path is enabled
+            let submitUrl;
+            if (props.useSlugPath && props.slug) {
+                submitUrl = `/v/${props.slug}/code`;
+            } else {
+                submitUrl = "/codes";
+            }
+
+            console.log('Submitting to URL:', submitUrl, 'useSlugPath:', props.useSlugPath, 'slug:', props.slug);
+            form.post(submitUrl);
         }
 
         return { form, submit };

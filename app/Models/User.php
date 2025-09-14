@@ -39,9 +39,10 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     // public $CanResetPassword;
-    public function  __construct(){
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
         //  $CanResetPassword =true;
-
     }
 
     protected $fillable = [
@@ -162,6 +163,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Upload::class);
     }
+      /**
+       * User has many voter slugs for time-expiring voting URLs
+       */
+      public function voterSlugs()
+      {
+          return $this->hasMany(VoterSlug::class);
+      }
+
      /**
       * Each user has extacly one code row
       */

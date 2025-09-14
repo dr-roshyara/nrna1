@@ -40,4 +40,7 @@ return [
     // ✅ Voting rules
     'max_candidates_per_post' => env('ELECTION_MAX_CANDIDATES_PER_POST', 1),
     'require_email_verification' => env('ELECTION_REQUIRE_EMAIL_VERIFICATION', true),
+
+    // ✅ Slug-based voting system
+    'use_slug_path' => env('USE_SLUG_PATH', false),
 ];

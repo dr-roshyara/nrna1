@@ -11,10 +11,15 @@ use App\Http\Controllers\DeligateCodeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ElectionManagementController;
 use App\Http\Controllers\Election\ElectionController;
+use App\Http\Controllers\VoterSlugController;
+use App\Http\Controllers\Admin\VotingSecurityController;
 use App\Services\ElectionService;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/election', [ElectionController::class, 'dashboard'])->name('election.dashboard');
+
+// Voter slug generation - start voting process
+Route::middleware(['auth:sanctum', 'verified'])->get('/voter/start', [VoterSlugController::class, 'start'])->name('voter.start');
 
 //voters
 Route::middleware(['auth:sanctum', 'verified'])
@@ -191,4 +196,162 @@ Route::middleware(['auth:sanctum', 'verified', 'can:manage-election-settings'])-
 Route::middleware(['auth:sanctum', 'verified', 'can:manage-election-settings'])->group(function () {
     Route::post('/election/bulk-approve-voters', [ElectionManagementController::class, 'bulkApproveVoters'])->name('election.bulk-approve-voters');
     Route::post('/election/bulk-disapprove-voters', [ElectionManagementController::class, 'bulkDisapproveVoters'])->name('election.bulk-disapprove-voters');
+});
+
+// Test routes for voter slug system (Phase 1)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/test/generate-slug', function () {
+        $user = auth()->user();
+        $slugService = new \App\Services\VoterSlugService();
+        $slug = $slugService->generateSlugForUser($user);
+
+        return response()->json([
+            'success' => true,
+            'slug' => $slug->slug,
+            'expires_at' => $slug->expires_at,
+            'test_link' => route('test.voter.page', ['vslug' => $slug->slug])
+        ]);
+    })->name('test.generate-slug');
+});
+
+Route::prefix('v/{vslug}')->middleware(['voter.slug.window'])->group(function () {
+    Route::get('test', function (\Illuminate\Http\Request $request) {
+        $voter = $request->attributes->get('voter');
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Voter slug validation working!',
+            'voter_id' => $voter->id,
+            'voter_name' => $voter->name,
+            'slug_expires_at' => $voterSlug->expires_at,
+            'time_remaining' => $voterSlug->expires_at->diffForHumans()
+        ]);
+    })->name('test.voter.page');
+});
+
+// Step-based voter workflow routes (test routes for development)
+Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order'])->group(function () {
+    // Step 1: Code creation
+    Route::get('code/create', function (\Illuminate\Http\Request $request) {
+        $voter = $request->attributes->get('voter');
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        return response()->json([
+            'step' => 1,
+            'message' => 'Step 1: Code creation page',
+            'current_step' => $voterSlug->current_step,
+            'voter_id' => $voter->id
+        ]);
+    })->name('voter.code.create');
+
+    // Step 2: Agreement
+    Route::get('agreement', function (\Illuminate\Http\Request $request) {
+        $voter = $request->attributes->get('voter');
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        return response()->json([
+            'step' => 2,
+            'message' => 'Step 2: Agreement page',
+            'current_step' => $voterSlug->current_step,
+            'voter_id' => $voter->id
+        ]);
+    })->name('voter.agreement');
+
+    // Step 3: Vote creation
+    Route::get('vote/create', function (\Illuminate\Http\Request $request) {
+        $voter = $request->attributes->get('voter');
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        return response()->json([
+            'step' => 3,
+            'message' => 'Step 3: Vote creation page',
+            'current_step' => $voterSlug->current_step,
+            'voter_id' => $voter->id
+        ]);
+    })->name('voter.vote.create');
+
+    // Step 4: Vote verification
+    Route::get('vote/verify', function (\Illuminate\Http\Request $request) {
+        $voter = $request->attributes->get('voter');
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        return response()->json([
+            'step' => 4,
+            'message' => 'Step 4: Vote verification page',
+            'current_step' => $voterSlug->current_step,
+            'voter_id' => $voter->id
+        ]);
+    })->name('voter.vote.verify');
+
+    // Step 5: Vote submission
+    Route::get('vote/submit', function (\Illuminate\Http\Request $request) {
+        $voter = $request->attributes->get('voter');
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        return response()->json([
+            'step' => 5,
+            'message' => 'Step 5: Vote submission page',
+            'current_step' => $voterSlug->current_step,
+            'voter_id' => $voter->id
+        ]);
+    })->name('voter.vote.submit');
+});
+
+// Slug-based voting workflow routes (integrated with existing controllers)
+Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order', 'vote.eligibility', 'prevent.multiple.voting'])->group(function () {
+
+    // Step 1: Code creation (using existing CodeController)
+    Route::get('code/create', [CodeController::class, 'create'])->name('slug.code.create');
+    Route::post('code', [CodeController::class, 'store'])->name('slug.code.store');
+
+    // Step 2: Agreement (using existing CodeController)
+    Route::get('vote/agreement', [CodeController::class, 'showAgreement'])->name('slug.code.agreement');
+    Route::post('code/agreement', [CodeController::class, 'submitAgreement'])->name('slug.code.agreement.submit');
+
+    // Step 3: Vote creation (using existing VoteController)
+    Route::get('vote/create', [VoteController::class, 'create'])->name('slug.vote.create');
+    Route::post('vote/submit', [VoteController::class, 'first_submission'])->name('slug.vote.submit');
+
+    // Step 4: Vote verification (using existing VoteController)
+    Route::get('vote/verify', [VoteController::class, 'verify'])->name('slug.vote.verify');
+    Route::post('vote/verify', [VoteController::class, 'store'])->name('slug.vote.store');
+
+    // Step 5: Final submission page
+    Route::get('vote/complete', function (\Illuminate\Http\Request $request) {
+        $voter = $request->attributes->get('voter');
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        return Inertia::render('Vote/Complete', [
+            'voter' => $voter,
+            'slug' => $voterSlug->slug
+        ]);
+    })->name('slug.vote.complete');
+});
+
+// Admin routes for election committee
+Route::prefix('admin')->middleware(['auth:sanctum', 'verified', 'committee.member'])->group(function () {
+    // Voting security dashboard
+    Route::get('voting-security', [VotingSecurityController::class, 'dashboard'])->name('admin.voting.security.dashboard');
+
+    // Security violations
+    Route::get('voting-security/violations', [VotingSecurityController::class, 'violations'])->name('admin.voting.security.violations');
+
+    // User security audit
+    Route::get('voting-security/audit/{user}', [VotingSecurityController::class, 'auditUser'])->name('admin.voting.security.audit');
+
+    // Security enforcement
+    Route::post('voting-security/enforce/{user}', [VotingSecurityController::class, 'enforceSecurity'])->name('admin.voting.security.enforce');
+
+    // Recovery slug generation (NEW)
+    Route::post('voting-security/recovery/{user}', [VotingSecurityController::class, 'generateRecoverySlug'])->name('admin.voting.security.recovery');
+
+    // Emergency lockdown
+    Route::post('voting-security/lockdown/{user}', [VotingSecurityController::class, 'emergencyLockdown'])->name('admin.voting.security.lockdown');
+
+    // Real-time monitoring
+    Route::get('voting-security/monitor', [VotingSecurityController::class, 'monitoringData'])->name('admin.voting.security.monitor');
+
+    // Security report
+    Route::get('voting-security/report', [VotingSecurityController::class, 'generateReport'])->name('admin.voting.security.report');
 });

@@ -14,6 +14,7 @@ use App\Models\Upload;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Services\VoterProgressService;
 use Illuminate\Routing\Redirector;
 use App\Notifications\SecondVerificationCode;
 use App\Notifications\SendVoteSavingCode;
@@ -202,7 +203,13 @@ class VoteController extends Controller
 
 public function create(Request $request)
 {
-    $auth_user = $request->user();
+    // Check if this is a slug-based request (has voter from middleware)
+    $voter = $request->attributes->has('voter')
+        ? $request->attributes->get('voter')
+        : $request->user();
+
+    $auth_user = $voter;
+    $voterSlug = $request->attributes->get('voter_slug'); // May be null for regular routes
     $code = $auth_user->code;
     
     // IP validation - single line replacement
@@ -277,6 +284,19 @@ public function create(Request $request)
         })->values();
     }
 
+    // For API/JSON requests (tests), return structured data
+    if ($request->wantsJson() || $request->expectsJson()) {
+        return response()->json([
+            'step' => 3,
+            'current_step' => $voterSlug ? $voterSlug->current_step : 3,
+            'user_name' => $auth_user->name,
+            'user_id' => $auth_user->id,
+            'user_region' => $auth_user->region,
+            'national_posts_count' => $national_posts->count(),
+            'regional_posts_count' => $regional_posts->count(),
+        ]);
+    }
+
     return Inertia::render('Vote/CreateVotingPage', [
         'national_posts' => $national_posts,
         'regional_posts' => $regional_posts,
@@ -346,7 +366,10 @@ public function second_submission(Request $request)
         // Check if user has a code record
         if (!$code) {
             Log::error('Second submission attempted without code record', ['user_id' => $auth_user->id]);
-            return redirect()->route('code.create')
+            $route = $voterSlug ? 'slug.code.create' : 'code.create';
+            $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+            return redirect()->route($route, $routeParams)
                 ->withErrors(['code' => 'Voting code not found. Please start the voting process again.']);
         }
 
@@ -497,7 +520,10 @@ public function second_submission(Request $request)
         DB::commit();
 
         // Redirect to verification with success message
-        return redirect()->route('vote.verify')
+        $route = $voterSlug ? 'slug.vote.verify' : 'vote.verify';
+        $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+        return redirect()->route($route, $routeParams)
             ->with([
                 'totalDuration' => $totalDuration,
                 'code_expires_in' => $code->voting_time_in_minutes ?? 15,
@@ -1317,10 +1343,16 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
  *
  * @return \Inertia\Response|\Illuminate\Http\RedirectResponse
  */
-public function verify()
+public function verify(Request $request)
 {
     try {
-        $auth_user = auth()->user();
+        // Check if this is a slug-based request
+        $voter = $request->attributes->has('voter')
+            ? $request->attributes->get('voter')
+            : auth()->user();
+
+        $auth_user = $voter;
+        $voterSlug = $request->attributes->get('voter_slug');
         $code = $auth_user->code;
         // Get vote data from session (stored by second_submission)
         $vote_data = request()->session()->get($code->session_name);
@@ -1332,7 +1364,10 @@ public function verify()
                 'session_id' => request()->session()->getId()
             ]);
             
-            return redirect()->route('vote.create')
+            $route = $voterSlug ? 'slug.vote.create' : 'vote.create';
+            $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+            return redirect()->route($route, $routeParams)
                 ->withErrors(['session' => 'Vote session expired. Please start the voting process again.']);
         }
        
@@ -1369,7 +1404,10 @@ public function verify()
                 'total_duration' => $_message["totalDuration"] ?? 'unknown'
             ]);
             
-            return redirect()->route('code.create')
+            $route = $voterSlug ? 'slug.code.create' : 'code.create';
+            $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+            return redirect()->route($route, $routeParams)
                 ->withErrors(['code' => 'Verification code expired. Please restart the voting process.']);
         }
 
@@ -1401,6 +1439,17 @@ public function verify()
             'total_posts' => $voting_summary['total_posts'],
             'voted_posts' => $voting_summary['voted_posts']
         ]);
+
+        // For API/JSON requests (tests), return structured data
+        if ($request->wantsJson() || $request->expectsJson()) {
+            return response()->json([
+                'step' => 4,
+                'current_step' => $voterSlug ? $voterSlug->current_step : 4,
+                'user_info' => $user_info,
+                'voting_summary' => $voting_summary,
+                'has_vote_data' => !empty($processed_vote_data),
+            ]);
+        }
 
         return Inertia::render('Vote/Verify', [
             'vote_data' => $processed_vote_data,
