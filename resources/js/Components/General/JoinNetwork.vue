@@ -13,7 +13,7 @@
                     NRNA निर्वाचन प्रणाली
                 </h1>
                 
-                <div class="space-y-4 max-w-4xl mx-auto">
+                <!-- <div class="space-y-4 max-w-4xl mx-auto">
                     <p class="text-xl md:text-2xl font-semibold text-blue-800">
                         Election System for Nepali by Nepali
                     </p>
@@ -26,7 +26,9 @@
                     <p class="text-lg text-green-700 font-medium">
                         Benutzerfreundlich und transparent
                     </p>
+                    
                 </div>
+                 -->
             </header>
 
             <!-- Main Content Card -->

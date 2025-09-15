@@ -391,6 +391,16 @@
                                 👁️ परिणाम हेर्नुहोस् | View Results
                             </a>
 
+                            <!-- Download PDF Button -->
+                            <a
+                                v-if="electionStatus.results_published"
+                                href="/election/result/download-pdf"
+                                class="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow-lg transition-colors duration-200"
+                                target="_blank"
+                            >
+                                📄 PDF डाउनलोड गर्नुहोस् | Download PDF
+                            </a>
+
                             <!-- Results Not Published Message -->
                             <div v-else class="text-center p-4 bg-gray-50 rounded-lg border">
                                 <p class="text-gray-600">

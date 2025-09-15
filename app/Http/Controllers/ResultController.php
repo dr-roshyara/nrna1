@@ -16,7 +16,7 @@ class ResultController extends Controller
 {
     public function index() {
     // Load posts with basic information
-    $posts = Post::get(['id', 'post_id', 'name', 'state_name', 'required_number']);
+    $posts = Post::get(['post_id', 'name', 'state_name', 'required_number']);
 
     // Double check: Route registration AND controller check for extra security
     if (!ElectionService::canViewResults()) {
@@ -40,8 +40,20 @@ class ResultController extends Controller
             'total_votes_for_post' => 0
         ];
 
-        // Temporary array to aggregate candidate votes
+        // First, get ALL candidates for this post from candidacies table
+        $allCandidates = \App\Models\Candidacy::where('post_id', $post->post_id)
+            ->with('user')
+            ->get();
+
+        // Initialize candidate votes array with all candidates (starting with 0 votes)
         $candidateVotes = [];
+        foreach ($allCandidates as $candidacy) {
+            $candidateName = $candidacy->user->name ?? $candidacy->name ?? $candidacy->user_name ?? 'Unknown';
+            $candidateVotes[$candidacy->candidacy_id] = [
+                'name' => $candidateName,
+                'count' => 0
+            ];
+        }
 
         // Get all votes that contain this post in any candidate field
         $votes = Vote::where(function($query) use ($post) {
@@ -65,15 +77,8 @@ class ResultController extends Controller
                 // Process each candidate in the candidates array
                 foreach ($candidateData['candidates'] ?? [] as $candidate) {
                     $candidateId = $candidate['candidacy_id'] ?? null;
-                    $candidateName = $candidate['name'] ?? 'Unknown';
 
-                    if ($candidateId) {
-                        if (!isset($candidateVotes[$candidateId])) {
-                            $candidateVotes[$candidateId] = [
-                                'name' => $candidateName,
-                                'count' => 0
-                            ];
-                        }
+                    if ($candidateId && isset($candidateVotes[$candidateId])) {
                         $candidateVotes[$candidateId]['count']++;
                         $postResults['total_votes_for_post']++;
                     }
@@ -92,6 +97,14 @@ class ResultController extends Controller
                     : 0
             ];
         }
+
+        // Sort candidates by vote count (highest first, but include zero-vote candidates)
+        usort($postResults['candidates'], function($a, $b) {
+            if ($a['vote_count'] == $b['vote_count']) {
+                return strcmp($a['name'], $b['name']); // Alphabetical if same vote count
+            }
+            return $b['vote_count'] - $a['vote_count'];
+        });
 
         $results['posts'][] = $postResults;
     }
@@ -212,6 +225,261 @@ private function detectAnomalies($stats)
           'discrepancies' => $discrepancies,
           'match' => empty($discrepancies)
       ];
-  } 
+  }
+
+  /**
+   * Generate and download PDF report of election results
+   */
+  public function downloadPDF()
+  {
+      // Check if results can be viewed (election finished and published)
+      if (!ElectionService::canViewResults()) {
+          return redirect()->back()->with('error',
+              'PDF download is only available after election results are published.'
+          );
+      }
+
+      // Get the same data as the web view
+      $posts = Post::get(['post_id', 'name', 'state_name', 'required_number']);
+
+      // Get results data
+      $results = $this->getElectionResultsData($posts);
+
+      // Generate PDF
+      $pdf = $this->generateResultsPDF($results, $posts);
+
+      // Return PDF download
+      return response($pdf->Output('NRNA_Election_Results_' . date('Y-m-d') . '.pdf', 'S'))
+          ->header('Content-Type', 'application/pdf')
+          ->header('Content-Disposition', 'attachment; filename="NRNA_Election_Results_' . date('Y-m-d') . '.pdf"');
+  }
+
+  /**
+   * Get election results data (extracted from index method)
+   */
+  private function getElectionResultsData($posts)
+  {
+      $results = [
+          'total_votes' => Vote::count(),
+          'posts' => []
+      ];
+
+      foreach ($posts as $post) {
+          $postResults = [
+              'post_id' => $post->post_id,
+              'post_name' => $post->name,
+              'state_name' => $post->state_name,
+              'candidates' => [],
+              'total_votes_for_post' => 0
+          ];
+
+          // First, get ALL candidates for this post from candidacies table
+          $allCandidates = \App\Models\Candidacy::where('post_id', $post->post_id)
+              ->with('user')
+              ->get();
+
+          // Initialize candidate votes array with all candidates (starting with 0 votes)
+          $candidateVotes = [];
+          foreach ($allCandidates as $candidacy) {
+              $candidateName = $candidacy->user->name ?? $candidacy->name ?? $candidacy->user_name ?? 'Unknown';
+              $candidateVotes[$candidacy->candidacy_id] = [
+                  'name' => $candidateName,
+                  'count' => 0
+              ];
+          }
+
+          // Then count actual votes
+          $votes = Vote::where(function($query) use ($post) {
+              for ($i = 1; $i <= 60; $i++) {
+                  $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
+                  $query->orWhereJsonContains($field, ['post_id' => $post->post_id]);
+              }
+          })->get();
+
+          foreach ($votes as $vote) {
+              for ($i = 1; $i <= 60; $i++) {
+                  $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
+                  $candidateData = json_decode($vote->$field, true);
+
+                  if (!$candidateData || ($candidateData['post_id'] ?? null) !== $post->post_id) {
+                      continue;
+                  }
+
+                  foreach ($candidateData['candidates'] ?? [] as $candidate) {
+                      $candidateId = $candidate['candidacy_id'] ?? null;
+
+                      if ($candidateId && isset($candidateVotes[$candidateId])) {
+                          $candidateVotes[$candidateId]['count']++;
+                          $postResults['total_votes_for_post']++;
+                      }
+                  }
+              }
+          }
+
+          // Format and sort results
+          foreach ($candidateVotes as $candidateId => $data) {
+              $postResults['candidates'][] = [
+                  'candidacy_id' => $candidateId,
+                  'name' => $data['name'],
+                  'vote_count' => $data['count'],
+                  'vote_percent' => $postResults['total_votes_for_post'] > 0
+                      ? round(($data['count'] / $postResults['total_votes_for_post']) * 100, 2)
+                      : 0
+              ];
+          }
+
+          // Sort candidates by vote count (highest first, but include zero-vote candidates)
+          usort($postResults['candidates'], function($a, $b) {
+              if ($a['vote_count'] == $b['vote_count']) {
+                  return strcmp($a['name'], $b['name']); // Alphabetical if same vote count
+              }
+              return $b['vote_count'] - $a['vote_count'];
+          });
+
+          $results['posts'][] = $postResults;
+      }
+
+      return $results;
+  }
+
+  /**
+   * Generate PDF document with SoftCrew Technology branding
+   */
+  private function generateResultsPDF($results, $posts)
+  {
+      // Include TCPDF autoloader if not already loaded
+      if (!class_exists('\TCPDF')) {
+          require_once base_path('vendor/tecnickcom/tcpdf/tcpdf.php');
+      }
+
+      // Define constants if not already defined
+      if (!defined('PDF_PAGE_ORIENTATION')) {
+          define('PDF_PAGE_ORIENTATION', 'P');
+      }
+      if (!defined('PDF_UNIT')) {
+          define('PDF_UNIT', 'mm');
+      }
+      if (!defined('PDF_PAGE_FORMAT')) {
+          define('PDF_PAGE_FORMAT', 'A4');
+      }
+
+      // Create new PDF document
+      $pdf = new \TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
+
+      // Set document information
+      $pdf->SetCreator('SoftCrew Technology');
+      $pdf->SetAuthor('NRNA Election System');
+      $pdf->SetTitle('NRNA Election Results - ' . date('Y-m-d'));
+      $pdf->SetSubject('Official Election Results');
+      $pdf->SetKeywords('NRNA, Election, Results, Official');
+
+      // Set default header data
+      $pdf->SetHeaderData('', 0, 'NRNA Election Results', 'Generated by SoftCrew Technology on ' . date('F j, Y \a\t g:i A'));
+
+      // Set header and footer fonts
+      $pdf->setHeaderFont(Array('helvetica', '', 10));
+      $pdf->setFooterFont(Array('helvetica', '', 8));
+
+      // Set default monospaced font
+      $pdf->SetDefaultMonospacedFont('courier');
+
+      // Set margins
+      $pdf->SetMargins(15, 27, 15);
+      $pdf->SetHeaderMargin(5);
+      $pdf->SetFooterMargin(10);
+
+      // Set auto page breaks
+      $pdf->SetAutoPageBreak(TRUE, 25);
+
+      // Set image scale factor
+      $pdf->setImageScale(1.25);
+
+      // Add a page
+      $pdf->AddPage();
+
+      // Add NRNA logo
+      $logoPath = public_path('images/logo_nrna.jpg');
+      if (file_exists($logoPath)) {
+          $pdf->Image($logoPath, 15, 30, 30, 30, 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+      }
+
+      // Title section
+      $pdf->SetFont('helvetica', 'B', 20);
+      $pdf->Cell(0, 15, 'NRNA Election Results', 0, 1, 'C');
+      $pdf->Ln(5);
+
+      // Date and verification
+      $pdf->SetFont('helvetica', '', 12);
+      $pdf->Cell(0, 10, 'Generated on: ' . date('F j, Y \a\t g:i A'), 0, 1, 'C');
+      $pdf->Cell(0, 10, 'Total Votes Cast: ' . number_format($results['total_votes']), 0, 1, 'C');
+      $pdf->Ln(10);
+
+      // SoftCrew Technology branding
+      $pdf->SetFont('helvetica', 'I', 10);
+      $pdf->Cell(0, 8, 'Verified and Generated by SoftCrew Technology', 0, 1, 'C');
+      $pdf->SetFont('helvetica', '', 10);
+      $pdf->Cell(0, 8, 'Digital Election Management System', 0, 1, 'C');
+      $pdf->Ln(10);
+
+      // Results for each post
+      foreach ($results['posts'] as $postResult) {
+          if (empty($postResult['candidates'])) {
+              continue;
+          }
+
+          // Post title
+          $pdf->SetFont('helvetica', 'B', 16);
+          $pdf->Cell(0, 12, $postResult['post_name'], 0, 1, 'L');
+
+          if (!empty($postResult['state_name'])) {
+              $pdf->SetFont('helvetica', '', 12);
+              $pdf->Cell(0, 8, 'State/Region: ' . $postResult['state_name'], 0, 1, 'L');
+          }
+
+          $pdf->SetFont('helvetica', '', 12);
+          $pdf->Cell(0, 8, 'Total Votes for this Post: ' . number_format($postResult['total_votes_for_post']), 0, 1, 'L');
+          $pdf->Ln(5);
+
+          // Table header
+          $pdf->SetFont('helvetica', 'B', 11);
+          $pdf->SetFillColor(220, 220, 220);
+          $pdf->Cell(10, 10, '#', 1, 0, 'C', true);
+          $pdf->Cell(80, 10, 'Candidate Name', 1, 0, 'L', true);
+          $pdf->Cell(30, 10, 'Votes', 1, 0, 'C', true);
+          $pdf->Cell(30, 10, 'Percentage', 1, 0, 'C', true);
+          $pdf->Cell(30, 10, 'Status', 1, 1, 'C', true);
+
+          // Table content
+          $pdf->SetFont('helvetica', '', 10);
+          $rank = 1;
+          foreach ($postResult['candidates'] as $candidate) {
+              $status = $rank === 1 ? 'WINNER' : 'Candidate';
+              $statusColor = $rank === 1 ? array(34, 139, 34) : array(0, 0, 0);
+
+              $pdf->Cell(10, 8, $rank, 1, 0, 'C');
+              $pdf->Cell(80, 8, $candidate['name'], 1, 0, 'L');
+              $pdf->Cell(30, 8, number_format($candidate['vote_count']), 1, 0, 'C');
+              $pdf->Cell(30, 8, $candidate['vote_percent'] . '%', 1, 0, 'C');
+
+              // Status cell with color
+              $pdf->SetTextColor($statusColor[0], $statusColor[1], $statusColor[2]);
+              $pdf->Cell(30, 8, $status, 1, 1, 'C');
+              $pdf->SetTextColor(0, 0, 0); // Reset to black
+
+              $rank++;
+          }
+
+          $pdf->Ln(10);
+      }
+
+      // Footer section
+      $pdf->SetY(-50);
+      $pdf->SetFont('helvetica', 'I', 8);
+      $pdf->Cell(0, 5, 'This document is digitally verified and generated by SoftCrew Technology', 0, 1, 'C');
+      $pdf->Cell(0, 5, 'NRNA Election Management System - Secure & Transparent Elections', 0, 1, 'C');
+      $pdf->Cell(0, 5, 'Document ID: NRNA-' . date('Ymd-His') . '-' . substr(md5(serialize($results)), 0, 8), 0, 1, 'C');
+
+      return $pdf;
+  }
 
 }

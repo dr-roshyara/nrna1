@@ -1,5 +1,5 @@
 <template>
-    <nrna-layout>
+   <election-layout>
         <div class="m-2 min-h-screen bg-gray-100 p-2">
             <div class="mx-auto w-full text-center">
                 <div class="flex justify-between p-5">
@@ -46,10 +46,36 @@
                         />
                     </div>
                 </div>
+
+                <!-- Bulk actions -->
+                <div v-if="selectedUsers.length > 0 && currentUser?.is_committee_member == 1" class="mb-4 rounded bg-yellow-100 border border-yellow-400 p-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-yellow-800">
+                            {{ selectedUsers.length }} user(s) selected
+                        </span>
+                        <button
+                            @click="bulkAddAsVoter"
+                            class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+                        >
+                            Add Selected as Voters
+                        </button>
+                    </div>
+                </div>
+
                 <div class="table w-full p-2">
                     <table class="w-full table-auto">
                         <thead>
                             <tr class="bg-blue-600 p-2 text-white">
+                                <!-- Checkbox column header -->
+                                <th class="mb-1 px-2 py-2 text-left text-sm font-bold">
+                                    <input
+                                        v-if="currentUser?.is_committee_member == 1"
+                                        type="checkbox"
+                                        @change="toggleSelectAll"
+                                        :checked="allSelected"
+                                        class="rounded"
+                                    />
+                                </th>
                                 <th
                                     class="mb-1 px-2 py-2 text-left text-sm font-bold"
                                 >
@@ -300,6 +326,12 @@
                                         </svg>
                                     </span>
                                 </th>
+                                <!-- Action column -->
+                                <th
+                                    class="mb-1 px-2 py-2 text-left text-sm font-bold"
+                                >
+                                    Actions
+                                </th>
                                 <!-- next -->
                                 <!-- <th class="px-2 py-2 mb-1 text-left text-sm font-bold"> <span class=" flex flex-row space-x-2" @click="sort('telephone')"> Telephone
                          <svg  v-if="params.field==='telephone' & params.direction==='desc'" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path d="M229.656 93.643a7.998 7.998 0 0 1-11.313.001L192 67.306v76.688a8 8 0 0 1-16 0V67.308L149.657 93.65a8 8 0 0 1-11.314-11.315l40-40c.03-.029.062-.053.092-.082c.159-.155.321-.305.493-.446c.097-.08.2-.15.301-.226c.11-.08.215-.165.328-.24c.115-.077.234-.144.352-.214c.107-.064.21-.13.32-.19c.117-.062.237-.115.356-.171c.119-.056.234-.115.355-.165c.113-.046.228-.084.342-.125c.133-.048.263-.098.4-.14c.11-.032.22-.056.332-.085c.142-.036.282-.075.427-.104c.122-.024.246-.038.37-.056c.134-.02.267-.045.404-.059c.204-.02.408-.026.612-.03c.058-.002.115-.01.173-.01c.062 0 .12.008.182.01a8 8 0 0 1 .602.03c.14.014.277.04.415.06c.12.018.24.031.359.055c.149.03.293.07.438.107c.107.027.215.05.32.082c.141.043.276.095.413.144c.11.04.22.076.328.12c.126.053.247.114.37.172c.114.054.23.105.34.164c.117.062.228.133.34.2c.112.067.225.13.333.203c.123.082.238.173.355.26c.091.07.186.133.275.206c.194.16.38.328.558.504c.01.01.02.017.028.026l40 39.993a8 8 0 0 1 0 11.314zM48 135.993h71.999a8 8 0 1 0 0-16H48a8 8 0 0 0 0 16zm0-64h55.999a8 8 0 0 0 0-16H48a8 8 0 1 0 0 16zm135.999 112H48a8 8 0 0 0 0 16h135.999a8 8 0 0 0 0-16z" fill="#fdfdfd"/></svg>
@@ -390,6 +422,16 @@
                                     'my-6 bg-gray-50 py-2': index % 2 > 0,
                                 }"
                             >
+                                <!-- Checkbox for each user -->
+                                <th class="m-4 px-2 py-4 text-left text-sm font-semibold">
+                                    <input
+                                        v-if="currentUser?.is_committee_member == 1 && user.is_voter != 1"
+                                        type="checkbox"
+                                        v-model="selectedUsers"
+                                        :value="user.id"
+                                        class="rounded"
+                                    />
+                                </th>
                                 <th
                                     class="m-4 px-2 py-4 text-left text-sm font-semibold"
                                 >
@@ -411,6 +453,24 @@
                                     class="m-4 px-2 py-4 text-left text-sm font-semibold"
                                 >
                                     {{ user.region }}
+                                </th>
+                                <!-- Action column -->
+                                <th
+                                    class="m-4 px-2 py-4 text-left text-sm font-semibold"
+                                >
+                                    <!-- Button appears for ALL users, but only visible if current logged-in user is committee member -->
+                                    <button
+                                        v-if="currentUser?.is_committee_member == 1"
+                                        :class="{
+                                            'rounded px-3 py-1 text-white': true,
+                                            'bg-blue-500 hover:bg-blue-600 cursor-pointer': user.is_voter != 1,
+                                            'bg-gray-400 cursor-not-allowed': user.is_voter == 1
+                                        }"
+                                        :disabled="user.is_voter == 1"
+                                        @click="user.is_voter != 1 ? showAddVoterButton(user.id) : null"
+                                    >
+                                        {{ user.is_voter == 1 ? 'Already Voter' : 'Add as Voter' }}
+                                    </button>
                                 </th>
                                 <!-- <th class="px-2 py-4 m-4 text-left text-sm font-semibold"> {{user.created_at}} </th> -->
                                 <!-- <th class="p-2 m-2 text-left text-sm font-semibold ">
@@ -436,12 +496,11 @@
                 </inertia-link>
             </div>
             <pagination class="mt-10" :links="users.links" />
-        </div>
-    </nrna-layout>
+        </div> 
+    </election-layout>
 </template>
 <script>
-import NrnaLayout from "@/Layouts/NrnaLayout";
-
+import ElectionLayout from "@/Layouts/ElectionLayout";
 import { Inertia } from "@inertiajs/inertia";
 import Sendmessage from "@/Pages/Message/Sendmessage";
 import _ from "lodash";
@@ -450,27 +509,38 @@ export default {
     props: {
         users: Object,
         filters: Object,
+        currentUser: Object,
         // from: String,
         // name: String,
     },
     data() {
         return {
             term: "",
+            selectedUsers: [],
             params: {
-                search: this.filters.search,
-                name: this.filters.name,
-                nrna_id: this.filters.nrna_id,
-                field: this.filters.field,
-                direction: this.filters.direction,
+                search: this.filters?.search || "",
+                name: this.filters?.name || "",
+                nrna_id: this.filters?.nrna_id || "",
+                field: this.filters?.field || "",
+                direction: this.filters?.direction || "",
             },
         };
     },
+    computed: {
+        allSelected() {
+            const eligibleUsers = this.users.data.filter(user => user.is_voter != 1);
+            return eligibleUsers.length > 0 && this.selectedUsers.length === eligibleUsers.length;
+        },
+        eligibleUsers() {
+            return this.users.data.filter(user => user.is_voter != 1);
+        }
+    },
     watch: {
         params: {
-            handler() {
-                let params = this.params;
+            handler: _.debounce(function() {
+                let params = _.cloneDeep(this.params);
                 Object.keys(params).forEach((key) => {
-                    if (params[key] == "") {
+                    if (params[key] == "" || params[key] == null) {
                         delete params[key];
                     }
                 });
@@ -480,7 +550,7 @@ export default {
                     replace: true,
                     preserveState: true,
                 });
-            },
+            }, 300),
             deep: true,
         },
     },
@@ -501,10 +571,55 @@ export default {
             }
             //this.params.direction = this.params.direction === 'asc'  ?  'desc' :  'asc';
         },
+        showAddVoterButton(userId) {
+            console.log('Add as Voter clicked for user:', userId);
+
+            // Make a POST request to add the user as voter
+            this.$inertia.post(route('users.addAsVoter', userId), {}, {
+                preserveState: false,
+                preserveScroll: true,
+                onSuccess: () => {
+                    // The page will refresh automatically with the updated user data
+                    console.log('User added as voter successfully');
+                },
+                onError: (errors) => {
+                    console.error('Error adding user as voter:', errors);
+                }
+            });
+        },
+        toggleSelectAll() {
+            if (this.allSelected) {
+                this.selectedUsers = [];
+            } else {
+                this.selectedUsers = this.eligibleUsers.map(user => user.id);
+            }
+        },
+        bulkAddAsVoter() {
+            if (this.selectedUsers.length === 0) {
+                alert('Please select users to add as voters.');
+                return;
+            }
+
+            if (confirm(`Are you sure you want to add ${this.selectedUsers.length} selected committee members as voters?`)) {
+                this.$inertia.post(route('users.bulkAddAsVoter'), {
+                    user_ids: this.selectedUsers
+                }, {
+                    preserveState: false,
+                    preserveScroll: true,
+                    onSuccess: () => {
+                        this.selectedUsers = [];
+                        console.log('Users added as voters successfully');
+                    },
+                    onError: (errors) => {
+                        console.error('Error adding users as voters:', errors);
+                    }
+                });
+            }
+        },
     },
     components: {
         Sendmessage,
-        NrnaLayout,
+        ElectionLayout
     },
 };
 </script>

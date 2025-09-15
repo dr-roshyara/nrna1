@@ -30,7 +30,10 @@ class UserController extends Controller
     {
         request()->validate([
             'direction'=> ['in:asc,desc'],
-            'field' => ['in:id,name,last_name,nrna_id,state,telephone,created_at']
+            'field' => ['in:id,name,last_name,nrna_id,state,telephone,created_at'],
+            'name' => ['nullable', 'string', 'max:255'],
+            'nrna_id' => ['nullable', 'string', 'max:255'],
+            'search' => ['nullable', 'string', 'max:255']
         ]);
         $query =User::query();
 
@@ -69,8 +72,8 @@ class UserController extends Controller
         // $users =$users->sortBy('created_at')->reverse();
         return Inertia::render('User/Index', [
           'users' => $users,
-          'filters' =>request()->all(['name','nrna_id','field','direction'])
-
+          'filters' =>request()->all(['name','nrna_id','search','field','direction']),
+          'currentUser' => auth()->user()
         ]);
 
 
@@ -457,6 +460,46 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Add user as voter
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function addAsVoter($id)
+    {
+        $user = User::findOrFail($id);
+
+        // Update the user's is_voter status
+        $user->is_voter = 1;
+        $user->save();
+
+        return redirect()->back()->with('success', 'User has been added as voter successfully.');
+    }
+
+    /**
+     * Bulk add users as voters
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function bulkAddAsVoter(Request $request)
+    {
+        $request->validate([
+            'user_ids' => 'required|array',
+            'user_ids.*' => 'integer|exists:users,id'
+        ]);
+
+        $userIds = $request->input('user_ids');
+
+        // Update multiple users at once
+        $updatedCount = User::whereIn('id', $userIds)
+            ->where('is_voter', 0)
+            ->update(['is_voter' => 1]);
+
+        return redirect()->back()->with('success', "{$updatedCount} users have been added as voters successfully.");
     }
 
 
