@@ -34,21 +34,42 @@ class VoterSlugController extends Controller
     {
         $user = Auth::user();
 
+        // Debug log to track infinite loops
+        Log::info('=== VOTER START CALLED ===', [
+            'user_id' => $user->id,
+            'timestamp' => now(),
+            'request_url' => $request->fullUrl(),
+        ]);
+
         // Check if user already has an active slug first
         $existingSlug = VoterSlug::where('user_id', $user->id)
             ->where('is_active', true)
             ->where('expires_at', '>', now())
             ->first();
 
-        if ($existingSlug) {
-            // User already has an active slug, redirect to appropriate step
-            Log::info('Redirecting user to existing active slug', [
-                'user_id' => $user->id,
-                'slug' => $existingSlug->slug,
-                'current_step' => $existingSlug->current_step,
-            ]);
+            if ($existingSlug) {
+            // Double-check expiration to handle timezone issues
+            if ($existingSlug->expires_at->isPast()) {
+                Log::warning('Found existing slug but it has expired, deactivating', [
+                    'user_id' => $user->id,
+                    'slug' => $existingSlug->slug,
+                    'expires_at' => $existingSlug->expires_at,
+                    'current_time' => now(),
+                ]);
 
-            return $this->redirectToSlugStep($existingSlug);
+                // Deactivate expired slug
+                $existingSlug->update(['is_active' => false]);
+                $existingSlug = null; // Continue to create new slug
+            } else {
+                // User already has an active slug, redirect to appropriate step
+                Log::info('Redirecting user to existing active slug', [
+                    'user_id' => $user->id,
+                    'slug' => $existingSlug->slug,
+                    'current_step' => $existingSlug->current_step,
+                ]);
+
+                return $this->redirectToSlugStep($existingSlug);
+            }
         }
 
         // No existing slug - check if user can create a new one

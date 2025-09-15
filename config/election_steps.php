@@ -6,5 +6,5 @@ return [
     2 => 'slug.code.agreement', // agreement screen
     3 => 'slug.vote.create',    // ballot creation
     4 => 'slug.vote.verify',    // review/verify votes
-    5 => 'voter.vote.submit',   // final receipt page
+    5 => 'slug.vote.complete',  // final receipt page
 ];

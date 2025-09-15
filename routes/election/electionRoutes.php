@@ -46,10 +46,10 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
 //Route::group(['middleware' => 'auth:sanctum', 'verified'], function(){
 // Vote
 //code creation
-   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility'])->get('/code/create', [CodeController::class, 'create'])->name('code.create');
-   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->post('/codes', [CodeController::class, 'store'])->name('code.store');
-   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/agreement', [CodeController::class, 'showAgreement'])->name('code.agreement');
-   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->post('/code/agreement', [CodeController::class, 'submitAgreement'])->name('code.agreement.submit');
+//    Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility'])->get('/code/create', [CodeController::class, 'create'])->name('code.create');
+//    Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->post('/codes', [CodeController::class, 'store'])->name('code.store');
+//    Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/agreement', [CodeController::class, 'showAgreement'])->name('code.agreement');
+//    Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->post('/code/agreement', [CodeController::class, 'submitAgreement'])->name('code.agreement.submit');
    
   // Vote denial route
     Route::get('/vote/denied', function() {
@@ -69,13 +69,13 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
        
 
     //it actually created Agreement create i accept. 
-      Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/create', [VoteController::class, 'create'])->name('vote.create');
+    //   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/create', [VoteController::class, 'create'])->name('vote.create');
 
     //submit I accept sh
        Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->post('/vote/submit', [VoteController::class, 'first_submission'])->name('vote.submit');
   
     //After successful open the vote ballet now 
-       Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/cast', [VoteController::class, 'cast_vote'])->name('vote.cast');
+    //    Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/cast', [VoteController::class, 'cast_vote'])->name('vote.cast');
     //submit the vote with selected candidates 
       Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility'])  ->post('/vote/submit_seleccted', [VoteController::class, 'second_submission'])->name('vote.submit_seleccted');
     
@@ -231,72 +231,72 @@ Route::prefix('v/{vslug}')->middleware(['voter.slug.window'])->group(function ()
 });
 
 // Step-based voter workflow routes (test routes for development)
-Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order'])->group(function () {
-    // Step 1: Code creation
-    Route::get('code/create', function (\Illuminate\Http\Request $request) {
-        $voter = $request->attributes->get('voter');
-        $voterSlug = $request->attributes->get('voter_slug');
+// Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order'])->group(function () {
+//     // Step 1: Code creation
+//     Route::get('code/create', function (\Illuminate\Http\Request $request) {
+//         $voter = $request->attributes->get('voter');
+//         $voterSlug = $request->attributes->get('voter_slug');
 
-        return response()->json([
-            'step' => 1,
-            'message' => 'Step 1: Code creation page',
-            'current_step' => $voterSlug->current_step,
-            'voter_id' => $voter->id
-        ]);
-    })->name('voter.code.create');
+//         return response()->json([
+//             'step' => 1,
+//             'message' => 'Step 1: Code creation page',
+//             'current_step' => $voterSlug->current_step,
+//             'voter_id' => $voter->id
+//         ]);
+//     })->name('voter.code.create');
 
-    // Step 2: Agreement
-    Route::get('agreement', function (\Illuminate\Http\Request $request) {
-        $voter = $request->attributes->get('voter');
-        $voterSlug = $request->attributes->get('voter_slug');
+//     // Step 2: Agreement
+//     Route::get('agreement', function (\Illuminate\Http\Request $request) {
+//         $voter = $request->attributes->get('voter');
+//         $voterSlug = $request->attributes->get('voter_slug');
 
-        return response()->json([
-            'step' => 2,
-            'message' => 'Step 2: Agreement page',
-            'current_step' => $voterSlug->current_step,
-            'voter_id' => $voter->id
-        ]);
-    })->name('voter.agreement');
+//         return response()->json([
+//             'step' => 2,
+//             'message' => 'Step 2: Agreement page',
+//             'current_step' => $voterSlug->current_step,
+//             'voter_id' => $voter->id
+//         ]);
+//     })->name('voter.agreement');
 
-    // Step 3: Vote creation
-    Route::get('vote/create', function (\Illuminate\Http\Request $request) {
-        $voter = $request->attributes->get('voter');
-        $voterSlug = $request->attributes->get('voter_slug');
+//     // Step 3: Vote creation
+//     Route::get('vote/create', function (\Illuminate\Http\Request $request) {
+//         $voter = $request->attributes->get('voter');
+//         $voterSlug = $request->attributes->get('voter_slug');
 
-        return response()->json([
-            'step' => 3,
-            'message' => 'Step 3: Vote creation page',
-            'current_step' => $voterSlug->current_step,
-            'voter_id' => $voter->id
-        ]);
-    })->name('voter.vote.create');
+//         return response()->json([
+//             'step' => 3,
+//             'message' => 'Step 3: Vote creation page',
+//             'current_step' => $voterSlug->current_step,
+//             'voter_id' => $voter->id
+//         ]);
+//     })->name('voter.vote.create');
 
-    // Step 4: Vote verification
-    Route::get('vote/verify', function (\Illuminate\Http\Request $request) {
-        $voter = $request->attributes->get('voter');
-        $voterSlug = $request->attributes->get('voter_slug');
+//     // Step 4: Vote verification
+//     Route::get('vote/verify', function (\Illuminate\Http\Request $request) {
+//         $voter = $request->attributes->get('voter');
+//         $voterSlug = $request->attributes->get('voter_slug');
 
-        return response()->json([
-            'step' => 4,
-            'message' => 'Step 4: Vote verification page',
-            'current_step' => $voterSlug->current_step,
-            'voter_id' => $voter->id
-        ]);
-    })->name('voter.vote.verify');
+//         return response()->json([
+//             'step' => 4,
+//             'message' => 'Step 4: Vote verification page',
+//             'current_step' => $voterSlug->current_step,
+//             'voter_id' => $voter->id
+//         ]);
+//     })->name('voter.vote.verify');
 
-    // Step 5: Vote submission
-    Route::get('vote/submit', function (\Illuminate\Http\Request $request) {
-        $voter = $request->attributes->get('voter');
-        $voterSlug = $request->attributes->get('voter_slug');
+//     // Step 5: Vote submission
+//     Route::get('vote/submit', function (\Illuminate\Http\Request $request) {
+//         $voter = $request->attributes->get('voter');
+//         $voterSlug = $request->attributes->get('voter_slug');
 
-        return response()->json([
-            'step' => 5,
-            'message' => 'Step 5: Vote submission page',
-            'current_step' => $voterSlug->current_step,
-            'voter_id' => $voter->id
-        ]);
-    })->name('voter.vote.submit');
-});
+//         return response()->json([
+//             'step' => 5,
+//             'message' => 'Step 5: Vote submission page',
+//             'current_step' => $voterSlug->current_step,
+//             'voter_id' => $voter->id
+//         ]);
+//     })->name('voter.vote.submit');
+// });
 
 // Slug-based voting workflow routes (integrated with existing controllers)
 Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order', 'vote.eligibility', 'prevent.multiple.voting'])->group(function () {

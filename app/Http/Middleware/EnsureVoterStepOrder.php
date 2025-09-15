@@ -34,6 +34,27 @@ class EnsureVoterStepOrder
             return $next($request);
         }
 
+        // CRITICAL: Enforce database state binding for Step 2+
+        if ($targetStep >= 2) {
+            $user = $vslug->user;
+            $code = \App\Models\Code::where('user_id', $user->id)->first();
+
+            // Step 2+ requires code verification (can_vote_now = 1)
+            if (!$code || $code->can_vote_now != 1) {
+                \Log::warning('User attempted to access Step 2+ without code verification', [
+                    'user_id' => $user->id,
+                    'target_step' => $targetStep,
+                    'target_route' => $routeName,
+                    'can_vote_now' => $code ? $code->can_vote_now : 'no_code',
+                    'slug' => $vslug->slug,
+                ]);
+
+                // Force redirect back to Step 1 (code verification)
+                return redirect()->route('slug.code.create', ['vslug' => $vslug->slug])
+                    ->with('error', 'Code verification required before proceeding.');
+            }
+        }
+
         // If user tries to open FUTURE step, send them back to current
         if ($targetStep > $vslug->current_step) {
             $currentRoute = $map[$vslug->current_step] ?? reset($map);

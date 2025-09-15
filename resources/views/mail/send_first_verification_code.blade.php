@@ -9,10 +9,10 @@ With this code you can open the voting form.
 Please go to the previous form  to submit the code.<br> 
  <span style="font-weight:bold;"> Note:</span>  You can also click the following link
  and give the voting code</p> 
-<p style="margin-top: 2px; margin-bottom:2px; text-align:center;"> 
- <a href="{{ route('code.create') }}" 
- style="color:#1E90FF; font-weight:bold; "> 
-  Click here to verify your code </a> 
+<p style="margin-top: 2px; margin-bottom:2px; text-align:center;">
+ <a href="{{ config('election.use_slug_path', false) ? route('voter.start') : route('dashboard') }}"
+ style="color:#1E90FF; font-weight:bold; ">
+  Click here to verify your code </a>
 </p> 
 
 
@@ -27,10 +27,10 @@ Please go to the previous form  to submit the code.<br>
 
 </p> 
 
-<p style="margin-top: 2px; margin-bottom:2px; text-align:center;"> 
- <a href="{{ route('code.create') }}" 
- style="color:#1E90FF; font-weight:bold; "> 
-  मतदान गर्नको लागि  यहाँ क्लिक गर्नुहोस। </a> 
+<p style="margin-top: 2px; margin-bottom:2px; text-align:center;">
+ <a href="{{ config('election.use_slug_path', false) ? route('voter.start') : route('dashboard') }}"
+ style="color:#1E90FF; font-weight:bold; ">
+  मतदान गर्नको लागि  यहाँ क्लिक गर्नुहोस। </a>
 </p> 
   
 @component('mail::button', ['url' => ''])

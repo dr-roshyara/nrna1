@@ -42,5 +42,5 @@ return [
     'require_email_verification' => env('ELECTION_REQUIRE_EMAIL_VERIFICATION', true),
 
     // ✅ Slug-based voting system
-    'use_slug_path' => env('USE_SLUG_PATH', false),
+    'use_slug_path' => env('USE_SLUG_PATH', true),
 ];

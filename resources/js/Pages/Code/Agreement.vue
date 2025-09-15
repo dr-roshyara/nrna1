@@ -141,19 +141,29 @@ export default {
         voting_time_minutes: Number,
         agreement_text_nepali: String,
         agreement_text_english: String,
+        slug: String, // Add slug prop for slug-based routing
+        useSlugPath: Boolean, // Configuration to enable/disable slug paths
     },
     
-    setup() {
+    setup(props) {
         const form = useForm({
             agreement: false,
         })
 
         function submitAgreement() {
-            form.post(route('code.agreement.submit'))
+            // Always use slug-based route since we're using slug-based voting exclusively
+            if (!props.slug) {
+                console.error('No slug provided for agreement submission');
+                return;
+            }
+
+            const submitUrl = route('slug.code.agreement.submit', { vslug: props.slug });
+            console.log('Submitting agreement to URL:', submitUrl, 'slug:', props.slug);
+            form.post(submitUrl);
         }
 
-        return { 
-            form, 
+        return {
+            form,
             submitAgreement
         }
     }
