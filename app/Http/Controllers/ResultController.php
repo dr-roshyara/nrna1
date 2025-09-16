@@ -37,6 +37,7 @@ class ResultController extends Controller
             'post_id' => $post->post_id,
             'post_name' => $post->name,
             'candidates' => [],
+            'no_vote_count' => 0,
             'total_votes_for_post' => 0
         ];
 
@@ -47,6 +48,8 @@ class ResultController extends Controller
 
         // Initialize candidate votes array with all candidates (starting with 0 votes)
         $candidateVotes = [];
+        $noVoteCount = 0; // Track "no vote" selections
+
         foreach ($allCandidates as $candidacy) {
             $candidateName = $candidacy->user->name ?? $candidacy->name ?? $candidacy->user_name ?? 'Unknown';
             $candidateVotes[$candidacy->candidacy_id] = [
@@ -74,6 +77,13 @@ class ResultController extends Controller
                     continue;
                 }
 
+                // Check if this is a "no vote" selection
+                if (isset($candidateData['no_vote']) && $candidateData['no_vote'] === true) {
+                    $noVoteCount++;
+                    $postResults['total_votes_for_post']++;
+                    continue;
+                }
+
                 // Process each candidate in the candidates array
                 foreach ($candidateData['candidates'] ?? [] as $candidate) {
                     $candidateId = $candidate['candidacy_id'] ?? null;
@@ -97,6 +107,9 @@ class ResultController extends Controller
                     : 0
             ];
         }
+
+        // Store the no vote count in results
+        $postResults['no_vote_count'] = $noVoteCount;
 
         // Sort candidates by vote count (highest first, but include zero-vote candidates)
         usort($postResults['candidates'], function($a, $b) {
@@ -195,11 +208,16 @@ private function detectAnomalies($stats)
       $votes = Vote::whereNotNull('candidate_01')->get(); // Adjust based on your structure
       
       foreach ($votes as $vote) {
-          for ($i = 1; $i <= 20; $i++) {
+          for ($i = 1; $i <= 60; $i++) {
               $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
               $data = json_decode($vote->$field, true);
-              
+
               if ($data && $data['post_id'] === $postId) {
+                  // Skip "no vote" entries for candidate verification (they don't count toward specific candidates)
+                  if (isset($data['no_vote']) && $data['no_vote'] === true) {
+                      continue;
+                  }
+
                   foreach ($data['candidates'] as $candidate) {
                       $candidacyId = $candidate['candidacy_id'];
                       $rawVotes[$candidacyId] = ($rawVotes[$candidacyId] ?? 0) + 1;
@@ -270,6 +288,7 @@ private function detectAnomalies($stats)
               'post_name' => $post->name,
               'state_name' => $post->state_name,
               'candidates' => [],
+              'no_vote_count' => 0,
               'total_votes_for_post' => 0
           ];
 
@@ -280,6 +299,8 @@ private function detectAnomalies($stats)
 
           // Initialize candidate votes array with all candidates (starting with 0 votes)
           $candidateVotes = [];
+          $noVoteCount = 0; // Track "no vote" selections
+
           foreach ($allCandidates as $candidacy) {
               $candidateName = $candidacy->user->name ?? $candidacy->name ?? $candidacy->user_name ?? 'Unknown';
               $candidateVotes[$candidacy->candidacy_id] = [
@@ -305,6 +326,14 @@ private function detectAnomalies($stats)
                       continue;
                   }
 
+                  // Check if this is a "no vote" selection
+                  if (isset($candidateData['no_vote']) && $candidateData['no_vote'] === true) {
+                      $noVoteCount++;
+                      $postResults['total_votes_for_post']++;
+                      continue;
+                  }
+
+                  // Count actual candidate votes
                   foreach ($candidateData['candidates'] ?? [] as $candidate) {
                       $candidateId = $candidate['candidacy_id'] ?? null;
 
@@ -327,6 +356,9 @@ private function detectAnomalies($stats)
                       : 0
               ];
           }
+
+          // Store the no vote count in results
+          $postResults['no_vote_count'] = $noVoteCount;
 
           // Sort candidates by vote count (highest first, but include zero-vote candidates)
           usort($postResults['candidates'], function($a, $b) {
@@ -474,6 +506,15 @@ private function detectAnomalies($stats)
               $pdf->SetTextColor($statusColor[0], $statusColor[1], $statusColor[2]);
               $pdf->Cell(30, 8, $status, 1, 1, 'C');
               $pdf->SetTextColor(0, 0, 0); // Reset to black
+          }
+
+          // Add "No Votes" information if any
+          if (isset($postResult['no_vote_count']) && $postResult['no_vote_count'] > 0) {
+              $pdf->Ln(5);
+              $pdf->SetFont('helvetica', 'B', 11);
+              $pdf->SetFillColor(240, 240, 240);
+              $pdf->Cell(150, 8, 'No Votes (Abstentions)', 1, 0, 'L', true);
+              $pdf->Cell(30, 8, number_format($postResult['no_vote_count']), 1, 1, 'C', true);
           }
 
           $pdf->Ln(10);
