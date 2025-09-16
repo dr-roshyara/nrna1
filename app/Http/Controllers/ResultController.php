@@ -452,9 +452,18 @@ private function detectAnomalies($stats)
           // Table content
           $pdf->SetFont('helvetica', '', 10);
           $rank = 1;
-          foreach ($postResult['candidates'] as $candidate) {
-              $status = $rank === 1 ? 'WINNER' : 'Candidate';
-              $statusColor = $rank === 1 ? array(34, 139, 34) : array(0, 0, 0);
+          $highestVotes = isset($postResult['candidates'][0]) ? $postResult['candidates'][0]['vote_count'] : 0;
+
+          foreach ($postResult['candidates'] as $index => $candidate) {
+              // Check if this candidate has the highest vote count (tied winners)
+              $isWinner = $candidate['vote_count'] == $highestVotes && $candidate['vote_count'] > 0;
+              $status = $isWinner ? 'WINNER' : 'Candidate';
+              $statusColor = $isWinner ? array(34, 139, 34) : array(0, 0, 0);
+
+              // Calculate display rank (handle ties)
+              if ($index > 0 && $postResult['candidates'][$index-1]['vote_count'] != $candidate['vote_count']) {
+                  $rank = $index + 1;
+              }
 
               $pdf->Cell(10, 8, $rank, 1, 0, 'C');
               $pdf->Cell(80, 8, $candidate['name'], 1, 0, 'L');
@@ -465,8 +474,6 @@ private function detectAnomalies($stats)
               $pdf->SetTextColor($statusColor[0], $statusColor[1], $statusColor[2]);
               $pdf->Cell(30, 8, $status, 1, 1, 'C');
               $pdf->SetTextColor(0, 0, 0); // Reset to black
-
-              $rank++;
           }
 
           $pdf->Ln(10);
