@@ -7,6 +7,10 @@
     <div class="text-lg font-medium text-gray-700">
       Total Votes: {{ final_result.total_votes_for_post || 0 }}
     </div>
+
+    <div v-if="final_result.no_vote_count && final_result.no_vote_count > 0" class="text-md font-medium text-gray-600">
+      No Votes (Abstentions): {{ final_result.no_vote_count }}
+    </div>
     
     <div class="mt-6">
       <h3 class="text-xl font-medium mb-4 text-gray-800">

@@ -98,6 +98,7 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
    // Conditionally register result route only if results are published
    if (ElectionService::areResultsPublished()) {
        Route::middleware(['auth:sanctum', 'verified'])->get('/election/result', [ResultController::class, 'index'])->name('result.index');
+       Route::middleware(['auth:sanctum', 'verified'])->get('/election/result/download-pdf', [ResultController::class, 'downloadPDF'])->name('result.download.pdf');
    }
 
 // Vote verification and display routes

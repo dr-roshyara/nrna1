@@ -23,55 +23,40 @@ class VoterlistController extends Controller
      */
     public function index(Request $request)
     {
-        
-         // dd(DB::table('users')->first());
-         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
+        // Global search filter that searches across multiple fields including name
+        $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
-                $query->where('id', 'LIKE', "%{$value}%");
-                // $query->where('itemId', "{$value}");
-
-                   
-                // ->orWhere('variationId', 'LIKE', "%{$value}%");
-                
+                $query->where('name', 'LIKE', "%{$value}%")
+                      ->orWhere('user_id', 'LIKE', "%{$value}%")
+                      ->orWhere('nrna_id', 'LIKE', "%{$value}%")
+                      ->orWhere('voting_ip', 'LIKE', "%{$value}%");
             });
         });
-        /***
-         * 
-         * allow sorting 
-         * 
-         */
-    
+
+        // Build query for voters only
         $query = User::where('is_voter', 1);
+
         $users = QueryBuilder::for($query)
-        ->defaultSort('name')
-        ->allowedSorts(['name','nrna_id', 'voting_ip', 'approvedBy'])
-        ->allowedFilters(['name','nrna_id', 'voting_ip', 'approvedBy', $globalSearch])
-        ->paginate(2000) 
-        ->withQueryString();
-        // chain on any of Laravel's query builder methods
-        
-        // dd($users);
-         /***
-          * 
-          *return 
-          */
+            ->defaultSort('name')
+            ->allowedSorts(['name', 'user_id', 'nrna_id', 'voting_ip', 'approvedBy'])
+            ->allowedFilters(['name', 'user_id', 'nrna_id', 'voting_ip', 'approvedBy', $globalSearch])
+            ->paginate(2000)
+            ->withQueryString();
+
+        // Check permissions
+        $btemp = auth()->user()->hasAnyPermission('send code');
+
         return Inertia::render('Voter/IndexVoter', [
-            'voters'=>$users,
+            'voters' => $users,
+            'can_send_code' => $btemp,
             'isCommitteeMember' => auth()->user()->is_committee_member ?? false,
         ])->table(function (InertiaTable $table) {
-            $table->addSearchRows([                
+            $table->addSearchRows([
                 'name'              => 'Name',
                 'user_id'           => 'User ID',
+                'nrna_id'           => 'NRNA ID',
                 'voting_ip'         => 'Voting IP',
                 'approvedBy'        => 'Approved By',
-                // 'item.keywords'          => 'Keywords',
-                // 'variationId'            => 'Variation Id',
-                // 'itemId'   =>  'Item Id',
-            ])->addFilter('mainWarehouseId', 'Warehouse', [
-                '25' => 'Keramag',
-                 
-                // 'manufacturer.name' =>'Manufacturer',
-                // 'nl' => 'Nederlands',
             ])->addColumns([
                 'sn'                  => 'S.N.',
                 'user_id'             => 'User ID',
@@ -80,62 +65,8 @@ class VoterlistController extends Controller
                 'approved_by'         => 'Status Details',
                 'voting_ip'           => 'Voting IP',
                 'actions'             => 'Actions'
-
             ]);
         });
-        
-        
-        
-        
-        request()->validate([
-            'direction'=> ['in:asc,desc'],
-            'field' => ['in:id,name,last_name,nrna_id,state,telephone,created_at']
-        ]);
-        // $query =User::query();
-         $query = DB::table('users')->where('is_voter', 1);
-        // if(request('direction')){
-        //     $query->orderBy('id',request('direction'));
-
-        // }else{
-        //     $query->orderBy('id','desc');
-
-        // }
-        
-        if(request('search')){
-            $query->where('last_name', 'LIKE', '%'.request('search').'%');
-        } 
-        if(request('name')){
-            $query->where('name', 'LIKE', '%'.request('name').'%');
-        } 
-        //
-         if(request('nrna_id')){
-            $query->where('nrna_id', 'LIKE', '%'.request('nrna_id').'%');
-        } 
-        //
-        if(request()->has(['field', 'direction'])){
-            $query->orderBy(request('field'), request('direction')); 
-        }else{
-            $query->orderBy('id','desc'); 
-        }
-        //the following lines are for the first type of search 
-
-        // $voters =Message::when( $request->term, 
-        //     function($query, $term){
-        //     $query->where('to', 'LIKE', '%'.$term.'%' );
-        // })->paginate(20); 
-        $btemp      =auth()->user()->hasAnyPermission('send code');
-        // dd($btemp);
-         $voters     =$query->paginate(2000);
-        // $voters =$voters->sortBy('created_at')->reverse();
-        return Inertia::render('Voter/IndexVoter', [
-          'voters' => $voters,
-          'can_send_code'=>$btemp, 
-          'isCommitteeMember' => auth()->user()->is_committee_member ?? false,
-          'filters' =>request()->all(['name','nrna_id','field','direction'])  
- 
-        ]);
-    
-
     }
 
     /**
@@ -170,7 +101,7 @@ class VoterlistController extends Controller
             ]);
 
             return back()->with('success', $user->name . ' has been approved to vote by ' . auth()->user()->name);
-            
+
         } catch (\Exception $e) {
             return back()->withErrors(['error' => 'Error approving voter: ' . $e->getMessage()]);
         }
@@ -202,7 +133,7 @@ class VoterlistController extends Controller
             ]);
 
             return back()->with('success', $user->name . ' voting access has been suspended by ' . auth()->user()->name);
-            
+
         } catch (\Exception $e) {
             return back()->withErrors(['error' => 'Error suspending voter: ' . $e->getMessage()]);
         }
@@ -241,9 +172,9 @@ class VoterlistController extends Controller
         $user = DB::table('users')->where('id', $id)->first();
         return Inertia::render('User/Profile', [
           'user' => $user,
- 
+
         ]);
-    
+
     }
 
     /**

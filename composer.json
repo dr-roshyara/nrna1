@@ -25,6 +25,7 @@
         "spatie/laravel-google-calendar": "^3.5",
         "spatie/laravel-permission": "^4.2",
         "spatie/laravel-query-builder": "^4.0",
+        "tecnickcom/tcpdf": "*",
         "tightenco/ziggy": "^1.0",
         "vonage/client": "^2.4"
     },

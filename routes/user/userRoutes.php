@@ -17,6 +17,12 @@ Route::get('/test', function(){
 Route::middleware(['auth:sanctum', 'verified'])
         ->get('/users/index', [UserController::class, 'index'])->name('users.index');
 
+Route::middleware(['auth:sanctum', 'verified'])
+        ->post('/users/{id}/add-as-voter', [UserController::class, 'addAsVoter'])->name('users.addAsVoter');
+
+Route::middleware(['auth:sanctum', 'verified'])
+        ->post('/users/bulk-add-as-voter', [UserController::class, 'bulkAddAsVoter'])->name('users.bulkAddAsVoter');
+
 
 /**
  * For profile photos create routes
