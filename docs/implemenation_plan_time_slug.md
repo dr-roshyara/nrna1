@@ -67,5 +67,4 @@
   This system would create a significant security upgrade while maintaining your existing election management functionality. The modular approach allows incremental implementation without breaking current
   workflows.
 
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-> 
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

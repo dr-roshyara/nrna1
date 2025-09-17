@@ -21,9 +21,32 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/election', [ElectionContr
 // Voter slug generation - start voting process
 Route::middleware(['auth:sanctum', 'verified'])->get('/voter/start', [VoterSlugController::class, 'start'])->name('voter.start');
 
-//voters
-Route::middleware(['auth:sanctum', 'verified'])
-        ->get('/voters/index', [VoterlistController::class, 'index'])->name('voters.index');
+// Direct voting access - automatically generates slug for user
+Route::middleware(['auth:sanctum', 'verified'])->get('/vote', function () {
+    $user = auth()->user();
+
+    // Check basic eligibility
+    if (!$user->can_vote || $user->has_voted) {
+        return redirect()->route('election.dashboard')->with('error', 'You are not eligible to vote at this time.');
+    }
+
+    try {
+        $slugService = new \App\Services\VoterSlugService();
+        $slug = $slugService->getOrCreateActiveSlug($user);
+
+        // Redirect to the slug-based voting flow
+        return redirect()->route('slug.code.create', ['vslug' => $slug->slug]);
+    } catch (\Exception $e) {
+        \Log::error('Failed to auto-generate slug for direct voting', [
+            'user_id' => $user->id,
+            'error' => $e->getMessage(),
+        ]);
+
+        return redirect()->route('election.dashboard')->with('error', 'Unable to start voting. Please try again.');
+    }
+})->name('vote.direct');
+
+//voters (moved to unified voters section below)
 
 // ✅ IMPORTANT: Add these exact routes
 Route::middleware(['auth:sanctum', 'verified'])
@@ -71,16 +94,25 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
     //it actually created Agreement create i accept. 
     //   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/create', [VoteController::class, 'create'])->name('vote.create');
 
-    //submit I accept sh
-       Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->post('/vote/submit', [VoteController::class, 'first_submission'])->name('vote.submit');
-  
-    //After successful open the vote ballet now 
-    //    Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/cast', [VoteController::class, 'cast_vote'])->name('vote.cast');
-    //submit the vote with selected candidates 
-      Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility'])  ->post('/vote/submit_seleccted', [VoteController::class, 'second_submission'])->name('vote.submit_seleccted');
-    
-    //verify
-       Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/verify', [VoteController::class, 'verify'])->name('vote.verify');
+    // DEPRECATED: Legacy voting routes - all redirect to slug-based voting for security
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+        // Redirect all legacy voting attempts to slug-based system
+        Route::get('/vote/create', function () {
+            return redirect()->route('vote.direct');
+        })->name('vote.create');
+
+        Route::post('/vote/submit', function () {
+            return redirect()->route('vote.direct');
+        })->name('vote.submit');
+
+        Route::post('/vote/submit_seleccted', function () {
+            return redirect()->route('vote.direct');
+        })->name('vote.submit_seleccted');
+
+        Route::get('/vote/verify', function () {
+            return redirect()->route('vote.direct');
+        })->name('vote.verify');
+    });
 
        Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->post('/votes', [VoteController::class, 'store'])->name('vote.store');
 

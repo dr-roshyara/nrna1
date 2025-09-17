@@ -26,6 +26,7 @@
         $post->name ="Woman Vice President"
         $post->nepali_name ="महिला उपाद्यक्ष"
         $post->save()
+        
        #
         use App\Models\Post;
         $post =new Post

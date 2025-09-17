@@ -182,6 +182,14 @@ export default {
         user_region: {
             type: String,
             default: ''
+        },
+        slug: {
+            type: String,
+            default: null
+        },
+        useSlugPath: {
+            type: Boolean,
+            default: false
         }
     },
     
@@ -212,10 +220,12 @@ export default {
             
           
             
-            form.post('/vote/submit_seleccted', {
-                onSuccess: () => {
-                    console.log('Vote submitted successfully');
-                },
+            // Use slug-based route if available, otherwise use regular route
+            const submitUrl = props.useSlugPath && props.slug
+                ? `/v/${props.slug}/vote/submit`
+                : '/vote/submit';
+
+            form.post(submitUrl, {
                 onError: (errors) => {
                     console.error('Vote submission failed:', errors);
                     // Handle specific error cases

@@ -87,13 +87,13 @@ class VoterSlugController extends Controller
             );
         }
 
-        // Generate secure voting slug
-        $result = $this->securityService->secureSlugGeneration($user, 'dashboard_voting_start');
-
-        if (!$result['success']) {
-            Log::error('Failed to generate voting slug', [
+        // Use the enhanced getOrCreateActiveSlug method for better user experience
+        try {
+            $slug = $this->slugService->getOrCreateActiveSlug($user);
+        } catch (\Exception $e) {
+            Log::error('Failed to get or create voting slug', [
                 'user_id' => $user->id,
-                'reasons' => $result['reasons'] ?? ['unknown_error'],
+                'error' => $e->getMessage(),
                 'ip_address' => $request->ip(),
             ]);
 
@@ -101,8 +101,6 @@ class VoterSlugController extends Controller
                 'Failed to start voting session. Please try again or contact support.'
             );
         }
-
-        $slug = $result['slug'];
 
         Log::info('New voting slug generated from dashboard', [
             'user_id' => $user->id,

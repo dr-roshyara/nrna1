@@ -29,8 +29,16 @@ class EnsureVoterStepOrder
         $map = config('election_steps');
         $targetStep = array_search($routeName, $map, true);
 
+        \Log::info('EnsureVoterStepOrder middleware', [
+            'route_name' => $routeName,
+            'target_step' => $targetStep,
+            'current_step' => $vslug->current_step,
+            'is_non_step_route' => $targetStep === false
+        ]);
+
         // Non-step routes (e.g., POST actions) pass through
         if ($targetStep === false) {
+            \Log::info('Non-step route passing through');
             return $next($request);
         }
 

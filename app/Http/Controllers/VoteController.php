@@ -303,6 +303,8 @@ public function create(Request $request)
         'user_name' => $auth_user->name,
         'user_id' => $auth_user->id,
         'user_region' => $auth_user->region,
+        'slug' => $voterSlug ? $voterSlug->slug : null,
+        'useSlugPath' => $voterSlug !== null,
     ]);
 }
 
@@ -312,32 +314,94 @@ public function create(Request $request)
  */
 public function first_submission(Request $request)
 {
-    $auth_user = auth()->user();
+    \Log::info('=== FIRST_SUBMISSION START ===', [
+        'url' => $request->url(),
+        'method' => $request->method(),
+        'user_id' => auth()->id(),
+    ]);
 
+    $auth_user = auth()->user();
+ 
     // Get the code model and set as submitted
     $code = $auth_user->code;
     $code->vote_submitted    = 1;
     $code->vote_submitted_at = \Carbon\Carbon::now();
-    $code->save(); // Save the state!
-
+    // $code->save(); // Save the state!
+   
     // Pre-checks (time, code usability, etc.)
     $pre_check_route = $this->vote_pre_check($code);
+    \Log::info('Pre-check result', [
+        'pre_check_route' => $pre_check_route,
+        'code_exists' => $code !== null,
+        'can_vote_now' => $code ? $code->can_vote_now : 'N/A',
+        'has_voted' => $code ? $code->has_voted : 'N/A',
+        'has_code1_sent' => $code ? $code->has_code1_sent : 'N/A',
+        'is_code1_usable' => $code ? $code->is_code1_usable : 'N/A'
+    ]);
+
     if ($pre_check_route && $pre_check_route != "") {
+        \Log::info('Pre-check failed, redirecting', ['route' => $pre_check_route]);
         if ($pre_check_route == '404') {
             abort(404);
         }
+
+        // Convert legacy route names to slug-aware routes
+        $voterSlug = $request->attributes->get('voter_slug');
+        if ($pre_check_route === 'code.create') {
+            $pre_check_route = $voterSlug ? 'slug.code.create' : 'vote.create';
+            $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+            return redirect()->route($pre_check_route, $routeParams);
+        }
+
         return redirect()->route($pre_check_route);
     }
 
-    // Run verify_first_submission; this can return a route name or a RedirectResponse
-    $verify_result = $this->verify_first_submission($request, $code, $auth_user);
+    // Store the vote data in session for verification page
+    $session_name = $code->session_name ?: 'vote_data_' . $auth_user->id;
+    $code->session_name = $session_name;
+    $code->save();
 
-    if ($verify_result instanceof \Illuminate\Http\RedirectResponse) {
-        return $verify_result; // Redirect back with errors
+    // Store the submitted vote data in session
+    $vote_data = $request->only([
+        'user_id',
+        'national_selected_candidates',
+        'regional_selected_candidates',
+        'no_vote_option',
+        'agree_button'
+    ]);
+
+    $request->session()->put($session_name, $vote_data);
+    \Log::info('Stored vote data in session', [
+        'session_name' => $session_name,
+        'user_id' => $auth_user->id,
+        'data_keys' => array_keys($vote_data)
+    ]);
+
+    // No need to send second verification code - reuse the first code to reduce emails
+    \Log::info('Using first verification code for second verification', [
+        'user_id' => $auth_user->id,
+        'code1_available' => !empty($code->code1)
+    ]);
+
+    // Advance the slug step before redirecting to verification
+    $voterSlug = $request->attributes->get('voter_slug');
+    if ($voterSlug) {
+        $progressService = new \App\Services\VoterProgressService();
+        $progressService->advanceFrom($voterSlug, 'slug.vote.create', ['vote_submitted' => true]);
+        \Log::info('Advanced slug step from 3 to 4', ['current_step' => $voterSlug->fresh()->current_step]);
     }
 
-    // At this point, $verify_result is a route string: 'vote.cast' or 'vote.verify_to_show'
-    return redirect()->route($verify_result);
+    // Run verify_first_submission; this now always returns a RedirectResponse
+    \Log::info('About to call verify_first_submission');
+    $verify_result = $this->verify_first_submission($request, $code, $auth_user);
+
+    \Log::info('verify_first_submission returned', [
+        'type' => get_class($verify_result),
+        'target_url' => method_exists($verify_result, 'getTargetUrl') ? $verify_result->getTargetUrl() : 'N/A'
+    ]);
+
+    // verify_first_submission always returns a RedirectResponse (either for errors or success)
+    return $verify_result;
 }
 
 
@@ -493,7 +557,7 @@ public function second_submission(Request $request)
             if (!$stored_data) {
                 throw new \Exception('Session storage verification failed');
             }
-            $code->senssion_name=$session_name;
+            $code->session_name=$session_name;
             
         } catch (\Exception $e) {
             Log::error('Session storage failed during vote submission', [
@@ -904,8 +968,7 @@ private function has_valid_selections($selections)
     public function store(Request $request)
     {
         DB::beginTransaction();
-    
-    try {
+     try {
    
         $auth_user          = auth()->user();
         $code               = $auth_user->code;
@@ -920,7 +983,8 @@ private function has_valid_selections($selections)
 
         //everything take from Code Model
         $this->has_voted    =$code->has_voted;
-        $this->in_code      =$code->code1;
+        // $this->in_code      =$code->code_for_vote;
+        $this->in_code       =$code->code1;
         $this->out_code     = $request['voting_code'];
         $voting_code        = trim($request->input('voting_code'));
         /********************************************************** */
@@ -933,14 +997,16 @@ private function has_valid_selections($selections)
                 'voting_code.min' => 'Code must be exactly 6 characters.',
                 'voting_code.max' => 'Code must be exactly 6 characters.',
             ]);
+            
 
             $_codeVerified =$this->verify_submitted_code($this->in_code, $this->out_code);
             // Use the verification method
+            //dd($_codeVerified);
             if (!$_codeVerified) {
             
-                \Log::warning('Code verification failed - returning with error', 
+                \Log::warning('Code verification failed - returning with error',
                 [
-                'user_id' => $user_id,
+                'user_id' => $auth_user->id,
                 'nrna_id' => $auth_user->nrna_id ?? null,
                 'submitted_code_length' => strlen($request['voting_code'] ?? ''),
                 'failed_at' => now()
@@ -953,19 +1019,16 @@ private function has_valid_selections($selections)
         }
         /*********************************************************** */
         $this->user_id      =$code->user_id;
-        $code->session_name = 'vote_' . $code->id."_". auth()->id();
-        $code->save();
+        // Use the existing session_name from the code (set during first_submission)
+        // Don't overwrite it, just use what's already there
         $session_name       =$code->session_name;
         //get deligatevote from session
         $vote_data = $request->session()->get($session_name);
-
         // check the  voting codes 
-
         // dd($vote_data["national_selected_candidates"]);
         // 1. Validate pre-conditions
+        // dd($vote_data);
         $pre_check = $this->vote_post_check($auth_user, $code, $vote_data);
-        
-            
 
         /**
              *Here Everything is checked . you save the deligatevote.
@@ -1002,7 +1065,6 @@ private function has_valid_selections($selections)
             $this->save_vote($vote_data, $vote_hashed_key);    
              $vote_private_key=$private_key."_".$this->out_code;
 
-            
             // 8. Mark user as voted and update code status
                 $this->markUserAsVoted($code, $hashed_key);
                 
@@ -1010,8 +1072,20 @@ private function has_valid_selections($selections)
                 $auth_user->notify(new SendVoteSavingCode($vote_private_key));
 
                 DB::commit();
-        
-        // $request->session()->forget('vote');     
+        // Advance slug step after successful vote submission
+        $vslug = $request->route('vslug');
+        if ($vslug && $vslug->current_step < 5) {
+            $vslug->current_step = 5; // Advance to completion step
+            $vslug->save();
+
+            \Log::info('Advanced VoterSlug step after vote verification', [
+                'slug' => $vslug->slug,
+                'new_step' => $vslug->current_step,
+                'user_id' => $auth_user->id
+            ]);
+        }
+
+        // $request->session()->forget('vote');
         return redirect()->route('vote.verify_to_show')->with('success', 'Your vote has been successfully submitted.');
 
     } catch (\Illuminate\Validation\ValidationException $e) {
@@ -1374,7 +1448,6 @@ public function verify(Request $request)
 
         // Perform comprehensive post-submission checks
         $_error = $this->vote_post_check($auth_user, $code, $vote_data);
-        
         if ($_error["error_message"] != "") {
             Log::error('Vote verification post-check failed', [
                 'user_id' => $auth_user->id,
@@ -1396,7 +1469,6 @@ public function verify(Request $request)
         // Check second code timing and validity
         $_message = $this->second_code_check($code);
         $code_expires_in = $code->voting_time_in_minutes;
-        
         if ($_message["error_message"] != "") {
             Log::error('Second code check failed during verification', [
                 'user_id' => $auth_user->id,
@@ -2037,7 +2109,7 @@ public function verify_final_vote(Request $request)
      * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $code
      * @param  \App\Models\User  $auth_user
-     * @return string|\Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function verify_first_submission(Request $request, &$code, $auth_user)
     {
@@ -2066,13 +2138,14 @@ public function verify_final_vote(Request $request)
             $errors['can_vote'] = 'You are not eligible to vote.';
         }
 
-        // 4. User must have used Code-1 to reach this step
-        if ($auth_user->has_used_code1 != 1) {
+        // 4. User must have used Code-1 to reach this step (check Code model)
+        $code = $auth_user->code;
+        if (!$code || $code->can_vote_now != 1) {
             $errors['has_used_code1'] = 'You have not used your first voting code yet.';
         }
 
-        // 5. User must NOT have used Code-2 (should be 0)
-        if ($auth_user->has_used_code2 != 0) {
+        // 5. User must NOT have used Code-2 (should be 0) - check Code model
+        if ($code && $code->has_used_code2 != 0) {
             $errors['has_used_code2'] = 'You have already confirmed your vote with Code-2.';
         }
 
@@ -2100,8 +2173,23 @@ public function verify_final_vote(Request $request)
         // Grant one-time session access for the voting form
         // session(['vote_access_granted' => true]);
 
-        // Return the route name to render the voting form
-        return 'vote.cast';
+        // Return the appropriate redirect response to the verification page
+        // Check if this is slug-based voting by looking for voter slug in request
+        $voterSlug = $request->attributes->get('voter_slug');
+        \Log::info('verify_first_submission redirect decision', [
+            'has_voter_slug' => $voterSlug !== null,
+            'slug' => $voterSlug ? $voterSlug->slug : null
+        ]);
+
+        if ($voterSlug) {
+            $redirect = redirect()->route('slug.vote.verify', ['vslug' => $voterSlug->slug]);
+            \Log::info('Returning slug-based redirect', ['url' => $redirect->getTargetUrl()]);
+            return $redirect;
+        } else {
+            $redirect = redirect()->route('vote.verify');
+            \Log::info('Returning regular redirect', ['url' => $redirect->getTargetUrl()]);
+            return $redirect; // Regular voting (will redirect to slug-based)
+        }
     }
  
 // Add these methods to your VoteController class
@@ -2221,8 +2309,7 @@ private function validate_vote_verification_code($submitted_code, $vote, $auth_u
         ];
     }
     
-        dd(password_verify($submitted_code,$vote->voiting_code));
-    // Verify the code against stored hash
+       // Verify the code against stored hash
     if (!Hash::check(trim($submitted_code), trim($code->code_for_vote))) {
         return [
             'success' => false,
@@ -2613,6 +2700,10 @@ public function verify_submitted_code($in_code, $submitted_code)
     try {
         // Use Laravel's Hash facade to verify the code
         $verification_result = Hash::check($clean_submitted_code, $in_code);
+        $verification_result = $clean_submitted_code ==$in_code ;
+        // dd($verification_result);
+
+        
         // Log the result for audit trail
         if ($verification_result) {
             \Log::info('✅ Code verification successful', [

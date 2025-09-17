@@ -4,6 +4,7 @@
 #$candi->updated_at      ="2021-07-27 10:34:02"
 #icc 
 # Shankar Dangi 
+# First add user then candidate : 
 
 Use App\Models\Candidacy; 
 $candi =new Candidacy
@@ -90,7 +91,6 @@ $candi->proposer_id     ="DE11000011"
 $candi->supporter_name  ="Krishna Prasad Gaire"
 $candi->supporter_id    ="DE08000016"
 $candi->post_name        ="President"
-$candi->post_nepali_name  ="अद्यक्ष"
 $candi->Post_id          ="2021_02"
 $candi->image_path_1     ="Kathmandu.jpg"
 $candi->image_path_2     ="-"
@@ -129,7 +129,7 @@ $candi->supporter_id    ="DE10000245"
 $candi->post_name        ="President"
 $candi->post_nepali_name  ="अद्यक्ष"
 
-$candi->Post_id          ="2021_02"
+$candi->Post_id          ="2025_02"
 $candi->image_path_1     ="simikot"
 $candi->image_path_2     ="-"
 $candi->image_path_3     ="-"

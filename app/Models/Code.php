@@ -39,8 +39,11 @@ class Code extends Model
         'has_code2_sent',
         'client_ip',
         'has_agreed_to_vote',
-        'has_used_code1'.
-        'has_used_code2' 
+        'has_used_code1',
+        'has_used_code2',
+        'session_name',
+        'has_agreed_to_vote_at',
+        'voting_started_at'
         // Add any other fields you need to mass assign
     ];
 

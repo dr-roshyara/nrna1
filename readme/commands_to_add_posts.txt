@@ -1,5 +1,5 @@
-   $post =new Post
-        $post->post_id ="2021_01"
+      $post =new Post
+        $post->post_id ="2025_01"
         $post->name ="ICC Member"
         $post->nepali_name ="आइसीसी सदस्य"
         $post->required_number =1
@@ -16,7 +16,7 @@
         #
         use App\Models\Post;
         $post =new Post
-        $post->post_id ="2021_03"
+        $post->post_id ="2025_03"
         $post->name ="Vice President" 
        $post->required_number =4
         $post->nepali_name ="उपाध्यक्ष" 
@@ -26,7 +26,7 @@
       
         use App\Models\Post;
         $post =new Post
-        $post->post_id ="2021_04"
+        $post->post_id ="2025_04"
         $post->required_number =1
          $post->is_national_wide =1
         $post->name ="Woman Vice President"

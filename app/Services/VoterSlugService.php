@@ -90,18 +90,63 @@ class VoterSlugService
     }
 
     /**
-     * Generate a URL-safe random slug
+     * Generate a URL-safe random slug with enhanced uniqueness
      */
     private function generateRandomSlug(): string
     {
-        return rtrim(strtr(base64_encode(random_bytes(18)), '+/', '-_'), '=');
+        // Generate timestamp-based prefix for better uniqueness
+        $timestamp = base_convert(time(), 10, 36);
+
+        // Generate random suffix with higher entropy
+        $randomBytes = rtrim(strtr(base64_encode(random_bytes(21)), '+/', '-_'), '=');
+
+        // Combine timestamp + random for maximum uniqueness
+        return $timestamp . '_' . $randomBytes;
     }
 
     /**
      * Build the voting link for a slug
      */
-    public function buildVotingLink(VoterSlug $slug, string $routeName = 'voter.code.create'): string
+    public function buildVotingLink(VoterSlug $slug, string $routeName = 'slug.code.create'): string
     {
         return route($routeName, ['vslug' => $slug->slug]);
+    }
+
+    /**
+     * Get or create a single active slug for a user (ensures one-slug-per-person)
+     */
+    public function getOrCreateActiveSlug(User $user): VoterSlug
+    {
+        return DB::transaction(function () use ($user) {
+            // First check if user already has an active slug
+            $existingSlug = VoterSlug::where('user_id', $user->id)
+                ->where('is_active', true)
+                ->where('expires_at', '>', now())
+                ->first();
+
+            if ($existingSlug) {
+                // Extend the expiry by 30 minutes (sliding window)
+                $existingSlug->update([
+                    'expires_at' => now()->addMinutes(30)
+                ]);
+
+                return $existingSlug;
+            }
+
+            // No active slug exists, create a new one
+            return $this->generateSlugForUser($user);
+        });
+    }
+
+    /**
+     * Validate slug belongs to user and is still active
+     */
+    public function validateSlugForUser(string $slug, User $user): ?VoterSlug
+    {
+        return VoterSlug::where('slug', $slug)
+            ->where('user_id', $user->id)
+            ->where('is_active', true)
+            ->where('expires_at', '>', now())
+            ->first();
     }
 }

@@ -419,7 +419,18 @@ export default {
         });
 
         function submit() {
-            form.post("/votes");
+            // Check if we're in a slug-based context
+            const currentPath = window.location.pathname;
+            const slugMatch = currentPath.match(/\/v\/([^\/]+)\//);
+
+            if (slugMatch) {
+                // We're in slug context, use slug-aware route
+                const slug = slugMatch[1];
+                form.post(`/v/${slug}/vote/verify`);
+            } else {
+                // Fallback to legacy route
+                form.post("/votes");
+            }
         }
 
         return { form, submit };
