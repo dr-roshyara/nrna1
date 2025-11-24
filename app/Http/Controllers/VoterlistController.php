@@ -43,6 +43,20 @@ class VoterlistController extends Controller
             ->paginate(2000)
             ->withQueryString();
 
+        // Transform data to ensure all required fields have default values
+        $users->getCollection()->transform(function ($user) {
+            // Ensure critical fields have default values if null
+            $user->name = $user->name ?? 'Unknown';
+            $user->user_id = $user->user_id ?? 'N/A';
+            $user->can_vote = $user->can_vote ?? 0;
+            $user->approvedBy = $user->approvedBy ?? null;
+            $user->suspendedBy = $user->suspendedBy ?? null;
+            $user->voting_ip = $user->voting_ip ?? null;
+            $user->user_ip = $user->user_ip ?? null;
+
+            return $user;
+        });
+
         // Check permissions
         $btemp = auth()->user()->hasAnyPermission('send code');
 

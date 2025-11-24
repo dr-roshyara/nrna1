@@ -14,13 +14,13 @@
 
             <div class="flex flex-row justify-between py-2">
                 <Link
-                    v-if="voters.prev_page_url"
+                    v-if="voters?.prev_page_url"
                     class="m-2 rounded bg-gray-300 px-2 py-2"
                     :href="voters.prev_page_url"
                     >Previous Page
                 </Link>
                 <Link
-                    v-if="voters.next_page_url"
+                    v-if="voters?.next_page_url"
                     class="m-2 rounded bg-gray-300 px-2 py-2"
                     :href="voters.next_page_url"
                     >Next Page
@@ -114,8 +114,8 @@
        -->
                 <template #body>
                     <tr
-                        v-for="(voter, voterIndx) in voters.data"
-                        :key="voterIndx"
+                        v-for="(voter, voterIndx) in safeVoters"
+                        :key="voter?.id || voterIndx"
                         :class="[{ 'bg-gray-100': voterIndx % 2 == 0 }, 'p-1']"
                     >
                         <td
@@ -129,14 +129,14 @@
                             class="border-r border-green-200 p-2"
                             v-show="showColumn('user_id')"
                         >
-                            {{ voter.user_id }}
+                            {{ voter?.user_id || 'N/A' }}
                         </td>
 
                         <td
                             class="border-r border-green-200 p-2"
                             v-show="showColumn('name')"
                         >
-                            {{ voter.name }}
+                            {{ voter?.name || 'Unknown Voter' }}
                         </td>
                         <!-- REMOVED REGION COLUMN -->
                         <!-- Voting Status -->
@@ -144,14 +144,14 @@
                             class="border-r border-green-200 p-2"
                             v-show="showColumn('status')"
                         >
-                            <span 
+                            <span
                                 :class="{
-                                    'bg-green-100 text-green-800': voter.can_vote == 1,
-                                    'bg-red-100 text-red-800': voter.can_vote == 0 || voter.can_vote == null
+                                    'bg-green-100 text-green-800': voter?.can_vote == 1,
+                                    'bg-red-100 text-red-800': voter?.can_vote == 0 || voter?.can_vote == null
                                 }"
                                 class="px-2 py-1 rounded-full text-xs font-medium"
                             >
-                                {{ voter.can_vote == 1 ? 'Approved' : 'Pending Approval' }}
+                                {{ voter?.can_vote == 1 ? 'Approved' : 'Pending Approval' }}
                             </span>
                         </td>
                         <!-- Status Details (Approved By / Suspended By) -->
@@ -160,27 +160,27 @@
                             v-show="showColumn('approved_by')"
                         >
                             <!-- If voter is approved (can_vote = 1) -->
-                            <div v-if="voter.can_vote == 1">
-                                <span v-if="voter.approvedBy" class="text-sm text-green-600">
+                            <div v-if="voter?.can_vote == 1">
+                                <span v-if="voter?.approvedBy" class="text-sm text-green-600">
                                     ✅ Approved by: {{ voter.approvedBy }}
                                 </span>
                                 <span v-else class="text-sm text-gray-400 italic">
                                     Approved (no record)
                                 </span>
                             </div>
-                            
+
                             <!-- If voter is suspended (can_vote = 0 and has suspension info) -->
-                            <div v-else-if="voter.can_vote == 0 && voter.suspendedBy">
+                            <div v-else-if="voter?.can_vote == 0 && voter?.suspendedBy">
                                 <div class="text-sm">
                                     <div class="text-red-600">
                                         ❌ Suspended by: {{ voter.suspendedBy }}
                                     </div>
-                                    <div v-if="voter.approvedBy" class="text-gray-500 text-xs mt-1">
+                                    <div v-if="voter?.approvedBy" class="text-gray-500 text-xs mt-1">
                                         Originally approved by: {{ voter.approvedBy }}
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- If voter is pending (never approved) -->
                             <div v-else>
                                 <span class="text-sm text-gray-400 italic">
@@ -193,41 +193,44 @@
                             class="border-r border-green-200 p-2"
                             v-show="showColumn('voting_ip')"
                         >
-                            <div v-if="voter.voting_ip">
+                            <div v-if="voter?.voting_ip">
                                 <span class="text-sm text-gray-900">{{ voter.voting_ip }}</span>
                                 <!-- Show if current IP is different from voting IP -->
-                                <div v-if="voter.user_ip && voter.user_ip !== voter.voting_ip" class="text-xs text-gray-500 mt-1">
+                                <div v-if="voter?.user_ip && voter.user_ip !== voter.voting_ip" class="text-xs text-gray-500 mt-1">
                                     Current: {{ voter.user_ip }}
                                 </div>
                             </div>
                             <span v-else class="text-sm text-gray-400 italic">Not approved</span>
                         </td>
                         <!-- Actions - only show if committee member -->
-                        <td 
-                            v-if="isCommitteeMember" 
+                        <td
+                            v-if="isCommitteeMember"
                             class="border-r border-green-200 p-2"
                             v-show="showColumn('actions')"
                         >
-                            <div class="flex space-x-2">
+                            <div v-if="voter?.id" class="flex space-x-2">
                                 <!-- Approve Button -->
                                 <button
-                                    v-if="voter.can_vote == 0 || voter.can_vote == null"
+                                    v-if="voter?.can_vote == 0 || voter?.can_vote == null"
                                     @click="approveVoter(voter.id)"
                                     class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-xs"
                                     :disabled="loading"
                                 >
                                     {{ loading ? 'Loading...' : 'Approve' }}
                                 </button>
-                                
+
                                 <!-- Reject/Suspend Button -->
                                 <button
-                                    v-if="voter.can_vote == 1"
+                                    v-if="voter?.can_vote == 1"
                                     @click="rejectVoter(voter.id)"
                                     class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded text-xs"
                                     :disabled="loading"
                                 >
                                     {{ loading ? 'Loading...' : 'Suspend' }}
                                 </button>
+                            </div>
+                            <div v-else class="text-sm text-gray-400 italic">
+                                Invalid voter
                             </div>
                         </td>
                     </tr>
@@ -256,18 +259,27 @@ import {
     DialogOverlay,
     DialogTitle,
 } from "@headlessui/vue";
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed } from "vue";
 
 export default {
     mixins: [InteractsWithQueryBuilder],
     props: {
-        voters: Object,
-        filters: Object,
-        can_send_code: Boolean,
-        isCommitteeMember: Boolean,
-        // message_receiver_id:Integer
-        // from: String,
-        // name: String,
+        voters: {
+            type: Object,
+            default: () => ({ data: [] })
+        },
+        filters: {
+            type: Object,
+            default: () => ({})
+        },
+        can_send_code: {
+            type: Boolean,
+            default: false
+        },
+        isCommitteeMember: {
+            type: Boolean,
+            default: false
+        },
     },
 
     data() {
@@ -276,7 +288,42 @@ export default {
         };
     },
 
+    computed: {
+        /**
+         * Computed property to safely filter and return voter data
+         * Filters out null/undefined voters and ensures data consistency
+         */
+        safeVoters() {
+            // Safely access voters.data with optional chaining and provide empty array fallback
+            const votersData = this.voters?.data;
+
+            if (!Array.isArray(votersData)) {
+                console.warn('Voters data is not an array:', votersData);
+                return [];
+            }
+
+            // Filter out any null or undefined entries
+            return votersData.filter(voter => voter != null);
+        },
+
+        /**
+         * Check if voters data exists and has entries
+         */
+        hasVoters() {
+            return this.safeVoters.length > 0;
+        }
+    },
+
     methods: {
+        /**
+         * Safely get a voter property with fallback value
+         * @param {Object} voter - The voter object
+         * @param {String} property - Property name to access
+         * @param {*} defaultValue - Default value if property is null/undefined
+         */
+        getSafeVoterProperty(voter, property, defaultValue = 'N/A') {
+            return voter?.[property] ?? defaultValue;
+        },
         approveVoter(voterId) {
             if (confirm('Are you sure you want to approve this voter?')) {
                 this.loading = true;

@@ -74,6 +74,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'google_id',
         'facebook_id',
         'approvedBy',
+        'suspendedBy',
+        'suspended_at',
         'user_ip',
         'voting_ip',
 
