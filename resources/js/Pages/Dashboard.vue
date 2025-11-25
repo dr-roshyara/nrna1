@@ -1,5 +1,5 @@
 <template>
-    <nrna-layout>
+    <public-digit-layout>
         <app-layout>
             <template #header>
                 <h2 class="text-xl font-semibold leading-tight text-gray-800">
@@ -17,13 +17,13 @@
                 </div>
             </div> -->
         </app-layout>
-    </nrna-layout>
+    </public-digit-layout> 
 </template>
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import Welcome from "@/Jetstream/Welcome";
-import NrnaLayout from "@/Layouts/NrnaLayout.vue";
+import PublicDigitLayout from "@/Layouts/PublicDigitLayout.vue";
 
 export default {
     props: {
@@ -32,7 +32,7 @@ export default {
     components: {
         AppLayout,
         Welcome,
-        NrnaLayout,
+        PublicDigitLayout,
     },
 };
 </script>

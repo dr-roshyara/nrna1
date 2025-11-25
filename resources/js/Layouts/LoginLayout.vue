@@ -1,18 +1,18 @@
 <template>
     <div class="flex flex-col lg:h-full">
-        <nrna-header :canRegister="canRegister" :canLogin="canLogin">
-        </nrna-header>
+        <public-digit-header :canRegister="canRegister" :canLogin="canLogin">
+        </public-digit-header>
 
         <!-- middle  -->
         <slot class="min-h-screen flex-grow"> </slot>
         <!-- footer  -->
-        <nrna-footer class="px-4"> </nrna-footer>
+        <public-digit-footer class="px-4"> </public-digit-footer>
     </div>
 </template>
 <script>
-import NrnaHeader from "@/Jetstream/NrnaHeader";
+import PublicDigitHeader from "@/Jetstream/PublicDigitHeader.vue";
 import profileHeader from "@/Jetstream/ProfileHeader";
-import NrnaFooter from "@/Jetstream/NrnaFooter";
+import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
 export default {
     props: {
         image2: String,
@@ -26,9 +26,9 @@ export default {
         };
     },
     components: {
-        NrnaHeader,
+        PublicDigitHeader,
         profileHeader,
-        NrnaFooter,
+        PublicDigitFooter,
     },
 };
 </script>
