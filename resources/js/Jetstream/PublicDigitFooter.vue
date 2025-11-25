@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white">
+    <footer class="bg-publicdigit-footer text-white">
         <!-- Main Footer Content -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -101,9 +101,9 @@
                                     {{ language === 'de' ? 'Adresse:' : 'Address:' }}
                                 </p>
                                 <p class="text-purple-200 text-sm">
-                                    Tech Innovation Center<br>
-                                    Digital Street 123
-                                </p>
+                                    Public Digit Technology<br>
+                                    Rathaus str 4 <br> 
+                                    65203 Wiesbaden , Germany  </p>
                             </div>
                         </div>
                         
@@ -129,8 +129,8 @@
                                 <p class="text-purple-300 text-sm">
                                     {{ language === 'de' ? 'Telefon:' : 'Phone:' }}
                                 </p>
-                                <a href="tel:+1-555-PUB-DIGIT" class="text-purple-200 text-sm hover:text-white transition-colors duration-200">
-                                    +1 (555) PUB-DIGIT
+                                <a href="tel:+49-15164322589" class="text-purple-200 text-sm hover:text-white transition-colors duration-200">
+                                    +49 151 64322589
                                 </a>
                             </div>
                         </div>
@@ -308,6 +308,17 @@ export default {
 </script>
 
 <style scoped>
+/* PublicDigit Footer Background */
+.bg-publicdigit-footer {
+    background: oklch(37.9% 0.146 265.522);
+}
+
+@supports not (color: oklch(0% 0 0)) {
+  .bg-publicdigit-footer {
+    background: #3d3d7a; /* Fallback color */
+  }
+}
+
 /* Footer link hover effects */
 .footer-link {
     position: relative;

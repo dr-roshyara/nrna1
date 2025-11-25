@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gradient-to-r from-purple-900 via-indigo-800 to-purple-900 shadow-2xl">
+    <div class="bg-publicdigit-header shadow-2xl">
         <!-- Top Bar with Contact Info and Quick Links -->
         <div class="bg-purple-950/50 border-b border-purple-700/30">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,19 +74,20 @@
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between py-6">
                     <!-- Logo and Organization Info -->
-                    <div class="flex items-center space-x-6">
+                    <div class="flex  items-center space-x-6">
                         <!-- Logo -->
-                        <div class="flex-shrink-0">
+                        <!-- <div class="flex-shrink-0">
                             <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
                                 <span class="text-white font-bold text-lg">PD</span>
                             </div>
-                        </div>
+                        </div> -->
+                        <img src="/images/logo_publicdigit.png" alt="PublicDigit Logo" class="sm:h-20 sm:w-20 lg:h-24 w-24 rounded-lg "/>
 
                         <!-- Organization Details -->
                         <div class="hidden md:block">
                             <div class="flex flex-col">
-                                <h1 class="text-2xl lg:text-3xl font-bold text-white leading-tight">
-                                    PublicDigit
+                                <h1 class="text-3xl lg:text-4xl font-bold text-white leading-tight">
+                                Public Digit 
                                 </h1>
                                 <h2 class="text-lg lg:text-xl font-semibold text-purple-200 leading-tight">
                                     Digital Innovation Platform
@@ -199,10 +200,10 @@
 
                 <!-- Mobile Organization Title -->
                 <div class="md:hidden pb-4">
-                    <h1 class="text-xl font-bold text-white text-center leading-tight">
-                        PublicDigit
+                    <h1 class="text-3xl font-bold text-white text-center leading-tight">
+                        Public Digit
                     </h1>
-                    <p class="text-sm text-purple-200 text-center mt-1">
+                    <p class="text-sm text-purple-100 text-center mt-1">
                         Digital Innovation Platform
                     </p>
                 </div>
@@ -264,11 +265,11 @@
                             </svg>
                             support@publicdigit.com
                         </a>
-                        <a href="tel:+1-555-PUB-DIGIT" class="flex items-center hover:text-white">
+                        <a href="tel:+49-15164322589" class="flex items-center hover:text-white">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                             </svg>
-                            +1 (555) PUB-DIGIT
+                            +49 151 64322589
                         </a>
                     </div>
                 </div>
@@ -407,6 +408,17 @@ export default {
 </script>
 
 <style scoped>
+/* PublicDigit Header Background */
+.bg-publicdigit-header {
+    background: oklch(37.9% 0.146 265.522);
+}
+
+@supports not (color: oklch(0% 0 0)) {
+  .bg-publicdigit-header {
+    background: #3d3d7a; /* Fallback color */
+  }
+}
+
 /* Tech-inspired background pattern */
 .bg-tech-pattern {
     background-image: 
