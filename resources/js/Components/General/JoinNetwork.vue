@@ -9,9 +9,51 @@
                     </svg>
                 </div>
                 
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                    NRNA निर्वाचन प्रणाली
-                </h1>
+                    <!-- Styled Header Section -->
+    <div class="text-center p-8 max-w-4xl w-full">
+        <!-- Main Heading with Modern, Stylized Classes -->
+        <h1 class="
+            text-2xl 
+            md:text-3xl 
+            lg:text-4xl 
+            font-extrabold 
+            leading-tight 
+            mb-4 
+            tracking-tighter 
+            
+            /* Text Styling: Gradient and Shadow */
+            bg-clip-text 
+            text-transparent 
+            bg-gradient-to-r 
+            from-indigo-600 
+            to-pink-600
+            drop-shadow-lg
+        ">
+            PUBLIC-DIGIT
+        </h1>
+        
+        <!-- Subheading with improved visual hierarchy -->
+        <p class="
+            text-3xl 
+            md:text-4xl 
+            font-semibold 
+            text-gray-700 
+            mt-4 
+            rounded-xl 
+            px-4 
+            py-2 
+            inline-block
+            bg-white/80
+            shadow-xl
+        ">
+            निर्वाचन प्रणाली
+        </p>
+
+        <!-- Optional: A small digital theme description -->
+        <p class="text-lg text-gray-500 mt-8 max-w-lg mx-auto">
+            A secure and modern digital voting interface.
+        </p>
+    </div>
                 
                 <!-- <div class="space-y-4 max-w-4xl mx-auto">
                     <p class="text-xl md:text-2xl font-semibold text-blue-800">

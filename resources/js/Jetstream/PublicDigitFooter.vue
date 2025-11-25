@@ -319,6 +319,17 @@ export default {
   }
 }
 
+/* PublicDigit Main Background (Darker) */
+.bg-publicdigit-main {
+    background: oklch(25.7% 0.09 281.288);
+}
+
+@supports not (color: oklch(0% 0 0)) {
+  .bg-publicdigit-main {
+    background: #1a1a2e; /* Fallback color */
+  }
+}
+
 /* Footer link hover effects */
 .footer-link {
     position: relative;

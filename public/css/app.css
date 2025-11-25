@@ -2647,6 +2647,9 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(254 240 138 / var(--tw-bg-opacity));
 }
+.bg-white\/80 {
+  background-color: rgb(255 255 255 / 0.8);
+}
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
 }
@@ -2751,6 +2754,10 @@ select {
 .from-green-400 {
   --tw-gradient-from: #4ade80;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(74 222 128 / 0));
+}
+.from-indigo-600 {
+  --tw-gradient-from: #4f46e5;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(79 70 229 / 0));
 }
 .via-indigo-900 {
   --tw-gradient-stops: var(--tw-gradient-from), #312e81, var(--tw-gradient-to, rgb(49 46 129 / 0));
@@ -2860,11 +2867,18 @@ select {
 .to-green-600 {
   --tw-gradient-to: #16a34a;
 }
+.to-pink-600 {
+  --tw-gradient-to: #db2777;
+}
 .bg-cover {
   background-size: cover;
 }
 .bg-clip-padding {
   background-clip: padding-box;
+}
+.bg-clip-text {
+  -webkit-background-clip: text;
+          background-clip: text;
 }
 .bg-center {
   background-position: center;
@@ -3123,6 +3137,10 @@ select {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 .font-medium {
   font-weight: 500;
@@ -3414,6 +3432,9 @@ select {
   --tw-text-opacity: 1;
   color: rgb(254 240 138 / var(--tw-text-opacity));
 }
+.text-transparent {
+  color: transparent;
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -3604,6 +3625,10 @@ select {
 }
 .blur {
   --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.drop-shadow-lg {
+  --tw-drop-shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 .grayscale {
@@ -4871,6 +4896,11 @@ select {
     font-size: 2.25rem;
     line-height: 2.5rem;
   }
+
+  .md\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
 }
 @media (min-width: 1024px) {
 
@@ -4999,6 +5029,11 @@ select {
   .lg\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .lg\:text-8xl {
+    font-size: 6rem;
+    line-height: 1;
   }
 }
 @media (min-width: 1280px) {

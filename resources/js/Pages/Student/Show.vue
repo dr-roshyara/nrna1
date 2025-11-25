@@ -6,7 +6,6 @@
                 Thank you Very much for your registration.<br />
                 We will contact you personally. <br />
 
-                NRNA
             </p>
         </div>
     </nrna-layout>
