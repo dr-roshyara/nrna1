@@ -5,18 +5,18 @@
             :canLogin="canLogin"
             :isLoggedIn="isLoggedIn"
             :user="user"
-            :userLoggedIn="userLoggedIn"
+            :userLoggedIn="userLoggedIn" 
         >
         </profile-header>
         <!-- middle  -->
         <slot class="relative min-h-screen flex-grow"> </slot>
         <!-- footer  -->
-        <nrna-footer class="px-2"> </nrna-footer>
-    </div>
+        <public-digit-footer class="px-2"> </public-digit-footer>
+    </div> 
 </template>
 <script>
 import ProfileHeader from "@/Jetstream/ProfileHeader";
-import NrnaFooter from "@/Jetstream/NrnaFooter";
+import PublicDigitFooter   from "@/Jetstream/NrnaFooter";
 
 export default {
     props: {
@@ -26,16 +26,16 @@ export default {
         isLoggedIn: Boolean,
         user: Array,
         userLoggedIn: Boolean,
-    },
+    }, 
     data() {
         return {
-            image1: "/storage/images/logo_nrna.jpg",
+            image1: "/storage/images/logo_publicdigit.jpg",
             //  image1: this.image2
         };
     },
     components: {
         ProfileHeader,
-        NrnaFooter,
+        PublicDigitFooter,
     },
 };
 </script>

@@ -12,11 +12,11 @@
                             </svg>
                             support@publicdigit.com
                         </a>
-                        <a href="tel:+1-555-PUB-DIGIT" class="flex items-center hover:text-white transition-colors duration-200">
+                        <a href="tel:+49 15164322589" class="flex items-center hover:text-white transition-colors duration-200">
                             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                             </svg>
-                            +1 (555) PUB-DIGIT
+                            +49 151 64322589
                         </a>
                     </div>
 
