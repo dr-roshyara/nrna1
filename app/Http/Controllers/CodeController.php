@@ -69,6 +69,9 @@ class CodeController extends Controller
             ]);
         }
 
+        // Check if email is valid
+        $hasValidEmail = $user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL);
+
         return Inertia::render('Code/CreateCode', [
             'name' => $user->name,
             'nrna_id' => $user->nrna_id ?? '',
@@ -77,6 +80,9 @@ class CodeController extends Controller
             'code_expires_in' => 20, // 20 minutes expiry
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'useSlugPath' => $voterSlug !== null,
+            'has_valid_email' => $hasValidEmail,
+            'show_code_fallback' => !$hasValidEmail, // Show code on page if email can't be sent
+            'verification_code' => !$hasValidEmail ? $code->code1 : null, // Only show if no email
         ]);
     }
 
@@ -316,8 +322,23 @@ class CodeController extends Controller
                 'can_vote_now' => 0,
             ]);
 
-            // Send code via email
-            $user->notify(new SendFirstVerificationCode($user, $code->code1));
+            // Send code via email only if user has valid email
+            if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
+                try {
+                    $user->notify(new SendFirstVerificationCode($user, $code->code1));
+                } catch (\Exception $e) {
+                    Log::error('Failed to send verification code email', [
+                        'user_id' => $user->id,
+                        'email' => $user->email,
+                        'error' => $e->getMessage(),
+                    ]);
+                }
+            } else {
+                Log::warning('User does not have valid email for verification code', [
+                    'user_id' => $user->id,
+                    'email' => $user->email ?? 'null',
+                ]);
+            }
 
             Log::info('New verification code created and sent', [
                 'user_id' => $user->id,
@@ -351,8 +372,23 @@ class CodeController extends Controller
                     'vote_submitted' => 0, // Reset submission status
                 ]);
 
-                // Send new code via email
-                $user->notify(new SendFirstVerificationCode($user, $newCode));
+                // Send new code via email only if user has valid email
+                if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
+                    try {
+                        $user->notify(new SendFirstVerificationCode($user, $newCode));
+                    } catch (\Exception $e) {
+                        Log::error('Failed to resend verification code email', [
+                            'user_id' => $user->id,
+                            'email' => $user->email,
+                            'error' => $e->getMessage(),
+                        ]);
+                    }
+                } else {
+                    Log::warning('User does not have valid email for verification code resend', [
+                        'user_id' => $user->id,
+                        'email' => $user->email ?? 'null',
+                    ]);
+                }
 
                 Log::info('Code regenerated and resent', [
                     'user_id' => $user->id,

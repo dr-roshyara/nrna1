@@ -41,6 +41,16 @@ class SendVoteSavingCode extends Notification
      */
     public function toMail($notifiable)
     {
+        // Ensure recipient has valid email
+        if (!$notifiable->email || !filter_var($notifiable->email, FILTER_VALIDATE_EMAIL)) {
+            \Log::error('Attempted to send vote saving code to user without valid email', [
+                'user_id' => $notifiable->id ?? null,
+                'email' => $notifiable->email ?? 'null',
+            ]);
+
+            throw new \Exception('User does not have a valid email address');
+        }
+
         return (new MailMessage)->markdown('mail.send_vote_saving_code', [
             'vote_saving_code'=>$this->vote_saving_code,
              'user'=>auth()->user()

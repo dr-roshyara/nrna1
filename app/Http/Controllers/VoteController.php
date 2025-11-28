@@ -1101,9 +1101,25 @@ private function has_valid_selections($selections)
 
             // 8. Mark user as voted and update code status
                 $this->markUserAsVoted($code, $hashed_key);
-                
-                // 9. Send verification notification
-                $auth_user->notify(new SendVoteSavingCode($vote_private_key));
+
+                // 9. Send verification notification (only if user has valid email)
+                if ($auth_user->email && filter_var($auth_user->email, FILTER_VALIDATE_EMAIL)) {
+                    try {
+                        $auth_user->notify(new SendVoteSavingCode($vote_private_key));
+                    } catch (\Exception $e) {
+                        \Log::error('Failed to send vote saving code email', [
+                            'user_id' => $auth_user->id,
+                            'email' => $auth_user->email,
+                            'error' => $e->getMessage(),
+                        ]);
+                        // Don't fail the vote submission if email fails
+                    }
+                } else {
+                    \Log::warning('User does not have valid email for vote saving code', [
+                        'user_id' => $auth_user->id,
+                        'email' => $auth_user->email ?? 'null',
+                    ]);
+                }
 
                 DB::commit();
         // Advance slug step after successful vote submission
