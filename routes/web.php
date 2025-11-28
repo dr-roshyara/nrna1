@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\MakeurlController;
+use App\Http\Controllers\SitemapController;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FeedController;
@@ -64,7 +65,8 @@ Route::get('/storage/images/{filename}', function ($filename)
     return $response;
 });
 
-
+// SEO Routes
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 // Home route: If authenticated, show election dashboard. Else, show welcome page.
 Route::get('/', 

@@ -330,7 +330,7 @@
                                 <th
                                     class="mb-1 px-2 py-2 text-left text-sm font-bold"
                                 >
-                                    Actions
+                                    Action
                                 </th>
                                 <!-- next -->
                                 <!-- <th class="px-2 py-2 mb-1 text-left text-sm font-bold"> <span class=" flex flex-row space-x-2" @click="sort('telephone')"> Telephone
