@@ -314,13 +314,16 @@ public function create(Request $request)
  */
 public function first_submission(Request $request)
 {
+    // Get user from slug middleware or regular auth
+    $auth_user = $request->attributes->has('voter')
+        ? $request->attributes->get('voter')
+        : auth()->user();
+
     \Log::info('=== FIRST_SUBMISSION START ===', [
         'url' => $request->url(),
         'method' => $request->method(),
-        'user_id' => auth()->id(),
+        'user_id' => $auth_user ? $auth_user->id : null,
     ]);
-
-    $auth_user = auth()->user();
  
     // Get the code model and set as submitted
     $code = $auth_user->code;
@@ -1003,8 +1006,18 @@ private function has_valid_selections($selections)
     {
         DB::beginTransaction();
      try {
-   
-        $auth_user          = auth()->user();
+
+        // Get user from slug middleware or regular auth
+        $auth_user = $request->attributes->has('voter')
+            ? $request->attributes->get('voter')
+            : auth()->user();
+
+        if (!$auth_user) {
+            DB::rollBack();
+            \Log::error('No authenticated user found in vote store');
+            return back()->withErrors(['error' => 'Authentication required.'])->withInput();
+        }
+
         $code               = $auth_user->code;
         $voting_session_name =Hash::make($code->code2);
 
