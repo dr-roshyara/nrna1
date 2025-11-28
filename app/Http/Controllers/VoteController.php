@@ -1108,7 +1108,7 @@ private function has_valid_selections($selections)
                 DB::commit();
         // Advance slug step after successful vote submission
         $vslug = $request->route('vslug');
-        if ($vslug && $vslug->current_step < 5) {
+        if ($vslug instanceof \App\Models\VoterSlug && $vslug->current_step < 5) {
             $vslug->current_step = 5; // Advance to completion step
             $vslug->save();
 
@@ -2732,12 +2732,10 @@ public function verify_submitted_code($in_code, $submitted_code)
     ]);
 
     try {
-        // Use Laravel's Hash facade to verify the code
+        // ⚠️ SECURITY FIX: Use Laravel's Hash facade to verify the code against bcrypt hash
+        // This line MUST be the only verification - DO NOT override with plain text comparison!
         $verification_result = Hash::check($clean_submitted_code, $in_code);
-        $verification_result = $clean_submitted_code ==$in_code ;
-        // dd($verification_result);
 
-        
         // Log the result for audit trail
         if ($verification_result) {
             \Log::info('✅ Code verification successful', [

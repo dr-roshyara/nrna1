@@ -21,7 +21,12 @@ class EnsureVoterStepOrder
         /** @var VoterSlug $vslug */
         $vslug = $request->route('vslug');
 
-        if (!$vslug || !$vslug->is_active || $vslug->expires_at->isPast()) {
+        // Ensure we have a VoterSlug instance, not a string
+        if (!$vslug instanceof VoterSlug) {
+            abort(403, 'Invalid voting link.');
+        }
+
+        if (!$vslug->is_active || $vslug->expires_at->isPast()) {
             abort(403, 'Voting link has expired or is invalid.');
         }
 

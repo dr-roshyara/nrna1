@@ -45,6 +45,10 @@ class User extends Authenticatable implements MustVerifyEmail
         //  $CanResetPassword =true;
     }
 
+    /**
+     * ⚠️ SECURITY: Only non-critical user profile fields are mass-assignable.
+     * Voting-related fields are PROTECTED from mass assignment to prevent manipulation.
+     */
     protected $fillable = [
         'google_id',
         'name',
@@ -64,21 +68,33 @@ class User extends Authenticatable implements MustVerifyEmail
         'city',
         'additional_address',
         'nrna_id',
-        'can_vote',
-        'has_voted',
-        'has_candidacy',
         'lcc',
         'profile_photo_path',
         'social_id',
         'social_type',
-        'google_id',
         'facebook_id',
-        'approvedBy',
-        'suspendedBy',
-        'suspended_at',
-        'user_ip',
-        'voting_ip',
+        'user_ip',  // Client IP can be mass-assigned (not critical)
+    ];
 
+    /**
+     * ⚠️ SECURITY: These fields are PROTECTED from mass assignment.
+     * They can only be modified through explicit setter methods with authorization checks.
+     */
+    protected $guarded = [
+        'id',
+        'can_vote',          // CRITICAL: Voting eligibility
+        'has_voted',         // CRITICAL: Vote status
+        'is_voter',          // CRITICAL: Voter registration status
+        'is_committee_member', // CRITICAL: Admin privileges
+        'approvedBy',        // CRITICAL: Audit trail
+        'suspendedBy',       // CRITICAL: Audit trail
+        'suspended_at',      // CRITICAL: Audit trail
+        'voting_ip',         // CRITICAL: Vote security
+        'has_candidacy',     // CRITICAL: Candidate status
+        'vote_last_seen',
+        'voting_started_at',
+        'vote_submitted_at',
+        'vote_completed_at',
     ];
 
     /**
@@ -483,19 +499,98 @@ public function scopeEligibleVoters($query)
     });
 }
 
-/**
- * Reset all voting-related state for this user and their associated voting code.
- *
- * Intended for development, QA, or testing purposes only.
- * Allows a developer to reset a voter's status and related code object for repeated testing of the voting flow.
- *
- * Usage (in tinker):
- *   $user = App\Models\User::find(1);
- *   $user->resetVotingState();
- *
- * @return $this
- */
-public function resetVotingState()
+    // ============================================================================
+    // SECURE SETTERS FOR PROTECTED VOTING FIELDS
+    // ============================================================================
+
+    /**
+     * ⚠️ SECURITY: Approve voter for voting (Committee members only)
+     * This method should only be called after proper authorization checks
+     *
+     * @param User $committeeUser The committee member approving the voter
+     * @return bool Success status
+     */
+    public function approveForVoting(User $committeeUser): bool
+    {
+        if (!$committeeUser->is_committee_member) {
+            throw new \Exception('Only committee members can approve voters');
+        }
+
+        if (!$this->is_voter) {
+            throw new \Exception('User must be registered as a voter first');
+        }
+
+        $this->can_vote = 1;
+        $this->approvedBy = $committeeUser->name;
+        $this->voting_ip = $this->user_ip;
+        $this->suspendedBy = null;
+        $this->suspended_at = null;
+
+        return $this->save();
+    }
+
+    /**
+     * ⚠️ SECURITY: Suspend voter (Committee members only)
+     * This method should only be called after proper authorization checks
+     *
+     * @param User $committeeUser The committee member suspending the voter
+     * @return bool Success status
+     */
+    public function suspendVoting(User $committeeUser): bool
+    {
+        if (!$committeeUser->is_committee_member) {
+            throw new \Exception('Only committee members can suspend voters');
+        }
+
+        $this->can_vote = 0;
+        $this->suspendedBy = $committeeUser->name;
+        $this->suspended_at = now();
+
+        return $this->save();
+    }
+
+    /**
+     * ⚠️ SECURITY: Mark user as having voted (System only)
+     * This method should ONLY be called by the voting system after vote submission
+     *
+     * @return bool Success status
+     */
+    public function markAsVoted(): bool
+    {
+        if ($this->has_voted) {
+            throw new \Exception('User has already voted');
+        }
+
+        $this->has_voted = 1;
+        $this->vote_completed_at = now();
+
+        return $this->save();
+    }
+
+    /**
+     * ⚠️ SECURITY: Register user as voter (Admin only)
+     *
+     * @return bool Success status
+     */
+    public function registerAsVoter(): bool
+    {
+        $this->is_voter = 1;
+        return $this->save();
+    }
+
+    /**
+     * Reset all voting-related state for this user and their associated voting code.
+     *
+     * Intended for development, QA, or testing purposes only.
+     * Allows a developer to reset a voter's status and related code object for repeated testing of the voting flow.
+     *
+     * Usage (in tinker):
+     *   $user = App\Models\User::find(1);
+     *   $user->resetVotingState();
+     *
+     * @return $this
+     */
+    public function resetVotingState()
 {
     // Reset primary voting flags for the user
     $this->can_vote        = 1;   // User is eligible to vote

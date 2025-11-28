@@ -36,7 +36,13 @@ use App\Models\VoterSlug;
 
 // Route binding for voter slugs
 Route::bind('vslug', function (string $value) {
-    return VoterSlug::with('user')->where('slug', $value)->first();
+    $voterSlug = VoterSlug::with('user')->where('slug', $value)->first();
+
+    if (!$voterSlug) {
+        abort(404, 'Voting link not found.');
+    }
+
+    return $voterSlug;
 });
 
 /*

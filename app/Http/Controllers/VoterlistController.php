@@ -93,34 +93,46 @@ class VoterlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    /**
+     * ⚠️ SECURITY FIX: Approve voter using secure setter method
+     * Authorization check is now enforced at multiple levels
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function approveVoter($id)
     {
         try {
-            // Check if current user is committee member
+            // AUTHORIZATION CHECK #1: Verify current user is committee member
             if (!auth()->user()->is_committee_member) {
+                \Log::warning('Unauthorized voter approval attempt', [
+                    'attempted_by' => auth()->id(),
+                    'target_voter' => $id,
+                    'ip' => request()->ip(),
+                ]);
                 return back()->withErrors(['error' => 'Unauthorized. Only committee members can approve voters.']);
             }
 
-            // Find the user
-            $user = User::findOrFail($id);
+            // Find the voter
+            $voter = User::findOrFail($id);
 
-            // Check if user is a voter
-            if (!$user->is_voter) {
-                return back()->withErrors(['error' => 'User is not registered as a voter.']);
-            }
+            // AUTHORIZATION CHECK #2: Use secure setter method which validates internally
+            $voter->approveForVoting(auth()->user());
 
-            // Update can_vote to 1, set approver, and capture voting_ip from user_ip, and clear suspension info
-            $user->update([
-                'can_vote' => 1,
-                'voting_ip'=>$user->user_ip,  // Save user's current IP as voting IP
-                'approvedBy' => auth()->user()->name,
-                'suspendedBy' => null,      // Clear suspension info when approved
-                'suspended_at' => null      // Clear suspension timestamp
+            \Log::info('Voter approved successfully', [
+                'voter_id' => $voter->id,
+                'approved_by' => auth()->user()->name,
+                'committee_user_id' => auth()->id(),
             ]);
 
-            return back()->with('success', $user->name . ' has been approved to vote by ' . auth()->user()->name);
+            return back()->with('success', $voter->name . ' has been approved to vote by ' . auth()->user()->name);
 
         } catch (\Exception $e) {
+            \Log::error('Error approving voter', [
+                'voter_id' => $id,
+                'error' => $e->getMessage(),
+                'attempted_by' => auth()->id(),
+            ]);
             return back()->withErrors(['error' => 'Error approving voter: ' . $e->getMessage()]);
         }
     }
@@ -134,25 +146,36 @@ class VoterlistController extends Controller
     public function rejectVoter($id)
     {
         try {
-            // Check if current user is committee member
+            // AUTHORIZATION CHECK #1: Verify current user is committee member
             if (!auth()->user()->is_committee_member) {
+                \Log::warning('Unauthorized voter suspension attempt', [
+                    'attempted_by' => auth()->id(),
+                    'target_voter' => $id,
+                    'ip' => request()->ip(),
+                ]);
                 return back()->withErrors(['error' => 'Unauthorized. Only committee members can suspend voters.']);
             }
 
-            // Find the user
-            $user = User::findOrFail($id);
+            // Find the voter
+            $voter = User::findOrFail($id);
 
-            // Update can_vote to 0 and track suspension (KEEP approvedBy info)
-            $user->update([
-                'can_vote' => 0,
-                'suspendedBy' => auth()->user()->name,  // Track who suspended
-                'suspended_at' => now()                 // Track when suspended
-                // approvedBy stays unchanged - keeps original approver info
+            // AUTHORIZATION CHECK #2: Use secure setter method which validates internally
+            $voter->suspendVoting(auth()->user());
+
+            \Log::info('Voter suspended successfully', [
+                'voter_id' => $voter->id,
+                'suspended_by' => auth()->user()->name,
+                'committee_user_id' => auth()->id(),
             ]);
 
-            return back()->with('success', $user->name . ' voting access has been suspended by ' . auth()->user()->name);
+            return back()->with('success', $voter->name . ' voting access has been suspended by ' . auth()->user()->name);
 
         } catch (\Exception $e) {
+            \Log::error('Error suspending voter', [
+                'voter_id' => $id,
+                'error' => $e->getMessage(),
+                'attempted_by' => auth()->id(),
+            ]);
             return back()->withErrors(['error' => 'Error suspending voter: ' . $e->getMessage()]);
         }
     }
