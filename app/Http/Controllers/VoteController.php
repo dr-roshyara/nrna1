@@ -1586,6 +1586,10 @@ public function verify(Request $request)
             ]);
         }
 
+        // Check if user has valid email - if not, show code on page
+        $hasValidEmail = $auth_user->email && filter_var($auth_user->email, FILTER_VALIDATE_EMAIL);
+        $showDebugCode = !$hasValidEmail || app()->environment(['local', 'development']);
+
         return Inertia::render('Vote/Verify', [
             'vote_data' => $processed_vote_data,
             'user_info' => $user_info,
@@ -1597,6 +1601,10 @@ public function verify(Request $request)
                 'code_sent_at' => Carbon::now()->subMinutes($_message["totalDuration"])->format('H:i:s')
             ],
             'voting_summary' => $voting_summary,
+            'debug_code' => $showDebugCode ? $code->code1 : null, // Show code if email failed
+            'has_valid_email' => $hasValidEmail,
+            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'useSlugPath' => $voterSlug !== null,
         ]);
 
     } catch (\Exception $e) {
