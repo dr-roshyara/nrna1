@@ -11,8 +11,8 @@
                         <tr class="border-b-2 border-gray-400">
                            <th class="p-1">S.N.</th>
                              <th class="p-1">Post</th>
-                             <th class="p-1">User ID</th>
-                              <th class="p-1">NRNA ID</th>
+                             <th class="p-1">ID</th>
+                              <th class="p-1">User ID</th>
                                 <th class="p-1">State</th>
                               <th class="p-1">Deligate Name</th>
                               <th class="p-1">Total Vote </th>
@@ -22,7 +22,7 @@
                             <td class="p-1">{{ deliIdx+1 }}</td>
                             <td  class="p-1">Diligate Member</td>
                              <td class="p-1">{{ deligate.id }}</td>
-                             <td class="p-1">{{ deligate.nrna_id }}</td>
+                             <td class="p-1">{{ deligate.user_id }}</td>
                              <td class="p-1">{{ deligate.state }}</td>
                              <td  class="p-1"> {{ deligate.name }} </td>
                              <td  class="p-1"> {{ deligate.vote }} </td> 

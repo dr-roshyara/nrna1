@@ -30,9 +30,9 @@ class UserController extends Controller
     {
         request()->validate([
             'direction'=> ['in:asc,desc'],
-            'field' => ['in:id,name,last_name,nrna_id,state,telephone,created_at'],
+            'field' => ['in:id,name,last_name,user_id,state,telephone,created_at'],
             'name' => ['nullable', 'string', 'max:255'],
-            'nrna_id' => ['nullable', 'string', 'max:255'],
+            'user_id' => ['nullable', 'string', 'max:255'],
             'search' => ['nullable', 'string', 'max:255']
         ]);
         $query =User::query();
@@ -52,8 +52,8 @@ class UserController extends Controller
             $query->where('name', 'LIKE', '%'.request('name').'%');
         }
         //
-         if(request('nrna_id')){
-            $query->where('nrna_id', 'LIKE', '%'.request('nrna_id').'%');
+         if(request('user_id')){
+            $query->where('user_id', 'LIKE', '%'.request('user_id').'%');
         }
         //
         if(request()->has(['field', 'direction'])){
@@ -72,7 +72,7 @@ class UserController extends Controller
         // $users =$users->sortBy('created_at')->reverse();
         return Inertia::render('User/Index', [
           'users' => $users,
-          'filters' =>request()->all(['name','nrna_id','search','field','direction']),
+          'filters' =>request()->all(['name','user_id','search','field','direction']),
           'currentUser' => auth()->user()
         ]);
 
@@ -190,7 +190,6 @@ class UserController extends Controller
                 //   $user->password   =$element ['password'];
 
                   $user->user_id    =$element ['user_id'];
-                  $user->nrna_id    =$element ['nrna_id'];
                   $user->is_voter   =$element ['is_voter'];
                 //dd($user);
                   $user->save();
@@ -238,7 +237,6 @@ class UserController extends Controller
                 'hosuenumber',
                 'postalcode',
                 'city',
-                'nrna_id',
                 'telephone',
                 'email',
                 'password',
@@ -339,7 +337,6 @@ class UserController extends Controller
             'hosuenumber',
             'postalcode',
             'city',
-            'nrna_id',
             'telephone',
             'email',
             'password',

@@ -1054,7 +1054,7 @@ private function has_valid_selections($selections)
                 \Log::warning('Code verification failed - returning with error',
                 [
                 'user_id' => $auth_user->id,
-                'nrna_id' => $auth_user->nrna_id ?? null,
+                'user_identifier' => $auth_user->user_id ?? null,
                 'submitted_code_length' => strlen($request['voting_code'] ?? ''),
                 'failed_at' => now()
                 ]);
@@ -1559,7 +1559,7 @@ public function verify(Request $request)
         // Prepare comprehensive user information
         $user_info = [
             'name' => $auth_user->name,
-            'nrna_id' => $auth_user->nrna_id ?? 'N/A',
+            'user_id' => $auth_user->user_id ?? 'N/A',
             'state' => $auth_user->state ?? 'N/A',
             'region' => $auth_user->region ?? 'N/A',
         ];

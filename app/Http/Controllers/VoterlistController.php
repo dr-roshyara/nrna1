@@ -28,7 +28,6 @@ class VoterlistController extends Controller
             $query->where(function ($query) use ($value) {
                 $query->where('name', 'LIKE', "%{$value}%")
                       ->orWhere('user_id', 'LIKE', "%{$value}%")
-                      ->orWhere('nrna_id', 'LIKE', "%{$value}%")
                       ->orWhere('voting_ip', 'LIKE', "%{$value}%");
             });
         });
@@ -37,9 +36,9 @@ class VoterlistController extends Controller
         $query = User::where('is_voter', 1);
 
         $users = QueryBuilder::for($query)
-            ->defaultSort('name')
-            ->allowedSorts(['name', 'user_id', 'nrna_id', 'voting_ip', 'approvedBy'])
-            ->allowedFilters(['name', 'user_id', 'nrna_id', 'voting_ip', 'approvedBy', $globalSearch])
+            ->defaultSort('user_id')
+            ->allowedSorts(['name', 'user_id', 'voting_ip', 'approvedBy'])
+            ->allowedFilters(['name', 'user_id', 'voting_ip', 'approvedBy', $globalSearch])
             ->paginate(2000)
             ->withQueryString();
 
@@ -51,7 +50,6 @@ class VoterlistController extends Controller
                 'id' => $user->id ?? null,
                 'name' => $user->name ?? 'Unknown',
                 'user_id' => $user->user_id ?? 'N/A',
-                'nrna_id' => $user->nrna_id ?? null,
                 'can_vote' => $user->can_vote ?? 0,
                 'approvedBy' => $user->approvedBy ?? null,
                 'suspendedBy' => $user->suspendedBy ?? null,
@@ -72,7 +70,6 @@ class VoterlistController extends Controller
             $table->addSearchRows([
                 'name'              => 'Name',
                 'user_id'           => 'User ID',
-                'nrna_id'           => 'NRNA ID',
                 'voting_ip'         => 'Voting IP',
                 'approvedBy'        => 'Approved By',
             ])->addColumns([

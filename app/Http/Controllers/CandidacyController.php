@@ -45,14 +45,14 @@ class CandidacyController extends Controller
         $candidacies = QueryBuilder::for(Candidacy::class)
         ->with([
             'user' => function ($query) {
-                $query->select(['id','name','user_id', 'nrna_id']);
+                $query->select(['id','name','user_id']);
             },
             'post' => function ($query) {
                 $query->select(['id','post_id','name','is_national_wide']);
             }
         ])
-        ->defaultSort('post_id')
-        ->allowedSorts(['candidacy_id', 'post.name', 'post.post_id', 'user.name'])
+        ->defaultSort('candidacy_id')
+        ->allowedSorts(['candidacy_id', 'post.name', 'post.post_id', 'user.name', 'user.user_id'])
         ->allowedFilters(['user.name','candidacy_id',  $globalSearch])
         // ->where('region', trim(auth()->user()->region))
         ->paginate(100)
@@ -143,15 +143,14 @@ class CandidacyController extends Controller
          $candidacy          =new  Candidacy;
         //  $this.validate_input($candidacy); 
         //   dd($candidacy); 
-        $candidacy['user_id'] = 1; 
-         $candidacy['candidacy_id']         = $request['nrna_id']; 
-        $candidacy['candidacy_name']        =$request['name'];                  
-        // $candidacy['post_name']             =$post_name; 
-        //  $candidacy['post_nepali_name']      =$post_nepali_name; 
+        $candidacy['user_id'] = 1;
+         $candidacy['candidacy_id']         = $request['candidacy_id'] ?? $request['user_id'];
+        $candidacy['candidacy_name']        =$request['name'];
+        // $candidacy['post_name']             =$post_name;
+        //  $candidacy['post_nepali_name']      =$post_nepali_name;
        /** change psot id according to the post  otherwise it wont work
-         * look at the post controller id*/ 
+         * look at the post controller id*/
         $candidacy['post_id']         =$request['post_id']; 
-        $candidacy['nrna_id']         =$request['nrna_id']; 
         $candidacy['proposer_id']      =$request['proposer_id'];  
         $candidacy['proposer_name']   =$request['proposer_name']; 
         $candidacy['supporter_id']    =$request['supporter_id'];   

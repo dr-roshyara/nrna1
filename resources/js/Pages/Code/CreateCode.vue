@@ -94,7 +94,7 @@ import ElectionLayout from "@/Layouts/ElectionLayout";
 export default {
     props: {
         name: String,
-        nrna_id: String,
+        user_id: String,
         state: String,
         code_duration: Number,
         code_expires_in: Number,

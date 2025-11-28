@@ -412,7 +412,7 @@ public function get_candidate($key){
             for($i=0; $i<sizeof($submit_vec); ++$i){
                 //    var_dump($submit_vec[$i] );
                 $_candi                      = DB::table('deligate_candidacies')->where([
-                ['nrna_id', '=',  $submit_vec[$i] ],
+                ['user_id', '=',  $submit_vec[$i] ],
                 // ['post_id',        '=',  $_postid]
                 ])->get()->first();
 
@@ -421,7 +421,6 @@ public function get_candidate($key){
                             // 'post_name' =>"Deligate Member",
                             'user_id'     =>$_candi->user_id,
                             'post_id'     =>$_candi->post_id,
-                            'nrna_id'     =>$_candi->nrna_id,
                             'name'         => $_candi->name
                     );
 
@@ -549,7 +548,7 @@ public function thankyou(){
         for ($i=0; $i<sizeof($this->member_keys); $i++){
             $_key ="member". ($i+1) ."_id";
 
-             $deli =$this->find_name_nrnaId($deligateVote->getOriginal($_key));
+             $deli =$this->find_name_userId($deligateVote->getOriginal($_key));
              if($deli){ array_push($deli_vote, $deli); }
         }
 
@@ -559,14 +558,14 @@ public function thankyou(){
         return $deligates;
 
  }
-  public function find_name_nrnaId($nrna_id){
+  public function find_name_userId($user_id){
 
-    $_user =User::where('nrna_id', $nrna_id)->first();
+    $_user =User::where('user_id', $user_id)->first();
     if($_user){
         return array(
             'id' =>$_user->id,
             'name'=>$_user->name,
-            'nrna_id'=>$_user->nrna_id,
+            'user_id'=>$_user->user_id,
             'lcc'=>$_user->lcc,
             'state'=>$_user->state
 
@@ -629,9 +628,9 @@ public function thankyou(){
         arsort( $result);
         // dd($result);
         $deligate_result    =[];
-        foreach ($result as $nrna_id=>$voteCount){
+        foreach ($result as $user_id=>$voteCount){
 
-            $_deli_info =$this->find_name_nrnaId($nrna_id);
+            $_deli_info =$this->find_name_userId($user_id);
             $_deli_info['vote'] =$voteCount;
             array_push($deligate_result,$_deli_info);
         }

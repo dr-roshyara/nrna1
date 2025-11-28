@@ -67,7 +67,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'postalcode',
         'city',
         'additional_address',
-        'nrna_id',
         'lcc',
         'profile_photo_path',
         'social_id',

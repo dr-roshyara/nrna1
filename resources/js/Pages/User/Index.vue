@@ -63,11 +63,11 @@
                     </div> -->
                     <!-- next -->
                     <div class="m-1 p-2">
-                        <label for="nrna_id">Search by Membership ID</label>
+                        <label for="user_id">Search by User ID</label>
                         <input
-                            id="nrna_id"
+                            id="user_id"
                             type="text"
-                            v-model="params.nrna_id"
+                            v-model="params.user_id"
                             class="ml-2 rounded border bg-blue-200 px-2 py-1 text-sm"
                         />
                     </div>

@@ -244,7 +244,7 @@
                                 <h3 class="font-semibold text-blue-800 mb-2">Voter Information</h3>
                                 <div class="space-y-1 text-sm">
                                     <p><span class="font-medium">Name:</span> {{ user_info.name }}</p>
-                                    <p v-if="user_info.nrna_id"><span class="font-medium">NRNA ID:</span> {{ user_info.nrna_id }}</p>
+                                    <p v-if="user_info.user_id"><span class="font-medium">User ID:</span> {{ user_info.user_id }}</p>
                                     <p v-if="user_info.region"><span class="font-medium">Region:</span> {{ user_info.region }}</p>
                                 </div>
                             </div>

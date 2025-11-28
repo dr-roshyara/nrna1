@@ -74,7 +74,7 @@ class CodeController extends Controller
 
         return Inertia::render('Code/CreateCode', [
             'name' => $user->name,
-            'nrna_id' => $user->nrna_id ?? '',
+            'user_id' => $user->user_id ?? '',
             'state' => 'code_sent',
             'code_duration' => $code->code1_sent_at ? now()->diffInMinutes($code->code1_sent_at) : 0,
             'code_expires_in' => 20, // 20 minutes expiry

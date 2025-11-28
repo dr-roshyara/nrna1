@@ -9,7 +9,7 @@ class DeligateCandidacy extends Model
 {
     use HasFactory;
     protected $fillable =[
-        'user_id','nrna_id','name','post_id','image_path_1','description'
+        'user_id','name','post_id','image_path_1','description'
     ];
     public function user(){
         return $this->belongsTo(User::class);
