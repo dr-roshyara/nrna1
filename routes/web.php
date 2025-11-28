@@ -34,16 +34,7 @@ use App\Http\Controllers\OpenionController;
 use App\Http\Controllers\Election\ElectionController;
 use App\Models\VoterSlug;
 
-// Route binding for voter slugs
-Route::bind('vslug', function (string $value) {
-    $voterSlug = VoterSlug::with('user')->where('slug', $value)->first();
-
-    if (!$voterSlug) {
-        abort(404, 'Voting link not found.');
-    }
-
-    return $voterSlug;
-});
+// Note: VoterSlug route binding is now in App\Providers\RouteServiceProvider
 
 /*
 |--------------------------------------------------------------------------

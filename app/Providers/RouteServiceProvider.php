@@ -39,6 +39,17 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
+        // Register VoterSlug route binding
+        Route::bind('vslug', function (string $value) {
+            $voterSlug = \App\Models\VoterSlug::with('user')->where('slug', $value)->first();
+
+            if (!$voterSlug) {
+                abort(404, 'Voting link not found.');
+            }
+
+            return $voterSlug;
+        });
+
         $this->routes(function () {
             Route::prefix('api')
                 ->middleware('api')
