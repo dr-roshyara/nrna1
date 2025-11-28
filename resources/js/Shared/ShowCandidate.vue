@@ -4,10 +4,9 @@
         <img
             v-if="imageGiven"
             :src="full_image_name"
-            alt="{{ candidacy_name }}"
+            alt="Candidate Photo"
             class="mx-auto rounded-lg object-cover py-1 sm:h-40 sm:w-40 md:h-96 md:w-96"
         />
-        <p class="mx-auto font-bold text-gray-900">{{ candidacy_name }}</p>
         <p class="mx-auto font-bold text-gray-900">
             Candidate for {{ post_name }}
         </p>
