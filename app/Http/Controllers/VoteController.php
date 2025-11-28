@@ -2769,24 +2769,46 @@ public function verify_submitted_code($in_code, $submitted_code)
     ]);
 
     try {
-        // ⚠️ SECURITY FIX: Use Laravel's Hash facade to verify the code against bcrypt hash
-        // This line MUST be the only verification - DO NOT override with plain text comparison!
-        $verification_result = Hash::check($clean_submitted_code, $in_code);
+        // Check if the stored code is a bcrypt hash or plain text
+        // Bcrypt hashes start with $2y$, $2a$, or $2b$
+        $is_hashed = str_starts_with($in_code, '$2y$') ||
+                     str_starts_with($in_code, '$2a$') ||
+                     str_starts_with($in_code, '$2b$');
+
+        if ($is_hashed) {
+            // Use Hash::check for hashed codes
+            $verification_result = Hash::check($clean_submitted_code, $in_code);
+            \Log::info('Verifying hashed code', [
+                'user_id' => auth()->id() ?? 'unknown',
+                'method' => 'hash',
+            ]);
+        } else {
+            // Use plain text comparison for non-hashed codes
+            $verification_result = ($clean_submitted_code === strtoupper(trim($in_code)));
+            \Log::info('Verifying plain text code', [
+                'user_id' => auth()->id() ?? 'unknown',
+                'method' => 'plain_text',
+                'expected_length' => strlen($in_code),
+                'submitted_length' => strlen($clean_submitted_code),
+            ]);
+        }
 
         // Log the result for audit trail
         if ($verification_result) {
             \Log::info('✅ Code verification successful', [
                 'user_id' => auth()->id() ?? 'unknown',
                 'verified_at' => now(),
+                'method' => $is_hashed ? 'hash' : 'plain_text',
             ]);
         } else {
-            \Log::warning('❌ Code verification failed - Hash mismatch', [
+            \Log::warning('❌ Code verification failed - Mismatch', [
                 'user_id' => auth()->id() ?? 'unknown',
                 'submitted_code_length' => strlen($clean_submitted_code),
                 'failed_at' => now(),
+                'method' => $is_hashed ? 'hash' : 'plain_text',
             ]);
         }
-        
+
         return $verification_result;
         
     } catch (\Exception $e) {
