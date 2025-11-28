@@ -46,15 +46,19 @@ class VoterlistController extends Controller
         // Transform data to ensure all required fields have default values
         $users->getCollection()->transform(function ($user) {
             // Ensure critical fields have default values if null
-            $user->name = $user->name ?? 'Unknown';
-            $user->user_id = $user->user_id ?? 'N/A';
-            $user->can_vote = $user->can_vote ?? 0;
-            $user->approvedBy = $user->approvedBy ?? null;
-            $user->suspendedBy = $user->suspendedBy ?? null;
-            $user->voting_ip = $user->voting_ip ?? null;
-            $user->user_ip = $user->user_ip ?? null;
-
-            return $user;
+            // Use setAttribute to safely set values and avoid accessor issues
+            return (object) [
+                'id' => $user->id ?? null,
+                'name' => $user->name ?? 'Unknown',
+                'user_id' => $user->user_id ?? 'N/A',
+                'nrna_id' => $user->nrna_id ?? null,
+                'can_vote' => $user->can_vote ?? 0,
+                'approvedBy' => $user->approvedBy ?? null,
+                'suspendedBy' => $user->suspendedBy ?? null,
+                'voting_ip' => $user->voting_ip ?? null,
+                'user_ip' => $user->user_ip ?? null,
+                'is_voter' => $user->is_voter ?? 0,
+            ];
         });
 
         // Check permissions

@@ -122,7 +122,9 @@ Route::get('/email/verify', function () {
  * Herwe we write the routes related to user and voter
  */
 //Route::middleware(['auth:sanctum', 'verified']) ->
-Route::get('users',[UserController::class, 'store'])->name("user.store");
+// COMMENTED OUT: This route conflicts with /users/index and calls a CSV import function via GET
+// If you need to import users from CSV, use an artisan command instead
+// Route::get('users',[UserController::class, 'store'])->name("user.store");
 
 
 //notices

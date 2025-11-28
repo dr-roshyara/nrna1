@@ -170,7 +170,7 @@ class BulkDisapproveVoters extends Command
                 $this->info('');
                 $this->info('🎯 Next steps:');
                 $this->line('   • Disapproved voters cannot access voting');
-                $this->line('   • Re-approve individually at /voters/index');
+                $this->line('   • Re-approve individually at /voters');
                 $this->line('   • Or bulk approve with: php artisan voters:can-vote');
             }
 

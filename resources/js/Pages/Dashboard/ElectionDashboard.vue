@@ -291,7 +291,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <!-- Voter List -->
                         <a 
-                            href="voters/index" 
+                            href="voters" 
                             class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-indigo-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-200"
                         >
                             <div class="text-center">
@@ -332,8 +332,8 @@
                                         <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2M4 18v-6h3v7H5.5c-.83 0-1.5-.67-1.5-1.5M22 22H10v-1h12v1M13.5 12.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5M5.5 6h2c.83 0 1.5.67 1.5 1.5V9H7v6H5V7.5C5 6.67 5.67 6 6.5 6"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">NRNA सदस्यहरू</h3>
-                                <p class="text-gray-600">NRNA Members List</p>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3"> नमावली दर्ता गरेका सदस्यहरू</h3>
+                                <p class="text-gray-600">Registered Member List</p>
                             </div>
                         </a>
                     </div>

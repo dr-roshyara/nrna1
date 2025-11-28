@@ -140,14 +140,14 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
 // Voter management routes (require authentication and committee member permissions)
  
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    
+
     // Voter list and management (use names that match your Vue component)
     Route::get('/voters', [VoterlistController::class, 'index'])->name('voters.index');
-    Route::get('/voters/{id}', [VoterlistController::class, 'show'])->name('voters.show');
-    
+    Route::get('/voters/{id}', [VoterlistController::class, 'show'])->name('voters.show')->where('id', '[0-9]+');
+
     // Committee member actions (these route names match your Vue component calls)
-    Route::post('/voters/{id}/approve', [VoterlistController::class, 'approveVoter'])->name('voters.approve');
-    Route::post('/voters/{id}/reject', [VoterlistController::class, 'rejectVoter'])->name('voters.reject');
+    Route::post('/voters/{id}/approve', [VoterlistController::class, 'approveVoter'])->name('voters.approve')->where('id', '[0-9]+');
+    Route::post('/voters/{id}/reject', [VoterlistController::class, 'rejectVoter'])->name('voters.reject')->where('id', '[0-9]+');
 });
 
 /*************************************************************************************** */

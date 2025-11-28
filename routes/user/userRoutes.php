@@ -18,7 +18,7 @@ Route::middleware(['auth:sanctum', 'verified'])
         ->get('/users/index', [UserController::class, 'index'])->name('users.index');
 
 Route::middleware(['auth:sanctum', 'verified'])
-        ->post('/users/{id}/add-as-voter', [UserController::class, 'addAsVoter'])->name('users.addAsVoter');
+        ->post('/users/{id}/add-as-voter', [UserController::class, 'addAsVoter'])->name('users.addAsVoter')->where('id', '[0-9]+');
 
 Route::middleware(['auth:sanctum', 'verified'])
         ->post('/users/bulk-add-as-voter', [UserController::class, 'bulkAddAsVoter'])->name('users.bulkAddAsVoter');
@@ -50,9 +50,10 @@ Route::get('profile-photos/{filename}', function ($filename)
  *
  * feed
  */
+// Profile parameter accepts user_id (username/slug), not just numeric IDs
 Route::get('/user/{profile}', [UserController::class, 'show'])->name('user.show');
 
-Route::get('/user/{id}/edit',        [UserController::class, 'edit'])->name('edit');
+Route::get('/user/{id}/edit',        [UserController::class, 'edit'])->name('edit')->where('id', '[0-9]+');
 Route::get('/profile/edit',     [UserController::class, 'editProfile'])->name('user.editProfile');
 Route::post('/images/store',    [ImageController::class, 'store'])->name('image.store');
 Route::post('/avatar/upload',   [ImageController::class, 'avatarUpload'])->name('avatar.upload');
@@ -60,7 +61,7 @@ Route::post('/avatar/upload',   [ImageController::class, 'avatarUpload'])->name(
 // Profile Information...
 Route::put('/users/update/{id}', [UserController::class, 'update'])
         ->middleware([config('fortify.auth_middleware', 'auth').':'.config('fortify.guard')])
-        ->name('user.update');
+        ->name('user.update')->where('id', '[0-9]+');
 
 Route::get('/feed', [UserController::class, 'create'])->name('feed');
 
