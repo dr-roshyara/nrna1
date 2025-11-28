@@ -3,18 +3,18 @@
         <div class="m-2 min-h-screen bg-gray-100 p-2">
             <div class="mx-auto w-full text-center">
                 <div class="flex justify-between p-5">
-                    <inertia-link
+                    <Link
                         v-if="users.prev_page_url"
                         class="px-2"
                         :href="users.prev_page_url"
                         >Previous Page
-                    </inertia-link>
-                    <inertia-link
+                    </Link>
+                    <Link
                         v-if="users.next_page_url"
                         class="px-2"
                         :href="users.next_page_url"
                         >Next Page
-                    </inertia-link>
+                    </Link>
                 </div>
 
                 <!--  Here comes the filtering  -->
@@ -482,26 +482,26 @@
                 </div>
             </div>
             <div class="flex justify-end p-5">
-                <inertia-link
+                <Link
                     v-if="users.prev_page_url"
                     class="px-2"
                     :href="users.prev_page_url"
                     >Previous Page
-                </inertia-link>
-                <inertia-link
+                </Link>
+                <Link
                     v-if="users.next_page_url"
                     class="px-2"
                     :href="users.next_page_url"
                     >Next Page
-                </inertia-link>
+                </Link>
             </div>
-            <pagination class="mt-10" :links="users.links" />
-        </div> 
+        </div>
     </election-layout>
 </template>
 <script>
 import ElectionLayout from "@/Layouts/ElectionLayout";
 import { Inertia } from "@inertiajs/inertia";
+import { Link } from "@inertiajs/inertia-vue3";
 import Sendmessage from "@/Pages/Message/Sendmessage";
 import _ from "lodash";
 
@@ -619,7 +619,8 @@ export default {
     },
     components: {
         Sendmessage,
-        ElectionLayout
+        ElectionLayout,
+        Link
     },
 };
 </script>

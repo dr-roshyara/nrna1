@@ -31,7 +31,6 @@
         <th class="border-r border-green-200" v-show="showColumn('candidacy_id')" @click.prevent="sortBy('candidacy_id')">Candidacy ID</th>
          <th class="border-r border-green-200" v-show="showColumn('post_id')" @click.prevent="sortBy('post.post_id')">Post ID</th>
          <th class="border-r border-green-200" v-show="showColumn('post_name')" @click.prevent="sortBy('post.name')">Post Name</th>
-         <th class="border-r border-green-200" v-show="showColumn('nrna_id')" @click.prevent="sortBy('user.nrna_id')">Candidate's NRNA ID</th>
          <th class="border-r border-green-200" v-show="showColumn('user_name')" @click.prevent="sortBy('user.name')">Candidate's Name</th>
          
         
@@ -42,11 +41,10 @@
       <tr v-for="(candidacy, candiIndx) in candidacies.data" :key="candiIndx"
           :class="[{'bg-gray-100':candiIndx%2==0}, p-1]"    
       >
-        <td class="border-r border-green-200" >{{ candiIndx+1 }}</td> 
-        <td class="border-r border-green-200" v-show="showColumn('candidacy_id')">{{ candidacy.candidacy_id}}</td> 
-         <td class="border-r border-green-200" v-show="showColumn('post_id')">{{ candidacy.post.post_id}}</td> 
-        <td class="border-r border-green-200" v-show="showColumn('post_name')">{{ candidacy.post.name}}</td> 
-         <td class="border-r border-green-200" v-show="showColumn('nrna_id')" >{{ candidacy.user?.nrna_id || 'N/A' }}</td>
+        <td class="border-r border-green-200" >{{ candiIndx+1 }}</td>
+        <td class="border-r border-green-200" v-show="showColumn('candidacy_id')">{{ candidacy.candidacy_id}}</td>
+         <td class="border-r border-green-200" v-show="showColumn('post_id')">{{ candidacy.post.post_id}}</td>
+        <td class="border-r border-green-200" v-show="showColumn('post_name')">{{ candidacy.post.name}}</td>
         <td class="border-r border-green-200" v-show="showColumn('user_name')">{{ candidacy.user?.name || 'N/A' }}</td> 
         
         
