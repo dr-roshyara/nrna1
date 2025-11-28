@@ -46,8 +46,8 @@
         <td class="border-r border-green-200" v-show="showColumn('candidacy_id')">{{ candidacy.candidacy_id}}</td> 
          <td class="border-r border-green-200" v-show="showColumn('post_id')">{{ candidacy.post.post_id}}</td> 
         <td class="border-r border-green-200" v-show="showColumn('post_name')">{{ candidacy.post.name}}</td> 
-         <td class="border-r border-green-200" v-show="showColumn('nrna_id')" >{{ candidacy.user.nrna_id}}</td>
-        <td class="border-r border-green-200" v-show="showColumn('user_name')">{{ candidacy.user.name}}</td> 
+         <td class="border-r border-green-200" v-show="showColumn('nrna_id')" >{{ candidacy.user?.nrna_id || 'N/A' }}</td>
+        <td class="border-r border-green-200" v-show="showColumn('user_name')">{{ candidacy.user?.name || 'N/A' }}</td> 
         
         
        

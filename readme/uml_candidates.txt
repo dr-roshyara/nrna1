@@ -1,0 +1,65 @@
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = "kamal-mani-guragain";
+$candi->candidacy_id = "UML202501";
+$candi->post_id     = "2021_02";
+$candi->proposer_id = "20250101"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML20250102"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "kamalmani.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+##################################
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = "Chandra-bahadur";
+$candi->candidacy_id = "UML202502";
+$candi->post_id     = "2021_02";
+$candi->proposer_id = "20250201"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML20250202"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "chandragurung.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+##################################
+
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = "tak-bahadur-gurung";
+$candi->candidacy_id = "UML_2025_03";
+$candi->post_id     = "2021_02";
+$candi->proposer_id = "UML_2025_0301"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML_2025_0302"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "takgurung.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+##################################
+
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = "nrna_2312";
+$candi->candidacy_id = "UML_2025_04";
+$candi->post_id     = "2021_02";
+$candi->proposer_id = "UML_2025_0401"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML_2025_402"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "thamkulung.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+#5
+##################################
+
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = "binesh-tamang";
+$candi->candidacy_id = "UML_2025_05";
+$candi->post_id     = "2021_02";
+$candi->proposer_id = "UML_2025_0501"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML_2025_502"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "bineshtamang.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+
+

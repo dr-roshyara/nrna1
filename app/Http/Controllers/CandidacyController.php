@@ -43,41 +43,20 @@ class CandidacyController extends Controller
         });
 
         $candidacies = QueryBuilder::for(Candidacy::class)
+        ->with([
+            'user' => function ($query) {
+                $query->select(['id','name','user_id', 'nrna_id']);
+            },
+            'post' => function ($query) {
+                $query->select(['id','post_id','name','is_national_wide']);
+            }
+        ])
         ->defaultSort('post_id')
         ->allowedSorts(['candidacy_id', 'post.name', 'post.post_id', 'user.name', "user.nrna_id"])
         ->allowedFilters(['user.name','candidacy_id',  $globalSearch])
         // ->where('region', trim(auth()->user()->region))
-        ->paginate(100) 
+        ->paginate(100)
         ->withQueryString();
-       
-        /**
-         * 
-         * Load User 
-         */
-        $candidacies->load(['user' => function ($query) {
-            $query->select(['id','name','user_id', 'nrna_id']);
-            // $query->withTraced()->select('name');
-            //$query->orderBy('published_date', 'asc');
-            // return($query->get('name'));
-        //  $qs =$query->select('name');
-        //  dd($query);
-        // return $query->pluck('name');
-        // return();
-        }]);
-        /**
-         * 
-         * Load Post 
-         */
-        $candidacies->load(['post' => function ($query) {
-            $query->select(['id','post_id','name','is_national_wide']);
-            // $query->withTraced()->select('name');
-            //$query->orderBy('published_date', 'asc');
-            // return($query->get('name'));
-            //  $qs =$query->select('name');
-            //  dd($query);
-            // return $query->pluck('name');
-            // return();
-        }]);
         // dd($candidacies);
         return Inertia::render('Candidacy/Index', [
             'candidacies'=>$candidacies
