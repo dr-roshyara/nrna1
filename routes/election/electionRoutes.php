@@ -20,6 +20,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/election', [ElectionContr
 
 // Voter slug generation - start voting process
 Route::middleware(['auth:sanctum', 'verified'])->get('/voter/start', [VoterSlugController::class, 'start'])->name('voter.start');
+Route::middleware(['auth:sanctum', 'verified'])->post('/voter/restart', [VoterSlugController::class, 'restart'])->name('voter.restart');
 
 // Direct voting access - automatically generates slug for user
 Route::middleware(['auth:sanctum', 'verified'])->get('/vote', function () {

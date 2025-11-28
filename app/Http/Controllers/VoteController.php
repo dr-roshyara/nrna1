@@ -361,7 +361,7 @@ public function first_submission(Request $request)
     $code->session_name = $session_name;
     $code->save();
 
-    // Store the submitted vote data in session
+    // Get and validate vote data
     $vote_data = $request->only([
         'user_id',
         'national_selected_candidates',
@@ -369,6 +369,25 @@ public function first_submission(Request $request)
         'no_vote_option',
         'agree_button'
     ]);
+
+    // Validate candidate selections with SELECT_ALL_REQUIRED logic
+    $validation_errors = $this->validate_candidate_selections($vote_data);
+
+    if (!empty($validation_errors)) {
+        \Log::warning('Vote selection validation failed in first_submission', [
+            'user_id' => $auth_user->id,
+            'errors' => $validation_errors
+        ]);
+
+        // Get voterSlug for proper redirect
+        $voterSlug = $request->attributes->get('voter_slug');
+        $redirectRoute = $voterSlug ? 'slug.vote.create' : 'vote.create';
+        $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+        return redirect()->route($redirectRoute, $routeParams)
+            ->withErrors($validation_errors)
+            ->withInput();
+    }
 
     $request->session()->put($session_name, $vote_data);
     \Log::info('Stored vote data in session', [
@@ -829,6 +848,7 @@ public function send_second_voting_code(&$code, $auth_user)
 private function validate_candidate_selections($vote_data)
 {
     $errors = [];
+    $isSelectAllRequired = config('app.select_all_required', 'no') === 'yes';
 
     // Get selections
     $national_selections = $vote_data['national_selected_candidates'] ?? [];
@@ -844,14 +864,21 @@ private function validate_candidate_selections($vote_data)
                 $has_any_selection = true;
             } elseif (isset($selection['candidates']) && is_array($selection['candidates']) && count($selection['candidates']) > 0) {
                 $has_any_selection = true;
-                
-                // Validate candidate count doesn't exceed required number
+
                 $required_count = $selection['required_number'] ?? 1;
                 $candidate_count = count($selection['candidates']);
-                
-                if ($candidate_count > $required_count) {
-                    $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
-                    $errors["national_post_{$index}"] = "Too many candidates selected for {$post_name}. Maximum: {$required_count}";
+                $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
+
+                if ($isSelectAllRequired) {
+                    // Must select exactly required_number candidates
+                    if ($candidate_count !== $required_count) {
+                        $errors["national_post_{$index}"] = "You must select exactly {$required_count} candidate(s) for {$post_name}.";
+                    }
+                } else {
+                    // Current behavior: validate max selections
+                    if ($candidate_count > $required_count) {
+                        $errors["national_post_{$index}"] = "Too many candidates selected for {$post_name}. Maximum: {$required_count}";
+                    }
                 }
             }
         }
@@ -864,14 +891,21 @@ private function validate_candidate_selections($vote_data)
                 $has_any_selection = true;
             } elseif (isset($selection['candidates']) && is_array($selection['candidates']) && count($selection['candidates']) > 0) {
                 $has_any_selection = true;
-                
-                // Validate candidate count doesn't exceed required number
+
                 $required_count = $selection['required_number'] ?? 1;
                 $candidate_count = count($selection['candidates']);
-                
-                if ($candidate_count > $required_count) {
-                    $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
-                    $errors["regional_post_{$index}"] = "Too many candidates selected for {$post_name}. Maximum: {$required_count}";
+                $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
+
+                if ($isSelectAllRequired) {
+                    // Must select exactly required_number candidates
+                    if ($candidate_count !== $required_count) {
+                        $errors["regional_post_{$index}"] = "You must select exactly {$required_count} candidate(s) for {$post_name}.";
+                    }
+                } else {
+                    // Current behavior: validate max selections
+                    if ($candidate_count > $required_count) {
+                        $errors["regional_post_{$index}"] = "Too many candidates selected for {$post_name}. Maximum: {$required_count}";
+                    }
                 }
             }
         }

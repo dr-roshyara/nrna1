@@ -248,43 +248,68 @@ export default {
 
         function validateVoteData() {
             const issues = [];
-            
-            // Check if user has made at least one choice
-            const nationalChoices = form.national_selected_candidates.filter(selection => 
-                selection && (selection.candidates.length > 0 || selection.no_vote)
-            ).length;
-            
-            const regionalChoices = form.regional_selected_candidates.filter(selection => 
-                selection && (selection.candidates.length > 0 || selection.no_vote)
-            ).length;
-            
-            const totalChoices = nationalChoices + regionalChoices;
-            const totalPosts = (props.national_posts?.length || 0) + (props.regional_posts?.length || 0);
-            
-            if (totalChoices === 0) {
-                issues.push('Please make at least one selection or choose "No Vote" for the positions.');
-            }
-            
-            // Check for incomplete selections
+            const isSelectAllRequired = import.meta.env?.VITE_SELECT_ALL_REQUIRED === 'yes';
+
+            // Validate national posts
             form.national_selected_candidates.forEach((selection, index) => {
                 if (!selection) {
                     const post = props.national_posts[index];
                     issues.push(`Please make a selection for ${post?.name || `National Post ${index + 1}`}`);
+                } else if (selection.no_vote) {
+                    // No vote selected - this is always valid
+                    return;
+                } else if (isSelectAllRequired) {
+                    // Must select exactly required_number candidates
+                    const required = props.national_posts[index]?.required_number || 1;
+                    const selected = selection.candidates.length;
+
+                    if (selected !== required) {
+                        const postName = props.national_posts[index]?.name || `National Post ${index + 1}`;
+                        issues.push(`Please select exactly ${required} candidate(s) for ${postName}`);
+                    }
+                } else {
+                    // Current behavior: validate max selections
+                    const required = props.national_posts[index]?.required_number || 1;
+                    const selected = selection.candidates.length;
+
+                    if (selected > required) {
+                        const postName = props.national_posts[index]?.name || `National Post ${index + 1}`;
+                        issues.push(`You can select maximum ${required} candidate(s) for ${postName}`);
+                    }
                 }
             });
-            
+
+            // Validate regional posts (same logic)
             form.regional_selected_candidates.forEach((selection, index) => {
                 if (!selection) {
                     const post = props.regional_posts[index];
                     issues.push(`Please make a selection for ${post?.name || `Regional Post ${index + 1}`}`);
+                } else if (selection.no_vote) {
+                    return;
+                } else if (isSelectAllRequired) {
+                    const required = props.regional_posts[index]?.required_number || 1;
+                    const selected = selection.candidates.length;
+
+                    if (selected !== required) {
+                        const postName = props.regional_posts[index]?.name || `Regional Post ${index + 1}`;
+                        issues.push(`Please select exactly ${required} candidate(s) for ${postName}`);
+                    }
+                } else {
+                    const required = props.regional_posts[index]?.required_number || 1;
+                    const selected = selection.candidates.length;
+
+                    if (selected > required) {
+                        const postName = props.regional_posts[index]?.name || `Regional Post ${index + 1}`;
+                        issues.push(`You can select maximum ${required} candidate(s) for ${postName}`);
+                    }
                 }
             });
-            
+
             // Check agreement checkbox
             if (!form.agree_button) {
                 issues.push('You must agree to the terms before submitting your vote.');
             }
-            
+
             return {
                 isValid: issues.length === 0,
                 issues: issues

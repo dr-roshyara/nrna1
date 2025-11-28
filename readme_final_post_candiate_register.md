@@ -1,6 +1,6 @@
 #post
 ####################################
-use App\Models\Post;
+      use App\Models\Post;
         $post =new Post
         $post->post_id ="2025_02"
         $post->name ="President"
@@ -11,7 +11,7 @@ use App\Models\Post;
    use App\Models\Post;
         $post =new Post
         $post->post_id ="2025_06"
-        $post->required_number =1
+        $post->required_number =2
         $post->is_national_wide =1
         $post->name ="General Secretary"
         $post->nepali_name ="महासचिव"
@@ -38,7 +38,7 @@ $user->save();
 #
 use App\Models\Candidacy;
 $candi =                new Candidacy;
-$candi->user_id         = "DE_NRNA__274";
+$candi->user_id         = "nrna_1110";
 $candi->candidacy_id    = "DE_2025_1";
 $candi->post_id         = "2025_02"; // president 
 $candi->proposer_id     = "DE_NRNA__254"; // Link to the proposer's nrna_id
@@ -49,15 +49,28 @@ $candi->image_path_3    = "-";
 $candi->save();
 
 
-#
+#user2 
+$user = new User;
+$user->name = "Lok mani";
+$user->user_id="nrna_1"
+$user->email = "manang1@example.com";
+$user->password = Hash::make('password'); // Always hash passwords
+$user->first_name = "Manag";
+$user->last_name = "Mustang";
+$user->nrna_id = "DE_TEST_2025_02";
+$user->is_voter = 0;
+// Add other required user fields here...
+$user->save();
+
+
 
 use App\Models\Candidacy;
 $candi =                new Candidacy;
-$candi->user_id         = "DE_NRNA__288";
-$candi->candidacy_id    = "DE_2025_2";
+$candi->user_id         = "nrna_1";
+$candi->candidacy_id    = "DE_2025_21";
 $candi->post_id         = "2025_02"; // president 
-$candi->proposer_id     = "DE_NRNA__238"; // Link to the proposer's nrna_id
-$candi->supporter_id    = "DE_NRNA__377"; // Link to the supporter's nrna_id
+$candi->proposer_id     = "DE_NRNA_2381"; // Link to the proposer's nrna_id
+$candi->supporter_id    = "DE_NRNA_3771"; // Link to the supporter's nrna_id
 $candi->image_path_1    = "lokmani.jpg";
 $candi->image_path_2    = "-";
 $candi->image_path_3    = "-";

@@ -185,6 +185,20 @@ class CodeController extends Controller
 
         // Check if agreement already accepted
         if ($code->has_agreed_to_vote) {
+            // BUGFIX: If agreement already accepted, advance step before redirecting
+            // This prevents redirect loop when has_agreed_to_vote=1 but current_step=2
+            if ($voterSlug && $voterSlug->current_step < 3) {
+                $progressService = new VoterProgressService();
+                $progressService->advanceFrom($voterSlug, 'slug.code.agreement', ['agreement_accepted' => true]);
+
+                Log::info('Advanced step after finding agreement already accepted', [
+                    'user_id' => $user->id,
+                    'slug' => $voterSlug->slug,
+                    'old_step' => 2,
+                    'new_step' => 3,
+                ]);
+            }
+
             $voteUrl = $voterSlug
                 ? route('slug.vote.create', ['vslug' => $voterSlug->slug])
                 : route('vote.create');
@@ -290,6 +304,7 @@ class CodeController extends Controller
         $code = Code::where('user_id', $user->id)->first();
 
         if (!$code) {
+            // No code exists - create new one
             $code = Code::create([
                 'user_id' => $user->id,
                 'code1' => $this->generateCode(),
@@ -307,7 +322,47 @@ class CodeController extends Controller
             Log::info('New verification code created and sent', [
                 'user_id' => $user->id,
                 'code_id' => $code->id,
+                'code' => $code->code1,
             ]);
+        } else {
+            // Code exists - check if it needs resending
+            $isExpired = $code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > 20;
+            $codeWasUsed = $code->is_code1_usable == 0;
+            $notYetVoted = !$code->has_voted;
+            $voteNotSubmitted = !$code->vote_submitted;
+
+            // Resend code if:
+            // 1. Code is expired AND not yet used AND not voted, OR
+            // 2. Code was used but vote wasn't submitted (user restarted), OR
+            // 3. Code was used, vote submitted but not completed (user restarted)
+            $shouldResend = ($isExpired && !$codeWasUsed && $notYetVoted) ||
+                            ($codeWasUsed && $notYetVoted);
+
+            if ($shouldResend) {
+                // Generate and send new code
+                $newCode = $this->generateCode();
+
+                $code->update([
+                    'code1' => $newCode,
+                    'code1_sent_at' => now(),
+                    'has_code1_sent' => 1,
+                    'is_code1_usable' => 1,
+                    'can_vote_now' => 0,
+                    'vote_submitted' => 0, // Reset submission status
+                ]);
+
+                // Send new code via email
+                $user->notify(new SendFirstVerificationCode($user, $newCode));
+
+                Log::info('Code regenerated and resent', [
+                    'user_id' => $user->id,
+                    'code_id' => $code->id,
+                    'new_code' => $newCode,
+                    'reason' => $isExpired ? 'expired' : 'restart_after_use',
+                    'was_used' => $codeWasUsed,
+                    'previous_sent_at' => $code->code1_sent_at,
+                ]);
+            }
         }
 
         return $code;

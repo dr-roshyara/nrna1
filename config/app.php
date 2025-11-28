@@ -135,6 +135,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
     'max_use_clientIP' =>env('MAX_USE_IP_ADDRESS'),
+    'select_all_required' => env('SELECT_ALL_REQUIRED', 'no'),
 
     /*
     |---------------------------------- ----------------------------------------

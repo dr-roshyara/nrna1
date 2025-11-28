@@ -4,18 +4,24 @@
         
         <div class="flex flex-col text-xl font-bold text-gray-900 mx-auto text-center justify-center">
             <label>
-                Please choose 
-                <span class="text-indigo-600">{{ post.required_number }}</span> 
-                candidate(s) as the 
+                Please choose
+                <span class="text-indigo-600">{{ post.required_number }}</span>
+                candidate(s) as the
                 <span class="text-gray-900 font-bold">{{ post.name }}</span>.
-            </label> 
+                <span v-if="selectAllRequired" class="text-red-600 text-sm block mt-1">
+                    (Selection of all {{ post.required_number }} candidates is required)
+                </span>
+            </label>
             <label class="p-2">
-                कृपया 
-                <span class="text-indigo-600">{{ post.required_number }}</span> 
-                जना लाई  
-                <span class="text-gray-900 font-bold">{{ post.nepali_name || post.name }}</span> 
+                कृपया
+                <span class="text-indigo-600">{{ post.required_number }}</span>
+                जना लाई
+                <span class="text-gray-900 font-bold">{{ post.nepali_name || post.name }}</span>
                 चुन्नुहोस्।
-            </label>   
+                <span v-if="selectAllRequired" class="text-red-600 text-sm block mt-1">
+                    (सबै {{ post.required_number }} जना उम्मेदवार छान्नु अनिवार्य छ)
+                </span>
+            </label>
         </div>
                    
         <!-- Candidates Section -->
@@ -55,11 +61,19 @@
                 <br>
                 <span class="text-sm">तपाईंले {{ post.nepali_name || post.name }} का लागि मतदान नगर्ने रोज्नुभएको छ</span>
             </div>
-            <div v-else-if="selected.length" class="text-green-600"> 
-                You have selected 
-                <span class="font-bold text-indigo-600"> 
+            <div v-else-if="selected.length"
+                 :class="{
+                     'text-green-600': selectionStatus.type === 'valid' || selectionStatus.type === 'full',
+                     'text-yellow-600': selectionStatus.type === 'partial',
+                     'text-red-600': selectionStatus.type === 'invalid'
+                 }">
+                <div class="font-semibold">
+                    {{ selectionStatus.message }}
+                </div>
+                You have selected
+                <span class="font-bold text-indigo-600">
                     {{ getSelectedNames() }}
-                </span> 
+                </span>
                 as <span class="font-bold text-lg text-gray-900">{{ post.name }}</span> of NRNA!
             </div>
             <div v-else class="text-gray-500 text-sm">
@@ -128,6 +142,46 @@ export default {
     computed: {
         maxSelections() {
             return this.post?.required_number || 1;
+        },
+
+        selectAllRequired() {
+            // Check if SELECT_ALL_REQUIRED is enabled
+            return import.meta.env?.VITE_SELECT_ALL_REQUIRED === 'yes';
+        },
+
+        hasValidSelection() {
+            if (this.noVoteSelected) return true;
+
+            if (this.selectAllRequired) {
+                return this.selected.length === this.maxSelections;
+            } else {
+                return this.selected.length <= this.maxSelections;
+            }
+        },
+
+        selectionStatus() {
+            if (this.noVoteSelected) {
+                return { type: 'no-vote', message: 'No vote selected' };
+            }
+
+            if (this.selectAllRequired) {
+                if (this.selected.length === this.maxSelections) {
+                    return { type: 'valid', message: `Perfect! You selected ${this.maxSelections} candidate(s)` };
+                } else {
+                    return {
+                        type: 'invalid',
+                        message: `Please select exactly ${this.maxSelections} candidate(s)`
+                    };
+                }
+            } else {
+                if (this.selected.length === 0) {
+                    return { type: 'empty', message: 'No candidates selected' };
+                } else if (this.selected.length === this.maxSelections) {
+                    return { type: 'full', message: `Maximum ${this.maxSelections} selected` };
+                } else {
+                    return { type: 'partial', message: `${this.selected.length} of ${this.maxSelections} selected` };
+                }
+            }
         }
     },
     
