@@ -189,7 +189,7 @@
 
 <script>
 export default {
-    name: 'NrnaElectionJoinNetwork',
+    name: 'PublicDigit',
     
     mounted() {
         // Accessibility enhancements

@@ -15,8 +15,8 @@
 <meta http-equiv="content-style-type" content="text/css" />
 <meta http-equiv="window-target" content="_top" />
 <meta property="og:type" content="Organisation" />
-<meta property="og:title" content="Non resident Nepali Association" />
+<meta property="og:title" content="Public Digit" />
 <meta property="og:description" content="{{config('meta.og_description') }}" />
 <meta property="og:locale" content="{{ config('meta.og_locale') }}" />
 <meta property="og:url" content="{{config('meta.og_url') }}" />
-<meta property="og:site_name" content="nrna.eu" />
+<meta property="og:site_name" content="publicdigit.com" />
