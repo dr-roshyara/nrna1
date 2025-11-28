@@ -2,19 +2,45 @@
    <election-layout>
         <div class="m-2 min-h-screen bg-gray-100 p-2">
             <div class="mx-auto w-full text-center">
-                <div class="flex justify-between p-5">
+                <!-- Top Pagination -->
+                <div class="flex items-center justify-between px-5 py-4">
                     <Link
                         v-if="users.prev_page_url"
-                        class="px-2"
                         :href="users.prev_page_url"
-                        >Previous Page
+                        class="group flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+                    >
+                        <svg class="h-5 w-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Previous</span>
                     </Link>
+                    <div v-else class="invisible flex items-center gap-2 text-sm">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                        <span>Previous</span>
+                    </div>
+
+                    <div class="text-sm text-gray-600">
+                        Page <span class="font-semibold text-gray-900">{{ users.current_page }}</span> of <span class="font-semibold text-gray-900">{{ users.last_page }}</span>
+                    </div>
+
                     <Link
                         v-if="users.next_page_url"
-                        class="px-2"
                         :href="users.next_page_url"
-                        >Next Page
+                        class="group flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+                    >
+                        <span>Next</span>
+                        <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
                     </Link>
+                    <div v-else class="invisible flex items-center gap-2 text-sm">
+                        <span>Next</span>
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </div>
                 </div>
 
                 <!--  Here comes the filtering  -->
@@ -481,19 +507,46 @@
                     </table>
                 </div>
             </div>
-            <div class="flex justify-end p-5">
+
+            <!-- Bottom Pagination -->
+            <div class="flex items-center justify-between px-5 py-4">
                 <Link
                     v-if="users.prev_page_url"
-                    class="px-2"
                     :href="users.prev_page_url"
-                    >Previous Page
+                    class="group flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+                >
+                    <svg class="h-5 w-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Previous</span>
                 </Link>
+                <div v-else class="invisible flex items-center gap-2 text-sm">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Previous</span>
+                </div>
+
+                <div class="text-sm text-gray-600">
+                    Page <span class="font-semibold text-gray-900">{{ users.current_page }}</span> of <span class="font-semibold text-gray-900">{{ users.last_page }}</span>
+                </div>
+
                 <Link
                     v-if="users.next_page_url"
-                    class="px-2"
                     :href="users.next_page_url"
-                    >Next Page
+                    class="group flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+                >
+                    <span>Next</span>
+                    <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
                 </Link>
+                <div v-else class="invisible flex items-center gap-2 text-sm">
+                    <span>Next</span>
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </div>
             </div>
         </div>
     </election-layout>
