@@ -13,6 +13,7 @@ use App\Http\Controllers\ElectionManagementController;
 use App\Http\Controllers\Election\ElectionController;
 use App\Http\Controllers\VoterSlugController;
 use App\Http\Controllers\Admin\VotingSecurityController;
+use App\Http\Controllers\HasVotedController;
 use App\Services\ElectionService;
 use Illuminate\Support\Facades\Route;
 
@@ -133,6 +134,9 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
        Route::middleware(['auth:sanctum', 'verified'])->get('/election/result', [ResultController::class, 'index'])->name('result.index');
        Route::middleware(['auth:sanctum', 'verified'])->get('/election/result/download-pdf', [ResultController::class, 'downloadPDF'])->name('result.download.pdf');
    }
+
+   // Has voted - view all members who have voted
+   Route::middleware(['auth:sanctum', 'verified'])->get('/election/hasvoted', [HasVotedController::class, 'index'])->name('hasvoted.index');
 
 // Vote verification and display routes
 
