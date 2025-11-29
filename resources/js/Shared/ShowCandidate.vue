@@ -1,6 +1,7 @@
 <template>
     <div class="m-auto w-full text-center">
-        <!-- {{full_image_name}} -->
+        <!-- {{full_image_name}}  -->
+        {{ candidacy_name }}
         <img
             v-if="imageGiven"
             :src="full_image_name"
