@@ -191,7 +191,9 @@ class ElectionManagementController extends Controller
             return response()->json(['error' => 'Unauthorized'], 403);
         }
 
-        $enableIpCheck = $request->boolean('enable_ip_check', false);
+        // Get IP check setting from global config (CONTROL_IP_ADDRESS in .env)
+        // This ensures consistent IP control across all voter approvals
+        $enableIpCheck = config('voting_security.control_ip_address', 1) == 1;
         $excludeVoted = $request->boolean('exclude_voted', false);
 
         try {
@@ -223,11 +225,11 @@ class ElectionManagementController extends Controller
                         'suspended_at' => null
                     ];
 
-                    // Conditionally set voting_ip based on flag
+                    // Conditionally set voting_ip based on global CONTROL_IP_ADDRESS setting
                     if ($enableIpCheck) {
-                        $updateData['voting_ip'] = $voter->user_ip; // Enable IP checking
+                        $updateData['voting_ip'] = $voter->user_ip; // Enable IP restriction
                     } else {
-                        $updateData['voting_ip'] = null; // Disable IP checking
+                        $updateData['voting_ip'] = null; // Disable IP restriction
                     }
 
                     // Update voter approval
@@ -240,16 +242,17 @@ class ElectionManagementController extends Controller
 
             $message = "Successfully approved {$approved} voters";
             if ($enableIpCheck) {
-                $message .= " with IP checking enabled";
+                $message .= " with IP restriction enabled (CONTROL_IP_ADDRESS=1)";
             } else {
-                $message .= " with IP checking disabled";
+                $message .= " without IP restriction (CONTROL_IP_ADDRESS=0)";
             }
 
             return response()->json([
                 'success' => true,
                 'message' => $message,
                 'approved_count' => $approved,
-                'ip_check_enabled' => $enableIpCheck
+                'ip_check_enabled' => $enableIpCheck,
+                'control_ip_setting' => config('voting_security.control_ip_address')
             ]);
 
         } catch (\Exception $e) {

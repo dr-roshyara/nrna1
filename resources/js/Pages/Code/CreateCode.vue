@@ -1,6 +1,23 @@
 <template>
     <election-layout>
         <div class="mx-2 mt-4 flex w-full flex-col justify-center p-2">
+    <!-- IP Mismatch Error Display -->
+    <div v-if="$page.props.errors.ip_mismatch" class="bg-red-50 border-l-4 border-red-500 p-6 mb-6 rounded-lg shadow-md max-w-3xl mx-auto">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <svg class="h-6 w-6 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <div class="ml-4">
+                <h3 class="text-lg font-bold text-red-800 mb-2">IP Address Mismatch | IP ठेगाना बेमेल</h3>
+                <div class="text-sm text-red-700 whitespace-pre-line">
+                    {{ $page.props.errors.ip_mismatch }}
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header - Just better styling -->
     <div class="my-4 mx-auto bg-blue-600 text-white p-4 rounded-lg text-center shadow-lg max-w-md">
         <div class="text-3xl mb-2">📧</div>

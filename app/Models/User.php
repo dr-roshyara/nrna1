@@ -506,6 +506,10 @@ public function scopeEligibleVoters($query)
      * ⚠️ SECURITY: Approve voter for voting (Committee members only)
      * This method should only be called after proper authorization checks
      *
+     * IP restriction is set based on CONTROL_IP_ADDRESS config:
+     * - If CONTROL_IP_ADDRESS=1: voting_ip is set to user_ip (IP restriction enabled)
+     * - If CONTROL_IP_ADDRESS=0: voting_ip is set to null (no IP restriction)
+     *
      * @param User $committeeUser The committee member approving the voter
      * @return bool Success status
      */
@@ -521,7 +525,11 @@ public function scopeEligibleVoters($query)
 
         $this->can_vote = 1;
         $this->approvedBy = $committeeUser->name;
-        $this->voting_ip = $this->user_ip;
+
+        // Set voting_ip based on global CONTROL_IP_ADDRESS setting
+        $ipControlEnabled = config('voting_security.control_ip_address', 1) == 1;
+        $this->voting_ip = $ipControlEnabled ? $this->user_ip : null;
+
         $this->suspendedBy = null;
         $this->suspended_at = null;
 

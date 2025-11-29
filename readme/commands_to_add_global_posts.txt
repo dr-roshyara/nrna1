@@ -3,8 +3,8 @@
       use App\Models\Post;
         $post =new Post
         $post->post_id ="2021_02"
-        $post->name ="President"
-        $post->nepali_name ="अद्यक्ष" 
+        $post->name ="National Deligate"
+        $post->nepali_name ="प्रतिनिधी" 
         $post->required_number =1
         $post->save()
         #

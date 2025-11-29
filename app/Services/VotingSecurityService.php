@@ -3,307 +3,248 @@
 namespace App\Services;
 
 use App\Models\User;
-use App\Models\VoterSlug;
-use Illuminate\Support\Facades\DB;
+use App\Models\Code;
 use Illuminate\Support\Facades\Log;
-use Carbon\Carbon;
 
-/**
- * Service for enforcing voting security rules
- *
- * Ensures one person = one vote and prevents multiple voting attempts
- */
 class VotingSecurityService
 {
     /**
-     * Enforce one active slug per user rule
+     * Check if IP address control is globally enabled
      *
-     * This is the core security method that ensures no user can have
-     * multiple active slugs at the same time
+     * @return bool
      */
-    public function enforceOneActiveSlugPerUser(User $user): array
+    public static function isIpControlEnabled(): bool
     {
-        return DB::transaction(function () use ($user) {
-
-            // Get all currently active slugs for this user
-            $activeSlugs = VoterSlug::where('user_id', $user->id)
-                ->where('is_active', true)
-                ->where('expires_at', '>', now())
-                ->get();
-
-            $result = [
-                'user_id' => $user->id,
-                'found_active_slugs' => $activeSlugs->count(),
-                'deactivated_slugs' => [],
-                'enforcement_needed' => $activeSlugs->count() > 1,
-            ];
-
-            // If more than 1 active slug exists, this is a security violation
-            if ($activeSlugs->count() > 1) {
-                Log::warning('Multiple active slugs detected for user - security enforcement triggered', [
-                    'user_id' => $user->id,
-                    'active_slugs_count' => $activeSlugs->count(),
-                    'slug_ids' => $activeSlugs->pluck('id')->toArray(),
-                    'enforcement_timestamp' => now(),
-                ]);
-
-                // Keep only the most recent slug, deactivate all others
-                $mostRecentSlug = $activeSlugs->sortByDesc('created_at')->first();
-                $slugsToDeactivate = $activeSlugs->where('id', '!=', $mostRecentSlug->id);
-
-                foreach ($slugsToDeactivate as $slug) {
-                    $slug->update([
-                        'is_active' => false,
-                        'step_meta' => array_merge($slug->step_meta ?? [], [
-                            'deactivated_reason' => 'multiple_active_slugs_security_enforcement',
-                            'deactivated_at' => now()->toISOString(),
-                            'kept_slug_id' => $mostRecentSlug->id,
-                        ])
-                    ]);
-
-                    $result['deactivated_slugs'][] = $slug->slug;
-                }
-
-                Log::info('Multiple active slugs resolved - kept most recent', [
-                    'user_id' => $user->id,
-                    'kept_slug' => $mostRecentSlug->slug,
-                    'deactivated_count' => count($result['deactivated_slugs']),
-                ]);
-            }
-
-            return $result;
-        });
+        return config('voting_security.control_ip_address', 1) == 1;
     }
 
     /**
-     * Check if user can be issued a new voting slug
+     * Check if user's current IP differs from registered voting IP
      *
-     * Comprehensive eligibility check for voting security
+     * @param User $user
+     * @param string $currentIp
+     * @return array
      */
-    public function canIssueVotingSlug(User $user): array
+    public static function detectIpChange(User $user, string $currentIp): array
     {
         $result = [
-            'can_issue' => false,
-            'user_id' => $user->id,
-            'reasons' => [],
-            'current_status' => [],
+            'ip_control_enabled' => self::isIpControlEnabled(),
+            'user_has_ip_restriction' => !is_null($user->voting_ip),
+            'ip_changed' => false,
+            'is_violation' => false,
+            'registered_ip' => $user->voting_ip,
+            'current_ip' => $currentIp,
+            'can_vote' => true,
+            'error_message' => null,
         ];
 
-        // 1. Basic voter eligibility
-        if (!$user->is_voter) {
-            $result['reasons'][] = 'user_not_registered_voter';
+        // If IP control is disabled globally, user can always vote
+        if (!$result['ip_control_enabled']) {
+            $result['can_vote'] = true;
+            return $result;
         }
 
-        if (!$user->can_vote) {
-            $result['reasons'][] = 'user_voting_permission_revoked';
+        // If user has no IP restriction (voting_ip is null), they can vote from anywhere
+        if (!$result['user_has_ip_restriction']) {
+            $result['can_vote'] = true;
+            return $result;
         }
 
-        if ($user->has_voted) {
-            $result['reasons'][] = 'user_already_completed_voting';
-        }
+        // At this point: IP control is ON and user HAS voting_ip set
+        // Check if IPs match
+        $result['ip_changed'] = $user->voting_ip !== $currentIp;
+        $result['is_violation'] = $result['ip_changed'];
 
-        // 2. Check for existing active slug
-        $activeSlug = VoterSlug::where('user_id', $user->id)
-            ->where('is_active', true)
-            ->where('expires_at', '>', now())
-            ->first();
+        if ($result['is_violation']) {
+            $result['can_vote'] = false;
+            $result['error_message'] = sprintf(
+                "IP mismatch detected. Registered: %s, Current: %s",
+                $user->voting_ip,
+                $currentIp
+            );
 
-        if ($activeSlug) {
-            $result['reasons'][] = 'user_already_has_active_voting_slug';
-            $result['current_status']['active_slug'] = $activeSlug->slug;
-            $result['current_status']['expires_at'] = $activeSlug->expires_at;
-            $result['current_status']['current_step'] = $activeSlug->current_step;
-        }
-
-        // 3. Check voting window (if applicable)
-        if (!$this->isWithinVotingWindow()) {
-            $result['reasons'][] = 'outside_voting_window';
-        }
-
-        // 4. Check for suspicious activity
-        $recentSlugs = VoterSlug::where('user_id', $user->id)
-            ->where('created_at', '>', now()->subHours(2))
-            ->count();
-
-        if ($recentSlugs > 5) { // More than 5 slugs in 2 hours is suspicious
-            $result['reasons'][] = 'excessive_slug_generation_detected';
-            Log::warning('Suspicious voting behavior detected', [
+            Log::warning('Voting IP violation detected', [
                 'user_id' => $user->id,
-                'recent_slugs_count' => $recentSlugs,
-                'timeframe' => '2_hours',
+                'user_name' => $user->name,
+                'registered_ip' => $user->voting_ip,
+                'current_ip' => $currentIp,
+                'timestamp' => now(),
             ]);
         }
-
-        // Final determination
-        $result['can_issue'] = empty($result['reasons']);
 
         return $result;
     }
 
     /**
-     * Secure slug generation with comprehensive checks
+     * Get comprehensive IP audit trail for a user
+     *
+     * @param User $user
+     * @return array
      */
-    public function secureSlugGeneration(User $user, string $reason = null): array
+    public static function getIpAuditTrail(User $user): array
     {
-        $eligibilityCheck = $this->canIssueVotingSlug($user);
+        $code = $user->code;
+        $currentIp = request()->ip();
 
-        if (!$eligibilityCheck['can_issue']) {
-            return [
-                'success' => false,
-                'slug' => null,
-                'reasons' => $eligibilityCheck['reasons'],
-                'message' => 'Cannot issue voting slug - security checks failed',
-            ];
-        }
-
-        return DB::transaction(function () use ($user, $reason) {
-            // Enforce one active slug rule
-            $enforcement = $this->enforceOneActiveSlugPerUser($user);
-
-            // Generate new slug
-            $slugService = new VoterSlugService();
-            $newSlug = $slugService->generateSlugForUser($user);
-
-            // Add security metadata
-            $newSlug->update([
-                'step_meta' => array_merge($newSlug->step_meta ?? [], [
-                    'security_checked' => true,
-                    'generation_reason' => $reason ?? 'normal_voting_request',
-                    'enforcement_applied' => $enforcement['enforcement_needed'],
-                    'previous_slugs_deactivated' => count($enforcement['deactivated_slugs']),
-                ])
-            ]);
-
-            Log::info('Secure slug generated successfully', [
-                'user_id' => $user->id,
-                'new_slug' => $newSlug->slug,
-                'security_enforcement' => $enforcement['enforcement_needed'],
-                'expires_at' => $newSlug->expires_at,
-            ]);
-
-            return [
-                'success' => true,
-                'slug' => $newSlug,
-                'security_enforcement' => $enforcement,
-                'message' => 'Voting slug generated successfully with security checks',
-            ];
-        });
-    }
-
-    /**
-     * Complete voting security audit for a user
-     */
-    public function auditUserVotingSecurity(User $user): array
-    {
-        $audit = [
+        return [
             'user_id' => $user->id,
             'user_name' => $user->name,
-            'audit_timestamp' => now(),
-            'security_status' => 'secure',
-            'issues' => [],
-            'slug_analysis' => [],
+            'user_ip' => $user->user_ip,                    // IP at registration/login
+            'voting_ip' => $user->voting_ip,                // IP restriction (if enabled)
+            'code_client_ip' => $code->client_ip ?? null,   // IP when code created
+            'current_request_ip' => $currentIp,             // Current request IP
+            'ip_control_enabled' => self::isIpControlEnabled(),
+            'user_has_ip_restriction' => !is_null($user->voting_ip),
+            'ip_match_status' => self::getIpMatchStatus($user, $currentIp),
+            'can_vote_from_current_ip' => self::canVoteFromIp($user, $currentIp),
+        ];
+    }
+
+    /**
+     * Check if user can vote from the given IP address
+     *
+     * @param User $user
+     * @param string $ip
+     * @return bool
+     */
+    public static function canVoteFromIp(User $user, string $ip): bool
+    {
+        // If IP control is disabled, anyone can vote from anywhere
+        if (!self::isIpControlEnabled()) {
+            return true;
+        }
+
+        // If user has no IP restriction, they can vote from anywhere
+        if (is_null($user->voting_ip)) {
+            return true;
+        }
+
+        // User has IP restriction - must match
+        return $user->voting_ip === $ip;
+    }
+
+    /**
+     * Get IP match status description
+     *
+     * @param User $user
+     * @param string $currentIp
+     * @return string
+     */
+    protected static function getIpMatchStatus(User $user, string $currentIp): string
+    {
+        if (!self::isIpControlEnabled()) {
+            return 'IP_CONTROL_DISABLED';
+        }
+
+        if (is_null($user->voting_ip)) {
+            return 'NO_RESTRICTION';
+        }
+
+        if ($user->voting_ip === $currentIp) {
+            return 'MATCH';
+        }
+
+        return 'MISMATCH';
+    }
+
+    /**
+     * Determine how a voter should be approved based on global IP control setting
+     *
+     * @param User $voter
+     * @return array Configuration for approval
+     */
+    public static function getApprovalConfig(User $voter): array
+    {
+        $ipControlEnabled = self::isIpControlEnabled();
+
+        return [
+            'should_set_voting_ip' => $ipControlEnabled,
+            'voting_ip_value' => $ipControlEnabled ? $voter->user_ip : null,
+            'ip_control_enabled' => $ipControlEnabled,
+            'message' => $ipControlEnabled
+                ? 'Voter approved with IP restriction'
+                : 'Voter approved without IP restriction',
+        ];
+    }
+
+    /**
+     * Log security event for voting
+     *
+     * @param User $user
+     * @param string $event
+     * @param array $context
+     * @return void
+     */
+    public static function logSecurityEvent(User $user, string $event, array $context = []): void
+    {
+        if (!config('voting_security.logging.enabled', true)) {
+            return;
+        }
+
+        Log::channel('security')->info("Voting Security Event: {$event}", array_merge([
+            'user_id' => $user->id,
+            'user_name' => $user->name,
+            'timestamp' => now(),
+        ], $context));
+    }
+
+    /**
+     * Get human-readable IP control status
+     *
+     * @return array
+     */
+    public static function getSystemStatus(): array
+    {
+        return [
+            'ip_control_enabled' => self::isIpControlEnabled(),
+            'validation_mode' => config('voting_security.ip_validation_mode', 'strict'),
+            'mismatch_action' => config('voting_security.ip_mismatch_action', 'block'),
+            'logging_enabled' => config('voting_security.logging.enabled', true),
+            'status_message' => self::isIpControlEnabled()
+                ? 'IP address validation is ENABLED. Voters with IP restrictions must vote from their registered IP.'
+                : 'IP address validation is DISABLED. Voters can vote from any IP address.',
+        ];
+    }
+
+    /**
+     * Validate voter eligibility including IP check
+     *
+     * @param User $user
+     * @param string|null $currentIp
+     * @return array
+     */
+    public static function validateVoterEligibility(User $user, ?string $currentIp = null): array
+    {
+        $currentIp = $currentIp ?? request()->ip();
+
+        $result = [
+            'eligible' => true,
+            'reasons' => [],
+            'ip_check' => null,
         ];
 
-        // Get all slugs for this user
-        $allSlugs = VoterSlug::where('user_id', $user->id)
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        $audit['total_slugs'] = $allSlugs->count();
-
-        // Check for multiple active slugs (security violation)
-        $activeSlugs = $allSlugs->where('is_active', true)->where('expires_at', '>', now());
-        if ($activeSlugs->count() > 1) {
-            $audit['security_status'] = 'violation';
-            $audit['issues'][] = [
-                'type' => 'multiple_active_slugs',
-                'severity' => 'high',
-                'count' => $activeSlugs->count(),
-                'slugs' => $activeSlugs->pluck('slug')->toArray(),
-            ];
+        // Check basic voting eligibility
+        if (!$user->is_voter) {
+            $result['eligible'] = false;
+            $result['reasons'][] = 'User is not a registered voter';
         }
 
-        // Check for excessive slug generation
-        $recentSlugs = $allSlugs->where('created_at', '>', now()->subHours(4));
-        if ($recentSlugs->count() > 3) {
-            $audit['security_status'] = $audit['security_status'] === 'violation' ? 'violation' : 'warning';
-            $audit['issues'][] = [
-                'type' => 'excessive_slug_generation',
-                'severity' => 'medium',
-                'count' => $recentSlugs->count(),
-                'timeframe' => '4_hours',
-            ];
+        if (!$user->can_vote) {
+            $result['eligible'] = false;
+            $result['reasons'][] = 'User is not approved to vote';
         }
 
-        // Analyze each slug
-        foreach ($allSlugs as $slug) {
-            $audit['slug_analysis'][] = [
-                'slug' => $slug->slug,
-                'created_at' => $slug->created_at,
-                'expires_at' => $slug->expires_at,
-                'is_active' => $slug->is_active,
-                'is_expired' => $slug->isExpired(),
-                'current_step' => $slug->current_step,
-                'completed_voting' => $slug->current_step >= 5,
-                'has_security_metadata' => isset($slug->step_meta['security_checked']),
-            ];
-        }
+        // Check IP restriction if control is enabled
+        if (self::isIpControlEnabled() && !is_null($user->voting_ip)) {
+            $ipCheck = self::detectIpChange($user, $currentIp);
+            $result['ip_check'] = $ipCheck;
 
-        return $audit;
-    }
-
-    /**
-     * Emergency security lockdown for a user
-     */
-    public function emergencyLockdown(User $user, string $reason, array $adminDetails = []): bool
-    {
-        return DB::transaction(function () use ($user, $reason, $adminDetails) {
-            // Get all active slugs for this user and update them individually
-            $activeSlugs = VoterSlug::where('user_id', $user->id)
-                ->where('is_active', true)
-                ->get();
-
-            $deactivatedCount = 0;
-            foreach ($activeSlugs as $slug) {
-                $slug->update([
-                    'is_active' => false,
-                    'step_meta' => array_merge($slug->step_meta ?? [], [
-                        'emergency_lockdown' => true,
-                        'lockdown_reason' => $reason,
-                        'lockdown_timestamp' => now()->toISOString(),
-                        'lockdown_admin' => $adminDetails['admin_name'] ?? 'system',
-                    ])
-                ]);
-                $deactivatedCount++;
+            if (!$ipCheck['can_vote']) {
+                $result['eligible'] = false;
+                $result['reasons'][] = 'IP address mismatch - ' . $ipCheck['error_message'];
             }
+        }
 
-            // Revoke voting permission
-            $user->update(['can_vote' => false]);
-
-            Log::critical('Emergency voting lockdown applied', [
-                'user_id' => $user->id,
-                'reason' => $reason,
-                'admin' => $adminDetails['admin_name'] ?? 'system',
-                'slugs_deactivated' => $deactivatedCount,
-                'timestamp' => now(),
-            ]);
-
-            return true;
-        });
-    }
-
-    /**
-     * Check if we're within the voting window (implement based on your election schedule)
-     */
-    private function isWithinVotingWindow(): bool
-    {
-        // TODO: Implement based on your election configuration
-        // For now, assume voting is always open
-        return true;
-
-        // Example implementation:
-        // $votingStart = Carbon::parse(config('election.voting_start'));
-        // $votingEnd = Carbon::parse(config('election.voting_end'));
-        // return now()->between($votingStart, $votingEnd);
+        return $result;
     }
 }

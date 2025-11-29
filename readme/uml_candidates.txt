@@ -52,14 +52,98 @@ $candi->save();
 
 use App\Models\Candidacy;
 $candi = new Candidacy;
-$candi->user_id = "binesh-tamang";
-$candi->candidacy_id = "UML_2025_05";
+$candi->user_id = "bishnu-lal-shrestha";
+$candi->candidacy_id = "UML_2025_06";
 $candi->post_id     = "2021_02";
-$candi->proposer_id = "UML_2025_0501"; // Link to the proposer's nrna_id
-$candi->supporter_id = "UML_2025_502"; // Link to the supporter's nrna_id
-$candi->image_path_1 = "bineshtamang.jpg";
+$candi->proposer_id = "UML_2025_0601"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML_2025_602"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "bishnushrestha.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+#7
+##################################
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = "prakash-koirala";
+$candi->candidacy_id = "UML_2025_07";
+$candi->post_id     = "2021_02";
+$candi->proposer_id = "UML_2025_0701"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML_2025_702"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "prakashkoirala.jpg";
 $candi->image_path_2 = "-";
 $candi->image_path_3 = "-";
 $candi->save();
 
+#8
+##################################
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = "yam-bahadur-tamang";
+$candi->candidacy_id = "UML_2025_08";
+$candi->post_id     = "2021_02";
+$candi->proposer_id = "UML_2025_0801"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML_2025_802"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "yamtamang.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
 
+#############################$_COOKIE
+#9
+##################################
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = "som-krishna-shrestha";
+$candi->candidacy_id = "UML_2025_09";
+$candi->post_id     = "2021_02";
+$candi->proposer_id = "UML_2025_0901"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML_2025_0902"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "somkrishnashrestha.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+##################################
+#11
+##################################
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = "hamshraj-dhakal-chhetri";
+$candi->candidacy_id = "UML_2025_11";
+$candi->post_id     = "2021_02";
+$candi->proposer_id = "UML_2025_1101"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML_2025_1102"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "hamsharajdhakal.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+##################################
+#11
+##################################
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = "hamshraj-dhakal-chhetri";
+$candi->candidacy_id = "UML_2025_11";
+$candi->post_id     = "2021_02";
+$candi->proposer_id = "UML_2025_1101"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML_2025_1102"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "hamsharajdhakal.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();
+##################################
+
+bala-ram-giri"
+#11
+##################################
+use App\Models\Candidacy;
+$candi = new Candidacy;
+$candi->user_id = "bala-ram-giri";
+$candi->candidacy_id = "UML_2025_12";
+$candi->post_id     = "2021_02";
+$candi->proposer_id = "UML_2025_1201"; // Link to the proposer's nrna_id
+$candi->supporter_id = "UML_2025_1202"; // Link to the supporter's nrna_id
+$candi->image_path_1 = "balaramgiri.jpg";
+$candi->image_path_2 = "-";
+$candi->image_path_3 = "-";
+$candi->save();

@@ -2,14 +2,31 @@
     <nrna-layout>
         <app-layout>
         <div class="mt-6 text-center max-w-4xl mx-auto"> 
+    <!-- IP Mismatch Error Display -->
+    <div v-if="$page.props.errors.ip_mismatch" class="bg-red-50 border-l-4 border-red-500 p-6 mb-6 rounded-lg shadow-md max-w-3xl mx-auto">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <svg class="h-6 w-6 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <div class="ml-4">
+                <h3 class="text-lg font-bold text-red-800 mb-2">IP Address Mismatch | IP ठेगाना बेमेल</h3>
+                <div class="text-sm text-red-700 whitespace-pre-line">
+                    {{ $page.props.errors.ip_mismatch }}
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Success Message -->
-    <div class="m-auto text-center bg-gradient-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg mb-8">  
+    <div class="m-auto text-center bg-gradient-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg mb-8">
         <div class="text-4xl mb-3">🎉</div>
-        <p class="text-xl font-bold mb-2">Congratulation {{user_name}}!</p> 
+        <p class="text-xl font-bold mb-2">Congratulation {{user_name}}!</p>
         <p class="text-lg mb-2">You have given the correct voting code. You can Vote now!</p>
         <p class="mb-3">Please select the correct candidates of your choice</p>
         <p class="text-sm opacity-90">यहाँले दिएको भोटिङ कोड सही भएको प्रमाणित भाईसकेको छ। कृपया अब आफ्नो इच्छा अनुसार मतदान गर्न सक्नु हुने छ।</p>
-    </div>  
+    </div>
 
     <!-- Validation Errors -->
     <jet-validation-errors class="mb-6 mx-auto text-center" />
