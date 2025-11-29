@@ -1784,7 +1784,7 @@ public function verifyVoteSubmit(): array
 
     $auth_user = auth()->user();
     $code      =$auth_user->code;
-    $in_code  = $code->code2;
+    $in_code  = $code->code1;
   
     $submittedCode = trim($request->input('voting_code'));
 
@@ -1810,7 +1810,11 @@ public function verifyVoteSubmit(): array
             return;
         }
         
-        if (!Hash::check($submittedCode, $in_code)) {
+        // Plain text comparison for code1 (always plain text)
+        $clean_submitted_code = strtoupper(trim($submittedCode));
+        $clean_in_code = strtoupper(trim($in_code));
+
+        if ($clean_submitted_code !== $clean_in_code) {
             $validator->errors()->add('voting_code', 'Incorrect code. Please try again.');
             return;
         }
@@ -2769,43 +2773,36 @@ public function verify_submitted_code($in_code, $submitted_code)
     ]);
 
     try {
-        // Check if the stored code is a bcrypt hash or plain text
-        // Bcrypt hashes start with $2y$, $2a$, or $2b$
-        $is_hashed = str_starts_with($in_code, '$2y$') ||
-                     str_starts_with($in_code, '$2a$') ||
-                     str_starts_with($in_code, '$2b$');
+        // Clean and format both codes for comparison
+        $clean_in_code = strtoupper(trim($in_code));
 
-        if ($is_hashed) {
-            // Use Hash::check for hashed codes
-            $verification_result = Hash::check($clean_submitted_code, $in_code);
-            \Log::info('Verifying hashed code', [
-                'user_id' => auth()->id() ?? 'unknown',
-                'method' => 'hash',
-            ]);
-        } else {
-            // Use plain text comparison for non-hashed codes
-            $verification_result = ($clean_submitted_code === strtoupper(trim($in_code)));
-            \Log::info('Verifying plain text code', [
-                'user_id' => auth()->id() ?? 'unknown',
-                'method' => 'plain_text',
-                'expected_length' => strlen($in_code),
-                'submitted_length' => strlen($clean_submitted_code),
-            ]);
-        }
+        // Simple plain text comparison for code1 (always plain text)
+        $verification_result = ($clean_submitted_code === $clean_in_code);
+
+        \Log::info('Verifying plain text code', [
+            'user_id' => auth()->id() ?? 'unknown',
+            'method' => 'plain_text',
+            'expected_code' => $clean_in_code,
+            'submitted_code' => $clean_submitted_code,
+            'expected_length' => strlen($clean_in_code),
+            'submitted_length' => strlen($clean_submitted_code),
+        ]);
 
         // Log the result for audit trail
         if ($verification_result) {
             \Log::info('✅ Code verification successful', [
                 'user_id' => auth()->id() ?? 'unknown',
                 'verified_at' => now(),
-                'method' => $is_hashed ? 'hash' : 'plain_text',
+                'method' => 'plain_text',
             ]);
         } else {
             \Log::warning('❌ Code verification failed - Mismatch', [
                 'user_id' => auth()->id() ?? 'unknown',
+                'expected_code' => $clean_in_code,
+                'submitted_code' => $clean_submitted_code,
                 'submitted_code_length' => strlen($clean_submitted_code),
                 'failed_at' => now(),
-                'method' => $is_hashed ? 'hash' : 'plain_text',
+                'method' => 'plain_text',
             ]);
         }
 

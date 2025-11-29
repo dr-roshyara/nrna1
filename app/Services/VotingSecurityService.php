@@ -207,6 +207,39 @@ class VotingSecurityService
     }
 
     /**
+     * Check if a voting slug can be issued for the user
+     *
+     * @param User $user
+     * @return array
+     */
+    public static function canIssueVotingSlug(User $user): array
+    {
+        $result = [
+            'can_issue' => true,
+            'reasons' => [],
+        ];
+
+        // Check basic voting eligibility
+        if (!$user->is_voter) {
+            $result['can_issue'] = false;
+            $result['reasons'][] = 'User is not a registered voter';
+        }
+
+        if (!$user->can_vote) {
+            $result['can_issue'] = false;
+            $result['reasons'][] = 'User is not approved to vote';
+        }
+
+        // Check if user has already voted
+        if ($user->has_voted) {
+            $result['can_issue'] = false;
+            $result['reasons'][] = 'User has already completed voting';
+        }
+
+        return $result;
+    }
+
+    /**
      * Validate voter eligibility including IP check
      *
      * @param User $user

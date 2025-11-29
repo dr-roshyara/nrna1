@@ -72,7 +72,6 @@ class Kernel extends HttpKernel
         'committee.member' => \App\Http\Middleware\EnsureCommitteeMember::class,
         'voter.slug.window' => \App\Http\Middleware\EnsureVoterSlugWindow::class,
         'voter.step.order' => \App\Http\Middleware\EnsureVoterStepOrder::class,
-        'prevent.multiple.voting' => \App\Http\Middleware\PreventMultipleVoting::class,
         'validate.voting.ip' => \App\Http\Middleware\ValidateVotingIp::class,
 
     ];

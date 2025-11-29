@@ -1,7 +1,9 @@
 <template>
     <div class="m-auto w-full text-center">
         <!-- {{full_image_name}}  -->
-        {{ candidacy_name }}
+        <p class="mx-auto font-bold text-xl text-indigo-700 mb-2">
+            {{ candidacy_name }}
+        </p>
         <img
             v-if="imageGiven"
             :src="full_image_name"
