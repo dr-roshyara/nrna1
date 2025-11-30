@@ -272,7 +272,11 @@ export default {
                     const required = props.national_posts[index]?.required_number || 1;
                     const selected = selection.candidates.length;
 
-                    if (selected > required) {
+                    // 🐛 BUG FIX: Validate that at least one candidate is selected when no_vote is false
+                    if (selected === 0) {
+                        const postName = props.national_posts[index]?.name || `National Post ${index + 1}`;
+                        issues.push(`Please select at least one candidate for ${postName} or click "Skip this position"`);
+                    } else if (selected > required) {
                         const postName = props.national_posts[index]?.name || `National Post ${index + 1}`;
                         issues.push(`You can select maximum ${required} candidate(s) for ${postName}`);
                     }
@@ -298,7 +302,11 @@ export default {
                     const required = props.regional_posts[index]?.required_number || 1;
                     const selected = selection.candidates.length;
 
-                    if (selected > required) {
+                    // 🐛 BUG FIX: Validate that at least one candidate is selected when no_vote is false
+                    if (selected === 0) {
+                        const postName = props.regional_posts[index]?.name || `Regional Post ${index + 1}`;
+                        issues.push(`Please select at least one candidate for ${postName} or click "Skip this position"`);
+                    } else if (selected > required) {
                         const postName = props.regional_posts[index]?.name || `Regional Post ${index + 1}`;
                         issues.push(`You can select maximum ${required} candidate(s) for ${postName}`);
                     }

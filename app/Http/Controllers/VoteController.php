@@ -373,6 +373,9 @@ public function first_submission(Request $request)
         'agree_button'
     ]);
 
+    // 🐛 BUG FIX: Sanitize vote data before validation to fix inconsistent no_vote flags
+    $vote_data = $this->sanitize_vote_data($vote_data);
+
     // Validate candidate selections with SELECT_ALL_REQUIRED logic
     $validation_errors = $this->validate_candidate_selections($vote_data);
 
@@ -514,6 +517,10 @@ public function second_submission(Request $request)
 
         // Get and validate vote data
         $vote_data = $request->all();
+
+        // 🐛 BUG FIX: Sanitize vote data before validation to fix inconsistent no_vote flags
+        $vote_data = $this->sanitize_vote_data($vote_data);
+
         $validation_errors = $this->validate_candidate_selections($vote_data);
         
         if (!empty($validation_errors)) {
@@ -848,6 +855,65 @@ public function send_second_voting_code(&$code, $auth_user)
  * @param array $vote_data
  * @return array
  */
+/**
+ * Sanitize vote data to fix inconsistent no_vote flags
+ * 🐛 BUG FIX: Prevent {no_vote: false, candidates: []} from being saved
+ *
+ * @param array $vote_data
+ * @return array
+ */
+private function sanitize_vote_data($vote_data)
+{
+    // Sanitize national selections
+    if (isset($vote_data['national_selected_candidates']) && is_array($vote_data['national_selected_candidates'])) {
+        foreach ($vote_data['national_selected_candidates'] as $index => $selection) {
+            if ($selection) {
+                $vote_data['national_selected_candidates'][$index] = $this->sanitize_selection($selection);
+            }
+        }
+    }
+
+    // Sanitize regional selections
+    if (isset($vote_data['regional_selected_candidates']) && is_array($vote_data['regional_selected_candidates'])) {
+        foreach ($vote_data['regional_selected_candidates'] as $index => $selection) {
+            if ($selection) {
+                $vote_data['regional_selected_candidates'][$index] = $this->sanitize_selection($selection);
+            }
+        }
+    }
+
+    return $vote_data;
+}
+
+/**
+ * Sanitize individual selection to ensure data consistency
+ *
+ * @param array $selection
+ * @return array
+ */
+private function sanitize_selection($selection)
+{
+    // Check for the bug pattern: no_vote=false with empty candidates
+    $no_vote = $selection['no_vote'] ?? false;
+    $candidates = $selection['candidates'] ?? [];
+    $candidate_count = is_array($candidates) ? count($candidates) : 0;
+
+    // 🐛 BUG FIX: If no_vote is false but candidates array is empty,
+    // this is inconsistent data - treat it as no_vote = true
+    if ($no_vote === false && $candidate_count === 0) {
+        \Log::warning('Data inconsistency detected and fixed', [
+            'post_id' => $selection['post_id'] ?? 'unknown',
+            'post_name' => $selection['post_name'] ?? 'unknown',
+            'issue' => 'no_vote=false with empty candidates',
+            'action' => 'Changed no_vote to true'
+        ]);
+
+        $selection['no_vote'] = true;
+    }
+
+    return $selection;
+}
+
 private function validate_candidate_selections($vote_data)
 {
     $errors = [];
@@ -883,6 +949,15 @@ private function validate_candidate_selections($vote_data)
                         $errors["national_post_{$index}"] = "Too many candidates selected for {$post_name}. Maximum: {$required_count}";
                     }
                 }
+            } else {
+                // 🐛 BUG FIX: Detect inconsistent data (no_vote=false with no candidates)
+                $no_vote = $selection['no_vote'] ?? false;
+                $candidates_count = isset($selection['candidates']) && is_array($selection['candidates']) ? count($selection['candidates']) : 0;
+
+                if ($no_vote === false && $candidates_count === 0) {
+                    $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
+                    $errors["national_post_{$index}"] = "Invalid selection for {$post_name}. Please select candidates or choose to skip.";
+                }
             }
         }
     }
@@ -909,6 +984,15 @@ private function validate_candidate_selections($vote_data)
                     if ($candidate_count > $required_count) {
                         $errors["regional_post_{$index}"] = "Too many candidates selected for {$post_name}. Maximum: {$required_count}";
                     }
+                }
+            } else {
+                // 🐛 BUG FIX: Detect inconsistent data (no_vote=false with no candidates)
+                $no_vote = $selection['no_vote'] ?? false;
+                $candidates_count = isset($selection['candidates']) && is_array($selection['candidates']) ? count($selection['candidates']) : 0;
+
+                if ($no_vote === false && $candidates_count === 0) {
+                    $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
+                    $errors["regional_post_{$index}"] = "Invalid selection for {$post_name}. Please select candidates or choose to skip.";
                 }
             }
         }

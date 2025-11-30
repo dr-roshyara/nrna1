@@ -214,7 +214,7 @@ export default {
         informSelectedCandidates() {
             // Emit the selected candidate objects, not just IDs
             let selectionData;
-            
+
             if (this.noVoteSelected) {
                 // When no vote is selected, send a special structure
                 selectionData = {
@@ -226,15 +226,20 @@ export default {
                 };
             } else {
                 // Normal candidate selection
-                const selectedCandidates = this.candidatesWithState.filter(candidate => 
+                const selectedCandidates = this.candidatesWithState.filter(candidate =>
                     this.selected.includes(candidate.candidacy_id)
                 );
-                
+
+                // 🐛 BUG FIX: If no candidates selected, treat as "no_vote: true"
+                // This happens when user clicks "Skip" then unchecks it without selecting candidates
+                // Instead of sending {no_vote: false, candidates: []}, we send {no_vote: true, candidates: []}
+                const hasNoCandidatesSelected = selectedCandidates.length === 0;
+
                 selectionData = {
                     post_id: this.post.post_id,
                     post_name: this.post.name,
                     required_number: this.post.required_number,
-                    no_vote: false,
+                    no_vote: hasNoCandidatesSelected, // ✅ Set to true if empty
                     candidates: selectedCandidates.map(candidate => ({
                         candidacy_id: candidate.candidacy_id,
                         user_id: candidate.user?.user_id || candidate.user?.id,
@@ -243,7 +248,7 @@ export default {
                     }))
                 };
             }
-            
+
             this.$emit('add_selected_candidates', selectionData);
         },
         
