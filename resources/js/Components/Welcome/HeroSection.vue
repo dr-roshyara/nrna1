@@ -16,63 +16,63 @@
           {{ $t('platform.name') }} - {{ $t('platform.tagline') }}
         </div>
 
-        <!-- Main Heading - Clean and Authoritative -->
-        <div class="mb-8 md:mb-10">
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-blue-900 mb-4 leading-tight">
+        <!-- Main Heading - Mobile-First Scaling -->
+        <div class="mb-8 md:mb-10 px-4">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-3 md:mb-4 leading-tight">
             {{ $t('welcome.title') }}
           </h1>
-          <p class="text-2xl md:text-3xl font-semibold text-blue-700 leading-relaxed">
+          <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-blue-700 leading-relaxed">
             {{ $t('welcome.subtitle') }}
           </p>
         </div>
 
-        <!-- Description - Professional Spacing -->
-        <div class="mb-12 md:mb-16 px-6 md:px-8 py-8 md:py-10 bg-white rounded-lg border border-blue-200 shadow-sm max-w-3xl mx-auto">
-          <p class="text-lg md:text-xl text-gray-800 leading-relaxed font-medium">
+        <!-- Description - Mobile-Optimized -->
+        <div class="mb-12 md:mb-16 mx-4 md:mx-6 lg:mx-0 px-4 md:px-6 py-6 md:py-8 bg-white rounded-lg border border-blue-200 shadow-sm max-w-3xl mx-auto">
+          <p class="text-base sm:text-lg md:text-xl text-gray-800 leading-relaxed font-medium">
             {{ $t('platform.description') }}
           </p>
         </div>
 
-        <!-- Stats Section - Official & Clean -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 w-full max-w-4xl mx-auto">
+        <!-- Stats Section - Mobile-First, Touch-Friendly -->
+        <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 mb-14 w-full max-w-4xl mx-auto px-4">
           <!-- Stat 1: Registered Voters -->
-          <div class="bg-white rounded-lg p-8 border border-blue-200 shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div class="text-4xl md:text-5xl font-bold text-blue-900 mb-3">10,000+</div>
-            <p class="text-sm md:text-base text-gray-700 font-medium">Registered Voters</p>
+          <div class="bg-white rounded-lg p-5 md:p-6 border border-blue-200 shadow-sm flex-1 min-w-[140px] sm:min-w-0">
+            <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-2">10,000+</div>
+            <p class="text-xs sm:text-sm md:text-base text-gray-700 font-medium leading-tight">Registered Voters</p>
           </div>
 
           <!-- Stat 2: System Uptime -->
-          <div class="bg-white rounded-lg p-8 border border-blue-200 shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div class="text-4xl md:text-5xl font-bold text-green-700 mb-3">99.8%</div>
-            <p class="text-sm md:text-base text-gray-700 font-medium">System Uptime</p>
+          <div class="bg-white rounded-lg p-5 md:p-6 border border-blue-200 shadow-sm flex-1 min-w-[140px] sm:min-w-0">
+            <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-green-700 mb-2">99.8%</div>
+            <p class="text-xs sm:text-sm md:text-base text-gray-700 font-medium leading-tight">System Uptime</p>
           </div>
 
           <!-- Stat 3: Security Certified -->
-          <div class="bg-white rounded-lg p-8 border border-blue-200 shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div class="text-4xl md:text-5xl font-bold text-blue-900 mb-3">ISO 27001</div>
-            <p class="text-sm md:text-base text-gray-700 font-medium">Security Certified</p>
+          <div class="bg-white rounded-lg p-5 md:p-6 border border-blue-200 shadow-sm flex-1 min-w-[140px] sm:min-w-0">
+            <div class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-2">ISO 27001</div>
+            <p class="text-xs sm:text-sm md:text-base text-gray-700 font-medium leading-tight">Security Certified</p>
           </div>
         </div>
 
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <!-- Primary CTA -->
+        <!-- CTA Buttons - Mobile-Friendly Touch Targets -->
+        <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-stretch sm:items-center mb-12 px-4">
+          <!-- Primary CTA - Min 44px height for mobile touch -->
           <a
             :href="route('login')"
-            class="inline-flex items-center px-8 py-4 bg-blue-900 text-white font-bold text-lg rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-colors shadow-lg"
+            class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 min-h-[44px] bg-blue-900 text-white font-bold text-sm md:text-lg rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-colors shadow-sm md:shadow-lg"
           >
-            <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-5 md:w-6 h-5 md:h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"/>
             </svg>
             {{ $t('cta.start_voting_now') }}
           </a>
 
-          <!-- Secondary CTA -->
+          <!-- Secondary CTA - Min 44px height for mobile touch -->
           <a
             href="#how-it-works"
-            class="inline-flex items-center px-8 py-4 border-2 border-blue-900 text-blue-900 font-bold text-lg rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-colors"
+            class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 min-h-[44px] border-2 border-blue-900 text-blue-900 font-bold text-sm md:text-lg rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-colors"
           >
-            <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-5 md:w-6 h-5 md:h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
             </svg>
             {{ $t('cta.how_it_works') }}
