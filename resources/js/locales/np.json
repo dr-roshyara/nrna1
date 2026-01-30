@@ -66,6 +66,8 @@
   },
   "navigation": {
     "home": "गृहपृष्ठ",
+    "about": "हमारो बारे में",
+    "faq": "सामान्य प्रश्नहरु",
     "dashboard": "ड्यासबोर्ड",
     "elections": "चुनावहरू",
     "events": "घटनाहरू",
@@ -85,6 +87,12 @@
     "security": "सुरक्षा",
     "industries": "उद्योगहरू",
     "services": "सेवाहरू"
+  },
+  "cta": {
+    "start_voting_now": "अब भोट गर्न सुरु गर्नुहोस्",
+    "how_it_works": "यो कसरी काम गर्छ",
+    "schedule_demo": "डेमो शेड्यूल गर्नुहोस्",
+    "view_case_studies": "केस स्टडीहरु हेर्नुहोस्"
   },
   "validation": {
     "required": "यो फिल्ड आवश्यक छ",

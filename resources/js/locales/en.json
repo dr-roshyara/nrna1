@@ -66,6 +66,8 @@
   },
   "navigation": {
     "home": "Home",
+    "about": "About",
+    "faq": "FAQ",
     "dashboard": "Dashboard",
     "elections": "Elections",
     "events": "Events",
@@ -85,6 +87,12 @@
     "security": "Security",
     "industries": "Industries",
     "services": "Services"
+  },
+  "cta": {
+    "start_voting_now": "Start Voting Now",
+    "how_it_works": "How It Works",
+    "schedule_demo": "Schedule Demo",
+    "view_case_studies": "View Case Studies"
   },
   "validation": {
     "required": "This field is required",

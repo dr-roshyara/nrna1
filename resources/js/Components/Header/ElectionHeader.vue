@@ -5,7 +5,7 @@
 
         <!-- Logo and Branding -->
         <div class="flex items-center space-x-3 flex-1">
-          <img src="/images/logo-2.png" alt="DemocracyOS" class="w-12 h-12 md:w-14 md:h-14 object-contain" />
+          <img src="/images/logo-2.png" alt="PUBLCI DIGIT" class="w-12 h-12 md:w-14 md:h-14 object-contain" />
           <div class="flex flex-col">
             <h1 class="text-lg md:text-xl font-bold leading-tight">
               {{ $t('platform.name') }}
@@ -19,13 +19,13 @@
         <!-- Navigation (Optional) -->
         <nav class="hidden md:flex space-x-6">
           <a href="/" class="text-white font-medium hover:text-blue-200 transition-colors">
-            Home
+            {{ $t('navigation.home') }}
           </a>
           <a href="#about" class="text-white font-medium hover:text-blue-200 transition-colors">
-            About
+            {{ $t('navigation.about') }}
           </a>
           <a href="#faq" class="text-white font-medium hover:text-blue-200 transition-colors">
-            FAQ
+            {{ $t('navigation.faq') }}
           </a>
         </nav>
 

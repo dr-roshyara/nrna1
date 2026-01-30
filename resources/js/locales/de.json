@@ -41,7 +41,7 @@
     "trust_security": "SICHERHEIT & VERTRAUEN"
   },
   "platform": {
-    "name": "DemocracyOS",
+    "name": "PUBLIC DIGIT",
     "tagline": "Sichere Wahlplattform",
     "description": "GDPR-konforme Wahlplattform für Organisationen und Diaspora-Gruppen"
   },
@@ -66,6 +66,8 @@
   },
   "navigation": {
     "home": "Startseite",
+    "about": "Über uns",
+    "faq": "Häufig gestellte Fragen",
     "dashboard": "Dashboard",
     "elections": "Wahlen",
     "events": "Veranstaltungen",
@@ -85,6 +87,12 @@
     "security": "Sicherheit",
     "industries": "Branchen",
     "services": "Services"
+  },
+  "cta": {
+    "start_voting_now": "Abstimmung starten",
+    "how_it_works": "So funktioniert es",
+    "schedule_demo": "Demo buchen",
+    "view_case_studies": "Fallstudien anzeigen"
   },
   "validation": {
     "required": "Dieses Feld ist erforderlich",
