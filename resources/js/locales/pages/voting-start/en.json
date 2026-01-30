@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "title": "PUBLIC DIGIT",
+    "subtitle": "Professional Voting Platform",
+    "description": "Secure, GDPR-compliant online elections for organizations and diaspora groups"
+  },
+  "cta": {
+    "start_voting": "Start Voting",
+    "pricing": "View Pricing",
+    "demo": "Schedule Demo"
+  },
+  "pricing": {
+    "free_trial": "14-Day Free Trial",
+    "from_month": "From €49/month",
+    "enterprise": "Enterprise Solution",
+    "ready": "Ready to conduct secure elections?",
+    "description": "Start with PUBLIC DIGIT today and hold your next election with complete security and transparency."
+  },
+  "features": {
+    "gdpr": "GDPR Compliant",
+    "german_hosting": "German Data Hosting",
+    "security": "ISO 27001 Certified",
+    "multilingual": "Multilingual Elections",
+    "title": "Why PUBLIC DIGIT?",
+    "secure": {
+      "title": "Secure Voting",
+      "description": "End-to-end encrypted elections with complete audit trail and tamper protection"
+    },
+    "easy": {
+      "title": "Easy Setup",
+      "description": "Set up elections in minutes. Voters can participate from anywhere in the world"
+    },
+    "realtime": {
+      "title": "Real-Time Results",
+      "description": "Live results and detailed analytics available immediately after voting ends"
+    }
+  }
+}

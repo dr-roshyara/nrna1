@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "title": "PUBLIC DIGIT",
+    "subtitle": "Professionelle Wahlplattform",
+    "description": "Sichere, DSGVO-konforme Online-Wahlen für Organisationen und Diaspora-Gruppen"
+  },
+  "cta": {
+    "start_voting": "Wahl starten",
+    "pricing": "Preise ansehen",
+    "demo": "Demo vereinbaren"
+  },
+  "pricing": {
+    "free_trial": "14 Tage kostenlos testen",
+    "from_month": "Ab 49€/Monat",
+    "enterprise": "Enterprise-Lösung",
+    "ready": "Bereit, sichere Wahlen durchzuführen?",
+    "description": "Starten Sie heute mit PUBLIC DIGIT und führen Sie Ihre nächste Wahl mit vollständiger Sicherheit und Transparenz durch."
+  },
+  "features": {
+    "gdpr": "DSGVO-konform",
+    "german_hosting": "Deutsches Hosting",
+    "security": "ISO 27001 zertifiziert",
+    "multilingual": "Mehrsprachige Wahlen",
+    "title": "Warum PUBLIC DIGIT?",
+    "secure": {
+      "title": "Sichere Abstimmung",
+      "description": "Ende-zu-Ende verschlüsselte Wahlen mit vollständiger Audit-Trail und Manipulationsschutz"
+    },
+    "easy": {
+      "title": "Einfache Einrichtung",
+      "description": "Wahlen in Minuten einrichten. Wähler können von überall auf der Welt teilnehmen"
+    },
+    "realtime": {
+      "title": "Echtzeitgebnis",
+      "description": "Live-Ergebnisse und detaillierte Analysen sofort nach Wahlende verfügbar"
+    }
+  }
+}
