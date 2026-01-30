@@ -16,13 +16,10 @@
                             </h3>
                         </div>
                         <h4 class="text-lg font-semibold mb-3 text-purple-200">
-                            Digital Innovation Platform
+                            {{ $t('platform.tagline') }}
                         </h4>
                         <p class="text-purple-300 text-sm leading-relaxed mb-4">
-                            {{ language === 'de' ? 
-                                'Plattform für digitale Innovation und Technologielösungen.' :
-                                'Platform for digital innovation and technology solutions.'
-                            }}
+                            {{ $t('footer.tagline') }}
                         </p>
                         
                         <!-- Social Media Links -->
@@ -49,37 +46,37 @@
                 <!-- Quick Links -->
                 <div class="lg:col-span-1">
                     <h3 class="text-lg font-semibold mb-4 text-purple-100">
-                        {{ language === 'de' ? 'Schnellzugriff' : 'Quick Links' }}
+                        {{ $t('footer.quick_links') }}
                     </h3>
                     <ul class="space-y-2">
                         <li>
                             <a href="/dashboard" class="footer-link text-purple-300 hover:text-white transition-colors duration-200 text-sm">
-                                {{ language === 'de' ? 'Dashboard' : 'Dashboard' }}
+                                {{ $t('footer.dashboard') }}
                             </a>
                         </li>
                         <li>
                             <a href="/products" class="footer-link text-purple-300 hover:text-white transition-colors duration-200 text-sm">
-                                {{ language === 'de' ? 'Produkte' : 'Products' }}
+                                {{ $t('footer.products') }}
                             </a>
                         </li>
                         <li>
                             <a href="/solutions" class="footer-link text-purple-300 hover:text-white transition-colors duration-200 text-sm">
-                                {{ language === 'de' ? 'Lösungen' : 'Solutions' }}
+                                {{ $t('footer.solutions') }}
                             </a>
                         </li>
                         <li>
                             <a href="/developers" class="footer-link text-purple-300 hover:text-white transition-colors duration-200 text-sm">
-                                {{ language === 'de' ? 'Entwickler' : 'Developers' }}
+                                {{ $t('footer.developers') }}
                             </a>
                         </li>
                         <li>
                             <a href="/api" class="footer-link text-purple-300 hover:text-white transition-colors duration-200 text-sm">
-                                {{ language === 'de' ? 'API' : 'API' }}
+                                {{ $t('footer.api') }}
                             </a>
                         </li>
                         <li>
                             <a href="/blog" class="footer-link text-purple-300 hover:text-white transition-colors duration-200 text-sm">
-                                {{ language === 'de' ? 'Blog' : 'Blog' }}
+                                {{ $t('footer.blog') }}
                             </a>
                         </li>
                     </ul>
@@ -88,7 +85,7 @@
                 <!-- Contact Information -->
                 <div class="lg:col-span-1">
                     <h3 class="text-lg font-semibold mb-4 text-purple-100">
-                        {{ language === 'de' ? 'Kontaktinformation' : 'Contact Information' }}
+                        {{ $t('footer.contact_info') }}
                     </h3>
                     <div class="space-y-3">
                         <div class="flex items-start space-x-3">
@@ -98,36 +95,36 @@
                             </svg>
                             <div>
                                 <p class="text-purple-300 text-sm">
-                                    {{ language === 'de' ? 'Adresse:' : 'Address:' }}
+                                    {{ $t('footer.address') }}
                                 </p>
                                 <p class="text-purple-200 text-sm">
                                     Public Digit Technology<br>
-                                    Rathaus str 4 <br> 
+                                    Rathaus str 4 <br>
                                     65203 Wiesbaden , Germany  </p>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-center space-x-3">
                             <svg class="w-5 h-5 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                             <div>
                                 <p class="text-purple-300 text-sm">
-                                    {{ language === 'de' ? 'E-Mail:' : 'Email:' }}
+                                    {{ $t('footer.email') }}
                                 </p>
                                 <a href="mailto:support@publicdigit.com" class="text-purple-200 text-sm hover:text-white transition-colors duration-200">
                                     support@publicdigit.com
                                 </a>
                             </div>
                         </div>
-                        
+
                         <div class="flex items-center space-x-3">
                             <svg class="w-5 h-5 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                             </svg>
                             <div>
                                 <p class="text-purple-300 text-sm">
-                                    {{ language === 'de' ? 'Telefon:' : 'Phone:' }}
+                                    {{ $t('footer.phone') }}
                                 </p>
                                 <a href="tel:+49-15164322589" class="text-purple-200 text-sm hover:text-white transition-colors duration-200">
                                     +49 151 64322589
@@ -140,29 +137,26 @@
                 <!-- Newsletter & Legal Links -->
                 <div class="lg:col-span-1">
                     <h3 class="text-lg font-semibold mb-4 text-purple-100">
-                        {{ language === 'de' ? 'Newsletter' : 'Newsletter' }}
+                        {{ $t('footer.newsletter') }}
                     </h3>
                     <p class="text-purple-300 text-sm mb-4">
-                        {{ language === 'de' ? 
-                            'Bleiben Sie mit den neuesten Tech-Updates und Innovationen auf dem Laufenden.' :
-                            'Stay updated with the latest tech news and innovations.'
-                        }}
+                        {{ $t('footer.newsletter_description') }}
                     </p>
-                    
+
                     <!-- Newsletter Signup -->
                     <div class="mb-6">
                         <div class="flex flex-col sm:flex-row gap-2">
-                            <input 
-                                type="email" 
+                            <input
+                                type="email"
                                 v-model="newsletterEmail"
-                                :placeholder="language === 'de' ? 'Ihre E-Mail' : 'Your email'"
+                                :placeholder="$t('footer.newsletter_placeholder')"
                                 class="flex-1 px-3 py-2 bg-purple-800/50 border border-purple-600 rounded-lg text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent text-sm"
                             />
-                            <button 
+                            <button
                                 @click="subscribeNewsletter"
                                 class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors duration-200 text-sm font-medium"
                             >
-                                {{ language === 'de' ? 'Anmelden' : 'Sign Up' }}
+                                {{ $t('footer.newsletter_signup') }}
                             </button>
                         </div>
                     </div>
@@ -170,22 +164,22 @@
                     <!-- Legal Links -->
                     <div class="space-y-2">
                         <h4 class="text-sm font-semibold text-purple-200 mb-2">
-                            {{ language === 'de' ? 'Rechtliche Informationen' : 'Legal Information' }}
+                            {{ $t('footer.legal_info') }}
                         </h4>
                         <ul class="space-y-1">
                             <li>
                                 <a href="/privacy" class="footer-link text-purple-300 hover:text-white transition-colors duration-200 text-sm">
-                                    {{ language === 'de' ? 'Datenschutz' : 'Privacy Policy' }}
+                                    {{ $t('footer.privacy') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="/terms" class="footer-link text-purple-300 hover:text-white transition-colors duration-200 text-sm">
-                                    {{ language === 'de' ? 'Nutzungsbedingungen' : 'Terms of Service' }}
+                                    {{ $t('footer.terms') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="/cookies" class="footer-link text-purple-300 hover:text-white transition-colors duration-200 text-sm">
-                                    {{ language === 'de' ? 'Cookie-Richtlinie' : 'Cookie Policy' }}
+                                    {{ $t('footer.cookies') }}
                                 </a>
                             </li>
                         </ul>
@@ -198,38 +192,38 @@
         <div class="border-t border-purple-700/50 bg-purple-950/30">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                    
+
                     <!-- Copyright -->
                     <div class="text-purple-300 text-sm text-center md:text-left">
                         <p>
-                            &copy; {{ currentYear }} PublicDigit Inc. 
-                            {{ language === 'de' ? 'Alle Rechte vorbehalten.' : 'All rights reserved.' }}
+                            &copy; {{ currentYear }} PublicDigit Inc.
+                            {{ $t('footer.rights') }}
                         </p>
                     </div>
 
                     <!-- Language Toggle -->
                     <div class="flex items-center space-x-4">
-                        <span class="text-purple-300 text-sm">{{ language === 'de' ? 'Sprache:' : 'Language:' }}</span>
-                        <button 
+                        <span class="text-purple-300 text-sm">{{ $t('footer.language') }}</span>
+                        <button
                             @click="toggleLanguage"
                             class="flex items-center space-x-2 px-3 py-1 bg-purple-700/50 border border-purple-600 rounded-lg text-purple-200 hover:text-white hover:bg-purple-600/50 transition-all duration-200 text-sm"
                         >
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
                             </svg>
-                            <span>{{ language === 'de' ? 'English' : 'Deutsch' }}</span>
+                            <span>{{ $i18n?.locale === 'de' ? $t('footer.english') : $t('footer.german') }}</span>
                         </button>
                     </div>
 
                     <!-- Back to Top -->
-                    <button 
+                    <button
                         @click="scrollToTop"
                         class="flex items-center space-x-2 px-3 py-1 bg-purple-700/50 border border-purple-600 rounded-lg text-purple-200 hover:text-white hover:bg-purple-600/50 transition-all duration-200 text-sm"
                     >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
                         </svg>
-                        <span>{{ language === 'de' ? 'Nach oben' : 'Back to Top' }}</span>
+                        <span>{{ $t('footer.back_to_top') }}</span>
                     </button>
                 </div>
             </div>
@@ -271,18 +265,12 @@ export default {
         subscribeNewsletter() {
             if (this.newsletterEmail && this.isValidEmail(this.newsletterEmail)) {
                 console.log('Subscribing email:', this.newsletterEmail);
-                
-                alert(this.language === 'de' ? 
-                    'Vielen Dank! Ihre E-Mail wurde erfolgreich registriert.' :
-                    'Thank you! Your email has been successfully registered.'
-                );
-                
+
+                alert(this.$t('footer.newsletter_success'));
+
                 this.newsletterEmail = '';
             } else {
-                alert(this.language === 'de' ? 
-                    'Bitte geben Sie eine gültige E-Mail-Adresse ein.' :
-                    'Please enter a valid email address.'
-                );
+                alert(this.$t('footer.newsletter_error'));
             }
         },
         
