@@ -204,28 +204,43 @@
 </template>
 
 <script>
+import pricingDe from '../locales/pages/pricing/de.json';
+import pricingEn from '../locales/pages/pricing/en.json';
+import pricingNp from '../locales/pages/pricing/np.json';
+
 export default {
   name: 'Pricing',
   data() {
     return {
-      openFaq: []
+      openFaq: [],
+      pricingData: {
+        de: pricingDe,
+        en: pricingEn,
+        np: pricingNp
+      }
     };
   },
   computed: {
+    currentLocale() {
+      return this.$i18n.locale;
+    },
+    pricing() {
+      return this.pricingData[this.currentLocale] || this.pricingData.de;
+    },
     starterFeatures() {
-      return this.$t('pages.pricing.plans.starter.features') || [];
+      return this.pricing.plans.starter.features || [];
     },
     professionalFeatures() {
-      return this.$t('pages.pricing.plans.professional.features') || [];
+      return this.pricing.plans.professional.features || [];
     },
     enterpriseFeatures() {
-      return this.$t('pages.pricing.plans.enterprise.features') || [];
+      return this.pricing.plans.enterprise.features || [];
     },
     includedFeatures() {
-      return this.$t('pages.pricing.features.included') || [];
+      return this.pricing.features.included || [];
     },
     faqQuestions() {
-      return this.$t('pages.pricing.faq.questions') || [];
+      return this.pricing.faq.questions || [];
     }
   },
   methods: {
