@@ -16,30 +16,41 @@
           {{ $t('platform.name') }} - {{ $t('platform.tagline') }}
         </div>
 
-        <!-- Main Heading -->
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-6 leading-tight">
-          {{ $t('welcome.title') }}<br>
-          <span class="text-blue-700">{{ $t('welcome.subtitle') }}</span>
-        </h1>
+        <!-- Main Heading - Clean and Authoritative -->
+        <div class="mb-8 md:mb-10">
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-blue-900 mb-4 leading-tight">
+            {{ $t('welcome.title') }}
+          </h1>
+          <p class="text-2xl md:text-3xl font-semibold text-blue-700 leading-relaxed">
+            {{ $t('welcome.subtitle') }}
+          </p>
+        </div>
 
-        <!-- Subheading -->
-        <p class="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
-          {{ $t('platform.description') }}
-        </p>
+        <!-- Description - Professional Spacing -->
+        <div class="mb-12 md:mb-16 px-6 md:px-8 py-8 md:py-10 bg-white rounded-lg border border-blue-200 shadow-sm max-w-3xl mx-auto">
+          <p class="text-lg md:text-xl text-gray-800 leading-relaxed font-medium">
+            {{ $t('platform.description') }}
+          </p>
+        </div>
 
-        <!-- Stats Bar -->
-        <div class="flex flex-wrap justify-center gap-6 md:gap-10 mb-10">
-          <div class="text-center">
-            <div class="text-3xl md:text-4xl font-bold text-blue-900">10,000+</div>
-            <div class="text-sm text-gray-600">Registered Voters</div>
+        <!-- Stats Section - Official & Clean -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 w-full max-w-4xl mx-auto">
+          <!-- Stat 1: Registered Voters -->
+          <div class="bg-white rounded-lg p-8 border border-blue-200 shadow-sm hover:shadow-md transition-shadow duration-200">
+            <div class="text-4xl md:text-5xl font-bold text-blue-900 mb-3">10,000+</div>
+            <p class="text-sm md:text-base text-gray-700 font-medium">Registered Voters</p>
           </div>
-          <div class="text-center">
-            <div class="text-3xl md:text-4xl font-bold text-blue-900">99.8%</div>
-            <div class="text-sm text-gray-600">System Uptime</div>
+
+          <!-- Stat 2: System Uptime -->
+          <div class="bg-white rounded-lg p-8 border border-blue-200 shadow-sm hover:shadow-md transition-shadow duration-200">
+            <div class="text-4xl md:text-5xl font-bold text-green-700 mb-3">99.8%</div>
+            <p class="text-sm md:text-base text-gray-700 font-medium">System Uptime</p>
           </div>
-          <div class="text-center">
-            <div class="text-3xl md:text-4xl font-bold text-blue-900">ISO 27001</div>
-            <div class="text-sm text-gray-600">Security Certified</div>
+
+          <!-- Stat 3: Security Certified -->
+          <div class="bg-white rounded-lg p-8 border border-blue-200 shadow-sm hover:shadow-md transition-shadow duration-200">
+            <div class="text-4xl md:text-5xl font-bold text-blue-900 mb-3">ISO 27001</div>
+            <p class="text-sm md:text-base text-gray-700 font-medium">Security Certified</p>
           </div>
         </div>
 
