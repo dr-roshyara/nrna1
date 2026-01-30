@@ -1,66 +1,49 @@
 <template>
-    <!-- <nrna-layout> -->
-    <!-- <div class="m-auto text-center">
-           <a href="https://www.civiciti.com/ww/nrnagermany" class="m-auto min-h-screen" >
-                      <div class=" flex flex-col h-64 py-2 m-auto text-center px-10 w-full">
-                       <p class="w-full text-center text-gray-900 font-bold">
-                         VOTE  HERE </p>
-                       <img src="/storage/images/ballot.png" width="200" height="200" />
-                    </div>
+    <div v-if="!loggedIn" class="min-h-screen bg-gray-50">
+        <!-- New Professional Header -->
+        <ElectionHeader :isLoggedIn="false" />
 
-            </a>
-    </div>  -->
-    <!-- </nrna-layout> -->
-    <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            <inertia-link v-if="$page.props.user"
-                    href="/dashboard" class="text-sm text-gray-700 underline">
-                Dashboard
-            </inertia-link>
+        <!-- Hero Section -->
+        <HeroSection />
 
-            <template v-else>
-                <inertia-link :href="route('login')" class="text-sm text-gray-700 underline">
-                    Log in
-                </inertia-link>
+        <!-- Audience Section -->
+        <AudienceSection />
 
-                <inertia-link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-700 underline">
-                    Register
-                </inertia-link>
-
-            </template>
-        </div>  -->
-
-    <div v-if="!loggedIn">
-        <nrna-layout :canRegister="canRegister" :canLogin="canLogin">
-            <div class="mx-auto">
+        <!-- Main Content -->
+        <div class="bg-white py-12 md:py-16">
+            <div class="container mx-auto px-4 md:px-6 lg:px-8">
                 <join-network></join-network>
+            </div>
+        </div>
+
+        <!-- Upcoming Events Timeline -->
+        <div class="bg-gray-50 py-12 md:py-16">
+            <div class="container mx-auto px-4 md:px-6 lg:px-8">
                 <div id="calendar">
                     <upcoming-events
                         class="mb-4 w-full max-w-full py-2"
                     ></upcoming-events>
                 </div>
-                <!-- <login
-                    canResetPassword="true"
-                    :canRegister="canRegister"
-                    :canLogin="canLogin"
-                >
-                </login> -->
             </div>
-        </nrna-layout>
+        </div>
+
+        <!-- Footer -->
+        <PublicDigitFooter />
     </div>
     <div v-else>
         <dashboard> </dashboard>
     </div>
-
-    <!-- </nrna-layout> -->
 </template>
 
 <script>
-import Login from "@/Components/Auth/Login";
 import Dashboard from "@/Pages/Dashboard";
 import JoinNetwork from "@/Components/General/JoinNetwork.vue";
 import UpcomingEvents from "@/Shared/Events/UpcomingEvents.vue";
-import NrnaLayout from "@/Layouts/LoginLayout";
+import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
+import HeroSection from "@/Components/Welcome/HeroSection.vue";
+import AudienceSection from "@/Components/Welcome/AudienceSection.vue";
+import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
+
 export default {
     props: {
         canLogin: Boolean,
@@ -71,15 +54,13 @@ export default {
         loggedIn: Boolean,
     },
     components: {
-        Login,
         Dashboard,
         JoinNetwork,
-        NrnaLayout,
         UpcomingEvents,
+        ElectionHeader,
+        HeroSection,
+        AudienceSection,
+        PublicDigitFooter,
     },
 };
 </script>
-<style scoped>
-#calendar {
-}
-</style>
