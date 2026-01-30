@@ -48,7 +48,7 @@
             </div>
 
             <ul class="space-y-4 mb-10 flex-grow">
-              <li v-for="(feature, index) in $t('pages.pricing.plans.starter.features')" :key="index" class="flex items-start gap-3">
+              <li v-for="(feature, index) in starterFeatures" :key="index" class="flex items-start gap-3">
                 <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
                   <span class="text-blue-600 font-bold text-sm">✓</span>
                 </div>
@@ -86,7 +86,7 @@
             </div>
 
             <ul class="space-y-4 mb-10 flex-grow">
-              <li v-for="(feature, index) in $t('pages.pricing.plans.professional.features')" :key="index" class="flex items-start gap-3">
+              <li v-for="(feature, index) in professionalFeatures" :key="index" class="flex items-start gap-3">
                 <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
                   <span class="text-blue-600 font-bold text-sm">✓</span>
                 </div>
@@ -120,7 +120,7 @@
             </div>
 
             <ul class="space-y-4 mb-10 flex-grow">
-              <li v-for="(feature, index) in $t('pages.pricing.plans.enterprise.features')" :key="index" class="flex items-start gap-3">
+              <li v-for="(feature, index) in enterpriseFeatures" :key="index" class="flex items-start gap-3">
                 <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
                   <span class="text-blue-600 font-bold text-sm">✓</span>
                 </div>
@@ -144,7 +144,7 @@
         </h2>
 
         <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div v-for="(feature, index) in $t('pages.pricing.features.included')" :key="index" class="flex items-center gap-4 p-4 bg-white rounded-lg border border-blue-100">
+          <div v-for="(feature, index) in includedFeatures" :key="index" class="flex items-center gap-4 p-4 bg-white rounded-lg border border-blue-100">
             <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
               <span class="text-green-600 font-bold">✓</span>
             </div>
@@ -162,7 +162,7 @@
         </h2>
 
         <div class="max-w-2xl mx-auto space-y-6">
-          <div v-for="(item, index) in $t('pages.pricing.faq.questions')" :key="index" class="border border-blue-200 rounded-lg overflow-hidden">
+          <div v-for="(item, index) in faqQuestions" :key="index" class="border border-blue-200 rounded-lg overflow-hidden">
             <button
               @click="toggleFaq(index)"
               class="w-full px-6 py-4 bg-blue-50 hover:bg-blue-100 transition-colors flex items-center justify-between"
@@ -210,6 +210,23 @@ export default {
     return {
       openFaq: []
     };
+  },
+  computed: {
+    starterFeatures() {
+      return this.$t('pages.pricing.plans.starter.features') || [];
+    },
+    professionalFeatures() {
+      return this.$t('pages.pricing.plans.professional.features') || [];
+    },
+    enterpriseFeatures() {
+      return this.$t('pages.pricing.plans.enterprise.features') || [];
+    },
+    includedFeatures() {
+      return this.$t('pages.pricing.features.included') || [];
+    },
+    faqQuestions() {
+      return this.$t('pages.pricing.faq.questions') || [];
+    }
   },
   methods: {
     toggleFaq(index) {
