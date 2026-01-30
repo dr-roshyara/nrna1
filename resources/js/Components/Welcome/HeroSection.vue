@@ -57,15 +57,15 @@
         <!-- CTA Buttons - Mobile-Friendly Touch Targets -->
         <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-stretch sm:items-center mb-12 px-4">
           <!-- Primary CTA - Min 44px height for mobile touch -->
-          <a
-            :href="route('login')"
+          <inertia-link
+            href="/voting"
             class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 min-h-[44px] bg-blue-900 text-white font-bold text-sm md:text-lg rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-colors shadow-sm md:shadow-lg"
           >
             <svg class="w-5 md:w-6 h-5 md:h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"/>
             </svg>
             {{ $t('cta.start_voting_now') }}
-          </a>
+          </inertia-link>
 
           <!-- Secondary CTA - Min 44px height for mobile touch -->
           <a
@@ -109,7 +109,12 @@
 </template>
 
 <script>
+import { Link as InertiaLink } from '@inertiajs/vue3';
+
 export default {
   name: 'HeroSection',
+  components: {
+    InertiaLink,
+  },
 };
 </script>
