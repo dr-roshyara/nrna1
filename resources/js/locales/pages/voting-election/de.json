@@ -1,0 +1,28 @@
+{
+  "title": "Verfügbare Wahlen",
+  "subtitle": "Wählen Sie eine Wahl aus, um teilzunehmen",
+  "empty_state": {
+    "title": "Keine Wahlen verfügbar",
+    "description": "Es sind derzeit keine aktiven Wahlen vorhanden. Bitte überprüfen Sie später erneut."
+  },
+  "election_card": {
+    "voters": "Wähler",
+    "candidates": "Kandidaten",
+    "status_active": "Aktiv",
+    "status_pending": "Ausstehend",
+    "status_closed": "Geschlossen",
+    "start_voting": "Abstimmung starten",
+    "view_results": "Ergebnisse anzeigen",
+    "voting_period": "Abstimmungszeitraum"
+  },
+  "filters": {
+    "all": "Alle",
+    "active": "Aktiv",
+    "pending": "Ausstehend",
+    "closed": "Geschlossen"
+  },
+  "cta": {
+    "back": "Zurück",
+    "learn_more": "Mehr erfahren"
+  }
+}

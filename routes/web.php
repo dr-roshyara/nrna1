@@ -69,10 +69,25 @@ Route::get('/storage/images/{filename}', function ($filename)
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 // Home route: If authenticated, show election dashboard. Else, show welcome page.
-Route::get('/', 
+Route::get('/',
 [ElectionController::class, 'dashboard'])
 ->name('electiondashboard')
 ->middleware('no.cache');
+
+// Voting start page
+Route::get('/voting', function () {
+    return Inertia::render('VotingStart');
+})->name('voting.start');
+
+// Voting election page
+Route::get('/voting/election', function () {
+    return Inertia::render('VotingElection');
+})->name('voting.election');
+
+// Pricing page
+Route::get('/pricing', function () {
+    return Inertia::render('Pricing');
+})->name('pricing');
 
 // Route::get('/', function () {
 //     if( auth()->user()!=null ){ return Inertia::render('Dashboard/MainDashboard'); }

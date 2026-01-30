@@ -1,0 +1,28 @@
+{
+  "title": "उपलब्ध चुनाव",
+  "subtitle": "भाग लिन एक चुनाव छान्नुहोस्",
+  "empty_state": {
+    "title": "कोई चुनाव उपलब्ध नहीं",
+    "description": "वर्तमान में कोई सक्रिय चुनाव नहीं हैं। कृपया बाद में फिर से जांचें।"
+  },
+  "election_card": {
+    "voters": "मतदाता",
+    "candidates": "उम्मीदवार",
+    "status_active": "सक्रिय",
+    "status_pending": "लंबित",
+    "status_closed": "बंद",
+    "start_voting": "मतदान शुरु गर्नुहोस्",
+    "view_results": "परिणाम देखनुहोस्",
+    "voting_period": "मतदान अवधि"
+  },
+  "filters": {
+    "all": "सभी",
+    "active": "सक्रिय",
+    "pending": "लंबित",
+    "closed": "बंद"
+  },
+  "cta": {
+    "back": "फिर्ता जानुहोस्",
+    "learn_more": "थप जानकारी"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "title": "Transparente Preisgestaltung für alle",
+  "subtitle": "Wählen Sie den Plan, der zu Ihrer Organisation passt",
+  "description": "Alle Pläne enthalten End-to-End-Verschlüsselung, GDPR-Konformität und Deutschen Server",
+  "plans": {
+    "starter": {
+      "name": "Starter",
+      "price": "49",
+      "period": "€/Monat",
+      "description": "Perfekt für kleine Organisationen",
+      "features": [
+        "Bis zu 500 Wähler",
+        "1 Wahl pro Monat",
+        "Basis-Analytics",
+        "Email-Support",
+        "14 Tage kostenlos testen"
+      ],
+      "cta": "Starter wählen"
+    },
+    "professional": {
+      "name": "Professional",
+      "price": "149",
+      "period": "€/Monat",
+      "description": "Für wachsende Organisationen",
+      "badge": "Beliebt",
+      "features": [
+        "Bis zu 5.000 Wähler",
+        "Unbegrenzte Wahlen",
+        "Erweiterte Analytics",
+        "Prioritäts-Support",
+        "Anpassbare Branding",
+        "API-Zugang",
+        "14 Tage kostenlos testen"
+      ],
+      "cta": "Professional wählen"
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "Kontakt",
+      "period": "für Angebot",
+      "description": "Für große und maßgeschneiderte Lösungen",
+      "features": [
+        "Unbegrenzte Wähler",
+        "Unbegrenzte Wahlen",
+        "Dedizierte Account Manager",
+        "Benutzerdefinierte Integrationen",
+        "White-Label-Lösung",
+        "SLA-Garantie",
+        "Telefonischer Support"
+      ],
+      "cta": "Demo vereinbaren"
+    }
+  },
+  "features": {
+    "title": "Was ist in jedem Plan enthalten?",
+    "included": [
+      "End-zu-End Verschlüsselung",
+      "GDPR konform",
+      "Deutscher Server",
+      "2FA/Multi-Faktor-Authentifizierung",
+      "Audit-Protokoll",
+      "Echtzeit-Ergebnisse",
+      "CSV-Export",
+      "Mehrsprachige Wahlen"
+    ]
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "questions": [
+      {
+        "q": "Kann ich meinen Plan ändern?",
+        "a": "Ja, Sie können jederzeit upgraden oder downgraden. Die Abrechnung wird proportional angepasst."
+      },
+      {
+        "q": "Gibt es eine Einrichtungsgebühr?",
+        "a": "Nein, es gibt keine versteckten Gebühren. Alles ist im Preis enthalten."
+      },
+      {
+        "q": "Was ist mit Verträgen enthalten?",
+        "a": "Alle Verträge sind jederzeit monatlich kündbar. Keine langfristigen Verpflichtungen erforderlich."
+      },
+      {
+        "q": "Bieten Sie Schulung an?",
+        "a": "Ja, alle Pläne enthalten Onboarding und Dokumentation. Enterprise-Kunden erhalten dedizierte Schulung."
+      }
+    ]
+  },
+  "cta": {
+    "start_trial": "14 Tage kostenlos testen",
+    "contact": "Kontaktieren Sie uns",
+    "select": "Wählen Sie diesen Plan"
+  }
+}

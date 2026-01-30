@@ -1,0 +1,28 @@
+{
+  "title": "Available Elections",
+  "subtitle": "Select an election to participate",
+  "empty_state": {
+    "title": "No Elections Available",
+    "description": "There are currently no active elections. Please check back later."
+  },
+  "election_card": {
+    "voters": "Voters",
+    "candidates": "Candidates",
+    "status_active": "Active",
+    "status_pending": "Pending",
+    "status_closed": "Closed",
+    "start_voting": "Start Voting",
+    "view_results": "View Results",
+    "voting_period": "Voting Period"
+  },
+  "filters": {
+    "all": "All",
+    "active": "Active",
+    "pending": "Pending",
+    "closed": "Closed"
+  },
+  "cta": {
+    "back": "Back",
+    "learn_more": "Learn More"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "title": "Transparent Pricing for Everyone",
+  "subtitle": "Choose the plan that fits your organization",
+  "description": "All plans include end-to-end encryption, GDPR compliance, and German servers",
+  "plans": {
+    "starter": {
+      "name": "Starter",
+      "price": "49",
+      "period": "€/month",
+      "description": "Perfect for small organizations",
+      "features": [
+        "Up to 500 voters",
+        "1 election per month",
+        "Basic analytics",
+        "Email support",
+        "14 days free trial"
+      ],
+      "cta": "Choose Starter"
+    },
+    "professional": {
+      "name": "Professional",
+      "price": "149",
+      "period": "€/month",
+      "description": "For growing organizations",
+      "badge": "Popular",
+      "features": [
+        "Up to 5,000 voters",
+        "Unlimited elections",
+        "Advanced analytics",
+        "Priority support",
+        "Custom branding",
+        "API access",
+        "14 days free trial"
+      ],
+      "cta": "Choose Professional"
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "Contact",
+      "period": "for quote",
+      "description": "For large-scale and custom solutions",
+      "features": [
+        "Unlimited voters",
+        "Unlimited elections",
+        "Dedicated account manager",
+        "Custom integrations",
+        "White-label solution",
+        "SLA guarantee",
+        "Phone support"
+      ],
+      "cta": "Schedule Demo"
+    }
+  },
+  "features": {
+    "title": "What's included in every plan?",
+    "included": [
+      "End-to-end encryption",
+      "GDPR compliant",
+      "German servers",
+      "2FA/Multi-factor authentication",
+      "Audit trail",
+      "Real-time results",
+      "CSV export",
+      "Multilingual elections"
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "q": "Can I change my plan?",
+        "a": "Yes, you can upgrade or downgrade at any time. Billing is adjusted proportionally."
+      },
+      {
+        "q": "Is there a setup fee?",
+        "a": "No, there are no hidden fees. Everything is included in the price."
+      },
+      {
+        "q": "What about contracts?",
+        "a": "All plans are month-to-month with no long-term commitments. Cancel anytime."
+      },
+      {
+        "q": "Do you offer training?",
+        "a": "Yes, all plans include onboarding and documentation. Enterprise customers receive dedicated training."
+      }
+    ]
+  },
+  "cta": {
+    "start_trial": "Start 14-day free trial",
+    "contact": "Contact us",
+    "select": "Select this plan"
+  }
+}
