@@ -1,0 +1,171 @@
+{
+  "hero": {
+    "badge": "Vertraut von Organisationen weltweit",
+    "title": "Sichere digitale Wahlen für alle Organisationen",
+    "subtitle": "Die globale Wahlplattform für NGOs, Diaspora-Gemeinschaften und Verbände",
+    "description": "Führen Sie faire und transparente Wahlen mit unserem DSGVO-konformen, vollständig verschlüsselten Wahlsystem durch. Vertraut von Tausenden von Organisationen, Verbänden und Diaspora-Gemeinschaften in über 100 Ländern.",
+    "cta_primary": "Kostenlos testen",
+    "cta_secondary": "Demo vereinbaren",
+    "trust_label": "Vertraut von führenden Organisationen weltweit",
+    "security_badge_title": "Sicher & DSGVO-konform",
+    "security_badge_subtitle": "Deutsche Server & Verschlüsselung",
+    "badges": [
+      {
+        "icon": "✓",
+        "label": "DSGVO Artikel 32 konform"
+      },
+      {
+        "icon": "✓",
+        "label": "Globales Hosting-Support"
+      },
+      {
+        "icon": "✓",
+        "label": "Ende-zu-Ende Verschlüsselung"
+      },
+      {
+        "icon": "✓",
+        "label": "ISO 27001 Zertifiziert"
+      }
+    ]
+  },
+  "ngo_features": {
+    "title": "Entwickelt für globale Organisationen",
+    "subtitle": "Von NGOs bis zu Diaspora-Gemeinschaften -- PUBLIC DIGIT regelt sichere Wahlen für Organisationen weltweit.",
+    "cards": [
+      {
+        "icon": "🌏",
+        "title": "Für NGOs & Verbände",
+        "description": "Organisationen weltweit führen sichere Mitgliederwahlen mit vollständiger Transparenz, Echtzeit-Ergebnissen und vollständigen Audit-Trails für organisatorische Verantwortung durch.",
+        "features": [
+          "Mehrsprachige Unterstützung (50+ Sprachen)",
+          "Massenimport und Verwaltung von Mitgliedern",
+          "Echtzeit-Ergebnisanalysen",
+          "DSGVO & internationale Compliance"
+        ]
+      },
+      {
+        "icon": "🌍",
+        "title": "Für globale Diaspora-Gemeinschaften",
+        "description": "Nepalesische Diaspora-Verbände, Alumni-Netzwerke und Berufsverbände über Grenzen hinweg führen Wahlen mit geografischer Flexibilität und sicherer internationaler Abstimmung durch.",
+        "features": [
+          "Globale Wählerbeteiligung aus jedem Land",
+          "Zeitzonenbewusste Planung für weltweite Mitglieder",
+          "Unterstützung mehrerer Währungen",
+          "Diaspora-spezifische Compliance & Vorschriften"
+        ]
+      },
+      {
+        "icon": "🤝",
+        "title": "Für Kultur- & Fachorganisationen",
+        "description": "Kulturvereine, Bildungseinrichtungen und Fachverbände rationalisieren ihre Wahlprozesse mit intuitiven Benutzeroberflächen und umfassenden Audit-Trails.",
+        "features": [
+          "Integration von Mitgliederdatenbanken",
+          "Flexible Stimmzettel-Anpassung",
+          "Stimmprüfung und Transparenz",
+          "Internationale Vereins-Compliance"
+        ]
+      }
+    ],
+    "org_types": [
+      { "label": "NGOs & Verbände", "icon": "🌏" },
+      { "label": "Diaspora-Gruppen", "icon": "🌍" },
+      { "label": "Kulturorganisationen", "icon": "🎭" },
+      { "label": "Fachverbände", "icon": "💼" }
+    ]
+  },
+  "how_it_works": {
+    "title": "So funktioniert es",
+    "subtitle": "Starten Sie Ihre Wahl in 4 einfachen Schritten",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Erstellen Sie Ihre Organisation",
+        "description": "Registrieren Sie sich und richten Sie Ihr Organisationsprofil ein. Fügen Sie Logo, Branding und Teammitglieder in Minuten hinzu."
+      },
+      {
+        "number": "2",
+        "title": "Gestalten Sie Ihre Wahl",
+        "description": "Erstellen Sie Stimmzettel, setzen Sie Fristen und konfigurieren Sie Wahlregeln. Wählen Sie zwischen Einfach-, Rang- oder Mehrfachauswahl."
+      },
+      {
+        "number": "3",
+        "title": "Laden Sie Ihre Wähler ein",
+        "description": "Laden Sie Ihre Wählerliste hoch oder fügen Sie Mitglieder manuell hinzu. Jeder Wähler erhält einen einzigartigen, sicheren Zugangscode per E-Mail."
+      },
+      {
+        "number": "4",
+        "title": "Zeigen Sie Ergebnisse an",
+        "description": "Überwachen Sie die Beteiligung in Echtzeit. Sobald die Wahl endet, sind Ergebnisse und ein vollständiger Audit-Bericht sofort verfügbar."
+      }
+    ]
+  },
+  "security": {
+    "title": "Sicherheit & Compliance",
+    "subtitle": "Schutz auf Enterprise-Niveau für jede Stimme.",
+    "certifications_title": "Zertifizierungen & Standards",
+    "cards": [
+      {
+        "title": "DSGVO-Konformität",
+        "description": "Von Grund auf konzipiert, um die Anforderungen der DSGVO Artikel 32 zu erfüllen. Datenminimierung, Dokumentation der Rechtsgrundlage und ein vollständiges Verzeichnis der Verarbeitungsvorgänge sind inbegriffen."
+      },
+      {
+        "title": "Deutsches Daten-Hosting",
+        "description": "Server ausschließlich in Deutschland angesiedelt. Erfüllt DSGVO-Anforderungen und deutsche Datensouveränitätsstandards."
+      },
+      {
+        "title": "ISO 27001 Zertifiziert",
+        "description": "Standard-Informationssicherheitsmanagementsystem. Regelmäßige Audits von Drittanbietern gewährleisten kontinuierliche Konformität."
+      },
+      {
+        "title": "Ende-zu-Ende Verschlüsselung",
+        "description": "Militärische Verschlüsselung für alle Stimmen. Stimmen werden auf Wählgeräten verschlüsselt und bleiben bis zur Zählung verschlüsselt."
+      }
+    ],
+    "certifications": [
+      { "label": "ISO 27001", "icon": "iso" },
+      { "label": "DSGVO zertifiziert", "icon": "gdpr" },
+      { "label": "AES-256 Verschlüsselung", "icon": "lock" },
+      { "label": "24/7 Überwachung", "icon": "monitor" }
+    ]
+  },
+  "testimonials": {
+    "title": "Vertraut von führenden Organisationen weltweit",
+    "subtitle": "Lesen Sie, was Organisationsleiter und Diaspora-Gemeinschaften über PUBLIC DIGIT sagen.",
+    "items": [
+      {
+        "quote": "PUBLIC DIGIT machte es unglaublich einfach, unsere internationale Mitgliederwahl mit Teilnehmern in 12 Ländern durchzuführen. Die Transparenz und Sicherheit gab unseren Mitgliedern vollständiges Vertrauen.",
+        "author": "Sophia Mueller",
+        "role": "Geschäftsführerin",
+        "organization": "Globales Entwicklungsnetzwerk",
+        "avatar": "SM"
+      },
+      {
+        "quote": "Als Diaspora-Organisation benötigten wir eine Wahlplattform, die internationale Beteiligung in mehreren Sprachen bewältigen kann. PUBLIC DIGIT hat genau das mit Leichtigkeit geliefert.",
+        "author": "Hassan Ibrahim",
+        "role": "Präsident",
+        "organization": "Afrikanischer Kulturverein, Europa",
+        "avatar": "HI"
+      },
+      {
+        "quote": "Die DSGVO-Konformität und Sicherheitsfeatures gaben unserem Vorstand vollständige Sicherheit. Die Durchführung von Wahlen für Tausende von Mitgliedern über verschiedene Zeitzonen war nahtlos.",
+        "author": "Prof. Carlos Rodriguez",
+        "role": "Vorstandsvorsitzender",
+        "organization": "Internationales Akademisches Netzwerk",
+        "avatar": "CR"
+      }
+    ]
+  },
+  "cta_section": {
+    "title": "Bereit für Ihre nächste Wahl?",
+    "description": "Schließen Sie sich Tausenden von Organisationen weltweit an, die PUBLIC DIGIT für sichere, transparente und konforme Wahlen nutzen.",
+    "btn_register": "Kostenloses Konto erstellen",
+    "btn_demo": "Demo vereinbaren",
+    "pricing_badge": "14 Tage kostenlos • Keine Kreditkarte erforderlich • Jederzeit kündbar",
+    "perks": [
+      { "icon": "🎯", "title": "Einfache Einrichtung", "description": "Starten Sie Ihre Wahl in weniger als 10 Minuten" },
+      { "icon": "👥", "title": "Unbegrenzte Mitglieder", "description": "Keine Pro-Wähler-Gebühren oder versteckten Kosten" },
+      { "icon": "🛡️", "title": "Vollständiger Support", "description": "Dedicated Support-Team verfügbar weltweit" }
+    ],
+    "footer_note": "100% Geld-zurück-Garantie, wenn Sie nicht zufrieden sind. Fragen? Kontaktieren Sie unser Team unter support@publicdigit.de"
+  }
+}

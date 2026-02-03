@@ -16,6 +16,14 @@ import pricingDe from './locales/pages/pricing/de.json';
 import pricingEn from './locales/pages/pricing/en.json';
 import pricingNp from './locales/pages/pricing/np.json';
 
+import welcomeDe from './locales/pages/Welcome/de.json';
+import welcomeEn from './locales/pages/Welcome/en.json';
+import welcomeNp from './locales/pages/Welcome/np.json';
+
+import authDe from './locales/pages/Auth/de.json';
+import authEn from './locales/pages/Auth/en.json';
+import authNp from './locales/pages/Auth/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check localStorage first (user's saved preference)
@@ -46,6 +54,8 @@ const messages = {
       'voting-start': votingStartDe,
       'voting-election': votingElectionDe,
       pricing: pricingDe,
+      welcome: welcomeDe,
+      auth: authDe,
     },
   },
   en: {
@@ -54,6 +64,8 @@ const messages = {
       'voting-start': votingStartEn,
       'voting-election': votingElectionEn,
       pricing: pricingEn,
+      welcome: welcomeEn,
+      auth: authEn,
     },
   },
   np: {
@@ -62,6 +74,8 @@ const messages = {
       'voting-start': votingStartNp,
       'voting-election': votingElectionNp,
       pricing: pricingNp,
+      welcome: welcomeNp,
+      auth: authNp,
     },
   },
 };

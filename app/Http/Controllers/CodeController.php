@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Code;
+use App\Models\Election;
 use App\Services\VoterProgressService;
+use App\Services\VotingServiceFactory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -38,14 +40,21 @@ class CodeController extends Controller
     /**
      * STEP 1: Show code entry form
      * Route: GET /v/{slug}/code/create
+     *
+     * Election context is set by ElectionMiddleware:
+     * - Defaults to first REAL active election
+     * - Or uses election_id from session (if demo/test)
      */
     public function create(Request $request)
     {
         $user = $this->getUser($request);
+        $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
         Log::info('Code create page accessed', [
             'user_id' => $user->id,
+            'election_id' => $election->id,
+            'election_type' => $election->type,
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'is_slug_request' => $voterSlug !== null,
         ]);
@@ -55,8 +64,8 @@ class CodeController extends Controller
             return $this->redirectToDashboard('You are not eligible to vote.');
         }
 
-        // Get or create code record
-        $code = $this->getOrCreateCode($user);
+        // Get or create code record for this election
+        $code = $this->getOrCreateCode($user, $election);
 
         // For API requests
         if ($request->wantsJson()) {
@@ -89,14 +98,19 @@ class CodeController extends Controller
     /**
      * STEP 1 → STEP 2: Process code submission
      * Route: POST /v/{slug}/code
+     *
+     * Verifies code for the selected election
      */
     public function store(Request $request)
     {
         $user = $this->getUser($request);
+        $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
         Log::info('Code verification started', [
             'user_id' => $user->id,
+            'election_id' => $election->id,
+            'election_type' => $election->type,
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'input' => $request->only('voting_code'),
             'is_ajax' => $request->wantsJson(),
@@ -122,8 +136,10 @@ class CodeController extends Controller
                 $this->redirectToDashboard('You are not eligible to vote.'));
         }
 
-        // Get code record
-        $code = Code::where('user_id', $user->id)->first();
+        // Get code record for this election
+        $code = Code::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->first();
         if (!$code) {
             return $this->jsonOrRedirect($request, false, 'No verification code found. Please request a new code.',
                 back()->withErrors(['voting_code' => 'No verification code found. Please request a new code.']));
@@ -167,19 +183,27 @@ class CodeController extends Controller
     /**
      * STEP 2: Show agreement page
      * Route: GET /v/{slug}/vote/agreement
+     *
+     * User reads and accepts voting agreement
+     * Can only proceed if code was verified in this election
      */
     public function showAgreement(Request $request)
     {
         $user = $this->getUser($request);
+        $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
         Log::info('Agreement page accessed', [
             'user_id' => $user->id,
+            'election_id' => $election->id,
+            'election_type' => $election->type,
             'slug' => $voterSlug ? $voterSlug->slug : null,
         ]);
 
-        // Verify user has completed code verification
-        $code = Code::where('user_id', $user->id)->first();
+        // Verify user has completed code verification for this election
+        $code = Code::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->first();
         if (!$code || $code->can_vote_now != 1) {
             $redirectUrl = $voterSlug
                 ? route('slug.code.create', ['vslug' => $voterSlug->slug])
@@ -236,14 +260,19 @@ class CodeController extends Controller
     /**
      * STEP 2 → STEP 3: Process agreement submission
      * Route: POST /v/{slug}/code/agreement
+     *
+     * User confirms agreement and can proceed to vote
      */
     public function submitAgreement(Request $request)
     {
         $user = $this->getUser($request);
+        $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
         Log::info('Agreement submission started', [
             'user_id' => $user->id,
+            'election_id' => $election->id,
+            'election_type' => $election->type,
             'slug' => $voterSlug ? $voterSlug->slug : null,
         ]);
 
@@ -255,8 +284,10 @@ class CodeController extends Controller
             'agreement.accepted' => 'You must accept the terms and conditions.',
         ]);
 
-        // Verify user has completed code verification
-        $code = Code::where('user_id', $user->id)->first();
+        // Verify user has completed code verification for this election
+        $code = Code::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->first();
         if (!$code || $code->can_vote_now != 1) {
             return $this->jsonOrRedirect($request, false, 'Code verification required.',
                 redirect()->route('slug.code.create', ['vslug' => $voterSlug->slug]));
@@ -293,6 +324,12 @@ class CodeController extends Controller
     // HELPER METHODS
     // ==========================================
 
+    /**
+     * Get authenticated user from request or middleware
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \App\Models\User
+     */
     private function getUser(Request $request): User
     {
         return $request->attributes->has('voter')
@@ -300,19 +337,44 @@ class CodeController extends Controller
             : auth()->user();
     }
 
+    /**
+     * Get election from middleware or default to real election
+     * The ElectionMiddleware ensures an election is always set
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \App\Models\Election
+     */
+    private function getElection(Request $request): Election
+    {
+        return $request->attributes->get('election')
+            ?? Election::where('type', 'real')->first();
+    }
+
     private function isUserEligible(User $user): bool
     {
         return $user && $user->can_vote == 1;
     }
 
-    private function getOrCreateCode(User $user): Code
+    /**
+     * Get or create verification code for user and election
+     * Now election-scoped: one code per user per election
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\Election $election
+     * @return \App\Models\Code
+     */
+    private function getOrCreateCode(User $user, Election $election): Code
     {
-        $code = Code::where('user_id', $user->id)->first();
+        // Get code for this specific election
+        $code = Code::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->first();
 
         if (!$code) {
-            // No code exists - create new one
+            // No code exists for this election - create new one
             $code = Code::create([
                 'user_id' => $user->id,
+                'election_id' => $election->id,
                 'code1' => $this->generateCode(),
                 'code1_sent_at' => now(),
                 'has_code1_sent' => 1,

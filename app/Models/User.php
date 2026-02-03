@@ -85,6 +85,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'has_voted',         // CRITICAL: Vote status
         'is_voter',          // CRITICAL: Voter registration status
         'is_committee_member', // CRITICAL: Admin privileges
+        'wants_to_vote',     // CRITICAL: Voter intent indicator
         'approvedBy',        // CRITICAL: Audit trail
         'suspendedBy',       // CRITICAL: Audit trail
         'suspended_at',      // CRITICAL: Audit trail
@@ -94,6 +95,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'voting_started_at',
         'vote_submitted_at',
         'vote_completed_at',
+        'voter_registration_at', // CRITICAL: Voter registration tracking
     ];
 
     /**
@@ -346,13 +348,190 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     /**
      * Get or create the Code model for this user (anonymization layer)
-     * 
+     *
      * @return Code
      */
     public function getVotingCode()
     {
-        return $this->hasOne(Code::class)->first() ?? 
+        return $this->hasOne(Code::class)->first() ??
             Code::create(['user_id' => $this->id, 'client_ip' => request()->ip()]);
+    }
+
+    // ============================================================================
+    // NEW: ELECTION VOTER REGISTRATION RELATIONSHIPS (Demo/Real Elections)
+    // ============================================================================
+
+    /**
+     * Get all voter registrations for this user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function voterRegistrations()
+    {
+        return $this->hasMany(VoterRegistration::class);
+    }
+
+    /**
+     * Get demo election registration for this user
+     *
+     * @return VoterRegistration|null
+     */
+    public function demoRegistration()
+    {
+        return $this->voterRegistrations()
+                    ->where('election_type', 'demo')
+                    ->first();
+    }
+
+    /**
+     * Get real election registration for this user
+     *
+     * @return VoterRegistration|null
+     */
+    public function realRegistration()
+    {
+        return $this->voterRegistrations()
+                    ->where('election_type', 'real')
+                    ->first();
+    }
+
+    /**
+     * Check if user wants to vote in demo election
+     *
+     * @return bool
+     */
+    public function wantsToVoteInDemo(): bool
+    {
+        return $this->voterRegistrations()
+                    ->where('election_type', 'demo')
+                    ->whereIn('status', ['pending', 'approved', 'voted'])
+                    ->exists();
+    }
+
+    /**
+     * Check if user wants to vote in real election
+     *
+     * @return bool
+     */
+    public function wantsToVoteInReal(): bool
+    {
+        return $this->voterRegistrations()
+                    ->where('election_type', 'real')
+                    ->whereIn('status', ['pending', 'approved', 'voted'])
+                    ->exists();
+    }
+
+    /**
+     * Check if user is approved to vote in demo election
+     *
+     * @return bool
+     */
+    public function canVoteInDemo(): bool
+    {
+        $registration = $this->demoRegistration();
+        return $registration && $registration->isApproved();
+    }
+
+    /**
+     * Check if user is approved to vote in real election
+     *
+     * @return bool
+     */
+    public function canVoteInReal(): bool
+    {
+        $registration = $this->realRegistration();
+        return $registration && $registration->isApproved();
+    }
+
+    /**
+     * Check if user has voted in demo election
+     *
+     * @return bool
+     */
+    public function hasVotedInDemo(): bool
+    {
+        $registration = $this->demoRegistration();
+        return $registration && $registration->hasVoted();
+    }
+
+    /**
+     * Check if user has voted in real election
+     *
+     * @return bool
+     */
+    public function hasVotedInReal(): bool
+    {
+        $registration = $this->realRegistration();
+        return $registration && $registration->hasVoted();
+    }
+
+    /**
+     * Register user for demo election
+     *
+     * @param int $electionId
+     * @return VoterRegistration
+     */
+    public function registerForDemoElection(int $electionId): VoterRegistration
+    {
+        // Check if already registered
+        $existing = $this->voterRegistrations()
+            ->where('election_id', $electionId)
+            ->where('election_type', 'demo')
+            ->first();
+
+        if ($existing) {
+            return $existing;
+        }
+
+        return VoterRegistration::create([
+            'user_id' => $this->id,
+            'election_id' => $electionId,
+            'election_type' => 'demo',
+            'status' => 'pending',
+            'registered_at' => now(),
+        ]);
+    }
+
+    /**
+     * Register user for real election
+     *
+     * @param int $electionId
+     * @return VoterRegistration
+     */
+    public function registerForRealElection(int $electionId): VoterRegistration
+    {
+        // Check if already registered
+        $existing = $this->voterRegistrations()
+            ->where('election_id', $electionId)
+            ->where('election_type', 'real')
+            ->first();
+
+        if ($existing) {
+            return $existing;
+        }
+
+        return VoterRegistration::create([
+            'user_id' => $this->id,
+            'election_id' => $electionId,
+            'election_type' => 'real',
+            'status' => 'pending',
+            'registered_at' => now(),
+        ]);
+    }
+
+    /**
+     * Get user's status in a specific election
+     *
+     * @param int $electionId
+     * @return string|null (pending, approved, rejected, voted, or null if not registered)
+     */
+    public function getElectionStatus(int $electionId): ?string
+    {
+        $registration = $this->voterRegistrations()
+            ->where('election_id', $electionId)
+            ->first();
+
+        return $registration?->status;
     }
 
 
@@ -487,7 +666,7 @@ public function scopeCommitteeMembers($query)
 
 /**
  * Scope: Get users who can vote
- * 
+ *
  * @param \Illuminate\Database\Eloquent\Builder $query
  * @return \Illuminate\Database\Eloquent\Builder
  */
@@ -496,6 +675,112 @@ public function scopeEligibleVoters($query)
     return $query->voters()->whereHas('voter', function($q) {
         $q->where('can_vote', true)->where('is_active', true);
     });
+}
+
+// ============================================================================
+// NEW: VOTER REGISTRATION STATE SCOPES & METHODS (Phase 1 Update)
+// ============================================================================
+
+/**
+ * Scope: Get only customers (users who don't want to vote)
+ * Used to exclude non-voters from voter-related operations
+ *
+ * @param \Illuminate\Database\Eloquent\Builder $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+public function scopeCustomers($query)
+{
+    return $query->where('wants_to_vote', false)
+        ->where('is_committee_member', 0)
+        ->where('is_voter', 0);
+}
+
+/**
+ * Scope: Get only pending voters (users requesting voter status, not yet approved)
+ * Used for voter approval workflows to show only legitimate voter candidates
+ *
+ * @param \Illuminate\Database\Eloquent\Builder $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+public function scopePendingVoters($query)
+{
+    return $query->where('wants_to_vote', true)
+        ->where('is_voter', 0)
+        ->where('can_vote', 0)
+        ->where('is_committee_member', 0);
+}
+
+/**
+ * Scope: Get only approved voters (users approved to vote)
+ * Used for active voting workflows
+ *
+ * @param \Illuminate\Database\Eloquent\Builder $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+public function scopeApprovedVoters($query)
+{
+    return $query->where('wants_to_vote', true)
+        ->where('is_voter', 1)
+        ->where('can_vote', 1);
+}
+
+/**
+ * Check if user is a customer (doesn't want to vote)
+ *
+ * @return bool
+ */
+public function isCustomer(): bool
+{
+    return !$this->wants_to_vote && !$this->is_voter && !$this->is_committee_member;
+}
+
+/**
+ * Check if user is a pending voter
+ *
+ * @return bool
+ */
+public function isPendingVoter(): bool
+{
+    return $this->wants_to_vote && !$this->is_voter && !$this->can_vote;
+}
+
+/**
+ * Check if user is an approved voter
+ *
+ * @return bool
+ */
+public function isApprovedVoter(): bool
+{
+    return $this->wants_to_vote && $this->is_voter && $this->can_vote;
+}
+
+/**
+ * Get user's voter registration state
+ * Returns one of: 'customer', 'pending_voter', 'approved_voter', 'suspended_voter', 'committee_member'
+ *
+ * @return string
+ */
+public function getVoterState(): string
+{
+    if ($this->is_committee_member) {
+        return 'committee_member';
+    }
+
+    if ($this->wants_to_vote) {
+        if (!$this->is_voter) {
+            return 'pending_voter';
+        }
+
+        if ($this->is_voter && $this->can_vote) {
+            return 'approved_voter';
+        }
+
+        if ($this->is_voter && !$this->can_vote) {
+            return 'suspended_voter';
+        }
+    }
+
+    return 'customer';
 }
 
     // ============================================================================

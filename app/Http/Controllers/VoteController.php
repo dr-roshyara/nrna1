@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vote;
+use App\Models\DemoVote;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -10,7 +11,9 @@ use App\Models\Candidacy;
 use App\Models\Post;
 use App\Models\Result;
 use App\Models\Code;
+use App\Models\Election;
 use App\Models\Upload;
+use App\Services\VotingServiceFactory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +21,7 @@ use App\Services\VoterProgressService;
 use Illuminate\Routing\Redirector;
 use App\Notifications\SecondVerificationCode;
 use App\Notifications\SendVoteSavingCode;
-//controllers 
+//controllers
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -38,23 +41,74 @@ class VoteController extends Controller
     public $session_name;
     public $session_id_for_verify_vote;
 
-    /***
-     * 
-     * construct 
-     * Voting processs 
-     * 1. Vote.Create 
-     * 2. get post request to first_submission 
-     * 3. vote.verify 
-     * 4.
-     * 
+    /**
+     * Constructor - Initialize voting process state
      */
-    public function __construct(){
-         $this->in_code  ='';
-         $this->verify_final_vote=false;
-        //  $this->user_id = auth()->user()->id;
+    public function __construct()
+    {
+        $this->in_code = '';
+        $this->verify_final_vote = false;
+    }
 
-     }
-    
+    /**
+     * Get authenticated user from request or middleware
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \App\Models\User
+     */
+    private function getUser(Request $request): User
+    {
+        return $request->attributes->has('voter')
+            ? $request->attributes->get('voter')
+            : auth()->user();
+    }
+
+    /**
+     * Get election from middleware (set by ElectionMiddleware)
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \App\Models\Election
+     */
+    private function getElection(Request $request): Election
+    {
+        return $request->attributes->get('election')
+            ?? Election::where('type', 'real')->first();
+    }
+
+    /**
+     * Get appropriate voting service for the election
+     * Demo elections use DemoVotingService, real use RealVotingService
+     *
+     * @param \App\Models\Election $election
+     * @return \App\Services\VotingService
+     */
+    private function getVotingService(Election $election)
+    {
+        return VotingServiceFactory::make($election);
+    }
+
+    /**
+     * Check if user is eligible to vote in this election
+     *
+     * CRITICAL DIFFERENCE:
+     * - Demo elections: Always allow (for testing, ignore timing restrictions)
+     * - Real elections: Must check can_vote_now flag (timing restrictions apply)
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\Election $election
+     * @return bool
+     */
+    private function isUserEligibleToVote(User $user, Election $election): bool
+    {
+        if ($election->isDemo()) {
+            // DEMO: Always allow (for testing)
+            return true;
+        }
+
+        // REAL: Must check can_vote_now flag (timing restrictions)
+        return $user->can_vote_now == 1;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -201,17 +255,45 @@ class VoteController extends Controller
 
 
 
+/**
+ * STEP 3: Show voting form
+ * Route: GET /v/{slug}/vote/create
+ */
 public function create(Request $request)
 {
-    // Check if this is a slug-based request (has voter from middleware)
-    $voter = $request->attributes->has('voter')
-        ? $request->attributes->get('voter')
-        : $request->user();
+    // Get user and election context
+    $auth_user = $this->getUser($request);
+    $election = $this->getElection($request);
+    $voterSlug = $request->attributes->get('voter_slug');
 
-    $auth_user = $voter;
-    $voterSlug = $request->attributes->get('voter_slug'); // May be null for regular routes
-    $code = $auth_user->code;
-    
+    Log::info('Vote creation page accessed', [
+        'user_id' => $auth_user->id,
+        'election_id' => $election->id,
+        'election_type' => $election->type,
+    ]);
+
+    // Check election-aware eligibility
+    if (!$this->isUserEligibleToVote($auth_user, $election)) {
+        Log::warning('User not eligible to vote', [
+            'user_id' => $auth_user->id,
+            'election_id' => $election->id,
+            'can_vote_now' => $auth_user->can_vote_now,
+        ]);
+
+        return redirect()->route('dashboard')
+            ->with('error', 'You are not eligible to vote in this election.');
+    }
+
+    // Get code for this election
+    $code = Code::where('user_id', $auth_user->id)
+        ->where('election_id', $election->id)
+        ->first();
+
+    if (!$code) {
+        return redirect()->route('slug.code.create')
+            ->with('error', 'Please verify your code first.');
+    }
+
     // IP validation - single line replacement
     $ipValidation = validateVotingIpWithResponse();
     if ($ipValidation instanceof \Inertia\Response) {
@@ -311,18 +393,20 @@ public function create(Request $request)
 
     /**
  * Handles the very first submission of the vote (after Code-1 check).
+ * STEP 3-4: Collect and validate vote selections, prepare for verification
  */
 public function first_submission(Request $request)
 {
-    // Get user from slug middleware or regular auth
-    $auth_user = $request->attributes->has('voter')
-        ? $request->attributes->get('voter')
-        : auth()->user();
+    // Get user and election context
+    $auth_user = $this->getUser($request);
+    $election = $this->getElection($request);
 
     \Log::info('=== FIRST_SUBMISSION START ===', [
         'url' => $request->url(),
         'method' => $request->method(),
         'user_id' => $auth_user ? $auth_user->id : null,
+        'election_id' => $election->id,
+        'election_type' => $election->type,
     ]);
  
     // Get the code model and set as submitted
@@ -1086,15 +1170,25 @@ private function has_valid_selections($selections)
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    /**
+     * STEP 5: Final vote submission
+     * Verify second code and permanently store the vote in appropriate table
+     * Uses VotingServiceFactory to handle demo vs real elections
+     */
     public function store(Request $request)
     {
         DB::beginTransaction();
      try {
 
-        // Get user from slug middleware or regular auth
-        $auth_user = $request->attributes->has('voter')
-            ? $request->attributes->get('voter')
-            : auth()->user();
+        // Get user and election context
+        $auth_user = $this->getUser($request);
+        $election = $this->getElection($request);
+
+        Log::info('Vote final submission started', [
+            'user_id' => $auth_user->id,
+            'election_id' => $election->id,
+            'election_type' => $election->type,
+        ]);
 
         if (!$auth_user) {
             DB::rollBack();
@@ -1191,9 +1285,10 @@ private function has_valid_selections($selections)
             Log::info('private_key', [
                 'user_id' => $private_key
             ]);
-             $vote_hashed_key =$hashed_key; 
-           
-            $this->save_vote($vote_data, $vote_hashed_key);    
+             $vote_hashed_key =$hashed_key;
+
+            // Save vote using election-aware factory service
+            $this->save_vote($vote_data, $vote_hashed_key, $election, $auth_user);
              $vote_private_key=$private_key."_".$this->out_code;
 
             // 8. Mark user as voted and update code status
@@ -1564,24 +1659,33 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
  *
  * @return \Inertia\Response|\Illuminate\Http\RedirectResponse
  */
+/**
+ * STEP 4: Show vote verification page
+ * Display vote selections for user confirmation before final submission
+ */
 public function verify(Request $request)
 {
     try {
-        // Check if this is a slug-based request
-        $voter = $request->attributes->has('voter')
-            ? $request->attributes->get('voter')
-            : auth()->user();
-
-        $auth_user = $voter;
+        // Get user and election context
+        $auth_user = $this->getUser($request);
+        $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
         $code = $auth_user->code;
-        // Get vote data from session (stored by second_submission)
+
+        Log::info('Vote verification page accessed', [
+            'user_id' => $auth_user->id,
+            'election_id' => $election->id,
+            'election_type' => $election->type,
+        ]);
+
+        // Get vote data from session (stored by first_submission)
         $vote_data = request()->session()->get($code->session_name);
-        
+
         // Critical check: Ensure we have vote data in session
         if (!$vote_data) {
             Log::warning('Vote verification attempted without session data', [
                 'user_id' => $auth_user->id,
+                'election_id' => $election->id,
                 'session_id' => request()->session()->getId()
             ]);
             
@@ -1915,17 +2019,27 @@ public function verifyVoteSubmit(): array
 
 
 //save all candidates 
-    public function save_vote($input_data, $hashed_voting_key){
-        $no_vote_option     = 0; 
-        $vote               =new Vote;
+    public function save_vote($input_data, $hashed_voting_key, $election = null, $auth_user = null){
+        // Fallback for backward compatibility
+        if (!$election) {
+            $election = Election::where('type', 'real')->first();
+        }
+
+        // Get appropriate voting service and model classes
+        $votingService = $this->getVotingService($election);
+        $voteModel = $votingService->getVoteModel();
+        $resultModel = $votingService->getResultModel();
+
+        $no_vote_option     = 0;
+        $vote               = new $voteModel;
         // $vote->user_id      = $this->user_id;
          // $vote->user_id      = Hash::make($this->user_id);
         // $vote->user_id      = Hash::make($vote->user_id);        
         
-        
-        $vote->no_vote_option=0; 
-        $vote->voting_code  =$hashed_voting_key;       
-     
+        $vote->no_vote_option=0;
+        $vote->voting_code=$hashed_voting_key;
+        $vote->election_id=$election->id;
+
         $vote->save();   //save the vote first
         $this->out_code =$vote->getkey();  
         //save the $this->vote_id_for_voter  it to voter ;
@@ -1967,8 +2081,9 @@ public function verifyVoteSubmit(): array
                     // dd($candidates);
                     for($j=0;$j<sizeof($candidates);$j++){
                       //save each selected candidates in the result
-                      $result                = new Result; 
+                      $result                = new $resultModel;
                       $result->vote_id       =$vote->id;
+                      $result->election_id   =$election->id;
                       $result->post_id       =$post_id;
                       $result->candidacy_id  =$candidates[$j]['candidacy_id'];
                       $result->save();
@@ -1984,12 +2099,17 @@ public function verifyVoteSubmit(): array
             
             }       
       
-        } //end of else 
-        
+        } //end of else
+
+        // Save vote with all candidate selections
         $vote->save();
-      
-    
-            
+
+        Log::info('Vote saved successfully (anonymously)', [
+            'vote_id' => $vote->id,
+            'election_id' => $election->id,
+            'election_type' => $election->type,
+            'via_voting_code' => 'hash_' . substr($hashed_voting_key, 0, 8) . '...',
+        ]);
     }
     //vote thanks 
     public function thankyou(){

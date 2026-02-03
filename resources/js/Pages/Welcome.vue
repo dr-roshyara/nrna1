@@ -1,48 +1,51 @@
 <template>
     <div v-if="!loggedIn" class="min-h-screen bg-gray-50">
-        <!-- New Professional Header -->
+        <!-- Header -->
         <ElectionHeader :isLoggedIn="false" />
 
         <!-- Hero Section -->
-        <HeroSection />
+        <HeroSection :badges="heroBadges" />
 
-        <!-- Audience Section -->
-        <AudienceSection />
+        <!-- NGO Features Section -->
+        <NGOFeaturesSection :featureCards="featureCards" :orgTypes="orgTypes" />
 
-        <!-- Main Content -->
-        <div class="bg-white py-12 md:py-16">
-            <div class="container mx-auto px-4 md:px-6 lg:px-8">
-                <join-network></join-network>
-            </div>
-        </div>
+        <!-- How It Works Section -->
+        <HowItWorksSection :steps="steps" />
 
-        <!-- Upcoming Events Timeline -->
-        <div class="bg-gray-50 py-12 md:py-16">
-            <div class="container mx-auto px-4 md:px-6 lg:px-8">
-                <div id="calendar">
-                    <upcoming-events
-                        class="mb-4 w-full max-w-full py-2"
-                    ></upcoming-events>
-                </div>
-            </div>
-        </div>
+        <!-- Security & Compliance Section -->
+        <SecurityComplianceSection :cards="securityCards" :certifications="certifications" />
+
+        <!-- Testimonials Section -->
+        <TestimonialsSection :testimonials="testimonials" />
+
+        <!-- CTA Section -->
+        <CTASection :perks="perks" />
 
         <!-- Footer -->
         <PublicDigitFooter />
     </div>
     <div v-else>
-        <dashboard> </dashboard>
+        <Dashboard />
     </div>
 </template>
 
 <script>
 import Dashboard from "@/Pages/Dashboard";
-import JoinNetwork from "@/Components/General/JoinNetwork.vue";
-import UpcomingEvents from "@/Shared/Events/UpcomingEvents.vue";
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
-import HeroSection from "@/Components/Welcome/HeroSection.vue";
-import AudienceSection from "@/Components/Welcome/AudienceSection.vue";
 import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
+
+// Import Welcome section components
+import HeroSection from "@/Components/Welcome/HeroSection.vue";
+import NGOFeaturesSection from "@/Components/Welcome/NGOFeaturesSection.vue";
+import HowItWorksSection from "@/Components/Welcome/HowItWorksSection.vue";
+import SecurityComplianceSection from "@/Components/Welcome/SecurityComplianceSection.vue";
+import TestimonialsSection from "@/Components/Welcome/TestimonialsSection.vue";
+import CTASection from "@/Components/Welcome/CTASection.vue";
+
+// Import Welcome locale files for array data
+import welcomeDe from '../locales/pages/Welcome/de.json';
+import welcomeEn from '../locales/pages/Welcome/en.json';
+import welcomeNp from '../locales/pages/Welcome/np.json';
 
 export default {
     props: {
@@ -55,12 +58,55 @@ export default {
     },
     components: {
         Dashboard,
-        JoinNetwork,
-        UpcomingEvents,
         ElectionHeader,
-        HeroSection,
-        AudienceSection,
         PublicDigitFooter,
+        HeroSection,
+        NGOFeaturesSection,
+        HowItWorksSection,
+        SecurityComplianceSection,
+        TestimonialsSection,
+        CTASection,
+    },
+    data() {
+        return {
+            welcomeData: {
+                de: welcomeDe,
+                en: welcomeEn,
+                np: welcomeNp,
+            },
+        };
+    },
+    computed: {
+        currentLocale() {
+            return this.$i18n.locale;
+        },
+        welcome() {
+            return this.welcomeData[this.currentLocale] || this.welcomeData.de;
+        },
+        heroBadges() {
+            return this.welcome.hero?.badges || [];
+        },
+        featureCards() {
+            return this.welcome.ngo_features?.cards || [];
+        },
+        orgTypes() {
+            return this.welcome.ngo_features?.org_types || [];
+        },
+        steps() {
+            return this.welcome.how_it_works?.steps || [];
+        },
+        securityCards() {
+            return this.welcome.security?.cards || [];
+        },
+        certifications() {
+            return this.welcome.security?.certifications || [];
+        },
+        testimonials() {
+            return this.welcome.testimonials?.items || [];
+        },
+        perks() {
+            return this.welcome.cta_section?.perks || [];
+        },
     },
 };
 </script>

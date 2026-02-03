@@ -10,14 +10,27 @@ use App\Http\Controllers\DeligateVoteController;
 use App\Http\Controllers\DeligateCodeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ElectionManagementController;
-use App\Http\Controllers\Election\ElectionController;
+use App\Http\Controllers\Election\ElectionController as ElectionManagementController;
+use App\Http\Controllers\ElectionController as VotingElectionController;
 use App\Http\Controllers\VoterSlugController;
 use App\Http\Controllers\Admin\VotingSecurityController;
 use App\Http\Controllers\HasVotedController;
 use App\Services\ElectionService;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/election', [ElectionController::class, 'dashboard'])->name('election.dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/election', [ElectionManagementController::class, 'dashboard'])->name('election.dashboard');
+
+// ============================================================
+// NEW: Election Selection Routes (Phase 2c)
+// ============================================================
+// Show election selection page (manual selection UI)
+Route::middleware(['auth:sanctum', 'verified'])->get('/election/select', [VotingElectionController::class, 'selectElection'])->name('election.select');
+
+// Store selected election
+Route::middleware(['auth:sanctum', 'verified'])->post('/election/select', [VotingElectionController::class, 'storeElection'])->name('election.store');
+
+// Quick link to start demo election
+Route::middleware(['auth:sanctum', 'verified'])->get('/election/demo/start', [VotingElectionController::class, 'startDemo'])->name('election.demo.start');
 
 // Voter slug generation - start voting process
 Route::middleware(['auth:sanctum', 'verified'])->get('/voter/start', [VoterSlugController::class, 'start'])->name('voter.start');
@@ -338,7 +351,8 @@ Route::prefix('v/{vslug}')->middleware(['voter.slug.window'])->group(function ()
 
 // Slug-based voting workflow routes (integrated with existing controllers)
 // IP validation middleware added to enforce IP restrictions when CONTROL_IP_ADDRESS=1
-Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip'])->group(function () {
+// Election middleware resolves election context (session → route param → real election)
+Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'election'])->group(function () {
 
     // Step 1: Code creation (using existing CodeController)
     Route::get('code/create', [CodeController::class, 'create'])->name('slug.code.create');

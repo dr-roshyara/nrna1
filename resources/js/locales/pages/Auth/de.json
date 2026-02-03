@@ -1,0 +1,122 @@
+{
+  "register": {
+    "title": "Benutzerregistrierung",
+    "heading": "Konto erstellen",
+    "subtitle": "Schließen Sie sich Tausenden von Organisationen an, die PUBLIC DIGIT für sichere Wahlen nutzen",
+    "fields": {
+      "firstName": {
+        "label": "Vorname und zweiter Name",
+        "placeholder": "Geben Sie Ihren Vornamen ein"
+      },
+      "lastName": {
+        "label": "Nachname",
+        "placeholder": "Geben Sie Ihren Nachnamen ein"
+      },
+      "region": {
+        "label": "Region",
+        "placeholder": "Wählen Sie Ihre Region",
+        "options": {
+          "europe": "Europa",
+          "america": "Amerika",
+          "africa": "Afrika",
+          "asia_pacific": "Asien-Pazifik",
+          "middle_east_asia": "Naher Osten & Asien",
+          "oceania": "Ozeanien"
+        }
+      },
+      "email": {
+        "label": "E-Mail-Adresse",
+        "placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
+        "help": "Wir werden dies verwenden, um Ihnen wichtige Updates zu senden"
+      },
+      "password": {
+        "label": "Passwort",
+        "placeholder": "Erstellen Sie ein starkes Passwort",
+        "help": "Mindestens 8 Zeichen erforderlich",
+        "requirements": "Verwenden Sie eine Kombination aus Großbuchstaben, Kleinbuchstaben, Zahlen und Symbolen für ein starkes Passwort"
+      },
+      "password_confirmation": {
+        "label": "Passwort bestätigen",
+        "placeholder": "Geben Sie Ihr Passwort erneut ein",
+        "help": "Bitte wiederholen Sie Ihr Passwort zur Bestätigung"
+      },
+      "terms": {
+        "label": "Ich stimme den Nutzungsbedingungen und der Datenschutzrichtlinie zu",
+        "required": "Sie müssen den Nutzungsbedingungen und der Datenschutzrichtlinie zustimmen, um fortzufahren"
+      }
+    },
+    "buttons": {
+      "register": "Konto erstellen",
+      "registering": "Konto wird erstellt..."
+    },
+    "links": {
+      "already_registered": "Haben Sie bereits ein Konto?",
+      "go_to_login": "Zur Anmeldung",
+      "terms": "Nutzungsbedingungen",
+      "privacy": "Datenschutzrichtlinie"
+    },
+    "messages": {
+      "success": "Registrierung erfolgreich! Weiterleitung...",
+      "error": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "agreement": "Ich stimme den",
+      "and": "und der"
+    },
+    "validation": {
+      "firstName_required": "Vorname ist erforderlich",
+      "lastName_required": "Nachname ist erforderlich",
+      "email_required": "E-Mail-Adresse ist erforderlich",
+      "email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "email_taken": "Diese E-Mail-Adresse ist bereits registriert",
+      "region_required": "Bitte wählen Sie eine Region aus",
+      "password_required": "Passwort ist erforderlich",
+      "password_min": "Das Passwort muss mindestens 8 Zeichen lang sein",
+      "password_confirmation_required": "Passwortbestätigung ist erforderlich",
+      "password_mismatch": "Passwörter stimmen nicht überein",
+      "terms_required": "Sie müssen den Nutzungsbedingungen und der Datenschutzrichtlinie zustimmen"
+    }
+  },
+  "login": {
+    "title": "Anmeldung",
+    "heading": "Willkommen zurück",
+    "subtitle": "Melden Sie sich an, um auf Ihr Konto zuzugreifen",
+    "fields": {
+      "email": {
+        "label": "E-Mail-Adresse",
+        "placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
+        "icon": "email"
+      },
+      "password": {
+        "label": "Passwort",
+        "placeholder": "Geben Sie Ihr Passwort ein",
+        "icon": "lock"
+      },
+      "remember": {
+        "label": "Angemeldet bleiben",
+        "help": "Halten Sie mich angemeldet"
+      }
+    },
+    "buttons": {
+      "login": "Anmelden",
+      "logging_in": "Wird angemeldet..."
+    },
+    "links": {
+      "forgot_password": "Passwort vergessen?",
+      "dont_have_account": "Sie haben noch kein Konto?",
+      "register": "Jetzt registrieren",
+      "reset_password": "Passwort zurücksetzen"
+    },
+    "divider": "Oder fortfahren mit",
+    "messages": {
+      "register_prompt": "Wenn Sie noch nicht registriert sind, registrieren Sie sich bitte zuerst, um auf Ihr Konto zuzugreifen.",
+      "success": "Willkommen zurück!",
+      "error": "Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Anmeldedaten und versuchen Sie es erneut."
+    },
+    "validation": {
+      "email_required": "E-Mail-Adresse ist erforderlich",
+      "email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "password_required": "Passwort ist erforderlich",
+      "credentials_invalid": "Diese Anmeldedaten stimmen nicht mit unseren Daten überein"
+    },
+    "security": "Sicher & DSGVO-konform — Deutsche Server & Verschlüsselung"
+  }
+}

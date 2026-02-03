@@ -1,0 +1,122 @@
+{
+  "register": {
+    "title": "User Registration",
+    "heading": "Create Your Account",
+    "subtitle": "Join thousands of organizations using PUBLIC DIGIT for secure voting",
+    "fields": {
+      "firstName": {
+        "label": "First and Middle Name",
+        "placeholder": "Enter your first name"
+      },
+      "lastName": {
+        "label": "Last Name",
+        "placeholder": "Enter your last name"
+      },
+      "region": {
+        "label": "Region",
+        "placeholder": "Select your region",
+        "options": {
+          "europe": "Europe",
+          "america": "America",
+          "africa": "Africa",
+          "asia_pacific": "Asia Pacific",
+          "middle_east_asia": "Middle East & Asia",
+          "oceania": "Oceania"
+        }
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email address",
+        "help": "We'll use this to send you important updates"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Create a strong password",
+        "help": "Minimum 8 characters required",
+        "requirements": "Use a combination of uppercase, lowercase, numbers, and symbols for a strong password"
+      },
+      "password_confirmation": {
+        "label": "Confirm Password",
+        "placeholder": "Re-enter your password",
+        "help": "Please retype your password to confirm"
+      },
+      "terms": {
+        "label": "I agree to the Terms of Service and Privacy Policy",
+        "required": "You must accept the Terms of Service and Privacy Policy to proceed"
+      }
+    },
+    "buttons": {
+      "register": "Create Account",
+      "registering": "Creating Account..."
+    },
+    "links": {
+      "already_registered": "Already have an account?",
+      "go_to_login": "Go to Login",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy"
+    },
+    "messages": {
+      "success": "Registration successful! Redirecting...",
+      "error": "Registration failed. Please try again.",
+      "agreement": "I agree to the",
+      "and": "and"
+    },
+    "validation": {
+      "firstName_required": "First name is required",
+      "lastName_required": "Last name is required",
+      "email_required": "Email is required",
+      "email_invalid": "Please enter a valid email address",
+      "email_taken": "This email is already registered",
+      "region_required": "Please select a region",
+      "password_required": "Password is required",
+      "password_min": "Password must be at least 8 characters long",
+      "password_confirmation_required": "Password confirmation is required",
+      "password_mismatch": "Passwords do not match",
+      "terms_required": "You must accept the Terms of Service and Privacy Policy"
+    }
+  },
+  "login": {
+    "title": "Sign In",
+    "heading": "Welcome Back",
+    "subtitle": "Sign in to your account to continue",
+    "fields": {
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Enter your email address",
+        "icon": "email"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password",
+        "icon": "lock"
+      },
+      "remember": {
+        "label": "Remember me",
+        "help": "Keep me signed in"
+      }
+    },
+    "buttons": {
+      "login": "Sign In",
+      "logging_in": "Signing in..."
+    },
+    "links": {
+      "forgot_password": "Forgot your password?",
+      "dont_have_account": "Don't have an account?",
+      "register": "Register now",
+      "reset_password": "Reset password"
+    },
+    "divider": "Or continue with",
+    "messages": {
+      "register_prompt": "If you are not registered yet, please register first to access your account.",
+      "success": "Welcome back!",
+      "error": "Login failed. Please check your credentials and try again."
+    },
+    "validation": {
+      "email_required": "Email is required",
+      "email_invalid": "Please enter a valid email address",
+      "password_required": "Password is required",
+      "credentials_invalid": "These credentials do not match our records"
+    },
+    "security": "Secure & GDPR Compliant — German hosting & encryption"
+  }
+}

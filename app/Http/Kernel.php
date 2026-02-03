@@ -73,6 +73,7 @@ class Kernel extends HttpKernel
         'voter.slug.window' => \App\Http\Middleware\EnsureVoterSlugWindow::class,
         'voter.step.order' => \App\Http\Middleware\EnsureVoterStepOrder::class,
         'validate.voting.ip' => \App\Http\Middleware\ValidateVotingIp::class,
+        'election' => \App\Http\Middleware\ElectionMiddleware::class,
 
     ];
 }

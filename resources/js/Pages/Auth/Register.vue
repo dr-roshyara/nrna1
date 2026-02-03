@@ -1,193 +1,210 @@
 <template>
-    <nrna-layout>
-        <jet-authentication-card class="mb-6">
-            <jet-validation-errors class="mb-4" />
-            <p
-                class="my-2 mx-auto p-2 text-center text-2xl font-bold text-gray-900"
-            >
-                User Registration
-            </p>
-            <form @submit.prevent="submit">
-                <!-- first and middle name    -->
-                <div class="pb-1">
-                    <jet-label for="firstname" value="First  and Middle Name" />
-                    <jet-input
-                        id="firstname"
-                        type="text"
-                        class="mt-1 block w-full"
-                        v-model="form.firstName"
-                        required
-                        autofocus
-                        autocomplete="firstName"
-                    />
-                </div>
-                <!-- Last name  -->
-                <div class="mt-4">
-                    <jet-label for="lastName" value="Last Name" />
-                    <jet-input
-                        id="lastName"
-                        type="text"
-                        class="mt-1 block w-full"
-                        v-model="form.lastName"
-                        required
-                        autofocus
-                        autocomplete="lastName"
-                    />
-                </div>
-                <!-- here starts the region selection  -->
-                <div class="mt-4">
-                    <jet-label for="region" value="Region" />
-                    <div
-                        class="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                    >
-                        <select
-                            name="region"
-                            id="region"
-                            v-model="form.region"
-                            class="focus:shadow-outline block w-full appearance-none rounded border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow hover:border-gray-500 focus:outline-none"
-                        >
-                            <option>Europe</option>
-                            <option>America</option>
-                            <option>Africa</option>
-                            <!-- <option>Asia  </option> -->
-                            <option>Asia Pacific</option>
-                            <option>Middle East Asia</option>
-                            <option>Oceania</option>
-                        </select>
-                        <div
-                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-                        >
-                            <svg
-                                class="h-4 w-4 fill-current"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                            >
-                                <path
-                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+    <div class="min-h-screen bg-gray-50">
+        <!-- Header -->
+        <ElectionHeader :isLoggedIn="false" />
+
+        <!-- Registration Section -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 md:px-6 lg:px-8">
+                <div class="max-w-2xl mx-auto">
+                    <!-- Section Header -->
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                            {{ $t('pages.auth.register.title') }}
+                        </h1>
+                        <p class="text-xl text-gray-600">
+                            {{ $t('pages.auth.register.subtitle') }}
+                        </p>
+                    </div>
+
+                    <!-- Registration Card -->
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 md:p-12">
+                        <jet-validation-errors class="mb-6" />
+
+                        <form @submit.prevent="submit" class="space-y-6">
+                            <!-- First and Middle Name -->
+                            <div>
+                                <jet-label for="firstname" :value="$t('pages.auth.register.fields.firstName.label')" class="font-bold" />
+                                <jet-input
+                                    id="firstname"
+                                    type="text"
+                                    class="mt-2 block w-full"
+                                    v-model="form.firstName"
+                                    :placeholder="$t('pages.auth.register.fields.firstName.placeholder')"
+                                    required
+                                    autofocus
+                                    autocomplete="given-name"
                                 />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- next -->
-                <div class="mt-4">
-                    <jet-label for="email" value="Email" />
-                    <jet-input
-                        id="email"
-                        type="email"
-                        class="mt-1 block w-full"
-                        v-model="form.email"
-                        required
-                    />
-                </div>
-
-                <div class="mt-4">
-                    <div class="flex flex-wrap space-x-2">
-                        <jet-label for="password" value="Password" />
-                        <span class="text-sm text-red-500">
-                            (Please choose a password with minimum 8
-                            characters)</span
-                        ><br />
-                        <span class="text-sm text-gray-700">
-                            कम्तिमा आठ अक्षर भएको कुनै एक नयाँ पासवर्ड तलको
-                            कोठाभित्र भर्नुहोला। साथै भरेको पासवर्डलाइ संझेर
-                            राख्नु होला । यहाँ भरेकाे पासवर्ड विना यहाँले लगइन
-                            गर्न सक्नु हुने छैन। </span
-                        ><br />
-                    </div>
-                    <jet-input
-                        id="password"
-                        type="password"
-                        class="mt-1 block w-full"
-                        v-model="form.password"
-                        required
-                        autocomplete="new-password"
-                    />
-                </div>
-
-                <div class="mt-4">
-                    <jet-label
-                        for="password_confirmation"
-                        value="Confirm Password"
-                    />
-                    <div flex flex-wrap>
-                        <span> Please retype your password. </span>
-                        <span class="text-sm text-gray-700">
-                            माथि भरेकाे पासवर्ड पुनः लेख्नुहोस।
-                        </span>
-                    </div>
-                    <jet-input
-                        id="password_confirmation"
-                        type="password"
-                        class="mt-1 block w-full"
-                        v-model="form.password_confirmation"
-                        required
-                        autocomplete="new-password"
-                    />
-                </div>
-
-                <div
-                    class="mt-4"
-                    v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature"
-                >
-                    <jet-label for="terms">
-                        <div class="flex items-center">
-                            <jet-checkbox
-                                name="terms"
-                                id="terms"
-                                v-model:checked="form.terms"
-                            />
-
-                            <div class="ml-2">
-                                I agree to the
-                                <a
-                                    target="_blank"
-                                    :href="route('terms.show')"
-                                    class="text-sm text-gray-600 underline hover:text-gray-900"
-                                    >Terms of Service</a
-                                >
-                                and
-                                <a
-                                    target="_blank"
-                                    :href="route('policy.show')"
-                                    class="text-sm text-gray-600 underline hover:text-gray-900"
-                                    >Privacy Policy</a
-                                >
                             </div>
-                        </div>
-                    </jet-label>
-                    <div class="py-1 text-sm text-gray-600">
-                        कृपया माथिकाे सानो चेकबक्समा क्लिक गरी एनआरएनए नमूना
-                        निर्वाचनमा भाग लिन सहमति जनाउनु होला।
+
+                            <!-- Last Name -->
+                            <div>
+                                <jet-label for="lastName" :value="$t('pages.auth.register.fields.lastName.label')" class="font-bold" />
+                                <jet-input
+                                    id="lastName"
+                                    type="text"
+                                    class="mt-2 block w-full"
+                                    v-model="form.lastName"
+                                    :placeholder="$t('pages.auth.register.fields.lastName.placeholder')"
+                                    required
+                                    autocomplete="family-name"
+                                />
+                            </div>
+
+                            <!-- Region Selection -->
+                            <div>
+                                <jet-label for="region" :value="$t('pages.auth.register.fields.region.label')" class="font-bold" />
+                                <div class="mt-2 relative rounded-lg border border-gray-300 bg-white overflow-hidden">
+                                    <select
+                                        name="region"
+                                        id="region"
+                                        v-model="form.region"
+                                        class="block w-full px-4 py-3 pr-10 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        required
+                                    >
+                                        <option value="">{{ $t('pages.auth.register.fields.region.placeholder') }}</option>
+                                        <option value="Europe">{{ $t('pages.auth.register.fields.region.options.europe') }}</option>
+                                        <option value="America">{{ $t('pages.auth.register.fields.region.options.america') }}</option>
+                                        <option value="Africa">{{ $t('pages.auth.register.fields.region.options.africa') }}</option>
+                                        <option value="Asia Pacific">{{ $t('pages.auth.register.fields.region.options.asia_pacific') }}</option>
+                                        <option value="Middle East Asia">{{ $t('pages.auth.register.fields.region.options.middle_east_asia') }}</option>
+                                        <option value="Oceania">{{ $t('pages.auth.register.fields.region.options.oceania') }}</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
+                                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 3a1 1 0 01.894.553l.448.894a1 1 0 001.342 1.342l.894-.448a1 1 0 01.894.553v2a1 1 0 01-1.894.553l-.448-.894a1 1 0 00-1.342-1.342l-.894.448A1 1 0 0110 5v-2zm0 10a1 1 0 01.894.553l.448.894a1 1 0 001.342 1.342l.894-.448a1 1 0 01.894.553v2a1 1 0 01-1.894.553l-.448-.894a1 1 0 00-1.342-1.342l-.894.448A1 1 0 0110 15v-2zm-7-5a1 1 0 01.894.553l.448.894a1 1 0 001.342 1.342l.894-.448a1 1 0 01.894.553h2a1 1 0 01-1.894.553l-.448-.894a1 1 0 00-1.342-1.342l-.894.448A1 1 0 013 10V8zm14 0a1 1 0 01.894.553l.448.894a1 1 0 001.342 1.342l.894-.448a1 1 0 01.894.553v2a1 1 0 01-1.894.553l-.448-.894a1 1 0 00-1.342-1.342l-.894.448a1 1 0 01-.894-.553v-2z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <jet-label for="email" :value="$t('pages.auth.register.fields.email.label')" class="font-bold" />
+                                <jet-input
+                                    id="email"
+                                    type="email"
+                                    class="mt-2 block w-full"
+                                    v-model="form.email"
+                                    :placeholder="$t('pages.auth.register.fields.email.placeholder')"
+                                    required
+                                    autocomplete="email"
+                                />
+                                <p class="text-xs text-gray-500 mt-2">{{ $t('pages.auth.register.fields.email.help') }}</p>
+                            </div>
+
+                            <!-- Password -->
+                            <div>
+                                <jet-label for="password" :value="$t('pages.auth.register.fields.password.label')" class="font-bold" />
+                                <p class="text-xs text-gray-600 mt-1 mb-2">
+                                    <span class="text-red-500 font-medium">{{ $t('pages.auth.register.fields.password.help') }}</span>
+                                    <br>
+                                    {{ $t('pages.auth.register.fields.password.requirements') }}
+                                </p>
+                                <jet-input
+                                    id="password"
+                                    type="password"
+                                    class="mt-2 block w-full"
+                                    v-model="form.password"
+                                    :placeholder="$t('pages.auth.register.fields.password.placeholder')"
+                                    required
+                                    autocomplete="new-password"
+                                />
+                            </div>
+
+                            <!-- Password Confirmation -->
+                            <div>
+                                <jet-label for="password_confirmation" :value="$t('pages.auth.register.fields.password_confirmation.label')" class="font-bold" />
+                                <p class="text-xs text-gray-600 mt-1 mb-2">
+                                    {{ $t('pages.auth.register.fields.password_confirmation.help') }}
+                                </p>
+                                <jet-input
+                                    id="password_confirmation"
+                                    type="password"
+                                    class="mt-2 block w-full"
+                                    v-model="form.password_confirmation"
+                                    :placeholder="$t('pages.auth.register.fields.password_confirmation.placeholder')"
+                                    required
+                                    autocomplete="new-password"
+                                />
+                            </div>
+
+                            <!-- Terms and Privacy Policy -->
+                            <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="pt-4 border-t border-gray-200">
+                                <jet-label for="terms">
+                                    <div class="flex items-start">
+                                        <jet-checkbox
+                                            name="terms"
+                                            id="terms"
+                                            v-model:checked="form.terms"
+                                            required
+                                            class="mt-1"
+                                        />
+                                        <div class="ml-3 text-sm">
+                                            <span class="text-gray-700">{{ $t('pages.auth.register.messages.agreement') }}</span>
+                                            <a
+                                                target="_blank"
+                                                :href="route('terms.show')"
+                                                class="text-blue-600 hover:text-blue-700 font-medium underline"
+                                            >
+                                                {{ $t('pages.auth.register.links.terms') }}
+                                            </a>
+                                            <span class="text-gray-700">{{ $t('pages.auth.register.messages.and') }}</span>
+                                            <a
+                                                target="_blank"
+                                                :href="route('policy.show')"
+                                                class="text-blue-600 hover:text-blue-700 font-medium underline"
+                                            >
+                                                {{ $t('pages.auth.register.links.privacy') }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </jet-label>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <inertia-link
+                                    :href="route('login')"
+                                    class="text-sm text-gray-600 hover:text-gray-900 transition"
+                                >
+                                    {{ $t('pages.auth.register.links.already_registered') }}
+                                    <span class="font-medium text-blue-600">{{ $t('pages.auth.register.links.go_to_login') }}</span>
+                                </inertia-link>
+
+                                <jet-button
+                                    :class="{ 'opacity-50': form.processing }"
+                                    :disabled="form.processing"
+                                    class="w-full sm:w-auto"
+                                >
+                                    <span v-if="!form.processing">{{ $t('pages.auth.register.buttons.register') }}</span>
+                                    <span v-else>{{ $t('pages.auth.register.buttons.registering') }}</span>
+                                </jet-button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Trust Badge -->
+                    <div class="mt-8 text-center">
+                        <p class="text-sm text-gray-600">
+                            <svg class="inline-block w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>{{ $t('pages.welcome.hero.security_badge_title') }} — {{ $t('pages.welcome.hero.security_badge_subtitle') }}</span>
+                        </p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="mt-4 flex items-center justify-end">
-                    <inertia-link
-                        :href="route('login')"
-                        class="text-sm text-gray-600 underline hover:text-gray-900"
-                    >
-                        Already registered? Please go to Log in.
-                    </inertia-link>
-
-                    <jet-button
-                        class="ml-4"
-                        :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
-                    >
-                        Register
-                    </jet-button>
-                </div>
-            </form>
-        </jet-authentication-card>
-    </nrna-layout>
+        <!-- Footer -->
+        <PublicDigitFooter />
+    </div>
 </template>
 
 <script>
-import NrnaLayout from "@/Layouts/LoginLayout";
-import JetAuthenticationCard from "@/Jetstream/AuthenticationCard";
-import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
+import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
+import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
 import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import JetCheckbox from "@/Jetstream/Checkbox";
@@ -196,9 +213,8 @@ import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
     components: {
-        NrnaLayout,
-        JetAuthenticationCard,
-        JetAuthenticationCardLogo,
+        ElectionHeader,
+        PublicDigitFooter,
         JetButton,
         JetInput,
         JetCheckbox,
@@ -230,3 +246,53 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+/* Accessibility focus styles */
+a:focus,
+button:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .text-gray-900,
+  .text-gray-700 {
+    color: #000000 !important;
+  }
+
+  .text-gray-600,
+  .text-gray-500 {
+    color: #000000 !important;
+  }
+
+  .bg-white {
+    background: #ffffff !important;
+    border: 2px solid #000000 !important;
+  }
+
+  input,
+  select {
+    border: 2px solid #000000 !important;
+  }
+
+  a {
+    text-decoration: underline !important;
+  }
+}
+</style>

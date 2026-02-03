@@ -64,17 +64,89 @@ class Code extends Model
         'voting_started_at' => 'datetime',
     ]; 
     /**
-     * 
-     * 
-     * Each code row belongs to exactly one user. So belongs to relationship  
+     * Get the user this code belongs to
      *
-     * 
-     **/
-    public function user(){ 
-         return $this->belongsTo(User::Class)
-         ->select(['id','name', 'region', 'user_id', 
-         'nrna_id',  'has_voted']);
-    }    
-    
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class)
+            ->select(['id', 'name', 'region', 'user_id', 'nrna_id', 'has_voted']);
+    }
 
+    /**
+     * Get the election this code is for
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function election()
+    {
+        return $this->belongsTo(Election::class);
+    }
+
+    /**
+     * Scope: Get codes for a specific election
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param \App\Models\Election $election
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeForElection($query, Election $election)
+    {
+        return $query->where('election_id', $election->id);
+    }
+
+    /**
+     * Scope: Get codes for demo election
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeForDemoElection($query)
+    {
+        return $query->whereHas('election', fn($q) => $q->where('type', 'demo'));
+    }
+
+    /**
+     * Scope: Get codes for real election
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeForRealElection($query)
+    {
+        return $query->whereHas('election', fn($q) => $q->where('type', 'real'));
+    }
+
+    /**
+     * Scope: Get verified codes (can_vote_now = 1)
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeVerified($query)
+    {
+        return $query->where('can_vote_now', 1);
+    }
+
+    /**
+     * Scope: Get unverified codes (can_vote_now = 0)
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeUnverified($query)
+    {
+        return $query->where('can_vote_now', 0);
+    }
+
+    /**
+     * Check if this code is verified
+     *
+     * @return bool
+     */
+    public function isVerified(): bool
+    {
+        return (bool) $this->can_vote_now;
+    }
 }
