@@ -55,6 +55,17 @@
               </inertia-link>
 
               <a
+                href="/election/demo/start"
+                class="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white font-bold text-lg rounded-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition-colors shadow-lg min-h-[44px]"
+                title="Try demo election without registration"
+              >
+                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.5 1.5H19a.5.5 0 01.5.5v8a.5.5 0 01-.5.5h-8.5V19a.5.5 0 01-.5.5H1a.5.5 0 01-.5-.5v-8a.5.5 0 01.5-.5H9V2a.5.5 0 01.5-.5z"/>
+                </svg>
+                🎯 {{ $t('pages.welcome.hero.cta_demo', 'Try Demo') }}
+              </a>
+
+              <a
                 href="#how-it-works"
                 class="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-800 text-blue-800 font-bold text-lg rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-colors min-h-[44px]"
               >

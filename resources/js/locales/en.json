@@ -68,6 +68,8 @@
     "home": "Home",
     "about": "About",
     "faq": "FAQ",
+    "demo": "Try Demo",
+    "demo_title": "Try demo election without registration",
     "dashboard": "Dashboard",
     "elections": "Elections",
     "events": "Events",

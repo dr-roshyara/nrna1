@@ -58,15 +58,29 @@
       </div>
 
       <!-- Navigation Row - Desktop Only -->
-      <nav class="hidden md:flex items-center space-x-6 py-3 border-t border-blue-600/50">
-        <a href="/" class="text-white font-medium hover:text-blue-200 transition-colors text-sm">
-          {{ $t('navigation.home') }}
-        </a>
-        <a href="#about" class="text-white font-medium hover:text-blue-200 transition-colors text-sm">
-          {{ $t('navigation.about') }}
-        </a>
-        <a href="#faq" class="text-white font-medium hover:text-blue-200 transition-colors text-sm">
-          {{ $t('navigation.faq') }}
+      <nav class="hidden md:flex items-center justify-between py-3 border-t border-blue-600/50">
+        <div class="flex items-center space-x-6">
+          <a href="/" class="text-white font-medium hover:text-blue-200 transition-colors text-sm">
+            {{ $t('navigation.home') }}
+          </a>
+          <a href="#about" class="text-white font-medium hover:text-blue-200 transition-colors text-sm">
+            {{ $t('navigation.about') }}
+          </a>
+          <a href="#faq" class="text-white font-medium hover:text-blue-200 transition-colors text-sm">
+            {{ $t('navigation.faq') }}
+          </a>
+        </div>
+
+        <!-- Demo Link - Special CTA -->
+        <a
+          href="/election/demo/start"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-green-500 text-white font-semibold text-sm rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-colors whitespace-nowrap"
+          :title="$t('navigation.demo_title', 'Try demo election without registration')"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M10.5 1.5H19a.5.5 0 01.5.5v8a.5.5 0 01-.5.5h-8.5V19a.5.5 0 01-.5.5H1a.5.5 0 01-.5-.5v-8a.5.5 0 01.5-.5H9V2a.5.5 0 01.5-.5z"/>
+          </svg>
+          {{ $t('navigation.demo', 'Try Demo') }}
         </a>
       </nav>
     </div>
