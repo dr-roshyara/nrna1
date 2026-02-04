@@ -352,6 +352,12 @@ class CodeController extends Controller
 
     private function isUserEligible(User $user): bool
     {
+        // Allow any authenticated user to vote in demo elections
+        if (session('selected_election_type') === 'demo') {
+            return true;
+        }
+
+        // Real elections require can_vote permission
         return $user && $user->can_vote == 1;
     }
 
@@ -414,12 +420,12 @@ class CodeController extends Controller
             $notYetVoted = !$code->has_voted;
             $voteNotSubmitted = !$code->vote_submitted;
 
-            // Resend code if:
-            // 1. Code is expired AND not yet used AND not voted, OR
-            // 2. Code was used but vote wasn't submitted (user restarted), OR
-            // 3. Code was used, vote submitted but not completed (user restarted)
-            $shouldResend = ($isExpired && !$codeWasUsed && $notYetVoted) ||
-                            ($codeWasUsed && $notYetVoted);
+            // Resend code ONLY if:
+            // - Code is expired AND not yet used AND not voted
+            //
+            // DO NOT resend if code was already used/verified ($codeWasUsed = true)
+            // because user should be redirected to agreement page, not given new code
+            $shouldResend = ($isExpired && !$codeWasUsed && $notYetVoted);
 
             if ($shouldResend) {
                 // Generate and send new code
