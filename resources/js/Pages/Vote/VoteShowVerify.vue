@@ -4,9 +4,9 @@
         <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-8 px-4">
             <div class="max-w-4xl mx-auto">
                 
-                <!-- Success Banner (if voted) -->
+                <!-- Demo Vote Success Banner with Verification Code -->
                 <div
-                    v-if="has_voted"
+                    v-if="is_demo && verification_code"
                     class="mb-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg overflow-hidden"
                 >
                     <div class="px-8 py-10 text-center text-white">
@@ -18,33 +18,84 @@
                                 </svg>
                             </div>
                         </div>
-                        
+
+                        <!-- Success Message -->
+                        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+                            🎉 Demo Vote Submitted Successfully!
+                        </h1>
+
+                        <!-- Verification Code Display -->
+                        <div class="max-w-2xl mx-auto">
+                            <div class="bg-white bg-opacity-10 rounded-xl p-6 mb-6">
+                                <p class="text-lg opacity-90 mb-4">Your demo vote verification code:</p>
+                                <div class="bg-white bg-opacity-20 rounded-lg p-4 mb-4">
+                                    <p class="text-3xl font-mono font-bold break-all tracking-wider">
+                                        {{ verification_code }}
+                                    </p>
+                                </div>
+                                <button
+                                    @click="copyToClipboard"
+                                    :class="copied ? 'bg-green-400 text-white' : 'bg-white text-green-600 hover:bg-gray-100'"
+                                    class="font-bold py-2 px-6 rounded-lg transition-colors"
+                                >
+                                    {{ copied ? '✓ Copied!' : '📋 Copy Verification Code' }}
+                                </button>
+                            </div>
+
+                            <!-- Instructions -->
+                            <div class="bg-white bg-opacity-10 rounded-xl p-4 text-sm">
+                                <p class="mb-2"><strong>✓ How to use your code:</strong></p>
+                                <ol class="text-left space-y-1 ml-4">
+                                    <li>1. Select "Demo Election" option below</li>
+                                    <li>2. Paste or type your code in the demo field</li>
+                                    <li>3. Click "Verify Demo Vote" to view your voting choices</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Banner (if voted - for real elections) -->
+                <div
+                    v-else-if="has_voted"
+                    class="mb-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg overflow-hidden"
+                >
+                    <div class="px-8 py-10 text-center text-white">
+                        <!-- Success Icon -->
+                        <div class="mb-6">
+                            <div class="mx-auto w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+
                         <!-- Congratulations Message -->
                         <h1 class="text-3xl md:text-4xl font-bold mb-4">
                             🎉 Congratulations {{ user_name }}!
                         </h1>
-                        
+
                         <!-- Success Description -->
                         <div class="max-w-2xl mx-auto">
                             <div class="bg-white bg-opacity-10 rounded-xl p-6 mb-6">
                                 <p class="text-lg md:text-xl mb-4 leading-relaxed">
                                     Thank you for participating in the election!
-                                     Your vote has been successfully recorded. 
-                                    To view  your vote, please enter 
-                                    the <span class="font-bold text-yellow-200"> new verification code</span> 
+                                     Your vote has been successfully recorded.
+                                    To view  your vote, please enter
+                                    the <span class="font-bold text-yellow-200"> new verification code</span>
                                     sent to your email.
                                 </p>
-                                
+
                                 <!-- Nepali Text -->
                                 <div class="pt-4 border-t border-white border-opacity-20">
                                     <p class="text-base opacity-90 leading-relaxed">
-                                        मतदान गर्नुभएकोमा धन्यवाद! आफ्नो मत हेर्न यहाँलाइ इमेल मार्फत पठाइएको नयाँ कोड 
-                                        तलको कोठामा भर्नुहोस ।   कृपया आफ्नो पासवर्ड र कोड गोप्य राख्नुहोस् । 
+                                        मतदान गर्नुभएकोमा धन्यवाद! आफ्नो मत हेर्न यहाँलाइ इमेल मार्फत पठाइएको नयाँ कोड
+                                        तलको कोठामा भर्नुहोस ।   कृपया आफ्नो पासवर्ड र कोड गोप्य राख्नुहोस् ।
                                          अरूलाई पनि नदिनुहोस्।
                                     </p>
                                 </div>
                             </div>
-                            
+
                             <!-- Security Notice -->
                             <div class="flex items-center justify-center space-x-2 text-sm opacity-90">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -420,6 +471,9 @@ export default {
         vote: Object,
         has_voted: Boolean,
         user_name: String,
+        verification_code: String,
+        is_demo: Boolean,
+        demo_vote_id: Number,
     },
 
     setup() {
@@ -430,6 +484,7 @@ export default {
         });
 
         function submit() {
+            // For real elections, use voting_code field
             form.post(route('vote.submit_code_to_view_vote'), {
                 preserveScroll: true,
                 onStart: () => {
@@ -448,25 +503,25 @@ export default {
         }
 
         function submitDemo() {
-            // Create a temporary form with demo election data
-            const tempForm = useForm({
+            // For demo elections, create form with demo_voting_code as voting_code
+            const demoForm = useForm({
                 voting_code: form.demo_voting_code,
                 election_type: 'demo'
             });
 
-            tempForm.post(route('vote.submit_code_to_view_vote'), {
+            demoForm.post(route('vote.submit_code_to_view_vote'), {
                 preserveScroll: true,
                 onStart: () => {
-                    form.processing = true;
+                    // Form is processing
                 },
                 onSuccess: () => {
-                    // Optional: Add success handling here
+                    // Vote verification successful
                 },
                 onError: () => {
-                    // Form errors are automatically handled by Inertia
+                    // Errors are handled by Inertia form
                 },
                 onFinish: () => {
-                    form.processing = false;
+                    // Cleanup after submission
                 }
             });
         }
@@ -476,7 +531,7 @@ export default {
 
     data() {
         return {
-            // Additional reactive data if needed
+            copied: false,
         };
     },
 
@@ -486,14 +541,46 @@ export default {
         },
     },
 
-    mounted() {
-        // Focus on the input field when component mounts
-        this.$nextTick(() => {
-            const input = document.getElementById('voting_code');
-            if (input) {
-                input.focus();
+    methods: {
+        copyToClipboard() {
+            if (this.verification_code) {
+                navigator.clipboard.writeText(this.verification_code).then(() => {
+                    this.copied = true;
+                    setTimeout(() => {
+                        this.copied = false;
+                    }, 2000);
+                }).catch(() => {
+                    // Fallback for older browsers
+                    const textarea = document.createElement('textarea');
+                    textarea.value = this.verification_code;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    this.copied = true;
+                    setTimeout(() => {
+                        this.copied = false;
+                    }, 2000);
+                });
             }
-        });
+        }
+    },
+
+    mounted() {
+        // Auto-populate demo verification code if it's available
+        if (this.verification_code && this.is_demo) {
+            this.form.demo_voting_code = this.verification_code;
+            // Default to demo election
+            this.form.electionType = 'demo';
+        } else {
+            // Focus on the real election input field
+            this.$nextTick(() => {
+                const input = document.getElementById('voting_code_real');
+                if (input) {
+                    input.focus();
+                }
+            });
+        }
     }
 };
 </script>

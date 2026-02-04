@@ -1506,6 +1506,20 @@ private function has_valid_selections($selections)
             ]);
         }
 
+        // For demo elections, show verification code on thank you page
+        if ($election->type === 'demo') {
+            // Get the demo vote we just saved
+            $demoVote = \App\Models\DemoVote::find($this->out_code);
+            if ($demoVote && $demoVote->verification_code) {
+                return redirect()->route('vote.verify_to_show')->with([
+                    'success' => 'Your demo vote has been successfully submitted!',
+                    'verification_code' => $demoVote->verification_code,
+                    'is_demo' => true,
+                    'demo_vote_id' => $demoVote->id
+                ]);
+            }
+        }
+
         // $request->session()->forget('vote');
         return redirect()->route('vote.verify_to_show')->with('success', 'Your vote has been successfully submitted.');
 
