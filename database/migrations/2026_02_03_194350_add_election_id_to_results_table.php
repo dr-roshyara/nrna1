@@ -18,25 +18,17 @@ class AddElectionIdToResultsTable extends Migration
     public function up()
     {
         Schema::table('results', function (Blueprint $table) {
-            // Add election_id column at the beginning
-            $table->unsignedBigInteger('election_id')
-                  ->nullable()
-                  ->after('id')
-                  ->comment('Reference to elections table - scopes results per election');
+            // Add election_id column for results scoping
+            if (!Schema::hasColumn('results', 'election_id')) {
+                $table->unsignedBigInteger('election_id')
+                      ->default(1)
+                      ->after('id')
+                      ->comment('Reference to elections table - scopes results per election');
 
-            // Add indexes
-            $table->index('election_id');
-            $table->index(['election_id', 'vote_id']);
-        });
-
-        // Default existing results to first election
-        DB::table('results')
-            ->whereNull('election_id')
-            ->update(['election_id' => 1]);
-
-        // Make election_id NOT NULL
-        Schema::table('results', function (Blueprint $table) {
-            $table->unsignedBigInteger('election_id')->nullable(false)->change();
+                // Add indexes
+                $table->index('election_id');
+                $table->index(['election_id', 'vote_id']);
+            }
         });
     }
 

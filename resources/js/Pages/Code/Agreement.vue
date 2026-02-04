@@ -3,7 +3,7 @@
         <app-layout>
             <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
                 <div class="max-w-4xl mx-auto px-4">
-                    
+
                     <!-- Success Header -->
                     <div class="text-center mb-8">
                         <div class="bg-gradient-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg">
@@ -20,9 +20,11 @@
                         <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6">
                             <h2 class="text-xl font-bold text-center">Voting Agreement | मतदान सम्झौता</h2>
                         </div>
-                        
-                        <form @submit.prevent="submitAgreement" class="p-8">
-                            
+
+                        <form method="POST" :action="submitUrl" class="p-8">
+                            <!-- CSRF Token -->
+                            <input type="hidden" name="_token" :value="csrfToken" />
+
                             <!-- IP Mismatch Error Display -->
                             <div v-if="$page.props.errors.ip_mismatch" class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
                                 <div class="flex">
@@ -102,9 +104,11 @@
                                     
                                     <div class="flex justify-center">
                                         <label class="flex items-center cursor-pointer">
-                                            <input 
+                                            <input
                                                 type="checkbox"
+                                                name="agreement"
                                                 v-model="form.agreement"
+                                                value="on"
                                                 class="w-5 h-5 text-blue-600 border-2 border-gray-400 rounded focus:ring-blue-500 focus:ring-2"
                                             />
                                             <span class="ml-3 text-lg font-medium text-gray-900">
@@ -124,8 +128,8 @@
 
                             <!-- Submit Button Only -->
                             <div class="text-center">
-                                <button 
-                                    type="submit" 
+                                <button
+                                    type="submit"
                                     class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-xl py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
                                     :disabled="!form.agreement"
                                     :class="{ 'opacity-50 cursor-not-allowed': !form.agreement }"
@@ -152,7 +156,7 @@ export default {
         AppLayout,
         NrnaLayout,
     },
-    
+
     props: {
         user_name: String,
         voting_time_minutes: Number,
@@ -161,27 +165,19 @@ export default {
         slug: String, // Add slug prop for slug-based routing
         useSlugPath: Boolean, // Configuration to enable/disable slug paths
     },
-    
+
     setup(props) {
         const form = useForm({
             agreement: false,
         })
 
-        function submitAgreement() {
-            // Always use slug-based route since we're using slug-based voting exclusively
-            if (!props.slug) {
-                console.error('No slug provided for agreement submission');
-                return;
-            }
-
-            const submitUrl = route('slug.code.agreement.submit', { vslug: props.slug });
-            console.log('Submitting agreement to URL:', submitUrl, 'slug:', props.slug);
-            form.post(submitUrl);
-        }
+        // Get CSRF token from meta tag
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || ''
 
         return {
             form,
-            submitAgreement
+            csrfToken,
+            submitUrl: route('slug.code.agreement.submit', { vslug: props.slug }),
         }
     }
 }

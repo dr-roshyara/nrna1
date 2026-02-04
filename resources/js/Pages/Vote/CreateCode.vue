@@ -1,5 +1,10 @@
 <template>
-    <election-layout>
+    <VotingLayout
+        :election="election"
+        page-title="Step 1: Enter Voting Code"
+        :current-step="1"
+        :total-steps="5"
+    >
         <div class="mx-2 mt-4 flex w-full flex-col justify-center p-2">
     <!-- Header - Just better styling -->
     <div class="my-4 mx-auto bg-blue-600 text-white p-4 rounded-lg text-center shadow-lg max-w-md">
@@ -85,12 +90,13 @@
         </div>
     </form>
 </div>
-    </election-layout>
+    </VotingLayout>
 </template>
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
-import ElectionLayout from "@/Layouts/ElectionLayout";
+import VotingLayout from "@/Components/Election/VotingLayout.vue";
+
 export default {
     props: {
         name: String,
@@ -98,8 +104,12 @@ export default {
         state: String,
         code_duration: Number,
         code_expires_in: Number,
-        slug: String, // Add slug prop for slug-based routing
-        useSlugPath: Boolean, // Configuration to enable/disable slug paths
+        slug: String,
+        useSlugPath: Boolean,
+        election: {
+            type: Object,
+            default: null
+        }
     },
     setup(props) {
         const form = useForm({
@@ -124,7 +134,7 @@ export default {
         return { form, submit };
     },
     components: {
-        ElectionLayout,
+        VotingLayout,
         JetValidationErrors,
     },
 };

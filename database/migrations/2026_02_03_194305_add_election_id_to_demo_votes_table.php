@@ -22,26 +22,17 @@ class AddElectionIdToDemoVotesTable extends Migration
     public function up()
     {
         Schema::table('demo_votes', function (Blueprint $table) {
-            // Add election_id column at the beginning
-            $table->unsignedBigInteger('election_id')
-                  ->after('id')
-                  ->default(1)
-                  ->comment('Reference to elections table - scopes demo votes per election');
+            // ✅ Add election_id column for demo vote scoping
+            // CRITICAL: demo_votes table has NO user_id column (by design for anonymity)
+            if (!Schema::hasColumn('demo_votes', 'election_id')) {
+                $table->unsignedBigInteger('election_id')
+                      ->default(1)
+                      ->after('id')
+                      ->comment('Reference to elections table - scopes demo votes per election');
 
-            // Add indexes
-            $table->index('election_id');
-            $table->index(['election_id', 'user_id']);
-        });
-
-        // Default all demo votes to first election (demo election from seeder)
-        DB::table('demo_votes')
-            ->where('election_id', 1)
-            ->orWhereNull('election_id')
-            ->update(['election_id' => 1]);
-
-        // Make election_id NOT NULL
-        Schema::table('demo_votes', function (Blueprint $table) {
-            $table->unsignedBigInteger('election_id')->nullable(false)->change();
+                // Add index for election lookups
+                $table->index('election_id');
+            }
         });
     }
 
@@ -53,12 +44,15 @@ class AddElectionIdToDemoVotesTable extends Migration
     public function down()
     {
         Schema::table('demo_votes', function (Blueprint $table) {
-            // Drop indexes
-            $table->dropIndex(['election_id']);
-            $table->dropIndex(['election_id', 'user_id']);
+            // Drop index
+            if (Schema::hasIndexColumn('demo_votes', 'election_id')) {
+                $table->dropIndex(['election_id']);
+            }
 
             // Drop column
-            $table->dropColumn('election_id');
+            if (Schema::hasColumn('demo_votes', 'election_id')) {
+                $table->dropColumn('election_id');
+            }
         });
     }
 }

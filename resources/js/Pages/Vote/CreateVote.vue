@@ -1,6 +1,10 @@
 <template>
-<nrna-layout>
-<app-layout>
+<VotingLayout
+    :election="election"
+    page-title="Step 3: Cast Your Vote"
+    :current-step="3"
+    :total-steps="5"
+>
       <div class="mt-6 text-center"> 
         <jet-validation-errors class="mb-4  mx-auto text-center " />  
          <div class="m-auto text-center bg-blue-200 py-4 ">  
@@ -922,9 +926,7 @@
             </div>
         </div>
       </form>
-     
-  </app-layout>
-</nrna-layout>
+</VotingLayout>
 </template>
 
 <script>
@@ -932,15 +934,20 @@ import { useForm } from '@inertiajs/inertia-vue3'
 import ShowCandidate from '@/Shared/ShowCandidate'
 import JetInput from '@/Jetstream/Input'
 import ShowCheckbox from "@/Shared/ShowCheckbox";
-import JetValidationErrors from '@/Jetstream/ValidationErrors' 
+import JetValidationErrors from '@/Jetstream/ValidationErrors'
+import VotingLayout from '@/Components/Election/VotingLayout.vue' 
  import AppLayout from '@/Layouts/AppLayout'
  import NrnaLayout from '@/Layouts/NrnaLayout'    
 export default {
   props:{
      candidacies:Object,
      user_name : String,
-     user_id : Number,  
-     user_lcc : String   
+     user_id : Number,
+     user_lcc : String,
+     election: {
+        type: Object,
+        default: null
+     }
   },
  
   data(){ 
@@ -1385,9 +1392,7 @@ export default {
       JetInput,
       ShowCheckbox,
       JetValidationErrors,
-      AppLayout,
-      NrnaLayout  
-  
+      VotingLayout
   }
 }
 </script>

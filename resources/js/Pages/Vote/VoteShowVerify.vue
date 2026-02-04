@@ -73,112 +73,281 @@
                         </p>
                     </div>
 
+                    <!-- Election Type Selector -->
+                    <div class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200 px-8 py-6">
+                        <div class="max-w-2xl mx-auto">
+                            <p class="text-sm font-semibold text-gray-700 mb-4 text-center">Select Election Type | निर्वाचन प्रकार चयन गर्नुहोस्</p>
+                            <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                                <!-- Real Election Option -->
+                                <label class="flex items-center cursor-pointer flex-1">
+                                    <div class="relative">
+                                        <input
+                                            type="radio"
+                                            v-model="form.electionType"
+                                            value="real"
+                                            class="sr-only"
+                                        />
+                                        <div
+                                            class="w-5 h-5 border-2 rounded-full transition-all duration-200"
+                                            :class="form.electionType === 'real'
+                                                ? 'border-blue-600 bg-blue-50'
+                                                : 'border-gray-300 bg-white hover:border-blue-400'"
+                                        ></div>
+                                        <div
+                                            v-if="form.electionType === 'real'"
+                                            class="absolute inset-1 rounded-full bg-blue-600 flex items-center justify-center"
+                                        >
+                                            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <span class="ml-3 text-sm font-medium text-gray-700">Real Election | असली निर्वाचन</span>
+                                </label>
+
+                                <!-- Demo Election Option -->
+                                <label class="flex items-center cursor-pointer flex-1">
+                                    <div class="relative">
+                                        <input
+                                            type="radio"
+                                            v-model="form.electionType"
+                                            value="demo"
+                                            class="sr-only"
+                                        />
+                                        <div
+                                            class="w-5 h-5 border-2 rounded-full transition-all duration-200"
+                                            :class="form.electionType === 'demo'
+                                                ? 'border-green-600 bg-green-50'
+                                                : 'border-gray-300 bg-white hover:border-green-400'"
+                                        ></div>
+                                        <div
+                                            v-if="form.electionType === 'demo'"
+                                            class="absolute inset-1 rounded-full bg-green-600 flex items-center justify-center"
+                                        >
+                                            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <span class="ml-3 text-sm font-medium text-gray-700">Demo Election | डेमो निर्वाचन</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Verification Form -->
                     <div class="p-8 md:p-12">
-                        <!-- Instructions -->
-                        <div class="mb-8 text-center">
-                            <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                </svg>
-                                <span>Check Your Email</span>
+                        <!-- Real Election Section -->
+                        <div v-if="form.electionType === 'real'">
+                            <!-- Instructions -->
+                            <div class="mb-8 text-center">
+                                <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span>Check Your Email</span>
+                                </div>
+                                <p class="text-gray-600 max-w-md mx-auto">
+                                    A verification code has been sent to your registered email address for the <strong>Real Election</strong>.
+                                    Please enter it below to view your voting record.
+                                </p>
                             </div>
-                            <p class="text-gray-600 max-w-md mx-auto">
-                                A verification code has been sent to your registered email address. 
-                                Please enter it below to view your voting record.
-                            </p>
-                        </div>
 
-                        <!-- Form -->
-                        <form @submit.prevent="submit" class="space-y-6">
-                            <!-- Verification Code Input -->
-                            <div class="space-y-2">
-                                <label for="voting_code" class="block text-sm font-semibold text-gray-700 mb-3">
-                                    <span class="flex items-center space-x-2">
-                                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
-                                        </svg>
-                                        <span>Verification Code</span>
-                                    </span>
-                                </label>
-                                
-                                <div class="relative">
-                                    <input
-                                        id="voting_code"
-                                        type="text"
-                                        v-model="form.voting_code"
-                                        placeholder="Enter your verification code here"
-                                        class="w-full px-6 py-4 text-lg font-mono border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 bg-gray-50 focus:bg-white"
-                                        :class="{
-                                            'border-red-300 focus:border-red-500 focus:ring-red-100': form.errors.voting_code,
-                                            'border-green-300 focus:border-green-500 focus:ring-green-100': form.voting_code && !form.errors.voting_code
-                                        }"
-                                        autocomplete="off"
-                                        :disabled="form.processing"
-                                    />
-                                    
-                                    <!-- Input Icon -->
-                                    <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
-                                        <svg 
-                                            v-if="form.processing" 
-                                            class="w-5 h-5 text-blue-500 animate-spin" 
-                                            fill="none" 
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                        </svg>
-                                        <svg 
-                                            v-else-if="form.voting_code && !form.errors.voting_code" 
-                                            class="w-5 h-5 text-green-500" 
-                                            fill="none" 
-                                            stroke="currentColor" 
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <svg 
-                                            v-else 
-                                            class="w-5 h-5 text-gray-400" 
-                                            fill="none" 
-                                            stroke="currentColor" 
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
-                                        </svg>
+                            <!-- Real Election Form -->
+                            <form @submit.prevent="submit" class="space-y-6">
+                                <!-- Verification Code Input -->
+                                <div class="space-y-2">
+                                    <label for="voting_code_real" class="block text-sm font-semibold text-gray-700 mb-3">
+                                        <span class="flex items-center space-x-2">
+                                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                                            </svg>
+                                            <span>Verification Code (Real Election)</span>
+                                        </span>
+                                    </label>
+
+                                    <div class="relative">
+                                        <input
+                                            id="voting_code_real"
+                                            type="text"
+                                            v-model="form.voting_code"
+                                            placeholder="Enter your verification code from email"
+                                            class="w-full px-6 py-4 text-lg font-mono border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 bg-gray-50 focus:bg-white"
+                                            :class="{
+                                                'border-red-300 focus:border-red-500 focus:ring-red-100': form.errors.voting_code,
+                                                'border-green-300 focus:border-green-500 focus:ring-green-100': form.voting_code && !form.errors.voting_code
+                                            }"
+                                            autocomplete="off"
+                                            :disabled="form.processing"
+                                        />
+
+                                        <!-- Input Icon -->
+                                        <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                                            <svg
+                                                v-if="form.processing"
+                                                class="w-5 h-5 text-blue-500 animate-spin"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            <svg
+                                                v-else-if="form.voting_code && !form.errors.voting_code"
+                                                class="w-5 h-5 text-green-500"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <svg
+                                                v-else
+                                                class="w-5 h-5 text-gray-400"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <!-- Submit Button -->
+                                <div class="pt-4">
+                                    <button
+                                        type="submit"
+                                        :disabled="form.processing || !form.voting_code"
+                                        class="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 disabled:from-gray-300 disabled:to-gray-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 focus:ring-4 focus:ring-blue-200 shadow-lg disabled:shadow-none"
+                                    >
+                                        <span v-if="form.processing" class="flex items-center justify-center space-x-3">
+                                            <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            <span>Verifying...</span>
+                                        </span>
+                                        <span v-else class="flex items-center justify-center space-x-3">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span>Verify & View My Vote</span>
+                                        </span>
+                                    </button>
+                                </div>
+
+                                <!-- Error Display -->
+                                <jet-validation-errors
+                                    v-if="form.errors && Object.keys(form.errors).length > 0"
+                                    class="mt-6"
+                                />
+                            </form>
+                        </div>
+
+                        <!-- Demo Election Section -->
+                        <div v-else-if="form.electionType === 'demo'">
+                            <!-- Instructions -->
+                            <div class="mb-8 text-center">
+                                <div class="inline-flex items-center space-x-2 bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span>Demo Election - Test Verification</span>
+                                </div>
+                                <p class="text-gray-600 max-w-md mx-auto">
+                                    Enter your <strong>Demo Election</strong> verification code to view your test voting record.
+                                    This is for testing and demonstration purposes only.
+                                </p>
                             </div>
 
-                            <!-- Submit Button -->
-                            <div class="pt-4">
-                                <button
-                                    type="submit"
-                                    :disabled="form.processing || !form.voting_code"
-                                    class="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 disabled:from-gray-300 disabled:to-gray-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 focus:ring-4 focus:ring-blue-200 shadow-lg disabled:shadow-none"
-                                >
-                                    <span v-if="form.processing" class="flex items-center justify-center space-x-3">
-                                        <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                        </svg>
-                                        <span>Verifying...</span>
-                                    </span>
-                                    <span v-else class="flex items-center justify-center space-x-3">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                        <span>Verify & View My Vote</span>
-                                    </span>
-                                </button>
-                            </div>
+                            <!-- Demo Election Form -->
+                            <form @submit.prevent="submitDemo" class="space-y-6">
+                                <!-- Verification Code Input -->
+                                <div class="space-y-2">
+                                    <label for="voting_code_demo" class="block text-sm font-semibold text-gray-700 mb-3">
+                                        <span class="flex items-center space-x-2">
+                                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span>Verification Code (Demo Election)</span>
+                                        </span>
+                                    </label>
 
-                            <!-- Error Display -->
-                            <jet-validation-errors 
-                                v-if="form.errors && Object.keys(form.errors).length > 0"
-                                class="mt-6"
-                            />
-                        </form>
+                                    <div class="relative">
+                                        <input
+                                            id="voting_code_demo"
+                                            type="text"
+                                            v-model="form.demo_voting_code"
+                                            placeholder="Enter your demo verification code"
+                                            class="w-full px-6 py-4 text-lg font-mono border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-200 bg-gray-50 focus:bg-white"
+                                            :class="{
+                                                'border-red-300 focus:border-red-500 focus:ring-red-100': form.errors.demo_voting_code,
+                                                'border-green-300 focus:border-green-500 focus:ring-green-100': form.demo_voting_code && !form.errors.demo_voting_code
+                                            }"
+                                            autocomplete="off"
+                                            :disabled="form.processing"
+                                        />
+
+                                        <!-- Input Icon -->
+                                        <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                                            <svg
+                                                v-if="form.processing"
+                                                class="w-5 h-5 text-green-500 animate-spin"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            <svg
+                                                v-else-if="form.demo_voting_code && !form.errors.demo_voting_code"
+                                                class="w-5 h-5 text-green-500"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <svg
+                                                v-else
+                                                class="w-5 h-5 text-gray-400"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="pt-4">
+                                    <button
+                                        type="submit"
+                                        :disabled="form.processing || !form.demo_voting_code"
+                                        class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 focus:ring-4 focus:ring-green-200 shadow-lg disabled:shadow-none"
+                                    >
+                                        <span v-if="form.processing" class="flex items-center justify-center space-x-3">
+                                            <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                            <span>Verifying...</span>
+                                        </span>
+                                        <span v-else class="flex items-center justify-center space-x-3">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span>Verify Demo Vote</span>
+                                        </span>
+                                    </button>
+                                </div>
+
+                                <!-- Error Display -->
+                                <jet-validation-errors
+                                    v-if="form.errors && Object.keys(form.errors).length > 0"
+                                    class="mt-6"
+                                />
+                            </form>
+                        </div>
 
                         <!-- Help Section -->
                         <div class="mt-12 pt-8 border-t border-gray-100">
@@ -256,10 +425,12 @@ export default {
     setup() {
         const form = useForm({
             voting_code: "",
+            demo_voting_code: "",
+            electionType: "real",
         });
 
         function submit() {
-                                        form.post(route('vote.submit_code_to_view_vote'), {
+            form.post(route('vote.submit_code_to_view_vote'), {
                 preserveScroll: true,
                 onStart: () => {
                     // Optional: Add any loading state logic here
@@ -276,7 +447,31 @@ export default {
             });
         }
 
-        return { form, submit };
+        function submitDemo() {
+            // Create a temporary form with demo election data
+            const tempForm = useForm({
+                voting_code: form.demo_voting_code,
+                election_type: 'demo'
+            });
+
+            tempForm.post(route('vote.submit_code_to_view_vote'), {
+                preserveScroll: true,
+                onStart: () => {
+                    form.processing = true;
+                },
+                onSuccess: () => {
+                    // Optional: Add success handling here
+                },
+                onError: () => {
+                    // Form errors are automatically handled by Inertia
+                },
+                onFinish: () => {
+                    form.processing = false;
+                }
+            });
+        }
+
+        return { form, submit, submitDemo };
     },
 
     data() {

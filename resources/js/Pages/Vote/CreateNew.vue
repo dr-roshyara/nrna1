@@ -1,6 +1,10 @@
 <template>
-    <nrna-layout>
-        <app-layout>
+    <VotingLayout
+        :election="election"
+        page-title="Step 2: Confirm Agreement"
+        :current-step="2"
+        :total-steps="5"
+    >
 <div class="mt-6 text-center"> 
     <!-- <jet-validation-errors class="mb-4 mx-auto text-center" />  
      -->
@@ -81,24 +85,19 @@
         <jet-validation-errors class="mb-4 mx-auto text-center" />
     </div>
 </form>
-          
-          
- </app-layout>
-    </nrna-layout>
+    </VotingLayout>
 </template>
 <script>
- import AppLayout from '@/Layouts/AppLayout'
- import NrnaLayout from '@/Layouts/NrnaLayout'    
- import  CreatePost from '@/Pages/Vote/CreatePost.vue'
+ import VotingLayout from '@/Components/Election/VotingLayout.vue'
+ import CreatePost from '@/Pages/Vote/CreatePost.vue'
  import { useForm } from '@inertiajs/inertia-vue3'
 import JetInput from '@/Jetstream/Input'
 import ShowCheckbox from "@/Shared/ShowCheckbox";
-import JetValidationErrors from '@/Jetstream/ValidationErrors' 
+import JetValidationErrors from '@/Jetstream/ValidationErrors'
 
 export default {
 components:{
-    AppLayout,
-    NrnaLayout,
+    VotingLayout,
     CreatePost,
     JetValidationErrors
 
@@ -107,9 +106,13 @@ props:{
      national_posts: Array,
      regional_posts: Array,
      user_name : String,
-     user_id : Number, 
+     user_id : Number,
+     election: {
+        type: Object,
+        default: null
+     },
      errors: Object
-     
+
 },
 setup (props) {
     const form = useForm({

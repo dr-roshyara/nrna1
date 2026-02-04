@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Code;
 use App\Models\Election;
 use App\Services\VoterProgressService;
+use App\Services\VoterStepTrackingService;
 use App\Services\VotingServiceFactory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -34,7 +35,7 @@ class CodeController extends Controller
     {
         $this->clientIP = \Request::getClientIp(true);
         $this->maxUseClientIP = config('app.max_use_clientIP', 7);
-        $this->votingTimeInMinutes = 20;
+        $this->votingTimeInMinutes = 30; // 30 minutes voting window (matches voter slug expiry)
     }
 
     /**
@@ -51,13 +52,37 @@ class CodeController extends Controller
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
-        Log::info('Code create page accessed', [
+        // Check if code is already verified (should not be accessing create page)
+        $existingCode = Code::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->first();
+
+        Log::info('🟣 [CREATE] Code create page accessed', [
             'user_id' => $user->id,
             'election_id' => $election->id,
             'election_type' => $election->type,
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'is_slug_request' => $voterSlug !== null,
+            'existing_code_verified' => $existingCode ? $existingCode->can_vote_now : 'no_code',
         ]);
+
+        // ⚠️ If code is already verified, user should not be here!
+        if ($existingCode && $existingCode->can_vote_now == 1) {
+            Log::warning('⚠️ [CREATE] User already has verified code - should be on agreement page!', [
+                'user_id' => $user->id,
+                'code_id' => $existingCode->id,
+            ]);
+        }
+
+        // ⛔ REAL ELECTIONS: Block access to code page if already voted
+        if ($election->type === 'real' && $existingCode && $existingCode->has_voted) {
+            Log::warning('⛔ Real election - blocking code page access for voter who already voted', [
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'code_id' => $existingCode->id,
+            ]);
+            return $this->redirectToDashboard('You have already voted in this election. Each voter can only vote once.');
+        }
 
         // Check basic eligibility
         if (!$this->isUserEligible($user)) {
@@ -66,6 +91,40 @@ class CodeController extends Controller
 
         // Get or create code record for this election
         $code = $this->getOrCreateCode($user, $election);
+
+        // ✅ CHECK IF CODE HAS EXPIRED - IF YES, SEND NEW ONE
+        $minutesSinceSent = $code->code1_sent_at ? now()->diffInMinutes($code->code1_sent_at) : 0;
+
+        if ($minutesSinceSent >= $this->votingTimeInMinutes && $code->has_code1_sent) {
+            Log::info('🔄 Code expired - sending new code', [
+                'user_id' => $user->id,
+                'minutes_since_sent' => $minutesSinceSent,
+                'max_minutes' => $this->votingTimeInMinutes,
+            ]);
+
+            // Generate new code and reset timer
+            $code->code1 = Str::random(6);
+            $code->code1_sent_at = now();
+            $code->has_code1_sent = true;
+            $code->save();
+
+            // Send new code notification
+            try {
+                $user->notify(new SendFirstVerificationCode($user, $code->code1));
+                Log::info('✅ New verification code sent', [
+                    'user_id' => $user->id,
+                    'code' => $code->code1,
+                ]);
+            } catch (\Exception $e) {
+                Log::error('❌ Failed to send new code', [
+                    'user_id' => $user->id,
+                    'error' => $e->getMessage(),
+                ]);
+            }
+
+            // Reset duration counter since we just sent a new code
+            $minutesSinceSent = 0;
+        }
 
         // For API requests
         if ($request->wantsJson()) {
@@ -85,8 +144,8 @@ class CodeController extends Controller
             'name' => $user->name,
             'user_id' => $user->user_id ?? '',
             'state' => 'code_sent',
-            'code_duration' => $code->code1_sent_at ? now()->diffInMinutes($code->code1_sent_at) : 0,
-            'code_expires_in' => 30, // 30 minutes expiry (matches voter slug window)
+            'code_duration' => $minutesSinceSent,
+            'code_expires_in' => $this->votingTimeInMinutes, // expires after voting window
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'useSlugPath' => $voterSlug !== null,
             'has_valid_email' => $hasValidEmail,
@@ -132,8 +191,7 @@ class CodeController extends Controller
 
         // Check basic eligibility
         if (!$this->isUserEligible($user)) {
-            return $this->jsonOrRedirect($request, false, 'You are not eligible to vote.',
-                $this->redirectToDashboard('You are not eligible to vote.'));
+            return $this->redirectToDashboard('You are not eligible to vote.');
         }
 
         // Get code record for this election
@@ -141,8 +199,17 @@ class CodeController extends Controller
             ->where('election_id', $election->id)
             ->first();
         if (!$code) {
-            return $this->jsonOrRedirect($request, false, 'No verification code found. Please request a new code.',
-                back()->withErrors(['voting_code' => 'No verification code found. Please request a new code.']));
+            return back()->withErrors(['voting_code' => 'No verification code found. Please request a new code.']);
+        }
+
+        // REAL ELECTIONS: Prevent double voting
+        if ($election->type === 'real' && $code->has_voted) {
+            Log::warning('Real election - double vote attempt prevented', [
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'election_type' => $election->type,
+            ]);
+            return back()->withErrors(['voting_code' => 'You have already voted in this election. Each voter can only vote once.']);
         }
 
         // Check if already verified
@@ -154,14 +221,60 @@ class CodeController extends Controller
         $verificationResult = $this->verifyCode($code, $submittedCode, $user);
 
         if (!$verificationResult['success']) {
-            return $this->jsonOrRedirect($request, false, $verificationResult['message'],
-                back()->withErrors(['voting_code' => $verificationResult['message']])->withInput());
+            return back()->withErrors(['voting_code' => $verificationResult['message']])->withInput();
         }
 
         // Code verified successfully - update database
+        Log::info('🔵 [STORE] About to call markCodeAsVerified', [
+            'code_id' => $code->id,
+            'before_can_vote_now' => $code->can_vote_now,
+        ]);
+
         $this->markCodeAsVerified($code);
 
-        // Advance slug step if using slug-based voting
+        // Verify the update in database
+        $freshCode = $code->fresh();
+        Log::info('🟢 [STORE] markCodeAsVerified completed', [
+            'code_id' => $code->id,
+            'after_can_vote_now' => $freshCode->can_vote_now,
+            'is_code1_usable' => $freshCode->is_code1_usable,
+        ]);
+
+        // ✅ NEW: Record step completion in voter_slug_steps table
+        if ($voterSlug) {
+            Log::info('🔵 [STORE] About to record step 1', [
+                'voter_slug_id' => $voterSlug->id,
+                'election_id' => $election->id,
+                'voter_slug_type' => get_class($voterSlug),
+            ]);
+
+            try {
+                $stepTrackingService = new VoterStepTrackingService();
+                $stepTrackingService->completeStep(
+                    $voterSlug,
+                    $election,
+                    1, // Step 1: Code verification
+                    ['code_verified' => true, 'verified_at' => now()->toIso8601String()]
+                );
+                Log::info('✅ Step 1 recorded in voter_slug_steps', [
+                    'voter_slug_id' => $voterSlug->id,
+                    'election_id' => $election->id,
+                ]);
+            } catch (\Exception $e) {
+                Log::error('❌ [STORE] Failed to record step 1', [
+                    'voter_slug_id' => $voterSlug->id,
+                    'election_id' => $election->id,
+                    'error' => $e->getMessage(),
+                    'trace' => $e->getTraceAsString(),
+                ]);
+            }
+        } else {
+            Log::warning('⚠️ [STORE] No voter_slug in request', [
+                'user_id' => $user->id,
+            ]);
+        }
+
+        // Legacy: Advance slug step if using slug-based voting
         if ($voterSlug) {
             $this->advanceSlugStep($voterSlug);
         }
@@ -176,8 +289,21 @@ class CodeController extends Controller
             ? route('slug.code.agreement', ['vslug' => $voterSlug->slug])
             : route('code.agreement');
 
-        return $this->jsonOrRedirect($request, true, 'Code verified successfully!',
-            redirect($agreementUrl)->with('success', 'Code verified successfully!'), $agreementUrl);
+        Log::info('🟡 [STORE] About to return redirect', [
+            'agreementUrl' => $agreementUrl,
+            'voterSlug' => $voterSlug ? $voterSlug->slug : 'null',
+            'is_response_object' => is_object(redirect($agreementUrl)),
+        ]);
+
+        // Always return Redirect for form submissions (Inertia will follow it)
+        $redirectResponse = redirect($agreementUrl)->with('success', 'Code verified successfully!');
+
+        Log::info('✅ [STORE] Returning redirect response', [
+            'response_status_code' => $redirectResponse->getStatusCode(),
+            'response_location' => $redirectResponse->getTargetUrl(),
+        ]);
+
+        return $redirectResponse;
     }
 
     /**
@@ -215,18 +341,44 @@ class CodeController extends Controller
 
         // Check if agreement already accepted
         if ($code->has_agreed_to_vote) {
-            // BUGFIX: If agreement already accepted, advance step before redirecting
-            // This prevents redirect loop when has_agreed_to_vote=1 but current_step=2
-            if ($voterSlug && $voterSlug->current_step < 3) {
-                $progressService = new VoterProgressService();
-                $progressService->advanceFrom($voterSlug, 'slug.code.agreement', ['agreement_accepted' => true]);
+            Log::info('🔵 [showAgreement] Detected agreement already accepted', [
+                'user_id' => $user->id,
+                'has_agreed_to_vote' => $code->has_agreed_to_vote,
+            ]);
 
-                Log::info('Advanced step after finding agreement already accepted', [
-                    'user_id' => $user->id,
-                    'slug' => $voterSlug->slug,
-                    'old_step' => 2,
-                    'new_step' => 3,
-                ]);
+            // CRITICAL FIX: Record Step 2 if not already recorded
+            // This breaks the circular redirect loop
+            if ($voterSlug) {
+                try {
+                    $stepTracker = new VoterStepTrackingService();
+                    $highestStep = $stepTracker->getHighestCompletedStep($voterSlug, $election);
+
+                    Log::info('🔵 [showAgreement] Current highest step', [
+                        'highest_step' => $highestStep,
+                    ]);
+
+                    // If Step 2 not recorded yet, record it now
+                    if ($highestStep < 2) {
+                        Log::info('🔵 [showAgreement] Step 2 not recorded - recording now to break loop', [
+                            'voter_slug_id' => $voterSlug->id,
+                        ]);
+
+                        $stepTracker->completeStep(
+                            $voterSlug,
+                            $election,
+                            2,
+                            ['agreement_accepted' => true, 'auto_recorded' => true, 'recorded_at' => now()->toIso8601String()]
+                        );
+
+                        Log::info('✅ [showAgreement] Step 2 auto-recorded to break circular redirect', [
+                            'voter_slug_id' => $voterSlug->id,
+                        ]);
+                    }
+                } catch (\Exception $e) {
+                    Log::error('❌ [showAgreement] Failed to record step 2', [
+                        'error' => $e->getMessage(),
+                    ]);
+                }
             }
 
             $voteUrl = $voterSlug
@@ -265,6 +417,13 @@ class CodeController extends Controller
      */
     public function submitAgreement(Request $request)
     {
+        Log::info('🔴 [CRITICAL] submitAgreement() method called', [
+            'route' => $request->route()->getName(),
+            'url' => $request->url(),
+            'method' => $request->method(),
+            'all_params' => $request->all(),
+        ]);
+
         $user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
@@ -300,8 +459,35 @@ class CodeController extends Controller
             'voting_started_at' => now(),
         ]);
 
-        // Advance slug step
+        // ✅ NEW: Record step 2 completion in voter_slug_steps table
         if ($voterSlug) {
+            Log::info('🔵 [SUBMIT_AGREEMENT] About to record step 2', [
+                'voter_slug_id' => $voterSlug->id,
+                'election_id' => $election->id,
+            ]);
+
+            try {
+                $stepTrackingService = new VoterStepTrackingService();
+                $stepTrackingService->completeStep(
+                    $voterSlug,
+                    $election,
+                    2, // Step 2: Agreement acceptance
+                    ['agreement_accepted' => true, 'accepted_at' => now()->toIso8601String()]
+                );
+                Log::info('✅ Step 2 recorded in voter_slug_steps', [
+                    'voter_slug_id' => $voterSlug->id,
+                    'election_id' => $election->id,
+                ]);
+            } catch (\Exception $e) {
+                Log::error('❌ [SUBMIT_AGREEMENT] Failed to record step 2', [
+                    'voter_slug_id' => $voterSlug->id,
+                    'election_id' => $election->id,
+                    'error' => $e->getMessage(),
+                    'trace' => $e->getTraceAsString(),
+                ]);
+            }
+
+            // Legacy: Advance slug step (deprecated, but keep for backward compatibility)
             $progressService = new VoterProgressService();
             $progressService->advanceFrom($voterSlug, 'slug.code.agreement', ['agreement_accepted' => true]);
         }
@@ -376,6 +562,45 @@ class CodeController extends Controller
             ->where('election_id', $election->id)
             ->first();
 
+        // DEMO ELECTIONS: Allow re-voting by resetting flags
+        if ($code && $code->has_voted && $election->type === 'demo') {
+            Log::info('🔄 Demo election - resetting code for re-voting', [
+                'user_id' => $user->id,
+                'code_id' => $code->id,
+                'old_has_voted' => $code->has_voted,
+            ]);
+
+            // Reset voting flags for demo to allow new vote
+            $code->update([
+                'has_voted' => false,
+                'vote_submitted' => false,
+                'can_vote_now' => 0,
+                'is_code1_usable' => 1,
+                'code1' => $this->generateCode(),
+                'code1_sent_at' => now(),
+                'has_code1_sent' => 1,
+            ]);
+
+            // Send new code via email
+            if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
+                try {
+                    $user->notify(new SendFirstVerificationCode($user, $code->code1));
+                    Log::info('✅ New demo voting code sent', [
+                        'user_id' => $user->id,
+                        'code_id' => $code->id,
+                        'code' => $code->code1,
+                    ]);
+                } catch (\Exception $e) {
+                    Log::error('Failed to send demo voting code', [
+                        'user_id' => $user->id,
+                        'error' => $e->getMessage(),
+                    ]);
+                }
+            }
+
+            return $code;
+        }
+
         if (!$code) {
             // No code exists for this election - create new one
             $code = Code::create([
@@ -426,7 +651,7 @@ class CodeController extends Controller
             }
 
             // Code exists - check if it needs resending
-            $isExpired = $code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > 30;
+            $isExpired = $code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > $this->votingTimeInMinutes;
             $codeWasUsed = $code->is_code1_usable == 0;
             $notYetVoted = !$code->has_voted;
             $voteNotSubmitted = !$code->vote_submitted;
@@ -501,7 +726,7 @@ class CodeController extends Controller
         }
 
         // Check if code is expired (20 minutes)
-        if ($code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > 30) {
+        if ($code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > $this->votingTimeInMinutes) {
             return ['success' => false, 'message' => 'Verification code has expired. Please request a new code.'];
         }
 
@@ -516,13 +741,30 @@ class CodeController extends Controller
 
     private function markCodeAsVerified(Code $code): void
     {
-        $code->update([
-            'can_vote_now' => 1,
-            'is_code1_usable' => 0,
-            'code1_used_at' => now(),
-            'is_codemodel_valid' => true,
-            'client_ip' => $this->clientIP,
-        ]);
+        Log::info('🔴 [markCodeAsVerified] Starting', ['code_id' => $code->id]);
+
+        try {
+            $updateResult = $code->update([
+                'can_vote_now' => 1,
+                'is_code1_usable' => 0,
+                'code1_used_at' => now(),
+                'is_codemodel_valid' => true,
+                'client_ip' => $this->clientIP,
+            ]);
+
+            Log::info('🟠 [markCodeAsVerified] Update result', [
+                'code_id' => $code->id,
+                'update_result' => $updateResult,
+                'can_vote_now' => $code->can_vote_now,
+            ]);
+        } catch (\Exception $e) {
+            Log::error('❌ [markCodeAsVerified] EXCEPTION', [
+                'code_id' => $code->id,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            throw $e;
+        }
     }
 
     private function advanceSlugStep($voterSlug): void
@@ -535,12 +777,49 @@ class CodeController extends Controller
 
     private function handleAlreadyVerified(Request $request, $voterSlug)
     {
+        $user = $this->getUser($request);
+        $election = $this->getElection($request);
+
+        // ✅ CRITICAL: Record Step 1 if not already recorded
+        // This fixes the case where user resubmits an already-verified code
+        if ($voterSlug) {
+            Log::info('🔵 [handleAlreadyVerified] Recording Step 1 for already-verified code', [
+                'voter_slug_id' => $voterSlug->id,
+                'election_id' => $election->id,
+            ]);
+
+            try {
+                $stepTrackingService = new VoterStepTrackingService();
+                $highestStep = $stepTrackingService->getHighestCompletedStep($voterSlug, $election);
+
+                // Only record if Step 1 hasn't been recorded yet
+                if ($highestStep < 1) {
+                    $stepTrackingService->completeStep(
+                        $voterSlug,
+                        $election,
+                        1,
+                        ['code_verified' => true, 'verified_at' => now()->toIso8601String()]
+                    );
+                    Log::info('✅ Step 1 recorded for already-verified code', [
+                        'voter_slug_id' => $voterSlug->id,
+                        'election_id' => $election->id,
+                    ]);
+                }
+            } catch (\Exception $e) {
+                Log::error('❌ [handleAlreadyVerified] Failed to record step 1', [
+                    'voter_slug_id' => $voterSlug->id,
+                    'election_id' => $election->id,
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        }
+
         $agreementUrl = $voterSlug
             ? route('slug.code.agreement', ['vslug' => $voterSlug->slug])
             : route('code.agreement');
 
-        return $this->jsonOrRedirect($request, true, 'Code already verified. Continue to agreement.',
-            redirect($agreementUrl)->with('info', 'Code already verified. Continue to agreement.'), $agreementUrl);
+        // Already verified, just redirect to agreement
+        return redirect($agreementUrl)->with('info', 'Code already verified. Continue to agreement.');
     }
 
     private function generateCode(): string

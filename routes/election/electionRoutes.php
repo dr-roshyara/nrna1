@@ -9,7 +9,6 @@ use App\Http\Controllers\DeligateCandidacyController;
 use App\Http\Controllers\DeligateVoteController;
 use App\Http\Controllers\DeligateCodeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ElectionManagementController;
 use App\Http\Controllers\Election\ElectionController as ElectionManagementController;
 use App\Http\Controllers\ElectionController as VotingElectionController;
 use App\Http\Controllers\VoterSlugController;

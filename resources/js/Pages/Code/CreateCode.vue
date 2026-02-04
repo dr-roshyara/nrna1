@@ -35,7 +35,7 @@
                 </span>
                 ago, mentioning your voting code. You can use this code for the next
                 <span class="font-bold text-red-600 bg-red-100 px-2 py-1 rounded">
-                    {{ code_expires_in - code_duration }} minutes
+                    {{ Math.max(0, code_expires_in - code_duration) }} minutes
                 </span>
                 to open the voting form. If you don't see email in your mailbox, then please check your Spam mail also.
             </p>
@@ -50,7 +50,7 @@
                 </span>
                 अघाडी एउटा इमेल पठाएका छाैं। भोटिङ पर्म खोल्नको लागि त्यो कोड लाइ अर्काे
                 <span class="font-bold text-red-600 bg-red-100 px-2 py-1 rounded">
-                    {{ code_expires_in - code_duration }} मिनेट
+                    {{ Math.max(0, code_expires_in - code_duration) }} मिनेट
                 </span>
                 सम्म प्रयाेग गरिसक्नु पर्ने छ। यो फर्मलाइ एकछिन यत्तिकै राखेर अव यहाँले आफ्नो इमेलमा चेक गर्नुहोस।
             </p>

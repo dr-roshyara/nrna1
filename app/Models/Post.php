@@ -59,4 +59,27 @@ class Post extends Model
                     }]);
     }
 
+    /**
+     * Get all demo candidates for this post
+     * Returns DemoCandidate models for demo election voting
+     */
+    public function demoCandidates()
+    {
+        return $this->hasMany(DemoCandidate::class, 'post_id', 'post_id')
+                    ->with('user')
+                    ->select([
+                        'id',
+                        'candidacy_id',
+                        'user_id',
+                        'post_id',
+                        'user_name',
+                        'candidacy_name',
+                        'proposer_name',
+                        'supporter_name',
+                        'image_path_1',
+                        'image_path_2',
+                        'image_path_3'
+                    ]);
+    }
+
 }

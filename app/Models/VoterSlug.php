@@ -16,7 +16,8 @@ class VoterSlug extends Model
         'expires_at',
         'is_active',
         'current_step',
-        'step_meta'
+        'step_meta',
+        'election_id',
     ];
 
     protected $casts = [
@@ -29,6 +30,11 @@ class VoterSlug extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function steps()
+    {
+        return $this->hasMany(VoterSlugStep::class, 'voter_slug_id');
     }
 
     public function scopeValid($query)

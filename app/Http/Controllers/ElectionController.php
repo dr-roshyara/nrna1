@@ -100,20 +100,35 @@ class ElectionController extends Controller
             'selected_election_type' => $election->type,
         ]);
 
-        // For API requests
-        if ($request->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Election selected',
-                'redirect' => route('slug.code.create'),
-                'election_id' => $election->id,
-                'election_type' => $election->type,
-            ]);
-        }
+        try {
+            // Generate voter slug for the user
+            $slugService = new \App\Services\VoterSlugService();
+            $slug = $slugService->getOrCreateActiveSlug(auth()->user());
 
-        // Redirect to voting flow
-        return redirect()->route('slug.code.create')
-            ->with('success', 'Election selected. You may now start voting.');
+            // For API requests
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Election selected',
+                    'redirect' => route('slug.code.create', ['vslug' => $slug->slug]),
+                    'election_id' => $election->id,
+                    'election_type' => $election->type,
+                ]);
+            }
+
+            // Redirect to voting flow with slug parameter
+            return redirect()->route('slug.code.create', ['vslug' => $slug->slug])
+                ->with('success', 'Election selected. You may now start voting.');
+        } catch (\Exception $e) {
+            Log::error('Failed to create voter slug', [
+                'user_id' => auth()->user()?->id,
+                'election_id' => $election->id,
+                'error' => $e->getMessage(),
+            ]);
+
+            return redirect()->route('election.select')
+                ->with('error', 'Unable to start voting. Please try again.');
+        }
     }
 
     /**
@@ -166,18 +181,32 @@ class ElectionController extends Controller
             'election_id' => $demoElection->id,
         ]);
 
-        // For API requests
-        if ($request->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Demo election selected',
-                'redirect' => route('slug.code.create'),
-            ]);
-        }
+        try {
+            // Generate voter slug for the user
+            $slugService = new \App\Services\VoterSlugService();
+            $slug = $slugService->getOrCreateActiveSlug(auth()->user());
 
-        // Redirect to voting flow
-        return redirect()->route('slug.code.create')
-            ->with('success', 'Demo election selected. Test the voting system!');
+            // For API requests
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Demo election selected',
+                    'redirect' => route('slug.code.create', ['vslug' => $slug->slug]),
+                ]);
+            }
+
+            // Redirect to voting flow with slug parameter
+            return redirect()->route('slug.code.create', ['vslug' => $slug->slug])
+                ->with('success', 'Demo election selected. Test the voting system!');
+        } catch (\Exception $e) {
+            Log::error('Failed to start demo election', [
+                'user_id' => auth()->user()?->id,
+                'error' => $e->getMessage(),
+            ]);
+
+            return redirect()->route('dashboard')
+                ->with('error', 'Unable to start demo election. Please try again.');
+        }
     }
 
     /**

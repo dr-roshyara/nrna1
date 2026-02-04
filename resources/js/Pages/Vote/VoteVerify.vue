@@ -1,7 +1,12 @@
 <template>
-    <nrna-layout>
+    <VotingLayout
+        :election="election"
+        page-title="Step 4: Verify Your Vote"
+        :current-step="4"
+        :total-steps="5"
+    >
         <div
-            class="ites-center flex flex-col md:mx-auto md:flex-row md:space-x-6"
+            class="flex flex-col md:mx-auto md:flex-row md:space-x-6"
         >
             <div class="flex flex-col justify-center bg-blue-100">
                 {{ vote }}
@@ -98,17 +103,22 @@
                 </div>
             </div>
         </div>
-    </nrna-layout>
+    </VotingLayout>
 </template>
 <script>
 import VotedPost from "@/Shared/VotedPost";
 import { useForm } from "@inertiajs/inertia-vue3";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import VotingLayout from "@/Components/Election/VotingLayout.vue";
 import AppLayout from "@/Layouts/AppLayout";
 import NrnaLayout from "@/Layouts/ElectionLayout";
 export default {
     props: {
         vote: Object,
+        election: {
+            type: Object,
+            default: null
+        }
     },
     setup() {
         const form = useForm({
@@ -155,8 +165,7 @@ export default {
     },
     components: {
         VotedPost,
-        NrnaLayout,
-        AppLayout,
+        VotingLayout,
         JetValidationErrors,
     },
 };

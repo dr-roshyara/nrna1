@@ -1,5 +1,10 @@
 <template>
-    <election-layout>
+    <VotingLayout
+        :election="election"
+        page-title="Step 4: Verify Your Vote"
+        :current-step="4"
+        :total-steps="5"
+    >
         <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
             <div class="container mx-auto px-4">
                 <!-- Header Section -->
@@ -378,10 +383,11 @@
                 </div>
             </div>
         </div>
-    </election-layout>
+    </VotingLayout>
 </template>
 
 <script>
+import VotingLayout from "@/Components/Election/VotingLayout.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import ElectionLayout from "@/Layouts/ElectionLayout";
@@ -390,11 +396,15 @@ export default {
     name: 'VoteVerify',
     
     components: {
-        ElectionLayout,
+        VotingLayout,
         JetValidationErrors,
     },
-    
+
     props: {
+        election: {
+            type: Object,
+            default: null
+        },
         vote_data: {
             type: Object,
             required: true

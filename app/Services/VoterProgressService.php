@@ -15,16 +15,35 @@ class VoterProgressService
         $map = config('election_steps');
         $fromStep = array_search($fromRoute, $map, true);
 
+        \Log::info('🔵 VoterProgressService::advanceFrom START', [
+            'vslug_id' => $vslug->id,
+            'fromRoute' => $fromRoute,
+            'fromStep' => $fromStep,
+            'map_keys' => array_keys($map),
+        ]);
+
         // If route doesn't exist in config, ignore
         if ($fromStep === false) {
+            \Log::warning('🔴 Route not found in election_steps config', [
+                'fromRoute' => $fromRoute,
+            ]);
             return;
         }
 
         DB::transaction(function () use ($vslug, $fromStep, $map, $stepMeta) {
             $vslug->refresh(); // Get latest values
 
+            \Log::info('🟡 Inside transaction', [
+                'current_step_before' => $vslug->current_step,
+                'fromStep' => $fromStep,
+            ]);
+
             // Only advance if we're exactly at fromStep
             if ((int)$vslug->current_step !== (int)$fromStep) {
+                \Log::warning('⚠️ Current step does not match fromStep', [
+                    'current_step' => (int)$vslug->current_step,
+                    'fromStep' => (int)$fromStep,
+                ]);
                 return; // Idempotent - ignore invalid transitions
             }
 
@@ -32,16 +51,25 @@ class VoterProgressService
 
             // Don't advance beyond final step
             if (!isset($map[$nextStep])) {
+                \Log::warning('⚠️ Next step not in map', ['nextStep' => $nextStep]);
                 return;
             }
 
             // Merge new step meta with existing meta
             $updatedMeta = array_merge($vslug->step_meta ?? [], $stepMeta);
 
+            \Log::info('🟢 Updating voter_slug', [
+                'current_step' => $fromStep,
+                'next_step' => $nextStep,
+                'vslug_id' => $vslug->id,
+            ]);
+
             $vslug->update([
                 'current_step' => $nextStep,
                 'step_meta' => $updatedMeta,
             ]);
+
+            \Log::info('✅ Update complete', ['new_current_step' => $vslug->current_step]);
         });
     }
 

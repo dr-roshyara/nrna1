@@ -24,7 +24,7 @@ class DemoVotingService extends VotingService
      *
      * @return string
      */
-    protected function getVoteModel(): string
+    public function getVoteModel(): string
     {
         return DemoVote::class;
     }
@@ -34,7 +34,7 @@ class DemoVotingService extends VotingService
      *
      * @return string
      */
-    protected function getResultModel(): string
+    public function getResultModel(): string
     {
         return DemoResult::class;
     }

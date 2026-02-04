@@ -10,10 +10,26 @@ class VoterSlugService
 {
     /**
      * Generate a new 30-minute voting slug for a user
+     *
+     * @param User $user
+     * @param int|null $electionId - Election to associate with this slug. If null, uses demo election
      */
-    public function generateSlugForUser(User $user): VoterSlug
+    public function generateSlugForUser(User $user, ?int $electionId = null): VoterSlug
     {
-        return DB::transaction(function () use ($user) {
+        return DB::transaction(function () use ($user, $electionId) {
+            // Determine election if not provided
+            if (!$electionId) {
+                // Try to get from session (user may have selected an election)
+                $sessionElectionId = session('selected_election_id');
+                if ($sessionElectionId) {
+                    $electionId = $sessionElectionId;
+                } else {
+                    // Default to demo election for testing
+                    $election = \App\Models\Election::where('type', 'demo')->first();
+                    $electionId = $election ? $election->id : null;
+                }
+            }
+
             // Revoke any existing active slugs for this user
             VoterSlug::where('user_id', $user->id)
                 ->where('is_active', true)
@@ -35,6 +51,7 @@ class VoterSlugService
                 'is_active' => true,
                 'current_step' => 1,
                 'step_meta' => [],
+                'election_id' => $electionId,
             ]);
         });
     }

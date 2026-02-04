@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\VoterSlug;
+use App\Services\VoterStepTrackingService;
 
 class EnsureVoterStepOrder
 {
@@ -34,44 +35,48 @@ class EnsureVoterStepOrder
         $map = config('election_steps');
         $targetStep = array_search($routeName, $map, true);
 
-        \Log::info('EnsureVoterStepOrder middleware', [
+        // ✅ FIX: Use VoterSlug's election_id directly (don't wait for election middleware)
+        // This avoids the middleware ordering issue - we get the election from the slug itself
+        $election = \App\Models\Election::find($vslug->election_id);
+        if (!$election) {
+            abort(403, 'Election not found for this voting link.');
+        }
+
+        // ✅ NEW: Use VoterStepTrackingService to determine actual progress
+        $stepTracker = new VoterStepTrackingService();
+        $highestCompletedStep = $stepTracker->getHighestCompletedStep($vslug, $election);
+        $nextAllowedStep = $highestCompletedStep + 1;
+
+        \Log::info('🔵 EnsureVoterStepOrder - NEW SYSTEM', [
             'route_name' => $routeName,
             'target_step' => $targetStep,
-            'current_step' => $vslug->current_step,
-            'is_non_step_route' => $targetStep === false
+            'highest_completed_step' => $highestCompletedStep,
+            'next_allowed_step' => $nextAllowedStep,
+            'is_non_step_route' => $targetStep === false,
+            'election_id' => $election->id,
+            'vslug_election_id' => $vslug->election_id,
         ]);
 
         // Non-step routes (e.g., POST actions) pass through
         if ($targetStep === false) {
-            \Log::info('Non-step route passing through');
+            \Log::info('✅ Non-step route passing through');
             return $next($request);
         }
 
-        // CRITICAL: Enforce database state binding for Step 2+
-        if ($targetStep >= 2) {
-            $user = $vslug->user;
-            $code = \App\Models\Code::where('user_id', $user->id)->first();
+        // ✅ NEW LOGIC: Allow access to:
+        // - Any completed step (they can go back)
+        // - The next incomplete step (they can proceed)
+        // - Block future incomplete steps
+        if ($targetStep > $nextAllowedStep) {
+            $nextRoute = $map[$nextAllowedStep] ?? reset($map);
+            \Log::warning('⚠️ User tried to skip ahead', [
+                'target_step' => $targetStep,
+                'next_allowed_step' => $nextAllowedStep,
+                'redirecting_to' => $nextRoute,
+            ]);
 
-            // Step 2+ requires code verification (can_vote_now = 1)
-            if (!$code || $code->can_vote_now != 1) {
-                \Log::warning('User attempted to access Step 2+ without code verification', [
-                    'user_id' => $user->id,
-                    'target_step' => $targetStep,
-                    'target_route' => $routeName,
-                    'can_vote_now' => $code ? $code->can_vote_now : 'no_code',
-                    'slug' => $vslug->slug,
-                ]);
-
-                // Force redirect back to Step 1 (code verification)
-                return redirect()->route('slug.code.create', ['vslug' => $vslug->slug])
-                    ->with('error', 'Code verification required before proceeding.');
-            }
-        }
-
-        // If user tries to open FUTURE step, send them back to current
-        if ($targetStep > $vslug->current_step) {
-            $currentRoute = $map[$vslug->current_step] ?? reset($map);
-            return redirect()->route($currentRoute, ['vslug' => $vslug->slug]);
+            return redirect()->route($nextRoute, ['vslug' => $vslug->slug])
+                ->with('info', 'Please complete the current step first.');
         }
 
         return $next($request);

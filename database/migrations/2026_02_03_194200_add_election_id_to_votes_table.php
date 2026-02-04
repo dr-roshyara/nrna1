@@ -23,30 +23,18 @@ class AddElectionIdToVotesTable extends Migration
     public function up()
     {
         Schema::table('votes', function (Blueprint $table) {
-            // Add election_id column (nullable for backward compatibility)
-            $table->unsignedBigInteger('election_id')
-                  ->nullable()
-                  ->after('user_id')
-                  ->comment('Reference to elections table - scopes votes per election');
+            // ✅ Add election_id column for vote scoping
+            // IMPORTANT: Added after 'id' (NOT after 'user_id')
+            // CRITICAL: votes table has NO user_id column (by design for anonymity)
+            if (!Schema::hasColumn('votes', 'election_id')) {
+                $table->unsignedBigInteger('election_id')
+                      ->default(1)
+                      ->after('id')
+                      ->comment('Reference to elections table - scopes votes per election');
 
-            // Add index for frequent queries (election lookups)
-            $table->index('election_id');
-
-            // Add composite index for election + user (common query pattern)
-            $table->index(['election_id', 'user_id']);
-        });
-
-        // Default existing votes to first election (demo election from seeder)
-        // This maintains backward compatibility with existing voting results
-        DB::table('votes')
-            ->whereNull('election_id')
-            ->update([
-                'election_id' => 1 // First election from ElectionSeeder
-            ]);
-
-        // Make election_id NOT NULL after data migration
-        Schema::table('votes', function (Blueprint $table) {
-            $table->unsignedBigInteger('election_id')->nullable(false)->change();
+                // Add index for frequent queries (election lookups)
+                $table->index('election_id');
+            }
         });
     }
 
