@@ -414,6 +414,17 @@ class CodeController extends Controller
                 'code' => $code->code1,
             ]);
         } else {
+            // ✅ CRITICAL: If code already verified, DO NOT regenerate
+            // Code was successfully verified and user should go to agreement page
+            if ($code->can_vote_now == 1) {
+                Log::info('Code already verified - returning existing code', [
+                    'user_id' => $user->id,
+                    'election_id' => $election->id,
+                    'code_id' => $code->id,
+                ]);
+                return $code; // Return without regenerating
+            }
+
             // Code exists - check if it needs resending
             $isExpired = $code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > 30;
             $codeWasUsed = $code->is_code1_usable == 0;
