@@ -86,7 +86,7 @@ class CodeController extends Controller
             'user_id' => $user->user_id ?? '',
             'state' => 'code_sent',
             'code_duration' => $code->code1_sent_at ? now()->diffInMinutes($code->code1_sent_at) : 0,
-            'code_expires_in' => 20, // 20 minutes expiry
+            'code_expires_in' => 30, // 30 minutes expiry (matches voter slug window)
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'useSlugPath' => $voterSlug !== null,
             'has_valid_email' => $hasValidEmail,
@@ -415,7 +415,7 @@ class CodeController extends Controller
             ]);
         } else {
             // Code exists - check if it needs resending
-            $isExpired = $code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > 20;
+            $isExpired = $code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > 30;
             $codeWasUsed = $code->is_code1_usable == 0;
             $notYetVoted = !$code->has_voted;
             $voteNotSubmitted = !$code->vote_submitted;
@@ -490,7 +490,7 @@ class CodeController extends Controller
         }
 
         // Check if code is expired (20 minutes)
-        if ($code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > 20) {
+        if ($code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > 30) {
             return ['success' => false, 'message' => 'Verification code has expired. Please request a new code.'];
         }
 
