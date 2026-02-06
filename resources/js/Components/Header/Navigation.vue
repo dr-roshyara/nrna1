@@ -8,9 +8,10 @@
             >
                 <div class="mb-2 space-x-8 pb-2 sm:-my-px sm:ml-10 sm:flex">
                     <jet-nav-link
+                        v-if="$page.props.user && $page.props.user.id"
                         :href="
                             route('user.show', {
-                                profile: $page.props.user.user_id,
+                                profile: $page.props.user.id,
                             })
                         "
                     >
@@ -112,14 +113,14 @@
 
                     <!-- next --link -->
                     <div
-                        v-if="$page.props.user"
+                        v-if="$page.props.user && $page.props.user.id"
                         class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
                     >
                         <!-- {{ $props.user }} -->
                         <jet-nav-link
                             :href="
                                 route('user.show', {
-                                    profile: $page.props.user.user_id,
+                                    profile: $page.props.user.id,
                                 })
                             "
                         >

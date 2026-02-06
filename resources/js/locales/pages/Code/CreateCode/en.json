@@ -1,0 +1,31 @@
+{
+  "page_meta": {
+    "title": "Enter Voting Code",
+    "description": "Enter the voting code sent to your email to proceed with voting"
+  },
+  "errors": {
+    "ip_mismatch_title": "IP Address Mismatch",
+    "ip_mismatch_message": "Your IP address has changed. This is for security purposes."
+  },
+  "header": {
+    "icon": "📧",
+    "title": "Check Your Email Now"
+  },
+  "instructions": {
+    "english_section": "Instructions",
+    "english_intro": "We have sent you an email",
+    "english_ago": "minutes ago, mentioning your voting code. You can use this code for the next",
+    "english_remaining": "minutes to open the voting form. If you don't see email in your mailbox, then please check your Spam mail also.",
+    "nepali_section": "निर्देशन",
+    "nepali_intro": "तपाइलाइ हामीले भर्खरै",
+    "nepali_ago": "मिनेट अघाडी एउटा इमेल पठाएका छाैं। भोटिङ पर्म खोल्नको लागि त्यो कोड लाइ अर्काे",
+    "nepali_remaining": "मिनेट सम्म प्रयाेग गरिसक्नु पर्ने छ। यो फर्मलाइ एकछिन यत्तिकै राखेर अब यहाँले आफ्नो इमेलमा चेक गर्नुहोस।",
+    "nepali_spam_warning": "तपाइले आफ्नो मेल वक्समा एनआरएनएको इमेल भेट्टाउनु भएन भने स्पाम मेलमा गएर वसेको हुन सक्छ, त्यसैले स्पाम मेल पनि चेक गर्नुहोस।"
+  },
+  "form": {
+    "code_label": "First Voting Code",
+    "code_placeholder": "Enter your voting code",
+    "submit_button": "🗳️ PRESS HERE TO GET VOTING FORM",
+    "submit_button_nepali": "भोटिङ फर्म प्राप्त गर्न यहाँ थिच्नुहोस्"
+  }
+}

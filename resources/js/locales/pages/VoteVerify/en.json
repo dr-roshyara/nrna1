@@ -1,0 +1,62 @@
+{
+  "header": {
+    "title": "Verify Your Vote",
+    "subtitle": "Complete the verification process to secure your vote"
+  },
+  "critical_warning": {
+    "title": "⚠️ CRITICAL: Your Vote Is NOT Saved Yet!",
+    "message": "Without the code below, your vote will be completely lost."
+  },
+  "secure_process": "Secure Verification Process",
+  "verification_title": "Enter Verification Code",
+  "verification_subtitle": "Enter the 6-digit code sent to your email address",
+  "status_complete": "Vote Successfully Submitted",
+  "status_message": "Your vote has been recorded and is awaiting final confirmation.",
+  "email_notice": {
+    "title": "Check Your Email",
+    "message": "A 6-digit verification code has been sent to your registered email address"
+  },
+  "action_required": "Action Required: Submit Your Code",
+  "code_input": {
+    "label": "Verification Code",
+    "placeholder": "XXXXXX",
+    "characters": "characters",
+    "instruction": "Enter your 6-digit code",
+    "ready": "Ready to verify"
+  },
+  "save_button": {
+    "text": "Verify & Save My Vote",
+    "processing": "Verifying...",
+    "help_incomplete": "Enter all 6 characters to enable submit button",
+    "help_complete": "Ready to save your vote"
+  },
+  "security_notice": {
+    "title": "Keep This Code Safe"
+  },
+  "voter_info": {
+    "title": "Your Information",
+    "subtitle": "Voter Details",
+    "name": "Name",
+    "user_id": "User ID",
+    "region": "Region"
+  },
+  "summary": {
+    "title": "Vote Summary",
+    "subtitle": "Review your selections before final confirmation",
+    "national_posts": "National Posts",
+    "regional_posts": "Regional Posts",
+    "stats": {
+      "voted": "Voted",
+      "skipped": "Skipped",
+      "total": "Total"
+    },
+    "no_data": "No vote data available"
+  },
+  "security_badge": {
+    "title": "Your Vote is Secure",
+    "message": "End-to-end encrypted and protected"
+  },
+  "aria_labels": {
+    "skip_to_content": "Skip to main content"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "page_meta": {
+    "title": "Voting Agreement",
+    "description": "Review and agree to voting terms and conditions before proceeding"
+  },
+  "progress": {
+    "step_1": "Code Verified",
+    "step_2": "Agreement",
+    "step_3": "Cast Vote"
+  },
+  "header": {
+    "icon": "✅",
+    "title": "Verification Successful",
+    "subtitle": "Welcome, {name}",
+    "info_voter": "Voter Name",
+    "info_time": "Time Limit",
+    "info_time_value": "{minutes} minutes"
+  },
+  "terms_and_conditions": {
+    "section_title": "Voting Agreement Terms",
+    "section_subtitle": "Please read and accept to continue",
+    "intro_text": "By clicking the button below, you agree to the following conditions:",
+    "toggle_english": "English Terms",
+    "toggle_nepali": "Nepali Terms",
+    "heading": "Electronic Voting Agreement",
+    "key_conditions": "Key Conditions:",
+    "condition_1": "Your vote is anonymous and encrypted",
+    "condition_2": "You must complete voting within {minutes} minutes",
+    "condition_3": "Do not share your voting codes",
+    "condition_4": "Only one vote per voter is allowed",
+    "items": [
+      "Your vote is secret and will be recorded securely",
+      "You will complete the voting process within the time limit",
+      "You will not share your voting codes with anyone",
+      "You agree to the electronic voting process and its rules"
+    ]
+  },
+  "agreement_required": {
+    "title": "Agreement Required",
+    "icon": "✅",
+    "checkbox_label": "I agree to all terms and conditions",
+    "ready_message": "Ready to proceed with voting",
+    "aria_label": "Check this box to agree to all voting terms and conditions. This must be checked before you can start voting."
+  },
+  "submit_button": {
+    "icon": "🗳️",
+    "text": "Start Voting Now",
+    "help_text": "By clicking, you confirm your agreement to all terms",
+    "aria_label_enabled": "Start voting now - you have agreed to all terms",
+    "aria_label_disabled": "Please agree to the terms and conditions first before starting"
+  },
+  "voting_time_info": {
+    "label": "Important",
+    "title": "Time Limit Notice",
+    "message": "You have {minutes} minutes to complete your voting once you start."
+  },
+  "errors": {
+    "ip_mismatch_title": "IP Address Mismatch",
+    "ip_mismatch_help": "Your IP address has changed. This is for security purposes.",
+    "agreement_required": "You must agree to the terms and conditions to proceed"
+  },
+  "accessibility": {
+    "page_loaded": "Voting agreement page loaded. Please read and accept the terms to proceed.",
+    "terms_announcement": "Voting agreement terms. Select a language to view the full agreement.",
+    "checkbox_checked": "Agreement checked. You can now proceed to vote.",
+    "checkbox_unchecked": "Agreement not checked. Please review and accept the terms to continue.",
+    "form_title": "Voting Agreement Form"
+  },
+  "progress_aria": {
+    "step_1_status": "Step 1 of 3: Code verification completed",
+    "step_2_status": "Step 2 of 3: Agreement - current step",
+    "step_3_status": "Step 3 of 3: Cast your vote"
+  }
+}

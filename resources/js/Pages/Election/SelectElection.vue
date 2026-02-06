@@ -1,256 +1,289 @@
 <template>
-  <div class="select-election-page">
-    <!-- Loading State -->
-    <div v-if="isLoading" class="loading-container">
-      <div class="spinner"></div>
-      <p class="loading-text">{{ $t('election.loading') }}</p>
-    </div>
+  <div class="min-h-screen flex flex-col bg-gray-50">
+    <!-- Header -->
+    <ElectionHeader :is-logged-in="true" />
 
-    <!-- Error State -->
-    <div v-else-if="error" class="error-container">
-      <div class="error-message">
-        <h3 class="error-title">{{ $t('election.error.title') }}</h3>
-        <p class="error-description">{{ error }}</p>
-        <button @click="goBack" class="btn-error-action">
-          {{ $t('election.actions.back') }}
-        </button>
+    <!-- Main Content -->
+    <main class="flex-1 py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Page Title -->
+        <div class="mb-8">
+          <h1 class="text-4xl font-bold text-gray-900 mb-2">
+            {{ $t('pages.election.select_election.heading') }}
+          </h1>
+          <p class="text-lg text-gray-600">
+            {{ $t('pages.election.select_election.subtitle') }}
+          </p>
+          <p class="text-gray-500 mt-4">
+            {{ $t('pages.election.select_election.instructions') }}
+          </p>
+        </div>
+
+        <!-- Elections Grid -->
+        <div v-if="activeElections.length > 0" class="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
+          <div
+            v-for="election in activeElections"
+            :key="election.id"
+            class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden border-l-4"
+            :class="getElectionBorderClass(election)"
+          >
+            <!-- Election Card Header -->
+            <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
+              <div class="flex items-start justify-between">
+                <div class="flex-1">
+                  <h2 class="text-2xl font-bold text-gray-900">
+                    {{ election.name }}
+                  </h2>
+                  <div class="flex items-center gap-3 mt-2 flex-wrap">
+                    <!-- Election Type Badge -->
+                    <span
+                      :aria-label="`${$t('pages.election.election_card.type')}: ${getElectionType(election)}`"
+                      class="inline-flex px-3 py-1 rounded-full text-sm font-semibold"
+                      :class="getElectionTypeClass(election)"
+                    >
+                      {{ getElectionType(election) }}
+                    </span>
+                    <!-- Status Badge -->
+                    <span
+                      :aria-label="`${$t('pages.election.election_card.status')}: ${$t('pages.election.election_card.active')}`"
+                      class="inline-flex px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800"
+                    >
+                      ✅ {{ $t('pages.election.election_card.active') }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Election Card Body -->
+            <div class="px-6 py-6 space-y-4">
+              <!-- Description -->
+              <div v-if="election.description" class="prose prose-sm max-w-none">
+                <p class="text-gray-700">
+                  {{ election.description }}
+                </p>
+              </div>
+
+              <!-- Election Details -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 border-t border-b border-gray-200">
+                <!-- Voting Period -->
+                <div>
+                  <p class="text-sm text-gray-600 font-semibold">
+                    {{ $t('pages.election.select_election.voting_period') }}
+                  </p>
+                  <p class="text-gray-900 mt-1 text-sm">
+                    {{ formatDate(election.start_date) }} <br>
+                    <span class="text-xs text-gray-600">{{ $t('pages.election.election_card.voting_ends') }}</span><br>
+                    <span class="font-semibold">{{ formatDate(election.end_date) }}</span>
+                  </p>
+                </div>
+
+                <!-- Candidates (if available) -->
+                <div>
+                  <p class="text-sm text-gray-600 font-semibold">
+                    {{ $t('pages.election.select_election.candidates') }}
+                  </p>
+                  <p class="text-gray-900 mt-1 text-lg">
+                    {{ getCandidateCount(election) }}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Election Info -->
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <p class="text-sm text-blue-900">
+                  <strong>{{ $t('pages.election.select_election.learn_more') }}</strong>
+                </p>
+                <p class="text-sm text-blue-700 mt-2">
+                  {{ getElectionInfo(election) }}
+                </p>
+              </div>
+
+              <!-- Action Button -->
+              <div class="pt-4">
+                <button
+                  @click="selectElection(election)"
+                  :aria-label="`${$t('pages.election.select_election.select_button')}: ${election.name}`"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {{ $t('pages.election.select_election.select_button') }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- No Elections Message -->
+        <div
+          v-else
+          role="alert"
+          class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center"
+        >
+          <p class="text-lg text-yellow-900 font-semibold">
+            {{ $t('pages.election.select_election.no_elections') }}
+          </p>
+          <p class="text-yellow-700 mt-2">
+            {{ $t('pages.election.messages.selection_required') }}
+          </p>
+          <InertiaLink
+            href="/dashboard"
+            class="mt-4 inline-block bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+          >
+            {{ $t('pages.election.actions.back') }}
+          </InertiaLink>
+        </div>
       </div>
-    </div>
+    </main>
 
-    <!-- Election Selector -->
-    <div v-else-if="elections.length > 0">
-      <ElectionSelector
-        :elections="elections"
-        :initial-selected="initialSelected"
-        @select="handleElectionSelected"
-        @cancel="goBack"
-      />
-    </div>
-
-    <!-- No Elections Available -->
-    <div v-else class="no-elections-container">
-      <div class="no-elections-message">
-        <h3 class="no-elections-title">
-          {{ $t('election.no_elections.title') }}
-        </h3>
-        <p class="no-elections-description">
-          {{ $t('election.no_elections.description') }}
-        </p>
-        <p v-if="userRole === 'admin'" class="admin-hint">
-          {{ $t('election.no_elections.demo_suggestion') }}
-        </p>
-        <button @click="goBack" class="btn-go-back">
-          {{ $t('election.actions.back') }}
-        </button>
-      </div>
-    </div>
+    <!-- Footer -->
+    <PublicDigitFooter />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
-import ElectionSelector from '@/Components/Election/ElectionSelector.vue'
+import { computed } from 'vue'
+import { Link as InertiaLink, usePage } from '@inertiajs/inertia-vue3'
+import ElectionHeader from '@/Components/Header/ElectionHeader.vue'
+import PublicDigitFooter from '@/Jetstream/PublicDigitFooter.vue'
 
-const router = useRouter()
-const { t } = useI18n()
-
-const isLoading = ref(true)
-const error = ref(null)
-const elections = ref([])
-const initialSelected = ref(null)
-
-/**
- * Computed: Get user role from session/auth
- * TODO: Connect to actual auth store
- */
-const userRole = computed(() => {
-  // Placeholder: would connect to auth service
-  return 'user' // or 'admin'
-})
-
-/**
- * Lifecycle: Fetch available elections on mount
- */
-onMounted(async () => {
-  try {
-    isLoading.value = true
-    error.value = null
-
-    // Fetch elections from backend API
-    const response = await fetch('/api/v1/elections', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-
-    if (!response.ok) {
-      throw new Error(`HTTP Error: ${response.status}`)
-    }
-
-    const data = await response.json()
-
-    // Validate response structure
-    if (!Array.isArray(data.data)) {
-      throw new Error('Invalid response format from server')
-    }
-
-    elections.value = data.data
-
-    // Try to load initial selection from session/store
-    // TODO: Connect to actual session/store
-    initialSelected.value = null
-
-  } catch (err) {
-    console.error('Error fetching elections:', err)
-    error.value = t('election.error.failed_to_load')
-  } finally {
-    isLoading.value = false
+const props = defineProps({
+  activeElections: {
+    type: Array,
+    default: () => [],
+    description: 'Array of active elections passed from controller'
+  },
+  authUser: {
+    type: Object,
+    default: null
   }
 })
 
+const page = usePage()
+
 /**
- * Handler: Process election selection
- * @param {Object} election - Selected election
+ * Get CSS class for election border based on type
  */
-const handleElectionSelected = async (election) => {
+const getElectionBorderClass = (election) => {
+  return election.type === 'demo' ? 'border-orange-400' : 'border-blue-400'
+}
+
+/**
+ * Get election type display text with emoji
+ */
+const getElectionType = (election) => {
+  const locale = page.props.locale || 'en'
+
+  if (election.type === 'demo') {
+    const typeText = locale === 'np' ? 'डेमो' : locale === 'de' ? 'Demo' : 'Demo'
+    return `🧪 ${typeText}`
+  }
+  const typeText = locale === 'np' ? 'आधिकारिक' : locale === 'de' ? 'Offiziell' : 'Official'
+  return `🗳️ ${typeText}`
+}
+
+/**
+ * Get CSS class for election type badge
+ */
+const getElectionTypeClass = (election) => {
+  return election.type === 'demo'
+    ? 'bg-orange-100 text-orange-800'
+    : 'bg-blue-100 text-blue-800'
+}
+
+/**
+ * Format date for display based on locale
+ */
+const formatDate = (dateString) => {
+  if (!dateString) return 'N/A'
+
   try {
-    // Send selection to backend to store in session/store
-    const response = await fetch('/api/v1/elections/select', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || ''
-      },
-      body: JSON.stringify({
-        election_id: election.id
-      })
+    const date = new Date(dateString)
+    const locale = page.props.locale || 'en'
+
+    // Select locale code for Intl.DateTimeFormat
+    const localeCode = locale === 'np' ? 'ne-NP' : locale === 'de' ? 'de-DE' : 'en-US'
+
+    return date.toLocaleDateString(localeCode, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZoneName: 'short'
     })
-
-    if (!response.ok) {
-      throw new Error(`Failed to save election selection`)
-    }
-
-    // Redirect to voting page
-    // Route: /vote/create for voting flow
-    await router.push({ name: 'slug.vote.create' })
-
-  } catch (err) {
-    console.error('Error selecting election:', err)
-    error.value = t('election.error.selection_failed')
+  } catch (e) {
+    return dateString
   }
 }
 
 /**
- * Handler: Navigate back to previous page
+ * Get candidate count or placeholder
  */
-const goBack = () => {
-  router.back()
+const getCandidateCount = (election) => {
+  if (election.candidates_count !== undefined) {
+    return election.candidates_count
+  }
+  return '—'
+}
+
+/**
+ * Get election info text based on type and locale
+ */
+const getElectionInfo = (election) => {
+  const locale = page.props.locale || 'en'
+
+  if (election.type === 'demo') {
+    if (locale === 'np') {
+      return 'यो एक डेमो निर्वाचन हो। सबै प्रयोगकर्ताहरू परीक्षण गर्न मतदान गर्न सक्छन्। आफ्नो मत आधिकारिक परिणामहरूमा गणना गरिने छैन।'
+    } else if (locale === 'de') {
+      return 'Dies ist eine Demo-Wahl. Alle Benutzer können abstimmen, um das System zu testen. Ihre Stimmen werden nicht in den offiziellen Ergebnissen gezählt.'
+    }
+    return 'This is a demo election. All users can vote to test the system. Your votes will not be counted in official results.'
+  }
+
+  if (locale === 'np') {
+    return 'यो एक आधिकारिक निर्वाचन हो। केवल योग्य मतदाताहरू मतदान अवधिमा मतदान गर्न सक्छन्।'
+  } else if (locale === 'de') {
+    return 'Dies ist eine offizielle Wahl. Nur berechtigte Wähler können während des Abstimmungszeitraums abstimmen.'
+  }
+  return 'This is an official election. Only eligible voters can participate during the voting period.'
+}
+
+/**
+ * Select an election and redirect to voting code entry page
+ */
+const selectElection = (election) => {
+  // Navigate to the code entry page for the selected election
+  // Using window.location for a full page redirect to ensure server-side logic processes the selection
+  window.location.href = `/code/create/${election.slug}`
 }
 </script>
 
 <style scoped>
-/* Page Container */
-.select-election-page {
-  @apply min-h-screen bg-gray-50;
+/* Ensure focus states are visible for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
-/* Loading State */
-.loading-container {
-  @apply fixed inset-0 flex items-center justify-center bg-white;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  .border-l-4 {
+    border-left-width: 6px;
+  }
 
-.spinner {
-  @apply w-12 h-12 border-4 border-gray-300 border-t-blue-600 rounded-full;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+  button {
+    border: 1px solid currentColor;
   }
 }
 
-.loading-text {
-  @apply text-gray-600 text-lg m-0;
-}
-
-/* Error State */
-.error-container {
-  @apply fixed inset-0 flex items-center justify-center bg-white px-4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.error-message {
-  @apply text-center max-w-md;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
-}
-
-.error-title {
-  @apply text-2xl font-bold text-red-600 m-0;
-}
-
-.error-description {
-  @apply text-gray-600 m-0;
-}
-
-.btn-error-action {
-  @apply px-6 py-2 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-colors duration-200;
-}
-
-/* No Elections State */
-.no-elections-container {
-  @apply fixed inset-0 flex items-center justify-center bg-white px-4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.no-elections-message {
-  @apply text-center max-w-md;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.no-elections-title {
-  @apply text-2xl font-bold text-gray-900 m-0;
-}
-
-.no-elections-description {
-  @apply text-gray-600 m-0;
-}
-
-.admin-hint {
-  @apply text-sm text-blue-600 italic m-0;
-}
-
-.btn-go-back {
-  @apply px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .error-message,
-  .no-elections-message {
-    @apply px-4;
-  }
-
-  .error-title,
-  .no-elections-title {
-    @apply text-xl;
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 </style>

@@ -70,13 +70,13 @@
                                     </span>
                                 </label>
 
-                                <inertia-link
+                                <InertiaLink
                                     v-if="canResetPassword"
                                     :href="route('password.request')"
                                     class="text-sm font-medium text-blue-600 hover:text-blue-700 transition underline"
                                 >
                                     {{ $t('pages.auth.login.links.forgot_password') }}
-                                </inertia-link>
+                                </InertiaLink>
                             </div>
 
                             <!-- Submit Button -->
@@ -118,12 +118,12 @@
                                 <p class="text-sm text-gray-600">
                                     {{ $t('pages.auth.login.messages.register_prompt') }}
                                 </p>
-                                <inertia-link
+                                <InertiaLink
                                     :href="route('register')"
                                     class="inline-flex items-center justify-center px-8 py-3 border border-blue-600 text-sm font-medium rounded-lg text-blue-600 bg-white hover:bg-blue-50 transition duration-200 hover:shadow-md"
                                 >
                                     {{ $t('pages.auth.login.links.register') }}
-                                </inertia-link>
+                                </InertiaLink>
                             </div>
                         </div>
                     </div>
@@ -147,6 +147,7 @@
 </template>
 
 <script>
+import { Link as InertiaLink } from '@inertiajs/inertia-vue3';
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
 import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
 import JetButton from "@/Jetstream/Button";
@@ -157,6 +158,7 @@ import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
     components: {
+        InertiaLink,
         ElectionHeader,
         PublicDigitFooter,
         JetButton,

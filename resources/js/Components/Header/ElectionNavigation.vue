@@ -17,8 +17,7 @@
                             :href="route('dashboard')"
                             :active="route().current('dashboard')"
                         >
-                            Dashboard <br />
-                            ड्यासवोर्ड
+                            {{ $t('pages.election-navigation.primary_navigation.dashboard') }}
                         </jet-nav-link>
                     </div>
                     <!-- Navigation Links -->
@@ -27,8 +26,7 @@
                             :href="route('election.dashboard')"
                             :active="route().current('election.dashboard')"
                         >
-                            Election Page<br />
-                            मतदान पाना
+                            {{ $t('pages.election-navigation.primary_navigation.election_page') }}
                         </jet-nav-link>
                     </div>
                     <!-- next --link -->
@@ -37,8 +35,7 @@
                             :href="route('vote.verify_to_show')"
                             :active="route().current('vote.verify_to_show')"
                         >
-                            Your Vote <br />
-                            तपाइको मत
+                            {{ $t('pages.election-navigation.primary_navigation.your_vote') }}
                         </jet-nav-link>
                     </div>
                     <!-- next --link -->
@@ -47,8 +44,7 @@
                             :href="route('voters.index')"
                             :active="route().current('voters.index')"
                         >
-                            Voter's List<br />
-                            मतदता नामावली
+                            {{ $t('pages.election-navigation.primary_navigation.voters_list') }}
                         </jet-nav-link>
                     </div>
                     <!-- next --link -->
@@ -57,8 +53,7 @@
                             :href="route('users.index')"
                             :active="route().current('users.index')"
                         >
-                            Member's List<br />
-                            सदश्यता नामावली
+                            {{ $t('pages.election-navigation.primary_navigation.members_list') }}
                         </jet-nav-link>
                     </div>
 
@@ -68,22 +63,20 @@
                             :href="'/election/result'"
                             :active="$page.url === '/election/result'"
                         >
-                            Result<br />
-                            परिणाम
+                            {{ $t('pages.election-navigation.primary_navigation.result') }}
                         </jet-nav-link>
                     </div>
                     <!-- next --link -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" v-if="$page.props.user && $page.props.user.id">
                         <!-- {{ $props.user }} -->
                         <jet-nav-link
                             :href="
                                 route('user.show', {
-                                    profile: $page.props.user.user_id,
+                                    profile: $page.props.user.id,
                                 })
                             "
                         >
-                            Personal Profile<br />
-                            व्यक्तिगत बिवरण
+                            {{ $t('pages.election-navigation.primary_navigation.personal_profile') }}
                         </jet-nav-link>
                     </div>
                 </div>
@@ -132,7 +125,7 @@
                                         <div
                                             class="block px-4 py-2 text-xs text-gray-400"
                                         >
-                                            Manage Team
+                                            {{ $t('pages.election-navigation.team_management.section_label') }}
                                         </div>
 
                                         <!-- Team Settings -->
@@ -145,7 +138,7 @@
                                                 )
                                             "
                                         >
-                                            Team Settings
+                                            {{ $t('pages.election-navigation.team_management.team_settings') }}
                                         </jet-dropdown-link>
 
                                         <jet-dropdown-link
@@ -155,7 +148,7 @@
                                                     .canCreateTeams
                                             "
                                         >
-                                            Create New Team
+                                            {{ $t('pages.election-navigation.team_management.create_new_team') }}
                                         </jet-dropdown-link>
 
                                         <div
@@ -166,7 +159,7 @@
                                         <div
                                             class="block px-4 py-2 text-xs text-gray-400"
                                         >
-                                            Switch Teams
+                                            {{ $t('pages.election-navigation.team_management.switch_teams_label') }}
                                         </div>
 
                                         <template
@@ -262,20 +255,20 @@
                                 <div
                                     class="block px-4 py-2 text-xs text-gray-400"
                                 >
-                                    Manage Account
+                                    {{ $t('pages.election-navigation.account_management.section_label') }}
                                 </div>
 
                                 <jet-dropdown-link
                                     :href="route('profile.show')"
                                 >
-                                    Profile
+                                    {{ $t('pages.election-navigation.account_management.profile') }}
                                 </jet-dropdown-link>
 
                                 <jet-dropdown-link
                                     :href="route('api-tokens.index')"
                                     v-if="$page.props.jetstream.hasApiFeatures"
                                 >
-                                    API Tokens
+                                    {{ $t('pages.election-navigation.account_management.api_tokens') }}
                                 </jet-dropdown-link>
 
                                 <div class="border-t border-gray-100"></div>
@@ -283,7 +276,7 @@
                                 <!-- Authentication -->
                                 <form @submit.prevent="logout">
                                     <jet-dropdown-link as="button">
-                                        Log Out
+                                        {{ $t('pages.election-navigation.account_management.logout') }}
                                     </jet-dropdown-link>
                                 </form>
                             </template>
@@ -345,7 +338,7 @@
                     :href="route('dashboard')"
                     :active="route().current('dashboard')"
                 >
-                    Dashboard
+                    {{ $t('pages.election-navigation.primary_navigation.dashboard') }}
                 </jet-responsive-nav-link>
             </div>
 
@@ -378,7 +371,7 @@
                         :href="route('profile.show')"
                         :active="route().current('profile.show')"
                     >
-                        Profile
+                        {{ $t('pages.election-navigation.account_management.profile') }}
                     </jet-responsive-nav-link>
 
                     <jet-responsive-nav-link
@@ -386,13 +379,13 @@
                         :active="route().current('api-tokens.index')"
                         v-if="$page.props.jetstream.hasApiFeatures"
                     >
-                        API Tokens
+                        {{ $t('pages.election-navigation.account_management.api_tokens') }}
                     </jet-responsive-nav-link>
 
                     <!-- Authentication -->
                     <form method="POST" @submit.prevent="logout">
                         <jet-responsive-nav-link as="button">
-                            Log Out
+                            {{ $t('pages.election-navigation.account_management.logout') }}
                         </jet-responsive-nav-link>
                     </form>
 
@@ -401,7 +394,7 @@
                         <div class="border-t border-gray-200"></div>
 
                         <div class="block px-4 py-2 text-xs text-gray-400">
-                            Manage Team
+                            {{ $t('pages.election-navigation.team_management.section_label') }}
                         </div>
 
                         <!-- Team Settings -->
@@ -414,7 +407,7 @@
                             "
                             :active="route().current('teams.show')"
                         >
-                            Team Settings
+                            {{ $t('pages.election-navigation.team_management.team_settings') }}
                         </jet-responsive-nav-link>
 
                         <jet-responsive-nav-link
@@ -422,14 +415,14 @@
                             :active="route().current('teams.create')"
                             v-if="$page.props.jetstream.canCreateTeams"
                         >
-                            Create New Team
+                            {{ $t('pages.election-navigation.team_management.create_new_team') }}
                         </jet-responsive-nav-link>
 
                         <div class="border-t border-gray-200"></div>
 
                         <!-- Team Switcher -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
-                            Switch Teams
+                            {{ $t('pages.election-navigation.team_management.switch_teams_label') }}
                         </div>
 
                         <template

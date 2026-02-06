@@ -32,12 +32,12 @@
             </li>
             <!-- personal page  -->
             <li>
-                <div v-if="$page.props.user" class="sm:-my-px sm:ml-10 sm:flex">
+                <div v-if="$page.props.user && $page.props.user.id" class="sm:-my-px sm:ml-10 sm:flex">
                     <!-- {{ $props.user }} -->
                     <jet-nav-link
                         :href="
                             route('user.show', {
-                                profile: $page.props.user.user_id,
+                                profile: $page.props.user.id,
                             })
                         "
                     >

@@ -1,8 +1,7 @@
 <template>
     <div class="min-h-screen flex flex-col">
         <!-- Header - sticks to top -->
-        <public-digit-header :canRegister="canRegister" :canLogin="canLogin">
-        </public-digit-header>
+        <election-header :isLoggedIn="true"></election-header>
         <navigation></navigation>
         
         <!-- Main content - grows to fill space -->
@@ -15,8 +14,8 @@
     </div>
 </template>
 <script>
-import PublicDigitHeader from "@/Jetstream/PublicDigitHeader.vue";
-import profileHeader from "@/Jetstream/ProfileHeader"; 
+import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
+import profileHeader from "@/Jetstream/ProfileHeader";
 import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
 import Navigation from "@/Components/Header/ElectionNavigation.vue";
 export default {
@@ -32,7 +31,7 @@ export default {
         };
     },
     components: {
-        PublicDigitHeader,
+        ElectionHeader,
         profileHeader,
         PublicDigitFooter,
         Navigation,

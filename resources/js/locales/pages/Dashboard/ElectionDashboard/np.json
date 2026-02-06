@@ -1,0 +1,83 @@
+{
+  "page_meta": {
+    "title": "निर्वाचन केन्द्र",
+    "description": "डायस्पोरा मतदान को लागि निर्वाचन ड्यासबोर्ड"
+  },
+  "primary_actions": {
+    "section_title": "मुख्य कार्यहरू"
+  },
+  "start_button": {
+    "text": "यहाँ क्लिक गरेर शुरू गर्नुहोस्"
+  },
+  "system_info": {
+    "title": "प्रणाली जानकारी",
+    "ip_label": "क्लायन्ट आईपी ठेगाना",
+    "user_label": "प्रमाणीकृत प्रयोगकर्ता",
+    "email_icon_alt": "ईमेल पता"
+  },
+  "voting_section": {
+    "title": "मतदान गर्नुहोस्",
+    "title_view": "आफ्नो मत हेर्नुहोस्",
+    "title_unavailable": "मतदान अनुपलब्ध",
+    "title_inactive": "मतदान अवधि निष्क्रिय",
+    "continue": "मतदान जारी राख्नुहोस्",
+    "already_voted": "तपाईंले मतदान गरिसक्नुभएको छ",
+    "period_not_started": "मतदान अवधि सुरु भएको छैन वा समाप्त भएको छ",
+    "not_available": "मतदान गर्न सकिने अवस्था छैन",
+    "session_active": "तपाईंको मतदान सत्र सक्रिय छ",
+    "click_to_vote": "यहाँ क्लिक गरेर मतदान गर्नुहोस्",
+    "time_remaining_label": "समय बाँकी",
+    "minutes_label": "मिनेट",
+    "access_available": "पहुँच उपलब्ध",
+    "access_unavailable": "पहुँच अनुपलब्ध",
+    "error_title_default": "मतदान अनुपलब्ध",
+    "error_not_registered_title": "तपाईं मतदाता को रुपमा दर्ता भएको छैन",
+    "error_not_registered_msg": "निर्वाचनमा भाग लिन, तपाईं पहिले मतदाता को रुपमा दर्ता हुनुपर्छ। कृपया निर्वाचन समितिसँग सम्पर्क गर्नुहोस्।",
+    "error_approval_pending_title": "तपाईंको मतदाता स्थिति अनुमोदनको पर्खमा छ",
+    "error_approval_pending_msg": "तपाईंको मतदाता आवेदन प्राप्त भएको छ। निर्वाचन समितिले अनुमोदन गरेपछि, तपाईं मतदान गर्न सक्षम हुनुहुनेछ।",
+    "period_inactive_title": "⏱️ मतदान अवधि सक्रिय छैन",
+    "period_inactive_msg1": "तपाईं मतदान गर्न योग्य हुनुहुन्छ, तर मतदान अवधि अझै सुरु भएको छैन।",
+    "period_inactive_msg2": "• यो बटन निर्वाचन प्रशासकले मतदान सुरु गरेपछि सक्रिय हुनेछ"
+  },
+  "results_section": {
+    "title": "चुनाव परिणाम",
+    "available": "परिणाम उपलब्ध",
+    "unavailable": "🔒 परिणाम अनुपलब्ध",
+    "not_published_title": "परिणाम अझै उपलब्ध छैन",
+    "not_published_msg": "यो लिङ्क निर्वाचन सम्पन्न भएपछि सक्रिय हुनेछ।"
+  },
+  "candidate_info": {
+    "section_title": "उम्मेदवार सम्बन्धी जानकारी",
+    "posts_title": "उम्मेदवारीका पदहरूको सूची",
+    "list_title": "उम्मेदवार नामावली",
+    "form_title": "उम्मेदवारी फारम"
+  },
+  "voter_info": {
+    "section_title": "मतदाता सम्बन्धी जानकारी",
+    "list_title": "मतदाताहरूको नामावली",
+    "your_vote_title": "तपाईंको मत",
+    "members_title": "नमावली दर्ता गरेका सदस्यहरू"
+  },
+  "admin_functions": {
+    "section_title": "प्रशासनिक कार्यहरू",
+    "committee_title": "निर्वाचन कमिटी",
+    "general_info_title": "सामान्य जानकारी"
+  },
+  "help_section": {
+    "title": "सहायता चाहिएको छ?",
+    "description": "यदि तपाईंलाई कुनै सहायता चाहिएको छ भने, कृपया सम्पर्क गर्नुहोस्।",
+    "contact_button": "📞 सम्पर्क गर्नुहोस्",
+    "guide_button": "📖 प्रयोगकर्ता निर्देशिका"
+  },
+  "aria_labels": {
+    "skip_to_content": "मुख्य सामग्रीमा जानुहोस्",
+    "main_content": "निर्वाचन ड्यासबोर्ड मुख्य सामग्री",
+    "primary_actions": "मुख्य कार्यहरू",
+    "voting_available": "मतदान उपलब्ध - मतदान शुरू गर्न क्लिक गर्नुहोस्",
+    "voting_unavailable": "मतदान अनुपलब्ध",
+    "your_vote_link": "आफ्नो मत हेर्नुहोस्",
+    "results_available": "चुनाव परिणाम उपलब्ध - हेर्न क्लिक गर्नुहोस्",
+    "results_unavailable": "चुनाव परिणाम अझै प्रकाशित भएको छैन",
+    "page_loaded": "निर्वाचन केन्द्र लोड भएको"
+  }
+}

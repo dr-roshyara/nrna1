@@ -1,156 +1,211 @@
 {
-  "election": {
-    "title": "Wahl auswählen",
-    "subtitle": "Wählen Sie eine Wahl aus, an der Sie teilnehmen möchten",
-    "description": "Wählen Sie die Wahl aus, an der Sie abstimmen möchten. Sie können an Demo-Wahlen zum Testen oder an offiziellen Wahlen zum Abstimmen teilnehmen.",
+  "title": "Wahl auswählen",
+  "subtitle": "Wählen Sie eine Wahl aus, an der Sie teilnehmen möchten",
+  "description": "Wählen Sie die Wahl aus, an der Sie abstimmen möchten. Sie können an Demo-Wahlen zum Testen oder an offiziellen Wahlen zum Abstimmen teilnehmen.",
 
-    "selector": {
-      "label": "Wahl auswählen",
-      "placeholder": "Wählen Sie eine Wahl...",
-      "no_elections": "Zurzeit sind keine Wahlen verfügbar",
-      "search_placeholder": "Wahlen nach Name durchsuchen..."
-    },
+  "selector": {
+    "label": "Wahl auswählen",
+    "placeholder": "Wählen Sie eine Wahl...",
+    "no_elections": "Zurzeit sind keine Wahlen verfügbar",
+    "search_placeholder": "Wahlen nach Name durchsuchen..."
+  },
 
-    "demo_badge": {
-      "text": "DEMO",
-      "tooltip": "Demo-Wahl - Sicher zum Testen",
-      "description": "Dies ist eine Demo-Wahl. Alle Benutzer können teilnehmen, um das Abstimmungssystem zu testen."
-    },
+  "demo_badge": {
+    "text": "DEMO",
+    "tooltip": "Demo-Wahl - Sicher zum Testen",
+    "description": "Dies ist eine Demo-Wahl. Alle Benutzer können teilnehmen, um das Abstimmungssystem zu testen."
+  },
 
-    "official_badge": {
-      "text": "OFFIZIELL",
-      "tooltip": "Offizielle Wahl",
-      "description": "Dies ist eine offizielle Wahl. Nur berechtigte Wähler können teilnehmen."
-    },
+  "official_badge": {
+    "text": "OFFIZIELL",
+    "tooltip": "Offizielle Wahl",
+    "description": "Dies ist eine offizielle Wahl. Nur berechtigte Wähler können teilnehmen."
+  },
 
-    "election_card": {
-      "active": "Aktiv",
-      "inactive": "Inaktiv",
-      "voting_ends": "Abstimmung endet: {date}",
-      "voting_starts": "Abstimmung beginnt: {date}",
-      "status": "Status: {status}",
-      "type": "Typ: {type}",
-      "select_button": "Diese Wahl auswählen",
-      "current_selection": "Aktuell ausgewählt",
-      "no_date_range": "Kein Zeitraum festgelegt",
-      "voting_period": "Abstimmungszeitraum: {start} - {end}"
-    },
+  "election_card": {
+    "active": "Aktiv",
+    "inactive": "Inaktiv",
+    "voting_ends": "Abstimmung endet: {date}",
+    "voting_starts": "Abstimmung beginnt: {date}",
+    "status": "Status: {status}",
+    "type": "Typ: {type}",
+    "select_button": "Diese Wahl auswählen",
+    "current_selection": "Aktuell ausgewählt",
+    "no_date_range": "Kein Zeitraum festgelegt",
+    "voting_period": "Abstimmungszeitraum: {start} - {end}"
+  },
 
-    "election_details": {
-      "name": "Wahlname",
-      "type": "Wahltyp",
-      "status": "Status",
-      "voting_period": "Abstimmungszeitraum",
-      "start_time": "Startzeit",
-      "end_time": "Endzeit",
-      "description": "Beschreibung",
-      "eligibility": "Wer darf abstimmen"
-    },
+  "election_details": {
+    "name": "Wahlname",
+    "type": "Wahltyp",
+    "status": "Status",
+    "voting_period": "Abstimmungszeitraum",
+    "start_time": "Startzeit",
+    "end_time": "Endzeit",
+    "description": "Beschreibung",
+    "eligibility": "Wer darf abstimmen"
+  },
 
-    "eligibility": {
-      "demo": "Alle Benutzer können bei Demo-Wahlen abstimmen (zum Testen)",
-      "real": "Nur Benutzer mit Stimmberechtigungsberechtigung während des berechtigten Zeitfensters können abstimmen",
-      "check_status": "Überprüfen Sie Ihren Abstimmungsstatus"
+  "eligibility": {
+    "demo": "Alle Benutzer können bei Demo-Wahlen abstimmen (zum Testen)",
+    "real": "Nur Benutzer mit Stimmberechtigungsberechtigung während des berechtigten Zeitfensters können abstimmen",
+    "check_status": "Überprüfen Sie Ihren Abstimmungsstatus"
+  },
+
+  "actions": {
+    "select": "Wahl auswählen",
+    "cancel": "Abbrechen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "confirm": "Auswahl bestätigen",
+    "change": "Wahl ändern"
+  },
+
+  "messages": {
+    "selected": "Wahl erfolgreich ausgewählt",
+    "selection_required": "Bitte wählen Sie eine Wahl aus, um fortzufahren",
+    "not_eligible": "Sie sind nicht berechtigt, an dieser Wahl teilzunehmen",
+    "election_inactive": "Diese Wahl ist derzeit nicht aktiv",
+    "election_not_found": "Wahl nicht gefunden",
+    "voting_not_started": "Die Abstimmung für diese Wahl hat noch nicht begonnen",
+    "voting_ended": "Die Abstimmung für diese Wahl ist beendet",
+    "already_voted": "Sie haben bereits bei dieser Wahl abgestimmt"
+  },
+
+  "demo_mode_notice": {
+    "title": "Sie befinden sich im DEMO-Modus",
+    "message": "Dies ist eine Demo-Wahl zum Testen des Abstimmungssystems. Ihre Stimmen zählen nicht zu den offiziellen Ergebnissen.",
+    "warning": "Demo-Daten können jederzeit zum Testen zurückgesetzt werden.",
+    "aria_label": "Demo-Modus-Warnung: Dies ist eine Demonstrationswahl"
+  },
+
+  "dashboard": {
+    "title": "Wahlverwaltung",
+    "statistics": "Abstimmungsstatistiken",
+    "real_elections": "Offizielle Wahlen",
+    "demo_elections": "Demo-Wahlen",
+
+    "stats": {
+      "total_votes": "Abgegebene Stimmen insgesamt",
+      "total_codes": "Insgesamt gesendete Codes",
+      "verified_codes": "Bestätigte Codes",
+      "turnout_percentage": "Wahlbeteiligung %",
+      "demo_votes": "Demo-Stimmen",
+      "real_votes": "Offizielle Stimmen"
     },
 
     "actions": {
-      "select": "Wahl auswählen",
-      "cancel": "Abbrechen",
-      "back": "Zurück",
-      "next": "Weiter",
-      "confirm": "Auswahl bestätigen",
-      "change": "Wahl ändern"
+      "view_details": "Details anzeigen",
+      "view_results": "Ergebnisse anzeigen",
+      "manage": "Verwalten",
+      "cleanup_demo": "Demo-Daten bereinigen",
+      "reset_demo": "Demo-Wahl zurücksetzen"
     },
 
-    "messages": {
-      "selected": "Wahl erfolgreich ausgewählt",
-      "selection_required": "Bitte wählen Sie eine Wahl aus, um fortzufahren",
-      "not_eligible": "Sie sind nicht berechtigt, an dieser Wahl teilzunehmen",
-      "election_inactive": "Diese Wahl ist derzeit nicht aktiv",
-      "election_not_found": "Wahl nicht gefunden",
-      "voting_not_started": "Die Abstimmung für diese Wahl hat noch nicht begonnen",
-      "voting_ended": "Die Abstimmung für diese Wahl ist beendet",
-      "already_voted": "Sie haben bereits bei dieser Wahl abgestimmt"
+    "cleanup": {
+      "title": "Demo-Daten bereinigen",
+      "message": "Dies löscht alle Demo-Abstimmungsdaten, die älter als 30 Tage sind",
+      "confirm": "Sind Sie sicher?",
+      "success": "Demo-Daten erfolgreich bereinigt",
+      "error": "Fehler beim Bereinigen der Demo-Daten"
     },
 
-    "demo_mode_notice": {
-      "title": "Sie befinden sich im DEMO-Modus",
-      "message": "Dies ist eine Demo-Wahl zum Testen des Abstimmungssystems. Ihre Stimmen zählen nicht zu den offiziellen Ergebnissen.",
-      "warning": "Demo-Daten können jederzeit zum Testen zurückgesetzt werden.",
-      "aria_label": "Demo-Modus-Warnung: Dies ist eine Demonstrationswahl"
-    },
-
-    "dashboard": {
-      "title": "Wahlverwaltung",
-      "statistics": "Abstimmungsstatistiken",
-      "real_elections": "Offizielle Wahlen",
-      "demo_elections": "Demo-Wahlen",
-
-      "stats": {
-        "total_votes": "Abgegebene Stimmen insgesamt",
-        "total_codes": "Insgesamt gesendete Codes",
-        "verified_codes": "Bestätigte Codes",
-        "turnout_percentage": "Wahlbeteiligung %",
-        "demo_votes": "Demo-Stimmen",
-        "real_votes": "Offizielle Stimmen"
-      },
-
-      "actions": {
-        "view_details": "Details anzeigen",
-        "view_results": "Ergebnisse anzeigen",
-        "manage": "Verwalten",
-        "cleanup_demo": "Demo-Daten bereinigen",
-        "reset_demo": "Demo-Wahl zurücksetzen"
-      },
-
-      "cleanup": {
-        "title": "Demo-Daten bereinigen",
-        "message": "Dies löscht alle Demo-Abstimmungsdaten, die älter als 30 Tage sind",
-        "confirm": "Sind Sie sicher?",
-        "success": "Demo-Daten erfolgreich bereinigt",
-        "error": "Fehler beim Bereinigen der Demo-Daten"
-      },
-
-      "reset": {
-        "title": "Demo-Wahl zurücksetzen",
-        "message": "Dies löscht ALLE Demo-Abstimmungsdaten für diese Wahl. Diese Aktion kann nicht rückgängig gemacht werden.",
-        "confirm": "Geben Sie 'RESET' ein, um zu bestätigen",
-        "success": "Demo-Wahl erfolgreich zurückgesetzt",
-        "error": "Fehler beim Zurücksetzen der Demo-Wahl"
-      }
-    },
-
-    "breadcrumb": {
-      "elections": "Wahlen",
-      "select": "Wahl auswählen",
-      "voting": "Abstimmung"
-    },
-
-    "help": {
-      "demo_vs_official": "Was ist der Unterschied zwischen Demo- und offiziellen Wahlen?",
-      "demo_explanation": "Demo-Wahlen dienen zum Testen des Abstimmungssystems. Alle Benutzer können abstimmen, und die Daten sind von offiziellen Wahlen getrennt.",
-      "official_explanation": "Offizielle Wahlen werden für echte Abstimmungen verwendet. Nur berechtigte Benutzer können während des Abstimmungszeitraums abstimmen.",
-      "how_to_select": "Wie wähle ich eine Wahl aus?",
-      "selection_explanation": "Klicken Sie auf 'Wahl auswählen', um zu wählen, an welcher Wahl Sie teilnehmen möchten. Sie können jeweils nur an einer Wahl teilnehmen.",
-      "change_election": "Kann ich meine Wahlauswahl ändern?",
-      "change_explanation": "Ja, Sie können Ihre Auswahl jederzeit ändern, indem Sie auf 'Wahl ändern' klicken, bevor Sie Ihre Abstimmung einreichen."
-    },
-
-    "current_step_label": "Schritt {step} von {total}",
-
-    "types": {
-      "demo": "Demo",
-      "real": "Echt",
-      "demo_full": "Demonstrationswahl",
-      "real_full": "Echte Wahl"
-    },
-
-    "loading": "Wahlen werden geladen...",
-
-    "error": {
-      "title": "Fehler beim Laden von Wahlen",
-      "failed_to_load": "Verfügbare Wahlen konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
-      "selection_failed": "Ihre Wahlauswahl konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+    "reset": {
+      "title": "Demo-Wahl zurücksetzen",
+      "message": "Dies löscht ALLE Demo-Abstimmungsdaten für diese Wahl. Diese Aktion kann nicht rückgängig gemacht werden.",
+      "confirm": "Geben Sie 'RESET' ein, um zu bestätigen",
+      "success": "Demo-Wahl erfolgreich zurückgesetzt",
+      "error": "Fehler beim Zurücksetzen der Demo-Wahl"
     }
+  },
+
+  "breadcrumb": {
+    "elections": "Wahlen",
+    "select": "Wahl auswählen",
+    "voting": "Abstimmung"
+  },
+
+  "help": {
+    "demo_vs_official": "Was ist der Unterschied zwischen Demo- und offiziellen Wahlen?",
+    "demo_explanation": "Demo-Wahlen dienen zum Testen des Abstimmungssystems. Alle Benutzer können abstimmen, und die Daten sind von offiziellen Wahlen getrennt.",
+    "official_explanation": "Offizielle Wahlen werden für echte Abstimmungen verwendet. Nur berechtigte Benutzer können während des Abstimmungszeitraums abstimmen.",
+    "how_to_select": "Wie wähle ich eine Wahl aus?",
+    "selection_explanation": "Klicken Sie auf 'Wahl auswählen', um zu wählen, an welcher Wahl Sie teilnehmen möchten. Sie können jeweils nur an einer Wahl teilnehmen.",
+    "change_election": "Kann ich meine Wahlauswahl ändern?",
+    "change_explanation": "Ja, Sie können Ihre Auswahl jederzeit ändern, indem Sie auf 'Wahl ändern' klicken, bevor Sie Ihre Abstimmung einreichen."
+  },
+
+  "current_step_label": "Schritt {step} von {total}",
+
+  "types": {
+    "demo": "Demo",
+    "real": "Echt",
+    "demo_full": "Demonstrationswahl",
+    "real_full": "Echte Wahl"
+  },
+
+  "loading": "Wahlen werden geladen...",
+
+  "error": {
+    "title": "Fehler beim Laden von Wahlen",
+    "failed_to_load": "Verfügbare Wahlen konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
+    "selection_failed": "Ihre Wahlauswahl konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+  },
+
+  "select_election": {
+    "title": "Wahl auswählen",
+    "heading": "Mehrere Wahlen aktiv",
+    "subtitle": "Wählen Sie die Wahl aus, an der Sie teilnehmen möchten",
+    "instructions": "Wählen Sie eine der aktiven Wahlen unten aus, um Ihre Abstimmungs reise zu beginnen",
+    "no_elections": "Derzeit keine aktiven Wahlen",
+    "select_button": "Diese Wahl auswählen",
+    "voting_period": "Abstimmungszeitraum",
+    "candidates": "Kandidaten",
+    "description": "Beschreibung",
+    "learn_more": "Weitere Informationen zu dieser Wahl"
+  },
+
+  "voting_page": {
+    "title": "Aktive Wahl - Abstimmungsseite",
+    "status_active": "Die Abstimmung läuft gerade",
+    "time_remaining": "Verbleibende Zeit",
+    "details": "Wahldetails",
+    "election_type": "Wahltyp",
+    "voting_period": "Abstimmungszeitraum",
+    "description": "Beschreibung",
+    "voting_instructions": "Abstimmungsanleitung",
+    "step1": "Geben Sie Ihren Verifizierungscode ein",
+    "step2": "Lesen Sie die Wahlbedingungen und stimmen Sie ihnen zu",
+    "step3": "Wählen Sie Ihre Kandidaten",
+    "step4": "Überprüfen Sie Ihre Auswahl",
+    "step5": "Reichen Sie Ihre Stimme ein",
+    "secure": "Sicher & Anonym",
+    "secure_desc": "Ihre Stimme ist verschlüsselt und anonym. Keine Wählerverfolgung.",
+    "verified": "Verifiziert & Geprüft",
+    "verified_desc": "Alle Wahlen werden geprüft und die Ergebnisse sind überprüfbar.",
+    "global": "Globaler Zugang",
+    "global_desc": "Stimmen Sie von überall auf der Welt ab, jederzeit während des Abstimmungszeitraums.",
+    "start_voting": "Jetzt abstimmen",
+    "need_help": "Benötigen Sie Hilfe?",
+    "help_desc": "Wenn Sie Fragen zum Abstimmungsprozess haben, wenden Sie sich bitte an den Wahlausschuss.",
+    "contact_support": "Kontakt zum Support",
+    "important_notes": "Wichtige Regeln",
+    "note1": "Sie können nur einmal in dieser Wahl abstimmen",
+    "note2": "Der Abstimmungszeitraum endet um",
+    "note3": "Halten Sie Ihren Verifizierungscode sicher",
+    "demo": "Demowahl",
+    "real": "Offizielle Wahl",
+    "already_voted": "Sie haben bereits in dieser Wahl abgestimmt",
+    "not_eligible": "Sie sind nicht berechtigt, zu diesem Zeitpunkt abzustimmen",
+    "voter_status": "Ihr Wählerstatus",
+    "verified_voter": "Verifizierten Wähler",
+    "voting_from": "Abstimmung von",
+    "important_rules": "Wichtige Regeln",
+    "rule_no_share": "Geben Sie Ihren Verifizierungscode nicht weiter",
+    "rule_one_vote": "Die Abstimmung kann nur einmal erfolgen",
+    "rule_no_change": "Stimmen können nach der Einreichung nicht geändert werden",
+    "rule_deadline": "Die Abstimmung endet genau um",
+    "timezone": "Zeitzone",
+    "location_not_detected": "Standort nicht erkannt"
   }
 }

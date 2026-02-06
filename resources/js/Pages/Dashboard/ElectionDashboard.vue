@@ -1,50 +1,37 @@
 <template>
     <election-layout>
-        <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <!-- Page Header -->
-                <header class="text-center mb-12">
-                    <h1 class="text-4xl font-bold text-gray-900 mb-3">
-                        निर्वाचन केन्द्र
-                    </h1>
-                    <p class="text-xl text-gray-600 mb-4">Election Center</p>
-                    <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
-                </header>
-                <!-- Temporary debug info - remove after testing -->
+        <!-- ACCESSIBILITY: Skip link -->
+        <a href="#main-content" class="skip-link">
+            {{ $t('pages.election-dashboard.aria_labels.skip_to_content') }}
+        </a>
 
+        <main id="main-content" role="main" :aria-label="$t('pages.election-dashboard.aria_labels.main_content')" class="min-h-screen bg-gradient-to-br from-blue-100 via-white to-indigo-100 py-8">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <!-- Primary Actions Section -->
-                <section class="mb-16" aria-labelledby="primary-actions">
+                <section class="mb-16" aria-labelledby="primary-actions" role="region">
                     <h2 id="primary-actions" class="text-3xl font-semibold text-gray-900 text-center mb-10">
-                        मुख्य कार्यहरू | Main Actions
+                        {{ $t('pages.election-dashboard.primary_actions.section_title') }}
                     </h2>
-                        <div class="flex justify-center mb-6">
+                    <div class="flex justify-center mb-6">
                         <a v-if="showStartButton"
                             href="/dashboard"
                             class="inline-flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-bold rounded-lg shadow-lg animate-bounce hover:animate-none transition-all duration-300"
                         >
                             <span class="mr-2">▶️</span>
-                            यहाँ क्लिक गरेर शुरू गर्नुहोस् | Start clicing here 
+                            {{ $t('pages.election-dashboard.start_button.text') }}
                         </a>
                     </div>
-                        <!-- <div v-if="true" class="p-4 bg-gray-100 text-xs">
-                        Debug: {{ debugVotingStatus }}
-                    </div> -->
-                    <!-- Add this temporarily to see which user is logged in -->
-                    <!-- <div class="p-4 bg-yellow-100 text-xs">
-                        Logged in as: {{ authUser?.id }} ({{ authUser?.name }})
-                        Expected: 2908 (Demo 1 NRNA Germany)
-                    </div>
-                     -->
-                    <div class="max-w-md mx-auto mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl shadow-lg overflow-hidden">
+
+                    <div class="max-w-md mx-auto mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl shadow-lg overflow-hidden" role="region" aria-labelledby="system-info-title">
                         <div class="bg-blue-600 px-6 py-3">
                             <div class="flex items-center justify-center text-white">
-                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
                                 </svg>
-                                <span class="font-semibold text-sm uppercase tracking-wide">System Information</span>
+                                <span id="system-info-title" class="font-semibold text-sm uppercase tracking-wide">{{ $t('pages.election-dashboard.system_info.title') }}</span>
                             </div>
                         </div>
-                        
+
                         <div class="px-6 py-4 space-y-3">
                             <!-- IP Address Section -->
                             <div class="flex items-start">
@@ -54,11 +41,11 @@
                                     </svg>
                                 </div>
                                 <div class="ml-3">
-                                    <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Client IP Address</p>
+                                    <p class="text-xs font-medium text-gray-700 uppercase tracking-wide">{{ $t('pages.election-dashboard.system_info.ip_label') }}</p>
                                     <p class="text-sm font-bold text-gray-900 font-mono">{{ ipAddress }}</p>
                                 </div>
                             </div>
-                            
+
                             <!-- User Info Section -->
                             <div class="flex items-start">
                                 <div class="flex-shrink-0 mt-1">
@@ -67,30 +54,29 @@
                                     </svg>
                                 </div>
                                 <div class="ml-3">
-                                    <p class="text-xs font-medium text-gray-500 uppercase tracking-wide">Authenticated User</p>
+                                    <p class="text-xs font-medium text-gray-700 uppercase tracking-wide">{{ $t('pages.election-dashboard.system_info.user_label') }}</p>
                                     <p class="text-sm font-semibold text-gray-900">
-                                        
-                                        {{ authUser?.name }} 
-                                        <span class="text-xs text-gray-800 font-medium">(ID: {{ authUser?.id }})</span>
+                                        {{ authUser?.name }}
+                                        <span class="text-xs text-gray-900 font-medium">(ID: {{ authUser?.id }})</span>
                                     </p>
                                 </div>
-                                	
                             </div>
                             <!-- User Email with Icon -->
-                                    <div class="flex items-center mt-1">
-                                        <svg class="w-3 h-3 text-gray-400 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                                        </svg>
-                                        <span class="text-xs text-gray-600">{{ authUser?.email }}</span>
-                                    </div>
-
+                            <div class="flex items-center mt-1">
+                                <svg class="w-3 h-3 text-gray-500 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                </svg>
+                                <span class="text-xs text-gray-700" :aria-label="$t('pages.election-dashboard.system_info.email_icon_alt')">{{ authUser?.email }}</span>
+                            </div>
                         </div>
-                    </div>                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                        <!-- 🗳️ VOTING SECTION - FIXED DISPLAY -->
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+                        <!-- 🗳️ VOTING SECTION -->
                         <div class="relative w-full">
                             <!-- Voting Button/Card -->
-                            <component 
+                            <component
                                 :is="canAccessVoting ? 'a' : 'div'"
                                 :href="canAccessVoting ? votingLink : undefined"
                                 :class="votingCardClasses"
@@ -99,116 +85,111 @@
                                 @click="handleVotingClick"
                                 @keydown.enter="handleVotingClick"
                                 @keydown.space.prevent="handleVotingClick"
+                                class="group"
                             >
-                                <div class="relative z-10 w-full">
+                                <div class="relative z-10 w-full h-full min-h-[400px] flex flex-col justify-center">
                                     <!-- Voting Icon -->
                                     <div class="flex items-center justify-center mb-6">
-                                        <div class="bg-white/20 rounded-full p-6">
-                                            <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 24 24">
+                                        <div class="bg-white/30 rounded-full p-6 group-hover:bg-white/40 transition-colors duration-300">
+                                            <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                                 <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 2h2v10h-2V5zm-2 4h2v6H9V9zm6-2h2v8h-2V7z"/>
                                             </svg>
                                         </div>
                                     </div>
-                                    
+
                                     <!-- Voting Title & Description -->
                                     <h3 class="text-3xl font-bold text-center mb-3 text-white">{{ votingTitle }}</h3>
-                                    <p class="text-xl text-center opacity-90 mb-2 text-white">{{ votingSubtitle }}</p>
-                                    <p class="text-sm text-center opacity-75 text-white mb-4">{{ votingDescription }}</p>
-                                    
+                                    <p class="text-lg text-center text-white/95 mb-2 font-medium">{{ votingSubtitle }}</p>
+                                    <p class="text-sm text-center text-white/80 mb-4">{{ votingDescription }}</p>
+
                                     <!-- Session Timer (if active) -->
-                                    <div v-if="showVotingTimer" class="mt-4 text-center">
-                                        <div class="bg-white/20 rounded-lg p-3">
-                                            <p class="text-sm font-semibold text-white">समय बाँकी | Time Remaining</p>
-                                            <p class="text-lg font-bold text-white">{{ votingTimeRemaining }} मिनेट | minutes</p>
+                                    <div v-if="showVotingTimer" class="mt-4 text-center" aria-live="polite" aria-atomic="true">
+                                        <div class="bg-white/30 rounded-lg p-3 backdrop-blur-sm">
+                                            <p class="text-sm font-semibold text-white">{{ $t('pages.election-dashboard.voting_section.time_remaining_label') }}</p>
+                                            <p class="text-lg font-bold text-white">{{ votingTimeRemaining }} {{ $t('pages.election-dashboard.voting_section.minutes_label') }}</p>
                                         </div>
                                     </div>
-                                    
+
                                     <!-- Access Status Indicator -->
                                     <div class="mt-4 text-center">
-                                        <span v-if="canAccessVoting" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/20 text-white">
-                                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <span v-if="canAccessVoting" class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white text-blue-800 shadow-lg">
+                                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                                             </svg>
-                                            पहुँच उपलब्ध | Access Available
+                                            {{ $t('pages.election-dashboard.voting_section.access_available') }}
                                         </span>
-                                        <span v-else class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/20 text-white">
-                                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <span v-else class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-red-600 text-white">
+                                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
                                             </svg>
-                                            पहुँच अनुपलब्ध | Access Unavailable
+                                            {{ $t('pages.election-dashboard.voting_section.access_unavailable') }}
                                         </span>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Hover effect overlay -->
                                 <div :class="canAccessVoting ? 'absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors duration-300' : ''"></div>
                             </component>
-                            
-                            <!-- 🚨 ERROR MESSAGE - ONLY SHOWN WHEN ACCESS IS DENIED -->
+
+                            <!-- 🚨 ERROR MESSAGE -->
                             <div v-if="!canAccessVoting && ballotAccess" class="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl">
                                 <div class="flex items-start">
                                     <svg class="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
                                     </svg>
                                     <div class="text-sm">
-                                        <p class="font-semibold text-red-800 mb-1">{{ ballotAccess.error_title || 'मतदान अनुपलब्ध | Voting Unavailable' }}</p>
-                                        <p v-if="ballotAccess.error_message_nepali" class="text-red-700 mb-1">{{ ballotAccess.error_message_nepali }}</p>
-                                        <p v-if="ballotAccess.error_message_english" class="text-red-700">{{ ballotAccess.error_message_english }}</p>
-
-                                        <!-- Additional helpful info -->
-                                        <div class="mt-2 text-xs text-red-600 space-y-1">
-                                            <p v-if="!authUser?.is_voter">• You are not registered as a voter</p>
-                                            <p v-if="authUser?.is_voter && !authUser?.can_vote">• Your voter status is pending approval</p>
-                                        </div>
+                                        <p class="font-semibold text-red-800 mb-1">
+                                            {{ getErrorTitle() }}
+                                        </p>
+                                        <p class="text-red-700">
+                                            {{ getErrorMessage() }}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 🔒 VOTING PERIOD INACTIVE MESSAGE - SHOWN WHEN USER IS ELIGIBLE BUT VOTING PERIOD IS INACTIVE -->
+                            <!-- 🔒 VOTING PERIOD INACTIVE MESSAGE -->
                             <div v-if="!canAccessVoting && ballotAccess?.can_access && !electionStatus?.voting_period_active && !votingStatus?.has_voted" class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-xl">
                                 <div class="flex items-start">
                                     <svg class="w-5 h-5 text-yellow-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                     </svg>
                                     <div class="text-sm">
-                                        <p class="font-semibold text-yellow-800 mb-1">⏱️ मतदान अवधि सक्रिय छैन | Voting Period Not Active</p>
-                                        <p class="text-yellow-700 mb-1">तपाईं मतदान गर्न योग्य हुनुहुन्छ तर मतदान अवधि अझै सुरु भएको छैन।</p>
-                                        <p class="text-yellow-700">You are eligible to vote, but the voting period has not started yet.</p>
+                                        <p class="font-semibold text-yellow-800 mb-1">{{ $t('pages.election-dashboard.voting_section.period_inactive_title') }}</p>
+                                        <p class="text-yellow-700 mb-1">{{ $t('pages.election-dashboard.voting_section.period_inactive_msg1') }}</p>
 
                                         <!-- Additional helpful info -->
                                         <div class="mt-2 text-xs text-yellow-600">
-                                            <p>• निर्वाचन प्रशासकले मतदान सुरु गरेपछि यो बटन सक्रिय हुनेछ</p>
-                                            <p>• This button will become active when voting is started by election administrators</p>
+                                            <p>{{ $t('pages.election-dashboard.voting_section.period_inactive_msg2') }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Election Results - Controlled by backend -->
+                        <!-- Election Results -->
                         <div class="relative w-full">
                             <component
                                 :is="electionStatus.results_published ? 'a' : 'div'"
                                 :href="electionStatus.results_published ? getResultsRoute() : undefined"
                                 :class="resultsCardClasses"
+                                class="group"
                             >
-                                <div class="relative z-10 w-full">
+                                <div class="relative z-10 w-full h-full min-h-[400px] flex flex-col justify-center">
                                     <div class="flex items-center justify-center mb-6">
-                                        <div class="bg-white/20 rounded-full p-8">
-                                            <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 24 24">
+                                        <div class="bg-white/30 rounded-full p-6 group-hover:bg-white/40 transition-colors duration-300">
+                                            <svg class="w-14 h-14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                                 <path d="M16,11V3H8v6H2v12h20V11H16z M10,5h4v14h-4V5z M4,11h4v8H4V11z M20,19h-4v-6h4V19z"/>
                                             </svg>
-                                           <div class="text-center mx-auto text-xxl">🔒 </div> 
                                         </div>
                                     </div>
-                                    <h3 class="text-3xl font-bold text-center mb-3 text-white">चुनाव परिणाम</h3>
-                                    <p class="text-xl text-center opacity-90 mb-2 text-white">Election Results</p>
-                                    <p class="text-sm text-center opacity-75 text-white">
-                                        {{ electionStatus.results_published ? 'परिणाम उपलब्ध | Results Available' : '🔒  परिणाम अनुपलब्ध | Results Unavailable' }}
+                                    <h3 class="text-3xl font-bold text-center mb-3 text-white">{{ $t('pages.election-dashboard.results_section.title') }}</h3>
+                                    <p class="text-sm text-center text-white/80">
+                                        {{ electionStatus.results_published ? $t('pages.election-dashboard.results_section.available') : $t('pages.election-dashboard.results_section.unavailable') }}
                                     </p>
                                 </div>
                             </component>
-                            
+
                             <!-- Results Status Message -->
                             <div v-if="!electionStatus.results_published" class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-xl">
                                 <div class="flex items-start">
@@ -216,8 +197,8 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                     </svg>
                                     <div class="text-sm">
-                                        <p class="font-semibold text-yellow-800 mb-1">परिणाम अझै उपलब्ध छैन | Results Not Available</p>
-                                        <p class="text-yellow-700">निर्वाचन सम्पन्न भएपछि यो लिंक सक्रिय हुनेछ। This link will be active after the election is completed.</p>
+                                        <p class="font-semibold text-yellow-800 mb-1">{{ $t('pages.election-dashboard.results_section.not_published_title') }}</p>
+                                        <p class="text-yellow-700">{{ $t('pages.election-dashboard.results_section.not_published_msg') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -226,15 +207,15 @@
                 </section>
 
                 <!-- Candidate Information Section -->
-                <section class="mb-16" aria-labelledby="candidate-info">
+                <section class="mb-16" aria-labelledby="candidate-info" role="region">
                     <h2 id="candidate-info" class="text-3xl font-semibold text-gray-900 text-center mb-10">
-                        उम्मेदवार सम्बन्धी जानकारी | Candidate Information
+                        {{ $t('pages.election-dashboard.candidate_info.section_title') }}
                     </h2>
-                    
+
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <!-- Candidacy Posts -->
-                        <a 
-                            href="posts/index" 
+                        <a
+                            href="posts/index"
                             class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-blue-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200"
                         >
                             <div class="text-center">
@@ -243,14 +224,13 @@
                                         <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">उम्मेदवारीका पदहरू</h3>
-                                <p class="text-gray-600">List of Candidacy Posts</p>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.candidate_info.posts_title') }}</h3>
                             </div>
                         </a>
 
                         <!-- Candidacy List -->
-                        <a 
-                            href="candidacies/index" 
+                        <a
+                            href="candidacies/index"
                             class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-purple-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-200"
                         >
                             <div class="text-center">
@@ -259,14 +239,13 @@
                                         <path d="M12,2A3,3 0 0,1 15,5A3,3 0 0,1 12,8A3,3 0 0,1 9,5A3,3 0 0,1 12,2M21,9V7H15L13.5,7.5C13.1,7.4 12.6,7.5 12,7.5C11.4,7.5 10.9,7.4 10.5,7.5L9,7H3V9H9L10.5,9.5C10.9,9.6 11.4,9.5 12,9.5C12.6,9.5 13.1,9.6 13.5,9.5L15,9H21M12,10.5C11.2,10.5 10.5,11.2 10.5,12C10.5,12.8 11.2,13.5 12,13.5C12.8,13.5 13.5,12.8 13.5,12C13.5,11.2 12.8,10.5 12,10.5Z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">उम्मेदवारहरूको नामावली</h3>
-                                <p class="text-gray-600">Candidacy List</p>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.candidate_info.list_title') }}</h3>
                             </div>
                         </a>
 
                         <!-- Candidacy Form -->
-                        <a 
-                            href="candidacy/create" 
+                        <a
+                            href="candidacy/create"
                             class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-orange-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-200"
                         >
                             <div class="text-center">
@@ -275,23 +254,22 @@
                                         <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">उम्मेदवारी फारम</h3>
-                                <p class="text-gray-600">Candidacy Form</p>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.candidate_info.form_title') }}</h3>
                             </div>
                         </a>
                     </div>
                 </section>
 
                 <!-- Voter Information Section -->
-                <section class="mb-16" aria-labelledby="voter-info">
+                <section class="mb-16" aria-labelledby="voter-info" role="region">
                     <h2 id="voter-info" class="text-3xl font-semibold text-gray-900 text-center mb-10">
-                        मतदाता सम्बन्धी जानकारी | Voter Information
+                        {{ $t('pages.election-dashboard.voter_info.section_title') }}
                     </h2>
-                    
+
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <!-- Voter List -->
-                        <a 
-                            href="voters" 
+                        <a
+                            href="voters"
                             class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-indigo-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-200"
                         >
                             <div class="text-center">
@@ -300,14 +278,13 @@
                                         <path d="M16,4C16.88,4 17.67,4.84 17.67,5.84C17.67,6.84 16.88,7.68 16,7.68C15.12,7.68 14.33,6.84 14.33,5.84C14.33,4.84 15.12,4 16,4M16,8.48C18.67,8.48 20.33,10.5 20.33,12.85C20.33,15.2 18.67,17.22 16,17.22C13.33,17.22 11.67,15.2 11.67,12.85C11.67,10.5 13.33,8.48 16,8.48M16,9.68C14.12,9.68 12.67,11.04 12.67,12.85C12.67,14.66 14.12,16 16,16C17.88,16 19.33,14.66 19.33,12.85C19.33,11.04 17.88,9.68 16,9.68Z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">मतदाताहरूको नामावली</h3>
-                                <p class="text-gray-600">Voter List</p>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.voter_info.list_title') }}</h3>
                             </div>
                         </a>
 
                         <!-- Your Vote -->
-                        <a 
-                            href="vote/verify_to_show" 
+                        <a
+                            href="vote/verify_to_show"
                             class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-teal-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-teal-200"
                         >
                             <div class="text-center">
@@ -316,14 +293,13 @@
                                         <path d="M10,17L5,12L6.41,10.59L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">तपाईंको मत</h3>
-                                <p class="text-gray-600">Your Vote</p>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.voter_info.your_vote_title') }}</h3>
                             </div>
                         </a>
 
                         <!-- NRNA Members -->
-                        <a 
-                            href="users/index" 
+                        <a
+                            href="users/index"
                             class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-rose-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-rose-200"
                         >
                             <div class="text-center">
@@ -332,23 +308,22 @@
                                         <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2M4 18v-6h3v7H5.5c-.83 0-1.5-.67-1.5-1.5M22 22H10v-1h12v1M13.5 12.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5M5.5 6h2c.83 0 1.5.67 1.5 1.5V9H7v6H5V7.5C5 6.67 5.67 6 6.5 6"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3"> नमावली दर्ता गरेका सदस्यहरू</h3>
-                                <p class="text-gray-600">Registered Member List</p>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.voter_info.members_title') }}</h3>
                             </div>
                         </a>
                     </div>
                 </section>
 
                 <!-- Administrative Section -->
-                <section class="mb-16" aria-labelledby="admin-functions">
+                <section class="mb-16" aria-labelledby="admin-functions" role="region">
                     <h2 id="admin-functions" class="text-3xl font-semibold text-gray-900 text-center mb-10">
-                        प्रशासनिक कार्यहरू | Administrative Functions
+                        {{ $t('pages.election-dashboard.admin_functions.section_title') }}
                     </h2>
-                    
+
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <!-- Election Committee -->
-                        <a 
-                            href="election/committee" 
+                        <a
+                            href="election/committee"
                             class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-gray-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-gray-200"
                         >
                             <div class="flex items-center">
@@ -358,15 +333,14 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">निर्वाचन कमिटी</h3>
-                                    <p class="text-gray-600 text-lg">Election Committee</p>
+                                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">{{ $t('pages.election-dashboard.admin_functions.committee_title') }}</h3>
                                 </div>
                             </div>
                         </a>
 
                         <!-- General Information -->
-                        <a 
-                            href="#" 
+                        <a
+                            href="#"
                             class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-yellow-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-200"
                         >
                             <div class="flex items-center">
@@ -376,8 +350,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">सामान्य जानकारी</h3>
-                                    <p class="text-gray-600 text-lg">General Information</p>
+                                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">{{ $t('pages.election-dashboard.admin_functions.general_info_title') }}</h3>
                                 </div>
                             </div>
                         </a>
@@ -385,30 +358,29 @@
                 </section>
 
                 <!-- Help Section -->
-                <section class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-12 text-center border border-blue-100">
+                <section class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-12 text-center border border-blue-100" aria-label="Help and Support">
                     <div class="max-w-3xl mx-auto">
                         <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-8">
                             <svg class="w-10 h-10 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,10.27 15.45,11.4 14.59,12.26L15.07,11.25M13,19H11V17H13V19Z"/>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">सहायता चाहिएको छ? | Need Help?</h3>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">{{ $t('pages.election-dashboard.help_section.title') }}</h3>
                         <p class="text-gray-700 mb-8 text-lg leading-relaxed">
-                            यदि तपाईंलाई कुनै सहायता चाहिएको छ भने, कृपया सम्पर्क गर्नुहोस्।<br>
-                            If you need any assistance, please contact us.
+                            {{ $t('pages.election-dashboard.help_section.description') }}
                         </p>
                         <div class="flex flex-col sm:flex-row gap-6 justify-center">
                             <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg">
-                                📞 सम्पर्क गर्नुहोस् | Contact Us
+                                {{ $t('pages.election-dashboard.help_section.contact_button') }}
                             </button>
                             <button class="bg-white hover:bg-blue-50 text-blue-600 border-2 border-blue-600 font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg">
-                                📖 निर्देशिका | User Guide
+                                {{ $t('pages.election-dashboard.help_section.guide_button') }}
                             </button>
                         </div>
                     </div>
                 </section>
             </div>
-        </div>
+        </main>
     </election-layout>
 </template>
 
@@ -419,13 +391,13 @@ export default {
     components: {
         ElectionLayout,
     },
-    
+
     props: {
         authUser: {
             type: Object,
             default: () => null
         },
-        ipAddress: '', 
+        ipAddress: '',
         ballotAccess: {
             type: [Object, null],
             default: () => null
@@ -444,11 +416,14 @@ export default {
         useSlugPath: {
             type: Boolean,
             default: false
+        },
+        realElectionSlug: {
+            type: String,
+            default: null
         }
     },
-    
+
     computed: {
-        // Add this to computed properties in ElectionDashboard.vue
         debugVotingStatus() {
             return {
                 has_ballot_access: this.canAccessVoting,
@@ -457,30 +432,22 @@ export default {
                 can_vote_now_per_code: this.votingStatus?.can_vote_now,
                 determined_link: this.votingLink
             };
-            
-
         },
 
         showStartButton() {
-                const noAuthUser = this.authUser === undefined || this.authUser === null;
-                const noIpAddress = this.ipAddress === null || this.ipAddress === '';
-                const noUserEmail = !this.authUser?.email;
+            const noAuthUser = this.authUser === undefined || this.authUser === null;
+            const noIpAddress = this.ipAddress === null || this.ipAddress === '';
+            const noUserEmail = !this.authUser?.email;
 
-                if (noAuthUser || noIpAddress || noUserEmail) {
-                    return true;
-                }
-                if (this.$page.url === '/election'){
-                    return true;
-                }
-                return false;
-            },
+            if (noAuthUser || noIpAddress || noUserEmail) {
+                return true;
+            }
+            if (this.$page.url === '/election'){
+                return true;
+            }
+            return false;
+        },
 
-        /**
-         * ✅ ROBUST: Check if user can access voting
-         * Users can access voting in two scenarios:
-         * 1. They can vote (all conditions met + voting period active)
-         * 2. They have already voted (can view their vote regardless of voting period)
-         */
         canAccessVoting() {
             if (!this.ballotAccess || typeof this.ballotAccess !== 'object') {
                 return false;
@@ -489,205 +456,162 @@ export default {
             const canAccess = this.ballotAccess.can_access;
             let hasAccess = false;
 
-            // Handle different data types for can_access
             if (typeof canAccess === 'boolean') hasAccess = canAccess;
             if (typeof canAccess === 'string') hasAccess = canAccess === 'true' || canAccess === '1';
             if (typeof canAccess === 'number') hasAccess = canAccess === 1;
 
             if (!hasAccess) {
-                // Special case: If user has voted, they can still view their vote
-                // even if voting period is inactive
                 if (this.votingStatus?.has_voted) {
                     return true;
                 }
                 return false;
             }
 
-            // User has access - now check if it's for voting or viewing
-            // If user has already voted, they can always access (to view vote)
             if (this.votingStatus?.has_voted) {
                 return true;
             }
 
-            // For new voting, check if voting period is active
             if (!this.electionStatus?.voting_period_active) {
                 return false;
             }
 
             return true;
         },
-        
-        /**
-         * ✅ IMPROVED: Dynamic CSS classes for voting card
-         */
+
         votingCardClasses() {
             const baseClasses = 'group relative overflow-hidden rounded-3xl p-10 text-white shadow-2xl transition-all duration-300 w-full min-h-[400px] flex flex-col justify-center';
-            
+
             if (this.canAccessVoting) {
                 return `${baseClasses} bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-700 hover:via-blue-800 hover:to-indigo-800 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-300`;
             } else {
                 return `${baseClasses} bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
             }
         },
-        
-        /**
-         * ✅ IMPROVED: Dynamic CSS classes for results card  
-         */
+
         resultsCardClasses() {
             const baseClasses = 'group relative overflow-hidden rounded-3xl p-10 text-white shadow-2xl transition-all duration-300 w-full min-h-[400px] flex flex-col justify-center';
-            
+
             if (this.electionStatus.results_published) {
                 return `${baseClasses} bg-gradient-to-br from-green-600 via-green-700 to-emerald-700 hover:from-green-700 hover:via-green-800 hover:to-emerald-800 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-4 focus:ring-green-300`;
             } else {
                 return `${baseClasses} bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
             }
         },
-        
-        /**
-         * ✅ Determine the appropriate voting link with conditional slug-based routing
-         */
+
         votingLink() {
             if (!this.canAccessVoting) return '#';
 
-            // If user has voted, go to vote verification (this remains the same)
             if (this.votingStatus?.has_voted) {
                 console.log("vote/verify_to_show")
                 return this.route ? this.route('vote.verify_to_show') : 'vote/verify_to_show';
             }
 
-            // Check if slug-based routing is enabled
-            if (this.useSlugPath) {
-                // For active voting or new voting sessions, redirect to slug generation
-                // The backend will handle generating the slug and redirecting to the appropriate step
-                console.log("Generate voting slug and start voting")
-                return this.route ? this.route('voter.start') : '/voter/start';
+            if (this.useSlugPath && this.realElectionSlug) {
+                console.log("Start voting with slug:", this.realElectionSlug)
+                return this.route ? this.route('slug.code.create', { vslug: this.realElectionSlug }) : `/v/${this.realElectionSlug}/code/create`;
+            } else if (this.realElectionSlug) {
+                console.log("Start voting with slug (fallback):", this.realElectionSlug)
+                return this.route ? this.route('slug.code.create', { vslug: this.realElectionSlug }) : `/v/${this.realElectionSlug}/code/create`;
             } else {
-                // Use traditional non-slug routing
-                console.log("Start voting without slug")
-                return this.route ? this.route('code.create') : '/code/create';
+                console.log("No election slug available")
+                return '#';
             }
         },
-        
-        /**
-         * Dynamic voting title based on status
-         */
+
         votingTitle() {
             if (this.votingStatus?.has_voted) {
-                return 'आफ्नो मत हेर्नुहोस्';
+                return this.$t('pages.election-dashboard.voting_section.title_view');
             }
 
             if (!this.canAccessVoting) {
-                // Check if it's because voting period is inactive
                 if (this.ballotAccess?.can_access && !this.electionStatus?.voting_period_active) {
-                    return 'मतदान अवधि निष्क्रिय';
+                    return this.$t('pages.election-dashboard.voting_section.title_inactive');
                 }
-                return 'मतदान अनुपलब्ध';
+                return this.$t('pages.election-dashboard.voting_section.title_unavailable');
             }
 
             if (this.votingStatus?.can_vote_now) {
-                return 'मतदान जारी राख्नुहोस्';
+                return this.$t('pages.election-dashboard.voting_section.continue');
             }
 
-            return 'मतदान गर्नुहोस्';
+            return this.$t('pages.election-dashboard.voting_section.title');
         },
-        
-        /**
-         * Dynamic voting subtitle
-         */
+
         votingSubtitle() {
             if (this.votingStatus?.has_voted) {
-                return 'View Your Vote';
+                return this.$t('pages.election-dashboard.voting_section.title_view');
             }
 
             if (!this.canAccessVoting) {
-                // Check if it's because voting period is inactive
                 if (this.ballotAccess?.can_access && !this.electionStatus?.voting_period_active) {
-                    return 'Voting Period Inactive';
+                    return this.$t('pages.election-dashboard.voting_section.title_inactive');
                 }
-                return 'Voting Unavailable';
+                return this.$t('pages.election-dashboard.voting_section.title_unavailable');
             }
 
             if (this.votingStatus?.can_vote_now) {
-                return 'Continue Voting';
+                return this.$t('pages.election-dashboard.voting_section.continue');
             }
 
-            return 'Vote Here';
+            return this.$t('pages.election-dashboard.voting_section.title');
         },
-        
-        /**
-         * Dynamic voting description
-         */
+
         votingDescription() {
             if (this.votingStatus?.has_voted) {
-                return 'तपाईंले मतदान गरिसक्नुभएको छ';
+                return this.$t('pages.election-dashboard.voting_section.already_voted');
             }
 
             if (!this.canAccessVoting) {
-                // Check if it's because voting period is inactive
                 if (this.ballotAccess?.can_access && !this.electionStatus?.voting_period_active) {
-                    return 'मतदान अवधि सुरु भएको छैन वा समाप्त भएको छ';
+                    return this.$t('pages.election-dashboard.voting_section.period_not_started');
                 }
-                return 'मतदान गर्न सकिने अवस्था छैन';
+                return this.$t('pages.election-dashboard.voting_section.not_available');
             }
 
             if (this.votingStatus?.can_vote_now) {
-                return 'तपाईंको मतदान सत्र सक्रिय छ';
+                return this.$t('pages.election-dashboard.voting_section.session_active');
             }
 
-            return 'यहाँ क्लिक गरेर मतदान गर्नुहोस्';
+            return this.$t('pages.election-dashboard.voting_section.click_to_vote');
         },
-        
-        /**
-         * ARIA label for voting section
-         */
+
         votingAriaLabel() {
             if (!this.canAccessVoting) {
-                return 'मतदान अनुपलब्ध - Voting not available';
+                return this.$t('pages.election-dashboard.aria_labels.voting_unavailable');
             }
-            
+
             if (this.votingStatus?.has_voted) {
-                return 'आफ्नो मत हेर्नुहोस् - View your vote';
+                return this.$t('pages.election-dashboard.aria_labels.your_vote_link');
             }
-            
-            return 'मतदान गर्नुहोस् - Click to vote';
+
+            return this.$t('pages.election-dashboard.aria_labels.voting_available');
         },
-        
-        /**
-         * Show voting timer condition
-         */
+
         showVotingTimer() {
-            return this.votingStatus && 
-                   this.votingStatus.can_vote_now && 
+            return this.votingStatus &&
+                   this.votingStatus.can_vote_now &&
                    this.votingStatus.voting_time_remaining > 0;
         },
-        
-        /**
-         * Formatted voting time remaining
-         */
+
         votingTimeRemaining() {
             return this.votingStatus?.voting_time_remaining || 0;
         }
     },
-    
+
     mounted() {
         this.setupAccessibility();
-        
-        // Auto-refresh timer if voting session is active
+
         if (this.showVotingTimer) {
             this.startSessionTimer();
         }
     },
-    
+
     methods: {
-        /**
-         * ✅ Handle voting card clicks with better UX
-         */
         handleVotingClick(event) {
             if (!this.canAccessVoting) {
                 event.preventDefault();
                 event.stopPropagation();
-                
-                // Show helpful feedback by highlighting error message
+
                 this.$nextTick(() => {
                     const errorDiv = document.querySelector('.bg-red-50');
                     if (errorDiv) {
@@ -698,36 +622,29 @@ export default {
                         }, 3000);
                     }
                 });
-                
+
                 return false;
             }
-            
-            // For keyboard events, navigate programmatically
+
             if (event.type === 'keydown' && this.votingLink && this.votingLink !== '#') {
                 window.location.href = this.votingLink;
             }
         },
-        
-        /**
-         * Setup accessibility features
-         */
+
         setupAccessibility() {
             const announcement = document.createElement('div');
             announcement.setAttribute('aria-live', 'polite');
             announcement.className = 'sr-only';
-            announcement.textContent = 'निर्वाचन केन्द्र लोड भयो। Election Center loaded.';
+            announcement.textContent = this.$t('pages.election-dashboard.aria_labels.page_loaded');
             document.body.appendChild(announcement);
-            
+
             setTimeout(() => {
                 if (document.body.contains(announcement)) {
                     document.body.removeChild(announcement);
                 }
             }, 1000);
         },
-        
-        /**
-         * Start session timer for active voting sessions
-         */
+
         startSessionTimer() {
             setInterval(() => {
                 if (this.votingStatus && this.votingStatus.voting_time_remaining > 0) {
@@ -737,10 +654,7 @@ export default {
                 }
             }, 60000);
         },
-        
-        /**
-         * Helper method for route generation
-         */
+
         route(name) {
             if (typeof route !== 'undefined') {
                 return route(name);
@@ -748,22 +662,45 @@ export default {
             return name;
         },
 
-        /**
-         * Safe method to get results route - avoid Ziggy route helper entirely
-         */
         getResultsRoute() {
-            // Don't use route() helper at all to avoid Ziggy errors
-            // Use direct URL path based on publication status
             if (this.electionStatus && this.electionStatus.results_published) {
                 return '/election/result';
             }
             return '#';
+        },
+
+        getErrorTitle() {
+            // Use translation-based error title based on user status
+            if (!this.authUser?.is_voter) {
+                return this.$t('pages.election-dashboard.voting_section.error_not_registered_title');
+            }
+            if (this.authUser?.is_voter && !this.authUser?.can_vote) {
+                return this.$t('pages.election-dashboard.voting_section.error_approval_pending_title');
+            }
+            // Fallback to backend error title or default
+            return this.ballotAccess.error_title || this.$t('pages.election-dashboard.voting_section.error_title_default');
+        },
+
+        getErrorMessage() {
+            // Use translation-based error message based on user status
+            if (!this.authUser?.is_voter) {
+                return this.$t('pages.election-dashboard.voting_section.error_not_registered_msg');
+            }
+            if (this.authUser?.is_voter && !this.authUser?.can_vote) {
+                return this.$t('pages.election-dashboard.voting_section.error_approval_pending_msg');
+            }
+            // Fallback to backend error messages
+            if (this.ballotAccess.error_message_nepali && this.ballotAccess.error_message_english) {
+                return `${this.ballotAccess.error_message_nepali} / ${this.ballotAccess.error_message_english}`;
+            }
+            return this.ballotAccess.error_message_nepali || this.ballotAccess.error_message_english || '';
         }
     }
 };
 </script>
 
 <style scoped>
+/* Screen Reader Only */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -776,7 +713,33 @@ export default {
     border: 0;
 }
 
-/* Improved focus styles */
+/* Skip Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #2563eb;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Enhanced focus styles for WCAG AA compliance */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
 .focus\:ring-4:focus {
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5);
 }
@@ -792,7 +755,7 @@ export default {
     .transition-colors {
         transition: none !important;
     }
-    
+
     .transform,
     .hover\:scale-105:hover {
         transform: none !important;
@@ -835,5 +798,67 @@ export default {
 /* Ensure cards are properly sized */
 .relative.w-full {
     width: 100%;
+}
+
+/* Enhanced card styling and hover effects */
+.group {
+    position: relative;
+}
+
+/* Smooth transitions for all interactive elements */
+a[class*="hover\:shadow"],
+button[class*="hover\:shadow"],
+a[class*="hover\:bg"],
+button[class*="hover\:bg"] {
+    transition: all 300ms ease-in-out;
+}
+
+/* Improve focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+    .min-h-\[400px\] {
+        min-height: 320px;
+    }
+
+    .text-3xl {
+        font-size: 1.875rem;
+    }
+
+    .px-10 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .py-8 {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+/* Ensure button hover states are consistent */
+button:hover,
+a[href]:hover {
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Improve backdrop blur for timer */
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+}
+
+/* Card shadow improvements */
+.shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.hover\:shadow-xl:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
 }
 </style>

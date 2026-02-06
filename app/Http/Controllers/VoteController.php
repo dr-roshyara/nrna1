@@ -151,124 +151,7 @@ class VoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create1()
-    {
-        $auth_user      =auth()->user();
-        $code           =$auth_user->code;
-        // dd($code->is_code1_usable); 
-
-        //$tfValue= is_url_only_after_first('code/create','/vote/create');
-        // if(!$tfValue){
-        //     /****
-        //      * 
-        //      * Go to dash board again 
-        //      * 
-        //      * 
-        //      **/ 
-        //     return redirect()->route('code/create');
-        // }
-   
-        
-         $can_vote_now   =$code->can_vote_now;
-         $code           =$auth_user->code;
-         if($code){
-            $has_voted      = $code->has_voted;
-            //  dd($code->is_code1_usable); 
-            //  $this->vote_pre_check($code);
-             $return_to =$this->vote_pre_check($code);
-           
-            if($return_to!=""){
-                if($return_to=='404'){
-                    abort(404);
-                } 
-                return redirect()->route($return_to);
-             }
-             
-         }else{
-             return redirect()->route('dashboard');
-         }
-       
-       
-        // dd($code->is_code1_usable); 
-        /***
-         * Now check if the code 1 is usable or not 
-         * 
-         */
-        
-          
-        
-        $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
-            $query->where(function ($query) use ($value) {
-                $query->where('candidacy_id', 'LIKE', "%{$value}%");
-                // $query->where('itemId', "{$value}");
-                // ->orWhere('warehouseId', 'LIKE', "%{$value}%");
-            });
-        });
-        
-        // $candidacies = QueryBuilder::for(Candidacy::class)
-        $national_posts = QueryBuilder::for(Post::with('candidates.user'))
-        ->defaultSort('post_id')
-        // ->allowedSorts(['name', 'is_national_wide', 'state_name', 'required_number'])
-        ->where ('is_national_wide',1)
-        ->paginate(250) 
-        ->withQueryString();
-        //regional posts
-        $regional_posts = QueryBuilder::for(Post::with('candidates.user'))
-                        ->defaultSort('post_id')
-                        ->where ('is_national_wide',0)
-                        ->where('state_name', trim(auth()->user()->region))
-                        ->paginate(250) 
-                        ->withQueryString();
-          
-        
-        // $candidacies =Candidacy::where('post_id', "2021_36")->first();
-        // $candidacies =Candidacy::all()->get(['post_id','candidacy_id','image_path_1']);
-        $candidacies = QueryBuilder::for(Candidacy::Class)
-        ->defaultSort('post_id')
-        ->allowedSorts(['is_national_wide', 'state_name', 'required_number'])
-        ->paginate(150) 
-        ->withQueryString();
-        
-       
-      
-              
-        $btemp          = $can_vote_now && !$has_voted;
-        // $btemp          =$btemp & ($totalDuration<$voting_time);
-       
-        // dd($btemp);
-         if(!$can_vote_now){
-            echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-                    You are not elegible to vote . Please first ask the administrators to keep you in the voter lists!
-                    तपाइकाे नाम मतदाता  नामावलीमा समावेस गरिएको छैन। 
-                    </div>';
-             
-            return (404);
-        }
-         if($has_voted){
-                 echo '<div style="margin:auto; color:red; padding:20px; font-weight:bold; text-align:center;"> 
-                You have already voted! Please check your Vote </div>';
-                abort(404);
-               return (404);
-             } 
-            //  dd($candidacies);
-     if($btemp){   
-        return Inertia::render('Vote/CreateNew', [
-            //    "presidents" => $presidents,
-            //    "vicepresidents" => $vicepresidents, 
-                "national_posts" =>$national_posts,
-                "regional_posts" =>$regional_posts,                                
-                'user_name'=>$auth_user->name,
-                'user_id'=>$auth_user->id,
-                'user_region'=>$auth_user->region,
-                // 'user_lcc'=>$lcc 
-                
-            ]); 
-        }else{
-            return redirect()->route('vote.verify_to_show');
-        } 
-        //    {name: "Hari Bahadur", photo: "test1.png",  post: ["President", "अद्यक्ष"], id:"hari", checked: false, disabled: false },
-  
-    }     
+     
 
 
 
@@ -298,7 +181,11 @@ public function create(Request $request)
             'can_vote_now' => $auth_user->can_vote_now,
         ]);
 
-        return redirect()->route('dashboard')
+        // Redirect to appropriate dashboard (with or without slug)
+        $route = $voterSlug ? 'slug.dashboard' : 'dashboard';
+        $params = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+        return redirect()->route($route, $params)
             ->with('error', 'You are not eligible to vote in this election.');
     }
 
@@ -308,7 +195,11 @@ public function create(Request $request)
         ->first();
 
     if (!$code) {
-        return redirect()->route('slug.code.create')
+        // Redirect to appropriate code creation page (with or without slug)
+        $route = $voterSlug ? 'slug.code.create' : 'code.create';
+        $params = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+        return redirect()->route($route, $params)
             ->with('error', 'Please verify your code first.');
     }
 
@@ -671,7 +562,11 @@ public function second_submission(Request $request)
         // Basic authentication check
         if (!$auth_user) {
             Log::error('Second submission attempted without authentication');
-            return redirect()->route('dashboard')
+            $voterSlug = $request->attributes->get('voter_slug');
+            $route = $voterSlug ? 'slug.dashboard' : 'dashboard';
+            $params = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+            return redirect()->route($route, $params)
                 ->withErrors(['auth' => 'Authentication required. Please log in again.']);
         }
 
@@ -736,7 +631,11 @@ public function second_submission(Request $request)
         // Enhanced eligibility verification
         $eligibility_errors = $this->validateVotingEligibility($auth_user, $code);
         if (!empty($eligibility_errors)) {
-            return redirect()->route('dashboard')
+            $voterSlug = $request->attributes->get('voter_slug');
+            $route = $voterSlug ? 'slug.dashboard' : 'dashboard';
+            $params = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+
+            return redirect()->route($route, $params)
                 ->withErrors($eligibility_errors);
         }
 

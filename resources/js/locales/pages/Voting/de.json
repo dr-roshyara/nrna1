@@ -1,0 +1,106 @@
+{
+  "header": {
+    "title": "Geben Sie Ihre Stimme ab",
+    "verified_badge": "Code Bestätigt",
+    "subtitle": "Willkommen, {name}. Ihr Code wurde bestätigt und Sie können jetzt abstimmen."
+  },
+  "voter_info": {
+    "label": "Wählername"
+  },
+  "region_info": {
+    "label": "Region",
+    "national": "National"
+  },
+  "progress_info": {
+    "label": "Getätigte Auswahl"
+  },
+  "progress": {
+    "step_1": "Code Bestätigt",
+    "step_2": "Stimme Abgeben",
+    "step_3": "Bestätigung Einreichen"
+  },
+  "national_posts": {
+    "section_title": "Nationale Positionen",
+    "post_label": "Nationale Position"
+  },
+  "regional_posts": {
+    "section_title": "Regionale Positionen in {region}",
+    "post_label": "Regionale Position"
+  },
+  "summary": {
+    "title": "Zusammenfassung Ihrer Stimme"
+  },
+  "validation": {
+    "title": "Bitte überprüfen Sie Ihre Auswahl"
+  },
+  "agreement": {
+    "section_title": "Endgültige Bestätigung",
+    "section_subtitle": "Überprüfen Sie die Vereinbarung vor dem Einreichen Ihrer Stimme",
+    "intro_text": "Durch das Einreichen dieser Stimme bestätigen Sie, dass:",
+    "key_conditions": "Vereinbarungsbedingungen",
+    "condition_1": "Sie die Kandidaten Ihrer Wahl korrekt ausgewählt haben",
+    "condition_2": "Sie verstehen, dass dies eine verbindliche Stimme ist",
+    "condition_3": "Sie alle Abstimmungsregeln und -bestimmungen gelesen und akzeptiert haben",
+    "condition_4": "Sie nicht versuchen werden, diese Stimme nach der Einreichung zu ändern oder zurückzuziehen",
+    "checkbox_label": "Ich bestätige und akzeptiere die Bedingungen",
+    "checkbox_description": "Ich stimme den oben genannten Bedingungen zu und bestätige, dass meine Stimmabgabe korrekt und endgültig ist.",
+    "checkbox_aria_label": "Bestätigen Sie die Zustimmung zu den Abstimmungsbedingungen",
+    "ready_message": "Sie können Ihre Stimme jetzt einreichen!"
+  },
+  "submit": {
+    "progress_label": "Ihr Fortschritt",
+    "submitting": "Reiche deine Stimme ein...",
+    "button_text": "Stimme Jetzt Einreichen",
+    "button_aria_enabled": "Reichen Sie Ihre Stimme ein - alle Auswahlen abgeschlossen",
+    "button_aria_disabled": "Schließen Sie alle Auswahlen ab, um Ihre Stimme einzureichen"
+  },
+  "footer": {
+    "section_title": "Wichtige Informationen",
+    "security": {
+      "title": "Ihre Stimme ist sicher",
+      "description": "Ihre Auswahl ist verschlüsselt und mit den höchsten Sicherheitsstandards geschützt."
+    },
+    "time": {
+      "title": "Nehmen Sie sich Zeit",
+      "description": "Sie haben ausreichend Zeit, um Ihre Auswahl vor dem Absenden zu überprüfen und zu bestätigen."
+    },
+    "help": {
+      "title": "Hilfe benötigt?",
+      "description": "Wenn Sie Fragen haben, wenden Sie sich an das Abstimmungsunterstützungsteam."
+    }
+  },
+  "aria_labels": {
+    "page_loaded": "Abstimmungsseite geladen. Bereit, Ihre Stimme abzugeben.",
+    "skip_to_content": "Zum Hauptabstimmungsinhalt springen",
+    "main_content": "Abstimmungsformular - Wählen Sie Kandidaten für verfügbare Positionen",
+    "voting_form": "Abstimmungsformular - Wählen und bestätigen Sie Ihre Kandidaten",
+    "checkbox_checked": "Zustimmungskontrollkästchen bestätigt. Sie können Ihre Stimme jetzt absenden."
+  },
+  "candidate_selection": {
+    "required_candidates": "Erforderlich",
+    "all_required": "Sie müssen alle Kandidaten für diese Position wählen",
+    "instruction": "Bitte wählen Sie {number} Kandidat(en) für die Position {position}",
+    "instruction_nepali": "Bitte wählen Sie {number} Kandidat(en) für die Position {position}",
+    "candidate_number": "Kandidat #{number}",
+    "candidate_for_post": "Kandidat für {post}",
+    "unknown": "Unbekannter Kandidat",
+    "select_candidate": "{name} als Kandidaten wählen",
+    "selected": "Ausgewählt",
+    "selection_status": "Auswahlstatus",
+    "selected_candidates": "Ausgewählte Kandidaten",
+    "of": "von",
+    "progress": "Fortschritt",
+    "status_no_vote": "Sie haben sich entschieden, für diese Position nicht zu stimmen",
+    "status_valid": "Perfekt! Sie haben genau {number} Kandidat(en) gewählt",
+    "status_invalid": "Bitte wählen Sie genau {number} Kandidat(en)",
+    "status_empty": "Keine Kandidaten ausgewählt - wählen Sie einen aus oder überspringen Sie diese Position",
+    "status_full": "Maximum {number} ausgewählt - perfekt!",
+    "status_partial": "Sie haben {selected} von {total} Kandidaten gewählt",
+    "skip_position": "Diese Position überspringen",
+    "skip_description": "Klicken Sie hier, wenn Sie für diese Position nicht für einen Kandidaten abstimmen möchten. Sie können für andere Positionen abstimmen.",
+    "skip_description_nepali": "Klicken Sie hier, wenn Sie für diese Position nicht für einen Kandidaten abstimmen möchten. Sie können für andere Positionen abstimmen.",
+    "skip_position_aria": "Abstimmung für diese Position überspringen",
+    "skip_confirmation": "Sie haben sich entschieden, für {position} nicht zu stimmen",
+    "skip_instruction": "Sie können diese Entscheidung ändern, indem Sie dieses Kästchen deaktivieren und Kandidaten wählen"
+  }
+}

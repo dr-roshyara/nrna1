@@ -1,169 +1,257 @@
 <template>
-    <nrna-layout>
-        <app-layout>
-            <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
-                <div class="max-w-4xl mx-auto px-4">
+    <election-layout>
+        <!-- Accessibility Announcement -->
+        <div class="sr-only" aria-live="polite" aria-label="Page announcement">
+            {{ $t('pages.code-agreement.accessibility.page_loaded') }}
+        </div>
 
-                    <!-- Success Header -->
-                    <div class="text-center mb-8">
-                        <div class="bg-gradient-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg">
-                            <div class="text-4xl mb-3">✅</div>
-                            <h1 class="text-2xl font-bold mb-2">Verification Successful!</h1>
-                            <h2 class="text-xl mb-2">मतदान  गर्नको लागि सवै प्रक्रिया पुग्यो। </h2>
-                            <p class="text-lg opacity-90">Welcome {{ user_name }}, you can now proceed to vote.</p>
-                            <p class="text-sm opacity-80">{{ user_name }}, यहाँले अब  मतदान गर्न सक्नुहुन्छ।</p>
+        <!-- Workflow Step Indicator - Step 2/5 -->
+        <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <WorkflowStepIndicator workflow="VOTING" :currentStep="2" />
+            </div>
+        </div>
+
+        <div class="min-h-screen bg-gradient-to-br from-blue-100 via-white to-indigo-100 py-8">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+                <!-- Page Title Section - Dashboard Style -->
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                        {{ $t('pages.code-agreement.header.title') }}
+                    </h1>
+                    <p class="text-xl text-gray-700 mb-2">
+                        {{ formatMessage($t('pages.code-agreement.header.subtitle'), { name: user_name }) }}
+                    </p>
+                    <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+                </div>
+
+                <!-- Info Cards - Voter & Time Info -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-12">
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-green-200">
+                        <div class="flex items-center">
+                            <div class="bg-green-100 p-3 rounded-lg mr-4 flex-shrink-0">
+                                <span class="text-green-600 text-2xl">👤</span>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">{{ $t('pages.code-agreement.header.info_voter') }}</p>
+                                <p class="font-bold text-gray-900 text-lg">{{ user_name }}</p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Agreement Form -->
-                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                        <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6">
-                            <h2 class="text-xl font-bold text-center">Voting Agreement | मतदान सम्झौता</h2>
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-blue-200">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-lg mr-4 flex-shrink-0">
+                                <span class="text-blue-600 text-2xl">⏰</span>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">{{ $t('pages.code-agreement.header.info_time') }}</p>
+                                <p class="font-bold text-gray-900 text-lg">{{ $t('pages.code-agreement.header.info_time_value', { minutes: votingTime }) }}</p>
+                            </div>
                         </div>
-
-                        <form method="POST" :action="submitUrl" class="p-8">
-                            <!-- CSRF Token -->
-                            <input type="hidden" name="_token" :value="csrfToken" />
-
-                            <!-- IP Mismatch Error Display -->
-                            <div v-if="$page.props.errors.ip_mismatch" class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
-                                <div class="flex">
-                                    <div class="flex-shrink-0">
-                                        <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                    <div class="ml-3">
-                                        <h3 class="text-sm font-medium text-red-800">IP Address Mismatch | IP ठेगाना बेमेल</h3>
-                                        <div class="mt-2 text-sm text-red-700 whitespace-pre-line">
-                                            {{ $page.props.errors.ip_mismatch }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Voting Time Info -->
-                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0">
-                                        <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                    <div class="ml-3">
-                                        <p class="text-sm text-yellow-700">
-                                            <strong>Important:</strong> You have {{ voting_time_minutes }} minutes to complete your voting once you start.
-                                        </p>
-                                        <p class="text-sm text-yellow-700">
-                                            <strong>महत्वपूर्ण:</strong> मतदान सुरु गरेपछि तपाईंसँग {{ voting_time_minutes }} मिनेट समय छ।
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Agreement Text -->
-                            <div class="space-y-4 mb-6">
-                                <div class="bg-gray-50 rounded-lg p-6">
-                                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Terms and Conditions | नियम र सर्तहरू</h3>
-                                    
-                                    <div class="space-y-3 text-gray-700">
-                                        <p class="leading-relaxed">
-                                            {{ agreement_text_english }}
-                                        </p>
-                                        <p class="leading-relaxed text-sm">
-                                            {{ agreement_text_nepali }}
-                                        </p>
-                                        
-                                        <div class="mt-4 p-4 border-l-4 border-blue-400 bg-blue-50">
-                                            <ul class="text-sm space-y-1">
-                                                <li>• I understand that my vote is secret and will be recorded securely</li>
-                                                <li>• I will complete the voting process within the time limit</li>
-                                                <li>• I will not share my voting codes with anyone</li>
-                                                <li>• I agree to the electronic voting process and its rules</li>
-                                            </ul>
-                                            <ul class="text-sm space-y-1 mt-2 text-blue-700">
-                                                 <li>• मेरो मत गोप्य छ र सुरक्षित रूपमा रेकर्ड हुनेछ भन्ने कुरा म ढुक्क छु। </li>
-                                                <li>• म यो कुरामा  सहमत छु कि यो मतदान प्रणाली स्वयंसेवी रूपमा तयार पारिएको हो र सेवा प्रदायकलाई कुनै शुल्क तिरेको छैन।</li>
-                                                                                              <li>• म समय सीमा भित्र मतदान प्रक्रिया पूरा गर्नेछु।</li>
-                                                <li>• मैले  मेरो मतदान कोड अरूलाइ दिने छैन।</li>
-                                                <li>• म इलेक्ट्रोनिक मतदान प्रक्रिया र यसका नियमहरूमा सहमत छु।</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Agreement Checkbox -->
-                            <div class="mb-6">
-                                <div class="border-2 border-blue-300 rounded-lg p-6 bg-blue-50">
-                                    <div class="flex flex-col items-center justify-center mb-4">
-                                        <div class="text-3xl mb-2">✅</div>
-                                        <h3 class="text-xl font-bold text-red-700 mb-1">Agreement Required</h3>
-                                        <p class="text-lg font-semibold text-red-700">सम्झौता आवश्यक</p>
-                                    </div>
-                                    
-                                    <div class="flex justify-center">
-                                        <label class="flex items-center cursor-pointer">
-                                            <input
-                                                type="checkbox"
-                                                name="agreement"
-                                                v-model="form.agreement"
-                                                value="on"
-                                                class="w-5 h-5 text-blue-600 border-2 border-gray-400 rounded focus:ring-blue-500 focus:ring-2"
-                                            />
-                                            <span class="ml-3 text-lg font-medium text-gray-900">
-                                                <span class="font-semibold">I agree to all terms and conditions stated above</span>
-                                                <br>
-                                                <span class="text-sm text-gray-600">माथि उल्लेखित सबै नियम र सर्तहरूमा म सहमत छु</span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    
-                                    <!-- Error Display -->
-                                    <div v-if="$page.props.errors.agreement" class="mt-4 text-red-600 text-sm bg-red-50 p-2 rounded">
-                                        {{ $page.props.errors.agreement }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Submit Button Only -->
-                            <div class="text-center">
-                                <button
-                                    type="submit"
-                                    class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-xl py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
-                                    :disabled="!form.agreement"
-                                    :class="{ 'opacity-50 cursor-not-allowed': !form.agreement }"
-                                >
-                                    <span class="mr-2">🗳️</span>
-                                    Start Voting | मतदान सुरु गर्नुहोस्
-                                </button>
-                            </div>
-                        </form>
                     </div>
                 </div>
+
+                <!-- IP Mismatch Error -->
+                <div v-if="$page.props.errors.ip_mismatch" class="max-w-4xl mx-auto bg-amber-50 border-l-4 border-amber-500 p-5 mb-6 rounded-lg shadow-md" role="alert" aria-live="polite">
+                    <div class="flex">
+                        <div class="flex-shrink-0 mt-1">
+                            <svg class="h-6 w-6 text-amber-600" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-bold text-amber-900">{{ $t('pages.code-agreement.errors.ip_mismatch_title') }}</h3>
+                            <p class="text-sm text-amber-800 mt-1">{{ $page.props.errors.ip_mismatch }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Time Limit Warning -->
+                <div class="max-w-4xl mx-auto bg-gradient-to-r from-amber-50 to-yellow-50 border-l-4 border-amber-400 p-5 mb-8 rounded-lg shadow-md" role="region" :aria-label="$t('pages.code-agreement.accessibility.terms_announcement')">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="bg-amber-100 p-3 rounded-lg">
+                                <span class="text-amber-600 text-2xl">⏳</span>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-amber-900 mb-2 text-lg">{{ $t('pages.code-agreement.voting_time_info.title') }}</h4>
+                            <p class="text-amber-800 font-medium mb-1">
+                                {{ $t('pages.code-agreement.voting_time_info.message', { minutes: votingTime }) }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms and Conditions Form -->
+                <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-6 px-8">
+                        <h2 class="text-2xl font-bold">{{ $t('pages.code-agreement.terms_and_conditions.section_title') }}</h2>
+                        <p class="text-sm opacity-90 mt-2">{{ $t('pages.code-agreement.terms_and_conditions.section_subtitle') }}</p>
+                    </div>
+
+                    <form method="POST" :action="submitUrl" class="p-8 space-y-6" :aria-label="$t('pages.code-agreement.accessibility.form_title')">
+                        <!-- CSRF Token -->
+                        <input type="hidden" name="_token" :value="csrfToken" />
+
+                        <!-- Terms Content -->
+                        <div>
+                            <p class="text-gray-700 font-medium mb-4">
+                                {{ $t('pages.code-agreement.terms_and_conditions.intro_text') }}
+                            </p>
+
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-lg">
+                                <h4 class="font-bold text-blue-900 mb-4 text-lg">{{ $t('pages.code-agreement.terms_and_conditions.key_conditions') }}</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start text-gray-800">
+                                        <span class="text-green-600 font-bold mr-3 flex-shrink-0 mt-1">✓</span>
+                                        <span class="text-base">{{ $t('pages.code-agreement.terms_and_conditions.condition_1') }}</span>
+                                    </li>
+                                    <li class="flex items-start text-gray-800">
+                                        <span class="text-green-600 font-bold mr-3 flex-shrink-0 mt-1">✓</span>
+                                        <span class="text-base">{{ $t('pages.code-agreement.terms_and_conditions.condition_2', { minutes: votingTime }) }}</span>
+                                    </li>
+                                    <li class="flex items-start text-gray-800">
+                                        <span class="text-green-600 font-bold mr-3 flex-shrink-0 mt-1">✓</span>
+                                        <span class="text-base">{{ $t('pages.code-agreement.terms_and_conditions.condition_3') }}</span>
+                                    </li>
+                                    <li class="flex items-start text-gray-800">
+                                        <span class="text-green-600 font-bold mr-3 flex-shrink-0 mt-1">✓</span>
+                                        <span class="text-base">{{ $t('pages.code-agreement.terms_and_conditions.condition_4') }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Large, Accessible Checkbox - IMPORTANT FOR ELDERLY USERS -->
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-8 my-8">
+                            <div class="flex items-start">
+                                <!-- Large checkbox - Much bigger for accessibility -->
+                                <div class="flex-shrink-0 pt-1">
+                                    <input
+                                        type="checkbox"
+                                        id="agreement"
+                                        name="agreement"
+                                        v-model="form.agreement"
+                                        value="on"
+                                        class="w-10 h-10 text-blue-600 border-3 border-gray-400 rounded-lg focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 cursor-pointer transition-all"
+                                        :aria-label="$t('pages.code-agreement.agreement_required.aria_label')"
+                                        @change="announceCheckboxStatus"
+                                    />
+                                </div>
+
+                                <!-- Label with bilingual text -->
+                                <div class="ml-5 flex-grow">
+                                    <label for="agreement" class="cursor-pointer block">
+                                        <div class="text-xl font-bold text-gray-900 mb-2 leading-tight">
+                                            {{ $t('pages.code-agreement.agreement_required.checkbox_label') }}
+                                        </div>
+                                        <div class="text-lg text-gray-700 leading-relaxed">
+                                            {{ getNepaliCheckboxLabel() }}
+                                        </div>
+                                    </label>
+
+                                    <!-- Real-time feedback when checked -->
+                                    <div v-if="form.agreement" class="mt-4 p-4 bg-green-50 border-2 border-green-300 rounded-lg flex items-center">
+                                        <span class="text-green-600 text-2xl mr-3">✓</span>
+                                        <span class="text-green-800 font-semibold text-lg">
+                                            {{ $t('pages.code-agreement.agreement_required.ready_message') }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Error message if not agreed -->
+                            <div v-if="$page.props.errors.agreement" class="mt-4 p-4 bg-red-50 border-l-4 border-red-500 rounded text-red-700 font-medium" role="alert">
+                                {{ $page.props.errors.agreement }}
+                            </div>
+                        </div>
+
+                        <!-- Submit Button - Professional and Accessible -->
+                        <div class="space-y-4">
+                            <button
+                                type="submit"
+                                :disabled="!form.agreement"
+                                class="w-full py-5 px-8 rounded-xl font-bold text-xl transition-all duration-200 shadow-lg focus:outline-none focus:ring-4 focus:ring-offset-2"
+                                :class="{
+                                    'bg-gradient-to-r from-green-600 to-emerald-700 text-white hover:from-green-700 hover:to-emerald-800 cursor-pointer focus:ring-green-300': form.agreement,
+                                    'bg-gray-300 text-gray-500 cursor-not-allowed': !form.agreement
+                                }"
+                                :aria-label="form.agreement ? $t('pages.code-agreement.submit_button.aria_label_enabled') : $t('pages.code-agreement.submit_button.aria_label_disabled')"
+                            >
+                                <div class="flex items-center justify-center">
+                                    <span class="mr-3 text-2xl">{{ $t('pages.code-agreement.submit_button.icon') }}</span>
+                                    <div class="text-left">
+                                        <div class="text-xl">{{ $t('pages.code-agreement.submit_button.text') }}</div>
+                                        <div class="text-sm opacity-90">{{ getSubmitButtonNepali() }}</div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <!-- Help text -->
+                            <p class="text-center text-sm text-gray-600 mt-4">
+                                {{ $t('pages.code-agreement.submit_button.help_text') }}
+                            </p>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </app-layout>
-    </nrna-layout>
+        </div>
+    </election-layout>
 </template>
 
 <script>
-import AppLayout from '@/Layouts/AppLayout'
-import NrnaLayout from '@/Layouts/NrnaLayout'
+import ElectionLayout from '@/Layouts/ElectionLayout'
 import { useForm } from '@inertiajs/inertia-vue3'
+import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator'
 
 export default {
     components: {
-        AppLayout,
-        NrnaLayout,
+        ElectionLayout,
+        WorkflowStepIndicator,
     },
 
     props: {
         user_name: String,
-        voting_time_minutes: Number,
-        agreement_text_nepali: String,
-        agreement_text_english: String,
-        slug: String, // Add slug prop for slug-based routing
-        useSlugPath: Boolean, // Configuration to enable/disable slug paths
+        voting_time_minutes: {
+            type: Number,
+            default: 30  // Default 30 minutes if not provided
+        },
+        slug: String,
+        useSlugPath: Boolean,
+    },
+
+    data() {
+        return {
+            displayTime: 30  // Will be updated from props in created()
+        }
+    },
+
+    computed: {
+        agreementItems() {
+            const items = this.$t('pages.code-agreement.terms_and_conditions.items');
+            return Array.isArray(items) ? items : [];
+        },
+
+        // Computed property ensures voting time is always a valid number
+        votingTime() {
+            const time = this.voting_time_minutes || this.displayTime || 30;
+            return parseInt(time) || 30;
+        },
+
+        // Dynamic submit URL using route() helper with slug parameter
+        submitUrl() {
+            return this.route('slug.code.agreement.submit', { vslug: this.slug });
+        }
+    },
+
+    created() {
+        // Set the display time from props
+        if (this.voting_time_minutes && this.voting_time_minutes > 0) {
+            this.displayTime = parseInt(this.voting_time_minutes);
+        }
     },
 
     setup(props) {
@@ -174,10 +262,59 @@ export default {
         // Get CSRF token from meta tag
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || ''
 
+        // Helper function to format message with placeholders
+        const formatMessage = (message, params = {}) => {
+            let formatted = message;
+            Object.entries(params).forEach(([key, value]) => {
+                formatted = formatted.replace(`{${key}}`, value);
+            });
+            return formatted;
+        };
+
         return {
             form,
             csrfToken,
-            submitUrl: route('slug.code.agreement.submit', { vslug: props.slug }),
+            formatMessage,
+        }
+    },
+
+    methods: {
+        getNepaliCheckboxLabel() {
+            // Get the current locale
+            const locale = this.$i18n.locale;
+            // Only show bilingual label if in Nepali locale, otherwise show English only
+            if (locale === 'np') {
+                return this.$t('pages.code-agreement.agreement_required.checkbox_label');
+            }
+            return '';
+        },
+
+        getSubmitButtonNepali() {
+            const locale = this.$i18n.locale;
+            return locale === 'np' ? this.$t('pages.code-agreement.submit_button.text') : '';
+        },
+
+        announceCheckboxStatus() {
+            if (this.form.agreement) {
+                this.$nextTick(() => {
+                    const announcement = document.createElement('div');
+                    announcement.setAttribute('role', 'status');
+                    announcement.setAttribute('aria-live', 'polite');
+                    announcement.className = 'sr-only';
+                    announcement.textContent = this.$t('pages.code-agreement.accessibility.checkbox_checked');
+                    document.body.appendChild(announcement);
+                    setTimeout(() => {
+                        if (document.body.contains(announcement)) {
+                            document.body.removeChild(announcement);
+                        }
+                    }, 2000);
+                });
+            }
+        },
+
+        // Wrapper for Ziggy route() helper
+        route(name, params) {
+            return window.route ? window.route(name, params) : '#';
         }
     }
 }

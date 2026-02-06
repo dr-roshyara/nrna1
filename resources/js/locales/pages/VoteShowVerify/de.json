@@ -1,0 +1,63 @@
+{
+  "header": {
+    "title": "Ihr Abstimmungsdatensatz",
+    "subtitle": "Sehen Sie Ihre Abstimmungsoptionen und Verifizierungscode an"
+  },
+  "demo_success": {
+    "title": "🎉 Demo-Abstimmung erfolgreich eingereicht!",
+    "code_label": "Ihr Demo-Abstimmungsverifizierungscode:",
+    "copy_button_initial": "📋 Verifizierungscode kopieren",
+    "copy_button_copied": "✓ Kopiert!",
+    "instructions_title": "✓ So verwenden Sie Ihren Code:",
+    "instructions_1": "1. Wählen Sie unten die Option \"Demo-Wahl\"",
+    "instructions_2": "2. Fügen Sie Ihren Code in das Demo-Feld ein oder geben Sie ihn ein",
+    "instructions_3": "3. Klicken Sie auf \"Demo-Abstimmung überprüfen\", um Ihre Abstimmungsoptionen anzuzeigen"
+  },
+  "real_success": {
+    "title": "🎉 Glückwunsch {name}!",
+    "description": "Danke, dass Sie an der Wahl teilgenommen haben! Ihre Stimme wurde erfolgreich erfasst. Um Ihre Stimme zu sehen, geben Sie bitte den neuen Verifizierungscode ein, der an Ihre E-Mail gesendet wurde.",
+    "security_notice": "Halten Sie Ihren Verifizierungscode privat und sicher"
+  },
+  "main_card": {
+    "title": "Überprüfen Sie Ihre Stimme",
+    "subtitle": "Geben Sie Ihren Verifizierungscode ein, um Ihre Abstimmungsoptionen anzuzeigen"
+  },
+  "election_type": {
+    "label": "Wählen Sie den Wahltyp"
+  },
+  "real_election": {
+    "section_title": "Echte Wahl",
+    "instructions_title": "Überprüfen Sie Ihre E-Mail",
+    "instructions": "Ein Verifizierungscode wurde an Ihre registrierte E-Mail-Adresse für die echte Wahl gesendet. Geben Sie ihn unten ein, um Ihren Abstimmungsdatensatz anzuzeigen.",
+    "label": "Verifizierungscode (Echte Wahl)",
+    "placeholder": "Geben Sie Ihren Verifizierungscode aus der E-Mail ein",
+    "submit_button": "Überprüfen & Meine Stimme anzeigen",
+    "processing_button": "Überprüfe..."
+  },
+  "demo_election": {
+    "section_title": "Demo-Wahl",
+    "instructions_title": "Demo-Wahl - Test-Verifizierung",
+    "instructions": "Geben Sie Ihren Demo-Wahlverifizierungscode ein, um Ihren Test-Abstimmungsdatensatz anzuzeigen. Dies ist nur zu Test- und Demonstrationszwecken bestimmt.",
+    "label": "Verifizierungscode (Demo-Wahl)",
+    "placeholder": "Geben Sie Ihren Demo-Verifizierungscode ein",
+    "submit_button": "Demo-Abstimmung überprüfen",
+    "processing_button": "Überprüfe..."
+  },
+  "help": {
+    "title": "Benötigen Sie Hilfe?",
+    "check_email": {
+      "title": "E-Mail überprüfen",
+      "description": "Suchen Sie nach dem Verifizierungscode in Ihrem Posteingang oder Spam-Ordner"
+    },
+    "contact_support": {
+      "title": "Kontaktieren Sie den Support",
+      "description": "Senden Sie einen Screenshot an den Administrator, wenn Probleme bestehen bleiben"
+    }
+  },
+  "footer": {
+    "security_message": "Ihre Stimme ist verschlüsselt und sicher"
+  },
+  "aria_labels": {
+    "skip_to_content": "Zum Hauptinhalt springen"
+  }
+}

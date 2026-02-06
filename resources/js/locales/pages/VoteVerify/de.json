@@ -1,0 +1,62 @@
+{
+  "header": {
+    "title": "Ihre Stimme überprüfen",
+    "subtitle": "Abschließender Schritt zur Bestätigung Ihrer Abstimmung"
+  },
+  "critical_warning": {
+    "title": "⚠️ KRITISCH: Ihre Stimme ist noch NICHT gespeichert!",
+    "message": "Ohne den Code unten geht Ihre Stimme komplett verloren."
+  },
+  "secure_process": "Sicherer Verifizierungsprozess",
+  "verification_title": "Verifizierungscode eingeben",
+  "verification_subtitle": "Geben Sie den 6-stelligen Code ein, der an Ihre E-Mail-Adresse gesendet wurde",
+  "status_complete": "Abstimmung erfolgreich eingereicht",
+  "status_message": "Ihre Stimme wurde aufgezeichnet und wartet auf abschließende Bestätigung.",
+  "email_notice": {
+    "title": "Überprüfen Sie Ihre E-Mail",
+    "message": "Ein 6-stelliger Verifizierungscode wurde an Ihre registrierte E-Mail-Adresse gesendet"
+  },
+  "action_required": "Aktion erforderlich: Code einreichen",
+  "code_input": {
+    "label": "Verifizierungscode",
+    "placeholder": "XXXXXX",
+    "characters": "Zeichen",
+    "instruction": "Geben Sie Ihren 6-stelligen Code ein",
+    "ready": "Bereit zur Verifizierung"
+  },
+  "save_button": {
+    "text": "Überprüfen und speichern Sie meine Stimme",
+    "processing": "Wird überprüft...",
+    "help_incomplete": "Geben Sie alle 6 Zeichen ein, um die Schaltfläche zum Absenden zu aktivieren",
+    "help_complete": "Bereit, Ihre Stimme zu speichern"
+  },
+  "security_notice": {
+    "title": "Halten Sie diesen Code sicher"
+  },
+  "voter_info": {
+    "title": "Ihre Informationen",
+    "subtitle": "Wählerdetails",
+    "name": "Name",
+    "user_id": "Benutzer-ID",
+    "region": "Region"
+  },
+  "summary": {
+    "title": "Stimmenzusammenfassung",
+    "subtitle": "Überprüfen Sie Ihre Auswahl vor der abschließenden Bestätigung",
+    "national_posts": "Nationale Positionen",
+    "regional_posts": "Regionale Positionen",
+    "stats": {
+      "voted": "Abgestimmt",
+      "skipped": "Übersprungen",
+      "total": "Insgesamt"
+    },
+    "no_data": "Keine Abstimmungsdaten verfügbar"
+  },
+  "security_badge": {
+    "title": "Ihre Stimme ist sicher",
+    "message": "End-to-End-verschlüsselt und geschützt"
+  },
+  "aria_labels": {
+    "skip_to_content": "Zum Hauptinhalt springen"
+  }
+}

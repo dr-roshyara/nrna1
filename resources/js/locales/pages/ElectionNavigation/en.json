@@ -1,0 +1,23 @@
+{
+  "primary_navigation": {
+    "dashboard": "Dashboard",
+    "election_page": "Election Page",
+    "your_vote": "Your Vote",
+    "voters_list": "Voter's List",
+    "members_list": "Member's List",
+    "result": "Result",
+    "personal_profile": "Personal Profile"
+  },
+  "team_management": {
+    "section_label": "Manage Team",
+    "team_settings": "Team Settings",
+    "create_new_team": "Create New Team",
+    "switch_teams_label": "Switch Teams"
+  },
+  "account_management": {
+    "section_label": "Manage Account",
+    "profile": "Profile",
+    "api_tokens": "API Tokens",
+    "logout": "Log Out"
+  }
+}

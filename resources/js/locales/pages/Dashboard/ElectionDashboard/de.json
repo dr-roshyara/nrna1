@@ -1,0 +1,83 @@
+{
+  "page_meta": {
+    "title": "Wahlzentrum",
+    "description": "Wahlschaltfeld für Diaspora-Abstimmung"
+  },
+  "primary_actions": {
+    "section_title": "Hauptaktionen"
+  },
+  "start_button": {
+    "text": "Hier klicken zum Starten"
+  },
+  "system_info": {
+    "title": "Systeminformationen",
+    "ip_label": "Client-IP-Adresse",
+    "user_label": "Authentifizierter Benutzer",
+    "email_icon_alt": "E-Mail-Adresse"
+  },
+  "voting_section": {
+    "title": "Abstimmen",
+    "title_view": "Ihre Stimme ansehen",
+    "title_unavailable": "Abstimmung nicht verfügbar",
+    "title_inactive": "Abstimmungszeitraum inaktiv",
+    "continue": "Abstimmung fortsetzen",
+    "already_voted": "Sie haben bereits abgestimmt",
+    "period_not_started": "Der Abstimmungszeitraum hat nicht begonnen oder ist beendet",
+    "not_available": "Abstimmung nicht verfügbar",
+    "session_active": "Ihre Abstimmungssitzung ist aktiv",
+    "click_to_vote": "Hier klicken zum Abstimmen",
+    "time_remaining_label": "Verbleibende Zeit",
+    "minutes_label": "Minuten",
+    "access_available": "Zugriff verfügbar",
+    "access_unavailable": "Zugriff nicht verfügbar",
+    "error_title_default": "Abstimmung nicht verfügbar",
+    "error_not_registered_title": "Sie sind nicht als Wähler registriert",
+    "error_not_registered_msg": "Um an der Wahl teilzunehmen, müssen Sie sich zunächst als Wähler registrieren. Bitte kontaktieren Sie den Wahlausschuss.",
+    "error_approval_pending_title": "Ihr Wählerstatus steht unter Genehmigungsvorbehalt",
+    "error_approval_pending_msg": "Ihre Wähleranmeldung wurde eingegangen. Sobald sie vom Wahlausschuss genehmigt wurde, können Sie abstimmen.",
+    "period_inactive_title": "⏱️ Abstimmungszeitraum nicht aktiv",
+    "period_inactive_msg1": "Sie sind berechtigt zu wählen, aber der Abstimmungszeitraum hat noch nicht begonnen.",
+    "period_inactive_msg2": "• Diese Schaltfläche wird aktiv, wenn die Abstimmung von den Wahlverantwortlichen gestartet wird"
+  },
+  "results_section": {
+    "title": "Wahlergebnisse",
+    "available": "Ergebnisse verfügbar",
+    "unavailable": "🔒 Ergebnisse nicht verfügbar",
+    "not_published_title": "Ergebnisse nicht verfügbar",
+    "not_published_msg": "Dieser Link wird aktiv, nachdem die Wahl abgeschlossen ist."
+  },
+  "candidate_info": {
+    "section_title": "Kandidateninformationen",
+    "posts_title": "Liste der Kandidaturmöglichkeiten",
+    "list_title": "Kandidaturenliste",
+    "form_title": "Kandidaturformular"
+  },
+  "voter_info": {
+    "section_title": "Wählerinformationen",
+    "list_title": "Wählerliste",
+    "your_vote_title": "Ihre Stimme",
+    "members_title": "Liste registrierter Mitglieder"
+  },
+  "admin_functions": {
+    "section_title": "Verwaltungsfunktionen",
+    "committee_title": "Wahlausschuss",
+    "general_info_title": "Allgemeine Informationen"
+  },
+  "help_section": {
+    "title": "Benötigen Sie Hilfe?",
+    "description": "Wenn Sie Unterstützung benötigen, kontaktieren Sie uns bitte.",
+    "contact_button": "📞 Kontaktieren Sie uns",
+    "guide_button": "📖 Benutzerhandbuch"
+  },
+  "aria_labels": {
+    "skip_to_content": "Zum Hauptinhalt springen",
+    "main_content": "Hauptinhalt des Wahlschaltfelds",
+    "primary_actions": "Hauptaktionen",
+    "voting_available": "Abstimmung verfügbar - Klicken Sie zum Starten der Abstimmung",
+    "voting_unavailable": "Abstimmung nicht verfügbar",
+    "your_vote_link": "Ihre Stimme ansehen",
+    "results_available": "Wahlergebnisse verfügbar - Klicken Sie zum Anzeigen",
+    "results_unavailable": "Wahlergebnisse noch nicht veröffentlicht",
+    "page_loaded": "Wahlzentrum geladen"
+  }
+}

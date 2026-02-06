@@ -46,13 +46,15 @@
             >
               {{ $t('navigation.login') }}
             </a>
-            <a
-              v-if="isLoggedIn"
-              :href="route('logout')"
-              class="inline-flex items-center px-3 md:px-4 py-2 border-2 border-white text-white font-semibold text-xs md:text-sm rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-colors whitespace-nowrap"
-            >
-              {{ $t('navigation.logout') }}
-            </a>
+            <!-- Logout form - POST request required -->
+            <form v-if="isLoggedIn" @submit.prevent="logout" class="inline">
+              <button
+                type="submit"
+                class="inline-flex items-center px-3 md:px-4 py-2 border-2 border-white text-white font-semibold text-xs md:text-sm rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-colors whitespace-nowrap"
+              >
+                {{ $t('navigation.logout') }}
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -110,6 +112,9 @@ export default {
         this.$i18n.locale = this.currentLocale;
         localStorage.setItem('preferred_locale', this.currentLocale);
       }
+    },
+    logout() {
+      this.$inertia.post(route('logout'));
     },
   },
 

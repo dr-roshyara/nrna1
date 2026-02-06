@@ -1,0 +1,74 @@
+{
+  "page_meta": {
+    "title": "Wahlvereinbarung",
+    "description": "Überprüfen und akzeptieren Sie die Wahlbedingungen vor dem Fortfahren"
+  },
+  "progress": {
+    "step_1": "Code überprüft",
+    "step_2": "Vereinbarung",
+    "step_3": "Stimme abgeben"
+  },
+  "header": {
+    "icon": "✅",
+    "title": "Verifizierung erfolgreich!",
+    "subtitle": "Willkommen, {name}",
+    "info_voter": "Wählername",
+    "info_time": "Zeitlimit",
+    "info_time_value": "{minutes} Minuten"
+  },
+  "terms_and_conditions": {
+    "section_title": "Wahlvereinbarungsbedingungen",
+    "section_subtitle": "Bitte lesen und akzeptieren Sie, um fortzufahren",
+    "intro_text": "Durch Klicken auf die Schaltfläche unten stimmen Sie den folgenden Bedingungen zu:",
+    "toggle_english": "Englische Bedingungen",
+    "toggle_nepali": "Nepali-Bedingungen",
+    "heading": "Elektronische Wahlvereinbarung",
+    "key_conditions": "Wichtige Bedingungen:",
+    "condition_1": "Ihre Stimme ist anonym und verschlüsselt",
+    "condition_2": "Sie müssen die Abstimmung innerhalb von {minutes} Minuten abschließen",
+    "condition_3": "Geben Sie Ihre Wahlcodes nicht weiter",
+    "condition_4": "Nur eine Stimme pro Wähler ist zulässig",
+    "items": [
+      "Ihre Stimme ist geheim und wird sicher aufgezeichnet",
+      "Sie werden den Wahlprozess innerhalb des Zeitlimits abschließen",
+      "Sie werden Ihre Wahlcodes mit niemandem teilen",
+      "Sie stimmen dem elektronischen Wahlprozess und seinen Regeln zu"
+    ]
+  },
+  "agreement_required": {
+    "title": "Vereinbarung erforderlich",
+    "icon": "✅",
+    "checkbox_label": "Ich stimme allen Geschäftsbedingungen zu",
+    "ready_message": "Bereit zum Fortfahren mit der Abstimmung",
+    "aria_label": "Aktivieren Sie dieses Kontrollkästchen, um allen Wahlbedingungen zuzustimmen. Dies muss überprüft werden, bevor Sie mit der Abstimmung beginnen können."
+  },
+  "submit_button": {
+    "icon": "🗳️",
+    "text": "Jetzt abstimmen",
+    "help_text": "Durch Klicken bestätigen Sie Ihre Zustimmung zu allen Bedingungen",
+    "aria_label_enabled": "Jetzt abstimmen - Sie haben allen Bedingungen zugestimmt",
+    "aria_label_disabled": "Bitte stimmen Sie den Bedingungen zu, bevor Sie beginnen"
+  },
+  "voting_time_info": {
+    "label": "Wichtig",
+    "title": "Zeitlimithinweis",
+    "message": "Sie haben {minutes} Minuten Zeit, um Ihre Stimme abzugeben, nachdem Sie begonnen haben."
+  },
+  "errors": {
+    "ip_mismatch_title": "IP-Adresse stimmt nicht überein",
+    "ip_mismatch_help": "Ihre IP-Adresse hat sich geändert. Dies dient zu Sicherheitszwecken.",
+    "agreement_required": "Sie müssen den Bedingungen zustimmen, um fortzufahren"
+  },
+  "accessibility": {
+    "page_loaded": "Seite mit Wahlvereinbarung geladen. Bitte lesen Sie die Bedingungen und stimmen Sie ihnen zu.",
+    "terms_announcement": "Wahlvereinbarungsbedingungen. Wählen Sie eine Sprache, um die vollständige Vereinbarung anzuzeigen.",
+    "checkbox_checked": "Vereinbarung überprüft. Sie können jetzt mit der Abstimmung fortfahren.",
+    "checkbox_unchecked": "Vereinbarung nicht überprüft. Bitte überprüfen und akzeptieren Sie die Bedingungen, um fortzufahren.",
+    "form_title": "Wahlvereinbarungsformular"
+  },
+  "progress_aria": {
+    "step_1_status": "Schritt 1 von 3: Code-Überprüfung abgeschlossen",
+    "step_2_status": "Schritt 2 von 3: Vereinbarung - aktueller Schritt",
+    "step_3_status": "Schritt 3 von 3: Geben Sie Ihre Stimme ab"
+  }
+}

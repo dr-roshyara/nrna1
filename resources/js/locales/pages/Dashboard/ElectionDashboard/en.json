@@ -1,0 +1,83 @@
+{
+  "page_meta": {
+    "title": "Election Center",
+    "description": "Election dashboard for diaspora voting"
+  },
+  "primary_actions": {
+    "section_title": "Main Actions"
+  },
+  "start_button": {
+    "text": "Start clicking here"
+  },
+  "system_info": {
+    "title": "System Information",
+    "ip_label": "Client IP Address",
+    "user_label": "Authenticated User",
+    "email_icon_alt": "Email address"
+  },
+  "voting_section": {
+    "title": "Vote Here",
+    "title_view": "View Your Vote",
+    "title_unavailable": "Voting Unavailable",
+    "title_inactive": "Voting Period Inactive",
+    "continue": "Continue Voting",
+    "already_voted": "You have already voted",
+    "period_not_started": "Voting period has not started or has ended",
+    "not_available": "Voting not available",
+    "session_active": "Your voting session is active",
+    "click_to_vote": "Click here to vote",
+    "time_remaining_label": "Time Remaining",
+    "minutes_label": "minutes",
+    "access_available": "Access Available",
+    "access_unavailable": "Access Unavailable",
+    "error_title_default": "Voting Unavailable",
+    "error_not_registered_title": "You are not registered as a voter",
+    "error_not_registered_msg": "To participate in the election, you must first be registered as a voter. Please contact the election committee.",
+    "error_approval_pending_title": "Your voter status is pending approval",
+    "error_approval_pending_msg": "Your voter application has been received. Once approved by the election committee, you will be able to vote.",
+    "period_inactive_title": "⏱️ Voting Period Not Active",
+    "period_inactive_msg1": "You are eligible to vote, but the voting period has not started yet.",
+    "period_inactive_msg2": "• This button will become active when voting is started by election administrators"
+  },
+  "results_section": {
+    "title": "Election Results",
+    "available": "Results Available",
+    "unavailable": "🔒 Results Unavailable",
+    "not_published_title": "Results Not Available",
+    "not_published_msg": "This link will be active after the election is completed."
+  },
+  "candidate_info": {
+    "section_title": "Candidate Information",
+    "posts_title": "List of Candidacy Posts",
+    "list_title": "Candidacy List",
+    "form_title": "Candidacy Form"
+  },
+  "voter_info": {
+    "section_title": "Voter Information",
+    "list_title": "Voter List",
+    "your_vote_title": "Your Vote",
+    "members_title": "Registered Member List"
+  },
+  "admin_functions": {
+    "section_title": "Administrative Functions",
+    "committee_title": "Election Committee",
+    "general_info_title": "General Information"
+  },
+  "help_section": {
+    "title": "Need Help?",
+    "description": "If you need any assistance, please contact us.",
+    "contact_button": "📞 Contact Us",
+    "guide_button": "📖 User Guide"
+  },
+  "aria_labels": {
+    "skip_to_content": "Skip to main content",
+    "main_content": "Election dashboard main content",
+    "primary_actions": "Primary Actions",
+    "voting_available": "Voting available - Click to start voting",
+    "voting_unavailable": "Voting not available",
+    "your_vote_link": "View your vote",
+    "results_available": "Election results available - Click to view",
+    "results_unavailable": "Election results not yet published",
+    "page_loaded": "Election Center loaded"
+  }
+}

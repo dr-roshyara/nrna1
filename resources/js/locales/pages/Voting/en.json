@@ -1,0 +1,106 @@
+{
+  "header": {
+    "title": "Cast Your Vote",
+    "verified_badge": "Code Verified",
+    "subtitle": "Welcome, {name}. Your code has been verified and you're ready to vote."
+  },
+  "voter_info": {
+    "label": "Voter Name"
+  },
+  "region_info": {
+    "label": "Region",
+    "national": "National"
+  },
+  "progress_info": {
+    "label": "Selections Made"
+  },
+  "progress": {
+    "step_1": "Code Verified",
+    "step_2": "Cast Your Vote",
+    "step_3": "Confirm Submission"
+  },
+  "national_posts": {
+    "section_title": "National Posts",
+    "post_label": "National Position"
+  },
+  "regional_posts": {
+    "section_title": "Regional Posts in {region}",
+    "post_label": "Regional Position"
+  },
+  "summary": {
+    "title": "Your Vote Summary"
+  },
+  "validation": {
+    "title": "Please Review Your Selections"
+  },
+  "agreement": {
+    "section_title": "Final Confirmation",
+    "section_subtitle": "Review the agreement before submitting your vote",
+    "intro_text": "By submitting this vote, you confirm that:",
+    "key_conditions": "Agreement Terms",
+    "condition_1": "You have selected the candidates of your choice accurately",
+    "condition_2": "You understand this is a binding vote",
+    "condition_3": "You have read and accepted all voting rules and regulations",
+    "condition_4": "You will not attempt to change or retract this vote after submission",
+    "checkbox_label": "I Confirm and Accept the Terms",
+    "checkbox_description": "I agree to the terms and conditions above and confirm that my vote selections are accurate and final.",
+    "checkbox_aria_label": "Confirm agreement to voting terms",
+    "ready_message": "You're ready to submit your vote!"
+  },
+  "submit": {
+    "progress_label": "Your Progress",
+    "submitting": "Submitting Your Vote...",
+    "button_text": "Submit Vote Now",
+    "button_aria_enabled": "Submit your vote - all selections complete",
+    "button_aria_disabled": "Complete all selections to submit your vote"
+  },
+  "footer": {
+    "section_title": "Important Information",
+    "security": {
+      "title": "Your Vote is Secure",
+      "description": "Your selections are encrypted and protected with the highest security standards."
+    },
+    "time": {
+      "title": "Take Your Time",
+      "description": "You have sufficient time to review and confirm your selections before submitting."
+    },
+    "help": {
+      "title": "Need Help?",
+      "description": "If you have questions, contact the election support team for assistance."
+    }
+  },
+  "aria_labels": {
+    "page_loaded": "Voting page loaded. Ready to cast your vote.",
+    "skip_to_content": "Skip to main voting content",
+    "main_content": "Voting form - Select candidates for available positions",
+    "voting_form": "Voting form - Select and confirm your candidates",
+    "checkbox_checked": "Agreement checkbox confirmed. You may now submit your vote."
+  },
+  "candidate_selection": {
+    "required_candidates": "Required",
+    "all_required": "You must select all candidates for this position",
+    "instruction": "Please select {number} candidate(s) for the position of {position}",
+    "instruction_nepali": "Please select {number} candidate(s) for the position of {position}",
+    "candidate_number": "Candidate #{number}",
+    "candidate_for_post": "Candidate for {post}",
+    "unknown": "Unknown Candidate",
+    "select_candidate": "Select {name} as a candidate",
+    "selected": "Selected",
+    "selection_status": "Selection Status",
+    "selected_candidates": "Selected Candidates",
+    "of": "of",
+    "progress": "Progress",
+    "status_no_vote": "You chose not to vote for this position",
+    "status_valid": "Perfect! You selected exactly {number} candidate(s)",
+    "status_invalid": "Please select exactly {number} candidate(s)",
+    "status_empty": "No candidates selected - select one or skip this position",
+    "status_full": "Maximum {number} selected - perfect!",
+    "status_partial": "You have selected {selected} of {total} candidates",
+    "skip_position": "Skip This Position",
+    "skip_description": "Click here if you do not wish to vote for any candidate in this position. You can still vote for other positions.",
+    "skip_description_nepali": "Click here if you do not wish to vote for any candidate in this position. You can still vote for other positions.",
+    "skip_position_aria": "Skip voting for this position",
+    "skip_confirmation": "You have chosen not to vote for {position}",
+    "skip_instruction": "You can change this decision by unchecking this box and selecting candidates"
+  }
+}

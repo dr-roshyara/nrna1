@@ -5,26 +5,27 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\Code;
+use App\Models\Election;
 use App\Http\Controllers\Controller;
 use App\Services\ElectionService;
 
 class ElectionController extends Controller
 {
     /**
-     * ✅ FIXED: Dashboard method with proper data handling
+     * ✅ Dashboard method - Simplified for single election system
+     *
+     * Logic:
+     * - Unauthenticated → Welcome page
+     * - Authenticated voter + real election active + eligible → ElectionPage (direct voting)
+     * - Otherwise → ElectionDashboard (dashboard view)
      */
     public function dashboard()
     {
         $authUser = Auth::user();
         $ipAddress = $this->getUserIpAddr();
-         
- 
-        // ✅ Not authenticated: Show welcome page
-        if ($authUser) {
-            $authUser->update([
-                'user_ip' => $ipAddress
-            ]);
-        } else {
+
+        // Not authenticated: Show welcome page
+        if (!$authUser) {
             return Inertia::render('Welcome', [
                 'canLogin' => \Route::has('login'),
                 'canRegister' => \Route::has('register'),
@@ -32,53 +33,59 @@ class ElectionController extends Controller
             ]);
         }
 
-        // Make voting-related fields visible
+        // Update user IP
+        $authUser->update(['user_ip' => $ipAddress]);
+
+        // Check if the ONE real election is active
+        $realElection = Election::where('type', 'real')
+            ->where('is_active', true)
+            ->first();
+
+        // Check if user has an active code with voting eligibility
+        $userCode = Code::where('user_id', $authUser->id)
+            ->where('can_vote_now', 1)
+            ->first();
+
+        // Election day: Real election active AND user is voter AND user is eligible
+        if ($realElection && $realElection->isCurrentlyActive() &&
+            $authUser->is_voter && $userCode) {
+            // Show voting page (skip dashboard, go directly to ballot)
+            return Inertia::render('Election/ElectionPage', [
+                'activeElection' => $realElection,
+                'authUser' => $authUser,
+                'ipAddress' => $ipAddress,
+            ]);
+        }
+
+        // Non-election day OR not eligible → Show dashboard
         $authUser->makeVisible(['is_voter', 'can_vote', 'has_voted', 'can_vote_now']);
-        
-        // ✅ FIX: Implement proper ballot access logic here instead of relying on a potentially missing method
         $ballotAccess = $this->determineBallotAccess($authUser);
-        
-        \Log::info('Dashboard Debug for User ' . $authUser->id, [
-            'user_fields' => [
-                'is_voter' => $authUser->is_voter,
-                'can_vote' => $authUser->can_vote,
-                'has_voted' => $authUser->has_voted,
-                'is_committee_member' => $authUser->is_committee_member ?? false,
-            ],
-            'ballot_access' => $ballotAccess,
-            'ballot_access_type' => gettype($ballotAccess),
-        ]);
-        
+
         $votingStatus = null;
         if ($ballotAccess['can_access']) {
             $code = Code::where('user_id', $authUser->id)->first();
-            
-            // ✅ Determine voting status based on Code model only
-            $hasVoted = $code ? (bool) $code->has_voted : false;
-            $canVoteNow = $code ? (bool) $code->can_vote_now : false;
-            $hasAgreed = $code ? (bool) ($code->has_agreed_to_vote ?? false) : false;
-            
+
             $votingStatus = [
                 'has_code' => $code !== null,
-                'can_vote_now' => $canVoteNow,
-                'has_voted' => $hasVoted,  // ✅ Only from Code model
+                'can_vote_now' => $code ? (bool) $code->can_vote_now : false,
+                'has_voted' => $code ? (bool) $code->has_voted : false,
                 'voting_started_at' => $code ? $code->voting_started_at : null,
-                'voting_time_remaining' => $code && $code->voting_started_at ? 
+                'voting_time_remaining' => $code && $code->voting_started_at ?
                     max(0, ($code->voting_time_in_minutes ?? 20) - now()->diffInMinutes($code->voting_started_at)) : 0,
-                'has_agreed_to_vote' => $hasAgreed
+                'has_agreed_to_vote' => $code ? (bool) ($code->has_agreed_to_vote ?? false) : false
             ];
         }
-        
-        // ✅ Election system status
+
         $electionStatus = ElectionService::getElectionStatus();
-        
+
         return Inertia::render('Dashboard/ElectionDashboard', [
             'authUser' => $authUser,
             'ballotAccess' => $ballotAccess,
             'votingStatus' => $votingStatus,
             'electionStatus' => $electionStatus,
             'ipAddress' => $ipAddress,
-            'useSlugPath' => config('election.use_slug_path', false)
+            'useSlugPath' => config('election.use_slug_path', false),
+            'realElectionSlug' => $realElection ? $realElection->slug : null
         ]);
     }
 
@@ -150,6 +157,76 @@ class ElectionController extends Controller
         ];
     }
    
+    /**
+     * ⏳ FUTURE USE: Election selection page for multiple simultaneous elections
+     *
+     * Currently not used (single real election system).
+     * Kept for future when multiple real elections might run simultaneously.
+     *
+     * @deprecated Use single election flow (LoginResponse → ElectionPage)
+     */
+    public function selectElection()
+    {
+        $authUser = Auth::user();
+
+        if (!$authUser) {
+            return redirect()->route('login');
+        }
+
+        // Get all active real elections that are currently active
+        $activeElections = Election::where('type', 'real')
+            ->where('is_active', true)
+            ->get()
+            ->filter(fn ($election) => $election->isCurrentlyActive())
+            ->values();
+
+        // If no elections, redirect to dashboard
+        if ($activeElections->isEmpty()) {
+            return redirect()->route('dashboard');
+        }
+
+        // If only one election, redirect directly to voting
+        if ($activeElections->count() === 1) {
+            return redirect()->route('code.create', ['vslug' => $activeElections->first()->slug]);
+        }
+
+        // Multiple elections - show selection page (future use)
+        return Inertia::render('Election/SelectElection', [
+            'activeElections' => $activeElections,
+            'authUser' => $authUser,
+        ]);
+    }
+
+    /**
+     * ✅ Demo election start - Bypass voter eligibility checks
+     *
+     * Demo elections are for testing:
+     * - All authenticated users can vote (no can_vote_now check)
+     * - Votes stored in demo_votes table (separate from real elections)
+     * - Can be reset for testing
+     */
+    public function startDemo()
+    {
+        $authUser = Auth::user();
+
+        if (!$authUser) {
+            return redirect()->route('login');
+        }
+
+        // Get the ONE demo election
+        $demoElection = Election::where('type', 'demo')
+            ->where('is_active', true)
+            ->first();
+
+        if (!$demoElection) {
+            return redirect()->route('dashboard')
+                ->with('error', 'Demo election not available');
+        }
+
+        // Bypass all voter checks for demo - direct to code entry
+        return redirect()->route('code.create', ['vslug' => $demoElection->slug]);
+    }
+
     public function getUserIpAddr()
     {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {

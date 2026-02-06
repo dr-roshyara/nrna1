@@ -1,0 +1,23 @@
+{
+  "primary_navigation": {
+    "dashboard": "Dashboard",
+    "election_page": "Wahlseite",
+    "your_vote": "Ihre Stimme",
+    "voters_list": "Wählerliste",
+    "members_list": "Mitgliederliste",
+    "result": "Ergebnis",
+    "personal_profile": "Persönliches Profil"
+  },
+  "team_management": {
+    "section_label": "Team verwalten",
+    "team_settings": "Teameinstellungen",
+    "create_new_team": "Neues Team erstellen",
+    "switch_teams_label": "Teams wechseln"
+  },
+  "account_management": {
+    "section_label": "Konto verwalten",
+    "profile": "Profil",
+    "api_tokens": "API-Tokens",
+    "logout": "Abmelden"
+  }
+}

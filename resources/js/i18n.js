@@ -24,6 +24,42 @@ import authDe from './locales/pages/Auth/de.json';
 import authEn from './locales/pages/Auth/en.json';
 import authNp from './locales/pages/Auth/np.json';
 
+import electionDe from './locales/pages/Election/de.json';
+import electionEn from './locales/pages/Election/en.json';
+import electionNp from './locales/pages/Election/np.json';
+
+import electionDashboardDe from './locales/pages/Dashboard/ElectionDashboard/de.json';
+import electionDashboardEn from './locales/pages/Dashboard/ElectionDashboard/en.json';
+import electionDashboardNp from './locales/pages/Dashboard/ElectionDashboard/np.json';
+
+import electionNavigationDe from './locales/pages/ElectionNavigation/de.json';
+import electionNavigationEn from './locales/pages/ElectionNavigation/en.json';
+import electionNavigationNp from './locales/pages/ElectionNavigation/np.json';
+
+import createCodeDe from './locales/pages/Code/CreateCode/de.json';
+import createCodeEn from './locales/pages/Code/CreateCode/en.json';
+import createCodeNp from './locales/pages/Code/CreateCode/np.json';
+
+import agreementDe from './locales/pages/Code/Agreement/de.json';
+import agreementEn from './locales/pages/Code/Agreement/en.json';
+import agreementNp from './locales/pages/Code/Agreement/np.json';
+
+import votingDe from './locales/pages/Voting/de.json';
+import votingEn from './locales/pages/Voting/en.json';
+import votingNp from './locales/pages/Voting/np.json';
+
+import voteVerifyDe from './locales/pages/VoteVerify/de.json';
+import voteVerifyEn from './locales/pages/VoteVerify/en.json';
+import voteVerifyNp from './locales/pages/VoteVerify/np.json';
+
+import voteShowVerifyDe from './locales/pages/VoteShowVerify/de.json';
+import voteShowVerifyEn from './locales/pages/VoteShowVerify/en.json';
+import voteShowVerifyNp from './locales/pages/VoteShowVerify/np.json';
+
+import voteFinalDe from './locales/pages/VoteFinal/de.json';
+import voteFinalEn from './locales/pages/VoteFinal/en.json';
+import voteFinalNp from './locales/pages/VoteFinal/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check localStorage first (user's saved preference)
@@ -56,6 +92,15 @@ const messages = {
       pricing: pricingDe,
       welcome: welcomeDe,
       auth: authDe,
+      election: electionDe,
+      'election-dashboard': electionDashboardDe,
+      'election-navigation': electionNavigationDe,
+      'code-create': createCodeDe,
+      'code-agreement': agreementDe,
+      voting: votingDe,
+      'vote-verify': voteVerifyDe,
+      'vote-show-verify': voteShowVerifyDe,
+      'vote-final': voteFinalDe,
     },
   },
   en: {
@@ -66,6 +111,15 @@ const messages = {
       pricing: pricingEn,
       welcome: welcomeEn,
       auth: authEn,
+      election: electionEn,
+      'election-dashboard': electionDashboardEn,
+      'election-navigation': electionNavigationEn,
+      'code-create': createCodeEn,
+      'code-agreement': agreementEn,
+      voting: votingEn,
+      'vote-verify': voteVerifyEn,
+      'vote-show-verify': voteShowVerifyEn,
+      'vote-final': voteFinalEn,
     },
   },
   np: {
@@ -76,6 +130,15 @@ const messages = {
       pricing: pricingNp,
       welcome: welcomeNp,
       auth: authNp,
+      election: electionNp,
+      'election-dashboard': electionDashboardNp,
+      'election-navigation': electionNavigationNp,
+      'code-create': createCodeNp,
+      'code-agreement': agreementNp,
+      voting: votingNp,
+      'vote-verify': voteVerifyNp,
+      'vote-show-verify': voteShowVerifyNp,
+      'vote-final': voteFinalNp,
     },
   },
 };

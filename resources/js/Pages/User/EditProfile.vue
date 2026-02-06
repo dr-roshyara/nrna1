@@ -288,9 +288,10 @@
                 </form>
             </jet-authentication-card>
             <a
+                v-if="user && user.id"
                 v-show="clickUserProfile"
                 id="clickUserProfile"
-                :href="route('user.show', $page.props.user.user_id)"
+                :href="route('user.show', { profile: user.id })"
             >
                 user profile
             </a>

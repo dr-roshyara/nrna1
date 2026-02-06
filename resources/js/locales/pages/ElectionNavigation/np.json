@@ -1,0 +1,23 @@
+{
+  "primary_navigation": {
+    "dashboard": "ड्यासवोर्ड",
+    "election_page": "मतदान पाना",
+    "your_vote": "तपाइको मत",
+    "voters_list": "मतदाताको नामावली",
+    "members_list": "सदस्यको नामावली",
+    "result": "परिणाम",
+    "personal_profile": "व्यक्तिगत बिवरण"
+  },
+  "team_management": {
+    "section_label": "टिम व्यवस्थापन",
+    "team_settings": "टिम सेटिङ्स",
+    "create_new_team": "नयाँ टिम बनाउनुहोस्",
+    "switch_teams_label": "टिम परिवर्तन गर्नुहोस्"
+  },
+  "account_management": {
+    "section_label": "खाता व्यवस्थापन",
+    "profile": "प्रोफाइल",
+    "api_tokens": "API टोकन",
+    "logout": "लग आउट"
+  }
+}

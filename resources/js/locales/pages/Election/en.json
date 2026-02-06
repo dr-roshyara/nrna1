@@ -1,156 +1,211 @@
 {
-  "election": {
-    "title": "Election Selection",
-    "subtitle": "Choose an election to participate in",
-    "description": "Select the election you want to vote in. You can participate in demo elections for testing or official elections for voting.",
+  "title": "Election Selection",
+  "subtitle": "Choose an election to participate in",
+  "description": "Select the election you want to vote in. You can participate in demo elections for testing or official elections for voting.",
 
-    "selector": {
-      "label": "Select an Election",
-      "placeholder": "Choose an election...",
-      "no_elections": "No elections available at this time",
-      "search_placeholder": "Search elections by name..."
-    },
+  "selector": {
+    "label": "Select an Election",
+    "placeholder": "Choose an election...",
+    "no_elections": "No elections available at this time",
+    "search_placeholder": "Search elections by name..."
+  },
 
-    "demo_badge": {
-      "text": "DEMO",
-      "tooltip": "Demo Election - Safe for testing",
-      "description": "This is a demo election. All users can participate to test the voting system."
-    },
+  "demo_badge": {
+    "text": "DEMO",
+    "tooltip": "Demo Election - Safe for testing",
+    "description": "This is a demo election. All users can participate to test the voting system."
+  },
 
-    "official_badge": {
-      "text": "OFFICIAL",
-      "tooltip": "Official Election",
-      "description": "This is an official election. Only eligible voters can participate."
-    },
+  "official_badge": {
+    "text": "OFFICIAL",
+    "tooltip": "Official Election",
+    "description": "This is an official election. Only eligible voters can participate."
+  },
 
-    "election_card": {
-      "active": "Active",
-      "inactive": "Inactive",
-      "voting_ends": "Voting ends: {date}",
-      "voting_starts": "Voting starts: {date}",
-      "status": "Status: {status}",
-      "type": "Type: {type}",
-      "select_button": "Select This Election",
-      "current_selection": "Currently Selected",
-      "no_date_range": "No date range set",
-      "voting_period": "Voting period: {start} - {end}"
-    },
+  "election_card": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "voting_ends": "Voting ends: {date}",
+    "voting_starts": "Voting starts: {date}",
+    "status": "Status: {status}",
+    "type": "Type: {type}",
+    "select_button": "Select This Election",
+    "current_selection": "Currently Selected",
+    "no_date_range": "No date range set",
+    "voting_period": "Voting period: {start} - {end}"
+  },
 
-    "election_details": {
-      "name": "Election Name",
-      "type": "Election Type",
-      "status": "Status",
-      "voting_period": "Voting Period",
-      "start_time": "Start Time",
-      "end_time": "End Time",
-      "description": "Description",
-      "eligibility": "Who Can Vote"
-    },
+  "election_details": {
+    "name": "Election Name",
+    "type": "Election Type",
+    "status": "Status",
+    "voting_period": "Voting Period",
+    "start_time": "Start Time",
+    "end_time": "End Time",
+    "description": "Description",
+    "eligibility": "Who Can Vote"
+  },
 
-    "eligibility": {
-      "demo": "All users can vote in demo elections (for testing)",
-      "real": "Only users with voting eligibility in the eligible time window can vote",
-      "check_status": "Check your voting eligibility"
+  "eligibility": {
+    "demo": "All users can vote in demo elections (for testing)",
+    "real": "Only users with voting eligibility in the eligible time window can vote",
+    "check_status": "Check your voting eligibility"
+  },
+
+  "actions": {
+    "select": "Select Election",
+    "cancel": "Cancel",
+    "back": "Back",
+    "next": "Next",
+    "confirm": "Confirm Selection",
+    "change": "Change Election"
+  },
+
+  "messages": {
+    "selected": "Election selected successfully",
+    "selection_required": "Please select an election to continue",
+    "not_eligible": "You are not eligible to vote in this election",
+    "election_inactive": "This election is not currently active",
+    "election_not_found": "Election not found",
+    "voting_not_started": "Voting for this election has not started yet",
+    "voting_ended": "Voting for this election has ended",
+    "already_voted": "You have already voted in this election"
+  },
+
+  "demo_mode_notice": {
+    "title": "You are in DEMO mode",
+    "message": "This is a demo election for testing the voting system. Your votes will not count towards official results.",
+    "warning": "Demo data can be reset at any time for testing purposes.",
+    "aria_label": "Demo mode warning: this is a demonstration election"
+  },
+
+  "dashboard": {
+    "title": "Election Management",
+    "statistics": "Voting Statistics",
+    "real_elections": "Official Elections",
+    "demo_elections": "Demo Elections",
+
+    "stats": {
+      "total_votes": "Total Votes Cast",
+      "total_codes": "Total Codes Sent",
+      "verified_codes": "Verified Codes",
+      "turnout_percentage": "Turnout %",
+      "demo_votes": "Demo Votes",
+      "real_votes": "Official Votes"
     },
 
     "actions": {
-      "select": "Select Election",
-      "cancel": "Cancel",
-      "back": "Back",
-      "next": "Next",
-      "confirm": "Confirm Selection",
-      "change": "Change Election"
+      "view_details": "View Details",
+      "view_results": "View Results",
+      "manage": "Manage",
+      "cleanup_demo": "Clean Up Demo Data",
+      "reset_demo": "Reset Demo Election"
     },
 
-    "messages": {
-      "selected": "Election selected successfully",
-      "selection_required": "Please select an election to continue",
-      "not_eligible": "You are not eligible to vote in this election",
-      "election_inactive": "This election is not currently active",
-      "election_not_found": "Election not found",
-      "voting_not_started": "Voting for this election has not started yet",
-      "voting_ended": "Voting for this election has ended",
-      "already_voted": "You have already voted in this election"
+    "cleanup": {
+      "title": "Clean Up Demo Data",
+      "message": "This will delete all demo voting data older than 30 days",
+      "confirm": "Are you sure?",
+      "success": "Demo data cleaned up successfully",
+      "error": "Failed to clean up demo data"
     },
 
-    "demo_mode_notice": {
-      "title": "You are in DEMO mode",
-      "message": "This is a demo election for testing the voting system. Your votes will not count towards official results.",
-      "warning": "Demo data can be reset at any time for testing purposes.",
-      "aria_label": "Demo mode warning: this is a demonstration election"
-    },
-
-    "dashboard": {
-      "title": "Election Management",
-      "statistics": "Voting Statistics",
-      "real_elections": "Official Elections",
-      "demo_elections": "Demo Elections",
-
-      "stats": {
-        "total_votes": "Total Votes Cast",
-        "total_codes": "Total Codes Sent",
-        "verified_codes": "Verified Codes",
-        "turnout_percentage": "Turnout %",
-        "demo_votes": "Demo Votes",
-        "real_votes": "Official Votes"
-      },
-
-      "actions": {
-        "view_details": "View Details",
-        "view_results": "View Results",
-        "manage": "Manage",
-        "cleanup_demo": "Clean Up Demo Data",
-        "reset_demo": "Reset Demo Election"
-      },
-
-      "cleanup": {
-        "title": "Clean Up Demo Data",
-        "message": "This will delete all demo voting data older than 30 days",
-        "confirm": "Are you sure?",
-        "success": "Demo data cleaned up successfully",
-        "error": "Failed to clean up demo data"
-      },
-
-      "reset": {
-        "title": "Reset Demo Election",
-        "message": "This will delete ALL demo voting data for this election. This action cannot be undone.",
-        "confirm": "Type 'RESET' to confirm",
-        "success": "Demo election reset successfully",
-        "error": "Failed to reset demo election"
-      }
-    },
-
-    "breadcrumb": {
-      "elections": "Elections",
-      "select": "Select Election",
-      "voting": "Voting"
-    },
-
-    "help": {
-      "demo_vs_official": "What is the difference between demo and official elections?",
-      "demo_explanation": "Demo elections are for testing the voting system. All users can vote, and the data is separate from official elections.",
-      "official_explanation": "Official elections are used for real voting. Only eligible users can vote during the voting period.",
-      "how_to_select": "How do I select an election?",
-      "selection_explanation": "Click 'Select Election' to choose which election you want to vote in. You can only vote in one election at a time.",
-      "change_election": "Can I change my election selection?",
-      "change_explanation": "Yes, you can change your selection at any time by clicking 'Change Election' before you submit your vote."
-    },
-
-    "current_step_label": "Step {step} of {total}",
-
-    "types": {
-      "demo": "Demo",
-      "real": "Real",
-      "demo_full": "Demonstration Election",
-      "real_full": "Real Election"
-    },
-
-    "loading": "Loading elections...",
-
-    "error": {
-      "title": "Error Loading Elections",
-      "failed_to_load": "Failed to load available elections. Please try again.",
-      "selection_failed": "Failed to save your election selection. Please try again."
+    "reset": {
+      "title": "Reset Demo Election",
+      "message": "This will delete ALL demo voting data for this election. This action cannot be undone.",
+      "confirm": "Type 'RESET' to confirm",
+      "success": "Demo election reset successfully",
+      "error": "Failed to reset demo election"
     }
+  },
+
+  "breadcrumb": {
+    "elections": "Elections",
+    "select": "Select Election",
+    "voting": "Voting"
+  },
+
+  "help": {
+    "demo_vs_official": "What is the difference between demo and official elections?",
+    "demo_explanation": "Demo elections are for testing the voting system. All users can vote, and the data is separate from official elections.",
+    "official_explanation": "Official elections are used for real voting. Only eligible users can vote during the voting period.",
+    "how_to_select": "How do I select an election?",
+    "selection_explanation": "Click 'Select Election' to choose which election you want to vote in. You can only vote in one election at a time.",
+    "change_election": "Can I change my election selection?",
+    "change_explanation": "Yes, you can change your selection at any time by clicking 'Change Election' before you submit your vote."
+  },
+
+  "current_step_label": "Step {step} of {total}",
+
+  "types": {
+    "demo": "Demo",
+    "real": "Real",
+    "demo_full": "Demonstration Election",
+    "real_full": "Real Election"
+  },
+
+  "loading": "Loading elections...",
+
+  "error": {
+    "title": "Error Loading Elections",
+    "failed_to_load": "Failed to load available elections. Please try again.",
+    "selection_failed": "Failed to save your election selection. Please try again."
+  },
+
+  "select_election": {
+    "title": "Select an Election",
+    "heading": "Multiple Elections Active",
+    "subtitle": "Choose which election you want to participate in",
+    "instructions": "Select one of the active elections below to begin your voting journey",
+    "no_elections": "No active elections at this time",
+    "select_button": "Select This Election",
+    "voting_period": "Voting Period",
+    "candidates": "Candidates",
+    "description": "Description",
+    "learn_more": "Learn more about this election"
+  },
+
+  "voting_page": {
+    "title": "Active Election - Voting Page",
+    "status_active": "Voting is currently active",
+    "time_remaining": "Time remaining",
+    "details": "Election Details",
+    "election_type": "Election Type",
+    "voting_period": "Voting Period",
+    "description": "Description",
+    "voting_instructions": "Voting Instructions",
+    "step1": "Enter your verification code",
+    "step2": "Read and agree to the election terms",
+    "step3": "Select your candidates",
+    "step4": "Review your selections",
+    "step5": "Submit your vote",
+    "secure": "Secure & Anonymous",
+    "secure_desc": "Your vote is encrypted and anonymous. No voter tracking.",
+    "verified": "Verified & Audited",
+    "verified_desc": "All elections are audited and results are verifiable.",
+    "global": "Global Access",
+    "global_desc": "Vote from anywhere in the world, anytime during voting period.",
+    "start_voting": "Start Voting Now",
+    "need_help": "Need Help?",
+    "help_desc": "If you have any questions about the voting process, please contact the election committee.",
+    "contact_support": "Contact Support",
+    "important_notes": "Important Rules",
+    "note1": "You can only vote once in this election",
+    "note2": "Voting period closes at",
+    "note3": "Keep your verification code safe",
+    "demo": "Demo Election",
+    "real": "Official Election",
+    "already_voted": "You have already voted in this election",
+    "not_eligible": "You are not eligible to vote at this time",
+    "voter_status": "Your Voter Status",
+    "verified_voter": "Verified voter",
+    "voting_from": "Voting from",
+    "important_rules": "Important Rules",
+    "rule_no_share": "Do not share your verification code",
+    "rule_one_vote": "Voting can only be done once",
+    "rule_no_change": "Votes cannot be changed after submission",
+    "rule_deadline": "Voting ends precisely at",
+    "timezone": "Timezone",
+    "location_not_detected": "Location not detected"
   }
 }

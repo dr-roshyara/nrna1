@@ -1,0 +1,31 @@
+{
+  "page_meta": {
+    "title": "Wahlcode eingeben",
+    "description": "Geben Sie den Wahlcode ein, der an Ihre E-Mail gesendet wurde, um mit der Abstimmung fortzufahren"
+  },
+  "errors": {
+    "ip_mismatch_title": "IP-Adresse stimmt nicht überein",
+    "ip_mismatch_message": "Ihre IP-Adresse hat sich geändert. Dies dient zu Sicherheitszwecken."
+  },
+  "header": {
+    "icon": "📧",
+    "title": "Überprüfen Sie jetzt Ihre E-Mail"
+  },
+  "instructions": {
+    "english_section": "Anleitung",
+    "english_intro": "Wir haben Ihnen eine E-Mail gesendet",
+    "english_ago": "Minuten vor, die Ihren Wahlcode enthält. Sie können diesen Code für die nächsten",
+    "english_remaining": "Minuten verwenden, um das Abstimmungsformular zu öffnen. Wenn Sie die E-Mail nicht in Ihrem Postfach finden, überprüfen Sie bitte auch Ihren Spam-Ordner.",
+    "nepali_section": "Anleitung",
+    "nepali_intro": "Wir haben Ihnen eine E-Mail gesendet",
+    "nepali_ago": "Minuten vor, die Ihren Wahlcode enthält. Sie können diesen Code für die nächsten",
+    "nepali_remaining": "Minuten verwenden, um das Abstimmungsformular zu öffnen.",
+    "nepali_spam_warning": "Wenn Sie die E-Mail in Ihrem Postfach nicht finden, überprüfen Sie bitte auch Ihren Spam-Ordner."
+  },
+  "form": {
+    "code_label": "Erster Wahlcode",
+    "code_placeholder": "Geben Sie Ihren Wahlcode ein",
+    "submit_button": "🗳️ HIER KLICKEN UM ABSTIMMUNGSFORMULAR ZU ERHALTEN",
+    "submit_button_secondary": "Zum Abstimmungsformular"
+  }
+}

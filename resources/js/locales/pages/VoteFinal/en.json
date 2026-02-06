@@ -1,0 +1,66 @@
+{
+  "success_banner": {
+    "title": "Vote Successfully Submitted!",
+    "subtitle": "Your vote has been securely recorded and confirmed.",
+    "confirmation_number": "Confirmation #"
+  },
+  "gratitude": {
+    "thank_you": "Thank You for Voting",
+    "message": "Your participation in this election is important and helps shape our community's future. Your vote has been successfully recorded with the highest level of security and privacy."
+  },
+  "vote_summary": {
+    "title": "Your Vote Summary",
+    "national_posts": "National Posts",
+    "regional_posts": "Regional Posts",
+    "selected_candidates": "Selected Candidates",
+    "no_vote": "You chose not to vote for this position",
+    "candidate_count": "{count} candidate selected",
+    "candidate_count_plural": "{count} candidates selected"
+  },
+  "vote_details": {
+    "position": "Position",
+    "candidates": "Candidates",
+    "candidates_count": "Number of Candidates"
+  },
+  "what_next": {
+    "title": "What Happens Next?",
+    "step_1_title": "Vote Recording",
+    "step_1_description": "Your vote is encrypted and stored securely in our voting system.",
+    "step_2_title": "Election Closing",
+    "step_2_description": "Once all votes are submitted and the election period ends, votes will be counted.",
+    "step_3_title": "Results Publication",
+    "step_3_description": "Election results will be published after all votes have been counted and verified.",
+    "step_4_title": "Verification Available",
+    "step_4_description": "You can verify your vote at any time using your verification code."
+  },
+  "important_info": {
+    "title": "Important Information",
+    "security": {
+      "title": "Your Vote is Secure",
+      "description": "Your selections are encrypted end-to-end and protected with industry-standard security protocols."
+    },
+    "privacy": {
+      "title": "Your Privacy is Protected",
+      "description": "Your vote is anonymous and cannot be traced back to you. No personal information is stored with your vote."
+    },
+    "verification": {
+      "title": "You Can Verify Later",
+      "description": "Keep your verification code safe. You can use it to verify that your vote was recorded correctly."
+    }
+  },
+  "receipt": {
+    "title": "Vote Receipt",
+    "download_button": "Download Receipt",
+    "print_button": "Print Receipt",
+    "timestamp": "Submission Time",
+    "reference_number": "Reference Number"
+  },
+  "actions": {
+    "return_dashboard": "Return to Dashboard",
+    "view_results": "View Election Results",
+    "help": "Need Help?"
+  },
+  "footer": {
+    "message": "Thank you for exercising your right to vote!"
+  }
+}

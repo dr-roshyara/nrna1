@@ -1,4 +1,7 @@
 {
+  "workflow": {
+    "step": "Schritt {current}/{total}"
+  },
   "buttons": {
     "save": "Speichern",
     "cancel": "Abbrechen",

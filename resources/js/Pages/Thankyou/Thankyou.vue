@@ -1,5 +1,12 @@
 <template>
-    <nrna-layout> 
+    <nrna-layout>
+        <!-- Workflow Step Indicator - Step 5/5 -->
+        <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <WorkflowStepIndicator workflow="VOTING" :currentStep="5" />
+            </div>
+        </div>
+
          <div class="min-h-screen m-auto py-2"> 
               <div class=" mt-10 mx-auto flex  flex-col items-center justify-center">        
               <p class="py-2 text-2xl font-bold text-blue-600 "> Thank you  for the vote ! मतदान गर्नु भएकोमा धन्यवाद । </p>
@@ -15,12 +22,15 @@
 </template>
 <script>
 import NrnaLayout from '../../Layouts/NrnaLayout.vue'
+import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator'
+
 export default {
     props:{
 
     },
     components:{
-        NrnaLayout
+        NrnaLayout,
+        WorkflowStepIndicator
 
     }
 

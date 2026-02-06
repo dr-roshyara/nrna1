@@ -1,19 +1,7 @@
 <template>
   <div class="voting-layout">
-    <!-- Header with Election Badge -->
-    <header class="voting-header">
-      <div class="header-content">
-        <h1 class="header-title">{{ pageTitle }}</h1>
-        <ElectionTypeBadge
-          v-if="election"
-          :election-type="election.type"
-          size="sm"
-          :show-tooltip="true"
-          class="header-badge"
-          :aria-label="electionTypeLabel"
-        />
-      </div>
-    </header>
+    <!-- Election Header with Logo, Language, Auth -->
+    <ElectionHeader :isLoggedIn="false" />
 
     <!-- Demo Mode Notice with proper ARIA -->
     <div
@@ -35,8 +23,8 @@
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
         </svg>
         <div class="notice-text">
-          <strong>{{ $t('election.demo_mode_notice.title') }}</strong>
-          <p>{{ $t('election.demo_mode_notice.message') }}</p>
+          <strong>{{ $t('pages.election.demo_mode_notice.title') }}</strong>
+          <p>{{ $t('pages.election.demo_mode_notice.message') }}</p>
         </div>
       </div>
     </div>
@@ -46,27 +34,8 @@
       <slot />
     </main>
 
-    <!-- Footer with semantic HTML -->
-    <footer class="voting-footer">
-      <div class="footer-content">
-        <div v-if="election" class="election-info">
-          <span class="info-label">{{ $t('election.election_details.name') }}:</span>
-          <span class="info-value">{{ election.name }}</span>
-        </div>
-        <div
-          v-if="currentStep"
-          class="step-indicator"
-          :aria-label="$t('election.current_step_label', { step: currentStep, total: totalSteps })"
-        >
-          <span
-            class="step-number"
-            :aria-current="'step'"
-          >
-            {{ currentStep }}
-          </span>
-        </div>
-      </div>
-    </footer>
+    <!-- PublicDigit Footer -->
+    <PublicDigitFooter />
   </div>
 </template>
 
@@ -74,6 +43,8 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ElectionTypeBadge from './ElectionTypeBadge.vue'
+import PublicDigitFooter from '@/Jetstream/PublicDigitFooter.vue'
+import ElectionHeader from '@/Components/Header/ElectionHeader.vue'
 
 const { t } = useI18n()
 
@@ -136,8 +107,8 @@ const isDemoMode = computed(() => {
 const electionTypeLabel = computed(() => {
   if (!props.election) return ''
   return props.election.type === 'demo'
-    ? t('election.types.demo_full')
-    : t('election.types.real_full')
+    ? t('pages.election.types.demo_full')
+    : t('pages.election.types.real_full')
 })
 </script>
 
@@ -149,26 +120,6 @@ const electionTypeLabel = computed(() => {
   flex-direction: column;
 }
 
-/* Header */
-.voting-header {
-  @apply sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm;
-}
-
-.header-content {
-  @apply max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.header-title {
-  @apply text-2xl font-bold text-gray-900 m-0;
-}
-
-.header-badge {
-  flex-shrink: 0;
-}
 
 /* Demo Notice */
 .demo-notice {
@@ -205,63 +156,14 @@ const electionTypeLabel = computed(() => {
 
 /* Main Content */
 .voting-main {
-  @apply flex-1 max-w-7xl mx-auto w-full px-6 py-8;
-  display: flex;
+  @apply flex-1 w-full px-6 py-8;
+  display: block;
   flex: 1;
-  width: 100%;
 }
 
-/* Footer */
-.voting-footer {
-  @apply bg-white border-t border-gray-200 mt-8;
-}
-
-.footer-content {
-  @apply max-w-7xl mx-auto px-6 py-4 flex items-center justify-between;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.election-info {
-  @apply text-sm text-gray-600;
-  display: flex;
-  gap: 0.5rem;
-}
-
-.info-label {
-  @apply font-medium text-gray-900;
-}
-
-.info-value {
-  @apply text-gray-700;
-}
-
-.step-indicator {
-  @apply text-sm text-gray-500;
-}
-
-.step-number {
-  @apply inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full font-medium;
-}
-
-/* Keyboard Focus Visibility */
-.step-number:focus-visible {
-  @apply outline-2 outline-offset-2 outline-blue-600;
-}
 
 /* Responsive */
 @media (max-width: 768px) {
-  .header-content {
-    @apply px-4 py-3 flex-col items-start;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .header-title {
-    @apply text-xl;
-  }
-
   .demo-notice {
     @apply px-4 py-2;
   }
@@ -286,16 +188,6 @@ const electionTypeLabel = computed(() => {
   .voting-main {
     @apply px-4 py-4;
   }
-
-  .footer-content {
-    @apply px-4 py-3 flex-col items-start gap-2;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .election-info {
-    @apply text-xs;
-  }
 }
 
 @media (max-width: 480px) {
@@ -305,10 +197,6 @@ const electionTypeLabel = computed(() => {
 
   .voting-main {
     @apply px-3 py-3;
-  }
-
-  .footer-content {
-    @apply px-3 py-2;
   }
 
   .notice-icon {

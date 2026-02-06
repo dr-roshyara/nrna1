@@ -1,7 +1,30 @@
 <template>
-    <nrna-layout>
+    <election-layout>
+        <!-- ACCESSIBILITY: Skip link -->
+        <a href="#main-content" class="skip-link">
+            {{ $t('pages.vote-show-verify.aria_labels.skip_to_content') }}
+        </a>
+
+        <!-- Workflow Step Indicator - Step 5/5 -->
+        <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <WorkflowStepIndicator workflow="VOTING" :currentStep="5" />
+            </div>
+        </div>
+
+        <!-- Page Header -->
+        <header role="banner" class="text-center mb-12 pt-8 px-4">
+            <h1 class="text-4xl font-bold text-gray-900 mb-3">
+                {{ $t('pages.vote-show-verify.header.title') }}
+            </h1>
+            <p class="text-xl text-gray-700 mb-4">
+                {{ $t('pages.vote-show-verify.header.subtitle') }}
+            </p>
+            <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full" aria-hidden="true"></div>
+        </header>
+
         <!-- Main Container -->
-        <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-8 px-4">
+        <main id="main-content" role="main" class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-8 px-4">
             <div class="max-w-4xl mx-auto">
                 
                 <!-- Demo Vote Success Banner with Verification Code -->
@@ -21,13 +44,13 @@
 
                         <!-- Success Message -->
                         <h1 class="text-3xl md:text-4xl font-bold mb-4">
-                            🎉 Demo Vote Submitted Successfully!
+                            {{ $t('pages.vote-show-verify.demo_success.title') }}
                         </h1>
 
                         <!-- Verification Code Display -->
                         <div class="max-w-2xl mx-auto">
                             <div class="bg-white bg-opacity-10 rounded-xl p-6 mb-6">
-                                <p class="text-lg opacity-90 mb-4">Your demo vote verification code:</p>
+                                <p class="text-lg opacity-90 mb-4">{{ $t('pages.vote-show-verify.demo_success.code_label') }}</p>
                                 <div class="bg-white bg-opacity-20 rounded-lg p-4 mb-4">
                                     <p class="text-3xl font-mono font-bold break-all tracking-wider">
                                         {{ verification_code }}
@@ -38,17 +61,17 @@
                                     :class="copied ? 'bg-green-400 text-white' : 'bg-white text-green-600 hover:bg-gray-100'"
                                     class="font-bold py-2 px-6 rounded-lg transition-colors"
                                 >
-                                    {{ copied ? '✓ Copied!' : '📋 Copy Verification Code' }}
+                                    {{ copied ? $t('pages.vote-show-verify.demo_success.copy_button_copied') : $t('pages.vote-show-verify.demo_success.copy_button_initial') }}
                                 </button>
                             </div>
 
                             <!-- Instructions -->
                             <div class="bg-white bg-opacity-10 rounded-xl p-4 text-sm">
-                                <p class="mb-2"><strong>✓ How to use your code:</strong></p>
+                                <p class="mb-2"><strong>{{ $t('pages.vote-show-verify.demo_success.instructions_title') }}</strong></p>
                                 <ol class="text-left space-y-1 ml-4">
-                                    <li>1. Select "Demo Election" option below</li>
-                                    <li>2. Paste or type your code in the demo field</li>
-                                    <li>3. Click "Verify Demo Vote" to view your voting choices</li>
+                                    <li>{{ $t('pages.vote-show-verify.demo_success.instructions_1') }}</li>
+                                    <li>{{ $t('pages.vote-show-verify.demo_success.instructions_2') }}</li>
+                                    <li>{{ $t('pages.vote-show-verify.demo_success.instructions_3') }}</li>
                                 </ol>
                             </div>
                         </div>
@@ -72,28 +95,15 @@
 
                         <!-- Congratulations Message -->
                         <h1 class="text-3xl md:text-4xl font-bold mb-4">
-                            🎉 Congratulations {{ user_name }}!
+                            {{ formatCongratulations(user_name) }}
                         </h1>
 
                         <!-- Success Description -->
                         <div class="max-w-2xl mx-auto">
                             <div class="bg-white bg-opacity-10 rounded-xl p-6 mb-6">
                                 <p class="text-lg md:text-xl mb-4 leading-relaxed">
-                                    Thank you for participating in the election!
-                                     Your vote has been successfully recorded.
-                                    To view  your vote, please enter
-                                    the <span class="font-bold text-yellow-200"> new verification code</span>
-                                    sent to your email.
+                                    {{ $t('pages.vote-show-verify.real_success.description') }}
                                 </p>
-
-                                <!-- Nepali Text -->
-                                <div class="pt-4 border-t border-white border-opacity-20">
-                                    <p class="text-base opacity-90 leading-relaxed">
-                                        मतदान गर्नुभएकोमा धन्यवाद! आफ्नो मत हेर्न यहाँलाइ इमेल मार्फत पठाइएको नयाँ कोड
-                                        तलको कोठामा भर्नुहोस ।   कृपया आफ्नो पासवर्ड र कोड गोप्य राख्नुहोस् ।
-                                         अरूलाई पनि नदिनुहोस्।
-                                    </p>
-                                </div>
                             </div>
 
                             <!-- Security Notice -->
@@ -101,7 +111,7 @@
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                                 </svg>
-                                <span>Keep your verification code private and secure</span>
+                                <span>{{ $t('pages.vote-show-verify.real_success.security_notice') }}</span>
                             </div>
                         </div>
                     </div>
@@ -117,17 +127,17 @@
                             </svg>
                         </div>
                         <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">
-                            Verify Your Vote
+                            {{ $t('pages.vote-show-verify.main_card.title') }}
                         </h2>
                         <p class="text-blue-100 text-lg">
-                            Enter your verification code to view your voting choices
+                            {{ $t('pages.vote-show-verify.main_card.subtitle') }}
                         </p>
                     </div>
 
                     <!-- Election Type Selector -->
                     <div class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200 px-8 py-6">
                         <div class="max-w-2xl mx-auto">
-                            <p class="text-sm font-semibold text-gray-700 mb-4 text-center">Select Election Type | निर्वाचन प्रकार चयन गर्नुहोस्</p>
+                            <p class="text-sm font-semibold text-gray-700 mb-4 text-center">{{ $t('pages.vote-show-verify.election_type.label') }}</p>
                             <div class="flex flex-col md:flex-row gap-4 md:gap-8">
                                 <!-- Real Election Option -->
                                 <label class="flex items-center cursor-pointer flex-1">
@@ -151,7 +161,7 @@
                                             <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
                                         </div>
                                     </div>
-                                    <span class="ml-3 text-sm font-medium text-gray-700">Real Election | असली निर्वाचन</span>
+                                    <span class="ml-3 text-sm font-medium text-gray-700">{{ $t('pages.vote-show-verify.election_type.real') }}</span>
                                 </label>
 
                                 <!-- Demo Election Option -->
@@ -176,7 +186,7 @@
                                             <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
                                         </div>
                                     </div>
-                                    <span class="ml-3 text-sm font-medium text-gray-700">Demo Election | डेमो निर्वाचन</span>
+                                    <span class="ml-3 text-sm font-medium text-gray-700">{{ $t('pages.vote-show-verify.election_type.demo') }}</span>
                                 </label>
                             </div>
                         </div>
@@ -192,11 +202,10 @@
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                     </svg>
-                                    <span>Check Your Email</span>
+                                    <span>{{ $t('pages.vote-show-verify.real_election.instructions_title') }}</span>
                                 </div>
                                 <p class="text-gray-600 max-w-md mx-auto">
-                                    A verification code has been sent to your registered email address for the <strong>Real Election</strong>.
-                                    Please enter it below to view your voting record.
+                                    {{ $t('pages.vote-show-verify.real_election.instructions') }}
                                 </p>
                             </div>
 
@@ -209,7 +218,7 @@
                                             <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
                                             </svg>
-                                            <span>Verification Code (Real Election)</span>
+                                            <span>{{ $t('pages.vote-show-verify.real_election.label') }}</span>
                                         </span>
                                     </label>
 
@@ -218,7 +227,7 @@
                                             id="voting_code_real"
                                             type="text"
                                             v-model="form.voting_code"
-                                            placeholder="Enter your verification code from email"
+                                            :placeholder="$t('pages.vote-show-verify.real_election.placeholder')"
                                             class="w-full px-6 py-4 text-lg font-mono border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 bg-gray-50 focus:bg-white"
                                             :class="{
                                                 'border-red-300 focus:border-red-500 focus:ring-red-100': form.errors.voting_code,
@@ -273,13 +282,13 @@
                                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                             </svg>
-                                            <span>Verifying...</span>
+                                            <span>{{ $t('pages.vote-show-verify.real_election.processing_button') }}</span>
                                         </span>
                                         <span v-else class="flex items-center justify-center space-x-3">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                             </svg>
-                                            <span>Verify & View My Vote</span>
+                                            <span>{{ $t('pages.vote-show-verify.real_election.submit_button') }}</span>
                                         </span>
                                     </button>
                                 </div>
@@ -300,11 +309,10 @@
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <span>Demo Election - Test Verification</span>
+                                    <span>{{ $t('pages.vote-show-verify.demo_election.instructions_title') }}</span>
                                 </div>
                                 <p class="text-gray-600 max-w-md mx-auto">
-                                    Enter your <strong>Demo Election</strong> verification code to view your test voting record.
-                                    This is for testing and demonstration purposes only.
+                                    {{ $t('pages.vote-show-verify.demo_election.instructions') }}
                                 </p>
                             </div>
 
@@ -317,7 +325,7 @@
                                             <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                             </svg>
-                                            <span>Verification Code (Demo Election)</span>
+                                            <span>{{ $t('pages.vote-show-verify.demo_election.label') }}</span>
                                         </span>
                                     </label>
 
@@ -326,7 +334,7 @@
                                             id="voting_code_demo"
                                             type="text"
                                             v-model="form.demo_voting_code"
-                                            placeholder="Enter your demo verification code"
+                                            :placeholder="$t('pages.vote-show-verify.demo_election.placeholder')"
                                             class="w-full px-6 py-4 text-lg font-mono border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-200 bg-gray-50 focus:bg-white"
                                             :class="{
                                                 'border-red-300 focus:border-red-500 focus:ring-red-100': form.errors.demo_voting_code,
@@ -381,13 +389,13 @@
                                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                             </svg>
-                                            <span>Verifying...</span>
+                                            <span>{{ $t('pages.vote-show-verify.demo_election.processing_button') }}</span>
                                         </span>
                                         <span v-else class="flex items-center justify-center space-x-3">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                             </svg>
-                                            <span>Verify Demo Vote</span>
+                                            <span>{{ $t('pages.vote-show-verify.demo_election.submit_button') }}</span>
                                         </span>
                                     </button>
                                 </div>
@@ -403,7 +411,7 @@
                         <!-- Help Section -->
                         <div class="mt-12 pt-8 border-t border-gray-100">
                             <div class="text-center">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-4">Need Help?</h3>
+                                <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ $t('pages.vote-show-verify.help.title') }}</h3>
                                 <div class="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
                                     <!-- Help Item 1 -->
                                     <div class="bg-gray-50 rounded-lg p-4 text-left">
@@ -414,8 +422,8 @@
                                                 </svg>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-gray-900">Check Email</h4>
-                                                <p class="text-sm text-gray-600">Look for verification code in your inbox or spam folder</p>
+                                                <h4 class="font-medium text-gray-900">{{ $t('pages.vote-show-verify.help.check_email.title') }}</h4>
+                                                <p class="text-sm text-gray-600">{{ $t('pages.vote-show-verify.help.check_email.description') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -429,8 +437,8 @@
                                                 </svg>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-gray-900">Contact Support</h4>
-                                                <p class="text-sm text-gray-600">Send screenshot to administrator if issues persist</p>
+                                                <h4 class="font-medium text-gray-900">{{ $t('pages.vote-show-verify.help.contact_support.title') }}</h4>
+                                                <p class="text-sm text-gray-600">{{ $t('pages.vote-show-verify.help.contact_support.description') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -446,24 +454,26 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
-                        <span>Your vote is encrypted and secure</span>
+                        <span>{{ $t('pages.vote-show-verify.footer.security_message') }}</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </nrna-layout>
+        </main>
+    </election-layout>
 </template>
 
 <script>
-import NrnaLayout from "@/Layouts/ElectionLayout.vue";
+import ElectionLayout from "@/Layouts/ElectionLayout.vue";
 import VoteFinal from "@/Pages/Vote/VoteFinal";
+import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator";
 import { useForm } from "@inertiajs/inertia-vue3";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 
 export default {
     components: {
-        NrnaLayout,
+        ElectionLayout,
         VoteFinal,
+        WorkflowStepIndicator,
         JetValidationErrors,
     },
     
@@ -542,6 +552,10 @@ export default {
     },
 
     methods: {
+        formatCongratulations(name) {
+            const template = this.$t('pages.vote-show-verify.real_success.title');
+            return template.replace('{name}', name);
+        },
         copyToClipboard() {
             if (this.verification_code) {
                 navigator.clipboard.writeText(this.verification_code).then(() => {
@@ -586,6 +600,24 @@ export default {
 </script>
 
 <style scoped>
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #2563eb;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+    border-radius: 0 0 4px 0;
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 /* Custom styles for better UX */
 .gradient-text {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

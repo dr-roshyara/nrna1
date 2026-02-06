@@ -1,4 +1,7 @@
 {
+  "workflow": {
+    "step": "चरण {current}/{total}"
+  },
   "buttons": {
     "save": "सेभ गर्नुहोस्",
     "cancel": "रद्द गर्नुहोस्",

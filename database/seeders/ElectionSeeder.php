@@ -37,8 +37,8 @@ class ElectionSeeder extends Seeder
                 'type' => 'demo',
                 'description' => 'Test the voting system with demo candidates. All users can vote.',
                 'is_active' => true,
-                'voting_start_time' => Carbon::now()->subDays(1),
-                'voting_end_time' => Carbon::now()->addMonths(3),
+                'start_date' => Carbon::now()->subDays(1),
+                'end_date' => Carbon::now()->addMonths(3),
             ]
         );
 
@@ -56,8 +56,8 @@ class ElectionSeeder extends Seeder
                 'type' => 'real',
                 'description' => 'Official voting for the current election period',
                 'is_active' => true,
-                'voting_start_time' => Carbon::now()->subDays(1),
-                'voting_end_time' => Carbon::now()->addWeeks(2),
+                'start_date' => Carbon::now()->subDays(1),
+                'end_date' => Carbon::now()->addWeeks(2),
             ]
         );
 

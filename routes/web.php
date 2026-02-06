@@ -84,6 +84,16 @@ Route::get('/voting/election', function () {
     return Inertia::render('VotingElection');
 })->name('voting.election');
 
+// Election selection - when multiple elections are active
+Route::get('/election/select', [ElectionController::class, 'selectElection'])
+    ->middleware('auth')
+    ->name('election.select');
+
+// Demo election start - bypass voter checks
+Route::get('/election/demo/start', [ElectionController::class, 'startDemo'])
+    ->middleware('auth')
+    ->name('election.demo.start');
+
 // Pricing page
 Route::get('/pricing', function () {
     return Inertia::render('Pricing');

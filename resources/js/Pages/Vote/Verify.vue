@@ -1,384 +1,445 @@
 <template>
     <VotingLayout
         :election="election"
-        page-title="Step 4: Verify Your Vote"
+        :page-title="$t('pages.vote-verify.header.title')"
         :current-step="4"
         :total-steps="5"
     >
-        <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
-            <div class="container mx-auto px-4">
-                <!-- Header Section -->
-                <div class="text-center mb-8">
-                    <h1 class="text-4xl font-bold text-gray-800 mb-2">
-                        Vote Verification
+        <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Workflow Step Indicator - Step 4/5 -->
+                <WorkflowStepIndicator workflow="VOTING" :currentStep="4" />
+
+                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                        {{ $t('pages.vote-verify.header.title') }}
                     </h1>
-                    <p class="text-xl text-gray-600">
-                        मतदान पुष्टिकरण
+                    <p class="text-lg sm:text-xl text-gray-600 mb-4">
+                        {{ $t('pages.vote-verify.header.subtitle') }}
                     </p>
-                    <div class="mt-4 inline-flex items-center px-4 py-2 bg-blue-100 rounded-full">
-                        <svg class="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                            </svg>
-                        <span class="text-blue-800 font-medium">Secure Verification Process</span>
-                    </div>
-                </div>
 
-                <!-- Main Content Grid -->
-                <div class="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-                    
+                    <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-200 rounded-full">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        <span class="text-sm sm:text-base font-medium text-blue-800">
+                            {{ $t('pages.vote-verify.secure_process') }}
+                        </span>
+                    </div>
+
+                    <!-- Main Content Grid -->
+                    <div class="grid lg:grid-cols-3 gap-6 md:gap-8">
                     <!-- Left Column - Verification Form -->
-                    <!-- Enhanced Instructions Section - Replaces the existing instructions div in left column -->
-                    <!-- Enhanced Instructions Section - Replaces the existing instructions div in left column -->
-                    <div class="mb-8">
-                        <!-- Critical Status Alert -->
-                        <div class="mb-6 p-5 bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-300 rounded-xl shadow-lg">
-                            <div class="flex items-start">
+                    <div class="lg:col-span-2 space-y-6 md:space-y-8">
+                        <!-- Critical Warning Card -->
+                        <div class="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg">
+                            <div class="flex items-start gap-3 md:gap-4">
                                 <div class="flex-shrink-0">
-                                    <svg class="w-7 h-7 text-red-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
-                                    </svg>
+                                    <div class="w-10 h-10 md:w-12 md:h-12 bg-red-100 rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 md:w-6 md:h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 15.5c-.77.833.192 2.5 1.732 2.5z" />
+                                        </svg>
+                                    </div>
                                 </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-bold text-red-800 mb-2">
-                                        ⚠️ CRITICAL: Your Vote Is NOT Saved Yet!
+                                <div>
+                                    <h3 class="text-lg md:text-xl font-bold text-red-800 mb-2">
+                                        {{ $t('pages.vote-verify.critical_warning.title') }}
                                     </h3>
-                                    <p class="text-red-700 font-medium text-sm leading-relaxed">
-                                        <strong>महत्वपूर्ण: तपाईंको मत अझै सुरक्षित भएको छैन!</strong><br>
-                                        Without the code below, your vote will be completely lost.
+                                    <p class="text-red-700 text-sm md:text-base">
+                                        {{ $t('pages.vote-verify.critical_warning.message') }}
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Main Title -->
-                        <h2 class="text-2xl font-bold text-gray-800 mb-3 flex items-center">
-                            <svg class="w-6 h-6 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            Final Step: Enter Voting Code
-                        </h2>
-                        <p class="text-lg font-semibold text-gray-700 mb-6">
-                            अन्तिम चरण: मतदान कोड प्रविष्ट गर्नुहोस्
-                        </p>
-
-                        <!-- Process Status -->
-                        <div class="mb-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg">
-                            <div class="flex items-center mb-2">
-                                <svg class="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                <span class="font-semibold text-green-800">✓ Vote Selections Complete</span>
-                            </div>
-                            <p class="text-green-700 text-sm">
-                                सबै छनौटहरू पूरा भएका छन् • All your voting choices have been recorded
-                            </p>
-
-                        </div>
-
-                        <!-- English Instructions -->
-                        <div class="mb-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
-                            <h4 class="font-bold text-blue-800 mb-2 flex items-center">
-                                <span class="w-5 h-5 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold mr-2">EN</span>
-                                IMPORTANT: Final Verification Required
-                            </h4>
-                            <p class="text-blue-700 font-medium leading-relaxed text-sm">
-                                <strong>To save your vote permanently:</strong> 
-                                Check your email for a 6-digit verification code 
-                                and enter it below. 
-                                Your vote selections will be completely lost if you don't complete this step.
-                            </p>
-                            
-                        </div>
-
-                        <!-- Nepali Instructions -->
-                        <div class="mb-6 p-4 bg-orange-50 rounded-lg border-l-4 border-orange-400">
-                            <h4 class="font-bold text-orange-800 mb-2 flex items-center">
-                                <span class="w-5 h-5 bg-orange-600 text-white rounded-full flex items-center justify-center text-xs font-bold mr-2">नेपाली</span>
-                                महत्वपूर्ण: अन्तिम प्रमाणीकरण आवश्यक
-                            </h4>
-                            <p class="text-orange-700 font-medium leading-relaxed text-sm" style="line-height: 1.7;">
-                                <strong>आफ्नो मत स्थायी रूपमा सुरक्षित गर्न:</strong> आफ्नो इमेलमा आएको  ६ अंकको प्रमाणीकरण कोड  
-                                तल प्रविष्ट गर्नुहोस्।
-                                यो चरण पूरा नगरेसम्म तपाईंका मत छनौटहरू पूर्णतया हराउनेछन्।
-                            </p>
-                        </div>
-
-                        <!-- Action Required Banner -->
-                        <div class="mb-6 p-3 bg-gradient-to-r from-yellow-100 to-amber-100 border border-yellow-300 rounded-lg">
-                            <div class="flex items-center justify-center text-center">
-                                <svg class="w-5 h-5 text-amber-600 mr-2" fill="none" 
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" 
-                                    stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z">
-                                </path>
-                                </svg>
-                                <span class="font-semibold text-amber-800 text-sm">
-                                    ⚡ Action Required: Enter code to save your vote permanently
-                                </span>
-                            </div>
-                            
-                        </div>
-                        
-
-                    <!-- Enhanced Verification Form -->
-                    <form @submit.prevent="submit" class="space-y-6">
-                        <div class="relative">
-                            <!-- Form Label with Enhanced Styling -->
-                            <label for="voting_code" class="block text-base font-bold text-gray-800 mb-3">
-                                <div class="flex items-center mb-2">
-                                    <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-
-                                        </path>
-                                    </svg>
-                                    <span class="text-gray-800">Enter Verification Code</span>
-                                </div>
-                                <span class="text-base font-medium text-gray-600">
-                                    प्रमाणीकरण कोड प्रविष्ट गर्नुहोस्
-                                </span>
-                            </label>
-
-                            <!-- Enhanced Input Field -->
-                            <div class="relative">
-                                <input
-                                    id="voting_code"
-                                    type="text"
-                                    v-model="form.voting_code"
-                                    class="block w-full px-6 py-5 text-2xl font-mono text-center tracking-widest border-3 border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 uppercase shadow-lg hover:shadow-xl"
-                                    placeholder="ENTER 6-DIGIT CODE"
-                                    maxlength="6"
-                                    :class="{
-                                        'border-red-400 focus:border-red-500 focus:ring-red-200 bg-red-50': form.errors.voting_code,
-                                        'border-green-400 focus:border-green-500 focus:ring-green-200 bg-green-50': form.voting_code && form.voting_code.length === 6,
-                                        'hover:border-blue-400': !form.errors.voting_code && (!form.voting_code || form.voting_code.length !== 6)
-                                    }"
-                                    autocomplete="off"
-                                />
-                                
-                                <!-- Success Checkmark -->
-                                <div v-if="form.voting_code && form.voting_code.length === 6" class="absolute right-4 top-1/2 transform -translate-y-1/2">
-                                    <div class="bg-green-500 rounded-full p-1">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                        <!-- Verification Code Section -->
+                        <div class="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-8">
+                            <!-- Section Header -->
+                            <div class="mb-6 md:mb-8">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                         </svg>
                                     </div>
+                                    <h2 class="text-xl md:text-2xl font-bold text-gray-900">
+                                        {{ $t('pages.vote-verify.verification_title') }}
+                                    </h2>
                                 </div>
+                                <p class="text-gray-600">
+                                    {{ $t('pages.vote-verify.verification_subtitle') }}
+                                </p>
+                            </div>
 
-                                <!-- Input Helper Text -->
-                                <div class="mt-3 flex items-center justify-between">
-                                    <p class="text-sm text-gray-600 flex items-center">
-                                        <svg class="w-4 h-4 mr-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            <!-- Status and Instructions -->
+                            <div class="space-y-4 md:space-y-6 mb-6 md:mb-8">
+                                <!-- Vote Complete Status -->
+                                <div class="p-3 md:p-4 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg">
+                                    <div class="flex items-center mb-1">
+                                        <svg class="w-4 h-4 md:w-5 md:h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
-                                        Check your email for the 6-digit code
+                                        <span class="font-semibold text-green-800">
+                                            {{ $t('pages.vote-verify.status_complete') }}
+                                        </span>
+                                    </div>
+                                    <p class="text-green-700 text-xs md:text-sm">
+                                        {{ $t('pages.vote-verify.status_message') }}
                                     </p>
-                                    <div class="text-xs text-gray-500">
-                                        {{ form.voting_code ? form.voting_code.length : 0 }}/6
+                                </div>
+
+                                <!-- Email Notification -->
+                                <div class="p-3 md:p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg">
+                                    <div class="flex items-center">
+                                        <svg class="w-4 h-4 md:w-5 md:h-5 text-blue-600 mr-2 md:mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                        <div>
+                                            <p class="text-blue-800 font-medium text-sm md:text-base">
+                                                {{ $t('pages.vote-verify.email_notice.title') }}
+                                            </p>
+                                            <p class="text-blue-600 text-xs md:text-sm">
+                                                {{ $t('pages.vote-verify.email_notice.message') }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Action Required Banner -->
+                                <div class="p-3 bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 rounded-lg">
+                                    <div class="flex items-center justify-center">
+                                        <svg class="w-4 h-4 text-amber-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="font-semibold text-amber-800 text-sm md:text-base">
+                                            {{ $t('pages.vote-verify.action_required') }}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Enhanced Submit Button -->
-                        <div class="pt-4">
-                            <button
-                                type="submit"
-                                :disabled="form.processing || !form.voting_code || form.voting_code.length !== 6"
-                                class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-5 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-xl hover:shadow-2xl"
-                            >
-                                <span v-if="form.processing" class="flex items-center justify-center">
-                                    <svg class="animate-spin -ml-1 mr-3 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                    <span class="text-lg">Saving Your Vote...</span>
-                                </span>
-                                <span v-else class="flex items-center justify-center">
-                                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <div class="text-center">
-                                        <div class="text-lg font-bold">🗳️ CONFIRM & SAVE VOTE</div>
-                                        <div class="text-sm opacity-90">मत पुष्टि गरी सुरक्षित गर्नुहोस्</div>
+                            <!-- Code Input Form -->
+                            <form @submit.prevent="submit" class="space-y-6 md:space-y-8">
+                                <!-- Code Input -->
+                                <div>
+                                    <label for="voting_code" class="block text-sm md:text-base font-bold text-gray-800 mb-3">
+                                        <div class="flex items-center mb-1">
+                                            <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                            </svg>
+                                            <span>{{ $t('pages.vote-verify.code_input.label') }}</span>
+                                        </div>
+                                    </label>
+
+                                    <div class="relative">
+                                        <input
+                                            id="voting_code"
+                                            type="text"
+                                            v-model="form.voting_code"
+                                            class="w-full px-4 md:px-6 py-4 md:py-5 text-xl md:text-2xl font-mono text-center tracking-widest border-2 md:border-3 rounded-xl md:rounded-2xl focus:ring-3 md:focus:ring-4 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 uppercase shadow-sm md:shadow-lg"
+                                            :class="{
+                                                'border-red-300 bg-red-50': form.errors.voting_code,
+                                                'border-green-400 bg-green-50': form.voting_code && form.voting_code.length === 6,
+                                                'border-gray-300': !form.voting_code || form.voting_code.length !== 6
+                                            }"
+                                            :placeholder="$t('pages.vote-verify.code_input.placeholder')"
+                                            maxlength="6"
+                                            autocomplete="off"
+                                            autofocus
+                                        />
+
+                                        <!-- Character Indicators -->
+                                        <div class="mt-4 flex justify-center gap-1 md:gap-2">
+                                            <div v-for="i in 6" :key="i"
+                                                 class="w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 flex items-center justify-center"
+                                                 :class="{
+                                                     'border-blue-500 bg-blue-50': form.voting_code && form.voting_code.length >= i,
+                                                     'border-gray-300': !form.voting_code || form.voting_code.length < i
+                                                 }">
+                                                <span v-if="form.voting_code && form.voting_code.length >= i"
+                                                      class="text-lg md:text-xl font-bold text-gray-900">
+                                                    {{ form.voting_code.charAt(i-1) }}
+                                                </span>
+                                                <span v-else class="text-gray-400 text-base md:text-lg">_</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Input Status -->
+                                        <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                            <div class="text-xs md:text-sm text-gray-600">
+                                                <span v-if="form.voting_code">
+                                                    {{ form.voting_code.length }}/6 {{ $t('pages.vote-verify.code_input.characters') }}
+                                                </span>
+                                                <span v-else>{{ $t('pages.vote-verify.code_input.instruction') }}</span>
+                                            </div>
+                                            <div v-if="form.voting_code && form.voting_code.length === 6 && !form.errors.voting_code"
+                                                 class="flex items-center text-green-600 text-xs md:text-sm">
+                                                <svg class="w-4 h-4 md:w-5 md:h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                {{ $t('pages.vote-verify.code_input.ready') }}
+                                            </div>
+                                        </div>
                                     </div>
-                                </span>
-                            </button>
 
-                            <!-- Button Help Text -->
-                            <div class="mt-3 text-center">
-                                <p class="text-xs text-gray-500" v-if="!form.voting_code || form.voting_code.length !== 6">
-                                    Button will activate when you enter the complete 6-digit code
-                                </p>
-                                <p class="text-xs text-green-600 font-medium" v-else>
-                                    ✓ Ready to save your vote permanently
-                                </p>
-                            </div>
+                                    <!-- Validation Errors -->
+                                    <div v-if="form.errors.voting_code" class="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+                                        <div class="flex items-center">
+                                            <svg class="w-4 h-4 md:w-5 md:h-5 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-red-700 text-sm">{{ form.errors.voting_code }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="pt-4 md:pt-6">
+                                    <button
+                                        type="submit"
+                                        :disabled="form.processing || !form.voting_code || form.voting_code.length !== 6"
+                                        class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-4 md:py-5 px-6 md:px-8 rounded-xl md:rounded-2xl transition-all duration-300 transform hover:scale-[1.02] disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                                    >
+                                        <div class="flex items-center justify-center">
+                                            <div class="text-center">
+                                                <div class="flex items-center justify-center">
+                                                    <svg v-if="form.processing"
+                                                         class="animate-spin h-5 w-5 md:h-6 md:w-6 text-white mr-2 md:mr-3"
+                                                         fill="none" viewBox="0 0 24 24">
+                                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                    </svg>
+                                                    <svg v-else class="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                              d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                    <span class="text-base md:text-lg">
+                                                        <span v-if="form.processing">
+                                                            {{ $t('pages.vote-verify.save_button.processing') }}
+                                                        </span>
+                                                        <span v-else>
+                                                            {{ $t('pages.vote-verify.save_button.text') }}
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </button>
+
+                                    <!-- Button Status -->
+                                    <div class="mt-3 text-center">
+                                        <p class="text-xs text-gray-500" v-if="!form.voting_code || form.voting_code.length !== 6">
+                                            {{ $t('pages.vote-verify.save_button.help_incomplete') }}
+                                        </p>
+                                        <p class="text-xs text-green-600 font-medium" v-else>
+                                            ✓ {{ $t('pages.vote-verify.save_button.help_complete') }}
+                                        </p>
+                                    </div>
+
+                                    <!-- Security Notice -->
+                                    <div class="mt-4 p-3 md:p-4 bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200 rounded-lg">
+                                        <div class="flex items-start">
+                                            <svg class="w-4 h-4 md:w-5 md:h-5 text-yellow-600 mt-0.5 mr-2 md:mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <div>
+                                                <p class="text-yellow-800 text-sm font-medium">
+                                                    {{ $t('pages.vote-verify.security_notice.title') }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-
                     </div>
 
-                    <!-- Validation Errors -->
-                    <div v-if="hasErrors" class="mb-6">
-                        <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    <svg class="h-5 w-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 15.5c-.77.833.192 2.5 1.732 2.5z"></path>
-                                    </svg>
-                                </div>
-                                <div class="ml-3">
-                                    <h3 class="text-sm font-semibold text-red-800 mb-1">
-                                        Verification Error / प्रमाणीकरण त्रुटि
-                                    </h3>
-                                    <jet-validation-errors class="text-red-700" />
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                  
-                                        
                     <!-- Right Column - Vote Summary -->
-                    <div class="order-1 lg:order-2">
-                        
-                        <div class="bg-white rounded-2xl shadow-xl p-8 sticky top-8">
-                            
-                            <!-- User Info -->
-                            <div class="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
-                                <h3 class="font-semibold text-blue-800 mb-2">Voter Information</h3>
-                                <div class="space-y-1 text-sm">
-                                    <p><span class="font-medium">Name:</span> {{ user_info.name }}</p>
-                                    <p v-if="user_info.user_id"><span class="font-medium">User ID:</span> {{ user_info.user_id }}</p>
-                                    <p v-if="user_info.region"><span class="font-medium">Region:</span> {{ user_info.region }}</p>
+                    <div class="lg:col-span-1">
+                        <div class="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-6 relative md:sticky md:top-8">
+                            <!-- Voter Information -->
+                            <div class="mb-6 p-4 md:p-5 bg-gradient-to-br from-gray-50 to-blue-50 border border-gray-200 rounded-lg">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+                                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h3 class="font-bold text-gray-900 text-sm md:text-base">
+                                            {{ $t('pages.vote-verify.voter_info.title') }}
+                                        </h3>
+                                        <p class="text-xs text-gray-500">
+                                            {{ $t('pages.vote-verify.voter_info.subtitle') }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="space-y-2 text-xs md:text-sm">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">{{ $t('pages.vote-verify.voter_info.name') }}:</span>
+                                        <span class="font-medium text-gray-900">{{ user_info.name }}</span>
+                                    </div>
+                                    <div v-if="user_info.user_id" class="flex justify-between">
+                                        <span class="text-gray-600">{{ $t('pages.vote-verify.voter_info.user_id') }}:</span>
+                                        <span class="font-medium text-gray-900">{{ user_info.user_id }}</span>
+                                    </div>
+                                    <div v-if="user_info.region" class="flex justify-between">
+                                        <span class="text-gray-600">{{ $t('pages.vote-verify.voter_info.region') }}:</span>
+                                        <span class="font-medium text-gray-900">{{ user_info.region }}</span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Vote Summary Header -->
+                            <!-- Vote Summary -->
                             <div class="mb-6">
-                                <h3 class="text-xl font-bold text-gray-800 mb-2">
-                                    Your Vote Summary
+                                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center">
+                                    <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    {{ $t('pages.vote-verify.summary.title') }}
                                 </h3>
-                                <p class="text-sm text-gray-600">
-                                    तपाईंको मतदानको सारांश
+                                <p class="text-gray-600 text-sm mb-4">
+                                    {{ $t('pages.vote-verify.summary.subtitle') }}
                                 </p>
-                                
+
                                 <!-- Quick Stats -->
-                                <div class="mt-4 grid grid-cols-3 gap-4">
-                                    <div class="text-center p-3 bg-green-50 rounded-lg">
-                                        <div class="text-2xl font-bold text-green-600">{{ voting_summary.voted_posts }}</div>
-                                        <div class="text-xs text-green-700">Voted</div>
+                                <div class="grid grid-cols-3 gap-2 md:gap-3 mb-6">
+                                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-2 md:p-3 rounded-lg text-center">
+                                        <div class="text-xl md:text-2xl font-bold text-green-600">{{ voting_summary.voted_posts || 0 }}</div>
+                                        <div class="text-xs text-green-700 font-medium">
+                                            {{ $t('pages.vote-verify.summary.stats.voted') }}
+                                        </div>
                                     </div>
-                                    <div class="text-center p-3 bg-red-50 rounded-lg">
-                                        <div class="text-2xl font-bold text-red-600">{{ voting_summary.no_vote_posts }}</div>
-                                        <div class="text-xs text-red-700">Skipped</div>
+                                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 p-2 md:p-3 rounded-lg text-center">
+                                        <div class="text-xl md:text-2xl font-bold text-gray-600">{{ voting_summary.no_vote_posts || 0 }}</div>
+                                        <div class="text-xs text-gray-700 font-medium">
+                                            {{ $t('pages.vote-verify.summary.stats.skipped') }}
+                                        </div>
                                     </div>
-                                    <div class="text-center p-3 bg-blue-50 rounded-lg">
-                                        <div class="text-2xl font-bold text-blue-600">{{ voting_summary.total_posts }}</div>
-                                        <div class="text-xs text-blue-700">Total</div>
+                                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-2 md:p-3 rounded-lg text-center">
+                                        <div class="text-xl md:text-2xl font-bold text-blue-600">{{ voting_summary.total_posts || 0 }}</div>
+                                        <div class="text-xs text-blue-700 font-medium">
+                                            {{ $t('pages.vote-verify.summary.stats.total') }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- National Posts -->
-                            <div v-if="vote_data.national_posts && vote_data.national_posts.length > 0" class="mb-6">
-                                <h4 class="font-semibold text-gray-700 mb-3 flex items-center">
-                                    <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
-                                    National Posts
-                                </h4>
-                                <div class="space-y-3">
-                                    <div 
-                                        v-for="post in vote_data.national_posts" 
-                                        :key="`national-${post.post_id}`"
-                                        class="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
-                                    >
-                                        <div class="flex items-start justify-between mb-2">
-                                            <h5 class="font-medium text-gray-800">{{ post.post_name }}</h5>
-                                            <span v-if="post.no_vote" 
-                                                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                                Skipped
-                                            </span>
-                                            <span v-else 
-                                                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                                {{ post.candidates.length }} Selected
-                                            </span>
-                                        </div>
-                                        
-                                        <div v-if="!post.no_vote && post.candidates.length > 0" class="space-y-1">
-                                            <div v-for="candidate in post.candidates" 
-                                                 :key="candidate.candidacy_id"
-                                                 class="flex items-center text-sm text-gray-600">
-                                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                                {{ candidate.name }}
+                                <!-- Post Selections -->
+                                <div class="space-y-4">
+                                    <!-- National Posts -->
+                                    <div v-if="vote_data.national_posts && vote_data.national_posts.length > 0">
+                                        <h4 class="font-semibold text-gray-700 mb-2 text-xs md:text-sm uppercase tracking-wider">
+                                            {{ $t('pages.vote-verify.summary.national_posts') }}
+                                        </h4>
+                                        <div class="space-y-2">
+                                            <div v-for="post in vote_data.national_posts"
+                                                 :key="`national-${post.post_id}`"
+                                                 class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                                <div class="flex justify-between items-start mb-1">
+                                                    <span class="text-xs md:text-sm font-medium text-gray-800 truncate">
+                                                        {{ post.post_name }}
+                                                    </span>
+                                                    <span v-if="post.no_vote"
+                                                          class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 flex-shrink-0 ml-2">
+                                                        {{ $t('pages.vote-verify.summary.stats.skipped') }}
+                                                    </span>
+                                                    <span v-else
+                                                          class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 flex-shrink-0 ml-2">
+                                                        {{ post.candidates.length }}
+                                                    </span>
+                                                </div>
+                                                <div v-if="!post.no_vote && post.candidates.length > 0" class="mt-1">
+                                                    <div v-for="candidate in post.candidates"
+                                                         :key="candidate.candidacy_id"
+                                                         class="flex items-center text-xs text-gray-600">
+                                                        <svg class="w-3 h-3 text-green-500 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                        </svg>
+                                                        <span class="truncate">{{ candidate.name }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        
-                                        <div v-else-if="post.no_vote" class="text-sm text-red-600 flex items-center">
-                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                            </svg>
-                                            No vote for this position
-                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <!-- Regional Posts -->
-                            <div v-if="vote_data.regional_posts && vote_data.regional_posts.length > 0" class="mb-6">
-                                <h4 class="font-semibold text-gray-700 mb-3 flex items-center">
-                                    <span class="w-3 h-3 bg-purple-500 rounded-full mr-2"></span>
-                                    Regional Posts
-                                </h4>
-                                <div class="space-y-3">
-                                    <div 
-                                        v-for="post in vote_data.regional_posts" 
-                                        :key="`regional-${post.post_id}`"
-                                        class="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
-                                    >
-                                        <div class="flex items-start justify-between mb-2">
-                                            <h5 class="font-medium text-gray-800">{{ post.post_name }}</h5>
-                                            <span v-if="post.no_vote" 
-                                                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                                Skipped
-                                            </span>
-                                            <span v-else 
-                                                  class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                                {{ post.candidates.length }} Selected
-                                            </span>
-                                        </div>
-                                        
-                                        <div v-if="!post.no_vote && post.candidates.length > 0" class="space-y-1">
-                                            <div v-for="candidate in post.candidates" 
-                                                 :key="candidate.candidacy_id"
-                                                 class="flex items-center text-sm text-gray-600">
-                                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                                {{ candidate.name }}
+                                    <!-- Regional Posts -->
+                                    <div v-if="vote_data.regional_posts && vote_data.regional_posts.length > 0">
+                                        <h4 class="font-semibold text-gray-700 mb-2 text-xs md:text-sm uppercase tracking-wider">
+                                            {{ $t('pages.vote-verify.summary.regional_posts') }}
+                                        </h4>
+                                        <div class="space-y-2">
+                                            <div v-for="post in vote_data.regional_posts"
+                                                 :key="`regional-${post.post_id}`"
+                                                 class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                                <div class="flex justify-between items-start mb-1">
+                                                    <span class="text-xs md:text-sm font-medium text-gray-800 truncate">
+                                                        {{ post.post_name }}
+                                                    </span>
+                                                    <span v-if="post.no_vote"
+                                                          class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 flex-shrink-0 ml-2">
+                                                        {{ $t('pages.vote-verify.summary.stats.skipped') }}
+                                                    </span>
+                                                    <span v-else
+                                                          class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 flex-shrink-0 ml-2">
+                                                        {{ post.candidates.length }}
+                                                    </span>
+                                                </div>
+                                                <div v-if="!post.no_vote && post.candidates.length > 0" class="mt-1">
+                                                    <div v-for="candidate in post.candidates"
+                                                         :key="candidate.candidacy_id"
+                                                         class="flex items-center text-xs text-gray-600">
+                                                        <svg class="w-3 h-3 text-green-500 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                        </svg>
+                                                        <span class="truncate">{{ candidate.name }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        
-                                        <div v-else-if="post.no_vote" class="text-sm text-red-600 flex items-center">
-                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                            </svg>
-                                            No vote for this position
-                                        </div>
+                                    </div>
+
+                                    <!-- Empty State -->
+                                    <div v-if="!vote_data.national_posts?.length && !vote_data.regional_posts?.length"
+                                         class="text-center py-4 md:py-6">
+                                        <svg class="w-10 h-10 md:w-12 md:h-12 text-gray-300 mx-auto mb-2 md:mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                        </svg>
+                                        <p class="text-gray-500 text-xs md:text-sm">
+                                            {{ $t('pages.vote-verify.summary.no_data') }}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- No Selections Message -->
-                            <div v-if="voting_summary.total_posts === 0" class="text-center py-8">
-                                <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                                </svg>
-                                <p class="text-gray-500">No vote data found</p>
+                            <!-- Security Badge -->
+                            <div class="mt-6 p-3 md:p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 md:w-5 md:h-5 text-blue-600 mr-2 md:mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium text-blue-800 text-sm">
+                                            {{ $t('pages.vote-verify.security_badge.title') }}
+                                        </p>
+                                        <p class="text-blue-600 text-xs">
+                                            {{ $t('pages.vote-verify.security_badge.message') }}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-               
                     </div>
                 </div>
             </div>
@@ -390,14 +451,15 @@
 import VotingLayout from "@/Components/Election/VotingLayout.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
-import ElectionLayout from "@/Layouts/ElectionLayout";
+import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator";
 
 export default {
     name: 'VoteVerify',
-    
+
     components: {
         VotingLayout,
         JetValidationErrors,
+        WorkflowStepIndicator,
     },
 
     props: {
@@ -420,98 +482,118 @@ export default {
         voting_summary: {
             type: Object,
             required: true
-        }
+        },
+        debug_code: String,
+        has_valid_email: Boolean,
+        slug: String,
+        useSlugPath: Boolean,
     },
-    
-    setup() {
+
+    setup(props) {
+        // Initialize form with vote data from the props
         const form = useForm({
             voting_code: "",
+            national_selected_candidates: props.vote_data?.national_selected_candidates || [],
+            regional_selected_candidates: props.vote_data?.regional_selected_candidates || [],
+            no_vote_option: props.vote_data?.no_vote_option || false,
+            agree_button: true, // User confirms they've reviewed the vote
         });
 
         function submit() {
-            // Check if we're in a slug-based context
             const currentPath = window.location.pathname;
             const slugMatch = currentPath.match(/\/v\/([^\/]+)\//);
 
             if (slugMatch) {
-                // We're in slug context, use slug-aware route
                 const slug = slugMatch[1];
                 form.post(`/v/${slug}/vote/verify`);
             } else {
-                // Fallback to legacy route
                 form.post("/votes");
             }
         }
 
         return { form, submit };
     },
-    
+
     computed: {
         hasErrors() {
             return Object.keys(this.form.errors).length > 0;
         }
     },
-    
-    methods: {
-        formatTime(minutes) {
-            if (minutes <= 0) {
-                return "Expired";
-            }
-            
-            const hours = Math.floor(minutes / 60);
-            const mins = minutes % 60;
-            
-            if (hours > 0) {
-                return `${hours}h ${mins}m`;
-            }
-            return `${mins}m`;
-        }
-    },
-    
+
     mounted() {
-        // Auto-focus on the code input
         this.$nextTick(() => {
             const codeInput = document.getElementById('voting_code');
             if (codeInput) {
                 codeInput.focus();
+                codeInput.addEventListener('input', (e) => {
+                    e.target.value = e.target.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+                });
             }
         });
-        
-        // Auto-format code input
-        const codeInput = document.getElementById('voting_code');
-        if (codeInput) {
-            codeInput.addEventListener('input', (e) => {
-                // Remove non-alphanumeric characters and convert to uppercase
-                e.target.value = e.target.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
-            });
-        }
     }
 }
 </script>
 
 <style scoped>
-/* Custom animations */
-@keyframes pulse-subtle {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
+/* Custom styles */
+input::placeholder {
+    color: #cbd5e1;
+    letter-spacing: 0.1em;
 }
 
-.animate-pulse-subtle {
-    animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Custom focus styles */
 input:focus {
+    outline: none;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-/* Custom scrollbar for webkit browsers */
+/* Truncate text */
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Smooth transitions */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+}
+
+/* Character indicator animation */
+@keyframes pulse {
+    0%, 100% {
+        border-color: #3b82f6;
+        background-color: #eff6ff;
+    }
+    50% {
+        border-color: #60a5fa;
+        background-color: #dbeafe;
+    }
+}
+
+input:focus + div .border-blue-500 {
+    animation: pulse 1.5s infinite;
+}
+
+/* Button hover effects */
+button:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+/* Disabled state styling */
+button:disabled {
+    opacity: 0.7;
+}
+
+/* Custom scrollbar styling */
 ::-webkit-scrollbar {
     width: 6px;
 }
 
 ::-webkit-scrollbar-track {
     background: #f1f5f9;
+    border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {

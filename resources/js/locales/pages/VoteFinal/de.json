@@ -1,0 +1,66 @@
+{
+  "success_banner": {
+    "title": "Abstimmung erfolgreich eingereicht!",
+    "subtitle": "Ihre Stimme wurde sicher aufgezeichnet und bestätigt.",
+    "confirmation_number": "Bestätigungsnummer #"
+  },
+  "gratitude": {
+    "thank_you": "Vielen Dank für Ihre Abstimmung",
+    "message": "Ihre Teilnahme an dieser Wahl ist wichtig und trägt zur Gestaltung der Zukunft unserer Gemeinschaft bei. Ihre Stimme wurde mit der höchsten Sicherheit und Privatsphäre erfasst."
+  },
+  "vote_summary": {
+    "title": "Zusammenfassung Ihrer Abstimmung",
+    "national_posts": "Nationale Positionen",
+    "regional_posts": "Regionale Positionen",
+    "selected_candidates": "Ausgewählte Kandidaten",
+    "no_vote": "Sie haben sich entschieden, für diese Position nicht abzustimmen",
+    "candidate_count": "{count} Kandidat ausgewählt",
+    "candidate_count_plural": "{count} Kandidaten ausgewählt"
+  },
+  "vote_details": {
+    "position": "Position",
+    "candidates": "Kandidaten",
+    "candidates_count": "Anzahl der Kandidaten"
+  },
+  "what_next": {
+    "title": "Was passiert als Nächstes?",
+    "step_1_title": "Stimmaufzeichnung",
+    "step_1_description": "Ihre Stimme wird verschlüsselt und sicher in unserem Wahlsystem gespeichert.",
+    "step_2_title": "Wahlschluss",
+    "step_2_description": "Nach Abschluss aller Stimmabgaben und Ende des Wahlzeitraums werden die Stimmen gezählt.",
+    "step_3_title": "Ergebnisveröffentlichung",
+    "step_3_description": "Die Wahlergebnisse werden nach Zählung und Überprüfung aller Stimmen veröffentlicht.",
+    "step_4_title": "Überprüfung verfügbar",
+    "step_4_description": "Sie können Ihre Stimme jederzeit mit Ihrem Verifizierungscode überprüfen."
+  },
+  "important_info": {
+    "title": "Wichtige Informationen",
+    "security": {
+      "title": "Ihre Stimme ist sicher",
+      "description": "Ihre Auswahl ist end-to-end verschlüsselt und mit Industriestandard-Sicherheitsprotokollen geschützt."
+    },
+    "privacy": {
+      "title": "Ihre Privatsphäre ist geschützt",
+      "description": "Ihre Stimme ist anonym und kann nicht auf Sie zurückgeführt werden. Keine persönlichen Informationen werden mit Ihrer Stimme gespeichert."
+    },
+    "verification": {
+      "title": "Sie können später überprüfen",
+      "description": "Bewahren Sie Ihren Verifizierungscode sicher auf. Sie können damit überprüfen, dass Ihre Stimme korrekt aufgezeichnet wurde."
+    }
+  },
+  "receipt": {
+    "title": "Wahlbeleg",
+    "download_button": "Beleg herunterladen",
+    "print_button": "Beleg drucken",
+    "timestamp": "Einreichungszeit",
+    "reference_number": "Referenznummer"
+  },
+  "actions": {
+    "return_dashboard": "Zum Dashboard zurückkehren",
+    "view_results": "Wahlergebnisse anzeigen",
+    "help": "Benötigen Sie Hilfe?"
+  },
+  "footer": {
+    "message": "Vielen Dank, dass Sie Ihr Stimmrecht ausgeübt haben!"
+  }
+}
