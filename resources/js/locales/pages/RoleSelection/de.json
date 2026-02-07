@@ -1,7 +1,9 @@
 {
   "roleSelection": {
     "welcome": "Willkommen, {name}!",
+    "welcome_short": "Wählen Sie Ihre Rolle",
     "subtitle": "Wählen Sie Ihre Rolle, um zum entsprechenden Dashboard zu gelangen",
+    "select_role_subtitle": "Wählen Sie Ihre Rolle um fortzufahren",
     "selectRole": "Wählen Sie, wie Sie partizipieren möchten",
     "roles": {
       "admin": {
