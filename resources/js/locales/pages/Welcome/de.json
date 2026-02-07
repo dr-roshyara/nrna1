@@ -3,6 +3,53 @@
     "badge": "Vertraut von Organisationen weltweit",
     "title": "Sichere digitale Wahlen für alle Organisationen",
     "subtitle": "Die globale Wahlplattform für NGOs, Diaspora-Gemeinschaften und Verbände",
+    "election-board": {
+      "aria-label": "Live-Wahl-Anzeigetafel mit aktiven und anstehenden Wahlen",
+      "title": "Live-Wahl-Anzeigetafel",
+      "live": "Live-Updates",
+      "subtitle": "Aktive und anstehende Wahlen. Klicken Sie, um teilzunehmen oder Details anzuzeigen.",
+      "sr-instructions": "Dies ist eine Wahl-Anzeigetafel, die aktive und anstehende Wahlen anzeigt. Verwenden Sie die Tabulatortaste, um zwischen den Wahlen zu navigieren. Drücken Sie die Eingabetaste, um eine Wahl auszuwählen.",
+      "elections-list-title": "Liste der aktiven Wahlen",
+      "public": "Öffentlich",
+      "no-signup": "Keine Registrierung",
+      "stats-aria-label": "Wahlstatistiken",
+      "stats": {
+        "elections": "Wahlen",
+        "voters": "Wähler diesen Monat"
+      },
+      "languages": {
+        "title": "Mehrsprachige Unterstützung",
+        "aria-label": "Unterstützte Sprachen",
+        "german": "Deutsch",
+        "english": "English",
+        "nepali": "नेपाली"
+      },
+      "demo": {
+        "title": "🧪 Demo-Wahl",
+        "date-display": "Immer offen",
+        "description": "Probieren Sie das komplette Wahlverfahren aus. Keine Registrierung erforderlich.",
+        "cta": "Demo-Wahl versuchen",
+        "aria-label": "Demo-Wahl - Immer geöffnet zum Testen. Probieren Sie die Abstimmung ohne Registrierung aus. Dauert etwa 5 Minuten."
+      },
+      "berlin": {
+        "title": "🇩🇪 Berlin NRNA 2024",
+        "date-display": "15.–30. Nov",
+        "voters": "500 Wähler",
+        "description": "Deutsch-Nepalische Gesellschaft Wahlen. 500 berechtigte Wähler.",
+        "cta": "Details anzeigen",
+        "aria-label": "Berlin NRNA-Wahl 2024 - Wahlzeitraum 15. bis 30. November 2024. Deutsch-Nepalische Gesellschaft-Wahl für 500 Mitglieder."
+      },
+      "munich": {
+        "title": "🇮🇳 München Inder 2024",
+        "date-display": "1.–15. Okt",
+        "turnout": "85% Beteiligung",
+        "voters": "300 Wähler",
+        "description": "Kulturkomitee-Wahl. 85% Wählerbeteiligung. Ergebnisse verfügbar.",
+        "cta": "Ergebnisse anzeigen",
+        "aria-label": "München Indische Vereins-Wahl 2024 - Abgeschlossen 1. bis 15. Oktober 2024. Kulturkomitee-Wahl mit 85% Wählerbeteiligung."
+      },
+      "results": "Ergebnisse"
+    }
     "description": "Führen Sie faire und transparente Wahlen mit unserem DSGVO-konformen, vollständig verschlüsselten Wahlsystem durch. Vertraut von Tausenden von Organisationen, Verbänden und Diaspora-Gemeinschaften in über 100 Ländern.",
     "cta_primary": "Kostenlos testen",
     "cta_register": "Als Kunde registrieren",

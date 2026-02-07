@@ -3,6 +3,53 @@
     "badge": "Trusted by Organizations Worldwide",
     "title": "Secure Digital Voting for All Organizations",
     "subtitle": "The global voting platform for NGOs, diaspora communities, and associations",
+    "election-board": {
+      "aria-label": "Live Election Notice Board showing active and upcoming elections",
+      "title": "Live Election Notice Board",
+      "live": "Live Updates",
+      "subtitle": "Active and upcoming elections. Click to participate or view details.",
+      "sr-instructions": "This is an election notice board showing active and upcoming elections. Use Tab key to navigate between elections. Press Enter to select an election.",
+      "elections-list-title": "List of active elections",
+      "public": "Public",
+      "no-signup": "No Signup",
+      "stats-aria-label": "Election statistics",
+      "stats": {
+        "elections": "Elections",
+        "voters": "Voters This Month"
+      },
+      "languages": {
+        "title": "Multi-Language Support",
+        "aria-label": "Supported languages",
+        "german": "Deutsch",
+        "english": "English",
+        "nepali": "नेपाली"
+      },
+      "demo": {
+        "title": "🧪 Demo Election",
+        "date-display": "Always Open",
+        "description": "Try the complete voting experience. No registration required.",
+        "cta": "Try Demo Election",
+        "aria-label": "Demo Election - Always open for testing. Try the voting experience without registration. Takes about 5 minutes."
+      },
+      "berlin": {
+        "title": "🇩🇪 Berlin NRNA 2024",
+        "date-display": "Nov 15–30",
+        "voters": "500 Voters",
+        "description": "Berlin Nepali Association leadership election. 500 eligible voters.",
+        "cta": "View Details",
+        "aria-label": "Berlin NRNA Election 2024 - Voting period November 15 to 30, 2024. Berlin Nepali Association leadership election for 500 members."
+      },
+      "munich": {
+        "title": "🇮🇳 Munich Indian 2024",
+        "date-display": "Oct 1–15",
+        "turnout": "85% Turnout",
+        "voters": "300 Voters",
+        "description": "Cultural committee election. 85% voter turnout. Results available.",
+        "cta": "View Results",
+        "aria-label": "Munich Indian Association Election 2024 - Completed October 1 to 15, 2024. Cultural committee election with 85% voter turnout."
+      },
+      "results": "Results"
+    }
     "description": "Conduct fair and transparent elections with our GDPR-compliant, end-to-end encrypted voting system. Trusted by thousands of organizations, associations, and diaspora communities across 100+ countries.",
     "cta_primary": "Start Free Trial",
     "cta_secondary": "Schedule Demo",

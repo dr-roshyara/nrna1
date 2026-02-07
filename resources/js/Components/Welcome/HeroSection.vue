@@ -10,7 +10,172 @@
     <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
       <div class="max-w-6xl mx-auto">
         <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-          <!-- Left Column - Main Content -->
+          <!-- Left Column - Accessible Election Notice Board -->
+          <div class="relative pb-16" role="region" :aria-label="$t('pages.welcome.election-board.aria-label')">
+            <!-- Election Notice Board -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+
+              <!-- Board Header -->
+              <div class="bg-blue-700 px-6 py-4">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-center">
+                    <div class="text-white text-2xl mr-3" aria-hidden="true">🗳️</div>
+                    <h2 class="text-white text-xl font-bold" id="election-board-heading">
+                      {{ $t('pages.welcome.election-board.title') }}
+                    </h2>
+                  </div>
+                  <div class="flex items-center" aria-live="polite">
+                    <div class="w-3 h-3 bg-green-400 rounded-full mr-2" aria-hidden="true"></div>
+                    <span class="text-white text-sm font-medium">{{ $t('pages.welcome.election-board.live') }}</span>
+                  </div>
+                </div>
+                <p class="text-blue-200 text-sm">
+                  {{ $t('pages.welcome.election-board.subtitle') }}
+                </p>
+              </div>
+
+              <!-- Board Content -->
+              <div class="p-6">
+
+                <!-- Screen Reader Instructions -->
+                <p class="sr-only">
+                  {{ $t('pages.welcome.election-board.sr-instructions') }}
+                </p>
+
+                <!-- Elections List -->
+                <div role="list" aria-labelledby="election-board-heading">
+                  <h3 class="sr-only">{{ $t('pages.welcome.election-board.elections-list-title') }}</h3>
+
+                  <!-- Election 1: Demo Election -->
+                  <a href="/election/demo/start"
+                     class="block mb-4 p-5 bg-gradient-to-r from-green-50 to-white rounded-xl border-2 border-green-300 hover:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all group"
+                     role="listitem"
+                     :aria-label="$t('pages.welcome.election-board.demo.aria-label')">
+
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
+                      <div class="flex items-center mb-2 sm:mb-0">
+                        <div class="w-4 h-4 bg-green-500 rounded-full mr-3 flex-shrink-0" aria-hidden="true"></div>
+                        <h4 class="font-bold text-gray-900 text-lg">{{ $t('pages.welcome.election-board.demo.title') }}</h4>
+                      </div>
+                      <div class="flex items-center">
+                        <time datetime="Permanent" class="text-sm text-gray-700 bg-gray-100 px-3 py-1 rounded-full">
+                          {{ $t('pages.welcome.election-board.demo.date-display') }}
+                        </time>
+                      </div>
+                    </div>
+
+                    <p class="text-gray-700 mb-3 text-sm">
+                      {{ $t('pages.welcome.election-board.demo.description') }}
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mb-3">
+                      <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">🌍 {{ $t('pages.welcome.election-board.public') }}</span>
+                      <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">⏱️ 5 min</span>
+                      <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">🔓 {{ $t('pages.welcome.election-board.no-signup') }}</span>
+                    </div>
+
+                    <div class="flex items-center justify-between text-blue-700 font-medium group-hover:text-blue-900 transition-colors">
+                      <span>{{ $t('pages.welcome.election-board.demo.cta') }} →</span>
+                    </div>
+                  </a>
+
+                  <!-- Election 2: Berlin NRNA -->
+                  <a href="/election/berlin-nrna"
+                     class="block mb-4 p-5 bg-gradient-to-r from-orange-50 to-white rounded-xl border-2 border-orange-300 hover:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all group"
+                     role="listitem"
+                     :aria-label="$t('pages.welcome.election-board.berlin.aria-label')">
+
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
+                      <div class="flex items-center mb-2 sm:mb-0">
+                        <div class="w-4 h-4 bg-orange-500 rounded-full mr-3 flex-shrink-0" aria-hidden="true"></div>
+                        <h4 class="font-bold text-gray-900 text-lg">{{ $t('pages.welcome.election-board.berlin.title') }}</h4>
+                      </div>
+                      <div class="flex items-center">
+                        <time datetime="2024-11-15/2024-11-30" class="text-sm text-gray-700 bg-orange-100 px-3 py-1 rounded-full">
+                          {{ $t('pages.welcome.election-board.berlin.date-display') }}
+                        </time>
+                      </div>
+                    </div>
+
+                    <p class="text-gray-700 mb-3 text-sm">
+                      {{ $t('pages.welcome.election-board.berlin.description') }}
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mb-3">
+                      <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">👥 {{ $t('pages.welcome.election-board.berlin.voters') }}</span>
+                      <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-medium">🏛️ NRNA</span>
+                      <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">🌐 DE/EN/NP</span>
+                    </div>
+
+                    <div class="flex items-center justify-between text-blue-700 font-medium group-hover:text-blue-900 transition-colors">
+                      <span>{{ $t('pages.welcome.election-board.berlin.cta') }} →</span>
+                    </div>
+                  </a>
+
+                  <!-- Election 3: Munich Indian -->
+                  <a href="/election/munich-indian"
+                     class="block p-5 bg-gradient-to-r from-gray-50 to-white rounded-xl border-2 border-gray-300 hover:border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all group"
+                     role="listitem"
+                     :aria-label="$t('pages.welcome.election-board.munich.aria-label')">
+
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
+                      <div class="flex items-center mb-2 sm:mb-0">
+                        <div class="w-4 h-4 bg-gray-400 rounded-full mr-3 flex-shrink-0" aria-hidden="true"></div>
+                        <h4 class="font-bold text-gray-900 text-lg">{{ $t('pages.welcome.election-board.munich.title') }}</h4>
+                      </div>
+                      <div class="flex items-center">
+                        <time datetime="2024-10-01/2024-10-15" class="text-sm text-gray-700 bg-gray-100 px-3 py-1 rounded-full">
+                          {{ $t('pages.welcome.election-board.munich.date-display') }}
+                        </time>
+                      </div>
+                    </div>
+
+                    <p class="text-gray-700 mb-3 text-sm">
+                      {{ $t('pages.welcome.election-board.munich.description') }}
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mb-3">
+                      <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">📊 {{ $t('pages.welcome.election-board.munich.turnout') }}</span>
+                      <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">✅ {{ $t('pages.welcome.election-board.results') }}</span>
+                      <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-medium">👥 {{ $t('pages.welcome.election-board.munich.voters') }}</span>
+                    </div>
+
+                    <div class="flex items-center justify-between text-blue-700 font-medium group-hover:text-blue-900 transition-colors">
+                      <span>{{ $t('pages.welcome.election-board.munich.cta') }} →</span>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="mt-6 grid grid-cols-2 gap-4" role="group" :aria-label="$t('pages.welcome.election-board.stats-aria-label')">
+                  <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <div class="text-2xl font-bold text-blue-900">3</div>
+                    <div class="text-sm text-gray-700">{{ $t('pages.welcome.election-board.stats.elections') }}</div>
+                  </div>
+                  <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <div class="text-2xl font-bold text-green-900">5K+</div>
+                    <div class="text-sm text-gray-700">{{ $t('pages.welcome.election-board.stats.voters') }}</div>
+                  </div>
+                </div>
+
+                <!-- Language Support -->
+                <div class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                  <h4 class="font-medium text-gray-900 mb-3 flex items-center">
+                    <span class="mr-2" aria-hidden="true">🌐</span>
+                    {{ $t('pages.welcome.election-board.languages.title') }}
+                  </h4>
+                  <div class="flex flex-wrap gap-2" role="list" :aria-label="$t('pages.welcome.election-board.languages.aria-label')">
+                    <span class="px-3 py-1 bg-white text-gray-800 rounded-full text-xs border border-gray-300 font-medium" role="listitem">🇩🇪 {{ $t('pages.welcome.election-board.languages.german') }}</span>
+                    <span class="px-3 py-1 bg-white text-gray-800 rounded-full text-xs border border-gray-300 font-medium" role="listitem">🇬🇧 {{ $t('pages.welcome.election-board.languages.english') }}</span>
+                    <span class="px-3 py-1 bg-white text-gray-800 rounded-full text-xs border border-gray-300 font-medium" role="listitem">🇳🇵 {{ $t('pages.welcome.election-board.languages.nepali') }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+          <!-- Right Column - Main Content -->
           <div class="mb-12 lg:mb-0">
             <!-- Badge -->
             <div class="inline-flex items-center mb-6 px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
@@ -71,60 +236,7 @@
             </div>
           </div>
 
-          <!-- Right Column - Dashboard Mockup -->
-          <div class="relative pb-16">
-            <!-- Dashboard Mockup -->
-            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
-              <!-- Browser Header -->
-              <div class="bg-gray-800 px-6 py-4 flex items-center">
-                <div class="flex space-x-2">
-                  <div class="w-3 h-3 bg-red-400 rounded-full"></div>
-                  <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                  <div class="w-3 h-3 bg-green-400 rounded-full"></div>
-                </div>
-                <div class="text-white text-sm font-medium mx-auto">
-                  Election Dashboard
-                </div>
-              </div>
-
-              <!-- Dashboard Content -->
-              <div class="p-6">
-                <!-- Stats Row -->
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                  <div class="bg-blue-50 p-4 rounded-lg">
-                    <div class="text-2xl font-bold text-blue-700">2.3K</div>
-                    <div class="text-sm text-gray-600">Registered Voters</div>
-                  </div>
-                  <div class="bg-green-50 p-4 rounded-lg">
-                    <div class="text-2xl font-bold text-green-700">85%</div>
-                    <div class="text-sm text-gray-600">Participation</div>
-                  </div>
-                </div>
-
-                <!-- Progress Chart -->
-                <div class="mb-6">
-                  <div class="flex justify-between items-center mb-2">
-                    <span class="text-sm font-medium text-gray-700">Live Results</span>
-                    <span class="text-xs text-gray-500">Real-time</span>
-                  </div>
-                  <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div class="h-full bg-blue-600 rounded-full" style="width: 65%"></div>
-                  </div>
-                </div>
-
-                <!-- Language Support -->
-                <div>
-                  <div class="text-sm font-medium text-gray-700 mb-3">Multilingual Elections</div>
-                  <div class="flex space-x-2">
-                    <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium">🇩🇪 Deutsch</span>
-                    <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium">🇬🇧 English</span>
-                    <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium">🇳🇵 नेपाली</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
+          
         </div>
       </div>
     </div>
