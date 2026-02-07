@@ -94,18 +94,19 @@
                             </div>
                         </div>
 
-                        <!-- Candidate Name (Below Photo) -->
-                        <div class="text-center px-3 pb-2 flex-grow flex flex-col justify-center">
-                            <h3 class="text-sm font-bold text-gray-900 line-clamp-2">
-                                {{ candidate.user?.name || $t('pages.voting.candidate_selection.unknown') }}
-                            </h3>
-                            <p class="text-xs text-gray-500 mt-1">
-                                #{{ index + 1 }}
-                            </p>
-                        </div>
-
-                        <!-- Checkbox (Below Name) -->
+                        <!-- Checkbox Section (with Name Above) -->
                         <div class="w-full border-t-2 border-gray-200 p-3 flex flex-col items-center bg-white">
+                            <!-- Candidate Name (Just Above Checkbox) -->
+                            <div class="text-center px-3 pb-2 w-full">
+                                <h3 class="text-sm font-bold text-gray-900 line-clamp-2">
+                                    {{ candidate.user?.name || $t('pages.voting.candidate_selection.unknown') }}
+                                </h3>
+                                <p class="text-xs text-gray-500 mt-1">
+                                    #{{ index + 1 }}
+                                </p>
+                            </div>
+
+                            <!-- Checkbox -->
                             <div class="relative mb-2">
                                 <!-- Hidden checkbox for screen readers -->
                                 <input
