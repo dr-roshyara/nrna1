@@ -144,19 +144,7 @@
                       <span>{{ $t('pages.welcome.hero.election-board.munich.cta') }} →</span>
                     </div>
                   </a>
-                </div>
-
-                <!-- Quick Stats -->
-                <div class="mt-6 grid grid-cols-2 gap-4" role="group" :aria-label="$t('pages.welcome.hero.election-board.stats-aria-label')">
-                  <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                    <div class="text-2xl font-bold text-blue-900">3</div>
-                    <div class="text-sm text-gray-700">{{ $t('pages.welcome.hero.election-board.stats.elections') }}</div>
-                  </div>
-                  <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-                    <div class="text-2xl font-bold text-green-900">5K+</div>
-                    <div class="text-sm text-gray-700">{{ $t('pages.welcome.hero.election-board.stats.voters') }}</div>
-                  </div>
-                </div>
+                </div> 
 
                 <!-- Language Support -->
                 <div class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
