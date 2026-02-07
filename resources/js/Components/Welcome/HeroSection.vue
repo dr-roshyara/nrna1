@@ -39,7 +39,7 @@
                      class="block p-4 bg-green-50 rounded-lg border border-green-200 hover:border-green-400 transition-colors">
                     <div class="flex justify-between items-start">
                       <div>
-                        <div class="font-medium text-gray-900">🧪 {{ $t('pages.welcome.hero.election-board.demo.title') }}</div>
+                        <div class="font-bold text-gray-900">🧪 {{ $t('pages.welcome.hero.election-board.demo.title') }}</div>
                         <div class="text-sm text-gray-600 mt-1">{{ $t('pages.welcome.hero.election-board.demo.description') }}</div>
                       </div>
                       <div class="text-green-700 font-medium whitespace-nowrap ml-2">{{ $t('pages.welcome.hero.election-board.demo.cta') }} →</div>
@@ -51,7 +51,7 @@
                      class="block p-4 bg-orange-50 rounded-lg border border-orange-200 hover:border-orange-400 transition-colors">
                     <div class="flex justify-between items-start">
                       <div>
-                        <div class="font-medium text-gray-900">🇩🇪 {{ $t('pages.welcome.hero.election-board.berlin.title') }}</div>
+                        <div class="font-bold text-gray-900">🇩🇪 {{ $t('pages.welcome.hero.election-board.berlin.title') }}</div>
                         <div class="text-sm text-gray-600 mt-1">{{ $t('pages.welcome.hero.election-board.berlin.date-display') }} • {{ $t('pages.welcome.hero.election-board.berlin.voters') }}</div>
                       </div>
                       <div class="text-blue-700 font-medium whitespace-nowrap ml-2">{{ $t('pages.welcome.hero.election-board.berlin.cta') }} →</div>
@@ -63,7 +63,7 @@
                      class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-gray-400 transition-colors">
                     <div class="flex justify-between items-start">
                       <div>
-                        <div class="font-medium text-gray-900">🇮🇳 {{ $t('pages.welcome.hero.election-board.munich.title') }}</div>
+                        <div class="font-bold text-gray-900">🇮🇳 {{ $t('pages.welcome.hero.election-board.munich.title') }}</div>
                         <div class="text-sm text-gray-600 mt-1">{{ $t('pages.welcome.hero.election-board.munich.date-display') }} • {{ $t('pages.welcome.hero.election-board.munich.turnout') }}</div>
                       </div>
                       <div class="text-gray-700 font-medium whitespace-nowrap ml-2">{{ $t('pages.welcome.hero.election-board.munich.cta') }} →</div>
