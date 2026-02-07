@@ -26,6 +26,9 @@
     "code_label": "पहिलो मतदान कोड",
     "code_placeholder": "आफ्नो मतदान कोड दर्ज गर्नुहोस्",
     "submit_button": "🗳️ मतदान पर्म पाउन यहाँ थिच्नुहोस्",
-    "submit_button_secondary": "मतदान पर्मको लागि"
+    "submit_button_secondary": "मतदान पर्मको लागि",
+    "characters_label": "वर्ण",
+    "enter_instruction": "आपको 6-क्यारेक्टर कोड दर्ज गर्नुहोस्",
+    "ready_text": "तयार"
   }
 }

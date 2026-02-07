@@ -26,6 +26,9 @@
     "code_label": "First Voting Code",
     "code_placeholder": "Enter your voting code",
     "submit_button": "🗳️ PRESS HERE TO GET VOTING FORM",
-    "submit_button_nepali": "भोटिङ फर्म प्राप्त गर्न यहाँ थिच्नुहोस्"
+    "submit_button_nepali": "भोटिङ फर्म प्राप्त गर्न यहाँ थिच्नुहोस्",
+    "characters_label": "characters",
+    "enter_instruction": "Enter your 6-character code",
+    "ready_text": "Ready"
   }
 }

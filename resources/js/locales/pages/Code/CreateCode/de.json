@@ -26,6 +26,9 @@
     "code_label": "Erster Wahlcode",
     "code_placeholder": "Geben Sie Ihren Wahlcode ein",
     "submit_button": "🗳️ HIER KLICKEN UM ABSTIMMUNGSFORMULAR ZU ERHALTEN",
-    "submit_button_secondary": "Zum Abstimmungsformular"
+    "submit_button_secondary": "Zum Abstimmungsformular",
+    "characters_label": "Zeichen",
+    "enter_instruction": "Geben Sie Ihren 6-stelligen Code ein",
+    "ready_text": "Bereit"
   }
 }

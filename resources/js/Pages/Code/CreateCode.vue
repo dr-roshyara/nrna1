@@ -64,45 +64,96 @@
         <jet-validation-errors class="mx-auto mb-4 text-center" />
     </div>
 
-    <!-- Form - Cleaner styling -->
-    <form @submit.prevent="submit" class="mx-auto mt-6 w-full text-center md:w-2/3">
-        <div class="mx-2 bg-white rounded-lg shadow-lg border border-gray-200 px-6 py-8">
+    <!-- Form - Enhanced styling with character indicators -->
+    <form @submit.prevent="submit" class="mx-auto mt-6 w-full text-center">
+        <div class="mx-2 bg-white rounded-lg shadow-lg border border-gray-200 px-6 py-8 max-w-2xl mx-auto">
             <!-- Code Input -->
-            <div class="mb-6">
-                <label for="voting_code" class="block mb-4">
+            <div class="mb-8">
+                <label for="voting_code" class="block mb-6">
                     <div class="flex items-center justify-center mb-2">
                         <span class="text-2xl mr-2">🔑</span>
                         <p class="text-xl font-bold text-gray-900">{{ $t('pages.code-create.form.code_label') }}</p>
                     </div>
                 </label>
-                <input
-                    class="w-full md:w-2/3 mx-auto block rounded-lg border-2 border-blue-300 bg-gray-50 p-4 text-xl font-bold text-gray-900 text-center transition-all focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:bg-white focus:border-blue-600"
-                    id="voting_code"
-                    :placeholder="$t('pages.code-create.form.code_placeholder')"
-                    v-model="form.voting_code"
-                    @keypress.enter="handleSubmit"
-                    autocomplete="off"
-                />
+
+                <div class="relative">
+                    <!-- Enhanced Code Input Field -->
+                    <input
+                        id="voting_code"
+                        type="text"
+                        v-model="form.voting_code"
+                        class="w-full px-6 py-5 text-3xl font-mono text-center tracking-widest border-3 rounded-2xl focus:ring-4 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 uppercase shadow-md"
+                        :class="{
+                            'border-red-300 bg-red-50': form.errors.voting_code,
+                            'border-green-400 bg-green-50': form.voting_code && form.voting_code.length === 6 && !form.errors.voting_code,
+                            'border-gray-300': !form.voting_code || form.voting_code.length !== 6 || !form.errors.voting_code
+                        }"
+                        :placeholder="$t('pages.code-create.form.code_placeholder')"
+                        maxlength="6"
+                        autocomplete="off"
+                        autofocus
+                        @keypress.enter="handleSubmit"
+                    />
+
+                    <!-- Character Indicators -->
+                    <div class="mt-6 flex justify-center space-x-2">
+                        <div v-for="i in 6" :key="i"
+                             class="w-12 h-12 rounded-lg border-2 flex items-center justify-center font-bold text-lg transition-all"
+                             :class="{
+                                 'border-blue-500 bg-blue-50': (form.voting_code && form.voting_code.length >= i),
+                                 'border-gray-300': !form.voting_code || form.voting_code.length < i
+                             }">
+                            <span v-if="form.voting_code && form.voting_code.length >= i"
+                                  class="text-gray-900">
+                                {{ form.voting_code.charAt(i-1) }}
+                            </span>
+                            <span v-else class="text-gray-400">_</span>
+                        </div>
+                    </div>
+
+                    <!-- Status Indicators -->
+                    <div class="mt-6 flex items-center justify-between px-2">
+                        <div class="text-sm text-gray-600">
+                            <span v-if="form.voting_code">
+                                {{ form.voting_code.length }}/6 {{ $t('pages.code-create.form.characters_label') }}
+                            </span>
+                            <span v-else>{{ $t('pages.code-create.form.enter_instruction') }}</span>
+                        </div>
+                        <div v-if="form.voting_code && form.voting_code.length === 6 && !form.errors.voting_code"
+                             class="flex items-center text-green-600 font-semibold">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                            </svg>
+                            {{ $t('pages.code-create.form.ready_text') }}
+                        </div>
+                    </div>
+
+                    <!-- Validation Errors -->
+                    <div v-if="form.errors.voting_code" class="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="text-red-700">{{ form.errors.voting_code }}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Submit Button -->
             <div class="mb-4">
                 <button
                     type="submit"
-                    :disabled="!form.voting_code.trim() || codeExpired"
-                    class="w-full md:w-2/3 font-bold py-4 px-6 rounded-lg transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+                    :disabled="!form.voting_code.trim() || form.voting_code.length !== 6 || codeExpired"
+                    class="w-full font-bold py-4 px-6 rounded-lg transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
                     :class="{
-                        'bg-blue-600 hover:bg-blue-700 text-white cursor-pointer': form.voting_code.trim() && !codeExpired,
-                        'bg-gray-300 text-gray-500 cursor-not-allowed': !form.voting_code.trim() || codeExpired
+                        'bg-blue-600 hover:bg-blue-700 text-white cursor-pointer': form.voting_code.length === 6 && !codeExpired,
+                        'bg-gray-300 text-gray-500 cursor-not-allowed': form.voting_code.length !== 6 || codeExpired
                     }"
                 >
                     {{ $t('pages.code-create.form.submit_button') }}
                 </button>
-            </div>
-
-            <!-- Validation Errors -->
-            <div class="mx-auto text-center">
-                <jet-validation-errors class="mx-auto mb-4 text-center" />
             </div>
         </div>
     </form>
