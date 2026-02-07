@@ -8,6 +8,10 @@ import votingStartDe from './locales/pages/voting-start/de.json';
 import votingStartEn from './locales/pages/voting-start/en.json';
 import votingStartNp from './locales/pages/voting-start/np.json';
 
+import roleSelectionDe from './locales/pages/RoleSelection/de.json';
+import roleSelectionEn from './locales/pages/RoleSelection/en.json';
+import roleSelectionNp from './locales/pages/RoleSelection/np.json';
+
 import votingElectionDe from './locales/pages/voting-election/de.json';
 import votingElectionEn from './locales/pages/voting-election/en.json';
 import votingElectionNp from './locales/pages/voting-election/np.json';
@@ -60,9 +64,34 @@ import voteFinalDe from './locales/pages/VoteFinal/de.json';
 import voteFinalEn from './locales/pages/VoteFinal/en.json';
 import voteFinalNp from './locales/pages/VoteFinal/np.json';
 
+import adminDe from './locales/pages/Admin/de.json';
+import adminEn from './locales/pages/Admin/en.json';
+import adminNp from './locales/pages/Admin/np.json';
+
+import commissionDe from './locales/pages/Commission/de.json';
+import commissionEn from './locales/pages/Commission/en.json';
+import commissionNp from './locales/pages/Commission/np.json';
+
+import voteDashboardDe from './locales/pages/Vote/Dashboard/de.json';
+import voteDashboardEn from './locales/pages/Vote/Dashboard/en.json';
+import voteDashboardNp from './locales/pages/Vote/Dashboard/np.json';
+
+import welcomeDashboardDe from './locales/pages/Welcome/Dashboard/de.json';
+import welcomeDashboardEn from './locales/pages/Welcome/Dashboard/en.json';
+import welcomeDashboardNp from './locales/pages/Welcome/Dashboard/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
-  // 1. Check localStorage first (user's saved preference)
+  // 1. Check for server-provided locale (from Inertia props - highest priority)
+  // This will be injected via window variable by app.js
+  if (typeof window !== 'undefined' && window.__initialLocale) {
+    const serverLocale = window.__initialLocale;
+    if (['de', 'en', 'np'].includes(serverLocale)) {
+      return serverLocale;
+    }
+  }
+
+  // 2. Check localStorage first (user's saved preference)
   if (typeof localStorage !== 'undefined') {
     const saved = localStorage.getItem('preferred_locale');
     if (saved && ['de', 'en', 'np'].includes(saved)) {
@@ -70,13 +99,13 @@ function getInitialLocale() {
     }
   }
 
-  // 2. Check environment variable
+  // 3. Check environment variable
   const envLocale = process.env.MIX_DEFAULT_LOCALE || 'de';
   if (['de', 'en', 'np'].includes(envLocale)) {
     return envLocale;
   }
 
-  // 3. Default to German
+  // 4. Default to German
   return 'de';
 }
 
@@ -88,6 +117,7 @@ const messages = {
     ...de,
     pages: {
       'voting-start': votingStartDe,
+      'role-selection': roleSelectionDe,
       'voting-election': votingElectionDe,
       pricing: pricingDe,
       welcome: welcomeDe,
@@ -101,12 +131,18 @@ const messages = {
       'vote-verify': voteVerifyDe,
       'vote-show-verify': voteShowVerifyDe,
       'vote-final': voteFinalDe,
+      'role-selection': roleSelectionDe,
+      'admin': adminDe,
+      'commission': commissionDe,
+      'vote-dashboard': voteDashboardDe,
+      'welcome-dashboard': welcomeDashboardDe,
     },
   },
   en: {
     ...en,
     pages: {
       'voting-start': votingStartEn,
+      'role-selection': roleSelectionEn,
       'voting-election': votingElectionEn,
       pricing: pricingEn,
       welcome: welcomeEn,
@@ -120,12 +156,18 @@ const messages = {
       'vote-verify': voteVerifyEn,
       'vote-show-verify': voteShowVerifyEn,
       'vote-final': voteFinalEn,
+      'role-selection': roleSelectionEn,
+      'admin': adminEn,
+      'commission': commissionEn,
+      'vote-dashboard': voteDashboardEn,
+      'welcome-dashboard': welcomeDashboardEn,
     },
   },
   np: {
     ...np,
     pages: {
       'voting-start': votingStartNp,
+      'role-selection': roleSelectionNp,
       'voting-election': votingElectionNp,
       pricing: pricingNp,
       welcome: welcomeNp,
@@ -139,6 +181,11 @@ const messages = {
       'vote-verify': voteVerifyNp,
       'vote-show-verify': voteShowVerifyNp,
       'vote-final': voteFinalNp,
+      'role-selection': roleSelectionNp,
+      'admin': adminNp,
+      'commission': commissionNp,
+      'vote-dashboard': voteDashboardNp,
+      'welcome-dashboard': welcomeDashboardNp,
     },
   },
 };

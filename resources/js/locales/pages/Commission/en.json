@@ -1,0 +1,26 @@
+{
+  "commissionDashboard": {
+    "title": "Election Commission Dashboard",
+    "subtitle": "Monitor and manage elections",
+    "stats": {
+      "activeElections": "Active Elections",
+      "votesCast": "Votes Cast",
+      "pendingVoters": "Pending Voters",
+      "issuesToReview": "Issues to Review"
+    },
+    "elections": {
+      "title": "Your Elections",
+      "empty": "No elections yet"
+    },
+    "buttons": {
+      "monitor": "Monitor",
+      "manage": "Manage",
+      "auditLog": "Audit Log"
+    },
+    "status": {
+      "active": "Active",
+      "pending": "Pending",
+      "completed": "Completed"
+    }
+  }
+}

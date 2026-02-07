@@ -35,6 +35,13 @@ use App\Http\Controllers\OpenionController;
 use App\Http\Controllers\Election\ElectionController;
 use App\Models\VoterSlug;
 
+// Role-based dashboard controllers (NEW)
+use App\Http\Controllers\RoleSelectionController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\CommissionDashboardController;
+use App\Http\Controllers\VoterDashboardController;
+use App\Http\Controllers\WelcomeDashboardController;
+
 // Note: VoterSlug route binding is now in App\Providers\RouteServiceProvider
 
 /*
@@ -212,3 +219,36 @@ Route::group([], __DIR__.'/committee/committeeRoutes.php');
 Route::group([], __DIR__.'/openion/openionRoutes.php');
 //finance
 Route::group([], __DIR__.'/finance/financeRoutes.php');
+
+// ============================================================================
+// NEW: ROLE-BASED DASHBOARD SYSTEM (Phase 1 & 2)
+// ============================================================================
+Route::middleware(['auth'])->group(function () {
+
+    // Welcome dashboard (first-time users / onboarding)
+    Route::get('/dashboard/welcome', [WelcomeDashboardController::class, 'index'])
+         ->name('dashboard.welcome');
+
+    // Role selection dashboard (entry point for multi-role users)
+    Route::get('/dashboard/roles', [RoleSelectionController::class, 'index'])
+         ->name('role.selection');
+
+    // Role switching
+    Route::post('/switch-role/{role}', [RoleSelectionController::class, 'switchRole'])
+         ->name('role.switch');
+
+    // Admin dashboard (requires admin role)
+    Route::prefix('dashboard/admin')->middleware(['role:admin'])->group(function () {
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    });
+
+    // Commission dashboard (requires commission role)
+    Route::prefix('dashboard/commission')->middleware(['role:commission'])->group(function () {
+        Route::get('/', [CommissionDashboardController::class, 'index'])->name('commission.dashboard');
+    });
+
+    // Voter dashboard (requires voter role)
+    Route::prefix('vote')->middleware(['role:voter'])->group(function () {
+        Route::get('/', [VoterDashboardController::class, 'index'])->name('vote.dashboard');
+    });
+});

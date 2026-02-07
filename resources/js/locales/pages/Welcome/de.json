@@ -5,7 +5,7 @@
     "subtitle": "Die globale Wahlplattform für NGOs, Diaspora-Gemeinschaften und Verbände",
     "description": "Führen Sie faire und transparente Wahlen mit unserem DSGVO-konformen, vollständig verschlüsselten Wahlsystem durch. Vertraut von Tausenden von Organisationen, Verbänden und Diaspora-Gemeinschaften in über 100 Ländern.",
     "cta_primary": "Kostenlos testen",
-    "cta_secondary": "Demo vereinbaren",
+    "cta_register": "Als Kunde registrieren",
     "cta_demo": "Demo versuchen",
     "trust_label": "Vertraut von führenden Organisationen weltweit",
     "security_badge_title": "Sicher & DSGVO-konform",
@@ -129,6 +129,46 @@
       { "label": "24/7 Überwachung", "icon": "monitor" }
     ]
   },
+  "value_proposition": {
+    "why_title": "Warum PUBLIC DIGIT?",
+    "for_whom_title": "Für wen ist PUBLIC DIGIT?",
+    "features": [
+      {
+        "icon": "€",
+        "title": "Feste Gebühr, keine versteckten Kosten",
+        "description": "Eine Pauschale pro Wahl. Keine Kosten pro Wähler."
+      },
+      {
+        "icon": "⚡",
+        "title": "In 30 Minuten startklar",
+        "description": "Einfach Mitgliederliste hochladen und loslegen."
+      }
+    ],
+    "org_types": [
+      {
+        "icon": "🌏",
+        "name": "NGOs & Verbände"
+      },
+      {
+        "icon": "🌍",
+        "name": "Diaspora-Organisationen"
+      },
+      {
+        "icon": "🎭",
+        "name": "Kulturvereine"
+      },
+      {
+        "icon": "🏢",
+        "name": "Vereine & Genossenschaften"
+      }
+    ],
+    "testimonial": {
+      "quote": "Wir haben 85% unserer Wahlkosten gespart. Einrichtung: 30 Minuten. Unsere Mitglieder aus 12 Ländern konnten einfach wählen.",
+      "author": "Julia Schmidt",
+      "role": "Vorsitzende",
+      "organization": "Deutsch-Nepalische Gesellschaft"
+    }
+  },
   "testimonials": {
     "title": "Vertraut von führenden Organisationen weltweit",
     "subtitle": "Lesen Sie, was Organisationsleiter und Diaspora-Gemeinschaften über PUBLIC DIGIT sagen.",
@@ -167,6 +207,6 @@
       { "icon": "👥", "title": "Unbegrenzte Mitglieder", "description": "Keine Pro-Wähler-Gebühren oder versteckten Kosten" },
       { "icon": "🛡️", "title": "Vollständiger Support", "description": "Dedicated Support-Team verfügbar weltweit" }
     ],
-    "footer_note": "100% Geld-zurück-Garantie, wenn Sie nicht zufrieden sind. Fragen? Kontaktieren Sie unser Team unter support@publicdigit.de"
+    "footer_note": "100% Geld-zurück-Garantie, wenn Sie nicht zufrieden sind. Fragen? Kontaktieren Sie unser Team unter support [at] publicdigit.de"
   }
 }

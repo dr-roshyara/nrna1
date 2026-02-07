@@ -2,7 +2,7 @@
     <div class="min-h-screen bg-gray-50 flex flex-col">
         <!-- Header with proper ARIA landmark -->
         <header role="banner">
-            <ElectionHeader :isLoggedIn="true" />
+            <ElectionHeader :isLoggedIn="true" :locale="$page.props.locale" />
         </header>
 
         <!-- Main content with landmark -->

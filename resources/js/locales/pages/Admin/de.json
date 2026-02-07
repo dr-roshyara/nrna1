@@ -1,0 +1,18 @@
+{
+  "adminDashboard": {
+    "title": "Admin-Dashboard",
+    "subtitle": "Verwalten Sie Ihre Organisationen und Wahlen",
+    "stats": {
+      "totalElections": "Gesamtwahlein",
+      "activeElections": "Aktive Wahlen",
+      "totalVoters": "Gesamtwähler",
+      "participationRate": "Beteiligungsquote"
+    },
+    "organizations": {
+      "title": "Ihre Organisationen",
+      "empty": "Noch keine Organisationen",
+      "createButton": "Organisation erstellen",
+      "manageButton": "Verwalten"
+    }
+  }
+}

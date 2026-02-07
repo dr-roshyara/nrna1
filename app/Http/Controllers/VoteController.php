@@ -2301,39 +2301,35 @@ public function verify_final_vote(Request $request)
     public function verify_code_to_check_vote($code){
 
         $validator =  Validator::make(request()->all(), [
-            'voting_code' =>['required'],                    
+            'voting_code' =>['required'],
         ]);
         if($code==null  ){
-             
-            $validator->errors()->add('code_to_check_vote',
-            "Sorry, you have submitted wrong Voting Code! 
-            यहाँले दिनु भएको कोड सही प्रमाणित हुन सकेन। यसैले आफ्नो इमेल चेक गरेर  सहि कोड हालेर फेरी वटन थिच्नुहोस। ");
-             
+            // Use translation for error message
+            $errorMsg = __('pages.vote-show-verify.errors.wrong_verification_code');
+            $validator->errors()->add('code_to_check_vote', $errorMsg);
         }
         if($code!=null){
             $this->has_voted   =$code->has_voted;
            $this->in_code      =$code->code_for_vote;
-            
+
         }
         if(!$this->has_voted){
-            $validator->errors()->add('code_to_check_vote',
-            "Sorry, It seems like that you have not voted yet. Please do vote first. Then only you can see and check your vote. <br>
-             यहाँले मतदानमा भागनै नलिएको जस्ताे देखियो। कृपया पहिले मतदान गर्नुहोस। ");
-             
+            // Use translation for error message
+            $errorMsg = __('pages.vote-show-verify.errors.not_voted_yet');
+            $validator->errors()->add('code_to_check_vote', $errorMsg);
         }
-      
+
          $validator->after(function ($validator) {
-      
+
             $voting_code =request('voting_code');
             if (!Hash::check($this->out_code, $this->in_code)) {
-                // The passwords match...
-                //add custom error to the Validator
-                $validator->errors()->add('code_to_check_vote',"Sorry, you have submitted wrong Voting Code! 
-                यहाँले दिनु भएको कोड सही प्रमाणित हुन सकेन। यसैले आफ्नो इमेल चेक गरेर  सहि कोड हालेर फेरी वटन थिच्नुहोस। ");
+                // Use translation for error message
+                $errorMsg = __('pages.vote-show-verify.errors.wrong_verification_code');
+                $validator->errors()->add('code_to_check_vote', $errorMsg);
             }
         });
 
-       
+
         return $validator;
     }
 

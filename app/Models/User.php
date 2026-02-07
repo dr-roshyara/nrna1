@@ -911,5 +911,137 @@ public function getVoterState(): string
 
 }
 
+    // ============================================================================
+    // NEW: ROLE SYSTEM METHODS - OPTION C: LEGACY-AWARE HYBRID
+    // These methods work ALONGSIDE existing is_committee_member and voting logic
+    // ============================================================================
+
+    /**
+     * Get organizations this user belongs to with roles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function organizationRoles()
+    {
+        return $this->belongsToMany(Organization::class, 'user_organization_roles')
+                    ->withPivot('role', 'permissions')
+                    ->withTimestamps();
+    }
+
+    /**
+     * Get dashboard-accessible roles (NEW system + legacy mapping)
+     * Combines new pivot roles + maps existing committee/voter status
+     *
+     * @return array
+     */
+    public function getDashboardRoles(): array
+    {
+        return \Illuminate\Support\Facades\Cache::remember(
+            "user_{$this->id}_dashboard_roles",
+            3600,
+            function () {
+                $roles = [];
+
+                // Get organization-specific roles from new system
+                $orgRoles = \DB::table('user_organization_roles')
+                    ->where('user_id', $this->id)
+                    ->distinct()
+                    ->pluck('role')
+                    ->toArray();
+                $roles = array_merge($roles, $orgRoles);
+
+                // Map existing legacy roles to new system
+                // This maintains backward compatibility
+                if ($this->is_committee_member) {
+                    if (!in_array('commission', $roles)) {
+                        $roles[] = 'commission';
+                    }
+                }
+
+                // If user can vote (from VoterRegistration logic)
+                if ($this->wantsToVoteInDemo() || $this->wantsToVoteInReal()) {
+                    if (!in_array('voter', $roles)) {
+                        $roles[] = 'voter';
+                    }
+                }
+
+                return array_unique(array_filter($roles));
+            }
+        );
+    }
+
+    /**
+     * Check if user has dashboard role (NEW system only)
+     *
+     * @param string $role
+     * @return bool
+     */
+    public function hasDashboardRole(string $role): bool
+    {
+        return in_array($role, $this->getDashboardRoles());
+    }
+
+    /**
+     * Get election-specific commission roles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function electionCommissionRoles()
+    {
+        return $this->belongsToMany(Election::class, 'election_commission_members')
+                    ->withPivot('permissions')
+                    ->withTimestamps();
+    }
+
+    /**
+     * Check if user is commission member for specific election
+     *
+     * @param int $electionId
+     * @return bool
+     */
+    public function isCommissionMemberForElection(int $electionId): bool
+    {
+        return $this->electionCommissionRoles()
+            ->where('elections.id', $electionId)
+            ->exists();
+    }
+
+    /**
+     * Check if user is admin of organization
+     *
+     * @param int $organizationId
+     * @return bool
+     */
+    public function isOrganizationAdmin(int $organizationId): bool
+    {
+        return $this->organizationRoles()
+            ->where('organizations.id', $organizationId)
+            ->wherePivot('role', 'admin')
+            ->exists();
+    }
+
+    /**
+     * Check if user is voter in organization
+     *
+     * @param int $organizationId
+     * @return bool
+     */
+    public function isOrganizationVoter(int $organizationId): bool
+    {
+        return $this->organizationRoles()
+            ->where('organizations.id', $organizationId)
+            ->wherePivot('role', 'voter')
+            ->exists();
+    }
+
+    /**
+     * Flush role cache when roles change
+     *
+     * @return void
+     */
+    public function flushRoleCache(): void
+    {
+        \Illuminate\Support\Facades\Cache::forget("user_{$this->id}_dashboard_roles");
+    }
 
 }

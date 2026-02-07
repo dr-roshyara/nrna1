@@ -12,6 +12,6 @@ class EncryptCookies extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'locale', // Plain text cookie set by JavaScript for language selection
     ];
 }

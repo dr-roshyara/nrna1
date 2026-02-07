@@ -99,7 +99,6 @@ class ElectionController extends Controller
             return [
                 'can_access' => false,
                 'error_type' => 'election_inactive',
-                'error_title' => 'निर्वाचन सक्रिय छैन | Election Inactive',
                 'error_message_nepali' => 'निर्वाचन अहिले सक्रिय छैन।',
                 'error_message_english' => 'Election is not currently active.'
             ];
@@ -110,7 +109,6 @@ class ElectionController extends Controller
             return [
                 'can_access' => false,
                 'error_type' => 'not_voter',
-                'error_title' => 'मतदाता दर्ता नभएको | Not Registered as Voter',
                 'error_message_nepali' => 'तपाईं मतदाताको रूपमा दर्ता हुनुभएको छैन।',
                 'error_message_english' => 'You are not registered as a voter.'
             ];
@@ -121,7 +119,6 @@ class ElectionController extends Controller
             return [
                 'can_access' => false,
                 'error_type' => 'vote_not_approved',
-                'error_title' => 'मतदान अनुमति नभएको | Voting Not Approved',
                 'error_message_nepali' => 'तपाईंको मतदान अनुमति अझै स्वीकृत भएको छैन।',
                 'error_message_english' => 'Your voting permission has not been approved yet.'
             ];
@@ -142,7 +139,6 @@ class ElectionController extends Controller
             return [
                 'can_access' => false,
                 'error_type' => 'voting_period_inactive',
-                'error_title' => 'मतदान समय सक्रिय छैन | Voting Period Inactive',
                 'error_message_nepali' => 'मतदान अवधि सक्रिय छैन। मतदान सुरु भएपछि फेरि प्रयास गर्नुहोस्।',
                 'error_message_english' => 'Voting period is not active. Please try again when voting has started.'
             ];

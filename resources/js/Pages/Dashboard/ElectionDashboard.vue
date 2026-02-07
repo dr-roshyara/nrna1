@@ -677,8 +677,8 @@ export default {
             if (this.authUser?.is_voter && !this.authUser?.can_vote) {
                 return this.$t('pages.election-dashboard.voting_section.error_approval_pending_title');
             }
-            // Fallback to backend error title or default
-            return this.ballotAccess.error_title || this.$t('pages.election-dashboard.voting_section.error_title_default');
+            // Default error title (voting period inactive or other ballot access issues)
+            return this.$t('pages.election-dashboard.voting_section.error_title_default');
         },
 
         getErrorMessage() {
@@ -689,10 +689,15 @@ export default {
             if (this.authUser?.is_voter && !this.authUser?.can_vote) {
                 return this.$t('pages.election-dashboard.voting_section.error_approval_pending_msg');
             }
-            // Fallback to backend error messages
-            if (this.ballotAccess.error_message_nepali && this.ballotAccess.error_message_english) {
-                return `${this.ballotAccess.error_message_nepali} / ${this.ballotAccess.error_message_english}`;
+            // Fallback to backend error message in current language only
+            const currentLocale = this.$i18n.locale;
+            if (currentLocale === 'np' && this.ballotAccess.error_message_nepali) {
+                return this.ballotAccess.error_message_nepali;
             }
+            if ((currentLocale === 'en' || currentLocale === 'de') && this.ballotAccess.error_message_english) {
+                return this.ballotAccess.error_message_english;
+            }
+            // Fallback to whichever message is available
             return this.ballotAccess.error_message_nepali || this.ballotAccess.error_message_english || '';
         }
     }

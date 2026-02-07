@@ -1,0 +1,33 @@
+{
+  "voterDashboard": {
+    "title": "Voter Dashboard",
+    "subtitle": "Manage your votes and election participation",
+    "stats": {
+      "pendingVotes": "Pending Votes",
+      "castVotes": "Votes Cast",
+      "completedElections": "Completed Elections"
+    },
+    "elections": {
+      "title": "Active Elections",
+      "empty": "No active elections at this time",
+      "status": {
+        "pending": "Pending",
+        "approved": "Ready to Vote",
+        "voted": "Voted",
+        "rejected": "Rejected"
+      }
+    },
+    "votingHistory": {
+      "title": "Voting History",
+      "empty": "No voting history yet",
+      "date": "Date",
+      "election": "Election",
+      "type": "Type"
+    },
+    "buttons": {
+      "vote": "Vote Now",
+      "viewResults": "View Results",
+      "verifyVote": "Verify Vote"
+    }
+  }
+}

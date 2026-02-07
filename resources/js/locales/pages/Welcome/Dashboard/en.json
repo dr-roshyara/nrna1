@@ -1,0 +1,65 @@
+{
+  "header": {
+    "title": "Welcome, {name}! 👋",
+    "subtitle": "Let's get you started with organizing your first election or joining an organization"
+  },
+  "compliance": {
+    "title": "German GDPR Compliant",
+    "description": "PublicDigit is built with German privacy standards in mind. All data is processed securely and transparently.",
+    "gdpr": "GDPR compliant data processing",
+    "dataprotection": "Encrypted data storage (German servers)",
+    "encryption": "End-to-end security certification"
+  },
+  "actions": {
+    "title": "What would you like to do?",
+    "createOrg": "Create a New Organization",
+    "createOrgDesc": "Start managing elections for your community, union, or organization",
+    "joinOrg": "Join an Existing Organization",
+    "joinOrgDesc": "Get invited to participate in elections from existing organizations",
+    "skip": "Explore the Platform",
+    "skipDesc": "Skip setup and explore the dashboard first"
+  },
+  "usecases": {
+    "title": "Who uses PublicDigit?",
+    "german": {
+      "title": "German Organizations",
+      "description": "Unions, works councils, and German associations use PublicDigit for secure, transparent voting.",
+      "example1": "Works council elections (Betriebsratswahlen)",
+      "example2": "Association governance votes (Vereinsabstimmungen)"
+    },
+    "diaspora": {
+      "title": "Diaspora Communities",
+      "description": "Diaspora associations across Europe organize elections in multiple languages with full transparency.",
+      "example1": "Community leadership elections (multi-country)",
+      "example2": "Member referendums (8+ language support)"
+    }
+  },
+  "socialProof": {
+    "title": "Trusted by Organizations Worldwide",
+    "orgs": "Active Organizations",
+    "languages": "Languages Supported",
+    "gdpr": "GDPR Compliant"
+  },
+  "keyFeatures": {
+    "title": "Why Choose PublicDigit?",
+    "subtitle": "We bring enterprise-grade security to grassroots organizations",
+    "transparency": {
+      "title": "Complete Transparency",
+      "description": "Every vote is verifiable. Every step is auditable. No surprises."
+    },
+    "security": {
+      "title": "Bank-Grade Security",
+      "description": "End-to-end encryption, German data centers, and BSI certification"
+    },
+    "multilingual": {
+      "title": "Truly Global",
+      "description": "Built for diaspora communities with 8+ language support out of the box"
+    }
+  },
+  "tips": {
+    "title": "Getting Started Tips",
+    "tip1": "Organizations can be set up in less than 5 minutes",
+    "tip2": "Invite unlimited members to participate in elections",
+    "tip3": "Access detailed analytics and audit trails for every election"
+  }
+}

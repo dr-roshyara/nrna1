@@ -44,16 +44,7 @@
 
             <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row gap-4">
-              <inertia-link
-                :href="route('register')"
-                class="inline-flex items-center justify-center px-8 py-4 bg-blue-800 text-white font-bold text-lg rounded-lg hover:bg-blue-900 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-colors shadow-lg min-h-[44px]"
-              >
-                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
-                </svg>
-                {{ $t('pages.welcome.hero.cta_primary') }}
-              </inertia-link>
-
+              <!-- Try Demo Button -->
               <a
                 href="/election/demo/start"
                 class="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white font-bold text-lg rounded-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition-colors shadow-lg min-h-[44px]"
@@ -62,17 +53,20 @@
                 <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10.5 1.5H19a.5.5 0 01.5.5v8a.5.5 0 01-.5.5h-8.5V19a.5.5 0 01-.5.5H1a.5.5 0 01-.5-.5v-8a.5.5 0 01.5-.5H9V2a.5.5 0 01.5-.5z"/>
                 </svg>
-                🎯 {{ $t('pages.welcome.hero.cta_demo', 'Try Demo') }}
+                {{ $t('pages.welcome.hero.cta_demo', 'Demo versuchen') }}
               </a>
 
+              <!-- Schedule Demo Button -->
               <a
-                href="#how-it-works"
+                href="/register"
                 class="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-800 text-blue-800 font-bold text-lg rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-colors min-h-[44px]"
+                title="Schedule a personalized demo"
               >
                 <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
+                  <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5z"/>
+                  <path fill-rule="evenodd" d="M2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2z" clip-rule="evenodd"/>
                 </svg>
-                {{ $t('pages.welcome.hero.cta_secondary') }}
+                {{ $t('pages.welcome.hero.cta_register', 'Als Kunde registieren') }}
               </a>
             </div>
           </div>
@@ -130,20 +124,6 @@
               </div>
             </div>
 
-            <!-- Floating Security Badge -->
-            <div class="absolute -bottom-12 -left-4 bg-white px-6 py-3 rounded-lg shadow-lg border border-gray-200">
-              <div class="flex items-center">
-                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                  <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0110 1.944 11.954 11.954 0 0117.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-                <div>
-                  <div class="font-bold text-gray-900">{{ $t('pages.welcome.hero.security_badge_title') }}</div>
-                  <div class="text-sm text-gray-600">{{ $t('pages.welcome.hero.security_badge_subtitle') }}</div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

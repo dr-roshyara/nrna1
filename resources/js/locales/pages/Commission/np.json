@@ -1,0 +1,26 @@
+{
+  "commissionDashboard": {
+    "title": "चुनाव आयोग ड्यासबोर्ड",
+    "subtitle": "चुनावहरू मनिटर र व्यवस्थापन गर्नुहोस्",
+    "stats": {
+      "activeElections": "सक्रिय चुनावहरू",
+      "votesCast": "दिएका मतहरू",
+      "pendingVoters": "पेन्डिङ मतदाताहरू",
+      "issuesToReview": "समीक्षा गर्न समस्याहरू"
+    },
+    "elections": {
+      "title": "तपाईंका चुनावहरू",
+      "empty": "अझै कुनै चुनाव छैन"
+    },
+    "buttons": {
+      "monitor": "मनिटर गर्नुहोस्",
+      "manage": "व्यवस्थापन गर्नुहोस्",
+      "auditLog": "अडिट लग"
+    },
+    "status": {
+      "active": "सक्रिय",
+      "pending": "पेन्डिङ",
+      "completed": "पूरा भएको"
+    }
+  }
+}

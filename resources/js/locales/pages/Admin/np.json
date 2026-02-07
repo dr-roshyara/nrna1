@@ -1,0 +1,18 @@
+{
+  "adminDashboard": {
+    "title": "प्रशासन ड्यासबोर्ड",
+    "subtitle": "आफ्नो संगठनहरू र चुनावहरूको प्रबन्ध गर्नुहोस्",
+    "stats": {
+      "totalElections": "कुल चुनावहरू",
+      "activeElections": "सक्रिय चुनावहरू",
+      "totalVoters": "कुल मतदाताहरू",
+      "participationRate": "भागीदारीको दर"
+    },
+    "organizations": {
+      "title": "आपका संगठनहरू",
+      "empty": "अझै कुनै संगठन छैन",
+      "createButton": "संगठन सिर्जना गर्नुहोस्",
+      "manageButton": "व्यवस्थापन गर्नुहोस्"
+    }
+  }
+}

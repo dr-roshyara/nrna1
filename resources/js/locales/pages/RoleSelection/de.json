@@ -1,0 +1,54 @@
+{
+  "roleSelection": {
+    "welcome": "Willkommen, {name}!",
+    "subtitle": "Wählen Sie Ihre Rolle, um zum entsprechenden Dashboard zu gelangen",
+    "selectRole": "Wählen Sie, wie Sie partizipieren möchten",
+    "roles": {
+      "admin": {
+        "title": "Administrator",
+        "description": "Verwaltung von Organisationen, Erstellung von Wahlen und Systemkonfiguration",
+        "icon": "📊",
+        "ariaLabel": "Organisationsadministrator-Rolle - Organisationen und Wahlen verwalten"
+      },
+      "commission": {
+        "title": "Wahlkommission",
+        "description": "Überwachung von Wahlen, Verwaltung von Wählern und Überprüfung von Audit-Protokollen",
+        "icon": "⚖️",
+        "ariaLabel": "Wahlkommissionsmitglied-Rolle - Wahlen und Stimmen überwachen"
+      },
+      "voter": {
+        "title": "Wähler",
+        "description": "Teilnahme an Wahlen und Einsicht in Ihre Abstimmungshistorie",
+        "icon": "🗳️",
+        "ariaLabel": "Wählerolle - Stimmen abgeben und Wahlergebnisse anzeigen"
+      }
+    },
+    "stats": {
+      "admin": {
+        "organizations": "Organisationen",
+        "elections": "Wahlen",
+        "activeElections": "Aktive Wahlen"
+      },
+      "commission": {
+        "activeElections": "Aktive Wahlen",
+        "votesCast": "Abgegebene Stimmen",
+        "pendingVoters": "Ausstehende Wähler"
+      },
+      "voter": {
+        "pendingVotes": "Ausstehende Stimmen",
+        "castVotes": "Abgegebene Stimmen",
+        "completedElections": "Abgeschlossene Wahlen"
+      }
+    },
+    "buttons": {
+      "selectRole": "Diese Rolle auswählen",
+      "goToAdmin": "Zum Admin-Dashboard gehen",
+      "goToCommission": "Zum Kommissions-Dashboard gehen",
+      "voteNow": "Jetzt abstimmen",
+      "viewHistory": "Verlauf anzeigen"
+    },
+    "noRolesMessage": "Sie haben noch keinen Zugriff auf Rollen. Bitte kontaktieren Sie einen Administrator.",
+    "noRolesTitle": "Keine Rollen zugewiesen",
+    "contactAdmin": "Kontaktieren Sie Ihren Administrator für Zugriff"
+  }
+}

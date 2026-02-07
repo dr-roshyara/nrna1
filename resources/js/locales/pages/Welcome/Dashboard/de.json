@@ -1,0 +1,65 @@
+{
+  "header": {
+    "title": "Willkommen, {name}! 👋",
+    "subtitle": "Starten Sie mit der Organisation Ihrer ersten Wahl oder treten Sie einer Organisation bei"
+  },
+  "compliance": {
+    "title": "Deutsche DSGVO-Konformität",
+    "description": "PublicDigit wurde mit deutschen Datenschutzstandards entwickelt. Alle Daten werden sicher und transparent verarbeitet.",
+    "gdpr": "DSGVO-konforme Datenverarbeitung",
+    "dataprotection": "Verschlüsselte Datenspeicherung (deutsche Server)",
+    "encryption": "Zertifizierte End-to-End-Sicherheit"
+  },
+  "actions": {
+    "title": "Was möchten Sie tun?",
+    "createOrg": "Neue Organisation erstellen",
+    "createOrgDesc": "Verwalten Sie Wahlen für Ihre Gemeinschaft, Gewerkschaft oder Organisation",
+    "joinOrg": "Bestehender Organisation beitreten",
+    "joinOrgDesc": "Nehmen Sie an Wahlen von bestehenden Organisationen teil",
+    "skip": "Plattform erkunden",
+    "skipDesc": "Überspringen Sie die Einrichtung und erkunden Sie zuerst das Dashboard"
+  },
+  "usecases": {
+    "title": "Wer nutzt PublicDigit?",
+    "german": {
+      "title": "Deutsche Organisationen",
+      "description": "Gewerkschaften, Betriebsräte und deutsche Verbände nutzen PublicDigit für sichere, transparente Wahlen.",
+      "example1": "Betriebsratswahlen",
+      "example2": "Vereinsabstimmungen"
+    },
+    "diaspora": {
+      "title": "Diaspora-Gemeinschaften",
+      "description": "Diaspora-Verbände in ganz Europa organisieren Wahlen in mehreren Sprachen mit voller Transparenz.",
+      "example1": "Führungswahlen in der Gemeinschaft (länderübergreifend)",
+      "example2": "Abstimmungen der Mitglieder (8+ Sprachunterstützung)"
+    }
+  },
+  "socialProof": {
+    "title": "Vertraut von Organisationen weltweit",
+    "orgs": "Aktive Organisationen",
+    "languages": "Unterstützte Sprachen",
+    "gdpr": "DSGVO-konform"
+  },
+  "keyFeatures": {
+    "title": "Warum PublicDigit?",
+    "subtitle": "Wir bringen Sicherheit auf Unternehmensebene zu Graswurzelbewegungen",
+    "transparency": {
+      "title": "Vollständige Transparenz",
+      "description": "Jede Stimme ist überprüfbar. Jeder Schritt ist nachvollziehbar. Keine Überraschungen."
+    },
+    "security": {
+      "title": "Bankensicherheit",
+      "description": "End-to-End-Verschlüsselung, deutsche Rechenzentren und BSI-Zertifizierung"
+    },
+    "multilingual": {
+      "title": "Wirklich Global",
+      "description": "Speziell für Diaspora-Gemeinschaften mit 8+ Sprachunterstützung ab sofort verfügbar"
+    }
+  },
+  "tips": {
+    "title": "Tipps zum Einstieg",
+    "tip1": "Organisationen können in weniger als 5 Minuten eingerichtet werden",
+    "tip2": "Laden Sie unbegrenzt viele Mitglieder zu Wahlen ein",
+    "tip3": "Greifen Sie auf detaillierte Analysen und Audit Logs für jede Wahl zu"
+  }
+}

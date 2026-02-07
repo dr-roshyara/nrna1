@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\SetLocale::class,
             \App\Http\Middleware\HandleInertiaRequests::class,
         ],
 
@@ -74,6 +75,7 @@ class Kernel extends HttpKernel
         'voter.step.order' => \App\Http\Middleware\EnsureVoterStepOrder::class,
         'validate.voting.ip' => \App\Http\Middleware\ValidateVotingIp::class,
         'election' => \App\Http\Middleware\ElectionMiddleware::class,
+        'dashboard.role' => \App\Http\Middleware\CheckUserRole::class,
 
     ];
 }

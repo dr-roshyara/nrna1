@@ -1,0 +1,33 @@
+{
+  "voterDashboard": {
+    "title": "Wählerdashboard",
+    "subtitle": "Verwalten Sie Ihre Stimmen und Wahlbeteiligung",
+    "stats": {
+      "pendingVotes": "Ausstehende Stimmen",
+      "castVotes": "Abgegebene Stimmen",
+      "completedElections": "Abgeschlossene Wahlen"
+    },
+    "elections": {
+      "title": "Aktive Wahlen",
+      "empty": "Derzeit keine aktiven Wahlen",
+      "status": {
+        "pending": "Ausstehend",
+        "approved": "Bereit zum Abstimmen",
+        "voted": "Abgestimmt",
+        "rejected": "Abgelehnt"
+      }
+    },
+    "votingHistory": {
+      "title": "Abstimmungsverlauf",
+      "empty": "Noch kein Abstimmungsverlauf",
+      "date": "Datum",
+      "election": "Wahl",
+      "type": "Typ"
+    },
+    "buttons": {
+      "vote": "Jetzt abstimmen",
+      "viewResults": "Ergebnisse anzeigen",
+      "verifyVote": "Stimme verifizieren"
+    }
+  }
+}

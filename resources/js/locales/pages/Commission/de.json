@@ -1,0 +1,26 @@
+{
+  "commissionDashboard": {
+    "title": "Wahlkommissions-Dashboard",
+    "subtitle": "Überwachen und verwalten Sie Wahlen",
+    "stats": {
+      "activeElections": "Aktive Wahlen",
+      "votesCast": "Abgegebene Stimmen",
+      "pendingVoters": "Ausstehende Wähler",
+      "issuesToReview": "Probleme zur Überprüfung"
+    },
+    "elections": {
+      "title": "Ihre Wahlen",
+      "empty": "Noch keine Wahlen"
+    },
+    "buttons": {
+      "monitor": "Überwachen",
+      "manage": "Verwalten",
+      "auditLog": "Audit-Protokoll"
+    },
+    "status": {
+      "active": "Aktiv",
+      "pending": "Ausstehend",
+      "completed": "Abgeschlossen"
+    }
+  }
+}

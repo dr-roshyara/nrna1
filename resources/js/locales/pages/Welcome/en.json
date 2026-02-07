@@ -6,6 +6,7 @@
     "description": "Conduct fair and transparent elections with our GDPR-compliant, end-to-end encrypted voting system. Trusted by thousands of organizations, associations, and diaspora communities across 100+ countries.",
     "cta_primary": "Start Free Trial",
     "cta_secondary": "Schedule Demo",
+    "cta_register": "Register as Customer", 
     "cta_demo": "Try Demo",
     "trust_label": "Trusted by leading organizations worldwide",
     "security_badge_title": "Secure & GDPR Compliant",
@@ -129,6 +130,46 @@
       { "label": "24/7 Monitoring", "icon": "monitor" }
     ]
   },
+  "value_proposition": {
+    "why_title": "Why PUBLIC DIGIT?",
+    "for_whom_title": "Who is PUBLIC DIGIT for?",
+    "features": [
+      {
+        "icon": "€",
+        "title": "Fixed Pricing, No Hidden Costs",
+        "description": "A flat fee per election. No per-voter charges."
+      },
+      {
+        "icon": "⚡",
+        "title": "Ready in 30 Minutes",
+        "description": "Simply upload your member list and get started."
+      }
+    ],
+    "org_types": [
+      {
+        "icon": "🌏",
+        "name": "NGOs & Associations"
+      },
+      {
+        "icon": "🌍",
+        "name": "Diaspora Organizations"
+      },
+      {
+        "icon": "🎭",
+        "name": "Cultural Associations"
+      },
+      {
+        "icon": "🏢",
+        "name": "Clubs & Cooperatives"
+      }
+    ],
+    "testimonial": {
+      "quote": "We saved 85% on election costs. Setup took 30 minutes. Our members across 12 countries could vote effortlessly.",
+      "author": "Julia Schmidt",
+      "role": "Chairwoman",
+      "organization": "German-Nepalese Society"
+    }
+  },
   "testimonials": {
     "title": "Trusted by Leading Organizations Worldwide",
     "subtitle": "Here is what organizational leaders and diaspora communities say about PUBLIC DIGIT.",
@@ -167,6 +208,6 @@
       { "icon": "👥", "title": "Unlimited Members", "description": "No per-voter fees or hidden charges" },
       { "icon": "🛡️", "title": "Full Support", "description": "Dedicated support team available worldwide" }
     ],
-    "footer_note": "100% money-back guarantee if you're not satisfied. Questions? Contact our team at support@publicdigit.de"
+    "footer_note": "100% money-back guarantee if you're not satisfied. Questions? Contact our team at support [at] publicdigit.de"
   }
 }

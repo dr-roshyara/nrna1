@@ -1,0 +1,54 @@
+{
+  "roleSelection": {
+    "welcome": "Welcome, {name}!",
+    "subtitle": "Select your role to access the appropriate dashboard",
+    "selectRole": "Choose how you want to participate",
+    "roles": {
+      "admin": {
+        "title": "Administrator",
+        "description": "Manage organizations, create elections, and configure the system",
+        "icon": "📊",
+        "ariaLabel": "Organization Administrator role - manage organizations and elections"
+      },
+      "commission": {
+        "title": "Election Commission",
+        "description": "Monitor elections, manage voters, and review audit logs",
+        "icon": "⚖️",
+        "ariaLabel": "Election Commission member role - monitor elections and votes"
+      },
+      "voter": {
+        "title": "Voter",
+        "description": "Participate in elections and view your voting history",
+        "icon": "🗳️",
+        "ariaLabel": "Voter role - cast votes and view election results"
+      }
+    },
+    "stats": {
+      "admin": {
+        "organizations": "Organizations",
+        "elections": "Elections",
+        "activeElections": "Active Elections"
+      },
+      "commission": {
+        "activeElections": "Active Elections",
+        "votesCast": "Votes Cast",
+        "pendingVoters": "Pending Voters"
+      },
+      "voter": {
+        "pendingVotes": "Pending Votes",
+        "castVotes": "Votes Cast",
+        "completedElections": "Completed Elections"
+      }
+    },
+    "buttons": {
+      "selectRole": "Select this role",
+      "goToAdmin": "Go to Admin Dashboard",
+      "goToCommission": "Go to Commission Dashboard",
+      "voteNow": "Vote Now",
+      "viewHistory": "View History"
+    },
+    "noRolesMessage": "You don't have access to any roles yet. Please contact an administrator.",
+    "noRolesTitle": "No Roles Assigned",
+    "contactAdmin": "Contact your administrator for access"
+  }
+}

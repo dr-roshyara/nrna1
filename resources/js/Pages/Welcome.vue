@@ -1,13 +1,13 @@
 <template>
     <div v-if="!loggedIn" class="min-h-screen bg-gray-50">
         <!-- Header -->
-        <ElectionHeader :isLoggedIn="false" />
+        <ElectionHeader :isLoggedIn="false" :locale="$page.props.locale" />
 
         <!-- Hero Section -->
         <HeroSection :badges="heroBadges" />
 
         <!-- NGO Features Section -->
-        <NGOFeaturesSection :featureCards="featureCards" :orgTypes="orgTypes" />
+        <!-- <NGOFeaturesSection :featureCards="featureCards" :orgTypes="orgTypes" /> -->
 
         <!-- How It Works Section -->
         <HowItWorksSection :steps="steps" />
@@ -15,8 +15,15 @@
         <!-- Security & Compliance Section -->
         <SecurityComplianceSection :cards="securityCards" :certifications="certifications" />
 
+        <!-- Value Proposition Section -->
+        <ValuePropositionSection
+            :features="valuePropositionFeatures"
+            :testimonial="bestTestimonial"
+            :orgTypes="valuePropositionOrgTypes"
+        />
+
         <!-- Testimonials Section -->
-        <TestimonialsSection :testimonials="testimonials" />
+        <!-- <TestimonialsSection :testimonials="testimonials" /> -->
 
         <!-- CTA Section -->
         <CTASection :perks="perks" />
@@ -39,6 +46,7 @@ import HeroSection from "@/Components/Welcome/HeroSection.vue";
 import NGOFeaturesSection from "@/Components/Welcome/NGOFeaturesSection.vue";
 import HowItWorksSection from "@/Components/Welcome/HowItWorksSection.vue";
 import SecurityComplianceSection from "@/Components/Welcome/SecurityComplianceSection.vue";
+import ValuePropositionSection from "@/Components/Welcome/ValuePropositionSection.vue";
 import TestimonialsSection from "@/Components/Welcome/TestimonialsSection.vue";
 import CTASection from "@/Components/Welcome/CTASection.vue";
 
@@ -64,6 +72,7 @@ export default {
         NGOFeaturesSection,
         HowItWorksSection,
         SecurityComplianceSection,
+        ValuePropositionSection,
         TestimonialsSection,
         CTASection,
     },
@@ -81,6 +90,7 @@ export default {
             return this.$i18n.locale;
         },
         welcome() {
+            // Explicitly depend on currentLocale to ensure reactivity
             return this.welcomeData[this.currentLocale] || this.welcomeData.de;
         },
         heroBadges() {
@@ -103,6 +113,15 @@ export default {
         },
         testimonials() {
             return this.welcome.testimonials?.items || [];
+        },
+        valuePropositionFeatures() {
+            return this.welcome.value_proposition?.features || [];
+        },
+        valuePropositionOrgTypes() {
+            return this.welcome.value_proposition?.org_types || [];
+        },
+        bestTestimonial() {
+            return this.welcome.value_proposition?.testimonial || null;
         },
         perks() {
             return this.welcome.cta_section?.perks || [];
