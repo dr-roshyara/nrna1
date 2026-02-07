@@ -32,21 +32,21 @@
         "aria-label": "Demo Election - Always open for testing. Try the voting experience without registration. Takes about 5 minutes."
       },
       "berlin": {
-        "title": "🇩🇪 Berlin NRNA 2024",
+        "title": "🇩🇪 Berlin NRNA 2026",
         "date-display": "Nov 15–30",
         "voters": "500 Voters",
         "description": "Berlin Nepali Association leadership election. 500 eligible voters.",
         "cta": "View Details",
-        "aria-label": "Berlin NRNA Election 2024 - Voting period November 15 to 30, 2024. Berlin Nepali Association leadership election for 500 members."
+        "aria-label": "Berlin NRNA Election 2026 - Voting period November 15 to 30, 2026. Berlin Nepali Association leadership election for 500 members."
       },
       "munich": {
-        "title": "🇮🇳 Munich Indian 2024",
+        "title": "🇮🇳 Munich Indian 2026",
         "date-display": "Oct 1–15",
         "turnout": "85% Turnout",
         "voters": "300 Voters",
         "description": "Cultural committee election. 85% voter turnout. Results available.",
         "cta": "View Results",
-        "aria-label": "Munich Indian Association Election 2024 - Completed October 1 to 15, 2024. Cultural committee election with 85% voter turnout."
+        "aria-label": "Munich Indian Association Election 2026 - Completed October 1 to 15, 2026. Cultural committee election with 85% voter turnout."
       },
       "results": "Results"
     },

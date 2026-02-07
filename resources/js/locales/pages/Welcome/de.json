@@ -32,21 +32,21 @@
         "aria-label": "Demo-Wahl - Immer geöffnet zum Testen. Probieren Sie die Abstimmung ohne Registrierung aus. Dauert etwa 5 Minuten."
       },
       "berlin": {
-        "title": "🇩🇪 Berlin NRNA 2024",
+        "title": "🇩🇪 Berlin NRNA 2026",
         "date-display": "15.–30. Nov",
         "voters": "500 Wähler",
         "description": "Deutsch-Nepalische Gesellschaft Wahlen. 500 berechtigte Wähler.",
         "cta": "Details anzeigen",
-        "aria-label": "Berlin NRNA-Wahl 2024 - Wahlzeitraum 15. bis 30. November 2024. Deutsch-Nepalische Gesellschaft-Wahl für 500 Mitglieder."
+        "aria-label": "Berlin NRNA-Wahl 2026 - Wahlzeitraum 15. bis 30. November 2026. Deutsch-Nepalische Gesellschaft-Wahl für 500 Mitglieder."
       },
       "munich": {
-        "title": "🇮🇳 München Inder 2024",
+        "title": "🇮🇳 München Inder 2026",
         "date-display": "1.–15. Okt",
         "turnout": "85% Beteiligung",
         "voters": "300 Wähler",
         "description": "Kulturkomitee-Wahl. 85% Wählerbeteiligung. Ergebnisse verfügbar.",
         "cta": "Ergebnisse anzeigen",
-        "aria-label": "München Indische Vereins-Wahl 2024 - Abgeschlossen 1. bis 15. Oktober 2024. Kulturkomitee-Wahl mit 85% Wählerbeteiligung."
+        "aria-label": "München Indische Vereins-Wahl 2026 - Abgeschlossen 1. bis 15. Oktober 2026. Kulturkomitee-Wahl mit 85% Wählerbeteiligung."
       },
       "results": "Ergebnisse"
     },
