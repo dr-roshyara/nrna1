@@ -144,7 +144,7 @@
                       <span>{{ $t('pages.welcome.hero.election-board.munich.cta') }} →</span>
                     </div>
                   </a>
-                </div> 
+                </div>  
 
                 <!-- Language Support -->
                 <div class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
