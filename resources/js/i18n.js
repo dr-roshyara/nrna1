@@ -28,6 +28,10 @@ import authDe from './locales/pages/Auth/de.json';
 import authEn from './locales/pages/Auth/en.json';
 import authNp from './locales/pages/Auth/np.json';
 
+import verifyEmailDe from './locales/pages/Auth/VerifyEmail/de.json';
+import verifyEmailEn from './locales/pages/Auth/VerifyEmail/en.json';
+import verifyEmailNp from './locales/pages/Auth/VerifyEmail/np.json';
+
 import electionDe from './locales/pages/Election/de.json';
 import electionEn from './locales/pages/Election/en.json';
 import electionNp from './locales/pages/Election/np.json';
@@ -122,6 +126,7 @@ const messages = {
       pricing: pricingDe,
       welcome: welcomeDe,
       auth: authDe,
+      'verify-email': verifyEmailDe,
       election: electionDe,
       'election-dashboard': electionDashboardDe,
       'election-navigation': electionNavigationDe,
@@ -147,6 +152,7 @@ const messages = {
       pricing: pricingEn,
       welcome: welcomeEn,
       auth: authEn,
+      'verify-email': verifyEmailEn,
       election: electionEn,
       'election-dashboard': electionDashboardEn,
       'election-navigation': electionNavigationEn,
@@ -172,6 +178,7 @@ const messages = {
       pricing: pricingNp,
       welcome: welcomeNp,
       auth: authNp,
+      'verify-email': verifyEmailNp,
       election: electionNp,
       'election-dashboard': electionDashboardNp,
       'election-navigation': electionNavigationNp,

@@ -1,0 +1,10 @@
+{
+  "title": "E-Mail-Adresse verifizieren",
+  "check_email_now": "Bitte überprüfen Sie jetzt Ihre E-Mail.",
+  "thanks_for_signup": "Vielen Dank für Ihre Anmeldung! Sie wurden registriert. Wir haben Ihnen gerade eine E-Mail gesendet.",
+  "verify_instruction": "Bevor Sie beginnen, können Sie bitte Ihre E-Mail-Adresse überprüfen? Dazu müssen Sie Ihre Mailbox überprüfen und auf den Link klicken, den wir Ihnen gerade per E-Mail gesendet haben.",
+  "resend_instruction": "Falls Sie die E-Mail nicht erhalten haben, senden wir Ihnen gerne eine weitere.",
+  "verification_link_sent": "Ein neuer Bestätigungslink wurde an die während der Registrierung angegebene E-Mail-Adresse gesendet.",
+  "resend_button": "Bestätigungslink erneut senden",
+  "logout_button": "Abmelden"
+}
