@@ -32,10 +32,23 @@ class LoginResponse implements LoginResponseContract
             'created_at' => $user->created_at->toDateString(),
         ]);
 
+        // Role detection logging
+        \Log::info('LoginResponse: User role detection starting', [
+            'user_id' => $user->id,
+            'has_org_roles' => \DB::table('user_organization_roles')->where('user_id', $user->id)->exists(),
+            'has_commission' => \DB::table('election_commission_members')->where('user_id', $user->id)->exists(),
+            'is_voter' => (bool)$user->is_voter,
+            'is_committee_member' => (bool)($user->is_committee_member ?? false),
+            'spatie_roles' => $user->roles->pluck('name')->toArray() ?? [],
+        ]);
+
         // PRIORITY 1: First-time users → Welcome Dashboard (onboarding flow)
         if ($this->isFirstTimeUser($user)) {
-            \Log::info('LoginResponse: First-time user detected, redirecting to welcome', [
+            \Log::info('LoginResponse: Redirect decision', [
                 'user_id' => $user->id,
+                'decision' => 'first_time_user',
+                'destination' => 'dashboard.welcome',
+                'reason' => 'No organizations, commissions, or existing roles detected',
             ]);
             return redirect()->route('dashboard.welcome');
         }
@@ -44,37 +57,84 @@ class LoginResponse implements LoginResponseContract
         // Get dashboard roles (new system + legacy mapping)
         $dashboardRoles = $user->getDashboardRoles();
 
+        \Log::info('LoginResponse: Dashboard roles resolved', [
+            'user_id' => $user->id,
+            'dashboard_roles' => $dashboardRoles,
+            'role_count' => count($dashboardRoles),
+        ]);
+
         // If user has multiple dashboard roles, show role selection
         if (count($dashboardRoles) > 1) {
+            \Log::info('LoginResponse: Redirect decision', [
+                'user_id' => $user->id,
+                'decision' => 'multiple_roles',
+                'destination' => 'role.selection',
+                'roles' => $dashboardRoles,
+                'reason' => 'User has ' . count($dashboardRoles) . ' dashboard roles',
+            ]);
             return redirect()->route('role.selection');
         }
 
         // If user has exactly one dashboard role, redirect directly to that dashboard
         if (count($dashboardRoles) === 1) {
             $role = reset($dashboardRoles);
-            return match($role) {
-                'admin' => redirect()->route('admin.dashboard'),
-                'commission' => redirect()->route('commission.dashboard'),
-                'voter' => redirect()->route('vote.dashboard'),
-                default => redirect()->route('role.selection'),
+            $destination = match($role) {
+                'admin' => 'admin.dashboard',
+                'commission' => 'commission.dashboard',
+                'voter' => 'vote.dashboard',
+                default => 'role.selection',
             };
+
+            \Log::info('LoginResponse: Redirect decision', [
+                'user_id' => $user->id,
+                'decision' => 'single_role',
+                'role' => $role,
+                'destination' => $destination,
+                'reason' => 'User has exactly one dashboard role: ' . $role,
+            ]);
+
+            return redirect()->route($destination);
         }
 
         // PRIORITY 3: LEGACY FALLBACK: User has no dashboard roles
         // Check for old Spatie roles (backward compatibility)
         if ($user->hasRole('admin') || $user->hasRole('election_officer')) {
+            \Log::info('LoginResponse: Redirect decision', [
+                'user_id' => $user->id,
+                'decision' => 'legacy_admin',
+                'destination' => 'admin.dashboard',
+                'reason' => 'User has legacy Spatie admin or election_officer role',
+            ]);
             return redirect()->route('admin.dashboard');
         }
 
         if ($user->is_voter) {
+            \Log::info('LoginResponse: Redirect decision', [
+                'user_id' => $user->id,
+                'decision' => 'legacy_voter',
+                'destination' => 'dashboard',
+                'reason' => 'User is marked as voter (legacy)',
+            ]);
             return redirect()->route('dashboard'); // Existing voter dashboard
         }
 
         if ($user->is_committee_member) {
+            \Log::info('LoginResponse: Redirect decision', [
+                'user_id' => $user->id,
+                'decision' => 'legacy_committee_member',
+                'destination' => 'commission.dashboard',
+                'reason' => 'User is marked as committee member (legacy)',
+            ]);
             return redirect()->route('commission.dashboard');
         }
 
         // Default fallback: existing voter dashboard (backward compatible)
+        \Log::warning('LoginResponse: Redirect decision - Default fallback', [
+            'user_id' => $user->id,
+            'decision' => 'default_fallback',
+            'destination' => 'dashboard',
+            'reason' => 'No roles detected - using default fallback',
+        ]);
         return redirect()->route('dashboard');
     }
 
