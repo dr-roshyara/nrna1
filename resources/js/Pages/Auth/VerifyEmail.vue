@@ -1,8 +1,11 @@
 <template>
-    <election-layout>
-        <!-- Email Verification Content -->
-        <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-8 md:py-12">
-            <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
+        <!-- Header - same as home page (http://localhost:8000) -->
+        <ElectionHeader />
+
+        <!-- Main Content Area -->
+        <main class="flex-grow flex items-center justify-center py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl w-full">
                 <!-- Card Container -->
                 <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
                     <!-- Header Section -->
@@ -102,20 +105,25 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </election-layout>
+        </main>
+
+        <!-- Footer - same as home page -->
+        <PublicDigitFooter class="px-4" />
+    </div>
 </template>
 
 <script>
 import JetButton from "@/Jetstream/Button";
 import { Link } from "@inertiajs/inertia-vue3";
-import ElectionLayout from "@/Layouts/ElectionLayout.vue";
+import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
+import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
 
 export default {
     components: {
         JetButton,
         Link,
-        ElectionLayout,
+        ElectionHeader,
+        PublicDigitFooter,
     },
 
     props: {
