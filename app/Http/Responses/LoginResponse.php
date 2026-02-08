@@ -26,8 +26,17 @@ class LoginResponse implements LoginResponseContract
     {
         $user = $request->user();
 
+        \Log::info('LoginResponse: Processing login', [
+            'user_id' => $user->id,
+            'email' => $user->email,
+            'created_at' => $user->created_at->toDateString(),
+        ]);
+
         // PRIORITY 1: First-time users → Welcome Dashboard (onboarding flow)
         if ($this->isFirstTimeUser($user)) {
+            \Log::info('LoginResponse: First-time user detected, redirecting to welcome', [
+                'user_id' => $user->id,
+            ]);
             return redirect()->route('dashboard.welcome');
         }
 
@@ -72,23 +81,19 @@ class LoginResponse implements LoginResponseContract
     /**
      * Detect first-time users (new diaspora communities with no existing roles/organizations)
      *
-     * First-time user criteria:
-     * - No organizations (via user_organization_roles)
+     * First-time user criteria (all must be true):
+     * - No organizations assigned (via user_organization_roles)
      * - No commission memberships (no election_commission_members)
      * - Not a voter (is_voter = false)
      * - No admin/election_officer Spatie roles
-     * - Account created within 7 days
+     *
+     * Note: Time-based detection removed - users can return at any time
      *
      * @param \App\Models\User $user
      * @return bool
      */
     private function isFirstTimeUser($user): bool
     {
-        // Account must be recent (within 7 days)
-        if ($user->created_at->diffInDays(now()) > 7) {
-            return false;
-        }
-
         // Check if user has organization roles (new system)
         $hasOrgRoles = \DB::table('user_organization_roles')
             ->where('user_id', $user->id)
