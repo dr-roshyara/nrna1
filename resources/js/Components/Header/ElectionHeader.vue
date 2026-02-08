@@ -367,18 +367,29 @@ export default {
   watch: {
     /**
      * When Laravel sends new locale (after page reload)
-     * Syncs both the component and i18n instance
+     * Respects user's saved language preference from localStorage
+     * Only uses backend locale if user hasn't set a preference
      */
     locale(newLocale) {
       if (!newLocale) return;
 
-      // Update component's current locale
-      this.currentLocale = newLocale;
+      // Check if user has a saved language preference
+      const savedLocale = localStorage.getItem('preferred_locale');
 
-      // Sync i18n instance if it exists
-      if (this.$i18n && this.$i18n.locale !== newLocale) {
-        this.$i18n.locale = newLocale;
-        console.log('📡 Backend locale changed and synced to i18n:', newLocale);
+      if (savedLocale && ['de', 'en', 'np'].includes(savedLocale)) {
+        // User has a saved preference - respect it
+        this.currentLocale = savedLocale;
+        if (this.$i18n && this.$i18n.locale !== savedLocale) {
+          this.$i18n.locale = savedLocale;
+          console.log('✅ Using saved language preference:', savedLocale);
+        }
+      } else {
+        // No saved preference - use backend locale
+        this.currentLocale = newLocale;
+        if (this.$i18n && this.$i18n.locale !== newLocale) {
+          this.$i18n.locale = newLocale;
+          console.log('📡 Backend locale synced to i18n:', newLocale);
+        }
       }
     },
   },
