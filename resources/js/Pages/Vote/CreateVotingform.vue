@@ -54,7 +54,7 @@
             </div>
 
             <!-- Candidates List - Vertical Card Layout (Passport Style) -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 mb-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-8">
                 <div
                     v-for="(candidate, index) in candidatesWithState"
                     :key="candidate.candidacy_id"
@@ -83,7 +83,7 @@
                         </div>
 
                         <!-- Passport Photo Area (Center) -->
-                        <div class="flex justify-center p-4 bg-white">
+                        <div class="flex justify-center p-8 bg-white">
                             <div class="w-40 h-40 flex-shrink-0 rounded-lg overflow-hidden border-2 border-gray-200">
                                 <show-candidate
                                     :candidacy_image_path="candidate.image_path_1"
@@ -95,7 +95,7 @@
                         </div>
 
                         <!-- Checkbox Section (with Name Above) -->
-                        <div class="w-full border-t-2 border-gray-200 p-3 flex flex-col items-center bg-white">
+                        <div class="w-full border-t-2 border-gray-200 p-6 flex flex-col items-center bg-white">
                             <!-- Candidate Name (Just Above Checkbox) -->
                             <div class="text-center px-3 pb-2 w-full">
                                 <h3 class="text-sm font-bold text-gray-900 line-clamp-2">

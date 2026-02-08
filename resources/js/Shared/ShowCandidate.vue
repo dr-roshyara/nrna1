@@ -12,7 +12,7 @@
                 v-if="imageGiven && !isSvgImage"
                 :src="full_image_name"
                 :alt="`${candidacy_name} - Candidate Photo`"
-                class="mx-auto rounded-lg object-cover py-1 sm:h-64 sm:w-56 md:h-80 md:w-64 lg:h-96 lg:w-72 max-h-96"
+                class="mx-auto rounded-lg object-cover py-1 sm:h-40 sm:w-40 md:h-40 md:w-40 max-h-48"
                 @error="handleImageError"
             />
 
@@ -21,7 +21,7 @@
                 v-else-if="isSvgImage"
                 :src="full_image_name"
                 :alt="`${candidacy_name} - Candidate Icon`"
-                class="mx-auto rounded-lg object-contain p-4 sm:h-64 sm:w-56 md:h-80 md:w-64 lg:h-96 lg:w-72 max-h-96"
+                class="mx-auto rounded-lg object-contain p-4 sm:h-40 sm:w-40 md:h-40 md:w-40 max-h-48"
                 @error="handleImageError"
             />
 
