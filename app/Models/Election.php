@@ -45,6 +45,26 @@ class Election extends Model
     ];
 
     /**
+     * Get all posts for this election
+     *
+     * @return HasMany
+     */
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    /**
+     * Get all candidacies for this election
+     *
+     * @return HasMany
+     */
+    public function candidacies(): HasMany
+    {
+        return $this->hasMany(Candidacy::class);
+    }
+
+    /**
      * Get all voter registrations for this election
      *
      * @return HasMany

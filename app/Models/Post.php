@@ -10,6 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
+        'election_id',
         'post_id',
         'name',
         'nepali_name',
@@ -17,6 +18,14 @@ class Post extends Model
         'required_number',
         'position_order'
     ];
+
+    /**
+     * Get the election that this post belongs to
+     */
+    public function election()
+    {
+        return $this->belongsTo(Election::class);
+    }
 
     /**
      * Get all candidates for this post WITH user relationship loaded

@@ -120,6 +120,7 @@ class SetupDemoElection extends Command
 
             $post = Post::create([
                 ...$postData,
+                'election_id' => $election->id,
                 'state_name' => 'National',
                 'required_number' => 1,
             ]);

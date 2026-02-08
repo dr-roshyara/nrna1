@@ -11,7 +11,7 @@
                     <h2 :id="`post-title-${post.post_id}`" class="text-2xl font-bold mb-1">
                         {{ post.name }}
                     </h2>
-                    <p class="text-blue-100 text-sm opacity-90">
+                    <p v-if="$i18n.locale === 'np'" class="text-blue-100 text-sm opacity-90">
                         {{ post.nepali_name || post.name }}
                     </p>
                 </div>
@@ -48,7 +48,7 @@
                 <p class="text-gray-700 mb-4 leading-relaxed">
                     {{ $t('pages.voting.candidate_selection.instruction', { number: post.required_number, position: post.name }) }}
                 </p>
-                <p class="text-gray-600 text-sm">
+                <p v-if="$i18n.locale === 'np'" class="text-gray-600 text-sm">
                     {{ $t('pages.voting.candidate_selection.instruction_nepali', { number: post.required_number, position: post.nepali_name || post.name }) }}
                 </p>
             </div>
@@ -77,7 +77,7 @@
                             <p class="text-xs font-bold leading-tight">
                                 {{ $t('pages.voting.candidate_selection.candidate_for_post', { post: post.name }) }}
                             </p>
-                            <p class="text-xs font-bold leading-tight text-blue-100 mt-1">
+                            <p v-if="$i18n.locale === 'np'" class="text-xs font-bold leading-tight text-blue-100 mt-1">
                                 {{ post.nepali_name }}
                             </p>
                         </div>

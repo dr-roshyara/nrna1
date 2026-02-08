@@ -25,6 +25,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            'user_id' => $this->faker->unique()->slug(),
             'name' => $this->faker->name(),
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
@@ -75,5 +76,21 @@ class UserFactory extends Factory
                 }),
             'ownedTeams'
         );
+    }
+
+    /**
+     * Indicate that the user is a voter.
+     *
+     * @return $this
+     */
+    public function voter()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_voter' => true,
+                'can_vote' => true,
+                'has_voted' => false,
+            ];
+        });
     }
 }

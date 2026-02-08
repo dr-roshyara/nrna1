@@ -26,10 +26,11 @@ abstract class BaseVote extends Model
      * All candidate columns (candidate_01 through candidate_60)
      * These are mass-assignable on all vote types.
      *
+     * NOTE: No 'user_id' - votes are anonymous by design.
+     *
      * @var array
      */
     protected $fillable = [
-        'user_id',
         'election_id',
         'voting_code',
         'verification_code',

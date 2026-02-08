@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Code;
 use App\Models\User;
+use App\Models\Election;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CodeFactory extends Factory
@@ -14,7 +15,9 @@ class CodeFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
+            'election_id' => Election::factory(),
             'code1' => $this->faker->numerify('######'),
+            'code2' => $this->faker->numerify('######'),
             'vote_show_code' => $this->faker->numerify('########'),
             'is_code1_usable' => 1,
             'code1_sent_at' => now(),

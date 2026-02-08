@@ -10,14 +10,24 @@ class Candidacy extends Model
     use HasFactory;
      use HasFactory;
     protected $fillable =[
+        'election_id',
         'user_id','user_name','candidacy_id','candidacy_name',
         'proposer_name', 'proposer_id', 'supporter_id','supporter_name',
         'post_id','post_nepali_name','post_name', 'image_path_1',
         'image_path_2', 'image_path_3', 'position_order'
     ];
     /**
-     * Each Candidacy  belongs to only  one user 
-     * Get the user 
+     * Each candidacy belongs to one election
+     * Get the election
+     */
+    public function election()
+    {
+        return $this->belongsTo(Election::class);
+    }
+
+    /**
+     * Each Candidacy  belongs to only  one user
+     * Get the user
      */
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'user_id')
