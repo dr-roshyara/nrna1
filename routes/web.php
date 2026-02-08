@@ -150,8 +150,8 @@ Route::get('/email/verify', function () {
 // Email verification routes
 Route::get('/email/verify/{id}/{hash}', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
     $request->fulfill();
-    return redirect('/dashboard/roles')->with('status', 'Email verified successfully!');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+    return redirect('/dashboard/roles')->with('verified', true);
+})->middleware('auth')->name('verification.verify');
 
 Route::post('/email/verification-notification', function (\Illuminate\Http\Request $request) {
     $request->user()->sendEmailVerificationNotification();

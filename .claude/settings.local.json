@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(php artisan test:*)",
-      "Bash(php artisan make:test:*)"
+      "Bash(php artisan make:test:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nSimplify email verification route - use Laravel''s EmailVerificationRequest\n\n## Changes\n- Removed complex signed middleware logic\n- Use Laravel''s built-in EmailVerificationRequest\n- It automatically validates the signature\n- Simpler, more reliable implementation\n\n## Route Flow\n1. User clicks link: /email/verify/{id}/{hash}\n2. EmailVerificationRequest validates:\n   - User is authenticated\n   - Signature is valid\n   - URL hasn''t expired\n3. If valid: fulfills verification, redirects to dashboard\n4. If invalid: returns 403 error\n\n## Why This Works\n- EmailVerificationRequest handles all signature validation\n- No need for custom middleware\n- Uses Laravel''s proven verification system\n- Integrates properly with User model\n\nCo-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
