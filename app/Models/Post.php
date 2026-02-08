@@ -21,31 +21,37 @@ class Post extends Model
     /**
      * Get all candidates for this post WITH user relationship loaded
      * This ensures we can access candidate names from the User table
+     * Ordered by position_order for consistent display
      */
     public function candidates(){
         return $this->hasMany(Candidacy::class, 'post_id', 'post_id')
                     ->with('user')
+                    ->orderBy('position_order')
                     ->select([
                         'id',
                         'candidacy_id',
                         'user_id',
-                        'post_id'
+                        'post_id',
+                        'position_order'
                     ]);
     }
 
 
     /**
      * Get all candidacies for this post WITH user relationship loaded
+     * Ordered by position_order for consistent display
      */
     public function candidacies()
     {
         return $this->hasMany(Candidacy::class, 'post_id', 'post_id')
                     ->with('user')
+                    ->orderBy('position_order')
                     ->select([
                         'id',
                         'candidacy_id',
                         'user_id',
-                        'post_id'
+                        'post_id',
+                        'position_order'
                     ]);
     }
      /**
@@ -63,11 +69,13 @@ class Post extends Model
     /**
      * Get all demo candidates for this post
      * Returns DemoCandidate models for demo election voting
+     * Ordered by position_order for consistent display
      */
     public function demoCandidates()
     {
         return $this->hasMany(DemoCandidate::class, 'post_id', 'post_id')
                     ->with('user')
+                    ->orderBy('position_order')
                     ->select([
                         'id',
                         'candidacy_id',
@@ -79,7 +87,8 @@ class Post extends Model
                         'supporter_name',
                         'image_path_1',
                         'image_path_2',
-                        'image_path_3'
+                        'image_path_3',
+                        'position_order'
                     ]);
     }
 

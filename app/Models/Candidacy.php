@@ -10,10 +10,10 @@ class Candidacy extends Model
     use HasFactory;
      use HasFactory;
     protected $fillable =[
-        'user_id','user_name','candidacy_id','candidacy_name', 
-        'proposer_name', 'proposer_id', 'supporter_id','supporter_name', 
-        'post_id','post_nepali_name','post_name', 'image_path_1', 
-        'image_path_2', 'image_path_3'
+        'user_id','user_name','candidacy_id','candidacy_name',
+        'proposer_name', 'proposer_id', 'supporter_id','supporter_name',
+        'post_id','post_nepali_name','post_name', 'image_path_1',
+        'image_path_2', 'image_path_3', 'position_order'
     ];
     /**
      * Each Candidacy  belongs to only  one user 

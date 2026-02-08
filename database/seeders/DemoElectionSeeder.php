@@ -75,6 +75,7 @@ class DemoElectionSeeder extends Seeder
                 'candidacy_name' => $candidate['candidacy_name'],
                 'proposer_name' => $candidate['proposer_name'],
                 'supporter_name' => $candidate['supporter_name'],
+                'position_order' => $index + 1,
             ]);
         }
 
@@ -123,6 +124,7 @@ class DemoElectionSeeder extends Seeder
                 'candidacy_name' => $candidate['candidacy_name'],
                 'proposer_name' => $candidate['proposer_name'],
                 'supporter_name' => $candidate['supporter_name'],
+                'position_order' => $index + 1,
             ]);
         }
 
@@ -171,6 +173,7 @@ class DemoElectionSeeder extends Seeder
                 'candidacy_name' => $candidate['candidacy_name'],
                 'proposer_name' => $candidate['proposer_name'],
                 'supporter_name' => $candidate['supporter_name'],
+                'position_order' => $index + 1,
             ]);
         }
 

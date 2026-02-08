@@ -40,7 +40,8 @@ class DemoCandidate extends Model
         'image_path_1',
         'image_path_2',
         'image_path_3',
-        'election_id'
+        'election_id',
+        'position_order'
     ];
 
     /**
