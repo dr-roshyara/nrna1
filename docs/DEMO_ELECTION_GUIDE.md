@@ -1,6 +1,6 @@
 # 📋 Demo Election Setup Guide
 
-A complete guide to create a demo election with candidates and ballot items for testing the voting system.
+A complete guide to create a demo election with candidates and post items for testing the voting system.
 
 ---
 
@@ -28,12 +28,12 @@ $election = Election::create([
 echo "✅ Election created: ID {$election->id}\n";
 ```
 
-### **2. Create Ballot/Posts (Positions)**
+### **2. Create Post/Posts (Positions)**
 
 ```php
-use App\Models\Ballot;
+use App\Models\Post;
 
-$ballot = Ballot::create([
+$post = Post::create([
     'election_id' => $election->id,
     'title' => 'President',
     'description' => 'Vote for the next President',
@@ -42,7 +42,7 @@ $ballot = Ballot::create([
     'position_order' => 1,
 ]);
 
-echo "✅ Ballot created: ID {$ballot->id}\n";
+echo "✅ Post created: ID {$post->id}\n";
 ```
 
 ### **3. Create Candidates**
@@ -73,7 +73,7 @@ $candidates = [
 
 foreach ($candidates as $index => $data) {
     Candidate::create([
-        'ballot_id' => $ballot->id,
+        'post_id' => $post->id,
         'name' => $data['name'],
         'description' => $data['description'],
         'party' => $data['party'],
@@ -134,13 +134,13 @@ Election {
 
 Save the `election_id` for next steps.
 
-#### **Step 3: Create Ballots (Multiple Positions)**
+#### **Step 3: Create Posts (Multiple Positions)**
 
 ```php
-use App\Models\Ballot;
+use App\Models\Post;
 
 // Position 1: Mayor
-$mayor = Ballot::create([
+$mayor = Post::create([
     'election_id' => 1,
     'title' => 'Mayor',
     'description' => 'Elect your city mayor',
@@ -150,7 +150,7 @@ $mayor = Ballot::create([
 ]);
 
 // Position 2: City Council Member
-$council = Ballot::create([
+$council = Post::create([
     'election_id' => 1,
     'title' => 'City Council Member',
     'description' => 'Elect up to 3 council members',
@@ -159,19 +159,19 @@ $council = Ballot::create([
     'position_order' => 2,
 ]);
 
-echo "✅ Created 2 ballot positions\n";
+echo "✅ Created 2 post positions\n";
 ```
 
 #### **Step 4: Create Candidates for Each Position**
 
-##### **For Mayor (Ballot ID 1):**
+##### **For Mayor (Post ID 1):**
 
 ```php
 use App\Models\Candidate;
 
 // Candidate 1
 Candidate::create([
-    'ballot_id' => 1,
+    'post_id' => 1,
     'name' => 'Sarah Anderson',
     'description' => 'Former teacher with 15 years in education',
     'party' => 'Progressive Party',
@@ -181,7 +181,7 @@ Candidate::create([
 
 // Candidate 2
 Candidate::create([
-    'ballot_id' => 1,
+    'post_id' => 1,
     'name' => 'Michael Chen',
     'description' => 'Business owner with economic expertise',
     'party' => 'Economic Alliance',
@@ -191,7 +191,7 @@ Candidate::create([
 
 // Candidate 3
 Candidate::create([
-    'ballot_id' => 1,
+    'post_id' => 1,
     'name' => 'Diana Brown',
     'description' => 'Community activist and organizer',
     'party' => 'Community First',
@@ -202,12 +202,12 @@ Candidate::create([
 echo "✅ Created 3 candidates for Mayor\n";
 ```
 
-##### **For City Council (Ballot ID 2):**
+##### **For City Council (Post ID 2):**
 
 ```php
 // Council Candidate 1
 Candidate::create([
-    'ballot_id' => 2,
+    'post_id' => 2,
     'name' => 'James Rodriguez',
     'description' => 'Parks & Recreation Director',
     'party' => 'Progressive Party',
@@ -217,7 +217,7 @@ Candidate::create([
 
 // Council Candidate 2
 Candidate::create([
-    'ballot_id' => 2,
+    'post_id' => 2,
     'name' => 'Lisa Martinez',
     'description' => 'Public Health Advocate',
     'party' => 'Economic Alliance',
@@ -227,7 +227,7 @@ Candidate::create([
 
 // Council Candidate 3
 Candidate::create([
-    'ballot_id' => 2,
+    'post_id' => 2,
     'name' => 'Robert Wilson',
     'description' => 'Infrastructure & Transportation Expert',
     'party' => 'Community First',
@@ -237,7 +237,7 @@ Candidate::create([
 
 // Council Candidate 4
 Candidate::create([
-    'ballot_id' => 2,
+    'post_id' => 2,
     'name' => 'Emily Taylor',
     'description' => 'Environmental Protection Officer',
     'party' => 'Green Initiative',
@@ -253,15 +253,15 @@ echo "✅ Created 4 candidates for City Council\n";
 ```php
 use App\Models\Election;
 
-$election = Election::with('ballots.candidates')->find(1);
+$election = Election::with('posts.candidates')->find(1);
 
 echo "Election: {$election->name}\n";
-echo "Ballots: {$election->ballots->count()}\n";
-echo "Total Candidates: {$election->ballots->sum(fn($b) => $b->candidates->count())}\n";
+echo "Posts: {$election->posts->count()}\n";
+echo "Total Candidates: {$election->posts->sum(fn($b) => $b->candidates->count())}\n";
 
-foreach ($election->ballots as $ballot) {
-    echo "\n📋 {$ballot->title} (max {$ballot->max_votes} vote(s)):\n";
-    foreach ($ballot->candidates as $candidate) {
+foreach ($election->posts as $post) {
+    echo "\n📋 {$post->title} (max {$post->max_votes} vote(s)):\n";
+    foreach ($post->candidates as $candidate) {
         echo "  - {$candidate->name} ({$candidate->party})\n";
     }
 }
@@ -270,7 +270,7 @@ foreach ($election->ballots as $ballot) {
 **Expected Output:**
 ```
 Election: City Council Election
-Ballots: 2
+Posts: 2
 Total Candidates: 7
 
 📋 Mayor (max 1 vote(s)):
@@ -304,7 +304,7 @@ Edit `database/seeders/DemoElectionSeeder.php`:
 
 namespace Database\Seeders;
 
-use App\Models\Ballot;
+use App\Models\Post;
 use App\Models\Candidate;
 use App\Models\Election;
 use Illuminate\Database\Seeder;
@@ -324,8 +324,8 @@ class DemoElectionSeeder extends Seeder
             'end_date' => now()->addDays(365)->format('Y-m-d'),
         ]);
 
-        // Create Ballot Position
-        $ballot = Ballot::create([
+        // Create Post Position
+        $post = Post::create([
             'election_id' => $election->id,
             'title' => 'President',
             'description' => 'Vote for the next President',
@@ -358,7 +358,7 @@ class DemoElectionSeeder extends Seeder
 
         foreach ($candidates as $index => $data) {
             Candidate::create([
-                'ballot_id' => $ballot->id,
+                'post_id' => $post->id,
                 'name' => $data['name'],
                 'description' => $data['description'],
                 'party' => $data['party'],
@@ -386,12 +386,12 @@ Here's the data model you're creating:
 
 ```
 Election (1)
-  ├── Ballot Position 1: President (max_votes: 1)
+  ├── Post Position 1: President (max_votes: 1)
   │   ├── Candidate 1: Alice Johnson
   │   ├── Candidate 2: Bob Smith
   │   └── Candidate 3: Carol Williams
   │
-  └── Ballot Position 2: Vice President (max_votes: 1)
+  └── Post Position 2: Vice President (max_votes: 1)
       ├── Candidate 1: David Lee
       ├── Candidate 2: Eva Martinez
       └── Candidate 3: Frank Wilson
@@ -410,7 +410,7 @@ http://localhost:8000/election/demo/start
 ```
 
 ### **2. Test Voting Flow**
-- ✅ See the ballot positions
+- ✅ See the post positions
 - ✅ See all candidates for each position
 - ✅ Vote for candidates
 - ✅ Submit votes
@@ -422,11 +422,11 @@ http://localhost:8000/election/demo/start
 // Check election
 Election::where('type', 'demo')->first();
 
-// Check ballot positions
-Ballot::where('election_id', 1)->get();
+// Check post positions
+Post::where('election_id', 1)->get();
 
 // Check candidates
-Candidate::where('ballot_id', 1)->get();
+Candidate::where('post_id', 1)->get();
 
 // Check votes cast
 Vote::where('election_id', 1)->get();
@@ -441,17 +441,17 @@ Vote::where('election_id', 1)->get();
 // Check if active
 Election::find(1)->update(['is_active' => true]);
 
-// Check if has ballots
-Ballot::where('election_id', 1)->count();
+// Check if has posts
+Post::where('election_id', 1)->count();
 ```
 
 ### **Issue: Candidates not displaying**
 ```php
 // Check if candidates exist
-Candidate::where('ballot_id', 1)->count();
+Candidate::where('post_id', 1)->count();
 
-// Check if ballot_id is correct
-Candidate::where('ballot_id', 1)->get();
+// Check if post_id is correct
+Candidate::where('post_id', 1)->get();
 ```
 
 ### **Issue: Can't vote**
@@ -469,7 +469,7 @@ Election::find(1)->where('start_date', '<=', now())
 Create 2-3 demo elections for testing:
 
 ```php
-use App\Models\Election, App\Models\Ballot, App\Models\Candidate;
+use App\Models\Election, App\Models\Post, App\Models\Candidate;
 
 foreach (['election-1', 'election-2', 'election-3'] as $slug) {
     $election = Election::create([
@@ -482,7 +482,7 @@ foreach (['election-1', 'election-2', 'election-3'] as $slug) {
         'end_date' => now()->addDays(30)->format('Y-m-d'),
     ]);
 
-    $ballot = Ballot::create([
+    $post = Post::create([
         'election_id' => $election->id,
         'title' => 'Representative',
         'description' => 'Vote for your representative',
@@ -494,7 +494,7 @@ foreach (['election-1', 'election-2', 'election-3'] as $slug) {
     // Add 3 candidates
     for ($i = 1; $i <= 3; $i++) {
         Candidate::create([
-            'ballot_id' => $ballot->id,
+            'post_id' => $post->id,
             'name' => "Candidate $i",
             'description' => "Candidate description $i",
             'party' => "Party $i",
@@ -523,7 +523,7 @@ end_date (date)
 created_at, updated_at
 ```
 
-### **ballots table**
+### **posts table**
 ```
 id (int)
 election_id (int) → elections.id
@@ -538,7 +538,7 @@ created_at, updated_at
 ### **candidates table**
 ```
 id (int)
-ballot_id (int) → ballots.id
+post_id (int) → posts.id
 name (string)
 description (text)
 party (string)
@@ -557,11 +557,11 @@ Run these diagnostic commands:
 // List all elections
 Election::all();
 
-// List all ballots for election 1
-Ballot::where('election_id', 1)->get();
+// List all posts for election 1
+Post::where('election_id', 1)->get();
 
-// List all candidates for ballot 1
-Candidate::where('ballot_id', 1)->get();
+// List all candidates for post 1
+Candidate::where('post_id', 1)->get();
 
 // Count votes
 Vote::where('election_id', 1)->count();

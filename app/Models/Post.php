@@ -14,7 +14,8 @@ class Post extends Model
         'name',
         'nepali_name',
         'state_name',
-        'required_number'
+        'required_number',
+        'position_order'
     ];
 
     /**
