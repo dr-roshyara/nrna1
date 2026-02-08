@@ -58,7 +58,7 @@ class CreateSampleVotesCommand extends Command
         for ($i = 1; $i <= 5; $i++) {
             $vote = Vote::create([
                 'voting_code' => "sample_vote_no_vote_$i",
-                'candidate_01' => json_encode([
+                'candidate_02' => json_encode([
                     'post_id' => 'president_test',
                     'no_vote' => true,
                     'candidates' => null
