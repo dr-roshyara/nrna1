@@ -205,14 +205,14 @@ export default {
     },
     locale: {
       type: String,
-      default: 'de',
-      validator: (value) => ['de', 'en', 'np'].includes(value),
+      default: null,
+      validator: (value) => value === null || ['de', 'en', 'np'].includes(value),
     },
   },
 
   data() {
     return {
-      currentLocale: this.locale,
+      currentLocale: this.getInitialLocale(),
       showMobileMenu: false,
       handleEscapeKey: null,
       handleResize: null,
@@ -220,22 +220,41 @@ export default {
   },
 
   created() {
-    // Sync Vue I18n with Laravel backend locale
-    // This ensures the component's locale matches the i18n instance
+    // Sync Vue I18n with the determined locale
     if (this.$i18n) {
-      // First, check if we have a server locale
-      if (this.locale && this.locale !== this.$i18n.locale) {
-        this.$i18n.locale = this.locale;
-        console.log('📦 Initialized locale from Laravel:', this.locale);
-      } else if (!this.locale) {
-        // If no server locale, use i18n's current locale
-        this.currentLocale = this.$i18n.locale;
-        console.log('📦 Using i18n locale:', this.$i18n.locale);
+      const locale = this.getInitialLocale();
+      if (locale && locale !== this.$i18n.locale) {
+        this.$i18n.locale = locale;
+        console.log('📦 Initialized locale:', locale);
       }
     }
   },
 
   methods: {
+    getInitialLocale() {
+      // Priority 1: Check localStorage for user preference
+      const savedLocale = localStorage.getItem('preferred_locale');
+      if (savedLocale && ['de', 'en', 'np'].includes(savedLocale)) {
+        console.log('✅ Using saved locale from localStorage:', savedLocale);
+        return savedLocale;
+      }
+
+      // Priority 2: Use backend locale if provided
+      if (this.locale && ['de', 'en', 'np'].includes(this.locale)) {
+        console.log('📦 Using backend locale:', this.locale);
+        return this.locale;
+      }
+
+      // Priority 3: Use i18n's current locale
+      if (this.$i18n) {
+        console.log('📦 Using i18n locale:', this.$i18n.locale);
+        return this.$i18n.locale;
+      }
+
+      // Fallback to German
+      return 'de';
+    },
+
     /**
      * Handle language change from select dropdown
      */
@@ -371,26 +390,25 @@ export default {
      * Only uses backend locale if user hasn't set a preference
      */
     locale(newLocale) {
-      if (!newLocale) return;
-
-      // Check if user has a saved language preference
+      // Check if user has a saved language preference first
       const savedLocale = localStorage.getItem('preferred_locale');
 
       if (savedLocale && ['de', 'en', 'np'].includes(savedLocale)) {
-        // User has a saved preference - respect it
+        // User has a saved preference - always respect it
         this.currentLocale = savedLocale;
         if (this.$i18n && this.$i18n.locale !== savedLocale) {
           this.$i18n.locale = savedLocale;
           console.log('✅ Using saved language preference:', savedLocale);
         }
-      } else {
-        // No saved preference - use backend locale
+      } else if (newLocale && ['de', 'en', 'np'].includes(newLocale)) {
+        // No saved preference and backend sent a locale - use it
         this.currentLocale = newLocale;
         if (this.$i18n && this.$i18n.locale !== newLocale) {
           this.$i18n.locale = newLocale;
           console.log('📡 Backend locale synced to i18n:', newLocale);
         }
       }
+      // If both savedLocale and newLocale are empty, don't change anything
     },
   },
 

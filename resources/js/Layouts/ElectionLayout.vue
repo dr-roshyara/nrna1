@@ -1,6 +1,7 @@
 <template>
     <div class="min-h-screen flex flex-col">
         <!-- Header - sticks to top -->
+        <!-- Note: Not passing :locale prop allows language preference to persist from localStorage -->
         <election-header :isLoggedIn="true"></election-header>
         <navigation></navigation>
         
