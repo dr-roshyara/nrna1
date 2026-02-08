@@ -24,7 +24,7 @@
                         <form @submit.prevent="submit" class="space-y-6">
                             <!-- First and Middle Name -->
                             <div>
-                                <jet-label for="firstname" :value="$t('pages.auth.register.fields.firstName.label')" class="font-bold" />
+                                <jet-label for="firstname" :value="$t('pages.auth.register.fields.firstName.label')" class="font-bold text-base md:text-lg" />
                                 <jet-input
                                     id="firstname"
                                     type="text"
@@ -39,7 +39,7 @@
 
                             <!-- Last Name -->
                             <div>
-                                <jet-label for="lastName" :value="$t('pages.auth.register.fields.lastName.label')" class="font-bold" />
+                                <jet-label for="lastName" :value="$t('pages.auth.register.fields.lastName.label')" class="font-bold text-base md:text-lg" />
                                 <jet-input
                                     id="lastName"
                                     type="text"
@@ -53,7 +53,7 @@
 
                             <!-- Region Selection -->
                             <div>
-                                <jet-label for="region" :value="$t('pages.auth.register.fields.region.label')" class="font-bold" />
+                                <jet-label for="region" :value="$t('pages.auth.register.fields.region.label')" class="font-bold text-base md:text-lg" />
                                 <div class="mt-2 relative rounded-lg border border-gray-300 bg-white overflow-hidden">
                                     <select
                                         name="region"
@@ -80,7 +80,7 @@
 
                             <!-- Email -->
                             <div>
-                                <jet-label for="email" :value="$t('pages.auth.register.fields.email.label')" class="font-bold" />
+                                <jet-label for="email" :value="$t('pages.auth.register.fields.email.label')" class="font-bold text-base md:text-lg" />
                                 <jet-input
                                     id="email"
                                     type="email"
@@ -95,7 +95,7 @@
 
                             <!-- Password -->
                             <div>
-                                <jet-label for="password" :value="$t('pages.auth.register.fields.password.label')" class="font-bold" />
+                                <jet-label for="password" :value="$t('pages.auth.register.fields.password.label')" class="font-bold text-base md:text-lg" />
                                 <p class="text-xs text-gray-600 mt-1 mb-2">
                                     <span class="text-red-500 font-medium">{{ $t('pages.auth.register.fields.password.help') }}</span>
                                     <br>
@@ -114,7 +114,7 @@
 
                             <!-- Password Confirmation -->
                             <div>
-                                <jet-label for="password_confirmation" :value="$t('pages.auth.register.fields.password_confirmation.label')" class="font-bold" />
+                                <jet-label for="password_confirmation" :value="$t('pages.auth.register.fields.password_confirmation.label')" class="font-bold text-base md:text-lg" />
                                 <p class="text-xs text-gray-600 mt-1 mb-2">
                                     {{ $t('pages.auth.register.fields.password_confirmation.help') }}
                                 </p>
@@ -130,36 +130,65 @@
                             </div>
 
                             <!-- Terms and Privacy Policy -->
-                            <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="pt-4 border-t border-gray-200">
-                                <jet-label for="terms">
-                                    <div class="flex items-start">
-                                        <jet-checkbox
-                                            name="terms"
-                                            id="terms"
-                                            v-model:checked="form.terms"
-                                            required
-                                            class="mt-1"
-                                        />
-                                        <div class="ml-3 text-sm">
-                                            <span class="text-gray-700">{{ $t('pages.auth.register.messages.agreement') }}</span>
-                                            <a
-                                                target="_blank"
-                                                :href="route('terms.show')"
-                                                class="text-blue-600 hover:text-blue-700 font-medium underline"
-                                            >
-                                                {{ $t('pages.auth.register.links.terms') }}
-                                            </a>
-                                            <span class="text-gray-700">{{ $t('pages.auth.register.messages.and') }}</span>
-                                            <a
-                                                target="_blank"
-                                                :href="route('policy.show')"
-                                                class="text-blue-600 hover:text-blue-700 font-medium underline"
-                                            >
-                                                {{ $t('pages.auth.register.links.privacy') }}
-                                            </a>
+                            <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="pt-6 border-t-2 border-gray-300">
+                                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 md:p-8 border-2 border-blue-200">
+                                    <jet-label for="terms" class="cursor-pointer">
+                                        <div class="flex items-start gap-4">
+                                            <!-- Large Checkbox -->
+                                            <div class="flex-shrink-0">
+                                                <jet-checkbox
+                                                    name="terms"
+                                                    id="terms"
+                                                    v-model:checked="form.terms"
+                                                    required
+                                                    class="w-6 h-6 cursor-pointer"
+                                                    style="transform: scale(1.5); transform-origin: left;"
+                                                />
+                                            </div>
+
+                                            <!-- Agreement Text -->
+                                            <div class="flex-grow">
+                                                <p class="text-base md:text-lg font-semibold text-gray-900 mb-2">
+                                                    {{ $t('pages.auth.register.messages.agreement') }}
+                                                </p>
+                                                <p class="text-sm md:text-base text-gray-700 leading-relaxed">
+                                                    <span class="text-gray-700">{{ $t('pages.auth.register.messages.i_agree') }}</span>
+                                                    <a
+                                                        target="_blank"
+                                                        :href="route('terms.show')"
+                                                        class="text-blue-600 hover:text-blue-800 font-bold underline hover:no-underline transition"
+                                                    >
+                                                        {{ $t('pages.auth.register.links.terms') }}
+                                                    </a>
+                                                    <span class="text-gray-700">{{ $t('pages.auth.register.messages.and') }}</span>
+                                                    <a
+                                                        target="_blank"
+                                                        :href="route('policy.show')"
+                                                        class="text-blue-600 hover:text-blue-800 font-bold underline hover:no-underline transition"
+                                                    >
+                                                        {{ $t('pages.auth.register.links.privacy') }}
+                                                    </a>
+                                                </p>
+                                            </div>
                                         </div>
+                                    </jet-label>
+
+                                    <!-- Visual Indicator -->
+                                    <div v-if="form.terms" class="mt-4 flex items-center text-green-700">
+                                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                        </svg>
+                                        <span class="font-medium text-sm">{{ $t('pages.auth.register.messages.agreement_accepted') }}</span>
                                     </div>
-                                </jet-label>
+
+                                    <!-- Error Indicator -->
+                                    <div v-else-if="form.errors && form.errors.terms" class="mt-4 flex items-center text-red-700">
+                                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                                        </svg>
+                                        <span class="font-medium text-sm">{{ $t('pages.auth.register.messages.agreement_required') }}</span>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- Action Buttons -->

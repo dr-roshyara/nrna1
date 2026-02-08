@@ -58,8 +58,11 @@
     "messages": {
       "success": "Registrierung erfolgreich! Weiterleitung...",
       "error": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut.",
-      "agreement": "Ich stimme den",
-      "and": "und der"
+      "agreement": "Nutzungsbedingungen & Datenschutzrichtlinie",
+      "i_agree": "Ich stimme den",
+      "and": "und der",
+      "agreement_accepted": "✓ Bedingungen akzeptiert",
+      "agreement_required": "Bitte akzeptieren Sie die Bedingungen und Datenschutzrichtlinie"
     },
     "validation": {
       "firstName_required": "Vorname ist erforderlich",
