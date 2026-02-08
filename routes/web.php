@@ -147,16 +147,11 @@ Route::get('/email/verify', function () {
     return inertia('Auth/VerifyEmail');
 })->middleware('auth')->name('verification.notice');
 
-// Email verification routes
+// Email verification route for signed URL from email
 Route::get('/email/verify/{id}/{hash}', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/dashboard/roles')->with('verified', true);
 })->middleware('auth')->name('verification.verify');
-
-Route::post('/email/verification-notification', function (\Illuminate\Http\Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-    return back()->with('status', 'verification-link-sent');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
 //create user database
