@@ -223,12 +223,12 @@
                             />
                             <label
                                 :for="`no_vote_${post.post_id}`"
-                                class="flex items-center justify-center w-16 h-16 bg-white border-4 border-gray-400 rounded-2xl cursor-pointer
+                                class="flex items-center justify-center w-12 h-12 bg-white border-3 border-gray-400 rounded-lg cursor-pointer
                                        peer-checked:bg-blue-600 peer-checked:border-blue-600
                                        peer-focus:ring-4 peer-focus:ring-blue-200 peer-focus:border-blue-500
                                        transition-all duration-200 hover:border-gray-500 hover:shadow-lg"
                             >
-                                <svg v-if="noVoteSelected" class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <svg v-if="noVoteSelected" class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                                 </svg>
                             </label>
