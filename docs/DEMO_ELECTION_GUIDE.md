@@ -287,95 +287,118 @@ Total Candidates: 7
 
 ---
 
-## **Method 2: Create via Seeder**
+## **Method 2: Create via Seeder** ✅ WORKING
 
-### **Create a Seeder**
+### **Run the Existing Seeder (Recommended)**
 
-```bash
-php artisan make:seeder DemoElectionSeeder
-```
-
-### **Add Code to Seeder**
-
-Edit `database/seeders/DemoElectionSeeder.php`:
-
-```php
-<?php
-
-namespace Database\Seeders;
-
-use App\Models\Post;
-use App\Models\Candidate;
-use App\Models\Election;
-use Illuminate\Database\Seeder;
-
-class DemoElectionSeeder extends Seeder
-{
-    public function run()
-    {
-        // Create Election
-        $election = Election::create([
-            'name' => 'Demo Election 2024',
-            'slug' => 'demo-2024',
-            'type' => 'demo',
-            'is_active' => true,
-            'description' => 'Public demo election for testing',
-            'start_date' => now()->format('Y-m-d'),
-            'end_date' => now()->addDays(365)->format('Y-m-d'),
-        ]);
-
-        // Create Post Position
-        $post = Post::create([
-            'election_id' => $election->id,
-            'title' => 'President',
-            'description' => 'Vote for the next President',
-            'min_votes' => 1,
-            'max_votes' => 1,
-            'position_order' => 1,
-        ]);
-
-        // Create Candidates
-        $candidates = [
-            [
-                'name' => 'Alice Johnson',
-                'description' => 'Education & Healthcare Advocate',
-                'party' => 'Progressive Party',
-                'photo_url' => 'https://via.placeholder.com/200?text=Alice+Johnson',
-            ],
-            [
-                'name' => 'Bob Smith',
-                'description' => 'Economic Development Specialist',
-                'party' => 'Economic Growth Party',
-                'photo_url' => 'https://via.placeholder.com/200?text=Bob+Smith',
-            ],
-            [
-                'name' => 'Carol Williams',
-                'description' => 'Community Services Leader',
-                'party' => 'Community First Party',
-                'photo_url' => 'https://via.placeholder.com/200?text=Carol+Williams',
-            ],
-        ];
-
-        foreach ($candidates as $index => $data) {
-            Candidate::create([
-                'post_id' => $post->id,
-                'name' => $data['name'],
-                'description' => $data['description'],
-                'party' => $data['party'],
-                'photo_url' => $data['photo_url'],
-                'position_order' => $index + 1,
-            ]);
-        }
-
-        $this->command->info('✅ Demo election created with candidates!');
-    }
-}
-```
-
-### **Run Seeder**
+A complete, production-ready DemoElectionSeeder already exists:
 
 ```bash
 php artisan db:seed --class=DemoElectionSeeder
+```
+
+This creates:
+- ✅ **1 Demo Election** (`Demo Election` with slug `demo-election`)
+- ✅ **3 Posts** (President, Vice President, Secretary)
+- ✅ **9 Demo Candidates** (3 per post, in `demo_candidacies` table)
+- ✅ Safe to run **multiple times** (automatically cleans old data)
+- ✅ **Ready to use** at `http://localhost:8000/election/demo/start`
+
+### **Seeder Features**
+
+The seeder is **idempotent** (safe to run multiple times):
+- **Deletes all existing demo elections** before creating a fresh one
+- Uses consistent slug: `demo-election` (matches `/election/demo/start` route)
+- Ensures clean state and prevents conflicts
+- Candidacy IDs include election ID for uniqueness across runs
+- All candidate data safely isolated in `demo_candidacies` table
+
+### **What Gets Created**
+
+```
+Demo Election 2024
+├── President (राष्ट्रपति)
+│   ├── Alice Johnson - Progressive Platform
+│   ├── Bob Smith - Economic Growth
+│   └── Carol Williams - Community First
+├── Vice President (उप-राष्ट्रपति)
+│   ├── Daniel Miller - Innovation Leader
+│   ├── Eva Martinez - Social Justice
+│   └── Frank Wilson - Infrastructure Expert
+└── Secretary (सचिव)
+    ├── Grace Lee - Administration Expert
+    ├── Henry White - Organization Specialist
+    └── Iris Walker - Communications Lead
+```
+
+### **Seeder Code Reference**
+
+Location: `database/seeders/DemoElectionSeeder.php`
+
+Key features:
+- Uses `DemoCandidate` model (not `Candidacy`) for demo data isolation
+- Stores demo data in `demo_candidacies` table
+- Each candidate has: `user_id`, `candidacy_id`, `user_name`, `candidacy_name`, `proposer_name`, `supporter_name`
+- Uses English proposer/supporter names (can be translated as needed)
+- Full Nepali translations for posts
+
+### **Modify the Seeder**
+
+To customize candidates, edit `database/seeders/DemoElectionSeeder.php`:
+
+```php
+$presidents = [
+    [
+        'user_name' => 'Alice Johnson',
+        'candidacy_name' => 'Alice Johnson - Progressive Platform',
+        'proposer_name' => 'John Doe',
+        'supporter_name' => 'Jane Smith',
+    ],
+    // Add more candidates here
+];
+```
+
+Then run the seeder again to apply changes.
+
+### **Verify Seeder Installation**
+
+After running the seeder, verify the setup in Tinker:
+
+```php
+php artisan tinker
+
+use App\Models\Election, App\Models\Post, App\Models\DemoCandidate;
+
+// Check demo election exists
+$election = Election::where('slug', 'demo-election')->first();
+echo "✅ Election: " . $election->name . " (ID: " . $election->id . ")\n";
+
+// Check posts and candidates
+$posts = Post::where('post_id', 'like', '%-' . $election->id)->get();
+foreach ($posts as $post) {
+    $candidates = DemoCandidate::where('election_id', $election->id)
+        ->where('post_id', $post->post_id)
+        ->count();
+    echo "   " . $post->name . ": " . $candidates . " candidates\n";
+}
+
+// Verify data isolation: demo vs real
+use App\Models\Candidacy;
+echo "\n✅ Data Isolation Check:\n";
+echo "   Demo candidates: " . DemoCandidate::count() . "\n";
+echo "   Real candidacies: " . Candidacy::count() . " (should be 0 for demo-only setup)\n";
+```
+
+Expected output:
+```
+✅ Election: Demo Election (ID: 8)
+   President: 3 candidates
+   Vice President: 3 candidates
+   Secretary: 3 candidates
+
+✅ Data Isolation Check:
+   Demo candidates: 9
+   Real candidacies: 0 (should be 0 for demo-only setup)
 ```
 
 ---
@@ -436,30 +459,58 @@ Vote::where('election_id', 1)->get();
 
 ## **Common Issues & Fixes**
 
-### **Issue: Election not showing**
-```php
-// Check if active
-Election::find(1)->update(['is_active' => true]);
+### **Issue: Demo election not found at /election/demo/start**
 
-// Check if has posts
-Post::where('election_id', 1)->count();
+**Cause:** Seeder hasn't been run or demo election doesn't have slug 'demo-election'
+
+**Fix:**
+```bash
+# Run the seeder
+php artisan db:seed --class=DemoElectionSeeder
+
+# Verify
+php artisan tinker
+Election::where('slug', 'demo-election')->where('type', 'demo')->first();
 ```
 
-### **Issue: Candidates not displaying**
-```php
-// Check if candidates exist
-Candidate::where('post_id', 1)->count();
+### **Issue: Demo candidates not showing in voting interface**
 
-// Check if post_id is correct
-Candidate::where('post_id', 1)->get();
+**Cause:** Looking at `candidacies` table instead of `demo_candidacies` table
+
+**Fix:**
+```php
+// WRONG - For real elections only
+Candidacy::where('post_id', 'like', 'president-%')->get();
+
+// CORRECT - For demo elections
+use App\Models\DemoCandidate;
+DemoCandidate::where('election_id', 8)->get();
 ```
 
-### **Issue: Can't vote**
-```php
-// Check election dates
-Election::find(1)->where('start_date', '<=', now())
-                  ->where('end_date', '>=', now())
-                  ->exists();
+### **Issue: Seeder creates duplicate entries on re-run**
+
+**Why it's fixed:** The seeder now:
+1. Deletes ALL existing demo elections first
+2. Uses unique `candidacy_id` that includes election_id
+3. Is idempotent (safe to run multiple times)
+
+**If you get uniqueness errors:**
+```bash
+# Just re-run the seeder - it cleans up automatically
+php artisan db:seed --class=DemoElectionSeeder
+```
+
+### **Issue: Old demo elections (multiple active demo elections)**
+
+**Fix:** The seeder now deletes all demo elections before creating a new one, ensuring only one active demo election exists at a time.
+
+```bash
+# Check how many demo elections exist
+php artisan tinker
+Election::where('type', 'demo')->count();
+
+# If >1, just run seeder to clean up
+php artisan db:seed --class=DemoElectionSeeder
 ```
 
 ---
