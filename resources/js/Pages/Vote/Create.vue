@@ -236,9 +236,15 @@ methods:{
                  if(item.post_id===pid){
                      let newItem =item;
                      newItem.disabled =false;
-                     candiArray.push(newItem);  
+                     candiArray.push(newItem);
                  }
-            }); 
+            });
+            // Sort candidates by position_order for consistent display
+            candiArray.sort((a, b) => {
+                const orderA = a.position_order || 0;
+                const orderB = b.position_order || 0;
+                return orderA - orderB;
+            });
             return candiArray;
         },
 }

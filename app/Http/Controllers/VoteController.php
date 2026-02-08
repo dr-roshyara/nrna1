@@ -212,8 +212,10 @@ public function create(Request $request)
     // --- Fetch National Posts and Candidates ---
     // For demo elections, use DemoCandidate; for real elections, use Candidacy
     if ($election->isDemo()) {
-        // Demo election: fetch demo candidates for this election
-        $demoCandidates = DemoCandidate::where('election_id', $election->id)->get();
+        // Demo election: fetch demo candidates for this election (ordered by position_order)
+        $demoCandidates = DemoCandidate::where('election_id', $election->id)
+            ->orderBy('position_order')
+            ->get();
         $groupedCandidates = $demoCandidates->groupBy('post_id');
 
         $national_posts = Post::where('is_national_wide', 1)
@@ -239,6 +241,7 @@ public function create(Request $request)
                             'candidacy_name' => $c->candidacy_name,
                             'proposer_name' => $c->proposer_name,
                             'supporter_name' => $c->supporter_name,
+                            'position_order' => $c->position_order,
                         ];
                     })->values(),
                 ];
@@ -270,6 +273,7 @@ public function create(Request $request)
                         'candidacy_name' => $c->candidacy_name,
                         'proposer_name' => $c->proposer_name,
                         'supporter_name' => $c->supporter_name,
+                        'position_order' => $c->position_order,
                     ];
                 })->values(),
             ];
@@ -280,8 +284,10 @@ public function create(Request $request)
     $regional_posts = collect();
     if (!empty($auth_user->region)) {
         if ($election->isDemo()) {
-            // Demo election: fetch demo candidates for this election
-            $demoCandidates = DemoCandidate::where('election_id', $election->id)->get();
+            // Demo election: fetch demo candidates for this election (ordered by position_order)
+            $demoCandidates = DemoCandidate::where('election_id', $election->id)
+                ->orderBy('position_order')
+                ->get();
             $groupedCandidates = $demoCandidates->groupBy('post_id');
 
             $regional_posts = Post::where('is_national_wide', 0)
@@ -307,6 +313,7 @@ public function create(Request $request)
                                 'candidacy_name' => $c->candidacy_name,
                                 'proposer_name' => $c->proposer_name,
                                 'supporter_name' => $c->supporter_name,
+                                'position_order' => $c->position_order,
                             ];
                         })->values(),
                     ];
@@ -339,6 +346,7 @@ public function create(Request $request)
                             'candidacy_name' => $c->candidacy_name,
                             'proposer_name' => $c->proposer_name,
                             'supporter_name' => $c->supporter_name,
+                            'position_order' => $c->position_order,
                         ];
                     })->values(),
                 ];

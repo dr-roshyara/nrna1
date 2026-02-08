@@ -422,7 +422,13 @@ export default {
         candidates: {
             immediate: true,
             handler(newCandidates) {
-                this.candidatesWithState = newCandidates.map(candidate => ({
+                // Sort by position_order to ensure consistent display
+                const sortedCandidates = [...newCandidates].sort((a, b) => {
+                    const orderA = a.position_order || 0;
+                    const orderB = b.position_order || 0;
+                    return orderA - orderB;
+                });
+                this.candidatesWithState = sortedCandidates.map(candidate => ({
                     ...candidate,
                     disabled: false
                 }));
