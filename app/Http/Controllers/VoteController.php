@@ -181,11 +181,8 @@ public function create(Request $request)
             'can_vote_now' => $auth_user->can_vote_now,
         ]);
 
-        // Redirect to appropriate dashboard (with or without slug)
-        $route = $voterSlug ? 'slug.dashboard' : 'dashboard';
-        $params = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
-
-        return redirect()->route($route, $params)
+        // Redirect to dashboard (slug is only for voting path)
+        return redirect()->route('dashboard')
             ->with('error', 'You are not eligible to vote in this election.');
     }
 
@@ -415,11 +412,8 @@ public function first_submission(Request $request)
             'code_id' => $code->id,
         ]);
 
-        $voterSlug = $request->attributes->get('voter_slug');
-        $route = $voterSlug ? 'slug.dashboard' : 'dashboard';
-        $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
-
-        return redirect()->route($route, $routeParams)
+        // Always redirect to regular dashboard (slug is only for voting path)
+        return redirect()->route('dashboard')
             ->withErrors(['vote' => 'You have already voted in this election. Each voter can only vote once.']);
     }
 
@@ -570,11 +564,8 @@ public function second_submission(Request $request)
         // Basic authentication check
         if (!$auth_user) {
             Log::error('Second submission attempted without authentication');
-            $voterSlug = $request->attributes->get('voter_slug');
-            $route = $voterSlug ? 'slug.dashboard' : 'dashboard';
-            $params = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
 
-            return redirect()->route($route, $params)
+            return redirect()->route('dashboard')
                 ->withErrors(['auth' => 'Authentication required. Please log in again.']);
         }
 
@@ -639,11 +630,7 @@ public function second_submission(Request $request)
         // Enhanced eligibility verification
         $eligibility_errors = $this->validateVotingEligibility($auth_user, $code);
         if (!empty($eligibility_errors)) {
-            $voterSlug = $request->attributes->get('voter_slug');
-            $route = $voterSlug ? 'slug.dashboard' : 'dashboard';
-            $params = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
-
-            return redirect()->route($route, $params)
+            return redirect()->route('dashboard')
                 ->withErrors($eligibility_errors);
         }
 
@@ -1255,11 +1242,7 @@ private function has_valid_selections($selections)
                 'code_id' => $code->id,
             ]);
 
-            $voterSlug = $request->attributes->get('voter_slug');
-            $route = $voterSlug ? 'slug.dashboard' : 'dashboard';
-            $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
-
-            return redirect()->route($route, $routeParams)
+            return redirect()->route('dashboard')
                 ->withErrors(['vote' => 'You have already voted in this election. Each voter can only vote once.']);
         }
         $voting_session_name =Hash::make($code->code2);
