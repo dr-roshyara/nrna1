@@ -224,14 +224,13 @@
                             <label
                                 :for="`no_vote_${post.post_id}`"
                                 class="flex items-center justify-center w-16 h-16 bg-white border-4 border-gray-400 rounded-2xl cursor-pointer
-                                       peer-checked:bg-gray-600 peer-checked:border-gray-600
-                                       peer-focus:ring-4 peer-focus:ring-gray-300 peer-focus:border-gray-500
+                                       peer-checked:bg-blue-600 peer-checked:border-blue-600
+                                       peer-focus:ring-4 peer-focus:ring-blue-200 peer-focus:border-blue-500
                                        transition-all duration-200 hover:border-gray-500 hover:shadow-lg"
                             >
-                                <svg v-if="noVoteSelected" class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
+                                <svg v-if="noVoteSelected" class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                                 </svg>
-                                <span v-else class="text-gray-500 text-2xl">⏭️</span>
                             </label>
                         </div>
                     </div>
