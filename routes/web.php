@@ -147,6 +147,17 @@ Route::get('/email/verify', function () {
     return inertia('Auth/VerifyEmail');
 })->middleware('auth')->name('verification.notice');
 
+// Email verification routes
+Route::get('/email/verify/{id}/{hash}', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/dashboard/roles')->with('status', 'Email verified successfully!');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (\Illuminate\Http\Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('status', 'verification-link-sent');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
 
 //create user database
 /**
