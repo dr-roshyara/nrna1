@@ -26,7 +26,7 @@ class AddElectionIdToCandidaciesTable extends Migration
     public function down()
     {
         Schema::table('candidacies', function (Blueprint $table) {
-            $table->dropForeignIdFor('elections');
+            $table->dropForeign(['election_id']);
             $table->dropColumn('election_id');
         });
     }
