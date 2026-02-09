@@ -1336,12 +1336,12 @@ private function has_valid_selections($selections)
              $vote_hashed_key =$hashed_key;
 
             // Save vote using election-aware factory service
-            $this->save_vote($vote_data, $vote_hashed_key, $election, $auth_user);
+            $this->save_vote($vote_data, $vote_hashed_key, $election, $auth_user, $private_key);
 
-            // BUG FIX: Use only the verification code, not concatenated with vote ID
-            // The verification_code stored in database is just $private_key
-            // NOT $private_key . "_" . $this->out_code
-            $verification_code_for_email = $private_key;
+            // After save_vote(), $this->out_code contains the vote_id
+            // Concatenate private_key with vote_id for uniqueness
+            // This is sent to email and user will submit when verifying
+            $verification_code_for_email = $private_key . '_' . $this->out_code;
 
             // Record Step 5: Final vote submission
             $voterSlug = $request->attributes->get('voter_slug');
@@ -2134,7 +2134,7 @@ public function verifyVoteSubmit(): array
 
 
 //save all candidates 
-    public function save_vote($input_data, $hashed_voting_key, $election = null, $auth_user = null){
+    public function save_vote($input_data, $hashed_voting_key, $election = null, $auth_user = null, $private_key = null){
         // Fallback for backward compatibility
         if (!$election) {
             $election = Election::where('type', 'real')->first();
@@ -2156,14 +2156,16 @@ public function verifyVoteSubmit(): array
         $vote->voting_code=$hashed_voting_key;
         $vote->election_id=$election->id;
 
-        // For demo elections, store verification_code (plain text for direct lookup)
-        // For real elections, voting_code is hashed and verified using password_verify()
-        if ($election->type === 'demo') {
-            $vote->verification_code = $hashed_voting_key;;
-        }
-
         $vote->save();   //save the vote first
-        $this->out_code =$vote->getkey();  
+        $this->out_code =$vote->code();
+
+        // After vote is saved, concatenate private_key with vote_id for uniqueness
+        // verification_code = private_key_vote_id (e.g., "abc123_5")
+        if ($private_key && $vote->id) {
+            $concatenated_verification_code = $private_key . '_' . $vote->id;
+            $vote->verification_code = password_hash($concatenated_verification_code, PASSWORD_BCRYPT);
+            $vote->save(); // Update with hashed verification code
+        }  
         //save the $this->vote_id_for_voter  it to voter ;
         {
          /**
