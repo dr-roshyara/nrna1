@@ -113,6 +113,7 @@ class SetupDemoElection extends Command
         ];
 
         $totalCandidates = 0;
+        $globalCandidateCounter = 0;
 
         foreach ($posts as $postData) {
             $candidates = $postData['candidates'];
@@ -128,6 +129,7 @@ class SetupDemoElection extends Command
             $this->info("  ├─ Created Post: {$post->name} ({$post->nepali_name})");
 
             foreach ($candidates as $index => $candidate) {
+                $globalCandidateCounter++;
                 DemoCandidate::create([
                     'user_id' => "demo-{$post->post_id}-" . ($index + 1),
                     'post_id' => $post->post_id,
@@ -138,6 +140,7 @@ class SetupDemoElection extends Command
                     'proposer_name' => $candidate['proposer_name'],
                     'supporter_name' => $candidate['supporter_name'],
                     'position_order' => $index + 1,
+                    'image_path_1' => "candidate_" . $globalCandidateCounter . ".png",
                 ]);
                 $totalCandidates++;
             }
