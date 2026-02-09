@@ -1337,7 +1337,11 @@ private function has_valid_selections($selections)
 
             // Save vote using election-aware factory service
             $this->save_vote($vote_data, $vote_hashed_key, $election, $auth_user);
-             $vote_private_key=$private_key."_".$this->out_code;
+
+            // BUG FIX: Use only the verification code, not concatenated with vote ID
+            // The verification_code stored in database is just $private_key
+            // NOT $private_key . "_" . $this->out_code
+            $verification_code_for_email = $private_key;
 
             // Record Step 5: Final vote submission
             $voterSlug = $request->attributes->get('voter_slug');
@@ -1366,7 +1370,7 @@ private function has_valid_selections($selections)
                 // 9. Send verification notification (only if user has valid email)
                 if ($auth_user->email && filter_var($auth_user->email, FILTER_VALIDATE_EMAIL)) {
                     try {
-                        $auth_user->notify(new SendVoteSavingCode($vote_private_key));
+                        $auth_user->notify(new SendVoteSavingCode($verification_code_for_email));
                     } catch (\Exception $e) {
                         \Log::error('Failed to send vote saving code email', [
                             'user_id' => $auth_user->id,
@@ -2141,13 +2145,14 @@ public function verifyVoteSubmit(): array
         $voteModel = $votingService->getVoteModel();
         $resultModel = $votingService->getResultModel();
 
-        $no_vote_option     = 0;
+        // Extract no_vote_option from input data, default to false
+        $no_vote_option = (bool) ($input_data['no_vote_option'] ?? false);
         $vote               = new $voteModel;
         // $vote->user_id      = $this->user_id;
          // $vote->user_id      = Hash::make($this->user_id);
         // $vote->user_id      = Hash::make($vote->user_id);
 
-        $vote->no_vote_option=0;
+        $vote->no_vote_option = $no_vote_option ? 1 : 0;
         $vote->voting_code=$hashed_voting_key;
         $vote->election_id=$election->id;
 
