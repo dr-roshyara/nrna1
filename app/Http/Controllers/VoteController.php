@@ -1404,10 +1404,10 @@ private function has_valid_selections($selections)
         if ($election->type === 'demo') {
             // Get the demo vote we just saved
             $demoVote = \App\Models\DemoVote::find($this->out_code);
-            if ($demoVote && $demoVote->verification_code) {
+            if ($demoVote && $demoVote->voting_code) {
                 return redirect()->route('vote.verify_to_show')->with([
                     'success' => 'Your demo vote has been successfully submitted!',
-                    'verification_code' => $demoVote->verification_code,
+                    'verification_code' => $demoVote->voting_code,
                     'is_demo' => true,
                     'demo_vote_id' => $demoVote->id
                 ]);
@@ -2160,11 +2160,24 @@ public function verifyVoteSubmit(): array
         $this->out_code =$vote->code();
 
         // After vote is saved, concatenate private_key with vote_id for uniqueness
-        // verification_code = private_key_vote_id (e.g., "abc123_5")
+        // voting_code = private_key_vote_id (e.g., "abc123_5")
         if ($private_key && $vote->id) {
-            $concatenated_verification_code = $private_key . '_' . $vote->id;
-            $vote->verification_code = password_hash($concatenated_verification_code, PASSWORD_BCRYPT);
-            $vote->save(); // Update with hashed verification code
+            $concatenated_code = $private_key . '_' . $vote->id;
+
+            // Store voting code differently based on election type
+            if ($election->type === 'demo') {
+                // Demo elections: store plain code for direct lookup
+                $vote->voting_code = $concatenated_code;
+            } else {
+                // Real elections: store hashed code for password_verify
+                $vote->voting_code = password_hash($concatenated_code, PASSWORD_BCRYPT);
+            }
+
+            $vote->save(); // Update with voting code
+        } else {
+            // Fallback: if no private_key provided, use the initial hashed key
+            $vote->voting_code = $hashed_voting_key;
+            $vote->save();
         }  
         //save the $this->vote_id_for_voter  it to voter ;
         {
@@ -2724,8 +2737,8 @@ private function verify_demo_vote($verification_code, $auth_user)
             'user_id' => $auth_user->id
         ]);
 
-        // Find demo vote by verification code (exact match, not hashed)
-        $demoVote = DemoVote::where('verification_code', $verification_code)
+        // Find demo vote by voting_code (exact match - demo stores plain code)
+        $demoVote = DemoVote::where('voting_code', $verification_code)
             ->first();
 
         if (!$demoVote) {
@@ -2808,7 +2821,7 @@ private function prepare_demo_vote_display($demoVote, $election, $auth_user)
         'vote_id' => $demoVote->id,
         'is_demo_vote' => true,
         'election_type' => 'demo',
-        'verification_code' => $demoVote->verification_code,
+        'verification_code' => $demoVote->voting_code,
         'verification_timestamp' => now()->toISOString(),
         'verification_successful' => true,
         'voter_info' => [

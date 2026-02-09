@@ -33,7 +33,6 @@ abstract class BaseVote extends Model
     protected $fillable = [
         'election_id',
         'voting_code',
-        'verification_code',
         'no_vote_option',
         'candidate_01', 'candidate_02', 'candidate_03', 'candidate_04', 'candidate_05',
         'candidate_06', 'candidate_07', 'candidate_08', 'candidate_09', 'candidate_10',
