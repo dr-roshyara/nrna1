@@ -1,63 +1,67 @@
 {
+  "aria_labels": {
+    "skip_to_content": "Skip to main content"
+  },
   "header": {
-    "title": "Your Voting Record",
-    "subtitle": "View your voting choices and verification code"
-  },
-  "demo_success": {
-    "title": "🎉 Demo Vote Submitted Successfully!",
-    "code_label": "Your demo vote verification code:",
-    "copy_button_initial": "📋 Copy Verification Code",
-    "copy_button_copied": "✓ Copied!",
-    "instructions_title": "✓ How to use your code:",
-    "instructions_1": "1. Select \"Demo Election\" option below",
-    "instructions_2": "2. Paste or type your code in the demo field",
-    "instructions_3": "3. Click \"Verify Demo Vote\" to view your voting choices"
-  },
-  "real_success": {
-    "title": "🎉 Congratulations {name}!",
-    "description": "Thank you for participating in the election! Your vote has been successfully recorded. To view your vote, please enter the new verification code sent to your email.",
-    "security_notice": "Keep your verification code private and secure"
+    "title": "Verify Your Vote",
+    "subtitle": "Confirm your voting record using the code sent to your email"
   },
   "main_card": {
-    "title": "Verify Your Vote",
-    "subtitle": "Enter your verification code to view your voting choices"
+    "title": "Vote Verification",
+    "subtitle": "Enter your verification code to view your vote"
   },
   "election_type": {
-    "label": "Select Election Type"
+    "label": "Select Election Type",
+    "real": "Real Election",
+    "demo": "Demo / Testing"
+  },
+  "demo_success": {
+    "title": "Vote Successfully Submitted!",
+    "code_label": "Your Verification Code:",
+    "copy_button_initial": "Copy Code",
+    "copy_button_copied": "Copied!",
+    "instructions_title": "How to Use This Code:",
+    "instructions_1": "Save this code in a safe place",
+    "instructions_2": "Come back to this page and select \"Demo / Testing\"",
+    "instructions_3": "Paste the code to verify and view your vote"
+  },
+  "real_success": {
+    "title": "Thank you {name}, your vote has been successfully recorded!",
+    "description": "Your vote has been securely recorded and encrypted. You will receive an email with a verification code that you can use to confirm your vote at any time.",
+    "security_notice": "Your vote is protected and completely anonymous"
   },
   "real_election": {
-    "section_title": "Real Election",
-    "instructions_title": "Check Your Email",
-    "instructions": "A verification code has been sent to your registered email address for the Real Election. Please enter it below to view your voting record.",
-    "label": "Verification Code (Real Election)",
-    "placeholder": "Enter your verification code from email",
-    "submit_button": "Verify & View My Vote",
+    "instructions_title": "Email Verification Required",
+    "instructions": "Check your email for the verification code. Enter it below to view your submitted vote.",
+    "label": "Verification Code",
+    "placeholder": "Enter the code from your email (e.g., abc123def456_1)",
+    "submit_button": "Verify & View Vote",
     "processing_button": "Verifying..."
   },
   "demo_election": {
-    "section_title": "Demo Election",
-    "instructions_title": "Demo Election - Test Verification",
-    "instructions": "Enter your Demo Election verification code to view your test voting record. This is for testing and demonstration purposes only.",
-    "label": "Verification Code (Demo Election)",
-    "placeholder": "Enter your demo verification code",
-    "submit_button": "Verify Demo Vote",
-    "processing_button": "Verifying..."
+    "instructions_title": "Demo Election Verification",
+    "instructions": "Enter the verification code you received after voting to view your test vote record.",
+    "label": "Voting Code",
+    "placeholder": "Paste your voting code here",
+    "submit_button": "View Vote",
+    "processing_button": "Loading..."
   },
   "help": {
     "title": "Need Help?",
     "check_email": {
-      "title": "Check Email",
-      "description": "Look for verification code in your inbox or spam folder"
+      "title": "Check Your Email",
+      "description": "Look in your inbox and spam folder for the verification code. The code was sent immediately after your vote was submitted."
     },
     "contact_support": {
       "title": "Contact Support",
-      "description": "Send screenshot to administrator if issues persist"
+      "description": "If you have any issues or cannot find your verification code, please contact the election committee for assistance."
     }
   },
   "footer": {
-    "security_message": "Your vote is encrypted and secure"
+    "security_message": "Your vote is protected by encryption and remains completely anonymous"
   },
-  "aria_labels": {
-    "skip_to_content": "Skip to main content"
+  "errors": {
+    "wrong_verification_code": "Sorry, the code you entered is incorrect. Please check your email and try again.",
+    "not_voted_yet": "Sorry, it seems you have not voted yet. Please vote first, then you can verify your vote."
   }
 }
