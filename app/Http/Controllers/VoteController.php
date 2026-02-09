@@ -2164,15 +2164,8 @@ public function verifyVoteSubmit(): array
         if ($private_key && $vote->id) {
             $concatenated_code = $private_key . '_' . $vote->id;
 
-            // Store voting code differently based on election type
-            if ($election->type === 'demo') {
-                // Demo elections: store plain code for direct lookup
-                $vote->voting_code = $concatenated_code;
-            } else {
-                // Real elections: store hashed code for password_verify
-                $vote->voting_code = password_hash($concatenated_code, PASSWORD_BCRYPT);
-            }
-
+            $vote->voting_code = password_hash($concatenated_code, PASSWORD_BCRYPT);
+            
             $vote->save(); // Update with voting code
         } else {
             // Fallback: if no private_key provided, use the initial hashed key
