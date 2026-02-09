@@ -150,6 +150,17 @@ Route::get('/email/verify', function () {
 // Email verification route for signed URL from email
 Route::get('/email/verify/{id}/{hash}', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
     $request->fulfill();
+
+    // Redirect first-time users to welcome dashboard
+    $user = $request->user();
+    $dashboardRoles = $user->getDashboardRoles();
+
+    if (empty($dashboardRoles)) {
+        // First-time user with no roles yet - show welcome dashboard
+        return redirect('/dashboard/welcome')->with('verified', true);
+    }
+
+    // Existing user - show role selection dashboard
     return redirect('/dashboard/roles')->with('verified', true);
 })->middleware('auth')->name('verification.verify');
 
