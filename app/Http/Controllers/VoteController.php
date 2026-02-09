@@ -2156,7 +2156,8 @@ public function verifyVoteSubmit(): array
         $vote->voting_code=$hashed_voting_key;
         $vote->election_id=$election->id;
 
-        // For demo elections, generate and store verification_code
+        // For demo elections, store verification_code (plain text for direct lookup)
+        // For real elections, voting_code is hashed and verified using password_verify()
         if ($election->type === 'demo') {
             $private_key = bin2hex(random_bytes(16));
             $vote->verification_code = $private_key;
