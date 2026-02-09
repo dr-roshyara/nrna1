@@ -2191,29 +2191,35 @@ public function verifyVoteSubmit(): array
 
 
                 if($all_candidates[$i] ==null){
-                    $_vote_json["candidates"] = null; 
+                    $_vote_json["candidates"] = null;
                     $_vote_json["no_vote"]  =true ;
-                    
+
                 }else{
                     $_vote_json             = $all_candidates[$i] ;
-                    $_vote_json["no_vote"]  =false;
-                    //Here save the vote result one by one in Result 
-                    $post_id                = $_vote_json['post_id'];
                     $candidates             =$_vote_json["candidates"];
-                    // dd($candidates);
-                    for($j=0;$j<sizeof($candidates);$j++){
-                      //save each selected candidates in the result
-                      $result                = new $resultModel;
-                      $result->vote_id       =$vote->id;
-                      $result->election_id   =$election->id;
-                      $result->post_id       =$post_id;
-                      $result->candidacy_id  =$candidates[$j]['candidacy_id'];
-                      $result->save();
 
+                    // Fix: Check if candidates array is empty and correct no_vote flag
+                    if(empty($candidates) || count($candidates) == 0){
+                        $_vote_json["no_vote"]  =true;
+                    } else {
+                        $_vote_json["no_vote"]  =false;
+                        //Here save the vote result one by one in Result
+                        $post_id                = $_vote_json['post_id'];
+                        // dd($candidates);
+                        for($j=0;$j<sizeof($candidates);$j++){
+                          //save each selected candidates in the result
+                          $result                = new $resultModel;
+                          $result->vote_id       =$vote->id;
+                          $result->election_id   =$election->id;
+                          $result->post_id       =$post_id;
+                          $result->candidacy_id  =$candidates[$j]['candidacy_id'];
+                          $result->save();
+
+                        }
                     }
-                    
-                 
-                
+
+
+
                 }
                 //save the vote again  
               
