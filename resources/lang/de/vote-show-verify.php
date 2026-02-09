@@ -1,8 +1,79 @@
 <?php
 
 return [
+    'aria_labels' => [
+        'skip_to_content' => 'Zum Hauptinhalt springen',
+    ],
+
+    'header' => [
+        'title' => 'Überprüfen Sie Ihre Stimme',
+        'subtitle' => 'Bestätigen Sie Ihre Abstimmungsunterlagen mit dem Code aus Ihrer E-Mail',
+    ],
+
+    'main_card' => [
+        'title' => 'Stimmverifizierung',
+        'subtitle' => 'Geben Sie Ihren Verifizierungscode ein, um Ihre Stimme anzuzeigen',
+    ],
+
+    'election_type' => [
+        'label' => 'Wählen Sie den Wahltyp',
+        'real' => 'Echte Wahl',
+        'demo' => 'Demo / Test',
+    ],
+
+    'demo_success' => [
+        'title' => 'Stimme erfolgreich eingereicht!',
+        'code_label' => 'Ihr Verifizierungscode:',
+        'copy_button_initial' => 'Code kopieren',
+        'copy_button_copied' => 'Kopiert!',
+        'instructions_title' => 'So verwenden Sie diesen Code:',
+        'instructions_1' => 'Speichern Sie diesen Code an einem sicheren Ort',
+        'instructions_2' => 'Kehren Sie zu dieser Seite zurück und wählen Sie "Demo / Test"',
+        'instructions_3' => 'Fügen Sie den Code ein, um Ihre Stimme zu überprüfen und anzuzeigen',
+    ],
+
+    'real_success' => [
+        'title' => 'Vielen Dank {name}, Ihre Stimme wurde erfolgreich erfasst!',
+        'description' => 'Ihre Stimme wurde sicher erfasst und verschlüsselt. Sie erhalten eine E-Mail mit einem Verifizierungscode, mit dem Sie Ihre Stimme jederzeit bestätigen können.',
+        'security_notice' => 'Ihre Stimme ist geschützt und völlig anonym',
+    ],
+
+    'real_election' => [
+        'instructions_title' => 'E-Mail-Verifizierung erforderlich',
+        'instructions' => 'Suchen Sie in Ihrer E-Mail nach dem Verifizierungscode. Geben Sie ihn unten ein, um Ihre eingereichte Stimme anzuzeigen.',
+        'label' => 'Verifizierungscode',
+        'placeholder' => 'Geben Sie den Code aus Ihrer E-Mail ein (z.B. abc123def456_1)',
+        'submit_button' => 'Überprüfen & Stimme anzeigen',
+        'processing_button' => 'Wird überprüft...',
+    ],
+
+    'demo_election' => [
+        'instructions_title' => 'Demo-Wahlverifizierung',
+        'instructions' => 'Geben Sie den Verifizierungscode ein, den Sie nach der Abstimmung erhalten haben, um Ihren Test-Wahlsatz anzuzeigen.',
+        'label' => 'Abstimmungscode',
+        'placeholder' => 'Fügen Sie hier Ihren Abstimmungscode ein',
+        'submit_button' => 'Stimme anzeigen',
+        'processing_button' => 'Wird geladen...',
+    ],
+
+    'help' => [
+        'title' => 'Benötigen Sie Hilfe?',
+        'check_email' => [
+            'title' => 'Überprüfen Sie Ihre E-Mail',
+            'description' => 'Schauen Sie in Ihrem Posteingang und Spam-Ordner nach dem Verifizierungscode. Der Code wurde unmittelbar nach der Stimmabgabe versendet.',
+        ],
+        'contact_support' => [
+            'title' => 'Kontaktieren Sie den Support',
+            'description' => 'Wenn Sie Probleme haben oder Ihren Verifizierungscode nicht finden können, wenden Sie sich bitte an den Wahlausschuss.',
+        ],
+    ],
+
+    'footer' => [
+        'security_message' => 'Ihre Stimme ist durch Verschlüsselung geschützt und bleibt völlig anonym',
+    ],
+
     'errors' => [
-        'wrong_verification_code' => 'Entschuldigung, Sie haben einen falschen Verifizierungscode eingegeben! Bitte überprüfen Sie Ihre E-Mail auf den korrekten Code und versuchen Sie es erneut.',
-        'not_voted_yet' => 'Entschuldigung, es scheint, dass Sie noch nicht abgestimmt haben. Bitte stimmen Sie zuerst ab, dann können Sie Ihre Stimme sehen und überprüfen.',
+        'wrong_verification_code' => 'Entschuldigung, der eingegebene Code ist falsch. Bitte überprüfen Sie Ihre E-Mail und versuchen Sie es erneut.',
+        'not_voted_yet' => 'Entschuldigung, es scheint, dass Sie noch nicht abgestimmt haben. Bitte stimmen Sie zuerst ab, dann können Sie Ihre Stimme überprüfen.',
     ],
 ];

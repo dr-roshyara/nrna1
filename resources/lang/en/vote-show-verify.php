@@ -1,8 +1,79 @@
 <?php
 
 return [
+    'aria_labels' => [
+        'skip_to_content' => 'Skip to main content',
+    ],
+
+    'header' => [
+        'title' => 'Verify Your Vote',
+        'subtitle' => 'Confirm your voting record using the code sent to your email',
+    ],
+
+    'main_card' => [
+        'title' => 'Vote Verification',
+        'subtitle' => 'Enter your verification code to view your vote',
+    ],
+
+    'election_type' => [
+        'label' => 'Select Election Type',
+        'real' => 'Real Election',
+        'demo' => 'Demo / Testing',
+    ],
+
+    'demo_success' => [
+        'title' => 'Vote Successfully Submitted!',
+        'code_label' => 'Your Verification Code:',
+        'copy_button_initial' => 'Copy Code',
+        'copy_button_copied' => 'Copied!',
+        'instructions_title' => 'How to Use This Code:',
+        'instructions_1' => 'Save this code in a safe place',
+        'instructions_2' => 'Come back to this page and select "Demo / Testing"',
+        'instructions_3' => 'Paste the code to verify and view your vote',
+    ],
+
+    'real_success' => [
+        'title' => 'Thank you {name}, your vote has been successfully recorded!',
+        'description' => 'Your vote has been securely recorded and encrypted. You will receive an email with a verification code that you can use to confirm your vote at any time.',
+        'security_notice' => 'Your vote is protected and completely anonymous',
+    ],
+
+    'real_election' => [
+        'instructions_title' => 'Email Verification Required',
+        'instructions' => 'Check your email for the verification code. Enter it below to view your submitted vote.',
+        'label' => 'Verification Code',
+        'placeholder' => 'Enter the code from your email (e.g., abc123def456_1)',
+        'submit_button' => 'Verify & View Vote',
+        'processing_button' => 'Verifying...',
+    ],
+
+    'demo_election' => [
+        'instructions_title' => 'Demo Election Verification',
+        'instructions' => 'Enter the verification code you received after voting to view your test vote record.',
+        'label' => 'Voting Code',
+        'placeholder' => 'Paste your voting code here',
+        'submit_button' => 'View Vote',
+        'processing_button' => 'Loading...',
+    ],
+
+    'help' => [
+        'title' => 'Need Help?',
+        'check_email' => [
+            'title' => 'Check Your Email',
+            'description' => 'Look in your inbox and spam folder for the verification code. The code was sent immediately after your vote was submitted.',
+        ],
+        'contact_support' => [
+            'title' => 'Contact Support',
+            'description' => 'If you have any issues or cannot find your verification code, please contact the election committee for assistance.',
+        ],
+    ],
+
+    'footer' => [
+        'security_message' => 'Your vote is protected by encryption and remains completely anonymous',
+    ],
+
     'errors' => [
-        'wrong_verification_code' => 'Sorry, you have submitted wrong Verification Code! Please check your email for the correct code and try again.',
-        'not_voted_yet' => 'Sorry, it seems like you have not voted yet. Please vote first, then you can see and check your vote.',
+        'wrong_verification_code' => 'Sorry, the code you entered is incorrect. Please check your email and try again.',
+        'not_voted_yet' => 'Sorry, it seems you have not voted yet. Please vote first, then you can verify your vote.',
     ],
 ];

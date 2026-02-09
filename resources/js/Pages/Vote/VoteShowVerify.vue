@@ -135,13 +135,17 @@
                     </div>
 
                     <!-- Election Type Selector -->
-                    <div class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200 px-8 py-6">
+                    <div class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200 px-8 py-8">
                         <div class="max-w-2xl mx-auto">
-                            <p class="text-sm font-semibold text-gray-700 mb-4 text-center">{{ $t('pages.vote-show-verify.election_type.label') }}</p>
-                            <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <p class="text-base md:text-lg font-bold text-gray-900 mb-6 text-center">{{ $t('pages.vote-show-verify.election_type.label') }}</p>
+                            <div class="flex flex-col md:flex-row gap-6 md:gap-12">
                                 <!-- Real Election Option -->
-                                <label class="flex items-center cursor-pointer flex-1">
-                                    <div class="relative">
+                                <label class="flex items-center cursor-pointer flex-1 p-6 rounded-xl border-3 hover:bg-white hover:shadow-lg transition-all duration-200"
+                                    :class="form.electionType === 'real'
+                                        ? 'border-blue-600 bg-blue-50'
+                                        : 'border-gray-400 bg-gray-50 hover:border-blue-400'"
+                                >
+                                    <div class="relative flex-shrink-0">
                                         <input
                                             type="radio"
                                             v-model="form.electionType"
@@ -149,24 +153,27 @@
                                             class="sr-only"
                                         />
                                         <div
-                                            class="w-5 h-5 border-2 rounded-full transition-all duration-200"
+                                            class="w-8 h-8 border-4 rounded-full transition-all duration-200 flex items-center justify-center"
                                             :class="form.electionType === 'real'
-                                                ? 'border-blue-600 bg-blue-50'
-                                                : 'border-gray-300 bg-white hover:border-blue-400'"
-                                        ></div>
-                                        <div
-                                            v-if="form.electionType === 'real'"
-                                            class="absolute inset-1 rounded-full bg-blue-600 flex items-center justify-center"
+                                                ? 'border-blue-600 bg-white'
+                                                : 'border-gray-500 bg-white hover:border-blue-500'"
                                         >
-                                            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                            <div
+                                                v-if="form.electionType === 'real'"
+                                                class="w-4 h-4 bg-blue-600 rounded-full"
+                                            ></div>
                                         </div>
                                     </div>
-                                    <span class="ml-3 text-sm font-medium text-gray-700">{{ $t('pages.vote-show-verify.election_type.real') }}</span>
+                                    <span class="ml-4 text-lg font-bold text-gray-900">{{ $t('pages.vote-show-verify.election_type.real') }}</span>
                                 </label>
 
                                 <!-- Demo Election Option -->
-                                <label class="flex items-center cursor-pointer flex-1">
-                                    <div class="relative">
+                                <label class="flex items-center cursor-pointer flex-1 p-6 rounded-xl border-3 hover:bg-white hover:shadow-lg transition-all duration-200"
+                                    :class="form.electionType === 'demo'
+                                        ? 'border-green-600 bg-green-50'
+                                        : 'border-gray-400 bg-gray-50 hover:border-green-400'"
+                                >
+                                    <div class="relative flex-shrink-0">
                                         <input
                                             type="radio"
                                             v-model="form.electionType"
@@ -174,19 +181,18 @@
                                             class="sr-only"
                                         />
                                         <div
-                                            class="w-5 h-5 border-2 rounded-full transition-all duration-200"
+                                            class="w-8 h-8 border-4 rounded-full transition-all duration-200 flex items-center justify-center"
                                             :class="form.electionType === 'demo'
-                                                ? 'border-green-600 bg-green-50'
-                                                : 'border-gray-300 bg-white hover:border-green-400'"
-                                        ></div>
-                                        <div
-                                            v-if="form.electionType === 'demo'"
-                                            class="absolute inset-1 rounded-full bg-green-600 flex items-center justify-center"
+                                                ? 'border-green-600 bg-white'
+                                                : 'border-gray-500 bg-white hover:border-green-500'"
                                         >
-                                            <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                                            <div
+                                                v-if="form.electionType === 'demo'"
+                                                class="w-4 h-4 bg-green-600 rounded-full"
+                                            ></div>
                                         </div>
                                     </div>
-                                    <span class="ml-3 text-sm font-medium text-gray-700">{{ $t('pages.vote-show-verify.election_type.demo') }}</span>
+                                    <span class="ml-4 text-lg font-bold text-gray-900">{{ $t('pages.vote-show-verify.election_type.demo') }}</span>
                                 </label>
                             </div>
                         </div>
