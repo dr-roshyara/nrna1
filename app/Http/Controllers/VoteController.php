@@ -2157,7 +2157,7 @@ public function verifyVoteSubmit(): array
         $vote->election_id=$election->id;
 
         $vote->save();   //save the vote first
-        $this->out_code =$vote->code();
+        $this->out_code = $vote->getKey();  // Get the vote's primary key
 
         // After vote is saved, concatenate private_key with vote_id for uniqueness
         // voting_code = private_key_vote_id (e.g., "abc123_5")
