@@ -1620,7 +1620,6 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
     if (empty($submitted_code) || empty($code->code_for_vote)) {
         return false;
     }
-    
     // Timing attack resistant comparison code_for_vote
     return Hash::check($submitted_code, $code->code_for_vote);
 }
@@ -1638,7 +1637,6 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
         }       
         
       //   dd($selected_candidates);
-        
       return Inertia::render('Vote/VoteShowVerify', [
          
               'user_name'=>$auth_user->name,
@@ -2171,7 +2169,7 @@ public function verifyVoteSubmit(): array
             // Fallback: if no private_key provided, use the initial hashed key
             $vote->voting_code = $hashed_voting_key;
             $vote->save();
-        }  
+        }     
         //save the $this->vote_id_for_voter  it to voter ;
         {
          /**
@@ -2638,18 +2636,18 @@ public function submit_code_to_view_vote(Request $request)
             'voting_code.min' => 'Verification code is too short.',
             'voting_code.max' => 'Verification code is too long.'
         ]);
-
         $auth_user = auth()->user();
         $submitted_code = trim($request->input('voting_code'));
         $electionType = $request->input('election_type', 'real'); // Default to real
 
         // NEW: Handle Demo Elections separately
         if ($electionType === 'demo') {
-            return $this->verify_demo_vote($submitted_code, $auth_user);
+            // return $this->verify_demo_vote($submitted_code, $auth_user);
         }
 
          // Extract vote ID from the verification code (real elections)
         $vote_data = $this->extract_vote_data_from_code($submitted_code);
+        
 
 
           if (!$vote_data['success']) {
@@ -2657,16 +2655,22 @@ public function submit_code_to_view_vote(Request $request)
                 ->withErrors(['voting_code' => 'Invalid verification code format.'])
                 ->withInput();
         }
-
-        // Retrieve the actual vote record (pass voting code for fallback search)
-        $vote_record = $this->retrieve_vote_record($vote_data['vote_id'], $submitted_code);
-        
+         dd($electionType);
+        if ($electionType === 'demo')   {
+            // For demo elections, we expect the vote ID to be in the format "private_key_vote_id"
+            // and the DemoVote model to store plain codes without 
+            $vote_record =$this->display_demo_vote($submitted_code, $auth_user); 
+        }else{
+            // Retrieve the actual vote record (pass voting code for fallback search)
+            $vote_record = $this->retrieve_vote_record($vote_data['vote_id'], $submitted_code);
+        }
+        dd($vote_record);   
         if (!$vote_record['success']) {
             return redirect()->back()
                 ->withErrors(['voting_code' => 'Vote record not found.'])
                 ->withInput();
         }
-
+        dd($vote_record);
         // Prepare vote display data
         $display_data = $this->prepare_vote_display_data($vote_record['vote'], $auth_user, $submitted_code);
         // Store in session for display
@@ -2717,8 +2721,12 @@ public function submit_code_to_view_vote(Request $request)
 /**
  * Verify and display a demo election vote
  * Demo votes are stored separately in demo_votes table
+ * Follows same pattern as retrieve_vote_record but for DemoVote
  *
- * @param string $verification_code
+ * Try by ID first (extracted from voting code), then by voting_code hash as fallback
+ * Demo votes store plain codes (no hashing), so uses exact match for fallback
+ *
+ * @param string $verification_code Format: "private_key_vote_id" (e.g., "abc123_5")
  * @param object $auth_user
  * @return Response
  */
@@ -2727,51 +2735,84 @@ private function verify_demo_vote($verification_code, $auth_user)
     try {
         Log::info('Verifying demo vote', [
             'code_length' => strlen($verification_code),
-            'user_id' => $auth_user->id
+            'user_id' => $auth_user->id,
+            'code_format' => 'private_key_vote_id'
         ]);
 
-        // Find demo vote by voting_code (exact match - demo stores plain code)
+        // Extract vote_id from verification_code if possible (format: "private_key_vote_id")
+        $demo_vote_id = null;
+        if (strpos($verification_code, '_') !== false) {
+            $parts = explode('_', $verification_code);
+            $demo_vote_id = end($parts); // Get the last part (vote_id)
+            Log::info('Extracted vote_id from verification code', [
+                'extracted_vote_id' => $demo_vote_id,
+                'code_length' => strlen($verification_code)
+            ]);
+        }
+
+        // Try to find by ID first
+        if ($demo_vote_id) {
+            $demoVote = DemoVote::find($demo_vote_id);
+
+            if ($demoVote) {
+                Log::info('Demo vote found by ID', [
+                    'vote_id' => $demoVote->id,
+                    'election_id' => $demoVote->election_id
+                ]);
+
+                return $this->display_demo_vote($demoVote, $auth_user);
+            }
+        }
+
+        // Fallback: If vote not found by ID, try searching by voting_code (exact match)
+        Log::info('Demo vote not found by ID, searching by voting code', [
+            'vote_id' => $demo_vote_id,
+            'code_provided' => substr($verification_code, 0, 20) . '...'
+        ]);
+
         $demoVote = DemoVote::where('voting_code', $verification_code)
             ->first();
 
-        if (!$demoVote) {
-            Log::warning('Demo vote not found by verification code', [
-                'code_provided' => substr($verification_code, 0, 20) . '...',
+        if ($demoVote) {
+            Log::info('Demo vote found by exact voting_code match', [
+                'vote_id' => $demoVote->id,
+                'election_id' => $demoVote->election_id
             ]);
 
-            return redirect()->back()
-                ->withErrors(['voting_code' => 'Invalid demo vote verification code. Please check your email for the correct code.'])
-                ->withInput();
+            return $this->display_demo_vote($demoVote, $auth_user);
         }
 
-        Log::info('Demo vote found successfully', [
-            'vote_id' => $demoVote->id,
-            'election_id' => $demoVote->election_id
+        // Fallback 2: Search through all demo votes for exact match (in case code format differs)
+        Log::info('Demo vote not found by voting_code, searching all demo votes', [
+            'code_provided' => substr($verification_code, 0, 20) . '...'
         ]);
 
-        // Get election info
-        $election = Election::find($demoVote->election_id);
+        $allDemoVotes = DemoVote::all();
+        Log::info('Total demo votes in database', ['count' => count($allDemoVotes)]);
 
-        if (!$election) {
-            return redirect()->back()
-                ->withErrors(['voting_code' => 'Election information not found.'])
-                ->withInput();
+        $exactMatches = 0;
+        foreach ($allDemoVotes as $candidateDemoVote) {
+            if (!empty($candidateDemoVote->voting_code) && $candidateDemoVote->voting_code === $verification_code) {
+                $exactMatches++;
+                Log::info('Demo vote found by exhaustive search', [
+                    'vote_id' => $candidateDemoVote->id,
+                    'election_id' => $candidateDemoVote->election_id
+                ]);
+
+                return $this->display_demo_vote($candidateDemoVote, $auth_user);
+            }
         }
 
-        // Prepare vote display data
-        $display_data = $this->prepare_demo_vote_display($demoVote, $election, $auth_user);
-
-        // Store in session for display
-        $sessionId = "demo_vote_display_" . $demoVote->id;
-        request()->session()->put($sessionId, $display_data);
-
-        Log::info('Demo vote verification successful', [
-            'vote_id' => $demoVote->id,
-            'session_id' => $sessionId
+        Log::warning('Demo vote not found by any method', [
+            'vote_id_searched' => $demo_vote_id,
+            'total_votes_checked' => count($allDemoVotes),
+            'exact_matches_found' => $exactMatches,
+            'submitted_code_length' => strlen($verification_code)
         ]);
 
-        return redirect()->route('vote.show', ['vote_id' => $demoVote->id])
-            ->with('success', 'Demo vote verification successful.');
+        return redirect()->back()
+            ->withErrors(['voting_code' => 'Invalid demo vote verification code. Please check your email for the correct code.'])
+            ->withInput();
 
     } catch (\Exception $e) {
         Log::error('Demo vote verification failed', [
@@ -2782,6 +2823,59 @@ private function verify_demo_vote($verification_code, $auth_user)
 
         return redirect()->back()
             ->withErrors(['voting_code' => 'Verification failed. Please try again.'])
+            ->withInput();
+    }
+}
+
+/**
+ * Display demo vote after successful verification
+ * Extracted helper method used by verify_demo_vote
+ *
+ * @param DemoVote $demoVote
+ * @param object $auth_user
+ * @return Response
+ */
+private function display_demo_vote($demoVote, $auth_user)
+{
+    try {
+        // Get election info
+        $election = Election::find($demoVote->election_id);
+
+        if (!$election) {
+            Log::warning('Election not found for demo vote', [
+                'vote_id' => $demoVote->id,
+                'election_id' => $demoVote->election_id
+            ]);
+
+            return redirect()->back()
+                ->withErrors(['voting_code' => 'Election information not found.'])
+                ->withInput();
+        }
+        dd($election); 
+        // Prepare vote display data
+        $display_data = $this->prepare_demo_vote_display($demoVote, $election, $auth_user);
+
+        // Store in session for display
+        $sessionId = "demo_vote_display_" . $demoVote->id;
+        request()->session()->put($sessionId, $display_data);
+
+        Log::info('Demo vote verification successful', [
+            'vote_id' => $demoVote->id,
+            'election_id' => $demoVote->election_id,
+            'session_id' => $sessionId
+        ]);
+
+        return redirect()->route('vote.show', ['vote_id' => $demoVote->id])
+            ->with('success', 'Demo vote verification successful.');
+
+    } catch (\Exception $e) {
+        Log::error('Failed to display demo vote', [
+            'vote_id' => $demoVote->id,
+            'error' => $e->getMessage()
+        ]);
+
+        return redirect()->back()
+            ->withErrors(['voting_code' => 'Failed to display vote. Please try again.'])
             ->withInput();
     }
 }
