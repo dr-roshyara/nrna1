@@ -88,6 +88,10 @@ import organizationDe from './locales/pages/Dashboard/organization/de.json';
 import organizationEn from './locales/pages/Dashboard/organization/en.json';
 import organizationNp from './locales/pages/Dashboard/organization/np.json';
 
+import organizationShowDe from './locales/pages/Organization/de.json';
+import organizationShowEn from './locales/pages/Organization/en.json';
+import organizationShowNp from './locales/pages/Organization/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -146,6 +150,7 @@ const messages = {
       'commission': commissionDe,
       'vote-dashboard': voteDashboardDe,
       'welcome-dashboard': welcomeDashboardDe,
+      'organization-show': organizationShowDe,
     },
   },
   en: {
@@ -173,6 +178,7 @@ const messages = {
       'commission': commissionEn,
       'vote-dashboard': voteDashboardEn,
       'welcome-dashboard': welcomeDashboardEn,
+      'organization-show': organizationShowEn,
     },
   },
   np: {
@@ -200,6 +206,7 @@ const messages = {
       'commission': commissionNp,
       'vote-dashboard': voteDashboardNp,
       'welcome-dashboard': welcomeDashboardNp,
+      'organization-show': organizationShowNp,
     },
   },
 };
