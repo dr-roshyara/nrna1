@@ -102,7 +102,7 @@ class OrganizationController extends Controller
 
         // Check if current user is a member
         $isMember = $organization->users()
-            ->where('user_id', auth()->id())
+            ->where('users.id', auth()->id())
             ->exists();
 
         if (!$isMember) {
