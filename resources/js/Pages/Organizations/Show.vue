@@ -1,5 +1,5 @@
 <template>
-  <AuthenticatedLayout>
+  <AppLayout>
     <Head title="Organization Dashboard" />
 
     <div class="py-12">
@@ -90,12 +90,12 @@
         </div>
       </div>
     </div>
-  </AuthenticatedLayout>
+  </AppLayout>
 </template>
 
 <script setup>
 import { Head } from '@inertiajs/inertia-vue3';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import AppLayout from '@/Layouts/AppLayout.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
