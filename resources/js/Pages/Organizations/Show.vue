@@ -1,5 +1,5 @@
 <template>
-  <AppLayout>
+  <ElectionLayout>
     <Head title="Organization Dashboard" />
 
     <div class="py-12">
@@ -90,12 +90,12 @@
         </div>
       </div>
     </div>
-  </AppLayout>
+  </ElectionLayout>
 </template>
 
 <script setup>
 import { Head } from '@inertiajs/inertia-vue3';
-import AppLayout from '@/Layouts/AppLayout.vue';
+import ElectionLayout from '@/Layouts/ElectionLayout.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
