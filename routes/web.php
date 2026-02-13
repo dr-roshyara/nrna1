@@ -41,6 +41,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CommissionDashboardController;
 use App\Http\Controllers\VoterDashboardController;
 use App\Http\Controllers\WelcomeDashboardController;
+use App\Http\Controllers\Api\OrganizationController;
 
 // Note: VoterSlug route binding is now in App\Providers\RouteServiceProvider
 
@@ -268,4 +269,11 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('vote')->middleware(['role:voter'])->group(function () {
         Route::get('/', [VoterDashboardController::class, 'index'])->name('vote.dashboard');
     });
+
+    // Organization management routes
+    Route::post('/organizations', [OrganizationController::class, 'store'])
+         ->middleware('throttle:3,10')
+         ->name('organizations.store');
+    Route::get('/organizations/{slug}', [OrganizationController::class, 'show'])
+         ->name('organizations.show');
 });

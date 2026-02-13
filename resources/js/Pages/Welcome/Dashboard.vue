@@ -240,6 +240,9 @@
       </div>
     </main>
 
+    <!-- Organization Creation Modal -->
+    <OrganizationCreateModal />
+
     <!-- Footer -->
     <PublicDigitFooter />
   </div>
@@ -248,6 +251,9 @@
 <script>
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
 import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
+import OrganizationCreateModal from "@/Components/Organization/OrganizationCreateModal.vue";
+import { useOrganizationCreation } from "@/Composables/useOrganizationCreation";
+import { provide } from 'vue';
 
 export default {
   name: 'WelcomeDashboard',
@@ -255,12 +261,25 @@ export default {
   components: {
     ElectionHeader,
     PublicDigitFooter,
+    OrganizationCreateModal,
   },
 
   props: {
     userName: String,
     userEmail: String,
     userCreatedAt: String,
+  },
+
+  setup() {
+    // Create and provide the organization creation composable
+    const organizationCreation = useOrganizationCreation();
+
+    // Provide it to all child components (including modal)
+    provide('organizationCreation', organizationCreation);
+
+    return {
+      organizationCreation,
+    };
   },
 
   data() {
@@ -271,28 +290,9 @@ export default {
 
   methods: {
     createOrganization() {
-      if (this.isLoading) return;
-
-      this.isLoading = true;
-      console.log('🏢 Navigating to create organization');
-
-      this.$inertia.visit(this.route('organizations.create'), {
-        onFinish: () => {
-          this.isLoading = false;
-        },
-        onError: () => {
-          this.isLoading = false;
-          console.error('❌ Failed to navigate to create organization');
-        },
-      });
-
-      // Fallback timeout in case Inertia events don't fire (3 second max)
-      setTimeout(() => {
-        if (this.isLoading) {
-          this.isLoading = false;
-          console.warn('⚠️ Navigation timeout - reset loading state');
-        }
-      }, 3000);
+      console.log('🏢 Opening organization creation modal');
+      this.organizationCreation.openModal();
+      this.organizationCreation.trackOrganizationCreationStarted();
     },
 
     joinOrganization() {

@@ -84,6 +84,10 @@ import welcomeDashboardDe from './locales/pages/Welcome/Dashboard/de.json';
 import welcomeDashboardEn from './locales/pages/Welcome/Dashboard/en.json';
 import welcomeDashboardNp from './locales/pages/Welcome/Dashboard/np.json';
 
+import organizationDe from './locales/pages/Dashboard/organization/de.json';
+import organizationEn from './locales/pages/Dashboard/organization/en.json';
+import organizationNp from './locales/pages/Dashboard/organization/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -119,6 +123,7 @@ const initialLocale = getInitialLocale();
 const messages = {
   de: {
     ...de,
+    organization: organizationDe,
     pages: {
       'voting-start': votingStartDe,
       'role-selection': roleSelectionDe,
@@ -145,6 +150,7 @@ const messages = {
   },
   en: {
     ...en,
+    organization: organizationEn,
     pages: {
       'voting-start': votingStartEn,
       'role-selection': roleSelectionEn,
@@ -171,6 +177,7 @@ const messages = {
   },
   np: {
     ...np,
+    organization: organizationNp,
     pages: {
       'voting-start': votingStartNp,
       'role-selection': roleSelectionNp,

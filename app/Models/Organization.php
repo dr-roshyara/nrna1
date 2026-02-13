@@ -11,18 +11,29 @@ class Organization extends Model
 
     protected $fillable = [
         'name',
+        'email',
         'slug',
         'type',
+        'address',
+        'representative',
         'settings',
         'languages',
+        'created_by',
     ];
 
     protected $casts = [
+        'address' => 'array',
+        'representative' => 'array',
         'settings' => 'array',
         'languages' => 'array',
     ];
 
     // Relationships
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_organization_roles')

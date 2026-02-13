@@ -34,6 +34,7 @@
         "d3": "^7.4.4",
         "vue-advanced-cropper": "^2.8.3",
         "vue-chartjs": "^4.1.0",
+        "vue-i18n": "^9.2.2",
         "vue-image-compressor": "^1.0.3",
         "vue-image-crop-upload": "^3.0.3"
     }
