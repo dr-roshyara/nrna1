@@ -96,7 +96,7 @@ class OrganizationController extends Controller
     {
         $organization = Organization::where('slug', $slug)
             ->with(['users' => function ($query) {
-                $query->where('organization_user.role', 'admin');
+                $query->wherePivot('role', 'admin');
             }])
             ->firstOrFail();
 
