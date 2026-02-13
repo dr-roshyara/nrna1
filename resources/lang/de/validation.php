@@ -169,7 +169,7 @@ return [
     'organization' => [
         'name' => [
             'required' => 'Der Organisationname ist erforderlich.',
-            'unique' => 'Ein Organisation mit diesem Namen existiert bereits.',
+            'unique' => 'Eine Organisation mit diesem Namen existiert bereits.',
         ],
         'email' => [
             'required' => 'Die E-Mail-Adresse ist erforderlich.',
