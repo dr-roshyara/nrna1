@@ -151,6 +151,46 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'organization_name' => 'Organization name',
+        'organization_email' => 'Organization email',
+        'street' => 'Street address',
+        'city' => 'City',
+        'zip_code' => 'Postal code',
+        'representative_name' => 'Representative name',
+        'representative_role' => 'Representative role',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Organization-Specific Validation Messages
+    |--------------------------------------------------------------------------
+    |
+    | Custom messages for organization creation form validation
+    |
+    */
+
+    'organization' => [
+        'name' => [
+            'required' => 'The organization name is required.',
+            'unique' => 'An organization with this name already exists.',
+        ],
+        'email' => [
+            'required' => 'The email address is required.',
+            'invalid' => 'The email address is invalid.',
+            'unique' => 'An organization with this email address already exists.',
+        ],
+        'zip' => [
+            'format' => 'The postal code must be 5 digits.',
+        ],
+        'gdpr' => [
+            'required' => 'You must accept GDPR-compliant data processing.',
+        ],
+        'terms' => [
+            'required' => 'You must accept the terms and conditions.',
+        ],
+    ],
+
+    'failed' => 'Validation failed.',
 
 ];
