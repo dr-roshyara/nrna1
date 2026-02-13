@@ -6,8 +6,6 @@ use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\App;
 
@@ -15,20 +13,18 @@ class RepresentativeInvitationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private string $locale;
-
     public function __construct(
         public User $representative,
         public Organization $organization,
         public User $creator
     ) {
-        // Detect locale: use creator's preference or current locale
+        // Set locale for mail: use current app locale or default to German
         $this->locale = auth()->check() ? app()->getLocale() : 'de';
     }
 
-    public function envelope(): Envelope
+    public function build()
     {
-        // Temporarily set locale for subject translation
+        // Set locale for template translation
         App::setLocale($this->locale);
 
         $subjects = [
@@ -37,37 +33,21 @@ class RepresentativeInvitationMail extends Mailable
             'np' => 'तपाई ' . $this->organization->name . ' को प्रतिनिधि के रूप में जोड़ गए हैं',
         ];
 
-        return new Envelope(
-            subject: $subjects[$this->locale] ?? $subjects['de'],
-        );
-    }
-
-    public function content(): Content
-    {
-        // Set locale for template translation
-        App::setLocale($this->locale);
-
         $templates = [
             'de' => 'emails.representative.invitation-de',
             'en' => 'emails.representative.invitation-en',
             'np' => 'emails.representative.invitation-np',
         ];
 
-        return new Content(
-            markdown: $templates[$this->locale] ?? $templates['de'],
-            with: [
-                'representativeName' => $this->representative->name,
-                'organizationName' => $this->organization->name,
-                'creatorName' => $this->creator->name,
-                'setupUrl' => route('password.request'),
-                'organizationEmail' => $this->organization->email,
-                'locale' => $this->locale,
-            ]
-        );
-    }
-
-    public function build()
-    {
-        return $this;
+        return $this->markdown($templates[$this->locale] ?? $templates['de'])
+                    ->subject($subjects[$this->locale] ?? $subjects['de'])
+                    ->with([
+                        'representativeName' => $this->representative->name,
+                        'organizationName' => $this->organization->name,
+                        'creatorName' => $this->creator->name,
+                        'setupUrl' => route('password.request'),
+                        'organizationEmail' => $this->organization->email,
+                        'locale' => $this->locale,
+                    ]);
     }
 }
