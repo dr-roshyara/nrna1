@@ -176,6 +176,32 @@ class DashboardResolver
      */
     private function redirectByRole(User $user, string $role): RedirectResponse
     {
+        // Special handling for organization admins
+        if ($role === 'admin') {
+            $orgAdmin = \DB::table('user_organization_roles')
+                ->where('user_id', $user->id)
+                ->where('role', 'admin')
+                ->first();
+
+            if ($orgAdmin) {
+                // Find the organization and redirect to its page
+                $organization = \App\Models\Organization::find($orgAdmin->organization_id);
+                if ($organization) {
+                    \Log::info('DashboardResolver: Redirect decision', [
+                        'user_id' => $user->id,
+                        'decision' => 'organization_admin',
+                        'role' => $role,
+                        'organization_id' => $organization->id,
+                        'destination' => 'organizations.show',
+                        'reason' => 'User is organization admin - redirecting to organization page',
+                    ]);
+
+                    return redirect()->route('organizations.show', $organization->slug);
+                }
+            }
+        }
+
+        // Platform admin or fallback
         $destination = match($role) {
             'admin' => 'admin.dashboard',
             'commission' => 'commission.dashboard',
