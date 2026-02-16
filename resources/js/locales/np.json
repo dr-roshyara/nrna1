@@ -208,5 +208,13 @@
         "keywords": "{electionName}, {organizationName}, मतदान, चुनाव परिणाम"
       }
     }
+  },
+  "support": {
+    "title": "सहायता चाहिन्छ?",
+    "assistance": "अतिरिक्त सहायताको लागि कृपया संपर्क गर्नुहोस्:",
+    "email": "ईमेल",
+    "email_address": "support@publicdigit.com",
+    "phone": "फोन र व्हाट्सएप",
+    "phone_number": "+49 151 64322589"
   }
 }
