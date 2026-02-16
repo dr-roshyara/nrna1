@@ -1,6 +1,9 @@
 <template>
   <ElectionLayout>
 
+    <!-- Breadcrumb Schema for SEO -->
+    <BreadcrumbSchema />
+
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <!-- Organization Header -->
@@ -94,6 +97,7 @@
 
 <script setup>
 import ElectionLayout from '@/Layouts/ElectionLayout.vue';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema.vue';
 import { useI18n } from 'vue-i18n';
 import { useMeta } from '@/composables/useMeta';
 

@@ -24,6 +24,7 @@
 import AppLayout from "@/Layouts/AppLayout";
 import Welcome from "@/Jetstream/Welcome";
 import PublicDigitLayout from "@/Layouts/PublicDigitLayout.vue";
+import { useMeta } from "@/composables/useMeta";
 
 export default {
     props: {
@@ -34,5 +35,12 @@ export default {
         Welcome,
         PublicDigitLayout,
     },
+    created() {
+        /**
+         * SEO: Prevent Dashboard from being indexed
+         * This is a private user dashboard and should not appear in search results
+         */
+        useMeta({ noindex: true, nofollow: true });
+    }
 };
 </script>

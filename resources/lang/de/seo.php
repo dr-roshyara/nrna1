@@ -51,5 +51,11 @@ return [
             'description' => 'Informationen zu {electionName} von {organizationName}. Sichere, transparente Wahlplattform mit vollständiger Audit-Trail.',
             'keywords' => '{electionName}, {organizationName}, Wahlen, Abstimmungsergebnisse',
         ],
+
+        'election.result' => [
+            'title' => '{electionName} Ergebnisse | Public Digit Elections',
+            'description' => 'Endergebnisse für {electionName}. Sehen Sie Wahlergebnisse, Kandidaten-Rankings und vollständige Abstimmungsstatistiken.',
+            'keywords' => '{electionName}, Wahlergebnisse, Abstimmungsergebnisse, Wahlresultate',
+        ],
     ],
 ];

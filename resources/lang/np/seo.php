@@ -51,5 +51,11 @@ return [
             'description' => '{organizationName} को {electionName} को लागि चुनाव जानकारी। पूर्ण अडिट ट्रेल सहित सुरक्षित, पारदर्शी मतदान प्लेटफर्म।',
             'keywords' => '{electionName}, {organizationName}, मतदान, चुनाव परिणाम',
         ],
+
+        'election.result' => [
+            'title' => '{electionName} परिणाम | Public Digit Elections',
+            'description' => '{electionName} को अन्तिम परिणाम। चुनाव परिणाम, उमेद्वारहरुको स्थिति र पूर्ण मतदान सांख्यिकी हेर्नुहोस्।',
+            'keywords' => '{electionName}, चुनाव परिणाम, मतदान परिणाम, चुनाव नतिजा',
+        ],
     ],
 ];

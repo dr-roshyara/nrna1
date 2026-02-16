@@ -51,5 +51,11 @@ return [
             'description' => 'Election information for {electionName} by {organizationName}. Secure, transparent voting platform with full audit trail.',
             'keywords' => '{electionName}, {organizationName}, voting, election results',
         ],
+
+        'election.result' => [
+            'title' => '{electionName} Results | Public Digit Elections',
+            'description' => 'Final results for {electionName}. View election outcomes, candidate standings, and complete voting statistics.',
+            'keywords' => '{electionName}, election results, voting results, election outcomes',
+        ],
     ],
 ];

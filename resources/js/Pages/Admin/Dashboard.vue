@@ -83,6 +83,7 @@
 <script setup>
 import { defineProps } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useMeta } from '@/composables/useMeta'
 
 const { t: $t } = useI18n()
 
@@ -91,6 +92,12 @@ defineProps({
   organizations: Array,
   quickStats: Object,
 })
+
+/**
+ * SEO: Prevent Admin Dashboard from being indexed
+ * This is a private page and should not appear in search results
+ */
+useMeta({ noindex: true, nofollow: true })
 </script>
 
 <style scoped>

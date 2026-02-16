@@ -1,5 +1,8 @@
 <template>
   <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <!-- Breadcrumb Schema for SEO -->
+    <BreadcrumbSchema />
+
     <!-- Header Section -->
     <section class="relative py-16 md:py-24 lg:py-32 bg-blue-900 text-white">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
@@ -207,9 +210,14 @@
 import pricingDe from '../locales/pages/pricing/de.json';
 import pricingEn from '../locales/pages/pricing/en.json';
 import pricingNp from '../locales/pages/pricing/np.json';
+import { useMeta } from '@/composables/useMeta';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema.vue';
 
 export default {
   name: 'Pricing',
+  components: {
+    BreadcrumbSchema,
+  },
   data() {
     return {
       openFaq: [],
@@ -219,6 +227,15 @@ export default {
         np: pricingNp
       }
     };
+  },
+  created() {
+    /**
+     * SEO Meta Tags for Pricing Page
+     *
+     * Automatically sets language-aware meta tags based on current locale
+     * Reads from 'pricing' page key in i18n translations
+     */
+    useMeta({ pageKey: 'pricing' });
   },
   computed: {
     currentLocale() {
