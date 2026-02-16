@@ -1,5 +1,5 @@
 <template>
-  <div class="breadcrumb-container">
+  <div class="breadcrumb-container" v-if="breadcrumbs && breadcrumbs.length > 0">
     <!-- HTML Breadcrumbs for UX & Accessibility -->
     <nav class="breadcrumb-nav" aria-label="breadcrumb">
       <ol class="breadcrumb-list">
@@ -8,41 +8,36 @@
             v-if="index < breadcrumbs.length - 1"
             :href="item.url"
             class="breadcrumb-link"
-            @click.prevent="navigate(item.url)"
           >
             {{ item.label }}
           </a>
-          <span v-else class="breadcrumb-current" itemscope itemtype="https://schema.org/Thing">
-            <span itemprop="name">{{ item.label }}</span>
+          <span v-else class="breadcrumb-current">
+            {{ item.label }}
           </span>
         </li>
       </ol>
     </nav>
-
-    <!-- JSON-LD Schema (hidden from display) -->
-    <script type="application/ld+json" v-html="jsonLdSchema"></script>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { router } from '@inertiajs/inertia'
+import { computed, onMounted, watch } from 'vue'
+import { usePage } from '@inertiajs/inertia-vue3'
 
-const props = defineProps({
-  breadcrumbs: {
-    type: Array,
-    required: true,
-    validator: (arr) =>
-      Array.isArray(arr) &&
-      arr.every((item) => item.label && item.url)
-  }
-})
+const page = usePage()
+
+/**
+ * Get breadcrumbs from Inertia props
+ */
+const breadcrumbs = computed(() => page.props.breadcrumbs || [])
 
 /**
  * Generate JSON-LD BreadcrumbList schema
  */
 const jsonLdSchema = computed(() => {
-  const items = props.breadcrumbs.map((item, index) => ({
+  if (!breadcrumbs.value || breadcrumbs.value.length === 0) return null
+
+  const items = breadcrumbs.value.map((item, index) => ({
     '@type': 'ListItem',
     'position': index + 1,
     'name': item.label,
@@ -57,6 +52,36 @@ const jsonLdSchema = computed(() => {
 
   return JSON.stringify(schema)
 })
+
+/**
+ * Inject JSON-LD schema into document head
+ */
+const injectSchema = () => {
+  if (!jsonLdSchema.value) return
+
+  // Remove existing breadcrumb schema if present
+  const existingScript = document.head.querySelector('script[data-breadcrumb-schema]')
+  if (existingScript) {
+    existingScript.remove()
+  }
+
+  // Create and inject new schema script
+  const script = document.createElement('script')
+  script.type = 'application/ld+json'
+  script.setAttribute('data-breadcrumb-schema', 'true')
+  script.innerHTML = jsonLdSchema.value
+  document.head.appendChild(script)
+}
+
+/**
+ * Watch for breadcrumb changes and update schema
+ */
+watch(jsonLdSchema, injectSchema)
+
+/**
+ * Initial schema injection
+ */
+onMounted(injectSchema)
 
 /**
  * Navigate using Inertia (preserves Vue state)

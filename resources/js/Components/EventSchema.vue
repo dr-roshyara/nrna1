@@ -1,25 +1,22 @@
 <template>
-  <!-- JSON-LD Event Schema (hidden from display) -->
-  <script type="application/ld+json" v-html="eventJsonLd"></script>
+  <!-- Component handles schema injection, no visible output -->
+  <div style="display: none;"></div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 
 /**
  * EventSchema Component
  *
  * Renders JSON-LD Event schema for elections
  * Makes elections discoverable in Google Events
+ * Injects schema into document head when component mounts
  */
 const props = defineProps({
   election: {
     type: Object,
-    required: true,
-    validator: (obj) =>
-      obj &&
-      typeof obj === 'object' &&
-      'name' in obj
+    default: null
   },
   organization: {
     type: Object,
@@ -31,6 +28,8 @@ const props = defineProps({
  * Generate JSON-LD Event schema
  */
 const eventJsonLd = computed(() => {
+  if (!props.election) return null
+
   // Determine event status
   let eventStatus = 'EventScheduled'
 
@@ -44,13 +43,13 @@ const eventJsonLd = computed(() => {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Event',
-    'name': props.election.name,
+    'name': props.election.name || 'Election',
     'description': props.election.description || 'Election on Public Digit',
     'startDate': props.election.start_date,
     'endDate': props.election.end_date,
     'eventStatus': eventStatus,
     'eventAttendanceMode': 'OnlineEventAttendanceMode',
-    'url': window.location.href,
+    'url': typeof window !== 'undefined' ? window.location.href : '',
     'image': props.organization?.logo_url || '/images/og-default.jpg',
     'organizer': {
       '@type': 'Organization',
@@ -61,7 +60,7 @@ const eventJsonLd = computed(() => {
     },
     'offers': {
       '@type': 'Offer',
-      'url': window.location.href,
+      'url': typeof window !== 'undefined' ? window.location.href : '',
       'price': '0',
       'priceCurrency': 'USD'
     }
@@ -72,4 +71,34 @@ const eventJsonLd = computed(() => {
 
   return JSON.stringify(cleanSchema)
 })
+
+/**
+ * Inject JSON-LD schema into document head
+ */
+const injectSchema = () => {
+  if (!eventJsonLd.value) return
+
+  // Remove existing event schema if present
+  const existingScript = document.head.querySelector('script[data-event-schema]')
+  if (existingScript) {
+    existingScript.remove()
+  }
+
+  // Create and inject new schema script
+  const script = document.createElement('script')
+  script.type = 'application/ld+json'
+  script.setAttribute('data-event-schema', 'true')
+  script.innerHTML = eventJsonLd.value
+  document.head.appendChild(script)
+}
+
+/**
+ * Watch for election changes and update schema
+ */
+watch(eventJsonLd, injectSchema)
+
+/**
+ * Initial schema injection
+ */
+onMounted(injectSchema)
 </script>
