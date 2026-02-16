@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\MakeurlController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\RobotsController;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FeedController;
@@ -74,7 +75,17 @@ Route::get('/storage/images/{filename}', function ($filename)
 });
 
 // SEO Routes
-Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+// Sitemap Index (aggregates all sitemaps)
+Route::get('/sitemap.xml', [SitemapController::class, 'sitemapIndex'])->name('sitemap.index');
+
+// Individual Sitemaps
+Route::get('/sitemap/main.xml', [SitemapController::class, 'index'])->name('sitemap.main');
+Route::get('/sitemap/organizations.xml', [SitemapController::class, 'organizations'])->name('sitemap.organizations');
+Route::get('/sitemap/elections.xml', [SitemapController::class, 'elections'])->name('sitemap.elections');
+Route::get('/sitemap/results.xml', [SitemapController::class, 'results'])->name('sitemap.results');
+
+// robots.txt
+Route::get('/robots.txt', [RobotsController::class, 'index'])->name('robots.txt');
 
 // Home route: If authenticated, show election dashboard. Else, show welcome page.
 Route::get('/',

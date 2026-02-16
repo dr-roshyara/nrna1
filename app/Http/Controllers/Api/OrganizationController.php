@@ -38,6 +38,9 @@ class OrganizationController extends Controller
             'assigned_at' => now(),
         ]);
 
+        // Update current user's organisation_id
+        $user->update(['organisation_id' => $organization->id]);
+
         // Handle representative - check if user IS the representative
         $isSelfRepresentative = $request->representative['is_self'] ?? false;
 
@@ -61,6 +64,9 @@ class OrganizationController extends Controller
                     'role' => 'voter',
                     'assigned_at' => now(),
                 ]);
+
+                // Update representative user's organisation_id
+                $representativeUser->update(['organisation_id' => $organization->id]);
 
                 // Send password setup invitation
                 Mail::to($representativeEmail)->send(

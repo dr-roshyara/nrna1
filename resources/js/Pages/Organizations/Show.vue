@@ -1,6 +1,5 @@
 <template>
   <ElectionLayout>
-    <Head title="Organization Dashboard" />
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -94,14 +93,31 @@
 </template>
 
 <script setup>
-import { Head } from '@inertiajs/inertia-vue3';
 import ElectionLayout from '@/Layouts/ElectionLayout.vue';
 import { useI18n } from 'vue-i18n';
+import { useMeta } from '@/composables/useMeta';
 
 const { t } = useI18n();
 
-defineProps({
+const props = defineProps({
   organization: Object,
   stats: Object,
+});
+
+/**
+ * SEO Meta Tags Management
+ *
+ * Dynamically sets page-level meta tags based on organization data.
+ * Updates title and description to include organization name, member count, and election count.
+ *
+ * Translates SEO keys from the 'organizations.show' page translations.
+ */
+useMeta({
+  pageKey: 'organizations.show',
+  params: {
+    organizationName: props.organization?.name || 'Organization',
+    memberCount: props.stats?.members_count || '0',
+    electionCount: props.stats?.elections_count || '0'
+  }
 });
 </script>

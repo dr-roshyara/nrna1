@@ -52,6 +52,17 @@ class HandleInertiaRequests extends Middleware
                 'can_vote' => $request->user()->can_vote,
                 'profile_photo_url' => $request->user()->profile_photo_url,
             ] : null,
+            /**
+             * SEO Configuration
+             *
+             * NOTE: useMeta composable handles all meta tag generation.
+             * It reads directly from i18n translations (en.json, de.json, np.json)
+             * ensuring language-aware SEO tags that match page content locale.
+             *
+             * This prop is kept for fallback/debugging only.
+             * useMeta is the single source of truth for all SEO data.
+             */
+            'canonicalUrl' => $request->url(),
         ]);
     }
 }

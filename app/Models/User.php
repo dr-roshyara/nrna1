@@ -50,6 +50,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * Voting-related fields are PROTECTED from mass assignment to prevent manipulation.
      */
     protected $fillable = [
+        'organisation_id',
         'google_id',
         'name',
         'region',
