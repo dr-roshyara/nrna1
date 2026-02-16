@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use App\Helpers\BreadcrumbHelper;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -25,6 +26,33 @@ class HandleInertiaRequests extends Middleware
     public function version(Request $request)
     {
         return parent::version($request);
+    }
+
+    /**
+     * Generate breadcrumbs for current route
+     *
+     * @param Request $request
+     * @return array
+     */
+    private function generateBreadcrumbs(Request $request): array
+    {
+        $route = $request->route();
+        if (!$route) {
+            return [['label' => 'Home', 'url' => url('/')]];
+        }
+
+        $routeName = $route->getName();
+        $params = [];
+
+        // Extract model instances from route parameters
+        if ($request->route('organization')) {
+            $params['organization'] = $request->route('organization');
+        }
+        if ($request->route('election')) {
+            $params['election'] = $request->route('election');
+        }
+
+        return BreadcrumbHelper::generateBreadcrumbs($routeName, $params);
     }
 
     /**
@@ -63,6 +91,15 @@ class HandleInertiaRequests extends Middleware
              * useMeta is the single source of truth for all SEO data.
              */
             'canonicalUrl' => $request->url(),
+
+            /**
+             * Breadcrumbs for Navigation & Schema
+             *
+             * Provides breadcrumb data for:
+             * - HTML breadcrumb navigation display
+             * - JSON-LD BreadcrumbList schema for search engines
+             */
+            'breadcrumbs' => $this->generateBreadcrumbs($request),
         ]);
     }
 }
