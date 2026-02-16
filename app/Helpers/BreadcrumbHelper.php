@@ -26,7 +26,7 @@ class BreadcrumbHelper
     {
         $breadcrumbs = [
             [
-                'label' => trans('seo.site.title', 'Public Digit'),
+                'label' => trans('seo.site.title') ?: 'Home',
                 'url' => url('/')
             ]
         ];
@@ -41,7 +41,7 @@ class BreadcrumbHelper
                 break;
             case $routeName === 'pricing':
                 $breadcrumbs[] = [
-                    'label' => trans('seo.pages.pricing.title', 'Pricing'),
+                    'label' => trans('seo.pages.pricing.title') ?: 'Pricing',
                     'url' => route('pricing')
                 ];
                 break;
@@ -58,7 +58,7 @@ class BreadcrumbHelper
     private static function organizationBreadcrumbs(array $breadcrumbs, array $params): array
     {
         $breadcrumbs[] = [
-            'label' => trans('sitemap.sections.organizations', 'Organizations'),
+            'label' => trans('sitemap.sections.organizations') ?: 'Organizations',
             'url' => url('/organizations')
         ];
 
@@ -79,7 +79,7 @@ class BreadcrumbHelper
     private static function electionBreadcrumbs(array $breadcrumbs, array $params): array
     {
         $breadcrumbs[] = [
-            'label' => trans('sitemap.sections.elections', 'Elections'),
+            'label' => trans('sitemap.sections.elections') ?: 'Elections',
             'url' => url('/elections')
         ];
 
