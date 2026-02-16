@@ -178,45 +178,36 @@ class DashboardResolver
     {
         // Special handling for organization admins
         if ($role === 'admin') {
-            $orgAdmin = \DB::table('user_organization_roles')
-                ->where('user_id', $user->id)
-                ->where('role', 'admin')
-                ->first();
+            try {
+                // Get first organization where user is admin
+                $orgRole = \DB::table('user_organization_roles')
+                    ->where('user_id', $user->id)
+                    ->where('role', 'admin')
+                    ->first();
 
-            \Log::info('DashboardResolver: Checking for organization admin', [
-                'user_id' => $user->id,
-                'found_org_admin' => $orgAdmin ? 'yes' : 'no',
-                'org_admin_data' => $orgAdmin ? [
-                    'organization_id' => $orgAdmin->organization_id,
-                    'role' => $orgAdmin->role,
-                ] : null,
-            ]);
+                if ($orgRole) {
+                    $organization = \App\Models\Organization::find($orgRole->organization_id);
 
-            if ($orgAdmin) {
-                // Find the organization and redirect to its page
-                $organization = \App\Models\Organization::find($orgAdmin->organization_id);
-                if ($organization) {
-                    \Log::info('DashboardResolver: Redirect decision', [
-                        'user_id' => $user->id,
-                        'decision' => 'organization_admin',
-                        'role' => $role,
-                        'organization_id' => $organization->id,
-                        'organization_slug' => $organization->slug,
-                        'destination' => 'organizations.show',
-                        'reason' => 'User is organization admin - redirecting to organization page',
-                    ]);
+                    if ($organization) {
+                        \Log::info('DashboardResolver: Organization admin redirect', [
+                            'user_id' => $user->id,
+                            'organization_id' => $organization->id,
+                            'organization_slug' => $organization->slug,
+                            'destination' => route('organizations.show', $organization->slug),
+                        ]);
 
-                    return redirect()->route('organizations.show', $organization->slug);
-                } else {
-                    \Log::warning('DashboardResolver: Organization not found', [
-                        'user_id' => $user->id,
-                        'organization_id' => $orgAdmin->organization_id,
-                    ]);
+                        return redirect()->route('organizations.show', $organization->slug);
+                    }
                 }
+            } catch (\Exception $e) {
+                \Log::error('DashboardResolver: Error checking organization admin', [
+                    'user_id' => $user->id,
+                    'error' => $e->getMessage(),
+                ]);
             }
         }
 
-        // Platform admin or fallback
+        // Fallback: Platform admin, commission, voter, or role selection
         $destination = match($role) {
             'admin' => 'admin.dashboard',
             'commission' => 'commission.dashboard',
@@ -224,12 +215,10 @@ class DashboardResolver
             default => 'role.selection',
         };
 
-        \Log::info('DashboardResolver: Redirect decision', [
+        \Log::info('DashboardResolver: Fallback redirect', [
             'user_id' => $user->id,
-            'decision' => 'single_role',
             'role' => $role,
             'destination' => $destination,
-            'reason' => 'User has exactly one dashboard role: ' . $role,
         ]);
 
         return redirect()->route($destination);
