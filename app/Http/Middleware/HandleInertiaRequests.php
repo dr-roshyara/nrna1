@@ -42,6 +42,12 @@ class HandleInertiaRequests extends Middleware
         }
 
         $routeName = $route->getName();
+
+        // Handle null route name (e.g., on login, register pages)
+        if (!$routeName) {
+            return [['label' => 'Home', 'url' => url('/')]];
+        }
+
         $params = [];
 
         // Extract model instances from route parameters
