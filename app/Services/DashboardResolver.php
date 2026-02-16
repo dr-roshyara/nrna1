@@ -183,6 +183,15 @@ class DashboardResolver
                 ->where('role', 'admin')
                 ->first();
 
+            \Log::info('DashboardResolver: Checking for organization admin', [
+                'user_id' => $user->id,
+                'found_org_admin' => $orgAdmin ? 'yes' : 'no',
+                'org_admin_data' => $orgAdmin ? [
+                    'organization_id' => $orgAdmin->organization_id,
+                    'role' => $orgAdmin->role,
+                ] : null,
+            ]);
+
             if ($orgAdmin) {
                 // Find the organization and redirect to its page
                 $organization = \App\Models\Organization::find($orgAdmin->organization_id);
@@ -192,11 +201,17 @@ class DashboardResolver
                         'decision' => 'organization_admin',
                         'role' => $role,
                         'organization_id' => $organization->id,
+                        'organization_slug' => $organization->slug,
                         'destination' => 'organizations.show',
                         'reason' => 'User is organization admin - redirecting to organization page',
                     ]);
 
                     return redirect()->route('organizations.show', $organization->slug);
+                } else {
+                    \Log::warning('DashboardResolver: Organization not found', [
+                        'user_id' => $user->id,
+                        'organization_id' => $orgAdmin->organization_id,
+                    ]);
                 }
             }
         }
