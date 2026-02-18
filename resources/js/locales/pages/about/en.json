@@ -65,5 +65,13 @@
     "contact_text": "Interested in learning more about Public Digit? We're here to help with demonstrations, technical consultations, and custom solutions for your organization.",
     "testimonial_title": "What Our Users Say",
     "testimonial_text": "Public Digit has transformed how our organization conducts elections. The process is secure, transparent, and our members love the convenience of voting from anywhere in the world."
+  },
+  "support": {
+    "title": "Need Help?",
+    "assistance": "For further assistance please contact:",
+    "email": "Email",
+    "email_address": "support\u0040publicdigit.com",
+    "phone": "Phone & WhatsApp",
+    "phone_number": "+49 151 64322589"
   }
 }

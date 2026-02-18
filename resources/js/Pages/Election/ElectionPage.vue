@@ -203,7 +203,7 @@
                             <div>
                                 <h4 class="font-bold text-gray-900 mb-3">{{ $t('pages.election.voting_page.need_help') }}</h4>
                                 <p class="text-sm text-gray-700 mb-4">{{ $t('pages.election.voting_page.help_desc') }}</p>
-                                <a href="mailto:support@publicdigit.com"
+                                <a href="mailto:support(at)publicdigit.com"
                                    class="text-blue-700 hover:text-blue-800 hover:underline font-medium text-sm">
                                     {{ $t('pages.election.voting_page.contact_support') }}
                                 </a>

@@ -11,10 +11,10 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div class="text-center">
           <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            {{ $t('faq.title') }}
+            {{ faqTitle }}
           </h1>
           <p class="text-xl text-gray-600">
-            {{ $t('faq.subtitle') }}
+            {{ faqSubtitle }}
           </p>
         </div>
       </div>
@@ -146,10 +146,10 @@
           Still have questions? Our team is ready to help you get started with secure digital voting.
         </p>
         <a
-          href="mailto:support@publicdigit.com"
+          :href="`mailto:${$t('support.email_address').replace(/\u0040/g, '@')}`"
           class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition"
         >
-          {{ $t('support.email_address') }}
+          {{ $t('support.email_address').replace(/\u0040/g, '@') }}
         </a>
       </div>
     </section>
@@ -165,10 +165,10 @@ import PublicDigitFooter from '@/Jetstream/PublicDigitFooter.vue'
 import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue'
 import { useMeta } from '@/composables/useMeta'
 
-// Import locale files for FAQ data
-import faqDe from '@/locales/de.json'
-import faqEn from '@/locales/en.json'
-import faqNp from '@/locales/np.json'
+// Import separate FAQ locale files
+import faqDe from '@/locales/pages/faq/de.json'
+import faqEn from '@/locales/pages/faq/en.json'
+import faqNp from '@/locales/pages/faq/np.json'
 
 export default {
   name: 'FAQ',
@@ -197,6 +197,20 @@ export default {
      */
     currentLocale() {
       return this.$i18n.locale
+    },
+
+    /**
+     * Get FAQ title for current locale
+     */
+    faqTitle() {
+      return this.faqData[this.currentLocale]?.faq?.title || 'Frequently Asked Questions'
+    },
+
+    /**
+     * Get FAQ subtitle for current locale
+     */
+    faqSubtitle() {
+      return this.faqData[this.currentLocale]?.faq?.subtitle || 'Find answers to common questions about Public Digit'
     },
 
     /**

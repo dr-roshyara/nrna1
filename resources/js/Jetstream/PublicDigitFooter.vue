@@ -112,8 +112,8 @@
                                 <p class="text-purple-300 text-sm">
                                     {{ $t('footer.email') }}
                                 </p>
-                                <a href="mailto:support@publicdigit.com" class="text-purple-200 text-sm hover:text-white transition-colors duration-200">
-                                    support@publicdigit.com
+                                <a :href="`mailto:${$t('support.email_address').replace(/\u0040/g, '@')}`" class="text-purple-200 text-sm hover:text-white transition-colors duration-200">
+                                    {{ $t('support.email_address').replace(/\u0040/g, '@') }}
                                 </a>
                             </div>
                         </div>

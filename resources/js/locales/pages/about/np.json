@@ -65,5 +65,13 @@
     "contact_text": "Public Digit सम्बन्धमा इच्छुक? हामीले प्रदर्शन र तकनीकी परामर्श दिन सक्छौं।",
     "testimonial_title": "हाम्रा प्रयोगकर्ताहरु के भन्छन्",
     "testimonial_text": "Public Digit ले आमा संस्था कसरी चुनाव सञ्चालन गर्छ भनेर परिवर्तन गरेको छ। प्रक्रिया सुरक्षित र पारदर्शी छ।"
+  },
+  "support": {
+    "title": "सहायता चाहिएको छ?",
+    "assistance": "थप सहायताको लागि कृपया हामीलाई सम्पर्क गर्नुहोस्:",
+    "email": "ईमेल",
+    "email_address": "support\u0040publicdigit.com",
+    "phone": "फोन र WhatsApp",
+    "phone_number": "+49 151 64322589"
   }
 }

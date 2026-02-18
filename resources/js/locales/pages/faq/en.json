@@ -1,0 +1,136 @@
+{
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about Public Digit",
+    "questions": [
+      {
+        "id": "what-is-public-digit",
+        "category": "General",
+        "question": "What is Public Digit?",
+        "answer": "Public Digit is a secure, GDPR-compliant digital voting platform designed for organizations, NGOs, and diaspora communities worldwide. It enables fair, transparent, and secure online elections with end-to-end encryption and full audit trails."
+      },
+      {
+        "id": "who-can-use",
+        "category": "General",
+        "question": "Who can use Public Digit?",
+        "answer": "Public Digit is designed for: diaspora communities and cultural associations, political organizations and civic groups, NGOs and humanitarian organizations, professional associations and unions, educational institutions, religious and faith-based organizations, cooperatives and member networks, and corporate business groups."
+      },
+      {
+        "id": "how-secure",
+        "category": "Security",
+        "question": "How secure is Public Digit?",
+        "answer": "Public Digit uses military-grade end-to-end encryption, is GDPR Article 32 compliant, holds BSI IT-Grundschutz certification, stores all data on German servers, implements multi-factor authentication, maintains comprehensive audit trails, and undergoes regular security audits. We prioritize security above all else."
+      },
+      {
+        "id": "data-storage",
+        "category": "Security",
+        "question": "Where is my data stored?",
+        "answer": "All data is stored on secure German servers, complying with strict European data protection regulations. We use enterprise-grade infrastructure with redundancy and backup systems to ensure data integrity and availability."
+      },
+      {
+        "id": "voter-privacy",
+        "category": "Privacy",
+        "question": "How is voter privacy protected?",
+        "answer": "Voter privacy is protected through multiple mechanisms: votes are end-to-end encrypted, the system maintains separation between voter identity and ballot, audit trails verify the process without revealing how individuals voted, and voters receive personal verification codes to confirm their vote was counted."
+      },
+      {
+        "id": "how-election-works",
+        "category": "Elections",
+        "question": "How does an election work on Public Digit?",
+        "answer": "Elections work in simple steps: (1) Organization administrator creates an election with candidates/options, (2) Voter list is uploaded with participant information, (3) Voters receive secure login credentials via email or SMS, (4) Voters access the platform and cast their encrypted vote, (5) After voting closes, results are automatically generated with full verification available."
+      },
+      {
+        "id": "setup-time",
+        "category": "Setup",
+        "question": "How long does it take to set up an election?",
+        "answer": "You can set up a basic election in 15-30 minutes. The process includes: creating the election details, uploading the voter list, configuring ballot options, and sending voter credentials. Complex elections with multiple positions or custom rules may take longer."
+      },
+      {
+        "id": "voter-participation",
+        "category": "Voting",
+        "question": "What is the typical voter participation rate?",
+        "answer": "Digital voting typically increases participation by 20-40% compared to traditional methods because voters can participate from anywhere at any time. However, participation depends on your organization's outreach and the importance of the election to your members."
+      },
+      {
+        "id": "mobile-access",
+        "category": "Technical",
+        "question": "Can voters vote from mobile devices?",
+        "answer": "Yes! Public Digit is fully responsive and works on smartphones, tablets, and desktop computers. Voters can cast their vote using their phone's web browser without needing to install any special software or applications."
+      },
+      {
+        "id": "multiple-elections",
+        "category": "Elections",
+        "question": "Can we run multiple elections simultaneously?",
+        "answer": "Yes, you can run multiple elections at the same time. Each election is independent with its own timeline, candidates/options, and voter list. This is useful for organizations holding elections for different positions."
+      },
+      {
+        "id": "cost",
+        "category": "Pricing",
+        "question": "What are your pricing models?",
+        "answer": "Public Digit offers flexible pricing based on your organization's size and needs. We have plans for small organizations, mid-size organizations, and large enterprises. Contact our sales team for a custom quote based on your specific requirements."
+      },
+      {
+        "id": "languages",
+        "category": "General",
+        "question": "What languages does Public Digit support?",
+        "answer": "Public Digit currently supports English, German, and Nepali. Additional language support can be added. The platform automatically detects the user's language preference and displays content accordingly."
+      },
+      {
+        "id": "accessibility",
+        "category": "Technical",
+        "question": "Is Public Digit accessible for people with disabilities?",
+        "answer": "Yes, we are committed to accessibility. Public Digit is WCAG 2.1 compliant with keyboard navigation, screen reader support, high contrast modes, and adjustable text sizes. We continuously work to improve accessibility for all users."
+      },
+      {
+        "id": "support",
+        "category": "Support",
+        "question": "What support is available?",
+        "answer": "We offer email support, phone support via WhatsApp, comprehensive documentation, video tutorials, and live demo elections. Premium plans include dedicated account managers and priority support."
+      },
+      {
+        "id": "contact-support",
+        "category": "Support",
+        "question": "How do I contact support?",
+        "answer": "You can reach our support team via email at support\u0040publicdigit.com or by phone/WhatsApp at +49 151 64322589. We typically respond within 24 hours during business days."
+      },
+      {
+        "id": "demo-election",
+        "category": "Getting Started",
+        "question": "Can I try a demo election first?",
+        "answer": "Absolutely! You can try a free demo election without creating an account to experience how Public Digit works. This is a great way to understand the voting process before setting up your own election."
+      },
+      {
+        "id": "bulk-upload",
+        "category": "Elections",
+        "question": "How do I add voters to an election?",
+        "answer": "You can upload voters via CSV file, which is a simple spreadsheet format. You can prepare this in Excel or any spreadsheet application. The system validates the data and provides clear error messages if there are issues."
+      },
+      {
+        "id": "results-verification",
+        "category": "Elections",
+        "question": "How can I verify election results?",
+        "answer": "Results are publicly verifiable on Public Digit. After voting closes, all results are displayed with full transparency. You can verify that: all votes were counted correctly, results match the audit trail, and no votes were lost or duplicated."
+      },
+      {
+        "id": "gdpr-compliance",
+        "category": "Compliance",
+        "question": "Is Public Digit GDPR compliant?",
+        "answer": "Yes, Public Digit is fully GDPR compliant including Article 32 requirements for data security. We have completed data protection impact assessments, maintain data processing agreements, and provide data export/deletion capabilities."
+      },
+      {
+        "id": "custom-features",
+        "category": "Features",
+        "question": "Can we customize Public Digit for our organization?",
+        "answer": "Yes! We offer customization options including custom branding, additional languages, special ballot types, custom authentication methods, and API integrations. Contact our sales team to discuss your specific needs."
+      }
+    ]
+  },
+  "support": {
+    "title": "Need Help?",
+    "assistance": "For further assistance please contact:",
+    "email": "Email",
+    "email_address": "support\u0040publicdigit.com",
+    "phone": "Phone & WhatsApp",
+    "phone_number": "+49 151 64322589"
+  }
+}
