@@ -252,15 +252,37 @@ export const useOrganizationCreation = () => {
         accept_terms: formData.acceptance.terms,
       };
 
-      // POST to web endpoint (not API)
-      // Web routes handle session-based auth, API routes don't
-      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+      // Use fetch with proper CSRF token handling
+      // Production-safe: retrieves token from meta tag with fallback
+      const getCsrfToken = () => {
+        // Try meta tag first (most reliable)
+        const metaToken = document.querySelector('meta[name="csrf-token"]')?.content;
+        if (metaToken) return metaToken;
 
+        // Fallback: try to extract from cookie (Laravel default is XSRF-TOKEN)
+        const name = 'XSRF-TOKEN';
+        const decodedCookie = decodeURIComponent(document.cookie)
+          .split(';')
+          .map(c => c.trim())
+          .find(c => c.startsWith(name + '='));
+
+        if (decodedCookie) {
+          return decodedCookie.substring(name.length + 1);
+        }
+
+        return null;
+      };
+
+      const csrfToken = getCsrfToken();
       if (!csrfToken) {
-        throw new Error('CSRF token not found. Please refresh the page.');
+        const error = new Error('CSRF token not found. Please refresh the page.');
+        submissionError.value = error.message;
+        trackOrganizationCreationError(error);
+        isSubmitting.value = false;
+        return Promise.reject(error);
       }
 
-      const response = await fetch('/organizations', {
+      return fetch('/organizations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -268,54 +290,77 @@ export const useOrganizationCreation = () => {
           'X-CSRF-TOKEN': csrfToken,
           'X-Requested-With': 'XMLHttpRequest',
         },
-        credentials: 'same-origin', // For web routes with sessions
+        credentials: 'same-origin',
         body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        console.log('Validation errors:', error.errors);
-        // Format error message with specific field errors
-        const errorMessages = Object.entries(error.errors || {})
-          .map(([field, messages]) => `${field}: ${messages.join(', ')}`)
-          .join('\n');
-        throw new Error(errorMessages || error.message || 'Failed to create organization');
-      }
-
-      const result = await response.json();
-
-      // Track success
-      trackOrganizationCreated(payload);
-
-      // Show success message
-      if (window.dispatchEvent) {
-        window.dispatchEvent(new CustomEvent('show-success', {
-          detail: {
-            message: result.message || 'Organisation erfolgreich erstellt!',
-            title: '✅ Erfolg',
-            duration: 5000
+      })
+        .then(response => {
+          if (!response.ok) {
+            // Handle validation errors (422) and other errors
+            return response.json().then(error => {
+              throw error;
+            });
           }
-        }));
-      }
+          return response.json();
+        })
+        .then(result => {
+          // Track success
+          trackOrganizationCreated(payload);
 
-      // Close modal and reset
-      closeModal();
-      resetForm();
+          // Show success message
+          if (window.dispatchEvent) {
+            window.dispatchEvent(new CustomEvent('show-success', {
+              detail: {
+                message: result.message || 'Organisation erfolgreich erstellt!',
+                title: '✅ Erfolg',
+                duration: 5000
+              }
+            }));
+          }
 
-      // Redirect to organization dashboard after 1.5 seconds
-      if (result.organization?.redirect_url) {
-        setTimeout(() => {
-          window.location.href = result.organization.redirect_url;
-        }, 1500);
-      }
+          // Close modal and reset
+          closeModal();
+          resetForm();
 
-      return result;
+          // Redirect to organization dashboard
+          if (result.redirect_url) {
+            setTimeout(() => {
+              window.location.href = result.redirect_url;
+            }, 1500);
+          }
+
+          isSubmitting.value = false;
+          return result;
+        })
+        .catch(error => {
+          console.error('Organization creation error:', error);
+
+          // Format error messages
+          let errorMessage = 'Failed to create organization';
+
+          if (error.errors) {
+            // Validation errors
+            const errorMessages = Object.entries(error.errors)
+              .map(([field, messages]) => {
+                const msg = Array.isArray(messages) ? messages.join(', ') : messages;
+                return `${field}: ${msg}`;
+              })
+              .join('\n');
+            errorMessage = errorMessages;
+          } else if (error.message) {
+            errorMessage = error.message;
+          }
+
+          submissionError.value = errorMessage;
+          trackOrganizationCreationError(error);
+          isSubmitting.value = false;
+
+          throw error;
+        });
     } catch (error) {
       submissionError.value = error.message;
       trackOrganizationCreationError(error);
-      return false;
-    } finally {
       isSubmitting.value = false;
+      return false;
     }
   };
 

@@ -11,10 +11,10 @@
                         </svg>
                     </div>
                     <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                        Vote Verification Successful
+                        {{ page.page_header.title }}
                     </h1>
                     <p class="text-lg text-gray-600">
-                        Below are the voting details for the submitted verification code
+                        {{ page.page_header.subtitle }}
                     </p>
                 </div>
 
@@ -24,10 +24,10 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <h2 class="text-xl md:text-2xl font-bold text-white mb-1">
-                                    Voter Information
+                                    {{ page.voter_information.title }}
                                 </h2>
                                 <p class="text-blue-100">
-                                    {{ vote_data.is_own_vote ? 'Your voting record' : 'Verification result for submitted code' }}
+                                    {{ vote_data.is_own_vote ? page.voter_information.own_vote : page.voter_information.verification_result }}
                                 </p>
                             </div>
                             <div class="hidden md:block">
@@ -45,34 +45,34 @@
                             <!-- Voter Details -->
                             <div class="space-y-4">
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">Voter Name</label>
+                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.voter_name }}</label>
                                     <p class="text-lg font-semibold text-gray-900">{{ vote_data.voter_info.name }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">Voter ID</label>
+                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.voter_id }}</label>
                                     <p class="text-lg font-semibold text-gray-900">{{ vote_data.voter_info.user_id }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">Region</label>
+                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.region }}</label>
                                     <p class="text-lg font-semibold text-gray-900">{{ vote_data.voter_info.region }}</p>
                                 </div>
                             </div>
-                            
+
                             <!-- Vote Details -->
                             <div class="space-y-4">
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">Vote Date</label>
+                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.vote_date }}</label>
                                     <p class="text-lg font-semibold text-gray-900">{{ vote_data.vote_info.voted_at }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">Vote ID</label>
+                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.vote_id }}</label>
                                     <p class="text-lg font-semibold text-gray-900">#{{ vote_data.vote_id }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">Verification Status</label>
+                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.verification_status }}</label>
                                     <div class="flex items-center space-x-2">
                                         <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                                        <span class="text-lg font-semibold text-green-600">Verified</span>
+                                        <span class="text-lg font-semibold text-green-600">{{ page.voter_information.verified }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -83,23 +83,23 @@
                 <!-- Vote Summary Card -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
                     <div class="px-6 py-6 border-b border-gray-100">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Vote Summary</h3>
-                        <p class="text-gray-600">Overview of voting participation</p>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">{{ page.vote_summary.title }}</h3>
+                        <p class="text-gray-600">{{ page.vote_summary.subtitle }}</p>
                     </div>
-                    
+
                     <div class="p-6">
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="text-center p-4 bg-blue-50 rounded-xl">
                                 <div class="text-3xl font-bold text-blue-600 mb-1">{{ vote_data.summary.total_positions }}</div>
-                                <div class="text-sm font-medium text-blue-700">Total Positions</div>
+                                <div class="text-sm font-medium text-blue-700">{{ page.vote_summary.total_positions }}</div>
                             </div>
                             <div class="text-center p-4 bg-green-50 rounded-xl">
                                 <div class="text-3xl font-bold text-green-600 mb-1">{{ vote_data.summary.positions_voted }}</div>
-                                <div class="text-sm font-medium text-green-700">Positions Voted</div>
+                                <div class="text-sm font-medium text-green-700">{{ page.vote_summary.positions_voted }}</div>
                             </div>
                             <div class="text-center p-4 bg-purple-50 rounded-xl">
                                 <div class="text-3xl font-bold text-purple-600 mb-1">{{ vote_data.summary.candidates_selected }}</div>
-                                <div class="text-sm font-medium text-purple-700">Candidates Selected</div>
+                                <div class="text-sm font-medium text-purple-700">{{ page.vote_summary.candidates_selected }}</div>
                             </div>
                         </div>
                     </div>
@@ -113,10 +113,9 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728"></path>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Right to Reject Exercised</h3>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ page.no_vote_option.title }}</h3>
                         <p class="text-lg text-gray-600 max-w-md mx-auto">
-                            This voter chose to exercise their <span class="font-semibold text-red-600">right to reject all candidates</span> 
-                            for all positions in this election.
+                            {{ page.no_vote_option.description }}
                         </p>
                     </div>
                 </div>
@@ -125,8 +124,8 @@
                 <div v-else-if="vote_data.vote_selections && vote_data.vote_selections.length > 0">
                     <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
                         <div class="px-6 py-6 border-b border-gray-100">
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">Vote Selections</h3>
-                            <p class="text-gray-600">Detailed breakdown of all voting choices</p>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">{{ page.vote_selections.title }}</h3>
+                            <p class="text-gray-600">{{ page.vote_selections.subtitle }}</p>
                         </div>
                         
                         <div class="divide-y divide-gray-100">
@@ -146,7 +145,7 @@
                                         </p>
                                     </div>
                                     <div class="text-right">
-                                        <div class="text-sm font-medium text-gray-500">Position ID</div>
+                                        <div class="text-sm font-medium text-gray-500">{{ page.vote_selections.position_id }}</div>
                                         <div class="text-sm text-gray-900">{{ selection.post_id }}</div>
                                     </div>
                                 </div>
@@ -160,8 +159,8 @@
                                             </svg>
                                         </div>
                                         <div>
-                                            <p class="font-medium text-gray-900">No Vote Cast</p>
-                                            <p class="text-sm text-gray-600">Voter chose not to vote for this position</p>
+                                            <p class="font-medium text-gray-900">{{ page.vote_selections.no_vote_cast }}</p>
+                                            <p class="text-sm text-gray-600">{{ page.vote_selections.no_vote_description }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -189,19 +188,19 @@
                                                 
                                                 <div class="grid md:grid-cols-2 gap-4 text-sm">
                                                     <div>
-                                                        <span class="font-medium text-gray-700">Candidate ID:</span>
+                                                        <span class="font-medium text-gray-700">{{ page.vote_selections.candidate_id }}:</span>
                                                         <span class="text-gray-900 ml-1">{{ candidate.candidacy_id }}</span>
                                                     </div>
                                                     <div v-if="candidate.user_info && candidate.user_info.user_id">
-                                                        <span class="font-medium text-gray-700">User ID:</span>
+                                                        <span class="font-medium text-gray-700">{{ page.vote_selections.user_id }}:</span>
                                                         <span class="text-gray-900 ml-1">{{ candidate.user_info.user_id }}</span>
                                                     </div>
                                                     <div v-if="candidate.proposer_name">
-                                                        <span class="font-medium text-gray-700">Proposer:</span>
+                                                        <span class="font-medium text-gray-700">{{ page.vote_selections.proposer }}:</span>
                                                         <span class="text-gray-900 ml-1">{{ candidate.proposer_name }}</span>
                                                     </div>
                                                     <div v-if="candidate.supporter_name">
-                                                        <span class="font-medium text-gray-700">Supporter:</span>
+                                                        <span class="font-medium text-gray-700">{{ page.vote_selections.supporter }}:</span>
                                                         <span class="text-gray-900 ml-1">{{ candidate.supporter_name }}</span>
                                                     </div>
                                                 </div>
@@ -213,7 +212,7 @@
                                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                                     </svg>
-                                                    <span>Selected</span>
+                                                    <span>{{ page.vote_selections.selected }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -229,8 +228,8 @@
                                             </svg>
                                         </div>
                                         <div>
-                                            <p class="font-medium text-gray-900">No Selection Made</p>
-                                            <p class="text-sm text-gray-600">No candidates were selected for this position</p>
+                                            <p class="font-medium text-gray-900">{{ page.vote_selections.no_selection_made }}</p>
+                                            <p class="text-sm text-gray-600">{{ page.vote_selections.no_selection_description }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -247,9 +246,9 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">No Vote Selections Found</h3>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">{{ page.no_vote_data.title }}</h3>
                         <p class="text-gray-600 max-w-md mx-auto">
-                            No voting selections were found for this verification code.
+                            {{ page.no_vote_data.description }}
                         </p>
                     </div>
                 </div>
@@ -263,9 +262,9 @@
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        Verify Another Code
+                        {{ page.action_buttons.verify_another }}
                     </button>
-                    
+
                     <button
                         @click="goToDashboard"
                         class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
@@ -273,7 +272,7 @@
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
-                        Go to Dashboard
+                        {{ page.action_buttons.go_to_dashboard }}
                     </button>
                 </div>
 
@@ -283,7 +282,7 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
-                        <span>This vote record is cryptographically secured and tamper-proof</span>
+                        <span>{{ page.security_notice }}</span>
                     </div>
                 </div>
             </div>
@@ -293,25 +292,69 @@
 
 <script>
 import NrnaLayout from "@/Layouts/ElectionLayout.vue";
+import voteShowDe from '@/locales/pages/Vote/Show/de.json';
+import voteShowEn from '@/locales/pages/Vote/Show/en.json';
+import voteShowNp from '@/locales/pages/Vote/Show/np.json';
 
 export default {
     components: {
         NrnaLayout,
     },
-    
+
     props: {
         vote_data: {
             type: Object,
             required: true
         },
-        
+    },
+
+    data() {
+        return {
+            translations: {
+                de: voteShowDe || {},
+                en: voteShowEn || {},
+                np: voteShowNp || {},
+            },
+        };
+    },
+
+    computed: {
+        currentLocale() {
+            const locale = this.$i18n?.locale || 'en';
+            return ['de', 'en', 'np'].includes(locale) ? locale : 'en';
+        },
+
+        page() {
+            const locale = this.currentLocale;
+            const translation = this.translations[locale] || this.translations.en || {};
+
+            // Ensure we always have the structure we need
+            return {
+                page_header: translation.page_header || {},
+                voter_information: translation.voter_information || {},
+                vote_summary: translation.vote_summary || {},
+                no_vote_option: translation.no_vote_option || {},
+                vote_selections: translation.vote_selections || {},
+                no_vote_data: translation.no_vote_data || {},
+                action_buttons: translation.action_buttons || {},
+                security_notice: translation.security_notice || '',
+            };
+        },
+
+        isOwnVote() {
+            return this.vote_data.is_own_vote;
+        },
+
+        hasVoteSelections() {
+            return this.vote_data.vote_selections && this.vote_data.vote_selections.length > 0;
+        }
     },
 
     methods: {
         goToVerifyAnother() {
             this.$inertia.visit(route('vote.verify_to_show'));
         },
-        
+
         goToDashboard() {
             this.$inertia.visit(route('dashboard'));
         },
@@ -322,36 +365,36 @@ export default {
          */
         getCandidateName(candidate) {
             // Priority 1: Get name from user_info.name (User table)
-            if (candidate.user_info && candidate.user_info.name && 
-                candidate.user_info.name.trim() !== '' && 
+            if (candidate.user_info && candidate.user_info.name &&
+                candidate.user_info.name.trim() !== '' &&
                 candidate.user_info.name !== 'Unknown') {
                 return candidate.user_info.name;
             }
-            
+
             // Priority 2: Use candidacy_name (this now comes from User table via backend)
-            if (candidate.candidacy_name && 
-                candidate.candidacy_name.trim() !== '' && 
+            if (candidate.candidacy_name &&
+                candidate.candidacy_name.trim() !== '' &&
                 !candidate.candidacy_name.includes('Unknown')) {
                 return candidate.candidacy_name;
             }
-            
+
             // Priority 3: Use user_name field (backup in candidacy table)
             if (candidate.user_name && candidate.user_name.trim() !== '') {
                 return candidate.user_name;
             }
-            
+
             // Priority 4: Use name field (backup in candidacy table)
             if (candidate.name && candidate.name.trim() !== '') {
                 return candidate.name;
             }
-            
+
             // Priority 5: Generate from candidacy_id
             if (candidate.candidacy_id) {
                 // Convert "DE_TEST_2025_07" to "Candidate DE TEST 2025 07"
                 const cleaned = candidate.candidacy_id.replace(/[_-]/g, ' ');
                 return `Candidate ${cleaned}`;
             }
-            
+
             return 'Unknown Candidate';
         },
 
@@ -364,16 +407,6 @@ export default {
                 return name.charAt(0).toUpperCase();
             }
             return 'C';
-        }
-    },
-
-    computed: {
-        isOwnVote() {
-            return this.vote_data.is_own_vote;
-        },
-        
-        hasVoteSelections() {
-            return this.vote_data.vote_selections && this.vote_data.vote_selections.length > 0;
         }
     },
 

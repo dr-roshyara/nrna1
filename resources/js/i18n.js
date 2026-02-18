@@ -3,6 +3,11 @@ import de from './locales/de.json';
 import en from './locales/en.json';
 import np from './locales/np.json';
 
+// Import common translations
+import commonDe from './locales/common/de.json';
+import commonEn from './locales/common/en.json';
+import commonNp from './locales/common/np.json';
+
 // Import page-specific translations
 import votingStartDe from './locales/pages/voting-start/de.json';
 import votingStartEn from './locales/pages/voting-start/en.json';
@@ -127,6 +132,7 @@ const initialLocale = getInitialLocale();
 const messages = {
   de: {
     ...de,
+    ...commonDe,
     organization: organizationDe,
     pages: {
       'voting-start': votingStartDe,
@@ -155,6 +161,7 @@ const messages = {
   },
   en: {
     ...en,
+    ...commonEn,
     organization: organizationEn,
     pages: {
       'voting-start': votingStartEn,
@@ -183,6 +190,7 @@ const messages = {
   },
   np: {
     ...np,
+    ...commonNp,
     organization: organizationNp,
     pages: {
       'voting-start': votingStartNp,

@@ -1,0 +1,53 @@
+{
+  "page_header": {
+    "icon": "✓",
+    "title": "Abstimmung erfolgreich verifiziert",
+    "subtitle": "Unten finden Sie die Abstimmungsdetails für den eingereichten Überprüfungscode"
+  },
+  "voter_information": {
+    "title": "Wählerin/Wählerdaten",
+    "own_vote": "Ihre Abstimmungsaufzeichnung",
+    "verification_result": "Überprüfungsergebnis für eingereichten Code",
+    "voter_name": "Wählername",
+    "voter_id": "Wähler-ID",
+    "region": "Region",
+    "vote_date": "Abstimmungsdatum",
+    "vote_id": "Abstimmungs-ID",
+    "verification_status": "Überprüfungsstatus",
+    "verified": "Verifiziert"
+  },
+  "vote_summary": {
+    "title": "Abstimmungszusammenfassung",
+    "subtitle": "Übersicht der Abstimmungsbeteiligung",
+    "total_positions": "Gesamtanzahl Positionen",
+    "positions_voted": "Positionen mit Abstimmung",
+    "candidates_selected": "Kandidaten ausgewählt"
+  },
+  "no_vote_option": {
+    "title": "Ablehnungsrecht ausgeübt",
+    "description": "Dieser Wähler hat sein Recht ausgeübt, alle Kandidaten für alle Positionen bei dieser Wahl abzulehnen."
+  },
+  "vote_selections": {
+    "title": "Abstimmungsauswahlen",
+    "subtitle": "Detaillierte Aufschlüsselung aller Abstimmungsentscheidungen",
+    "position_id": "Positions-ID",
+    "no_vote_cast": "Keine Abstimmung abgegeben",
+    "no_vote_description": "Wähler entschied sich, nicht für diese Position abzustimmen",
+    "candidate_id": "Kandidaten-ID",
+    "user_id": "Benutzer-ID",
+    "proposer": "Antragsteller",
+    "supporter": "Unterstützer",
+    "selected": "Ausgewählt",
+    "no_selection_made": "Keine Auswahl getroffen",
+    "no_selection_description": "Für diese Position wurden keine Kandidaten ausgewählt"
+  },
+  "no_vote_data": {
+    "title": "Keine Abstimmungsauswahlen gefunden",
+    "description": "Für diesen Überprüfungscode wurden keine Abstimmungsauswahlen gefunden."
+  },
+  "action_buttons": {
+    "verify_another": "Anderen Code überprüfen",
+    "go_to_dashboard": "Zum Dashboard gehen"
+  },
+  "security_notice": "Dieser Abstimmungsdatensatz ist kryptografisch gesichert und manipulationssicher"
+}

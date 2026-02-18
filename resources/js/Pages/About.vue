@@ -147,8 +147,8 @@
           <p class="text-lg text-gray-600 mb-8">
             {{ $t('about.contact_text') }}
           </p>
-          <a :href="`mailto:${$t('support.email_address').replace(/\u0040/g, '@')}`" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">
-            {{ $t('support.email_address').replace(/\u0040/g, '@') }}
+          <a :href="`mailto:${supportEmail}`" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">
+            {{ supportEmail }}
           </a>
         </div>
       </div>
@@ -223,6 +223,14 @@ export default {
      */
     supportedOrgsList() {
       return this.aboutContent.supported_organizations || []
+    },
+
+    /**
+     * Get decoded support email address
+     */
+    supportEmail() {
+      const email = this.$t('support.email_address')
+      return email.replace(/&#64;/g, '@')
     },
   },
 

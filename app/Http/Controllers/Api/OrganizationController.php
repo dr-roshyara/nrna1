@@ -83,12 +83,12 @@ class OrganizationController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Organisation erfolgreich erstellt!',
+            'redirect_url' => route('organizations.show', $organization->slug),
             'organization' => [
                 'id' => $organization->id,
                 'name' => $organization->name,
                 'email' => $organization->email,
                 'slug' => $organization->slug,
-                'redirect_url' => route('organizations.show', $organization->slug),
             ]
         ], 201);
     }

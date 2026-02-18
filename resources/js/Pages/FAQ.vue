@@ -146,10 +146,10 @@
           Still have questions? Our team is ready to help you get started with secure digital voting.
         </p>
         <a
-          :href="`mailto:${$t('support.email_address').replace(/\u0040/g, '@')}`"
+          :href="`mailto:${supportEmail}`"
           class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition"
         >
-          {{ $t('support.email_address').replace(/\u0040/g, '@') }}
+          {{ supportEmail }}
         </a>
       </div>
     </section>
@@ -254,6 +254,14 @@ export default {
       }
 
       return filtered
+    },
+
+    /**
+     * Get decoded support email address
+     */
+    supportEmail() {
+      const email = this.$t('support.email_address')
+      return email.replace(/&#64;/g, '@')
     },
   },
 

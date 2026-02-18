@@ -1,0 +1,53 @@
+{
+  "page_header": {
+    "icon": "✓",
+    "title": "मतदान सफलतापूर्वक सत्यापित | Vote Verification Successful",
+    "subtitle": "तलको तालिकामा प्रस्तुत गरिएको सत्यापन कोडको लागि मतदानको विवरण छ | Below are the voting details for the submitted verification code"
+  },
+  "voter_information": {
+    "title": "मतदाता जानकारी | Voter Information",
+    "own_vote": "आपको मतदानको रेकर्ड | Your voting record",
+    "verification_result": "प्रस्तुत गरिएको कोडको लागि सत्यापन परिणाम | Verification result for submitted code",
+    "voter_name": "मतदाताको नाम | Voter Name",
+    "voter_id": "मतदाता आईडी | Voter ID",
+    "region": "क्षेत्र | Region",
+    "vote_date": "मतदान मिति | Vote Date",
+    "vote_id": "मतदान आईडी | Vote ID",
+    "verification_status": "सत्यापन स्थिति | Verification Status",
+    "verified": "सत्यापित | Verified"
+  },
+  "vote_summary": {
+    "title": "मतदान सारांश | Vote Summary",
+    "subtitle": "मतदान भागीदारीको अवलोकन | Overview of voting participation",
+    "total_positions": "कुल पद | Total Positions",
+    "positions_voted": "मतदान गरिएको पद | Positions Voted",
+    "candidates_selected": "चयन गरिएका उम्मेदवार | Candidates Selected"
+  },
+  "no_vote_option": {
+    "title": "मतदान अस्वीकार गर्ने अधिकार प्रयोग गरिएको | Right to Reject Exercised",
+    "description": "यो मतदाताले यो चुनावमा सबै पदको लागि सबै उम्मेदवारहरूलाई अस्वीकार गर्ने अधिकार प्रयोग गरेको छ। | This voter chose to exercise their right to reject all candidates for all positions in this election."
+  },
+  "vote_selections": {
+    "title": "मतदान छनोट | Vote Selections",
+    "subtitle": "सबै मतदान निर्णयहरूको विस्तृत विवरण | Detailed breakdown of all voting choices",
+    "position_id": "पद आईडी | Position ID",
+    "no_vote_cast": "कुनै मतदान दिइएको छैन | No Vote Cast",
+    "no_vote_description": "मतदाताले यस पदको लागि मतदान गर्न नरोजेको | Voter chose not to vote for this position",
+    "candidate_id": "उम्मेदवार आईडी | Candidate ID",
+    "user_id": "प्रयोगकर्ता आईडी | User ID",
+    "proposer": "प्रस्तावक | Proposer",
+    "supporter": "समर्थक | Supporter",
+    "selected": "चयन गरिएको | Selected",
+    "no_selection_made": "कुनै छनोट गरिएको छैन | No Selection Made",
+    "no_selection_description": "यस पदको लागि कुनै उम्मेदवार चयन गरिएको छैन | No candidates were selected for this position"
+  },
+  "no_vote_data": {
+    "title": "कुनै मतदान छनोट फेला परेको छैन | No Vote Selections Found",
+    "description": "यस सत्यापन कोडको लागि कुनै मतदान छनोट फेला परेको छैन। | No voting selections were found for this verification code."
+  },
+  "action_buttons": {
+    "verify_another": "अर्को कोड सत्यापन गर्नुहोस् | Verify Another Code",
+    "go_to_dashboard": "ड्यासबोर्डमा जानुहोस् | Go to Dashboard"
+  },
+  "security_notice": "यो मतदान रेकर्ड क्रिप्टोग्राफिक रूपमा सुरक्षित र छेडछाड प्रतिरोधी छ | This vote record is cryptographically secured and tamper-proof"
+}

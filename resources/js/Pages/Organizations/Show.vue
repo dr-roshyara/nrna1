@@ -111,8 +111,8 @@
                 </svg>
                 <div>
                   <p class="text-sm font-medium text-gray-600">{{ $t('support.email') }}:</p>
-                  <a :href="`mailto:${$t('support.email_address')}`" class="text-blue-600 hover:text-blue-700 font-semibold">
-                    {{ $t('support.email_address') }}
+                  <a :href="`mailto:${supportEmailAddress}`" class="text-blue-600 hover:text-blue-700 font-semibold">
+                    {{ supportEmailAddress }}
                   </a>
                 </div>
               </div>
@@ -147,12 +147,22 @@ import ElectionLayout from '@/Layouts/ElectionLayout.vue';
 import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue';
 import { useI18n } from 'vue-i18n';
 import { useMeta } from '@/composables/useMeta';
+import { computed } from 'vue';
 
 const { t } = useI18n();
 
 const props = defineProps({
   organization: Object,
   stats: Object,
+});
+
+/**
+ * Decode support email address
+ * Replaces HTML entity &#64; with @ to avoid translation system issues
+ */
+const supportEmailAddress = computed(() => {
+  const email = t('support.email_address');
+  return email.replace(/&#64;/g, '@');
 });
 
 /**

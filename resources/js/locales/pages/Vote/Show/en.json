@@ -1,0 +1,53 @@
+{
+  "page_header": {
+    "icon": "✓",
+    "title": "Vote Verification Successful",
+    "subtitle": "Below are the voting details for the submitted verification code"
+  },
+  "voter_information": {
+    "title": "Voter Information",
+    "own_vote": "Your voting record",
+    "verification_result": "Verification result for submitted code",
+    "voter_name": "Voter Name",
+    "voter_id": "Voter ID",
+    "region": "Region",
+    "vote_date": "Vote Date",
+    "vote_id": "Vote ID",
+    "verification_status": "Verification Status",
+    "verified": "Verified"
+  },
+  "vote_summary": {
+    "title": "Vote Summary",
+    "subtitle": "Overview of voting participation",
+    "total_positions": "Total Positions",
+    "positions_voted": "Positions Voted",
+    "candidates_selected": "Candidates Selected"
+  },
+  "no_vote_option": {
+    "title": "Right to Reject Exercised",
+    "description": "This voter chose to exercise their right to reject all candidates for all positions in this election."
+  },
+  "vote_selections": {
+    "title": "Vote Selections",
+    "subtitle": "Detailed breakdown of all voting choices",
+    "position_id": "Position ID",
+    "no_vote_cast": "No Vote Cast",
+    "no_vote_description": "Voter chose not to vote for this position",
+    "candidate_id": "Candidate ID",
+    "user_id": "User ID",
+    "proposer": "Proposer",
+    "supporter": "Supporter",
+    "selected": "Selected",
+    "no_selection_made": "No Selection Made",
+    "no_selection_description": "No candidates were selected for this position"
+  },
+  "no_vote_data": {
+    "title": "No Vote Selections Found",
+    "description": "No voting selections were found for this verification code."
+  },
+  "action_buttons": {
+    "verify_another": "Verify Another Code",
+    "go_to_dashboard": "Go to Dashboard"
+  },
+  "security_notice": "This vote record is cryptographically secured and tamper-proof"
+}

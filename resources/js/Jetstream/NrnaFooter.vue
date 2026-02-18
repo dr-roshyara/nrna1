@@ -115,8 +115,8 @@
                                 <p class="text-purple-300 text-sm">
                                     {{ language === 'de' ? 'E-Mail:' : 'Email:' }}
                                 </p>
-                                <a :href="`mailto:${$t('support.email_address').replace(/\u0040/g, '@')}`" class="text-purple-200 text-sm hover:text-white transition-colors duration-200">
-                                    {{ $t('support.email_address').replace(/\u0040/g, '@') }}
+                                <a :href="`mailto:${supportEmail}`" class="text-purple-200 text-sm hover:text-white transition-colors duration-200">
+                                    {{ supportEmail }}
                                 </a>
                             </div>
                         </div>
@@ -261,7 +261,14 @@ export default {
             currentYear: new Date().getFullYear()
         };
     },
-    
+
+    computed: {
+        supportEmail() {
+            const email = this.$t('support.email_address')
+            return email.replace(/&#64;/g, '@')
+        }
+    },
+
     methods: {
         toggleLanguage() {
             const newLanguage = this.language === 'en' ? 'de' : 'en';

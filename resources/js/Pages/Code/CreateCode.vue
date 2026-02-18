@@ -7,7 +7,7 @@
             </div>
         </div>
 
-        <div class="mx-2 mt-4 flex w-full flex-col justify-center p-2">
+        <div class="mt-4 flex w-full flex-col justify-center">
     <!-- IP Mismatch Error Display -->
     <div v-if="$page.props.errors.ip_mismatch" class="bg-amber-50 border-l-4 border-amber-500 p-6 mb-6 rounded-lg shadow-md max-w-3xl mx-auto" role="alert" aria-live="polite">
         <div class="flex">
@@ -66,7 +66,7 @@
 
     <!-- Form - Enhanced styling with character indicators -->
     <form @submit.prevent="submit" class="mx-auto mt-6 w-full text-center">
-        <div class="mx-2 bg-white rounded-lg shadow-lg border border-gray-200 px-6 py-8 max-w-2xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg border border-gray-200 px-6 py-8 max-w-2xl mx-auto">
             <!-- Code Input -->
             <div class="mb-8">
                 <label for="voting_code" class="block mb-6">
