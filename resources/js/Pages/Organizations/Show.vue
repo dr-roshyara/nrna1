@@ -144,7 +144,7 @@
 
 <script setup>
 import ElectionLayout from '@/Layouts/ElectionLayout.vue';
-import BreadcrumbSchema from '@/components/BreadcrumbSchema.vue';
+import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue';
 import { useI18n } from 'vue-i18n';
 import { useMeta } from '@/composables/useMeta';
 

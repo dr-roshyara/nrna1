@@ -100,13 +100,13 @@
             {{ $t('navigation.home') }}
           </a>
           <a
-            href="#about"
+            href="/about"
             class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded transition-colors duration-200 text-sm"
           >
             {{ $t('navigation.about') }}
           </a>
           <a
-            href="#faq"
+            href="/faq"
             class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded transition-colors duration-200 text-sm"
           >
             {{ $t('navigation.faq') }}
@@ -143,14 +143,14 @@
             🏠 {{ $t('navigation.home') }}
           </a>
           <a
-            href="#about"
+            href="/about"
             @click="showMobileMenu = false"
             class="block px-4 py-3 text-white hover:bg-white/20 active:bg-white/30 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             ℹ️ {{ $t('navigation.about') }}
           </a>
           <a
-            href="#faq"
+            href="/faq"
             @click="showMobileMenu = false"
             class="block px-4 py-3 text-white hover:bg-white/20 active:bg-white/30 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >

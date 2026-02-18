@@ -43,7 +43,7 @@
 import Dashboard from "@/Pages/Dashboard";
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
 import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
-import BreadcrumbSchema from "@/components/BreadcrumbSchema.vue";
+import BreadcrumbSchema from "@/Components/BreadcrumbSchema.vue";
 
 // Import Welcome section components
 import HeroSection from "@/Components/Welcome/HeroSection.vue";

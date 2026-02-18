@@ -211,7 +211,7 @@ import pricingDe from '../locales/pages/pricing/de.json';
 import pricingEn from '../locales/pages/pricing/en.json';
 import pricingNp from '../locales/pages/pricing/np.json';
 import { useMeta } from '@/composables/useMeta';
-import BreadcrumbSchema from '@/components/BreadcrumbSchema.vue';
+import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue';
 
 export default {
   name: 'Pricing',

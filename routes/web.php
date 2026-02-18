@@ -118,6 +118,16 @@ Route::get('/pricing', function () {
     return Inertia::render('Pricing');
 })->name('pricing');
 
+// About page
+Route::get('/about', function () {
+    return Inertia::render('About');
+})->name('about');
+
+// FAQ page
+Route::get('/faq', function () {
+    return Inertia::render('FAQ');
+})->name('faq');
+
 // Route::get('/', function () {
 //     if( auth()->user()!=null ){ return Inertia::render('Dashboard/MainDashboard'); }
 

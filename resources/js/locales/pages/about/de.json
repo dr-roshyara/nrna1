@@ -1,0 +1,69 @@
+{
+  "about": {
+    "title": "Über Public Digit",
+    "subtitle": "Demokratie durch sichere digitale Wahlen stärken",
+    "mission_title": "Unsere Mission",
+    "mission_text": "Public Digit widmet sich der Bereitstellung sicherer, transparenter und zugänglicher Wahlmöglichkeiten für Organisationen, NGOs und Diaspora-Gemeinschaften weltweit. Wir glauben an die Kraft der digitalen Demokratie bei gleichzeitiger Einhaltung höchster Sicherheits-, Datenschutz- und Compliance-Standards.",
+    "vision_title": "Unsere Vision",
+    "vision_text": "Eine Welt, in der jede Organisation, unabhängig von Größe oder Standort, faire, transparente und sichere Wahlen mit modernster Technologie durchführen kann. Wir stellen uns digitale Wahlen als Standard vor, der die Partizipation erhöht, Kosten senkt und demokratische Prozesse verbessert.",
+    "why_public_digit_title": "Warum Public Digit?",
+    "why_public_digit": [
+      {
+        "title": "Maximale Sicherheit",
+        "description": "DSGVO-konform, BSI IT-Grundschutz zertifiziert und mit militärgrader Ende-zu-Ende-Verschlüsselung zum Schutz jeder Stimme."
+      },
+      {
+        "title": "Vollständige Transparenz",
+        "description": "Vollständige Audit-Trails, Wählererverifikation und öffentliche Ergebnisüberprüfung gewährleisten totale Transparenz."
+      },
+      {
+        "title": "Globale Reichweite",
+        "description": "Unterstützung für Diaspora-Gemeinschaften weltweit mit Mehrsprachigkeit und Multi-Zeitzonen-Funktionen."
+      },
+      {
+        "title": "Benutzerfreundlich",
+        "description": "Intuitive Benutzeroberfläche für Administrator und Wähler, kein technisches Wissen erforderlich."
+      },
+      {
+        "title": "Kostengünstig",
+        "description": "Erheblich niedrigere Wahlkosten im Vergleich zu physischen Wahlen ohne geografische Grenzen."
+      },
+      {
+        "title": "Bewährte Technologie",
+        "description": "Bewährte Plattform mit tausenden erfolgreichen Wahlen in Europa."
+      }
+    ],
+    "how_it_works_title": "So funktioniert es",
+    "how_it_works_text": "Public Digit vereinfacht den gesamten Wahlprozess von der Einrichtung bis zu den Ergebnissen. Organisationen können Wahlen erstellen, Wählerlisten verwalten, Wahloptionen konfigurieren und Wahlen durchführen.",
+    "security_title": "Sicherheit & Compliance",
+    "security_features": [
+      "DSGVO Artikel 32 konform",
+      "BSI IT-Grundschutz zertifiziert",
+      "Ende-zu-Ende-Verschlüsselung",
+      "Datenspeicherung in Deutschland",
+      "Multi-Faktor-Authentifizierung",
+      "Umfassende Audit-Trails",
+      "Regelmäßige Sicherheitsprüfungen",
+      "ISO 27001 ausgerichtet"
+    ],
+    "supported_organizations_title": "Organisationen die wir unterstützen",
+    "supported_organizations": [
+      "Diaspora-Gemeinschaften & Kulturvereine",
+      "Politische & Bürgerbewegungen",
+      "NGOs & Humanitäre Organisationen",
+      "Berufsverbände & Gewerkschaften",
+      "Bildungseinrichtungen",
+      "Religiöse Organisationen",
+      "Genossenschaften & Netzwerke",
+      "Unternehmensgruppen"
+    ],
+    "technology_title": "Technologie-Stack",
+    "technology_text": "Public Digit ist auf moderner, skalierbarer Technologie aufgebaut. Wir verwenden Laravel für das Backend, Vue 3 für das Frontend und PostgreSQL für Datenpersistenz. Unsere Infrastruktur wird in Deutschland gehostet.",
+    "team_title": "Unser Team",
+    "team_text": "Public Digit wird von einem engagierten Team von Sicherheitsexperten, Softwareentwicklern und Demokratie-Spezialisten entwickelt.",
+    "contact_title": "Kontaktieren Sie uns",
+    "contact_text": "Interessiert an Public Digit? Wir helfen gerne mit Demonstrationen und technischen Beratungen.",
+    "testimonial_title": "Was unsere Nutzer sagen",
+    "testimonial_text": "Public Digit hat verändert, wie unsere Organisation Wahlen durchführt. Der Prozess ist sicher, transparent und unsere Mitglieder lieben die Bequemlichkeit."
+  }
+}
