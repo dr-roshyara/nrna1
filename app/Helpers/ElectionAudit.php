@@ -8,125 +8,111 @@ use Carbon\Carbon;
 /**
  * Election Audit & Logging Helpers
  *
- * Provides voter activity logging for the election voting workflow.
- * Logs are written to per-person activity files for compliance and auditing.
+ * Provides per-person voter activity logging organized by organisation and election.
+ *
+ * Log Structure:
+ * storage/logs/organisation_{organisation_id}/{election_name}/{user_id}_{user_name}.log
+ *
+ * Example:
+ * storage/logs/organisation_null/demo_election/10_nab_roshyara.log
+ * storage/logs/organisation_1/presidential_2026/42_john_doe.log
+ *
+ * Each file contains the complete activity trail for one person in one election.
  */
 
 /**
- * Log voter activity to the voting_audit channel
+ * Log voter activity to per-person activity file
  *
- * Logs per-person activity with full context for compliance auditing.
- * Used for tracking voting workflow steps, errors, and security events.
+ * Writes detailed activity logs to organisation/election/person structure
+ * for easy auditing and compliance verification.
  *
- * @param string $action The action being logged (e.g., 'code_verification_started', 'vote_submitted')
- * @param array $context Additional context data
+ * @param string $action The action being logged (e.g., 'vote_submitted', 'code_verification_started')
+ * @param array $context Additional context data:
+ *     - user_id: The user's ID (required for filename)
+ *     - user_name: The user's name for filename (optional, uses 'unknown' if missing)
+ *     - election_id: Election ID
+ *     - election_name: Election name for directory (required)
+ *     - organisation_id: Organisation ID (optional, uses session value if not provided)
  * @return void
  *
  * @example
- * voter_log('code_verification_started', [
- *     'election_id' => $election->id,
- *     'voter_slug' => $voter->slug,
- *     'ip_address' => request()->ip(),
- * ]);
- *
- * @example
  * voter_log('vote_submitted', [
- *     'election_id' => $election->id,
- *     'voter_slug' => $voter->slug,
- *     'candidate_id' => $candidate->id,
- *     'organisation_id' => session('current_organisation_id'),
+ *     'user_id' => 10,
+ *     'user_name' => 'Nab Roshyara',
+ *     'election_id' => 1,
+ *     'election_name' => 'demo_election',
+ *     'candidate_id' => 5,
+ *     'organisation_id' => null,
  * ]);
+ * // Creates: storage/logs/organisation_null/demo_election/10_nab_roshyara.log
  */
 function voter_log(string $action, array $context = []): void
 {
     try {
-        // Get voter identifier from context or session
-        $voterId = $context['voter_slug'] ?? $context['user_id'] ?? null;
-        $electionId = $context['election_id'] ?? null;
-        $organisationId = $context['organisation_id'] ?? session('current_organisation_id');
+        // Extract identifiers
+        $userId = $context['user_id'] ?? auth()->id() ?? 'unknown';
+        $userName = $context['user_name'] ?? auth()->user()->name ?? 'unknown';
+        $electionId = $context['election_id'] ?? 'unknown';
+        $electionName = $context['election_name'] ?? 'election';
+        $organisationId = $context['organisation_id'] ?? session('current_organisation_id') ?? 'null';
 
-        // Build base log context
+        // Sanitize names for filesystem safety
+        $safeUserName = preg_replace('/[^a-zA-Z0-9_-]/', '_', strtolower($userName));
+        $safeElectionName = preg_replace('/[^a-zA-Z0-9_-]/', '_', strtolower($electionName));
+
+        // Build directory path: storage/logs/organisation_{org}/{election_name}/
+        $logDir = storage_path(
+            "logs/organisation_{$organisationId}/" .
+            "{$safeElectionName}"
+        );
+
+        // Create directory if not exists
+        if (!is_dir($logDir)) {
+            @mkdir($logDir, 0755, true);
+        }
+
+        // Build person-specific log filename: {user_id}_{user_name}.log
+        $logFile = "{$logDir}/{$userId}_{$safeUserName}.log";
+
+        // Build log entry with all context
         $logContext = array_merge([
-            'timestamp' => Carbon::now()->toIso8601String(),
+            'timestamp' => now()->format('Y-m-d H:i:s'),
             'action' => $action,
-            'ip_address' => request()->ip(),
-            'user_agent' => substr(request()->userAgent() ?? 'unknown', 0, 255),
+            'user_id' => $userId,
+            'election_id' => $electionId,
+            'organisation_id' => $organisationId,
+            'ip' => request()->ip(),
+            'url' => request()->path(),
         ], $context);
 
-        // Determine logging level based on action type
-        $level = _getLogLevel($action);
+        // Format log entry: [timestamp] ACTION {"context":json}
+        $entry = sprintf(
+            "[%s] %s %s\n",
+            $logContext['timestamp'],
+            strtoupper($action),
+            json_encode($logContext, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)
+        );
 
-        // Log to voting_audit channel with full context
-        Log::channel('voting_audit')->log($level, "Voter Activity: {$action}", $logContext);
+        // Write to person-specific file (atomic write with lock)
+        file_put_contents($logFile, $entry, FILE_APPEND | LOCK_EX);
 
-        // If it's a security-relevant action, also log to voting_security
-        if (_isSecurityRelevant($action)) {
-            Log::channel('voting_security')->warning("Security Event: {$action}", $logContext);
-        }
+        // Also log to central voting_audit for system-wide monitoring
+        Log::channel('voting_audit')->info("Voter Activity: {$action}", [
+            'user_id' => $userId,
+            'user_name' => $userName,
+            'election_id' => $electionId,
+            'organisation_id' => $organisationId,
+            'log_file' => "organisation_{$organisationId}/{$safeElectionName}/{$userId}_{$safeUserName}.log",
+        ]);
 
     } catch (\Exception $e) {
         // Fail gracefully - don't break voting flow if logging fails
-        \Log::error('Failed to log voter activity', [
+        \Log::error('Failed to write voter activity log', [
             'error' => $e->getMessage(),
             'action' => $action,
+            'context' => $context ?? [],
         ]);
     }
-}
-
-/**
- * Determine log level for an action (internal helper)
- *
- * @param string $action
- * @return string
- */
-function _getLogLevel(string $action): string
-{
-    $errorActions = [
-        'code_verification_failed',
-        'invalid_code_attempt',
-        'rate_limit_exceeded',
-        'duplicate_vote_attempt',
-        'election_ended',
-    ];
-
-    $warningActions = [
-        'code_verification_started',
-        'agreement_accepted',
-        'candidate_selected',
-        'preview_shown',
-    ];
-
-    if (in_array($action, $errorActions)) {
-        return 'error';
-    }
-
-    if (in_array($action, $warningActions)) {
-        return 'warning';
-    }
-
-    // Default to info for successful actions
-    return 'info';
-}
-
-/**
- * Check if an action is security-relevant (internal helper)
- *
- * Security-relevant actions are logged to both audit and security channels
- *
- * @param string $action
- * @return bool
- */
-function _isSecurityRelevant(string $action): bool
-{
-    $securityActions = [
-        'invalid_code_attempt',
-        'rate_limit_exceeded',
-        'duplicate_vote_attempt',
-        'vote_submitted', // Important for compliance
-        'election_ended_during_voting',
-    ];
-
-    return in_array($action, $securityActions);
 }
 
 /**
