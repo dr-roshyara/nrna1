@@ -37,7 +37,9 @@ class EnsureVoterStepOrder
 
         // ✅ FIX: Use VoterSlug's election_id directly (don't wait for election middleware)
         // This avoids the middleware ordering issue - we get the election from the slug itself
-        $election = \App\Models\Election::find($vslug->election_id);
+        // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
+        // to ALL users regardless of organisation context (organisation_id=NULL)
+        $election = \App\Models\Election::withoutGlobalScopes()->find($vslug->election_id);
         if (!$election) {
             abort(403, 'Election not found for this voting link.');
         }

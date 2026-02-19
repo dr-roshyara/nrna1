@@ -83,14 +83,26 @@ class VoteController extends Controller
         // Second, check if voter slug has election_id
         $voterSlug = $request->attributes->get('voter_slug');
         if ($voterSlug && $voterSlug->election_id) {
-            $election = Election::find($voterSlug->election_id);
+            // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
+            // to ALL users regardless of organisation context (organisation_id=NULL)
+            $election = Election::withoutGlobalScopes()->find($voterSlug->election_id);
             if ($election) {
                 return $election;
             }
         }
 
         // Third, default to first real election
-        return Election::where('type', 'real')->first();
+        $election = Election::where('type', 'real')->first();
+
+        // If no real election found, try any active election (including demo)
+        if (!$election) {
+            $election = Election::withoutGlobalScopes()
+                ->where('is_active', true)
+                ->orderBy('id')
+                ->first();
+        }
+
+        return $election;
     }
 
     /**

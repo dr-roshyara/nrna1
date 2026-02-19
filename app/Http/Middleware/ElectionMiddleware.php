@@ -63,8 +63,11 @@ class ElectionMiddleware
                 ->first();
 
             // If no real election found, try any active election
+            // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
+            // to ALL users regardless of organisation context (organisation_id=NULL)
             if (!$election) {
-                $election = Election::where('is_active', true)
+                $election = Election::withoutGlobalScopes()
+                    ->where('is_active', true)
                     ->orderBy('id')
                     ->first();
             }
