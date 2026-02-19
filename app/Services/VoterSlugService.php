@@ -25,7 +25,10 @@ class VoterSlugService
                     $electionId = $sessionElectionId;
                 } else {
                     // Default to demo election for testing
-                    $election = \App\Models\Election::where('type', 'demo')->first();
+                    // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
+                    // to ALL users regardless of organisation context
+                    $election = \App\Models\Election::withoutGlobalScopes()
+                        ->where('type', 'demo')->first();
                     $electionId = $election ? $election->id : null;
                 }
             }

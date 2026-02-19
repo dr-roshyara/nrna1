@@ -62,6 +62,121 @@ abstract class BaseVote extends Model
     ];
 
     /**
+     * Model Lifecycle Hooks
+     *
+     * Phase 2: Model-Level Validation (Soft Boundary)
+     * Validates real votes to enforce organisation_id consistency
+     *
+     * CRITICAL RULES FOR REAL VOTES:
+     * 1. organisation_id MUST NOT be NULL
+     * 2. organisation_id MUST match election's organisation_id
+     * 3. election_id MUST reference a valid election
+     */
+    protected static function booted()
+    {
+        static::creating(function ($vote) {
+            // Skip validation for demo votes (they have separate validation)
+            // Check if this is a Vote instance (real) vs DemoVote instance (demo)
+            if (get_class($vote) !== Vote::class) {
+                return;
+            }
+
+            // CRITICAL 1: organisation_id MUST NOT be null for real votes
+            if (is_null($vote->organisation_id)) {
+                \Log::channel('voting_security')->warning('Real vote rejected: NULL organisation_id', [
+                    'reason' => 'Organisation context is required for real votes',
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
+
+                throw new \App\Exceptions\InvalidRealVoteException(
+                    'Real votes require a valid organisation context (organisation_id cannot be NULL)',
+                    ['reason' => 'null_organisation_id']
+                );
+            }
+
+            // CRITICAL 2: election_id MUST reference a valid election
+            if (is_null($vote->election_id)) {
+                \Log::channel('voting_security')->warning('Real vote rejected: NULL election_id', [
+                    'reason' => 'Election reference is required',
+                    'organisation_id' => $vote->organisation_id,
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
+
+                throw new \App\Exceptions\InvalidRealVoteException(
+                    'Real votes require a valid election (election_id cannot be NULL)',
+                    ['reason' => 'null_election_id', 'organisation_id' => $vote->organisation_id]
+                );
+            }
+
+            // CRITICAL 3: election must belong to the SAME organisation
+            $election = Election::withoutGlobalScopes()->find($vote->election_id);
+
+            if (!$election) {
+                \Log::channel('voting_security')->warning('Real vote rejected: Invalid election_id', [
+                    'election_id' => $vote->election_id,
+                    'organisation_id' => $vote->organisation_id,
+                    'reason' => 'Election not found',
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
+
+                throw new \App\Exceptions\InvalidRealVoteException(
+                    "Election (id: {$vote->election_id}) not found",
+                    ['election_id' => $vote->election_id, 'reason' => 'election_not_found']
+                );
+            }
+
+            // Verify election type is 'real' (not 'demo')
+            if ($election->type !== 'real') {
+                \Log::channel('voting_security')->warning('Real vote rejected: Election is not real type', [
+                    'election_id' => $vote->election_id,
+                    'election_type' => $election->type,
+                    'organisation_id' => $vote->organisation_id,
+                    'reason' => 'Attempt to vote in non-real election',
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
+
+                throw new \App\Exceptions\InvalidRealVoteException(
+                    "Election (id: {$vote->election_id}) is not a real election (type: {$election->type})",
+                    ['election_id' => $vote->election_id, 'election_type' => $election->type, 'reason' => 'not_real_election']
+                );
+            }
+
+            // Verify organisation_id matches
+            if ($election->organisation_id !== $vote->organisation_id) {
+                \Log::channel('voting_security')->warning('Real vote rejected: Organisation mismatch', [
+                    'vote_organisation_id' => $vote->organisation_id,
+                    'election_organisation_id' => $election->organisation_id,
+                    'election_id' => $vote->election_id,
+                    'reason' => 'Vote organisation does not match election organisation',
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
+
+                throw new \App\Exceptions\OrganisationMismatchException(
+                    "Vote organisation_id ({$vote->organisation_id}) does not match election organisation_id ({$election->organisation_id})",
+                    [
+                        'vote_organisation_id' => $vote->organisation_id,
+                        'election_organisation_id' => $election->organisation_id,
+                        'election_id' => $vote->election_id,
+                    ]
+                );
+            }
+
+            // ✅ All validations passed - log success
+            \Log::channel('voting_security')->info('Real vote passed model validation', [
+                'election_id' => $vote->election_id,
+                'organisation_id' => $vote->organisation_id,
+                'timestamp' => now(),
+                'ip' => request()->ip(),
+            ]);
+        });
+    }
+
+    /**
      * Get the user who cast this vote
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

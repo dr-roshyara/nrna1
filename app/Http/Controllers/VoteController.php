@@ -1219,6 +1219,51 @@ private function has_valid_selections($selections)
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
 
+        // PHASE 3 VALIDATION: Election Type Check
+        if ($election->type !== 'real') {
+            DB::rollBack();
+            \Log::channel('voting_security')->warning('Attempted vote submission to non-real election', [
+                'election_id' => $election->id,
+                'election_type' => $election->type,
+                'user_id' => $auth_user->id,
+                'organisation_id' => $auth_user->organisation_id,
+                'reason' => 'election_not_real_type',
+                'timestamp' => now(),
+                'ip' => request()->ip(),
+            ]);
+
+            return redirect()->route('dashboard')->withErrors([
+                'vote' => __('This election is not available for voting.')
+            ]);
+        }
+
+        // PHASE 3 VALIDATION: Organisation Matching
+        if ($auth_user->organisation_id !== $election->organisation_id) {
+            DB::rollBack();
+            \Log::channel('voting_security')->error('Organisation mismatch in vote submission', [
+                'user_organisation_id' => $auth_user->organisation_id,
+                'election_organisation_id' => $election->organisation_id,
+                'election_id' => $election->id,
+                'user_id' => $auth_user->id,
+                'reason' => 'organisation_mismatch',
+                'timestamp' => now(),
+                'ip' => request()->ip(),
+            ]);
+
+            return redirect()->route('dashboard')->withErrors([
+                'vote' => __('You do not have permission to vote in this election.')
+            ]);
+        }
+
+        // PHASE 3 VALIDATION: Log successful validation
+        \Log::channel('voting_audit')->info('Vote submission validated at controller level', [
+            'election_id' => $election->id,
+            'organisation_id' => $auth_user->organisation_id,
+            'user_id' => $auth_user->id,
+            'timestamp' => now(),
+            'ip' => request()->ip(),
+        ]);
+
         Log::info('Vote final submission started', [
             'user_id' => $auth_user->id,
             'election_id' => $election->id,
@@ -2153,6 +2198,8 @@ public function verifyVoteSubmit(): array
         $vote->no_vote_option = $no_vote_option ? 1 : 0;
         $vote->voting_code=$hashed_voting_key;
         $vote->election_id=$election->id;
+        // PHASE 3: Explicitly set organisation_id for real votes
+        $vote->organisation_id = $election->organisation_id;
 
         $vote->save();   //save the vote first
         $this->out_code = $vote->getKey();  // Get the vote's primary key
@@ -2219,6 +2266,8 @@ public function verifyVoteSubmit(): array
                           $result->election_id   =$election->id;
                           $result->post_id       =$post_id;
                           $result->candidacy_id  =$candidates[$j]['candidacy_id'];
+                          // PHASE 3: Explicitly set organisation_id for real results
+                          $result->organisation_id = $election->organisation_id;
                           $result->save();
 
                         }
@@ -2243,6 +2292,16 @@ public function verifyVoteSubmit(): array
             'election_id' => $election->id,
             'election_type' => $election->type,
             'via_voting_code' => 'hash_' . substr($hashed_voting_key, 0, 8) . '...',
+        ]);
+
+        // PHASE 3: Log successful vote save
+        \Log::channel('voting_audit')->info('Vote and results saved successfully', [
+            'vote_id' => $vote->id,
+            'election_id' => $election->id,
+            'organisation_id' => $election->organisation_id,
+            'results_count' => count(array_filter([$all_candidates ?? []])),
+            'timestamp' => now(),
+            'ip' => request()->ip(),
         ]);
     }
     //vote thanks 

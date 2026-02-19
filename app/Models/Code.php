@@ -118,7 +118,9 @@ class Code extends Model
      */
     public function scopeForDemoElection($query)
     {
-        return $query->whereHas('election', fn($q) => $q->where('type', 'demo'));
+        // CRITICAL: Use withoutGlobalScopes() on the election query because demo elections
+        // are accessible to ALL users regardless of organisation context
+        return $query->whereHas('election', fn($q) => $q->withoutGlobalScopes()->where('type', 'demo'));
     }
 
     /**

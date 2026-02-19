@@ -210,7 +210,11 @@ class ElectionController extends Controller
         }
 
         // Get the ONE demo election
-        $demoElection = Election::where('type', 'demo')
+        // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
+        // to ALL users regardless of organisation context
+        // Demo elections always have organisation_id = NULL but should be universally accessible
+        $demoElection = Election::withoutGlobalScopes()
+            ->where('type', 'demo')
             ->where('is_active', true)
             ->first();
 

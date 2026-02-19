@@ -38,6 +38,107 @@ abstract class BaseResult extends Model
     ];
 
     /**
+     * Model Lifecycle Hooks
+     *
+     * Phase 2: Model-Level Validation (Soft Boundary)
+     * Validates results to enforce organisation_id consistency with parent vote
+     *
+     * CRITICAL RULES FOR REAL RESULTS:
+     * 1. organisation_id MUST NOT be NULL
+     * 2. organisation_id MUST match parent vote's organisation_id
+     * 3. vote_id MUST reference a valid vote
+     */
+    protected static function booted()
+    {
+        static::creating(function ($result) {
+            // Skip validation for demo results (they have separate validation)
+            // Check if this is a Result instance (real) vs DemoResult instance (demo)
+            if (get_class($result) !== Result::class) {
+                return;
+            }
+
+            // CRITICAL 1: organisation_id MUST NOT be null for real results
+            if (is_null($result->organisation_id)) {
+                \Log::channel('voting_security')->warning('Real result rejected: NULL organisation_id', [
+                    'reason' => 'Organisation context is required for real results',
+                    'vote_id' => $result->vote_id,
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
+
+                throw new \App\Exceptions\InvalidRealVoteException(
+                    'Real results require a valid organisation context (organisation_id cannot be NULL)',
+                    ['reason' => 'null_organisation_id', 'vote_id' => $result->vote_id]
+                );
+            }
+
+            // CRITICAL 2: vote_id MUST reference a valid vote
+            if (is_null($result->vote_id)) {
+                \Log::channel('voting_security')->warning('Real result rejected: NULL vote_id', [
+                    'reason' => 'Vote reference is required',
+                    'organisation_id' => $result->organisation_id,
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
+
+                throw new \App\Exceptions\InvalidRealVoteException(
+                    'Real results require a valid vote (vote_id cannot be NULL)',
+                    ['reason' => 'null_vote_id', 'organisation_id' => $result->organisation_id]
+                );
+            }
+
+            // CRITICAL 3: vote must belong to the SAME organisation
+            $vote = Vote::withoutGlobalScopes()->find($result->vote_id);
+
+            if (!$vote) {
+                \Log::channel('voting_security')->warning('Real result rejected: Invalid vote_id', [
+                    'vote_id' => $result->vote_id,
+                    'organisation_id' => $result->organisation_id,
+                    'reason' => 'Vote not found',
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
+
+                throw new \App\Exceptions\InvalidRealVoteException(
+                    "Vote (id: {$result->vote_id}) not found",
+                    ['vote_id' => $result->vote_id, 'reason' => 'vote_not_found']
+                );
+            }
+
+            // Verify vote organisation_id matches
+            if ($vote->organisation_id !== $result->organisation_id) {
+                \Log::channel('voting_security')->warning('Real result rejected: Organisation mismatch', [
+                    'result_organisation_id' => $result->organisation_id,
+                    'vote_organisation_id' => $vote->organisation_id,
+                    'vote_id' => $result->vote_id,
+                    'reason' => 'Result organisation does not match vote organisation',
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
+
+                throw new \App\Exceptions\OrganisationMismatchException(
+                    "Result organisation_id ({$result->organisation_id}) does not match vote organisation_id ({$vote->organisation_id})",
+                    [
+                        'result_organisation_id' => $result->organisation_id,
+                        'vote_organisation_id' => $vote->organisation_id,
+                        'vote_id' => $result->vote_id,
+                    ]
+                );
+            }
+
+            // ✅ All validations passed - log success
+            \Log::channel('voting_security')->info('Real result passed model validation', [
+                'vote_id' => $result->vote_id,
+                'organisation_id' => $result->organisation_id,
+                'post_id' => $result->post_id,
+                'candidacy_id' => $result->candidacy_id,
+                'timestamp' => now(),
+                'ip' => request()->ip(),
+            ]);
+        });
+    }
+
+    /**
      * Get the vote this result is from
      * Note: Uses morph mapping to determine if it's Vote or DemoVote
      *

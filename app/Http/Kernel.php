@@ -78,6 +78,7 @@ class Kernel extends HttpKernel
         'voter.step.order' => \App\Http\Middleware\EnsureVoterStepOrder::class,
         'validate.voting.ip' => \App\Http\Middleware\ValidateVotingIp::class,
         'election' => \App\Http\Middleware\ElectionMiddleware::class,
+        'vote.organisation' => \App\Http\Middleware\EnsureRealVoteOrganisation::class, // PHASE 4
         'dashboard.role' => \App\Http\Middleware\CheckUserRole::class,
 
     ];

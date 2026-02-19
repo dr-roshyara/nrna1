@@ -37,7 +37,10 @@ class SetupDemoElection extends Command
         $this->info('🚀 Setting up demo election (MODE 1 - No Organisation)...');
         $this->info('🔍 Checking for existing demo election...');
 
-        $existingElection = Election::where('slug', 'demo-election')
+        // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
+        // to ALL users regardless of organisation context
+        $existingElection = Election::withoutGlobalScopes()
+            ->where('slug', 'demo-election')
             ->where('type', 'demo')
             ->first();
 

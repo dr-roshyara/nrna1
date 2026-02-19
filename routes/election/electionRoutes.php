@@ -351,7 +351,7 @@ Route::prefix('v/{vslug}')->middleware(['voter.slug.window'])->group(function ()
 // Slug-based voting workflow routes (integrated with existing controllers)
 // IP validation middleware added to enforce IP restrictions when CONTROL_IP_ADDRESS=1
 // Election middleware resolves election context (session → route param → real election)
-Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'election'])->group(function () {
+Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'election', 'vote.organisation'])->group(function () {
 
     // Step 1: Code creation (using existing CodeController)
     Route::get('code/create', [CodeController::class, 'create'])->name('slug.code.create');
