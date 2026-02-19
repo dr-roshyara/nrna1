@@ -30,6 +30,11 @@ class SetupDemoElection extends Command
      */
     public function handle()
     {
+        // MODE 1: Setup demo data with NULL organisation_id (no organisation)
+        session(['current_organisation_id' => null]);
+
+        $this->info('');
+        $this->info('🚀 Setting up demo election (MODE 1 - No Organisation)...');
         $this->info('🔍 Checking for existing demo election...');
 
         $existingElection = Election::where('slug', 'demo-election')
@@ -46,6 +51,7 @@ class SetupDemoElection extends Command
             $this->info("  Name: {$existingElection->name}");
             $this->info("  Posts: {$posts}");
             $this->info("  Candidates: {$candidates}");
+            $this->info("  Organisation ID: " . ($existingElection->organisation_id ?? 'NULL (Demo Mode)'));
 
             if ($this->option('force')) {
                 if (!$this->confirm('⚠️  This will DELETE the existing demo election and all its data. Continue?')) {
@@ -61,7 +67,7 @@ class SetupDemoElection extends Command
         }
 
         // Create new demo election
-        $this->info("\n📝 Creating demo election...");
+        $this->info("\n📝 Creating demo election (MODE 1 - organisation_id = NULL)...");
 
         $election = Election::create([
             'name' => 'Demo Election',
@@ -73,7 +79,16 @@ class SetupDemoElection extends Command
             'end_date' => now()->addDays(365)->format('Y-m-d'),
         ]);
 
-        $this->info("✅ Created Demo Election: {$election->name} (ID: {$election->id})");
+        $this->info("✅ Created Demo Election: {$election->name}");
+        $this->info("   ID: {$election->id}");
+        $this->info("   Organisation ID: " . ($election->organisation_id ?? 'NULL (Demo Mode)'));
+
+        // Verify organisation_id is NULL
+        if ($election->organisation_id === null) {
+            $this->info('   ✓ Correctly set to NULL (MODE 1 - No organisation needed)');
+        } else {
+            $this->error('   ✗ ERROR: organisation_id should be NULL for demo!');
+        }
 
         // Create posts
         $posts = [
@@ -152,7 +167,11 @@ class SetupDemoElection extends Command
         $this->info("  ✅ Election: {$election->name}");
         $this->info("  ✅ Posts: " . count($posts));
         $this->info("  ✅ Total Candidates: {$totalCandidates}");
+        $this->info("  ✅ Mode: MODE 1 (No organisation - Demo testing)");
+        $this->info("  ✅ Organisation ID: NULL");
         $this->info("\n🚀 Access at: http://localhost:8000/election/demo/start");
+        $this->info("📢 This demo election requires NO organisation setup!");
+        $this->info("   Customers can test the voting system immediately.\n");
         $this->info("✅ Setup complete!\n");
 
         return 0;

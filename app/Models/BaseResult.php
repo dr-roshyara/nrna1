@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToTenant;
 
 /**
  * BaseResult Abstract Class
@@ -21,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
 abstract class BaseResult extends Model
 {
     use HasFactory;
+    use BelongsToTenant;
 
     /**
      * All attributes that are mass-assignable
@@ -28,6 +30,7 @@ abstract class BaseResult extends Model
      * @var array
      */
     protected $fillable = [
+        'organisation_id',
         'election_id',
         'vote_id',
         'post_id',

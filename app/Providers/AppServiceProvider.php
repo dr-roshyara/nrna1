@@ -23,6 +23,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Load helper functions
+        foreach (['TenantHelper.php', 'ElectionAudit.php'] as $helperFile) {
+            $helperPath = app_path('Helpers/' . $helperFile);
+            if (file_exists($helperPath)) {
+                require_once $helperPath;
+            }
+        }
     }
 }

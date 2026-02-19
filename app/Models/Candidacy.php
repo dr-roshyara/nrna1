@@ -4,17 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToTenant;
 
 class Candidacy extends Model
 {
     use HasFactory;
-     use HasFactory;
+    use BelongsToTenant;
     protected $fillable =[
         'election_id',
         'user_id','user_name','candidacy_id','candidacy_name',
         'proposer_name', 'proposer_id', 'supporter_id','supporter_name',
         'post_id','post_nepali_name','post_name', 'image_path_1',
-        'image_path_2', 'image_path_3', 'position_order'
+        'image_path_2', 'image_path_3', 'position_order',
+        'organisation_id'
     ];
     /**
      * Each candidacy belongs to one election

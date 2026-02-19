@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToTenant;
 
 /**
  * VoterSlugStep Model
@@ -17,10 +18,12 @@ use Illuminate\Database\Eloquent\Model;
 class VoterSlugStep extends Model
 {
     use HasFactory;
+    use BelongsToTenant;
 
     protected $table = 'voter_slug_steps';
 
     protected $fillable = [
+        'organisation_id',
         'voter_slug_id',
         'slug',
         'election_id',

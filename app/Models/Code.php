@@ -6,10 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use  Illuminate\Support\Facades\DB;
+use App\Traits\BelongsToTenant;
+
 class Code extends Model
 {
     use HasFactory;
+    use BelongsToTenant;
      protected $fillable = [
+        'organisation_id',
         'user_id',
         'election_id', // ✅ CRITICAL: Election scoping for multi-election support
         'code1',

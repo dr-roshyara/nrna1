@@ -4,10 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToTenant;
 
 class DeligateVote extends Model
 {
     use HasFactory;
+    use BelongsToTenant;
+
+    protected $fillable = [
+        'organisation_id',
+    ];
+
     public $member_keys =array(
         "member1_id",
      "member2_id",

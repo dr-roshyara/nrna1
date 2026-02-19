@@ -15,6 +15,13 @@ class DemoElectionSeeder extends Seeder
      */
     public function run()
     {
+        // MODE 1: Create demo data for customer testing
+        // Set context to NULL for demo data (no organisation)
+        session(['current_organisation_id' => null]);
+
+        $this->command->info('🚀 Creating demo election data (MODE 1 - No Organisation)...');
+        $this->command->info('');
+
         // Clean state: Delete ALL demo elections to ensure only one exists
         // This prevents conflicts when multiple demo elections are created
         Election::where('type', 'demo')->delete();
@@ -29,9 +36,18 @@ class DemoElectionSeeder extends Seeder
             'description' => 'Public demo election for testing the voting system without registration',
             'start_date' => now()->format('Y-m-d'),
             'end_date' => now()->addDays(365)->format('Y-m-d'),
+            // organisation_id will be auto-filled as NULL by BelongsToTenant trait
         ]);
 
         $this->command->info("✅ Created Demo Election: {$election->name}");
+        $this->command->info("   Organisation ID: " . ($election->organisation_id ?? 'NULL (Demo Mode)'));
+
+        // Verify organisation_id is NULL
+        if ($election->organisation_id === null) {
+            $this->command->info('   ✓ Correctly set to NULL (demo mode)');
+        } else {
+            $this->command->error('   ✗ ERROR: organisation_id should be NULL for demo!');
+        }
 
         // ========== POST 1: PRESIDENT ==========
         $post1 = Post::create([

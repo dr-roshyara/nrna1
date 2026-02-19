@@ -1,0 +1,49 @@
+ Warning: TTY mode is not supported on Windows platform.
+     
+  [37;41;1m FAIL [39;49;22m[39m Tests\Feature\DemoModeTest[39m
+  [32;1m✓[39;22m[39m [2mmode1 demo works without organisation[22m[39m
+  [32;1m✓[39;22m[39m [2mmode2 tenant works with organisation[22m[39m
+  [32;1m✓[39;22m[39m [2mmode1 and mode2 are isolated[22m[39m
+  [31;1m⨯[39;22m[39m [2mtenant helper functions[22m[39m
+  [32;1m✓[39;22m[39m [2mvote anonymity preserved in both modes[22m[39m
+
+  [2m---[22m
+
+  [31;1m• Tests\Feature\DemoModeTest [39;22m> [31;1mtenant helper functions[39;22m
+  [41;1m PHPUnit\Framework\ExceptionWrapper [49;22m
+
+[39;1m  Call to undefined function Tests\Feature\is_demo_mode()[39;22m
+
+  at [32mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\tests\Feature\DemoModeTest.php[39m:[32m229[39m
+    225▕         // MODE 1: Demo user
+    226▕         $demoUser = User::factory()->create(['organisation_id' => null]);
+    227▕         $this->setUserContext($demoUser);
+    228▕ 
+  ➜ 229▕         $this->assertTrue(is_demo_mode());
+    230▕         $this->assertFalse(is_tenant_mode());
+    231▕         $this->assertEquals('MODE_1_DEMO', current_mode());
+    232▕         $this->assertNull(get_tenant_id());
+    233▕
+
+  [33m1   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\src\Framework\TestCase.php[39;22m:[39;1m973[39;22m
+  [37m    PHPUnit\Framework\TestResult::run(Object(Tests\Feature\DemoModeTest))[39m
+
+  [33m2   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\src\Framework\TestSuite.php[39;22m:[39;1m685[39;22m
+  [37m    PHPUnit\Framework\TestCase::run(Object(PHPUnit\Framework\TestResult))[39m
+
+  [33m3   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\src\TextUI\TestRunner.php[39;22m:[39;1m651[39;22m
+  [37m    PHPUnit\Framework\TestSuite::run(Object(PHPUnit\Framework\TestResult))[39m
+
+  [33m4   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\src\TextUI\Command.php[39;22m:[39;1m146[39;22m
+  [37m    PHPUnit\TextUI\TestRunner::run(Object(PHPUnit\Framework\TestSuite), [])[39m
+
+  [33m5   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\src\TextUI\Command.php[39;22m:[39;1m99[39;22m
+  [37m    PHPUnit\TextUI\Command::run()[39m
+
+  [33m6   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\phpunit[39;22m:[39;1m107[39;22m
+  [37m    PHPUnit\TextUI\Command::main()[39m
+
+
+  [37;1mTests:  [39;22m[31;1m1 failed[39;22m[39m, [39m[32;1m4 passed[39;22m
+  [37;1mTime:   [39;22m[39m29.21s[39m
+

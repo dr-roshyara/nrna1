@@ -100,6 +100,20 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'voting_audit' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/voting_audit.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+            'days' => 90,
+        ],
+
+        'voting_security' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/voting_security.log'),
+            'level' => env('LOG_LEVEL', 'warning'),
+            'days' => 365,
+        ],
     ],
 
 ];

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToTenant;
 
 /**
  * BaseVote Abstract Class
@@ -21,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
 abstract class BaseVote extends Model
 {
     use HasFactory;
+    use BelongsToTenant;
 
     /**
      * All candidate columns (candidate_01 through candidate_60)
@@ -31,6 +33,7 @@ abstract class BaseVote extends Model
      * @var array
      */
     protected $fillable = [
+        'organisation_id',
         'election_id',
         'voting_code',
         'no_vote_option',

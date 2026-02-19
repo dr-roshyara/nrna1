@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Candidacy;
+use App\Traits\BelongsToTenant;
+
 class Post extends Model
 {
     use HasFactory;
+    use BelongsToTenant;
 
     protected $fillable = [
         'election_id',
@@ -16,7 +19,8 @@ class Post extends Model
         'nepali_name',
         'state_name',
         'required_number',
-        'position_order'
+        'position_order',
+        'organisation_id'
     ];
 
     /**

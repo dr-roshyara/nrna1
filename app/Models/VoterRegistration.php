@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Traits\BelongsToTenant;
 
 /**
  * VoterRegistration Model
@@ -15,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class VoterRegistration extends Model
 {
     use HasFactory;
+    use BelongsToTenant;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +24,7 @@ class VoterRegistration extends Model
      * @var array
      */
     protected $fillable = [
+        'organisation_id',
         'user_id',
         'election_id',
         'status',
