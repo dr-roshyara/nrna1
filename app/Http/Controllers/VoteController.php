@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vote;
 use App\Models\DemoVote;
-use App\Models\DemoCandidacy;
-use App\Models\DemoPost;
-use App\Models\DemoCode;
+use App\Models\DemoCandidate;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -201,9 +199,7 @@ public function create(Request $request)
     }
 
     // Get code for this election
-    // Use DemoCode for demo elections, Code for real elections
-    $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
-    $code = $CodeModel::where('user_id', $auth_user->id)
+    $code = Code::where('user_id', $auth_user->id)
         ->where('election_id', $election->id)
         ->first();
 
@@ -223,17 +219,15 @@ public function create(Request $request)
     }
 
     // --- Fetch National Posts and Candidates ---
-    // For demo elections, use DemoCandidacy; for real elections, use Candidacy
+    // For demo elections, use DemoCandidate; for real elections, use Candidacy
     if ($election->isDemo()) {
         // Demo election: fetch demo candidates for this election (ordered by position_order)
-        $demoCandidates = DemoCandidacy::where('election_id', $election->id)
+        $demoCandidates = DemoCandidate::where('election_id', $election->id)
             ->orderBy('position_order')
             ->get();
         $groupedCandidates = $demoCandidates->groupBy('post_id');
 
-        // Demo election: Fetch demo posts (separate table from real posts)
-        $national_posts = DemoPost::where('election_id', $election->id)
-            ->where('is_national_wide', 1)
+        $national_posts = Post::where('is_national_wide', 1)
             ->orderBy('post_id')
             ->get()
             ->map(function ($post) use ($groupedCandidates) {
@@ -300,14 +294,12 @@ public function create(Request $request)
     if (!empty($auth_user->region)) {
         if ($election->isDemo()) {
             // Demo election: fetch demo candidates for this election (ordered by position_order)
-            $demoCandidates = DemoCandidacy::where('election_id', $election->id)
+            $demoCandidates = DemoCandidate::where('election_id', $election->id)
                 ->orderBy('position_order')
                 ->get();
             $groupedCandidates = $demoCandidates->groupBy('post_id');
 
-            // Demo election: Fetch demo posts (separate table from real posts)
-            $regional_posts = DemoPost::where('election_id', $election->id)
-                ->where('is_national_wide', 0)
+            $regional_posts = Post::where('is_national_wide', 0)
                 ->orderBy('post_id')
                 ->get()
                 ->map(function ($post) use ($groupedCandidates) {
@@ -423,25 +415,9 @@ public function first_submission(Request $request)
         'election_type' => $election->type,
     ]);
 
-    // Get the correct code model based on election type
-    $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
-    $code = $CodeModel::where('user_id', $auth_user->id)
-        ->where('election_id', $election->id)
-        ->first();
-
-    if (!$code) {
-        \Log::error('Code not found for user', [
-            'user_id' => $auth_user->id,
-            'election_id' => $election->id,
-            'election_type' => $election->type,
-        ]);
-
-        return redirect()->route('dashboard')
-            ->withErrors(['vote' => 'Verification code not found. Please verify your code first.']);
-    }
-
     // ⛔ REAL ELECTIONS: Block voting if already voted
-    if ($election->type === 'real' && $code->has_voted) {
+    $code = $auth_user->code;
+    if ($election->type === 'real' && $code && $code->has_voted) {
         \Log::warning('⛔ Real election - blocking vote submission for voter who already voted', [
             'user_id' => $auth_user->id,
             'election_id' => $election->id,
@@ -605,15 +581,11 @@ public function second_submission(Request $request)
                 ->withErrors(['auth' => 'Authentication required. Please log in again.']);
         }
 
-        // Get the correct code model based on election type
-        $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
-        $code = $CodeModel::where('user_id', $auth_user->id)
-            ->where('election_id', $election->id)
-            ->first();
-
+        $code = $auth_user->code;
+        
         // Check if user has a code record
         if (!$code) {
-            Log::error('Second submission attempted without code record', ['user_id' => $auth_user->id, 'election_id' => $election->id]);
+            Log::error('Second submission attempted without code record', ['user_id' => $auth_user->id]);
             $route = $voterSlug ? 'slug.code.create' : 'code.create';
             $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
 
@@ -1304,21 +1276,7 @@ private function has_valid_selections($selections)
             return back()->withErrors(['error' => 'Authentication required.'])->withInput();
         }
 
-        // Get the correct code model based on election type
-        $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
-        $code = $CodeModel::where('user_id', $auth_user->id)
-            ->where('election_id', $election->id)
-            ->first();
-
-        if (!$code) {
-            DB::rollBack();
-            \Log::error('Code record not found for user', [
-                'user_id' => $auth_user->id,
-                'election_id' => $election->id,
-                'election_type' => $election->type,
-            ]);
-            return back()->withErrors(['error' => 'Verification code not found.'])->withInput();
-        }
+        $code = $auth_user->code;
 
         // ⛔ REAL ELECTIONS: Block final vote submission if already voted
         if ($election->type === 'real' && $code->has_voted) {
@@ -1525,11 +1483,10 @@ private function has_valid_selections($selections)
 
 /**
  * Mark user as having voted and update code status
- * Accepts both Code (real elections) and DemoCode (demo elections)
- *
- * @param Code|DemoCode $code
+ * 
+ * @param Code $code
  */
- function markUserAsVoted($code, string $hashed_key )
+ function markUserAsVoted(Code $code, string $hashed_key )
 {
     $code->update([
         'has_voted' => true,
@@ -1674,7 +1631,7 @@ protected function saveAnonymizedVote(string $voting_code, array $vote_data): Vo
  * @param int $vote_id
  * @return string Returns the unhashed private key for one-time notification
  */
- function generateAndStoreVerificationKey($code): string
+ function generateAndStoreVerificationKey(Code $code): string
 {
 
     // Generate a secure random key component
@@ -1843,23 +1800,7 @@ public function verify(Request $request)
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
-
-        // Get the correct code model based on election type
-        $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
-        $code = $CodeModel::where('user_id', $auth_user->id)
-            ->where('election_id', $election->id)
-            ->first();
-
-        if (!$code) {
-            Log::error('Code not found during verification', [
-                'user_id' => $auth_user->id,
-                'election_id' => $election->id,
-                'election_type' => $election->type,
-            ]);
-
-            return redirect()->route('dashboard')
-                ->withErrors(['code' => 'Verification code not found. Please start voting again.']);
-        }
+        $code = $auth_user->code;
 
         Log::info('Vote verification page accessed', [
             'user_id' => $auth_user->id,
@@ -2188,22 +2129,7 @@ public function verifyVoteSubmit(): array
     $request = request();
 
     $auth_user = auth()->user();
-    $election = $this->getElection($request);
-
-    // Get the correct code model based on election type
-    $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
-    $code = $CodeModel::where('user_id', $auth_user->id)
-        ->where('election_id', $election->id)
-        ->first();
-
-    if (!$code) {
-        return [
-            'validator' => null,
-            'is_code_valid' => false,
-            'error' => 'Verification code not found'
-        ];
-    }
-
+    $code      =$auth_user->code;
     $in_code  = $code->code1;
   
     $submittedCode = trim($request->input('voting_code'));
@@ -2703,25 +2629,14 @@ public function verify_final_vote(Request $request)
             $errors['can_vote'] = 'You are not eligible to vote.';
         }
 
-        // 4. User must have used Code-1 to reach this step (get correct code model)
-        $CodeModel = $isDemoElection ? DemoCode::class : Code::class;
-        $code = $CodeModel::where('user_id', $auth_user->id)
-            ->where('election_id', $election->id)
-            ->first();
-
-        // IMPORTANT: For DEMO elections, can_vote_now check is NOT required
-        // For REAL elections, must have can_vote_now = 1
-        if (!$isDemoElection && (!$code || $code->can_vote_now != 1)) {
+        // 4. User must have used Code-1 to reach this step (check Code model)
+        $code = $auth_user->code;
+        if (!$code || $code->can_vote_now != 1) {
             $errors['has_used_code1'] = 'You have not used your first voting code yet.';
         }
 
-        // But code MUST exist for both demo and real elections
-        if (!$code) {
-            $errors['code_missing'] = 'No verification code found for this election.';
-        }
-
-        // 5. User must NOT have used Code-2 (should be 0) - check correct code model (only for real elections)
-        if (!$isDemoElection && $code && $code->has_used_code2 != 0) {
+        // 5. User must NOT have used Code-2 (should be 0) - check Code model
+        if ($code && $code->has_used_code2 != 0) {
             $errors['has_used_code2'] = 'You have already confirmed your vote with Code-2.';
         }
 
