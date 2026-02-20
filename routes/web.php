@@ -294,7 +294,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Organization management routes
     Route::post('/organizations', [OrganizationController::class, 'store'])
-         ->middleware(['throttle:3,10', 'web'])
+         ->middleware('throttle:3,10')
          ->name('organizations.store');
     Route::get('/organizations/{slug}', [OrganizationController::class, 'show'])
          ->name('organizations.show');

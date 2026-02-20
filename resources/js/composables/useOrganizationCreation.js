@@ -256,8 +256,13 @@ export const useOrganizationCreation = () => {
       // Production-safe: retrieves token from meta tag with fallback
       const getCsrfToken = () => {
         // Try meta tag first (most reliable)
-        const metaToken = document.querySelector('meta[name="csrf-token"]')?.content;
-        if (metaToken) return metaToken;
+        const metaElement = document.querySelector('meta[name="csrf-token"]');
+        const metaToken = metaElement?.getAttribute('content') || metaElement?.content;
+
+        if (metaToken) {
+          console.log('✓ CSRF token retrieved from meta tag');
+          return metaToken;
+        }
 
         // Fallback: try to extract from cookie (Laravel default is XSRF-TOKEN)
         const name = 'XSRF-TOKEN';
@@ -267,9 +272,11 @@ export const useOrganizationCreation = () => {
           .find(c => c.startsWith(name + '='));
 
         if (decodedCookie) {
-          return decodedCookie.substring(name.length + 1);
+          console.log('✓ CSRF token retrieved from cookie');
+          return decodeURIComponent(decodedCookie.substring(name.length + 1));
         }
 
+        console.warn('⚠️ CSRF token not found in meta tag or cookies');
         return null;
       };
 
@@ -279,8 +286,11 @@ export const useOrganizationCreation = () => {
         submissionError.value = error.message;
         trackOrganizationCreationError(error);
         isSubmitting.value = false;
+        console.error('❌ CSRF token retrieval failed');
         return Promise.reject(error);
       }
+
+      console.log('📤 Sending organization creation request with CSRF token');
 
       return fetch('/organizations', {
         method: 'POST',
@@ -295,11 +305,21 @@ export const useOrganizationCreation = () => {
       })
         .then(response => {
           if (!response.ok) {
+            console.error(`❌ Request failed with status ${response.status}`);
+
+            // Special handling for CSRF token mismatch (419 Mismatch)
+            if (response.status === 419) {
+              console.error('CSRF token verification failed - token may be expired');
+              const csrfError = new Error('CSRF token expired. Please refresh the page and try again.');
+              return Promise.reject(csrfError);
+            }
+
             // Handle validation errors (422) and other errors
             return response.json().then(error => {
               throw error;
             });
           }
+          console.log('✓ Request successful, parsing response');
           return response.json();
         })
         .then(result => {
