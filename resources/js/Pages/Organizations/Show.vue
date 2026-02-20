@@ -91,6 +91,14 @@
           </div>
         </div>
 
+        <!-- Demo Setup Section (only for organization members) -->
+        <div v-if="canManage" class="mb-6">
+          <DemoSetupButton
+            :organization="organization"
+            :demo-status="demoStatus"
+          />
+        </div>
+
         <!-- Support & Contact Section -->
         <div class="bg-gradient-to-r from-blue-50 to-indigo-50 overflow-hidden shadow-sm sm:rounded-lg border-l-4 border-blue-500">
           <div class="px-4 py-6 sm:px-6">
@@ -145,6 +153,7 @@
 <script setup>
 import ElectionLayout from '@/Layouts/ElectionLayout.vue';
 import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue';
+import DemoSetupButton from './Partials/DemoSetupButton.vue';
 import { useI18n } from 'vue-i18n';
 import { useMeta } from '@/composables/useMeta';
 import { computed } from 'vue';
@@ -154,6 +163,8 @@ const { t } = useI18n();
 const props = defineProps({
   organization: Object,
   stats: Object,
+  demoStatus: Object,
+  canManage: Boolean,
 });
 
 /**

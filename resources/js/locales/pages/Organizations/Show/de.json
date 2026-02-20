@@ -1,0 +1,21 @@
+{
+  "demo": {
+    "title": "Testwahldemonstration",
+    "status_setup_complete": "Setup abgeschlossen",
+    "status_not_setup": "Nicht eingerichtet",
+    "stats_posts": "Positionen",
+    "stats_candidates": "Kandidaten",
+    "stats_codes": "Codes",
+    "stats_test_votes": "Test-Stimmen",
+    "button_test_voting": "Test-Abstimmung durchführen",
+    "button_setup": "Demo-Wahl einrichten",
+    "button_recreate": "Demo-Daten neu erstellen",
+    "message_intro": "Sie können privat Demo-Kandidaten für Ihre Organisation erstellen, und nur Personen aus Ihrer Organisation können in dieser Demo-Wahl abstimmen.",
+    "message_confirm_recreate": "⚠️ Dies löscht alle vorhandenen Demo-Daten Ihrer Organisation. Sind Sie sicher?",
+    "message_success_setup": "Demo-Wahl erfolgreich eingerichtet!",
+    "message_success_recreate": "Demo-Wahl erfolgreich neu erstellt!",
+    "message_error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "note_isolated": "Demo-Daten sind nur auf Ihre Organisation beschränkt. Das Neuerstellen löscht vorhandene Demo-Daten.",
+    "note_setup": "Richten Sie eine Demo-Wahl ein, um den Abstimmungsablauf zu testen. Alle Daten sind auf Ihre Organisation beschränkt."
+  }
+}

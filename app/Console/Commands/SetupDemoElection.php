@@ -16,7 +16,7 @@ class SetupDemoElection extends Command
      *
      * @var string
      */
-    protected $signature = 'demo:setup {--org= : Organisation ID for MODE 2 scoped demo (optional)} {--force : Force recreation of existing demo election}';
+    protected $signature = 'demo:setup {--org= : Organisation ID for MODE 2 scoped demo (optional)} {--force : Force recreation of existing demo election} {--clean : Delete existing demo data without confirmation}';
 
     /**
      * The console command description.
@@ -91,10 +91,12 @@ class SetupDemoElection extends Command
             $this->info("  Organisation ID: " . ($existingElection->organisation_id ?? 'NULL (Public Demo)'));
             $this->info("  Mode: " . $mode);
 
-            if ($this->option('force')) {
-                if (!$this->confirm('⚠️  This will DELETE the existing demo election and all its data. Continue?')) {
-                    $this->warn('Aborted.');
-                    return 1;
+            if ($this->option('force') || $this->option('clean')) {
+                if ($this->option('force') && !$this->option('clean')) {
+                    if (!$this->confirm('⚠️  This will DELETE the existing demo election and all its data. Continue?')) {
+                        $this->warn('Aborted.');
+                        return 1;
+                    }
                 }
                 $this->info('Deleting existing demo election...');
                 $existingElection->delete();

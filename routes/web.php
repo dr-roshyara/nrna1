@@ -11,6 +11,7 @@ use App\Http\Controllers\RobotsController;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FeedController;
+use App\Http\Controllers\Api\DemoSetupController;
 
 //voting
 use App\Http\Controllers\CandidacyController;
@@ -297,4 +298,8 @@ Route::middleware(['auth'])->group(function () {
          ->name('organizations.store');
     Route::get('/organizations/{slug}', [OrganizationController::class, 'show'])
          ->name('organizations.show');
+
+    // Demo setup API endpoint
+    Route::post('/api/organizations/{organization}/demo-setup', [DemoSetupController::class, 'setup'])
+         ->name('api.organizations.demo-setup');
 });

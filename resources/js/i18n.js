@@ -97,6 +97,10 @@ import organizationShowDe from './locales/pages/Organization/de.json';
 import organizationShowEn from './locales/pages/Organization/en.json';
 import organizationShowNp from './locales/pages/Organization/np.json';
 
+import organizationShowPageDe from './locales/pages/Organizations/Show/de.json';
+import organizationShowPageEn from './locales/pages/Organizations/Show/en.json';
+import organizationShowPageNp from './locales/pages/Organizations/Show/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -134,6 +138,9 @@ const messages = {
     ...de,
     ...commonDe,
     organization: organizationDe,
+    organizations: {
+      demo: organizationShowPageDe.demo,
+    },
     pages: {
       'voting-start': votingStartDe,
       'role-selection': roleSelectionDe,
@@ -163,6 +170,9 @@ const messages = {
     ...en,
     ...commonEn,
     organization: organizationEn,
+    organizations: {
+      demo: organizationShowPageEn.demo,
+    },
     pages: {
       'voting-start': votingStartEn,
       'role-selection': roleSelectionEn,
@@ -192,6 +202,9 @@ const messages = {
     ...np,
     ...commonNp,
     organization: organizationNp,
+    organizations: {
+      demo: organizationShowPageNp.demo,
+    },
     pages: {
       'voting-start': votingStartNp,
       'role-selection': roleSelectionNp,

@@ -7,6 +7,11 @@ use App\Http\Requests\StoreOrganizationRequest;
 use App\Mail\OrganizationCreatedMail;
 use App\Models\Organization;
 use App\Models\User;
+use App\Models\Election;
+use App\Models\DemoPost;
+use App\Models\DemoCandidacy;
+use App\Models\DemoCode;
+use App\Models\DemoVote;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -115,6 +120,40 @@ class OrganizationController extends Controller
             abort(403, 'Sie haben keinen Zugriff auf diese Organisation.');
         }
 
+        // Check if demo election exists for this organisation
+        $demoElection = Election::withoutGlobalScopes()
+            ->where('type', 'demo')
+            ->where('organisation_id', $organization->id)
+            ->first();
+
+        $demoStats = null;
+        if ($demoElection) {
+            $posts = DemoPost::where('election_id', $demoElection->id)->count();
+            $candidates = DemoCandidacy::whereIn('post_id',
+                DemoPost::where('election_id', $demoElection->id)->pluck('post_id')
+            )->count();
+            $codes = DemoCode::where('election_id', $demoElection->id)->count();
+            $votes = DemoVote::where('election_id', $demoElection->id)->count();
+
+            $demoStats = [
+                'exists' => true,
+                'election_id' => $demoElection->id,
+                'election_name' => $demoElection->name,
+                'posts' => $posts,
+                'candidates' => $candidates,
+                'codes' => $codes,
+                'votes' => $votes,
+            ];
+        } else {
+            $demoStats = [
+                'exists' => false,
+                'posts' => 0,
+                'candidates' => 0,
+                'codes' => 0,
+                'votes' => 0,
+            ];
+        }
+
         return inertia('Organizations/Show', [
             'organization' => [
                 'id' => $organization->id,
@@ -126,7 +165,9 @@ class OrganizationController extends Controller
             'stats' => [
                 'members_count' => $organization->users()->count(),
                 'elections_count' => 0, // Update when elections context exists
-            ]
+            ],
+            'demoStatus' => $demoStats,
+            'canManage' => $isMember,
         ]);
     }
 }

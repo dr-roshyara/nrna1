@@ -1,0 +1,21 @@
+{
+  "demo": {
+    "title": "Demo Election Testing",
+    "status_setup_complete": "Setup Complete",
+    "status_not_setup": "Not Setup",
+    "stats_posts": "Posts",
+    "stats_candidates": "Candidates",
+    "stats_codes": "Codes",
+    "stats_test_votes": "Test Votes",
+    "button_test_voting": "Test Demo Voting",
+    "button_setup": "Setup Demo Election",
+    "button_recreate": "Recreate Demo Data",
+    "message_intro": "You can create demo candidates for your organisation privately and only people from your organisation can vote in this demo election.",
+    "message_confirm_recreate": "⚠️ This will DELETE all existing demo data for your organisation. Are you sure?",
+    "message_success_setup": "Demo election setup completed successfully!",
+    "message_success_recreate": "Demo election recreated successfully!",
+    "message_error": "An error occurred. Please try again.",
+    "note_isolated": "Demo data is isolated to your organisation only. Recreating will delete existing demo data.",
+    "note_setup": "Setup a demo election to test the voting workflow. All data will be isolated to your organisation."
+  }
+}

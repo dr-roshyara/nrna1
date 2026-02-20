@@ -41,7 +41,8 @@
     "results": "results",
     "no_data": "No data available",
     "select_language": "Select Language",
-    "trust_security": "TRUST & SECURITY"
+    "trust_security": "TRUST & SECURITY",
+    "note": "Note"
   },
   "platform": {
     "name": "PUBLIC DIGIT",
