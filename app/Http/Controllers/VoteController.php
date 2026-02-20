@@ -429,11 +429,13 @@ public function first_submission(Request $request)
             ->withErrors(['vote' => 'You have already voted in this election. Each voter can only vote once.']);
     }
 
-    // Get the code model and set as submitted
-    $code->vote_submitted    = 1;
-    $code->vote_submitted_at = \Carbon\Carbon::now();
-    // $code->save(); // Save the state!
-   
+    // Get the code model and set as submitted (only for real elections with codes)
+    if ($code) {
+        $code->vote_submitted    = 1;
+        $code->vote_submitted_at = \Carbon\Carbon::now();
+        // $code->save(); // Save the state!
+    }
+
     // Pre-checks (time, code usability, etc.)
     $pre_check_route = $this->vote_pre_check($code);
     \Log::info('Pre-check result', [
