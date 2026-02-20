@@ -1304,7 +1304,21 @@ private function has_valid_selections($selections)
             return back()->withErrors(['error' => 'Authentication required.'])->withInput();
         }
 
-        $code = $auth_user->code;
+        // Get the correct code model based on election type
+        $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
+        $code = $CodeModel::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
+
+        if (!$code) {
+            DB::rollBack();
+            \Log::error('Code record not found for user', [
+                'user_id' => $auth_user->id,
+                'election_id' => $election->id,
+                'election_type' => $election->type,
+            ]);
+            return back()->withErrors(['error' => 'Verification code not found.'])->withInput();
+        }
 
         // ⛔ REAL ELECTIONS: Block final vote submission if already voted
         if ($election->type === 'real' && $code->has_voted) {
