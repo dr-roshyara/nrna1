@@ -200,7 +200,9 @@ public function create(Request $request)
     }
 
     // Get code for this election
-    $code = Code::where('user_id', $auth_user->id)
+    // Use DemoCode for demo elections, Code for real elections
+    $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
+    $code = $CodeModel::where('user_id', $auth_user->id)
         ->where('election_id', $election->id)
         ->first();
 
