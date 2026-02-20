@@ -285,6 +285,10 @@ export default {
             type: Object,
             required: true
         },
+        candidates: {  // ← ADDED: Direct candidates prop
+            type: Array,
+            default: () => []
+        },
         postIndex: {
             type: Number,
             default: 0
@@ -421,29 +425,30 @@ export default {
     },
 
     watch: {
+        // Watch the direct candidates prop first (priority)
+        candidates: {
+            immediate: true,
+            handler(newCandidates) {
+                if (newCandidates && newCandidates.length) {
+                    this.initializeCandidates(newCandidates);
+                }
+            }
+        },
+        // Fallback to post.candidates for backward compatibility
         'post.candidates': {
             immediate: true,
             handler(newCandidates) {
-                if (!newCandidates) return;
-                // Sort by position_order to ensure consistent display
-                const sortedCandidates = [...newCandidates].sort((a, b) => {
-                    const orderA = a.position_order || 0;
-                    const orderB = b.position_order || 0;
-                    return orderA - orderB;
-                });
-                this.candidatesWithState = sortedCandidates.map(candidate => ({
-                    ...candidate,
-                    disabled: false
-                }));
+                // Only use if candidates prop is empty
+                if ((!this.candidates || !this.candidates.length) && newCandidates && newCandidates.length) {
+                    this.initializeCandidates(newCandidates);
+                }
             }
         },
-
         selected: {
             handler() {
                 this.informSelectedCandidates();
             }
         },
-
         noVoteSelected: {
             handler() {
                 this.informSelectedCandidates();
@@ -452,6 +457,24 @@ export default {
     },
 
     methods: {
+        initializeCandidates(candidatesList) {
+            // Sort by position_order to ensure consistent display
+            const sortedCandidates = [...candidatesList].sort((a, b) => {
+                const orderA = a.position_order || 0;
+                const orderB = b.position_order || 0;
+                return orderA - orderB;
+            });
+
+            this.candidatesWithState = sortedCandidates.map(candidate => ({
+                ...candidate,
+                disabled: false
+            }));
+
+            // Reset selection when candidates change
+            this.selected = [];
+            this.noVoteSelected = false;
+        },
+
         isSelected(candidate) {
             return this.selected.includes(candidate.candidacy_id);
         },
