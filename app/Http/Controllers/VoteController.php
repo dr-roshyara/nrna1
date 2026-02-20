@@ -1525,10 +1525,11 @@ private function has_valid_selections($selections)
 
 /**
  * Mark user as having voted and update code status
- * 
- * @param Code $code
+ * Accepts both Code (real elections) and DemoCode (demo elections)
+ *
+ * @param Code|DemoCode $code
  */
- function markUserAsVoted(Code $code, string $hashed_key )
+ function markUserAsVoted($code, string $hashed_key )
 {
     $code->update([
         'has_voted' => true,
@@ -1673,7 +1674,7 @@ protected function saveAnonymizedVote(string $voting_code, array $vote_data): Vo
  * @param int $vote_id
  * @return string Returns the unhashed private key for one-time notification
  */
- function generateAndStoreVerificationKey(Code $code): string
+ function generateAndStoreVerificationKey($code): string
 {
 
     // Generate a secure random key component
@@ -2708,12 +2709,19 @@ public function verify_final_vote(Request $request)
             ->where('election_id', $election->id)
             ->first();
 
-        if (!$code || $code->can_vote_now != 1) {
+        // IMPORTANT: For DEMO elections, can_vote_now check is NOT required
+        // For REAL elections, must have can_vote_now = 1
+        if (!$isDemoElection && (!$code || $code->can_vote_now != 1)) {
             $errors['has_used_code1'] = 'You have not used your first voting code yet.';
         }
 
-        // 5. User must NOT have used Code-2 (should be 0) - check correct code model
-        if ($code && $code->has_used_code2 != 0) {
+        // But code MUST exist for both demo and real elections
+        if (!$code) {
+            $errors['code_missing'] = 'No verification code found for this election.';
+        }
+
+        // 5. User must NOT have used Code-2 (should be 0) - check correct code model (only for real elections)
+        if (!$isDemoElection && $code && $code->has_used_code2 != 0) {
             $errors['has_used_code2'] = 'You have already confirmed your vote with Code-2.';
         }
 
