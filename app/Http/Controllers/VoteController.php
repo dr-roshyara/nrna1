@@ -1231,41 +1231,29 @@ private function has_valid_selections($selections)
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
 
-        // PHASE 3 VALIDATION: Election Type Check
-        if ($election->type !== 'real') {
-            DB::rollBack();
-            \Log::channel('voting_security')->warning('Attempted vote submission to non-real election', [
-                'election_id' => $election->id,
-                'election_type' => $election->type,
-                'user_id' => $auth_user->id,
-                'organisation_id' => $auth_user->organisation_id,
-                'reason' => 'election_not_real_type',
-                'timestamp' => now(),
-                'ip' => request()->ip(),
-            ]);
+        // PHASE 3 VALIDATION: Election Validation
+        // Demo elections: No organisation validation (can be voted by anyone)
+        // Real elections: Require organisation matching
+        if ($election->type === 'real') {
+            // REAL ELECTION: Validate organisation matching
+            if ($auth_user->organisation_id !== $election->organisation_id) {
+                DB::rollBack();
+                \Log::channel('voting_security')->error('Organisation mismatch in vote submission', [
+                    'user_organisation_id' => $auth_user->organisation_id,
+                    'election_organisation_id' => $election->organisation_id,
+                    'election_id' => $election->id,
+                    'user_id' => $auth_user->id,
+                    'reason' => 'organisation_mismatch',
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
 
-            return redirect()->route('dashboard')->withErrors([
-                'vote' => __('This election is not available for voting.')
-            ]);
+                return redirect()->route('dashboard')->withErrors([
+                    'vote' => __('You do not have permission to vote in this election.')
+                ]);
+            }
         }
-
-        // PHASE 3 VALIDATION: Organisation Matching
-        if ($auth_user->organisation_id !== $election->organisation_id) {
-            DB::rollBack();
-            \Log::channel('voting_security')->error('Organisation mismatch in vote submission', [
-                'user_organisation_id' => $auth_user->organisation_id,
-                'election_organisation_id' => $election->organisation_id,
-                'election_id' => $election->id,
-                'user_id' => $auth_user->id,
-                'reason' => 'organisation_mismatch',
-                'timestamp' => now(),
-                'ip' => request()->ip(),
-            ]);
-
-            return redirect()->route('dashboard')->withErrors([
-                'vote' => __('You do not have permission to vote in this election.')
-            ]);
-        }
+        // Demo elections bypass organisation validation (backward compatibility)
 
         // PHASE 3 VALIDATION: Log successful validation
         \Log::channel('voting_audit')->info('Vote submission validated at controller level', [
