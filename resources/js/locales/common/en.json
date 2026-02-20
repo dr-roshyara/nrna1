@@ -24,6 +24,7 @@
     "success": "Success",
     "error": "Error",
     "warning": "Warning",
-    "info": "Information"
+    "info": "Information",
+    "note": "Note"
   }
 }
