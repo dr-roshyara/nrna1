@@ -195,13 +195,14 @@ class ElectionController extends Controller
                 return response()->json([
                     'success' => true,
                     'message' => 'Demo election selected',
-                    'redirect' => route('slug.code.create', ['vslug' => $slug->slug]),
+                    'redirect' => route('slug.demo-code.create', ['vslug' => $slug->slug]),
                 ]);
             }
 
-            // Redirect to voting flow with slug parameter
-            return redirect()->route('slug.code.create', ['vslug' => $slug->slug])
-                ->with('success', 'Demo election selected. Test the voting system!');
+            // Redirect to DEMO voting flow with slug parameter
+            // Uses demo-code.create (not real code.create)
+            return redirect()->route('slug.demo-code.create', ['vslug' => $slug->slug])
+                ->with('success', '🎮 Demo election selected. Test the voting system!');
         } catch (\Exception $e) {
             Log::error('Failed to start demo election', [
                 'user_id' => auth()->user()?->id,
