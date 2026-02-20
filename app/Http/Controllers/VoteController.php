@@ -2426,27 +2426,25 @@ public function verify_final_vote(Request $request)
     * Code pre Checking 
     */    
     public function vote_pre_check(&$code){
-                    
+       /***
+        * if there is no code then return to dashboard
+        *
+       */
+       if($code==null){
+            /***
+            *
+            * if the code is not usable you can not proceed further
+             * you should redirect the form in dashboard
+            *
+            */
+          return "code.create";
+       }
+
         $return_to       ="";
         $current         = Carbon::now();
         $code1_used_at   =$code->code1_used_at;
         $voting_time     =$code->voting_time_in_minutes;
         $totalDuration   = $current->diffInMinutes($code1_used_at );
-
-       /***
-        * if there is no code then return to dashboard 
-        * 
-       */
-       if($code==null){
-            /*** 
-            * 
-            * if the code is not usable you can not proceed further
-             * you should redirect the form in dashboard
-            * 
-            */
-          return   $return_to ="code.create";
-            
-       }
         //    dd($code->can_vote_now);  
        ($code->can_vote_now);
         if(!$code->can_vote_now){
