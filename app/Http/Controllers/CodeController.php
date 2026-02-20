@@ -558,7 +558,10 @@ class CodeController extends Controller
     private function getOrCreateCode(User $user, Election $election): Code
     {
         // Get code for this specific election
-        $code = Code::where('user_id', $user->id)
+        // CRITICAL: Use withoutGlobalScopes() because demo elections have organisation_id=NULL
+        // The global scope would filter out codes for demo elections
+        $code = Code::withoutGlobalScopes()
+            ->where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->first();
 
