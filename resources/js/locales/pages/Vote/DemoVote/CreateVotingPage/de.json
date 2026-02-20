@@ -1,0 +1,11 @@
+{
+  "createVotingPage": {
+    "regionalPosts": {
+      "sectionTitle": "Kandidaten für Region {region}",
+      "yourRegion": "Ihre Region",
+      "noCandidatesTitle": "Keine Regionalkandidaten",
+      "noCandidatesMessage": "Für Ihre Region {region} sind derzeit keine Kandidaten verfügbar.",
+      "noRegionWarning": "Ihre Region konnte nicht bestimmt werden. Bitte kontaktieren Sie den Support."
+    }
+  }
+}

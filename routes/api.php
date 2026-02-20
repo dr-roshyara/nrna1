@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OpenionController;
+use App\Http\Controllers\Api\DemoSetupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,7 @@ Route::group(['middleware'=>['auth:sanctum']], function(){
     Route::get('/openions/search', [OpenionController::class, 'search'])
         ->name('openions.search');
 
+    // Demo Setup API Endpoint
+    Route::post('/organizations/{organization}/demo-setup', [DemoSetupController::class, 'setup'])
+        ->name('api.organizations.demo-setup');
 });

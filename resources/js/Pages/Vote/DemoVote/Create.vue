@@ -1,166 +1,255 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50 py-8">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Header -->
-      <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900">
-          {{ election_name }}
-        </h1>
-        <p class="mt-2 text-gray-600">
-          <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">
-            🎮 DEMO ELECTION - Testing Mode
-          </span>
-        </p>
-      </div>
-
-      <!-- Instructions -->
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8">
-        <h2 class="text-lg font-semibold text-blue-900">How to Vote</h2>
-        <ol class="mt-2 space-y-1 text-blue-800 text-sm">
-          <li>✓ Select your preferred candidate for each post below</li>
-          <li>✓ Review your selections on the next page</li>
-          <li>✓ Confirm your agreement to vote</li>
-          <li>✓ Verify your votes one final time</li>
-          <li>✓ Submit your votes</li>
-        </ol>
-      </div>
-
-      <!-- Posts and Candidates -->
-      <form @submit.prevent="submitVotes" class="space-y-6">
-        <div v-for="post in posts" :key="post.id" class="bg-white rounded-lg shadow-md overflow-hidden">
-          <!-- Post Header -->
-          <div class="bg-gradient-to-r from-indigo-600 to-blue-600 px-6 py-4">
-            <h3 class="text-xl font-bold text-white">
-              {{ post.name }}
-            </h3>
-            <p v-if="post.nepali_name" class="text-indigo-100 text-sm">
-              {{ post.nepali_name }}
-            </p>
-            <p class="text-indigo-200 text-sm mt-1">
-              Select {{ post.required_number }} candidate(s)
-            </p>
-          </div>
-
-          <!-- Candidates Grid -->
-          <div class="p-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div
-                v-for="candidate in post.candidates"
-                :key="candidate.id"
-                class="border-2 rounded-lg p-4 cursor-pointer transition-all"
-                :class="isSelected(post.id, candidate.id)
-                  ? 'border-indigo-600 bg-indigo-50'
-                  : 'border-gray-200 bg-white hover:border-indigo-300'"
-                @click="toggleCandidate(post.id, candidate.id)"
-              >
-                <!-- Candidate Image -->
-                <div class="mb-3 h-32 bg-gray-100 rounded-md overflow-hidden">
-                  <img
-                    v-if="candidate.image_path"
-                    :src="candidate.image_path"
-                    :alt="candidate.name"
-                    class="w-full h-full object-cover"
-                  />
-                  <div v-else class="flex items-center justify-center h-full bg-gray-200">
-                    <span class="text-gray-400 text-sm">No Image</span>
-                  </div>
+    <nrna-layout>
+        <app-layout>
+            <div class="mt-6 text-center max-w-4xl mx-auto">
+                <!-- Success Message -->
+                <div class="m-auto text-center bg-gradient-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg mb-8">
+                    <div class="text-4xl mb-3">🎉</div>
+                    <p class="text-xl font-bold mb-2">Welcome {{ name }}!</p>
+                    <p class="text-lg mb-2">Your code has been verified. You can now vote!</p>
+                    <p class="mb-3">Please select the candidates of your choice</p>
+                    <p class="text-sm opacity-90">आपको कोड सत्यापित भएको छ। कृपया अब आफ्नो इच्छा अनुसार मतदान गर्न सक्नु हुने छ।</p>
                 </div>
 
-                <!-- Candidate Info -->
-                <div class="text-sm">
-                  <p class="font-bold text-gray-900">{{ candidate.name }}</p>
-                  <p class="text-gray-600">{{ candidate.user_name }}</p>
-                  <p v-if="candidate.proposer_name" class="text-xs text-gray-500 mt-1">
-                    Proposer: {{ candidate.proposer_name }}
-                  </p>
-                </div>
+                <!-- Validation Errors -->
+                <jet-validation-errors class="mb-6 mx-auto text-center" />
 
-                <!-- Selection Indicator -->
-                <div v-if="isSelected(post.id, candidate.id)" class="mt-3 flex items-center text-indigo-600">
-                  <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm font-semibold">Selected</span>
-                </div>
-              </div>
+                <!-- Voting Form -->
+                <form @submit.prevent="submit" class="text-center mx-auto mt-8">
+                    <!-- Voting Options - Using CreateVotingform Component -->
+                    <create-votingform
+                        v-for="(post, postIndex) in posts"
+                        :key="post.post_id"
+                        :post="post"
+                        :postIndex="postIndex"
+                        :selectedVotes="selectedVotes"
+                        @update-votes="handleVoteUpdate"
+                    />
+
+
+                    <!-- Errors -->
+                    <div v-if="errors.votes" class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+                        <p class="text-red-800 font-semibold">{{ errors.votes }}</p>
+                    </div>
+
+                    <!-- Agreement and Submit Section -->
+                    <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mt-8">
+                        <!-- Agreement Section -->
+                        <div class="border-2 border-blue-300 rounded-lg p-6 mb-6 bg-blue-50">
+                            <!-- Header -->
+                            <div class="flex flex-col items-center justify-center mb-6">
+                                <div class="text-3xl mb-2">✅</div>
+                                <h3 class="text-xl font-bold text-red-700 mb-1">Voting Agreement | मतदान समझौता</h3>
+                                <p class="text-lg font-semibold text-red-700">मतदान गरेको स्विकार</p>
+                            </div>
+
+                            <!-- Checkbox -->
+                            <div class="flex justify-center mb-4">
+                                <label class="flex items-center cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        v-model="form.agree_button"
+                                        class="w-5 h-5 text-blue-600 border-2 border-gray-400 rounded focus:ring-blue-500 focus:ring-2"
+                                    />
+                                    <span class="ml-3 text-lg font-medium text-gray-900">I agree to the terms</span>
+                                </label>
+                            </div>
+
+                            <!-- Agreement Text -->
+                            <div class="bg-white rounded-lg p-4 border border-gray-200 mb-4">
+                                <p class="text-gray-700 mb-3 leading-relaxed">
+                                    By clicking this button, I confirm that I have chosen the candidates correctly and I followed the online rules to vote the candidates.
+                                </p>
+                                <p class="text-gray-700 text-sm leading-relaxed">
+                                    यो बटनमा थिचेर मैले माथि छाने आनुसार मतदान गरेको साचो हो। मैले बिद्दुतिय नियम हरुलाई पलना गरेर आफ्नो मत जाहेर गरेर मतदान गरेको कुरा स्विकार्छु।
+                                </p>
+                            </div>
+
+                            <!-- Demo Note -->
+                            <div class="bg-purple-50 border border-purple-200 rounded-lg p-3 mb-4">
+                                <p class="text-purple-800 text-sm font-medium">
+                                    💡 <strong>Demo Mode:</strong> This is a test vote. You can vote again after this for testing.
+                                </p>
+                            </div>
+
+                            <!-- Checkbox Error -->
+                            <div v-if="errors.agree_button" class="text-red-600 text-sm mb-4 bg-red-50 p-2 rounded">
+                                {{ errors.agree_button }}
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button
+                                type="submit"
+                                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-xl py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
+                                :disabled="!form.agree_button"
+                                :class="{ 'opacity-50 cursor-not-allowed': !form.agree_button }"
+                            >
+                                <span class="mr-2">🗳️</span>
+                                Submit Your Vote
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Form Validation Errors -->
+                    <div class="mx-auto text-center mt-6">
+                        <jet-validation-errors class="mb-4 mx-auto text-center" />
+                    </div>
+                </form>
             </div>
-          </div>
-        </div>
-
-        <!-- Errors -->
-        <div v-if="errors.votes" class="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p class="text-red-800 font-semibold">{{ errors.votes }}</p>
-        </div>
-
-        <!-- Submit Button -->
-        <div class="flex gap-4 justify-center mt-8">
-          <button
-            type="submit"
-            :disabled="loading"
-            class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition disabled:opacity-50"
-          >
-            <span v-if="loading" class="inline-block mr-2">⏳</span>
-            {{ loading ? 'Processing...' : 'Continue to Review' }}
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
+        </app-layout>
+    </nrna-layout>
 </template>
 
-<script setup>
-import { ref, computed } from 'vue'
-import { usePage, useForm } from '@inertiajs/inertia-vue3'
+<script>
+import { ref } from 'vue'
+import AppLayout from '@/Layouts/AppLayout'
+import NrnaLayout from '@/Layouts/NrnaLayout'
+import JetValidationErrors from '@/Jetstream/ValidationErrors'
+import CreateVotingform from '@/Pages/Vote/DemoVote/CreateVotingform.vue'
+import { useForm } from '@inertiajs/inertia-vue3'
 
-const props = defineProps({
-  posts: Array,
-  election_name: String,
-  election_id: Number,
-  slug: String,
-  useSlugPath: Boolean,
-})
-
-const loading = ref(false)
-const selectedVotes = ref({})
-const errors = ref({})
-
-const isSelected = (postId, candidateId) => {
-  return selectedVotes.value[postId]?.candidate_id === candidateId
-}
-
-const toggleCandidate = (postId, candidateId) => {
-  if (isSelected(postId, candidateId)) {
-    delete selectedVotes.value[postId]
-  } else {
-    selectedVotes.value[postId] = { candidate_id: candidateId }
-  }
-}
-
-const submitVotes = async () => {
-  errors.value = {}
-
-  // Validate at least one vote
-  if (Object.keys(selectedVotes.value).length === 0) {
-    errors.value.votes = 'Please select at least one candidate'
-    return
-  }
-
-  loading.value = true
-
-  const form = useForm({
-    votes: selectedVotes.value,
-  })
-
-  const routeName = props.useSlugPath ? 'slug.demo-vote.submit' : 'demo-vote.submit'
-  const params = props.useSlugPath ? { vslug: props.slug } : {}
-
-  form.post(route(routeName, params), {
-    onError: (errors) => {
-      if (errors.votes) {
-        errors.value.votes = errors.votes
-      }
-      loading.value = false
+export default {
+    components: {
+        AppLayout,
+        NrnaLayout,
+        JetValidationErrors,
+        CreateVotingform
     },
-  })
+
+    props: {
+        posts: Array,
+        name: String,
+        user_id: Number,
+        code_id: Number,
+        slug: String,
+        useSlugPath: Boolean,
+        election_name: String,
+        election_id: Number,
+    },
+
+    setup(props) {
+        const selectedVotes = ref({})
+        const errors = ref({})
+        const loading = ref(false)
+
+        const form = useForm({
+            user_id: props.user_id,
+            agree_button: false,
+        })
+
+        function submit() {
+            errors.value = {}
+
+            // Validate at least one vote
+            if (Object.keys(selectedVotes.value).length === 0) {
+                errors.value.votes = 'Please select at least one candidate'
+                return
+            }
+
+            loading.value = true
+
+            const voteForm = useForm({
+                votes: selectedVotes.value,
+            })
+
+            const routeName = props.useSlugPath ? 'slug.demo-vote.submit' : 'demo-vote.submit'
+            const params = props.useSlugPath ? { vslug: props.slug } : {}
+
+            voteForm.post(route(routeName, params), {
+                onError: (formErrors) => {
+                    if (formErrors.votes) {
+                        errors.value.votes = formErrors.votes
+                    }
+                    loading.value = false
+                },
+            })
+        }
+
+        const handleVoteUpdate = ({ postId, candidateId }) => {
+            if (candidateId === null) {
+                delete selectedVotes.value[postId]
+            } else {
+                selectedVotes.value[postId] = { candidate_id: candidateId }
+            }
+        }
+
+        return {
+            form,
+            submit,
+            selectedVotes,
+            errors,
+            loading,
+            handleVoteUpdate,
+        }
+    },
 }
 </script>
+
+<style scoped>
+.candidate-selection {
+    scroll-margin-top: 2rem;
+}
+
+.candidate-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.candidate-card:hover:not(.cursor-not-allowed) {
+    transform: translateY(-4px);
+}
+
+/* Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Focus styles for accessibility */
+input:focus-visible + label,
+button:focus-visible,
+[role="button"]:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .candidate-card,
+    .candidate-card:hover,
+    .transition-all {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .candidate-card {
+        border-width: 2px !important;
+    }
+
+    .ring-4 {
+        outline: 3px solid #000 !important;
+    }
+}
+
+/* Large touch targets for mobile */
+@media (max-width: 640px) {
+    .candidate-card {
+        padding: 1rem;
+    }
+
+    input[type="checkbox"] + label {
+        min-width: 48px;
+        min-height: 48px;
+    }
+}
+</style>

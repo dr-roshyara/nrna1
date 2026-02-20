@@ -220,6 +220,35 @@
     "phone": "Phone & WhatsApp",
     "phone_number": "+49 151 64322589"
   },
+  "organizations": {
+    "demo": {
+      "title": "Demo Election Testing",
+      "status_setup_complete": "Setup Complete",
+      "status_not_setup": "Not Setup",
+      "message_intro": "Test the complete voting workflow with demo data. Setup creates a sample election with posts, candidates, and test codes for your organization.",
+      "message_confirm_recreate": "This will DELETE all existing demo data for your organisation. Are you sure?",
+      "message_error": "An error occurred. Please try again.",
+      "stats_posts": "Posts",
+      "stats_candidates": "Candidates",
+      "stats_codes": "Codes",
+      "stats_test_votes": "Test Votes",
+      "button_setup": "Setup Demo Election",
+      "button_recreate": "Recreate Demo Data",
+      "button_test_voting": "Test Demo Voting",
+      "note_isolated": "Demo data is isolated to your organisation only. Recreating will delete existing demo data.",
+      "note_setup": "Setup a demo election to test the voting workflow. All data will be isolated to your organisation."
+    }
+  },
+  "pages": {
+    "voting": {
+      "regional_posts": {
+        "section_title": "Candidates for {region} Region",
+        "your_region": "Your Region",
+        "no_posts_title": "No Regional Candidates",
+        "no_posts_message": "There are currently no candidates available for your region {region}."
+      }
+    }
+  },
   "about": {
     "title": "About Public Digit",
     "subtitle": "Empowering Democracy Through Secure Digital Voting",

@@ -19,6 +19,10 @@ class DemoSetupController extends Controller
      * Trigger demo setup for an organisation
      *
      * POST /api/organizations/{organization}/demo-setup
+     *
+     * @param Request $request
+     * @param Organization $organization
+     * @return \Illuminate\Http\JsonResponse
      */
     public function setup(Request $request, Organization $organization)
     {
@@ -42,17 +46,10 @@ class DemoSetupController extends Controller
             $force = $request->input('force', false);
 
             // Execute the demo:setup command
-            // When force is true, also pass --clean to skip confirmation
-            $params = [
+            $exitCode = Artisan::call('demo:setup', [
                 '--org' => $organization->id,
-            ];
-
-            if ($force) {
-                $params['--force'] = true;
-                $params['--clean'] = true; // Skip confirmation
-            }
-
-            $exitCode = Artisan::call('demo:setup', $params);
+                '--force' => $force ? true : false,
+            ]);
 
             $output = Artisan::output();
 
@@ -104,6 +101,9 @@ class DemoSetupController extends Controller
 
     /**
      * Get demo election statistics for an organisation
+     *
+     * @param Organization $organization
+     * @return array
      */
     private function getDemoStats(Organization $organization)
     {

@@ -219,6 +219,25 @@
     "phone": "Telefon & WhatsApp",
     "phone_number": "+49 151 64322589"
   },
+  "organizations": {
+    "demo": {
+      "title": "Demo-Wahl testen",
+      "status_setup_complete": "Einrichtung abgeschlossen",
+      "status_not_setup": "Nicht eingerichtet",
+      "message_intro": "Testen Sie den kompletten Wahlablauf mit Demo-Daten. Die Einrichtung erstellt eine Beispielwahl mit Positionen, Kandidaten und Test-Codes für Ihre Organisation.",
+      "message_confirm_recreate": "Dies LÖSCHT alle vorhandenen Demo-Daten Ihrer Organisation. Sind Sie sicher?",
+      "message_error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+      "stats_posts": "Positionen",
+      "stats_candidates": "Kandidaten",
+      "stats_codes": "Codes",
+      "stats_test_votes": "Test-Stimmen",
+      "button_setup": "Demo-Wahl einrichten",
+      "button_recreate": "Demo-Daten neu erstellen",
+      "button_test_voting": "Demo-Wahl testen",
+      "note_isolated": "Demo-Daten sind nur auf Ihre Organisation beschränkt. Das Neuerstellen löscht vorhandene Demo-Daten.",
+      "note_setup": "Richten Sie eine Demo-Wahl ein, um den Wahlablauf zu testen. Alle Daten werden nur auf Ihre Organisation beschränkt."
+    }
+  },
   "about": {
     "title": "Über Public Digit",
     "subtitle": "Demokratie durch sichere digitale Wahlen stärken",
