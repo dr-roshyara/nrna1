@@ -48,20 +48,6 @@ trait BelongsToTenant
 
         // Auto-fill organisation_id when creating
         static::creating(function (Model $model) {
-            // CRITICAL: Skip auto-fill for demo votes
-            // Demo votes explicitly set organisation_id=NULL and must not be overwritten
-            // by the session's current_organisation_id
-            $demoVoteClass = class_exists('App\Models\DemoVote') ? 'App\Models\DemoVote' : null;
-            $demoResultClass = class_exists('App\Models\DemoResult') ? 'App\Models\DemoResult' : null;
-
-            if ($demoVoteClass && get_class($model) === $demoVoteClass) {
-                return;  // Don't auto-fill organisation_id for demo votes
-            }
-
-            if ($demoResultClass && get_class($model) === $demoResultClass) {
-                return;  // Don't auto-fill organisation_id for demo results
-            }
-
             // Only set if not already set
             if (is_null($model->organisation_id)) {
                 $model->organisation_id = session('current_organisation_id');
