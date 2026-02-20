@@ -57,7 +57,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-8">
                 <div
                     v-for="(candidate, index) in candidatesWithState"
-                    :key="candidate.candidacy_id"
+                    :key="`${post.post_id}-${candidate.candidacy_id}`"
                     class="candidate-card relative flex flex-col items-center"
                     :class="{
                         'ring-4 ring-blue-500 ring-offset-2': isSelected(candidate),
@@ -111,10 +111,9 @@
                                 <!-- Hidden checkbox for screen readers -->
                                 <input
                                     type="checkbox"
-                                    :id="`candidate-${candidate.candidacy_id}`"
-                                    :value="candidate.candidacy_id"
-                                    v-model="selected"
-                                    @change="updateBoxes"
+                                    :id="`candidate-${post.post_id}-${candidate.candidacy_id}`"
+                                    :checked="isSelected(candidate)"
+                                    @change="toggleSelection(candidate)"
                                     :disabled="candidate.disabled || noVoteSelected"
                                     :aria-label="$t('pages.voting.candidate_selection.select_candidate', { name: candidate.name || $t('pages.voting.candidate_selection.unknown') })"
                                     class="sr-only peer"
@@ -122,7 +121,7 @@
 
                                 <!-- Visual checkbox -->
                                 <label
-                                    :for="`candidate-${candidate.candidacy_id}`"
+                                    :for="`candidate-${post.post_id}-${candidate.candidacy_id}`"
                                     class="flex items-center justify-center w-14 h-14 bg-white border-4 border-gray-300 rounded-lg cursor-pointer
                                            peer-checked:bg-blue-600 peer-checked:border-blue-600
                                            peer-focus:ring-4 peer-focus:ring-blue-200 peer-focus:border-blue-500
@@ -285,7 +284,7 @@ export default {
             type: Object,
             required: true
         },
-        candidates: {  // ← ADDED: Direct candidates prop
+        candidates: {
             type: Array,
             default: () => []
         },
@@ -301,13 +300,19 @@ export default {
 
     data() {
         return {
-            selected: [],
+            // Store selections keyed by post_id to prevent cross-post interference
+            selectedByPost: {},
             candidatesWithState: [],
             noVoteSelected: false
         }
     },
 
     computed: {
+        // Get selected candidates for THIS SPECIFIC POST
+        selected() {
+            return this.selectedByPost[this.post.post_id] || [];
+        },
+
         maxSelections() {
             return this.post?.required_number || 1;
         },
@@ -425,7 +430,6 @@ export default {
     },
 
     watch: {
-        // Watch the direct candidates prop first (priority)
         candidates: {
             immediate: true,
             handler(newCandidates) {
@@ -434,31 +438,18 @@ export default {
                 }
             }
         },
-        // Fallback to post.candidates for backward compatibility
         'post.candidates': {
             immediate: true,
             handler(newCandidates) {
-                // Only use if candidates prop is empty
                 if ((!this.candidates || !this.candidates.length) && newCandidates && newCandidates.length) {
                     this.initializeCandidates(newCandidates);
                 }
-            }
-        },
-        selected: {
-            handler() {
-                this.informSelectedCandidates();
-            }
-        },
-        noVoteSelected: {
-            handler() {
-                this.informSelectedCandidates();
             }
         }
     },
 
     methods: {
         initializeCandidates(candidatesList) {
-            // Sort by position_order to ensure consistent display
             const sortedCandidates = [...candidatesList].sort((a, b) => {
                 const orderA = a.position_order || 0;
                 const orderB = b.position_order || 0;
@@ -470,9 +461,7 @@ export default {
                 disabled: false
             }));
 
-            // Reset selection when candidates change
-            this.selected = [];
-            this.noVoteSelected = false;
+            // Don't reset selection here - keep existing selections
         },
 
         isSelected(candidate) {
@@ -481,6 +470,49 @@ export default {
 
         selectionOrder(candidate) {
             return this.selected.indexOf(candidate.candidacy_id) + 1;
+        },
+
+        toggleSelection(candidate) {
+            if (this.noVoteSelected) return;
+
+            const currentSelected = [...this.selected];
+            const index = currentSelected.indexOf(candidate.candidacy_id);
+
+            if (index === -1) {
+                // Add candidate
+                if (currentSelected.length < this.maxSelections) {
+                    currentSelected.push(candidate.candidacy_id);
+                }
+            } else {
+                // Remove candidate
+                currentSelected.splice(index, 1);
+            }
+
+            // Store selections keyed by post_id
+            const newSelected = { ...this.selectedByPost };
+            newSelected[this.post.post_id] = currentSelected;
+            this.selectedByPost = newSelected;
+
+            this.updateBoxes();
+            this.informSelectedCandidates();
+        },
+
+        updateBoxes() {
+            if (this.noVoteSelected) return;
+
+            // Enable all candidates first
+            this.candidatesWithState.forEach(candidate => {
+                candidate.disabled = false;
+            });
+
+            // Disable unselected candidates if max reached
+            if (this.selected.length >= this.maxSelections) {
+                this.candidatesWithState.forEach(candidate => {
+                    if (!this.selected.includes(candidate.candidacy_id)) {
+                        candidate.disabled = true;
+                    }
+                });
+            }
         },
 
         informSelectedCandidates() {
@@ -499,13 +531,11 @@ export default {
                     this.selected.includes(candidate.candidacy_id)
                 );
 
-                const hasNoCandidatesSelected = selectedCandidates.length === 0;
-
                 selectionData = {
                     post_id: this.post.post_id,
                     post_name: this.post.name,
                     required_number: this.post.required_number,
-                    no_vote: hasNoCandidatesSelected,
+                    no_vote: selectedCandidates.length === 0,
                     candidates: selectedCandidates.map(candidate => ({
                         candidacy_id: candidate.candidacy_id,
                         user_id: candidate.user?.user_id || candidate.user?.id,
@@ -520,7 +550,11 @@ export default {
 
         handleNoVoteChange() {
             if (this.noVoteSelected) {
-                this.selected = [];
+                // Clear selections when "no vote" is selected
+                const newSelected = { ...this.selectedByPost };
+                newSelected[this.post.post_id] = [];
+                this.selectedByPost = newSelected;
+
                 this.candidatesWithState.forEach(candidate => {
                     candidate.disabled = true;
                 });
@@ -531,24 +565,6 @@ export default {
             }
 
             this.informSelectedCandidates();
-        },
-
-        updateBoxes() {
-            if (this.noVoteSelected) {
-                return;
-            }
-
-            this.candidatesWithState.forEach(candidate => {
-                candidate.disabled = false;
-            });
-
-            if (this.selected.length >= this.maxSelections) {
-                this.candidatesWithState.forEach(candidate => {
-                    if (!this.selected.includes(candidate.candidacy_id)) {
-                        candidate.disabled = true;
-                    }
-                });
-            }
         }
     }
 }
