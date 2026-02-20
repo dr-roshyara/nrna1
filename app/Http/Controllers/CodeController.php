@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Code;
+use App\Models\DemoCode;
 use App\Models\Election;
 use App\Services\VoterProgressService;
 use App\Services\VoterStepTrackingService;
@@ -53,7 +54,9 @@ class CodeController extends Controller
         $voterSlug = $request->attributes->get('voter_slug');
 
         // Check if code is already verified (should not be accessing create page)
-        $existingCode = Code::where('user_id', $user->id)
+        // Use DemoCode for demo elections, Code for real elections
+        $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
+        $existingCode = $CodeModel::where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->first();
 
@@ -195,7 +198,9 @@ class CodeController extends Controller
         }
 
         // Get code record for this election
-        $code = Code::where('user_id', $user->id)
+        // Use DemoCode for demo elections, Code for real elections
+        $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
+        $code = $CodeModel::where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->first();
         if (!$code) {
@@ -327,7 +332,9 @@ class CodeController extends Controller
         ]);
 
         // Verify user has completed code verification for this election
-        $code = Code::where('user_id', $user->id)
+        // Use DemoCode for demo elections, Code for real elections
+        $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
+        $code = $CodeModel::where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->first();
         if (!$code || $code->can_vote_now != 1) {
@@ -444,7 +451,9 @@ class CodeController extends Controller
         ]);
 
         // Verify user has completed code verification for this election
-        $code = Code::where('user_id', $user->id)
+        // Use DemoCode for demo elections, Code for real elections
+        $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
+        $code = $CodeModel::where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->first();
         if (!$code || $code->can_vote_now != 1) {
@@ -555,13 +564,13 @@ class CodeController extends Controller
      * @param \App\Models\Election $election
      * @return \App\Models\Code
      */
-    private function getOrCreateCode(User $user, Election $election): Code
+    private function getOrCreateCode(User $user, Election $election)
     {
+        // Separate code models for demo vs real elections
+        $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
+
         // Get code for this specific election
-        // CRITICAL: Use withoutGlobalScopes() because demo elections have organisation_id=NULL
-        // The global scope would filter out codes for demo elections
-        $code = Code::withoutGlobalScopes()
-            ->where('user_id', $user->id)
+        $code = $CodeModel::where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->first();
 
@@ -607,9 +616,9 @@ class CodeController extends Controller
         if (!$code) {
             // No code exists for this election - create new one
             // CRITICAL: Set organisation_id explicitly
-            // - Demo elections (type='demo'): organisation_id=NULL
-            // - Real elections (type='real'): organisation_id from election
-            $code = Code::create([
+            // - Demo elections (type='demo'): organisation_id from election (MODE 1: NULL, MODE 2: org_id)
+            // - Real elections (type='real'): organisation_id from election (always set)
+            $code = $CodeModel::create([
                 'user_id' => $user->id,
                 'election_id' => $election->id,
                 'organisation_id' => $election->organisation_id,  // ✅ EXPLICIT
@@ -715,7 +724,7 @@ class CodeController extends Controller
         return $code;
     }
 
-    private function verifyCode(Code $code, string $submittedCode, User $user): array
+    private function verifyCode($code, string $submittedCode, User $user): array
     {
         // Check if code is usable
         if (!$code->is_code1_usable) {
@@ -737,16 +746,19 @@ class CodeController extends Controller
             return ['success' => false, 'message' => 'Verification code has expired. Please request a new code.'];
         }
 
-        // Check IP rate limiting
-        $votesFromIP = Code::where('client_ip', $this->clientIP)->where('has_voted', 1)->count();
-        if ($votesFromIP >= $this->maxUseClientIP) {
+        // Check IP rate limiting - count from both Code and DemoCode tables
+        $realVotesFromIP = Code::where('client_ip', $this->clientIP)->where('has_voted', 1)->count();
+        $demoVotesFromIP = DemoCode::where('client_ip', $this->clientIP)->where('has_voted', 1)->count();
+        $totalVotesFromIP = $realVotesFromIP + $demoVotesFromIP;
+
+        if ($totalVotesFromIP >= $this->maxUseClientIP) {
             return ['success' => false, 'message' => 'Too many votes from this IP address.'];
         }
 
         return ['success' => true, 'message' => 'Code verified successfully.'];
     }
 
-    private function markCodeAsVerified(Code $code): void
+    private function markCodeAsVerified($code): void
     {
         Log::info('🔴 [markCodeAsVerified] Starting', ['code_id' => $code->id]);
 
