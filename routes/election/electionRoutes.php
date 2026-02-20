@@ -383,22 +383,35 @@ Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order',
 });
 
 // ============================================================================
-// DEMO VOTING WORKFLOW ROUTES - Simplified for demo elections
+// DEMO VOTING WORKFLOW ROUTES - IDENTICAL to Real Voting but with Demo Models
 // ============================================================================
-// Demo voting skips IP validation and code verification steps
+// Demo voting has the SAME workflow as real voting, but:
+// - No IP restrictions (allows testing from same IP)
+// - Allows multiple test votes
+// - Uses demo models (DemoCode, DemoVote, DemoCandidate, DemoPost)
+// - Same validation, same steps, same UI feeling
 Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order', 'vote.eligibility', 'election', 'vote.organisation'])->group(function () {
-    // Demo elections: Single-step simplified voting (no code verification)
+    // Demo elections: IDENTICAL workflow to real voting
     Route::middleware(['election.demo'])->group(function () {
-        // Show demo voting dashboard with all posts and candidates
-        Route::get('demo-vote', [DemoVoteController::class, 'index'])->name('slug.demo-vote.index');
+        // STEP 1: Show voting form with posts and candidates
+        Route::get('demo-vote/create', [DemoVoteController::class, 'create'])->name('slug.demo-vote.create');
 
-        // Verify votes before submission
-        Route::post('demo-vote/verify', [DemoVoteController::class, 'verify'])->name('slug.demo-vote.verify');
+        // STEP 2: Submit votes (first submission with validation)
+        Route::post('demo-vote/submit', [DemoVoteController::class, 'firstSubmission'])->name('slug.demo-vote.submit');
 
-        // Submit votes
-        Route::post('demo-vote/submit', [DemoVoteController::class, 'store'])->name('slug.demo-vote.submit');
+        // STEP 3: Show agreement/consent page
+        Route::get('demo-vote/agreement', [DemoVoteController::class, 'showAgreement'])->name('slug.demo-vote.agreement');
 
-        // Thank you page after submission
+        // STEP 4: Submit agreement and proceed
+        Route::post('demo-vote/agreement', [DemoVoteController::class, 'submitAgreement'])->name('slug.demo-vote.agreement.submit');
+
+        // STEP 5: Verify votes before final submission
+        Route::get('demo-vote/verify', [DemoVoteController::class, 'verify'])->name('slug.demo-vote.verify');
+
+        // STEP 6: Final vote storage
+        Route::post('demo-vote/final', [DemoVoteController::class, 'store'])->name('slug.demo-vote.store');
+
+        // STEP 7: Thank you page
         Route::get('demo-vote/thank-you', [DemoVoteController::class, 'thankYou'])->name('slug.demo-vote.thank-you');
     });
 });

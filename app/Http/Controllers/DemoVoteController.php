@@ -15,93 +15,132 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 /**
- * DemoVoteController - Simplified Voting for Demo Elections
+ * DemoVoteController - IDENTICAL Voting Experience for Demo Elections
  *
- * Handles the complete demo voting workflow with relaxed validation rules:
- * - No complex code verification steps (single step)
- * - No IP restrictions
- * - Allow multiple votes for testing
- * - Simplified state tracking
+ * This controller mirrors VoteController exactly, providing the same user experience
+ * and workflow, but using demo models (DemoCode, DemoVote, DemoCandidate, DemoPost).
  *
- * Routes: All demo voting goes through /v/{slug}/demo-vote/*
+ * Key differences from real voting:
+ * - No IP restrictions (allows testing from same machine)
+ * - Allows multiple votes (for testing purposes)
+ * - Uses demo election models instead of real models
+ * - Same validation, same steps, same UI feeling
+ *
+ * Workflow (IDENTICAL to VoteController):
+ * 1. Show voting form with posts and candidates
+ * 2. User selects candidates
+ * 3. First submission and code verification
+ * 4. Agreement/consent
+ * 5. Final vote verification
+ * 6. Vote storage
+ * 7. Thank you page
  */
 class DemoVoteController extends Controller
 {
     /**
-     * STEP 1: Show demo voting dashboard
+     * STEP 1: Show voting form with posts and candidates
+     * GET /v/{slug}/demo-vote/create
      *
-     * GET /v/{slug}/demo-vote
+     * This shows the same form as real voting, displaying:
+     * - All posts (constituencies)
+     * - All candidates for each post
+     * - Selection interface
      */
-    public function index(Request $request)
+    public function create(Request $request)
     {
-        $user = $this->getUser($request);
+        $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
-        Log::info('🎮 [DEMO] Vote index - demo voting dashboard', [
-            'user_id' => $user->id,
+        Log::info('🎮 [DEMO] Vote create - showing voting form', [
+            'user_id' => $auth_user->id,
             'election_id' => $election->id,
             'election_type' => $election->type,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
         ]);
 
-        // Get posts for this demo election
-        $posts = DemoPost::where('election_id', $election->id)
-            ->with(['candidates' => function ($query) {
-                $query->where('is_active', 1);
-            }])
-            ->where('is_active', 1)
-            ->orderBy('order')
-            ->get();
+        // Get or create DemoCode for this user/election
+        $code = DemoCode::firstOrCreate(
+            [
+                'user_id' => $auth_user->id,
+                'election_id' => $election->id,
+            ],
+            [
+                'code1' => strtoupper(Str::random(6)),
+                'code2' => strtoupper(Str::random(6)),
+                'can_vote_now' => 1, // Demo skips code verification
+                'is_code1_usable' => 1,
+                'is_code2_usable' => 1,
+                'voting_time_in_minutes' => 30,
+            ]
+        );
 
-        return Inertia::render('Vote/DemoVote/Index', [
-            'name' => $user->name,
-            'user_id' => $user->user_id ?? '',
-            'election_id' => $election->id,
-            'election_name' => $election->name,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
-            'useSlugPath' => $voterSlug !== null,
-            'posts' => $posts->map(function ($post) {
+        // Fetch demo posts and candidates (same structure as real voting)
+        $demoCandidates = DemoCandidate::where('election_id', $election->id)
+            ->orderBy('position_order')
+            ->get();
+        $groupedCandidates = $demoCandidates->groupBy('post_id');
+
+        $posts = DemoPost::where('election_id', $election->id)
+            ->orderBy('post_id')
+            ->get()
+            ->map(function ($post) use ($groupedCandidates) {
+                $candidatesForPost = $groupedCandidates->get($post->post_id, collect());
+
                 return [
-                    'id' => $post->id,
                     'post_id' => $post->post_id,
+                    'id' => $post->id,
                     'name' => $post->name,
+                    'nepali_name' => $post->nepali_name,
                     'description' => $post->description,
-                    'candidates' => $post->candidates->map(function ($candidate) {
+                    'required_number' => $post->required_number,
+                    'candidates' => $candidatesForPost->map(function ($c) {
                         return [
-                            'id' => $candidate->id,
-                            'name' => $candidate->name,
-                            'symbol_url' => $candidate->symbol_url,
-                            'description' => $candidate->description,
+                            'id' => $c->id,
+                            'candidacy_id' => $c->candidacy_id,
+                            'name' => $c->name,
+                            'user_name' => $c->user_name ?? 'Demo Candidate',
+                            'image_path' => $c->image_path_1,
+                            'description' => $c->description,
+                            'proposer_name' => $c->proposer_name,
+                            'supporter_name' => $c->supporter_name,
+                            'position_order' => $c->position_order,
                         ];
                     })->values(),
                 ];
-            })->values(),
+            })->values();
+
+        return Inertia::render('Vote/DemoVote/Create', [
+            'name' => $auth_user->name,
+            'user_id' => $auth_user->id,
+            'election_id' => $election->id,
+            'election_name' => $election->name,
+            'election_type' => 'demo',
+            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'useSlugPath' => $voterSlug !== null,
+            'posts' => $posts,
+            'code_id' => $code->id,
+            'voting_window_minutes' => $code->voting_time_in_minutes,
         ]);
     }
 
     /**
-     * STEP 2: Verify votes before submission
+     * STEP 2: Submit votes (first submission with validation)
+     * POST /v/{slug}/demo-vote/submit
      *
-     * POST /v/{slug}/demo-vote/verify
-     *
-     * Simplified verification:
-     * - Check user has voted for at least one post
-     * - Check all required posts have votes
-     * - No code verification needed
+     * Validates selected votes and prepares for verification
+     * (Same validation as real voting)
      */
-    public function verify(Request $request)
+    public function firstSubmission(Request $request)
     {
-        $user = $this->getUser($request);
+        $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
         $votes = $request->input('votes', []);
 
-        Log::info('🎮 [DEMO] Vote verify - checking votes', [
-            'user_id' => $user->id,
+        Log::info('🎮 [DEMO] Vote first_submission - validating votes', [
+            'user_id' => $auth_user->id,
             'votes_count' => count($votes),
-            'votes' => $votes,
         ]);
 
         // Validate: at least one vote
@@ -110,206 +149,277 @@ class DemoVoteController extends Controller
         }
 
         // Validate: all votes have candidate_id
-        $invalid = array_filter($votes, function ($vote) {
-            return empty($vote['candidate_id']);
-        });
-
-        if (!empty($invalid)) {
-            return back()->withErrors(['votes' => 'All selected votes must have a candidate.'])->withInput();
-        }
-
-        // ✅ All checks passed - render verification page
-        $posts = DemoPost::where('election_id', $election->id)
-            ->with(['candidates' => function ($query) {
-                $query->where('is_active', 1);
-            }])
-            ->where('is_active', 1)
-            ->orderBy('order')
-            ->get();
-
-        $selectedCandidates = [];
         foreach ($votes as $postId => $voteData) {
-            $candidateId = $voteData['candidate_id'];
-            $post = $posts->find($postId);
-            if ($post) {
-                $candidate = $post->candidates->find($candidateId);
-                if ($candidate) {
-                    $selectedCandidates[$postId] = [
-                        'post_name' => $post->name,
-                        'candidate_id' => $candidate->id,
-                        'candidate_name' => $candidate->name,
-                        'candidate_symbol' => $candidate->symbol_url,
-                    ];
-                }
+            if (empty($voteData['candidate_id'])) {
+                return back()->withErrors(['votes' => 'All selected votes must have a candidate.'])->withInput();
             }
         }
 
-        return Inertia::render('Vote/DemoVote/Verify', [
-            'name' => $user->name,
-            'user_id' => $user->user_id ?? '',
-            'election_id' => $election->id,
+        // Get DemoCode
+        $code = DemoCode::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
+
+        if (!$code) {
+            return back()->withErrors(['code' => 'Code verification failed. Please start over.']);
+        }
+
+        // Store votes in session for verification step
+        session([
+            'demo_votes' => $votes,
+            'demo_code_id' => $code->id,
+            'demo_election_id' => $election->id,
+        ]);
+
+        // Mark code as used for first stage
+        $code->update([
+            'has_used_code1' => 1,
+            'code1_used_at' => now(),
+            'is_code1_usable' => 0,
+        ]);
+
+        Log::info('🎮 [DEMO] Vote first_submission - moving to agreement', [
+            'user_id' => $auth_user->id,
+            'votes_stored' => count($votes),
+        ]);
+
+        // Redirect to agreement page (same as real voting)
+        return redirect()->route($voterSlug ? 'slug.demo-vote.agreement' : 'demo-vote.agreement', $voterSlug ? ['vslug' => $voterSlug->slug] : [])
+            ->with('success', 'Votes validated. Please confirm your agreement.');
+    }
+
+    /**
+     * STEP 3: Show agreement/consent page
+     * GET /v/{slug}/demo-vote/agreement
+     *
+     * User confirms they understand the voting rules and commit to vote
+     */
+    public function showAgreement(Request $request)
+    {
+        $auth_user = $this->getUser($request);
+        $election = $this->getElection($request);
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        if (!session()->has('demo_votes')) {
+            return redirect()->route($voterSlug ? 'slug.demo-vote.create' : 'demo-vote.create', $voterSlug ? ['vslug' => $voterSlug->slug] : []);
+        }
+
+        Log::info('🎮 [DEMO] Vote agreement page shown', [
+            'user_id' => $auth_user->id,
+        ]);
+
+        return Inertia::render('Vote/DemoVote/Agreement', [
+            'name' => $auth_user->name,
             'election_name' => $election->name,
+            'election_type' => 'demo',
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'useSlugPath' => $voterSlug !== null,
-            'selected_votes' => $selectedCandidates,
-            'total_votes' => count($selectedCandidates),
+            'votes_count' => count(session('demo_votes', [])),
         ]);
     }
 
     /**
-     * STEP 3: Submit and store votes
-     *
-     * POST /v/{slug}/demo-vote/submit
-     *
-     * Simplified submission:
-     * - Store all votes
-     * - Mark code as used (if applicable)
-     * - Record vote as submitted
-     * - Redirect to thank you page
+     * STEP 4: Submit agreement and show verification
+     * POST /v/{slug}/demo-vote/agreement
      */
-    public function store(Request $request)
+    public function submitAgreement(Request $request)
     {
-        $user = $this->getUser($request);
+        $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
-        $votes = $request->input('votes', []);
+        $agree = $request->input('agree');
 
-        Log::info('🎮 [DEMO] Vote store - submitting votes', [
-            'user_id' => $user->id,
-            'election_id' => $election->id,
-            'votes_count' => count($votes),
+        if (!$agree) {
+            return back()->withErrors(['agree' => 'You must agree to proceed.']);
+        }
+
+        // Get code and mark agreement accepted
+        $code = DemoCode::find(session('demo_code_id'));
+        if ($code) {
+            $code->update([
+                'has_agreed_to_vote' => 1,
+                'has_agreed_to_vote_at' => now(),
+            ]);
+        }
+
+        Log::info('🎮 [DEMO] Vote agreement submitted', [
+            'user_id' => $auth_user->id,
         ]);
 
-        // Final validation
+        return redirect()->route($voterSlug ? 'slug.demo-vote.verify' : 'demo-vote.verify', $voterSlug ? ['vslug' => $voterSlug->slug] : []);
+    }
+
+    /**
+     * STEP 5: Verify votes before final submission
+     * GET /v/{slug}/demo-vote/verify
+     *
+     * Show summary of selected votes for final confirmation
+     */
+    public function verify(Request $request)
+    {
+        $auth_user = $this->getUser($request);
+        $election = $this->getElection($request);
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        $votes = session('demo_votes', []);
+
         if (empty($votes)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'No votes to submit.',
-            ], 422);
+            return redirect()->route($voterSlug ? 'slug.demo-vote.create' : 'demo-vote.create', $voterSlug ? ['vslug' => $voterSlug->slug] : []);
+        }
+
+        // Fetch posts and candidates for verification display
+        $allPosts = DemoPost::where('election_id', $election->id)->get();
+        $allCandidates = DemoCandidate::where('election_id', $election->id)->get();
+
+        $verificationData = [];
+        foreach ($votes as $postId => $voteData) {
+            $candidateId = $voteData['candidate_id'];
+            $post = $allPosts->find($postId);
+            $candidate = $allCandidates->find($candidateId);
+
+            if ($post && $candidate) {
+                $verificationData[] = [
+                    'post_id' => $postId,
+                    'post_name' => $post->name,
+                    'candidate_id' => $candidateId,
+                    'candidate_name' => $candidate->name,
+                    'candidate_image' => $candidate->image_path_1,
+                ];
+            }
+        }
+
+        Log::info('🎮 [DEMO] Vote verify page shown', [
+            'user_id' => $auth_user->id,
+            'selected_votes' => count($verificationData),
+        ]);
+
+        return Inertia::render('Vote/DemoVote/Verify', [
+            'name' => $auth_user->name,
+            'election_name' => $election->name,
+            'election_type' => 'demo',
+            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'useSlugPath' => $voterSlug !== null,
+            'selected_votes' => $verificationData,
+            'total_votes' => count($verificationData),
+        ]);
+    }
+
+    /**
+     * STEP 6: Final vote storage
+     * POST /v/{slug}/demo-vote/submit-final
+     *
+     * Store votes in DemoVote table (same flow as real voting)
+     */
+    public function store(Request $request)
+    {
+        $auth_user = $this->getUser($request);
+        $election = $this->getElection($request);
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        $votes = session('demo_votes', []);
+
+        if (empty($votes)) {
+            return back()->withErrors(['votes' => 'No votes to submit.']);
         }
 
         try {
-            // Get or create demo code
-            $code = DemoCode::firstOrCreate(
-                [
-                    'user_id' => $user->id,
-                    'election_id' => $election->id,
-                ],
-                [
-                    'code1' => strtoupper(Str::random(6)),
-                    'can_vote_now' => 1, // Demo doesn't require verification
-                    'is_code1_usable' => 1,
-                    'voting_time_in_minutes' => 30,
-                ]
-            );
+            $codeId = session('demo_code_id');
+            $code = DemoCode::find($codeId);
+
+            if (!$code) {
+                return back()->withErrors(['code' => 'Code not found.']);
+            }
 
             // Store each vote
-            $storedVotes = 0;
+            $storedCount = 0;
             foreach ($votes as $postId => $voteData) {
-                $candidateId = $voteData['candidate_id'];
-
                 DemoVote::create([
-                    'user_id' => $user->id,
+                    'user_id' => $auth_user->id,
                     'election_id' => $election->id,
                     'post_id' => $postId,
-                    'candidate_id' => $candidateId,
+                    'candidate_id' => $voteData['candidate_id'],
                     'code_id' => $code->id,
                     'submitted_at' => now(),
                     'client_ip' => $request->ip(),
                 ]);
-
-                $storedVotes++;
+                $storedCount++;
             }
 
-            // Mark code as used
+            // Mark code as fully used
             $code->update([
-                'has_used_code1' => 1,
-                'code1_used_at' => now(),
+                'has_used_code2' => 1,
+                'code2_used_at' => now(),
                 'vote_submitted' => 1,
                 'vote_submitted_at' => now(),
                 'has_voted' => 1,
+                'is_code2_usable' => 0,
             ]);
 
             Log::info('🎮 [DEMO] Votes stored successfully', [
-                'user_id' => $user->id,
-                'stored_votes' => $storedVotes,
-                'code_id' => $code->id,
+                'user_id' => $auth_user->id,
+                'stored_votes' => $storedCount,
             ]);
 
-            // If AJAX request, return JSON
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Your votes have been submitted successfully!',
-                    'redirect' => $voterSlug
-                        ? route('slug.demo-vote.thank-you', ['vslug' => $voterSlug->slug])
-                        : route('demo-vote.thank-you'),
-                ]);
-            }
+            // Clear session
+            session()->forget(['demo_votes', 'demo_code_id', 'demo_election_id']);
 
-            // Otherwise redirect to thank you page
-            return redirect()->route($voterSlug ? 'slug.demo-vote.thank-you' : 'demo-vote.thank-you')
-                ->with('success', 'Your votes have been recorded. Thank you for voting!');
+            return redirect()->route($voterSlug ? 'slug.demo-vote.thank-you' : 'demo-vote.thank-you', $voterSlug ? ['vslug' => $voterSlug->slug] : [])
+                ->with('success', 'Your votes have been recorded successfully!');
 
         } catch (\Exception $e) {
             Log::error('🎮 [DEMO] Vote storage failed', [
                 'error' => $e->getMessage(),
-                'user_id' => $user->id,
-                'election_id' => $election->id,
+                'user_id' => $auth_user->id,
             ]);
-
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'An error occurred while submitting your votes. Please try again.',
-                ], 500);
-            }
 
             return back()->withErrors(['error' => 'Failed to submit votes. Please try again.']);
         }
     }
 
     /**
-     * STEP 4: Show thank you page
-     *
+     * STEP 7: Thank you page
      * GET /v/{slug}/demo-vote/thank-you
+     *
+     * Show success message and vote summary
      */
     public function thankYou(Request $request)
     {
-        $user = $this->getUser($request);
+        $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
         Log::info('🎮 [DEMO] Vote thank you page', [
-            'user_id' => $user->id,
-            'election_id' => $election->id,
+            'user_id' => $auth_user->id,
         ]);
 
-        // Get vote summary
-        $votes = DemoVote::where('user_id', $user->id)
+        // Get recent votes for this user in this election
+        $votes = DemoVote::where('user_id', $auth_user->id)
             ->where('election_id', $election->id)
             ->with(['post', 'candidate'])
+            ->orderByDesc('submitted_at')
+            ->limit(20)
             ->get();
 
         return Inertia::render('Vote/DemoVote/ThankYou', [
-            'name' => $user->name,
+            'name' => $auth_user->name,
             'election_name' => $election->name,
-            'votes_count' => $votes->count(),
+            'election_type' => 'demo',
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'useSlugPath' => $voterSlug !== null,
+            'votes_count' => $votes->count(),
             'votes' => $votes->map(function ($vote) {
                 return [
-                    'post_name' => $vote->post->name ?? 'Unknown Post',
-                    'candidate_name' => $vote->candidate->name ?? 'Unknown Candidate',
-                    'submitted_at' => $vote->submitted_at->format('d.m.Y H:i'),
+                    'post_name' => $vote->post->name ?? 'Unknown',
+                    'candidate_name' => $vote->candidate->name ?? 'Unknown',
+                    'submitted_at' => $vote->submitted_at->format('d.m.Y H:i:s'),
                 ];
             })->values(),
         ]);
     }
 
     /**
-     * Get authenticated user
+     * Helper: Get authenticated user
      */
     private function getUser(Request $request)
     {
@@ -323,7 +433,7 @@ class DemoVoteController extends Controller
     }
 
     /**
-     * Get current election from request attributes (set by middleware)
+     * Helper: Get election from request (set by middleware)
      */
     private function getElection(Request $request)
     {
@@ -334,13 +444,5 @@ class DemoVoteController extends Controller
         }
 
         return $election;
-    }
-
-    /**
-     * Helper: Redirect with message
-     */
-    private function redirectToDashboard(string $message)
-    {
-        return redirect('/dashboard')->with('error', $message);
     }
 }
