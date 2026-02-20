@@ -2210,8 +2210,13 @@ public function verifyVoteSubmit(): array
         $vote->no_vote_option = $no_vote_option ? 1 : 0;
         $vote->voting_code=$hashed_voting_key;
         $vote->election_id=$election->id;
-        // PHASE 3: Explicitly set organisation_id for real votes
-        $vote->organisation_id = $election->organisation_id;
+
+        // PHASE 3: Explicitly set organisation_id only for REAL votes
+        // Demo votes: Let BelongsToTenant trait auto-fill from session (MODE 1: NULL, MODE 2: user's org)
+        // Real votes: Always set from election's organisation_id (enforced at all 4 layers)
+        if ($election->type === 'real') {
+            $vote->organisation_id = $election->organisation_id;
+        }
 
         $vote->save();   //save the vote first
         $this->out_code = $vote->getKey();  // Get the vote's primary key
@@ -2278,8 +2283,14 @@ public function verifyVoteSubmit(): array
                           $result->election_id   =$election->id;
                           $result->post_id       =$post_id;
                           $result->candidacy_id  =$candidates[$j]['candidacy_id'];
-                          // PHASE 3: Explicitly set organisation_id for real results
-                          $result->organisation_id = $election->organisation_id;
+
+                          // PHASE 3: Explicitly set organisation_id only for REAL results
+                          // Demo results: Let BelongsToTenant trait auto-fill from session (MODE 1: NULL, MODE 2: user's org)
+                          // Real results: Always set from election's organisation_id (enforced at all 4 layers)
+                          if ($election->type === 'real') {
+                              $result->organisation_id = $election->organisation_id;
+                          }
+
                           $result->save();
 
                         }
