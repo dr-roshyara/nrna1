@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Election;
 use App\Models\Post;
-use App\Models\DemoCandidate;
+use App\Models\DemoCandidacy;
 use Illuminate\Console\Command;
 
 class SetupDemoElection extends Command
@@ -47,7 +47,7 @@ class SetupDemoElection extends Command
         // Demo election already exists
         if ($existingElection) {
             $posts = Post::where('post_id', 'like', '%-' . $existingElection->id)->count();
-            $candidates = DemoCandidate::where('election_id', $existingElection->id)->count();
+            $candidates = DemoCandidacy::where('election_id', $existingElection->id)->count();
 
             $this->info("\n📋 Demo election already exists:");
             $this->info("  ID: {$existingElection->id}");
@@ -148,7 +148,7 @@ class SetupDemoElection extends Command
 
             foreach ($candidates as $index => $candidate) {
                 $globalCandidateCounter++;
-                DemoCandidate::create([
+                DemoCandidacy::create([
                     'user_id' => "demo-{$post->post_id}-" . ($index + 1),
                     'post_id' => $post->post_id,
                     'election_id' => $election->id,

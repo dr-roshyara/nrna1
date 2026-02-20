@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ElectionSeeder::class,
             DemoElectionSeeder::class,
-            DemoCandidateSeeder::class,
+            DemoCandidacySeeder::class,
         ]);
     }
 }

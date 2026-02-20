@@ -2,30 +2,30 @@
 
 namespace Database\Factories;
 
-use App\Models\DemoCandidate;
+use App\Models\DemoCandidacy;
 use App\Models\Election;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * DemoCandidateFactory
+ * DemoCandidacyFactory
  *
  * Generates realistic demo candidates for testing election voting workflows.
  * Uses Faker library to generate random candidate data.
  *
  * Usage:
- *   DemoCandidate::factory()->create()                    // Creates 1 candidate
- *   DemoCandidate::factory()->count(10)->create()         // Creates 10 candidates
- *   DemoCandidate::factory()->forPost('president')->count(5)->create()
+ *   DemoCandidacy::factory()->create()                    // Creates 1 candidate
+ *   DemoCandidacy::factory()->count(10)->create()         // Creates 10 candidates
+ *   DemoCandidacy::factory()->forPost('president')->count(5)->create()
  */
-class DemoCandidateFactory extends Factory
+class DemoCandidacyFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = DemoCandidate::class;
+    protected $model = DemoCandidacy::class;
 
     /**
      * Post types for candidates

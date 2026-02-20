@@ -2,24 +2,24 @@
 
 namespace Database\Seeders;
 
-use App\Models\DemoCandidate;
+use App\Models\DemoCandidacy;
 use App\Models\Election;
 use Illuminate\Database\Seeder;
 
 /**
- * DemoCandidateSeeder
+ * DemoCandidacySeeder
  *
  * Populates demo_candidacies table with test candidates for demo election.
  * These candidates are used for testing the voting workflow without affecting
  * real election data.
  *
- * Uses DemoCandidateFactory to generate realistic random candidate data.
+ * Uses DemoCandidacyFactory to generate realistic random candidate data.
  *
  * Usage:
- *   php artisan db:seed --class=DemoCandidateSeeder
+ *   php artisan db:seed --class=DemoCandidacySeeder
  *   php artisan migrate:fresh --seed
  */
-class DemoCandidateSeeder extends Seeder
+class DemoCandidacySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -41,7 +41,7 @@ class DemoCandidateSeeder extends Seeder
         $this->command->info('');
 
         // Clear existing demo candidates (optional - remove if you want to preserve)
-        // DemoCandidate::where('election_id', $demoElection->id)->delete();
+        // DemoCandidacy::where('election_id', $demoElection->id)->delete();
 
         // Define posts and number of candidates for each
         $postsWithCounts = [
@@ -58,7 +58,7 @@ class DemoCandidateSeeder extends Seeder
         foreach ($postsWithCounts as $postId => $count) {
             $this->command->info("Creating {$count} candidates for {$postId}...");
 
-            DemoCandidate::factory()
+            DemoCandidacy::factory()
                 ->count($count)
                 ->forPost($postId)
                 ->forElection($demoElection)

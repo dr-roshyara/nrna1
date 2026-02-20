@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * DemoCandidate Model - Demo Election Candidates
+ * DemoCandidacy Model - Demo Election Candidates
  *
  * Physical table separation from real candidacies for testing.
  * Same structure as Candidacy but stored in demo_candidacies table.
@@ -14,12 +14,13 @@ use Illuminate\Database\Eloquent\Model;
  * Table: demo_candidacies (separate from candidacies table)
  * Purpose: Testing voting workflows without affecting real election data
  *
- * Demo candidates:
+ * Demo candidacies:
  * - Can be reset/cleared without affecting real elections
  * - Allow same user to be candidate in both demo and real elections
  * - Safe for testing candidacy workflows
+ * - Includes organisation_id for MODE 2 (with organisation) demo voting
  */
-class DemoCandidate extends Model
+class DemoCandidacy extends Model
 {
     use HasFactory;
 
@@ -41,11 +42,12 @@ class DemoCandidate extends Model
         'image_path_2',
         'image_path_3',
         'election_id',
+        'organisation_id',  // ✅ Added for MODE 2 demo voting
         'position_order'
     ];
 
     /**
-     * Each DemoCandidate belongs to one user
+     * Each DemoCandidacy belongs to one user
      * Get the user
      */
     public function user()
@@ -55,7 +57,7 @@ class DemoCandidate extends Model
     }
 
     /**
-     * One DemoCandidate belongs to One Post
+     * One DemoCandidacy belongs to One Post
      * Get the post
      */
     public function post()

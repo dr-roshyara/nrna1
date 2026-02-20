@@ -81,12 +81,12 @@ class Post extends Model
 
     /**
      * Get all demo candidates for this post
-     * Returns DemoCandidate models for demo election voting
+     * Returns DemoCandidacy models for demo election voting
      * Ordered by position_order for consistent display
      */
     public function demoCandidates()
     {
-        return $this->hasMany(DemoCandidate::class, 'post_id', 'post_id')
+        return $this->hasMany(DemoCandidacy::class, 'post_id', 'post_id')
                     ->with('user')
                     ->orderBy('position_order')
                     ->select([

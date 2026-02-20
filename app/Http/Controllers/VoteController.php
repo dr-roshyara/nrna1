@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vote;
 use App\Models\DemoVote;
-use App\Models\DemoCandidate;
+use App\Models\DemoCandidacy;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -219,10 +219,10 @@ public function create(Request $request)
     }
 
     // --- Fetch National Posts and Candidates ---
-    // For demo elections, use DemoCandidate; for real elections, use Candidacy
+    // For demo elections, use DemoCandidacy; for real elections, use Candidacy
     if ($election->isDemo()) {
         // Demo election: fetch demo candidates for this election (ordered by position_order)
-        $demoCandidates = DemoCandidate::where('election_id', $election->id)
+        $demoCandidates = DemoCandidacy::where('election_id', $election->id)
             ->orderBy('position_order')
             ->get();
         $groupedCandidates = $demoCandidates->groupBy('post_id');
@@ -297,7 +297,7 @@ public function create(Request $request)
     if (!empty($auth_user->region)) {
         if ($election->isDemo()) {
             // Demo election: fetch demo candidates for this election (ordered by position_order)
-            $demoCandidates = DemoCandidate::where('election_id', $election->id)
+            $demoCandidates = DemoCandidacy::where('election_id', $election->id)
                 ->orderBy('position_order')
                 ->get();
             $groupedCandidates = $demoCandidates->groupBy('post_id');

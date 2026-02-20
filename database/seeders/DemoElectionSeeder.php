@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Election;
 use App\Models\Post;
-use App\Models\DemoCandidate;
+use App\Models\DemoCandidacy;
 use Illuminate\Database\Seeder;
 
 class DemoElectionSeeder extends Seeder
@@ -82,7 +82,7 @@ class DemoElectionSeeder extends Seeder
         ];
 
         foreach ($presidents as $index => $candidate) {
-            DemoCandidate::create([
+            DemoCandidacy::create([
                 'user_id' => 'demo-president-' . $election->id . '-' . ($index + 1),
                 'post_id' => $post1->post_id,
                 'election_id' => $election->id,
@@ -131,7 +131,7 @@ class DemoElectionSeeder extends Seeder
         ];
 
         foreach ($vicePresidents as $index => $candidate) {
-            DemoCandidate::create([
+            DemoCandidacy::create([
                 'user_id' => 'demo-vice-president-' . $election->id . '-' . ($index + 1),
                 'post_id' => $post2->post_id,
                 'election_id' => $election->id,
@@ -180,7 +180,7 @@ class DemoElectionSeeder extends Seeder
         ];
 
         foreach ($secretaries as $index => $candidate) {
-            DemoCandidate::create([
+            DemoCandidacy::create([
                 'user_id' => 'demo-secretary-' . $election->id . '-' . ($index + 1),
                 'post_id' => $post3->post_id,
                 'election_id' => $election->id,
@@ -198,7 +198,7 @@ class DemoElectionSeeder extends Seeder
 
         // ========== SUMMARY ==========
         $totalPosts = 3;
-        $totalCandidacies = DemoCandidate::where('election_id', $election->id)->count();
+        $totalCandidacies = DemoCandidacy::where('election_id', $election->id)->count();
 
         $this->command->info("\n📊 Demo Election Summary:");
         $this->command->info("  ✅ Election: {$election->name}");
