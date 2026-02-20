@@ -110,7 +110,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { usePage, useForm } from '@inertiajs/vue3'
+import { usePage, useForm } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
   posts: Array,

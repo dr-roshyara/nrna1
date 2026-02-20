@@ -108,7 +108,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useForm, router } from '@inertiajs/vue3'
+import { useForm } from '@inertiajs/inertia-vue3'
+import { Inertia } from '@inertiajs/inertia'
 
 const props = defineProps({
   election_name: String,
@@ -122,7 +123,7 @@ const loading = ref(false)
 const errors = ref({})
 
 const goBack = () => {
-  router.get(
+  Inertia.get(
     route(props.useSlugPath ? 'slug.demo-vote.create' : 'demo-vote.create',
           props.useSlugPath ? { vslug: props.slug } : {})
   )

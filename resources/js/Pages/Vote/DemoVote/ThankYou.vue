@@ -106,7 +106,7 @@
 </template>
 
 <script setup>
-import { useForm, router } from '@inertiajs/vue3'
+import { Inertia } from '@inertiajs/inertia'
 
 const props = defineProps({
   name: String,
@@ -118,11 +118,11 @@ const props = defineProps({
 })
 
 const goToDashboard = () => {
-  router.get(route('dashboard'))
+  Inertia.get(route('dashboard'))
 }
 
 const voteAgain = () => {
-  router.get(
+  Inertia.get(
     route(props.useSlugPath ? 'slug.demo-vote.create' : 'demo-vote.create',
           props.useSlugPath ? { vslug: props.slug } : {})
   )

@@ -135,7 +135,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useForm, router } from '@inertiajs/vue3'
+import { useForm, usePage } from '@inertiajs/inertia-vue3'
+import { Inertia } from '@inertiajs/inertia'
 
 const props = defineProps({
   name: String,
@@ -183,7 +184,7 @@ const submitCode = () => {
 const resetForm = () => {
   enteredCode.value = ''
   errors.value = {}
-  router.get(
+  Inertia.get(
     route(props.useSlugPath ? 'slug.demo-code.create' : 'demo-code.create',
           props.useSlugPath ? { vslug: props.slug } : {})
   )
