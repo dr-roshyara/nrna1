@@ -2211,11 +2211,15 @@ public function verifyVoteSubmit(): array
         $vote->voting_code=$hashed_voting_key;
         $vote->election_id=$election->id;
 
-        // PHASE 3: Explicitly set organisation_id only for REAL votes
-        // Demo votes: Let BelongsToTenant trait auto-fill from session (MODE 1: NULL, MODE 2: user's org)
-        // Real votes: Always set from election's organisation_id (enforced at all 4 layers)
+        // PHASE 3: Explicitly set organisation_id based on election type
         if ($election->type === 'real') {
+            // Real votes: Always set from election's organisation_id (enforced at all 4 layers)
             $vote->organisation_id = $election->organisation_id;
+        } else {
+            // Demo votes: Set from session context if available
+            // MODE 1: organisation_id = NULL (no organisation)
+            // MODE 2: organisation_id = user's organisation_id
+            $vote->organisation_id = session('current_organisation_id');
         }
 
         $vote->save();   //save the vote first
@@ -2284,11 +2288,15 @@ public function verifyVoteSubmit(): array
                           $result->post_id       =$post_id;
                           $result->candidacy_id  =$candidates[$j]['candidacy_id'];
 
-                          // PHASE 3: Explicitly set organisation_id only for REAL results
-                          // Demo results: Let BelongsToTenant trait auto-fill from session (MODE 1: NULL, MODE 2: user's org)
-                          // Real results: Always set from election's organisation_id (enforced at all 4 layers)
+                          // PHASE 3: Explicitly set organisation_id based on election type
                           if ($election->type === 'real') {
+                              // Real results: Always set from election's organisation_id (enforced at all 4 layers)
                               $result->organisation_id = $election->organisation_id;
+                          } else {
+                              // Demo results: Set from session context if available
+                              // MODE 1: organisation_id = NULL (no organisation)
+                              // MODE 2: organisation_id = user's organisation_id
+                              $result->organisation_id = session('current_organisation_id');
                           }
 
                           $result->save();
