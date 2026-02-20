@@ -606,9 +606,13 @@ class CodeController extends Controller
 
         if (!$code) {
             // No code exists for this election - create new one
+            // CRITICAL: Set organisation_id explicitly
+            // - Demo elections (type='demo'): organisation_id=NULL
+            // - Real elections (type='real'): organisation_id from election
             $code = Code::create([
                 'user_id' => $user->id,
                 'election_id' => $election->id,
+                'organisation_id' => $election->organisation_id,  // ✅ EXPLICIT
                 'code1' => $this->generateCode(),
                 'code1_sent_at' => now(),
                 'has_code1_sent' => 1,
