@@ -3,6 +3,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\CandidacyController;
 use App\Http\Controllers\VoterlistController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\DemoVoteController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\CodeController;
 use App\Http\Controllers\DeligateCandidacyController;
@@ -379,6 +380,27 @@ Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order',
             'slug' => $voterSlug->slug
         ]);
     })->name('slug.vote.complete');
+});
+
+// ============================================================================
+// DEMO VOTING WORKFLOW ROUTES - Simplified for demo elections
+// ============================================================================
+// Demo voting skips IP validation and code verification steps
+Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order', 'vote.eligibility', 'election', 'vote.organisation'])->group(function () {
+    // Demo elections: Single-step simplified voting (no code verification)
+    Route::middleware(['election.demo'])->group(function () {
+        // Show demo voting dashboard with all posts and candidates
+        Route::get('demo-vote', [DemoVoteController::class, 'index'])->name('slug.demo-vote.index');
+
+        // Verify votes before submission
+        Route::post('demo-vote/verify', [DemoVoteController::class, 'verify'])->name('slug.demo-vote.verify');
+
+        // Submit votes
+        Route::post('demo-vote/submit', [DemoVoteController::class, 'store'])->name('slug.demo-vote.submit');
+
+        // Thank you page after submission
+        Route::get('demo-vote/thank-you', [DemoVoteController::class, 'thankYou'])->name('slug.demo-vote.thank-you');
+    });
 });
 
 // Admin routes for election committee
