@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\DemoCode;
 use App\Models\DemoVote;
 use App\Models\Election;
-use App\Models\DemoCandidate;
+use App\Models\DemoCandidacy;
 use App\Models\DemoPost;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -78,7 +78,7 @@ class DemoVoteController extends Controller
         }
 
         // Fetch demo posts and candidates (same structure as real voting)
-        $demoCandidates = DemoCandidate::where('election_id', $election->id)
+        $demoCandidates = DemoCandidacy::where('election_id', $election->id)
             ->orderBy('position_order')
             ->get();
         $groupedCandidates = $demoCandidates->groupBy('post_id');
@@ -273,7 +273,7 @@ class DemoVoteController extends Controller
 
         // Fetch posts and candidates for verification display
         $allPosts = DemoPost::where('election_id', $election->id)->get();
-        $allCandidates = DemoCandidate::where('election_id', $election->id)->get();
+        $allCandidates = DemoCandidacy::where('election_id', $election->id)->get();
 
         $verificationData = [];
         foreach ($votes as $postId => $voteData) {
