@@ -58,21 +58,24 @@ class DemoVoteController extends Controller
             'election_type' => $election->type,
         ]);
 
-        // Get or create DemoCode for this user/election
-        $code = DemoCode::firstOrCreate(
-            [
+        // Get DemoCode - must be verified before accessing voting form
+        $code = DemoCode::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
+
+        // If no code or code not verified, redirect to code verification
+        if (!$code || $code->can_vote_now != 1) {
+            Log::info('🎮 [DEMO] Code not verified - redirecting to code verification', [
                 'user_id' => $auth_user->id,
-                'election_id' => $election->id,
-            ],
-            [
-                'code1' => strtoupper(Str::random(6)),
-                'code2' => strtoupper(Str::random(6)),
-                'can_vote_now' => 1, // Demo skips code verification
-                'is_code1_usable' => 1,
-                'is_code2_usable' => 1,
-                'voting_time_in_minutes' => 30,
-            ]
-        );
+                'has_code' => $code ? 'yes' : 'no',
+                'can_vote_now' => $code ? $code->can_vote_now : 'N/A',
+            ]);
+
+            return redirect()->route(
+                $voterSlug ? 'slug.demo-code.create' : 'demo-code.create',
+                $voterSlug ? ['vslug' => $voterSlug->slug] : []
+            )->with('info', 'Please verify your code first.');
+        }
 
         // Fetch demo posts and candidates (same structure as real voting)
         $demoCandidates = DemoCandidate::where('election_id', $election->id)
