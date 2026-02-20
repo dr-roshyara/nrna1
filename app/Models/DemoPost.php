@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToTenant;
 
 /**
  * DemoPost Model - Demo Election Posts
@@ -14,14 +15,17 @@ use Illuminate\Database\Eloquent\Model;
  * Table: demo_posts (separate from posts table)
  * Purpose: Testing voting workflows without affecting real election data
  *
- * Demo posts:
+ * Demo posts with multi-tenancy support:
+ * - MODE 1: organisation_id = NULL (public demo, visible to all users)
+ * - MODE 2: organisation_id = X (scoped to specific organisation)
  * - Can be reset/cleared without affecting real elections
  * - Associated with specific demo elections
- * - Includes both election_id and organisation_id for MODE 1 and MODE 2 support
+ * - Includes both election_id and organisation_id for isolation
  */
 class DemoPost extends Model
 {
     use HasFactory;
+    use BelongsToTenant;
 
     protected $table = 'demo_posts';
 

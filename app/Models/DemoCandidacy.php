@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToTenant;
 
 /**
  * DemoCandidacy Model - Demo Election Candidates
@@ -14,15 +15,17 @@ use Illuminate\Database\Eloquent\Model;
  * Table: demo_candidacies (separate from candidacies table)
  * Purpose: Testing voting workflows without affecting real election data
  *
- * Demo candidacies:
+ * Demo candidacies with multi-tenancy support:
+ * - MODE 1: organisation_id = NULL (public demo, visible to all users)
+ * - MODE 2: organisation_id = X (scoped to specific organisation)
  * - Can be reset/cleared without affecting real elections
  * - Allow same user to be candidate in both demo and real elections
  * - Safe for testing candidacy workflows
- * - Includes organisation_id for MODE 2 (with organisation) demo voting
  */
 class DemoCandidacy extends Model
 {
     use HasFactory;
+    use BelongsToTenant;
 
     protected $table = 'demo_candidacies';
 
