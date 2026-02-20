@@ -1842,7 +1842,23 @@ public function verify(Request $request)
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
-        $code = $auth_user->code;
+
+        // Get the correct code model based on election type
+        $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
+        $code = $CodeModel::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
+
+        if (!$code) {
+            Log::error('Code not found during verification', [
+                'user_id' => $auth_user->id,
+                'election_id' => $election->id,
+                'election_type' => $election->type,
+            ]);
+
+            return redirect()->route('dashboard')
+                ->withErrors(['code' => 'Verification code not found. Please start voting again.']);
+        }
 
         Log::info('Vote verification page accessed', [
             'user_id' => $auth_user->id,
