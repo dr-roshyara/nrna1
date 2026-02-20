@@ -227,7 +227,10 @@ public function create(Request $request)
             ->get();
         $groupedCandidates = $demoCandidates->groupBy('post_id');
 
-        $national_posts = Post::where('is_national_wide', 1)
+        // CRITICAL: Use withoutGlobalScopes() for demo elections
+        // Demo posts have organisation_id=NULL and must be accessible regardless of user's organisation
+        $national_posts = Post::withoutGlobalScopes()
+            ->where('is_national_wide', 1)
             ->orderBy('post_id')
             ->get()
             ->map(function ($post) use ($groupedCandidates) {
@@ -299,7 +302,10 @@ public function create(Request $request)
                 ->get();
             $groupedCandidates = $demoCandidates->groupBy('post_id');
 
-            $regional_posts = Post::where('is_national_wide', 0)
+            // CRITICAL: Use withoutGlobalScopes() for demo elections
+            // Demo posts have organisation_id=NULL and must be accessible regardless of user's organisation
+            $regional_posts = Post::withoutGlobalScopes()
+                ->where('is_national_wide', 0)
                 ->orderBy('post_id')
                 ->get()
                 ->map(function ($post) use ($groupedCandidates) {
