@@ -2702,13 +2702,17 @@ public function verify_final_vote(Request $request)
             $errors['can_vote'] = 'You are not eligible to vote.';
         }
 
-        // 4. User must have used Code-1 to reach this step (check Code model)
-        $code = $auth_user->code;
+        // 4. User must have used Code-1 to reach this step (get correct code model)
+        $CodeModel = $isDemoElection ? DemoCode::class : Code::class;
+        $code = $CodeModel::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
+
         if (!$code || $code->can_vote_now != 1) {
             $errors['has_used_code1'] = 'You have not used your first voting code yet.';
         }
 
-        // 5. User must NOT have used Code-2 (should be 0) - check Code model
+        // 5. User must NOT have used Code-2 (should be 0) - check correct code model
         if ($code && $code->has_used_code2 != 0) {
             $errors['has_used_code2'] = 'You have already confirmed your vote with Code-2.';
         }
