@@ -247,6 +247,7 @@ public function create(Request $request)
         $groupedCandidates = $demoCandidates->groupBy('post_id');
 
         $national_posts = DemoPost::where('election_id', $election->id)
+            ->where('is_national_wide', 1)
             ->orderBy('position_order')
             ->get()
             ->map(function ($post) use ($groupedCandidates) {
@@ -319,6 +320,8 @@ public function create(Request $request)
             $groupedCandidates = $demoCandidates->groupBy('post_id');
 
             $regional_posts = DemoPost::where('election_id', $election->id)
+                ->where('is_national_wide', 0)
+                ->where('state_name', trim($auth_user->region))
                 ->orderBy('position_order')
                 ->get()
                 ->map(function ($post) use ($groupedCandidates) {
