@@ -423,9 +423,25 @@ public function first_submission(Request $request)
         'election_type' => $election->type,
     ]);
 
+    // Get the correct code model based on election type
+    $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
+    $code = $CodeModel::where('user_id', $auth_user->id)
+        ->where('election_id', $election->id)
+        ->first();
+
+    if (!$code) {
+        \Log::error('Code not found for user', [
+            'user_id' => $auth_user->id,
+            'election_id' => $election->id,
+            'election_type' => $election->type,
+        ]);
+
+        return redirect()->route('dashboard')
+            ->withErrors(['vote' => 'Verification code not found. Please verify your code first.']);
+    }
+
     // ⛔ REAL ELECTIONS: Block voting if already voted
-    $code = $auth_user->code;
-    if ($election->type === 'real' && $code && $code->has_voted) {
+    if ($election->type === 'real' && $code->has_voted) {
         \Log::warning('⛔ Real election - blocking vote submission for voter who already voted', [
             'user_id' => $auth_user->id,
             'election_id' => $election->id,
