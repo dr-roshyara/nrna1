@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vote;
 use App\Models\DemoVote;
-use App\Models\DemoCandidate;
+use App\Models\DemoCandidacy;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
