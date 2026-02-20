@@ -605,11 +605,15 @@ public function second_submission(Request $request)
                 ->withErrors(['auth' => 'Authentication required. Please log in again.']);
         }
 
-        $code = $auth_user->code;
-        
+        // Get the correct code model based on election type
+        $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
+        $code = $CodeModel::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
+
         // Check if user has a code record
         if (!$code) {
-            Log::error('Second submission attempted without code record', ['user_id' => $auth_user->id]);
+            Log::error('Second submission attempted without code record', ['user_id' => $auth_user->id, 'election_id' => $election->id]);
             $route = $voterSlug ? 'slug.code.create' : 'code.create';
             $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
 
@@ -2153,7 +2157,22 @@ public function verifyVoteSubmit(): array
     $request = request();
 
     $auth_user = auth()->user();
-    $code      =$auth_user->code;
+    $election = $this->getElection($request);
+
+    // Get the correct code model based on election type
+    $CodeModel = $election->type === 'demo' ? DemoCode::class : Code::class;
+    $code = $CodeModel::where('user_id', $auth_user->id)
+        ->where('election_id', $election->id)
+        ->first();
+
+    if (!$code) {
+        return [
+            'validator' => null,
+            'is_code_valid' => false,
+            'error' => 'Verification code not found'
+        ];
+    }
+
     $in_code  = $code->code1;
   
     $submittedCode = trim($request->input('voting_code'));
