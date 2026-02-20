@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Election;
-use App\Models\Post;
+use App\Models\DemoPost;
 use App\Models\DemoCandidacy;
 use Illuminate\Console\Command;
 
@@ -46,7 +46,7 @@ class SetupDemoElection extends Command
 
         // Demo election already exists
         if ($existingElection) {
-            $posts = Post::where('post_id', 'like', '%-' . $existingElection->id)->count();
+            $posts = DemoPost::where('election_id', $existingElection->id)->count();
             $candidates = DemoCandidacy::where('election_id', $existingElection->id)->count();
 
             $this->info("\n📋 Demo election already exists:");
@@ -137,14 +137,16 @@ class SetupDemoElection extends Command
             $candidates = $postData['candidates'];
             unset($postData['candidates']);
 
-            $post = Post::create([
+            // Create demo post with election_id and organisation_id
+            $post = DemoPost::create([
                 ...$postData,
                 'election_id' => $election->id,
+                'organisation_id' => $election->organisation_id,  // MODE 1: NULL, MODE 2: org_id
                 'state_name' => 'National',
                 'required_number' => 1,
             ]);
 
-            $this->info("  ├─ Created Post: {$post->name} ({$post->nepali_name})");
+            $this->info("  ├─ Created Demo Post: {$post->name} ({$post->nepali_name})");
 
             foreach ($candidates as $index => $candidate) {
                 $globalCandidateCounter++;
@@ -152,6 +154,7 @@ class SetupDemoElection extends Command
                     'user_id' => "demo-{$post->post_id}-" . ($index + 1),
                     'post_id' => $post->post_id,
                     'election_id' => $election->id,
+                    'organisation_id' => $election->organisation_id,  // MODE 1: NULL, MODE 2: org_id
                     'candidacy_id' => "demo-{$post->post_id}-" . ($index + 1),
                     'user_name' => $candidate['user_name'],
                     'candidacy_name' => $candidate['candidacy_name'],
@@ -163,7 +166,7 @@ class SetupDemoElection extends Command
                 $totalCandidates++;
             }
 
-            $this->info("  │  └─ Added " . count($candidates) . " candidates");
+            $this->info("  │  └─ Added " . count($candidates) . " demo candidates");
         }
 
         $this->info("\n📊 Demo Election Summary:");

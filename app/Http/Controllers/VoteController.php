@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vote;
 use App\Models\DemoVote;
 use App\Models\DemoCandidacy;
+use App\Models\DemoPost;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -227,9 +228,8 @@ public function create(Request $request)
             ->get();
         $groupedCandidates = $demoCandidates->groupBy('post_id');
 
-        // CRITICAL: Use withoutGlobalScopes() for demo elections
-        // Demo posts have organisation_id=NULL and must be accessible regardless of user's organisation
-        $national_posts = Post::withoutGlobalScopes()
+        // Demo election: Fetch demo posts (separate table from real posts)
+        $national_posts = DemoPost::where('election_id', $election->id)
             ->where('is_national_wide', 1)
             ->orderBy('post_id')
             ->get()
@@ -302,9 +302,8 @@ public function create(Request $request)
                 ->get();
             $groupedCandidates = $demoCandidates->groupBy('post_id');
 
-            // CRITICAL: Use withoutGlobalScopes() for demo elections
-            // Demo posts have organisation_id=NULL and must be accessible regardless of user's organisation
-            $regional_posts = Post::withoutGlobalScopes()
+            // Demo election: Fetch demo posts (separate table from real posts)
+            $regional_posts = DemoPost::where('election_id', $election->id)
                 ->where('is_national_wide', 0)
                 ->orderBy('post_id')
                 ->get()
