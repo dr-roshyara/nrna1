@@ -526,9 +526,15 @@ public function first_submission(Request $request)
             'errors' => $validation_errors
         ]);
 
-        // Get voterSlug for proper redirect
+        // Get voterSlug for proper redirect - check election type!
         $voterSlug = $request->attributes->get('voter_slug');
-        $redirectRoute = $voterSlug ? 'slug.vote.create' : 'vote.create';
+        $isDemoElection = $election && $election->type === 'demo';
+
+        if ($voterSlug) {
+            $redirectRoute = $isDemoElection ? 'slug.demo-vote.create' : 'slug.vote.create';
+        } else {
+            $redirectRoute = $isDemoElection ? 'demo-vote.create' : 'vote.create';
+        }
         $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
 
         return redirect()->route($redirectRoute, $routeParams)

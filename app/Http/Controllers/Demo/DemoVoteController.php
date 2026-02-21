@@ -606,9 +606,10 @@ public function first_submission(Request $request)
         }
 
         // Convert legacy route names to slug-aware routes
+        // For demo elections, use demo-code routes!
         $voterSlug = $request->attributes->get('voter_slug');
         if ($pre_check_route === 'code.create') {
-            $pre_check_route = $voterSlug ? 'slug.code.create' : 'vote.create';
+            $pre_check_route = $voterSlug ? 'slug.demo-code.create' : 'demo-code.create';
             $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
             return redirect()->route($pre_check_route, $routeParams);
         }
@@ -642,9 +643,9 @@ public function first_submission(Request $request)
             'errors' => $validation_errors
         ]);
 
-        // Get voterSlug for proper redirect
+        // Get voterSlug for proper redirect to DEMO routes (not real voting routes!)
         $voterSlug = $request->attributes->get('voter_slug');
-        $redirectRoute = $voterSlug ? 'slug.vote.create' : 'vote.create';
+        $redirectRoute = $voterSlug ? 'slug.demo-vote.create' : 'demo-vote.create';
         $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
 
         return redirect()->route($redirectRoute, $routeParams)
@@ -694,9 +695,9 @@ public function first_submission(Request $request)
             ]);
         }
 
-        // Legacy: Advance slug step
+        // Legacy: Advance slug step (use demo-vote.create for demo elections!)
         $progressService = new \App\Services\VoterProgressService();
-        $progressService->advanceFrom($voterSlug, 'slug.vote.create', ['vote_submitted' => true]);
+        $progressService->advanceFrom($voterSlug, 'slug.demo-vote.create', ['vote_submitted' => true]);
         \Log::info('Advanced slug step from 3 to 4', ['current_step' => $voterSlug->fresh()->current_step]);
     }
 
@@ -1477,7 +1478,6 @@ private function has_valid_selections($selections)
 
             $_codeVerified =$this->verify_submitted_code($this->in_code, $this->out_code);
             // Use the verification method
-            //dd($_codeVerified);
             if (!$_codeVerified) {
             
                 \Log::warning('Code verification failed - returning with error',
@@ -1989,7 +1989,8 @@ public function verify(Request $request)
                 'session_id' => request()->session()->getId()
             ]);
             
-            $route = $voterSlug ? 'slug.vote.create' : 'vote.create';
+            // Use demo routes for demo elections!
+            $route = $voterSlug ? 'slug.demo-vote.create' : 'demo-vote.create';
             $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
 
             return redirect()->route($route, $routeParams)
@@ -2608,8 +2609,19 @@ public function verify_final_vote(Request $request)
      * @param DemoCode $code
      * @return string Route name for redirect ("" if passes all checks)
      */
-    public function vote_pre_check(&$code)
+    public function vote_pre_check(&$code)        
     {
+        //   dd([
+        // 'code_id' => $code->id ?? 'null',
+        // 'can_vote_now' => $code->can_vote_now ?? 'null',
+        // 'has_voted' => $code->has_voted ?? 'null',
+        // 'has_code1_sent' => $code->has_code1_sent ?? 'null',
+        // 'is_code1_usable' => $code->is_code1_usable ?? 'null',
+        // 'code1_used_at' => $code->code1_used_at ?? 'null',
+        // 'code2_used_at' => $code->code2_used_at ?? 'null',
+        // 'vote_submitted' => $code->vote_submitted ?? 'null',
+        // ]);
+        
         // ========== GUARD CLAUSE 1: No code found ==========
         if ($code === null) {
             \Log::warning('🔴 vote_pre_check: GUARD 1 - Code is null');
@@ -2632,13 +2644,39 @@ public function verify_final_vote(Request $request)
             return "dashboard";
         }
 
-        // ========== GUARD CLAUSE 4: Code1 never sent ==========
+          // ========== GUARD CLAUSE 4: Code1 never sent ==========
         if (!$code->has_code1_sent) {
-            \Log::warning('🔴 vote_pre_check: GUARD 4 - has_code1_sent is false', [
+            \Log::warning('🔴 vote_pre_check: GUARD 4 TRIGGERED - has_code1_sent is false', [
                 'has_code1_sent' => $code->has_code1_sent
             ]);
             return "code.create";
         }
+        // ========== GUARD CLAUSE 4: Code1 never sent ==========
+        // if (!$code->has_code1_sent) {
+         //     \Log::warning('🔴 vote_pre_check: GUARD 4 - has_code1_sent is false', [
+        //         'has_code1_sent' => $code->has_code1_sent
+        //     ]);
+        //     return "code.create";
+        // }
+         // ========== GUARD CLAUSE 5: Check if code has already been used for voting ==========
+        if ($code->code2_used_at !== null) {
+            \Log::warning('🔴 vote_pre_check: GUARD 5 TRIGGERED - code2_used_at is set', [
+                'code2_used_at' => $code->code2_used_at
+            ]);
+            return "dashboard";
+        }
+
+        // ========== GUARD CLAUSE 6: Voting window timeout ==========
+        if ($this->hasVotingWindowExpired($code)) {
+            \Log::warning('🔴 vote_pre_check: GUARD 6 TRIGGERED - Voting window expired', [
+                'code1_used_at' => $code->code1_used_at,
+                'current_time' => Carbon::now(),
+                'voting_time_minutes' => $code->voting_time_in_minutes
+            ]);
+            $this->expireCode($code);
+            return "code.create";
+        }
+
 
         // ========== MODE-SPECIFIC VERIFICATION ==========
         $mode = $this->isStrictMode() ? 'STRICT' : 'SIMPLE';
@@ -2798,7 +2836,7 @@ public function verify_final_vote(Request $request)
                 $code->is_code2_usable      = 0;
                 $code->has_code2_sent       = 0;
                 $code->save();
-                $_message["return_to"]      = 'vote.create';
+                $_message["return_to"]      = 'demo-vote.create';
                 $_message["totalDuration"]  = $totalDuration;
                 return $_message;
             }
@@ -2812,7 +2850,7 @@ public function verify_final_vote(Request $request)
                 $code->is_code2_usable      = 0;
                 $code->has_code2_sent       = 0;
                 $code->save();
-                $_message["return_to"]      = 'vote.create';
+                $_message["return_to"]      = 'demo-vote.create';
                 $_message["totalDuration"]  = $totalDuration;
                 return $_message;
             }
