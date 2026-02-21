@@ -59,6 +59,10 @@ class DemoCodeController extends Controller
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
+        // Set organisation context for tenant scoping
+        // This ensures DemoCode queries respect the organisation_id filter
+        session(['current_organisation_id' => $election->organisation_id]);
+
         // Check if code is already verified (should not be accessing create page)
         $existingCode = DemoCode::where('user_id', $user->id)
             ->where('election_id', $election->id)
@@ -68,6 +72,7 @@ class DemoCodeController extends Controller
             'user_id' => $user->id,
             'election_id' => $election->id,
             'election_type' => $election->type,
+            'organisation_id' => $election->organisation_id,
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'is_slug_request' => $voterSlug !== null,
             'existing_code_verified' => $existingCode ? $existingCode->can_vote_now : 'no_code',

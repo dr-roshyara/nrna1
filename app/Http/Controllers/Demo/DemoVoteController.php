@@ -293,10 +293,15 @@ public function create(Request $request)
     $election = $this->getElection($request);
     $voterSlug = $request->attributes->get('voter_slug');
 
+    // Set organisation context for tenant scoping
+    // This ensures DemoCandidacy and DemoPost queries respect the organisation_id filter
+    session(['current_organisation_id' => $election->organisation_id]);
+
     Log::info('Vote creation page accessed', [
         'user_id' => $auth_user->id,
         'election_id' => $election->id,
         'election_type' => $election->type,
+        'organisation_id' => $election->organisation_id,
     ]);
 
     // Check election-aware eligibility
@@ -1398,6 +1403,9 @@ private function has_valid_selections($selections)
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
 
+        // Set organisation context for tenant scoping
+        session(['current_organisation_id' => $election->organisation_id]);
+
         // PHASE 3 VALIDATION: Election Validation
         // Demo elections: No organisation validation (can be voted by anyone)
         // Real elections: Require organisation matching
@@ -2098,6 +2106,9 @@ public function verify(Request $request)
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
+
+        // Set organisation context for tenant scoping
+        session(['current_organisation_id' => $election->organisation_id]);
 
         // ✅ FIXED: Fetch correct code model based on election type
         if ($election->type === 'demo') {
