@@ -112,7 +112,7 @@ class DemoVoteController extends Controller
         if ($code->code1_used_at === null) {
             return "code.create";
         }
-
+        
         // Check if code has already been used for voting (SECOND USE)
         // In SIMPLE MODE, code2_used_at tracks the second use (vote submission)
         if ($code->code2_used_at !== null) {
@@ -586,7 +586,7 @@ public function first_submission(Request $request)
     // Get the code model and set as submitted
     $code->vote_submitted    = 1;
     $code->vote_submitted_at = \Carbon\Carbon::now();
-    // $code->save(); // Save the state!
+    $code->save(); // ✅ FIXED: Save the vote_submitted state immediately
     
     // Pre-checks (time, code usability, etc.)
     $pre_check_route = $this->vote_pre_check($code);
@@ -2906,7 +2906,7 @@ public function verify_final_vote(Request $request)
         }
 
         // 4. User must have used Code-1 to reach this step (check Code model)
-        $code = $auth_user->code;
+        // $code = $auth_user->code;
         if (!$code || $code->can_vote_now != 1) {
             $errors['has_used_code1'] = 'You have not used your first voting code yet.';
         }
