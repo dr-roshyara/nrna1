@@ -5,11 +5,21 @@ namespace App\Services;
 use App\Models\VoterSlug;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class VoterSlugService
 {
+    protected DemoElectionResolver $electionResolver;
+
+    public function __construct(DemoElectionResolver $electionResolver)
+    {
+        $this->electionResolver = $electionResolver;
+    }
+
     /**
      * Generate a new 30-minute voting slug for a user
+     *
+     * NOW USES DEMOELECTIONRESOLVER to ensure CORRECT election_id is saved!
      *
      * @param User $user
      * @param int|null $electionId - Election to associate with this slug. If null, uses demo election
@@ -24,14 +34,20 @@ class VoterSlugService
                 if ($sessionElectionId) {
                     $electionId = $sessionElectionId;
                 } else {
-                    // Default to demo election for testing
-                    // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
-                    // to ALL users regardless of organisation context
-                    $election = \App\Models\Election::withoutGlobalScopes()
-                        ->where('type', 'demo')->first();
-                    $electionId = $election ? $election->id : null;
+                    // ✅ FIXED: Use DemoElectionResolver to get CORRECT demo election
+                    $election = $this->electionResolver->getDemoElectionForUser($user);
+                    if (!$election) {
+                        throw new \Exception('No demo election available. Please create a demo election first.');
+                    }
+                    $electionId = $election->id;
                 }
             }
+
+            \Log::info('🔑 [VoterSlugService] Creating slug with election', [
+                'user_id' => $user->id,
+                'user_org_id' => $user->organisation_id,
+                'election_id' => $electionId,
+            ]);
 
             // Revoke any existing active slugs for this user
             VoterSlug::where('user_id', $user->id)
@@ -46,8 +62,15 @@ class VoterSlugService
                 $slug = $this->generateRandomSlug();
             }
 
+            // Get the election to save its organisation_id
+            $election = \App\Models\Election::withoutGlobalScopes()->find($electionId);
+            if (!$election) {
+                throw new \Exception('Election not found');
+            }
+
             // Create new 30-minute slug
-            return VoterSlug::create([
+            // ✅ CRITICAL: Include organisation_id from election
+            $voterSlug = VoterSlug::create([
                 'user_id' => $user->id,
                 'slug' => $slug,
                 'expires_at' => now()->addMinutes(30),
@@ -55,7 +78,17 @@ class VoterSlugService
                 'current_step' => 1,
                 'step_meta' => [],
                 'election_id' => $electionId,
+                'organisation_id' => $election->organisation_id,  // ✅ CRITICAL
             ]);
+
+            \Log::info('✅ New voter slug created with correct election and org', [
+                'user_id' => $user->id,
+                'slug' => $voterSlug->slug,
+                'election_id' => $voterSlug->election_id,
+                'organisation_id' => $voterSlug->organisation_id,
+            ]);
+
+            return $voterSlug;
         });
     }
 
@@ -134,6 +167,8 @@ class VoterSlugService
 
     /**
      * Get or create a single active slug for a user (ensures one-slug-per-person)
+     *
+     * NOW USES DEMOELECTIONRESOLVER to ensure CORRECT election_id!
      */
     public function getOrCreateActiveSlug(User $user): VoterSlug
     {
@@ -154,6 +189,7 @@ class VoterSlugService
             }
 
             // No active slug exists, create a new one
+            // ✅ Now uses DemoElectionResolver for correct election selection
             return $this->generateSlugForUser($user);
         });
     }
