@@ -1623,8 +1623,21 @@ private function has_valid_selections($selections)
             // Get the demo vote we just saved
             $demoVote = \App\Models\DemoVote::find($this->out_code);
 
+            \Log::info('🎯 DEMO VOTE SUBMISSION - Redirect decision', [
+                'has_voter_slug' => $voterSlug ? 'yes' : 'no',
+                'slug' => $voterSlug ? $voterSlug->slug : null,
+                'vote_id' => $this->out_code,
+                'has_demo_vote' => $demoVote ? 'yes' : 'no',
+                'demo_vote_voting_code' => $demoVote ? $demoVote->voting_code : null,
+                'route_choice' => $voterSlug ? 'slug.demo-vote.verify_to_show' : 'demo-vote.verify_to_show'
+            ]);
+
             if ($voterSlug) {
                 // Use slug-based route
+                \Log::info('✅ SUCCESS - Redirecting to slug.demo-vote.verify_to_show', [
+                    'vslug' => $voterSlug->slug,
+                    'url' => route('slug.demo-vote.verify_to_show', ['vslug' => $voterSlug->slug])
+                ]);
                 return redirect()->route('slug.demo-vote.verify_to_show', ['vslug' => $voterSlug->slug])
                     ->with([
                         'success' => 'Your demo vote has been successfully submitted!',
@@ -1634,6 +1647,9 @@ private function has_valid_selections($selections)
                     ]);
             } else {
                 // Use non-slug route
+                \Log::info('✅ SUCCESS - Redirecting to demo-vote.verify_to_show', [
+                    'url' => route('demo-vote.verify_to_show')
+                ]);
                 return redirect()->route('demo-vote.verify_to_show')
                     ->with([
                         'success' => 'Your demo vote has been successfully submitted!',
@@ -1646,20 +1662,30 @@ private function has_valid_selections($selections)
 
         // Real elections redirect to real voting verify_to_show page
         // $request->session()->forget('vote');
+        \Log::info('✅ SUCCESS - Redirecting to vote.verify_to_show (real election)', [
+            'url' => route('vote.verify_to_show')
+        ]);
         return redirect()->route('vote.verify_to_show')->with('success', 'Your vote has been successfully submitted.');
 
     } catch (\Illuminate\Validation\ValidationException $e) {
         DB::rollBack();
+        \Log::error('❌ VALIDATION EXCEPTION in store()', [
+            'user_id' => auth()->id(),
+            'errors' => $e->errors()
+        ]);
         return redirect()->back()->withErrors($e->errors())->withInput();
-        
+
     } catch (\Exception $e) {
         DB::rollBack();
-        Log::error('Vote submission failed', [
+        \Log::error('❌ EXCEPTION in store() - Vote submission failed', [
             'user_id' => auth()->id(),
             'error' => $e->getMessage(),
+            'error_class' => get_class($e),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
             'trace' => $e->getTraceAsString()
         ]);
-        
+
         return $this->handleVoteError('An error occurred while processing your vote. Please try again.');
     }
 
@@ -1899,10 +1925,25 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
         $election = request()->attributes->get('election');
         $voterSlug = request()->attributes->get('voter_slug');
 
+        \Log::info('🎯 demo_verify_to_show - ENTRY', [
+            'user_id' => $auth_user ? $auth_user->id : null,
+            'election_id' => $election ? $election->id : null,
+            'election_type' => $election ? $election->type : null,
+            'has_voter_slug' => $voterSlug ? 'yes' : 'no',
+            'voter_slug' => $voterSlug ? $voterSlug->slug : null
+        ]);
+
         // Get demo code for this user
         $code = DemoCode::where('user_id', $auth_user->id)
                        ->where('election_id', $election?->id)
                        ->first();
+
+        \Log::debug('🎮 demo_verify_to_show - Code lookup', [
+            'code_found' => $code ? 'yes' : 'no',
+            'code_id' => $code ? $code->id : null,
+            'code.has_voted' => $code ? $code->has_voted : null,
+            'code.voting_code' => $code ? $code->voting_code : null
+        ]);
 
         $has_voted = false;
         $verification_code = null;
@@ -1916,16 +1957,24 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
             $demoVote = \App\Models\DemoVote::where('voting_code', $code->voting_code)
                                            ->first();
 
+            \Log::debug('🎮 demo_verify_to_show - Vote lookup', [
+                'vote_found' => $demoVote ? 'yes' : 'no',
+                'vote_id' => $demoVote ? $demoVote->id : null,
+                'voting_code' => $code->voting_code
+            ]);
+
             if ($demoVote) {
                 $verification_code = $demoVote->voting_code;
             }
         }
 
-        Log::info('🎮 [DEMO] Verify to show page accessed', [
+        Log::info('🎯 demo_verify_to_show - RENDERING', [
             'user_id' => $auth_user->id,
             'has_voted' => $has_voted,
             'is_demo' => true,
             'has_verification_code' => $verification_code ? true : false,
+            'verification_code' => $verification_code,
+            'slug' => $voterSlug ? $voterSlug->slug : null,
         ]);
 
         return Inertia::render('Vote/VoteShowVerify', [
@@ -2979,50 +3028,164 @@ public function verify_final_vote(Request $request)
         // Election type is determined by the $election parameter passed in
         $isDemoElection = $election && $election->type === 'demo';
 
+        // 📋 LOG: Entry point
+        \Log::debug('🔵 verify_first_submission - ENTRY', [
+            'user_id' => $auth_user->id ?? null,
+            'auth_user' => $auth_user ? 'present' : 'null',
+            'code' => $code ? 'present' : 'null',
+            'election_type' => $election->type ?? 'unknown',
+            'is_demo_election' => $isDemoElection,
+            'submitted_user_id' => $user_id,
+            'agree_button' => $agree_button
+        ]);
+
         // 1. User must be a registered voter (skip for demo elections)
         if (!$isDemoElection && $auth_user->is_voter != 1) {
+            \Log::warning('❌ CHECK 1 FAILED: is_voter', [
+                'condition' => '!isDemoElection && auth_user->is_voter != 1',
+                'isDemoElection' => $isDemoElection,
+                'auth_user.is_voter' => $auth_user->is_voter ?? null
+            ]);
             $errors['is_voter'] = 'You are not registered as a voter.';
+        } else {
+            \Log::debug('✅ CHECK 1 PASSED: is_voter', [
+                'condition' => '!isDemoElection && auth_user->is_voter != 1',
+                'isDemoElection' => $isDemoElection,
+                'auth_user.is_voter' => $auth_user->is_voter ?? null
+            ]);
         }
 
         // 2. Voting window must be open for this user
         if ($code->can_vote_now != 1) {
+            \Log::warning('❌ CHECK 2 FAILED: can_vote_now', [
+                'condition' => 'code->can_vote_now != 1',
+                'code' => $code ? 'present' : 'null',
+                'code.can_vote_now' => $code ? $code->can_vote_now : 'code is null',
+                'code_full' => $code ? [
+                    'id' => $code->id,
+                    'can_vote_now' => $code->can_vote_now,
+                    'has_used_code2' => $code->has_used_code2 ?? null,
+                    'code2_used_at' => $code->code2_used_at ?? null
+                ] : null
+            ]);
             $errors['can_vote_now'] = 'Voting is not open for you at this time.';
+        } else {
+            \Log::debug('✅ CHECK 2 PASSED: can_vote_now', [
+                'code.can_vote_now' => $code ? $code->can_vote_now : 'code is null'
+            ]);
         }
 
         // 3. User must be eligible to vote (skip for demo elections)
         if (!$isDemoElection && $auth_user->can_vote != 1) {
+            \Log::warning('❌ CHECK 3 FAILED: can_vote', [
+                'condition' => '!isDemoElection && auth_user->can_vote != 1',
+                'isDemoElection' => $isDemoElection,
+                'auth_user.can_vote' => $auth_user->can_vote ?? null
+            ]);
             $errors['can_vote'] = 'You are not eligible to vote.';
+        } else {
+            \Log::debug('✅ CHECK 3 PASSED: can_vote', [
+                'isDemoElection' => $isDemoElection,
+                'auth_user.can_vote' => $auth_user->can_vote ?? null
+            ]);
         }
 
         // 4. User must have used Code-1 to reach this step (check Code model)
         // $code = $auth_user->code;
         if (!$code || $code->can_vote_now != 1) {
+            \Log::warning('❌ CHECK 4 FAILED: has_used_code1', [
+                'condition' => '!code || code->can_vote_now != 1',
+                'code' => $code ? 'present' : 'null',
+                'code.can_vote_now' => $code ? $code->can_vote_now : 'N/A'
+            ]);
             $errors['has_used_code1'] = 'You have not used your first voting code yet.';
+        } else {
+            \Log::debug('✅ CHECK 4 PASSED: has_used_code1', [
+                'code' => 'present',
+                'code.can_vote_now' => $code->can_vote_now
+            ]);
         }
 
         // 5. User must NOT have used Code-2 (should be 0) - check Code model
         if ($code && $code->has_used_code2 != 0) {
+            \Log::warning('❌ CHECK 5 FAILED: has_used_code2', [
+                'condition' => 'code && code->has_used_code2 != 0',
+                'code' => $code ? 'present' : 'null',
+                'code.has_used_code2' => $code ? $code->has_used_code2 : 'N/A',
+                'code.code2_used_at' => $code ? $code->code2_used_at : 'N/A'
+            ]);
             $errors['has_used_code2'] = 'You have already confirmed your vote with Code-2.';
+        } else {
+            \Log::debug('✅ CHECK 5 PASSED: has_used_code2', [
+                'code' => $code ? 'present' : 'null',
+                'code.has_used_code2' => $code ? $code->has_used_code2 : 'N/A'
+            ]);
         }
 
         // 6. User must NOT have already voted
         if ($auth_user->has_voted == 1) {
+            \Log::info('⚠️ CHECK 6: User already voted', [
+                'auth_user.has_voted' => $auth_user->has_voted,
+                'returning' => 'vote.verify_to_show'
+            ]);
             // Instead of redirecting back, return the 'vote.verify_to_show' route for already-voted users
             return 'vote.verify_to_show';
+        } else {
+            \Log::debug('✅ CHECK 6 PASSED: has_voted', [
+                'auth_user.has_voted' => $auth_user->has_voted
+            ]);
         }
 
         // 7. Ensure the submitted user ID matches the authenticated user
         if ((int)$user_id !== (int)$auth_user->id) {
+            \Log::warning('❌ CHECK 7 FAILED: user_id match', [
+                'condition' => '(int)user_id !== (int)auth_user->id',
+                'submitted_user_id' => $user_id,
+                'auth_user.id' => $auth_user->id,
+                'submitted_user_id_int' => (int)$user_id,
+                'auth_user_id_int' => (int)$auth_user->id
+            ]);
             $errors['user_id'] = 'Login user does not match form user.';
+        } else {
+            \Log::debug('✅ CHECK 7 PASSED: user_id match', [
+                'submitted_user_id' => $user_id,
+                'auth_user.id' => $auth_user->id
+            ]);
         }
 
         // 8. User must agree before proceeding (checkbox)
         if (!$agree_button) {
+            \Log::warning('❌ CHECK 8 FAILED: agree_button', [
+                'condition' => '!agree_button',
+                'agree_button' => $agree_button
+            ]);
             $errors['agree_button'] = 'You must agree before proceeding.';
+        } else {
+            \Log::debug('✅ CHECK 8 PASSED: agree_button', [
+                'agree_button' => $agree_button
+            ]);
         }
 
         // If there are any errors, redirect back to the form with all error messages and old input
         if (!empty($errors)) {
+            \Log::warning('🔴 verify_first_submission - VALIDATION FAILED - Redirecting back', [
+                'errors' => $errors,
+                'error_count' => count($errors),
+                'code_state' => $code ? [
+                    'id' => $code->id,
+                    'can_vote_now' => $code->can_vote_now,
+                    'has_used_code2' => $code->has_used_code2,
+                    'code2_used_at' => $code->code2_used_at,
+                    'vote_submitted' => $code->vote_submitted ?? null,
+                    'has_voted' => $code->has_voted ?? null
+                ] : 'null',
+                'auth_user_state' => [
+                    'id' => $auth_user->id,
+                    'has_voted' => $auth_user->has_voted,
+                    'can_vote' => $auth_user->can_vote,
+                    'is_voter' => $auth_user->is_voter
+                ]
+            ]);
             return redirect()->back()->withErrors($errors)->withInput();
         }
 
@@ -3032,7 +3195,8 @@ public function verify_final_vote(Request $request)
         // Return the appropriate redirect response to the verification page
         // Check if this is slug-based voting by looking for voter slug in request
         $voterSlug = $request->attributes->get('voter_slug');
-        \Log::info('verify_first_submission redirect decision', [
+
+        \Log::debug('✅ verify_first_submission - ALL CHECKS PASSED', [
             'has_voter_slug' => $voterSlug !== null,
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'is_demo_election' => $isDemoElection
@@ -3043,22 +3207,32 @@ public function verify_final_vote(Request $request)
             if ($isDemoElection) {
                 // Demo election with slug - use demo verification route
                 $redirect = redirect()->route('slug.demo-vote.verify', ['vslug' => $voterSlug->slug]);
-                \Log::info('Returning slug-based demo redirect', ['url' => $redirect->getTargetUrl()]);
+                \Log::info('🟢 verify_first_submission SUCCESS - Redirecting to slug.demo-vote.verify', [
+                    'url' => $redirect->getTargetUrl(),
+                    'vslug' => $voterSlug->slug
+                ]);
             } else {
                 // Real election with slug - use regular verification route
                 $redirect = redirect()->route('slug.vote.verify', ['vslug' => $voterSlug->slug]);
-                \Log::info('Returning slug-based regular redirect', ['url' => $redirect->getTargetUrl()]);
+                \Log::info('🟢 verify_first_submission SUCCESS - Redirecting to slug.vote.verify', [
+                    'url' => $redirect->getTargetUrl(),
+                    'vslug' => $voterSlug->slug
+                ]);
             }
             return $redirect;
         } else {
             if ($isDemoElection) {
                 // Demo election without slug - use demo verification route
                 $redirect = redirect()->route('demo-vote.verify');
-                \Log::info('Returning demo redirect', ['url' => $redirect->getTargetUrl()]);
+                \Log::info('🟢 verify_first_submission SUCCESS - Redirecting to demo-vote.verify', [
+                    'url' => $redirect->getTargetUrl()
+                ]);
             } else {
                 // Real election without slug - use regular verification route
                 $redirect = redirect()->route('vote.verify');
-                \Log::info('Returning regular redirect', ['url' => $redirect->getTargetUrl()]);
+                \Log::info('🟢 verify_first_submission SUCCESS - Redirecting to vote.verify', [
+                    'url' => $redirect->getTargetUrl()
+                ]);
             }
             return $redirect;
         }
