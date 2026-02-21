@@ -640,9 +640,11 @@ class CodeController extends Controller
                 ]);
             }
 
-            Log::info('New verification code created and sent', [
-                'user_id' => $user->id,
+            Log::info('✅ New verification code created with organisation_id and election_id', [
                 'code_id' => $code->id,
+                'user_id' => $user->id,
+                'election_id' => $code->election_id,
+                'organisation_id' => $code->organisation_id,
                 'code' => $code->code1,
             ]);
         } else {
