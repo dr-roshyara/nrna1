@@ -1,35 +1,36 @@
 <template>
     <VotingLayout
         :election="election"
-        :page-title="`${$t('pages.vote-verify.header.title')} (Demo)`"
+        :page-title="$t('pages.vote-verify.header.title') + ' (Demo)'"
         :current-step="4"
         :total-steps="5"
     >
         <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Workflow Step Indicator - Step 4/5 -->
+                <!-- Workflow Step Indicator -->
                 <WorkflowStepIndicator workflow="VOTING" :currentStep="4" />
 
-                    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                        {{ $t('pages.vote-verify.header.title') }} <span class="text-sm bg-purple-100 text-purple-800 px-3 py-1 rounded-full">🎮 DEMO</span>
-                    </h1>
-                    <p class="text-lg sm:text-xl text-gray-600 mb-4">
-                        {{ $t('pages.vote-verify.header.subtitle') }}
-                    </p>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    {{ $t('pages.vote-verify.header.title') }}
+                    <span class="text-sm bg-purple-100 text-purple-800 px-3 py-1 rounded-full ml-2">🎮 DEMO</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-600 mb-4">
+                    {{ $t('pages.vote-verify.header.subtitle') }}
+                </p>
 
-                    <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-200 rounded-full">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                        <span class="text-sm sm:text-base font-medium text-blue-800">
-                            {{ $t('pages.vote-verify.secure_process') }}
-                        </span>
-                    </div>
+                <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-200 rounded-full">
+                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    <span class="text-sm sm:text-base font-medium text-blue-800">
+                        {{ $t('pages.vote-verify.secure_process') }}
+                    </span>
+                </div>
 
-                    <!-- Main Content Grid -->
-                    <div class="grid lg:grid-cols-3 gap-6 md:gap-8">
-                    <!-- Left Column - Verification Form -->
+                <!-- Main Content Grid -->
+                <div class="grid lg:grid-cols-3 gap-6 md:gap-8 mt-8">
+                    <!-- Left Column -->
                     <div class="lg:col-span-2 space-y-6 md:space-y-8">
                         <!-- Critical Warning Card -->
                         <div class="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg">
@@ -53,7 +54,7 @@
                             </div>
                         </div>
 
-                        <!-- Verification Summary Section -->
+                        <!-- Vote Review Section -->
                         <div class="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-8">
                             <!-- Section Header -->
                             <div class="mb-6 md:mb-8">
@@ -65,7 +66,7 @@
                                         </svg>
                                     </div>
                                     <h2 class="text-xl md:text-2xl font-bold text-gray-900">
-                                        Your Selected Votes
+                                        {{ total_votes }}/{{ selected_votes.length }} Votes Selected
                                     </h2>
                                 </div>
                                 <p class="text-gray-600">
@@ -73,7 +74,7 @@
                                 </p>
                             </div>
 
-                            <!-- Vote Summary List -->
+                            <!-- Vote List -->
                             <div class="divide-y">
                                 <div
                                     v-for="(vote, index) in selected_votes"
@@ -83,7 +84,7 @@
                                     <div class="flex gap-4 md:gap-6 items-start">
                                         <!-- Candidate Image -->
                                         <div class="flex-shrink-0">
-                                            <div class="w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden bg-gray-100">
+                                            <div class="w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden bg-gray-100">
                                                 <img
                                                     v-if="vote.candidate_image"
                                                     :src="vote.candidate_image"
@@ -122,60 +123,88 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Demo Mode Info -->
-                        <div class="bg-purple-50 border-2 border-purple-200 rounded-xl md:rounded-2xl p-4 md:p-6">
-                            <div class="flex items-start gap-3">
-                                <div class="flex-shrink-0">
-                                    <svg class="w-5 h-5 md:w-6 md:h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <!-- Demo Mode Info -->
+                            <div class="mt-6 p-3 md:p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                                <div class="flex items-start">
+                                    <svg class="w-4 h-4 md:w-5 md:h-5 text-purple-600 mt-0.5 mr-2 md:mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                               d="M13 10V3L4 14h7v7l9-11h-7z" />
                                     </svg>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-purple-900 mb-1">🎮 Demo Election Mode</h3>
-                                    <p class="text-purple-800 text-sm">
-                                        This is a test election. You can vote multiple times for testing purposes. In real elections, you would only vote once.
-                                    </p>
+                                    <div>
+                                        <p class="font-bold text-purple-900 mb-1">🎮 Demo Election Mode</p>
+                                        <p class="text-purple-800 text-xs md:text-sm">
+                                            This is a test election. You can vote multiple times for testing purposes.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Action Buttons -->
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <button
-                                @click="goBack"
-                                class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium transition order-2 sm:order-1"
-                            >
-                                ← Change My Votes
-                            </button>
-                            <button
-                                @click="submitVotes"
-                                :disabled="loading"
-                                class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed order-1 sm:order-2"
-                            >
-                                <span v-if="loading" class="inline-block mr-2">⏳</span>
-                                {{ loading ? 'Submitting...' : 'Submit My Vote' }}
-                            </button>
+                            <!-- Action Buttons -->
+                            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                                <button
+                                    @click="goBack"
+                                    class="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium transition order-2 sm:order-1"
+                                >
+                                    ← Change My Votes
+                                </button>
+                                <button
+                                    @click="submitVotes"
+                                    :disabled="loading"
+                                    class="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed order-1 sm:order-2"
+                                >
+                                    <span v-if="loading" class="inline-block mr-2">⏳</span>
+                                    {{ loading ? 'Submitting...' : 'Confirm & Submit' }}
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Right Column - Vote Summary Sidebar -->
                     <div class="lg:col-span-1">
                         <div class="bg-white rounded-xl md:rounded-2xl shadow-lg p-4 md:p-6 relative md:sticky md:top-8">
+                            <!-- Voter Information -->
+                            <div class="mb-6 p-4 md:p-5 bg-gradient-to-br from-gray-50 to-blue-50 border border-gray-200 rounded-lg">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+                                        <svg class="w-4 h-4 md:w-5 md:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h3 class="font-bold text-gray-900 text-sm md:text-base">
+                                            Voter Information
+                                        </h3>
+                                        <p class="text-xs text-gray-500">
+                                            Demo Voter
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="space-y-2 text-xs md:text-sm">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Status:</span>
+                                        <span class="font-medium text-purple-600">🎮 Demo Mode</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Votes:</span>
+                                        <span class="font-medium text-gray-900">{{ total_votes }}/{{ selected_votes.length }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Summary Stats -->
                             <div class="mb-6">
                                 <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-4 flex items-center">
                                     <svg class="w-5 h-5 md:w-6 md:h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                                     </svg>
                                     Votes Summary
                                 </h3>
 
                                 <!-- Quick Stats -->
-                                <div class="grid grid-cols-2 gap-2 md:gap-3 mb-6">
+                                <div class="grid grid-cols-2 gap-2 md:gap-3">
                                     <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-3 md:p-4 rounded-lg text-center">
                                         <div class="text-2xl md:text-3xl font-bold text-green-600">{{ total_votes }}</div>
                                         <div class="text-xs text-green-700 font-medium">Votes Selected</div>
@@ -222,10 +251,10 @@
                                     </svg>
                                     <div>
                                         <p class="font-medium text-blue-800 text-xs md:text-sm">
-                                            Secure & Anonymous
+                                            Demo & Safe
                                         </p>
                                         <p class="text-blue-600 text-xs">
-                                            Your votes are encrypted
+                                            Test voting only
                                         </p>
                                     </div>
                                 </div>
@@ -244,36 +273,37 @@ import { useForm } from '@inertiajs/inertia-vue3'
 import { Inertia } from '@inertiajs/inertia'
 
 const props = defineProps({
-  election_name: String,
-  selected_votes: Array,
-  total_votes: Number,
-  slug: String,
-  useSlugPath: Boolean,
+    election_name: String,
+    selected_votes: Array,
+    total_votes: Number,
+    slug: String,
+    useSlugPath: Boolean,
+    election: Object,
 })
 
 const loading = ref(false)
 
 const goBack = () => {
-  Inertia.get(
-    route(props.useSlugPath ? 'slug.demo-vote.create' : 'demo-vote.create',
-          props.useSlugPath ? { vslug: props.slug } : {})
-  )
+    Inertia.get(
+        route(props.useSlugPath ? 'slug.demo-vote.create' : 'demo-vote.create',
+              props.useSlugPath ? { vslug: props.slug } : {})
+    )
 }
 
 const submitVotes = () => {
-  loading.value = true
+    loading.value = true
 
-  const form = useForm({
-    confirmed: true,
-  })
+    const form = useForm({
+        confirmed: true,
+    })
 
-  const routeName = props.useSlugPath ? 'slug.demo-vote.store' : 'demo-vote.store'
-  const params = props.useSlugPath ? { vslug: props.slug } : {}
+    const routeName = props.useSlugPath ? 'slug.demo-vote.store' : 'demo-vote.store'
+    const params = props.useSlugPath ? { vslug: props.slug } : {}
 
-  form.post(route(routeName, params), {
-    onError: () => {
-      loading.value = false
-    },
-  })
+    form.post(route(routeName, params), {
+        onError: () => {
+            loading.value = false
+        },
+    })
 }
 </script>
