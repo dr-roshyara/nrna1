@@ -1892,17 +1892,12 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
      /**
       * Demo-specific verify/show page after vote is saved
       * Mirrors the real voting verify_to_show but for demo elections
+      * Queries by voting_code (not user_id) to avoid storing user info in demo_votes table
       */
      public function demo_verify_to_show(){
         $auth_user = auth()->user();
         $election = request()->attributes->get('election');
         $voterSlug = request()->attributes->get('voter_slug');
-
-        // Get the most recent demo vote for this user
-        $demoVote = \App\Models\DemoVote::where('user_id', $auth_user->id)
-                                       ->where('election_id', $election?->id)
-                                       ->latest()
-                                       ->first();
 
         // Get demo code for this user
         $code = DemoCode::where('user_id', $auth_user->id)
@@ -1916,9 +1911,14 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
             $has_voted = true;
         }
 
-        // Get verification code from the most recent vote
-        if ($demoVote && $demoVote->voting_code) {
-            $verification_code = $demoVote->voting_code;
+        // Get demo vote by voting_code (not by user_id, to keep votes anonymous)
+        if ($code && $code->voting_code) {
+            $demoVote = \App\Models\DemoVote::where('voting_code', $code->voting_code)
+                                           ->first();
+
+            if ($demoVote) {
+                $verification_code = $demoVote->voting_code;
+            }
         }
 
         Log::info('🎮 [DEMO] Verify to show page accessed', [
