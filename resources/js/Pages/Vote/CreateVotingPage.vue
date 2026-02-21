@@ -85,11 +85,15 @@
                             </h2>
                             <div class="space-y-8">
                                 <div v-for="(post, postIndex) in national_posts" :key="`national-${post.post_id}`"
-                                     class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                                     class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                                     :data-post-key="`national-${post.post_id}`">
                                     <div class="p-6">
                                         <create-votingform
                                             :candidates="post.candidates"
                                             :post="post"
+                                            :errors="form.errors"
+                                            :postType="'national'"
+                                            :postIndex="postIndex"
                                             @add_selected_candidates="handleCandidateSelection('national', postIndex, $event)"
                                         />
                                     </div>
@@ -104,11 +108,15 @@
                             </h2>
                             <div class="space-y-8">
                                 <div v-for="(post, postIndex) in regional_posts" :key="`regional-${post.post_id}`"
-                                     class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                                     class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                                     :data-post-key="`regional-${post.post_id}`">
                                     <div class="p-6">
                                         <create-votingform
                                             :candidates="post.candidates"
                                             :post="post"
+                                            :errors="form.errors"
+                                            :postType="'regional'"
+                                            :postIndex="postIndex"
                                             @add_selected_candidates="handleCandidateSelection('regional', postIndex, $event)"
                                         />
                                     </div>
@@ -426,6 +434,12 @@ export default {
             form.post(submitUrl, {
                 onError: (errors) => {
                     console.error('Vote submission failed:', errors);
+                    // form.errors is automatically populated by Inertia
+                    // Components will reactively update due to form.errors binding
+
+                    // Scroll to first error post for user convenience
+                    this.scrollToFirstError();
+
                     // Handle specific error cases
                     if (errors.session) {
                         alert('Your session has expired. Please refresh the page and try again.');
@@ -522,11 +536,34 @@ export default {
             };
         }
 
-        return { 
-            form, 
+        function scrollToFirstError() {
+            // Find first post with error
+            const allPosts = [
+                ...props.national_posts.map((p, i) => ({ type: 'national', index: i, post: p })),
+                ...props.regional_posts.map((p, i) => ({ type: 'regional', index: i, post: p }))
+            ];
+
+            for (const item of allPosts) {
+                const errorKey = `${item.type}_post_${item.index}`;
+                if (form.errors[errorKey]) {
+                    // Scroll to this component
+                    const element = document.querySelector(`[data-post-key="${item.type}-${item.post.post_id}"]`);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Add visual focus indicator
+                        element.classList.add('ring-2', 'ring-red-500', 'ring-offset-2');
+                    }
+                    break;
+                }
+            }
+        }
+
+        return {
+            form,
             submit,
             handleCandidateSelection,
-            validateVoteData
+            validateVoteData,
+            scrollToFirstError
         };
     },
     

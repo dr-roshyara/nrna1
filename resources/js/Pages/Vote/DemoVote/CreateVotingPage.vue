@@ -96,11 +96,15 @@
                             </h2>
                             <div class="space-y-8">
                                 <div v-for="(post, postIndex) in national_posts" :key="`national-${post.post_id}`"
-                                     class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                                     class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                                     :data-post-key="`national-${post.post_id}`">
                                     <div class="p-6">
                                         <create-votingform
                                             :candidates="post.candidates"
                                             :post="post"
+                                            :errors="errors"
+                                            :postType="'national'"
+                                            :postIndex="postIndex"
                                             @add_selected_candidates="handleCandidateSelection('national', postIndex, $event)"
                                         />
                                     </div>
@@ -115,11 +119,15 @@
                             </h2>
                             <div class="space-y-8">
                                 <div v-for="(post, postIndex) in regional_posts" :key="`regional-${post.post_id}`"
-                                     class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                                     class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                                     :data-post-key="`regional-${post.post_id}`">
                                     <div class="p-6">
                                         <create-votingform
                                             :candidates="post.candidates"
                                             :post="post"
+                                            :errors="errors"
+                                            :postType="'regional'"
+                                            :postIndex="postIndex"
                                             @add_selected_candidates="handleCandidateSelection('regional', postIndex, $event)"
                                         />
                                     </div>
@@ -477,10 +485,14 @@ export default {
 
             voteForm.post(route(routeName, params), {
                 onError: (formErrors) => {
-                    if (formErrors.votes) {
-                        errors.value.votes = formErrors.votes
+                    // Capture all form errors from backend
+                    if (formErrors) {
+                        errors.value = { ...formErrors }
                     }
                     loading.value = false
+
+                    // Scroll to first error post for user convenience
+                    scrollToFirstError()
                 },
             })
         }
