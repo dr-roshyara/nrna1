@@ -1618,20 +1618,33 @@ private function has_valid_selections($selections)
             ]);
         }
 
-        // For demo elections, show verification code on thank you page
+        // For demo elections, redirect to demo-specific verify_to_show page
         if ($election->type === 'demo') {
             // Get the demo vote we just saved
-            $demoVote = \App\Models\DemoDemoVote::find($this->out_code);
-            if ($demoVote && $demoVote->voting_code) {
-                return redirect()->route('vote.verify_to_show')->with([
-                    'success' => 'Your demo vote has been successfully submitted!',
-                    'verification_code' => $demoVote->voting_code,
-                    'is_demo' => true,
-                    'demo_vote_id' => $demoVote->id
-                ]);
+            $demoVote = \App\Models\DemoVote::find($this->out_code);
+
+            if ($voterSlug) {
+                // Use slug-based route
+                return redirect()->route('slug.demo-vote.verify_to_show', ['vslug' => $voterSlug->slug])
+                    ->with([
+                        'success' => 'Your demo vote has been successfully submitted!',
+                        'verification_code' => $demoVote && $demoVote->voting_code ? $demoVote->voting_code : null,
+                        'is_demo' => true,
+                        'demo_vote_id' => $demoVote ? $demoVote->id : null
+                    ]);
+            } else {
+                // Use non-slug route
+                return redirect()->route('demo-vote.verify_to_show')
+                    ->with([
+                        'success' => 'Your demo vote has been successfully submitted!',
+                        'verification_code' => $demoVote && $demoVote->voting_code ? $demoVote->voting_code : null,
+                        'is_demo' => true,
+                        'demo_vote_id' => $demoVote ? $demoVote->id : null
+                    ]);
             }
         }
 
+        // Real elections redirect to real voting verify_to_show page
         // $request->session()->forget('vote');
         return redirect()->route('vote.verify_to_show')->with('success', 'Your vote has been successfully submitted.');
 
@@ -1860,20 +1873,53 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
         //
         //   $vote =$auth_user->vote();
         $auth_user            = auth()->user();
-        $code                 = $auth_user->code;        
+        $code                 = $auth_user->code;
         $this->user_id        =$auth_user->id;
         $has_voted            =false;
         if($code!=null) {
             $has_voted            = $code->has_voted;
-        }       
-        
+        }
+
       //   dd($selected_candidates);
       return Inertia::render('Vote/VoteShowVerify', [
-         
-              'user_name'=>$auth_user->name,
-              'has_voted'=>$has_voted,                             
-       ]);    
 
+              'user_name'=>$auth_user->name,
+              'has_voted'=>$has_voted,
+       ]);
+
+     }
+
+     /**
+      * Demo-specific verify/show page after vote is saved
+      * Mirrors the real voting verify_to_show but for demo elections
+      */
+     public function demo_verify_to_show(){
+        $auth_user = auth()->user();
+        $voterSlug = request()->attributes->get('voter_slug');
+
+        // Get demo code for this user
+        $code = DemoCode::where('user_id', $auth_user->id)
+                       ->where('election_id', request()->attributes->get('election')?->id)
+                       ->first();
+
+        $has_voted = false;
+        if ($code && $code->has_voted) {
+            $has_voted = true;
+        }
+
+        Log::info('🎮 [DEMO] Verify to show page accessed', [
+            'user_id' => $auth_user->id,
+            'has_voted' => $has_voted,
+            'is_demo' => true,
+        ]);
+
+        return Inertia::render('Vote/VoteShowVerify', [
+            'user_name' => $auth_user->name,
+            'has_voted' => $has_voted,
+            'is_demo' => true,
+            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'useSlugPath' => $voterSlug !== null,
+        ]);
      }
     
     /**
@@ -3138,7 +3184,7 @@ private function verify_demo_vote($verification_code, $auth_user)
 
         // Try to find by ID first
         if ($demo_vote_id) {
-            $demoVote = DemoDemoVote::find($demo_vote_id);
+            $demoVote = DemoVote::find($demo_vote_id);
 
             if ($demoVote) {
                 Log::info('Demo vote found by ID', [
@@ -3156,7 +3202,7 @@ private function verify_demo_vote($verification_code, $auth_user)
             'code_provided' => substr($verification_code, 0, 20) . '...'
         ]);
 
-        $demoVote = DemoDemoVote::where('voting_code', $verification_code)
+        $demoVote = DemoVote::where('voting_code', $verification_code)
             ->first();
 
         if ($demoVote) {
@@ -3173,7 +3219,7 @@ private function verify_demo_vote($verification_code, $auth_user)
             'code_provided' => substr($verification_code, 0, 20) . '...'
         ]);
 
-        $allDemoVotes = DemoDemoVote::all();
+        $allDemoVotes = DemoVote::all();
         Log::info('Total demo votes in database', ['count' => count($allDemoVotes)]);
 
         $exactMatches = 0;
@@ -3495,7 +3541,7 @@ private function retrieve_demo_vote_record($voting_code)
 
         // Try to find by ID first
         if ($demo_vote_id) {
-            $demoVote = DemoDemoVote::find($demo_vote_id);
+            $demoVote = DemoVote::find($demo_vote_id);
 
             if ($demoVote) {
                 Log::info('Demo vote found by ID', [
@@ -3516,7 +3562,7 @@ private function retrieve_demo_vote_record($voting_code)
             'code_provided' => substr($voting_code, 0, 20) . '...'
         ]);
 
-        $demoVote = DemoDemoVote::where('voting_code', $voting_code)->first();
+        $demoVote = DemoVote::where('voting_code', $voting_code)->first();
 
         if ($demoVote) {
             Log::info('Demo vote found by exact voting_code match', [
@@ -3535,7 +3581,7 @@ private function retrieve_demo_vote_record($voting_code)
             'code_provided' => substr($voting_code, 0, 20) . '...'
         ]);
 
-        $allDemoVotes = DemoDemoVote::all();
+        $allDemoVotes = DemoVote::all();
         Log::info('Total demo votes in database', ['count' => count($allDemoVotes)]);
 
         $exactMatches = 0;

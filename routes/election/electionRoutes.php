@@ -406,6 +406,7 @@ Route::middleware(['auth:sanctum', 'verified', 'election', 'vote.organisation', 
     Route::get('demo/vote/verify', [DemoVoteController::class, 'verify'])->name('demo-vote.verify');
     Route::post('demo/vote/final', [DemoVoteController::class, 'store'])->name('demo-vote.store');
     Route::get('demo/vote/thank-you', [DemoVoteController::class, 'thankYou'])->name('demo-vote.thank-you');
+    Route::get('demo/vote/verify-show', [DemoVoteController::class, 'demo_verify_to_show'])->name('demo-vote.verify_to_show');
 });
 
 // Slug-based demo election routes
@@ -440,6 +441,9 @@ Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order',
 
         // STEP 7: Thank you page
         Route::get('demo-vote/thank-you', [DemoVoteController::class, 'thankYou'])->name('slug.demo-vote.thank-you');
+
+        // STEP 7.5: Verify/show page (after vote is saved)
+        Route::get('demo-vote/verify-show', [DemoVoteController::class, 'demo_verify_to_show'])->name('slug.demo-vote.verify_to_show');
     });
 });
 
