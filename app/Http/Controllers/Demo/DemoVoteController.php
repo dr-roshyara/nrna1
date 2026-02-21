@@ -727,12 +727,13 @@ public function first_submission(Request $request)
 public function second_submission(Request $request)
 {
     DB::beginTransaction();
-    
+
     try {
         $auth_user = auth()->user();
-    
+        $election = $this->getElection($request);
 
-        
+
+
         // Basic authentication check
         if (!$auth_user) {
             Log::error('Second submission attempted without authentication');
@@ -741,7 +742,14 @@ public function second_submission(Request $request)
                 ->withErrors(['auth' => 'Authentication required. Please log in again.']);
         }
 
-        $code = $auth_user->code;
+        // ✅ FIXED: Fetch correct code model based on election type
+        if ($election->type === 'demo') {
+            $code = DemoCode::where('user_id', $auth_user->id)
+                ->where('election_id', $election->id)
+                ->first();
+        } else {
+            $code = $auth_user->code;
+        }
         
         // Check if user has a code record
         if (!$code) {
@@ -1435,7 +1443,14 @@ private function has_valid_selections($selections)
             return back()->withErrors(['error' => 'Authentication required.'])->withInput();
         }
 
-        $code = $auth_user->code;
+        // ✅ FIXED: Fetch correct code model based on election type
+        if ($election->type === 'demo') {
+            $code = DemoCode::where('user_id', $auth_user->id)
+                ->where('election_id', $election->id)
+                ->first();
+        } else {
+            $code = $auth_user->code;
+        }
 
         // ⛔ REAL ELECTIONS: Block final vote submission if already voted
         if ($election->type === 'real' && $code->has_voted) {
@@ -1970,7 +1985,15 @@ public function verify(Request $request)
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
-        $code = $auth_user->code;
+
+        // ✅ FIXED: Fetch correct code model based on election type
+        if ($election->type === 'demo') {
+            $code = DemoCode::where('user_id', $auth_user->id)
+                ->where('election_id', $election->id)
+                ->first();
+        } else {
+            $code = $auth_user->code;
+        }
 
         Log::info('Vote verification page accessed', [
             'user_id' => $auth_user->id,
