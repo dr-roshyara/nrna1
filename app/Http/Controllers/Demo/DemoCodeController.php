@@ -568,20 +568,29 @@ class DemoCodeController extends Controller
                 'user_id' => $user->id,
                 'code_id' => $code->id,
                 'old_has_voted' => $code->has_voted,
+                'old_organisation_id' => $code->organisation_id,
             ]);
 
             // Reset voting flags for demo to allow new vote
             $code->update([
+                'organisation_id' => $election->organisation_id,  // Ensure organisation_id is set
                 'has_voted' => false,
                 'vote_submitted' => false,
                 'can_vote_now' => 0,
                 'is_code1_usable' => 1,
                 'code1' => $this->generateCode(),
                 'code1_sent_at' => now(),
-                'has_code1_sent' => 1,                
-                'code1_used_at' => null,  // ← ADD THIS!
-                'code2_used_at' => null,  // ← ADD THIS!
-                'is_code2_usable' => 1,   // ← ADD THIS!
+                'has_code1_sent' => 1,
+                'code1_used_at' => null,
+                'code2_used_at' => null,
+                'is_code2_usable' => 1,
+            ]);
+
+            \Log::info('✅ [DEMO] DemoCode reset for re-voting with organisation_id confirmed', [
+                'code_id' => $code->id,
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'organisation_id' => $code->organisation_id,
             ]);
 
             // Send new code via email
@@ -620,6 +629,13 @@ class DemoCodeController extends Controller
                 'voting_time_in_minutes' => $this->votingTimeInMinutes,
                 'is_code1_usable' => 1,
                 'can_vote_now' => 0,
+            ]);
+
+            \Log::info('✅ [DEMO] New DemoCode created with organisation_id', [
+                'code_id' => $code->id,
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'organisation_id' => $code->organisation_id,
             ]);
 
             // Send code via email only if user has valid email
