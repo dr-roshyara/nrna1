@@ -279,6 +279,8 @@ const props = defineProps({
     slug: String,
     useSlugPath: Boolean,
     election: Object,
+    user_info: Object,
+    vote_data: Object,
 })
 
 const loading = ref(false)
@@ -293,8 +295,12 @@ const goBack = () => {
 const submitVotes = () => {
     loading.value = true
 
+    // Initialize form with vote data from props, matching the real voting system structure
     const form = useForm({
-        confirmed: true,
+        user_id: props.user_info?.id,
+        national_selected_candidates: props.vote_data?.national_selected_candidates || [],
+        regional_selected_candidates: props.vote_data?.regional_selected_candidates || [],
+        agree_button: true,
     })
 
     const routeName = props.useSlugPath ? 'slug.demo-vote.store' : 'demo-vote.store'
