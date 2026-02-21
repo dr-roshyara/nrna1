@@ -729,18 +729,32 @@ class DemoCodeController extends Controller
         Log::info('🔴 [DEMO-markCodeAsVerified] Starting', ['code_id' => $code->id]);
 
         try {
-            $updateResult = $code->update([
+            // ✅ FIXED: Configurable code state based on voting system mode
+            $updateData = [
                 'can_vote_now' => 1,
-                'is_code1_usable' => 0,
                 'code1_used_at' => now(),
                 'is_codemodel_valid' => true,
                 'client_ip' => $this->clientIP,
-            ]);
+            ];
+
+            // In SIMPLE MODE: Keep is_code1_usable = 1 so Code1 can be used again at vote submission
+            // In STRICT MODE: Set is_code1_usable = 0 since Code1 is only used for form access
+            if (config('voting.two_codes_system') == 1) {
+                // STRICT MODE: Code1 is now exhausted for form access
+                $updateData['is_code1_usable'] = 0;
+            } else {
+                // SIMPLE MODE: Code1 is still usable for vote submission (second use)
+                $updateData['is_code1_usable'] = 1;
+            }
+
+            $updateResult = $code->update($updateData);
 
             Log::info('🟠 [DEMO-markCodeAsVerified] Update result', [
                 'code_id' => $code->id,
                 'update_result' => $updateResult,
                 'can_vote_now' => $code->can_vote_now,
+                'is_code1_usable' => $code->is_code1_usable,
+                'mode' => config('voting.two_codes_system') == 1 ? 'STRICT' : 'SIMPLE',
             ]);
         } catch (\Exception $e) {
             Log::error('❌ [DEMO-markCodeAsVerified] EXCEPTION', [

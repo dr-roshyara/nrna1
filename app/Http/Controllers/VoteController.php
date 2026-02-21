@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vote;
 use App\Models\DemoVote;
+use App\Models\DemoCode;
 use App\Models\DemoCandidacy;
 use App\Models\DemoPost;
 use Illuminate\Http\Request;
@@ -199,10 +200,18 @@ public function create(Request $request)
             ->with('error', 'You are not eligible to vote in this election.');
     }
 
-    // Get code for this election
-    $code = Code::where('user_id', $auth_user->id)
-        ->where('election_id', $election->id)
-        ->first();
+    // Get the appropriate code model based on election type
+    if ($election->type === 'demo') {
+        // DEMO ELECTIONS: Get DemoCode by user_id and election_id
+        $code = DemoCode::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
+    } else {
+        // REAL ELECTIONS: Get Code by user_id and election_id
+        $code = Code::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
+    }
 
     if (!$code) {
         // Redirect to appropriate code creation page (with or without slug)
@@ -419,8 +428,31 @@ public function first_submission(Request $request)
         'election_type' => $election->type,
     ]);
 
+    // Get the appropriate code model based on election type
+    if ($election->type === 'demo') {
+        // DEMO ELECTIONS: Get DemoCode by user_id and election_id
+        $code = DemoCode::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
+
+        \Log::info('📋 Fetching DemoCode for demo election', [
+            'user_id' => $auth_user->id,
+            'election_id' => $election->id,
+            'code_found' => $code !== null,
+            'code_id' => $code ? $code->id : null
+        ]);
+    } else {
+        // REAL ELECTIONS: Get Code through relationship
+        $code = $auth_user->code;
+
+        \Log::info('📋 Fetching Code for real election', [
+            'user_id' => $auth_user->id,
+            'code_found' => $code !== null,
+            'code_id' => $code ? $code->id : null
+        ]);
+    }
+
     // ⛔ REAL ELECTIONS: Block voting if already voted
-    $code = $auth_user->code;
     if ($election->type === 'real' && $code && $code->has_voted) {
         \Log::warning('⛔ Real election - blocking vote submission for voter who already voted', [
             'user_id' => $auth_user->id,
@@ -553,8 +585,11 @@ public function first_submission(Request $request)
     }
 
     // Run verify_first_submission; this now always returns a RedirectResponse
-    \Log::info('About to call verify_first_submission');
-    $verify_result = $this->verify_first_submission($request, $code, $auth_user);
+    \Log::info('About to call verify_first_submission', [
+        'election_id' => $election->id,
+        'election_type' => $election->type
+    ]);
+    $verify_result = $this->verify_first_submission($request, $code, $auth_user, $election);
 
     \Log::info('verify_first_submission returned', [
         'type' => get_class($verify_result),
@@ -2602,7 +2637,7 @@ public function verify_final_vote(Request $request)
      * @param  \App\Models\User  $auth_user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function verify_first_submission(Request $request, &$code, $auth_user)
+    public function verify_first_submission(Request $request, &$code, $auth_user, $election = null)
     {
         // Abort if not authenticated (defensive check)
         if (!$auth_user) {
@@ -2614,8 +2649,10 @@ public function verify_final_vote(Request $request)
         $agree_button = $request->input('agree_button');
         $errors       = [];
 
-        // Get election to check if it's demo
-        $election = $request->attributes->get('election');
+        // Get election from parameter if passed, otherwise from request attributes
+        if (!$election) {
+            $election = $request->attributes->get('election');
+        }
         $isDemoElection = $election && $election->type === 'demo';
 
         // 1. User must be a registered voter (skip for demo elections)
@@ -2673,17 +2710,33 @@ public function verify_final_vote(Request $request)
         $voterSlug = $request->attributes->get('voter_slug');
         \Log::info('verify_first_submission redirect decision', [
             'has_voter_slug' => $voterSlug !== null,
-            'slug' => $voterSlug ? $voterSlug->slug : null
+            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'is_demo_election' => $isDemoElection
         ]);
 
+        // ✅ FIX: Redirect to demo routes for demo elections, regular routes for real elections
         if ($voterSlug) {
-            $redirect = redirect()->route('slug.vote.verify', ['vslug' => $voterSlug->slug]);
-            \Log::info('Returning slug-based redirect', ['url' => $redirect->getTargetUrl()]);
+            if ($isDemoElection) {
+                // Demo election with slug - use demo verification route
+                $redirect = redirect()->route('slug.demo-vote.verify', ['vslug' => $voterSlug->slug]);
+                \Log::info('Returning slug-based demo redirect', ['url' => $redirect->getTargetUrl()]);
+            } else {
+                // Real election with slug - use regular verification route
+                $redirect = redirect()->route('slug.vote.verify', ['vslug' => $voterSlug->slug]);
+                \Log::info('Returning slug-based regular redirect', ['url' => $redirect->getTargetUrl()]);
+            }
             return $redirect;
         } else {
-            $redirect = redirect()->route('vote.verify');
-            \Log::info('Returning regular redirect', ['url' => $redirect->getTargetUrl()]);
-            return $redirect; // Regular voting (will redirect to slug-based)
+            if ($isDemoElection) {
+                // Demo election without slug - use demo verification route
+                $redirect = redirect()->route('demo-vote.verify');
+                \Log::info('Returning demo redirect', ['url' => $redirect->getTargetUrl()]);
+            } else {
+                // Real election without slug - use regular verification route
+                $redirect = redirect()->route('vote.verify');
+                \Log::info('Returning regular redirect', ['url' => $redirect->getTargetUrl()]);
+            }
+            return $redirect;
         }
     }
  

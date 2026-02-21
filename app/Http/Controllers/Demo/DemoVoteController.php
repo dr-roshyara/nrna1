@@ -56,6 +56,116 @@ class DemoVoteController extends Controller
     }
 
     /**
+     * ==========================================
+     * CONFIGURATION & HELPER METHODS
+     * ==========================================
+     */
+
+    /**
+     * Check if system is in STRICT MODE (two separate codes)
+     *
+     * @return bool
+     */
+    private function isStrictMode(): bool
+    {
+        return config('voting.two_codes_system') == 1;
+    }
+
+    /**
+     * Check if system is in SIMPLE MODE (one code, two uses)
+     *
+     * @return bool
+     */
+    private function isSimpleMode(): bool
+    {
+        return config('voting.two_codes_system') == 0;
+    }
+
+    /**
+     * Expire a code by resetting all its state
+     * Used when voting window timeout occurs
+     *
+     * @param DemoCode $code
+     * @return void
+     */
+    private function expireCode(&$code): void
+    {
+        $code->can_vote_now = 0;
+        $code->is_code1_usable = 0;
+        $code->is_code2_usable = 0;
+        $code->has_code1_sent = 0;
+        $code->has_code2_sent = 0;
+        $code->save();
+    }
+
+    /**
+     * Verify Code1 state for SIMPLE MODE
+     * In SIMPLE MODE, Code1 is used twice (entry + vote submission)
+     * Check: code1_used_at is set (FIRST USE), code2_used_at is NULL (SECOND USE not yet used)
+     *
+     * @param DemoCode $code
+     * @return string Route name if verification fails, empty string if passes
+     */
+    private function verifySimpleModeCodeState(&$code): string
+    {
+        // Check if code1 has been entered at /code/create (FIRST USE)
+        if ($code->code1_used_at === null) {
+            return "code.create";
+        }
+
+        // Check if code has already been used for voting (SECOND USE)
+        // In SIMPLE MODE, code2_used_at tracks the second use (vote submission)
+        if ($code->code2_used_at !== null) {
+            return "dashboard";  // Code already used for voting
+        }
+
+        return "";  // All checks passed
+    }
+
+    /**
+     * Verify Code1/Code2 state for STRICT MODE
+     * In STRICT MODE, Code1 and Code2 are separate codes used sequentially
+     * Check: code1_used_at is set, code2_used_at is NULL
+     *
+     * @param DemoCode $code
+     * @return string Route name if verification fails, empty string if passes
+     */
+    private function verifyStrictModeCodeState(&$code): string
+    {
+        // In STRICT MODE, Code2 should not have been used yet
+        if ($code->code2_used_at !== null || $code->is_code2_usable == 0) {
+            return "dashboard";  // Code expired or already used
+        }
+
+        // Ensure Code1 was used first (should have code1_used_at set)
+        if ($code->code1_used_at === null) {
+            return "code.create";
+        }
+
+        return "";  // All checks passed
+    }
+
+    /**
+     * Check if voting window has expired based on code1_used_at timestamp
+     *
+     * @param DemoCode $code
+     * @return bool True if code has expired, false otherwise
+     */
+    private function hasVotingWindowExpired(&$code): bool
+    {
+        if ($code->code1_used_at === null) {
+            return false;  // Code not yet used, can't be expired
+        }
+
+        $current = Carbon::now();
+        $code1_used_at = $code->code1_used_at;
+        $voting_time = $code->voting_time_in_minutes;
+        $totalDuration = $current->diffInMinutes($code1_used_at);
+
+        return $totalDuration > $voting_time;
+    }
+
+    /**
      * Get authenticated user from request or middleware
      *
      * @param \Illuminate\Http\Request $request
@@ -436,9 +546,31 @@ public function first_submission(Request $request)
         'election_id' => $election->id,
         'election_type' => $election->type,
     ]);
+    // Get the appropriate code model based on election type
+    if ($election->type === 'demo') {
+        // DEMO ELECTIONS: Get DemoCode by user_id and election_id
+        $code = DemoCode::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
+
+        \Log::info('📋 Fetching DemoCode for demo election', [
+            'user_id' => $auth_user->id,
+            'election_id' => $election->id,
+            'code_found' => $code !== null,
+            'code_id' => $code ? $code->id : null
+        ]);
+    } else {
+        // REAL ELECTIONS: Get Code through relationship
+        $code = $auth_user->code;
+
+        \Log::info('📋 Fetching Code for real election', [
+            'user_id' => $auth_user->id,
+            'code_found' => $code !== null,
+            'code_id' => $code ? $code->id : null
+        ]);
+    }
 
     // ⛔ REAL ELECTIONS: Block voting if already voted
-    $code = $auth_user->code;
     if ($election->type === 'real' && $code && $code->has_voted) {
         \Log::warning('⛔ Real election - blocking vote submission for voter who already voted', [
             'user_id' => $auth_user->id,
@@ -455,7 +587,7 @@ public function first_submission(Request $request)
     $code->vote_submitted    = 1;
     $code->vote_submitted_at = \Carbon\Carbon::now();
     // $code->save(); // Save the state!
-   
+    
     // Pre-checks (time, code usability, etc.)
     $pre_check_route = $this->vote_pre_check($code);
     \Log::info('Pre-check result', [
@@ -569,8 +701,11 @@ public function first_submission(Request $request)
     }
 
     // Run verify_first_submission; this now always returns a RedirectResponse
-    \Log::info('About to call verify_first_submission');
-    $verify_result = $this->verify_first_submission($request, $code, $auth_user);
+    \Log::info('About to call verify_first_submission', [
+        'election_id' => $election->id,
+        'election_type' => $election->type
+    ]);
+    $verify_result = $this->verify_first_submission($request, $code, $auth_user, $election);
 
     \Log::info('verify_first_submission returned', [
         'type' => get_class($verify_result),
@@ -594,6 +729,8 @@ public function second_submission(Request $request)
     
     try {
         $auth_user = auth()->user();
+    
+
         
         // Basic authentication check
         if (!$auth_user) {
@@ -614,7 +751,6 @@ public function second_submission(Request $request)
             return redirect()->route($route, $routeParams)
                 ->withErrors(['code' => 'Voting code not found. Please start the voting process again.']);
         }
-
         // Pre-submission timing and eligibility checks
         $pre_check_result = $this->vote_pre_check($code);
         if ($pre_check_result && $pre_check_result !== "") {
@@ -1505,19 +1641,31 @@ private function has_valid_selections($selections)
 
 /**
  * Mark user as having voted and update code status
- * 
+ *
  * @param Code $code
  */
  function markUserAsVoted(Code $code, string $hashed_key )
 {
-    $code->update([
+    // ✅ FIXED: Configurable code state after vote submission
+    $updateData = [
         'has_voted' => true,
         'can_vote_now' => false,
-        'is_code2_usable' => false,
         'code2_used_at' => now(),
-        'vote_completed_at'=>now()
-       
-    ]);
+        'vote_completed_at' => now()
+    ];
+
+    // In SIMPLE MODE: Mark Code1 as fully used (both uses completed)
+    // In STRICT MODE: Mark Code2 as fully used
+    if (config('voting.two_codes_system') == 1) {
+        // STRICT MODE: Code2 is now exhausted
+        $updateData['is_code2_usable'] = false;
+    } else {
+        // SIMPLE MODE: Code1 is now fully used (second use completed)
+        $updateData['is_code1_usable'] = 0;
+        $updateData['is_code2_usable'] = false;  // Code2 never used in simple mode
+    }
+
+    $code->update($updateData);
     $code->save();
     // dd($code);
 }
@@ -2441,72 +2589,106 @@ public function verify_final_vote(Request $request)
         return $validator;
     }
 
-    /****
-     **
-    * Code pre Checking 
-    */    
-    public function vote_pre_check(&$code){
-                    
-        $return_to       ="";
-        $current         = Carbon::now();
-        $code1_used_at   =$code->code1_used_at;
-        $voting_time     =$code->voting_time_in_minutes;
-        $totalDuration   = $current->diffInMinutes($code1_used_at );
-
-       /***
-        * if there is no code then return to dashboard 
-        * 
-       */
-       if($code==null){
-            /*** 
-            * 
-            * if the code is not usable you can not proceed further
-             * you should redirect the form in dashboard
-            * 
-            */
-          return   $return_to ="code.create";
-            
-       }
-        //    dd($code->can_vote_now);  
-       ($code->can_vote_now);
-        if(!$code->can_vote_now){
-            return     $return_to ="dashboard";
+    /**
+     * ==========================================
+     * VOTE PRE-CHECK METHOD
+     * ==========================================
+     *
+     * Pre-check voting code before allowing vote submission
+     * Handles both SIMPLE and STRICT modes based on configuration
+     *
+     * SIMPLE MODE (default):
+     *   - One code used twice (entry + vote submission)
+     *   - Tracks entry with code1_used_at, vote with code2_used_at
+     *
+     * STRICT MODE:
+     *   - Two separate codes (Code1 for entry, Code2 for voting)
+     *   - Code1 set to unusable after first use
+     *
+     * @param DemoCode $code
+     * @return string Route name for redirect ("" if passes all checks)
+     */
+    public function vote_pre_check(&$code)
+    {
+        // ========== GUARD CLAUSE 1: No code found ==========
+        if ($code === null) {
+            \Log::warning('🔴 vote_pre_check: GUARD 1 - Code is null');
+            return "code.create";
         }
-        // dd("test1"); 
-        if($code->has_voted){
 
-            return     $return_to ="dashboard";
-        }      
-        //if code1 is not sent then return to code create
-        if(!$code->has_code1_sent ){
+        // ========== GUARD CLAUSE 2: Voting window closed ==========
+        if (!$code->can_vote_now) {
+            \Log::warning('🔴 vote_pre_check: GUARD 2 - can_vote_now is false', [
+                'can_vote_now' => $code->can_vote_now
+            ]);
+            return "dashboard";
+        }
 
-            return   $return_to ="code.create";
+        // ========== GUARD CLAUSE 3: Already voted ==========
+        if ($code->has_voted) {
+            \Log::warning('🔴 vote_pre_check: GUARD 3 - has_voted is true', [
+                'has_voted' => $code->has_voted
+            ]);
+            return "dashboard";
         }
-        //if code 1 is still usable and you havent used it, then use it first.
-        //dd($code);
-        if($code->is_code1_usable ){
 
-            return   $return_to ="code.create";
+        // ========== GUARD CLAUSE 4: Code1 never sent ==========
+        if (!$code->has_code1_sent) {
+            \Log::warning('🔴 vote_pre_check: GUARD 4 - has_code1_sent is false', [
+                'has_code1_sent' => $code->has_code1_sent
+            ]);
+            return "code.create";
         }
-            /***
-             * 
-             * check when the first code was verified last time . 
-             * If the time after first verification is longer thean the 
-             * voting period then, we should return to code and send a new code 
-             * s
-             */
-       
-        if($totalDuration>$voting_time)
-         {
-            $code->can_vote_now     =0;
-            $code->is_code1_usable  =0;
-            $code->is_code2_usable  =0;
-            $code->has_code1_sent   =0;
-            $code->has_code2_sent   =0;
-            $code->save();
-            $return_to = "code.create";     
+
+        // ========== MODE-SPECIFIC VERIFICATION ==========
+        $mode = $this->isStrictMode() ? 'STRICT' : 'SIMPLE';
+        \Log::info("ℹ️ vote_pre_check: MODE CHECK - {$mode} MODE", [
+            'code1_used_at' => $code->code1_used_at,
+            'code2_used_at' => $code->code2_used_at,
+            'is_code1_usable' => $code->is_code1_usable,
+            'is_code2_usable' => $code->is_code2_usable,
+        ]);
+
+        if ($this->isStrictMode()) {
+            $modeCheckResult = $this->verifyStrictModeCodeState($code);
+            if ($modeCheckResult !== "") {
+                \Log::warning('🔴 vote_pre_check: STRICT MODE FAILED', [
+                    'result' => $modeCheckResult,
+                    'code1_used_at' => $code->code1_used_at,
+                    'code2_used_at' => $code->code2_used_at
+                ]);
+                return $modeCheckResult;
+            }
+        } else {
+            $modeCheckResult = $this->verifySimpleModeCodeState($code);
+            if ($modeCheckResult !== "") {
+                \Log::warning('🔴 vote_pre_check: SIMPLE MODE FAILED', [
+                    'result' => $modeCheckResult,
+                    'code1_used_at' => $code->code1_used_at,
+                    'code2_used_at' => $code->code2_used_at
+                ]);
+                return $modeCheckResult;
+            }
         }
-        return  $return_to;    
+
+        // ========== GUARD CLAUSE 5: Voting window timeout ==========
+        if ($this->hasVotingWindowExpired($code)) {
+            \Log::warning('🔴 vote_pre_check: GUARD 5 - Voting window expired', [
+                'code1_used_at' => $code->code1_used_at,
+                'current_time' => Carbon::now(),
+                'voting_time_minutes' => $code->voting_time_in_minutes
+            ]);
+            $this->expireCode($code);
+            return "code.create";
+        }
+
+        // ========== ALL CHECKS PASSED ==========
+        \Log::info('✅ vote_pre_check: ALL CHECKS PASSED', [
+            'code1_used_at' => $code->code1_used_at,
+            'code2_used_at' => $code->code2_used_at,
+            'can_vote_now' => $code->can_vote_now
+        ]);
+        return "";
     } //end of vote_pre_check
    
     
@@ -2581,32 +2763,66 @@ public function verify_final_vote(Request $request)
         $_message['error_message'] = "";
         $_message['return_to']     ="";
         $_message['totalDuration'] =0;
-      
+
         $code_expires_in        = $code->voting_time_in_minutes;
         $current                = Carbon::now();
-        $code1_used_at          = $code->code1_used_at;       
+        $code1_used_at          = $code->code1_used_at;
         $totalDuration          = $current->diffInMinutes($code1_used_at );
         $_message['totalDuration']=$totalDuration;
-        if($totalDuration> $code_expires_in| $code->is_code1_usable){
-            $code->is_code1_usable      =0;
-            $code-> has_code2_sent      =0;
-            $code->vote_submitted       =0;
+
+        // ✅ FIXED: Check voting window timeout (independent of mode)
+        if($totalDuration > $code_expires_in) {
+            \Log::warning('🔴 second_code_check: Voting window expired', [
+                'code_id' => $code->id,
+                'total_duration' => $totalDuration,
+                'voting_time' => $code_expires_in
+            ]);
+            $code->is_code1_usable      = 0;
+            $code->has_code2_sent       = 0;
+            $code->vote_submitted       = 0;
             $code->save();
             $return_to                  = 'code.create';
-            $_message["return_to"]      = $return_to ;
-            $_message["totalDuration"]  = $totalDuration ;
+            $_message["return_to"]      = $return_to;
+            $_message["totalDuration"]  = $totalDuration;
             return $_message;
         }
-        if(!$code->vote_submitted){
-            $code->is_code1_usable      =0;
-            $code->is_code2_usable      =0;
-            $code-> has_code2_sent      =0;
-            $code->save();
-            $_message["return_to"]      ='vote.create';
-            $_message["totalDuration"]  = $totalDuration ;
-            return $_message;
+
+        // ✅ FIXED: Mode-specific checks
+        if (config('voting.two_codes_system') == 1) {
+            // STRICT MODE: Check if Code2 has been used
+            if (!$code->code2_used_at) {
+                \Log::warning('🔴 second_code_check: STRICT MODE - Code2 not yet verified', [
+                    'code_id' => $code->id
+                ]);
+                $code->is_code1_usable      = 0;
+                $code->is_code2_usable      = 0;
+                $code->has_code2_sent       = 0;
+                $code->save();
+                $_message["return_to"]      = 'vote.create';
+                $_message["totalDuration"]  = $totalDuration;
+                return $_message;
+            }
+        } else {
+            // SIMPLE MODE: Check if vote was submitted (code2_used_at tracks second use)
+            if (!$code->vote_submitted) {
+                \Log::warning('🔴 second_code_check: SIMPLE MODE - Vote not submitted', [
+                    'code_id' => $code->id
+                ]);
+                $code->is_code1_usable      = 0;
+                $code->is_code2_usable      = 0;
+                $code->has_code2_sent       = 0;
+                $code->save();
+                $_message["return_to"]      = 'vote.create';
+                $_message["totalDuration"]  = $totalDuration;
+                return $_message;
+            }
         }
-      return $_message;
+
+        \Log::info('✅ second_code_check: All checks passed', [
+            'code_id' => $code->id,
+            'mode' => config('voting.two_codes_system') == 1 ? 'STRICT' : 'SIMPLE'
+        ]);
+        return $_message;
     }
 
     /**
@@ -2618,9 +2834,10 @@ public function verify_final_vote(Request $request)
      * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $code
      * @param  \App\Models\User  $auth_user
+     * @param  \App\Models\Election  $election
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function verify_first_submission(Request $request, &$code, $auth_user)
+    public function verify_first_submission(Request $request, &$code, $auth_user, $election)
     {
         // Abort if not authenticated (defensive check)
         if (!$auth_user) {
@@ -2632,8 +2849,7 @@ public function verify_final_vote(Request $request)
         $agree_button = $request->input('agree_button');
         $errors       = [];
 
-        // Get election to check if it's demo
-        $election = $request->attributes->get('election');
+        // Election type is determined by the $election parameter passed in
         $isDemoElection = $election && $election->type === 'demo';
 
         // 1. User must be a registered voter (skip for demo elections)
@@ -2691,17 +2907,33 @@ public function verify_final_vote(Request $request)
         $voterSlug = $request->attributes->get('voter_slug');
         \Log::info('verify_first_submission redirect decision', [
             'has_voter_slug' => $voterSlug !== null,
-            'slug' => $voterSlug ? $voterSlug->slug : null
+            'slug' => $voterSlug ? $voterSlug->slug : null,
+            'is_demo_election' => $isDemoElection
         ]);
 
+        // ✅ FIX: Redirect to demo routes for demo elections, regular routes for real elections
         if ($voterSlug) {
-            $redirect = redirect()->route('slug.vote.verify', ['vslug' => $voterSlug->slug]);
-            \Log::info('Returning slug-based redirect', ['url' => $redirect->getTargetUrl()]);
+            if ($isDemoElection) {
+                // Demo election with slug - use demo verification route
+                $redirect = redirect()->route('slug.demo-vote.verify', ['vslug' => $voterSlug->slug]);
+                \Log::info('Returning slug-based demo redirect', ['url' => $redirect->getTargetUrl()]);
+            } else {
+                // Real election with slug - use regular verification route
+                $redirect = redirect()->route('slug.vote.verify', ['vslug' => $voterSlug->slug]);
+                \Log::info('Returning slug-based regular redirect', ['url' => $redirect->getTargetUrl()]);
+            }
             return $redirect;
         } else {
-            $redirect = redirect()->route('vote.verify');
-            \Log::info('Returning regular redirect', ['url' => $redirect->getTargetUrl()]);
-            return $redirect; // Regular voting (will redirect to slug-based)
+            if ($isDemoElection) {
+                // Demo election without slug - use demo verification route
+                $redirect = redirect()->route('demo-vote.verify');
+                \Log::info('Returning demo redirect', ['url' => $redirect->getTargetUrl()]);
+            } else {
+                // Real election without slug - use regular verification route
+                $redirect = redirect()->route('vote.verify');
+                \Log::info('Returning regular redirect', ['url' => $redirect->getTargetUrl()]);
+            }
+            return $redirect;
         }
     }
  
