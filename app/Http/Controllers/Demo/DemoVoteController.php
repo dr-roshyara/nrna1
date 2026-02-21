@@ -2125,6 +2125,8 @@ public function verify(Request $request)
 
         // ✅ FIXED: Render demo verification component for demo elections
         return Inertia::render('Vote/DemoVote/Verify', [
+            'selected_votes' => $voting_summary['vote_details'] ?? [],  // ✅ FIXED: Pass correct prop name
+            'total_votes' => $voting_summary['voted_posts'] ?? 0,
             'vote_data' => $processed_vote_data,
             'user_info' => $user_info,
             'timing_info' => [
