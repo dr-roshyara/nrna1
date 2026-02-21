@@ -490,13 +490,14 @@ export default {
         verification_code: String,
         is_demo: Boolean,
         demo_vote_id: Number,
+        default_election_type: String,
     },
 
-    setup() {
+    setup(props) {
         const form = useForm({
             voting_code: "",
             demo_voting_code: "",
-            electionType: "real",
+            electionType: props.default_election_type || "real",
         });
 
         function submit() {

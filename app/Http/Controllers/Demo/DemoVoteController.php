@@ -1984,6 +1984,7 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
             'verification_code' => $verification_code,
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'useSlugPath' => $voterSlug !== null,
+            'default_election_type' => 'demo',
         ]);
      }
     

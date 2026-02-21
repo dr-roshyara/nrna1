@@ -578,7 +578,10 @@ class DemoCodeController extends Controller
                 'is_code1_usable' => 1,
                 'code1' => $this->generateCode(),
                 'code1_sent_at' => now(),
-                'has_code1_sent' => 1,
+                'has_code1_sent' => 1,                
+                'code1_used_at' => null,  // ← ADD THIS!
+                'code2_used_at' => null,  // ← ADD THIS!
+                'is_code2_usable' => 1,   // ← ADD THIS!
             ]);
 
             // Send new code via email
