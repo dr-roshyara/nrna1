@@ -87,6 +87,22 @@ class DemoCodeController extends Controller
         // Get or create code record for this election
         $code = $this->getOrCreateCode($user, $election);
 
+        // ✅ CRITICAL: Reset voter slug step for demo re-voting
+        // For demo elections, allow users to vote multiple times by resetting the step
+        if ($voterSlug && $election->type === 'demo') {
+            $oldStep = $voterSlug->current_step;
+            $voterSlug->current_step = 1; // Reset to step 1 (code entry)
+            $voterSlug->save();
+
+            Log::info('🔄 [DEMO] Reset voter slug step for demo re-voting', [
+                'voter_slug_id' => $voterSlug->id,
+                'old_step' => $oldStep,
+                'new_step' => $voterSlug->current_step,
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+            ]);
+        }
+
         // ✅ CHECK IF CODE HAS EXPIRED - IF YES, SEND NEW ONE
         $minutesSinceSent = $code->code1_sent_at ? now()->diffInMinutes($code->code1_sent_at) : 0;
 
