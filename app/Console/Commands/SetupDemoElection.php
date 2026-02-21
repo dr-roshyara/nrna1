@@ -303,11 +303,11 @@ class SetupDemoElection extends Command
         // For MODE 2, return regions from the organization
         if ($mode === 'MODE 2' && $targetOrganization) {
             // This could come from organization settings
-            return ['Bayern', 'Baden-Württemberg', 'North Rhine-Westphalia'];
+            return ['Europe', 'Bayern', 'Baden-Württemberg', 'North Rhine-Westphalia'];
         }
 
-        // For public demo, return a few sample regions
-        return ['Bayern', 'Baden-Württemberg'];
+        // For public demo, return a few sample regions (including Europe for existing users)
+        return ['Europe', 'Bayern', 'Baden-Württemberg'];
     }
 
     /**
@@ -433,7 +433,7 @@ class SetupDemoElection extends Command
         } else {
             $this->info("\n🚀 Access at: http://localhost:8000/election/demo/start");
             $this->info("📢 This is a PUBLIC demo election!");
-            $this->info("   Users can test with sample regions: Bayern, Baden-Württemberg");
+            $this->info("   Users can test with sample regions: Europe, Bayern, Baden-Württemberg");
             $this->info("   Regional candidates are shown based on user's selected region\n");
         }
 
