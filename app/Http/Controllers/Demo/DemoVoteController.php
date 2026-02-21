@@ -1895,28 +1895,44 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
       */
      public function demo_verify_to_show(){
         $auth_user = auth()->user();
+        $election = request()->attributes->get('election');
         $voterSlug = request()->attributes->get('voter_slug');
+
+        // Get the most recent demo vote for this user
+        $demoVote = \App\Models\DemoVote::where('user_id', $auth_user->id)
+                                       ->where('election_id', $election?->id)
+                                       ->latest()
+                                       ->first();
 
         // Get demo code for this user
         $code = DemoCode::where('user_id', $auth_user->id)
-                       ->where('election_id', request()->attributes->get('election')?->id)
+                       ->where('election_id', $election?->id)
                        ->first();
 
         $has_voted = false;
+        $verification_code = null;
+
         if ($code && $code->has_voted) {
             $has_voted = true;
+        }
+
+        // Get verification code from the most recent vote
+        if ($demoVote && $demoVote->voting_code) {
+            $verification_code = $demoVote->voting_code;
         }
 
         Log::info('🎮 [DEMO] Verify to show page accessed', [
             'user_id' => $auth_user->id,
             'has_voted' => $has_voted,
             'is_demo' => true,
+            'has_verification_code' => $verification_code ? true : false,
         ]);
 
         return Inertia::render('Vote/VoteShowVerify', [
             'user_name' => $auth_user->name,
             'has_voted' => $has_voted,
             'is_demo' => true,
+            'verification_code' => $verification_code,
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'useSlugPath' => $voterSlug !== null,
         ]);
