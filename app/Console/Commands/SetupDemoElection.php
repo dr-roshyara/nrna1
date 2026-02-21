@@ -8,6 +8,7 @@ use App\Models\DemoCandidacy;
 use App\Models\DemoCode;
 use App\Models\Organization;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class SetupDemoElection extends Command
 {
@@ -23,7 +24,7 @@ class SetupDemoElection extends Command
      *
      * @var string
      */
-    protected $description = 'Setup demo election in MODE 1 (public) or MODE 2 (organisation-scoped). Production-safe alternative to seeder.';
+    protected $description = 'Setup demo election in MODE 1 (public) or MODE 2 (organisation-scoped) with national and regional candidates. Production-safe alternative to seeder.';
 
     /**
      * Execute the console command.
@@ -60,14 +61,12 @@ class SetupDemoElection extends Command
 
         // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
         // to ALL users regardless of organisation context
-        // For MODE 2, use unique slug per organization; for MODE 1, use 'demo-election'
         $demoSlug = $orgId ? 'demo-election-org-' . $orgId : 'demo-election';
 
         $query = Election::withoutGlobalScopes()
             ->where('slug', $demoSlug)
             ->where('type', 'demo');
 
-        // If MODE 2, filter by organisation_id
         if ($orgId) {
             $query = $query->where('organisation_id', $orgId);
         } else {
@@ -76,41 +75,74 @@ class SetupDemoElection extends Command
 
         $existingElection = $query->first();
 
-        // Demo election already exists
+        // Handle existing election
         if ($existingElection) {
-            $posts = DemoPost::where('election_id', $existingElection->id)->count();
-            $candidates = DemoCandidacy::where('election_id', $existingElection->id)->count();
-            $codes = DemoCode::where('election_id', $existingElection->id)->count();
+            $this->displayExistingElectionInfo($existingElection, $mode);
 
-            $this->info("\n📋 Demo election already exists:");
-            $this->info("  ID: {$existingElection->id}");
-            $this->info("  Name: {$existingElection->name}");
-            $this->info("  Posts: {$posts}");
-            $this->info("  Candidates: {$candidates}");
-            $this->info("  Codes: {$codes}");
-            $this->info("  Organisation ID: " . ($existingElection->organisation_id ?? 'NULL (Public Demo)'));
-            $this->info("  Mode: " . $mode);
-
-            if ($this->option('force') || $this->option('clean')) {
-                if ($this->option('force') && !$this->option('clean')) {
-                    if (!$this->confirm('⚠️  This will DELETE the existing demo election and all its data. Continue?')) {
-                        $this->warn('Aborted.');
-                        return 1;
-                    }
-                }
+            if ($this->shouldDeleteExisting()) {
                 $this->info('Deleting existing demo election...');
                 $existingElection->delete();
             } else {
-                $this->info("\n💡 To recreate, use: php artisan demo:setup --force" . ($orgId ? " --org={$orgId}" : ''));
                 return 0;
             }
         }
 
         // Create new demo election
-        $this->info("\n📝 Creating demo election ({$mode})...");
+        $election = $this->createDemoElection($orgId, $mode, $demoSlug, $targetOrganization);
 
-        // For MODE 2, use unique slug per organization
-        $demoSlug = $mode === 'MODE 2' ? 'demo-election-org-' . $orgId : 'demo-election';
+        // Create posts (national and regional)
+        $stats = $this->createPostsWithCandidates($election, $mode, $targetOrganization);
+
+        // Display summary
+        $this->displaySummary($election, $mode, $stats, $targetOrganization);
+
+        return 0;
+    }
+
+    /**
+     * Display existing election information
+     */
+    private function displayExistingElectionInfo($election, $mode)
+    {
+        $posts = DemoPost::where('election_id', $election->id)->count();
+        $candidates = DemoCandidacy::where('election_id', $election->id)->count();
+        $codes = DemoCode::where('election_id', $election->id)->count();
+
+        $this->info("\n📋 Demo election already exists:");
+        $this->info("  ID: {$election->id}");
+        $this->info("  Name: {$election->name}");
+        $this->info("  Posts: {$posts}");
+        $this->info("  Candidates: {$candidates}");
+        $this->info("  Codes: {$codes}");
+        $this->info("  Organisation ID: " . ($election->organisation_id ?? 'NULL (Public Demo)'));
+        $this->info("  Mode: " . $mode);
+    }
+
+    /**
+     * Check if we should delete existing election
+     */
+    private function shouldDeleteExisting()
+    {
+        if ($this->option('force') || $this->option('clean')) {
+            if ($this->option('force') && !$this->option('clean')) {
+                if (!$this->confirm('⚠️  This will DELETE the existing demo election and all its data. Continue?')) {
+                    $this->warn('Aborted.');
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        $this->info("\n💡 To recreate, use: php artisan demo:setup --force" . ($this->option('org') ? " --org={$this->option('org')}" : ''));
+        return false;
+    }
+
+    /**
+     * Create demo election
+     */
+    private function createDemoElection($orgId, $mode, $demoSlug, $targetOrganization)
+    {
+        $this->info("\n📝 Creating demo election ({$mode})...");
 
         $election = Election::create([
             'name' => 'Demo Election',
@@ -122,7 +154,7 @@ class SetupDemoElection extends Command
                 : 'Public demo election for testing the voting system without registration',
             'start_date' => now()->format('Y-m-d'),
             'end_date' => now()->addDays(365)->format('Y-m-d'),
-            'organisation_id' => $orgId ? (int)$orgId : null,  // MODE 1: NULL, MODE 2: org_id
+            'organisation_id' => $orgId ? (int)$orgId : null,
         ]);
 
         $this->info("✅ Created Demo Election: {$election->name}");
@@ -130,7 +162,17 @@ class SetupDemoElection extends Command
         $this->info("   Organisation ID: " . ($election->organisation_id ?? 'NULL (Public Demo)'));
         $this->info("   Mode: {$mode}");
 
-        // Verify organisation_id is set correctly
+        // Verify organisation_id
+        $this->verifyOrganisationId($election, $mode, $orgId, $targetOrganization);
+
+        return $election;
+    }
+
+    /**
+     * Verify organisation_id is set correctly
+     */
+    private function verifyOrganisationId($election, $mode, $orgId, $targetOrganization)
+    {
         if ($mode === 'MODE 2') {
             if ($election->organisation_id === (int)$orgId) {
                 $this->info('   ✓ Correctly scoped to organisation: ' . $targetOrganization->name);
@@ -144,110 +186,241 @@ class SetupDemoElection extends Command
                 $this->error('   ✗ ERROR: organisation_id should be NULL for MODE 1!');
             }
         }
+    }
 
-        // Create posts
-        $posts = [
+    /**
+     * Create posts with candidates (national and regional)
+     */
+    private function createPostsWithCandidates($election, $mode, $targetOrganization)
+    {
+        $stats = [
+            'posts' => 0,
+            'candidates' => 0,
+            'codes' => 0,
+            'national_posts' => 0,
+            'regional_posts' => 0,
+        ];
+
+        // NATIONAL POSTS
+        $nationalPosts = $this->getNationalPosts();
+        $stats['national_posts'] = count($nationalPosts);
+
+        foreach ($nationalPosts as $postData) {
+            $postStats = $this->createPost($election, $postData, true, null);
+            $stats['posts']++;
+            $stats['candidates'] += $postStats['candidates'];
+            $stats['codes'] += $postStats['codes'];
+        }
+
+        // REGIONAL POSTS (if MODE 2 with organization, or for public demo)
+        $regions = $this->getRegions($mode, $targetOrganization);
+
+        foreach ($regions as $region) {
+            $regionalPosts = $this->getRegionalPosts();
+            $stats['regional_posts'] += count($regionalPosts);
+
+            foreach ($regionalPosts as $postData) {
+                $postStats = $this->createPost($election, $postData, false, $region);
+                $stats['posts']++;
+                $stats['candidates'] += $postStats['candidates'];
+                $stats['codes'] += $postStats['codes'];
+            }
+        }
+
+        return $stats;
+    }
+
+    /**
+     * Get national posts configuration
+     */
+    private function getNationalPosts()
+    {
+        return [
             [
-                'post_id' => 'president-' . $election->id,
+                'post_id_prefix' => 'president',
                 'name' => 'President',
                 'nepali_name' => 'राष्ट्रपति',
                 'position_order' => 1,
+                'required_number' => 1,
                 'candidates' => [
-                    ['user_name' => 'Alice Johnson', 'candidacy_name' => 'Alice Johnson - Progressive Platform', 'proposer_name' => 'John Doe', 'supporter_name' => 'Jane Smith'],
-                    ['user_name' => 'Bob Smith', 'candidacy_name' => 'Bob Smith - Economic Growth', 'proposer_name' => 'Michael Brown', 'supporter_name' => 'Sarah Wilson'],
-                    ['user_name' => 'Carol Williams', 'candidacy_name' => 'Carol Williams - Community First', 'proposer_name' => 'David Lee', 'supporter_name' => 'Emma Davis'],
+                    ['name' => 'Alice Johnson', 'candidacy_name' => 'Alice Johnson - Progressive Platform'],
+                    ['name' => 'Bob Smith', 'candidacy_name' => 'Bob Smith - Economic Growth'],
+                    ['name' => 'Carol Williams', 'candidacy_name' => 'Carol Williams - Community First'],
                 ]
             ],
             [
-                'post_id' => 'vice-president-' . $election->id,
+                'post_id_prefix' => 'vice_president',
                 'name' => 'Vice President',
                 'nepali_name' => 'उप-राष्ट्रपति',
                 'position_order' => 2,
+                'required_number' => 1,
                 'candidates' => [
-                    ['user_name' => 'Daniel Miller', 'candidacy_name' => 'Daniel Miller - Innovation Leader', 'proposer_name' => 'Robert Johnson', 'supporter_name' => 'Patricia Garcia'],
-                    ['user_name' => 'Eva Martinez', 'candidacy_name' => 'Eva Martinez - Social Justice', 'proposer_name' => 'Kevin Brown', 'supporter_name' => 'Lisa Anderson'],
-                    ['user_name' => 'Frank Wilson', 'candidacy_name' => 'Frank Wilson - Infrastructure Expert', 'proposer_name' => 'Paul Taylor', 'supporter_name' => 'Mary Thomas'],
-                ]
-            ],
-            [
-                'post_id' => 'secretary-' . $election->id,
-                'name' => 'Secretary',
-                'nepali_name' => 'सचिव',
-                'position_order' => 3,
-                'candidates' => [
-                    ['user_name' => 'Grace Lee', 'candidacy_name' => 'Grace Lee - Administration Expert', 'proposer_name' => 'James Harris', 'supporter_name' => 'Nancy Clark'],
-                    ['user_name' => 'Henry White', 'candidacy_name' => 'Henry White - Organization Specialist', 'proposer_name' => 'Christopher Lewis', 'supporter_name' => 'Jennifer Martin'],
-                    ['user_name' => 'Iris Walker', 'candidacy_name' => 'Iris Walker - Communications Lead', 'proposer_name' => 'Daniel Hall', 'supporter_name' => 'Michelle Moore'],
+                    ['name' => 'Daniel Miller', 'candidacy_name' => 'Daniel Miller - Innovation Leader'],
+                    ['name' => 'Eva Martinez', 'candidacy_name' => 'Eva Martinez - Social Justice'],
+                    ['name' => 'Frank Wilson', 'candidacy_name' => 'Frank Wilson - Infrastructure Expert'],
                 ]
             ],
         ];
+    }
 
-        $totalCandidates = 0;
-        $totalCodes = 0;
-        $globalCandidateCounter = 0;
-
-        foreach ($posts as $postData) {
-            $candidates = $postData['candidates'];
-            unset($postData['candidates']);
-
-            // Create demo post with election_id and organisation_id
-            $post = DemoPost::create([
-                ...$postData,
-                'election_id' => $election->id,
-                'organisation_id' => $election->organisation_id,  // MODE 1: NULL, MODE 2: org_id
-                'state_name' => 'National',
+    /**
+     * Get regional posts configuration
+     */
+    private function getRegionalPosts()
+    {
+        return [
+            [
+                'post_id_prefix' => 'state_rep',
+                'name' => 'State Representative',
+                'nepali_name' => 'प्रदेश सभा सदस्य',
+                'position_order' => 3,
+                'required_number' => 2,
+                'candidates' => [
+                    ['name' => 'Hans Mueller', 'candidacy_name' => 'Hans Mueller - Local Development'],
+                    ['name' => 'Anna Schmidt', 'candidacy_name' => 'Anna Schmidt - Education Focus'],
+                    ['name' => 'Klaus Weber', 'candidacy_name' => 'Klaus Weber - Infrastructure'],
+                ]
+            ],
+            [
+                'post_id_prefix' => 'district_rep',
+                'name' => 'District Representative',
+                'nepali_name' => 'जिल्ला सभा सदस्य',
+                'position_order' => 4,
                 'required_number' => 1,
-            ]);
+                'candidates' => [
+                    ['name' => 'Maria Fischer', 'candidacy_name' => 'Maria Fischer - Health Services'],
+                    ['name' => 'Thomas Wagner', 'candidacy_name' => 'Thomas Wagner - Youth Empowerment'],
+                ]
+            ],
+        ];
+    }
 
-            $this->info("  ├─ Created Demo Post: {$post->name} ({$post->nepali_name})");
-
-            foreach ($candidates as $index => $candidate) {
-                $globalCandidateCounter++;
-                DemoCandidacy::create([
-                    'user_id' => "demo-{$post->post_id}-" . ($index + 1),
-                    'post_id' => $post->post_id,
-                    'election_id' => $election->id,
-                    'organisation_id' => $election->organisation_id,  // MODE 1: NULL, MODE 2: org_id
-                    'candidacy_id' => "demo-{$post->post_id}-" . ($index + 1),
-                    'user_name' => $candidate['user_name'],
-                    'candidacy_name' => $candidate['candidacy_name'],
-                    'proposer_name' => $candidate['proposer_name'],
-                    'supporter_name' => $candidate['supporter_name'],
-                    'position_order' => $index + 1,
-                    'image_path_1' => "candidate_" . $globalCandidateCounter . ".png",
-                ]);
-                $totalCandidates++;
-
-                // Create demo verification codes for each demo candidate
-                // Note: user_id is NULL initially - it gets populated when a voter uses the codes
-                DemoCode::create([
-                    'user_id' => null,  // Anonymous demo code - no voter assigned yet
-                    'election_id' => $election->id,
-                    'organisation_id' => $election->organisation_id,  // MODE 1: NULL, MODE 2: org_id
-                    'code1' => 'DEMO' . strtoupper(substr(md5($globalCandidateCounter . 'code1'), 0, 8)),
-                    'code2' => 'DEMO' . strtoupper(substr(md5($globalCandidateCounter . 'code2'), 0, 8)),
-                    'code3' => 'DEMO' . strtoupper(substr(md5($globalCandidateCounter . 'code3'), 0, 8)),
-                    'code4' => 'DEMO' . strtoupper(substr(md5($globalCandidateCounter . 'code4'), 0, 8)),
-                    'is_code1_usable' => true,
-                    'is_code2_usable' => true,
-                    'is_code3_usable' => true,
-                    'is_code4_usable' => true,
-                    'can_vote_now' => false,
-                    'voting_time_in_minutes' => 30,
-                    'code1_sent_at' => now(),
-                ]);
-                $totalCodes++;
-            }
-
-            $this->info("  │  ├─ Added " . count($candidates) . " demo candidates");
-            $this->info("  │  └─ Added " . count($candidates) . " demo verification codes");
+    /**
+     * Get regions based on mode
+     */
+    private function getRegions($mode, $targetOrganization)
+    {
+        // For MODE 2, return regions from the organization
+        if ($mode === 'MODE 2' && $targetOrganization) {
+            // This could come from organization settings
+            return ['Bayern', 'Baden-Württemberg', 'North Rhine-Westphalia'];
         }
 
+        // For public demo, return a few sample regions
+        return ['Bayern', 'Baden-Württemberg'];
+    }
+
+    /**
+     * Create a single post with candidates
+     */
+    private function createPost($election, $postData, $isNational, $region = null)
+    {
+        $candidates = $postData['candidates'];
+        unset($postData['candidates']);
+
+        $postId = $postData['post_id_prefix'] . '-' . $election->id . ($region ? '-' . Str::slug($region) : '');
+
+        $post = DemoPost::create([
+            'post_id' => $postId,
+            'name' => $postData['name'] . ($region ? ' - ' . $region : ''),
+            'nepali_name' => $postData['nepali_name'],
+            'position_order' => $postData['position_order'],
+            'required_number' => $postData['required_number'],
+            'is_national_wide' => $isNational ? 1 : 0,
+            'state_name' => $region, // NULL for national, region name for regional
+            'election_id' => $election->id,
+            'organisation_id' => $election->organisation_id,
+        ]);
+
+        $regionText = $region ? " (Region: {$region})" : " (National)";
+        $this->info("  ├─ Created Demo Post: {$post->name}{$regionText}");
+
+        $candidateCount = 0;
+        $codeCount = 0;
+
+        foreach ($candidates as $index => $candidate) {
+            $candidateCount++;
+
+            // Generate candidate image filename: CandidacyName_PostName_01.png
+            $candidacyNameSlug = Str::slug($candidate['name']);
+            $postNameSlug = Str::slug($postData['name']);
+            $regionSlug = $region ? '-' . Str::slug($region) : '';
+            $imagePath = "candidates/{$candidacyNameSlug}_{$postNameSlug}{$regionSlug}_" .
+                        str_pad($index + 1, 2, '0', STR_PAD_LEFT) . ".png";
+
+            DemoCandidacy::create([
+                'user_id' => "demo-{$postId}-" . ($index + 1),
+                'post_id' => $post->post_id,
+                'election_id' => $election->id,
+                'organisation_id' => $election->organisation_id,
+                'candidacy_id' => "demo-{$postId}-" . ($index + 1),
+                'user_name' => $candidate['name'],
+                'candidacy_name' => $candidate['candidacy_name'],
+                'proposer_name' => $this->getProposerName($index),
+                'supporter_name' => $this->getSupporterName($index),
+                'position_order' => $index + 1,
+                'image_path_1' => $imagePath,
+            ]);
+
+            // Create demo verification codes
+            DemoCode::create([
+                'user_id' => null,
+                'election_id' => $election->id,
+                'organisation_id' => $election->organisation_id,
+                'code1' => 'DEMO' . strtoupper(substr(md5($candidateCount . 'code1' . $region), 0, 8)),
+                'code2' => 'DEMO' . strtoupper(substr(md5($candidateCount . 'code2' . $region), 0, 8)),
+                'code3' => 'DEMO' . strtoupper(substr(md5($candidateCount . 'code3' . $region), 0, 8)),
+                'code4' => 'DEMO' . strtoupper(substr(md5($candidateCount . 'code4' . $region), 0, 8)),
+                'is_code1_usable' => true,
+                'is_code2_usable' => true,
+                'is_code3_usable' => true,
+                'is_code4_usable' => true,
+                'can_vote_now' => false,
+                'voting_time_in_minutes' => 30,
+                'code1_sent_at' => now(),
+            ]);
+            $codeCount++;
+        }
+
+        $this->info("  │  ├─ Added " . $candidateCount . " demo candidates");
+        $this->info("  │  └─ Added " . $codeCount . " demo verification codes");
+
+        return [
+            'candidates' => $candidateCount,
+            'codes' => $codeCount,
+        ];
+    }
+
+    /**
+     * Get proposer name (random for demo)
+     */
+    private function getProposerName($index)
+    {
+        $proposers = ['John Doe', 'Michael Brown', 'Robert Johnson', 'David Lee', 'James Harris'];
+        return $proposers[$index % count($proposers)];
+    }
+
+    /**
+     * Get supporter name (random for demo)
+     */
+    private function getSupporterName($index)
+    {
+        $supporters = ['Jane Smith', 'Sarah Wilson', 'Emma Davis', 'Nancy Clark', 'Jennifer Martin'];
+        return $supporters[$index % count($supporters)];
+    }
+
+    /**
+     * Display summary of created data
+     */
+    private function displaySummary($election, $mode, $stats, $targetOrganization)
+    {
         $this->info("\n📊 Demo Election Summary:");
         $this->info("  ✅ Election: {$election->name}");
-        $this->info("  ✅ Posts: " . count($posts));
-        $this->info("  ✅ Total Candidates: {$totalCandidates}");
-        $this->info("  ✅ Verification Codes: {$totalCodes}");
+        $this->info("  ✅ Total Posts: {$stats['posts']}");
+        $this->info("     ├─ National Posts: {$stats['national_posts']}");
+        $this->info("     └─ Regional Posts: {$stats['regional_posts']}");
+        $this->info("  ✅ Total Candidates: {$stats['candidates']}");
+        $this->info("  ✅ Verification Codes: {$stats['codes']}");
         $this->info("  ✅ Mode: {$mode}");
         $this->info("  ✅ Organisation ID: " . ($election->organisation_id ?? 'NULL (Public)'));
 
@@ -255,15 +428,15 @@ class SetupDemoElection extends Command
             $this->info("\n🚀 Accessing MODE 2 Demo Election:");
             $this->info("   Users from {$targetOrganization->name} can access:");
             $this->info("   http://localhost:8000/election/demo/start");
-            $this->info("   Other users will see permission errors (correct behavior).\n");
+            $this->info("   Regional candidates will be filtered by user's region");
+            $this->info("   Users will see ONLY candidates from their region\n");
         } else {
             $this->info("\n🚀 Access at: http://localhost:8000/election/demo/start");
             $this->info("📢 This is a PUBLIC demo election!");
-            $this->info("   Any user can participate in voting.\n");
+            $this->info("   Users can test with sample regions: Bayern, Baden-Württemberg");
+            $this->info("   Regional candidates are shown based on user's selected region\n");
         }
 
         $this->info("✅ Setup complete!\n");
-
-        return 0;
     }
 }
