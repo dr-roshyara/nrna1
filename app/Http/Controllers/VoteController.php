@@ -1533,15 +1533,16 @@ private function has_valid_selections($selections)
  * 
  * @param Code $code
  */
- function markUserAsVoted(Code $code, string $hashed_key )
+ function markUserAsVoted($code, string $hashed_key )
 {
+    // Accepts both Code and DemoCode models
     $code->update([
         'has_voted' => true,
         'can_vote_now' => false,
         'is_code2_usable' => false,
         'code2_used_at' => now(),
         'vote_completed_at'=>now()
-       
+
     ]);
     $code->save();
     // dd($code);

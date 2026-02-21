@@ -1659,9 +1659,10 @@ private function has_valid_selections($selections)
  *
  * @param Code $code
  */
- function markUserAsVoted(Code $code, string $hashed_key )
+ function markUserAsVoted($code, string $hashed_key )
 {
     // ✅ FIXED: Configurable code state after vote submission
+    // Accepts both Code and DemoCode models
     $updateData = [
         'has_voted' => true,
         'can_vote_now' => false,
