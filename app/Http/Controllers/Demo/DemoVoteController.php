@@ -2123,7 +2123,8 @@ public function verify(Request $request)
 
         $election = $this->getElection($request);
 
-        return Inertia::render('Vote/Verify', [
+        // ✅ FIXED: Render demo verification component for demo elections
+        return Inertia::render('Vote/DemoVote/Verify', [
             'vote_data' => $processed_vote_data,
             'user_info' => $user_info,
             'timing_info' => [
