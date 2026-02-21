@@ -533,10 +533,91 @@ class DemoCodeController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \App\Models\Election
      */
+    /**
+     * Get election with PRIORITY-BASED selection:
+     *
+     * PRIORITY 1: Election from middleware (if valid for user's org)
+     * PRIORITY 2: Demo election with user's organisation_id (if exists)
+     * PRIORITY 3: Platform-wide demo (organisation_id = null)
+     *
+     * Only fails if NO demo election exists at all
+     */
     private function getElection(Request $request): Election
     {
-        return $request->attributes->get('election')
-            ?? Election::withoutGlobalScopes()->where('type', 'demo')->first();
+        $user = $this->getUser($request);
+
+        \Log::info('🎯 [DemoCodeController] Selecting demo election', [
+            'user_id' => $user->id,
+            'user_org_id' => $user->organisation_id,
+            'has_middleware_election' => $request->attributes->has('election'),
+        ]);
+
+        // Priority 1: Use election from middleware if it exists AND is valid
+        $election = $request->attributes->get('election');
+
+        if ($election) {
+            // Verify the election belongs to user's organisation
+            if ($user->organisation_id === $election->organisation_id) {
+                \Log::info('✅ Using election from middleware', [
+                    'user_id' => $user->id,
+                    'user_org_id' => $user->organisation_id,
+                    'election_id' => $election->id,
+                    'election_org_id' => $election->organisation_id,
+                ]);
+                return $election;
+            }
+
+            \Log::warning('⚠️ Election from middleware has wrong org, will find correct one', [
+                'user_id' => $user->id,
+                'user_org_id' => $user->organisation_id,
+                'election_id' => $election->id,
+                'election_org_id' => $election->organisation_id,
+            ]);
+            // Fall through to find correct election
+        }
+
+        // Priority 2 & 3: Find appropriate demo election
+        $query = Election::withoutGlobalScopes()->where('type', 'demo');
+
+        if ($user->organisation_id !== null) {
+            // 👥 USER HAS ORGANISATION - Try to find org-specific demo first
+            $orgDemo = (clone $query)->where('organisation_id', $user->organisation_id)->first();
+
+            if ($orgDemo) {
+                \Log::info('✅ Found org-specific demo election', [
+                    'user_id' => $user->id,
+                    'user_org_id' => $user->organisation_id,
+                    'election_id' => $orgDemo->id,
+                ]);
+                return $orgDemo;
+            }
+
+            // No org-specific demo found - fall back to platform demo
+            \Log::info('⚠️ No org-specific demo found, will try platform demo', [
+                'user_id' => $user->id,
+                'user_org_id' => $user->organisation_id,
+            ]);
+        }
+
+        // Priority 3: Platform-wide demo (organisation_id = null)
+        $platformDemo = (clone $query)->whereNull('organisation_id')->first();
+
+        if ($platformDemo) {
+            \Log::info('✅ Using platform-wide demo election', [
+                'user_id' => $user->id,
+                'user_org_id' => $user->organisation_id ?? 'null',
+                'election_id' => $platformDemo->id,
+            ]);
+            return $platformDemo;
+        }
+
+        // ❌ NO DEMO ELECTIONS EXIST AT ALL
+        \Log::error('❌ No demo elections found in database', [
+            'user_id' => $user->id,
+            'user_org_id' => $user->organisation_id,
+        ]);
+
+        throw new \Exception('No demo election available. Please create a demo election first.');
     }
 
     /**
