@@ -420,16 +420,27 @@ class DemoCodeController extends Controller
      */
     public function submitAgreement(Request $request)
     {
-        Log::info('🎮 [CRITICAL] DEMO submitAgreement() method called', [
-            'route' => $request->route()->getName(),
+        // 🔴 CRITICAL DEBUG - Capture slug context at entry
+        \Log::info('🔴 [CRITICAL] submitAgreement ENTRY', [
+            'route_name' => $request->route()->getName(),
+            'route_params' => $request->route()->parameters(),
+            'vslug_from_route' => $request->route('vslug'),
             'url' => $request->url(),
             'method' => $request->method(),
-            'all_params' => $request->all(),
+            'session_id' => session()->getId(),
         ]);
 
         $user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
+
+        \Log::info('🔴 [CRITICAL] After getUser and getElection', [
+            'user_id' => $user->id,
+            'election_id' => $election->id,
+            'has_voter_slug' => $voterSlug ? 'yes' : 'no',
+            'voter_slug_slug' => $voterSlug ? $voterSlug->slug : null,
+            'voter_slug_id' => $voterSlug ? $voterSlug->id : null,
+        ]);
 
         Log::info('🎮 [DEMO-CODE] Agreement submission started', [
             'user_id' => $user->id,
@@ -504,6 +515,14 @@ class DemoCodeController extends Controller
         $voteUrl = $voterSlug
             ? route('slug.demo-vote.create', ['vslug' => $voterSlug->slug])
             : route('demo-vote.create');
+
+        \Log::info('🟢 [CRITICAL] submitAgreement REDIRECT DECISION', [
+            'has_voter_slug' => $voterSlug ? 'yes' : 'no',
+            'voter_slug_slug' => $voterSlug ? $voterSlug->slug : null,
+            'route_used' => $voterSlug ? 'slug.demo-vote.create' : 'demo-vote.create',
+            'voteUrl' => $voteUrl,
+            'request_is_json' => $request->expectsJson(),
+        ]);
 
         return $this->jsonOrRedirect($request, true, 'Agreement accepted successfully!',
             redirect($voteUrl)->with('success', 'Agreement accepted. You may now cast your demo vote.'), $voteUrl);
