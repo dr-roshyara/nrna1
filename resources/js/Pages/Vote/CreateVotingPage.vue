@@ -376,6 +376,10 @@ export default {
         useSlugPath: {
             type: Boolean,
             default: false
+        },
+        election: {
+            type: Object,
+            default: null
         }
     },
     
@@ -403,13 +407,21 @@ export default {
                 alert('Please complete your selections before submitting:\n\n' + validation.issues.join('\n'));
                 return;
             }
-            
-          
-            
+
+            // ✅ FIX: Determine correct endpoint based on election type
+            const isDemo = props.election && props.election.type === 'demo';
+            const endpoint = isDemo ? 'demo-vote' : 'vote';
+
             // Use slug-based route if available, otherwise use regular route
             const submitUrl = props.useSlugPath && props.slug
-                ? `/v/${props.slug}/vote/submit`
-                : '/vote/submit';
+                ? `/v/${props.slug}/${endpoint}/submit`
+                : `/${endpoint}/submit`;
+
+            console.log('📤 Submitting form to:', submitUrl, {
+                electionType: props.election?.type,
+                isDemo,
+                endpoint
+            });
 
             form.post(submitUrl, {
                 onError: (errors) => {
