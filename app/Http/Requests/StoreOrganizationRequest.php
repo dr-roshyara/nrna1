@@ -22,6 +22,8 @@ class StoreOrganizationRequest extends FormRequest
     {
         $isSelf = $this->input('representative.is_self', false);
 
+        // CRITICAL FIX: Use arrays for fields that need custom closures appended
+        // This prevents "[] operator not supported for strings" error
         $rules = [
             // Step 1: Basic Information
             'name' => [
@@ -31,9 +33,9 @@ class StoreOrganizationRequest extends FormRequest
                 'max:255',
                 Rule::unique('organizations'),
             ],
-            'email' => [
+            'email' => [  // ARRAY format - so we can append DNS validation
                 'required',
-                'email:rfc',  // Always validate RFC format
+                'email:rfc',
                 'max:255',
                 Rule::unique('organizations'),
             ],
@@ -49,8 +51,8 @@ class StoreOrganizationRequest extends FormRequest
             'representative.role' => 'required|string|min:2|max:100',
             // Email is only required if NOT self-representative
             'representative.email' => $isSelf
-                ? 'nullable'
-                : 'required|email:rfc|max:255',
+                ? ['nullable']  // ARRAY format
+                : ['required', 'email:rfc', 'max:255'],  // ARRAY format - so we can append DNS validation
             'representative.is_self' => 'boolean',
 
             // Legal acceptance
@@ -60,18 +62,33 @@ class StoreOrganizationRequest extends FormRequest
 
         // Add DNS validation only in non-test environments
         if (!app()->environment('testing')) {
+            // Organization email DNS validation
             $rules['email'][] = function ($attribute, $value, $fail) {
-                $domain = explode('@', $value)[1] ?? null;
+                // Type-safe: ensure $value is a string before using array functions
+                if (!is_string($value) || empty($value)) {
+                    return; // Let other validators handle empty/type issues
+                }
+
+                $parts = explode('@', $value);
+                $domain = $parts[1] ?? null;
+
                 if (!$domain || !checkdnsrr($domain, 'MX')) {
-                    $fail('The email domain must have valid MX records.');
+                    $fail(__('validation.organization.email.dns'));
                 }
             };
 
+            // Representative email DNS validation (if provided)
             $rules['representative.email'][] = function ($attribute, $value, $fail) {
-                if (!$value) return; // Skip if empty (handled by required_if)
-                $domain = explode('@', $value)[1] ?? null;
+                // Type-safe: skip if not a string or empty
+                if (!is_string($value) || empty($value)) {
+                    return; // Handled by required_if and email validators
+                }
+
+                $parts = explode('@', $value);
+                $domain = $parts[1] ?? null;
+
                 if (!$domain || !checkdnsrr($domain, 'MX')) {
-                    $fail('The representative email domain must have valid MX records.');
+                    $fail(__('validation.organization.rep_email.dns'));
                 }
             };
         }
