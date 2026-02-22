@@ -1,12 +1,18 @@
 import { ref, reactive, computed } from 'vue';
+import { useCsrfRequest } from './useCsrfRequest';
 
 /**
  * Composable for managing the Organization Creation Flow
  * Handles multi-step form state, validation, and navigation
  *
  * Design: Progressive disclosure with educational first, form second
+ *
+ * CSRF Handling: Uses centralized useCsrfRequest() composable for all requests
+ * This ensures consistent CSRF token management across the entire application
  */
 export const useOrganizationCreation = () => {
+  // Initialize centralized CSRF request handler
+  const csrfRequest = useCsrfRequest();
   // Step tracking (0 = education overlay, 1-3 = form steps)
   const currentStep = ref(0);
   const isModalOpen = ref(false);
@@ -218,6 +224,8 @@ export const useOrganizationCreation = () => {
 
   /**
    * Submit the form and create organization
+   * CSRF handling: Uses centralized useCsrfRequest() composable
+   * This ensures automatic token management and consistent error handling
    */
   const submitForm = async () => {
     if (!validateStep(3)) {
@@ -252,134 +260,63 @@ export const useOrganizationCreation = () => {
         accept_terms: formData.acceptance.terms,
       };
 
-      // Use fetch with proper CSRF token handling
-      // Production-safe: retrieves token from meta tag with fallback
-      const getCsrfToken = () => {
-        // Try meta tag first (most reliable)
-        const metaElement = document.querySelector('meta[name="csrf-token"]');
-        const metaToken = metaElement?.getAttribute('content') || metaElement?.content;
+      console.log('📤 Sending organization creation request');
 
-        if (metaToken) {
-          console.log('✓ CSRF token retrieved from meta tag');
-          return metaToken;
-        }
+      // Use centralized CSRF request handler
+      // Automatically handles token retrieval, error handling, and 419 recovery
+      const result = await csrfRequest.post('/organizations', payload);
 
-        // Fallback: try to extract from cookie (Laravel default is XSRF-TOKEN)
-        const name = 'XSRF-TOKEN';
-        const decodedCookie = decodeURIComponent(document.cookie)
-          .split(';')
-          .map(c => c.trim())
-          .find(c => c.startsWith(name + '='));
+      // Track success
+      trackOrganizationCreated(payload);
 
-        if (decodedCookie) {
-          console.log('✓ CSRF token retrieved from cookie');
-          return decodeURIComponent(decodedCookie.substring(name.length + 1));
-        }
-
-        console.warn('⚠️ CSRF token not found in meta tag or cookies');
-        return null;
-      };
-
-      const csrfToken = getCsrfToken();
-      if (!csrfToken) {
-        const error = new Error('CSRF token not found. Please refresh the page.');
-        submissionError.value = error.message;
-        trackOrganizationCreationError(error);
-        isSubmitting.value = false;
-        console.error('❌ CSRF token retrieval failed');
-        return Promise.reject(error);
+      // Show success message
+      if (window.dispatchEvent) {
+        window.dispatchEvent(new CustomEvent('show-success', {
+          detail: {
+            message: result.message || 'Organisation erfolgreich erstellt!',
+            title: '✅ Erfolg',
+            duration: 5000
+          }
+        }));
       }
 
-      console.log('📤 Sending organization creation request with CSRF token');
+      // Close modal and reset
+      closeModal();
+      resetForm();
 
-      return fetch('/organizations', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'X-CSRF-TOKEN': csrfToken,
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-        credentials: 'same-origin',
-        body: JSON.stringify(payload),
-      })
-        .then(response => {
-          if (!response.ok) {
-            console.error(`❌ Request failed with status ${response.status}`);
+      // Redirect to organization dashboard
+      if (result.redirect_url) {
+        setTimeout(() => {
+          window.location.href = result.redirect_url;
+        }, 1500);
+      }
 
-            // Special handling for CSRF token mismatch (419 Mismatch)
-            if (response.status === 419) {
-              console.error('CSRF token verification failed - token may be expired');
-              const csrfError = new Error('CSRF token expired. Please refresh the page and try again.');
-              return Promise.reject(csrfError);
-            }
-
-            // Handle validation errors (422) and other errors
-            return response.json().then(error => {
-              throw error;
-            });
-          }
-          console.log('✓ Request successful, parsing response');
-          return response.json();
-        })
-        .then(result => {
-          // Track success
-          trackOrganizationCreated(payload);
-
-          // Show success message
-          if (window.dispatchEvent) {
-            window.dispatchEvent(new CustomEvent('show-success', {
-              detail: {
-                message: result.message || 'Organisation erfolgreich erstellt!',
-                title: '✅ Erfolg',
-                duration: 5000
-              }
-            }));
-          }
-
-          // Close modal and reset
-          closeModal();
-          resetForm();
-
-          // Redirect to organization dashboard
-          if (result.redirect_url) {
-            setTimeout(() => {
-              window.location.href = result.redirect_url;
-            }, 1500);
-          }
-
-          isSubmitting.value = false;
-          return result;
-        })
-        .catch(error => {
-          console.error('Organization creation error:', error);
-
-          // Format error messages
-          let errorMessage = 'Failed to create organization';
-
-          if (error.errors) {
-            // Validation errors
-            const errorMessages = Object.entries(error.errors)
-              .map(([field, messages]) => {
-                const msg = Array.isArray(messages) ? messages.join(', ') : messages;
-                return `${field}: ${msg}`;
-              })
-              .join('\n');
-            errorMessage = errorMessages;
-          } else if (error.message) {
-            errorMessage = error.message;
-          }
-
-          submissionError.value = errorMessage;
-          trackOrganizationCreationError(error);
-          isSubmitting.value = false;
-
-          throw error;
-        });
+      isSubmitting.value = false;
+      return result;
     } catch (error) {
-      submissionError.value = error.message;
+      console.error('Organization creation error:', error);
+
+      // Format error messages
+      let errorMessage = 'Failed to create organization';
+
+      if (error.data?.errors) {
+        // Validation errors from server
+        const errorMessages = Object.entries(error.data.errors)
+          .map(([field, messages]) => {
+            const msg = Array.isArray(messages) ? messages.join(', ') : messages;
+            return `${field}: ${msg}`;
+          })
+          .join('\n');
+        errorMessage = errorMessages;
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+
+      submissionError.value = errorMessage;
       trackOrganizationCreationError(error);
       isSubmitting.value = false;
+
+      // Don't throw - let the modal show the error message instead
       return false;
     }
   };
