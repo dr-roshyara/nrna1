@@ -37,6 +37,10 @@ import verifyEmailDe from './locales/pages/Auth/VerifyEmail/de.json';
 import verifyEmailEn from './locales/pages/Auth/VerifyEmail/en.json';
 import verifyEmailNp from './locales/pages/Auth/VerifyEmail/np.json';
 
+import forgotPasswordDe from './locales/pages/Auth/ForgotPassword/de.json';
+import forgotPasswordEn from './locales/pages/Auth/ForgotPassword/en.json';
+import forgotPasswordNp from './locales/pages/Auth/ForgotPassword/np.json';
+
 import electionDe from './locales/pages/Election/de.json';
 import electionEn from './locales/pages/Election/en.json';
 import electionNp from './locales/pages/Election/np.json';
@@ -149,6 +153,7 @@ const messages = {
       welcome: welcomeDe,
       auth: authDe,
       'verify-email': verifyEmailDe,
+      'forgot-password': forgotPasswordDe,
       election: electionDe,
       'election-dashboard': electionDashboardDe,
       'election-navigation': electionNavigationDe,
@@ -181,6 +186,7 @@ const messages = {
       welcome: welcomeEn,
       auth: authEn,
       'verify-email': verifyEmailEn,
+      'forgot-password': forgotPasswordEn,
       election: electionEn,
       'election-dashboard': electionDashboardEn,
       'election-navigation': electionNavigationEn,
@@ -213,6 +219,7 @@ const messages = {
       welcome: welcomeNp,
       auth: authNp,
       'verify-email': verifyEmailNp,
+      'forgot-password': forgotPasswordNp,
       election: electionNp,
       'election-dashboard': electionDashboardNp,
       'election-navigation': electionNavigationNp,
