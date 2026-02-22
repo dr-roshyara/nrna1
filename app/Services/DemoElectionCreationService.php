@@ -17,8 +17,9 @@ class DemoElectionCreationService
      *
      * Includes:
      * - 2 national posts (President, Vice President)
-     * - 1 regional post for Europe (State Representative)
-     * - 3 candidates per post
+     * - 2 regional posts for Europe (State Representative, District Representative)
+     * - 3 candidates for State Representative (select 2)
+     * - 2 candidates for District Representative (select 1)
      * - Demo verification codes for each candidate
      *
      * @param int $organisationId
@@ -96,24 +97,40 @@ class DemoElectionCreationService
 
     /**
      * Create regional posts with candidates and codes
+     * Creates both State Representative and District Representative for each region
      */
     private function createRegionalPosts(Election $election, array $regions): void
     {
-        $regionalPostTemplate = [
-            'post_id_prefix' => 'state_rep',
-            'name' => 'State Representative',
-            'nepali_name' => 'प्रदेश सभा सदस्य',
-            'position_order' => 3,
-            'required_number' => 2,
-            'candidates' => [
-                ['name' => 'Hans Mueller', 'candidacy_name' => 'Hans Mueller - Local Development'],
-                ['name' => 'Anna Schmidt', 'candidacy_name' => 'Anna Schmidt - Education Focus'],
-                ['name' => 'Klaus Weber', 'candidacy_name' => 'Klaus Weber - Infrastructure'],
-            ]
+        $regionalPostTemplates = [
+            [
+                'post_id_prefix' => 'state_rep',
+                'name' => 'State Representative',
+                'nepali_name' => 'प्रदेश सभा सदस्य',
+                'position_order' => 3,
+                'required_number' => 2,
+                'candidates' => [
+                    ['name' => 'Hans Mueller', 'candidacy_name' => 'Hans Mueller - Local Development'],
+                    ['name' => 'Anna Schmidt', 'candidacy_name' => 'Anna Schmidt - Education Focus'],
+                    ['name' => 'Klaus Weber', 'candidacy_name' => 'Klaus Weber - Infrastructure'],
+                ]
+            ],
+            [
+                'post_id_prefix' => 'district_rep',
+                'name' => 'District Representative',
+                'nepali_name' => 'जिल्ला सभा सदस्य',
+                'position_order' => 4,
+                'required_number' => 1,
+                'candidates' => [
+                    ['name' => 'Maria Fischer', 'candidacy_name' => 'Maria Fischer - Health Services'],
+                    ['name' => 'Thomas Wagner', 'candidacy_name' => 'Thomas Wagner - Youth Empowerment'],
+                ]
+            ],
         ];
 
         foreach ($regions as $region) {
-            $this->createPost($election, $regionalPostTemplate, false, $region);
+            foreach ($regionalPostTemplates as $postTemplate) {
+                $this->createPost($election, $postTemplate, false, $region);
+            }
         }
     }
 
