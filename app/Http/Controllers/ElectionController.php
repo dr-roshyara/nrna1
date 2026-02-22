@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Election;
+use App\Services\VoterSlugService;
+use App\Services\DemoElectionResolver;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Log;
@@ -15,6 +17,16 @@ use Illuminate\Support\Facades\Log;
  */
 class ElectionController extends Controller
 {
+    protected VoterSlugService $slugService;
+
+    /**
+     * Inject VoterSlugService via constructor
+     * The service is registered as singleton in AppServiceProvider
+     */
+    public function __construct(VoterSlugService $slugService)
+    {
+        $this->slugService = $slugService;
+    }
     /**
      * Show election selection page
      * Users choose between demo (testing) and real (official) elections
@@ -101,9 +113,8 @@ class ElectionController extends Controller
         ]);
 
         try {
-            // Generate voter slug for the user
-            $slugService = new \App\Services\VoterSlugService();
-            $slug = $slugService->getOrCreateActiveSlug(auth()->user());
+            // Generate voter slug for the user using injected service
+            $slug = $this->slugService->getOrCreateActiveSlug(auth()->user());
 
             // For API requests
             if ($request->wantsJson()) {
@@ -186,9 +197,8 @@ class ElectionController extends Controller
         ]);
 
         try {
-            // Generate voter slug for the user
-            $slugService = new \App\Services\VoterSlugService();
-            $slug = $slugService->getOrCreateActiveSlug(auth()->user());
+            // Generate voter slug for the user using injected service
+            $slug = $this->slugService->getOrCreateActiveSlug(auth()->user());
 
             // For API requests
             if ($request->wantsJson()) {
