@@ -196,7 +196,6 @@
 </template>
 
 <script>
-import { useForm } from '@inertiajs/inertia-vue3';
 
 export default {
   name: 'ElectionHeader',
@@ -220,7 +219,6 @@ export default {
       handleEscapeKey: null,
       handleResize: null,
       isLoggingOut: false,
-      logoutForm: useForm({}),
     };
   },
 
@@ -353,15 +351,20 @@ export default {
     },
 
     /**
-     * Logout user via Inertia.js POST request
-     * CORRECT APPROACH: Uses Inertia's form handling with automatic CSRF protection
+     * Logout user via fetch with proper CSRF token handling
+     * PROVEN PATTERN: Same approach used in OrganizationCreateModal (working)
+     *
+     * Token retrieval strategy:
+     * 1. Try meta tag first (most reliable - set by Laravel)
+     * 2. Fallback to XSRF-TOKEN cookie (Laravel default)
+     * 3. Error if neither found - forces page refresh to regenerate token
      *
      * Benefits:
-     * - Inertia.js automatically handles CSRF tokens
-     * - Proper session cleanup via Laravel
-     * - Automatic redirects on success
-     * - Works with Fortify/Jetstream authentication
-     * - No manual token handling required
+     * - Matches proven working pattern from modal
+     * - Robust CSRF token retrieval with fallback
+     * - Proper error handling for 419 (expired token)
+     * - credentials: 'same-origin' ensures cookies sent
+     * - No token expiration issues
      */
     logout() {
       console.log('🚪 Logout initiated');
@@ -369,19 +372,85 @@ export default {
       this.isLoggingOut = true;
 
       try {
-        console.log('📤 Sending logout request via Inertia.js');
-        // Use Inertia's form POST - automatically includes CSRF token
-        this.logoutForm.post(this.route('logout'), {
-          onFinish: () => {
-            console.log('✅ Logout request completed');
-            // Inertia will handle the redirect
+        // Get CSRF token with fallback strategy
+        const getCsrfToken = () => {
+          // Try meta tag first (most reliable)
+          const metaElement = document.querySelector('meta[name="csrf-token"]');
+          const metaToken = metaElement?.getAttribute('content') || metaElement?.content;
+
+          if (metaToken) {
+            console.log('✓ CSRF token retrieved from meta tag');
+            return metaToken;
+          }
+
+          // Fallback: try to extract from cookie (Laravel default is XSRF-TOKEN)
+          const name = 'XSRF-TOKEN';
+          const decodedCookie = decodeURIComponent(document.cookie)
+            .split(';')
+            .map(c => c.trim())
+            .find(c => c.startsWith(name + '='));
+
+          if (decodedCookie) {
+            console.log('✓ CSRF token retrieved from cookie');
+            return decodeURIComponent(decodedCookie.substring(name.length + 1));
+          }
+
+          console.warn('⚠️ CSRF token not found in meta tag or cookies');
+          return null;
+        };
+
+        const csrfToken = getCsrfToken();
+        if (!csrfToken) {
+          const error = 'CSRF token not found. Please refresh the page.';
+          this.isLoggingOut = false;
+          alert(error);
+          console.error('❌ CSRF token retrieval failed');
+          return;
+        }
+
+        console.log('📤 Sending logout request with CSRF token');
+
+        // Use fetch with proper CSRF headers (matching OrganizationCreateModal pattern)
+        fetch(this.route('logout'), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': csrfToken,
+            'X-Requested-With': 'XMLHttpRequest',
           },
-          onError: (errors) => {
-            console.error('❌ Logout error:', errors);
+          credentials: 'same-origin', // CRITICAL: ensures cookies are sent
+          body: JSON.stringify({}),
+        })
+          .then(response => {
+            if (!response.ok) {
+              console.error(`❌ Request failed with status ${response.status}`);
+
+              // Special handling for CSRF token mismatch (419)
+              if (response.status === 419) {
+                console.error('CSRF token verification failed - token expired');
+                const error = '⚠️ CSRF token expired. Please refresh the page and try again.';
+                alert(error);
+                window.location.reload();
+                return;
+              }
+
+              // Other errors
+              throw new Error(`Logout failed with status ${response.status}`);
+            }
+            console.log('✓ Logout successful');
+            return response.json();
+          })
+          .then(result => {
+            console.log('✓ Session cleared, redirecting...');
+            // Redirect to home/login
+            window.location.href = '/';
+          })
+          .catch(error => {
+            console.error('❌ Logout error:', error);
             this.isLoggingOut = false;
-            alert('Logout error. Please refresh and try again.');
-          },
-        });
+            alert('Logout failed. Please try again or refresh the page.');
+          });
       } catch (error) {
         console.error('❌ Logout error:', error);
         this.isLoggingOut = false;
