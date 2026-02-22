@@ -1,38 +1,47 @@
 <template>
-   <nrna-layout>
-        <div class="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-50 py-8 px-4">
-            <div class="max-w-md mx-auto">
-                <!-- Header -->
-                <div class="text-center mb-8">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full shadow-lg mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                        </svg>
-                    </div>
-                    
-                    <h1 class="text-3xl font-bold text-gray-900 mb-2">
-                        {{ $t('pages.forgot-password.title') }}
-                    </h1>
-                    <p class="text-sm text-gray-600">{{ $t('pages.forgot-password.subtitle') }}</p>
-                </div>
+    <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
+        <!-- Header - same as home page -->
+        <ElectionHeader />
 
-                <!-- Main Card -->
-                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-                    <!-- Instructions -->
-                    <div class="bg-blue-50 px-6 py-6 border-b border-blue-100">
-                        <div class="space-y-3 text-sm">
-                            <p class="text-gray-700 leading-relaxed">
-                                <span class="font-semibold text-gray-900">{{ $t('pages.forgot-password.instructions.label') }}</span>
-                                {{ $t('pages.forgot-password.instructions.text') }}
-                            </p>
+        <!-- Main Content Area -->
+        <main class="flex-grow flex items-center justify-center py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl w-full">
+                <!-- Card Container -->
+                <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+                    <!-- Header Section -->
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-6 md:px-8 py-8 md:py-10 text-center">
+                        <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">
+                            {{ $t('pages.forgot-password.title') }}
+                        </h1>
+                        <p class="text-blue-100 text-sm md:text-base">
+                            {{ $t('pages.forgot-password.subtitle') }}
+                        </p>
+                    </div>
+
+                    <!-- Content Section -->
+                    <div class="px-6 md:px-8 py-8 md:py-10">
+                        <!-- Lock Icon -->
+                        <div class="flex justify-center mb-6">
+                            <div class="bg-blue-100 p-4 rounded-full">
+                                <svg class="w-8 h-8 md:w-10 md:h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Form -->
-                    <div class="px-6 py-8">
+                        <!-- Instructions -->
+                        <div class="space-y-4 text-gray-700 mb-8">
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 md:p-5">
+                                <p class="text-sm md:text-base text-gray-700 leading-relaxed">
+                                    <span class="font-semibold text-gray-900">{{ $t('pages.forgot-password.instructions.label') }}</span>
+                                    {{ $t('pages.forgot-password.instructions.text') }}
+                                </p>
+                            </div>
+                        </div>
+
                         <!-- Success Message -->
-                        <div 
-                            v-if="status" 
+                        <div
+                            v-if="status"
                             class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center"
                             role="alert"
                         >
@@ -58,14 +67,14 @@
                                     {{ $t('pages.forgot-password.form.email.label') }}
                                     <span class="text-red-500 ml-1">*</span>
                                 </label>
-                                
+
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                         </svg>
                                     </div>
-                                    
+
                                     <input
                                         id="email"
                                         type="email"
@@ -85,16 +94,16 @@
                                 :disabled="form.processing"
                                 class="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
                             >
-                                <svg 
-                                    v-if="form.processing" 
-                                    class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" 
-                                    fill="none" 
+                                <svg
+                                    v-if="form.processing"
+                                    class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                                    fill="none"
                                     viewBox="0 0 24 24"
                                 >
                                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
                                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
                                 </svg>
-                                
+
                                 <span v-if="form.processing">
                                     {{ $t('pages.forgot-password.form.submit.processing') }}
                                 </span>
@@ -106,8 +115,8 @@
 
                         <!-- Back to Login -->
                         <div class="mt-6 text-center">
-                            <a 
-                                href="/login" 
+                            <a
+                                href="/login"
                                 class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1"
                             >
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,56 +127,61 @@
                         </div>
                     </div>
 
-                    <!-- Help Section -->
-                    <div class="bg-gray-50 px-6 py-4 border-t">
-                        <div class="text-center">
-                            <p class="text-xs text-gray-600">
-                                <span class="font-semibold">{{ $t('pages.forgot-password.help.title') }}</span><br>
-                                {{ $t('pages.forgot-password.help.message') }}
-                            </p>
-                        </div>
+                    <!-- Footer Info -->
+                    <div class="bg-gray-50 px-6 md:px-8 py-4 border-t border-gray-200">
+                        <p class="text-xs md:text-sm text-gray-600 text-center">
+                            <span class="font-semibold">{{ $t('pages.forgot-password.help.title') }}</span><br>
+                            {{ $t('pages.forgot-password.help.message') }}
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-   </nrna-layout>
+        </main>
+
+        <!-- Footer - same as home page -->
+        <PublicDigitFooter class="px-4" />
+    </div>
 </template>
 
 <script>
-    import NrnaLayout from '@/Layouts/NrnaLayout'
-    import JetValidationErrors from '@/Jetstream/ValidationErrors'
+import { Link } from "@inertiajs/inertia-vue3";
+import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
+import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
+import JetValidationErrors from '@/Jetstream/ValidationErrors'
 
-    export default {
-        components: {
-            NrnaLayout,
-            JetValidationErrors
-        },
+export default {
+    components: {
+        Link,
+        ElectionHeader,
+        PublicDigitFooter,
+        JetValidationErrors
+    },
 
-        props: {
-            status: String
-        },
+    props: {
+        status: String
+    },
 
-        data() {
-            return {
-                form: this.$inertia.form({
-                    email: ''
-                })
-            }
-        },
+    data() {
+        return {
+            form: this.$inertia.form({
+                email: ''
+            })
+        }
+    },
 
-        mounted() {
-            // Focus email input on page load
-            this.$nextTick(() => {
-                document.getElementById('email')?.focus();
-            });
-        },
+    mounted() {
+        // Focus email input on page load
+        this.$nextTick(() => {
+            document.getElementById('email')?.focus();
+        });
+    },
 
-        methods: {
-            submit() {
-                this.form.post(this.route('password.email'));
-            }
+    methods: {
+        submit() {
+            this.form.post(this.route('password.email'));
         }
     }
+}
 </script>
 
 <style scoped>
@@ -185,7 +199,7 @@
     .bg-blue-600 {
         background-color: #000000 !important;
     }
-    
+
     .border-gray-300 {
         border-color: #000000 !important;
         border-width: 2px !important;
