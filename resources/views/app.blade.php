@@ -121,12 +121,6 @@
     <body class="font-sans antialiased">
         @inertia
 
-        {{-- Hidden logout form for use by Vue components --}}
-        {{-- This ensures CSRF protection for logout requests --}}
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
-
         @env ('local')
             <script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
         @endenv

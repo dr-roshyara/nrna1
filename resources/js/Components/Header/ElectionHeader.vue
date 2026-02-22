@@ -196,7 +196,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { useForm } from '@inertiajs/inertia-vue3';
 
 export default {
   name: 'ElectionHeader',
@@ -220,6 +220,7 @@ export default {
       handleEscapeKey: null,
       handleResize: null,
       isLoggingOut: false,
+      logoutForm: useForm({}),
     };
   },
 
@@ -352,15 +353,15 @@ export default {
     },
 
     /**
-     * Logout user via Laravel's built-in form submission
-     * RECOMMENDED APPROACH: Uses form-based logout with proper CSRF protection
+     * Logout user via Inertia.js POST request
+     * CORRECT APPROACH: Uses Inertia's form handling with automatic CSRF protection
      *
      * Benefits:
-     * - Standard Laravel logout handling
-     * - Built-in CSRF protection via form token
-     * - Works across all browsers
-     * - Server handles session cleanup properly
-     * - Fallback to Axios if form not found
+     * - Inertia.js automatically handles CSRF tokens
+     * - Proper session cleanup via Laravel
+     * - Automatic redirects on success
+     * - Works with Fortify/Jetstream authentication
+     * - No manual token handling required
      */
     logout() {
       console.log('🚪 Logout initiated');
@@ -368,86 +369,23 @@ export default {
       this.isLoggingOut = true;
 
       try {
-        // Preferred: Use Laravel's built-in logout form (Option A)
-        const logoutForm = document.getElementById('logout-form');
-        if (logoutForm) {
-          console.log('✅ Logout form found, submitting...');
-          logoutForm.submit();
-          // Form submission will handle the redirect
-          return;
-        } else {
-          console.warn('⚠️ Logout form not found in DOM');
-          console.log('📋 Falling back to Axios method...');
-          // If form is not available, use fallback method
-          this.fallbackLogout();
-        }
-      } catch (error) {
-        console.error('❌ Logout error:', error);
-        alert('Logout error. Please refresh and try again.');
-        this.isLoggingOut = false;
-      }
-    },
-
-    /**
-     * Fallback logout method using Axios
-     * Only used if the form-based approach is not available
-     * Uses X-XSRF-TOKEN header which Laravel automatically validates
-     */
-    async fallbackLogout() {
-      try {
-        // Get CSRF token from meta tag
-        const csrfToken = document.querySelector('meta[name="csrf-token"]');
-        if (!csrfToken) {
-          console.warn('⚠️ CSRF token not found in page');
-          throw new Error('CSRF token not available');
-        }
-
-        const token = csrfToken.getAttribute('content');
-        console.log('✅ CSRF token retrieved from meta tag');
-
-        // Create axios instance with CSRF token in headers
-        const axiosInstance = axios.create({
-          headers: {
-            'X-XSRF-TOKEN': token,
-            'X-Requested-With': 'XMLHttpRequest',
+        console.log('📤 Sending logout request via Inertia.js');
+        // Use Inertia's form POST - automatically includes CSRF token
+        this.logoutForm.post(this.route('logout'), {
+          onFinish: () => {
+            console.log('✅ Logout request completed');
+            // Inertia will handle the redirect
+          },
+          onError: (errors) => {
+            console.error('❌ Logout error:', errors);
+            this.isLoggingOut = false;
+            alert('Logout error. Please refresh and try again.');
           },
         });
-
-        // Attempt logout via POST to /logout endpoint
-        console.log('📤 Sending logout request to /logout (fallback)');
-        const response = await axiosInstance.post('/logout');
-
-        console.log('✅ Logout successful, status:', response.status);
-
-        // Redirect to home or login page after logout
-        window.location.href = '/';
       } catch (error) {
-        console.error('❌ Fallback logout error:', error);
-
-        // Provide detailed error information for debugging
-        if (error.response) {
-          console.error('❌ Server response:', {
-            status: error.response.status,
-            statusText: error.response.statusText,
-            data: error.response.data,
-          });
-
-          if (error.response.status === 419) {
-            alert('Session expired. Please refresh and try again.');
-          } else if (error.response.status === 403) {
-            alert('Access denied. You may not have permission to logout.');
-          } else {
-            alert(`Logout failed (${error.response.status}). Please try again or refresh the page.`);
-          }
-        } else if (error.request) {
-          console.error('❌ No response received:', error.request);
-          alert('Network error. Please check your connection and try again.');
-        } else {
-          console.error('❌ Error message:', error.message);
-          alert('An unexpected error occurred. Please try again.');
-        }
-
+        console.error('❌ Logout error:', error);
         this.isLoggingOut = false;
+        alert('Logout error. Please refresh and try again.');
       }
     },
   },
