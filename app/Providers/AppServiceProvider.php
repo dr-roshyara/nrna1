@@ -39,6 +39,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Register mail components as Blade aliases
+        // This allows x-mail::message etc. to work in custom email templates
+        // Each component is mapped to its view file in resources/views/vendor/mail/html/
+        \Illuminate\Support\Facades\Blade::component('vendor.mail.html.message', 'mail::message');
+        \Illuminate\Support\Facades\Blade::component('vendor.mail.html.button', 'mail::button');
+        \Illuminate\Support\Facades\Blade::component('vendor.mail.html.panel', 'mail::panel');
+        \Illuminate\Support\Facades\Blade::component('vendor.mail.html.subcopy', 'mail::subcopy');
+        \Illuminate\Support\Facades\Blade::component('vendor.mail.html.table', 'mail::table');
+
         // Load helper functions
         foreach (['TenantHelper.php', 'ElectionAudit.php'] as $helperFile) {
             $helperPath = app_path('Helpers/' . $helperFile);

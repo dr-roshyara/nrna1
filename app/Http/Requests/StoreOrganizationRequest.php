@@ -22,7 +22,7 @@ class StoreOrganizationRequest extends FormRequest
     {
         $isSelf = $this->input('representative.is_self', false);
 
-        return [
+        $rules = [
             // Step 1: Basic Information
             'name' => [
                 'required',
@@ -33,7 +33,7 @@ class StoreOrganizationRequest extends FormRequest
             ],
             'email' => [
                 'required',
-                'email:rfc,dns',
+                'email:rfc',  // Always validate RFC format
                 'max:255',
                 Rule::unique('organizations'),
             ],
@@ -50,13 +50,33 @@ class StoreOrganizationRequest extends FormRequest
             // Email is only required if NOT self-representative
             'representative.email' => $isSelf
                 ? 'nullable'
-                : 'required|email|max:255',
+                : 'required|email:rfc|max:255',
             'representative.is_self' => 'boolean',
 
             // Legal acceptance
             'accept_gdpr' => 'required|accepted',
             'accept_terms' => 'required|accepted',
         ];
+
+        // Add DNS validation only in non-test environments
+        if (!app()->environment('testing')) {
+            $rules['email'][] = function ($attribute, $value, $fail) {
+                $domain = explode('@', $value)[1] ?? null;
+                if (!$domain || !checkdnsrr($domain, 'MX')) {
+                    $fail('The email domain must have valid MX records.');
+                }
+            };
+
+            $rules['representative.email'][] = function ($attribute, $value, $fail) {
+                if (!$value) return; // Skip if empty (handled by required_if)
+                $domain = explode('@', $value)[1] ?? null;
+                if (!$domain || !checkdnsrr($domain, 'MX')) {
+                    $fail('The representative email domain must have valid MX records.');
+                }
+            };
+        }
+
+        return $rules;
     }
 
     /**

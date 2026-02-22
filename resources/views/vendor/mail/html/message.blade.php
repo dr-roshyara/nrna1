@@ -2,15 +2,7 @@
 {{-- Header --}}
 @slot('header')
 @component('mail::header', ['url' => config('app.url')])
-<div class="flex ">
-<!-- <img src= "{{ config('app.logo')  }}" class="w-16 h-16"/>  -->
-@slot('nrna') 
-@endslot
-<!-- <img src="{{asset('images/logo.jpg')}}"> -->
-<span> 
-    {{ config('app.name') }} 
-</span> 
-</div>
+{{ config('app.name') }}
 @endcomponent
 @endslot
 
