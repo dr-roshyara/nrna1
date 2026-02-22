@@ -1,0 +1,28 @@
+{
+  "title": "Passwort zurücksetzen",
+  "subtitle": "NRNA Wahlsystem",
+  "instructions": {
+    "label": "Deutsch:",
+    "text": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen des Passworts."
+  },
+  "form": {
+    "email": {
+      "label": "E-Mail-Adresse",
+      "placeholder": "ihre@email.de"
+    },
+    "submit": {
+      "normal": "Zurücksetzungslink senden",
+      "processing": "Wird gesendet..."
+    }
+  },
+  "links": {
+    "back_to_login": "Zurück zur Anmeldung"
+  },
+  "help": {
+    "title": "Brauchen Sie Hilfe?",
+    "message": "Wenden Sie sich bei Problemen an das Wahlkomitee."
+  },
+  "status": {
+    "success_icon_label": "Erfolg"
+  }
+}

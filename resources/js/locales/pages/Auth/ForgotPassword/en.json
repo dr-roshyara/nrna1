@@ -1,0 +1,28 @@
+{
+  "title": "Password Reset",
+  "subtitle": "NRNA Election System",
+  "instructions": {
+    "label": "English:",
+    "text": "Enter your email address and we'll send you a password reset link."
+  },
+  "form": {
+    "email": {
+      "label": "Email Address",
+      "placeholder": "your@email.com"
+    },
+    "submit": {
+      "normal": "Send Reset Link",
+      "processing": "Sending..."
+    }
+  },
+  "links": {
+    "back_to_login": "Back to Login"
+  },
+  "help": {
+    "title": "Need Help?",
+    "message": "Contact the election committee for assistance."
+  },
+  "status": {
+    "success_icon_label": "Success"
+  }
+}

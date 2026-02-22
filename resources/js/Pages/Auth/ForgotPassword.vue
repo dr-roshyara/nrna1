@@ -11,10 +11,9 @@
                     </div>
                     
                     <h1 class="text-3xl font-bold text-gray-900 mb-2">
-                        पासवर्ड रिसेट
+                        {{ $t('pages.forgot-password.title') }}
                     </h1>
-                    <p class="text-lg text-gray-700 mb-1">Password Reset</p>
-                    <p class="text-sm text-gray-600">NRNA Election System</p>
+                    <p class="text-sm text-gray-600">{{ $t('pages.forgot-password.subtitle') }}</p>
                 </div>
 
                 <!-- Main Card -->
@@ -23,13 +22,8 @@
                     <div class="bg-blue-50 px-6 py-6 border-b border-blue-100">
                         <div class="space-y-3 text-sm">
                             <p class="text-gray-700 leading-relaxed">
-                                <span class="font-semibold text-gray-900">नेपाली:</span> 
-                                आफ्नो इमेल ठेगाना प्रविष्ट गर्नुहोस्। हामी तपाईंलाई नयाँ पासवर्ड सेट गर्नको लागि लिंक पठाउनेछौं।
-                            </p>
-                            
-                            <p class="text-gray-700 leading-relaxed">
-                                <span class="font-semibold text-gray-900">English:</span> 
-                                Enter your email address and we'll send you a password reset link.
+                                <span class="font-semibold text-gray-900">{{ $t('pages.forgot-password.instructions.label') }}</span>
+                                {{ $t('pages.forgot-password.instructions.text') }}
                             </p>
                         </div>
                     </div>
@@ -42,7 +36,13 @@
                             class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center"
                             role="alert"
                         >
-                            <svg class="w-5 h-5 text-green-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg
+                                class="w-5 h-5 text-green-600 mr-3 flex-shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                :aria-label="$t('pages.forgot-password.status.success_icon_label')"
+                            >
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                             <p class="text-sm font-medium text-green-800">{{ status }}</p>
@@ -55,7 +55,7 @@
                         <form @submit.prevent="submit" class="space-y-6">
                             <div>
                                 <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    इमेल ठेगाना | Email Address
+                                    {{ $t('pages.forgot-password.form.email.label') }}
                                     <span class="text-red-500 ml-1">*</span>
                                 </label>
                                 
@@ -74,7 +74,7 @@
                                         required
                                         autofocus
                                         autocomplete="email"
-                                        placeholder="your@email.com"
+                                        :placeholder="$t('pages.forgot-password.form.email.placeholder')"
                                     />
                                 </div>
                             </div>
@@ -96,10 +96,10 @@
                                 </svg>
                                 
                                 <span v-if="form.processing">
-                                    पठाउँदै... | Sending...
+                                    {{ $t('pages.forgot-password.form.submit.processing') }}
                                 </span>
                                 <span v-else>
-                                    रिसेट लिंक पठाउनुहोस् | Send Reset Link
+                                    {{ $t('pages.forgot-password.form.submit.normal') }}
                                 </span>
                             </button>
                         </form>
@@ -113,7 +113,7 @@
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                                 </svg>
-                                लगइनमा फर्कनुहोस् | Back to Login
+                                {{ $t('pages.forgot-password.links.back_to_login') }}
                             </a>
                         </div>
                     </div>
@@ -122,9 +122,8 @@
                     <div class="bg-gray-50 px-6 py-4 border-t">
                         <div class="text-center">
                             <p class="text-xs text-gray-600">
-                                <span class="font-semibold">सहायता चाहिएको छ? | Need Help?</span><br>
-                                समस्या भएमा निर्वाचन कमिटीलाई सम्पर्क गर्नुहोस्।<br>
-                                Contact the election committee for assistance.
+                                <span class="font-semibold">{{ $t('pages.forgot-password.help.title') }}</span><br>
+                                {{ $t('pages.forgot-password.help.message') }}
                             </p>
                         </div>
                     </div>
