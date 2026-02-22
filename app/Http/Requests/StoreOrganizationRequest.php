@@ -17,13 +17,15 @@ class StoreOrganizationRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
+     *
+     * CRITICAL: All rules are in ARRAY format to allow custom closures to be appended.
+     * This prevents "[] operator not supported for strings" error.
      */
     public function rules(): array
     {
         $isSelf = $this->input('representative.is_self', false);
 
-        // CRITICAL FIX: Use arrays for fields that need custom closures appended
-        // This prevents "[] operator not supported for strings" error
+        // ✅ ALL RULES IN CONSISTENT ARRAY FORMAT
         $rules = [
             // Step 1: Basic Information
             'name' => [
@@ -33,7 +35,7 @@ class StoreOrganizationRequest extends FormRequest
                 'max:255',
                 Rule::unique('organizations'),
             ],
-            'email' => [  // ARRAY format - so we can append DNS validation
+            'email' => [
                 'required',
                 'email:rfc',
                 'max:255',
@@ -41,30 +43,70 @@ class StoreOrganizationRequest extends FormRequest
             ],
 
             // Step 2: Address Information
-            'address.street' => 'required|string|max:255',
-            'address.city' => 'required|string|max:100',
-            'address.zip' => 'required|string|max:20|regex:/^\d{5}$/',
-            'address.country' => 'required|string|size:2|in:DE,AT,CH',
+            'address.street' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'address.city' => [
+                'required',
+                'string',
+                'max:100',
+            ],
+            'address.zip' => [
+                'required',
+                'string',
+                'max:20',
+                'regex:/^\d{5}$/',
+            ],
+            'address.country' => [
+                'required',
+                'string',
+                'size:2',
+                'in:DE,AT,CH',
+            ],
 
             // Step 3: Representative Information
-            'representative.name' => 'required|string|min:3|max:255',
-            'representative.role' => 'required|string|min:2|max:100',
-            // Email is only required if NOT self-representative
+            'representative.name' => [
+                'required',
+                'string',
+                'min:3',
+                'max:255',
+            ],
+            'representative.role' => [
+                'required',
+                'string',
+                'min:2',
+                'max:100',
+            ],
             'representative.email' => $isSelf
-                ? ['nullable']  // ARRAY format
-                : ['required', 'email:rfc', 'max:255'],  // ARRAY format - so we can append DNS validation
-            'representative.is_self' => 'boolean',
+                ? ['nullable']
+                : [
+                    'required',
+                    'email:rfc',
+                    'max:255',
+                ],
+            'representative.is_self' => [
+                'boolean',
+            ],
 
             // Legal acceptance
-            'accept_gdpr' => 'required|accepted',
-            'accept_terms' => 'required|accepted',
+            'accept_gdpr' => [
+                'required',
+                'accepted',
+            ],
+            'accept_terms' => [
+                'required',
+                'accepted',
+            ],
         ];
 
-        // Add DNS validation only in non-test environments
+        // ✅ Add DNS validation only in non-test environments
+        // Now safe to append because all rules are arrays
         if (!app()->environment('testing')) {
-            // Organization email DNS validation
+            // Organization email DNS validation closure
             $rules['email'][] = function ($attribute, $value, $fail) {
-                // Type-safe: ensure $value is a string before using array functions
+                // Type-safe: validate only if string and not empty
                 if (!is_string($value) || empty($value)) {
                     return; // Let other validators handle empty/type issues
                 }
@@ -77,9 +119,9 @@ class StoreOrganizationRequest extends FormRequest
                 }
             };
 
-            // Representative email DNS validation (if provided)
+            // Representative email DNS validation closure (if provided)
             $rules['representative.email'][] = function ($attribute, $value, $fail) {
-                // Type-safe: skip if not a string or empty
+                // Type-safe: validate only if string and not empty
                 if (!is_string($value) || empty($value)) {
                     return; // Handled by required_if and email validators
                 }
