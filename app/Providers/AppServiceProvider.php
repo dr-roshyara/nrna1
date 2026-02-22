@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Services\DemoElectionResolver;
 use App\Services\VoterSlugService;
+use App\Services\DemoElectionCreationService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
         // Register singleton services for dependency injection
         $this->app->singleton(DemoElectionResolver::class, function () {
             return new DemoElectionResolver();
+        });
+
+        $this->app->singleton(DemoElectionCreationService::class, function () {
+            return new DemoElectionCreationService();
         });
 
         $this->app->singleton(VoterSlugService::class, function () {
