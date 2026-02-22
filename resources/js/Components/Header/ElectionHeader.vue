@@ -59,18 +59,19 @@
               {{ $t('navigation.login') }}
             </a>
 
-            <!-- Logout form - POST request required -->
-            <form v-if="isLoggedIn" @submit.prevent="logout" class="inline">
-              <button
-                type="submit"
-                class="inline-flex items-center px-3 md:px-4 py-2 border-2 border-white text-white font-semibold text-xs md:text-sm rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group"
-              >
-                <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                </svg>
-                {{ $t('navigation.logout') }}
-              </button>
-            </form>
+            <!-- Logout button - POST request via Axios with CSRF protection -->
+            <button
+              v-if="isLoggedIn"
+              type="button"
+              @click="logout"
+              :disabled="isLoggingOut"
+              class="inline-flex items-center px-3 md:px-4 py-2 border-2 border-white text-white font-semibold text-xs md:text-sm rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              {{ isLoggingOut ? $t('navigation.logging_out', 'Logging out...') : $t('navigation.logout') }}
+            </button>
           </div>
 
           <!-- Mobile Menu Toggle Button -->
@@ -179,15 +180,15 @@
           >
             🔐 {{ $t('navigation.login') }}
           </a>
-          <form v-if="isLoggedIn" @submit.prevent="logout" class="block">
-            <button
-              type="submit"
-              @click="showMobileMenu = false"
-              class="w-full px-4 py-3 border-2 border-white text-white font-semibold text-sm rounded-lg hover:bg-white/20 active:bg-white/30 transition-all duration-150 min-h-[44px] flex items-center justify-center"
-            >
-              🚪 {{ $t('navigation.logout') }}
-            </button>
-          </form>
+          <button
+            v-if="isLoggedIn"
+            type="button"
+            @click="logout"
+            :disabled="isLoggingOut"
+            class="w-full px-4 py-3 border-2 border-white text-white font-semibold text-sm rounded-lg hover:bg-white/20 active:bg-white/30 transition-all duration-150 min-h-[44px] flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            🚪 {{ isLoggingOut ? $t('navigation.logging_out', 'Logging out...') : $t('navigation.logout') }}
+          </button>
         </div>
       </div>
     </div>
@@ -195,6 +196,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'ElectionHeader',
 
@@ -216,6 +219,7 @@ export default {
       showMobileMenu: false,
       handleEscapeKey: null,
       handleResize: null,
+      isLoggingOut: false,
     };
   },
 
@@ -348,37 +352,68 @@ export default {
     },
 
     /**
-     * Logout user via form submission (handles CSRF properly)
+     * Logout user via Axios with proper CSRF token handling
+     * Uses X-XSRF-TOKEN header which Laravel automatically validates
      */
-    logout() {
+    async logout() {
       console.log('🚪 Logout initiated');
       this.closeMobileMenu();
+      this.isLoggingOut = true;
 
       try {
-        // Create a temporary form and submit it to ensure CSRF token is sent
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = route('logout');
-
-        // Add CSRF token
+        // Get CSRF token from meta tag
         const csrfToken = document.querySelector('meta[name="csrf-token"]');
-        if (csrfToken) {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = '_token';
-          input.value = csrfToken.getAttribute('content');
-          form.appendChild(input);
-          console.log('✅ CSRF token added to logout form');
-        } else {
+        if (!csrfToken) {
           console.warn('⚠️ CSRF token not found in page');
+          throw new Error('CSRF token not available');
         }
 
-        document.body.appendChild(form);
-        console.log('📤 Submitting logout form to:', route('logout'));
-        form.submit();
+        const token = csrfToken.getAttribute('content');
+        console.log('✅ CSRF token retrieved from meta tag');
+
+        // Create axios instance with CSRF token in headers
+        const axiosInstance = axios.create({
+          headers: {
+            'X-XSRF-TOKEN': token,
+            'X-Requested-With': 'XMLHttpRequest',
+          },
+        });
+
+        // Attempt logout via POST to /logout endpoint
+        console.log('📤 Sending logout request to /logout');
+        const response = await axiosInstance.post('/logout');
+
+        console.log('✅ Logout successful, status:', response.status);
+
+        // Redirect to home or login page after logout
+        window.location.href = '/';
       } catch (error) {
         console.error('❌ Logout error:', error);
-        alert('Logout failed. Please try again or refresh the page.');
+
+        // Provide detailed error information for debugging
+        if (error.response) {
+          console.error('❌ Server response:', {
+            status: error.response.status,
+            statusText: error.response.statusText,
+            data: error.response.data,
+          });
+
+          if (error.response.status === 419) {
+            alert('Session expired. Please refresh and try again.');
+          } else if (error.response.status === 403) {
+            alert('Access denied. You may not have permission to logout.');
+          } else {
+            alert(`Logout failed (${error.response.status}). Please try again or refresh the page.`);
+          }
+        } else if (error.request) {
+          console.error('❌ No response received:', error.request);
+          alert('Network error. Please check your connection and try again.');
+        } else {
+          console.error('❌ Error message:', error.message);
+          alert('An unexpected error occurred. Please try again.');
+        }
+
+        this.isLoggingOut = false;
       }
     },
   },
