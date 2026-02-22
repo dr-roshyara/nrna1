@@ -352,14 +352,48 @@ export default {
     },
 
     /**
-     * Logout user via Axios with proper CSRF token handling
-     * Uses X-XSRF-TOKEN header which Laravel automatically validates
+     * Logout user via Laravel's built-in form submission
+     * RECOMMENDED APPROACH: Uses form-based logout with proper CSRF protection
+     *
+     * Benefits:
+     * - Standard Laravel logout handling
+     * - Built-in CSRF protection via form token
+     * - Works across all browsers
+     * - Server handles session cleanup properly
+     * - Fallback to Axios if form not found
      */
-    async logout() {
+    logout() {
       console.log('🚪 Logout initiated');
       this.closeMobileMenu();
       this.isLoggingOut = true;
 
+      try {
+        // Preferred: Use Laravel's built-in logout form (Option A)
+        const logoutForm = document.getElementById('logout-form');
+        if (logoutForm) {
+          console.log('✅ Logout form found, submitting...');
+          logoutForm.submit();
+          // Form submission will handle the redirect
+          return;
+        } else {
+          console.warn('⚠️ Logout form not found in DOM');
+          console.log('📋 Falling back to Axios method...');
+          // If form is not available, use fallback method
+          this.fallbackLogout();
+        }
+      } catch (error) {
+        console.error('❌ Logout error:', error);
+        alert('Logout error. Please refresh and try again.');
+        this.isLoggingOut = false;
+      }
+    },
+
+    /**
+     * Fallback logout method using Axios
+     * Only used if the form-based approach is not available
+     * Uses X-XSRF-TOKEN header which Laravel automatically validates
+     */
+    async fallbackLogout() {
       try {
         // Get CSRF token from meta tag
         const csrfToken = document.querySelector('meta[name="csrf-token"]');
@@ -380,7 +414,7 @@ export default {
         });
 
         // Attempt logout via POST to /logout endpoint
-        console.log('📤 Sending logout request to /logout');
+        console.log('📤 Sending logout request to /logout (fallback)');
         const response = await axiosInstance.post('/logout');
 
         console.log('✅ Logout successful, status:', response.status);
@@ -388,7 +422,7 @@ export default {
         // Redirect to home or login page after logout
         window.location.href = '/';
       } catch (error) {
-        console.error('❌ Logout error:', error);
+        console.error('❌ Fallback logout error:', error);
 
         // Provide detailed error information for debugging
         if (error.response) {
