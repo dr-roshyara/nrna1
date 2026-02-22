@@ -181,10 +181,15 @@ public function create(Request $request)
     $election = $this->getElection($request);
     $voterSlug = $request->attributes->get('voter_slug');
 
+    // Get organisation_id from voter slug if available (correct context)
+    // Fall back to election's organisation_id, then to user's organisation_id
+    $orgId = $voterSlug ? $voterSlug->organisation_id : ($election->organisation_id ?? $auth_user->organisation_id);
+
     Log::info('Vote creation page accessed', [
         'user_id' => $auth_user->id,
         'election_id' => $election->id,
         'election_type' => $election->type,
+        'organisation_id' => $orgId,  // ✅ Use voter slug org_id with fallback
     ]);
 
     // Check election-aware eligibility

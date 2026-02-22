@@ -297,11 +297,15 @@ public function create(Request $request)
     // This ensures DemoCandidacy and DemoPost queries respect the organisation_id filter
     session(['current_organisation_id' => $election->organisation_id]);
 
+    // Get organisation_id from voter slug if available (correct context)
+    // Fall back to election's organisation_id
+    $orgId = $voterSlug ? $voterSlug->organisation_id : $election->organisation_id;
+
     Log::info('Vote creation page accessed', [
         'user_id' => $auth_user->id,
         'election_id' => $election->id,
         'election_type' => $election->type,
-        'organisation_id' => $election->organisation_id,
+        'organisation_id' => $orgId,  // ✅ Use voter slug org_id
     ]);
 
     // Check election-aware eligibility
