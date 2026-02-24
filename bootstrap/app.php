@@ -119,5 +119,26 @@ return Application::configure(basePath: dirname(__DIR__))
             'password',
             'password_confirmation',
         ]);
+
+        /*
+        |--------------------------------------------------------------------------
+        | CSRF Token Expiration (419 Error) - Inertia 2.0 Handling
+        |--------------------------------------------------------------------------
+        |
+        | When a user's session expires or CSRF token becomes invalid,
+        | redirect back with a friendly message instead of showing error modal.
+        | This is the Inertia 2.0 best practice for token expiration.
+        |
+        */
+        $exceptions->respond(function (\Symfony\Component\HttpFoundation\Response $response) {
+            if ($response->getStatusCode() === 419) {
+                return back()->with([
+                    'message' => __('messages.session_expired', [
+                        'message' => 'Your session has expired. Please refresh and try again.',
+                    ]),
+                ]);
+            }
+            return $response;
+        });
     })
     ->create();
