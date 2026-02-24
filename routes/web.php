@@ -47,8 +47,6 @@ use App\Http\Controllers\Api\OrganizationController;
 use App\Http\Controllers\Organizations\MemberImportController;
 use App\Http\Controllers\MemberController;
 
-// Note: VoterSlug route binding is now in App\Providers\RouteServiceProvider
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,6 +57,23 @@ use App\Http\Controllers\MemberController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/**
+ * Route Model Binding
+ * Register implicit model binding for VoterSlug
+ */
+Route::bind('vslug', function (string $value) {
+    $voterSlug = VoterSlug::with('user')
+        ->where('slug', $value)
+        ->first();
+
+    if (!$voterSlug) {
+        abort(404, 'Voting link not found.');
+    }
+
+    return $voterSlug;
+});
+
 // Auth::routes();
 
 Route::get('/storage/images/{filename}', function ($filename)

@@ -23,7 +23,8 @@ class VerifyEmailMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.verify-email')
+        return $this->to($this->user->email)
+                    ->view('emails.verify-email')
                     ->subject(__('emails.verify_email_subject'))
                     ->with([
                         'user' => $this->user,

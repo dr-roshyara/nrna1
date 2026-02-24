@@ -61,7 +61,7 @@ class AddVoterOptimizationIndexes extends Migration
     }
 
     /**
-     * Helper method to check if index exists
+     * Helper method to check if index exists (Laravel 11 compatible)
      *
      * @param  string  $table
      * @param  string  $index
@@ -69,7 +69,13 @@ class AddVoterOptimizationIndexes extends Migration
      */
     private function indexExists($table, $index)
     {
-        $indexes = \DB::connection()->getDoctrineSchemaManager()->listTableIndexes($table);
-        return isset($indexes[$index]);
+        // Use raw query to check if index exists - compatible with all Laravel versions
+        try {
+            $result = \DB::select("SELECT 1 FROM INFORMATION_SCHEMA.STATISTICS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? AND INDEX_NAME = ? LIMIT 1", [$table, $index]);
+            return count($result) > 0;
+        } catch (\Exception $e) {
+            // If query fails, assume index doesn't exist to allow migration to proceed
+            return false;
+        }
     }
 }

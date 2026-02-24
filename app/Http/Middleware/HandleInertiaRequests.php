@@ -73,6 +73,7 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'canLogin' => \Route::has('login'),
             'canRegister' => \Route::has('register'),
+            'csrf_token' => csrf_token(), // Explicitly share CSRF token for Inertia forms
             'success' => $request->session()->get('success'),
             'error' => $request->session()->get('error'),
             'message' => $request->session()->get('message'),
