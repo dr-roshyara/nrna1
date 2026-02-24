@@ -447,6 +447,33 @@ Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order',
     });
 });
 
+// ============================================================================
+// DEMO RESULTS PAGES - MODE 1 (Global) & MODE 2 (Organisation)
+// ============================================================================
+// MODE 1: Global demo results (organisation_id = NULL) - Public demo view
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/demo/global/result', [DemoResultController::class, 'indexGlobal'])
+    ->name('demo-result.global');
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/demo/global/result/download-pdf', [DemoResultController::class, 'downloadGlobalPDF'])
+    ->name('demo-result.global.download-pdf');
+
+// MODE 2: Organisation-scoped demo results (organisation_id = X)
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/demo/result', [DemoResultController::class, 'index'])
+    ->name('demo-result.index');
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/demo/result/download-pdf', [DemoResultController::class, 'downloadPDF'])
+    ->name('demo-result.download-pdf');
+
+// Verification endpoints for demo results
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/api/demo/verify-results/{postId}', [DemoResultController::class, 'verifyResults']);
+    Route::get('/api/demo/statistical-verification/{postId}', [DemoResultController::class, 'statisticalVerification']);
+});
+
 // Admin routes for election committee
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified', 'committee.member'])->group(function () {
     // Voting security dashboard

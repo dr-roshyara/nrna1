@@ -117,8 +117,10 @@
     "validation": {
       "email_required": "E-Mail-Adresse ist erforderlich",
       "email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+      "email_not_registered": "Diese E-Mail-Adresse ist nicht registriert. Bitte registrieren Sie sich zuerst.",
       "password_required": "Passwort ist erforderlich",
-      "credentials_invalid": "Diese Anmeldedaten stimmen nicht mit unseren Daten überein"
+      "credentials_invalid": "Diese Anmeldedaten stimmen nicht mit unseren Daten überein",
+      "throttle": "Zu viele Anmeldeversuche. Bitte versuchen Sie es später erneut."
     },
     "security": "Sicher & DSGVO-konform — Deutsche Server & Verschlüsselung"
   }

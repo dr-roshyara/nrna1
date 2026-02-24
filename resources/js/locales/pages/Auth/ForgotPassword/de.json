@@ -1,8 +1,8 @@
 {
   "title": "Passwort zurücksetzen",
-  "subtitle": "NRNA Wahlsystem",
+  "subtitle": "PUBLIC DIGIT Wahlsystem",
   "instructions": {
-    "label": "Deutsch:",
+    "label": "",
     "text": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen des Passworts."
   },
   "form": {

@@ -34,7 +34,7 @@ export const useOrganizationCreation = () => {
       name: '',
       role: '',
       email: '',
-      is_self: false,
+      is_self: true,
     },
     acceptance: {
       gdpr: false,
@@ -91,7 +91,7 @@ export const useOrganizationCreation = () => {
   const resetForm = () => {
     formData.basic = { name: '', email: '' };
     formData.address = { street: '', city: '', zip: '', country: 'DE' };
-    formData.representative = { name: '', role: '', email: '', is_self: false };
+    formData.representative = { name: '', role: '', email: '', is_self: true };
     formData.acceptance = { gdpr: false, terms: false };
     validationErrors.basic = {};
     validationErrors.address = {};

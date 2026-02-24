@@ -50,8 +50,8 @@
                     <!-- next --link -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <jet-nav-link
-                            :href="route('users.index')"
-                            :active="route().current('users.index')"
+                            :href="route('members.index')"
+                            :active="route().current('members.index')"
                         >
                             {{ $t('pages.election-navigation.primary_navigation.members_list') }}
                         </jet-nav-link>

@@ -196,7 +196,7 @@
 </template>
 
 <script>
-import { useCsrfRequest } from '@/Composables/useCsrfRequest'
+import { useCsrfRequest } from '@/composables/useCsrfRequest'
 
 export default {
   name: 'ElectionHeader',

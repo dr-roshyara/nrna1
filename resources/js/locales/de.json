@@ -100,6 +100,7 @@
     "view_case_studies": "Fallstudien anzeigen"
   },
   "validation": {
+    "errors_header": "Oops! Es ist ein Fehler aufgetreten.",
     "required": "Dieses Feld ist erforderlich",
     "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
     "min": "Mindestens {count} Zeichen erforderlich",

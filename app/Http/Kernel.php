@@ -16,7 +16,7 @@ class Kernel extends HttpKernel
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
-        \Fruitcake\Cors\HandleCors::class,
+        // \Fruitcake\Cors\HandleCors::class,
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
@@ -81,6 +81,7 @@ class Kernel extends HttpKernel
         'election.demo' => \App\Http\Middleware\EnsureDemoElection::class,
         'vote.organisation' => \App\Http\Middleware\EnsureRealVoteOrganisation::class, // PHASE 4
         'dashboard.role' => \App\Http\Middleware\CheckUserRole::class,
+        'ensure.organization' => \App\Http\Middleware\EnsureOrganizationMember::class,
 
     ];
 }

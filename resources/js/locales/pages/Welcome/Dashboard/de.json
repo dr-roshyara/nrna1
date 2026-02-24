@@ -12,8 +12,8 @@
   },
   "actions": {
     "title": "Was möchten Sie tun?",
-    "createOrg": "Neue Organisation erstellen",
-    "createOrgDesc": "Verwalten Sie Wahlen für Ihre Gemeinschaft, Gewerkschaft oder Organisation",
+    "createOrg": "Neue Organisation gründen & Wahlen starten",
+    "createOrgDesc": "Professionelles Wahlmanagement für Vereine, Gewerkschaften und Organisationen",
     "joinOrg": "Bestehender Organisation beitreten",
     "joinOrgDesc": "Nehmen Sie an Wahlen von bestehenden Organisationen teil",
     "skip": "Plattform erkunden",

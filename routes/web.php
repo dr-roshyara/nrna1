@@ -44,6 +44,8 @@ use App\Http\Controllers\CommissionDashboardController;
 use App\Http\Controllers\VoterDashboardController;
 use App\Http\Controllers\WelcomeDashboardController;
 use App\Http\Controllers\Api\OrganizationController;
+use App\Http\Controllers\Organizations\MemberImportController;
+use App\Http\Controllers\MemberController;
 
 // Note: VoterSlug route binding is now in App\Providers\RouteServiceProvider
 
@@ -87,6 +89,34 @@ Route::get('/sitemap/results.xml', [SitemapController::class, 'results'])->name(
 
 // robots.txt
 Route::get('/robots.txt', [RobotsController::class, 'index'])->name('robots.txt');
+
+// Custom Authentication Routes (overrides Fortify)
+Route::middleware('guest')->group(function () {
+    // Login routes
+    Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'show'])->name('login');
+    Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'store']);
+
+    // Register routes
+    Route::get('/register', function () {
+        return Inertia::render('Auth/Register');
+    })->name('register');
+    Route::post('/register', [\Laravel\Fortify\Http\Controllers\RegisteredUserController::class, 'store']);
+
+    // Password reset routes
+    Route::get('/forgot-password', function () {
+        return Inertia::render('Auth/ForgotPassword');
+    })->name('password.request');
+
+    Route::post('/forgot-password', [\Laravel\Fortify\Http\Controllers\PasswordResetLinkController::class, 'store'])->name('password.email');
+    Route::get('/reset-password/{token}', function ($token) {
+        return Inertia::render('Auth/ResetPassword', ['token' => $token]);
+    })->name('password.reset');
+    Route::post('/reset-password', [\Laravel\Fortify\Http\Controllers\NewPasswordController::class, 'store'])->name('password.update');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'destroy'])->name('logout');
+});
 
 // Home route: If authenticated, show election dashboard. Else, show welcome page.
 Route::get('/',
@@ -166,26 +196,19 @@ Route::get('/dashboard', [ElectionController::class, 'dashboard'])
  *
 */
 //user registratration
-Route::get('/email/verify', function () {
-    return inertia('Auth/VerifyEmail');
-})->middleware('auth')->name('verification.notice');
+Route::get('/email/verify', [\App\Http\Controllers\Auth\VerificationController::class, 'show'])
+    ->middleware('auth')
+    ->name('verification.notice');
+
+// Email resend route (when user clicks "Resend Email" button)
+Route::post('/email/verification-notification', [\App\Http\Controllers\Auth\VerificationController::class, 'send'])
+    ->middleware('auth')
+    ->name('verification.send');
 
 // Email verification route for signed URL from email
-Route::get('/email/verify/{id}/{hash}', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    // Redirect first-time users to welcome dashboard
-    $user = $request->user();
-    $dashboardRoles = $user->getDashboardRoles();
-
-    if (empty($dashboardRoles)) {
-        // First-time user with no roles yet - show welcome dashboard
-        return redirect('/dashboard/welcome')->with('verified', true);
-    }
-
-    // Existing user - show role selection dashboard
-    return redirect('/dashboard/roles')->with('verified', true);
-})->middleware('auth')->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', [\App\Http\Controllers\Auth\VerificationController::class, 'verify'])
+    ->middleware('auth')
+    ->name('verification.verify');
 
 
 //create user database
@@ -298,8 +321,26 @@ Route::middleware(['auth'])->group(function () {
          ->name('organizations.store');
     Route::get('/organizations/{slug}', [OrganizationController::class, 'show'])
          ->name('organizations.show');
+    Route::get('/organizations/{slug}/members/import', [MemberImportController::class, 'create'])
+         ->name('organizations.members.import');
+    Route::post('/organizations/{slug}/members/import', [MemberImportController::class, 'store'])
+         ->name('organizations.members.import.store');
 
     // Demo setup API endpoint
     Route::post('/api/organizations/{organization}/demo-setup', [DemoSetupController::class, 'setup'])
          ->name('api.organizations.demo-setup');
+
+    // ============================================================================
+    // NEW: MEMBERS MANAGEMENT (Phase 3)
+    // ============================================================================
+    Route::prefix('members')->group(function () {
+        Route::get('/index', [MemberController::class, 'index'])->name('members.index');
+    });
 });
+
+// ============================================================================
+// ORGANIZATION-SCOPED ROUTES (Phase 4 - Voters List)
+// ============================================================================
+// These routes are automatically prefixed with /organizations/{slug}
+// and include EnsureOrganization middleware for security
+require __DIR__.'/organizations.php';

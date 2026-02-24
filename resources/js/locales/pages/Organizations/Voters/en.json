@@ -1,0 +1,72 @@
+{
+  "pages.organization-voters": {
+    "title": "Voter Management",
+    "description": "Manage voters for {organization}",
+    "accessibility": {
+      "page_loaded": "Voter management page loaded for {organization} with {count} total voters"
+    },
+    "committee_access": {
+      "title": "Commission Member Access",
+      "description": "You have commission member privileges and can approve and suspend voters."
+    },
+    "stats": {
+      "total_voters": "Total Voters",
+      "approved_voters": "Approved Voters",
+      "pending_approval": "Pending Approval",
+      "already_voted": "Already Voted"
+    },
+    "filters": {
+      "title": "Filter Voters",
+      "search": "Search",
+      "search_placeholder": "Search by name, ID, or email...",
+      "status": "Status",
+      "all_statuses": "All Statuses",
+      "clear": "Clear Filters",
+      "clear_aria": "Clear all filters"
+    },
+    "status": {
+      "approved": "Approved",
+      "pending": "Pending Approval",
+      "voted": "Already Voted"
+    },
+    "table": {
+      "caption": "Voter list for {organization}",
+      "select": "Select",
+      "sn": "S.N.",
+      "name": "Name",
+      "email": "Email",
+      "status": "Status",
+      "actions": "Actions",
+      "select_voter_aria": "Select voter {name}"
+    },
+    "actions": {
+      "select_all": "Select All",
+      "select_all_aria": "Select all voters on this page",
+      "approve": "Approve",
+      "approve_aria": "Approve voter {name}",
+      "suspend": "Suspend",
+      "suspend_aria": "Suspend voter {name}",
+      "bulk_approve": "Approve ({count})",
+      "bulk_approve_aria": "Approve {count} selected voters",
+      "bulk_suspend": "Suspend ({count})",
+      "bulk_suspend_aria": "Suspend {count} selected voters",
+      "processing": "Processing..."
+    },
+    "confirm": {
+      "approve": "Are you sure you want to approve this voter?",
+      "suspend": "Are you sure you want to suspend this voter?",
+      "bulk_approve": "Are you sure you want to approve {count} selected voters?",
+      "bulk_suspend": "Are you sure you want to suspend {count} selected voters?"
+    },
+    "empty": {
+      "title": "No voters found",
+      "description": "There are no voters matching your current filters."
+    },
+    "messages": {
+      "approved": "Voter {name} has been approved.",
+      "suspended": "Voter {name} has been suspended.",
+      "bulk_approved": "{count} voters have been approved.",
+      "bulk_suspended": "{count} voters have been suspended."
+    }
+  }
+}

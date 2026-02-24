@@ -1,29 +1,4 @@
 <?php return array (
-  'facade/ignition' => 
-  array (
-    'aliases' => 
-    array (
-      'Flare' => 'Facade\\Ignition\\Facades\\Flare',
-    ),
-    'providers' => 
-    array (
-      0 => 'Facade\\Ignition\\IgnitionServiceProvider',
-    ),
-  ),
-  'fideloper/proxy' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    ),
-  ),
-  'fruitcake/laravel-cors' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Fruitcake\\Cors\\CorsServiceProvider',
-    ),
-  ),
   'inertiajs/inertia-laravel' => 
   array (
     'providers' => 
@@ -40,17 +15,6 @@
     'providers' => 
     array (
       0 => 'Intervention\\Image\\ImageServiceProvider',
-    ),
-  ),
-  'jenssegers/agent' => 
-  array (
-    'aliases' => 
-    array (
-      'Agent' => 'Jenssegers\\Agent\\Facades\\Agent',
-    ),
-    'providers' => 
-    array (
-      0 => 'Jenssegers\\Agent\\AgentServiceProvider',
     ),
   ),
   'laravel/fortify' => 
@@ -99,34 +63,11 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
-  'laravelcollective/html' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Collective\\Html\\HtmlServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Form' => 'Collective\\Html\\FormFacade',
-      'Html' => 'Collective\\Html\\HtmlFacade',
-    ),
-  ),
   'nesbot/carbon' => 
   array (
     'providers' => 
     array (
       0 => 'Carbon\\Laravel\\ServiceProvider',
-    ),
-  ),
-  'nexmo/laravel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Nexmo\\Laravel\\NexmoServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Nexmo' => 'Nexmo\\Laravel\\Facade\\Nexmo',
     ),
   ),
   'nunomaduro/collision' => 
@@ -136,11 +77,11 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
-  'protonemedia/inertiajs-tables-laravel-query-builder' => 
+  'nunomaduro/termwind' => 
   array (
     'providers' => 
     array (
-      0 => 'ProtoneMedia\\LaravelQueryBuilderInertiaJs\\InertiaTableServiceProvider',
+      0 => 'Termwind\\Laravel\\TermwindServiceProvider',
     ),
   ),
   'spatie/laravel-google-calendar' => 
@@ -172,7 +113,7 @@
   array (
     'providers' => 
     array (
-      0 => 'Tightenco\\Ziggy\\ZiggyServiceProvider',
+      0 => 'Tighten\\Ziggy\\ZiggyServiceProvider',
     ),
   ),
 );

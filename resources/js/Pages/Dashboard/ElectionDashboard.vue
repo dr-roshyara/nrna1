@@ -299,7 +299,7 @@
 
                         <!-- NRNA Members -->
                         <a
-                            href="users/index"
+                            href="members/index"
                             class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-rose-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-rose-200"
                         >
                             <div class="text-center">

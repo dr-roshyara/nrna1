@@ -1,0 +1,72 @@
+{
+  "pages.organization-voters": {
+    "title": "Wählerverwaltung",
+    "description": "Verwalten Sie Wähler für {organization}",
+    "accessibility": {
+      "page_loaded": "Wählerverwaltungsseite für {organization} mit insgesamt {count} Wählern geladen"
+    },
+    "committee_access": {
+      "title": "Zugriff für Ausschussmitglieder",
+      "description": "Sie haben Berechtigungen als Ausschussmitglied und können Wähler genehmigen und sperren."
+    },
+    "stats": {
+      "total_voters": "Gesamtzahl Wähler",
+      "approved_voters": "Genehmigte Wähler",
+      "pending_approval": "Genehmigung ausstehend",
+      "already_voted": "Bereits abgestimmt"
+    },
+    "filters": {
+      "title": "Wähler filtern",
+      "search": "Suchen",
+      "search_placeholder": "Nach Name, ID oder E-Mail suchen...",
+      "status": "Status",
+      "all_statuses": "Alle Status",
+      "clear": "Filter löschen",
+      "clear_aria": "Alle Filter löschen"
+    },
+    "status": {
+      "approved": "Genehmigt",
+      "pending": "Genehmigung ausstehend",
+      "voted": "Bereits abgestimmt"
+    },
+    "table": {
+      "caption": "Wählerliste für {organization}",
+      "select": "Auswählen",
+      "sn": "Nr.",
+      "name": "Name",
+      "email": "E-Mail",
+      "status": "Status",
+      "actions": "Aktionen",
+      "select_voter_aria": "Wähler {name} auswählen"
+    },
+    "actions": {
+      "select_all": "Alle auswählen",
+      "select_all_aria": "Alle Wähler auf dieser Seite auswählen",
+      "approve": "Genehmigen",
+      "approve_aria": "Wähler {name} genehmigen",
+      "suspend": "Sperren",
+      "suspend_aria": "Wähler {name} sperren",
+      "bulk_approve": "Genehmigen ({count})",
+      "bulk_approve_aria": "{count} ausgewählte Wähler genehmigen",
+      "bulk_suspend": "Sperren ({count})",
+      "bulk_suspend_aria": "{count} ausgewählte Wähler sperren",
+      "processing": "Wird verarbeitet..."
+    },
+    "confirm": {
+      "approve": "Sind Sie sicher, dass Sie diesen Wähler genehmigen möchten?",
+      "suspend": "Sind Sie sicher, dass Sie diesen Wähler sperren möchten?",
+      "bulk_approve": "Sind Sie sicher, dass Sie {count} ausgewählte Wähler genehmigen möchten?",
+      "bulk_suspend": "Sind Sie sicher, dass Sie {count} ausgewählte Wähler sperren möchten?"
+    },
+    "empty": {
+      "title": "Keine Wähler gefunden",
+      "description": "Es gibt keine Wähler, die Ihren aktuellen Filterkriterien entsprechen."
+    },
+    "messages": {
+      "approved": "Wähler {name} wurde genehmigt.",
+      "suspended": "Wähler {name} wurde gesperrt.",
+      "bulk_approved": "{count} Wähler wurden genehmigt.",
+      "bulk_suspended": "{count} Wähler wurden gesperrt."
+    }
+  }
+}

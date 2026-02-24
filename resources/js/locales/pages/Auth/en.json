@@ -117,8 +117,10 @@
     "validation": {
       "email_required": "Email is required",
       "email_invalid": "Please enter a valid email address",
+      "email_not_registered": "This email is not registered. Please register first.",
       "password_required": "Password is required",
-      "credentials_invalid": "These credentials do not match our records"
+      "credentials_invalid": "These credentials do not match our records",
+      "throttle": "Too many login attempts. Please try again later."
     },
     "security": "Secure & GDPR Compliant — German hosting & encryption"
   }

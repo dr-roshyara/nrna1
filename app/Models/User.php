@@ -1045,4 +1045,25 @@ public function getVoterState(): string
         \Illuminate\Support\Facades\Cache::forget("user_{$this->id}_dashboard_roles");
     }
 
+    /**
+     * Send the email verification notification using custom branded template.
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $verificationUrl = \Illuminate\Support\Facades\URL::temporarySignedRoute(
+            'verification.verify',
+            \Illuminate\Support\Carbon::now()->addMinutes(60),
+            [
+                'id' => $this->getKey(),
+                'hash' => sha1($this->getEmailForVerification()),
+            ]
+        );
+
+        \Illuminate\Support\Facades\Mail::send(
+            new \App\Mail\VerifyEmailMail($this, $verificationUrl)
+        );
+    }
+
 }

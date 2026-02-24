@@ -168,7 +168,7 @@ const messages = {
       'commission': commissionDe,
       'vote-dashboard': voteDashboardDe,
       'welcome-dashboard': welcomeDashboardDe,
-      'organization-show': organizationShowDe,
+      'organization-show': { ...organizationShowDe, ...organizationShowPageDe },
     },
   },
   en: {
@@ -201,7 +201,7 @@ const messages = {
       'commission': commissionEn,
       'vote-dashboard': voteDashboardEn,
       'welcome-dashboard': welcomeDashboardEn,
-      'organization-show': organizationShowEn,
+      'organization-show': { ...organizationShowEn, ...organizationShowPageEn },
     },
   },
   np: {
@@ -234,7 +234,7 @@ const messages = {
       'commission': commissionNp,
       'vote-dashboard': voteDashboardNp,
       'welcome-dashboard': welcomeDashboardNp,
-      'organization-show': organizationShowNp,
+      'organization-show': { ...organizationShowNp, ...organizationShowPageNp },
     },
   },
 };

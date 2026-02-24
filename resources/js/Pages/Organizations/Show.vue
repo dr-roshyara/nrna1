@@ -1,180 +1,101 @@
 <template>
   <ElectionLayout>
-
     <!-- Breadcrumb Schema for SEO -->
     <BreadcrumbSchema />
 
-    <div class="py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <!-- Organization Header -->
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
-          <div class="px-4 py-5 sm:px-6">
-            <h1 class="text-3xl font-bold text-gray-900">{{ organization.name }}</h1>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500">
-              {{ organization.email }}
-            </p>
-            <p class="mt-2 text-sm text-gray-500">
-              {{ $t('pages.organization-show.created_on', { date: organization.created_at }) }}
-            </p>
-          </div>
-        </div>
+    <!-- Accessibility: Screen reader announcement for page load -->
+    <div role="status" aria-live="polite" class="sr-only">
+      {{ $t('pages.organization-show.accessibility.page_loaded', { organization: organization.name }) }}
+    </div>
 
-        <!-- Stats Grid -->
-        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 mb-6">
-          <!-- Members Card -->
-          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="px-4 py-5 sm:p-6">
-              <div class="flex items-center">
-                <div class="flex-shrink-0">
-                  <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 10a3 3 0 11-6 0 3 3 0 016 0zM6 20a9 9 0 0118 0v2h2v-2a11 11 0 10-20 0v2h2v-2z" />
-                  </svg>
-                </div>
-                <div class="ml-5 w-0 flex-1">
-                  <dl>
-                    <dt class="text-sm font-medium text-gray-500 truncate">
-                      {{ $t('pages.organization-show.members') }}
-                    </dt>
-                    <dd class="text-3xl font-bold text-gray-900">
-                      {{ stats.members_count }}
-                    </dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- Main Content -->
+    <main role="main" :aria-label="$t('pages.organization-show.accessibility.organization_dashboard', { organization: organization.name })">
+      <div class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <!-- Elections Card -->
-          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="px-4 py-5 sm:p-6">
-              <div class="flex items-center">
-                <div class="flex-shrink-0">
-                  <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <div class="ml-5 w-0 flex-1">
-                  <dl>
-                    <dt class="text-sm font-medium text-gray-500 truncate">
-                      {{ $t('pages.organization-show.elections') }}
-                    </dt>
-                    <dd class="text-3xl font-bold text-gray-900">
-                      {{ stats.elections_count }}
-                    </dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <!-- 1. Organization Header -->
+          <OrganizationHeader :organization="organization" />
 
-        <!-- Quick Actions -->
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
-          <div class="px-4 py-5 sm:px-6">
-            <h2 class="text-lg font-medium text-gray-900 mb-4">
-              {{ $t('pages.organization-show.quick_actions') }}
-            </h2>
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <button class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
-                <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                </svg>
-                {{ $t('pages.organization-show.add_members') }}
-              </button>
-              <button class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700">
-                <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                </svg>
-                {{ $t('pages.organization-show.create_election') }}
-              </button>
-            </div>
-          </div>
-        </div>
+          <!-- 2. Stats Grid -->
+          <StatsGrid :stats="stats" />
 
-        <!-- Demo Setup Section (only for organization members) -->
-        <div v-if="canManage" class="mb-6">
-          <DemoSetupButton
+          <!-- 3. Primary Action Buttons (3 Cards) -->
+          <ActionButtons
             :organization="organization"
-            :demo-status="demoStatus"
+            @appoint-officer="openOfficerModal"
+            @create-election="openElectionWizard"
           />
-        </div>
 
-        <!-- Support & Contact Section -->
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 overflow-hidden shadow-sm sm:rounded-lg border-l-4 border-blue-500">
-          <div class="px-4 py-6 sm:px-6">
-            <h2 class="text-lg font-bold text-gray-900 mb-3">
-              {{ $t('support.title') }}
-            </h2>
-            <p class="text-gray-700 mb-4">
-              {{ $t('support.assistance') }}
-            </p>
+          <!-- 4. Demo Results Section -->
+          <DemoResultsSection />
 
-            <!-- Contact Information -->
-            <div class="space-y-3">
-              <!-- Email Contact -->
-              <div class="flex items-start">
-                <svg class="h-5 w-5 text-blue-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>
-                <div>
-                  <p class="text-sm font-medium text-gray-600">{{ $t('support.email') }}:</p>
-                  <a :href="`mailto:${supportEmailAddress}`" class="text-blue-600 hover:text-blue-700 font-semibold">
-                    {{ supportEmailAddress }}
-                  </a>
-                </div>
-              </div>
-
-              <!-- Phone & WhatsApp Contact -->
-              <div class="flex items-start">
-                <svg class="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773c.418 1.02 1.004 2.49 2.986 4.472 1.982 1.982 3.452 2.568 4.472 2.986l.773-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
-                <div>
-                  <p class="text-sm font-medium text-gray-600">{{ $t('support.phone') }}:</p>
-                  <a :href="`tel:${$t('support.phone_number')}`" class="text-green-600 hover:text-green-700 font-semibold">
-                    {{ $t('support.phone_number') }}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Additional Help Text -->
-            <p class="mt-4 text-xs text-gray-500">
-              💬 {{ $t('support.phone') }} {{ $t('support.assistance').toLowerCase() }}
-            </p>
+          <!-- 5. Demo Setup Section (conditional) -->
+          <div v-if="canManage" class="mb-8">
+            <DemoSetupButton
+              :organization="organization"
+              :demo-status="demoStatus"
+            />
           </div>
+
+          <!-- 6. Support Section -->
+          <SupportSection />
+
         </div>
       </div>
-    </div>
+    </main>
+
   </ElectionLayout>
 </template>
 
 <script setup>
-import ElectionLayout from '@/Layouts/ElectionLayout.vue';
-import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue';
-import DemoSetupButton from './Partials/DemoSetupButton.vue';
-import { useI18n } from 'vue-i18n';
-import { useMeta } from '@/composables/useMeta';
-import { computed } from 'vue';
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useMeta } from '@/composables/useMeta'
 
-const { t } = useI18n();
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
+import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue'
+import OrganizationHeader from './Partials/OrganizationHeader.vue'
+import StatsGrid from './Partials/StatsGrid.vue'
+import ActionButtons from './Partials/ActionButtons.vue'
+import DemoResultsSection from './Partials/DemoResultsSection.vue'
+import SupportSection from './Partials/SupportSection.vue'
+import DemoSetupButton from './Partials/DemoSetupButton.vue'
+
+const { t } = useI18n()
 
 const props = defineProps({
-  organization: Object,
-  stats: Object,
+  organization: {
+    type: Object,
+    required: true
+  },
+  stats: {
+    type: Object,
+    default: () => ({
+      members_count: 0,
+      active_members_count: 0,
+      elections_count: 0,
+      active_elections_count: 0,
+      completed_elections: 0,
+      new_members_30d: 0,
+      exited_members_30d: 0
+    })
+  },
   demoStatus: Object,
-  canManage: Boolean,
-});
+  canManage: Boolean
+})
 
 /**
- * Decode support email address
- * Replaces HTML entity &#64; with @ to avoid translation system issues
+ * Event Handlers for Action Buttons
+ * Note: Member import now uses dedicated page (/organizations/{slug}/members/import)
+ * Officer and Election handlers will be implemented when modals are added
  */
-const supportEmailAddress = computed(() => {
-  const email = t('support.email_address');
-  return email.replace(/&#64;/g, '@');
-});
+const openOfficerModal = () => {
+  // TODO: Implement officer modal in Phase 2
+}
+
+const openElectionWizard = () => {
+  // TODO: Implement election wizard in Phase 2
+}
 
 /**
  * SEO Meta Tags Management
@@ -182,14 +103,14 @@ const supportEmailAddress = computed(() => {
  * Dynamically sets page-level meta tags based on organization data.
  * Updates title and description to include organization name, member count, and election count.
  *
- * Translates SEO keys from the 'organizations.show' page translations.
+ * Translation keys: 'pages.organization-show.page_title', 'pages.organization-show.page_description'
  */
 useMeta({
   pageKey: 'organizations.show',
   params: {
-    organizationName: props.organization?.name || 'Organization',
+    organization: props.organization?.name || 'Organization',
     memberCount: props.stats?.members_count || '0',
     electionCount: props.stats?.elections_count || '0'
   }
-});
+})
 </script>

@@ -101,6 +101,7 @@
     "view_case_studies": "View Case Studies"
   },
   "validation": {
+    "errors_header": "Oops! Something went wrong.",
     "required": "This field is required",
     "email": "Please enter a valid email address",
     "min": "Minimum {count} characters required",

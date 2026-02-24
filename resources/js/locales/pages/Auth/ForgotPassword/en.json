@@ -1,8 +1,8 @@
 {
   "title": "Password Reset",
-  "subtitle": "NRNA Election System",
+  "subtitle": "PUBLIC DIGIT Election System",
   "instructions": {
-    "label": "English:",
+    "label": "",
     "text": "Enter your email address and we'll send you a password reset link."
   },
   "form": {

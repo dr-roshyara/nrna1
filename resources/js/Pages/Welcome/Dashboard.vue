@@ -70,8 +70,8 @@
           </div>
 
           <!-- Secondary Actions -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-            <!-- Join Organization -->
+          <!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          // Join Organization
             <button
               @click="joinOrganization"
               :disabled="isLoading"
@@ -91,7 +91,7 @@
               </div>
             </button>
 
-            <!-- Skip Setup -->
+            // Skip Setup 
             <button
               @click="skipSetup"
               :disabled="isLoading"
@@ -111,6 +111,8 @@
               </div>
             </button>
           </div>
+           
+          --> 
         </div>
       </div>
 
@@ -252,7 +254,7 @@
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
 import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
 import OrganizationCreateModal from "@/Components/Organization/OrganizationCreateModal.vue";
-import { useOrganizationCreation } from "@/Composables/useOrganizationCreation";
+import { useOrganizationCreation } from "@/composables/useOrganizationCreation";
 import { provide } from 'vue';
 
 export default {

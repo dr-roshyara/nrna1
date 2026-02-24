@@ -12,7 +12,7 @@
   },
   "actions": {
     "title": "What would you like to do?",
-    "createOrg": "Create a New Organization",
+    "createOrg": "Create New Organization & Start Elections",
     "createOrgDesc": "Start managing elections for your community, union, or organization",
     "joinOrg": "Join an Existing Organization",
     "joinOrgDesc": "Get invited to participate in elections from existing organizations",

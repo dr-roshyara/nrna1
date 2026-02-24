@@ -54,29 +54,42 @@ class OrganizationController extends Controller
             $representativeEmail = $request->representative['email'] ?? null;
 
             if ($representativeEmail) {
-                // Create or find the representative user
-                $representativeUser = User::firstOrCreate(
-                    ['email' => $representativeEmail],
-                    [
-                        'name' => $request->representative['name'],
-                        'password' => bcrypt(Str::random(40)),
-                        'email_verified_at' => null, // Must verify themselves
-                    ]
-                );
+                // CRITICAL: Check if representative email is the current user's email
+                // If so, skip adding them again (they're already added as admin)
+                if (strtolower($representativeEmail) === strtolower($user->email)) {
+                    // Current user is the representative - they're already admin, no action needed
+                } else {
+                    // Create or find the representative user (different person)
+                    $representativeUser = User::firstOrCreate(
+                        ['email' => $representativeEmail],
+                        [
+                            'name' => $request->representative['name'],
+                            'password' => bcrypt(Str::random(40)),
+                            'email_verified_at' => null, // Must verify themselves
+                        ]
+                    );
 
-                // Attach as voter
-                $organization->users()->attach($representativeUser->id, [
-                    'role' => 'voter',
-                    'assigned_at' => now(),
-                ]);
+                    // Check if user is already attached to organization (avoid duplicates)
+                    $isAlreadyMember = $organization->users()
+                        ->where('users.id', $representativeUser->id)
+                        ->exists();
 
-                // Update representative user's organisation_id
-                $representativeUser->update(['organisation_id' => $organization->id]);
+                    if (!$isAlreadyMember) {
+                        // Attach as voter only if not already a member
+                        $organization->users()->attach($representativeUser->id, [
+                            'role' => 'voter',
+                            'assigned_at' => now(),
+                        ]);
+                    }
 
-                // Send password setup invitation
-                Mail::to($representativeEmail)->send(
-                    new \App\Mail\RepresentativeInvitationMail($representativeUser, $organization, $user)
-                );
+                    // Update representative user's organisation_id
+                    $representativeUser->update(['organisation_id' => $organization->id]);
+
+                    // Send password setup invitation
+                    Mail::to($representativeEmail)->send(
+                        new \App\Mail\RepresentativeInvitationMail($representativeUser, $organization, $user)
+                    );
+                }
             }
         }
 

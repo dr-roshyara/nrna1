@@ -43,6 +43,13 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
+            'stream' => [
+                'ssl' => [
+                    'allow_self_signed' => true,
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                ],
+            ],
         ],
 
         'ses' => [
@@ -82,15 +89,7 @@ return [
     | used globally for all e-mails that are sent by your application.
     |
     */
-    /*
-    'stream' =>[
-        'ssl' =>[
-            'allow_self_signed'=>true,
-            'verify_peer'=>false,
-            'verify_peer_name'=>false,
-        ]
-    ],
-    */
+
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
