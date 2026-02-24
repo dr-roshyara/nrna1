@@ -30,15 +30,21 @@ class TrackPerformance
         $duration = (microtime(true) - $startTime) * 1000; // Convert to ms
 
         // Record metric if appropriate
+        // Use getStatusCode() instead of status() for compatibility with all response types
+        // (e.g., BinaryFileResponse, StreamedResponse, etc.)
+        $statusCode = $response->getStatusCode ? $response->getStatusCode() : 200;
+
         $this->recordMetric(
             $request->path(),
             $request->method(),
-            $response->status(),
+            $statusCode,
             $duration
         );
 
-        // Add response time header
-        $response->header('X-Response-Time', round($duration, 2) . 'ms');
+        // Add response time header (only if response supports it)
+        if (method_exists($response, 'header')) {
+            $response->header('X-Response-Time', round($duration, 2) . 'ms');
+        }
 
         return $response;
     }
