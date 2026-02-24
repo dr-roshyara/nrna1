@@ -35,6 +35,7 @@
  */
 
 import { ref } from 'vue'
+import { usePage } from '@inertiajs/vue3'
 
 export const useCsrfRequest = () => {
   const isLoading = ref(false)
@@ -43,23 +44,24 @@ export const useCsrfRequest = () => {
   /**
    * Get CSRF token from multiple sources with fallback strategy
    *
-   * Priority:
-   * 1. Meta tag (most reliable - Laravel sets this in HTML)
-   * 2. Cookie (XSRF-TOKEN - Laravel automatic fallback)
+   * Priority (Inertia 2.0):
+   * 1. Inertia props (shared via HandleInertiaRequests middleware)
+   * 2. Cookie (XSRF-TOKEN - Inertia automatic handling)
    * 3. Return null if neither found
    */
   const getCsrfToken = () => {
-    // Method 1: Meta tag (PREFERRED - most reliable)
-    const metaElement = document.querySelector('meta[name="csrf-token"]')
-    if (metaElement) {
-      const token = metaElement.getAttribute('content') || metaElement.content
-      if (token) {
-        console.log('✓ CSRF token from meta tag')
-        return token
+    // Method 1: Inertia props (PREFERRED - from server-side shared data)
+    try {
+      const page = usePage()
+      if (page.props.csrf_token) {
+        console.log('✓ CSRF token from Inertia props')
+        return page.props.csrf_token
       }
+    } catch (e) {
+      // usePage() not available in some contexts
     }
 
-    // Method 2: Cookie fallback (Laravel XSRF-TOKEN)
+    // Method 2: Cookie fallback (Inertia/Laravel XSRF-TOKEN)
     const name = 'XSRF-TOKEN'
     const decodedCookie = decodeURIComponent(document.cookie)
       .split(';')

@@ -259,8 +259,9 @@ export default {
             agreement: false,
         })
 
-        // Get CSRF token from meta tag
-        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || ''
+        // Get CSRF token from Inertia props (replaces meta tag approach)
+        const { usePage } = await import('@inertiajs/vue3')
+        const csrfToken = usePage().props.csrf_token || ''
 
         // Helper function to format message with placeholders
         const formatMessage = (message, params = {}) => {

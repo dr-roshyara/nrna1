@@ -278,7 +278,7 @@ const cleanupDemo = async () => {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || ''
+        'X-CSRF-TOKEN': route().current() ? usePage().props.csrf_token : ''
       }
     })
 
@@ -309,7 +309,7 @@ const resetDemo = async () => {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || ''
+        'X-CSRF-TOKEN': route().current() ? usePage().props.csrf_token : ''
       }
     })
 
