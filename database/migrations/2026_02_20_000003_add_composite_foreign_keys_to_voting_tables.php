@@ -58,20 +58,31 @@ class AddCompositeForeignKeysToVotingTables extends Migration
         }
 
         // Step 2: Drop existing single-column FKs if they exist
-        $votes_fk_exists = DB::select("SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
-            WHERE TABLE_NAME = 'votes' AND COLUMN_NAME = 'election_id'
-            AND CONSTRAINT_NAME LIKE '%election_id%' AND REFERENCED_TABLE_NAME IS NOT NULL");
+        // Only attempt to drop FKs from previous migrations (non-fresh installs)
+        try {
+            $votes_fk_exists = DB::select("SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+                WHERE TABLE_NAME = 'votes' AND COLUMN_NAME = 'election_id'
+                AND CONSTRAINT_NAME NOT LIKE '%election_id_organisation_id%'
+                AND REFERENCED_TABLE_NAME IS NOT NULL");
 
-        if (!empty($votes_fk_exists)) {
-            DB::statement('ALTER TABLE votes DROP FOREIGN KEY ' . $votes_fk_exists[0]->CONSTRAINT_NAME);
+            if (!empty($votes_fk_exists)) {
+                DB::statement('ALTER TABLE votes DROP FOREIGN KEY ' . $votes_fk_exists[0]->CONSTRAINT_NAME);
+            }
+        } catch (\Exception $e) {
+            // FK doesn't exist in fresh install - continue
         }
 
-        $results_fk_exists = DB::select("SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
-            WHERE TABLE_NAME = 'results' AND COLUMN_NAME = 'vote_id'
-            AND CONSTRAINT_NAME LIKE '%vote_id%' AND REFERENCED_TABLE_NAME IS NOT NULL");
+        try {
+            $results_fk_exists = DB::select("SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+                WHERE TABLE_NAME = 'results' AND COLUMN_NAME = 'vote_id'
+                AND CONSTRAINT_NAME NOT LIKE '%vote_id_organisation_id%'
+                AND REFERENCED_TABLE_NAME IS NOT NULL");
 
-        if (!empty($results_fk_exists)) {
-            DB::statement('ALTER TABLE results DROP FOREIGN KEY ' . $results_fk_exists[0]->CONSTRAINT_NAME);
+            if (!empty($results_fk_exists)) {
+                DB::statement('ALTER TABLE results DROP FOREIGN KEY ' . $results_fk_exists[0]->CONSTRAINT_NAME);
+            }
+        } catch (\Exception $e) {
+            // FK doesn't exist in fresh install - continue
         }
 
         // Step 3: Add composite foreign keys
