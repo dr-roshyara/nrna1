@@ -196,7 +196,7 @@
 </template>
 
 <script>
-import { useCsrfRequest } from '@/composables/useCsrfRequest'
+import { useForm } from '@inertiajs/vue3'
 
 export default {
   name: 'ElectionHeader',
@@ -219,15 +219,8 @@ export default {
       showMobileMenu: false,
       handleEscapeKey: null,
       handleResize: null,
-      isLoggingOut: false,
-      csrfRequest: null,
+      logoutForm: useForm({}),
     };
-  },
-
-  setup() {
-    // Initialize centralized CSRF request handler
-    const csrfRequest = useCsrfRequest()
-    return { csrfRequest }
   },
 
   created() {
@@ -359,37 +352,32 @@ export default {
     },
 
     /**
-     * Logout user using centralized CSRF request handler
-     * STABLE PATTERN: Single source of truth for all CSRF-protected requests
+     * Logout user using Inertia form helper
+     * PROPER PATTERN: Use Inertia.js for all page requests
      *
      * Benefits:
-     * - No more manual token extraction
-     * - Consistent error handling across app
-     * - Automatic 419 recovery
-     * - Eliminates token expiration issues
-     * - Reduces code duplication
+     * - Automatic CSRF token handling via middleware
+     * - Proper session invalidation and redirect
+     * - Works with Inertia's routing and history
+     * - No manual token extraction needed
+     * - Consistent with other Inertia requests
      */
-    async logout() {
+    logout() {
       console.log('🚪 Logout initiated');
       this.closeMobileMenu();
-      this.isLoggingOut = true;
 
-      try {
-        // Use centralized CSRF request handler
-        await this.csrfRequest.logout();
-
-        // Redirect after successful logout
-        console.log('✓ Logout successful, redirecting...');
-        window.location.href = '/';
-      } catch (error) {
-        console.error('❌ Logout error:', error);
-        this.isLoggingOut = false;
-        // useCsrfRequest handles 419 with auto-reload
-        // Other errors show user-friendly message
-        if (error.message && !error.message.includes('reload')) {
+      // Use Inertia form helper for proper POST request
+      this.logoutForm.post(this.route('logout'), {
+        preserveState: false,
+        preserveScroll: true,
+        onFinish: () => {
+          console.log('✓ Logout completed');
+        },
+        onError: (errors) => {
+          console.error('❌ Logout error:', errors);
           alert('Logout failed. Please try again.');
         }
-      }
+      });
     },
   },
 
