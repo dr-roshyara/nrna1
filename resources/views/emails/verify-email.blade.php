@@ -80,13 +80,15 @@
         .button {
             display: inline-block;
             padding: 14px 40px;
-            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            color: #ffffff;
-            text-decoration: none;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%) !important;
+            background-color: #2563eb !important;
+            color: #ffffff !important;
+            text-decoration: none !important;
             border-radius: 6px;
             font-weight: 600;
             font-size: 15px;
             transition: all 0.3s ease;
+            border: 2px solid #1e40af !important;
         }
 
         .button:hover {
@@ -235,7 +237,7 @@
 
             <!-- Verification Button -->
             <div class="button-wrapper">
-                <a href="{{ $verificationUrl }}" class="button">
+                <a href="{{ $verificationUrl }}" class="button" style="display: inline-block !important; padding: 14px 40px !important; background: #2563eb !important; background-color: #2563eb !important; color: #ffffff !important; text-decoration: none !important; border-radius: 6px !important; font-weight: 600 !important; font-size: 15px !important; border: 2px solid #1e40af !important; line-height: 1.4 !important;">
                     {{ __('emails.verify_email_button', [], app()->getLocale()) }}
                 </a>
             </div>
