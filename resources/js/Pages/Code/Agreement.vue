@@ -205,6 +205,7 @@
 <script>
 import ElectionLayout from '@/Layouts/ElectionLayout'
 import { useForm } from '@inertiajs/inertia-vue3'
+import { usePage } from '@inertiajs/vue3'
 import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator'
 
 export default {
@@ -260,7 +261,6 @@ export default {
         })
 
         // Get CSRF token from Inertia props (replaces meta tag approach)
-        const { usePage } = await import('@inertiajs/vue3')
         const csrfToken = usePage().props.csrf_token || ''
 
         // Helper function to format message with placeholders
