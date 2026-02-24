@@ -14,7 +14,12 @@ class ElectionService
     public static function areResultsPublished(): bool
     {
         return Cache::remember('election.results_published', 300, function () {
-            return Permission::where('name', 'results-published-flag')->exists();
+            try {
+                return Permission::where('name', 'results-published-flag')->exists();
+            } catch (\Exception $e) {
+                // Table may not exist yet (e.g., during testing)
+                return false;
+            }
         });
     }
 
