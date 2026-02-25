@@ -26,7 +26,6 @@ import SocialLayout from "@/Layouts/SocialLayout";
 import RightBar from "@/Components/Discussion/RightBar.vue";
 import LeftBar from "@/Components/Discussion/LeftBar.vue";
 import AppLayout from "@/Layouts/AppLayout";
-import Welcome from "@/Components/Jetstream/Welcome";
 import JoinNetwork from "@/Components/General/JoinNetwork.vue";
 import Timeline from "@/Components/Discussion/Timeline.vue";
 import Openions from "@/Components/Discussion/Openions";

@@ -82,8 +82,15 @@
     {{-- Vite Assets (Laravel 11) --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- Ziggy Routes (temporarily disabled until Fortify is fully removed) --}}
-    {{-- @routes --}}
+    {{-- Ziggy Routes (Manual initialization - Fortify removal workaround) --}}
+    <script>
+        window.Ziggy = {
+            url: "{{ url('/') }}",
+            port: null,
+            defaults: {},
+            routes: {}
+        };
+    </script>
 </head>
 <body class="font-sans antialiased">
     {{-- Google Tag Manager (noscript) --}}
