@@ -26,9 +26,15 @@ class OrganizationController extends Controller
     public function store(StoreOrganizationRequest $request): JsonResponse
     {
         try {
+            \Log::info('Organization creation started', [
+                'user_id' => auth()->id(),
+                'request_data' => $request->except(['password', 'representative']),
+            ]);
+
             $user = auth()->user();
 
             // Create organization
+            \Log::info('Creating organization record');
             $organization = Organization::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -37,15 +43,20 @@ class OrganizationController extends Controller
                 'created_by' => $user->id,
                 'slug' => Str::slug($request->name),
             ]);
+            \Log::info('Organization created', ['organization_id' => $organization->id]);
 
             // Attach current user as organization admin
+            \Log::info('Attaching user to organization');
             $organization->users()->attach($user->id, [
                 'role' => 'admin',
                 'assigned_at' => now(),
             ]);
+            \Log::info('User attached to organization');
 
             // Update current user's organisation_id
+            \Log::info('Updating user organisation_id');
             $user->update(['organisation_id' => $organization->id]);
+            \Log::info('User organisation_id updated');
 
             // Handle representative - check if user IS the representative
             $isSelfRepresentative = $request->representative['is_self'] ?? false;
