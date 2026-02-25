@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\DemoCandidacy;
+use App\Models\Election;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -12,6 +13,9 @@ class DemoCandidacyFactory extends Factory
 
     /**
      * Define the model's default state.
+     *
+     * CRITICAL: election_id must ALWAYS be set to satisfy NOT NULL constraint.
+     * Creates a new election if not explicitly provided.
      */
     public function definition()
     {
@@ -31,7 +35,7 @@ class DemoCandidacyFactory extends Factory
             'image_path_1' => $this->faker->word() . '.png',
             'image_path_2' => null,
             'image_path_3' => null,
-            'election_id' => null,
+            'election_id' => Election::factory(), // CRITICAL: Always create an election
             'organisation_id' => null, // MODE 1 by default
             'position_order' => 1,
         ];
