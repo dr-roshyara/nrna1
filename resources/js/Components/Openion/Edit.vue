@@ -80,7 +80,7 @@
     </section>
 </template>
 <script>
-import JetButton from "@/Jetstream/FormButton";
+import JetButton from "@/Components/Jetstream/FormButton";
 import { reactive } from "@vue/reactivity";
 import { Inertia } from "@inertiajs/inertia";
 import { watchEffect } from "@vue/runtime-core";

@@ -1,5 +1,5 @@
 import { ref, reactive, computed } from 'vue';
-import { useCsrfRequest } from './useCsrfRequest';
+import { router } from '@inertiajs/vue3';
 
 /**
  * Composable for managing the Organization Creation Flow
@@ -7,12 +7,14 @@ import { useCsrfRequest } from './useCsrfRequest';
  *
  * Design: Progressive disclosure with educational first, form second
  *
- * CSRF Handling: Uses centralized useCsrfRequest() composable for all requests
- * This ensures consistent CSRF token management across the entire application
+ * IMPORTANT: Uses Inertia router.post() for form submission because:
+ * 1. This is an Inertia application (Inertia 2.0)
+ * 2. Inertia automatically handles CSRF tokens via meta tags
+ * 3. Inertia sets correct headers (X-Requested-With, Accept)
+ * 4. Inertia properly handles redirects and flash messages
  */
 export const useOrganizationCreation = () => {
-  // Initialize centralized CSRF request handler
-  const csrfRequest = useCsrfRequest();
+  // No need for manual CSRF handling - Inertia handles it
   // Step tracking (0 = education overlay, 1-3 = form steps)
   const currentStep = ref(0);
   const isModalOpen = ref(false);
@@ -224,10 +226,11 @@ export const useOrganizationCreation = () => {
 
   /**
    * Submit the form and create organization
-   * CSRF handling: Uses centralized useCsrfRequest() composable
-   * This ensures automatic token management and consistent error handling
+   *
+   * Uses Inertia 2.0 router.post() for proper form submission handling.
+   * Inertia automatically manages CSRF tokens and HTTP headers.
    */
-  const submitForm = async () => {
+  const submitForm = () => {
     if (!validateStep(3)) {
       return false;
     }
@@ -240,85 +243,93 @@ export const useOrganizationCreation = () => {
     isSubmitting.value = true;
     submissionError.value = null;
 
-    try {
-      // Build payload
-      const payload = {
-        name: formData.basic.name.trim(),
-        email: formData.basic.email.trim().toLowerCase(),
-        address: {
-          street: formData.address.street.trim(),
-          city: formData.address.city.trim(),
-          zip: formData.address.zip.trim(),
-          country: formData.address.country,
-        },
-        representative: {
-          name: formData.representative.name.trim(),
-          role: formData.representative.role.trim(),
-          email: formData.representative.email?.trim() || formData.basic.email.trim(),
-        },
-        accept_gdpr: formData.acceptance.gdpr,
-        accept_terms: formData.acceptance.terms,
-      };
+    // Build payload
+    const payload = {
+      name: formData.basic.name.trim(),
+      email: formData.basic.email.trim().toLowerCase(),
+      address: {
+        street: formData.address.street.trim(),
+        city: formData.address.city.trim(),
+        zip: formData.address.zip.trim(),
+        country: formData.address.country,
+      },
+      representative: {
+        name: formData.representative.name.trim(),
+        role: formData.representative.role.trim(),
+        email: formData.representative.email?.trim() || formData.basic.email.trim(),
+        is_self: formData.representative.is_self,
+      },
+      accept_gdpr: formData.acceptance.gdpr,
+      accept_terms: formData.acceptance.terms,
+    };
 
-      console.log('📤 Sending organization creation request');
+    // Get route URL from Laravel's route system
+    const routeUrl = route('organizations.store');
 
-      // Use centralized CSRF request handler
-      // Automatically handles token retrieval, error handling, and 419 recovery
-      const result = await csrfRequest.post('/organizations', payload);
+    console.log('📤 Sending organization creation request via Inertia router', {
+      url: routeUrl,
+      payload: payload,
+    });
 
-      // Track success
-      trackOrganizationCreated(payload);
+    // Use Inertia router for form submission
+    // Inertia handles CSRF tokens automatically via meta tags
+    // and sets proper headers (X-Requested-With, Accept)
+    router.post(routeUrl, payload, {
+      preserveState: true,
+      preserveScroll: true,
+      onSuccess: (page) => {
+        console.log('✅ Organization created successfully!', page.props);
 
-      // Show success message
-      if (window.dispatchEvent) {
-        window.dispatchEvent(new CustomEvent('show-success', {
-          detail: {
-            message: result.message || 'Organisation erfolgreich erstellt!',
-            title: '✅ Erfolg',
-            duration: 5000
+        // Track success
+        trackOrganizationCreated(payload);
+
+        // Close modal and reset
+        closeModal();
+        resetForm();
+
+        // Show success message
+        if (window.dispatchEvent) {
+          window.dispatchEvent(new CustomEvent('show-success', {
+            detail: {
+              message: page.props.flash?.success || 'Organisation erfolgreich erstellt!',
+              title: '✅ Erfolg',
+              duration: 5000
+            }
+          }));
+        }
+
+        isSubmitting.value = false;
+      },
+      onError: (errors) => {
+        console.error('Organization creation error:', errors);
+
+        // Format error messages from validation
+        let errorMessage = 'Bitte überprüfen Sie Ihre Eingaben';
+
+        if (errors.message) {
+          errorMessage = errors.message;
+        } else if (typeof errors === 'object') {
+          const errorMessages = Object.entries(errors)
+            .map(([field, messages]) => {
+              const msg = Array.isArray(messages) ? messages.join(', ') : messages;
+              return `${field}: ${msg}`;
+            })
+            .filter(msg => msg.trim())
+            .join('\n');
+
+          if (errorMessages) {
+            errorMessage = errorMessages;
           }
-        }));
+        }
+
+        submissionError.value = errorMessage;
+        trackOrganizationCreationError(errors);
+        isSubmitting.value = false;
+      },
+      onFinish: () => {
+        isSubmitting.value = false;
       }
-
-      // Close modal and reset
-      closeModal();
-      resetForm();
-
-      // Redirect to organization dashboard
-      if (result.redirect_url) {
-        setTimeout(() => {
-          window.location.href = result.redirect_url;
-        }, 1500);
-      }
-
-      isSubmitting.value = false;
-      return result;
-    } catch (error) {
-      console.error('Organization creation error:', error);
-
-      // Format error messages
-      let errorMessage = 'Failed to create organization';
-
-      if (error.data?.errors) {
-        // Validation errors from server
-        const errorMessages = Object.entries(error.data.errors)
-          .map(([field, messages]) => {
-            const msg = Array.isArray(messages) ? messages.join(', ') : messages;
-            return `${field}: ${msg}`;
-          })
-          .join('\n');
-        errorMessage = errorMessages;
-      } else if (error.message) {
-        errorMessage = error.message;
-      }
-
-      submissionError.value = errorMessage;
-      trackOrganizationCreationError(error);
-      isSubmitting.value = false;
-
-      // Don't throw - let the modal show the error message instead
-      return false;
-    }
+    });
   };
 
   /**

@@ -104,7 +104,7 @@
 import { ref } from 'vue'
 import AppLayout from '@/Layouts/AppLayout'
 import NrnaLayout from '@/Layouts/NrnaLayout'
-import JetValidationErrors from '@/Jetstream/ValidationErrors'
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors'
 import CreateVotingform from '@/Pages/Vote/DemoVote/CreateVotingform.vue'
 import { useForm } from '@inertiajs/inertia-vue3'
 

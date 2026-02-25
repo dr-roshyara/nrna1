@@ -22,7 +22,7 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
-import Welcome from "@/Jetstream/Welcome";
+import Welcome from "@/Components/Jetstream/Welcome";
 import PublicDigitLayout from "@/Layouts/PublicDigitLayout.vue";
 import { useMeta } from "@/composables/useMeta";
 

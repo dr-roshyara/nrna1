@@ -94,7 +94,7 @@
 </template>
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
 import VotingLayout from "@/Components/Election/VotingLayout.vue";
 
 export default {

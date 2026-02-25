@@ -44,8 +44,8 @@
 
 <script>
 import SocialLayout from "@/Layouts/SocialLayout";
-import JetButton from "@/Jetstream/Button";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetButton from "@/Components/Jetstream/Button";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
 import OutcomeSubmit from "@/Pages/Finance/Outcome/OutcomeSubmit.vue";
 
 export default {

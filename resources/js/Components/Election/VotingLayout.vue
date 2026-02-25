@@ -43,7 +43,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ElectionTypeBadge from './ElectionTypeBadge.vue'
-import PublicDigitFooter from '@/Jetstream/PublicDigitFooter.vue'
+import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 import ElectionHeader from '@/Components/Header/ElectionHeader.vue'
 
 const { t } = useI18n()

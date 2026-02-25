@@ -149,12 +149,12 @@
 <script>
 import { Link as InertiaLink } from '@inertiajs/inertia-vue3';
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
-import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
-import JetButton from "@/Jetstream/Button";
-import JetInput from "@/Jetstream/Input";
-import JetCheckbox from "@/Jetstream/Checkbox";
-import JetLabel from "@/Jetstream/Label";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
+import JetButton from "@/Components/Jetstream/Button";
+import JetInput from "@/Components/Jetstream/Input";
+import JetCheckbox from "@/Components/Jetstream/Checkbox";
+import JetLabel from "@/Components/Jetstream/Label";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
 
 export default {
     components: {

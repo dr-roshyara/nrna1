@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import PublicDigitHeader from "@/Jetstream/PublicDigitHeader.vue";
-import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
+import PublicDigitHeader from "@/Components/Jetstream/PublicDigitHeader.vue";
+import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 
 export default {
     name: 'PublicDigitLayout',

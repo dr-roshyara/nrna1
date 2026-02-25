@@ -121,8 +121,8 @@ import {
     DialogOverlay,
     DialogTitle,
 } from "@headlessui/vue";
-// import AppLayout from "@/Jetstream/Header";
-// import Footer from "@/Jetstream/Footer";
+// import AppLayout from "@/Components/Jetstream/Header";
+// import Footer from "@/Components/Jetstream/Footer";
 export default {
     mixins: [InteractsWithQueryBuilder],
     props: {

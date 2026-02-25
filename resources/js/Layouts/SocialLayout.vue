@@ -31,9 +31,9 @@
     </div>
 </template>
 <script>
-import NrnaHeader from "@/Jetstream/NrnaHeader";
-import profileHeader from "@/Jetstream/ProfileHeader";
-import NrnaFooter from "@/Jetstream/NrnaFooter";
+import NrnaHeader from "@/Components/Jetstream/NrnaHeader";
+import profileHeader from "@/Components/Jetstream/ProfileHeader";
+import NrnaFooter from "@/Components/Jetstream/NrnaFooter";
 import Navigation from "@/Components/Header/Navigation.vue";
 import RightBar from "@/Components/Discussion/RightBar.vue";
 import LeftBar from "@/Components/Discussion/LeftBar.vue";

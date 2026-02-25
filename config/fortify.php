@@ -1,7 +1,5 @@
 <?php
 
-use Laravel\Fortify\Features;
-
 return [
 
     /*
@@ -133,14 +131,8 @@ return [
     */
 
     'features' => [
-        Features::registration(), 
-        Features::resetPasswords(),
-        Features::emailVerification(),
-        Features::updateProfileInformation(),
-        Features::updatePasswords(),
-        Features::twoFactorAuthentication([
-            'confirmPassword' => true,
-        ]),
+        // Features temporarily disabled due to Fortify package availability
+        // These will be re-enabled once package is properly installed
     ],
 
 ];

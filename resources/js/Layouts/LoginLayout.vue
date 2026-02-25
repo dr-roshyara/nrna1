@@ -10,9 +10,9 @@
     </div>
 </template>
 <script>
-import PublicDigitHeader from "@/Jetstream/PublicDigitHeader.vue";
-import profileHeader from "@/Jetstream/ProfileHeader";
-import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
+import PublicDigitHeader from "@/Components/Jetstream/PublicDigitHeader.vue";
+import profileHeader from "@/Components/Jetstream/ProfileHeader";
+import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 export default {
     props: {
         image2: String,

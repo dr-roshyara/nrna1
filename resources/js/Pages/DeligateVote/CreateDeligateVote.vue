@@ -141,9 +141,9 @@
 <script>
 import { useForm } from '@inertiajs/inertia-vue3'
 import ShowCandidate from '@/Shared/ShowCandidate'
-import JetInput from '@/Jetstream/Input'
+import JetInput from '@/Components/Jetstream/Input'
 import ShowCheckbox from "@/Shared/ShowCheckbox";
-import JetValidationErrors from '@/Jetstream/ValidationErrors' 
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors' 
  import AppLayout from '@/Layouts/AppLayout'
  import NrnaLayout from '@/Layouts/NrnaLayout'    
 export default {

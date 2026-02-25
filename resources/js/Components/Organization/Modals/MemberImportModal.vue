@@ -175,7 +175,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import Modal from '@/Jetstream/Modal.vue'
+import Modal from '@/Components/Jetstream/Modal.vue'
 import { useMemberImport } from '@/composables/useMemberImport'
 
 const { t } = useI18n()

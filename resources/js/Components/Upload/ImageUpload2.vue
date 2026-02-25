@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import Label from "@/Jetstream/Label";
+import Label from "@/Components/Jetstream/Label";
 import { useForm } from "@inertiajs/inertia-vue3";
 import { processSlotOutlet } from "@vue/compiler-core";
 export default {

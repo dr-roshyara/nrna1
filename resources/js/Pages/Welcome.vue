@@ -31,8 +31,7 @@
         <!-- CTA Section -->
         <CTASection :perks="perks" />
 
-        <!-- Footer -->
-        <PublicDigitFooter />
+        <!-- Footer placeholder - replace with custom footer component -->
     </div>
     <div v-else>
         <Dashboard />
@@ -40,19 +39,18 @@
 </template>
 
 <script>
-import Dashboard from "@/Pages/Dashboard";
-import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
-import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
-import BreadcrumbSchema from "@/Components/BreadcrumbSchema.vue";
+import Dashboard from "@/pages/Dashboard.vue";
+import ElectionHeader from "@/components/Header/ElectionHeader.vue";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema.vue";
 
 // Import Welcome section components
-import HeroSection from "@/Components/Welcome/HeroSection.vue";
-import NGOFeaturesSection from "@/Components/Welcome/NGOFeaturesSection.vue";
-import HowItWorksSection from "@/Components/Welcome/HowItWorksSection.vue";
-import SecurityComplianceSection from "@/Components/Welcome/SecurityComplianceSection.vue";
-import ValuePropositionSection from "@/Components/Welcome/ValuePropositionSection.vue";
-import TestimonialsSection from "@/Components/Welcome/TestimonialsSection.vue";
-import CTASection from "@/Components/Welcome/CTASection.vue";
+import HeroSection from "@/components/Welcome/HeroSection.vue";
+import NGOFeaturesSection from "@/components/Welcome/NGOFeaturesSection.vue";
+import HowItWorksSection from "@/components/Welcome/HowItWorksSection.vue";
+import SecurityComplianceSection from "@/components/Welcome/SecurityComplianceSection.vue";
+import ValuePropositionSection from "@/components/Welcome/ValuePropositionSection.vue";
+import TestimonialsSection from "@/components/Welcome/TestimonialsSection.vue";
+import CTASection from "@/components/Welcome/CTASection.vue";
 import { useMeta } from "@/composables/useMeta";
 
 // Import Welcome locale files for array data
@@ -72,7 +70,6 @@ export default {
     components: {
         Dashboard,
         ElectionHeader,
-        PublicDigitFooter,
         BreadcrumbSchema,
         HeroSection,
         NGOFeaturesSection,

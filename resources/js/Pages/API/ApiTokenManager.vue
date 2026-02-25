@@ -164,19 +164,19 @@
 </template>
 
 <script>
-    import JetActionMessage from '@/Jetstream/ActionMessage'
-    import JetActionSection from '@/Jetstream/ActionSection'
-    import JetButton from '@/Jetstream/Button'
-    import JetConfirmationModal from '@/Jetstream/ConfirmationModal'
-    import JetDangerButton from '@/Jetstream/DangerButton'
-    import JetDialogModal from '@/Jetstream/DialogModal'
-    import JetFormSection from '@/Jetstream/FormSection'
-    import JetInput from '@/Jetstream/Input'
-    import JetCheckbox from '@/Jetstream/Checkbox'
-    import JetInputError from '@/Jetstream/InputError'
-    import JetLabel from '@/Jetstream/Label'
-    import JetSecondaryButton from '@/Jetstream/SecondaryButton'
-    import JetSectionBorder from '@/Jetstream/SectionBorder'
+    import JetActionMessage from '@/Components/Jetstream/ActionMessage'
+    import JetActionSection from '@/Components/Jetstream/ActionSection'
+    import JetButton from '@/Components/Jetstream/Button'
+    import JetConfirmationModal from '@/Components/Jetstream/ConfirmationModal'
+    import JetDangerButton from '@/Components/Jetstream/DangerButton'
+    import JetDialogModal from '@/Components/Jetstream/DialogModal'
+    import JetFormSection from '@/Components/Jetstream/FormSection'
+    import JetInput from '@/Components/Jetstream/Input'
+    import JetCheckbox from '@/Components/Jetstream/Checkbox'
+    import JetInputError from '@/Components/Jetstream/InputError'
+    import JetLabel from '@/Components/Jetstream/Label'
+    import JetSecondaryButton from '@/Components/Jetstream/SecondaryButton'
+    import JetSectionBorder from '@/Components/Jetstream/SectionBorder'
 
     export default {
         components: {

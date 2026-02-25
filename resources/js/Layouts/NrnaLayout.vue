@@ -14,10 +14,10 @@
     </div>
 </template>
 <script>
-import PublicDigitHeader from "@/Jetstream/PublicDigitHeader.vue";
+import PublicDigitHeader from "@/Components/Jetstream/PublicDigitHeader.vue";
 
-import profileHeader from "@/Jetstream/ProfileHeader";
-import PublicDigitFooter from "@/Jetstream/PublicDigitFooter";
+import profileHeader from "@/Components/Jetstream/ProfileHeader";
+import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter";
 import Navigation from "@/Components/Header/Navigation.vue";
 export default {
     props: {

@@ -932,9 +932,9 @@
 <script>
 import { useForm } from '@inertiajs/inertia-vue3'
 import ShowCandidate from '@/Shared/ShowCandidate'
-import JetInput from '@/Jetstream/Input'
+import JetInput from '@/Components/Jetstream/Input'
 import ShowCheckbox from "@/Shared/ShowCheckbox";
-import JetValidationErrors from '@/Jetstream/ValidationErrors'
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors'
 import VotingLayout from '@/Components/Election/VotingLayout.vue' 
  import AppLayout from '@/Layouts/AppLayout'
  import NrnaLayout from '@/Layouts/NrnaLayout'    

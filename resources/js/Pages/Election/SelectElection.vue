@@ -144,7 +144,7 @@
 import { computed } from 'vue'
 import { Link as InertiaLink, usePage } from '@inertiajs/inertia-vue3'
 import ElectionHeader from '@/Components/Header/ElectionHeader.vue'
-import PublicDigitFooter from '@/Jetstream/PublicDigitFooter.vue'
+import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 
 const props = defineProps({
   activeElections: {

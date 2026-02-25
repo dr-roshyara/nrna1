@@ -26,12 +26,12 @@
 </template>
 
 <script>
-    import JetAuthenticationCard from '@/Jetstream/AuthenticationCard'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
-    import JetButton from '@/Jetstream/Button'
-    import JetInput from '@/Jetstream/Input'
-    import JetLabel from '@/Jetstream/Label'
-    import JetValidationErrors from '@/Jetstream/ValidationErrors'
+    import JetAuthenticationCard from '@/Components/Jetstream/AuthenticationCard'
+    import JetAuthenticationCardLogo from '@/Components/Jetstream/AuthenticationCardLogo'
+    import JetButton from '@/Components/Jetstream/Button'
+    import JetInput from '@/Components/Jetstream/Input'
+    import JetLabel from '@/Components/Jetstream/Label'
+    import JetValidationErrors from '@/Components/Jetstream/ValidationErrors'
 
     export default {
         components: {

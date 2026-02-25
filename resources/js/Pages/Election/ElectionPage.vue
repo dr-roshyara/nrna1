@@ -231,7 +231,7 @@
 <script>
 import { Link as InertiaLink } from '@inertiajs/inertia-vue3';
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
-import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
+import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 
 export default {
     components: {

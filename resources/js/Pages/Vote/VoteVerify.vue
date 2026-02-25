@@ -390,7 +390,7 @@
 <script>
 import VotingLayout from "@/Components/Election/VotingLayout.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
 
 export default {
     name: 'VoteVerify',

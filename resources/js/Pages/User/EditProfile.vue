@@ -301,12 +301,12 @@
 <script>
 import ProfileLayout from "@/Layouts/ProfileLayout.vue";
 import ProfileImage from "@/Components/Profile/ProfileImage.vue";
-import JetAuthenticationCard from "@/Jetstream/AuthenticationCard";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
-import JetButton from "@/Jetstream/Button";
-import JetInput from "@/Jetstream/Input";
-import JetCheckbox from "@/Jetstream/Checkbox";
-import JetLabel from "@/Jetstream/Label";
+import JetAuthenticationCard from "@/Components/Jetstream/AuthenticationCard";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
+import JetButton from "@/Components/Jetstream/Button";
+import JetInput from "@/Components/Jetstream/Input";
+import JetCheckbox from "@/Components/Jetstream/Checkbox";
+import JetLabel from "@/Components/Jetstream/Label";
 import IconUpload from "@/Components/Upload/IconUpload.vue";
 export default {
     props: {

@@ -34,7 +34,7 @@
 import NrnaLayout from "@/Layouts/ProfileLayout";
 import SocialLayout from "@/Layouts/SocialLayout";
 
-import JetButton from "@/Jetstream/Button";
+import JetButton from "@/Components/Jetstream/Button";
 
 export default {
     components: {

@@ -146,8 +146,8 @@
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
-import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
-import JetValidationErrors from '@/Jetstream/ValidationErrors'
+import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors'
 
 export default {
     components: {

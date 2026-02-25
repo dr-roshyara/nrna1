@@ -499,12 +499,12 @@
     </nav>
 </template>
 <script>
-import JetApplicationMark from "@/Jetstream/ApplicationMark";
-import JetBanner from "@/Jetstream/Banner";
-import JetDropdown from "@/Jetstream/Dropdown";
-import JetDropdownLink from "@/Jetstream/DropdownLink";
-import JetNavLink from "@/Jetstream/NavLink";
-import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink";
+import JetApplicationMark from "@/Components/Jetstream/ApplicationMark";
+import JetBanner from "@/Components/Jetstream/Banner";
+import JetDropdown from "@/Components/Jetstream/Dropdown";
+import JetDropdownLink from "@/Components/Jetstream/DropdownLink";
+import JetNavLink from "@/Components/Jetstream/NavLink";
+import JetResponsiveNavLink from "@/Components/Jetstream/ResponsiveNavLink";
 
 export default {
     props: {

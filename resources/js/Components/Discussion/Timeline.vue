@@ -61,13 +61,13 @@
 </template>
 <script>
 import NrnaLayout from "@/Layouts/LoginLayout";
-import JetAuthenticationCard from "@/Jetstream/AuthenticationCard";
-import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
-import JetButton from "@/Jetstream/FormButton";
-import JetInput from "@/Jetstream/Input";
-import JetCheckbox from "@/Jetstream/Checkbox";
-import JetLabel from "@/Jetstream/Label";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetAuthenticationCard from "@/Components/Jetstream/AuthenticationCard";
+import JetAuthenticationCardLogo from "@/Components/Jetstream/AuthenticationCardLogo";
+import JetButton from "@/Components/Jetstream/FormButton";
+import JetInput from "@/Components/Jetstream/Input";
+import JetCheckbox from "@/Components/Jetstream/Checkbox";
+import JetLabel from "@/Components/Jetstream/Label";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
 
 export default {
     components: {

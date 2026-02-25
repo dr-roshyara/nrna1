@@ -1,32 +1,39 @@
 require('./bootstrap');
 
-// Import modules...
 import { createApp, h } from 'vue';
-import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
+import { createInertiaApp } from '@inertiajs/vue3';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { InertiaProgress } from '@inertiajs/progress';
+import route from 'ziggy-js';
 
 const el = document.getElementById('app');
 const initialPage = JSON.parse(el.dataset.page);
 
-// Inject server locale into window BEFORE importing i18n
-// This ensures i18n initializes with the correct locale from the server
+// Make route() available globally
+window.route = route;
+
+// Inject server locale
 if (initialPage.props && initialPage.props.locale) {
     window.__initialLocale = initialPage.props.locale;
 }
 
-// NOW import i18n after window.__initialLocale is set
 import i18n from './i18n';
 
-createApp({
-    render: () =>
-        h(InertiaApp, {
-            initialPage: initialPage,
-            resolveComponent: (name) => require(`./Pages/${name}`).default,
-        }),
-})
-    .mixin({ methods: { route } })
-    .use(InertiaPlugin)
-    .use(i18n)
-    .mount(el);
+createInertiaApp({
+    id: 'app',
+    title: (title) => `${title} - Public Digit`,
+    resolve: (name) => resolvePageComponent(
+        `./Pages/${name}.vue`,
+        import.meta.glob('./Pages/**/*.vue', { eager: true })
+    ),
+    setup({ el, App, props, plugin }) {
+        createApp({ render: () => h(App, props) })
+            .use(plugin)
+            .use(i18n)
+            .mixin({ methods: { route } })
+            .mount(el);
+    },
+    progress: { color: '#4B5563' },
+});
 
 InertiaProgress.init({ color: '#4B5563' });

@@ -246,13 +246,12 @@
     <OrganizationCreateModal />
 
     <!-- Footer -->
-    <PublicDigitFooter />
+    <!-- Footer placeholder - replace with custom footer component -->
   </div>
 </template>
 
 <script>
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
-import PublicDigitFooter from "@/Jetstream/PublicDigitFooter.vue";
 import OrganizationCreateModal from "@/Components/Organization/OrganizationCreateModal.vue";
 import { useOrganizationCreation } from "@/composables/useOrganizationCreation";
 import { provide } from 'vue';
@@ -262,7 +261,6 @@ export default {
 
   components: {
     ElectionHeader,
-    PublicDigitFooter,
     OrganizationCreateModal,
   },
 

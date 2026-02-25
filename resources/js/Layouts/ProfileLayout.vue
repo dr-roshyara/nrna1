@@ -15,8 +15,8 @@
     </div> 
 </template>
 <script>
-import ProfileHeader from "@/Jetstream/ProfileHeader";
-import PublicDigitFooter   from "@/Jetstream/NrnaFooter";
+import ProfileHeader from "@/Components/Jetstream/ProfileHeader";
+import PublicDigitFooter   from "@/Components/Jetstream/NrnaFooter";
 
 export default {
     props: {

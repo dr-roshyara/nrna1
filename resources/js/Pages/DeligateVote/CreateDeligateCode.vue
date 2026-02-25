@@ -46,7 +46,7 @@
 </template>
 <script>
 import { useForm } from '@inertiajs/inertia-vue3'
-import JetValidationErrors from '@/Jetstream/ValidationErrors' 
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors' 
 import AppLayout from '@/Layouts/AppLayout'
 import NrnaLayout from '@/Layouts/NrnaLayout'
 export default {

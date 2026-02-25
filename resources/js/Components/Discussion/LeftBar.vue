@@ -106,7 +106,7 @@
     </div>
 </template>
 <script>
-import JetNavLink from "@/Jetstream/NavLink";
+import JetNavLink from "@/Components/Jetstream/NavLink";
 export default {
     components: {
         JetNavLink,

@@ -25,6 +25,10 @@ class OrganizationController extends Controller
      */
     public function store(StoreOrganizationRequest $request): JsonResponse
     {
+        // Debug: Log that store() method was called
+        error_log('🔵 OrganizationController::store() called at ' . date('Y-m-d H:i:s'));
+        error_log('📝 Request data: ' . json_encode($request->all()));
+
         try {
             \Log::info('Organization creation started', [
                 'user_id' => auth()->id(),
@@ -128,17 +132,10 @@ class OrganizationController extends Controller
                 // Continue even if email fails
             }
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Organisation erfolgreich erstellt!',
-                'redirect_url' => route('organizations.show', $organization->slug),
-                'organization' => [
-                    'id' => $organization->id,
-                    'name' => $organization->name,
-                    'email' => $organization->email,
-                    'slug' => $organization->slug,
-                ]
-            ], 201);
+            // For Inertia 2.0: Redirect with flash message
+            // Inertia will automatically handle the redirect and pass flash data to frontend
+            return redirect()->route('organizations.show', $organization->slug)
+                ->with('success', 'Organisation erfolgreich erstellt!');
         } catch (\Exception $e) {
             \Log::error('Organization creation failed', [
                 'error' => $e->getMessage(),
@@ -146,6 +143,9 @@ class OrganizationController extends Controller
                 'user_id' => auth()->id(),
             ]);
 
+            // CRITICAL: Always return JSON for errors (JSON requests or validation errors)
+            // The StoreOrganizationRequest->failedValidation() already throws JSON responses
+            // So this catch block is for unexpected server errors
             return response()->json([
                 'success' => false,
                 'message' => 'Fehler beim Erstellen der Organisation: ' . $e->getMessage(),

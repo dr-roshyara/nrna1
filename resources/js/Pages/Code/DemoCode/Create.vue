@@ -181,7 +181,7 @@
 
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
 import ElectionLayout from "@/Layouts/ElectionLayout";
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator";
 

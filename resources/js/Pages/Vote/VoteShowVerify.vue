@@ -473,7 +473,7 @@ import ElectionLayout from "@/Layouts/ElectionLayout.vue";
 import VoteFinal from "@/Pages/Vote/VoteFinal";
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator";
 import { useForm } from "@inertiajs/inertia-vue3";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
 
 export default {
     components: {

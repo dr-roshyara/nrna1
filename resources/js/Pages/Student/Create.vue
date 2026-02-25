@@ -238,10 +238,10 @@
 import AppLayout from "@/Layouts/AppLayout";
 import NrnaLayout from "@/Layouts/NrnaLayout";
 import { useForm } from "@inertiajs/inertia-vue3";
-import JetInput from "@/Jetstream/Input";
-import JetButton from "@/Jetstream/Button";
+import JetInput from "@/Components/Jetstream/Input";
+import JetButton from "@/Components/Jetstream/Button";
 import ShowCheckbox from "@/Shared/ShowCheckbox";
-import JetValidationErrors from "@/Jetstream/ValidationErrors";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
 import { reactive } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 // import { Head } from '@inertiajs/inertia-vue3'

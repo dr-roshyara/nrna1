@@ -20,7 +20,7 @@
 <script>
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
-import JetValidationErrors from '@/Jetstream/ValidationErrors'
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors'
 export default {
     props: {
         vtelephone: String,

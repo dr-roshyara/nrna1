@@ -138,9 +138,35 @@ export const useCsrfRequest = () => {
       }
 
       console.log('✓ Request successful')
-      return await response.json()
+
+      // Parse response - handle HTML responses gracefully
+      const contentType = response.headers.get('content-type')
+      let responseData
+
+      if (contentType && contentType.includes('application/json')) {
+        responseData = await response.json()
+      } else {
+        // Response is not JSON (likely HTML error page)
+        const text = await response.text()
+        console.error('⚠️ Response is not JSON:', {
+          contentType: contentType,
+          status: response.status,
+          bodyPreview: text.substring(0, 200),
+        })
+        throw {
+          status: response.status,
+          message: 'Server returned invalid response format (expected JSON, got ' + (contentType || 'unknown') + ')',
+          isHtmlResponse: true,
+        }
+      }
+
+      return responseData
     } catch (err) {
-      console.error('❌ Request error:', err)
+      console.error('❌ Request error:', {
+        type: err.constructor.name,
+        message: err.message,
+        error: err,
+      })
       error.value = err.message || 'Request failed'
       throw err
     } finally {
