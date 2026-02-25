@@ -29,7 +29,20 @@ class EnsureVoterSlugWindow
             'vslug_class' => is_object($vslug) ? get_class($vslug) : 'not_object',
         ]);
 
-        // Ensure we have a VoterSlug instance, not a string
+        // If vslug is a string, manually resolve it from the database
+        // This handles cases where implicit route model binding doesn't work
+        if (is_string($vslug)) {
+            $vslug = VoterSlug::where('slug', $vslug)->first();
+            if (!$vslug) {
+                \Log::warning('VoterSlug not found in database', [
+                    'url' => $request->url(),
+                    'slug' => $request->route()->parameter('vslug'),
+                ]);
+                abort(403, 'Invalid voting link.');
+            }
+        }
+
+        // Ensure we have a VoterSlug instance
         if (!$vslug instanceof VoterSlug) {
             \Log::warning('Invalid voting link - not a VoterSlug instance', [
                 'url' => $request->url(),
