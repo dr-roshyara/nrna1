@@ -32,7 +32,7 @@ class TrackPerformance
         // Record metric if appropriate
         // Use getStatusCode() instead of status() for compatibility with all response types
         // (e.g., BinaryFileResponse, StreamedResponse, etc.)
-        $statusCode = $response->getStatusCode ? $response->getStatusCode() : 200;
+        $statusCode = method_exists($response, 'getStatusCode') ? $response->getStatusCode() : 200;
 
         $this->recordMetric(
             $request->path(),

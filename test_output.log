@@ -1,49 +1,84 @@
- Warning: TTY mode is not supported on Windows platform.
-     
-  [37;41;1m FAIL [39;49;22m[39m Tests\Feature\DemoModeTest[39m
-  [32;1m✓[39;22m[39m [2mmode1 demo works without organisation[22m[39m
-  [32;1m✓[39;22m[39m [2mmode2 tenant works with organisation[22m[39m
-  [32;1m✓[39;22m[39m [2mmode1 and mode2 are isolated[22m[39m
-  [31;1m⨯[39;22m[39m [2mtenant helper functions[22m[39m
-  [32;1m✓[39;22m[39m [2mvote anonymity preserved in both modes[22m[39m
+ 
+  [30;43;1m WARN [39;49;22m Your XML configuration validates against a deprecated schema. Migrate your XML configuration using "--migrate-configuration"!
+       
+   FAIL  Tests\Unit\Controllers\DemoResultControllerTest
+  ✓ mode 1 returns global demo results                                                                         119.01s  
+  ⨯ mode 2 returns organisation scoped results                                                                   1.60s  
+  ⨯ data isolation mode1 does not see mode2 data                                                                 0.30s  
+  ⨯ vote counting is accurate                                                                                    0.18s  
+  ⨯ no vote option counted correctly                                                                             0.46s  
+  ✓ demo result requires authentication                                                                          0.37s  
+  ! pdf download mode1 works → Test code or tested code closed output buffers other than its own                 4.49s  
+  ! pdf download mode2 works → Test code or tested code closed output buffers other than its own                 0.37s  
+  ✓ verify results endpoint                                                                                      0.34s  
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Controllers\DemoResultControllerTest > mode 2 returns organisation scoped results                 
+  Property [posts] was marked as invalid using a closure.
+Failed asserting that false is true.
 
-  [2m---[22m
+  at tests\Unit\Controllers\DemoResultControllerTest.php:83
+     79▕         $response->assertInertia(fn ($page) =>
+     80▕             $page
+     81▕                 ->component('Demo/Result/Index')
+     82▕                 ->where('mode', 'organisation')
+  ➜  83▕                 ->where('posts', fn ($postsData) => count($postsData) === 2)
+     84▕         );
+     85▕     }
+     86▕ 
+     87▕     /**
 
-  [31;1m• Tests\Feature\DemoModeTest [39;22m> [31;1mtenant helper functions[39;22m
-  [41;1m PHPUnit\Framework\ExceptionWrapper [49;22m
+  1   vendor\inertiajs\inertia-laravel\src\Testing\TestResponseMacros.php:18
+  2   vendor\laravel\framework\src\Illuminate\Macroable\Traits\Macroable.php:126
 
-[39;1m  Call to undefined function Tests\Feature\is_demo_mode()[39;22m
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Controllers\DemoResultControllerTest > data isolation mode1 does not see mode2…  ErrorException   
+  Undefined array key "posts"
 
-  at [32mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\tests\Feature\DemoModeTest.php[39m:[32m229[39m
-    225▕         // MODE 1: Demo user
-    226▕         $demoUser = User::factory()->create(['organisation_id' => null]);
-    227▕         $this->setUserContext($demoUser);
-    228▕ 
-  ➜ 229▕         $this->assertTrue(is_demo_mode());
-    230▕         $this->assertFalse(is_tenant_mode());
-    231▕         $this->assertEquals('MODE_1_DEMO', current_mode());
-    232▕         $this->assertNull(get_tenant_id());
-    233▕
+  at tests\Unit\Controllers\DemoResultControllerTest.php:111
+    107▕         $response = $this->actingAs($this->user)
+    108▕             ->get('/demo/global/result');
+    109▕ 
+    110▕         // Assert - Should only see global posts
+  ➜ 111▕         $this->assertEquals(2, count($response['posts']));
+    112▕ 
+    113▕         foreach ($response['posts'] as $post) {
+    114▕             $this->assertNull($post->organisation_id);
+    115▕         }
 
-  [33m1   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\src\Framework\TestCase.php[39;22m:[39;1m973[39;22m
-  [37m    PHPUnit\Framework\TestResult::run(Object(Tests\Feature\DemoModeTest))[39m
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Controllers\DemoResultControllerTest > vote counting is accurate                          Error   
+  Class "Database\Factories\DemoCandidacyFactory" not found
 
-  [33m2   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\src\Framework\TestSuite.php[39;22m:[39;1m685[39;22m
-  [37m    PHPUnit\Framework\TestCase::run(Object(PHPUnit\Framework\TestResult))[39m
+  at vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:864
+    860▕     public static function factoryForModel(string $modelName)
+    861▕     {
+    862▕         $factory = static::resolveFactoryName($modelName);
+    863▕ 
+  ➜ 864▕         return $factory::new();
+    865▕     }
+    866▕ 
+    867▕     /**
+    868▕      * Specify the callback that should be invoked to guess factory names based on dynamic relationship names.
 
-  [33m3   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\src\TextUI\TestRunner.php[39;22m:[39;1m651[39;22m
-  [37m    PHPUnit\Framework\TestSuite::run(Object(PHPUnit\Framework\TestResult))[39m
+  1   vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:864
+  2   vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\HasFactory.php:21
 
-  [33m4   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\src\TextUI\Command.php[39;22m:[39;1m146[39;22m
-  [37m    PHPUnit\TextUI\TestRunner::run(Object(PHPUnit\Framework\TestSuite), [])[39m
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Controllers\DemoResultControllerTest > no vote option counted correctly          ErrorException   
+  Undefined array key "final_result"
 
-  [33m5   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\src\TextUI\Command.php[39;22m:[39;1m99[39;22m
-  [37m    PHPUnit\TextUI\Command::run()[39m
+  at tests\Unit\Controllers\DemoResultControllerTest.php:235
+    231▕         $response = $this->actingAs($this->user)
+    232▕             ->get('/demo/global/result');
+    233▕ 
+    234▕         // Assert
+  ➜ 235▕         $postResult = collect($response['final_result']['posts'])->first();
+    236▕         $this->assertEquals(2, $postResult['no_vote_count']);
+    237▕     }
+    238▕ 
+    239▕     /**
 
-  [33m6   [39m[39;1mC:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\vendor\phpunit\phpunit\phpunit[39;22m:[39;1m107[39;22m
-  [37m    PHPUnit\TextUI\Command::main()[39m
 
-
-  [37;1mTests:  [39;22m[31;1m1 failed[39;22m[39m, [39m[32;1m4 passed[39;22m
-  [37;1mTime:   [39;22m[39m29.21s[39m
+  Tests:    4 failed, 2 risky, 3 passed (40 assertions)
+  Duration: 127.95s
 
