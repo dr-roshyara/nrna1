@@ -211,12 +211,12 @@
                     <div class="relative ml-3">
                         <jet-dropdown align="right" width="48">
                             <template #trigger>
-                                <span class="inline-flex rounded-md">
+                                <span class="inline-flex rounded-md" v-if="$page.props.user">
                                     <button
                                         type="button"
                                         class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition hover:text-gray-700 focus:outline-none"
                                     >
-                                        {{ $page.props.user.name }}
+                                        {{ $page.props.user?.name }}
 
                                         <svg
                                             class="ml-2 -mr-0.5 h-4 w-4"
@@ -327,14 +327,14 @@
             </div>
 
             <!-- Responsive Settings Options -->
-            <div class="border-t border-gray-200 pt-4 pb-1">
+            <div v-if="$page.props.user" class="border-t border-gray-200 pt-4 pb-1">
                 <div class="flex items-center px-4">
                     <div>
                         <div class="text-base font-medium text-gray-800">
-                            {{ $page.props.user.name }}
+                            {{ $page.props.user?.name }}
                         </div>
                         <div class="text-sm font-medium text-gray-500">
-                            {{ $page.props.user.email }}
+                            {{ $page.props.user?.email }}
                         </div>
                     </div>
                 </div>
