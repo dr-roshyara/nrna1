@@ -101,39 +101,37 @@ class StoreOrganizationRequest extends FormRequest
             ],
         ];
 
-        // ✅ Add DNS validation only in non-test environments
-        // Now safe to append because all rules are arrays
-        if (!app()->environment('testing')) {
+        // ✅ DNS validation disabled in production due to timeout issues
+        // checkdnsrr() can hang on slow DNS servers, causing 30s timeout
+        // Email format validation (email:rfc) is sufficient for now
+        // DNS validation could be moved to async job if needed
+        /*
+        if (!app()->environment('testing', 'production')) {
             // Organization email DNS validation closure
             $rules['email'][] = function ($attribute, $value, $fail) {
-                // Type-safe: validate only if string and not empty
                 if (!is_string($value) || empty($value)) {
-                    return; // Let other validators handle empty/type issues
+                    return;
                 }
-
                 $parts = explode('@', $value);
                 $domain = $parts[1] ?? null;
-
                 if (!$domain || !checkdnsrr($domain, 'MX')) {
                     $fail(__('validation.organization.email.dns'));
                 }
             };
 
-            // Representative email DNS validation closure (if provided)
+            // Representative email DNS validation closure
             $rules['representative.email'][] = function ($attribute, $value, $fail) {
-                // Type-safe: validate only if string and not empty
                 if (!is_string($value) || empty($value)) {
-                    return; // Handled by required_if and email validators
+                    return;
                 }
-
                 $parts = explode('@', $value);
                 $domain = $parts[1] ?? null;
-
                 if (!$domain || !checkdnsrr($domain, 'MX')) {
                     $fail(__('validation.organization.rep_email.dns'));
                 }
             };
         }
+        */
 
         return $rules;
     }
