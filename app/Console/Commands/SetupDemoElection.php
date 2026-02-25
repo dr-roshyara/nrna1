@@ -125,9 +125,16 @@ class SetupDemoElection extends Command
     {
         if ($this->option('force') || $this->option('clean')) {
             if ($this->option('force') && !$this->option('clean')) {
-                if (!$this->confirm('⚠️  This will DELETE the existing demo election and all its data. Continue?')) {
-                    $this->warn('Aborted.');
-                    return false;
+                // Check if STDIN is available (running from command line)
+                // If not available (running from web request), skip confirmation
+                if (function_exists('posix_isatty') && posix_isatty(STDIN)) {
+                    if (!$this->confirm('⚠️  This will DELETE the existing demo election and all its data. Continue?')) {
+                        $this->warn('Aborted.');
+                        return false;
+                    }
+                } else {
+                    // Web context - auto-proceed with --force flag
+                    $this->warn('⚠️  Proceeding to delete existing demo election (--force flag used)');
                 }
             }
             return true;

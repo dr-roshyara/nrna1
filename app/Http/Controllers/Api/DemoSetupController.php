@@ -46,9 +46,10 @@ class DemoSetupController extends Controller
             $force = $request->input('force', false);
 
             // Execute the demo:setup command
+            // Use --clean flag when force=true to skip confirmation (web context has no STDIN)
             $exitCode = Artisan::call('demo:setup', [
                 '--org' => $organization->id,
-                '--force' => $force ? true : false,
+                '--clean' => $force ? true : false,
             ]);
 
             $output = Artisan::output();
