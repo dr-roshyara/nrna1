@@ -36,25 +36,33 @@ class AddCompositeForeignKeysToVotingTables extends Migration
         // These are required for foreign key constraints to work
 
         // Check if elections table has composite unique index on (id, organisation_id)
-        $elections_index_exists = DB::select("SELECT 1 FROM INFORMATION_SCHEMA.STATISTICS
+        $elections_index_exists = DB::select("SELECT INDEX_NAME FROM INFORMATION_SCHEMA.STATISTICS
             WHERE TABLE_NAME = 'elections'
-            AND COLUMN_NAME IN ('id', 'organisation_id')
-            AND SEQ_IN_INDEX = 2");
+            AND TABLE_SCHEMA = DATABASE()
+            AND INDEX_NAME = 'elections_id_organisation_id_unique'");
 
         if (empty($elections_index_exists)) {
             // Add composite unique index to elections
-            DB::statement('ALTER TABLE elections ADD UNIQUE INDEX elections_id_organisation_id_unique (id, organisation_id)');
+            try {
+                DB::statement('ALTER TABLE elections ADD UNIQUE INDEX elections_id_organisation_id_unique (id, organisation_id)');
+            } catch (\Exception $e) {
+                // Index may already exist or have different name
+            }
         }
 
         // Check if votes table has composite unique index on (id, organisation_id)
-        $votes_index_exists = DB::select("SELECT 1 FROM INFORMATION_SCHEMA.STATISTICS
+        $votes_index_exists = DB::select("SELECT INDEX_NAME FROM INFORMATION_SCHEMA.STATISTICS
             WHERE TABLE_NAME = 'votes'
-            AND COLUMN_NAME IN ('id', 'organisation_id')
-            AND SEQ_IN_INDEX = 2");
+            AND TABLE_SCHEMA = DATABASE()
+            AND INDEX_NAME = 'votes_id_organisation_id_unique'");
 
         if (empty($votes_index_exists)) {
             // Add composite unique index to votes
-            DB::statement('ALTER TABLE votes ADD UNIQUE INDEX votes_id_organisation_id_unique (id, organisation_id)');
+            try {
+                DB::statement('ALTER TABLE votes ADD UNIQUE INDEX votes_id_organisation_id_unique (id, organisation_id)');
+            } catch (\Exception $e) {
+                // Index may already exist or have different name
+            }
         }
 
         // Step 2: Drop existing single-column FKs if they exist

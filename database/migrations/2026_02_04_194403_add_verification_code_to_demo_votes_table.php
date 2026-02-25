@@ -35,8 +35,19 @@ class AddVerificationCodeToDemoVotesTable extends Migration
     public function down()
     {
         Schema::table('demo_votes', function (Blueprint $table) {
+            // Drop foreign key constraints first if they exist
+            try {
+                $table->dropForeign(['user_id']);
+            } catch (\Exception $e) {
+                // FK doesn't exist, continue
+            }
+
             if (Schema::hasColumn('demo_votes', 'verification_code')) {
-                $table->dropIndex(['verification_code']);
+                try {
+                    $table->dropIndex(['verification_code']);
+                } catch (\Exception $e) {
+                    // Index doesn't exist, continue
+                }
                 $table->dropColumn('verification_code');
             }
 
