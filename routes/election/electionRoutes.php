@@ -268,7 +268,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('test.generate-slug');
 });
 
-Route::prefix('v/{vslug}')->middleware(['voter.slug.window'])->group(function () {
+Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.window'])->group(function () {
     Route::get('test', function (\Illuminate\Http\Request $request) {
         $voter = $request->attributes->get('voter');
         $voterSlug = $request->attributes->get('voter_slug');
@@ -355,7 +355,7 @@ Route::prefix('v/{vslug}')->middleware(['voter.slug.window'])->group(function ()
 // Slug-based voting workflow routes (integrated with existing controllers)
 // IP validation middleware added to enforce IP restrictions when CONTROL_IP_ADDRESS=1
 // Election middleware resolves election context (session → route param → real election)
-Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'election', 'vote.organisation'])->group(function () {
+Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.window', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'election', 'vote.organisation'])->group(function () {
 
     // Step 1: Code creation (using existing CodeController)
     Route::get('code/create', [CodeController::class, 'create'])->name('slug.code.create');
@@ -410,7 +410,7 @@ Route::middleware(['auth:sanctum', 'verified', 'election', 'vote.organisation', 
 });
 
 // Slug-based demo election routes
-Route::prefix('v/{vslug}')->middleware(['voter.slug.window', 'voter.step.order', 'vote.eligibility', 'election', 'vote.organisation'])->group(function () {
+Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.window', 'voter.step.order', 'vote.eligibility', 'election', 'vote.organisation'])->group(function () {
     // Demo elections: IDENTICAL workflow to real voting
     Route::middleware(['election.demo'])->group(function () {
         // ============ CODE VERIFICATION STEPS ============
