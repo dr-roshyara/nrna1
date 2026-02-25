@@ -60,4 +60,15 @@ class VoterSlug extends Model
     {
         return $this->is_active && !$this->isExpired();
     }
+
+    /**
+     * Get the route key for implicit route model binding
+     * Uses the 'slug' column instead of the default 'id'
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
