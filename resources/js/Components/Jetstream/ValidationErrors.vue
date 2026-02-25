@@ -1,24 +1,23 @@
 <template>
-  <div v-if="Object.keys(errors).length > 0" class="mb-4">
-    <div class="px-4 py-2 bg-red-50 border border-red-200 rounded-md">
-      <div v-for="(messages, field) in errors" :key="field" class="text-red-700 text-sm">
-        <div v-if="Array.isArray(messages)">
-          <div v-for="(message, index) in messages" :key="index">{{ message }}</div>
-        </div>
-        <div v-else>{{ messages }}</div>
-      </div>
+    <div v-if="hasErrors">
+        <div class="font-medium text-red-600">Whoops! Something went wrong.</div>
+
+        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+            <li v-for="(error, key) in errors" :key="key">{{ error }}</li>
+        </ul>
     </div>
-  </div>
 </template>
 
 <script>
-export default {
-  name: 'JetValidationErrors',
-  props: {
-    errors: {
-      type: Object,
-      default: () => ({}),
-    },
-  },
-}
+    export default {
+        computed: {
+            errors() {
+                return this.$page.props.errors
+            },
+
+            hasErrors() {
+                return Object.keys(this.errors).length > 0;
+            },
+        }
+    }
 </script>

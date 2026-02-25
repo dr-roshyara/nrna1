@@ -36,4 +36,9 @@ createInertiaApp({
     progress: { color: '#4B5563' },
 });
 
+// Disable SSR - not needed for this app
+if (window.__INERTIA_SSR_DISABLED === undefined) {
+    window.__INERTIA_SSR_DISABLED = true;
+}
+
 InertiaProgress.init({ color: '#4B5563' });
