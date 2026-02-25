@@ -211,23 +211,7 @@
                     <div class="relative ml-3">
                         <jet-dropdown align="right" width="48">
                             <template #trigger>
-                                <button
-                                    v-if="
-                                        $page.props.jetstream
-                                            .managesProfilePhotos
-                                    "
-                                    class="flex rounded-full border-2 border-transparent text-sm transition focus:border-gray-300 focus:outline-none"
-                                >
-                                    <img
-                                        class="h-10 w-10 rounded-full object-cover"
-                                        :src="
-                                            $page.props.user.profile_photo_url
-                                        "
-                                        :alt="$page.props.user.name"
-                                    />
-                                </button>
-
-                                <span v-else class="inline-flex rounded-md">
+                                <span class="inline-flex rounded-md">
                                     <button
                                         type="button"
                                         class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition hover:text-gray-700 focus:outline-none"
@@ -345,17 +329,6 @@
             <!-- Responsive Settings Options -->
             <div class="border-t border-gray-200 pt-4 pb-1">
                 <div class="flex items-center px-4">
-                    <div
-                        v-if="$page.props.jetstream.managesProfilePhotos"
-                        class="mr-3 flex-shrink-0"
-                    >
-                        <img
-                            class="h-10 w-10 rounded-full object-cover"
-                            :src="$page.props.user.profile_photo_url"
-                            :alt="$page.props.user.name"
-                        />
-                    </div>
-
                     <div>
                         <div class="text-base font-medium text-gray-800">
                             {{ $page.props.user.name }}

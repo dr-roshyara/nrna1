@@ -28,6 +28,9 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
+            // Send email verification notification
+            $user->sendEmailVerificationNotification();
+
             $token = $user->createToken('myApiToken');
 
             return response()->json([

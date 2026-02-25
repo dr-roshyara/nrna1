@@ -26,7 +26,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->web(append: [
             \App\Http\Middleware\SetLocale::class,
-            \Illuminate\Http\Middleware\HandleInertiaRequests::class, // Built-in Inertia Middleware
+            \Inertia\Middleware::class, // Inertia v2.0 Middleware
             \App\Http\Middleware\TenantContext::class,
         ]);
 

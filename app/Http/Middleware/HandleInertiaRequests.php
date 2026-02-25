@@ -85,7 +85,6 @@ class HandleInertiaRequests extends Middleware
                 'user_id' => $request->user()->user_id,
                 'is_voter' => $request->user()->is_voter,
                 'can_vote' => $request->user()->can_vote,
-                'profile_photo_url' => $request->user()->profile_photo_url,
             ] : null,
             /**
              * SEO Configuration

@@ -8,7 +8,7 @@
         "php": "^8.2",
         "google/apiclient": "^2.16",
         "guzzlehttp/guzzle": "^7.8",
-        "inertiajs/inertia-laravel": "^1.0|^2.0",
+        "inertiajs/inertia-laravel": "^2.0",
         "intervention/image": "^3.0",
         "laravel/framework": "^11.0",
         "laravel/jetstream": "^5.0",
@@ -42,7 +42,8 @@
         "files": [
             "app/Helpers/helpers.php",
             "app/Helpers/TenantHelper.php",
-            "app/Helpers/ElectionAudit.php"
+            "app/Helpers/ElectionAudit.php",
+            "app/Helpers/tenant.php"
         ]
     },
     "autoload-dev": {
@@ -68,6 +69,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

@@ -21,47 +21,6 @@
                 />
 
                 <jet-label for="photo" value="Photo" />
-
-                <!-- Current Profile Photo -->
-                <div class="mt-2" v-show="!photoPreview">
-                    <img
-                        :src="user.profile_photo_url"
-                        :alt="user.name"
-                        class="h-32 w-32 rounded-full object-cover align-middle"
-                    />
-                </div>
-
-                <!-- New Profile Photo Preview -->
-                <div class="mt-2" v-show="photoPreview">
-                    <span
-                        class="block h-20 w-20 rounded-full"
-                        :style="
-                            'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' +
-                            photoPreview +
-                            '\');'
-                        "
-                    >
-                    </span>
-                </div>
-
-                <jet-secondary-button
-                    class="mt-2 mr-2"
-                    type="button"
-                    @click.prevent="selectNewPhoto"
-                >
-                    Select A New Photo
-                </jet-secondary-button>
-
-                <jet-secondary-button
-                    type="button"
-                    class="mt-2"
-                    @click.prevent="deletePhoto"
-                    v-if="user.profile_photo_path"
-                >
-                    Remove Photo
-                </jet-secondary-button>
-
-                <jet-input-error :message="form.errors.photo" class="mt-2" />
             </div>
 
             <!-- Name -->
