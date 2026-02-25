@@ -25,90 +25,121 @@ class OrganizationController extends Controller
      */
     public function store(StoreOrganizationRequest $request): JsonResponse
     {
-        $user = auth()->user();
+        try {
+            $user = auth()->user();
 
-        // Create organization
-        $organization = Organization::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'address' => $request->address,
-            'representative' => $request->representative,
-            'created_by' => $user->id,
-            'slug' => Str::slug($request->name),
-        ]);
+            // Create organization
+            $organization = Organization::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'address' => $request->address,
+                'representative' => $request->representative,
+                'created_by' => $user->id,
+                'slug' => Str::slug($request->name),
+            ]);
 
-        // Attach current user as organization admin
-        $organization->users()->attach($user->id, [
-            'role' => 'admin',
-            'assigned_at' => now(),
-        ]);
+            // Attach current user as organization admin
+            $organization->users()->attach($user->id, [
+                'role' => 'admin',
+                'assigned_at' => now(),
+            ]);
 
-        // Update current user's organisation_id
-        $user->update(['organisation_id' => $organization->id]);
+            // Update current user's organisation_id
+            $user->update(['organisation_id' => $organization->id]);
 
-        // Handle representative - check if user IS the representative
-        $isSelfRepresentative = $request->representative['is_self'] ?? false;
+            // Handle representative - check if user IS the representative
+            $isSelfRepresentative = $request->representative['is_self'] ?? false;
 
-        if (!$isSelfRepresentative) {
-            // Someone else is the representative
-            $representativeEmail = $request->representative['email'] ?? null;
+            if (!$isSelfRepresentative) {
+                // Someone else is the representative
+                $representativeEmail = $request->representative['email'] ?? null;
 
-            if ($representativeEmail) {
-                // CRITICAL: Check if representative email is the current user's email
-                // If so, skip adding them again (they're already added as admin)
-                if (strtolower($representativeEmail) === strtolower($user->email)) {
-                    // Current user is the representative - they're already admin, no action needed
-                } else {
-                    // Create or find the representative user (different person)
-                    $representativeUser = User::firstOrCreate(
-                        ['email' => $representativeEmail],
-                        [
-                            'name' => $request->representative['name'],
-                            'password' => bcrypt(Str::random(40)),
-                            'email_verified_at' => null, // Must verify themselves
-                        ]
-                    );
+                if ($representativeEmail) {
+                    // CRITICAL: Check if representative email is the current user's email
+                    // If so, skip adding them again (they're already added as admin)
+                    if (strtolower($representativeEmail) === strtolower($user->email)) {
+                        // Current user is the representative - they're already admin, no action needed
+                    } else {
+                        // Create or find the representative user (different person)
+                        $representativeUser = User::firstOrCreate(
+                            ['email' => $representativeEmail],
+                            [
+                                'name' => $request->representative['name'],
+                                'password' => bcrypt(Str::random(40)),
+                                'email_verified_at' => null, // Must verify themselves
+                            ]
+                        );
 
-                    // Check if user is already attached to organization (avoid duplicates)
-                    $isAlreadyMember = $organization->users()
-                        ->where('users.id', $representativeUser->id)
-                        ->exists();
+                        // Check if user is already attached to organization (avoid duplicates)
+                        $isAlreadyMember = $organization->users()
+                            ->where('users.id', $representativeUser->id)
+                            ->exists();
 
-                    if (!$isAlreadyMember) {
-                        // Attach as voter only if not already a member
-                        $organization->users()->attach($representativeUser->id, [
-                            'role' => 'voter',
-                            'assigned_at' => now(),
-                        ]);
+                        if (!$isAlreadyMember) {
+                            // Attach as voter only if not already a member
+                            $organization->users()->attach($representativeUser->id, [
+                                'role' => 'voter',
+                                'assigned_at' => now(),
+                            ]);
+                        }
+
+                        // Update representative user's organisation_id
+                        $representativeUser->update(['organisation_id' => $organization->id]);
+
+                        // Send password setup invitation
+                        try {
+                            Mail::to($representativeEmail)->send(
+                                new \App\Mail\RepresentativeInvitationMail($representativeUser, $organization, $user)
+                            );
+                        } catch (\Exception $e) {
+                            \Log::warning('Failed to send representative invitation email', [
+                                'organization_id' => $organization->id,
+                                'representative_email' => $representativeEmail,
+                                'error' => $e->getMessage(),
+                            ]);
+                            // Continue even if email fails
+                        }
                     }
-
-                    // Update representative user's organisation_id
-                    $representativeUser->update(['organisation_id' => $organization->id]);
-
-                    // Send password setup invitation
-                    Mail::to($representativeEmail)->send(
-                        new \App\Mail\RepresentativeInvitationMail($representativeUser, $organization, $user)
-                    );
                 }
             }
+
+            // Send notification email to organization
+            try {
+                Mail::to($organization->email)->send(
+                    new OrganizationCreatedMail($organization, $user)
+                );
+            } catch (\Exception $e) {
+                \Log::warning('Failed to send organization created email', [
+                    'organization_id' => $organization->id,
+                    'organization_email' => $organization->email,
+                    'error' => $e->getMessage(),
+                ]);
+                // Continue even if email fails
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Organisation erfolgreich erstellt!',
+                'redirect_url' => route('organizations.show', $organization->slug),
+                'organization' => [
+                    'id' => $organization->id,
+                    'name' => $organization->name,
+                    'email' => $organization->email,
+                    'slug' => $organization->slug,
+                ]
+            ], 201);
+        } catch (\Exception $e) {
+            \Log::error('Organization creation failed', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+                'user_id' => auth()->id(),
+            ]);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Fehler beim Erstellen der Organisation: ' . $e->getMessage(),
+            ], 500);
         }
-
-        // Send notification email to organization
-        Mail::to($organization->email)->send(
-            new OrganizationCreatedMail($organization, $user)
-        );
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Organisation erfolgreich erstellt!',
-            'redirect_url' => route('organizations.show', $organization->slug),
-            'organization' => [
-                'id' => $organization->id,
-                'name' => $organization->name,
-                'email' => $organization->email,
-                'slug' => $organization->slug,
-            ]
-        ], 201);
     }
 
     /**
