@@ -44,9 +44,11 @@ class AddElectionIdToDemoVotesTable extends Migration
     public function down()
     {
         Schema::table('demo_votes', function (Blueprint $table) {
-            // Drop index
-            if (Schema::hasIndexColumn('demo_votes', 'election_id')) {
+            // Drop index if it exists
+            try {
                 $table->dropIndex(['election_id']);
+            } catch (\Exception $e) {
+                // Index may not exist
             }
 
             // Drop column
