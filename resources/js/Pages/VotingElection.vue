@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+  <div class="min-h-screen bg-linear-to-b from-blue-50 to-white">
     <!-- Header -->
     <section class="relative py-16 md:py-24 lg:py-32 bg-blue-900 text-white">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
@@ -166,7 +166,7 @@ button:focus {
 /* High contrast mode */
 @media (prefers-contrast: high) {
   .bg-gradient-to-r,
-  .bg-gradient-to-b {
+  .bg-linear-to-b {
     background: #ffffff !important;
   }
 

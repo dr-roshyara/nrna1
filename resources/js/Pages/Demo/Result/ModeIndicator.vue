@@ -8,12 +8,12 @@
       <div class="flex items-center justify-between gap-4">
         <div class="flex items-center gap-3 flex-1">
           <!-- Globe Icon (MODE 1) -->
-          <svg v-if="isGlobal" class="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg v-if="isGlobal" class="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20H7m6 0v-2c0-.656.126-1.283.356-1.857m0 0a5 5 0 015.898-8.86c.474-.468.666-1.157.289-1.774A6 6 0 0021 9c0 .896-.153 1.755-.476 2.569m0 0c.321.895.476 1.674.476 2.569 0 2.191-.868 4.169-2.276 5.614" />
           </svg>
 
           <!-- Building Icon (MODE 2) -->
-          <svg v-else class="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg v-else class="w-5 h-5 sm:w-6 sm:h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" />
           </svg>
 

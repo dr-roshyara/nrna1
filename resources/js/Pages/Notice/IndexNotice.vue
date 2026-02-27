@@ -1,5 +1,4 @@
 <template>
-    <app-layout> 
          <!-- here is the table 
           -->       
 
@@ -8,7 +7,7 @@
                     Notices issued from Election commisssion.| 
                     निर्वाचन कमिटीले प्रकाशित गरेका सुचनाहरु 
                 </div>
-                <table class="w-full text-left rounded p-4">
+                <table class="w-full text-left rounded-sm p-4">
                     <tr class="border-b-2 border-gray-400 bg-blue-100"> 
                          <th class="hidden md:block px-1 md:px-3">S.N.(क्रम संख्या)</th>
                         <!-- <th class="w-1/3 p-4">Notice Title (सुचना शिर्षक) </th> -->
@@ -51,14 +50,8 @@
                 </table>
             </div>
 
-        <!-- ends of table  -->
-    </app-layout> 
-    <!-- <div> <footer> </footer></div>  -->
 </template>
 <script>
-import AppLayout from "@/Layouts/NrnaLayout";  
-// import AppLayout from "@/Components/Jetstream/Header";
-// import Footer from "@/Components/Jetstream/Footer";
 export default {
     props: { 
         notices: Object,
@@ -68,8 +61,6 @@ export default {
     },
   
     components: {
-        // NrnaLayout,
-        AppLayout
         
     },
 };

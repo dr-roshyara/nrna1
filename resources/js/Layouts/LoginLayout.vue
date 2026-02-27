@@ -4,14 +4,14 @@
         </public-digit-header>
 
         <!-- middle  -->
-        <slot class="min-h-screen flex-grow"> </slot>
+        <slot class="min-h-screen grow"> </slot>
         <!-- footer  -->
         <public-digit-footer class="px-4"> </public-digit-footer>
     </div>
 </template>
 <script>
 import PublicDigitHeader from "@/Components/Jetstream/PublicDigitHeader.vue";
-import profileHeader from "@/Components/Jetstream/ProfileHeader";
+import profileHeader from "@/Components/Jetstream/ProfileHeader.vue";
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 export default {
     props: {

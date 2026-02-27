@@ -1,6 +1,6 @@
 <template>
     <election-layout>
-        <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8">
+        <div class="min-h-screen bg-linear-to-br from-blue-50 to-indigo-50 py-8">
             <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                 <!-- Page Header -->
                 <header class="text-center mb-12">
@@ -84,7 +84,7 @@
                         <!-- Summary Cards -->
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                             <!-- Participation Rate -->
-                            <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200">
+                            <div class="bg-linear-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <p class="text-sm font-medium text-purple-600">Participation Rate</p>
@@ -100,7 +100,7 @@
                             </div>
 
                             <!-- Active Sessions -->
-                            <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
+                            <div class="bg-linear-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <p class="text-sm font-medium text-green-600">Active Sessions</p>
@@ -116,7 +116,7 @@
                             </div>
 
                             <!-- Total Votes -->
-                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
+                            <div class="bg-linear-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <p class="text-sm font-medium text-blue-600">Total Votes</p>
@@ -184,7 +184,7 @@
                         </div>
 
                         <!-- Recent Activity -->
-                        <div class="mt-8 bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-xl border border-indigo-200">
+                        <div class="mt-8 bg-linear-to-r from-indigo-50 to-purple-50 p-6 rounded-xl border border-indigo-200">
                             <h3 class="text-lg font-semibold text-indigo-800 mb-4 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-indigo-600" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
@@ -252,7 +252,7 @@
                                             id="enable-ip-check"
                                             type="checkbox"
                                             v-model="bulkApproveSettings.enableIpCheck"
-                                            class="rounded border-gray-300 text-green-600 focus:ring-green-500"
+                                            class="rounded-sm border-gray-300 text-green-600 focus:ring-green-500"
                                         />
                                     </div>
 
@@ -293,7 +293,7 @@
                                             id="include-voted"
                                             type="checkbox"
                                             v-model="bulkDisapproveSettings.includeVoted"
-                                            class="rounded border-gray-300 text-red-600 focus:ring-red-500"
+                                            class="rounded-sm border-gray-300 text-red-600 focus:ring-red-500"
                                         />
                                     </div>
 
@@ -455,7 +455,7 @@
 </template>
 
 <script>
-import ElectionLayout from "@/Layouts/ElectionLayout";
+import ElectionLayout from "@/Layouts/ElectionLayout.vue";
 
 export default {
     components: {

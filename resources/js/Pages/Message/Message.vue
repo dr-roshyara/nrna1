@@ -20,7 +20,7 @@
 
 <script>
 import { reactive } from 'vue'
-import { Inertia } from '@inertiajs/inertia'
+import { router } from '@inertiajs/vue3'
 
 export default {
   setup () {
@@ -31,7 +31,7 @@ export default {
     })
 
     function submit() {
-      Inertia.post('/messages', form)
+      router.post('/messages', form)
     }
 
     return { form, submit }

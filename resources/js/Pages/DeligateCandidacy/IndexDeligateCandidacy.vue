@@ -5,9 +5,9 @@
           -->           
           <div class="flex flex-col justify-center mb-10 py-10 mx-auto w-full" > 
               <!-- <div class="flex flex-rwow justify-center m-auto space-x-4 py-2 mb-2">
-                   <inertia-link href="/candidacy/create" class=" p-2 bg-red-50 font-bold text-gray-900 rounded border border-right "> Candidacy Form </inertia-link>
-                    <inertia-link href="/posts/index" class=" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"> Name of Posts</inertia-link>
-                     <inertia-link href="/notices/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> List of Notices</inertia-link>
+                   <inertia-link href="/candidacy/create" class=" p-2 bg-red-50 font-bold text-gray-900 rounded-sm border border-right "> Candidacy Form </inertia-link>
+                    <inertia-link href="/posts/index" class=" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-xs"> Name of Posts</inertia-link>
+                     <inertia-link href="/notices/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-xs"> List of Notices</inertia-link>
 
                 </div> -->
              <div class="p-4 m-auto bg-gray-50">  
@@ -48,8 +48,8 @@
     </nrna-layout> 
 </template>
 <script>
-import NrnaLayout from '@/Layouts/NrnaLayout'
-import AppLayout from '@/Layouts/AppLayout'
+import NrnaLayout from '@/Layouts/NrnaLayout.vue'
+import AppLayout from '@/Layouts/AppLayout.vue'
 export default {
       props:{
         candidacies: Object

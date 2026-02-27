@@ -5,7 +5,7 @@
     <!-- IP Mismatch Error Display -->
     <div v-if="$page.props.errors.ip_mismatch" class="bg-red-50 border-l-4 border-red-500 p-6 mb-6 rounded-lg shadow-md max-w-3xl mx-auto">
         <div class="flex">
-            <div class="flex-shrink-0">
+            <div class="shrink-0">
                 <svg class="h-6 w-6 text-red-400" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                 </svg>
@@ -20,7 +20,7 @@
     </div>
 
     <!-- Success Message -->
-    <div class="m-auto text-center bg-gradient-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg mb-8">
+    <div class="m-auto text-center bg-linear-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg mb-8">
         <div class="text-4xl mb-3">🎉</div>
         <p class="text-xl font-bold mb-2">Congratulation {{user_name}}!</p>
         <p class="text-lg mb-2">You have given the correct voting code. You can Vote now!</p>
@@ -66,7 +66,7 @@
                             :name="agree_button"
                             :value="true"
                             v-model="form.agree_button"
-                            class="w-5 h-5 text-blue-600 border-2 border-gray-400 rounded focus:ring-blue-500 focus:ring-2"
+                            class="w-5 h-5 text-blue-600 border-2 border-gray-400 rounded-sm focus:ring-blue-500 focus:ring-2"
                         />
                         <span class="ml-3 text-lg font-medium text-gray-900">I agree to the terms</span>
                     </label>
@@ -83,14 +83,14 @@
                 </div>
 
                 <!-- Checkbox Error -->
-                <div v-if="errors.agree_button" class="text-red-600 text-sm mb-4 bg-red-50 p-2 rounded">
+                <div v-if="errors.agree_button" class="text-red-600 text-sm mb-4 bg-red-50 p-2 rounded-sm">
                     {{ errors.agree_button }}
                 </div>
 
                 <!-- Submit Button -->
                 <button 
                     type="submit" 
-                    class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-xl py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
+                    class="w-full bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-xl py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
                     :disabled="!form.agree_button"
                     :class="{ 'opacity-50 cursor-not-allowed': !form.agree_button }"
                 >
@@ -109,13 +109,13 @@
     </nrna-layout>
 </template>
 <script>
- import AppLayout from '@/Layouts/AppLayout'
- import NrnaLayout from '@/Layouts/NrnaLayout'    
- import  CreateVotingform from '@/Pages/Vote/CreateVotingform.vue'
- import { useForm } from '@inertiajs/inertia-vue3'
-import JetInput from '@/Components/Jetstream/Input'
-import ShowCheckbox from "@/Shared/ShowCheckbox";
-import JetValidationErrors from '@/Components/Jetstream/ValidationErrors' 
+ import AppLayout from '@/Layouts/AppLayout.vue'
+ import NrnaLayout from '@/Layouts/NrnaLayout.vue'    
+ import  CreateVotingform from '@/Pages/Vote/CreateVotingform.vue' 
+ import { useForm } from '@inertiajs/vue3'
+import JetInput from '@/Components/Jetstream/Input.vue'
+import ShowCheckbox from "@/Shared/ShowCheckbox.vue";
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors.vue' 
 
 export default {
 components:{

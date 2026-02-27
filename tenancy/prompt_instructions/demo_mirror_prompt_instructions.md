@@ -197,7 +197,7 @@ For each Vue component:
 </template>
 
 <script>
-import { useForm } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/vue3-vue3";
 import JetValidationErrors from "@/Jetstream/ValidationErrors";
 import ElectionLayout from "@/Layouts/ElectionLayout";
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator";

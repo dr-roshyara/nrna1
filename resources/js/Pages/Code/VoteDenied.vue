@@ -1,12 +1,12 @@
 <template>
     <nrna-layout>
         <app-layout>
-            <div class="min-h-screen bg-gradient-to-br from-red-50 to-orange-100 py-8">
+            <div class="min-h-screen bg-linear-to-br from-red-50 to-orange-100 py-8">
                 <div class="max-w-4xl mx-auto px-4">
                     
                     <!-- Denial Header -->
                     <div class="text-center mb-8">
-                        <div class="bg-gradient-to-r from-red-500 to-orange-600 text-white py-6 px-8 rounded-xl shadow-lg">
+                        <div class="bg-linear-to-r from-red-500 to-orange-600 text-white py-6 px-8 rounded-xl shadow-lg">
                             <div class="text-4xl mb-3">🚫</div>
                             <h1 class="text-2xl font-bold mb-2">{{ title_english }}</h1>
                             <h2 class="text-xl mb-2">{{ title_nepali }}</h2>
@@ -17,7 +17,7 @@
 
                     <!-- Denial Details -->
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                        <div class="bg-gradient-to-r from-red-600 to-orange-600 text-white py-4 px-6">
+                        <div class="bg-linear-to-r from-red-600 to-orange-600 text-white py-4 px-6">
                             <h2 class="text-xl font-bold text-center">{{ denial_type }} | मतदान अस्वीकृत</h2>
                         </div>
                         
@@ -26,7 +26,7 @@
                             <!-- Warning Icon and Type -->
                             <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
                                 <div class="flex items-center">
-                                    <div class="flex-shrink-0">
+                                    <div class="shrink-0">
                                         <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                                         </svg>
@@ -106,7 +106,7 @@
                             <div class="text-center space-y-4">
                                 <button 
                                     @click="goToDashboard"
-                                    class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-lg py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
+                                    class="w-full bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-lg py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
                                 >
                                     <span class="mr-2">🏠</span>
                                     Go to Dashboard | ड्यासबोर्डमा जानुहोस्
@@ -114,7 +114,7 @@
                                 
                                 <button 
                                     @click="contactSupport"
-                                    class="w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-bold text-lg py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
+                                    class="w-full bg-linear-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-bold text-lg py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
                                 >
                                     <span class="mr-2">📞</span>
                                     Contact Support | सहायता सम्पर्क गर्नुहोस्
@@ -136,8 +136,8 @@
 </template>
 
 <script>
-import AppLayout from '@/Layouts/AppLayout'
-import NrnaLayout from '@/Layouts/NrnaLayout'
+import AppLayout from '@/Layouts/AppLayout.vue'
+import NrnaLayout from '@/Layouts/NrnaLayout.vue'
 
 export default {
     components: {

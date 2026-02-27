@@ -32,13 +32,13 @@
 </template>
 
 <script>
-   import NrnaLayout from '@/Layouts/NrnaLayout'
-    import JetAuthenticationCard from '@/Components/Jetstream/AuthenticationCard'
-    import JetAuthenticationCardLogo from '@/Components/Jetstream/AuthenticationCardLogo'
-    import JetButton from '@/Components/Jetstream/Button'
-    import JetInput from '@/Components/Jetstream/Input'
-    import JetLabel from '@/Components/Jetstream/Label'
-    import JetValidationErrors from '@/Components/Jetstream/ValidationErrors'
+   import NrnaLayout from '@/Layouts/NrnaLayout.vue'
+    import JetAuthenticationCard from '@/Components/Jetstream/AuthenticationCard.vue'
+    import JetAuthenticationCardLogo from '@/Components/Jetstream/AuthenticationCardLogo.vue'
+    import JetButton from '@/Components/Jetstream/Button.vue'
+    import JetInput from '@/Components/Jetstream/Input.vue'
+    import JetLabel from '@/Components/Jetstream/Label.vue'
+    import JetValidationErrors from '@/Components/Jetstream/ValidationErrors.vue'
 
     export default {
         components: {

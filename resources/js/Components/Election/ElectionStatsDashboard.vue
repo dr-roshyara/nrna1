@@ -331,6 +331,8 @@ const resetDemo = async () => {
 </script>
 
 <style scoped>
+@reference "../../../css/app.css";
+
 /* Dashboard Container */
 .stats-dashboard {
   @apply bg-gray-50 min-h-screen p-6;
@@ -496,7 +498,7 @@ const resetDemo = async () => {
 }
 
 .confirm-input {
-  @apply w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500;
+  @apply w-full px-3 py-2 border border-gray-300 rounded focus:outline-hidden focus:ring-2 focus:ring-blue-500;
 }
 
 .dialog-actions {

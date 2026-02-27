@@ -10,7 +10,7 @@
                         <div class="flex justify-between h-16">
                             <div class="flex">
                                 <!-- Logo -->
-                                <div class="flex-shrink-0 flex items-center">
+                                <div class="shrink-0 flex items-center">
                                     <inertia-link :href="route('dashboard')">
                                         <jet-application-mark
                                             class="block h-9 w-auto"
@@ -52,7 +52,7 @@
                                                     text-sm
                                                     border-2 border-transparent
                                                     rounded-full
-                                                    focus:outline-none
+                                                    focus:outline-hidden
                                                     focus:border-gray-300
                                                     transition
                                                 "
@@ -92,7 +92,7 @@
                                                         text-gray-500
                                                         bg-white
                                                         hover:text-gray-700
-                                                        focus:outline-none
+                                                        focus:outline-hidden
                                                         transition
                                                     "
                                                 >
@@ -169,7 +169,7 @@
                                         text-gray-400
                                         hover:text-gray-500
                                         hover:bg-gray-100
-                                        focus:outline-none
+                                        focus:outline-hidden
                                         focus:bg-gray-100
                                         focus:text-gray-500
                                         transition
@@ -234,7 +234,7 @@
                                 v-if="
                                     $page.props.jetstream.managesProfilePhotos
                                 "
-                                class="flex-shrink-0 mr-3"
+                                class="shrink-0 mr-3"
                             >
                                 <img
                                     class="h-10 w-10 rounded-full object-cover"
@@ -275,7 +275,7 @@
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
+            <header class="bg-white shadow-sm" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header"></slot>
                 </div>
@@ -291,13 +291,13 @@
 </template>
  
 <script>
-import JetApplicationMark from "@/Components/Jetstream/ApplicationMark";
-import JetBanner from "@/Components/Jetstream/Banner";
-import JetDropdown from "@/Components/Jetstream/Dropdown";
-import JetDropdownLink from "@/Components/Jetstream/DropdownLink";
-import JetNavLink from "@/Components/Jetstream/NavLink";
-import JetResponsiveNavLink from "@/Components/Jetstream/ResponsiveNavLink";
-import JetFooter from "@/Components/Jetstream/Footer";
+import JetApplicationMark from "@/Components/Jetstream/ApplicationMark.vue";
+import JetBanner from "@/Components/Jetstream/Banner.vue";
+import JetDropdown from "@/Components/Jetstream/Dropdown.vue";
+import JetDropdownLink from "@/Components/Jetstream/DropdownLink.vue";
+import JetNavLink from "@/Components/Jetstream/NavLink.vue";
+import JetResponsiveNavLink from "@/Components/Jetstream/ResponsiveNavLink.vue";
+import JetFooter from "@/Components/Jetstream/Footer.vue";
 
 export default {
     components: {

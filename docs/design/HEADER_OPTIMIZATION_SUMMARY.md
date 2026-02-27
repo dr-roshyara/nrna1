@@ -115,7 +115,7 @@ After:   Mobile users = Full navigation + Demo button accessible
 
 ✅ **Text Gradient**
 ```vue
-<h1 class="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+<h1 class="bg-linear-to-r from-white to-blue-100 bg-clip-text text-transparent">
   {{ $t('platform.name') }}
 </h1>
 ```
@@ -124,7 +124,7 @@ After:   Mobile users = Full navigation + Demo button accessible
 ```vue
 <select
   class="appearance-none bg-white/10 hover:bg-white/15 border border-white/30
-         hover:border-white/50 transition-all backdrop-blur-sm"
+         hover:border-white/50 transition-all backdrop-blur-xs"
 >
   <!-- Options -->
 </select>
@@ -144,7 +144,7 @@ After:   Mobile users = Full navigation + Demo button accessible
 
 ✅ **Mobile Dropdown Menu**
 ```vue
-<div v-if="showMobileMenu" class="md:hidden border-t bg-blue-800/50 backdrop-blur-sm">
+<div v-if="showMobileMenu" class="md:hidden border-t bg-blue-800/50 backdrop-blur-xs">
   <!-- Navigation links -->
   <!-- Demo button -->
   <!-- Auth buttons (mobile only) -->

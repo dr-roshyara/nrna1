@@ -113,6 +113,8 @@ const electionTypeLabel = computed(() => {
 </script>
 
 <style scoped>
+@reference "../../../css/app.css";
+
 /* Layout Container */
 .voting-layout {
   @apply min-h-screen flex flex-col bg-gray-50;

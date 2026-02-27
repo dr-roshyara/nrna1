@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col"> 
         <div class="flex"> 
-            <div class=" flex flex-left  p-4  bg-blue-600 md: w-full rounded border border-blue-100">
+            <div class=" flex flex-left  p-4  bg-blue-600 md: w-full rounded-sm border border-blue-100">
                 <!-- <div id="logo" style="background-image: url('/logo-2.png')"> </div> -->
                 <div id="logo" class="w-20">          
                 </div> 

@@ -16,7 +16,7 @@
 </template>
 <script>
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
-import profileHeader from "@/Components/Jetstream/ProfileHeader";
+import profileHeader from "@/Components/Jetstream/ProfileHeader.vue";
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 import Navigation from "@/Components/Header/ElectionNavigation.vue";
 export default {

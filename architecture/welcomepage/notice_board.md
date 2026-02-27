@@ -5,9 +5,9 @@ Initial aim:
 <!-- Right Column - Live Election Notice Board -->
 <div class="relative pb-16">
   <!-- Election Notice Board -->
-  <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-2xl overflow-hidden border-2 border-blue-200">
+  <div class="bg-linear-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-2xl overflow-hidden border-2 border-blue-200">
     <!-- Board Header -->
-    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
+    <div class="bg-linear-to-r from-blue-600 to-indigo-600 px-6 py-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center">
           <div class="text-white text-lg font-bold mr-3">🗳️</div>
@@ -32,20 +32,20 @@ Initial aim:
         </div>
 
         <!-- Election 1: Demo Election (Always Running) -->
-        <div class="mb-4 p-4 bg-white rounded-xl border-2 border-green-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+        <div class="mb-4 p-4 bg-white rounded-xl border-2 border-green-200 shadow-xs hover:shadow-md transition-shadow cursor-pointer group"
              onclick="window.location.href='/demo-election'">
           <div class="flex items-center justify-between mb-2">
             <div class="flex items-center">
               <div class="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></div>
               <span class="font-bold text-gray-900">🧪 Demo Election</span>
             </div>
-            <span class="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded">Always Open</span>
+            <span class="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-sm">Always Open</span>
           </div>
           <p class="text-sm text-gray-600 mb-3">Try the voting experience. No registration needed.</p>
           <div class="flex items-center justify-between">
             <div class="flex space-x-2">
-              <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded">🌍 Public</span>
-              <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded">⏱️ 5 min</span>
+              <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-sm">🌍 Public</span>
+              <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-sm">⏱️ 5 min</span>
             </div>
             <span class="text-blue-600 text-sm font-medium group-hover:text-blue-800 transition-colors">
               Try Now →
@@ -54,20 +54,20 @@ Initial aim:
         </div>
 
         <!-- Election 2: Upcoming Election -->
-        <div class="mb-4 p-4 bg-white rounded-xl border-2 border-orange-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+        <div class="mb-4 p-4 bg-white rounded-xl border-2 border-orange-200 shadow-xs hover:shadow-md transition-shadow cursor-pointer group"
              onclick="window.location.href='/election/2024-nrna-berlin'">
           <div class="flex items-center justify-between mb-2">
             <div class="flex items-center">
               <div class="w-3 h-3 bg-orange-500 rounded-full mr-2"></div>
               <span class="font-bold text-gray-900">🇩🇪 Berlin NRNA Election 2024</span>
             </div>
-            <span class="text-xs px-2 py-1 bg-orange-100 text-orange-800 rounded">Nov 15-30</span>
+            <span class="text-xs px-2 py-1 bg-orange-100 text-orange-800 rounded-sm">Nov 15-30</span>
           </div>
           <p class="text-sm text-gray-600 mb-3">Berlin Nepali Association leadership election.</p>
           <div class="flex items-center justify-between">
             <div class="flex space-x-2">
-              <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded">👥 500 Voters</span>
-              <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded">🏛️ NRNA</span>
+              <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-sm">👥 500 Voters</span>
+              <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-sm">🏛️ NRNA</span>
             </div>
             <span class="text-blue-600 text-sm font-medium group-hover:text-blue-800 transition-colors">
               View Details →
@@ -76,20 +76,20 @@ Initial aim:
         </div>
 
         <!-- Election 3: Recent Election -->
-        <div class="p-4 bg-white rounded-xl border-2 border-gray-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+        <div class="p-4 bg-white rounded-xl border-2 border-gray-200 shadow-xs hover:shadow-md transition-shadow cursor-pointer group"
              onclick="window.location.href='/election/2024-munich-indian'">
           <div class="flex items-center justify-between mb-2">
             <div class="flex items-center">
               <div class="w-3 h-3 bg-gray-400 rounded-full mr-2"></div>
               <span class="font-bold text-gray-900">🇮🇳 Munich Indian Association 2024</span>
             </div>
-            <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded">Completed</span>
+            <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-sm">Completed</span>
           </div>
           <p class="text-sm text-gray-600 mb-3">Cultural committee election results available.</p>
           <div class="flex items-center justify-between">
             <div class="flex space-x-2">
-              <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded">85% Turnout</span>
-              <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded">📊 Results</span>
+              <span class="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-sm">85% Turnout</span>
+              <span class="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-sm">📊 Results</span>
             </div>
             <span class="text-blue-600 text-sm font-medium group-hover:text-blue-800 transition-colors">
               See Results →
@@ -124,7 +124,7 @@ Initial aim:
       <!-- Call to Action -->
       <div class="mt-6 text-center">
         <button onclick="window.location.href='/elections'"
-                class="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl">
+                class="px-6 py-3 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl">
           🔍 Browse All Elections
         </button>
         <p class="text-xs text-gray-500 mt-2">For organizations: Create your election in minutes</p>
@@ -264,13 +264,13 @@ onclick="window.location.href='/demo-election'"
         
         <!-- Election 1: Demo Election (Always Running) -->
         <a href="/demo-election" 
-           class="block mb-4 p-5 bg-gradient-to-r from-green-50 to-white rounded-xl border-2 border-green-300 hover:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all group"
+           class="block mb-4 p-5 bg-linear-to-r from-green-50 to-white rounded-xl border-2 border-green-300 hover:border-green-500 focus:outline-hidden focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all group"
            role="listitem"
            aria-label="Demo Election - Always open for testing. Try the voting experience.">
           
           <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
             <div class="flex items-center mb-2 sm:mb-0">
-              <div class="w-4 h-4 bg-green-500 rounded-full mr-3 flex-shrink-0" aria-hidden="true"></div>
+              <div class="w-4 h-4 bg-green-500 rounded-full mr-3 shrink-0" aria-hidden="true"></div>
               <h4 class="font-bold text-gray-900 text-lg">🧪 Demo Election</h4>
             </div>
             <div class="flex items-center">
@@ -300,13 +300,13 @@ onclick="window.location.href='/demo-election'"
 
         <!-- Election 2: Upcoming Election -->
         <a href="/election/2024-nrna-berlin"
-           class="block mb-4 p-5 bg-gradient-to-r from-orange-50 to-white rounded-xl border-2 border-orange-300 hover:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all group"
+           class="block mb-4 p-5 bg-linear-to-r from-orange-50 to-white rounded-xl border-2 border-orange-300 hover:border-orange-500 focus:outline-hidden focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition-all group"
            role="listitem"
            aria-label="Berlin NRNA Election 2024 - Voting period November 15 to 30, 2024. Berlin Nepali Association leadership election.">
           
           <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
             <div class="flex items-center mb-2 sm:mb-0">
-              <div class="w-4 h-4 bg-orange-500 rounded-full mr-3 flex-shrink-0" aria-hidden="true"></div>
+              <div class="w-4 h-4 bg-orange-500 rounded-full mr-3 shrink-0" aria-hidden="true"></div>
               <h4 class="font-bold text-gray-900 text-lg">🇩🇪 Berlin NRNA Election 2024</h4>
             </div>
             <div class="flex items-center">
@@ -336,13 +336,13 @@ onclick="window.location.href='/demo-election'"
 
         <!-- Election 3: Recent Election -->
         <a href="/election/2024-munich-indian"
-           class="block p-5 bg-gradient-to-r from-gray-50 to-white rounded-xl border-2 border-gray-300 hover:border-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all group"
+           class="block p-5 bg-linear-to-r from-gray-50 to-white rounded-xl border-2 border-gray-300 hover:border-gray-500 focus:outline-hidden focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all group"
            role="listitem"
            aria-label="Munich Indian Association Election 2024 - Completed. Cultural committee election with 85% voter turnout. Results available.">
           
           <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3">
             <div class="flex items-center mb-2 sm:mb-0">
-              <div class="w-4 h-4 bg-gray-400 rounded-full mr-3 flex-shrink-0" aria-hidden="true"></div>
+              <div class="w-4 h-4 bg-gray-400 rounded-full mr-3 shrink-0" aria-hidden="true"></div>
               <h4 class="font-bold text-gray-900 text-lg">🇮🇳 Munich Indian Association 2024</h4>
             </div>
             <div class="flex items-center">
@@ -404,7 +404,7 @@ onclick="window.location.href='/demo-election'"
       <!-- Call to Action - Accessible -->
       <div class="mt-8 text-center">
         <a href="/elections"
-           class="inline-block px-8 py-3 bg-blue-700 text-white rounded-lg font-bold hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all shadow-md hover:shadow-lg"
+           class="inline-block px-8 py-3 bg-blue-700 text-white rounded-lg font-bold hover:bg-blue-800 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all shadow-md hover:shadow-lg"
            aria-label="Browse all elections">
           🔍 Browse All Elections
         </a>

@@ -393,7 +393,7 @@
 │                                                                                                                      │
 │ // resources/js/composables/useMeta.js                                                                               │
 │                                                                                                                      │
-│ import { usePage } from '@inertiajs/inertia-vue3'                                                                    │
+│ import { usePage } from '@inertiajs/vue3-vue3'                                                                    │
 │ import { computed } from 'vue'                                                                                       │
 │                                                                                                                      │
 │ export function useMeta(config = {}) {                                                                               │

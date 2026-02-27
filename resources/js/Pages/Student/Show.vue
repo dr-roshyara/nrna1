@@ -1,5 +1,4 @@
 <template>
-    <nrna-layout>
         <!-- <Head title="बालवालिकाहरूका लागि निशुल्क आइटी  " /> -->
         <div class="min-h-screen">
             <p class="mx-auto mt-10 text-center">
@@ -8,21 +7,15 @@
 
             </p>
         </div>
-    </nrna-layout>
 </template>
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import NrnaLayout from "@/Layouts/LoginLayout";
-import { Inertia } from "@inertiajs/inertia";
-// import { Head } from '@inertiajs/inertia-vue3';
+import { router } from "@inertiajs/vue3";
+// import { Head } from '@inertiajs/vue3';
 export default {
     props: {
         student: Object,
     },
     components: {
-        AppLayout,
-        NrnaLayout,
-        // Head
-    },
+     },
 };
 </script>

@@ -472,7 +472,7 @@ Error message included:
 
 ---
 
-### ❌ "Focus outline not visible"
+### ❌ "Focus outline-solid not visible"
 
 **Problem:** Can't see where keyboard focus is
 

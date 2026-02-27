@@ -20597,7 +20597,7 @@ class VueElement extends BaseClass {
     } else {
       if ( true && this.shadowRoot) {
         (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_0__.warn)(
-          `Custom element has pre-rendered declarative shadow root but is not defined as hydratable. Use \`defineSSRCustomElement\`.`
+          `Custom element has pre-rendered declarative shadow-sm root but is not defined as hydratable. Use \`defineSSRCustomElement\`.`
         );
       }
       if (_def.shadowRoot !== false) {

@@ -78,7 +78,7 @@ Wenn Sie **offizielle Partnerschaften** haben:
 
 ```vue
 <!-- FALLBEISPIEL 1: GEWERKSCHAFT -->
-<div class="border rounded p-4">
+<div class="border rounded-sm p-4">
   <h4 class="font-medium">Betriebsratswahl in Großunternehmen</h4>
   <p class="text-sm mt-2">
     Eine deutsche Gewerkschaft nutzte PublicDigit für die 
@@ -93,7 +93,7 @@ Wenn Sie **offizielle Partnerschaften** haben:
 </div>
 
 <!-- FALLBEISPIEL 2: DIASPORA -->
-<div class="border rounded p-4">
+<div class="border rounded-sm p-4">
   <h4 class="font-medium">Europäische Diaspora-Wahl</h4>
   <p class="text-sm mt-2">
     Eine <strong>südasiatische Gemeinschaft</strong> organisierte ihre 

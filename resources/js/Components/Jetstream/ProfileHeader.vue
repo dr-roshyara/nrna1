@@ -3,7 +3,7 @@
         <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo Section -->
-                <div class="flex-shrink-0">
+                <div class="shrink-0">
                     <Link :href="route('dashboard')" class="flex items-center">
                         <img
                             class="h-10 w-10 md:h-12 md:w-12 object-contain"
@@ -92,7 +92,7 @@
 </template>
 
 <script>
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/vue3";
 
 export default {
     name: 'ProfileHeader',

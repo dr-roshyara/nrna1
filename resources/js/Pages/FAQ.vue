@@ -28,7 +28,7 @@
             v-model="searchQuery"
             type="text"
             :placeholder="$t('common.search')"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500"
           />
         </div>
       </div>
@@ -92,7 +92,7 @@
               class="w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-gray-50 transition text-left"
             >
               <div class="flex items-start gap-4">
-                <span class="text-blue-600 font-bold text-lg flex-shrink-0">
+                <span class="text-blue-600 font-bold text-lg shrink-0">
                   Q{{ index + 1 }}
                 </span>
                 <div>
@@ -106,7 +106,7 @@
               </div>
               <svg
                 :class="[
-                  'h-6 w-6 text-gray-500 flex-shrink-0 transition transform',
+                  'h-6 w-6 text-gray-500 shrink-0 transition transform',
                   expandedItems.includes(item.id) ? 'rotate-180' : ''
                 ]"
                 fill="none"

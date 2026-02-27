@@ -11,8 +11,8 @@
         </div>
 
         <!-- middle  -->
-        <section class="mt-48 min-h-screen flex-grow overflow-hidden sm:mt-20">
-            <!-- <slot class="min-h-screen flex-grow overflow-hidden"> </slot> -->
+        <section class="mt-48 min-h-screen grow overflow-hidden sm:mt-20">
+            <!-- <slot class="min-h-screen grow overflow-hidden"> </slot> -->
             <div
                 class="flex flex-row p-2 sm:flex-row sm:justify-between md:px-4"
             >
@@ -31,9 +31,9 @@
     </div>
 </template>
 <script>
-import NrnaHeader from "@/Components/Jetstream/NrnaHeader";
-import profileHeader from "@/Components/Jetstream/ProfileHeader";
-import NrnaFooter from "@/Components/Jetstream/NrnaFooter";
+import NrnaHeader from "@/Components/Jetstream/NrnaHeader.vue";
+import profileHeader from "@/Components/Jetstream/ProfileHeader.vue";
+import NrnaFooter from "@/Components/Jetstream/NrnaFooter.vue";
 import Navigation from "@/Components/Header/Navigation.vue";
 import RightBar from "@/Components/Discussion/RightBar.vue";
 import LeftBar from "@/Components/Discussion/LeftBar.vue";

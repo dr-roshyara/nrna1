@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gradient-to-r from-blue-900 via-indigo-800 to-blue-900 shadow-2xl">
+    <div class="bg-linear-to-r from-blue-900 via-indigo-800 to-blue-900 shadow-2xl">
         <!-- Top Bar with Contact Info and Quick Links -->
         <div class="bg-blue-950/50 border-b border-blue-700/30">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +46,7 @@
                             <select 
                                 v-model="currentLanguage"
                                 @change="$emit('language-changed', currentLanguage)"
-                                class="bg-blue-800 text-blue-100 border border-blue-600 rounded px-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200"
+                                class="bg-blue-800 text-blue-100 border border-blue-600 rounded-sm px-2 py-1 text-xs focus:outline-hidden focus:ring-2 focus:ring-blue-400 transition-all duration-200"
                             >
                                 <option value="en">English</option>
                                 <option value="ne">नेपाली</option>
@@ -68,7 +68,7 @@
         <div class="relative bg-pattern">
             <!-- Background Pattern -->
             <div class="absolute inset-0 opacity-5">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+                <div class="absolute inset-0 bg-linear-to-br from-white/10 to-transparent"></div>
             </div>
 
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,7 +76,7 @@
                     <!-- Logo and Organization Info -->
                     <div class="flex items-center space-x-6">
                         <!-- Logo -->
-                        <div class="flex-shrink-0">
+                        <div class="shrink-0">
                             <logo class="transform hover:scale-105 transition-transform duration-200" />
                         </div>
 
@@ -214,7 +214,7 @@
                             type="text" 
                             v-model="searchQuery"
                             placeholder="Search NRNA website..."
-                            class="w-full pl-10 pr-4 py-2 bg-white/10 border border-blue-400 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                            class="w-full pl-10 pr-4 py-2 bg-white/10 border border-blue-400 rounded-lg text-white placeholder-blue-200 focus:outline-hidden focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                             @keyup.enter="performSearch"
                         />
                         <svg class="absolute left-3 top-2.5 w-5 h-5 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -234,7 +234,7 @@
                         <input 
                             type="text" 
                             placeholder="Search..."
-                            class="w-full pl-10 pr-4 py-2 bg-white/10 border border-blue-400 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            class="w-full pl-10 pr-4 py-2 bg-white/10 border border-blue-400 rounded-lg text-white placeholder-blue-200 focus:outline-hidden focus:ring-2 focus:ring-blue-400"
                         />
                         <svg class="absolute left-3 top-2.5 w-5 h-5 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -442,7 +442,7 @@ export default {
 }
 
 /* Custom backdrop blur */
-.backdrop-blur-sm {
+.backdrop-blur-xs {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }

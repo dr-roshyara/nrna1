@@ -3,11 +3,11 @@
     <div class="inline-flex items-center justify-center w-full max-w-md mx-auto mb-4">
       <!-- Progress Bar -->
       <div class="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
-        <div class="h-full bg-gradient-to-r from-green-500 via-emerald-500 to-green-500"
+        <div class="h-full bg-linear-to-r from-green-500 via-emerald-500 to-green-500"
              :style="{ width: progressPercentage + '%' }"></div>
       </div>
       <!-- Step Indicator -->
-      <div class="mx-4 px-4 py-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full text-sm font-medium">
+      <div class="mx-4 px-4 py-1 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-full text-sm font-medium">
         Step {{ currentStep }}/5
       </div>
       <!-- Right progress bar -->

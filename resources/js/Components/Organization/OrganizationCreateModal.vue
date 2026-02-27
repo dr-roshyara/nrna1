@@ -45,7 +45,7 @@
             <!-- Key points -->
             <div class="space-y-3">
               <div class="flex gap-3">
-                <span class="text-xl flex-shrink-0">📋</span>
+                <span class="text-xl shrink-0">📋</span>
                 <p class="text-gray-700 dark:text-gray-300">
                   {{ $t('organization.education.point_1', {
                     fallback: 'Ihre Mitgliederdaten werden hier verwaltet'
@@ -53,7 +53,7 @@
                 </p>
               </div>
               <div class="flex gap-3">
-                <span class="text-xl flex-shrink-0">🗳️</span>
+                <span class="text-xl shrink-0">🗳️</span>
                 <p class="text-gray-700 dark:text-gray-300">
                   {{ $t('organization.education.point_2', {
                     fallback: 'Alle Wahlen finden innerhalb dieser Organisation statt'
@@ -61,7 +61,7 @@
                 </p>
               </div>
               <div class="flex gap-3">
-                <span class="text-xl flex-shrink-0">🔒</span>
+                <span class="text-xl shrink-0">🔒</span>
                 <p class="text-gray-700 dark:text-gray-300">
                   {{ $t('organization.education.point_3', {
                     fallback: 'DSGVO-konform auf Servern in Deutschland'
@@ -158,7 +158,7 @@
           <button
             @click="nextStep"
             class="w-full mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg
-                   transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                   transition-colors duration-300 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
                    dark:focus:ring-offset-gray-900"
           >
             {{ $t('organization.education.start_cta', { fallback: 'Organisation jetzt gründen →' }) }}
@@ -199,7 +199,7 @@
           <div class="mb-8">
             <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
               <div
-                class="h-full bg-gradient-to-r from-blue-600 to-blue-500 transition-all duration-500"
+                class="h-full bg-linear-to-r from-blue-600 to-blue-500 transition-all duration-500"
                 :style="{ width: progressPercentage + '%' }"
                 role="progressbar"
                 :aria-valuenow="progressPercentage"

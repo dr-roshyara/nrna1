@@ -28,7 +28,7 @@ When creating a new page that needs translation:
 import ElectionHeader from '@/Components/Header/ElectionHeader.vue';
 
 // Import translation files if needed
-import { usePage } from '@inertiajs/inertia-vue3';
+import { usePage } from '@inertiajs/vue3-vue3';
 const page = usePage();
 // Now can access: $page.props.locale
 </script>

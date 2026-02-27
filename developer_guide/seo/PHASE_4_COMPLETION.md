@@ -80,7 +80,7 @@ All three language files updated with new 'election.result' page key for electio
 
 **Webpack Compilation Errors** - RESOLVED ✅
 - ❌ Issue: Vue doesn't allow `<script>` tags in templates
-- ❌ Issue: Invalid `router` import from @inertiajs/inertia
+- ❌ Issue: Invalid `router` import from @inertiajs/vue3
 - ✅ Fix: Moved JSON-LD injection to component lifecycle
 - ✅ Fix: Used `onMounted()` and `watch()` for reactive injection
 - ✅ Fix: Removed invalid imports

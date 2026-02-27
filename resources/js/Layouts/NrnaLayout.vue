@@ -5,7 +5,7 @@
         <!-- <navigation></navigation> -->
         
         <!-- Main content area (grows to fill space) -->
-        <main class="flex-grow">
+        <main class="grow">
             <slot></slot>
         </main>
         
@@ -16,8 +16,8 @@
 <script>
 import PublicDigitHeader from "@/Components/Jetstream/PublicDigitHeader.vue";
 
-import profileHeader from "@/Components/Jetstream/ProfileHeader";
-import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter";
+import profileHeader from "@/Components/Jetstream/ProfileHeader.vue";
+import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 import Navigation from "@/Components/Header/Navigation.vue";
 export default {
     props: {

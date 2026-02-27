@@ -50,7 +50,7 @@
 </template>
 <script>
 import NrnaLayout from '@/Layouts/NrnaLayout.vue'
-import AppLayout  from '@/Layouts/AppLayout'
+import AppLayout  from '@/Layouts/AppLayout.vue'
 export default {
   components: { NrnaLayout }, 
     props:{

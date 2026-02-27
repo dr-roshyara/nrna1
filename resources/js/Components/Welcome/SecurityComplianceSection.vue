@@ -14,7 +14,7 @@
 
         <!-- Compliance Cards -->
         <div class="grid md:grid-cols-2 gap-8 mb-12">
-          <div v-for="(card, index) in cards" :key="index" class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+          <div v-for="(card, index) in cards" :key="index" class="bg-white rounded-2xl shadow-xs border border-gray-200 p-8 hover:shadow-lg transition-shadow">
             <h3 class="text-2xl font-bold text-gray-900 mb-4">
               {{ card.title }}
             </h3>
@@ -25,7 +25,7 @@
         </div>
 
         <!-- Certifications/Badges -->
-        <!-- <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+        <!-- <div class="bg-white rounded-2xl shadow-xs border border-gray-200 p-8">
           <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">{{ $t('pages.welcome.security.certifications_title') }}</h3>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div v-for="(cert, index) in certifications" :key="index" class="text-center">

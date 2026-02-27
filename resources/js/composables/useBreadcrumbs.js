@@ -1,11 +1,11 @@
 import { computed } from 'vue'
-import { usePage } from '@inertiajs/inertia-vue3'
+import { usePage } from '@inertiajs/vue3'
 
 /**
  * useBreadcrumbs - Vue 3 Composable
  *
  * Manages breadcrumb data for both HTML display and JSON-LD schema
- * Reactive to page changes via Inertia.js
+ * Reactive to page changes via router.js
  */
 export function useBreadcrumbs() {
   const page = usePage()

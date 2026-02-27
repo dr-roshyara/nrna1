@@ -164,7 +164,7 @@ Mobile (< 768px):
 #### B. Text Gradient
 ```vue
 <!-- Subtle gradient for brand name -->
-<h1 class="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+<h1 class="bg-linear-to-r from-white to-blue-100 bg-clip-text text-transparent">
   {{ $t('platform.name') }}
 </h1>
 ```
@@ -174,7 +174,7 @@ Mobile (< 768px):
 #### C. Enhanced Button Styling
 ```vue
 <!-- Better visual hierarchy with gradients and shadows -->
-<a class="bg-gradient-to-r from-green-500 to-emerald-500
+<a class="bg-linear-to-r from-green-500 to-emerald-500
          hover:from-green-600 hover:to-emerald-600
          shadow-md hover:shadow-lg">
   {{ $t('navigation.demo') }}

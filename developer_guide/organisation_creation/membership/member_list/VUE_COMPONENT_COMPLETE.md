@@ -14,7 +14,7 @@
     <div class="min-h-screen bg-gray-100 p-2 md:p-4">
 
       <!-- Organization Header -->
-      <div class="mb-6 bg-white rounded-lg shadow-sm p-4 md:p-6">
+      <div class="mb-6 bg-white rounded-lg shadow-xs p-4 md:p-6">
         <div class="flex items-center justify-between flex-wrap gap-4">
           <div>
             <h1 class="text-2xl md:text-3xl font-bold text-gray-900">
@@ -57,7 +57,7 @@
       </div>
 
       <!-- Filters Section -->
-      <div class="mb-4 bg-white rounded-lg shadow-sm p-4">
+      <div class="mb-4 bg-white rounded-lg shadow-xs p-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <!-- Name Search -->
           <div>
@@ -68,7 +68,7 @@
               id="name-search"
               v-model="params.name"
               type="text"
-              class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              class="w-full rounded-md border-gray-300 shadow-xs focus:border-blue-500 focus:ring-blue-500"
               placeholder="Enter name..."
             />
           </div>
@@ -82,7 +82,7 @@
               id="email-search"
               v-model="params.email"
               type="text"
-              class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              class="w-full rounded-md border-gray-300 shadow-xs focus:border-blue-500 focus:ring-blue-500"
               placeholder="Enter email..."
             />
           </div>
@@ -95,7 +95,7 @@
             <select
               id="role-filter"
               v-model="params.role"
-              class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              class="w-full rounded-md border-gray-300 shadow-xs focus:border-blue-500 focus:ring-blue-500"
             >
               <option value="">All Roles</option>
               <option value="admin">Admin</option>
@@ -122,15 +122,15 @@
         <!-- Active Filters Display -->
         <div v-if="hasActiveFilters" class="mt-4 flex items-center gap-2 flex-wrap">
           <span class="text-sm text-gray-600">Active filters:</span>
-          <span v-if="params.name" class="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm">
+          <span v-if="params.name" class="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-sm text-sm">
             Name: {{ params.name }}
             <button @click="params.name = ''" class="ml-2 hover:text-blue-900">×</button>
           </span>
-          <span v-if="params.email" class="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm">
+          <span v-if="params.email" class="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-sm text-sm">
             Email: {{ params.email }}
             <button @click="params.email = ''" class="ml-2 hover:text-blue-900">×</button>
           </span>
-          <span v-if="params.role" class="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm">
+          <span v-if="params.role" class="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-sm text-sm">
             Role: {{ params.role }}
             <button @click="params.role = ''" class="ml-2 hover:text-blue-900">×</button>
           </span>
@@ -144,7 +144,7 @@
       </div>
 
       <!-- Pagination Top -->
-      <div class="flex items-center justify-between px-5 py-4 bg-white rounded-t-lg shadow-sm">
+      <div class="flex items-center justify-between px-5 py-4 bg-white rounded-t-lg shadow-xs">
         <Link
           v-if="members.prev_page_url"
           :href="members.prev_page_url"
@@ -188,7 +188,7 @@
       </div>
 
       <!-- Members Table -->
-      <div class="bg-white shadow-sm overflow-x-auto">
+      <div class="bg-white shadow-xs overflow-x-auto">
         <table class="w-full table-auto">
           <thead>
             <tr class="bg-blue-600 text-white">
@@ -273,7 +273,7 @@
       </div>
 
       <!-- Pagination Bottom -->
-      <div class="flex items-center justify-between px-5 py-4 bg-white rounded-b-lg shadow-sm">
+      <div class="flex items-center justify-between px-5 py-4 bg-white rounded-b-lg shadow-xs">
         <!-- Same as top pagination -->
         <Link
           v-if="members.prev_page_url"
@@ -320,7 +320,7 @@
 </template>
 
 <script>
-import { Link } from '@inertiajs/inertia-vue3'
+import { Link } from '@inertiajs/vue3-vue3'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import _ from 'lodash'
 

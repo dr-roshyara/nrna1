@@ -177,7 +177,7 @@
                         id="about"
                         name="about"
                         rows="3"
-                        class="mt-1 block w-full w-full rounded-md border border-gray-300 bg-green-50 shadow-sm focus:border-indigo-300 focus:ring-indigo-300 sm:text-sm md:w-2/3"
+                        class="mt-1 block w-full w-full rounded-md border border-gray-300 bg-green-50 shadow-xs focus:border-indigo-300 focus:ring-indigo-300 sm:text-sm md:w-2/3"
                         required
                         v-model="form.about"
                         placeholder="Please write what you except from the class. तपाइले यो आइटी कक्षा वाट के अपेक्षा गर्नु भाको छ र हामीलाइ के सुझाव दिन चाहनु हुन्छ? "
@@ -235,16 +235,16 @@
     </nrna-layout>
 </template>
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import NrnaLayout from "@/Layouts/NrnaLayout";
-import { useForm } from "@inertiajs/inertia-vue3";
-import JetInput from "@/Components/Jetstream/Input";
-import JetButton from "@/Components/Jetstream/Button";
-import ShowCheckbox from "@/Shared/ShowCheckbox";
-import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import NrnaLayout from "@/Layouts/NrnaLayout.vue";
+import { useForm } from "@inertiajs/vue3";
+import JetInput from "@/Components/Jetstream/Input.vue";
+import JetButton from "@/Components/Jetstream/Button.vue";
+import ShowCheckbox from "@/Shared/ShowCheckbox.vue";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 import { reactive } from "vue";
-import { Inertia } from "@inertiajs/inertia";
-// import { Head } from '@inertiajs/inertia-vue3'
+import { router } from "@inertiajs/vue3";
+// import { Head } from '@inertiajs/vue3'
 export default {
     components: {
         AppLayout,
@@ -273,7 +273,7 @@ export default {
         });
 
         function submit() {
-            Inertia.post("/student/store", form);
+            router.post("/student/store", form);
         }
 
         return { form, submit };

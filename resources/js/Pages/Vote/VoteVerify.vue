@@ -5,11 +5,11 @@
         :current-step="4"
         :total-steps="5"
     >
-        <div class="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-8">
+        <div class="min-h-screen bg-linear-to-br from-gray-50 to-blue-50 py-8">
             <div class="container mx-auto px-4 max-w-7xl">
                 <!-- Header Section with Progress -->
                 <div class="text-center mb-10">
-                    <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full mb-4">
+                    <div class="inline-flex items-center px-4 py-2 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-full mb-4">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -26,7 +26,7 @@
 
                     <!-- Progress Indicator -->
                     <div class="w-full max-w-md mx-auto bg-gray-200 rounded-full h-2 mb-2">
-                        <div class="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full"
+                        <div class="bg-linear-to-r from-green-500 to-emerald-500 h-2 rounded-full"
                              style="width: 80%"></div>
                     </div>
                     <p class="text-sm text-gray-500">{{ $t('pages.vote_verify.header.progress_complete') }}</p>
@@ -37,9 +37,9 @@
                     <!-- Left Column - Critical Information -->
                     <div class="lg:col-span-2 space-y-8">
                         <!-- Critical Alert - Redesigned -->
-                        <div class="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl p-6 shadow-lg">
+                        <div class="bg-linear-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl p-6 shadow-lg">
                             <div class="flex items-start">
-                                <div class="flex-shrink-0">
+                                <div class="shrink-0">
                                     <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
                                         <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -65,7 +65,7 @@
                         <div class="bg-white rounded-2xl shadow-xl p-8">
                             <div class="mb-8">
                                 <h2 class="text-2xl font-bold text-gray-900 mb-3 flex items-center">
-                                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-3">
+                                    <div class="w-10 h-10 bg-linear-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-3">
                                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                   d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
@@ -79,7 +79,7 @@
                             </div>
 
                             <!-- Email Notification -->
-                            <div class="mb-6 p-5 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl">
+                            <div class="mb-6 p-5 bg-linear-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl">
                                 <div class="flex items-center">
                                     <svg class="w-5 h-5 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -163,7 +163,7 @@
                                     <button
                                         type="submit"
                                         :disabled="form.processing || !form.voting_code || form.voting_code.length !== 6"
-                                        class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-5 px-8 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                                        class="w-full bg-linear-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-5 px-8 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                                     >
                                         <div class="flex items-center justify-center">
                                             <div class="text-center">
@@ -191,7 +191,7 @@
                                     <!-- Safety Notice -->
                                     <div class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                                         <div class="flex items-start">
-                                            <svg class="w-5 h-5 text-yellow-600 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <svg class="w-5 h-5 text-yellow-600 mt-0.5 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                       d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
@@ -237,9 +237,9 @@
                     <div class="lg:col-span-1">
                         <div class="bg-white rounded-2xl shadow-xl p-6 sticky top-8">
                             <!-- User Info Card -->
-                            <div class="mb-6 p-5 bg-gradient-to-br from-gray-50 to-blue-50 border border-gray-200 rounded-xl">
+                            <div class="mb-6 p-5 bg-linear-to-br from-gray-50 to-blue-50 border border-gray-200 rounded-xl">
                                 <div class="flex items-center mb-3">
-                                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+                                    <div class="w-10 h-10 bg-linear-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
                                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                   d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -278,15 +278,15 @@
 
                                 <!-- Stats Cards -->
                                 <div class="grid grid-cols-3 gap-3 mb-6">
-                                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-3 rounded-lg text-center">
+                                    <div class="bg-linear-to-br from-green-50 to-emerald-50 p-3 rounded-lg text-center">
                                         <div class="text-2xl font-bold text-green-600">{{ voting_summary.voted_posts || 0 }}</div>
                                         <div class="text-xs text-green-700 font-medium">{{ $t('pages.vote_verify.vote_summary.stats_voted') }}</div>
                                     </div>
-                                    <div class="bg-gradient-to-br from-gray-100 to-gray-200 p-3 rounded-lg text-center">
+                                    <div class="bg-linear-to-br from-gray-100 to-gray-200 p-3 rounded-lg text-center">
                                         <div class="text-2xl font-bold text-gray-600">{{ voting_summary.no_vote_posts || 0 }}</div>
                                         <div class="text-xs text-gray-700 font-medium">{{ $t('pages.vote_verify.vote_summary.stats_skipped') }}</div>
                                     </div>
-                                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-3 rounded-lg text-center">
+                                    <div class="bg-linear-to-br from-blue-50 to-indigo-50 p-3 rounded-lg text-center">
                                         <div class="text-2xl font-bold text-blue-600">{{ voting_summary.total_posts || 0 }}</div>
                                         <div class="text-xs text-blue-700 font-medium">{{ $t('pages.vote_verify.vote_summary.stats_total') }}</div>
                                     </div>
@@ -314,7 +314,7 @@
                                                 <div v-if="!post.no_vote && post.candidates.length > 0" class="mt-1">
                                                     <div v-for="candidate in post.candidates" :key="candidate.candidacy_id"
                                                          class="flex items-center text-xs text-gray-600">
-                                                        <svg class="w-3 h-3 text-green-500 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <svg class="w-3 h-3 text-green-500 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                                         </svg>
                                                         <span class="truncate">{{ candidate.name }}</span>
@@ -344,7 +344,7 @@
                                                 <div v-if="!post.no_vote && post.candidates.length > 0" class="mt-1">
                                                     <div v-for="candidate in post.candidates" :key="candidate.candidacy_id"
                                                          class="flex items-center text-xs text-gray-600">
-                                                        <svg class="w-3 h-3 text-green-500 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <svg class="w-3 h-3 text-green-500 mr-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                                         </svg>
                                                         <span class="truncate">{{ candidate.name }}</span>
@@ -367,7 +367,7 @@
                             </div>
 
                             <!-- Security Badge -->
-                            <div class="mt-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl">
+                            <div class="mt-6 p-4 bg-linear-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl">
                                 <div class="flex items-center">
                                     <svg class="w-5 h-5 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -389,8 +389,8 @@
 
 <script>
 import VotingLayout from "@/Components/Election/VotingLayout.vue";
-import { useForm } from "@inertiajs/inertia-vue3";
-import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
+import { useForm } from "@inertiajs/vue3";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 
 export default {
     name: 'VoteVerify',

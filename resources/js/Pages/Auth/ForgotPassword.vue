@@ -1,15 +1,15 @@
 <template>
-    <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
+    <div class="min-h-screen flex flex-col bg-linear-to-br from-gray-50 to-gray-100">
         <!-- Header - same as home page -->
         <ElectionHeader />
 
         <!-- Main Content Area -->
-        <main class="flex-grow flex items-center justify-center py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+        <main class="grow flex items-center justify-center py-8 md:py-12 px-4 sm:px-6 lg:px-8">
             <div class="max-w-2xl w-full">
                 <!-- Card Container -->
                 <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
                     <!-- Header Section -->
-                    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-6 md:px-8 py-8 md:py-10 text-center">
+                    <div class="bg-linear-to-r from-blue-600 to-indigo-700 px-6 md:px-8 py-8 md:py-10 text-center">
                         <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">
                             {{ $t('pages.forgot-password.title') }}
                         </h1>
@@ -46,7 +46,7 @@
                             role="alert"
                         >
                             <svg
-                                class="w-5 h-5 text-green-600 mr-3 flex-shrink-0"
+                                class="w-5 h-5 text-green-600 mr-3 shrink-0"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -117,7 +117,7 @@
                         <div class="mt-6 text-center">
                             <a
                                 href="/login"
-                                class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1"
+                                class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1"
                             >
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -144,10 +144,10 @@
 </template>
 
 <script>
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/vue3";
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
-import JetValidationErrors from '@/Components/Jetstream/ValidationErrors'
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors.vue'
 
 export default {
     components: {

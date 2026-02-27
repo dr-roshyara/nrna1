@@ -4,9 +4,9 @@
           -->           
           <div class="flex flex-col mb-10 py-10" >
                 <!-- <div class="flex flex-rwow justify-center m-auto space-x-4 mb-2 py-2">
-                   <inertia-link href="/candidacies/index" class=" p-2 mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"> List of Candidates </inertia-link>
-                    <inertia-link href="/posts/index" class=" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"> Name of Posts</inertia-link>
-                     <inertia-link href="/notices/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> List of Notices</inertia-link>
+                   <inertia-link href="/candidacies/index" class=" p-2 mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-xs"> List of Candidates </inertia-link>
+                    <inertia-link href="/posts/index" class=" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-xs"> Name of Posts</inertia-link>
+                     <inertia-link href="/notices/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-xs"> List of Notices</inertia-link>
  
                 </div>  -->
              <div class="p-4 m-auto bg-gray-50"> 
@@ -175,9 +175,9 @@
     <!-- <div> <footer> </footer></div >  -->
 </template>
 <script>
-import { useForm } from '@inertiajs/inertia-vue3'
- import JetValidationErrors from '@/Components/Jetstream/ValidationErrors'
-import AppLayout from "@/Layouts/NrnaLayout";
+import { useForm } from '@inertiajs/vue3'
+ import JetValidationErrors from '@/Components/Jetstream/ValidationErrors.vue'
+import AppLayout from "@/Layouts/NrnaLayout.vue";
 
 
 export default {

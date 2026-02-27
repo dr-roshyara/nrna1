@@ -1,6 +1,6 @@
 <template>
     <div
-        class="absolute bottom-0 z-20 h-full w-full translate-y-0 rounded bg-gray-50"
+        class="absolute bottom-0 z-20 h-full w-full translate-y-0 rounded-sm bg-gray-50"
     >
         <!--
         ***
@@ -11,7 +11,7 @@
         -->
         <img v-if="url" :src="url" class="h-full w-full" />
         <div class="mx-auto h-full w-full">
-            <div class="overflow-hidden bg-gray-50 shadow-sm sm:rounded-lg">
+            <div class="overflow-hidden bg-gray-50 shadow-xs sm:rounded-lg">
                 <div class="border-b border-gray-200 bg-white p-6">
                     <form @submit.prevent="submit">
                         <div>
@@ -23,7 +23,7 @@
                                     type="file"
                                     accept=".jpg, .jpeg, .png"
                                     ref="photo"
-                                    class="mt-2 w-full rounded-md border px-4 py-2 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                    class="mt-2 w-full rounded-md border px-4 py-2 focus:outline-hidden focus:ring-1 focus:ring-blue-600"
                                     @change="onChange"
                                     multiple
                                 />
@@ -36,7 +36,7 @@
 
                         <div class="mt-4 flex items-center">
                             <button
-                                class="rounded bg-gray-900 px-6 py-2 text-white"
+                                class="rounded-sm bg-gray-900 px-6 py-2 text-white"
                             >
                                 Save
                             </button>
@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import Label from "@/Components/Jetstream/Label";
-import { useForm } from "@inertiajs/inertia-vue3";
+import Label from "@/Components/Jetstream/Label.vue";
+import { useForm } from "@inertiajs/vue3";
 import { processSlotOutlet } from "@vue/compiler-core";
 import ImageCompressor from "vue-image-compressor";
 import base64toblob from "base64toblob";

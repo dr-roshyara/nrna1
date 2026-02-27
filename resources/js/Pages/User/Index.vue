@@ -51,14 +51,14 @@
                             id="name"
                             type="text"
                             v-model="params.name"
-                            class="ml-2 rounded border bg-blue-200 px-2 py-1 text-sm"
+                            class="ml-2 rounded-sm border bg-blue-200 px-2 py-1 text-sm"
                         />
                     </div>
                     <!-- next -->
                     <!-- <div class="p-2 m-1 " >
                         <label for="search" >Search by Familyname</label>
                         <input  id="search" type="text" v-model="params.search"
-                        class="ml-2 px-2 py-1 text-sm bg-blue-200 rounded border">
+                        class="ml-2 px-2 py-1 text-sm bg-blue-200 rounded-sm border">
 
                     </div> -->
                     <!-- next -->
@@ -68,20 +68,20 @@
                             id="user_id"
                             type="text"
                             v-model="params.user_id"
-                            class="ml-2 rounded border bg-blue-200 px-2 py-1 text-sm"
+                            class="ml-2 rounded-sm border bg-blue-200 px-2 py-1 text-sm"
                         />
                     </div>
                 </div>
 
                 <!-- Bulk actions -->
-                <div v-if="selectedUsers.length > 0 && currentUser?.is_committee_member == 1" class="mb-4 rounded bg-yellow-100 border border-yellow-400 p-4">
+                <div v-if="selectedUsers.length > 0 && currentUser?.is_committee_member == 1" class="mb-4 rounded-sm bg-yellow-100 border border-yellow-400 p-4">
                     <div class="flex items-center justify-between">
                         <span class="text-yellow-800">
                             {{ selectedUsers.length }} user(s) selected
                         </span>
                         <button
                             @click="bulkAddAsVoter"
-                            class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+                            class="rounded-sm bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
                         >
                             Add Selected as Voters
                         </button>
@@ -99,7 +99,7 @@
                                         type="checkbox"
                                         @change="toggleSelectAll"
                                         :checked="allSelected"
-                                        class="rounded"
+                                        class="rounded-sm"
                                     />
                                 </th>
                                 <th
@@ -455,7 +455,7 @@
                                         type="checkbox"
                                         v-model="selectedUsers"
                                         :value="user.id"
-                                        class="rounded"
+                                        class="rounded-sm"
                                     />
                                 </th>
                                 <th
@@ -488,7 +488,7 @@
                                     <button
                                         v-if="currentUser?.is_committee_member == 1"
                                         :class="{
-                                            'rounded px-3 py-1 text-white': true,
+                                            'rounded-sm px-3 py-1 text-white': true,
                                             'bg-blue-500 hover:bg-blue-600 cursor-pointer': user.is_voter != 1,
                                             'bg-gray-400 cursor-not-allowed': user.is_voter == 1
                                         }"
@@ -552,10 +552,10 @@
     </election-layout>
 </template>
 <script>
-import ElectionLayout from "@/Layouts/ElectionLayout";
-import { Inertia } from "@inertiajs/inertia";
-import { Link } from "@inertiajs/inertia-vue3";
-import Sendmessage from "@/Pages/Message/Sendmessage";
+import Electionlayout from "@/Layouts/Electionlayout.vue";
+import { router } from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
+import Sendmessage from "@/Pages/Message/Sendmessage.vue";
 import _ from "lodash";
 
 export default {

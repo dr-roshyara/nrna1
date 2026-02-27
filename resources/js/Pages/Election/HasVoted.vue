@@ -1,6 +1,6 @@
 <template>
     <election-layout>
-        <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8">
+        <div class="min-h-screen bg-linear-to-br from-blue-50 to-indigo-50 py-8">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <!-- Page Header -->
                 <header class="text-center mb-8">
@@ -59,7 +59,7 @@
                 <!-- Voters List -->
                 <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
                     <!-- Table Header -->
-                    <div class="px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600">
+                    <div class="px-6 py-4 bg-linear-to-r from-blue-600 to-indigo-600">
                         <h2 class="text-xl font-semibold text-white">Voted Members List</h2>
                     </div>
 
@@ -138,7 +138,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                            <div class="shrink-0 h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
                                                 <span class="text-blue-600 font-semibold text-sm">
                                                     {{ code.user?.name?.charAt(0)?.toUpperCase() || 'U' }}
                                                 </span>
@@ -228,7 +228,7 @@
 </template>
 
 <script>
-import { Link } from '@inertiajs/inertia-vue3';
+import { Link } from '@inertiajs/vue3';
 import ElectionLayout from '@/Layouts/ElectionLayout.vue';
 
 export default {

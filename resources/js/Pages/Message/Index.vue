@@ -14,14 +14,14 @@
 
                         <label for="search" > Search</label>
                         <input  id="search" type="text" v-model="term" @keyup ="searching"
-                        class="ml-2 px-2 py-1 text-sm bg-blue-300 rounded border">
+                        class="ml-2 px-2 py-1 text-sm bg-blue-300 rounded-sm border">
 
                     </div>
                     <div class="p-2 m-1 flex flex-col" >
 
                         <label for="ssearch" > S Search</label>
                         <input  id="ssearch" type="text" v-model="params.search"
-                        class="ml-2 px-2 py-1 text-sm bg-blue-300 rounded border">
+                        class="ml-2 px-2 py-1 text-sm bg-blue-300 rounded-sm border">
 
                     </div>
                     </div>
@@ -88,8 +88,8 @@
 </template>
 <script>
 // import Message from "@/Pages/Message/Message.vue";
-import NrnaLayout from '@/Layouts/NrnaLayout'
-import { Inertia } from '@inertiajs/inertia';
+import NrnaLayout from '@/Layouts/NrnaLayout.vue'
+import { router } from '@inertiajs/vue3';
 import _ from 'lodash';
 
 export default {

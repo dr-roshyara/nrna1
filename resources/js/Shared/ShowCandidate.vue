@@ -6,7 +6,7 @@
         </p>
 
         <!-- Candidate Photo Area -->
-        <div class="mx-auto w-full flex justify-center items-center bg-gradient-to-b from-gray-50 to-white rounded-lg p-2">
+        <div class="mx-auto w-full flex justify-center items-center bg-linear-to-b from-gray-50 to-white rounded-lg p-2">
             <!-- Actual Candidate Photo (if provided) -->
             <img
                 v-if="imageGiven && !isSvgImage"

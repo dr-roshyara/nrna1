@@ -17,7 +17,7 @@
           <!-- Primary CTA -->
           <inertia-link
             :href="route('register')"
-            class="inline-flex items-center justify-center px-8 py-4 bg-blue-800 text-white font-bold text-lg rounded-lg hover:bg-blue-900 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-colors shadow-lg min-h-[44px]"
+            class="inline-flex items-center justify-center px-8 py-4 bg-blue-800 text-white font-bold text-lg rounded-lg hover:bg-blue-900 focus:outline-hidden focus:ring-4 focus:ring-blue-300 transition-colors shadow-lg min-h-[44px]"
           >
             <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
               <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z"/>
@@ -28,7 +28,7 @@
           <!-- Secondary CTA -->
           <a
             href="#contact"
-            class="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-800 text-blue-800 font-bold text-lg rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-colors min-h-[44px]"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-800 text-blue-800 font-bold text-lg rounded-lg hover:bg-blue-50 focus:outline-hidden focus:ring-4 focus:ring-blue-100 transition-colors min-h-[44px]"
           >
             <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { Link as InertiaLink } from '@inertiajs/inertia-vue3';
+import { Link as InertiaLink } from '@inertiajs/vue3';
 
 export default {
   name: 'CTASection',

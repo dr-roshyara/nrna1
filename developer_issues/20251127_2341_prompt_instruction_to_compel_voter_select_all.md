@@ -97,7 +97,7 @@ cat > resources/js/Pages/Vote/CreateVotingPage.vue << 'EOF'
             
             <!-- Progress indicator -->
             <div class="max-w-4xl mx-auto mb-6">
-                <div class="bg-white rounded-lg shadow-sm p-4">
+                <div class="bg-white rounded-lg shadow-xs p-4">
                     <div class="flex items-center justify-between text-sm text-gray-600 mb-2">
                         <span>Voting Progress</span>
                         <span>{{ votingProgress.completed }}/{{ votingProgress.total }} completed</span>
@@ -175,7 +175,7 @@ cat > resources/js/Pages/Vote/CreateVotingPage.vue << 'EOF'
                                 name="agree_button"
                                 :value="true"
                                 v-model="form.agree_button"
-                                class="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                class="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             />
                         </div> 
                         
@@ -189,7 +189,7 @@ cat > resources/js/Pages/Vote/CreateVotingPage.vue << 'EOF'
                         <!-- Submit Button with enhanced validation -->
                         <button 
                             type="submit" 
-                            class="mx-2 my-4 px-2 py-6 rounded-lg w-full mx-auto shadow-sm text-xl font-bold transition-all duration-200"
+                            class="mx-2 my-4 px-2 py-6 rounded-lg w-full mx-auto shadow-xs text-xl font-bold transition-all duration-200"
                             :class="submitButtonClasses"
                             :disabled="!canSubmit"
                         >
@@ -226,12 +226,12 @@ cat > resources/js/Pages/Vote/CreateVotingPage.vue << 'EOF'
 </template>
 
 <script>
-import AppLayout from '@/Layouts/AppLayout'
-import NrnaLayout from '@/Layouts/NrnaLayout'    
+import AppLayout from '@/Layouts/AppLayout.vue'
+import NrnaLayout from '@/Layouts/NrnaLayout.vue'    
 import CreateVotingform from '@/Pages/Vote/CreateVotingform.vue'
 import VoteSummary from '@/Pages/Vote/VoteSummary.vue'
-import { useForm } from '@inertiajs/inertia-vue3'
-import JetValidationErrors from '@/Jetstream/ValidationErrors'
+import { useForm } from '@inertiajs/vue3-vue3'
+import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
 
 export default {
     name: 'CreateVotingPage',
@@ -594,7 +594,7 @@ cat > resources/js/Pages/Vote/CreateVotingform.vue << 'EOF'
         <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
             <div v-for="(candidate, candiIndex) in candidatesWithState" 
                  :key="candidate.candidacy_id"  
-                 class="flex flex-col justify-center p-4 mb-2 text-center border border-gray-100 rounded transition-opacity duration-200"
+                 class="flex flex-col justify-center p-4 mb-2 text-center border border-gray-100 rounded-sm transition-opacity duration-200"
                  :class="{ 'opacity-40 pointer-events-none': noVoteSelected }"> 
                 
                 <show-candidate 
@@ -611,7 +611,7 @@ cat > resources/js/Pages/Vote/CreateVotingform.vue << 'EOF'
                         :id="candidate.candidacy_id"
                         :name="post.name"
                         :value="candidate.candidacy_id"  
-                        class="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 transition-all duration-200"
+                        class="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50 transition-all duration-200"
                         v-model="selected"
                         @change="updateBoxes()"
                         :disabled="candidate.disabled || noVoteSelected"
@@ -659,7 +659,7 @@ cat > resources/js/Pages/Vote/CreateVotingform.vue << 'EOF'
                         name="no_vote_option"
                         v-model="noVoteSelected"
                         @change="handleNoVoteChange"
-                        class="h-4 w-4 text-gray-500 border border-gray-400 rounded focus:ring-gray-400 focus:ring-1"
+                        class="h-4 w-4 text-gray-500 border border-gray-400 rounded-sm focus:ring-gray-400 focus:ring-1"
                     />
                     <label :for="`no_vote_${post.post_id}`" class="text-xs text-gray-600 cursor-pointer">
                       I want to skip this position / म यो पदमा मतदान गर्न इच्छुक छैन। 

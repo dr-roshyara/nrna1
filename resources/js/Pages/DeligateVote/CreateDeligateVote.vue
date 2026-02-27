@@ -48,8 +48,8 @@
                               :name     ="member.post_name"
                               :value    ="member.nrna_id"  
                               v-model   ="form.member"
-                              class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 
-                              focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                              class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 
+                              focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                               @change    ="updateBoxes(this.members,this.form.member,this.memberTicks)" 
                               :disabled ="member.disabled"
                             />
@@ -86,7 +86,7 @@
                     :name     ="no_vote_option"
                     :value    =true
                     v-model   ="form.no_vote_option"
-                    class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                     @change  ="update_no_vote_option()" 
                   />
                   </div> 
@@ -111,7 +111,7 @@
                     :name     ="agree_button"
                     :value    =true
                     v-model   ="form.agree_button"
-                    class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                  
                   />
                   </div> 
@@ -119,7 +119,7 @@
                 <p>यो बटनमा थिचेर मैले माथि छाने आनुसार  मतदान गरेको साचो हो। मैले बिद्दुतिय नियम हरुलाई पलना गरेर आफ्नो मत जाहेर गरेर मतदान गरेको कुरा स्विकार्छु। </p> 
              
                    <button type="submit" 
-                     class="mx-2 my-4 px-2 py-6 rounded-lg bg-blue-300 w-full mx-auto shadow-sm text-xl font-bold text-gray-900">
+                     class="mx-2 my-4 px-2 py-6 rounded-lg bg-blue-300 w-full mx-auto shadow-xs text-xl font-bold text-gray-900">
                    Submit
                    </button>
               
@@ -139,13 +139,13 @@
 </template>
 
 <script>
-import { useForm } from '@inertiajs/inertia-vue3'
-import ShowCandidate from '@/Shared/ShowCandidate'
-import JetInput from '@/Components/Jetstream/Input'
-import ShowCheckbox from "@/Shared/ShowCheckbox";
-import JetValidationErrors from '@/Components/Jetstream/ValidationErrors' 
- import AppLayout from '@/Layouts/AppLayout'
- import NrnaLayout from '@/Layouts/NrnaLayout'    
+import { useForm } from '@inertiajs/vue3'
+import ShowCandidate from '@/Shared/ShowCandidate.vue'
+import JetInput from '@/Components/Jetstream/Input.vue'
+import ShowCheckbox from "@/Shared/ShowCheckbox.vue";
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors.vue' 
+ import AppLayout from '@/Layouts/AppLayout.vue'
+ import NrnaLayout from '@/Layouts/NrnaLayout.vue'    
 export default {
   props:{
      candidacies:Object,

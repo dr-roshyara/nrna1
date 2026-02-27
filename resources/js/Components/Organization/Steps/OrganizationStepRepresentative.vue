@@ -87,7 +87,7 @@
           @change="$emit('update:acceptance', 'gdpr', $event.target.checked)"
           class="w-5 h-5 mt-1 rounded border-2 border-gray-300 dark:border-gray-600
                  text-blue-600 dark:text-blue-500
-                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
                  dark:focus:ring-offset-gray-900
                  disabled:bg-gray-100 dark:disabled:bg-gray-900 disabled:cursor-not-allowed
                  aria-invalid:border-red-500"
@@ -115,7 +115,7 @@
           @change="$emit('update:acceptance', 'terms', $event.target.checked)"
           class="w-5 h-5 mt-1 rounded border-2 border-gray-300 dark:border-gray-600
                  text-blue-600 dark:text-blue-500
-                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
                  dark:focus:ring-offset-gray-900
                  disabled:bg-gray-100 dark:disabled:bg-gray-900 disabled:cursor-not-allowed
                  aria-invalid:border-red-500"

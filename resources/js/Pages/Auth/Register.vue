@@ -59,7 +59,7 @@
                                         name="region"
                                         id="region"
                                         v-model="form.region"
-                                        class="block w-full px-4 py-3 pr-10 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        class="block w-full px-4 py-3 pr-10 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                         required
                                     >
                                         <option value="">{{ $t('pages.auth.register.fields.region.placeholder') }}</option>
@@ -131,11 +131,11 @@
 
                             <!-- Terms and Privacy Policy -->
                             <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="pt-6 border-t-2 border-gray-300">
-                                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 md:p-8 border-2 border-blue-200">
+                                <div class="bg-linear-to-br from-blue-50 to-indigo-50 rounded-lg p-6 md:p-8 border-2 border-blue-200">
                                     <jet-label for="terms" class="cursor-pointer">
                                         <div class="flex items-start gap-4">
                                             <!-- Large Checkbox -->
-                                            <div class="flex-shrink-0">
+                                            <div class="shrink-0">
                                                 <jet-checkbox
                                                     name="terms"
                                                     id="terms"
@@ -147,7 +147,7 @@
                                             </div>
 
                                             <!-- Agreement Text -->
-                                            <div class="flex-grow">
+                                            <div class="grow">
                                                 <p class="text-base md:text-lg font-semibold text-gray-900 mb-2">
                                                     {{ $t('pages.auth.register.messages.agreement') }}
                                                 </p>
@@ -234,11 +234,11 @@
 <script>
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
-import JetButton from "@/Components/Jetstream/Button";
-import JetInput from "@/Components/Jetstream/Input";
-import JetCheckbox from "@/Components/Jetstream/Checkbox";
-import JetLabel from "@/Components/Jetstream/Label";
-import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
+import JetButton from "@/Components/Jetstream/Button.vue";
+import JetInput from "@/Components/Jetstream/Input.vue";
+import JetCheckbox from "@/Components/Jetstream/Checkbox.vue";
+import JetLabel from "@/Components/Jetstream/Label.vue";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 
 export default {
     components: {

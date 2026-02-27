@@ -100,7 +100,7 @@
                     Please copy your new API token. For your security, it won't be shown again.
                 </div>
 
-                <div class="mt-4 bg-gray-100 px-4 py-2 rounded font-mono text-sm text-gray-500" v-if="$page.props.jetstream.flash.token">
+                <div class="mt-4 bg-gray-100 px-4 py-2 rounded-sm font-mono text-sm text-gray-500" v-if="$page.props.jetstream.flash.token">
                     {{ $page.props.jetstream.flash.token }}
                 </div>
             </template>
@@ -164,19 +164,19 @@
 </template>
 
 <script>
-    import JetActionMessage from '@/Components/Jetstream/ActionMessage'
-    import JetActionSection from '@/Components/Jetstream/ActionSection'
-    import JetButton from '@/Components/Jetstream/Button'
-    import JetConfirmationModal from '@/Components/Jetstream/ConfirmationModal'
-    import JetDangerButton from '@/Components/Jetstream/DangerButton'
-    import JetDialogModal from '@/Components/Jetstream/DialogModal'
-    import JetFormSection from '@/Components/Jetstream/FormSection'
-    import JetInput from '@/Components/Jetstream/Input'
-    import JetCheckbox from '@/Components/Jetstream/Checkbox'
-    import JetInputError from '@/Components/Jetstream/InputError'
-    import JetLabel from '@/Components/Jetstream/Label'
-    import JetSecondaryButton from '@/Components/Jetstream/SecondaryButton'
-    import JetSectionBorder from '@/Components/Jetstream/SectionBorder'
+    import JetActionMessage from '@/Components/Jetstream/ActionMessage.vue'
+    import JetActionSection from '@/Components/Jetstream/ActionSection.vue'
+    import JetButton from '@/Components/Jetstream/Button.vue'
+    import JetConfirmationModal from '@/Components/Jetstream/ConfirmationModal.vue'
+    import JetDangerButton from '@/Components/Jetstream/DangerButton.vue'
+    import JetDialogModal from '@/Components/Jetstream/DialogModal.vue'
+    import JetFormSection from '@/Components/Jetstream/FormSection.vue'
+    import JetInput from '@/Components/Jetstream/Input.vue'
+    import JetCheckbox from '@/Components/Jetstream/Checkbox.vue'
+    import JetInputError from '@/Components/Jetstream/InputError.vue'
+    import JetLabel from '@/Components/Jetstream/Label.vue'
+    import JetSecondaryButton from '@/Components/Jetstream/SecondaryButton.vue'
+    import JetSectionBorder from '@/Components/Jetstream/SectionBorder.vue'
 
     export default {
         components: {

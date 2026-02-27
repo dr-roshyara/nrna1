@@ -178,7 +178,7 @@ Array.from(headings).map(h => parseInt(h.tagName[1]))
 - ❌ Use `tabindex="0"` on non-interactive elements
 - ❌ Use `tabindex="-1"` on important elements
 - ❌ Create keyboard traps where TAB doesn't work
-- ❌ Hide focus indicators with `outline: none`
+- ❌ Hide focus indicators with `outline-solid: none`
 
 ---
 

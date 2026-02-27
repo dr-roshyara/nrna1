@@ -193,7 +193,7 @@ German associations (Vereine) have specific needs:
   
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     <!-- Current Election Officer -->
-    <div class="col-span-2 bg-gradient-to-r from-amber-50 to-amber-100 rounded-lg p-4 border border-amber-200">
+    <div class="col-span-2 bg-linear-to-r from-amber-50 to-amber-100 rounded-lg p-4 border border-amber-200">
       <div class="flex items-start gap-4">
         <div class="w-12 h-12 rounded-full bg-amber-600 text-white flex items-center justify-center text-xl font-bold">
           HM
@@ -237,7 +237,7 @@ German associations (Vereine) have specific needs:
   <!-- Legal Info -->
   <div class="mt-4 p-3 bg-blue-50 rounded-lg text-sm text-blue-800">
     <p class="flex items-center">
-      <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+      <svg class="w-4 h-4 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
       </svg>
       Gemäß §26 BGB muss jeder Verein einen Wahlleiter bestellen. Die Bestellung ist 1 Jahr gültig.
@@ -313,23 +313,23 @@ German associations (Vereine) have specific needs:
       </label>
       <div class="space-y-2 max-h-40 overflow-y-auto p-2 border border-gray-200 rounded-md">
         <label class="flex items-center">
-          <input type="checkbox" class="h-4 w-4 text-green-600 rounded">
+          <input type="checkbox" class="h-4 w-4 text-green-600 rounded-sm">
           <span class="ml-2 text-sm text-gray-700">1. Vorsitzende/r</span>
         </label>
         <label class="flex items-center">
-          <input type="checkbox" class="h-4 w-4 text-green-600 rounded">
+          <input type="checkbox" class="h-4 w-4 text-green-600 rounded-sm">
           <span class="ml-2 text-sm text-gray-700">2. Vorsitzende/r</span>
         </label>
         <label class="flex items-center">
-          <input type="checkbox" class="h-4 w-4 text-green-600 rounded">
+          <input type="checkbox" class="h-4 w-4 text-green-600 rounded-sm">
           <span class="ml-2 text-sm text-gray-700">Schatzmeister/in</span>
         </label>
         <label class="flex items-center">
-          <input type="checkbox" class="h-4 w-4 text-green-600 rounded">
+          <input type="checkbox" class="h-4 w-4 text-green-600 rounded-sm">
           <span class="ml-2 text-sm text-gray-700">Schriftführer/in</span>
         </label>
         <label class="flex items-center">
-          <input type="checkbox" class="h-4 w-4 text-green-600 rounded">
+          <input type="checkbox" class="h-4 w-4 text-green-600 rounded-sm">
           <span class="ml-2 text-sm text-gray-700">Beisitzer (3-5)</span>
         </label>
       </div>
@@ -500,7 +500,7 @@ German associations (Vereine) have specific needs:
 
 ```vue
 <!-- RECHTLICHER STATUS (Legal Status Dashboard) -->
-<div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl shadow-lg border border-purple-200 p-6 mb-6">
+<div class="bg-linear-to-r from-purple-50 to-indigo-50 rounded-xl shadow-lg border border-purple-200 p-6 mb-6">
   <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
     <svg class="w-5 h-5 mr-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
       <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
@@ -509,7 +509,7 @@ German associations (Vereine) have specific needs:
   </h3>
   
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div class="bg-white rounded-lg p-4 shadow-sm">
+    <div class="bg-white rounded-lg p-4 shadow-xs">
       <div class="flex items-center justify-between mb-2">
         <span class="text-sm font-medium text-gray-600">Wahlleiter</span>
         <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">bestellt</span>
@@ -518,7 +518,7 @@ German associations (Vereine) have specific needs:
       <p class="text-xs text-gray-500">gültig bis 31.12.2026</p>
     </div>
     
-    <div class="bg-white rounded-lg p-4 shadow-sm">
+    <div class="bg-white rounded-lg p-4 shadow-xs">
       <div class="flex items-center justify-between mb-2">
         <span class="text-sm font-medium text-gray-600">Stellv. Wahlleiter</span>
         <span class="px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded-full">ausstehend</span>
@@ -527,7 +527,7 @@ German associations (Vereine) have specific needs:
       <button class="mt-2 text-xs text-blue-600 hover:text-blue-700">jetzt bestellen →</button>
     </div>
     
-    <div class="bg-white rounded-lg p-4 shadow-sm">
+    <div class="bg-white rounded-lg p-4 shadow-xs">
       <div class="flex items-center justify-between mb-2">
         <span class="text-sm font-medium text-gray-600">Wahlordnung</span>
         <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">aktuell</span>

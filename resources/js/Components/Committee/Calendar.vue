@@ -21,7 +21,7 @@
 </template>
 
 <script>
-// import NrnaLayout from "@/Layouts/NrnaLayout";
+// import NrnaLayout from "@/Layouts/NrnaLayout.vue"
 
 export default {
     components: {},

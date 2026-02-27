@@ -1,5 +1,5 @@
 <template>
-  <section class="relative bg-gradient-to-b from-blue-50 to-white py-16 md:py-24">
+  <section class="relative bg-linear-to-b from-blue-50 to-white py-16 md:py-24">
     <!-- Background Pattern -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <div class="absolute top-10 right-10 w-64 h-64 bg-blue-100 rounded-full opacity-10"></div>
@@ -108,7 +108,7 @@
             <!-- Feature Badges -->
             <div class="grid grid-cols-2 gap-4 mb-10">
               <div v-for="(badge, index) in badges" :key="index" class="flex items-center">
-                <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                <div class="shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3">
                   <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                   </svg>
@@ -122,7 +122,7 @@
               <!-- Try Demo Button -->
               <a
                 href="/election/demo/start"
-                class="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white font-bold text-lg rounded-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transition-colors shadow-lg min-h-[44px]"
+                class="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white font-bold text-lg rounded-lg hover:bg-green-700 focus:outline-hidden focus:ring-4 focus:ring-green-300 transition-colors shadow-lg min-h-[44px]"
                 title="Try demo election without registration"
               >
                 <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
@@ -134,7 +134,7 @@
               <!-- Schedule Demo Button -->
               <a
                 href="/register"
-                class="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-800 text-blue-800 font-bold text-lg rounded-lg hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-colors min-h-[44px]"
+                class="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-800 text-blue-800 font-bold text-lg rounded-lg hover:bg-blue-50 focus:outline-hidden focus:ring-4 focus:ring-blue-100 transition-colors min-h-[44px]"
                 title="Schedule a personalized demo"
               >
                 <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
@@ -154,7 +154,7 @@
 </template>
 
 <script>
-import { Link as InertiaLink } from '@inertiajs/inertia-vue3';
+import { Link as InertiaLink } from '@inertiajs/vue3';
 
 export default {
   name: 'HeroSection',

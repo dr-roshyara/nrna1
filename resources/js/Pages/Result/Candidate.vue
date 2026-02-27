@@ -24,12 +24,12 @@
 
     <button 
       @click="verifyResults"
-      class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+      class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-sm hover:bg-blue-700"
     >
       Verify Results
     </button>
 
-    <div v-if="verification" class="mt-6 p-4 border rounded">
+    <div v-if="verification" class="mt-6 p-4 border rounded-sm">
       <h4 class="font-bold mb-2">Verification Report</h4>
       <div v-if="verification.match" class="text-green-600">
         Results verified successfully! All counts match.
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import BarChart from "@/Pages/Result/BarChart";
+import BarChart from "@/Pages/Result/BarChart.vue";
 import { computed, ref } from 'vue';
 import axios from 'axios';
 

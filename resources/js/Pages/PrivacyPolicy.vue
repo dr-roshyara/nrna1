@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import JetAuthenticationCardLogo from '@/Components/Jetstream/AuthenticationCardLogo'
+import JetAuthenticationCardLogo from '@/Components/Jetstream/AuthenticationCardLogo.vue'
 
 export default {
     props: ['policy'],

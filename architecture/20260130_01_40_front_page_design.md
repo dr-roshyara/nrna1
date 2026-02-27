@@ -57,7 +57,7 @@
 ### **2. Updated ElectionHeader.vue (Translated):**
 ```vue
 <template>
-  <header class="sticky top-0 z-40 bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-lg">
+  <header class="sticky top-0 z-40 bg-linear-to-r from-blue-900 to-blue-700 text-white shadow-lg">
     <div class="container mx-auto px-4 md:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 py-4">
         
@@ -79,7 +79,7 @@
           <select
             v-model="currentLocale"
             @change="switchLanguage"
-            class="appearance-none bg-white/10 text-white border border-white/30 rounded-lg px-4 py-2 pr-10 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all cursor-pointer"
+            class="appearance-none bg-white/10 text-white border border-white/30 rounded-lg px-4 py-2 pr-10 text-sm font-medium focus:outline-hidden focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all cursor-pointer"
             :aria-label="$t('common.select_language')"
           >
             <option value="de" class="bg-blue-900 text-white">🇩🇪 Deutsch</option>
@@ -97,7 +97,7 @@
 ### **3. Updated HeroSection.vue (Translated):**
 ```vue
 <template>
-  <section class="relative bg-gradient-to-b from-blue-50 to-white py-16 md:py-24 lg:py-32">
+  <section class="relative bg-linear-to-b from-blue-50 to-white py-16 md:py-24 lg:py-32">
     <div class="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
       <div class="text-center max-w-4xl mx-auto">
         

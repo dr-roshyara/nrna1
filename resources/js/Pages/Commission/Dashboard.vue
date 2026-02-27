@@ -1,7 +1,7 @@
 <template>
   <div class="commission-dashboard min-h-screen bg-slate-50">
     <!-- Header -->
-    <div class="bg-white shadow">
+    <div class="bg-white shadow-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 class="text-3xl font-bold text-gray-900">
           {{ $t('pages.commission.commissionDashboard.title') }}
@@ -15,25 +15,25 @@
     <!-- Quick Stats -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg shadow-sm p-6">
           <div class="text-gray-600 text-sm font-medium">
             {{ $t('pages.commission.commissionDashboard.stats.activeElections') }}
           </div>
           <div class="text-3xl font-bold text-blue-600 mt-2">{{ quickStats?.activeElections || 0 }}</div>
         </div>
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg shadow-sm p-6">
           <div class="text-gray-600 text-sm font-medium">
             {{ $t('pages.commission.commissionDashboard.stats.votesCast') }}
           </div>
           <div class="text-3xl font-bold text-green-600 mt-2">{{ quickStats?.votesCast || 0 }}</div>
         </div>
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg shadow-sm p-6">
           <div class="text-gray-600 text-sm font-medium">
             {{ $t('pages.commission.commissionDashboard.stats.pendingVoters') }}
           </div>
           <div class="text-3xl font-bold text-purple-600 mt-2">{{ quickStats?.pendingVoters || 0 }}</div>
         </div>
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg shadow-sm p-6">
           <div class="text-gray-600 text-sm font-medium">
             {{ $t('pages.commission.commissionDashboard.stats.issuesToReview') }}
           </div>
@@ -42,7 +42,7 @@
       </div>
 
       <!-- Elections Section -->
-      <div class="bg-white rounded-lg shadow">
+      <div class="bg-white rounded-lg shadow-sm">
         <div class="px-6 py-4 border-b">
           <h2 class="text-xl font-bold text-gray-900">
             {{ $t('pages.commission.commissionDashboard.elections.title') }}

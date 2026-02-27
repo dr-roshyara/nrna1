@@ -178,7 +178,7 @@ public function index(Request $request, Organization $organization)
 ```vue
 <!-- In Vue component - Use token in fetch requests -->
 <script setup>
-import { usePage } from '@inertiajs/inertia-vue3';
+import { usePage } from '@inertiajs/vue3-vue3';
 
 const submitApprove = async (voterId) => {
     await fetch(`/organizations/${props.organization.slug}/voters/${voterId}/approve`, {

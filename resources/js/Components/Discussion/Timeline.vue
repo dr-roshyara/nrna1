@@ -1,6 +1,6 @@
 <template>
     <section
-        class="mx-auto w-full rounded-lg border-2 border-red-50 bg-slate-50 p-2 shadow"
+        class="mx-auto w-full rounded-lg border-2 border-red-50 bg-slate-50 p-2 shadow-sm"
     >
         <form @submit.prevent="submit" class="flex flex-col justify-center">
             <!-- first and middle name    -->
@@ -61,13 +61,13 @@
 </template>
 <script>
 import NrnaLayout from "@/Layouts/LoginLayout";
-import JetAuthenticationCard from "@/Components/Jetstream/AuthenticationCard";
-import JetAuthenticationCardLogo from "@/Components/Jetstream/AuthenticationCardLogo";
-import JetButton from "@/Components/Jetstream/FormButton";
-import JetInput from "@/Components/Jetstream/Input";
-import JetCheckbox from "@/Components/Jetstream/Checkbox";
-import JetLabel from "@/Components/Jetstream/Label";
-import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
+import JetAuthenticationCard from "@/Components/Jetstream/AuthenticationCard.vue";
+import JetAuthenticationCardLogo from "@/Components/Jetstream/AuthenticationCardLogo.vue";
+import JetButton from "@/Components/Jetstream/FormButton.vue";
+import JetInput from "@/Components/Jetstream/Input.vue";
+import JetCheckbox from "@/Components/Jetstream/Checkbox.vue";
+import JetLabel from "@/Components/Jetstream/Label.vue";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 
 export default {
     components: {

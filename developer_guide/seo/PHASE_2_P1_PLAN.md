@@ -220,7 +220,7 @@ class BreadcrumbHelper
 
 <script setup>
 import { computed } from 'vue'
-import { usePage } from '@inertiajs/inertia-vue3'
+import { usePage } from '@inertiajs/vue3-vue3'
 
 const page = usePage()
 
@@ -295,7 +295,7 @@ const jsonLdSchema = computed(() => {
 
 ```javascript
 import { computed } from 'vue'
-import { usePage } from '@inertiajs/inertia-vue3'
+import { usePage } from '@inertiajs/vue3-vue3'
 
 export function useBreadcrumbs() {
   const page = usePage()

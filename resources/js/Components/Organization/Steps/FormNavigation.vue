@@ -10,7 +10,7 @@
              hover:bg-gray-100 dark:hover:bg-gray-800/50
              disabled:opacity-50 disabled:cursor-not-allowed
              rounded-lg transition-colors duration-200
-             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500
+             focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-gray-500
              dark:focus:ring-offset-gray-900"
       :aria-label="$t('common.back', { fallback: 'Go back' })"
     >
@@ -28,7 +28,7 @@
              text-white font-semibold rounded-lg
              disabled:opacity-75 disabled:cursor-not-allowed
              transition-all duration-200
-             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+             focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
              dark:focus:ring-offset-gray-900
              flex items-center gap-2"
       :aria-label="currentStep === 3 && !showEducation ? $t('common.submit', { fallback: 'Submit' }) : $t('common.next', { fallback: 'Next' })"

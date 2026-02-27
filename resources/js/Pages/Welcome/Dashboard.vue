@@ -4,7 +4,7 @@
     <ElectionHeader :isLoggedIn="true" :locale="$page.props.locale" />
 
     <!-- Main Content -->
-    <main class="flex-grow max-w-4xl mx-auto w-full px-3 sm:px-4 lg:px-8 py-8 sm:py-12 lg:py-16">
+    <main class="grow max-w-4xl mx-auto w-full px-3 sm:px-4 lg:px-8 py-8 sm:py-12 lg:py-16">
       <!-- Welcome Section -->
       <div class="mb-8 sm:mb-12">
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">
@@ -18,7 +18,7 @@
       <!-- German Compliance Notice -->
       <div class="mb-8 sm:mb-12 p-4 sm:p-6 lg:p-8 border border-blue-200 bg-blue-50 rounded-lg focus-within:ring-2 focus-within:ring-blue-500" role="region" aria-label="Compliance Information">
         <div class="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
-          <span class="text-2xl sm:text-3xl flex-shrink-0" aria-hidden="true">🇩🇪</span>
+          <span class="text-2xl sm:text-3xl shrink-0" aria-hidden="true">🇩🇪</span>
           <div class="w-full">
             <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-2">
               {{ $t('pages.welcome-dashboard.compliance.title') }}
@@ -43,7 +43,7 @@
         <div class="space-y-3 sm:space-y-4">
           <!-- PRIMARY ACTION: Create Organization (with visual emphasis) -->
           <div class="relative group">
-            <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div class="absolute -inset-0.5 bg-linear-to-r from-blue-600 to-blue-400 rounded-lg blur-sm opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
             <button
               @click="createOrganization"
               :disabled="isLoading"
@@ -52,7 +52,7 @@
             >
               <div class="flex items-start justify-between gap-3 sm:gap-4">
                 <div class="flex items-start gap-3 sm:gap-4 min-w-0">
-                  <span class="text-2xl sm:text-3xl flex-shrink-0" aria-hidden="true">🏢</span>
+                  <span class="text-2xl sm:text-3xl shrink-0" aria-hidden="true">🏢</span>
                   <div class="min-w-0">
                     <div class="font-bold text-gray-900 text-base sm:text-lg">
                       <span v-if="isLoading">⏳ {{ $t('common.loading', 'Creating...') }}</span>
@@ -63,8 +63,8 @@
                     </div>
                   </div>
                 </div>
-                <span class="text-xl sm:text-2xl text-blue-600 font-bold flex-shrink-0" v-if="!isLoading">→</span>
-                <span class="text-xl sm:text-2xl text-blue-600 animate-spin flex-shrink-0" v-else>⌛</span>
+                <span class="text-xl sm:text-2xl text-blue-600 font-bold shrink-0" v-if="!isLoading">→</span>
+                <span class="text-xl sm:text-2xl text-blue-600 animate-spin shrink-0" v-else>⌛</span>
               </div>
             </button>
           </div>
@@ -79,7 +79,7 @@
               class="p-4 sm:p-6 lg:p-8 bg-white border-2 border-gray-200 rounded-lg hover:border-green-500 hover:shadow-lg focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all text-left disabled:opacity-50 disabled:cursor-wait"
             >
               <div class="flex items-start gap-3 sm:gap-4">
-                <span class="text-2xl sm:text-3xl flex-shrink-0" aria-hidden="true">👥</span>
+                <span class="text-2xl sm:text-3xl shrink-0" aria-hidden="true">👥</span>
                 <div class="min-w-0">
                   <div class="font-bold text-gray-900 text-base sm:text-lg">
                     {{ $t('pages.welcome-dashboard.actions.joinOrg') }}
@@ -99,7 +99,7 @@
               class="p-4 sm:p-6 lg:p-8 bg-white border-2 border-gray-200 rounded-lg hover:border-purple-500 hover:shadow-lg focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all text-left disabled:opacity-50 disabled:cursor-wait"
             >
               <div class="flex items-start gap-3 sm:gap-4">
-                <span class="text-2xl sm:text-3xl flex-shrink-0" aria-hidden="true">📊</span>
+                <span class="text-2xl sm:text-3xl shrink-0" aria-hidden="true">📊</span>
                 <div class="min-w-0">
                   <div class="font-bold text-gray-900 text-base sm:text-lg">
                     {{ $t('pages.welcome-dashboard.actions.skip') }}
@@ -180,7 +180,7 @@
       </div>
 
       <!-- Key Features Section -->
-      <div class="mb-8 sm:mb-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8">
+      <div class="mb-8 sm:mb-12 bg-linear-to-r from-blue-50 to-indigo-50 rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8">
         <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">
           {{ $t('pages.welcome-dashboard.keyFeatures.title') }}
         </h2>
@@ -224,7 +224,7 @@
       </div>
 
       <!-- Quick Tips Section -->
-      <div class="mb-8 sm:mb-12 bg-yellow-50 border-l-4 border-yellow-400 p-4 sm:p-6 rounded">
+      <div class="mb-8 sm:mb-12 bg-yellow-50 border-l-4 border-yellow-400 p-4 sm:p-6 rounded-sm">
         <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
           💡 {{ $t('pages.welcome-dashboard.tips.title') }}
         </h3>

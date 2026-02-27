@@ -1,5 +1,5 @@
 <template>
-  <nrna-layout>
+  <election-layout>
     <div class="max-w-4xl mx-auto px-4 py-8">
       <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Election Results</h1>
       
@@ -16,15 +16,15 @@
         </div>
       </div>
     </div>
-  </nrna-layout>
+  </election-layout>
 </template>
 
 <script>
-import NrnaLayout from "@/Layouts/ElectionLayout";
-import Candidate from "@/Pages/Result/Candidate";
+import ElectionLayout from "@/Layouts/ElectionLayout.vue"; 
+import Candidate from "@/Pages/Result/Candidate.vue";
 
 export default {
-  components: { NrnaLayout, Candidate },
+  components: { ElectionLayout, Candidate },
   props: {
     final_result: Object,
     posts: Array,

@@ -19,8 +19,8 @@
 
 <script>
 import { reactive } from 'vue'
-import { Inertia } from '@inertiajs/inertia'
-import JetValidationErrors from '@/Components/Jetstream/ValidationErrors'
+import { router } from '@inertiajs/vue3'
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors.vue'
 export default {
     props: {
         vtelephone: String,
@@ -38,7 +38,7 @@ export default {
     })
 
     function submit() {
-      Inertia.post('/messages', form)
+      router.post('/messages', form)
     }
 
     return { form, submit }

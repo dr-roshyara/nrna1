@@ -5,7 +5,7 @@
             {{ $t('pages.election-dashboard.aria_labels.skip_to_content') }}
         </a>
 
-        <main id="main-content" role="main" :aria-label="$t('pages.election-dashboard.aria_labels.main_content')" class="min-h-screen bg-gradient-to-br from-blue-100 via-white to-indigo-100 py-8">
+        <main id="main-content" role="main" :aria-label="$t('pages.election-dashboard.aria_labels.main_content')" class="min-h-screen bg-linear-to-br from-blue-100 via-white to-indigo-100 py-8">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <!-- Primary Actions Section -->
                 <section class="mb-16" aria-labelledby="primary-actions" role="region">
@@ -22,7 +22,7 @@
                         </a>
                     </div>
 
-                    <div class="max-w-md mx-auto mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl shadow-lg overflow-hidden" role="region" aria-labelledby="system-info-title">
+                    <div class="max-w-md mx-auto mb-8 bg-linear-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl shadow-lg overflow-hidden" role="region" aria-labelledby="system-info-title">
                         <div class="bg-blue-600 px-6 py-3">
                             <div class="flex items-center justify-center text-white">
                                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -35,7 +35,7 @@
                         <div class="px-6 py-4 space-y-3">
                             <!-- IP Address Section -->
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 mt-1">
+                                <div class="shrink-0 mt-1">
                                     <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z" clip-rule="evenodd"/>
                                     </svg>
@@ -48,7 +48,7 @@
 
                             <!-- User Info Section -->
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 mt-1">
+                                <div class="shrink-0 mt-1">
                                     <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
                                     </svg>
@@ -104,7 +104,7 @@
 
                                     <!-- Session Timer (if active) -->
                                     <div v-if="showVotingTimer" class="mt-4 text-center" aria-live="polite" aria-atomic="true">
-                                        <div class="bg-white/30 rounded-lg p-3 backdrop-blur-sm">
+                                        <div class="bg-white/30 rounded-lg p-3 backdrop-blur-xs">
                                             <p class="text-sm font-semibold text-white">{{ $t('pages.election-dashboard.voting_section.time_remaining_label') }}</p>
                                             <p class="text-lg font-bold text-white">{{ votingTimeRemaining }} {{ $t('pages.election-dashboard.voting_section.minutes_label') }}</p>
                                         </div>
@@ -134,7 +134,7 @@
                             <!-- 🚨 ERROR MESSAGE -->
                             <div v-if="!canAccessVoting && ballotAccess" class="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl">
                                 <div class="flex items-start">
-                                    <svg class="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-red-500 mr-3 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
                                     </svg>
                                     <div class="text-sm">
@@ -151,7 +151,7 @@
                             <!-- 🔒 VOTING PERIOD INACTIVE MESSAGE -->
                             <div v-if="!canAccessVoting && ballotAccess?.can_access && !electionStatus?.voting_period_active && !votingStatus?.has_voted" class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-xl">
                                 <div class="flex items-start">
-                                    <svg class="w-5 h-5 text-yellow-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-yellow-500 mr-3 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                     </svg>
                                     <div class="text-sm">
@@ -193,7 +193,7 @@
                             <!-- Results Status Message -->
                             <div v-if="!electionStatus.results_published" class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-xl">
                                 <div class="flex items-start">
-                                    <svg class="w-5 h-5 text-yellow-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-yellow-500 mr-3 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                     </svg>
                                     <div class="text-sm">
@@ -216,7 +216,7 @@
                         <!-- Candidacy Posts -->
                         <a
                             href="posts/index"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-blue-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-blue-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-blue-200"
                         >
                             <div class="text-center">
                                 <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors duration-300">
@@ -231,7 +231,7 @@
                         <!-- Candidacy List -->
                         <a
                             href="candidacies/index"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-purple-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-purple-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-purple-200"
                         >
                             <div class="text-center">
                                 <div class="bg-purple-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-purple-200 transition-colors duration-300">
@@ -246,7 +246,7 @@
                         <!-- Candidacy Form -->
                         <a
                             href="candidacy/create"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-orange-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-orange-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-orange-200"
                         >
                             <div class="text-center">
                                 <div class="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-200 transition-colors duration-300">
@@ -270,7 +270,7 @@
                         <!-- Voter List -->
                         <a
                             href="voters"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-indigo-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-indigo-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-indigo-200"
                         >
                             <div class="text-center">
                                 <div class="bg-indigo-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-indigo-200 transition-colors duration-300">
@@ -285,7 +285,7 @@
                         <!-- Your Vote -->
                         <a
                             href="vote/verify_to_show"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-teal-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-teal-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-teal-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-teal-200"
                         >
                             <div class="text-center">
                                 <div class="bg-teal-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-teal-200 transition-colors duration-300">
@@ -300,7 +300,7 @@
                         <!-- NRNA Members -->
                         <a
                             href="members/index"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-rose-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-rose-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-rose-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-rose-200"
                         >
                             <div class="text-center">
                                 <div class="bg-rose-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-rose-200 transition-colors duration-300">
@@ -324,7 +324,7 @@
                         <!-- Election Committee -->
                         <a
                             href="election/committee"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-gray-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-gray-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-gray-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-gray-200"
                         >
                             <div class="flex items-center">
                                 <div class="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mr-8 group-hover:bg-gray-200 transition-colors duration-300">
@@ -341,7 +341,7 @@
                         <!-- General Information -->
                         <a
                             href="#"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-yellow-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-yellow-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-yellow-200"
                         >
                             <div class="flex items-center">
                                 <div class="bg-yellow-100 rounded-full w-20 h-20 flex items-center justify-center mr-8 group-hover:bg-yellow-200 transition-colors duration-300">
@@ -358,7 +358,7 @@
                 </section>
 
                 <!-- Help Section -->
-                <section class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-12 text-center border border-blue-100" aria-label="Help and Support">
+                <section class="bg-linear-to-r from-blue-50 to-indigo-50 rounded-3xl p-12 text-center border border-blue-100" aria-label="Help and Support">
                     <div class="max-w-3xl mx-auto">
                         <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-8">
                             <svg class="w-10 h-10 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
@@ -370,10 +370,10 @@
                             {{ $t('pages.election-dashboard.help_section.description') }}
                         </p>
                         <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-hidden focus:ring-4 focus:ring-blue-300 shadow-lg">
                                 {{ $t('pages.election-dashboard.help_section.contact_button') }}
                             </button>
-                            <button class="bg-white hover:bg-blue-50 text-blue-600 border-2 border-blue-600 font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg">
+                            <button class="bg-white hover:bg-blue-50 text-blue-600 border-2 border-blue-600 font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-hidden focus:ring-4 focus:ring-blue-300 shadow-lg">
                                 {{ $t('pages.election-dashboard.help_section.guide_button') }}
                             </button>
                         </div>
@@ -385,7 +385,7 @@
 </template>
 
 <script>
-import ElectionLayout from "@/Layouts/ElectionLayout";
+import ElectionLayout from "@/Layouts/ElectionLayout.vue";
 
 export default {
     components: {
@@ -482,9 +482,9 @@ export default {
             const baseClasses = 'group relative overflow-hidden rounded-3xl p-10 text-white shadow-2xl transition-all duration-300 w-full min-h-[400px] flex flex-col justify-center';
 
             if (this.canAccessVoting) {
-                return `${baseClasses} bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-700 hover:via-blue-800 hover:to-indigo-800 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-300`;
+                return `${baseClasses} bg-linear-to-br from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-700 hover:via-blue-800 hover:to-indigo-800 transform hover:scale-105 cursor-pointer focus:outline-hidden focus:ring-4 focus:ring-blue-300`;
             } else {
-                return `${baseClasses} bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
+                return `${baseClasses} bg-linear-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
             }
         },
 
@@ -492,9 +492,9 @@ export default {
             const baseClasses = 'group relative overflow-hidden rounded-3xl p-10 text-white shadow-2xl transition-all duration-300 w-full min-h-[400px] flex flex-col justify-center';
 
             if (this.electionStatus.results_published) {
-                return `${baseClasses} bg-gradient-to-br from-green-600 via-green-700 to-emerald-700 hover:from-green-700 hover:via-green-800 hover:to-emerald-800 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-4 focus:ring-green-300`;
+                return `${baseClasses} bg-linear-to-br from-green-600 via-green-700 to-emerald-700 hover:from-green-700 hover:via-green-800 hover:to-emerald-800 transform hover:scale-105 cursor-pointer focus:outline-hidden focus:ring-4 focus:ring-green-300`;
             } else {
-                return `${baseClasses} bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
+                return `${baseClasses} bg-linear-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
             }
         },
 
@@ -854,7 +854,7 @@ a[href]:hover {
 }
 
 /* Improve backdrop blur for timer */
-.backdrop-blur-sm {
+.backdrop-blur-xs {
     backdrop-filter: blur(4px);
 }
 

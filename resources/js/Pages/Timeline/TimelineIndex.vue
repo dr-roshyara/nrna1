@@ -253,7 +253,7 @@
           <div
             class="border-b border-gray-200 dark:border-dim-200 pb-4 border-l border-r"
           >
-            <div class="flex flex-shrink-0 p-4 pb-0">
+            <div class="flex shrink-0 p-4 pb-0">
               <div class="w-12 flex items-top">
                 <img
                   class="inline-block h-10 w-10 rounded-full"
@@ -263,7 +263,7 @@
               </div>
               <div class="w-full p-2">
                 <textarea
-                  class="dark:text-white text-gray-900 placeholder-gray-400 w-full h-10 bg-transparent border-0 focus:outline-none resize-none"
+                  class="dark:text-white text-gray-900 placeholder-gray-400 w-full h-10 bg-transparent border-0 focus:outline-hidden resize-none"
                   placeholder="What's happening?"
                 ></textarea>
               </div>
@@ -368,7 +368,7 @@
             class="border-b border-gray-200 dark:border-dim-200 bg-gray-50 dark:bg-dim-300 py-2 border-l border-r"
           >
             <div
-              class="flex flex-shrink-0 items-center justify-center py-4 bg-white dark:bg-dim-900 border-b border-t border-gray-200 dark:border-dim-200 hover:bg-gray-50 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out text-blue-400 text-sm"
+              class="flex shrink-0 items-center justify-center py-4 bg-white dark:bg-dim-900 border-b border-t border-gray-200 dark:border-dim-200 hover:bg-gray-50 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out text-blue-400 text-sm"
             >
               Show 9 Tweets
             </div>
@@ -379,8 +379,8 @@
           <div
             class="border-b border-gray-200 dark:border-dim-200 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out pb-4 border-l border-r"
           >
-            <div class="flex flex-shrink-0 p-4 pb-0">
-              <a href="#" class="flex-shrink-0 group block">
+            <div class="flex shrink-0 p-4 pb-0">
+              <a href="#" class="shrink-0 group block">
                 <div class="flex items-top">
                   <div>
                     <img
@@ -418,7 +418,7 @@
             </div>
             <div class="pl-16">
               <p
-                class="text-base width-auto font-medium text-gray-800 dark:text-white flex-shrink"
+                class="text-base width-auto font-medium text-gray-800 dark:text-white shrink"
               >
                 America, I’m honored that you have chosen me to lead our great
                 country.<br />
@@ -560,7 +560,7 @@
           <div
             class="border-b border-gray-200 dark:border-dim-200 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out pb-4 border-l border-r"
           >
-            <div class="flex flex-shrink-0 pt-4 pb-0 text-gray-400">
+            <div class="flex shrink-0 pt-4 pb-0 text-gray-400">
               <div class="w-16 flex justify-end pr-2 pb-1">
                 <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
                   <g>
@@ -572,8 +572,8 @@
               </div>
               <div class="text-xs font-bold">Joe Biden Retweeted</div>
             </div>
-            <div class="flex flex-shrink-0 px-4">
-              <a href="#" class="flex-shrink-0 group block">
+            <div class="flex shrink-0 px-4">
+              <a href="#" class="shrink-0 group block">
                 <div class="flex items-top">
                   <div>
                     <img
@@ -611,7 +611,7 @@
             </div>
             <div class="pl-16">
               <p
-                class="text-base width-auto font-medium text-gray-800 dark:text-white flex-shrink mb-6"
+                class="text-base width-auto font-medium text-gray-800 dark:text-white shrink mb-6"
               >
                 Under the Biden-Harris administration, American national
                 security and foreign policy will be led by experienced
@@ -699,8 +699,8 @@
           <div
             class="border-b border-gray-200 dark:border-dim-200 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out pb-4 border-l border-r"
           >
-            <div class="flex flex-shrink-0 p-4 pb-0">
-              <a href="#" class="flex-shrink-0 group block">
+            <div class="flex shrink-0 p-4 pb-0">
+              <a href="#" class="shrink-0 group block">
                 <div class="flex items-top">
                   <div>
                     <img
@@ -738,7 +738,7 @@
             </div>
             <div class="pl-16">
               <p
-                class="text-base width-auto font-medium text-gray-800 dark:text-white flex-shrink"
+                class="text-base width-auto font-medium text-gray-800 dark:text-white shrink"
               >
                 America, I’m honored that you have chosen me to lead our great
                 country.<br />
@@ -895,7 +895,7 @@
                 </svg>
               </div>
               <input
-                class="w-full bg-gray-200 dark:bg-dim-400 border-gray-200 dark:border-dim-400 text-gray-100 focus:bg-gray-100 dark:focus:bg-dim-900 focus:outline-none focus:border focus:border-blue-200 font-normal h-9 flex items-center pl-12 text-sm rounded-full border shadow"
+                class="w-full bg-gray-200 dark:bg-dim-400 border-gray-200 dark:border-dim-400 text-gray-100 focus:bg-gray-100 dark:focus:bg-dim-900 focus:outline-hidden focus:border focus:border-blue-200 font-normal h-9 flex items-center pl-12 text-sm rounded-full border shadow-sm"
                 placeholder="Search Twitter"
               />
             </div>
@@ -1035,10 +1035,10 @@
                 <div class="animate-pulse flex space-x-4">
                   <div class="rounded-full bg-gray-400 h-12 w-12"></div>
                   <div class="flex-1 space-y-4 py-1">
-                    <div class="h-4 bg-gray-400 rounded w-3/4"></div>
+                    <div class="h-4 bg-gray-400 rounded-sm w-3/4"></div>
                     <div class="space-y-2">
-                      <div class="h-4 bg-gray-400 rounded"></div>
-                      <div class="h-4 bg-gray-400 rounded w-5/6"></div>
+                      <div class="h-4 bg-gray-400 rounded-sm"></div>
+                      <div class="h-4 bg-gray-400 rounded-sm w-5/6"></div>
                     </div>
                   </div>
                 </div>
@@ -1923,11 +1923,11 @@ video {
   flex: 1 1 auto;
 }
 
-.flex-shrink-0 {
+.shrink-0 {
   flex-shrink: 0;
 }
 
-.flex-shrink {
+.shrink {
   flex-shrink: 1;
 }
 

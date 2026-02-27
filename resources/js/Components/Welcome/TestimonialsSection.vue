@@ -13,7 +13,7 @@
 
       <!-- Testimonials Grid -->
       <div class="grid md:grid-cols-3 gap-8">
-        <div v-for="(testimonial, index) in testimonials" :key="index" class="bg-white rounded-2xl border border-blue-200 p-8 shadow-sm hover:shadow-lg transition-shadow">
+        <div v-for="(testimonial, index) in testimonials" :key="index" class="bg-white rounded-2xl border border-blue-200 p-8 shadow-xs hover:shadow-lg transition-shadow">
           <!-- Quotation Mark -->
           <div class="text-5xl text-blue-200 mb-4">"</div>
 
@@ -28,7 +28,7 @@
           <!-- Author Info -->
           <div class="flex items-center">
             <!-- Avatar -->
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 shrink-0">
               <span class="font-bold text-blue-700 text-sm">{{ testimonial.avatar }}</span>
             </div>
 

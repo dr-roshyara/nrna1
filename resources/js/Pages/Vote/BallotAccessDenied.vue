@@ -1,6 +1,6 @@
 <template>
     <election-layout>
-        <div class="min-h-screen bg-gradient-to-br from-red-50 to-orange-50 py-8 px-4">
+        <div class="min-h-screen bg-linear-to-br from-red-50 to-orange-50 py-8 px-4">
             <div class="max-w-2xl mx-auto">
                 <!-- Header Section -->
                 <header class="text-center mb-8">
@@ -20,7 +20,7 @@
                 <!-- Main Error Card -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-red-200">
                     <!-- Error Header -->
-                    <div class="bg-gradient-to-r from-red-100 to-orange-100 px-6 py-6 border-b border-red-200">
+                    <div class="bg-linear-to-r from-red-100 to-orange-100 px-6 py-6 border-b border-red-200">
                         <div class="flex items-center">
                             <div class="bg-red-200 rounded-full p-3 mr-4">
                                 <svg class="w-6 h-6 text-red-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -52,7 +52,7 @@
                             <!-- Nepali Message -->
                             <div class="p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
                                 <div class="flex items-start">
-                                    <div class="flex-shrink-0">
+                                    <div class="shrink-0">
                                         <svg class="w-5 h-5 text-red-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
                                         </svg>
@@ -67,7 +67,7 @@
                             <!-- English Message -->
                             <div class="p-4 bg-red-50 border-l-4 border-red-400 rounded-r-lg">
                                 <div class="flex items-start">
-                                    <div class="flex-shrink-0">
+                                    <div class="shrink-0">
                                         <svg class="w-5 h-5 text-red-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
                                         </svg>
@@ -101,7 +101,7 @@
                                     <div class="flex flex-col sm:flex-row gap-3">
                                         <button 
                                             @click="contactSupport"
-                                            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                                            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 focus:outline-hidden focus:ring-4 focus:ring-blue-300"
                                         >
                                             📞 दर्ताका लागि सम्पर्क | Contact for Registration
                                         </button>
@@ -133,13 +133,13 @@
                                     <div class="flex flex-col sm:flex-row gap-3">
                                         <button 
                                             @click="checkStatus"
-                                            class="flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-yellow-300"
+                                            class="flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 focus:outline-hidden focus:ring-4 focus:ring-yellow-300"
                                         >
                                             🔄 स्थिति जाँच गर्नुहोस् | Check Status
                                         </button>
                                         <button 
                                             @click="contactCommittee"
-                                            class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-yellow-300"
+                                            class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 focus:outline-hidden focus:ring-4 focus:ring-yellow-300"
                                         >
                                             📧 समितिलाई सम्पर्क | Contact Committee
                                         </button>
@@ -158,7 +158,7 @@
                                 <!-- View Candidates -->
                                 <a 
                                     href="/candidacies/index"
-                                    class="flex items-center p-3 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-gray-300"
+                                    class="flex items-center p-3 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 focus:outline-hidden focus:ring-4 focus:ring-gray-300"
                                 >
                                     <div class="bg-purple-100 rounded-full p-2 mr-3">
                                         <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
@@ -174,7 +174,7 @@
                                 <!-- Election Information -->
                                 <a 
                                     href="/posts/index"
-                                    class="flex items-center p-3 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-gray-300"
+                                    class="flex items-center p-3 bg-gray-50 hover:bg-gray-100 rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-200 focus:outline-hidden focus:ring-4 focus:ring-gray-300"
                                 >
                                     <div class="bg-blue-100 rounded-full p-2 mr-3">
                                         <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
@@ -193,7 +193,7 @@
                         <div class="mt-8 text-center">
                             <a 
                                 href="/dashboard"
-                                class="inline-flex items-center bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-gray-300 shadow-lg"
+                                class="inline-flex items-center bg-gray-600 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200 focus:outline-hidden focus:ring-4 focus:ring-gray-300 shadow-lg"
                             >
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -214,14 +214,14 @@
                             <div class="mt-3 flex flex-col sm:flex-row gap-2 justify-center">
                                 <a 
                                     href="mailto:election@nrna.org"
-                                    class="text-blue-600 hover:text-blue-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
+                                    class="text-blue-600 hover:text-blue-800 text-sm font-medium focus:outline-hidden focus:ring-2 focus:ring-blue-500 rounded-sm px-2 py-1"
                                 >
                                     📧 election@nrna.org
                                 </a>
                                 <span class="hidden sm:inline text-gray-400">|</span>
                                 <a 
                                     href="tel:+1234567890"
-                                    class="text-blue-600 hover:text-blue-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
+                                    class="text-blue-600 hover:text-blue-800 text-sm font-medium focus:outline-hidden focus:ring-2 focus:ring-blue-500 rounded-sm px-2 py-1"
                                 >
                                     📞 +49 123 456 7890
                                 </a>
@@ -235,7 +235,7 @@
 </template>
 
 <script>
-import ElectionLayout from "@/Layouts/ElectionLayout";
+import ElectionLayout from "@/Layouts/ElectionLayout.vue";
 
 export default {
     name: 'BallotAccessDenied',

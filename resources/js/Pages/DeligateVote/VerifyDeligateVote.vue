@@ -59,11 +59,11 @@
     </nrna-layout> 
 </template>
 <script>
-import VotedPost from "@/Shared/DeligateVotedPost"
-import { useForm } from '@inertiajs/inertia-vue3'
-import JetValidationErrors from '@/Components/Jetstream/ValidationErrors' 
-import AppLayout from '@/Layouts/AppLayout'
-import NrnaLayout from '@/Layouts/NrnaLayout'
+import VotedPost from "@/Shared/DeligateVotedPost.vue"
+import { useForm } from '@inertiajs/vue3'
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors.vue' 
+import AppLayout from '@/Layouts/AppLayout.vue'
+import NrnaLayout from '@/Layouts/NrnaLayout.vue'
 export default {  
     props:{
         deligatevote : Object

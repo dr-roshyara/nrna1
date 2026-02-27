@@ -362,7 +362,7 @@ Page reloads in English (language persists)
 
 ```vue
 <template>
-  <header class="bg-white shadow-sm border-b border-gray-200">
+  <header class="bg-white shadow-xs border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex justify-between items-center">
         <!-- Logo -->
@@ -417,7 +417,7 @@ Page reloads in English (language persists)
 ```javascript
 <script setup>
 import { ref, watch } from 'vue';
-import { usePage } from '@inertiajs/inertia-vue3';
+import { usePage } from '@inertiajs/vue3-vue3';
 
 // Props
 const props = defineProps({

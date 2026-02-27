@@ -2,7 +2,7 @@
   <election-layout>
     <div class="m-2 min-h-screen bg-gray-100 p-2">
       <!-- Organization Header -->
-      <div class="mb-6 bg-white rounded-lg shadow p-6">
+      <div class="mb-6 bg-white rounded-lg shadow-sm p-6">
         <h1 class="text-3xl font-bold text-gray-900">
           Members of {{ organization.name }}
         </h1>
@@ -10,15 +10,15 @@
 
         <!-- Stats Grid -->
         <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="bg-blue-50 p-4 rounded border-l-4 border-blue-500">
+          <div class="bg-blue-50 p-4 rounded-sm border-l-4 border-blue-500">
             <div class="text-sm text-gray-600 font-medium">Total Members</div>
             <div class="text-3xl font-bold text-blue-600">{{ stats.total_members }}</div>
           </div>
-          <div class="bg-red-50 p-4 rounded border-l-4 border-red-500">
+          <div class="bg-red-50 p-4 rounded-sm border-l-4 border-red-500">
             <div class="text-sm text-gray-600 font-medium">Admins</div>
             <div class="text-3xl font-bold text-red-600">{{ stats.admins_count }}</div>
           </div>
-          <div class="bg-green-50 p-4 rounded border-l-4 border-green-500">
+          <div class="bg-green-50 p-4 rounded-sm border-l-4 border-green-500">
             <div class="text-sm text-gray-600 font-medium">Voters</div>
             <div class="text-3xl font-bold text-green-600">{{ stats.voters_count }}</div>
           </div>
@@ -26,7 +26,7 @@
       </div>
 
       <!-- Filters Section -->
-      <div class="mb-4 bg-white rounded-lg shadow p-4">
+      <div class="mb-4 bg-white rounded-lg shadow-sm p-4">
         <h2 class="text-lg font-semibold text-gray-900 mb-4">Filters</h2>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <!-- Name Search -->
@@ -36,7 +36,7 @@
               id="name"
               v-model="params.name"
               type="text"
-              class="w-full rounded border border-gray-300 shadow-sm px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded-sm border border-gray-300 shadow-xs px-3 py-2 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500"
               placeholder="Enter name..."
             />
           </div>
@@ -48,7 +48,7 @@
               id="email"
               v-model="params.email"
               type="text"
-              class="w-full rounded border border-gray-300 shadow-sm px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded-sm border border-gray-300 shadow-xs px-3 py-2 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500"
               placeholder="Enter email..."
             />
           </div>
@@ -59,7 +59,7 @@
             <select
               id="role"
               v-model="params.role"
-              class="w-full rounded border border-gray-300 shadow-sm px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded-sm border border-gray-300 shadow-xs px-3 py-2 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Roles</option>
               <option value="admin">Admin</option>
@@ -72,7 +72,7 @@
           <div class="flex items-end">
             <button
               @click="exportMembers"
-              class="w-full bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors font-medium"
+              class="w-full bg-green-600 text-white px-4 py-2 rounded-sm hover:bg-green-700 transition-colors font-medium"
             >
               Export CSV
             </button>
@@ -81,7 +81,7 @@
       </div>
 
       <!-- Top Pagination -->
-      <div class="flex items-center justify-between px-5 py-4 bg-white rounded-t-lg shadow-sm">
+      <div class="flex items-center justify-between px-5 py-4 bg-white rounded-t-lg shadow-xs">
         <Link
           v-if="members.prev_page_url"
           :href="members.prev_page_url"
@@ -122,7 +122,7 @@
       </div>
 
       <!-- Members Table -->
-      <div class="bg-white shadow overflow-x-auto">
+      <div class="bg-white shadow-sm overflow-x-auto">
         <table class="w-full">
           <thead>
             <tr class="bg-blue-600 text-white">
@@ -274,7 +274,7 @@
                 {{ member.state || 'N/A' }}
               </td>
               <td class="px-4 py-3 text-sm">
-                <span :class="roleClass(member.role)" class="px-3 py-1 rounded text-xs font-medium">
+                <span :class="roleClass(member.role)" class="px-3 py-1 rounded-sm text-xs font-medium">
                   {{ member.role }}
                 </span>
               </td>
@@ -287,7 +287,7 @@
       </div>
 
       <!-- Bottom Pagination -->
-      <div class="flex items-center justify-between px-5 py-4 bg-white rounded-b-lg shadow-sm">
+      <div class="flex items-center justify-between px-5 py-4 bg-white rounded-b-lg shadow-xs">
         <Link
           v-if="members.prev_page_url"
           :href="members.prev_page_url"
@@ -331,8 +331,8 @@
 </template>
 
 <script>
-import { Link } from '@inertiajs/inertia-vue3'
-import ElectionLayout from '@/Layouts/ElectionLayout'
+import { Link } from '@inertiajs/vue3'
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import _ from 'lodash'
 
 export default {

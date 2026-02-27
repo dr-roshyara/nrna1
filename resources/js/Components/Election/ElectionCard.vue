@@ -177,8 +177,10 @@ const onSelect = () => {
 </script>
 
 <style scoped>
+@reference "../../../css/app.css";
+
 .election-card {
-  @apply bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden;
+  @apply bg-white border border-gray-200 rounded-lg shadow-xs hover:shadow-md transition-shadow duration-200 overflow-hidden;
   display: flex;
   flex-direction: column;
   height: 100%;

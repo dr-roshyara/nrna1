@@ -25,7 +25,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
           <!-- Mission -->
-          <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
+          <div class="bg-white p-8 rounded-lg shadow-xs border border-gray-200">
             <div class="text-3xl mb-4">🎯</div>
             <h2 class="text-2xl font-bold text-gray-900 mb-4">
               {{ $t('about.mission_title') }}
@@ -36,7 +36,7 @@
           </div>
 
           <!-- Vision -->
-          <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
+          <div class="bg-white p-8 rounded-lg shadow-xs border border-gray-200">
             <div class="text-3xl mb-4">🚀</div>
             <h2 class="text-2xl font-bold text-gray-900 mb-4">
               {{ $t('about.vision_title') }}
@@ -70,7 +70,7 @@
         <h2 class="text-3xl font-bold text-gray-900 mb-8">
           {{ $t('about.how_it_works_title') }}
         </h2>
-        <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded">
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-8 rounded-sm">
           <p class="text-gray-700 leading-relaxed text-lg">
             {{ $t('about.how_it_works_text') }}
           </p>
@@ -86,7 +86,7 @@
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div v-for="(feature, index) in securityFeaturesList" :key="index" class="flex items-start">
-            <svg class="h-6 w-6 text-green-500 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="h-6 w-6 text-green-500 mt-1 mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
             </svg>
             <span class="text-gray-700">{{ feature }}</span>
@@ -102,7 +102,7 @@
           {{ $t('about.supported_organizations_title') }}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div v-for="(org, index) in supportedOrgsList" :key="index" class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200 text-center">
+          <div v-for="(org, index) in supportedOrgsList" :key="index" class="bg-linear-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200 text-center">
             <p class="text-gray-800 font-medium">{{ org }}</p>
           </div>
         </div>
@@ -129,7 +129,7 @@
         <h2 class="text-3xl font-bold text-gray-900 mb-8">
           {{ $t('about.team_title') }}
         </h2>
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border border-blue-200">
+        <div class="bg-linear-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border border-blue-200">
           <p class="text-gray-700 leading-relaxed text-lg">
             {{ $t('about.team_text') }}
           </p>

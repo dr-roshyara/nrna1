@@ -42,9 +42,9 @@
 </template>
 
 <script>
-import SocialLayout from "@/Layouts/SocialLayout";
-import JetButton from "@/Components/Jetstream/Button";
-import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
+import SocialLayout from "@/Layouts/SocialLayout.vue";
+import JetButton from "@/Components/Jetstream/Button.vue";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 import IncomeSubmit from "@/Pages/Finance/Income/IncomeSubmit.vue";
 
 export default {

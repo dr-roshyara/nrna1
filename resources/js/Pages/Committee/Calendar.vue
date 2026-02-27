@@ -22,13 +22,13 @@
 <script>
 // import NrnaLayout from "@/Layouts/NrnaLayout";
 import Calendar from "@/Components/Committee/Calendar.vue";
-import SocialLayout from "@/Layouts/SocialLayout";
+import SocialLayout from "@/Layouts/SocialLayout.vue";
 import RightBar from "@/Components/Discussion/RightBar.vue";
 import LeftBar from "@/Components/Discussion/LeftBar.vue";
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayout.vue";
 import JoinNetwork from "@/Components/General/JoinNetwork.vue";
 import Timeline from "@/Components/Discussion/Timeline.vue";
-import Openions from "@/Components/Discussion/Openions";
+import Openions from "@/Components/Discussion/Openions.vue";
 export default {
     components: {
         SocialLayout,

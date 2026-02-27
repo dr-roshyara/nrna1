@@ -628,7 +628,7 @@ class CommissionDashboardController extends Controller
 
 <script setup>
 import { ref } from 'vue';
-import { usePage } from '@inertiajs/inertia-vue3';
+import { usePage } from '@inertiajs/vue3-vue3';
 import ElectionHeader from '@/Components/Header/ElectionHeader.vue';
 import PublicDigitFooter from '@/Jetstream/PublicDigitFooter.vue';
 

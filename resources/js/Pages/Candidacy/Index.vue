@@ -3,8 +3,8 @@
     <app-layout> 
          <!-- {{candidacies}}  -->
         <div class="py-2 flex flex-row justify-between "> 
-            <Link  v-if="candidacies.prev_page_url" class="m-2 px-2 py-2 bg-gray-300 rounded" :href="candidacies.prev_page_url" >Previous Page </Link> 
-            <Link  v-if="candidacies.next_page_url" class="m-2 px-2 py-2 bg-gray-300 rounded" :href="candidacies.next_page_url">Next Page </Link> 
+            <Link  v-if="candidacies.prev_page_url" class="m-2 px-2 py-2 bg-gray-300 rounded-sm" :href="candidacies.prev_page_url" >Previous Page </Link> 
+            <Link  v-if="candidacies.next_page_url" class="m-2 px-2 py-2 bg-gray-300 rounded-sm" :href="candidacies.next_page_url">Next Page </Link> 
         </div>
      <pagination class="mt-10" :links="candidacies.links" />
 
@@ -60,9 +60,9 @@
 </template> 
 
 <script>
-import NrnaLayout from  '@/Layouts/NrnaLayout'
-import AppLayout from  "@/Layouts/AppLayout";
-import {Link} from '@inertiajs/inertia-vue3';
+import NrnaLayout from  '@/Layouts/NrnaLayout.vue'
+import AppLayout from  "@/Layouts/AppLayout.vue";
+import {Link} from '@inertiajs/vue3';
 import { InteractsWithQueryBuilder, Tailwind2 } from '@protonemedia/inertiajs-tables-laravel-query-builder';
 //import { ref } from 'vue'
 import {

@@ -204,7 +204,7 @@ LIMIT 20 OFFSET 0;
     id="name"
     type="text"
     v-model="params.name"
-    class="ml-2 rounded border bg-blue-200 px-2 py-1 text-sm"
+    class="ml-2 rounded-sm border bg-blue-200 px-2 py-1 text-sm"
 />
 ```
 

@@ -12,7 +12,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <!-- Total Members Card -->
-      <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
+      <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow">
         <div class="flex items-baseline justify-between">
           <div>
             <p class="text-sm font-medium text-gray-600">
@@ -29,7 +29,7 @@
       </div>
 
       <!-- Active Members Card -->
-      <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
+      <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow">
         <div class="flex items-baseline justify-between">
           <div>
             <p class="text-sm font-medium text-gray-600">
@@ -46,7 +46,7 @@
       </div>
 
       <!-- Total Elections Card -->
-      <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
+      <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow">
         <div class="flex items-baseline justify-between">
           <div>
             <p class="text-sm font-medium text-gray-600">
@@ -63,7 +63,7 @@
       </div>
 
       <!-- Active Elections Card -->
-      <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
+      <div class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow">
         <div class="flex items-baseline justify-between">
           <div>
             <p class="text-sm font-medium text-gray-600">
@@ -80,7 +80,7 @@
       </div>
 
       <!-- Completed Elections (optional) -->
-      <div v-if="stats.completed_elections !== undefined" class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
+      <div v-if="stats.completed_elections !== undefined" class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow">
         <div class="flex items-baseline justify-between">
           <div>
             <p class="text-sm font-medium text-gray-600">
@@ -97,7 +97,7 @@
       </div>
 
       <!-- New Members (30 days) -->
-      <div v-if="stats.new_members_30d !== undefined" class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
+      <div v-if="stats.new_members_30d !== undefined" class="bg-white rounded-lg shadow-xs p-6 hover:shadow-md transition-shadow">
         <div class="flex items-baseline justify-between">
           <div>
             <p class="text-sm font-medium text-gray-600">

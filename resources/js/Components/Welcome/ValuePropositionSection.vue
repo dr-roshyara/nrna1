@@ -30,7 +30,7 @@
             <h3 class="text-2xl font-bold text-gray-900 mb-6">{{ $t('pages.welcome.value_proposition.why_title') }}</h3>
             <div class="space-y-4">
               <div v-for="(feature, index) in features" :key="index" class="flex items-start">
-                <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                <div class="shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
                   <span class="text-lg">{{ feature.icon }}</span>
                 </div>
                 <div>

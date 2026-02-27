@@ -16,8 +16,8 @@
 ✅ Import statement correct: YES (import { Link } from '@inertiajs/vue3')
 ✅ Other Inertia packages present:
    - @inertiajs/core ✅
-   - @inertiajs/inertia (old)
-   - @inertiajs/inertia-vue3 (old)
+   - @inertiajs/vue3 (old)
+   - @inertiajs/vue3-vue3 (old)
    - @inertiajs/progress ✅
 ```
 

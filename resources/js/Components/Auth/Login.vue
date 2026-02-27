@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col">
-        <jet-authentication-card class="mb-2 rounded border-t border-slate-50">
+        <jet-authentication-card class="mb-2 rounded-sm border-t border-slate-50">
             <div v-if="status" class="mb-1">
                 <jet-validation-errors class="pt-1" />
                 <div v-if="status" class="text-sm font-medium text-green-600">
@@ -131,15 +131,15 @@
 </template>
 
 <script>
-import JetAuthenticationCard from "@/Components/Jetstream/AuthenticationCard";
-import JetAuthenticationCardLogo from "@/Components/Jetstream/AuthenticationCardLogo";
-import JetButton from "@/Components/Jetstream/Button";
-import JetInput from "@/Components/Jetstream/Input";
-import JetCheckbox from "@/Components/Jetstream/Checkbox";
-import JetLabel from "@/Components/Jetstream/Label";
-import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
+import JetAuthenticationCard from "@/Components/Jetstream/AuthenticationCard.vue";
+import JetAuthenticationCardLogo from "@/Components/Jetstream/AuthenticationCardLogo.vue";
+import JetButton from "@/Components/Jetstream/Button.vue";
+import JetInput from "@/Components/Jetstream/Input.vue";
+import JetCheckbox from "@/Components/Jetstream/Checkbox.vue";
+import JetLabel from "@/Components/Jetstream/Label.vue";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 import NrnaLayout from "@/Layouts/LoginLayout";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/vue3";
 export default {
     components: {
         JetAuthenticationCard,

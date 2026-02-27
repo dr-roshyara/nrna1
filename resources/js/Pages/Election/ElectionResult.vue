@@ -14,7 +14,7 @@
     </app-layout>
 </template>
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayout.vue";
 import BreadcrumbSchema from "@/Components/BreadcrumbSchema.vue";
 import EventSchema from "@/Components/EventSchema.vue";
 import { useMeta } from "@/composables/useMeta";

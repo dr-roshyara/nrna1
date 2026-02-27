@@ -6,7 +6,7 @@
         </a>
 
         <!-- Workflow Step Indicator - Step 5/5 -->
-        <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
+        <div class="w-full bg-linear-to-br from-gray-50 to-blue-50 py-6 md:py-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <WorkflowStepIndicator workflow="VOTING" :currentStep="5" />
             </div>
@@ -24,13 +24,13 @@
         </header>
 
         <!-- Main Container -->
-        <main id="main-content" role="main" class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-8 px-4">
+        <main id="main-content" role="main" class="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50 py-8 px-4">
             <div class="max-w-4xl mx-auto">
                 
                 <!-- Demo Vote Success Banner with Verification Code -->
                 <div
                     v-if="is_demo && verification_code"
-                    class="mb-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg overflow-hidden"
+                    class="mb-8 bg-linear-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg overflow-hidden"
                 >
                     <div class="px-8 py-10 text-center text-white">
                         <!-- Success Icon -->
@@ -81,7 +81,7 @@
                 <!-- Success Banner (if voted - for real elections) -->
                 <div
                     v-else-if="has_voted"
-                    class="mb-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg overflow-hidden"
+                    class="mb-8 bg-linear-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg overflow-hidden"
                 >
                     <div class="px-8 py-10 text-center text-white">
                         <!-- Success Icon -->
@@ -120,7 +120,7 @@
                 <!-- Main Verification Card -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
                     <!-- Card Header -->
-                    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-8 py-8 text-center">
+                    <div class="bg-linear-to-r from-blue-600 to-indigo-700 px-8 py-8 text-center">
                         <div class="mx-auto w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -135,7 +135,7 @@
                     </div>
 
                     <!-- Election Type Selector -->
-                    <div class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200 px-8 py-8">
+                    <div class="bg-linear-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200 px-8 py-8">
                         <div class="max-w-2xl mx-auto">
                             <p class="text-base md:text-lg font-bold text-gray-900 mb-6 text-center">{{ $t('pages.vote-show-verify.election_type.label') }}</p>
                             <div class="flex flex-col md:flex-row gap-6 md:gap-12">
@@ -145,7 +145,7 @@
                                         ? 'border-blue-600 bg-blue-50'
                                         : 'border-gray-400 bg-gray-50 hover:border-blue-400'"
                                 >
-                                    <div class="relative flex-shrink-0">
+                                    <div class="relative shrink-0">
                                         <input
                                             type="radio"
                                             v-model="form.electionType"
@@ -173,7 +173,7 @@
                                         ? 'border-green-600 bg-green-50'
                                         : 'border-gray-400 bg-gray-50 hover:border-green-400'"
                                 >
-                                    <div class="relative flex-shrink-0">
+                                    <div class="relative shrink-0">
                                         <input
                                             type="radio"
                                             v-model="form.electionType"
@@ -281,7 +281,7 @@
                                     <button
                                         type="submit"
                                         :disabled="form.processing || !form.voting_code"
-                                        class="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 disabled:from-gray-300 disabled:to-gray-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 focus:ring-4 focus:ring-blue-200 shadow-lg disabled:shadow-none"
+                                        class="w-full bg-linear-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 disabled:from-gray-300 disabled:to-gray-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 focus:ring-4 focus:ring-blue-200 shadow-lg disabled:shadow-none"
                                     >
                                         <span v-if="form.processing" class="flex items-center justify-center space-x-3">
                                             <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -388,7 +388,7 @@
                                     <button
                                         type="submit"
                                         :disabled="form.processing || !form.demo_voting_code"
-                                        class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 focus:ring-4 focus:ring-green-200 shadow-lg disabled:shadow-none"
+                                        class="w-full bg-linear-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 focus:ring-4 focus:ring-green-200 shadow-lg disabled:shadow-none"
                                     >
                                         <span v-if="form.processing" class="flex items-center justify-center space-x-3">
                                             <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -422,7 +422,7 @@
                                     <!-- Help Item 1 -->
                                     <div class="bg-gray-50 rounded-lg p-4 text-left">
                                         <div class="flex items-start space-x-3">
-                                            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                            <div class="shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                                                 <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                                 </svg>
@@ -437,7 +437,7 @@
                                     <!-- Help Item 2 -->
                                     <div class="bg-gray-50 rounded-lg p-4 text-left">
                                         <div class="flex items-start space-x-3">
-                                            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                            <div class="shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                                                 <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 100 19.5 9.75 9.75 0 000-19.5z"></path>
                                                 </svg>
@@ -472,8 +472,8 @@
 import ElectionLayout from "@/Layouts/ElectionLayout.vue";
 import VoteFinal from "@/Pages/Vote/VoteFinal";
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator";
-import { useForm } from "@inertiajs/inertia-vue3";
-import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
+import { useForm } from "@inertiajs/vue3";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 
 export default {
     components: {

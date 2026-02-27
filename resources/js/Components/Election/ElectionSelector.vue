@@ -154,6 +154,8 @@ const onCancel = () => {
 </script>
 
 <style scoped>
+@reference "../../../css/app.css";
+
 /* Overlay */
 .election-selector-overlay {
   @apply fixed inset-0 bg-black/50 flex items-center justify-center z-50;
@@ -207,7 +209,7 @@ const onCancel = () => {
 }
 
 .search-input {
-  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-transparent;
   font-size: 0.95rem;
   transition: all 0.2s ease;
 }

@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import NrnaLayout from "@/Layouts/ProfileLayout";
-import SocialLayout from "@/Layouts/SocialLayout";
+import NrnaLayout from "@/Layouts/ProfileLayout.vue";
+import SocialLayout from "@/Layouts/SocialLayout.vue";
 
-import JetButton from "@/Components/Jetstream/Button";
+import JetButton from "@/Components/Jetstream/Button.vue";
 
 export default {
     components: {

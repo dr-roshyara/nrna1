@@ -12,14 +12,14 @@
         :data-post-error-key="postErrorKey"
     >
         <!-- Post Header with clear requirements -->
-        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-5 text-white transition-all duration-300"
+        <div class="bg-linear-to-r from-blue-600 to-indigo-700 px-6 py-5 text-white transition-all duration-300"
              :class="{
                  'from-red-600 to-red-700': hasError
              }">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div class="flex items-center gap-3 w-full">
                     <!-- Error Icon -->
-                    <div v-if="hasError" class="flex-shrink-0">
+                    <div v-if="hasError" class="shrink-0">
                         <svg class="h-6 w-6 text-red-200" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                         </svg>
@@ -35,7 +35,7 @@
                 </div>
 
                 <!-- Selection Requirements Badge -->
-                <div class="bg-white/20 backdrop-blur-sm rounded-full px-5 py-2 inline-flex items-center gap-3">
+                <div class="bg-white/20 backdrop-blur-xs rounded-full px-5 py-2 inline-flex items-center gap-3">
                     <div class="flex items-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -60,7 +60,7 @@
 
             <!-- Post Validation Error Alert -->
             <div v-if="hasError" class="bg-red-50 border-l-4 border-red-500 px-6 py-4 -mx-6 -mt-5 -mb-5 flex items-start gap-3 mt-4" role="alert" aria-live="polite" aria-atomic="true" :aria-labelledby="`post-error-${post.post_id}`">
-                <div class="flex-shrink-0 pt-1">
+                <div class="shrink-0 pt-1">
                     <svg class="h-5 w-5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                     </svg>
@@ -101,14 +101,14 @@
                     }"
                 >
                     <!-- Candidate Card - Portrait Style -->
-                    <div class="w-full bg-gradient-to-b from-gray-50 to-white border-2 border-gray-200 rounded-xl overflow-hidden transition-all duration-200 hover:border-blue-300 flex flex-col"
+                    <div class="w-full bg-linear-to-b from-gray-50 to-white border-2 border-gray-200 rounded-xl overflow-hidden transition-all duration-200 hover:border-blue-300 flex flex-col"
                          :class="{
                              'border-blue-400 bg-blue-50': isSelected(candidate),
                              'border-gray-300': !isSelected(candidate)
                          }">
 
                         <!-- Post Name Label (Top) -->
-                        <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-center px-3 py-2">
+                        <div class="bg-linear-to-r from-blue-500 to-blue-600 text-white text-center px-3 py-2">
                             <p class="text-xs font-bold leading-tight">
                                 {{ $t('pages.voting.candidate_selection.candidate_for_post', { post: post.name }) }}
                             </p>
@@ -119,7 +119,7 @@
 
                         <!-- Passport Photo Area (Center) -->
                         <div class="flex justify-center p-8 bg-white">
-                            <div class="w-40 h-40 flex-shrink-0 rounded-lg overflow-hidden border-2 border-gray-200">
+                            <div class="w-40 h-40 shrink-0 rounded-lg overflow-hidden border-2 border-gray-200">
                                 <show-candidate
                                     :candidacy_image_path="candidate.image_path_1"
                                     :post_name="post.name"
@@ -189,7 +189,7 @@
 
             <!-- Selection Status -->
             <div class="mb-8">
-                <div class="bg-gradient-to-r from-gray-50 to-blue-50 border-2 border-gray-200 rounded-xl p-5">
+                <div class="bg-linear-to-r from-gray-50 to-blue-50 border-2 border-gray-200 rounded-xl p-5">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                         <!-- Status Message -->
                         <div>
@@ -199,7 +199,7 @@
 
                             <div :class="statusClasses">
                                 <div class="flex items-center gap-3">
-                                    <div :class="statusIconClasses" class="flex-shrink-0">
+                                    <div :class="statusIconClasses" class="shrink-0">
                                         {{ statusIcon }}
                                     </div>
                                     <div>
@@ -230,7 +230,7 @@
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2">
                             <div
-                                class="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500"
+                                class="bg-linear-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500"
                                 :style="{ width: selectionProgress + '%' }"
                                 role="progressbar"
                                 :aria-valuenow="selectionProgress"
@@ -243,10 +243,10 @@
             </div>
 
             <!-- Large Skip Button -->
-            <div class="border-2 border-gray-300 rounded-xl p-6 mb-6 bg-gradient-to-br from-gray-50 to-white">
+            <div class="border-2 border-gray-300 rounded-xl p-6 mb-6 bg-linear-to-br from-gray-50 to-white">
                 <div class="flex flex-col md:flex-row md:items-center gap-6">
                     <!-- Checkbox Area -->
-                    <div class="flex-shrink-0">
+                    <div class="shrink-0">
                         <div class="relative">
                             <input
                                 type="checkbox"
@@ -258,7 +258,7 @@
                             />
                             <label
                                 :for="`no_vote_${post.post_id}`"
-                                class="flex items-center justify-center w-12 h-12 bg-white border-3 border-black rounded-lg cursor-pointer shadow-sm
+                                class="flex items-center justify-center w-12 h-12 bg-white border-3 border-black rounded-lg cursor-pointer shadow-xs
                                        peer-checked:bg-blue-600 peer-checked:border-blue-600
                                        peer-focus:ring-4 peer-focus:ring-blue-200 peer-focus:border-blue-500
                                        transition-all duration-200 hover:border-black hover:shadow-md"
@@ -271,7 +271,7 @@
                     </div>
 
                     <!-- Skip Content -->
-                    <div class="flex-grow">
+                    <div class="grow">
                         <label :for="`no_vote_${post.post_id}`" class="cursor-pointer block">
                             <h3 class="text-xl font-bold text-gray-900 mb-2">
                                 {{ $t('pages.voting.candidate_selection.skip_position') }}

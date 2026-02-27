@@ -38,7 +38,7 @@
         </div>
          <div class="mt-2">
           <div class="ml-2 p-2">
-            <inertia-link href="/student/create" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> IT Classes</inertia-link>
+            <inertia-link href="/student/create" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-xs"> IT Classes</inertia-link>
             </div>
 
          </div>
@@ -51,13 +51,13 @@
                     </div>
 
             </inertia-link>-->
-                    <!-- <inertia-link href="/dashboard" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> Dashboard</inertia-link>
-                    <inertia-link href="/voters" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> Voter's List </inertia-link>
-                    <inertia-link href="/users/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> Member's List </inertia-link>
-                    <inertia-link href="/candidacies/index" class=" p-2 mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"> List of Candidates </inertia-link>
-                    <inertia-link href="/candidacy/create" class=" p-2 bg-red-50 font-bold text-gray-900 rounded border border-right "> Candidacy Form </inertia-link>
-                    <inertia-link href="/posts/index" class=" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-sm"> Name of Posts</inertia-link>
-                     <inertia-link href="/notices/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-sm"> List of Notices</inertia-link> -->
+                    <!-- <inertia-link href="/dashboard" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-xs"> Dashboard</inertia-link>
+                    <inertia-link href="/voters" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-xs"> Voter's List </inertia-link>
+                    <inertia-link href="/users/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-xs"> Member's List </inertia-link>
+                    <inertia-link href="/candidacies/index" class=" p-2 mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-xs"> List of Candidates </inertia-link>
+                    <inertia-link href="/candidacy/create" class=" p-2 bg-red-50 font-bold text-gray-900 rounded-sm border border-right "> Candidacy Form </inertia-link>
+                    <inertia-link href="/posts/index" class=" p-2  mx-2 bg-red-50 font-bold text-gray-900 border-right rounded-xs"> Name of Posts</inertia-link>
+                     <inertia-link href="/notices/index" class=" p-2   mx-2 bg-red-50 font-bold text-gray-900 rounded-xs"> List of Notices</inertia-link> -->
 
 
          <!-- end  -->

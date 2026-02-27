@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+  <div class="min-h-screen bg-linear-to-b from-blue-50 to-white">
     <!-- Breadcrumb Schema for SEO -->
     <BreadcrumbSchema />
 
@@ -50,9 +50,9 @@
               </div>
             </div>
 
-            <ul class="space-y-4 mb-10 flex-grow">
+            <ul class="space-y-4 mb-10 grow">
               <li v-for="(feature, index) in starterFeatures" :key="index" class="flex items-start gap-3">
-                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 shrink-0">
                   <span class="text-blue-600 font-bold text-sm">✓</span>
                 </div>
                 <span class="text-gray-700">{{ feature }}</span>
@@ -88,9 +88,9 @@
               </div>
             </div>
 
-            <ul class="space-y-4 mb-10 flex-grow">
+            <ul class="space-y-4 mb-10 grow">
               <li v-for="(feature, index) in professionalFeatures" :key="index" class="flex items-start gap-3">
-                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 shrink-0">
                   <span class="text-blue-600 font-bold text-sm">✓</span>
                 </div>
                 <span class="text-gray-700">{{ feature }}</span>
@@ -122,9 +122,9 @@
               </div>
             </div>
 
-            <ul class="space-y-4 mb-10 flex-grow">
+            <ul class="space-y-4 mb-10 grow">
               <li v-for="(feature, index) in enterpriseFeatures" :key="index" class="flex items-start gap-3">
-                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                <div class="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-1 shrink-0">
                   <span class="text-blue-600 font-bold text-sm">✓</span>
                 </div>
                 <span class="text-gray-700">{{ feature }}</span>
@@ -148,7 +148,7 @@
 
         <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div v-for="(feature, index) in includedFeatures" :key="index" class="flex items-center gap-4 p-4 bg-white rounded-lg border border-blue-100">
-            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center shrink-0">
               <span class="text-green-600 font-bold">✓</span>
             </div>
             <span class="text-gray-700 font-medium">{{ feature }}</span>
@@ -188,7 +188,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 md:py-20 bg-gradient-to-r from-blue-900 to-blue-800">
+    <section class="py-16 md:py-20 bg-linear-to-r from-blue-900 to-blue-800">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
         <div class="text-center text-white max-w-2xl mx-auto">
           <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -291,7 +291,7 @@ button:focus {
 /* High contrast mode */
 @media (prefers-contrast: high) {
   .bg-gradient-to-r,
-  .bg-gradient-to-b {
+  .bg-linear-to-b {
     background: #ffffff !important;
   }
 

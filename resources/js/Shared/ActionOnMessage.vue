@@ -32,7 +32,7 @@
         ></button>
         <div
             :class="showActionBar ? 'block' : 'hidden'"
-            class="absolute ml-4 w-3/4 -translate-x-full rounded border-b border-slate-50 bg-zinc-100 sm:max-w-sm"
+            class="absolute ml-4 w-3/4 -translate-x-full rounded-sm border-b border-slate-50 bg-zinc-100 sm:max-w-sm"
         >
             <ul class="mb-2 grid grid-cols-1 justify-end border">
                 <li class="px-2" v-if="userLoggedIn">

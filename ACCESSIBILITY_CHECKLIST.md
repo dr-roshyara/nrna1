@@ -76,7 +76,7 @@
 - [ ] Focus indicator visible on all interactive elements
 - [ ] Focus indicator has sufficient contrast (3:1 minimum)
 - [ ] Focus indicator is not obscured
-- [ ] Focus outline not removed (no `outline: none` without replacement)
+- [ ] Focus outline not removed (no `outline-solid: none` without replacement)
 
 ---
 

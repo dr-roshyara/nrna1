@@ -106,7 +106,7 @@
     </div>
 </template>
 <script>
-import JetNavLink from "@/Components/Jetstream/NavLink";
+import JetNavLink from "@/Components/Jetstream/NavLink.vue";
 export default {
     components: {
         JetNavLink,

@@ -6,20 +6,20 @@
         </header>
 
         <!-- Main content with landmark -->
-        <main class="flex-grow py-12 md:py-20 bg-white" role="main">
+        <main class="grow py-12 md:py-20 bg-white" role="main">
             <div class="container mx-auto px-4 md:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto">
                     <!-- Page heading (screen reader only) -->
                     <h1 class="sr-only">{{ activeElection.name }} - {{ $t('pages.election.voting_page.title') }}</h1>
 
                     <!-- Election Status Banner - WCAG AA Compliant -->
-                    <div class="mb-8 p-6 bg-gradient-to-r from-green-100 to-blue-100 border-2 border-green-300 rounded-lg"
+                    <div class="mb-8 p-6 bg-linear-to-r from-green-100 to-blue-100 border-2 border-green-300 rounded-lg"
                          role="alert"
                          aria-live="polite"
                          aria-label="Election status: Voting is currently active">
                         <div class="flex items-center gap-4">
                             <div class="text-4xl" role="img" aria-label="Ballot box">🗳️</div>
-                            <div class="flex-grow">
+                            <div class="grow">
                                 <h2 class="text-2xl font-bold text-gray-900 mb-2">
                                     {{ activeElection.name }}
                                 </h2>
@@ -41,7 +41,7 @@
                     </div>
 
                     <!-- Voter Status Check - Already Voted -->
-                    <div v-if="authUser.has_voted" class="mb-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded"
+                    <div v-if="authUser.has_voted" class="mb-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-sm"
                          role="alert">
                         <div class="flex gap-3">
                             <span class="text-2xl" role="img" aria-label="Warning">📋</span>
@@ -55,7 +55,7 @@
                     </div>
 
                     <!-- Voter Status Check - Not Eligible -->
-                    <div v-if="!canVoteNow" class="mb-6 p-4 bg-red-50 border-l-4 border-red-400 rounded"
+                    <div v-if="!canVoteNow" class="mb-6 p-4 bg-red-50 border-l-4 border-red-400 rounded-sm"
                          role="alert">
                         <div class="flex gap-3">
                             <span class="text-2xl" role="img" aria-label="Error">❌</span>
@@ -115,27 +115,27 @@
 
                             <ol class="space-y-3 text-sm">
                                 <li class="flex gap-3">
-                                    <span class="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
+                                    <span class="shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
                                           aria-hidden="true">1</span>
                                     <span class="text-gray-700">{{ $t('pages.election.voting_page.step1') }}</span>
                                 </li>
                                 <li class="flex gap-3">
-                                    <span class="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
+                                    <span class="shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
                                           aria-hidden="true">2</span>
                                     <span class="text-gray-700">{{ $t('pages.election.voting_page.step2') }}</span>
                                 </li>
                                 <li class="flex gap-3">
-                                    <span class="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
+                                    <span class="shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
                                           aria-hidden="true">3</span>
                                     <span class="text-gray-700">{{ $t('pages.election.voting_page.step3') }}</span>
                                 </li>
                                 <li class="flex gap-3">
-                                    <span class="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
+                                    <span class="shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
                                           aria-hidden="true">4</span>
                                     <span class="text-gray-700">{{ $t('pages.election.voting_page.step4') }}</span>
                                 </li>
                                 <li class="flex gap-3">
-                                    <span class="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
+                                    <span class="shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
                                           aria-hidden="true">5</span>
                                     <span class="text-gray-700">{{ $t('pages.election.voting_page.step5') }}</span>
                                 </li>
@@ -145,19 +145,19 @@
 
                     <!-- Key Information Cards -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        <div class="bg-gradient-to-br from-purple-100 to-purple-50 p-6 rounded-lg border border-purple-300">
+                        <div class="bg-linear-to-br from-purple-100 to-purple-50 p-6 rounded-lg border border-purple-300">
                             <div class="text-3xl mb-2" role="img" aria-label="Lock">🔒</div>
                             <h4 class="font-semibold text-gray-900 mb-2">{{ $t('pages.election.voting_page.secure') }}</h4>
                             <p class="text-sm text-gray-700">{{ $t('pages.election.voting_page.secure_desc') }}</p>
                         </div>
 
-                        <div class="bg-gradient-to-br from-green-100 to-green-50 p-6 rounded-lg border border-green-300">
+                        <div class="bg-linear-to-br from-green-100 to-green-50 p-6 rounded-lg border border-green-300">
                             <div class="text-3xl mb-2" role="img" aria-label="Checkmark">✓</div>
                             <h4 class="font-semibold text-gray-900 mb-2">{{ $t('pages.election.voting_page.verified') }}</h4>
                             <p class="text-sm text-gray-700">{{ $t('pages.election.voting_page.verified_desc') }}</p>
                         </div>
 
-                        <div class="bg-gradient-to-br from-blue-100 to-blue-50 p-6 rounded-lg border border-blue-300">
+                        <div class="bg-linear-to-br from-blue-100 to-blue-50 p-6 rounded-lg border border-blue-300">
                             <div class="text-3xl mb-2" role="img" aria-label="Globe">🌍</div>
                             <h4 class="font-semibold text-gray-900 mb-2">{{ $t('pages.election.voting_page.global') }}</h4>
                             <p class="text-sm text-gray-700">{{ $t('pages.election.voting_page.global_desc') }}</p>
@@ -190,7 +190,7 @@
                         <InertiaLink
                             :href="route('slug.code.create', { vslug: activeElection.slug })"
                             :disabled="authUser.has_voted || !canVoteNow"
-                            class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-800 text-white font-bold rounded-lg hover:shadow-lg transition duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                            class="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-blue-700 to-blue-800 text-white font-bold rounded-lg hover:shadow-lg transition duration-200 focus:outline-hidden focus:ring-4 focus:ring-blue-300 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
                             :aria-label="`${$t('pages.election.voting_page.start_voting')} for ${activeElection.name}`">
                             <span class="mr-2" role="img" aria-hidden="true">🗳️</span>
                             {{ $t('pages.election.voting_page.start_voting') }}
@@ -229,7 +229,7 @@
 </template>
 
 <script>
-import { Link as InertiaLink } from '@inertiajs/inertia-vue3';
+import { Link as InertiaLink } from '@inertiajs/vue3';
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 

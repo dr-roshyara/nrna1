@@ -24,7 +24,7 @@
       class="w-full px-4 py-2.5 rounded-lg border-2 bg-white dark:bg-gray-800
              border-gray-300 dark:border-gray-600
              text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400
-             focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20
+             focus:outline-hidden focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20
              dark:focus:border-blue-400 dark:focus:ring-blue-400/20
              transition-all duration-200
              disabled:bg-gray-100 dark:disabled:bg-gray-900 disabled:cursor-not-allowed disabled:opacity-50

@@ -20,7 +20,7 @@
       <!-- Import Members Card (Link to dedicated page) -->
       <Link
         :href="importMembersLink"
-        class="group relative bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 p-6 text-left border border-gray-200 hover:border-blue-300"
+        class="group relative bg-white rounded-lg shadow-xs hover:shadow-md transition-all duration-200 p-6 text-left border border-gray-200 hover:border-blue-300"
         :aria-label="$t('pages.organization-show.actions.import_members')"
       >
         <!-- Icon -->
@@ -56,7 +56,7 @@
       <button
         type="button"
         @click="$emit('appoint-officer')"
-        class="group relative bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 p-6 text-left border border-gray-200 hover:border-purple-300"
+        class="group relative bg-white rounded-lg shadow-xs hover:shadow-md transition-all duration-200 p-6 text-left border border-gray-200 hover:border-purple-300"
         :aria-label="$t('pages.organization-show.actions.appoint_officer')"
       >
         <!-- Icon -->
@@ -92,7 +92,7 @@
       <button
         type="button"
         @click="$emit('create-election')"
-        class="group relative bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 p-6 text-left border border-gray-200 hover:border-green-300"
+        class="group relative bg-white rounded-lg shadow-xs hover:shadow-md transition-all duration-200 p-6 text-left border border-gray-200 hover:border-green-300"
         :aria-label="$t('pages.organization-show.actions.create_election')"
       >
         <!-- Icon -->

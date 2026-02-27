@@ -49,8 +49,8 @@
                             :name     ="icc_member.post_name"
                             :value    ="icc_member.candidacy_id"  
                             v-model   ="form.icc_member"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 
-                            focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 
+                            focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change    ="updateBoxes(this.icc_members,this.form.icc_member,this.icc_memberTicks)" 
                             :disabled ="icc_member.disabled"
                           />
@@ -91,7 +91,7 @@
                             :name     ="president.post_name"
                             :value    ="president.candidacy_id"  
                             v-model   ="form.president"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.presidents,this.form.president,this.presidentTicks)" 
                             :disabled ="president.disabled"
                           />
@@ -133,7 +133,7 @@
                             :name     ="vice_president.post_name"
                             :value    ="vice_president.candidacy_id"  
                             v-model   ="form.vice_president"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.vice_presidents, this.form.vice_president,this.vice_presidentTicks)" 
                             :disabled ="vice_president.disabled"
                           />
@@ -177,7 +177,7 @@
                             :name     ="wvp.post_name"
                             :value    ="wvp.candidacy_id"  
                             v-model   ="form.wvp"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.wvps, this.form.wvp,this.wvpTicks)" 
                             :disabled ="wvp.disabled"
                           />
@@ -220,7 +220,7 @@
                             :name     ="general_secretary.post_name"
                             :value    ="general_secretary.candidacy_id"  
                             v-model   ="form.general_secretary"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.general_secretarys, this.form.general_secretary,this.general_secretaryTicks)" 
                             :disabled ="general_secretary.disabled"
                           />
@@ -266,7 +266,7 @@
                             :name     ="secretary.post_name"
                             :value    ="secretary.candidacy_id"  
                             v-model   ="form.secretary"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.secretarys, this.form.secretary,this.secretaryTicks)" 
                             :disabled ="secretary.disabled"
                           />
@@ -312,7 +312,7 @@
                             :name     ="treasure.post_name"
                             :value    ="treasure.candidacy_id"  
                             v-model   ="form.treasure"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.treasures, this.form.treasure,this.treasureTicks)" 
                             :disabled ="treasure.disabled"
                           />
@@ -355,7 +355,7 @@
                             :name     ="w_coordinator.post_name"
                             :value    ="w_coordinator.candidacy_id"  
                             v-model   ="form.w_coordinator"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.w_coordinators, this.form.w_coordinator,this.w_coordinatorTicks)" 
                             :disabled ="w_coordinator.disabled"
                           />
@@ -398,7 +398,7 @@
                             :name     ="y_coordinator.post_name"
                             :value    ="y_coordinator.candidacy_id"  
                             v-model   ="form.y_coordinator"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.y_coordinators, this.form.y_coordinator,this.y_coordinatorTicks)" 
                             :disabled ="y_coordinator.disabled"
                           />
@@ -441,7 +441,7 @@
                             :name     ="cult_coordinator.post_name"
                             :value    ="cult_coordinator.candidacy_id"  
                             v-model   ="form.cult_coordinator"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.cult_coordinators, this.form.cult_coordinator,this.cult_coordinatorTicks)" 
                             :disabled ="cult_coordinator.disabled"
                           />
@@ -485,7 +485,7 @@
                             :name     ="child_coordinator.post_name"
                             :value    ="child_coordinator.candidacy_id"  
                             v-model   ="form.child_coordinator"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.child_coordinators, this.form.child_coordinator,this.child_coordinatorTicks)" 
                             :disabled ="child_coordinator.disabled"
                           />
@@ -529,7 +529,7 @@
                             :name     ="studt_coordinator.post_name"
                             :value    ="studt_coordinator.candidacy_id"  
                             v-model   ="form.studt_coordinator"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.studt_coordinators, this.form.studt_coordinator,this.studt_coordinatorTicks)" 
                             :disabled ="studt_coordinator.disabled"
                           />
@@ -573,7 +573,7 @@
                             :name     ="member_berlin.post_name"
                             :value    ="member_berlin.candidacy_id"  
                             v-model   ="form.member_berlin"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_berlins, this.form.member_berlin,this.member_berlinTicks)" 
                             :disabled ="member_berlin.disabled"
                           />
@@ -617,7 +617,7 @@
                             :name     ="member_hamburg.post_name"
                             :value    ="member_hamburg.candidacy_id"  
                             v-model   ="form.member_hamburg"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_hamburgs, this.form.member_hamburg,this.member_hamburgTicks)" 
                             :disabled ="member_hamburg.disabled"
                           />
@@ -662,7 +662,7 @@
                             :name     ="member_nsachsen.post_name"
                             :value    ="member_nsachsen.candidacy_id"  
                             v-model   ="form.member_nsachsen"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_nsachsens, this.form.member_nsachsen,this.member_nsachsenTicks)" 
                             :disabled ="member_nsachsen.disabled"
                           />
@@ -707,7 +707,7 @@
                             :name     ="member_nrw.post_name"
                             :value    ="member_nrw.candidacy_id"  
                             v-model   ="form.member_nrw"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_nrws, this.form.member_nrw,this.member_nrwTicks)" 
                             :disabled ="member_nrw.disabled"
                           />
@@ -752,7 +752,7 @@
                             :name     ="member_hessen.post_name"
                             :value    ="member_hessen.candidacy_id"  
                             v-model   ="form.member_hessen"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_hessens, this.form.member_hessen,this.member_hessenTicks)" 
                             :disabled ="member_hessen.disabled"
                           />
@@ -797,7 +797,7 @@
                             :name     ="member_rhein_pfalz.post_name"
                             :value    ="member_rhein_pfalz.candidacy_id"  
                             v-model   ="form.member_rhein_pfalz"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_rhein_pfalzs, this.form.member_rhein_pfalz,this.member_rhein_pfalzTicks)" 
                             :disabled ="member_rhein_pfalz.disabled"
                           />
@@ -842,7 +842,7 @@
                             :name     ="member_bayern.post_name"
                             :value    ="member_bayern.candidacy_id"  
                             v-model   ="form.member_bayern"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_bayerns, this.form.member_bayern,this.member_bayernTicks)" 
                             :disabled ="member_bayern.disabled"
                           />
@@ -880,7 +880,7 @@
                     :name     ="no_vote_option"
                     :value    =true
                     v-model   ="form.no_vote_option"
-                    class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                     @change  ="update_no_vote_option()" 
                   />
                   </div> 
@@ -905,14 +905,14 @@
                     :name     ="agree_button"
                     :value    =true
                     v-model   ="form.agree_button"
-                    class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                  
                   />
                   </div> 
                   <p>  By clicking this button, I conform that I have chosen the candidates correctly and I followed the online rules to vote the candidates. </p>
                 <p>यो बटनमा थिचेर मैले माथि छाने आनुसार  मतदान गरेको साचो हो। मैले बिद्दुतिय नियम हरुलाई पलना गरेर आफ्नो मत जाहेर गरेर मतदान गरेको कुरा स्विकार्छु। </p> 
              
-                   <button type="submit" class="mx-2 my-4 px-2 py-6 rounded-lg bg-blue-300 w-full mx-auto shadow-sm text-xl font-bold text-gray-900">
+                   <button type="submit" class="mx-2 my-4 px-2 py-6 rounded-lg bg-blue-300 w-full mx-auto shadow-xs text-xl font-bold text-gray-900">
                    Submit
                    </button>
               
@@ -930,14 +930,14 @@
 </template>
 
 <script>
-import { useForm } from '@inertiajs/inertia-vue3'
-import ShowCandidate from '@/Shared/ShowCandidate'
-import JetInput from '@/Components/Jetstream/Input'
-import ShowCheckbox from "@/Shared/ShowCheckbox";
-import JetValidationErrors from '@/Components/Jetstream/ValidationErrors'
+import { useForm } from '@inertiajs/vue3'
+import ShowCandidate from '@/Shared/ShowCandidate.vue'
+import JetInput from '@/Components/Jetstream/Input.vue'
+import ShowCheckbox from "@/Shared/ShowCheckbox.vue";
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors.vue'
 import VotingLayout from '@/Components/Election/VotingLayout.vue' 
- import AppLayout from '@/Layouts/AppLayout'
- import NrnaLayout from '@/Layouts/NrnaLayout'    
+ import AppLayout from '@/Layouts/AppLayout.vue'
+ import NrnaLayout from '@/Layouts/NrnaLayout.vue'    
 export default {
   props:{
      candidacies:Object,

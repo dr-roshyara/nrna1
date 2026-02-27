@@ -489,7 +489,7 @@ function handleCandidateSelection(type, postIndex, selectionData) {
 <template>
   <section class="candidate-selection">
     <!-- Post Header -->
-    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-5 text-white">
+    <div class="bg-linear-to-r from-blue-600 to-indigo-700 px-6 py-5 text-white">
       <h2 :id="`post-title-${post.post_id}`" class="text-2xl font-bold mb-1">
         {{ post.name }}
       </h2>
@@ -514,7 +514,7 @@ function handleCandidateSelection(type, postIndex, selectionData) {
           <!-- Candidate Card -->
           <div class="w-full bg-white border-2 border-gray-200 rounded-xl overflow-hidden">
             <!-- Post Name Label -->
-            <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-center px-3 py-2">
+            <div class="bg-linear-to-r from-blue-500 to-blue-600 text-white text-center px-3 py-2">
               <p class="text-xs font-bold">
                 Candidate for {{ post.name }}
               </p>
@@ -522,7 +522,7 @@ function handleCandidateSelection(type, postIndex, selectionData) {
 
             <!-- Photo -->
             <div class="flex justify-center p-8 bg-white">
-              <div class="w-40 h-40 flex-shrink-0 rounded-lg overflow-hidden border-2 border-gray-200">
+              <div class="w-40 h-40 shrink-0 rounded-lg overflow-hidden border-2 border-gray-200">
                 <show-candidate
                   :candidacy_image_path="candidate.image_path_1"
                   :candidacy_name="candidate.candidacy_name"

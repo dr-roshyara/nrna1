@@ -70,7 +70,7 @@
             </div>
 
             <!-- Step 1: File Upload -->
-            <section v-if="currentStep === 'upload'" class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <section v-if="currentStep === 'upload'" class="bg-white rounded-lg shadow-xs p-6 mb-6">
               <h2 class="text-xl font-semibold text-gray-900 mb-4">
                 {{ $t('modals.member_import.title') }}
               </h2>
@@ -128,7 +128,7 @@
             </section>
 
             <!-- Step 2: Preview -->
-            <section v-if="currentStep === 'preview' && preview" class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <section v-if="currentStep === 'preview' && preview" class="bg-white rounded-lg shadow-xs p-6 mb-6">
               <h2 class="text-xl font-semibold text-gray-900 mb-4">
                 {{ $t('modals.member_import.preview', { count: preview.rows.length }) }}
               </h2>
@@ -164,7 +164,7 @@
                 <p class="font-semibold text-amber-900 mb-3">Validation Issues:</p>
                 <ul class="space-y-1 text-sm text-amber-800">
                   <li v-for="(error, idx) in validationErrors.slice(0, 10)" :key="idx" class="flex items-start gap-2">
-                    <span class="flex-shrink-0 mt-0.5">•</span>
+                    <span class="shrink-0 mt-0.5">•</span>
                     <span>{{ error }}</span>
                   </li>
                 </ul>
@@ -206,7 +206,7 @@
             </section>
 
             <!-- Step 3: Success -->
-            <section v-if="currentStep === 'success'" class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <section v-if="currentStep === 'success'" class="bg-white rounded-lg shadow-xs p-6 mb-6">
               <div class="text-center">
                 <svg class="mx-auto w-16 h-16 text-green-600 mb-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />

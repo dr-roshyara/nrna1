@@ -7,7 +7,7 @@
       :aria-expanded="expanded"
       class="w-full text-left px-4 py-3 -mx-4 -my-3 flex items-center justify-between rounded
              hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors
-             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+             focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
              dark:focus:ring-offset-gray-900"
     >
       <h3 class="font-semibold text-gray-900 dark:text-white">

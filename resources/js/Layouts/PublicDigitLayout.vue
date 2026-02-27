@@ -4,7 +4,7 @@
         </public-digit-header>
         
         <!-- Main content area (grows to fill space) -->
-        <main class="flex-grow">
+        <main class="grow">
             <slot></slot>
         </main>
         

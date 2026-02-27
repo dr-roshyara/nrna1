@@ -2,33 +2,33 @@
     <nrna-layout>
         <div class="m-2 min-h-screen bg-gray-100 p-2">
             <!-- Success/Error Messages -->
-            <div v-if="$page.props.flash?.success" class="mb-4 rounded bg-green-100 border border-green-400 text-green-700 px-4 py-3">
+            <div v-if="$page.props.flash?.success" class="mb-4 rounded-sm bg-green-100 border border-green-400 text-green-700 px-4 py-3">
                 {{ $page.props.flash.success }}
             </div>
-            <div v-if="$page.props.flash?.error" class="mb-4 rounded bg-red-100 border border-red-400 text-red-700 px-4 py-3">
+            <div v-if="$page.props.flash?.error" class="mb-4 rounded-sm bg-red-100 border border-red-400 text-red-700 px-4 py-3">
                 {{ $page.props.flash.error }}
             </div>
-            <div v-if="$page.props.errors?.error" class="mb-4 rounded bg-red-100 border border-red-400 text-red-700 px-4 py-3">
+            <div v-if="$page.props.errors?.error" class="mb-4 rounded-sm bg-red-100 border border-red-400 text-red-700 px-4 py-3">
                 {{ $page.props.errors.error }}
             </div>
 
             <div class="flex flex-row justify-between py-2">
                 <Link
                     v-if="voters?.prev_page_url"
-                    class="m-2 rounded bg-gray-300 px-2 py-2"
+                    class="m-2 rounded-sm bg-gray-300 px-2 py-2"
                     :href="voters.prev_page_url"
                     >Previous Page
                 </Link>
                 <Link
                     v-if="voters?.next_page_url"
-                    class="m-2 rounded bg-gray-300 px-2 py-2"
+                    class="m-2 rounded-sm bg-gray-300 px-2 py-2"
                     :href="voters.next_page_url"
                     >Next Page
                 </Link>
             </div>
             
             <!-- Committee Member Info -->
-            <div v-if="isCommitteeMember" class="mb-4 rounded bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3">
+            <div v-if="isCommitteeMember" class="mb-4 rounded-sm bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3">
                 <strong>Committee Member Access:</strong> You can approve/reject voters.
             </div>
 
@@ -213,7 +213,7 @@
                                 <button
                                     v-if="voter?.can_vote == 0 || voter?.can_vote == null"
                                     @click="approveVoter(voter.id)"
-                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-xs"
+                                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded-sm text-xs"
                                     :disabled="loading"
                                 >
                                     {{ loading ? 'Loading...' : 'Approve' }}
@@ -223,7 +223,7 @@
                                 <button
                                     v-if="voter?.can_vote == 1"
                                     @click="rejectVoter(voter.id)"
-                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded text-xs"
+                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded-sm text-xs"
                                     :disabled="loading"
                                 >
                                     {{ loading ? 'Loading...' : 'Suspend' }}
@@ -244,10 +244,10 @@
 </template>
 <script>
 // import User from "../User.vue";
-import NrnaLayout from "@/Layouts/ElectionLayout";
-import { Inertia } from "@inertiajs/inertia";
-import Sendmessage from "@/Pages/Message/Sendmessage";
-import { Link } from "@inertiajs/inertia-vue3";
+import NrnaLayout from "@/Layouts/ElectionLayout.vue";
+import { router } from "@inertiajs/vue3";
+import Sendmessage from "@/Pages/Message/Sendmessage.vue";
+import { Link } from "@inertiajs/vue3";
 import {
     InteractsWithQueryBuilder,
     Tailwind2,

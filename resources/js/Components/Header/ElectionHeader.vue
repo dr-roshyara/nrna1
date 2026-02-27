@@ -1,12 +1,12 @@
 <template>
-  <header class="sticky top-0 z-40 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white shadow-lg border-b border-blue-600/30 relative">
+  <header class="sticky top-0 z-40 bg-linear-to-br from-blue-900 via-blue-800 to-blue-700 text-white shadow-lg border-b border-blue-600/30 relative">
     <div class="container mx-auto px-3 md:px-6 lg:px-8 relative">
       <!-- Top Row: Logo + Controls -->
       <div class="flex items-center justify-between py-3 md:py-4 gap-3">
         <!-- Logo and Branding -->
         <div class="flex items-center gap-2 flex-1 min-w-0">
           <!-- Logo with subtle hover effect -->
-          <div class="flex-shrink-0 transform hover:scale-105 transition-transform duration-300 ease-out">
+          <div class="shrink-0 transform hover:scale-105 transition-transform duration-300 ease-out">
             <img
               src="/images/logo-2.png"
               alt="PUBLIC DIGIT Logo"
@@ -26,13 +26,13 @@
         </div>
 
         <!-- Right Controls: Language + Auth + Mobile Menu -->
-        <div class="flex items-center gap-2 md:gap-3 flex-shrink-0">
+        <div class="flex items-center gap-2 md:gap-3 shrink-0">
           <!-- Language Selector - Compact on Mobile -->
           <div class="relative">
             <select
               :value="currentLocale"
               @change="handleLanguageChange"
-              class="appearance-none bg-white/10 text-white border border-white/30 rounded px-2 md:px-4 py-2 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all cursor-pointer"
+              class="appearance-none bg-white/10 text-white border border-white/30 rounded-sm px-2 md:px-4 py-2 text-xs md:text-sm font-medium focus:outline-hidden focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all cursor-pointer"
               :aria-label="$t('common.select_language')"
             >
               <option value="de" class="bg-blue-900 text-white">DE</option>
@@ -51,7 +51,7 @@
             <a
               v-if="!isLoggedIn"
               :href="route('login')"
-              class="inline-flex items-center px-3 md:px-4 py-2 bg-white text-blue-900 font-semibold text-xs md:text-sm rounded hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group"
+              class="inline-flex items-center px-3 md:px-4 py-2 bg-white text-blue-900 font-semibold text-xs md:text-sm rounded-sm hover:bg-blue-50 focus:outline-hidden focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group"
             >
               <svg class="w-4 h-4 mr-1 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
@@ -65,7 +65,7 @@
               type="button"
               @click="logout"
               :disabled="isLoggingOut"
-              class="inline-flex items-center px-3 md:px-4 py-2 border-2 border-white text-white font-semibold text-xs md:text-sm rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group disabled:opacity-50 disabled:cursor-not-allowed"
+              class="inline-flex items-center px-3 md:px-4 py-2 border-2 border-white text-white font-semibold text-xs md:text-sm rounded-sm hover:bg-white/10 focus:outline-hidden focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -79,7 +79,7 @@
             @click="toggleMobileMenu"
             :aria-expanded="showMobileMenu"
             :aria-label="showMobileMenu ? $t('common.close_menu') : $t('common.open_menu')"
-            class="md:hidden p-2 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200"
+            class="md:hidden p-2 rounded-lg hover:bg-white/10 focus:outline-hidden focus:ring-2 focus:ring-white/50 transition-all duration-200"
           >
             <svg v-if="!showMobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -96,19 +96,19 @@
         <div class="flex items-center gap-1">
           <a
             href="/"
-            class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded transition-colors duration-200 text-sm"
+            class="text-white font-medium hover:text-blue-100 focus:outline-hidden focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
           >
             {{ $t('navigation.home') }}
           </a>
           <a
             href="/about"
-            class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded transition-colors duration-200 text-sm"
+            class="text-white font-medium hover:text-blue-100 focus:outline-hidden focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
           >
             {{ $t('navigation.about') }}
           </a>
           <a
             href="/faq"
-            class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded transition-colors duration-200 text-sm"
+            class="text-white font-medium hover:text-blue-100 focus:outline-hidden focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
           >
             {{ $t('navigation.faq') }}
           </a>
@@ -117,7 +117,7 @@
         <!-- Demo Link - Special CTA -->
         <a
           href="/election/demo/start"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded hover:from-green-600 hover:to-emerald-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded-sm hover:from-green-600 hover:to-emerald-600 focus:outline-hidden focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
           :title="$t('navigation.demo_title', 'Try demo election without registration')"
         >
           <svg class="w-4 h-4 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -130,7 +130,7 @@
       <!-- Mobile Menu - Dropdown for small screens -->
       <div
         v-if="showMobileMenu"
-        class="md:hidden absolute top-full left-0 right-0 bg-gradient-to-b from-blue-900 to-blue-950 border-t border-blue-600/50 shadow-2xl py-4 px-0 space-y-2 z-50"
+        class="md:hidden absolute top-full left-0 right-0 bg-linear-to-b from-blue-900 to-blue-950 border-t border-blue-600/50 shadow-2xl py-4 px-0 space-y-2 z-50"
         role="region"
         :aria-label="$t('common.mobile_navigation')"
       >
@@ -164,7 +164,7 @@
           <a
             href="/election/demo/start"
             @click="showMobileMenu = false"
-            class="block px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded-lg hover:from-green-600 hover:to-emerald-600 active:from-green-700 active:to-emerald-700 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
+            class="block px-4 py-3 bg-linear-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded-lg hover:from-green-600 hover:to-emerald-600 active:from-green-700 active:to-emerald-700 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
           >
             🎪 {{ $t('navigation.demo', 'Try Demo') }}
           </a>
@@ -353,7 +353,7 @@ export default {
 
     /**
      * Logout user using Inertia form helper
-     * PROPER PATTERN: Use Inertia.js for all page requests
+     * PROPER PATTERN: Use router.js for all page requests
      *
      * Benefits:
      * - Automatic CSRF token handling via middleware

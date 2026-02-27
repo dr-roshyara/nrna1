@@ -901,7 +901,7 @@ public function show($slug)
 <!-- resources/js/Pages/Organisations/Partials/DemoSetupButton.vue -->
 
 <template>
-  <div class="bg-white rounded-lg shadow p-6">
+  <div class="bg-white rounded-lg shadow-sm p-6">
     <div class="flex items-center justify-between mb-4">
       <h3 class="text-lg font-medium text-gray-900">
         Demo Election Testing
@@ -940,7 +940,7 @@ public function show($slug)
       <Link
         v-if="demoStatus.exists"
         :href="route('election.demo.start')"
-        class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150"
+        class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150"
       >
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -953,7 +953,7 @@ public function show($slug)
       <button
         @click="setupDemo"
         :disabled="loading"
-        class="inline-flex items-center justify-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition ease-in-out duration-150 disabled:opacity-50"
+        class="inline-flex items-center justify-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-hidden focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition ease-in-out duration-150 disabled:opacity-50"
       >
         <svg 
           v-if="loading" 
@@ -974,7 +974,7 @@ public function show($slug)
       <Link
         v-if="demoStatus.exists && demoStatus.votes > 0"
         :href="route('demo.results', demoStatus.election_id)"
-        class="inline-flex items-center justify-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150"
+        class="inline-flex items-center justify-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-hidden focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150"
       >
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -1674,7 +1674,7 @@ Add a demo setup button to the organisation page with:
 <!-- resources/js/Pages/Organizations/Partials/DemoSetupButton.vue -->
 
 <template>
-  <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+  <div class="bg-white overflow-hidden shadow-xs sm:rounded-lg">
     <div class="px-4 py-5 sm:p-6">
       <!-- Header with title and status -->
       <div class="flex items-center justify-between mb-4">
@@ -1693,7 +1693,7 @@ Add a demo setup button to the organisation page with:
       </div>
 
       <!-- Introduction message (NEW) -->
-      <div class="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
+      <div class="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-sm">
         <p class="text-sm text-blue-800">
           {{ $t('organizations.demo.message_intro') }}
         </p>
@@ -1725,7 +1725,7 @@ Add a demo setup button to the organisation page with:
         <a
           v-if="demoStatus.exists"
           :href="route('election.demo.start')"
-          class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition"
+          class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-xs text-white bg-indigo-600 hover:bg-indigo-700 transition"
         >
           <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -1738,7 +1738,7 @@ Add a demo setup button to the organisation page with:
         <button
           @click="setupDemo"
           :disabled="loading"
-          class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white transition disabled:opacity-50"
+          class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-xs text-white transition disabled:opacity-50"
           :class="demoStatus.exists ? 'bg-green-600 hover:bg-green-700' : 'bg-green-600 hover:bg-green-700'"
         >
           <svg

@@ -46,7 +46,7 @@
                             <select 
                                 v-model="currentLanguage"
                                 @change="$emit('language-changed', currentLanguage)"
-                                class="bg-purple-800 text-purple-100 border border-purple-600 rounded px-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-200"
+                                class="bg-purple-800 text-purple-100 border border-purple-600 rounded-sm px-2 py-1 text-xs focus:outline-hidden focus:ring-2 focus:ring-purple-400 transition-all duration-200"
                             >
                                 <option value="en">English</option>
                                 <option value="de">Deutsch</option>
@@ -68,7 +68,7 @@
         <div class="relative bg-tech-pattern">
             <!-- Background Pattern -->
             <div class="absolute inset-0 opacity-5">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+                <div class="absolute inset-0 bg-linear-to-br from-white/10 to-transparent"></div>
             </div>
 
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,8 +76,8 @@
                     <!-- Logo and Organization Info -->
                     <div class="flex  items-center space-x-6">
                         <!-- Logo -->
-                        <!-- <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                        <!-- <div class="shrink-0">
+                            <div class="w-12 h-12 bg-linear-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
                                 <span class="text-white font-bold text-lg">PD</span>
                             </div>
                         </div> -->
@@ -220,7 +220,7 @@
                             type="text" 
                             v-model="searchQuery"
                             placeholder="Search PublicDigit platform..."
-                            class="w-full pl-10 pr-4 py-2 bg-white/10 border border-purple-400 rounded-lg text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
+                            class="w-full pl-10 pr-4 py-2 bg-white/10 border border-purple-400 rounded-lg text-white placeholder-purple-200 focus:outline-hidden focus:ring-2 focus:ring-purple-400 focus:border-transparent"
                             @keyup.enter="performSearch"
                         />
                         <svg class="absolute left-3 top-2.5 w-5 h-5 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -240,7 +240,7 @@
                         <input 
                             type="text" 
                             placeholder="Search..."
-                            class="w-full pl-10 pr-4 py-2 bg-white/10 border border-purple-400 rounded-lg text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                            class="w-full pl-10 pr-4 py-2 bg-white/10 border border-purple-400 rounded-lg text-white placeholder-purple-200 focus:outline-hidden focus:ring-2 focus:ring-purple-400"
                         />
                         <svg class="absolute left-3 top-2.5 w-5 h-5 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -451,7 +451,7 @@ export default {
 }
 
 /* Custom backdrop blur */
-.backdrop-blur-sm {
+.backdrop-blur-xs {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }

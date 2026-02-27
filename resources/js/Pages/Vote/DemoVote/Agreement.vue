@@ -1,19 +1,19 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50 py-12">
+  <div class="min-h-screen bg-linear-to-b from-blue-50 to-indigo-50 py-12">
     <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center mb-8">
         <h1 class="text-3xl font-bold text-gray-900">
           Voting Agreement
         </h1>
-        <p class="mt-2 text-yellow-700 bg-yellow-50 px-4 py-2 rounded inline-block">
+        <p class="mt-2 text-yellow-700 bg-yellow-50 px-4 py-2 rounded-sm inline-block">
           🎮 DEMO MODE - This is a test election
         </p>
       </div>
 
       <!-- Agreement Card -->
       <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
-        <div class="bg-gradient-to-r from-indigo-600 to-blue-600 px-6 py-4">
+        <div class="bg-linear-to-r from-indigo-600 to-blue-600 px-6 py-4">
           <h2 class="text-2xl font-bold text-white">
             {{ election_name }}
           </h2>
@@ -37,23 +37,23 @@
 
             <div class="space-y-3 text-sm text-gray-700">
               <div class="flex gap-3">
-                <div class="flex-shrink-0 text-indigo-600 font-bold">✓</div>
+                <div class="shrink-0 text-indigo-600 font-bold">✓</div>
                 <p>Your vote will be recorded anonymously and securely</p>
               </div>
               <div class="flex gap-3">
-                <div class="flex-shrink-0 text-indigo-600 font-bold">✓</div>
+                <div class="shrink-0 text-indigo-600 font-bold">✓</div>
                 <p>You can only vote once in this election</p>
               </div>
               <div class="flex gap-3">
-                <div class="flex-shrink-0 text-indigo-600 font-bold">✓</div>
+                <div class="shrink-0 text-indigo-600 font-bold">✓</div>
                 <p>Your vote cannot be changed after submission</p>
               </div>
               <div class="flex gap-3">
-                <div class="flex-shrink-0 text-indigo-600 font-bold">✓</div>
+                <div class="shrink-0 text-indigo-600 font-bold">✓</div>
                 <p>You will review your selections before final submission</p>
               </div>
               <div class="flex gap-3">
-                <div class="flex-shrink-0 text-indigo-600 font-bold">✓</div>
+                <div class="shrink-0 text-indigo-600 font-bold">✓</div>
                 <p>A verification code will be provided for your records</p>
               </div>
             </div>
@@ -65,7 +65,7 @@
               <input
                 v-model="agree"
                 type="checkbox"
-                class="mt-1 h-5 w-5 rounded border-gray-300 text-indigo-600 cursor-pointer"
+                class="mt-1 h-5 w-5 rounded-sm border-gray-300 text-indigo-600 cursor-pointer"
               />
               <span class="text-gray-700">
                 I understand and accept the voting agreement. I am ready to proceed with my vote.
@@ -108,8 +108,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useForm } from '@inertiajs/inertia-vue3'
-import { Inertia } from '@inertiajs/inertia'
+import { useForm } from '@inertiajs/vue3'
+import { router } from '@inertiajs/vue3'
 
 const props = defineProps({
   election_name: String,
@@ -123,7 +123,7 @@ const loading = ref(false)
 const errors = ref({})
 
 const goBack = () => {
-  Inertia.get(
+  router.get(
     route(props.useSlugPath ? 'slug.demo-vote.create' : 'demo-vote.create',
           props.useSlugPath ? { vslug: props.slug } : {})
   )

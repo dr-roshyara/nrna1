@@ -30,8 +30,8 @@
                             :id       ="candidate.candidacy_id"
                             :name     ="post.name"
                             :value    ="candidate.candidacy_id"  
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-sm focus:border-indigo-300 
-                                focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 
+                                focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             v-model= "selectedVec"                           
                             :disabled  ="disabledVec[candiIndx]"
                             v-on:change   ="inform_selected_candidates()"
@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import ShowCandidate from '@/Shared/ShowCandidate'
+import ShowCandidate from '@/Shared/ShowCandidate.vue'
 export default {
  props:{
      post:Array 

@@ -26,7 +26,7 @@
       {{ $t('pages.organization-show.page_loaded', { name: organization.name }) }}
     </div>
 
-    <div class="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div class="min-h-screen bg-linear-to-b from-gray-50 to-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         
         <!-- ========== ORGANIZATION HEADER ========== -->
@@ -64,7 +64,7 @@
             <div class="flex flex-col sm:flex-row gap-3">
               <button 
                 @click="openInviteModal"
-                class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
+                class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-xs text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
                 :aria-label="$t('pages.organization-show.invite_members_aria')"
               >
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,7 +75,7 @@
               
               <button 
                 @click="goToCreateElection"
-                class="inline-flex items-center justify-center px-6 py-3 border border-transparent shadow-sm text-base font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:scale-105"
+                class="inline-flex items-center justify-center px-6 py-3 border border-transparent shadow-xs text-base font-medium rounded-lg text-white bg-linear-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:scale-105"
                 :aria-label="$t('pages.organization-show.create_election_aria')"
               >
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,7 +88,7 @@
         </div>
 
         <!-- ========== ONBOARDING PROGRESS (NEW) ========== -->
-        <div v-if="showOnboarding" class="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6">
+        <div v-if="showOnboarding" class="mb-8 bg-linear-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6">
           <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <h2 class="text-lg font-semibold text-gray-900 mb-1">
@@ -98,8 +98,8 @@
                 {{ $t('pages.organization-show.onboarding.description') }}
               </p>
             </div>
-            <div class="flex-shrink-0">
-              <div class="bg-white rounded-lg px-4 py-2 shadow-sm">
+            <div class="shrink-0">
+              <div class="bg-white rounded-lg px-4 py-2 shadow-xs">
                 <span class="text-sm font-medium text-gray-600">{{ $t('pages.organization-show.onboarding.completed') }}</span>
                 <span class="ml-2 text-2xl font-bold text-blue-600">{{ onboardingProgress }}%</span>
               </div>
@@ -160,7 +160,7 @@
         <!-- ========== STATISTICS CARDS ========== -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <!-- Members Card -->
-          <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div class="bg-white rounded-xl shadow-xs border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div class="p-6">
               <div class="flex items-center justify-between mb-4">
                 <div class="p-3 bg-blue-50 rounded-lg">
@@ -182,7 +182,7 @@
           </div>
 
           <!-- Elections Card -->
-          <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div class="bg-white rounded-xl shadow-xs border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div class="p-6">
               <div class="flex items-center justify-between mb-4">
                 <div class="p-3 bg-purple-50 rounded-lg">
@@ -203,7 +203,7 @@
           </div>
 
           <!-- Voters Card (NEW) -->
-          <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div class="bg-white rounded-xl shadow-xs border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div class="p-6">
               <div class="flex items-center justify-between mb-4">
                 <div class="p-3 bg-green-50 rounded-lg">
@@ -224,7 +224,7 @@
           </div>
 
           <!-- Completed Elections Card (NEW) -->
-          <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <div class="bg-white rounded-xl shadow-xs border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div class="p-6">
               <div class="flex items-center justify-between mb-4">
                 <div class="p-3 bg-amber-50 rounded-lg">
@@ -242,7 +242,7 @@
         <!-- ========== RECENT ACTIVITY (NEW) ========== -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <!-- Recent Elections -->
-          <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div class="lg:col-span-2 bg-white rounded-xl shadow-xs border border-gray-200 overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
               <div class="flex items-center justify-between">
                 <h2 class="text-lg font-semibold text-gray-900">
@@ -288,7 +288,7 @@
           </div>
 
           <!-- Quick Tips / Getting Started -->
-          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-sm border border-blue-100 overflow-hidden">
+          <div class="bg-linear-to-br from-blue-50 to-indigo-50 rounded-xl shadow-xs border border-blue-100 overflow-hidden">
             <div class="px-6 py-4 border-b border-blue-200 bg-blue-100/30">
               <h2 class="text-lg font-semibold text-gray-900">
                 {{ $t('pages.organization-show.getting_started') }}
@@ -297,21 +297,21 @@
             <div class="p-6">
               <div class="space-y-4">
                 <div class="flex items-start gap-3">
-                  <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">1</div>
+                  <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold shrink-0">1</div>
                   <div>
                     <p class="text-sm font-medium text-gray-900">{{ $t('pages.organization-show.tip_add_members') }}</p>
                     <p class="text-xs text-gray-600 mt-1">{{ $t('pages.organization-show.tip_add_members_desc') }}</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
-                  <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">2</div>
+                  <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold shrink-0">2</div>
                   <div>
                     <p class="text-sm font-medium text-gray-900">{{ $t('pages.organization-show.tip_create_election') }}</p>
                     <p class="text-xs text-gray-600 mt-1">{{ $t('pages.organization-show.tip_create_election_desc') }}</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
-                  <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold flex-shrink-0">3</div>
+                  <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold shrink-0">3</div>
                   <div>
                     <p class="text-sm font-medium text-gray-900">{{ $t('pages.organization-show.tip_test_demo') }}</p>
                     <p class="text-xs text-gray-600 mt-1">{{ $t('pages.organization-show.tip_test_demo_desc') }}</p>
@@ -337,7 +337,7 @@
         </div>
 
         <!-- ========== SUPPORT SECTION ========== -->
-        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl shadow-lg overflow-hidden">
+        <div class="bg-linear-to-r from-blue-600 to-indigo-700 rounded-xl shadow-lg overflow-hidden">
           <div class="px-6 py-8 md:px-10 md:py-10">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
               <div class="text-white">
@@ -346,7 +346,7 @@
                   {{ $t('support.assistance') }}
                 </p>
               </div>
-              <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+              <div class="flex flex-col sm:flex-row gap-3 shrink-0">
                 <a :href="`mailto:${supportEmailAddress}`" class="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-700 font-medium rounded-lg hover:bg-blue-50 transition-colors shadow-md">
                   <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

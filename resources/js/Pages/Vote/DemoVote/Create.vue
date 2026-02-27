@@ -3,7 +3,7 @@
         <app-layout>
             <div class="mt-6 text-center max-w-4xl mx-auto">
                 <!-- Success Message -->
-                <div class="m-auto text-center bg-gradient-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg mb-8">
+                <div class="m-auto text-center bg-linear-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg mb-8">
                     <div class="text-4xl mb-3">🎉</div>
                     <p class="text-xl font-bold mb-2">Welcome {{ name }}!</p>
                     <p class="text-lg mb-2">Your code has been verified. You can now vote!</p>
@@ -49,7 +49,7 @@
                                     <input
                                         type="checkbox"
                                         v-model="form.agree_button"
-                                        class="w-5 h-5 text-blue-600 border-2 border-gray-400 rounded focus:ring-blue-500 focus:ring-2"
+                                        class="w-5 h-5 text-blue-600 border-2 border-gray-400 rounded-sm focus:ring-blue-500 focus:ring-2"
                                     />
                                     <span class="ml-3 text-lg font-medium text-gray-900">I agree to the terms</span>
                                 </label>
@@ -73,14 +73,14 @@
                             </div>
 
                             <!-- Checkbox Error -->
-                            <div v-if="errors.agree_button" class="text-red-600 text-sm mb-4 bg-red-50 p-2 rounded">
+                            <div v-if="errors.agree_button" class="text-red-600 text-sm mb-4 bg-red-50 p-2 rounded-sm">
                                 {{ errors.agree_button }}
                             </div>
 
                             <!-- Submit Button -->
                             <button
                                 type="submit"
-                                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-xl py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
+                                class="w-full bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-xl py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
                                 :disabled="!form.agree_button"
                                 :class="{ 'opacity-50 cursor-not-allowed': !form.agree_button }"
                             >
@@ -102,11 +102,11 @@
 
 <script>
 import { ref } from 'vue'
-import AppLayout from '@/Layouts/AppLayout'
-import NrnaLayout from '@/Layouts/NrnaLayout'
-import JetValidationErrors from '@/Components/Jetstream/ValidationErrors'
+import AppLayout from '@/Layouts/AppLayout.vue'
+import NrnaLayout from '@/Layouts/NrnaLayout.vue'
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors.vue'
 import CreateVotingform from '@/Pages/Vote/DemoVote/CreateVotingform.vue'
-import { useForm } from '@inertiajs/inertia-vue3'
+import { useForm } from '@inertiajs/vue3'
 
 export default {
     components: {

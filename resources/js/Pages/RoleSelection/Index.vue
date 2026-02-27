@@ -50,7 +50,7 @@
 
           <!-- No Roles Message -->
           <div v-if="availableRoles.length === 0" class="mt-6">
-            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-sm">
               <p class="text-yellow-800 text-sm">
                 {{ $t('pages.role-selection.noRolesMessage') }}
               </p>
@@ -64,7 +64,7 @@
 
 <script setup>
 import { defineProps } from 'vue'
-import { useForm } from '@inertiajs/inertia-vue3'
+import { useForm } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 

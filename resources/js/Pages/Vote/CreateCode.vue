@@ -18,11 +18,11 @@
         <div class="mb-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
             <p class="text-gray-800 leading-relaxed">
                 We have sent you an email
-                <span class="font-bold text-red-600 bg-red-100 px-2 py-1 rounded">
+                <span class="font-bold text-red-600 bg-red-100 px-2 py-1 rounded-sm">
                     {{ code_duration }} minutes
                 </span>
                 ago, mentioning your voting code. You can use this code for the next
-                <span class="font-bold text-red-600 bg-red-100 px-2 py-1 rounded">
+                <span class="font-bold text-red-600 bg-red-100 px-2 py-1 rounded-sm">
                     {{ code_expires_in - code_duration }} minutes
                 </span>
                 to open the voting form. If you don't see email in your mailbox, then please check your Spam mail also.
@@ -33,16 +33,16 @@
         <div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
             <p class="text-gray-800 leading-relaxed">
                 तपाइलाइ हामीले भर्खरै
-                <span class="font-bold text-red-600 bg-red-100 px-2 py-1 rounded">
+                <span class="font-bold text-red-600 bg-red-100 px-2 py-1 rounded-sm">
                     {{ code_duration }} मिनेट
                 </span>
                 अघाडी एउटा इमेल पठाएका छाैं। भोटिङ पर्म खोल्नको लागि त्यो कोड लाइ अर्काे
-                <span class="font-bold text-red-600 bg-red-100 px-2 py-1 rounded">
+                <span class="font-bold text-red-600 bg-red-100 px-2 py-1 rounded-sm">
                     {{ code_expires_in - code_duration }} मिनेट
                 </span>
                 सम्म प्रयाेग गरिसक्नु पर्ने छ। यो फर्मलाइ एकछिन यत्तिकै राखेर अव यहाँले आफ्नो इमेलमा चेक गर्नुहोस।
             </p>
-            <p class="mt-3 text-sm font-semibold text-red-700 bg-red-50 p-2 rounded">
+            <p class="mt-3 text-sm font-semibold text-red-700 bg-red-50 p-2 rounded-sm">
                 तपाइले आफ्नो मेल वक्समा एनआरएनएको इमेल भेट्टाउनु भएन भने स्पाम मेलमा गएर वसेको हुन सक्छ, त्यसैले स्पाम मेल पनि चेक गर्नुहोस।
             </p>
         </div>
@@ -93,8 +93,8 @@
     </VotingLayout>
 </template>
 <script>
-import { useForm } from "@inertiajs/inertia-vue3";
-import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
+import { useForm } from "@inertiajs/vue3";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 import VotingLayout from "@/Components/Election/VotingLayout.vue";
 
 export default {

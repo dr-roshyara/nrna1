@@ -258,7 +258,7 @@ async logout() {
   type="button"
   @click="logout"
   :disabled="isLoggingOut"
-  class="inline-flex items-center px-3 md:px-4 py-2 border-2 border-white text-white font-semibold text-xs md:text-sm rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group disabled:opacity-50 disabled:cursor-not-allowed"
+  class="inline-flex items-center px-3 md:px-4 py-2 border-2 border-white text-white font-semibold text-xs md:text-sm rounded-sm hover:bg-white/10 focus:outline-hidden focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group disabled:opacity-50 disabled:cursor-not-allowed"
 >
   <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform">...</svg>
   {{ isLoggingOut ? $t('navigation.logging_out', 'Logging out...') : $t('navigation.logout') }}

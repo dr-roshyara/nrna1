@@ -12,13 +12,13 @@
                 <div class="mt-4">
                     <jet-label for="region" value="Region" />
                     <div
-                        class="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        class="rounded-md border-gray-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                     >
                         <select
                             name="region"
                             id="region"
                             v-model="form.region"
-                            class="focus:shadow-outline block w-full appearance-none rounded border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow hover:border-gray-500 focus:outline-none"
+                            class="focus:shadow-outline block w-full appearance-none rounded-sm border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-gray-500 focus:outline-hidden"
                         >
                             <option>Europe</option>
                             <option>America</option>
@@ -63,13 +63,13 @@
                 <div class="mt-4">
                     <jet-label for="committee_name" value="Committee Name" />
                     <div
-                        class="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        class="rounded-md border-gray-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                     >
                         <select
                             name="committee_name"
                             id="committee_name"
                             v-model="form.committee_name"
-                            class="focus:shadow-outline block w-full appearance-none rounded border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow hover:border-gray-500 focus:outline-none"
+                            class="focus:shadow-outline block w-full appearance-none rounded-sm border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-gray-500 focus:outline-hidden"
                         >
                             <option>ICC</option>
                             <option>NCC</option>
@@ -402,14 +402,14 @@
 </template>
 
 <script>
-import SocialLayout from "@/Layouts/SocialLayout";
-import JetAuthenticationCard from "@/Components/Jetstream/AuthenticationCard";
-import JetAuthenticationCardLogo from "@/Components/Jetstream/AuthenticationCardLogo";
-import JetButton from "@/Components/Jetstream/Button";
-import JetInput from "@/Components/Jetstream/Input";
-import JetCheckbox from "@/Components/Jetstream/Checkbox";
-import JetLabel from "@/Components/Jetstream/Label";
-import JetValidationErrors from "@/Components/Jetstream/ValidationErrors";
+import SocialLayout from "@/Layouts/SocialLayout.vue";
+import JetAuthenticationCard from "@/Components/Jetstream/AuthenticationCard.vue";
+import JetAuthenticationCardLogo from "@/Components/Jetstream/AuthenticationCardLogo.vue";
+import JetButton from "@/Components/Jetstream/Button.vue";
+import JetInput from "@/Components/Jetstream/Input.vue";
+import JetCheckbox from "@/Components/Jetstream/Checkbox.vue";
+import JetLabel from "@/Components/Jetstream/Label.vue";
+import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 
 export default {
     components: {

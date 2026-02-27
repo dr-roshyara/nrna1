@@ -216,7 +216,7 @@ Update the controller to provide all required props.
 - Background: white
 - Border: `border border-gray-200`
 - Border radius: `rounded-xl`
-- Shadow: `shadow-sm` with `hover:shadow-lg` transition
+- Shadow: `shadow-xs` with `hover:shadow-lg` transition
 
 ### Button Styles
 Primary: `bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg`

@@ -11,13 +11,15 @@ This document outlines comprehensive test scenarios that should be implemented t
 
 #### 1.1 Complete Vote Submission Journey (Real Election)
 - [ ] Test full vote submission workflow:
-  1. User lands on /vote/create
+  1. User lands on /code/create
+  2. User agrees the terms and condition
+  3. User lands on /vote/create  
   2. Selects candidates for all posts
   3. Reviews selections
   4. Submits vote
   5. Receives verification code
   6. Enters verification code
-  7. Vote is recorded
+  7. Vote is recorded in correct table 
   8. Cannot vote again (redirected to dashboard)
 
 **Test File:** `tests/Feature/VoteSubmissionFlowTest.php`

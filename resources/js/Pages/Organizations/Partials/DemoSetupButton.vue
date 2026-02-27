@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+  <div class="bg-white overflow-hidden shadow-xs sm:rounded-lg">
     <div class="px-4 py-5 sm:p-6">
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-medium text-gray-900">
@@ -39,7 +39,7 @@
         <a
           v-if="demoStatus.exists"
           href="#"
-          class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition"
+          class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-xs text-white bg-indigo-600 hover:bg-indigo-700 transition"
         >
           <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -52,7 +52,7 @@
         <button
           @click="setupDemo"
           :disabled="loading"
-          class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white transition disabled:opacity-50"
+          class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-xs text-white transition disabled:opacity-50"
           :class="demoStatus.exists ? 'bg-green-600 hover:bg-green-700' : 'bg-green-600 hover:bg-green-700'"
         >
           <svg

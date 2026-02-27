@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import Welcome from "@/Components/Jetstream/Welcome";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import Welcome from "@/Components/Jetstream/Welcome.vue";
 import PublicDigitLayout from "@/Layouts/PublicDigitLayout.vue";
-import { useMeta } from "@/composables/useMeta";
+import { useMeta } from "@/composables/useMeta.js";
 
 export default {
     props: {

@@ -13,7 +13,7 @@
 
       <!-- Feature Cards Grid -->
       <div class="grid md:grid-cols-3 gap-8 mb-16">
-        <div v-for="(card, index) in featureCards" :key="index" class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 hover:shadow-lg transition-shadow">
+        <div v-for="(card, index) in featureCards" :key="index" class="bg-white rounded-2xl shadow-xs border border-gray-200 p-8 hover:shadow-lg transition-shadow">
           <!-- Icon -->
           <div class="text-5xl mb-6">{{ card.icon }}</div>
 
@@ -30,7 +30,7 @@
           <!-- Features List -->
           <ul class="space-y-2">
             <li v-for="(feature, fIdx) in card.features" :key="fIdx" class="flex items-start text-sm text-gray-600">
-              <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg class="w-5 h-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
               </svg>
               <span>{{ feature }}</span>

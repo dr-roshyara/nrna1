@@ -85,7 +85,7 @@
             <div class="flex h-16 justify-between">
                 <div class="flex">
                     <!-- Logo -->
-                    <div class="flex flex-shrink-0 items-center">
+                    <div class="flex shrink-0 items-center">
                         <jet-nav-link :href="route('dashboard')">
                             <jet-application-mark class="block h-9 w-auto" />
                         </jet-nav-link>
@@ -155,7 +155,7 @@
                                 <span class="inline-flex rounded-md">
                                     <button
                                         type="button"
-                                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition hover:bg-gray-50 hover:text-gray-700 focus:bg-gray-50 focus:outline-none active:bg-gray-100"
+                                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition hover:bg-gray-50 hover:text-gray-700 focus:bg-gray-50 focus:outline-hidden active:bg-gray-100"
                                     >
                                         {{ $page.props.user.current_team.name }}
 
@@ -276,7 +276,7 @@
                                 <span class="inline-flex rounded-md" v-if="$page.props.user">
                                     <button
                                         type="button"
-                                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition hover:text-gray-700 focus:outline-none"
+                                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition hover:text-gray-700 focus:outline-hidden"
                                     >
                                         {{ $page.props.user?.name }}
 
@@ -340,7 +340,7 @@
                             showingNavigationDropdown =
                                 !showingNavigationDropdown
                         "
-                        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
+                        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-hidden"
                     >
                         <svg
                             class="h-6 w-6"
@@ -499,12 +499,12 @@
     </nav>
 </template>
 <script>
-import JetApplicationMark from "@/Components/Jetstream/ApplicationMark";
-import JetBanner from "@/Components/Jetstream/Banner";
-import JetDropdown from "@/Components/Jetstream/Dropdown";
-import JetDropdownLink from "@/Components/Jetstream/DropdownLink";
-import JetNavLink from "@/Components/Jetstream/NavLink";
-import JetResponsiveNavLink from "@/Components/Jetstream/ResponsiveNavLink";
+import JetApplicationMark from "@/Components/Jetstream/ApplicationMark.vue";
+import JetBanner from "@/Components/Jetstream/Banner.vue";
+import JetDropdown from "@/Components/Jetstream/Dropdown.vue";
+import JetDropdownLink from "@/Components/Jetstream/DropdownLink.vue";
+import JetNavLink from "@/Components/Jetstream/NavLink.vue";
+import JetResponsiveNavLink from "@/Components/Jetstream/ResponsiveNavLink.vue";
 
 export default {
     props: {

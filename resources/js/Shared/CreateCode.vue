@@ -1,11 +1,11 @@
 <template>
    <nrna-layout> 
     <app-layout>
-        <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div class="max-w-md w-full space-y-8">
                 <!-- Header Section with User Icon -->
                 <div class="text-center">
-                    <div class="mx-auto h-20 w-20 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center mb-6 shadow-lg">
+                    <div class="mx-auto h-20 w-20 bg-linear-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center mb-6 shadow-lg">
                         <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
@@ -24,7 +24,7 @@
                 <!-- User Info Card (if available) -->
                 <div v-if="name || nrna_id" class="bg-white rounded-xl shadow-md p-4 border border-gray-200">
                     <div class="flex items-center space-x-3">
-                        <div class="flex-shrink-0">
+                        <div class="shrink-0">
                             <div class="h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
                                 <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -42,7 +42,7 @@
                                 📍 {{ state }}
                             </p>
                         </div>
-                        <div class="flex-shrink-0">
+                        <div class="shrink-0">
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
@@ -59,7 +59,7 @@
                     <div v-if="Object.keys(errors).length > 0" class="mb-6">
                         <div class="bg-red-50 border border-red-200 rounded-lg p-4">
                             <div class="flex">
-                                <div class="flex-shrink-0">
+                                <div class="shrink-0">
                                     <svg class="h-5 w-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
@@ -75,7 +75,7 @@
                         <!-- Instructions with User Icons -->
                         <div class="bg-blue-50 rounded-lg p-4 border border-blue-200">
                             <div class="flex items-start">
-                                <div class="flex-shrink-0">
+                                <div class="shrink-0">
                                     <div class="h-8 w-8 bg-blue-600 rounded-full flex items-center justify-center">
                                         <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
@@ -122,7 +122,7 @@
                                     v-model="form.voting_code"
                                     type="text"
                                     :class="[
-                                        'block w-full pl-10 pr-12 py-4 text-lg font-mono border rounded-lg shadow-sm transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400',
+                                        'block w-full pl-10 pr-12 py-4 text-lg font-mono border rounded-lg shadow-xs transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400',
                                         errors.voting_code 
                                             ? 'border-red-300 bg-red-50' 
                                             : 'border-gray-300 bg-white hover:border-gray-400'
@@ -156,7 +156,7 @@
                                 type="submit" 
                                 :disabled="form.processing || !form.voting_code"
                                 :class="[
-                                    'group relative w-full flex justify-center py-4 px-4 border border-transparent text-lg font-medium rounded-lg text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
+                                    'group relative w-full flex justify-center py-4 px-4 border border-transparent text-lg font-medium rounded-lg text-white transition-all duration-200 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
                                     form.processing || !form.voting_code
                                         ? 'bg-gray-400 cursor-not-allowed'
                                         : 'bg-blue-600 hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-0.5'
@@ -206,7 +206,7 @@
                 <!-- Security Note with User Privacy Icons -->
                 <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                     <div class="flex items-start">
-                        <div class="flex-shrink-0">
+                        <div class="shrink-0">
                             <div class="h-8 w-8 bg-yellow-600 rounded-full flex items-center justify-center">
                                 <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
@@ -236,10 +236,10 @@
 </template>
 
 <script>
-import { useForm } from '@inertiajs/inertia-vue3'
-import JetValidationErrors from '@/Components/Jetstream/ValidationErrors' 
-import AppLayout from '@/Layouts/AppLayout'
-import NrnaLayout from '@/Layouts/NrnaLayout'
+import { useForm } from '@inertiajs/vue3'
+import JetValidationErrors from '@/Components/Jetstream/ValidationErrors.vue' 
+import AppLayout from '@/Layouts/AppLayout.vue'
+import NrnaLayout from '@/Layouts/NrnaLayout.vue'
 
 export default {
     props:{

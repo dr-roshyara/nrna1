@@ -3,14 +3,14 @@
         <div class="flex flex-row justify-center py-2">
             <Link
                 v-if="posts.prev_page_url"
-                class="m-2 rounded bg-gray-300 px-2 py-2"
+                class="m-2 rounded-sm bg-gray-300 px-2 py-2"
                 :href="posts.prev_page_url"
             >
                 Previous Page
             </Link>
             <Link
                 v-if="posts.next_page_url"
-                class="m-2 rounded bg-gray-300 px-2 py-2"
+                class="m-2 rounded-sm bg-gray-300 px-2 py-2"
                 :href="posts.next_page_url"
             >
                 Next Page
@@ -106,10 +106,10 @@
     <!-- <div> <footer> </footer></div>  -->
 </template>
 <script>
-// import AppLayout from "@/Layouts/NrnaLayout";
-import { Head, Link } from "@inertiajs/inertia-vue3";
-import NrnaLayout from "@/Layouts/NrnaLayout";
-import AppLayout from "@/Layouts/AppLayout";
+// import AppLayout from "@/Layouts/NrnaLayout.vue";
+import { Head, Link } from "@inertiajs/vue3";
+import NrnaLayout from "@/Layouts/NrnaLayout.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
 import {
     InteractsWithQueryBuilder,
     Tailwind2,
@@ -121,8 +121,8 @@ import {
     DialogOverlay,
     DialogTitle,
 } from "@headlessui/vue";
-// import AppLayout from "@/Components/Jetstream/Header";
-// import Footer from "@/Components/Jetstream/Footer";
+// import AppLayout from "@/Components/Jetstream/Header.vue";
+// import Footer from "@/Components/Jetstream/Footer.vue";
 export default {
     mixins: [InteractsWithQueryBuilder],
     props: {

@@ -56,6 +56,8 @@ const ariaLabel = computed(() => {
 </script>
 
 <style scoped>
+@reference "../../../css/app.css";
+
 .election-badge {
   display: inline-flex;
   align-items: center;

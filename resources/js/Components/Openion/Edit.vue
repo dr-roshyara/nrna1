@@ -6,7 +6,7 @@
         <!-- {{ openion }} -->
         <form
             @submit.prevent="submit"
-            class="mx-auto mb-2 flex h-full w-full flex-col rounded border-2 border-blue-200 bg-stone-100 p-2 py-4 opacity-100 shadow ring ring-lime-100 ring-offset-2"
+            class="mx-auto mb-2 flex h-full w-full flex-col rounded-sm border-2 border-blue-200 bg-stone-100 p-2 py-4 opacity-100 shadow-sm ring-3 ring-lime-100 ring-offset-2"
         >
             <!-- first and middle name    -->
             <div class="bg-gray-50 pb-1">
@@ -80,9 +80,9 @@
     </section>
 </template>
 <script>
-import JetButton from "@/Components/Jetstream/FormButton";
+import JetButton from "@/Components/Jetstream/FormButton.vue";
 import { reactive } from "@vue/reactivity";
-import { Inertia } from "@inertiajs/inertia";
+import { router } from "@inertiajs/vue3";
 import { watchEffect } from "@vue/runtime-core";
 import { getCurrentInstance } from "vue";
 export default {
@@ -112,7 +112,7 @@ export default {
             form.openion.hash_tag = hash_tag;
             // console.log(form);
             context.emit("closeEditModal");
-            Inertia.post("/openion/update", form);
+            router.post("/openion/update", form);
         }
         // watchEffect(() => console.log(form));
         return { form, submit };

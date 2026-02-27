@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import Label from "@/Components/Jetstream/Label";
-import { useForm } from "@inertiajs/inertia-vue3";
+import Label from "@/Components/Jetstream/Label.vue";
+import { useForm } from "@inertiajs/vue3";
 import { processSlotOutlet } from "@vue/compiler-core";
 import ImageCompressor from "vue-image-compressor";
 import base64toblob from "base64toblob";

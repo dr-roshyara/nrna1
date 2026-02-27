@@ -4,7 +4,7 @@
         </nrna-header>
 
         <!-- middle  -->
-        <slot class="min-h-screen flex-grow"> </slot>
+        <slot class="min-h-screen grow"> </slot>
         <!-- footer  -->
         <nrna-footer class="px-4"> </nrna-footer>
     </div>

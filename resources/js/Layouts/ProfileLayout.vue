@@ -9,14 +9,14 @@
         >
         </profile-header>
         <!-- middle  -->
-        <slot class="relative min-h-screen flex-grow"> </slot>
+        <slot class="relative min-h-screen grow"> </slot>
         <!-- footer  -->
         <public-digit-footer class="px-2"> </public-digit-footer>
     </div> 
 </template>
 <script>
-import ProfileHeader from "@/Components/Jetstream/ProfileHeader";
-import PublicDigitFooter   from "@/Components/Jetstream/NrnaFooter";
+import ProfileHeader from "@/Components/Jetstream/ProfileHeader.vue";
+import PublicDigitFooter   from "@/Components/Jetstream/NrnaFooter.vue";
 
 export default {
     props: {

@@ -248,7 +248,7 @@ class AnalystDashboardController extends Controller
     <ElectionHeader :isLoggedIn="true" :locale="$page.props.locale" />
 
     <!-- Main Content -->
-    <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+    <main class="grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
       <!-- Welcome Section -->
       <div class="mb-12">
         <h1 class="text-4xl font-bold text-gray-900 mb-3">
@@ -290,7 +290,7 @@ class AnalystDashboardController extends Controller
 
             <button
               @click="viewElectionDetails(election.id)"
-              class="w-full p-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors text-sm font-medium"
+              class="w-full p-2 bg-blue-600 text-white rounded-sm hover:bg-blue-700 transition-colors text-sm font-medium"
             >
               {{ $t('pages.analyst-dashboard.buttons.viewDetails') }}
             </button>
@@ -305,7 +305,7 @@ class AnalystDashboardController extends Controller
       </div>
 
       <!-- Export Options -->
-      <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-8">
+      <div class="bg-linear-to-r from-blue-50 to-indigo-50 rounded-lg p-8">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">
           {{ $t('pages.analyst-dashboard.export.title') }}
         </h2>
@@ -313,21 +313,21 @@ class AnalystDashboardController extends Controller
         <div class="flex gap-4">
           <button
             @click="exportCSV"
-            class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+            class="px-4 py-2 bg-green-600 text-white rounded-sm hover:bg-green-700 transition-colors"
           >
             {{ $t('pages.analyst-dashboard.export.csv') }}
           </button>
 
           <button
             @click="exportPDF"
-            class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+            class="px-4 py-2 bg-red-600 text-white rounded-sm hover:bg-red-700 transition-colors"
           >
             {{ $t('pages.analyst-dashboard.export.pdf') }}
           </button>
 
           <button
             @click="exportJSON"
-            class="px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition-colors"
+            class="px-4 py-2 bg-yellow-600 text-white rounded-sm hover:bg-yellow-700 transition-colors"
           >
             {{ $t('pages.analyst-dashboard.export.json') }}
           </button>

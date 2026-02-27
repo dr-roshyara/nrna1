@@ -772,7 +772,7 @@ const submitImport = async (importData) => {
    - Esc to close modal
 
 ✅ Focus indicators
-   focus:outline-none focus:ring-2 focus:ring-offset-2
+   focus:outline-hidden focus:ring-2 focus:ring-offset-2
 
 ✅ Color contrast
    WCAG AA compliant (4.5:1 for text)

@@ -18,5 +18,6 @@ export default {
 }
 </script>
 <style scoped>
+@reference "../../css/app.css";
 
 </style>

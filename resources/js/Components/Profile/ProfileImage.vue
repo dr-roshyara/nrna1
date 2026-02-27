@@ -23,7 +23,7 @@
                 <img
                     :src="user.profile_bg_photo_path"
                     @error="onBgImageError"
-                    class="my-auto min-w-full rounded object-cover"
+                    class="my-auto min-w-full rounded-sm object-cover"
                     :alt="user.name + ' Home Page sNRNA'"
                     sizes="(max-width: 600px) 200px, 50vw"
                 />
@@ -32,7 +32,7 @@
             <div v-else class="h-40 w-full">
                 <img
                     src="/storage/users/background.jpg"
-                    class="h-40 min-w-full rounded object-cover"
+                    class="h-40 min-w-full rounded-sm object-cover"
                 />
                 <span v-show="false">x </span>
             </div>
@@ -106,7 +106,7 @@
         -->
         <div
             v-show="isLoggedIn"
-            class="absolute bottom-0 z-10 h-full w-full translate-y-0 rounded bg-blue-100"
+            class="absolute bottom-0 z-10 h-full w-full translate-y-0 rounded-sm bg-blue-100"
             v-if="editBackground"
         >
             <div class="absolute bottom-0">

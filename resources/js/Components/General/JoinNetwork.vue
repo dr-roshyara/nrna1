@@ -1,9 +1,9 @@
 <template>
-    <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div class="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50">
         <div class="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
             <!-- Header Section -->
             <header class="text-center mb-12" role="banner">
-                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full shadow-lg mb-8">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-linear-to-r from-blue-600 to-indigo-600 rounded-full shadow-lg mb-8">
                     <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 2h2v10h-2V5zm-2 4h2v6H9V9zm6-2h2v8h-2V7z"/>
                     </svg>
@@ -24,7 +24,7 @@
             /* Text Styling: Gradient and Shadow */
             bg-clip-text 
             text-transparent 
-            bg-gradient-to-r 
+            bg-linear-to-r 
             from-indigo-600 
             to-pink-600
             drop-shadow-lg
@@ -87,10 +87,10 @@
                         <!-- Direct Login -->
                         <a 
                             href="/login" 
-                            class="group focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-3xl"
+                            class="group focus:outline-hidden focus:ring-4 focus:ring-blue-300 rounded-3xl"
                             aria-label="प्रत्यक्ष लगइन - Direct login to election system"
                         >
-                            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-3xl p-8 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                            <div class="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-3xl p-8 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
                                 <div class="text-center">
                                     <div class="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-6">
                                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -108,7 +108,7 @@
                     </div>
                 </section>
                 <!-- Description Section -->
-                <section class="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-10">
+                <section class="bg-linear-to-r from-blue-50 to-indigo-50 px-6 py-10">
                     <div class="max-w-4xl mx-auto text-center">
                         <h2 class="text-2xl font-semibold text-gray-800 mb-6">
                             हाम्रो डिजिटल निर्वाचन प्लेटफर्म
@@ -123,7 +123,7 @@
                 </section>
 
                 <!-- Features Section -->
-                <section class="bg-gradient-to-r from-green-50 to-emerald-50 px-6 py-12" aria-labelledby="features-section">
+                <section class="bg-linear-to-r from-green-50 to-emerald-50 px-6 py-12" aria-labelledby="features-section">
                     <h2 id="features-section" class="text-2xl font-semibold text-center text-gray-800 mb-10">
                         प्रणालीका विशेषताहरू | System Features
                     </h2>
@@ -246,7 +246,7 @@ export default {
 /* High contrast mode support */
 @media (prefers-contrast: high) {
     .bg-gradient-to-r,
-    .bg-gradient-to-br {
+    .bg-linear-to-br {
         background: #ffffff !important;
     }
     
