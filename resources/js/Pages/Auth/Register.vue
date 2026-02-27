@@ -19,16 +19,28 @@
 
                     <!-- Registration Card -->
                     <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 md:p-12">
-                        <jet-validation-errors class="mb-6" />
+                        <!-- Validation Errors -->
+                        <div v-if="form.errors && Object.keys(form.errors).length > 0" class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                            <div class="text-red-800">
+                                <p class="font-bold mb-2">{{ $t('pages.auth.register.messages.validation_error') || 'Please fix the following errors:' }}</p>
+                                <ul class="list-disc list-inside space-y-1 text-sm">
+                                    <li v-for="(errors, field) in form.errors" :key="field" class="text-red-700">
+                                        <strong>{{ field }}:</strong> {{ Array.isArray(errors) ? errors[0] : errors }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
                         <form @submit.prevent="submit" class="space-y-6">
-                            <!-- First and Middle Name -->
+                            <!-- First Name -->
                             <div>
-                                <jet-label for="firstname" :value="$t('pages.auth.register.fields.firstName.label')" class="font-bold text-base md:text-lg" />
-                                <jet-input
+                                <label for="firstname" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                    {{ $t('pages.auth.register.fields.firstName.label') }}
+                                </label>
+                                <input
                                     id="firstname"
                                     type="text"
-                                    class="mt-2 block w-full"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     v-model="form.firstName"
                                     :placeholder="$t('pages.auth.register.fields.firstName.placeholder')"
                                     required
@@ -39,11 +51,13 @@
 
                             <!-- Last Name -->
                             <div>
-                                <jet-label for="lastName" :value="$t('pages.auth.register.fields.lastName.label')" class="font-bold text-base md:text-lg" />
-                                <jet-input
+                                <label for="lastName" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                    {{ $t('pages.auth.register.fields.lastName.label') }}
+                                </label>
+                                <input
                                     id="lastName"
                                     type="text"
-                                    class="mt-2 block w-full"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     v-model="form.lastName"
                                     :placeholder="$t('pages.auth.register.fields.lastName.placeholder')"
                                     required
@@ -53,38 +67,35 @@
 
                             <!-- Region Selection -->
                             <div>
-                                <jet-label for="region" :value="$t('pages.auth.register.fields.region.label')" class="font-bold text-base md:text-lg" />
-                                <div class="mt-2 relative rounded-lg border border-gray-300 bg-white overflow-hidden">
-                                    <select
-                                        name="region"
-                                        id="region"
-                                        v-model="form.region"
-                                        class="block w-full px-4 py-3 pr-10 text-gray-900 placeholder-gray-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                        required
-                                    >
-                                        <option value="">{{ $t('pages.auth.register.fields.region.placeholder') }}</option>
-                                        <option value="Europe">{{ $t('pages.auth.register.fields.region.options.europe') }}</option>
-                                        <option value="America">{{ $t('pages.auth.register.fields.region.options.america') }}</option>
-                                        <option value="Africa">{{ $t('pages.auth.register.fields.region.options.africa') }}</option>
-                                        <option value="Asia Pacific">{{ $t('pages.auth.register.fields.region.options.asia_pacific') }}</option>
-                                        <option value="Middle East Asia">{{ $t('pages.auth.register.fields.region.options.middle_east_asia') }}</option>
-                                        <option value="Oceania">{{ $t('pages.auth.register.fields.region.options.oceania') }}</option>
-                                    </select>
-                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
-                                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 3a1 1 0 01.894.553l.448.894a1 1 0 001.342 1.342l.894-.448a1 1 0 01.894.553v2a1 1 0 01-1.894.553l-.448-.894a1 1 0 00-1.342-1.342l-.894.448A1 1 0 0110 5v-2zm0 10a1 1 0 01.894.553l.448.894a1 1 0 001.342 1.342l.894-.448a1 1 0 01.894.553v2a1 1 0 01-1.894.553l-.448-.894a1 1 0 00-1.342-1.342l-.894.448A1 1 0 0110 15v-2zm-7-5a1 1 0 01.894.553l.448.894a1 1 0 001.342 1.342l.894-.448a1 1 0 01.894.553h2a1 1 0 01-1.894.553l-.448-.894a1 1 0 00-1.342-1.342l-.894.448A1 1 0 013 10V8zm14 0a1 1 0 01.894.553l.448.894a1 1 0 001.342 1.342l.894-.448a1 1 0 01.894.553v2a1 1 0 01-1.894.553l-.448-.894a1 1 0 00-1.342-1.342l-.894.448a1 1 0 01-.894-.553v-2z" clip-rule="evenodd" />
-                                        </svg>
-                                    </div>
-                                </div>
+                                <label for="region" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                    {{ $t('pages.auth.register.fields.region.label') }}
+                                </label>
+                                <select
+                                    name="region"
+                                    id="region"
+                                    v-model="form.region"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    required
+                                >
+                                    <option value="">{{ $t('pages.auth.register.fields.region.placeholder') }}</option>
+                                    <option value="Europe">{{ $t('pages.auth.register.fields.region.options.europe') }}</option>
+                                    <option value="America">{{ $t('pages.auth.register.fields.region.options.america') }}</option>
+                                    <option value="Africa">{{ $t('pages.auth.register.fields.region.options.africa') }}</option>
+                                    <option value="Asia Pacific">{{ $t('pages.auth.register.fields.region.options.asia_pacific') }}</option>
+                                    <option value="Middle East Asia">{{ $t('pages.auth.register.fields.region.options.middle_east_asia') }}</option>
+                                    <option value="Oceania">{{ $t('pages.auth.register.fields.region.options.oceania') }}</option>
+                                </select>
                             </div>
 
                             <!-- Email -->
                             <div>
-                                <jet-label for="email" :value="$t('pages.auth.register.fields.email.label')" class="font-bold text-base md:text-lg" />
-                                <jet-input
+                                <label for="email" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                    {{ $t('pages.auth.register.fields.email.label') }}
+                                </label>
+                                <input
                                     id="email"
                                     type="email"
-                                    class="mt-2 block w-full"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     v-model="form.email"
                                     :placeholder="$t('pages.auth.register.fields.email.placeholder')"
                                     required
@@ -95,16 +106,18 @@
 
                             <!-- Password -->
                             <div>
-                                <jet-label for="password" :value="$t('pages.auth.register.fields.password.label')" class="font-bold text-base md:text-lg" />
+                                <label for="password" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                    {{ $t('pages.auth.register.fields.password.label') }}
+                                </label>
                                 <p class="text-xs text-gray-600 mt-1 mb-2">
                                     <span class="text-red-500 font-medium">{{ $t('pages.auth.register.fields.password.help') }}</span>
                                     <br>
                                     {{ $t('pages.auth.register.fields.password.requirements') }}
                                 </p>
-                                <jet-input
+                                <input
                                     id="password"
                                     type="password"
-                                    class="mt-2 block w-full"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     v-model="form.password"
                                     :placeholder="$t('pages.auth.register.fields.password.placeholder')"
                                     required
@@ -114,14 +127,16 @@
 
                             <!-- Password Confirmation -->
                             <div>
-                                <jet-label for="password_confirmation" :value="$t('pages.auth.register.fields.password_confirmation.label')" class="font-bold text-base md:text-lg" />
+                                <label for="password_confirmation" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                    {{ $t('pages.auth.register.fields.password_confirmation.label') }}
+                                </label>
                                 <p class="text-xs text-gray-600 mt-1 mb-2">
                                     {{ $t('pages.auth.register.fields.password_confirmation.help') }}
                                 </p>
-                                <jet-input
+                                <input
                                     id="password_confirmation"
                                     type="password"
-                                    class="mt-2 block w-full"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     v-model="form.password_confirmation"
                                     :placeholder="$t('pages.auth.register.fields.password_confirmation.placeholder')"
                                     required
@@ -130,19 +145,19 @@
                             </div>
 
                             <!-- Terms and Privacy Policy -->
-                            <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="pt-6 border-t-2 border-gray-300">
-                                <div class="bg-linear-to-br from-blue-50 to-indigo-50 rounded-lg p-6 md:p-8 border-2 border-blue-200">
-                                    <jet-label for="terms" class="cursor-pointer">
+                            <div class="pt-6 border-t-2 border-gray-300">
+                                <div class="bg-blue-50 rounded-lg p-6 md:p-8 border-2 border-blue-200">
+                                    <label for="terms" class="cursor-pointer">
                                         <div class="flex items-start gap-4">
                                             <!-- Large Checkbox -->
                                             <div class="shrink-0">
-                                                <jet-checkbox
+                                                <input
+                                                    type="checkbox"
                                                     name="terms"
                                                     id="terms"
-                                                    v-model:checked="form.terms"
+                                                    v-model="form.terms"
                                                     required
-                                                    class="w-6 h-6 cursor-pointer"
-                                                    style="transform: scale(1.5); transform-origin: left;"
+                                                    class="w-6 h-6 cursor-pointer text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
                                                 />
                                             </div>
 
@@ -171,7 +186,7 @@
                                                 </p>
                                             </div>
                                         </div>
-                                    </jet-label>
+                                    </label>
 
                                     <!-- Visual Indicator -->
                                     <div v-if="form.terms" class="mt-4 flex items-center text-green-700">
@@ -193,22 +208,22 @@
 
                             <!-- Action Buttons -->
                             <div class="pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-                                <inertia-link
+                                <a
                                     :href="route('login')"
                                     class="text-sm text-gray-600 hover:text-gray-900 transition"
                                 >
                                     {{ $t('pages.auth.register.links.already_registered') }}
                                     <span class="font-medium text-blue-600">{{ $t('pages.auth.register.links.go_to_login') }}</span>
-                                </inertia-link>
+                                </a>
 
-                                <jet-button
-                                    :class="{ 'opacity-50': form.processing }"
+                                <button
+                                    type="submit"
                                     :disabled="form.processing"
-                                    class="w-full sm:w-auto"
+                                    class="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     <span v-if="!form.processing">{{ $t('pages.auth.register.buttons.register') }}</span>
                                     <span v-else>{{ $t('pages.auth.register.buttons.registering') }}</span>
-                                </jet-button>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -234,21 +249,11 @@
 <script>
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
-import JetButton from "@/Components/Jetstream/Button.vue";
-import JetInput from "@/Components/Jetstream/Input.vue";
-import JetCheckbox from "@/Components/Jetstream/Checkbox.vue";
-import JetLabel from "@/Components/Jetstream/Label.vue";
-import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 
 export default {
     components: {
         ElectionHeader,
         PublicDigitFooter,
-        JetButton,
-        JetInput,
-        JetCheckbox,
-        JetLabel,
-        JetValidationErrors,
     },
 
     data() {

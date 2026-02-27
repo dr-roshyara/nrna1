@@ -78,6 +78,13 @@ class HandleInertiaRequests extends Middleware
             'error' => $request->session()->get('error'),
             'message' => $request->session()->get('message'),
             'locale' => app()->getLocale(), // Share current locale with Vue
+            'jetstream' => [
+                'hasTermsAndPrivacyPolicyFeature' => false,
+                'hasProfilePhotoFeature' => false,
+                'hasApiFeatures' => false,
+                'hasTeamFeatures' => false,
+                'canCreateTeams' => false,
+            ],
             'user' => $request->user() ? [
                 'id' => $request->user()->id,
                 'name' => $request->user()->name,

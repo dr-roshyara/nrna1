@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class StoreOrganizationRequest extends FormRequest
 {
@@ -181,15 +182,12 @@ class StoreOrganizationRequest extends FormRequest
 
     /**
      * Handle a failed validation attempt.
+     *
+     * For Inertia AJAX requests, throw ValidationException which Inertia's exception handler
+     * automatically converts to a proper Inertia response with validation errors.
      */
     protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
-        throw new \Illuminate\Http\Exceptions\HttpResponseException(
-            response()->json([
-                'success' => false,
-                'message' => __('validation.failed'),
-                'errors' => $validator->errors(),
-            ], 422)
-        );
+        throw ValidationException::withMessages($validator->errors()->messages());
     }
 }

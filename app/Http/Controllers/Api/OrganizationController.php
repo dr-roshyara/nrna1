@@ -132,10 +132,14 @@ class OrganizationController extends Controller
                 // Continue even if email fails
             }
 
-            // For Inertia 2.0: Redirect with flash message
-            // Inertia will automatically handle the redirect and pass flash data to frontend
-            return redirect()->route('organizations.show', $organization->slug)
-                ->with('success', 'Organisation erfolgreich erstellt!');
+            // For Inertia 2.0: Return JSON with redirect URL
+            // Inertia will handle the redirect on the frontend
+            return response()->json([
+                'success' => true,
+                'message' => 'Organisation erfolgreich erstellt!',
+                'redirect' => route('organizations.show', $organization->slug),
+                'organization' => $organization,
+            ], 201);
         } catch (\Exception $e) {
             \Log::error('Organization creation failed', [
                 'error' => $e->getMessage(),

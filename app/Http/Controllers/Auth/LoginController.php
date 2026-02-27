@@ -57,6 +57,18 @@ class LoginController extends Controller
 
         RateLimiter::clear($this->throttleKey($request));
 
+        // Get authenticated user
+        $user = Auth::user();
+
+        // If user has an organization, redirect to it; otherwise go to dashboard
+        if ($user->organisation_id) {
+            $organization = $user->organizations()->first();
+            if ($organization) {
+                return redirect()->intended(route('organizations.show', $organization->slug));
+            }
+        }
+
+        // Fallback to dashboard if no organization
         return redirect()->intended(route('electiondashboard'));
     }
 

@@ -112,10 +112,8 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'store']);
 
     // Register routes
-    Route::get('/register', function () {
-        return Inertia::render('Auth/Register');
-    })->name('register');
-    Route::post('/register', [\Laravel\Fortify\Http\Controllers\RegisteredUserController::class, 'store']);
+    Route::get('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'show'])->name('register');
+    Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'store']);
 
     // Password reset routes
     Route::get('/forgot-password', function () {
@@ -131,6 +129,19 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'destroy'])->name('logout');
+
+    // Profile routes (placeholder for Jetstream compatibility)
+    Route::get('/user/profile', function () {
+        return Inertia::render('Profile/Show');
+    })->name('profile.show');
+
+    Route::get('/api-tokens', function () {
+        return Inertia::render('ApiTokens/Index');
+    })->name('api-tokens.index');
+
+    Route::get('/teams/create', function () {
+        return Inertia::render('Teams/Create');
+    })->name('teams.create');
 });
 
 // Home route: If authenticated, show election dashboard. Else, show welcome page.
@@ -358,3 +369,14 @@ Route::middleware(['auth'])->group(function () {
 // These routes are automatically prefixed with /organizations/{slug}
 // and include EnsureOrganization middleware for security
 require __DIR__.'/organizations.php';
+
+// ============================================================================
+// STATIC PAGES (Terms of Service & Privacy Policy)
+// ============================================================================
+Route::get('/terms-of-service', function () {
+    return Inertia::render('Legal/TermsOfService');
+})->name('terms.show');
+
+Route::get('/privacy-policy', function () {
+    return Inertia::render('Legal/PrivacyPolicy');
+})->name('policy.show');
