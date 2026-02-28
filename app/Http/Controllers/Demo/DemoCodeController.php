@@ -556,79 +556,61 @@ class DemoCodeController extends Controller
     private function getElection(Request $request): Election
     {
         $user = $this->getUser($request);
-
-        \Log::info('🎯 [DemoCodeController] Selecting demo election', [
-            'user_id' => $user->id,
-            'user_org_id' => $user->organisation_id,
-            'has_middleware_election' => $request->attributes->has('election'),
-        ]);
-
-        // Priority 1: Use election from middleware if it exists AND is valid
+        $voterSlug = $request->attributes->get('voter_slug');
         $election = $request->attributes->get('election');
 
-        if ($election) {
-            // Verify the election belongs to user's organisation
-            if ($user->organisation_id === $election->organisation_id) {
-                \Log::info('✅ Using election from middleware', [
+        // ✅ The middleware chain has already resolved and validated the election
+        // If we're in a voter slug route, the election is validated against the slug
+        // If we're not in a voter slug route, the election comes from session/default
+
+        if (!$election) {
+            \Log::critical('[DemoCodeController] Election not set by middleware', [
+                'user_id' => $user->id,
+                'voter_slug_id' => $voterSlug?->id,
+                'path' => $request->path(),
+            ]);
+            throw new \Exception('Election context missing - middleware did not set election');
+        }
+
+        // FINAL VALIDATION: If we're in a voter slug route, triple-check consistency
+        if ($voterSlug) {
+            if ($election->id !== $voterSlug->election_id) {
+                \Log::critical('ELECTION MISMATCH - Controller level validation failed', [
                     'user_id' => $user->id,
-                    'user_org_id' => $user->organisation_id,
-                    'election_id' => $election->id,
+                    'voter_slug_id' => $voterSlug->id,
+                    'voter_slug_election_id' => $voterSlug->election_id,
+                    'middleware_election_id' => $election->id,
+                ]);
+                throw new \Exception('Election mismatch detected - critical data inconsistency');
+            }
+
+            // ✅ VALIDATION: Organisations must match OR either is 0 (platform-wide)
+            $orgsMatch = $election->organisation_id === $voterSlug->organisation_id;
+            $electionIsPlatform = $election->organisation_id === 0;
+            $userIsPlatform = $voterSlug->organisation_id === 0;
+
+            if (!$orgsMatch && !$electionIsPlatform && !$userIsPlatform) {
+                \Log::critical('ORGANISATION MISMATCH - Controller level validation failed', [
+                    'user_id' => $user->id,
+                    'voter_slug_id' => $voterSlug->id,
+                    'voter_slug_org_id' => $voterSlug->organisation_id,
                     'election_org_id' => $election->organisation_id,
+                    'orgsMatch' => $orgsMatch,
+                    'electionIsPlatform' => $electionIsPlatform,
+                    'userIsPlatform' => $userIsPlatform,
                 ]);
-                return $election;
+                throw new \Exception('Organisation mismatch detected - critical data inconsistency');
             }
-
-            \Log::warning('⚠️ Election from middleware has wrong org, will find correct one', [
-                'user_id' => $user->id,
-                'user_org_id' => $user->organisation_id,
-                'election_id' => $election->id,
-                'election_org_id' => $election->organisation_id,
-            ]);
-            // Fall through to find correct election
         }
 
-        // Priority 2 & 3: Find appropriate demo election
-        $query = Election::withoutGlobalScopes()->where('type', 'demo');
-
-        if ($user->organisation_id !== null) {
-            // 👥 USER HAS ORGANISATION - Try to find org-specific demo first
-            $orgDemo = (clone $query)->where('organisation_id', $user->organisation_id)->first();
-
-            if ($orgDemo) {
-                \Log::info('✅ Found org-specific demo election', [
-                    'user_id' => $user->id,
-                    'user_org_id' => $user->organisation_id,
-                    'election_id' => $orgDemo->id,
-                ]);
-                return $orgDemo;
-            }
-
-            // No org-specific demo found - fall back to platform demo
-            \Log::info('⚠️ No org-specific demo found, will try platform demo', [
-                'user_id' => $user->id,
-                'user_org_id' => $user->organisation_id,
-            ]);
-        }
-
-        // Priority 3: Platform-wide demo (organisation_id = null)
-        $platformDemo = (clone $query)->whereNull('organisation_id')->first();
-
-        if ($platformDemo) {
-            \Log::info('✅ Using platform-wide demo election', [
-                'user_id' => $user->id,
-                'user_org_id' => $user->organisation_id ?? 'null',
-                'election_id' => $platformDemo->id,
-            ]);
-            return $platformDemo;
-        }
-
-        // ❌ NO DEMO ELECTIONS EXIST AT ALL
-        \Log::error('❌ No demo elections found in database', [
+        \Log::info('✅ [DemoCodeController] Election resolved', [
             'user_id' => $user->id,
-            'user_org_id' => $user->organisation_id,
+            'election_id' => $election->id,
+            'election_type' => $election->type,
+            'voter_slug_id' => $voterSlug?->id,
         ]);
 
-        throw new \Exception('No demo election available. Please create a demo election first.');
+        return $election;
     }
 
     /**

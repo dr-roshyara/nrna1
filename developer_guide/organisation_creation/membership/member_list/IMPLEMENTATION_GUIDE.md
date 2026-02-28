@@ -1,8 +1,8 @@
 # Members Index Page - Complete Implementation Guide
 
 **Project**: Public Digit Election Platform
-**Module**: Organization Member Management
-**Feature**: Organization-Scoped Member List
+**Module**: organisation Member Management
+**Feature**: organisation-Scoped Member List
 **Date**: 2026-02-23
 **Status**: Ready for Implementation
 
@@ -24,7 +24,7 @@
 
 ### What We're Building
 
-A dedicated Members index page that displays all members belonging to the current user's organization. This page will be similar to the existing `users/index` page but with significant improvements focused on organization-scoped filtering and better user experience.
+A dedicated Members index page that displays all members belonging to the current user's organisation. This page will be similar to the existing `users/index` page but with significant improvements focused on organisation-scoped filtering and better user experience.
 
 ### URL
 ```
@@ -32,7 +32,7 @@ http://localhost:8000/members/index
 ```
 
 ### Key Features
-- ✅ Organization-scoped member list (shows only current org members)
+- ✅ organisation-scoped member list (shows only current org members)
 - ✅ Role-based filtering (admin, commission, voter)
 - ✅ Advanced search (name, email)
 - ✅ Sortable columns
@@ -48,10 +48,10 @@ http://localhost:8000/members/index
 
 ### Functional Requirements
 
-1. **Organization Filtering** (Critical)
-   - MUST show only members of current user's organization
-   - MUST prevent cross-organization data access
-   - MUST handle session-based organization switching
+1. **organisation Filtering** (Critical)
+   - MUST show only members of current user's organisation
+   - MUST prevent cross-organisation data access
+   - MUST handle session-based organisation switching
 
 2. **Search & Filter**
    - Filter by member name
@@ -67,7 +67,7 @@ http://localhost:8000/members/index
 4. **Display**
    - Table columns: ID, Name, Email, Region, Role, Member Since
    - Color-coded role badges
-   - Organization context header
+   - organisation context header
    - Member statistics cards
 
 5. **Pagination**
@@ -119,9 +119,9 @@ http://localhost:8000/members/index
                    ▼
 ┌─────────────────────────────────────────────────────┐
 │          MemberController::index()                  │
-│  1. Get current user's organization                 │
+│  1. Get current user's organisation                 │
 │  2. Check user is member                            │
-│  3. Query organization members                      │
+│  3. Query organisation members                      │
 │  4. Apply filters & sorting                         │
 │  5. Paginate results                                │
 │  6. Return Inertia response                         │
@@ -140,7 +140,7 @@ http://localhost:8000/members/index
 │          Inertia.js Response                        │
 │  Members/Index.vue rendered with:                   │
 │  - members (paginated)                              │
-│  - organization                                     │
+│  - organisation                                     │
 │  - filters                                          │
 │  - stats                                            │
 └─────────────────────────────────────────────────────┘
@@ -187,7 +187,7 @@ User Action          Frontend            Backend              Database
 **Key Points**:
 - Extends base Controller
 - Uses Inertia for rendering
-- Organization membership validation
+- organisation membership validation
 - Query building with filters
 - Pagination
 
@@ -246,7 +246,7 @@ Run comprehensive tests as outlined in [Testing Guide](#testing-guide) section.
 
 namespace App\Http\Controllers;
 
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -254,7 +254,7 @@ use Inertia\Inertia;
 class MemberController extends Controller
 {
     /**
-     * Display members of current user's organization
+     * Display members of current user's organisation
      *
      * GET /members/index
      */
@@ -266,28 +266,28 @@ class MemberController extends Controller
             'field' => 'in:id,name,email,role,assigned_at,created_at',
         ]);
 
-        // Get current user and organization
+        // Get current user and organisation
         $user = auth()->user();
         $organizationId = session('current_organisation_id') ?? $user->organisation_id;
 
         if (!$organizationId) {
             return redirect()->route('dashboard')
-                ->with('error', 'No organization selected. Please select an organization first.');
+                ->with('error', 'No organisation selected. Please select an organisation first.');
         }
 
-        $organization = Organization::findOrFail($organizationId);
+        $organisation = organisation::findOrFail($organizationId);
 
         // Authorization check
-        $isMember = $organization->users()
+        $isMember = $organisation->users()
             ->where('users.id', $user->id)
             ->exists();
 
         if (!$isMember) {
-            abort(403, 'You do not have access to this organization.');
+            abort(403, 'You do not have access to this organisation.');
         }
 
-        // Build query for organization members with pivot data
-        $query = $organization->users()
+        // Build query for organisation members with pivot data
+        $query = $organisation->users()
             ->withPivot(['role', 'permissions', 'assigned_at']);
 
         // Apply search filters
@@ -333,18 +333,18 @@ class MemberController extends Controller
 
         // Calculate statistics
         $stats = [
-            'total_members' => $organization->users()->count(),
-            'admins_count' => $organization->admins()->count(),
-            'commission_count' => $organization->commissionMembers()->count(),
-            'voters_count' => $organization->voters()->count(),
+            'total_members' => $organisation->users()->count(),
+            'admins_count' => $organisation->admins()->count(),
+            'commission_count' => $organisation->commissionMembers()->count(),
+            'voters_count' => $organisation->voters()->count(),
         ];
 
         return Inertia::render('Members/Index', [
             'members' => $members,
-            'organization' => [
-                'id' => $organization->id,
-                'name' => $organization->name,
-                'slug' => $organization->slug,
+            'organisation' => [
+                'id' => $organisation->id,
+                'name' => $organisation->name,
+                'slug' => $organisation->slug,
             ],
             'filters' => $request->only(['name', 'email', 'role', 'field', 'direction']),
             'currentUser' => $user,
@@ -371,14 +371,14 @@ See separate file: `VUE_COMPONENT_CODE.md`
 □ Requires authentication (redirects if not logged in)
 ```
 
-#### 2. Organization Filtering Test
+#### 2. organisation Filtering Test
 ```
-□ Login as user in Organization A
+□ Login as user in organisation A
 □ Navigate to /members/index
-□ Only see members from Organization A
-□ Switch to Organization B (if multi-org user)
-□ Only see members from Organization B
-□ Verify no cross-organization data leakage
+□ Only see members from organisation A
+□ Switch to organisation B (if multi-org user)
+□ Only see members from organisation B
+□ Verify no cross-organisation data leakage
 ```
 
 #### 3. Search & Filter Test
@@ -426,7 +426,7 @@ See separate file: `VUE_COMPONENT_CODE.md`
 
 #### 7. Permission Test
 ```
-□ Login as user NOT in any organization
+□ Login as user NOT in any organisation
 □ Try to access /members/index
 □ Receive 403 error
 □ Login as member of Org A
@@ -443,7 +443,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
-use App\Models\Organization;
+use App\Models\organisation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class MemberIndexTest extends TestCase
@@ -459,8 +459,8 @@ class MemberIndexTest extends TestCase
     public function test_members_index_shows_only_organization_members()
     {
         // Create two organizations
-        $orgA = Organization::factory()->create();
-        $orgB = Organization::factory()->create();
+        $orgA = organisation::factory()->create();
+        $orgB = organisation::factory()->create();
 
         // Create users for each org
         $userA = User::factory()->create();
@@ -487,13 +487,13 @@ class MemberIndexTest extends TestCase
         $response->assertInertia(fn ($page) => $page
             ->component('Members/Index')
             ->has('members.data', 6) // 1 admin + 5 voters
-            ->where('organization.id', $orgA->id)
+            ->where('organisation.id', $orgA->id)
         );
     }
 
     public function test_members_index_filters_by_name()
     {
-        $org = Organization::factory()->create();
+        $org = organisation::factory()->create();
         $user = User::factory()->create(['name' => 'Admin User']);
         $john = User::factory()->create(['name' => 'John Doe']);
         $jane = User::factory()->create(['name' => 'Jane Smith']);
@@ -579,7 +579,7 @@ npm run production
 
 ### Common Issues
 
-**Issue**: "No organization selected" error
+**Issue**: "No organisation selected" error
 **Solution**: Verify session management and ensure `current_organisation_id` is set
 
 **Issue**: Members from all organizations showing
@@ -592,7 +592,7 @@ npm run production
 **Solution**: Verify sort field is in allowed list, check SQL query in logs
 
 **Issue**: 403 Forbidden error
-**Solution**: Check user is actually a member of the organization
+**Solution**: Check user is actually a member of the organisation
 
 ---
 

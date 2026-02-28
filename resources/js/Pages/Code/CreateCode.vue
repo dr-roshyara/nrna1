@@ -199,22 +199,28 @@ export default {
     },
     computed: {
         codeExpired() {
-            return this.code_duration >= this.code_expires_in;
+            const duration = Number(this.code_duration);
+            const expiresIn = Number(this.code_expires_in);
+            return duration >= expiresIn;
         }
     },
     methods: {
         getInstructions() {
             const locale = this.$i18n.locale;
-            const minutesElapsed = this.code_duration;
-            const minutesRemaining = Math.max(0, this.code_expires_in - this.code_duration);
+            const minutesElapsed = Number(this.code_duration);
+            const minutesRemaining = Math.max(0, Number(this.code_expires_in) - minutesElapsed);
+
+            // Format to 1 decimal place for display
+            const elapsedFormatted = minutesElapsed.toFixed(1);
+            const remainingFormatted = minutesRemaining.toFixed(1);
 
             if (locale === 'np') {
-                return `${this.$t('pages.code-create.instructions.nepali_intro')} ${minutesElapsed} ${this.$t('pages.code-create.instructions.nepali_ago')} ${minutesRemaining} ${this.$t('pages.code-create.instructions.nepali_remaining')}`;
+                return `${this.$t('pages.code-create.instructions.nepali_intro')} ${elapsedFormatted} ${this.$t('pages.code-create.instructions.nepali_ago')} ${remainingFormatted} ${this.$t('pages.code-create.instructions.nepali_remaining')}`;
             } else if (locale === 'de') {
-                return `${this.$t('pages.code-create.instructions.english_intro')} ${minutesElapsed} ${this.$t('pages.code-create.instructions.english_ago')} ${minutesRemaining} ${this.$t('pages.code-create.instructions.english_remaining')}`;
+                return `${this.$t('pages.code-create.instructions.english_intro')} ${elapsedFormatted} ${this.$t('pages.code-create.instructions.english_ago')} ${remainingFormatted} ${this.$t('pages.code-create.instructions.english_remaining')}`;
             } else {
                 // Default to English
-                return `${this.$t('pages.code-create.instructions.english_intro')} ${minutesElapsed} ${this.$t('pages.code-create.instructions.english_ago')} ${minutesRemaining} ${this.$t('pages.code-create.instructions.english_remaining')}`;
+                return `${this.$t('pages.code-create.instructions.english_intro')} ${elapsedFormatted} ${this.$t('pages.code-create.instructions.english_ago')} ${remainingFormatted} ${this.$t('pages.code-create.instructions.english_remaining')}`;
             }
         },
         handleSubmit() {

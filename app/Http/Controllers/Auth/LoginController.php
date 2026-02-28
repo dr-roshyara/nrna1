@@ -60,15 +60,15 @@ class LoginController extends Controller
         // Get authenticated user
         $user = Auth::user();
 
-        // If user has an organization, redirect to it; otherwise go to dashboard
+        // If user has an organisation, redirect to it; otherwise go to dashboard
         if ($user->organisation_id) {
-            $organization = \App\Models\Organization::find($user->organisation_id);
-            if ($organization) {
-                return redirect()->intended(route('organizations.show', $organization->slug));
+            $organisation = \App\Models\Organisation::find($user->organisation_id);
+            if ($organisation) {
+                return redirect()->intended(route('organisations.show', $organisation->slug));
             }
         }
 
-        // Fallback to dashboard if no organization
+        // Fallback to dashboard if no organisation
         return redirect()->intended(route('electiondashboard'));
     }
 

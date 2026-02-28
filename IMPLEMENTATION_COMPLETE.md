@@ -1,4 +1,4 @@
-# 🎉 Organization Creation System - Complete Implementation
+# 🎉 organisation Creation System - Complete Implementation
 
 ## ✅ VERIFICATION SUMMARY
 
@@ -7,11 +7,11 @@
   - `id`, `name`, `email`, `address`, `representative`, `created_by`
   - `slug`, `type`, `settings`, `languages`
   - `created_at`, `updated_at`
-- ✅ User-Organization pivot table with role assignment
-  - `user_id`, `organization_id`, `role`, `permissions`, `assigned_at`
+- ✅ User-organisation pivot table with role assignment
+  - `user_id`, `organisation_id`, `role`, `permissions`, `assigned_at`
 
 ### Model & Relationships
-- ✅ Organization model with proper fillable array
+- ✅ organisation model with proper fillable array
 - ✅ Address and representative data cast to JSON
 - ✅ Creator relationship (belongsTo User)
 - ✅ Users relationship (belongsToMany)
@@ -25,7 +25,7 @@
   - Custom error messages
 - ✅ OrganizationController
   - Store: Creates org, attaches creator as admin, creates representative user if needed
-  - Show: Displays organization dashboard (Inertia)
+  - Show: Displays organisation dashboard (Inertia)
 - ✅ Routes configured with authentication middleware
 - ✅ Throttling: 3 requests per 10 minutes on POST
 
@@ -51,10 +51,10 @@
 - ✅ German (de) - Full translations
 - ✅ English (en) - Full translations
 - ✅ Nepali (np) - Full translations
-- ✅ i18n configuration updated to include organization translations
+- ✅ i18n configuration updated to include organisation translations
 - ✅ Translation keys in Modal:
-  - `organization.education.*`
-  - `organization.form.*`
+  - `organisation.education.*`
+  - `organisation.form.*`
 
 ## 🔄 Complete Workflow
 
@@ -64,7 +64,7 @@
 3. User reads "Was ist eine Organisation?" information
 4. User clicks "Organisation jetzt gründen →"
 5. **Step 1: Basic Information**
-   - Enter organization name (required)
+   - Enter organisation name (required)
    - Enter official email (required, unique)
 6. **Step 2: Address**
    - Enter street address
@@ -81,12 +81,12 @@
 8. **Submit**
    - Form validates locally
    - Sends POST /organizations with all data + CSRF token
-   - Backend validates, creates organization, attaches creator as admin
+   - Backend validates, creates organisation, attaches creator as admin
    - If representative is different: Creates user, sends invitation email
    - Returns success response with redirect URL
 9. **Success**
    - Toast notification: "✅ Erfolg - Organisation erfolgreich erstellt!"
-   - Redirect to organization dashboard after 1.5 seconds
+   - Redirect to organisation dashboard after 1.5 seconds
 
 ### Data Flow
 
@@ -101,7 +101,7 @@ StoreOrganizationRequest (Validation)
     ↓
 OrganizationController::store()
     ↓
-Organization::create()
+organisation::create()
     + User::attach() as admin
     + User::firstOrCreate() (if external rep)
     + Mail::send() (notifications)
@@ -115,11 +115,11 @@ Success Toast + Redirect
 
 ### Functional Tests
 - ✅ User creation
-- ✅ Organization creation with all fields
+- ✅ organisation creation with all fields
 - ✅ Address data persisted as JSON
 - ✅ Representative data persisted as JSON
 - ✅ Creator relationship
-- ✅ User-Organization attachment with role
+- ✅ User-organisation attachment with role
 - ✅ Assigned timestamp tracking
 - ✅ Database integrity
 
@@ -177,8 +177,8 @@ All components are integrated and working:
 
 ## Next Steps (Optional)
 
-- Add organization logo upload
+- Add organisation logo upload
 - Add custom email templates
 - Add member invitation UI
 - Add election creation template
-- Add organization settings dashboard
+- Add organisation settings dashboard

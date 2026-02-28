@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use App\Traits\HasOrganisation;
 
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasFactory;
     use Notifiable;
     use HasRoles;
+    use HasOrganisation;
 
     /**
      * The attributes that are mass assignable.
@@ -910,13 +912,13 @@ public function getVoterState(): string
     // ============================================================================
 
     /**
-     * Get organizations this user belongs to with roles
+     * Get organisations this user belongs to with roles
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function organizationRoles()
+    public function organisationRoles()
     {
-        return $this->belongsToMany(Organization::class, 'user_organization_roles')
+        return $this->belongsToMany(Organisation::class, 'user_organisation_roles')
                     ->withPivot('role', 'permissions')
                     ->withTimestamps();
     }
@@ -935,8 +937,8 @@ public function getVoterState(): string
             function () {
                 $roles = [];
 
-                // Get organization-specific roles from new system
-                $orgRoles = \DB::table('user_organization_roles')
+                // Get organisation-specific roles from new system
+                $orgRoles = \DB::table('user_organisation_roles')
                     ->where('user_id', $this->id)
                     ->distinct()
                     ->pluck('role')
@@ -1000,29 +1002,29 @@ public function getVoterState(): string
     }
 
     /**
-     * Check if user is admin of organization
+     * Check if user is admin of organisation
      *
-     * @param int $organizationId
+     * @param int $organisationId
      * @return bool
      */
-    public function isOrganizationAdmin(int $organizationId): bool
+    public function isOrganisationAdmin(int $organisationId): bool
     {
-        return $this->organizationRoles()
-            ->where('organizations.id', $organizationId)
+        return $this->organisationRoles()
+            ->where('organisations.id', $organisationId)
             ->wherePivot('role', 'admin')
             ->exists();
     }
 
     /**
-     * Check if user is voter in organization
+     * Check if user is voter in organisation
      *
-     * @param int $organizationId
+     * @param int $organisationId
      * @return bool
      */
-    public function isOrganizationVoter(int $organizationId): bool
+    public function isOrganisationVoter(int $organisationId): bool
     {
-        return $this->organizationRoles()
-            ->where('organizations.id', $organizationId)
+        return $this->organisationRoles()
+            ->where('organisations.id', $organisationId)
             ->wherePivot('role', 'voter')
             ->exists();
     }

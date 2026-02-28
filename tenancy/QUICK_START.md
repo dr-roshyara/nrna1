@@ -7,9 +7,9 @@ Get up and running with multi-tenancy in this application.
 **Multi-tenancy** means one application instance serves multiple organizations (tenants), with complete data isolation between them.
 
 In this application:
-- 🏢 Each organization has its own elections, candidates, votes, etc.
+- 🏢 Each organisation has its own elections, candidates, votes, etc.
 - 🔒 Users from Org A cannot see data from Org B
-- 📊 Queries automatically filter by organization
+- 📊 Queries automatically filter by organisation
 - ✅ All automatic - you don't need to manually scope queries
 
 ## How It Works (The Magic)
@@ -138,7 +138,7 @@ $allElections = Election::ignoreTenant()->get();
 ### Query Specific Tenant
 
 ```php
-// Get records for a specific organization (not current context)
+// Get records for a specific organisation (not current context)
 $org1Elections = Election::forOrganisation(1)->get();
 
 // Get default platform records (organisation_id = null)
@@ -249,7 +249,7 @@ session(['current_organisation_id' => 1]);
 $elections = Election::all(); // Will now return results
 ```
 
-### Issue: Can see other organization's data
+### Issue: Can see other organisation's data
 
 **Cause**: Session context is null or wrong
 

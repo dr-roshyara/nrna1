@@ -56,7 +56,7 @@ Located at the top of the voter list page, showing four key metrics:
 ### 📊 Total Voters
 
 **What it shows:**
-- Total number of registered voters in your organization
+- Total number of registered voters in your organisation
 - Includes: Approved, Pending, and Suspended voters
 
 **Why it matters:**

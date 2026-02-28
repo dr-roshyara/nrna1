@@ -29,13 +29,13 @@
 │ - Sitemap generation: SitemapController (basic - missing organizations/elections)                                    │
 │ - Multi-language support: SetLocale middleware + i18n.js (3 languages: DE, EN, NP)                                   │
 │ - Inertia props sharing: HandleInertiaRequests middleware (sends locale to all pages)                                │
-│ - Structured data: JSON-LD Organization + Website schemas                                                            │
+│ - Structured data: JSON-LD organisation + Website schemas                                                            │
 │                                                                                                                      │
 │ SEO Gaps ❌                                                                                                          │
 │                                                                                                                      │
 │ - No per-page meta customization: Uses static config fallback                                                        │
 │ - No dynamic hreflang tags: Multi-language support exists but not SEO-implemented                                    │
-│ - Limited sitemap: Missing organization pages, elections, results pages                                              │
+│ - Limited sitemap: Missing organisation pages, elections, results pages                                              │
 │ - No breadcrumb schema: JSON-LD breadcrumbs not implemented                                                          │
 │ - No robots.txt file: Rely on meta robots tag only                                                                   │
 │ - Static canonical URLs: Not dynamic per page/language                                                               │
@@ -130,7 +130,7 @@
 │                                                                                                                      │
 │ Expand sitemap to include:                                                                                           │
 │ - Static pages (about, pricing, blog)                                                                                │
-│ - Organization pages (indexed? security consideration)                                                               │
+│ - organisation pages (indexed? security consideration)                                                               │
 │ - Active elections (indexed? depends on privacy requirements)                                                        │
 │ - Public candidate listings per election                                                                             │
 │ - Result pages (post-election)                                                                                       │
@@ -217,14 +217,14 @@
 │   :data="electionEventData"                                                                                          │
 │ />                                                                                                                   │
 │                                                                                                                      │
-│ 3.3 Organization Schema Enhancement                                                                                  │
+│ 3.3 organisation Schema Enhancement                                                                                  │
 │                                                                                                                      │
 │ File: resources/js/Pages/Organizations/Show.vue                                                                      │
 │                                                                                                                      │
-│ Add Organization schema for each organization page:                                                                  │
-│ - Type: Organization                                                                                                 │
+│ Add organisation schema for each organisation page:                                                                  │
+│ - Type: organisation                                                                                                 │
 │ - Properties: name, description, address, email, url, logo, sameAs (social links)                                    │
-│ - Relationships: Organization member count, election count                                                           │
+│ - Relationships: organisation member count, election count                                                           │
 │                                                                                                                      │
 │ ---                                                                                                                  │
 │ Phase 4: Per-Page Implementation (Weeks 4-5)                                                                         │
@@ -236,7 +236,7 @@
 │ - Description: Diaspora voting platform description                                                                  │
 │ - Keywords: diaspora, elections, voting, online voting, NRNA                                                         │
 │ - OG Image: Homepage hero image                                                                                      │
-│ - Schema: WebSite + Organization                                                                                     │
+│ - Schema: WebSite + organisation                                                                                     │
 │                                                                                                                      │
 │ About Page (create if missing):                                                                                      │
 │ - Title: "How Public Digit Works"                                                                                    │
@@ -248,27 +248,27 @@
 │ - Keywords: election pricing, voting platform cost                                                                   │
 │ - Schema: PricingInfo (if available)                                                                                 │
 │                                                                                                                      │
-│ 4.2 Organization Pages                                                                                               │
+│ 4.2 organisation Pages                                                                                               │
 │                                                                                                                      │
 │ Organizations/Show.vue (/organizations/{slug}):                                                                      │
-│ - Dynamic title: "{Organization Name} - Elections | Public Digit"                                                    │
-│ - Description: Organization + member count + election count                                                          │
+│ - Dynamic title: "{organisation Name} - Elections | Public Digit"                                                    │
+│ - Description: organisation + member count + election count                                                          │
 │ - Canonical: /organizations/{slug}                                                                                   │
-│ - Hreflang: If organization pages are language-specific                                                              │
-│ - Schema: Organization                                                                                               │
-│ - Optional: noindex if organization pages are private                                                                │
+│ - Hreflang: If organisation pages are language-specific                                                              │
+│ - Schema: organisation                                                                                               │
+│ - Optional: noindex if organisation pages are private                                                                │
 │                                                                                                                      │
 │ 4.3 Election Pages                                                                                                   │
 │                                                                                                                      │
 │ Election Result Page (/election/result):                                                                             │
 │ - Dynamic title: "{Election Name} - Results"                                                                         │
 │ - Description: Election type + date + result summary                                                                 │
-│ - OG Image: Organization logo                                                                                        │
+│ - OG Image: organisation logo                                                                                        │
 │ - Schema: Event (completed state)                                                                                    │
 │ - Status: Published (searchable)                                                                                     │
 │                                                                                                                      │
 │ Candidacy Pages (if public):                                                                                         │
-│ - Title: "{Candidate Name} - {Position} | {Organization}"                                                            │
+│ - Title: "{Candidate Name} - {Position} | {organisation}"                                                            │
 │ - Description: Candidate bio/statement excerpt                                                                       │
 │ - OG Image: Candidate photo                                                                                          │
 │ - Schema: Person + Candidacy                                                                                         │
@@ -300,8 +300,8 @@
 │   - Event schema integration                                                                                         │
 │   - Election-specific meta                                                                                           │
 │   - Breadcrumb: Home > Elections > {Election}                                                                        │
-│ 3. Organization Page Template (resources/js/Layouts/OrganizationSeoLayout.vue):                                      │
-│   - Organization schema                                                                                              │
+│ 3. organisation Page Template (resources/js/Layouts/OrganizationSeoLayout.vue):                                      │
+│   - organisation schema                                                                                              │
 │   - Canonical URL handling                                                                                           │
 │   - Breadcrumb: Home > Organizations > {Org}                                                                         │
 │                                                                                                                      │
@@ -382,7 +382,7 @@
 │ ├────────────────────────────────────────────────┼───────────────────────────────────────────┼──────────┤            │
 │ │ resources/js/Pages/Welcome.vue                 │ Implement useMeta composable              │ P1       │            │
 │ ├────────────────────────────────────────────────┼───────────────────────────────────────────┼──────────┤            │
-│ │ resources/js/Pages/Organizations/Show.vue      │ Implement useMeta + Organization schema   │ P1       │            │
+│ │ resources/js/Pages/Organizations/Show.vue      │ Implement useMeta + organisation schema   │ P1       │            │
 │ ├────────────────────────────────────────────────┼───────────────────────────────────────────┼──────────┤            │
 │ │ resources/js/Pages/Election/ElectionResult.vue │ Implement useMeta + Event schema          │ P1       │            │
 │ └────────────────────────────────────────────────┴───────────────────────────────────────────┴──────────┘            │
@@ -550,7 +550,7 @@
 │ - Public election info pages                                                                                         │
 │ - Candidate profiles (public)                                                                                        │
 │ - Results pages (after election closes)                                                                              │
-│ - Organization public pages                                                                                          │
+│ - organisation public pages                                                                                          │
 │ - Landing/marketing pages                                                                                            │
 │                                                                                                                      │
 │ Implementation Strategy                                                                                              │
@@ -594,7 +594,7 @@
 │ ├─────────┼─────────┼──────────────────────┼─────────────────────────────────────────────────────────┤               │
 │ │ Phase 2 │ 2-3     │ Multi-lang & Sitemap │ Hreflang, enhanced sitemap, robots.txt                  │               │
 │ ├─────────┼─────────┼──────────────────────┼─────────────────────────────────────────────────────────┤               │
-│ │ Phase 3 │ 3-4     │ Structured Data      │ Breadcrumbs, Event schema, enhanced Organization schema │               │
+│ │ Phase 3 │ 3-4     │ Structured Data      │ Breadcrumbs, Event schema, enhanced organisation schema │               │
 │ ├─────────┼─────────┼──────────────────────┼─────────────────────────────────────────────────────────┤               │
 │ │ Phase 4 │ 4-5     │ Per-Page             │ Welcome, Org, Election pages updated                    │               │
 │ ├─────────┼─────────┼──────────────────────┼─────────────────────────────────────────────────────────┤               │

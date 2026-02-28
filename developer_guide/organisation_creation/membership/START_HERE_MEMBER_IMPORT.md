@@ -111,7 +111,7 @@ I have created 4 comprehensive guides for you:
 
 ```
 ⚠️  Member Import Controller - NOT CREATED
-⚠️  Organization Policy - NOT CREATED
+⚠️  organisation Policy - NOT CREATED
 ⚠️  Database Migrations - NOT CREATED
 ⚠️  Routes - NOT ADDED
 ⚠️  Models Updated - NOT DONE
@@ -167,7 +167,7 @@ I have created 4 comprehensive guides for you:
 # Edit: routes/web.php
 
 # Add this line in authenticated middleware group:
-Route::post('/organizations/{organization}/members/import',
+Route::post('/organizations/{organisation}/members/import',
     [App\Http\Controllers\Organizations\MemberImportController::class, 'store'])
     ->name('organizations.members.import.store');
 ```
@@ -186,7 +186,7 @@ Route::post('/organizations/{organization}/members/import',
 ### Step 5: Update Models (10 min)
 
 ```bash
-# Edit: app/Models/Organization.php
+# Edit: app/Models/organisation.php
 # Add relationships from MEMBER_IMPORT_QUICK_IMPLEMENTATION.md: "Step 5: Update Models"
 
 # Edit: app/Models/User.php
@@ -220,8 +220,8 @@ php artisan tinker
 # 2. Check users created:
 >>> User::where('email', 'john@example.com')->first()
 
-# 3. Check organization relationship:
->>> Organization::find(1)->users()->get()
+# 3. Check organisation relationship:
+>>> organisation::find(1)->users()->get()
 ```
 
 ### Test 3: Validation Errors
@@ -246,23 +246,23 @@ invalid-email,John
 **Fix**:
 ```php
 // Add to routes/web.php
-Route::post('/organizations/{organization}/members/import',
+Route::post('/organizations/{organisation}/members/import',
     [MemberImportController::class, 'store'])
     ->name('organizations.members.import.store');
 ```
 
 ### Issue: 403 Unauthorized
 
-**Cause**: User not organization admin
+**Cause**: User not organisation admin
 
 **Fix**:
 ```bash
 # Check user has admin role:
 SELECT * FROM user_organization_roles
-WHERE user_id = 1 AND organization_id = 1;
+WHERE user_id = 1 AND organisation_id = 1;
 
 # If empty, add user as admin:
-INSERT INTO user_organization_roles (user_id, organization_id, role, assigned_at, created_at, updated_at)
+INSERT INTO user_organization_roles (user_id, organisation_id, role, assigned_at, created_at, updated_at)
 VALUES (1, 1, 'admin', NOW(), NOW(), NOW());
 ```
 
@@ -327,13 +327,13 @@ User Browser
 ```
 Laravel Server (Not Implemented Yet)
     │
-    ├─ POST /organizations/{organization}/members/import
+    ├─ POST /organizations/{organisation}/members/import
     │  ├─ Check CSRF token ✅ (Laravel middleware)
     │  ├─ Check authentication ✅ (Laravel middleware)
     │  ├─ Check authorization ⚠️ (OrganizationPolicy - you create)
     │  ├─ Validate data ⚠️ (MemberImportController - you create)
     │  ├─ Create users ⚠️ (User::firstOrCreate() - you create)
-    │  ├─ Attach to organization ⚠️ (users()->attach() - you create)
+    │  ├─ Attach to organisation ⚠️ (users()->attach() - you create)
     │  └─ Return JSON response ⚠️ (success/error - you create)
     │
     └─ Browser receives response
@@ -355,11 +355,11 @@ Laravel Server (Not Implemented Yet)
    - Return response
 
 2. app/Policies/OrganizationPolicy.php
-   - Check if user can manage organization
-   - Check if user can view organization
+   - Check if user can manage organisation
+   - Check if user can view organisation
 
 3. database/migrations/YYYY_MM_DD_create_user_organization_roles_table.php
-   - Create pivot table for organization memberships
+   - Create pivot table for organisation memberships
    - Add foreign keys and indexes
 ```
 
@@ -369,7 +369,7 @@ Laravel Server (Not Implemented Yet)
 1. routes/web.php
    - Add POST route for member import
 
-2. app/Models/Organization.php
+2. app/Models/organisation.php
    - Add relationship to users
 
 3. app/Models/User.php
@@ -384,7 +384,7 @@ After implementation:
 
 ```
 ✅ Users can import members from CSV/Excel
-✅ Members appear in database with organization
+✅ Members appear in database with organisation
 ✅ Validation prevents invalid data
 ✅ Duplicates are handled
 ✅ Only admins can import

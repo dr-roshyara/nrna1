@@ -2,7 +2,7 @@
 
 **Status**: ✅ **READY FOR TESTING**
 **Date**: February 23, 2026
-**Component**: Organization-Specific Voters List Management System
+**Component**: organisation-Specific Voters List Management System
 **Security Target**: OWASP Top 10 + Multi-Tenant Isolation
 
 ---
@@ -47,7 +47,7 @@ Phase 4 delivers comprehensive security testing infrastructure and penetration t
 - ✅ Authorization enforcement (role-based access)
 - ✅ Authentication bypass prevention
 - ✅ Privilege escalation prevention
-- ✅ Cross-organization access prevention (IDOR)
+- ✅ Cross-organisation access prevention (IDOR)
 - ✅ Input sanitization (SQL, XSS, command injection)
 - ✅ Session fixation prevention
 - ✅ Mass assignment vulnerability prevention
@@ -128,7 +128,7 @@ Referrer-Policy
 #### Layer 1: Middleware
 ```php
 // EnsureOrganization middleware
-- Validates organization exists
+- Validates organisation exists
 - Validates user is member
 - Prevents cross-org access
 - Logs all access attempts
@@ -136,7 +136,7 @@ Referrer-Policy
 
 #### Layer 2: Query Scoping
 ```php
-// Every query includes organization filter
+// Every query includes organisation filter
 User::where('organisation_id', $orgId)
     ->where('is_voter', 1)
     ->get();
@@ -166,9 +166,9 @@ Log::channel('voting_audit')->info('voter_approved', [
 
 ### ✅ 1. Broken Access Control
 **Protection**:
-- Organization membership validation (middleware)
+- organisation membership validation (middleware)
 - Role-based access control
-- Query organization filtering
+- Query organisation filtering
 - Explicit approval checks
 
 **Tests**: 5 test cases verify protection
@@ -341,18 +341,18 @@ Success Rate: 100% (all attacks prevented)
 
 ## Multi-Tenant Security Verification
 
-### Organization Isolation Tests
+### organisation Isolation Tests
 - ✅ User A cannot view User B's organizations
 - ✅ User A cannot approve voters from User B's org
 - ✅ User A cannot modify users in User B's org
-- ✅ Query results filtered by organization
+- ✅ Query results filtered by organisation
 - ✅ Cross-org voter access blocked (403)
 - ✅ Bulk operations respect org boundaries
 
 ### Data Segregation Tests
-- ✅ Voter data isolated per organization
+- ✅ Voter data isolated per organisation
 - ✅ Logs do not mix organizations
-- ✅ Statistics per-organization only
+- ✅ Statistics per-organisation only
 - ✅ Search results org-filtered
 - ✅ Exports only include org data
 
@@ -403,7 +403,7 @@ Success Rate: 100% (all attacks prevented)
 
 ### Authentication & Access Control
 - [ ] All endpoints require authentication
-- [ ] Organization membership validated
+- [ ] organisation membership validated
 - [ ] Role-based access control enforced
 - [ ] No hardcoded credentials
 - [ ] Passwords never logged/exposed

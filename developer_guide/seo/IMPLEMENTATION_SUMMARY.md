@@ -70,8 +70,8 @@ For pages with variable content:
 useMeta({
   pageKey: 'organizations.show',
   params: {
-    organizationName: organization.name,
-    memberCount: organization.members_count
+    organizationName: organisation.name,
+    memberCount: organisation.members_count
   }
 })
 ```
@@ -185,7 +185,7 @@ These pages have SEO translations ready in all 3 languages:
 
 - ✅ **home** - Homepage
 - ✅ **pricing** - Pricing page
-- ✅ **organizations.show** - Organization details (with dynamic params)
+- ✅ **organizations.show** - organisation details (with dynamic params)
 - ✅ **elections.index** - Elections list
 - ✅ **elections.show** - Election details (with dynamic params)
 
@@ -285,7 +285,7 @@ What you now have that most competitors don't:
 ✅ **Automatic multi-language SEO** - Not all sites handle this
 ✅ **Translation-driven** - Content teams can manage SEO
 ✅ **No language mismatch** - German pages in German, Nepali in Nepali
-✅ **Dynamic parameter support** - Organization pages with org-specific SEO
+✅ **Dynamic parameter support** - organisation pages with org-specific SEO
 ✅ **Zero breaking changes** - Safe to deploy immediately
 ✅ **Comprehensive docs** - Team knows how to maintain it
 
@@ -308,7 +308,7 @@ Track these metrics after deployment:
 - 📈 Page engagement - better matches = higher engagement
 
 ### Business Metrics
-- 📈 New organization signups - from search
+- 📈 New organisation signups - from search
 - 📈 Demo requests - from search visitors
 - 📈 Cost per acquisition - search vs paid
 

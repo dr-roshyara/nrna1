@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Organization;
+use App\Models\Organisation;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,31 +11,31 @@ use Illuminate\Support\Facades\Log;
 /**
  * EnsureOrganization Middleware
  *
- * Generic middleware that validates organization context for all organization-scoped routes.
+ * Generic middleware that validates organisation context for all organisation-scoped routes.
  *
  * Responsibilities:
- * 1. Extract organization slug from route parameter ({slug}, {organization}, etc.)
- * 2. Resolve organization from database by slug
- * 3. Validate user is a member via user_organization_roles pivot table
- * 4. Store organization in request attributes for controller use
+ * 1. Extract organisation slug from route parameter ({slug}, {organisation}, etc.)
+ * 2. Resolve organisation from database by slug
+ * 3. Validate user is a member via user_organisation_roles pivot table
+ * 4. Store organisation in request attributes for controller use
  * 5. Set session context for downstream BelongsToTenant models
  * 6. Return 403 Forbidden for non-members
  * 7. Log unauthorized access attempts
  *
  * Usage in routes:
- *     Route::middleware(['auth', 'verified', 'ensure.organization'])
+ *     Route::middleware(['auth', 'verified', 'ensure.organisation'])
  *         ->group(function () { ... });
  *
- * Accessing organization in controller:
- *     $organization = $request->attributes->get('organization');
+ * Accessing organisation in controller:
+ *     $organisation = $request->attributes->get('organisation');
  *     // OR use the route parameter directly
- *     $organization = $request->route('organization') or $request->route('slug')
+ *     $organisation = $request->route('organisation') or $request->route('slug')
  *
  * Scopes handled:
- * - Organization pages (dashboard, settings)
+ * - organisation pages (dashboard, settings)
  * - Voter management (voters list, approvals)
  * - Election management (create, edit elections)
- * - All organization-scoped resources
+ * - All organisation-scoped resources
  *
  * Note: This middleware validates membership but NOT specific roles.
  * Use Laravel Policies or additional middleware for role-specific access.
@@ -58,78 +58,78 @@ class EnsureOrganizationMember
 
         $user = Auth::user();
 
-        // Try to extract organization slug from route parameters
-        $organizationSlug = $request->route('organization') ?? $request->route('slug');
+        // Try to extract organisation slug from route parameters
+        $organisationSlug = $request->route('organisation') ?? $request->route('slug');
 
-        if (!$organizationSlug) {
-            Log::warning('EnsureOrganization: No organization slug found in route', [
+        if (!$organisationSlug) {
+            Log::warning('EnsureOrganization: No organisation slug found in route', [
                 'user_id' => $user->id,
                 'route' => $request->route()->getName(),
                 'path' => $request->path(),
             ]);
 
             if ($request->expectsJson()) {
-                return response()->json(['error' => 'Organization context not found'], 400);
+                return response()->json(['error' => 'organisation context not found'], 400);
             }
 
-            return redirect()->route('dashboard')->withErrors(['error' => 'Organization not specified']);
+            return redirect()->route('dashboard')->withErrors(['error' => 'organisation not specified']);
         }
 
-        // Resolve organization from database
-        $organization = Organization::where('slug', $organizationSlug)->first();
+        // Resolve organisation from database
+        $organisation = Organisation::where('slug', $organisationSlug)->first();
 
-        if (!$organization) {
-            Log::warning('EnsureOrganization: Organization not found', [
+        if (!$organisation) {
+            Log::warning('EnsureOrganization: organisation not found', [
                 'user_id' => $user->id,
-                'slug' => $organizationSlug,
+                'slug' => $organisationSlug,
             ]);
 
             if ($request->expectsJson()) {
-                return response()->json(['error' => 'Organization not found'], 404);
+                return response()->json(['error' => 'organisation not found'], 404);
             }
 
             return redirect()->route('dashboard')
-                ->withErrors(['error' => __('organizations.messages.not_found')]);
+                ->withErrors(['error' => __('organisations.messages.not_found')]);
         }
 
-        // Validate user is a member of this organization
-        $isMember = $user->organizationRoles()
-            ->where('organizations.id', $organization->id)
+        // Validate user is a member of this organisation
+        $isMember = $user->organisationRoles()
+            ->where('organisations.id', $organisation->id)
             ->exists();
 
         if (!$isMember) {
             Log::warning('EnsureOrganization: Non-member access attempt', [
                 'user_id' => $user->id,
                 'user_name' => $user->name,
-                'organization_id' => $organization->id,
-                'organization_slug' => $organizationSlug,
+                'organisation_id' => $organisation->id,
+                'organisation_slug' => $organisationSlug,
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ]);
 
             if ($request->expectsJson()) {
                 return response()->json(
-                    ['error' => 'Access denied: You are not a member of this organization'],
+                    ['error' => 'Access denied: You are not a member of this organisation'],
                     403
                 );
             }
 
             return redirect()->route('dashboard')
-                ->withErrors(['error' => __('organizations.messages.access_denied')]);
+                ->withErrors(['error' => __('organisations.messages.access_denied')]);
         }
 
-        // Store organization in request attributes for controller use
-        $request->attributes->set('organization', $organization);
+        // Store organisation in request attributes for controller use
+        $request->attributes->set('organisation', $organisation);
 
         // Set session context for BelongsToTenant global scope
-        session(['current_organisation_id' => $organization->id]);
+        session(['current_organisation_id' => $organisation->id]);
 
         // Log successful access
-        Log::channel('voting_audit')->info('Organization context validated', [
+        Log::channel('voting_audit')->info('organisation context validated', [
             'user_id' => $user->id,
             'user_name' => $user->name,
-            'organization_id' => $organization->id,
-            'organization_slug' => $organizationSlug,
+            'organisation_id' => $organisation->id,
+            'organisation_slug' => $organisationSlug,
             'path' => $request->path(),
             'ip_address' => $request->ip(),
         ]);

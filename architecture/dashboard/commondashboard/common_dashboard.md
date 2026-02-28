@@ -4,7 +4,7 @@
 
 You actually need **THREE distinct roles**, not two:
 
-1. **👑 Organization Admin** - Owns/organizes elections
+1. **👑 organisation Admin** - Owns/organizes elections
 2. **⚖️ Election Commission** - Runs/operates specific election  
 3. **👤 Voter** - Casts votes in elections
 
@@ -27,21 +27,21 @@ You actually need **THREE distinct roles**, not two:
   <section class="role-cards-section">
     <div class="role-cards-grid">
       
-      <!-- CARD 1: ORGANIZATION ADMIN -->
+      <!-- CARD 1: organisation ADMIN -->
       <RoleCard 
         :active="userHasAdminRole"
         @click="selectRole('admin')"
         class="admin-role"
       >
         <div class="role-icon">👑</div>
-        <div class="role-title">Organization Administrator</div>
+        <div class="role-title">organisation Administrator</div>
         <div class="role-description">
-          Manage your organization, create elections, oversee everything
+          Manage your organisation, create elections, oversee everything
         </div>
         
         <div class="role-details" v-if="userHasAdminRole">
           <div class="org-info">
-            <strong>{{ userOrgs.length }} organization(s)</strong>
+            <strong>{{ userOrgs.length }} organisation(s)</strong>
             <div v-for="org in userOrgs" :key="org.id" class="org-item">
               • {{ org.name }} ({{ org.role }})
             </div>
@@ -212,10 +212,10 @@ organizations:
   type
   settings
 
--- User-Organization Roles (Many-to-Many)
+-- User-organisation Roles (Many-to-Many)
 user_organization_roles:
   user_id
-  organization_id
+  organisation_id
   role_type ENUM('admin', 'commission', 'voter')
   permissions JSON
   created_at
@@ -223,7 +223,7 @@ user_organization_roles:
 -- Elections
 elections:
   id
-  organization_id
+  organisation_id
   title
   status ENUM('draft', 'active', 'completed')
   commission_members JSON -- array of user_ids with commission access
@@ -231,18 +231,18 @@ elections:
 -- User can have DIFFERENT roles in DIFFERENT organizations!
 -- Example:
 -- User ID 1:
---   - Admin of Organization A
---   - Commission member for Election X in Organization B  
---   - Voter in Organization C
+--   - Admin of organisation A
+--   - Commission member for Election X in organisation B  
+--   - Voter in organisation C
 ```
 
 ---
 
 ## **ROLE PERMISSIONS MATRIX:**
 
-| Feature | Organization Admin | Election Commission | Voter |
+| Feature | organisation Admin | Election Commission | Voter |
 |---------|-------------------|---------------------|-------|
-| Create organization | ✅ | ❌ | ❌ |
+| Create organisation | ✅ | ❌ | ❌ |
 | Create elections | ✅ | ❌ | ❌ |
 | Edit election settings | ✅ | ✅ (limited) | ❌ |
 | Add/remove voters | ✅ | ❌ | ❌ |
@@ -258,16 +258,16 @@ elections:
 
 ## **AFTER ROLE SELECTION - THREE SEPARATE DASHBOARDS:**
 
-### **1. Organization Admin Dashboard**
+### **1. organisation Admin Dashboard**
 ```
 URL: /dashboard/admin
-Purpose: Strategic oversight of ALL elections in organization
+Purpose: Strategic oversight of ALL elections in organisation
 Features:
-- Organization settings
+- organisation settings
 - Create new elections
 - Assign commission members
 - View all election reports
-- Manage organization members
+- Manage organisation members
 - Billing & subscriptions
 ```
 
@@ -319,7 +319,7 @@ Features:
   
   <DropdownMenu>
     <MenuItem v-if="hasAdminRole" @click="switchToRole('admin')">
-      👑 Switch to Organization Admin
+      👑 Switch to organisation Admin
     </MenuItem>
     <MenuItem v-if="hasCommissionRole" @click="switchToRole('commission')">
       ⚖️ Switch to Election Commission

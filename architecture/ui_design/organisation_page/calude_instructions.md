@@ -1,24 +1,24 @@
-## 📋 **CLAUDE CLI PROMPT INSTRUCTIONS - Organization Landing Page**
+## 📋 **CLAUDE CLI PROMPT INSTRUCTIONS - organisation Landing Page**
 
 
 ```
-## CONTEXT: Organization Landing Page After Registration
+## CONTEXT: organisation Landing Page After Registration
 
-We have a multi-tenant voting platform where organizations register and need a comprehensive landing page after successful registration. The page should serve as the central hub for association management with focus on German Vereinsrecht compliance.
+We have a multi-tenant voting platform where organisations register and need a comprehensive landing page after successful registration. The page should serve as the central hub for association management with focus on German Vereinsrecht compliance.
 
 ## CURRENT STATE
-- Organization registration is complete
-- User lands at `/organizations/{slug}` after registration
+- organisation registration is complete
+- User lands at `/organisations/{slug}` after registration
 - Current page has basic stats (members, elections) and a support section
-- Need to transform this into a full-featured organization dashboard
+- Need to transform this into a full-featured organisation dashboard
 
 ## REQUIREMENTS
 
 ### Core Functionality
-Create a professional organization landing page with:
+Create a professional organisation landing page with:
 
-1. **Organization Header**
-   - Organization name and metadata
+1. **organisation Header**
+   - organisation name and metadata
    - Status badges (Active, Verified)
    - Member since date
    - Quick actions menu
@@ -70,8 +70,8 @@ Create a professional organization landing page with:
 ### Component Structure
 
 ```
-resources/js/Pages/Organization/Show.vue (Main page)
-resources/js/Components/Organization/
+resources/js/Pages/organisation/Show.vue (Main page)
+resources/js/Components/organisation/
 ├── OrganizationHeader.vue
 ├── MemberManagement/
 │   ├── MemberImportModal.vue
@@ -96,38 +96,38 @@ resources/js/Components/Organization/
 ### Data Requirements (Props from Controller)
 
 ```php
-return Inertia::render('Organization/Show', [
-    'organization' => [
-        'id' => $organization->id,
-        'name' => $organization->name,
-        'email' => $organization->email,
-        'slug' => $organization->slug,
-        'created_at' => $organization->created_at->format('Y-m-d H:i:s'),
-        'verified_at' => $organization->verified_at,
-        'member_count' => $organization->members()->count(),
-        'active_member_count' => $organization->members()->where('status', 'active')->count(),
-        'new_members_30d' => $organization->members()->where('created_at', '>=', now()->subDays(30))->count(),
-        'exited_members_30d' => $organization->members()->where('status', 'exited')->where('updated_at', '>=', now()->subDays(30))->count(),
+return Inertia::render('organisation/Show', [
+    'organisation' => [
+        'id' => $organisation->id,
+        'name' => $organisation->name,
+        'email' => $organisation->email,
+        'slug' => $organisation->slug,
+        'created_at' => $organisation->created_at->format('Y-m-d H:i:s'),
+        'verified_at' => $organisation->verified_at,
+        'member_count' => $organisation->members()->count(),
+        'active_member_count' => $organisation->members()->where('status', 'active')->count(),
+        'new_members_30d' => $organisation->members()->where('created_at', '>=', now()->subDays(30))->count(),
+        'exited_members_30d' => $organisation->members()->where('status', 'exited')->where('updated_at', '>=', now()->subDays(30))->count(),
     ],
     'electionStats' => [
-        'total_elections' => $organization->elections()->count(),
-        'active_elections' => $organization->elections()->where('status', 'active')->count(),
-        'upcoming_elections' => $organization->elections()->where('status', 'upcoming')->count(),
-        'completed_elections' => $organization->elections()->where('status', 'completed')->count(),
-        'recent_elections' => $organization->elections()->orderBy('created_at', 'desc')->limit(5)->get(),
+        'total_elections' => $organisation->elections()->count(),
+        'active_elections' => $organisation->elections()->where('status', 'active')->count(),
+        'upcoming_elections' => $organisation->elections()->where('status', 'upcoming')->count(),
+        'completed_elections' => $organisation->elections()->where('status', 'completed')->count(),
+        'recent_elections' => $organisation->elections()->orderBy('created_at', 'desc')->limit(5)->get(),
     ],
     'legalStatus' => [
-        'has_election_officer' => $organization->hasElectionOfficer(),
-        'election_officer' => $organization->getElectionOfficer(),
-        'officer_expires_at' => $organization->election_officer_expires_at,
-        'has_deputy_officer' => $organization->hasDeputyElectionOfficer(),
-        'deputy_officer' => $organization->getDeputyElectionOfficer(),
-        'election_rules_version' => $organization->election_rules_version,
+        'has_election_officer' => $organisation->hasElectionOfficer(),
+        'election_officer' => $organisation->getElectionOfficer(),
+        'officer_expires_at' => $organisation->election_officer_expires_at,
+        'has_deputy_officer' => $organisation->hasDeputyElectionOfficer(),
+        'deputy_officer' => $organisation->getDeputyElectionOfficer(),
+        'election_rules_version' => $organisation->election_rules_version,
         'compliance_checks' => [
-            'wahlausschreibung' => $organization->hasWahlausschreibung(),
-            'waehlerverzeichnis' => $organization->hasWaehlerverzeichnis(),
-            'briefwahl_versendet' => $organization->hasBriefwahlVersendet(),
-            'wahlhelfer_bestellt' => $organization->hasWahlhelferBestellt(),
+            'wahlausschreibung' => $organisation->hasWahlausschreibung(),
+            'waehlerverzeichnis' => $organisation->hasWaehlerverzeichnis(),
+            'briefwahl_versendet' => $organisation->hasBriefwahlVersendet(),
+            'wahlhelfer_bestellt' => $organisation->hasWahlhelferBestellt(),
         ],
     ],
     'regionDistribution' => [
@@ -154,7 +154,7 @@ return Inertia::render('Organization/Show', [
 ## IMPLEMENTATION STEPS
 
 ### Step 1: Create the Main Page Component
-Create `resources/js/Pages/Organization/Show.vue` with the full layout structure including all sections in the correct order.
+Create `resources/js/Pages/organisation/Show.vue` with the full layout structure including all sections in the correct order.
 
 ### Step 2: Create Sub-Components
 Create each of the sub-components in their respective directories with proper props and events.
@@ -277,7 +277,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route('organizations.members.import', props.organization.slug), {
+    form.post(route('organisations.members.import', props.organisation.slug), {
         onSuccess: () => {
             // Show success message
             // Refresh member stats
@@ -296,7 +296,7 @@ const showElectionWizard = ref(false);
 <Teleport to="body">
     <MemberImportModal 
         v-if="showMemberImportModal"
-        :organization="organization"
+        :organisation="organisation"
         @close="showMemberImportModal = false"
         @imported="handleImported"
     />
@@ -320,6 +320,6 @@ const formatDate = (date) => {
 
 Begin by creating the main `Show.vue` page component with the full structure, then implement each sub-component following the specifications above. Use Tailwind CSS classes exactly as specified for consistency.
 
-The page should feel professional, trustworthy, and guide the organization admin through their next steps while maintaining full legal compliance for German associations.
+The page should feel professional, trustworthy, and guide the organisation admin through their next steps while maintaining full legal compliance for German associations.
 ```
 write your plan in the same folder of this file and work in plan mode 

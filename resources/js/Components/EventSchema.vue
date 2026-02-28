@@ -18,7 +18,7 @@ const props = defineProps({
     type: Object,
     default: null
   },
-  organization: {
+  organisation: {
     type: Object,
     default: null
   }
@@ -50,12 +50,12 @@ const eventJsonLd = computed(() => {
     'eventStatus': eventStatus,
     'eventAttendanceMode': 'OnlineEventAttendanceMode',
     'url': typeof window !== 'undefined' ? window.location.href : '',
-    'image': props.organization?.logo_url || '/images/og-default.jpg',
+    'image': props.organisation?.logo_url || '/images/og-default.jpg',
     'organizer': {
-      '@type': 'Organization',
-      'name': props.organization?.name || 'Public Digit',
-      'url': props.organization
-        ? `/organizations/${props.organization.slug}`
+      '@type': 'organisation',
+      'name': props.organisation?.name || 'Public Digit',
+      'url': props.organisation
+        ? `/organisations/${props.organisation.slug}`
         : '/'
     },
     'offers': {

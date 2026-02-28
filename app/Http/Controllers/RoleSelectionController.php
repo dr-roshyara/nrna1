@@ -37,7 +37,7 @@ class RoleSelectionController extends Controller
             'adminStats' => $this->getAdminStats($user),
             'commissionStats' => $this->getCommissionStats($user),
             'voterStats' => $this->getVoterStats($user),
-            'userOrganizations' => $user->organizationRoles()
+            'userOrganizations' => $user->organisationRoles()
                 ->withPivot('role')
                 ->get()
                 ->map(function ($org) {
@@ -101,12 +101,12 @@ class RoleSelectionController extends Controller
      */
     private function getAdminStats($user)
     {
-        $adminOrgs = $user->organizationRoles()
+        $adminOrgs = $user->organisationRoles()
             ->wherePivot('role', 'admin')
             ->count();
 
         return [
-            'organizations' => $adminOrgs,
+            'organisations' => $adminOrgs,
             'activeElections' => 0, // Will be populated later
             'totalMembers' => 0, // Will be populated later
         ];

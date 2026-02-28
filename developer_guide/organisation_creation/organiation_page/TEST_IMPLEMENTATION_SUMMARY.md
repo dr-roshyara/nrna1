@@ -1,4 +1,4 @@
-# Organization Creation Testing - Implementation Summary
+# organisation Creation Testing - Implementation Summary
 
 **Date**: 2026-02-22  
 **Status**: Tests Created & Initial Issues Discovered  
@@ -67,7 +67,7 @@
 
 ### Issue #2: Email Template Variables ⚠️
 **Severity**: High  
-**Location**: `resources/views/emails/organization/created-de.blade.php` and other templates
+**Location**: `resources/views/emails/organisation/created-de.blade.php` and other templates
 
 **Problem**:
 - Template rendering tests failing
@@ -218,7 +218,7 @@ Based on failing tests, implement fixes:
 1. Should emails be queued or sent immediately?
 2. Are there any specific production environments where email fails?
 3. Should we use database transactions for rollback on mail failure?
-4. Are rate limits configured for organization creation?
+4. Are rate limits configured for organisation creation?
 
 ---
 

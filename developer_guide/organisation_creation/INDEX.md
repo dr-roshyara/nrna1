@@ -1,4 +1,4 @@
-# Organization Creation - Complete Developer Documentation Index
+# organisation Creation - Complete Developer Documentation Index
 
 **Last Updated:** February 23, 2026
 **Status:** Production Ready
@@ -8,7 +8,7 @@
 
 ## 📚 Documentation Overview
 
-This directory contains **complete developer documentation** for the organization creation feature, members management, and related systems.
+This directory contains **complete developer documentation** for the organisation creation feature, members management, and related systems.
 
 ### Quick Links by Role
 
@@ -21,7 +21,7 @@ This directory contains **complete developer documentation** for the organizatio
 | **Backend implementation?** | [BACKEND_IMPLEMENTATION.md](./BACKEND_IMPLEMENTATION.md) |
 | **Tracking progress?** | [IMPLEMENTATION_CHECKLIST.md](./IMPLEMENTATION_CHECKLIST.md) |
 | **Members management?** | [membership/](./membership/) |
-| **Organization page?** | [organiation_page/](./organiation_page/) |
+| **organisation page?** | [organiation_page/](./organiation_page/) |
 
 ---
 
@@ -33,7 +33,7 @@ This directory contains **complete developer documentation** for the organizatio
 
 | Task | Document |
 |------|----------|
-| Create a new organization | [README.md](./README.md) - Architecture section |
+| Create a new organisation | [README.md](./README.md) - Architecture section |
 | Fix duplicate members | [DUPLICATE_PREVENTION_GUIDE.md](./DUPLICATE_PREVENTION_GUIDE.md) |
 | Add a field to the form | [QUICK_START_DEVELOPER.md](./QUICK_START_DEVELOPER.md) - Making Changes |
 | Understand the data model | [FEATURE_INTEGRATION_GUIDE.md](./FEATURE_INTEGRATION_GUIDE.md) - Data Model |
@@ -147,7 +147,7 @@ This directory contains **complete developer documentation** for the organizatio
 ---
 
 ### [FEATURE_INTEGRATION_GUIDE.md](./FEATURE_INTEGRATION_GUIDE.md)
-**Purpose:** How organization creation integrates with other features
+**Purpose:** How organisation creation integrates with other features
 **Length:** ~700 lines
 **Best for:** Understanding the complete feature ecosystem
 
@@ -220,14 +220,14 @@ This directory contains **complete developer documentation** for the organizatio
 ---
 
 ### [organiation_page/](./organiation_page/) Directory
-**Purpose:** Organization dashboard page documentation
+**Purpose:** organisation dashboard page documentation
 **Contains:**
-- Organization page implementation
+- organisation page implementation
 - Validation rules
 - Production error fixes
 - Implementation summaries
 
-**Best for:** Understanding organization dashboard
+**Best for:** Understanding organisation dashboard
 
 ---
 
@@ -252,7 +252,7 @@ Each document has:
 ### Step 4: Reference Code
 All documents link to actual files:
 - `resources/js/Composables/useOrganizationCreation.js`
-- `resources/js/Components/Organization/*.vue`
+- `resources/js/Components/organisation/*.vue`
 - `app/Http/Controllers/Api/OrganizationController.php`
 - `database/migrations/2026_02_23_000245_*.php`
 
@@ -274,9 +274,9 @@ All documents link to actual files:
 
 | Level | Protection | File |
 |-------|-----------|------|
-| Database | User scoped to organization | user_organization_roles table |
-| Model | Global scope filters by tenant | Organization.php model |
-| Middleware | Extracts organization context | TenantContext middleware |
+| Database | User scoped to organisation | user_organization_roles table |
+| Model | Global scope filters by tenant | organisation.php model |
+| Middleware | Extracts organisation context | TenantContext middleware |
 | Controller | Verifies membership | MemberController.php |
 
 **Read:** [FEATURE_INTEGRATION_GUIDE.md](./FEATURE_INTEGRATION_GUIDE.md) - Multi-Tenancy
@@ -425,7 +425,7 @@ npm test -- --watch
 
 **Last Update:** February 23, 2026
 
-- [x] Organization creation feature complete
+- [x] organisation creation feature complete
 - [x] Duplicate prevention implemented (3-layer)
 - [x] Members management complete
 - [x] Multi-tenancy isolation verified
@@ -463,7 +463,7 @@ Before deploying:
 | Feature | Location |
 |---------|----------|
 | **Members Management** | [membership/](./membership/) |
-| **Organization Page** | [organiation_page/](./organiation_page/) |
+| **organisation Page** | [organiation_page/](./organiation_page/) |
 | **Member Import** | [membership/MEMBER_IMPORT_DEVELOPER_GUIDE.md](./membership/MEMBER_IMPORT_DEVELOPER_GUIDE.md) |
 | **Parent Guide** | [../../CLAUDE.md](../../CLAUDE.md) |
 
@@ -489,7 +489,7 @@ Before deploying:
 ## 🎉 Summary
 
 This documentation provides **complete, production-ready guidance** for:
-- ✅ Understanding organization creation architecture
+- ✅ Understanding organisation creation architecture
 - ✅ Implementing duplicate prevention
 - ✅ Managing members
 - ✅ Understanding multi-tenancy

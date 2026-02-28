@@ -165,7 +165,7 @@ Result: Incomplete ballot, voter dissatisfaction, reduced participation in some 
 
 ---
 
-#### 4. **NRNA Organization**
+#### 4. **NRNA organisation**
 **Role**: Governing body
 **Current Pain Points:**
 - Compliance with bylaws difficult
@@ -336,7 +336,7 @@ Ballot Completion Report
 #### 1. **Enhanced Democratic Legitimacy**
 - **Benefit**: Elected officials have clear mandates
 - **Impact**: Increased organizational credibility
-- **Stakeholder**: NRNA Organization, Candidates
+- **Stakeholder**: NRNA organisation, Candidates
 - **Value**: High
 
 #### 2. **Improved Voter Experience**
@@ -1127,7 +1127,7 @@ NRNA Election Committee
 ### Key Takeaways
 
 1. **Strong Business Case**: $1,540 investment yields $11,510 over 5 years
-2. **High Stakeholder Value**: Benefits election committee, voters, candidates, and organization
+2. **High Stakeholder Value**: Benefits election committee, voters, candidates, and organisation
 3. **Low Risk**: Comprehensive testing and mitigation strategies reduce risk to very low levels
 4. **Immediate Impact**: Reduces administrative burden from first election
 5. **Strategic Flexibility**: Can adapt to different election requirements

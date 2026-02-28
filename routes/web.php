@@ -98,7 +98,7 @@ Route::get('/sitemap.xml', [SitemapController::class, 'sitemapIndex'])->name('si
 
 // Individual Sitemaps
 Route::get('/sitemap/main.xml', [SitemapController::class, 'index'])->name('sitemap.main');
-Route::get('/sitemap/organizations.xml', [SitemapController::class, 'organizations'])->name('sitemap.organizations');
+Route::get('/sitemap/organisations.xml', [SitemapController::class, 'organisations'])->name('sitemap.organisations');
 Route::get('/sitemap/elections.xml', [SitemapController::class, 'elections'])->name('sitemap.elections');
 Route::get('/sitemap/results.xml', [SitemapController::class, 'results'])->name('sitemap.results');
 
@@ -342,19 +342,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [VoterDashboardController::class, 'index'])->name('vote.dashboard');
     });
 
-    // Organization management routes
-    Route::post('/organizations', [OrganizationController::class, 'store'])
-         ->name('organizations.store');
-    Route::get('/organizations/{slug}', [OrganizationController::class, 'show'])
-         ->name('organizations.show');
-    Route::get('/organizations/{slug}/members/import', [MemberImportController::class, 'create'])
-         ->name('organizations.members.import');
-    Route::post('/organizations/{slug}/members/import', [MemberImportController::class, 'store'])
-         ->name('organizations.members.import.store');
+    // organisation management routes
+    Route::post('/organisations', [OrganizationController::class, 'store'])
+         ->name('organisations.store');
+    Route::get('/organisations/{slug}', [OrganizationController::class, 'show'])
+         ->name('organisations.show');
+    Route::get('/organisations/{slug}/members/import', [MemberImportController::class, 'create'])
+         ->name('organisations.members.import');
+    Route::post('/organisations/{slug}/members/import', [MemberImportController::class, 'store'])
+         ->name('organisations.members.import.store');
 
     // Demo setup API endpoint
-    Route::post('/api/organizations/{organization}/demo-setup', [DemoSetupController::class, 'setup'])
-         ->name('api.organizations.demo-setup');
+    Route::post('/api/organisations/{organisation}/demo-setup', [DemoSetupController::class, 'setup'])
+         ->name('api.organisations.demo-setup');
 
     // ============================================================================
     // NEW: MEMBERS MANAGEMENT (Phase 3)
@@ -365,11 +365,11 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // ============================================================================
-// ORGANIZATION-SCOPED ROUTES (Phase 4 - Voters List)
+// organisation-SCOPED ROUTES (Phase 4 - Voters List)
 // ============================================================================
-// These routes are automatically prefixed with /organizations/{slug}
+// These routes are automatically prefixed with /organisations/{slug}
 // and include EnsureOrganization middleware for security
-require __DIR__.'/organizations.php';
+require __DIR__.'/organisations.php';
 
 // ============================================================================
 // STATIC PAGES (Terms of Service & Privacy Policy)
@@ -429,3 +429,19 @@ Route::get('/test/email', function () {
         ], 500);
     }
 })->name('test.email');
+
+// Test route for email diagnostics
+Route::get('/test-email', function () {
+    $user = \App\Models\User::first();
+    if (!$user) {
+        return 'No user found';
+    }
+    
+    try {
+        $result = $user->notify(new \App\Notifications\SendFirstVerificationCode($user, 'TEST123'));
+        return 'Email sent! Result: ' . ($result ? 'true' : 'false');
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+});
+

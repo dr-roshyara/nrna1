@@ -114,7 +114,7 @@ This document provides a comprehensive matrix of all features across different r
 |---------|-------------|--------|-------|
 | **Automatic Vote Counting** | System counts votes automatically | ✅ | MVP |
 | **Result Calculation** | Determine winners based on rules | ✅ | MVP |
-| **Result Publication** | Publish results to organization/public | ✅ | MVP |
+| **Result Publication** | Publish results to organisation/public | ✅ | MVP |
 | **Tie Resolution** | Handle tied vote scenarios | 📋 | Phase 2 |
 | **Result Breakdown** | Show votes by position, region, etc. | 📋 | Phase 2 |
 | **Result History** | Track results over multiple elections | 📋 | Phase 2 |
@@ -235,11 +235,11 @@ This document provides a comprehensive matrix of all features across different r
 
 ---
 
-## Organization & Committee Management
+## organisation & Committee Management
 
 | Feature | Description | Status | Phase |
 |---------|-------------|--------|-------|
-| **Organization Profiles** | Multi-organization support | ✅ | MVP |
+| **organisation Profiles** | Multi-organisation support | ✅ | MVP |
 | **Committee Management** | Define election committees | ✅ | MVP |
 | **Role-Based Access** | Different permissions per role | ✅ | MVP |
 | **Committee Collaboration** | Tools for committee coordination | 📋 | Phase 2 |

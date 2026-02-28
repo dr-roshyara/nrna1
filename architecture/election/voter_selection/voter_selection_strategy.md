@@ -1,4 +1,4 @@
-## 📋 **SENIOR ARCHITECT REVIEW: Organization-Specific Voters List**
+## 📋 **SENIOR ARCHITECT REVIEW: organisation-Specific Voters List**
 
 I've thoroughly reviewed your plan and the exploration data. Here's my comprehensive analysis and recommendations:
 
@@ -11,7 +11,7 @@ I've thoroughly reviewed your plan and the exploration data. Here's my comprehen
 | **Problem Identification** | ⭐⭐⭐⭐⭐ | Correctly identified the critical security flaw (User model missing BelongsToTenant) |
 | **Middleware Approach** | ⭐⭐⭐⭐⭐ | Creating `EnsureOrganizationMember` is the right architectural decision |
 | **Route Structure** | ⭐⭐⭐⭐ | `/voters/index` is logical, but consider `/organizations/{slug}/voters` for RESTful design |
-| **Security Focus** | ⭐⭐⭐⭐⭐ | Proper organization membership validation is essential |
+| **Security Focus** | ⭐⭐⭐⭐⭐ | Proper organisation membership validation is essential |
 | **Translation-First** | ⭐⭐⭐⭐ | Good awareness, but need to see the key structure |
 | **Accessibility** | ⭐⭐⭐⭐ | WCAG 2.1 AA mentioned, needs specifics |
 
@@ -56,11 +56,11 @@ $voters = User::where('is_voter', 1)
 
 | Route | Meaning |
 |-------|---------|
-| `GET /organizations/{slug}/voters` | List all voters in organization |
+| `GET /organizations/{slug}/voters` | List all voters in organisation |
 | `GET /organizations/{slug}/voters/{id}` | Show specific voter |
 | `POST /organizations/{slug}/voters/{id}/approve` | Approve voter |
 
-**MY RECOMMENDATION**: Use RESTful routes with organization slug - it's:
+**MY RECOMMENDATION**: Use RESTful routes with organisation slug - it's:
 - ✅ Self-documenting
 - ✅ Works perfectly with `EnsureOrganizationMember` middleware
 - ✅ Follows resource nesting pattern
@@ -77,11 +77,11 @@ Users with `organisation_id = NULL` (demo mode) should see:
 **Implementation**:
 ```php
 if (session('current_organisation_id') === null) {
-    // MODE 1: Show only NULL organization voters
+    // MODE 1: Show only NULL organisation voters
     $query = User::where('is_voter', 1)
         ->whereNull('organisation_id');
 } else {
-    // MODE 2: Show specific organization voters
+    // MODE 2: Show specific organisation voters
     $query = User::where('is_voter', 1)
         ->where('organisation_id', session('current_organisation_id'));
 }
@@ -100,7 +100,7 @@ app/Http/Controllers/Organizations/
 ├── VoterController.php (NEW - move from VoterlistController)
 
 resources/js/Pages/Organizations/Voters/
-├── Index.vue (NEW - organization-specific voters)
+├── Index.vue (NEW - organisation-specific voters)
 ├── Partials/
 │   ├── VoterFilters.vue
 │   ├── VoterTable.vue
@@ -127,57 +127,57 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\Organization;
+use App\Models\organisation;
 use Illuminate\Support\Facades\Log;
 
 class EnsureOrganizationMember
 {
     public function handle(Request $request, Closure $next)
     {
-        // Extract organization slug from route
-        $slug = $request->route('organization') ?? $request->route('slug');
+        // Extract organisation slug from route
+        $slug = $request->route('organisation') ?? $request->route('slug');
         
         if (!$slug) {
-            abort(400, 'Organization identifier missing');
+            abort(400, 'organisation identifier missing');
         }
         
-        $organization = Organization::where('slug', $slug)->first();
+        $organisation = organisation::where('slug', $slug)->first();
         
-        if (!$organization) {
-            abort(404, 'Organization not found');
+        if (!$organisation) {
+            abort(404, 'organisation not found');
         }
         
         $user = auth()->user();
         
         // MODE 1: Demo users (NULL org) can only access NULL org data
         if ($user->organisation_id === null) {
-            if ($organization->id !== null) {
-                Log::warning('Demo user attempted to access real organization', [
+            if ($organisation->id !== null) {
+                Log::warning('Demo user attempted to access real organisation', [
                     'user_id' => $user->id,
-                    'organization_id' => $organization->id
+                    'organisation_id' => $organisation->id
                 ]);
                 abort(403, 'Demo users cannot access real organizations');
             }
             // Allow access - they're trying to access demo org
-            $request->attributes->set('organization', $organization);
+            $request->attributes->set('organisation', $organisation);
             return $next($request);
         }
         
         // MODE 2: Check membership via pivot table
-        $isMember = $organization->users()
+        $isMember = $organisation->users()
             ->where('users.id', $user->id)
             ->exists();
         
         if (!$isMember) {
-            Log::warning('Non-member attempted to access organization', [
+            Log::warning('Non-member attempted to access organisation', [
                 'user_id' => $user->id,
-                'organization_id' => $organization->id
+                'organisation_id' => $organisation->id
             ]);
-            abort(403, 'You are not a member of this organization');
+            abort(403, 'You are not a member of this organisation');
         }
         
-        // Store organization for controller use
-        $request->attributes->set('organization', $organization);
+        // Store organisation for controller use
+        $request->attributes->set('organisation', $organisation);
         
         return $next($request);
     }
@@ -188,7 +188,7 @@ Register in `Kernel.php`:
 ```php
 protected $routeMiddleware = [
     // ... existing
-    'organization.member' => \App\Http\Middleware\EnsureOrganizationMember::class,
+    'organisation.member' => \App\Http\Middleware\EnsureOrganizationMember::class,
 ];
 ```
 
@@ -199,8 +199,8 @@ protected $routeMiddleware = [
 ```php
 // routes/organizations.php
 
-Route::prefix('organizations/{organization:slug}')
-    ->middleware(['auth', 'verified', 'organization.member'])
+Route::prefix('organizations/{organisation:slug}')
+    ->middleware(['auth', 'verified', 'organisation.member'])
     ->group(function () {
         
         // Voter management
@@ -248,7 +248,7 @@ namespace App\Http\Controllers\Organizations;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Organization;
+use App\Models\organisation;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -256,26 +256,26 @@ use Spatie\QueryBuilder\AllowedFilter;
 
 class VoterController extends Controller
 {
-    protected function getVoterQuery(Organization $organization)
+    protected function getVoterQuery(organisation $organisation)
     {
-        $orgId = $organization->id;
+        $orgId = $organisation->id;
         
-        // Handle MODE 1 (NULL organization)
+        // Handle MODE 1 (NULL organisation)
         if ($orgId === null) {
             return User::where('is_voter', 1)
                 ->whereNull('organisation_id');
         }
         
-        // MODE 2: Specific organization
+        // MODE 2: Specific organisation
         return User::where('is_voter', 1)
             ->where('organisation_id', $orgId);
     }
     
-    public function index(Request $request, Organization $organization)
+    public function index(Request $request, organisation $organisation)
     {
-        $this->authorize('viewAny', [User::class, $organization]);
+        $this->authorize('viewAny', [User::class, $organisation]);
         
-        $query = $this->getVoterQuery($organization);
+        $query = $this->getVoterQuery($organisation);
         
         $voters = QueryBuilder::for($query)
             ->defaultSort('-created_at')
@@ -309,21 +309,21 @@ class VoterController extends Controller
         ];
         
         return Inertia::render('Organizations/Voters/Index', [
-            'organization' => $organization,
+            'organisation' => $organisation,
             'voters' => $voters,
             'stats' => $stats,
             'filters' => request()->all(['filter', 'sort']),
             'can' => [
-                'approve' => auth()->user()->can('approve', [User::class, $organization]),
-                'reject' => auth()->user()->can('reject', [User::class, $organization]),
-                'export' => auth()->user()->can('export', [User::class, $organization]),
+                'approve' => auth()->user()->can('approve', [User::class, $organisation]),
+                'reject' => auth()->user()->can('reject', [User::class, $organisation]),
+                'export' => auth()->user()->can('export', [User::class, $organisation]),
             ]
         ]);
     }
     
-    public function approve(Request $request, Organization $organization, User $voter)
+    public function approve(Request $request, organisation $organisation, User $voter)
     {
-        $this->authorize('approve', [$voter, $organization]);
+        $this->authorize('approve', [$voter, $organisation]);
         
         $voter->update([
             'is_voter' => 1,
@@ -335,7 +335,7 @@ class VoterController extends Controller
         activity()
             ->performedOn($voter)
             ->causedBy(auth()->user())
-            ->withProperties(['organization_id' => $organization->id])
+            ->withProperties(['organisation_id' => $organisation->id])
             ->log('voter_approved');
         
         return redirect()->back()
@@ -354,7 +354,7 @@ class VoterController extends Controller
 
 ```vue
 <template>
-  <OrganizationLayout :organization="organization">
+  <OrganizationLayout :organisation="organisation">
     <Head :title="$t('pages.organizations.voters.title')" />
     
     <!-- Accessibility Announcement -->
@@ -376,7 +376,7 @@ class VoterController extends Controller
             {{ $t('pages.organizations.voters.title') }}
           </h1>
           <p class="text-gray-600">
-            {{ $t('pages.organizations.voters.subtitle', { name: organization.name }) }}
+            {{ $t('pages.organizations.voters.subtitle', { name: organisation.name }) }}
           </p>
           
           <!-- Stats Cards -->
@@ -452,7 +452,7 @@ class VoterController extends Controller
     <!-- Modals -->
     <BulkApproveModal
       v-if="showBulkApprove"
-      :organization="organization"
+      :organisation="organisation"
       :selected-voters="selectedVoters"
       @close="showBulkApprove = false"
       @approved="handleBulkApproved"
@@ -572,14 +572,14 @@ class VoterController extends Controller
 
 ### **Unit Tests**
 - ✅ Middleware correctly validates membership
-- ✅ Controller filters by organization
+- ✅ Controller filters by organisation
 - ✅ Authorization policies work
 
 ### **Feature Tests**
 ```php
 public function test_org_member_can_see_org_voters()
 {
-    $org = Organization::factory()->create();
+    $org = organisation::factory()->create();
     $user = User::factory()->create(['organisation_id' => $org->id]);
     $org->users()->attach($user, ['role' => 'admin']);
     
@@ -604,7 +604,7 @@ public function test_org_member_can_see_org_voters()
 
 public function test_non_member_cannot_access_org_voters()
 {
-    $org = Organization::factory()->create();
+    $org = organisation::factory()->create();
     $user = User::factory()->create(['organisation_id' => 1]); // Different org
     
     $response = $this->actingAs($user)
@@ -640,7 +640,7 @@ public function test_non_member_cannot_access_org_voters()
 1. Update existing `/voters` route to redirect:
    ```php
    Route::get('/voters', function() {
-       $org = auth()->user()->organization;
+       $org = auth()->user()->organisation;
        return redirect("/organizations/{$org->slug}/voters");
    })->name('voters.legacy');
    ```
@@ -663,11 +663,11 @@ public function test_non_member_cannot_access_org_voters()
 | **Accessibility** | WCAG 2.1 AA | Legal requirement for German organizations |
 | **Testing** | Feature tests + a11y | Comprehensive coverage |
 
-**This plan addresses the security vulnerability while creating a maintainable, accessible, and properly isolated organization-specific voters list.**
+**This plan addresses the security vulnerability while creating a maintainable, accessible, and properly isolated organisation-specific voters list.**
 
-## 🎯 **Database Optimization for Organization-Specific User Queries**
+## 🎯 **Database Optimization for organisation-Specific User Queries**
 
-Great question! Let me provide a comprehensive solution for **fast organization-specific user selection** while preventing N+1 problems.
+Great question! Let me provide a comprehensive solution for **fast organisation-specific user selection** while preventing N+1 problems.
 
 ---
 
@@ -679,7 +679,7 @@ $users = User::where('is_voter', 1)->paginate(2000);
 ```
 
 **Problems:**
-- ❌ No organization filtering → returns ALL users
+- ❌ No organisation filtering → returns ALL users
 - ❌ 2000 per page → memory intensive
 - ❌ No eager loading → potential N+1 with relationships
 
@@ -689,12 +689,12 @@ $users = User::where('is_voter', 1)->paginate(2000);
 
 ### **1. Indexes (Database Level)**
 
-Create these indexes for lightning-fast organization filtering:
+Create these indexes for lightning-fast organisation filtering:
 
 ```php
 // database/migrations/xxxx_add_optimization_indexes_to_users_table.php
 Schema::table('users', function (Blueprint $table) {
-    // Composite index for organization + voter status (MOST IMPORTANT)
+    // Composite index for organisation + voter status (MOST IMPORTANT)
     $table->index(['organisation_id', 'is_voter']);
     
     // Index for searching
@@ -730,9 +730,9 @@ WHERE organisation_id = 1 AND is_voter = 1;
 ```php
 // app/Http/Controllers/Organizations/VoterController.php
 
-public function index(Request $request, Organization $organization)
+public function index(Request $request, organisation $organisation)
 {
-    $orgId = $organization->id;
+    $orgId = $organisation->id;
     
     // Build optimized query
     $query = User::select([
@@ -796,16 +796,16 @@ If you need relationships, always eager load:
 // ❌ BAD - N+1 problem
 $users = User::where('organisation_id', 1)->get();
 foreach ($users as $user) {
-    echo $user->organization->name; // Queries database each time!
+    echo $user->organisation->name; // Queries database each time!
 }
 
 // ✅ GOOD - Eager load
-$users = User::with('organization')
+$users = User::with('organisation')
     ->where('organisation_id', 1)
     ->get();
     
 foreach ($users as $user) {
-    echo $user->organization->name; // Already loaded, no extra query
+    echo $user->organisation->name; // Already loaded, no extra query
 }
 ```
 
@@ -843,11 +843,11 @@ Cache frequent queries with proper tenant isolation:
 ```php
 use Illuminate\Support\Facades\Cache;
 
-public function getVoterStats(Organization $organization)
+public function getVoterStats(organisation $organisation)
 {
-    $orgId = $organization->id;
+    $orgId = $organisation->id;
     
-    // Cache per organization (prevents cross-org cache bleed)
+    // Cache per organisation (prevents cross-org cache bleed)
     return Cache::remember("org_{$orgId}_voter_stats", 3600, function () use ($orgId) {
         return [
             'total' => User::where('organisation_id', $orgId)
@@ -882,7 +882,7 @@ $results = DB::select('
     FROM users 
     WHERE organisation_id = :org_id 
     AND is_voter = 1
-', ['org_id' => $organization->id]);
+', ['org_id' => $organisation->id]);
 ```
 
 ---
@@ -906,7 +906,7 @@ GROUP BY organisation_id;
 Then use in Laravel:
 ```php
 $stats = DB::table('organization_voter_stats')
-    ->where('organisation_id', $organization->id)
+    ->where('organisation_id', $organisation->id)
     ->first();
 ```
 
@@ -941,7 +941,7 @@ namespace App\Http\Controllers\Organizations;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Organization;
+use App\Models\organisation;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Cache;
@@ -949,9 +949,9 @@ use Illuminate\Support\Facades\DB;
 
 class VoterController extends Controller
 {
-    public function index(Request $request, Organization $organization)
+    public function index(Request $request, organisation $organisation)
     {
-        $orgId = $organization->id;
+        $orgId = $organisation->id;
         
         // Build query with proper indexes
         $query = User::select([
@@ -1006,7 +1006,7 @@ class VoterController extends Controller
         });
         
         return Inertia::render('Organizations/Voters/Index', [
-            'organization' => $organization,
+            'organisation' => $organisation,
             'voters' => $voters,
             'stats' => $stats,
             'filters' => $request->only(['search', 'status']),
@@ -1044,10 +1044,10 @@ DB::listen(function ($query) {
 
 | Issue | Solution | Performance Gain |
 |-------|----------|------------------|
-| **No organization filtering** | Add `where('organisation_id', $orgId)` | 10x |
+| **No organisation filtering** | Add `where('organisation_id', $orgId)` | 10x |
 | **Full table scans** | Add composite index `(organisation_id, is_voter)` | 100x |
 | **N+1 problems** | Use `with()` eager loading | 10-100x |
-| **Repeated queries** | Cache with organization prefix | 1000x |
+| **Repeated queries** | Cache with organisation prefix | 1000x |
 | **Large pagination** | Use cursor pagination | 10x |
 | **Complex aggregations** | Use raw SQL | 5x |
 

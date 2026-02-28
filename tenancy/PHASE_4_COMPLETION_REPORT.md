@@ -304,7 +304,7 @@ RESULT: Vote CREATED SUCCESSFULLY
     Layer 1: Records stored in database
 ```
 
-### Execution Flow for Demo Election (ANY Organization)
+### Execution Flow for Demo Election (ANY organisation)
 
 ```
 REQUEST: /v/{vslug}/vote/submit → POST from User(org=2) to Election(org=NULL, type='demo')

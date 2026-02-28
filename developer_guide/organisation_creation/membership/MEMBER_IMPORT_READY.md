@@ -16,7 +16,7 @@
 - ✅ Added GET route to display import page
 - ✅ Added POST route to handle member imports
 - ✅ Controller properly validates CSV/Excel data
-- ✅ Controller creates users and attaches to organization
+- ✅ Controller creates users and attaches to organisation
 
 ### Issue 2: Data Format Mismatch (FIXED ✅)
 **Problem**: Frontend sends CSV headers + rows format, but controller expected different format
@@ -53,10 +53,10 @@ jane.smith@example.com,Jane,Smith
 michael.brown@example.com,Michael,Brown
 ```
 
-### Step 2: Navigate to Organization Page
+### Step 2: Navigate to organisation Page
 ```
 Go to: http://localhost/organizations/namaste-nepal-ev
-(or your organization slug)
+(or your organisation slug)
 ```
 
 ### Step 3: Click "Import Members" Button
@@ -79,7 +79,7 @@ Go to: http://localhost/organizations/namaste-nepal-ev
 ```bash
 php artisan tinker
 
->>> $org = Organization::first();
+>>> $org = organisation::first();
 >>> $org->users()->count()
 # Should return: 4 (1 original + 3 new)
 
@@ -106,7 +106,7 @@ php artisan tinker
 
 ## 🔐 Security Features
 
-✅ **Authorization Check**: Only organization members can access
+✅ **Authorization Check**: Only organisation members can access
 ✅ **Data Validation**: Server-side re-validation of all imports
 ✅ **Duplicate Prevention**: Checks for duplicate emails before import
 ✅ **Existing User Check**: Prevents reimporting existing users
@@ -118,7 +118,7 @@ php artisan tinker
 ## 📊 Expected Flow
 
 ```
-1. User clicks "Import Members" in Organization dashboard
+1. User clicks "Import Members" in organisation dashboard
                     ↓
 2. Browser navigates to /organizations/{slug}/members/import (GET)
                     ↓
@@ -134,7 +134,7 @@ php artisan tinker
    - Validates all emails
    - Checks for duplicates
    - Creates users
-   - Attaches to organization
+   - Attaches to organisation
                     ↓
 7. Returns JSON response:
    { success: true, imported_count: 3, ... }
@@ -151,7 +151,7 @@ php artisan tinker
 - ✅ Data validation works
 - ✅ Preview shows parsed data
 - ✅ Import creates users
-- ✅ Users linked to organization
+- ✅ Users linked to organisation
 - ✅ Success feedback shown
 - ✅ Authorization enforced
 - ✅ Translations display

@@ -1,15 +1,15 @@
 <template>
   <fieldset class="space-y-6">
     <legend class="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-      {{ $t('organization.form.step_3_title', { fallback: 'Vertreter und Bestätigung' }) }}
+      {{ $t('organisation.form.step_3_title', { fallback: 'Vertreter und Bestätigung' }) }}
     </legend>
 
     <!-- Representative Name -->
     <FormInput
       id="rep-name"
-      :label="$t('organization.form.rep_name_label', { fallback: 'Name des Vorstandsvorsitzenden' })"
+      :label="$t('organisation.form.rep_name_label', { fallback: 'Name des Vorstandsvorsitzenden' })"
       :model-value="data.name"
-      :placeholder="$t('organization.form.rep_name_placeholder', { fallback: 'Dr. Thomas Schmidt' })"
+      :placeholder="$t('organisation.form.rep_name_placeholder', { fallback: 'Dr. Thomas Schmidt' })"
       :error="errors.name"
       required
       @update:model-value="$emit('update:representative', 'name', $event)"
@@ -18,10 +18,10 @@
     <!-- Representative Role/Function -->
     <FormInput
       id="rep-role"
-      :label="$t('organization.form.rep_role_label', { fallback: 'Funktion' })"
+      :label="$t('organisation.form.rep_role_label', { fallback: 'Funktion' })"
       :model-value="data.role"
-      :placeholder="$t('organization.form.rep_role_placeholder', { fallback: '1. Vorsitzender/in' })"
-      :helper="$t('organization.form.rep_role_helper', { fallback: 'z.B. Vorsitzender, Geschäftsführer, etc.' })"
+      :placeholder="$t('organisation.form.rep_role_placeholder', { fallback: '1. Vorsitzender/in' })"
+      :helper="$t('organisation.form.rep_role_helper', { fallback: 'z.B. Vorsitzender, Geschäftsführer, etc.' })"
       :error="errors.role"
       required
       @update:model-value="$emit('update:representative', 'role', $event)"
@@ -32,10 +32,10 @@
       v-if="!data.is_self"
       id="rep-email"
       type="email"
-      :label="$t('organization.form.rep_email_label', { fallback: 'E-Mail des Vertreters' })"
+      :label="$t('organisation.form.rep_email_label', { fallback: 'E-Mail des Vertreters' })"
       :model-value="data.email"
-      :placeholder="$t('organization.form.rep_email_placeholder', { fallback: 't.schmidt@tv-muenchen.de' })"
-      :helper="$t('organization.form.rep_email_helper', { fallback: 'Falls abweichend von der Organisationsadresse' })"
+      :placeholder="$t('organisation.form.rep_email_placeholder', { fallback: 't.schmidt@tv-muenchen.de' })"
+      :helper="$t('organisation.form.rep_email_helper', { fallback: 'Falls abweichend von der Organisationsadresse' })"
       :error="errors.email"
       required
       @update:model-value="$emit('update:representative', 'email', $event)"
@@ -58,12 +58,12 @@
       />
       <div class="flex-1">
         <label for="is-self-representative" class="block text-sm font-medium text-gray-900 dark:text-white">
-          {{ $t('organization.form.is_self_representative', {
+          {{ $t('organisation.form.is_self_representative', {
             fallback: 'Ich bin der Vertreter bzw. die Vertreterin'
           }) }}
         </label>
         <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">
-          {{ $t('organization.form.is_self_representative_help', {
+          {{ $t('organisation.form.is_self_representative_help', {
             fallback: 'Aktivieren Sie dies, wenn Sie selbst der Vertreter sind. Dann wird keine separate E-Mail versendet.'
           }) }}
         </p>
@@ -73,7 +73,7 @@
     <!-- Acceptance Checkboxes -->
     <fieldset class="space-y-4 border-t-2 border-gray-200 dark:border-gray-700 pt-6">
       <legend class="text-base font-semibold text-gray-900 dark:text-white mb-4">
-        {{ $t('organization.form.acceptance_legend', { fallback: 'Bestätigungen' }) }}
+        {{ $t('organisation.form.acceptance_legend', { fallback: 'Bestätigungen' }) }}
       </legend>
 
       <!-- GDPR Acceptance -->
@@ -94,7 +94,7 @@
         />
         <div class="flex-1">
           <label for="accept-gdpr" class="text-sm text-gray-700 dark:text-gray-300">
-            {{ $t('organization.form.gdpr_acceptance', {
+            {{ $t('organisation.form.gdpr_acceptance', {
               fallback: 'Ich akzeptiere die DSGVO-konforme Verarbeitung meiner Daten'
             }) }}
           </label>
@@ -122,7 +122,7 @@
         />
         <div class="flex-1">
           <label for="accept-terms" class="text-sm text-gray-700 dark:text-gray-300">
-            {{ $t('organization.form.terms_acceptance', {
+            {{ $t('organisation.form.terms_acceptance', {
               fallback: 'Ich akzeptiere die Nutzungsbedingungen von Public Digit'
             }) }}
             <a href="/terms" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">
@@ -139,8 +139,8 @@
     <!-- Info box -->
     <div class="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-600 p-4 rounded-r-lg">
       <p class="text-sm text-gray-700 dark:text-gray-300">
-        <strong>{{ $t('organization.form.final_info_title', { fallback: 'Fast fertig!' }) }}</strong>
-        {{ $t('organization.form.step_3_info', {
+        <strong>{{ $t('organisation.form.final_info_title', { fallback: 'Fast fertig!' }) }}</strong>
+        {{ $t('organisation.form.step_3_info', {
           fallback: 'Nach der Bestätigung erhalten Sie eine Bestätigungsemail. Sie können dann Mitglieder einladen und Ihre erste Wahl erstellen.'
         }) }}
       </p>

@@ -18,13 +18,13 @@ return [
         'contact' => 'Kontakt',
     ],
     'sections' => [
-        'organizations' => 'Organisationen',
+        'organisations' => 'Organisationen',
         'elections' => 'Wahlen',
         'results' => 'Wahlergebnisse',
         'candidates' => 'Kandidaten',
     ],
     'descriptions' => [
-        'organization' => 'Organisationsseite',
+        'organisation' => 'Organisationsseite',
         'election' => 'Wahlinformationen',
         'results' => 'Wahlergebnisse und Daten',
     ],

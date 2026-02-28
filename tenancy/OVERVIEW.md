@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This application implements **organization-level multi-tenancy** where each organization (tenant) has complete data isolation. The implementation uses:
+This application implements **organisation-level multi-tenancy** where each organisation (tenant) has complete data isolation. The implementation uses:
 
 - ✅ **Global Query Scopes** - Automatic filtering by `organisation_id`
 - ✅ **Observer Pattern** - Automatic `organisation_id` population on create
@@ -15,7 +15,7 @@ This application implements **organization-level multi-tenancy** where each orga
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    Web Request                              │
-│  (User logs in as member of Organization A)                │
+│  (User logs in as member of organisation A)                │
 └────────────────────┬────────────────────────────────────────┘
                      │
                      ▼
@@ -51,7 +51,7 @@ This application implements **organization-level multi-tenancy** where each orga
 
 ### 1. Tenant Identification
 
-**How the system knows which organization is accessing it:**
+**How the system knows which organisation is accessing it:**
 
 ```
 User → Has organisation_id → Session is set → Queries are scoped
@@ -222,11 +222,11 @@ TenantIsolationTest.php
 ### Cross-Tenant Access is Impossible
 
 ```php
-// Organization 1
+// organisation 1
 session(['current_organisation_id' => 1]);
 $org1Elections = Election::all(); // Only Org 1's elections
 
-// Organization 2
+// organisation 2
 session(['current_organisation_id' => 2]);
 $org2Elections = Election::all(); // Only Org 2's elections
 
@@ -242,7 +242,7 @@ $election = Election::withoutGlobalScopes()->find($org1_election_id);
 ### Database Level Safety
 
 ```sql
--- When Organization 1 user queries:
+-- When organisation 1 user queries:
 SELECT * FROM elections
 WHERE organisation_id = 1;  -- Enforced by Laravel scope
 
@@ -396,7 +396,7 @@ $elections = Election::all();
 
 | Aspect | Implementation |
 |--------|-----------------|
-| **Tenancy Type** | Organization-level (single app, multiple orgs) |
+| **Tenancy Type** | organisation-level (single app, multiple orgs) |
 | **Scoping Method** | Global query scopes + session-based context |
 | **Auto-Fill** | Observer pattern on model creation |
 | **Database** | Single database, all orgs share tables |

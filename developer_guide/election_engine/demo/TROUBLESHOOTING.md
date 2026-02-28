@@ -74,7 +74,7 @@ echo get_class($service);  // Should output: App\Services\DemoElectionCreationSe
 ```bash
 php artisan tinker
 
-$org = App\Models\Organization::find(5);
+$org = App\Models\organisation::find(5);
 echo $org ? "Found: " . $org->name : "NOT FOUND";
 ```
 
@@ -91,11 +91,11 @@ echo $org ? "Found: " . $org->name : "NOT FOUND";
 // In app/Services/DemoElectionResolver.php, modify:
 
 if (!$orgDemo) {
-    $organization = Organization::find($user->organisation_id);
-    if ($organization) {
+    $organisation = organisation::find($user->organisation_id);
+    if ($organisation) {
         try {
             $orgDemo = app(DemoElectionCreationService::class)
-                ->createOrganisationDemoElection($user->organisation_id, $organization);
+                ->createOrganisationDemoElection($user->organisation_id, $organisation);
         } catch (\Exception $e) {
             \Log::error('AUTO-CREATE FAILED', [
                 'exception' => $e->getMessage(),
@@ -132,7 +132,7 @@ php artisan tinker
 > App\Models\User::find(123)->organisation_id
 
 # 4. Verify organisation exists
-> App\Models\Organization::find(5)
+> App\Models\organisation::find(5)
 
 # 5. Manually trigger
 > $resolver = app(App\Services\DemoElectionResolver::class)
@@ -256,7 +256,7 @@ Use database transaction:
 
 ```php
 // Modify DemoElectionResolver to use transaction
-$orgDemo = DB::transaction(function () use ($user, $organization) {
+$orgDemo = DB::transaction(function () use ($user, $organisation) {
     // Check again after acquiring lock
     $existing = Election::withoutGlobalScopes()
         ->where('type', 'demo')
@@ -266,7 +266,7 @@ $orgDemo = DB::transaction(function () use ($user, $organization) {
 
     if (!$existing) {
         return app(DemoElectionCreationService::class)
-            ->createOrganisationDemoElection($user->organisation_id, $organization);
+            ->createOrganisationDemoElection($user->organisation_id, $organisation);
     }
     return $existing;
 });
@@ -418,7 +418,7 @@ $posts = DemoPost::withoutGlobalScopes()
 ### Exception 1: "Model Not Found"
 
 ```
-Exception: Model [App\Models\Organization] not found
+Exception: Model [App\Models\organisation] not found
 
 Cause: User.organisation_id points to non-existent org
 Solution: Verify organisation exists
@@ -426,7 +426,7 @@ Solution: Verify organisation exists
 
 ```bash
 php artisan tinker
-> App\Models\Organization::find(123)  # Check it exists
+> App\Models\organisation::find(123)  # Check it exists
 ```
 
 ### Exception 2: "SQLSTATE[HY000]: General Error"
@@ -466,7 +466,7 @@ app(App\Services\DemoElectionCreationService::class)  # Should work
 # Run: php artisan test --filter="DemoElection"
 
 # 3. Create test demo
-$org = App\Models\Organization::factory()->create();
+$org = App\Models\organisation::factory()->create();
 $user = App\Models\User::factory()->create(['organisation_id' => $org->id]);
 $resolver = app(App\Services\DemoElectionResolver::class);
 $demo = $resolver->getDemoElectionForUser($user);
@@ -505,7 +505,7 @@ tail -100 storage/logs/laravel.log
 php artisan tinker
 
 # Create test org
-$org = App\Models\Organization::factory()->create();
+$org = App\Models\organisation::factory()->create();
 
 # Create test user
 $user = App\Models\User::factory()->create(['organisation_id' => $org->id]);

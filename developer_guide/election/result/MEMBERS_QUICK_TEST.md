@@ -9,14 +9,14 @@ http://localhost:8000/members/index
 
 ### Requirements
 - ✅ Must be logged in
-- ✅ User must belong to an organization
+- ✅ User must belong to an organisation
 - ✅ Session must have `current_organisation_id` set
 
 ## Manual Testing Checklist
 
 ### Page Load
 - [ ] Page loads without errors
-- [ ] Organization header displays correctly (shows org name)
+- [ ] organisation header displays correctly (shows org name)
 - [ ] Stats cards show numbers (total members, admins, voters)
 - [ ] Filter section visible with Name, Email, and Role inputs
 - [ ] Table displays with proper headers
@@ -64,47 +64,47 @@ http://localhost:8000/members/index
 ### Browser DevTools
 - [ ] Network tab shows GET /members/index
 - [ ] Response status: 200
-- [ ] Response contains organization data
+- [ ] Response contains organisation data
 - [ ] Response contains members array with pagination
 - [ ] Console has no JavaScript errors
 - [ ] Console shows no Vue warnings
 
 ## Error Testing
 
-### No Organization
-**Setup**: User with no organization_id and no session organization
+### No organisation
+**Setup**: User with no organisation_id and no session organisation
 ```
-Expected: 403 error "No organization selected"
+Expected: 403 error "No organisation selected"
 ```
 
 ### Not a Member
-**Setup**: Try to access organization user is not member of
+**Setup**: Try to access organisation user is not member of
 ```
-Expected: 403 error "You do not have access to this organization"
+Expected: 403 error "You do not have access to this organisation"
 ```
 
-### Invalid Organization ID
+### Invalid organisation ID
 **Setup**: Try with ?org_id=99999
 ```
-Expected: 404 error (organization not found)
+Expected: 404 error (organisation not found)
 ```
 
 ## Database Verification
 
-### Check Organization Members
+### Check organisation Members
 ```bash
 php artisan tinker
 ```
 
 ```php
-$org = Organization::first();
+$org = organisation::first();
 $members = $org->users()->get();
 $members->each(fn($m) => echo $m->name . ' (' . $m->pivot->role . ')' . PHP_EOL);
 ```
 
 ### Check Role Distribution
 ```php
-$org = Organization::first();
+$org = organisation::first();
 echo "Admins: " . $org->admins()->count() . PHP_EOL;
 echo "Commission: " . $org->commissionMembers()->count() . PHP_EOL;
 echo "Voters: " . $org->voters()->count() . PHP_EOL;
@@ -116,7 +116,7 @@ echo "Voters: " . $org->voters()->count() . PHP_EOL;
 ```php
 Inertia::render('Members/Index', [
     'members' => $members,              // LengthAwarePaginator
-    'organization' => [...],            // org data
+    'organisation' => [...],            // org data
     'filters' => [...],                 // applied filters
     'currentUser' => $user,             // logged-in user
     'stats' => [...]                    // counts
@@ -155,9 +155,9 @@ Measure: Click sort header, check network timing
 ## Code Review Points
 
 ### Security
-- [ ] Organization membership verified on server
+- [ ] organisation membership verified on server
 - [ ] No SQL injection in LIKE queries
-- [ ] Session organization_id validated
+- [ ] Session organisation_id validated
 - [ ] 403 errors returned for unauthorized access
 
 ### Performance
@@ -183,7 +183,7 @@ Check: auth()->user()->organisation_id
 
 ### Members not showing
 ```
-Solution: Verify user is member of organization
+Solution: Verify user is member of organisation
 Check: $org->users()->where('id', auth()->id())->exists()
 ```
 
@@ -202,7 +202,7 @@ Check: 'field' in ['id','name','email','role','assigned_at','created_at']
 
 ### Stats incorrect
 ```
-Solution: Verify Organization relationships are correct
+Solution: Verify organisation relationships are correct
 Check: $org->users()->count() vs $org->admins()->count() + other roles
 ```
 
@@ -227,14 +227,14 @@ Check: $org->users()->count() vs $org->admins()->count() + other roles
 4. Sort in action
 5. Pagination next/previous
 6. Role badge colors
-7. Organization header with stats
+7. organisation header with stats
 8. Error state (if accessible)
 
 ## Related Routes to Test
 
 After Members index works, test:
-- [ ] POST /organizations (create organization)
-- [ ] GET /organizations/{slug} (view organization)
+- [ ] POST /organizations (create organisation)
+- [ ] GET /organizations/{slug} (view organisation)
 - [ ] POST /organizations/{slug}/members/import (import members)
 
 ## Notes

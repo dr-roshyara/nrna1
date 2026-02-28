@@ -1,4 +1,4 @@
-## 🎯 **SENIOR UI/UX & FRONTEND REVIEW: Organization Show Page**
+## 🎯 **SENIOR UI/UX & FRONTEND REVIEW: organisation Show Page**
 
 ### **Current Page Assessment**
 
@@ -15,7 +15,7 @@
 
 ---
 
-## 🚀 **COMPLETE REDESIGN - Organization Show Page**
+## 🚀 **COMPLETE REDESIGN - organisation Show Page**
 
 ```vue
 <template>
@@ -23,39 +23,39 @@
     <!-- SEO & Accessibility -->
     <BreadcrumbSchema />
     <div class="sr-only" aria-live="polite" role="status">
-      {{ $t('pages.organization-show.page_loaded', { name: organization.name }) }}
+      {{ $t('pages.organisation-show.page_loaded', { name: organisation.name }) }}
     </div>
 
     <div class="min-h-screen bg-linear-to-b from-gray-50 to-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         
-        <!-- ========== ORGANIZATION HEADER ========== -->
+        <!-- ========== organisation HEADER ========== -->
         <div class="mb-8">
           <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <!-- Organization Badge/Type -->
+              <!-- organisation Badge/Type -->
               <div class="flex items-center gap-2 mb-2">
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                   <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V8a2 2 0 00-2-2h-5L9 4H4z" clip-rule="evenodd" />
                   </svg>
-                  {{ $t('pages.organization-show.organization_type') }}
+                  {{ $t('pages.organisation-show.organization_type') }}
                 </span>
                 <span class="text-sm text-gray-500">
-                  {{ $t('pages.organization-show.member_since', { date: formatDate(organization.created_at) }) }}
+                  {{ $t('pages.organisation-show.member_since', { date: formatDate(organisation.created_at) }) }}
                 </span>
               </div>
 
               <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
-                {{ organization.name }}
+                {{ organisation.name }}
               </h1>
               
               <div class="flex items-center text-gray-600">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a :href="`mailto:${organization.email}`" class="hover:text-blue-600 transition-colors">
-                  {{ organization.email }}
+                <a :href="`mailto:${organisation.email}`" class="hover:text-blue-600 transition-colors">
+                  {{ organisation.email }}
                 </a>
               </div>
             </div>
@@ -65,23 +65,23 @@
               <button 
                 @click="openInviteModal"
                 class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 shadow-xs text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200"
-                :aria-label="$t('pages.organization-show.invite_members_aria')"
+                :aria-label="$t('pages.organisation-show.invite_members_aria')"
               >
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
-                {{ $t('pages.organization-show.invite_members') }}
+                {{ $t('pages.organisation-show.invite_members') }}
               </button>
               
               <button 
                 @click="goToCreateElection"
                 class="inline-flex items-center justify-center px-6 py-3 border border-transparent shadow-xs text-base font-medium rounded-lg text-white bg-linear-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:scale-105"
-                :aria-label="$t('pages.organization-show.create_election_aria')"
+                :aria-label="$t('pages.organisation-show.create_election_aria')"
               >
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                {{ $t('pages.organization-show.create_election') }}
+                {{ $t('pages.organisation-show.create_election') }}
               </button>
             </div>
           </div>
@@ -92,15 +92,15 @@
           <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <h2 class="text-lg font-semibold text-gray-900 mb-1">
-                {{ $t('pages.organization-show.onboarding.title') }}
+                {{ $t('pages.organisation-show.onboarding.title') }}
               </h2>
               <p class="text-gray-600">
-                {{ $t('pages.organization-show.onboarding.description') }}
+                {{ $t('pages.organisation-show.onboarding.description') }}
               </p>
             </div>
             <div class="shrink-0">
               <div class="bg-white rounded-lg px-4 py-2 shadow-xs">
-                <span class="text-sm font-medium text-gray-600">{{ $t('pages.organization-show.onboarding.completed') }}</span>
+                <span class="text-sm font-medium text-gray-600">{{ $t('pages.organisation-show.onboarding.completed') }}</span>
                 <span class="ml-2 text-2xl font-bold text-blue-600">{{ onboardingProgress }}%</span>
               </div>
             </div>
@@ -118,8 +118,8 @@
                 </svg>
               </div>
               <div>
-                <p class="text-sm font-medium text-gray-900">{{ $t('pages.organization-show.onboarding.add_members') }}</p>
-                <p class="text-xs text-gray-500">{{ stats.members_count }} / 5 {{ $t('pages.organization-show.onboarding.recommended') }}</p>
+                <p class="text-sm font-medium text-gray-900">{{ $t('pages.organisation-show.onboarding.add_members') }}</p>
+                <p class="text-xs text-gray-500">{{ stats.members_count }} / 5 {{ $t('pages.organisation-show.onboarding.recommended') }}</p>
               </div>
             </div>
             
@@ -134,8 +134,8 @@
                 </svg>
               </div>
               <div>
-                <p class="text-sm font-medium text-gray-900">{{ $t('pages.organization-show.onboarding.create_election') }}</p>
-                <p class="text-xs text-gray-500">{{ stats.elections_count }} / 1 {{ $t('pages.organization-show.onboarding.first') }}</p>
+                <p class="text-sm font-medium text-gray-900">{{ $t('pages.organisation-show.onboarding.create_election') }}</p>
+                <p class="text-xs text-gray-500">{{ stats.elections_count }} / 1 {{ $t('pages.organisation-show.onboarding.first') }}</p>
               </div>
             </div>
             
@@ -150,8 +150,8 @@
                 </svg>
               </div>
               <div>
-                <p class="text-sm font-medium text-gray-900">{{ $t('pages.organization-show.onboarding.test_demo') }}</p>
-                <p class="text-xs text-gray-500">{{ $t('pages.organization-show.onboarding.verify_workflow') }}</p>
+                <p class="text-sm font-medium text-gray-900">{{ $t('pages.organisation-show.onboarding.test_demo') }}</p>
+                <p class="text-xs text-gray-500">{{ $t('pages.organisation-show.onboarding.verify_workflow') }}</p>
               </div>
             </div>
           </div>
@@ -169,11 +169,11 @@
                   </svg>
                 </div>
                 <span class="text-xs font-medium px-2 py-1 bg-green-100 text-green-800 rounded-full">
-                  {{ $t('pages.organization-show.active') }}
+                  {{ $t('pages.organisation-show.active') }}
                 </span>
               </div>
               <h3 class="text-2xl font-bold text-gray-900 mb-1">{{ stats.members_count }}</h3>
-              <p class="text-sm text-gray-600 mb-3">{{ $t('pages.organization-show.total_members') }}</p>
+              <p class="text-sm text-gray-600 mb-3">{{ $t('pages.organisation-show.total_members') }}</p>
               <div class="w-full bg-gray-200 rounded-full h-1.5 mb-3">
                 <div class="bg-blue-600 h-1.5 rounded-full" :style="{ width: memberPercentage + '%' }"></div>
               </div>
@@ -191,14 +191,14 @@
                   </svg>
                 </div>
                 <span v-if="stats.elections_count > 0" class="text-xs font-medium px-2 py-1 bg-green-100 text-green-800 rounded-full">
-                  {{ $t('pages.organization-show.live') }}
+                  {{ $t('pages.organisation-show.live') }}
                 </span>
                 <span v-else class="text-xs font-medium px-2 py-1 bg-gray-100 text-gray-600 rounded-full">
-                  {{ $t('pages.organization-show.not_started') }}
+                  {{ $t('pages.organisation-show.not_started') }}
                 </span>
               </div>
               <h3 class="text-2xl font-bold text-gray-900 mb-1">{{ stats.elections_count }}</h3>
-              <p class="text-sm text-gray-600">{{ $t('pages.organization-show.total_elections') }}</p>
+              <p class="text-sm text-gray-600">{{ $t('pages.organisation-show.total_elections') }}</p>
             </div>
           </div>
 
@@ -213,9 +213,9 @@
                 </div>
               </div>
               <h3 class="text-2xl font-bold text-gray-900 mb-1">{{ stats.voters_count || '0' }}</h3>
-              <p class="text-sm text-gray-600">{{ $t('pages.organization-show.total_voters') }}</p>
+              <p class="text-sm text-gray-600">{{ $t('pages.organisation-show.total_voters') }}</p>
               <button v-if="stats.voters_count === 0" @click="openInviteModal" class="mt-3 text-sm text-blue-600 hover:text-blue-700 font-medium inline-flex items-center">
-                {{ $t('pages.organization-show.invite_first_voter') }}
+                {{ $t('pages.organisation-show.invite_first_voter') }}
                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -234,7 +234,7 @@
                 </div>
               </div>
               <h3 class="text-2xl font-bold text-gray-900 mb-1">{{ stats.completed_elections || '0' }}</h3>
-              <p class="text-sm text-gray-600">{{ $t('pages.organization-show.completed_elections') }}</p>
+              <p class="text-sm text-gray-600">{{ $t('pages.organisation-show.completed_elections') }}</p>
             </div>
           </div>
         </div>
@@ -246,10 +246,10 @@
             <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
               <div class="flex items-center justify-between">
                 <h2 class="text-lg font-semibold text-gray-900">
-                  {{ $t('pages.organization-show.recent_elections') }}
+                  {{ $t('pages.organisation-show.recent_elections') }}
                 </h2>
-                <Link :href="route('organizations.elections', organization.slug)" class="text-sm text-blue-600 hover:text-blue-700 font-medium">
-                  {{ $t('pages.organization-show.view_all') }} →
+                <Link :href="route('organisations.elections', organisation.slug)" class="text-sm text-blue-600 hover:text-blue-700 font-medium">
+                  {{ $t('pages.organisation-show.view_all') }} →
                 </Link>
               </div>
             </div>
@@ -276,12 +276,12 @@
                 <svg class="w-12 h-12 mx-auto text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <p class="text-gray-600 mb-3">{{ $t('pages.organization-show.no_elections') }}</p>
+                <p class="text-gray-600 mb-3">{{ $t('pages.organisation-show.no_elections') }}</p>
                 <button @click="goToCreateElection" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-700 font-medium">
                   <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                   </svg>
-                  {{ $t('pages.organization-show.create_first_election') }}
+                  {{ $t('pages.organisation-show.create_first_election') }}
                 </button>
               </div>
             </div>
@@ -291,7 +291,7 @@
           <div class="bg-linear-to-br from-blue-50 to-indigo-50 rounded-xl shadow-xs border border-blue-100 overflow-hidden">
             <div class="px-6 py-4 border-b border-blue-200 bg-blue-100/30">
               <h2 class="text-lg font-semibold text-gray-900">
-                {{ $t('pages.organization-show.getting_started') }}
+                {{ $t('pages.organisation-show.getting_started') }}
               </h2>
             </div>
             <div class="p-6">
@@ -299,22 +299,22 @@
                 <div class="flex items-start gap-3">
                   <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold shrink-0">1</div>
                   <div>
-                    <p class="text-sm font-medium text-gray-900">{{ $t('pages.organization-show.tip_add_members') }}</p>
-                    <p class="text-xs text-gray-600 mt-1">{{ $t('pages.organization-show.tip_add_members_desc') }}</p>
+                    <p class="text-sm font-medium text-gray-900">{{ $t('pages.organisation-show.tip_add_members') }}</p>
+                    <p class="text-xs text-gray-600 mt-1">{{ $t('pages.organisation-show.tip_add_members_desc') }}</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
                   <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold shrink-0">2</div>
                   <div>
-                    <p class="text-sm font-medium text-gray-900">{{ $t('pages.organization-show.tip_create_election') }}</p>
-                    <p class="text-xs text-gray-600 mt-1">{{ $t('pages.organization-show.tip_create_election_desc') }}</p>
+                    <p class="text-sm font-medium text-gray-900">{{ $t('pages.organisation-show.tip_create_election') }}</p>
+                    <p class="text-xs text-gray-600 mt-1">{{ $t('pages.organisation-show.tip_create_election_desc') }}</p>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
                   <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold shrink-0">3</div>
                   <div>
-                    <p class="text-sm font-medium text-gray-900">{{ $t('pages.organization-show.tip_test_demo') }}</p>
-                    <p class="text-xs text-gray-600 mt-1">{{ $t('pages.organization-show.tip_test_demo_desc') }}</p>
+                    <p class="text-sm font-medium text-gray-900">{{ $t('pages.organisation-show.tip_test_demo') }}</p>
+                    <p class="text-xs text-gray-600 mt-1">{{ $t('pages.organisation-show.tip_test_demo_desc') }}</p>
                   </div>
                 </div>
               </div>
@@ -322,7 +322,7 @@
               <!-- Demo Setup Button -->
               <div v-if="canManage" class="mt-6">
                 <DemoSetupButton
-                  :organization="organization"
+                  :organisation="organisation"
                   :demo-status="demoStatus"
                   class="w-full"
                 />
@@ -374,7 +374,7 @@
     <!-- Invite Members Modal -->
     <InviteMembersModal
       v-if="showInviteModal"
-      :organization="organization"
+      :organisation="organisation"
       @close="showInviteModal = false"
       @invited="handleInvited"
     />
@@ -396,7 +396,7 @@ import InviteMembersModal from './Partials/InviteMembersModal.vue';
 const { t, locale } = useI18n();
 
 const props = defineProps({
-  organization: {
+  organisation: {
     type: Object,
     required: true
   },
@@ -429,7 +429,7 @@ const showInviteModal = ref(false);
 // Computed
 const memberGoalText = computed(() => {
   const percentage = Math.min(100, Math.round((props.stats.members_count / 10) * 100));
-  return t('pages.organization-show.member_goal', { percentage });
+  return t('pages.organisation-show.member_goal', { percentage });
 });
 
 const memberPercentage = computed(() => {
@@ -487,7 +487,7 @@ const openInviteModal = () => {
 };
 
 const goToCreateElection = () => {
-  router.visit(route('organizations.elections.create', props.organization.slug));
+  router.visit(route('organisations.elections.create', props.organisation.slug));
 };
 
 const handleInvited = () => {
@@ -499,9 +499,9 @@ const handleInvited = () => {
 
 // Meta tags
 useMeta({
-  pageKey: 'organizations.show',
+  pageKey: 'organisations.show',
   params: {
-    organizationName: props.organization?.name || 'Organization',
+    organizationName: props.organisation?.name || 'organisation',
     memberCount: props.stats?.members_count || '0',
     electionCount: props.stats?.elections_count || '0'
   }
@@ -516,9 +516,9 @@ useMeta({
 ```json
 {
   "pages": {
-    "organization-show": {
-      "page_loaded": "Organization dashboard loaded",
-      "organization_type": "Organization",
+    "organisation-show": {
+      "page_loaded": "organisation dashboard loaded",
+      "organization_type": "organisation",
       "member_since": "Member since {date}",
       "invite_members": "Invite Members",
       "invite_members_aria": "Open invite members modal",
@@ -545,7 +545,7 @@ useMeta({
       "tip_test_demo": "Test the workflow",
       "tip_test_demo_desc": "Run a demo election to verify everything works",
       "onboarding": {
-        "title": "Complete your organization setup",
+        "title": "Complete your organisation setup",
         "description": "Follow these steps to get the most out of Public Digit",
         "completed": "Completed",
         "add_members": "Add team members",
@@ -559,7 +559,7 @@ useMeta({
   },
   "support": {
     "title": "Need help?",
-    "need_help": "Need help with your organization?",
+    "need_help": "Need help with your organisation?",
     "assistance": "Our support team is here to help you get the most out of Public Digit.",
     "email": "Email",
     "phone": "Phone",
@@ -577,8 +577,8 @@ useMeta({
 ## 🎯 **KEY IMPROVEMENTS SUMMARY**
 
 ### **1. Visual Hierarchy & Layout**
-- ✅ **Hero section** with organization identity and clear actions
-- ✅ **Onboarding progress** bar for new organizations
+- ✅ **Hero section** with organisation identity and clear actions
+- ✅ **Onboarding progress** bar for new organisations
 - ✅ **4-column stats cards** with visual indicators
 - ✅ **Recent activity feed** showing latest elections
 - ✅ **Quick tips sidebar** for guided setup
@@ -586,7 +586,7 @@ useMeta({
 ### **2. User Experience Enhancements**
 - ✅ **Empty states** with actionable next steps
 - ✅ **Progress tracking** showing setup completion
-- ✅ **Contextual CTAs** based on organization state
+- ✅ **Contextual CTAs** based on organisation state
 - ✅ **Visual feedback** with hover states and animations
 - ✅ **Accessible focus states** and ARIA labels
 
@@ -620,4 +620,4 @@ useMeta({
 4. **Implement the invite functionality** with email notifications
 5. **Test all states** (empty, partial, complete onboarding)
 
-**This redesign provides a professional, user-friendly dashboard that guides the customer through their next steps while providing clear visibility into their organization's activity.**
+**This redesign provides a professional, user-friendly dashboard that guides the customer through their next steps while providing clear visibility into their organisation's activity.**

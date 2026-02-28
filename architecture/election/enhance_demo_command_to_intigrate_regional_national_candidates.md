@@ -15,7 +15,7 @@ use App\Models\Election;
 use App\Models\DemoPost;
 use App\Models\DemoCandidacy;
 use App\Models\DemoCode;
-use App\Models\Organization;
+use App\Models\organisation;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
@@ -30,12 +30,12 @@ class SetupDemoElection extends Command
         $orgId = $this->option('org');
         $mode = $orgId ? 'MODE 2' : 'MODE 1';
 
-        // MODE 2: Validate organization exists
+        // MODE 2: Validate organisation exists
         $targetOrganization = null;
         if ($orgId) {
-            $targetOrganization = Organization::find($orgId);
+            $targetOrganization = organisation::find($orgId);
             if (!$targetOrganization) {
-                $this->error("❌ Organization with ID {$orgId} not found!");
+                $this->error("❌ organisation with ID {$orgId} not found!");
                 return 1;
             }
         }
@@ -46,7 +46,7 @@ class SetupDemoElection extends Command
         $this->info('');
         $this->info('🚀 Setting up demo election (' . $mode . ')...');
         if ($mode === 'MODE 2') {
-            $this->info('   Organization: ' . $targetOrganization->name . ' (ID: ' . $targetOrganization->id . ')');
+            $this->info('   organisation: ' . $targetOrganization->name . ' (ID: ' . $targetOrganization->id . ')');
         } else {
             $this->info('   Public demo - accessible to all users');
         }
@@ -205,7 +205,7 @@ class SetupDemoElection extends Command
             $stats['codes'] += $postStats['codes'];
         }
 
-        // REGIONAL POSTS (if MODE 2 with organization, or for public demo)
+        // REGIONAL POSTS (if MODE 2 with organisation, or for public demo)
         $regions = $this->getRegions($mode, $targetOrganization);
         
         foreach ($regions as $region) {
@@ -293,9 +293,9 @@ class SetupDemoElection extends Command
      */
     private function getRegions($mode, $targetOrganization)
     {
-        // For MODE 2, return regions from the organization
+        // For MODE 2, return regions from the organisation
         if ($mode === 'MODE 2' && $targetOrganization) {
-            // This could come from organization settings
+            // This could come from organisation settings
             return ['Bayern', 'Baden-Württemberg', 'North Rhine-Westphalia'];
         }
         
@@ -487,7 +487,7 @@ $imagePath = "candidates/{$candidacyNameSlug}_{$postNameSlug}{$regionSlug}_" .
 # MODE 1: Public demo (multiple regions)
 php artisan demo:setup
 
-# MODE 2: Organization-scoped demo
+# MODE 2: organisation-scoped demo
 php artisan demo:setup --org=1
 
 # Force recreate

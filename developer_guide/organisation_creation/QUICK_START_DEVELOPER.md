@@ -1,6 +1,6 @@
-# Organization Creation - Quick Start for Developers
+# organisation Creation - Quick Start for Developers
 
-**Start here** if you're new to the organization creation system.
+**Start here** if you're new to the organisation creation system.
 
 ---
 
@@ -15,14 +15,14 @@
 
 ---
 
-## 🎯 What Does Organization Creation Do?
+## 🎯 What Does organisation Creation Do?
 
-Users click "Create Organization" → Fill 4-step form → Organization created with user as admin.
+Users click "Create organisation" → Fill 4-step form → organisation created with user as admin.
 
 ```
 Dashboard Welcome Page
   ↓
-User clicks "Create Organization" card
+User clicks "Create organisation" card
   ↓
 Modal opens with education overlay
   ↓
@@ -30,9 +30,9 @@ User reads FAQ (optional)
   ↓
 User clicks "Start" → Form appears
   ↓
-Step 1: Organization Name & Email
+Step 1: organisation Name & Email
   ↓
-Step 2: Organization Address
+Step 2: organisation Address
   ↓
 Step 3: Representative (defaulted to "I am the representative")
   ↓
@@ -40,9 +40,9 @@ Step 4: Accept GDPR & Terms
   ↓
 Submit POST /api/organizations
   ↓
-Organization created, user attached as admin
+organisation created, user attached as admin
   ↓
-Redirect to organization dashboard
+Redirect to organisation dashboard
 ```
 
 ---
@@ -54,7 +54,7 @@ resources/js/
 ├── Composables/
 │   └── useOrganizationCreation.js           # State management ⭐
 │
-├── Components/Organization/
+├── Components/organisation/
 │   ├── OrganizationCreateModal.vue          # Main modal container
 │   │
 │   └── Steps/
@@ -111,8 +111,8 @@ const {
 ### The Modal: Three Views
 
 1. **Education Overlay** (Step 0)
-   - Shows FAQ about organization creation
-   - User reads "What is an organization?" etc.
+   - Shows FAQ about organisation creation
+   - User reads "What is an organisation?" etc.
    - Click "Start" to proceed
 
 2. **Form Steps** (Steps 1-3)
@@ -122,7 +122,7 @@ const {
 
 3. **Success State**
    - Show confirmation
-   - Redirect to organization page
+   - Redirect to organisation page
 
 ---
 
@@ -144,7 +144,7 @@ if (strtolower($representativeEmail) === strtolower($user->email)) {
 }
 
 // Check 2: User must not already be attached (line 73)
-$isAlreadyMember = $organization->users()
+$isAlreadyMember = $organisation->users()
     ->where('users.id', $representativeUser->id)
     ->exists();
 if (!$isAlreadyMember) {
@@ -170,7 +170,7 @@ ALTER TABLE users ADD CONSTRAINT users_email_unique UNIQUE (email)
 
 ```bash
 # Open browser console
-# Click "Create Organization" → Start → Skip validation
+# Click "Create organisation" → Start → Skip validation
 
 # Should see error messages
 # Try with valid data → Should proceed
@@ -188,7 +188,7 @@ ALTER TABLE users ADD CONSTRAINT users_email_unique UNIQUE (email)
 ### Test 3: Does code prevent duplicates?
 
 ```bash
-# Create organization with self as representative
+# Create organisation with self as representative
 # Go to /members/index
 # Verify user appears ONCE with role "admin" (not twice)
 ```
@@ -260,7 +260,7 @@ const payload = {
 5. **Update backend** `OrganizationController.php`:
 ```php
 // In store() method
-$organization->update([
+$organisation->update([
   // ...
   'phone' => $request->phone,
 ]);
@@ -278,7 +278,7 @@ if (some_condition) {
 2. Add translation keys to all three language files:
 ```json
 {
-  "organization": {
+  "organisation": {
     "form": {
       "field_error": "German error message"
     }
@@ -288,7 +288,7 @@ if (some_condition) {
 
 3. Use in validation:
 ```javascript
-errors.field = this.$t('organization.form.field_error')
+errors.field = this.$t('organisation.form.field_error')
 ```
 
 ---
@@ -303,7 +303,7 @@ Before deployment, verify:
 - [ ] No direct SQL (use Query Builder or Eloquent)
 - [ ] CSRF token included (handled by useCsrfRequest)
 - [ ] Authentication required (middleware 'auth')
-- [ ] Authorization checked (user must own organization)
+- [ ] Authorization checked (user must own organisation)
 - [ ] Error messages don't leak information
 - [ ] Validation runs on both frontend AND backend
 - [ ] Sensitive data not logged
@@ -341,7 +341,7 @@ nextStep() becomes enabled
 All text is in three languages. When you see:
 
 ```vue
-{{ $t('organization.form.title', { fallback: 'Create Organization' }) }}
+{{ $t('organisation.form.title', { fallback: 'Create organisation' }) }}
 ```
 
 This looks for the key in the current language file:
@@ -407,7 +407,7 @@ cy.get('[role="dialog"]').should('be.visible')
 ### Tip 3: Database Verification
 ```bash
 php artisan tinker
-> Organization::first()->users()->with('pivot')->get()
+> organisation::first()->users()->with('pivot')->get()
 ```
 
 ### Tip 4: Checking Translations
@@ -438,7 +438,7 @@ A: Add a new file in `resources/js/locales/pages/Dashboard/welcome/{lang_code}.j
 **Q: What if the API endpoint changes?**
 A: Update the URL in `submitForm()` in useOrganizationCreation.js
 
-**Q: Can users edit organization details after creation?**
+**Q: Can users edit organisation details after creation?**
 A: Not yet. That's a future feature.
 
 ---

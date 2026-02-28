@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <!-- Organization Types -->
+      <!-- organisation Types -->
       <div class="border-t border-gray-200 pt-16">
         <h3 class="text-2xl font-bold text-center text-gray-900 mb-12">
           Ideal für verschiedene Organisationstypen

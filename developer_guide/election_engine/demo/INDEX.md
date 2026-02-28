@@ -290,7 +290,7 @@ php artisan test --filter="DemoElection"
 php artisan tinker
 
 # Create test org and user
-$org = App\Models\Organization::factory()->create();
+$org = App\Models\organisation::factory()->create();
 $user = App\Models\User::factory()->create(['organisation_id' => $org->id]);
 
 # Get resolver and trigger auto-creation

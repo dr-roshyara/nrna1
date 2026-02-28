@@ -163,7 +163,7 @@ export default {
   "platform": {
     "name": "PUBLIC-DIGIT",
     "tagline": "Digital Democracy Platform",
-    "description": "Secure, GDPR-compliant voting for organizations"
+    "description": "Secure, GDPR-compliant voting for organisations"
   },
   "trust": {
     "gdpr": "GDPR Compliant",

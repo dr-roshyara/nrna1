@@ -54,7 +54,7 @@
 ### Tab Navigation
 - [ ] Can reach all interactive elements using TAB key
 - [ ] Tab order is logical (left-to-right, top-to-bottom):
-  1. [ ] Organization name link
+  1. [ ] organisation name link
   2. [ ] Search input
   3. [ ] Status filter dropdown
   4. [ ] Clear button
@@ -181,7 +181,7 @@
 - [ ] Can navigate by landmarks (D key)
 
 ### Content Announcement
-- [ ] Organization name announced
+- [ ] organisation name announced
 - [ ] Page description announced
 - [ ] Commission member notice (if visible) announced
 - [ ] Section headers announced properly

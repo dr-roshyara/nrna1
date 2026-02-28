@@ -24,19 +24,19 @@ This documentation will guide you through using the voter management features of
 
 ### For Voters
 1. Login with your credentials
-2. Navigate to your organization's election page
+2. Navigate to your organisation's election page
 3. Follow the voting instructions
 4. Receive confirmation when complete
 
 ### For Election Managers
 1. Login with your credentials
-2. Go to **Organization → Voters**
-3. View the list of voters in your organization
+2. Go to **organisation → Voters**
+3. View the list of voters in your organisation
 4. Search, filter, and manage voters as needed
 
 ### For Commission Members
 1. Login with your credentials
-2. Go to **Organization → Voters**
+2. Go to **organisation → Voters**
 3. Approve or suspend voters
 4. Track statistics and voting progress
 
@@ -44,7 +44,7 @@ This documentation will guide you through using the voter management features of
 
 ## 🔑 Key Features
 
-✅ **Voter List Management** - View all voters in your organization
+✅ **Voter List Management** - View all voters in your organisation
 ✅ **Search & Filter** - Find voters by name, ID, or status
 ✅ **Approval System** - Commission members can approve voters
 ✅ **Bulk Operations** - Approve/suspend multiple voters at once
@@ -58,13 +58,13 @@ This documentation will guide you through using the voter management features of
 ## 👥 User Roles
 
 ### Member Role
-- View voters in your organization
+- View voters in your organisation
 - See election statistics
 - Cannot approve or suspend voters
 - View-only access to voter details
 
 ### Staff Role
-- View voters in your organization
+- View voters in your organisation
 - See election statistics
 - Generate and export reports
 - Cannot approve or suspend voters
@@ -104,14 +104,14 @@ You can change your language in the Settings menu.
 2. Go to your election platform URL
 3. Click "Login" or "Sign In"
 4. Enter your credentials
-5. Navigate to **Organization → Voters**
+5. Navigate to **organisation → Voters**
 
 ### From Mobile
 1. Open your mobile browser (or app)
 2. Go to your election platform URL
 3. Login with your credentials
 4. The interface automatically adjusts for your screen size
-5. Navigate to **Organization → Voters**
+5. Navigate to **organisation → Voters**
 
 ---
 
@@ -119,7 +119,7 @@ You can change your language in the Settings menu.
 
 Your election data is:
 - ✅ **Encrypted** - All data travels over secure HTTPS connections
-- ✅ **Private** - Only you and authorized users can see your organization's data
+- ✅ **Private** - Only you and authorized users can see your organisation's data
 - ✅ **Isolated** - Your data is completely separate from other organizations
 - ✅ **Audited** - All actions are logged for transparency and security
 

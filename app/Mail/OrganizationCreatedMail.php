@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Organization;
+use App\Models\Organisation;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,7 +15,7 @@ class OrganizationCreatedMail extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
 
     public function __construct(
-        public Organization $organization,
+        public Organisation $organisation,
         public User $creator
     ) {
         // Set locale for mail: use current app locale or default to German
@@ -28,25 +28,25 @@ class OrganizationCreatedMail extends Mailable implements ShouldQueue
         App::setLocale($this->locale);
 
         $subjects = [
-            'de' => 'Ihre Organisation wurde erstellt – ' . $this->organization->name,
-            'en' => 'Your organization has been created – ' . $this->organization->name,
-            'np' => 'आपको संगठन बनाया गया है – ' . $this->organization->name,
+            'de' => 'Ihre Organisation wurde erstellt – ' . $this->organisation->name,
+            'en' => 'Your organisation has been created – ' . $this->organisation->name,
+            'np' => 'आपको संगठन बनाया गया है – ' . $this->organisation->name,
         ];
 
         $templates = [
-            'de' => 'emails.organization.created-de',
-            'en' => 'emails.organization.created-en',
-            'np' => 'emails.organization.created-np',
+            'de' => 'emails.organisation.created-de',
+            'en' => 'emails.organisation.created-en',
+            'np' => 'emails.organisation.created-np',
         ];
 
         return $this->markdown($templates[$this->locale] ?? $templates['de'])
                     ->subject($subjects[$this->locale] ?? $subjects['de'])
                     ->with([
-                        'organizationName' => $this->organization->name,
+                        'organisationName' => $this->organisation->name,
                         'creatorName' => $this->creator->name,
                         'loginUrl' => route('login'),
-                        'dashboardUrl' => route('organizations.show', $this->organization->slug),
-                        'organizationEmail' => $this->organization->email,
+                        'dashboardUrl' => route('organisations.show', $this->organisation->slug),
+                        'organisationEmail' => $this->organisation->email,
                         'locale' => $this->locale,
                     ]);
     }

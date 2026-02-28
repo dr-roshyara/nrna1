@@ -185,7 +185,7 @@ const props = defineProps({
     type: Boolean,
     required: true
   },
-  organization: {
+  organisation: {
     type: Object,
     required: true
   }
@@ -204,7 +204,7 @@ const isImporting = ref(false)
 const validationErrors = ref([])
 
 // Composable
-const { parseFile, validateData, submitImport: apiSubmit } = useMemberImport(props.organization)
+const { parseFile, validateData, submitImport: apiSubmit } = useMemberImport(props.organisation)
 
 /**
  * Handle file selection from input

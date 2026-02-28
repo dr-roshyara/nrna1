@@ -230,11 +230,11 @@ End of day (5 min):
 - Try: "jon" or "smith"
 - Be less specific
 
-**4. Different organization**
-- You're in Organization A
-- Voter is in Organization B
+**4. Different organisation**
+- You're in organisation A
+- Voter is in organisation B
 - Switch organizations via dashboard
-- Different organization = different voter lists
+- Different organisation = different voter lists
 
 **5. Voter not registered yet**
 - Voter hasn't registered
@@ -485,7 +485,7 @@ Before clicking [Approve]:
 1. Check voter name is correct
 2. Verify User ID (if needed)
 3. Confirm status change
-4. Check you're in right organization
+4. Check you're in right organisation
 5. Read confirmation dialog carefully
 6. Then click [Confirm]
 ```

@@ -11,7 +11,7 @@ class WelcomeDashboardController extends Controller
      * Show the welcome/onboarding dashboard for first-time users
      *
      * Displays welcome dashboard with:
-     * - Quick start options (create organization, join organization)
+     * - Quick start options (create organisation, join organisation)
      * - Election templates (NRNA Chapter, Student Association, Community Assembly)
      * - Guided setup wizard
      * - Help & Resources

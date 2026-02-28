@@ -31,7 +31,7 @@
 ### **What We Built**
 A **complete multi-tenant voting system** with:
 - ✅ **Two-level demo system** (no org required for testing)
-- ✅ **Complete data isolation** between organizations
+- ✅ **Complete data isolation** between organisations
 - ✅ **4-layer security architecture** (Middleware → Controller → Model → Database)
 - ✅ **Vote anonymity preserved** (no user_id in votes tables)
 - ✅ **Comprehensive audit logging** (per-person + per-org + security logs)

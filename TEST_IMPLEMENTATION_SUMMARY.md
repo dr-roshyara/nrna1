@@ -1,4 +1,4 @@
-# Organization Creation Testing Implementation - Summary
+# organisation Creation Testing Implementation - Summary
 
 **Date**: February 22, 2026  
 **Branch**: multitenancy  
@@ -8,7 +8,7 @@
 
 ## 🎯 Objective Achieved
 
-Implemented **comprehensive test suite** for organization creation workflow to prevent production issues:
+Implemented **comprehensive test suite** for organisation creation workflow to prevent production issues:
 - ✅ CSRF token validation errors
 - ✅ Email template rendering errors
 - ✅ Missing email component registration
@@ -52,7 +52,7 @@ if (!app()->environment('testing')) {
 ```
 
 #### Issue 3: Ambiguous SQL Column References
-**Problem**: `Column 'user_id' in where clause is ambiguous` when testing user-organization relationships
+**Problem**: `Column 'user_id' in where clause is ambiguous` when testing user-organisation relationships
 
 **Solution**: Qualified column references in all tests:
 ```php
@@ -94,11 +94,11 @@ $org->users()->where('users.id', $user->id)->exists()
    - ✅ Works with form submission
    - ✅ Persists across multi-step form
 
-2. **Basic Organization Creation** (7/7 passing)
+2. **Basic organisation Creation** (7/7 passing)
    - ✅ Validates required fields
    - ✅ Validates email format
-   - ✅ Creates organization with self-representative
-   - ✅ Creates organization with external representative
+   - ✅ Creates organisation with self-representative
+   - ✅ Creates organisation with external representative
    - ✅ Sets correct relationships and roles
    - ✅ Requires authentication
 
@@ -122,7 +122,7 @@ $org->users()->where('users.id', $user->id)->exists()
    - Maintains security in production
    - Allows tests to pass without DNS lookup
 
-3. **`tests/Feature/Organization*.php`** (9 files)
+3. **`tests/Feature/organisation*.php`** (9 files)
    - Fixed SQL query ambiguities
    - Added Mail::fake() to prevent email sending during tests
    - Qualified column references in pivot table queries
@@ -131,7 +131,7 @@ $org->users()->where('users.id', $user->id)->exists()
 
 ## 🚀 How to Run Tests
 
-### Run All Organization Creation Tests
+### Run All organisation Creation Tests
 ```bash
 php artisan test tests/Feature/OrganizationCreation*.php
 ```

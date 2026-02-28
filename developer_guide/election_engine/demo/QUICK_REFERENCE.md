@@ -47,7 +47,7 @@ grep "auto-created" storage/logs/laravel.log
 php artisan tinker
 
 # Create test org and user
-$org = App\Models\Organization::factory()->create(['name' => 'Test Org']);
+$org = App\Models\organisation::factory()->create(['name' => 'Test Org']);
 $user = App\Models\User::factory()->create(['organisation_id' => $org->id]);
 
 # Trigger auto-creation
@@ -208,8 +208,8 @@ php artisan test --filter="test_auto_creates_org_specific_demo_when_user_accesse
 php artisan tinker
 
 # Create two organisations
-$org1 = App\Models\Organization::factory()->create(['name' => 'Org 1']);
-$org2 = App\Models\Organization::factory()->create(['name' => 'Org 2']);
+$org1 = App\Models\organisation::factory()->create(['name' => 'Org 1']);
+$org2 = App\Models\organisation::factory()->create(['name' => 'Org 2']);
 
 # Create users from each org
 $user1 = App\Models\User::factory()->create(['organisation_id' => $org1->id]);

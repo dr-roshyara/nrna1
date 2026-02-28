@@ -128,7 +128,7 @@ class RobotsController extends Controller
         $robots .= "# Sitemaps for Search Engines\n";
         $robots .= "Sitemap: " . url('/sitemap.xml') . "\n";
         $robots .= "Sitemap: " . url('/sitemap/main.xml') . "\n";
-        $robots .= "Sitemap: " . url('/sitemap/organizations.xml') . "\n";
+        $robots .= "Sitemap: " . url('/sitemap/organisations.xml') . "\n";
         $robots .= "Sitemap: " . url('/sitemap/elections.xml') . "\n";
         $robots .= "Sitemap: " . url('/sitemap/results.xml') . "\n";
 

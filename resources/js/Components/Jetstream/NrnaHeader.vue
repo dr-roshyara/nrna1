@@ -73,14 +73,14 @@
 
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between py-6">
-                    <!-- Logo and Organization Info -->
+                    <!-- Logo and organisation Info -->
                     <div class="flex items-center space-x-6">
                         <!-- Logo -->
                         <div class="shrink-0">
                             <logo class="transform hover:scale-105 transition-transform duration-200" />
                         </div>
 
-                        <!-- Organization Details -->
+                        <!-- organisation Details -->
                         <div class="hidden md:block">
                             <div class="flex flex-col">
                                 <h1 class="text-2xl lg:text-3xl font-bold text-white leading-tight">
@@ -192,7 +192,7 @@
                     </div>
                 </div>
 
-                <!-- Mobile Organization Title -->
+                <!-- Mobile organisation Title -->
                 <div class="md:hidden pb-4">
                     <h1 class="text-xl font-bold text-white text-center leading-tight">
                         Non Resident Nepali Association (NRNA)

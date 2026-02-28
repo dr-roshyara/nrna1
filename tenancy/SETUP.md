@@ -259,7 +259,7 @@ class TenantIsolationTest extends TestCase
 **Category 1: Tenant Isolation (3 tests)**
 - ✅ User from org1 cannot see org2 users
 - ✅ User from org2 cannot see org1 users
-- ✅ Default user cannot see organization users
+- ✅ Default user cannot see organisation users
 
 **Category 2: Access Control (3 tests)**
 - ✅ User cannot access another org user by id

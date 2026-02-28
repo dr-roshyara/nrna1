@@ -2,7 +2,7 @@
   "register": {
     "title": "User Registration",
     "heading": "Create Your Account",
-    "subtitle": "Join thousands of organizations using PUBLIC DIGIT for secure voting",
+    "subtitle": "Join thousands of organisations using PUBLIC DIGIT for secure voting",
     "fields": {
       "firstName": {
         "label": "First and Middle Name",

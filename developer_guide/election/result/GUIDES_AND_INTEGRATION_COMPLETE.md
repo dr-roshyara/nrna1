@@ -17,7 +17,7 @@
 - ✅ Architecture Overview with diagrams
 - ✅ MODE 1 vs MODE 2 complete explanation
 - ✅ Complete data flow diagram
-- ✅ File structure and organization
+- ✅ File structure and organisation
 - ✅ Backend implementation details
 - ✅ Frontend component hierarchy
 - ✅ Testing guide (unit + feature tests)
@@ -178,7 +178,7 @@ DemoResultsSection.vue uses all 24 keys for:
 ```javascript
 // Test in browser console:
 app.locale = 'en'
-app.$t('pages.organization-show.demo-results.title')
+app.$t('pages.organisation-show.demo-results.title')
 // Output: "Demo Election Results"
 
 app.locale = 'de'

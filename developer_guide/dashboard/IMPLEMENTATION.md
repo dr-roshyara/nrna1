@@ -18,7 +18,7 @@
 | Model | File | Key Methods |
 |-------|------|-------------|
 | User | `app/Models/User.php` | `getDashboardRoles()`, `hasDashboardRole($role)`, `isOrganizationAdmin($orgId)` |
-| Organization | `app/Models/Organization.php` | `hasAdmin($userId)`, `members()`, `elections()` |
+| organisation | `app/Models/organisation.php` | `hasAdmin($userId)`, `members()`, `elections()` |
 
 ### Middleware
 
@@ -56,7 +56,7 @@
 
 | File | Purpose |
 |------|---------|
-| `database/migrations/2026_02_07_131712_create_role_system_tables.php` | Creates organization, user_organization_roles, election_commission_members tables |
+| `database/migrations/2026_02_07_131712_create_role_system_tables.php` | Creates organisation, user_organization_roles, election_commission_members tables |
 
 ## Key Implementation Details
 
@@ -72,7 +72,7 @@ private function isFirstTimeUser($user): bool
         return false;
     }
 
-    // Check if user has organization roles (new system)
+    // Check if user has organisation roles (new system)
     $hasOrgRoles = \DB::table('user_organization_roles')
         ->where('user_id', $user->id)
         ->exists();
@@ -102,7 +102,7 @@ private function isFirstTimeUser($user): bool
 
 **Criteria for First-Time User:**
 - Account created within 7 days
-- No organization roles (new system)
+- No organisation roles (new system)
 - No commission membership (new system)
 - No voter status or legacy roles
 
@@ -276,12 +276,12 @@ public function switchRole($role)
 }
 ```
 
-### 7. Organization Model
+### 7. organisation Model
 
-**File:** `app/Models/Organization.php`
+**File:** `app/Models/organisation.php`
 
 ```php
-class Organization extends Model
+class organisation extends Model
 {
     protected $fillable = [
         'name', 'slug', 'description', 'languages'
@@ -314,22 +314,22 @@ class Organization extends Model
 
 ## Step-by-Step: Adding a User to a Role
 
-### Step 1: Create Organization (if needed)
+### Step 1: Create organisation (if needed)
 
 ```php
-$org = Organization::create([
-    'name' => 'Example Organization',
+$org = organisation::create([
+    'name' => 'Example organisation',
     'slug' => 'example-org',
     'languages' => ['en', 'de', 'np']
 ]);
 ```
 
-### Step 2: Assign User to Organization with Role
+### Step 2: Assign User to organisation with Role
 
 ```php
 DB::table('user_organization_roles')->insert([
     'user_id' => $user->id,
-    'organization_id' => $org->id,
+    'organisation_id' => $org->id,
     'role' => 'admin',  // or 'commission', 'voter'
     'created_at' => now(),
     'updated_at' => now(),
@@ -352,12 +352,12 @@ $roles = $user->getDashboardRoles();  // Should include 'admin'
 
 ### POST /api/organizations
 
-Create new organization
+Create new organisation
 
 ```php
 // Request
 {
-    "name": "Organization Name",
+    "name": "organisation Name",
     "slug": "org-slug",
     "languages": ["en", "de", "np"]
 }
@@ -365,7 +365,7 @@ Create new organization
 // Response
 {
     "id": 1,
-    "name": "Organization Name",
+    "name": "organisation Name",
     "slug": "org-slug",
     "created_at": "2026-02-07..."
 }
@@ -373,7 +373,7 @@ Create new organization
 
 ### POST /api/organizations/{org}/members
 
-Add member to organization
+Add member to organisation
 
 ```php
 // Request
@@ -385,14 +385,14 @@ Add member to organization
 // Response
 {
     "user_id": 5,
-    "organization_id": 1,
+    "organisation_id": 1,
     "role": "admin"
 }
 ```
 
 ### GET /api/organizations/{org}/members
 
-List organization members
+List organisation members
 
 ```php
 // Response
@@ -457,7 +457,7 @@ curl -b "LARAVEL_SESSION=..." http://localhost:8000/dashboard/admin
 ### Current Optimizations
 
 ✅ Dashboard roles cached for 60 minutes
-✅ Database indexes on user_id, organization_id
+✅ Database indexes on user_id, organisation_id
 ✅ Unique constraint on user_org_role combo
 ✅ Middleware runs before controller
 
@@ -485,4 +485,4 @@ curl -b "LARAVEL_SESSION=..." http://localhost:8000/dashboard/admin
 - Audit logging for role changes
 - Two-factor authentication for admin users
 - Session expiration on role change
-- IP whitelisting for organization admins
+- IP whitelisting for organisation admins

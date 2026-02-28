@@ -8,7 +8,7 @@
       "totalVoters": "कुल मतदाताहरू",
       "participationRate": "भागीदारीको दर"
     },
-    "organizations": {
+    "organisations": {
       "title": "आपका संगठनहरू",
       "empty": "अझै कुनै संगठन छैन",
       "createButton": "संगठन सिर्जना गर्नुहोस्",

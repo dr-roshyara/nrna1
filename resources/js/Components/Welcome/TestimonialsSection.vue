@@ -36,7 +36,7 @@
             <div>
               <p class="font-bold text-gray-900">{{ testimonial.author }}</p>
               <p class="text-sm text-gray-600">{{ testimonial.role }}</p>
-              <p class="text-xs text-gray-500">{{ testimonial.organization }}</p>
+              <p class="text-xs text-gray-500">{{ testimonial.organisation }}</p>
             </div>
           </div>
         </div>

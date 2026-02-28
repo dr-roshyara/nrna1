@@ -3,7 +3,7 @@
 ### **Design Thinking Approach**
 
 I'll follow the **5 Phases of Design Thinking**:
-1. **Empathize** - Understand user needs (voters, election admins, organization leaders)
+1. **Empathize** - Understand user needs (voters, election admins, organisation leaders)
 2. **Define** - Problem: Organizations need secure, verifiable online voting
 3. **Ideate** - Brainstorm page structures and user flows
 4. **Prototype** - Create visual page mockups
@@ -18,7 +18,7 @@ I'll follow the **5 Phases of Design Thinking**:
 | Persona | Goals | Pain Points |
 |---------|-------|-------------|
 | **Anna - Election Admin** | Set up elections easily, verify results, manage voters | Complex setup, security concerns, audit requirements |
-| **Dr. Schmidt - Organization Leader** | Ensure election integrity, increase voter turnout | Cost, trust in online voting, legal compliance |
+| **Dr. Schmidt - organisation Leader** | Ensure election integrity, increase voter turnout | Cost, trust in online voting, legal compliance |
 | **Michael - Voter** | Vote easily from anywhere, verify vote was counted | Complicated process, privacy concerns |
 | **Sarah - First-time Visitor** | Understand the platform, request demo | Too much technical jargon, unclear pricing |
 
@@ -238,7 +238,7 @@ WON'T HAVE (v1):
 │  │ $99/mo          │  │ $299/mo         │  │ Custom          │     │
 │  ├─────────────────┤  ├─────────────────┤  ├─────────────────┤     │
 │  │ Up to 500 voters│  │ Up to 5,000     │  │ Unlimited       │     │
-│  │ 1 organization  │  │ voters          │  │ voters          │     │
+│  │ 1 organisation  │  │ voters          │  │ voters          │     │
 │  │ Basic analytics │  │ 5 organizations │  │ Multiple admins │     │
 │  │ Email support   │  │ Advanced audit  │  │ SLA guarantee   │     │
 │  │                 │  │ API access      │  │ Dedicated support│     │
@@ -275,7 +275,7 @@ WON'T HAVE (v1):
 │  │  ├─────────────────────────────────┤                        │    │
 │  │  │ Email: ______________________  │                        │    │
 │  │  ├─────────────────────────────────┤                        │    │
-│  │  │ Organization: ________________ │                        │    │
+│  │  │ organisation: ________________ │                        │    │
 │  │  ├─────────────────────────────────┤                        │    │
 │  │  │ Voter count: [< 100] [100-1k] [1k+] │                    │    │
 │  │  ├─────────────────────────────────┤                        │    │
@@ -508,7 +508,7 @@ WON'T HAVE (v1):
 └─────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      ORGANIZATION JOURNEY                            │
+│                      organisation JOURNEY                            │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────┐    ┌─────────┐    ┌─────────┐    ┌─────────┐          │
@@ -517,8 +517,8 @@ WON'T HAVE (v1):
 │  └─────────┘    └─────────┘    └─────────┘    └─────────┘          │
 │       │              │              │              │                │
 │       ▼              ▼              ▼              ▼                │
-│  Register as   organization    Add posts,     Notify voters,       │
-│  organization  created (NULL   candidates,    monitor results      │
+│  Register as   organisation    Add posts,     Notify voters,       │
+│  organisation  created (NULL   candidates,    monitor results      │
 │  admin         → org_id)       configure                           │
 │                                                                      │
 └─────────────────────────────────────────────────────────────────────┘

@@ -51,15 +51,15 @@ php artisan demo:setup --force --clean
 - 16 verification codes
 - Public demo (visible to all users)
 
-### MODE 2: Organization-Scoped Demo
+### MODE 2: organisation-Scoped Demo
 
-Creates a demo election scoped to a specific organization with regional posts.
+Creates a demo election scoped to a specific organisation with regional posts.
 
 ```bash
-# Setup for organization ID 1
+# Setup for organisation ID 1
 php artisan demo:setup --org=1
 
-# Recreate for organization ID 1
+# Recreate for organisation ID 1
 php artisan demo:setup --org=1 --force --clean
 ```
 
@@ -68,7 +68,7 @@ php artisan demo:setup --org=1 --force --clean
 - 6 regional posts: State Rep + District Rep for Bayern, Baden-Württemberg, and North Rhine-Westphalia
 - 20 total candidates
 - 20 verification codes
-- Scoped to organization (only that org's users can access)
+- Scoped to organisation (only that org's users can access)
 
 ---
 

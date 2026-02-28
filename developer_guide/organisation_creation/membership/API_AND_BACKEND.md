@@ -23,7 +23,7 @@
 
 **Authentication**: Required (logged-in user)
 
-**Authorization**: User must have `manage` permission on organization
+**Authorization**: User must have `manage` permission on organisation
 
 **Request Headers**:
 ```
@@ -110,11 +110,11 @@ app/Services/MemberImportService.php
 
 ## 🚧 Phase 2 Endpoints (To Implement)
 
-### **1. Get Organization Stats**
+### **1. Get organisation Stats**
 
 **Endpoint**: `GET /organizations/{slug}/api/stats`
 
-**Purpose**: Fetch organization statistics
+**Purpose**: Fetch organisation statistics
 
 **Response** (200 OK):
 ```json
@@ -153,7 +153,7 @@ app/Services/MemberImportService.php
   "officer": {
     "id": 789,
     "member_id": 42,
-    "organization_id": 1,
+    "organisation_id": 1,
     "appointed_at": "2026-02-22T10:30:00Z",
     "expires_at": "2027-12-31",
     "is_active": true
@@ -170,7 +170,7 @@ app/Services/MemberImportService.php
 
 **Validation**:
 ```
-- Member must exist in organization
+- Member must exist in organisation
 - Member must be active
 - Officer cannot already be appointed
 - Deputy must be different from officer
@@ -223,7 +223,7 @@ app/Services/MemberImportService.php
   "success": true,
   "election": {
     "id": 99,
-    "organization_id": 1,
+    "organisation_id": 1,
     "name": "Board Election 2024",
     "type": "board",
     "start_date": "2026-03-01",
@@ -283,7 +283,7 @@ app/Services/MemberImportService.php
 
 **Endpoint**: `GET /organizations/{slug}/api/activity?limit=20`
 
-**Purpose**: Get recent organization activity
+**Purpose**: Get recent organisation activity
 
 **Response**:
 ```json
@@ -364,7 +364,7 @@ GET    /documents/templates/{type}/download
 ```sql
 CREATE TABLE members (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
-  organization_id BIGINT NOT NULL,
+  organisation_id BIGINT NOT NULL,
   user_id BIGINT,
   email VARCHAR(255) NOT NULL,
   first_name VARCHAR(255),
@@ -375,8 +375,8 @@ CREATE TABLE members (
   joined_at TIMESTAMP,
   created_at TIMESTAMP,
   updated_at TIMESTAMP,
-  UNIQUE KEY unique_org_email (organization_id, email),
-  FOREIGN KEY (organization_id) REFERENCES organizations(id),
+  UNIQUE KEY unique_org_email (organisation_id, email),
+  FOREIGN KEY (organisation_id) REFERENCES organizations(id),
   FOREIGN KEY (user_id) REFERENCES users(id)
 )
 ```
@@ -385,7 +385,7 @@ CREATE TABLE members (
 ```sql
 CREATE TABLE election_officers (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
-  organization_id BIGINT NOT NULL,
+  organisation_id BIGINT NOT NULL,
   member_id BIGINT NOT NULL,
   role ENUM('officer', 'deputy') DEFAULT 'officer',
   appointed_by_user_id BIGINT,
@@ -394,7 +394,7 @@ CREATE TABLE election_officers (
   is_active BOOLEAN DEFAULT TRUE,
   created_at TIMESTAMP,
   updated_at TIMESTAMP,
-  FOREIGN KEY (organization_id) REFERENCES organizations(id),
+  FOREIGN KEY (organisation_id) REFERENCES organizations(id),
   FOREIGN KEY (member_id) REFERENCES members(id),
   FOREIGN KEY (appointed_by_user_id) REFERENCES users(id)
 )
@@ -404,7 +404,7 @@ CREATE TABLE election_officers (
 ```sql
 CREATE TABLE elections (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
-  organization_id BIGINT NOT NULL,
+  organisation_id BIGINT NOT NULL,
   election_officer_id BIGINT,
   name VARCHAR(255) NOT NULL,
   type ENUM('board', 'deputy', 'auditor', 'amendment'),
@@ -415,7 +415,7 @@ CREATE TABLE elections (
   end_date TIMESTAMP,
   created_at TIMESTAMP,
   updated_at TIMESTAMP,
-  FOREIGN KEY (organization_id) REFERENCES organizations(id),
+  FOREIGN KEY (organisation_id) REFERENCES organizations(id),
   FOREIGN KEY (election_officer_id) REFERENCES election_officers(id)
 )
 ```
@@ -424,7 +424,7 @@ CREATE TABLE elections (
 ```sql
 CREATE TABLE import_logs (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
-  organization_id BIGINT NOT NULL,
+  organisation_id BIGINT NOT NULL,
   user_id BIGINT,
   import_type ENUM('members', 'candidates'),
   file_name VARCHAR(255),
@@ -434,7 +434,7 @@ CREATE TABLE import_logs (
   error_details JSON,
   status ENUM('success', 'partial', 'failed'),
   created_at TIMESTAMP,
-  FOREIGN KEY (organization_id) REFERENCES organizations(id),
+  FOREIGN KEY (organisation_id) REFERENCES organizations(id),
   FOREIGN KEY (user_id) REFERENCES users(id)
 )
 ```
@@ -524,28 +524,28 @@ X-CSRF-TOKEN: {token}
 
 ### **Authorization Checks**
 
-#### **Organization Access**
+#### **organisation Access**
 ```php
-// User must be member of organization
+// User must be member of organisation
 $user->organizations()->where('id', $org->id)->exists()
 ```
 
 #### **Permission Checks**
 ```php
 // For management operations
-$user->can('manage', $organization)
+$user->can('manage', $organisation)
 
-// For viewing organization
-$user->can('view', $organization)
+// For viewing organisation
+$user->can('view', $organisation)
 
 // For creating elections
-$user->can('create_elections', $organization)
+$user->can('create_elections', $organisation)
 ```
 
 #### **Multi-Tenant Scope**
 ```php
-// All queries must include organization scope
-Member::where('organization_id', $org->id)->get()
+// All queries must include organisation scope
+Member::where('organisation_id', $org->id)->get()
 ```
 
 ---
@@ -555,7 +555,7 @@ Member::where('organization_id', $org->id)->get()
 ### **Endpoints Rate Limits**
 
 ```
-Member Import:       10 per hour per organization
+Member Import:       10 per hour per organisation
 Election Creation:   50 per day per user
 Officer Appointment: 20 per day per user
 Activity API:        100 per minute
@@ -624,7 +624,7 @@ const response = await csrfRequest.post(
 ```
 ✓ Success!
 "2 members imported successfully"
-[Back to Organization]
+[Back to organisation]
 ```
 
 ---

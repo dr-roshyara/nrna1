@@ -11,24 +11,24 @@ class AddOrganizationDetailsToOrganizationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('organizations', function (Blueprint $table) {
+        Schema::table('organisations', function (Blueprint $table) {
             // Add email field for official communications
-            if (!Schema::hasColumn('organizations', 'email')) {
+            if (!Schema::hasColumn('organisations', 'email')) {
                 $table->string('email')->after('name')->nullable();
             }
             
             // Add address as JSON (street, city, zip, country)
-            if (!Schema::hasColumn('organizations', 'address')) {
+            if (!Schema::hasColumn('organisations', 'address')) {
                 $table->json('address')->after('email')->nullable();
             }
             
             // Add representative information as JSON
-            if (!Schema::hasColumn('organizations', 'representative')) {
+            if (!Schema::hasColumn('organisations', 'representative')) {
                 $table->json('representative')->after('address')->nullable();
             }
             
-            // Track who created the organization
-            if (!Schema::hasColumn('organizations', 'created_by')) {
+            // Track who created the organisation
+            if (!Schema::hasColumn('organisations', 'created_by')) {
                 $table->foreignId('created_by')->nullable()->after('representative')->constrained('users')->onDelete('set null');
             }
         });
@@ -39,18 +39,18 @@ class AddOrganizationDetailsToOrganizationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('organizations', function (Blueprint $table) {
-            if (Schema::hasColumn('organizations', 'created_by')) {
+        Schema::table('organisations', function (Blueprint $table) {
+            if (Schema::hasColumn('organisations', 'created_by')) {
                 $table->dropForeign(['created_by']);
                 $table->dropColumn('created_by');
             }
-            if (Schema::hasColumn('organizations', 'representative')) {
+            if (Schema::hasColumn('organisations', 'representative')) {
                 $table->dropColumn('representative');
             }
-            if (Schema::hasColumn('organizations', 'address')) {
+            if (Schema::hasColumn('organisations', 'address')) {
                 $table->dropColumn('address');
             }
-            if (Schema::hasColumn('organizations', 'email')) {
+            if (Schema::hasColumn('organisations', 'email')) {
                 $table->dropColumn('email');
             }
         });

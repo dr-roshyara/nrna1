@@ -12,7 +12,7 @@ Excellent! Now I'll create a comprehensive implementation plan and checklist for
 
 ### ✅ **Task 1.1: Create Database Migrations** (15 min)
 
-Create the pivot table for organization-user relationships:
+Create the pivot table for organisation-user relationships:
 
 ```bash
 # Run these commands in order
@@ -23,8 +23,8 @@ php artisan make:migration add_phone_to_users_table
 ### ✅ **Task 1.2: Update Models** (10 min)
 
 Update these files:
-- `app/Models/Organization.php` - Add users relationship
-- `app/Models/User.php` - Add organizations relationship
+- `app/Models/organisation.php` - Add users relationship
+- `app/Models/User.php` - Add organisations relationship
 
 ### ✅ **Task 1.3: Create Policy** (10 min)
 
@@ -63,7 +63,7 @@ php artisan migrate
 - [ ] Test with duplicate emails
 - [ ] Test with large file (1000+ rows)
 - [ ] Test authorization (non-admin user)
-- [ ] Test cross-organization access
+- [ ] Test cross-organisation access
 
 ### ✅ **Task 3.2: Create Automated Tests** (30 min)
 
@@ -77,9 +77,9 @@ Create file: `tests/Unit/MemberImportTest.php`
 
 ```php
 // In routes/web.php
-Route::post('/organizations/{organization}/members/import', [MemberImportController::class, 'store'])
+Route::post('/organisations/{organisation}/members/import', [MemberImportController::class, 'store'])
     ->middleware('throttle:10,1') // 10 imports per minute
-    ->name('organizations.members.import.store');
+    ->name('organisations.members.import.store');
 ```
 
 ### ✅ **Task 4.2: Add Logging** (10 min)
@@ -87,7 +87,7 @@ Route::post('/organizations/{organization}/members/import', [MemberImportControl
 Add to controller:
 ```php
 \Log::info('Member import completed', [
-    'organization_id' => $organization->id,
+    'organisation_id' => $organisation->id,
     'user_id' => auth()->id(),
     'imported' => $imported,
     'skipped' => $skipped
@@ -114,15 +114,15 @@ Handle cases where member already exists but data needs updating
 - [x] Migration: `create_user_organization_roles_table`
 - [x] Migration: `add_phone_to_users_table`
 - [x] Run `php artisan migrate`
-- [x] Update `Organization` model with `users()` relationship
-- [x] Update `User` model with `organizations()` relationship
+- [x] Update `organisation` model with `users()` relationship
+- [x] Update `User` model with `organisations()` relationship
 - [x] Add `isOrgAdmin()` helper method to User model
 
 ### **Authorization**
 - [x] Create `OrganizationPolicy`
 - [x] Add `manage()` method to policy
 - [x] Register policy in `AuthServiceProvider`
-- [x] Add `$this->authorize('manage', $organization)` in controller
+- [x] Add `$this->authorize('manage', $organisation)` in controller
 
 ### **Controller**
 - [x] Create `MemberImportController`
@@ -180,22 +180,22 @@ php artisan make:migration add_phone_to_users_table
 Then copy the migration code from the guide into each file.
 
 ### **Step 4: Update Models**
-Update `app/Models/Organization.php` and `app/Models/User.php` with the relationships from the guide.
+Update `app/Models/organisation.php` and `app/Models/User.php` with the relationships from the guide.
 
 ### **Step 5: Register Policy**
 Add to `app/Providers/AuthServiceProvider.php`:
 ```php
 protected $policies = [
-    Organization::class => OrganizationPolicy::class,
+    organisation::class => OrganizationPolicy::class,
 ];
 ```
 
 ### **Step 6: Add Route**
 Add to `routes/web.php`:
 ```php
-Route::post('/organizations/{organization}/members/import', 
+Route::post('/organisations/{organisation}/members/import', 
     [MemberImportController::class, 'store'])
-    ->name('organizations.members.import.store');
+    ->name('organisations.members.import.store');
 ```
 
 ### **Step 7: Run Migrations**
@@ -204,7 +204,7 @@ php artisan migrate
 ```
 
 ### **Step 8: Test!**
-Navigate to your organization page and test the import functionality.
+Navigate to your organisation page and test the import functionality.
 
 ---
 

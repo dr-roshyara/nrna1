@@ -350,7 +350,7 @@ $canVote = $code->can_vote_now == 1
 
 ---
 
-## 📋 File Organization
+## 📋 File organisation
 
 ```
 tenancy/election_engine/
@@ -688,7 +688,7 @@ For questions, refer to the relevant guide or the codebase comments.
   - ✅ Learning paths (beginner → experienced)
 
   ---
-  📋 Content Organization
+  📋 Content organisation
 
   By Task:
   ├─ "How do I understand the architecture?"

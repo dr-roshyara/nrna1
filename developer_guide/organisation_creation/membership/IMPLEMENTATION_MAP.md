@@ -39,7 +39,7 @@ BACKEND LAYER (⚠️ 0% COMPLETE - READY TO BUILD)
 │  └─ POST /organizations/{org}/members/import
 │
 └─ Models ⚠️ (RELATIONSHIPS MISSING)
-   ├─ Organization.php (add users() relationship)
+   ├─ organisation.php (add users() relationship)
    └─ User.php (add organizations() relationship)
 
 
@@ -98,7 +98,7 @@ USER INTERACTION FLOW:
    Step 1: Validate authorization
    Step 2: Validate data (server-side)
    Step 3: Create User records
-   Step 4: Attach to Organization
+   Step 4: Attach to organisation
    Step 5: Return response
    ↓
 
@@ -122,7 +122,7 @@ USER INTERACTION FLOW:
 app/Http/Controllers/Organizations/MemberImportController.php
 
 class MemberImportController {
-    public function store(Request $request, Organization $organization)
+    public function store(Request $request, organisation $organisation)
     {
         // 1. Authorize (check if admin)
         // 2. Validate (re-check data)
@@ -140,9 +140,9 @@ class MemberImportController {
 app/Policies/OrganizationPolicy.php
 
 class OrganizationPolicy {
-    public function manage(User $user, Organization $organization)
+    public function manage(User $user, organisation $organisation)
     {
-        // Check if user is admin of organization
+        // Check if user is admin of organisation
     }
 }
 ```
@@ -154,7 +154,7 @@ class OrganizationPolicy {
 ```php
 routes/web.php
 
-Route::post('/organizations/{organization}/members/import',
+Route::post('/organizations/{organisation}/members/import',
     [MemberImportController::class, 'store'])
     ->name('organizations.members.import.store');
 ```
@@ -168,25 +168,25 @@ database/migrations/YYYY_MM_DD_create_user_organization_roles_table.php
 
 Schema::create('user_organization_roles', function(Blueprint $table) {
     // user_id (FK)
-    // organization_id (FK)
+    // organisation_id (FK)
     // role (admin, member, etc)
     // timestamps
 });
 ```
 
-**Job**: Create pivot table for organization-user relationships
+**Job**: Create pivot table for organisation-user relationships
 
 ### Layer 5: Models (10 minutes)
 
 ```php
-// Organization.php
+// organisation.php
 public function users() {
     return $this->belongsToMany(User::class, 'user_organization_roles');
 }
 
 // User.php
 public function organizations() {
-    return $this->belongsToMany(Organization::class, 'user_organization_roles');
+    return $this->belongsToMany(organisation::class, 'user_organization_roles');
 }
 ```
 
@@ -209,7 +209,7 @@ PROJECT ROOT
 │   │   ├── OrganizationPolicy.php ← NEW
 │   │   └── ...
 │   └── Models/
-│       ├── Organization.php ← MODIFIED
+│       ├── organisation.php ← MODIFIED
 │       ├── User.php ← MODIFIED
 │       └── ...
 │
@@ -311,7 +311,7 @@ Question 3: What's your timeline?
 □ Created OrganizationPolicy.php
 □ Added route to routes/web.php
 □ Created migration with correct fields
-□ Updated Organization.php with users() relationship
+□ Updated organisation.php with users() relationship
 □ Updated User.php with organizations() relationship
 □ Run "php artisan migrate"
 □ Verified tables exist in database
@@ -339,7 +339,7 @@ Question 3: What's your timeline?
 2. Preview shows 2 rows, no errors
 3. Admin clicks Import
 4. Backend creates 2 User records
-5. Backend attaches to Organization
+5. Backend attaches to organisation
 6. Frontend shows: "2 members imported successfully"
 ✅ SUCCESS
 ```
@@ -383,7 +383,7 @@ Question 3: What's your timeline?
    Fix: Run: php artisan migrate
 
 ❌ GOTCHA 4: Models not updated
-   Fix: Add users() to Organization and organizations() to User
+   Fix: Add users() to organisation and organizations() to User
 
 ❌ GOTCHA 5: Relationships not defined
    Fix: Check belongsToMany() with correct pivot table name
@@ -392,13 +392,13 @@ Question 3: What's your timeline?
    Fix: Create app/Policies/OrganizationPolicy.php
 
 ❌ GOTCHA 7: Authorization check missing
-   Fix: Add $this->authorize('manage', $organization) in controller
+   Fix: Add $this->authorize('manage', $organisation) in controller
 
 ❌ GOTCHA 8: CSRF token error
    Fix: Frontend already uses useCsrfRequest(), no change needed
 
 ❌ GOTCHA 9: Email not unique
-   Fix: Check email uniqueness per organization or globally
+   Fix: Check email uniqueness per organisation or globally
 
 ❌ GOTCHA 10: Users already exist
    Fix: Use User::firstOrCreate() to handle duplicates

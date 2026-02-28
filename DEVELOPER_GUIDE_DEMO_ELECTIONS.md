@@ -79,7 +79,7 @@ The **Demo Election System** provides a safe, isolated environment for testing t
 1. **1:1 Mirror**: Demo system mirrors real election architecture exactly
 2. **Isolation**: Demo data is completely separate from real elections
 3. **Safety**: No voting restrictions or auditing requirements
-4. **Flexibility**: Multiple demo elections can exist per organization
+4. **Flexibility**: Multiple demo elections can exist per organisation
 5. **Testability**: Designed for comprehensive testing workflows
 
 ---
@@ -89,7 +89,7 @@ The **Demo Election System** provides a safe, isolated environment for testing t
 ### System Overview
 
 ```
-Organization
+organisation
     └── Demo Election (separate from Real Elections)
         ├── DemoPost (election positions)
         │   └── DemoCandidacy (candidates per position)
@@ -98,7 +98,7 @@ Organization
         └── DemoResult (vote tallies per candidate)
 ```
 
-### Namespace Organization
+### Namespace organisation
 
 ```
 app/
@@ -866,9 +866,9 @@ Route::middleware(['auth', 'election:demo'])->group(function () {
 
 ### Demo Setup API
 
-**Endpoint**: `POST /api/organizations/{organization}/demo-setup`
+**Endpoint**: `POST /api/organizations/{organisation}/demo-setup`
 
-**Authentication**: Requires authenticated user and organization membership
+**Authentication**: Requires authenticated user and organisation membership
 
 **Request**:
 ```json
@@ -921,8 +921,8 @@ Route::middleware(['auth', 'election:demo'])->group(function () {
 
 ### Method 1: Web Interface (Recommended)
 
-1. Login to organization dashboard
-2. Navigate to organization page
+1. Login to organisation dashboard
+2. Navigate to organisation page
 3. Find "Demo Election Testing" card
 4. Click "Setup Demo Election" button
 5. Wait for completion and success message
@@ -930,11 +930,11 @@ Route::middleware(['auth', 'election:demo'])->group(function () {
 ### Method 2: Artisan Command
 
 ```bash
-php artisan demo:setup --org={organization_id} --force
+php artisan demo:setup --org={organisation_id} --force
 ```
 
 **Options**:
-- `--org`: Organization ID (required)
+- `--org`: organisation ID (required)
 - `--force`: Recreate if exists (optional)
 
 ### Method 3: API Call
@@ -949,10 +949,10 @@ curl -X POST http://localhost/api/organizations/{org_id}/demo-setup \
 ### Method 4: Programmatic
 
 ```php
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Http\Controllers\Api\DemoSetupController;
 
-$organization = Organization::find(1);
+$organisation = organisation::find(1);
 $controller = new DemoSetupController();
 
 // Note: Normally called via HTTP, but for testing:
@@ -1155,14 +1155,14 @@ foreach ($results as $result) {
 ### Example 4: Check Demo Status
 
 ```php
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\Election;
 
-$organization = Organization::find(1);
+$organisation = organisation::find(1);
 
 $demoElection = Election::withoutGlobalScopes()
     ->where('type', 'demo')
-    ->where('organisation_id', $organization->id)
+    ->where('organisation_id', $organisation->id)
     ->first();
 
 if ($demoElection) {
@@ -1173,7 +1173,7 @@ if ($demoElection) {
     echo "Votes: $voteCount\n";
     echo "Codes: $codeCount\n";
 } else {
-    echo "No demo election for this organization\n";
+    echo "No demo election for this organisation\n";
 }
 ```
 
@@ -1274,7 +1274,7 @@ $demoVotes = DemoVote::all(); // Separate table!
 
 1. **Demo election not created**: Run setup command
    ```bash
-   php artisan demo:setup --org={organization_id}
+   php artisan demo:setup --org={organisation_id}
    ```
 
 2. **Wrong table queried**: DemoVoteController querying `Post` instead of `DemoPost`
@@ -1370,7 +1370,7 @@ public function allowsRevoting()
 
 ```php
 Log::channel('demo')->info('Demo setup triggered', [
-    'organization_id' => $organization->id,
+    'organisation_id' => $organisation->id,
     'user_id' => auth()->id(),
     'timestamp' => now()
 ]);

@@ -31,7 +31,7 @@ resources/js/Pages/Organizations/Members/
 resources/js/composables/
 └── useMemberImport.js (File parsing & validation)
 
-resources/js/Components/Organization/Modals/
+resources/js/Components/organisation/Modals/
 └── MemberImportModal.vue (Removed - using page instead)
 ```
 
@@ -68,7 +68,7 @@ resources/js/Components/Organization/Modals/
 ┌─────────────────────────────────────────┐
 │  ✓ Success!                            │
 │  "123 members imported successfully"   │
-│  [Back to Organization]                │
+│  [Back to organisation]                │
 └─────────────────────────────────────────┘
 ```
 
@@ -135,7 +135,7 @@ jane.smith@example.com,Jane,Smith,+49987654321,Baden
 
 ---
 
-## 🔗 Integration with Organization Page
+## 🔗 Integration with organisation Page
 
 ### **Updated ActionButtons.vue**
 ```vue
@@ -148,7 +148,7 @@ jane.smith@example.com,Jane,Smith,+49987654321,Baden
 </Link>
 ```
 
-**Link Path**: `/organizations/{organization.slug}/members/import`
+**Link Path**: `/organizations/{organisation.slug}/members/import`
 
 ---
 
@@ -159,7 +159,7 @@ jane.smith@example.com,Jane,Smith,+49987654321,Baden
 // useMemberImport.js
 const csrfRequest = useCsrfRequest()
 await csrfRequest.post(
-  `/organizations/${organization.slug}/members/import`,
+  `/organizations/${organisation.slug}/members/import`,
   { headers, rows, fileName }
 )
 ```
@@ -221,7 +221,7 @@ Step 1: Upload  →  Step 2: Preview  →  Step 3: Success
 ```vue
 <!-- Screen reader announcement -->
 <div role="status" aria-live="polite" class="sr-only">
-  {{ $t('pages.organization-show.accessibility.page_loaded', ...) }}
+  {{ $t('pages.organisation-show.accessibility.page_loaded', ...) }}
 </div>
 
 <!-- Link with aria-label -->
@@ -269,13 +269,13 @@ modals.member_import.* (30 keys)
 ```
 ✅ resources/js/Pages/Organizations/Partials/ActionButtons.vue
    - Added Link import
-   - Added organization prop
+   - Added organisation prop
    - Changed import button to navigation link
 
 ✅ resources/js/Pages/Organizations/Show.vue
    - Removed modal state variables
    - Removed modal event handlers
-   - Passed organization prop to ActionButtons
+   - Passed organisation prop to ActionButtons
 
 ✅ Translation files (de.json, en.json, np.json)
    - Added 30+ member import keys
@@ -283,7 +283,7 @@ modals.member_import.* (30 keys)
 
 ### **Not Used (Can Delete)**
 ```
-⚠️  resources/js/Components/Organization/Modals/MemberImportModal.vue
+⚠️  resources/js/Components/organisation/Modals/MemberImportModal.vue
     (Created but not used - modal approach was replaced with page)
 ```
 
@@ -411,14 +411,14 @@ POST /organizations/{slug}/members/import
 ### **Using the Import Page**
 ```vue
 <!-- From ActionButtons.vue -->
-<Link :href="`/organizations/${organization.slug}/members/import`">
+<Link :href="`/organizations/${organisation.slug}/members/import`">
   Import Members
 </Link>
 ```
 
 ### **Parsing CSV**
 ```javascript
-const { parseFile, validateData, submitImport } = useMemberImport(organization)
+const { parseFile, validateData, submitImport } = useMemberImport(organisation)
 
 // Parse file
 const data = await parseFile(file)

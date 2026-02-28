@@ -140,14 +140,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Organization-Specific Validation Messages
+    | organisation-Specific Validation Messages
     |--------------------------------------------------------------------------
     |
-    | Custom messages for organization creation form validation in Nepali
+    | Custom messages for organisation creation form validation in Nepali
     |
     */
 
-    'organization' => [
+    'organisation' => [
         'name' => [
             'required' => 'संगठनको नाम आवश्यक छ।',
             'unique' => 'यो नाम भएको संगठन पहिले नै अवस्थित छ।',

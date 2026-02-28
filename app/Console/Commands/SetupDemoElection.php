@@ -6,7 +6,7 @@ use App\Models\Election;
 use App\Models\DemoPost;
 use App\Models\DemoCandidacy;
 use App\Models\DemoCode;
-use App\Models\Organization;
+use App\Models\Organisation;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
@@ -37,12 +37,12 @@ class SetupDemoElection extends Command
         $orgId = $this->option('org');
         $mode = $orgId ? 'MODE 2' : 'MODE 1';
 
-        // MODE 2: Validate organization exists
-        $targetOrganization = null;
+        // MODE 2: Validate organisation exists
+        $targetOrganisation = null;
         if ($orgId) {
-            $targetOrganization = Organization::find($orgId);
-            if (!$targetOrganization) {
-                $this->error("❌ Organization with ID {$orgId} not found!");
+            $targetOrganisation = Organisation::find($orgId);
+            if (!$targetOrganisation) {
+                $this->error("❌ organisation with ID {$orgId} not found!");
                 return 1;
             }
         }
@@ -53,7 +53,7 @@ class SetupDemoElection extends Command
         $this->info('');
         $this->info('🚀 Setting up demo election (' . $mode . ')...');
         if ($mode === 'MODE 2') {
-            $this->info('   Organization: ' . $targetOrganization->name . ' (ID: ' . $targetOrganization->id . ')');
+            $this->info('   organisation: ' . $targetOrganisation->name . ' (ID: ' . $targetOrganisation->id . ')');
         } else {
             $this->info('   Public demo - accessible to all users');
         }
@@ -88,13 +88,13 @@ class SetupDemoElection extends Command
         }
 
         // Create new demo election
-        $election = $this->createDemoElection($orgId, $mode, $demoSlug, $targetOrganization);
+        $election = $this->createDemoElection($orgId, $mode, $demoSlug, $targetOrganisation);
 
         // Create posts (national and regional)
-        $stats = $this->createPostsWithCandidates($election, $mode, $targetOrganization);
+        $stats = $this->createPostsWithCandidates($election, $mode, $targetOrganisation);
 
         // Display summary
-        $this->displaySummary($election, $mode, $stats, $targetOrganization);
+        $this->displaySummary($election, $mode, $stats, $targetOrganisation);
 
         return 0;
     }
@@ -147,7 +147,7 @@ class SetupDemoElection extends Command
     /**
      * Create demo election
      */
-    private function createDemoElection($orgId, $mode, $demoSlug, $targetOrganization)
+    private function createDemoElection($orgId, $mode, $demoSlug, $targetOrganisation)
     {
         $this->info("\n📝 Creating demo election ({$mode})...");
 
@@ -157,7 +157,7 @@ class SetupDemoElection extends Command
             'type' => 'demo',
             'is_active' => true,
             'description' => $mode === 'MODE 2'
-                ? 'Demo election for ' . $targetOrganization->name . ' - test voting before live elections'
+                ? 'Demo election for ' . $targetOrganisation->name . ' - test voting before live elections'
                 : 'Public demo election for testing the voting system without registration',
             'start_date' => now()->format('Y-m-d'),
             'end_date' => now()->addDays(365)->format('Y-m-d'),
@@ -170,7 +170,7 @@ class SetupDemoElection extends Command
         $this->info("   Mode: {$mode}");
 
         // Verify organisation_id
-        $this->verifyOrganisationId($election, $mode, $orgId, $targetOrganization);
+        $this->verifyOrganisationId($election, $mode, $orgId, $targetOrganisation);
 
         return $election;
     }
@@ -178,11 +178,11 @@ class SetupDemoElection extends Command
     /**
      * Verify organisation_id is set correctly
      */
-    private function verifyOrganisationId($election, $mode, $orgId, $targetOrganization)
+    private function verifyOrganisationId($election, $mode, $orgId, $targetOrganisation)
     {
         if ($mode === 'MODE 2') {
             if ($election->organisation_id === (int)$orgId) {
-                $this->info('   ✓ Correctly scoped to organisation: ' . $targetOrganization->name);
+                $this->info('   ✓ Correctly scoped to organisation: ' . $targetOrganisation->name);
             } else {
                 $this->error('   ✗ ERROR: organisation_id should be ' . $orgId . ' for MODE 2!');
             }
@@ -198,7 +198,7 @@ class SetupDemoElection extends Command
     /**
      * Create posts with candidates (national and regional)
      */
-    private function createPostsWithCandidates($election, $mode, $targetOrganization)
+    private function createPostsWithCandidates($election, $mode, $targetOrganisation)
     {
         $stats = [
             'posts' => 0,
@@ -219,8 +219,8 @@ class SetupDemoElection extends Command
             $stats['codes'] += $postStats['codes'];
         }
 
-        // REGIONAL POSTS (if MODE 2 with organization, or for public demo)
-        $regions = $this->getRegions($mode, $targetOrganization);
+        // REGIONAL POSTS (if MODE 2 with organisation, or for public demo)
+        $regions = $this->getRegions($mode, $targetOrganisation);
 
         foreach ($regions as $region) {
             $regionalPosts = $this->getRegionalPosts();
@@ -305,11 +305,11 @@ class SetupDemoElection extends Command
     /**
      * Get regions based on mode
      */
-    private function getRegions($mode, $targetOrganization)
+    private function getRegions($mode, $targetOrganisation)
     {
-        // For MODE 2, return regions from the organization
-        if ($mode === 'MODE 2' && $targetOrganization) {
-            // This could come from organization settings
+        // For MODE 2, return regions from the organisation
+        if ($mode === 'MODE 2' && $targetOrganisation) {
+            // This could come from organisation settings
             return ['Europe', 'Bayern', 'Baden-Württemberg', 'North Rhine-Westphalia'];
         }
 
@@ -419,7 +419,7 @@ class SetupDemoElection extends Command
     /**
      * Display summary of created data
      */
-    private function displaySummary($election, $mode, $stats, $targetOrganization)
+    private function displaySummary($election, $mode, $stats, $targetOrganisation)
     {
         $this->info("\n📊 Demo Election Summary:");
         $this->info("  ✅ Election: {$election->name}");
@@ -433,7 +433,7 @@ class SetupDemoElection extends Command
 
         if ($mode === 'MODE 2') {
             $this->info("\n🚀 Accessing MODE 2 Demo Election:");
-            $this->info("   Users from {$targetOrganization->name} can access:");
+            $this->info("   Users from {$targetOrganisation->name} can access:");
             $this->info("   http://localhost:8000/election/demo/start");
             $this->info("   Regional candidates will be filtered by user's region");
             $this->info("   Users will see ONLY candidates from their region\n");

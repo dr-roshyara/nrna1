@@ -28,11 +28,11 @@ Phase 4 integrated the SEO infrastructure created in Phases 1-2 into all public-
 - Result: Dynamic title "Pricing Plans | Public Digit Elections"
 
 **3. Organizations/Show.vue**
-- ✅ `useMeta()` with dynamic organization params
+- ✅ `useMeta()` with dynamic organisation params
 - ✅ BreadcrumbSchema component
-- ✅ Dynamic title: "{Organization} | Elections & Members | Public Digit"
+- ✅ Dynamic title: "{organisation} | Elections & Members | Public Digit"
 - ✅ Dynamic description includes member count + election count
-- Result: SEO-optimized organization pages with structured data
+- Result: SEO-optimized organisation pages with structured data
 
 **4. Election/ElectionResult.vue**
 - ✅ `useMeta({ pageKey: 'election.result' })`
@@ -166,7 +166,7 @@ Public Digit SEO Stack (Complete)
 - ✅ Multi-language meta tags switch correctly
 - ✅ Admin pages have `noindex` meta tag
 - ✅ Breadcrumbs appear in all public pages
-- ✅ Page titles include organization/election names
+- ✅ Page titles include organisation/election names
 
 ### Git Commits
 
@@ -189,7 +189,7 @@ Public Digit SEO Stack (Complete)
 ✅ **Structured Data Complete:**
 - BreadcrumbList schema on every page
 - Event schema on election result pages
-- Organization schema available
+- organisation schema available
 
 ✅ **Multi-Language Complete:**
 - All content in 3 languages (EN/DE/NP)

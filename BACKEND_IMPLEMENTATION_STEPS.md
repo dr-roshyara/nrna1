@@ -34,7 +34,7 @@ touch app/Http/Controllers/Organizations/MemberImportController.php
 
 namespace App\Http\Controllers\Organizations;
 
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -42,12 +42,12 @@ class MemberImportController extends Controller
 {
     /**
      * Handle member import
-     * POST /organizations/{organization}/members/import
+     * POST /organizations/{organisation}/members/import
      */
-    public function store(Request $request, Organization $organization)
+    public function store(Request $request, organisation $organisation)
     {
         // 1. Authorize
-        $this->authorize('manage', $organization);
+        $this->authorize('manage', $organisation);
 
         // 2. Validate request
         $validated = $request->validate([
@@ -67,7 +67,7 @@ class MemberImportController extends Controller
         }
 
         // 4. Import members
-        $stats = $this->importMembers($organization, $validated['rows']);
+        $stats = $this->importMembers($organisation, $validated['rows']);
 
         // 5. Return success
         return response()->json([
@@ -117,7 +117,7 @@ class MemberImportController extends Controller
     /**
      * Import members into database
      */
-    private function importMembers(Organization $organization, array $rows): array
+    private function importMembers(organisation $organisation, array $rows): array
     {
         $imported = 0;
         $skipped = 0;
@@ -141,9 +141,9 @@ class MemberImportController extends Controller
                     ]
                 );
 
-                // Attach to organization if not already attached
-                if (!$organization->users()->where('user_id', $user->id)->exists()) {
-                    $organization->users()->attach($user->id, [
+                // Attach to organisation if not already attached
+                if (!$organisation->users()->where('user_id', $user->id)->exists()) {
+                    $organisation->users()->attach($user->id, [
                         'role' => 'member',
                         'assigned_at' => now(),
                     ]);
@@ -185,28 +185,28 @@ touch app/Policies/OrganizationPolicy.php
 
 namespace App\Policies;
 
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\User;
 
 class OrganizationPolicy
 {
     /**
-     * Check if user can manage organization (import members)
+     * Check if user can manage organisation (import members)
      */
-    public function manage(User $user, Organization $organization): bool
+    public function manage(User $user, organisation $organisation): bool
     {
-        return $organization->users()
+        return $organisation->users()
             ->where('user_id', $user->id)
             ->whereIn('role', ['admin', 'manager', 'staff'])
             ->exists();
     }
 
     /**
-     * Check if user can view organization
+     * Check if user can view organisation
      */
-    public function view(User $user, Organization $organization): bool
+    public function view(User $user, organisation $organisation): bool
     {
-        return $organization->users()
+        return $organisation->users()
             ->where('user_id', $user->id)
             ->exists();
     }
@@ -225,7 +225,7 @@ Find the authenticated routes section and add:
 
 ```php
 // Add this in the authenticated middleware group
-Route::post('/organizations/{organization}/members/import',
+Route::post('/organizations/{organisation}/members/import',
     [App\Http\Controllers\Organizations\MemberImportController::class, 'store'])
     ->name('organizations.members.import.store');
 ```
@@ -259,7 +259,7 @@ return new class extends Migration
 
             // Foreign keys
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('organization_id');
+            $table->unsignedBigInteger('organisation_id');
 
             // Role assignment
             $table->enum('role', ['admin', 'manager', 'staff', 'member', 'voter'])
@@ -274,9 +274,9 @@ return new class extends Migration
 
             // Indexes & Constraints
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreign('organization_id')->references('id')->on('organizations')->cascadeOnDelete();
-            $table->unique(['user_id', 'organization_id']);
-            $table->index(['organization_id', 'role']);
+            $table->foreign('organisation_id')->references('id')->on('organizations')->cascadeOnDelete();
+            $table->unique(['user_id', 'organisation_id']);
+            $table->index(['organisation_id', 'role']);
         });
     }
 
@@ -293,21 +293,21 @@ return new class extends Migration
 
 ### Phase 5: Update Models (10 min)
 
-#### Step 5A: Update Organization Model
+#### Step 5A: Update organisation Model
 
-**File**: `app/Models/Organization.php`
+**File**: `app/Models/organisation.php`
 
 Add this relationship method:
 
 ```php
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Organization extends Model
+class organisation extends Model
 {
     // ... existing code ...
 
     /**
-     * Get all users in this organization
+     * Get all users in this organisation
      */
     public function users(): BelongsToMany
     {
@@ -336,7 +336,7 @@ class User extends Authenticatable
      */
     public function organizations(): BelongsToMany
     {
-        return $this->belongsToMany(Organization::class, 'user_organization_roles')
+        return $this->belongsToMany(organisation::class, 'user_organization_roles')
             ->withPivot('role', 'region', 'assigned_at')
             ->withTimestamps();
     }
@@ -394,8 +394,8 @@ php artisan tinker
 >>> User::where('email', 'like', '%example.com%')->get()
 # Should show 3 users created
 
->>> Organization::find(1)->users()->count()
-# Should show 3 users attached to organization
+>>> organisation::find(1)->users()->count()
+# Should show 3 users attached to organisation
 ```
 
 ### Test 4: Test Validation Error
@@ -450,7 +450,7 @@ USER FLOW:
 6. YOUR NEW CONTROLLER receives request ← YOU BUILD THIS
 7. Controller validates data (server-side)
 8. Controller creates users
-9. Controller attaches to organization
+9. Controller attaches to organisation
 10. Controller returns success response
    ↓
 11. Frontend receives response ✅ (Already working)
@@ -478,7 +478,7 @@ USER FLOW:
 | Error | Solution |
 |-------|----------|
 | "Can't find MemberImportController" | Check file path and namespace |
-| "403 Unauthorized" | User must be organization admin in user_organization_roles table |
+| "403 Unauthorized" | User must be organisation admin in user_organization_roles table |
 | "Members not created" | Check migration ran successfully (php artisan migrate) |
 | "CSRF Token error" | Frontend already handles this (not needed) |
 | "Database error" | Check foreign key constraints and column names |

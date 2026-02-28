@@ -4,7 +4,7 @@
 
 The platform supports three distinct user roles with specific capabilities and content:
 
-1. **Admin** - Organization and election management
+1. **Admin** - organisation and election management
 2. **Commission** - Election oversight and monitoring
 3. **Voter** - Participation in elections
 
@@ -61,7 +61,7 @@ admin > commission > voter
 
 #### Onboarding Steps
 1. New user (0%)
-2. Organization created (25%)
+2. organisation created (25%)
 3. Members added (50%)
 4. Election created (75%)
 5. Setup complete (100%)
@@ -142,7 +142,7 @@ view_election_info
 #### Confidence Scoring
 - Base: 35 points (typical member)
 - +5 for prior votes
-- +10 for organization membership
+- +10 for organisation membership
 
 ---
 
@@ -153,7 +153,7 @@ User state combines roles and context:
 ### New Users
 ```
 new_user_no_roles
-- No organization
+- No organisation
 - No roles
 - Shows: Create Org, Join Org, Request Help
 ```
@@ -163,11 +163,11 @@ new_user_no_roles
 #### Setup Phase
 ```
 admin_no_org
-- Admin but no organization
-- Shows: Create Organization (primary)
+- Admin but no organisation
+- Shows: Create organisation (primary)
 
 admin_setup_started
-- Organization exists, needs members
+- organisation exists, needs members
 - Shows: Add Members (primary)
 
 admin_setup_in_progress
@@ -179,7 +179,7 @@ admin_setup_in_progress
 ```
 admin_with_elections
 - Setup complete, has elections
-- Shows: Organization management options
+- Shows: organisation management options
 ```
 
 ### Commission
@@ -281,7 +281,7 @@ $voterUser->voterRegistrations()->create([]);
 ## Role-Specific Welcome Content
 
 ### Admin Welcome
-- Organization setup prompt
+- organisation setup prompt
 - Member management guide
 - Election creation wizard
 - Trust signals about compliance

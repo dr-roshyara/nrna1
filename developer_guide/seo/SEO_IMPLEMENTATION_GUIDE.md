@@ -86,9 +86,9 @@ useMeta({ pageKey: 'home' })
 useMeta({
   pageKey: 'organizations.show',
   params: {
-    organizationName: organization.name,
-    memberCount: organization.members_count,
-    electionCount: organization.elections_count
+    organizationName: organisation.name,
+    memberCount: organisation.members_count,
+    electionCount: organisation.elections_count
   }
 })
 ```
@@ -300,14 +300,14 @@ useMeta({
 
 ### Multi-Language Parameter Substitution
 
-If organization names vary by language, handle in the composable:
+If organisation names vary by language, handle in the composable:
 
 ```javascript
-const orgNameKey = `organizations.${organization.slug}.name`
+const orgNameKey = `organizations.${organisation.slug}.name`
 useMeta({
   pageKey: 'organizations.show',
   params: {
-    organizationName: t(orgNameKey, organization.name) // Fallback to English
+    organizationName: t(orgNameKey, organisation.name) // Fallback to English
   }
 })
 ```
@@ -404,7 +404,7 @@ Test meta tags and preview:
 
 ### Dynamic Pages
 
-- [x] Organization Show (`organizations.show`) ✅ **Done**
+- [x] organisation Show (`organizations.show`) ✅ **Done**
 - [ ] Elections Index (`elections.index`)
 - [ ] Elections Show (`elections.show`)
 - [ ] Candidate Show (`candidates.show`) - *if public*

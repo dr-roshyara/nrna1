@@ -81,7 +81,7 @@ This directory contains comprehensive documentation on how to work with translat
 
 ---
 
-## 🏗️ Translation File Organization
+## 🏗️ Translation File organisation
 
 ### Directory Structure
 
@@ -113,7 +113,7 @@ resources/js/
 1. **Location:** Translation files live in `resources/js/locales/pages/{Page}/`
 2. **Naming:** Files use locale codes: `de.json`, `en.json`, `np.json`
 3. **Structure:** Use nested objects, not flat keys
-4. **Organization:** Group related translations together
+4. **organisation:** Group related translations together
 
 ---
 

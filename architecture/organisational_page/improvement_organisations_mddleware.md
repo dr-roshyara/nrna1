@@ -1,9 +1,9 @@
 ## 📋 **PROMPT INSTRUCTIONS FOR CLAUDE: Senior Architect Review**
 
 ```
-## CONTEXT: Organization-Specific Voters List Implementation Plan
+## CONTEXT: organisation-Specific Voters List Implementation Plan
 
-You are a **Senior Laravel Architect** reviewing a comprehensive implementation plan for an organization-specific voters list. The plan addresses a critical security vulnerability where the current `/voters` page shows voters from ALL organizations instead of filtering by organization.
+You are a **Senior Laravel Architect** reviewing a comprehensive implementation plan for an organisation-specific voters list. The plan addresses a critical security vulnerability where the current `/voters` page shows voters from ALL organizations instead of filtering by organisation.
 
 ### Your Task:
 Review the attached implementation plan and provide **specific improvement suggestions** in the form of **prompt instructions** that Claude should follow when implementing this feature.
@@ -61,9 +61,9 @@ Please analyze the plan for:
 - Logging strategy complete?
 
 ### 7. **Edge Cases**
-- User with multiple organization roles?
-- User leaves organization mid-session?
-- Organization deleted while viewing?
+- User with multiple organisation roles?
+- User leaves organisation mid-session?
+- organisation deleted while viewing?
 - Session timeout during bulk operations?
 
 ### 8. **Multi-Tenancy Considerations**
@@ -105,7 +105,7 @@ Please produce **5-10 specific improvement suggestions** with:
 - Priority level
 - Code examples where applicable
 
-Focus on the **most critical improvements** that would make this plan production-ready for a German organization requiring strict data isolation and accessibility compliance.
+Focus on the **most critical improvements** that would make this plan production-ready for a German organisation requiring strict data isolation and accessibility compliance.
 ```
 
 ---
@@ -130,7 +130,7 @@ use Illuminate\Support\Facades\RateLimiter;
 // Define rate limiter in RouteServiceProvider.php
 protected function configureRateLimiting()
 {
-    RateLimiter::for('organization-actions', function ($job) {
+    RateLimiter::for('organisation-actions', function ($job) {
         return Limit::perMinute(30)->by($job->user()?->id ?: $job->ip());
     });
     
@@ -141,7 +141,7 @@ protected function configureRateLimiting()
 
 // Apply to routes
 Route::post('/voters/{voter}/approve', [VoterController::class, 'approve'])
-    ->middleware(['throttle:organization-actions'])
+    ->middleware(['throttle:organisation-actions'])
     ->name('organizations.voters.approve');
 
 Route::post('/voters/bulk-approve', [VoterController::class, 'bulkApprove'])
@@ -165,10 +165,10 @@ Route::post('/voters/bulk-approve', [VoterController::class, 'bulkApprove'])
 
 ```php
 // In VoterController.php - Add CSRF token to Inertia response
-public function index(Request $request, Organization $organization)
+public function index(Request $request, organisation $organisation)
 {
     return Inertia::render('Organizations/Voters/Index', [
-        'organization' => $organization,
+        'organisation' => $organisation,
         'voters' => $voters,
         'csrf_token' => csrf_token(), // Explicitly pass token
     ]);
@@ -181,7 +181,7 @@ public function index(Request $request, Organization $organization)
 import { usePage } from '@inertiajs/vue3-vue3';
 
 const submitApprove = async (voterId) => {
-    await fetch(`/organizations/${props.organization.slug}/voters/${voterId}/approve`, {
+    await fetch(`/organizations/${props.organisation.slug}/voters/${voterId}/approve`, {
         method: 'POST',
         headers: {
             'X-CSRF-TOKEN': usePage().props.value.csrf_token,
@@ -308,7 +308,7 @@ const approve = async (voterId) => {
   
   try {
     await $inertia.post(route('organizations.voters.approve', {
-      organization: props.organization.slug,
+      organisation: props.organisation.slug,
       voter: voterId
     }));
     
@@ -328,11 +328,11 @@ const approve = async (voterId) => {
 
 ---
 
-### **5. Edge Case: Handle User with Multiple Organization Roles**
+### **5. Edge Case: Handle User with Multiple organisation Roles**
 
 **Current Plan Gap:** The middleware checks membership but doesn't consider users who belong to multiple organizations.
 
-**Suggested Improvement:** Enhance middleware to validate the specific organization context, not just membership.
+**Suggested Improvement:** Enhance middleware to validate the specific organisation context, not just membership.
 
 **Why It Matters:** A user might belong to Org A and Org B. They should access each org's voters separately.
 
@@ -343,30 +343,30 @@ const approve = async (voterId) => {
 
 public function handle(Request $request, Closure $next)
 {
-    $slug = $request->route('organization') ?? $request->route('slug');
-    $organization = Organization::where('slug', $slug)->firstOrFail();
+    $slug = $request->route('organisation') ?? $request->route('slug');
+    $organisation = organisation::where('slug', $slug)->firstOrFail();
     
     $user = auth()->user();
     
-    // Check membership for THIS SPECIFIC organization
+    // Check membership for THIS SPECIFIC organisation
     $isMember = $user->organizationRoles()
-        ->where('organizations.id', $organization->id)
+        ->where('organizations.id', $organisation->id)
         ->exists();
     
     if (!$isMember) {
-        Log::warning('Non-member attempted to access organization', [
+        Log::warning('Non-member attempted to access organisation', [
             'user_id' => $user->id,
-            'organization_id' => $organization->id,
+            'organisation_id' => $organisation->id,
             'user_orgs' => $user->organizations()->pluck('organizations.id')->toArray(),
             'ip' => $request->ip()
         ]);
         
-        abort(403, 'You are not a member of this organization.');
+        abort(403, 'You are not a member of this organisation.');
     }
     
-    // Set current organization in session for downstream queries
-    session(['current_organisation_id' => $organization->id]);
-    $request->attributes->set('organization', $organization);
+    // Set current organisation in session for downstream queries
+    session(['current_organisation_id' => $organisation->id]);
+    $request->attributes->set('organisation', $organisation);
     
     return $next($request);
 }
@@ -376,13 +376,13 @@ public function handle(Request $request, Closure $next)
 
 ---
 
-### **6. Edge Case: Handle Organization Deletion Mid-Session**
+### **6. Edge Case: Handle organisation Deletion Mid-Session**
 
-**Current Plan Gap:** What happens if an admin deletes the organization while a user is viewing the voters page?
+**Current Plan Gap:** What happens if an admin deletes the organisation while a user is viewing the voters page?
 
-**Suggested Improvement:** Add middleware to verify organization still exists on each request.
+**Suggested Improvement:** Add middleware to verify organisation still exists on each request.
 
-**Why It Matters:** Prevents errors when organization is deleted, redirects users appropriately.
+**Why It Matters:** Prevents errors when organisation is deleted, redirects users appropriately.
 
 **Implementation Instructions for Claude:**
 
@@ -391,11 +391,11 @@ public function handle(Request $request, Closure $next)
 
 public function handle(Request $request, Closure $next)
 {
-    $slug = $request->route('organization') ?? $request->route('slug');
-    $organization = Organization::where('slug', $slug)->first();
+    $slug = $request->route('organisation') ?? $request->route('slug');
+    $organisation = organisation::where('slug', $slug)->first();
     
-    if (!$organization) {
-        Log::warning('Organization not found during request', [
+    if (!$organisation) {
+        Log::warning('organisation not found during request', [
             'slug' => $slug,
             'user_id' => auth()->id(),
             'url' => $request->fullUrl()
@@ -405,14 +405,14 @@ public function handle(Request $request, Closure $next)
             ->with('error', __('organizations.messages.not_found'));
     }
     
-    $request->attributes->set('organization', $organization);
+    $request->attributes->set('organisation', $organisation);
     return $next($request);
 }
 ```
 
 Then apply to routes:
 ```php
-Route::middleware(['auth', 'verified', 'ensure.organization.exists', 'ensure.organization.member'])
+Route::middleware(['auth', 'verified', 'ensure.organisation.exists', 'ensure.organisation.member'])
     ->group(function () {
         // routes
     });
@@ -426,7 +426,7 @@ Route::middleware(['auth', 'verified', 'ensure.organization.exists', 'ensure.org
 
 **Current Plan Gap:** The plan suggests caching but doesn't specify cache invalidation strategy.
 
-**Suggested Improvement:** Add cache tags (Redis/Memcached) or organization-prefixed cache with proper invalidation on voter changes.
+**Suggested Improvement:** Add cache tags (Redis/Memcached) or organisation-prefixed cache with proper invalidation on voter changes.
 
 **Why It Matters:** Ensures stats are always fresh while maintaining performance.
 
@@ -466,9 +466,9 @@ public function boot()
 // In VoterController.php
 use Illuminate\Support\Facades\Cache;
 
-private function getVoterStats(Organization $organization)
+private function getVoterStats(organisation $organisation)
 {
-    $orgId = $organization->id;
+    $orgId = $organisation->id;
     $cacheKey = "org_{$orgId}_voter_stats";
     
     return Cache::remember($cacheKey, 3600, function () use ($orgId) {
@@ -647,7 +647,7 @@ const close = () => emit('close');
 
 public function test_sql_injection_in_search_is_escaped()
 {
-    $org = Organization::factory()->create();
+    $org = organisation::factory()->create();
     $user = $this->createOrgMember($org);
     
     $maliciousSearch = "'; DROP TABLE users; --";
@@ -666,7 +666,7 @@ public function test_sql_injection_in_search_is_escaped()
 
 public function test_xss_injection_in_name_is_escaped()
 {
-    $org = Organization::factory()->create();
+    $org = organisation::factory()->create();
     $user = $this->createOrgMember($org);
     
     // Create voter with malicious name
@@ -685,7 +685,7 @@ public function test_xss_injection_in_name_is_escaped()
 
 public function test_csrf_protection_on_approve_endpoint()
 {
-    $org = Organization::factory()->create();
+    $org = organisation::factory()->create();
     $user = $this->createOrgCommissionMember($org);
     $voter = User::factory()->create([
         'organisation_id' => $org->id,
@@ -724,7 +724,7 @@ use Illuminate\Support\Facades\Log;
 
 class VoterAuditLogger
 {
-    public static function approve(User $voter, User $approver, Organization $organization)
+    public static function approve(User $voter, User $approver, organisation $organisation)
     {
         Log::channel('voting_audit')->info('Voter approved', [
             'voter_id' => $voter->id,
@@ -732,22 +732,22 @@ class VoterAuditLogger
             'voter_user_id' => $voter->user_id,
             'approver_id' => $approver->id,
             'approver_name' => $approver->name,
-            'organization_id' => $organization->id,
-            'organization_slug' => $organization->slug,
+            'organisation_id' => $organisation->id,
+            'organization_slug' => $organisation->slug,
             'ip_address' => request()->ip(),
             'user_agent' => request()->userAgent(),
             'timestamp' => now()->toIso8601String(),
         ]);
     }
     
-    public static function reject(User $voter, User $rejector, Organization $organization, ?string $reason = null)
+    public static function reject(User $voter, User $rejector, organisation $organisation, ?string $reason = null)
     {
         Log::channel('voting_audit')->warning('Voter rejected', [
             'voter_id' => $voter->id,
             'voter_name' => $voter->name,
             'rejector_id' => $rejector->id,
             'rejector_name' => $rejector->name,
-            'organization_id' => $organization->id,
+            'organisation_id' => $organisation->id,
             'reason' => $reason,
             'ip_address' => request()->ip(),
             'timestamp' => now()->toIso8601String(),
@@ -756,7 +756,7 @@ class VoterAuditLogger
     
     public static function unauthorizedAccess(string $slug, User $user, string $action)
     {
-        Log::channel('voting_security')->warning('Unauthorized organization access attempt', [
+        Log::channel('voting_security')->warning('Unauthorized organisation access attempt', [
             'user_id' => $user->id,
             'user_name' => $user->name,
             'organization_slug' => $slug,
@@ -772,13 +772,13 @@ class VoterAuditLogger
 // In VoterController.php
 use App\Logging\VoterAuditLogger;
 
-public function approve(Request $request, Organization $organization, User $voter)
+public function approve(Request $request, organisation $organisation, User $voter)
 {
     // ... validation
     
     $voter->update(['approvedBy' => auth()->user()->name]);
     
-    VoterAuditLogger::approve($voter, auth()->user(), $organization);
+    VoterAuditLogger::approve($voter, auth()->user(), $organisation);
     
     return back()->with('success', __('voters.messages.approved'));
 }
@@ -811,6 +811,6 @@ public function approve(Request $request, Organization $organization, User $vote
 | Priority | Improvements |
 |----------|--------------|
 | **HIGH** | 1. Rate Limiting, 2. CSRF Token, 4. ARIA Live Regions, 5. Multi-org Handling, 8. Focus Management, 9. Security Tests, 10. Audit Logging |
-| **MEDIUM** | 3. FULLTEXT Index, 6. Organization Deletion, 7. Cache Invalidation |
+| **MEDIUM** | 3. FULLTEXT Index, 6. organisation Deletion, 7. Cache Invalidation |
 
-These 10 improvements will make the implementation **production-ready, secure, accessible, and maintainable** for a German organization with strict compliance requirements.
+These 10 improvements will make the implementation **production-ready, secure, accessible, and maintainable** for a German organisation with strict compliance requirements.

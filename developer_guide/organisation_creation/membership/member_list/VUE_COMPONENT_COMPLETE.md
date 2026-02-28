@@ -13,25 +13,25 @@
   <election-layout>
     <div class="min-h-screen bg-gray-100 p-2 md:p-4">
 
-      <!-- Organization Header -->
+      <!-- organisation Header -->
       <div class="mb-6 bg-white rounded-lg shadow-xs p-4 md:p-6">
         <div class="flex items-center justify-between flex-wrap gap-4">
           <div>
             <h1 class="text-2xl md:text-3xl font-bold text-gray-900">
-              {{ organization.name }} - Members
+              {{ organisation.name }} - Members
             </h1>
             <p class="text-gray-600 mt-1">
-              Manage and view organization members
+              Manage and view organisation members
             </p>
           </div>
           <Link
-            :href="`/organizations/${organization.slug}`"
+            :href="`/organizations/${organisation.slug}`"
             class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
           >
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
             </svg>
-            Back to Organization
+            Back to organisation
           </Link>
         </div>
 
@@ -263,7 +263,7 @@
                   </svg>
                   <h3 class="text-lg font-medium text-gray-900 mb-2">No members found</h3>
                   <p class="text-gray-500">
-                    {{ hasActiveFilters ? 'Try adjusting your filters' : 'No members have been added to this organization yet' }}
+                    {{ hasActiveFilters ? 'Try adjusting your filters' : 'No members have been added to this organisation yet' }}
                   </p>
                 </div>
               </td>
@@ -353,7 +353,7 @@ export default {
       type: Object,
       required: true
     },
-    organization: {
+    organisation: {
       type: Object,
       required: true
     },
@@ -467,9 +467,9 @@ export default {
 
 ## Key Features Implemented
 
-### 1. Organization Context
-- Shows organization name in header
-- Link back to organization dashboard
+### 1. organisation Context
+- Shows organisation name in header
+- Link back to organisation dashboard
 - Clear context for users
 
 ### 2. Statistics Dashboard
@@ -516,7 +516,7 @@ export default {
 
 ## Improvements Over User/Index.vue
 
-1. ✅ Organization header and context
+1. ✅ organisation header and context
 2. ✅ Statistics dashboard
 3. ✅ Email search field
 4. ✅ Role filter dropdown

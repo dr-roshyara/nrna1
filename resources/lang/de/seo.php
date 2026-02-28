@@ -34,7 +34,7 @@ return [
             'keywords' => 'Wahlpreise, Abstimmungssoftware-Kosten, Online-Wahlplattform, Lösungspreise für Wahlen',
         ],
 
-        'organizations.show' => [
+        'organisations.show' => [
             'title' => '{organizationName} | Wahlen & Mitglieder | Public Digit',
             'description' => '{organizationName}: {memberCount} Mitglieder, {electionCount} Wahlen. Sichere digitale Wahlplattform für Organisationen und Diaspora-Gemeinschaften.',
             'keywords' => '{organizationName}, Wahlen, Abstimmungen, digitale Demokratie',

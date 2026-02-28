@@ -15,16 +15,16 @@ Create: `/app/Http/Controllers/Organizations/MemberImportController.php`
 
 namespace App\Http\Controllers\Organizations;
 
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class MemberImportController extends Controller
 {
-    public function store(Request $request, Organization $organization)
+    public function store(Request $request, organisation $organisation)
     {
         // Authorize
-        $this->authorize('manage', $organization);
+        $this->authorize('manage', $organisation);
 
         // Validate
         $validated = $request->validate([
@@ -44,7 +44,7 @@ class MemberImportController extends Controller
         }
 
         // Import
-        $stats = $this->importMembers($organization, $validated['rows']);
+        $stats = $this->importMembers($organisation, $validated['rows']);
 
         return response()->json([
             'success' => true,
@@ -87,7 +87,7 @@ class MemberImportController extends Controller
         ];
     }
 
-    private function importMembers(Organization $organization, array $rows): array
+    private function importMembers(organisation $organisation, array $rows): array
     {
         $imported = 0;
         $skipped = 0;
@@ -109,8 +109,8 @@ class MemberImportController extends Controller
                 ]
             );
 
-            if (!$organization->users()->where('user_id', $user->id)->exists()) {
-                $organization->users()->attach($user->id, [
+            if (!$organisation->users()->where('user_id', $user->id)->exists()) {
+                $organisation->users()->attach($user->id, [
                     'role' => 'member',
                     'assigned_at' => now(),
                 ]);
@@ -140,22 +140,22 @@ Create: `/app/Policies/OrganizationPolicy.php`
 
 namespace App\Policies;
 
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\User;
 
 class OrganizationPolicy
 {
-    public function manage(User $user, Organization $organization): bool
+    public function manage(User $user, organisation $organisation): bool
     {
-        return $organization->users()
+        return $organisation->users()
             ->where('user_id', $user->id)
             ->whereIn('role', ['admin', 'manager', 'staff'])
             ->exists();
     }
 
-    public function view(User $user, Organization $organization): bool
+    public function view(User $user, organisation $organisation): bool
     {
-        return $organization->users()
+        return $organisation->users()
             ->where('user_id', $user->id)
             ->exists();
     }
@@ -171,7 +171,7 @@ Update: `/routes/web.php`
 Add this route in the authenticated middleware group:
 
 ```php
-Route::post('/organizations/{organization}/members/import',
+Route::post('/organizations/{organisation}/members/import',
     [App\Http\Controllers\Organizations\MemberImportController::class, 'store'])
     ->name('organizations.members.import.store');
 ```
@@ -198,16 +198,16 @@ return new class extends Migration
         Schema::create('user_organization_roles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('organization_id');
+            $table->unsignedBigInteger('organisation_id');
             $table->enum('role', ['admin', 'manager', 'staff', 'member', 'voter'])->default('member');
             $table->string('region')->nullable();
             $table->timestamp('assigned_at')->useCurrent();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreign('organization_id')->references('id')->on('organizations')->cascadeOnDelete();
-            $table->unique(['user_id', 'organization_id']);
-            $table->index(['organization_id', 'role']);
+            $table->foreign('organisation_id')->references('id')->on('organizations')->cascadeOnDelete();
+            $table->unique(['user_id', 'organisation_id']);
+            $table->index(['organisation_id', 'role']);
         });
     }
 
@@ -224,7 +224,7 @@ Run: `php artisan migrate`
 
 ### Step 5: Update Models (10 min)
 
-Update: `/app/Models/Organization.php`
+Update: `/app/Models/organisation.php`
 
 ```php
 <?php
@@ -234,7 +234,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Organization extends Model
+class organisation extends Model
 {
     protected $fillable = ['name', 'email', 'slug'];
 
@@ -264,7 +264,7 @@ class User extends Authenticatable
 
     public function organizations(): BelongsToMany
     {
-        return $this->belongsToMany(Organization::class, 'user_organization_roles')
+        return $this->belongsToMany(organisation::class, 'user_organization_roles')
             ->withPivot('role', 'region', 'assigned_at')
             ->withTimestamps();
     }
@@ -313,7 +313,7 @@ invalid-email,John
 - [ ] Create OrganizationPolicy.php
 - [ ] Add route to routes/web.php
 - [ ] Create & run migration
-- [ ] Update Organization model
+- [ ] Update organisation model
 - [ ] Update User model
 - [ ] Test with sample CSV
 - [ ] Test authorization
@@ -371,7 +371,7 @@ curl -X POST \
 8. Controller validates data again
 9. Controller re-validates emails
 10. Controller creates User records
-11. Controller attaches to Organization
+11. Controller attaches to organisation
 12. Returns success response
 13. Frontend shows success screen ✅ Already done
 ```
@@ -390,7 +390,7 @@ app/Policies/
 ├── OrganizationPolicy.php ← NEW
 
 app/Models/
-├── Organization.php (UPDATED)
+├── organisation.php (UPDATED)
 ├── User.php (UPDATED)
 
 database/migrations/

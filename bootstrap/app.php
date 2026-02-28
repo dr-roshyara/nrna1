@@ -45,16 +45,18 @@ return Application::configure(basePath: dirname(__DIR__))
 
             // Voting System - Business Logic
             'vote.eligibility' => \App\Http\Middleware\VoteEligibility::class,
-            'voter.slug.window' => \App\Http\Middleware\EnsureVoterSlugWindow::class,
+            'voter.slug.verify' => \App\Http\Middleware\VerifyVoterSlug::class,
+            'voter.slug.window' => \App\Http\Middleware\ValidateVoterSlugWindow::class,
+            'voter.slug.consistency' => \App\Http\Middleware\VerifyVoterSlugConsistency::class,
             'voter.step.order' => \App\Http\Middleware\EnsureVoterStepOrder::class,
             'validate.voting.ip' => \App\Http\Middleware\ValidateVotingIp::class,
             'election' => \App\Http\Middleware\ElectionMiddleware::class,
             'election.demo' => \App\Http\Middleware\EnsureDemoElection::class,
             'vote.organisation' => \App\Http\Middleware\EnsureRealVoteOrganisation::class,
 
-            // Organization & Multi-tenancy
+            // organisation & Multi-tenancy
             'committee.member' => \App\Http\Middleware\EnsureCommitteeMember::class,
-            'ensure.organization' => \App\Http\Middleware\EnsureOrganizationMember::class,
+            'ensure.organisation' => \App\Http\Middleware\EnsureOrganizationMember::class,
 
             // Utility
             'no.cache' => \App\Http\Middleware\NoCacheMiddleware::class,

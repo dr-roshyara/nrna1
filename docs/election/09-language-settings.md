@@ -143,7 +143,7 @@ Current: English
 - **Voter names** - Keep original name
 - **User IDs** - System identifier (not translatable)
 - **Dates** - May be formatted by system locale
-- **Custom fields** - Organization-specific data
+- **Custom fields** - organisation-specific data
 
 **Why:**
 - Voter information is personal data
@@ -289,7 +289,7 @@ English:  March 1, 2026
 1. ✅ **Likely causes:**
    - Translation not yet completed
    - New feature (may not be translated immediately)
-   - Custom field from organization
+   - Custom field from organisation
 
 2. **What to do:**
    - This is normal during rollout

@@ -17,7 +17,7 @@
             </div>
             <div>
               <div class="font-bold text-gray-900">{{ testimonial.author }}</div>
-              <div class="text-sm text-gray-600">{{ testimonial.role }}, {{ testimonial.organization }}</div>
+              <div class="text-sm text-gray-600">{{ testimonial.role }}, {{ testimonial.organisation }}</div>
             </div>
           </div>
         </div>

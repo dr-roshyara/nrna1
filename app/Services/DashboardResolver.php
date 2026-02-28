@@ -53,15 +53,15 @@ class DashboardResolver
     }
 
     /**
-     * Check if user is first-time (no roles/organizations/commissions)
+     * Check if user is first-time (no roles/organisations/commissions)
      *
      * @param User $user
      * @return bool
      */
     private function isFirstTimeUser(User $user): bool
     {
-        // Check if user has organization roles (new system)
-        $hasOrgRoles = \DB::table('user_organization_roles')
+        // Check if user has organisation roles (new system)
+        $hasOrgRoles = \DB::table('user_organisation_roles')
             ->where('user_id', $user->id)
             ->exists();
 
@@ -97,8 +97,8 @@ class DashboardResolver
     {
         $roles = [];
 
-        // 1. Organization roles (new system)
-        if (\DB::table('user_organization_roles')->where('user_id', $user->id)->exists()) {
+        // 1. organisation roles (new system)
+        if (\DB::table('user_organisation_roles')->where('user_id', $user->id)->exists()) {
             $roles[] = 'admin';
         }
 
@@ -141,7 +141,7 @@ class DashboardResolver
             'user_id' => $user->id,
             'decision' => 'first_time_user',
             'destination' => 'dashboard.welcome',
-            'reason' => 'No organizations, commissions, or existing roles detected',
+            'reason' => 'No organisations, commissions, or existing roles detected',
         ]);
 
         return redirect()->route('dashboard.welcome');
@@ -176,31 +176,31 @@ class DashboardResolver
      */
     private function redirectByRole(User $user, string $role): RedirectResponse
     {
-        // Special handling for organization admins
+        // Special handling for organisation admins
         if ($role === 'admin') {
             try {
-                // Get first organization where user is admin
-                $orgRole = \DB::table('user_organization_roles')
+                // Get first organisation where user is admin
+                $orgRole = \DB::table('user_organisation_roles')
                     ->where('user_id', $user->id)
                     ->where('role', 'admin')
                     ->first();
 
                 if ($orgRole) {
-                    $organization = \App\Models\Organization::find($orgRole->organization_id);
+                    $organisation = \App\Models\Organisation::find($orgRole->organisation_id);
 
-                    if ($organization) {
-                        \Log::info('DashboardResolver: Organization admin redirect', [
+                    if ($organisation) {
+                        \Log::info('DashboardResolver: organisation admin redirect', [
                             'user_id' => $user->id,
-                            'organization_id' => $organization->id,
-                            'organization_slug' => $organization->slug,
-                            'destination' => route('organizations.show', $organization->slug),
+                            'organisation_id' => $organisation->id,
+                            'organisation_slug' => $organisation->slug,
+                            'destination' => route('organisations.show', $organisation->slug),
                         ]);
 
-                        return redirect()->route('organizations.show', $organization->slug);
+                        return redirect()->route('organisations.show', $organisation->slug);
                     }
                 }
             } catch (\Exception $e) {
-                \Log::error('DashboardResolver: Error checking organization admin', [
+                \Log::error('DashboardResolver: Error checking organisation admin', [
                     'user_id' => $user->id,
                     'error' => $e->getMessage(),
                 ]);

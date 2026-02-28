@@ -93,7 +93,7 @@ this.contentBlocks.some(block => block.type === 'actions')
 
 ### Features
 - Personalized greeting with wave animation
-- Displays organization name
+- Displays organisation name
 - Shows user role(s)
 - Last login time (formatted relative)
 - Up to 3 trust badges

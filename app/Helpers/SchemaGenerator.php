@@ -3,7 +3,7 @@
 namespace App\Helpers;
 
 use App\Models\Election;
-use App\Models\Organization;
+use App\Models\Organisation;
 
 /**
  * Schema Generator
@@ -27,7 +27,7 @@ class SchemaGenerator
      */
     public static function generateElectionEventSchema(Election $election): array
     {
-        $organization = $election->organization;
+        $organisation = $election->organisation;
         $now = now();
         $startDate = $election->start_date ? $election->start_date->toIso8601String() : null;
         $endDate = $election->end_date ? $election->end_date->toIso8601String() : null;
@@ -52,11 +52,11 @@ class SchemaGenerator
             'eventStatus' => $eventStatus,
             'eventAttendanceMode' => 'OnlineEventAttendanceMode',
             'url' => route('election.dashboard') . '?election=' . $election->id,
-            'image' => $organization?->logo_url ?? url('/images/og-default.jpg'),
+            'image' => $organisation?->logo_url ?? url('/images/og-default.jpg'),
             'organizer' => [
-                '@type' => 'Organization',
-                'name' => $organization?->name ?? 'Public Digit',
-                'url' => $organization ? route('organizations.show', ['slug' => $organization->slug]) : url('/')
+                '@type' => 'organisation',
+                'name' => $organisation?->name ?? 'Public Digit',
+                'url' => $organisation ? route('organisations.show', ['slug' => $organisation->slug]) : url('/')
             ],
             'offers' => [
                 '@type' => 'Offer',
@@ -68,53 +68,53 @@ class SchemaGenerator
     }
 
     /**
-     * Generate enhanced Organization schema
+     * Generate enhanced organisation schema
      *
      * Includes member count, election count, and contact info
      *
-     * @param Organization $organization
+     * @param Organisation $organisation
      * @return array
      */
-    public static function generateOrganizationSchema(Organization $organization): array
+    public static function generateOrganizationSchema(Organisation $organisation): array
     {
         $schema = [
             '@context' => 'https://schema.org',
-            '@type' => 'Organization',
-            'name' => $organization->name,
-            'url' => route('organizations.show', ['slug' => $organization->slug]),
-            'description' => $organization->description ?? 'Organization on Public Digit',
+            '@type' => 'organisation',
+            'name' => $organisation->name,
+            'url' => route('organisations.show', ['slug' => $organisation->slug]),
+            'description' => $organisation->description ?? 'organisation on Public Digit',
         ];
 
         // Add logo if available
-        if ($organization->logo_url) {
-            $schema['logo'] = $organization->logo_url;
+        if ($organisation->logo_url) {
+            $schema['logo'] = $organisation->logo_url;
         } else {
             $schema['logo'] = url('/images/logo-2.png');
         }
 
         // Add contact info if available
-        if ($organization->email) {
-            $schema['email'] = $organization->email;
+        if ($organisation->email) {
+            $schema['email'] = $organisation->email;
         }
 
-        if ($organization->address) {
-            $schema['address'] = $organization->address;
+        if ($organisation->address) {
+            $schema['address'] = $organisation->address;
         }
 
         // Add member count
-        $memberCount = $organization->members_count ?? 0;
+        $memberCount = $organisation->members_count ?? 0;
         if ($memberCount > 0) {
             $schema['memberCount'] = $memberCount;
         }
 
         // Add election count
-        $electionCount = $organization->elections_count ?? 0;
+        $electionCount = $organisation->elections_count ?? 0;
         if ($electionCount > 0) {
             $schema['eventCount'] = $electionCount;
         }
 
         // Add social links if available
-        $socialLinks = self::extractSocialLinks($organization);
+        $socialLinks = self::extractSocialLinks($organisation);
         if (!empty($socialLinks)) {
             $schema['sameAs'] = $socialLinks;
         }
@@ -149,15 +149,15 @@ class SchemaGenerator
     }
 
     /**
-     * Extract social links from organization
+     * Extract social links from organisation
      *
-     * @param Organization $organization
+     * @param Organisation $organisation
      * @return array
      */
-    private static function extractSocialLinks(Organization $organization): array
+    private static function extractSocialLinks(Organisation $organisation): array
     {
         $links = [];
-        $settings = $organization->settings ?? [];
+        $settings = $organisation->settings ?? [];
 
         $platforms = ['website', 'facebook', 'twitter', 'instagram', 'linkedin', 'youtube'];
 

@@ -171,7 +171,7 @@ php artisan test tests/Feature/Security/VoterControllerSecurityTest.php \
 
 **Result**: Regular members cannot approve voters
 
-#### 4.3 Cross-Organization Access
+#### 4.3 Cross-organisation Access
 ```bash
 php artisan test tests/Feature/Security/VoterControllerPenetrationTest.php \
   --filter=it_prevents_insecure_direct_object_reference
@@ -204,8 +204,8 @@ voter_id=123abc
 voter_id=[1,2,3]
 
 # Path traversal
-organization=../../etc/passwd
-organization=..\\..\\windows
+organisation=../../etc/passwd
+organisation=..\\..\\windows
 ```
 
 ### How to Test
@@ -265,7 +265,7 @@ php artisan test tests/Feature/Security/VoterControllerPenetrationTest.php \
 ```php
 // routes/organizations.php
 Route::post('/voters/{voter}/approve', [VoterController::class, 'approve'])
-    ->middleware('throttle:organization-actions');  // 30 per minute
+    ->middleware('throttle:organisation-actions');  // 30 per minute
 
 Route::post('/voters/bulk-approve', [VoterController::class, 'bulkApprove'])
     ->middleware('throttle:bulk-operations');  // 5 per minute
@@ -316,9 +316,9 @@ php artisan test tests/Feature/Security/VoterControllerPenetrationTest.php \
 
 ### Test Case
 ```bash
-# Try to access voter from different organization
+# Try to access voter from different organisation
 POST /organizations/myorg/voters/999/approve
-# Where voter 999 belongs to different organization
+# Where voter 999 belongs to different organisation
 
 # Expected: 403 Forbidden
 ```
@@ -330,8 +330,8 @@ php artisan test tests/Feature/Security/VoterControllerPenetrationTest.php \
 ```
 
 ### Protection Mechanisms
-- ✅ Organization filter on all queries
-- ✅ Explicit voter-organization check
+- ✅ organisation filter on all queries
+- ✅ Explicit voter-organisation check
 - ✅ 403 response for cross-org access
 - ✅ Audit logging of attempts
 
@@ -341,7 +341,7 @@ php artisan test tests/Feature/Security/VoterControllerPenetrationTest.php \
 
 ### What Gets Logged
 ```
-[time] [action] [user_id] [user_name] [organization_id] [voter_id] [ip_address]
+[time] [action] [user_id] [user_name] [organisation_id] [voter_id] [ip_address]
 2026-02-23 14:23:45 voter_approved 1 John_Doe 5 123 192.168.1.100
 2026-02-23 14:24:10 unauthorized_access_attempt 2 Jane_Smith 5 999 192.168.1.101
 ```
@@ -363,7 +363,7 @@ tail storage/logs/voting_audit.log
   "approver_id": 1,
   "approver_name": "John Doe",
   "voter_id": 123,
-  "organization_id": 5,
+  "organisation_id": 5,
   "ip_address": "192.168.1.100"
 }
 ```
@@ -408,7 +408,7 @@ before_deploy:
 - [ ] Cannot reuse old session token
 
 ### Authorization
-- [ ] Non-members cannot access organization
+- [ ] Non-members cannot access organisation
 - [ ] Regular members cannot approve
 - [ ] Commission members can approve
 - [ ] Users cannot access other org's voters
@@ -418,7 +418,7 @@ before_deploy:
 - [ ] Search field rejects SQL injection
 - [ ] Search field escapes XSS attempts
 - [ ] Voter ID must be numeric
-- [ ] Organization slug must be valid
+- [ ] organisation slug must be valid
 - [ ] No file upload vulnerabilities
 
 ### CSRF Protection

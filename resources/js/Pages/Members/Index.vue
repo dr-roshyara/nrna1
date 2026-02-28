@@ -1,12 +1,12 @@
 <template>
   <election-layout>
     <div class="m-2 min-h-screen bg-gray-100 p-2">
-      <!-- Organization Header -->
+      <!-- organisation Header -->
       <div class="mb-6 bg-white rounded-lg shadow-sm p-6">
         <h1 class="text-3xl font-bold text-gray-900">
-          Members of {{ organization.name }}
+          Members of {{ organisation.name }}
         </h1>
-        <p class="text-gray-600 mt-2">Manage organization members and their roles</p>
+        <p class="text-gray-600 mt-2">Manage organisation members and their roles</p>
 
         <!-- Stats Grid -->
         <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -340,7 +340,7 @@ export default {
 
   props: {
     members: Object,
-    organization: Object,
+    organisation: Object,
     filters: Object,
     currentUser: Object,
     stats: Object,

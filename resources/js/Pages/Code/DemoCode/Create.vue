@@ -218,19 +218,25 @@ const form = useForm({
 });
 
 const codeExpired = computed(() => {
-    return props.code_duration >= props.code_expires_in;
+    const duration = Number(props.code_duration);
+    const expiresIn = Number(props.code_expires_in);
+    return duration >= expiresIn;
 });
 
 const getInstructions = () => {
-    const minutesElapsed = props.code_duration;
-    const minutesRemaining = Math.max(0, props.code_expires_in - props.code_duration);
+    const minutesElapsed = Number(props.code_duration);
+    const minutesRemaining = Math.max(0, Number(props.code_expires_in) - minutesElapsed);
+
+    // Format to 1 decimal place for display
+    const elapsedFormatted = minutesElapsed.toFixed(1);
+    const remainingFormatted = minutesRemaining.toFixed(1);
 
     if (locale.value === 'np') {
-        return `${t('pages.code-create.instructions.nepali_intro')} ${minutesElapsed} ${t('pages.code-create.instructions.nepali_ago')} ${minutesRemaining} ${t('pages.code-create.instructions.nepali_remaining')}`;
+        return `${t('pages.code-create.instructions.nepali_intro')} ${elapsedFormatted} ${t('pages.code-create.instructions.nepali_ago')} ${remainingFormatted} ${t('pages.code-create.instructions.nepali_remaining')}`;
     } else if (locale.value === 'de') {
-        return `${t('pages.code-create.instructions.english_intro')} ${minutesElapsed} ${t('pages.code-create.instructions.english_ago')} ${minutesRemaining} ${t('pages.code-create.instructions.english_remaining')}`;
+        return `${t('pages.code-create.instructions.english_intro')} ${elapsedFormatted} ${t('pages.code-create.instructions.english_ago')} ${remainingFormatted} ${t('pages.code-create.instructions.english_remaining')}`;
     } else {
-        return `${t('pages.code-create.instructions.english_intro')} ${minutesElapsed} ${t('pages.code-create.instructions.english_ago')} ${minutesRemaining} ${t('pages.code-create.instructions.english_remaining')}`;
+        return `${t('pages.code-create.instructions.english_intro')} ${elapsedFormatted} ${t('pages.code-create.instructions.english_ago')} ${remainingFormatted} ${t('pages.code-create.instructions.english_remaining')}`;
     }
 };
 

@@ -6,10 +6,10 @@
 
 1. **✅ Database Schema**
    - Migration: `database/migrations/2026_02_07_131712_create_role_system_tables.php`
-   - Tables: `organizations`, `user_organization_roles`, `election_commission_members`
+   - Tables: `organisations`, `user_organization_roles`, `election_commission_members`
 
 2. **✅ Backend Models & Controllers**
-   - `Organization` model with relationships
+   - `organisation` model with relationships
    - `User` model extended with role methods
    - `CheckUserRole` middleware
    - Controllers: RoleSelection, AdminDashboard, CommissionDashboard, VoterDashboard
@@ -22,7 +22,7 @@
 
 4. **✅ Frontend Components** (all translation-ready)
    - `RoleSelection/Index.vue` → Role card selection (UPDATED)
-   - `Admin/Dashboard.vue` → Organization management
+   - `Admin/Dashboard.vue` → organisation management
    - `Commission/Dashboard.vue` → Election monitoring
    - `Vote/Dashboard.vue` → Voter interface
 
@@ -79,7 +79,7 @@ npm run dev
 - [ ] Click role card → redirected to correct dashboard
 
 **Admin Dashboard:**
-- [ ] If you have admin role, see organizations & elections stats
+- [ ] If you have admin role, see organisations & elections stats
 - [ ] All text in correct language (de/en/np)
 - [ ] Navigate back to role selection → same dashboard
 
@@ -148,7 +148,7 @@ php artisan db:seed --class=RoleSystemSeeder
 
 | Role | Features | Access Path |
 |------|----------|-------------|
-| **Admin** | Manage organizations, create elections, system config | `/dashboard/admin` |
+| **Admin** | Manage organisations, create elections, system config | `/dashboard/admin` |
 | **Commission** | Monitor elections, manage voters, view audit logs | `/dashboard/commission` |
 | **Voter** | Cast votes, view election results, voting history | `/vote` |
 

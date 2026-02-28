@@ -215,7 +215,7 @@ Error Scenarios Tested:
 
 ## Test Suite Structure
 
-### File Organization
+### File organisation
 
 ```
 tests/Feature/

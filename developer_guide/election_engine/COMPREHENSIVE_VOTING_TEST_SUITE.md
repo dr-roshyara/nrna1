@@ -195,7 +195,7 @@ All tests should **PASS** when the following are true:
 
 | Aspect | Status |
 |--------|--------|
-| Test Organization | ✓ Logical groups by feature |
+| Test organisation | ✓ Logical groups by feature |
 | Test Naming | ✓ Clear, descriptive names |
 | Arrangement | ✓ Clear Arrange-Act-Assert pattern |
 | Setup/Teardown | ✓ Uses RefreshDatabase trait |

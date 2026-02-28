@@ -77,14 +77,14 @@ Scores user experience level 0-100 based on:
 - Actions completed (more = higher)
 - Login frequency (regular = higher)
 - Role complexity (multiple roles = higher)
-- Organization management (more orgs = higher)
+- organisation management (more orgs = higher)
 
 Returns `ui_mode`: simplified, standard, or advanced
 
 #### OnboardingTracker
 Tracks setup progress in 5 steps:
-1. New user (no organization)
-2. Organization created (needs members)
+1. New user (no organisation)
+2. organisation created (needs members)
 3. Members added (needs election)
 4. Election created (needs voters)
 5. Setup complete

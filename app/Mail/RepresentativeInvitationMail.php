@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Organization;
+use App\Models\Organisation;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,7 +16,7 @@ class RepresentativeInvitationMail extends Mailable implements ShouldQueue
 
     public function __construct(
         public User $representative,
-        public Organization $organization,
+        public Organisation $organisation,
         public User $creator
     ) {
         // Set locale for mail: use current app locale or default to German
@@ -29,9 +29,9 @@ class RepresentativeInvitationMail extends Mailable implements ShouldQueue
         App::setLocale($this->locale);
 
         $subjects = [
-            'de' => 'Sie wurden als Vertreter/in zu ' . $this->organization->name . ' hinzugefügt',
-            'en' => 'You have been added as a representative to ' . $this->organization->name,
-            'np' => 'तपाई ' . $this->organization->name . ' को प्रतिनिधि के रूप में जोड़ गए हैं',
+            'de' => 'Sie wurden als Vertreter/in zu ' . $this->organisation->name . ' hinzugefügt',
+            'en' => 'You have been added as a representative to ' . $this->organisation->name,
+            'np' => 'तपाई ' . $this->organisation->name . ' को प्रतिनिधि के रूप में जोड़ गए हैं',
         ];
 
         $templates = [
@@ -44,10 +44,10 @@ class RepresentativeInvitationMail extends Mailable implements ShouldQueue
                     ->subject($subjects[$this->locale] ?? $subjects['de'])
                     ->with([
                         'representativeName' => $this->representative->name,
-                        'organizationName' => $this->organization->name,
+                        'organisationName' => $this->organisation->name,
                         'creatorName' => $this->creator->name,
                         'setupUrl' => route('password.request'),
-                        'organizationEmail' => $this->organization->email,
+                        'organisationEmail' => $this->organisation->email,
                         'locale' => $this->locale,
                     ]);
     }

@@ -13,8 +13,8 @@ class CreateRoleSystemTables extends Migration
      */
     public function up()
     {
-        // 1. Create organizations table
-        Schema::create('organizations', function (Blueprint $table) {
+        // 1. Create organisations table
+        Schema::create('organisations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
@@ -24,24 +24,24 @@ class CreateRoleSystemTables extends Migration
             $table->timestamps();
         });
 
-        // 2. Create user_organization_roles pivot table (ADDITIVE - no user_type column)
-        Schema::create('user_organization_roles', function (Blueprint $table) {
+        // 2. Create user_organisation_roles pivot table (ADDITIVE - no user_type column)
+        Schema::create('user_organisation_roles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('organization_id')->constrained()->onDelete('cascade');
+            $table->foreignId('organisation_id')->constrained()->onDelete('cascade');
             $table->enum('role', ['admin', 'commission', 'voter']);
             $table->json('permissions')->nullable();
             $table->timestamps();
 
-            // Allow multiple roles per user per organization
-            $table->unique(['user_id', 'organization_id', 'role']);
+            // Allow multiple roles per user per organisation
+            $table->unique(['user_id', 'organisation_id', 'role']);
         });
 
-        // 3. Add organization_id to elections table (if exists)
+        // 3. Add organisation_id to elections table (if exists)
         if (Schema::hasTable('elections')) {
             Schema::table('elections', function (Blueprint $table) {
-                if (!Schema::hasColumn('elections', 'organization_id')) {
-                    $table->foreignId('organization_id')
+                if (!Schema::hasColumn('elections', 'organisation_id')) {
+                    $table->foreignId('organisation_id')
                           ->nullable()
                           ->constrained()
                           ->onDelete('cascade')
@@ -77,18 +77,18 @@ class CreateRoleSystemTables extends Migration
             Schema::dropIfExists('election_commission_members');
         }
 
-        Schema::dropIfExists('user_organization_roles');
+        Schema::dropIfExists('user_organisation_roles');
 
         // Remove from elections table
         if (Schema::hasTable('elections')) {
             Schema::table('elections', function (Blueprint $table) {
-                if (Schema::hasColumn('elections', 'organization_id')) {
-                    $table->dropForeign(['organization_id']);
-                    $table->dropColumn('organization_id');
+                if (Schema::hasColumn('elections', 'organisation_id')) {
+                    $table->dropForeign(['organisation_id']);
+                    $table->dropColumn('organisation_id');
                 }
             });
         }
 
-        Schema::dropIfExists('organizations');
+        Schema::dropIfExists('organisations');
     }
 }

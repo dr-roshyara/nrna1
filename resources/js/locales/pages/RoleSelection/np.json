@@ -27,7 +27,7 @@
     },
     "stats": {
       "admin": {
-        "organizations": "संगठनहरू",
+        "organisations": "संगठनहरू",
         "elections": "चुनावहरू",
         "activeElections": "सक्रिय चुनावहरू"
       },

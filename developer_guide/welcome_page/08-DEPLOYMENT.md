@@ -399,10 +399,10 @@ export DB_PASSWORD=$(aws secretsmanager get-secret-value ...)
 
 ```bash
 # 1. Analyze query performance
-EXPLAIN ANALYZE SELECT * FROM users WHERE organization_id = 1;
+EXPLAIN ANALYZE SELECT * FROM users WHERE organisation_id = 1;
 
 # 2. Create indexes
-ALTER TABLE users ADD INDEX idx_organization_id (organization_id);
+ALTER TABLE users ADD INDEX idx_organization_id (organisation_id);
 ALTER TABLE votes ADD INDEX idx_election_id (election_id);
 
 # 3. Vacuum database (PostgreSQL)

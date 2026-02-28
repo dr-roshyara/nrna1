@@ -93,13 +93,13 @@ import welcomeDashboardDe from './locales/pages/Welcome/Dashboard/de.json';
 import welcomeDashboardEn from './locales/pages/Welcome/Dashboard/en.json';
 import welcomeDashboardNp from './locales/pages/Welcome/Dashboard/np.json';
 
-import organizationDe from './locales/pages/Dashboard/organization/de.json';
-import organizationEn from './locales/pages/Dashboard/organization/en.json';
-import organizationNp from './locales/pages/Dashboard/organization/np.json';
+import organizationDe from './locales/pages/Dashboard/organisation/de.json';
+import organizationEn from './locales/pages/Dashboard/organisation/en.json';
+import organizationNp from './locales/pages/Dashboard/organisation/np.json';
 
-import organizationShowDe from './locales/pages/Organization/de.json';
-import organizationShowEn from './locales/pages/Organization/en.json';
-import organizationShowNp from './locales/pages/Organization/np.json';
+import organizationShowDe from './locales/pages/organisation/de.json';
+import organizationShowEn from './locales/pages/organisation/en.json';
+import organizationShowNp from './locales/pages/organisation/np.json';
 
 import organizationShowPageDe from './locales/pages/Organizations/Show/de.json';
 import organizationShowPageEn from './locales/pages/Organizations/Show/en.json';
@@ -141,8 +141,8 @@ const messages = {
   de: {
     ...de,
     ...commonDe,
-    organization: organizationDe,
-    organizations: {
+    organisation: organizationDe,
+    organisations: {
       demo: organizationShowPageDe.demo,
     },
     pages: {
@@ -168,14 +168,14 @@ const messages = {
       'commission': commissionDe,
       'vote-dashboard': voteDashboardDe,
       'welcome-dashboard': welcomeDashboardDe,
-      'organization-show': { ...organizationShowDe, ...organizationShowPageDe },
+      'organisation-show': { ...organizationShowDe, ...organizationShowPageDe },
     },
   },
   en: {
     ...en,
     ...commonEn,
-    organization: organizationEn,
-    organizations: {
+    organisation: organizationEn,
+    organisations: {
       demo: organizationShowPageEn.demo,
     },
     pages: {
@@ -201,14 +201,14 @@ const messages = {
       'commission': commissionEn,
       'vote-dashboard': voteDashboardEn,
       'welcome-dashboard': welcomeDashboardEn,
-      'organization-show': { ...organizationShowEn, ...organizationShowPageEn },
+      'organisation-show': { ...organizationShowEn, ...organizationShowPageEn },
     },
   },
   np: {
     ...np,
     ...commonNp,
-    organization: organizationNp,
-    organizations: {
+    organisation: organizationNp,
+    organisations: {
       demo: organizationShowPageNp.demo,
     },
     pages: {
@@ -234,7 +234,7 @@ const messages = {
       'commission': commissionNp,
       'vote-dashboard': voteDashboardNp,
       'welcome-dashboard': welcomeDashboardNp,
-      'organization-show': { ...organizationShowNp, ...organizationShowPageNp },
+      'organisation-show': { ...organizationShowNp, ...organizationShowPageNp },
     },
   },
 };

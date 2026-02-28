@@ -36,7 +36,7 @@ Phase 1 of the SEO optimization implementation is **100% complete**. The foundat
 - `seo.pages` - Page-specific translations for:
   - `home` - Homepage
   - `pricing` - Pricing page
-  - `organizations.show` - Organization detail page (with template variables)
+  - `organizations.show` - organisation detail page (with template variables)
   - `elections.index` - Elections list
   - `elections.show` - Election detail page
 
@@ -73,9 +73,9 @@ import { useMeta } from '@/composables/useMeta'
 useMeta({
   pageKey: 'organizations.show',
   params: {
-    organizationName: organization.name,
-    memberCount: organization.members_count,
-    electionCount: organization.elections_count
+    organizationName: organisation.name,
+    memberCount: organisation.members_count,
+    electionCount: organisation.elections_count
   }
 })
 ```
@@ -128,7 +128,7 @@ useMeta({
 **Changes:**
 - ✓ Removed Inertia `<Head>` component (replaced by useMeta)
 - ✓ Added useMeta import
-- ✓ Implemented dynamic meta tags with organization data
+- ✓ Implemented dynamic meta tags with organisation data
 - ✓ Parameter substitution for org name, member count, election count
 - ✓ Comprehensive inline documentation
 
@@ -346,7 +346,7 @@ Once deployed:
 ### Phase 3 (Weeks 4-6)
 
 - [ ] Add JSON-LD Event schema for elections
-- [ ] Add JSON-LD Organization schema enhancements
+- [ ] Add JSON-LD organisation schema enhancements
 - [ ] Implement image optimization
 - [ ] Add Web Vitals monitoring
 
@@ -394,7 +394,7 @@ Once deployed:
    - Added `seoData` and `canonicalUrl` props
 
 5. `resources/js/Pages/Organizations/Show.vue`
-   - Integrated useMeta with dynamic organization data
+   - Integrated useMeta with dynamic organisation data
 
 ---
 

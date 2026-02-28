@@ -1,4 +1,4 @@
-# Organization Creation - Duplicate Member Prevention Guide
+# organisation Creation - Duplicate Member Prevention Guide
 
 **Document Date:** February 23, 2026
 **Status:** Complete & Verified
@@ -12,7 +12,7 @@ This guide documents the **triple-layer protection system** that prevents duplic
 
 ### The Problem We Fixed
 
-When creating an organization, if a user entered their own email address as the organization's representative (instead of indicating "I am the representative"), the system would:
+When creating an organisation, if a user entered their own email address as the organisation's representative (instead of indicating "I am the representative"), the system would:
 
 1. ✅ Attach them as `admin` (correct)
 2. ❌ Attach them **again** as `voter` (duplicate/incorrect)
@@ -58,7 +58,7 @@ If User Unchecks (Wants different representative)
 
 **Component Behavior:**
 
-File: `resources/js/Components/Organization/Steps/OrganizationStepRepresentative.vue`
+File: `resources/js/Components/organisation/Steps/OrganizationStepRepresentative.vue`
 
 ```vue
 <!-- Email field only shows when is_self is FALSE -->
@@ -102,14 +102,14 @@ if (strtolower($representativeEmail) === strtolower($user->email)) {
 #### Check #2: Duplicate Membership Detection
 
 ```php
-// Line 73-83: Check if user is already attached to organization
-$isAlreadyMember = $organization->users()
+// Line 73-83: Check if user is already attached to organisation
+$isAlreadyMember = $organisation->users()
     ->where('users.id', $representativeUser->id)
     ->exists();
 
 if (!$isAlreadyMember) {
     // Only attach if not already a member
-    $organization->users()->attach($representativeUser->id, [
+    $organisation->users()->attach($representativeUser->id, [
         'role' => 'voter',
         'assigned_at' => now(),
     ]);
@@ -125,7 +125,7 @@ if (!$isAlreadyMember) {
 
 ```php
 // Line 41-44: Attach current user as admin (always happens)
-$organization->users()->attach($user->id, [
+$organisation->users()->attach($user->id, [
     'role' => 'admin',
     'assigned_at' => now(),
 ]);
@@ -147,13 +147,13 @@ if (!$isSelfRepresentative) {
             );
 
             // Line 73: CRITICAL - Check if already a member
-            $isAlreadyMember = $organization->users()
+            $isAlreadyMember = $organisation->users()
                 ->where('users.id', $representativeUser->id)
                 ->exists();
 
             if (!$isAlreadyMember) {
                 // Safe to attach - they're not already a member
-                $organization->users()->attach($representativeUser->id, [
+                $organisation->users()->attach($representativeUser->id, [
                     'role' => 'voter',
                     'assigned_at' => now(),
                 ]);
@@ -224,7 +224,7 @@ Step 2: Form appears
   └─ Email field hidden ✓
 
 Step 3: User completes form
-  └─ Uses organization email for representative ✓
+  └─ Uses organisation email for representative ✓
 
 Step 4: Backend processing
   ├─ Attach user as admin ✓
@@ -364,7 +364,7 @@ public function it_does_not_create_duplicate_pivot_records()
 {
     // Given
     $user = User::factory()->create();
-    $org = Organization::factory()->create();
+    $org = organisation::factory()->create();
     $otherUser = User::factory()->create(['email' => 'other@example.com']);
 
     // Simulate first attach
@@ -415,7 +415,7 @@ public function organization_creation_prevents_duplicates_end_to_end()
 ```javascript
 // tests/Feature/OrganizationCreationTest.js (Cypress)
 
-describe('Organization Creation Duplicate Prevention', () => {
+describe('organisation Creation Duplicate Prevention', () => {
   it('has is_self checkbox checked by default', () => {
     cy.visit('/dashboard');
     cy.contains('Organisation erstellen').click();
@@ -538,7 +538,7 @@ DB::listen(function ($query) {
 
 ## 🔧 Implementation Checklist
 
-When extending organization creation, verify:
+When extending organisation creation, verify:
 
 - [ ] UI defaults `is_self: true` in composable
 - [ ] Email field hidden by default in component

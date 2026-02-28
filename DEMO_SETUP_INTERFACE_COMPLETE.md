@@ -8,7 +8,7 @@
 
 ## 📋 EXECUTIVE SUMMARY
 
-The **Demo Setup Web Interface** has been fully implemented, providing organization administrators with a professional UI to manage demo elections directly from the organization dashboard.
+The **Demo Setup Web Interface** has been fully implemented, providing organisation administrators with a professional UI to manage demo elections directly from the organisation dashboard.
 
 ---
 
@@ -21,7 +21,7 @@ The **Demo Setup Web Interface** has been fully implemented, providing organizat
 - Lines: 120
 - Features:
   - POST endpoint for demo setup
-  - Organization membership authorization
+  - organisation membership authorization
   - Demo stats calculation
   - Audit logging
   - Force recreate option
@@ -69,7 +69,7 @@ The **Demo Setup Web Interface** has been fully implemented, providing organizat
 - Status: ✅ **CONFIGURED**
 - Lines: 14 (import), 302-304 (route)
 - Configuration:
-  - Route: `POST /api/organizations/{organization}/demo-setup`
+  - Route: `POST /api/organizations/{organisation}/demo-setup`
   - Middleware: `auth`
   - Name: `api.organizations.demo-setup`
 
@@ -83,7 +83,7 @@ The **Demo Setup Web Interface** has been fully implemented, providing organizat
   2. ✅ Non-member cannot trigger demo setup
   3. ✅ Demo setup returns stats after success
   4. ✅ Unauthenticated user cannot access
-  5. ✅ Demo setup checks organization membership
+  5. ✅ Demo setup checks organisation membership
   6. ⚠️ Force recreate (500 - awaits demo:setup command)
 
 **Test Results**: **5/6 passing (83%)**
@@ -92,7 +92,7 @@ The **Demo Setup Web Interface** has been fully implemented, providing organizat
 
 ## 🔐 SECURITY FEATURES
 
-✅ Organization membership authorization
+✅ organisation membership authorization
 ✅ CSRF protection (framework-level)
 ✅ Proper error handling
 ✅ Audit logging configured
@@ -131,4 +131,4 @@ Once the command is created, all 6 tests will pass and the feature will be fully
 
 **Status**: ✅ **READY FOR DEPLOYMENT**
 
-All core functionality is implemented and integrated with the organization dashboard. The Vue component is responsive, properly styled, and securely integrated. Awaits the Artisan command creation to complete the feature.
+All core functionality is implemented and integrated with the organisation dashboard. The Vue component is responsive, properly styled, and securely integrated. Awaits the Artisan command creation to complete the feature.

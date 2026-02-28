@@ -35,9 +35,45 @@ class VoterSlug extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function election(): BelongsTo
+    {
+        return $this->belongsTo(Election::class);
+    }
+
+    public function organisation(): BelongsTo
+    {
+        return $this->belongsTo(Organisation::class);
+    }
+
     public function steps()
     {
         return $this->hasMany(VoterSlugStep::class, 'voter_slug_id');
+    }
+
+    // ============ EAGER LOADING SCOPES (OPTIMIZATION) ============
+
+    /**
+     * Load all relationships at once
+     */
+    public function scopeWithAllRelations($query)
+    {
+        return $query->with(['user', 'election', 'organisation']);
+    }
+
+    /**
+     * Load only essential relationships for validation
+     * Selects specific columns to reduce data transfer
+     */
+    public function scopeWithEssentialRelations($query)
+    {
+        return $query->with([
+            'election' => function($q) {
+                $q->select('id', 'organisation_id', 'type', 'status', 'end_date');
+            },
+            'organisation' => function($q) {
+                $q->select('id', 'name');
+            }
+        ]);
     }
 
     public function scopeValid($query)

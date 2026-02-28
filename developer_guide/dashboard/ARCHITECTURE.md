@@ -44,7 +44,7 @@ User Login
 LoginResponse::toResponse()
     ↓
 1. Check if First-Time User?
-   ├─ No organizations
+   ├─ No organisations
    ├─ No commission memberships
    ├─ Not a voter (legacy)
    ├─ No admin/election_officer roles
@@ -79,7 +79,7 @@ LoginResponse::toResponse()
 **Source 1: user_organization_roles table**
 ```sql
 -- Structure
-id | user_id | organization_id | role | created_at | updated_at
+id | user_id | organisation_id | role | created_at | updated_at
 
 -- Example
 1 | 5 | 1 | admin | 2026-02-07 | 2026-02-07
@@ -167,10 +167,10 @@ CREATE TABLE users (
 );
 ```
 
-### organizations table (NEW)
+### organisations table (NEW)
 
 ```sql
-CREATE TABLE organizations (
+CREATE TABLE organisations (
     id BIGINT UNSIGNED PRIMARY KEY,
     name VARCHAR(255),
     slug VARCHAR(255) UNIQUE,
@@ -190,17 +190,17 @@ CREATE TABLE organizations (
 CREATE TABLE user_organization_roles (
     id BIGINT UNSIGNED PRIMARY KEY,
     user_id BIGINT UNSIGNED NOT NULL,
-    organization_id BIGINT UNSIGNED NOT NULL,
+    organisation_id BIGINT UNSIGNED NOT NULL,
     role VARCHAR(255),  -- 'admin', 'commission', 'voter'
 
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
 
     FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (organization_id) REFERENCES organizations(id),
-    UNIQUE KEY unique_user_org_role (user_id, organization_id, role),
+    FOREIGN KEY (organisation_id) REFERENCES organisations(id),
+    UNIQUE KEY unique_user_org_role (user_id, organisation_id, role),
     INDEX idx_user (user_id),
-    INDEX idx_org (organization_id)
+    INDEX idx_org (organisation_id)
 );
 ```
 
@@ -227,9 +227,9 @@ CREATE TABLE election_commission_members (
 ### elections table (Extended)
 
 ```sql
-ALTER TABLE elections ADD COLUMN organization_id BIGINT UNSIGNED;
-ALTER TABLE elections ADD FOREIGN KEY (organization_id)
-    REFERENCES organizations(id);
+ALTER TABLE elections ADD COLUMN organisation_id BIGINT UNSIGNED;
+ALTER TABLE elections ADD FOREIGN KEY (organisation_id)
+    REFERENCES organisations(id);
 ```
 
 ## Controller Responsibilities
@@ -275,18 +275,18 @@ Route::middleware(['auth', 'role:admin'])->group(...)
 
 ### Purpose
 
-Guide new users through organization setup and feature introduction
+Guide new users through organisation setup and feature introduction
 
 ### Content Sections
 
 1. **Welcome Greeting** - Personalized with user's name
 2. **GDPR Compliance Notice** - German privacy assurance
 3. **Action Buttons** (Primary & Secondary)
-   - Create Organization (PRIMARY)
-   - Join Organization (secondary)
+   - Create organisation (PRIMARY)
+   - Join organisation (secondary)
    - Explore Platform (secondary)
 4. **Use Case Examples** - German orgs & diaspora
-5. **Social Proof** - 50+ organizations, 8 languages, 100% GDPR
+5. **Social Proof** - 50+ organisations, 8 languages, 100% GDPR
 6. **Key Features** - Transparency, security, multilingual
 7. **Quick Tips** - Getting started hints
 
@@ -294,7 +294,7 @@ Guide new users through organization setup and feature introduction
 
 ✅ Match marketing site quality
 ✅ Clear visual hierarchy
-✅ Show value of creating organization
+✅ Show value of creating organisation
 ✅ Build confidence with metrics
 ✅ Multi-language support (EN/DE/NP)
 
@@ -339,7 +339,7 @@ Cache::flush();
 ### Authorization
 
 ✅ Role verification before data access
-✅ Organization ownership checks
+✅ organisation ownership checks
 ✅ Election-specific commission checks
 ✅ Voter eligibility validation
 
@@ -363,7 +363,7 @@ Cache::flush();
 
 ### Adding a New Role Type
 
-1. Decide: Organization-level or election-level role?
+1. Decide: organisation-level or election-level role?
 2. Add to appropriate table: `user_organization_roles` or `election_commission_members`
 3. Update `User::getDashboardRoles()` logic
 4. Create dashboard controller and views

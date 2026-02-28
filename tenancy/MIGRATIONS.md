@@ -148,7 +148,7 @@ php artisan migrate:refresh
 
 ### Pattern 1: Migrating Existing Data
 
-If the table already has data and you want to assign it to an organization:
+If the table already has data and you want to assign it to an organisation:
 
 ```php
 public function up()
@@ -162,7 +162,7 @@ public function up()
         }
     });
 
-    // Assign all existing records to a default organization
+    // Assign all existing records to a default organisation
     DB::table('elections')->update(['organisation_id' => 1]);
 }
 

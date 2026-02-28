@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Organizations;
 
 use App\Http\Controllers\Controller;
-use App\Models\Organization;
+use App\Models\Organisation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -12,17 +12,17 @@ use Inertia\Inertia;
 class MemberImportController extends Controller
 {
     /**
-     * Show the member import page for an organization.
+     * Show the member import page for an organisation.
      *
-     * GET /organizations/{slug}/members/import
+     * GET /organisations/{slug}/members/import
      */
     public function create(string $slug)
     {
-        $organization = Organization::where('slug', $slug)
+        $organisation = Organisation::where('slug', $slug)
             ->firstOrFail();
 
-        // Check if current user is a member of this organization
-        $isMember = $organization->users()
+        // Check if current user is a member of this organisation
+        $isMember = $organisation->users()
             ->where('users.id', auth()->id())
             ->exists();
 
@@ -31,10 +31,10 @@ class MemberImportController extends Controller
         }
 
         return Inertia::render('Organizations/Members/Import', [
-            'organization' => [
-                'id' => $organization->id,
-                'name' => $organization->name,
-                'slug' => $organization->slug,
+            'organisation' => [
+                'id' => $organisation->id,
+                'name' => $organisation->name,
+                'slug' => $organisation->slug,
             ],
         ]);
     }
@@ -42,15 +42,15 @@ class MemberImportController extends Controller
     /**
      * Handle member import from CSV/Excel data.
      *
-     * POST /organizations/{slug}/members/import
+     * POST /organisations/{slug}/members/import
      */
     public function store(Request $request, string $slug)
     {
-        $organization = Organization::where('slug', $slug)
+        $organisation = Organisation::where('slug', $slug)
             ->firstOrFail();
 
-        // Check if current user is a member of this organization
-        $isMember = $organization->users()
+        // Check if current user is a member of this organisation
+        $isMember = $organisation->users()
             ->where('users.id', auth()->id())
             ->exists();
 
@@ -157,8 +157,8 @@ class MemberImportController extends Controller
                     'email_verified_at' => now(),
                 ]);
 
-                // Attach to organization
-                $organization->users()->attach($user->id, [
+                // Attach to organisation
+                $organisation->users()->attach($user->id, [
                     'role' => 'voter',
                     'assigned_at' => now(),
                 ]);

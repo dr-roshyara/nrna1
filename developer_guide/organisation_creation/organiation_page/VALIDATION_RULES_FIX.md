@@ -142,7 +142,7 @@ public function rules(): array
 
     // ✅ Now safe to append custom closures to array rules
     if (!app()->environment('testing')) {
-        // Organization email DNS validation
+        // organisation email DNS validation
         $rules['email'][] = function ($attribute, $value, $fail) {
             // Type-safe: validate only if string and not empty
             if (!is_string($value) || empty($value)) {
@@ -153,7 +153,7 @@ public function rules(): array
             $domain = $parts[1] ?? null;
 
             if (!$domain || !checkdnsrr($domain, 'MX')) {
-                $fail(__('validation.organization.email.dns'));
+                $fail(__('validation.organisation.email.dns'));
             }
         };
 
@@ -168,7 +168,7 @@ public function rules(): array
             $domain = $parts[1] ?? null;
 
             if (!$domain || !checkdnsrr($domain, 'MX')) {
-                $fail(__('validation.organization.rep_email.dns'));
+                $fail(__('validation.organisation.rep_email.dns'));
             }
         };
     }
@@ -213,10 +213,10 @@ $rules['email'][] = function(...) { };
 
 ### Run Tests to Verify Fix
 ```bash
-# Test organization creation
+# Test organisation creation
 php artisan test tests/Feature/OrganizationCreationTest.php
 
-# Test all organization creation tests
+# Test all organisation creation tests
 php artisan test tests/Feature/OrganizationCreation*.php
 ```
 
@@ -224,7 +224,7 @@ php artisan test tests/Feature/OrganizationCreation*.php
 ```
 ✅ All tests passing
 ✅ No "[] operator not supported for strings" error
-✅ Organization creation works via modal
+✅ organisation creation works via modal
 ✅ Email validation works correctly
 ```
 
@@ -312,7 +312,7 @@ php artisan cache:clear
 php artisan test tests/Feature/OrganizationCreationTest.php
 
 # Deploy to production
-# Organization creation will now work without errors!
+# organisation creation will now work without errors!
 ```
 
 ---

@@ -1,4 +1,4 @@
-# Organization Creation & Members - Complete Feature Integration Guide
+# organisation Creation & Members - Complete Feature Integration Guide
 
 **Document:** Feature Integration Overview
 **Date:** February 23, 2026
@@ -8,11 +8,11 @@
 
 ## 🎯 Overview
 
-This document explains how **Organization Creation** integrates with the broader platform features, specifically focusing on:
+This document explains how **organisation Creation** integrates with the broader platform features, specifically focusing on:
 
-1. **Organization Creation** (Modal form)
+1. **organisation Creation** (Modal form)
 2. **Members Management** (List & administration)
-3. **Multi-tenancy** (Organization isolation)
+3. **Multi-tenancy** (organisation isolation)
 4. **Role-based Permissions** (Admin, voter roles)
 
 ---
@@ -33,10 +33,10 @@ This document explains how **Organization Creation** integrates with the broader
 
 2. USER LOGS IN & LANDS ON DASHBOARD
    ├─ No organizations yet
-   ├─ Sees "Create Organization" card
+   ├─ Sees "Create organisation" card
    └─ Click to proceed
 
-3. ORGANIZATION CREATION MODAL OPENS
+3. organisation CREATION MODAL OPENS
    ├─ Step 0: Education overlay
    ├─ Step 1: Basic info (name, email)
    ├─ Step 2: Address
@@ -44,7 +44,7 @@ This document explains how **Organization Creation** integrates with the broader
    └─ Submit → POST /api/organizations
 
 4. BACKEND PROCESSING
-   ├─ Create Organization record
+   ├─ Create organisation record
    ├─ Attach current user as ADMIN
    │  └─ user_organization_roles pivot: role = "admin"
    ├─ Attach representative (if different person)
@@ -53,16 +53,16 @@ This document explains how **Organization Creation** integrates with the broader
    ├─ Send confirmation email
    └─ Return success response
 
-5. REDIRECT TO ORGANIZATION DASHBOARD
-   ├─ User sees: Organization.show page
+5. REDIRECT TO organisation DASHBOARD
+   ├─ User sees: organisation.show page
    ├─ Stats show member count
    ├─ User is admin
-   └─ Can manage organization
+   └─ Can manage organisation
 
 6. USER NAVIGATES TO MEMBERS PAGE
    ├─ URL: /members/index
-   ├─ MemberController queries organization members
-   ├─ Only shows members of CURRENT organization
+   ├─ MemberController queries organisation members
+   ├─ Only shows members of CURRENT organisation
    ├─ Shows: Name, Email, Region, Role, Joined date
    ├─ User appears once with role "admin"
    └─ If representative added, they appear with role "voter"
@@ -81,13 +81,13 @@ This document explains how **Organization Creation** integrates with the broader
 
 ## 📊 Data Model Relationships
 
-### Organization Table
+### organisation Table
 
 ```sql
 organizations:
   id                  INTEGER PRIMARY KEY
-  name               VARCHAR (organization name)
-  email              VARCHAR (organization contact email)
+  name               VARCHAR (organisation name)
+  email              VARCHAR (organisation contact email)
   slug               VARCHAR (URL-friendly name)
   address            JSON (street, city, zip, country)
   representative     JSON (name, role, email from form)
@@ -131,7 +131,7 @@ user_organization_roles:  (many-to-many bridge)
 
 ```
 ┌─────────────────┐
-│  Organization   │
+│  organisation   │
 │  - id=1         │
 │  - name="Club"  │
 └────────┬────────┘
@@ -166,12 +166,12 @@ user_organization_roles:  (many-to-many bridge)
 
 ## 🔐 Multi-Tenancy Implementation
 
-### Organization Isolation at Each Layer
+### organisation Isolation at Each Layer
 
 #### 1. Database Level
 ```php
-// Query: Only show users of THIS organization
-$organization->users()  // Scoped to organization.id
+// Query: Only show users of THIS organisation
+$organisation->users()  // Scoped to organisation.id
     ->get();
 
 // Result: Only pivot records where organisation_id = current_org
@@ -179,8 +179,8 @@ $organization->users()  // Scoped to organization.id
 
 #### 2. Model Level (Global Scope)
 ```php
-// app/Models/Organization.php
-class Organization extends Model {
+// app/Models/organisation.php
+class organisation extends Model {
     protected static function boot() {
         parent::boot();
 
@@ -195,7 +195,7 @@ class Organization extends Model {
 #### 3. Middleware Level
 ```php
 // app/Http/Middleware/TenantContext.php
-// Extracts organization from URL/session
+// Extracts organisation from URL/session
 // Sets session('current_organisation_id')
 ```
 
@@ -206,13 +206,13 @@ public function index(Request $request) {
     $organizationId = session('current_organisation_id');
 
     if (!$organizationId) {
-        abort(403, 'No organization selected');
+        abort(403, 'No organisation selected');
     }
 
-    $organization = Organization::findOrFail($organizationId);
+    $organisation = organisation::findOrFail($organizationId);
 
     // Verify user is member
-    if (!$organization->users()->where('users.id', auth()->id())->exists()) {
+    if (!$organisation->users()->where('users.id', auth()->id())->exists()) {
         abort(403, 'Not a member');
     }
 
@@ -225,13 +225,13 @@ public function index(Request $request) {
 ```
 Request comes in
     ↓
-Middleware verifies organization context
+Middleware verifies organisation context
     ↓
-Controller loads organization
+Controller loads organisation
     ↓
 Controller verifies user is member
     ↓
-Query runs scoped to organization
+Query runs scoped to organisation
     ↓
 Results returned for current org only
     ↓
@@ -242,7 +242,7 @@ No data leak possible ✓
 
 ## 👥 Roles & Permissions
 
-### User Roles in Organization
+### User Roles in organisation
 
 | Role | Capabilities | Created By |
 |------|-------------|-----------|
@@ -253,7 +253,7 @@ No data leak possible ✓
 ### How Roles Are Created
 
 ```
-Organization Creation:
+organisation Creation:
     ├─ User creates org
     ├─ System: User → "admin" role
     └─ System: Representative → "voter" role (if different person)
@@ -271,7 +271,7 @@ Manual Assignment (future):
 
 ---
 
-## 💾 Database Operations During Organization Creation
+## 💾 Database Operations During organisation Creation
 
 ### Step-by-Step Backend Processing
 
@@ -281,8 +281,8 @@ POST /api/organizations
 // 1. Validate request
 StoreOrganizationRequest validates all fields
 
-// 2. Create organization
-$organization = Organization::create([
+// 2. Create organisation
+$organisation = organisation::create([
     'name' => $request->name,
     'email' => $request->email,
     'address' => $request->address,
@@ -293,7 +293,7 @@ $organization = Organization::create([
 // Result: organizations table has new record
 
 // 3. Attach current user as admin
-$organization->users()->attach($user->id, [
+$organisation->users()->attach($user->id, [
     'role' => 'admin',
     'assigned_at' => now(),
 ]);
@@ -302,7 +302,7 @@ $organization->users()->attach($user->id, [
 //         role: admin
 
 // 4. Update user's organisation_id
-$user->update(['organisation_id' => $organization->id]);
+$user->update(['organisation_id' => $organisation->id]);
 // Result: users table updated
 
 // 5. Handle representative (if not self)
@@ -313,16 +313,16 @@ if (!$isSelfRepresentative) {
             [/* ... */]
         );
 
-        if (!$organization->users()
+        if (!$organisation->users()
                 ->where('users.id', $representativeUser->id)
                 ->exists()) {
-            $organization->users()->attach($representativeUser->id, [
+            $organisation->users()->attach($representativeUser->id, [
                 'role' => 'voter',
                 'assigned_at' => now(),
             ]);
         }
 
-        $representativeUser->update(['organisation_id' => $organization->id]);
+        $representativeUser->update(['organisation_id' => $organisation->id]);
     }
 }
 // Result: If representative is different person:
@@ -331,8 +331,8 @@ if (!$isSelfRepresentative) {
 //         - Sent invitation email
 
 // 6. Send confirmation email
-Mail::to($organization->email)->send(new OrganizationCreatedMail(
-    $organization,
+Mail::to($organisation->email)->send(new OrganizationCreatedMail(
+    $organisation,
     $user
 ));
 // Result: Confirmation email sent
@@ -341,8 +341,8 @@ Mail::to($organization->email)->send(new OrganizationCreatedMail(
 return response()->json([
     'success' => true,
     'message' => 'Organisation erfolgreich erstellt!',
-    'redirect_url' => route('organizations.show', $organization->slug),
-    'organization' => [/* ... */]
+    'redirect_url' => route('organizations.show', $organisation->slug),
+    'organisation' => [/* ... */]
 ], 201);
 ```
 
@@ -373,41 +373,41 @@ user_organization_roles:
 
 ## 🔗 Feature Integration Points
 
-### 1. Organization Creation → Member View
+### 1. organisation Creation → Member View
 
 ```
 User creates org
     ↓
 Redirected to /organizations/{slug}
     ↓
-Shows organization dashboard
+Shows organisation dashboard
     ↓
 User clicks "Members" link
     ↓
 Navigates to /members/index
     ↓
-MemberController loads members via Organization.users()
+MemberController loads members via organisation.users()
     ↓
-Only shows members of CURRENT organization
+Only shows members of CURRENT organisation
     ↓
 User (admin) + Representative (voter) displayed
 ```
 
-### 2. Organization Creation → Election Setup
+### 2. organisation Creation → Election Setup
 
 ```
 User creates org
     ↓
 User can now create elections
     ↓
-Elections are scoped to organization
+Elections are scoped to organisation
     ↓
 Members can vote in org elections
     ↓
 Results are org-specific
 ```
 
-### 3. Organization Creation → Permissions
+### 3. organisation Creation → Permissions
 
 ```
 User creates org
@@ -428,7 +428,7 @@ Admin can:
 ### Test 1: Complete Creation Flow
 
 ```bash
-# Create organization as user@example.com
+# Create organisation as user@example.com
 POST /api/organizations
 {
   "name": "Test Org",
@@ -445,7 +445,7 @@ POST /api/organizations
 }
 
 # Verify database state
-Organization.first()  # Should exist
+organisation.first()  # Should exist
 users.find(1).organisations().count()  # Should be 1
 users.find(1).organizations().first().pivot.role  # Should be "admin"
 ```
@@ -512,14 +512,14 @@ UNIQUE (user_id, organisation_id) ON user_organization_roles
 -- Ensure unique emails
 UNIQUE (email) ON users
 
--- Ensure organization has owner
+-- Ensure organisation has owner
 FOREIGN KEY (created_by) REFERENCES users(id)
 ```
 
 ### Query Safety
 
 ```php
-// SAFE: Scoped to organization
+// SAFE: Scoped to organisation
 $org->users()->get();
 // Returns only this org's users
 
@@ -532,7 +532,7 @@ if ($org->users()->where('users.id', auth()->id())->exists()) {
 User::all();  ← Returns ALL users globally! Don't do this
 
 // UNSAFE: Without org check
-$org = Organization::find($id);
+$org = organisation::find($id);
 $org->users()->get();  ← What if auth'd user isn't member?
 ```
 
@@ -540,7 +540,7 @@ $org->users()->get();  ← What if auth'd user isn't member?
 
 ## 🚀 Deployment Checklist
 
-Before deploying changes to organization creation:
+Before deploying changes to organisation creation:
 
 - [ ] **Database**
   - [ ] Run migrations: `php artisan migrate`
@@ -558,7 +558,7 @@ Before deploying changes to organization creation:
   - [ ] Translations in all three languages
 
 - [ ] **Tests**
-  - [ ] Organization creation tests pass
+  - [ ] organisation creation tests pass
   - [ ] Member management tests pass
   - [ ] Duplicate prevention tests pass
   - [ ] Multi-tenancy tests pass
@@ -577,7 +577,7 @@ Before deploying changes to organization creation:
 
 ## 🔧 Common Development Tasks
 
-### Task 1: Add a New Field to Organization
+### Task 1: Add a New Field to organisation
 
 1. **Database**
 ```bash
@@ -613,7 +613,7 @@ if (!formData.basic.phone?.trim()) {
 
 5. **API** - Update payload and backend
 ```php
-$organization->update(['phone' => $request->phone]);
+$organisation->update(['phone' => $request->phone]);
 ```
 
 ### Task 2: Add New Role Type
@@ -667,11 +667,11 @@ const VIEWER = 'viewer';
 
 ### Migration Files
 - `database/migrations/2026_02_23_000245_*.php` - Email constraint
-- `database/migrations/2026_02_22_*.php` - User organization roles table
+- `database/migrations/2026_02_22_*.php` - User organisation roles table
 
 ### Component Files
 - `resources/js/Composables/useOrganizationCreation.js`
-- `resources/js/Components/Organization/OrganizationCreateModal.vue`
+- `resources/js/Components/organisation/OrganizationCreateModal.vue`
 - `resources/js/Pages/Members/Index.vue`
 
 ### Controller Files
@@ -679,7 +679,7 @@ const VIEWER = 'viewer';
 - `app/Http/Controllers/MemberController.php`
 
 ### Model Files
-- `app/Models/Organization.php`
+- `app/Models/organisation.php`
 - `app/Models/User.php`
 
 ---
@@ -689,7 +689,7 @@ const VIEWER = 'viewer';
 ### Issue: New member isn't showing in /members/index
 
 **Checklist:**
-1. Is user attached to organization? (Check user_organization_roles table)
+1. Is user attached to organisation? (Check user_organization_roles table)
 2. Is query scoped to current org? (Check MemberController)
 3. Is user authenticated? (Check auth middleware)
 4. Is user a member? (Should be, or 403 error)
@@ -697,7 +697,7 @@ const VIEWER = 'viewer';
 **Solution:**
 ```bash
 php artisan tinker
-> Organization.find(1).users().count()  # Should include new member
+> organisation.find(1).users().count()  # Should include new member
 ```
 
 ### Issue: User appears twice in members list
@@ -706,7 +706,7 @@ php artisan tinker
 1. Check UNIQUE constraint: `SHOW INDEX FROM user_organization_roles`
 2. Check for duplicate pivot records:
 ```bash
-> Organization.find(1).users()->where('users.id', 1).count()
+> organisation.find(1).users()->where('users.id', 1).count()
 # Should be 1, not 2
 ```
 3. Run duplicate prevention tests
@@ -716,7 +716,7 @@ php artisan tinker
 **Critical security issue!**
 
 Check:
-1. Is organization scope applied? `$org->users()->get()`
+1. Is organisation scope applied? `$org->users()->get()`
 2. Is user verified as member? `$org->users()->where('users.id', auth()->id()).exists()`
 3. Is session context set? `session('current_organisation_id')`
 
@@ -724,7 +724,7 @@ Check:
 # Test isolation:
 # Login as User A (org 1 member)
 # Try to query org 2: Should get 403
-# Check that organization scope is active
+# Check that organisation scope is active
 ```
 
 ---

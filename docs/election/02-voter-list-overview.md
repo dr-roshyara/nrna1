@@ -26,7 +26,7 @@ When you access the voter list, you'll see this structure:
 │ Election Management System                    [Language] [Menu] │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  Organization Name > Voters                     ← Breadcrumb    │
+│  organisation Name > Voters                     ← Breadcrumb    │
 │                                                                 │
 │  📊 Voter Statistics                          ← Dashboard Cards │
 │  ┌──────────────┬──────────────┬──────────────┬──────────────┐  │
@@ -171,7 +171,7 @@ When you access the voter list, you'll see this structure:
 Located at the top of the page, showing four important metrics:
 
 #### **Total Voters**
-- Count of all registered voters in this organization
+- Count of all registered voters in this organisation
 - Includes approved, pending, and suspended voters
 - Updates in real-time as voters are added
 
@@ -278,7 +278,7 @@ See [Searching & Filtering](./03-searching-filtering.md) for advanced search opt
 - ❌ Edit voter information
 
 **What you can do:**
-- View all voters in your organization
+- View all voters in your organisation
 - Search for specific voters
 - View statistics and trends
 - Export data (if available)
@@ -300,7 +300,7 @@ See [Searching & Filtering](./03-searching-filtering.md) for advanced search opt
 - ❌ Approve/Suspend buttons
 
 **What you can do:**
-- View all voters in your organization
+- View all voters in your organisation
 - Search and filter voters
 - Generate reports and analytics
 - Export data to CSV or PDF
@@ -322,7 +322,7 @@ See [Searching & Filtering](./03-searching-filtering.md) for advanced search opt
 - ✅ Bulk action options
 
 **What you can do:**
-- View all voters in your organization
+- View all voters in your organisation
 - Search, filter, and sort voters
 - **Approve individual voters** (one at a time)
 - **Suspend individual voters**

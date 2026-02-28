@@ -150,8 +150,8 @@ php artisan tinker
 >>> User::where('email', 'like', '%example.com%')->count()
 # Should return: 2
 
-# Check organization relationship
->>> Organization::find(1)->users()->count()
+# Check organisation relationship
+>>> organisation::find(1)->users()->count()
 # Should include the 2 new users
 ```
 
@@ -182,7 +182,7 @@ app/Policies/
 routes/web.php
   → Add 2-line route
 
-app/Models/Organization.php
+app/Models/organisation.php
   → Add users() relationship
 
 app/Models/User.php
@@ -210,7 +210,7 @@ Backend:
 ✅ POST request received
 ✅ Data validated
 ✅ Users created in database
-✅ Users attached to organization
+✅ Users attached to organisation
 ✅ Success response returned
 
 Authorization:

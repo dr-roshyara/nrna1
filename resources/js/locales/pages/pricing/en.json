@@ -1,13 +1,13 @@
 {
   "title": "Transparent Pricing for Everyone",
-  "subtitle": "Choose the plan that fits your organization",
+  "subtitle": "Choose the plan that fits your organisation",
   "description": "All plans include end-to-end encryption, GDPR compliance, and German servers",
   "plans": {
     "starter": {
       "name": "Starter",
       "price": "49",
       "period": "€/month",
-      "description": "Perfect for small organizations",
+      "description": "Perfect for small organisations",
       "features": [
         "Up to 500 voters",
         "1 election per month",
@@ -21,7 +21,7 @@
       "name": "Professional",
       "price": "149",
       "period": "€/month",
-      "description": "For growing organizations",
+      "description": "For growing organisations",
       "badge": "Popular",
       "features": [
         "Up to 5,000 voters",

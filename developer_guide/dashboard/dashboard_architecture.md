@@ -29,9 +29,9 @@ flowchart TD
 
 | User Type | Dashboard | Purpose | URL |
 |-----------|-----------|---------|-----|
-| **New Customer** | Welcome Dashboard | Onboarding, organization setup | `/dashboard/welcome` |
+| **New Customer** | Welcome Dashboard | Onboarding, organisation setup | `/dashboard/welcome` |
 | **Multi-Role User** | Role Selection | Choose which dashboard to use | `/dashboard/roles` |
-| **Organization Admin** | Admin Dashboard | Manage orgs, elections, users | `/dashboard/admin` |
+| **organisation Admin** | Admin Dashboard | Manage orgs, elections, users | `/dashboard/admin` |
 | **Election Commission** | Commission Dashboard | Monitor elections, audit votes | `/dashboard/commission` |
 | **Registered Voter** | Voter Dashboard | Vote, view ballot, history | `/vote` |
 | **Legacy Voter** | Existing Dashboard | Backward compatibility | `/dashboard` |
@@ -40,9 +40,9 @@ flowchart TD
 ## **ROLE SOURCES:**
 
 1. **New System (Dashboard Roles):**
-   - `admin` → From `user_organization_roles` table (organization admin)
+   - `admin` → From `user_organization_roles` table (organisation admin)
    - `commission` → From `election_commission_members` table
-   - `voter` → From `is_voter` flag + organization membership
+   - `voter` → From `is_voter` flag + organisation membership
 
 2. **Legacy System (Backward Compatible):**
    - `Spatie admin/election_officer` roles

@@ -265,7 +265,7 @@ Lines Changed:
    - Converted all validation rules to array format
    - Fixed "[] operator not supported for strings" error
 
-3. **Commit: fe739f711** - Critical organization creation fixes
+3. **Commit: fe739f711** - Critical organisation creation fixes
    - Email component registration in AppServiceProvider
    - DNS validation conditional logic
 
@@ -355,7 +355,7 @@ git push origin multitenancy
 ## 🔗 Related Documentation
 
 - `developer_guide/logout_csrf_fix/LOGOUT_CSRF_FIX.md` - Detailed fix documentation
-- `developer_guide/organisation_creation/PRODUCTION_ERROR_FIXES.md` - Organization creation fixes
+- `developer_guide/organisation_creation/PRODUCTION_ERROR_FIXES.md` - organisation creation fixes
 - `developer_guide/organisation_creation/VALIDATION_RULES_FIX.md` - Validation rules fix
 
 ---

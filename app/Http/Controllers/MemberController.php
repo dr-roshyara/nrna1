@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Organization;
+use App\Models\Organisation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -10,7 +10,7 @@ use Inertia\Inertia;
 class MemberController extends Controller
 {
     /**
-     * Display members of current user's organization
+     * Display members of current user's organisation
      *
      * GET /members/index
      */
@@ -25,27 +25,27 @@ class MemberController extends Controller
         // Get current user
         $user = auth()->user();
 
-        // Determine which organization to show
-        // Priority: session > user's primary organization
-        $organizationId = session('current_organisation_id') ?? $user->organisation_id;
+        // Determine which organisation to show
+        // Priority: session > user's primary organisation
+        $organisationId = session('current_organisation_id') ?? $user->organisation_id;
 
-        if (!$organizationId) {
-            abort(403, 'No organization selected. Please select an organization first.');
+        if (!$organisationId) {
+            abort(403, 'No organisation selected. Please select an organisation first.');
         }
 
-        $organization = Organization::findOrFail($organizationId);
+        $organisation = Organisation::findOrFail($organisationId);
 
-        // Check if user is member of this organization
-        $isMember = $organization->users()
+        // Check if user is member of this organisation
+        $isMember = $organisation->users()
             ->where('users.id', $user->id)
             ->exists();
 
         if (!$isMember) {
-            abort(403, 'You do not have access to this organization.');
+            abort(403, 'You do not have access to this organisation.');
         }
 
-        // Build query for organization members
-        $query = $organization->users()
+        // Build query for organisation members
+        $query = $organisation->users()
             ->select('users.id', 'users.name', 'users.email', 'users.state', 'users.created_at')
             ->withPivot(['role', 'permissions', 'assigned_at']);
 
@@ -92,17 +92,17 @@ class MemberController extends Controller
 
         return Inertia::render('Members/Index', [
             'members' => $members,
-            'organization' => [
-                'id' => $organization->id,
-                'name' => $organization->name,
-                'slug' => $organization->slug,
+            'organisation' => [
+                'id' => $organisation->id,
+                'name' => $organisation->name,
+                'slug' => $organisation->slug,
             ],
             'filters' => $request->only(['name', 'email', 'role', 'field', 'direction']),
             'currentUser' => $user,
             'stats' => [
-                'total_members' => $organization->users()->count(),
-                'admins_count' => $organization->admins()->count(),
-                'voters_count' => $organization->voters()->count(),
+                'total_members' => $organisation->users()->count(),
+                'admins_count' => $organisation->admins()->count(),
+                'voters_count' => $organisation->voters()->count(),
             ],
         ]);
     }

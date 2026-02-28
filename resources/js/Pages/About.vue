@@ -98,7 +98,7 @@
     <section class="py-16 sm:py-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-bold text-gray-900 mb-12">
-          {{ $t('about.supported_organizations_title') }}
+          {{ $t('about.supported_organisations_title') }}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div v-for="(org, index) in supportedOrgsList" :key="index" class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200 text-center">
@@ -216,10 +216,10 @@ export default {
     },
 
     /**
-     * Extract supported organizations array
+     * Extract supported organisations array
      */
     supportedOrgsList() {
-      return this.aboutContent.supported_organizations || []
+      return this.aboutContent.supported_organisations || []
     },
 
     /**

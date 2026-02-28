@@ -361,12 +361,12 @@ FOR NGOs IN GERMANY        FOR DIASPORA ORGANIZATIONS      FOR ASSOCIATIONS
 
 **Week 2:** Feature Pages
 - `/ngos` - NGO-specific features
-- `/diaspora` - Diaspora organization features  
+- `/diaspora` - Diaspora organisation features  
 - `/pricing` - SaaS pricing tiers
 - `/compliance` - GDPR/BSI documentation
 
 **Week 3:** Multi-tenant Foundation
-- Organization switching
+- organisation switching
 - White-label theming
 - Tenant isolation
 
@@ -375,8 +375,8 @@ FOR NGOs IN GERMANY        FOR DIASPORA ORGANIZATIONS      FOR ASSOCIATIONS
 // Keep current code, add SaaS layer on top
 const config = {
   // Current: NRNA tenant
-  // Future: Multi-tenant with organization_id
-  tenant: window.organization || 'default'
+  // Future: Multi-tenant with organisation_id
+  tenant: window.organisation || 'default'
 }
 ```
 

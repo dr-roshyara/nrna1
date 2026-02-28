@@ -33,8 +33,8 @@ class BreadcrumbHelper
 
         // Route-specific breadcrumbs
         switch (true) {
-            case str_starts_with($routeName, 'organizations'):
-                $breadcrumbs = self::organizationBreadcrumbs($breadcrumbs, $params);
+            case str_starts_with($routeName, 'organisations'):
+                $breadcrumbs = self::organisationBreadcrumbs($breadcrumbs, $params);
                 break;
             case str_starts_with($routeName, 'election'):
                 $breadcrumbs = self::electionBreadcrumbs($breadcrumbs, $params);
@@ -53,19 +53,19 @@ class BreadcrumbHelper
     }
 
     /**
-     * Generate breadcrumbs for organization pages
+     * Generate breadcrumbs for organisation pages
      */
-    private static function organizationBreadcrumbs(array $breadcrumbs, array $params): array
+    private static function organisationBreadcrumbs(array $breadcrumbs, array $params): array
     {
         $breadcrumbs[] = [
-            'label' => trans('sitemap.sections.organizations') ?: 'Organizations',
-            'url' => url('/organizations')
+            'label' => trans('sitemap.sections.organisations') ?: 'Organizations',
+            'url' => url('/organisations')
         ];
 
-        if ($organization = $params['organization'] ?? null) {
+        if ($organisation = $params['organisation'] ?? null) {
             $breadcrumbs[] = [
-                'label' => $organization->name,
-                'url' => route('organizations.show', ['slug' => $organization->slug]),
+                'label' => $organisation->name,
+                'url' => route('organisations.show', ['slug' => $organisation->slug]),
                 'current' => true
             ];
         }

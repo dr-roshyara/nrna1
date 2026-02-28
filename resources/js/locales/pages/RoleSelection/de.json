@@ -27,7 +27,7 @@
     },
     "stats": {
       "admin": {
-        "organizations": "Organisationen",
+        "organisations": "Organisationen",
         "elections": "Wahlen",
         "activeElections": "Aktive Wahlen"
       },

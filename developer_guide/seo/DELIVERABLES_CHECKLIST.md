@@ -54,7 +54,7 @@
 ### ✅ Page Implementation (1 file)
 - [x] `resources/js/Pages/Organizations/Show.vue`
   - Integrated useMeta composable
-  - Dynamic parameter handling (organization name, member count, election count)
+  - Dynamic parameter handling (organisation name, member count, election count)
   - Removed old Head component
   - Added comprehensive documentation
   - Working example for other developers

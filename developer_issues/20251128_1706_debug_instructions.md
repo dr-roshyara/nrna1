@@ -7,7 +7,7 @@ Analyze this [language] code and explain its purpose, structure, and potential i
 
 Focus on:
 - Main functionality and business logic
-- Code structure and organization
+- Code structure and organisation
 - Potential bugs or edge cases
 - Security considerations
 - Performance implications

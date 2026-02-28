@@ -8,7 +8,7 @@ We're developing a **comprehensive, multi-tenant election management and voting 
 
 ## 🎯 **Core Mission**
 
-> *"Democratize democratic processes"* - Enable any organization to run secure, transparent elections with complete voter anonymity and ironclad audit trails.
+> *"Democratize democratic processes"* - Enable any organisation to run secure, transparent elections with complete voter anonymity and ironclad audit trails.
 
 ---
 
@@ -22,7 +22,7 @@ We're developing a **comprehensive, multi-tenant election management and voting 
 ├─────────────────────────────────────────────────────┤
 │                                                      │
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────┐  │
-│  │ Organization│    │ Organization│    │  Demo   │  │
+│  │ organisation│    │ organisation│    │  Demo   │  │
 │  │      A      │    │      B      │    │  Mode   │  │
 │  │  (Live)     │    │  (Live)     │    │ (Test)  │  │
 │  └─────────────┘    └─────────────┘    └─────────┘  │
@@ -285,7 +285,7 @@ JOIN users u ON v.voting_code = u.something  -- NO LINKAGE POSSIBLE!
 Unlike many voting systems that claim anonymity but store user IDs, our votes table has **NO user_id column**. Votes are completely anonymous while still being verifiable.
 
 ### **2. Production-Ready Multi-tenancy**
-Each organization's data is completely isolated at every layer - database, model, and application.
+Each organisation's data is completely isolated at every layer - database, model, and application.
 
 ### **3. Testable Demo Environment**
 Organizations can test the entire voting flow in demo mode before going live, with the exact same UI/UX.

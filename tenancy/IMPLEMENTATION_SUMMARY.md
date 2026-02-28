@@ -291,7 +291,7 @@ tail -f storage/logs/tenant_1.log
 ```
 
 ### 4. Test in Browser
-- Create test users for different organizations
+- Create test users for different organisations
 - Verify they only see their org's data
 - Try direct URL access to other org's data
 - Verify it returns 404

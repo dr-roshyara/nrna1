@@ -24,7 +24,7 @@ return [
         'candidates' => 'उम्मेदवारहरु',
     ],
     'descriptions' => [
-        'organization' => 'संगठन पृष्ठ',
+        'organisation' => 'संगठन पृष्ठ',
         'election' => 'चुनाव जानकारी',
         'results' => 'चुनाव परिणाम र डेटा',
     ],

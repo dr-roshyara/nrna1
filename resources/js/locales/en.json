@@ -47,7 +47,7 @@
   "platform": {
     "name": "PUBLIC DIGIT",
     "tagline": "Secure Voting Platform",
-    "description": "GDPR-compliant voting platform for organizations and diaspora groups"
+    "description": "GDPR-compliant voting platform for organisations and diaspora groups"
   },
   "trust": {
     "gdpr": "GDPR Article 32 Compliant",
@@ -59,7 +59,7 @@
     "audit_trail": "Audit Trail"
   },
   "audience": {
-    "for_organizations": "For Organizations",
+    "for_organisations": "For Organizations",
     "ngos": "For NGOs in Germany",
     "ngos_item1": "Political Organizations",
     "ngos_item2": "Environmental & Humanitarian NGOs",
@@ -80,7 +80,7 @@
     "participation": "Participation",
     "admin": "Administration",
     "committee": "Committee",
-    "organization": "Organization",
+    "organisation": "organisation",
     "settings": "Settings",
     "profile": "Profile",
     "login": "Login",
@@ -182,28 +182,28 @@
   "seo": {
     "site": {
       "title": "Public Digit",
-      "description": "Secure digital voting platform for diaspora communities, organizations, and NGOs worldwide. GDPR-compliant, end-to-end encrypted online elections.",
+      "description": "Secure digital voting platform for diaspora communities, organisations, and NGOs worldwide. GDPR-compliant, end-to-end encrypted online elections.",
       "keywords": "online voting, digital elections, diaspora voting, NRNA elections, secure voting platform, electronic voting system"
     },
     "pages": {
       "home": {
         "title": "Secure Digital Voting | Public Digit Elections",
-        "description": "Empower your organization with secure, transparent online voting. Public Digit offers GDPR-compliant elections for diaspora communities, NGOs, and membership organizations worldwide.",
+        "description": "Empower your organisation with secure, transparent online voting. Public Digit offers GDPR-compliant elections for diaspora communities, NGOs, and membership organisations worldwide.",
         "keywords": "online voting, digital elections, secure voting, diaspora elections, NRNA"
       },
       "pricing": {
         "title": "Pricing Plans | Public Digit Elections",
-        "description": "Transparent pricing for organizations of all sizes. Choose a plan that fits your election needs. No hidden fees, scalable solutions for NGOs and diaspora groups.",
+        "description": "Transparent pricing for organisations of all sizes. Choose a plan that fits your election needs. No hidden fees, scalable solutions for NGOs and diaspora groups.",
         "keywords": "election pricing, voting software cost, online voting platform, election solution pricing"
       },
-      "organizations.show": {
+      "organisations.show": {
         "title": "{organizationName} | Elections & Members | Public Digit",
-        "description": "{organizationName}: {memberCount} members, {electionCount} elections. Secure digital voting platform for organizations and diaspora communities.",
+        "description": "{organizationName}: {memberCount} members, {electionCount} elections. Secure digital voting platform for organisations and diaspora communities.",
         "keywords": "{organizationName}, elections, voting, digital democracy"
       },
       "elections.index": {
         "title": "Active Elections | Public Digit",
-        "description": "Browse active elections across Public Digit platform. Participate in secure, transparent voting for organizations worldwide.",
+        "description": "Browse active elections across Public Digit platform. Participate in secure, transparent voting for organisations worldwide.",
         "keywords": "active elections, upcoming votes, election list, voting opportunities"
       },
       "elections.show": {
@@ -221,12 +221,12 @@
     "phone": "Phone & WhatsApp",
     "phone_number": "+49 151 64322589"
   },
-  "organizations": {
+  "organisations": {
     "demo": {
       "title": "Demo Election Testing",
       "status_setup_complete": "Setup Complete",
       "status_not_setup": "Not Setup",
-      "message_intro": "Test the complete voting workflow with demo data. Setup creates a sample election with posts, candidates, and test codes for your organization.",
+      "message_intro": "Test the complete voting workflow with demo data. Setup creates a sample election with posts, candidates, and test codes for your organisation.",
       "message_confirm_recreate": "This will DELETE all existing demo data for your organisation. Are you sure?",
       "message_error": "An error occurred. Please try again.",
       "stats_posts": "Posts",
@@ -254,9 +254,9 @@
     "title": "About Public Digit",
     "subtitle": "Empowering Democracy Through Secure Digital Voting",
     "mission_title": "Our Mission",
-    "mission_text": "Public Digit is dedicated to making secure, transparent, and accessible voting available to organizations, NGOs, and diaspora communities worldwide. We believe in the power of digital democracy while maintaining the highest standards of security, privacy, and compliance.",
+    "mission_text": "Public Digit is dedicated to making secure, transparent, and accessible voting available to organisations, NGOs, and diaspora communities worldwide. We believe in the power of digital democracy while maintaining the highest standards of security, privacy, and compliance.",
     "vision_title": "Our Vision",
-    "vision_text": "A world where every organization, regardless of size or location, can conduct fair, transparent, and secure elections using cutting-edge technology. We envision digital voting as a standard practice that increases participation, reduces costs, and enhances democratic processes.",
+    "vision_text": "A world where every organisation, regardless of size or location, can conduct fair, transparent, and secure elections using cutting-edge technology. We envision digital voting as a standard practice that increases participation, reduces costs, and enhances democratic processes.",
     "why_public_digit_title": "Why Public Digit?",
     "why_public_digit": [
       {
@@ -281,7 +281,7 @@
       },
       {
         "title": "Proven Technology",
-        "description": "Battle-tested platform serving organizations across Europe and supporting thousands of successful elections."
+        "description": "Battle-tested platform serving organisations across Europe and supporting thousands of successful elections."
       }
     ],
     "how_it_works_title": "How It Works",
@@ -297,8 +297,8 @@
       "Regular Security Audits",
       "ISO 27001 Aligned"
     ],
-    "supported_organizations_title": "Organizations We Support",
-    "supported_organizations": [
+    "supported_organisations_title": "Organizations We Support",
+    "supported_organisations": [
       "Diaspora Communities & Cultural Associations",
       "Political & Civic Organizations",
       "NGOs & Humanitarian Groups",
@@ -313,8 +313,8 @@
     "team_title": "Our Team",
     "team_text": "Public Digit is developed by a dedicated team of security experts, software engineers, and democratic process specialists. We're committed to continuous improvement and staying at the forefront of secure digital voting technology.",
     "contact_title": "Get in Touch",
-    "contact_text": "Interested in learning more about Public Digit? We're here to help with demonstrations, technical consultations, and custom solutions for your organization.",
+    "contact_text": "Interested in learning more about Public Digit? We're here to help with demonstrations, technical consultations, and custom solutions for your organisation.",
     "testimonial_title": "What Our Users Say",
-    "testimonial_text": "Public Digit has transformed how our organization conducts elections. The process is secure, transparent, and our members love the convenience of voting from anywhere in the world."
+    "testimonial_text": "Public Digit has transformed how our organisation conducts elections. The process is secure, transparent, and our members love the convenience of voting from anywhere in the world."
   }
 }

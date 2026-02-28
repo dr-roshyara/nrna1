@@ -1,4 +1,4 @@
-I'll help you design a professional start page for your digital election system focused on diaspora organizations and NGOs in Germany. Here's an enhanced version with better structure, German-specific features, and improved visual hierarchy:
+I'll help you design a professional start page for your digital election system focused on diaspora organisations and NGOs in Germany. Here's an enhanced version with better structure, German-specific features, and improved visual hierarchy:
 
 ```vue
 <template>
@@ -770,4 +770,4 @@ export default {
 7. **Trust signals**: Security certifications, testimonials, statistics
 8. **Clear CTAs**: Free trial, demo request, registration options
 
-This design establishes trust with German NGOs by emphasizing compliance with local laws and security standards while providing a modern, user-friendly interface for diaspora organizations.
+This design establishes trust with German NGOs by emphasizing compliance with local laws and security standards while providing a modern, user-friendly interface for diaspora organisations.

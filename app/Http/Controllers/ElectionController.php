@@ -167,8 +167,11 @@ class ElectionController extends Controller
      */
     public function startDemo(Request $request)
     {
-        Log::info('Demo election start requested', [
-            'user_id' => auth()->user()?->id,
+        $user = auth()->user();
+        Log::info('🎬 Demo election start requested', [
+            'user_id' => $user?->id,
+            'user_org_id' => $user?->organisation_id,
+            'request_path' => $request->path(),
         ]);
 
         // Get first demo election
@@ -181,9 +184,18 @@ class ElectionController extends Controller
             ->first();
 
         if (!$demoElection) {
+            Log::error('❌ No active demo election found', [
+                'user_id' => $user?->id,
+            ]);
             return redirect()->route('dashboard')
                 ->with('error', 'Demo election is not available. Please try again later.');
         }
+
+        Log::info('✅ Found demo election', [
+            'user_id' => $user?->id,
+            'election_id' => $demoElection->id,
+            'election_org_id' => $demoElection->organisation_id,
+        ]);
 
         // Set demo election in session
         session([
@@ -191,14 +203,24 @@ class ElectionController extends Controller
             'selected_election_type' => 'demo',
         ]);
 
-        Log::info('Demo election selected', [
-            'user_id' => auth()->user()?->id,
-            'election_id' => $demoElection->id,
+        Log::info('📝 Session updated with election', [
+            'user_id' => $user?->id,
+            'session_election_id' => session('selected_election_id'),
         ]);
 
         try {
             // Generate voter slug for the user using injected service
-            $slug = $this->slugService->getOrCreateActiveSlug(auth()->user());
+            Log::info('🔑 Generating voter slug...', [
+                'user_id' => $user?->id,
+            ]);
+
+            $slug = $this->slugService->getOrCreateActiveSlug($user);
+
+            Log::info('✅ Voter slug generated successfully', [
+                'user_id' => $user?->id,
+                'slug' => $slug->slug,
+                'election_id' => $slug->election_id,
+            ]);
 
             // For API requests
             if ($request->wantsJson()) {
@@ -211,12 +233,19 @@ class ElectionController extends Controller
 
             // Redirect to DEMO voting flow with slug parameter
             // Uses demo-code.create (not real code.create)
+            Log::info('🔄 Redirecting to demo code create page', [
+                'user_id' => $user?->id,
+                'slug' => $slug->slug,
+                'route' => route('slug.demo-code.create', ['vslug' => $slug->slug]),
+            ]);
+
             return redirect()->route('slug.demo-code.create', ['vslug' => $slug->slug])
                 ->with('success', '🎮 Demo election selected. Test the voting system!');
         } catch (\Exception $e) {
-            Log::error('Failed to start demo election', [
-                'user_id' => auth()->user()?->id,
+            Log::error('❌ Failed to start demo election', [
+                'user_id' => $user?->id,
                 'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
             ]);
 
             return redirect()->route('dashboard')

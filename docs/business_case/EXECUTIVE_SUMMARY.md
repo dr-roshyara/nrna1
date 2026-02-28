@@ -4,7 +4,7 @@
 
 **Public Digit is a secure, multi-language online election platform designed for diaspora communities and organizations.** It enables organizations to conduct transparent, accessible, and fraud-resistant elections for geographically dispersed members.
 
-**Current User:** NRNA (Non-Resident Nepali Association) - Global Nepali diaspora organization
+**Current User:** NRNA (Non-Resident Nepali Association) - Global Nepali diaspora organisation
 **Supported Languages:** English, German, Nepali (extensible)
 **Availability:** Cloud-based, mobile-optimized, accessible globally
 
@@ -162,7 +162,7 @@ Public Digit solves these challenges with:
 - **Annual operations:** ~$336K (hosting, team, maintenance)
 
 ### Revenue Potential
-- **Licensing model:** $5K-20K per organization annually
+- **Licensing model:** $5K-20K per organisation annually
 - **Volume model:** $0.50-2.00 per voter per election
 - **Professional services:** Custom implementation and training
 

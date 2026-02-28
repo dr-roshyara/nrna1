@@ -353,9 +353,16 @@ Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\Substitut
 // });
 
 // Slug-based voting workflow routes (integrated with existing controllers)
-// IP validation middleware added to enforce IP restrictions when CONTROL_IP_ADDRESS=1
-// Election middleware resolves election context (session → route param → real election)
-Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.window', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'election', 'vote.organisation'])->group(function () {
+// Middleware chain:
+// 1. SubstituteBindings - Route model binding
+// 2. voter.slug.verify - Verify slug exists, belongs to user, is active
+// 3. voter.slug.window - Check expiration
+// 4. voter.slug.consistency - Validate election exists and org consistency
+// 5. voter.step.order - Ensure step progression
+// 6. vote.eligibility - Check voting rights
+// 7. validate.voting.ip - IP restrictions (if enabled)
+// 8. vote.organisation - Organisation security
+Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.window', 'voter.slug.consistency', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'vote.organisation'])->group(function () {
 
     // Step 1: Code creation (using existing CodeController)
     Route::get('code/create', [CodeController::class, 'create'])->name('slug.code.create');
@@ -410,7 +417,8 @@ Route::middleware(['auth:sanctum', 'verified', 'election', 'vote.organisation', 
 });
 
 // Slug-based demo election routes
-Route::prefix('v/{vslug}')->middleware(['auth:sanctum', 'verified', \Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.window', 'voter.step.order', 'vote.eligibility', 'election', 'vote.organisation'])->group(function () {
+// Same middleware chain as real voting for consistency
+Route::prefix('v/{vslug}')->middleware(['auth:sanctum', 'verified', \Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.window', 'voter.slug.consistency', 'voter.step.order', 'vote.eligibility', 'vote.organisation'])->group(function () {
     // Demo elections: IDENTICAL workflow to real voting
     Route::middleware(['election.demo'])->group(function () {
         // ============ CODE VERIFICATION STEPS ============

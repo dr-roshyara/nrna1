@@ -152,8 +152,8 @@ return [
     */
 
     'attributes' => [
-        'organization_name' => 'Organization name',
-        'organization_email' => 'Organization email',
+        'organization_name' => 'organisation name',
+        'organization_email' => 'organisation email',
         'street' => 'Street address',
         'city' => 'City',
         'zip_code' => 'Postal code',
@@ -163,22 +163,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Organization-Specific Validation Messages
+    | organisation-Specific Validation Messages
     |--------------------------------------------------------------------------
     |
-    | Custom messages for organization creation form validation
+    | Custom messages for organisation creation form validation
     |
     */
 
-    'organization' => [
+    'organisation' => [
         'name' => [
-            'required' => 'The organization name is required.',
-            'unique' => 'An organization with this name already exists.',
+            'required' => 'The organisation name is required.',
+            'unique' => 'An organisation with this name already exists.',
         ],
         'email' => [
             'required' => 'The email address is required.',
             'invalid' => 'The email address is invalid.',
-            'unique' => 'An organization with this email address already exists.',
+            'unique' => 'An organisation with this email address already exists.',
         ],
         'zip' => [
             'format' => 'The postal code must be 5 digits.',

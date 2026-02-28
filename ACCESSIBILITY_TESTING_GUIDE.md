@@ -306,7 +306,7 @@ Array.from(headings).map(h => parseInt(h.tagName[1]))
 
 ```
 HEADING 1: Voter Management
-[Organization name]
+[organisation name]
 [Description text]
 
 HEADING 2: Filter Voters
@@ -324,7 +324,7 @@ HEADING 2: Voter List
   [Number] Already Voted
 
 TABLE
-  Caption: Voter list for [Organization]
+  Caption: Voter list for [organisation]
   Row: S.N., Name, Email, Status, Actions
   Row: 1, John Doe, john@example.com, Approved, [Suspend button]
   Row: 2, Jane Smith, jane@example.com, Pending, [Approve button]

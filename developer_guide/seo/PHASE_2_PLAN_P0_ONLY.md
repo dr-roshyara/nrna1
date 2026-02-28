@@ -39,7 +39,7 @@
 
 ```
 app/Http/Controllers/
-├── SitemapController.php (ENHANCE - add organization, election, results)
+├── SitemapController.php (ENHANCE - add organisation, election, results)
 └── RobotsController.php (CREATE - dynamic robots.txt)
 
 routes/
@@ -82,7 +82,7 @@ class SitemapController extends Controller
 
     // NEW: Organizations sitemap
     public function organizations() {
-        // Query: Organization::where('active', true)
+        // Query: organisation::where('active', true)
         // URL pattern: /organizations/{slug}
         // Priority: 0.8
         // Change freq: weekly
@@ -279,7 +279,7 @@ curl -I http://localhost:8000/sitemap/main.xml
 
 # Test organizations sitemap
 curl http://localhost:8000/sitemap/organizations.xml | head -20
-# Expected: Valid XML with <url> entries for each organization
+# Expected: Valid XML with <url> entries for each organisation
 
 # Test elections sitemap
 curl http://localhost:8000/sitemap/elections.xml | grep -c "<url>"

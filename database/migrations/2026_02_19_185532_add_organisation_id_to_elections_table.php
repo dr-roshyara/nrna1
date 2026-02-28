@@ -14,7 +14,7 @@ class AddOrganisationIdToElectionsTable extends Migration
     public function up()
     {
         Schema::table('elections', function (Blueprint $table) {
-            $table->unsignedBigInteger('organisation_id')->nullable()->after('id')->index();
+            // $table->unsignedBigInteger('organisation_id')->nullable()->after('id')->index();
         });
     }
 
@@ -26,8 +26,8 @@ class AddOrganisationIdToElectionsTable extends Migration
     public function down()
     {
         Schema::table('elections', function (Blueprint $table) {
-            $table->dropIndex(['organisation_id']);
-            $table->dropColumn('organisation_id');
+            // $table->dropIndex(['organisation_id']);
+            // $table->dropColumn('organisation_id');
         });
     }
 }

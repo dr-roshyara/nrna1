@@ -64,10 +64,10 @@ Collection of all records from all tenants, regardless of current session
 
 **Example**:
 ```php
-// Get all elections from all organizations
+// Get all elections from all organisations
 $allElections = Election::ignoreTenant()->get();
 
-// Get all users from all organizations
+// Get all users from all organisations
 $allUsers = User::ignoreTenant()->get();
 ```
 
@@ -75,7 +75,7 @@ $allUsers = User::ignoreTenant()->get();
 
 ### scopeForOrganisation()
 
-Queries records for a specific organization.
+Queries records for a specific organisation.
 
 ```php
 // Signature
@@ -127,7 +127,7 @@ $platformRecords = Model::forDefaultPlatform()->get();
 Builder instance for chaining, results where organisation_id IS NULL
 ```
 
-**Use Case**: System-wide configuration, shared data not specific to any organization
+**Use Case**: System-wide configuration, shared data not specific to any organisation
 
 **Example**:
 ```php
@@ -149,7 +149,7 @@ if (SystemSetting::forDefaultPlatform()->exists()) {
 
 ### belongsToCurrentOrganisation()
 
-Checks if a record belongs to the currently authenticated organization.
+Checks if a record belongs to the currently authenticated organisation.
 
 ```php
 // Signature
@@ -183,7 +183,7 @@ if ($election->belongsToCurrentOrganisation()) {
 
 ### belongsToOrganisation()
 
-Checks if a record belongs to a specific organization.
+Checks if a record belongs to a specific organisation.
 
 ```php
 // Signature

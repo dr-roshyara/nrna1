@@ -17,12 +17,12 @@
 
 **Location**: `resources/js/Pages/Organizations/Show.vue`
 
-**Purpose**: Main organization dashboard page that orchestrates all sub-components
+**Purpose**: Main organisation dashboard page that orchestrates all sub-components
 
 **Props**:
 ```javascript
 {
-  organization: {
+  organisation: {
     type: Object,
     required: true,
     // { id, name, slug, email, created_at, ... }
@@ -84,21 +84,21 @@
 **Translations Used**:
 ```
 - accessibility.*
-- pages.organization-show.*
+- pages.organisation-show.*
 ```
 
 ---
 
-### 2. **OrganizationHeader.vue** - Organization Information
+### 2. **OrganizationHeader.vue** - organisation Information
 
 **Location**: `resources/js/Pages/Organizations/Partials/OrganizationHeader.vue`
 
-**Purpose**: Display organization header with name, email, and creation date
+**Purpose**: Display organisation header with name, email, and creation date
 
 **Props**:
 ```javascript
 {
-  organization: {
+  organisation: {
     type: Object,
     required: true,
     validator: (org) => org && org.name && org.email
@@ -108,7 +108,7 @@
 ```
 
 **Key Features**:
-- ✅ Organization type badge
+- ✅ organisation type badge
 - ✅ Locale-aware date formatting (de, en, np)
 - ✅ Email link with mailto
 - ✅ Responsive design
@@ -135,19 +135,19 @@ const formatDate = (dateString) => {
 ```html
 <div>
   <div class="flex gap-2">
-    <span class="badge">{{ Organization }}</span>
+    <span class="badge">{{ organisation }}</span>
     <time>{{ Created On: {date} }}</time>
   </div>
-  <h1>{{ organization.name }}</h1>
+  <h1>{{ organisation.name }}</h1>
   <div>
-    <a href="mailto:...">{{ organization.email }}</a>
+    <a href="mailto:...">{{ organisation.email }}</a>
   </div>
 </div>
 ```
 
 **Translations Used**:
 ```
-- pages.organization-show.organization.*
+- pages.organisation-show.organisation.*
 ```
 
 ---
@@ -156,7 +156,7 @@ const formatDate = (dateString) => {
 
 **Location**: `resources/js/Pages/Organizations/Partials/StatsGrid.vue`
 
-**Purpose**: Display organization metrics in card grid
+**Purpose**: Display organisation metrics in card grid
 
 **Props**:
 ```javascript
@@ -218,7 +218,7 @@ Mobile (1 column):
 
 **Translations Used**:
 ```
-- pages.organization-show.stats.*
+- pages.organisation-show.stats.*
 ```
 
 ---
@@ -232,7 +232,7 @@ Mobile (1 column):
 **Props**:
 ```javascript
 {
-  organization: {
+  organisation: {
     type: Object,
     required: false
     // Used to compute import link
@@ -243,8 +243,8 @@ Mobile (1 column):
 **Computed Properties**:
 ```javascript
 const importMembersLink = computed(() => {
-  if (props.organization?.slug) {
-    return `/organizations/${props.organization.slug}/members/import`
+  if (props.organisation?.slug) {
+    return `/organizations/${props.organisation.slug}/members/import`
   }
   return '#'
 })
@@ -279,7 +279,7 @@ emit('create-election')
 
 **Translations Used**:
 ```
-- pages.organization-show.actions.*
+- pages.organisation-show.actions.*
 ```
 
 ---
@@ -304,11 +304,11 @@ emit('create-election')
 ```javascript
 const decodedEmailAddress = computed(() => {
   // Replaces HTML entity &#64; with @
-  return t('pages.organization-show.support.email_address').replace(/&#64;/g, '@')
+  return t('pages.organisation-show.support.email_address').replace(/&#64;/g, '@')
 })
 
 const phoneNumber = computed(() => {
-  return t('pages.organization-show.support.phone_number')
+  return t('pages.organisation-show.support.phone_number')
 })
 ```
 
@@ -336,7 +336,7 @@ const phoneNumber = computed(() => {
 
 **Translations Used**:
 ```
-- pages.organization-show.support.*
+- pages.organisation-show.support.*
 ```
 
 ---
@@ -354,7 +354,7 @@ const phoneNumber = computed(() => {
 **Props**:
 ```javascript
 {
-  organization: {
+  organisation: {
     type: Object,
     required: true
     // { id, name, slug, email, ... }
@@ -387,7 +387,7 @@ Step 2: Preview
 Step 3: Success
 ├─ Show confirmation
 ├─ Display count imported
-└─ Back to organization link
+└─ Back to organisation link
 ```
 
 **Key Functions**:
@@ -401,13 +401,13 @@ submitImport()               // POST to API
 
 **Composable Integration**:
 ```javascript
-const { parseFile, validateData, submitImport } = useMemberImport(organization)
+const { parseFile, validateData, submitImport } = useMemberImport(organisation)
 ```
 
 **Translations Used**:
 ```
 - modals.member_import.* (30+ keys)
-- pages.organization-show.accessibility.*
+- pages.organisation-show.accessibility.*
 ```
 
 **API Call**:
@@ -523,7 +523,7 @@ parseFile(file) {
 ```javascript
 const csrfRequest = useCsrfRequest()
 const response = await csrfRequest.post(
-  `/organizations/${organization.slug}/members/import`,
+  `/organizations/${organisation.slug}/members/import`,
   importData
 )
 ```
@@ -534,7 +534,7 @@ const response = await csrfRequest.post(
 
 ### 1. **ElectionOfficerModal.vue** - Officer Appointment
 
-**Location**: `resources/js/Components/Organization/Modals/ElectionOfficerModal.vue`
+**Location**: `resources/js/Components/organisation/Modals/ElectionOfficerModal.vue`
 
 **To Create**: Complete component with:
 - Member selection dropdown
@@ -551,7 +551,7 @@ const response = await csrfRequest.post(
 ```javascript
 {
   show: Boolean,
-  organization: Object,
+  organisation: Object,
   currentOfficer: Object (optional)
 }
 ```
@@ -566,7 +566,7 @@ emit('appointed', { officer, deputy, expires })
 
 ### 2. **ElectionCreationWizard.vue** - Election Setup
 
-**Location**: `resources/js/Components/Organization/Modals/ElectionCreationWizard.vue`
+**Location**: `resources/js/Components/organisation/Modals/ElectionCreationWizard.vue`
 
 **To Create**: Multi-step wizard with:
 - Step 1: Basic election info (name, type, dates)
@@ -583,7 +583,7 @@ emit('appointed', { officer, deputy, expires })
 ```javascript
 {
   show: Boolean,
-  organization: Object
+  organisation: Object
 }
 ```
 
@@ -631,7 +631,7 @@ emit('created', { election })
 // test/Unit/Components/OrganizationHeader.spec.js
 
 describe('OrganizationHeader', () => {
-  it('displays organization name', () => {
+  it('displays organisation name', () => {
     // Test
   })
 
@@ -649,7 +649,7 @@ describe('OrganizationHeader', () => {
 ```javascript
 // test/Integration/Pages/OrganizationShow.spec.js
 
-describe('Organization Show Page', () => {
+describe('organisation Show Page', () => {
   it('renders all sections', () => {
     // Mount page and verify all components
   })

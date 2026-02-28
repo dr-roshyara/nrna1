@@ -7,7 +7,7 @@ Great question! The **second step** (Phase 2) is to implement **XML Sitemap Gene
 #### 1. **Enhanced Sitemap Controller** (Update existing `SitemapController.php`)
 Currently, you have a basic sitemap. We'll expand it to include:
 - All public pages with language variants (EN, DE, NP)
-- Organization pages
+- organisation pages
 - Election pages (public info only)
 - Results pages (after elections close)
 - Priority and change frequency values
@@ -51,8 +51,8 @@ public function index()
         }
     }
     
-    // Dynamic organization pages
-    $organizations = Organization::all();
+    // Dynamic organisation pages
+    $organizations = organisation::all();
     foreach ($organizations as $org) {
         // Add with alternates
     }

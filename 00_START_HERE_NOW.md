@@ -96,7 +96,7 @@ php artisan make:migration create_user_organization_roles_table
 
 ### Phase 5: Update Models (10 min)
 ```bash
-# Edit app/Models/Organization.php
+# Edit app/Models/organisation.php
 # Add 5 lines of relationship code
 
 # Edit app/Models/User.php

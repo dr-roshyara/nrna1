@@ -1,7 +1,7 @@
-# Complete Test Summary - Organization-Specific Voters List
+# Complete Test Summary - organisation-Specific Voters List
 
 **Project**: Public Digit - Multi-Tenant Voting Platform
-**Feature**: Organization-Specific Voter Management
+**Feature**: organisation-Specific Voter Management
 **Date**: February 23, 2026
 **Status**: ✅ 120 Tests Created & Ready
 
@@ -22,7 +22,7 @@
 ### Functional Tests (67) ✅
 | Suite | Count | Status | Coverage |
 |-------|-------|--------|----------|
-| Middleware | 12 | Ready | Organization validation, authentication |
+| Middleware | 12 | Ready | organisation validation, authentication |
 | Controller | 27 | Ready | CRUD, search, filter, pagination |
 | Security | 17 | Ready | Authorization, CSRF, data protection |
 | Integration | 11 | Ready | Real workflow scenarios |
@@ -106,8 +106,8 @@ Time: ~3 minutes
 
 ### Functional Testing (67 tests)
 
-**Organization Validation** (12 tests)
-- ✅ Organization exists
+**organisation Validation** (12 tests)
+- ✅ organisation exists
 - ✅ User is member
 - ✅ Request attributes set
 - ✅ Session context
@@ -124,7 +124,7 @@ Time: ~3 minutes
 
 **Authorization & Security** (17 tests)
 - ✅ Non-member access blocked
-- ✅ Cross-organization prevented
+- ✅ Cross-organisation prevented
 - ✅ Role-based permissions
 - ✅ CSRF token validation
 - ✅ Data integrity

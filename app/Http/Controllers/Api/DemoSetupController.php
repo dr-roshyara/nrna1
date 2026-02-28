@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Election;
-use App\Models\Organization;
+use App\Models\Organisation;
 use App\Models\DemoPost;
 use App\Models\DemoCandidacy;
 use App\Models\DemoCode;
@@ -18,16 +18,16 @@ class DemoSetupController extends Controller
     /**
      * Trigger demo setup for an organisation
      *
-     * POST /api/organizations/{organization}/demo-setup
+     * POST /api/organisations/{organisation}/demo-setup
      *
      * @param Request $request
-     * @param Organization $organization
+     * @param Organisation $organisation
      * @return \Illuminate\Http\JsonResponse
      */
-    public function setup(Request $request, Organization $organization)
+    public function setup(Request $request, Organisation $organisation)
     {
         // AUTHORIZATION: Check if user is member of this organisation
-        $isMember = $organization->users()
+        $isMember = $organisation->users()
             ->where('users.id', auth()->id())
             ->exists();
 
@@ -40,7 +40,7 @@ class DemoSetupController extends Controller
 
         try {
             // Set session context for the command
-            session(['current_organisation_id' => $organization->id]);
+            session(['current_organisation_id' => $organisation->id]);
 
             // Determine if we should force recreate
             $force = $request->input('force', false);
@@ -48,7 +48,7 @@ class DemoSetupController extends Controller
             // Execute the demo:setup command
             // Use --clean flag when force=true to skip confirmation (web context has no STDIN)
             $exitCode = Artisan::call('demo:setup', [
-                '--org' => $organization->id,
+                '--org' => $organisation->id,
                 '--clean' => $force ? true : false,
             ]);
 
@@ -57,8 +57,8 @@ class DemoSetupController extends Controller
             // Log the action
             Log::channel('voting_audit')->info('Demo setup triggered via web', [
                 'user_id' => auth()->id(),
-                'organization_id' => $organization->id,
-                'organization_name' => $organization->name,
+                'organisation_id' => $organisation->id,
+                'organisation_name' => $organisation->name,
                 'exit_code' => $exitCode,
                 'force' => $force,
                 'ip' => $request->ip(),
@@ -66,7 +66,7 @@ class DemoSetupController extends Controller
 
             if ($exitCode === 0) {
                 // Get updated demo stats
-                $demoStats = $this->getDemoStats($organization);
+                $demoStats = $this->getDemoStats($organisation);
 
                 return response()->json([
                     'success' => true,
@@ -89,7 +89,7 @@ class DemoSetupController extends Controller
         } catch (\Exception $e) {
             Log::error('Demo setup failed', [
                 'error' => $e->getMessage(),
-                'organization_id' => $organization->id,
+                'organisation_id' => $organisation->id,
                 'user_id' => auth()->id(),
             ]);
 
@@ -103,14 +103,14 @@ class DemoSetupController extends Controller
     /**
      * Get demo election statistics for an organisation
      *
-     * @param Organization $organization
+     * @param Organisation $organisation
      * @return array
      */
-    private function getDemoStats(Organization $organization)
+    private function getDemoStats(Organisation $organisation)
     {
         $election = Election::withoutGlobalScopes()
             ->where('type', 'demo')
-            ->where('organisation_id', $organization->id)
+            ->where('organisation_id', $organisation->id)
             ->first();
 
         if (!$election) {

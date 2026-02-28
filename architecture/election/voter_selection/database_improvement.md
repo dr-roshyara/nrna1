@@ -1,6 +1,6 @@
-## 🎯 **Database Optimization for Organization-Specific User Queries**
+## 🎯 **Database Optimization for organisation-Specific User Queries**
 
-Great question! Let me provide a comprehensive solution for **fast organization-specific user selection** while preventing N+1 problems.
+Great question! Let me provide a comprehensive solution for **fast organisation-specific user selection** while preventing N+1 problems.
 
 ---
 
@@ -12,7 +12,7 @@ $users = User::where('is_voter', 1)->paginate(2000);
 ```
 
 **Problems:**
-- ❌ No organization filtering → returns ALL users
+- ❌ No organisation filtering → returns ALL users
 - ❌ 2000 per page → memory intensive
 - ❌ No eager loading → potential N+1 with relationships
 
@@ -22,12 +22,12 @@ $users = User::where('is_voter', 1)->paginate(2000);
 
 ### **1. Indexes (Database Level)**
 
-Create these indexes for lightning-fast organization filtering:
+Create these indexes for lightning-fast organisation filtering:
 
 ```php
 // database/migrations/xxxx_add_optimization_indexes_to_users_table.php
 Schema::table('users', function (Blueprint $table) {
-    // Composite index for organization + voter status (MOST IMPORTANT)
+    // Composite index for organisation + voter status (MOST IMPORTANT)
     $table->index(['organisation_id', 'is_voter']);
     
     // Index for searching
@@ -63,9 +63,9 @@ WHERE organisation_id = 1 AND is_voter = 1;
 ```php
 // app/Http/Controllers/Organizations/VoterController.php
 
-public function index(Request $request, Organization $organization)
+public function index(Request $request, organisation $organisation)
 {
-    $orgId = $organization->id;
+    $orgId = $organisation->id;
     
     // Build optimized query
     $query = User::select([
@@ -129,16 +129,16 @@ If you need relationships, always eager load:
 // ❌ BAD - N+1 problem
 $users = User::where('organisation_id', 1)->get();
 foreach ($users as $user) {
-    echo $user->organization->name; // Queries database each time!
+    echo $user->organisation->name; // Queries database each time!
 }
 
 // ✅ GOOD - Eager load
-$users = User::with('organization')
+$users = User::with('organisation')
     ->where('organisation_id', 1)
     ->get();
     
 foreach ($users as $user) {
-    echo $user->organization->name; // Already loaded, no extra query
+    echo $user->organisation->name; // Already loaded, no extra query
 }
 ```
 
@@ -176,11 +176,11 @@ Cache frequent queries with proper tenant isolation:
 ```php
 use Illuminate\Support\Facades\Cache;
 
-public function getVoterStats(Organization $organization)
+public function getVoterStats(organisation $organisation)
 {
-    $orgId = $organization->id;
+    $orgId = $organisation->id;
     
-    // Cache per organization (prevents cross-org cache bleed)
+    // Cache per organisation (prevents cross-org cache bleed)
     return Cache::remember("org_{$orgId}_voter_stats", 3600, function () use ($orgId) {
         return [
             'total' => User::where('organisation_id', $orgId)
@@ -215,7 +215,7 @@ $results = DB::select('
     FROM users 
     WHERE organisation_id = :org_id 
     AND is_voter = 1
-', ['org_id' => $organization->id]);
+', ['org_id' => $organisation->id]);
 ```
 
 ---
@@ -239,7 +239,7 @@ GROUP BY organisation_id;
 Then use in Laravel:
 ```php
 $stats = DB::table('organization_voter_stats')
-    ->where('organisation_id', $organization->id)
+    ->where('organisation_id', $organisation->id)
     ->first();
 ```
 
@@ -274,7 +274,7 @@ namespace App\Http\Controllers\Organizations;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Organization;
+use App\Models\organisation;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Cache;
@@ -282,9 +282,9 @@ use Illuminate\Support\Facades\DB;
 
 class VoterController extends Controller
 {
-    public function index(Request $request, Organization $organization)
+    public function index(Request $request, organisation $organisation)
     {
-        $orgId = $organization->id;
+        $orgId = $organisation->id;
         
         // Build query with proper indexes
         $query = User::select([
@@ -339,7 +339,7 @@ class VoterController extends Controller
         });
         
         return Inertia::render('Organizations/Voters/Index', [
-            'organization' => $organization,
+            'organisation' => $organisation,
             'voters' => $voters,
             'stats' => $stats,
             'filters' => $request->only(['search', 'status']),
@@ -377,10 +377,10 @@ DB::listen(function ($query) {
 
 | Issue | Solution | Performance Gain |
 |-------|----------|------------------|
-| **No organization filtering** | Add `where('organisation_id', $orgId)` | 10x |
+| **No organisation filtering** | Add `where('organisation_id', $orgId)` | 10x |
 | **Full table scans** | Add composite index `(organisation_id, is_voter)` | 100x |
 | **N+1 problems** | Use `with()` eager loading | 10-100x |
-| **Repeated queries** | Cache with organization prefix | 1000x |
+| **Repeated queries** | Cache with organisation prefix | 1000x |
 | **Large pagination** | Use cursor pagination | 10x |
 | **Complex aggregations** | Use raw SQL | 5x |
 

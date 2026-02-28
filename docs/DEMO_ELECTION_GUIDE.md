@@ -327,7 +327,7 @@ Demo Election 2024
 │   └── Frank Wilson - Infrastructure Expert
 └── Secretary (सचिव)
     ├── Grace Lee - Administration Expert
-    ├── Henry White - Organization Specialist
+    ├── Henry White - organisation Specialist
     └── Iris Walker - Communications Lead
 ```
 

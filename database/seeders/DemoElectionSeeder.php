@@ -167,7 +167,7 @@ class DemoElectionSeeder extends Seeder
             ],
             [
                 'user_name' => 'Henry White',
-                'candidacy_name' => 'Henry White - Organization Specialist',
+                'candidacy_name' => 'Henry White - organisation Specialist',
                 'proposer_name' => 'Christopher Lewis',
                 'supporter_name' => 'Jennifer Martin',
             ],

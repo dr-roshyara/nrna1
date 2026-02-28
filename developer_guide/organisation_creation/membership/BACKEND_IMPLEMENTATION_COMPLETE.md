@@ -24,7 +24,7 @@ My implementation perfectly aligns with the documented specifications in `/devel
 | Data validation | ✅ | ✅ | COMPLETE |
 | Authorization checks | ✅ | ✅ | COMPLETE |
 | User creation | ✅ | ✅ | COMPLETE |
-| Organization attachment | ✅ | ✅ | COMPLETE |
+| organisation attachment | ✅ | ✅ | COMPLETE |
 
 ---
 
@@ -40,7 +40,7 @@ app/Http/Controllers/Organizations/MemberImportController.php
 **Methods**:
 - `create(string $slug)` - Display import page
   - Returns Inertia response with Import.vue
-  - Passes organization data to frontend
+  - Passes organisation data to frontend
   - Authorization: Member check
 
 - `store(Request $request, string $slug)` - Handle imports
@@ -49,7 +49,7 @@ app/Http/Controllers/Organizations/MemberImportController.php
   - Server-side email validation
   - Duplicate detection (internal + existing)
   - User creation with email verification
-  - Organization attachment with 'voter' role
+  - organisation attachment with 'voter' role
   - Returns JSON response
 
 ### Routes Added
@@ -96,7 +96,7 @@ POST /organizations/namaste-nepal-ev/members/import
 ## 🔐 Security Features Implemented
 
 ✅ **Authorization**
-- User must be member of organization
+- User must be member of organisation
 - 403 Forbidden if not member
 - Checked on both GET and POST
 
@@ -129,9 +129,9 @@ User::create([
 ])
 ```
 
-### Organization Attachment
+### organisation Attachment
 ```php
-$organization->users()->attach($user->id, [
+$organisation->users()->attach($user->id, [
     'role' => 'voter',
     'assigned_at' => now(),
 ])
@@ -174,10 +174,10 @@ All 6 phases tested and verified:
    - Email validation → Working
    - Duplicate detection → Working
    - User creation → Ready
-   - Organization attachment → Ready
+   - organisation attachment → Ready
 
 ✅ PHASE 6: Authorization
-   - Organization membership check → Implemented
+   - organisation membership check → Implemented
    - 403 on unauthorized access → Implemented
 ```
 
@@ -190,9 +190,9 @@ All 6 phases tested and verified:
    └─> Frontend navigates to GET /organizations/{slug}/members/import
 
 2. MemberImportController::create()
-   ├─ Finds organization by slug
-   ├─ Checks user is organization member
-   └─ Returns Import.vue with organization data
+   ├─ Finds organisation by slug
+   ├─ Checks user is organisation member
+   └─ Returns Import.vue with organisation data
 
 3. User uploads CSV and clicks Import
    └─> Frontend POSTs to POST /organizations/{slug}/members/import
@@ -200,11 +200,11 @@ All 6 phases tested and verified:
 
 4. MemberImportController::store()
    ├─ Validates request structure
-   ├─ Finds organization by slug
-   ├─ Checks user is organization member
+   ├─ Finds organisation by slug
+   ├─ Checks user is organisation member
    ├─ Parses CSV headers and rows
    ├─ Validates emails (format, duplicates, existing)
-   ├─ Creates users and attaches to organization
+   ├─ Creates users and attaches to organisation
    └─ Returns JSON response
 
 5. Frontend receives response
@@ -222,7 +222,7 @@ All 6 phases tested and verified:
 - ✅ CSV/Excel file parsing
 - ✅ Live preview with validation
 - ✅ Member creation in database
-- ✅ Organization-member relationship
+- ✅ organisation-member relationship
 - ✅ Multi-language support (DE/EN/NP)
 - ✅ Mobile responsive
 - ✅ Accessibility compliant (WCAG 2.1 AA)
@@ -330,7 +330,7 @@ If you want to enhance further, consider:
 - [x] Data validation implemented
 - [x] Authorization checks added
 - [x] User creation logic
-- [x] Organization attachment
+- [x] organisation attachment
 - [x] CSRF protection
 - [x] Error handling
 - [x] Response formatting

@@ -15,10 +15,10 @@ flowchart TD
     
     %% Registration Flow
     E --> E1[📋 Personal Registration]
-    E --> E2[🏢 Organization Registration]
+    E --> E2[🏢 organisation Registration]
     
     E1 --> E3[👤 Individual Dashboard]
-    E2 --> E4[🏛️ Organization Onboarding]
+    E2 --> E4[🏛️ organisation Onboarding]
     
     %% Demo Gateway
     F --> F1{Choose Demo Role}
@@ -34,7 +34,7 @@ flowchart TD
     E4 --> H
     
     H --> I[👤 Individual User]
-    H --> J[👑 Organization Admin]
+    H --> J[👑 organisation Admin]
     H --> K[👁️ Election Observer]
     
     %% Individual User Flow
@@ -43,7 +43,7 @@ flowchart TD
     I1 --> I3[✅ Vote Confirmation]
     I1 --> I4[📊 Past Votes Archive]
     
-    %% Organization Admin Flow
+    %% organisation Admin Flow
     J --> J1[🏢 Admin Dashboard]
     
     J1 --> J2[📋 Election Management Hub]
@@ -108,7 +108,7 @@ Priority 1 - Core User Journeys:
 │   ├── Role Selection
 │   ├── 👑 Admin Demo Dashboard
 │   └── 👤 Voter Demo Experience
-└── 🏢 Organization Onboarding (Critical!)
+└── 🏢 organisation Onboarding (Critical!)
 ```
 
 ### **PHASE 2: IDEATE & PROTOTYPE (Weeks 3-4)**
@@ -170,7 +170,7 @@ Priority 3 - Advanced Features:
 ```
 Priority 4 - Polish & Scale:
 ├── ⚙️ Settings & Customization:
-│   ├── Organization Settings
+│   ├── organisation Settings
 │   ├── Branding & White-labeling
 │   ├── Email Templates
 │   └── API Configuration
@@ -214,10 +214,10 @@ mindmap
     Level 2 - Activation
       🔐 Registration Flow (P0)
         Personal Signup
-        Organization Signup
+        organisation Signup
         Email Verification
       
-      🏢 Organization Onboarding (P0)
+      🏢 organisation Onboarding (P0)
         Type Selection
         Needs Assessment
         Quick Start Guide
@@ -318,12 +318,12 @@ TestMode->Success: Sees immediate results
 Success->Upgrade: Considers paid plan
 ```
 
-### **PATH B: ORGANIZATION ADOPTION (Team Value)**
+### **PATH B: organisation ADOPTION (Team Value)**
 ```
 Org Admin->Landing: Researches solutions
 Landing->SecurityPage: Reviews compliance
 SecurityPage->Demo: Tests admin features
-Demo->Register: Signs up organization
+Demo->Register: Signs up organisation
 Register->Onboarding: Sets up org profile
 Onboarding->TeamInvite: Invites committee
 TeamInvite->ElectionSetup: Creates first election
@@ -390,9 +390,9 @@ Nice to Have:
   - Multi-language Support
   
 User Stories:
-  - "As an organization, we want to use our branding"
+  - "As an organisation, we want to use our branding"
   - "As a developer, I want to integrate with our CRM"
-  - "As a global organization, we need multiple languages"
+  - "As a global organisation, we need multiple languages"
 ```
 
 ---
@@ -434,7 +434,7 @@ User Stories:
 ## **RECOMMENDED IMPLEMENTATION ORDER**
 
 1. **Start with the DEMO SYSTEM** - This is your most powerful acquisition tool
-2. **Build the ONBOARDING FLOW** - Capture organization context early
+2. **Build the ONBOARDING FLOW** - Capture organisation context early
 3. **Create the ELECTION WIZARD** - Make first election creation effortless
 4. **Develop the VOTING INTERFACE** - Core value delivery
 5. **Add ADMIN DASHBOARD** - Management capabilities

@@ -59,7 +59,7 @@ Core functionality tests:
 - ✅ `it_returns_error_for_empty_bulk_approve` - Validation
 - ✅ `it_allows_bulk_suspend_of_voters` - Bulk suspension works
 
-#### Pagination & Organization Scoping
+#### Pagination & organisation Scoping
 - ✅ `it_paginates_voter_list` - Pagination implemented
 - ✅ `it_only_shows_voters_from_the_organization` - Org filtering
 - ✅ `it_only_shows_voters_not_non_voters` - is_voter flag respected
@@ -85,7 +85,7 @@ Core functionality tests:
 
 Security-focused tests:
 
-#### Cross-Organization Access
+#### Cross-organisation Access
 - ✅ `it_prevents_cross_organization_voter_list_access` - List access blocked
 - ✅ `it_prevents_cross_organization_voter_approval` - Approval blocked
 - ✅ `it_prevents_cross_organization_voter_suspension` - Suspension blocked
@@ -149,9 +149,9 @@ End-to-end workflow tests:
 ## Security Vulnerabilities Tested
 
 ### ✅ Multi-Tenant Isolation
-- Cross-organization access prevention
+- Cross-organisation access prevention
 - Voter data isolation
-- Organization scoping in all queries
+- organisation scoping in all queries
 
 ### ✅ Authorization
 - Role-based access control

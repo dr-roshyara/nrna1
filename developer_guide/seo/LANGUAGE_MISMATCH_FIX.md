@@ -308,7 +308,7 @@ useMeta({ pageKey: 'home' })
 // <meta property="og:locale" content="de_DE">
 ```
 
-### Organization Page (German)
+### organisation Page (German)
 
 **URL:** `/organizations/nrna-germany?locale=de`
 

@@ -1,17 +1,17 @@
 {
   "adminDashboard": {
     "title": "Admin Dashboard",
-    "subtitle": "Manage your organizations and elections",
+    "subtitle": "Manage your organisations and elections",
     "stats": {
       "totalElections": "Total Elections",
       "activeElections": "Active Elections",
       "totalVoters": "Total Voters",
       "participationRate": "Participation Rate"
     },
-    "organizations": {
+    "organisations": {
       "title": "Your Organizations",
-      "empty": "No organizations yet",
-      "createButton": "Create Organization",
+      "empty": "No organisations yet",
+      "createButton": "Create organisation",
       "manageButton": "Manage"
     }
   }

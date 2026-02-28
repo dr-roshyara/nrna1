@@ -5,26 +5,26 @@
       href="#main-content"
       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
     >
-      {{ $t('pages.organization-show.accessibility.skip_to_main') }}
+      {{ $t('pages.organisation-show.accessibility.skip_to_main') }}
     </a>
 
     <!-- Accessibility: Screen reader announcement for page load -->
     <div role="status" aria-live="polite" class="sr-only">
-      {{ $t('pages.organization-show.accessibility.page_loaded', { organization: organization.name }) }}
+      {{ $t('pages.organisation-show.accessibility.page_loaded', { organisation: organisation.name }) }}
     </div>
 
     <!-- Main Content -->
     <main
       id="main-content"
       role="main"
-      :aria-label="$t('pages.organization-show.accessibility.organization_dashboard', { organization: organization.name })"
+      :aria-label="$t('pages.organisation-show.accessibility.organization_dashboard', { organisation: organisation.name })"
     >
       <div class="py-12 bg-gray-50 min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
-          <!-- 1. Organization Header -->
+          <!-- 1. organisation Header -->
           <section>
-            <OrganizationHeader :organization="organization" />
+            <OrganizationHeader :organisation="organisation" />
           </section>
 
           <!-- 2. Stats Grid Section -->
@@ -35,7 +35,7 @@
           <!-- 3. Quick Actions Section -->
           <section class="bg-white rounded-xl shadow-sm p-8 border border-gray-200">
             <ActionButtons
-              :organization="organization"
+              :organisation="organisation"
               @appoint-officer="openOfficerModal"
               @create-election="openElectionWizard"
             />
@@ -49,7 +49,7 @@
           <!-- 5. Demo Setup Section (conditional - Distinct Card) -->
           <section v-if="canManage">
             <DemoSetupButton
-              :organization="organization"
+              :organisation="organisation"
               :demo-status="demoStatus"
             />
           </section>
@@ -82,7 +82,7 @@ import DemoSetupButton from './Partials/DemoSetupButton.vue'
 const { t } = useI18n()
 
 const props = defineProps({
-  organization: {
+  organisation: {
     type: Object,
     required: true
   },
@@ -104,7 +104,7 @@ const props = defineProps({
 
 /**
  * Event Handlers for Action Buttons
- * Note: Member import now uses dedicated page (/organizations/{slug}/members/import)
+ * Note: Member import now uses dedicated page (/organisations/{slug}/members/import)
  * Officer and Election handlers will be implemented when modals are added
  */
 const openOfficerModal = () => {
@@ -118,15 +118,15 @@ const openElectionWizard = () => {
 /**
  * SEO Meta Tags Management
  *
- * Dynamically sets page-level meta tags based on organization data.
- * Updates title and description to include organization name, member count, and election count.
+ * Dynamically sets page-level meta tags based on organisation data.
+ * Updates title and description to include organisation name, member count, and election count.
  *
- * Translation keys: 'pages.organization-show.page_title', 'pages.organization-show.page_description'
+ * Translation keys: 'pages.organisation-show.page_title', 'pages.organisation-show.page_description'
  */
 useMeta({
-  pageKey: 'organizations.show',
+  pageKey: 'organisations.show',
   params: {
-    organization: props.organization?.name || 'Organization',
+    organisation: props.organisation?.name || 'organisation',
     memberCount: props.stats?.members_count || '0',
     electionCount: props.stats?.elections_count || '0'
   }

@@ -225,7 +225,7 @@ const errorMap = {
 3. Environment variable (`MIX_DEFAULT_LOCALE`)
 4. Default fallback (German - de)
 
-### Translation File Organization
+### Translation File organisation
 ```
 resources/js/locales/
 ├── en.json                    # Global English translations

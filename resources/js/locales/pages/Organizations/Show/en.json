@@ -1,21 +1,21 @@
 {
-  "page_title": "Dashboard | {organization}",
-  "page_description": "Manage your organization, members and elections",
+  "page_title": "Dashboard | {organisation}",
+  "page_description": "Manage your organisation, members and elections",
   "accessibility": {
-    "main_content": "Main content of the organization page",
-    "page_loaded": "Page loaded: {organization}",
-    "organization_dashboard": "Organization dashboard for {organization}",
+    "main_content": "Main content of the organisation page",
+    "page_loaded": "Page loaded: {organisation}",
+    "organization_dashboard": "organisation dashboard for {organisation}",
     "skip_to_main": "Skip to main content"
   },
-  "organization": {
-    "type_label": "Organization",
+  "organisation": {
+    "type_label": "organisation",
     "member_since": "Member since {date}",
     "created_on": "Created on {date}",
     "email": "Email",
     "email_label": "Contact Email"
   },
   "stats": {
-    "title": "Organization at a Glance",
+    "title": "organisation at a Glance",
     "total_members": "Total Members",
     "active_members": "Active Members",
     "total_elections": "Total Elections",
@@ -41,7 +41,7 @@
     "more_options": "More Options"
   },
   "onboarding": {
-    "title": "Complete Your Organization Setup",
+    "title": "Complete Your organisation Setup",
     "description": "Follow these steps to get started quickly",
     "progress": "Progress",
     "steps": {
@@ -170,7 +170,7 @@
     "election_officer": {
       "title": "Appoint Election Officer",
       "subtitle": "According to §26 BGB - Association Law",
-      "description": "Select a person from your organization as election officer",
+      "description": "Select a person from your organisation as election officer",
       "select_member": "Select Member",
       "search_placeholder": "Search for member...",
       "no_members": "No members available. Import members first.",
@@ -338,11 +338,11 @@
   "demo-results": {
     "title": "Demo Election Results",
     "description": "Explore our demo election system with sample data. See how results are presented and understand the voting workflow.",
-    "org-demo-aria": "Organization demo results - MODE 2",
+    "org-demo-aria": "organisation demo results - MODE 2",
     "mode-2": "MODE 2",
-    "org-demo-title": "Your Organization Demo Results",
-    "org-demo-desc": "Test election results scoped to your organization. Perfect for understanding the voting system before going live.",
-    "feature-org-scoped": "Organization-specific data",
+    "org-demo-title": "Your organisation Demo Results",
+    "org-demo-desc": "Test election results scoped to your organisation. Perfect for understanding the voting system before going live.",
+    "feature-org-scoped": "organisation-specific data",
     "feature-download-pdf": "Download results as PDF",
     "feature-print": "Print-friendly format",
     "button-view": "View Results",
@@ -355,6 +355,6 @@
     "feature-mobile-responsive": "Fully responsive design",
     "button-explore": "Explore Results",
     "info-title": "About Demo Results",
-    "info-description": "Demo results help you understand our election system. Mode 1 (Public) shows global sample data, while Mode 2 (Organization) displays data specific to your organization. No real election data is used."
+    "info-description": "Demo results help you understand our election system. Mode 1 (Public) shows global sample data, while Mode 2 (organisation) displays data specific to your organisation. No real election data is used."
   }
 }

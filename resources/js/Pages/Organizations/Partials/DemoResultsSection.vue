@@ -8,25 +8,25 @@
         id="demo-results-heading"
         class="text-2xl font-bold text-gray-900 dark:text-white mb-2"
       >
-        {{ $t('pages.organization-show.demo-results.title') }}
+        {{ $t('pages.organisation-show.demo-results.title') }}
       </h2>
       <p class="text-gray-600 dark:text-gray-400 max-w-3xl">
-        {{ $t('pages.organization-show.demo-results.description') }}
+        {{ $t('pages.organisation-show.demo-results.description') }}
       </p>
     </div>
 
     <!-- Demo Results Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Organization Demo Results Card -->
+      <!-- organisation Demo Results Card -->
       <button
         @click="navigateToDemoResult"
         class="group relative bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 p-6 border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600 w-full text-left"
-        :aria-label="$t('pages.organization-show.demo-results.org-demo-aria')"
+        :aria-label="$t('pages.organisation-show.demo-results.org-demo-aria')"
       >
         <!-- Badge -->
         <div class="absolute top-4 right-4">
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
-            {{ $t('pages.organization-show.demo-results.mode-2') }}
+            {{ $t('pages.organisation-show.demo-results.mode-2') }}
           </span>
         </div>
 
@@ -41,10 +41,10 @@
 
         <!-- Content -->
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-          {{ $t('pages.organization-show.demo-results.org-demo-title') }}
+          {{ $t('pages.organisation-show.demo-results.org-demo-title') }}
         </h3>
         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-          {{ $t('pages.organization-show.demo-results.org-demo-desc') }}
+          {{ $t('pages.organisation-show.demo-results.org-demo-desc') }}
         </p>
 
         <!-- Features List -->
@@ -53,25 +53,25 @@
             <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
-            {{ $t('pages.organization-show.demo-results.feature-org-scoped') }}
+            {{ $t('pages.organisation-show.demo-results.feature-org-scoped') }}
           </li>
           <li class="flex items-center gap-2">
             <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
-            {{ $t('pages.organization-show.demo-results.feature-download-pdf') }}
+            {{ $t('pages.organisation-show.demo-results.feature-download-pdf') }}
           </li>
           <li class="flex items-center gap-2">
             <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
-            {{ $t('pages.organization-show.demo-results.feature-print') }}
+            {{ $t('pages.organisation-show.demo-results.feature-print') }}
           </li>
         </ul>
 
         <!-- CTA Button -->
         <span class="inline-flex items-center text-sm font-medium text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300">
-          {{ $t('pages.organization-show.demo-results.button-view') }}
+          {{ $t('pages.organisation-show.demo-results.button-view') }}
           <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
@@ -85,12 +85,12 @@
       <button
         @click="navigateToGlobalDemoResult"
         class="group relative bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 w-full text-left"
-        :aria-label="$t('pages.organization-show.demo-results.global-demo-aria')"
+        :aria-label="$t('pages.organisation-show.demo-results.global-demo-aria')"
       >
         <!-- Badge -->
         <div class="absolute top-4 right-4">
           <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
-            {{ $t('pages.organization-show.demo-results.mode-1') }}
+            {{ $t('pages.organisation-show.demo-results.mode-1') }}
           </span>
         </div>
 
@@ -105,10 +105,10 @@
 
         <!-- Content -->
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-          {{ $t('pages.organization-show.demo-results.global-demo-title') }}
+          {{ $t('pages.organisation-show.demo-results.global-demo-title') }}
         </h3>
         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-          {{ $t('pages.organization-show.demo-results.global-demo-desc') }}
+          {{ $t('pages.organisation-show.demo-results.global-demo-desc') }}
         </p>
 
         <!-- Features List -->
@@ -117,25 +117,25 @@
             <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
-            {{ $t('pages.organization-show.demo-results.feature-public-demo') }}
+            {{ $t('pages.organisation-show.demo-results.feature-public-demo') }}
           </li>
           <li class="flex items-center gap-2">
             <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
-            {{ $t('pages.organization-show.demo-results.feature-accessible-all') }}
+            {{ $t('pages.organisation-show.demo-results.feature-accessible-all') }}
           </li>
           <li class="flex items-center gap-2">
             <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
             </svg>
-            {{ $t('pages.organization-show.demo-results.feature-mobile-responsive') }}
+            {{ $t('pages.organisation-show.demo-results.feature-mobile-responsive') }}
           </li>
         </ul>
 
         <!-- CTA Button -->
         <span class="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300">
-          {{ $t('pages.organization-show.demo-results.button-explore') }}
+          {{ $t('pages.organisation-show.demo-results.button-explore') }}
           <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
@@ -153,8 +153,8 @@
           <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zm-11-1a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd" />
         </svg>
         <div class="text-sm text-blue-900 dark:text-blue-200">
-          <p class="font-medium mb-1">{{ $t('pages.organization-show.demo-results.info-title') }}</p>
-          <p class="text-xs opacity-90">{{ $t('pages.organization-show.demo-results.info-description') }}</p>
+          <p class="font-medium mb-1">{{ $t('pages.organisation-show.demo-results.info-title') }}</p>
+          <p class="text-xs opacity-90">{{ $t('pages.organisation-show.demo-results.info-description') }}</p>
         </div>
       </div>
     </div>
@@ -165,7 +165,7 @@
 import { router } from '@inertiajs/vue3'
 
 /**
- * Navigate to organization-scoped demo results (MODE 2)
+ * Navigate to organisation-scoped demo results (MODE 2)
  */
 const navigateToDemoResult = () => {
   window.location.href = '/demo/result'

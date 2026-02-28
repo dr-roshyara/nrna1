@@ -45,14 +45,14 @@
       <div class="bg-white rounded-lg shadow-sm">
         <div class="px-6 py-4 border-b">
           <h2 class="text-xl font-bold text-gray-900">
-            {{ $t('pages.admin.adminDashboard.organizations.title') }}
+            {{ $t('pages.admin.adminDashboard.organisations.title') }}
           </h2>
         </div>
 
-        <div v-if="organizations.length > 0" class="p-6">
+        <div v-if="organisations.length > 0" class="p-6">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div
-              v-for="org in organizations"
+              v-for="org in organisations"
               :key="org.id"
               class="border rounded-lg p-6 hover:shadow-lg transition-shadow"
             >
@@ -61,18 +61,18 @@
               <button
                 class="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
               >
-                {{ $t('pages.admin.adminDashboard.organizations.manageButton') }}
+                {{ $t('pages.admin.adminDashboard.organisations.manageButton') }}
               </button>
             </div>
           </div>
         </div>
 
         <div v-else class="p-6 text-center">
-          <p class="text-gray-600 mb-4">{{ $t('pages.admin.adminDashboard.organizations.empty') }}</p>
+          <p class="text-gray-600 mb-4">{{ $t('pages.admin.adminDashboard.organisations.empty') }}</p>
           <button
             class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
           >
-            {{ $t('pages.admin.adminDashboard.organizations.createButton') }}
+            {{ $t('pages.admin.adminDashboard.organisations.createButton') }}
           </button>
         </div>
       </div>
@@ -89,7 +89,7 @@ const { t: $t } = useI18n()
 
 defineProps({
   currentRole: String,
-  organizations: Array,
+  organisations: Array,
   quickStats: Object,
 })
 

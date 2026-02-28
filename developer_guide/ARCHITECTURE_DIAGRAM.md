@@ -78,7 +78,7 @@
 │  │                     │  │ • Monitor Votes      │  │ • Verify Vote    │
 │  │                     │  │                      │  │                  │
 │  │ Data Access:        │  │ Data Access:         │  │ Data Access:     │
-│  │ • organizations     │  │ • elections          │  │ • activeElections│
+│  │ • organisations     │  │ • elections          │  │ • activeElections│
 │  │ • quickStats        │  │ • quickStats         │  │ • votingHistory  │
 │  │                     │  │                      │  │ • quickStats     │
 │  └─────────────────────┘  └──────────────────────┘  └──────────────────┘
@@ -94,7 +94,7 @@
 └────────────────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────┐      ┌──────────────────────────┐
-│       users              │      │    organizations         │
+│       users              │      │    organisations         │
 ├──────────────────────────┤      ├──────────────────────────┤
 │ • id (PK)                │      │ • id (PK)                │
 │ • email                  │      │ • name                   │
@@ -113,7 +113,7 @@
          │          │ user_organization_roles       │       │
          │          ├───────────────────────────────┤       │
          │          │ • user_id (FK)                │       │
-         │          │ • organization_id (FK)        │───────┘
+         │          │ • organisation_id (FK)        │───────┘
          │          │ • role (enum: admin,          │
          │          │   commission, voter)          │
          │          │ • permissions (JSON)          │
@@ -125,7 +125,7 @@
 │      elections           │      │     candidates           │
 ├──────────────────────────┤      ├──────────────────────────┤
 │ • id (PK)                │      │ • id (PK)                │
-│ • organization_id (FK)   │      │ • election_id (FK)       │
+│ • organisation_id (FK)   │      │ • election_id (FK)       │
 │ • title                  │      │ • name                   │
 │ • status                 │      │ • votes_count            │
 │ • votes_count            │      │ • created_at             │
@@ -184,7 +184,7 @@
                          ↓
 ┌────────────────────────────────────────────────────────────────┐
 │  AdminDashboardController::index()                              │
-│  - Fetch user's organizations                                   │
+│  - Fetch user's organisations                                   │
 │  - Calculate statistics                                         │
 │  - Render Admin/Dashboard.vue                                   │
 └────────────────────────────────────────────────────────────────┘
@@ -445,7 +445,7 @@ TYPICAL SESSION LIFECYCLE:
         ↓
 ┌─────────────────────────────────────────────────────────┐
 │    RoleSelection/Index.vue (First Dashboard)            │
-│  ├─ Props: currentRole, organizations, quickStats     │
+│  ├─ Props: currentRole, organisations, quickStats     │
 │  ├─ Data: role cards (admin, commission, voter)        │
 │  └─ Actions: switchRole() → POST /switch-role/{role}   │
 └─────────────────────────────────────────────────────────┘
@@ -455,9 +455,9 @@ TYPICAL SESSION LIFECYCLE:
         │        ↓
         │   ┌──────────────────────────┐
         │   │  Admin/Dashboard.vue     │
-        │   ├─ Props: organizations    │
+        │   ├─ Props: organisations    │
         │   ├─ Stats: elections, users │
-        │   └─ Manage: organizations   │
+        │   └─ Manage: organisations   │
         │   └──────────────────────────┘
         │
         ├─→ User selects Commission role
@@ -503,7 +503,7 @@ TYPICAL SESSION LIFECYCLE:
 │    Duration: Session lifetime (~hours)                │
 │                                                        │
 │ 3. Vue Component State (Browser Memory)               │
-│    ├─ Organization data (loaded once)                 │
+│    ├─ organisation data (loaded once)                 │
 │    ├─ Election data (refreshed on navigate)           │
 │    └─ Translation data (preloaded)                    │
 │                                                        │
@@ -563,7 +563,7 @@ With Optimization (current):
 │ └─ Middleware validates on each request             │
 │                                                      │
 │ Layer 4: Data Access Control                        │
-│ ├─ Queries filtered by user's organizations         │
+│ ├─ Queries filtered by user's organisations         │
 │ ├─ Commission users see only their elections        │
 │ ├─ Voters see only assigned elections               │
 │ └─ No cross-tenant data leakage                     │
@@ -578,8 +578,8 @@ ATTACK PREVENTION:
   → Middleware checks database, not session alone
 
 ✓ Cross-Tenant Access Prevented
-  Data queries are scoped to user's organizations
-  → Cannot access other organization's elections
+  Data queries are scoped to user's organisations
+  → Cannot access other organisation's elections
 
 ✓ Session Hijacking Mitigated
   Hijacker gets session but cannot change role

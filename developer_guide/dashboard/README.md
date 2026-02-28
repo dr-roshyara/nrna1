@@ -4,7 +4,7 @@
 
 The **Three-Role Dashboard System** is a comprehensive role-based access control architecture for the Public Digit platform. It supports three distinct user types:
 
-1. **Admin** - Organization managers and administrators
+1. **Admin** - organisation managers and administrators
 2. **Commission** - Election monitors and supervisors
 3. **Voter** - Regular participants casting votes
 
@@ -16,7 +16,7 @@ Additionally, the system maintains **backward compatibility** with legacy roles 
 
 | Role | URL | Purpose |
 |------|-----|---------|
-| New User | `/dashboard/welcome` | Onboarding & organization setup |
+| New User | `/dashboard/welcome` | Onboarding & organisation setup |
 | Multi-Role | `/dashboard/roles` | Select which role to use |
 | Admin | `/dashboard/admin` | Manage organizations & elections |
 | Commission | `/dashboard/commission` | Monitor elections & votes |
@@ -60,7 +60,7 @@ Priority 5: Everyone else → /dashboard
 ### Database
 
 - **users** - User accounts with legacy flags (`is_voter`, `is_committee_member`)
-- **organizations** - Organization records
+- **organizations** - organisation records
 - **user_organization_roles** - Mapping users to organizations with roles (NEW)
 - **election_commission_members** - Commission member assignments (NEW)
 - **elections** - Election records (linked to organizations)
@@ -157,7 +157,7 @@ app/
 │       └── LoginResponse.php
 ├── Models/
 │   ├── User.php (extended with getDashboardRoles)
-│   ├── Organization.php (new)
+│   ├── organisation.php (new)
 │   └── ...
 └── ...
 
@@ -196,7 +196,7 @@ database/
 ## Next Steps
 
 1. **User Management** - Assign roles to users via admin interface
-2. **Organization Creation** - Implement wizard for new organizations
+2. **organisation Creation** - Implement wizard for new organizations
 3. **Election Setup** - Create election management interface
 4. **Voting Interface** - Implement secure voting mechanisms
 5. **Analytics** - Add dashboards with election metrics

@@ -1573,7 +1573,7 @@ The project uses a **translation-first architecture** with language files in `re
 Current translation pattern:
 ```vue
 <template>
-  <h1>{{ $t('organizations.show.title') }}</h1>
+  <h1>{{ $t('organisations.show.title') }}</h1>
   <p>{{ $t('common.actions.save') }}</p>
 </template>
 ```
@@ -1590,7 +1590,7 @@ Add a demo setup button to the organisation page with:
 ### 1. English (resources/js/Lang/en.json)
 ```json
 {
-  "organizations": {
+  "organisations": {
     "demo": {
       "title": "Demo Election Testing",
       "status_setup_complete": "Setup Complete",
@@ -1617,7 +1617,7 @@ Add a demo setup button to the organisation page with:
 ### 2. German (resources/js/Lang/de.json)
 ```json
 {
-  "organizations": {
+  "organisations": {
     "demo": {
       "title": "Demo-Wahl Test",
       "status_setup_complete": "Eingerichtet",
@@ -1644,7 +1644,7 @@ Add a demo setup button to the organisation page with:
 ### 3. Nepali (resources/js/Lang/np.json)
 ```json
 {
-  "organizations": {
+  "organisations": {
     "demo": {
       "title": "डेमो निर्वाचन परीक्षण",
       "status_setup_complete": "सेटअप पूरा",
@@ -1679,15 +1679,15 @@ Add a demo setup button to the organisation page with:
       <!-- Header with title and status -->
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-medium text-gray-900">
-          {{ $t('organizations.demo.title') }}
+          {{ $t('organisations.demo.title') }}
         </h3>
         <span
           class="px-2 py-1 text-xs font-semibold rounded-full"
           :class="demoStatus.exists ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'"
         >
           {{ demoStatus.exists 
-            ? $t('organizations.demo.status_setup_complete')
-            : $t('organizations.demo.status_not_setup')
+            ? $t('organisations.demo.status_setup_complete')
+            : $t('organisations.demo.status_not_setup')
           }}
         </span>
       </div>
@@ -1695,7 +1695,7 @@ Add a demo setup button to the organisation page with:
       <!-- Introduction message (NEW) -->
       <div class="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-sm">
         <p class="text-sm text-blue-800">
-          {{ $t('organizations.demo.message_intro') }}
+          {{ $t('organisations.demo.message_intro') }}
         </p>
       </div>
 
@@ -1703,19 +1703,19 @@ Add a demo setup button to the organisation page with:
       <div v-if="demoStatus.exists" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         <div class="bg-blue-50 rounded-lg p-3 text-center">
           <div class="text-2xl font-bold text-blue-600">{{ demoStatus.posts }}</div>
-          <div class="text-xs text-gray-600">{{ $t('organizations.demo.stats_posts') }}</div>
+          <div class="text-xs text-gray-600">{{ $t('organisations.demo.stats_posts') }}</div>
         </div>
         <div class="bg-green-50 rounded-lg p-3 text-center">
           <div class="text-2xl font-bold text-green-600">{{ demoStatus.candidates }}</div>
-          <div class="text-xs text-gray-600">{{ $t('organizations.demo.stats_candidates') }}</div>
+          <div class="text-xs text-gray-600">{{ $t('organisations.demo.stats_candidates') }}</div>
         </div>
         <div class="bg-indigo-50 rounded-lg p-3 text-center">
           <div class="text-2xl font-bold text-indigo-600">{{ demoStatus.codes }}</div>
-          <div class="text-xs text-gray-600">{{ $t('organizations.demo.stats_codes') }}</div>
+          <div class="text-xs text-gray-600">{{ $t('organisations.demo.stats_codes') }}</div>
         </div>
         <div class="bg-gray-50 rounded-lg p-3 text-center">
           <div class="text-2xl font-bold text-gray-600">{{ demoStatus.votes }}</div>
-          <div class="text-xs text-gray-600">{{ $t('organizations.demo.stats_test_votes') }}</div>
+          <div class="text-xs text-gray-600">{{ $t('organisations.demo.stats_test_votes') }}</div>
         </div>
       </div>
 
@@ -1731,7 +1731,7 @@ Add a demo setup button to the organisation page with:
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          {{ $t('organizations.demo.button_test_voting') }}
+          {{ $t('organisations.demo.button_test_voting') }}
         </a>
 
         <!-- Setup/Recreate Button -->
@@ -1754,8 +1754,8 @@ Add a demo setup button to the organisation page with:
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
           </svg>
           {{ demoStatus.exists 
-            ? $t('organizations.demo.button_recreate')
-            : $t('organizations.demo.button_setup')
+            ? $t('organisations.demo.button_recreate')
+            : $t('organisations.demo.button_setup')
           }}
         </button>
       </div>
@@ -1774,8 +1774,8 @@ Add a demo setup button to the organisation page with:
       <p class="mt-4 text-xs text-gray-500">
         <span class="font-medium">{{ $t('common.note') }}:</span>
         {{ demoStatus.exists 
-          ? $t('organizations.demo.note_isolated')
-          : $t('organizations.demo.note_setup')
+          ? $t('organisations.demo.note_isolated')
+          : $t('organisations.demo.note_setup')
         }}
       </p>
     </div>
@@ -1788,7 +1788,7 @@ import axios from 'axios'
 import { usePage } from '@inertiajs/vue3'
 
 const props = defineProps({
-  organization: {
+  organisation: {
     type: Object,
     required: true
   },
@@ -1805,7 +1805,7 @@ const messageType = ref('success')
 const setupDemo = async () => {
   // Confirm for recreate with translated message
   if (props.demoStatus.exists) {
-    if (!confirm(usePage().props.$t('organizations.demo.message_confirm_recreate'))) {
+    if (!confirm(usePage().props.$t('organisations.demo.message_confirm_recreate'))) {
       return
     }
   }
@@ -1814,7 +1814,7 @@ const setupDemo = async () => {
   message.value = ''
 
   try {
-    const response = await axios.post(`/api/organizations/${props.organization.id}/demo-setup`, {
+    const response = await axios.post(`/api/organisations/${props.organisation.id}/demo-setup`, {
       force: props.demoStatus.exists
     })
 
@@ -1837,11 +1837,11 @@ const setupDemo = async () => {
       }, 5000)
     } else {
       messageType.value = 'error'
-      message.value = response.data.message || usePage().props.$t('organizations.demo.message_error')
+      message.value = response.data.message || usePage().props.$t('organisations.demo.message_error')
     }
   } catch (error) {
     messageType.value = 'error'
-    message.value = error.response?.data?.message || usePage().props.$t('organizations.demo.message_error')
+    message.value = error.response?.data?.message || usePage().props.$t('organisations.demo.message_error')
   } finally {
     loading.value = false
   }
@@ -1856,7 +1856,7 @@ The controller already passes data correctly. No changes needed as translations 
 ## VERIFICATION CHECKLIST
 
 - [ ] All 3 language files updated (en.json, de.json, np.json)
-- [ ] New translation keys added under `organizations.demo` namespace
+- [ ] New translation keys added under `organisations.demo` namespace
 - [ ] Vue component uses `$t()` for ALL user-facing text
 - [ ] Intro message box styled with blue border (matching existing patterns)
 - [ ] Confirm dialog uses translated message
@@ -1870,13 +1870,13 @@ The controller already passes data correctly. No changes needed as translations 
 
 ```bash
 # Test English
-# Visit /en/organizations/{slug}
+# Visit /en/organisations/{slug}
 
 # Test German
-# Visit /de/organizations/{slug}
+# Visit /de/organisations/{slug}
 
 # Test Nepali
-# Visit /np/organizations/{slug}
+# Visit /np/organisations/{slug}
 ```
 
 The component will automatically use the correct language based on the current locale setting.

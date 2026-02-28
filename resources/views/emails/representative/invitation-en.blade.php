@@ -3,7 +3,7 @@
 
 Hello {{ $representativeName }},
 
-You have been added as a representative of the organization **{{ $organizationName }}** by **{{ $creatorName }}**.
+You have been added as a representative of the organisation **{{ $organizationName }}** by **{{ $creatorName }}**.
 
 ## Next Steps
 

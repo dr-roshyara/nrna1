@@ -7,7 +7,7 @@ This is a **critical requirement** that I missed in my analysis. You need:
 | Level | Description | organisation_id |
 |-------|-------------|-----------------|
 | **Level 1** | Customer testing the system (no org) | `NULL` |
-| **Level 2** | Live organization with multi-tenancy | `organisation_id = X` |
+| **Level 2** | Live organisation with multi-tenancy | `organisation_id = X` |
 
 ---
 
@@ -53,7 +53,7 @@ $demoVote = DemoVote::create([
 // All works without tenant restrictions!
 ```
 
-### **Level 2: Live Organization (Multi-tenancy)**
+### **Level 2: Live organisation (Multi-tenancy)**
 ```php
 // User belongs to Org 1
 $orgUser = User::create([
@@ -339,7 +339,7 @@ public function createDemoElectionForCustomer()
     return $election;
 }
 
-// MODE 2: Create real election for organization
+// MODE 2: Create real election for organisation
 public function createRealElectionForOrg($orgId)
 {
     // Set context to org ID (MODE 2)
@@ -382,7 +382,7 @@ class DemoElectionSeeder extends Seeder
             'name' => 'Customer Demo Election',
             'slug' => 'customer-demo',
             'type' => 'demo',
-            'description' => 'Test the voting system before creating organization'
+            'description' => 'Test the voting system before creating organisation'
         ]);
         
         // Create demo posts/candidates
@@ -410,7 +410,7 @@ class DemoElectionSeeder extends Seeder
         }
         
         $this->command->info('✅ Demo data created with organisation_id = NULL');
-        $this->command->info('   Customers can test without creating organization!');
+        $this->command->info('   Customers can test without creating organisation!');
     }
 }
 ```

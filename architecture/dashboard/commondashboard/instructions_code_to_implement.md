@@ -41,18 +41,18 @@ return new class extends Migration
         Schema::create('user_organization_roles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('organization_id')->constrained()->onDelete('cascade');
+            $table->foreignId('organisation_id')->constrained()->onDelete('cascade');
             $table->enum('role', ['admin', 'commission', 'voter']);
             $table->json('permissions')->nullable();
             $table->timestamps();
             
-            $table->unique(['user_id', 'organization_id', 'role']);
+            $table->unique(['user_id', 'organisation_id', 'role']);
         });
 
         // Add commission members to elections table
         Schema::table('elections', function (Blueprint $table) {
-            $table->json('commission_members')->nullable()->after('organization_id');
-            $table->foreignId('organization_id')->nullable()->after('id')->constrained()->onDelete('cascade');
+            $table->json('commission_members')->nullable()->after('organisation_id');
+            $table->foreignId('organisation_id')->nullable()->after('id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -65,7 +65,7 @@ return new class extends Migration
         Schema::dropIfExists('user_organization_roles');
         
         Schema::table('elections', function (Blueprint $table) {
-            $table->dropColumn(['commission_members', 'organization_id']);
+            $table->dropColumn(['commission_members', 'organisation_id']);
         });
         
         // Optional: Keep organizations table if needed elsewhere
@@ -146,7 +146,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Organization;
+use App\Models\organisation;
 
 class RoleSelectionController extends Controller
 {
@@ -252,7 +252,7 @@ class RoleSelectionController extends Controller
             [
                 'id' => 1,
                 'role' => 'admin',
-                'action' => 'Created organization',
+                'action' => 'Created organisation',
                 'context' => 'Nepali Association',
                 'timestamp' => now()->subDays(1)->toIso8601String(),
             ],
@@ -350,7 +350,7 @@ class User extends Authenticatable
     // Relationships
     public function organizations()
     {
-        return $this->belongsToMany(Organization::class, 'user_organization_roles')
+        return $this->belongsToMany(organisation::class, 'user_organization_roles')
                     ->withPivot('role', 'permissions')
                     ->withTimestamps();
     }
@@ -399,8 +399,8 @@ class User extends Authenticatable
 }
 EOF
 
-# 8. Create Organization model
-cat > app/Models/Organization.php << 'EOF'
+# 8. Create organisation model
+cat > app/Models/organisation.php << 'EOF'
 <?php
 
 namespace App\Models;
@@ -408,7 +408,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Organization extends Model
+class organisation extends Model
 {
     use HasFactory;
 
@@ -597,8 +597,8 @@ cat > resources/js/Pages/Admin/Dashboard.vue << 'EOF'
     
     <div v-else class="empty-state">
       <h2>No organizations yet</h2>
-      <p>Create your first organization to get started</p>
-      <button @click="createOrganization">Create Organization</button>
+      <p>Create your first organisation to get started</p>
+      <button @click="createOrganization">Create organisation</button>
     </div>
   </div>
 </template>
@@ -756,7 +756,7 @@ cat > database/seeders/RoleSystemSeeder.php << 'EOF'
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Organization;
+use App\Models\organisation;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -765,14 +765,14 @@ class RoleSystemSeeder extends Seeder
     public function run()
     {
         // Create test organizations
-        $nepaliOrg = Organization::create([
+        $nepaliOrg = organisation::create([
             'name' => 'Nepali Cultural Association Berlin',
             'slug' => 'nepali-berlin',
             'type' => 'diaspora',
             'languages' => ['en', 'de', 'np'],
         ]);
         
-        $ngoOrg = Organization::create([
+        $ngoOrg = organisation::create([
             'name' => 'Global Development NGO',
             'slug' => 'global-ngo',
             'type' => 'ngo',
@@ -1019,7 +1019,7 @@ EOF
 echo "✅ Backend setup complete:
 - Database migrations for role system
 - Role middleware and controllers
-- User and Organization models with role methods
+- User and organisation models with role methods
 - Updated routes configuration
 
 ✅ Frontend setup complete:
@@ -1163,7 +1163,7 @@ cat > resources/js/locales/en/role-selection.json << 'EOF'
   "description": "Choose your role to access the appropriate tools",
   "roles": {
     "admin": {
-      "title": "Organization Administrator",
+      "title": "organisation Administrator",
       "description": "Manage organizations and elections",
       "accessibility": "Administrator role with full management permissions",
       "keyboardShortcut": "Alt + A"

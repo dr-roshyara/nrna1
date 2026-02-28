@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Candidacy;
 use App\Models\Post;
-use App\Models\Organization;
+use App\Models\Organisation;
 use App\Models\Election;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\URL;
@@ -41,7 +41,7 @@ class SitemapController extends Controller
 
         // Organizations sitemap
         $xml .= '    <sitemap>' . "\n";
-        $xml .= '        <loc>' . htmlspecialchars(URL::to('/sitemap/organizations.xml'), ENT_XML1) . '</loc>' . "\n";
+        $xml .= '        <loc>' . htmlspecialchars(URL::to('/sitemap/organisations.xml'), ENT_XML1) . '</loc>' . "\n";
         $xml .= '        <lastmod>' . now()->toAtomString() . '</lastmod>' . "\n";
         $xml .= '    </sitemap>' . "\n";
 
@@ -77,22 +77,22 @@ class SitemapController extends Controller
     }
 
     /**
-     * Generate organizations sitemap
+     * Generate organisations sitemap
      *
      * @return Response
      */
-    public function organizations(): Response
+    public function organisations(): Response
     {
         try {
-            $organizations = Organization::orderBy('updated_at', 'desc')->get();
+            $organisations = Organisation::orderBy('updated_at', 'desc')->get();
 
             $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
             $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' .
                     ' xmlns:xhtml="http://www.w3.org/1999/xhtml">' . "\n";
 
-            foreach ($organizations as $org) {
+            foreach ($organisations as $org) {
                 if ($org->slug) {
-                    $url = route('organizations.show', ['slug' => $org->slug]);
+                    $url = route('organisations.show', ['slug' => $org->slug]);
                     $xml .= $this->addUrl($url, $org->updated_at, 'weekly', '0.8');
                 }
             }
@@ -102,7 +102,7 @@ class SitemapController extends Controller
             return response($xml, 200)
                 ->header('Content-Type', 'application/xml');
         } catch (\Exception $e) {
-            \Log::error('Error generating organizations sitemap: ' . $e->getMessage());
+            \Log::error('Error generating organisations sitemap: ' . $e->getMessage());
             return response('Error generating sitemap', 500);
         }
     }

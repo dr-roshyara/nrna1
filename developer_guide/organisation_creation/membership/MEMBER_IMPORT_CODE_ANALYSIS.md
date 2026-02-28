@@ -50,7 +50,7 @@ resources/js/Pages/Organizations/Members/Import.vue
   <ElectionLayout>
     <!-- Accessibility Announcement -->
     <div role="status" aria-live="polite" class="sr-only">
-      {{ $t('pages.organization-show.accessibility.page_loaded', ...) }}
+      {{ $t('pages.organisation-show.accessibility.page_loaded', ...) }}
     </div>
 
     <!-- Main Content (2-column: Upload + Info) -->
@@ -77,7 +77,7 @@ resources/js/Pages/Organizations/Members/Import.vue
 
 ```javascript
 defineProps({
-  organization: {
+  organisation: {
     type: Object,
     required: true,
     // Must contain: id, slug, name
@@ -326,8 +326,8 @@ const steps = computed(() => [
 <section v-if="currentStep === 'success'" class="...">
   <!-- Success icon -->
   <!-- Success message -->
-  <Link :href="`/organizations/${organization.slug}`">
-    Back to Organization
+  <Link :href="`/organizations/${organisation.slug}`">
+    Back to organisation
   </Link>
 </section>
 ```
@@ -366,7 +366,7 @@ Handles file parsing, validation, and API submission logic. Keeps component clea
 #### API (What it exports)
 
 ```javascript
-const { parseFile, validateData, submitImport } = useMemberImport(organization)
+const { parseFile, validateData, submitImport } = useMemberImport(organisation)
 ```
 
 #### Key Functions
@@ -675,7 +675,7 @@ const validateData = async (data) => {
 const submitImport = async (importData) => {
   try {
     const response = await csrfRequest.post(
-      `/organizations/${organization.slug}/members/import`,
+      `/organizations/${organisation.slug}/members/import`,
       {
         headers: importData.headers,
         rows: importData.rows,
@@ -739,7 +739,7 @@ const submitImport = async (importData) => {
 ```php
 ⚠️ Re-validate all data (never trust client)
 ⚠️ Check authorization (user must be org admin)
-⚠️ Verify organization ownership
+⚠️ Verify organisation ownership
 ⚠️ Check email uniqueness globally
 ⚠️ Prevent SQL injection (use Eloquent)
 ⚠️ Rate limiting on import endpoint
@@ -755,7 +755,7 @@ const submitImport = async (importData) => {
 ```
 ✅ Screen reader announcement on page load
    <div role="status" aria-live="polite" class="sr-only">
-     {{ $t('pages.organization-show.accessibility.page_loaded', ...) }}
+     {{ $t('pages.organisation-show.accessibility.page_loaded', ...) }}
    </div>
 
 ✅ Semantic HTML
@@ -1024,7 +1024,7 @@ assert(invalidValidation.errors.length > 0)
 ```
 ⚠️  Backend endpoint (POST handler)
 ⚠️  Database migrations
-⚠️  User/Organization relationships
+⚠️  User/organisation relationships
 ⚠️  Authorization policy
 ⚠️  Actual data persistence
 ⚠️  API response handling
@@ -1032,7 +1032,7 @@ assert(invalidValidation.errors.length > 0)
 
 ### Next Steps 🚀
 1. Create backend controller
-2. Create organization policy
+2. Create organisation policy
 3. Create database migrations
 4. Add routes
 5. Test end-to-end

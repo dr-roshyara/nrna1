@@ -25,22 +25,22 @@ Day 1 - First Login:
 ├─ Sees Welcome Dashboard:
 │   ├─ "Welcome, Anna! 👋"
 │   ├─ GDPR Compliance notice
-│   ├─ Primary CTA: "Create Organization"
-│   ├─ Secondary: "Join Organization"
+│   ├─ Primary CTA: "Create organisation"
+│   ├─ Secondary: "Join organisation"
 │   ├─ Use case examples
 │   ├─ Social proof (50+ organizations)
 │   └─ Key features (Transparency, Security, Multilingual)
-└─ Clicks: "Create Organization"
+└─ Clicks: "Create organisation"
 
-Clicks "Create Organization":
+Clicks "Create organisation":
 ├─ Redirects to: /organizations/create (TODO)
 ├─ Form appears:
-│   ├─ Organization Name: "European Nepal Association"
+│   ├─ organisation Name: "European Nepal Association"
 │   ├─ Slug: "european-nepal-assoc"
 │   ├─ Languages: DE, EN, NP selected
 │   └─ Submit
 ├─ Backend creates:
-│   ├─ Organization record
+│   ├─ organisation record
 │   ├─ user_organization_roles entry (anna → admin)
 │   └─ Clears Anna's role cache
 └─ Anna becomes ADMIN
@@ -70,7 +70,7 @@ Day 3 - Adding Members:
 │       │   ├─ rahul → commission
 │       │   └─ priya → voter
 │       └─ Role caches cleared for Rahul & Priya
-└─ Organization is ready
+└─ organisation is ready
 
 Day 5 - First Election:
 ├─ Anna creates election
@@ -102,7 +102,7 @@ INSERT INTO user_organization_roles VALUES
 
 -- elections
 INSERT INTO elections VALUES
-(1, 'Board Elections 2026', 1, ...);  -- organization_id = 1
+(1, 'Board Elections 2026', 1, ...);  -- organisation_id = 1
 ```
 
 ### System Behavior
@@ -110,7 +110,7 @@ INSERT INTO elections VALUES
 **Anna's Login (Day 5):**
 ```
 Login → LoginResponse
-    → isFirstTimeUser() = FALSE (has organization)
+    → isFirstTimeUser() = FALSE (has organisation)
     → getDashboardRoles() = ['admin']
     → Single role
     → Direct to /dashboard/admin
@@ -183,7 +183,7 @@ Marcus Clicks "Go to Admin Dashboard":
 ├─ POST /switch-role/admin
 │   └─ session['current_role'] = 'admin'
 ├─ Redirects to: /dashboard/admin
-├─ Shows admin data for organization_id=1
+├─ Shows admin data for organisation_id=1
 ├─ Marcus manages "German Works Council"
 └─ (other org data hidden)
 
@@ -191,7 +191,7 @@ Marcus Clicks Back, Selects "Vote Now":
 ├─ POST /switch-role/voter
 │   └─ session['current_role'] = 'voter'
 ├─ Redirects to: /vote
-├─ Shows voter data for organization_id=2
+├─ Shows voter data for organisation_id=2
 ├─ Marcus sees 2 pending ballots in "Tech Workers Collective"
 └─ Can cast votes
 
@@ -293,7 +293,7 @@ Sarah's Workflow:
 ├─ Selects "Create Election"
 │   ├─ Fills form (title, voters, dates)
 │   ├─ Selects eligible voters
-│   │   └─ Filters by organization members
+│   │   └─ Filters by organisation members
 │   ├─ Selects monitors
 │   │   └─ commission members
 │   └─ Submit

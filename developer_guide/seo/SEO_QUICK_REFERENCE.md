@@ -50,8 +50,8 @@ useMeta({ pageKey: 'pricing' })
 useMeta({
   pageKey: 'organizations.show',
   params: {
-    organizationName: organization.name,
-    memberCount: organization.members_count
+    organizationName: organisation.name,
+    memberCount: organisation.members_count
   }
 })
 ```
@@ -83,7 +83,7 @@ useMeta({
 |------|-----|--------|
 | Homepage | `home` | No |
 | Pricing | `pricing` | No |
-| Organization Show | `organizations.show` | Yes: `{organizationName}`, `{memberCount}`, `{electionCount}` |
+| organisation Show | `organizations.show` | Yes: `{organizationName}`, `{memberCount}`, `{electionCount}` |
 | Elections Index | `elections.index` | No |
 | Elections Show | `elections.show` | Yes: `{electionName}`, `{organizationName}` |
 

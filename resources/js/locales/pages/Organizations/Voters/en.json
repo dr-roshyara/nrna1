@@ -1,9 +1,9 @@
 {
-  "pages.organization-voters": {
+  "pages.organisation-voters": {
     "title": "Voter Management",
-    "description": "Manage voters for {organization}",
+    "description": "Manage voters for {organisation}",
     "accessibility": {
-      "page_loaded": "Voter management page loaded for {organization} with {count} total voters"
+      "page_loaded": "Voter management page loaded for {organisation} with {count} total voters"
     },
     "committee_access": {
       "title": "Commission Member Access",
@@ -30,7 +30,7 @@
       "voted": "Already Voted"
     },
     "table": {
-      "caption": "Voter list for {organization}",
+      "caption": "Voter list for {organisation}",
       "select": "Select",
       "sn": "S.N.",
       "name": "Name",

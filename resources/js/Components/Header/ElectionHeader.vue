@@ -339,12 +339,10 @@ function switchLanguage(newLocale) {
   console.log('🍪 Setting cookie:', cookieString);
   document.cookie = cookieString;
 
-  // 4. Reload page after brief delay
-  console.log('🔄 Will reload in 300ms...');
-  setTimeout(() => {
-    console.log('🔄 Reloading now...');
-    window.location.reload(true);
-  }, 300);
+  // 4. Do NOT reload - next request will use the new locale cookie
+  // The cookie is set and the next navigation will pick it up automatically.
+  // Forcing a reload here causes circular redirects and poor UX.
+  console.log('✅ Language switch complete - next request will use new locale');
 }
 
 function toggleMobileMenu() {

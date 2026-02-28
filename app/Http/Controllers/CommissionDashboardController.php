@@ -26,7 +26,7 @@ class CommissionDashboardController extends Controller
                     'id' => $election->id,
                     'title' => $election->title ?? 'Unnamed Election',
                     'status' => $election->status ?? 'active',
-                    'organization_id' => $election->organization_id,
+                    'organisation_id' => $election->organisation_id,
                 ];
             });
 
@@ -37,7 +37,7 @@ class CommissionDashboardController extends Controller
                 'id' => 'legacy',
                 'title' => 'Current Election (Legacy)',
                 'status' => 'active',
-                'organization_id' => null,
+                'organisation_id' => null,
             ]);
         }
 

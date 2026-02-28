@@ -39,7 +39,7 @@ Safari: Develop → Empty Caches
 ```html
 <!-- SHOULD BE ENGLISH -->
 <html lang="en">
-<meta name="description" content="Empower your organization with secure, transparent online voting...">
+<meta name="description" content="Empower your organisation with secure, transparent online voting...">
 <meta property="og:locale" content="en_US">
 ```
 
@@ -142,7 +142,7 @@ Safari: Develop → Empty Caches
 | html lang | de | ✅/❌ |
 | useMeta called | pageKey: 'home' | ✅/❌ |
 
-### Organization Page Test
+### organisation Page Test
 
 **Test URL:** `/organizations/nrna-germany?locale=de`
 
@@ -331,7 +331,7 @@ For each locale, verify **no language mismatches**:
 useMeta({
   pageKey: 'organizations.show',
   params: {
-    organizationName: organization?.name || 'Organization', // Add fallback
+    organizationName: organisation?.name || 'organisation', // Add fallback
     memberCount: stats?.members_count || '0'
   }
 })

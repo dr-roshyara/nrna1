@@ -11,7 +11,7 @@ Documentation and best practices for the Public Digit platform.
 **Comprehensive guide to implementing translations using the Translation-First Strategy.**
 
 - How the i18n translation system works
-- File structure and organization
+- File structure and organisation
 - Complete step-by-step workflow (4 phases)
 - Common translation patterns and best practices
 - Real-world examples and migration checklist
@@ -193,7 +193,7 @@ resources/js/locales/pages/Welcome/
 
 The platform supports three distinct user roles with specific capabilities:
 
-1. **Admin** - Organization management, election setup
+1. **Admin** - organisation management, election setup
 2. **Commission** - Election oversight and monitoring
 3. **Voter** - Participant in elections
 

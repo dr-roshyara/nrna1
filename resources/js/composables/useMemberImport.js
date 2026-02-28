@@ -6,7 +6,7 @@ import { useI18n } from 'vue-i18n'
  * Composable for handling member import functionality
  * Manages file parsing, validation, and CSRF-protected submission
  */
-export const useMemberImport = (organization) => {
+export const useMemberImport = (organisation) => {
   const csrfRequest = useCsrfRequest()
   const { t } = useI18n()
 
@@ -214,7 +214,7 @@ export const useMemberImport = (organization) => {
   const submitImport = async (importData) => {
     try {
       const response = await csrfRequest.post(
-        `/organizations/${organization.slug}/members/import`,
+        `/organizations/${organisation.slug}/members/import`,
         {
           headers: importData.headers,
           rows: importData.rows,

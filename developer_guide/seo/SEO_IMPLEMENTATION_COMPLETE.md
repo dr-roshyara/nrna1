@@ -79,7 +79,7 @@
    **Methods:**
    - `sitemapIndex()` - Returns sitemap index with references to 4 child sitemaps
    - `index()` - Main sitemap with homepage and static pages (3 URLs)
-   - `organizations()` - Organization pages sitemap (10 organizations indexed)
+   - `organizations()` - organisation pages sitemap (10 organizations indexed)
    - `elections()` - Active elections sitemap (dynamic)
    - `results()` - Completed elections results sitemap (dynamic)
 
@@ -192,14 +192,14 @@
 ## 📈 SEO Impact
 
 ### Immediate Benefits
-- 📍 Google can discover 10+ organization pages
+- 📍 Google can discover 10+ organisation pages
 - 📍 Proper sitemaps reduce indexing time from weeks to 2-4 days
 - 📍 robots.txt prevents wasted crawl budget on private URLs
 - 📍 Multi-language tags ensure correct regional indexing
 
 ### Expected Results (2-4 weeks)
-- 📈 10-30 organization pages indexed
-- 📈 Organic traffic increase from organization searches
+- 📈 10-30 organisation pages indexed
+- 📈 Organic traffic increase from organisation searches
 - 📈 Improved crawl efficiency
 - 📈 Foundation for Phase 2 P1 schema markup
 
@@ -251,7 +251,7 @@
 - [ ] Submit `/sitemap.xml` to Google Search Console
 - [ ] Submit `/sitemap.xml` to Bing Webmaster Tools
 - [ ] Monitor Google Search Console for indexing status
-- [ ] Wait 2-4 weeks for organization pages to index
+- [ ] Wait 2-4 weeks for organisation pages to index
 - [ ] Track organic search traffic growth
 - [ ] Prepare for Phase 2 P1 (Breadcrumb + Event schemas)
 

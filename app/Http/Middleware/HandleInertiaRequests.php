@@ -51,8 +51,8 @@ class HandleInertiaRequests extends Middleware
         $params = [];
 
         // Extract model instances from route parameters
-        if ($request->route('organization')) {
-            $params['organization'] = $request->route('organization');
+        if ($request->route('organisation')) {
+            $params['organisation'] = $request->route('organisation');
         }
         if ($request->route('election')) {
             $params['election'] = $request->route('election');

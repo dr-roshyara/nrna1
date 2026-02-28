@@ -13,7 +13,7 @@ class UpdateRoleEnumToIncludeMember extends Migration
     public function up()
     {
         // Update the enum to include 'member' and 'staff' roles
-        DB::statement("ALTER TABLE user_organization_roles CHANGE role role ENUM('admin', 'member', 'staff', 'commission', 'voter') NOT NULL DEFAULT 'member'");
+        DB::statement("ALTER TABLE user_organisation_roles CHANGE role role ENUM('admin', 'member', 'staff', 'commission', 'voter') NOT NULL DEFAULT 'member'");
     }
 
     /**
@@ -22,6 +22,6 @@ class UpdateRoleEnumToIncludeMember extends Migration
     public function down()
     {
         // Revert to original enum
-        DB::statement("ALTER TABLE user_organization_roles CHANGE role role ENUM('admin', 'commission', 'voter') NOT NULL");
+        DB::statement("ALTER TABLE user_organisation_roles CHANGE role role ENUM('admin', 'commission', 'voter') NOT NULL");
     }
 }

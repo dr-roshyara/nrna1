@@ -8,7 +8,7 @@
       "totalVoters": "Gesamtwähler",
       "participationRate": "Beteiligungsquote"
     },
-    "organizations": {
+    "organisations": {
       "title": "Ihre Organisationen",
       "empty": "Noch keine Organisationen",
       "createButton": "Organisation erstellen",

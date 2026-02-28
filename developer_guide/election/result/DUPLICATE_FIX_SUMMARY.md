@@ -2,7 +2,7 @@
 
 ## 🐛 Issue Identified
 
-When creating an organization with a person's own email as the representative/admin email, that person was appearing **twice** in the members list:
+When creating an organisation with a person's own email as the representative/admin email, that person was appearing **twice** in the members list:
 - Once with role: `admin` (correct)
 - Once with role: `voter` (duplicate/incorrect)
 
@@ -11,7 +11,7 @@ When creating an organization with a person's own email as the representative/ad
 **Location**: `app/Http/Controllers/Api/OrganizationController.php` → `store()` method
 
 **The Bug**:
-1. When creating organization, authenticated user was attached as `admin` (correct)
+1. When creating organisation, authenticated user was attached as `admin` (correct)
 2. If representative email matched current user's email, code would:
    - Try to find/create that user again
    - Attach them AGAIN with role `voter` (creating duplicate pivot record)
@@ -20,10 +20,10 @@ When creating an organization with a person's own email as the representative/ad
 **Code Issue**:
 ```php
 // Line 41-44: Current user added as admin ✓
-$organization->users()->attach($user->id, ['role' => 'admin']);
+$organisation->users()->attach($user->id, ['role' => 'admin']);
 
 // Line 68-71: If self-email is in representative field, user added again! ✗
-$organization->users()->attach($representativeUser->id, ['role' => 'voter']);
+$organisation->users()->attach($representativeUser->id, ['role' => 'voter']);
 ```
 
 ## ✅ Fix Applied
@@ -43,14 +43,14 @@ if (strtolower($representativeEmail) === strtolower($user->email)) {
 
 **Added Check #2 - Duplicate Membership Detection**:
 ```php
-// Check if user is already attached to organization
-$isAlreadyMember = $organization->users()
+// Check if user is already attached to organisation
+$isAlreadyMember = $organisation->users()
     ->where('users.id', $representativeUser->id)
     ->exists();
 
 if (!$isAlreadyMember) {
     // Only attach if not already a member
-    $organization->users()->attach($representativeUser->id, [
+    $organisation->users()->attach($representativeUser->id, [
         'role' => 'voter',
         'assigned_at' => now(),
     ]);
@@ -61,7 +61,7 @@ if (!$isAlreadyMember) {
 
 **Duplicate Found**:
 - User ID: 9 (Nab Roshyara)
-- Organization ID: 5 (Namaste Nepal ev)
+- organisation ID: 5 (Namaste Nepal ev)
 - Duplicate Entries: 2
   - Pivot ID 6: admin (KEPT) ✓
   - Pivot ID 7: voter (DELETED) ✗
@@ -72,7 +72,7 @@ if (!$isAlreadyMember) {
 
 **Result After Cleanup**:
 ```
-Organization: Namaste Nepal ev
+organisation: Namaste Nepal ev
 Members: 1
 - Nab Roshyara (admin) ✓
 
@@ -116,7 +116,7 @@ The fix prevents future duplicates by:
    - Safe and defensive programming
 
 3. **Business Logic**: Respects the user's primary role
-   - Organization creator = admin (not voter)
+   - organisation creator = admin (not voter)
    - Only different people can be added as voters
 
 ## 📝 Files Modified
@@ -134,15 +134,15 @@ The fix prevents future duplicates by:
 
 ## 🧪 Testing Recommendations
 
-### Test 1: Create Organization with Self Email
-1. Create new organization
+### Test 1: Create organisation with Self Email
+1. Create new organisation
 2. Use your own email as representative
 3. Check `/members/index`
 4. **Expected**: You appear once with `admin` role
 5. **Status**: ✅ PASS
 
-### Test 2: Create Organization with Different Email
-1. Create new organization
+### Test 2: Create organisation with Different Email
+1. Create new organisation
 2. Use different email as representative
 3. Check `/members/index`
 4. **Expected**: Two users (you as admin, them as voter)
@@ -155,7 +155,7 @@ The fix prevents future duplicates by:
 
 ## 📋 Checklist
 
-- [x] Identified the bug in organization creation logic
+- [x] Identified the bug in organisation creation logic
 - [x] Fixed email matching check
 - [x] Fixed duplicate membership check
 - [x] Verified code fix works correctly
@@ -174,6 +174,6 @@ All duplicates have been cleaned from the database, and the code fix prevents fu
 ---
 
 **Date Fixed**: 2026-02-23
-**Issue**: Duplicate members in organization
+**Issue**: Duplicate members in organisation
 **Root Cause**: Missing email validation and duplicate checking
 **Status**: ✅ RESOLVED

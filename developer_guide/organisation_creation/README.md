@@ -1,8 +1,8 @@
-# Organization Creation Flow - Developer Guide
+# organisation Creation Flow - Developer Guide
 
 ## Overview
 
-The Organization Creation Flow is a **progressive disclosure modal** that guides new users through creating their organization in Public Digit. The implementation follows **Design Thinking methodology** with emphasis on user education, accessibility, and legal compliance.
+The organisation Creation Flow is a **progressive disclosure modal** that guides new users through creating their organisation in Public Digit. The implementation follows **Design Thinking methodology** with emphasis on user education, accessibility, and legal compliance.
 
 **Design Pattern:** Progressive Disclosure (Education → Form)
 **Architecture:** Vue 3 + Composable + DDD principles
@@ -31,7 +31,7 @@ The Organization Creation Flow is a **progressive disclosure modal** that guides
 ### Flow Diagram
 
 ```
-User clicks "Create Organization" card
+User clicks "Create organisation" card
          ↓
 OrganizationCreateModal opens
          ↓
@@ -78,14 +78,14 @@ OrganizationCreateModal opens
 
 ## Component Structure
 
-### File Organization
+### File organisation
 
 ```
 resources/js/
 ├── Composables/
 │   └── useOrganizationCreation.js       # State management
 │
-├── Components/Organization/
+├── Components/organisation/
 │   ├── OrganizationCreateModal.vue      # Main modal (education + form view)
 │   │
 │   └── Steps/
@@ -119,7 +119,7 @@ resources/js/
 
 ### Composable: `useOrganizationCreation`
 
-The composable manages all state for the organization creation flow using Vue 3 Composition API patterns.
+The composable manages all state for the organisation creation flow using Vue 3 Composition API patterns.
 
 #### Reactive State
 
@@ -237,7 +237,7 @@ const validateStep = (step) => {
   switch (step) {
     case 1: // Validate basic info
       if (!formData.basic.name?.trim()) {
-        errors.name = t('organization.form.name_error')
+        errors.name = t('organisation.form.name_error')
       }
       // ... more validations
       break;
@@ -271,11 +271,11 @@ Errors are shown in real-time below each field:
 All text is localized using vue-i18n with hierarchical key structure:
 
 ```
-organization.education.*      # Education overlay content
-organization.form.*           # Form step content
-organization.form.step_1_*    # Step 1 specific
-organization.form.step_2_*    # Step 2 specific
-organization.form.step_3_*    # Step 3 specific
+organisation.education.*      # Education overlay content
+organisation.form.*           # Form step content
+organisation.form.step_1_*    # Step 1 specific
+organisation.form.step_2_*    # Step 2 specific
+organisation.form.step_3_*    # Step 3 specific
 common.*                      # Shared buttons/labels
 ```
 
@@ -289,13 +289,13 @@ common.*                      # Shared buttons/labels
 
 ```vue
 <!-- In templates, use $t() with fallback -->
-<h2>{{ $t('organization.form.title', { fallback: 'Create Organization' }) }}</h2>
+<h2>{{ $t('organisation.form.title', { fallback: 'Create organisation' }) }}</h2>
 
 <!-- In JavaScript, use composable or i18n directly -->
-const errorMsg = this.$t('organization.form.name_error')
+const errorMsg = this.$t('organisation.form.name_error')
 
 <!-- With dynamic content -->
-<p>{{ $t('organization.form.step', { current: currentStep, total: 3 }) }}</p>
+<p>{{ $t('organisation.form.step', { current: currentStep, total: 3 }) }}</p>
 ```
 
 ### Adding New Translations
@@ -303,7 +303,7 @@ const errorMsg = this.$t('organization.form.name_error')
 1. Add key-value pair to all three language files:
    ```json
    {
-     "organization": {
+     "organisation": {
        "form": {
          "new_key": "German text"
        }
@@ -313,7 +313,7 @@ const errorMsg = this.$t('organization.form.name_error')
 
 2. Use in component:
    ```vue
-   {{ $t('organization.form.new_key', { fallback: 'English text' }) }}
+   {{ $t('organisation.form.new_key', { fallback: 'English text' }) }}
    ```
 
 3. Test in all three languages during development.
@@ -462,7 +462,7 @@ const errorMsg = this.$t('organization.form.name_error')
   "created_at": "2025-02-11T10:30:00Z",
   "verification_email_sent_to": "vorstand@tv-muenchen.de",
   "next_steps": [
-    "Verify organization email",
+    "Verify organisation email",
     "Add first members",
     "Create first election"
   ]
@@ -486,7 +486,7 @@ const errorMsg = this.$t('organization.form.name_error')
 
 ```json
 {
-  "message": "Organization with this name already exists",
+  "message": "organisation with this name already exists",
   "error_code": "organization_exists"
 }
 ```
@@ -495,7 +495,7 @@ const errorMsg = this.$t('organization.form.name_error')
 
 ```json
 {
-  "message": "Failed to create organization",
+  "message": "Failed to create organisation",
   "error_code": "internal_error"
 }
 ```
@@ -624,7 +624,7 @@ describe('useOrganizationCreation', () => {
 ### Component Tests (Vue Test Utils)
 
 ```javascript
-// tests/Unit/Components/Organization/OrganizationCreateModal.test.js
+// tests/Unit/Components/organisation/OrganizationCreateModal.test.js
 describe('OrganizationCreateModal', () => {
   it('shows education overlay by default', () => {
     const wrapper = mount(OrganizationCreateModal);
@@ -659,15 +659,15 @@ describe('OrganizationCreateModal', () => {
 ### E2E Tests (Cypress)
 
 ```javascript
-// cypress/e2e/organization-creation.cy.js
-describe('Organization Creation Flow', () => {
+// cypress/e2e/organisation-creation.cy.js
+describe('organisation Creation Flow', () => {
   beforeEach(() => {
     cy.login();
     cy.visit('/dashboard');
   });
 
-  it('completes full organization creation flow', () => {
-    // Click create organization card
+  it('completes full organisation creation flow', () => {
+    // Click create organisation card
     cy.contains('Organisation erstellen').click();
     cy.get('[role="dialog"]').should('be.visible');
 
@@ -732,7 +732,7 @@ describe('Organization Creation Flow', () => {
 
 #### Issue: Modal doesn't open
 
-**Symptoms:** Clicking "Create Organization" does nothing
+**Symptoms:** Clicking "Create organisation" does nothing
 
 **Causes:**
 - Composable not initialized in Welcome.vue data()
@@ -782,18 +782,18 @@ methods: {
 
 #### Issue: Translations missing
 
-**Symptoms:** `[organization.form.title]` displayed instead of text
+**Symptoms:** `[organisation.form.title]` displayed instead of text
 
 **Causes:**
 - Translation key not added to all three language files
-- Key hierarchy mismatch (organization.form.title vs organization.form.title_text)
+- Key hierarchy mismatch (organisation.form.title vs organisation.form.title_text)
 - i18n not initialized
 
 **Solution:**
 ```javascript
 // Add to ALL three files: de.json, en.json, np.json
 {
-  "organization": {
+  "organisation": {
     "form": {
       "title": "German text here"
     }
@@ -801,7 +801,7 @@ methods: {
 }
 
 // Use in component with fallback
-{{ $t('organization.form.title', { fallback: 'Create Organization' }) }}
+{{ $t('organisation.form.title', { fallback: 'Create organisation' }) }}
 ```
 
 #### Issue: Accessibility test fails
@@ -817,11 +817,11 @@ methods: {
 **Solution:**
 ```vue
 <!-- ✓ Correct accessibility -->
-<label for="org-name">Organization Name</label>
+<label for="org-name">organisation Name</label>
 <input id="org-name" aria-invalid="false" />
 
 <!-- ✗ Inaccessible -->
-<p>Organization Name</p>
+<p>organisation Name</p>
 <input />
 ```
 
@@ -898,7 +898,7 @@ log('API response', result);
 ```javascript
 // Lazy load modal
 const OrganizationCreateModal = defineAsyncComponent(() =>
-  import('@/Components/Organization/OrganizationCreateModal.vue')
+  import('@/Components/organisation/OrganizationCreateModal.vue')
 )
 
 // Debounce email validation

@@ -174,7 +174,7 @@ Insert+T         → Table navigation
 **Page announces:**
 ```
 "Election Management System
-Organization: Election2024
+organisation: Election2024
 Voters page loaded
 Navigation menu, 5 items
 Main content region"
@@ -183,7 +183,7 @@ Main content region"
 **Table structure:**
 ```
 Screen reader announces:
-- Table caption: "Voter list for [Organization]"
+- Table caption: "Voter list for [organisation]"
 - Column headers: "S.N., User ID, Name, Status, Approved By, Actions"
 - Each row: "Row 1 of 3: John Smith, Pending, —"
 ```

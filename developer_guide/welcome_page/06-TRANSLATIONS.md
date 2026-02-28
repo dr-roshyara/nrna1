@@ -218,18 +218,18 @@ Used in Vue as:
   },
   "cards": {
     "create_organization": {
-      "title": "Create Organization",
-      "description": "Establish your first voter organization",
-      "cta": "Create Organization"
+      "title": "Create organisation",
+      "description": "Establish your first voter organisation",
+      "cta": "Create organisation"
     },
     "add_members": {
       "title": "Add Members",
-      "description": "Invite members to your organization",
+      "description": "Invite members to your organisation",
       "cta": "Manage Members"
     },
     "create_election": {
       "title": "Create Election",
-      "description": "Start a new election for your organization",
+      "description": "Start a new election for your organisation",
       "cta": "Create Election"
     },
     "cast_vote": {
@@ -246,7 +246,7 @@ Used in Vue as:
   "onboarding": {
     "step_1_title": "New User",
     "step_1_description": "Welcome to Public Digit",
-    "step_2_title": "Organization Created",
+    "step_2_title": "organisation Created",
     "step_2_description": "Add at least one member",
     "step_3_title": "Members Added",
     "step_3_description": "Create your first election",
@@ -261,7 +261,7 @@ Used in Vue as:
     "onboarding_step": "Next onboarding step: {step}",
     "gdpr_consent": "GDPR consent required",
     "email_verification": "Email verification required",
-    "org_setup_incomplete": "Organization setup incomplete"
+    "org_setup_incomplete": "organisation setup incomplete"
   },
   "help": {
     "title": "Need Help?",

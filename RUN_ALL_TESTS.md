@@ -76,7 +76,7 @@ php artisan test tests/Feature/Security/VoterControllerPenetrationTest.php
 ## Test Coverage
 
 ### Functional Coverage (67 tests)
-- Organization membership validation
+- organisation membership validation
 - Voter listing with search/filter
 - Pagination
 - Approval operations
@@ -89,7 +89,7 @@ php artisan test tests/Feature/Security/VoterControllerPenetrationTest.php
 ### Security Coverage (39 tests)
 - Authorization bypass prevention
 - CSRF protection
-- Cross-organization isolation
+- Cross-organisation isolation
 - SQL injection prevention
 - XSS prevention
 - IDOR prevention
@@ -109,7 +109,7 @@ php artisan test tests/Feature/Security/VoterControllerPenetrationTest.php
 - XSS payload testing
 - CSRF token validation
 - Privilege escalation attempts
-- Cross-organization access attempts
+- Cross-organisation access attempts
 - Command injection
 - Path traversal
 - Authentication bypass
@@ -149,7 +149,7 @@ After the schema fix, these roles are supported:
 ✅ Access permissions
 ✅ Operation permissions
 ✅ Data visibility
-✅ Cross-organization isolation
+✅ Cross-organisation isolation
 
 ### For Each Operation:
 ✅ Authorization checks

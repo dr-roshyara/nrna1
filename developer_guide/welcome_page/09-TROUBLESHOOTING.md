@@ -145,7 +145,7 @@ private function eagerLoadUserData(User $user): User
 
     // Only load relationships that exist on User model
     if (method_exists(User::class, 'organizationRoles')) {
-        $relationships[] = 'organizationRoles.organization';
+        $relationships[] = 'organizationRoles.organisation';
     }
     if (method_exists(User::class, 'organizations')) {
         $relationships[] = 'organizations';
@@ -686,7 +686,7 @@ redis-cli MONITOR
 # 2. Add indexes for common queries
 php artisan tinker
 > Schema::connection('pgsql')->table('users', function($table) {
-    $table->index('organization_id');
+    $table->index('organisation_id');
     $table->index('created_at');
   });
 
@@ -698,7 +698,7 @@ Cache::remember('user:roles:' . $user->id, 3600, function() {
 # 4. Use eager loading (already done in UserStateBuilder)
 
 # 5. Check query performance
-EXPLAIN ANALYZE SELECT * FROM users WHERE organization_id = 1;
+EXPLAIN ANALYZE SELECT * FROM users WHERE organisation_id = 1;
 ```
 
 ### Issue 17: High CPU Usage

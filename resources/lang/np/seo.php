@@ -34,7 +34,7 @@ return [
             'keywords' => 'चुनाव मूल्य, मतदान सफ्टवेयर लागत, अनलाइन मतदान प्लेटफर्म, चुनाव समाधान मूल्य',
         ],
 
-        'organizations.show' => [
+        'organisations.show' => [
             'title' => '{organizationName} | चुनावहरु र सदस्यहरु | Public Digit',
             'description' => '{organizationName}: {memberCount} सदस्य, {electionCount} चुनाव। संस्थाहरु र प्रवासी समुदायहरुको लागि सुरक्षित डिजिटल मतदान प्लेटफर्म।',
             'keywords' => '{organizationName}, चुनाव, मतदान, डिजिटल लोकतन्त्र',

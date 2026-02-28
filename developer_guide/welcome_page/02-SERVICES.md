@@ -50,7 +50,7 @@ private function eagerLoadUserData(User $user): User
 
     // Only add relationships that actually exist
     if (method_exists(User::class, 'organizationRoles')) {
-        $relationships[] = 'organizationRoles.organization';
+        $relationships[] = 'organizationRoles.organisation';
     }
     if (method_exists(User::class, 'organizations')) {
         $relationships[] = 'organizations';
@@ -118,7 +118,7 @@ Returns state based on roles and context:
 |-------|---------|
 | `new_user_no_roles` | Brand new user |
 | `multi_role_user` | User has 2+ roles |
-| `admin_no_org` | Admin with no organization |
+| `admin_no_org` | Admin with no organisation |
 | `admin_setup_started` | Admin, setup <30% complete |
 | `admin_setup_in_progress` | Admin, setup 30-99% complete |
 | `admin_with_elections` | Admin with active elections |
@@ -128,7 +128,7 @@ Returns state based on roles and context:
 | `commission_election_active` | Commission, election active |
 | `commission_election_inactive` | Commission, election ended |
 
-#### `getOrganizationSetupCompletion(Organization $org): int`
+#### `getOrganizationSetupCompletion(organisation $org): int`
 
 Returns setup completion percentage (0-100):
 
@@ -140,16 +140,16 @@ Checks:
 
 **Safe implementation:**
 ```php
-private function getOrganizationSetupCompletion($organization): int
+private function getOrganizationSetupCompletion($organisation): int
 {
     // Safe relationship access
-    $membersCount = $organization->relationLoaded('members')
-        ? $organization->members->count()
-        : $organization->members()->count();
+    $membersCount = $organisation->relationLoaded('members')
+        ? $organisation->members->count()
+        : $organisation->members()->count();
 
-    $electionsCount = $organization->relationLoaded('elections')
-        ? $organization->elections->count()
-        : $organization->elections()->count();
+    $electionsCount = $organisation->relationLoaded('elections')
+        ? $organisation->elections->count()
+        : $organisation->elections()->count();
 
     // ... calculate and return percentage
 }
@@ -173,7 +173,7 @@ Scoring factors:
 | Actions Completed | 0 to +20 | More activity = higher score |
 | Login Frequency | 0 to +10 | Regular login = higher |
 | Role Complexity | 0 to +15 | Multiple roles = higher |
-| Organization Management | 0 to +15 | More orgs = higher |
+| organisation Management | 0 to +15 | More orgs = higher |
 
 **Score Calculation:**
 - Base Score: 50
@@ -225,8 +225,8 @@ private function roleComplexityScore(User $user): int
 
 | Step | Condition | User Task | Progress |
 |------|-----------|-----------|----------|
-| 1 | New user (no organization) | Create organization | 0% |
-| 2 | Organization exists, < 2 members | Add members | 25% |
+| 1 | New user (no organisation) | Create organisation | 0% |
+| 2 | organisation exists, < 2 members | Add members | 25% |
 | 3 | 2+ members, no elections | Create election | 50% |
 | 4 | Election exists, < 2 voters | Invite voters | 75% |
 | 5 | All setup complete | Launch election | 100% |
@@ -248,12 +248,12 @@ public function getNextStep(User $user): int
         return 1; // New user
     }
 
-    $organization = $organizations->first();
+    $organisation = $organizations->first();
 
     // Safe members count
-    $membersCount = $organization->relationLoaded('members')
-        ? $organization->members->count()
-        : $organization->members()->count();
+    $membersCount = $organisation->relationLoaded('members')
+        ? $organisation->members->count()
+        : $organisation->members()->count();
 
     if ($membersCount < 2) {
         return 2; // Needs members
@@ -392,7 +392,7 @@ $pipeline->register(new PendingActionsBlock());
 
 #### OrganizationStatusBlock
 - **File:** `app/Services/Dashboard/Blocks/OrganizationStatusBlock.php`
-- **Purpose:** Show organization setup progress
+- **Purpose:** Show organisation setup progress
 - **Condition:** Admin role only
 - **Priority:** 20
 

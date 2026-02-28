@@ -9,7 +9,7 @@
 
 1. [UserController Analysis](#usercontroller-analysis)
 2. [User/Index.vue Analysis](#userindexvue-analysis)
-3. [Organization Filtering Patterns](#organization-filtering-patterns)
+3. [organisation Filtering Patterns](#organisation-filtering-patterns)
 4. [Issues Identified](#issues-identified)
 5. [Improvement Opportunities](#improvement-opportunities)
 
@@ -53,9 +53,9 @@ $query = User::query();
 
 **Analysis**:
 - ❌ **CRITICAL ISSUE**: Queries ALL users globally
-- ❌ No organization scoping
+- ❌ No organisation scoping
 - ❌ Violates multi-tenancy principle from CLAUDE.md
-- 🔴 Security risk: Cross-organization data exposure
+- 🔴 Security risk: Cross-organisation data exposure
 
 **3. Filter Application** (Lines 48-57)
 
@@ -128,11 +128,11 @@ return Inertia::render('User/Index', [
 -- Base query (inefficient for multi-tenant)
 SELECT * FROM users WHERE name LIKE '%search%' ORDER BY created_at DESC LIMIT 20 OFFSET 0;
 
--- Better approach (with organization)
+-- Better approach (with organisation)
 SELECT users.*
 FROM users
 INNER JOIN user_organization_roles ON users.id = user_organization_roles.user_id
-WHERE user_organization_roles.organization_id = ?
+WHERE user_organization_roles.organisation_id = ?
   AND users.name LIKE '%search%'
 ORDER BY created_at DESC
 LIMIT 20 OFFSET 0;
@@ -141,18 +141,18 @@ LIMIT 20 OFFSET 0;
 **Estimated Query Time**:
 - Current (1000 users): ~50ms
 - Current (100,000 users): ~500ms
-- With organization filter (100,000 users, 100 orgs): ~50ms
+- With organisation filter (100,000 users, 100 orgs): ~50ms
 
 ### Security Analysis
 
 **Vulnerabilities**:
-1. ❌ **No organization scoping**: Users can see all users globally
+1. ❌ **No organisation scoping**: Users can see all users globally
 2. ⚠️ **SQL Injection**: Mitigated by Eloquent but best practice is explicit binding
 3. ⚠️ **No rate limiting**: Open to abuse
 4. ⚠️ **No permission checks**: Anyone authenticated can access
 
 **Recommendations**:
-- Add organization scoping IMMEDIATELY
+- Add organisation scoping IMMEDIATELY
 - Implement explicit permission checks
 - Add rate limiting to route
 - Log access for audit trail
@@ -269,7 +269,7 @@ props: {
 - ✅ Type declaration
 - ⚠️ No default values
 - ⚠️ No required flags
-- ❌ Missing organization prop
+- ❌ Missing organisation prop
 
 #### Data (Lines 569-580)
 ```javascript
@@ -386,7 +386,7 @@ bulkAddAsVoter() {
 
 ---
 
-## Organization Filtering Patterns
+## organisation Filtering Patterns
 
 ### Pattern 1: Global Scope (BelongsToTenant Trait)
 
@@ -427,12 +427,12 @@ static::addGlobalScope('tenant', function (Builder $query) {
 
 ### Pattern 2: Relationship Filtering
 
-**File**: `app/Models/Organization.php`
+**File**: `app/Models/organisation.php`
 
 **Usage**:
 ```php
-$organization = Organization::find($id);
-$members = $organization->users()->get();
+$organisation = organisation::find($id);
+$members = $organisation->users()->get();
 ```
 
 **How it Works**:
@@ -452,7 +452,7 @@ public function users()
 
 **Cons**:
 - ⚠️ Must remember to use relationship
-- ⚠️ Requires organization object
+- ⚠️ Requires organisation object
 
 ### Pattern 3: Explicit Scopes
 
@@ -486,14 +486,14 @@ public function scopeForOrganization(Builder $query, $organizationId)
 
 Use **Pattern 2 (Relationship Filtering)** because:
 1. Most explicit and clear
-2. Ensures organization context
+2. Ensures organisation context
 3. Leverages existing pivot table
 4. No global scope side effects
 
 ```php
 // Good
-$organization = Organization::findOrFail($id);
-$members = $organization->users()->paginate(20);
+$organisation = organisation::findOrFail($id);
+$members = $organisation->users()->paginate(20);
 
 // Bad
 $members = User::where('organisation_id', $id)->paginate(20);
@@ -505,9 +505,9 @@ $members = User::where('organisation_id', $id)->paginate(20);
 
 ### Critical Issues (Must Fix)
 
-1. **No Organization Scoping**
+1. **No organisation Scoping**
    - **Severity**: 🔴 Critical
-   - **Impact**: Cross-organization data exposure
+   - **Impact**: Cross-organisation data exposure
    - **Location**: UserController::index()
    - **Fix**: Add relationship-based filtering
 
@@ -533,7 +533,7 @@ $members = User::where('organisation_id', $id)->paginate(20);
 
 5. **Missing Role Information**
    - **Severity**: 🟠 High
-   - **Impact**: Can't see user roles in organization
+   - **Impact**: Can't see user roles in organisation
    - **Location**: User/Index.vue table
    - **Fix**: Add role column with pivot data
 
@@ -567,10 +567,10 @@ $members = User::where('organisation_id', $id)->paginate(20);
 
 ## Improvement Opportunities
 
-### 1. Organization Context Header
+### 1. organisation Context Header
 
 **Current**: None
-**Proposed**: Add header showing which organization's members are displayed
+**Proposed**: Add header showing which organisation's members are displayed
 
 **Benefits**:
 - Clear context for users
@@ -672,7 +672,7 @@ $members = User::where('organisation_id', $id)->paginate(20);
 - ✅ Clean code structure
 
 ### What Needs Improvement
-- 🔴 Organization scoping (critical)
+- 🔴 organisation scoping (critical)
 - 🔴 Server-side authorization (critical)
 - 🟠 Additional filters (email, role)
 - 🟠 Role display
@@ -681,7 +681,7 @@ $members = User::where('organisation_id', $id)->paginate(20);
 
 ### Recommended Implementation Priority
 
-1. **Phase 1 (Critical)**: Organization scoping + authorization
+1. **Phase 1 (Critical)**: organisation scoping + authorization
 2. **Phase 2 (High)**: Email/role filters + role column
 3. **Phase 3 (Medium)**: Stats dashboard + export
 4. **Phase 4 (Polish)**: Mobile optimization + audit logging

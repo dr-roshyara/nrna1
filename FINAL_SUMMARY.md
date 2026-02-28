@@ -1,8 +1,8 @@
-# 🎯 ORGANIZATION CREATION SYSTEM - COMPLETE & TESTED
+# 🎯 organisation CREATION SYSTEM - COMPLETE & TESTED
 
 ## Executive Summary
 
-A complete, production-ready **organization creation system** has been implemented, tested, and committed to the `geotrack` branch. The system includes:
+A complete, production-ready **organisation creation system** has been implemented, tested, and committed to the `geotrack` branch. The system includes:
 
 - ✅ Multi-step wizard (3 steps + education overlay)
 - ✅ Database schema with proper migrations
@@ -22,7 +22,7 @@ A complete, production-ready **organization creation system** has been implement
 
 **Created 2 New Migrations:**
 - organizations table: id, name, email, address (JSON), representative (JSON), created_by, slug, type, settings, languages
-- user_organization_roles pivot: user_id, organization_id, role, permissions, assigned_at
+- user_organization_roles pivot: user_id, organisation_id, role, permissions, assigned_at
 
 ### 2. Backend Implementation
 
@@ -30,10 +30,10 @@ A complete, production-ready **organization creation system** has been implement
 ```
 POST /organizations
 1. Validates request (StoreOrganizationRequest)
-2. Creates Organization with all fields
+2. Creates organisation with all fields
 3. Attaches creator user as 'admin' role
 4. If is_self = false: Creates representative User, sends invitation email
-5. Sends organization creation email
+5. Sends organisation creation email
 6. Returns 201 with redirect_url
 ```
 
@@ -83,9 +83,9 @@ POST /organizations
    - Option B: Leave unchecked (enter separate email)
 9. Checks GDPR + Terms
 10. Clicks "Gründen" button
-11. Backend validates and creates organization
+11. Backend validates and creates organisation
 12. Shows success toast
-13. Redirects to organization dashboard
+13. Redirects to organisation dashboard
 
 ---
 
@@ -93,10 +93,10 @@ POST /organizations
 
 **All Core Functionality Verified:**
 - ✅ User creation
-- ✅ Organization creation with all fields
+- ✅ organisation creation with all fields
 - ✅ JSON data persistence
 - ✅ Creator relationship
-- ✅ User-Organization attachment with role
+- ✅ User-organisation attachment with role
 - ✅ Translation files loaded correctly
 - ✅ Model fillable array configured
 - ✅ Routes configured correctly
@@ -118,7 +118,7 @@ POST /organizations
 - Documentation files
 
 **Modified Files: 8**
-- app/Models/Organization.php
+- app/Models/organisation.php
 - resources/js/Pages/Welcome/Dashboard.vue
 - resources/js/i18n.js
 - routes/web.php

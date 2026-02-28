@@ -2,7 +2,7 @@
   <section class="py-16 md:py-24 bg-white">
     <div class="container mx-auto px-4 md:px-6 lg:px-8">
       <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-4">
-        {{ $t('audience.for_organizations') }}
+        {{ $t('audience.for_organisations') }}
       </h2>
       <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
         {{ $t('platform.description') }}

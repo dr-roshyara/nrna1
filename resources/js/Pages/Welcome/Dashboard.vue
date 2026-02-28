@@ -41,13 +41,13 @@
           {{ $t('pages.welcome-dashboard.actions.title') }}
         </h2>
         <div class="space-y-3 sm:space-y-4">
-          <!-- PRIMARY ACTION: Create Organization (with visual emphasis) -->
+          <!-- PRIMARY ACTION: Create organisation (with visual emphasis) -->
           <div class="relative group">
             <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg blur-sm opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
             <button
               @click="createOrganization"
               :disabled="isLoading"
-              aria-label="Create a new organization to start managing elections"
+              aria-label="Create a new organisation to start managing elections"
               class="relative w-full p-4 sm:p-6 lg:p-8 bg-white border-2 border-blue-500 rounded-lg hover:shadow-xl focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-left group-hover:border-blue-600 disabled:opacity-50 disabled:cursor-wait"
             >
               <div class="flex items-start justify-between gap-3 sm:gap-4">
@@ -71,11 +71,11 @@
 
           <!-- Secondary Actions -->
           <!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-          // Join Organization
+          // Join organisation
             <button
               @click="joinOrganization"
               :disabled="isLoading"
-              aria-label="Join an existing organization"
+              aria-label="Join an existing organisation"
               class="p-4 sm:p-6 lg:p-8 bg-white border-2 border-gray-200 rounded-lg hover:border-green-500 hover:shadow-lg focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all text-left disabled:opacity-50 disabled:cursor-wait"
             >
               <div class="flex items-start gap-3 sm:gap-4">
@@ -242,7 +242,7 @@
       </div>
     </main>
 
-    <!-- Organization Creation Modal -->
+    <!-- organisation Creation Modal -->
     <OrganizationCreateModal />
 
     <!-- Footer -->
@@ -252,7 +252,7 @@
 
 <script>
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
-import OrganizationCreateModal from "@/Components/Organization/OrganizationCreateModal.vue";
+import OrganizationCreateModal from "@/Components/organisation/OrganizationCreateModal.vue";
 import { useOrganizationCreation } from "@/composables/useOrganizationCreation";
 import { provide } from 'vue';
 
@@ -271,7 +271,7 @@ export default {
   },
 
   setup() {
-    // Create and provide the organization creation composable
+    // Create and provide the organisation creation composable
     const organizationCreation = useOrganizationCreation();
 
     // Provide it to all child components (including modal)
@@ -290,7 +290,7 @@ export default {
 
   methods: {
     createOrganization() {
-      console.log('🏢 Opening organization creation modal');
+      console.log('🏢 Opening organisation creation modal');
       this.organizationCreation.openModal();
       this.organizationCreation.trackOrganizationCreationStarted();
     },
@@ -299,15 +299,15 @@ export default {
       if (this.isLoading) return;
 
       this.isLoading = true;
-      console.log('👥 Navigating to join organization');
+      console.log('👥 Navigating to join organisation');
 
-      this.$inertia.visit(this.route('organizations.join'), {
+      this.$inertia.visit(this.route('organisations.join'), {
         onFinish: () => {
           this.isLoading = false;
         },
         onError: () => {
           this.isLoading = false;
-          console.error('❌ Failed to navigate to join organization');
+          console.error('❌ Failed to navigate to join organisation');
         },
       });
 

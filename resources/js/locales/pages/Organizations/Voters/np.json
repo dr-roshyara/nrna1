@@ -1,9 +1,9 @@
 {
-  "pages.organization-voters": {
+  "pages.organisation-voters": {
     "title": "मतदाता प्रबन्धन",
-    "description": "{organization} को लागि मतदाता प्रबन्ध गर्नुहोस्",
+    "description": "{organisation} को लागि मतदाता प्रबन्ध गर्नुहोस्",
     "accessibility": {
-      "page_loaded": "{organization} को लागि मतदाता प्रबन्धन पृष्ठ कुल {count} मतदाताहरूसहितको लोड भयो"
+      "page_loaded": "{organisation} को लागि मतदाता प्रबन्धन पृष्ठ कुल {count} मतदाताहरूसहितको लोड भयो"
     },
     "committee_access": {
       "title": "समिति सदस्य पहुँच",
@@ -30,7 +30,7 @@
       "voted": "पहिले नै मतदान गरिसकेका"
     },
     "table": {
-      "caption": "{organization} को लागि मतदाता सूची",
+      "caption": "{organisation} को लागि मतदाता सूची",
       "select": "छनोट गर्नुहोस्",
       "sn": "क्र.स.",
       "name": "नाम",

@@ -18,8 +18,8 @@ class AdminDashboardController extends Controller
         $user = $request->user();
         $currentRole = $request->attributes->get('current_role', 'admin');
 
-        // Get organizations where user is admin
-        $organizations = $user->organizationRoles()
+        // Get organisations where user is admin
+        $organisations = $user->organisationRoles()
             ->wherePivot('role', 'admin')
             ->get()
             ->map(function ($org) {
@@ -34,7 +34,7 @@ class AdminDashboardController extends Controller
 
         return Inertia::render('Admin/Dashboard', [
             'currentRole' => $currentRole,
-            'organizations' => $organizations,
+            'organisations' => $organisations,
             'quickStats' => [
                 'totalElections' => 0,
                 'activeElections' => 0,

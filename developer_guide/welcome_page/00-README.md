@@ -149,7 +149,7 @@ See [06-TRANSLATIONS.md](./06-TRANSLATIONS.md) for details.
 ## 👥 Three-Role System
 
 Three distinct user roles:
-1. **Admin** - Organization management
+1. **Admin** - organisation management
 2. **Commission** - Election oversight
 3. **Voter** - Participant
 

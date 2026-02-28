@@ -127,7 +127,7 @@ When you're done:
 ✅ File upload works
 ✅ Data validation works
 ✅ Members appear in database
-✅ Organization relationships work
+✅ organisation relationships work
 ✅ Authorization enforced
 ✅ All 3 languages work
 ✅ Mobile responsive works

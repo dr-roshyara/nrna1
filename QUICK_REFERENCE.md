@@ -38,7 +38,7 @@ php artisan make:migration create_user_organization_roles_table
 
 ### Step 5: Update Models
 ```bash
-# File 1: app/Models/Organization.php (add relationship)
+# File 1: app/Models/organisation.php (add relationship)
 # File 2: app/Models/User.php (add relationship)
 # See: BACKEND_IMPLEMENTATION_STEPS.md → Phase 5
 # Time: 10 min
@@ -62,7 +62,7 @@ CREATE:
 
 MODIFY:
 ├── routes/web.php (add 2 lines)
-├── app/Models/Organization.php (add 5 lines)
+├── app/Models/organisation.php (add 5 lines)
 ├── app/Models/User.php (add 5 lines)
 └── database/migrations/YYYY_create_user_organization_roles_table.php (new migration)
 ```
@@ -109,7 +109,7 @@ Implementation:
 ☐ Create OrganizationPolicy
 ☐ Add route
 ☐ Create migration
-☐ Update Organization model
+☐ Update organisation model
 ☐ Update User model
 ☐ Run migration
 
@@ -131,7 +131,7 @@ Deployment:
 | Problem | Solution |
 |---------|----------|
 | Module not found | Check import paths and casing |
-| 403 error | User must be organization admin |
+| 403 error | User must be organisation admin |
 | Members not saved | Run: php artisan migrate |
 | File not found | Check exact file paths and names |
 

@@ -49,9 +49,9 @@ $hasCommissionMembership = \DB::table('election_commission_members')...
 ```
 **Problem:** Ties your logic directly to database structure. Use Models/Relationships instead.
 
-### **4. Missing Organization Context**
+### **4. Missing organisation Context**
 Your resolver doesn't consider:
-- Which organization a user is admin of
+- Which organisation a user is admin of
 - Which election commission they belong to
 - Which election they can vote in
 
@@ -193,9 +193,9 @@ class DashboardResolver
     {
         $roles = [];
 
-        // 1. Organization Admin (new system)
+        // 1. organisation Admin (new system)
         if ($user->organizations()->exists()) {
-            // Check if user has admin role in any organization
+            // Check if user has admin role in any organisation
             $hasAdminRole = $user->organizationRoles()
                 ->where('role', 'admin')
                 ->exists();
@@ -343,7 +343,7 @@ Ensure these exist:
 // App\Models\User.php
 public function organizations()
 {
-    return $this->belongsToMany(Organization::class, 'user_organization_roles')
+    return $this->belongsToMany(organisation::class, 'user_organization_roles')
                 ->withPivot('role');
 }
 
@@ -547,7 +547,7 @@ REFACTOR_TO_SERVICES:
       - Write unit tests
       
     ITERATION_3 (45 mins):
-      - Add organization context awareness
+      - Add organisation context awareness
       - Implement session state management
       - Integration tests
     

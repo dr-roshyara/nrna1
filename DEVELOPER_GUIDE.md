@@ -1,23 +1,23 @@
-# Developer Guide: Organization-Specific Voters List
+# Developer Guide: organisation-Specific Voters List
 
 **Last Updated**: February 23, 2026
 
 ## What You Built
 
-A complete **organization-scoped voter management system** with 120 tests, WCAG 2.1 AA accessibility, and OWASP Top 10 security.
+A complete **organisation-scoped voter management system** with 120 tests, WCAG 2.1 AA accessibility, and OWASP Top 10 security.
 
 ## Architecture (3-Layer Multi-Tenant Defense)
 
 ### Layer 1: Middleware (EnsureOrganizationMember)
-- Validates organization exists
+- Validates organisation exists
 - Validates user is member
 - Returns 403 if not member
-- Stores organization in request
+- Stores organisation in request
 
 ### Layer 2: Controller Queries
 - WHERE organisation_id = ?
 - Parameterized (prevents SQL injection)
-- No cross-organization data possible
+- No cross-organisation data possible
 
 ### Layer 3: Authorization Checks
 - Commission role validation
@@ -51,10 +51,10 @@ A complete **organization-scoped voter management system** with 120 tests, WCAG 
 
 ## Code Patterns
 
-### Pattern 1: Always Filter by Organization
+### Pattern 1: Always Filter by organisation
 ```php
 // ✅ CORRECT
-$voters = User::where('organisation_id', $organization->id)
+$voters = User::where('organisation_id', $organisation->id)
     ->where('is_voter', 1)->get();
 
 // ❌ WRONG - Cross-org leak!
@@ -63,11 +63,11 @@ $voters = User::where('is_voter', 1)->get();
 
 ### Pattern 2: Authorization Validation
 ```php
-if ($voter->organisation_id !== $organization->id) abort(403);
+if ($voter->organisation_id !== $organisation->id) abort(403);
 
 $isCommission = auth()->user()
     ->organizationRoles()
-    ->where('organization_id', $organization->id)
+    ->where('organisation_id', $organisation->id)
     ->wherePivot('role', 'commission')
     ->exists();
 
@@ -79,7 +79,7 @@ if (!$isCommission) abort(403);
 Log::channel('voting_audit')->info('Voter approved', [
     'voter_id' => $voter->id,
     'approver_id' => auth()->id(),
-    'organization_id' => $organization->id,
+    'organisation_id' => $organisation->id,
 ]);
 ```
 
@@ -112,7 +112,7 @@ php artisan test tests/Feature/Accessibility/
 ✅ XSS - Vue auto-escaping
 ✅ CSRF - Laravel middleware
 ✅ Authorization Bypass - Multi-layer validation
-✅ IDOR - Organization ownership check
+✅ IDOR - organisation ownership check
 ✅ Authentication Bypass - Middleware validation
 
 ## Accessibility (WCAG 2.1 AA)
@@ -146,7 +146,7 @@ php artisan test tests/Feature/Accessibility/
 
 ### Enable Rate Limiting
 ```php
-->middleware('throttle:organization-actions')
+->middleware('throttle:organisation-actions')
 ```
 
 ### Export to CSV
@@ -162,7 +162,7 @@ response()->streamDownload(function () use ($voters) {
 ## Troubleshooting
 
 ### 403 for Valid Member
-Check: `$user->organizationRoles()->where('organization_id', $org->id)->exists()`
+Check: `$user->organizationRoles()->where('organisation_id', $org->id)->exists()`
 
 ### Cross-Org Data Visible
 Add: `WHERE organisation_id = {$id}` to all queries
@@ -182,7 +182,7 @@ Verify indexes: `Schema::getIndexes('users')`
 
 ## Summary
 
-✅ Complete organization-scoped voter management
+✅ Complete organisation-scoped voter management
 ✅ 120 comprehensive tests
 ✅ WCAG 2.1 AA accessibility
 ✅ OWASP Top 10 security

@@ -4,7 +4,7 @@
 
     <!-- Accessibility: Screen reader announcement -->
     <div role="status" aria-live="polite" class="sr-only">
-      {{ $t('pages.organization-show.accessibility.page_loaded', { organization: organization.name }) }}
+      {{ $t('pages.organisation-show.accessibility.page_loaded', { organisation: organisation.name }) }}
     </div>
 
     <!-- Main Content -->
@@ -14,7 +14,7 @@
         <!-- Header -->
         <div class="mb-8">
           <Link
-            :href="`/organizations/${organization.slug}`"
+            :href="`/organisations/${organisation.slug}`"
             class="inline-flex items-center text-blue-600 hover:text-blue-700 mb-4"
           >
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -220,10 +220,10 @@
                 </p>
 
                 <Link
-                  :href="`/organizations/${organization.slug}`"
+                  :href="`/organisations/${organisation.slug}`"
                   class="inline-flex items-center px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                 >
-                  Back to Organization
+                  Back to organisation
                 </Link>
               </div>
             </section>
@@ -302,7 +302,7 @@ import { useMeta } from '@/composables/useMeta'
 const { t } = useI18n()
 
 const props = defineProps({
-  organization: {
+  organisation: {
     type: Object,
     required: true
   }
@@ -327,7 +327,7 @@ const steps = computed(() => [
 ])
 
 // Composable
-const { parseFile, validateData, submitImport: apiSubmit } = useMemberImport(props.organization)
+const { parseFile, validateData, submitImport: apiSubmit } = useMemberImport(props.organisation)
 
 /**
  * Handle file selection
@@ -441,9 +441,9 @@ const submitImport = async () => {
 
 // SEO Meta Tags
 useMeta({
-  pageKey: 'organizations.show',
+  pageKey: 'organisations.show',
   params: {
-    organization: `${props.organization.name} - Member Import`
+    organisation: `${props.organisation.name} - Member Import`
   }
 })
 </script>

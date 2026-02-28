@@ -8,9 +8,9 @@
     "roles": {
       "admin": {
         "title": "Administrator",
-        "description": "Manage organizations, create elections, and configure the system",
+        "description": "Manage organisations, create elections, and configure the system",
         "icon": "📊",
-        "ariaLabel": "Organization Administrator role - manage organizations and elections"
+        "ariaLabel": "organisation Administrator role - manage organisations and elections"
       },
       "commission": {
         "title": "Election Commission",
@@ -27,7 +27,7 @@
     },
     "stats": {
       "admin": {
-        "organizations": "Organizations",
+        "organisations": "Organisations",
         "elections": "Elections",
         "activeElections": "Active Elections"
       },

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Organization extends Model
+class Organisation extends Model
 {
     use HasFactory;
 
@@ -36,7 +36,7 @@ class Organization extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_organization_roles')
+        return $this->belongsToMany(User::class, 'user_organisation_roles')
                     ->withPivot('role', 'permissions')
                     ->withTimestamps();
     }

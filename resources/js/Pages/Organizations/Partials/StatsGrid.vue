@@ -7,7 +7,7 @@
       id="stats-heading"
       class="text-xl font-semibold text-gray-900 mb-6"
     >
-      {{ $t('pages.organization-show.stats.title') }}
+      {{ $t('pages.organisation-show.stats.title') }}
     </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -16,7 +16,7 @@
         <div class="flex items-start justify-between">
           <div class="flex-1">
             <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-1">
-              {{ $t('pages.organization-show.stats.total_members') }}
+              {{ $t('pages.organisation-show.stats.total_members') }}
             </p>
             <p class="text-4xl font-bold text-gray-900 mt-2">
               {{ stats.members_count ?? 0 }}
@@ -35,7 +35,7 @@
         <div class="flex items-start justify-between">
           <div class="flex-1">
             <p class="text-xs font-semibold text-green-600 uppercase tracking-wide mb-1">
-              {{ $t('pages.organization-show.stats.active_members') }}
+              {{ $t('pages.organisation-show.stats.active_members') }}
             </p>
             <p class="text-4xl font-bold text-green-600 mt-2">
               {{ stats.active_members_count ?? 0 }}
@@ -54,7 +54,7 @@
         <div class="flex items-start justify-between">
           <div class="flex-1">
             <p class="text-xs font-semibold text-purple-600 uppercase tracking-wide mb-1">
-              {{ $t('pages.organization-show.stats.total_elections') }}
+              {{ $t('pages.organisation-show.stats.total_elections') }}
             </p>
             <p class="text-4xl font-bold text-purple-600 mt-2">
               {{ stats.elections_count ?? 0 }}
@@ -73,7 +73,7 @@
         <div class="flex items-start justify-between">
           <div class="flex-1">
             <p class="text-xs font-semibold text-orange-600 uppercase tracking-wide mb-1">
-              {{ $t('pages.organization-show.stats.active_elections') }}
+              {{ $t('pages.organisation-show.stats.active_elections') }}
             </p>
             <p class="text-4xl font-bold text-orange-600 mt-2">
               {{ stats.active_elections_count ?? 0 }}
@@ -92,7 +92,7 @@
         <div class="flex items-start justify-between">
           <div class="flex-1">
             <p class="text-xs font-semibold text-indigo-600 uppercase tracking-wide mb-1">
-              {{ $t('pages.organization-show.stats.completed_elections') }}
+              {{ $t('pages.organisation-show.stats.completed_elections') }}
             </p>
             <p class="text-4xl font-bold text-indigo-600 mt-2">
               {{ stats.completed_elections ?? 0 }}
@@ -111,7 +111,7 @@
         <div class="flex items-start justify-between">
           <div class="flex-1">
             <p class="text-xs font-semibold text-cyan-600 uppercase tracking-wide mb-1">
-              {{ $t('pages.organization-show.stats.new_members_30d') }}
+              {{ $t('pages.organisation-show.stats.new_members_30d') }}
             </p>
             <p class="text-4xl font-bold text-cyan-600 mt-2">
               {{ stats.new_members_30d ?? 0 }}

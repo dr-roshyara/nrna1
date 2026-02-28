@@ -78,7 +78,7 @@ public function getDemoElectionForUser(User $user): ?Election
             $orgDemo = app(DemoElectionCreationService::class)
                 ->createOrganisationDemoElection(
                     $user->organisation_id,
-                    Organization::find($user->organisation_id)
+                    organisation::find($user->organisation_id)
                 );
         }
 
@@ -289,7 +289,7 @@ createOrganisationDemoElection(5, $org)
 public function test_creates_election_with_correct_organisation_id()
 {
     // ARRANGE
-    $org = Organization::factory()->create(['name' => 'Test Org']);
+    $org = organisation::factory()->create(['name' => 'Test Org']);
 
     // ACT
     $election = $this->service->createOrganisationDemoElection($org->id, $org);
@@ -318,7 +318,7 @@ public function test_creates_election_with_correct_organisation_id()
 public function test_auto_creates_org_specific_demo_when_user_accesses_voting()
 {
     // ARRANGE: User with org, no demo exists
-    $org = Organization::factory()->create(['name' => 'NRNA Europe']);
+    $org = organisation::factory()->create(['name' => 'NRNA Europe']);
     $user = User::factory()->create(['organisation_id' => $org->id]);
 
     // Verify no demo exists yet
@@ -376,7 +376,7 @@ tail -f storage/logs/laravel.log | grep "auto-created"
 php artisan tinker
 
 # In tinker:
-$org = App\Models\Organization::find(5);
+$org = App\Models\organisation::find(5);
 $user = App\Models\User::factory()->create(['organisation_id' => 5]);
 $resolver = app(App\Services\DemoElectionResolver::class);
 $demo = $resolver->getDemoElectionForUser($user);

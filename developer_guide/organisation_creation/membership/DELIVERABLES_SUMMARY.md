@@ -210,7 +210,7 @@ Coverage:
 1. routes/web.php (1 line)
    └─ Add POST route for member import
 
-2. Organization.php (5 lines)
+2. organisation.php (5 lines)
    └─ Add users() relationship
 
 3. User.php (5 lines)
@@ -338,7 +338,7 @@ Frontend:
 Backend:
 ✅ POST request received and processed
 ✅ User records created in database
-✅ Users attached to organization
+✅ Users attached to organisation
 ✅ Success response returned with count
 ✅ Non-admin users get 403 error
 
@@ -347,7 +347,7 @@ Database:
 ✅ Foreign keys set up correctly
 ✅ Indexes created
 ✅ User records persisted
-✅ Organization relationships work
+✅ organisation relationships work
 
 Overall:
 ✅ End-to-end member import working

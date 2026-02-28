@@ -58,7 +58,7 @@
     "audit_trail": "Prüfprotokoll"
   },
   "audience": {
-    "for_organizations": "Für Organisationen",
+    "for_organisations": "Für Organisationen",
     "ngos": "Für NGOs in Deutschland",
     "ngos_item1": "Politische Organisationen",
     "ngos_item2": "Umwelt- und Hilfsorganisationen",
@@ -79,7 +79,7 @@
     "participation": "Beteiligung",
     "admin": "Administration",
     "committee": "Ausschuss",
-    "organization": "Organisation",
+    "organisation": "Organisation",
     "settings": "Einstellungen",
     "profile": "Profil",
     "login": "Anmelden",
@@ -195,7 +195,7 @@
         "description": "Transparente Preisgestaltung für Organisationen aller Größen. Wählen Sie einen Plan, der zu Ihren Wahlbedürfnissen passt. Keine versteckten Gebühren, skalierbare Lösungen für NGOs und Diaspora-Gruppen.",
         "keywords": "Wahlpreise, Abstimmungssoftware-Kosten, Online-Wahlplattform, Lösungspreise für Wahlen"
       },
-      "organizations.show": {
+      "organisations.show": {
         "title": "{organizationName} | Wahlen & Mitglieder | Public Digit",
         "description": "{organizationName}: {memberCount} Mitglieder, {electionCount} Wahlen. Sichere digitale Wahlplattform für Organisationen und Diaspora-Gemeinschaften.",
         "keywords": "{organizationName}, Wahlen, Abstimmungen, digitale Demokratie"
@@ -220,7 +220,7 @@
     "phone": "Telefon & WhatsApp",
     "phone_number": "+49 151 64322589"
   },
-  "organizations": {
+  "organisations": {
     "demo": {
       "title": "Demo-Wahl testen",
       "status_setup_complete": "Einrichtung abgeschlossen",
@@ -286,8 +286,8 @@
       "Regelmäßige Sicherheitsprüfungen",
       "ISO 27001 ausgerichtet"
     ],
-    "supported_organizations_title": "Organisationen die wir unterstützen",
-    "supported_organizations": [
+    "supported_organisations_title": "Organisationen die wir unterstützen",
+    "supported_organisations": [
       "Diaspora-Gemeinschaften & Kulturvereine",
       "Politische & Bürgerbewegungen",
       "NGOs & Humanitäre Organisationen",

@@ -1,4 +1,4 @@
-# Test Execution Report - Organization-Specific Voters List
+# Test Execution Report - organisation-Specific Voters List
 
 **Date**: February 23, 2026
 **Status**: READY FOR EXECUTION
@@ -74,7 +74,7 @@ php artisan test tests/Feature/Organizations/ tests/Unit/Middleware/ tests/Featu
 ## What Each Test Suite Covers
 
 ### Middleware Tests (12)
-✅ Organization validation
+✅ organisation validation
 ✅ Member authentication
 ✅ Role validation (member, staff, commission)
 ✅ Request attribute storage
@@ -91,7 +91,7 @@ php artisan test tests/Feature/Organizations/ tests/Unit/Middleware/ tests/Featu
 
 ### Security Tests (17)
 ✅ Authorization enforcement
-✅ Cross-organization blocking
+✅ Cross-organisation blocking
 ✅ CSRF protection
 ✅ Data integrity
 ✅ Query scoping

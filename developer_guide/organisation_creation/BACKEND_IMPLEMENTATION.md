@@ -1,8 +1,8 @@
-# Backend Implementation Guide - Organization Creation API
+# Backend Implementation Guide - organisation Creation API
 
 ## Quick Start
 
-This guide covers implementing the backend endpoints and services for the Organization Creation Flow.
+This guide covers implementing the backend endpoints and services for the organisation Creation Flow.
 
 ---
 
@@ -203,16 +203,16 @@ class RepresentativeDTO
 
 ## Step 3: Create Service Layer
 
-**File:** `app/Services/Organization/CreateOrganizationService.php`
+**File:** `app/Services/organisation/CreateOrganizationService.php`
 
 ```php
 <?php
 
-namespace App\Services\Organization;
+namespace App\Services\organisation;
 
 use App\DataTransferObjects\OrganizationCreateDTO;
 use App\Mail\OrganizationVerificationEmail;
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -221,25 +221,25 @@ use Illuminate\Support\Str;
 class CreateOrganizationService
 {
     /**
-     * Create a new organization and setup initial member
+     * Create a new organisation and setup initial member
      *
      * @throws \Exception
      */
-    public function create(OrganizationCreateDTO $dto, User $createdBy): Organization
+    public function create(OrganizationCreateDTO $dto, User $createdBy): organisation
     {
         return DB::transaction(function () use ($dto, $createdBy) {
-            // 1. Create organization
-            $organization = new Organization();
-            $organization->name = $dto->name;
-            $organization->slug = Str::slug($dto->name);
-            $organization->email = $dto->email;
-            $organization->address = $dto->address->toArray();
-            $organization->representative = $dto->representative->toArray();
-            $organization->status = 'pending_verification';
-            $organization->verification_token = Str::random(64);
-            $organization->save();
+            // 1. Create organisation
+            $organisation = new organisation();
+            $organisation->name = $dto->name;
+            $organisation->slug = Str::slug($dto->name);
+            $organisation->email = $dto->email;
+            $organisation->address = $dto->address->toArray();
+            $organisation->representative = $dto->representative->toArray();
+            $organisation->status = 'pending_verification';
+            $organisation->verification_token = Str::random(64);
+            $organisation->save();
 
-            // 2. Create landlord admin user for organization
+            // 2. Create landlord admin user for organisation
             $adminUser = new User();
             $adminUser->name = $dto->representative->name;
             $adminUser->email = $dto->representative->email ?? $dto->email;
@@ -247,35 +247,35 @@ class CreateOrganizationService
             $adminUser->email_verified_at = now(); // Auto-verify
             $adminUser->save();
 
-            // 3. Assign admin to organization
-            $organization->admins()->attach($adminUser->id);
+            // 3. Assign admin to organisation
+            $organisation->admins()->attach($adminUser->id);
 
             // 4. Send verification email
-            Mail::to($organization->email)->queue(
-                new OrganizationVerificationEmail($organization)
+            Mail::to($organisation->email)->queue(
+                new OrganizationVerificationEmail($organisation)
             );
 
             // 5. Log creation
             activity()
                 ->causedBy($createdBy)
-                ->performedOn($organization)
+                ->performedOn($organisation)
                 ->event('created')
-                ->log('Organization created');
+                ->log('organisation created');
 
-            return $organization;
+            return $organisation;
         });
     }
 
     /**
-     * Verify organization email
+     * Verify organisation email
      */
-    public function verifyEmail(Organization $organization, string $token): bool
+    public function verifyEmail(organisation $organisation, string $token): bool
     {
-        if ($organization->verification_token !== $token) {
+        if ($organisation->verification_token !== $token) {
             return false;
         }
 
-        $organization->update([
+        $organisation->update([
             'status' => 'active',
             'verification_token' => null,
             'email_verified_at' => now(),
@@ -301,8 +301,8 @@ use App\DataTransferObjects\OrganizationCreateDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrganizationRequest;
 use App\Http\Resources\OrganizationResource;
-use App\Models\Organization;
-use App\Services\Organization\CreateOrganizationService;
+use App\Models\organisation;
+use App\Services\organisation\CreateOrganizationService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Throwable;
@@ -315,7 +315,7 @@ class OrganizationController extends Controller
     }
 
     /**
-     * Create a new organization
+     * Create a new organisation
      *
      * POST /api/organizations
      */
@@ -325,11 +325,11 @@ class OrganizationController extends Controller
             // Convert request to DTO
             $dto = $request->toDTO();
 
-            // Create organization
-            $organization = $this->organizationService->create($dto, $request->user());
+            // Create organisation
+            $organisation = $this->organizationService->create($dto, $request->user());
 
             return response()->json(
-                new OrganizationResource($organization),
+                new OrganizationResource($organisation),
                 Response::HTTP_CREATED
             );
         } catch (Throwable $exception) {
@@ -343,13 +343,13 @@ class OrganizationController extends Controller
     }
 
     /**
-     * Verify organization email via link in email
+     * Verify organisation email via link in email
      *
-     * GET /api/organizations/{organization}/verify/{token}
+     * GET /api/organizations/{organisation}/verify/{token}
      */
-    public function verifyEmail(Organization $organization, string $token): JsonResponse
+    public function verifyEmail(organisation $organisation, string $token): JsonResponse
     {
-        if ($this->organizationService->verifyEmail($organization, $token)) {
+        if ($this->organizationService->verifyEmail($organisation, $token)) {
             return response()->json([
                 'message' => 'Organisation erfolgreich bestätigt',
                 'status' => 'verified',
@@ -411,7 +411,7 @@ class OrganizationResource extends JsonResource
 
 namespace App\Mail;
 
-use App\Models\Organization;
+use App\Models\organisation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
@@ -423,7 +423,7 @@ class OrganizationVerificationEmail extends Mailable
     use Queueable, SerializesModels;
 
     public function __construct(
-        public readonly Organization $organization
+        public readonly organisation $organisation
     ) {
     }
 
@@ -437,12 +437,12 @@ class OrganizationVerificationEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.organization.verification',
+            markdown: 'emails.organisation.verification',
             with: [
-                'organization' => $this->organization,
+                'organisation' => $this->organisation,
                 'verificationUrl' => route('api.organizations.verify', [
-                    'organization' => $this->organization->id,
-                    'token' => $this->organization->verification_token,
+                    'organisation' => $this->organisation->id,
+                    'token' => $this->organisation->verification_token,
                 ]),
             ],
         );
@@ -462,11 +462,11 @@ class OrganizationVerificationEmail extends Mailable
 use App\Http\Controllers\Api\OrganizationController;
 
 Route::middleware('auth:sanctum')->group(function () {
-    // Create organization
+    // Create organisation
     Route::post('/organizations', [OrganizationController::class, 'store'])->name('organizations.store');
 
-    // Verify organization email
-    Route::get('/organizations/{organization}/verify/{token}', [OrganizationController::class, 'verifyEmail'])
+    // Verify organisation email
+    Route::get('/organizations/{organisation}/verify/{token}', [OrganizationController::class, 'verifyEmail'])
         ->name('organizations.verify')
         ->withoutMiddleware('auth:sanctum'); // Allow unauthenticated verification
 });
@@ -474,9 +474,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
 ---
 
-## Step 8: Update Organization Model
+## Step 8: Update organisation Model
 
-**File:** `app/Models/Organization.php`
+**File:** `app/Models/organisation.php`
 
 Ensure model has these attributes:
 
@@ -487,7 +487,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Organization extends Model
+class organisation extends Model
 {
     protected $fillable = [
         'name',
@@ -509,7 +509,7 @@ class Organization extends Model
     // Relations
     public function admins()
     {
-        return $this->belongsToMany(User::class, 'organization_admins', 'organization_id', 'user_id');
+        return $this->belongsToMany(User::class, 'organization_admins', 'organisation_id', 'user_id');
     }
 
     // Scopes
@@ -576,7 +576,7 @@ return new class extends Migration
 
 ---
 
-## Step 10: Create Pivot Table for Organization Admins
+## Step 10: Create Pivot Table for organisation Admins
 
 **File:** `database/migrations/XXXX_XX_XX_create_organization_admins_table.php`
 
@@ -593,12 +593,12 @@ return new class extends Migration
     {
         Schema::create('organization_admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('organization_id')->constrained()->onDelete('cascade');
+            $table->foreignId('organisation_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
 
             // Unique constraint: one admin role per org per user
-            $table->unique(['organization_id', 'user_id']);
+            $table->unique(['organisation_id', 'user_id']);
         });
     }
 
@@ -631,7 +631,7 @@ Response:
 }
 ```
 
-**Step 2: Create Organization**
+**Step 2: Create organisation**
 ```
 POST http://localhost/api/organizations
 Authorization: Bearer your-sanctum-token
@@ -692,7 +692,7 @@ Content-Type: application/json
 }
 ```
 
-### Duplicate Organization (409)
+### Duplicate organisation (409)
 
 ```json
 {
@@ -721,7 +721,7 @@ Content-Type: application/json
 
 namespace Database\Seeders;
 
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -729,7 +729,7 @@ class OrganizationSeeder extends Seeder
 {
     public function run(): void
     {
-        $organization = Organization::create([
+        $organisation = organisation::create([
             'name' => 'Demo Verein e.V.',
             'slug' => 'demo-verein-ev',
             'email' => 'admin@demo-verein.de',
@@ -754,7 +754,7 @@ class OrganizationSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
-        $organization->admins()->attach($admin->id);
+        $organisation->admins()->attach($admin->id);
     }
 }
 ```
@@ -770,7 +770,7 @@ class OrganizationSeeder extends Seeder
 - [ ] Create Resource for API responses
 - [ ] Create Mailable for verification email
 - [ ] Update routes (routes/api.php)
-- [ ] Create/update Organization model
+- [ ] Create/update organisation model
 - [ ] Create database migration
 - [ ] Create database seeder
 - [ ] Run migrations: `php artisan migrate`
@@ -786,7 +786,7 @@ class OrganizationSeeder extends Seeder
 |-------|-------|----------|
 | 401 Unauthorized | No/invalid token | Add `Authorization: Bearer token` header |
 | 422 Validation Error | Invalid field values | Check field validation rules |
-| 409 Conflict | Organization name exists | Use unique name |
+| 409 Conflict | organisation name exists | Use unique name |
 | 500 Server Error | Exception in service | Check logs: `tail -f storage/logs/laravel.log` |
 | Email not sent | Mail not configured | Check `config/mail.php` |
 

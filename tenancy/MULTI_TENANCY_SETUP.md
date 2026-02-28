@@ -5,7 +5,7 @@
 This document describes the **simple, effective multi-tenancy system** implemented using **KISS principles** (Keep It Simple, Stupid) and **TDD-first methodology** (Test-Driven Development).
 
 **What This Gives You:**
-- ✅ Complete data isolation between organizations
+- ✅ Complete data isolation between organisations
 - ✅ Automatic tenant context in every request
 - ✅ Transparent database filtering (global scopes)
 - ✅ Auto-filled organisation_id on record creation
@@ -285,7 +285,7 @@ $defaultUser = User::create([
 // session('current_organisation_id') = null
 
 // They can only see records with organisation_id = null
-// They cannot see any organization's data
+// They cannot see any organisation's data
 // They are isolated on the default platform
 ```
 

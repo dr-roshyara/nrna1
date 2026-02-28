@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\Election;
-use App\Models\Organization;
+use App\Models\Organisation;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
@@ -46,17 +46,17 @@ class DemoElectionResolver
 
             // If no org-specific demo exists, AUTO-CREATE it
             if (!$orgDemo) {
-                $organization = Organization::find($user->organisation_id);
-                if ($organization) {
+                $organisation = Organisation::find($user->organisation_id);
+                if ($organisation) {
                     \Log::info('🔨 Auto-creating org-specific demo election', [
                         'user_id' => $user->id,
                         'organisation_id' => $user->organisation_id,
-                        'organization_name' => $organization->name,
+                        'organisation_name' => $organisation->name,
                     ]);
 
                     try {
                         $orgDemo = app(DemoElectionCreationService::class)
-                            ->createOrganisationDemoElection($user->organisation_id, $organization);
+                            ->createOrganisationDemoElection($user->organisation_id, $organisation);
 
                         \Log::info('✅ Auto-created org-specific demo election', [
                             'user_id' => $user->id,

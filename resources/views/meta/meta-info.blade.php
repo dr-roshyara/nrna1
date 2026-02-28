@@ -60,22 +60,22 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "{{ config('meta.organization.name') }}",
-  "legalName": "{{ config('meta.organization.legal_name') }}",
-  "url": "{{ config('meta.organization.url') }}",
-  "logo": "{{ config('meta.organization.logo') }}",
-  "foundingDate": "{{ config('meta.organization.founding_date') }}",
-  "email": "{{ config('meta.organization.email') }}",
+  "@type": "organisation",
+  "name": "{{ config('meta.organisation.name') }}",
+  "legalName": "{{ config('meta.organisation.legal_name') }}",
+  "url": "{{ config('meta.organisation.url') }}",
+  "logo": "{{ config('meta.organisation.logo') }}",
+  "foundingDate": "{{ config('meta.organisation.founding_date') }}",
+  "email": "{{ config('meta.organisation.email') }}",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "{{ config('meta.organization.address.street_address') }}",
-    "addressLocality": "{{ config('meta.organization.address.address_locality') }}",
-    "addressRegion": "{{ config('meta.organization.address.address_region') }}",
-    "postalCode": "{{ config('meta.organization.address.postal_code') }}",
-    "addressCountry": "{{ config('meta.organization.address.address_country') }}"
+    "streetAddress": "{{ config('meta.organisation.address.street_address') }}",
+    "addressLocality": "{{ config('meta.organisation.address.address_locality') }}",
+    "addressRegion": "{{ config('meta.organisation.address.address_region') }}",
+    "postalCode": "{{ config('meta.organisation.address.postal_code') }}",
+    "addressCountry": "{{ config('meta.organisation.address.address_country') }}"
   },
-  "sameAs": @json(config('meta.organization.same_as'))
+  "sameAs": @json(config('meta.organisation.same_as'))
 }
 </script>
 
@@ -88,7 +88,7 @@
   "url": "{{ config('meta.og_url') }}",
   "description": "{{ config('meta.description') }}",
   "publisher": {
-    "@type": "Organization",
+    "@type": "organisation",
     "name": "{{ config('meta.publisher') }}"
   }
 }

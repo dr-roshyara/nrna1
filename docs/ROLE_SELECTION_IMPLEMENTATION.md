@@ -68,12 +68,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->enum('role', ['admin', 'commission', 'voter']);
-            $table->foreignId('organization_id')->nullable()->constrained();
+            $table->foreignId('organisation_id')->nullable()->constrained();
             $table->json('metadata')->nullable();
             $table->timestamps();
 
-            // Ensure user can't have duplicate roles per organization
-            $table->unique(['user_id', 'role', 'organization_id']);
+            // Ensure user can't have duplicate roles per organisation
+            $table->unique(['user_id', 'role', 'organisation_id']);
         });
 
         // Add commission members to elections table
@@ -161,7 +161,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserRole extends Model
 {
-    protected $fillable = ['user_id', 'role', 'organization_id', 'metadata'];
+    protected $fillable = ['user_id', 'role', 'organisation_id', 'metadata'];
     protected $casts = ['metadata' => 'json'];
 
     public function user(): BelongsTo
@@ -169,14 +169,14 @@ class UserRole extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function organization(): BelongsTo
+    public function organisation(): BelongsTo
     {
-        return $this->belongsTo(Organization::class);
+        return $this->belongsTo(organisation::class);
     }
 }
 ```
 
-**File:** `app/Models/Organization.php`
+**File:** `app/Models/organisation.php`
 
 ```php
 <?php
@@ -187,7 +187,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Organization extends Model
+class organisation extends Model
 {
     protected $fillable = ['name', 'description', 'type', 'settings'];
     protected $casts = ['settings' => 'json'];
@@ -228,7 +228,7 @@ class User extends Authenticatable
 
     public function organizations(): BelongsToMany
     {
-        return $this->belongsToMany(Organization::class)
+        return $this->belongsToMany(organisation::class)
             ->withPivot('role', 'metadata')
             ->withTimestamps();
     }
@@ -236,12 +236,12 @@ class User extends Authenticatable
     /**
      * Check if user has a specific role
      */
-    public function hasRole(string $role, ?Organization $organization = null): bool
+    public function hasRole(string $role, ?organisation $organisation = null): bool
     {
         return $this->roles()
             ->where('role', $role)
-            ->when($organization, function ($query) use ($organization) {
-                return $query->where('organization_id', $organization->id);
+            ->when($organisation, function ($query) use ($organisation) {
+                return $query->where('organisation_id', $organisation->id);
             })
             ->exists();
     }
@@ -346,7 +346,7 @@ class RoleSelectionController extends Controller
                 ->whereHas('elections', function ($q) {
                     $q->where('status', 'active');
                 })->count(),
-            'totalMembers' => 0, // Calculate from organization members
+            'totalMembers' => 0, // Calculate from organisation members
         ];
 
         $commissionStats = [
@@ -529,9 +529,9 @@ class CommissionDashboardController extends Controller
             @keydown.space="selectRole('admin')"
           >
             <div class="role-icon">👑</div>
-            <h2>Organization Administrator</h2>
+            <h2>organisation Administrator</h2>
             <p class="role-description">
-              Create elections, manage your organization
+              Create elections, manage your organisation
             </p>
             <div class="role-stats">
               <div class="stat">

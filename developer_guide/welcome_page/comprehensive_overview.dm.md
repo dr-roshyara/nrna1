@@ -72,12 +72,12 @@
        - Shows role-specific action cards for existing users
 
        Card Types for New Users:
-       - Create Organization (primary action)
-       - Join Organization
+       - Create organisation (primary action)
+       - Join organisation
        - Request Assistance (24h response meta)
 
        Role-Based Cards:
-       - Admin: Organization completion → Add members → Create election → View organization
+       - Admin: organisation completion → Add members → Create election → View organisation
        - Commission: Manage election
        - Voter: Cast vote OR View votes history
 
@@ -98,7 +98,7 @@
        - Injected with OnboardingTracker dependency
 
        Renders:
-       - Organization setup card with:
+       - organisation setup card with:
          - Current step title and description
          - Progress percentage (25% → 50% → 75%)
          - Setup checklist (4 items with completion status)
@@ -123,7 +123,7 @@
        2. onboarding_step - Setup progress indicators
        3. gdpr_consent - DSGVO compliance requirement
        4. email_verification - Email confirmation needed
-       5. org_setup_incomplete - Organization setup progress
+       5. org_setup_incomplete - organisation setup progress
        6. Generic fallback for custom actions
 
        Features:
@@ -203,7 +203,7 @@
        ┌──────┬───────────────────────┬──────────────────────────────────────┐
        │ Step │         State         │         Minimum Requirements         │
        ├──────┼───────────────────────┼──────────────────────────────────────┤
-       │ 1    │ New user              │ No organization                      │
+       │ 1    │ New user              │ No organisation                      │
        ├──────┼───────────────────────┼──────────────────────────────────────┤
        │ 2    │ Org needs members     │ Org exists, <2 members               │
        ├──────┼───────────────────────┼──────────────────────────────────────┤
@@ -452,7 +452,7 @@
        ├─────────────────────────┼──────────┼───────────────────────────────────────┼──────────────────────────────────────────┤
        │ RoleBasedActionBlock    │ 10       │ Always                                │ Action cards (new user or role-specific) │
        ├─────────────────────────┼──────────┼───────────────────────────────────────┼──────────────────────────────────────────┤
-       │ OrganizationStatusBlock │ 20       │ Admin + setup in progress (steps 2-4) │ Organization setup progress              │
+       │ OrganizationStatusBlock │ 20       │ Admin + setup in progress (steps 2-4) │ organisation setup progress              │
        ├─────────────────────────┼──────────┼───────────────────────────────────────┼──────────────────────────────────────────┤
        │ PendingActionsBlock     │ 30       │ Has pending actions                   │ List of pending tasks                    │
        └─────────────────────────┴──────────┴───────────────────────────────────────┴──────────────────────────────────────────┘
@@ -530,7 +530,7 @@
   ├─────────────────────────┼──────────┼──────────────────────────┼──────────────────────────────────────────┤
   │ RoleBasedActionBlock    │ 10       │ Always                   │ Quick-start action cards (role-specific) │
   ├─────────────────────────┼──────────┼──────────────────────────┼──────────────────────────────────────────┤
-  │ OrganizationStatusBlock │ 20       │ Admin in setup steps 2-4 │ Organization setup progress tracker      │
+  │ OrganizationStatusBlock │ 20       │ Admin in setup steps 2-4 │ organisation setup progress tracker      │
   ├─────────────────────────┼──────────┼──────────────────────────┼──────────────────────────────────────────┤
   │ PendingActionsBlock     │ 30       │ Has pending actions      │ Task notifications list                  │
   └─────────────────────────┴──────────┴──────────────────────────┴──────────────────────────────────────────┘

@@ -156,7 +156,7 @@ Click to reveal:
 **Purpose:** Show voters from a specific geographic region
 
 **Options:**
-- [Region dropdown will show available regions for your organization]
+- [Region dropdown will show available regions for your organisation]
 
 **How to use:**
 1. Click the "Region" dropdown
@@ -164,13 +164,13 @@ Click to reveal:
 3. Click "Apply Filters"
 
 **Available regions depend on:**
-- Your organization's geographic setup
+- Your organisation's geographic setup
 - State/province/region structure
 - How administrators configured the system
 
 **Example:**
-- Germany organization: Bayern, Baden-Württemberg, Hamburg, etc.
-- India organization: Delhi, Karnataka, Maharashtra, etc.
+- Germany organisation: Bayern, Baden-Württemberg, Hamburg, etc.
+- India organisation: Delhi, Karnataka, Maharashtra, etc.
 
 #### **4. Multiple Filters Together**
 
@@ -318,7 +318,7 @@ Date Range: 02/01 - 02/23 [X]  ← Click X to remove date range
 
 **Tip 8: Use wildcards (if enabled)**
 - Some systems support: "jo*" (finds john, joseph, joan)
-- Check your organization's help for wildcard support
+- Check your organisation's help for wildcard support
 
 ### 🚫 Common Mistakes
 
@@ -378,7 +378,7 @@ Date Range: 02/01 - 02/23 [X]  ← Click X to remove date range
 2. ✅ Try a shorter search (just "john" instead of "john smith")
 3. ✅ Check that you haven't applied restrictive filters
 4. ✅ Click "Clear All" to reset everything
-5. ✅ Verify you have permission to see this organization's voters
+5. ✅ Verify you have permission to see this organisation's voters
 6. ✅ Try searching by User ID instead of name
 
 ---

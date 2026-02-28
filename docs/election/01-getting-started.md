@@ -10,7 +10,7 @@ This guide walks you through your first steps - logging in and navigating to the
 
 1. [Before You Start](#before-you-start)
 2. [Step 1: Login](#step-1-login)
-3. [Step 2: Navigate to Your Organization](#step-2-navigate-to-your-organization)
+3. [Step 2: Navigate to Your organisation](#step-2-navigate-to-your-organisation)
 4. [Step 3: Access the Voter List](#step-3-access-the-voter-list)
 5. [First Time? Common Questions](#first-time-common-questions)
 6. [Troubleshooting](#troubleshooting)
@@ -21,7 +21,7 @@ This guide walks you through your first steps - logging in and navigating to the
 
 ✅ You need:
 - Valid login credentials (username/email and password)
-- Access to your organization
+- Access to your organisation
 - A modern web browser (Chrome, Firefox, Safari, or Edge)
 - JavaScript enabled in your browser
 
@@ -32,7 +32,7 @@ This guide walks you through your first steps - logging in and navigating to the
 ### 1️⃣ Go to the Login Page
 
 1. Open your web browser
-2. Navigate to your organization's election platform URL
+2. Navigate to your organisation's election platform URL
 3. You should see the login page
 
 ### 2️⃣ Enter Your Credentials
@@ -70,7 +70,7 @@ This guide walks you through your first steps - logging in and navigating to the
 
 ### 3️⃣ Two-Factor Authentication (if enabled)
 
-If your organization uses two-factor authentication:
+If your organisation uses two-factor authentication:
 
 1. You'll see a code entry screen
 2. Check your email or authenticator app for the code
@@ -79,11 +79,11 @@ If your organization uses two-factor authentication:
 
 ### ✅ Success
 
-You're now logged in! You should see the dashboard with your organization's name.
+You're now logged in! You should see the dashboard with your organisation's name.
 
 ---
 
-## Step 2: Navigate to Your Organization
+## Step 2: Navigate to Your organisation
 
 ### From the Dashboard
 
@@ -98,33 +98,33 @@ After logging in, you'll see:
 │                                          │
 │  My Organizations                        │
 │  ┌────────────────────────────────────┐  │
-│  │ Organization Name                  │  │
+│  │ organisation Name                  │  │
 │  │ Role: Commission Member            │  │
 │  │                                    │  │
-│  │ [ View Organization ] [ Settings ]│  │
+│  │ [ View organisation ] [ Settings ]│  │
 │  └────────────────────────────────────┘  │
 │                                          │
 └──────────────────────────────────────────┘
 ```
 
-**To access your organization:**
+**To access your organisation:**
 
-1. Find your organization name in the list
-2. Click **"View Organization"** button
+1. Find your organisation name in the list
+2. Click **"View organisation"** button
    - OR -
-3. Click the organization name directly
+3. Click the organisation name directly
 
 ---
 
 ## Step 3: Access the Voter List
 
-### From Organization Page
+### From organisation Page
 
-Once inside your organization, you'll see:
+Once inside your organisation, you'll see:
 
 ```
 ┌──────────────────────────────────────────┐
-│     Organization: Election2024           │
+│     organisation: Election2024           │
 ├──────────────────────────────────────────┤
 │                                          │
 │  Navigation Menu:                        │
@@ -149,7 +149,7 @@ Once inside your organization, you'll see:
 
 You now have access to the voter management page. You can:
 
-- ✅ **View voters** in your organization
+- ✅ **View voters** in your organisation
 - ✅ **Search** for specific voters
 - ✅ **Filter** voters by status
 - ✅ **Approve** voters (if you have commission access)
@@ -164,15 +164,15 @@ You now have access to the voter management page. You can:
 
 **A:** You might not have permission to access the voter list. This typically means:
 - Your role doesn't include voter management access
-- You need to contact your organization administrator to grant access
-- Check that you're in the correct organization (you may be part of multiple organizations)
+- You need to contact your organisation administrator to grant access
+- Check that you're in the correct organisation (you may be part of multiple organizations)
 
 ### Q: Can I access multiple organizations?
 
 **A:** Yes! If you belong to multiple organizations:
 1. Go back to the dashboard
-2. Click on a different organization
-3. Each organization has its own voter list
+2. Click on a different organisation
+3. Each organisation has its own voter list
 
 ### Q: How do I change my password?
 
@@ -217,7 +217,7 @@ See [Managing Voters](./04-managing-voters.md) for more details.
 
 **Get Help:**
 - Click "Forgot Password?" to reset
-- Contact your organization administrator
+- Contact your organisation administrator
 
 ---
 
@@ -226,13 +226,13 @@ See [Managing Voters](./04-managing-voters.md) for more details.
 **Problem:** You can log in but can't access the voter list
 
 **Solutions:**
-1. ✅ Verify you're in the correct organization
+1. ✅ Verify you're in the correct organisation
 2. ✅ Check that your role includes voter management access
 3. ✅ Refresh the page (F5 or Ctrl+R)
 4. ✅ Clear your browser cache and cookies
 
 **Get Help:**
-- Contact your organization administrator to check your permissions
+- Contact your organisation administrator to check your permissions
 - See [Language Settings](./09-language-settings.md) if you're seeing a different language than expected
 
 ---
@@ -258,16 +258,16 @@ See [Managing Voters](./04-managing-voters.md) for more details.
 **Problem:** The voter list page doesn't exist
 
 **Solutions:**
-1. ✅ Make sure you're accessing the correct URL for your organization
+1. ✅ Make sure you're accessing the correct URL for your organisation
 2. ✅ Click through the navigation menu instead of typing the URL
 3. ✅ Refresh the page
-4. ✅ Check that the organization slug in the URL is correct
+4. ✅ Check that the organisation slug in the URL is correct
 
 **Example correct URL:**
 ```
 https://yourplatform.com/organizations/election2024/voters
                                       ^^^^^^^^^^^^^^
-                                      Organization slug
+                                      organisation slug
 ```
 
 ---
@@ -305,7 +305,7 @@ https://yourplatform.com/organizations/election2024/voters
 
 - Review [Tips & Troubleshooting](./07-tips-troubleshooting.md)
 - Check [Accessibility Guide](./08-accessibility.md) if using a screen reader
-- Contact your organization administrator
+- Contact your organisation administrator
 - Email support at: support@yourplatform.com
 
 ---

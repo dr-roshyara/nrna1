@@ -230,9 +230,9 @@ class SeoService
                 'url' => $event['url'] ?? config('app.url'),
             ],
             'organizer' => [
-                '@type' => 'Organization',
-                'name' => config('meta.organization.name'),
-                'url' => config('meta.organization.url'),
+                '@type' => 'organisation',
+                'name' => config('meta.organisation.name'),
+                'url' => config('meta.organisation.url'),
             ],
         ];
     }

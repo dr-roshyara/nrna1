@@ -2,7 +2,7 @@
 
 **Status**: ✅ **READY FOR TESTING**
 **Date**: February 23, 2026
-**Component**: Organization-Specific Voters List Management System
+**Component**: organisation-Specific Voters List Management System
 **WCAG Target**: WCAG 2.1 AA Compliance
 
 ---

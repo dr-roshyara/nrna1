@@ -59,7 +59,7 @@ Existing with service
 Responsible for creating complete demo election structures:
 
 ```
-Input: organisationId, Organization model
+Input: organisationId, organisation model
          ↓
     Create Election
     (with organisation_id)
@@ -79,7 +79,7 @@ Input: organisationId, Organization model
 
 **Key Method**:
 ```php
-createOrganisationDemoElection(int $organisationId, Organization $organization): Election
+createOrganisationDemoElection(int $organisationId, organisation $organisation): Election
 ```
 
 **Guarantees**:

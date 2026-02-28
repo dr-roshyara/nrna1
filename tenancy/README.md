@@ -30,7 +30,7 @@ This folder contains comprehensive documentation on the multi-tenancy implementa
 - BelongsToTenant trait (automatic scoping + auto-fill)
 - 11 models with tenant support
 - Session-based tenant context
-- Per-organization logging
+- Per-organisation logging
 - 33/33 integration tests passing
 - Migration framework
 

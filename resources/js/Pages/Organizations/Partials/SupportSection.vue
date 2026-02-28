@@ -9,12 +9,12 @@
         id="support-heading"
         class="text-2xl font-bold text-gray-900 mb-2"
       >
-        {{ $t('pages.organization-show.support.title') }}
+        {{ $t('pages.organisation-show.support.title') }}
       </h2>
 
       <!-- Description -->
       <p class="text-base text-gray-700 mb-8 max-w-2xl">
-        {{ $t('pages.organization-show.support.description') }}
+        {{ $t('pages.organisation-show.support.description') }}
       </p>
 
       <!-- Contact Options -->
@@ -29,7 +29,7 @@
           </div>
           <div class="flex-1">
             <p class="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">
-              {{ $t('pages.organization-show.support.email_us') }}
+              {{ $t('pages.organisation-show.support.email_us') }}
             </p>
             <a
               :href="`mailto:${decodedEmailAddress}`"
@@ -50,7 +50,7 @@
           </div>
           <div class="flex-1">
             <p class="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">
-              {{ $t('pages.organization-show.support.call_us') }}
+              {{ $t('pages.organisation-show.support.call_us') }}
             </p>
             <a
               :href="`tel:${phoneNumber}`"
@@ -71,10 +71,10 @@
           </div>
           <div class="flex-1">
             <p class="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">
-              {{ $t('pages.organization-show.support.hours') }}
+              {{ $t('pages.organisation-show.support.hours') }}
             </p>
             <p class="text-base text-gray-700 font-medium">
-              {{ $t('pages.organization-show.support.hours') }}
+              {{ $t('pages.organisation-show.support.hours') }}
             </p>
           </div>
         </div>
@@ -90,7 +90,7 @@
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17s4.5 10.747 10 10.747c5.5 0 10-4.998 10-10.747 0-6.002-4.5-10.747-10-10.747z" />
             </svg>
-            {{ $t('pages.organization-show.support.handbook') }}
+            {{ $t('pages.organisation-show.support.handbook') }}
           </a>
           <a
             href="/book-webinar"
@@ -99,7 +99,7 @@
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
             </svg>
-            {{ $t('pages.organization-show.support.book_webinar') }}
+            {{ $t('pages.organisation-show.support.book_webinar') }}
           </a>
         </div>
       </div>
@@ -125,7 +125,7 @@ defineProps({
  * Replaces HTML entity &#64; with @ to avoid translation system issues
  */
 const decodedEmailAddress = computed(() => {
-  const email = t('pages.organization-show.support.email_address')
+  const email = t('pages.organisation-show.support.email_address')
   return email.replace(/&#64;/g, '@')
 })
 
@@ -133,6 +133,6 @@ const decodedEmailAddress = computed(() => {
  * Phone number from translation
  */
 const phoneNumber = computed(() => {
-  return t('pages.organization-show.support.phone_number')
+  return t('pages.organisation-show.support.phone_number')
 })
 </script>

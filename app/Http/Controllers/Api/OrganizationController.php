@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrganizationRequest;
 use App\Mail\OrganizationCreatedMail;
-use App\Models\Organization;
+use App\Models\Organisation;
 use App\Models\User;
 use App\Models\Election;
 use App\Models\DemoPost;
@@ -19,9 +19,9 @@ use Illuminate\Support\Str;
 class OrganizationController extends Controller
 {
     /**
-     * Create a new organization from the onboarding form.
+     * Create a new organisation from the onboarding form.
      *
-     * POST /organizations
+     * POST /organisations
      */
     public function store(StoreOrganizationRequest $request): JsonResponse
     {
@@ -30,16 +30,16 @@ class OrganizationController extends Controller
         error_log('📝 Request data: ' . json_encode($request->all()));
 
         try {
-            \Log::info('Organization creation started', [
+            \Log::info('organisation creation started', [
                 'user_id' => auth()->id(),
                 'request_data' => $request->except(['password', 'representative']),
             ]);
 
             $user = auth()->user();
 
-            // Create organization
-            \Log::info('Creating organization record');
-            $organization = Organization::create([
+            // Create organisation
+            \Log::info('Creating organisation record');
+            $organisation = Organisation::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'address' => $request->address,
@@ -47,19 +47,19 @@ class OrganizationController extends Controller
                 'created_by' => $user->id,
                 'slug' => Str::slug($request->name),
             ]);
-            \Log::info('Organization created', ['organization_id' => $organization->id]);
+            \Log::info('organisation created', ['organisation_id' => $organisation->id]);
 
-            // Attach current user as organization admin
-            \Log::info('Attaching user to organization');
-            $organization->users()->attach($user->id, [
+            // Attach current user as organisation admin
+            \Log::info('Attaching user to organisation');
+            $organisation->users()->attach($user->id, [
                 'role' => 'admin',
                 'assigned_at' => now(),
             ]);
-            \Log::info('User attached to organization');
+            \Log::info('User attached to organisation');
 
             // Update current user's organisation_id
             \Log::info('Updating user organisation_id');
-            $user->update(['organisation_id' => $organization->id]);
+            $user->update(['organisation_id' => $organisation->id]);
             \Log::info('User organisation_id updated');
 
             // Handle representative - check if user IS the representative
@@ -85,30 +85,30 @@ class OrganizationController extends Controller
                             ]
                         );
 
-                        // Check if user is already attached to organization (avoid duplicates)
-                        $isAlreadyMember = $organization->users()
+                        // Check if user is already attached to organisation (avoid duplicates)
+                        $isAlreadyMember = $organisation->users()
                             ->where('users.id', $representativeUser->id)
                             ->exists();
 
                         if (!$isAlreadyMember) {
                             // Attach as voter only if not already a member
-                            $organization->users()->attach($representativeUser->id, [
+                            $organisation->users()->attach($representativeUser->id, [
                                 'role' => 'voter',
                                 'assigned_at' => now(),
                             ]);
                         }
 
                         // Update representative user's organisation_id
-                        $representativeUser->update(['organisation_id' => $organization->id]);
+                        $representativeUser->update(['organisation_id' => $organisation->id]);
 
                         // Send password setup invitation
                         try {
                             Mail::to($representativeEmail)->send(
-                                new \App\Mail\RepresentativeInvitationMail($representativeUser, $organization, $user)
+                                new \App\Mail\RepresentativeInvitationMail($representativeUser, $organisation, $user)
                             );
                         } catch (\Exception $e) {
                             \Log::warning('Failed to send representative invitation email', [
-                                'organization_id' => $organization->id,
+                                'organisation_id' => $organisation->id,
                                 'representative_email' => $representativeEmail,
                                 'error' => $e->getMessage(),
                             ]);
@@ -118,15 +118,15 @@ class OrganizationController extends Controller
                 }
             }
 
-            // Send notification email to organization
+            // Send notification email to organisation
             try {
-                Mail::to($organization->email)->send(
-                    new OrganizationCreatedMail($organization, $user)
+                Mail::to($organisation->email)->send(
+                    new OrganizationCreatedMail($organisation, $user)
                 );
             } catch (\Exception $e) {
-                \Log::warning('Failed to send organization created email', [
-                    'organization_id' => $organization->id,
-                    'organization_email' => $organization->email,
+                \Log::warning('Failed to send organisation created email', [
+                    'organisation_id' => $organisation->id,
+                    'organisation_email' => $organisation->email,
                     'error' => $e->getMessage(),
                 ]);
                 // Continue even if email fails
@@ -137,11 +137,11 @@ class OrganizationController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Organisation erfolgreich erstellt!',
-                'redirect' => route('organizations.show', $organization->slug),
-                'organization' => $organization,
+                'redirect' => route('organisations.show', $organisation->slug),
+                'organisation' => $organisation,
             ], 201);
         } catch (\Exception $e) {
-            \Log::error('Organization creation failed', [
+            \Log::error('organisation creation failed', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
                 'user_id' => auth()->id(),
@@ -158,20 +158,20 @@ class OrganizationController extends Controller
     }
 
     /**
-     * Show organization dashboard.
+     * Show organisation dashboard.
      *
-     * GET /organizations/{slug}
+     * GET /organisations/{slug}
      */
     public function show(string $slug)
     {
-        $organization = Organization::where('slug', $slug)
+        $organisation = Organisation::where('slug', $slug)
             ->with(['users' => function ($query) {
                 $query->wherePivot('role', 'admin');
             }])
             ->firstOrFail();
 
         // Check if current user is a member
-        $isMember = $organization->users()
+        $isMember = $organisation->users()
             ->where('users.id', auth()->id())
             ->exists();
 
@@ -182,7 +182,7 @@ class OrganizationController extends Controller
         // Check if demo election exists for this organisation
         $demoElection = Election::withoutGlobalScopes()
             ->where('type', 'demo')
-            ->where('organisation_id', $organization->id)
+            ->where('organisation_id', $organisation->id)
             ->first();
 
         $demoStats = null;
@@ -214,15 +214,15 @@ class OrganizationController extends Controller
         }
 
         return inertia('Organizations/Show', [
-            'organization' => [
-                'id' => $organization->id,
-                'name' => $organization->name,
-                'slug' => $organization->slug,
-                'email' => $organization->email,
-                'created_at' => $organization->created_at->format('d.m.Y'),
+            'organisation' => [
+                'id' => $organisation->id,
+                'name' => $organisation->name,
+                'slug' => $organisation->slug,
+                'email' => $organisation->email,
+                'created_at' => $organisation->created_at->format('d.m.Y'),
             ],
             'stats' => [
-                'members_count' => $organization->users()->count(),
+                'members_count' => $organisation->users()->count(),
                 'elections_count' => 0, // Update when elections context exists
             ],
             'demoStatus' => $demoStats,

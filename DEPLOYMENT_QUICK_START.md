@@ -1,7 +1,7 @@
 # Deployment Quick Start Guide
 
 **Last Updated**: February 23, 2026
-**Project**: Organization-Specific Voters List
+**Project**: organisation-Specific Voters List
 **Status**: ✅ Implementation Complete - Ready for Testing
 
 ---
@@ -25,7 +25,7 @@ composer require doctrine/dbal:^3.5 --update-with-dependencies
 
 ### Quick Test (5 minutes)
 ```bash
-# Run just the organization voter tests
+# Run just the organisation voter tests
 php artisan test tests/Feature/Organizations/ tests/Unit/Middleware/ --no-coverage
 
 # Expected output: 67 tests passing
@@ -33,7 +33,7 @@ php artisan test tests/Feature/Organizations/ tests/Unit/Middleware/ --no-covera
 
 ### Comprehensive Test (10 minutes)
 ```bash
-# Run all organization + security + accessibility tests
+# Run all organisation + security + accessibility tests
 php artisan test tests/Feature/Organizations/ \
                  tests/Unit/Middleware/ \
                  tests/Feature/Security/ \
@@ -90,7 +90,7 @@ cat PHASE_4_SECURITY_SUMMARY.md
    - Expected: Returns 200, table intact
 2. Try XSS in search: `<script>alert('xss')</script>`
    - Expected: Returns 200, script escaped
-3. Try accessing other organization's voters
+3. Try accessing other organisation's voters
    - Expected: Returns 403 Forbidden
 4. Try bypassing CSRF token
    - Expected: Returns 419 CSRF error
@@ -114,7 +114,7 @@ php artisan tinker
 ### Test Query Performance
 ```bash
 php artisan tinker
->>> $org = App\Models\Organization::first();
+>>> $org = App\Models\organisation::first();
 >>> $startTime = microtime(true);
 >>> $voters = App\Models\User::where('is_voter', 1)
                               ->where('organisation_id', $org->id)
@@ -127,16 +127,16 @@ php artisan tinker
 
 ## 5. Route Verification
 
-### List All Organization Voter Routes
+### List All organisation Voter Routes
 ```bash
 php artisan route:list --name=organizations.voters
 
 # Expected output:
-# GET    /organizations/{organization:slug}/voters
-# POST   /organizations/{organization:slug}/voters/bulk-approve
-# POST   /organizations/{organization:slug}/voters/bulk-suspend
-# POST   /organizations/{organization:slug}/voters/{voter}/approve
-# POST   /organizations/{organization:slug}/voters/{voter}/suspend
+# GET    /organizations/{organisation:slug}/voters
+# POST   /organizations/{organisation:slug}/voters/bulk-approve
+# POST   /organizations/{organisation:slug}/voters/bulk-suspend
+# POST   /organizations/{organisation:slug}/voters/{voter}/approve
+# POST   /organizations/{organisation:slug}/voters/{voter}/suspend
 ```
 
 ### Test Route in Browser
@@ -144,7 +144,7 @@ php artisan route:list --name=organizations.voters
 # List page
 http://localhost:8000/organizations/{slug}/voters
 
-# Should show organization voters only
+# Should show organisation voters only
 # Should have commission member notice if applicable
 ```
 
@@ -160,7 +160,7 @@ http://localhost:8000/organizations/{slug}/voters
 - [ ] Routes listed and accessible
 - [ ] Query performance acceptable (<0.1s)
 - [ ] No console errors in browser DevTools
-- [ ] Organization isolation verified
+- [ ] organisation isolation verified
 - [ ] CSRF protection working
 - [ ] Rate limiting configured (if desired)
 - [ ] Audit logging enabled
@@ -173,8 +173,8 @@ http://localhost:8000/organizations/{slug}/voters
 ### Step 1: Merge Code
 ```bash
 git add .
-git commit -m "feat: Organization-specific voters list with accessibility and security"
-git push origin feature/organization-voters
+git commit -m "feat: organisation-specific voters list with accessibility and security"
+git push origin feature/organisation-voters
 # Create PR and merge to main after review
 ```
 
@@ -196,7 +196,7 @@ php artisan cache:clear --env=staging
 ```
 
 ### Step 4: Test in Staging
-- Create organization
+- Create organisation
 - Create test voters
 - Test approval workflow
 - Verify non-members blocked (403)
@@ -235,14 +235,14 @@ composer require doctrine/dbal:^3.5
 php artisan test
 ```
 
-### Organization Not Found (403)
+### organisation Not Found (403)
 **Problem**: Middleware returns 403 for valid member
 **Check**:
 ```bash
 php artisan tinker
 >>> $user = App\Models\User::find(1);
->>> $org = App\Models\Organization::find(1);
->>> $user->organizationRoles()->where('organization_id', $org->id)->exists();
+>>> $org = App\Models\organisation::find(1);
+>>> $user->organizationRoles()->where('organisation_id', $org->id)->exists();
 // Should return: true
 ```
 
@@ -258,11 +258,11 @@ php artisan tinker
 ```
 
 ### Voters from Other Orgs Visible
-**Problem**: Cross-organization data leak
+**Problem**: Cross-organisation data leak
 **Check**:
 ```bash
 php artisan tinker
->>> $org = App\Models\Organization::first();
+>>> $org = App\Models\organisation::first();
 >>> $voters = App\Models\User::where('organisation_id', $org->id)
                               ->where('is_voter', 1)
                               ->count();
@@ -368,7 +368,7 @@ php artisan test tests/Feature/Organizations/ \
 
 6. **Merge to Main**
    ```bash
-   git merge feature/organization-voters
+   git merge feature/organisation-voters
    ```
 
 7. **Deploy to Production**

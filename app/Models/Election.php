@@ -71,6 +71,37 @@ class Election extends Model
     ];
 
     /**
+     * Get the organisation this election belongs to
+     */
+    public function organisation()
+    {
+        return $this->belongsTo(Organisation::class);
+    }
+
+    // ============ EAGER LOADING SCOPES (OPTIMIZATION) ============
+
+    /**
+     * Load organisation relationship
+     */
+    public function scopeWithOrganisation($query)
+    {
+        return $query->with(['organisation' => function($q) {
+            $q->select('id', 'name');
+        }]);
+    }
+
+    /**
+     * Load essential relationships for validation
+     */
+    public function scopeWithEssentialRelations($query)
+    {
+        return $query->select('id', 'name', 'organisation_id', 'type', 'status', 'end_date')
+            ->with(['organisation' => function($q) {
+                $q->select('id', 'name');
+            }]);
+    }
+
+    /**
      * Get all posts for this election
      *
      * @return HasMany

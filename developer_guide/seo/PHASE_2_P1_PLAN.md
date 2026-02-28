@@ -26,14 +26,14 @@
 **Target State:**
 - Elections as Event schema
 - Start/end dates
-- Organization as organizer
+- organisation as organizer
 - Vote count as attendance
 - Structured event data
 
 **Impact:** Elections visible in Google Events
 
-### 3. Organization Schema Enhancement
-**Current State:** Basic Organization schema
+### 3. organisation Schema Enhancement
+**Current State:** Basic organisation schema
 **Target State:**
 - Enhanced with member count
 - Election count
@@ -60,7 +60,7 @@
 ```
 app/
 ├── Helpers/
-│   ├── SchemaGenerator.php (ENHANCE - add Breadcrumb, Event, Organization)
+│   ├── SchemaGenerator.php (ENHANCE - add Breadcrumb, Event, organisation)
 │   └── BreadcrumbHelper.php (CREATE - generate breadcrumb data)
 │
 ├── Http/
@@ -131,10 +131,10 @@ class BreadcrumbHelper
             'url' => url('/organizations')
         ];
 
-        if ($params['organization'] ?? null) {
+        if ($params['organisation'] ?? null) {
             $breadcrumbs[] = [
-                'label' => $params['organization']->name,
-                'url' => route('organizations.show', ['slug' => $params['organization']->slug])
+                'label' => $params['organisation']->name,
+                'url' => route('organizations.show', ['slug' => $params['organisation']->slug])
             ];
         }
 
@@ -341,7 +341,7 @@ export function useBreadcrumbs() {
 namespace App\Helpers;
 
 use App\Models\Election;
-use App\Models\Organization;
+use App\Models\organisation;
 
 class SchemaGenerator
 {
@@ -352,7 +352,7 @@ class SchemaGenerator
      */
     public static function generateElectionEventSchema(Election $election): array
     {
-        $organization = $election->organization;
+        $organisation = $election->organisation;
 
         return [
             '@context' => 'https://schema.org',
@@ -364,11 +364,11 @@ class SchemaGenerator
             'eventStatus' => self::getEventStatus($election),
             'eventAttendanceMode' => 'OnlineEventAttendanceMode',
             'url' => url('/election/' . $election->id),
-            'image' => $organization?->logo_url ?? url('/images/og-default.jpg'),
+            'image' => $organisation?->logo_url ?? url('/images/og-default.jpg'),
             'organizer' => [
-                '@type' => 'Organization',
-                'name' => $organization?->name ?? 'Public Digit',
-                'url' => $organization ? route('organizations.show', ['slug' => $organization->slug]) : url('/')
+                '@type' => 'organisation',
+                'name' => $organisation?->name ?? 'Public Digit',
+                'url' => $organisation ? route('organizations.show', ['slug' => $organisation->slug]) : url('/')
             ],
             'offers' => [
                 '@type' => 'Offer',
@@ -378,24 +378,24 @@ class SchemaGenerator
             ],
             'performers' => [
                 [
-                    '@type' => 'Organization',
-                    'name' => $organization?->name ?? 'Public Digit'
+                    '@type' => 'organisation',
+                    'name' => $organisation?->name ?? 'Public Digit'
                 ]
             ]
         ];
     }
 
     /**
-     * Generate enhanced Organization schema
+     * Generate enhanced organisation schema
      */
-    public static function generateOrganizationSchema(Organization $org): array
+    public static function generateOrganizationSchema(organisation $org): array
     {
         return [
             '@context' => 'https://schema.org',
-            '@type' => 'Organization',
+            '@type' => 'organisation',
             'name' => $org->name,
             'url' => route('organizations.show', ['slug' => $org->slug]),
-            'description' => $org->description ?? 'Organization on Public Digit',
+            'description' => $org->description ?? 'organisation on Public Digit',
             'logo' => $org->logo_url ?? url('/images/logo-2.png'),
             'email' => $org->email,
             'address' => $org->address,
@@ -416,7 +416,7 @@ class SchemaGenerator
         }
     }
 
-    private static function getSocialLinks(Organization $org): array
+    private static function getSocialLinks(organisation $org): array
     {
         $links = [];
         $settings = $org->settings ?? [];
@@ -448,7 +448,7 @@ const props = defineProps({
     type: Object,
     required: true
   },
-  organization: {
+  organisation: {
     type: Object,
     default: null
   }
@@ -465,8 +465,8 @@ const eventJsonLd = computed(() => {
     'eventAttendanceMode': 'OnlineEventAttendanceMode',
     'url': window.location.href,
     'organizer': {
-      '@type': 'Organization',
-      'name': props.organization?.name || 'Public Digit'
+      '@type': 'organisation',
+      'name': props.organisation?.name || 'Public Digit'
     },
     'offers': {
       '@type': 'Offer',
@@ -741,7 +741,7 @@ namespace Tests\Unit;
 
 use App\Helpers\SchemaGenerator;
 use App\Models\Election;
-use App\Models\Organization;
+use App\Models\organisation;
 use Tests\TestCase;
 
 class SchemaGeneratorTest extends TestCase
@@ -759,11 +759,11 @@ class SchemaGeneratorTest extends TestCase
 
     public function test_generates_organization_schema()
     {
-        $org = Organization::factory()->create();
+        $org = organisation::factory()->create();
         $schema = SchemaGenerator::generateOrganizationSchema($org);
 
         $this->assertEquals('https://schema.org', $schema['@context']);
-        $this->assertEquals('Organization', $schema['@type']);
+        $this->assertEquals('organisation', $schema['@type']);
         $this->assertEquals($org->name, $schema['name']);
     }
 }
@@ -783,7 +783,7 @@ class SchemaGeneratorTest extends TestCase
 - `tests/Unit/SchemaGeneratorTest.php`
 
 ### Modified Files (3)
-- `app/Helpers/SchemaGenerator.php` - Add Event & Organization schemas
+- `app/Helpers/SchemaGenerator.php` - Add Event & organisation schemas
 - `app/Http/Middleware/HandleInertiaRequests.php` - Add breadcrumb props
 - `app/Http/Kernel.php` - Register TrackPerformance middleware
 
@@ -794,7 +794,7 @@ class SchemaGeneratorTest extends TestCase
 - [ ] Breadcrumb components render correctly
 - [ ] JSON-LD breadcrumbs valid (schema.org validator)
 - [ ] Event schema shows in Google Rich Results
-- [ ] Organization schema enhanced
+- [ ] organisation schema enhanced
 - [ ] Performance metrics tracking
 - [ ] No console errors
 - [ ] All tests pass

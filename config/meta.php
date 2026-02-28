@@ -60,8 +60,8 @@ return [
     'theme_color' => '#1e40af',
     'mobile_app_capable' => 'yes',
 
-    // Organization Schema
-    'organization' => [
+    // organisation Schema
+    'organisation' => [
         'name' => 'Public Digit',
         'legal_name' => 'Public Digit Technology Solutions',
         'url' => env('APP_URL', 'https://publicdigit.com'),

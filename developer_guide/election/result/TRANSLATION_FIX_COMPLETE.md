@@ -9,21 +9,21 @@
 ## 🔍 Root Cause Analysis
 
 ### The Problem
-Show.vue (the organization dashboard page) uses translation keys like:
+Show.vue (the organisation dashboard page) uses translation keys like:
 ```javascript
-$t('pages.organization-show.actions.title')
-$t('pages.organization-show.actions.import_members')
+$t('pages.organisation-show.actions.title')
+$t('pages.organisation-show.actions.import_members')
 $t('modals.member_import.title')
 ```
 
 But these keys were **not being loaded** into the i18n instance because:
 
 ### The Mistake in i18n.js
-The file was loading TWO different translations for "organization-show":
+The file was loading TWO different translations for "organisation-show":
 
-1. **Line 100-102**: Old translations from `Organization/de.json`
+1. **Line 100-102**: Old translations from `organisation/de.json`
    ```
-   import organizationShowDe from './locales/pages/Organization/de.json'
+   import organizationShowDe from './locales/pages/organisation/de.json'
    ```
 
 2. **Line 104-106**: New translations from `Organizations/Show/de.json`
@@ -33,7 +33,7 @@ The file was loading TWO different translations for "organization-show":
 
 But then only using the OLD one in the messages object (Lines 171, 204, 237):
 ```javascript
-'organization-show': organizationShowDe,  // ❌ Missing the NEW translations!
+'organisation-show': organizationShowDe,  // ❌ Missing the NEW translations!
 ```
 
 ### Result
@@ -52,29 +52,29 @@ But then only using the OLD one in the messages object (Lines 171, 204, 237):
 
 **Before** (Lines 171, 204, 237):
 ```javascript
-'organization-show': organizationShowDe,  // ❌ Only old translations
+'organisation-show': organizationShowDe,  // ❌ Only old translations
 ```
 
 **After** (Lines 171, 204, 237):
 ```javascript
-'organization-show': { ...organizationShowDe, ...organizationShowPageDe },  // ✅ Merged!
+'organisation-show': { ...organizationShowDe, ...organizationShowPageDe },  // ✅ Merged!
 ```
 
 ### For All Three Languages:
 
 #### German (Deutsch) - Line 171:
 ```javascript
-'organization-show': { ...organizationShowDe, ...organizationShowPageDe },
+'organisation-show': { ...organizationShowDe, ...organizationShowPageDe },
 ```
 
 #### English - Line 204:
 ```javascript
-'organization-show': { ...organizationShowEn, ...organizationShowPageEn },
+'organisation-show': { ...organizationShowEn, ...organizationShowPageEn },
 ```
 
 #### Nepali - Line 237:
 ```javascript
-'organization-show': { ...organizationShowNp, ...organizationShowPageNp },
+'organisation-show': { ...organizationShowNp, ...organizationShowPageNp },
 ```
 
 ---
@@ -83,9 +83,9 @@ But then only using the OLD one in the messages object (Lines 171, 204, 237):
 
 ### Before Fix
 ```
-pages.organization-show keys:
-├─ ✅ actions.title (from Organization/en.json)
-├─ ✅ actions.description (from Organization/en.json)
+pages.organisation-show keys:
+├─ ✅ actions.title (from organisation/en.json)
+├─ ✅ actions.description (from organisation/en.json)
 └─ ❌ modals.member_import.* (MISSING!)
 
 Result: Import page shows NO translations
@@ -93,9 +93,9 @@ Result: Import page shows NO translations
 
 ### After Fix
 ```
-pages.organization-show keys:
-├─ ✅ actions.title (from Organization/en.json)
-├─ ✅ actions.description (from Organization/en.json)
+pages.organisation-show keys:
+├─ ✅ actions.title (from organisation/en.json)
+├─ ✅ actions.description (from organisation/en.json)
 ├─ ✅ modals.member_import.title (from Organizations/Show/en.json)
 ├─ ✅ modals.member_import.select_file (from Organizations/Show/en.json)
 ├─ ✅ modals.member_import.import (from Organizations/Show/en.json)
@@ -110,12 +110,12 @@ Result: All translations display correctly!
 
 ### Translation Keys Now Available
 
-**Organization Dashboard (Show.vue)**:
-- ✅ `pages.organization-show.actions.title`
-- ✅ `pages.organization-show.actions.import_members`
-- ✅ `pages.organization-show.accessibility.*`
-- ✅ `pages.organization-show.organization.*`
-- ✅ `pages.organization-show.stats.*`
+**organisation Dashboard (Show.vue)**:
+- ✅ `pages.organisation-show.actions.title`
+- ✅ `pages.organisation-show.actions.import_members`
+- ✅ `pages.organisation-show.accessibility.*`
+- ✅ `pages.organisation-show.organisation.*`
+- ✅ `pages.organisation-show.stats.*`
 
 **Member Import Page (Import.vue)**:
 - ✅ `modals.member_import.title`
@@ -125,13 +125,13 @@ Result: All translations display correctly!
 - ✅ `modals.member_import.success`
 
 **Action Buttons (ActionButtons.vue)**:
-- ✅ `pages.organization-show.actions.import_members`
-- ✅ `pages.organization-show.actions.button_import`
+- ✅ `pages.organisation-show.actions.import_members`
+- ✅ `pages.organisation-show.actions.button_import`
 
 ### All Three Languages Working:
-- ✅ **Deutsch (DE)**: Organizations/Show/de.json merged with Organization/de.json
-- ✅ **English (EN)**: Organizations/Show/en.json merged with Organization/en.json
-- ✅ **नेपाली (NP)**: Organizations/Show/np.json merged with Organization/np.json
+- ✅ **Deutsch (DE)**: Organizations/Show/de.json merged with organisation/de.json
+- ✅ **English (EN)**: Organizations/Show/en.json merged with organisation/en.json
+- ✅ **नेपाली (NP)**: Organizations/Show/np.json merged with organisation/np.json
 
 ---
 
@@ -142,7 +142,7 @@ Result: All translations display correctly!
 ```javascript
 const oldKeys = {
   actions: { title: 'Quick Actions' },
-  organization: { type_label: 'Organization' }
+  organisation: { type_label: 'organisation' }
 };
 
 const newKeys = {
@@ -154,7 +154,7 @@ const merged = { ...oldKeys, ...newKeys };
 // Result:
 // {
 //   actions: { button_import: 'Import' },              ⚠️ OVERWRITES!
-//   organization: { type_label: 'Organization' },      ✅ Preserved
+//   organisation: { type_label: 'organisation' },      ✅ Preserved
 //   modals: { member_import: { title: 'Import Members' } }  ✅ Added
 // }
 ```
@@ -162,7 +162,7 @@ const merged = { ...oldKeys, ...newKeys };
 **Important**: When merging objects with `...`, nested objects are NOT deep-merged. They're replaced entirely. Since we're spreading `organizationShowPageDe` LAST, its keys take precedence.
 
 ### In Our Case:
-- `organizationShowDe` has: `{ actions, organization, stats, ... }`
+- `organizationShowDe` has: `{ actions, organisation, stats, ... }`
 - `organizationShowPageDe` has: `{ pages, modals, ... }`
 - These are different top-level keys, so NO CONFLICTS!
 
@@ -172,7 +172,7 @@ const merged = { ...oldKeys, ...newKeys };
 
 | File | Change | Lines |
 |------|--------|-------|
-| `resources/js/i18n.js` | Merge organization-show translations | 3 (lines 171, 204, 237) |
+| `resources/js/i18n.js` | Merge organisation-show translations | 3 (lines 171, 204, 237) |
 
 **Total**: 1 file, 3 lines changed
 
@@ -180,14 +180,14 @@ const merged = { ...oldKeys, ...newKeys };
 
 ## 🚀 How to Test
 
-### Test 1: Organization Dashboard
+### Test 1: organisation Dashboard
 ```
 1. Navigate to: http://localhost:8000/organizations/namaste-nepal-ev
-2. Verify text displays (not HTML keys like "pages.organization-show.actions.title")
+2. Verify text displays (not HTML keys like "pages.organisation-show.actions.title")
 3. Check all sections show translated text:
    - Quick Actions
    - Import Members button
-   - Organization stats
+   - organisation stats
    - Support section
 ```
 
@@ -203,7 +203,7 @@ const merged = { ...oldKeys, ...newKeys };
 ### Test 3: Translation Switching
 ```
 1. Change language setting (if available)
-2. Navigate back to organization page
+2. Navigate back to organisation page
 3. Verify all text updates to new language
 4. Go to import page
 5. Verify translations switch correctly
@@ -213,7 +213,7 @@ const merged = { ...oldKeys, ...newKeys };
 
 ## ✨ What Now Works
 
-- ✅ Organization dashboard shows all translations
+- ✅ organisation dashboard shows all translations
 - ✅ Import page displays correct language text
 - ✅ All three languages (DE/EN/NP) working
 - ✅ Translation keys properly resolved
@@ -228,8 +228,8 @@ const merged = { ...oldKeys, ...newKeys };
 ## 📝 Summary
 
 ### Issue
-Organization show page translations not loading because:
-- Two translation files were imported (Organization/ and Organizations/Show/)
+organisation show page translations not loading because:
+- Two translation files were imported (organisation/ and Organizations/Show/)
 - Only the OLD one was being used in i18n configuration
 - NEW keys from Organizations/Show/ were ignored
 
@@ -242,7 +242,7 @@ Merge both translation objects using object spread:
 ### Impact
 - ✅ All translation keys now accessible
 - ✅ Fixes member import page translations
-- ✅ Fixes organization dashboard translations
+- ✅ Fixes organisation dashboard translations
 - ✅ Works for all three languages
 - ✅ Zero breaking changes to existing code
 

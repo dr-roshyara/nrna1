@@ -366,7 +366,7 @@ Re-approval (Suspended → Approved)  = Undone
 
 ### Q: Will the voter know I suspended them?
 
-**A:** Depends on your organization's notification settings. Typically:
+**A:** Depends on your organisation's notification settings. Typically:
 - The system may send an email notification
 - The voter may see their status changed in their account
 - Check with your administrator for notification settings
@@ -458,7 +458,7 @@ See [Bulk Operations](./05-bulk-operations.md) for approving many voters quickly
 1. ✅ Use search to find them specifically
 2. ✅ Check filters - Status might be set to exclude them
 3. ✅ Click "Clear All" to reset filters
-4. ✅ Check you're in correct organization
+4. ✅ Check you're in correct organisation
 5. ✅ Refresh page - Might not have loaded yet
 
 See [Searching & Filtering](./03-searching-filtering.md) for help.

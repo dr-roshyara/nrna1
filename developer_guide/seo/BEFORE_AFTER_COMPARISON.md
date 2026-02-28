@@ -277,7 +277,7 @@ useMeta()
 
 ### Before (Broken SEO)
 ```
-German Organization looking for election software:
+German organisation looking for election software:
 ├─ Search: "digitale wahlplattform"
 ├─ Finds: Competitors with German SEO
 ├─ Never Sees: Public Digit (in English)
@@ -292,7 +292,7 @@ Nepali Diaspora looking for voting platform:
 
 ### After (Fixed SEO)
 ```
-German Organization looking for election software:
+German organisation looking for election software:
 ├─ Search: "digitale wahlplattform"
 ├─ Finds: Public Digit (in German!) ✅
 ├─ Sees: "Sichere Online-Wahlen"
@@ -359,8 +359,8 @@ import { useMeta } from '@/composables/useMeta'
 useMeta({
   pageKey: 'organizations.show',
   params: {
-    organizationName: organization.name,
-    memberCount: organization.members_count
+    organizationName: organisation.name,
+    memberCount: organisation.members_count
   }
 })
 </script>

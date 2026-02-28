@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "Welcome, {name}! 👋",
-    "subtitle": "Let's get you started with organizing your first election or joining an organization"
+    "subtitle": "Let's get you started with organizing your first election or joining an organisation"
   },
   "compliance": {
     "title": "German GDPR Compliant",
@@ -12,10 +12,10 @@
   },
   "actions": {
     "title": "What would you like to do?",
-    "createOrg": "Create New Organization & Start Elections",
-    "createOrgDesc": "Start managing elections for your community, union, or organization",
-    "joinOrg": "Join an Existing Organization",
-    "joinOrgDesc": "Get invited to participate in elections from existing organizations",
+    "createOrg": "Create New organisation & Start Elections",
+    "createOrgDesc": "Start managing elections for your community, union, or organisation",
+    "joinOrg": "Join an Existing organisation",
+    "joinOrgDesc": "Get invited to participate in elections from existing organisations",
     "skip": "Explore the Platform",
     "skipDesc": "Skip setup and explore the dashboard first"
   },
@@ -42,7 +42,7 @@
   },
   "keyFeatures": {
     "title": "Why Choose PublicDigit?",
-    "subtitle": "We bring enterprise-grade security to grassroots organizations",
+    "subtitle": "We bring enterprise-grade security to grassroots organisations",
     "transparency": {
       "title": "Complete Transparency",
       "description": "Every vote is verifiable. Every step is auditable. No surprises."

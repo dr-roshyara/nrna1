@@ -141,7 +141,7 @@ $ php artisan route:list | grep -E "sitemap|robots"
 
 2. **Monitor Indexing**
    - Check "Index Coverage" report
-   - Verify 10+ organization URLs indexed within 24-48 hours
+   - Verify 10+ organisation URLs indexed within 24-48 hours
    - Monitor crawl errors
 
 3. **Check Search Performance**
@@ -212,14 +212,14 @@ $ php artisan route:list | grep -E "sitemap|robots"
 ## 🎯 Impact & Metrics
 
 ### Immediate SEO Benefits
-- 📍 Google can now discover 10+ organization pages
+- 📍 Google can now discover 10+ organisation pages
 - 📍 Proper crawl directives prevent wasted budget on private URLs
 - 📍 Sitemaps reduce indexing time from weeks to days
 - 📍 robots.txt protects election security and voter privacy
 
 ### Expected Outcomes (2-4 weeks)
-- 📈 10-30 organization pages indexed
-- 📈 Improved organic visibility for organization searches
+- 📈 10-30 organisation pages indexed
+- 📈 Improved organic visibility for organisation searches
 - 📈 Crawl efficiency improved (less wasted crawl budget on /vote/, /api/)
 - 📈 Foundation set for Phase 2 P1 (schemas)
 
@@ -249,7 +249,7 @@ php artisan route:clear
 - Laravel logs for sitemap/robots errors: `tail -f storage/logs/laravel.log`
 - Google Search Console for indexing errors
 - Crawl stats in GSC to verify robots.txt is being honored
-- Organization page rankings over next 4 weeks
+- organisation page rankings over next 4 weeks
 
 **Expected Behavior:**
 - Sitemaps updated on every page change (dynamic generation)

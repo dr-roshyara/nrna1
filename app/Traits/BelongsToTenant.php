@@ -37,11 +37,14 @@ trait BelongsToTenant
         static::addGlobalScope('tenant', function (Builder $query) {
             $orgId = session('current_organisation_id');
 
-            // Mode 1: No organisation (demo mode) - show only NULL org data
+            // ✅ Updated: Use organisation_id = 0 for platform/demo data
+            // Mode 1: No organisation (demo/platform mode) - show org_id = 0
             // Mode 2: Has organisation - show only that org's data
             if ($orgId === null) {
-                $query->whereNull('organisation_id');
+                // Platform/Demo mode - show records with organisation_id = 0
+                $query->where('organisation_id', 0);
             } else {
+                // Tenant mode - show only records for this organisation
                 $query->where('organisation_id', $orgId);
             }
         });
@@ -50,7 +53,8 @@ trait BelongsToTenant
         static::creating(function (Model $model) {
             // Only set if not already set
             if (is_null($model->organisation_id)) {
-                $model->organisation_id = session('current_organisation_id');
+                // Use session org_id, or 0 if in demo/platform mode
+                $model->organisation_id = session('current_organisation_id') ?? 0;
             }
         });
     }
@@ -76,13 +80,13 @@ trait BelongsToTenant
     }
 
     /**
-     * Scope: Only records from default platform (organisation_id = null)
+     * Scope: Only records from default platform (organisation_id = 0)
      *
      * Usage: User::forDefaultPlatform()->get()
      */
     public function scopeForDefaultPlatform(Builder $query)
     {
-        return $query->withoutGlobalScopes()->whereNull('organisation_id');
+        return $query->withoutGlobalScopes()->where('organisation_id', 0);
     }
 
     /**

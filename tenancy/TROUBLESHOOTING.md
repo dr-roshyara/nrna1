@@ -98,7 +98,7 @@ php artisan tinker
 
 ---
 
-### Issue 3: Can See Other Organization's Data
+### Issue 3: Can See Other organisation's Data
 
 **Symptoms**:
 ```

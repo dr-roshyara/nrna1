@@ -1,9 +1,9 @@
 {
-  "pages.organization-voters": {
+  "pages.organisation-voters": {
     "title": "Wählerverwaltung",
-    "description": "Verwalten Sie Wähler für {organization}",
+    "description": "Verwalten Sie Wähler für {organisation}",
     "accessibility": {
-      "page_loaded": "Wählerverwaltungsseite für {organization} mit insgesamt {count} Wählern geladen"
+      "page_loaded": "Wählerverwaltungsseite für {organisation} mit insgesamt {count} Wählern geladen"
     },
     "committee_access": {
       "title": "Zugriff für Ausschussmitglieder",
@@ -30,7 +30,7 @@
       "voted": "Bereits abgestimmt"
     },
     "table": {
-      "caption": "Wählerliste für {organization}",
+      "caption": "Wählerliste für {organisation}",
       "select": "Auswählen",
       "sn": "Nr.",
       "name": "Name",

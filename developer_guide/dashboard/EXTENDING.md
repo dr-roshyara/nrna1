@@ -21,7 +21,7 @@ This guide walks through adding a completely new dashboard for a new role type.
    - Generate reports
 
 2. How does user get this role?
-   - Organization-level assignment? (admin assigns)
+   - organisation-level assignment? (admin assigns)
    - Election-specific? (admin assigns per election)
    - System-wide? (super-admin only)
 
@@ -41,7 +41,7 @@ This guide walks through adding a completely new dashboard for a new role type.
 - ✅ View election results
 - ✅ Generate statistics
 - ✅ Export reports
-- ✅ Organization-level assignment
+- ✅ organisation-level assignment
 - ❌ Modify elections
 - ❌ View individual votes
 
@@ -49,15 +49,15 @@ This guide walks through adding a completely new dashboard for a new role type.
 
 ## Step 2: Create the Database Structure
 
-### Option A: Organization-Level Role
+### Option A: organisation-Level Role
 
-If analysts are assigned per organization:
+If analysts are assigned per organisation:
 
 ```sql
 -- No database changes needed!
 -- Just use existing user_organization_roles table
 
-INSERT INTO user_organization_roles (user_id, organization_id, role, created_at, updated_at)
+INSERT INTO user_organization_roles (user_id, organisation_id, role, created_at, updated_at)
 VALUES (5, 1, 'analyst', NOW(), NOW());
 ```
 
@@ -70,7 +70,7 @@ public function getAnalystOrganizations()
     return DB::table('user_organization_roles')
         ->where('user_id', $this->id)
         ->where('role', 'analyst')
-        ->pluck('organization_id');
+        ->pluck('organisation_id');
 }
 ```
 
@@ -97,7 +97,7 @@ public function getAnalystElections()
 }
 ```
 
-**For this example, we'll use Option A (organization-level).**
+**For this example, we'll use Option A (organisation-level).**
 
 ---
 
@@ -142,7 +142,7 @@ public function getAnalystOrganizations()
     return \DB::table('user_organization_roles')
         ->where('user_id', $this->id)
         ->where('role', 'analyst')
-        ->pluck('organization_id')
+        ->pluck('organisation_id')
         ->toArray();
 }
 ```
@@ -178,7 +178,7 @@ class AnalystDashboardController extends Controller
 
         // Get elections for these organizations
         $elections = \DB::table('elections')
-            ->whereIn('organization_id', $analystOrgs)
+            ->whereIn('organisation_id', $analystOrgs)
             ->get();
 
         // Calculate statistics for each election
@@ -186,7 +186,7 @@ class AnalystDashboardController extends Controller
             return [
                 'id' => $election->id,
                 'title' => $election->title,
-                'organization_id' => $election->organization_id,
+                'organisation_id' => $election->organisation_id,
                 'status' => $election->status,
                 'total_votes' => $this->getVoteCount($election->id),
                 'participation_rate' => $this->getParticipationRate($election->id),
@@ -214,7 +214,7 @@ class AnalystDashboardController extends Controller
         $votes = $this->getVoteCount($electionId);
         $eligible = \DB::table('users')
             ->join('user_organization_roles', 'users.id', '=', 'user_organization_roles.user_id')
-            ->join('elections', 'user_organization_roles.organization_id', '=', 'elections.organization_id')
+            ->join('elections', 'user_organization_roles.organisation_id', '=', 'elections.organisation_id')
             ->where('elections.id', $electionId)
             ->where('user_organization_roles.role', 'voter')
             ->count();
@@ -526,11 +526,11 @@ messages: {
 ```php
 // In artisan tinker
 $user = User::find(5);
-$org = Organization::find(1);
+$org = organisation::find(1);
 
 DB::table('user_organization_roles')->insert([
     'user_id' => $user->id,
-    'organization_id' => $org->id,
+    'organisation_id' => $org->id,
     'role' => 'analyst',
     'created_at' => now(),
     'updated_at' => now(),
@@ -556,7 +556,7 @@ Show Analyst Dashboard
 // Add same user as analyst AND voter
 DB::table('user_organization_roles')->insert([
     'user_id' => 5,
-    'organization_id' => 1,
+    'organisation_id' => 1,
     'role' => 'voter',
     'created_at' => now(),
     'updated_at' => now(),

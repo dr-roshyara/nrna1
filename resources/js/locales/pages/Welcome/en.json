@@ -50,12 +50,12 @@
       },
       "results": "Results"
     },
-    "description": "Conduct fair and transparent elections with our GDPR-compliant, end-to-end encrypted voting system. Trusted by thousands of organizations, associations, and diaspora communities across 100+ countries.",
+    "description": "Conduct fair and transparent elections with our GDPR-compliant, end-to-end encrypted voting system. Trusted by thousands of organisations, associations, and diaspora communities across 100+ countries.",
     "cta_primary": "Start Free Trial",
     "cta_secondary": "Schedule Demo",
     "cta_register": "Register as Customer", 
     "cta_demo": "Try Demo",
-    "trust_label": "Trusted by leading organizations worldwide",
+    "trust_label": "Trusted by leading organisations worldwide",
     "security_badge_title": "Secure & GDPR Compliant",
     "security_badge_subtitle": "German hosting & encryption",
     "badges": [
@@ -79,7 +79,7 @@
   },
   "ngo_features": {
     "title": "Purpose-Built for Global Organizations",
-    "subtitle": "From NGOs to diaspora communities -- PUBLIC DIGIT handles secure elections for organizations of all sizes worldwide.",
+    "subtitle": "From NGOs to diaspora communities -- PUBLIC DIGIT handles secure elections for organisations of all sizes worldwide.",
     "cards": [
       {
         "icon": "🌏",
@@ -128,8 +128,8 @@
     "steps": [
       {
         "number": "1",
-        "title": "Create Your Organization",
-        "description": "Register and set up your organization profile. Add your logo, branding, and team members in minutes."
+        "title": "Create Your organisation",
+        "description": "Register and set up your organisation profile. Add your logo, branding, and team members in minutes."
       },
       {
         "number": "2",
@@ -214,7 +214,7 @@
       "quote": "We saved 85% on election costs. Setup took 30 minutes. Our members across 12 countries could vote effortlessly.",
       "author": "Julia Schmidt",
       "role": "Chairwoman",
-      "organization": "German-Nepalese Society"
+      "organisation": "German-Nepalese Society"
     }
   },
   "testimonials": {
@@ -225,28 +225,28 @@
         "quote": "PUBLIC DIGIT made it incredibly easy to conduct our international member election with participants spread across 12 countries. The transparency and security gave our members complete confidence in the process.",
         "author": "Maria Santos",
         "role": "Executive Director",
-        "organization": "Global Development Alliance",
+        "organisation": "Global Development Alliance",
         "avatar": "MS"
       },
       {
-        "quote": "As a diaspora organization, we needed a voting platform that could handle international participation in multiple languages. PUBLIC DIGIT delivered exactly that with ease and reliability.",
+        "quote": "As a diaspora organisation, we needed a voting platform that could handle international participation in multiple languages. PUBLIC DIGIT delivered exactly that with ease and reliability.",
         "author": "Ahmed Hassan",
         "role": "President",
-        "organization": "African Heritage Association, Europe",
+        "organisation": "African Heritage Association, Europe",
         "avatar": "AH"
       },
       {
         "quote": "The GDPR compliance and security features gave our board complete peace of mind. Setting up and running elections for thousands of members across time zones was seamless.",
         "author": "Prof. Elena Rodriguez",
         "role": "Board Chair",
-        "organization": "International Academic Network",
+        "organisation": "International Academic Network",
         "avatar": "ER"
       }
     ]
   },
   "cta_section": {
     "title": "Ready to Hold Your Next Election?",
-    "description": "Join thousands of organizations worldwide using PUBLIC DIGIT for secure, transparent, and compliant voting.",
+    "description": "Join thousands of organisations worldwide using PUBLIC DIGIT for secure, transparent, and compliant voting.",
     "btn_register": "Create Free Account",
     "btn_demo": "Schedule a Demo",
     "pricing_badge": "14-day free trial • No credit card required • Cancel anytime",

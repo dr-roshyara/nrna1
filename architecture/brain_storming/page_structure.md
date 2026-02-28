@@ -16,17 +16,17 @@ Your landing page sells **vision and trust** → Next pages must deliver **immed
 
 ## **IMMEDIATE NEXT PAGES (Priority Order)**
 
-### **PAGE 1: ORGANIZATION ONBOARDING (POST-REGISTER)**
-**Business Goal:** Capture organization context to personalize experience
+### **PAGE 1: organisation ONBOARDING (POST-REGISTER)**
+**Business Goal:** Capture organisation context to personalize experience
 
 ```vue
 <template>
 <div class="onboarding-flow">
   <!-- Progress indicator (4 steps) -->
   
-  <!-- Step 1: Organization Type -->
+  <!-- Step 1: organisation Type -->
   <section>
-    <h2>Tell us about your organization</h2>
+    <h2>Tell us about your organisation</h2>
     <div class="org-type-cards">
       <Card @click="selectType('diaspora')">
         <Icon>🌍</Icon>
@@ -395,7 +395,7 @@ Every page should show:
 
 ### **Immediate Priority (Next 2 Weeks):**
 1. **Build the dual-path demo system first** - This is your #1 conversion tool
-2. **Add organization onboarding** - Qualify leads immediately
+2. **Add organisation onboarding** - Qualify leads immediately
 3. **Implement quick-start wizard** - Reduce time-to-first-election
 
 ### **Critical Components to Develop:**
@@ -452,7 +452,7 @@ Your UX should drive these business metrics:
 - Build voter experience flow
 - Build admin dashboard with pre-loaded data
 
-**Week 3-4:** Implement organization onboarding
+**Week 3-4:** Implement organisation onboarding
 - Create 4-step onboarding flow
 - Add personalized recommendations
 - Connect to demo system

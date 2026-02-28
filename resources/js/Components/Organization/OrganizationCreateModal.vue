@@ -20,7 +20,7 @@
           <!-- Header with close button -->
           <div class="flex items-center justify-between mb-8">
             <h2 id="education-title" class="text-3xl font-bold text-gray-900 dark:text-white">
-              🏢 {{ $t('organization.education.title', { fallback: 'Was ist eine Organisation?' }) }}
+              🏢 {{ $t('organisation.education.title', { fallback: 'Was ist eine Organisation?' }) }}
             </h2>
             <button
               @click="closeModal"
@@ -36,7 +36,7 @@
             <!-- Concept explanation -->
             <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-600 p-6 rounded-r-lg">
               <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {{ $t('organization.education.description', {
+                {{ $t('organisation.education.description', {
                   fallback: 'Eine Organisation ist Ihr Verein, Verband oder Ihre Genossenschaft im digitalen Wahlsystem.'
                 }) }}
               </p>
@@ -47,7 +47,7 @@
               <div class="flex gap-3">
                 <span class="text-xl shrink-0">📋</span>
                 <p class="text-gray-700 dark:text-gray-300">
-                  {{ $t('organization.education.point_1', {
+                  {{ $t('organisation.education.point_1', {
                     fallback: 'Ihre Mitgliederdaten werden hier verwaltet'
                   }) }}
                 </p>
@@ -55,7 +55,7 @@
               <div class="flex gap-3">
                 <span class="text-xl shrink-0">🗳️</span>
                 <p class="text-gray-700 dark:text-gray-300">
-                  {{ $t('organization.education.point_2', {
+                  {{ $t('organisation.education.point_2', {
                     fallback: 'Alle Wahlen finden innerhalb dieser Organisation statt'
                   }) }}
                 </p>
@@ -63,7 +63,7 @@
               <div class="flex gap-3">
                 <span class="text-xl shrink-0">🔒</span>
                 <p class="text-gray-700 dark:text-gray-300">
-                  {{ $t('organization.education.point_3', {
+                  {{ $t('organisation.education.point_3', {
                     fallback: 'DSGVO-konform auf Servern in Deutschland'
                   }) }}
                 </p>
@@ -73,7 +73,7 @@
 
           <!-- Expandable sections -->
           <EducationSection
-            :title="$t('organization.education.data_privacy_title', {
+            :title="$t('organisation.education.data_privacy_title', {
               fallback: 'Was passiert mit meinen Daten?'
             })"
             :expanded="expandedSections.dataPrivacy"
@@ -82,25 +82,25 @@
             <ul class="space-y-2 text-gray-700 dark:text-gray-300">
               <li class="flex gap-2">
                 <span class="text-green-600">✓</span>
-                {{ $t('organization.education.data_encrypted', {
+                {{ $t('organisation.education.data_encrypted', {
                   fallback: 'Verschlüsselte Speicherung in Deutschland'
                 }) }}
               </li>
               <li class="flex gap-2">
                 <span class="text-green-600">✓</span>
-                {{ $t('organization.education.data_no_sharing', {
+                {{ $t('organisation.education.data_no_sharing', {
                   fallback: 'Keine Weitergabe an Dritte'
                 }) }}
               </li>
               <li class="flex gap-2">
                 <span class="text-green-600">✓</span>
-                {{ $t('organization.education.data_deletion', {
+                {{ $t('organisation.education.data_deletion', {
                   fallback: 'Löschung nach Wahl gemäß DSGVO Art. 17'
                 }) }}
               </li>
               <li class="flex gap-2">
                 <span class="text-green-600">✓</span>
-                {{ $t('organization.education.data_control', {
+                {{ $t('organisation.education.data_control', {
                   fallback: 'Sie behalten die Datenhoheit'
                 }) }}
               </li>
@@ -108,14 +108,14 @@
           </EducationSection>
 
           <EducationSection
-            :title="$t('organization.education.requirements_title', {
+            :title="$t('organisation.education.requirements_title', {
               fallback: 'Welche Informationen brauchen wir?'
             })"
             :expanded="expandedSections.requirements"
             @toggle="toggleSection('requirements')"
           >
             <p class="text-gray-700 dark:text-gray-300 mb-4">
-              {{ $t('organization.education.requirements_intro', {
+              {{ $t('organisation.education.requirements_intro', {
                 fallback: 'Um Ihre Organisation rechtssicher abzubilden, benötigen wir:'
               }) }}
             </p>
@@ -123,34 +123,34 @@
               <li class="flex gap-2">
                 <span class="text-blue-600 font-bold">✓</span>
                 <span>
-                  <strong>{{ $t('organization.education.req_name', { fallback: 'Organisationname' }) }}</strong>
-                  — {{ $t('organization.education.req_name_desc', { fallback: 'wie im Vereinsregister' }) }}
+                  <strong>{{ $t('organisation.education.req_name', { fallback: 'Organisationname' }) }}</strong>
+                  — {{ $t('organisation.education.req_name_desc', { fallback: 'wie im Vereinsregister' }) }}
                 </span>
               </li>
               <li class="flex gap-2">
                 <span class="text-blue-600 font-bold">✓</span>
                 <span>
-                  <strong>{{ $t('organization.education.req_email', { fallback: 'E-Mail-Adresse' }) }}</strong>
-                  — {{ $t('organization.education.req_email_desc', { fallback: 'für amtliche Zustellung' }) }}
+                  <strong>{{ $t('organisation.education.req_email', { fallback: 'E-Mail-Adresse' }) }}</strong>
+                  — {{ $t('organisation.education.req_email_desc', { fallback: 'für amtliche Zustellung' }) }}
                 </span>
               </li>
               <li class="flex gap-2">
                 <span class="text-blue-600 font-bold">✓</span>
                 <span>
-                  <strong>{{ $t('organization.education.req_address', { fallback: 'Anschrift' }) }}</strong>
-                  — {{ $t('organization.education.req_address_desc', { fallback: 'des Vereinssitzes' }) }}
+                  <strong>{{ $t('organisation.education.req_address', { fallback: 'Anschrift' }) }}</strong>
+                  — {{ $t('organisation.education.req_address_desc', { fallback: 'des Vereinssitzes' }) }}
                 </span>
               </li>
               <li class="flex gap-2">
                 <span class="text-blue-600 font-bold">✓</span>
                 <span>
-                  <strong>{{ $t('organization.education.req_representative', { fallback: 'Vertreter' }) }}</strong>
-                  — {{ $t('organization.education.req_representative_desc', { fallback: 'Name und Funktion' }) }}
+                  <strong>{{ $t('organisation.education.req_representative', { fallback: 'Vertreter' }) }}</strong>
+                  — {{ $t('organisation.education.req_representative_desc', { fallback: 'Name und Funktion' }) }}
                 </span>
               </li>
             </ul>
             <p class="text-gray-600 dark:text-gray-400 text-sm mt-4">
-              ⏱️ {{ $t('organization.education.duration', { fallback: 'Dauer: 3-5 Minuten' }) }}
+              ⏱️ {{ $t('organisation.education.duration', { fallback: 'Dauer: 3-5 Minuten' }) }}
             </p>
           </EducationSection>
 
@@ -161,7 +161,7 @@
                    transition-colors duration-300 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
                    dark:focus:ring-offset-gray-900"
           >
-            {{ $t('organization.education.start_cta', { fallback: 'Organisation jetzt gründen →' }) }}
+            {{ $t('organisation.education.start_cta', { fallback: 'Organisation jetzt gründen →' }) }}
           </button>
 
           <!-- Close hint -->
@@ -176,10 +176,10 @@
           <div class="flex items-center justify-between mb-8">
             <div>
               <h2 id="form-title" class="text-3xl font-bold text-gray-900 dark:text-white">
-                🏢 {{ $t('organization.form.title', { fallback: 'Organisation gründen' }) }}
+                🏢 {{ $t('organisation.form.title', { fallback: 'Organisation gründen' }) }}
               </h2>
               <p class="text-gray-600 dark:text-gray-400 mt-1">
-                {{ $t('organization.form.step', {
+                {{ $t('organisation.form.step', {
                   current: currentStep,
                   total: 3,
                   fallback: `Schritt ${currentStep} von 3`

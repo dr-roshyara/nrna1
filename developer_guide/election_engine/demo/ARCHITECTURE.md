@@ -102,11 +102,11 @@ public function isElectionValidForUser(User $user, Election $election): bool
 ```php
 public function createOrganisationDemoElection(
     int $organisationId,
-    Organization $organization
+    organisation $organisation
 ): Election
 {
     // RESPONSIBILITY: Create complete demo structure
-    // INPUT: Organization ID and model
+    // INPUT: organisation ID and model
     // OUTPUT: Created Election
     // SIDE EFFECTS: 22 database inserts
 }
@@ -164,7 +164,7 @@ private function createPost(
    │
 5. NOT FOUND → Auto-create:
    │
-   ├─ Get Organization model for ID 5
+   ├─ Get organisation model for ID 5
    │
    ├─ Call: DemoElectionCreationService::createOrganisationDemoElection(5, $org)
    │
@@ -297,7 +297,7 @@ public function __construct(DemoElectionResolver $resolver) {
 ╱─────────────────╲ - Full voting flow (existing tests)
 ```
 
-### Test File Organization
+### Test File organisation
 
 ```
 tests/
@@ -323,7 +323,7 @@ class DemoElectionCreationServiceTest extends TestCase {
 
     public function test_creates_election_with_correct_organisation_id() {
         // Setup: Real factories
-        $org = Organization::factory()->create();
+        $org = organisation::factory()->create();
 
         // Execute: Real service
         $election = $this->service->createOrganisationDemoElection($org->id, $org);
@@ -388,7 +388,7 @@ All state is in database, keyed by:
 ```php
 class DemoElectionCreationService {
     // PUBLIC: Expected external interface
-    public function createOrganisationDemoElection(int $organisationId, Organization $organization): Election
+    public function createOrganisationDemoElection(int $organisationId, organisation $organisation): Election
 
     // PRIVATE: Internal implementation details
     private function createNationalPosts(Election $election): void
@@ -561,7 +561,7 @@ Used for:
 
 DemoElectionCreationService is a factory for demo elections:
 ```php
-// Input: Organization ID
+// Input: organisation ID
 // Output: Fully constructed Election with all related data
 ```
 

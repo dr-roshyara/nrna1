@@ -2,7 +2,7 @@ import { ref, reactive, computed } from 'vue';
 import { router } from '@inertiajs/vue3';
 
 /**
- * Composable for managing the Organization Creation Flow
+ * Composable for managing the organisation Creation Flow
  * Handles multi-step form state, validation, and navigation
  *
  * Design: Progressive disclosure with educational first, form second
@@ -225,7 +225,7 @@ export const useOrganizationCreation = () => {
   };
 
   /**
-   * Submit the form and create organization
+   * Submit the form and create organisation
    *
    * Uses Inertia 2.0 router.post() for proper form submission handling.
    * Inertia automatically manages CSRF tokens and HTTP headers.
@@ -266,7 +266,7 @@ export const useOrganizationCreation = () => {
     // Get route URL from Laravel's route system
     const routeUrl = route('organizations.store');
 
-    console.log('📤 Sending organization creation request via Inertia router', {
+    console.log('📤 Sending organisation creation request via Inertia router', {
       url: routeUrl,
       payload: payload,
     });
@@ -278,7 +278,7 @@ export const useOrganizationCreation = () => {
       preserveState: true,
       preserveScroll: true,
       onSuccess: (page) => {
-        console.log('✅ Organization created successfully!', page.props);
+        console.log('✅ organisation created successfully!', page.props);
 
         // Track success
         trackOrganizationCreated(payload);
@@ -301,7 +301,7 @@ export const useOrganizationCreation = () => {
         isSubmitting.value = false;
       },
       onError: (errors) => {
-        console.error('Organization creation error:', errors);
+        console.error('organisation creation error:', errors);
 
         // Format error messages from validation
         let errorMessage = 'Bitte überprüfen Sie Ihre Eingaben';

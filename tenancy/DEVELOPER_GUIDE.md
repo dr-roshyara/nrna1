@@ -78,13 +78,13 @@
 
 ### 1. What is organisation_id?
 
-**organisation_id** is a **tenant identifier** that isolates voting data between different organizations.
+**organisation_id** is a **tenant identifier** that isolates voting data between different organisations.
 
 ```php
 // organisation_id values:
-null     → Demo election (no organization)
-1        → Organization A's real elections
-2        → Organization B's real elections
+null     → Demo election (no organisation)
+1        → organisation A's real elections
+2        → organisation B's real elections
 etc.
 ```
 

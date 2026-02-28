@@ -3,9 +3,9 @@
     "title": "About Public Digit",
     "subtitle": "Empowering Democracy Through Secure Digital Voting",
     "mission_title": "Our Mission",
-    "mission_text": "Public Digit is dedicated to making secure, transparent, and accessible voting available to organizations, NGOs, and diaspora communities worldwide. We believe in the power of digital democracy while maintaining the highest standards of security, privacy, and compliance.",
+    "mission_text": "Public Digit is dedicated to making secure, transparent, and accessible voting available to organisations, NGOs, and diaspora communities worldwide. We believe in the power of digital democracy while maintaining the highest standards of security, privacy, and compliance.",
     "vision_title": "Our Vision",
-    "vision_text": "A world where every organization, regardless of size or location, can conduct fair, transparent, and secure elections using cutting-edge technology. We envision digital voting as a standard practice that increases participation, reduces costs, and enhances democratic processes.",
+    "vision_text": "A world where every organisation, regardless of size or location, can conduct fair, transparent, and secure elections using cutting-edge technology. We envision digital voting as a standard practice that increases participation, reduces costs, and enhances democratic processes.",
     "why_public_digit_title": "Why Public Digit?",
     "why_public_digit": [
       {
@@ -30,7 +30,7 @@
       },
       {
         "title": "Proven Technology",
-        "description": "Battle-tested platform serving organizations across Europe and supporting thousands of successful elections."
+        "description": "Battle-tested platform serving organisations across Europe and supporting thousands of successful elections."
       }
     ],
     "how_it_works_title": "How It Works",
@@ -46,8 +46,8 @@
       "Regular Security Audits",
       "ISO 27001 Aligned"
     ],
-    "supported_organizations_title": "Organizations We Support",
-    "supported_organizations": [
+    "supported_organisations_title": "Organizations We Support",
+    "supported_organisations": [
       "Diaspora Communities & Cultural Associations",
       "Political & Civic Organizations",
       "NGOs & Humanitarian Groups",
@@ -62,9 +62,9 @@
     "team_title": "Our Team",
     "team_text": "Public Digit is developed by a dedicated team of security experts, software engineers, and democratic process specialists. We're committed to continuous improvement and staying at the forefront of secure digital voting technology.",
     "contact_title": "Get in Touch",
-    "contact_text": "Interested in learning more about Public Digit? We're here to help with demonstrations, technical consultations, and custom solutions for your organization.",
+    "contact_text": "Interested in learning more about Public Digit? We're here to help with demonstrations, technical consultations, and custom solutions for your organisation.",
     "testimonial_title": "What Our Users Say",
-    "testimonial_text": "Public Digit has transformed how our organization conducts elections. The process is secure, transparent, and our members love the convenience of voting from anywhere in the world."
+    "testimonial_text": "Public Digit has transformed how our organisation conducts elections. The process is secure, transparent, and our members love the convenience of voting from anywhere in the world."
   },
   "support": {
     "title": "Need Help?",

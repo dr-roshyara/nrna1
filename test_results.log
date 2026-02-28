@@ -426,11 +426,11 @@
   [31;1m⨯[39;22m[90m [39m[90mexample[39m[90m                                                                                                     [39m [90m0.92s[39m  
             
   [30;42;1m PASS [39;49;22m[39m Tests\Unit\Middleware\EnsureOrganizationMemberTest[39m
-  [32;1m✓[39;22m[90m [39m[90mit allows member access to organization[39m[90m                                                                     [39m [90m0.20s[39m  
+  [32;1m✓[39;22m[90m [39m[90mit allows member access to organisation[39m[90m                                                                     [39m [90m0.20s[39m  
   [32;1m✓[39;22m[90m [39m[90mit blocks non member access with 403[39m[90m                                                                        [39m [90m1.21s[39m  
-  [32;1m✓[39;22m[90m [39m[90mit returns 404 when organization not found[39m[90m                                                                  [39m [90m0.09s[39m  
+  [32;1m✓[39;22m[90m [39m[90mit returns 404 when organisation not found[39m[90m                                                                  [39m [90m0.09s[39m  
   [32;1m✓[39;22m[90m [39m[90mit requires authentication[39m[90m                                                                                  [39m [90m0.10s[39m  
-  [32;1m✓[39;22m[90m [39m[90mit stores organization in request attributes[39m[90m                                                                [39m [90m0.12s[39m  
+  [32;1m✓[39;22m[90m [39m[90mit stores organisation in request attributes[39m[90m                                                                [39m [90m0.12s[39m  
   [32;1m✓[39;22m[90m [39m[90mit sets session context for belongs to tenant[39m[90m                                                               [39m [90m0.12s[39m  
   [32;1m✓[39;22m[90m [39m[90mit logs successful access attempt[39m[90m                                                                           [39m [90m0.10s[39m  
   [32;1m✓[39;22m[90m [39m[90mit logs unauthorized access attempt[39m[90m                                                                         [39m [90m0.08s[39m  
@@ -762,13 +762,13 @@
       
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\Middleware\TenantContextMiddlewareTest[39m
   [32;1m✓[39;22m[90m [39m[90mmiddleware sets tenant context from session[39m[90m                                                                 [39m [90m0.18s[39m  
-  [32;1m✓[39;22m[90m [39m[90mmiddleware allows access without organization[39m[90m                                                               [39m [90m0.12s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mmiddleware handles missing organization gracefully[39m[90m                                                          [39m [90m0.12s[39m  
+  [32;1m✓[39;22m[90m [39m[90mmiddleware allows access without organisation[39m[90m                                                               [39m [90m0.12s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mmiddleware handles missing organisation gracefully[39m[90m                                                          [39m [90m0.12s[39m  
   [32;1m✓[39;22m[90m [39m[90mmiddleware runs after session start[39m[90m                                                                         [39m [90m0.11s[39m  
   [32;1m✓[39;22m[90m [39m[90mmiddleware preserves session data[39m[90m                                                                           [39m [90m0.13s[39m  
   [31;1m⨯[39;22m[90m [39m[90mmiddleware works with demo elections[39m[90m                                                                        [39m [90m0.12s[39m  
 🔵 OrganizationController::store() called at 2026-02-28 12:23:54
-📝 Request data: {"name":"Test Organization","email":"test@org.de","address":{"street":"Test Street 1","city":"Test City","zip":"12345","country":"DE"},"representative":{"name":"John Doe","role":"Chairman","email":"john@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@org.de","address":{"street":"Test Street 1","city":"Test City","zip":"12345","country":"DE"},"representative":{"name":"John Doe","role":"Chairman","email":"john@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
   🔵 OrganizationController::store() called at 2026-02-28 12:23:54
 📝 Request data: {"name":"NRNA Europe Association","email":"board@example.de","address":{"street":"Europestrasse 42","city":"Vienna","zip":"10115","country":"AT"},"representative":{"name":"Max Mustermann","role":"President","email":"max@nrna-eu.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  
@@ -777,13 +777,13 @@
   [32;1m✓[39;22m[90m [39m[90morganization creation succeeds with valid csrf token[39m[90m                                                        [39m [90m0.14s[39m  
   [31;1m⨯[39;22m[90m [39m[90mcsrf token persists across multi step form[39m[90m                                                                  [39m [90m0.13s[39m  
   🔵 OrganizationController::store() called at 2026-02-28 12:23:55
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:55
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep@neworg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep@neworg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:55
-📝 Request data: {"name":"Unique Organization Name","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Unique organisation Name","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:55
-📝 Request data: {"name":"Test Organization","email":"unique@org.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"unique@org.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:56
 📝 Request data: {"name":"NRNA Europe","email":"org1@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:23:56
@@ -791,43 +791,43 @@
 🔵 OrganizationController::store() called at 2026-02-28 12:23:56
 📝 Request data: {"name":"M\u00fcller Verein","email":"org3@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:56
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Europastrasse 42","city":"Vienna","zip":"10115","country":"AT"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Europastrasse 42","city":"Vienna","zip":"10115","country":"AT"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:23:56
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:56
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
   
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\OrganizationCreationDatabaseTest[39m
   [31;1m⨯[39;22m[90m [39m[90morganization creation is atomic[39m[90m                                                                             [39m [90m0.16s[39m  
   [32;1m✓[39;22m[90m [39m[90muser organisation id updated correctly[39m[90m                                                                      [39m [90m0.17s[39m  
   [32;1m✓[39;22m[90m [39m[90mrepresentative user organisation id set[39m[90m                                                                     [39m [90m0.17s[39m  
-  [32;1m✓[39;22m[90m [39m[90mduplicate organization name rejected[39m[90m                                                                        [39m [90m0.19s[39m  
-  [32;1m✓[39;22m[90m [39m[90mduplicate organization email rejected[39m[90m                                                                       [39m [90m0.21s[39m  
+  [32;1m✓[39;22m[90m [39m[90mduplicate organisation name rejected[39m[90m                                                                        [39m [90m0.19s[39m  
+  [32;1m✓[39;22m[90m [39m[90mduplicate organisation email rejected[39m[90m                                                                       [39m [90m0.21s[39m  
   [32;1m✓[39;22m[90m [39m[90morganization slug generated correctly[39m[90m                                                                       [39m [90m0.27s[39m  
   [32;1m✓[39;22m[90m [39m[90maddress stored as json[39m[90m                                                                                      [39m [90m0.23s[39m  
   [32;1m✓[39;22m[90m [39m[90mcreator id is set[39m[90m                                                                                           [39m [90m0.27s[39m  
   [31;1m⨯[39;22m[90m [39m[90mcreator attached as admin[39m[90m                                                                                   [39m [90m0.24s[39m  
   [31;1m⨯[39;22m[90m [39m[90massigned at timestamp is set[39m[90m                                                                                [39m [90m0.30s[39m  
 🔵 OrganizationController::store() called at 2026-02-28 12:23:57
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:57
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:57
 📝 Request data: {"name":"NRNA Europe Association","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:57
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"anna.schmidt@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"anna.schmidt@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:58
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:58
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Anna Schmidt","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Anna Schmidt","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:23:59
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
   🔵 OrganizationController::store() called at 2026-02-28 12:24:00
 📝 Request data: {"name":"German Org","email":"de@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:00
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:00
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
  
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\OrganizationCreationEmailTest[39m
   [32;1m✓[39;22m[90m [39m[90morganization created email is sent[39m[90m                                                                          [39m [90m0.21s[39m  
@@ -839,17 +839,17 @@
   [31;1m⨯[39;22m[90m [39m[90memails queued for async sending[39m[90m                                                                             [39m [90m0.55s[39m  
   [31;1m⨯[39;22m[90m [39m[90memail uses correct locale[39m[90m                                                                                   [39m [90m0.19s[39m  
   [31;1m⨯[39;22m[90m [39m[90mboth emails sent for external representative[39m[90m                                                                [39m [90m0.19s[39m  
-  [31;1m⨯[39;22m[90m [39m[90monly organization email sent for self representative[39m[90m                                                        [39m [90m0.19s[39m  
+  [31;1m⨯[39;22m[90m [39m[90monly organisation email sent for self representative[39m[90m                                                        [39m [90m0.19s[39m  
 🔵 OrganizationController::store() called at 2026-02-28 12:24:00
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
       🔵 OrganizationController::store() called at 2026-02-28 12:24:02
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:02
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
    🔵 OrganizationController::store() called at 2026-02-28 12:24:02
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
     🔵 OrganizationController::store() called at 2026-02-28 12:24:03
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\OrganizationCreationErrorTest[39m
   [31;1m⨯[39;22m[90m [39m[90mmail server failure rolls back creation[39m[90m                                                                     [39m [90m0.38s[39m  
@@ -868,30 +868,30 @@
   [32;1m✓[39;22m[90m [39m[90mresponse headers are secure[39m[90m                                                                                 [39m [90m0.28s[39m  
   [32;1m✓[39;22m[90m [39m[90merror messages dont expose sensitive info[39m[90m                                                                   [39m [90m0.18s[39m  
  🔵 OrganizationController::store() called at 2026-02-28 12:24:04
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:04
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:04
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"12345","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"12345","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:04
-📝 Request data: {"name":"Organization One","email":"org1@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"organisation One","email":"org1@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:04
-📝 Request data: {"name":"Organization Two","email":"org2@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"organisation Two","email":"org2@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
   🔵 OrganizationController::store() called at 2026-02-28 12:24:05
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Anna Representative","role":"Chairman","email":"anna@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Anna Representative","role":"Chairman","email":"anna@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:05
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:05
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:05
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"newrep@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"newrep@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
   🔵 OrganizationController::store() called at 2026-02-28 12:24:06
 📝 Request data: {"name":"NRNA Europe Community","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:06
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\OrganizationCreationIntegrationTest[39m
-  [31;1m⨯[39;22m[90m [39m[90mcomplete organization creation workflow[39m[90m                                                                     [39m [90m0.22s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mcomplete organisation creation workflow[39m[90m                                                                     [39m [90m0.22s[39m  
   [31;1m⨯[39;22m[90m [39m[90morganization creation with self representative[39m[90m                                                              [39m [90m0.17s[39m  
   [32;1m✓[39;22m[90m [39m[90mmulti step form with validation retry[39m[90m                                                                       [39m [90m0.20s[39m  
   [32;1m✓[39;22m[90m [39m[90mmultiple users create different organizations[39m[90m                                                               [39m [90m0.38s[39m  
@@ -899,32 +899,32 @@
   [31;1m⨯[39;22m[90m [39m[90mdashboard access after creation[39m[90m                                                                             [39m [90m0.27s[39m  
   [32;1m✓[39;22m[90m [39m[90muser organisation id assigned[39m[90m                                                                               [39m [90m0.17s[39m  
   [32;1m✓[39;22m[90m [39m[90mrepresentative organisation id assigned[39m[90m                                                                     [39m [90m0.16s[39m  
-  [31;1m⨯[39;22m[90m [39m[90memail content reflects organization details[39m[90m                                                                 [39m [90m0.16s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mresponse includes organization details[39m[90m                                                                      [39m [90m0.16s[39m  
+  [31;1m⨯[39;22m[90m [39m[90memail content reflects organisation details[39m[90m                                                                 [39m [90m0.16s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mresponse includes organisation details[39m[90m                                                                      [39m [90m0.16s[39m  
 🔵 OrganizationController::store() called at 2026-02-28 12:24:06
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Anna Schmidt","role":"Chairman","email":"newrep@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Anna Schmidt","role":"Chairman","email":"newrep@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:06
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep1@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep1@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
   🔵 OrganizationController::store() called at 2026-02-28 12:24:06
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep2@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep2@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:07
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Different Name","role":"Chairman","email":"existing@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Different Name","role":"Chairman","email":"existing@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:07
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"voter@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"voter@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:07
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:07
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Niko Hoppe","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Niko Hoppe","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:07
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep3@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep3@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:08
-📝 Request data: {"name":"Test Organization","email":"org1@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"shared@rep.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"org1@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"shared@rep.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:08
-📝 Request data: {"name":"Second Organization","email":"org2@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"shared@rep.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Second organisation","email":"org2@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"shared@rep.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:08
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep4@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep4@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:08
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep5@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep5@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\OrganizationCreationRepresentativeTest[39m
   [32;1m✓[39;22m[90m [39m[90mrepresentative user created if not exists[39m[90m                                                                   [39m [90m0.20s[39m  
@@ -937,33 +937,33 @@
   [31;1m⨯[39;22m[90m [39m[90morganization attached to representative[39m[90m                                                                     [39m [90m0.19s[39m  
   [31;1m⨯[39;22m[90m [39m[90mrepresentative can belong to multiple organizations[39m[90m                                                         [39m [90m0.27s[39m  
   [31;1m⨯[39;22m[90m [39m[90massigned at timestamp set for representative[39m[90m                                                                [39m [90m0.28s[39m  
-  [32;1m✓[39;22m[90m [39m[90mrepresentative organisation id matches organization[39m[90m                                                         [39m [90m0.20s[39m  
+  [32;1m✓[39;22m[90m [39m[90mrepresentative organisation id matches organisation[39m[90m                                                         [39m [90m0.20s[39m  
   🔵 OrganizationController::store() called at 2026-02-28 12:24:09
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:09
 📝 Request data: {"name":"Test' OR '1'='1","email":"sql@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:09
 📝 Request data: {"name":"<script>alert(\"XSS\")<\/script>","email":"xss@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
   🔵 OrganizationController::store() called at 2026-02-28 12:24:09
-📝 Request data: {"name":"Test Organization","email":"xss2@test.de","address":{"street":"<img src=x onerror=alert(\"XSS\")>","city":"<svg onload=alert(\"XSS\")>","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"xss2@test.de","address":{"street":"<img src=x onerror=alert(\"XSS\")>","city":"<svg onload=alert(\"XSS\")>","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:09
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:09
-📝 Request data: {"name":"Test Organization","email":"org1@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"existing@test.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"org1@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"existing@test.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:10
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:10
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:10
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep@neworg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"rep@neworg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
   🔵 OrganizationController::store() called at 2026-02-28 12:24:10
-📝 Request data: {"name":"Test Organization","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"voter@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"contact@testorg.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"voter@org.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\OrganizationCreationSecurityTest[39m
-  [32;1m✓[39;22m[90m [39m[90munauthenticated user cannot create organization[39m[90m                                                             [39m [90m0.15s[39m  
+  [32;1m✓[39;22m[90m [39m[90munauthenticated user cannot create organisation[39m[90m                                                             [39m [90m0.15s[39m  
   [32;1m✓[39;22m[90m [39m[90morganization creator becomes admin[39m[90m                                                                          [39m [90m0.17s[39m  
   [32;1m✓[39;22m[90m [39m[90msql injection prevention[39m[90m                                                                                    [39m [90m0.18s[39m  
-  [32;1m✓[39;22m[90m [39m[90mxss prevention in organization data[39m[90m                                                                         [39m [90m0.16s[39m  
+  [32;1m✓[39;22m[90m [39m[90mxss prevention in organisation data[39m[90m                                                                         [39m [90m0.16s[39m  
   [32;1m✓[39;22m[90m [39m[90mxss prevention in address[39m[90m                                                                                   [39m [90m0.15s[39m  
   [32;1m✓[39;22m[90m [39m[90morganization access restricted to members[39m[90m                                                                   [39m [90m0.22s[39m  
   [32;1m✓[39;22m[90m [39m[90mno user enumeration via email[39m[90m                                                                               [39m [90m0.16s[39m  
@@ -972,25 +972,25 @@
   [31;1m⨯[39;22m[90m [39m[90mpassword reset respects authorization[39m[90m                                                                       [39m [90m0.17s[39m  
   [32;1m✓[39;22m[90m [39m[90morganization modification restricted[39m[90m                                                                        [39m [90m0.16s[39m  
 🔵 OrganizationController::store() called at 2026-02-28 12:24:10
-📝 Request data: {"name":"Test Organization","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
        🔵 OrganizationController::store() called at 2026-02-28 12:24:11
-📝 Request data: {"name":"Test Organization","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:12
-📝 Request data: {"name":"Test Organization","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:12
-📝 Request data: {"name":"Test Organization","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:12
-📝 Request data: {"name":"Test Organization","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
   🔵 OrganizationController::store() called at 2026-02-28 12:24:12
-📝 Request data: {"name":"Test Organization","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:12
-📝 Request data: {"name":"Test Organization","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:13
-📝 Request data: {"name":"Test Organization","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:13
-📝 Request data: {"name":"Test Organization","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:13
-📝 Request data: {"name":"Test Organization","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@example.com","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@example.com","is_self":false},"accept_gdpr":true,"accept_terms":true}
  
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\OrganizationCreationStringOperatorTest[39m
   [31;1m⨯[39;22m[90m [39m[90memail field handles string values[39m[90m                                                                           [39m [90m0.20s[39m  
@@ -1026,13 +1026,13 @@
   🔵 OrganizationController::store() called at 2026-02-28 12:24:31
 📝 Request data: {"name":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","email":"long1@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:31
-📝 Request data: {"name":"Test Organization","email":"missing@domain","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"missing@domain","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
    🔵 OrganizationController::store() called at 2026-02-28 12:24:32
-📝 Request data: {"name":"Test Organization","email":"test_de@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test_de@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:32
-📝 Request data: {"name":"Test Organization","email":"self@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"self@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":null,"is_self":true},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:32
-📝 Request data: {"name":"Test Organization","email":"both@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"both@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:32
 📝 Request data: {"name":"M\u00fcller Verein","email":"special_4dc3bc6c6c@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
 🔵 OrganizationController::store() called at 2026-02-28 12:24:32
@@ -1046,9 +1046,9 @@
  🔵 OrganizationController::store() called at 2026-02-28 12:24:33
 📝 Request data: {"name":"Org\/Other","email":"special_4f72672f4f@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:33
-📝 Request data: {"name":"Test Organization","email":"test@org.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"test@org.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"Max Mustermann","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
  🔵 OrganizationController::store() called at 2026-02-28 12:24:33
-📝 Request data: {"name":"Test Organization","email":"name3@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"ABC","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
+📝 Request data: {"name":"Test organisation","email":"name3@test.de","address":{"street":"Main Street 42","city":"Munich","zip":"80331","country":"DE"},"representative":{"name":"ABC","role":"Chairman","email":"max@testorg.de","is_self":false},"accept_gdpr":true,"accept_terms":true}
     
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\OrganizationCreationValidationTest[39m
   [32;1m✓[39;22m[90m [39m[90morganization name min length[39m[90m                                                                               [39m [90m16.66s[39m  
@@ -1058,7 +1058,7 @@
   [31;1m⨯[39;22m[90m [39m[90mcountry code validation[39m[90m                                                                                     [39m [90m0.19s[39m  
   [32;1m✓[39;22m[90m [39m[90mrepresentative email required when not self[39m[90m                                                                 [39m [90m0.15s[39m  
   [32;1m✓[39;22m[90m [39m[90mgdpr and terms acceptance required[39m[90m                                                                          [39m [90m0.23s[39m  
-  [32;1m✓[39;22m[90m [39m[90mspecial characters in organization name[39m[90m                                                                     [39m [90m0.86s[39m  
+  [32;1m✓[39;22m[90m [39m[90mspecial characters in organisation name[39m[90m                                                                     [39m [90m0.86s[39m  
   [32;1m✓[39;22m[90m [39m[90memail trimming and normalization[39m[90m                                                                            [39m [90m0.14s[39m  
   [32;1m✓[39;22m[90m [39m[90mrepresentative name min length[39m[90m                                                                              [39m [90m0.23s[39m  
   [32;1m✓[39;22m[90m [39m[90mrepresentative role required[39m[90m                                                                                [39m [90m0.10s[39m  
@@ -1074,32 +1074,32 @@
   [31;1m⨯[39;22m[90m [39m[90mit properly manages cache across operations[39m[90m                                                                 [39m [90m0.17s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit allows multiple commission members to perform actions[39m[90m                                                    [39m [90m0.19s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit grants new permissions after role change[39m[90m                                                                 [39m [90m0.18s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit handles organization with no voters[39m[90m                                                                      [39m [90m0.14s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit handles organisation with no voters[39m[90m                                                                      [39m [90m0.14s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit tracks ip address per approval[39m[90m                                                                           [39m [90m0.16s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit handles sequential bulk operations[39m[90m                                                                       [39m [90m0.22s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit sets appropriate flash messages[39m[90m                                                                          [39m [90m0.20s[39m  
                  
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\Organizations\VoterControllerSecurityTest[39m
-  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organization voter list access[39m[90m                                                            [39m [90m0.19s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organization voter approval[39m[90m                                                               [39m [90m0.18s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organization voter suspension[39m[90m                                                             [39m [90m0.17s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organisation voter list access[39m[90m                                                            [39m [90m0.19s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organisation voter approval[39m[90m                                                               [39m [90m0.18s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organisation voter suspension[39m[90m                                                             [39m [90m0.17s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit prevents org2 user approving org1 voters[39m[90m                                                                 [39m [90m0.15s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organization bulk approve[39m[90m                                                                 [39m [90m0.17s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organization bulk suspend[39m[90m                                                                 [39m [90m0.17s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organisation bulk approve[39m[90m                                                                 [39m [90m0.17s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organisation bulk suspend[39m[90m                                                                 [39m [90m0.17s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit requires commission role for approval[39m[90m                                                                    [39m [90m0.18s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit requires commission role for bulk approve[39m[90m                                                                [39m [90m0.19s[39m  
   [32;1m✓[39;22m[90m [39m[90mit prevents sql injection in voter id[39m[90m                                                                       [39m [90m0.17s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit validates organization from route not request[39m[90m                                                            [39m [90m0.18s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit validates organisation from route not request[39m[90m                                                            [39m [90m0.18s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit records actual approver identity[39m[90m                                                                         [39m [90m0.17s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit filters voters by organization in bulk approve[39m[90m                                                           [39m [90m0.18s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit validates organization slug integrity[39m[90m                                                                    [39m [90m0.19s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit filters voters by organisation in bulk approve[39m[90m                                                           [39m [90m0.18s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit validates organisation slug integrity[39m[90m                                                                    [39m [90m0.19s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit requires csrf token for state changes[39m[90m                                                                    [39m [90m0.24s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit logs all approval attempts[39m[90m                                                                               [39m [90m0.17s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit prevents privilege escalation attacks[39m[90m                                                                    [39m [90m0.20s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit prevents information disclosure[39m[90m                                                                          [39m [90m0.18s[39m  
                            
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\Organizations\VoterControllerTest[39m
-  [31;1m⨯[39;22m[90m [39m[90mit displays voter list for organization members[39m[90m                                                             [39m [90m0.19s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit displays voter list for organisation members[39m[90m                                                             [39m [90m0.19s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit blocks non member access to voter list[39m[90m                                                                   [39m [90m0.16s[39m  
   [32;1m✓[39;22m[90m [39m[90mit redirects unauthenticated users to login[39m[90m                                                                 [39m [90m0.18s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit shows correct statistics[39m[90m                                                                                 [39m [90m0.16s[39m  
@@ -1109,18 +1109,18 @@
   [31;1m⨯[39;22m[90m [39m[90mit blocks regular member from approving voter[39m[90m                                                               [39m [90m0.17s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit allows commission member to suspend voter[39m[90m                                                                [39m [90m0.16s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit blocks regular member from suspending voter[39m[90m                                                              [39m [90m0.16s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organization voter approval[39m[90m                                                               [39m [90m0.17s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit prevents cross organisation voter approval[39m[90m                                                               [39m [90m0.17s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit allows bulk approve of voters[39m[90m                                                                            [39m [90m0.15s[39m  
   [32;1m✓[39;22m[90m [39m[90mit returns error for empty bulk approve[39m[90m                                                                     [39m [90m0.15s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit allows bulk suspend of voters[39m[90m                                                                            [39m [90m0.19s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit paginates voter list[39m[90m                                                                                     [39m [90m0.35s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit only shows voters from the organization[39m[90m                                                                  [39m [90m0.20s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit only shows voters from the organisation[39m[90m                                                                  [39m [90m0.20s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit invalidates cache on voter approval[39m[90m                                                                      [39m [90m0.20s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit invalidates cache on bulk approval[39m[90m                                                                       [39m [90m0.24s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit records ip address on approval[39m[90m                                                                           [39m [90m0.20s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit indicates commission member in response[39m[90m                                                                  [39m [90m0.17s[39m  
   [32;1m✓[39;22m[90m [39m[90mit allows approval of voters regardless of voting status[39m[90m                                                    [39m [90m0.18s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit loads organization context[39m[90m                                                                               [39m [90m0.16s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit loads organisation context[39m[90m                                                                               [39m [90m0.16s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit preserves filters in response[39m[90m                                                                            [39m [90m0.22s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit shows success message after approval[39m[90m                                                                     [39m [90m0.24s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit only shows voters not non voters[39m[90m                                                                         [39m [90m0.19s[39m  
@@ -1236,7 +1236,7 @@
   [31;1m⨯[39;22m[90m [39m[90mit prevents privilege escalation to commission[39m[90m                                                              [39m [90m0.15s[39m  
   [32;1m✓[39;22m[90m [39m[90mit prevents mass assignment vulnerabilities[39m[90m                                                                 [39m [90m0.24s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit prevents insecure direct object reference[39m[90m                                                                [39m [90m0.19s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mit validates organization parameter cannot be spoofed[39m[90m                                                       [39m [90m0.18s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mit validates organisation parameter cannot be spoofed[39m[90m                                                       [39m [90m0.18s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit prevents command injection attempts[39m[90m                                                                      [39m [90m0.15s[39m  
   [31;1m⨯[39;22m[90m [39m[90mit prevents path traversal attacks[39m[90m                                                                          [39m [90m0.19s[39m  
   [32;1m✓[39;22m[90m [39m[90mit prevents authentication bypass[39m[90m                                                                           [39m [90m0.21s[39m  
@@ -1291,7 +1291,7 @@
   [39;41;1m FAIL [39;49;22m[39m Tests\Feature\TenantIsolationTest[39m
   [31;1m⨯[39;22m[90m [39m[90muser from org1 cannot see org2 users[39m[90m                                                                        [39m [90m0.20s[39m  
   [31;1m⨯[39;22m[90m [39m[90muser from org2 cannot see org1 users[39m[90m                                                                        [39m [90m0.12s[39m  
-  [31;1m⨯[39;22m[90m [39m[90mdefault user cannot see organization users[39m[90m                                                                  [39m [90m0.12s[39m  
+  [31;1m⨯[39;22m[90m [39m[90mdefault user cannot see organisation users[39m[90m                                                                  [39m [90m0.12s[39m  
   [31;1m⨯[39;22m[90m [39m[90muser cannot access another org user by id[39m[90m                                                                   [39m [90m0.13s[39m  
   [32;1m✓[39;22m[90m [39m[90muser can access own user record by id[39m[90m                                                                       [39m [90m0.11s[39m  
   [32;1m✓[39;22m[90m [39m[90mnew record gets organisation id automatically org1[39m[90m                                                          [39m [90m0.13s[39m  
@@ -1334,17 +1334,17 @@
   [31;1m⨯[39;22m[90m [39m[90mnew passwords must match[39m[90m                                                                                    [39m [90m0.13s[39m  
            
   [30;42;1m PASS [39;49;22m[39m Tests\Feature\Voting\RealElectionWorkflowTest[39m
-  [32;1m✓[39;22m[90m [39m[90mreal election requires organization[39m[90m                                                                         [39m [90m0.13s[39m  
-  [32;1m✓[39;22m[90m [39m[90mdemo election has null organization[39m[90m                                                                         [39m [90m0.10s[39m  
-  [32;1m✓[39;22m[90m [39m[90mreal election belongs to organization[39m[90m                                                                       [39m [90m0.13s[39m  
-  [32;1m✓[39;22m[90m [39m[90muser can have organization context[39m[90m                                                                          [39m [90m0.08s[39m  
-  [32;1m✓[39;22m[90m [39m[90melection scoped to organization[39m[90m                                                                             [39m [90m0.13s[39m  
-  [32;1m✓[39;22m[90m [39m[90mcannot access election from different organization[39m[90m                                                          [39m [90m0.10s[39m  
+  [32;1m✓[39;22m[90m [39m[90mreal election requires organisation[39m[90m                                                                         [39m [90m0.13s[39m  
+  [32;1m✓[39;22m[90m [39m[90mdemo election has null organisation[39m[90m                                                                         [39m [90m0.10s[39m  
+  [32;1m✓[39;22m[90m [39m[90mreal election belongs to organisation[39m[90m                                                                       [39m [90m0.13s[39m  
+  [32;1m✓[39;22m[90m [39m[90muser can have organisation context[39m[90m                                                                          [39m [90m0.08s[39m  
+  [32;1m✓[39;22m[90m [39m[90melection scoped to organisation[39m[90m                                                                             [39m [90m0.13s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcannot access election from different organisation[39m[90m                                                          [39m [90m0.10s[39m  
   [32;1m✓[39;22m[90m [39m[90melection status tracking[39m[90m                                                                                    [39m [90m0.10s[39m  
   [32;1m✓[39;22m[90m [39m[90mreal election should be anonymous[39m[90m                                                                           [39m [90m0.11s[39m  
   [32;1m✓[39;22m[90m [39m[90mreal election type differs from demo[39m[90m                                                                        [39m [90m0.10s[39m  
-  [32;1m✓[39;22m[90m [39m[90melection permissions scoped by organization[39m[90m                                                                 [39m [90m0.09s[39m  
-  [32;1m✓[39;22m[90m [39m[90mmultiple elections in same organization[39m[90m                                                                     [39m [90m0.11s[39m  
+  [32;1m✓[39;22m[90m [39m[90melection permissions scoped by organisation[39m[90m                                                                 [39m [90m0.09s[39m  
+  [32;1m✓[39;22m[90m [39m[90mmultiple elections in same organisation[39m[90m                                                                     [39m [90m0.11s[39m  
          
   [30;42;1m PASS [39;49;22m[39m Tests\Feature\Voting\VoterSlugStepTrackingTest[39m
   [32;1m✓[39;22m[90m [39m[90mdemo voter slug can be created[39m[90m                                                                              [39m [90m0.16s[39m  
@@ -2310,7 +2310,7 @@ Undefined array key "REMOTE_ADDR"[39;22m
     395▕ 
     396▕         $html = $response->getContent();
     397▕ 
-    398▕         // Assert - Fieldsets or section organization
+    398▕         // Assert - Fieldsets or section organisation
   ➜ 399▕         $this->assertStringContainsString('<section', $html);
     400▕ 
     401▕         // Assert - Inputs have proper attributes
@@ -2554,7 +2554,7 @@ Attempt to read property "name" on string[39;22m
 
   at [32mtests\Feature\Accessibility\VoterControllerAccessibilityTest.php[39m:[32m509[39m
     505▕         $response = $this->actingAs($this->member)
-    506▕             ->get("/organizations/{$this->organization->slug}/voters");
+    506▕             ->get("/organizations/{$this->organisation->slug}/voters");
     507▕ 
     508▕         // The HTML should include language attribute (typically in layout)
   ➜ 509▕         $response->assertStatus(200);
@@ -3684,18 +3684,18 @@ Failed asserting that false is true.[39;22m
   [33m1   [39m[39;1mtests\Feature\Middleware\SetLocaleMiddlewareTest.php[39;22m:[39;1m125[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Middleware\TenantContextMiddlewareTest[22m [90m>[39m middleware handles missing organization gracefully    
-[39;1m  Should handle missing organization gracefully
+  [41;1m FAILED [49;22m [1mTests\Feature\Middleware\TenantContextMiddlewareTest[22m [90m>[39m middleware handles missing organisation gracefully    
+[39;1m  Should handle missing organisation gracefully
 Failed asserting that false is true.[39;22m
 
   at [32mtests\Feature\Middleware\TenantContextMiddlewareTest.php[39m:[32m56[39m
-     52▕         // Try to access dashboard without organization
+     52▕         // Try to access dashboard without organisation
      53▕         $response = $this->get('/dashboard');
      54▕ 
      55▕         // Should not crash - response status should be valid
   ➜  56▕         $this->assertTrue(
      57▕             in_array($response->status(), [200, 302, 401, 403]),
-     58▕             'Should handle missing organization gracefully'
+     58▕             'Should handle missing organisation gracefully'
      59▕         );
      60▕     }
 
@@ -3706,7 +3706,7 @@ Failed asserting that false is true.[39;22m
 [39;1m  Failed asserting that false is true.[39;22m
 
   at [32mtests\Feature\Middleware\TenantContextMiddlewareTest.php[39m:[32m110[39m
-    106▕         // Should handle NULL organization gracefully
+    106▕         // Should handle NULL organisation gracefully
     107▕         $response = $this->get('/dashboard');
     108▕ 
     109▕         // Should not crash
@@ -3738,7 +3738,7 @@ Postleitzahl ist erforderlich.[39;22m
     136▕         // This verifies the CSRF token is valid for the same session
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationDatabaseTest[22m [90m>[39m organization creation is atomic           [41;1m QueryException [49;22m  
+  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationDatabaseTest[22m [90m>[39m organisation creation is atomic           [41;1m QueryException [49;22m  
 [39;1m  SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nrna_test.organization_user' doesn't exist (Connection: mysql, SQL: select count(*) as aggregate from `organization_user`)[39;22m
 
   at [32mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39m:[32m825[39m
@@ -3759,7 +3759,7 @@ Postleitzahl ist erforderlich.[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
   [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationDatabaseTest[22m [90m>[39m creator attached as admin                 [41;1m QueryException [49;22m  
-[39;1m  SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'user_id' in where clause is ambiguous (Connection: mysql, SQL: select exists(select * from `users` inner join `user_organization_roles` on `users`.`id` = `user_organization_roles`.`user_id` where `user_organization_roles`.`organization_id` = 65 and `user_id` = 359 and `user_organization_roles`.`role` = admin) as `exists`)[39;22m
+[39;1m  SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'user_id' in where clause is ambiguous (Connection: mysql, SQL: select exists(select * from `users` inner join `user_organization_roles` on `users`.`id` = `user_organization_roles`.`user_id` where `user_organization_roles`.`organisation_id` = 65 and `user_id` = 359 and `user_organization_roles`.`role` = admin) as `exists`)[39;22m
 
   at [32mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39m:[32m825[39m
     821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
@@ -3779,7 +3779,7 @@ Postleitzahl ist erforderlich.[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
   [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationDatabaseTest[22m [90m>[39m assigned at timestamp is set              [41;1m QueryException [49;22m  
-[39;1m  SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nrna_test.organization_user' doesn't exist (Connection: mysql, SQL: select * from `organization_user` where `organization_id` = 66 and `user_id` = 361 limit 1)[39;22m
+[39;1m  SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nrna_test.organization_user' doesn't exist (Connection: mysql, SQL: select * from `organization_user` where `organisation_id` = 66 and `user_id` = 361 limit 1)[39;22m
 
   at [32mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39m:[32m825[39m
     821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
@@ -3798,7 +3798,7 @@ Postleitzahl ist erforderlich.[39;22m
   [90m    NunoMaduro\Collision\Exceptions\TestException::("SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nrna_test.organization_user' doesn't exist")[39m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationEmailTest[22m [90m>[39m organization created email has correct content                 
+  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationEmailTest[22m [90m>[39m organisation created email has correct content                 
 [39;1m  The expected [App\Mail\OrganizationCreatedMail] mailable was not sent. Did you mean to use assertQueued() instead?
 Failed asserting that false is true.[39;22m
 
@@ -3856,7 +3856,7 @@ Failed asserting that false is true.[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
   [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationEmailTest[22m [90m>[39m email templates exist for all locales  [41;1m AssertionFailedError [49;22m  
-[39;1m  Template emails.organization.created-de failed to render: No hint path defined for [mail]. (View: C:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\resources\views\emails\organization\created-de.blade.php)[39;22m
+[39;1m  Template emails.organisation.created-de failed to render: No hint path defined for [mail]. (View: C:\Users\nabra\OneDrive\Desktop\roshyara\xamp\nrna\nrna-eu\resources\views\emails\organisation\created-de.blade.php)[39;22m
 
   at [32mtests\Feature\OrganizationCreationEmailTest.php[39m:[32m199[39m
     195▕                     'organizationEmail' => 'test@org.de',
@@ -3928,7 +3928,7 @@ Failed asserting that false is true.[39;22m
   [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php[39;22m:[39;1m361[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationEmailTest[22m [90m>[39m only organization email sent for self representative           
+  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationEmailTest[22m [90m>[39m only organisation email sent for self representative           
 [39;1m  The expected [App\Mail\OrganizationCreatedMail] mailable was not sent. Did you mean to use assertQueued() instead?
 Failed asserting that false is true.[39;22m
 
@@ -3954,9 +3954,9 @@ Failed asserting that false is true.[39;22m
      56▕             // Expected to fail
      57▕         }
      58▕ 
-     59▕         // Verify organization was NOT created despite mail failure
-  ➜  60▕         $this->assertEquals($initialOrgCount, Organization::count());
-     61▕         $this->assertNull(Organization::where('email', $data['email'])->first());
+     59▕         // Verify organisation was NOT created despite mail failure
+  ➜  60▕         $this->assertEquals($initialOrgCount, organisation::count());
+     61▕         $this->assertNull(organisation::where('email', $data['email'])->first());
      62▕     }
      63▕ 
      64▕     /**
@@ -4011,7 +4011,7 @@ Failed asserting that false is true.[39;22m
   [33m1   [39m[39;1mtests\Feature\OrganizationCreationErrorTest.php[39;22m:[39;1m281[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationIntegrationTest[22m [90m>[39m complete organization creation workflow                  
+  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationIntegrationTest[22m [90m>[39m complete organisation creation workflow                  
 [39;1m  The expected [App\Mail\OrganizationCreatedMail] mailable was not sent. Did you mean to use assertQueued() instead?
 Failed asserting that false is true.[39;22m
 
@@ -4030,7 +4030,7 @@ Failed asserting that false is true.[39;22m
   [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php[39;22m:[39;1m361[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationIntegrationTest[22m [90m>[39m organization creation with self representative           
+  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationIntegrationTest[22m [90m>[39m organisation creation with self representative           
 [39;1m  The expected [App\Mail\OrganizationCreatedMail] mailable was not sent. Did you mean to use assertQueued() instead?
 Failed asserting that false is true.[39;22m
 
@@ -4049,7 +4049,7 @@ Failed asserting that false is true.[39;22m
   [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php[39;22m:[39;1m361[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationIntegrationTest[22m [90m>[39m organization creation with external representative       
+  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationIntegrationTest[22m [90m>[39m organisation creation with external representative       
 [39;1m  The expected [App\Mail\OrganizationCreatedMail] mailable was not sent. Did you mean to use assertQueued() instead?
 Failed asserting that false is true.[39;22m
 
@@ -4075,15 +4075,15 @@ Failed asserting that false is true.[39;22m
     280▕         // Should succeed
     281▕         $response->assertStatus(200);
     282▕ 
-    283▕         // Should return organization data
-  ➜ 284▕         $response->assertJsonPath('organization.name', $data['name']);
-    285▕         $response->assertJsonPath('organization.slug', $org->slug);
-    286▕         $response->assertJsonPath('organization.email', $data['email']);
-    287▕         $response->assertJsonPath('organization.created_at', $org->created_at->format('d.m.Y'));
+    283▕         // Should return organisation data
+  ➜ 284▕         $response->assertJsonPath('organisation.name', $data['name']);
+    285▕         $response->assertJsonPath('organisation.slug', $org->slug);
+    286▕         $response->assertJsonPath('organisation.email', $data['email']);
+    287▕         $response->assertJsonPath('organisation.created_at', $org->created_at->format('d.m.Y'));
     288▕
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationIntegrationTest[22m [90m>[39m email content reflects organization details              
+  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationIntegrationTest[22m [90m>[39m email content reflects organisation details              
 [39;1m  The expected [App\Mail\OrganizationCreatedMail] mailable was not sent. Did you mean to use assertQueued() instead?
 Failed asserting that false is true.[39;22m
 
@@ -4102,7 +4102,7 @@ Failed asserting that false is true.[39;22m
   [33m2   [39m[39;1mvendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php[39;22m:[39;1m361[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationIntegrationTest[22m [90m>[39m response includes organization details                   
+  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationIntegrationTest[22m [90m>[39m response includes organisation details                   
 [39;1m  Failed asserting that an array has the key 'redirect_url'.[39;22m
 
   at [32mtests\Feature\OrganizationCreationIntegrationTest.php[39m:[32m388[39m
@@ -4114,7 +4114,7 @@ Failed asserting that false is true.[39;22m
     389▕             'success',
     390▕             'message',
     391▕             'redirect_url',
-    392▕             'organization' => [
+    392▕             'organisation' => [
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
   [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationRepresentativeTest[22m [90m>[39m existing representative user reused                   
@@ -4134,7 +4134,7 @@ Failed asserting that false is true.[39;22m
   [33m1   [39m[39;1mtests\Feature\OrganizationCreationRepresentativeTest.php[39;22m:[39;1m126[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationRepresentativeTest[22m [90m>[39m organization attached to r… [41;1m BadMethodCallException [49;22m  
+  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationRepresentativeTest[22m [90m>[39m organisation attached to r… [41;1m BadMethodCallException [49;22m  
 [39;1m  Call to undefined method App\Models\User::organizations()[39;22m
 
   at [32mvendor\laravel\framework\src\Illuminate\Support\Traits\ForwardsCalls.php[39m:[32m67[39m
@@ -4171,7 +4171,7 @@ Failed asserting that false is true.[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
   [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationRepresentativeTest[22m [90m>[39m assigned at timestamp set for repr… [41;1m QueryException [49;22m  
-[39;1m  SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nrna_test.organization_user' doesn't exist (Connection: mysql, SQL: select * from `organization_user` where `organization_id` = 102 and `users`.`id` = 437 limit 1)[39;22m
+[39;1m  SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nrna_test.organization_user' doesn't exist (Connection: mysql, SQL: select * from `organization_user` where `organisation_id` = 102 and `users`.`id` = 437 limit 1)[39;22m
 
   at [32mvendor\laravel\framework\src\Illuminate\Database\Connection.php[39m:[32m825[39m
     821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
@@ -4203,7 +4203,7 @@ Failed asserting that 302 is identical to 200.[39;22m
     271▕     }
     272▕ 
     273▕     /**
-    274▕      * Test that organization data cannot be modified by non-admins
+    274▕      * Test that organisation data cannot be modified by non-admins
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
   [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationStringOperatorTest[22m [90m>[39m email field handles string values            [41;1m Error [49;22m  
@@ -4342,7 +4342,7 @@ Failed asserting that 302 is identical to 200.[39;22m
   [33m1   [39m[39;1mtests\Feature\OrganizationCreationStringOperatorTest.php[39;22m:[39;1m322[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationValidationTest[22m [90m>[39m organization email format validation                      
+  [41;1m FAILED [49;22m [1mTests\Feature\OrganizationCreationValidationTest[22m [90m>[39m organisation email format validation                      
 [39;1m  Expected response status code [422] but received 201.
 Failed asserting that 201 is identical to 422.[39;22m
 
@@ -4424,7 +4424,7 @@ Failed asserting that 422 is not equal to 422.[39;22m
      99▕ 
     100▕         // Act 3: Approve again if needed
     101▕         $response = $this->actingAs($this->commissionMember)
-    102▕             ->post("/organizations/{$this->organization->slug}/voters/{$voter->id}/approve");
+    102▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voter->id}/approve");
 
   [33m1   [39m[39;1mtests\Feature\Organizations\VoterControllerIntegrationTest.php[39;22m:[39;1m98[39;22m
 
@@ -4469,14 +4469,14 @@ Failed asserting that 422 is not equal to 422.[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerIntegrationTest.php[39m:[32m229[39m
     225▕         $this->actingAs($this->commissionMember)
-    226▕             ->get("/organizations/{$this->organization->slug}/voters");
+    226▕             ->get("/organizations/{$this->organisation->slug}/voters");
     227▕ 
     228▕         // Assert cache is populated
   ➜ 229▕         $this->assertTrue(Cache::has($cacheKey));
     230▕ 
     231▕         // Act 2: Approve voter invalidates cache
     232▕         $this->actingAs($this->commissionMember)
-    233▕             ->post("/organizations/{$this->organization->slug}/voters/{$voters[0]->id}/approve");
+    233▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voters[0]->id}/approve");
 
   [33m1   [39m[39;1mtests\Feature\Organizations\VoterControllerIntegrationTest.php[39;22m:[39;1m229[39;22m
 
@@ -4487,13 +4487,13 @@ Failed asserting that 422 is not equal to 422.[39;22m
   at [32mtests\Feature\Organizations\VoterControllerIntegrationTest.php[39m:[32m267[39m
     263▕         // Act 1: CM1 approves
     264▕         $this->actingAs($cm1)
-    265▕             ->post("/organizations/{$this->organization->slug}/voters/{$voter->id}/approve");
+    265▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voter->id}/approve");
     266▕ 
   ➜ 267▕         $this->assertEquals('CM1', $voter->refresh()->approvedBy);
     268▕ 
     269▕         // Act 2: CM2 suspends
     270▕         $this->actingAs($cm2)
-    271▕             ->post("/organizations/{$this->organization->slug}/voters/{$voter->id}/suspend");
+    271▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voter->id}/suspend");
 
   [33m1   [39m[39;1mtests\Feature\Organizations\VoterControllerIntegrationTest.php[39;22m:[39;1m267[39;22m
 
@@ -4509,13 +4509,13 @@ organizations.messages.not_found[39;22m
   at [32mtests\Feature\Organizations\VoterControllerIntegrationTest.php[39m:[32m302[39m
     298▕         // Act 1: Member cannot approve
     299▕         $response = $this->actingAs($member)
-    300▕             ->post("/organizations/{$this->organization->slug}/voters/{$voter->id}/approve");
+    300▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voter->id}/approve");
     301▕ 
   ➜ 302▕         $response->assertStatus(403);
     303▕ 
     304▕         // Act 2: Upgrade to commission
     305▕         $member->organizationRoles()->updateExistingPivot(
-    306▕             $this->organization->id,
+    306▕             $this->organisation->id,
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
   [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerIntegrationTest[22m [90m>[39m it handles organizatio… [41;1m AssertionFailedError [49;22m  
@@ -4540,7 +4540,7 @@ organizations.messages.not_found[39;22m
 [39;1m  Failed asserting that null is not null.[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerIntegrationTest.php[39m:[32m362[39m
-    358▕             ->post("/organizations/{$this->organization->slug}/voters/{$voter->id}/approve");
+    358▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voter->id}/approve");
     359▕ 
     360▕         // Assert
     361▕         $voter->refresh();
@@ -4580,7 +4580,7 @@ organizations.messages.not_found[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerIntegrationTest.php[39m:[32m419[39m
     415▕         $response = $this->actingAs($this->commissionMember)
-    416▕             ->post("/organizations/{$this->organization->slug}/voters/{$voter->id}/approve");
+    416▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voter->id}/approve");
     417▕ 
     418▕         // Assert
   ➜ 419▕         $response->assertSessionHas('success');
@@ -4589,7 +4589,7 @@ organizations.messages.not_found[39;22m
     422▕
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it prevents cross organization voter list acces…   
+  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it prevents cross organisation voter list acces…   
 [39;1m  Expected response status code [403] but received 500.
 Failed asserting that 500 is identical to 403.
 
@@ -4680,7 +4680,7 @@ Attempt to read property "name" on string[39;22m
      71▕      * Test that user from org1 cannot approve voters from org2
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it prevents cross organization voter approval      
+  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it prevents cross organisation voter approval      
 [39;1m  Expected response status code [403] but received 302.
 Failed asserting that 302 is identical to 403.
 
@@ -4700,7 +4700,7 @@ organizations.messages.not_found[39;22m
      86▕     /**
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it prevents cross organization voter suspension    
+  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it prevents cross organisation voter suspension    
 [39;1m  Expected response status code [403] but received 302.
 Failed asserting that 302 is identical to 403.
 
@@ -4740,7 +4740,7 @@ organizations.messages.not_found[39;22m
     121▕     /**
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it prevents cross organization bulk approve        
+  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it prevents cross organisation bulk approve        
 [39;1m  Expected response status code [403] but received 302.
 Failed asserting that 302 is identical to 403.
 
@@ -4760,7 +4760,7 @@ organizations.messages.not_found[39;22m
     139▕     /**
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it prevents cross organization bulk suspend        
+  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it prevents cross organisation bulk suspend        
 [39;1m  Expected response status code [403] but received 302.
 Failed asserting that 302 is identical to 403.
 
@@ -4820,13 +4820,13 @@ organizations.messages.not_found[39;22m
     202▕     /**
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it validates organization from route not reques…   
+  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it validates organisation from route not reques…   
 [39;1m  Failed asserting that null is not null.[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerSecurityTest.php[39m:[32m234[39m
     230▕             ->post("/organizations/{$this->organization1->slug}/voters/{$this->voter1->id}/approve");
     231▕ 
-    232▕         // Assert - Should succeed for own organization
+    232▕         // Assert - Should succeed for own organisation
     233▕         $response->assertRedirect();
   ➜ 234▕         $this->assertNotNull($this->voter1->refresh()->approvedBy);
     235▕     }
@@ -4854,7 +4854,7 @@ organizations.messages.not_found[39;22m
   [33m1   [39m[39;1mtests\Feature\Organizations\VoterControllerSecurityTest.php[39;22m:[39;1m250[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it filters voters by organization in bulk appro…   
+  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it filters voters by organisation in bulk appro…   
 [39;1m  Failed asserting that null is not null.[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerSecurityTest.php[39m:[32m275[39m
@@ -4871,7 +4871,7 @@ organizations.messages.not_found[39;22m
   [33m1   [39m[39;1mtests\Feature\Organizations\VoterControllerSecurityTest.php[39;22m:[39;1m275[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it validates organization slug integrity           
+  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerSecurityTest[22m [90m>[39m it validates organisation slug integrity           
 [39;1m  Expected response status code [403] but received 500.
 Failed asserting that 500 is identical to 403.
 
@@ -5040,7 +5040,7 @@ organizations.messages.not_found[39;22m
   [33m2   [39m[39;1mvendor\inertiajs\inertia-laravel\src\Testing\TestResponseMacros.php[39;22m:[39;1m12[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerTest[22m [90m>[39m it displays voter list for organization members            
+  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerTest[22m [90m>[39m it displays voter list for organisation members            
 [39;1m  Expected response status code [200] but received 500.
 Failed asserting that 500 is identical to 200.
 
@@ -5121,14 +5121,14 @@ Attempt to read property "name" on string[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerTest.php[39m:[32m67[39m
      63▕         $response = $this->actingAs($this->regularMember)
-     64▕             ->get("/organizations/{$this->organization->slug}/voters");
+     64▕             ->get("/organizations/{$this->organisation->slug}/voters");
      65▕ 
      66▕         // Assert
   ➜  67▕         $response->assertStatus(200);
      68▕         $response->assertInertia(fn ($page) => $page
      69▕             ->component('Organizations/Voters/Index')
      70▕             ->has('voters')
-     71▕             ->has('organization')
+     71▕             ->has('organisation')
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
   [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerTest[22m [90m>[39m it blocks non member access to voter list                  
@@ -5212,7 +5212,7 @@ Attempt to read property "name" on string[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerTest.php[39m:[32m92[39m
      88▕         $response = $this->actingAs($nonMember)
-     89▕             ->get("/organizations/{$this->organization->slug}/voters");
+     89▕             ->get("/organizations/{$this->organisation->slug}/voters");
      90▕ 
      91▕         // Assert
   ➜  92▕         $response->assertStatus(403);
@@ -5280,7 +5280,7 @@ Attempt to read property "name" on string[39;22m
 [39;1m  Failed asserting that null is not null.[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerTest.php[39m:[32m185[39m
-    181▕             ->post("/organizations/{$this->organization->slug}/voters/{$pendingVoter->id}/approve");
+    181▕             ->post("/organizations/{$this->organisation->slug}/voters/{$pendingVoter->id}/approve");
     182▕ 
     183▕         // Assert
     184▕         $response->assertRedirect();
@@ -5303,7 +5303,7 @@ organizations.messages.not_found[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerTest.php[39m:[32m204[39m
     200▕         $response = $this->actingAs($this->regularMember)
-    201▕             ->post("/organizations/{$this->organization->slug}/voters/{$voter->id}/approve");
+    201▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voter->id}/approve");
     202▕ 
     203▕         // Assert
   ➜ 204▕         $response->assertStatus(403);
@@ -5317,7 +5317,7 @@ organizations.messages.not_found[39;22m
 [39;1m  Failed asserting that 'Admin' is null.[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerTest.php[39m:[32m224[39m
-    220▕             ->post("/organizations/{$this->organization->slug}/voters/{$approvedVoter->id}/suspend");
+    220▕             ->post("/organizations/{$this->organisation->slug}/voters/{$approvedVoter->id}/suspend");
     221▕ 
     222▕         // Assert
     223▕         $response->assertRedirect();
@@ -5340,7 +5340,7 @@ organizations.messages.not_found[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerTest.php[39m:[32m242[39m
     238▕         $response = $this->actingAs($this->regularMember)
-    239▕             ->post("/organizations/{$this->organization->slug}/voters/{$voter->id}/suspend");
+    239▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voter->id}/suspend");
     240▕ 
     241▕         // Assert
   ➜ 242▕         $response->assertStatus(403);
@@ -5350,7 +5350,7 @@ organizations.messages.not_found[39;22m
     246▕     /**
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerTest[22m [90m>[39m it prevents cross organization voter approval              
+  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerTest[22m [90m>[39m it prevents cross organisation voter approval              
 [39;1m  Expected response status code [403] but received 302.
 Failed asserting that 302 is identical to 403.
 
@@ -5445,7 +5445,7 @@ organizations.messages.not_found[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerTest.php[39m:[32m418[39m
     414▕         $this->actingAs($this->commissionMember)
-    415▕             ->post("/organizations/{$this->organization->slug}/voters/{$voter->id}/approve");
+    415▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voter->id}/approve");
     416▕ 
     417▕         // Assert
   ➜ 418▕         $this->assertFalse(Cache::has($cacheKey));
@@ -5478,7 +5478,7 @@ organizations.messages.not_found[39;22m
 [39;1m  Failed asserting that null is not null.[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerTest.php[39m:[32m464[39m
-    460▕             ->post("/organizations/{$this->organization->slug}/voters/{$voter->id}/approve");
+    460▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voter->id}/approve");
     461▕ 
     462▕         // Assert
     463▕         $voter->refresh();
@@ -5509,7 +5509,7 @@ organizations.messages.not_found[39;22m
   [33m2   [39m[39;1mvendor\inertiajs\inertia-laravel\src\Testing\TestResponseMacros.php[39;22m:[39;1m12[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerTest[22m [90m>[39m it loads organization context      [41;1m AssertionFailedError [49;22m  
+  [41;1m FAILED [49;22m [1mTests\Feature\Organizations\VoterControllerTest[22m [90m>[39m it loads organisation context      [41;1m AssertionFailedError [49;22m  
 [39;1m  Not a valid Inertia response.[39;22m
 
   at [32mvendor\inertiajs\inertia-laravel\src\Testing\AssertableInertia.php[39m:[32m42[39m
@@ -5555,7 +5555,7 @@ organizations.messages.not_found[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerTest.php[39m:[32m570[39m
     566▕         $response = $this->actingAs($this->commissionMember)
-    567▕             ->post("/organizations/{$this->organization->slug}/voters/{$voter->id}/approve");
+    567▕             ->post("/organizations/{$this->organisation->slug}/voters/{$voter->id}/approve");
     568▕ 
     569▕         // Assert
   ➜ 570▕         $response->assertSessionHas('success');
@@ -5593,7 +5593,7 @@ organizations.messages.not_found[39;22m
 
   at [32mtests\Feature\Organizations\VoterControllerTest.php[39m:[32m615[39m
     611▕         $response = $this->actingAs($this->commissionMember)
-    612▕             ->post("/organizations/{$this->organization->slug}/voters/{$otherVoter->id}/approve");
+    612▕             ->post("/organizations/{$this->organisation->slug}/voters/{$otherVoter->id}/approve");
     613▕ 
     614▕         // Assert - Should fail
   ➜ 615▕         $response->assertStatus(403);
@@ -6056,7 +6056,7 @@ Attempt to read property "name" on string[39;22m
 
   at [32mtests\Feature\Security\VoterControllerPenetrationTest.php[39m:[32m68[39m
      64▕             $response = $this->actingAs($this->user)
-     65▕                 ->get("/organizations/{$this->organization->slug}/voters?search=" . urlencode($payload));
+     65▕                 ->get("/organizations/{$this->organisation->slug}/voters?search=" . urlencode($payload));
      66▕ 
      67▕             // Assert
   ➜  68▕             $response->assertStatus(200);
@@ -6076,7 +6076,7 @@ organizations.messages.not_found[39;22m
 
   at [32mtests\Feature\Security\VoterControllerPenetrationTest.php[39m:[32m169[39m
     165▕         $response = $this->actingAs($nonMember)
-    166▕             ->post("/organizations/{$this->organization->slug}/voters/{$this->voter->id}/approve");
+    166▕             ->post("/organizations/{$this->organisation->slug}/voters/{$this->voter->id}/approve");
     167▕ 
     168▕         // Assert
   ➜ 169▕         $response->assertStatus(403);
@@ -6096,7 +6096,7 @@ organizations.messages.not_found[39;22m
 
   at [32mtests\Feature\Security\VoterControllerPenetrationTest.php[39m:[32m189[39m
     185▕         $response = $this->actingAs($regularMember)
-    186▕             ->post("/organizations/{$this->organization->slug}/voters/{$this->voter->id}/approve");
+    186▕             ->post("/organizations/{$this->organisation->slug}/voters/{$this->voter->id}/approve");
     187▕ 
     188▕         // Assert
   ➜ 189▕         $response->assertStatus(403);
@@ -6116,7 +6116,7 @@ organizations.messages.not_found[39;22m
 
   at [32mtests\Feature\Security\VoterControllerPenetrationTest.php[39m:[32m236[39m
     232▕         $response = $this->actingAs($this->user)
-    233▕             ->post("/organizations/{$this->organization->slug}/voters/{$otherVoter->id}/approve");
+    233▕             ->post("/organizations/{$this->organisation->slug}/voters/{$otherVoter->id}/approve");
     234▕ 
     235▕         // Assert
   ➜ 236▕         $response->assertStatus(403);
@@ -6126,7 +6126,7 @@ organizations.messages.not_found[39;22m
     240▕     /**
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\Security\VoterControllerPenetrationTest[22m [90m>[39m it validates organization parameter cannot be spo…   
+  [41;1m FAILED [49;22m [1mTests\Feature\Security\VoterControllerPenetrationTest[22m [90m>[39m it validates organisation parameter cannot be spo…   
 [39;1m  Expected response status code [403] but received 302.
 Failed asserting that 302 is identical to 403.
 
@@ -6135,7 +6135,7 @@ The following errors occurred during the last request:
 organizations.messages.not_found[39;22m
 
   at [32mtests\Feature\Security\VoterControllerPenetrationTest.php[39m:[32m258[39m
-    254▕                 'organization_id' => $otherOrg->id, // Attempt to spoof
+    254▕                 'organisation_id' => $otherOrg->id, // Attempt to spoof
     255▕             ]);
     256▕ 
     257▕         // Assert - Should fail because voter doesn't exist in otherOrg
@@ -6227,7 +6227,7 @@ Attempt to read property "name" on string[39;22m
 
   at [32mtests\Feature\Security\VoterControllerPenetrationTest.php[39m:[32m281[39m
     277▕             $response = $this->actingAs($this->user)
-    278▕                 ->get("/organizations/{$this->organization->slug}/voters?search=" . urlencode($payload));
+    278▕                 ->get("/organizations/{$this->organisation->slug}/voters?search=" . urlencode($payload));
     279▕ 
     280▕             // Assert - Should not execute commands
   ➜ 281▕             $response->assertStatus(200);
@@ -6409,7 +6409,7 @@ Attempt to read property "name" on string[39;22m
 
   at [32mtests\Feature\Security\VoterControllerPenetrationTest.php[39m:[32m341[39m
     337▕         $response = $this->actingAs($this->user)
-    338▕             ->get("/organizations/{$this->organization->slug}/voters");
+    338▕             ->get("/organizations/{$this->organisation->slug}/voters");
     339▕ 
     340▕         // Assert - Session should be secure
   ➜ 341▕         $response->assertStatus(200);
@@ -6441,7 +6441,7 @@ Attempt to read property "name" on string[39;22m
 Failed asserting that 405 is identical to 404.[39;22m
 
   at [32mtests\Feature\Security\VoterControllerPenetrationTest.php[39m:[32m416[39m
-    412▕             ->post("/organizations/{$this->organization->slug}/voters", [
+    412▕             ->post("/organizations/{$this->organisation->slug}/voters", [
     413▕                 'id' => ['nested' => 'array'],
     414▕             ]);
     415▕ 
@@ -6458,7 +6458,7 @@ Failed asserting that 405 is identical to 404.[39;22m
 
   at [32mtests\Feature\Security\VoterControllerPenetrationTest.php[39m:[32m431[39m
     427▕         $response = $this->actingAs($this->user)
-    428▕             ->get("/organizations/{$this->organization->slug}/voters/{$this->voter->id}/approve");
+    428▕             ->get("/organizations/{$this->organisation->slug}/voters/{$this->voter->id}/approve");
     429▕ 
     430▕         // Should not work with GET
   ➜ 431▕         $response->assertStatus(404); // Route not defined for GET
@@ -6629,12 +6629,12 @@ organizations.messages.not_found[39;22m
   [33m1   [39m[39;1mtests\Feature\TenantIsolationTest.php[39;22m:[39;1m162[39;22m
 
   [31m────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[39m  
-  [41;1m FAILED [49;22m [1mTests\Feature\TenantIsolationTest[22m [90m>[39m default user cannot see organization users                               
+  [41;1m FAILED [49;22m [1mTests\Feature\TenantIsolationTest[22m [90m>[39m default user cannot see organisation users                               
 [39;1m  Failed asserting that an array does not contain 1289.[39;22m
 
   at [32mtests\Feature\TenantIsolationTest.php[39m:[32m182[39m
     178▕ 
-    179▕         // Assert: Should see own user but NOT organization users
+    179▕         // Assert: Should see own user but NOT organisation users
     180▕         $userIds = $users->pluck('id')->toArray();
     181▕         $this->assertContains($defaultUser->id, $userIds);
   ➜ 182▕         $this->assertNotContains($org1User->id, $userIds);

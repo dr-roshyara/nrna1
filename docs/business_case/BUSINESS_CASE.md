@@ -93,7 +93,7 @@ Public Digit is a **cloud-native, multi-tenant election platform** that enables 
    - Mobile-optimized responsive design
    - Keyboard navigation support
 
-5. **Organization Control**
+5. **organisation Control**
    - Election committee management
    - Customizable voter eligibility rules
    - Geographic hierarchy support (country → region → locality)
@@ -127,13 +127,13 @@ Public Digit is a **cloud-native, multi-tenant election platform** that enables 
 ### Primary Users
 
 1. **NRNA (Non-Resident Nepali Association)**
-   - Global Nepali diaspora organization
+   - Global Nepali diaspora organisation
    - Conducts annual democratic elections
    - Requires multi-language support (Nepali, English, German)
    - Geographic representation across 80+ countries
 
 2. **Diaspora Communities**
-   - Any ethnic, national, or cultural organization with dispersed members
+   - Any ethnic, national, or cultural organisation with dispersed members
    - Alumni associations with global membership
    - International cooperative organizations
    - Professional organizations with remote members
@@ -148,7 +148,7 @@ Public Digit is a **cloud-native, multi-tenant election platform** that enables 
 
 **Use Case 1: Annual Membership Elections**
 - Voting for board positions
-- Policy decisions affecting the organization
+- Policy decisions affecting the organisation
 - Budget allocation approval
 - Candidate selection for roles
 
@@ -298,7 +298,7 @@ Public Digit is a **cloud-native, multi-tenant election platform** that enables 
 
 **Member Engagement**
 - Higher participation rates → stronger mandate
-- Increased interaction with organization
+- Increased interaction with organisation
 - Trust in democratic processes
 - Foundation for broader digital services
 
@@ -428,7 +428,7 @@ Public Digit is a **cloud-native, multi-tenant election platform** that enables 
 - **Annual:** ~$336K
 
 ### Revenue Model (Future)
-- **Licensing Model:** $5K-20K per organization annually
+- **Licensing Model:** $5K-20K per organisation annually
 - **Volume Model:** $0.50-2.00 per voter per election
 - **Professional Services:** Custom implementation, training
 - **White-Label:** Premium pricing for customized platforms
@@ -443,7 +443,7 @@ Public Digit is a **cloud-native, multi-tenant election platform** that enables 
 
 ### The Bigger Picture
 
-Public Digit represents a strategic investment in **digital democracy infrastructure** for diaspora and dispersed communities. Beyond immediate ROI, the platform positions the organization as:
+Public Digit represents a strategic investment in **digital democracy infrastructure** for diaspora and dispersed communities. Beyond immediate ROI, the platform positions the organisation as:
 
 1. **Technology Leader** in diaspora governance
 2. **Trust Builder** through transparent democratic processes

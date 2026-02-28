@@ -1,7 +1,7 @@
 # 📚 Complete Member Import Developer Guide
 
 **Project**: Public Digit Election Platform
-**Module**: Organization Member Management
+**Module**: organisation Member Management
 **Last Updated**: 2026-02-22
 **Status**: Implementation Guide (Backend Integration Required)
 
@@ -133,7 +133,7 @@ All frontend code is production-ready and tested. Here's what exists:
     <!-- Success step -->
     <section v-if="currentStep === 'success'">
       <!-- Success message -->
-      <!-- Back to organization button -->
+      <!-- Back to organisation button -->
     </section>
   </div>
 
@@ -160,7 +160,7 @@ All frontend code is production-ready and tested. Here's what exists:
 
 ```javascript
 // 1. Parse file (CSV or Excel)
-const { parseFile, validateData, submitImport } = useMemberImport(organization)
+const { parseFile, validateData, submitImport } = useMemberImport(organisation)
 
 await parseFile(file)
 // Returns: { headers: [], rows: [{}] }
@@ -178,7 +178,7 @@ const result = await submitImport({ headers, rows, fileName })
 
 **From**: `ActionButtons.vue` (Main dashboard)
 ```vue
-<Link :href="`/organizations/${organization.slug}/members/import`">
+<Link :href="`/organizations/${organisation.slug}/members/import`">
   Import Members
 </Link>
 ```
@@ -202,7 +202,7 @@ Create file: `/app/Http/Controllers/Organizations/MemberImportController.php`
 
 namespace App\Http\Controllers\Organizations;
 
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -213,12 +213,12 @@ class MemberImportController extends Controller
     /**
      * Handle member import request
      *
-     * POST /organizations/{organization}/members/import
+     * POST /organizations/{organisation}/members/import
      */
-    public function store(Request $request, Organization $organization): Response
+    public function store(Request $request, organisation $organisation): Response
     {
         // 1. AUTHORIZATION
-        $this->authorize('manage', $organization);
+        $this->authorize('manage', $organisation);
 
         // 2. VALIDATE REQUEST
         $validated = $request->validate([
@@ -240,7 +240,7 @@ class MemberImportController extends Controller
 
         // 4. PROCESS MEMBERS
         $importStats = $this->importMembers(
-            $organization,
+            $organisation,
             $validated['rows']
         );
 
@@ -298,7 +298,7 @@ class MemberImportController extends Controller
     /**
      * Import members into database
      */
-    private function importMembers(Organization $organization, array $rows): array
+    private function importMembers(organisation $organisation, array $rows): array
     {
         $imported = 0;
         $skipped = 0;
@@ -336,14 +336,14 @@ class MemberImportController extends Controller
                     $user->update(['phone' => $phone]);
                 }
 
-                // Attach to organization if not already attached
-                $organizationUserRole = $organization->users()
+                // Attach to organisation if not already attached
+                $organizationUserRole = $organisation->users()
                     ->where('user_id', $user->id)
                     ->first();
 
                 if (!$organizationUserRole) {
                     // Attach with 'member' role by default
-                    $organization->users()->attach($user->id, [
+                    $organisation->users()->attach($user->id, [
                         'role' => 'member',
                         'region' => $region,
                         'assigned_at' => now(),
@@ -381,29 +381,29 @@ Update or create: `/app/Policies/OrganizationPolicy.php`
 
 namespace App\Policies;
 
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\User;
 
 class OrganizationPolicy
 {
     /**
-     * Check if user can manage organization (import members)
+     * Check if user can manage organisation (import members)
      */
-    public function manage(User $user, Organization $organization): bool
+    public function manage(User $user, organisation $organisation): bool
     {
-        // Check if user is organization admin or staff
-        return $organization->users()
+        // Check if user is organisation admin or staff
+        return $organisation->users()
             ->where('user_id', $user->id)
             ->whereIn('role', ['admin', 'manager', 'staff'])
             ->exists();
     }
 
     /**
-     * Check if user can view organization
+     * Check if user can view organisation
      */
-    public function view(User $user, Organization $organization): bool
+    public function view(User $user, organisation $organisation): bool
     {
-        return $organization->users()
+        return $organisation->users()
             ->where('user_id', $user->id)
             ->exists();
     }
@@ -421,24 +421,24 @@ Update: `/routes/web.php`
 
 Route::middleware(['auth', 'web'])->group(function () {
 
-    // Organization routes
-    Route::get('/organizations/{organization}', [OrganizationController::class, 'show'])
+    // organisation routes
+    Route::get('/organizations/{organisation}', [OrganizationController::class, 'show'])
         ->name('organizations.show');
 
     // Member import routes
-    Route::get('/organizations/{organization}/members/import', [MemberImportController::class, 'create'])
+    Route::get('/organizations/{organisation}/members/import', [MemberImportController::class, 'create'])
         ->name('organizations.members.import');
 
-    Route::post('/organizations/{organization}/members/import', [MemberImportController::class, 'store'])
+    Route::post('/organizations/{organisation}/members/import', [MemberImportController::class, 'store'])
         ->name('organizations.members.import.store');
 });
 ```
 
 ### **Step 4: Update Models**
 
-#### Organization Model
+#### organisation Model
 
-File: `/app/Models/Organization.php`
+File: `/app/Models/organisation.php`
 
 ```php
 <?php
@@ -448,12 +448,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Organization extends Model
+class organisation extends Model
 {
     protected $fillable = ['name', 'email', 'slug'];
 
     /**
-     * Get all users in this organization
+     * Get all users in this organisation
      */
     public function users(): BelongsToMany
     {
@@ -514,18 +514,18 @@ class User extends Authenticatable
      */
     public function organizations(): BelongsToMany
     {
-        return $this->belongsToMany(Organization::class, 'user_organization_roles')
+        return $this->belongsToMany(organisation::class, 'user_organization_roles')
             ->withPivot('role', 'region', 'assigned_at')
             ->withTimestamps();
     }
 
     /**
-     * Check if user is admin of organization
+     * Check if user is admin of organisation
      */
     public function isOrgAdmin(int $organizationId): bool
     {
         return $this->organizations()
-            ->where('organization_id', $organizationId)
+            ->where('organisation_id', $organizationId)
             ->where('role', 'admin')
             ->exists();
     }
@@ -556,7 +556,7 @@ return new class extends Migration
 
             // Foreign keys
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('organization_id');
+            $table->unsignedBigInteger('organisation_id');
 
             // Role assignment
             $table->enum('role', ['admin', 'manager', 'staff', 'member', 'voter'])
@@ -571,9 +571,9 @@ return new class extends Migration
 
             // Indexes
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreign('organization_id')->references('id')->on('organizations')->cascadeOnDelete();
-            $table->unique(['user_id', 'organization_id']);
-            $table->index(['organization_id', 'role']);
+            $table->foreign('organisation_id')->references('id')->on('organizations')->cascadeOnDelete();
+            $table->unique(['user_id', 'organisation_id']);
+            $table->index(['organisation_id', 'role']);
         });
     }
 
@@ -631,7 +631,7 @@ php artisan migrate
 
 **Authentication**: Required (must be logged in)
 
-**Authorization**: User must be organization admin
+**Authorization**: User must be organisation admin
 
 **Request Format**:
 ```json
@@ -701,7 +701,7 @@ php artisan migrate
 
 #### Test 1: Basic Import
 
-1. Create an organization (admin user)
+1. Create an organisation (admin user)
 2. Navigate to `/organizations/{slug}/members/import`
 3. Create test CSV file:
    ```
@@ -743,11 +743,11 @@ php artisan migrate
 2. Try to access `/organizations/{slug}/members/import`
 3. Should redirect to login
 
-#### Test 5: Cross-Organization Access
+#### Test 5: Cross-organisation Access
 
 1. Create two organizations
-2. Login as admin of Organization A
-3. Try to import members into Organization B
+2. Login as admin of organisation A
+3. Try to import members into organisation B
 4. Should get 403 Unauthorized
 
 ### Unit Tests
@@ -760,28 +760,28 @@ Create file: `/tests/Unit/MemberImportTest.php`
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\User;
 
 class MemberImportTest extends TestCase
 {
-    protected Organization $organization;
+    protected organisation $organisation;
     protected User $admin;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->organization = Organization::factory()->create();
+        $this->organisation = organisation::factory()->create();
         $this->admin = User::factory()->create();
-        $this->organization->users()->attach($this->admin, ['role' => 'admin']);
+        $this->organisation->users()->attach($this->admin, ['role' => 'admin']);
     }
 
     public function test_import_valid_members()
     {
         $this->actingAs($this->admin);
 
-        $response = $this->post("/organizations/{$this->organization->slug}/members/import", [
+        $response = $this->post("/organizations/{$this->organisation->slug}/members/import", [
             'headers' => ['Email', 'First Name', 'Last Name'],
             'rows' => [
                 ['Email' => 'john@example.com', 'First Name' => 'John', 'Last Name' => 'Doe'],
@@ -804,7 +804,7 @@ class MemberImportTest extends TestCase
     {
         $this->actingAs($this->admin);
 
-        $response = $this->post("/organizations/{$this->organization->slug}/members/import", [
+        $response = $this->post("/organizations/{$this->organisation->slug}/members/import", [
             'headers' => ['Email', 'First Name'],
             'rows' => [
                 ['Email' => 'invalid-email', 'First Name' => 'John'],
@@ -820,7 +820,7 @@ class MemberImportTest extends TestCase
     {
         $this->actingAs($this->admin);
 
-        $response = $this->post("/organizations/{$this->organization->slug}/members/import", [
+        $response = $this->post("/organizations/{$this->organisation->slug}/members/import", [
             'headers' => ['Email'],
             'rows' => [
                 ['Email' => 'john@example.com'],
@@ -838,7 +838,7 @@ class MemberImportTest extends TestCase
         $other_user = User::factory()->create();
         $this->actingAs($other_user);
 
-        $response = $this->post("/organizations/{$this->organization->slug}/members/import", [
+        $response = $this->post("/organizations/{$this->organisation->slug}/members/import", [
             'headers' => ['Email'],
             'rows' => [['Email' => 'test@example.com']],
             'fileName' => 'members.csv'
@@ -859,19 +859,19 @@ class MemberImportTest extends TestCase
 
 **Solution**:
 ```php
-Route::post('/organizations/{organization}/members/import',
+Route::post('/organizations/{organisation}/members/import',
     [MemberImportController::class, 'store'])
     ->name('organizations.members.import.store');
 ```
 
 ### Issue: 403 Unauthorized on Import
 
-**Cause**: User is not organization admin
+**Cause**: User is not organisation admin
 
 **Solution**: Check `user_organization_roles` table:
 ```sql
 SELECT * FROM user_organization_roles
-WHERE user_id = 1 AND organization_id = 1;
+WHERE user_id = 1 AND organisation_id = 1;
 ```
 
 ### Issue: Members Not Creating in Database
@@ -915,7 +915,7 @@ WHERE user_id = 1 AND organization_id = 1;
 
 ### 2. Authorization ✅
 - Must be logged in
-- Must be organization admin/staff
+- Must be organisation admin/staff
 - Policy enforces via `$this->authorize()`
 
 ### 3. SQL Injection Prevention ✅
@@ -930,7 +930,7 @@ WHERE user_id = 1 AND organization_id = 1;
 
 ### 5. Rate Limiting (RECOMMENDED)
 ```php
-Route::post('/organizations/{organization}/members/import', ...)
+Route::post('/organizations/{organisation}/members/import', ...)
     ->middleware('throttle:10,1'); // 10 imports per minute
 ```
 
@@ -943,7 +943,7 @@ $firstName = trim(htmlspecialchars($row['First Name'] ?? '', ENT_QUOTES));
 ### 7. Logging (RECOMMENDED)
 ```php
 \Log::info('Member import', [
-    'organization_id' => $organization->id,
+    'organisation_id' => $organisation->id,
     'user_id' => auth()->id(),
     'imported' => $imported,
     'file' => $fileName
@@ -996,7 +996,7 @@ $firstName = trim(htmlspecialchars($row['First Name'] ?? '', ENT_QUOTES));
 - [ ] Create `MemberImportController.php`
 - [ ] Create `OrganizationPolicy.php`
 - [ ] Add routes to `routes/web.php`
-- [ ] Update `Organization` model with relationships
+- [ ] Update `organisation` model with relationships
 - [ ] Update `User` model with relationships
 
 ### Phase 2: Database
@@ -1049,7 +1049,7 @@ Frontend (Complete ✅):
 Backend (TODO ⚠️):
 ├── app/Http/Controllers/Organizations/MemberImportController.php
 ├── app/Policies/OrganizationPolicy.php
-├── app/Models/Organization.php (update)
+├── app/Models/organisation.php (update)
 ├── app/Models/User.php (update)
 ├── routes/web.php (update)
 └── database/migrations/YYYY_MM_DD_create_user_organization_roles_table.php
@@ -1086,7 +1086,7 @@ Tests (TODO ⚠️):
 **Testing Issues?**
 - Check seeded data in database
 - Verify authentication
-- Check organization has admin user
+- Check organisation has admin user
 
 ---
 

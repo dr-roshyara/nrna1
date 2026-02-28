@@ -1,7 +1,7 @@
-# Organization Page Implementation Status
+# organisation Page Implementation Status
 
 **Project**: Public Digit Election Platform
-**Module**: Organization Dashboard & Management
+**Module**: organisation Dashboard & Management
 **Last Updated**: 2026-02-22
 **Status**: Phase 2 - In Progress
 
@@ -29,7 +29,7 @@ Phase 2: Member Import ✅ 100% Complete
 Phase 2: Remaining ⏳ 0% Complete (Starting)
 Phase 3: Future 📋 0% Complete (Planned)
 
-Total: ~30% of full organization page complete
+Total: ~30% of full organisation page complete
 ```
 
 ### **Key Metrics**
@@ -62,12 +62,12 @@ Total: 80+ translation keys across all sections
 ```
 File: resources/js/Pages/Organizations/Partials/OrganizationHeader.vue
 Lines: ~70
-Purpose: Organization name, email, creation date display
+Purpose: organisation name, email, creation date display
 Features:
   ✅ Locale-aware date formatting
   ✅ Accessible badge and email link
   ✅ Responsive layout
-  ✅ Translation keys: organization.*
+  ✅ Translation keys: organisation.*
 ```
 
 #### 2. **StatsGrid.vue**
@@ -124,7 +124,7 @@ Changes:
 
 ### **Translation Coverage** (Phase 1)
 ```
-✅ organization.* (3 keys)
+✅ organisation.* (3 keys)
 ✅ stats.* (8+ keys)
 ✅ actions.* (8 keys)
 ✅ onboarding.* (4 keys)
@@ -200,7 +200,7 @@ Step 2: Preview
 Step 3: Success
 ├─ Success confirmation
 ├─ Import count displayed
-└─ Back to organization link
+└─ Back to organisation link
 ```
 
 ### **File Processing Composable**
@@ -251,7 +251,7 @@ Purpose: File parsing, validation, API submission
 File: resources/js/Pages/Organizations/Partials/ActionButtons.vue
 Changes:
   ✅ Imported Link component (Inertia.js)
-  ✅ Added organization prop
+  ✅ Added organisation prop
   ✅ Computed importMembersLink property
   ✅ Changed import button to Link component
   ✅ Points to /organizations/{slug}/members/import
@@ -265,7 +265,7 @@ Changes:
   ✅ Removed MemberImportModal import
   ✅ Removed modal state variables
   ✅ Removed modal event handlers
-  ✅ Passed organization prop to ActionButtons
+  ✅ Passed organisation prop to ActionButtons
   ✅ Kept placeholder handlers for future modals
 ```
 
@@ -343,7 +343,7 @@ Expected Response:
 
 **File to Create**:
 ```
-resources/js/Components/Organization/Modals/ElectionOfficerModal.vue
+resources/js/Components/organisation/Modals/ElectionOfficerModal.vue
 resources/js/composables/useElectionOfficer.js
 ```
 
@@ -414,11 +414,11 @@ Response:
 
 **Files to Create**:
 ```
-resources/js/Components/Organization/Modals/ElectionCreationWizard.vue
-resources/js/Components/Organization/Modals/Steps/ElectionBasicInfo.vue
-resources/js/Components/Organization/Modals/Steps/ElectionOfficerConfirm.vue
-resources/js/Components/Organization/Modals/Steps/ElectionCandidates.vue
-resources/js/Components/Organization/Modals/Steps/ElectionReview.vue
+resources/js/Components/organisation/Modals/ElectionCreationWizard.vue
+resources/js/Components/organisation/Modals/Steps/ElectionBasicInfo.vue
+resources/js/Components/organisation/Modals/Steps/ElectionOfficerConfirm.vue
+resources/js/Components/organisation/Modals/Steps/ElectionCandidates.vue
+resources/js/Components/organisation/Modals/Steps/ElectionReview.vue
 resources/js/composables/useElectionCreation.js
 ```
 
@@ -540,7 +540,7 @@ const openElectionWizard = () => {
 <ElectionOfficerModal
   v-if="showOfficerModal"
   :show="showOfficerModal"
-  :organization="organization"
+  :organisation="organisation"
   @close="showOfficerModal = false"
   @appointed="handleOfficerAppointed"
 />
@@ -548,7 +548,7 @@ const openElectionWizard = () => {
 <ElectionCreationWizard
   v-if="showElectionWizard"
   :show="showElectionWizard"
-  :organization="organization"
+  :organisation="organisation"
   @close="showElectionWizard = false"
   @created="handleElectionCreated"
 />
@@ -592,7 +592,7 @@ resources/js/Pages/Organizations/Partials/ComplianceDashboard.vue
 resources/js/Pages/Organizations/Partials/ActivityFeed.vue
 ```
 
-**Purpose**: Recent organization activity log
+**Purpose**: Recent organisation activity log
 
 **Requirements**:
 ```
@@ -697,7 +697,7 @@ resources/js/Pages/Organizations/Partials/DocumentTemplates.vue
 ✅ Security-First: CSRF protection on all forms
 ✅ Accessibility-First: WCAG 2.1 AA from the start
 ✅ DDD Patterns: Domain-driven design for complex logic
-✅ Multi-Tenant: All operations scoped to organization
+✅ Multi-Tenant: All operations scoped to organisation
 ```
 
 ### **Technology Stack**
@@ -716,7 +716,7 @@ Backend (Required):
 
 Database:
 - Multi-tenant architecture
-- Organization scoping
+- organisation scoping
 - Audit logging
 ```
 
@@ -735,7 +735,7 @@ Composables (Logic)
 └─ Error handling
 
 Server State (Inertia)
-├─ Organization data
+├─ organisation data
 ├─ Statistics
 ├─ User authentication
 └─ Permissions
@@ -762,7 +762,7 @@ resources/js/Pages/Organizations/
     ├── ActivityFeed.vue ⏳
     └── DocumentTemplates.vue ⏳
 
-resources/js/Components/Organization/
+resources/js/Components/organisation/
 ├── Modals/
 │   ├── MemberImportModal.vue (Not used)
 │   ├── ElectionOfficerModal.vue ⏳
@@ -878,7 +878,7 @@ const { t } = useI18n()
 
 // Props with validation
 const props = defineProps({
-  organization: {
+  organisation: {
     type: Object,
     required: true,
     validator: (org) => org && org.slug
@@ -893,7 +893,7 @@ const isLoading = ref(false)
 
 // Computed properties
 const computedValue = computed(() => {
-  return props.organization.slug
+  return props.organisation.slug
 })
 
 // Methods
@@ -957,7 +957,7 @@ Before marking a feature complete:
 
 ## 🔗 Routes & Navigation
 
-### **Organization Routes**
+### **organisation Routes**
 ```
 GET  /organizations/{slug}
      → Show.vue (Main dashboard)
@@ -974,10 +974,10 @@ GET  /organizations/{slug}/compliance
 ### **Navigation Links**
 ```vue
 <!-- From Show.vue to Import page -->
-<Link href={`/organizations/${organization.slug}/members/import`}>
+<Link href={`/organizations/${organisation.slug}/members/import`}>
 
 <!-- From Import page back to Show -->
-<Link href={`/organizations/${organization.slug}`}>
+<Link href={`/organizations/${organisation.slug}`}>
 ```
 
 ---
@@ -1016,7 +1016,7 @@ GET  /organizations/{slug}/compliance
 
 ### **What's Done** ✅
 ```
-Phase 1: Organization Dashboard Foundation
+Phase 1: organisation Dashboard Foundation
 ├─ 4 Components created
 ├─ 120+ translation keys
 ├─ WCAG 2.1 AA accessibility

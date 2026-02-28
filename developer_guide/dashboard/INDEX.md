@@ -189,7 +189,7 @@ Dashboard   Page       (Direct)     (Compat.)
 
 ---
 
-## 📁 File Organization
+## 📁 File organisation
 
 ```
 app/
@@ -205,7 +205,7 @@ app/
 │       └── CheckUserRole.php
 └── Models/
     ├── User.php (extended)
-    └── Organization.php (new)
+    └── organisation.php (new)
 
 resources/js/
 ├── Pages/
@@ -284,7 +284,7 @@ Cache::forget("user_{$userId}_dashboard_roles");
 ### Issue: First-time user not redirected to welcome
 **Solution:** Check `LoginResponse::isFirstTimeUser()` - verify all conditions:
 - Account < 7 days old
-- No organization roles
+- No organisation roles
 - No commission membership
 - No legacy roles
 

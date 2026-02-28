@@ -37,7 +37,7 @@
         "id": "how-election-works",
         "category": "Elections",
         "question": "How does an election work on Public Digit?",
-        "answer": "Elections work in simple steps: (1) Organization administrator creates an election with candidates/options, (2) Voter list is uploaded with participant information, (3) Voters receive secure login credentials via email or SMS, (4) Voters access the platform and cast their encrypted vote, (5) After voting closes, results are automatically generated with full verification available."
+        "answer": "Elections work in simple steps: (1) organisation administrator creates an election with candidates/options, (2) Voter list is uploaded with participant information, (3) Voters receive secure login credentials via email or SMS, (4) Voters access the platform and cast their encrypted vote, (5) After voting closes, results are automatically generated with full verification available."
       },
       {
         "id": "setup-time",
@@ -49,7 +49,7 @@
         "id": "voter-participation",
         "category": "Voting",
         "question": "What is the typical voter participation rate?",
-        "answer": "Digital voting typically increases participation by 20-40% compared to traditional methods because voters can participate from anywhere at any time. However, participation depends on your organization's outreach and the importance of the election to your members."
+        "answer": "Digital voting typically increases participation by 20-40% compared to traditional methods because voters can participate from anywhere at any time. However, participation depends on your organisation's outreach and the importance of the election to your members."
       },
       {
         "id": "mobile-access",
@@ -67,7 +67,7 @@
         "id": "cost",
         "category": "Pricing",
         "question": "What are your pricing models?",
-        "answer": "Public Digit offers flexible pricing based on your organization's size and needs. We have plans for small organizations, mid-size organizations, and large enterprises. Contact our sales team for a custom quote based on your specific requirements."
+        "answer": "Public Digit offers flexible pricing based on your organisation's size and needs. We have plans for small organizations, mid-size organizations, and large enterprises. Contact our sales team for a custom quote based on your specific requirements."
       },
       {
         "id": "languages",
@@ -120,7 +120,7 @@
       {
         "id": "custom-features",
         "category": "Features",
-        "question": "Can we customize Public Digit for our organization?",
+        "question": "Can we customize Public Digit for our organisation?",
         "answer": "Yes! We offer customization options including custom branding, additional languages, special ballot types, custom authentication methods, and API integrations. Contact our sales team to discuss your specific needs."
       }
     ]

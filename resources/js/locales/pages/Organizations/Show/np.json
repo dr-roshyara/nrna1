@@ -1,13 +1,13 @@
 {
-  "page_title": "ड्यासबोर्ड | {organization}",
+  "page_title": "ड्यासबोर्ड | {organisation}",
   "page_description": "आपको संगठन, सदस्य र चुनावहरू प्रबन्ध गर्नुहोस्",
   "accessibility": {
     "main_content": "संगठन पृष्ठको मुख्य सामग्री",
-    "page_loaded": "पृष्ठ लोड भयो: {organization}",
-    "organization_dashboard": "{organization} को संगठन ड्यासबोर्ड",
+    "page_loaded": "पृष्ठ लोड भयो: {organisation}",
+    "organization_dashboard": "{organisation} को संगठन ड्यासबोर्ड",
     "skip_to_main": "मुख्य सामग्रीमा जानुहोस्"
   },
-  "organization": {
+  "organisation": {
     "type_label": "संगठन",
     "member_since": "{date} देखि सदस्य",
     "created_on": "{date} मा सिर्जना गरिएको",

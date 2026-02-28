@@ -1,8 +1,8 @@
-# Architecture Decision Record - Organization Creation Flow
+# Architecture Decision Record - organisation Creation Flow
 
 ## Summary
 
-This document records the architectural decisions made for the Organization Creation modal flow, including design patterns, state management choices, and accessibility-first approach.
+This document records the architectural decisions made for the organisation Creation modal flow, including design patterns, state management choices, and accessibility-first approach.
 
 ---
 
@@ -11,7 +11,7 @@ This document records the architectural decisions made for the Organization Crea
 **Status:** ✅ Accepted
 
 **Context:**
-First-time users are anxious about entering correct data for organization creation. They don't understand what an "organization" is in this system, why they need one, or what information they must provide.
+First-time users are anxious about entering correct data for organisation creation. They don't understand what an "organisation" is in this system, why they need one, or what information they must provide.
 
 **Decision:**
 Implement **progressive disclosure pattern**: Education overlay shown first, form steps hidden until user chooses to proceed.
@@ -213,21 +213,21 @@ resources/js/locales/pages/Dashboard/welcome/
 └── np.json (Nepali)
 
 Keys:
-organization.education.*
-organization.form.*
-organization.form.step_1_*
-organization.form.step_2_*
-organization.form.step_3_*
+organisation.education.*
+organisation.form.*
+organisation.form.step_1_*
+organisation.form.step_2_*
+organisation.form.step_3_*
 common.*
 ```
 
 **Usage Pattern:**
 ```vue
 <!-- In templates with fallback -->
-{{ $t('organization.form.title', { fallback: 'Create Organization' }) }}
+{{ $t('organisation.form.title', { fallback: 'Create organisation' }) }}
 
 <!-- In script -->
-const errorMsg = this.$t('organization.form.error')
+const errorMsg = this.$t('organisation.form.error')
 ```
 
 **Advantages:**
@@ -300,7 +300,7 @@ Structured JSON request with flat but organized fields.
 **Request Body:**
 ```json
 {
-  "name": "Organization Name",
+  "name": "organisation Name",
   "email": "contact@org.de",
   "address": {
     "street": "Street 1",
@@ -469,11 +469,11 @@ const closeModal = () => {
 ### Phase 2 Planned Features
 
 1. **Vereinsregister API Integration**
-   - Auto-lookup organization by registration number
+   - Auto-lookup organisation by registration number
    - Pre-fill name and address
    - Verify legal existence
 
-2. **Organization Type Presets**
+2. **organisation Type Presets**
    - e.V. (Eingetragener Verein)
    - GmbH (Gesellschaft mit beschränkter Haftung)
    - gGmbH (gemeinnützige GmbH)
@@ -485,12 +485,12 @@ const closeModal = () => {
    - Notification on draft availability
 
 4. **Real-Time Availability Check**
-   - Check if organization name already exists
+   - Check if organisation name already exists
    - Suggest alternatives
    - Real-time feedback
 
 5. **Document Upload**
-   - Upload organization charter (Satzung)
+   - Upload organisation charter (Satzung)
    - Upload registration certificate (Auszug)
    - Verify legal compliance
 

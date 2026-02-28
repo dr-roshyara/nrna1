@@ -158,7 +158,7 @@ ElectionStatsDashboard.vue
 
 ## When to Upgrade (Future)
 
-If organization needs multiple concurrent elections:
+If organisation needs multiple concurrent elections:
 1. Expose `/election/select` in navbar
 2. Adjust middleware to require explicit selection
 3. ElectionSelector.vue is already ready

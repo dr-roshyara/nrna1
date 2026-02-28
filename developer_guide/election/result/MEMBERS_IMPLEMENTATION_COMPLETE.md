@@ -1,14 +1,14 @@
 # Members Index Page - Implementation Complete ✅
 
 ## Summary
-Successfully implemented a comprehensive Members Index page (`/members/index`) that displays organization members with organization scoping, role filtering, and improved UX over the existing Users index.
+Successfully implemented a comprehensive Members Index page (`/members/index`) that displays organisation members with organisation scoping, role filtering, and improved UX over the existing Users index.
 
 ## Files Created
 
 ### 1. Controller: `app/Http/Controllers/MemberController.php`
 - **Status**: ✅ Created & Verified
 - **Features**:
-  - Organization-scoped member listing
+  - organisation-scoped member listing
   - Server-side authorization checks
   - Filtering by: name, email, role
   - Sorting on: id, name, email, role, assigned_at, created_at
@@ -19,7 +19,7 @@ Successfully implemented a comprehensive Members Index page (`/members/index`) t
 ### 2. Vue Component: `resources/js/Pages/Members/Index.vue`
 - **Status**: ✅ Created & Verified
 - **Features**:
-  - Organization header with description
+  - organisation header with description
   - Stats cards showing member counts by role
   - Filter section (name, email, role)
   - Sortable table columns with visual indicators
@@ -40,10 +40,10 @@ Successfully implemented a comprehensive Members Index page (`/members/index`) t
 
 | Feature | User/Index | Members/Index |
 |---------|-----------|---------------|
-| Organization Scoping | ❌ Shows ALL users | ✅ Shows only org members |
+| organisation Scoping | ❌ Shows ALL users | ✅ Shows only org members |
 | Role Column | ❌ No role display | ✅ Shows admin/commission/voter |
 | Email Search | ❌ Not available | ✅ Email filtering |
-| Organization Context | ❌ No context shown | ✅ Shows org name & stats |
+| organisation Context | ❌ No context shown | ✅ Shows org name & stats |
 | Stats Dashboard | ❌ Not available | ✅ Total/admin/voter counts |
 | Role Badges | ❌ No visual indication | ✅ Color-coded badges |
 | Member Since | ❌ Not shown | ✅ Join date displayed |
@@ -53,9 +53,9 @@ Successfully implemented a comprehensive Members Index page (`/members/index`) t
 ## Architecture Compliance
 
 ### Multi-Tenancy ✅
-- Server-side organization membership verification
-- Queries scoped to current organization only
-- Session-based organization detection
+- Server-side organisation membership verification
+- Queries scoped to current organisation only
+- Session-based organisation detection
 - 403 error for unauthorized access
 
 ### Security ✅
@@ -68,7 +68,7 @@ Successfully implemented a comprehensive Members Index page (`/members/index`) t
 ### DDD Patterns ✅
 - Clean controller method
 - Inertia response rendering
-- Organization aggregate root
+- organisation aggregate root
 - Repository pattern (via Eloquent)
 - Value objects (roles: admin, commission, voter)
 
@@ -84,9 +84,9 @@ GET|HEAD | members/index | members.index | App\Http\Controllers\MemberController
 app(App\Http\Controllers\MemberController::class) // ✅ Loads successfully
 ```
 
-### Organization Relationships
+### organisation Relationships
 ```
-Organization: "Namaste Nepal ev"
+organisation: "Namaste Nepal ev"
 Total members: 2
 Admins: 1
 Voters: 1
@@ -140,7 +140,7 @@ organizations
 ```javascript
 {
   members: Object,          // Paginated member collection
-  organization: {
+  organisation: {
     id: Number,
     name: String,
     slug: String
@@ -162,23 +162,23 @@ organizations
 
 ## Error Handling
 
-### 403 - No Organization Selected
+### 403 - No organisation Selected
 ```
-Condition: User has no organization context
-Message: "No organization selected. Please select an organization first."
-Action: Redirect to organization selection
+Condition: User has no organisation context
+Message: "No organisation selected. Please select an organisation first."
+Action: Redirect to organisation selection
 ```
 
-### 403 - Not Member of Organization
+### 403 - Not Member of organisation
 ```
-Condition: User trying to access organization they're not member of
-Message: "You do not have access to this organization."
+Condition: User trying to access organisation they're not member of
+Message: "You do not have access to this organisation."
 Action: Redirect to dashboard
 ```
 
-### 404 - Organization Not Found
+### 404 - organisation Not Found
 ```
-Condition: Organization ID doesn't exist
+Condition: organisation ID doesn't exist
 Message: Standard Laravel 404
 Action: Show 404 page
 ```
@@ -197,7 +197,7 @@ SELECT users.id, users.name, users.email, users.state, users.created_at
 FROM users
 INNER JOIN user_organization_roles
   ON users.id = user_organization_roles.user_id
-WHERE user_organization_roles.organization_id = ?
+WHERE user_organization_roles.organisation_id = ?
 ORDER BY user_organization_roles.assigned_at DESC
 LIMIT 20
 ```
@@ -208,7 +208,7 @@ LIMIT 20
 - Export to CSV/Excel
 - Bulk role assignment
 - Member profile page
-- Remove member from organization
+- Remove member from organisation
 - Member activity logs
 - Invite new members by email
 - Duplicate member detection
@@ -250,7 +250,7 @@ LIMIT 20
 - **Pagination load**: < 50ms per page
 
 ## Related Files Not Modified
-- `app/Models/Organization.php` (no changes needed)
+- `app/Models/organisation.php` (no changes needed)
 - `app/Models/User.php` (no changes needed)
 - `resources/js/Layouts/ElectionLayout.vue` (compatible)
 - Existing routes preserved
@@ -283,7 +283,7 @@ M  routes/web.php
 ## Ready for Production ✅
 
 All files are created, tested, and ready for integration. The Members Index page provides:
-- Organization-scoped member listing
+- organisation-scoped member listing
 - Role-based filtering and display
 - Improved UX over Users index
 - Multi-tenancy security
@@ -296,4 +296,4 @@ All files are created, tested, and ready for integration. The Members Index page
 3. Test filters and sorting
 4. Verify role-based color coding
 5. Test pagination
-6. Verify organization context header
+6. Verify organisation context header

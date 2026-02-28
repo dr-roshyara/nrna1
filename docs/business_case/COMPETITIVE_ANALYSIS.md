@@ -300,7 +300,7 @@ Organizations conducting diaspora elections must choose between four main approa
 3. **You're budget-conscious** - Lowest total cost of ownership vs. custom
 4. **You need accessibility** - WCAG AA compliant, multi-language
 5. **You want transparency** - Complete vote verification system
-6. **You're a diaspora organization** - Built specifically for global dispersed voters
+6. **You're a diaspora organisation** - Built specifically for global dispersed voters
 7. **You want simplicity** - No complex vendor contracts or setup
 8. **You want ongoing support** - Professional team maintains the platform
 

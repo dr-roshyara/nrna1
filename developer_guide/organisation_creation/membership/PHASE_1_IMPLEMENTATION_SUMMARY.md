@@ -1,4 +1,4 @@
-# Phase 1: Translation-First Organization Landing Page
+# Phase 1: Translation-First organisation Landing Page
 ## Implementation Summary
 
 **Status**: ✅ COMPLETE
@@ -20,7 +20,7 @@ Created comprehensive translation files with **all Phase 1 keys** in 3 languages
 
 #### Translation Keys Defined:
 ```
-✅ organization.* (name, email, created_on)
+✅ organisation.* (name, email, created_on)
 ✅ stats.* (members, elections, officers)
 ✅ actions.* (import, appoint, create)
 ✅ onboarding.* (progress tracking)
@@ -45,9 +45,9 @@ Built modular, translation-consuming components following **existing patterns**:
 #### Components Created:
 
 **a) OrganizationHeader.vue** (`Partials/`)
-- Organization name, email, creation date
+- organisation name, email, creation date
 - Responsive badge and date formatting
-- Uses: `organization.*` translations
+- Uses: `organisation.*` translations
 - Accessibility: Proper ARIA labels, semantic HTML
 
 **b) StatsGrid.vue** (`Partials/`)
@@ -132,14 +132,14 @@ resources/js/
 
 ### Translation Key Structure:
 ```
-pages.organization-show.{section}.{key}
+pages.organisation-show.{section}.{key}
 
 Examples:
-- pages.organization-show.organization.name_label
-- pages.organization-show.stats.total_members
-- pages.organization-show.actions.import_members
-- pages.organization-show.support.email_us
-- pages.organization-show.accessibility.page_loaded
+- pages.organisation-show.organisation.name_label
+- pages.organisation-show.stats.total_members
+- pages.organisation-show.actions.import_members
+- pages.organisation-show.support.email_us
+- pages.organisation-show.accessibility.page_loaded
 ```
 
 ---
@@ -187,7 +187,7 @@ Examples:
 
 ### Language-Specific Features:
 - **German**: BGB §26 references, "Wahlleiter" terminology
-- **English**: Formal organization terminology
+- **English**: Formal organisation terminology
 - **Nepali**: Proper Devanagari script, cultural terms
 
 ### Date Formatting:
@@ -362,14 +362,14 @@ import OrganizationHeader from './Partials/OrganizationHeader.vue'
 ### Translation Usage
 Always use the `$t()` function with full key path:
 ```vue
-{{ $t('pages.organization-show.stats.total_members') }}
+{{ $t('pages.organisation-show.stats.total_members') }}
 ```
 
 ### Component Props
 All components have proper TypeScript-like validation:
 ```javascript
 defineProps({
-  organization: {
+  organisation: {
     type: Object,
     required: true,
     validator: (org) => org && typeof org.name === 'string'
@@ -390,7 +390,7 @@ Test with:
 
 ✅ **All Phase 1 Translation Keys Defined**
 - 80+ keys across DE/EN/NP
-- Organized by section (organization, stats, actions, support, etc.)
+- Organized by section (organisation, stats, actions, support, etc.)
 
 ✅ **All Phase 1 Components Built**
 - OrganizationHeader.vue ✅
@@ -426,7 +426,7 @@ Test with:
 
 **Phase 1 is complete and fully functional.**
 
-The organization landing page now has:
+The organisation landing page now has:
 - ✅ Professional header with org info
 - ✅ Comprehensive stats dashboard
 - ✅ 3 primary action buttons (ready for modals)

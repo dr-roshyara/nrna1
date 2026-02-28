@@ -4,7 +4,7 @@
 
 The three-role dashboard system uses 5 primary tables:
 1. **users** - User accounts (extended with legacy columns)
-2. **organizations** - Organization records (NEW)
+2. **organisations** - organisation records (NEW)
 3. **user_organization_roles** - User-to-org role mapping (NEW)
 4. **elections** - Election records (extended)
 5. **election_commission_members** - Commission member assignments (NEW)
@@ -67,12 +67,12 @@ INSERT INTO users VALUES
 
 ---
 
-### 2. organizations Table
+### 2. organisations Table
 
-**Purpose:** Store organization information
+**Purpose:** Store organisation information
 
 ```sql
-CREATE TABLE organizations (
+CREATE TABLE organisations (
     id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     slug VARCHAR(255) NOT NULL UNIQUE,
@@ -91,10 +91,10 @@ CREATE TABLE organizations (
 
 | Column | Type | Purpose | Example |
 |--------|------|---------|---------|
-| id | BIGINT | Unique organization ID | 1, 2, 3 |
-| name | VARCHAR(255) | Organization name | "European Nepal Association" |
+| id | BIGINT | Unique organisation ID | 1, 2, 3 |
+| name | VARCHAR(255) | organisation name | "European Nepal Association" |
 | slug | VARCHAR(255) | URL-friendly identifier | "european-nepal-assoc" |
-| description | TEXT | Organization description | "Cultural organization for..." |
+| description | TEXT | organisation description | "Cultural organisation for..." |
 | languages | JSON | Supported languages | ["de", "en", "np"] |
 | created_at | TIMESTAMP | Creation time | 2026-02-07 11:00:00 |
 | updated_at | TIMESTAMP | Last update | 2026-02-07 11:30:00 |
@@ -115,34 +115,34 @@ CREATE TABLE organizations (
 **Example Data:**
 
 ```sql
-INSERT INTO organizations VALUES
-(1, 'European Nepal Association', 'european-nepal-assoc', 'Cultural organization for diaspora', '["de","en","np"]', '2026-02-07', '2026-02-07'),
+INSERT INTO organisations VALUES
+(1, 'European Nepal Association', 'european-nepal-assoc', 'Cultural organisation for diaspora', '["de","en","np"]', '2026-02-07', '2026-02-07'),
 (2, 'German Works Council', 'german-works-council', 'Workers representation', '["de","en"]', '2026-02-01', '2026-02-07'),
-(3, 'Tech Workers Collective', 'tech-workers', 'Tech sector organization', '["en","np"]', '2026-01-15', '2026-02-07');
+(3, 'Tech Workers Collective', 'tech-workers', 'Tech sector organisation', '["en","np"]', '2026-01-15', '2026-02-07');
 ```
 
 ---
 
 ### 3. user_organization_roles Table
 
-**Purpose:** Map users to organizations with roles
+**Purpose:** Map users to organisations with roles
 
 ```sql
 CREATE TABLE user_organization_roles (
     id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     user_id BIGINT UNSIGNED NOT NULL,
-    organization_id BIGINT UNSIGNED NOT NULL,
+    organisation_id BIGINT UNSIGNED NOT NULL,
     role VARCHAR(255) NOT NULL,  -- 'admin', 'commission', 'voter'
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE,
+    FOREIGN KEY (organisation_id) REFERENCES organisations(id) ON DELETE CASCADE,
 
-    UNIQUE KEY unique_user_org_role (user_id, organization_id, role),
+    UNIQUE KEY unique_user_org_role (user_id, organisation_id, role),
     INDEX idx_user_id (user_id),
-    INDEX idx_org_id (organization_id),
+    INDEX idx_org_id (organisation_id),
     INDEX idx_role (role)
 );
 ```
@@ -153,22 +153,22 @@ CREATE TABLE user_organization_roles (
 |--------|------|---------|---------|
 | id | BIGINT | Unique record ID | 1, 2, 3 |
 | user_id | BIGINT | References users.id | 1, 2, 3 |
-| organization_id | BIGINT | References organizations.id | 1, 2, 3 |
-| role | VARCHAR(255) | User's role in organization | "admin", "commission", "voter" |
+| organisation_id | BIGINT | References organisations.id | 1, 2, 3 |
+| role | VARCHAR(255) | User's role in organisation | "admin", "commission", "voter" |
 | created_at | TIMESTAMP | Assignment time | 2026-02-07 11:15:00 |
 | updated_at | TIMESTAMP | Last update | 2026-02-07 11:15:00 |
 
 **Role Values:**
 
 ```
-'admin'       - Organization administrator (full access)
+'admin'       - organisation administrator (full access)
 'commission'  - Election monitor/supervisor
 'voter'       - Regular voter/participant
 ```
 
 **Constraints:**
 - Foreign key on user_id (cascade delete)
-- Foreign key on organization_id (cascade delete)
+- Foreign key on organisation_id (cascade delete)
 - Unique constraint: same user can't have same role twice in same org
 - But: same user CAN have different roles in same org (e.g., admin AND voter)
 
@@ -208,14 +208,14 @@ user_id=1, org_id=2, role='admin'
 
 ### 4. elections Table
 
-**Purpose:** Election records (extended with organization link)
+**Purpose:** Election records (extended with organisation link)
 
 ```sql
 CREATE TABLE elections (
     id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     description TEXT NULL,
-    organization_id BIGINT UNSIGNED,  -- NEW: links to organization
+    organisation_id BIGINT UNSIGNED,  -- NEW: links to organisation
     starts_at TIMESTAMP NULL,
     ends_at TIMESTAMP NULL,
     status VARCHAR(50) DEFAULT 'draft',
@@ -223,8 +223,8 @@ CREATE TABLE elections (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-    FOREIGN KEY (organization_id) REFERENCES organizations(id),
-    INDEX idx_org_id (organization_id),
+    FOREIGN KEY (organisation_id) REFERENCES organisations(id),
+    INDEX idx_org_id (organisation_id),
     INDEX idx_status (status)
 );
 ```
@@ -233,7 +233,7 @@ CREATE TABLE elections (
 
 | Column | Type | Purpose | Example |
 |--------|------|---------|---------|
-| organization_id | BIGINT | Foreign key to organization | 1, 2, 3 |
+| organisation_id | BIGINT | Foreign key to organisation | 1, 2, 3 |
 
 **Example Data:**
 
@@ -302,13 +302,13 @@ WHERE user_id = 1;
 -- Result: ['admin', 'commission']
 ```
 
-### Get All Members of Organization
+### Get All Members of organisation
 
 ```sql
 SELECT u.id, u.name, u.email, r.role
 FROM users u
 JOIN user_organization_roles r ON u.id = r.user_id
-WHERE r.organization_id = 1;
+WHERE r.organisation_id = 1;
 
 -- Result:
 -- id | name         | email              | role
@@ -335,8 +335,8 @@ WHERE c.election_id = 1;
 
 ```sql
 SELECT o.id, o.name, o.slug, r.role
-FROM organizations o
-JOIN user_organization_roles r ON o.id = r.organization_id
+FROM organisations o
+JOIN user_organization_roles r ON o.id = r.organisation_id
 WHERE r.user_id = 4;
 
 -- Result (if Marcus):
@@ -345,12 +345,12 @@ WHERE r.user_id = 4;
 -- 3  | Tech Workers Collective | tech-workers       | voter
 ```
 
-### Check User's Role in Organization
+### Check User's Role in organisation
 
 ```sql
 SELECT COUNT(*) as has_admin
 FROM user_organization_roles
-WHERE user_id = 1 AND organization_id = 1 AND role = 'admin';
+WHERE user_id = 1 AND organisation_id = 1 AND role = 'admin';
 
 -- Result: 1 (TRUE) or 0 (FALSE)
 ```
@@ -364,11 +364,11 @@ WHERE user_id = 1 AND organization_id = 1 AND role = 'admin';
 ```sql
 -- Primary lookups (high frequency)
 INDEX idx_user_id ON user_organization_roles(user_id);
-INDEX idx_org_id ON user_organization_roles(organization_id);
+INDEX idx_org_id ON user_organization_roles(organisation_id);
 INDEX idx_election_id ON election_commission_members(election_id);
 
 -- Unique constraint (prevents duplicates)
-UNIQUE KEY unique_user_org_role (user_id, organization_id, role);
+UNIQUE KEY unique_user_org_role (user_id, organisation_id, role);
 
 -- Filtering
 INDEX idx_role ON user_organization_roles(role);
@@ -402,12 +402,12 @@ Both work in parallel
 
 **Phase 2: Migration Helpers**
 ```sql
--- Create organization for legacy users
-INSERT INTO organizations (name, slug, languages)
+-- Create organisation for legacy users
+INSERT INTO organisations (name, slug, languages)
 VALUES ('Legacy System', 'legacy-system', '["de","en","np"]');
 
 -- Migrate legacy voters
-INSERT INTO user_organization_roles (user_id, organization_id, role)
+INSERT INTO user_organization_roles (user_id, organisation_id, role)
 SELECT id, 1, 'voter' FROM users WHERE is_voter = TRUE;
 
 -- Clear legacy flags (optional)
@@ -428,7 +428,7 @@ Clean up LoginResponse fallback logic
 ### Critical Tables
 
 1. **users** - Primary data (backup daily)
-2. **organizations** - Core structure (backup daily)
+2. **organisations** - Core structure (backup daily)
 3. **user_organization_roles** - Role assignments (backup hourly during active period)
 4. **elections** - Election data (backup continuously)
 5. **election_commission_members** - Monitor assignments (backup hourly)
@@ -438,7 +438,7 @@ Clean up LoginResponse fallback logic
 ```sql
 -- Restore from backup
 LOAD DATA INFILE '/backups/users.sql' INTO TABLE users;
-LOAD DATA INFILE '/backups/organizations.sql' INTO TABLE organizations;
+LOAD DATA INFILE '/backups/organisations.sql' INTO TABLE organisations;
 LOAD DATA INFILE '/backups/user_organization_roles.sql' INTO TABLE user_organization_roles;
 
 -- Verify foreign keys
@@ -454,8 +454,8 @@ WHERE user_id NOT IN (SELECT id FROM users);
 ### System Health
 
 ```sql
--- Active organizations
-SELECT COUNT(*) FROM organizations;
+-- Active organisations
+SELECT COUNT(*) FROM organisations;
 
 -- Users with roles
 SELECT COUNT(DISTINCT user_id) FROM user_organization_roles;

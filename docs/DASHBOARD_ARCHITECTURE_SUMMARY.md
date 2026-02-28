@@ -8,7 +8,7 @@
 
 The proposed architecture introduces a **role-based dashboard system** that replaces the current single-dashboard approach with three distinct user journeys:
 
-- **👑 Organization Administrators** — Strategic oversight
+- **👑 organisation Administrators** — Strategic oversight
 - **⚖️ Election Commissioners** — Operational management
 - **👤 Voters** — Member participation
 
@@ -52,7 +52,7 @@ The proposed architecture introduces a **role-based dashboard system** that repl
     │       └─ Monitor election, manage voting
     │
     └─→ /dashboard/admin (Admin Dashboard)
-        └─ Create elections, manage organization
+        └─ Create elections, manage organisation
 ```
 
 **Improvements:**
@@ -74,10 +74,10 @@ users
 │   └── roles() → user_roles table
 
 user_roles (pivot table)
-├── id, user_id, role, organization_id, metadata
+├── id, user_id, role, organisation_id, metadata
 ├── roles: ['admin', 'commission', 'voter']
 └── constraints:
-    └── unique(user_id, role, organization_id)
+    └── unique(user_id, role, organisation_id)
 
 organizations
 ├── id, name, description, type, settings
@@ -90,7 +90,7 @@ elections
 ├── ... existing fields ...
 ├── commission_members (JSON) ← new field
 └── relationships:
-    └── organization_id
+    └── organisation_id
 ```
 
 ### Key Models
@@ -102,11 +102,11 @@ elections
    - `organizations()` - Relationship to organizations
 
 2. **UserRole** (New)
-   - Links user to organization with specific role
+   - Links user to organisation with specific role
    - Stores role-specific metadata
    - One user can have multiple roles in different organizations
 
-3. **Organization** (New)
+3. **organisation** (New)
    - Container for elections and members
    - Assigns admin/commission roles to users
    - Type-based configuration
@@ -156,7 +156,7 @@ Route::get('/admin', AdminController@index)
 ### Separate Dashboards
 
 1. **Admin Dashboard** (`/dashboard/admin`)
-   - Organization management
+   - organisation management
    - Election creation & management
    - Member management
    - Reports & analytics
@@ -262,7 +262,7 @@ Session Routes:
 
 2. **Data Isolation**
    - Middleware enforces role-based access
-   - Database queries scoped to user's organization
+   - Database queries scoped to user's organisation
    - Sensitive data protected from unauthorized roles
 
 3. **Audit Trail**
@@ -284,7 +284,7 @@ Session Routes:
 
 3. **Role Verification**
    - Check user role on every protected request
-   - Validate organization membership
+   - Validate organisation membership
    - Log unauthorized access attempts
 
 ---

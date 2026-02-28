@@ -34,13 +34,13 @@ class StoreOrganizationRequest extends FormRequest
                 'string',
                 'min:3',
                 'max:255',
-                Rule::unique('organizations'),
+                Rule::unique('organisations'),
             ],
             'email' => [
                 'required',
                 'email:rfc',
                 'max:255',
-                Rule::unique('organizations'),
+                Rule::unique('organisations'),
             ],
 
             // Step 2: Address Information
@@ -108,7 +108,7 @@ class StoreOrganizationRequest extends FormRequest
         // DNS validation could be moved to async job if needed
         /*
         if (!app()->environment('testing', 'production')) {
-            // Organization email DNS validation closure
+            // organisation email DNS validation closure
             $rules['email'][] = function ($attribute, $value, $fail) {
                 if (!is_string($value) || empty($value)) {
                     return;
@@ -116,7 +116,7 @@ class StoreOrganizationRequest extends FormRequest
                 $parts = explode('@', $value);
                 $domain = $parts[1] ?? null;
                 if (!$domain || !checkdnsrr($domain, 'MX')) {
-                    $fail(__('validation.organization.email.dns'));
+                    $fail(__('validation.organisation.email.dns'));
                 }
             };
 
@@ -128,7 +128,7 @@ class StoreOrganizationRequest extends FormRequest
                 $parts = explode('@', $value);
                 $domain = $parts[1] ?? null;
                 if (!$domain || !checkdnsrr($domain, 'MX')) {
-                    $fail(__('validation.organization.rep_email.dns'));
+                    $fail(__('validation.organisation.rep_email.dns'));
                 }
             };
         }
@@ -143,14 +143,14 @@ class StoreOrganizationRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => __('validation.organization.name.required'),
-            'name.unique' => __('validation.organization.name.unique'),
-            'email.required' => __('validation.organization.email.required'),
-            'email.email' => __('validation.organization.email.invalid'),
-            'email.unique' => __('validation.organization.email.unique'),
-            'address.zip.regex' => __('validation.organization.zip.format'),
-            'accept_gdpr.accepted' => __('validation.organization.gdpr.required'),
-            'accept_terms.accepted' => __('validation.organization.terms.required'),
+            'name.required' => __('validation.organisation.name.required'),
+            'name.unique' => __('validation.organisation.name.unique'),
+            'email.required' => __('validation.organisation.email.required'),
+            'email.email' => __('validation.organisation.email.invalid'),
+            'email.unique' => __('validation.organisation.email.unique'),
+            'address.zip.regex' => __('validation.organisation.zip.format'),
+            'accept_gdpr.accepted' => __('validation.organisation.gdpr.required'),
+            'accept_terms.accepted' => __('validation.organisation.terms.required'),
         ];
     }
 
@@ -170,8 +170,8 @@ class StoreOrganizationRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'name' => __('validation.attributes.organization_name'),
-            'email' => __('validation.attributes.organization_email'),
+            'name' => __('validation.attributes.organisation_name'),
+            'email' => __('validation.attributes.organisation_email'),
             'address.street' => __('validation.attributes.street'),
             'address.city' => __('validation.attributes.city'),
             'address.zip' => __('validation.attributes.zip_code'),

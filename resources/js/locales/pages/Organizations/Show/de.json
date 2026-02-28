@@ -1,13 +1,13 @@
 {
-  "page_title": "Dashboard | {organization}",
+  "page_title": "Dashboard | {organisation}",
   "page_description": "Verwalten Sie Ihre Organisation, Mitglieder und Wahlen",
   "accessibility": {
     "main_content": "Hauptinhalt der Organisations-Seite",
-    "page_loaded": "Seite geladen: {organization}",
-    "organization_dashboard": "Organisations-Dashboard für {organization}",
+    "page_loaded": "Seite geladen: {organisation}",
+    "organization_dashboard": "Organisations-Dashboard für {organisation}",
     "skip_to_main": "Zum Hauptinhalt springen"
   },
-  "organization": {
+  "organisation": {
     "type_label": "Organisation",
     "member_since": "Mitglied seit {date}",
     "created_on": "Erstellt am {date}",

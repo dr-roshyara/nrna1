@@ -14,8 +14,8 @@ class AddVoterOptimizationIndexes extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            // CRITICAL: Composite index for fast organization + voter filtering
-            // 100x performance improvement for organization-specific voter queries
+            // CRITICAL: Composite index for fast organisation + voter filtering
+            // 100x performance improvement for organisation-specific voter queries
             if (!$this->indexExists('users', 'idx_org_voter')) {
                 $table->index(['organisation_id', 'is_voter'], 'idx_org_voter');
             }

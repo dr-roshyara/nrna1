@@ -32,9 +32,9 @@
   useMeta({
     pageKey: 'organizations.show',
     params: {
-      organizationName: organization.name,
-      memberCount: organization.members_count,
-      electionCount: organization.elections_count
+      organizationName: organisation.name,
+      memberCount: organisation.members_count,
+      electionCount: organisation.elections_count
     }
   })
 

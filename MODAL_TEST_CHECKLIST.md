@@ -1,4 +1,4 @@
-# 🧪 ORGANIZATION CREATION MODAL - COMPREHENSIVE TEST PLAN
+# 🧪 organisation CREATION MODAL - COMPREHENSIVE TEST PLAN
 
 ## Phase 1: Modal Opening & Education Overlay
 

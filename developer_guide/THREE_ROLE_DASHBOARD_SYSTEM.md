@@ -24,7 +24,7 @@ The Public Digit platform implements a **three-role dashboard system** that supp
 
 | Role | Purpose | Access Path | Data Scope |
 |------|---------|-------------|-----------|
-| **Admin** | Platform & organization management | `/dashboard/admin` | Organizations, users, system config |
+| **Admin** | Platform & organisation management | `/dashboard/admin` | Organizations, users, system config |
 | **Commission** | Election committee oversight | `/dashboard/commission` | Elections, votes, audit logs |
 | **Voter** | Member voting interface | `/vote` | Active elections, voting history |
 
@@ -45,18 +45,18 @@ The Public Digit platform implements a **three-role dashboard system** that supp
 
 #### Backend
 - [x] Migration: `2026_02_07_131712_create_role_system_tables.php`
-  - `organizations` table with multi-language support
+  - `organisations` table with multi-language support
   - `user_organization_roles` pivot table (admin/commission/voter roles)
   - `election_commission_members` pivot table (election-specific roles)
   - Safe up() and down() methods
 
 - [x] Models
-  - `Organization` model with relationships to users and elections
+  - `organisation` model with relationships to users and elections
   - `User` model extended with:
     - `getDashboardRoles()` - Fetches all dashboard roles with caching
     - `hasDashboardRole($role)` - Checks for specific role
     - `isCommissionMemberForElection($electionId)` - Election-specific checks
-    - `isOrganizationAdmin($organizationId)` - Organization admin verification
+    - `isOrganizationAdmin($organizationId)` - organisation admin verification
 
 - [x] Middleware
   - `CheckUserRole` middleware validates role access
@@ -65,7 +65,7 @@ The Public Digit platform implements a **three-role dashboard system** that supp
 
 - [x] Controllers
   - `RoleSelectionController` - Entry point, role selection logic
-  - `AdminDashboardController` - Organization and system statistics
+  - `AdminDashboardController` - organisation and system statistics
   - `CommissionDashboardController` - Election-specific commission view
   - `VoterDashboardController` - Active elections and voting history
 
@@ -113,7 +113,7 @@ The Public Digit platform implements a **three-role dashboard system** that supp
    - Validate role matches requested URL
 
 4. **Database Seeding**
-   - `RoleSystemSeeder` for creating test organizations and roles
+   - `RoleSystemSeeder` for creating test organisations and roles
    - Test data for demonstration
 
 5. **Feature Tests**
@@ -150,7 +150,7 @@ The Public Digit platform implements a **three-role dashboard system** that supp
       - Returns: Array of roles user has access to
       ↓
    6. RoleSelection/Index.vue displays role cards
-      - Admin: Platform & organization management
+      - Admin: Platform & organisation management
       - Commission: Election committee oversight
       - Voter: Member voting interface
       ↓
@@ -192,14 +192,14 @@ Middleware options:
 
 ## Database Schema
 
-### Table: `organizations`
+### Table: `organisations`
 ```sql
-CREATE TABLE organizations (
+CREATE TABLE organisations (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     slug VARCHAR(255) UNIQUE NOT NULL,
     type ENUM('diaspora', 'ngo', 'professional', 'other') NOT NULL,
-    settings JSON,                    -- Organization-specific settings
+    settings JSON,                    -- organisation-specific settings
     languages JSON,                   -- Supported languages: ["en", "de", "np"]
     timestamps
 );
@@ -210,14 +210,14 @@ CREATE TABLE organizations (
 CREATE TABLE user_organization_roles (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     user_id BIGINT UNSIGNED NOT NULL,
-    organization_id BIGINT UNSIGNED NOT NULL,
+    organisation_id BIGINT UNSIGNED NOT NULL,
     role ENUM('admin', 'commission', 'voter') NOT NULL,
     permissions JSON,
     timestamps
 
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE,
-    UNIQUE (user_id, organization_id, role)
+    FOREIGN KEY (organisation_id) REFERENCES organisations(id) ON DELETE CASCADE,
+    UNIQUE (user_id, organisation_id, role)
 );
 ```
 
@@ -238,8 +238,8 @@ CREATE TABLE election_commission_members (
 
 ### Extended: `elections` Table
 ```sql
-ALTER TABLE elections ADD organization_id BIGINT UNSIGNED;
-ALTER TABLE elections ADD FOREIGN KEY (organization_id) REFERENCES organizations(id);
+ALTER TABLE elections ADD organisation_id BIGINT UNSIGNED;
+ALTER TABLE elections ADD FOREIGN KEY (organisation_id) REFERENCES organisations(id);
 ```
 
 ---
@@ -260,7 +260,7 @@ app/
 │   │   └── CheckUserRole.php                 [NEW] Role-based access control
 │   └── Kernel.php                            [MODIFIED] Register 'role:*' middleware
 ├── Models/
-│   ├── Organization.php                      [NEW] Organization model
+│   ├── organisation.php                      [NEW] organisation model
 │   ├── User.php                              [MODIFIED] Added role methods
 │   └── ... (existing models)
 └── ...
@@ -331,11 +331,11 @@ public function hasDashboardRole($role): bool
     return in_array($role, $this->getDashboardRoles());
 }
 
-// Check if user is organization admin
+// Check if user is organisation admin
 public function isOrganizationAdmin($organizationId): bool
 {
     return $this->organizationRoles()
-        ->where('organization_id', $organizationId)
+        ->where('organisation_id', $organizationId)
         ->where('role', 'admin')
         ->exists();
 }
@@ -395,7 +395,7 @@ if ($this->is_committee_member) {
 ┌────────────────────────────────────────┐
 │ ADMIN (Highest Privilege)              │
 ├────────────────────────────────────────┤
-│ • Manage organizations                 │
+│ • Manage organisations                 │
 │ • Create/delete elections              │
 │ • Manage users and roles               │
 │ • View system analytics                │
@@ -425,18 +425,18 @@ if ($this->is_committee_member) {
 
 ### Role Assignment
 
-#### Method 1: Organization Admin Role
+#### Method 1: organisation Admin Role
 ```php
-// User assigned admin role for organization
+// User assigned admin role for organisation
 $user->organizationRoles()->attach($organizationId, [
     'role' => 'admin',
     'permissions' => json_encode(['create_election', 'manage_users'])
 ]);
 ```
 
-#### Method 2: Organization Commission Role
+#### Method 2: organisation Commission Role
 ```php
-// User assigned commission role for organization
+// User assigned commission role for organisation
 $user->organizationRoles()->attach($organizationId, [
     'role' => 'commission',
     'permissions' => json_encode(['monitor_elections', 'view_votes'])
@@ -468,7 +468,7 @@ $user->update(['is_committee_member' => true]);
   ```javascript
   {
     currentRole: String,
-    organizations: Array,
+    organisations: Array,
     quickStats: Object
   }
   ```
@@ -480,12 +480,12 @@ $user->update(['is_committee_member' => true]);
   - Responsive grid layout
 
 ### 2. Admin/Dashboard.vue
-- **Purpose**: Platform and organization management
+- **Purpose**: Platform and organisation management
 - **Data Props**:
   ```javascript
   {
     currentRole: String,
-    organizations: Array,      // { id, name, type }
+    organisations: Array,      // { id, name, type }
     quickStats: Object         // { totalElections, activeElections, totalVoters, participationRate }
   }
   ```
@@ -493,7 +493,7 @@ $user->update(['is_committee_member' => true]);
 - **Features**:
   - Quick stats grid (4 cards)
   - Organizations grid display
-  - Manage organization button
+  - Manage organisation button
 
 ### 3. Commission/Dashboard.vue
 - **Purpose**: Election committee oversight
@@ -559,7 +559,7 @@ resources/js/locales/pages/
 │   ├── de.json
 │   └── np.json
 ├── Admin/
-│   ├── en.json → { adminDashboard: { title, subtitle, stats, organizations, ... } }
+│   ├── en.json → { adminDashboard: { title, subtitle, stats, organisations, ... } }
 │   ├── de.json
 │   └── np.json
 ├── Commission/
@@ -633,7 +633,7 @@ public function index(Request $request)
 
     return Inertia::render('RoleSelection/Index', [
         'currentRole' => $request->session()->get('dashboard_role'),
-        'organizations' => $user->organizations,
+        'organisations' => $user->organisations,
         'quickStats' => [...],
     ]);
 }
@@ -680,9 +680,9 @@ public function switchRole(Request $request, $role)
 **File**: `database/seeders/RoleSystemSeeder.php`
 
 Should create:
-- 3-5 test organizations
+- 3-5 test organisations
 - 10-15 test users
-- Assign users to organizations with different roles
+- Assign users to organisations with different roles
 - Create test elections
 - Assign users to election commissions
 
@@ -702,7 +702,7 @@ Should test:
 #### 7. Role Management UI
 Admin interface to:
 - Assign roles to users
-- Manage organization membership
+- Manage organisation membership
 - Assign users to election commissions
 
 #### 8. Permission System
@@ -778,7 +778,7 @@ class RoleSelectionController extends Controller
 
         return Inertia::render('RoleSelection/Index', [
             'currentRole' => $request->session()->get('dashboard_role'),
-            'organizations' => $user->organizations,
+            'organisations' => $user->organisations,
             'availableRoles' => $dashboardRoles,
             'quickStats' => $stats,
         ]);
@@ -823,11 +823,11 @@ class RoleSelectionController extends Controller
     private function getAdminStats($user)
     {
         return [
-            'organizations' => $user->organizations->count(),
-            'elections' => $user->organizations
+            'organisations' => $user->organisations->count(),
+            'elections' => $user->organisations
                 ->flatMap(fn($org) => $org->elections)
                 ->count(),
-            'activeElections' => $user->organizations
+            'activeElections' => $user->organisations
                 ->flatMap(fn($org) => $org->elections->where('status', 'active'))
                 ->count(),
         ];
@@ -881,7 +881,7 @@ class RoleSelectionController extends Controller
 
 namespace Database\Seeders;
 
-use App\Models\Organization;
+use App\Models\organisation;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -892,10 +892,10 @@ class RoleSystemSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create test organizations
-        $orgs = Organization::factory(3)->create();
+        // Create test organisations
+        $orgs = organisation::factory(3)->create();
 
-        // Assign users to organizations with different roles
+        // Assign users to organisations with different roles
         $users = User::limit(10)->get();
 
         foreach ($users as $index => $user) {
@@ -968,7 +968,7 @@ Visit: `http://localhost:8000/login`
 - [ ] After login, redirected to `/dashboard/roles`
 - [ ] Role selection displays available roles
 - [ ] Can click role card and switch roles
-- [ ] Admin role shows organizations and elections
+- [ ] Admin role shows organisations and elections
 - [ ] Commission role shows commission-specific elections
 - [ ] Voter role shows available elections to vote in
 - [ ] All text displays in correct language (de, en, np)
@@ -987,7 +987,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
-use App\Models\Organization;
+use App\Models\organisation;
 
 class RoleSystemTest extends TestCase
 {
@@ -1007,7 +1007,7 @@ class RoleSystemTest extends TestCase
     public function test_user_can_switch_roles()
     {
         $user = User::factory()->create();
-        $org = Organization::factory()->create();
+        $org = organisation::factory()->create();
 
         $user->organizationRoles()->attach($org->id, ['role' => 'admin']);
 
@@ -1064,7 +1064,7 @@ Implement Option C (Hybrid) which:
 | Term | Definition |
 |------|-----------|
 | **Dashboard Role** | High-level access role: admin, commission, or voter |
-| **Organization Role** | Granular role within an organization (can be extended) |
+| **organisation Role** | Granular role within an organisation (can be extended) |
 | **Committee Member** | Legacy term for users with election oversight (commission equivalent) |
 | **Role Selection** | Initial page after login where user chooses which dashboard |
 | **Session Role** | Currently selected dashboard role stored in session |

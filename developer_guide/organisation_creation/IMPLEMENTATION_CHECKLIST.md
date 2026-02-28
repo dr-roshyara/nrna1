@@ -1,6 +1,6 @@
-# Implementation Checklist - Organization Creation Flow
+# Implementation Checklist - organisation Creation Flow
 
-Complete guide to implementing and verifying the Organization Creation Flow for your team.
+Complete guide to implementing and verifying the organisation Creation Flow for your team.
 
 ---
 
@@ -61,9 +61,9 @@ All Vue 3 components have been created and integrated into the dashboard.
 
 ### Step 3: Create Service Layer
 
-**File:** `app/Services/Organization/CreateOrganizationService.php`
+**File:** `app/Services/organisation/CreateOrganizationService.php`
 
-- [ ] Create directory: `mkdir -p app/Services/Organization`
+- [ ] Create directory: `mkdir -p app/Services/organisation`
 - [ ] Implement `create()` method
 - [ ] Implement `verifyEmail()` method
 - [ ] Add transaction wrapping
@@ -94,7 +94,7 @@ All Vue 3 components have been created and integrated into the dashboard.
 **File:** `app/Mail/OrganizationVerificationEmail.php`
 
 - [ ] Create mailable class
-- [ ] Create markdown template: `resources/views/emails/organization/verification.md`
+- [ ] Create markdown template: `resources/views/emails/organisation/verification.md`
 - [ ] Include verification link in email
 - [ ] Test email rendering
 
@@ -106,9 +106,9 @@ All Vue 3 components have been created and integrated into the dashboard.
 - [ ] Add GET /api/organizations/{id}/verify/{token} route
 - [ ] Verify routes with `php artisan route:list`
 
-### Step 8: Update Organization Model
+### Step 8: Update organisation Model
 
-**File:** `app/Models/Organization.php`
+**File:** `app/Models/organisation.php`
 
 - [ ] Add fillable attributes
 - [ ] Add JSON casts for address and representative
@@ -150,7 +150,7 @@ All Vue 3 components have been created and integrated into the dashboard.
 
 ### Frontend-Backend Integration
 
-- [ ] Click "Create Organization" card
+- [ ] Click "Create organisation" card
 - [ ] Modal opens with education overlay
 - [ ] Expand FAQ sections
 - [ ] Click "Start" button
@@ -242,7 +242,7 @@ All Vue 3 components have been created and integrated into the dashboard.
 
 ### Translation Coverage
 
-- [ ] Check for missing keys: search for `[organization.`
+- [ ] Check for missing keys: search for `[organisation.`
 - [ ] Check for placeholder text: search for `{ fallback:`
 - [ ] Verify date formats for each language
 - [ ] Test with long translations (German words can be long)
@@ -394,8 +394,8 @@ app/
 │   └── Resources/
 │       └── OrganizationResource.php            ✓ Created
 ├── Models/
-│   └── Organization.php                        ✓ Updated
-├── Services/Organization/
+│   └── organisation.php                        ✓ Updated
+├── Services/organisation/
 │   └── CreateOrganizationService.php           ✓ Created
 ├── DataTransferObjects/
 │   ├── OrganizationCreateDTO.php               ✓ Created
@@ -415,7 +415,7 @@ resources/
 ├── js/
 │   ├── Composables/
 │   │   └── useOrganizationCreation.js          ✓ Created
-│   ├── Components/Organization/
+│   ├── Components/organisation/
 │   │   ├── OrganizationCreateModal.vue         ✓ Created
 │   │   └── Steps/
 │   │       ├── EducationSection.vue            ✓ Created
@@ -431,7 +431,7 @@ resources/
 │       ├── en.json                             ✓ Updated
 │       └── np.json                             ✓ Updated
 └── views/
-    └── emails/organization/
+    └── emails/organisation/
         └── verification.md                      ✓ Create
 
 routes/
@@ -469,7 +469,7 @@ php artisan route:list | grep organizations
 
 # Tinker - test interactively
 php artisan tinker
-> \App\Models\Organization::all()
+> \App\Models\organisation::all()
 > exit
 ```
 

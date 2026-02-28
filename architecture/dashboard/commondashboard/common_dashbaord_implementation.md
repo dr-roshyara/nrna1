@@ -84,7 +84,7 @@
 
     <div class="role-cards-container" role="radiogroup" aria-label="Available roles">
       
-      <!-- CARD 1: ORGANIZATION ADMIN -->
+      <!-- CARD 1: organisation ADMIN -->
       <div 
         class="role-card admin-card"
         :class="{ 'selected': selectedRole === 'admin' }"
@@ -99,7 +99,7 @@
         <div class="role-card-header">
           <div class="role-icon" aria-hidden="true">👑</div>
           <div class="role-title">
-            <h3 id="admin-role-label">Organization Administrator</h3>
+            <h3 id="admin-role-label">organisation Administrator</h3>
             <div class="role-badge" v-if="userHasAdminRole">
               <span class="badge-text">Available</span>
               <span class="badge-count" aria-label="{{ adminStats.organizations }} organizations">
@@ -111,7 +111,7 @@
 
         <div class="role-card-body">
           <p class="role-description">
-            <strong>Purpose:</strong> Strategic oversight, election creation, organization management
+            <strong>Purpose:</strong> Strategic oversight, election creation, organisation management
           </p>
           
           <div class="role-permissions" v-if="userHasAdminRole">
@@ -523,7 +523,7 @@ export default {
     
     selectedRoleName() {
       const names = {
-        admin: 'Organization Administrator',
+        admin: 'organisation Administrator',
         commission: 'Election Commission',
         voter: 'Voter'
       };

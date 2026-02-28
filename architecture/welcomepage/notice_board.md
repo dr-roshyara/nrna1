@@ -127,7 +127,7 @@ Initial aim:
                 class="px-6 py-3 bg-linear-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl">
           🔍 Browse All Elections
         </button>
-        <p class="text-xs text-gray-500 mt-2">For organizations: Create your election in minutes</p>
+        <p class="text-xs text-gray-500 mt-2">For organisations: Create your election in minutes</p>
       </div>
     </div>
   </div>
@@ -138,7 +138,7 @@ Initial aim:
 
 ### **1. LIVE ELECTION BOARD CONCEPT**
 - **Demo Election** (🧪 Always running - instant try)
-- **Upcoming Elections** (Date-based, organization-specific)
+- **Upcoming Elections** (Date-based, organisation-specific)
 - **Completed Elections** (Results available)
 
 ### **2. DIASPORA-FOCUSED EXAMPLES**
@@ -179,7 +179,7 @@ Initial aim:
 2. See "Demo Election" (always available)
 3. Click "Try Now →" 
 4. Experience voting without registration
-5. Get convinced → Sign up for own organization
+5. Get convinced → Sign up for own organisation
 ```
 
 **For German NGO:**
@@ -194,7 +194,7 @@ Initial aim:
 ## **GERMAN COMPLIANCE TOUCHES:**
 - Clear status indicators (no confusion)
 - Date ranges for transparency
-- Organization names clearly labeled
+- organisation names clearly labeled
 - Results availability marked
 
 **This transforms a generic dashboard mockup into an ACTIVE, FUNCTIONAL entry point for diaspora communities to discover and join elections.**
@@ -322,7 +322,7 @@ onclick="window.location.href='/demo-election'"
           
           <div class="flex flex-wrap gap-2 mb-3">
             <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm" aria-label="500 voters">👥 500 Voters</span>
-            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm" aria-label="NRNA organization">🏛️ NRNA</span>
+            <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm" aria-label="NRNA organisation">🏛️ NRNA</span>
             <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm" aria-label="Multilingual support">🌐 DE/EN/NP</span>
           </div>
           
@@ -409,7 +409,7 @@ onclick="window.location.href='/demo-election'"
           🔍 Browse All Elections
         </a>
         <p class="text-sm text-gray-600 mt-3">
-          For organizations: Create your election in minutes
+          For organisations: Create your election in minutes
         </p>
       </div>
     </div>
@@ -460,7 +460,7 @@ onclick="window.location.href='/demo-election'"
 ## **DIASPORA-SPECIFIC ENHANCEMENTS:**
 
 ### **For German Diaspora:**
-- 🇩🇪 Flag with organization name
+- 🇩🇪 Flag with organisation name
 - German date format clear
 - Language badges show DE support
 

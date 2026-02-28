@@ -524,7 +524,7 @@ With current schema:
 - 10 million registrations: ~30 GB
 - All indexes: ~45 GB
 
-Sufficient for mid-sized organization.
+Sufficient for mid-sized organisation.
 
 ### Future Scaling
 
@@ -650,7 +650,7 @@ public function test_index_usage()
 ### Phase 4: Platform Integration
 
 1. **Multi-tenancy**
-   - Each organization has own elections
+   - Each organisation has own elections
    - Voter registrations per tenant
    - Isolated results
 

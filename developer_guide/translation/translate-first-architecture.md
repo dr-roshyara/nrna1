@@ -141,7 +141,7 @@ resources/js/locales/pages/Dashboard/trust_signals/
     },
     "security": {
       "message": "Data protected in Frankfurt",
-      "tooltip": "Your organization data is securely hosted in Germany"
+      "tooltip": "Your organisation data is securely hosted in Germany"
     }
   }
 }

@@ -8,12 +8,12 @@ All components of the Members Index Page have been successfully created, tested,
 
 ## 📋 What Was Built
 
-A comprehensive **Members Index Page** (`/members/index`) that displays organization members with organization-scoped filtering, role-based visualization, and improved UX.
+A comprehensive **Members Index Page** (`/members/index`) that displays organisation members with organisation-scoped filtering, role-based visualization, and improved UX.
 
 ### Key Features Implemented
 
-1. **Organization-Scoped Listing**
-   - Shows only members of current user's organization
+1. **organisation-Scoped Listing**
+   - Shows only members of current user's organisation
    - Server-side authorization checks
    - Multi-tenant security enforced
 
@@ -29,7 +29,7 @@ A comprehensive **Members Index Page** (`/members/index`) that displays organiza
    - Visual sort direction indicators
 
 4. **Rich Data Display**
-   - Organization context header
+   - organisation context header
    - Stats dashboard (total members, admins count, voters count)
    - Role-based color badges (red=admin, blue=commission, green=voter)
    - Member join dates formatted
@@ -58,12 +58,12 @@ A comprehensive **Members Index Page** (`/members/index`) that displays organiza
 Location: /app/Http/Controllers/MemberController.php
 Size: 3.5 KB
 Status: ✅ Created & Tested
-Dependencies: Organization, User models; Inertia
+Dependencies: organisation, User models; Inertia
 ```
 
 **Key Methods:**
 - `index(Request $request)` - Main display method
-  - Organization membership verification
+  - organisation membership verification
   - Query builder with filters & sorting
   - Stats calculation
   - Inertia response rendering
@@ -84,7 +84,7 @@ Dependencies: Inertia Link, ElectionLayout, Lodash
 ```
 
 **Key Sections:**
-- Organization header with stats cards
+- organisation header with stats cards
 - Filter form (name, email, role, export)
 - Sortable table with visual indicators
 - Top pagination
@@ -118,10 +118,10 @@ Route::get('/members/index', [MemberController::class, 'index'])
 ## 🔒 Security Implementation
 
 ### Multi-Tenancy
-✅ **Organization Membership Validation**
+✅ **organisation Membership Validation**
 ```php
 // Server-side check
-$isMember = $organization->users()
+$isMember = $organisation->users()
     ->where('users.id', $user->id)
     ->exists();
 if (!$isMember) abort(403);
@@ -129,13 +129,13 @@ if (!$isMember) abort(403);
 
 ✅ **Query Scoping**
 ```php
-// Only fetch members from current organization
-$organization->users()
+// Only fetch members from current organisation
+$organisation->users()
     ->select('users.id', 'users.name', ...)
     ->withPivot(['role', 'permissions', 'assigned_at'])
 ```
 
-✅ **Session-Based Organization Detection**
+✅ **Session-Based organisation Detection**
 ```php
 $organizationId = session('current_organisation_id') ?? $user->organisation_id;
 ```
@@ -157,9 +157,9 @@ Route::middleware(['auth'])->group(function () { ... });
 ### No Data Leakage
 ✅ **Cross-Tenant Isolation**
 - Members from other organizations never returned
-- Filters scoped to organization
+- Filters scoped to organisation
 - Sorting only applies to visible members
-- Stats only include current organization
+- Stats only include current organisation
 
 ---
 
@@ -177,7 +177,7 @@ Route::middleware(['auth'])->group(function () { ... });
 - **Reactive**: Vue watchers for filter debouncing
 - **Pagination**: Laravel paginator with Inertia rendering
 
-### Code Organization
+### Code organisation
 ```
 MemberController
 ├── index() - Main entry point
@@ -206,7 +206,7 @@ SELECT users.id, users.name, users.email, users.state, users.created_at
 FROM users
 INNER JOIN user_organization_roles
     ON users.id = user_organization_roles.user_id
-WHERE user_organization_roles.organization_id = ?
+WHERE user_organization_roles.organisation_id = ?
   AND users.name LIKE ?                          -- if name filter
   AND users.email LIKE ?                         -- if email filter
   AND user_organization_roles.role = ?           -- if role filter
@@ -216,13 +216,13 @@ LIMIT 20 OFFSET 0
 
 ### Relationships Used
 ```
-Organization.users() → belongsToMany(User)
+organisation.users() → belongsToMany(User)
     → user_organization_roles pivot table
     → withPivot('role', 'permissions', 'assigned_at')
 
-Organization.admins() → users().wherePivot('role', 'admin')
-Organization.voters() → users().wherePivot('role', 'voter')
-Organization.commissionMembers() → users().wherePivot('role', 'commission')
+organisation.admins() → users().wherePivot('role', 'admin')
+organisation.voters() → users().wherePivot('role', 'voter')
+organisation.commissionMembers() → users().wherePivot('role', 'commission')
 ```
 
 ---
@@ -264,12 +264,12 @@ Middleware: web, auth
 ```
 Status: Successfully loaded without errors
 Dependencies: All resolved correctly
-Relationships: Organization methods working
+Relationships: organisation methods working
 ```
 
-### ✅ Organization Relationships
+### ✅ organisation Relationships
 ```
-Organization "Namaste Nepal ev"
+organisation "Namaste Nepal ev"
 ├── Total Members: 2
 ├── Admins: 1
 ├── Commission: 0
@@ -300,11 +300,11 @@ Assigned At: (timestamp or null)
 ### User/Index (OLD)
 ```
 Route:        /users/index
-Scope:        ALL USERS (no organization filter)
+Scope:        ALL USERS (no organisation filter)
 Columns:      ID, Membership ID, Name, Region, Action
 Filters:      Name, User ID search
 Search:       Name/ID only
-Organization: No context
+organisation: No context
 Stats:        None
 Mobile:       Basic
 ```
@@ -312,11 +312,11 @@ Mobile:       Basic
 ### Members/Index (NEW)
 ```
 Route:        /members/index
-Scope:        ORGANIZATION MEMBERS (scoped & secure)
+Scope:        organisation MEMBERS (scoped & secure)
 Columns:      ID, Name, Email, Region, Role, Member Since
 Filters:      Name, Email, Role
 Search:       Name and Email
-Organization: Header with stats
+organisation: Header with stats
 Stats:        Total, Admins, Voters counts
 Mobile:       Fully responsive
 ```
@@ -400,7 +400,7 @@ Auth: Required (login first)
 - [ ] CSV/Excel export functionality
 - [ ] Bulk role assignment
 - [ ] Member profile modal
-- [ ] Remove member from organization
+- [ ] Remove member from organisation
 - [ ] Activity log per member
 - [ ] Email invitations
 - [ ] Duplicate detection
@@ -434,15 +434,15 @@ Auth: Required (login first)
 
 ## ✨ Key Achievements
 
-1. **Organization-Scoped Data**
-   - ✅ Prevents cross-organization data access
+1. **organisation-Scoped Data**
+   - ✅ Prevents cross-organisation data access
    - ✅ Server-side enforcement (not just UI)
    - ✅ Multi-tenant security guaranteed
 
 2. **Improved UX**
    - ✅ Email search (was missing in User/Index)
    - ✅ Role visibility and filtering
-   - ✅ Organization context display
+   - ✅ organisation context display
    - ✅ Stats dashboard
    - ✅ Better date formatting
 
@@ -523,11 +523,11 @@ If issues arise:
 
 1. **Page won't load**
    - Verify user is logged in
-   - Verify user belongs to an organization
+   - Verify user belongs to an organisation
    - Check browser console for errors
 
 2. **Members not showing**
-   - Verify organization has members in pivot table
+   - Verify organisation has members in pivot table
    - Check: `$org->users()->count()` in tinker
 
 3. **Filters not working**

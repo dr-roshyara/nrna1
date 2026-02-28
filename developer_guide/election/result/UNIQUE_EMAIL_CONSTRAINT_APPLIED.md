@@ -31,7 +31,7 @@ Add a unique constraint to the `users` table `email` column to prevent duplicate
 
 ### Before (Vulnerable)
 ```
-User creates organization with own email as representative
+User creates organisation with own email as representative
 ↓
 Code had duplicate check (we fixed this)
 ↓
@@ -42,7 +42,7 @@ Duplicate email could theoretically be created if bug bypassed
 
 ### After (Protected)
 ```
-User creates organization with own email as representative
+User creates organisation with own email as representative
 ↓
 Code has duplicate check ✓
 ↓
@@ -129,7 +129,7 @@ Now the system has **THREE layers** of protection against duplicates:
 
 ## 🚀 What This Prevents
 
-### Scenario 1: Bug in Organization Creation
+### Scenario 1: Bug in organisation Creation
 ```
 Even if OrganizationController logic had a bug:
 - Duplicate would be caught by database

@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\Election;
-use App\Models\Organization;
+use App\Models\Organisation;
 use App\Models\DemoPost;
 use App\Models\DemoCandidacy;
 use App\Models\DemoCode;
@@ -23,10 +23,10 @@ class DemoElectionCreationService
      * - Demo verification codes for each candidate
      *
      * @param int $organisationId
-     * @param Organization $organization
+     * @param Organisation $organisation
      * @return Election
      */
-    public function createOrganisationDemoElection(int $organisationId, Organization $organization): Election
+    public function createOrganisationDemoElection(int $organisationId, Organisation $organisation): Election
     {
         $slug = 'demo-election-org-' . $organisationId;
 
@@ -36,7 +36,7 @@ class DemoElectionCreationService
             'slug' => $slug,
             'type' => 'demo',
             'is_active' => true,
-            'description' => 'Demo election for ' . $organization->name . ' - test voting before live elections',
+            'description' => 'Demo election for ' . $organisation->name . ' - test voting before live elections',
             'start_date' => now()->format('Y-m-d'),
             'end_date' => now()->addDays(365)->format('Y-m-d'),
             'organisation_id' => $organisationId,
@@ -51,7 +51,7 @@ class DemoElectionCreationService
         // 4. Log creation
         Log::channel('voting_audit')->info('Demo election auto-created', [
             'organisation_id' => $organisationId,
-            'organization_name' => $organization->name,
+            'organisation_name' => $organisation->name,
             'election_id' => $election->id,
         ]);
 

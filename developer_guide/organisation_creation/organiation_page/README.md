@@ -1,7 +1,7 @@
-# Organization Page - Developer Guide
+# organisation Page - Developer Guide
 
 **Project**: Public Digit Election Platform
-**Module**: Organization Dashboard & Management
+**Module**: organisation Dashboard & Management
 **Status**: Phase 2 - In Progress (Member Import ✅ Complete)
 
 ---
@@ -107,7 +107,7 @@ Overall Progress: ~30% Complete
 ## 🚀 Key Features Delivered
 
 ### ✅ Phase 1: Foundation
-- Professional organization dashboard
+- Professional organisation dashboard
 - 6 metric cards with statistics
 - 3 primary action buttons
 - Support section with contact info
@@ -157,9 +157,9 @@ Overall Progress: ~30% Complete
 
 ```vue
 <template>
-  <h2>{{ $t('pages.organization-show.my_feature.title') }}</h2>
-  <p>{{ $t('pages.organization-show.my_feature.description') }}</p>
-  <button>{{ $t('pages.organization-show.my_feature.button') }}</button>
+  <h2>{{ $t('pages.organisation-show.my_feature.title') }}</h2>
+  <p>{{ $t('pages.organisation-show.my_feature.description') }}</p>
+  <button>{{ $t('pages.organisation-show.my_feature.button') }}</button>
 </template>
 ```
 
@@ -198,7 +198,7 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 const props = defineProps({
-  organization: { type: Object, required: true }
+  organisation: { type: Object, required: true }
 })
 
 const emit = defineEmits(['action'])
@@ -317,7 +317,7 @@ Before implementing any new feature:
 ```javascript
 // Test individual components
 describe('OrganizationHeader', () => {
-  it('displays organization name', () => {})
+  it('displays organisation name', () => {})
   it('formats date correctly', () => {})
   it('shows email link', () => {})
 })
@@ -326,7 +326,7 @@ describe('OrganizationHeader', () => {
 ### **Integration Tests**
 ```javascript
 // Test component interactions
-describe('Organization Page', () => {
+describe('organisation Page', () => {
   it('renders all sections', () => {})
   it('handles member import link', () => {})
   it('displays correct language', () => {})
@@ -438,7 +438,7 @@ feat: Implement member import page with CSV validation
 
 ## ✨ Summary
 
-This guide documents the **Public Digit Organization Page** implementation:
+This guide documents the **Public Digit organisation Page** implementation:
 
 - **Phase 1** ✅ Foundation components with 120+ translation keys
 - **Phase 2** ✅ Member import with dedicated page

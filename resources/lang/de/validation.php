@@ -159,14 +159,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Organization-Specific Validation Messages
+    | organisation-Specific Validation Messages
     |--------------------------------------------------------------------------
     |
-    | Custom messages for organization creation form validation
+    | Custom messages for organisation creation form validation
     |
     */
 
-    'organization' => [
+    'organisation' => [
         'name' => [
             'required' => 'Der Organisationname ist erforderlich.',
             'unique' => 'Eine Organisation mit diesem Namen existiert bereits.',

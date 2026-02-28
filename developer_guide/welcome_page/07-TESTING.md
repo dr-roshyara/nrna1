@@ -185,7 +185,7 @@ class RoleDetectionServiceTest extends TestCase
     {
         $user = User::factory()->create();
         $user->organizationRoles()->create(['name' => 'admin']);
-        // Create organization
+        // Create organisation
         $user->organizations()->create(['name' => 'Test Org']);
 
         $state = $this->service->detectCompositeState($user);
@@ -670,7 +670,7 @@ class OnboardingJourneyTest extends TestCase
             $page->where('userState.onboarding_step', 1)
         );
 
-        // Step 2: Creates organization
+        // Step 2: Creates organisation
         $org = $user->organizations()->create(['name' => 'Alice\'s Voters']);
 
         $response = $this->actingAs($user)->get('/dashboard/welcome');
@@ -723,7 +723,7 @@ class OnboardingJourneyTest extends TestCase
             )
         );
 
-        // Create organization → 25%
+        // Create organisation → 25%
         $user->organizations()->create(['name' => 'Test']);
         $response = $this->actingAs($user)->get('/dashboard/welcome');
         // Progress should be 25%
@@ -796,7 +796,7 @@ public function user_model_hides_relationship_properties()
     $json = $response->content();
 
     // User object should NOT contain these relationships
-    $this->assertStringNotContainsString('"organizations":', $json);
+    $this->assertStringNotContainsString('"organisations":', $json);
     $this->assertStringNotContainsString('"organizationRoles":', $json);
     $this->assertStringNotContainsString('"commissions":', $json);
     $this->assertStringNotContainsString('"roles":', $json);
@@ -890,7 +890,7 @@ php artisan test --parallel
 
 ### For Three-Role System
 
-- [ ] Admin sees organization actions
+- [ ] Admin sees organisation actions
 - [ ] Commission sees election management
 - [ ] Voter sees voting actions
 - [ ] Users with multiple roles see all applicable actions

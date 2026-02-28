@@ -396,7 +396,7 @@ Schema::create('elections', function (Blueprint $table) {
     $table->string('slug')->unique();
     $table->enum('type', ['demo', 'real'])->default('real');
     $table->text('description')->nullable();
-    $table->string('organization')->nullable(); // Which diaspora/NGO
+    $table->string('organisation')->nullable(); // Which diaspora/NGO
     $table->string('country_scope')->nullable(); // Which countries can vote
     
     // Voting period (UTC times)
