@@ -697,6 +697,49 @@ class DemoCodeController extends Controller
             ->where('election_id', $election->id)
             ->first();
 
+        // ✅ CHECK CODE EXPIRATION FIRST (before any other logic)
+        // Expired codes must be regenerated regardless of other flags
+        if ($code && $code->code1_sent_at) {
+            $isExpired = now()->diffInMinutes($code->code1_sent_at) > $this->votingTimeInMinutes;
+
+            if ($isExpired && !$code->has_voted) {
+                Log::info('🔄 [DEMO] Code expired - generating new one', [
+                    'user_id' => $user->id,
+                    'code_id' => $code->id,
+                    'sent_at' => $code->code1_sent_at,
+                    'voting_time_minutes' => $this->votingTimeInMinutes,
+                ]);
+
+                // Generate new code and reset flags
+                $code->code1 = $this->generateCode();
+                $code->code1_sent_at = now();
+                $code->has_code1_sent = 1;
+                $code->is_code1_usable = 1;
+                $code->code1_used_at = null;
+                $code->can_vote_now = 0;  // User needs to verify new code
+                $code->save();
+
+                // Send new code via email
+                if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
+                    try {
+                        $user->notify(new SendFirstVerificationCode($user, $code->code1));
+                        Log::info('✅ [DEMO] New code sent after expiration', [
+                            'user_id' => $user->id,
+                            'code_id' => $code->id,
+                            'code' => $code->code1,
+                        ]);
+                    } catch (\Exception $e) {
+                        Log::error('[DEMO] Failed to send code after expiration', [
+                            'user_id' => $user->id,
+                            'error' => $e->getMessage(),
+                        ]);
+                    }
+                }
+
+                return $code;
+            }
+        }
+
         // DEMO ELECTIONS: Allow re-voting only after user completes voting
         if ($code && $election->type === 'demo' && $code->has_voted) {
             Log::info('🔄 [DEMO] User completed vote - generating new code for re-voting', [
