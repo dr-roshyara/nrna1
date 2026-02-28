@@ -39,6 +39,7 @@ class Election extends Model
      * @var array
      */
     protected $fillable = [
+        'organisation_id', // Allow setting for tests and seeders
         'name',
         'slug',
         'description',
@@ -47,6 +48,7 @@ class Election extends Model
         'end_date',
         'is_active',
         'settings',
+        'status', // Added for status field
     ];
 
     /**
@@ -54,9 +56,7 @@ class Election extends Model
      *
      * @var array
      */
-    protected $guarded = [
-        'organisation_id', // Prevent users from setting this
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be cast.
