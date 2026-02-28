@@ -1,11 +1,11 @@
 <template>
     <nrna-layout>
-        <div class="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50 py-8 px-4">
+        <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-8 px-4">
             <div class="max-w-6xl mx-auto">
                 
                 <!-- Page Header -->
                 <div class="text-center mb-8">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-linear-to-r from-green-500 to-emerald-600 rounded-full mb-4">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full mb-4">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
@@ -20,7 +20,7 @@
 
                 <!-- Voter Information Card -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
-                    <div class="bg-linear-to-r from-blue-600 to-indigo-700 px-6 py-6">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-6">
                         <div class="flex items-center justify-between">
                             <div>
                                 <h2 class="text-xl md:text-2xl font-bold text-white mb-1">
@@ -175,7 +175,7 @@
                                         <div class="flex items-start space-x-4">
                                             <!-- Candidate Image -->
                                             <div class="shrink-0">
-                                                <div class="w-16 h-16 bg-linear-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
+                                                <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
                                                     {{ getCandidateInitial(candidate) }}
                                                 </div>
                                             </div>
@@ -257,7 +257,7 @@
                 <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                     <button
                         @click="goToVerifyAnother"
-                        class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                        class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                     >
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -267,7 +267,7 @@
 
                     <button
                         @click="goToDashboard"
-                        class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-linear-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
+                        class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
                     >
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>

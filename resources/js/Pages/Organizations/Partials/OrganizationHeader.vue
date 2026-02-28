@@ -1,38 +1,53 @@
 <template>
-  <div class="mb-8">
-    <!-- Organization Badge & Date -->
-    <div class="flex items-center gap-2 mb-3">
-      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+  <div class="mb-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-sm border border-blue-100 overflow-hidden p-8">
+    <!-- Badge Row -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+      <span
+        class="inline-flex items-center px-4 py-2 rounded-full text-xs font-semibold bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-sm w-fit"
+        role="status"
+        aria-label="Organization status"
+      >
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
           <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V8a2 2 0 00-2-2h-5L9 4H4z" clip-rule="evenodd" />
         </svg>
         {{ $t('pages.organization-show.organization.type_label') }}
       </span>
       <time
         :datetime="organization.created_at"
-        class="text-sm text-gray-500"
+        class="text-sm text-gray-600 font-medium"
+        aria-label="Organization creation date"
       >
         {{ $t('pages.organization-show.organization.created_on', { date: formatDate(organization.created_at) }) }}
       </time>
     </div>
 
-    <!-- Organization Name -->
-    <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
-      {{ organization.name }}
-    </h1>
+    <!-- Organization Name with Improved Hierarchy -->
+    <div class="mb-6">
+      <h1 class="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-2 tracking-tight">
+        {{ organization.name }}
+      </h1>
+      <div class="h-1 w-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full" aria-hidden="true"></div>
+    </div>
 
-    <!-- Email Contact -->
-    <div class="flex items-center text-gray-700">
-      <svg class="w-5 h-5 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-      <a
-        :href="`mailto:${organization.email}`"
-        :aria-label="$t('pages.organization-show.organization.email_label')"
-        class="hover:text-blue-600 transition-colors font-medium"
-      >
-        {{ organization.email }}
-      </a>
+    <!-- Contact Information with Enhanced Layout -->
+    <div class="flex flex-col sm:flex-row sm:items-center gap-6 pt-6 border-t border-blue-200">
+      <div class="flex items-center gap-3">
+        <svg class="w-6 h-6 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+        <div>
+          <p class="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1">
+            {{ $t('pages.organization-show.organization.email_label') }}
+          </p>
+          <a
+            :href="`mailto:${organization.email}`"
+            :aria-label="`Email: ${organization.email}`"
+            class="text-blue-600 hover:text-blue-700 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 py-1"
+          >
+            {{ organization.email }}
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </template>

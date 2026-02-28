@@ -13,7 +13,7 @@
                     <h1 class="sr-only">{{ activeElection.name }} - {{ $t('pages.election.voting_page.title') }}</h1>
 
                     <!-- Election Status Banner - WCAG AA Compliant -->
-                    <div class="mb-8 p-6 bg-linear-to-r from-green-100 to-blue-100 border-2 border-green-300 rounded-lg"
+                    <div class="mb-8 p-6 bg-gradient-to-r from-green-100 to-blue-100 border-2 border-green-300 rounded-lg"
                          role="alert"
                          aria-live="polite"
                          aria-label="Election status: Voting is currently active">
@@ -145,19 +145,19 @@
 
                     <!-- Key Information Cards -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        <div class="bg-linear-to-br from-purple-100 to-purple-50 p-6 rounded-lg border border-purple-300">
+                        <div class="bg-gradient-to-br from-purple-100 to-purple-50 p-6 rounded-lg border border-purple-300">
                             <div class="text-3xl mb-2" role="img" aria-label="Lock">🔒</div>
                             <h4 class="font-semibold text-gray-900 mb-2">{{ $t('pages.election.voting_page.secure') }}</h4>
                             <p class="text-sm text-gray-700">{{ $t('pages.election.voting_page.secure_desc') }}</p>
                         </div>
 
-                        <div class="bg-linear-to-br from-green-100 to-green-50 p-6 rounded-lg border border-green-300">
+                        <div class="bg-gradient-to-br from-green-100 to-green-50 p-6 rounded-lg border border-green-300">
                             <div class="text-3xl mb-2" role="img" aria-label="Checkmark">✓</div>
                             <h4 class="font-semibold text-gray-900 mb-2">{{ $t('pages.election.voting_page.verified') }}</h4>
                             <p class="text-sm text-gray-700">{{ $t('pages.election.voting_page.verified_desc') }}</p>
                         </div>
 
-                        <div class="bg-linear-to-br from-blue-100 to-blue-50 p-6 rounded-lg border border-blue-300">
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-50 p-6 rounded-lg border border-blue-300">
                             <div class="text-3xl mb-2" role="img" aria-label="Globe">🌍</div>
                             <h4 class="font-semibold text-gray-900 mb-2">{{ $t('pages.election.voting_page.global') }}</h4>
                             <p class="text-sm text-gray-700">{{ $t('pages.election.voting_page.global_desc') }}</p>
@@ -190,7 +190,7 @@
                         <InertiaLink
                             :href="route('slug.code.create', { vslug: activeElection.slug })"
                             :disabled="authUser.has_voted || !canVoteNow"
-                            class="inline-flex items-center justify-center px-8 py-4 bg-linear-to-r from-blue-700 to-blue-800 text-white font-bold rounded-lg hover:shadow-lg transition duration-200 focus:outline-hidden focus:ring-4 focus:ring-blue-300 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                            class="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-700 to-blue-800 text-white font-bold rounded-lg hover:shadow-lg transition duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
                             :aria-label="`${$t('pages.election.voting_page.start_voting')} for ${activeElection.name}`">
                             <span class="mr-2" role="img" aria-hidden="true">🗳️</span>
                             {{ $t('pages.election.voting_page.start_voting') }}

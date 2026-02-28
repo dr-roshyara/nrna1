@@ -1,13 +1,13 @@
 <template>
   <election-layout>
     <!-- Workflow Step Indicator - Step 2/5 -->
-    <div class="w-full bg-linear-to-br from-gray-50 to-blue-50 py-6 md:py-8">
+    <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <WorkflowStepIndicator workflow="VOTING" :currentStep="2" />
       </div>
     </div>
 
-    <div class="min-h-screen bg-linear-to-br from-blue-100 via-white to-indigo-100 py-8">
+    <div class="min-h-screen bg-gradient-to-br from-blue-100 via-white to-indigo-100 py-8">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         <!-- Page Title Section -->
@@ -63,7 +63,7 @@
 
         <!-- Terms and Conditions Form -->
         <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
-          <div class="bg-linear-to-r from-blue-600 to-indigo-700 text-white py-6 px-8">
+          <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-6 px-8">
             <h2 class="text-2xl font-bold">{{ $t('pages.code-agreement.terms_and_conditions.section_title') }}</h2>
             <p class="text-sm opacity-90 mt-2">{{ $t('pages.code-agreement.terms_and_conditions.section_subtitle') }}</p>
           </div>
@@ -99,7 +99,7 @@
             </div>
 
             <!-- Checkbox Agreement -->
-            <div class="bg-linear-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-8 my-8">
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-8 my-8">
               <div class="flex items-start">
                 <!-- Large checkbox -->
                 <div class="shrink-0 pt-1">
@@ -107,7 +107,6 @@
                     type="checkbox"
                     id="agreement"
                     v-model="form.agreement"
-                    value="on"
                     class="w-10 h-10 text-blue-600 border-3 border-gray-400 rounded-lg focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 cursor-pointer transition-all"
                   />
                 </div>
@@ -141,9 +140,9 @@
               <button
                 type="submit"
                 :disabled="!form.agreement || loading"
-                class="w-full py-5 px-8 rounded-xl font-bold text-xl transition-all duration-200 shadow-lg focus:outline-hidden focus:ring-4 focus:ring-offset-2"
+                class="w-full py-5 px-8 rounded-xl font-bold text-xl transition-all duration-200 shadow-lg focus:outline-none focus:ring-4 focus:ring-offset-2"
                 :class="{
-                  'bg-linear-to-r from-green-600 to-emerald-700 text-white hover:from-green-700 hover:to-emerald-800 cursor-pointer focus:ring-green-300': form.agreement && !loading,
+                  'bg-gradient-to-r from-green-600 to-emerald-700 text-white hover:from-green-700 hover:to-emerald-800 cursor-pointer focus:ring-green-300': form.agreement && !loading,
                   'bg-gray-300 text-gray-500 cursor-not-allowed': !form.agreement || loading
                 }"
               >
@@ -166,89 +165,68 @@
   </election-layout>
 </template>
 
-<script>
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
+<script setup>
+import { ref, computed, onMounted } from 'vue'
 import { useForm } from '@inertiajs/vue3'
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator.vue'
 
-export default {
-    components: {
-        ElectionLayout,
-        WorkflowStepIndicator,
+const props = defineProps({
+    user_name: String,
+    voting_time_minutes: {
+        type: Number,
+        default: 30
     },
+    slug: String,
+    useSlugPath: Boolean,
+    is_demo: Boolean,
+});
 
-    props: {
-        user_name: String,
-        voting_time_minutes: {
-            type: Number,
-            default: 30
-        },
-        slug: String,
-        useSlugPath: Boolean,
-        is_demo: Boolean,
-    },
+const displayTime = ref(30);
+const loading = ref(false);
+const errors = ref({});
 
-    data() {
-        return {
-            displayTime: 30,
-            loading: false,
-            errors: {}
-        }
-    },
+const form = useForm({
+    agreement: false,
+});
 
-    computed: {
-        votingTime() {
-            const time = this.voting_time_minutes || this.displayTime || 30;
-            return parseInt(time) || 30;
-        }
-    },
+const votingTime = computed(() => {
+    const time = props.voting_time_minutes || displayTime.value || 30;
+    return parseInt(time) || 30;
+});
 
-    created() {
-        if (this.voting_time_minutes && this.voting_time_minutes > 0) {
-            this.displayTime = parseInt(this.voting_time_minutes);
-        }
-    },
-
-    setup(props) {
-        const form = useForm({
-            agreement: false,
-        })
-
-        const formatMessage = (message, params = {}) => {
-            let formatted = message;
-            Object.entries(params).forEach(([key, value]) => {
-                formatted = formatted.replace(`{${key}}`, value);
-            });
-            return formatted;
-        };
-
-        return {
-            form,
-            formatMessage,
-        }
-    },
-
-    methods: {
-        submitAgreement() {
-            this.errors = {};
-
-            if (!this.form.agreement) {
-                this.errors.agreement = 'You must agree to proceed.';
-                return;
-            }
-
-            this.loading = true;
-
-            const routeName = this.useSlugPath ? 'slug.demo-code.agreement.submit' : 'demo-code.agreement.submit';
-            const params = this.useSlugPath ? { vslug: this.slug } : {};
-
-            this.form.post(route(routeName, params), {
-                onError: (formErrors) => {
-                    this.errors = formErrors;
-                    this.loading = false;
-                },
-            });
-        }
+onMounted(() => {
+    if (props.voting_time_minutes && props.voting_time_minutes > 0) {
+        displayTime.value = parseInt(props.voting_time_minutes);
     }
-}
+});
+
+const formatMessage = (message, params = {}) => {
+    let formatted = message;
+    Object.entries(params).forEach(([key, value]) => {
+        formatted = formatted.replace(`{${key}}`, value);
+    });
+    return formatted;
+};
+
+const submitAgreement = () => {
+    errors.value = {};
+
+    if (!form.agreement) {
+        errors.value.agreement = 'You must agree to proceed.';
+        return;
+    }
+
+    loading.value = true;
+
+    const routeName = props.useSlugPath ? 'slug.demo-code.agreement.submit' : 'demo-code.agreement.submit';
+    const params = props.useSlugPath ? { vslug: props.slug } : {};
+
+    form.post(route(routeName, params), {
+        onError: (formErrors) => {
+            errors.value = formErrors;
+            loading.value = false;
+        },
+    });
+};
 </script>

@@ -1,7 +1,6 @@
 <template>
   <div class="min-h-screen bg-gray-50">
     <!-- Breadcrumb Schema for SEO -->
-    <BreadcrumbSchema />
 
     <!-- Header -->
     <ElectionHeader :isLoggedIn="false" :locale="$page.props.locale" />
@@ -28,7 +27,7 @@
             v-model="searchQuery"
             type="text"
             :placeholder="$t('common.search')"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
       </div>
@@ -162,7 +161,6 @@
 <script>
 import ElectionHeader from '@/Components/Header/ElectionHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
-import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue'
 import { useMeta } from '@/composables/useMeta'
 
 // Import separate FAQ locale files
@@ -175,7 +173,6 @@ export default {
   components: {
     ElectionHeader,
     PublicDigitFooter,
-    BreadcrumbSchema,
   },
 
   data() {

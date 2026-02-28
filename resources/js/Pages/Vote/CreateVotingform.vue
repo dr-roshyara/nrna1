@@ -12,7 +12,7 @@
         :data-post-error-key="postErrorKey"
     >
         <!-- Post Header with clear requirements -->
-        <div class="bg-linear-to-r from-blue-600 to-indigo-700 px-6 py-5 text-white transition-all duration-300"
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-5 text-white transition-all duration-300"
              :class="{
                  'from-red-600 to-red-700': hasError
              }">
@@ -101,14 +101,14 @@
                     }"
                 >
                     <!-- Candidate Card - Portrait Style -->
-                    <div class="w-full bg-linear-to-b from-gray-50 to-white border-2 border-gray-200 rounded-xl overflow-hidden transition-all duration-200 hover:border-blue-300 flex flex-col"
+                    <div class="w-full bg-gradient-to-b from-gray-50 to-white border-2 border-gray-200 rounded-xl overflow-hidden transition-all duration-200 hover:border-blue-300 flex flex-col"
                          :class="{
                              'border-blue-400 bg-blue-50': isSelected(candidate),
                              'border-gray-300': !isSelected(candidate)
                          }">
 
                         <!-- Post Name Label (Top) -->
-                        <div class="bg-linear-to-r from-blue-500 to-blue-600 text-white text-center px-3 py-2">
+                        <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-center px-3 py-2">
                             <p class="text-xs font-bold leading-tight">
                                 {{ $t('pages.voting.candidate_selection.candidate_for_post', { post: post.name }) }}
                             </p>
@@ -189,7 +189,7 @@
 
             <!-- Selection Status -->
             <div class="mb-8">
-                <div class="bg-linear-to-r from-gray-50 to-blue-50 border-2 border-gray-200 rounded-xl p-5">
+                <div class="bg-gradient-to-r from-gray-50 to-blue-50 border-2 border-gray-200 rounded-xl p-5">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                         <!-- Status Message -->
                         <div>
@@ -230,7 +230,7 @@
                         </div>
                         <div class="w-full bg-gray-200 rounded-full h-2">
                             <div
-                                class="bg-linear-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500"
+                                class="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500"
                                 :style="{ width: selectionProgress + '%' }"
                                 role="progressbar"
                                 :aria-valuenow="selectionProgress"
@@ -243,7 +243,7 @@
             </div>
 
             <!-- Large Skip Button -->
-            <div class="border-2 border-gray-300 rounded-xl p-6 mb-6 bg-linear-to-br from-gray-50 to-white">
+            <div class="border-2 border-gray-300 rounded-xl p-6 mb-6 bg-gradient-to-br from-gray-50 to-white">
                 <div class="flex flex-col md:flex-row md:items-center gap-6">
                     <!-- Checkbox Area -->
                     <div class="shrink-0">

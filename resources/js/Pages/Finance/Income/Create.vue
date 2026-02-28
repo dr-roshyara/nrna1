@@ -18,7 +18,7 @@
                             name="region"
                             id="region"
                             v-model="form.region"
-                            class="focus:shadow-outline block w-full appearance-none rounded-sm border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-gray-500 focus:outline-hidden"
+                            class="focus:shadow-outline block w-full appearance-none rounded-sm border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-gray-500 focus:outline-none"
                         >
                             <option>Europe</option>
                             <option>America</option>
@@ -69,7 +69,7 @@
                             name="committee_name"
                             id="committee_name"
                             v-model="form.committee_name"
-                            class="focus:shadow-outline block w-full appearance-none rounded-sm border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-gray-500 focus:outline-hidden"
+                            class="focus:shadow-outline block w-full appearance-none rounded-sm border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-gray-500 focus:outline-none"
                         >
                             <option>ICC</option>
                             <option>NCC</option>

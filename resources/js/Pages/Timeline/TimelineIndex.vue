@@ -263,7 +263,7 @@
               </div>
               <div class="w-full p-2">
                 <textarea
-                  class="dark:text-white text-gray-900 placeholder-gray-400 w-full h-10 bg-transparent border-0 focus:outline-hidden resize-none"
+                  class="dark:text-white text-gray-900 placeholder-gray-400 w-full h-10 bg-transparent border-0 focus:outline-none resize-none"
                   placeholder="What's happening?"
                 ></textarea>
               </div>
@@ -895,7 +895,7 @@
                 </svg>
               </div>
               <input
-                class="w-full bg-gray-200 dark:bg-dim-400 border-gray-200 dark:border-dim-400 text-gray-100 focus:bg-gray-100 dark:focus:bg-dim-900 focus:outline-hidden focus:border focus:border-blue-200 font-normal h-9 flex items-center pl-12 text-sm rounded-full border shadow-sm"
+                class="w-full bg-gray-200 dark:bg-dim-400 border-gray-200 dark:border-dim-400 text-gray-100 focus:bg-gray-100 dark:focus:bg-dim-900 focus:outline-none focus:border focus:border-blue-200 font-normal h-9 flex items-center pl-12 text-sm rounded-full border shadow-sm"
                 placeholder="Search Twitter"
               />
             </div>

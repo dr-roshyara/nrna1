@@ -3,7 +3,7 @@
         <app-layout>
             <div class="mt-6 text-center max-w-4xl mx-auto">
                 <!-- Success Message -->
-                <div class="m-auto text-center bg-linear-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg mb-8">
+                <div class="m-auto text-center bg-gradient-to-r from-green-500 to-blue-600 text-white py-6 px-8 rounded-xl shadow-lg mb-8">
                     <div class="text-4xl mb-3">🎉</div>
                     <p class="text-xl font-bold mb-2">Welcome {{ name }}!</p>
                     <p class="text-lg mb-2">Your code has been verified. You can now vote!</p>
@@ -80,7 +80,7 @@
                             <!-- Submit Button -->
                             <button
                                 type="submit"
-                                class="w-full bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-xl py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
+                                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-xl py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform transition-all duration-200 hover:scale-105"
                                 :disabled="!form.agree_button"
                                 :class="{ 'opacity-50 cursor-not-allowed': !form.agree_button }"
                             >

@@ -1,7 +1,6 @@
 <template>
-  <div class="min-h-screen bg-linear-to-b from-blue-50 to-white">
+  <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white">
     <!-- Breadcrumb Schema for SEO -->
-    <BreadcrumbSchema />
 
     <!-- Header Section -->
     <section class="relative py-16 md:py-24 lg:py-32 bg-blue-900 text-white">
@@ -188,7 +187,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 md:py-20 bg-linear-to-r from-blue-900 to-blue-800">
+    <section class="py-16 md:py-20 bg-gradient-to-r from-blue-900 to-blue-800">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
         <div class="text-center text-white max-w-2xl mx-auto">
           <h2 class="text-3xl md:text-4xl font-bold mb-4">
@@ -211,12 +210,10 @@ import pricingDe from '../locales/pages/pricing/de.json';
 import pricingEn from '../locales/pages/pricing/en.json';
 import pricingNp from '../locales/pages/pricing/np.json';
 import { useMeta } from '@/composables/useMeta';
-import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue';
 
 export default {
   name: 'Pricing',
   components: {
-    BreadcrumbSchema,
   },
   data() {
     return {
@@ -291,7 +288,7 @@ button:focus {
 /* High contrast mode */
 @media (prefers-contrast: high) {
   .bg-gradient-to-r,
-  .bg-linear-to-b {
+  .bg-gradient-to-b {
     background: #ffffff !important;
   }
 

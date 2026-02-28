@@ -1,7 +1,6 @@
 <template>
   <ElectionLayout>
     <!-- Breadcrumb Schema for SEO -->
-    <BreadcrumbSchema />
 
     <!-- Accessibility: Screen reader announcement -->
     <div role="status" aria-live="polite" class="sr-only">
@@ -297,7 +296,6 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Link } from '@inertiajs/vue3'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
-import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue'
 import { useMemberImport } from '@/composables/useMemberImport'
 import { useMeta } from '@/composables/useMeta'
 

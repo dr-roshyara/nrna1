@@ -1,7 +1,6 @@
 <template>
     <div v-if="!loggedIn" class="min-h-screen bg-gray-50">
         <!-- Breadcrumb Schema for SEO -->
-        <BreadcrumbSchema />
 
         <!-- Header -->
         <ElectionHeader :isLoggedIn="false" :locale="$page.props.locale" />
@@ -41,7 +40,6 @@
 <script>
 import Dashboard from "@/pages/Dashboard.vue";
 import ElectionHeader from "@/components/Header/ElectionHeader.vue";
-import BreadcrumbSchema from "@/components/BreadcrumbSchema.vue";
 
 // Import Welcome section components
 import HeroSection from "@/components/Welcome/HeroSection.vue";
@@ -70,7 +68,6 @@ export default {
     components: {
         Dashboard,
         ElectionHeader,
-        BreadcrumbSchema,
         HeroSection,
         NGOFeaturesSection,
         HowItWorksSection,

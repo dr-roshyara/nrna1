@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 z-40 bg-linear-to-br from-blue-900 via-blue-800 to-blue-700 text-white shadow-lg border-b border-blue-600/30 relative">
+  <header class="sticky top-0 z-40 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white shadow-lg border-b border-blue-600/30 relative">
     <div class="container mx-auto px-3 md:px-6 lg:px-8 relative">
       <!-- Top Row: Logo + Controls -->
       <div class="flex items-center justify-between py-3 md:py-4 gap-3">
@@ -32,7 +32,7 @@
             <select
               :value="currentLocale"
               @change="handleLanguageChange"
-              class="appearance-none bg-white/10 text-white border border-white/30 rounded-sm px-2 md:px-4 py-2 text-xs md:text-sm font-medium focus:outline-hidden focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all cursor-pointer"
+              class="appearance-none bg-white/10 text-white border border-white/30 rounded-sm px-2 md:px-4 py-2 text-xs md:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all cursor-pointer"
               :aria-label="$t('common.select_language')"
             >
               <option value="de" class="bg-blue-900 text-white">DE</option>
@@ -51,7 +51,7 @@
             <a
               v-if="!isLoggedIn"
               :href="route('login')"
-              class="inline-flex items-center px-3 md:px-4 py-2 bg-white text-blue-900 font-semibold text-xs md:text-sm rounded-sm hover:bg-blue-50 focus:outline-hidden focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group"
+              class="inline-flex items-center px-3 md:px-4 py-2 bg-white text-blue-900 font-semibold text-xs md:text-sm rounded-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group"
             >
               <svg class="w-4 h-4 mr-1 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
@@ -65,7 +65,7 @@
               type="button"
               @click="logout"
               :disabled="isLoggingOut"
-              class="inline-flex items-center px-3 md:px-4 py-2 border-2 border-white text-white font-semibold text-xs md:text-sm rounded-sm hover:bg-white/10 focus:outline-hidden focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group disabled:opacity-50 disabled:cursor-not-allowed"
+              class="inline-flex items-center px-3 md:px-4 py-2 border-2 border-white text-white font-semibold text-xs md:text-sm rounded-sm hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap group disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg class="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -79,7 +79,7 @@
             @click="toggleMobileMenu"
             :aria-expanded="showMobileMenu"
             :aria-label="showMobileMenu ? $t('common.close_menu') : $t('common.open_menu')"
-            class="md:hidden p-2 rounded-lg hover:bg-white/10 focus:outline-hidden focus:ring-2 focus:ring-white/50 transition-all duration-200"
+            class="md:hidden p-2 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200"
           >
             <svg v-if="!showMobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -94,80 +94,102 @@
       <!-- Navigation Row - Desktop Only -->
       <nav class="hidden md:flex items-center justify-between py-3 border-t border-blue-600/50" role="navigation" :aria-label="$t('common.main_navigation')">
         <div class="flex items-center gap-1">
-          <a
+          <Link
             href="/"
-            class="text-white font-medium hover:text-blue-100 focus:outline-hidden focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
+            class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
           >
             {{ $t('navigation.home') }}
-          </a>
-          <a
+          </Link>
+          <Link
             href="/about"
-            class="text-white font-medium hover:text-blue-100 focus:outline-hidden focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
+            class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
           >
             {{ $t('navigation.about') }}
-          </a>
-          <a
+          </Link>
+          <Link
             href="/faq"
-            class="text-white font-medium hover:text-blue-100 focus:outline-hidden focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
+            class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
           >
             {{ $t('navigation.faq') }}
-          </a>
+          </Link>
         </div>
 
         <!-- Demo Link - Special CTA -->
-        <a
-          href="/election/demo/start"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded-sm hover:from-green-600 hover:to-emerald-600 focus:outline-hidden focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
+        <Link
+          :href="route('election.demo.start')"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded-sm hover:from-green-600 hover:to-emerald-600 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
           :title="$t('navigation.demo_title', 'Try demo election without registration')"
         >
           <svg class="w-4 h-4 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
             <path d="M10.5 1.5H19a.5.5 0 01.5.5v8a.5.5 0 01-.5.5h-8.5V19a.5.5 0 01-.5.5H1a.5.5 0 01-.5-.5v-8a.5.5 0 01.5-.5H9V2a.5.5 0 01.5-.5z"/>
           </svg>
           {{ $t('navigation.demo', 'Try Demo') }}
-        </a>
+        </Link>
       </nav>
+
+      <!-- Breadcrumb Navigation with JSON-LD Schema -->
+      <nav v-if="breadcrumbs && breadcrumbs.length > 0" class="breadcrumb-nav bg-blue-800/50 border-t border-blue-600/30" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list container mx-auto px-3 md:px-6 lg:px-8 py-2">
+          <li v-for="(item, index) in breadcrumbs" :key="index" class="breadcrumb-item inline-flex items-center">
+            <a
+              v-if="index < breadcrumbs.length - 1"
+              :href="item.url"
+              class="breadcrumb-link text-blue-200 hover:text-white text-xs md:text-sm px-2 py-1 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+            >
+              {{ item.label }}
+            </a>
+            <span v-else class="breadcrumb-current text-blue-100 text-xs md:text-sm px-2 py-1 font-medium">
+              {{ item.label }}
+            </span>
+            <span v-if="index < breadcrumbs.length - 1" class="breadcrumb-separator text-blue-400 mx-1" aria-hidden="true">/</span>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- JSON-LD BreadcrumbList Schema for SEO (injected via v-html) -->
+      <div v-if="jsonLdString" v-html="jsonLdString" style="display: none;"></div>
 
       <!-- Mobile Menu - Dropdown for small screens -->
       <div
         v-if="showMobileMenu"
-        class="md:hidden absolute top-full left-0 right-0 bg-linear-to-b from-blue-900 to-blue-950 border-t border-blue-600/50 shadow-2xl py-4 px-0 space-y-2 z-50"
+        class="md:hidden absolute top-full left-0 right-0 bg-gradient-to-b from-blue-900 to-blue-950 border-t border-blue-600/50 shadow-2xl py-4 px-0 space-y-2 z-50"
         role="region"
         :aria-label="$t('common.mobile_navigation')"
       >
         <!-- Mobile Navigation Links -->
         <div class="space-y-1 px-3">
-          <a
+          <Link
             href="/"
             @click="showMobileMenu = false"
             class="block px-4 py-3 text-white hover:bg-white/20 active:bg-white/30 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             🏠 {{ $t('navigation.home') }}
-          </a>
-          <a
+          </Link>
+          <Link
             href="/about"
             @click="showMobileMenu = false"
             class="block px-4 py-3 text-white hover:bg-white/20 active:bg-white/30 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             ℹ️ {{ $t('navigation.about') }}
-          </a>
-          <a
+          </Link>
+          <Link
             href="/faq"
             @click="showMobileMenu = false"
             class="block px-4 py-3 text-white hover:bg-white/20 active:bg-white/30 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             ❓ {{ $t('navigation.faq') }}
-          </a>
+          </Link>
         </div>
 
         <!-- Mobile Demo CTA -->
         <div class="pt-3 border-t border-blue-600/50 px-3">
-          <a
-            href="/election/demo/start"
+          <Link
+            :href="route('election.demo.start')"
             @click="showMobileMenu = false"
-            class="block px-4 py-3 bg-linear-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded-lg hover:from-green-600 hover:to-emerald-600 active:from-green-700 active:to-emerald-700 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
+            class="block px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm rounded-lg hover:from-green-600 hover:to-emerald-600 active:from-green-700 active:to-emerald-700 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
           >
             🎪 {{ $t('navigation.demo', 'Try Demo') }}
-          </a>
+          </Link>
         </div>
 
         <!-- Mobile Auth -->
@@ -195,257 +217,215 @@
   </header>
 </template>
 
-<script>
-import { useForm } from '@inertiajs/vue3'
+<script setup>
+import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
+import { useForm, usePage, Link } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
+import { route } from 'ziggy-js'
 
-export default {
-  name: 'ElectionHeader',
+const { t, locale } = useI18n()
+const page = usePage()
 
-  props: {
-    isLoggedIn: {
-      type: Boolean,
-      default: false,
-    },
-    locale: {
-      type: String,
-      default: null,
-      validator: (value) => value === null || ['de', 'en', 'np'].includes(value),
-    },
+const props = defineProps({
+  isLoggedIn: {
+    type: Boolean,
+    default: false,
   },
-
-  data() {
-    return {
-      currentLocale: this.getInitialLocale(),
-      showMobileMenu: false,
-      handleEscapeKey: null,
-      handleResize: null,
-      logoutForm: useForm({}),
-    };
+  locale: {
+    type: String,
+    default: null,
+    validator: (value) => value === null || ['de', 'en', 'np'].includes(value),
   },
-
-  created() {
-    // Sync Vue I18n with the determined locale
-    if (this.$i18n) {
-      const locale = this.getInitialLocale();
-      if (locale && locale !== this.$i18n.locale) {
-        this.$i18n.locale = locale;
-        console.log('📦 Initialized locale:', locale);
-      }
+  breadcrumbs: {
+    type: Array,
+    default: () => [],
+    validator: (value) => {
+      return value.every(item =>
+        typeof item.label === 'string' &&
+        (typeof item.url === 'string' || item.url === null)
+      );
     }
   },
+});
 
-  methods: {
-    getInitialLocale() {
-      // Priority 1: Check localStorage for user preference
-      const savedLocale = localStorage.getItem('preferred_locale');
-      if (savedLocale && ['de', 'en', 'np'].includes(savedLocale)) {
-        console.log('✅ Using saved locale from localStorage:', savedLocale);
-        return savedLocale;
-      }
+const currentLocale = ref(getInitialLocale());
+const showMobileMenu = ref(false);
+const logoutForm = useForm({});
 
-      // Priority 2: Use backend locale if provided
-      if (this.locale && ['de', 'en', 'np'].includes(this.locale)) {
-        console.log('📦 Using backend locale:', this.locale);
-        return this.locale;
-      }
+// Track logout form processing state
+const isLoggingOut = computed(() => logoutForm.processing);
 
-      // Priority 3: Use i18n's current locale
-      if (this.$i18n) {
-        console.log('📦 Using i18n locale:', this.$i18n.locale);
-        return this.$i18n.locale;
-      }
+// Get breadcrumbs from props or Inertia page props
+const breadcrumbs = computed(() => props.breadcrumbs || page.props.breadcrumbs || []);
 
-      // Fallback to German
-      return 'de';
+// Generate JSON-LD BreadcrumbList schema
+const jsonLdSchema = computed(() => {
+  if (!breadcrumbs.value || breadcrumbs.value.length === 0) return null;
+
+  const items = breadcrumbs.value.map((item, index) => ({
+    '@type': 'ListItem',
+    'position': index + 1,
+    'name': item.label,
+    'item': item.url
+  }));
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': items
+  };
+});
+
+// Generate JSON-LD string for v-html injection
+const jsonLdString = computed(() => {
+  if (!jsonLdSchema.value) return '';
+  return `<script type="application/ld+json">${JSON.stringify(jsonLdSchema.value)}<\/script>`;
+});
+
+function getInitialLocale() {
+  // Priority 1: Check localStorage for user preference
+  const savedLocale = localStorage.getItem('preferred_locale');
+  if (savedLocale && ['de', 'en', 'np'].includes(savedLocale)) {
+    console.log('✅ Using saved locale from localStorage:', savedLocale);
+    return savedLocale;
+  }
+
+  // Priority 2: Use backend locale if provided
+  if (props.locale && ['de', 'en', 'np'].includes(props.locale)) {
+    console.log('📦 Using backend locale:', props.locale);
+    return props.locale;
+  }
+
+  // Priority 3: Use i18n's current locale
+  if (locale && ['de', 'en', 'np'].includes(locale.value)) {
+    console.log('📦 Using i18n locale:', locale.value);
+    return locale.value;
+  }
+
+  // Fallback to German
+  return 'de';
+}
+
+function handleLanguageChange(event) {
+  const newLocale = event.target.value;
+
+  if (!['de', 'en', 'np'].includes(newLocale)) {
+    console.error('❌ Invalid locale:', newLocale);
+    return;
+  }
+
+  console.log('🌐 Language change requested:', newLocale);
+  currentLocale.value = newLocale;
+  switchLanguage(newLocale);
+}
+
+function switchLanguage(newLocale) {
+  console.log('🔄 Switching to locale:', newLocale);
+
+  // 1. Update Vue I18n immediately
+  if (locale) {
+    locale.value = newLocale;
+    console.log('✅ Vue I18n locale updated to:', newLocale);
+  }
+
+  // 2. Save preference to localStorage
+  localStorage.setItem('preferred_locale', newLocale);
+  console.log('💾 Preference saved to localStorage:', localStorage.getItem('preferred_locale'));
+
+  // 3. Set cookie for Laravel backend
+  const date = new Date();
+  date.setFullYear(date.getFullYear() + 1);
+  const cookieString = `locale=${newLocale}; expires=${date.toUTCString()}; path=/`;
+  console.log('🍪 Setting cookie:', cookieString);
+  document.cookie = cookieString;
+
+  // 4. Reload page after brief delay
+  console.log('🔄 Will reload in 300ms...');
+  setTimeout(() => {
+    console.log('🔄 Reloading now...');
+    window.location.reload(true);
+  }, 300);
+}
+
+function toggleMobileMenu() {
+  showMobileMenu.value = !showMobileMenu.value;
+}
+
+function closeMobileMenu() {
+  showMobileMenu.value = false;
+}
+
+function logout() {
+  console.log('🚪 Logout initiated');
+  closeMobileMenu();
+
+  logoutForm.post(route('logout'), {
+    preserveState: false,
+    preserveScroll: true,
+    onFinish: () => {
+      console.log('✓ Logout completed');
     },
-
-    /**
-     * Handle language change from select dropdown
-     */
-    handleLanguageChange(event) {
-      const newLocale = event.target.value;
-
-      if (!['de', 'en', 'np'].includes(newLocale)) {
-        console.error('❌ Invalid locale:', newLocale);
-        return;
-      }
-
-      console.log('🌐 Language change requested:', newLocale);
-      this.currentLocale = newLocale;
-      this.switchLanguage(newLocale);
-    },
-
-    /**
-     * Switch application language
-     * 1. Update Vue I18n (immediate frontend change)
-     * 2. Save preference to localStorage
-     * 3. Set cookie for Laravel backend
-     * 4. Reload page to let Laravel apply new locale
-     */
-    switchLanguage(locale) {
-      console.log('🔄 Switching to locale:', locale);
-
-      // 1. Update Vue I18n immediately
-      if (this.$i18n) {
-        this.$i18n.locale = locale;
-        console.log('✅ Vue I18n locale updated to:', locale);
-      }
-
-      // 2. Save preference to localStorage
-      localStorage.setItem('preferred_locale', locale);
-      console.log('💾 Preference saved to localStorage:', localStorage.getItem('preferred_locale'));
-
-      // 3. Set cookie for Laravel backend (try without SameSite first)
-      const date = new Date();
-      date.setFullYear(date.getFullYear() + 1);
-
-      // Try basic cookie first (without SameSite)
-      const cookieString = `locale=${locale}; expires=${date.toUTCString()}; path=/`;
-      console.log('🍪 Setting cookie:', cookieString);
-
-      document.cookie = cookieString;
-
-      // Debug immediately
-      console.log('🍪 document.cookie after setting:', document.cookie);
-      console.log('🍪 Cookie includes locale?', document.cookie.includes('locale='));
-
-      // Extract the actual value
-      const cookieMatch = document.cookie.match(/locale=([^;]+)/);
-      const actualValue = cookieMatch ? cookieMatch[1] : 'NOT FOUND';
-      console.log('🍪 Cookie value extracted:', actualValue);
-      console.log('🍪 Is it the value we set?', actualValue === locale);
-
-      // Verify cookie was actually set
-      setTimeout(() => {
-        const allCookies = document.cookie;
-        console.log('🍪 All cookies after 50ms:', allCookies);
-        const hasCookie = allCookies.includes(`locale=${locale}`);
-        console.log('🍪 Cookie still present?', hasCookie);
-
-        if (!hasCookie) {
-          console.warn('⚠️ Cookie NOT FOUND in document.cookie!');
-          console.warn('⚠️ This means the cookie was not set or was immediately deleted');
-        }
-      }, 50);
-
-      // 4. Reload page after brief delay to let UI update
-      console.log('🔄 Will reload in 300ms...');
-      setTimeout(() => {
-        console.log('🔄 Reloading now...');
-        console.log('🍪 Final cookie check before reload:', document.cookie);
-        window.location.reload(true); // Force reload from server
-      }, 300);
-    },
-
-    /**
-     * Toggle mobile menu visibility
-     */
-    toggleMobileMenu() {
-      this.showMobileMenu = !this.showMobileMenu;
-    },
-
-    /**
-     * Close mobile menu
-     */
-    closeMobileMenu() {
-      this.showMobileMenu = false;
-    },
-
-    /**
-     * Logout user using Inertia form helper
-     * PROPER PATTERN: Use router.js for all page requests
-     *
-     * Benefits:
-     * - Automatic CSRF token handling via middleware
-     * - Proper session invalidation and redirect
-     * - Works with Inertia's routing and history
-     * - No manual token extraction needed
-     * - Consistent with other Inertia requests
-     */
-    logout() {
-      console.log('🚪 Logout initiated');
-      this.closeMobileMenu();
-
-      // Use Inertia form helper for proper POST request
-      this.logoutForm.post(this.route('logout'), {
-        preserveState: false,
-        preserveScroll: true,
-        onFinish: () => {
-          console.log('✓ Logout completed');
-        },
-        onError: (errors) => {
-          console.error('❌ Logout error:', errors);
-          alert('Logout failed. Please try again.');
-        }
-      });
-    },
-  },
-
-  watch: {
-    /**
-     * When Laravel sends new locale (after page reload)
-     * Respects user's saved language preference from localStorage
-     * Only uses backend locale if user hasn't set a preference
-     */
-    locale(newLocale) {
-      // Check if user has a saved language preference first
-      const savedLocale = localStorage.getItem('preferred_locale');
-
-      if (savedLocale && ['de', 'en', 'np'].includes(savedLocale)) {
-        // User has a saved preference - always respect it
-        this.currentLocale = savedLocale;
-        if (this.$i18n && this.$i18n.locale !== savedLocale) {
-          this.$i18n.locale = savedLocale;
-          console.log('✅ Using saved language preference:', savedLocale);
-        }
-      } else if (newLocale && ['de', 'en', 'np'].includes(newLocale)) {
-        // No saved preference and backend sent a locale - use it
-        this.currentLocale = newLocale;
-        if (this.$i18n && this.$i18n.locale !== newLocale) {
-          this.$i18n.locale = newLocale;
-          console.log('📡 Backend locale synced to i18n:', newLocale);
-        }
-      }
-      // If both savedLocale and newLocale are empty, don't change anything
-    },
-  },
-
-  mounted() {
-    /**
-     * Close mobile menu on escape key press
-     */
-    this.handleEscapeKey = (event) => {
-      if (event.key === 'Escape' && this.showMobileMenu) {
-        this.closeMobileMenu();
-      }
-    };
-
-    document.addEventListener('keydown', this.handleEscapeKey);
-
-    /**
-     * Close mobile menu on window resize
-     */
-    this.handleResize = () => {
-      if (window.innerWidth >= 768 && this.showMobileMenu) {
-        this.closeMobileMenu();
-      }
-    };
-
-    window.addEventListener('resize', this.handleResize);
-  },
-
-  beforeUnmount() {
-    /**
-     * Cleanup event listeners (Vue 3 lifecycle hook)
-     */
-    if (this.handleEscapeKey) {
-      document.removeEventListener('keydown', this.handleEscapeKey);
+    onError: (errors) => {
+      console.error('❌ Logout error:', errors);
+      alert('Logout failed. Please try again.');
     }
-    if (this.handleResize) {
-      window.removeEventListener('resize', this.handleResize);
+  });
+}
+
+let handleEscapeKey = null;
+let handleResize = null;
+
+onMounted(() => {
+  // Sync Vue I18n with initial locale
+  if (locale && currentLocale.value !== locale.value) {
+    locale.value = currentLocale.value;
+    console.log('📦 Initialized locale:', currentLocale.value);
+  }
+
+  // Close mobile menu on escape key
+  handleEscapeKey = (event) => {
+    if (event.key === 'Escape' && showMobileMenu.value) {
+      closeMobileMenu();
     }
-  },
-};
+  };
+  document.addEventListener('keydown', handleEscapeKey);
+
+  // Close mobile menu on window resize
+  handleResize = () => {
+    if (window.innerWidth >= 768 && showMobileMenu.value) {
+      closeMobileMenu();
+    }
+  };
+  window.addEventListener('resize', handleResize);
+});
+
+onBeforeUnmount(() => {
+  if (handleEscapeKey) {
+    document.removeEventListener('keydown', handleEscapeKey);
+  }
+  if (handleResize) {
+    window.removeEventListener('resize', handleResize);
+  }
+});
+
+// Watch for locale changes from backend
+watch(() => props.locale, (newLocale) => {
+  const savedLocale = localStorage.getItem('preferred_locale');
+
+  if (savedLocale && ['de', 'en', 'np'].includes(savedLocale)) {
+    currentLocale.value = savedLocale;
+    if (locale && locale.value !== savedLocale) {
+      locale.value = savedLocale;
+      console.log('✅ Using saved language preference:', savedLocale);
+    }
+  } else if (newLocale && ['de', 'en', 'np'].includes(newLocale)) {
+    currentLocale.value = newLocale;
+    if (locale && locale.value !== newLocale) {
+      locale.value = newLocale;
+      console.log('📡 Backend locale synced to i18n:', newLocale);
+    }
+  }
+});
 </script>
 
 <style scoped>

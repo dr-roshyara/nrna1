@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen flex flex-col bg-linear-to-br from-gray-50 to-gray-100">
+    <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
         <!-- Header - same as home page (http://localhost:8000) -->
         <ElectionHeader />
 
@@ -9,7 +9,7 @@
                 <!-- Card Container -->
                 <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
                     <!-- Header Section -->
-                    <div class="bg-linear-to-r from-blue-600 to-indigo-700 px-6 md:px-8 py-8 md:py-10 text-center">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-6 md:px-8 py-8 md:py-10 text-center">
                         <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">
                             {{ $t('pages.verify-email.title') }}
                         </h1>
@@ -53,7 +53,7 @@
 
                         <!-- Verification Link Sent Message -->
                         <div
-                            v-if="verificationLinkSent"
+                            v-if="verificationLinkSent()"
                             class="mb-8 p-4 md:p-5 bg-green-50 border-l-4 border-green-500 rounded-lg"
                             role="alert"
                         >
@@ -69,28 +69,36 @@
 
                         <!-- Actions -->
                         <form @submit.prevent="submit" class="space-y-3">
-                            <jet-button
-                                :class="{ 'opacity-50 cursor-not-allowed': form.processing }"
+                            <!-- Resend Verification Email Button -->
+                            <button
+                                type="submit"
                                 :disabled="form.processing"
-                                class="w-full"
+                                class="w-full px-6 py-3 text-base font-semibold rounded-lg transition-all duration-200 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2"
+                                :class="form.processing
+                                    ? 'bg-blue-400 text-white cursor-not-allowed opacity-75'
+                                    : 'bg-gradient-to-r from-blue-600 to-indigo-700 text-white hover:from-blue-700 hover:to-indigo-800 focus:ring-blue-500'"
                             >
-                                <span v-if="!form.processing">
-                                    {{ $t('pages.verify-email.resend_button') }}
-                                </span>
-                                <span v-else class="flex items-center justify-center">
-                                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                <span v-if="!form.processing" class="flex items-center justify-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                     {{ $t('pages.verify-email.resend_button') }}
                                 </span>
-                            </jet-button>
+                                <span v-else class="flex items-center justify-center">
+                                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    {{ $t('pages.verify-email.resending') }}
+                                </span>
+                            </button>
 
+                            <!-- Logout Button -->
                             <Link
                                 :href="route('logout')"
                                 method="post"
                                 as="button"
-                                class="w-full px-4 py-3 text-sm md:text-base font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 transition-colors duration-200"
+                                class="w-full px-4 py-3 text-sm md:text-base font-medium text-gray-700 bg-gray-100 border-2 border-gray-300 rounded-lg hover:bg-gray-200 hover:border-gray-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
                             >
                                 {{ $t('pages.verify-email.logout_button') }}
                             </Link>
@@ -112,39 +120,26 @@
     </div>
 </template>
 
-<script>
-import JetButton from "@/Components/Jetstream/Button.vue";
+<script setup>
 import { Link } from "@inertiajs/vue3";
+import { useForm } from "@inertiajs/vue3";
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
-import PublicDigitFooter from  "@/Components/Jetstream/PublicDigitFooter.vue";
-export default {
-    components: {
-        JetButton,
-        Link,
-        ElectionHeader,
-        PublicDigitFooter,
-    },
+import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 
-    props: {
-        status: String,
-    },
+const props = defineProps({
+    status: String,
+});
 
-    data() {
-        return {
-            form: this.$inertia.form(),
-        };
-    },
+// Initialize form for email verification submission
+const form = useForm({});
 
-    methods: {
-        submit() {
-            this.form.post(this.route("verification.send"));
-        },
-    },
+// Check if verification link was just sent
+const verificationLinkSent = () => {
+    return props.status === "verification-link-sent";
+};
 
-    computed: {
-        verificationLinkSent() {
-            return this.status === "verification-link-sent";
-        },
-    },
+// Submit form to resend verification email
+const submit = () => {
+    form.post(route("verification.send"));
 };
 </script>

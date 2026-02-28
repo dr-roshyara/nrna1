@@ -1,6 +1,6 @@
 <template>
     <election-layout>
-        <div class="min-h-screen bg-linear-to-br from-blue-50 to-indigo-50 py-8">
+        <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <!-- Page Header -->
                 <header class="text-center mb-8">
@@ -59,7 +59,7 @@
                 <!-- Voters List -->
                 <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
                     <!-- Table Header -->
-                    <div class="px-6 py-4 bg-linear-to-r from-blue-600 to-indigo-600">
+                    <div class="px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600">
                         <h2 class="text-xl font-semibold text-white">Voted Members List</h2>
                     </div>
 

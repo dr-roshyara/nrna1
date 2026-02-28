@@ -24,5 +24,8 @@
   },
   "status": {
     "success_icon_label": "Success"
+  },
+  "validation": {
+    "error": "Invalid email address"
   }
 }

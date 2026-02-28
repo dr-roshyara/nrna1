@@ -62,7 +62,7 @@ class LoginController extends Controller
 
         // If user has an organization, redirect to it; otherwise go to dashboard
         if ($user->organisation_id) {
-            $organization = $user->organizations()->first();
+            $organization = \App\Models\Organization::find($user->organisation_id);
             if ($organization) {
                 return redirect()->intended(route('organizations.show', $organization->slug));
             }

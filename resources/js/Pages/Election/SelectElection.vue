@@ -104,7 +104,7 @@
                 <button
                   @click="selectElection(election)"
                   :aria-label="`${$t('pages.election.select_election.select_button')}: ${election.name}`"
-                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {{ $t('pages.election.select_election.select_button') }}
                 </button>
@@ -127,7 +127,7 @@
           </p>
           <InertiaLink
             href="/dashboard"
-            class="mt-4 inline-block bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded-lg transition-colors focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+            class="mt-4 inline-block bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
           >
             {{ $t('pages.election.actions.back') }}
           </InertiaLink>

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Phase 1: Real Voting Enforcement - Database Layer
@@ -93,26 +94,46 @@ class AddCompositeForeignKeysToVotingTables extends Migration
             // FK doesn't exist in fresh install - continue
         }
 
-        // Step 3: Add composite foreign keys
-        Schema::table('votes', function (Blueprint $table) {
-            // Add composite foreign key: (election_id, organisation_id) → elections(id, organisation_id)
-            // This ensures a vote cannot reference an election from a different organisation
-            $table->foreign(['election_id', 'organisation_id'])
-                  ->references(['id', 'organisation_id'])
-                  ->on('elections')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
-        });
+        // Step 3: Add composite foreign keys (check for existence first)
+        try {
+            $votes_composite_fk = DB::select("SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+                WHERE TABLE_NAME = 'votes' AND TABLE_SCHEMA = DATABASE()
+                AND CONSTRAINT_NAME = 'votes_election_id_organisation_id_foreign'");
 
-        Schema::table('results', function (Blueprint $table) {
-            // Add composite foreign key: (vote_id, organisation_id) → votes(id, organisation_id)
-            // This ensures a result cannot reference a vote from a different organisation
-            $table->foreign(['vote_id', 'organisation_id'])
-                  ->references(['id', 'organisation_id'])
-                  ->on('votes')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
-        });
+            if (empty($votes_composite_fk)) {
+                Schema::table('votes', function (Blueprint $table) {
+                    // Add composite foreign key: (election_id, organisation_id) → elections(id, organisation_id)
+                    // This ensures a vote cannot reference an election from a different organisation
+                    $table->foreign(['election_id', 'organisation_id'])
+                          ->references(['id', 'organisation_id'])
+                          ->on('elections')
+                          ->onDelete('cascade')
+                          ->onUpdate('cascade');
+                });
+            }
+        } catch (\Exception $e) {
+            // FK already exists, continue
+        }
+
+        try {
+            $results_composite_fk = DB::select("SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+                WHERE TABLE_NAME = 'results' AND TABLE_SCHEMA = DATABASE()
+                AND CONSTRAINT_NAME = 'results_vote_id_organisation_id_foreign'");
+
+            if (empty($results_composite_fk)) {
+                Schema::table('results', function (Blueprint $table) {
+                    // Add composite foreign key: (vote_id, organisation_id) → votes(id, organisation_id)
+                    // This ensures a result cannot reference a vote from a different organisation
+                    $table->foreign(['vote_id', 'organisation_id'])
+                          ->references(['id', 'organisation_id'])
+                          ->on('votes')
+                          ->onDelete('cascade')
+                          ->onUpdate('cascade');
+                });
+            }
+        } catch (\Exception $e) {
+            // FK already exists, continue
+        }
     }
 
     public function down()

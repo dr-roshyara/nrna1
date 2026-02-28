@@ -1,7 +1,7 @@
 <template>
     <election-layout>
         <!-- Workflow Step Indicator - Step 1/5 -->
-        <div class="w-full bg-linear-to-br from-gray-50 to-blue-50 py-6 md:py-8">
+        <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <WorkflowStepIndicator workflow="VOTING" :currentStep="1" />
             </div>
@@ -146,7 +146,7 @@
                 <button
                     type="submit"
                     :disabled="!form.voting_code.trim() || form.voting_code.length !== 6 || codeExpired"
-                    class="w-full font-bold py-4 px-6 rounded-lg transition-all shadow-lg focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
+                    class="w-full font-bold py-4 px-6 rounded-lg transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"
                     :class="{
                         'bg-blue-600 hover:bg-blue-700 text-white cursor-pointer': form.voting_code.length === 6 && !codeExpired,
                         'bg-gray-300 text-gray-500 cursor-not-allowed': form.voting_code.length !== 6 || codeExpired

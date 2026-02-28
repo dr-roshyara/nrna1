@@ -126,15 +126,26 @@ class DemoCodeController extends Controller
 
             // Send new code notification
             try {
-                $user->notify(new SendFirstVerificationCode($user, $code->code1));
-                Log::info('✅ [DEMO] New verification code sent', [
+                Log::info('📧 [DEMO] Attempting to send new verification code after expiry', [
                     'user_id' => $user->id,
+                    'email' => $user->email,
+                    'code' => $code->code1,
+                    'previous_sent_at' => $code->code1_sent_at,
+                ]);
+
+                $user->notify(new SendFirstVerificationCode($user, $code->code1));
+
+                Log::info('✅ [DEMO] New verification code sent after expiry', [
+                    'user_id' => $user->id,
+                    'email' => $user->email,
                     'code' => $code->code1,
                 ]);
             } catch (\Exception $e) {
-                Log::error('❌ [DEMO] Failed to send new code', [
+                Log::error('❌ [DEMO] Failed to send new code after expiry', [
                     'user_id' => $user->id,
+                    'email' => $user->email,
                     'error' => $e->getMessage(),
+                    'exception_class' => get_class($e),
                 ]);
             }
 
@@ -746,18 +757,35 @@ class DemoCodeController extends Controller
             // Send code via email only if user has valid email
             if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
                 try {
-                    $user->notify(new SendFirstVerificationCode($user, $code->code1));
-                } catch (\Exception $e) {
-                    Log::error('[DEMO] Failed to send verification code email', [
+                    Log::info('[DEMO] 📧 Attempting to send verification code email', [
                         'user_id' => $user->id,
                         'email' => $user->email,
+                        'code' => $code->code1,
+                        'mailer' => config('mail.default'),
+                    ]);
+
+                    $user->notify(new SendFirstVerificationCode($user, $code->code1));
+
+                    Log::info('[DEMO] ✅ Verification code email sent successfully', [
+                        'user_id' => $user->id,
+                        'email' => $user->email,
+                        'code' => $code->code1,
+                    ]);
+                } catch (\Exception $e) {
+                    Log::error('[DEMO] ❌ Failed to send verification code email', [
+                        'user_id' => $user->id,
+                        'email' => $user->email,
+                        'code' => $code->code1,
                         'error' => $e->getMessage(),
+                        'exception_class' => get_class($e),
+                        'trace' => $e->getTraceAsString(),
                     ]);
                 }
             } else {
-                Log::warning('[DEMO] User does not have valid email for verification code', [
+                Log::warning('[DEMO] ⚠️ User does not have valid email for verification code', [
                     'user_id' => $user->id,
                     'email' => $user->email ?? 'null',
+                    'email_filter_result' => filter_var($user->email ?? '', FILTER_VALIDATE_EMAIL),
                 ]);
             }
 

@@ -24,5 +24,8 @@
   },
   "status": {
     "success_icon_label": "सफलता"
+  },
+  "validation": {
+    "error": "अमान्य इमेल ठेगाना"
   }
 }

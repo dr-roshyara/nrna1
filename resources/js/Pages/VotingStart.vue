@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-linear-to-b from-blue-50 to-white">
+  <div class="min-h-screen bg-gradient-to-b from-blue-50 to-white">
     <!-- Hero Section -->
     <section class="relative py-12 md:py-20 lg:py-28">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
@@ -34,7 +34,7 @@
           <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-stretch sm:items-center mb-12 md:mb-16">
             <a
               href="/voting/election"
-              class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-blue-900 text-white font-bold text-sm md:text-lg rounded-xl hover:bg-blue-800 focus:outline-hidden focus:ring-4 focus:ring-blue-300 transition-colors shadow-lg min-h-[44px] md:min-h-[56px]"
+              class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-blue-900 text-white font-bold text-sm md:text-lg rounded-xl hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-colors shadow-lg min-h-[44px] md:min-h-[56px]"
             >
               <svg class="w-5 h-5 md:w-6 md:h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"/>
@@ -44,7 +44,7 @@
 
             <a
               href="/pricing"
-              class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 border-2 border-blue-900 text-blue-900 font-bold text-sm md:text-lg rounded-xl hover:bg-blue-50 focus:outline-hidden focus:ring-4 focus:ring-blue-100 transition-colors min-h-[44px] md:min-h-[56px]"
+              class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 border-2 border-blue-900 text-blue-900 font-bold text-sm md:text-lg rounded-xl hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-100 transition-colors min-h-[44px] md:min-h-[56px]"
             >
               <svg class="w-5 h-5 md:w-6 md:h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
@@ -145,7 +145,7 @@
     </section>
 
     <!-- Pricing Callout -->
-    <section class="py-12 md:py-16 lg:py-20 bg-linear-to-r from-blue-900 to-blue-800">
+    <section class="py-12 md:py-16 lg:py-20 bg-gradient-to-r from-blue-900 to-blue-800">
       <div class="container mx-auto px-4 md:px-6 lg:px-8">
         <div class="text-center text-white max-w-3xl mx-auto">
           <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
@@ -156,7 +156,7 @@
           </p>
           <a
             href="/pricing"
-            class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 font-bold text-sm md:text-lg rounded-xl hover:bg-blue-50 focus:outline-hidden focus:ring-4 focus:ring-white/30 transition-colors shadow-lg min-h-[44px] md:min-h-[56px]"
+            class="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 font-bold text-sm md:text-lg rounded-xl hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-white/30 transition-colors shadow-lg min-h-[44px] md:min-h-[56px]"
           >
             {{ $t('pages.voting-start.cta.demo') }}
           </a>
@@ -198,7 +198,7 @@ a:focus {
 /* High contrast mode */
 @media (prefers-contrast: high) {
   .bg-gradient-to-r,
-  .bg-linear-to-b {
+  .bg-gradient-to-b {
     background: #ffffff !important;
   }
 

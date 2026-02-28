@@ -1,9 +1,9 @@
 <template>
     <VotingLayout>
-        <div class="min-h-screen bg-linear-to-br from-green-50 via-emerald-50 to-blue-50 py-12 px-4">
+        <div class="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-blue-50 py-12 px-4">
             <div class="max-w-6xl mx-auto">
                 <!-- Success Banner -->
-                <div class="mb-12 bg-linear-to-r from-green-500 to-emerald-600 rounded-3xl shadow-2xl overflow-hidden">
+                <div class="mb-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-3xl shadow-2xl overflow-hidden">
                     <div class="relative px-8 py-16 md:py-20 text-center">
                         <!-- Animated Background -->
                         <div class="absolute inset-0 opacity-10">
@@ -74,7 +74,7 @@
                                     </h3>
                                     <div class="space-y-4">
                                         <div v-for="(group, index) in national_posts_grouped" :key="index"
-                                             class="p-4 bg-linear-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+                                             class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
                                             <h4 class="font-semibold text-gray-900 mb-3 text-lg">
                                                 {{ group.post_name }}
                                             </h4>
@@ -101,7 +101,7 @@
                                     </h3>
                                     <div class="space-y-4">
                                         <div v-for="(group, index) in regional_posts_grouped" :key="index"
-                                             class="p-4 bg-linear-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
+                                             class="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
                                             <h4 class="font-semibold text-gray-900 mb-3 text-lg">
                                                 {{ group.post_name }}
                                             </h4>
@@ -133,7 +133,7 @@
                             </h2>
 
                             <div class="grid md:grid-cols-2 gap-6">
-                                <div class="p-6 bg-linear-to-br from-purple-50 to-pink-50 rounded-xl border border-purple-200">
+                                <div class="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border border-purple-200">
                                     <div class="flex items-start mb-3">
                                         <div class="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold mr-3 shrink-0">1</div>
                                         <h3 class="font-semibold text-gray-900 text-lg">{{ $t('pages.vote_final.what_next.step_1_title') }}</h3>
@@ -141,7 +141,7 @@
                                     <p class="text-gray-700 text-sm">{{ $t('pages.vote_final.what_next.step_1_description') }}</p>
                                 </div>
 
-                                <div class="p-6 bg-linear-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-200">
+                                <div class="p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-200">
                                     <div class="flex items-start mb-3">
                                         <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mr-3 shrink-0">2</div>
                                         <h3 class="font-semibold text-gray-900 text-lg">{{ $t('pages.vote_final.what_next.step_2_title') }}</h3>
@@ -149,7 +149,7 @@
                                     <p class="text-gray-700 text-sm">{{ $t('pages.vote_final.what_next.step_2_description') }}</p>
                                 </div>
 
-                                <div class="p-6 bg-linear-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200">
+                                <div class="p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200">
                                     <div class="flex items-start mb-3">
                                         <div class="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold mr-3 shrink-0">3</div>
                                         <h3 class="font-semibold text-gray-900 text-lg">{{ $t('pages.vote_final.what_next.step_3_title') }}</h3>
@@ -157,7 +157,7 @@
                                     <p class="text-gray-700 text-sm">{{ $t('pages.vote_final.what_next.step_3_description') }}</p>
                                 </div>
 
-                                <div class="p-6 bg-linear-to-br from-orange-50 to-red-50 rounded-xl border border-orange-200">
+                                <div class="p-6 bg-gradient-to-br from-orange-50 to-red-50 rounded-xl border border-orange-200">
                                     <div class="flex items-start mb-3">
                                         <div class="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold mr-3 shrink-0">4</div>
                                         <h3 class="font-semibold text-gray-900 text-lg">{{ $t('pages.vote_final.what_next.step_4_title') }}</h3>
@@ -178,7 +178,7 @@
 
                             <div class="space-y-4">
                                 <!-- Security -->
-                                <div class="p-4 bg-linear-to-br from-blue-50 to-indigo-50 rounded-lg border-l-4 border-blue-600">
+                                <div class="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border-l-4 border-blue-600">
                                     <div class="flex items-start">
                                         <svg class="w-5 h-5 text-blue-600 mr-3 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
@@ -191,7 +191,7 @@
                                 </div>
 
                                 <!-- Privacy -->
-                                <div class="p-4 bg-linear-to-br from-purple-50 to-pink-50 rounded-lg border-l-4 border-purple-600">
+                                <div class="p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border-l-4 border-purple-600">
                                     <div class="flex items-start">
                                         <svg class="w-5 h-5 text-purple-600 mr-3 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
@@ -204,7 +204,7 @@
                                 </div>
 
                                 <!-- Verification -->
-                                <div class="p-4 bg-linear-to-br from-green-50 to-emerald-50 rounded-lg border-l-4 border-green-600">
+                                <div class="p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border-l-4 border-green-600">
                                     <div class="flex items-start">
                                         <svg class="w-5 h-5 text-green-600 mr-3 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -219,7 +219,7 @@
                         </div>
 
                         <!-- Receipt Card -->
-                        <div class="bg-linear-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg p-6 border border-gray-200">
+                        <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg p-6 border border-gray-200">
                             <h3 class="text-lg font-bold text-gray-900 mb-4">{{ $t('pages.vote_final.receipt.title') }}</h3>
 
                             <div class="space-y-3 mb-6 text-sm">
@@ -248,13 +248,13 @@
                 <!-- Action Buttons -->
                 <div class="grid md:grid-cols-3 gap-4 mb-12">
                     <button @click="returnDashboard"
-                            class="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
                         {{ $t('pages.vote_final.actions.return_dashboard') }}
                     </button>
-                    <button class="bg-linear-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <button class="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
                         {{ $t('pages.vote_final.actions.view_results') }}
                     </button>
-                    <button class="bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <button class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
                         {{ $t('pages.vote_final.actions.help') }}
                     </button>
                 </div>

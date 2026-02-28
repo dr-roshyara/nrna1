@@ -1,7 +1,12 @@
 <template>
   <ElectionLayout>
-    <!-- Breadcrumb Schema for SEO -->
-    <BreadcrumbSchema />
+    <!-- Skip to Main Content Link (Accessibility) -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+    >
+      {{ $t('pages.organization-show.accessibility.skip_to_main') }}
+    </a>
 
     <!-- Accessibility: Screen reader announcement for page load -->
     <div role="status" aria-live="polite" class="sr-only">
@@ -9,36 +14,50 @@
     </div>
 
     <!-- Main Content -->
-    <main role="main" :aria-label="$t('pages.organization-show.accessibility.organization_dashboard', { organization: organization.name })">
-      <div class="py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main
+      id="main-content"
+      role="main"
+      :aria-label="$t('pages.organization-show.accessibility.organization_dashboard', { organization: organization.name })"
+    >
+      <div class="py-12 bg-gray-50 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
           <!-- 1. Organization Header -->
-          <OrganizationHeader :organization="organization" />
+          <section>
+            <OrganizationHeader :organization="organization" />
+          </section>
 
-          <!-- 2. Stats Grid -->
-          <StatsGrid :stats="stats" />
+          <!-- 2. Stats Grid Section -->
+          <section>
+            <StatsGrid :stats="stats" />
+          </section>
 
-          <!-- 3. Primary Action Buttons (3 Cards) -->
-          <ActionButtons
-            :organization="organization"
-            @appoint-officer="openOfficerModal"
-            @create-election="openElectionWizard"
-          />
+          <!-- 3. Quick Actions Section -->
+          <section class="bg-white rounded-xl shadow-sm p-8 border border-gray-200">
+            <ActionButtons
+              :organization="organization"
+              @appoint-officer="openOfficerModal"
+              @create-election="openElectionWizard"
+            />
+          </section>
 
-          <!-- 4. Demo Results Section -->
-          <DemoResultsSection />
+          <!-- 4. Demo Results Section (Distinct Card) -->
+          <section class="bg-white rounded-xl shadow-sm p-8 border border-gray-200">
+            <DemoResultsSection />
+          </section>
 
-          <!-- 5. Demo Setup Section (conditional) -->
-          <div v-if="canManage" class="mb-8">
+          <!-- 5. Demo Setup Section (conditional - Distinct Card) -->
+          <section v-if="canManage">
             <DemoSetupButton
               :organization="organization"
               :demo-status="demoStatus"
             />
-          </div>
+          </section>
 
           <!-- 6. Support Section -->
-          <SupportSection />
+          <section class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
+            <SupportSection />
+          </section>
 
         </div>
       </div>
@@ -53,7 +72,6 @@ import { useI18n } from 'vue-i18n'
 import { useMeta } from '@/composables/useMeta'
 
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
-import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue'
 import OrganizationHeader from './Partials/OrganizationHeader.vue'
 import StatsGrid from './Partials/StatsGrid.vue'
 import ActionButtons from './Partials/ActionButtons.vue'

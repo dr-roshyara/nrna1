@@ -43,7 +43,7 @@
         <div class="space-y-3 sm:space-y-4">
           <!-- PRIMARY ACTION: Create Organization (with visual emphasis) -->
           <div class="relative group">
-            <div class="absolute -inset-0.5 bg-linear-to-r from-blue-600 to-blue-400 rounded-lg blur-sm opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg blur-sm opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
             <button
               @click="createOrganization"
               :disabled="isLoading"
@@ -180,7 +180,7 @@
       </div>
 
       <!-- Key Features Section -->
-      <div class="mb-8 sm:mb-12 bg-linear-to-r from-blue-50 to-indigo-50 rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8">
+      <div class="mb-8 sm:mb-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg sm:rounded-xl p-4 sm:p-6 lg:p-8">
         <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">
           {{ $t('pages.welcome-dashboard.keyFeatures.title') }}
         </h2>

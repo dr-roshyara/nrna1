@@ -6,13 +6,13 @@
         </div>
 
         <!-- Workflow Step Indicator - Step 2/5 -->
-        <div class="w-full bg-linear-to-br from-gray-50 to-blue-50 py-6 md:py-8">
+        <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <WorkflowStepIndicator workflow="VOTING" :currentStep="2" />
             </div>
         </div>
 
-        <div class="min-h-screen bg-linear-to-br from-blue-100 via-white to-indigo-100 py-8">
+        <div class="min-h-screen bg-gradient-to-br from-blue-100 via-white to-indigo-100 py-8">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
                 <!-- Page Title Section - Dashboard Style -->
@@ -69,7 +69,7 @@
                 </div>
 
                 <!-- Time Limit Warning -->
-                <div class="max-w-4xl mx-auto bg-linear-to-r from-amber-50 to-yellow-50 border-l-4 border-amber-400 p-5 mb-8 rounded-lg shadow-md" role="region" :aria-label="$t('pages.code-agreement.accessibility.terms_announcement')">
+                <div class="max-w-4xl mx-auto bg-gradient-to-r from-amber-50 to-yellow-50 border-l-4 border-amber-400 p-5 mb-8 rounded-lg shadow-md" role="region" :aria-label="$t('pages.code-agreement.accessibility.terms_announcement')">
                     <div class="flex items-start">
                         <div class="shrink-0">
                             <div class="bg-amber-100 p-3 rounded-lg">
@@ -87,7 +87,7 @@
 
                 <!-- Terms and Conditions Form -->
                 <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
-                    <div class="bg-linear-to-r from-blue-600 to-indigo-700 text-white py-6 px-8">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-6 px-8">
                         <h2 class="text-2xl font-bold">{{ $t('pages.code-agreement.terms_and_conditions.section_title') }}</h2>
                         <p class="text-sm opacity-90 mt-2">{{ $t('pages.code-agreement.terms_and_conditions.section_subtitle') }}</p>
                     </div>
@@ -126,7 +126,7 @@
                         </div>
 
                         <!-- Large, Accessible Checkbox - IMPORTANT FOR ELDERLY USERS -->
-                        <div class="bg-linear-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-8 my-8">
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-8 my-8">
                             <div class="flex items-start">
                                 <!-- Large checkbox - Much bigger for accessibility -->
                                 <div class="shrink-0 pt-1">
@@ -174,9 +174,9 @@
                             <button
                                 type="submit"
                                 :disabled="!form.agreement"
-                                class="w-full py-5 px-8 rounded-xl font-bold text-xl transition-all duration-200 shadow-lg focus:outline-hidden focus:ring-4 focus:ring-offset-2"
+                                class="w-full py-5 px-8 rounded-xl font-bold text-xl transition-all duration-200 shadow-lg focus:outline-none focus:ring-4 focus:ring-offset-2"
                                 :class="{
-                                    'bg-linear-to-r from-green-600 to-emerald-700 text-white hover:from-green-700 hover:to-emerald-800 cursor-pointer focus:ring-green-300': form.agreement,
+                                    'bg-gradient-to-r from-green-600 to-emerald-700 text-white hover:from-green-700 hover:to-emerald-800 cursor-pointer focus:ring-green-300': form.agreement,
                                     'bg-gray-300 text-gray-500 cursor-not-allowed': !form.agreement
                                 }"
                                 :aria-label="form.agreement ? $t('pages.code-agreement.submit_button.aria_label_enabled') : $t('pages.code-agreement.submit_button.aria_label_disabled')"

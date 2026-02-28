@@ -6,7 +6,7 @@
         </a>
 
         <!-- Workflow Step Indicator - Step 5/5 -->
-        <div class="w-full bg-linear-to-br from-gray-50 to-blue-50 py-6 md:py-8">
+        <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <WorkflowStepIndicator workflow="VOTING" :currentStep="5" />
             </div>
@@ -24,13 +24,13 @@
         </header>
 
         <!-- Main Container -->
-        <main id="main-content" role="main" class="min-h-screen bg-linear-to-br from-blue-50 via-white to-indigo-50 py-8 px-4">
+        <main id="main-content" role="main" class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-8 px-4">
             <div class="max-w-4xl mx-auto">
                 
                 <!-- Demo Vote Success Banner with Verification Code -->
                 <div
                     v-if="is_demo && verification_code"
-                    class="mb-8 bg-linear-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg overflow-hidden"
+                    class="mb-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg overflow-hidden"
                 >
                     <div class="px-8 py-10 text-center text-white">
                         <!-- Success Icon -->
@@ -81,7 +81,7 @@
                 <!-- Success Banner (if voted - for real elections) -->
                 <div
                     v-else-if="has_voted"
-                    class="mb-8 bg-linear-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg overflow-hidden"
+                    class="mb-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg overflow-hidden"
                 >
                     <div class="px-8 py-10 text-center text-white">
                         <!-- Success Icon -->
@@ -120,7 +120,7 @@
                 <!-- Main Verification Card -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
                     <!-- Card Header -->
-                    <div class="bg-linear-to-r from-blue-600 to-indigo-700 px-8 py-8 text-center">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-8 py-8 text-center">
                         <div class="mx-auto w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -135,7 +135,7 @@
                     </div>
 
                     <!-- Election Type Selector -->
-                    <div class="bg-linear-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200 px-8 py-8">
+                    <div class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200 px-8 py-8">
                         <div class="max-w-2xl mx-auto">
                             <p class="text-base md:text-lg font-bold text-gray-900 mb-6 text-center">{{ $t('pages.vote-show-verify.election_type.label') }}</p>
                             <div class="flex flex-col md:flex-row gap-6 md:gap-12">
@@ -281,7 +281,7 @@
                                     <button
                                         type="submit"
                                         :disabled="form.processing || !form.voting_code"
-                                        class="w-full bg-linear-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 disabled:from-gray-300 disabled:to-gray-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 focus:ring-4 focus:ring-blue-200 shadow-lg disabled:shadow-none"
+                                        class="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 disabled:from-gray-300 disabled:to-gray-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 focus:ring-4 focus:ring-blue-200 shadow-lg disabled:shadow-none"
                                     >
                                         <span v-if="form.processing" class="flex items-center justify-center space-x-3">
                                             <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -388,7 +388,7 @@
                                     <button
                                         type="submit"
                                         :disabled="form.processing || !form.demo_voting_code"
-                                        class="w-full bg-linear-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 focus:ring-4 focus:ring-green-200 shadow-lg disabled:shadow-none"
+                                        class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 focus:ring-4 focus:ring-green-200 shadow-lg disabled:shadow-none"
                                     >
                                         <span v-if="form.processing" class="flex items-center justify-center space-x-3">
                                             <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-linear-to-b from-blue-50 to-indigo-50 py-12">
+  <div class="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50 py-12">
     <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center mb-8">
@@ -13,7 +13,7 @@
 
       <!-- Agreement Card -->
       <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
-        <div class="bg-linear-to-r from-indigo-600 to-blue-600 px-6 py-4">
+        <div class="bg-gradient-to-r from-indigo-600 to-blue-600 px-6 py-4">
           <h2 class="text-2xl font-bold text-white">
             {{ election_name }}
           </h2>

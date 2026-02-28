@@ -14,8 +14,12 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
+        // IMPORTANT: Always redirect to login, even for Inertia requests
+        // Inertia will automatically follow server redirects
+        if ($request->user()) {
+            return null;
         }
+
+        return route('login');
     }
 }

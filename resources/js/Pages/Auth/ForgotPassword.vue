@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen flex flex-col bg-linear-to-br from-gray-50 to-gray-100">
+    <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
         <!-- Header - same as home page -->
         <ElectionHeader />
 
@@ -9,7 +9,7 @@
                 <!-- Card Container -->
                 <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
                     <!-- Header Section -->
-                    <div class="bg-linear-to-r from-blue-600 to-indigo-700 px-6 md:px-8 py-8 md:py-10 text-center">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-6 md:px-8 py-8 md:py-10 text-center">
                         <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">
                             {{ $t('pages.forgot-password.title') }}
                         </h1>
@@ -58,7 +58,23 @@
                         </div>
 
                         <!-- Validation Errors -->
-                        <jet-validation-errors class="mb-6" />
+                        <div
+                            v-if="form.errors.email"
+                            class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start"
+                            role="alert"
+                        >
+                            <svg class="w-5 h-5 text-red-600 mr-3 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                            </svg>
+                            <div>
+                                <p class="text-sm font-medium text-red-800">
+                                    {{ $t('pages.forgot-password.validation.error') }}
+                                </p>
+                                <p class="text-sm text-red-700 mt-1">
+                                    {{ form.errors.email }}
+                                </p>
+                            </div>
+                        </div>
 
                         <!-- Form -->
                         <form @submit.prevent="submit" class="space-y-6">
@@ -117,7 +133,7 @@
                         <div class="mt-6 text-center">
                             <a
                                 href="/login"
-                                class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500 focus:outline-hidden focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1"
+                                class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1"
                             >
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -143,45 +159,32 @@
     </div>
 </template>
 
-<script>
-import { Link } from "@inertiajs/vue3";
+<script setup>
+import { nextTick, onMounted } from 'vue';
+import { useForm } from "@inertiajs/vue3";
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
-import JetValidationErrors from '@/Components/Jetstream/ValidationErrors.vue'
 
-export default {
-    components: {
-        Link,
-        ElectionHeader,
-        PublicDigitFooter,
-        JetValidationErrors
-    },
+const props = defineProps({
+    status: String
+});
 
-    props: {
-        status: String
-    },
+// Initialize form for password reset
+const form = useForm({
+    email: ''
+});
 
-    data() {
-        return {
-            form: this.$inertia.form({
-                email: ''
-            })
-        }
-    },
+// Focus email input on page load
+onMounted(() => {
+    nextTick(() => {
+        document.getElementById('email')?.focus();
+    });
+});
 
-    mounted() {
-        // Focus email input on page load
-        this.$nextTick(() => {
-            document.getElementById('email')?.focus();
-        });
-    },
-
-    methods: {
-        submit() {
-            this.form.post(this.route('password.email'));
-        }
-    }
-}
+// Submit form to request password reset email
+const submit = () => {
+    form.post(route('password.email'));
+};
 </script>
 
 <style scoped>

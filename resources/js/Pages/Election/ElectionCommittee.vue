@@ -2,7 +2,7 @@
     <nrna-layout>
         <app-layout>
             <!-- Hero Section -->
-            <div class="bg-linear-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-16">
+            <div class="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-16">
                 <div class="max-w-64 mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
                         <h1 class="text-4xl md:text-5xl font-bold mb-4">
@@ -23,11 +23,11 @@
             </div>
 
             <!-- Main Content -->
-            <div class="bg-linear-to-br from-red-50 to-red-100 min-h-screen py-12">
+            <div class="bg-gradient-to-br from-red-50 to-red-100 min-h-screen py-12">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     
                     <!-- Committee Overview -->
-                    <div class="bg-linear-to-r from-red-500 to-red-800 text-white rounded-2xl shadow-xl p-8 mb-12">
+                    <div class="bg-gradient-to-r from-red-500 to-red-800 text-white rounded-2xl shadow-xl p-8 mb-12">
                         <div class="text-center mb-8">
                             <h3 class="text-2xl font-bold text-white mb-4">
                                 Committee Overview
@@ -54,7 +54,7 @@
                             <h4 class="text-2xl font-semibold text-red-600">
                                 समिति सदस्यहरू
                             </h4>
-                            <div class="w-24 h-1 bg-linear-to-r from-red-600 to-red-800 mx-auto mt-4 rounded-full"></div>
+                            <div class="w-24 h-1 bg-gradient-to-r from-red-600 to-red-800 mx-auto mt-4 rounded-full"></div>
                         </div>
 
                         <!-- Chief Election Commissioner -->
@@ -68,13 +68,13 @@
                                             alt="Dil Gurung - Chief Election Commissioner"
                                             onerror="this.src='/images/default-avatar.jpg'"
                                         />
-                                        <div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                     </div>
                                 </div>
                                 <div class="md:w-2/3 lg:w-3/4 p-8 lg:p-12">
                                     <div class="flex items-start justify-between mb-6">
                                         <div>
-                                            <div class="inline-flex items-center px-4 py-2 bg-linear-to-r from-red-600 to-red-700 text-white text-sm font-semibold rounded-full mb-4">
+                                            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 text-white text-sm font-semibold rounded-full mb-4">
                                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                                 </svg>
@@ -123,13 +123,13 @@
                                             alt="Bijay Moktan - Election Commissioner Secretary"
                                             onerror="this.src='/images/default-avatar.jpg'"
                                         />
-                                        <div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                     </div>
                                 </div>
                                 <div class="md:w-2/3 lg:w-3/4 p-8 lg:p-12">
                                     <div class="flex items-start justify-between mb-6">
                                         <div>
-                                            <div class="inline-flex items-center px-4 py-2 bg-linear-to-r from-red-700 to-red-800 text-white text-sm font-semibold rounded-full mb-4">
+                                            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-700 to-red-800 text-white text-sm font-semibold rounded-full mb-4">
                                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                                                 </svg>
@@ -178,13 +178,13 @@
                                             alt="Hem Raj Joshi - Election Commissioner"
                                             onerror="this.src='/images/default-avatar.jpg'"
                                         />
-                                        <div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                     </div>
                                 </div>
                                 <div class="md:w-2/3 lg:w-3/4 p-8 lg:p-12">
                                     <div class="flex items-start justify-between mb-6">
                                         <div>
-                                            <div class="inline-flex items-center px-4 py-2 bg-linear-to-r from-red-800 to-red-900 text-white text-sm font-semibold rounded-full mb-4">
+                                            <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-800 to-red-900 text-white text-sm font-semibold rounded-full mb-4">
                                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                                                 </svg>
@@ -223,7 +223,7 @@
                     </div>
 
                     <!-- Contact Information -->
-                    <div class="bg-linear-to-r from-red-500 to-red-700 rounded-2xl shadow-2xl p-8 mt-12 text-white">
+                    <div class="bg-gradient-to-r from-red-500 to-red-700 rounded-2xl shadow-2xl p-8 mt-12 text-white">
                         <div class="text-center">
                             <h3 class="text-2xl font-bold mb-4">
                                 Contact Election Committee

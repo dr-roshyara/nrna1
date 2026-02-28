@@ -36,7 +36,7 @@
               id="name"
               v-model="params.name"
               type="text"
-              class="w-full rounded-sm border border-gray-300 shadow-xs px-3 py-2 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded-sm border border-gray-300 shadow-xs px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter name..."
             />
           </div>
@@ -48,7 +48,7 @@
               id="email"
               v-model="params.email"
               type="text"
-              class="w-full rounded-sm border border-gray-300 shadow-xs px-3 py-2 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded-sm border border-gray-300 shadow-xs px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter email..."
             />
           </div>
@@ -59,7 +59,7 @@
             <select
               id="role"
               v-model="params.role"
-              class="w-full rounded-sm border border-gray-300 shadow-xs px-3 py-2 text-sm focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded-sm border border-gray-300 shadow-xs px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Roles</option>
               <option value="admin">Admin</option>

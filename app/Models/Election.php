@@ -19,12 +19,26 @@ class Election extends Model
     use BelongsToTenant;
 
     /**
+     * Boot the model - set organisation_id from context
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // When creating an election, automatically set organisation_id from session or auth
+        static::creating(function ($model) {
+            if (!$model->organisation_id) {
+                $model->organisation_id = session('current_organisation_id') ?? auth()->user()?->organisation_id;
+            }
+        });
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'organisation_id',
         'name',
         'slug',
         'description',
@@ -33,6 +47,15 @@ class Election extends Model
         'end_date',
         'is_active',
         'settings',
+    ];
+
+    /**
+     * The attributes that should be guarded from mass assignment.
+     *
+     * @var array
+     */
+    protected $guarded = [
+        'organisation_id', // Prevent users from setting this
     ];
 
     /**

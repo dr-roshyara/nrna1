@@ -223,8 +223,9 @@ class ElectionController extends Controller
                 ->with('error', 'Demo election not available');
         }
 
-        // Bypass all voter checks for demo - direct to code entry using slug route
-        return redirect()->route('slug.code.create', ['vslug' => $demoElection->slug]);
+        // Bypass all voter checks for demo - direct to DEMO code entry using slug route
+        // Use slug.demo-code.create to access the demo-specific voting flow
+        return redirect()->route('slug.demo-code.create', ['vslug' => $demoElection->slug]);
     }
 
     public function getUserIpAddr()

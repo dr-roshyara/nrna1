@@ -1,7 +1,7 @@
 <template>
     <election-layout>
         <!-- Workflow Step Indicator - Step 1/5 -->
-        <div class="w-full bg-linear-to-br from-gray-50 to-blue-50 py-6 md:py-8">
+        <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <WorkflowStepIndicator workflow="VOTING" :currentStep="1" />
             </div>
@@ -164,7 +164,7 @@
                         <button
                             type="submit"
                             :disabled="!form.voting_code.trim() || form.voting_code.length !== 6 || codeExpired"
-                            class="w-full font-bold py-4 px-6 rounded-lg transition-all shadow-lg focus:outline-hidden focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+                            class="w-full font-bold py-4 px-6 rounded-lg transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
                             :class="{
                                 'bg-purple-600 hover:bg-purple-700 text-white cursor-pointer': form.voting_code.length === 6 && !codeExpired,
                                 'bg-gray-300 text-gray-500 cursor-not-allowed': form.voting_code.length !== 6 || codeExpired
@@ -179,86 +179,78 @@
     </election-layout>
 </template>
 
-<script>
+<script setup>
 import { useForm } from "@inertiajs/vue3";
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 import ElectionLayout from "@/Layouts/ElectionLayout.vue";
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator.vue";
 
-export default {
-    props: {
-        name: String,
-        user_id: String,
-        state: String,
-        code_duration: Number,
-        code_expires_in: Number,
-        slug: String,
-        useSlugPath: Boolean,
-        is_demo: Boolean,
-        election_type: String,
-        email_sent: {
-            type: Boolean,
-            default: false
-        },
-        has_valid_email: {
-            type: Boolean,
-            default: false
-        },
-        show_code_fallback: {
-            type: Boolean,
-            default: false
-        },
+const props = defineProps({
+    name: String,
+    user_id: String,
+    state: String,
+    code_duration: Number,
+    code_expires_in: Number,
+    slug: String,
+    useSlugPath: Boolean,
+    is_demo: Boolean,
+    election_type: String,
+    email_sent: {
+        type: Boolean,
+        default: false
     },
-    setup(props) {
-        const form = useForm({
-            voting_code: "",
-        });
-
-        function submit() {
-            console.log(form.voting_code);
-
-            let submitUrl;
-            if (props.useSlugPath && props.slug) {
-                submitUrl = `/v/${props.slug}/demo-code`;
-            } else {
-                submitUrl = "/demo/codes";
-            }
-
-            console.log('Submitting to DEMO URL:', submitUrl);
-            form.post(submitUrl);
-        }
-
-        return { form, submit };
+    has_valid_email: {
+        type: Boolean,
+        default: false
     },
-    computed: {
-        codeExpired() {
-            return this.code_duration >= this.code_expires_in;
-        }
+    show_code_fallback: {
+        type: Boolean,
+        default: false
     },
-    methods: {
-        getInstructions() {
-            const locale = this.$i18n.locale;
-            const minutesElapsed = this.code_duration;
-            const minutesRemaining = Math.max(0, this.code_expires_in - this.code_duration);
+});
 
-            if (locale === 'np') {
-                return `${this.$t('pages.code-create.instructions.nepali_intro')} ${minutesElapsed} ${this.$t('pages.code-create.instructions.nepali_ago')} ${minutesRemaining} ${this.$t('pages.code-create.instructions.nepali_remaining')}`;
-            } else if (locale === 'de') {
-                return `${this.$t('pages.code-create.instructions.english_intro')} ${minutesElapsed} ${this.$t('pages.code-create.instructions.english_ago')} ${minutesRemaining} ${this.$t('pages.code-create.instructions.english_remaining')}`;
-            } else {
-                return `${this.$t('pages.code-create.instructions.english_intro')} ${minutesElapsed} ${this.$t('pages.code-create.instructions.english_ago')} ${minutesRemaining} ${this.$t('pages.code-create.instructions.english_remaining')}`;
-            }
-        },
-        handleSubmit() {
-            if (this.form.voting_code.trim()) {
-                this.submit();
-            }
-        }
-    },
-    components: {
-        ElectionLayout,
-        JetValidationErrors,
-        WorkflowStepIndicator,
-    },
+const { t, locale } = useI18n();
+
+const form = useForm({
+    voting_code: "",
+});
+
+const codeExpired = computed(() => {
+    return props.code_duration >= props.code_expires_in;
+});
+
+const getInstructions = () => {
+    const minutesElapsed = props.code_duration;
+    const minutesRemaining = Math.max(0, props.code_expires_in - props.code_duration);
+
+    if (locale.value === 'np') {
+        return `${t('pages.code-create.instructions.nepali_intro')} ${minutesElapsed} ${t('pages.code-create.instructions.nepali_ago')} ${minutesRemaining} ${t('pages.code-create.instructions.nepali_remaining')}`;
+    } else if (locale.value === 'de') {
+        return `${t('pages.code-create.instructions.english_intro')} ${minutesElapsed} ${t('pages.code-create.instructions.english_ago')} ${minutesRemaining} ${t('pages.code-create.instructions.english_remaining')}`;
+    } else {
+        return `${t('pages.code-create.instructions.english_intro')} ${minutesElapsed} ${t('pages.code-create.instructions.english_ago')} ${minutesRemaining} ${t('pages.code-create.instructions.english_remaining')}`;
+    }
+};
+
+const submit = () => {
+    console.log(form.voting_code);
+
+    let submitUrl;
+    if (props.useSlugPath && props.slug) {
+        submitUrl = `/v/${props.slug}/demo-code`;
+    } else {
+        submitUrl = "/demo/codes";
+    }
+
+    console.log('Submitting to DEMO URL:', submitUrl);
+    form.post(submitUrl);
+};
+
+const handleSubmit = () => {
+    if (form.voting_code.trim()) {
+        submit();
+    }
 };
 </script>

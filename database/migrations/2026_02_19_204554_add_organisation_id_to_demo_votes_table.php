@@ -13,16 +13,17 @@ class AddOrganisationIdToDemoVotesTable extends Migration
      */
     public function up()
     {
-        Schema::table('demo_votes', function (Blueprint $table) {
-            // Add organisation_id for multi-tenancy tenant scoping
-            // NOTE: Deliberately NO user_id to preserve vote anonymity
-            if (!Schema::hasColumn('demo_votes', 'organisation_id')) {
+        // Check BEFORE attempting to modify table
+        if (!Schema::hasColumn('demo_votes', 'organisation_id')) {
+            Schema::table('demo_votes', function (Blueprint $table) {
+                // Add organisation_id for multi-tenancy tenant scoping
+                // NOTE: Deliberately NO user_id to preserve vote anonymity
                 $table->unsignedBigInteger('organisation_id')
                       ->nullable()
                       ->after('id')
                       ->index();
-            }
-        });
+            });
+        }
     }
 
     /**

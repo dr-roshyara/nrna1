@@ -10,7 +10,7 @@
             {{ $t('pages.voting.aria_labels.skip_to_content') }}
         </a>
 
-        <div class="min-h-screen bg-linear-to-br from-blue-50 to-indigo-50 py-8">
+        <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
                 <!-- Page Header with Badge -->
@@ -70,7 +70,7 @@
                 </div>
 
                 <!-- Workflow Step Indicator - Step 3/5 -->
-                <div class="w-full bg-linear-to-br from-gray-50 to-blue-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-6 md:py-8 mb-8">
+                <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-6 md:py-8 mb-8">
                     <WorkflowStepIndicator workflow="VOTING" :currentStep="3" />
                 </div>
 
@@ -155,7 +155,7 @@
                         <!-- Agreement Section -->
                         <section class="max-w-4xl mx-auto mb-12" aria-labelledby="agreement-title">
                             <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                                <div class="bg-linear-to-r from-blue-600 to-indigo-700 text-white py-6 px-8">
+                                <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-6 px-8">
                                     <h2 id="agreement-title" class="text-2xl font-bold">{{ $t('pages.voting.agreement.section_title') }}</h2>
                                     <p class="text-sm opacity-90 mt-2">{{ $t('pages.voting.agreement.section_subtitle') }}</p>
                                 </div>
@@ -190,7 +190,7 @@
                                     </div>
 
                                     <!-- Large Accessible Checkbox -->
-                                    <div class="bg-linear-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-8">
+                                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-8">
                                         <div class="flex items-start gap-4">
                                             <div class="shrink-0 pt-2">
                                                 <input
@@ -247,7 +247,7 @@
                                     <div class="md:col-span-1">
                                         <div class="w-full bg-gray-200 rounded-full h-2">
                                             <div
-                                                class="bg-linear-to-r from-blue-600 to-indigo-600 h-2 rounded-full transition-all duration-300"
+                                                class="bg-gradient-to-r from-blue-600 to-indigo-600 h-2 rounded-full transition-all duration-300"
                                                 :style="{ width: votingProgress.percentage + '%' }"
                                                 role="progressbar"
                                                 :aria-valuenow="votingProgress.percentage"
@@ -261,7 +261,7 @@
                                         <button
                                             type="submit"
                                             @click="submit"
-                                            class="w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-200 shadow-lg focus:outline-hidden focus:ring-4 focus:ring-offset-2"
+                                            class="w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-200 shadow-lg focus:outline-none focus:ring-4 focus:ring-offset-2"
                                             :class="submitButtonClasses"
                                             :disabled="!canSubmit"
                                             :aria-label="canSubmit ? $t('pages.voting.submit.button_aria_enabled') : $t('pages.voting.submit.button_aria_disabled')"
@@ -303,7 +303,7 @@
                 <section class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto" aria-labelledby="info-section">
                     <h2 id="info-section" class="sr-only">{{ $t('pages.voting.footer.section_title') }}</h2>
 
-                    <div class="bg-linear-to-br from-blue-50 to-blue-100 rounded-xl p-6 border-2 border-blue-200">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border-2 border-blue-200">
                         <div class="flex items-start gap-4">
                             <div class="text-4xl">🔒</div>
                             <div>
@@ -313,7 +313,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-linear-to-br from-green-50 to-green-100 rounded-xl p-6 border-2 border-green-200">
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border-2 border-green-200">
                         <div class="flex items-start gap-4">
                             <div class="text-4xl">⏱️</div>
                             <div>
@@ -323,7 +323,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-linear-to-br from-purple-50 to-purple-100 rounded-xl p-6 border-2 border-purple-200">
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border-2 border-purple-200">
                         <div class="flex items-start gap-4">
                             <div class="text-4xl">❓</div>
                             <div>

@@ -116,19 +116,20 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'store']);
 
     // Password reset routes
-    Route::get('/forgot-password', function () {
-        return Inertia::render('Auth/ForgotPassword');
-    })->name('password.request');
-
-    Route::post('/forgot-password', [\Laravel\Fortify\Http\Controllers\PasswordResetLinkController::class, 'store'])->name('password.email');
-    Route::get('/reset-password/{token}', function ($token) {
-        return Inertia::render('Auth/ResetPassword', ['token' => $token]);
-    })->name('password.reset');
-    Route::post('/reset-password', [\Laravel\Fortify\Http\Controllers\NewPasswordController::class, 'store'])->name('password.update');
+    Route::get('/forgot-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('/forgot-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'sendResetLink'])->name('password.email');
+    Route::get('/reset-password/{token}', [App\Http\Controllers\Auth\PasswordResetController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'reset'])->name('password.update');
 });
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'destroy'])->name('logout');
+
+    // Password update route
+    Route::put('/user/password', [\App\Http\Controllers\Auth\PasswordUpdateController::class, 'update'])->name('password.update');
+
+    // Account deletion route
+    Route::delete('/user', [\App\Http\Controllers\Auth\DeleteAccountController::class, 'delete'])->name('user.delete');
 
     // Profile routes (placeholder for Jetstream compatibility)
     Route::get('/user/profile', function () {
@@ -380,3 +381,51 @@ Route::get('/terms-of-service', function () {
 Route::get('/privacy-policy', function () {
     return Inertia::render('Legal/PrivacyPolicy');
 })->name('policy.show');
+
+// ============================================================================
+// DIAGNOSTIC ROUTES (Development/Testing Only)
+// ============================================================================
+Route::get('/test/email', function () {
+    try {
+        // Test 1: Check mail config
+        $config = [
+            'mailer' => config('mail.default'),
+            'host' => config('mail.mailers.smtp.host'),
+            'port' => config('mail.mailers.smtp.port'),
+            'encryption' => config('mail.mailers.smtp.encryption'),
+            'username' => config('mail.mailers.smtp.username'),
+            'from_address' => config('mail.from.address'),
+            'queue_driver' => config('queue.default'),
+        ];
+
+        \Log::info('📧 Email Configuration Test', $config);
+
+        // Test 2: Send a test email
+        \Illuminate\Support\Facades\Mail::raw('This is a test email from Public Digit.', function ($message) {
+            $message->to('roshyara@gmail.com')
+                ->subject('Public Digit - Email Configuration Test');
+        });
+
+        \Log::info('✅ Test email sent successfully');
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Test email sent successfully to roshyara@gmail.com!',
+            'config' => $config,
+            'check_logs' => 'Check storage/logs/laravel.log for details'
+        ]);
+    } catch (\Exception $e) {
+        \Log::error('❌ Email configuration test failed', [
+            'error' => $e->getMessage(),
+            'exception_class' => get_class($e),
+            'trace' => $e->getTraceAsString()
+        ]);
+
+        return response()->json([
+            'success' => false,
+            'error' => $e->getMessage(),
+            'type' => get_class($e),
+            'check_logs' => 'Check storage/logs/laravel.log for full trace'
+        ], 500);
+    }
+})->name('test.email');

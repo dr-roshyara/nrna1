@@ -12,7 +12,8 @@
       "Bash(composer require:*)",
       "Bash(composer:*)",
       "Bash(composer install:*)",
-      "Bash(php artisan:*)"
+      "Bash(php artisan:*)",
+      "Bash(grep:*)"
     ]
   }
 }

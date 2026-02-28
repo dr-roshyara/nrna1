@@ -1,7 +1,6 @@
 <template>
     <app-layout>
         <!-- Breadcrumb Schema for SEO -->
-        <BreadcrumbSchema />
         <!-- Event Schema for Elections -->
         <EventSchema />
 
@@ -15,14 +14,12 @@
 </template>
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import BreadcrumbSchema from "@/Components/BreadcrumbSchema.vue";
 import EventSchema from "@/Components/EventSchema.vue";
 import { useMeta } from "@/composables/useMeta";
 
 export default {
     components: {
         AppLayout,
-        BreadcrumbSchema,
         EventSchema,
     },
     props: {

@@ -48,13 +48,20 @@ class SendFirstVerificationCode extends Notification
     {
         // Ensure recipient has valid email
         if (!$notifiable->email || !filter_var($notifiable->email, FILTER_VALIDATE_EMAIL)) {
-            \Log::error('Attempted to send verification code to user without valid email', [
+            \Log::error('❌ Attempted to send verification code to user without valid email', [
                 'user_id' => $notifiable->id ?? null,
                 'email' => $notifiable->email ?? 'null',
+                'filter_result' => filter_var($notifiable->email ?? '', FILTER_VALIDATE_EMAIL),
             ]);
 
             throw new \Exception('User does not have a valid email address');
         }
+
+        \Log::info('📧 Building MailMessage for verification code', [
+            'user_id' => $notifiable->id ?? null,
+            'email' => $notifiable->email,
+            'code' => substr($this->code, 0, 2) . '****', // Log code partially for security
+        ]);
 
         return (new MailMessage)->markdown('mail.send_first_verification_code',[
            'user'=>$this->user,

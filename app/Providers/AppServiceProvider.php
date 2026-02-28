@@ -30,6 +30,13 @@ class AppServiceProvider extends ServiceProvider
                 $this->app->make(DemoElectionResolver::class)
             );
         });
+
+        // Register custom Fortify login response
+        // This ensures LoginResponse handles post-authentication redirection via DashboardResolver
+        $this->app->bind(
+            \Laravel\Fortify\Contracts\LoginResponse::class,
+            \App\Http\Responses\LoginResponse::class
+        );
     }
 
     /**

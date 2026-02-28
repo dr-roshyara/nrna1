@@ -4,7 +4,7 @@
     :aria-labelledby="`post-title-${post.post_id}`"
   >
     <!-- Header with gradient -->
-    <header class="bg-linear-to-r from-indigo-500 to-purple-600 dark:from-indigo-700 dark:to-purple-800 px-4 sm:px-6 py-4">
+    <header class="bg-gradient-to-r from-indigo-500 to-purple-600 dark:from-indigo-700 dark:to-purple-800 px-4 sm:px-6 py-4">
       <h2
         :id="`post-title-${post.post_id}`"
         class="text-lg sm:text-2xl lg:text-3xl font-bold text-white"
@@ -53,7 +53,7 @@
             </div>
             <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5 overflow-hidden">
               <div
-                class="bg-linear-to-r from-indigo-500 to-purple-600 h-2.5 rounded-full transition-all duration-300"
+                class="bg-gradient-to-r from-indigo-500 to-purple-600 h-2.5 rounded-full transition-all duration-300"
                 :style="{ width: `${candidate.vote_percent}%` }"
                 :aria-valuenow="candidate.vote_percent"
                 aria-valuemin="0"

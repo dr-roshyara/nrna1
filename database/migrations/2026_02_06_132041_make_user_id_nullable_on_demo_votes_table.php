@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -21,11 +22,18 @@ return new class extends Migration
     public function up()
     {
         Schema::table('demo_votes', function (Blueprint $table) {
-            // Drop the foreign key constraint first
-            $table->dropForeign(['user_id']);
+            // Check if foreign key exists before dropping
+            // This migration may run on fresh installs where the FK was never created
+            $foreign_keys = DB::select("SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_NAME='demo_votes' AND COLUMN_NAME='user_id' AND REFERENCED_TABLE_NAME='users'");
+
+            if (!empty($foreign_keys)) {
+                $table->dropForeign(['user_id']);
+            }
 
             // Completely remove user_id column - anonymous votes have no voter identifier
-            $table->dropColumn('user_id');
+            if (Schema::hasColumn('demo_votes', 'user_id')) {
+                $table->dropColumn('user_id');
+            }
         });
     }
 

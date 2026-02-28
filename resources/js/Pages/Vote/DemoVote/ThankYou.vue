@@ -1,7 +1,7 @@
 <template>
     <nrna-layout>
         <!-- Workflow Step Indicator - Step 5/5 -->
-        <div class="w-full bg-linear-to-br from-gray-50 to-blue-50 py-6 md:py-8">
+        <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 py-6 md:py-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <WorkflowStepIndicator workflow="VOTING" :currentStep="5" />
             </div>
@@ -54,7 +54,7 @@
 
                 <!-- Votes Summary Card -->
                 <div class="bg-white rounded-lg shadow-lg w-full md:w-3/4 overflow-hidden mb-8">
-                    <div class="bg-linear-to-r from-green-600 to-emerald-600 px-6 py-4">
+                    <div class="bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-4">
                         <h3 class="text-xl md:text-2xl font-bold text-white flex items-center">
                             <svg class="w-5 h-5 md:w-6 md:h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />

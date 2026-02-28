@@ -1,7 +1,6 @@
 <template>
   <div class="min-h-screen bg-gray-50">
     <!-- Breadcrumb Schema for SEO -->
-    <BreadcrumbSchema />
 
     <!-- Header -->
     <ElectionHeader :isLoggedIn="false" :locale="$page.props.locale" />
@@ -102,7 +101,7 @@
           {{ $t('about.supported_organizations_title') }}
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div v-for="(org, index) in supportedOrgsList" :key="index" class="bg-linear-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200 text-center">
+          <div v-for="(org, index) in supportedOrgsList" :key="index" class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200 text-center">
             <p class="text-gray-800 font-medium">{{ org }}</p>
           </div>
         </div>
@@ -129,7 +128,7 @@
         <h2 class="text-3xl font-bold text-gray-900 mb-8">
           {{ $t('about.team_title') }}
         </h2>
-        <div class="bg-linear-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border border-blue-200">
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-lg border border-blue-200">
           <p class="text-gray-700 leading-relaxed text-lg">
             {{ $t('about.team_text') }}
           </p>
@@ -162,7 +161,6 @@
 <script>
 import ElectionHeader from '@/Components/Header/ElectionHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
-import BreadcrumbSchema from '@/Components/BreadcrumbSchema.vue'
 import { useMeta } from '@/composables/useMeta'
 
 // Import locale files for About page
@@ -175,7 +173,6 @@ export default {
   components: {
     ElectionHeader,
     PublicDigitFooter,
-    BreadcrumbSchema,
   },
 
   data() {

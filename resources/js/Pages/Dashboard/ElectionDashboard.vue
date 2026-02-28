@@ -5,7 +5,7 @@
             {{ $t('pages.election-dashboard.aria_labels.skip_to_content') }}
         </a>
 
-        <main id="main-content" role="main" :aria-label="$t('pages.election-dashboard.aria_labels.main_content')" class="min-h-screen bg-linear-to-br from-blue-100 via-white to-indigo-100 py-8">
+        <main id="main-content" role="main" :aria-label="$t('pages.election-dashboard.aria_labels.main_content')" class="min-h-screen bg-gradient-to-br from-blue-100 via-white to-indigo-100 py-8">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <!-- Primary Actions Section -->
                 <section class="mb-16" aria-labelledby="primary-actions" role="region">
@@ -22,7 +22,7 @@
                         </a>
                     </div>
 
-                    <div class="max-w-md mx-auto mb-8 bg-linear-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl shadow-lg overflow-hidden" role="region" aria-labelledby="system-info-title">
+                    <div class="max-w-md mx-auto mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl shadow-lg overflow-hidden" role="region" aria-labelledby="system-info-title">
                         <div class="bg-blue-600 px-6 py-3">
                             <div class="flex items-center justify-center text-white">
                                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -216,7 +216,7 @@
                         <!-- Candidacy Posts -->
                         <a
                             href="posts/index"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-blue-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-blue-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-blue-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200"
                         >
                             <div class="text-center">
                                 <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors duration-300">
@@ -231,7 +231,7 @@
                         <!-- Candidacy List -->
                         <a
                             href="candidacies/index"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-purple-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-purple-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-purple-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-200"
                         >
                             <div class="text-center">
                                 <div class="bg-purple-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-purple-200 transition-colors duration-300">
@@ -246,7 +246,7 @@
                         <!-- Candidacy Form -->
                         <a
                             href="candidacy/create"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-orange-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-orange-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-orange-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-200"
                         >
                             <div class="text-center">
                                 <div class="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-200 transition-colors duration-300">
@@ -270,7 +270,7 @@
                         <!-- Voter List -->
                         <a
                             href="voters"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-indigo-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-indigo-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-indigo-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-200"
                         >
                             <div class="text-center">
                                 <div class="bg-indigo-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-indigo-200 transition-colors duration-300">
@@ -285,7 +285,7 @@
                         <!-- Your Vote -->
                         <a
                             href="vote/verify_to_show"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-teal-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-teal-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-teal-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-teal-200"
                         >
                             <div class="text-center">
                                 <div class="bg-teal-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-teal-200 transition-colors duration-300">
@@ -300,7 +300,7 @@
                         <!-- NRNA Members -->
                         <a
                             href="members/index"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-rose-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-rose-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-rose-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-rose-200"
                         >
                             <div class="text-center">
                                 <div class="bg-rose-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-rose-200 transition-colors duration-300">
@@ -324,7 +324,7 @@
                         <!-- Election Committee -->
                         <a
                             href="election/committee"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-gray-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-gray-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-gray-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-gray-200"
                         >
                             <div class="flex items-center">
                                 <div class="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mr-8 group-hover:bg-gray-200 transition-colors duration-300">
@@ -341,7 +341,7 @@
                         <!-- General Information -->
                         <a
                             href="#"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-yellow-300 transition-all duration-300 focus:outline-hidden focus:ring-4 focus:ring-yellow-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-yellow-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-200"
                         >
                             <div class="flex items-center">
                                 <div class="bg-yellow-100 rounded-full w-20 h-20 flex items-center justify-center mr-8 group-hover:bg-yellow-200 transition-colors duration-300">
@@ -358,7 +358,7 @@
                 </section>
 
                 <!-- Help Section -->
-                <section class="bg-linear-to-r from-blue-50 to-indigo-50 rounded-3xl p-12 text-center border border-blue-100" aria-label="Help and Support">
+                <section class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-12 text-center border border-blue-100" aria-label="Help and Support">
                     <div class="max-w-3xl mx-auto">
                         <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-8">
                             <svg class="w-10 h-10 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
@@ -370,10 +370,10 @@
                             {{ $t('pages.election-dashboard.help_section.description') }}
                         </p>
                         <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-hidden focus:ring-4 focus:ring-blue-300 shadow-lg">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg">
                                 {{ $t('pages.election-dashboard.help_section.contact_button') }}
                             </button>
-                            <button class="bg-white hover:bg-blue-50 text-blue-600 border-2 border-blue-600 font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-hidden focus:ring-4 focus:ring-blue-300 shadow-lg">
+                            <button class="bg-white hover:bg-blue-50 text-blue-600 border-2 border-blue-600 font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg">
                                 {{ $t('pages.election-dashboard.help_section.guide_button') }}
                             </button>
                         </div>
@@ -482,9 +482,9 @@ export default {
             const baseClasses = 'group relative overflow-hidden rounded-3xl p-10 text-white shadow-2xl transition-all duration-300 w-full min-h-[400px] flex flex-col justify-center';
 
             if (this.canAccessVoting) {
-                return `${baseClasses} bg-linear-to-br from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-700 hover:via-blue-800 hover:to-indigo-800 transform hover:scale-105 cursor-pointer focus:outline-hidden focus:ring-4 focus:ring-blue-300`;
+                return `${baseClasses} bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-700 hover:via-blue-800 hover:to-indigo-800 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-300`;
             } else {
-                return `${baseClasses} bg-linear-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
+                return `${baseClasses} bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
             }
         },
 
@@ -492,9 +492,9 @@ export default {
             const baseClasses = 'group relative overflow-hidden rounded-3xl p-10 text-white shadow-2xl transition-all duration-300 w-full min-h-[400px] flex flex-col justify-center';
 
             if (this.electionStatus.results_published) {
-                return `${baseClasses} bg-linear-to-br from-green-600 via-green-700 to-emerald-700 hover:from-green-700 hover:via-green-800 hover:to-emerald-800 transform hover:scale-105 cursor-pointer focus:outline-hidden focus:ring-4 focus:ring-green-300`;
+                return `${baseClasses} bg-gradient-to-br from-green-600 via-green-700 to-emerald-700 hover:from-green-700 hover:via-green-800 hover:to-emerald-800 transform hover:scale-105 cursor-pointer focus:outline-none focus:ring-4 focus:ring-green-300`;
             } else {
-                return `${baseClasses} bg-linear-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
+                return `${baseClasses} bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 cursor-not-allowed opacity-75`;
             }
         },
 
