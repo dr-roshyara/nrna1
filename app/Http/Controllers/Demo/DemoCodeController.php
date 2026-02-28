@@ -55,6 +55,12 @@ class DemoCodeController extends Controller
      */
     public function create(Request $request)
     {
+        Log::info('🔥🔥🔥 DEMO CREATE METHOD HIT - Controller Reached!', [
+            'user_id' => auth()->id(),
+            'url' => request()->fullUrl(),
+            'middleware_passed' => true,
+        ]);
+
         $user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
@@ -670,6 +676,13 @@ class DemoCodeController extends Controller
      */
     private function getOrCreateCode(User $user, Election $election): DemoCode
     {
+        Log::info('🔵 getOrCreateCode() called', [
+            'user_id' => $user->id,
+            'user_email' => $user->email,
+            'email_valid' => filter_var($user->email, FILTER_VALIDATE_EMAIL) ? 'yes' : 'no',
+            'election_id' => $election->id,
+        ]);
+
         // Get code for this specific election
         // CRITICAL: Use withoutGlobalScopes() because demo elections have organisation_id=NULL
         // The global scope would filter out codes for demo elections
@@ -730,6 +743,11 @@ class DemoCodeController extends Controller
         }
 
         if (!$code) {
+            Log::info('🟡 No existing code - creating new one', [
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+            ]);
+
             // No code exists for this election - create new one
             // CRITICAL: Set organisation_id explicitly
             // - Demo elections (type='demo'): organisation_id=NULL (MODE 1) or org_id (MODE 2)
@@ -755,21 +773,35 @@ class DemoCodeController extends Controller
             ]);
 
             // Send code via email only if user has valid email
+            Log::info('🟠 About to check email validity', [
+                'user_email' => $user->email,
+                'email_truthy' => $user->email ? 'yes' : 'no',
+                'filter_var_result' => filter_var($user->email, FILTER_VALIDATE_EMAIL) ? 'valid' : 'invalid',
+            ]);
+
             if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
+                Log::info('🟢 Email check PASSED - about to send', [
+                    'user_id' => $user->id,
+                    'email' => $user->email,
+                ]);
                 try {
-                    Log::info('[DEMO] 📧 Attempting to send verification code email', [
+                    Log::info('[DEMO] 📧 PRE-SEND EMAIL CHECK', [
                         'user_id' => $user->id,
                         'email' => $user->email,
                         'code' => $code->code1,
                         'mailer' => config('mail.default'),
+                        'mail_host' => config('mail.mailers.smtp.host'),
+                        'mail_port' => config('mail.mailers.smtp.port'),
+                        'mail_encryption' => config('mail.mailers.smtp.encryption'),
                     ]);
 
-                    $user->notify(new SendFirstVerificationCode($user, $code->code1));
+                    $result = $user->notify(new SendFirstVerificationCode($user, $code->code1));
 
                     Log::info('[DEMO] ✅ Verification code email sent successfully', [
                         'user_id' => $user->id,
                         'email' => $user->email,
                         'code' => $code->code1,
+                        'notification_result' => $result,
                     ]);
                 } catch (\Exception $e) {
                     Log::error('[DEMO] ❌ Failed to send verification code email', [
@@ -785,7 +817,8 @@ class DemoCodeController extends Controller
                 Log::warning('[DEMO] ⚠️ User does not have valid email for verification code', [
                     'user_id' => $user->id,
                     'email' => $user->email ?? 'null',
-                    'email_filter_result' => filter_var($user->email ?? '', FILTER_VALIDATE_EMAIL),
+                    'email_filter_result' => filter_var($user->email ?? '', FILTER_VALIDATE_EMAIL) ? 'valid' : 'invalid',
+                    'email_truthy' => $user->email ? 'yes' : 'no',
                 ]);
             }
 
