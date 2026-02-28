@@ -8,8 +8,6 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\URL;
-use Laravel\Fortify\Features;
-use Laravel\Jetstream\Features as JetstreamFeatures;
 use Tests\TestCase;
 
 class EmailVerificationTest extends TestCase
@@ -18,11 +16,7 @@ class EmailVerificationTest extends TestCase
 
     public function test_email_verification_screen_can_be_rendered()
     {
-        if (! Features::enabled(Features::emailVerification())) {
-            return $this->markTestSkipped('Email verification not enabled.');
-        }
-
-        $user = User::factory()->withPersonalTeam()->create([
+        $user = User::factory()->create([
             'email_verified_at' => null,
         ]);
 
@@ -33,10 +27,6 @@ class EmailVerificationTest extends TestCase
 
     public function test_email_can_be_verified()
     {
-        if (! Features::enabled(Features::emailVerification())) {
-            return $this->markTestSkipped('Email verification not enabled.');
-        }
-
         Event::fake();
 
         $user = User::factory()->create([
@@ -60,10 +50,6 @@ class EmailVerificationTest extends TestCase
 
     public function test_email_can_not_verified_with_invalid_hash()
     {
-        if (! Features::enabled(Features::emailVerification())) {
-            return $this->markTestSkipped('Email verification not enabled.');
-        }
-
         $user = User::factory()->create([
             'email_verified_at' => null,
         ]);
@@ -82,10 +68,6 @@ class EmailVerificationTest extends TestCase
     /** @test */
     public function first_time_user_redirected_to_welcome_dashboard_after_email_verification()
     {
-        if (! Features::enabled(Features::emailVerification())) {
-            return $this->markTestSkipped('Email verification not enabled.');
-        }
-
         $user = User::factory()->create([
             'email_verified_at' => null,
         ]);
@@ -109,27 +91,24 @@ class EmailVerificationTest extends TestCase
     /** @test */
     public function existing_user_with_roles_redirected_to_roles_dashboard_after_email_verification()
     {
-        if (! Features::enabled(Features::emailVerification())) {
-            return $this->markTestSkipped('Email verification not enabled.');
-        }
-
         $user = User::factory()->create([
             'email_verified_at' => null,
         ]);
 
-        // Create an organization directly
-        $organization = \DB::table('organizations')->insertGetId([
+        // Create an organization
+        $orgSlug = 'test-org-' . time();
+        $organizationId = \DB::table('organizations')->insertGetId([
             'name' => 'Test Organization',
-            'slug' => 'test-org-' . time(),
+            'slug' => $orgSlug,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        // Assign a role to make them an existing user
+        // Assign admin role to give user an organization role
         \DB::table('user_organization_roles')->insert([
             'user_id' => $user->id,
-            'organization_id' => $organization,
-            'role' => 'voter',
+            'organization_id' => $organizationId,
+            'role' => 'admin',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -145,8 +124,8 @@ class EmailVerificationTest extends TestCase
 
         $response = $this->actingAs($user)->get($verificationUrl);
 
-        // Existing users with roles should redirect to roles dashboard
-        $response->assertRedirect('/dashboard/roles');
+        // Organization admin should redirect to their organization dashboard
+        $response->assertRedirect(route('organizations.show', $orgSlug));
         $this->assertTrue($user->fresh()->hasVerifiedEmail());
     }
 }

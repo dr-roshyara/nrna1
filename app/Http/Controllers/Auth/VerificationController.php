@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\VerifyEmailMail;
+use App\Services\DashboardResolver;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -34,7 +35,7 @@ class VerificationController extends Controller
     public function send(Request $request)
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->intended(route('electiondashboard'));
+            return app(DashboardResolver::class)->resolve($request->user());
         }
 
         // Generate verification URL
@@ -62,13 +63,20 @@ class VerificationController extends Controller
     public function verify(Request $request)
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->intended(route('electiondashboard'));
+            return app(DashboardResolver::class)->resolve($request->user());
+        }
+
+        // Validate the hash matches the user's email
+        $hash = sha1($request->user()->getEmailForVerification());
+        if ($request->hash !== $hash) {
+            return redirect()->route('verification.notice')
+                ->with('error', 'Invalid verification link');
         }
 
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
 
-        return redirect()->intended(route('electiondashboard'))->with('status', 'email-verified');
+        return app(DashboardResolver::class)->resolve($request->user())->with('status', 'email-verified');
     }
 }
