@@ -410,7 +410,7 @@ Route::middleware(['auth:sanctum', 'verified', 'election', 'vote.organisation', 
 });
 
 // Slug-based demo election routes
-Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.window', 'voter.step.order', 'vote.eligibility', 'election', 'vote.organisation'])->group(function () {
+Route::prefix('v/{vslug}')->middleware(['auth:sanctum', 'verified', \Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.window', 'voter.step.order', 'vote.eligibility', 'election', 'vote.organisation'])->group(function () {
     // Demo elections: IDENTICAL workflow to real voting
     Route::middleware(['election.demo'])->group(function () {
         // ============ CODE VERIFICATION STEPS ============

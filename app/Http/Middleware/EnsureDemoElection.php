@@ -37,6 +37,9 @@ class EnsureDemoElection
             abort(403, 'Demo voting is only available for demo elections.');
         }
 
+        // ✅ CRITICAL FIX: Set session value so VoteEligibility middleware can check it
+        session(['selected_election_type' => 'demo']);
+
         \Log::info('✅ [EnsureDemoElection] Demo election confirmed', [
             'election_id' => $election->id,
             'election_type' => $election->type,
