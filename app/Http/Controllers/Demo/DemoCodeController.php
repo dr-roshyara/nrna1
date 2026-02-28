@@ -120,50 +120,10 @@ class DemoCodeController extends Controller
             ]);
         }
 
-        // ✅ CHECK IF CODE HAS EXPIRED - IF YES, SEND NEW ONE
+        // ✅ EXPIRATION IS HANDLED IN getOrCreateCode() - NO DUPLICATE LOGIC
+        // This method should only DISPLAY the code time, not modify it
+        // Calculate time since code was sent (for display only)
         $minutesSinceSent = $code->code1_sent_at ? now()->diffInMinutes($code->code1_sent_at) : 0;
-
-        if ($minutesSinceSent >= $this->votingTimeInMinutes && $code->has_code1_sent) {
-            Log::info('🔄 [DEMO] Code expired - sending new code', [
-                'user_id' => $user->id,
-                'minutes_since_sent' => $minutesSinceSent,
-                'max_minutes' => $this->votingTimeInMinutes,
-            ]);
-
-            // Generate new code and reset timer
-            $code->code1 = Str::random(6);
-            $code->code1_sent_at = now();
-            $code->has_code1_sent = true;
-            $code->save();
-
-            // Send new code notification
-            try {
-                Log::info('📧 [DEMO] Attempting to send new verification code after expiry', [
-                    'user_id' => $user->id,
-                    'email' => $user->email,
-                    'code' => $code->code1,
-                    'previous_sent_at' => $code->code1_sent_at,
-                ]);
-
-                $user->notify(new SendFirstVerificationCode($user, $code->code1));
-
-                Log::info('✅ [DEMO] New verification code sent after expiry', [
-                    'user_id' => $user->id,
-                    'email' => $user->email,
-                    'code' => $code->code1,
-                ]);
-            } catch (\Exception $e) {
-                Log::error('❌ [DEMO] Failed to send new code after expiry', [
-                    'user_id' => $user->id,
-                    'email' => $user->email,
-                    'error' => $e->getMessage(),
-                    'exception_class' => get_class($e),
-                ]);
-            }
-
-            // Reset duration counter since we just sent a new code
-            $minutesSinceSent = 0;
-        }
 
         // For API requests
         if ($request->wantsJson()) {
