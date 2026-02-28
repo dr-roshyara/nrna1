@@ -98,19 +98,25 @@ class DemoCodeController extends Controller
         // Get or create code record for this election
         $code = $this->getOrCreateCode($user, $election);
 
-        // ✅ CRITICAL: Reset voter slug step for demo re-voting
-        // For demo elections, allow users to vote multiple times by resetting the step
-        if ($voterSlug && $election->type === 'demo') {
+        // ✅ CRITICAL: Reset voter slug step ONLY if user has completed voting
+        // This preserves in-progress voting sessions while allowing demo re-voting
+        if ($voterSlug && $election->type === 'demo' && $code->has_voted) {
             $oldStep = $voterSlug->current_step;
             $voterSlug->current_step = 1; // Reset to step 1 (code entry)
             $voterSlug->save();
 
-            Log::info('🔄 [DEMO] Reset voter slug step for demo re-voting', [
+            // Also clear step tracking to allow complete re-voting
+            \App\Models\VoterSlugStep::where('voter_slug_id', $voterSlug->id)
+                ->where('election_id', $election->id)
+                ->delete();
+
+            Log::info('🔄 [DEMO] Reset voter slug for completed vote - allowing re-voting', [
                 'voter_slug_id' => $voterSlug->id,
                 'old_step' => $oldStep,
                 'new_step' => $voterSlug->current_step,
                 'user_id' => $user->id,
                 'election_id' => $election->id,
+                'has_voted' => $code->has_voted,
             ]);
         }
 
@@ -691,18 +697,17 @@ class DemoCodeController extends Controller
             ->where('election_id', $election->id)
             ->first();
 
-        // DEMO ELECTIONS: Allow re-voting by resetting flags
-        if ($code && $code->has_voted && $election->type === 'demo') {
-            Log::info('🔄 [DEMO] Demo election - resetting code for re-voting', [
+        // DEMO ELECTIONS: Allow re-voting only after user completes voting
+        if ($code && $election->type === 'demo' && $code->has_voted) {
+            Log::info('🔄 [DEMO] User completed vote - generating new code for re-voting', [
                 'user_id' => $user->id,
                 'code_id' => $code->id,
-                'old_has_voted' => $code->has_voted,
-                'old_organisation_id' => $code->organisation_id,
+                'has_voted' => $code->has_voted,
             ]);
 
             // Reset voting flags for demo to allow new vote
             $code->update([
-                'organisation_id' => $election->organisation_id,  // Ensure organisation_id is set
+                'organisation_id' => $election->organisation_id,
                 'has_voted' => false,
                 'vote_submitted' => false,
                 'can_vote_now' => 0,
@@ -715,24 +720,23 @@ class DemoCodeController extends Controller
                 'is_code2_usable' => 1,
             ]);
 
-            \Log::info('✅ [DEMO] DemoCode reset for re-voting with organisation_id confirmed', [
+            Log::info('✅ [DEMO] DemoCode reset for re-voting', [
                 'code_id' => $code->id,
                 'user_id' => $user->id,
                 'election_id' => $election->id,
-                'organisation_id' => $code->organisation_id,
             ]);
 
             // Send new code via email
             if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
                 try {
                     $user->notify(new SendFirstVerificationCode($user, $code->code1));
-                    Log::info('✅ [DEMO] New demo voting code sent', [
+                    Log::info('✅ [DEMO] New demo voting code sent for re-voting', [
                         'user_id' => $user->id,
                         'code_id' => $code->id,
                         'code' => $code->code1,
                     ]);
                 } catch (\Exception $e) {
-                    Log::error('[DEMO] Failed to send demo voting code', [
+                    Log::error('[DEMO] Failed to send re-voting code', [
                         'user_id' => $user->id,
                         'error' => $e->getMessage(),
                     ]);
@@ -841,16 +845,28 @@ class DemoCodeController extends Controller
 
             // Code exists - check if it needs resending
             $isExpired = $code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > $this->votingTimeInMinutes;
-            $codeWasUsed = $code->is_code1_usable == 0;
+            $codeIsUsed = ($code->is_code1_usable == 0 || $code->code1_used_at !== null);
             $notYetVoted = !$code->has_voted;
             $voteNotSubmitted = !$code->vote_submitted;
+
+            // ✅ PRIORITY 2: Check code usability and regenerate if needed
+            // User attempted to verify but code has been exhausted
+            if ($codeIsUsed && !$notYetVoted && $election->type === 'demo') {
+                Log::info('🔄 [DEMO] Code used but user not yet voted - user should continue', [
+                    'user_id' => $user->id,
+                    'code_id' => $code->id,
+                    'is_code1_usable' => $code->is_code1_usable,
+                    'code1_used_at' => $code->code1_used_at,
+                ]);
+                return $code; // Return existing code - user is mid-voting
+            }
 
             // Resend code ONLY if:
             // - Code is expired AND not yet used AND not voted
             //
-            // DO NOT resend if code was already used/verified ($codeWasUsed = true)
+            // DO NOT resend if code was already used/verified ($codeIsUsed = true)
             // because user should be redirected to agreement page, not given new code
-            $shouldResend = ($isExpired && !$codeWasUsed && $notYetVoted);
+            $shouldResend = ($isExpired && !$codeIsUsed && $notYetVoted);
 
             if ($shouldResend) {
                 // Generate and send new code
@@ -888,7 +904,7 @@ class DemoCodeController extends Controller
                     'code_id' => $code->id,
                     'new_code' => $newCode,
                     'reason' => $isExpired ? 'expired' : 'restart_after_use',
-                    'was_used' => $codeWasUsed,
+                    'was_used' => $codeIsUsed,
                     'previous_sent_at' => $code->code1_sent_at,
                 ]);
             }
