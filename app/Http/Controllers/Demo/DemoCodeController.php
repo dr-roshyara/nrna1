@@ -84,12 +84,21 @@ class DemoCodeController extends Controller
             'existing_code_verified' => $existingCode ? $existingCode->can_vote_now : 'no_code',
         ]);
 
-        // ⚠️ If code is already verified, user should not be here!
-        if ($existingCode && $existingCode->can_vote_now == 1) {
-            Log::warning('⚠️ [DEMO-CREATE] User already has verified code - should be on agreement page!', [
+        // 🚨 CRITICAL FIX: Redirect verified users to agreement page
+        // User has verified code but hasn't voted yet - they should be on agreement page, not create page
+        if ($existingCode && $existingCode->can_vote_now == 1 && !$existingCode->has_voted) {
+            Log::info('🔄 Redirecting verified user to agreement page', [
                 'user_id' => $user->id,
                 'code_id' => $existingCode->id,
+                'can_vote_now' => $existingCode->can_vote_now,
+                'has_voted' => $existingCode->has_voted,
             ]);
+
+            $agreementUrl = $voterSlug
+                ? route('slug.demo-code.agreement', ['vslug' => $voterSlug->slug])
+                : route('demo-code.agreement');
+
+            return redirect($agreementUrl)->with('info', 'Code already verified. Please continue to agreement.');
         }
 
         // ⛔ DEMO: Allow re-voting (no voting restriction for demo)
