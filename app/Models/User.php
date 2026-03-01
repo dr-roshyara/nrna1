@@ -108,7 +108,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'social_id',
         'social_type',
         'facebook_id',
-        'user_ip',  // Client IP can be mass-assigned (not critical)
+        'voting_ip',  // Voting IP is mass-assignable for audit trail
     ];
 
     /**
@@ -823,9 +823,8 @@ public function getVoterState(): string
      * ⚠️ SECURITY: Approve voter for voting (Committee members only)
      * This method should only be called after proper authorization checks
      *
-     * IP restriction is set based on CONTROL_IP_ADDRESS config:
-     * - If CONTROL_IP_ADDRESS=1: voting_ip is set to user_ip (IP restriction enabled)
-     * - If CONTROL_IP_ADDRESS=0: voting_ip is set to null (no IP restriction)
+     * Note: voting_ip is set by the controller when the user accesses the voting page,
+     * not during approval. This allows capturing the actual IP at voting time.
      *
      * @param User $committeeUser The committee member approving the voter
      * @return bool Success status
@@ -842,11 +841,6 @@ public function getVoterState(): string
 
         $this->can_vote = 1;
         $this->approvedBy = $committeeUser->name;
-
-        // Set voting_ip based on global CONTROL_IP_ADDRESS setting
-        $ipControlEnabled = config('voting_security.control_ip_address', 1) == 1;
-        $this->voting_ip = $ipControlEnabled ? $this->user_ip : null;
-
         $this->suspendedBy = null;
         $this->suspended_at = null;
 
