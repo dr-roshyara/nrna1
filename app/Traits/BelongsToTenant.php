@@ -37,16 +37,18 @@ trait BelongsToTenant
         static::addGlobalScope('tenant', function (Builder $query) {
             $orgId = session('current_organisation_id');
 
-            // ✅ Updated: Use organisation_id = 0 for platform/demo data
-            // Mode 1: No organisation (demo/platform mode) - show org_id = 0
-            // Mode 2: Has organisation - show only that org's data
-            if ($orgId === null) {
-                // Platform/Demo mode - show records with organisation_id = 0
-                $query->where('organisation_id', 0);
-            } else {
-                // Tenant mode - show only records for this organisation
-                $query->where('organisation_id', $orgId);
+            // ✅ Convert legacy organisation_id=0 to platform org ID for consistency
+            // When session org is 0 or null (platform/demo mode), use platform org's actual ID
+            if ($orgId === 0 || $orgId === null) {
+                $platformOrg = \App\Models\Organisation::where('slug', 'platform')->first();
+                if ($platformOrg) {
+                    $orgId = $platformOrg->id;
+                }
+                // If no platform org, use 0 as fallback (shouldn't happen in normal operation)
             }
+
+            // Apply scope: filter by calculated organisation_id
+            $query->where('organisation_id', $orgId);
         });
 
         // Auto-fill organisation_id when creating

@@ -29,6 +29,22 @@ class Election extends Model
         static::creating(function ($model) {
             if (!$model->organisation_id) {
                 $model->organisation_id = session('current_organisation_id') ?? auth()->user()?->organisation_id;
+
+                // If organisation_id is 0 (legacy sentinel value), convert to platform org ID
+                if (!$model->organisation_id || $model->organisation_id === 0 || $model->organisation_id === '0') {
+                    $platformOrg = Organisation::where('slug', 'platform')->first();
+                    if ($platformOrg) {
+                        $model->organisation_id = $platformOrg->id;
+                    } else {
+                        // Fallback: create platform org if it doesn't exist
+                        $platformOrg = Organisation::create([
+                            'name' => 'Platform',
+                            'slug' => 'platform',
+                            'type' => 'other',
+                        ]);
+                        $model->organisation_id = $platformOrg->id;
+                    }
+                }
             }
         });
     }

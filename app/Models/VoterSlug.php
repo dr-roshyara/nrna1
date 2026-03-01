@@ -12,6 +12,32 @@ class VoterSlug extends Model
     use HasFactory;
     use BelongsToTenant;
 
+    /**
+     * Boot the model - convert legacy organisation_id=0 to platform org ID
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // When creating a voter slug, convert organisation_id=0 to platform org ID
+        static::creating(function ($model) {
+            if (!$model->organisation_id || $model->organisation_id === 0 || $model->organisation_id === '0') {
+                $platformOrg = Organisation::where('slug', 'platform')->first();
+                if ($platformOrg) {
+                    $model->organisation_id = $platformOrg->id;
+                } else {
+                    // Fallback: create platform org if it doesn't exist
+                    $platformOrg = Organisation::create([
+                        'name' => 'Platform',
+                        'slug' => 'platform',
+                        'type' => 'other',
+                    ]);
+                    $model->organisation_id = $platformOrg->id;
+                }
+            }
+        });
+    }
+
     protected $fillable = [
         'organisation_id',
         'user_id',

@@ -32,6 +32,43 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasOrganisation;
 
     /**
+     * Boot the model - convert legacy organisation_id=0 to platform org ID
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // When creating/updating a user, convert organisation_id=0 to platform org ID
+        static::creating(function ($model) {
+            if (!$model->organisation_id || $model->organisation_id === 0 || $model->organisation_id === '0') {
+                $platformOrg = Organisation::where('slug', 'platform')->first();
+                if ($platformOrg) {
+                    $model->organisation_id = $platformOrg->id;
+                } else {
+                    // Fallback: create platform org if it doesn't exist
+                    $platformOrg = Organisation::create([
+                        'name' => 'Platform',
+                        'slug' => 'platform',
+                        'type' => 'other',
+                    ]);
+                    $model->organisation_id = $platformOrg->id;
+                }
+            }
+        });
+
+        static::updating(function ($model) {
+            if ($model->isDirty('organisation_id')) {
+                if (!$model->organisation_id || $model->organisation_id === 0 || $model->organisation_id === '0') {
+                    $platformOrg = Organisation::where('slug', 'platform')->first();
+                    if ($platformOrg) {
+                        $model->organisation_id = $platformOrg->id;
+                    }
+                }
+            }
+        });
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
