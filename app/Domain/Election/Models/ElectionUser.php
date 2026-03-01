@@ -68,7 +68,6 @@ class ElectionUser extends ElectionAwareModel
         'social_type',
         'is_committee_member',
         'committee_name',
-        'user_ip',
         'voting_ip'
     ];
     
