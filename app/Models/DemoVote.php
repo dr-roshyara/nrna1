@@ -29,16 +29,6 @@ class DemoVote extends BaseVote
     protected $table = 'demo_votes';
 
     /**
-     * Get the code record for this demo vote
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function code()
-    {
-        return $this->hasOne(Code::class, 'voting_code', 'voting_code');
-    }
-
-    /**
      * Get all results aggregated from this demo vote
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

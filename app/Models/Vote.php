@@ -25,16 +25,6 @@ class Vote extends BaseVote
     protected $table = 'votes';
 
     /**
-     * Get the code record for this vote
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function code()
-    {
-        return $this->hasOne(Code::class, 'voting_code', 'voting_code');
-    }
-
-    /**
      * Get all results aggregated from this vote
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

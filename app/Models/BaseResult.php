@@ -34,7 +34,9 @@ abstract class BaseResult extends Model
         'election_id',
         'vote_id',
         'post_id',
-        'candidacy_id'
+        'candidate_id',
+        'vote_hash',  // For verification cross-reference
+        'vote_count', // For aggregation
     ];
 
     /**
@@ -153,17 +155,18 @@ abstract class BaseResult extends Model
      */
     public function post()
     {
-        return $this->belongsTo(Post::class, 'post_id', 'post_id');
+        return $this->belongsTo(Post::class);
     }
 
     /**
-     * Get the candidacy this result is for
+     * Get the candidate this result is for
+     * Note: candidate_id can be NULL for no-vote/abstention results
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function candidacy()
+    public function candidate()
     {
-        return $this->belongsTo(Candidacy::class, 'candidacy_id', 'candidacy_id');
+        return $this->belongsTo(Candidacy::class, 'candidate_id', 'id');
     }
 
     /**
@@ -191,15 +194,15 @@ abstract class BaseResult extends Model
     }
 
     /**
-     * Scope: Get results for a specific candidacy
+     * Scope: Get results for a specific candidate
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string $candidacyId
+     * @param int $candidateId
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeForCandidacy($query, string $candidacyId)
+    public function scopeForCandidate($query, int $candidateId)
     {
-        return $query->where('candidacy_id', $candidacyId);
+        return $query->where('candidate_id', $candidateId);
     }
 
     /**
@@ -215,14 +218,14 @@ abstract class BaseResult extends Model
     }
 
     /**
-     * Get vote count for a specific candidacy
+     * Get vote count for a specific candidate
      *
-     * @param string $candidacyId
+     * @param int $candidateId
      * @return int
      */
-    public static function countForCandidacy(string $candidacyId): int
+    public static function countForCandidate(int $candidateId): int
     {
-        return static::forCandidacy($candidacyId)->count();
+        return static::forCandidate($candidateId)->count();
     }
 
     /**

@@ -9,15 +9,19 @@ use App\Traits\BelongsToTenant;
 /**
  * BaseVote Abstract Class
  *
- * Contains all shared voting logic for both real and demo votes.
- * Subclasses (Vote, DemoVote) specify their respective tables.
+ * Implements "Verifiable Anonymity" - the gold standard for election integrity:
+ * - Voters can verify their vote was recorded correctly
+ * - Results remain completely anonymous
+ * - Audit trail is cryptographically secure
  *
- * This follows the DRY principle - voting business logic defined once,
- * used by both real and demo voting implementations.
+ * Key Design Principle:
+ * - NO user_id in database (votes are anonymous!)
+ * - vote_hash: SHA256(user_id + election_id + code + timestamp)
+ * - Allows verification WITHOUT exposing voter identity
  *
  * Table assignment happens in concrete subclasses:
- * - Vote extends BaseVote → votes table
- * - DemoVote extends BaseVote → demo_votes table
+ * - Vote extends BaseVote → votes table (real elections)
+ * - DemoVote extends BaseVote → demo_votes table (testing)
  */
 abstract class BaseVote extends Model
 {
@@ -28,15 +32,16 @@ abstract class BaseVote extends Model
      * All candidate columns (candidate_01 through candidate_60)
      * These are mass-assignable on all vote types.
      *
-     * NOTE: No 'user_id' - votes are anonymous by design.
+     * CRITICAL: No 'user_id' in database - votes are completely anonymous!
+     * vote_hash provides cryptographic proof of vote without exposing identity.
      *
      * @var array
      */
     protected $fillable = [
         'organisation_id',
         'election_id',
-        'voting_code',
-        'no_vote_option',
+        'vote_hash',  // SHA256 cryptographic proof
+        'no_vote_posts',
         'candidate_01', 'candidate_02', 'candidate_03', 'candidate_04', 'candidate_05',
         'candidate_06', 'candidate_07', 'candidate_08', 'candidate_09', 'candidate_10',
         'candidate_11', 'candidate_12', 'candidate_13', 'candidate_14', 'candidate_15',
@@ -53,70 +58,55 @@ abstract class BaseVote extends Model
 
     /**
      * Cast JSON fields to arrays
-     * All candidate fields are JSON in the database, cast to array for easier handling.
      *
      * @var array
      */
     protected $casts = [
-        'no_vote_option' => 'boolean',
+        'no_vote_posts' => 'array',
+        'metadata' => 'array',
+        'cast_at' => 'datetime',
+    ];
+
+    /**
+     * Hide sensitive fields from API responses
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'vote_hash', // Never expose the cryptographic proof in API
     ];
 
     /**
      * Model Lifecycle Hooks
      *
-     * Phase 2: Model-Level Validation (Soft Boundary)
-     * Validates real votes to enforce organisation_id consistency
-     *
-     * CRITICAL RULES FOR REAL VOTES:
-     * 1. organisation_id MUST NOT be NULL
-     * 2. organisation_id MUST match election's organisation_id
-     * 3. election_id MUST reference a valid election
+     * Validates votes to ensure:
+     * 1. election_id references a valid election
+     * 2. organisation_id matches election's organisation
+     * 3. vote_hash is provided (cryptographic proof)
+     * 4. cast_at timestamp is set
      */
     protected static function booted()
     {
         static::creating(function ($vote) {
-            // Skip validation for demo votes (they have separate validation)
-            // Check if this is a Vote instance (real) vs DemoVote instance (demo)
-            if (get_class($vote) !== Vote::class) {
-                return;
-            }
-
-            // CRITICAL 1: organisation_id MUST NOT be null for real votes
-            if (is_null($vote->organisation_id)) {
-                \Log::channel('voting_security')->warning('Real vote rejected: NULL organisation_id', [
-                    'reason' => 'Organisation context is required for real votes',
-                    'timestamp' => now(),
-                    'ip' => request()->ip(),
-                ]);
-
-                throw new \App\Exceptions\InvalidRealVoteException(
-                    'Real votes require a valid organisation context (organisation_id cannot be NULL)',
-                    ['reason' => 'null_organisation_id']
-                );
-            }
-
-            // CRITICAL 2: election_id MUST reference a valid election
+            // Validate election_id is present
             if (is_null($vote->election_id)) {
-                \Log::channel('voting_security')->warning('Real vote rejected: NULL election_id', [
+                \Log::channel('voting_security')->warning('Vote rejected: NULL election_id', [
                     'reason' => 'Election reference is required',
-                    'organisation_id' => $vote->organisation_id,
                     'timestamp' => now(),
                     'ip' => request()->ip(),
                 ]);
 
                 throw new \App\Exceptions\InvalidRealVoteException(
-                    'Real votes require a valid election (election_id cannot be NULL)',
-                    ['reason' => 'null_election_id', 'organisation_id' => $vote->organisation_id]
+                    'Votes require a valid election (election_id cannot be NULL)',
+                    ['reason' => 'null_election_id']
                 );
             }
 
-            // CRITICAL 3: election must belong to the SAME organisation
+            // Verify election exists
             $election = Election::withoutGlobalScopes()->find($vote->election_id);
-
             if (!$election) {
-                \Log::channel('voting_security')->warning('Real vote rejected: Invalid election_id', [
+                \Log::channel('voting_security')->warning('Vote rejected: Invalid election_id', [
                     'election_id' => $vote->election_id,
-                    'organisation_id' => $vote->organisation_id,
                     'reason' => 'Election not found',
                     'timestamp' => now(),
                     'ip' => request()->ip(),
@@ -128,48 +118,53 @@ abstract class BaseVote extends Model
                 );
             }
 
-            // Verify election type is 'real' (not 'demo')
-            if ($election->type !== 'real') {
-                \Log::channel('voting_security')->warning('Real vote rejected: Election is not real type', [
-                    'election_id' => $vote->election_id,
-                    'election_type' => $election->type,
-                    'organisation_id' => $vote->organisation_id,
-                    'reason' => 'Attempt to vote in non-real election',
-                    'timestamp' => now(),
-                    'ip' => request()->ip(),
-                ]);
-
-                throw new \App\Exceptions\InvalidRealVoteException(
-                    "Election (id: {$vote->election_id}) is not a real election (type: {$election->type})",
-                    ['election_id' => $vote->election_id, 'election_type' => $election->type, 'reason' => 'not_real_election']
-                );
-            }
-
-            // Verify organisation_id matches
-            if ($election->organisation_id !== $vote->organisation_id) {
-                \Log::channel('voting_security')->warning('Real vote rejected: Organisation mismatch', [
-                    'vote_organisation_id' => $vote->organisation_id,
-                    'election_organisation_id' => $election->organisation_id,
-                    'election_id' => $vote->election_id,
-                    'reason' => 'Vote organisation does not match election organisation',
-                    'timestamp' => now(),
-                    'ip' => request()->ip(),
-                ]);
-
-                throw new \App\Exceptions\OrganisationMismatchException(
-                    "Vote organisation_id ({$vote->organisation_id}) does not match election organisation_id ({$election->organisation_id})",
-                    [
+            // For real votes, ensure organisation_id matches election
+            if (get_class($vote) === Vote::class && !is_null($election->organisation_id)) {
+                if ($vote->organisation_id !== $election->organisation_id) {
+                    \Log::channel('voting_security')->warning('Real vote rejected: Organisation mismatch', [
                         'vote_organisation_id' => $vote->organisation_id,
                         'election_organisation_id' => $election->organisation_id,
                         'election_id' => $vote->election_id,
-                    ]
+                        'reason' => 'Vote organisation does not match election organisation',
+                        'timestamp' => now(),
+                        'ip' => request()->ip(),
+                    ]);
+
+                    throw new \App\Exceptions\OrganisationMismatchException(
+                        "Vote organisation_id ({$vote->organisation_id}) does not match election organisation_id ({$election->organisation_id})",
+                        [
+                            'vote_organisation_id' => $vote->organisation_id,
+                            'election_organisation_id' => $election->organisation_id,
+                            'election_id' => $vote->election_id,
+                        ]
+                    );
+                }
+            }
+
+            // Ensure vote_hash is provided (cryptographic proof)
+            if (is_null($vote->vote_hash)) {
+                \Log::channel('voting_security')->warning('Vote rejected: NULL vote_hash', [
+                    'reason' => 'Cryptographic proof is required',
+                    'election_id' => $vote->election_id,
+                    'timestamp' => now(),
+                ]);
+
+                throw new \App\Exceptions\InvalidRealVoteException(
+                    'Votes require a cryptographic proof (vote_hash cannot be NULL)',
+                    ['reason' => 'null_vote_hash']
                 );
             }
 
-            // ✅ All validations passed - log success
-            \Log::channel('voting_security')->info('Real vote passed model validation', [
+            // Set cast_at if not provided
+            if (is_null($vote->cast_at)) {
+                $vote->cast_at = now();
+            }
+
+            // ✅ All validations passed - vote is anonymous and secure
+            \Log::channel('voting_security')->info('Vote passed model validation', [
                 'election_id' => $vote->election_id,
                 'organisation_id' => $vote->organisation_id,
+                'vote_hash_prefix' => substr($vote->vote_hash, 0, 10) . '...',
                 'timestamp' => now(),
                 'ip' => request()->ip(),
             ]);
@@ -177,33 +172,41 @@ abstract class BaseVote extends Model
     }
 
     /**
-     * Get the user who cast this vote
+     * Verify this vote was cast by a specific code
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Implements cryptographic verification without exposing voter identity.
+     * Uses SHA256 hash of user_id + election_id + code + timestamp.
+     *
+     * @param Code $code The code to verify against
+     * @return bool True if vote hash matches
      */
-    public function user()
+    public function verifyByCode(Code $code): bool
     {
-        return $this->belongsTo(User::class);
+        $expectedHash = hash('sha256',
+            $code->user_id .
+            $code->election_id .
+            $code->code1 .
+            $this->cast_at->timestamp
+        );
+
+        return hash_equals($this->vote_hash, $expectedHash);
     }
 
     /**
-     * Get all posts associated with this vote (polymorphic)
+     * Get verification data for audit
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphedByMany
+     * Allows voter to verify their vote without exposing how they voted.
+     * @return array
      */
-    public function posts()
+    public function getVerificationData(): array
     {
-        return $this->morphedByMany(Post::class, 'votable');
-    }
-
-    /**
-     * Get all candidacies associated with this vote (polymorphic)
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphedByMany
-     */
-    public function candidacies()
-    {
-        return $this->morphedByMany(Candidacy::class, 'votable');
+        return [
+            'election_id' => $this->election_id,
+            'organisation_id' => $this->organisation_id,
+            'cast_at' => $this->cast_at,
+            'vote_hash_prefix' => substr($this->vote_hash, 0, 8) . '...',
+            'can_verify' => true,
+        ];
     }
 
     /**
@@ -214,17 +217,6 @@ abstract class BaseVote extends Model
     public function election()
     {
         return $this->belongsTo(Election::class);
-    }
-
-    /**
-     * Check if this vote was submitted by a specific user
-     *
-     * @param int $userId
-     * @return bool
-     */
-    public function isSubmittedBy(int $userId): bool
-    {
-        return $this->user_id == $userId;
     }
 
     /**
@@ -256,28 +248,6 @@ abstract class BaseVote extends Model
     public function countSelectedCandidates(): int
     {
         return count($this->getSelectedCandidates());
-    }
-
-    /**
-     * Check if voter selected the no-vote option
-     *
-     * @return bool
-     */
-    public function selectedNoVoteOption(): bool
-    {
-        return (bool) $this->no_vote_option;
-    }
-
-    /**
-     * Scope: Get votes for a specific user
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param int $userId
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeForUser($query, int $userId)
-    {
-        return $query->where('user_id', $userId);
     }
 
     /**
