@@ -18,7 +18,7 @@
  * - No cross-organisation data access is possible
  */
 
-use App\Http\Controllers\Organizations\VoterController;
+use App\Http\Controllers\Organisations\VoterController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('organisations/{organisation:slug}')

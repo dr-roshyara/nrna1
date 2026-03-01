@@ -43,8 +43,8 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CommissionDashboardController;
 use App\Http\Controllers\VoterDashboardController;
 use App\Http\Controllers\WelcomeDashboardController;
-use App\Http\Controllers\Api\OrganizationController;
-use App\Http\Controllers\Organizations\MemberImportController;
+use App\Http\Controllers\Api\OrganisationController;
+use App\Http\Controllers\Organisations\MemberImportController;
 use App\Http\Controllers\MemberController;
 
 /*
@@ -343,9 +343,9 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // organisation management routes
-    Route::post('/organisations', [OrganizationController::class, 'store'])
+    Route::post('/organisations', [OrganisationController::class, 'store'])
          ->name('organisations.store');
-    Route::get('/organisations/{slug}', [OrganizationController::class, 'show'])
+    Route::get('/organisations/{slug}', [OrganisationController::class, 'show'])
          ->name('organisations.show');
     Route::get('/organisations/{slug}/members/import', [MemberImportController::class, 'create'])
          ->name('organisations.members.import');
