@@ -98,25 +98,46 @@ class DashboardResolver
         $roles = [];
 
         // 1. organisation roles (new system)
-        if (\DB::table('user_organisation_roles')->where('user_id', $user->id)->exists()) {
+        $orgRoleExists = \DB::table('user_organisation_roles')->where('user_id', $user->id)->exists();
+        if ($orgRoleExists) {
             $roles[] = 'admin';
+            \Log::debug('DashboardResolver: User has organisation role', [
+                'user_id' => $user->id,
+                'org_roles' => \DB::table('user_organisation_roles')->where('user_id', $user->id)->get(['organisation_id', 'role'])->toArray(),
+            ]);
+        } else {
+            \Log::debug('DashboardResolver: User has NO organisation roles', ['user_id' => $user->id]);
         }
 
         // 2. Commission memberships (new system)
-        if (\DB::table('election_commission_members')->where('user_id', $user->id)->exists()) {
+        $commissionExists = \DB::table('election_commission_members')->where('user_id', $user->id)->exists();
+        if ($commissionExists) {
             $roles[] = 'commission';
+            \Log::debug('DashboardResolver: User has commission membership', [
+                'user_id' => $user->id,
+                'commissions' => \DB::table('election_commission_members')->where('user_id', $user->id)->get(['election_id'])->toArray(),
+            ]);
+        } else {
+            \Log::debug('DashboardResolver: User has NO commission memberships', ['user_id' => $user->id]);
         }
 
         // 3. Voter status (new system)
         if ($user->is_voter) {
             $roles[] = 'voter';
+            \Log::debug('DashboardResolver: User is marked as voter', ['user_id' => $user->id]);
         }
 
         // 4. Legacy Spatie roles mapping
-        if ($user->hasRole('admin') || $user->hasRole('election_officer')) {
+        $hasSpatieAdmin = $user->hasRole('admin');
+        $hasSpatieElectionOfficer = $user->hasRole('election_officer');
+        if ($hasSpatieAdmin || $hasSpatieElectionOfficer) {
             if (!in_array('admin', $roles)) {
                 $roles[] = 'admin';
             }
+            \Log::debug('DashboardResolver: User has legacy Spatie admin role', [
+                'user_id' => $user->id,
+                'spatie_roles' => $user->roles()->pluck('name')->toArray(),
+            ]);
         }
 
         // 5. Legacy committee member mapping
@@ -124,9 +145,20 @@ class DashboardResolver
             if (!in_array('commission', $roles)) {
                 $roles[] = 'commission';
             }
+            \Log::debug('DashboardResolver: User is legacy committee member', ['user_id' => $user->id]);
         }
 
-        return array_unique($roles);
+        $uniqueRoles = array_unique(array_filter($roles));
+        \Log::info('DashboardResolver: Final roles determined', [
+            'user_id' => $user->id,
+            'email' => $user->email,
+            'is_voter' => $user->is_voter,
+            'is_committee_member' => $user->is_committee_member ?? false,
+            'final_roles' => $uniqueRoles,
+            'role_count' => count($uniqueRoles),
+        ]);
+
+        return $uniqueRoles;
     }
 
     /**

@@ -328,17 +328,17 @@ Route::middleware(['auth'])->group(function () {
          ->name('role.switch');
 
     // Admin dashboard (requires admin role)
-    Route::prefix('dashboard/admin')->middleware(['role:admin'])->group(function () {
+    Route::prefix('dashboard/admin')->middleware(['dashboard.role:admin'])->group(function () {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     });
 
     // Commission dashboard (requires commission role)
-    Route::prefix('dashboard/commission')->middleware(['role:commission'])->group(function () {
+    Route::prefix('dashboard/commission')->middleware(['dashboard.role:commission'])->group(function () {
         Route::get('/', [CommissionDashboardController::class, 'index'])->name('commission.dashboard');
     });
 
     // Voter dashboard (requires voter role)
-    Route::prefix('vote')->middleware(['role:voter'])->group(function () {
+    Route::prefix('vote')->middleware(['dashboard.role:voter'])->group(function () {
         Route::get('/', [VoterDashboardController::class, 'index'])->name('vote.dashboard');
     });
 

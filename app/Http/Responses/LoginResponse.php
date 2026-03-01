@@ -20,7 +20,34 @@ class LoginResponse implements LoginResponseContract
      */
     public function toResponse($request)
     {
-        return app(DashboardResolver::class)->resolve($request->user());
+        $user = $request->user();
+
+        \Log::info('🔐 LoginResponse::toResponse() CALLED', [
+            'user_id' => $user->id,
+            'email' => $user->email,
+            'timestamp' => now()->format('Y-m-d H:i:s'),
+        ]);
+
+        try {
+            $redirect = app(DashboardResolver::class)->resolve($user);
+
+            $targetUrl = $redirect->getTargetUrl();
+            \Log::info('✅ LoginResponse: Will redirect to', [
+                'user_id' => $user->id,
+                'target_url' => $targetUrl,
+            ]);
+
+            return $redirect;
+        } catch (\Exception $e) {
+            \Log::error('❌ LoginResponse: DashboardResolver failed', [
+                'user_id' => $user->id,
+                'error' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+            ]);
+
+            throw $e;
+        }
     }
 }
 
