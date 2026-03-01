@@ -27,11 +27,11 @@ class Election extends Model
 
         // When creating an election, automatically set organisation_id from session or auth
         static::creating(function ($model) {
-            if (!$model->organisation_id) {
+            if (is_null($model->organisation_id)) {
                 $model->organisation_id = session('current_organisation_id') ?? auth()->user()?->organisation_id;
 
                 // If organisation_id is 0 (legacy sentinel value), convert to platform org ID
-                if (!$model->organisation_id || $model->organisation_id === 0 || $model->organisation_id === '0') {
+                if ($model->organisation_id === 0 || $model->organisation_id === '0') {
                     $platformOrg = Organisation::where('slug', 'platform')->first();
                     if ($platformOrg) {
                         $model->organisation_id = $platformOrg->id;
@@ -44,6 +44,12 @@ class Election extends Model
                         ]);
                         $model->organisation_id = $platformOrg->id;
                     }
+                }
+            } elseif ($model->organisation_id === 0 || $model->organisation_id === '0') {
+                // Also convert 0 to platform org ID even if explicitly set
+                $platformOrg = Organisation::where('slug', 'platform')->first();
+                if ($platformOrg) {
+                    $model->organisation_id = $platformOrg->id;
                 }
             }
         });
