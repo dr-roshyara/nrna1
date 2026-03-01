@@ -33,8 +33,8 @@ class ElectionController extends Controller
             ]);
         }
 
-        // Update user IP
-        $authUser->update(['user_ip' => $ipAddress]);
+        // Update user IP (store voting IP for audit trail)
+        $authUser->update(['voting_ip' => $ipAddress]);
 
         // Check if the ONE real election is active
         $realElection = Election::where('type', 'real')
