@@ -2333,7 +2333,7 @@ public function verifyVoteSubmit(): array
                           $result->vote_id       =$vote->id;
                           $result->election_id   =$election->id;
                           $result->post_id       =$post_id;
-                          $result->candidacy_id  =$candidates[$j]['candidacy_id'];
+                          $result->candidate_id  =$candidates[$j]['candidacy_id'];
 
                           // PHASE 3: Explicitly set organisation_id based on election type
                           if ($election->type === 'real') {
@@ -3060,8 +3060,8 @@ private function prepare_demo_vote_display($demoVote, $election, $auth_user)
         ],
         'vote_info' => [
             'voted_at' => $demoVote->created_at ? $demoVote->created_at->format('M j, Y \a\t g:i A') : 'Unknown',
-            'no_vote_option' => $demoVote->no_vote_option ?? false,
-            'voting_code_used' => $demoVote->voting_code ?? 'N/A',
+            'abstained_from_posts' => $demoVote->no_vote_posts ?? [],
+            'vote_hash' => substr($demoVote->vote_hash ?? '', 0, 8) . '...',
         ],
         'vote_selections' => $voteSelections,
         'summary' => [
@@ -3366,8 +3366,8 @@ private function prepare_vote_display_data($vote, $auth_user, $verification_code
         ],
         'vote_info' => [
             'voted_at' => $vote->created_at ? $vote->created_at->format('M j, Y \a\t g:i A') : 'Unknown',
-            'no_vote_option' => $vote->no_vote_option ?? false,
-            'voting_code_used' => $vote->voting_code ?? 'N/A',
+            'abstained_from_posts' => $vote->no_vote_posts ?? [],
+            'vote_hash' => substr($vote->vote_hash ?? '', 0, 8) . '...',
         ],
         'vote_selections' => $vote_selections,
         'summary' => [
