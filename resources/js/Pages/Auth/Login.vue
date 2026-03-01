@@ -1,7 +1,11 @@
 <template>
     <div class="min-h-screen bg-gray-50">
-        <!-- Header -->
-        <ElectionHeader :isLoggedIn="false" :locale="$page.props.locale" />
+        <!-- Header - Disable language selector on login page to prevent redirect loop -->
+        <ElectionHeader
+            :isLoggedIn="false"
+            :locale="$page.props.locale"
+            :disable-language-selector="true"
+        />
 
         <!-- Login Section -->
         <section class="py-16 md:py-24 bg-white">

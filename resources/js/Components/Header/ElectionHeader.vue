@@ -27,8 +27,8 @@
 
         <!-- Right Controls: Language + Auth + Mobile Menu -->
         <div class="flex items-center gap-2 md:gap-3 shrink-0">
-          <!-- Language Selector - Compact on Mobile -->
-          <div class="relative">
+          <!-- Language Selector - Compact on Mobile (disabled on login page) -->
+          <div v-if="!disableLanguageSelector" class="relative">
             <select
               :value="currentLocale"
               @change="handleLanguageChange"
@@ -235,6 +235,10 @@ const props = defineProps({
     type: String,
     default: null,
     validator: (value) => value === null || ['de', 'en', 'np'].includes(value),
+  },
+  disableLanguageSelector: {
+    type: Boolean,
+    default: false,
   },
   breadcrumbs: {
     type: Array,
