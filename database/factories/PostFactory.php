@@ -14,11 +14,13 @@ class PostFactory extends Factory
     {
         return [
             'election_id' => Election::factory(),
-            'post_id' => $this->faker->unique()->regexify('[A-Z]{3}[0-9]{3}'),
             'name' => $this->faker->word(),
-            'nepali_name' => $this->faker->word(),
-            'required_number' => $this->faker->numberBetween(1, 10),
-            'position_order' => $this->faker->numberBetween(1, 10),
+            'description' => $this->faker->sentence(),
+            'is_national_wide' => $this->faker->boolean(70),
+            'state_name' => $this->faker->optional()->state(),
+            'required_number' => $this->faker->numberBetween(1, 5),
+            'select_all_required' => $this->faker->boolean(80),
+            'position_order' => $this->faker->numberBetween(0, 10),
         ];
     }
 }

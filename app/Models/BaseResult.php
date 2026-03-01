@@ -133,7 +133,7 @@ abstract class BaseResult extends Model
                 'vote_id' => $result->vote_id,
                 'organisation_id' => $result->organisation_id,
                 'post_id' => $result->post_id,
-                'candidacy_id' => $result->candidacy_id,
+                'candidate_id' => $result->candidate_id,
                 'timestamp' => now(),
                 'ip' => request()->ip(),
             ]);
@@ -249,8 +249,8 @@ abstract class BaseResult extends Model
     public static function topCandidatesForPost(string $postId, int $limit = 10)
     {
         return static::forPost($postId)
-            ->selectRaw('candidacy_id, COUNT(*) as vote_count')
-            ->groupBy('candidacy_id')
+            ->selectRaw('candidate_id, COUNT(*) as vote_count')
+            ->groupBy('candidate_id')
             ->orderByDesc('vote_count')
             ->limit($limit)
             ->get();

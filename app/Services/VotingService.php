@@ -163,8 +163,8 @@ abstract class VotingService
 
         return $resultModel::where('election_id', $this->election->id)
             ->forPost($postId)
-            ->selectRaw('candidacy_id, COUNT(*) as vote_count')
-            ->groupBy('candidacy_id')
+            ->selectRaw('candidate_id, COUNT(*) as vote_count')
+            ->groupBy('candidate_id')
             ->orderByDesc('vote_count')
             ->limit($limit)
             ->get();

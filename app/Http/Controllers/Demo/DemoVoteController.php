@@ -636,7 +636,7 @@ public function first_submission(Request $request)
         'user_id',
         'national_selected_candidates',
         'regional_selected_candidates',
-        'no_vote_option',
+        'no_vote_posts',
         'agree_button'
     ]);
 
@@ -2034,9 +2034,11 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
         //
     }
     public function at_least_one_vote_casted(){
-   
-        $btemp = false; 
-        $btemp =request('no_vote_option');
+
+        $btemp = false;
+        // Check if voter abstained from any posts (no_vote_posts is JSON array)
+        $no_vote_posts = request('no_vote_posts', []);
+        $btemp = !empty($no_vote_posts);
         $btemp =$btemp | sizeof(request('icc_member'))>0;
         $btemp =$btemp | sizeof(request('president'))>0;
          $btemp =$btemp | sizeof(request('vice_president'))>0;
@@ -2513,16 +2515,21 @@ public function verifyVoteSubmit(): array
         $voteModel = $votingService->getVoteModel();
         $resultModel = $votingService->getResultModel();
 
-        // Extract no_vote_option from input data, default to false
-        $no_vote_option = (bool) ($input_data['no_vote_option'] ?? false);
-        $vote               = new $voteModel;
-        // $vote->user_id      = $this->user_id;
-         // $vote->user_id      = Hash::make($this->user_id);
-        // $vote->user_id      = Hash::make($vote->user_id);
+        // Get the code object for vote_hash generation
+        $codeModelClass = $election->type === 'demo' ? \App\Models\DemoCode::class : \App\Models\Code::class;
+        $code = $codeModelClass::where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
 
-        $vote->no_vote_option = $no_vote_option ? 1 : 0;
-        $vote->voting_code=$hashed_voting_key;
-        $vote->election_id=$election->id;
+        // Extract no_vote_posts from input data (JSON array of post IDs where voter abstained)
+        $no_vote_posts = $input_data['no_vote_posts'] ?? [];
+
+        $vote = new $voteModel;
+        // ⚠️ CRITICAL: DO NOT set user_id - votes are anonymous!
+        // Old code (removed): $vote->user_id = $this->user_id;
+
+        $vote->no_vote_posts = $no_vote_posts;
+        $vote->election_id = $election->id;
 
         // PHASE 3: Explicitly set organisation_id based on election type
         if ($election->type === 'real') {
@@ -2535,21 +2542,20 @@ public function verifyVoteSubmit(): array
             $vote->organisation_id = session('current_organisation_id');
         }
 
-        $vote->save();   //save the vote first
+        $vote->save();   // Save the vote first (sets cast_at automatically)
         $this->out_code = $vote->getKey();  // Get the vote's primary key
 
-        // After vote is saved, concatenate private_key with vote_id for uniqueness
-        // voting_code = private_key_vote_id (e.g., "abc123_5")
-        if ($private_key && $vote->id) {
-            $concatenated_code = $private_key . '_' . $vote->id;
-
-            $vote->voting_code = password_hash($concatenated_code, PASSWORD_BCRYPT);
-            
-            $vote->save(); // Update with voting code
-        } else {
-            // Fallback: if no private_key provided, use the initial hashed key
-            $vote->voting_code = $hashed_voting_key;
-            $vote->save();
+        // Generate cryptographic vote_hash for verification
+        // Uses SHA256(code.user_id + election_id + code1 + cast_at_timestamp)
+        // This allows voter to verify their vote WITHOUT exposing how they voted
+        if ($code && $auth_user && $vote->cast_at) {
+            $vote->vote_hash = hash('sha256',
+                $code->user_id .
+                $election->id .
+                $code->code1 .
+                $vote->cast_at->timestamp
+            );
+            $vote->save(); // Update with vote_hash
         }     
         //save the $this->vote_id_for_voter  it to voter ;
         {
