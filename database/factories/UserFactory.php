@@ -93,12 +93,15 @@ class UserFactory extends Factory
         if (isset($attributes['organisation_id']) && $attributes['organisation_id']) {
             $org_id = $attributes['organisation_id'];
             if (!Organisation::find($org_id)) {
-                Organisation::create([
-                    'id' => $org_id,
+                // Create a test organisation - let auto_increment assign the ID naturally
+                $org = Organisation::create([
                     'name' => 'Test Organisation',
-                    'slug' => 'test-org-' . $org_id,
-                    'type' => 'other', // Must use valid enum value
+                    'slug' => 'test-org-' . uniqid(),
+                    'type' => 'other',
                 ]);
+
+                // Use the created organisation's actual ID
+                $attributes['organisation_id'] = $org->id;
             }
         }
 

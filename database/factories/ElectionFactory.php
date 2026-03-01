@@ -26,19 +26,39 @@ class ElectionFactory extends Factory
 
     /**
      * Ensure organisation exists when created.
+     * For demo elections with organisation_id=0, convert to platform org (ID=1)
      */
     public function create($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
     {
-        // If organisation_id is provided, ensure it exists
-        if (isset($attributes['organisation_id']) && $attributes['organisation_id']) {
-            $org_id = $attributes['organisation_id'];
-            if (!Organisation::find($org_id)) {
-                Organisation::create([
-                    'id' => $org_id,
-                    'name' => 'Test Organisation',
-                    'slug' => 'test-org-' . $org_id,
-                    'type' => 'other', // Must use valid enum value
-                ]);
+        // Get or create platform organisation
+        $platformOrg = Organisation::where('slug', 'platform')->first();
+        if (!$platformOrg) {
+            $platformOrg = Organisation::create([
+                'name' => 'Platform',
+                'slug' => 'platform',
+                'type' => 'other',
+            ]);
+        }
+
+        // Handle organisation_id
+        if (isset($attributes['organisation_id'])) {
+            // If organisation_id is 0 (old sentinel value), convert to platform org ID
+            if ($attributes['organisation_id'] === 0 || $attributes['organisation_id'] === '0') {
+                $attributes['organisation_id'] = $platformOrg->id;
+            } elseif ($attributes['organisation_id']) {
+                // If organisation_id is provided and non-zero, ensure it exists
+                $org_id = $attributes['organisation_id'];
+                if (!Organisation::find($org_id)) {
+                    // Create a test organisation - let auto_increment assign the ID naturally
+                    $org = Organisation::create([
+                        'name' => 'Test Organisation',
+                        'slug' => 'test-org-' . uniqid(),
+                        'type' => 'other',
+                    ]);
+
+                    // Use the created organisation's actual ID
+                    $attributes['organisation_id'] = $org->id;
+                }
             }
         }
 

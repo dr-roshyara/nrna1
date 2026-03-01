@@ -14,6 +14,7 @@ class CreateRoleSystemTables extends Migration
     public function up()
     {
         // 1. Create organisations table
+        // Note: id=0 is reserved for platform/system organisation
         Schema::create('organisations', function (Blueprint $table) {
             $table->id();
             $table->string('name');

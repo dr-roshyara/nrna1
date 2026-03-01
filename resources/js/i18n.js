@@ -93,17 +93,17 @@ import welcomeDashboardDe from './locales/pages/Welcome/Dashboard/de.json';
 import welcomeDashboardEn from './locales/pages/Welcome/Dashboard/en.json';
 import welcomeDashboardNp from './locales/pages/Welcome/Dashboard/np.json';
 
-import organizationDe from './locales/pages/Dashboard/organisation/de.json';
-import organizationEn from './locales/pages/Dashboard/organisation/en.json';
-import organizationNp from './locales/pages/Dashboard/organisation/np.json';
+import organisationDe from './locales/pages/Dashboard/organisation/de.json';
+import organisationEn from './locales/pages/Dashboard/organisation/en.json';
+import organisationNp from './locales/pages/Dashboard/organisation/np.json';
 
-import organizationShowDe from './locales/pages/organisation/de.json';
-import organizationShowEn from './locales/pages/organisation/en.json';
-import organizationShowNp from './locales/pages/organisation/np.json';
+import organisationShowDe from './locales/pages/Organisation/de.json';
+import organisationShowEn from './locales/pages/Organisation/en.json';
+import organisationShowNp from './locales/pages/Organisation/np.json';
 
-import organizationShowPageDe from './locales/pages/Organizations/Show/de.json';
-import organizationShowPageEn from './locales/pages/Organizations/Show/en.json';
-import organizationShowPageNp from './locales/pages/Organizations/Show/np.json';
+import organisationShowPageDe from './locales/pages/Organisations/Show/de.json';
+import organisationShowPageEn from './locales/pages/Organisations/Show/en.json';
+import organisationShowPageNp from './locales/pages/Organisations/Show/np.json';
 
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
@@ -141,9 +141,9 @@ const messages = {
   de: {
     ...de,
     ...commonDe,
-    organisation: organizationDe,
+    organisation: organisationDe,
     organisations: {
-      demo: organizationShowPageDe.demo,
+      demo: organisationShowPageDe.demo,
     },
     pages: {
       'voting-start': votingStartDe,
@@ -168,15 +168,15 @@ const messages = {
       'commission': commissionDe,
       'vote-dashboard': voteDashboardDe,
       'welcome-dashboard': welcomeDashboardDe,
-      'organisation-show': { ...organizationShowDe, ...organizationShowPageDe },
+      'organisation-show': { ...organisationShowDe, ...organisationShowPageDe },
     },
   },
   en: {
     ...en,
     ...commonEn,
-    organisation: organizationEn,
+    organisation: organisationEn,
     organisations: {
-      demo: organizationShowPageEn.demo,
+      demo: organisationShowPageEn.demo,
     },
     pages: {
       'voting-start': votingStartEn,
@@ -201,15 +201,15 @@ const messages = {
       'commission': commissionEn,
       'vote-dashboard': voteDashboardEn,
       'welcome-dashboard': welcomeDashboardEn,
-      'organisation-show': { ...organizationShowEn, ...organizationShowPageEn },
+      'organisation-show': { ...organisationShowEn, ...organisationShowPageEn },
     },
   },
   np: {
     ...np,
     ...commonNp,
-    organisation: organizationNp,
+    organisation: organisationNp,
     organisations: {
-      demo: organizationShowPageNp.demo,
+      demo: organisationShowPageNp.demo,
     },
     pages: {
       'voting-start': votingStartNp,
@@ -234,7 +234,7 @@ const messages = {
       'commission': commissionNp,
       'vote-dashboard': voteDashboardNp,
       'welcome-dashboard': welcomeDashboardNp,
-      'organisation-show': { ...organizationShowNp, ...organizationShowPageNp },
+      'organisation-show': { ...organisationShowNp, ...organisationShowPageNp },
     },
   },
 };

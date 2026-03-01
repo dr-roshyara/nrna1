@@ -252,7 +252,7 @@
 
 <script>
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
-import OrganizationCreateModal from "@/Components/organisation/OrganizationCreateModal.vue";
+import OrganizationCreateModal from "@/Components/Organization/OrganizationCreateModal.vue";
 import { useOrganizationCreation } from "@/composables/useOrganizationCreation";
 import { provide } from 'vue';
 

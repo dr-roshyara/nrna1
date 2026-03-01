@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\URL;
  * Generates XML sitemaps for search engines
  * Supports:
  * - Main sitemap (pages, users, candidacies)
- * - Organizations sitemap
+ * - Organisations sitemap
  * - Elections sitemap
  * - Results sitemap
  * - Sitemap index (aggregates all sitemaps)
@@ -39,7 +39,7 @@ class SitemapController extends Controller
         $xml .= '        <lastmod>' . now()->toAtomString() . '</lastmod>' . "\n";
         $xml .= '    </sitemap>' . "\n";
 
-        // Organizations sitemap
+        // Organisations sitemap
         $xml .= '    <sitemap>' . "\n";
         $xml .= '        <loc>' . htmlspecialchars(URL::to('/sitemap/organisations.xml'), ENT_XML1) . '</loc>' . "\n";
         $xml .= '        <lastmod>' . now()->toAtomString() . '</lastmod>' . "\n";

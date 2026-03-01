@@ -95,19 +95,19 @@ class EmailVerificationTest extends TestCase
             'email_verified_at' => null,
         ]);
 
-        // Create an organization
+        // Create an organisation
         $orgSlug = 'test-org-' . time();
-        $organizationId = \DB::table('organizations')->insertGetId([
-            'name' => 'Test Organization',
+        $organisationId = \DB::table('organisations')->insertGetId([
+            'name' => 'Test Organisation',
             'slug' => $orgSlug,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        // Assign admin role to give user an organization role
+        // Assign admin role to give user an organisation role
         \DB::table('user_organization_roles')->insert([
             'user_id' => $user->id,
-            'organization_id' => $organizationId,
+            'organisation_id' => $organisationId,
             'role' => 'admin',
             'created_at' => now(),
             'updated_at' => now(),
@@ -124,8 +124,8 @@ class EmailVerificationTest extends TestCase
 
         $response = $this->actingAs($user)->get($verificationUrl);
 
-        // Organization admin should redirect to their organization dashboard
-        $response->assertRedirect(route('organizations.show', $orgSlug));
+        // Organisation admin should redirect to their organisation dashboard
+        $response->assertRedirect(route('organisations.show', $orgSlug));
         $this->assertTrue($user->fresh()->hasVerifiedEmail());
     }
 }

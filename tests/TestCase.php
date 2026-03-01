@@ -4,6 +4,7 @@ namespace Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Schema;
 use App\Models\Organisation;
 
 abstract class TestCase extends BaseTestCase
@@ -14,24 +15,32 @@ abstract class TestCase extends BaseTestCase
     /**
      * Set up the test environment.
      * Create platform organisation that tests expect to exist.
+     *
+     * Using ID=1 for platform organisation (natural auto_increment).
      */
     protected function setUp(): void
     {
         parent::setUp();
 
-        // Create platform organisation with id=0 for system-wide data
+        // Create platform organisation as ID=1 (first entry with auto_increment)
         // This is required for foreign key constraints in tests
         try {
-            Organisation::query()->firstOrCreate(
-                ['id' => 0],
+            // Check if table exists first
+            if (!Schema::hasTable('organisations')) {
+                return; // Table not created yet
+            }
+
+            // Create or get platform organisation
+            Organisation::firstOrCreate(
+                ['slug' => 'platform'],
                 [
                     'name' => 'Platform',
-                    'slug' => 'platform',
-                    'type' => 'other', // Must use valid enum value
+                    'type' => 'other',
                 ]
             );
         } catch (\Exception $e) {
-            // Silently fail if unable to create (migrations may not be ready)
+            // Log the error for debugging
+            \Log::error('Failed to create platform organisation: ' . $e->getMessage());
         }
     }
 }

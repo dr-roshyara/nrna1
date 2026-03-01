@@ -9,7 +9,7 @@ use App\Models\Organisation;
  * Schema Generator
  *
  * Generates JSON-LD structured data for:
- * - Organizations
+ * - Organisations
  * - Elections (as Events)
  * - Breadcrumbs
  *

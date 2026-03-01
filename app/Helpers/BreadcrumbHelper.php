@@ -58,7 +58,7 @@ class BreadcrumbHelper
     private static function organisationBreadcrumbs(array $breadcrumbs, array $params): array
     {
         $breadcrumbs[] = [
-            'label' => trans('sitemap.sections.organisations') ?: 'Organizations',
+            'label' => trans('sitemap.sections.organisations') ?: 'OrganizationController',
             'url' => url('/organisations')
         ];
 
