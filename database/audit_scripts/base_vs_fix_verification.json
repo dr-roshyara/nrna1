@@ -1,0 +1,123 @@
+{
+    "timestamp": "2026-03-01 23:00:46",
+    "base_has_all_critical": true,
+    "fix_adds_missing": false,
+    "column_locations": {
+        "votes": {
+            "post_id": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            },
+            "no_vote_option": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            },
+            "voting_code": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            },
+            "candidate_01": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            }
+        },
+        "posts": {
+            "post_id": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            },
+            "nepali_name": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            }
+        },
+        "candidacies": {
+            "candidacy_id": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            },
+            "candidacy_name": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            }
+        },
+        "voter_slugs": {
+            "user_id": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            },
+            "expires_at": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            },
+            "is_active": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            }
+        },
+        "codes": {
+            "code3": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            },
+            "code4": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            }
+        },
+        "results": {
+            "candidacy_id": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            }
+        },
+        "demo_posts": {
+            "post_id": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            },
+            "nepali_name": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            },
+            "organisation_id": {
+                "in_base": false,
+                "base_file": null,
+                "in_fix": false,
+                "fix_file": null
+            }
+        }
+    }
+}

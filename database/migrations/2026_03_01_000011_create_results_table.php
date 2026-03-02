@@ -14,6 +14,7 @@ return new class extends Migration
             $table->unsignedBigInteger('election_id');
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('candidate_id')->nullable(); // NULL if vote was abstention/no-vote
+            $table->unsignedBigInteger('organisation_id')->nullable();
 
             // Vote verification (linked to vote but NO user info)
             $table->string('vote_hash')->nullable(); // Copy from vote for verification
@@ -44,9 +45,15 @@ return new class extends Migration
                   ->on('candidacies')
                   ->onDelete('set null');
 
+            $table->foreign('organisation_id')
+                  ->references('id')
+                  ->on('organisations')
+                  ->onDelete('set null');
+
             // Indexes (NO user_id!)
             $table->index(['election_id', 'post_id']);
             $table->index(['post_id', 'candidate_id']);
+            $table->index(['election_id', 'organisation_id']);
             $table->index('vote_hash');
         });
     }

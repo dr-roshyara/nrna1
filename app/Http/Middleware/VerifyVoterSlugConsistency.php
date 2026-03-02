@@ -5,6 +5,10 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Models\Election;
 use Illuminate\Support\Facades\Log;
+use App\Exceptions\Voting\InvalidVoterSlugException;
+use App\Exceptions\Voting\ElectionNotFoundException;
+use App\Exceptions\Voting\OrganisationMismatchException;
+use App\Exceptions\Voting\ElectionMismatchException;
 
 class VerifyVoterSlugConsistency
 {
@@ -23,7 +27,9 @@ class VerifyVoterSlugConsistency
 
         if (!$voterSlug) {
             Log::critical('❌ [VerifyVoterSlugConsistency] No voter slug in request');
-            abort(500, 'Voting session context missing');
+            throw new InvalidVoterSlugException('Voting session context missing', [
+                'middleware' => 'VerifyVoterSlugConsistency',
+            ]);
         }
 
         Log::info('🔒 [VerifyVoterSlugConsistency] Starting consistency check', [
@@ -43,13 +49,16 @@ class VerifyVoterSlugConsistency
                 'voter_slug_id' => $voterSlug->id,
                 'election_id' => $voterSlug->election_id,
             ]);
-            abort(500, 'Referenced election not found');
+            throw new ElectionNotFoundException('Voter slug references missing election', [
+                'voter_slug_id' => $voterSlug->id,
+                'election_id' => $voterSlug->election_id,
+            ]);
         }
 
         // CHECK 2: Organisation consistency (THE GOLDEN RULE)
         $orgsMatch = $election->organisation_id === $voterSlug->organisation_id;
-        $electionIsPlatform = $election->organisation_id === 0;
-        $userIsPlatform = $voterSlug->organisation_id === 0;
+        $electionIsPlatform = $election->organisation_id === 1;
+        $userIsPlatform = $voterSlug->organisation_id === 1;
 
         // Valid if: same org OR election is platform OR user is platform
         $orgsValid = $orgsMatch || $electionIsPlatform || $userIsPlatform;
@@ -64,7 +73,13 @@ class VerifyVoterSlugConsistency
                 'electionIsPlatform' => $electionIsPlatform,
                 'userIsPlatform' => $userIsPlatform,
             ]);
-            abort(500, 'Organisation inconsistency detected');
+            throw new OrganisationMismatchException('Organisation consistency check failed', [
+                'voter_slug_org_id' => $voterSlug->organisation_id,
+                'election_org_id' => $election->organisation_id,
+                'orgs_match' => $orgsMatch,
+                'election_is_platform' => $electionIsPlatform,
+                'user_is_platform' => $userIsPlatform,
+            ]);
         }
 
         // CHECK 3: Election type matches route context
@@ -78,7 +93,13 @@ class VerifyVoterSlugConsistency
                 'election_id' => $election->id,
                 'election_type' => $election->type,
             ]);
-            abort(403, 'Invalid election type for this route');
+            throw new ElectionMismatchException('Election type mismatch for route context', [
+                'route' => $routeName,
+                'election_id' => $election->id,
+                'election_type' => $election->type,
+                'is_demo_route' => $isDemoRoute,
+                'is_demo_election' => $isDemoElection,
+            ]);
         }
 
         // CHECK 4: Vote completion status

@@ -30,7 +30,8 @@ class ElectionSeeder extends Seeder
         // - Data is separate from real elections (demo_votes table)
         // - Can be reset/cleared for testing
         // - Safe for testing voting workflows
-        Election::firstOrCreate(
+        // - Belongs to Platform organisation (ID=1)
+        Election::withoutGlobalScopes()->firstOrCreate(
             ['slug' => 'demo-election'],
             [
                 'name' => 'Demo Election - Testing Only',
@@ -39,6 +40,7 @@ class ElectionSeeder extends Seeder
                 'is_active' => true,
                 'start_date' => Carbon::now()->subDays(1),
                 'end_date' => Carbon::now()->addMonths(3),
+                'organisation_id' => 1, // Platform organisation
             ]
         );
 
@@ -49,7 +51,8 @@ class ElectionSeeder extends Seeder
         // - Official election results
         // - Permanent audit trail
         // DEFAULT: Used when no election explicitly selected (backward compatible)
-        Election::firstOrCreate(
+        // - Belongs to Platform organisation (ID=1)
+        Election::withoutGlobalScopes()->firstOrCreate(
             ['slug' => '2024-general-election'],
             [
                 'name' => '2024 General Election',
@@ -58,6 +61,7 @@ class ElectionSeeder extends Seeder
                 'is_active' => true,
                 'start_date' => Carbon::now()->subDays(1),
                 'end_date' => Carbon::now()->addWeeks(2),
+                'organisation_id' => 1, // Platform organisation
             ]
         );
 

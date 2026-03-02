@@ -8,9 +8,20 @@ use App\Models\Code;
 use App\Models\Election;
 use App\Http\Controllers\Controller;
 use App\Services\ElectionService;
+use App\Services\DemoElectionResolver;
+use App\Services\VoterSlugService;
+use Illuminate\Support\Facades\Log;
 
 class ElectionController extends Controller
 {
+    protected DemoElectionResolver $demoResolver;
+    protected VoterSlugService $slugService;
+
+    public function __construct(DemoElectionResolver $demoResolver, VoterSlugService $slugService)
+    {
+        $this->demoResolver = $demoResolver;
+        $this->slugService = $slugService;
+    }
     /**
      * ✅ Dashboard method - Simplified for single election system
      *
@@ -200,32 +211,77 @@ class ElectionController extends Controller
      * - All authenticated users can vote (no can_vote_now check)
      * - Votes stored in demo_votes table (separate from real elections)
      * - Can be reset for testing
+     *
+     * Uses DemoElectionResolver for priority-based election selection:
+     * 1️⃣ Org-specific demo (if user has organisation_id)
+     * 2️⃣ Platform-wide demo (fallback)
      */
     public function startDemo()
     {
         $authUser = Auth::user();
+        Log::info('🎬 Demo election start requested', [
+            'user_id' => $authUser?->id,
+            'user_org_id' => $authUser?->organisation_id,
+        ]);
 
         if (!$authUser) {
             return redirect()->route('login');
         }
 
-        // Get the ONE demo election
-        // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
-        // to ALL users regardless of organisation context
-        // Demo elections always have organisation_id = NULL but should be universally accessible
-        $demoElection = Election::withoutGlobalScopes()
-            ->where('type', 'demo')
-            ->where('is_active', true)
-            ->first();
+        try {
+            // Use DemoElectionResolver to get the correct demo election
+            // Priority: org-specific demo → platform-wide demo
+            $demoElection = $this->demoResolver->getDemoElectionForUser($authUser);
 
-        if (!$demoElection) {
+            if (!$demoElection) {
+                Log::error('❌ No demo election found', [
+                    'user_id' => $authUser->id,
+                    'user_org_id' => $authUser->organisation_id,
+                ]);
+                return redirect()->route('dashboard')
+                    ->with('error', 'Demo election not available');
+            }
+
+            Log::info('✅ Demo election found', [
+                'user_id' => $authUser->id,
+                'election_id' => $demoElection->id,
+                'election_org_id' => $demoElection->organisation_id,
+            ]);
+
+            // Store demo election in session
+            session([
+                'selected_election_id' => $demoElection->id,
+                'selected_election_type' => 'demo',
+            ]);
+
+            Log::info('📝 Session updated', [
+                'user_id' => $authUser->id,
+                'session_election_id' => session('selected_election_id'),
+            ]);
+
+            // Create voter slug for this user
+            $slug = $this->slugService->getOrCreateActiveSlug($authUser);
+
+            Log::info('✅ Voter slug created', [
+                'user_id' => $authUser->id,
+                'voter_slug' => $slug->slug,
+                'election_id' => $slug->election_id,
+            ]);
+
+            // Redirect to DEMO voting flow with voter slug (NOT election slug)
+            return redirect()->route('slug.demo-code.create', ['vslug' => $slug->slug])
+                ->with('success', '🎮 Demo election selected. Test the voting system!');
+
+        } catch (\Exception $e) {
+            Log::error('❌ Failed to start demo election', [
+                'user_id' => $authUser->id,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
             return redirect()->route('dashboard')
-                ->with('error', 'Demo election not available');
+                ->with('error', 'Unable to start demo election. Please try again.');
         }
-
-        // Bypass all voter checks for demo - direct to DEMO code entry using slug route
-        // Use slug.demo-code.create to access the demo-specific voting flow
-        return redirect()->route('slug.demo-code.create', ['vslug' => $demoElection->slug]);
     }
 
     public function getUserIpAddr()

@@ -1,0 +1,187 @@
+{
+    "candidacies": {
+        "file": "2026_03_01_000005_create_candidacies_table.php",
+        "columns": {
+            "election_id": "foreign",
+            "post_id": "foreign",
+            "user_id": "foreign",
+            "position_order": "unsignedInteger",
+            "bio": "text",
+            "photo_path": "string",
+            "political_party": "string",
+            "metadata": "json",
+            "[": "unique"
+        }
+    },
+    "codes": {
+        "file": "2026_03_01_000007_create_codes_table.php",
+        "columns": {
+            "election_id": "foreign",
+            "user_id": "foreign",
+            "organisation_id": "foreign",
+            "code1": "index",
+            "code2": "index",
+            "is_code1_usable": "boolean",
+            "code1_used_at": "timestamp",
+            "is_code2_usable": "boolean",
+            "code2_used_at": "timestamp",
+            "can_vote_now": "boolean",
+            "has_voted": "boolean",
+            "vote_submitted": "boolean",
+            "voting_started_at": "timestamp",
+            "has_code1_sent": "boolean",
+            "code1_sent_at": "timestamp",
+            "has_code2_sent": "boolean",
+            "code2_sent_at": "timestamp",
+            "expires_at": "index",
+            "voting_time_minutes": "unsignedInteger",
+            "metadata": "json",
+            "[": "index"
+        }
+    },
+    "demo_posts": {
+        "file": "2026_03_01_000012_create_demo_tables.php",
+        "columns": {
+            "election_id": "foreign",
+            "name": "string",
+            "description": "text",
+            "is_national_wide": "boolean",
+            "state_name": "string",
+            "required_number": "unsignedInteger",
+            "select_all_required": "boolean",
+            "position_order": "unsignedInteger",
+            "[": "index"
+        }
+    },
+    "elections": {
+        "file": "2026_03_01_000003_create_elections_table.php",
+        "columns": {
+            "name": "string",
+            "slug": "string",
+            "description": "text",
+            "type": "index",
+            "status": "index",
+            "organisation_id": "foreign",
+            "start_date": "dateTime",
+            "end_date": "dateTime",
+            "is_active": "index",
+            "settings": "json",
+            "[": "index"
+        }
+    },
+    "organisations": {
+        "file": "2026_03_01_000001_create_organisations_table.php",
+        "columns": {
+            "name": "string",
+            "slug": "index",
+            "type": "index",
+            "email": "string",
+            "address": "text",
+            "representative": "string",
+            "settings": "json",
+            "languages": "json",
+            "is_platform": "boolean"
+        }
+    },
+    "password_resets": {
+        "file": "2026_03_01_000013_create_standard_laravel_tables.php",
+        "columns": {
+            "email": "string",
+            "token": "string",
+            "created_at": "timestamp"
+        }
+    },
+    "posts": {
+        "file": "2026_03_01_000004_create_posts_table.php",
+        "columns": {
+            "election_id": "foreign",
+            "name": "string",
+            "description": "text",
+            "is_national_wide": "boolean",
+            "state_name": "string",
+            "required_number": "unsignedInteger",
+            "select_all_required": "boolean",
+            "position_order": "unsignedInteger",
+            "[": "index"
+        }
+    },
+    "results": {
+        "file": "2026_03_01_000011_create_results_table.php",
+        "columns": {
+            "vote_id": "foreign",
+            "election_id": "foreign",
+            "post_id": "foreign",
+            "candidate_id": "foreign",
+            "vote_hash": "index",
+            "vote_count": "unsignedInteger",
+            "[": "index"
+        }
+    },
+    "roles": {
+        "file": "2026_03_01_000014_create_role_and_permission_tables.php",
+        "columns": {
+            "name": "string",
+            "guard_name": "string"
+        }
+    },
+    "users": {
+        "file": "2026_03_01_000002_create_users_table.php",
+        "columns": {
+            "name": "string",
+            "email": "string",
+            "email_verified_at": "timestamp",
+            "password": "string",
+            "two_factor_secret": "string",
+            "two_factor_recovery_codes": "text",
+            "organisation_id": "foreign",
+            "can_vote": "boolean",
+            "has_voted": "boolean",
+            "voting_ip": "index",
+            "region": "string",
+            "metadata": "json",
+            "[": "index"
+        }
+    },
+    "voter_registrations": {
+        "file": "2026_03_01_000006_create_voter_registrations_table.php",
+        "columns": {
+            "election_id": "foreign",
+            "user_id": "foreign",
+            "status": "index",
+            "approved_at": "timestamp",
+            "voted_at": "timestamp",
+            "suspended_at": "timestamp",
+            "approved_by_user": "string",
+            "ip_address": "string",
+            "[": "index"
+        }
+    },
+    "voter_slug_steps": {
+        "file": "2026_03_01_000009_create_voter_slug_steps_table.php",
+        "columns": {
+            "voter_slug_id": "foreign",
+            "election_id": "foreign",
+            "step": "unsignedSmallInteger",
+            "ip_address": "string",
+            "started_at": "timestamp",
+            "completed_at": "timestamp",
+            "metadata": "json",
+            "[": "unique"
+        }
+    },
+    "voter_slugs": {
+        "file": "2026_03_01_000008_create_voter_slugs_table.php",
+        "columns": {
+            "slug": "string"
+        }
+    },
+    "votes": {
+        "file": "2026_03_01_000010_create_votes_table.php",
+        "columns": {
+            "election_id": "unsignedBigInteger",
+            "organisation_id": "unsignedBigInteger",
+            "vote_hash": "string",
+            "candidate_": "unsignedBigInteger"
+        }
+    }
+}

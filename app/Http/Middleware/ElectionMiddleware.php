@@ -63,10 +63,10 @@ class ElectionMiddleware
                     'election_org_id' => $election->organisation_id,
                 ]);
 
-                // ✅ VALIDATION: Organisations must match OR either is 0 (platform-wide)
+                // ✅ VALIDATION: Organisations must match OR either is 1 (platform-wide)
                 $orgsMatch = $election->organisation_id === $voterSlug->organisation_id;
-                $electionIsPlatform = $election->organisation_id === 0;
-                $userIsPlatform = $voterSlug->organisation_id === 0;
+                $electionIsPlatform = $election->organisation_id === 1;
+                $userIsPlatform = $voterSlug->organisation_id === 1;
 
                 if (!$orgsMatch && !$electionIsPlatform && !$userIsPlatform) {
                     \Log::critical('ORGANISATION MISMATCH - Organisations do not align', [

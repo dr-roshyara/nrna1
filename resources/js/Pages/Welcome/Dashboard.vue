@@ -243,7 +243,7 @@
     </main>
 
     <!-- organisation Creation Modal -->
-    <OrganizationCreateModal />
+    <OrganisationCreateModal />
 
     <!-- Footer -->
     <!-- Footer placeholder - replace with custom footer component -->
@@ -252,8 +252,8 @@
 
 <script>
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
-import OrganizationCreateModal from "@/Components/Organization/OrganizationCreateModal.vue";
-import { useOrganizationCreation } from "@/composables/useOrganizationCreation";
+import OrganisationCreateModal from "@/Components/Organisation/OrganisationCreateModal.vue";
+import { useOrganisationCreation } from "@/composables/useOrganisationCreation";
 import { provide } from 'vue';
 
 export default {
@@ -261,7 +261,7 @@ export default {
 
   components: {
     ElectionHeader,
-    OrganizationCreateModal,
+    OrganisationCreateModal,
   },
 
   props: {

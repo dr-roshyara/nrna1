@@ -1,0 +1,714 @@
+{
+    "assignments": {
+        "file": "2021_07_22_074215_create_assignments_table.php",
+        "columns": {
+            "user_id": "foreign",
+            "role_id": "foreign",
+            "role_name": "string",
+            "user_name": "string"
+        }
+    },
+    "calendars": {
+        "file": "2022_05_24_161715_create_calendars_table.php",
+        "columns": {
+            "google_account_id": "foreign",
+            "google_id": "string",
+            "name": "string",
+            "color": "string",
+            "timezone": "string"
+        }
+    },
+    "candidacies": {
+        "file": "2021_07_18_205316_create_candidacies_table.php",
+        "columns": {
+            "candidacy_id": "string",
+            "user_id": "string",
+            "post_id": "string",
+            "candidacy_name": "string",
+            "proposer_id": "string",
+            "supporter_id": "string",
+            "image_path_1": "string",
+            "image_path_2": "string",
+            "image_path_3": "string"
+        }
+    },
+    "codes": {
+        "file": "2021_07_22_195040_create_codes_table.php",
+        "columns": {
+            "user_id": "foreign",
+            "code1": "string",
+            "code2": "string",
+            "code3": "string",
+            "code4": "string",
+            "vote_show_code": "string",
+            "is_code1_usable": "boolean",
+            "is_code2_usable": "boolean",
+            "is_code3_usable": "boolean",
+            "is_code4_usable": "boolean",
+            "can_vote_now": "boolean",
+            "has_voted": "boolean",
+            "vote_last_seen": "date"
+        }
+    },
+    "committee_types": {
+        "file": "2022_05_08_164130_create_committee_types_table.php",
+        "columns": {
+            "hierarchical_number": "tinyInteger",
+            "short_name": "string",
+            "full_name": "string",
+            "scope": "string"
+        }
+    },
+    "committees": {
+        "file": "2022_06_09_153009_create_committees_table.php",
+        "columns": {
+            "hierarchal_label": "string",
+            "name": "string",
+            "short_name": "string",
+            "period_from": "dateTime",
+            "period_to": "dateTime",
+            "period_number": "unsignedInteger",
+            "election_date": "dateTime"
+        }
+    },
+    "deligate_candidacies": {
+        "file": "2021_08_12_136004_create_deligate_candidacies_table.php",
+        "columns": {
+            "user_id": "foreign",
+            "nrna_id": "string",
+            "name": "string",
+            "description": "text",
+            "post_id": "foreign",
+            "image_path_1": "string"
+        }
+    },
+    "deligate_votes": {
+        "file": "2021_08_12_144251_create_deligate_votes_table.php",
+        "columns": {
+            "user_id": "foreign",
+            "conformation_code": "string",
+            "no_vote_option": "boolean",
+            "member1_id": "string",
+            "member2_id": "string",
+            "member3_id": "string",
+            "member4_id": "string",
+            "member5_id": "string",
+            "member6_id": "string",
+            "member7_id": "string",
+            "member8_id": "string",
+            "member9_id": "string",
+            "member10_id": "string",
+            "member11_id": "string",
+            "member12_id": "string",
+            "member13_id": "string",
+            "member14_id": "string",
+            "member15_id": "string",
+            "member16_id": "string",
+            "member17_id": "string",
+            "member18_id": "string",
+            "member19_id": "string",
+            "member20_id": "string",
+            "member21_id": "string",
+            "member22_id": "string",
+            "member23_id": "string",
+            "member24_id": "string",
+            "member25_id": "string",
+            "member26_id": "string",
+            "member27_id": "string",
+            "member28_id": "string",
+            "member29_id": "string",
+            "member30_id": "string",
+            "member31_id": "string",
+            "member32_id": "string",
+            "member33_id": "string",
+            "member34_id": "string",
+            "member35_id": "string"
+        }
+    },
+    "demo_candidacies": {
+        "file": "2026_02_04_140930_create_demo_candidacies_table.php",
+        "columns": {
+            "candidacy_id": "string",
+            "user_id": "string",
+            "user_name": "string",
+            "candidacy_name": "string",
+            "election_id": "index",
+            "post_id": "index",
+            "post_name": "string",
+            "post_nepali_name": "string",
+            "proposer_id": "string",
+            "proposer_name": "string",
+            "supporter_id": "string",
+            "supporter_name": "string",
+            "image_path_1": "string",
+            "image_path_2": "string",
+            "image_path_3": "string",
+            "[": "index"
+        }
+    },
+    "demo_codes": {
+        "file": "2026_02_20_012741_create_demo_codes_table.php",
+        "columns": {
+            "user_id": "index",
+            "election_id": "index",
+            "organisation_id": "index",
+            "code1": "string",
+            "code2": "string",
+            "code3": "string",
+            "code4": "string",
+            "vote_show_code": "string",
+            "is_code1_usable": "boolean",
+            "is_code2_usable": "boolean",
+            "is_code3_usable": "boolean",
+            "is_code4_usable": "boolean",
+            "code1_sent_at": "dateTime",
+            "code2_sent_at": "dateTime",
+            "code3_sent_at": "dateTime",
+            "code4_sent_at": "dateTime",
+            "code1_used_at": "dateTime",
+            "code2_used_at": "dateTime",
+            "code3_used_at": "dateTime",
+            "code4_used_at": "dateTime",
+            "can_vote_now": "boolean",
+            "has_voted": "boolean",
+            "vote_submitted": "boolean",
+            "vote_submitted_at": "dateTime",
+            "has_agreed_to_vote": "boolean",
+            "has_agreed_to_vote_at": "dateTime",
+            "has_code1_sent": "boolean",
+            "has_code2_sent": "boolean",
+            "has_used_code1": "boolean",
+            "has_used_code2": "boolean",
+            "voting_time_in_minutes": "integer",
+            "vote_last_seen": "dateTime",
+            "client_ip": "string",
+            "session_name": "string",
+            "voting_started_at": "dateTime",
+            "code_for_vote": "string",
+            "[": "unique"
+        }
+    },
+    "demo_posts": {
+        "file": "2026_02_20_011053_create_demo_posts_table.php",
+        "columns": {
+            "post_id": "string",
+            "name": "string",
+            "nepali_name": "string",
+            "election_id": "foreign",
+            "organisation_id": "unsignedBigInteger",
+            "state_name": "string",
+            "position_order": "integer",
+            "required_number": "integer",
+            "is_national_wide": "boolean"
+        }
+    },
+    "demo_results": {
+        "file": "2026_02_03_194400_create_demo_results_table.php",
+        "columns": {
+            "election_id": "index",
+            "vote_id": "bigInteger",
+            "post_id": "string",
+            "candidacy_id": "string",
+            "[": "index"
+        }
+    },
+    "demo_voter_slug_steps": {
+        "file": "2026_02_25_000001_create_demo_voter_slug_steps_table.php",
+        "columns": {
+            "organisation_id": "unsignedBigInteger",
+            "demo_voter_slug_id": "foreign",
+            "slug": "string",
+            "election_id": "unsignedBigInteger",
+            "step": "integer",
+            "step_data": "json",
+            "completed_at": "timestamp",
+            "[": "index"
+        }
+    },
+    "demo_voter_slugs": {
+        "file": "2026_02_25_000000_create_demo_voter_slugs_table.php",
+        "columns": {
+            "organisation_id": "unsignedBigInteger",
+            "user_id": "unsignedBigInteger",
+            "election_id": "unsignedBigInteger",
+            "slug": "string",
+            "expires_at": "timestamp",
+            "is_active": "boolean",
+            "current_step": "integer",
+            "step_meta": "json",
+            "has_voted": "boolean",
+            "can_vote_now": "boolean",
+            "voting_time_min": "integer",
+            "step_1_ip": "string",
+            "step_1_completed_at": "timestamp",
+            "step_2_ip": "string",
+            "step_2_completed_at": "timestamp",
+            "step_3_ip": "string",
+            "step_3_completed_at": "timestamp",
+            "step_4_ip": "string",
+            "step_4_completed_at": "timestamp",
+            "step_5_ip": "string",
+            "step_5_completed_at": "timestamp",
+            "[": "index"
+        }
+    },
+    "demo_votes": {
+        "file": "2026_02_03_194300_create_demo_votes_table.php",
+        "columns": {
+            "user_id": "foreign",
+            "no_vote_option": "boolean",
+            "voting_code": "string",
+            "candidate_01": "json",
+            "candidate_02": "json",
+            "candidate_03": "json",
+            "candidate_04": "json",
+            "candidate_05": "json",
+            "candidate_06": "json",
+            "candidate_07": "json",
+            "candidate_08": "json",
+            "candidate_09": "json",
+            "candidate_10": "json",
+            "candidate_11": "json",
+            "candidate_12": "json",
+            "candidate_13": "json",
+            "candidate_14": "json",
+            "candidate_15": "json",
+            "candidate_16": "json",
+            "candidate_17": "json",
+            "candidate_18": "json",
+            "candidate_19": "json",
+            "candidate_20": "json",
+            "candidate_21": "json",
+            "candidate_22": "json",
+            "candidate_23": "json",
+            "candidate_24": "json",
+            "candidate_25": "json",
+            "candidate_26": "json",
+            "candidate_27": "json",
+            "candidate_28": "json",
+            "candidate_29": "json",
+            "candidate_30": "json",
+            "candidate_31": "json",
+            "candidate_32": "json",
+            "candidate_33": "json",
+            "candidate_34": "json",
+            "candidate_35": "json",
+            "candidate_36": "json",
+            "candidate_37": "json",
+            "candidate_38": "json",
+            "candidate_39": "json",
+            "candidate_40": "json",
+            "candidate_41": "json",
+            "candidate_42": "json",
+            "candidate_43": "json",
+            "candidate_44": "json",
+            "candidate_45": "json",
+            "candidate_46": "json",
+            "candidate_47": "json",
+            "candidate_48": "json",
+            "candidate_49": "json",
+            "candidate_50": "json",
+            "candidate_51": "json",
+            "candidate_52": "json",
+            "candidate_53": "json",
+            "candidate_54": "json",
+            "candidate_55": "json",
+            "candidate_56": "json",
+            "candidate_57": "json",
+            "candidate_58": "json",
+            "candidate_59": "json",
+            "candidate_60": "json"
+        }
+    },
+    "elections": {
+        "file": "2026_02_03_193800_create_elections_table.php",
+        "columns": {
+            "name": "string",
+            "slug": "string",
+            "description": "text",
+            "type": "index",
+            "start_date": "dateTime",
+            "end_date": "dateTime",
+            "is_active": "index",
+            "settings": "json",
+            "[": "index"
+        }
+    },
+    "events": {
+        "file": "2022_05_22_170832_create_events_table.php",
+        "columns": {
+            "google_id": "string",
+            "name": "string",
+            "description": "text",
+            "allday": "boolean",
+            "started_at": "datetime",
+            "ended_at": "datetime"
+        }
+    },
+    "failed_jobs": {
+        "file": "2019_08_19_000000_create_failed_jobs_table.php",
+        "columns": {
+            "uuid": "string",
+            "connection": "text",
+            "queue": "text",
+            "payload": "longText",
+            "exception": "longText",
+            "failed_at": "timestamp"
+        }
+    },
+    "google_accounts": {
+        "file": "2022_05_22_162749_create_google_accounts_table.php",
+        "columns": {
+            "user_id": "foreign",
+            "google_id": "string",
+            "name": "string",
+            "token": "json"
+        }
+    },
+    "images": {
+        "file": "2022_05_19_143356_create_images_table.php",
+        "columns": {
+            "path": "string",
+            "description": "text",
+            "user_id": "bigInteger",
+            "type": "string"
+        }
+    },
+    "incomes": {
+        "file": "2022_10_02_113256_create_income_table.php",
+        "columns": {
+            "user_id": "unsignedBigInteger",
+            "country": "string",
+            "committee_name": "string",
+            "period_from": "string",
+            "period_to": "string",
+            "membership_fee": "float",
+            "nomination_fee": "float",
+            "sponser_fee": "float",
+            "donation": "float",
+            "levy": "float",
+            "event_fee": "float",
+            "event_income": "float",
+            "event_contribution": "float",
+            "deligate_fee": "float",
+            "deligate_contribution": "float",
+            "interest_income": "float",
+            "business_income": "float",
+            "other_incomes": "float"
+        }
+    },
+    "jobs": {
+        "file": "2022_05_29_073227_create_jobs_table.php",
+        "columns": {
+            "id": "bigIncrements",
+            "queue": "string",
+            "payload": "longText",
+            "attempts": "unsignedTinyInteger",
+            "reserved_at": "unsignedInteger",
+            "available_at": "unsignedInteger",
+            "created_at": "unsignedInteger"
+        }
+    },
+    "messages": {
+        "file": "2021_07_21_134700_create_messages_table.php",
+        "columns": {
+            "user_id": "bigInteger",
+            "from": "string",
+            "to": "string",
+            "code": "string",
+            "message": "string",
+            "message_receiver_id": "bigInteger",
+            "message_receiver_name": "string",
+            "message_sender_id": "bigInteger",
+            "message_sender_name": "string"
+        }
+    },
+    "notices": {
+        "file": "2021_07_17_183332_create_notices_table.php",
+        "columns": {
+            "title": "string",
+            "description": "text",
+            "issued_at": "string",
+            "pdf_path": "string",
+            "picture_path": "string"
+        }
+    },
+    "openions": {
+        "file": "2022_06_09_150012_create_openions_table.php",
+        "columns": {
+            "title": "string",
+            "body": "longText",
+            "hash_tag": "string",
+            "user_id": "foreign"
+        }
+    },
+    "organisations": {
+        "file": "2026_02_07_131712_create_role_system_tables.php",
+        "columns": {
+            "name": "string",
+            "slug": "string",
+            "type": "enum",
+            "settings": "json",
+            "languages": "json"
+        }
+    },
+    "outcomes": {
+        "file": "2022_10_03_103214_create_outcomes_table.php",
+        "columns": {
+            "user_id": "unsignedBigInteger",
+            "country": "string",
+            "committee_name": "string",
+            "period_from": "string",
+            "period_to": "string",
+            "deligate_fee": "float",
+            "membership_fee": "float",
+            "sponser_fee": "float",
+            "donation": "float",
+            "salary": "float",
+            "rent": "float",
+            "software": "float",
+            "communication": "float",
+            "office_cost": "float",
+            "postage": "float",
+            "bank_charge": "float",
+            "election_cost": "float",
+            "equipment": "float",
+            "vechicle": "float",
+            "website": "float",
+            "consulting_charge": "float",
+            "training_charge": "float",
+            "insurance_charge": "float",
+            "guest_invitation": "float",
+            "tax_charge": "float",
+            "drink": "float",
+            "food": "float",
+            "event_cost": "float",
+            "investment": "float",
+            "other_expense": "float"
+        }
+    },
+    "password_resets": {
+        "file": "2014_10_12_100000_create_password_resets_table.php",
+        "columns": {
+            "email": "string",
+            "token": "string",
+            "created_at": "timestamp"
+        }
+    },
+    "personal_access_tokens": {
+        "file": "2019_12_14_000001_create_personal_access_tokens_table.php",
+        "columns": {
+            "id": "bigIncrements",
+            "tokenable": "morphs",
+            "name": "string",
+            "token": "string",
+            "abilities": "text",
+            "last_used_at": "timestamp"
+        }
+    },
+    "posts": {
+        "file": "2021_07_17_050000_create_posts_table.php",
+        "columns": {
+            "post_id": "string",
+            "name": "string",
+            "nepali_name": "string",
+            "state_name": "string",
+            "required_number": "integer"
+        }
+    },
+    "results": {
+        "file": "2022_01_10_192127_create_results_table.php",
+        "columns": {
+            "vote_id": "bigInteger",
+            "post_id": "string",
+            "candidacy_id": "string"
+        }
+    },
+    "sessions": {
+        "file": "2021_07_15_205524_create_sessions_table.php",
+        "columns": {
+            "id": "string",
+            "user_id": "foreignId",
+            "ip_address": "string",
+            "user_agent": "longText",
+            "payload": "longText",
+            "last_activity": "integer"
+        }
+    },
+    "students": {
+        "file": "2022_01_19_163354_create_students_table.php",
+        "columns": {
+            "first_name": "string",
+            "family_name": "string",
+            "child_name": "string",
+            "child_grade": "string",
+            "child_language": "string",
+            "city": "string",
+            "country": "string",
+            "email": "string",
+            "telephone": "string",
+            "about": "text"
+        }
+    },
+    "synchronizations": {
+        "file": "2022_05_24_162527_create_synchronizations_table.php",
+        "columns": {
+            "synchronizable": "morphs",
+            "token": "string",
+            "resource_id": "string",
+            "expired_at": "datetime",
+            "last_synchronized_at": "datetime"
+        }
+    },
+    "team_invitations": {
+        "file": "2020_05_21_300000_create_team_invitations_table.php",
+        "columns": {
+            "team_id": "foreignId",
+            "email": "string",
+            "role": "string",
+            "[": "unique"
+        }
+    },
+    "team_user": {
+        "file": "2020_05_21_200000_create_team_user_table.php",
+        "columns": {
+            "team_id": "foreignId",
+            "user_id": "foreignId",
+            "role": "string",
+            "[": "unique"
+        }
+    },
+    "teams": {
+        "file": "2020_05_21_100000_create_teams_table.php",
+        "columns": {
+            "user_id": "foreignId",
+            "name": "string",
+            "personal_team": "boolean"
+        }
+    },
+    "uploads": {
+        "file": "2021_07_07_191214_create_uploads_table.php",
+        "columns": {
+            "user_id": "foreign",
+            "filename": "string"
+        }
+    },
+    "users": {
+        "file": "2014_10_12_000000_create_users_table.php",
+        "columns": {
+            "name": "string",
+            "email": "string",
+            "email_verified_at": "timestamp",
+            "password": "string",
+            "current_team_id": "unsignedBigInteger",
+            "profile_photo_path": "string"
+        }
+    },
+    "voter_registrations": {
+        "file": "2026_02_03_193900_create_voter_registrations_table.php",
+        "columns": {
+            "user_id": "unsignedBigInteger",
+            "election_id": "unsignedBigInteger",
+            "status": "index",
+            "election_type": "enum",
+            "registered_at": "timestamp",
+            "approved_at": "timestamp",
+            "voted_at": "timestamp",
+            "approved_by": "string",
+            "rejected_by": "string",
+            "rejection_reason": "text",
+            "metadata": "json",
+            "[": "unique",
+            "created_at": "index"
+        }
+    },
+    "voter_slug_steps": {
+        "file": "2026_02_04_143856_create_voter_slug_steps_table.php",
+        "columns": {
+            "voter_slug_id": "foreign",
+            "election_id": "foreign",
+            "step": "unsignedTinyInteger",
+            "step_data": "json",
+            "completed_at": "timestamp",
+            "[": "index"
+        }
+    },
+    "voter_slugs": {
+        "file": "2025_09_13_210629_create_voter_slugs_table.php",
+        "columns": {
+            "user_id": "foreignId",
+            "slug": "string",
+            "expires_at": "timestamp",
+            "is_active": "boolean",
+            "[": "index"
+        }
+    },
+    "votes": {
+        "file": "2021_07_22_192509_create_votes_table.php",
+        "columns": {
+            "post_id": "string",
+            "no_vote_option": "boolean",
+            "voting_code": "string",
+            "candidate_01": "json",
+            "candidate_02": "json",
+            "candidate_03": "json",
+            "candidate_04": "json",
+            "candidate_05": "json",
+            "candidate_06": "json",
+            "candidate_07": "json",
+            "candidate_08": "json",
+            "candidate_09": "json",
+            "candidate_10": "json",
+            "candidate_11": "json",
+            "candidate_12": "json",
+            "candidate_13": "json",
+            "candidate_14": "json",
+            "candidate_15": "json",
+            "candidate_16": "json",
+            "candidate_17": "json",
+            "candidate_18": "json",
+            "candidate_19": "json",
+            "candidate_20": "json",
+            "candidate_21": "json",
+            "candidate_22": "json",
+            "candidate_23": "json",
+            "candidate_24": "json",
+            "candidate_25": "json",
+            "candidate_26": "json",
+            "candidate_27": "json",
+            "candidate_28": "json",
+            "candidate_29": "json",
+            "candidate_30": "json",
+            "candidate_31": "json",
+            "candidate_32": "json",
+            "candidate_33": "json",
+            "candidate_34": "json",
+            "candidate_35": "json",
+            "candidate_36": "json",
+            "candidate_37": "json",
+            "candidate_38": "json",
+            "candidate_39": "json",
+            "candidate_40": "json",
+            "candidate_41": "json",
+            "candidate_42": "json",
+            "candidate_43": "json",
+            "candidate_44": "json",
+            "candidate_45": "json",
+            "candidate_46": "json",
+            "candidate_47": "json",
+            "candidate_48": "json",
+            "candidate_49": "json",
+            "candidate_50": "json",
+            "candidate_51": "json",
+            "candidate_52": "json",
+            "candidate_53": "json",
+            "candidate_54": "json",
+            "candidate_55": "json",
+            "candidate_56": "json",
+            "candidate_57": "json",
+            "candidate_58": "json",
+            "candidate_59": "json",
+            "candidate_60": "json"
+        }
+    }
+}

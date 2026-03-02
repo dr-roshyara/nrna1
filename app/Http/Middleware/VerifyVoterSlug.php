@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use App\Models\VoterSlug;
 use Illuminate\Support\Facades\Log;
+use App\Exceptions\Voting\InvalidVoterSlugException;
+use App\Exceptions\Voting\SlugOwnershipException;
 
 class VerifyVoterSlug
 {
@@ -38,7 +40,9 @@ class VerifyVoterSlug
             Log::warning('❌ [VerifyVoterSlug] Slug not found', [
                 'slug' => $slugParam,
             ]);
-            abort(404, 'Voting session not found');
+            throw new InvalidVoterSlugException('Voting session not found', [
+                'slug' => $slugParam,
+            ]);
         }
 
         // CHECK 2: Does slug belong to authenticated user?
@@ -48,7 +52,11 @@ class VerifyVoterSlug
                 'slug_user_id' => $voterSlug->user_id,
                 'auth_user_id' => auth()->id(),
             ]);
-            abort(403, 'This voting session does not belong to you');
+            throw new SlugOwnershipException('This voting session does not belong to you', [
+                'slug_id' => $voterSlug->id,
+                'slug_user_id' => $voterSlug->user_id,
+                'auth_user_id' => auth()->id(),
+            ]);
         }
 
         // CHECK 3: Is slug still active?
@@ -57,7 +65,10 @@ class VerifyVoterSlug
                 'slug_id' => $voterSlug->id,
                 'is_active' => $voterSlug->is_active,
             ]);
-            abort(403, 'This voting session has been deactivated');
+            throw new InvalidVoterSlugException('This voting session has been deactivated', [
+                'slug_id' => $voterSlug->id,
+                'is_active' => $voterSlug->is_active,
+            ]);
         }
 
         // Store verified slug in request for subsequent middleware

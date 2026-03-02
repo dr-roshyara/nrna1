@@ -9,8 +9,8 @@ You're absolutely right! Organisations need multiple elections over time. Let me
 │                    TENANT ARCHITECTURE                           │
 │                                                                   │
 │  organisations                                                  │
-│  ├── id: 0  → "Platform" (SYSTEM)                               │
-│  ├── id: 1  → "National Organisation"                            │
+│  ├── id: 1  → "Platform" (SYSTEM)                               │
+│  ├── id: 2  → "National Organisation"                            │
 │  └── id: 197 → "Namaste Nepal ev"                                │
 └─────────────────────────────────────────────────────────────────┘
 
@@ -19,11 +19,11 @@ You're absolutely right! Organisations need multiple elections over time. Let me
 │  ┌─────────────────────────────────────────────────────────┐    │
 │  │  ID  │ Type │ Organisation │ Status   │ Period         │    │
 │  ├─────────────────────────────────────────────────────────┤    │
-│  │  1   │ demo │      0       │ active   │ Global Demo    │    │
+│  │  1   │ demo │     1      │ active   │ Global Demo    │    │
 │  ├─────────────────────────────────────────────────────────┤    │
-│  │  100 │ real │      1       │ active   │ National 2024  │    │
-│  │  101 │ real │      1       │ active   │ Regional East  │    │
-│  │  102 │ real │      1       │ archived │ Regional West  │    │
+│  │  100 │ real │      2       │ active   │ National 2024  │    │
+│  │  101 │ real │      2       │ active   │ Regional East  │    │
+│  │  102 │ real │      2       │ archived │ Regional West  │    │
 │  ├─────────────────────────────────────────────────────────┤    │
 │  │  200 │ real │      197     │ active   │ National 2025  │    │
 │  │  201 │ demo │      197     │ active   │ Test Election  │    │
@@ -128,8 +128,8 @@ class ElectionResolver
         }
         
         // SCENARIO 4: Global demo as fallback
-        if ($user->organisation_id > 0) {
-            $globalDemo = Election::where('organisation_id', 0)
+        if ($user->organisation_id > 1) {
+            $globalDemo = Election::where('organisation_id', 1)
                 ->where('type', 'demo')
                 ->where('status', 'active')
                 ->first();
@@ -327,9 +327,9 @@ Schema::create('organisations', function (Blueprint $table) {
 });
 
 // Insert platform organisation (ID 0) - run BEFORE other migrations
-DB::statement('ALTER TABLE organisations AUTO_INCREMENT = 0');
+DB::statement('ALTER TABLE organisations AUTO_INCREMENT = 1');
 DB::table('organisations')->insert([
-    'id' => 0,
+    'id' => 1,
     'name' => 'Platform',
     'slug' => 'platform',
     'created_at' => now(),
@@ -800,7 +800,7 @@ Route::prefix('v/{vslug}')->middleware([
 ## 📦 Implementation Order (TDD)
 
 1. **Week 1: Foundation**
-   - Set up database migrations with organisation_id=0
+   - Set up database migrations with organisation_id=1
    - Create Organisation, Election, VoterSlug models
    - Write ElectionResolver service with tests
    - Write VoterSlugService with tests
@@ -834,7 +834,7 @@ Route::prefix('v/{vslug}')->middleware([
 
 - [ ] All tests passing (target: 200+ tests)
 - [ ] No NULL organisation_id values
-- [ ] Single global demo (org_id=0)
+- [ ] Single global demo (org_id=1)
 - [ ] Multiple elections per organisation supported
 - [ ] Voter slug immutability enforced
 - [ ] Organisation boundaries respected

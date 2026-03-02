@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Log;
+use App\Exceptions\Voting\InvalidVoterSlugException;
+use App\Exceptions\Voting\ExpiredVoterSlugException;
 
 class ValidateVoterSlugWindow
 {
@@ -20,7 +22,9 @@ class ValidateVoterSlugWindow
 
         if (!$voterSlug) {
             Log::critical('❌ [ValidateVoterSlugWindow] No voter slug in request');
-            abort(500, 'Voting session context missing');
+            throw new InvalidVoterSlugException('Voting session context missing', [
+                'middleware' => 'ValidateVoterSlugWindow',
+            ]);
         }
 
         Log::info('⏰ [ValidateVoterSlugWindow] Checking expiration', [
@@ -39,8 +43,10 @@ class ValidateVoterSlugWindow
             // Deactivate expired slug
             $voterSlug->update(['is_active' => false]);
 
-            return redirect()->route('election.dashboard')
-                ->with('error', 'Your voting session has expired. Please start again.');
+            throw new ExpiredVoterSlugException('Your voting session has expired', [
+                'slug_id' => $voterSlug->id,
+                'expires_at' => $voterSlug->expires_at,
+            ]);
         }
 
         // CHECK 2: Is election still active? (if election has date range)
@@ -52,8 +58,11 @@ class ValidateVoterSlugWindow
                     'election_end' => $voterSlug->election->end_date,
                 ]);
 
-                return redirect()->route('election.dashboard')
-                    ->with('error', 'This election has ended.');
+                throw new ExpiredVoterSlugException('This election has ended', [
+                    'slug_id' => $voterSlug->id,
+                    'election_id' => $voterSlug->election_id,
+                    'election_end' => $voterSlug->election->end_date,
+                ]);
             }
         }
 

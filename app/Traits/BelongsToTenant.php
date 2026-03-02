@@ -55,8 +55,21 @@ trait BelongsToTenant
         static::creating(function (Model $model) {
             // Only set if not already set
             if (is_null($model->organisation_id)) {
-                // Use session org_id, or 0 if in demo/platform mode
-                $model->organisation_id = session('current_organisation_id') ?? 0;
+                $sessionOrgId = session('current_organisation_id');
+
+                // If session is null or 0 (demo/platform mode), use platform organisation ID
+                if ($sessionOrgId === null || $sessionOrgId === 0) {
+                    $platformOrg = \App\Models\Organisation::where('slug', 'platform')->first();
+                    if ($platformOrg) {
+                        $model->organisation_id = $platformOrg->id;
+                    } else {
+                        // Fallback: should not happen if seeding is correct
+                        $model->organisation_id = 1;
+                    }
+                } else {
+                    // Use the session organisation
+                    $model->organisation_id = $sessionOrgId;
+                }
             }
         });
     }

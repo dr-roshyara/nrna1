@@ -23,10 +23,11 @@ trait HasOrganisation
     protected static function bootHasOrganisation()
     {
         static::creating(function (Model $model) {
-            // Always use 'organisation_id' (British spelling)
-            if (!isset($model->organisation_id) && !isset($model->organisation_id)) {
-                $model->organisation_id = session('current_organisation_id', 0);
-            }
+            // ⚠️ NOTE: Do NOT set organisation_id from session during creation.
+            // This prevents new users from inheriting the organisation_id of the
+            // last election accessed (e.g., if Election::first() has org_id=2).
+            // Instead, let the User model boot() method handle the default value.
+            // The User model explicitly sets organisation_id = platform org ID.
 
             // If someone tried to set organisation_id, move it to organisation_id
             if (isset($model->attributes['organisation_id'])) {

@@ -47,8 +47,12 @@ class SetupDemoElection extends Command
             }
         }
 
-        // STEP 2: Set session context before creating demo data
-        session(['current_organisation_id' => $orgId ?? null]);
+        // STEP 2: For MODE 2, set session context before creating demo data
+        // For MODE 1, we don't set the session - this prevents the boot method from
+        // falling back to auth()->user()?->organisation_id
+        if ($orgId) {
+            session(['current_organisation_id' => (int)$orgId]);
+        }
 
         $this->info('');
         $this->info('🚀 Setting up demo election (' . $mode . ')...');
@@ -151,6 +155,10 @@ class SetupDemoElection extends Command
     {
         $this->info("\n📝 Creating demo election ({$mode})...");
 
+        // For MODE 1: use organisation_id = 1 (default platform org)
+        // For MODE 2: use the specified organisation_id
+        $electionOrgId = $mode === 'MODE 2' ? (int)$orgId : 1;
+
         $election = Election::create([
             'name' => 'Demo Election',
             'slug' => $demoSlug,
@@ -161,7 +169,7 @@ class SetupDemoElection extends Command
                 : 'Public demo election for testing the voting system without registration',
             'start_date' => now()->format('Y-m-d'),
             'end_date' => now()->addDays(365)->format('Y-m-d'),
-            'organisation_id' => $orgId ? (int)$orgId : null,
+            'organisation_id' => $electionOrgId,
         ]);
 
         $this->info("✅ Created Demo Election: {$election->name}");
@@ -187,10 +195,11 @@ class SetupDemoElection extends Command
                 $this->error('   ✗ ERROR: organisation_id should be ' . $orgId . ' for MODE 2!');
             }
         } else {
-            if ($election->organisation_id === null) {
-                $this->info('   ✓ Correctly set to NULL (MODE 1 - Public demo)');
+            // MODE 1: organisation_id should be 1 (default platform org)
+            if ($election->organisation_id === 1) {
+                $this->info('   ✓ Correctly set to default organisation (ID: 1)');
             } else {
-                $this->error('   ✗ ERROR: organisation_id should be NULL for MODE 1!');
+                $this->warn('   ⚠️  Note: organisation_id = ' . ($election->organisation_id ?? 'NULL') . ' (expected ID: 1 for MODE 1)');
             }
         }
     }
@@ -203,7 +212,6 @@ class SetupDemoElection extends Command
         $stats = [
             'posts' => 0,
             'candidates' => 0,
-            'codes' => 0,
             'national_posts' => 0,
             'regional_posts' => 0,
         ];
@@ -216,7 +224,6 @@ class SetupDemoElection extends Command
             $postStats = $this->createPost($election, $postData, true, null);
             $stats['posts']++;
             $stats['candidates'] += $postStats['candidates'];
-            $stats['codes'] += $postStats['codes'];
         }
 
         // REGIONAL POSTS (if MODE 2 with organisation, or for public demo)
@@ -230,7 +237,6 @@ class SetupDemoElection extends Command
                 $postStats = $this->createPost($election, $postData, false, $region);
                 $stats['posts']++;
                 $stats['candidates'] += $postStats['candidates'];
-                $stats['codes'] += $postStats['codes'];
             }
         }
 
@@ -356,8 +362,8 @@ class SetupDemoElection extends Command
                         str_pad($index + 1, 2, '0', STR_PAD_LEFT) . ".png";
 
             DemoCandidacy::create([
-                'user_id' => "demo-{$postId}-" . ($index + 1),
-                'post_id' => $post->post_id,
+                'user_id' => null,  // Demo candidacies don't have user associations
+                'post_id' => $post->id,  // Use the numeric ID, not the string post_id
                 'election_id' => $election->id,
                 'organisation_id' => $election->organisation_id,
                 'candidacy_id' => "demo-{$postId}-" . ($index + 1),
@@ -368,33 +374,12 @@ class SetupDemoElection extends Command
                 'position_order' => $index + 1,
                 'image_path_1' => $imagePath,
             ]);
-
-            // Create demo verification codes
-            DemoCode::create([
-                'user_id' => null,
-                'election_id' => $election->id,
-                'organisation_id' => $election->organisation_id,
-                'code1' => 'DEMO' . strtoupper(substr(md5($candidateCount . 'code1' . $region), 0, 8)),
-                'code2' => 'DEMO' . strtoupper(substr(md5($candidateCount . 'code2' . $region), 0, 8)),
-                'code3' => 'DEMO' . strtoupper(substr(md5($candidateCount . 'code3' . $region), 0, 8)),
-                'code4' => 'DEMO' . strtoupper(substr(md5($candidateCount . 'code4' . $region), 0, 8)),
-                'is_code1_usable' => true,
-                'is_code2_usable' => true,
-                'is_code3_usable' => true,
-                'is_code4_usable' => true,
-                'can_vote_now' => false,
-                'voting_time_in_minutes' => 30,
-                'code1_sent_at' => now(),
-            ]);
-            $codeCount++;
         }
 
-        $this->info("  │  ├─ Added " . $candidateCount . " demo candidates");
-        $this->info("  │  └─ Added " . $codeCount . " demo verification codes");
+        $this->info("  │  └─ Added " . $candidateCount . " demo candidates");
 
         return [
             'candidates' => $candidateCount,
-            'codes' => $codeCount,
         ];
     }
 
@@ -427,7 +412,6 @@ class SetupDemoElection extends Command
         $this->info("     ├─ National Posts: {$stats['national_posts']}");
         $this->info("     └─ Regional Posts: {$stats['regional_posts']}");
         $this->info("  ✅ Total Candidates: {$stats['candidates']}");
-        $this->info("  ✅ Verification Codes: {$stats['codes']}");
         $this->info("  ✅ Mode: {$mode}");
         $this->info("  ✅ Organisation ID: " . ($election->organisation_id ?? 'NULL (Public)'));
 

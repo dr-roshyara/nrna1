@@ -31,8 +31,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/election/select', [Voting
 // Store selected election
 Route::middleware(['auth:sanctum', 'verified'])->post('/election/select', [VotingElectionController::class, 'storeElection'])->name('election.store');
 
-// Quick link to start demo election (2 aliases for convenience)
-Route::middleware(['auth:sanctum', 'verified'])->get('/election/demo/start', [VotingElectionController::class, 'startDemo'])->name('election.demo.start');
+// NOTE: /election/demo/start is defined in web.php to avoid conflicts
+// Alias route for convenience
 Route::middleware(['auth:sanctum', 'verified'])->get('/election/demo/create', [VotingElectionController::class, 'startDemo'])->name('election.demo.create');
 
 // Voter slug generation - start voting process

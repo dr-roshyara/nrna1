@@ -1584,7 +1584,7 @@ protected function saveCandidateResults(int $vote_id, array $selection)
         Result::create([
             'vote_id' => $vote_id,
             'post_id' => $selection['post_id'],
-            'candidacy_id' => $candidate['candidacy_id']
+            'candidate_id' => $candidate['candidacy_id']  // candidacy_id from input maps to candidate_id in results table
         ]);
     }
 }

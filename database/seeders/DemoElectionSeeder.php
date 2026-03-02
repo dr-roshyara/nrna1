@@ -22,31 +22,31 @@ class DemoElectionSeeder extends Seeder
         $this->command->info('🚀 Creating demo election data (MODE 1 - No Organisation)...');
         $this->command->info('');
 
-        // Clean state: Delete ALL demo elections to ensure only one exists
-        // This prevents conflicts when multiple demo elections are created
-        Election::where('type', 'demo')->delete();
-
-        // Create Demo Election with standard slug
+        // Get or create Demo Election with standard slug
         // Using 'demo-election' ensures route('/election/demo/start') finds the correct election
-        $election = Election::create([
-            'name' => 'Demo Election',
-            'slug' => 'demo-election',
-            'type' => 'demo',
-            'is_active' => true,
-            'description' => 'Public demo election for testing the voting system without registration',
-            'start_date' => now()->format('Y-m-d'),
-            'end_date' => now()->addDays(365)->format('Y-m-d'),
-            // organisation_id will be auto-filled as NULL by BelongsToTenant trait
-        ]);
+        // The election may already exist from ElectionSeeder
+        // Use withoutGlobalScopes() to bypass BelongsToTenant filtering during seeding
+        $election = Election::withoutGlobalScopes()->firstOrCreate(
+            ['slug' => 'demo-election'],
+            [
+                'name' => 'Demo Election',
+                'type' => 'demo',
+                'is_active' => true,
+                'description' => 'Public demo election for testing the voting system without registration',
+                'start_date' => now()->format('Y-m-d'),
+                'end_date' => now()->addDays(365)->format('Y-m-d'),
+                'organisation_id' => 1, // Platform organisation - accessible to all
+            ]
+        );
 
         $this->command->info("✅ Created Demo Election: {$election->name}");
-        $this->command->info("   Organisation ID: " . ($election->organisation_id ?? 'NULL (Demo Mode)'));
+        $this->command->info("   Organisation ID: {$election->organisation_id} (Platform)");
 
-        // Verify organisation_id is NULL
-        if ($election->organisation_id === null) {
-            $this->command->info('   ✓ Correctly set to NULL (demo mode)');
+        // Verify organisation_id is set to platform (ID=1)
+        if ($election->organisation_id === 1) {
+            $this->command->info('   ✓ Correctly set to 1 (Platform organisation)');
         } else {
-            $this->command->error('   ✗ ERROR: organisation_id should be NULL for demo!');
+            $this->command->error('   ✗ ERROR: organisation_id should be 1 (Platform) for demo!');
         }
 
         // ========== POST 1: PRESIDENT ==========

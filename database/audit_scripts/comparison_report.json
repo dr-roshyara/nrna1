@@ -1,0 +1,292 @@
+{
+    "timestamp": "2026-03-01 22:43:58",
+    "total_old_columns": 497,
+    "total_new_columns": 115,
+    "tables_with_missing_columns": 10,
+    "missing_columns": {
+        "candidacies": {
+            "missing": {
+                "0": "candidacy_id",
+                "3": "candidacy_name",
+                "4": "proposer_id",
+                "5": "supporter_id",
+                "6": "image_path_1",
+                "7": "image_path_2",
+                "8": "image_path_3"
+            },
+            "old_file": "2021_07_18_205316_create_candidacies_table.php",
+            "new_file": "2026_03_01_000005_create_candidacies_table.php"
+        },
+        "codes": {
+            "missing": {
+                "3": "code3",
+                "4": "code4",
+                "5": "vote_show_code",
+                "8": "is_code3_usable",
+                "9": "is_code4_usable",
+                "12": "vote_last_seen"
+            },
+            "old_file": "2021_07_22_195040_create_codes_table.php",
+            "new_file": "2026_03_01_000007_create_codes_table.php"
+        },
+        "demo_posts": {
+            "missing": {
+                "0": "post_id",
+                "2": "nepali_name",
+                "4": "organisation_id"
+            },
+            "old_file": "2026_02_20_011053_create_demo_posts_table.php",
+            "new_file": "2026_03_01_000012_create_demo_tables.php"
+        },
+        "posts": {
+            "missing": {
+                "0": "post_id",
+                "2": "nepali_name"
+            },
+            "old_file": "2021_07_17_050000_create_posts_table.php",
+            "new_file": "2026_03_01_000004_create_posts_table.php"
+        },
+        "results": {
+            "missing": {
+                "2": "candidacy_id"
+            },
+            "old_file": "2022_01_10_192127_create_results_table.php",
+            "new_file": "2026_03_01_000011_create_results_table.php"
+        },
+        "users": {
+            "missing": {
+                "4": "current_team_id",
+                "5": "profile_photo_path"
+            },
+            "old_file": "2014_10_12_000000_create_users_table.php",
+            "new_file": "2026_03_01_000002_create_users_table.php"
+        },
+        "voter_registrations": {
+            "missing": {
+                "3": "election_type",
+                "4": "registered_at",
+                "7": "approved_by",
+                "8": "rejected_by",
+                "9": "rejection_reason",
+                "10": "metadata",
+                "12": "created_at"
+            },
+            "old_file": "2026_02_03_193900_create_voter_registrations_table.php",
+            "new_file": "2026_03_01_000006_create_voter_registrations_table.php"
+        },
+        "voter_slug_steps": {
+            "missing": {
+                "3": "step_data"
+            },
+            "old_file": "2026_02_04_143856_create_voter_slug_steps_table.php",
+            "new_file": "2026_03_01_000009_create_voter_slug_steps_table.php"
+        },
+        "voter_slugs": {
+            "missing": {
+                "0": "user_id",
+                "2": "expires_at",
+                "3": "is_active",
+                "4": "["
+            },
+            "old_file": "2025_09_13_210629_create_voter_slugs_table.php",
+            "new_file": "2026_03_01_000008_create_voter_slugs_table.php"
+        },
+        "votes": {
+            "missing": [
+                "post_id",
+                "no_vote_option",
+                "voting_code",
+                "candidate_01",
+                "candidate_02",
+                "candidate_03",
+                "candidate_04",
+                "candidate_05",
+                "candidate_06",
+                "candidate_07",
+                "candidate_08",
+                "candidate_09",
+                "candidate_10",
+                "candidate_11",
+                "candidate_12",
+                "candidate_13",
+                "candidate_14",
+                "candidate_15",
+                "candidate_16",
+                "candidate_17",
+                "candidate_18",
+                "candidate_19",
+                "candidate_20",
+                "candidate_21",
+                "candidate_22",
+                "candidate_23",
+                "candidate_24",
+                "candidate_25",
+                "candidate_26",
+                "candidate_27",
+                "candidate_28",
+                "candidate_29",
+                "candidate_30",
+                "candidate_31",
+                "candidate_32",
+                "candidate_33",
+                "candidate_34",
+                "candidate_35",
+                "candidate_36",
+                "candidate_37",
+                "candidate_38",
+                "candidate_39",
+                "candidate_40",
+                "candidate_41",
+                "candidate_42",
+                "candidate_43",
+                "candidate_44",
+                "candidate_45",
+                "candidate_46",
+                "candidate_47",
+                "candidate_48",
+                "candidate_49",
+                "candidate_50",
+                "candidate_51",
+                "candidate_52",
+                "candidate_53",
+                "candidate_54",
+                "candidate_55",
+                "candidate_56",
+                "candidate_57",
+                "candidate_58",
+                "candidate_59",
+                "candidate_60"
+            ],
+            "old_file": "2021_07_22_192509_create_votes_table.php",
+            "new_file": "2026_03_01_000010_create_votes_table.php"
+        }
+    },
+    "extra_columns": {
+        "candidacies": {
+            "extra": {
+                "0": "election_id",
+                "3": "position_order",
+                "4": "bio",
+                "5": "photo_path",
+                "6": "political_party",
+                "7": "metadata",
+                "8": "["
+            },
+            "old_file": "2021_07_18_205316_create_candidacies_table.php",
+            "new_file": "2026_03_01_000005_create_candidacies_table.php"
+        },
+        "codes": {
+            "extra": {
+                "0": "election_id",
+                "2": "organisation_id",
+                "6": "code1_used_at",
+                "8": "code2_used_at",
+                "11": "vote_submitted",
+                "12": "voting_started_at",
+                "13": "has_code1_sent",
+                "14": "code1_sent_at",
+                "15": "has_code2_sent",
+                "16": "code2_sent_at",
+                "17": "expires_at",
+                "18": "voting_time_minutes",
+                "19": "metadata",
+                "20": "["
+            },
+            "old_file": "2021_07_22_195040_create_codes_table.php",
+            "new_file": "2026_03_01_000007_create_codes_table.php"
+        },
+        "demo_posts": {
+            "extra": {
+                "2": "description",
+                "6": "select_all_required",
+                "8": "["
+            },
+            "old_file": "2026_02_20_011053_create_demo_posts_table.php",
+            "new_file": "2026_03_01_000012_create_demo_tables.php"
+        },
+        "elections": {
+            "extra": {
+                "4": "status",
+                "5": "organisation_id"
+            },
+            "old_file": "2026_02_03_193800_create_elections_table.php",
+            "new_file": "2026_03_01_000003_create_elections_table.php"
+        },
+        "organisations": {
+            "extra": {
+                "3": "email",
+                "4": "address",
+                "5": "representative",
+                "8": "is_platform"
+            },
+            "old_file": "2026_02_07_131712_create_role_system_tables.php",
+            "new_file": "2026_03_01_000001_create_organisations_table.php"
+        },
+        "posts": {
+            "extra": {
+                "0": "election_id",
+                "2": "description",
+                "3": "is_national_wide",
+                "6": "select_all_required",
+                "7": "position_order",
+                "8": "["
+            },
+            "old_file": "2021_07_17_050000_create_posts_table.php",
+            "new_file": "2026_03_01_000004_create_posts_table.php"
+        },
+        "results": {
+            "extra": {
+                "1": "election_id",
+                "3": "candidate_id",
+                "4": "vote_hash",
+                "5": "vote_count",
+                "6": "["
+            },
+            "old_file": "2022_01_10_192127_create_results_table.php",
+            "new_file": "2026_03_01_000011_create_results_table.php"
+        },
+        "users": {
+            "extra": {
+                "4": "two_factor_secret",
+                "5": "two_factor_recovery_codes",
+                "6": "organisation_id",
+                "7": "can_vote",
+                "8": "has_voted",
+                "9": "voting_ip",
+                "10": "region",
+                "11": "metadata",
+                "12": "["
+            },
+            "old_file": "2014_10_12_000000_create_users_table.php",
+            "new_file": "2026_03_01_000002_create_users_table.php"
+        },
+        "voter_registrations": {
+            "extra": {
+                "5": "suspended_at",
+                "6": "approved_by_user",
+                "7": "ip_address"
+            },
+            "old_file": "2026_02_03_193900_create_voter_registrations_table.php",
+            "new_file": "2026_03_01_000006_create_voter_registrations_table.php"
+        },
+        "voter_slug_steps": {
+            "extra": {
+                "3": "ip_address",
+                "4": "started_at",
+                "6": "metadata"
+            },
+            "old_file": "2026_02_04_143856_create_voter_slug_steps_table.php",
+            "new_file": "2026_03_01_000009_create_voter_slug_steps_table.php"
+        },
+        "votes": {
+            "extra": [
+                "election_id",
+                "organisation_id",
+                "vote_hash",
+                "candidate_"
+            ],
+            "old_file": "2021_07_22_192509_create_votes_table.php",
+            "new_file": "2026_03_01_000010_create_votes_table.php"
+        }
+    }
+}
