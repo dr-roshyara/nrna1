@@ -11,13 +11,17 @@ return new class extends Migration
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('election_id');
-            $table->unsignedBigInteger('organisation_id');
+            $table->unsignedBigInteger('organisation_id'); // NOT NULL - enforces all votes must belong to organisation
 
             // CRITICAL ANONYMITY DESIGN:
             // - NO user_id column (votes are completely anonymous!)
             // - vote_hash: Cryptographic proof of vote (allows verification without exposing user)
             // - Proves user voted without revealing HOW they voted
             $table->string('vote_hash')->unique(); // SHA256 hash(user_id + election_id + code + timestamp)
+
+            // Original voting code for audit and backward compatibility
+            $table->string('voting_code')->nullable(); // Original code used to cast vote
+            $table->string('vote_session_name')->nullable(); // Session identifier for audit trail
 
             // Vote data - 60 candidate slots (numbered positions)
             for ($i = 1; $i <= 60; $i++) {
@@ -29,7 +33,8 @@ return new class extends Migration
 
             // Metadata for verification and audit
             $table->json('metadata')->nullable();
-            $table->timestamp('cast_at');
+            $table->timestamp('cast_at'); // When vote was cast
+
             $table->timestamps();
 
             // Foreign keys
@@ -43,12 +48,12 @@ return new class extends Migration
                   ->on('organisations')
                   ->onDelete('cascade');
 
-            // Indexes
+            // Indexes for query optimization
             $table->index('election_id');
             $table->index('organisation_id');
             $table->index('vote_hash'); // For verification lookup
             $table->index('cast_at'); // For chronological queries
-            $table->index(['election_id', 'organisation_id']);
+            $table->index(['election_id', 'organisation_id']); // Composite for tenant+election queries
         });
     }
 
