@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('voter_slug_id');
             $table->unsignedBigInteger('election_id');
+            $table->unsignedBigInteger('organisation_id')->nullable(); // Multi-tenancy scoping
 
             // Step tracking: 1=code entry, 2=agreement, 3=vote selection, 4=verification, 5=completion
             $table->unsignedSmallInteger('step');
@@ -23,6 +24,7 @@ return new class extends Migration
 
             // Metadata for the step
             $table->json('metadata')->nullable(); // Step-specific data (e.g., code entered, agreement accepted, selections made)
+            $table->json('step_data')->nullable(); // Additional step-specific data
 
             $table->timestamps();
 
@@ -37,8 +39,14 @@ return new class extends Migration
                   ->on('elections')
                   ->onDelete('cascade');
 
+            $table->foreign('organisation_id')
+                  ->references('id')
+                  ->on('organisations')
+                  ->onDelete('set null');
+
             // Indexes
             $table->index(['voter_slug_id', 'step']);
+            $table->index('organisation_id');
             $table->unique(['voter_slug_id', 'election_id', 'step']);
         });
     }
