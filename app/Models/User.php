@@ -11,6 +11,8 @@ use App\Traits\HasOrganisation;
 
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 //models
 use App\Models\Vote;
 use App\Models\DeligateVote;
@@ -64,6 +66,30 @@ class User extends Authenticatable implements MustVerifyEmail
                         $model->organisation_id = $publicdigit->id;
                     }
                 }
+            }
+        });
+
+        // CRITICAL FALLBACK: Ensure every user has a platform organisation pivot
+        // This catches cases where RegisterController pivot creation might fail
+        // Uses insertOrIgnore to avoid unique constraint violations
+        static::created(function ($user) {
+            $orgId = $user->organisation_id ?? 1;
+
+            // Use insertOrIgnore to safely handle duplicate attempts
+            $result = DB::table('user_organisation_roles')->insertOrIgnore([
+                'user_id' => $user->id,
+                'organisation_id' => $orgId,
+                'role' => 'member',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            if ($result) {
+                Log::info('User model fallback: Created pivot record', [
+                    'user_id' => $user->id,
+                    'organisation_id' => $orgId,
+                    'source' => 'User::created() fallback',
+                ]);
             }
         });
     }
