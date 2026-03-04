@@ -802,7 +802,7 @@ public function second_submission(Request $request)
         return redirect()->route($route, $routeParams)
             ->with([
                 'totalDuration' => $totalDuration,
-                'code_expires_in' => $code->voting_time_in_minutes ?? 15,
+                'code_expires_in' => $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30),
                 'success' => 'Vote submitted successfully. Please check your email for verification code.'
             ]);
 
@@ -842,8 +842,8 @@ private function validateVotingEligibility($auth_user, $code)
     
     if (!$code->is_code1_usable && $code->vote_submitted) {
         // Check if we're in the valid submission window
-        $submission_window = $code->voting_time_in_minutes ?? 15;
-        $elapsed = Carbon::now()->diffInMinutes($code->code1_used_at);
+        $submission_window = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
+        $elapsed = \Carbon\Carbon::parse($code->code1_used_at)->diffInMinutes(now());
         
         if ($elapsed > $submission_window) {
             $errors['expired'] = 'Your voting session has expired. Please start again.';
@@ -929,7 +929,7 @@ private function validateVoteIntegrity($vote_data, $auth_user)
  */
 private function prepareSessionData($vote_data, $auth_user, $totalDuration, $code)
 {
-    $code_expires_in = $code->voting_time_in_minutes ?? 15;
+    $code_expires_in = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
     
     return [
         'user_id' => $auth_user->id,
@@ -968,10 +968,10 @@ public function send_second_voting_code(&$code, $auth_user)
     try {
         $code1_used_at = Carbon::parse($code->code1_used_at);
         $current = Carbon::now();
-        $totalDuration = $current->diffInMinutes($code1_used_at);
+        $totalDuration = $code1_used_at->diffInMinutes($current);
         
         // Check if we're within the valid voting window
-        $voting_window = $code->voting_time_in_minutes ?? 15;
+        $voting_window = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
         if ($totalDuration >= $voting_window) {
             return [
                 'error' => 'Voting window expired',
@@ -2501,7 +2501,7 @@ public function verify_final_vote(Request $request)
         $current         = Carbon::now();
         $code1_used_at   =$code->code1_used_at;
         $voting_time     =$code->voting_time_in_minutes;
-        $totalDuration   = $current->diffInMinutes($code1_used_at );
+        $totalDuration   = \Carbon\Carbon::parse($code1_used_at)->diffInMinutes($current);
         //    dd($code->can_vote_now);  
        ($code->can_vote_now);
         if(!$code->can_vote_now){
@@ -2620,7 +2620,7 @@ public function verify_final_vote(Request $request)
         $code_expires_in        = $code->voting_time_in_minutes;
         $current                = Carbon::now();
         $code1_used_at          = $code->code1_used_at;       
-        $totalDuration          = $current->diffInMinutes($code1_used_at );
+        $totalDuration          = \Carbon\Carbon::parse($code1_used_at)->diffInMinutes($current);
         $_message['totalDuration']=$totalDuration;
         if($totalDuration> $code_expires_in| $code->is_code1_usable){
             $code->is_code1_usable      =0;

@@ -188,7 +188,7 @@ class DemoElectionCreationService
                 'is_code3_usable' => true,
                 'is_code4_usable' => true,
                 'can_vote_now' => false,
-                'voting_time_in_minutes' => 30,
+                'voting_time_in_minutes' => config('voting.time_in_minutes', 30),
                 'code1_sent_at' => now(),
             ]);
         }

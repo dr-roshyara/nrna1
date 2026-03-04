@@ -101,7 +101,7 @@ class Candidacy extends Model
     public function getVoteDisplayInfo()
     {
         return [
-            'candidacy_id' => $this->candidacy_id,
+            'candidacy_id' => $this->id,
             'candidacy_name' => $this->candidate_name,  // This uses the accessor above
             'proposer_name' => $this->proposer_name,
             'supporter_name' => $this->supporter_name,

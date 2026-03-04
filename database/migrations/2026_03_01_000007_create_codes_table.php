@@ -39,6 +39,10 @@ return new class extends Migration
             // Vote verification
             $table->string('vote_show_code')->nullable(); // Code to show verification proof
             $table->timestamp('vote_last_seen')->nullable(); // When was vote last viewed for verification
+            
+            $table->boolean('has_agreed_to_vote')->default(false);
+            $table->dateTime('has_agreed_to_vote_at')->nullable();
+
 
             // Sending
             $table->boolean('has_code1_sent')->default(0);
@@ -50,8 +54,12 @@ return new class extends Migration
             $table->timestamp('expires_at')->nullable();
             $table->unsignedInteger('voting_time_minutes')->default(30);
 
+            
             // Metadata
-            $table->json('metadata')->nullable();
+            $table->integer('voting_time_in_minutes')->default(30);
+            $table->string('client_ip')->nullable();
+            $table->string('session_name')->nullable();
+            $table->string('code_for_vote')->nullable();
 
             $table->timestamps();
 

@@ -68,12 +68,12 @@ class VoterSlugService
                 throw new \Exception('Election not found');
             }
 
-            // Create new 30-minute slug
+            // Create slug using configured voting time
             // ✅ CRITICAL: Include organisation_id from election
             $voterSlug = VoterSlug::create([
                 'user_id' => $user->id,
                 'slug' => $slug,
-                'expires_at' => now()->addMinutes(30),
+                'expires_at' => now()->addMinutes(config('voting.time_in_minutes', 30)),
                 'is_active' => true,
                 'current_step' => 1,
                 'step_meta' => [],

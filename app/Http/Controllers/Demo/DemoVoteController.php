@@ -159,8 +159,9 @@ class DemoVoteController extends Controller
 
         $current = Carbon::now();
         $code1_used_at = $code->code1_used_at;
-        $voting_time = $code->voting_time_in_minutes;
-        $totalDuration = $current->diffInMinutes($code1_used_at);
+        $voting_time = (int) $code->voting_time_in_minutes;
+        // Use parse($past)->diffInMinutes(now()) to get positive elapsed minutes
+        $totalDuration = Carbon::parse($code1_used_at)->diffInMinutes($current);
 
         return $totalDuration > $voting_time;
     }
@@ -370,16 +371,17 @@ public function create(Request $request)
             ->orderBy('position_order')
             ->get()
             ->map(function ($post) use ($groupedCandidates) {
-                $candidatesForPost = $groupedCandidates->get($post->post_id, collect());
+                // Use $post->id (integer PK) not $post->post_id (string) to match groupBy key
+                $candidatesForPost = $groupedCandidates->get($post->id, collect());
 
                 return [
-                    'post_id' => $post->post_id,
+                    'post_id' => $post->id,
                     'name' => $post->name,
                     'nepali_name' => $post->nepali_name,
                     'required_number' => $post->required_number,
                     'candidates' => $candidatesForPost->map(function ($c) {
                         return [
-                            'candidacy_id' => $c->candidacy_id,
+                            'candidacy_id' => $c->id,
                             'user' => [
                                 'id' => $c->user_id,
                                 'name' => $c->user_name ?? 'Demo Candidate',
@@ -444,7 +446,8 @@ public function create(Request $request)
                 ->orderBy('position_order')
                 ->get()
                 ->map(function ($post) use ($groupedCandidates) {
-                    $candidatesForPost = $groupedCandidates->get($post->post_id, collect());
+                    // Use $post->id (integer PK) not $post->post_id (string) to match groupBy key
+                    $candidatesForPost = $groupedCandidates->get($post->id, collect());
 
                     return [
                         'post_id' => $post->post_id,
@@ -642,7 +645,7 @@ public function first_submission(Request $request)
 
     // 🐛 BUG FIX: Sanitize vote data before validation to fix inconsistent no_vote flags
     $vote_data = $this->sanitize_vote_data($vote_data);
-
+    dd($vote_data); // Debug: Check sanitized vote data structure
     // Validate candidate selections with SELECT_ALL_REQUIRED logic
     $validation_errors = $this->validate_candidate_selections($vote_data);
 
@@ -926,7 +929,7 @@ public function second_submission(Request $request)
         return redirect()->route($route, $routeParams)
             ->with([
                 'totalDuration' => $totalDuration,
-                'code_expires_in' => $code->voting_time_in_minutes ?? 15,
+                'code_expires_in' => $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30),
                 'success' => 'Vote submitted successfully. Please check your email for verification code.'
             ]);
 
@@ -966,8 +969,8 @@ private function validateVotingEligibility($auth_user, $code)
     
     if (!$code->is_code1_usable && $code->vote_submitted) {
         // Check if we're in the valid submission window
-        $submission_window = $code->voting_time_in_minutes ?? 15;
-        $elapsed = Carbon::now()->diffInMinutes($code->code1_used_at);
+        $submission_window = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
+        $elapsed = \Carbon\Carbon::parse($code->code1_used_at)->diffInMinutes(now());
         
         if ($elapsed > $submission_window) {
             $errors['expired'] = 'Your voting session has expired. Please start again.';
@@ -1053,7 +1056,7 @@ private function validateVoteIntegrity($vote_data, $auth_user)
  */
 private function prepareSessionData($vote_data, $auth_user, $totalDuration, $code)
 {
-    $code_expires_in = $code->voting_time_in_minutes ?? 15;
+    $code_expires_in = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
     
     return [
         'user_id' => $auth_user->id,
@@ -1092,10 +1095,10 @@ public function send_second_voting_code(&$code, $auth_user)
     try {
         $code1_used_at = Carbon::parse($code->code1_used_at);
         $current = Carbon::now();
-        $totalDuration = $current->diffInMinutes($code1_used_at);
+        $totalDuration = $code1_used_at->diffInMinutes($current);
         
         // Check if we're within the valid voting window
-        $voting_window = $code->voting_time_in_minutes ?? 15;
+        $voting_window = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
         if ($totalDuration >= $voting_window) {
             return [
                 'error' => 'Voting window expired',
@@ -2542,21 +2545,37 @@ public function verifyVoteSubmit(): array
             $vote->organisation_id = session('current_organisation_id');
         }
 
-        $vote->save();   // Save the vote first (sets cast_at automatically)
-        $this->out_code = $vote->getKey();  // Get the vote's primary key
+        // Set cast_at timestamp for cryptographic hash generation
+        $vote->cast_at = now();
 
         // Generate cryptographic vote_hash for verification
         // Uses SHA256(code.user_id + election_id + code1 + cast_at_timestamp)
         // This allows voter to verify their vote WITHOUT exposing how they voted
-        if ($code && $auth_user && $vote->cast_at) {
+        if ($code && $auth_user) {
             $vote->vote_hash = hash('sha256',
                 $code->user_id .
                 $election->id .
                 $code->code1 .
                 $vote->cast_at->timestamp
             );
-            $vote->save(); // Update with vote_hash
-        }     
+            \Log::info('Generated vote_hash for demo vote', [
+                'vote_hash_prefix' => substr($vote->vote_hash, 0, 8) . '...',
+                'election_id' => $election->id,
+                'user_id' => $code->user_id,
+                'cast_at' => $vote->cast_at->toIso8601String(),
+            ]);
+        } else {
+            // Log error if code or auth_user missing (should not happen)
+            \Log::error('Missing code or auth_user for vote_hash generation', [
+                'code_exists' => !!$code,
+                'auth_user_exists' => !!$auth_user,
+                'election_id' => $election->id ?? 'unknown',
+            ]);
+            throw new \Exception('Cannot generate vote hash: missing required data');
+        }
+
+        $vote->save();   // Save the vote with vote_hash already set
+        $this->out_code = $vote->getKey();  // Get the vote's primary key
         //save the $this->vote_id_for_voter  it to voter ;
         {
          /**
@@ -2598,6 +2617,30 @@ public function verifyVoteSubmit(): array
                         $_vote_json["no_vote"]  =false;
                         //Here save the vote result one by one in Result
                         $post_id                = $_vote_json['post_id'];
+                        // Convert string post_id to numeric if needed
+                        if (is_string($post_id)) {
+                            // Check if string is already numeric
+                            if (is_numeric($post_id)) {
+                                $post_id = (int) $post_id;
+                                \Log::info('Converted numeric string post_id to integer', ['original' => $_vote_json['post_id'], 'converted' => $post_id]);
+                            } elseif (preg_match('/\d+$/', $post_id, $matches)) {
+                                // Extract trailing digits (e.g., 'president-3' -> 3)
+                                $post_id = (int) $matches[0];
+                                \Log::info('Converted post_id string to numeric using trailing digits', ['original' => $_vote_json['post_id'], 'converted' => $post_id]);
+                            } else {
+                                // Try to find post by name (case-insensitive)
+                                $post = \App\Models\DemoPost::where('election_id', $election->id)
+                                    ->whereRaw('LOWER(name) LIKE ?', [strtolower($post_id) . '%'])
+                                    ->first();
+                                if ($post) {
+                                    $post_id = $post->id;
+                                    \Log::info('Mapped post name to ID', ['name' => $_vote_json['post_id'], 'post_id' => $post_id]);
+                                } else {
+                                    \Log::error('Cannot convert post_id string to numeric', ['post_id' => $post_id]);
+                                    throw new \Exception('Invalid post_id format: ' . $post_id);
+                                }
+                            }
+                        }
                         // dd($candidates);
                         for($j=0;$j<sizeof($candidates);$j++){
                           //save each selected candidates in the result
@@ -2605,7 +2648,23 @@ public function verifyVoteSubmit(): array
                           $result->vote_id       =$vote->id;
                           $result->election_id   =$election->id;
                           $result->post_id       =$post_id;
-                          $result->candidate_id  =$candidates[$j]['candidacy_id'];
+                          $candidate_id = $candidates[$j]['candidacy_id'];
+                          // Convert string candidate_id to numeric if needed
+                          if (is_string($candidate_id)) {
+                              // Check if string is already numeric
+                              if (is_numeric($candidate_id)) {
+                                  $candidate_id = (int) $candidate_id;
+                                  \Log::info('Converted numeric string candidate_id to integer', ['original' => $candidates[$j]['candidacy_id'], 'converted' => $candidate_id]);
+                              } elseif (preg_match('/\d+$/', $candidate_id, $matches)) {
+                                  // Extract trailing digits (e.g., 'demo-president-3-1' -> 1)
+                                  $candidate_id = (int) $matches[0];
+                                  \Log::info('Converted candidate_id string to numeric using trailing digits', ['original' => $candidates[$j]['candidacy_id'], 'converted' => $candidate_id]);
+                              } else {
+                                  \Log::error('Cannot convert candidate_id string to numeric', ['candidate_id' => $candidate_id]);
+                                  throw new \Exception('Invalid candidate_id format: ' . $candidate_id);
+                              }
+                          }
+                          $result->candidate_id  = $candidate_id;
 
                           // PHASE 3: Explicitly set organisation_id based on election type
                           if ($election->type === 'real') {
@@ -2965,7 +3024,7 @@ public function verify_final_vote(Request $request)
         $code_expires_in        = $code->voting_time_in_minutes;
         $current                = Carbon::now();
         $code1_used_at          = $code->code1_used_at;
-        $totalDuration          = $current->diffInMinutes($code1_used_at );
+        $totalDuration          = \Carbon\Carbon::parse($code1_used_at)->diffInMinutes($current);
         $_message['totalDuration']=$totalDuration;
 
         // ✅ FIXED: Check voting window timeout (independent of mode)

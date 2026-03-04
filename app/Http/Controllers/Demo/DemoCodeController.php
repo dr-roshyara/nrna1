@@ -42,7 +42,7 @@ class DemoCodeController extends Controller
     {
         $this->clientIP = \Request::getClientIp(true);
         $this->maxUseClientIP = config('app.max_use_clientIP', 7);
-        $this->votingTimeInMinutes = 30; // 30 minutes voting window (matches voter slug expiry)
+        $this->votingTimeInMinutes = (int) config('voting.time_in_minutes', 30);
     }
 
     /**
@@ -132,7 +132,7 @@ class DemoCodeController extends Controller
         // ✅ EXPIRATION IS HANDLED IN getOrCreateCode() - NO DUPLICATE LOGIC
         // This method should only DISPLAY the code time, not modify it
         // Calculate time since code was sent (for display only)
-        $minutesSinceSent = $code->code1_sent_at ? now()->diffInMinutes($code->code1_sent_at) : 0;
+        $minutesSinceSent = $code->code1_sent_at ? \Carbon\Carbon::parse($code->code1_sent_at)->diffInMinutes(now()) : 0;
 
         // For API requests
         if ($request->wantsJson()) {
@@ -389,13 +389,13 @@ class DemoCodeController extends Controller
                 'success' => true,
                 'step' => 2,
                 'user_name' => $user->name,
-                'voting_time_minutes' => $code->voting_time_in_minutes ?? 20,
+                'voting_time_minutes' => $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30),
             ]);
         }
 
         return Inertia::render('Code/DemoCode/Agreement', [
             'user_name' => $user->name,
-            'voting_time_minutes' => $code->voting_time_in_minutes ?? 20,
+            'voting_time_minutes' => $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30),
             'agreement_text_nepali' => 'म यो अनलाइन मतदान प्रणालीमा स्वेच्छाले भाग लिइरहेको छु र मेरो मत गोप्य राखिनेछ भन्ने कुरामा सहमत छु।',
             'agreement_text_english' => 'I voluntarily participate in this online voting system and agree that my vote will remain secret and secure.',
             'slug' => $voterSlug ? $voterSlug->slug : null,
@@ -651,7 +651,7 @@ class DemoCodeController extends Controller
         // ✅ CHECK CODE EXPIRATION FIRST (before any other logic)
         // Expired codes must be regenerated regardless of other flags
         if ($code && $code->code1_sent_at) {
-            $isExpired = now()->diffInMinutes($code->code1_sent_at) > $this->votingTimeInMinutes;
+            $isExpired = \Carbon\Carbon::parse($code->code1_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes;
 
             if ($isExpired && !$code->has_voted) {
                 Log::info('🔄 [DEMO] Code expired - generating new one', [
@@ -838,7 +838,7 @@ class DemoCodeController extends Controller
             }
 
             // Code exists - check if it needs resending
-            $isExpired = $code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > $this->votingTimeInMinutes;
+            $isExpired = $code->code1_sent_at && \Carbon\Carbon::parse($code->code1_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes;
             $codeIsUsed = ($code->is_code1_usable == 0 || $code->code1_used_at !== null);
             $notYetVoted = !$code->has_voted;
             $voteNotSubmitted = !$code->vote_submitted;
@@ -925,7 +925,7 @@ class DemoCodeController extends Controller
         }
 
         // Check if code is expired (20 minutes)
-        if ($code->code1_sent_at && now()->diffInMinutes($code->code1_sent_at) > $this->votingTimeInMinutes) {
+        if ($code->code1_sent_at && \Carbon\Carbon::parse($code->code1_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes) {
             return ['success' => false, 'message' => 'Verification code has expired. Please request a new code.'];
         }
 

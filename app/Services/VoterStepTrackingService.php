@@ -51,7 +51,6 @@ class VoterStepTrackingService
         // Create new step completion record
         $voterSlugStep = VoterSlugStep::create([
             'voter_slug_id' => $voterSlug->id,
-            'slug' => $voterSlug->slug,
             'election_id' => $election->id,
             'step' => $step,
             'step_data' => $stepData,

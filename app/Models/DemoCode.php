@@ -140,6 +140,6 @@ class DemoCode extends Model
         if (!$this->code1_sent_at) {
             return false;
         }
-        return now()->diffInMinutes($this->code1_sent_at) > ($this->voting_time_in_minutes ?? 30);
+        return \Carbon\Carbon::parse($this->code1_sent_at)->diffInMinutes(now()) > ($this->voting_time_in_minutes ?? config('voting.time_in_minutes', 30));
     }
 }

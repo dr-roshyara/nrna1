@@ -82,7 +82,7 @@ class ElectionController extends Controller
                 'has_voted' => $code ? (bool) $code->has_voted : false,
                 'voting_started_at' => $code ? $code->voting_started_at : null,
                 'voting_time_remaining' => $code && $code->voting_started_at ?
-                    max(0, ($code->voting_time_in_minutes ?? 20) - now()->diffInMinutes($code->voting_started_at)) : 0,
+                    max(0, ($code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30)) - \Carbon\Carbon::parse($code->voting_started_at)->diffInMinutes(now())) : 0,
                 'has_agreed_to_vote' => $code ? (bool) ($code->has_agreed_to_vote ?? false) : false
             ];
         }

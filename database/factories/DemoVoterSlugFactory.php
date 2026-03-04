@@ -38,7 +38,7 @@ class DemoVoterSlugFactory extends Factory
             'step_meta' => [],
             'has_voted' => false,
             'can_vote_now' => true,
-            'voting_time_min' => null,
+            'voting_time_min' => config('voting.time_in_minutes', 30),
         ];
     }
 

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\DemoCandidacy;
 use App\Models\Election;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -53,9 +54,16 @@ class DemoCandidacyFactory extends Factory
         $postKey = $this->postId ?? array_rand(self::$posts);
         $postName = self::$posts[$postKey];
 
+        // Create or get a user for the candidate (demo candidates need valid user IDs for foreign key)
+        $user = \App\Models\User::factory()->create([
+            'name' => $fullName,
+            'email' => $this->faker->unique()->safeEmail(),
+            'password' => bcrypt('password'),
+        ]);
+
         return [
             'candidacy_id' => 'DEMO_' . Str::upper(Str::random(3)) . '_' . $this->faker->unique()->numberBetween(1000, 9999),
-            'user_id' => 'demo_user_' . $this->faker->unique()->numberBetween(1000, 9999),
+            'user_id' => $user->id,
             'user_name' => $fullName,
             'candidacy_name' => $fullName,
             'post_id' => $postKey,

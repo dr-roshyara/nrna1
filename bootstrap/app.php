@@ -52,6 +52,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'validate.voting.ip' => \App\Http\Middleware\ValidateVotingIp::class,
             'election' => \App\Http\Middleware\ElectionMiddleware::class,
             'election.demo' => \App\Http\Middleware\EnsureDemoElection::class,
+            'voting.code.window' => \App\Http\Middleware\CheckVotingWindow::class,
             'vote.organisation' => \App\Http\Middleware\EnsureRealVoteOrganisation::class,
 
             // organisation & Multi-tenancy

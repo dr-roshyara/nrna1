@@ -99,8 +99,13 @@ return new class extends Migration
             // Additional columns for vote verification
             $table->string('vote_show_code')->nullable();
             $table->timestamp('vote_last_seen')->nullable();
-
-            $table->json('metadata')->nullable();
+         
+            // Metadata
+            $table->integer('voting_time_in_minutes')->default(30);
+            $table->string('client_ip')->nullable();
+            $table->string('session_name')->nullable();
+            $table->string('code_for_vote')->nullable();
+            
             $table->timestamps();
 
             $table->foreign('election_id')
