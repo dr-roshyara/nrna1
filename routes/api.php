@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OpenionController;
 use App\Http\Controllers\Api\DemoSetupController;
+use App\Http\Controllers\LocaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,10 @@ Route::post('/tokens/create', function (Request $request) {
 });
 
 Route::post('/login', [AuthController::class, 'login']);
+
+// Locale management (available to all users, no authentication required)
+Route::post('/set-locale', [LocaleController::class, 'setLocale'])->name('api.set-locale');
+Route::get('/get-locale', [LocaleController::class, 'getLocale'])->name('api.get-locale');
 
 Route::group(['middleware'=>['auth:sanctum']], function(){
     Route::get('/openions/search', [OpenionController::class, 'search'])
