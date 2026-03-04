@@ -164,20 +164,69 @@ class OrganisationController extends Controller
      */
     public function show(string $slug)
     {
+        $user = auth()->user();
+
+        // DEBUG: Log access attempt
+        \Log::debug('🔵 OrganisationController::show() - Access attempt', [
+            'user_id' => $user->id,
+            'user_email' => $user->email,
+            'requested_slug' => $slug,
+            'user_organisation_id' => $user->organisation_id,
+        ]);
+
         $organisation = Organisation::where('slug', $slug)
             ->with(['users' => function ($query) {
                 $query->wherePivot('role', 'admin');
             }])
             ->firstOrFail();
 
+        \Log::debug('Organisation found', [
+            'org_id' => $organisation->id,
+            'org_slug' => $organisation->slug,
+            'org_name' => $organisation->name,
+        ]);
+
         // Check if current user is a member
         $isMember = $organisation->users()
-            ->where('users.id', auth()->id())
+            ->where('users.id', $user->id)
             ->exists();
 
+        // DEBUG: Verify membership through pivot table directly
+        $pivotExists = DB::table('user_organisation_roles')
+            ->where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->exists();
+
+        $allPivots = DB::table('user_organisation_roles')
+            ->where('user_id', $user->id)
+            ->get();
+
+        \Log::debug('📊 Membership verification', [
+            'is_member_via_relation' => $isMember,
+            'pivot_exists' => $pivotExists,
+            'all_pivots' => $allPivots->map(fn($p) => [
+                'org_id' => $p->organisation_id,
+                'role' => $p->role,
+            ])->toArray(),
+        ]);
+
         if (!$isMember) {
+            \Log::warning('🚫 403 FORBIDDEN - User access denied', [
+                'user_id' => $user->id,
+                'user_email' => $user->email,
+                'org_id' => $organisation->id,
+                'org_slug' => $slug,
+                'is_member' => $isMember,
+                'pivot_exists' => $pivotExists,
+            ]);
             abort(403, 'Sie haben keinen Zugriff auf diese Organisation.');
         }
+
+        \Log::info('✅ User organisation access granted', [
+            'user_id' => $user->id,
+            'org_id' => $organisation->id,
+            'org_slug' => $slug,
+        ]);
 
         // Check if demo election exists for this organisation
         $demoElection = Election::withoutGlobalScopes()
