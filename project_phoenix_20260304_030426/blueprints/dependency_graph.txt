@@ -1,0 +1,5 @@
+# Dependency Graph - Reconstructed from imports
+07f01290ada8de02e8afb4af8cd6b6fe9e2519b1.js -> vue
+07f01290ada8de02e8afb4af8cd6b6fe9e2519b1.js -> @inertiajs/vue3
+07f01290ada8de02e8afb4af8cd6b6fe9e2519b1.js -> vue-i18n
+07f01290ada8de02e8afb4af8cd6b6fe9e2519b1.js -> ziggy-js

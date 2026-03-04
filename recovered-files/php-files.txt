@@ -1,0 +1,191 @@
+PHP FILE: blob-04ffb1c06b9813e639cfd116618e84ac597f23e9.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Http\Middleware;
+---
+PHP FILE: blob-0bd256690b7cdfb2ad4c8c002a5d4f951579cadb.recovered
+---
+PHP FILE: blob-0df06f8761b9ca1509976b61d66b521e0f304dde.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Http\Responses;
+---
+PHP FILE: blob-111191fbe2e3893756364e573b5f4ee74e9dd5be.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-125f913021a4cee4bd122bd86bf8d313c352cee1.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-135ea89e6a40d964a19445b8ffe18e321e169d89.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-1a745ede9d561ed9f25787dad0a7a81530fbef23.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-1f0d680b5eff60aaa0c6e4b7553b42b656c24398.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-2a2e33441f995f04852dc6d098e3f7f7133e4ec1.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Http\Controllers\Auth;
+---
+PHP FILE: blob-2ac62a9a20117c3fc1e8367b00e89b9e75f71892.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-3201d103de2f79bfeb5ccc802261918fec157724.recovered
+---
+PHP FILE: blob-354507af0f72434fdd199c8a1415473eb55e1d7c.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Http\Middleware;
+---
+PHP FILE: blob-3e72cb0e11af3562fde233df6f7a6180985e5073.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Models;
+---
+PHP FILE: blob-4522babd36536e414303501cbc9ceb157b25d37c.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Observers;
+---
+PHP FILE: blob-6a201329bcce3eb6bd0c7f363a5d7b625b50d8aa.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-6b1e4f23445f16f51eafca0e85c84976da3587d8.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-6fcdf8a11720140feceba2c8961b00ef32f1c68b.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Providers;
+---
+PHP FILE: blob-7584105f80befcfcd6becc965dea04d3deaf56c0.recovered
+---
+PHP FILE: blob-7798ba9584dc27a3476358b9ccc848d924a098c2.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Http\Controllers;
+---
+PHP FILE: blob-7cf58ad8eee08ce36a01a4e6047106edda5d9fcc.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Services;
+---
+PHP FILE: blob-7eda29dc55228b54d169a0e0f57df33153e70c03.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-85a351a031aa0250d7702fe84742168989d7644c.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-8c0da8cb29618e01d481e4c16c097942e642b1c1.recovered
+---
+PHP FILE: blob-8c1fa8dc5f138f4f795cf6cb1f4d25365f4cb3b0.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Enums;
+---
+PHP FILE: blob-9064494021685b0beb8485df0e5524f03c61538e.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-928676ffe92e0c66975ce0c260daaf1b35b71db6.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Http\Controllers;
+---
+PHP FILE: blob-9a3e9af5c8d10521847b5dc34b7312a01c354af1.recovered
+---
+PHP FILE: blob-9e427b57f64fe285e02d58cb076a6a34cf63b5e8.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-9e470bebe028c577bfaf0c56d3548f9b7d0c987e.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-9e53109e2847c1c4b63354a201bae5be9381c030.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-9ebc6c995a3f25e99f7fc6d77a4b4627201765de.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-a11897c1531482026584d0bb6f5fea605afe224f.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-a6b952b980eb9f19878e5371d408bcb85bc8f52f.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Http\Responses;
+---
+PHP FILE: blob-a9bb325a416953e98c5d7483ee2c2cfdb91a6b51.recovered
+---
+PHP FILE: blob-aab08b39f5dd4ce3006352af73ba543e3cfe8665.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-ad6d586b9bf4a45de18546638456c16f93bf5e2d.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-aef8d87651f48e367cc716e3eae80401fc7a3d81.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Models;
+---
+PHP FILE: blob-b98eafac1a822890bdc67b49acdf00f217300b4a.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Listeners;
+---
+PHP FILE: blob-c0a551aa3aa5cf510a311e881c38dff665706f5c.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Providers;
+---
+PHP FILE: blob-c39d87c39011e6b1127fa2f656ef835241649cee.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-c409f041e65a276c73b7f4ffe2e28971d1ad7a78.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-c5c292b123ea1b7d2c0e1a5df7cc82430382d162.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Http\Controllers\Api;
+---
+PHP FILE: blob-d44065ee0c02a869cc099e2ad8957133619f0338.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Http\Controllers;
+---
+PHP FILE: blob-d4dcf1c37054bf305ec5f49fa3a3c776e5c79ff8.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Http\Controllers\Auth;
+---
+PHP FILE: blob-dc13fea94ffbeffb9d7ac8654038d0b2cb2adb86.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-de3aaa83e1cabc3424e54eccccaa0203f37063ff.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Http\Controllers\Auth;
+---
+PHP FILE: blob-e087f3b81c701a7e0c7dc820447d6b295dc9e90a.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-e9e2abf2f9f0e0798d2c748b54279e688385df34.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-ea4ca7aef90ccbf596b9dd892acf65858c43e06d.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-ebc250ac2d34ef5bc1437c16e22066164378d037.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-ebf1a13114399145bc37a8bb896f368dd6f05576.recovered
+[01;31m[K<?php[m[K
+---
+PHP FILE: blob-f1e24e3f085582a8a695fc925890e7acfb80a679.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Services;
+---
+PHP FILE: blob-fc65ef6fe8c9433ec44d1da23ebd7c717c386ef7.recovered
+[01;31m[K<?php[m[K
+[01;31m[Knamespace[m[K App\Exceptions\Voting;
+---
+PHP FILE: blob-fe4729d1220f9ec3f87f2d0f91d56109d3b77a26.recovered
+[01;31m[K<?php[m[K
+---

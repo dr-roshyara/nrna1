@@ -1,0 +1,25 @@
+=========================================
+GIT BLOB RECOVERY REPORT
+=========================================
+Date: Wed Mar  4 01:44:15     2026
+Repository: C:/Users/nabra/OneDrive/Desktop/roshyara/xamp/nrna/nrna-eu
+
+SUMMARY:
+  Total blobs found: 262
+  Successfully recovered: 262
+  Failed/Skipped: 0
+
+FILES BY CATEGORY:
+  images: 2 files (4.3M)
+  documents: 160 files (4.0M)
+  code: 92 files (2.1M)
+  configs: 5 files (153K)
+
+FILE TYPES DETECTED:
+    149 documents:txt
+     47 code:js
+     44 code:php
+     11 documents:md
+      5 configs:json
+      4 code:html
+      2 images:png

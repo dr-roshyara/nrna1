@@ -1,0 +1,33 @@
+[2026-03-04 01:41:20] SUCCESS: Git repository found: C:/Users/nabra/OneDrive/Desktop/roshyara/xamp/nrna/nrna-eu
+[2026-03-04 01:41:20] INFO: Fetching unreachable blobs...
+[2026-03-04 01:41:31] SUCCESS: Found 262 blobs to process
+[2026-03-04 01:41:31] INFO: Progress: 1/262 (Recovered: 0, Failed: 0)
+[2026-03-04 01:41:35] INFO: Progress: 10/262 (Recovered: 9, Failed: 0)
+[2026-03-04 01:41:40] INFO: Progress: 20/262 (Recovered: 19, Failed: 0)
+[2026-03-04 01:41:46] INFO: Progress: 30/262 (Recovered: 29, Failed: 0)
+[2026-03-04 01:41:52] INFO: Progress: 40/262 (Recovered: 39, Failed: 0)
+[2026-03-04 01:41:59] INFO: Progress: 50/262 (Recovered: 49, Failed: 0)
+[2026-03-04 01:42:06] INFO: Progress: 60/262 (Recovered: 59, Failed: 0)
+[2026-03-04 01:42:13] INFO: Progress: 70/262 (Recovered: 69, Failed: 0)
+[2026-03-04 01:42:19] INFO: Progress: 80/262 (Recovered: 79, Failed: 0)
+[2026-03-04 01:42:25] INFO: Progress: 90/262 (Recovered: 89, Failed: 0)
+[2026-03-04 01:42:32] INFO: Progress: 100/262 (Recovered: 99, Failed: 0)
+[2026-03-04 01:42:38] INFO: Progress: 110/262 (Recovered: 109, Failed: 0)
+[2026-03-04 01:42:48] INFO: Progress: 120/262 (Recovered: 119, Failed: 0)
+[2026-03-04 01:42:54] INFO: Progress: 130/262 (Recovered: 129, Failed: 0)
+[2026-03-04 01:43:01] INFO: Progress: 140/262 (Recovered: 139, Failed: 0)
+[2026-03-04 01:43:08] INFO: Progress: 150/262 (Recovered: 149, Failed: 0)
+[2026-03-04 01:43:14] INFO: Progress: 160/262 (Recovered: 159, Failed: 0)
+[2026-03-04 01:43:20] INFO: Progress: 170/262 (Recovered: 169, Failed: 0)
+[2026-03-04 01:43:25] INFO: Progress: 180/262 (Recovered: 179, Failed: 0)
+[2026-03-04 01:43:31] INFO: Progress: 190/262 (Recovered: 189, Failed: 0)
+[2026-03-04 01:43:38] INFO: Progress: 200/262 (Recovered: 199, Failed: 0)
+[2026-03-04 01:43:43] INFO: Progress: 210/262 (Recovered: 209, Failed: 0)
+[2026-03-04 01:43:48] INFO: Progress: 220/262 (Recovered: 219, Failed: 0)
+[2026-03-04 01:43:54] INFO: Progress: 230/262 (Recovered: 229, Failed: 0)
+[2026-03-04 01:44:00] INFO: Progress: 240/262 (Recovered: 239, Failed: 0)
+[2026-03-04 01:44:07] INFO: Progress: 250/262 (Recovered: 249, Failed: 0)
+[2026-03-04 01:44:13] INFO: Progress: 260/262 (Recovered: 259, Failed: 0)
+[2026-03-04 01:44:14] INFO: Progress: 262/262 (Recovered: 261, Failed: 0)
+[2026-03-04 01:44:15] SUCCESS: Recovery complete!
+[2026-03-04 01:44:15] INFO: Total: 262, Recovered: 262, Failed: 0
