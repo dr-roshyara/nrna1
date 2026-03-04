@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\DashboardResolver;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,16 +61,20 @@ class LoginController extends Controller
         // Get authenticated user
         $user = Auth::user();
 
-        // If user has an organisation, redirect to it; otherwise go to dashboard
-        if ($user->organisation_id) {
-            $organisation = \App\Models\Organisation::find($user->organisation_id);
-            if ($organisation) {
-                return redirect()->intended(route('organisations.show', $organisation->slug));
-            }
+        // ✅ CRITICAL: Check email verification FIRST
+        // Newly registered users MUST verify email before accessing dashboard
+        if ($user->email_verified_at === null) {
+            return redirect()->route('verification.notice')
+                ->with('status', 'Please verify your email address to continue.');
         }
 
-        // Fallback to dashboard if no organisation
-        return redirect()->intended(route('electiondashboard'));
+        // ✅ Use DashboardResolver for intelligent post-login routing
+        // This handles:
+        // - Active voting sessions
+        // - Active elections
+        // - Onboarding status
+        // - Platform vs custom organisation routing
+        return app(DashboardResolver::class)->resolve($user);
     }
 
     public function destroy(Request $request)
