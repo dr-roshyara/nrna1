@@ -49,6 +49,19 @@ class DashboardResolver
             'timestamp' => now()->toIso8601String(),
         ]);
 
+        // =============================================
+        // PRIORITY 1: EMAIL VERIFICATION (CRITICAL SECURITY CHECK)
+        // Unverified users MUST NOT access voting, elections, or dashboards
+        // This check comes BEFORE all other priorities for security
+        // =============================================
+        if ($user->email_verified_at === null) {
+            Log::info('DashboardResolver: User email not verified - redirecting', [
+                'user_id' => $user->id,
+                'email' => $user->email,
+            ]);
+            return redirect()->route('verification.notice');
+        }
+
         // Try to get cached resolution if session is fresh
         if ($this->shouldUseCachedResolution($user)) {
             $cached = $this->getCachedResolution($user);
@@ -62,7 +75,7 @@ class DashboardResolver
         }
 
         // =============================================
-        // PRIORITY 1: ACTIVE VOTING SESSION
+        // PRIORITY 2: ACTIVE VOTING SESSION
         // User is in middle of voting → resume voting session first
         // =============================================
         if ($activeVoterSlug = $this->getActiveVoterSlug($user)) {
@@ -75,7 +88,7 @@ class DashboardResolver
         }
 
         // =============================================
-        // PRIORITY 2: ACTIVE ELECTION AVAILABLE
+        // PRIORITY 3: ACTIVE ELECTION AVAILABLE
         // User has eligible organisation AND active election exists
         // =============================================
         if ($activeElection = $this->getActiveElectionForUser($user)) {
@@ -88,7 +101,7 @@ class DashboardResolver
         }
 
         // =============================================
-        // PRIORITY 3: HANDLE MISSING ORGANISATION/ELECTIONS
+        // PRIORITY 4: HANDLE MISSING ORGANISATION/ELECTIONS
         // Called when no active election found
         // Routes based on organisation_id (default=1 or custom)
         // =============================================
@@ -96,17 +109,6 @@ class DashboardResolver
             $response = $this->handleMissingOrganisation($user);
             $this->cacheResolution($user, $response->getTargetUrl());
             return $response;
-        }
-
-        // =============================================
-        // PRIORITY 4: EMAIL VERIFICATION
-        // Safety check - ensure email verified
-        // =============================================
-        if ($user->email_verified_at === null) {
-            Log::info('DashboardResolver: User email not verified', [
-                'user_id' => $user->id,
-            ]);
-            return redirect()->route('verification.notice');
         }
 
         // =============================================
@@ -171,7 +173,7 @@ class DashboardResolver
      * @param User $user
      * @return bool
      */
-    protected function shouldUseCachedResolution(User $user): bool
+    private function shouldUseCachedResolution(User $user): bool
     {
         if (!config('login-routing.cache.dashboard_resolution_ttl', 300)) {
             return false; // Caching disabled
@@ -203,7 +205,7 @@ class DashboardResolver
      * @param User $user
      * @return bool
      */
-    protected function isSessionFresh(User $user): bool
+    private function isSessionFresh(User $user): bool
     {
         if (!Schema::hasColumn('users', 'last_activity_at')) {
             return true; // Column doesn't exist yet, assume fresh
@@ -234,7 +236,7 @@ class DashboardResolver
      * @param User $user
      * @return string|null
      */
-    protected function getCachedResolution(User $user): ?string
+    private function getCachedResolution(User $user): ?string
     {
         $cacheKey = config('login-routing.cache.cache_key_prefix') . $user->id;
         return Cache::get($cacheKey);
@@ -247,7 +249,7 @@ class DashboardResolver
      * @param string $targetUrl
      * @return void
      */
-    protected function cacheResolution(User $user, string $targetUrl): void
+    private function cacheResolution(User $user, string $targetUrl): void
     {
         $cacheKey = config('login-routing.cache.cache_key_prefix') . $user->id;
         $ttl = config('login-routing.cache.dashboard_resolution_ttl', 300);
@@ -264,67 +266,6 @@ class DashboardResolver
     }
 
     /**
-     * Check if user has an active voting session
-     *
-     * Returns the voting dashboard route if user is currently voting
-     * An active session means:
-     * - voter_slug exists and is not expired
-     * - is_active = true
-     * - current_step is between 1 and 4 (not yet completed)
-     *
-     * @param User $user
-     * @return string|null
-     */
-    protected function checkActiveVotingSession(User $user): ?string
-    {
-        try {
-            // Check if voter_slugs table exists
-            if (!Schema::hasTable('voter_slugs')) {
-                return null;
-            }
-
-            // Find active voting session for this user
-            // Must be: active, not expired, and not yet completed (step < 5)
-            $activeVote = DB::table('voter_slugs')
-                ->where('user_id', $user->id)
-                ->where('is_active', true)
-                ->where('expires_at', '>', now())
-                ->where('current_step', '<', 5) // Not completed (5 = completed)
-                ->first();
-
-            if (!$activeVote) {
-                return null;
-            }
-
-            // User has active voting, route to voting dashboard
-            $currentStep = $this->getCurrentVotingStep($activeVote);
-
-            Log::info('DashboardResolver: Active voting session detected', [
-                'user_id' => $user->id,
-                'voter_slug_id' => $activeVote->id,
-                'current_step' => $currentStep->label(),
-                'step_number' => $currentStep->value,
-            ]);
-
-            // Route based on current voting step
-            return match($currentStep) {
-                VotingStep::WAITING => route('vote.start'),
-                VotingStep::CODE_VERIFIED => route('vote.agreement'),
-                VotingStep::AGREEMENT_ACCEPTED => route('vote.select'),
-                VotingStep::VOTE_CAST => route('vote.verify'),
-                VotingStep::VERIFIED => route('vote.complete'),
-            };
-
-        } catch (\Throwable $e) {
-            Log::warning('DashboardResolver: Error checking active voting session', [
-                'user_id' => $user->id,
-                'error' => $e->getMessage(),
-            ]);
-            return null;
-        }
-    }
-
-    /**
      * Get current voting step for a voter slug
      *
      * Maps voter_slug.current_step to VotingStep enum for proper routing
@@ -332,7 +273,7 @@ class DashboardResolver
      * @param object $voterSlug
      * @return VotingStep
      */
-    protected function getCurrentVotingStep($voterSlug): VotingStep
+    private function getCurrentVotingStep($voterSlug): VotingStep
     {
         // Map current_step column (1-5) to VotingStep enum
         // current_step values: 1=waiting, 2=code verified, 3=agreement, 4=vote cast, 5=verified
@@ -353,7 +294,7 @@ class DashboardResolver
      * @param string $votingDashboard
      * @return RedirectResponse
      */
-    protected function redirectToVoting(User $user, string $votingDashboard): RedirectResponse
+    private function redirectToVoting(User $user, string $votingDashboard): RedirectResponse
     {
         Log::info('DashboardResolver: Redirect decision', [
             'user_id' => $user->id,
@@ -800,6 +741,7 @@ class DashboardResolver
      *
      * An active session means:
      * - Voter slug exists for user
+     * - Is marked as active (is_active = true)
      * - Not expired (expires_at > now)
      * - Vote not completed yet (vote_completed_at IS NULL)
      * - User is in middle of steps 1-4 (code1_used_at OR has_agreed OR vote_submitted)
@@ -812,6 +754,7 @@ class DashboardResolver
         try {
             return DB::table('voter_slugs')
                 ->where('user_id', $user->id)
+                ->where('is_active', true)  // Must be marked as active
                 ->where('expires_at', '>', now())
                 ->whereNull('vote_completed_at')  // Not finished voting
                 ->where(function($query) {
@@ -916,12 +859,23 @@ class DashboardResolver
 
             // Route based on organisation type
             if ($organisation->id == 1) {
-                Log::info('DashboardResolver: User belongs to platform org only', [
+                // Platform user - check if they've been onboarded
+                if ($user->onboarded_at === null) {
+                    Log::info('DashboardResolver: Platform user not onboarded', [
+                        'user_id' => $user->id,
+                        'email' => $user->email,
+                        'destination' => 'dashboard.welcome',
+                    ]);
+                    return redirect()->route('dashboard.welcome');
+                }
+
+                // Platform user already onboarded
+                Log::info('DashboardResolver: Platform user onboarded', [
                     'user_id' => $user->id,
                     'email' => $user->email,
-                    'destination' => 'dashboard.welcome',
+                    'destination' => 'dashboard',
                 ]);
-                return redirect()->route('dashboard.welcome');
+                return redirect()->route('dashboard');
             }
 
             // Custom organisation - send to their organisation page
