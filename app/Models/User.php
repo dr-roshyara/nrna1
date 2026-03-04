@@ -1086,6 +1086,41 @@ public function getVoterState(): string
     }
 
     /**
+     * Get the effective organisation ID for this user.
+     *
+     * Returns the user's assigned organisation_id only if they have a valid pivot record for it.
+     * Otherwise, returns the platform organisation ID (1).
+     *
+     * This prevents users with stale org_ids but no pivot records from being redirected to non-existent organisations.
+     *
+     * @return int The effective organisation ID (defaults to platform org 1)
+     */
+    public function getEffectiveOrganisationId(): int
+    {
+        // If user has a custom org (id > 1) AND they're actually a member, use that
+        if ($this->organisation_id > 1 && $this->belongsToOrganisation($this->organisation_id)) {
+            return $this->organisation_id;
+        }
+
+        // Otherwise, ALWAYS default to platform org (id=1)
+        return 1;
+    }
+
+    /**
+     * Check if user belongs to a specific organisation.
+     *
+     * @param int $organisationId The organisation ID to check
+     * @return bool True if user has a valid pivot record for this organisation
+     */
+    public function belongsToOrganisation(int $organisationId): bool
+    {
+        return DB::table('user_organisation_roles')
+            ->where('user_id', $this->id)
+            ->where('organisation_id', $organisationId)
+            ->exists();
+    }
+
+    /**
      * Flush role cache when roles change
      *
      * @return void

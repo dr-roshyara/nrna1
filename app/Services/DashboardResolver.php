@@ -820,9 +820,12 @@ class DashboardResolver
     /**
      * Handle case when user has no active organisations or elections
      *
-     * Routes based on organisation_id:
-     * - org_id = 1 (platform/publicdigit) → welcome dashboard
-     * - org_id > 1 (custom organisation) → organisation page
+     * Routes based on EFFECTIVE organisation_id (considers pivot table):
+     * - org_id = 1 (platform/publicdigit) → welcome dashboard or dashboard (if onboarded)
+     * - org_id > 1 (custom organisation) → organisation page (only if user has valid pivot)
+     *
+     * Uses User::getEffectiveOrganisationId() to ensure we don't redirect to organisations
+     * where user has stale org_id but no valid pivot record.
      *
      * @param User $user
      * @return RedirectResponse
@@ -830,50 +833,21 @@ class DashboardResolver
     private function handleMissingOrganisation(User $user): RedirectResponse
     {
         try {
-            // CRITICAL: Always prefer platform organisation (id=1) to avoid stale pivot data
-            // Some users might have multiple pivot entries from deleted organisations
-            // We MUST use platform org if it exists, not just any first() entry
+            // CRITICAL FIX: Use effective organisation ID instead of raw organisation_id
+            // This prevents stale org_ids (user assigned to org 2 but no pivot for org 2)
+            // from causing 403 errors and wrong redirects
+            $effectiveOrgId = $user->getEffectiveOrganisationId();
 
-            // Try to get platform organisation pivot first
-            $userOrgRole = DB::table('user_organisation_roles')
-                ->where('user_id', $user->id)
-                ->where('organisation_id', 1)
-                ->first();
+            Log::debug('DashboardResolver: handleMissingOrganisation called', [
+                'user_id' => $user->id,
+                'raw_organisation_id' => $user->organisation_id,
+                'effective_organisation_id' => $effectiveOrgId,
+            ]);
 
-            // If no platform pivot, get any organisation (fallback)
-            if (!$userOrgRole) {
-                $userOrgRole = DB::table('user_organisation_roles')
-                    ->where('user_id', $user->id)
-                    ->first();
-            }
-
-            if (!$userOrgRole) {
-                // This should not happen - every user should have platform membership
-                Log::error('DashboardResolver: User has no organisation roles at all', [
-                    'user_id' => $user->id,
-                    'email' => $user->email,
-                ]);
-                return redirect()->route('dashboard.welcome');
-            }
-
-            // Get organisation details
-            $organisation = DB::table('organisations')
-                ->where('id', $userOrgRole->organisation_id)
-                ->first();
-
-            if (!$organisation) {
-                Log::error('DashboardResolver: Organisation not found', [
-                    'user_id' => $user->id,
-                    'organisation_id' => $userOrgRole->organisation_id,
-                ]);
-                return redirect()->route('dashboard.welcome');
-            }
-
-            // Route based on organisation type
-            if ($organisation->id == 1) {
-                // Platform user - check if they've been onboarded
+            // If effective org is platform (1) → welcome/dashboard based on onboarding
+            if ($effectiveOrgId == 1) {
                 if ($user->onboarded_at === null) {
-                    Log::info('DashboardResolver: Platform user not onboarded', [
+                    Log::info('DashboardResolver: Platform user not onboarded - redirecting to welcome', [
                         'user_id' => $user->id,
                         'email' => $user->email,
                         'destination' => 'dashboard.welcome',
@@ -881,8 +855,7 @@ class DashboardResolver
                     return redirect()->route('dashboard.welcome');
                 }
 
-                // Platform user already onboarded
-                Log::info('DashboardResolver: Platform user onboarded', [
+                Log::info('DashboardResolver: Platform user onboarded - redirecting to dashboard', [
                     'user_id' => $user->id,
                     'email' => $user->email,
                     'destination' => 'dashboard',
@@ -890,10 +863,24 @@ class DashboardResolver
                 return redirect()->route('dashboard');
             }
 
-            // Custom organisation - send to their organisation page
-            Log::info('DashboardResolver: User has custom org but no active elections', [
+            // Custom organisation (org_id > 1)
+            // Get organisation details
+            $organisation = DB::table('organisations')
+                ->where('id', $effectiveOrgId)
+                ->first();
+
+            if (!$organisation) {
+                Log::error('DashboardResolver: Organisation not found (effective org)', [
+                    'user_id' => $user->id,
+                    'effective_organisation_id' => $effectiveOrgId,
+                ]);
+                return redirect()->route('dashboard.welcome');
+            }
+
+            // Send to custom organisation page
+            Log::info('DashboardResolver: Redirecting to custom organisation', [
                 'user_id' => $user->id,
-                'organisation_id' => $organisation->id,
+                'effective_organisation_id' => $effectiveOrgId,
                 'organisation_slug' => $organisation->slug,
                 'destination' => 'organisations.show',
             ]);
