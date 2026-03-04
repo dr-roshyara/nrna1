@@ -112,6 +112,12 @@
           >
             {{ $t('navigation.faq') }}
           </Link>
+		    <Link
+            href="/security"
+            class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
+          >
+            {{ $t('navigation.security') }}
+          </Link>
         </div>
 
         <!-- Demo Link - Special CTA -->

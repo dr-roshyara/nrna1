@@ -14,33 +14,36 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * Set up the test environment.
-     * Create platform organisation that tests expect to exist.
+     * Create publicdigit (default) organisation that tests expect to exist.
      *
-     * Using ID=1 for platform organisation (natural auto_increment).
+     * Using ID=1 for publicdigit organisation (natural auto_increment).
+     * The User model boot method assigns newly registered users to this organisation.
      */
     protected function setUp(): void
     {
         parent::setUp();
 
-        // Create platform organisation as ID=1 (first entry with auto_increment)
-        // This is required for foreign key constraints in tests
+        // Create publicdigit organisation as ID=1 (first entry with auto_increment)
+        // This is required for:
+        // 1. User model boot method to find it when registering new users
+        // 2. Foreign key constraints in tests
         try {
             // Check if table exists first
             if (!Schema::hasTable('organisations')) {
                 return; // Table not created yet
             }
 
-            // Create or get platform organisation
+            // Create publicdigit organisation (the default org for all users)
             Organisation::firstOrCreate(
-                ['slug' => 'platform'],
+                ['slug' => 'publicdigit'],
                 [
-                    'name' => 'Platform',
-                    'type' => 'other',
+                    'name' => 'Public Digit',
+                    'type' => 'platform',
                 ]
             );
         } catch (\Exception $e) {
             // Log the error for debugging
-            \Log::error('Failed to create platform organisation: ' . $e->getMessage());
+            \Log::error('Failed to create publicdigit organisation: ' . $e->getMessage());
         }
     }
 }

@@ -209,6 +209,11 @@
         "title": "{electionName} | {organizationName} | Public Digit",
         "description": "Informationen zu {electionName} von {organizationName}. Sichere, transparente Wahlplattform mit vollständiger Audit-Trail.",
         "keywords": "{electionName}, {organizationName}, Wahlen, Abstimmungsergebnisse"
+      },
+      "security": {
+        "title": "Sichere und anonyme Online-Wahlen für Vereine | Public Digit",
+        "description": "Fünf-Schicht-Sicherheitsarchitektur schützt Ihre Wahlen. Vollständige Wählero Anonymität, kryptographische Verifizierung und Multi-Tenant-Isolation für Vereine, NGOs und Organisationen.",
+        "keywords": "sichere Online-Wahlen, anonyme Wahlen, Verein-Wahlen, Wahlsicherheit, digitale Wahlplattform, Wähler-Anonymität, sichere Abstimmungen, Wahlen für Vereine"
       }
     }
   },

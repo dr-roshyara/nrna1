@@ -1,0 +1,1 @@
+import{_ as s}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{t as o}from"./app-BcAu7cuP.js";const r={props:{posts:Object}};function e(p,c,t,n,a,_){return o(t.posts)}const m=s(r,[["render",e]]);export{m as default};

@@ -210,6 +210,11 @@
         "title": "{electionName} | {organizationName} | Public Digit",
         "description": "Election information for {electionName} by {organizationName}. Secure, transparent voting platform with full audit trail.",
         "keywords": "{electionName}, {organizationName}, voting, election results"
+      },
+      "security": {
+        "title": "Secure & Anonymous Online Voting for Associations | Public Digit",
+        "description": "Five-layer security architecture protecting your elections. Complete voter anonymity, cryptographic verification, and multi-tenant isolation for associations, NGOs, and organisations.",
+        "keywords": "secure online voting, anonymous voting, voting associations, election security, digital voting platform, voter anonymity, secure elections, voting for nonprofits"
       }
     }
   },

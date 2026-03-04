@@ -186,6 +186,9 @@ Route::get('/faq', function () {
     return Inertia::render('FAQ');
 })->name('faq');
 
+// Security page
+Route::get('/security', [App\Http\Controllers\SecurityPageController::class, 'show'])->name('security');
+
 // Route::get('/', function () {
 //     if( auth()->user()!=null ){ return Inertia::render('Dashboard/MainDashboard'); }
 

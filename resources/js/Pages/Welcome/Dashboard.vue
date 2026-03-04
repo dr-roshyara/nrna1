@@ -253,7 +253,7 @@
 <script>
 import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
 import OrganisationCreateModal from "@/Components/Organisation/OrganisationCreateModal.vue";
-import { useOrganisationCreation } from "@/composables/useOrganisationCreation";
+import { useOrganizationCreation } from "@/composables/useOrganisationCreation";
 import { provide } from 'vue';
 
 export default {
@@ -263,7 +263,6 @@ export default {
     ElectionHeader,
     OrganisationCreateModal,
   },
-
   props: {
     userName: String,
     userEmail: String,
@@ -274,11 +273,61 @@ export default {
     // Create and provide the organisation creation composable
     const organizationCreation = useOrganizationCreation();
 
+    // Destructure all properties for template use
+    const {
+      currentStep,
+      isModalOpen,
+      showEducation,
+      formData,
+      expandedSections,
+      validationErrors,
+      isSubmitting,
+      submissionError,
+      stepTitles,
+      openModal,
+      closeModal,
+      resetForm,
+      nextStep,
+      previousStep,
+      validateStep,
+      submitForm,
+      toggleSection,
+      trackOrganizationCreationStarted,
+      trackStepCompleted,
+      isFormStep,
+      canGoNext,
+      canGoPrevious,
+      progressPercentage,
+    } = organizationCreation;
+
     // Provide it to all child components (including modal)
     provide('organizationCreation', organizationCreation);
 
     return {
       organizationCreation,
+      currentStep,
+      isModalOpen,
+      showEducation,
+      formData,
+      expandedSections,
+      validationErrors,
+      isSubmitting,
+      submissionError,
+      stepTitles,
+      openModal,
+      closeModal,
+      resetForm,
+      nextStep,
+      previousStep,
+      validateStep,
+      submitForm,
+      toggleSection,
+      trackOrganizationCreationStarted,
+      trackStepCompleted,
+      isFormStep,
+      canGoNext,
+      canGoPrevious,
+      progressPercentage,
     };
   },
 

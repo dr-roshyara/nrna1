@@ -32,26 +32,26 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasOrganisation;
 
     /**
-     * Boot the model - convert legacy organisation_id=0 to platform org ID
+     * Boot the model - assign new users to publicdigit (default organisation)
      */
     protected static function boot()
     {
         parent::boot();
 
-        // When creating/updating a user, convert organisation_id=0 to platform org ID
+        // When creating/updating a user, assign default organisation (publicdigit, id=1)
         static::creating(function ($model) {
             if (!$model->organisation_id || $model->organisation_id === 0 || $model->organisation_id === '0') {
-                $platformOrg = Organisation::where('slug', 'platform')->first();
-                if ($platformOrg) {
-                    $model->organisation_id = $platformOrg->id;
+                $publicdigit = Organisation::where('slug', 'publicdigit')->first();
+                if ($publicdigit) {
+                    $model->organisation_id = $publicdigit->id;
                 } else {
-                    // Fallback: create platform org if it doesn't exist
-                    $platformOrg = Organisation::create([
-                        'name' => 'Platform',
-                        'slug' => 'platform',
-                        'type' => 'other',
+                    // Fallback: create publicdigit org if it doesn't exist
+                    $publicdigit = Organisation::create([
+                        'name' => 'Public Digit',
+                        'slug' => 'publicdigit',
+                        'type' => 'platform',
                     ]);
-                    $model->organisation_id = $platformOrg->id;
+                    $model->organisation_id = $publicdigit->id;
                 }
             }
         });
@@ -59,9 +59,9 @@ class User extends Authenticatable implements MustVerifyEmail
         static::updating(function ($model) {
             if ($model->isDirty('organisation_id')) {
                 if (!$model->organisation_id || $model->organisation_id === 0 || $model->organisation_id === '0') {
-                    $platformOrg = Organisation::where('slug', 'platform')->first();
-                    if ($platformOrg) {
-                        $model->organisation_id = $platformOrg->id;
+                    $publicdigit = Organisation::where('slug', 'publicdigit')->first();
+                    if ($publicdigit) {
+                        $model->organisation_id = $publicdigit->id;
                     }
                 }
             }
@@ -950,7 +950,7 @@ public function getVoterState(): string
     public function organisationRoles()
     {
         return $this->belongsToMany(Organisation::class, 'user_organisation_roles')
-                    ->withPivot('role', 'permissions')
+                    ->withPivot('role')
                     ->withTimestamps();
     }
 
@@ -1015,7 +1015,6 @@ public function getVoterState(): string
     public function electionCommissionRoles()
     {
         return $this->belongsToMany(Election::class, 'election_commission_members')
-                    ->withPivot('permissions')
                     ->withTimestamps();
     }
 

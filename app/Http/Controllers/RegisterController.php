@@ -49,31 +49,33 @@ class RegisterController extends Controller
         // ✅ CRITICAL FIX: Create pivot table entry immediately after user creation
         // This MUST happen BEFORE login to avoid 403 errors
         // The EnsureOrganisationMember middleware requires this pivot table entry
-        try {
-            // Always insert pivot entry for newly registered users
-            // Do NOT check if it exists - just insert directly
-            DB::table('user_organisation_roles')->insertOrIgnore([
+
+        // Ensure user has organisation_id assigned
+        $orgId = $user->organisation_id ?? 1;
+
+        // Check if pivot already exists (should not, but be safe)
+        $pivotExists = DB::table('user_organisation_roles')
+            ->where('user_id', $user->id)
+            ->where('organisation_id', $orgId)
+            ->exists();
+
+        if (!$pivotExists) {
+            // Create pivot entry
+            DB::table('user_organisation_roles')->insert([
                 'user_id' => $user->id,
-                'organisation_id' => $user->organisation_id ?? 1, // Fallback to platform org
+                'organisation_id' => $orgId,
                 'role' => 'member',
-                'assigned_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-
-            Log::info('User registration - pivot entry created', [
-                'user_id' => $user->id,
-                'organisation_id' => $user->organisation_id ?? 1,
-                'email' => $user->email,
-            ]);
-        } catch (\Exception $e) {
-            Log::error('User registration - failed to create pivot entry', [
-                'user_id' => $user->id,
-                'email' => $user->email,
-                'error' => $e->getMessage(),
-            ]);
-            // Don't fail registration - continue with login
         }
+
+        Log::info('User registration - pivot entry ensured', [
+            'user_id' => $user->id,
+            'organisation_id' => $orgId,
+            'email' => $user->email,
+            'pivot_exists' => $pivotExists,
+        ]);
 
         // ✅ CRITICAL: DO NOT auto-login after registration
         // Email verification MUST happen first (Fortify requirement)

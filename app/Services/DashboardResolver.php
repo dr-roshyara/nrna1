@@ -16,11 +16,21 @@ class DashboardResolver
      * Resolve user's dashboard based on roles and system state
      *
      * Resolution Priority (in order):
-     * 1. Check for active voting session → redirect to voting dashboard
-     * 2. First-time users (no roles/orgs) → welcome dashboard
-     * 3. Multiple roles → role selection page
-     * 4. Single role → role-specific dashboard
-     * 5. Legacy fallback → backward compatibility
+     * 1. ACTIVE VOTING SESSION → resume voting if in progress
+     * 2. ACTIVE ELECTION AVAILABLE → election dashboard if eligible
+     * 3. MISSING ORGANISATION → handle default vs custom org routing
+     * 4. EMAIL VERIFICATION → ensure email verified
+     * 5. NEW USER WELCOME → first-time users without roles/orgs
+     * 6. MULTIPLE ROLES → role selection page
+     * 7. SINGLE ROLE → role-specific dashboard
+     * 8. PLATFORM FALLBACK → no roles (backward compatibility)
+     *
+     * Eligibility Checks for Active Elections:
+     * - Organisation must exist in database
+     * - User must have active membership (user_organisation_roles)
+     * - Election must be active (status='active')
+     * - Current date within election date range
+     * - User must not have already voted
      *
      * Cache Strategy:
      * - Caches resolved dashboard for performance
@@ -51,31 +61,72 @@ class DashboardResolver
             }
         }
 
-        // PRIORITY 1: Check for active voting session
-        $votingDashboard = $this->checkActiveVotingSession($user);
-        if ($votingDashboard) {
-            $this->cacheResolution($user, $votingDashboard);
-            return $this->redirectToVoting($user, $votingDashboard);
+        // =============================================
+        // PRIORITY 1: ACTIVE VOTING SESSION
+        // User is in middle of voting → resume voting session first
+        // =============================================
+        if ($activeVoterSlug = $this->getActiveVoterSlug($user)) {
+            Log::info('DashboardResolver: Active voting session found - resuming', [
+                'user_id' => $user->id,
+                'voter_slug_id' => $activeVoterSlug->id,
+            ]);
+            $this->cacheResolution($user, route('voting.portal', ['voter_slug' => $activeVoterSlug->slug]));
+            return redirect()->route('voting.portal', ['voter_slug' => $activeVoterSlug->slug]);
         }
 
-        // PRIORITY 1.5: Check if user needs onboarding (email verified but not yet welcomed)
-        // After user verifies their email for the first time, show welcome page
-        if ($user->email_verified_at !== null && $user->onboarded_at === null) {
-            Log::info('DashboardResolver: User needs onboarding (just verified email)', [
+        // =============================================
+        // PRIORITY 2: ACTIVE ELECTION AVAILABLE
+        // User has eligible organisation AND active election exists
+        // =============================================
+        if ($activeElection = $this->getActiveElectionForUser($user)) {
+            Log::info('DashboardResolver: Active election found - user can vote', [
+                'user_id' => $user->id,
+                'election_id' => $activeElection->id,
+            ]);
+            $this->cacheResolution($user, route('election.dashboard', $activeElection->slug));
+            return redirect()->route('election.dashboard', $activeElection->slug);
+        }
+
+        // =============================================
+        // PRIORITY 3: HANDLE MISSING ORGANISATION/ELECTIONS
+        // Called when no active election found
+        // Routes based on organisation_id (default=1 or custom)
+        // =============================================
+        if (!$this->hasActiveOrganisations($user)) {
+            $response = $this->handleMissingOrganisation($user);
+            $this->cacheResolution($user, $response->getTargetUrl());
+            return $response;
+        }
+
+        // =============================================
+        // PRIORITY 4: EMAIL VERIFICATION
+        // Safety check - ensure email verified
+        // =============================================
+        if ($user->email_verified_at === null) {
+            Log::info('DashboardResolver: User email not verified', [
+                'user_id' => $user->id,
+            ]);
+            return redirect()->route('verification.notice');
+        }
+
+        // =============================================
+        // PRIORITY 5: NEW USER WELCOME
+        // Verified but no roles/commissions → welcome page
+        // =============================================
+        if ($this->isFirstTimeUser($user)) {
+            Log::info('DashboardResolver: First-time user - directing to welcome', [
                 'user_id' => $user->id,
                 'email' => $user->email,
             ]);
-            return redirect()->route('dashboard.welcome');
-        }
-
-        // PRIORITY 2: First-time users → Welcome Dashboard
-        if ($this->isFirstTimeUser($user)) {
             $response = $this->redirectToFirstTimeUser($user);
             $this->cacheResolution($user, $response->getTargetUrl());
             return $response;
         }
 
-        // PRIORITY 3: New system dashboard roles
+        // =============================================
+        // PRIORITY 6: MULTIPLE ROLES
+        // User has multiple dashboard roles - must choose
+        // =============================================
         $dashboardRoles = $this->getDashboardRoles($user);
 
         Log::info('DashboardResolver: Dashboard roles resolved', [
@@ -90,6 +141,10 @@ class DashboardResolver
             return $response;
         }
 
+        // =============================================
+        // PRIORITY 7: SINGLE ROLE
+        // User has exactly one role - route to role-specific dashboard
+        // =============================================
         if (count($dashboardRoles) === 1) {
             $role = reset($dashboardRoles);
             $response = $this->redirectByRole($user, $role);
@@ -97,7 +152,10 @@ class DashboardResolver
             return $response;
         }
 
-        // PRIORITY 4: Legacy fallback
+        // =============================================
+        // PRIORITY 8: PLATFORM USER FALLBACK
+        // No roles - direct to platform dashboard
+        // =============================================
         $response = $this->legacyFallback($user);
         $this->cacheResolution($user, $response->getTargetUrl());
         return $response;
@@ -644,5 +702,244 @@ class DashboardResolver
         ]);
 
         return redirect()->route('dashboard');
+    }
+
+    /**
+     * Check if user has an active election they can vote in
+     *
+     * Conditions (ALL must be true):
+     * 1. Organisation exists in database
+     * 2. User has active membership (user_organisation_roles)
+     * 3. Election is active (status='active')
+     * 4. Current date between start_date and end_date
+     * 5. User hasn't already voted in this election
+     *
+     * @param User $user
+     * @return ?object Election object or null
+     */
+    private function getActiveElectionForUser(User $user): ?object
+    {
+        try {
+            // =============================================
+            // STEP 1: Verify organisation exists AND user has active membership
+            // Exclude platform organisation (id=1)
+            // =============================================
+            $activeOrgs = DB::table('user_organisation_roles')
+                ->join('organisations', 'user_organisation_roles.organisation_id', '=', 'organisations.id')
+                ->where('user_organisation_roles.user_id', $user->id)
+                ->where('organisations.id', '!=', 1) // Exclude platform org
+                ->where('user_organisation_roles.role', 'member') // Active membership
+                ->select('organisations.*')
+                ->get();
+
+            if ($activeOrgs->isEmpty()) {
+                Log::debug('DashboardResolver: No active organisations found for user', [
+                    'user_id' => $user->id,
+                ]);
+                return null;
+            }
+
+            // =============================================
+            // STEP 2: Find active elections in these organisations
+            // =============================================
+            $orgIds = $activeOrgs->pluck('id')->toArray();
+
+            $activeElections = DB::table('elections')
+                ->whereIn('organisation_id', $orgIds)
+                ->where('status', 'active')
+                ->where('start_date', '<=', now())
+                ->where('end_date', '>=', now())
+                ->select('elections.*')
+                ->get();
+
+            if ($activeElections->isEmpty()) {
+                Log::debug('DashboardResolver: No active elections in user organisations', [
+                    'user_id' => $user->id,
+                    'organisation_ids' => $orgIds,
+                ]);
+                return null;
+            }
+
+            // =============================================
+            // STEP 3: Filter out elections where user already voted
+            // =============================================
+            foreach ($activeElections as $election) {
+                $hasVoted = DB::table('voter_slugs')
+                    ->where('user_id', $user->id)
+                    ->where('election_id', $election->id)
+                    ->whereNotNull('vote_completed_at')
+                    ->exists();
+
+                if (!$hasVoted) {
+                    Log::info('DashboardResolver: Found available election', [
+                        'user_id' => $user->id,
+                        'organisation_id' => $election->organisation_id,
+                        'election_id' => $election->id,
+                        'election_slug' => $election->slug,
+                    ]);
+                    return $election; // Return first election user hasn't voted in
+                }
+            }
+
+            Log::info('DashboardResolver: User voted in all active elections', [
+                'user_id' => $user->id,
+            ]);
+            return null; // Voted in all active elections
+
+        } catch (\Throwable $e) {
+            Log::warning('DashboardResolver: Error in getActiveElectionForUser', [
+                'user_id' => $user->id,
+                'error' => $e->getMessage(),
+            ]);
+            return null;
+        }
+    }
+
+    /**
+     * Check if user has an active voting session in progress
+     *
+     * An active session means:
+     * - Voter slug exists for user
+     * - Not expired (expires_at > now)
+     * - Vote not completed yet (vote_completed_at IS NULL)
+     * - User is in middle of steps 1-4 (code1_used_at OR has_agreed OR vote_submitted)
+     *
+     * @param User $user
+     * @return ?object VoterSlug object or null
+     */
+    private function getActiveVoterSlug(User $user): ?object
+    {
+        try {
+            return DB::table('voter_slugs')
+                ->where('user_id', $user->id)
+                ->where('expires_at', '>', now())
+                ->whereNull('vote_completed_at')  // Not finished voting
+                ->where(function($query) {
+                    $query->whereNotNull('code1_used_at')  // Started voting
+                          ->orWhereNotNull('has_agreed_to_vote_at')
+                          ->orWhereNotNull('vote_submitted_at');
+                })
+                ->orderBy('updated_at', 'desc')
+                ->first();
+        } catch (\Exception $e) {
+            Log::error('DashboardResolver: Error checking active voter slug', [
+                'user_id' => $user->id,
+                'error' => $e->getMessage(),
+            ]);
+            return null;
+        }
+    }
+
+    /**
+     * Helper to check if user has any voter slugs at all
+     *
+     * @param User $user
+     * @return bool
+     */
+    private function hasAnyVoterSlugs(User $user): bool
+    {
+        try {
+            return DB::table('voter_slugs')
+                ->where('user_id', $user->id)
+                ->exists();
+        } catch (\Exception $e) {
+            Log::error('DashboardResolver: Error checking voter slugs existence', [
+                'user_id' => $user->id,
+                'error' => $e->getMessage(),
+            ]);
+            return false;
+        }
+    }
+
+    /**
+     * Check if user has any active organisations (excluding platform)
+     *
+     * @param User $user
+     * @return bool
+     */
+    private function hasActiveOrganisations(User $user): bool
+    {
+        try {
+            return DB::table('user_organisation_roles')
+                ->where('user_id', $user->id)
+                ->where('organisation_id', '!=', 1) // Exclude platform
+                ->where('role', 'member')
+                ->exists();
+        } catch (\Exception $e) {
+            Log::error('DashboardResolver: Error checking active organisations', [
+                'user_id' => $user->id,
+                'error' => $e->getMessage(),
+            ]);
+            return false;
+        }
+    }
+
+    /**
+     * Handle case when user has no active organisations or elections
+     *
+     * Routes based on organisation_id:
+     * - org_id = 1 (platform/publicdigit) → welcome dashboard
+     * - org_id > 1 (custom organisation) → organisation page
+     *
+     * @param User $user
+     * @return RedirectResponse
+     */
+    private function handleMissingOrganisation(User $user): RedirectResponse
+    {
+        try {
+            // Check if user has any organisation role at all
+            $userOrgRole = DB::table('user_organisation_roles')
+                ->where('user_id', $user->id)
+                ->first();
+
+            if (!$userOrgRole) {
+                // This should not happen - every user should have platform membership
+                Log::error('DashboardResolver: User has no organisation roles at all', [
+                    'user_id' => $user->id,
+                    'email' => $user->email,
+                ]);
+                return redirect()->route('dashboard.welcome');
+            }
+
+            // Get organisation details
+            $organisation = DB::table('organisations')
+                ->where('id', $userOrgRole->organisation_id)
+                ->first();
+
+            if (!$organisation) {
+                Log::error('DashboardResolver: Organisation not found', [
+                    'user_id' => $user->id,
+                    'organisation_id' => $userOrgRole->organisation_id,
+                ]);
+                return redirect()->route('dashboard.welcome');
+            }
+
+            // Route based on organisation type
+            if ($organisation->id == 1) {
+                Log::info('DashboardResolver: User belongs to platform org only', [
+                    'user_id' => $user->id,
+                    'email' => $user->email,
+                    'destination' => 'dashboard.welcome',
+                ]);
+                return redirect()->route('dashboard.welcome');
+            }
+
+            // Custom organisation - send to their organisation page
+            Log::info('DashboardResolver: User has custom org but no active elections', [
+                'user_id' => $user->id,
+                'organisation_id' => $organisation->id,
+                'organisation_slug' => $organisation->slug,
+                'destination' => 'organisations.show',
+            ]);
+
+            return redirect()->route('organisations.show', $organisation->slug);
+
+        } catch (\Throwable $e) {
+            Log::error('DashboardResolver: Error in handleMissingOrganisation', [
+                'user_id' => $user->id,
+                'error' => $e->getMessage(),
+            ]);
+            return redirect()->route('dashboard.welcome');
+        }
     }
 }

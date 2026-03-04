@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "title": "Enterprise-Grade Sicherheit für demokratische Wahlen",
+    "subtitle": "Fünf unabhängige Sicherheitsebenen schützen jeden Stimmzettel vom Klick bis zur Auszählung",
+    "promise": "Ihre Stimme ist anonym. Ihre Wahl ist sicher. Ihre Ergebnisse sind überprüfbar.",
+    "ceo_tagline": "Vertraut von Vereinen, Verbänden und Unternehmen weltweit",
+    "ceo_description": "Führen Sie sichere Online-Wahlen durch, denen Ihre Mitglieder vertrauen. Null Kompromisse bei Anonymität, Sicherheit oder Überprüfbarkeit."
+  },
+  "architecture": {
+    "title": "Sicherheitsarchitektur",
+    "subtitle": "Fünf unabhängige Sicherheitsebenen schützen jeden Stimmzettel",
+    "image_alt": "Fünf-Ebenen-Sicherheitsarchitektur-Diagramm mit Anforderungsvalidierung, zeitlicher Validierung, Mandantenisolation, Geschäftslogik und Datenpersistenz"
+  },
+  "layers": {
+    "layer1": {
+      "title": "Anforderungsvalidierung",
+      "description": "Überprüft, ob der Stimmzettel existiert, zum Benutzer gehört und aktiv ist",
+      "explanation": "Wir prüfen, dass Ihr Stimmzettel echt ist, Ihnen gehört und nicht gestohlen oder deaktiviert wurde."
+    },
+    "layer2": {
+      "title": "Zeitliche Validierung",
+      "description": "Überprüft Sitzungsablauf und Wahlzeitpunkt",
+      "explanation": "Ihre Stimmabgabe-Sitzung läuft automatisch nach 24 Stunden ab, und Stimmen werden nur akzeptiert, wenn die Wahl offiziell offen ist."
+    },
+    "layer3": {
+      "title": "Goldene-Regel-Durchsetzung",
+      "description": "Stellt sicher, dass der Wähler der richtigen Organisation angehört",
+      "explanation": "Sie können nur in Wahlen Ihrer eigenen Organisation abstimmen. Wahlen anderer Organisationen sind für Sie völlig unsichtbar."
+    },
+    "layer4": {
+      "title": "Geschäftslogik",
+      "description": "Validiert Wahlregeln (eine Person, eine Stimme)",
+      "explanation": "Das System stellt sicher, dass Sie nur einmal abstimmen können, Ihr Code gültig ist und Sie echte Kandidaten auswählen."
+    },
+    "layer5": {
+      "title": "Datenpersistenz",
+      "description": "Speichert Stimmen anonym mit kryptographischem Beweis",
+      "explanation": "Wir können buchstäblich nicht sehen, wie Sie abgestimmt haben. Ihre Stimme wird ohne Verbindung zu Ihrer Identität gespeichert, aber Sie können dennoch überprüfen, dass sie gezählt wurde."
+    }
+  },
+  "what_means": "Das bedeutet:",
+  "bottom_line": "Fazit:",
+  "summary": "Fünf Sicherheitsebenen bedeuten, dass Ihre Stimme in jedem Schritt geschützt ist. Selbst wenn eine Ebene kompromittiert würde, würden die anderen vier Sie immer noch schützen.",
+  "pillars_title": "Sicherheitssäulen",
+  "pillars": {
+    "anonymity": {
+      "title": "Vollständige Anonymität",
+      "description": "Keine Wähler-IDs mit Stimmen gespeichert. Stimmen sind völlig anonym und dennoch überprüfbar.",
+      "tagline": "Sogar wir wissen nicht, wie Sie abgestimmt haben"
+    },
+    "verification": {
+      "title": "Kryptographische Verifizierung",
+      "description": "SHA256-Hashes beweisen, dass Stimmen gezählt wurden, ohne die Wähleridentität preiszugeben.",
+      "tagline": "Sie können überprüfen, ohne Ihre Stimme offenzulegen"
+    },
+    "isolation": {
+      "title": "Multi-Mandanten-Isolation",
+      "description": "Die Daten jeder Organisation sind vollständig getrennt und unabhängig.",
+      "tagline": "Ihre Daten bleiben in Ihrer Organisation"
+    }
+  },
+  "journey_title": "Wahlablauf",
+  "journey_subtitle": "Vollständiger Schutz durch fünf sichere Schritte",
+  "journey_image_alt": "Wahlablauf-Flussdiagramm mit fünf Sicherheitsprüfpunkten",
+  "step1": "1. Identitätsprüfung",
+  "step1_desc": "Ihr Link ist gültig",
+  "step2": "2. Zeitprüfung",
+  "step2_desc": "Sitzung nicht abgelaufen",
+  "step3": "3. Organisationsprüfung",
+  "step3_desc": "Richtige Wahl",
+  "step4": "4. Regelprüfung",
+  "step4_desc": "Kann abstimmen",
+  "step5": "5. Speicherung",
+  "step5_desc": "Anonym aber überprüfbar",
+  "trust_title": "Warum Sie uns vertrauen können",
+  "faq": {
+    "question1": {
+      "question": "Wie halten Sie meine Stimme anonym?",
+      "answer": "Wir speichern keine Wähleridentifikation mit Ihrer Stimme. Unsere Stimmtabelle hat keine user_id-Spalte. Stimmen enthalten nur Kandidatenauswahlen und werden nur durch kryptographische Hashes identifiziert, was Wähler-Stimmen-Verknüpfung mathematisch unmöglich macht."
+    },
+    "question2": {
+      "question": "Was verhindert doppelte Abstimmung?",
+      "answer": "Unser System erzwingt \"eine Person, eine Stimme\" durch mehrere Ebenen: Stimmcodes können nur einmal verwendet werden, Stimmzettelsitzungen sind an bestimmte Benutzer gebunden, und die Stimmhistorie wird verfolgt. Kein Code kann zweimal verwendet werden."
+    },
+    "question3": {
+      "question": "Können Organisationen die Daten anderer sehen?",
+      "answer": "Nein. Die Daten jeder Organisation sind auf Datenbankebene vollständig isoliert. Organisationen können nicht auf Daten anderer Organisationen, Wahlen, Wähler oder Ergebnisse zugreifen."
+    },
+    "question4": {
+      "question": "Wie kann ich überprüfen, dass meine Stimme gezählt wurde?",
+      "answer": "Sie erhalten unmittelbar nach der Stimmabgabe einen eindeutigen kryptographischen Hash Ihrer Stimme. Sie können überprüfen, dass dieser Hash in den endgültigen Ergebnissen enthalten ist, ohne Ihren Stimminhalt offenzulegen."
+    }
+  },
+  "cta": {
+    "demo": "Sichere Wahl starten",
+    "whitepaper": "Sicherheits-Whitepaper anzeigen"
+  },
+  "faq_title": "Häufig gestellte Fragen",
+  "badges": {
+    "security_tests": "36 Sicherheitstests",
+    "security_tests_desc": "Jede Sicherheitsfunktion getestet",
+    "anonymity": "100% Anonym",
+    "anonymity_desc": "Keine Wähler-ID in den Stimmzetteln",
+    "protection": "3-stufiger Schutz",
+    "protection_desc": "Unabhängige Sicherheitsebenen",
+    "coverage": "100% Testabdeckung",
+    "coverage_desc": "Branchenführende Testabdeckung"
+  }
+}

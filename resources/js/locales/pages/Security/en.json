@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "title": "Enterprise-Grade Security for Democratic Elections",
+    "subtitle": "Five independent security layers protect every vote from click to count",
+    "promise": "Your vote is anonymous. Your election is secure. Your results are verifiable.",
+    "ceo_tagline": "Trusted by associations, non-profits, and enterprises worldwide",
+    "ceo_description": "Run secure online elections that your members trust. Zero compromises on anonymity, security, or verifiability."
+  },
+  "architecture": {
+    "title": "Security Architecture",
+    "subtitle": "Five independent layers protect every vote",
+    "image_alt": "Five-layer security architecture diagram showing request validation, temporal validation, tenant isolation, business logic, and data persistence layers"
+  },
+  "layers": {
+    "layer1": {
+      "title": "Request Validation",
+      "description": "Verifies voting link exists, belongs to user, and is active",
+      "explanation": "We check that your voting link is real, belongs to you, and hasn't been stolen or deactivated."
+    },
+    "layer2": {
+      "title": "Temporal Validation",
+      "description": "Checks session expiration and election timing",
+      "explanation": "Your voting session automatically expires after 24 hours, and votes are only accepted when the election is officially open."
+    },
+    "layer3": {
+      "title": "Golden Rule Enforcement",
+      "description": "Ensures voter belongs to correct organization",
+      "explanation": "You can only vote in elections from your own organization. Other organizations' elections are completely invisible to you."
+    },
+    "layer4": {
+      "title": "Business Logic",
+      "description": "Validates voting rules (one person, one vote)",
+      "explanation": "The system ensures you can only vote once, your code is valid, and you're selecting real candidates."
+    },
+    "layer5": {
+      "title": "Data Persistence",
+      "description": "Stores votes anonymously with cryptographic proof",
+      "explanation": "We literally cannot see how you voted. Your vote is stored with no connection to your identity, but you can still verify it was counted."
+    }
+  },
+  "what_means": "What this means:",
+  "bottom_line": "The bottom line:",
+  "summary": "Five layers of security mean your vote is protected at every step. Even if one layer were compromised, the other four still protect you.",
+  "pillars_title": "Security Pillars",
+  "pillars": {
+    "anonymity": {
+      "title": "Complete Anonymity",
+      "description": "No voter IDs stored with votes. Votes are completely anonymous while still being verifiable.",
+      "tagline": "Even we don't know how you voted"
+    },
+    "verification": {
+      "title": "Cryptographic Verification",
+      "description": "SHA256 hashes prove votes were counted without revealing voter identity.",
+      "tagline": "You can verify without revealing your vote"
+    },
+    "isolation": {
+      "title": "Multi-Tenant Isolation",
+      "description": "Each organization's data is completely separated and independent.",
+      "tagline": "Your data stays with your organization"
+    }
+  },
+  "journey_title": "Voting Journey",
+  "journey_subtitle": "Complete protection through five secure steps",
+  "journey_image_alt": "Voting journey flowchart showing five security checkpoints",
+  "step1": "1. Identity Check",
+  "step1_desc": "Your link is valid",
+  "step2": "2. Timing Check",
+  "step2_desc": "Session not expired",
+  "step3": "3. Organization Check",
+  "step3_desc": "Right election",
+  "step4": "4. Rules Check",
+  "step4_desc": "Can vote",
+  "step5": "5. Storage",
+  "step5_desc": "Anonymous but verifiable",
+  "trust_title": "Why Trust Us",
+  "badges": {
+    "security_tests": "36 Security Tests",
+    "security_tests_desc": "Every security feature tested",
+    "anonymity": "100% Anonymous",
+    "anonymity_desc": "No voter ID stored with votes",
+    "protection": "3-Layer Protection",
+    "protection_desc": "Independent security layers",
+    "coverage": "100% Test Coverage",
+    "coverage_desc": "Industry-leading test coverage"
+  },
+  "faq_title": "Frequently Asked Questions",
+  "faq": {
+    "question1": {
+      "question": "How do you keep my vote anonymous?",
+      "answer": "We don't store any voter identification with your vote. Our votes table has no user_id column. Votes contain only candidate selections and are identified only by cryptographic hashes, making voter-vote linkage mathematically impossible."
+    },
+    "question2": {
+      "question": "What prevents someone from voting twice?",
+      "answer": "Our system enforces \"one person, one vote\" through multiple layers: voting codes are one-time use only, voting sessions are tied to specific users, and voting history is tracked. No code can be used twice."
+    },
+    "question3": {
+      "question": "Can organizations see each other's data?",
+      "answer": "No. Each organization's data is completely isolated at the database level. Organizations cannot cross-query or access other organizations' elections, voters, or results under any circumstances."
+    },
+    "question4": {
+      "question": "How can I verify my vote was counted?",
+      "answer": "You receive a unique cryptographic hash of your vote immediately after voting. You can verify this hash is included in the final results without revealing your vote contents to anyone else."
+    }
+  },
+  "cta": {
+    "demo": "Start Secure Election",
+    "whitepaper": "View Security Whitepaper"
+  }
+}

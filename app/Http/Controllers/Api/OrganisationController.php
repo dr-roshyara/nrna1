@@ -23,7 +23,7 @@ class OrganisationController extends Controller
      *
      * POST /organisations
      */
-    public function store(StoreOrganizationRequest $request): JsonResponse
+    public function store(StoreOrganisationRequest $request): JsonResponse
     {
         // Debug: Log that store() method was called
         error_log('🔵 OrganizationController::store() called at ' . date('Y-m-d H:i:s'));
@@ -148,7 +148,7 @@ class OrganisationController extends Controller
             ]);
 
             // CRITICAL: Always return JSON for errors (JSON requests or validation errors)
-            // The StoreOrganizationRequest->failedValidation() already throws JSON responses
+            // The StoreOrganisationRequest->failedValidation() already throws JSON responses
             // So this catch block is for unexpected server errors
             return response()->json([
                 'success' => false,

@@ -47,7 +47,7 @@ class MemberController extends Controller
         // Build query for organisation members
         $query = $organisation->users()
             ->select('users.id', 'users.name', 'users.email', 'users.state', 'users.created_at')
-            ->withPivot(['role', 'permissions', 'assigned_at']);
+            ->withPivot(['role']);
 
         // Apply filters
         if ($request->filled('name')) {
