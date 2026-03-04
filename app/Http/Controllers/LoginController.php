@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\DashboardResolver;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,10 +19,10 @@ class LoginController extends Controller
 
     public function show()
     {
-        // ✅ FIX: If already authenticated, redirect to dashboard
+        // ✅ FIX: If already authenticated, route to their dashboard
         // This prevents redirect loops when guest middleware is in effect
         if (auth()->check()) {
-            return redirect()->intended(route('electiondashboard'));
+            return app(DashboardResolver::class)->resolve(auth()->user());
         }
 
         return Inertia::render('Auth/Login', [
@@ -67,22 +68,19 @@ class LoginController extends Controller
         $user = Auth::user();
 
         // ✅ CRITICAL: Check email verification FIRST
-        // Unverified users must verify before accessing any protected pages
+        // Newly registered users MUST verify email before accessing dashboard
         if ($user->email_verified_at === null) {
             return redirect()->route('verification.notice')
                 ->with('status', 'Please verify your email address to continue.');
         }
 
-        // If user has an organisation, redirect to it; otherwise go to dashboard
-        if ($user->organisation_id) {
-            $organisation = \App\Models\Organisation::find($user->organisation_id);
-            if ($organisation) {
-                return redirect()->intended(route('organisations.show', $organisation->slug));
-            }
-        }
-
-        // Fallback to dashboard if no organisation
-        return redirect()->intended(route('electiondashboard'));
+        // ✅ Use DashboardResolver for intelligent post-login routing
+        // This handles:
+        // - Active voting sessions
+        // - Active elections
+        // - Onboarding status
+        // - Platform vs custom organisation routing
+        return app(DashboardResolver::class)->resolve($user);
     }
 
     public function destroy(Request $request)
