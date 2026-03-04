@@ -830,10 +830,22 @@ class DashboardResolver
     private function handleMissingOrganisation(User $user): RedirectResponse
     {
         try {
-            // Check if user has any organisation role at all
+            // CRITICAL: Always prefer platform organisation (id=1) to avoid stale pivot data
+            // Some users might have multiple pivot entries from deleted organisations
+            // We MUST use platform org if it exists, not just any first() entry
+
+            // Try to get platform organisation pivot first
             $userOrgRole = DB::table('user_organisation_roles')
                 ->where('user_id', $user->id)
+                ->where('organisation_id', 1)
                 ->first();
+
+            // If no platform pivot, get any organisation (fallback)
+            if (!$userOrgRole) {
+                $userOrgRole = DB::table('user_organisation_roles')
+                    ->where('user_id', $user->id)
+                    ->first();
+            }
 
             if (!$userOrgRole) {
                 // This should not happen - every user should have platform membership
