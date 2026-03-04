@@ -43,10 +43,12 @@ class DashboardResolver
      */
     public function resolve(User $user): RedirectResponse
     {
-        Log::info('DashboardResolver: Starting resolution', [
+        Log::info('🚀 PRIORITY CHECK START', [
             'user_id' => $user->id,
             'email' => $user->email,
-            'timestamp' => now()->toIso8601String(),
+            'email_verified' => !is_null($user->email_verified_at),
+            'onboarded_at' => $user->onboarded_at,
+            'organisation_id' => $user->organisation_id,
         ]);
 
         // =============================================
@@ -55,7 +57,7 @@ class DashboardResolver
         // This check comes BEFORE all other priorities for security
         // =============================================
         if ($user->email_verified_at === null) {
-            Log::info('DashboardResolver: User email not verified - redirecting', [
+            Log::info('📮 PRIORITY 1 HIT: Email not verified - redirecting to verification.notice', [
                 'user_id' => $user->id,
                 'email' => $user->email,
             ]);
@@ -78,45 +80,60 @@ class DashboardResolver
         // PRIORITY 2: ACTIVE VOTING SESSION
         // User is in middle of voting → resume voting session first
         // =============================================
-        if ($activeVoterSlug = $this->getActiveVoterSlug($user)) {
-            Log::info('DashboardResolver: Active voting session found - resuming', [
+        $activeVoterSlug = $this->getActiveVoterSlug($user);
+        if ($activeVoterSlug) {
+            Log::info('🗳️ PRIORITY 2 HIT: Active voting session found - resuming', [
                 'user_id' => $user->id,
                 'voter_slug_id' => $activeVoterSlug->id,
             ]);
             $this->cacheResolution($user, route('voting.portal', ['voter_slug' => $activeVoterSlug->slug]));
             return redirect()->route('voting.portal', ['voter_slug' => $activeVoterSlug->slug]);
         }
+        Log::debug('✗ PRIORITY 2 SKIPPED: No active voting session');
 
         // =============================================
         // PRIORITY 3: ACTIVE ELECTION AVAILABLE
         // User has eligible organisation AND active election exists
         // =============================================
-        if ($activeElection = $this->getActiveElectionForUser($user)) {
-            Log::info('DashboardResolver: Active election found - user can vote', [
+        $activeElection = $this->getActiveElectionForUser($user);
+        if ($activeElection) {
+            Log::info('🗳️ PRIORITY 3 HIT: Active election found - user can vote', [
                 'user_id' => $user->id,
                 'election_id' => $activeElection->id,
+                'election_slug' => $activeElection->slug,
             ]);
             $this->cacheResolution($user, route('election.dashboard', $activeElection->slug));
             return redirect()->route('election.dashboard', $activeElection->slug);
         }
+        Log::debug('✗ PRIORITY 3 SKIPPED: No active election for user');
 
         // =============================================
         // PRIORITY 4: HANDLE MISSING ORGANISATION/ELECTIONS
         // Called when no active election found
         // Routes based on organisation_id (default=1 or custom)
         // =============================================
-        if (!$this->hasActiveOrganisations($user)) {
+        $hasActiveOrgs = $this->hasActiveOrganisations($user);
+        Log::debug('PRIORITY 4 CHECK', ['user_id' => $user->id, 'has_active_orgs' => $hasActiveOrgs]);
+
+        if (!$hasActiveOrgs) {
+            Log::info('📍 PRIORITY 4 HIT: No active organisations - calling handleMissingOrganisation', [
+                'user_id' => $user->id,
+            ]);
             $response = $this->handleMissingOrganisation($user);
             $this->cacheResolution($user, $response->getTargetUrl());
             return $response;
         }
+        Log::debug('✗ PRIORITY 4 SKIPPED: User has active organisations');
 
         // =============================================
         // PRIORITY 5: NEW USER WELCOME
         // Verified but no roles/commissions → welcome page
         // =============================================
-        if ($this->isFirstTimeUser($user)) {
-            Log::info('DashboardResolver: First-time user - directing to welcome', [
+        $isFirstTime = $this->isFirstTimeUser($user);
+        Log::debug('PRIORITY 5 CHECK', ['user_id' => $user->id, 'is_first_time_user' => $isFirstTime]);
+
+        if ($isFirstTime) {
+            Log::info('👋 PRIORITY 5 HIT: First-time user - directing to welcome', [
                 'user_id' => $user->id,
                 'email' => $user->email,
             ]);
@@ -124,24 +141,26 @@ class DashboardResolver
             $this->cacheResolution($user, $response->getTargetUrl());
             return $response;
         }
+        Log::debug('✗ PRIORITY 5 SKIPPED: User is not first-time');
 
         // =============================================
         // PRIORITY 6: MULTIPLE ROLES
         // User has multiple dashboard roles - must choose
         // =============================================
         $dashboardRoles = $this->getDashboardRoles($user);
-
-        Log::info('DashboardResolver: Dashboard roles resolved', [
-            'user_id' => $user->id,
-            'dashboard_roles' => $dashboardRoles,
-            'role_count' => count($dashboardRoles),
-        ]);
+        Log::debug('PRIORITY 6 CHECK', ['user_id' => $user->id, 'dashboard_roles' => $dashboardRoles, 'role_count' => count($dashboardRoles)]);
 
         if (count($dashboardRoles) > 1) {
+            Log::info('🎭 PRIORITY 6 HIT: Multiple roles - directing to role selection', [
+                'user_id' => $user->id,
+                'dashboard_roles' => $dashboardRoles,
+                'role_count' => count($dashboardRoles),
+            ]);
             $response = $this->redirectToRoleSelection($user, $dashboardRoles);
             $this->cacheResolution($user, $response->getTargetUrl());
             return $response;
         }
+        Log::debug('✗ PRIORITY 6 SKIPPED: User does not have multiple roles');
 
         // =============================================
         // PRIORITY 7: SINGLE ROLE
@@ -149,15 +168,23 @@ class DashboardResolver
         // =============================================
         if (count($dashboardRoles) === 1) {
             $role = reset($dashboardRoles);
+            Log::info('👤 PRIORITY 7 HIT: Single role - routing by role', [
+                'user_id' => $user->id,
+                'role' => $role,
+            ]);
             $response = $this->redirectByRole($user, $role);
             $this->cacheResolution($user, $response->getTargetUrl());
             return $response;
         }
+        Log::debug('✗ PRIORITY 7 SKIPPED: User does not have single role');
 
         // =============================================
         // PRIORITY 8: PLATFORM USER FALLBACK
         // No roles - direct to platform dashboard
         // =============================================
+        Log::info('🏛️ PRIORITY 8 HIT: Default fallback - no roles detected', [
+            'user_id' => $user->id,
+        ]);
         $response = $this->legacyFallback($user);
         $this->cacheResolution($user, $response->getTargetUrl());
         return $response;
@@ -833,6 +860,22 @@ class DashboardResolver
     private function handleMissingOrganisation(User $user): RedirectResponse
     {
         try {
+            // DEBUG: Log what's happening in this method
+            Log::info('🔥 DEBUG - handleMissingOrganisation called', [
+                'user_id' => $user->id,
+                'email' => $user->email,
+                'raw_org_id' => $user->organisation_id,
+                'onboarded_at' => $user->onboarded_at,
+                'has_platform_pivot' => DB::table('user_organisation_roles')
+                    ->where('user_id', $user->id)
+                    ->where('organisation_id', 1)
+                    ->exists(),
+                'all_pivots' => DB::table('user_organisation_roles')
+                    ->where('user_id', $user->id)
+                    ->get(['organisation_id', 'role'])
+                    ->toArray(),
+            ]);
+
             // CRITICAL FIX: Use effective organisation ID instead of raw organisation_id
             // This prevents stale org_ids (user assigned to org 2 but no pivot for org 2)
             // from causing 403 errors and wrong redirects
@@ -847,7 +890,7 @@ class DashboardResolver
             // If effective org is platform (1) → welcome/dashboard based on onboarding
             if ($effectiveOrgId == 1) {
                 if ($user->onboarded_at === null) {
-                    Log::info('DashboardResolver: Platform user not onboarded - redirecting to welcome', [
+                    Log::info('✅ Platform user not onboarded - sending to welcome', [
                         'user_id' => $user->id,
                         'email' => $user->email,
                         'destination' => 'dashboard.welcome',
@@ -855,7 +898,7 @@ class DashboardResolver
                     return redirect()->route('dashboard.welcome');
                 }
 
-                Log::info('DashboardResolver: Platform user onboarded - redirecting to dashboard', [
+                Log::info('✅ Platform user onboarded - sending to dashboard', [
                     'user_id' => $user->id,
                     'email' => $user->email,
                     'destination' => 'dashboard',

@@ -153,6 +153,10 @@ class LoginResponse implements FortifyLoginResponse
 
         // Check cache first
         if ($cached = Cache::get($cacheKey)) {
+            Log::info('🎯 LoginResponse: Using cached dashboard URL', [
+                'user_id' => $user->id,
+                'cached_url' => $cached,
+            ]);
             $this->trackCacheHit($user);
             return redirect($cached);
         }
@@ -160,6 +164,12 @@ class LoginResponse implements FortifyLoginResponse
         // Resolve via DashboardResolver
         $redirect = $this->app->make(DashboardResolver::class)->resolve($user);
         $targetUrl = $redirect->getTargetUrl();
+
+        Log::info('🎯 LoginResponse: DashboardResolver returned redirect', [
+            'user_id' => $user->id,
+            'target_url' => $targetUrl,
+            'status_code' => $redirect->getStatusCode(),
+        ]);
 
         // Cache the result
         Cache::put($cacheKey, $targetUrl, $cacheTtl);
