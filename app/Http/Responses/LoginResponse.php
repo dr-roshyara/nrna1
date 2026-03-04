@@ -5,31 +5,29 @@ namespace App\Http\Responses;
 use Illuminate\Http\JsonResponse;
 use App\Services\DashboardResolver;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Contracts\Foundation\Application;
-
-// Conditionally import Fortify contract if available
-if (interface_exists(\Laravel\Fortify\Contracts\LoginResponse::class)) {
-    class_alias(\Laravel\Fortify\Contracts\LoginResponse::class, 'LoginResponseContract');
-}
+use Laravel\Fortify\Contracts\LoginResponse as FortifyLoginResponse;
 
 /**
  * LoginResponse
  *
- * Handles post-login user routing with:
+ * Implements Laravel Fortify's LoginResponse contract to handle post-login user routing with:
  * - Request ID tracking for audit trails
  * - 3-level fallback chain (Normal → Emergency Dashboard → Static HTML)
  * - Cache management with timeout protection
  * - Analytics logging and failure tracking
  * - Maintenance mode checking
+ * - Rate limiting per user
  *
  * This response determines which dashboard/page each user is routed to
  * after successful login based on their roles, organisations, and voting status.
  */
-class LoginResponse
+class LoginResponse implements FortifyLoginResponse
 {
     /**
      * Unique request ID for this login operation
@@ -82,11 +80,21 @@ class LoginResponse
      * @param \Illuminate\Http\Request $request
      * @return Response
      */
-    public function toResponse($request): Response
+    public function toResponse(Request $request): Response
     {
         $user = $request->user();
 
         $this->trackLoginStart($user, $request);
+
+        // Check rate limiting (prevent brute force after successful login)
+        if (!$this->checkRateLimit($user)) {
+            Log::warning('User login rate limit exceeded', [
+                'request_id' => $this->requestId,
+                'user_id' => $user->id,
+                'email' => $user->email,
+            ]);
+            return redirect()->route('dashboard')->with('error', 'Too many login attempts. Please try again later.');
+        }
 
         try {
             // CRITICAL: Check email verification FIRST
@@ -252,6 +260,37 @@ class LoginResponse
             ]);
 
         return redirect()->route(config('login-routing.maintenance.redirect_route', 'maintenance'));
+    }
+
+    /**
+     * Check if user has exceeded login rate limit
+     *
+     * Prevents brute force attacks by limiting login attempts per user.
+     * Allows 10 logins per hour per user.
+     *
+     * @param \App\Models\User $user
+     * @return bool true if within limit, false if exceeded
+     */
+    protected function checkRateLimit($user): bool
+    {
+        if (!config('login-routing.rate_limiting.enabled', true)) {
+            return true; // Rate limiting disabled
+        }
+
+        // Create cache key for this hour
+        $key = 'login_attempts:' . $user->id . ':' . now()->format('Y-m-d-H');
+        $maxAttempts = config('login-routing.rate_limiting.max_attempts', 10);
+        $window = config('login-routing.rate_limiting.window_minutes', 60) * 60;
+
+        // Increment attempt counter
+        $attempts = Cache::increment($key);
+
+        // Set expiry on first attempt
+        if ($attempts === 1) {
+            Cache::expire($key, $window);
+        }
+
+        return $attempts <= $maxAttempts;
     }
 
     /**

@@ -181,6 +181,30 @@ return [
     ],
 
     /**
+     * Rate Limiting Configuration
+     * Prevents brute force attacks and excessive login attempts
+     */
+    'rate_limiting' => [
+        /**
+         * Enable rate limiting for login attempts
+         * When enabled, users are limited to max_attempts logins within the time window
+         */
+        'enabled' => env('LOGIN_RATE_LIMITING_ENABLED', true),
+
+        /**
+         * Maximum login attempts allowed per user
+         * Within the window_minutes timeframe
+         */
+        'max_attempts' => env('LOGIN_RATE_LIMIT_ATTEMPTS', 10),
+
+        /**
+         * Time window in minutes for rate limiting
+         * Resets after this many minutes
+         */
+        'window_minutes' => env('LOGIN_RATE_LIMIT_WINDOW', 60),
+    ],
+
+    /**
      * Emergency Dashboard Configuration
      * Configuration for fallback emergency dashboard
      */
