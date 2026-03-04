@@ -55,6 +55,12 @@ class RegisterController extends Controller
             ?? DB::table('organisations')->where('slug', 'publicdigit')->value('id')
             ?? 1;
 
+        // Check if pivot already exists (from User::created() fallback)
+        $pivotExists = DB::table('user_organisation_roles')
+            ->where('user_id', $user->id)
+            ->where('organisation_id', $orgId)
+            ->exists();
+
         // Create pivot entry using insertOrIgnore (safe if User::created() already created it)
         // The User model has a fallback that creates pivot on created event
         // This handles both: RegisterController creates first, fallback creates if needed
