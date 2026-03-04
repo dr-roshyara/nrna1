@@ -27,13 +27,13 @@ class VerifyVoterSlug
             'user_id' => auth()->id(),
         ]);
 
-        // Load voter slug with essential relationships (optimized for performance)
-        // Uses selective columns for faster queries
-        // Bypass global tenant scope since we validate tenant context after loading
-        $voterSlug = VoterSlug::withoutGlobalScopes()
-            ->withEssentialRelations()
-            ->where('slug', $slugParam)
-            ->first();
+        // Handle both model-bound and string slug parameters
+        $voterSlug = $slugParam instanceof VoterSlug
+            ? $slugParam
+            : VoterSlug::withoutGlobalScopes()
+                ->withEssentialRelations()
+                ->where('slug', $slugParam)
+                ->first();
 
         // CHECK 1: Does slug exist?
         if (!$voterSlug) {

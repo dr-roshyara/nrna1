@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use App\Services\DemoElectionResolver;
 use App\Services\VoterSlugService;
 use App\Services\DemoElectionCreationService;
+use App\Models\UserOrganisationRole;
+use App\Observers\UserOrganisationObserver;
 
 class AppServiceProvider extends ServiceProvider
 {

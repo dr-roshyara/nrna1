@@ -20,6 +20,14 @@ class WelcomeDashboardController extends Controller
     {
         $user = Auth::user();
 
+        // ✅ Mark user as onboarded on first visit to welcome page
+        // This prevents redirect loop back to welcome page on subsequent logins
+        if ($user->onboarded_at === null) {
+            $user->update([
+                'onboarded_at' => now(),
+            ]);
+        }
+
         return Inertia::render('Welcome/Dashboard', [
             'userName' => $user->name,
             'userEmail' => $user->email,
