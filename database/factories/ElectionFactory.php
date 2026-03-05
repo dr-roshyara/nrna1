@@ -13,6 +13,7 @@ class ElectionFactory extends Factory
     public function definition()
     {
         return [
+            'organisation_id' => Organisation::getDefaultPlatform()->id,
             'name' => $this->faker->word(),
             'slug' => $this->faker->unique()->slug(),
             'description' => $this->faker->sentence(),
@@ -20,7 +21,6 @@ class ElectionFactory extends Factory
             'is_active' => true,
             'start_date' => now(),
             'end_date' => now()->addDays(7),
-            // organisation_id will be set by model boot() if not provided
         ];
     }
 
