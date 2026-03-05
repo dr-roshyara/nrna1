@@ -44,59 +44,21 @@ class ElectionController extends Controller
             ]);
         }
 
-        // Update user IP (store voting IP for audit trail)
-        $authUser->update(['voting_ip' => $ipAddress]);
+        // Note: IP tracking is handled elsewhere in the application
 
-        // Check if the ONE real election is active
-        $realElection = Election::where('type', 'real')
-            ->where('is_active', true)
-            ->first();
-
-        // Check if user has an active code with voting eligibility
-        $userCode = Code::where('user_id', $authUser->id)
-            ->where('can_vote_now', 1)
-            ->first();
-
-        // Election day: Real election active AND user is voter AND user is eligible
-        if ($realElection && $realElection->isCurrentlyActive() &&
-            $authUser->is_voter && $userCode) {
-            // Show voting page (skip dashboard, go directly to ballot)
-            return Inertia::render('Election/ElectionPage', [
-                'activeElection' => $realElection,
+        // Phase 6: Demo → Paid Flow
+        // If user has no tenant org, show demo dashboard with platform elections
+        if (!$authUser->hasTenantOrganisation()) {
+            return Inertia::render('demo.dashboard', [
                 'authUser' => $authUser,
                 'ipAddress' => $ipAddress,
             ]);
         }
 
-        // Non-election day OR not eligible → Show dashboard
-        $authUser->makeVisible(['is_voter', 'can_vote', 'has_voted', 'can_vote_now']);
-        $ballotAccess = $this->determineBallotAccess($authUser);
-
-        $votingStatus = null;
-        if ($ballotAccess['can_access']) {
-            $code = Code::where('user_id', $authUser->id)->first();
-
-            $votingStatus = [
-                'has_code' => $code !== null,
-                'can_vote_now' => $code ? (bool) $code->can_vote_now : false,
-                'has_voted' => $code ? (bool) $code->has_voted : false,
-                'voting_started_at' => $code ? $code->voting_started_at : null,
-                'voting_time_remaining' => $code && $code->voting_started_at ?
-                    max(0, ($code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30)) - \Carbon\Carbon::parse($code->voting_started_at)->diffInMinutes(now())) : 0,
-                'has_agreed_to_vote' => $code ? (bool) ($code->has_agreed_to_vote ?? false) : false
-            ];
-        }
-
-        $electionStatus = ElectionService::getElectionStatus();
-
-        return Inertia::render('Dashboard/ElectionDashboard', [
+        // User has their own organisation - show real dashboard
+        return Inertia::render('dashboard', [
             'authUser' => $authUser,
-            'ballotAccess' => $ballotAccess,
-            'votingStatus' => $votingStatus,
-            'electionStatus' => $electionStatus,
             'ipAddress' => $ipAddress,
-            'useSlugPath' => config('election.use_slug_path', false),
-            'realElectionSlug' => $realElection ? $realElection->slug : null
         ]);
     }
 
@@ -291,7 +253,7 @@ class ElectionController extends Controller
         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             return explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])[0];
         } else {
-            return $_SERVER['REMOTE_ADDR'];
+            return $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
         }
     }
 }

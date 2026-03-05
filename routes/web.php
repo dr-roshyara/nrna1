@@ -43,7 +43,8 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CommissionDashboardController;
 use App\Http\Controllers\VoterDashboardController;
 use App\Http\Controllers\WelcomeDashboardController;
-use App\Http\Controllers\Api\OrganisationController;
+use App\Http\Controllers\OrganisationController;
+use App\Http\Controllers\Api\OrganisationController as ApiOrganisationController;
 use App\Http\Controllers\Organisations\MemberImportController;
 use App\Http\Controllers\MemberController;
 

@@ -45,39 +45,33 @@ class RegisterController extends Controller
 
         event(new Registered($user));
 
-        // ✅ CRITICAL FIX: Create pivot table entry SYNCHRONOUSLY after user creation
-        // This MUST happen BEFORE redirect to avoid 403 errors
-        // The EnsureOrganisationMember middleware requires this pivot table entry
-        // Do NOT rely on event listener - it fails silently when organisation_id is null
+        // Phase 6: Demo → Paid Flow
+        // New user gets platform org membership and becomes demo user
 
-        // Resolve organisation_id with fallback
-        $orgId = $user->organisation_id
-            ?? DB::table('organisations')->where('slug', 'publicdigit')->value('id')
-            ?? 1;
+        DB::transaction(function () use ($user) {
+            // Get platform organisation
+            $platformOrg = \App\Models\Organisation::getDefaultPlatform();
 
-        // Check if pivot already exists (from User::created() fallback)
-        $pivotExists = DB::table('user_organisation_roles')
-            ->where('user_id', $user->id)
-            ->where('organisation_id', $orgId)
-            ->exists();
+            if (!$platformOrg) {
+                throw new \Exception('Platform organisation not found. Please ensure the platform org is created.');
+            }
 
-        // Create pivot entry using insertOrIgnore (safe if User::created() already created it)
-        // The User model has a fallback that creates pivot on created event
-        // This handles both: RegisterController creates first, fallback creates if needed
-        DB::table('user_organisation_roles')->insertOrIgnore([
-            'user_id' => $user->id,
-            'organisation_id' => $orgId,
-            'role' => 'member',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+            // Create pivot - user is MEMBER of platform org (not owner)
+            \App\Models\UserOrganisationRole::create([
+                'user_id' => $user->id,
+                'organisation_id' => $platformOrg->id,
+                'role' => 'member',
+            ]);
 
-        Log::info('User registration - pivot entry ensured', [
-            'user_id' => $user->id,
-            'organisation_id' => $orgId,
-            'email' => $user->email,
-            'pivot_already_existed' => $pivotExists,
-        ]);
+            // Set current org to platform so user sees demo elections
+            $user->update(['organisation_id' => $platformOrg->id]);
+
+            Log::info('User registration - platform membership created', [
+                'user_id' => $user->id,
+                'organisation_id' => $platformOrg->id,
+                'email' => $user->email,
+            ]);
+        });
 
         // ✅ CRITICAL: DO NOT auto-login after registration
         // Email verification MUST happen first (Fortify requirement)
