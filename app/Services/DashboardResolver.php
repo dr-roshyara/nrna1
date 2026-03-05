@@ -887,7 +887,7 @@ class DashboardResolver
      * - org_id = 1 (platform/publicdigit) → welcome dashboard or dashboard (if onboarded)
      * - org_id > 1 (custom organisation) → organisation page (only if user has valid pivot)
      *
-     * Uses User::getEffectiveOrganisationId() to ensure we don't redirect to organisations
+     * Checks belongsToOrganisation() to ensure we don't redirect to organisations
      * where user has stale org_id but no valid pivot record.
      *
      * @param User $user
@@ -912,10 +912,15 @@ class DashboardResolver
                     ->toArray(),
             ]);
 
-            // CRITICAL FIX: Use effective organisation ID instead of raw organisation_id
+            // CRITICAL FIX: Check if user has a valid pivot for their organisation_id
             // This prevents stale org_ids (user assigned to org 2 but no pivot for org 2)
             // from causing 403 errors and wrong redirects
-            $effectiveOrgId = $user->getEffectiveOrganisationId();
+            $effectiveOrgId = 1; // Default to platform
+
+            if ($user->organisation_id && $user->organisation_id > 1 && $user->belongsToOrganisation($user->organisation_id)) {
+                // User has a custom org AND a valid pivot record for it
+                $effectiveOrgId = $user->organisation_id;
+            }
 
             Log::debug('DashboardResolver: handleMissingOrganisation called', [
                 'user_id' => $user->id,

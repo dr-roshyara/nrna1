@@ -21,6 +21,12 @@ class UserFactory extends Factory
     /**
      * Define the model's default state.
      *
+     * NOTE: organisation_id is REQUIRED (NOT NULL foreign key constraint)
+     * You must either:
+     * 1. Use ->forOrganisation($org) method
+     * 2. Manually pass organisation_id => $org->id to create()
+     * 3. Wrap in User::factory()->forOrganisation(Organisation::factory()->create())->create()
+     *
      * @return array
      */
     public function definition()
@@ -31,6 +37,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
+            // organisation_id MUST be provided via forOrganisation() or create(['organisation_id' => ...])
         ];
     }
 

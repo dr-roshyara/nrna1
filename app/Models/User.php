@@ -43,42 +43,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $keyType = 'string';
     public $incrementing = false;
 
-    /**
-     * Boot the model - assign new users to publicdigit (default organisation)
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        // When creating/updating a user, assign default organisation (publicdigit, id=1)
-        static::creating(function ($model) {
-            if (!$model->organisation_id || $model->organisation_id === 0 || $model->organisation_id === '0') {
-                $publicdigit = Organisation::where('slug', 'publicdigit')->first();
-                if ($publicdigit) {
-                    $model->organisation_id = $publicdigit->id;
-                } else {
-                    // Fallback: create publicdigit org if it doesn't exist
-                    $publicdigit = Organisation::create([
-                        'name' => 'Public Digit',
-                        'slug' => 'publicdigit',
-                        'type' => 'platform',
-                    ]);
-                    $model->organisation_id = $publicdigit->id;
-                }
-            }
-        });
-
-        static::updating(function ($model) {
-            if ($model->isDirty('organisation_id')) {
-                if (!$model->organisation_id || $model->organisation_id === 0 || $model->organisation_id === '0') {
-                    $publicdigit = Organisation::where('slug', 'publicdigit')->first();
-                    if ($publicdigit) {
-                        $model->organisation_id = $publicdigit->id;
-                    }
-                }
-            }
-        });
-    }
 
     /**
      * The attributes that are mass assignable.
@@ -1087,37 +1051,6 @@ public function getVoterState(): string
     }
 
     /**
-     * Get the effective organisation ID for this user.
-     *
-     * Returns the user's assigned organisation_id only if they have a valid pivot record for it.
-     * Otherwise, returns the platform organisation ID (1).
-     *
-     * This prevents users with stale org_ids but no pivot records from being redirected to non-existent organisations.
-     *
-     * @return int The effective organisation ID (defaults to platform org 1)
-     */
-    public function getEffectiveOrganisationId(): int
-    {
-        \Log::debug('User: getEffectiveOrganisationId called', [
-            'user_id' => $this->id,
-            'organisation_id' => $this->organisation_id,
-            'belongsToOrganisation' => $this->belongsToOrganisation($this->organisation_id),
-            'pivot_records' => \DB::table('user_organisation_roles')
-                ->where('user_id', $this->id)
-                ->get(['organisation_id', 'role'])
-                ->toArray()
-        ]);
-        
-        // If user has a custom org (id > 1) AND they're actually a member, use that
-        if ($this->organisation_id > 1 && $this->belongsToOrganisation($this->organisation_id)) {
-            return $this->organisation_id;
-        }
-
-        // Otherwise, ALWAYS default to platform org (id=1)
-        return 1;
-    }
-
-    /**
      * Check if user belongs to a specific organisation.
      *
      * @param string $organisationId The organisation ID to check
@@ -1173,6 +1106,39 @@ public function getVoterState(): string
         \Illuminate\Support\Facades\Mail::send(
             new \App\Mail\VerifyEmailMail($this, $verificationUrl)
         );
+    }
+
+    /**
+     * Check if user has any tenant organisation
+     */
+    public function hasTenantOrganisation(): bool
+    {
+        return $this->organisations()
+            ->where('type', 'tenant')
+            ->exists();
+    }
+
+    /**
+     * Get the organisation where user is owner (their "real" org)
+     */
+    public function getOwnedOrganisation(): ?Organisation
+    {
+        return $this->organisations()
+            ->wherePivot('role', 'owner')
+            ->where('type', 'tenant')
+            ->first();
+    }
+
+    /**
+     * Switch user's current organisation
+     */
+    public function switchToOrganisation(Organisation $org): void
+    {
+        if (!$this->belongsToOrganisation($org->id)) {
+            throw new \Exception("Cannot switch to organisation you don't belong to");
+        }
+
+        $this->update(['organisation_id' => $org->id]);
     }
 
 }
