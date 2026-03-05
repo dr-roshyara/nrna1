@@ -126,14 +126,38 @@ class DashboardResolver
         Log::debug('✗ PRIORITY 4 SKIPPED: User has active organisations');
 
         // =============================================
-        // PRIORITY 5: NEW USER WELCOME
+        // PRIORITY 5: USER HAS ORGANISATION BUT NO ACTIVE ELECTION
+        // Redirect to organisation page if user has organisation roles
+        // =============================================
+        // Get user's first non-platform organisation
+        $orgRole = DB::table('user_organisation_roles')
+            ->where('user_id', $user->id)
+            ->where('organisation_id', '!=', 1)
+            ->first();
+        
+        if ($orgRole) {
+            $organisation = \App\Models\Organisation::find($orgRole->organisation_id);
+            if ($organisation) {
+                Log::info('🏢 PRIORITY 5 HIT: User has organisation - redirecting to organisation page', [
+                    'user_id' => $user->id,
+                    'organisation_id' => $organisation->id,
+                    'organisation_slug' => $organisation->slug,
+                ]);
+                $this->cacheResolution($user, route('organisations.show', $organisation->slug));
+                return redirect()->route('organisations.show', $organisation->slug);
+            }
+        }
+        Log::debug('✗ PRIORITY 5 SKIPPED: No organisation found or organisation is platform');
+
+        // =============================================
+        // PRIORITY 6: NEW USER WELCOME
         // Verified but no roles/commissions → welcome page
         // =============================================
         $isFirstTime = $this->isFirstTimeUser($user);
-        Log::debug('PRIORITY 5 CHECK', ['user_id' => $user->id, 'is_first_time_user' => $isFirstTime]);
+        Log::debug('PRIORITY 6 CHECK', ['user_id' => $user->id, 'is_first_time_user' => $isFirstTime]);
 
         if ($isFirstTime) {
-            Log::info('👋 PRIORITY 5 HIT: First-time user - directing to welcome', [
+            Log::info('👋 PRIORITY 6 HIT: First-time user - directing to welcome', [
                 'user_id' => $user->id,
                 'email' => $user->email,
             ]);
@@ -141,17 +165,17 @@ class DashboardResolver
             $this->cacheResolution($user, $response->getTargetUrl());
             return $response;
         }
-        Log::debug('✗ PRIORITY 5 SKIPPED: User is not first-time');
+        Log::debug('✗ PRIORITY 6 SKIPPED: User is not first-time');
 
         // =============================================
-        // PRIORITY 6: MULTIPLE ROLES
+        // PRIORITY 7: MULTIPLE ROLES
         // User has multiple dashboard roles - must choose
         // =============================================
         $dashboardRoles = $this->getDashboardRoles($user);
-        Log::debug('PRIORITY 6 CHECK', ['user_id' => $user->id, 'dashboard_roles' => $dashboardRoles, 'role_count' => count($dashboardRoles)]);
+        Log::debug('PRIORITY 7 CHECK', ['user_id' => $user->id, 'dashboard_roles' => $dashboardRoles, 'role_count' => count($dashboardRoles)]);
 
         if (count($dashboardRoles) > 1) {
-            Log::info('🎭 PRIORITY 6 HIT: Multiple roles - directing to role selection', [
+            Log::info('🎭 PRIORITY 7 HIT: Multiple roles - directing to role selection', [
                 'user_id' => $user->id,
                 'dashboard_roles' => $dashboardRoles,
                 'role_count' => count($dashboardRoles),
@@ -160,15 +184,15 @@ class DashboardResolver
             $this->cacheResolution($user, $response->getTargetUrl());
             return $response;
         }
-        Log::debug('✗ PRIORITY 6 SKIPPED: User does not have multiple roles');
+        Log::debug('✗ PRIORITY 7 SKIPPED: User does not have multiple roles');
 
         // =============================================
-        // PRIORITY 7: SINGLE ROLE
+        // PRIORITY 8: SINGLE ROLE
         // User has exactly one role - route to role-specific dashboard
         // =============================================
         if (count($dashboardRoles) === 1) {
             $role = reset($dashboardRoles);
-            Log::info('👤 PRIORITY 7 HIT: Single role - routing by role', [
+            Log::info('👤 PRIORITY 8 HIT: Single role - routing by role', [
                 'user_id' => $user->id,
                 'role' => $role,
             ]);
@@ -176,13 +200,13 @@ class DashboardResolver
             $this->cacheResolution($user, $response->getTargetUrl());
             return $response;
         }
-        Log::debug('✗ PRIORITY 7 SKIPPED: User does not have single role');
+        Log::debug('✗ PRIORITY 8 SKIPPED: User does not have single role');
 
         // =============================================
-        // PRIORITY 8: PLATFORM USER FALLBACK
+        // PRIORITY 9: PLATFORM USER FALLBACK
         // No roles - direct to platform dashboard
         // =============================================
-        Log::info('🏛️ PRIORITY 8 HIT: Default fallback - no roles detected', [
+        Log::info('🏛️ PRIORITY 9 HIT: Default fallback - no roles detected', [
             'user_id' => $user->id,
         ]);
         $response = $this->legacyFallback($user);
@@ -823,6 +847,7 @@ class DashboardResolver
 
     /**
      * Check if user has any active organisations (excluding platform)
+     * Active organisations are those where user has any role (member, admin, voter, commission, etc.)
      *
      * @param User $user
      * @return bool
@@ -833,7 +858,6 @@ class DashboardResolver
             $exists = DB::table('user_organisation_roles')
                 ->where('user_id', $user->id)
                 ->where('organisation_id', '!=', 1) // Exclude platform
-                ->where('role', 'member')
                 ->exists();
             
             Log::debug('DashboardResolver: hasActiveOrganisations check', [
@@ -841,6 +865,7 @@ class DashboardResolver
                 'exists' => $exists,
                 'organisation_roles' => DB::table('user_organisation_roles')
                     ->where('user_id', $user->id)
+                    ->where('organisation_id', '!=', 1)
                     ->get(['organisation_id', 'role'])
                     ->toArray()
             ]);
