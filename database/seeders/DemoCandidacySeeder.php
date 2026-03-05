@@ -28,34 +28,37 @@ class DemoCandidacySeeder extends Seeder
      */
     public function run()
     {
-        $demoElection = Election::where('type', 'demo')->first();
-
-        if (!$demoElection) {
-            $this->command->error('❌ Demo election not found. Run ElectionSeeder first.');
-            return;
-        }
+        // Get demo election by slug (more reliable than type)
+        $demoElection = Election::withoutGlobalScopes()
+            ->where('slug', 'demo-election')
+            ->firstOrFail();
 
         $this->command->info('');
         $this->command->info('🎬 Seeding Demo Candidates...');
         $this->command->info('Election: ' . $demoElection->name . ' (ID: ' . $demoElection->id . ')');
         $this->command->info('');
 
-        // Clear existing demo candidates (optional - remove if you want to preserve)
-        // DemoCandidacy::where('election_id', $demoElection->id)->delete();
-
         // Define posts and number of candidates for each
         $postsWithCounts = [
             'president' => 3,
             'vice_president' => 3,
             'secretary' => 3,
-            'treasurer' => 3,
-            'member_at_large' => 5,
         ];
 
         $totalCreated = 0;
 
-        // Generate candidates for each post using the factory
+        // Generate candidates for each post using the factory (idempotent via factory)
         foreach ($postsWithCounts as $postId => $count) {
+            // Check if candidates already exist for this post
+            $existingCount = DemoCandidacy::where('election_id', $demoElection->id)
+                ->where('post_id', $postId)
+                ->count();
+
+            if ($existingCount >= $count) {
+                $this->command->info("✓ Post '{$postId}' already has {$existingCount} candidates, skipping...");
+                continue;
+            }
+
             $this->command->info("Creating {$count} candidates for {$postId}...");
 
             DemoCandidacy::factory()
@@ -72,11 +75,6 @@ class DemoCandidacySeeder extends Seeder
         $this->command->info('✅ Demo candidates seeded successfully!');
         $this->command->info('   Total created: ' . $totalCreated . ' candidates');
         $this->command->info('   Storage: demo_candidacies table');
-        $this->command->info('');
-        $this->command->info('Demo candidates by post:');
-        foreach ($postsWithCounts as $postId => $count) {
-            $this->command->info("   - " . ucwords(str_replace('_', ' ', $postId)) . ": {$count} candidates");
-        }
         $this->command->info('');
     }
 }

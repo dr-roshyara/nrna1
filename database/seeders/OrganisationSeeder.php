@@ -21,16 +21,16 @@ class OrganisationSeeder extends Seeder
     {
         // Create Platform Organisation
         // This is the DEFAULT organisation for all users
+        // Use same search keys as UserFactory and TestCase to ensure idempotency
         Organisation::firstOrCreate(
-            ['slug' => 'platform'],
+            ['type' => 'platform', 'is_default' => true],
             [
-                'name' => 'Platform',
-                'type' => 'platform',
-                'is_default' => true,
+                'name' => 'PublicDigit',
+                'slug' => 'publicdigit',
             ]
         );
 
         $this->command->info('✅ Organisations seeded successfully!');
-        $this->command->info('   Platform - Default organisation (type=platform, is_default=true)');
+        $this->command->info('   Platform - Default organisation (type=platform, is_default=true, slug=publicdigit)');
     }
 }

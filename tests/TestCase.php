@@ -23,27 +23,27 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        // Create publicdigit organisation as ID=1 (first entry with auto_increment)
-        // This is required for:
-        // 1. User model boot method to find it when registering new users
-        // 2. Foreign key constraints in tests
+        // Create platform organisation with same search keys as OrganisationSeeder and UserFactory
+        // This prevents duplicate slug errors in tests.
+        // Uses UUID-compatible search keys: type='platform', is_default=true
         try {
             // Check if table exists first
             if (!Schema::hasTable('organisations')) {
                 return; // Table not created yet
             }
 
-            // Create publicdigit organisation (the default org for all users)
+            // Use same search keys as OrganisationSeeder and UserFactory
+            // to ensure idempotent creation and prevent duplicate slug violations
             Organisation::firstOrCreate(
-                ['slug' => 'publicdigit'],
+                ['type' => 'platform', 'is_default' => true],
                 [
-                    'name' => 'Public Digit',
-                    'type' => 'platform',
+                    'name' => 'PublicDigit',
+                    'slug' => 'publicdigit',
                 ]
             );
         } catch (\Exception $e) {
             // Log the error for debugging
-            \Log::error('Failed to create publicdigit organisation: ' . $e->getMessage());
+            \Log::error('Failed to create platform organisation: ' . $e->getMessage());
         }
     }
 }

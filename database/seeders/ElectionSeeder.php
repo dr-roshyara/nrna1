@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Election;
+use App\Models\Organisation;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
@@ -17,20 +18,21 @@ class ElectionSeeder extends Seeder
      *
      * Usage: php artisan db:seed --class=ElectionSeeder
      *
-     * Backward Compatibility:
-     * - First real election (ID=1) is the DEFAULT
-     * - Used when no election is explicitly selected
-     * - Ensures existing voting links continue to work
+     * Note: Elections belong to the Platform organisation, not a tenant.
+     * Uses UUID-based organisation lookup instead of hardcoded IDs.
      */
     public function run()
     {
+        // Get platform organisation (created by OrganisationSeeder)
+        $platform = Organisation::getDefaultPlatform();
+
         // DEMO ELECTION - For Testing
         // Features:
         // - All users can vote (no can_vote_now restriction)
         // - Data is separate from real elections (demo_votes table)
         // - Can be reset/cleared for testing
         // - Safe for testing voting workflows
-        // - Belongs to Platform organisation (ID=1)
+        // - Belongs to Platform organisation
         Election::withoutGlobalScopes()->firstOrCreate(
             ['slug' => 'demo-election'],
             [
@@ -40,7 +42,7 @@ class ElectionSeeder extends Seeder
                 'is_active' => true,
                 'start_date' => Carbon::now()->subDays(1),
                 'end_date' => Carbon::now()->addMonths(3),
-                'organisation_id' => 1, // Platform organisation
+                'organisation_id' => $platform->id,
             ]
         );
 
@@ -50,8 +52,7 @@ class ElectionSeeder extends Seeder
         // - Data stored in real votes/results tables
         // - Official election results
         // - Permanent audit trail
-        // DEFAULT: Used when no election explicitly selected (backward compatible)
-        // - Belongs to Platform organisation (ID=1)
+        // - Belongs to Platform organisation
         Election::withoutGlobalScopes()->firstOrCreate(
             ['slug' => '2024-general-election'],
             [
@@ -61,7 +62,7 @@ class ElectionSeeder extends Seeder
                 'is_active' => true,
                 'start_date' => Carbon::now()->subDays(1),
                 'end_date' => Carbon::now()->addWeeks(2),
-                'organisation_id' => 1, // Platform organisation
+                'organisation_id' => $platform->id,
             ]
         );
 
