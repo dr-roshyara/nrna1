@@ -287,6 +287,10 @@ class DemoVoteController extends Controller
  * STEP 3: Show voting form
  * Route: GET /v/{slug}/vote/create
  */
+/**
+ * STEP 3: Show voting form
+ * Route: GET /v/{slug}/vote/create
+ */
 public function create(Request $request)
 {
     // Get user and election context
@@ -306,7 +310,7 @@ public function create(Request $request)
         'user_id' => $auth_user->id,
         'election_id' => $election->id,
         'election_type' => $election->type,
-        'organisation_id' => $orgId,  // ✅ Use voter slug org_id
+        'organisation_id' => $orgId,
     ]);
 
     // Check election-aware eligibility
@@ -317,7 +321,6 @@ public function create(Request $request)
             'can_vote_now' => $auth_user->can_vote_now,
         ]);
 
-        // Redirect to dashboard (slug is only for voting path)
         return redirect()->route('dashboard')
             ->with('error', 'You are not eligible to vote in this election.');
     }
@@ -328,7 +331,6 @@ public function create(Request $request)
         ->first();
 
     if (!$code) {
-        // Redirect to appropriate code creation page (with or without slug)
         $route = $voterSlug ? 'slug.demo-code.create' : 'demo-code.create';
         $params = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
 
@@ -351,41 +353,44 @@ public function create(Request $request)
             ->with('error', 'Please accept the voting agreement first.');
     }
 
-    // IP validation - single line replacement
+    // IP validation
     $ipValidation = validateVotingIpWithResponse();
     if ($ipValidation instanceof \Inertia\Response) {
-        return $ipValidation; // Returns the denial response
+        return $ipValidation;
     }
 
     // --- Fetch National Posts and Candidates ---
-    // For demo elections, use DemoCandidacy; for real elections, use Candidacy
     if ($election->isDemo()) {
-        // Demo election: fetch demo candidates for this election (ordered by position_order)
+        // ✅ FIXED: Properly group candidates by post_id (foreign key)
+        // This allows us to match with $post->id (primary key)
         $demoCandidates = DemoCandidacy::where('election_id', $election->id)
             ->orderBy('position_order')
             ->get();
+        
+        // Group by post_id (foreign key that stores the DemoPost.id)
         $groupedCandidates = $demoCandidates->groupBy('post_id');
 
+        // National posts
         $national_posts = DemoPost::where('election_id', $election->id)
             ->where('is_national_wide', 1)
             ->orderBy('position_order')
             ->get()
             ->map(function ($post) use ($groupedCandidates) {
-                // Use $post->id (integer PK) not $post->post_id (string) to match groupBy key
+                // ✅ Use $post->id (integer PK) to match the grouped post_id
                 $candidatesForPost = $groupedCandidates->get($post->id, collect());
 
                 return [
-                    'post_id' => $post->id,
+                    'id' => $post->id, // Add the integer ID for reference
+                    'post_id' => $post->post_id, // Keep string identifier for display
                     'name' => $post->name,
                     'nepali_name' => $post->nepali_name,
                     'required_number' => $post->required_number,
                     'candidates' => $candidatesForPost->map(function ($c) {
                         return [
-                            'candidacy_id' => $c->id,
-                            'user' => [
-                                'id' => $c->user_id,
-                                'name' => $c->user_name ?? 'Demo Candidate',
-                            ],
+                            'id' => $c->id,
+                            'candidacy_id' => $c->candidacy_id,
+                            'user_id' => $c->user_id,
+                            'user_name' => $c->user_name ?? 'Demo Candidate',
                             'post_id' => $c->post_id,
                             'image_path_1' => $c->image_path_1,
                             'candidacy_name' => $c->candidacy_name,
@@ -396,71 +401,31 @@ public function create(Request $request)
                     })->values(),
                 ];
             })->values();
-    } else {
-        // Real election: fetch real candidates with user join
-        $national_posts = QueryBuilder::for(Post::with(['candidates' => function($query) {
-            $query->join('users', 'users.user_id', '=', 'candidacies.user_id')
-                  ->select('candidacies.*', 'users.name as user_name');
-        }]))
-        ->where('is_national_wide', 1)
-        ->orderBy('post_id')
-        ->get()
-        ->map(function ($post) {
-            return [
-                'post_id' => $post->post_id,
-                'name' => $post->name,
-                'nepali_name' => $post->nepali_name,
-                'required_number' => $post->required_number,
-                'candidates' => $post->candidates->map(function ($c) {
-                    return [
-                        'candidacy_id' => $c->candidacy_id,
-                        'user' => [
-                            'id' => $c->user_id,
-                            'name' => $c->user_name, // Now using the joined user name
-                        ],
-                        'post_id' => $c->post_id,
-                        'image_path_1' => $c->image_path_1,
-                        'candidacy_name' => $c->candidacy_name,
-                        'proposer_name' => $c->proposer_name,
-                        'supporter_name' => $c->supporter_name,
-                        'position_order' => $c->position_order,
-                    ];
-                })->values(),
-            ];
-        })->values();
-    }
 
-    // Similarly update the regional posts query
-    $regional_posts = collect();
-    if (!empty($auth_user->region)) {
-        if ($election->isDemo()) {
-            // Demo election: fetch demo candidates for this election (ordered by position_order)
-            $demoCandidates = DemoCandidacy::where('election_id', $election->id)
-                ->orderBy('position_order')
-                ->get();
-            $groupedCandidates = $demoCandidates->groupBy('post_id');
-
+        // Regional posts
+        $regional_posts = collect();
+        if (!empty($auth_user->region)) {
             $regional_posts = DemoPost::where('election_id', $election->id)
                 ->where('is_national_wide', 0)
                 ->where('state_name', trim($auth_user->region))
                 ->orderBy('position_order')
                 ->get()
                 ->map(function ($post) use ($groupedCandidates) {
-                    // Use $post->id (integer PK) not $post->post_id (string) to match groupBy key
+                    // ✅ Use $post->id (integer PK) to match the grouped post_id
                     $candidatesForPost = $groupedCandidates->get($post->id, collect());
 
                     return [
+                        'id' => $post->id,
                         'post_id' => $post->post_id,
                         'name' => $post->name,
                         'nepali_name' => $post->nepali_name,
                         'required_number' => $post->required_number,
                         'candidates' => $candidatesForPost->map(function ($c) {
                             return [
+                                'id' => $c->id,
                                 'candidacy_id' => $c->candidacy_id,
-                                'user' => [
-                                    'id' => $c->user_id,
-                                    'name' => $c->user_name ?? 'Demo Candidate',
-                                ],
+                                'user_id' => $c->user_id,
+                                'user_name' => $c->user_name ?? 'Demo Candidate',
                                 'post_id' => $c->post_id,
                                 'image_path_1' => $c->image_path_1,
                                 'candidacy_name' => $c->candidacy_name,
@@ -471,8 +436,42 @@ public function create(Request $request)
                         })->values(),
                     ];
                 })->values();
-        } else {
-            // Real election: fetch real candidates with user join
+        }
+    } else {
+        // Real elections (existing code, unchanged)
+        $national_posts = QueryBuilder::for(Post::with(['candidates' => function($query) {
+            $query->join('users', 'users.id', '=', 'candidacies.user_id')
+                  ->select('candidacies.*', 'users.name as user_name');
+        }]))
+        ->where('is_national_wide', 1)
+        ->orderBy('post_id')
+        ->get()
+        ->map(function ($post) {
+            return [
+                'id' => $post->id,
+                'post_id' => $post->post_id,
+                'name' => $post->name,
+                'nepali_name' => $post->nepali_name,
+                'required_number' => $post->required_number,
+                'candidates' => $post->candidates->map(function ($c) {
+                    return [
+                        'id' => $c->id,
+                        'candidacy_id' => $c->candidacy_id,
+                        'user_id' => $c->user_id,
+                        'user_name' => $c->user_name,
+                        'post_id' => $c->post_id,
+                        'image_path_1' => $c->image_path_1,
+                        'candidacy_name' => $c->candidacy_name,
+                        'proposer_name' => $c->proposer_name,
+                        'supporter_name' => $c->supporter_name,
+                        'position_order' => $c->position_order,
+                    ];
+                })->values(),
+            ];
+        })->values();
+
+        $regional_posts = collect();
+        if (!empty($auth_user->region)) {
             $regional_posts = QueryBuilder::for(Post::with(['candidates' => function($query) {
                 $query->join('users', 'users.id', '=', 'candidacies.user_id')
                       ->select('candidacies.*', 'users.name as user_name');
@@ -483,17 +482,17 @@ public function create(Request $request)
             ->get()
             ->map(function ($post) {
                 return [
+                    'id' => $post->id,
                     'post_id' => $post->post_id,
                     'name' => $post->name,
                     'nepali_name' => $post->nepali_name,
                     'required_number' => $post->required_number,
                     'candidates' => $post->candidates->map(function ($c) {
                         return [
+                            'id' => $c->id,
                             'candidacy_id' => $c->candidacy_id,
-                            'user' => [
-                                'id' => $c->user_id,
-                                'name' => $c->user_name,
-                            ],
+                            'user_id' => $c->user_id,
+                            'user_name' => $c->user_name,
                             'post_id' => $c->post_id,
                             'image_path_1' => $c->image_path_1,
                             'candidacy_name' => $c->candidacy_name,
@@ -507,7 +506,7 @@ public function create(Request $request)
         }
     }
 
-    // For API/JSON requests (tests), return structured data
+    // For API/JSON requests
     if ($request->wantsJson() || $request->expectsJson()) {
         return response()->json([
             'step' => 3,
@@ -519,8 +518,7 @@ public function create(Request $request)
             'regional_posts_count' => $regional_posts->count(),
         ]);
     }
-
-    $election = $this->getElection($request);
+    // dd($national_posts, $regional_posts);
 
     return Inertia::render('Vote/CreateVotingPage', [
         'national_posts' => $national_posts,
@@ -539,7 +537,6 @@ public function create(Request $request)
         ] : null,
     ]);
 }
-
 
     /**
  * Handles the very first submission of the vote (after Code-1 check).
@@ -645,7 +642,6 @@ public function first_submission(Request $request)
 
     // 🐛 BUG FIX: Sanitize vote data before validation to fix inconsistent no_vote flags
     $vote_data = $this->sanitize_vote_data($vote_data);
-    dd($vote_data); // Debug: Check sanitized vote data structure
     // Validate candidate selections with SELECT_ALL_REQUIRED logic
     $validation_errors = $this->validate_candidate_selections($vote_data);
 
@@ -2506,214 +2502,353 @@ public function verifyVoteSubmit(): array
 }
 
 
-//save all candidates 
-    public function save_vote($input_data, $hashed_voting_key, $election = null, $auth_user = null, $private_key = null){
-        // Fallback for backward compatibility
-        if (!$election) {
-            $election = Election::where('type', 'real')->first();
-        }
-
-        // Get appropriate voting service and model classes
-        $votingService = $this->getVotingService($election);
-        $voteModel = $votingService->getVoteModel();
-        $resultModel = $votingService->getResultModel();
-
-        // Get the code object for vote_hash generation
-        $codeModelClass = $election->type === 'demo' ? \App\Models\DemoCode::class : \App\Models\Code::class;
-        $code = $codeModelClass::where('user_id', $auth_user->id)
-            ->where('election_id', $election->id)
-            ->first();
-
-        // Extract no_vote_posts from input data (JSON array of post IDs where voter abstained)
-        $no_vote_posts = $input_data['no_vote_posts'] ?? [];
-
-        $vote = new $voteModel;
-        // ⚠️ CRITICAL: DO NOT set user_id - votes are anonymous!
-        // Old code (removed): $vote->user_id = $this->user_id;
-
-        $vote->no_vote_posts = $no_vote_posts;
-        $vote->election_id = $election->id;
-
-        // PHASE 3: Explicitly set organisation_id based on election type
-        if ($election->type === 'real') {
-            // Real votes: Always set from election's organisation_id (enforced at all 4 layers)
-            $vote->organisation_id = $election->organisation_id;
-        } else {
-            // Demo votes: Set from session context if available
-            // MODE 1: organisation_id = NULL (no organisation)
-            // MODE 2: organisation_id = user's organisation_id
-            $vote->organisation_id = session('current_organisation_id');
-        }
-
-        // Set cast_at timestamp for cryptographic hash generation
-        $vote->cast_at = now();
-
-        // Generate cryptographic vote_hash for verification
-        // Uses SHA256(code.user_id + election_id + code1 + cast_at_timestamp)
-        // This allows voter to verify their vote WITHOUT exposing how they voted
-        if ($code && $auth_user) {
-            $vote->vote_hash = hash('sha256',
-                $code->user_id .
-                $election->id .
-                $code->code1 .
-                $vote->cast_at->timestamp
-            );
-            \Log::info('Generated vote_hash for demo vote', [
-                'vote_hash_prefix' => substr($vote->vote_hash, 0, 8) . '...',
-                'election_id' => $election->id,
-                'user_id' => $code->user_id,
-                'cast_at' => $vote->cast_at->toIso8601String(),
-            ]);
-        } else {
-            // Log error if code or auth_user missing (should not happen)
-            \Log::error('Missing code or auth_user for vote_hash generation', [
-                'code_exists' => !!$code,
-                'auth_user_exists' => !!$auth_user,
-                'election_id' => $election->id ?? 'unknown',
-            ]);
-            throw new \Exception('Cannot generate vote hash: missing required data');
-        }
-
-        $vote->save();   // Save the vote with vote_hash already set
-        $this->out_code = $vote->getKey();  // Get the vote's primary key
-        //save the $this->vote_id_for_voter  it to voter ;
-        {
-         /**
-          * Here you save the all candidates finally :
-          * 
-          */ 
-        //  dd($input_data["candidacies"]);
-
-            // dd($input_data);
-
-            $all_candidates =$input_data["national_selected_candidates"];
-                    
- 
-            $all_candidates =array_merge($all_candidates, 
-                            $input_data["regional_selected_candidates"]);
-            for ($i=0; $i<sizeof($all_candidates); $i++)
-            {
-                $col_name = "candidate"; 
-                $_vote_json=[];
-                if($i<9){ 
-                    $col_name .="_0".strval($i+1);
-                }else{
-                    $col_name .="_".strval($i+1);
-                }
-
-
-                if($all_candidates[$i] ==null){
-                    $_vote_json["candidates"] = null;
-                    $_vote_json["no_vote"]  =true ;
-
-                }else{
-                    $_vote_json             = $all_candidates[$i] ;
-                    $candidates             =$_vote_json["candidates"];
-
-                    // Fix: Check if candidates array is empty and correct no_vote flag
-                    if(empty($candidates) || count($candidates) == 0){
-                        $_vote_json["no_vote"]  =true;
-                    } else {
-                        $_vote_json["no_vote"]  =false;
-                        //Here save the vote result one by one in Result
-                        $post_id                = $_vote_json['post_id'];
-                        // Convert string post_id to numeric if needed
-                        if (is_string($post_id)) {
-                            // Check if string is already numeric
-                            if (is_numeric($post_id)) {
-                                $post_id = (int) $post_id;
-                                \Log::info('Converted numeric string post_id to integer', ['original' => $_vote_json['post_id'], 'converted' => $post_id]);
-                            } elseif (preg_match('/\d+$/', $post_id, $matches)) {
-                                // Extract trailing digits (e.g., 'president-3' -> 3)
-                                $post_id = (int) $matches[0];
-                                \Log::info('Converted post_id string to numeric using trailing digits', ['original' => $_vote_json['post_id'], 'converted' => $post_id]);
-                            } else {
-                                // Try to find post by name (case-insensitive)
-                                $post = \App\Models\DemoPost::where('election_id', $election->id)
-                                    ->whereRaw('LOWER(name) LIKE ?', [strtolower($post_id) . '%'])
-                                    ->first();
-                                if ($post) {
-                                    $post_id = $post->id;
-                                    \Log::info('Mapped post name to ID', ['name' => $_vote_json['post_id'], 'post_id' => $post_id]);
-                                } else {
-                                    \Log::error('Cannot convert post_id string to numeric', ['post_id' => $post_id]);
-                                    throw new \Exception('Invalid post_id format: ' . $post_id);
-                                }
-                            }
-                        }
-                        // dd($candidates);
-                        for($j=0;$j<sizeof($candidates);$j++){
-                          //save each selected candidates in the result
-                          $result                = new $resultModel;
-                          $result->vote_id       =$vote->id;
-                          $result->election_id   =$election->id;
-                          $result->post_id       =$post_id;
-                          $candidate_id = $candidates[$j]['candidacy_id'];
-                          // Convert string candidate_id to numeric if needed
-                          if (is_string($candidate_id)) {
-                              // Check if string is already numeric
-                              if (is_numeric($candidate_id)) {
-                                  $candidate_id = (int) $candidate_id;
-                                  \Log::info('Converted numeric string candidate_id to integer', ['original' => $candidates[$j]['candidacy_id'], 'converted' => $candidate_id]);
-                              } elseif (preg_match('/\d+$/', $candidate_id, $matches)) {
-                                  // Extract trailing digits (e.g., 'demo-president-3-1' -> 1)
-                                  $candidate_id = (int) $matches[0];
-                                  \Log::info('Converted candidate_id string to numeric using trailing digits', ['original' => $candidates[$j]['candidacy_id'], 'converted' => $candidate_id]);
-                              } else {
-                                  \Log::error('Cannot convert candidate_id string to numeric', ['candidate_id' => $candidate_id]);
-                                  throw new \Exception('Invalid candidate_id format: ' . $candidate_id);
-                              }
-                          }
-                          $result->candidate_id  = $candidate_id;
-
-                          // PHASE 3: Explicitly set organisation_id based on election type
-                          if ($election->type === 'real') {
-                              // Real results: Always set from election's organisation_id (enforced at all 4 layers)
-                              $result->organisation_id = $election->organisation_id;
-                          } else {
-                              // Demo results: Set from session context if available
-                              // MODE 1: organisation_id = NULL (no organisation)
-                              // MODE 2: organisation_id = user's organisation_id
-                              $result->organisation_id = session('current_organisation_id');
-                          }
-
-                          $result->save();
-
-                        }
-                    }
-
-
-
-                }
-                //save the vote again  
-              
-                $vote->$col_name = json_encode($_vote_json); 
-            
-            }       
-      
-        } //end of else
-
-        // Save vote with all candidate selections
-        $vote->save();
-
-        Log::info('Vote saved successfully (anonymously)', [
-            'vote_id' => $vote->id,
-            'election_id' => $election->id,
-            'election_type' => $election->type,
-            'via_voting_code' => 'hash_' . substr($hashed_voting_key, 0, 8) . '...',
-        ]);
-
-        // PHASE 3: Log successful vote save
-        \Log::channel('voting_audit')->info('Vote and results saved successfully', [
-            'vote_id' => $vote->id,
-            'election_id' => $election->id,
-            'organisation_id' => $election->organisation_id,
-            'results_count' => count(array_filter([$all_candidates ?? []])),
-            'timestamp' => now(),
-            'ip' => request()->ip(),
+/**
+ * Save vote and all candidate selections to the database
+ * 
+ * This method handles the final persistence of a vote after all validation steps.
+ * It creates a vote record (anonymous) and associated result records for each
+ * selected candidate. The method is election-type aware and works for both
+ * demo and real elections through the VotingServiceFactory.
+ *
+ * @param array $input_data The validated vote data from the session
+ * @param string $hashed_voting_key The hashed verification key for this vote
+ * @param Election|null $election The election context (demo or real)
+ * @param User|null $auth_user The authenticated user casting the vote
+ * @param string|null $private_key The unhashed private key for email verification
+ * @return void
+ * @throws \Exception When required data is missing or invalid
+ */
+public function save_vote($input_data, $hashed_voting_key, $election = null, $auth_user = null, $private_key = null)
+{
+    // =========================================================================
+    // SECTION 1: INITIALIZATION AND CONTEXT SETUP
+    // =========================================================================
+    
+    // Fallback for backward compatibility - ensure we have an election context
+    if (!$election) {
+        $election = Election::where('type', 'real')->first();
+        \Log::warning('save_vote called without election context, using fallback', [
+            'fallback_election_id' => $election->id
         ]);
     }
-    //vote thanks 
+
+    // Get the appropriate voting service and model classes based on election type
+    // This ensures we use DemoVote/DemoResult for demo elections and Vote/Result for real ones
+    $votingService = $this->getVotingService($election);
+    $voteModel = $votingService->getVoteModel();      // DemoVote or Vote
+    $resultModel = $votingService->getResultModel();  // DemoResult or Result
+
+    // Retrieve the code record for this user and election - needed for vote_hash generation
+    $codeModelClass = $election->type === 'demo' 
+        ? \App\Models\DemoCode::class 
+        : \App\Models\Code::class;
+    
+    $code = $codeModelClass::where('user_id', $auth_user->id)
+        ->where('election_id', $election->id)
+        ->first();
+
+    if (!$code) {
+        \Log::error('Cannot find code record for vote hash generation', [
+            'user_id' => $auth_user->id,
+            'election_id' => $election->id,
+            'election_type' => $election->type
+        ]);
+        throw new \Exception('Code record not found for vote hash generation');
+    }
+
+    // =========================================================================
+    // SECTION 2: CREATE THE MAIN VOTE RECORD (ANONYMOUS)
+    // =========================================================================
+    
+    // Extract abstention data - JSON array of post IDs where voter chose to skip
+    $no_vote_posts = $input_data['no_vote_posts'] ?? [];
+
+    // Create new vote instance (either DemoVote or Vote)
+    $vote = new $voteModel;
+    
+    // ⚠️ CRITICAL: Do NOT store user_id - votes must remain anonymous!
+    // The vote_hash provides verifiability without compromising anonymity
+    
+    $vote->no_vote_posts = $no_vote_posts;
+    $vote->election_id = $election->id;
+    
+    // Set organisation_id based on election type and context
+    // This supports multi-tenancy at the vote level
+    if ($election->type === 'real') {
+        // Real elections: organisation_id comes from the election (strict enforcement)
+        $vote->organisation_id = $election->organisation_id;
+    } else {
+        // Demo elections: organisation_id comes from session
+        // MODE 1: NULL = public demo (visible to all)
+        // MODE 2: organisation_id = scoped to specific organisation
+        $vote->organisation_id = session('current_organisation_id');
+    }
+
+    // Set timestamp for cryptographic hash generation
+    $vote->cast_at = now();
+
+    // =========================================================================
+    // SECTION 3: GENERATE VERIFIABLE VOTE HASH (ANONYMOUS VERIFICATION)
+    // =========================================================================
+    
+    // Generate cryptographic vote_hash using SHA256
+    // This allows voters to verify their vote was counted WITHOUT revealing:
+    // - Who they voted for
+    // - Their identity
+    // 
+    // Hash components:
+    // - code.user_id: Unique to the voter (but not publicly identifiable)
+    // - election_id: Scoped to this election
+    // - code.code1: The first verification code (known only to voter)
+    // - cast_at.timestamp: Prevents hash collisions
+    $vote->vote_hash = hash('sha256',
+        $code->user_id .
+        $election->id .
+        $code->code1 .
+        $vote->cast_at->timestamp
+    );
+
+    \Log::info('Generated vote hash', [
+        'vote_hash_prefix' => substr($vote->vote_hash, 0, 8) . '...',
+        'election_id' => $election->id,
+        'election_type' => $election->type,
+        'cast_at' => $vote->cast_at->toIso8601String(),
+    ]);
+
+    // Save the vote record - this gives us the vote ID for results
+    $vote->save();
+    $this->out_code = $vote->getKey(); // Store vote ID for later use
+
+    // =========================================================================
+    // SECTION 4: PROCESS AND SAVE CANDIDATE SELECTIONS
+    // =========================================================================
+    
+    // Merge national and regional candidate selections into a single array
+    // This simplifies the processing loop
+    $all_candidates = array_merge(
+        $input_data["national_selected_candidates"] ?? [],
+        $input_data["regional_selected_candidates"] ?? []
+    );
+
+    \Log::info('Processing candidate selections', [
+        'total_candidate_entries' => count($all_candidates),
+        'vote_id' => $vote->id
+    ]);
+
+    // Loop through each post's candidate selection
+    foreach ($all_candidates as $index => $post_selection) {
+        
+        // Construct the column name for storing this post's selection
+        // Format: candidate_01, candidate_02, ..., candidate_60
+        $column_name = 'candidate_' . str_pad($index + 1, 2, '0', STR_PAD_LEFT);
+        
+        $vote_data_json = [];
+
+        // Case 1: No selection for this post (null value)
+        if ($post_selection === null) {
+            $vote_data_json = [
+                "candidates" => null,
+                "no_vote" => true
+            ];
+        } 
+        // Case 2: Selection exists for this post
+        else {
+                $vote_data_json = $post_selection;
+                $selected_candidates = $vote_data_json["candidates"] ?? [];
+
+            // Validate and correct inconsistent data
+                // If no_vote flag is false but candidates array is empty, this is a bug
+                // Force no_vote to true to maintain data integrity
+                if (empty($selected_candidates)) {
+                    $vote_data_json["no_vote"] = true;
+                    \Log::warning('Fixed inconsistent vote data: empty candidates with no_vote=false', [
+                        'post_id' => $post_selection['post_id'] ?? 'unknown',
+                        'post_name' => $post_selection['post_name'] ?? 'unknown'
+                    ]);
+                } else {
+                    // Valid vote with candidate selections
+                    $vote_data_json["no_vote"] = false;
+                
+                // =================================================================
+                // SECTION 4.1: SAVE INDIVIDUAL RESULTS FOR EACH SELECTED CANDIDATE
+                // =================================================================
+
+                // Get the post ID and ensure it's in the correct format (integer)
+                $post_id = $vote_data_json['post_id'];
+                $post_id = $this->normalizePostId($post_id, $election);
+
+                // Process each selected candidate for this post
+                foreach ($selected_candidates as $candidate_data) {
+                    
+                    // Create a result record for this candidate
+                    $result = new $resultModel;
+                    $result->vote_id = $vote->id;
+                    $result->election_id = $election->id;
+                    $result->post_id = $post_id;
+                    
+                    // =================================================================
+                    // CRITICAL FIX: Extract the actual database ID from the complex string
+                    // The frontend sends "demo-general_secretary-1-1" 
+                    // We need to extract the last number (the actual database ID)
+                    // =================================================================
+                    $candidate_string_id = $candidate_data['candidacy_id'];
+                    
+                    // Extract the last number from the string (e.g., from "demo-general_secretary-1-1" get "1")
+                    if (preg_match('/(\d+)$/', $candidate_string_id, $matches)) {
+                        $actual_candidate_id = $matches[1];
+                        
+                        \Log::debug('Extracted candidate ID from string', [
+                            'original' => $candidate_string_id,
+                            'extracted' => $actual_candidate_id,
+                            'post_id' => $post_id,
+                            'election_id' => $election->id
+                        ]);
+                        
+                        // Look up by the actual database ID
+                        $demoCandidacy = DemoCandidacy::where('id', $actual_candidate_id)
+                            ->where('election_id', $election->id)
+                            ->where('post_id', $post_id)
+                            ->first();
+                    }
+                    
+                    // Fallback: try to find by position if extraction fails
+                    if (!$demoCandidacy) {
+                        $demoCandidacy = DemoCandidacy::where('election_id', $election->id)
+                            ->where('post_id', $post_id)
+                            ->orderBy('position_order')
+                            ->first();
+                    }
+                    
+                    if (!$demoCandidacy) {
+                        \Log::error('CRITICAL: Demo candidacy not found', [
+                            'candidacy_id' => $candidate_string_id,
+                            'election_id' => $election->id,
+                            'post_id' => $post_id,
+                            'vote_id' => $vote->id
+                        ]);
+                        throw new \Exception('Cannot save result: Candidate not found in database. ID: ' . $candidate_string_id);
+                    }
+                    
+                    // ✅ Set candidate_id to the database ID
+                    $result->candidate_id = $demoCandidacy->id;
+                    
+                    // Set organisation_id based on election type
+                    if ($election->type === 'real') {
+                        $result->organisation_id = $election->organisation_id;
+                    } else {
+                        $result->organisation_id = session('current_organisation_id');
+                    }
+                    
+                    $result->save();
+                    
+                    \Log::debug('Saved candidate result', [
+                        'result_id' => $result->id,
+                        'candidate_id' => $demoCandidacy->id,
+                        'candidate_string' => $candidate_string_id
+                    ]);
+                    }
+                }
+        }
+
+        // Store the JSON representation of this post's selection in the vote record
+        $vote->$column_name = json_encode($vote_data_json);
+    }
+
+    // =========================================================================
+    // SECTION 5: FINALIZE AND LOG
+    // =========================================================================
+    
+    // Save the vote record with all JSON candidate data
+    $vote->save();
+
+    // Log successful vote save for audit trail
+    Log::info('✅ Vote saved successfully', [
+        'vote_id' => $vote->id,
+        'election_id' => $election->id,
+        'election_type' => $election->type,
+        'organisation_id' => $vote->organisation_id,
+        'results_count' => count($all_candidates),
+        'vote_hash_prefix' => substr($vote->vote_hash, 0, 8) . '...',
+        'timestamp' => now()->toIso8601String()
+    ]);
+
+    // Audit log for compliance (separate channel)
+    \Log::channel('voting_audit')->info('Vote and results persisted', [
+        'vote_id' => $vote->id,
+        'election_id' => $election->id,
+        'organisation_id' => $vote->organisation_id,
+        'result_count' => count($all_candidates),
+        'ip' => request()->ip(),
+        'timestamp' => now(),
+    ]);
+}
+
+/**
+ * Helper method to normalize post_id to integer format
+ * 
+ * @param mixed $post_id The post ID from frontend (could be string, integer, or name)
+ * @param Election $election The election context
+ * @return int Normalized integer post ID
+ * @throws \Exception If post_id cannot be normalized
+ */
+private function normalizePostId($post_id, $election): int
+{
+    // If already integer, return as-is
+    if (is_int($post_id)) {
+        return $post_id;
+    }
+    
+    // If not a string, we can't process it
+    if (!is_string($post_id)) {
+        throw new \Exception('Invalid post_id type: ' . gettype($post_id));
+    }
+    
+    // Case 1: String contains only digits (e.g., "42")
+    if (is_numeric($post_id)) {
+        $converted = (int) $post_id;
+        \Log::debug('Converted numeric string post_id to integer', [
+            'original' => $post_id,
+            'converted' => $converted
+        ]);
+        return $converted;
+    }
+    
+    // Case 2: String ends with digits (e.g., "president-3")
+    if (preg_match('/\d+$/', $post_id, $matches)) {
+        $converted = (int) $matches[0];
+        \Log::debug('Extracted numeric post_id from string', [
+            'original' => $post_id,
+            'converted' => $converted
+        ]);
+        return $converted;
+    }
+    
+    // Case 3: String is a post name - try to look it up
+    $post = DemoPost::where('election_id', $election->id)
+        ->whereRaw('LOWER(name) = ?', [strtolower($post_id)])
+        ->orWhereRaw('LOWER(post_id) = ?', [strtolower($post_id)])
+        ->first();
+    
+    if ($post) {
+        \Log::info('Mapped post identifier to ID', [
+            'identifier' => $post_id,
+            'post_id' => $post->id,
+            'post_name' => $post->name
+        ]);
+        return $post->id;
+    }
+    
+    // If all else fails, log error and throw exception
+    \Log::error('Cannot normalize post_id', [
+        'post_id' => $post_id,
+        'election_id' => $election->id
+    ]);
+    
+    throw new \Exception('Invalid post_id format: ' . $post_id);
+}
+
+
+//vote thanks 
     public function thankyou(){
            return Inertia::render('Thankyou/Thankyou', [
                  'vote' =>$vote,

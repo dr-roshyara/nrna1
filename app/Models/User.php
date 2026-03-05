@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Traits\HasOrganisation;
+use App\Traits\HasAuditFields;
 
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 //models
 use App\Models\Vote;
+use App\Models\Result;
 use App\Models\DeligateVote;
 use \App\Models\Candidacy;
 use App\Models\File;
@@ -32,6 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use HasRoles;
     use HasOrganisation;
+    use HasAuditFields;
 
     /**
      * Boot the model - assign new users to publicdigit (default organisation)
@@ -208,15 +211,14 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function candidacies()
 {
-    // If 'post_id' is the foreign key in Candidacy and 'post_id' is the key in Post:
-    return $this->hasMany(\App\Models\Candidacy::class, 'post_id', 'post_id');
+    return $this->hasMany(Candidacy::class, 'user_id', 'id');
 }
 
     /**
      * Each user can have one and only candidacy
      */
        public function candidacy(){
-           return $this->hasone(candidacy::class);
+           return $this->hasOne(Candidacy::class, 'user_id', 'id')->where('status', 'approved');
        }
        /**
         * Assignments and Roles A user can be assigned to many roles
@@ -253,6 +255,13 @@ class User extends Authenticatable implements MustVerifyEmail
       */
       public function code(){
           return $this->hasOne(Code::class);
+      }
+
+     /**
+      * Get all codes for this user (user can have multiple codes)
+      */
+      public function codes(){
+          return $this->hasMany(Code::class);
       }
       /**
       * Each user has extacly one code row
@@ -978,6 +987,16 @@ public function getVoterState(): string
         return $this->belongsToMany(Organisation::class, 'user_organisation_roles')
                     ->withPivot('role')
                     ->withTimestamps();
+    }
+
+    /**
+     * Alias for organisationRoles() - returns organisations user belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function organisations()
+    {
+        return $this->organisationRoles();
     }
 
     /**

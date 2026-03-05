@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\BelongsToTenant;
+use App\Models\Election;
 
 /**
  * BaseResult Abstract Class
@@ -167,6 +168,16 @@ abstract class BaseResult extends Model
     public function candidate()
     {
         return $this->belongsTo(Candidacy::class, 'candidate_id', 'id');
+    }
+
+    /**
+     * Get the election this result belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function election()
+    {
+        return $this->belongsTo(Election::class);
     }
 
     /**

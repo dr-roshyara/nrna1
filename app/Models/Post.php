@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Candidacy;
+use App\Models\Vote;
+use App\Models\Result;
 use App\Traits\BelongsToTenant;
 
 class Post extends Model
@@ -37,7 +39,7 @@ class Post extends Model
      * Ordered by position_order for consistent display
      */
     public function candidates(){
-        return $this->hasMany(Candidacy::class, 'post_id', 'post_id')
+        return $this->hasMany(Candidacy::class, 'post_id', 'id')
                     ->with('user')
                     ->orderBy('position_order')
                     ->select([
@@ -56,7 +58,7 @@ class Post extends Model
      */
     public function candidacies()
     {
-        return $this->hasMany(Candidacy::class, 'post_id', 'post_id')
+        return $this->hasMany(Candidacy::class, 'post_id', 'id')
                     ->with('user')
                     ->orderBy('position_order')
                     ->select([
@@ -67,13 +69,42 @@ class Post extends Model
                         'position_order'
                     ]);
     }
+
+    /**
+     * Get approved candidacies for this post
+     */
+    public function approvedCandidacies()
+    {
+        return $this->hasMany(Candidacy::class, 'post_id', 'id')
+                    ->where('status', 'approved')
+                    ->with('user')
+                    ->orderBy('position_order');
+    }
+
+    /**
+     * Get votes for this post through results table
+     */
+    public function votes()
+    {
+        return $this->belongsToMany(Vote::class, 'results', 'post_id', 'vote_id')
+                    ->withPivot('candidate_id')
+                    ->withTimestamps();
+    }
+
+    /**
+     * Get results for this post
+     */
+    public function results()
+    {
+        return $this->hasMany(Result::class, 'post_id', 'id');
+    }
      /**
      * Get candidates with complete user information
      * Use this method when you need full candidate details
      */
     public function candidatesWithFullUser()
     {
-        return $this->hasMany(Candidacy::class, 'post_id', 'post_id')
+        return $this->hasMany(Candidacy::class, 'post_id', 'id')
                     ->with(['user' => function($query) {
                         $query->select(['id', 'user_id', 'name', 'first_name', 'last_name', 'region', 'email']);
                     }]);
@@ -86,7 +117,7 @@ class Post extends Model
      */
     public function demoCandidates()
     {
-        return $this->hasMany(DemoCandidacy::class, 'post_id', 'post_id')
+        return $this->hasMany(DemoCandidacy::class, 'post_id', 'id')
                     ->with('user')
                     ->orderBy('position_order')
                     ->select([

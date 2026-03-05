@@ -165,13 +165,30 @@ export default {
             })
         }
 
-        const handleVoteUpdate = ({ postId, candidateId }) => {
-            if (candidateId === null) {
-                delete selectedVotes.value[postId]
-            } else {
-                selectedVotes.value[postId] = { candidate_id: candidateId }
+        const handleVoteUpdate = ({ postId, candidateId, candidateData }) => {
+                if (candidateId === null) {
+                    // User deselected - mark as no_vote
+                    selectedVotes.value[postId] = {
+                        post_id: postId,
+                        post_name: candidateData?.post_name || '',
+                        required_number: candidateData?.required_number || 1,
+                        no_vote: true,
+                        candidates: []
+                    }
+                } else {
+                    // User selected a candidate
+                    selectedVotes.value[postId] = {
+                        post_id: postId,
+                        post_name: candidateData?.post_name || '',
+                        required_number: candidateData?.required_number || 1,
+                        no_vote: false,
+                        candidates: [{
+                            candidacy_id: candidateId,  // ✅ Use candidacy_id, not candidate_id
+                            // Include other candidate data if needed
+                        }]
+                    }
+                }
             }
-        }
 
         return {
             form,

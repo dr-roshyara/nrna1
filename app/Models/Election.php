@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Traits\BelongsToTenant;
-
+use App\Models\Post;
+use App\Models\Candidacy;   
+use App\Models\VoterRegistration;
+use App\Models\Code;
+use App\Models\Vote;
+use App\Models\Result;  
 /**
  * Election Model
  *
@@ -410,4 +415,9 @@ class Election extends Model
             'is_active' => $this->isCurrentlyActive(),
         ];
     }
+    // 
+    
+    
+
+    
 }

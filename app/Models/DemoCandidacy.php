@@ -49,13 +49,17 @@ class DemoCandidacy extends Model
         'position_order'
     ];
 
+    protected $casts = [
+        'post_id' => 'integer',
+    ];
+
     /**
      * Each DemoCandidacy belongs to one user
      * Get the user
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'user_id')
+        return $this->belongsTo(User::class)
                ->select(['id', 'user_id', 'name', 'region', 'email', 'first_name', 'last_name']);
     }
 
@@ -65,9 +69,10 @@ class DemoCandidacy extends Model
      */
     public function post()
     {
-        return $this->belongsTo(Post::class, 'post_id', 'post_id');
+        return $this->belongsTo(DemoPost::class, 'post_id', 'id');
     }
 
+    
     /**
      * A demo candidacy has many demo votes. Polymorphic relationship
      */
@@ -126,7 +131,7 @@ class DemoCandidacy extends Model
     public function getVoteDisplayInfo()
     {
         return [
-            'candidacy_id' => $this->candidacy_id,
+            'candidacy_id' => $this->id,
             'candidacy_name' => $this->candidate_name,
             'proposer_name' => $this->proposer_name,
             'supporter_name' => $this->supporter_name,
@@ -134,7 +139,7 @@ class DemoCandidacy extends Model
             'user_info' => [
                 'id' => $this->user->id ?? null,
                 'name' => $this->user->name ?? 'Demo Candidate',
-                'user_id' => $this->user->user_id ?? 'DEMO',
+                'user_id' => $this->user->id ?? 'DEMO',
                 'region' => $this->user->region ?? 'Demo Region',
                 'email' => $this->user->email ?? 'demo@example.com',
             ]

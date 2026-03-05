@@ -16,3 +16,4 @@ yarn-error.log
 /.vscode
 .env_bak 
 storage/framework/
+.aider*

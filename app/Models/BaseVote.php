@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Post;
+use App\Models\Candidacy;
 use App\Traits\BelongsToTenant;
 
 /**
@@ -217,6 +219,29 @@ abstract class BaseVote extends Model
     public function election()
     {
         return $this->belongsTo(Election::class);
+    }
+
+    /**
+     * Get posts this vote cast for through results table
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class, 'results', 'vote_id', 'post_id')
+                    ->withPivot('candidate_id')
+                    ->withTimestamps();
+    }
+
+    /**
+     * Get candidacies this vote selected through results table
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function candidacies()
+    {
+        return $this->belongsToMany(Candidacy::class, 'results', 'vote_id', 'candidate_id')
+                    ->withTimestamps();
     }
 
     /**

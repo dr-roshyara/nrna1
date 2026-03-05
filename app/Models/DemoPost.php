@@ -46,7 +46,7 @@ class DemoPost extends Model
      */
     public function candidacies()
     {
-        return $this->hasMany(DemoCandidacy::class, 'post_id', 'post_id');
+         return $this->hasMany(DemoCandidacy::class, 'post_id', 'id');
     }
 
     /**

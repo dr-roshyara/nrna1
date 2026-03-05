@@ -9,26 +9,29 @@ return new class extends Migration
     public function up(): void
     {
         // Demo Posts
-        Schema::create('demo_posts', function (Blueprint $table) {
+       Schema::create('demo_posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('election_id');
+            $table->string('post_id')->unique(); // The string identifier (e.g., "president-2")
             $table->string('name');
+            $table->string('nepali_name')->nullable();
             $table->text('description')->nullable();
             $table->boolean('is_national_wide')->default(true);
             $table->string('state_name')->nullable();
             $table->unsignedInteger('required_number')->default(1);
             $table->boolean('select_all_required')->default(true);
             $table->unsignedInteger('position_order')->default(0);
+            $table->unsignedBigInteger('organisation_id')->nullable();
             $table->timestamps();
 
             $table->foreign('election_id')
-                  ->references('id')
-                  ->on('elections')
+                  ->references('id')->on('elections')
                   ->onDelete('cascade');
-
+                  
             $table->index(['election_id', 'is_national_wide']);
             $table->index(['election_id', 'state_name']);
-        });
+            $table->index('post_id');
+            });
 
         // Demo Candidacies
         Schema::create('demo_candidacies', function (Blueprint $table) {
@@ -92,6 +95,9 @@ return new class extends Migration
             $table->timestamp('code1_sent_at')->nullable();
             $table->boolean('has_code2_sent')->default(0);
             $table->timestamp('code2_sent_at')->nullable();
+          // Agreement tracking
+            $table->boolean('has_agreed_to_vote')->default(false);
+            $table->dateTime('has_agreed_to_vote_at')->nullable();
 
             $table->timestamp('expires_at')->nullable();
             $table->unsignedInteger('voting_time_minutes')->default(30);

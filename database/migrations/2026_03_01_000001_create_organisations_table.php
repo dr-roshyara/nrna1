@@ -20,7 +20,8 @@ return new class extends Migration
             $table->json('languages')->nullable();
             $table->boolean('is_platform')->default(false);
             $table->timestamps();
-
+            // Track who created the organisation - no foreign key to avoid circular dependency with users.organisation_id
+            $table->foreignId('created_by')->nullable();
             $table->index('slug');
             $table->index('type');
         });

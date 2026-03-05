@@ -304,6 +304,7 @@ Route::group([], __DIR__.'/user/userRoutes.php');
 Route::group([], __DIR__.'/user/googleRoutes.php');
 //election
 Route::group([], __DIR__.'/election/electionRoutes.php');
+
 //Openion
 // Route::group([], __DIR__.'/openion/openionRoutes.php');
 Route::group([], __DIR__.'/committee/committeeRoutes.php');
@@ -312,6 +313,8 @@ Route::group([], __DIR__.'/committee/committeeRoutes.php');
 Route::group([], __DIR__.'/openion/openionRoutes.php');
 //finance
 Route::group([], __DIR__.'/finance/financeRoutes.php');
+//election
+
 
 // ============================================================================
 // NEW: ROLE-BASED DASHBOARD SYSTEM (Phase 1 & 2)

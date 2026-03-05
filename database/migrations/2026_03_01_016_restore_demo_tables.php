@@ -31,7 +31,7 @@ return new class extends Migration
         if (!Schema::hasTable('demo_candidacies')) {
             Schema::create('demo_candidacies', function (Blueprint $table) {
                 $table->id();
-                $table->string('candidacy_id')->nullable();
+                $table->string('candidacy_id')->nullable()->index();
                 $table->unsignedBigInteger('user_id');
                 $table->string('user_name')->nullable();
                 $table->string('candidacy_name')->nullable();
@@ -47,23 +47,51 @@ return new class extends Migration
                 $table->string('image_path_2')->nullable();
                 $table->string('image_path_3')->nullable();
                 $table->unsignedBigInteger('organisation_id')->nullable();
+                $table->integer('position_order')->default(0);
                 $table->timestamps();
 
-                // Foreign keys
-                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-                $table->foreign('election_id')->references('id')->on('elections')->onDelete('cascade');
-                $table->foreign('post_id')->references('id')->on('demo_posts')->onDelete('cascade');
+                // Foreign keys with proper constraints
+                $table->foreign('user_id')
+                    ->references('id')->on('users')
+                    ->onDelete('cascade');
+                    
+                $table->foreign('election_id')
+                    ->references('id')->on('elections')
+                    ->onDelete('cascade');
+                    
+                // CRITICAL FIX: This must reference demo_posts.id, not posts.id
+                $table->foreign('post_id')
+                    ->references('id')->on('demo_posts')
+                    ->onDelete('cascade');
+                    
+                // Conditional organisation foreign key
                 if (Schema::hasTable('organisations')) {
-                    $table->foreign('organisation_id')->references('id')->on('organisations')->onDelete('set null');
+                    $table->foreign('organisation_id')
+                        ->references('id')->on('organisations')
+                        ->onDelete('set null');
                 }
 
-                // Indexes
-                $table->index('election_id');
-                $table->index('post_id');
-                $table->index('user_id');
+                // Composite indexes for common queries
+                $table->index(['election_id', 'post_id']);
+                $table->index(['election_id', 'user_id']);
+                $table->index('organisation_id');
+                
+                // Optional: Add unique constraint if needed
+                // $table->unique(['election_id', 'user_id', 'post_id']);
+            });
+        } else {
+            // If table exists but has wrong column types, add this migration separately
+            Schema::table('demo_candidacies', function (Blueprint $table) {
+                // Only run this in a separate migration if needed
+                if (Schema::hasColumn('demo_candidacies', 'post_id') && 
+                    \DB::getSchemaBuilder()->getColumnType('demo_candidacies', 'post_id') !== 'bigint') {
+                    
+                    // Backup data first in a real migration!
+                    // Then alter column
+                    $table->unsignedBigInteger('post_id')->change();
+                }
             });
         }
-
         // ========================================
         // 2. DEMO_CODES TABLE
         // ========================================
@@ -136,7 +164,6 @@ return new class extends Migration
                 $table->index(['can_vote_now', 'has_voted']);
             });
         }
-
         // ========================================
         // 3. DEMO_RESULTS TABLE
         // ========================================
@@ -146,8 +173,7 @@ return new class extends Migration
                 $table->unsignedBigInteger('election_id');
                 $table->unsignedBigInteger('vote_id');
                 $table->unsignedBigInteger('post_id');
-                $table->unsignedBigInteger('candidacy_id')->nullable();
-                $table->unsignedBigInteger('candidate_id')->nullable();
+                $table->unsignedBigInteger('candidacy_id'); // Use this as the foreign key
                 $table->unsignedBigInteger('organisation_id')->nullable();
                 $table->string('vote_hash')->nullable();
                 $table->integer('vote_count')->default(1);
@@ -155,21 +181,35 @@ return new class extends Migration
                 $table->timestamps();
 
                 // Foreign keys
-                $table->foreign('election_id')->references('id')->on('elections')->onDelete('cascade');
-                $table->foreign('post_id')->references('id')->on('demo_posts')->onDelete('cascade');
-                $table->foreign('vote_id')->references('id')->on('demo_votes')->onDelete('cascade');
-                $table->foreign('candidacy_id')->references('id')->on('demo_candidacies')->onDelete('set null');
+                $table->foreign('election_id')
+                    ->references('id')->on('elections')
+                    ->onDelete('cascade');
+                    
+                $table->foreign('post_id')
+                    ->references('id')->on('demo_posts')
+                    ->onDelete('cascade');
+                    
+                $table->foreign('vote_id')
+                    ->references('id')->on('demo_votes')
+                    ->onDelete('cascade');
+                    
+                $table->foreign('candidacy_id')  // This references demo_candidacies.id
+                    ->references('id')->on('demo_candidacies')
+                    ->onDelete('cascade'); // Use cascade, not set null
+
                 if (Schema::hasTable('organisations')) {
-                    $table->foreign('organisation_id')->references('id')->on('organisations')->onDelete('set null');
+                    $table->foreign('organisation_id')
+                        ->references('id')->on('organisations')
+                        ->onDelete('set null');
                 }
 
                 // Indexes
                 $table->index('election_id');
                 $table->index('post_id');
                 $table->index('vote_id');
+                $table->index('candidacy_id');
             });
         }
-
         // ========================================
         // 4. DEMO_VOTER_SLUGS TABLE
         // ========================================
@@ -250,39 +290,99 @@ return new class extends Migration
         // ========================================
         // 6. DEMO_VOTES TABLE
         // ========================================
+            // ========================================
+        // 6. DEMO_VOTES TABLE
+        // ========================================
         if (!Schema::hasTable('demo_votes')) {
             Schema::create('demo_votes', function (Blueprint $table) {
+                // Primary key
                 $table->id();
+                
+                // =====================================================================
+                // ELECTION CONTEXT
+                // =====================================================================
                 $table->unsignedBigInteger('election_id');
                 $table->unsignedBigInteger('organisation_id')->nullable();
-                $table->string('vote_hash')->nullable();
-                $table->boolean('no_vote_option')->default(0);
-                $table->string('voting_code')->nullable();
-
-                // Candidate selections (60 candidates max per post)
+                
+                // =====================================================================
+                // VOTE IDENTIFICATION & VERIFICATION
+                // =====================================================================
+                $table->string('vote_hash')->nullable()
+                    ->comment('SHA256 hash of (user_id + election_id + code1 + cast_at) for anonymous verification');
+                $table->string('voting_code')->nullable()
+                    ->comment('Plain text code sent to voter for vote verification (demo only)');
+                
+                // =====================================================================
+                // VOTE SELECTIONS
+                // =====================================================================
+                $table->boolean('no_vote_option')->default(0)
+                    ->comment('Indicates if voter chose to abstain from all positions');
+                
+                /**
+                 * Candidate selections for up to 60 positions
+                 * Each column stores JSON data with structure:
+                 * {
+                 *   "post_id": "president-1",
+                 *   "post_name": "President",
+                 *   "required_number": 1,
+                 *   "no_vote": false,
+                 *   "candidates": [
+                 *     {
+                 *       "candidacy_id": "demo-president-1-1",
+                 *       "post_id": 1
+                 *     }
+                 *   ]
+                 * }
+                 */
                 for ($i = 1; $i <= 60; $i++) {
                     $columnName = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
-                    $table->json($columnName)->nullable();
+                    $table->json($columnName)->nullable()
+                        ->comment('JSON data for position #' . $i . ' selection');
                 }
 
-                // Metadata
-                $table->json('metadata')->nullable();
-                $table->timestamp('cast_at')->nullable();
-                $table->string('client_ip')->nullable();
-
+                // =====================================================================
+                // METADATA & AUDIT
+                // =====================================================================
+                $table->json('metadata')->nullable()
+                    ->comment('Additional metadata for audit purposes');
+                $table->timestamp('cast_at')->nullable()
+                    ->comment('Timestamp when vote was cast (used in vote_hash)');
+                $table->string('client_ip')->nullable()
+                    ->comment('IP address of voter (for audit only, not linked to vote)');
+                
+                // Timestamps
                 $table->timestamps();
 
-                // Foreign keys
-                $table->foreign('election_id')->references('id')->on('elections')->onDelete('cascade');
+                // =====================================================================
+                // FOREIGN KEY CONSTRAINTS
+                // =====================================================================
+                $table->foreign('election_id')
+                    ->references('id')->on('elections')
+                    ->onDelete('cascade')
+                    ->comment('Links vote to its election');
+                
+                // Organisation foreign key (conditional for multi-tenancy)
                 if (Schema::hasTable('organisations')) {
-                    $table->foreign('organisation_id')->references('id')->on('organisations')->onDelete('set null');
+                    $table->foreign('organisation_id')
+                        ->references('id')->on('organisations')
+                        ->onDelete('set null')
+                        ->comment('Links vote to organisation (null for public demo)');
                 }
 
-                // Indexes
-                $table->index('election_id');
+                // =====================================================================
+                // PERFORMANCE INDEXES
+                // =====================================================================
+                $table->index('election_id')
+                    ->comment('Optimizes queries filtering by election');
+                
+                // Only create vote_hash index if it exists (helps with verification lookups)
                 if (Schema::hasColumn('demo_votes', 'vote_hash')) {
-                    $table->index('vote_hash');
+                    $table->index('vote_hash')
+                        ->comment('Enables fast vote verification by hash');
                 }
+                
+                // Optional: Add composite index for common queries
+                // $table->index(['election_id', 'cast_at']);
             });
         }
     }

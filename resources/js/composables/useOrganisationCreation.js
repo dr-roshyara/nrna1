@@ -263,8 +263,8 @@ export const useOrganizationCreation = () => {
       accept_terms: formData.acceptance.terms,
     };
 
-    // Get route URL from Laravel's route system
-    const routeUrl = route('organizations.store');
+    // Get route URL from Laravel's route system 
+    const routeUrl = route('organisations.store');
 
     console.log('📤 Sending organisation creation request via Inertia router', {
       url: routeUrl,

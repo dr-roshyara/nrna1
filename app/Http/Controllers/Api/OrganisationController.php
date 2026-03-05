@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrganisationRequest;
-use App\Mail\OrganisationCreatedMail;
 use App\Models\Organisation;
 use App\Models\User;
 use App\Models\Election;
@@ -54,8 +53,7 @@ class OrganisationController extends Controller
             // Attach current user as organisation admin
             \Log::info('Attaching user to organisation');
             $organisation->users()->attach($user->id, [
-                'role' => 'admin',
-                'assigned_at' => now(),
+                'role' => 'admin'
             ]);
             \Log::info('User attached to organisation');
 
@@ -95,44 +93,32 @@ class OrganisationController extends Controller
                         if (!$isAlreadyMember) {
                             // Attach as voter only if not already a member
                             $organisation->users()->attach($representativeUser->id, [
-                                'role' => 'voter',
-                                'assigned_at' => now(),
+                                'role' => 'voter'
                             ]);
                         }
 
                         // Update representative user's organisation_id
                         $representativeUser->update(['organisation_id' => $organisation->id]);
 
-                        // Send password setup invitation
-                        try {
-                            Mail::to($representativeEmail)->send(
-                                new \App\Mail\RepresentativeInvitationMail($representativeUser, $organisation, $user)
-                            );
-                        } catch (\Exception $e) {
-                            \Log::warning('Failed to send representative invitation email', [
-                                'organisation_id' => $organisation->id,
-                                'representative_email' => $representativeEmail,
-                                'error' => $e->getMessage(),
-                            ]);
-                            // Continue even if email fails
-                        }
+                        // Queue representative invitation email (after response)
+                        app()->terminating(function () use ($representativeEmail, $representativeUser, $organisation, $user) {
+                            try {
+                                Mail::to($representativeEmail)->send(
+                                    new \App\Mail\RepresentativeInvitationMail($representativeUser, $organisation, $user)
+                                );
+                            } catch (\Exception $e) {
+                                \Log::warning('Failed to send representative invitation email', [
+                                    'organisation_id' => $organisation->id,
+                                    'representative_email' => $representativeEmail,
+                                    'error' => $e->getMessage(),
+                                ]);
+                                // Continue even if email fails
+                            }
+                        });
                     }
                 }
             }
 
-            // Send notification email to organisation
-            try {
-                Mail::to($organisation->email)->send(
-                    new OrganizationCreatedMail($organisation, $user)
-                );
-            } catch (\Exception $e) {
-                \Log::warning('Failed to send organisation created email', [
-                    'organisation_id' => $organisation->id,
-                    'organisation_email' => $organisation->email,
-                    'error' => $e->getMessage(),
-                ]);
-                // Continue even if email fails
-            }
 
             // For Inertia 2.0: Return JSON with redirect URL
             // Inertia will handle the redirect on the frontend
@@ -141,7 +127,7 @@ class OrganisationController extends Controller
                 'message' => 'Organisation erfolgreich erstellt!',
                 'redirect' => route('organisations.show', $organisation->slug),
                 'organisation' => $organisation,
-            ], 201);
+            ], 201)->header('X-Inertia', 'true'); // Important: Add this header for Inertia
         } catch (\Exception $e) {
             \Log::error('organisation creation failed', [
                 'error' => $e->getMessage(),
@@ -157,6 +143,7 @@ class OrganisationController extends Controller
                 'message' => 'Fehler beim Erstellen der Organisation: ' . $e->getMessage(),
             ], 500);
         }
+
     }
 
     /**
