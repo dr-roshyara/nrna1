@@ -1058,8 +1058,7 @@ public function getVoterState(): string
      */
     public function belongsToOrganisation(string $organisationId): bool
     {
-        return DB::table('user_organisation_roles')
-            ->where('user_id', $this->id)
+        return $this->organisations()
             ->where('organisation_id', $organisationId)
             ->exists();
     }
