@@ -27,17 +27,18 @@ class PlatformAdminSeeder extends Seeder
             ->where('is_default', true)
             ->firstOrFail();
 
-        // Create admin user (idempotent)
-        // Note: Using only columns that exist in the users table schema
-        $admin = User::firstOrCreate(
-            ['email' => 'admin@publicdigit.org'],
-            [
+        // Create admin user (idempotent with explicit attribute assignment)
+        $admin = User::firstWhere('email', 'admin@publicdigit.org');
+
+        if (!$admin) {
+            $admin = User::create([
+                'email' => 'admin@publicdigit.org',
                 'name' => 'Platform Admin',
                 'password' => Hash::make('password'),
                 'organisation_id' => $platform->id,
                 'email_verified_at' => now(),
-            ]
-        );
+            ]);
+        }
 
         // Create pivot record linking admin to platform org with 'admin' role
         UserOrganisationRole::firstOrCreate(
