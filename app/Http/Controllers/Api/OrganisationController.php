@@ -26,10 +26,6 @@ class OrganisationController extends Controller
      */
     public function store(StoreOrganisationRequest $request): JsonResponse
     {
-        // Debug: Log that store() method was called
-        error_log('🔵 OrganizationController::store() called at ' . date('Y-m-d H:i:s'));
-        error_log('📝 Request data: ' . json_encode($request->all()));
-
         try {
             \Log::info('organisation creation started', [
                 'user_id' => auth()->id(),
