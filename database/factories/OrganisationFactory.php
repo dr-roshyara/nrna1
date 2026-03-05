@@ -20,7 +20,8 @@ class OrganisationFactory extends Factory
             'name' => $name,
             'email' => $this->faker->unique()->companyEmail(),
             'slug' => Str::slug($name),
-            'type' => $this->faker->randomElement(['diaspora', 'ngo', 'professional', 'other']),
+            'type' => 'tenant',
+            'is_default' => false,
             'address' => [
                 'street' => $this->faker->streetAddress(),
                 'city' => $this->faker->city(),
@@ -32,9 +33,32 @@ class OrganisationFactory extends Factory
                 'role' => 'Chairman',
                 'email' => $this->faker->email(),
             ],
-            'created_by' => \App\Models\User::factory(),
             'settings' => [],
             'languages' => ['de', 'en'],
         ];
+    }
+
+    /**
+     * Create a platform organisation
+     */
+    public function platform()
+    {
+        return $this->state([
+            'type' => 'platform',
+            'is_default' => true,
+            'slug' => 'platform',
+            'name' => 'Platform',
+        ]);
+    }
+
+    /**
+     * Create a tenant organisation
+     */
+    public function tenant()
+    {
+        return $this->state([
+            'type' => 'tenant',
+            'is_default' => false,
+        ]);
     }
 }

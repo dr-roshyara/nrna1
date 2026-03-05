@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Traits\BelongsToTenant;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Post;
 use App\Models\Candidacy;   
 use App\Models\VoterRegistration;
@@ -20,8 +21,10 @@ use App\Models\Result;
  */
 class Election extends Model
 {
-    use HasFactory;
-    use BelongsToTenant;
+    use HasFactory, HasUuids, SoftDeletes;
+
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     /**
      * Boot the model - set organisation_id from context
@@ -89,6 +92,14 @@ class Election extends Model
     public function organisation()
     {
         return $this->belongsTo(Organisation::class);
+    }
+
+    /**
+     * Scope: Get elections for a specific organisation
+     */
+    public function scopeForOrganisation($query, string $organisationId)
+    {
+        return $query->where('organisation_id', $organisationId);
     }
 
     // ============ EAGER LOADING SCOPES (OPTIMIZATION) ============

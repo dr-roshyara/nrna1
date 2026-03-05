@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Services\DemoElectionResolver;
 use App\Services\VoterSlugService;
 use App\Services\DemoElectionCreationService;
+use App\Services\TenantContext;
 use App\Models\UserOrganisationRole;
 use App\Observers\UserOrganisationObserver;
 
@@ -31,6 +32,11 @@ class AppServiceProvider extends ServiceProvider
             return new VoterSlugService(
                 $this->app->make(DemoElectionResolver::class)
             );
+        });
+
+        // Register TenantContext service as singleton for UUID multi-tenancy
+        $this->app->singleton(TenantContext::class, function () {
+            return new TenantContext();
         });
 
         // Register custom Fortify login response

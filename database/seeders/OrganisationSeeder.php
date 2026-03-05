@@ -19,18 +19,18 @@ class OrganisationSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create Platform Organisation (ID=1)
+        // Create Platform Organisation
         // This is the DEFAULT organisation for all users
         Organisation::firstOrCreate(
             ['slug' => 'platform'],
             [
-                'id' => 1,
                 'name' => 'Platform',
-                'type' => 'other',
+                'type' => 'platform',
+                'is_default' => true,
             ]
         );
 
         $this->command->info('✅ Organisations seeded successfully!');
-        $this->command->info('   Platform (ID=1) - Default organisation');
+        $this->command->info('   Platform - Default organisation (type=platform, is_default=true)');
     }
 }

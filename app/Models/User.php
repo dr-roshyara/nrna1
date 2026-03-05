@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -31,10 +33,15 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
+    use HasUuids;
+    use SoftDeletes;
     use Notifiable;
     use HasRoles;
     use HasOrganisation;
     use HasAuditFields;
+
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     /**
      * Boot the model - assign new users to publicdigit (default organisation)
@@ -69,30 +76,6 @@ class User extends Authenticatable implements MustVerifyEmail
                         $model->organisation_id = $publicdigit->id;
                     }
                 }
-            }
-        });
-
-        // CRITICAL FALLBACK: Ensure every user has a platform organisation pivot
-        // This catches cases where RegisterController pivot creation might fail
-        // Uses insertOrIgnore to avoid unique constraint violations
-        static::created(function ($user) {
-            $orgId = $user->organisation_id ?? 1;
-
-            // Use insertOrIgnore to safely handle duplicate attempts
-            $result = DB::table('user_organisation_roles')->insertOrIgnore([
-                'user_id' => $user->id,
-                'organisation_id' => $orgId,
-                'role' => 'member',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-
-            if ($result) {
-                Log::info('User model fallback: Created pivot record', [
-                    'user_id' => $user->id,
-                    'organisation_id' => $orgId,
-                    'source' => 'User::created() fallback',
-                ]);
             }
         });
     }
@@ -199,6 +182,26 @@ class User extends Authenticatable implements MustVerifyEmail
 
         ];
 
+    /**
+     * Multi-tenancy relationships
+     */
+    public function currentOrganisation()
+    {
+        return $this->belongsTo(Organisation::class, 'organisation_id');
+    }
+
+    public function organisations()
+    {
+        return $this->belongsToMany(Organisation::class, 'user_organisation_roles')
+                    ->select('organisations.*')
+                    ->withPivot('role', 'permissions')
+                    ->withTimestamps();
+    }
+
+    public function organisationRoles()
+    {
+        return $this->hasMany(UserOrganisationRole::class);
+    }
 
      /**
      * Each user has one and only one Vote :
@@ -977,27 +980,6 @@ public function getVoterState(): string
     // These methods work ALONGSIDE existing is_committee_member and voting logic
     // ============================================================================
 
-    /**
-     * Get organisations this user belongs to with roles
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function organisationRoles()
-    {
-        return $this->belongsToMany(Organisation::class, 'user_organisation_roles')
-                    ->withPivot('role')
-                    ->withTimestamps();
-    }
-
-    /**
-     * Alias for organisationRoles() - returns organisations user belongs to
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function organisations()
-    {
-        return $this->organisationRoles();
-    }
 
     /**
      * Get dashboard-accessible roles (NEW system + legacy mapping)
@@ -1138,15 +1120,28 @@ public function getVoterState(): string
     /**
      * Check if user belongs to a specific organisation.
      *
-     * @param int $organisationId The organisation ID to check
+     * @param string $organisationId The organisation ID to check
      * @return bool True if user has a valid pivot record for this organisation
      */
-    public function belongsToOrganisation(int $organisationId): bool
+    public function belongsToOrganisation(string $organisationId): bool
     {
         return DB::table('user_organisation_roles')
             ->where('user_id', $this->id)
             ->where('organisation_id', $organisationId)
             ->exists();
+    }
+
+    /**
+     * Get the user's role in a specific organisation
+     */
+    public function getRoleInOrganisation($organisationId): ?string
+    {
+        $role = DB::table('user_organisation_roles')
+            ->where('user_id', $this->id)
+            ->where('organisation_id', $organisationId)
+            ->first();
+
+        return $role?->role;
     }
 
     /**

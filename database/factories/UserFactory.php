@@ -85,26 +85,12 @@ class UserFactory extends Factory
     }
 
     /**
-     * Ensure organisation exists when created.
+     * Create a user for a specific organisation
      */
-    public function create($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
+    public function forOrganisation(Organisation $organisation)
     {
-        // If organisation_id is provided, ensure it exists
-        if (isset($attributes['organisation_id']) && $attributes['organisation_id']) {
-            $org_id = $attributes['organisation_id'];
-            if (!Organisation::find($org_id)) {
-                // Create a test organisation - let auto_increment assign the ID naturally
-                $org = Organisation::create([
-                    'name' => 'Test Organisation',
-                    'slug' => 'test-org-' . uniqid(),
-                    'type' => 'other',
-                ]);
-
-                // Use the created organisation's actual ID
-                $attributes['organisation_id'] = $org->id;
-            }
-        }
-
-        return parent::create($attributes, $parent);
+        return $this->state([
+            'organisation_id' => $organisation->id,
+        ]);
     }
 }
