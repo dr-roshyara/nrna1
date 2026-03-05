@@ -830,11 +830,22 @@ class DashboardResolver
     private function hasActiveOrganisations(User $user): bool
     {
         try {
-            return DB::table('user_organisation_roles')
+            $exists = DB::table('user_organisation_roles')
                 ->where('user_id', $user->id)
                 ->where('organisation_id', '!=', 1) // Exclude platform
                 ->where('role', 'member')
                 ->exists();
+            
+            Log::debug('DashboardResolver: hasActiveOrganisations check', [
+                'user_id' => $user->id,
+                'exists' => $exists,
+                'organisation_roles' => DB::table('user_organisation_roles')
+                    ->where('user_id', $user->id)
+                    ->get(['organisation_id', 'role'])
+                    ->toArray()
+            ]);
+            
+            return $exists;
         } catch (\Exception $e) {
             Log::error('DashboardResolver: Error checking active organisations', [
                 'user_id' => $user->id,

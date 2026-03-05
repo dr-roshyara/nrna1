@@ -1116,6 +1116,16 @@ public function getVoterState(): string
      */
     public function getEffectiveOrganisationId(): int
     {
+        \Log::debug('User: getEffectiveOrganisationId called', [
+            'user_id' => $this->id,
+            'organisation_id' => $this->organisation_id,
+            'belongsToOrganisation' => $this->belongsToOrganisation($this->organisation_id),
+            'pivot_records' => \DB::table('user_organisation_roles')
+                ->where('user_id', $this->id)
+                ->get(['organisation_id', 'role'])
+                ->toArray()
+        ]);
+        
         // If user has a custom org (id > 1) AND they're actually a member, use that
         if ($this->organisation_id > 1 && $this->belongsToOrganisation($this->organisation_id)) {
             return $this->organisation_id;
