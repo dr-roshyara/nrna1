@@ -28,13 +28,13 @@ class PlatformAdminSeeder extends Seeder
             ->firstOrFail();
 
         // Create admin user (idempotent)
+        // Note: Using only columns that exist in the users table schema
         $admin = User::firstOrCreate(
             ['email' => 'admin@publicdigit.org'],
             [
                 'name' => 'Platform Admin',
                 'password' => Hash::make('password'),
                 'organisation_id' => $platform->id,
-                'region' => 'Bayern',
                 'email_verified_at' => now(),
             ]
         );
