@@ -177,9 +177,10 @@ class User extends Authenticatable implements MustVerifyEmail
   
     }
     public function candidacies()
-{
-    return $this->hasMany(Candidacy::class, 'user_id', 'id');
-}
+    {
+        return $this->hasMany(Candidacy::class, 'user_id', 'id')
+                    ->withoutGlobalScopes();
+    }
 
     /**
      * Each user can have one and only candidacy
@@ -230,6 +231,7 @@ class User extends Authenticatable implements MustVerifyEmail
       public function codes(){
           return $this->hasMany(Code::class);
       }
+
       /**
       * Each user has extacly one code row
       */
