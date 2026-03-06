@@ -7,6 +7,7 @@ use App\Services\DemoElectionResolver;
 use App\Services\VoterSlugService;
 use App\Services\DemoElectionCreationService;
 use App\Services\TenantContext;
+use App\Services\DeviceFingerprint;
 use App\Models\UserOrganisationRole;
 use App\Observers\UserOrganisationObserver;
 
@@ -37,6 +38,11 @@ class AppServiceProvider extends ServiceProvider
         // Register TenantContext service as singleton for UUID multi-tenancy
         $this->app->singleton(TenantContext::class, function () {
             return new TenantContext();
+        });
+
+        // Register DeviceFingerprint service as singleton for device-based fraud detection
+        $this->app->singleton(DeviceFingerprint::class, function () {
+            return new DeviceFingerprint();
         });
 
         // Register custom Fortify login response

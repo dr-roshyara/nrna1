@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Code;
 use App\Models\User;
 use App\Models\Election;
+use App\Models\Organisation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CodeFactory extends Factory
@@ -13,8 +14,14 @@ class CodeFactory extends Factory
 
     public function definition()
     {
+        $platform = Organisation::getDefaultPlatform();
+
         return [
-            'user_id' => User::factory(),
+            'organisation_id' => $platform->id,
+            'user_id' => function() {
+                $platform = Organisation::getDefaultPlatform();
+                return User::factory()->forOrganisation($platform)->create()->id;
+            },
             'election_id' => Election::factory(),
             'code1' => $this->faker->numerify('######'),
             'code2' => $this->faker->numerify('######'),
