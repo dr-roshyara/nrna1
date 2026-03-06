@@ -22,13 +22,13 @@ class DemoElectionCreationService
      * - 2 candidates for District Representative (select 1)
      * - Demo verification codes for each candidate
      *
-     * @param int $organisationId
+     * @param string $organisationId UUID organisation ID
      * @param Organisation $organisation
      * @return Election
      */
-    public function createOrganisationDemoElection(int $organisationId, Organisation $organisation): Election
+    public function createOrganisationDemoElection(string $organisationId, Organisation $organisation): Election
     {
-        $slug = 'demo-election-org-' . $organisationId;
+        $slug = 'demo-election-org-' . substr($organisationId, 0, 8);
 
         // 1. Create election with organisation_id
         $election = Election::create([
