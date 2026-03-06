@@ -27,29 +27,6 @@ class Election extends Model
     public $incrementing = false;
 
     /**
-     * Boot the model - set organisation_id from context
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        // When creating an election, automatically set organisation_id from context
-        static::creating(function ($model) {
-            if (is_null($model->organisation_id)) {
-                // In console context (e.g., demo:setup), only use session if explicitly set
-                // In web context, fall back to auth user's organisation
-                if (session()->has('current_organisation_id')) {
-                    $model->organisation_id = session('current_organisation_id');
-                } elseif (!app()->runningInConsole()) {
-                    $model->organisation_id = auth()->user()?->organisation_id;
-                }
-                // For console with no session: leave as NULL (MODE 1 - public demo)
-                // Platform organisation (ID: 1) is created via migration 2026_03_01_0001_insert_platform_organisation.php
-            }
-        });
-    }
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
