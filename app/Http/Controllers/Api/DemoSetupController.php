@@ -124,7 +124,7 @@ class DemoSetupController extends Controller
 
         $posts = DemoPost::where('election_id', $election->id)->count();
         $candidates = DemoCandidacy::whereIn('post_id',
-            DemoPost::where('election_id', $election->id)->pluck('post_id')
+            DemoPost::where('election_id', $election->id)->pluck('id')
         )->count();
         $codes = DemoCode::where('election_id', $election->id)->count();
         $votes = DemoVote::where('election_id', $election->id)->count();

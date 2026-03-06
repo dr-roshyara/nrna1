@@ -985,10 +985,10 @@ private function validateVoteIntegrity($vote_data, $auth_user)
     
     try {
         // Get available posts for verification
-        $available_national_posts = Post::where('is_national_wide', 1)->pluck('post_id')->toArray();
+        $available_national_posts = Post::where('is_national_wide', 1)->pluck('id')->toArray();
         $available_regional_posts = Post::where('is_national_wide', 0)
             ->where('state_name', trim($auth_user->region))
-            ->pluck('post_id')->toArray();
+            ->pluck('id')->toArray();
         
         // Validate national selections
         foreach ($vote_data['national_selected_candidates'] ?? [] as $index => $selection) {
