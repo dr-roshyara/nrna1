@@ -23,12 +23,12 @@ class ElectionController extends Controller
         $this->slugService = $slugService;
     }
     /**
-     * ✅ Dashboard method - Simplified for single election system
+     * ✅ Dashboard method - Route to appropriate page
      *
      * Logic:
      * - Unauthenticated → Welcome page
-     * - Authenticated voter + real election active + eligible → ElectionPage (direct voting)
-     * - Otherwise → ElectionDashboard (dashboard view)
+     * - Authenticated + has organisation → Redirect to organisation page
+     * - Authenticated + no organisation → Dashboard
      */
     public function dashboard()
     {
@@ -44,19 +44,20 @@ class ElectionController extends Controller
             ]);
         }
 
-        // Note: IP tracking is handled elsewhere in the application
+        // Authenticated user with tenant organisation: Redirect to organisation page
+        if ($authUser->hasTenantOrganisation()) {
+            // Get their first/default organisation
+            $organisation = $authUser->organisations()
+                ->where('type', 'tenant')
+                ->first();
 
-        // Phase 6: Demo → Paid Flow
-        // If user has no tenant org, show demo dashboard with platform elections
-        if (!$authUser->hasTenantOrganisation()) {
-            return Inertia::render('demo.dashboard', [
-                'authUser' => $authUser,
-                'ipAddress' => $ipAddress,
-            ]);
+            if ($organisation) {
+                return redirect()->route('organisations.show', $organisation->slug);
+            }
         }
 
-        // User has their own organisation - show real dashboard
-        return Inertia::render('dashboard', [
+        // Authenticated user without organisation: Show dashboard
+        return Inertia::render('Dashboard', [
             'authUser' => $authUser,
             'ipAddress' => $ipAddress,
         ]);
