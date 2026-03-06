@@ -4,14 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 use  Illuminate\Support\Facades\DB;
 use App\Traits\BelongsToTenant;
 
 class Code extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids, SoftDeletes;
     use BelongsToTenant;
+
+    protected $keyType = 'string';
+    public $incrementing = false;
      protected $fillable = [
         'organisation_id',
         'user_id',
@@ -78,6 +83,17 @@ class Code extends Model
         'has_agreed_to_vote_at' => 'datetime',
     ]; 
     /**
+     * Get the organisation this code belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function organisation()
+    {
+        return $this->belongsTo(Organisation::class)
+                    ->withoutGlobalScopes();
+    }
+
+    /**
      * Get the user this code belongs to
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -85,7 +101,7 @@ class Code extends Model
     public function user()
     {
         return $this->belongsTo(User::class)
-            ->select(['id', 'name', 'region', 'user_id', 'nrna_id', 'has_voted']);
+                    ->withoutGlobalScopes();
     }
 
     /**
@@ -95,19 +111,35 @@ class Code extends Model
      */
     public function election()
     {
-        return $this->belongsTo(Election::class);
+        return $this->belongsTo(Election::class)
+                    ->withoutGlobalScopes();
+    }
+
+    /**
+     * Scope: Get codes for a specific organisation
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $organisationId
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeForOrganisation($query, string $organisationId)
+    {
+        return $query->withoutGlobalScopes()
+                     ->where('organisation_id', $organisationId);
     }
 
     /**
      * Scope: Get codes for a specific election
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \App\Models\Election $election
+     * @param string|\App\Models\Election $election
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeForElection($query, Election $election)
+    public function scopeForElection($query, $election)
     {
-        return $query->where('election_id', $election->id);
+        $electionId = is_string($election) ? $election : $election->id;
+        return $query->withoutGlobalScopes()
+                     ->where('election_id', $electionId);
     }
 
     /**
@@ -164,5 +196,54 @@ class Code extends Model
     public function isVerified(): bool
     {
         return (bool) $this->can_vote_now;
+    }
+
+    /**
+     * Scope: Get unused codes (both codes still usable)
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeUnused($query)
+    {
+        return $query->withoutGlobalScopes()
+                     ->where('is_code1_usable', true)
+                     ->where('is_code2_usable', false);
+    }
+
+    /**
+     * Mark code1 as used
+     *
+     * @return bool
+     */
+    public function useCode1(): bool
+    {
+        return $this->update([
+            'is_code1_usable' => false,
+            'code1_used_at' => now(),
+        ]);
+    }
+
+    /**
+     * Mark code2 as used
+     *
+     * @return bool
+     */
+    public function useCode2(): bool
+    {
+        return $this->update([
+            'is_code2_usable' => false,
+            'code2_used_at' => now(),
+        ]);
+    }
+
+    /**
+     * Check if code is still usable
+     *
+     * @return bool
+     */
+    public function isUsable(): bool
+    {
+        return $this->is_code1_usable || $this->is_code2_usable;
     }
 }
