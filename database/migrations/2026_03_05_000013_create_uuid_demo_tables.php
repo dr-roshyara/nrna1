@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->boolean('is_national_wide')->default(true);
             $table->string('state_name')->nullable();
             $table->integer('required_number');
+            $table->integer('position_order')->default(0);
             $table->timestamps();
 
             $table->foreign('organisation_id')

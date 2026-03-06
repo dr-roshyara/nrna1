@@ -12,23 +12,53 @@ class OrganisationController extends Controller
     /**
      * Display an organisation's overview page
      *
-     * @param  string  $slug
+     * Supports both slug and UUID as route parameter:
+     * - /organisations/publicdigit → lookup by slug
+     * - /organisations/{uuid} → lookup by UUID
+     *
+     * @param  string  $slug UUID or slug
      * @return \Inertia\Response|\Illuminate\Routing\Redirector
      */
     public function show($slug)
     {
-        // Get organisation by slug
+        \Log::info('Organisation show method called', ['slug' => $slug]);
+
+        // Get organisation by slug OR UUID
         $organisation = Organisation::where('slug', $slug)
+            ->orWhere('id', $slug)
             ->whereNull('deleted_at')
             ->firstOrFail();
 
+        \Log::info('Organisation found', [
+            'org_id' => $organisation->id,
+            'org_slug' => $organisation->slug,
+            'org_name' => $organisation->name,
+        ]);
+
         // Verify user is a member of this organisation
         $user = auth()->user();
+
+        \Log::info('Checking membership', [
+            'user_id' => $user->id,
+            'org_id' => $organisation->id,
+        ]);
+
         $isMember = $user->organisationRoles()
             ->where('organisation_id', $organisation->id)
             ->exists();
 
+        \Log::info('Membership check result', [
+            'user_id' => $user->id,
+            'org_id' => $organisation->id,
+            'is_member' => $isMember,
+        ]);
+
         if (!$isMember) {
+            \Log::warning('Non-member access attempt', [
+                'user_id' => $user->id,
+                'org_id' => $organisation->id,
+                'org_slug' => $organisation->slug,
+            ]);
             return redirect()->route('dashboard')
                 ->withErrors(['error' => __('organisations.messages.access_denied')]);
         }
@@ -85,26 +115,126 @@ class OrganisationController extends Controller
         $user = auth()->user();
 
         $org = DB::transaction(function () use ($request, $user) {
+            // Generate unique slug from organisation name
+            $slug = \Illuminate\Support\Str::slug($request->name);
+            $originalSlug = $slug;
+            $counter = 1;
+
+            // Ensure slug is unique
+            while (Organisation::where('slug', $slug)->exists()) {
+                $slug = $originalSlug . '-' . $counter++;
+            }
+
             // Create new tenant organisation
             $org = Organisation::create([
                 'name' => $request->name,
+                'slug' => $slug,
                 'type' => 'tenant',
                 'is_default' => false,
             ]);
 
+            \Log::info('Organisation created', [
+                'org_id' => $org->id,
+                'org_slug' => $org->slug,
+                'org_name' => $org->name,
+            ]);
+
             // User becomes OWNER of new org
-            UserOrganisationRole::create([
+            $pivot = UserOrganisationRole::create([
                 'user_id' => $user->id,
                 'organisation_id' => $org->id,
+                'role' => 'owner',
+            ]);
+
+            \Log::info('Organisation membership created', [
+                'pivot_id' => $pivot->id,
+                'user_id' => $user->id,
+                'org_id' => $org->id,
                 'role' => 'owner',
             ]);
 
             // Switch user to new org (they still belong to platform too)
             $user->update(['organisation_id' => $org->id]);
 
+            // Verify membership was created
+            $isMember = $user->organisationRoles()
+                ->where('organisation_id', $org->id)
+                ->exists();
+
+            \Log::info('Membership verification', [
+                'user_id' => $user->id,
+                'org_id' => $org->id,
+                'is_member' => $isMember,
+            ]);
+
             return $org;
         });
 
-        return redirect("/organisations/{$org->id}/dashboard");
+        \Log::info('Redirecting to organisation show page', [
+            'org_slug' => $org->slug,
+            'route' => 'organisations.show',
+        ]);
+
+        return redirect()->route('organisations.show', $org->slug);
+    }
+
+    /**
+     * Display organisation's management dashboard
+     *
+     * Shows statistics and management options for:
+     * - Members and active members
+     * - Elections (active, completed)
+     * - Demo mode status
+     *
+     * @param  string  $slug UUID or slug
+     * @return \Inertia\Response
+     */
+    public function dashboard($slug)
+    {
+        // Get organisation by slug or UUID
+        $organisation = Organisation::where('slug', $slug)
+            ->orWhere('id', $slug)
+            ->whereNull('deleted_at')
+            ->firstOrFail();
+
+        // Verify user is a member
+        $user = auth()->user();
+        $isMember = $user->organisationRoles()
+            ->where('organisation_id', $organisation->id)
+            ->exists();
+
+        if (!$isMember) {
+            return redirect()->route('dashboard')
+                ->withErrors(['error' => __('organisations.messages.access_denied')]);
+        }
+
+        // Set organisation context
+        session(['current_organisation_id' => $organisation->id]);
+
+        // Get organisation statistics
+        $stats = [
+            'members' => $organisation->users()->count(),
+            'active_members' => $organisation->users()
+                ->where('email_verified_at', '!=', null)
+                ->count(),
+            'elections' => \App\Models\Election::where('organisation_id', $organisation->id)->count(),
+            'active_elections' => \App\Models\Election::where('organisation_id', $organisation->id)
+                ->where('status', 'active')
+                ->count(),
+            'completed_elections' => \App\Models\Election::where('organisation_id', $organisation->id)
+                ->where('status', 'completed')
+                ->count(),
+        ];
+
+        return inertia('Organisations/Dashboard', [
+            'organisation' => $organisation->only(['id', 'name', 'slug', 'type', 'email', 'address']),
+            'stats' => $stats,
+            'canManage' => in_array(
+                $user->organisationRoles()
+                    ->where('organisation_id', $organisation->id)
+                    ->value('role'),
+                ['owner', 'admin']
+            ),
+        ]);
     }
 }

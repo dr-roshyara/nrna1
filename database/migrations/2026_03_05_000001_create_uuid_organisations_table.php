@@ -39,28 +39,23 @@ return new class extends Migration
 
     /**
      * Insert the default Public Digit platform organisation
+     * Uses insertOrIgnore for reliability in test environments
      */
     private function insertDefaultOrganisation(): void
     {
-        $exists = DB::table('organisations')
-            ->where('slug', 'publicdigit')
-            ->exists();
-
-        if (!$exists) {
-            DB::table('organisations')->insert([
-                'id' => Str::uuid(),
-                'name' => 'Public Digit',
-                'slug' => 'publicdigit',
-                'type' => 'platform',
-                'is_default' => true,
-                'email' => null,
-                'address' => null,
-                'representative' => null,
-                'settings' => json_encode(['is_default' => true]),
-                'languages' => json_encode(['en', 'de', 'np']),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+        DB::table('organisations')->insertOrIgnore([
+            'id' => Str::uuid(),
+            'name' => 'Public Digit',
+            'slug' => 'publicdigit',
+            'type' => 'platform',
+            'is_default' => true,
+            'email' => null,
+            'address' => null,
+            'representative' => null,
+            'settings' => json_encode(['is_default' => true]),
+            'languages' => json_encode(['en', 'de', 'np']),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 };

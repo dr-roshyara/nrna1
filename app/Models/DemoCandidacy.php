@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\BelongsToTenant;
@@ -25,28 +26,21 @@ use App\Traits\BelongsToTenant;
 class DemoCandidacy extends Model
 {
     use HasFactory;
+    use HasUuids;
     use BelongsToTenant;
+
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     protected $table = 'demo_candidacies';
 
     protected $fillable = [
-        'user_id',
-        'user_name',
-        'candidacy_id',
-        'candidacy_name',
-        'proposer_name',
-        'proposer_id',
-        'supporter_id',
-        'supporter_name',
         'post_id',
-        'post_nepali_name',
-        'post_name',
-        'image_path_1',
-        'image_path_2',
-        'image_path_3',
-        'election_id',
-        'organisation_id',  // ✅ Added for MODE 2 demo voting
-        'position_order'
+        'organisation_id',
+        'user_id',
+        'name',
+        'description',
+        'position_order',
     ];
 
     protected $casts = [

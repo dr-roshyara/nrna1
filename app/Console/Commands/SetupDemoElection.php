@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 class SetupDemoElection extends Command
 {
     protected $signature = 'demo:setup
-                            {--org=1 : Organisation ID to scope the demo election (default: 1)}
+                            {--org=publicdigit : Organisation slug or ID (default: publicdigit)}
                             {--force : Force recreation of existing demo election}
                             {--clean : Delete existing demo data without confirmation}';
 
@@ -21,12 +21,15 @@ class SetupDemoElection extends Command
     public function handle()
     {
         // STEP 1: Validate organisation parameter
-        $orgId = $this->option('org');
+        $orgIdentifier = $this->option('org');
 
-        // STEP 2: Find the organisation
-        $organisation = Organisation::find($orgId);
+        // STEP 2: Find the organisation (by slug OR ID for flexibility)
+        $organisation = Organisation::where('slug', $orgIdentifier)
+            ->orWhere('id', $orgIdentifier)
+            ->first();
+
         if (!$organisation) {
-            $this->error("❌ Organisation with ID {$orgId} not found!");
+            $this->error("❌ Organisation with slug/ID '{$orgIdentifier}' not found!");
             return 1;
         }
 
@@ -37,9 +40,11 @@ class SetupDemoElection extends Command
         $this->info('🔍 Checking for existing demo election...');
 
         // STEP 3: Find existing demo election for this organisation
+        // Note: withTrashed() includes soft-deleted records to handle unique constraint violations
         $demoSlug = 'demo-election-' . $organisation->slug;
 
         $existingElection = Election::withoutGlobalScopes()
+            ->withTrashed()  // Include soft-deleted elections
             ->where('slug', $demoSlug)
             ->where('type', 'demo')
             ->where('organisation_id', $organisation->id)
@@ -47,15 +52,30 @@ class SetupDemoElection extends Command
 
         // STEP 4: Handle existing election
         if ($existingElection) {
-            $this->displayExistingElectionInfo($existingElection, $organisation);
+            // Only display info if election is not soft-deleted
+            if (!$existingElection->trashed()) {
+                $this->displayExistingElectionInfo($existingElection, $organisation);
+            }
 
             if ($this->shouldDeleteExisting()) {
                 $this->info('🗑️  Deleting existing demo election...');
-                $existingElection->delete();
+                // Force-delete to remove from unique constraint
+                if ($existingElection->trashed()) {
+                    $this->line('  └─ (Soft-deleted record being permanently removed)');
+                }
+                $existingElection->forceDelete();
                 $this->info('✅ Existing demo election deleted.');
             } else {
-                $this->info('✅ Using existing demo election.');
-                return 0;
+                // Only show "using existing" if not soft-deleted
+                if (!$existingElection->trashed()) {
+                    $this->info('✅ Using existing demo election.');
+                    return 0;
+                } else {
+                    // Soft-deleted record exists but user doesn't want to force reset
+                    // Cannot proceed without resetting
+                    $this->warn('⚠️  A soft-deleted demo election exists. Use --force to reset.');
+                    return 1;
+                }
             }
         }
 
@@ -78,12 +98,16 @@ class SetupDemoElection extends Command
      */
     private function displayExistingElectionInfo($election, $organisation)
     {
-        $posts      = DemoPost::where('election_id', $election->id)->count();
-        $candidates = DemoCandidacy::where('election_id', $election->id)->count();
+        $posts = DemoPost::where('election_id', $election->id)->count();
+
+        // Count candidates through demo_posts (since demo_candidacies doesn't have election_id)
+        $postIds   = DemoPost::where('election_id', $election->id)->pluck('id')->toArray();
+        $candidates = DemoCandidacy::whereIn('post_id', $postIds)->count();
 
         $this->info("\n📋 Demo election already exists for {$organisation->name}:");
         $this->info("  ID: {$election->id}");
         $this->info("  Name: {$election->name}");
+        $this->info("  Slug: {$election->slug}");
         $this->info("  Posts: {$posts}");
         $this->info("  Candidates: {$candidates}");
     }
@@ -113,6 +137,7 @@ class SetupDemoElection extends Command
 
     /**
      * Create demo election scoped to organisation
+     * Ensures election is active for hasActiveElection() relationship to work
      */
     private function createDemoElection($organisation, $demoSlug)
     {
@@ -122,17 +147,21 @@ class SetupDemoElection extends Command
             'name'            => 'Demo Election - ' . $organisation->name,
             'slug'            => $demoSlug,
             'type'            => 'demo',
-            'is_active'       => true,
+            'status'          => 'active',  // Updated for new model relationship
+            'is_active'       => true,      // Keep for backwards compatibility
             'description'     => 'Demo election for ' . $organisation->name . ' - test voting before live elections',
-            'start_date'      => now()->format('Y-m-d'),
-            'end_date'        => now()->addDays(365)->format('Y-m-d'),
+            'start_date'      => now(),     // Start immediately
+            'end_date'        => now()->addDays(365),  // Active for 1 year
             'organisation_id' => $organisation->id,
         ]);
 
         $this->info("✅ Created Demo Election:");
         $this->info("   ID: {$election->id}");
         $this->info("   Name: {$election->name}");
+        $this->info("   Slug: {$election->slug}");
+        $this->info("   Status: {$election->status}");
         $this->info("   Organisation: {$organisation->name} (ID: {$organisation->id})");
+        $this->info("   Active Period: {$election->start_date->format('Y-m-d')} to {$election->end_date->format('Y-m-d')}");
 
         return $election;
     }
@@ -183,17 +212,13 @@ class SetupDemoElection extends Command
     {
         return [
             [
-                'post_id_prefix'  => 'president',
                 'name'            => 'President',
-                'nepali_name'     => 'राष्ट्रपति',
                 'position_order'  => 1,
                 'required_number' => 1,
                 'candidates'      => $this->generateRandomCandidates('president', 3),
             ],
             [
-                'post_id_prefix'  => 'general_secretary',
                 'name'            => 'General Secretary (Geschäftsführer)',
-                'nepali_name'     => 'महासचिव',
                 'position_order'  => 2,
                 'required_number' => 1,
                 'candidates'      => $this->generateRandomCandidates('secretary', 2),
@@ -208,9 +233,7 @@ class SetupDemoElection extends Command
     {
         return [
             [
-                'post_id_prefix'  => 'regional_rep',
                 'name'            => 'Regional Representative',
-                'nepali_name'     => 'क्षेत्रीय प्रतिनिधि',
                 'position_order'  => 3,
                 'required_number' => 1,
                 'candidates'      => $this->generateRandomCandidates('regional', 2),
@@ -283,18 +306,15 @@ class SetupDemoElection extends Command
         $candidates = $postData['candidates'];
         unset($postData['candidates']);
 
-        $postId = $postData['post_id_prefix'] . '-' . $election->id . ($region ? '-' . Str::slug($region) : '');
-
+        // Create demo post with correct schema (no post_id field)
         $post = DemoPost::create([
-            'post_id'         => $postId,
-            'name'            => $postData['name'] . ($region ? ' - ' . $region : ''),
-            'nepali_name'     => $postData['nepali_name'],
-            'position_order'  => $postData['position_order'],
-            'required_number' => $postData['required_number'],
+            'name'             => $postData['name'] . ($region ? ' - ' . $region : ''),
+            'position_order'   => $postData['position_order'],
+            'required_number'  => $postData['required_number'],
             'is_national_wide' => $isNational ? 1 : 0,
-            'state_name'      => $region,
-            'election_id'     => $election->id,
-            'organisation_id' => $organisation->id,
+            'state_name'       => $region,
+            'election_id'      => $election->id,
+            'organisation_id'  => $organisation->id,
         ]);
 
         $regionText = $region ? " (Region: {$region})" : " (National)";
@@ -305,24 +325,14 @@ class SetupDemoElection extends Command
         foreach ($candidates as $index => $candidate) {
             $candidateCount++;
 
-            $candidacyNameSlug = Str::slug($candidate['name']);
-            $postNameSlug      = Str::slug($postData['name']);
-            $regionSlug        = $region ? '-' . Str::slug($region) : '';
-            $imagePath         = "candidates/{$candidacyNameSlug}_{$postNameSlug}{$regionSlug}_"
-                               . str_pad($index + 1, 2, '0', STR_PAD_LEFT) . ".png";
-
+            // Create demo candidacy with correct schema
             DemoCandidacy::create([
-                'user_id'         => null,
                 'post_id'         => $post->id,
-                'election_id'     => $election->id,
                 'organisation_id' => $organisation->id,
-                'candidacy_id'    => "demo-{$postId}-" . ($index + 1),
-                'user_name'       => $candidate['name'],
-                'candidacy_name'  => $candidate['candidacy_name'],
-                'proposer_name'   => $this->getProposerName($index),
-                'supporter_name'  => $this->getSupporterName($index),
+                'user_id'         => null,
+                'name'            => $candidate['candidacy_name'],
+                'description'     => $candidate['name'],
                 'position_order'  => $index + 1,
-                'image_path_1'    => $imagePath,
             ]);
         }
 
@@ -332,37 +342,31 @@ class SetupDemoElection extends Command
     }
 
     /**
-     * Get proposer name
-     */
-    private function getProposerName($index)
-    {
-        $proposers = ['John Doe', 'Michael Brown', 'Robert Johnson', 'David Lee', 'James Harris',
-                      'William Clark', 'Richard Lewis', 'Joseph Walker', 'Thomas Hall', 'Charles Allen'];
-        return $proposers[$index % count($proposers)];
-    }
-
-    /**
-     * Get supporter name
-     */
-    private function getSupporterName($index)
-    {
-        $supporters = ['Jane Smith', 'Sarah Wilson', 'Emma Davis', 'Nancy Clark', 'Jennifer Martin',
-                       'Lisa Anderson', 'Margaret Taylor', 'Betty Moore', 'Dorothy Jackson', 'Helen White'];
-        return $supporters[$index % count($supporters)];
-    }
-
-    /**
      * Display setup summary
      */
     private function displaySummary($election, $organisation, $stats)
     {
+        // Check if election is active using new hasActiveElection logic
+        $isActive = $election->status === 'active'
+                 && $election->start_date <= now()
+                 && $election->end_date >= now();
+
         $this->info("\n📊 Demo Election Summary for {$organisation->name}:");
         $this->info("  ✅ Election ID: {$election->id}");
         $this->info("  ✅ Election Name: {$election->name}");
+        $this->info("  ✅ Slug: {$election->slug}");
+        $this->info("  ✅ Status: " . ($isActive ? "🟢 ACTIVE" : "🔴 INACTIVE"));
+        $this->info("  ✅ Date Range: {$election->start_date->format('Y-m-d')} to {$election->end_date->format('Y-m-d')}");
         $this->info("  ✅ Total Posts: {$stats['posts']}");
         $this->info("     ├─ National Posts: {$stats['national_posts']}");
         $this->info("     └─ Regional Posts: {$stats['regional_posts']}");
         $this->info("  ✅ Total Candidates: {$stats['candidates']}");
+
+        // Show voter slug information
+        $voterSlugsCount = \DB::table('voter_slugs')
+            ->where('election_id', $election->id)
+            ->count();
+        $this->info("  ✅ Demo Voter Slugs: {$voterSlugsCount}");
 
         $this->info("\n📋 Candidate Breakdown:");
         $this->info("  ├─ President: 3 random candidates");
@@ -373,10 +377,13 @@ class SetupDemoElection extends Command
         $this->info("  └─ Regional Representative – Africa: 2 random candidates");
 
         $this->info("\n💡 Demo codes are created per-user when voters start the demo voting flow.");
+        $this->info("💡 Voter progress is tracked via voter_slugs with current_step and step_meta.");
 
         $this->info("\n✅ Demo election setup complete for {$organisation->name}!");
         $this->info("📢 Access URL: " . url('/election/demo/start'));
         $this->info("   Organisation ID: {$organisation->id}");
-        $this->info("   Election ID: {$election->id}\n");
+        $this->info("   Organisation Slug: {$organisation->slug}");
+        $this->info("   Election ID: {$election->id}");
+        $this->info("   Election Slug: {$election->slug}\n");
     }
 }

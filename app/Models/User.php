@@ -1079,6 +1079,121 @@ public function getVoterState(): string
     }
 
     /**
+     * Check if user has their OWN organisation (tenant, not platform)
+     *
+     * A user "owns" an organisation if they have a pivot record
+     * and the organisation type is 'tenant'
+     *
+     * @return bool
+     */
+    public function hasOwnOrganisation(): bool
+    {
+        return $this->organisations()
+            ->where('type', 'tenant')
+            ->exists();
+    }
+
+    /**
+     * Get user's own organisation (the first tenant org they belong to)
+     *
+     * @return Organisation|null
+     */
+    public function getOwnOrganisation(): ?Organisation
+    {
+        return $this->organisations()
+            ->where('type', 'tenant')
+            ->first();
+    }
+
+    /**
+     * Check if user is the owner of a specific organisation
+     * Stricter check - user must have role='owner'
+     *
+     * @param string $organisationId
+     * @return bool
+     */
+    public function isOwnerOf(string $organisationId): bool
+    {
+        return $this->organisationRoles()
+            ->where('organisation_id', $organisationId)
+            ->where('role', 'owner')
+            ->exists();
+    }
+
+    /**
+     * Check if user has any active election they can vote in
+     *
+     * Conditions:
+     * 1. User belongs to an organisation (via pivot)
+     * 2. That organisation has an active election
+     * 3. Election is within date range (start_date <= now <= end_date)
+     * 4. User hasn't already voted in that election
+     *
+     * @return bool
+     */
+    public function hasActiveElection(): bool
+    {
+        return $this->getActiveElection() !== null;
+    }
+
+    /**
+     * Get the first active election user can vote in
+     *
+     * @return Election|null
+     */
+    public function getActiveElection(): ?Election
+    {
+        // Get all organisations user belongs to (excluding platform)
+        $orgIds = $this->organisations()
+            ->where('type', 'tenant')
+            ->pluck('organisations.id')
+            ->toArray();
+
+        if (empty($orgIds)) {
+            return null;
+        }
+
+        // Find active elections in those orgs
+        return Election::whereIn('organisation_id', $orgIds)
+            ->where('status', 'active')
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
+            ->whereDoesntHave('voterSlugs', function ($query) {
+                $query->where('user_id', $this->id)
+                    ->where('status', 'voted');
+            })
+            ->orderBy('start_date')
+            ->first();
+    }
+
+    /**
+     * Get count of active elections user can vote in
+     *
+     * @return int
+     */
+    public function countActiveElections(): int
+    {
+        $orgIds = $this->organisations()
+            ->where('type', 'tenant')
+            ->pluck('organisations.id')
+            ->toArray();
+
+        if (empty($orgIds)) {
+            return 0;
+        }
+
+        return Election::whereIn('organisation_id', $orgIds)
+            ->where('status', 'active')
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
+            ->whereDoesntHave('voterSlugs', function ($query) {
+                $query->where('user_id', $this->id)
+                    ->where('status', 'voted');
+            })
+            ->count();
+    }
+
+    /**
      * Flush role cache when roles change
      *
      * @return void

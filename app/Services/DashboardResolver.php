@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Schema;
 
 class DashboardResolver
 {
+    public function __construct(
+        private TenantContext $tenantContext
+    ) {
+    }
     /**
      * Resolve user's dashboard based on roles and system state
      *
@@ -95,13 +99,15 @@ class DashboardResolver
         // PRIORITY 3: ACTIVE ELECTION AVAILABLE
         // User has eligible organisation AND active election exists
         // =============================================
-        $activeElection = $this->getActiveElectionForUser($user);
-        if ($activeElection) {
+        if ($user->hasActiveElection()) {
+            $activeElection = $user->getActiveElection();
+            $electionOrganisation = $activeElection->organisation;
             Log::info('🗳️ PRIORITY 3 HIT: Active election found - user can vote', [
                 'user_id' => $user->id,
                 'election_id' => $activeElection->id,
                 'election_slug' => $activeElection->slug,
             ]);
+            $this->tenantContext->setContext($user, $electionOrganisation);
             $this->cacheResolution($user, route('election.dashboard', $activeElection->slug));
             return redirect()->route('election.dashboard', $activeElection->slug);
         }
@@ -130,14 +136,30 @@ class DashboardResolver
         // Redirect to organisation page if user has organisation roles
         // =============================================
         // Get user's first non-platform organisation
+        $platformOrgId = $this->getPlatformOrgId();
         $orgRole = DB::table('user_organisation_roles')
             ->where('user_id', $user->id)
-            ->where('organisation_id', '!=', 1)
+            ->where('organisation_id', '!=', $platformOrgId)
             ->first();
-        
+
         if ($orgRole) {
             $organisation = \App\Models\Organisation::find($orgRole->organisation_id);
             if ($organisation) {
+                // Set TenantContext before redirecting
+                try {
+                    $this->tenantContext->setContext($user, $organisation);
+                    Log::debug('DashboardResolver: TenantContext set for organisation (Priority 5)', [
+                        'user_id' => $user->id,
+                        'organisation_id' => $organisation->id,
+                    ]);
+                } catch (\RuntimeException $e) {
+                    Log::warning('DashboardResolver: Failed to set TenantContext (Priority 5)', [
+                        'user_id' => $user->id,
+                        'organisation_id' => $organisation->id,
+                        'error' => $e->getMessage(),
+                    ]);
+                }
+
                 Log::info('🏢 PRIORITY 5 HIT: User has organisation - redirecting to organisation page', [
                     'user_id' => $user->id,
                     'organisation_id' => $organisation->id,
@@ -455,12 +477,13 @@ class DashboardResolver
             // Don't add 'admin' role for 'member' role in platform organisation
             if (\Schema::hasTable('user_organisation_roles')) {
                 // Check for actual admin roles in non-platform organisations
+                $platformOrgId = $this->getPlatformOrgId();
                 $adminRoleExists = \DB::table('user_organisation_roles')
                     ->where('user_id', $user->id)
                     ->where('role', 'admin')
-                    ->whereNot(function ($query) {
-                        // Exclude platform organisation (id=1)
-                        $query->where('organisation_id', 1);
+                    ->whereNot(function ($query) use ($platformOrgId) {
+                        // Exclude platform organisation
+                        $query->where('organisation_id', $platformOrgId);
                     })
                     ->exists();
 
@@ -609,6 +632,21 @@ class DashboardResolver
                     $organisation = \App\Models\Organisation::find($orgRole->organisation_id);
 
                     if ($organisation) {
+                        // Set TenantContext before redirecting
+                        try {
+                            $this->tenantContext->setContext($user, $organisation);
+                            \Log::debug('DashboardResolver: TenantContext set for organisation admin', [
+                                'user_id' => $user->id,
+                                'organisation_id' => $organisation->id,
+                            ]);
+                        } catch (\RuntimeException $e) {
+                            \Log::warning('DashboardResolver: Failed to set TenantContext for admin', [
+                                'user_id' => $user->id,
+                                'organisation_id' => $organisation->id,
+                                'error' => $e->getMessage(),
+                            ]);
+                        }
+
                         \Log::info('DashboardResolver: organisation admin redirect', [
                             'user_id' => $user->id,
                             'organisation_id' => $organisation->id,
@@ -714,12 +752,13 @@ class DashboardResolver
         try {
             // =============================================
             // STEP 1: Verify organisation exists AND user has active membership
-            // Exclude platform organisation (id=1)
+            // Exclude platform organisation
             // =============================================
+            $platformOrgId = $this->getPlatformOrgId();
             $activeOrgs = DB::table('user_organisation_roles')
                 ->join('organisations', 'user_organisation_roles.organisation_id', '=', 'organisations.id')
                 ->where('user_organisation_roles.user_id', $user->id)
-                ->where('organisations.id', '!=', 1) // Exclude platform org
+                ->where('organisations.id', '!=', $platformOrgId) // Exclude platform org
                 ->where('user_organisation_roles.role', 'member') // Active membership
                 ->select('organisations.*')
                 ->get();
@@ -846,6 +885,30 @@ class DashboardResolver
     }
 
     /**
+     * Get the platform organisation ID (cached)
+     *
+     * @return string UUID of platform organisation
+     */
+    private function getPlatformOrgId(): string
+    {
+        $cacheKey = 'app.platform_org_id';
+
+        return Cache::remember($cacheKey, 3600, function () {
+            $platformOrg = \App\Models\Organisation::where('type', 'platform')
+                ->where('is_default', true)
+                ->select('id')
+                ->first();
+
+            if (!$platformOrg) {
+                Log::error('DashboardResolver: Platform organisation not found');
+                throw new \RuntimeException('Platform organisation not found');
+            }
+
+            return $platformOrg->id;
+        });
+    }
+
+    /**
      * Check if user has any active organisations (excluding platform)
      * Active organisations are those where user has any role (member, admin, voter, commission, etc.)
      *
@@ -855,21 +918,24 @@ class DashboardResolver
     private function hasActiveOrganisations(User $user): bool
     {
         try {
+            $platformOrgId = $this->getPlatformOrgId();
+
             $exists = DB::table('user_organisation_roles')
                 ->where('user_id', $user->id)
-                ->where('organisation_id', '!=', 1) // Exclude platform
+                ->where('organisation_id', '!=', $platformOrgId) // Exclude platform
                 ->exists();
-            
+
             Log::debug('DashboardResolver: hasActiveOrganisations check', [
                 'user_id' => $user->id,
                 'exists' => $exists,
+                'platform_org_id' => $platformOrgId,
                 'organisation_roles' => DB::table('user_organisation_roles')
                     ->where('user_id', $user->id)
-                    ->where('organisation_id', '!=', 1)
+                    ->where('organisation_id', '!=', $platformOrgId)
                     ->get(['organisation_id', 'role'])
                     ->toArray()
             ]);
-            
+
             return $exists;
         } catch (\Exception $e) {
             Log::error('DashboardResolver: Error checking active organisations', [
@@ -883,12 +949,10 @@ class DashboardResolver
     /**
      * Handle case when user has no active organisations or elections
      *
-     * Routes based on EFFECTIVE organisation_id (considers pivot table):
-     * - org_id = 1 (platform/publicdigit) → welcome dashboard or dashboard (if onboarded)
-     * - org_id > 1 (custom organisation) → organisation page (only if user has valid pivot)
-     *
-     * Checks belongsToOrganisation() to ensure we don't redirect to organisations
-     * where user has stale org_id but no valid pivot record.
+     * Routes based on whether user has their own tenant organisation:
+     * - Has tenant org → redirect to /organisations/{slug}
+     * - Platform only + not onboarded → welcome dashboard
+     * - Platform only + onboarded → main dashboard
      *
      * @param User $user
      * @return RedirectResponse
@@ -896,80 +960,58 @@ class DashboardResolver
     private function handleMissingOrganisation(User $user): RedirectResponse
     {
         try {
-            // DEBUG: Log what's happening in this method
-            Log::info('🔥 DEBUG - handleMissingOrganisation called', [
+            Log::info('🔍 handleMissingOrganisation called', [
                 'user_id' => $user->id,
                 'email' => $user->email,
                 'raw_org_id' => $user->organisation_id,
                 'onboarded_at' => $user->onboarded_at,
-                'has_platform_pivot' => DB::table('user_organisation_roles')
-                    ->where('user_id', $user->id)
-                    ->where('organisation_id', 1)
-                    ->exists(),
-                'all_pivots' => DB::table('user_organisation_roles')
-                    ->where('user_id', $user->id)
-                    ->get(['organisation_id', 'role'])
-                    ->toArray(),
             ]);
 
-            // CRITICAL FIX: Check if user has a valid pivot for their organisation_id
-            // This prevents stale org_ids (user assigned to org 2 but no pivot for org 2)
-            // from causing 403 errors and wrong redirects
-            $effectiveOrgId = 1; // Default to platform
+            // ===== CHECK 1: Does user have THEIR OWN organisation? =====
+            if ($user->hasOwnOrganisation()) {
+                $ownOrg = $user->getOwnOrganisation();
 
-            if ($user->organisation_id && $user->organisation_id > 1 && $user->belongsToOrganisation($user->organisation_id)) {
-                // User has a custom org AND a valid pivot record for it
-                $effectiveOrgId = $user->organisation_id;
-            }
+                Log::info('🏢 User has own organisation - redirecting', [
+                    'user_id' => $user->id,
+                    'organisation_id' => $ownOrg->id,
+                    'organisation_slug' => $ownOrg->slug,
+                    'type' => $ownOrg->type,
+                ]);
 
-            Log::debug('DashboardResolver: handleMissingOrganisation called', [
-                'user_id' => $user->id,
-                'raw_organisation_id' => $user->organisation_id,
-                'effective_organisation_id' => $effectiveOrgId,
-            ]);
-
-            // If effective org is platform (1) → welcome/dashboard based on onboarding
-            if ($effectiveOrgId == 1) {
-                if ($user->onboarded_at === null) {
-                    Log::info('✅ Platform user not onboarded - sending to welcome', [
+                // Set TenantContext before redirecting
+                try {
+                    $this->tenantContext->setContext($user, $ownOrg);
+                    Log::debug('DashboardResolver: TenantContext set for own organisation', [
                         'user_id' => $user->id,
-                        'email' => $user->email,
-                        'destination' => 'dashboard.welcome',
+                        'organisation_id' => $ownOrg->id,
                     ]);
-                    return redirect()->route('dashboard.welcome');
+                } catch (\RuntimeException $e) {
+                    Log::warning('DashboardResolver: Failed to set TenantContext for own org', [
+                        'user_id' => $user->id,
+                        'organisation_id' => $ownOrg->id,
+                        'error' => $e->getMessage(),
+                    ]);
                 }
 
-                Log::info('✅ Platform user onboarded - sending to dashboard', [
-                    'user_id' => $user->id,
-                    'email' => $user->email,
-                    'destination' => 'dashboard',
-                ]);
-                return redirect()->route('dashboard');
+                return redirect()->route('organisations.show', $ownOrg->slug);
             }
 
-            // Custom organisation (org_id > 1)
-            // Get organisation details
-            $organisation = DB::table('organisations')
-                ->where('id', $effectiveOrgId)
-                ->first();
+            // ===== CHECK 2: User is in platform context =====
+            // User has NO tenant org, so they're a platform user
 
-            if (!$organisation) {
-                Log::error('DashboardResolver: Organisation not found (effective org)', [
+            if ($user->onboarded_at === null) {
+                Log::info('👋 Platform user not onboarded - sending to welcome', [
                     'user_id' => $user->id,
-                    'effective_organisation_id' => $effectiveOrgId,
+                    'email' => $user->email,
                 ]);
                 return redirect()->route('dashboard.welcome');
             }
 
-            // Send to custom organisation page
-            Log::info('DashboardResolver: Redirecting to custom organisation', [
+            Log::info('🏛️ Platform user onboarded - sending to dashboard', [
                 'user_id' => $user->id,
-                'effective_organisation_id' => $effectiveOrgId,
-                'organisation_slug' => $organisation->slug,
-                'destination' => 'organisations.show',
+                'email' => $user->email,
             ]);
-
-            return redirect()->route('organisations.show', $organisation->slug);
+            return redirect()->route('dashboard');
 
         } catch (\Throwable $e) {
             Log::error('DashboardResolver: Error in handleMissingOrganisation', [

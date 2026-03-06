@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Post;
-use App\Models\Candidacy;   
+use App\Models\Candidacy;
 use App\Models\VoterRegistration;
 use App\Models\Code;
 use App\Models\Vote;
-use App\Models\Result;  
+use App\Models\Result;
+use App\Models\VoterSlug;  
 /**
  * Election Model
  *
@@ -149,6 +150,26 @@ class Election extends Model
     public function codes(): HasMany
     {
         return $this->hasMany(Code::class);
+    }
+
+    /**
+     * Get all voter slugs for this election
+     *
+     * @return HasMany
+     */
+    public function voterSlugs(): HasMany
+    {
+        return $this->hasMany(VoterSlug::class)->withoutGlobalScopes();
+    }
+
+    /**
+     * Get all demo posts for this election (for demo/test elections)
+     *
+     * @return HasMany
+     */
+    public function demoPosts(): HasMany
+    {
+        return $this->hasMany(DemoPost::class)->withoutGlobalScopes();
     }
 
     /**

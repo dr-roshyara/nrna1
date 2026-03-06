@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\BelongsToTenant;
@@ -25,12 +26,15 @@ use App\Traits\BelongsToTenant;
 class DemoPost extends Model
 {
     use HasFactory;
+    use HasUuids;
     use BelongsToTenant;
+
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     protected $table = 'demo_posts';
 
     protected $fillable = [
-        'post_id',
         'name',
         'nepali_name',
         'election_id',
@@ -46,7 +50,7 @@ class DemoPost extends Model
      */
     public function candidacies()
     {
-         return $this->hasMany(DemoCandidacy::class, 'post_id', 'id');
+         return $this->hasMany(DemoCandidacy::class, 'post_id', 'id')->withoutGlobalScopes();
     }
 
     /**

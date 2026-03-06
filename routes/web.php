@@ -44,7 +44,6 @@ use App\Http\Controllers\CommissionDashboardController;
 use App\Http\Controllers\VoterDashboardController;
 use App\Http\Controllers\WelcomeDashboardController;
 use App\Http\Controllers\OrganisationController;
-use App\Http\Controllers\Api\OrganisationController as ApiOrganisationController;
 use App\Http\Controllers\Organisations\MemberImportController;
 use App\Http\Controllers\MemberController;
 
@@ -120,7 +119,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/forgot-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'showLinkRequestForm'])->name('password.request');
     Route::post('/forgot-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'sendResetLink'])->name('password.email');
     Route::get('/reset-password/{token}', [App\Http\Controllers\Auth\PasswordResetController::class, 'showResetForm'])->name('password.reset');
-    Route::post('/reset-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'reset'])->name('password.update');
+    Route::post('/reset-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'reset'])->name('password.reset.store');
 });
 
 Route::middleware('auth')->group(function () {
