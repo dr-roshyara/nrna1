@@ -50,7 +50,7 @@ class DemoCandidacy extends Model
     ];
 
     protected $casts = [
-        'post_id' => 'integer',
+        // post_id is UUID (string), not integer
     ];
 
     /**
