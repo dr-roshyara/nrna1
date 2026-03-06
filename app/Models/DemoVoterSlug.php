@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Traits\BelongsToTenant;
 
@@ -28,7 +29,11 @@ use App\Traits\BelongsToTenant;
 class DemoVoterSlug extends Model
 {
     use HasFactory;
+    use HasUuids;
     use BelongsToTenant;
+
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     protected $table = 'demo_voter_slugs';
 
