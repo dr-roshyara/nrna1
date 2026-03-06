@@ -73,8 +73,8 @@ class DemoCandidacyFactory extends Factory
             'proposer_name' => $this->faker->name(),
             'supporter_id' => 'demo_supp_' . $this->faker->unique()->numberBetween(1000, 9999),
             'supporter_name' => $this->faker->name(),
-            'election_id' => Election::where('type', 'demo')->first()?->id ?? 1,
-            'image_path_1' => null, // Optional: Can be generated if image seeding is needed
+            'election_id' => Election::where('type', 'demo')->firstOrFail()->id,
+            'image_path_1' => null,
             'image_path_2' => null,
             'image_path_3' => null,
         ];
