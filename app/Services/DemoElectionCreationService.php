@@ -162,7 +162,7 @@ class DemoElectionCreationService
             // Create candidacy
             DemoCandidacy::create([
                 'user_id' => "demo-{$postId}-" . ($index + 1),
-                'post_id' => $post->post_id,
+                'post_id' => $post->id,
                 'election_id' => $election->id,
                 'organisation_id' => $election->organisation_id, // CRITICAL: Propagate org context
                 'candidacy_id' => "demo-{$postId}-" . ($index + 1),
