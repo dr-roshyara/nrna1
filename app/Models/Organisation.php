@@ -52,6 +52,12 @@ class Organisation extends Model
         return $this->hasMany(Election::class);
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'organisation_id', 'id')
+                    ->withoutGlobalScopes();
+    }
+
     public function admins()
     {
         return $this->users()->wherePivot('role', 'admin');
@@ -68,6 +74,11 @@ class Organisation extends Model
     }
 
     public function roles()
+    {
+        return $this->hasMany(UserOrganisationRole::class);
+    }
+
+    public function userOrganisationRoles()
     {
         return $this->hasMany(UserOrganisationRole::class);
     }
