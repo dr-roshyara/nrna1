@@ -29,6 +29,42 @@ class DemoVote extends BaseVote
     protected $table = 'demo_votes';
 
     /**
+     * Cast JSON fields to arrays
+     *
+     * @var array
+     */
+    protected $casts = [
+        'candidate_selections' => 'array',
+    ];
+
+    /**
+     * Override fillable to match demo_votes table schema.
+     *
+     * IMPORTANT: DemoVote uses candidate_selections (JSON) NOT individual candidate_xx columns.
+     * The demo_votes table stores vote data differently than the real votes table:
+     * - Real votes (parent BaseVote): Individual candidate_01..60 columns
+     * - Demo votes: candidate_selections JSON + no_vote_option boolean
+     *
+     * For demo votes, we also use:
+     * - receipt_hash: For voter self-verification (e.g., via email receipt)
+     * - participation_proof: For IP-based admin verification (prove participation without revealing vote)
+     * - encrypted_vote: Encrypted vote data for voter verification
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'organisation_id',
+        'election_id',
+        'receipt_hash',
+        'participation_proof',
+        'encrypted_vote',
+        'candidate_selections',
+        'no_vote_option',
+        'voted_at',
+        'voter_ip',
+    ];
+
+    /**
      * Get all results aggregated from this demo vote
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -36,6 +72,36 @@ class DemoVote extends BaseVote
     public function results()
     {
         return $this->hasMany(DemoResult::class);
+    }
+
+    /**
+     * Verify this vote by receipt hash (voter self-verification)
+     *
+     * Allows a voter to verify their vote was counted by entering their receipt string.
+     * The receipt string is hashed and compared against the stored receipt_hash.
+     *
+     * @param string $receipt The receipt string provided by voter
+     * @return bool True if receipt matches
+     */
+    public function verifyByReceipt(string $receipt): bool
+    {
+        return hash('sha256', $receipt . config('app.salt')) === $this->receipt_hash;
+    }
+
+    /**
+     * Prove participation by participation proof (IP-based admin verification)
+     *
+     * Allows election officials to verify a voter participated without seeing their vote.
+     * Uses IP address + user ID + election ID to create a cryptographic proof.
+     *
+     * @param string $userId The user ID to verify
+     * @param string $ip The IP address that cast the vote
+     * @return bool True if participation can be proven
+     */
+    public function proveParticipation(string $userId, string $ip): bool
+    {
+        $proof = hash('sha256', $userId . $ip . $this->election_id . config('app.salt'));
+        return $proof === $this->participation_proof;
     }
 
     /**
@@ -56,6 +122,56 @@ class DemoVote extends BaseVote
     public function isDemo(): bool
     {
         return true;
+    }
+
+    /**
+     * Override boot hook to skip vote_hash validation for demo votes
+     *
+     * Demo votes use receipt_hash for voter verification instead of vote_hash.
+     * We still validate that election_id is present and valid.
+     */
+    protected static function booted()
+    {
+        static::creating(function ($vote) {
+            // Validate election_id is present
+            if (is_null($vote->election_id)) {
+                \Log::channel('voting_security')->warning('Demo vote rejected: NULL election_id', [
+                    'reason' => 'Election reference is required',
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
+
+                throw new \App\Exceptions\InvalidRealVoteException(
+                    'Votes require a valid election (election_id cannot be NULL)',
+                    ['reason' => 'null_election_id']
+                );
+            }
+
+            // Verify election exists
+            $election = \App\Models\Election::withoutGlobalScopes()->find($vote->election_id);
+            if (!$election) {
+                \Log::channel('voting_security')->warning('Demo vote rejected: Invalid election_id', [
+                    'election_id' => $vote->election_id,
+                    'reason' => 'Election not found',
+                    'timestamp' => now(),
+                    'ip' => request()->ip(),
+                ]);
+
+                throw new \App\Exceptions\InvalidRealVoteException(
+                    "Election (id: {$vote->election_id}) not found",
+                    ['election_id' => $vote->election_id, 'reason' => 'election_not_found']
+                );
+            }
+
+            // ✅ Demo vote validation passed
+            \Log::channel('voting_security')->info('Demo vote passed model validation', [
+                'election_id' => $vote->election_id,
+                'organisation_id' => $vote->organisation_id,
+                'receipt_hash_prefix' => substr($vote->receipt_hash ?? '', 0, 10) . '...',
+                'timestamp' => now(),
+                'ip' => request()->ip(),
+            ]);
+        });
     }
 
     /**
