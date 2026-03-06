@@ -53,4 +53,35 @@ class Vote extends BaseVote
     {
         return false;
     }
+
+    /**
+     * Check for duplicate voting from the same device
+     *
+     * Detects if a vote with the same device fingerprint already exists for this election.
+     * Used for fraud detection without compromising voter privacy.
+     *
+     * @param string $fingerprintHash The device fingerprint hash
+     * @param string $electionId The election ID
+     * @return bool True if duplicate device detected
+     */
+    public static function hasDuplicateDevice(string $fingerprintHash, string $electionId): bool
+    {
+        return static::where('device_fingerprint_hash', $fingerprintHash)
+            ->where('election_id', $electionId)
+            ->exists();
+    }
+
+    /**
+     * Scope: Get votes from the same device in an election
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $fingerprintHash The device fingerprint hash
+     * @param string $electionId The election ID
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSameDevice($query, string $fingerprintHash, string $electionId)
+    {
+        return $query->where('device_fingerprint_hash', $fingerprintHash)
+            ->where('election_id', $electionId);
+    }
 }

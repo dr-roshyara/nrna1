@@ -43,14 +43,24 @@ abstract class BaseVote extends Model
      * These are mass-assignable on all vote types.
      *
      * CRITICAL: No 'user_id' in database - votes are completely anonymous!
-     * vote_hash provides cryptographic proof of vote without exposing identity.
+     *
+     * Verification columns (replaces old vote_hash):
+     * - receipt_hash: For voter self-verification (e.g., via email receipt)
+     * - participation_proof: For IP-based admin verification (prove participation without revealing vote)
+     * - encrypted_vote: Encrypted vote data for voter verification
+     * - device_fingerprint_hash: For fraud detection (privacy-preserving hash)
+     * - device_metadata_anonymized: Anonymized device analytics
      *
      * @var array
      */
     protected $fillable = [
         'organisation_id',
         'election_id',
-        'vote_hash',  // SHA256 cryptographic proof
+        'receipt_hash',
+        'participation_proof',
+        'encrypted_vote',
+        'device_fingerprint_hash',
+        'device_metadata_anonymized',
         'no_vote_posts',
         'candidate_01', 'candidate_02', 'candidate_03', 'candidate_04', 'candidate_05',
         'candidate_06', 'candidate_07', 'candidate_08', 'candidate_09', 'candidate_10',
@@ -74,6 +84,7 @@ abstract class BaseVote extends Model
     protected $casts = [
         'no_vote_posts' => 'array',
         'metadata' => 'array',
+        'device_metadata_anonymized' => 'array',
         'cast_at' => 'datetime',
     ];
 
@@ -83,7 +94,8 @@ abstract class BaseVote extends Model
      * @var array
      */
     protected $hidden = [
-        'vote_hash', // Never expose the cryptographic proof in API
+        'receipt_hash', // Never expose the receipt hash in API
+        'participation_proof', // Never expose the participation proof in API
     ];
 
     /**
@@ -151,17 +163,17 @@ abstract class BaseVote extends Model
                 }
             }
 
-            // Ensure vote_hash is provided (cryptographic proof)
-            if (is_null($vote->vote_hash)) {
-                \Log::channel('voting_security')->warning('Vote rejected: NULL vote_hash', [
-                    'reason' => 'Cryptographic proof is required',
+            // Ensure receipt_hash is provided (cryptographic proof for voter verification)
+            if (is_null($vote->receipt_hash)) {
+                \Log::channel('voting_security')->warning('Vote rejected: NULL receipt_hash', [
+                    'reason' => 'Receipt hash is required for verification',
                     'election_id' => $vote->election_id,
                     'timestamp' => now(),
                 ]);
 
                 throw new \App\Exceptions\InvalidRealVoteException(
-                    'Votes require a cryptographic proof (vote_hash cannot be NULL)',
-                    ['reason' => 'null_vote_hash']
+                    'Votes require a receipt hash (receipt_hash cannot be NULL)',
+                    ['reason' => 'null_receipt_hash']
                 );
             }
 
@@ -174,7 +186,7 @@ abstract class BaseVote extends Model
             \Log::channel('voting_security')->info('Vote passed model validation', [
                 'election_id' => $vote->election_id,
                 'organisation_id' => $vote->organisation_id,
-                'vote_hash_prefix' => substr($vote->vote_hash, 0, 10) . '...',
+                'receipt_hash_prefix' => substr($vote->receipt_hash, 0, 10) . '...',
                 'timestamp' => now(),
                 'ip' => request()->ip(),
             ]);
@@ -199,7 +211,37 @@ abstract class BaseVote extends Model
             $this->cast_at->timestamp
         );
 
-        return hash_equals($this->vote_hash, $expectedHash);
+        return hash_equals($this->receipt_hash, $expectedHash);
+    }
+
+    /**
+     * Verify this vote by receipt hash (voter self-verification)
+     *
+     * Allows a voter to verify their vote was counted by entering their receipt string.
+     * The receipt string is hashed and compared against the stored receipt_hash.
+     *
+     * @param string $receipt The receipt string provided by voter
+     * @return bool True if receipt matches
+     */
+    public function verifyByReceipt(string $receipt): bool
+    {
+        return hash('sha256', $receipt . config('app.salt')) === $this->receipt_hash;
+    }
+
+    /**
+     * Prove participation by participation proof (IP-based admin verification)
+     *
+     * Allows election officials to verify a voter participated without seeing their vote.
+     * Uses IP address + user ID + election ID to create a cryptographic proof.
+     *
+     * @param string $userId The user ID to verify
+     * @param string $ip The IP address that cast the vote
+     * @return bool True if participation can be proven
+     */
+    public function proveParticipation(string $userId, string $ip): bool
+    {
+        $proof = hash('sha256', $userId . $ip . $this->election_id . config('app.salt'));
+        return $proof === $this->participation_proof;
     }
 
     /**
@@ -214,7 +256,7 @@ abstract class BaseVote extends Model
             'election_id' => $this->election_id,
             'organisation_id' => $this->organisation_id,
             'cast_at' => $this->cast_at,
-            'vote_hash_prefix' => substr($this->vote_hash, 0, 8) . '...',
+            'receipt_hash_prefix' => substr($this->receipt_hash, 0, 8) . '...',
             'can_verify' => true,
         ];
     }
