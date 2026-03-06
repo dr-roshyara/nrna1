@@ -119,7 +119,7 @@ class EnsureOrganisationMember
                 'user_id' => $user->id,
                 'user_name' => $user->name,
                 'organisation_id' => $organisation->id,
-                'organisation_slug' => $organisationSlug,
+                'organisation_slug' => $organisation->slug,
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ]);
@@ -156,6 +156,7 @@ class EnsureOrganisationMember
 
     /**
      * Resolve organisation by UUID (first) or slug (fallback)
+     * Includes soft-deleted organisations so we can check trashed status
      *
      * @param string $identifier UUID or slug
      * @return Organisation|null
@@ -164,11 +165,11 @@ class EnsureOrganisationMember
     {
         // Try to resolve by UUID first
         if ($this->isValidUuid($identifier)) {
-            return Organisation::find($identifier);
+            return Organisation::withTrashed()->find($identifier);
         }
 
         // Fall back to slug resolution
-        return Organisation::where('slug', $identifier)->first();
+        return Organisation::withTrashed()->where('slug', $identifier)->first();
     }
 
     /**

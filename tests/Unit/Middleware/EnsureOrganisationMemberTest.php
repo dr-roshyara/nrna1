@@ -34,11 +34,11 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_allows_member_access_to_organization()
     {
         // Arrange
-        $user = User::factory()->create();
         $organisation = Organisation::factory()->create();
+        $user = $this->createTestUser($organisation->id);
 
         // Create membership relationship
-        $user->organisationRoles()->attach($organisation->id, ['role' => 'member']);
+        $this->attachUserToOrganisation($user, $organisation->id, 'member');
 
         $request = Request::create(
             "/organisations/{$organisation->slug}/voters",
@@ -67,8 +67,8 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_blocks_non_member_access_with_403()
     {
         // Arrange
-        $user = User::factory()->create();
         $organisation = Organisation::factory()->create();
+        $user = $this->createTestUser($organisation->id);
 
         // User is NOT a member of this organisation
 
@@ -106,7 +106,8 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_returns_404_when_organization_not_found()
     {
         // Arrange
-        $user = User::factory()->create();
+        $platformOrg = Organisation::where('type', 'platform')->where('is_default', true)->first();
+        $user = $this->createTestUser($platformOrg->id);
 
         $request = Request::create('/organisations/nonexistent-slug/voters', 'GET');
         $request = $this->setupRequestWithRouteParameter($request, 'nonexistent-slug');
@@ -163,10 +164,10 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_stores_organization_in_request_attributes()
     {
         // Arrange
-        $user = User::factory()->create();
         $organisation = Organisation::factory()->create();
+        $user = $this->createTestUser($organisation->id);
 
-        $user->organisationRoles()->attach($organisation->id, ['role' => 'member']);
+        $this->attachUserToOrganisation($user, $organisation->id, 'member');
 
         $request = Request::create(
             "/organisations/{$organisation->slug}/voters",
@@ -195,10 +196,10 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_sets_session_context_for_belongs_to_tenant()
     {
         // Arrange
-        $user = User::factory()->create();
         $organisation = Organisation::factory()->create();
+        $user = $this->createTestUser($organisation->id);
 
-        $user->organisationRoles()->attach($organisation->id, ['role' => 'member']);
+        $this->attachUserToOrganisation($user, $organisation->id, 'member');
 
         $request = Request::create(
             "/organisations/{$organisation->slug}/voters",
@@ -225,10 +226,10 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_logs_successful_access_attempt()
     {
         // Arrange
-        $user = User::factory()->create();
         $organisation = Organisation::factory()->create();
+        $user = $this->createTestUser($organisation->id);
 
-        $user->organisationRoles()->attach($organisation->id, ['role' => 'member']);
+        $this->attachUserToOrganisation($user, $organisation->id, 'member');
 
         $request = Request::create(
             "/organisations/{$organisation->slug}/voters",
@@ -263,8 +264,9 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_logs_unauthorized_access_attempt()
     {
         // Arrange
-        $user = User::factory()->create();
         $organisation = Organisation::factory()->create();
+        $platformOrg = Organisation::where('type', 'platform')->where('is_default', true)->first();
+        $user = $this->createTestUser($platformOrg->id);
 
         // User is NOT a member
 
@@ -298,8 +300,8 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_returns_json_error_for_api_requests()
     {
         // Arrange
-        $user = User::factory()->create();
         $organisation = Organisation::factory()->create();
+        $user = $this->createTestUser($organisation->id);
 
         $request = Request::create(
             "/organisations/{$organisation->slug}/voters",
@@ -333,11 +335,11 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_allows_commission_member_access()
     {
         // Arrange
-        $user = User::factory()->create();
         $organisation = Organisation::factory()->create();
+        $user = $this->createTestUser($organisation->id);
 
         // Attach as commission member
-        $user->organisationRoles()->attach($organisation->id, ['role' => 'commission']);
+        $this->attachUserToOrganisation($user, $organisation->id, 'commission');
 
         $request = Request::create(
             "/organisations/{$organisation->slug}/voters",
@@ -365,12 +367,12 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_only_allows_access_to_member_organizations()
     {
         // Arrange
-        $user = User::factory()->create();
         $org1 = Organisation::factory()->create();
         $org2 = Organisation::factory()->create();
+        $user = $this->createTestUser($org1->id);
 
         // User is member of org1 only
-        $user->organisationRoles()->attach($org1->id, ['role' => 'member']);
+        $this->attachUserToOrganisation($user, $org1->id, 'member');
 
         // Try to access org2
         $request = Request::create("/organisations/{$org2->slug}/voters", 'GET');
@@ -396,11 +398,11 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_extracts_slug_from_route_parameter()
     {
         // Arrange
-        $user = User::factory()->create();
         $testSlug = 'test-org-' . time() . '-' . uniqid();
         $organisation = Organisation::factory()->create(['slug' => $testSlug]);
+        $user = $this->createTestUser($organisation->id);
 
-        $user->organisationRoles()->attach($organisation->id, ['role' => 'member']);
+        $this->attachUserToOrganisation($user, $organisation->id, 'member');
 
         $request = Request::create(
             "/organisations/{$organisation->slug}/voters",
@@ -452,6 +454,7 @@ class EnsureOrganisationMemberTest extends TestCase
             'email_verified_at' => now(),
             'password' => 'hashedpassword',
             'organisation_id' => $platformId,
+            'region' => 'Bayern',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -507,10 +510,11 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_blocks_access_to_soft_deleted_organisation()
     {
         // Arrange
-        $user = User::factory()->create();
         $organisation = Organisation::factory()->create();
+        $user = $this->createTestUser($organisation->id);
 
         DB::table('user_organisation_roles')->insert([
+            'id' => \Illuminate\Support\Str::uuid(),
             'user_id' => $user->id,
             'organisation_id' => $organisation->id,
             'role' => 'member',
@@ -551,8 +555,9 @@ class EnsureOrganisationMemberTest extends TestCase
     public function it_logs_complete_security_context_on_cross_org_access()
     {
         // Arrange
-        $user = User::factory()->create();
         $organisation = Organisation::factory()->create();
+        $platformOrg = Organisation::where('type', 'platform')->where('is_default', true)->first();
+        $user = $this->createTestUser($platformOrg->id);
 
         // User is NOT a member of this organisation
 
@@ -583,6 +588,41 @@ class EnsureOrganisationMemberTest extends TestCase
         $this->middleware->handle($request, function ($req) {
             return response('success');
         });
+    }
+
+    /**
+     * Helper method to create a test user with all required fields
+     */
+    protected function createTestUser(string $organisationId): User
+    {
+        $userId = \Illuminate\Support\Str::uuid();
+
+        DB::table('users')->insert([
+            'id' => $userId,
+            'name' => 'Test User ' . uniqid(),
+            'email' => 'test-' . uniqid() . '@example.com',
+            'email_verified_at' => now(),
+            'password' => 'hashedpassword',
+            'organisation_id' => $organisationId,
+            'region' => 'Bayern',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return User::find($userId);
+    }
+
+    /**
+     * Helper method to attach user to organisation with a role
+     */
+    protected function attachUserToOrganisation(User $user, string $organisationId, string $role = 'member'): void
+    {
+        DB::table('user_organisation_roles')->insert([
+            'id' => \Illuminate\Support\Str::uuid(),
+            'user_id' => $user->id,
+            'organisation_id' => $organisationId,
+            'role' => $role,
+        ]);
     }
 
     /**
