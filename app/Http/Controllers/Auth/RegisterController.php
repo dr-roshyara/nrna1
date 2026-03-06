@@ -38,8 +38,15 @@ class RegisterController extends Controller
             'terms' => ['required', 'accepted'],
         ]);
 
+        // Get the default platform organisation
+        $platformOrg = \App\Models\Organisation::getDefaultPlatform();
+        if (!$platformOrg) {
+            throw new \Exception('Platform organisation not found. Please ensure the platform org is created.');
+        }
+
         $validated['name'] = $validated['firstName'] . ' ' . $validated['lastName'];
         $validated['password'] = Hash::make($validated['password']);
+        $validated['organisation_id'] = $platformOrg->id;
 
         $user = User::create($validated);
 
@@ -48,23 +55,13 @@ class RegisterController extends Controller
         // Phase 6: Demo → Paid Flow
         // New user gets platform org membership and becomes demo user
 
-        DB::transaction(function () use ($user) {
-            // Get platform organisation
-            $platformOrg = \App\Models\Organisation::getDefaultPlatform();
-
-            if (!$platformOrg) {
-                throw new \Exception('Platform organisation not found. Please ensure the platform org is created.');
-            }
-
-            // Create pivot - user is MEMBER of platform org (not owner)
+        DB::transaction(function () use ($user, $platformOrg) {
+            // Create pivot relationship - user is MEMBER of platform org (not owner)
             \App\Models\UserOrganisationRole::create([
                 'user_id' => $user->id,
                 'organisation_id' => $platformOrg->id,
                 'role' => 'member',
             ]);
-
-            // Set current org to platform so user sees demo elections
-            $user->update(['organisation_id' => $platformOrg->id]);
 
             Log::info('User registration - platform membership created', [
                 'user_id' => $user->id,
