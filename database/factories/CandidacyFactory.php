@@ -14,18 +14,16 @@ class CandidacyFactory extends Factory
     public function definition()
     {
         $post = Post::factory()->create();
-        $user = User::factory()->create();
+        $user = User::factory()->forOrganisation($post->organisation)->create();
 
         return [
-            'election_id' => $post->election_id,
-            'post_id' => $post->post_id,
-            'candidacy_id' => $this->faker->unique()->word(),
-            'user_id' => $user->user_id,
-            'proposer_id' => $this->faker->unique()->word(),
-            'supporter_id' => $this->faker->unique()->word(),
-            'image_path_1' => $this->faker->word() . '.png',
-            'image_path_2' => null,
-            'image_path_3' => null,
+            'organisation_id' => $post->organisation_id,
+            'post_id' => $post->id,
+            'user_id' => $user->id,
+            'name' => $this->faker->name(),
+            'description' => $this->faker->sentence(),
+            'position_order' => $this->faker->numberBetween(1, 5),
+            'status' => 'pending',
         ];
     }
 }
