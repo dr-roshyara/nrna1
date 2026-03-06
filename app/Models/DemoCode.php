@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use App\Traits\BelongsToTenant;
 
 /**
@@ -20,13 +21,16 @@ use App\Traits\BelongsToTenant;
  * - MODE 2: organisation_id = X (scoped to specific organisation)
  * - Can be reset/cleared without affecting real elections
  * - Used in demo voting verification flow
+ * - Uses UUID primary keys for consistency with real codes
  */
 class DemoCode extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids;
     use BelongsToTenant;
 
     protected $table = 'demo_codes';
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     protected $fillable = [
         'organisation_id',      // MODE 1: NULL, MODE 2: org_id
@@ -34,62 +38,48 @@ class DemoCode extends Model
         'election_id',          // Reference to demo election
         'code1',
         'code2',
-        'code3',
-        'code4',
-        'vote_show_code',
         'is_code1_usable',
         'is_code2_usable',
-        'is_code3_usable',
-        'is_code4_usable',
         'code1_sent_at',
         'code2_sent_at',
-        'code3_sent_at',
-        'code4_sent_at',
         'can_vote_now',
         'has_voted',
-        'voting_time_in_minutes',
-        'vote_last_seen',
         'code1_used_at',
         'code2_used_at',
-        'code3_used_at',
-        'code4_used_at',
-        'code_for_vote',
         'vote_submitted',
         'vote_submitted_at',
         'has_code1_sent',
         'has_code2_sent',
-        'client_ip',
         'has_agreed_to_vote',
         'has_used_code1',
         'has_used_code2',
-        'session_name',
         'has_agreed_to_vote_at',
         'voting_started_at',
+        'is_codemodel_valid',
+        // ✅ Device fingerprinting for fraud detection (privacy-preserving)
+        'device_fingerprint_hash',
+        'device_metadata_anonymized',
     ];
 
     protected $casts = [
         'has_code1_sent' => 'boolean',
         'is_code1_usable' => 'boolean',
         'is_code2_usable' => 'boolean',
-        'is_code3_usable' => 'boolean',
-        'is_code4_usable' => 'boolean',
         'can_vote_now' => 'boolean',
         'has_voted' => 'boolean',
         'vote_submitted' => 'boolean',
         'has_agreed_to_vote' => 'boolean',
         'has_used_code1' => 'boolean',
         'has_used_code2' => 'boolean',
+        'is_codemodel_valid' => 'boolean',
         'code1_sent_at' => 'datetime',
         'code2_sent_at' => 'datetime',
-        'code3_sent_at' => 'datetime',
-        'code4_sent_at' => 'datetime',
         'code1_used_at' => 'datetime',
         'code2_used_at' => 'datetime',
-        'code3_used_at' => 'datetime',
-        'code4_used_at' => 'datetime',
         'vote_submitted_at' => 'datetime',
         'has_agreed_to_vote_at' => 'datetime',
         'voting_started_at' => 'datetime',
+        'device_metadata_anonymized' => 'array',
     ];
 
     /**
