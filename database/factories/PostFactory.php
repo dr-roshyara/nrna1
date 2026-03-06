@@ -25,4 +25,14 @@ class PostFactory extends Factory
             'position_order' => $this->faker->numberBetween(0, 10),
         ];
     }
+
+    public function forElection(Election $election)
+    {
+        return $this->state(function (array $attributes) use ($election) {
+            return [
+                'organisation_id' => $election->organisation_id,
+                'election_id' => $election->id,
+            ];
+        });
+    }
 }

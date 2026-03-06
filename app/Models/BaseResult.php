@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\BelongsToTenant;
 use App\Models\Election;
 
@@ -22,8 +24,14 @@ use App\Models\Election;
  */
 abstract class BaseResult extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids, SoftDeletes;
     use BelongsToTenant;
+
+    /**
+     * UUID key configuration
+     */
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     /**
      * All attributes that are mass-assignable
@@ -35,9 +43,10 @@ abstract class BaseResult extends Model
         'election_id',
         'vote_id',
         'post_id',
-        'candidate_id',
-        'vote_hash',  // For verification cross-reference
-        'vote_count', // For aggregation
+        'candidacy_id',  // UUID FK to candidacies table
+        'vote_hash',     // For verification cross-reference
+        'vote_count',    // For aggregation
+        'position_order',
     ];
 
     /**
@@ -142,6 +151,17 @@ abstract class BaseResult extends Model
     }
 
     /**
+     * Get the organisation this result belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function organisation()
+    {
+        return $this->belongsTo(Organisation::class)
+                    ->withoutGlobalScopes();
+    }
+
+    /**
      * Get the vote this result is from
      * Note: Uses morph mapping to determine if it's Vote or DemoVote
      *
@@ -156,18 +176,31 @@ abstract class BaseResult extends Model
      */
     public function post()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Post::class)
+                    ->withoutGlobalScopes();
     }
 
     /**
-     * Get the candidate this result is for
-     * Note: candidate_id can be NULL for no-vote/abstention results
+     * Get the candidacy this result is for
+     * Note: candidacy_id can be NULL for no-vote/abstention results
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function candidacy()
+    {
+        return $this->belongsTo(Candidacy::class, 'candidacy_id', 'id')
+                    ->withoutGlobalScopes();
+    }
+
+    /**
+     * Alias for candidacy() - get the candidate this result is for
+     * Note: Deprecated - use candidacy() instead
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function candidate()
     {
-        return $this->belongsTo(Candidacy::class, 'candidate_id', 'id');
+        return $this->candidacy();
     }
 
     /**
@@ -177,7 +210,21 @@ abstract class BaseResult extends Model
      */
     public function election()
     {
-        return $this->belongsTo(Election::class);
+        return $this->belongsTo(Election::class)
+                    ->withoutGlobalScopes();
+    }
+
+    /**
+     * Scope: Get results for a specific organisation
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $organisationId
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeForOrganisation($query, string $organisationId)
+    {
+        return $query->withoutGlobalScopes()
+                     ->where('organisation_id', $organisationId);
     }
 
     /**
@@ -189,7 +236,8 @@ abstract class BaseResult extends Model
      */
     public function scopeForElection($query, Election $election)
     {
-        return $query->where('election_id', $election->id);
+        return $query->withoutGlobalScopes()
+                     ->where('election_id', $election->id);
     }
 
     /**
@@ -205,38 +253,38 @@ abstract class BaseResult extends Model
     }
 
     /**
-     * Scope: Get results for a specific candidate
+     * Scope: Get results for a specific candidacy
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param int $candidateId
+     * @param string $candidacyId
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeForCandidate($query, int $candidateId)
+    public function scopeForCandidacy($query, string $candidacyId)
     {
-        return $query->where('candidate_id', $candidateId);
+        return $query->where('candidacy_id', $candidacyId);
     }
 
     /**
-     * Scope: Get results for a specific vote
+     * Scope: Get results for a specific vote (alias for compatibility)
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param int $voteId
+     * @param string $voteId
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeForVote($query, int $voteId)
+    public function scopeForVote($query, string $voteId)
     {
         return $query->where('vote_id', $voteId);
     }
 
     /**
-     * Get vote count for a specific candidate
+     * Get vote count for a specific candidacy
      *
-     * @param int $candidateId
+     * @param string $candidacyId
      * @return int
      */
-    public static function countForCandidate(int $candidateId): int
+    public static function countForCandidacy(string $candidacyId): int
     {
-        return static::forCandidate($candidateId)->count();
+        return static::forCandidacy($candidacyId)->count();
     }
 
     /**
@@ -251,17 +299,17 @@ abstract class BaseResult extends Model
     }
 
     /**
-     * Get top N candidates for a post (by vote count)
+     * Get top N candidacies for a post (by vote count)
      *
      * @param string $postId
      * @param int $limit
      * @return \Illuminate\Support\Collection
      */
-    public static function topCandidatesForPost(string $postId, int $limit = 10)
+    public static function topCandidaciesForPost(string $postId, int $limit = 10)
     {
         return static::forPost($postId)
-            ->selectRaw('candidate_id, COUNT(*) as vote_count')
-            ->groupBy('candidate_id')
+            ->selectRaw('candidacy_id, COUNT(*) as vote_count')
+            ->groupBy('candidacy_id')
             ->orderByDesc('vote_count')
             ->limit($limit)
             ->get();
