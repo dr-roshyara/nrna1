@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Services\ElectionService;
 use App\Services\DemoElectionResolver;
 use App\Services\VoterSlugService;
+use App\Services\DashboardResolver;
 use Illuminate\Support\Facades\Log;
 
 class ElectionController extends Controller
