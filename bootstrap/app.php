@@ -57,7 +57,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
             // organisation & Multi-tenancy
             'committee.member' => \App\Http\Middleware\EnsureCommitteeMember::class,
-            'ensure.organisation' => \App\Http\Middleware\EnsureOrganizationMember::class,
+            'ensure.organisation' => \App\Http\Middleware\EnsureOrganisationMember::class,
 
             // Utility
             'no.cache' => \App\Http\Middleware\NoCacheMiddleware::class,
