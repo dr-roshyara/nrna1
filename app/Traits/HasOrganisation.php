@@ -26,21 +26,19 @@ trait HasOrganisation
             // ⚠️ NOTE: Do NOT set organisation_id from session during creation.
             // This prevents new users from inheriting the organisation_id of the
             // last election accessed (e.g., if Election::first() has org_id=2).
-            // Instead, let the User model boot() method handle the default value.
-            // The User model explicitly sets organisation_id = platform org ID.
+            // Instead, let the caller explicitly set organisation_id when creating.
 
-            // If someone tried to set organisation_id, move it to organisation_id
-            if (isset($model->attributes['organisation_id'])) {
-                $model->organisation_id = $model->attributes['organisation_id'];
-                unset($model->attributes['organisation_id']);
+            // Ensure organisation_id is in attributes for database insert
+            // If it was set as a property, make sure it's also in attributes
+            if ($model->organisation_id && !isset($model->attributes['organisation_id'])) {
+                $model->attributes['organisation_id'] = $model->organisation_id;
             }
         });
 
         static::updating(function (Model $model) {
-            // Clean up any rogue organisation_id attributes
-            if (isset($model->attributes['organisation_id'])) {
-                $model->organisation_id = $model->attributes['organisation_id'];
-                unset($model->attributes['organisation_id']);
+            // Ensure organisation_id stays in attributes during updates
+            if ($model->organisation_id && !isset($model->attributes['organisation_id'])) {
+                $model->attributes['organisation_id'] = $model->organisation_id;
             }
         });
     }
