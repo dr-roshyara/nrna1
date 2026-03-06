@@ -1028,25 +1028,25 @@ public function getVoterState(): string
      * @param int $organisationId
      * @return bool
      */
-    public function isOrganisationAdmin(int $organisationId): bool
+    public function isOrganisationAdmin(string $organisationId): bool
     {
         return $this->organisationRoles()
-            ->where('organisations.id', $organisationId)
-            ->wherePivot('role', 'admin')
+            ->where('organisation_id', $organisationId)
+            ->where('role', 'admin')
             ->exists();
     }
 
     /**
      * Check if user is voter in organisation
      *
-     * @param int $organisationId
+     * @param string $organisationId
      * @return bool
      */
-    public function isOrganisationVoter(int $organisationId): bool
+    public function isOrganisationVoter(string $organisationId): bool
     {
         return $this->organisationRoles()
-            ->where('organisations.id', $organisationId)
-            ->wherePivot('role', 'voter')
+            ->where('organisation_id', $organisationId)
+            ->where('role', 'voter')
             ->exists();
     }
 
