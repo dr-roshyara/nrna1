@@ -354,12 +354,16 @@ Route::middleware(['auth'])->group(function () {
     // organisation management routes
     Route::post('/organisations', [OrganisationController::class, 'store'])
          ->name('organisations.store');
-    Route::get('/organisations/{slug}', [OrganisationController::class, 'show'])
-         ->name('organisations.show');
-    Route::get('/organisations/{slug}/members/import', [MemberImportController::class, 'create'])
-         ->name('organisations.members.import');
-    Route::post('/organisations/{slug}/members/import', [MemberImportController::class, 'store'])
-         ->name('organisations.members.import.store');
+
+    // Organisation-scoped routes (require membership verification)
+    Route::middleware('ensure.organisation')->group(function () {
+        Route::get('/organisations/{slug}', [OrganisationController::class, 'show'])
+             ->name('organisations.show');
+        Route::get('/organisations/{slug}/members/import', [MemberImportController::class, 'create'])
+             ->name('organisations.members.import');
+        Route::post('/organisations/{slug}/members/import', [MemberImportController::class, 'store'])
+             ->name('organisations.members.import.store');
+    });
 
     // Demo setup API endpoint
     Route::post('/api/organisations/{organisation}/demo-setup', [DemoSetupController::class, 'setup'])
