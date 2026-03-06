@@ -31,6 +31,24 @@ class Post extends Model
     ];
 
     /**
+     * Scope: Get posts for a specific organisation
+     */
+    public function scopeForOrganisation($query, string $organisationId)
+    {
+        return $query->withoutGlobalScopes()
+                     ->where('organisation_id', $organisationId);
+    }
+
+    /**
+     * Scope: Get posts for a specific election
+     */
+    public function scopeForElection($query, string $electionId)
+    {
+        return $query->withoutGlobalScopes()
+                     ->where('election_id', $electionId);
+    }
+
+    /**
      * Get the organisation that owns this post
      */
     public function organisation()
@@ -49,21 +67,12 @@ class Post extends Model
     /**
      * Get all candidacies for this post WITH user relationship loaded
      * Ordered by position_order for consistent display
-     * Includes post name for reference
      */
     public function candidacies()
     {
         return $this->hasMany(Candidacy::class, 'post_id', 'id')
-                    ->with('user')
                     ->orderBy('position_order')
-                    ->select([
-                        'id',
-                        'candidacy_id',
-                        'user_id',
-                        'post_id',
-                        'position_order'
-                    ])
-                    ->addSelect(['post_name' => \DB::raw("'{$this->name}'")]);
+                    ->withoutGlobalScopes();
     }
 
     /**
@@ -73,8 +82,8 @@ class Post extends Model
     {
         return $this->hasMany(Candidacy::class, 'post_id', 'id')
                     ->where('status', 'approved')
-                    ->with('user')
-                    ->orderBy('position_order');
+                    ->orderBy('position_order')
+                    ->withoutGlobalScopes();
     }
 
     /**
