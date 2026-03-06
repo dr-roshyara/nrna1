@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Post;
 use App\Models\Candidacy;   
@@ -109,17 +110,25 @@ class Election extends Model
      */
     public function posts(): HasMany
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class)
+                    ->withoutGlobalScopes();
     }
 
     /**
-     * Get all candidacies for this election
+     * Get all candidacies for this election (through posts)
      *
-     * @return HasMany
+     * @return HasManyThrough
      */
-    public function candidacies(): HasMany
+    public function candidacies(): HasManyThrough
     {
-        return $this->hasMany(Candidacy::class);
+        return $this->hasManyThrough(
+            Candidacy::class,
+            Post::class,
+            'election_id',  // FK on posts
+            'post_id',      // FK on candidacies
+            'id',           // local key on elections
+            'id'            // local key on posts
+        )->withoutGlobalScopes();
     }
 
     /**
