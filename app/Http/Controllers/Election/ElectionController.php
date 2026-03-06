@@ -25,12 +25,18 @@ class ElectionController extends Controller
     /**
      * ✅ Dashboard method - Route to appropriate page
      *
-     * Logic:
-     * - Unauthenticated → Welcome page
-     * - Authenticated + has organisation → Redirect to organisation page
-     * - Authenticated + no organisation → Dashboard
+     * This method handles direct access to "/" and delegates to DashboardResolver
+     * to ensure consistent routing with LoginResponse.
+     *
+     * Flow:
+     * - Unauthenticated → Show Welcome page
+     * - Authenticated → Delegate to DashboardResolver for smart routing:
+     *   - Active voting session → Resume voting
+     *   - Active election → Go to voting
+     *   - Has organisation → Show organisation page
+     *   - etc. (see DashboardResolver for full priority chain)
      */
-    public function dashboard()
+    public function dashboard(DashboardResolver $dashboardResolver)
     {
         $authUser = Auth::user();
         $ipAddress = $this->getUserIpAddr();
@@ -44,23 +50,9 @@ class ElectionController extends Controller
             ]);
         }
 
-        // Authenticated user with tenant organisation: Redirect to organisation page
-        if ($authUser->hasTenantOrganisation()) {
-            // Get their first/default organisation
-            $organisation = $authUser->organisations()
-                ->where('type', 'tenant')
-                ->first();
-
-            if ($organisation) {
-                return redirect()->route('organisations.show', $organisation->slug);
-            }
-        }
-
-        // Authenticated user without organisation: Show dashboard
-        return Inertia::render('Dashboard', [
-            'authUser' => $authUser,
-            'ipAddress' => $ipAddress,
-        ]);
+        // Authenticated user: Use DashboardResolver for consistent routing
+        // This ensures the same logic is used whether user logs in or visits "/" directly
+        return $dashboardResolver->resolve($authUser);
     }
 
     /**
