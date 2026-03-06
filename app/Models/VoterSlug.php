@@ -2,135 +2,81 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\BelongsToTenant;
 
 class VoterSlug extends Model
 {
-    use HasFactory;
-    use BelongsToTenant;
+    use HasFactory, HasUuids, SoftDeletes, BelongsToTenant;
 
-    /**
-     * Boot the model - convert legacy organisation_id=0 to platform org ID
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        // When creating a voter slug, convert organisation_id=0 to platform org ID
-        static::creating(function ($model) {
-            if (!$model->organisation_id || $model->organisation_id === 0 || $model->organisation_id === '0') {
-                $platformOrg = Organisation::where('slug', 'platform')->first();
-                if ($platformOrg) {
-                    $model->organisation_id = $platformOrg->id;
-                } else {
-                    // Fallback: create platform org if it doesn't exist
-                    $platformOrg = Organisation::create([
-                        'name' => 'Platform',
-                        'slug' => 'platform',
-                        'type' => 'other',
-                    ]);
-                    $model->organisation_id = $platformOrg->id;
-                }
-            }
-        });
-    }
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     protected $fillable = [
         'organisation_id',
+        'election_id',
         'user_id',
         'slug',
-        'expires_at',
-        'is_active',
         'current_step',
-        'step_meta',
-        'election_id',
+        'status',
     ];
 
     protected $casts = [
-        'expires_at' => 'datetime',
-        'is_active' => 'boolean',
         'current_step' => 'integer',
-        'step_meta' => 'array'
+        'status' => 'string',
     ];
 
-    public function user(): BelongsTo
+    public function organisation()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Organisation::class)->withoutGlobalScopes();
     }
 
-    public function election(): BelongsTo
+    public function election()
     {
-        return $this->belongsTo(Election::class);
+        return $this->belongsTo(Election::class)->withoutGlobalScopes();
     }
 
-    public function organisation(): BelongsTo
+    public function user()
     {
-        return $this->belongsTo(Organisation::class);
+        return $this->belongsTo(User::class)->withoutGlobalScopes();
     }
 
-    public function steps()
+    public function votes()
     {
-        return $this->hasMany(VoterSlugStep::class, 'voter_slug_id');
+        return $this->hasMany(Vote::class, 'voter_slug_id', 'id');
     }
 
-    // ============ EAGER LOADING SCOPES (OPTIMIZATION) ============
-
-    /**
-     * Load all relationships at once
-     */
-    public function scopeWithAllRelations($query)
+    public function scopeForOrganisation($query, string $organisationId)
     {
-        return $query->with(['user', 'election', 'organisation']);
+        return $query->withoutGlobalScopes()->where('organisation_id', $organisationId);
     }
 
-    /**
-     * Load only essential relationships for validation
-     * Selects specific columns to reduce data transfer
-     */
-    public function scopeWithEssentialRelations($query)
+    public function scopeForElection($query, $election)
     {
-        return $query->with([
-            'election' => function($q) {
-                $q->select('id', 'organisation_id', 'type', 'status', 'end_date');
-            },
-            'organisation' => function($q) {
-                $q->select('id', 'name');
-            }
-        ]);
+        $electionId = is_string($election) ? $election : $election->id;
+        return $query->withoutGlobalScopes()->where('election_id', $electionId);
     }
 
-    public function scopeValid($query)
+    public function scopeActive($query)
     {
-        return $query->where('is_active', true)
-                    ->where('expires_at', '>', now());
+        return $query->where('status', 'active');
     }
 
-    public function scopeForUser($query, $userId)
+    public function scopeVoted($query)
     {
-        return $query->where('user_id', $userId);
+        return $query->where('status', 'voted');
     }
 
-    public function isExpired(): bool
+    public function hasVoted(): bool
     {
-        return $this->expires_at->isPast();
+        return $this->status === 'voted';
     }
 
-    public function isValid(): bool
+    public function markAsVoted(): bool
     {
-        return $this->is_active && !$this->isExpired();
-    }
-
-    /**
-     * Get the route key for implicit route model binding
-     * Uses the 'slug' column instead of the default 'id'
-     *
-     * @return string
-     */
-    public function getRouteKeyName()
-    {
-        return 'slug';
+        return $this->update(['status' => 'voted']);
     }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Post;
 use App\Models\Candidacy;
 use App\Traits\BelongsToTenant;
@@ -27,8 +29,14 @@ use App\Traits\BelongsToTenant;
  */
 abstract class BaseVote extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids, SoftDeletes;
     use BelongsToTenant;
+
+    /**
+     * UUID key configuration
+     */
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     /**
      * All candidate columns (candidate_01 through candidate_60)
@@ -212,13 +220,25 @@ abstract class BaseVote extends Model
     }
 
     /**
+     * Get the organisation this vote belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function organisation()
+    {
+        return $this->belongsTo(Organisation::class)
+                    ->withoutGlobalScopes();
+    }
+
+    /**
      * Get the election this vote belongs to
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function election()
     {
-        return $this->belongsTo(Election::class);
+        return $this->belongsTo(Election::class)
+                    ->withoutGlobalScopes();
     }
 
     /**
@@ -285,7 +305,8 @@ abstract class BaseVote extends Model
      */
     public function scopeForElection($query, Election $election)
     {
-        return $query->where('election_id', $election->id);
+        return $query->withoutGlobalScopes()
+                     ->where('election_id', $election->id);
     }
 
     /**
@@ -298,5 +319,18 @@ abstract class BaseVote extends Model
     public function scopeRecent($query, int $days = 7)
     {
         return $query->where('created_at', '>=', now()->subDays($days));
+    }
+
+    /**
+     * Scope: Get votes for a specific organisation
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $organisationId
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeForOrganisation($query, string $organisationId)
+    {
+        return $query->withoutGlobalScopes()
+                     ->where('organisation_id', $organisationId);
     }
 }

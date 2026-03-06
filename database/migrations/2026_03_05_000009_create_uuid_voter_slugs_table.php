@@ -13,7 +13,8 @@ return new class extends Migration {
             $table->uuid('election_id');
             $table->uuid('user_id');
             $table->string('slug')->unique();
-            $table->integer('current_step')->default(0);
+            $table->integer('current_step')->default(1);
+            $table->enum('status', ['active', 'voted', 'abstained'])->default('active');
             $table->json('step_meta')->nullable();
             $table->timestamps();
             $table->softDeletes();
@@ -34,6 +35,7 @@ return new class extends Migration {
                   ->onDelete('cascade');
 
             $table->index(['organisation_id', 'election_id', 'user_id']);
+            $table->unique(['election_id', 'user_id']);
         });
     }
 

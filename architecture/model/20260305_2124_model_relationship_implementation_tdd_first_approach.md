@@ -184,3 +184,117 @@ I've already provided the complete test file above. Copy it and start:
 **Run it now. Watch it fail. Then implement. Then commit.**
 
 This is the path to a solid foundation. The PlatformAdminSeeder will likely fix itself once relationships are correct.
+# 📋 **PROFESSIONAL PROMPT INSTRUCTIONS FOR CLAUDE**
+
+```
+## TASK: Implement Model Relationships with TDD (Phase A Only)
+
+### CONTEXT
+We are implementing the core model relationships for our UUID multi-tenancy voting platform. This is Phase A of the model architecture, focusing on the 6 core models that form the foundation of our system.
+
+### SCOPE: Phase A Only (Core Models)
+- ✅ Organisation
+- ✅ User  
+- ✅ UserOrganisationRole
+- ✅ Election
+- ✅ Post
+- ✅ Candidacy
+
+(Phase B - Voting Models and Phase C - Demo Models will be handled in future sprints)
+
+### REQUIREMENTS
+
+#### 1. TDD APPROACH - MUST FOLLOW RED-GREEN-REFACTOR
+For EACH model, in this exact order:
+```
+a) CREATE test file first (tests/Unit/Models/{Model}Test.php)
+b) RUN test - expect FAIL (RED)
+c) IMPLEMENT model relationships
+d) RUN test - expect PASS (GREEN)
+e) COMMIT with message: "feat: Add {Model} relationships with tests"
+```
+
+#### 2. TEST FILES TO CREATE
+
+Copy the complete test files from my previous message:
+
+| Model | Test File | Tests Count |
+|-------|-----------|-------------|
+| Organisation | `tests/Unit/Models/OrganisationTest.php` | 10 tests |
+| User | `tests/Unit/Models/UserTest.php` | 15 tests |
+| UserOrganisationRole | `tests/Unit/Models/UserOrganisationRoleTest.php` | 5 tests |
+| Election | `tests/Unit/Models/ElectionTest.php` | 8 tests |
+| Post | `tests/Unit/Models/PostTest.php` | 5 tests |
+| Candidacy | `tests/Unit/Models/CandidacyTest.php` | 8 tests |
+
+#### 3. IMPLEMENTATION ORDER (CRITICAL)
+
+```bash
+# 1. Organisation (foundation)
+php artisan test tests/Unit/Models/OrganisationTest.php  # RED
+# Implement app/Models/Organisation.php
+php artisan test tests/Unit/Models/OrganisationTest.php  # GREEN
+git commit -m "feat: Add Organisation model relationships with tests"
+
+# 2. User (depends on Organisation)
+php artisan test tests/Unit/Models/UserTest.php  # RED
+# Implement app/Models/User.php
+php artisan test tests/Unit/Models/UserTest.php  # GREEN
+git commit -m "feat: Add User model relationships with tests"
+
+# 3. UserOrganisationRole (pivot)
+php artisan test tests/Unit/Models/UserOrganisationRoleTest.php  # RED
+# Implement app/Models/UserOrganisationRole.php
+php artisan test tests/Unit/Models/UserOrganisationRoleTest.php  # GREEN
+git commit -m "feat: Add UserOrganisationRole pivot model with tests"
+
+# 4. Election
+php artisan test tests/Unit/Models/ElectionTest.php  # RED
+# Implement app/Models/Election.php
+php artisan test tests/Unit/Models/ElectionTest.php  # GREEN
+git commit -m "feat: Add Election model relationships with tests"
+
+# 5. Post
+php artisan test tests/Unit/Models/PostTest.php  # RED
+# Implement app/Models/Post.php
+php artisan test tests/Unit/Models/PostTest.php  # GREEN
+git commit -m "feat: Add Post model relationships with tests"
+
+# 6. Candidacy
+php artisan test tests/Unit/Models/CandidacyTest.php  # RED
+# Implement app/Models/Candidacy.php
+php artisan test tests/Unit/Models/CandidacyTest.php  # GREEN
+git commit -m "feat: Add Candidacy model relationships with tests"
+```
+
+#### 4. VALIDATION
+
+After all 6 models are implemented:
+```bash
+# Run all unit tests
+php artisan test tests/Unit/Models/
+
+# Expected: All 51 tests GREEN
+# - OrganisationTest: 10 ✅
+# - UserTest: 15 ✅
+# - UserOrganisationRoleTest: 5 ✅
+# - ElectionTest: 8 ✅
+# - PostTest: 5 ✅
+# - CandidacyTest: 8 ✅
+# TOTAL: 51 tests PASSING
+```
+
+#### 5. DELIVERABLES
+
+After completing this task, provide:
+1. ✅ All 6 model files with complete relationships
+2. ✅ All 6 test files with 51 passing tests
+3. ✅ 6 commit messages (one per model)
+4. ✅ Final summary of what was implemented
+
+### DEADLINE
+Complete within this session. No need to ask for confirmation between models - implement all 6 in order and report back when done.
+
+### QUESTIONS?
+If ANYTHING is unclear about the relationships or tests, STOP and ask before proceeding.
+```
