@@ -43,22 +43,23 @@ class Candidacy extends Model
      */
 
     /**
-     * Each Candidacy  belongs to only  one user
+     * Each Candidacy belongs to only one user
      * Get the user
      */
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id')
-               ->select(['id', 'user_id', 'name', 'region', 'email', 'first_name', 'last_name']);
+               ->withoutGlobalScopes();
     }
 
 
-     /**
-      * One Candidacy belongs to One Post
-      * Get the post
-       */
-      public function post(){
-           return $this->belongsTo(Post::class, 'post_id', 'id');
-       }
+    /**
+     * One Candidacy belongs to One Post
+     * Get the post
+     */
+    public function post(){
+        return $this->belongsTo(Post::class, 'post_id', 'id')
+                    ->withoutGlobalScopes();
+    }
     
     /**
      * A candidacy has many votes through results table
@@ -266,6 +267,7 @@ class Candidacy extends Model
      */
     public function organisation()
     {
-        return $this->belongsTo(Organisation::class, 'organisation_id');
+        return $this->belongsTo(Organisation::class, 'organisation_id')
+                    ->withoutGlobalScopes();
     }
 }
