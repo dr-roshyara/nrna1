@@ -299,6 +299,9 @@ Route::group(['middleware' => ['auth']], function() {
 
   //Students
   Route::group([], __DIR__.'/acadamy/acadamyRoutes.php');
+ //Security
+  Route::group([], __DIR__.'/security/security_routes.php');
+   
 
 //User
 Route::group([], __DIR__.'/user/userRoutes.php');

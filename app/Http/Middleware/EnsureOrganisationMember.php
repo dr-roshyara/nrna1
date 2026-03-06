@@ -58,11 +58,11 @@ class EnsureOrganisationMember
 
         $user = Auth::user();
 
-        // Try to extract organisation slug from route parameters
-        $organisationSlug = $request->route('organisation') ?? $request->route('slug');
+        // Try to extract organisation identifier from route parameters
+        $organisationIdentifier = $request->route('organisation') ?? $request->route('slug');
 
-        if (!$organisationSlug) {
-            Log::warning('EnsureOrganisation: No organisation slug found in route', [
+        if (!$organisationIdentifier) {
+            Log::warning('EnsureOrganisation: No organisation identifier found in route', [
                 'user_id' => $user->id,
                 'route' => $request->route()->getName(),
                 'path' => $request->path(),
@@ -75,13 +75,13 @@ class EnsureOrganisationMember
             return redirect()->route('dashboard')->withErrors(['error' => 'organisation not specified']);
         }
 
-        // Resolve organisation from database
-        $organisation = Organisation::where('slug', $organisationSlug)->first();
+        // Resolve organisation from database by UUID or slug
+        $organisation = $this->resolveOrganisation($organisationIdentifier);
 
         if (!$organisation) {
             Log::warning('EnsureOrganisation: organisation not found', [
                 'user_id' => $user->id,
-                'slug' => $organisationSlug,
+                'identifier' => $organisationIdentifier,
             ]);
 
             if ($request->expectsJson()) {
@@ -92,9 +92,26 @@ class EnsureOrganisationMember
                 ->withErrors(['error' => __('organisations.messages.not_found')]);
         }
 
+        // Check if organisation has been soft-deleted
+        if ($organisation->trashed()) {
+            Log::warning('Attempt to access deleted organisation', [
+                'user_id' => $user->id,
+                'user_name' => $user->name,
+                'organisation_id' => $organisation->id,
+                'organisation_slug' => $organisation->slug,
+            ]);
+
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'organisation no longer available'], 404);
+            }
+
+            return redirect()->route('dashboard')
+                ->withErrors(['error' => __('organisations.messages.not_found')]);
+        }
+
         // Validate user is a member of this organisation
         $isMember = $user->organisationRoles()
-            ->where('organisations.id', $organisation->id)
+            ->where('organisation_id', $organisation->id)
             ->exists();
 
         if (!$isMember) {
@@ -129,12 +146,40 @@ class EnsureOrganisationMember
             'user_id' => $user->id,
             'user_name' => $user->name,
             'organisation_id' => $organisation->id,
-            'organisation_slug' => $organisationSlug,
+            'organisation_slug' => $organisation->slug,
             'path' => $request->path(),
             'ip_address' => $request->ip(),
         ]);
 
         return $next($request);
+    }
+
+    /**
+     * Resolve organisation by UUID (first) or slug (fallback)
+     *
+     * @param string $identifier UUID or slug
+     * @return Organisation|null
+     */
+    protected function resolveOrganisation(string $identifier): ?Organisation
+    {
+        // Try to resolve by UUID first
+        if ($this->isValidUuid($identifier)) {
+            return Organisation::find($identifier);
+        }
+
+        // Fall back to slug resolution
+        return Organisation::where('slug', $identifier)->first();
+    }
+
+    /**
+     * Check if string is valid UUID
+     *
+     * @param string $value
+     * @return bool
+     */
+    protected function isValidUuid(string $value): bool
+    {
+        return preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i', $value) === 1;
     }
 }
 

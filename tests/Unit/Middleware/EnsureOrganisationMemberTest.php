@@ -7,6 +7,7 @@ use App\Models\Organisation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
 
@@ -18,6 +19,11 @@ class EnsureOrganisationMemberTest extends TestCase
     {
         parent::setUp();
         $this->middleware = new EnsureOrganisationMember();
+
+        // Ensure platform organisation exists for factory defaults
+        if (!Organisation::where('type', 'platform')->where('is_default', true)->exists()) {
+            Organisation::factory()->create(['type' => 'platform', 'is_default' => true]);
+        }
     }
 
     /**
@@ -412,6 +418,171 @@ class EnsureOrganisationMemberTest extends TestCase
         // Assert
         $retrievedOrg = $request->attributes->get('organisation');
         $this->assertEquals($testSlug, $retrievedOrg->slug);
+    }
+
+    /**
+     * Test middleware can resolve organisation by UUID not just slug
+     *
+     * @test
+     */
+    public function it_resolves_organisation_by_uuid()
+    {
+        // Arrange - Use raw inserts to avoid factory dependency issues
+        $userId = \Illuminate\Support\Str::uuid();
+        $orgId = \Illuminate\Support\Str::uuid();
+        $platformId = \Illuminate\Support\Str::uuid();
+
+        // Create platform org first (for user foreign key)
+        DB::table('organisations')->insert([
+            'id' => $platformId,
+            'name' => 'Platform',
+            'slug' => 'platform-' . time(),
+            'email' => 'platform@example.com',
+            'type' => 'platform',
+            'is_default' => true,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Create user with platform org
+        DB::table('users')->insert([
+            'id' => $userId,
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'email_verified_at' => now(),
+            'password' => 'hashedpassword',
+            'organisation_id' => $platformId,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Create test org
+        DB::table('organisations')->insert([
+            'id' => $orgId,
+            'name' => 'Test Org',
+            'slug' => 'test-org-uuid-' . time(),
+            'email' => 'org@example.com',
+            'type' => 'tenant',
+            'is_default' => false,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Create pivot relationship
+        DB::table('user_organisation_roles')->insert([
+            'id' => \Illuminate\Support\Str::uuid(),
+            'user_id' => $userId,
+            'organisation_id' => $orgId,
+            'role' => 'member',
+        ]);
+
+        $user = User::find($userId);
+        $organisation = Organisation::find($orgId);
+
+        // Use UUID in route parameter instead of slug
+        $request = Request::create(
+            "/organisations/{$organisation->id}/voters",
+            'GET'
+        );
+        $request = $this->setupRequestWithRouteParameter($request, $organisation->id);
+
+        $this->actingAs($user);
+
+        // Act
+        $response = $this->middleware->handle($request, function ($req) {
+            return response('success');
+        });
+
+        // Assert - Should find org by UUID and allow access
+        $this->assertNotNull($request->attributes->get('organisation'));
+        $this->assertEquals($organisation->id, $request->attributes->get('organisation')->id);
+        $this->assertEquals('success', $response->getContent());
+    }
+
+    /**
+     * Test middleware blocks access to soft-deleted organisations
+     *
+     * @test
+     */
+    public function it_blocks_access_to_soft_deleted_organisation()
+    {
+        // Arrange
+        $user = User::factory()->create();
+        $organisation = Organisation::factory()->create();
+
+        DB::table('user_organisation_roles')->insert([
+            'user_id' => $user->id,
+            'organisation_id' => $organisation->id,
+            'role' => 'member',
+        ]);
+
+        // Soft delete the organisation
+        $organisation->delete();
+
+        $request = Request::create(
+            "/organisations/{$organisation->slug}/voters",
+            'GET'
+        );
+        $request = $this->setupRequestWithRouteParameter($request, $organisation->slug);
+
+        $this->actingAs($user);
+
+        // Act
+        Log::shouldReceive('warning')
+            ->withArgs(function ($message, $context) use ($organisation) {
+                return strpos($message, 'Attempt to access deleted organisation') !== false
+                    && $context['organisation_id'] === $organisation->id;
+            })
+            ->once();
+
+        $response = $this->middleware->handle($request, function ($req) {
+            return response('success');
+        });
+
+        // Assert - Should return 403 for soft-deleted org
+        $this->assertTrue($response->status() === 403 || $response instanceof \Illuminate\Http\RedirectResponse);
+    }
+
+    /**
+     * Test middleware logs complete security context on cross-org access attempt
+     *
+     * @test
+     */
+    public function it_logs_complete_security_context_on_cross_org_access()
+    {
+        // Arrange
+        $user = User::factory()->create();
+        $organisation = Organisation::factory()->create();
+
+        // User is NOT a member of this organisation
+
+        $request = Request::create(
+            "/organisations/{$organisation->slug}/voters",
+            'GET',
+            [],
+            [],
+            [],
+            ['HTTP_USER_AGENT' => 'Mozilla/5.0 Test']
+        );
+        $request = $this->setupRequestWithRouteParameter($request, $organisation->slug);
+
+        $this->actingAs($user);
+
+        // Act
+        Log::shouldReceive('warning')
+            ->withArgs(function ($message, $context) use ($organisation, $user) {
+                return $message === 'EnsureOrganisation: Non-member access attempt'
+                    && $context['user_id'] === $user->id
+                    && $context['organisation_id'] === $organisation->id
+                    && isset($context['ip_address'])
+                    && isset($context['user_agent'])
+                    && isset($context['user_name']);
+            })
+            ->once();
+
+        $this->middleware->handle($request, function ($req) {
+            return response('success');
+        });
     }
 
     /**
