@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Candidacy;
 use App\Models\Vote;
 use App\Models\Result;
@@ -11,19 +13,30 @@ use App\Traits\BelongsToTenant;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids, SoftDeletes;
     use BelongsToTenant;
 
+    protected $keyType = 'string';
+    protected $incrementing = false;
+
     protected $fillable = [
+        'organisation_id',
         'election_id',
-        'post_id',
         'name',
         'nepali_name',
+        'is_national_wide',
         'state_name',
         'required_number',
         'position_order',
-        'organisation_id'
     ];
+
+    /**
+     * Get the organisation that owns this post
+     */
+    public function organisation()
+    {
+        return $this->belongsTo(Organisation::class);
+    }
 
     /**
      * Get the election that this post belongs to
@@ -34,27 +47,9 @@ class Post extends Model
     }
 
     /**
-     * Get all candidates for this post WITH user relationship loaded
-     * This ensures we can access candidate names from the User table
-     * Ordered by position_order for consistent display
-     */
-    public function candidates(){
-        return $this->hasMany(Candidacy::class, 'post_id', 'id')
-                    ->with('user')
-                    ->orderBy('position_order')
-                    ->select([
-                        'id',
-                        'candidacy_id',
-                        'user_id',
-                        'post_id',
-                        'position_order'
-                    ]);
-    }
-
-
-    /**
      * Get all candidacies for this post WITH user relationship loaded
      * Ordered by position_order for consistent display
+     * Includes post name for reference
      */
     public function candidacies()
     {
@@ -67,7 +62,8 @@ class Post extends Model
                         'user_id',
                         'post_id',
                         'position_order'
-                    ]);
+                    ])
+                    ->addSelect(['post_name' => \DB::raw("'{$this->name}'")]);
     }
 
     /**

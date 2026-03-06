@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->boolean('is_national_wide')->default(true);
             $table->string('state_name')->nullable();
             $table->integer('required_number');
+            $table->integer('position_order')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
