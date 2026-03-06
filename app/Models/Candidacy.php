@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Vote;
 use App\Models\Result;
 use App\Models\Organisation;
@@ -11,34 +13,34 @@ use App\Traits\BelongsToTenant;
 
 class Candidacy extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids, SoftDeletes;
     use BelongsToTenant;
+
+    protected $keyType = 'string';
+    protected $incrementing = false;
 
     const STATUS_PENDING = 'pending';
     const STATUS_APPROVED = 'approved';
     const STATUS_REJECTED = 'rejected';
     const STATUS_WITHDRAWN = 'withdrawn';
 
-    protected $fillable =[
-        'election_id',
-        'user_id', 'user_name', 'candidacy_id', 'candidacy_name',
-        'proposer_name', 'proposer_id', 'supporter_id', 'supporter_name',
-        'post_id', 'post_nepali_name', 'post_name', 'image_path_1',
-        'image_path_2', 'image_path_3', 'position_order',
-        'organisation_id', 'status'
+    protected $fillable = [
+        'organisation_id',
+        'post_id',
+        'user_id',
+        'name',
+        'description',
+        'position_order',
+        'status',
     ];
 
     protected $casts = [
         'status' => 'string',
     ];
     /**
-     * Each candidacy belongs to one election
-     * Get the election
+     * Each candidacy belongs to one election (through post)
+     * Access via: $candidacy->post->election
      */
-    public function election()
-    {
-        return $this->belongsTo(Election::class);
-    }
 
     /**
      * Each Candidacy  belongs to only  one user
@@ -135,6 +137,24 @@ class Candidacy extends Model
                 'email' => $this->user->email ?? 'N/A',
             ]
         ];
+    }
+
+    /**
+     * Scope: Filter by organisation
+     */
+    public function scopeForOrganisation($query, $organisationId)
+    {
+        return $query->where('organisation_id', $organisationId);
+    }
+
+    /**
+     * Scope: Filter by election (through post)
+     */
+    public function scopeForElectionId($query, $electionId)
+    {
+        return $query->whereHas('post', function($q) use ($electionId) {
+            $q->where('election_id', $electionId);
+        });
     }
 
     /**
