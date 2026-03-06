@@ -26,15 +26,25 @@ class DemoSetupController extends Controller
      */
     public function setup(Request $request, Organisation $organisation)
     {
-        // AUTHORIZATION: Check if user is member of this organisation
-        $isMember = $organisation->users()
-            ->where('users.id', auth()->id())
-            ->exists();
+        $user = auth()->user();
 
-        if (!$isMember) {
+        // AUTHORIZATION: Check if user is member of this organisation
+        $userRole = $user->organisationRoles()
+            ->where('organisation_id', $organisation->id)
+            ->value('role');
+
+        // Only owner and admin can setup demo elections
+        if (!$userRole || !in_array($userRole, ['owner', 'admin'])) {
+            Log::warning('Demo setup unauthorized access attempt', [
+                'user_id' => $user->id,
+                'organisation_id' => $organisation->id,
+                'user_role' => $userRole,
+                'ip' => $request->ip(),
+            ]);
+
             return response()->json([
                 'success' => false,
-                'message' => 'You do not have access to this organisation.'
+                'message' => 'Only organisation owners and admins can setup demo elections.'
             ], 403);
         }
 
