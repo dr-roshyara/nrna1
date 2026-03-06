@@ -16,8 +16,8 @@ class Candidacy extends Model
     use HasFactory, HasUuids, SoftDeletes;
     use BelongsToTenant;
 
-    protected $keyType = 'string';
-    protected $incrementing = false;
+    public $keyType = 'string';
+    public $incrementing = false;
 
     const STATUS_PENDING = 'pending';
     const STATUS_APPROVED = 'approved';
