@@ -57,7 +57,8 @@ trait BelongsToTenant
             }
 
             // Apply scope: filter by calculated organisation_id
-            $query->where('organisation_id', $orgId);
+            // Qualify table name to avoid ambiguity in joins
+            $query->where($query->getModel()->getTable() . '.organisation_id', $orgId);
         });
 
         // Auto-fill organisation_id when creating

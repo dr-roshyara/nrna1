@@ -145,6 +145,16 @@ class Election extends Model
     }
 
     /**
+     * Three-tier hierarchy: Get all voters for this election (central hub)
+     *
+     * @return HasMany
+     */
+    public function voters(): HasMany
+    {
+        return $this->hasMany(Voter::class);
+    }
+
+    /**
      * Get all verification codes for this election
      *
      * @return HasMany

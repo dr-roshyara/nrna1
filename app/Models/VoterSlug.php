@@ -19,6 +19,7 @@ class VoterSlug extends Model
         'organisation_id',
         'election_id',
         'user_id',
+        'voter_id', // Three-tier hierarchy: VoterSlug belongs to Voter
         'slug',
         'expires_at',
         'is_active',
@@ -27,6 +28,7 @@ class VoterSlug extends Model
         'has_voted',
         'can_vote_now',
         'voting_time_min',
+        'status',
         'step_1_ip',
         'step_1_completed_at',
         'step_2_ip',
@@ -67,6 +69,14 @@ class VoterSlug extends Model
     public function user()
     {
         return $this->belongsTo(User::class)->withoutGlobalScopes();
+    }
+
+    /**
+     * Three-tier hierarchy: Get the voter this slug belongs to
+     */
+    public function voter()
+    {
+        return $this->belongsTo(Voter::class)->withoutGlobalScopes();
     }
 
     public function votes()

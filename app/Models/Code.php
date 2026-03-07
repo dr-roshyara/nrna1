@@ -21,6 +21,7 @@ class Code extends Model
         'organisation_id',
         'user_id',
         'election_id', // ✅ CRITICAL: Election scoping for multi-election support
+        'voter_id', // Three-tier hierarchy: Code belongs to Voter
         'code1',
         'code2',
         'is_code1_usable',
@@ -96,6 +97,17 @@ class Code extends Model
     public function election()
     {
         return $this->belongsTo(Election::class)
+                    ->withoutGlobalScopes();
+    }
+
+    /**
+     * Three-tier hierarchy: Get the voter this code belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function voter()
+    {
+        return $this->belongsTo(Voter::class)
                     ->withoutGlobalScopes();
     }
 

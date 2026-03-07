@@ -167,6 +167,26 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(UserOrganisationRole::class);
     }
 
+    /**
+     * Three-tier membership hierarchy: User → OrganisationUser → Member → Voter
+     */
+    public function organisationUsers()
+    {
+        return $this->hasMany(OrganisationUser::class);
+    }
+
+    public function members()
+    {
+        return $this->hasManyThrough(
+            Member::class,
+            OrganisationUser::class,
+            'user_id',          // FK on organisation_users
+            'organisation_user_id', // FK on members
+            'id',               // local key on users
+            'id'                // local key on organisation_users
+        );
+    }
+
      /**
      * Each user has one and only one Vote :
      *      */
