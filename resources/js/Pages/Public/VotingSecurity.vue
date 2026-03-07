@@ -37,7 +37,7 @@
             </p>
 
             <!-- LAYER 1: Your Device -->
-            <div class="bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-green-500 shadow-sm flex flex-col sm:flex-row gap-6">
+            <div class="layer bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-green-500 shadow-sm flex flex-col sm:flex-row gap-6 transition-transform duration-300 hover:shadow-md">
               <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
                 1
               </div>
@@ -63,7 +63,7 @@
             </div>
 
             <!-- LAYER 2: Privacy Layer -->
-            <div class="bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-purple-500 shadow-sm flex flex-col sm:flex-row gap-6">
+            <div class="layer bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-purple-500 shadow-sm flex flex-col sm:flex-row gap-6 transition-transform duration-300 hover:shadow-md">
               <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
                 2
               </div>
@@ -105,7 +105,7 @@
             </div>
 
             <!-- CENTERPIECE: Architecture Diagram PNG -->
-            <div class="my-16 text-center bg-white rounded-2xl p-8 shadow-lg">
+            <div class="diagram-container my-16 text-center bg-white rounded-2xl p-8 shadow-lg">
               <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
                 {{ $t('pages.votingSecurity.architecture.fingerprint_diagram_title') }}
               </h3>
@@ -122,7 +122,7 @@
             </div>
 
             <!-- LAYER 3: Storage Layer -->
-            <div class="bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-red-500 shadow-sm flex flex-col sm:flex-row gap-6">
+            <div class="layer bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-red-500 shadow-sm flex flex-col sm:flex-row gap-6 transition-transform duration-300 hover:shadow-md">
               <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-red-500 to-rose-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
                 3
               </div>
@@ -137,7 +137,7 @@
                 <!-- Storage Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <!-- Stored Items -->
-                  <div class="bg-green-50 rounded-lg p-6 border-2 border-green-200">
+                  <div class="storage-item bg-green-50 rounded-lg p-6 border-2 border-green-200 hover:bg-opacity-75">
                     <h4 class="text-lg font-semibold text-green-700 mb-4">
                       {{ $t('pages.votingSecurity.architecture.fingerprint_layer3.stored_title') }}
                     </h4>
@@ -152,7 +152,7 @@
                   </div>
 
                   <!-- Not Stored Items -->
-                  <div class="bg-red-50 rounded-lg p-6 border-2 border-red-200">
+                  <div class="storage-item bg-red-50 rounded-lg p-6 border-2 border-red-200 hover:bg-opacity-75">
                     <h4 class="text-lg font-semibold text-red-700 mb-4">
                       {{ $t('pages.votingSecurity.architecture.fingerprint_layer3.not_stored_title') }}
                     </h4>
@@ -170,7 +170,7 @@
             </div>
 
             <!-- LAYER 4: Verification Layer -->
-            <div class="bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-blue-500 shadow-sm flex flex-col sm:flex-row gap-6">
+            <div class="layer bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-blue-500 shadow-sm flex flex-col sm:flex-row gap-6 transition-transform duration-300 hover:shadow-md">
               <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
                 4
               </div>
@@ -184,7 +184,7 @@
 
                 <!-- Verification Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                  <div v-for="item in verificationItems" :key="item.title" class="bg-blue-50 rounded-lg p-4 text-center border border-blue-200">
+                  <div v-for="item in verificationItems" :key="item.title" class="verification-item bg-blue-50 rounded-lg p-4 text-center border border-blue-200 hover:-translate-y-1">
                     <div class="text-3xl mb-2">{{ item.icon }}</div>
                     <h5 class="font-semibold text-gray-900 text-sm mb-1">{{ item.title }}</h5>
                     <p class="text-xs text-gray-600">{{ item.description }}</p>
@@ -360,6 +360,137 @@
     <PublicDigitFooter />
   </div>
 </template>
+
+<style scoped>
+/* Layer entrance animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apply animations to layers */
+.layer {
+  animation: slideInUp 0.6s ease-out backwards;
+}
+
+.layer:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.layer:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.layer:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.layer:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.layer:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+/* Diagram container animation */
+.diagram-container {
+  animation: fadeIn 0.8s ease-out 0.3s backwards;
+}
+
+/* Hover effects for verification items */
+.verification-item {
+  transition: all 0.3s ease;
+}
+
+.verification-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+/* Hover effect for storage items */
+.storage-item {
+  transition: background-color 0.3s ease;
+}
+
+.storage-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Gradient text for privacy lock badge */
+.privacy-lock {
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+}
+
+/* Code block styling */
+.equation-box {
+  background-color: #1f2937;
+  color: #f3f4f6;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  .layer {
+    flex-direction: column;
+  }
+
+  .layer-number {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .verification-grid {
+    gap: 0.75rem;
+  }
+
+  .storage-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animation for layer number circles */
+.layer-number {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus states for accessibility */
+button:focus, a:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Print styles for accessibility */
+@media print {
+  .diagram-container {
+    page-break-inside: avoid;
+  }
+}
+</style>
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
