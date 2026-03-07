@@ -62,7 +62,7 @@
               </div>
             </div>
 
-            <!-- LAYER 2: Privacy Layer -->
+            <!-- LAYER 2: Privacy Layer (One-Way Encryption) -->
             <div class="layer bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-purple-500 shadow-sm flex flex-col sm:flex-row gap-6 transition-transform duration-300 hover:shadow-md">
               <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
                 2
@@ -523,6 +523,26 @@ onMounted(() => {
     }
   }
 
+  // Breadcrumb schema for navigation in search results
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": window.location.origin
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Security & Privacy",
+        "item": window.location.origin + "/voting/security"
+      }
+    ]
+  }
+
   // FAQ Schema for rich snippets (targets FAQ questions on page)
   const faqSchema = {
     "@context": "https://schema.org",
@@ -580,11 +600,26 @@ onMounted(() => {
   primaryScript.textContent = JSON.stringify(schemaData)
   document.head.appendChild(primaryScript)
 
+  // Inject breadcrumb schema for navigation
+  const breadcrumbScript = document.createElement('script')
+  breadcrumbScript.type = 'application/ld+json'
+  breadcrumbScript.textContent = JSON.stringify(breadcrumbSchema)
+  document.head.appendChild(breadcrumbScript)
+
   // Inject FAQ schema for rich snippets
   const faqScript = document.createElement('script')
   faqScript.type = 'application/ld+json'
   faqScript.textContent = JSON.stringify(faqSchema)
   document.head.appendChild(faqScript)
+
+  // Add canonical URL to prevent duplicate content issues
+  let canonicalLink = document.querySelector('link[rel="canonical"]')
+  if (!canonicalLink) {
+    canonicalLink = document.createElement('link')
+    canonicalLink.rel = 'canonical'
+    canonicalLink.href = window.location.href.split('?')[0] // Remove query params
+    document.head.appendChild(canonicalLink)
+  }
 
   // Add Open Graph meta tags for social sharing
   const metaTags = [
