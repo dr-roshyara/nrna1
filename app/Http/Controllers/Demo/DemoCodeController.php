@@ -944,7 +944,6 @@ class DemoCodeController extends Controller
             $updateData = [
                 'can_vote_now' => 1,
                 'code_to_open_voting_form_used_at' => now(),
-                'is_codemodel_valid' => true,
                 'client_ip' => $this->clientIP,
             ];
 
