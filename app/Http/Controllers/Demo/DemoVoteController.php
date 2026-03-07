@@ -361,31 +361,60 @@ public function create(Request $request)
 
     // --- Fetch National Posts and Candidates ---
     if ($election->isDemo()) {
-        // ✅ FIXED: Properly group candidates by post_id (foreign key)
-        // This allows us to match with $post->id (primary key)
-        $demoCandidates = DemoCandidacy::where('election_id', $election->id)
-            ->orderBy('position_order')
-            ->get();
-        
-        // Group by post_id (foreign key that stores the DemoPost.id)
-        $groupedCandidates = $demoCandidates->groupBy('post_id');
-
-        // National posts
-        $national_posts = DemoPost::where('election_id', $election->id)
+        // ✅ FIX-03: Fetch posts with their candidacies through proper relationships
+        // Avoid direct election_id queries on candidacies (column doesn't exist)
+        $nationalPosts = DemoPost::where('election_id', $election->id)
             ->where('is_national_wide', 1)
-            ->orderBy('position_order')
-            ->get()
-            ->map(function ($post) use ($groupedCandidates) {
-                // ✅ Use $post->id (integer PK) to match the grouped post_id
-                $candidatesForPost = $groupedCandidates->get($post->id, collect());
+            ->with(['candidacies' => function($query) {
+                $query->orderBy('position_order');
+            }])
+            ->orderBy('display_order')
+            ->get();
 
+        $national_posts = $nationalPosts->map(function ($post) {
+            return [
+                'id' => $post->id,
+                'post_id' => $post->post_id,
+                'name' => $post->name,
+                'nepali_name' => $post->nepali_name,
+                'required_number' => $post->required_number,
+                'candidates' => $post->candidacies->map(function ($c) {
+                    return [
+                        'id' => $c->id,
+                        'candidacy_id' => $c->candidacy_id,
+                        'user_id' => $c->user_id,
+                        'user_name' => $c->user_name ?? 'Demo Candidate',
+                        'post_id' => $c->post_id,
+                        'image_path_1' => $c->image_path_1,
+                        'candidacy_name' => $c->candidacy_name,
+                        'proposer_name' => $c->proposer_name,
+                        'supporter_name' => $c->supporter_name,
+                        'position_order' => $c->position_order,
+                    ];
+                })->values(),
+            ];
+        })->values();
+
+        // Regional posts
+        $regional_posts = collect();
+        if (!empty($auth_user->region)) {
+            $regionalPostsQuery = DemoPost::where('election_id', $election->id)
+                ->where('is_national_wide', 0)
+                ->where('state_name', trim($auth_user->region))
+                ->with(['candidacies' => function($query) {
+                    $query->orderBy('position_order');
+                }])
+                ->orderBy('display_order')
+                ->get();
+
+            $regional_posts = $regionalPostsQuery->map(function ($post) {
                 return [
-                    'id' => $post->id, // Add the integer ID for reference
-                    'post_id' => $post->post_id, // Keep string identifier for display
+                    'id' => $post->id,
+                    'post_id' => $post->post_id,
                     'name' => $post->name,
                     'nepali_name' => $post->nepali_name,
                     'required_number' => $post->required_number,
-                    'candidates' => $candidatesForPost->map(function ($c) {
+                    'candidates' => $post->candidacies->map(function ($c) {
                         return [
                             'id' => $c->id,
                             'candidacy_id' => $c->candidacy_id,
@@ -401,41 +430,6 @@ public function create(Request $request)
                     })->values(),
                 ];
             })->values();
-
-        // Regional posts
-        $regional_posts = collect();
-        if (!empty($auth_user->region)) {
-            $regional_posts = DemoPost::where('election_id', $election->id)
-                ->where('is_national_wide', 0)
-                ->where('state_name', trim($auth_user->region))
-                ->orderBy('position_order')
-                ->get()
-                ->map(function ($post) use ($groupedCandidates) {
-                    // ✅ Use $post->id (integer PK) to match the grouped post_id
-                    $candidatesForPost = $groupedCandidates->get($post->id, collect());
-
-                    return [
-                        'id' => $post->id,
-                        'post_id' => $post->post_id,
-                        'name' => $post->name,
-                        'nepali_name' => $post->nepali_name,
-                        'required_number' => $post->required_number,
-                        'candidates' => $candidatesForPost->map(function ($c) {
-                            return [
-                                'id' => $c->id,
-                                'candidacy_id' => $c->candidacy_id,
-                                'user_id' => $c->user_id,
-                                'user_name' => $c->user_name ?? 'Demo Candidate',
-                                'post_id' => $c->post_id,
-                                'image_path_1' => $c->image_path_1,
-                                'candidacy_name' => $c->candidacy_name,
-                                'proposer_name' => $c->proposer_name,
-                                'supporter_name' => $c->supporter_name,
-                                'position_order' => $c->position_order,
-                            ];
-                        })->values(),
-                    ];
-                })->values();
         }
     } else {
         // Real elections (existing code, unchanged)

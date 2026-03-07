@@ -51,11 +51,12 @@ class DemoCode extends Model
         'has_code1_sent',
         'has_code2_sent',
         'has_agreed_to_vote',
+        'has_agreed_to_vote_at',
         'has_used_code1',
         'has_used_code2',
-        'has_agreed_to_vote_at',
         'voting_started_at',
-        'is_codemodel_valid',
+        'voting_time_in_minutes',
+        'client_ip',
         // ✅ Device fingerprinting for fraud detection (privacy-preserving)
         'device_fingerprint_hash',
         'device_metadata_anonymized',
@@ -63,6 +64,7 @@ class DemoCode extends Model
 
     protected $casts = [
         'has_code1_sent' => 'boolean',
+        'has_code2_sent' => 'boolean',
         'is_code_to_open_voting_form_usable' => 'boolean',
         'is_code_to_save_vote_usable' => 'boolean',
         'can_vote_now' => 'boolean',
@@ -71,7 +73,6 @@ class DemoCode extends Model
         'has_agreed_to_vote' => 'boolean',
         'has_used_code1' => 'boolean',
         'has_used_code2' => 'boolean',
-        'is_codemodel_valid' => 'boolean',
         'code_to_open_voting_form_sent_at' => 'datetime',
         'code_to_save_vote_sent_at' => 'datetime',
         'code_to_open_voting_form_used_at' => 'datetime',
