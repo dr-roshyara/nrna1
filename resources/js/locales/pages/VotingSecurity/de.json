@@ -1,0 +1,249 @@
+{
+  "hero": {
+    "title": "Ihre Stimme, Ihre Privatsphäre, Ihre Stimme",
+    "subtitle": "Wie PublicDigit Ihre Wahlintegrität schützt und Ihre Stimme völlig anonym hält",
+    "promise": "Stimmen Sie mit Vertrauen ab. Ihre Identität bleibt privat. Ihre Stimme ist anonym. Wahlergebnisse sind überprüfbar.",
+    "ceo_tagline": "Sichere Wahlen für Organisationen, die Demokratie wertschätzen",
+    "ceo_description": "Nehmen Sie an Wahlen teil und wissen Sie, dass Ihre Stimme durch Sicherheit auf Unternehmensebene und Kryptographie geschützt ist."
+  },
+  "architecture": {
+    "title": "Wie wir Ihre Stimme schützen",
+    "subtitle": "Fünf unabhängige Sicherheitsebenen schützen jede Stimme von der Eingabe bis zur Auszählung",
+    "image_alt": "Fünf-Ebenen-Sicherheitsarchitektur mit Schutzebenen für Stimmen",
+    "fingerprint_title": "Architektur des Geräte-Fingerprinting",
+    "fingerprint_subtitle": "Ein vierschichtiger technischer Ansatz, der Sie anonym hält und beweist, dass Sie abgestimmt haben",
+    "fingerprint_diagram_title": "So funktioniert das Geräte-Fingerprinting",
+    "fingerprint_diagram_alt": "Technisches Diagramm, das zeigt, wie Gerätedaten durch Datenschutzebenen fließen",
+    "fingerprint_diagram_caption": "Dieses Diagramm zeigt Ihre gesamte Reise: Gerätedaten erfassen, sofort verschlüsseln, nur den Hash speichern und ihn zur Abstimmungsverifizierung verwenden, ohne Ihre Identität preiszugeben.",
+    "fingerprint_layer1": {
+      "title": "Ebene 1: Ihr Gerät",
+      "description": "Wenn Sie abstimmen, teilt Ihr Browser grundlegende technische Informationen, die für die Sicherheitsverifizierung erforderlich sind:",
+      "note": "⚠️ Wichtig: Wir erfassen diese Daten vorübergehend und verschlüsseln sie dann sofort, bevor sie gespeichert werden."
+    },
+    "fingerprint_layer2": {
+      "title": "Ebene 2: Einweg-Verschlüsselung",
+      "description": "Bevor etwas gespeichert wird, verschlüsseln wir Ihre Gerätedaten sofort mit SHA256 und einem geheimen Schlüssel von unserem Server.",
+      "one_way_explanation": "Einweg-Verschlüsselung bedeutet:",
+      "analogy": "Stellen Sie sich vor, wie Kaffeebohnen gemahlen werden:",
+      "analogy_forward": "Kaffeebohnen → Gemahlener Kaffee ✅ (einfach, eine Richtung)",
+      "analogy_reverse": "Gemahlener Kaffee → Ganze Bohnen ❌ (unmöglich umzukehren)",
+      "equation": "Ihre Daten + Geheimer Schlüssel → 🔒 Verschlüsselter Hash (a7f3d2c9...)\nVerschlüsselter Hash → ??? ❌ (Kann nicht umgekehrt werden)",
+      "privacy_lock": "Dies ist das Datenschutzschloss"
+    },
+    "fingerprint_layer3": {
+      "title": "Ebene 3: Was wir speichern",
+      "description": "Wir speichern dauerhaft nur verschlüsselte Daten – niemals Ihre Rohinformationen.",
+      "stored_title": "✅ Wir speichern",
+      "stored": {
+        "fingerprint": "Geräte-Fingerprint-Hash - Der verschlüsselte, Einweg-Hash Ihres Geräts (64 Zeichen)",
+        "metadata": "Anonymisierte Metadaten - Browsertyp (niemals Version), Gerätekategorie (niemals Modell)"
+      },
+      "not_stored_title": "❌ Wir speichern niemals",
+      "not_stored": {
+        "raw_ip": "Rohe IP-Adresse",
+        "exact_location": "Exakte Position oder geografische Koordinaten",
+        "user_id": "Ihre Benutzer-ID oder Ihren Namen",
+        "raw_browser": "Browserversion oder persönliche Identifizierer",
+        "mac_address": "MAC-Adresse oder Seriennummern des Geräts"
+      }
+    },
+    "fingerprint_layer4": {
+      "title": "Ebene 4: Verifizierung ohne Enthüllung",
+      "description": "Der gespeicherte Hash ermöglicht starke Sicherheit, ohne die Privatsphäre zu beeinträchtigen:",
+      "same_device": "Gleiches Gerät prüfen",
+      "same_device_desc": "Überprüfen Sie, dass Sie von Ihrem registrierten Gerät abstimmen",
+      "vote_limits": "Abstimmungslimits durchsetzen",
+      "vote_limits_desc": "Eine Person, eine Stimme – mathematisch erzwungen",
+      "anomaly": "Betrugserkennung",
+      "anomaly_desc": "Erkennen Sie automatisch verdächtige Abstimmungsmuster",
+      "audit": "Audit-Trail",
+      "audit_desc": "Kryptografischer Nachweis, dass Sie abgestimmt haben (keine Identität offenbart)",
+      "key_message": "Wir können beweisen, dass Sie abgestimmt haben UND dass Sie nur einmal abgestimmt haben... ohne Ihre Identität jemals zu kennen."
+    },
+    "device_data": {
+      "ip": "IP-Adresse - Allgemeine Standortregion",
+      "user_agent": "User Agent - Browsertyp und Betriebssystem",
+      "screen": "Bildschirmauflösung - Anzeigegröße",
+      "timezone": "Zeitzone - Ihre lokale Zeitzone",
+      "language": "Browsersprache - Bevorzugte Spracheinstellung",
+      "platform": "Plattform/OS - Windows, macOS, Linux, iOS, Android"
+    }
+  },
+  "layers": {
+    "layer1": {
+      "title": "Link-Verifizierung",
+      "description": "Ihr Wahlcode wird validiert und gehört Ihnen",
+      "explanation": "Wir überprüfen, dass Ihr Wahllink echt ist, Ihnen gehört und derzeit aktiv ist."
+    },
+    "layer2": {
+      "title": "Sitzungsschutz",
+      "description": "Ihre Stimmabgabe-Sitzung verfügt über Ablaufsicherungen",
+      "explanation": "Ihre Sitzung läuft automatisch nach 24 Stunden ab. Stimmen werden nur während offizieller Wahlperioden akzeptiert."
+    },
+    "layer3": {
+      "title": "Organisations-Check",
+      "description": "Sie können nur bei den Wahlen Ihrer Organisation abstimmen",
+      "explanation": "Das System stellt sicher, dass Sie bei der richtigen Wahl abstimmen und zu dieser Organisation gehören."
+    },
+    "layer4": {
+      "title": "Wahlregeln",
+      "description": "Das System stellt sicher: eine Person, eine Stimme",
+      "explanation": "Sie können nur einmal abstimmen, mit gültigen Codes für echte Kandidaten in der Wahl."
+    },
+    "layer5": {
+      "title": "Anonyme Speicherung",
+      "description": "Ihre Stimme wird ohne jegliche Verbindung zu Ihrer Identität gespeichert",
+      "explanation": "Wir können buchstäblich nicht sehen, wie Sie abgestimmt haben. Ihre Auswahl wird anonym gespeichert, bleibt aber überprüfbar."
+    }
+  },
+  "what_means": "Das bedeutet für Sie:",
+  "bottom_line": "Fazit:",
+  "summary": "Fünf Sicherheitsebenen bedeuten, dass Ihre Stimme in jedem Schritt geschützt ist. Selbst wenn eine Ebene kompromittiert würde, schützen Sie die anderen vier weiterhin.",
+  "pillars_title": "Stimmenschutz-Säulen",
+  "pillars": {
+    "anonymity": {
+      "title": "Vollständige Anonymität",
+      "description": "Ihre Stimme wird ohne jegliche Verbindung zu Ihrer Identität gespeichert. Wir können nicht sehen, wie Sie abgestimmt haben - von Anfang an."
+    },
+    "verification": {
+      "title": "Geräte-Fingerprinting",
+      "description": "Wir speichern einen sicheren, unidirektionalen Hash Ihrer Geräteinformationen - genug, um Betrug zu erkennen, unmöglich Sie zu identifizieren."
+    },
+    "isolation": {
+      "title": "Bestätigungsverifizierung",
+      "description": "Nach der Abstimmung erhalten Sie einen Beleg zur Überprüfung - ohne zu verraten, wie Sie abgestimmt haben."
+    }
+  },
+  "stats": {
+    "anonymous": "Anonyme Stimmen",
+    "no_user_id": "Null Benutzer-ID in Stimmen",
+    "fraud_detection": "Betrugserkennung aktiv"
+  },
+  "faq": {
+    "question1": {
+      "question": "Kann PublicDigit sehen, wie ich abgestimmt habe?",
+      "answer": "Nein. Von Anfang an speichern wir KEINE Verbindung zwischen Ihrer Identität und Ihrer Stimme. Ihre Stimme ist völlig anonym - sogar wir können sie nicht sehen."
+    },
+    "question2": {
+      "question": "Welche Geräteinformationen sammeln Sie?",
+      "answer": "Wir sammeln grundlegende Browser/Geräteinformationen (IP, Benutzer-Agent, Bildschirmauflösung), aber wir hashen diese sofort mit einem geheimen Salt. Nur der irreversible Hash wird gespeichert - die Originaldaten werden verworfen. Dies ermöglicht uns, Betrug zu erkennen, ohne Sie zu identifizieren."
+    },
+    "question3": {
+      "question": "Kann ich überprüfen, dass meine Stimme gezählt wurde?",
+      "answer": "Ja! Nach der Abstimmung erhalten Sie eine eindeutige Bestätigungsnummer. Besuchen Sie publicdigit.com/verify und geben Sie sie ein, um zu bestätigen, dass Ihre Stimme gezählt wurde - ohne zu verraten, wie Sie abgestimmt haben."
+    },
+    "question4": {
+      "question": "Was ist, wenn jemand behauptet, ich hätte nicht abgestimmt?",
+      "answer": "Wahlbeamte können Ihre IP + Identität verwenden, um einen Teilnahmebeweis zu generieren. Dies beweist, dass Sie abgestimmt haben, ohne Ihre Wahlentscheidung preiszugeben. Es ist wie der Nachweis, dass Sie am Wahllokal waren, ohne Ihren Stimmzettel zu zeigen."
+    },
+    "question5": {
+      "question": "Kann mein Geräte-Fingerprint auf mich zurückgeführt werden?",
+      "answer": "Nein. Wir verwenden einen unidirektionalen kryptografischen Hash mit einem geheimen Salt. Dies ist mathematisch irreversibel - wie der Versuch, einen Kuchen zu entbacken, um das Rezept zu finden. Ihre Privatsphäre ist absolut."
+    }
+  },
+  "footer": "Ihre Stimme, Ihre Privatsphäre, Ihre Stimme",
+  "journey_title": "Ihr Wahlablauf",
+  "journey_subtitle": "Fünf Sicherheitsprüfpunkte schützen Ihre Stimme",
+  "journey_image_alt": "Wahlablauf mit fünf Sicherheitsverifizierungspunkten",
+  "step1": "1. Link-Prüfung",
+  "step1_desc": "Ihr Code ist gültig",
+  "step2": "2. Zeit-Prüfung",
+  "step2_desc": "Sitzung ist aktiv",
+  "step3": "3. Organisations-Prüfung",
+  "step3_desc": "Sie gehören hier hin",
+  "step4": "4. Stimm-Prüfung",
+  "step4_desc": "Stimmen akzeptiert",
+  "step5": "5. Anonyme Speicherung",
+  "step5_desc": "Sicher und privat",
+  "trust_title": "Warum diesem System vertrauen",
+  "badges": {
+    "security_tests": "30+ Sicherheitstests",
+    "security_tests_desc": "Jeder Wahlschritt getestet",
+    "anonymity": "100% Anonym",
+    "anonymity_desc": "Keine Wähler-IDs mit Stimmen",
+    "protection": "5-stufiger Schutz",
+    "protection_desc": "Mehrschichtige Sicherheit",
+    "coverage": "100% Testabdeckung",
+    "coverage_desc": "Alle Codepfade getestet"
+  },
+  "faq_title": "Fragen zur Wahlsicherheit",
+  "faq": {
+    "question1": {
+      "question": "Wie bleibt meine Stimme anonym?",
+      "answer": "Ihre Stimme wird ohne jegliche Verbindung zu Ihrer Identität gespeichert. Wir speichern keine Wähler-IDs mit Stimmen - es ist mathematisch unmöglich, Ihre Identität mit Ihren Auswahl zu verknüpfen."
+    },
+    "question2": {
+      "question": "Kann ich zweimal mit dem gleichen Code abstimmen?",
+      "answer": "Nein. Jeder Wahlcode kann nur einmal verwendet werden. Nach der Abstimmung wird der Code permanent als verwendet gekennzeichnet."
+    },
+    "question3": {
+      "question": "Kann ich die Wahlergebnisse sehen?",
+      "answer": "Ja. Nach Wahlschluss werden die Ergebnisse veröffentlicht. Sie können überprüfen, dass Ihre Stimme gezählt wurde, indem Sie den Beleg verwenden, den Sie nach der Abstimmung erhalten haben."
+    },
+    "question4": {
+      "question": "Was ist, wenn ich meinen Beleg verliere?",
+      "answer": "Wenden Sie sich an Ihren Wahlleiter. Sie können einen neuen Teilnahmebeweis bereitstellen, ohne zu enthüllen, wie Sie abgestimmt haben."
+    }
+  },
+  "cta": {
+    "demo": "Jetzt abstimmen",
+    "whitepaper": "Mehr erfahren"
+  },
+  "data_store": {
+    "title": "Was wir schützen",
+    "stored_title": "Wir speichern (anonymisiert)",
+    "not_stored_title": "Wir speichern NIE",
+    "stored": {
+      "hashed_fingerprint": "Gehashter Geräte-Fingerprint (unidirektional, nicht reversibel)",
+      "country_code": "Nur Ländercode (von IP, nicht genauer Standort)",
+      "browser_family": "Browser-Familie (Chrome/Firefox/Safari - nicht Version)",
+      "device_type": "Gerätetyp (Mobil/Desktop/Tablet)",
+      "receipt_hash": "Bestätigungshash (für Ihre Überprüfung)"
+    },
+    "not_stored": {
+      "name": "Ihr Name",
+      "user_id": "Ihre Benutzer-ID (Stimmzettel ohne Benutzer-Link)",
+      "raw_ip": "Rohe IP-Adresse (nur gehashed)",
+      "raw_browser": "Rohe Browser-Details (nur Familie)",
+      "exact_location": "Genaue Standort (nur Land)",
+      "mac_address": "MAC-Adresse (nie erfasst)"
+    }
+  },
+  "verification": {
+    "title": "Zwei Wege zur Überprüfung",
+    "receipt": {
+      "badge": "FÜR WÄHLER",
+      "title": "Bestätigungsverifizierung",
+      "description": "Nach der Abstimmung erhalten Sie eine eindeutige Bestätigungsnummer. Verwenden Sie diese, um zu überprüfen, dass Ihre Stimme gezählt wurde - ohne zu verraten, wie Sie abgestimmt haben.",
+      "code_example": "publicdigit.com/verify?vote=XYZ123..."
+    },
+    "auditor": {
+      "badge": "FÜR ADMINISTRATOREN",
+      "title": "Teilnahmebeweis",
+      "description": "Wenn jemand behauptet, nicht abgestimmt zu haben, können Administratoren die Teilnahme mit IP + Identitätshash nachweisen - ohne die Stimmenwahl preiszugeben.",
+      "code_example": "Teilnahme: Bestätigt (Stimme bleibt geheim)"
+    }
+  },
+  "fingerprint": {
+    "title": "Gerätesicherheit",
+    "why_title": "Warum wir Ihre Geräteinformationen schützen:",
+    "why_intro": "Um Wahlbetrug zu verhindern und Ihre Privatsphäre zu schützen. Geräteschutz hilft uns zu erkennen:",
+    "reasons": {
+      "ballot_stuffing": "Mehrere Stimmen vom gleichen Gerät - Verhindert Stimmenfälschung",
+      "bots": "Automatisierte Wahlbots - Stellt sicher, dass echte Menschenwähler",
+      "patterns": "Verdächtige Wahlmuster - Schützt Wahlintegrität"
+    },
+    "how_title": "Wie wir Ihr Gerät schützen:",
+    "how_note": "Der Hash ist mathematisch unmöglich zu reversieren - wir können niemals Ihre tatsächlichen Geräteinformationen wiederherstellen.",
+    "steps": {
+      "step1": "Wir erfassen grundlegende Geräteinformationen",
+      "step1_detail": "IP, Browser, Bildschirmgröße",
+      "step2": "Wir fügen Verschlüsselung hinzu",
+      "step2_detail": "Eindeutiger Sicherheitsschlüssel",
+      "step3": "Erstellen Sie einen One-Way-Hash",
+      "step3_detail": "SHA256-Kryptographie",
+      "step4": "Speichern Sie nur den Hash",
+      "step4_detail": "Originaldaten gelöscht"
+    }
+  }
+}
