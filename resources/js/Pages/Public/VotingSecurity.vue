@@ -362,13 +362,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 import { useMeta } from '@/composables/useMeta'
+import { useI18n } from 'vue-i18n'
 
 // Initialize SEO meta tags
 useMeta({ pageKey: 'votingSecurity' })
+
+// Initialize i18n
+const { $t } = useI18n()
 
 // Inject Schema.org structured data
 onMounted(() => {
@@ -410,42 +414,59 @@ onMounted(() => {
 
 const pillarKeys = ref(['anonymity', 'verification', 'isolation'])
 
-const deviceDataPoints = ref([
-  'IP Address',
-  'Browser Type',
-  'Screen Resolution',
-  'Time Zone',
-  'Device Model',
+// Device data points for Layer 1 - Computed from i18n
+const deviceDataPoints = computed(() => [
+  $t('pages.votingSecurity.architecture.device_data.ip'),
+  $t('pages.votingSecurity.architecture.device_data.user_agent'),
+  $t('pages.votingSecurity.architecture.device_data.screen'),
+  $t('pages.votingSecurity.architecture.device_data.timezone'),
+  $t('pages.votingSecurity.architecture.device_data.language'),
+  $t('pages.votingSecurity.architecture.device_data.platform'),
 ])
 
-const storedItems = ref([
-  'hashed_fingerprint',
-  'country_code',
-  'browser_family',
-  'device_type',
-  'receipt_hash',
-])
+// Storage items for Layer 3 (stored)
+const storedItems = computed(() => ({
+  fingerprint: true,
+  metadata: true,
+}))
 
-const notStoredItems = ref([
-  'name',
-  'user_id',
-  'raw_ip',
-  'raw_browser',
-  'exact_location',
-  'mac_address',
+// Storage items for Layer 3 (not stored)
+const notStoredItems = computed(() => ({
+  raw_ip: true,
+  exact_location: true,
+  user_id: true,
+  raw_browser: true,
+  mac_address: true,
+}))
+
+// Verification items for Layer 4
+const verificationItems = computed(() => [
+  {
+    icon: '🔄',
+    title: $t('pages.votingSecurity.architecture.fingerprint_layer4.same_device'),
+    description: $t('pages.votingSecurity.architecture.fingerprint_layer4.same_device_desc'),
+  },
+  {
+    icon: '📊',
+    title: $t('pages.votingSecurity.architecture.fingerprint_layer4.vote_limits'),
+    description: $t('pages.votingSecurity.architecture.fingerprint_layer4.vote_limits_desc'),
+  },
+  {
+    icon: '🚨',
+    title: $t('pages.votingSecurity.architecture.fingerprint_layer4.anomaly'),
+    description: $t('pages.votingSecurity.architecture.fingerprint_layer4.anomaly_desc'),
+  },
+  {
+    icon: '📋',
+    title: $t('pages.votingSecurity.architecture.fingerprint_layer4.audit'),
+    description: $t('pages.votingSecurity.architecture.fingerprint_layer4.audit_desc'),
+  },
 ])
 
 const fingerprintReasons = ref([
   { emoji: '🛡️', title: 'Multiple votes from the same device', description: 'Stops ballot stuffing' },
   { emoji: '🤖', title: 'Automated voting bots', description: 'Ensures real human voters' },
   { emoji: '🔍', title: 'Suspicious patterns', description: 'Protects election integrity' },
-])
-
-const verificationItems = ref([
-  { icon: '📋', title: 'Receipt', description: 'Voter gets verification code' },
-  { icon: '🔍', title: 'Audit', description: 'Anyone can verify' },
-  { icon: '✓', title: 'Confirm', description: 'Vote counted correctly' },
-  { icon: '🛡️', title: 'Protect', description: 'No vote linkage' },
 ])
 
 const badges = ref([
