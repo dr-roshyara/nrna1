@@ -1,0 +1,249 @@
+{
+  "hero": {
+    "title": "Your Vote, Your Privacy, Your Voice",
+    "subtitle": "How PublicDigit protects your election integrity while keeping your vote completely anonymous",
+    "promise": "Vote with confidence. Your identity stays private. Your vote is anonymous. Election results are verifiable.",
+    "ceo_tagline": "Secure voting for organizations that value democracy",
+    "ceo_description": "Participate in elections knowing your vote is protected by enterprise-grade security and cryptography."
+  },
+  "architecture": {
+    "title": "How We Protect Your Vote",
+    "subtitle": "Five independent security layers protect every vote from entry to count",
+    "image_alt": "Five-layer security architecture showing vote protection layers",
+    "fingerprint_title": "Device Fingerprinting Architecture",
+    "fingerprint_subtitle": "A four-layer technical approach that keeps you anonymous while proving you voted",
+    "fingerprint_diagram_title": "How Device Fingerprinting Works",
+    "fingerprint_diagram_alt": "Technical diagram showing device data flowing through privacy layers",
+    "fingerprint_diagram_caption": "This diagram shows your complete journey: collecting device data, encrypting it instantly, storing only the hash, and using it to verify votes without revealing identity.",
+    "fingerprint_layer1": {
+      "title": "Layer 1: Your Device",
+      "description": "When you vote, your browser shares basic technical information needed for security verification:",
+      "note": "⚠️ Important: We collect this data temporarily, then immediately encrypt it before any storage."
+    },
+    "fingerprint_layer2": {
+      "title": "Layer 2: One-Way Encryption",
+      "description": "Before anything is stored, we instantly encrypt your device data using SHA256 with a secret salt from our server.",
+      "one_way_explanation": "One-way encryption means:",
+      "analogy": "Think of it like grinding coffee beans:",
+      "analogy_forward": "Coffee beans → Ground coffee ✅ (easy, one direction)",
+      "analogy_reverse": "Ground coffee → Whole beans ❌ (impossible to reverse)",
+      "equation": "Your data + Secret salt → 🔒 Encrypted hash (a7f3d2c9...)\nEncrypted hash → ??? ❌ (Cannot be reversed)",
+      "privacy_lock": "This is the privacy lock"
+    },
+    "fingerprint_layer3": {
+      "title": "Layer 3: What We Store",
+      "description": "We permanently store only encrypted data—never your raw information.",
+      "stored_title": "✅ We Store",
+      "stored": {
+        "fingerprint": "Device Fingerprint Hash - The encrypted, one-way hash of your device (64 characters)",
+        "metadata": "Anonymized Metadata - Browser type (never version), device category (never model)"
+      },
+      "not_stored_title": "❌ We Never Store",
+      "not_stored": {
+        "raw_ip": "Raw IP address",
+        "exact_location": "Exact location or geographic coordinates",
+        "user_id": "Your user ID or name",
+        "raw_browser": "Browser version or personal identifiers",
+        "mac_address": "Device MAC address or serial numbers"
+      }
+    },
+    "fingerprint_layer4": {
+      "title": "Layer 4: Verification Without Revelation",
+      "description": "The stored hash enables powerful security without compromising privacy:",
+      "same_device": "Same Device Check",
+      "same_device_desc": "Verify it's you voting from your registered device",
+      "vote_limits": "Vote Limits Enforcement",
+      "vote_limits_desc": "One person, one vote—mathematically enforced",
+      "anomaly": "Fraud Detection",
+      "anomaly_desc": "Spot suspicious voting patterns automatically",
+      "audit": "Audit Trail",
+      "audit_desc": "Cryptographic proof you voted (no identity revealed)",
+      "key_message": "We can prove you voted AND that you only voted once... without ever knowing who you are."
+    },
+    "device_data": {
+      "ip": "IP Address - General location region",
+      "user_agent": "User Agent - Browser and operating system type",
+      "screen": "Screen Resolution - Display size",
+      "timezone": "Timezone - Your local time zone",
+      "language": "Browser Language - Preferred language setting",
+      "platform": "Platform/OS - Windows, macOS, Linux, iOS, Android"
+    }
+  },
+  "layers": {
+    "layer1": {
+      "title": "Link Verification",
+      "description": "Your voting code is validated and belongs to you",
+      "explanation": "We check that your voting link is real, belongs to you, and is currently active."
+    },
+    "layer2": {
+      "title": "Session Protection",
+      "description": "Your voting session has expiration safeguards",
+      "explanation": "Your session automatically expires after 24 hours for security. Votes are only accepted during official voting periods."
+    },
+    "layer3": {
+      "title": "Organization Check",
+      "description": "You can only vote in your organization's elections",
+      "explanation": "The system ensures you're voting in the right election and belong to that organization."
+    },
+    "layer4": {
+      "title": "Voting Rules",
+      "description": "The system ensures one person, one vote",
+      "explanation": "You can only vote once, with valid codes, for real candidates in the election."
+    },
+    "layer5": {
+      "title": "Anonymous Storage",
+      "description": "Your vote is stored with zero connection to your identity",
+      "explanation": "We literally cannot see how you voted. Your selections are stored anonymously but remain verifiable."
+    }
+  },
+  "what_means": "What this means for you:",
+  "bottom_line": "The bottom line:",
+  "summary": "Five security layers mean your vote is protected at every step. Even if one layer were compromised, the other four still protect you.",
+  "pillars_title": "Vote Security Pillars",
+  "pillars": {
+    "anonymity": {
+      "title": "Complete Anonymity",
+      "description": "Your vote is stored with NO link to your identity. We literally cannot know how you voted - by design."
+    },
+    "verification": {
+      "title": "Device Fingerprinting",
+      "description": "We store a secure, one-way hash of your device info - enough to detect fraud, impossible to identify you."
+    },
+    "isolation": {
+      "title": "Receipt Verification",
+      "description": "After voting, you get a receipt to verify your vote was counted - without revealing how you voted."
+    }
+  },
+  "stats": {
+    "anonymous": "Anonymous Votes",
+    "no_user_id": "Zero User ID in Votes",
+    "fraud_detection": "Fraud Detection Active"
+  },
+  "faq": {
+    "question1": {
+      "question": "Can PublicDigit see how I voted?",
+      "answer": "No. By design, we store NO link between your identity and your vote. Your vote is completely anonymous - even we cannot see it."
+    },
+    "question2": {
+      "question": "What device information do you collect?",
+      "answer": "We collect basic browser/device information (IP, user agent, screen resolution) but we immediately hash it with a secret salt. Only the irreversible hash is stored - the original data is discarded. This lets us detect fraud without identifying you."
+    },
+    "question3": {
+      "question": "Can I verify my vote was counted?",
+      "answer": "Yes! After voting, you receive a unique receipt string. Visit publicdigit.com/verify and enter it to confirm your vote was counted - without revealing how you voted."
+    },
+    "question4": {
+      "question": "What if someone claims I didn't vote?",
+      "answer": "Election officials can use your IP + identity to generate a participation proof. This proves you voted without revealing your choice. It's like proving you were at the polling station without showing your ballot."
+    },
+    "question5": {
+      "question": "Can my device fingerprint be traced back to me?",
+      "answer": "No. We use a one-way cryptographic hash with a secret salt. This is mathematically irreversible - it's like trying to un-bake a cake to find the recipe. Your privacy is absolute."
+    }
+  },
+  "footer": "Your Vote, Your Privacy, Your Voice",
+  "journey_title": "Your Voting Journey",
+  "journey_subtitle": "Five security checkpoints protect your vote",
+  "journey_image_alt": "Voting journey showing five security verification points",
+  "step1": "1. Link Check",
+  "step1_desc": "Your code is valid",
+  "step2": "2. Time Check",
+  "step2_desc": "Session is active",
+  "step3": "3. Organization Check",
+  "step3_desc": "You belong here",
+  "step4": "4. Vote Check",
+  "step4_desc": "Votes accepted",
+  "step5": "5. Anonymous Storage",
+  "step5_desc": "Secure & private",
+  "trust_title": "Why Trust This System",
+  "badges": {
+    "security_tests": "30+ Security Tests",
+    "security_tests_desc": "Every voting step tested",
+    "anonymity": "100% Anonymous",
+    "anonymity_desc": "No voter IDs with votes",
+    "protection": "5-Layer Protection",
+    "protection_desc": "Multi-level security",
+    "coverage": "100% Test Coverage",
+    "coverage_desc": "All code paths tested"
+  },
+  "faq_title": "Questions About Voting Security",
+  "faq": {
+    "question1": {
+      "question": "How is my vote kept anonymous?",
+      "answer": "Your vote is stored without any connection to your identity. We don't store voter IDs with votes - it's mathematically impossible to link your identity to your choices."
+    },
+    "question2": {
+      "question": "Can I vote twice with the same code?",
+      "answer": "No. Each voting code can only be used once. After you vote, the code is permanently marked as used."
+    },
+    "question3": {
+      "question": "Can I see the election results?",
+      "answer": "Yes. After voting closes, results are published. You can verify your vote was counted using the receipt you received after voting."
+    },
+    "question4": {
+      "question": "What if I lose my receipt?",
+      "answer": "Contact your election administrator. They can provide a new participation verification without revealing how you voted."
+    }
+  },
+  "cta": {
+    "demo": "Start Voting",
+    "whitepaper": "Learn More"
+  },
+  "data_store": {
+    "title": "What We Protect",
+    "stored_title": "We Store (Anonymized)",
+    "not_stored_title": "We NEVER Store",
+    "stored": {
+      "hashed_fingerprint": "Hashed device fingerprint (one-way, can't be reversed)",
+      "country_code": "Country code only (from IP, not exact location)",
+      "browser_family": "Browser family (Chrome/Firefox/Safari - not version)",
+      "device_type": "Device type (mobile/desktop/tablet)",
+      "receipt_hash": "Receipt hash (for your verification)"
+    },
+    "not_stored": {
+      "name": "Your name",
+      "user_id": "Your user ID (votes have NO user link)",
+      "raw_ip": "Raw IP address (only hashed)",
+      "raw_browser": "Raw browser details (only family)",
+      "exact_location": "Exact location (only country)",
+      "mac_address": "MAC address (never collected)"
+    }
+  },
+  "verification": {
+    "title": "Two Ways to Verify",
+    "receipt": {
+      "badge": "FOR VOTERS",
+      "title": "Receipt Verification",
+      "description": "After voting, you receive a unique receipt string. Use it to verify your vote was counted - without revealing who you voted for.",
+      "code_example": "publicdigit.com/verify?vote=XYZ123..."
+    },
+    "auditor": {
+      "badge": "FOR ADMINISTRATORS",
+      "title": "Participation Proof",
+      "description": "If someone claims they didn't vote, administrators can prove participation using IP + identity hash - without revealing the vote choice.",
+      "code_example": "Participation: Verified (vote remains secret)"
+    }
+  },
+  "fingerprint": {
+    "title": "Device Security",
+    "why_title": "Why we protect your device info:",
+    "why_intro": "To prevent voting fraud while protecting your privacy. Device protection helps us detect:",
+    "reasons": {
+      "ballot_stuffing": "Multiple votes from the same device - Stops ballot stuffing",
+      "bots": "Automated voting bots - Ensures real human voters",
+      "patterns": "Suspicious voting patterns - Protects election integrity"
+    },
+    "how_title": "How we protect your device:",
+    "how_note": "The hash is mathematically impossible to reverse - we can never recover your actual device information.",
+    "steps": {
+      "step1": "We collect basic device info",
+      "step1_detail": "IP, browser, screen size",
+      "step2": "We add encryption",
+      "step2_detail": "Unique security key",
+      "step3": "Create a one-way hash",
+      "step3_detail": "SHA256 cryptography",
+      "step4": "Store only the hash",
+      "step4_detail": "Original data deleted"
+    }
+  }
+}
