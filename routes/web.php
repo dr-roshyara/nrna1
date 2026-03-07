@@ -46,6 +46,7 @@ use App\Http\Controllers\WelcomeDashboardController;
 use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\Organisations\MemberImportController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\Import\OrganisationUserImportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -367,6 +368,22 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/organisations/{slug}/members/import', [MemberImportController::class, 'store'])
              ->name('organisations.members.import.store');
     });
+
+    // Excel import/export routes (use {organisation} parameter)
+    Route::middleware(['auth', 'verified', 'ensure.organisation'])
+        ->prefix('organisations/{organisation}/users/import')
+        ->name('organisations.users.import.')
+        ->controller(OrganisationUserImportController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/template', 'template')->name('template');
+            Route::post('/preview', 'preview')->name('preview');
+            Route::post('/process', 'process')->name('process');
+        });
+
+    Route::get('/organisations/{organisation}/users/export', [OrganisationUserImportController::class, 'export'])
+        ->name('organisations.users.export')
+        ->middleware(['auth', 'verified', 'ensure.organisation']);
 
     // Demo setup API endpoint
     Route::post('/api/organisations/{organisation}/demo-setup', [DemoSetupController::class, 'setup'])

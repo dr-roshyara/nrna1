@@ -59,24 +59,31 @@ class EnsureOrganisationMember
         $user = Auth::user();
 
         // Try to extract organisation identifier from route parameters
-        $organisationIdentifier = $request->route('organisation') ?? $request->route('slug');
+        $organisationParam = $request->route('organisation') ?? $request->route('slug');
 
-        if (!$organisationIdentifier) {
-            Log::warning('EnsureOrganisation: No organisation identifier found in route', [
-                'user_id' => $user->id,
-                'route' => $request->route()->getName(),
-                'path' => $request->path(),
-            ]);
+        // Handle both model instances (from implicit binding) and string identifiers
+        if ($organisationParam instanceof Organisation) {
+            $organisation = $organisationParam;
+        } else {
+            $organisationIdentifier = $organisationParam;
 
-            if ($request->expectsJson()) {
-                return response()->json(['error' => 'organisation context not found'], 400);
+            if (!$organisationIdentifier) {
+                Log::warning('EnsureOrganisation: No organisation identifier found in route', [
+                    'user_id' => $user->id,
+                    'route' => $request->route()->getName(),
+                    'path' => $request->path(),
+                ]);
+
+                if ($request->expectsJson()) {
+                    return response()->json(['error' => 'organisation context not found'], 400);
+                }
+
+                return redirect()->route('dashboard')->withErrors(['error' => 'organisation not specified']);
             }
 
-            return redirect()->route('dashboard')->withErrors(['error' => 'organisation not specified']);
+            // Resolve organisation from database by UUID or slug
+            $organisation = $this->resolveOrganisation($organisationIdentifier);
         }
-
-        // Resolve organisation from database by UUID or slug
-        $organisation = $this->resolveOrganisation($organisationIdentifier);
 
         if (!$organisation) {
             Log::warning('EnsureOrganisation: organisation not found', [
