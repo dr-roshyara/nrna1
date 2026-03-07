@@ -14,7 +14,9 @@ use App\Models\VoterRegistration;
 use App\Models\Code;
 use App\Models\Vote;
 use App\Models\Result;
-use App\Models\VoterSlug;  
+use App\Models\VoterSlug;
+use App\Traits\BelongsToTenant;
+
 /**
  * Election Model
  *
@@ -23,7 +25,7 @@ use App\Models\VoterSlug;
  */
 class Election extends Model
 {
-    use HasFactory, HasUuids, SoftDeletes;
+    use HasFactory, HasUuids, SoftDeletes, BelongsToTenant;
 
     protected $keyType = 'string';
     public $incrementing = false;

@@ -29,6 +29,13 @@ use Illuminate\Database\Eloquent\Model;
 trait BelongsToTenant
 {
     /**
+     * Static cache to avoid N+1 queries for platform org lookup
+     * When session is null/0 (platform context), cache the platform org ID
+     * This prevents repeated DB queries on every model operation in platform context
+     */
+    private static ?string $platformOrgIdCache = null;
+
+    /**
      * Boot the trait - register global scope and creating observer
      */
     protected static function bootBelongsToTenant()
@@ -40,11 +47,13 @@ trait BelongsToTenant
             // ✅ Convert legacy organisation_id=0 to platform org ID for consistency
             // When session org is 0 or null (platform/demo mode), use platform org's actual ID
             if ($orgId === 0 || $orgId === null) {
-                $platformOrg = \App\Models\Organisation::where('slug', 'platform')->first();
-                if ($platformOrg) {
-                    $orgId = $platformOrg->id;
+                // Use static cache instead of hitting DB every time (N+1 fix)
+                if (static::$platformOrgIdCache === null) {
+                    static::$platformOrgIdCache = \App\Models\Organisation::withoutGlobalScopes()
+                        ->where('slug', 'platform')
+                        ->value('id') ?? '';
                 }
-                // If no platform org, use 0 as fallback (shouldn't happen in normal operation)
+                $orgId = static::$platformOrgIdCache ?: null;
             }
 
             // Apply scope: filter by calculated organisation_id
@@ -59,13 +68,13 @@ trait BelongsToTenant
 
                 // If session is null or 0 (demo/platform mode), use platform organisation ID
                 if ($sessionOrgId === null || $sessionOrgId === 0) {
-                    $platformOrg = \App\Models\Organisation::where('slug', 'platform')->first();
-                    if ($platformOrg) {
-                        $model->organisation_id = $platformOrg->id;
-                    } else {
-                        // Fallback: should not happen if seeding is correct
-                        $model->organisation_id = 1;
+                    // Use static cache instead of hitting DB every time (N+1 fix)
+                    if (static::$platformOrgIdCache === null) {
+                        static::$platformOrgIdCache = \App\Models\Organisation::withoutGlobalScopes()
+                            ->where('slug', 'platform')
+                            ->value('id') ?? '';
                     }
+                    $model->organisation_id = static::$platformOrgIdCache ?: null;
                 } else {
                     // Use the session organisation
                     $model->organisation_id = $sessionOrgId;
