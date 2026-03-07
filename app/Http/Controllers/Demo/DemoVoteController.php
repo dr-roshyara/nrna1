@@ -368,7 +368,7 @@ public function create(Request $request)
             ->with(['candidacies' => function($query) {
                 $query->orderBy('position_order');
             }])
-            ->orderBy('display_order')
+            ->orderBy('position_order')
             ->get();
 
         $national_posts = $nationalPosts->map(function ($post) {
@@ -404,7 +404,7 @@ public function create(Request $request)
                 ->with(['candidacies' => function($query) {
                     $query->orderBy('position_order');
                 }])
-                ->orderBy('display_order')
+                ->orderBy('position_order')
                 ->get();
 
             $regional_posts = $regionalPostsQuery->map(function ($post) {
