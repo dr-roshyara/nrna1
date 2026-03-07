@@ -503,7 +503,7 @@ import { useI18n } from 'vue-i18n'
 useMeta({ pageKey: 'votingSecurity' })
 
 // Initialize i18n
-const { $t } = useI18n()
+const { t } = useI18n()
 
 // Inject Schema.org structured data
 onMounted(() => {
@@ -547,12 +547,12 @@ const pillarKeys = ref(['anonymity', 'verification', 'isolation'])
 
 // Device data points for Layer 1 - Computed from i18n
 const deviceDataPoints = computed(() => [
-  $t('pages.votingSecurity.architecture.device_data.ip'),
-  $t('pages.votingSecurity.architecture.device_data.user_agent'),
-  $t('pages.votingSecurity.architecture.device_data.screen'),
-  $t('pages.votingSecurity.architecture.device_data.timezone'),
-  $t('pages.votingSecurity.architecture.device_data.language'),
-  $t('pages.votingSecurity.architecture.device_data.platform'),
+  t('pages.votingSecurity.architecture.device_data.ip'),
+  t('pages.votingSecurity.architecture.device_data.user_agent'),
+  t('pages.votingSecurity.architecture.device_data.screen'),
+  t('pages.votingSecurity.architecture.device_data.timezone'),
+  t('pages.votingSecurity.architecture.device_data.language'),
+  t('pages.votingSecurity.architecture.device_data.platform'),
 ])
 
 // Storage items for Layer 3 (stored)
@@ -574,23 +574,23 @@ const notStoredItems = computed(() => ({
 const verificationItems = computed(() => [
   {
     icon: '🔄',
-    title: $t('pages.votingSecurity.architecture.fingerprint_layer4.same_device'),
-    description: $t('pages.votingSecurity.architecture.fingerprint_layer4.same_device_desc'),
+    title: t('pages.votingSecurity.architecture.fingerprint_layer4.same_device'),
+    description: t('pages.votingSecurity.architecture.fingerprint_layer4.same_device_desc'),
   },
   {
     icon: '📊',
-    title: $t('pages.votingSecurity.architecture.fingerprint_layer4.vote_limits'),
-    description: $t('pages.votingSecurity.architecture.fingerprint_layer4.vote_limits_desc'),
+    title: t('pages.votingSecurity.architecture.fingerprint_layer4.vote_limits'),
+    description: t('pages.votingSecurity.architecture.fingerprint_layer4.vote_limits_desc'),
   },
   {
     icon: '🚨',
-    title: $t('pages.votingSecurity.architecture.fingerprint_layer4.anomaly'),
-    description: $t('pages.votingSecurity.architecture.fingerprint_layer4.anomaly_desc'),
+    title: t('pages.votingSecurity.architecture.fingerprint_layer4.anomaly'),
+    description: t('pages.votingSecurity.architecture.fingerprint_layer4.anomaly_desc'),
   },
   {
     icon: '📋',
-    title: $t('pages.votingSecurity.architecture.fingerprint_layer4.audit'),
-    description: $t('pages.votingSecurity.architecture.fingerprint_layer4.audit_desc'),
+    title: t('pages.votingSecurity.architecture.fingerprint_layer4.audit'),
+    description: t('pages.votingSecurity.architecture.fingerprint_layer4.audit_desc'),
   },
 ])
 
