@@ -49,10 +49,11 @@ class VoterSlugService
                 'election_id' => $electionId,
             ]);
 
-            // Revoke any existing active slugs for this user
+            // Revoke any existing active slugs for this user by soft-deleting them
+            // (deactivating is not enough due to unique constraint on election_id + user_id)
             VoterSlug::where('user_id', $user->id)
                 ->where('is_active', true)
-                ->update(['is_active' => false]);
+                ->delete(); // Soft delete to respect unique constraint
 
             // Generate URL-safe random slug
             $slug = $this->generateRandomSlug();
