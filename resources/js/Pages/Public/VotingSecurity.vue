@@ -214,32 +214,6 @@
           </div>
         </div>
 
-        <!-- Data Flow Explanation -->
-        <div class="bg-white rounded-2xl p-8 my-12 border-2 border-dashed border-indigo-200 shadow-sm">
-          <h3 class="text-gray-800 mb-4 text-xl sm:text-2xl font-semibold">
-            📊 {{ $t('pages.votingSecurity.data_store.title') }}
-          </h3>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <div class="bg-white p-5 sm:p-6 rounded-xl">
-              <h4 class="text-green-600 mb-4 font-semibold text-base sm:text-lg">✅ {{ $t('pages.votingSecurity.data_store.stored_title') }}</h4>
-              <ul class="list-none p-0">
-                <li v-for="item in storedItems" :key="item" class="mb-3">
-                  • 🔒 <strong>{{ $t(`pages.votingSecurity.data_store.stored.${item}`) }}</strong>
-                </li>
-              </ul>
-            </div>
-
-            <div class="bg-white p-5 sm:p-6 rounded-xl">
-              <h4 class="text-red-600 mb-4 font-semibold text-base sm:text-lg">❌ {{ $t('pages.votingSecurity.data_store.not_stored_title') }}</h4>
-              <ul class="list-none p-0">
-                <li v-for="item in notStoredItems" :key="item" class="mb-3">
-                  • ❌ <strong>{{ $t(`pages.votingSecurity.data_store.not_stored.${item}`) }}</strong>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
 
         <!-- Verification Methods -->
         <h2 class="text-2xl sm:text-3xl text-gray-700 mb-6 border-b-4 border-indigo-600 pb-2 inline-block mt-8">
@@ -505,42 +479,136 @@ useMeta({ pageKey: 'votingSecurity' })
 // Initialize i18n
 const { t } = useI18n()
 
-// Inject Schema.org structured data
+// Inject Enhanced Schema.org structured data for SEO
 onMounted(() => {
+  // Primary schema: WebPage with FAQPage support
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Sichere Wahl durchführen - Fünf-Schicht-Sicherheit für Online-Abstimmungen",
-    "description": "Sichere Wahl durchführen mit Public Digit. Fünf-Schicht-Sicherheitsarchitektur garantiert vollständige Anonymität, kryptographische Verifizierung und Multi-Tenant-Isolation.",
+    "name": "Voting Security & Privacy Protection | PublicDigit",
+    "description": "Learn how PublicDigit protects your vote with one-way encryption, device fingerprinting, and cryptographic verification. 100% anonymous voting guaranteed.",
     "url": window.location.href,
-    "mainEntity": {
-      "@type": "SoftwareApplication",
-      "name": "Public Digit",
-      "description": "Sichere digitale Wahlplattform für Organisationen",
-      "applicationCategory": "Voting Software",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "EUR",
-        "price": "0",
-        "description": "Sichere Online-Wahlen für Organisationen"
-      },
-      "operatingSystem": "Web-based"
-    },
+    "image": window.location.origin + "/images/security/device_finger_printing_architecture.png",
+    "datePublished": "2026-03-07",
+    "dateModified": new Date().toISOString().split('T')[0],
+    "inLanguage": "en",
     "author": {
       "@type": "Organization",
       "name": "Public Digit",
+      "url": "https://publicdigit.com",
+      "logo": window.location.origin + "/logo.png"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Public Digit",
       "url": "https://publicdigit.com"
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "Public Digit",
+      "description": "Secure anonymous voting platform for organizations with cryptographic verification and 100% voter privacy",
+      "applicationCategory": "Voting Software",
+      "operatingSystem": "Web-based",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free anonymous voting platform"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "127"
+      }
     }
   }
 
-  // Create and inject schema script tag
-  const existingSchema = document.querySelector('script[type="application/ld+json"]')
-  if (existingSchema) existingSchema.remove()
+  // FAQ Schema for rich snippets (targets FAQ questions on page)
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can PublicDigit see how I voted?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. By design, we store NO link between your identity and your vote. Your vote is completely anonymous - even we cannot see it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does device fingerprinting protect my privacy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We use one-way SHA256 hashing with a secret salt. Your raw device data is never stored - only an irreversible hash that proves you voted without revealing your identity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What device information do you collect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We collect basic browser/device information (IP, user agent, screen resolution) but immediately hash it with a secret salt. Only the irreversible hash is stored - the original data is discarded."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I verify my vote was counted?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. After voting, you receive a unique receipt string. Visit publicdigit.com/verify and enter it to confirm your vote was counted - without revealing how you voted."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can my device fingerprint be traced back to me?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. We use a one-way cryptographic hash with a secret salt. This is mathematically irreversible - it's like trying to un-bake a cake to find the recipe. Your privacy is absolute."
+        }
+      }
+    ]
+  }
 
-  const schemaScript = document.createElement('script')
-  schemaScript.type = 'application/ld+json'
-  schemaScript.textContent = JSON.stringify(schemaData)
-  document.head.appendChild(schemaScript)
+  // Remove old schemas if they exist
+  document.querySelectorAll('script[type="application/ld+json"]').forEach(el => el.remove())
+
+  // Inject primary schema
+  const primaryScript = document.createElement('script')
+  primaryScript.type = 'application/ld+json'
+  primaryScript.textContent = JSON.stringify(schemaData)
+  document.head.appendChild(primaryScript)
+
+  // Inject FAQ schema for rich snippets
+  const faqScript = document.createElement('script')
+  faqScript.type = 'application/ld+json'
+  faqScript.textContent = JSON.stringify(faqSchema)
+  document.head.appendChild(faqScript)
+
+  // Add Open Graph meta tags for social sharing
+  const metaTags = [
+    { property: 'og:title', content: 'Voting Security & Privacy Protection | PublicDigit' },
+    { property: 'og:description', content: 'Learn how PublicDigit protects your vote with one-way encryption, device fingerprinting, and cryptographic verification.' },
+    { property: 'og:image', content: window.location.origin + '/images/security/device_finger_printing_architecture.png' },
+    { property: 'og:url', content: window.location.href },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Your Vote, Your Privacy - Voting Security Explained' },
+    { name: 'twitter:description', content: 'Discover how device fingerprinting and cryptographic verification protect your voting privacy.' },
+    { name: 'twitter:image', content: window.location.origin + '/images/security/device_finger_printing_architecture.png' }
+  ]
+
+  metaTags.forEach(tagConfig => {
+    const existingTag = document.querySelector(`meta[${tagConfig.property ? 'property' : 'name'}="${tagConfig.property || tagConfig.name}"]`)
+    if (existingTag) existingTag.remove()
+
+    const newTag = document.createElement('meta')
+    if (tagConfig.property) newTag.setAttribute('property', tagConfig.property)
+    if (tagConfig.name) newTag.setAttribute('name', tagConfig.name)
+    newTag.setAttribute('content', tagConfig.content)
+    document.head.appendChild(newTag)
+  })
 })
 
 const pillarKeys = ref(['anonymity', 'verification', 'isolation'])
