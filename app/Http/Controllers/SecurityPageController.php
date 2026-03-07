@@ -19,6 +19,9 @@ class SecurityPageController extends Controller
             'faqItems' => $this->getFaqItems(),
             'images' => $this->getImages(),
             'ctaButtons' => $this->getCtaButtons(),
+            'dataStore' => $this->getDataStore(),
+            'verificationMethods' => $this->getVerificationMethods(),
+            'fingerprintSteps' => $this->getFingerprintSteps(),
         ]);
     }
 
@@ -125,15 +128,81 @@ class SecurityPageController extends Controller
         return [
             [
                 'id' => 'cta-demo',
-                'label' => 'Start Secure Election',
+                'labelKey' => 'pages.security.cta.demo',
                 'href' => '/election/demo/start',
                 'variant' => 'primary',
             ],
             [
                 'id' => 'cta-whitepaper',
-                'label' => 'View Security Whitepaper',
+                'labelKey' => 'pages.security.cta.whitepaper',
                 'href' => '#whitepaper',
                 'variant' => 'secondary',
+            ],
+        ];
+    }
+
+    /**
+     * Get data store section with stored and not stored information.
+     */
+    private function getDataStore(): array
+    {
+        return [
+            'stored' => [
+                'hashed_fingerprint',
+                'country_code',
+                'browser_family',
+                'device_type',
+                'receipt_hash',
+            ],
+            'notStored' => [
+                'name',
+                'user_id',
+                'raw_ip',
+                'raw_browser',
+                'exact_location',
+                'mac_address',
+            ],
+        ];
+    }
+
+    /**
+     * Get verification methods (receipt and auditor proof).
+     */
+    private function getVerificationMethods(): array
+    {
+        return [
+            [
+                'id' => 'receipt',
+                'badgeType' => 'receipt',
+            ],
+            [
+                'id' => 'auditor',
+                'badgeType' => 'auditor',
+            ],
+        ];
+    }
+
+    /**
+     * Get fingerprint steps (4-step process).
+     */
+    private function getFingerprintSteps(): array
+    {
+        return [
+            [
+                'id' => 'step1',
+                'number' => 1,
+            ],
+            [
+                'id' => 'step2',
+                'number' => 2,
+            ],
+            [
+                'id' => 'step3',
+                'number' => 3,
+            ],
+            [
+                'id' => 'step4',
+                'number' => 4,
             ],
         ];
     }

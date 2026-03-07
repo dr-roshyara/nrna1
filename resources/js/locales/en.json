@@ -215,6 +215,11 @@
         "title": "Secure & Anonymous Online Voting for Associations | Public Digit",
         "description": "Five-layer security architecture protecting your elections. Complete voter anonymity, cryptographic verification, and multi-tenant isolation for associations, NGOs, and organisations.",
         "keywords": "secure online voting, anonymous voting, voting associations, election security, digital voting platform, voter anonymity, secure elections, voting for nonprofits"
+      },
+      "votingSecurity": {
+        "title": "Five-Layer Security Architecture for Secure Online Voting | Public Digit",
+        "description": "Conduct secure elections with Public Digit's five-layer security architecture. Complete voter anonymity, cryptographic verification, device fingerprinting, and multi-tenant isolation. GDPR-compliant end-to-end encrypted voting.",
+        "keywords": "secure online voting, election security, cryptographic voting, device fingerprinting, voter anonymity, secure elections online, multi-layer security, voting platform security, encrypted voting system, election integrity"
       }
     }
   },

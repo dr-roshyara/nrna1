@@ -105,5 +105,62 @@
   "cta": {
     "demo": "Start Secure Election",
     "whitepaper": "View Security Whitepaper"
+  },
+  "data_store": {
+    "title": "What We Store vs. What We DON'T Store",
+    "stored_title": "We Store (Anonymized)",
+    "not_stored_title": "We NEVER Store",
+    "stored": {
+      "hashed_fingerprint": "Hashed device fingerprint (one-way, can't be reversed)",
+      "country_code": "Country code only (from IP, not exact location)",
+      "browser_family": "Browser family (Chrome/Firefox/Safari - not version)",
+      "device_type": "Device type (mobile/desktop/tablet)",
+      "receipt_hash": "Receipt hash (for your verification)"
+    },
+    "not_stored": {
+      "name": "Your name",
+      "user_id": "Your user ID (votes have NO user link)",
+      "raw_ip": "Raw IP address (only hashed)",
+      "raw_browser": "Raw browser details (only family)",
+      "exact_location": "Exact location (only country)",
+      "mac_address": "MAC address (never collected)"
+    }
+  },
+  "verification": {
+    "title": "Two Ways to Verify",
+    "receipt": {
+      "badge": "FOR VOTERS",
+      "title": "Receipt Verification",
+      "description": "After voting, you receive a unique receipt string. Use it to verify your vote was counted - without revealing who you voted for.",
+      "code_example": "publicdigit.com/verify?vote=XYZ123..."
+    },
+    "auditor": {
+      "badge": "FOR AUDITORS",
+      "title": "Participation Proof",
+      "description": "If someone claims they didn't vote, auditors can prove participation using IP + identity hash - without revealing the vote choice.",
+      "code_example": "Participation: Verified (vote remains secret)"
+    }
+  },
+  "fingerprint": {
+    "title": "About Device Fingerprinting",
+    "why_title": "Why we do it:",
+    "why_intro": "To prevent voting fraud while protecting your privacy. Device fingerprinting helps us detect:",
+    "reasons": {
+      "ballot_stuffing": "Multiple votes from the same device - Stops ballot stuffing",
+      "bots": "Automated voting bots - Ensures real human voters",
+      "patterns": "Suspicious patterns - Protects election integrity"
+    },
+    "how_title": "How we protect you:",
+    "how_note": "The hash is mathematically impossible to reverse - we can never recover your actual device information.",
+    "steps": {
+      "step1": "We collect device info",
+      "step1_detail": "IP, browser, screen size",
+      "step2": "We add a secret salt",
+      "step2_detail": "Unique to PublicDigit",
+      "step3": "SHA256 hash",
+      "step3_detail": "One-way, irreversible",
+      "step4": "Store only the hash",
+      "step4_detail": "Raw data discarded"
+    }
   }
 }

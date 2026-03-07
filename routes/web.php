@@ -189,6 +189,9 @@ Route::get('/faq', function () {
 // Security page
 Route::get('/security', [App\Http\Controllers\SecurityPageController::class, 'show'])->name('security');
 
+// Voting Security page
+Route::get('/voting/security', [App\Http\Controllers\VotingSecurityPageController::class, 'show'])->name('voting.security');
+
 // Route::get('/', function () {
 //     if( auth()->user()!=null ){ return Inertia::render('Dashboard/MainDashboard'); }
 

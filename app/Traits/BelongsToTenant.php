@@ -133,4 +133,15 @@ trait BelongsToTenant
     {
         return $this->organisation_id === $organisationId;
     }
+
+    /**
+     * Reset the static platform org cache (for testing only)
+     * This is needed to test the N+1 prevention logic
+     *
+     * @return void
+     */
+    public static function resetPlatformOrgCache(): void
+    {
+        static::$platformOrgIdCache = null;
+    }
 }

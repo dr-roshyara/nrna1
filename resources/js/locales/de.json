@@ -214,6 +214,11 @@
         "title": "Sichere und anonyme Online-Wahlen für Vereine | Public Digit",
         "description": "Fünf-Schicht-Sicherheitsarchitektur schützt Ihre Wahlen. Vollständige Wählero Anonymität, kryptographische Verifizierung und Multi-Tenant-Isolation für Vereine, NGOs und Organisationen.",
         "keywords": "sichere Online-Wahlen, anonyme Wahlen, Verein-Wahlen, Wahlsicherheit, digitale Wahlplattform, Wähler-Anonymität, sichere Abstimmungen, Wahlen für Vereine"
+      },
+      "votingSecurity": {
+        "title": "Sichere Wahl durchführen - Fünf-Schicht-Sicherheit für Online-Abstimmungen | Public Digit",
+        "description": "Sichere Wahl durchführen mit Public Digit. Fünf-Schicht-Sicherheitsarchitektur garantiert vollständige Anonymität, kryptographische Verifizierung und Multi-Tenant-Isolation. DSGVO-konform mit Geräte-Fingerprinting und End-to-End Verschlüsselung.",
+        "keywords": "sichere Wahl durchführen, Online-Abstimmung sicher, sichere Wahlen für Vereine, Wahl durchführen digital, Wahlsicherheit, anonyme Abstimmungen, kryptografische Verifizierung, Geräte-Fingerprinting, sichere digitale Wahlen, Wahlintegrität"
       }
     }
   },

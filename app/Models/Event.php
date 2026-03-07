@@ -4,20 +4,33 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use App\Models\Calendar;
+use App\Traits\BelongsToTenant;
 
 class Event extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUuids, BelongsToTenant;
+
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     protected $with = ['calendar'];
 
     protected $fillable = [
-        'google_id', 'name', 'description', 'allday', 'started_at', 'ended_at',
+        'organisation_id',
+        'calendar_id',
+        'google_id',
+        'name',
+        'description',
+        'allday',
+        'started_at',
+        'ended_at',
     ];
 
     public function calendar()
     {
-        return $this->belongsTo(Calendar::class);
+        return $this->belongsTo(Calendar::class)->withoutGlobalScopes();
     }
 
     public function getStartedAtAttribute($start)
@@ -34,5 +47,4 @@ class Event extends Model
     {
         return $this->started_at->diffForHumans($this->ended_at, true);
     }
-
 }

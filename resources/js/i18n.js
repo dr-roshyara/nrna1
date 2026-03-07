@@ -109,6 +109,10 @@ import securityDe from './locales/pages/Security/de.json';
 import securityEn from './locales/pages/Security/en.json';
 import securityNp from './locales/pages/Security/np.json';
 
+import votingSecurityDe from './locales/pages/VotingSecurity/de.json';
+import votingSecurityEn from './locales/pages/VotingSecurity/en.json';
+import votingSecurityNp from './locales/pages/VotingSecurity/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -174,6 +178,7 @@ const messages = {
       'welcome-dashboard': welcomeDashboardDe,
       'organisation-show': { ...organisationShowDe, ...organisationShowPageDe },
       security: securityDe,
+      votingSecurity: votingSecurityDe,
     },
   },
   en: {
@@ -208,6 +213,7 @@ const messages = {
       'welcome-dashboard': welcomeDashboardEn,
       'organisation-show': { ...organisationShowEn, ...organisationShowPageEn },
       security: securityEn,
+      votingSecurity: votingSecurityEn,
     },
   },
   np: {
@@ -242,6 +248,7 @@ const messages = {
       'welcome-dashboard': welcomeDashboardNp,
       'organisation-show': { ...organisationShowNp, ...organisationShowPageNp },
       security: securityNp,
+      votingSecurity: votingSecurityNp,
     },
   },
 };

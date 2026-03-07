@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "Ihre Stimme, Ihre Privatsphäre, Ihre Stimme",
+    "title": "Ihre Stimme, Ihre Privatsphäre",
     "subtitle": "Wie PublicDigit Ihre Wahlintegrität schützt und Ihre Stimme völlig anonym hält",
     "promise": "Stimmen Sie mit Vertrauen ab. Ihre Identität bleibt privat. Ihre Stimme ist anonym. Wahlergebnisse sind überprüfbar.",
     "ceo_tagline": "Sichere Wahlen für Organisationen, die Demokratie wertschätzen",
@@ -141,7 +141,7 @@
       "answer": "Nein. Wir verwenden einen unidirektionalen kryptografischen Hash mit einem geheimen Salt. Dies ist mathematisch irreversibel - wie der Versuch, einen Kuchen zu entbacken, um das Rezept zu finden. Ihre Privatsphäre ist absolut."
     }
   },
-  "footer": "Ihre Stimme, Ihre Privatsphäre, Ihre Stimme",
+  "footer": "Ihre Stimme, Ihre Privatsphäre",
   "journey_title": "Ihr Wahlablauf",
   "journey_subtitle": "Fünf Sicherheitsprüfpunkte schützen Ihre Stimme",
   "journey_image_alt": "Wahlablauf mit fünf Sicherheitsverifizierungspunkten",

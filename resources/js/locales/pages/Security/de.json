@@ -105,5 +105,62 @@
     "protection_desc": "Unabhängige Sicherheitsebenen",
     "coverage": "100% Testabdeckung",
     "coverage_desc": "Branchenführende Testabdeckung"
+  },
+  "data_store": {
+    "title": "Was wir speichern vs. was wir NICHT speichern",
+    "stored_title": "Wir speichern (anonymisiert)",
+    "not_stored_title": "Wir speichern NIE",
+    "stored": {
+      "hashed_fingerprint": "Gehashter Geräte-Fingerprint (unidirektional, nicht reversibel)",
+      "country_code": "Nur Ländercode (von IP, nicht genauer Standort)",
+      "browser_family": "Browser-Familie (Chrome/Firefox/Safari - nicht Version)",
+      "device_type": "Gerätetyp (Mobil/Desktop/Tablet)",
+      "receipt_hash": "Bestätigungshash (für Ihre Überprüfung)"
+    },
+    "not_stored": {
+      "name": "Ihr Name",
+      "user_id": "Ihre Benutzer-ID (Stimmzettel ohne Benutzer-Link)",
+      "raw_ip": "Rohe IP-Adresse (nur gehashed)",
+      "raw_browser": "Rohe Browser-Details (nur Familie)",
+      "exact_location": "Genaue Standort (nur Land)",
+      "mac_address": "MAC-Adresse (nie erfasst)"
+    }
+  },
+  "verification": {
+    "title": "Zwei Wege zur Überprüfung",
+    "receipt": {
+      "badge": "FÜR WÄHLER",
+      "title": "Bestätigungsverifizierung",
+      "description": "Nach der Abstimmung erhalten Sie eine eindeutige Bestätigungsnummer. Verwenden Sie diese, um zu überprüfen, dass Ihre Stimme gezählt wurde - ohne zu verraten, wie Sie abgestimmt haben.",
+      "code_example": "publicdigit.com/verify?vote=XYZ123..."
+    },
+    "auditor": {
+      "badge": "FÜR AUDITORS",
+      "title": "Teilnahmebeweis",
+      "description": "Wenn jemand behauptet, nicht abgestimmt zu haben, können Auditors die Teilnahme mit IP + Identitätshash nachweisen - ohne die Stimmenwahl preiszugeben.",
+      "code_example": "Teilnahme: Bestätigt (Stimme bleibt geheim)"
+    }
+  },
+  "fingerprint": {
+    "title": "Über Geräte-Fingerprinting",
+    "why_title": "Warum wir das tun:",
+    "why_intro": "Um Wahlbetrug zu verhindern und Ihre Privatsphäre zu schützen. Geräte-Fingerprinting hilft uns zu erkennen:",
+    "reasons": {
+      "ballot_stuffing": "Mehrere Stimmen vom gleichen Gerät - Verhindert Stimmenfälschung",
+      "bots": "Automatisierte Wahlbots - Stellt sicher, dass echte Menschenwähler",
+      "patterns": "Verdächtige Muster - Schützt Wahlintegrität"
+    },
+    "how_title": "Wie wir Sie schützen:",
+    "how_note": "Der Hash ist mathematisch unmöglich zu reversi - wir können niemals Ihre tatsächlichen Geräteinformationen wiederherstellen.",
+    "steps": {
+      "step1": "Wir erfassen Geräteinformationen",
+      "step1_detail": "IP, Browser, Bildschirmgröße",
+      "step2": "Wir fügen ein geheimes Salt hinzu",
+      "step2_detail": "Einzigartig für PublicDigit",
+      "step3": "SHA256 Hash",
+      "step3_detail": "Unidirektional, irreversibel",
+      "step4": "Speichern nur den Hash",
+      "step4_detail": "Rohe Daten gelöscht"
+    }
   }
 }
