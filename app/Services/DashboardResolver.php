@@ -834,7 +834,7 @@ class DashboardResolver
      * - Is marked as active (is_active = true)
      * - Not expired (expires_at > now)
      * - Vote not completed yet (vote_completed_at IS NULL)
-     * - User is in middle of steps 1-4 (code1_used_at OR has_agreed OR vote_submitted)
+     * - User is in middle of steps 1-4 (code_to_open_voting_form_used_at OR has_agreed OR vote_submitted)
      *
      * @param User $user
      * @return ?object VoterSlug object or null
@@ -848,7 +848,7 @@ class DashboardResolver
                 ->where('expires_at', '>', now())
                 ->whereNull('vote_completed_at')  // Not finished voting
                 ->where(function($query) {
-                    $query->whereNotNull('code1_used_at')  // Started voting
+                    $query->whereNotNull('code_to_open_voting_form_used_at')  // Started voting
                           ->orWhereNotNull('has_agreed_to_vote_at')
                           ->orWhereNotNull('vote_submitted_at');
                 })

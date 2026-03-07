@@ -22,16 +22,27 @@ class Code extends Model
         'user_id',
         'election_id', // ✅ CRITICAL: Election scoping for multi-election support
         'voter_id', // Three-tier hierarchy: Code belongs to Voter
+        // Old column names (for backward compatibility during migration)
         'code1',
         'code2',
         'is_code1_usable',
         'is_code2_usable',
         'code1_sent_at',
         'code2_sent_at',
-        'can_vote_now',
-        'has_voted',
         'code1_used_at',
         'code2_used_at',
+        // New semantic column names (demo_codes table refactoring)
+        'code_to_open_voting_form',
+        'code_to_save_vote',
+        'is_code_to_open_voting_form_usable',
+        'is_code_to_save_vote_usable',
+        'code_to_open_voting_form_sent_at',
+        'code_to_save_vote_sent_at',
+        'code_to_open_voting_form_used_at',
+        'code_to_save_vote_used_at',
+        // Common columns
+        'can_vote_now',
+        'has_voted',
         'vote_submitted',
         'vote_submitted_at',
         'has_code1_sent',

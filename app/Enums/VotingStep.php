@@ -20,7 +20,7 @@ enum VotingStep: int
 
     /**
      * CODE_VERIFIED = User has entered their code (code1)
-     * Timestamp: code1_used_at = TIMESTAMP
+     * Timestamp: code_to_open_voting_form_used_at = TIMESTAMP
      */
     case CODE_VERIFIED = 2;
 
@@ -69,7 +69,7 @@ enum VotingStep: int
     {
         return match($this) {
             self::WAITING => 'voting_started_at',
-            self::CODE_VERIFIED => 'code1_used_at',
+            self::CODE_VERIFIED => 'code_to_open_voting_form_used_at',
             self::AGREEMENT_ACCEPTED => 'has_agreed_to_vote_at',
             self::VOTE_CAST => 'vote_submitted_at',
             self::VERIFIED => 'vote_completed_at',
@@ -153,7 +153,7 @@ enum VotingStep: int
             return self::AGREEMENT_ACCEPTED;
         }
 
-        if ($code->code1_used_at !== null) {
+        if ($code->code_to_open_voting_form_used_at !== null) {
             return self::CODE_VERIFIED;
         }
 

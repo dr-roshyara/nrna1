@@ -148,7 +148,7 @@ public function store(Request $request)
         }
 
         // 2. Verify code usability
-        if (!$code->is_code2_usable) {
+        if (!$code->is_code_to_save_vote_usable) {
             return $this->handleVoteError('Your code has a problem. Please contact the administrator.');
         }
 
@@ -163,7 +163,7 @@ public function store(Request $request)
         }
 
         // 5. Verify the code hash
-        if (!Hash::check($voting_code, $code->code2)) {
+        if (!Hash::check($voting_code, $code->code_to_save_vote)) {
             return $this->handleVoteError($code->has_voted 
                 ? 'You have already voted! Please check your vote'
                 : 'Your code could not be verified');

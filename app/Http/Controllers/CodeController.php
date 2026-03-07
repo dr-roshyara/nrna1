@@ -93,7 +93,7 @@ class CodeController extends Controller
         $code = $this->getOrCreateCode($user, $election);
 
         // ✅ CHECK IF CODE HAS EXPIRED - IF YES, SEND NEW ONE
-        $minutesSinceSent = $code->code1_sent_at ? \Carbon\Carbon::parse($code->code1_sent_at)->diffInMinutes(now()) : 0;
+        $minutesSinceSent = $code->code_to_open_voting_form_sent_at ? \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)->diffInMinutes(now()) : 0;
 
         if ($minutesSinceSent >= $this->votingTimeInMinutes && $code->has_code1_sent) {
             Log::info('🔄 Code expired - sending new code', [
@@ -103,17 +103,17 @@ class CodeController extends Controller
             ]);
 
             // Generate new code and reset timer
-            $code->code1 = Str::random(6);
-            $code->code1_sent_at = now();
+            $code->code_to_open_voting_form = Str::random(6);
+            $code->code_to_open_voting_form_sent_at = now();
             $code->has_code1_sent = true;
             $code->save();
 
             // Send new code notification
             try {
-                $user->notify(new SendFirstVerificationCode($user, $code->code1));
+                $user->notify(new SendFirstVerificationCode($user, $code->code_to_open_voting_form));
                 Log::info('✅ New verification code sent', [
                     'user_id' => $user->id,
-                    'code' => $code->code1,
+                    'code' => $code->code_to_open_voting_form,
                 ]);
             } catch (\Exception $e) {
                 Log::error('❌ Failed to send new code', [
@@ -150,7 +150,7 @@ class CodeController extends Controller
             'useSlugPath' => $voterSlug !== null,
             'has_valid_email' => $hasValidEmail,
             'show_code_fallback' => !$hasValidEmail, // Show code on page if email can't be sent
-            'verification_code' => !$hasValidEmail ? $code->code1 : null, // Only show if no email
+            'verification_code' => !$hasValidEmail ? $code->code_to_open_voting_form : null, // Only show if no email
         ]);
     }
 
@@ -237,7 +237,7 @@ class CodeController extends Controller
         Log::info('🟢 [STORE] markCodeAsVerified completed', [
             'code_id' => $code->id,
             'after_can_vote_now' => $freshCode->can_vote_now,
-            'is_code1_usable' => $freshCode->is_code1_usable,
+            'is_code_to_open_voting_form_usable' => $freshCode->is_code_to_open_voting_form_usable,
         ]);
 
         // ✅ NEW: Record step completion in voter_slug_steps table
@@ -578,20 +578,20 @@ class CodeController extends Controller
                 'has_voted' => false,
                 'vote_submitted' => false,
                 'can_vote_now' => 0,
-                'is_code1_usable' => 1,
-                'code1' => $this->generateCode(),
-                'code1_sent_at' => now(),
+                'is_code_to_open_voting_form_usable' => 1,
+                'code_to_open_voting_form' => $this->generateCode(),
+                'code_to_open_voting_form_sent_at' => now(),
                 'has_code1_sent' => 1,
             ]);
 
             // Send new code via email
             if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
                 try {
-                    $user->notify(new SendFirstVerificationCode($user, $code->code1));
+                    $user->notify(new SendFirstVerificationCode($user, $code->code_to_open_voting_form));
                     Log::info('✅ New demo voting code sent', [
                         'user_id' => $user->id,
                         'code_id' => $code->id,
-                        'code' => $code->code1,
+                        'code' => $code->code_to_open_voting_form,
                     ]);
                 } catch (\Exception $e) {
                     Log::error('Failed to send demo voting code', [
@@ -613,19 +613,19 @@ class CodeController extends Controller
                 'user_id' => $user->id,
                 'election_id' => $election->id,
                 'organisation_id' => $election->organisation_id,  // ✅ EXPLICIT
-                'code1' => $this->generateCode(),
-                'code1_sent_at' => now(),
+                'code_to_open_voting_form' => $this->generateCode(),
+                'code_to_open_voting_form_sent_at' => now(),
                 'has_code1_sent' => 1,
                 'client_ip' => $this->clientIP,
                 'voting_time_in_minutes' => $this->votingTimeInMinutes,
-                'is_code1_usable' => 1,
+                'is_code_to_open_voting_form_usable' => 1,
                 'can_vote_now' => 0,
             ]);
 
             // Send code via email only if user has valid email
             if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
                 try {
-                    $user->notify(new SendFirstVerificationCode($user, $code->code1));
+                    $user->notify(new SendFirstVerificationCode($user, $code->code_to_open_voting_form));
                 } catch (\Exception $e) {
                     Log::error('Failed to send verification code email', [
                         'user_id' => $user->id,
@@ -645,7 +645,7 @@ class CodeController extends Controller
                 'user_id' => $user->id,
                 'election_id' => $code->election_id,
                 'organisation_id' => $code->organisation_id,
-                'code' => $code->code1,
+                'code' => $code->code_to_open_voting_form,
             ]);
         } else {
             // ✅ CRITICAL: If code already verified, DO NOT regenerate
@@ -660,8 +660,8 @@ class CodeController extends Controller
             }
 
             // Code exists - check if it needs resending
-            $isExpired = $code->code1_sent_at && \Carbon\Carbon::parse($code->code1_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes;
-            $codeWasUsed = $code->is_code1_usable == 0;
+            $isExpired = $code->code_to_open_voting_form_sent_at && \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes;
+            $codeWasUsed = $code->is_code_to_open_voting_form_usable == 0;
             $notYetVoted = !$code->has_voted;
             $voteNotSubmitted = !$code->vote_submitted;
 
@@ -677,10 +677,10 @@ class CodeController extends Controller
                 $newCode = $this->generateCode();
 
                 $code->update([
-                    'code1' => $newCode,
-                    'code1_sent_at' => now(),
+                    'code_to_open_voting_form' => $newCode,
+                    'code_to_open_voting_form_sent_at' => now(),
                     'has_code1_sent' => 1,
-                    'is_code1_usable' => 1,
+                    'is_code_to_open_voting_form_usable' => 1,
                     'can_vote_now' => 0,
                     'vote_submitted' => 0, // Reset submission status
                 ]);
@@ -709,7 +709,7 @@ class CodeController extends Controller
                     'new_code' => $newCode,
                     'reason' => $isExpired ? 'expired' : 'restart_after_use',
                     'was_used' => $codeWasUsed,
-                    'previous_sent_at' => $code->code1_sent_at,
+                    'previous_sent_at' => $code->code_to_open_voting_form_sent_at,
                 ]);
             }
         }
@@ -720,22 +720,22 @@ class CodeController extends Controller
     private function verifyCode(Code $code, string $submittedCode, User $user): array
     {
         // Check if code is usable
-        if (!$code->is_code1_usable) {
+        if (!$code->is_code_to_open_voting_form_usable) {
             return ['success' => false, 'message' => 'This verification code has already been used.'];
         }
 
         // Check if code matches
-        if ($code->code1 !== $submittedCode) {
+        if ($code->code_to_open_voting_form !== $submittedCode) {
             Log::warning('Invalid code submission', [
                 'user_id' => $user->id,
-                'expected' => $code->code1,
+                'expected' => $code->code_to_open_voting_form,
                 'submitted' => $submittedCode,
             ]);
             return ['success' => false, 'message' => 'Invalid verification code. Please check and try again.'];
         }
 
         // Check if code is expired (20 minutes)
-        if ($code->code1_sent_at && \Carbon\Carbon::parse($code->code1_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes) {
+        if ($code->code_to_open_voting_form_sent_at && \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes) {
             return ['success' => false, 'message' => 'Verification code has expired. Please request a new code.'];
         }
 
@@ -755,8 +755,8 @@ class CodeController extends Controller
         try {
             $updateResult = $code->update([
                 'can_vote_now' => 1,
-                'is_code1_usable' => 0,
-                'code1_used_at' => now(),
+                'is_code_to_open_voting_form_usable' => 0,
+                'code_to_open_voting_form_used_at' => now(),
                 'is_codemodel_valid' => true,
                 'client_ip' => $this->clientIP,
             ]);

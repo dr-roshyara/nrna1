@@ -47,4 +47,42 @@ class DemoCode extends Code
     {
         return false;
     }
+
+    /**
+     * Helper: Check if code to open voting form exists
+     */
+    public function hasOpenVotingFormCode(): bool
+    {
+        return !empty($this->code_to_open_voting_form);
+    }
+
+    /**
+     * Helper: Check if code to save vote exists
+     */
+    public function hasSaveVoteCode(): bool
+    {
+        return !empty($this->code_to_save_vote);
+    }
+
+    /**
+     * Helper: Mark code to open voting form as used
+     */
+    public function markOpenVotingFormCodeAsUsed(): void
+    {
+        $this->update([
+            'code_to_open_voting_form_used_at' => now(),
+            'is_code_to_open_voting_form_usable' => false,
+        ]);
+    }
+
+    /**
+     * Helper: Mark code to save vote as used
+     */
+    public function markSaveVoteCodeAsUsed(): void
+    {
+        $this->update([
+            'code_to_save_vote_used_at' => now(),
+            'is_code_to_save_vote_usable' => false,
+        ]);
+    }
 }

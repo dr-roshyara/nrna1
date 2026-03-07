@@ -30,7 +30,7 @@ class DeligateCodeController extends Controller
     {
         //
         $this->has_voted =auth()->user()->has_voted;
-        $this->in_code   =auth()->user()->code1;
+        $this->in_code   =auth()->user()->code_to_open_voting_form;
         $this->in_code    ="1234";
         $this->out_code   = $request['voting_code'];
         $validator  =$this->verify_vote_submit();
@@ -86,7 +86,7 @@ class DeligateCodeController extends Controller
                  * compare the code 
                  * If code is not equal ,then reject   
                  *  */  
-                //   $code1 =auth()->user()->code1; 
+                //   $code1 =auth()->user()->code_to_open_voting_form; 
                   // just for test 
                  // $code1_1 ="1234"; 
                   //$has_voted= auth()->user()->has_voted ;

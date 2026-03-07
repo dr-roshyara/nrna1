@@ -91,8 +91,8 @@ class DemoVoteController extends Controller
     private function expireCode(&$code): void
     {
         $code->can_vote_now = 0;
-        $code->is_code1_usable = 0;
-        $code->is_code2_usable = 0;
+        $code->is_code_to_open_voting_form_usable = 0;
+        $code->is_code_to_save_vote_usable = 0;
         $code->has_code1_sent = 0;
         $code->has_code2_sent = 0;
         $code->save();
@@ -101,7 +101,7 @@ class DemoVoteController extends Controller
     /**
      * Verify Code1 state for SIMPLE MODE
      * In SIMPLE MODE, Code1 is used twice (entry + vote submission)
-     * Check: code1_used_at is set (FIRST USE), code2_used_at is NULL (SECOND USE not yet used)
+     * Check: code_to_open_voting_form_used_at is set (FIRST USE), code_to_save_vote_used_at is NULL (SECOND USE not yet used)
      *
      * @param DemoCode $code
      * @return string Route name if verification fails, empty string if passes
@@ -109,13 +109,13 @@ class DemoVoteController extends Controller
     private function verifySimpleModeCodeState(&$code): string
     {
         // Check if code1 has been entered at /code/create (FIRST USE)
-        if ($code->code1_used_at === null) {
+        if ($code->code_to_open_voting_form_used_at === null) {
             return "code.create";
         }
         
         // Check if code has already been used for voting (SECOND USE)
-        // In SIMPLE MODE, code2_used_at tracks the second use (vote submission)
-        if ($code->code2_used_at !== null) {
+        // In SIMPLE MODE, code_to_save_vote_used_at tracks the second use (vote submission)
+        if ($code->code_to_save_vote_used_at !== null) {
             return "dashboard";  // Code already used for voting
         }
 
@@ -125,7 +125,7 @@ class DemoVoteController extends Controller
     /**
      * Verify Code1/Code2 state for STRICT MODE
      * In STRICT MODE, Code1 and Code2 are separate codes used sequentially
-     * Check: code1_used_at is set, code2_used_at is NULL
+     * Check: code_to_open_voting_form_used_at is set, code_to_save_vote_used_at is NULL
      *
      * @param DemoCode $code
      * @return string Route name if verification fails, empty string if passes
@@ -133,12 +133,12 @@ class DemoVoteController extends Controller
     private function verifyStrictModeCodeState(&$code): string
     {
         // In STRICT MODE, Code2 should not have been used yet
-        if ($code->code2_used_at !== null || $code->is_code2_usable == 0) {
+        if ($code->code_to_save_vote_used_at !== null || $code->is_code_to_save_vote_usable == 0) {
             return "dashboard";  // Code expired or already used
         }
 
-        // Ensure Code1 was used first (should have code1_used_at set)
-        if ($code->code1_used_at === null) {
+        // Ensure Code1 was used first (should have code_to_open_voting_form_used_at set)
+        if ($code->code_to_open_voting_form_used_at === null) {
             return "code.create";
         }
 
@@ -146,22 +146,22 @@ class DemoVoteController extends Controller
     }
 
     /**
-     * Check if voting window has expired based on code1_used_at timestamp
+     * Check if voting window has expired based on code_to_open_voting_form_used_at timestamp
      *
      * @param DemoCode $code
      * @return bool True if code has expired, false otherwise
      */
     private function hasVotingWindowExpired(&$code): bool
     {
-        if ($code->code1_used_at === null) {
+        if ($code->code_to_open_voting_form_used_at === null) {
             return false;  // Code not yet used, can't be expired
         }
 
         $current = Carbon::now();
-        $code1_used_at = $code->code1_used_at;
+        $code_to_open_voting_form_used_at = $code->code_to_open_voting_form_used_at;
         $voting_time = (int) $code->voting_time_in_minutes;
         // Use parse($past)->diffInMinutes(now()) to get positive elapsed minutes
-        $totalDuration = Carbon::parse($code1_used_at)->diffInMinutes($current);
+        $totalDuration = Carbon::parse($code_to_open_voting_form_used_at)->diffInMinutes($current);
 
         return $totalDuration > $voting_time;
     }
@@ -605,7 +605,7 @@ public function first_submission(Request $request)
         'can_vote_now' => $code ? $code->can_vote_now : 'N/A',
         'has_voted' => $code ? $code->has_voted : 'N/A',
         'has_code1_sent' => $code ? $code->has_code1_sent : 'N/A',
-        'is_code1_usable' => $code ? $code->is_code1_usable : 'N/A'
+        'is_code_to_open_voting_form_usable' => $code ? $code->is_code_to_open_voting_form_usable : 'N/A'
     ]);
 
     if ($pre_check_route && $pre_check_route != "") {
@@ -671,7 +671,7 @@ public function first_submission(Request $request)
     // No need to send second verification code - reuse the first code to reduce emails
     \Log::info('Using first verification code for second verification', [
         'user_id' => $auth_user->id,
-        'code1_available' => !empty($code->code1)
+        'code1_available' => !empty($code->code_to_open_voting_form)
     ]);
 
     // ✅ NEW: Record step 3 completion (vote submitted)
@@ -963,10 +963,10 @@ private function validateVotingEligibility($auth_user, $code)
         $errors['already_voted'] = 'You have already completed your vote.';
     }
     
-    if (!$code->is_code1_usable && $code->vote_submitted) {
+    if (!$code->is_code_to_open_voting_form_usable && $code->vote_submitted) {
         // Check if we're in the valid submission window
         $submission_window = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
-        $elapsed = \Carbon\Carbon::parse($code->code1_used_at)->diffInMinutes(now());
+        $elapsed = \Carbon\Carbon::parse($code->code_to_open_voting_form_used_at)->diffInMinutes(now());
         
         if ($elapsed > $submission_window) {
             $errors['expired'] = 'Your voting session has expired. Please start again.';
@@ -1089,9 +1089,9 @@ private function generateVoteHash($vote_data)
 public function send_second_voting_code(&$code, $auth_user)
 {
     try {
-        $code1_used_at = Carbon::parse($code->code1_used_at);
+        $code_to_open_voting_form_used_at = Carbon::parse($code->code_to_open_voting_form_used_at);
         $current = Carbon::now();
-        $totalDuration = $code1_used_at->diffInMinutes($current);
+        $totalDuration = $code_to_open_voting_form_used_at->diffInMinutes($current);
         
         // Check if we're within the valid voting window
         $voting_window = $code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30);
@@ -1103,13 +1103,13 @@ public function send_second_voting_code(&$code, $auth_user)
         }
         
         // Check if we need to send a new code
-        if (!$code->has_code2_sent || !$code->is_code2_usable) {
+        if (!$code->has_code2_sent || !$code->is_code_to_save_vote_usable) {
             $voting_code = get_random_string(6);
-            $code->code2 = Hash::make($voting_code);
+            $code->code_to_save_vote = Hash::make($voting_code);
             $code->has_code2_sent = 1;
-            $code->is_code1_usable = 0; 
-            $code->is_code2_usable = 1;
-            $code->code2_sent_at = Carbon::now();
+            $code->is_code_to_open_voting_form_usable = 0; 
+            $code->is_code_to_save_vote_usable = 1;
+            $code->code_to_save_vote_sent_at = Carbon::now();
             $code->save();
             
             // Send notification with error handling
@@ -1475,7 +1475,7 @@ private function has_valid_selections($selections)
             return redirect()->route('dashboard')
                 ->withErrors(['vote' => 'You have already voted in this election. Each voter can only vote once.']);
         }
-        $voting_session_name =Hash::make($code->code2);
+        $voting_session_name =Hash::make($code->code_to_save_vote);
 
          // IP validation - single line replacement
             $ipValidation = validateVotingIpWithResponse();
@@ -1487,7 +1487,7 @@ private function has_valid_selections($selections)
         //everything take from Code Model
         $this->has_voted    =$code->has_voted;
         // $this->in_code      =$code->code_for_vote;
-        $this->in_code       =$code->code1;
+        $this->in_code       =$code->code_to_open_voting_form;
         $this->out_code     = $request['voting_code'];
         $voting_code        = trim($request->input('voting_code'));
         /********************************************************** */
@@ -1716,7 +1716,7 @@ private function has_valid_selections($selections)
     $updateData = [
         'has_voted' => true,
         'can_vote_now' => false,
-        'code2_used_at' => now(),
+        'code_to_save_vote_used_at' => now(),
         'vote_completed_at' => now()
     ];
 
@@ -1724,11 +1724,11 @@ private function has_valid_selections($selections)
     // In STRICT MODE: Mark Code2 as fully used
     if (config('voting.two_codes_system') == 1) {
         // STRICT MODE: Code2 is now exhausted
-        $updateData['is_code2_usable'] = false;
+        $updateData['is_code_to_save_vote_usable'] = false;
     } else {
         // SIMPLE MODE: Code1 is now fully used (second use completed)
-        $updateData['is_code1_usable'] = 0;
-        $updateData['is_code2_usable'] = false;  // Code2 never used in simple mode
+        $updateData['is_code_to_open_voting_form_usable'] = 0;
+        $updateData['is_code_to_save_vote_usable'] = false;  // Code2 never used in simple mode
     }
 
     $code->update($updateData);
@@ -2266,7 +2266,7 @@ public function verify(Request $request)
                 'code_sent_at' => Carbon::now()->subMinutes($_message["totalDuration"])->format('H:i:s')
             ],
             'voting_summary' => $voting_summary,
-            'debug_code' => $showDebugCode ? $code->code1 : null,
+            'debug_code' => $showDebugCode ? $code->code_to_open_voting_form : null,
             'has_valid_email' => $hasValidEmail,
             'slug' => $voterSlug ? $voterSlug->slug : null,
             'useSlugPath' => $voterSlug !== null,
@@ -2456,7 +2456,7 @@ public function verifyVoteSubmit(): array
 
     $auth_user = auth()->user();
     $code      =$auth_user->code;
-    $in_code  = $code->code1;
+    $in_code  = $code->code_to_open_voting_form;
   
     $submittedCode = trim($request->input('voting_code'));
 
@@ -2477,7 +2477,7 @@ public function verifyVoteSubmit(): array
             return;
         }
 
-        if (!$code->is_code2_usable) {
+        if (!$code->is_code_to_save_vote_usable) {
             $validator->errors()->add('voting_code', 'This code is no longer valid.');
             return;
         }
@@ -2604,7 +2604,7 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
     $vote->vote_hash = hash('sha256',
         $code->user_id .
         $election->id .
-        $code->code1 .
+        $code->code_to_open_voting_form .
         $vote->cast_at->timestamp
     );
 
@@ -2954,7 +2954,7 @@ public function verify_final_vote(Request $request)
      *
      * SIMPLE MODE (default):
      *   - One code used twice (entry + vote submission)
-     *   - Tracks entry with code1_used_at, vote with code2_used_at
+     *   - Tracks entry with code_to_open_voting_form_used_at, vote with code_to_save_vote_used_at
      *
      * STRICT MODE:
      *   - Two separate codes (Code1 for entry, Code2 for voting)
@@ -2970,9 +2970,9 @@ public function verify_final_vote(Request $request)
         // 'can_vote_now' => $code->can_vote_now ?? 'null',
         // 'has_voted' => $code->has_voted ?? 'null',
         // 'has_code1_sent' => $code->has_code1_sent ?? 'null',
-        // 'is_code1_usable' => $code->is_code1_usable ?? 'null',
-        // 'code1_used_at' => $code->code1_used_at ?? 'null',
-        // 'code2_used_at' => $code->code2_used_at ?? 'null',
+        // 'is_code_to_open_voting_form_usable' => $code->is_code_to_open_voting_form_usable ?? 'null',
+        // 'code_to_open_voting_form_used_at' => $code->code_to_open_voting_form_used_at ?? 'null',
+        // 'code_to_save_vote_used_at' => $code->code_to_save_vote_used_at ?? 'null',
         // 'vote_submitted' => $code->vote_submitted ?? 'null',
         // ]);
         
@@ -3013,9 +3013,9 @@ public function verify_final_vote(Request $request)
         //     return "code.create";
         // }
          // ========== GUARD CLAUSE 5: Check if code has already been used for voting ==========
-        if ($code->code2_used_at !== null) {
-            \Log::warning('🔴 vote_pre_check: GUARD 5 TRIGGERED - code2_used_at is set', [
-                'code2_used_at' => $code->code2_used_at
+        if ($code->code_to_save_vote_used_at !== null) {
+            \Log::warning('🔴 vote_pre_check: GUARD 5 TRIGGERED - code_to_save_vote_used_at is set', [
+                'code_to_save_vote_used_at' => $code->code_to_save_vote_used_at
             ]);
             return "dashboard";
         }
@@ -3023,7 +3023,7 @@ public function verify_final_vote(Request $request)
         // ========== GUARD CLAUSE 6: Voting window timeout ==========
         if ($this->hasVotingWindowExpired($code)) {
             \Log::warning('🔴 vote_pre_check: GUARD 6 TRIGGERED - Voting window expired', [
-                'code1_used_at' => $code->code1_used_at,
+                'code_to_open_voting_form_used_at' => $code->code_to_open_voting_form_used_at,
                 'current_time' => Carbon::now(),
                 'voting_time_minutes' => $code->voting_time_in_minutes
             ]);
@@ -3035,10 +3035,10 @@ public function verify_final_vote(Request $request)
         // ========== MODE-SPECIFIC VERIFICATION ==========
         $mode = $this->isStrictMode() ? 'STRICT' : 'SIMPLE';
         \Log::info("ℹ️ vote_pre_check: MODE CHECK - {$mode} MODE", [
-            'code1_used_at' => $code->code1_used_at,
-            'code2_used_at' => $code->code2_used_at,
-            'is_code1_usable' => $code->is_code1_usable,
-            'is_code2_usable' => $code->is_code2_usable,
+            'code_to_open_voting_form_used_at' => $code->code_to_open_voting_form_used_at,
+            'code_to_save_vote_used_at' => $code->code_to_save_vote_used_at,
+            'is_code_to_open_voting_form_usable' => $code->is_code_to_open_voting_form_usable,
+            'is_code_to_save_vote_usable' => $code->is_code_to_save_vote_usable,
         ]);
 
         if ($this->isStrictMode()) {
@@ -3046,8 +3046,8 @@ public function verify_final_vote(Request $request)
             if ($modeCheckResult !== "") {
                 \Log::warning('🔴 vote_pre_check: STRICT MODE FAILED', [
                     'result' => $modeCheckResult,
-                    'code1_used_at' => $code->code1_used_at,
-                    'code2_used_at' => $code->code2_used_at
+                    'code_to_open_voting_form_used_at' => $code->code_to_open_voting_form_used_at,
+                    'code_to_save_vote_used_at' => $code->code_to_save_vote_used_at
                 ]);
                 return $modeCheckResult;
             }
@@ -3056,8 +3056,8 @@ public function verify_final_vote(Request $request)
             if ($modeCheckResult !== "") {
                 \Log::warning('🔴 vote_pre_check: SIMPLE MODE FAILED', [
                     'result' => $modeCheckResult,
-                    'code1_used_at' => $code->code1_used_at,
-                    'code2_used_at' => $code->code2_used_at
+                    'code_to_open_voting_form_used_at' => $code->code_to_open_voting_form_used_at,
+                    'code_to_save_vote_used_at' => $code->code_to_save_vote_used_at
                 ]);
                 return $modeCheckResult;
             }
@@ -3066,7 +3066,7 @@ public function verify_final_vote(Request $request)
         // ========== GUARD CLAUSE 5: Voting window timeout ==========
         if ($this->hasVotingWindowExpired($code)) {
             \Log::warning('🔴 vote_pre_check: GUARD 5 - Voting window expired', [
-                'code1_used_at' => $code->code1_used_at,
+                'code_to_open_voting_form_used_at' => $code->code_to_open_voting_form_used_at,
                 'current_time' => Carbon::now(),
                 'voting_time_minutes' => $code->voting_time_in_minutes
             ]);
@@ -3076,8 +3076,8 @@ public function verify_final_vote(Request $request)
 
         // ========== ALL CHECKS PASSED ==========
         \Log::info('✅ vote_pre_check: ALL CHECKS PASSED', [
-            'code1_used_at' => $code->code1_used_at,
-            'code2_used_at' => $code->code2_used_at,
+            'code_to_open_voting_form_used_at' => $code->code_to_open_voting_form_used_at,
+            'code_to_save_vote_used_at' => $code->code_to_save_vote_used_at,
             'can_vote_now' => $code->can_vote_now
         ]);
         return "";
@@ -3119,8 +3119,8 @@ public function verify_final_vote(Request $request)
     }
 
     // // 3. Code is not usable
-    // if (!$code->is_code2_usable) {
-    //     $code->is_code1_usable = 0;
+    // if (!$code->is_code_to_save_vote_usable) {
+    //     $code->is_code_to_open_voting_form_usable = 0;
     //     $code->has_code1_sent = 0;
     //     $_error['return_to'] = 'vote.create';
     //     return $_error;
@@ -3158,8 +3158,8 @@ public function verify_final_vote(Request $request)
 
         $code_expires_in        = $code->voting_time_in_minutes;
         $current                = Carbon::now();
-        $code1_used_at          = $code->code1_used_at;
-        $totalDuration          = \Carbon\Carbon::parse($code1_used_at)->diffInMinutes($current);
+        $code_to_open_voting_form_used_at          = $code->code_to_open_voting_form_used_at;
+        $totalDuration          = \Carbon\Carbon::parse($code_to_open_voting_form_used_at)->diffInMinutes($current);
         $_message['totalDuration']=$totalDuration;
 
         // ✅ FIXED: Check voting window timeout (independent of mode)
@@ -3169,7 +3169,7 @@ public function verify_final_vote(Request $request)
                 'total_duration' => $totalDuration,
                 'voting_time' => $code_expires_in
             ]);
-            $code->is_code1_usable      = 0;
+            $code->is_code_to_open_voting_form_usable      = 0;
             $code->has_code2_sent       = 0;
             $code->vote_submitted       = 0;
             $code->save();
@@ -3182,12 +3182,12 @@ public function verify_final_vote(Request $request)
         // ✅ FIXED: Mode-specific checks
         if (config('voting.two_codes_system') == 1) {
             // STRICT MODE: Check if Code2 has been used
-            if (!$code->code2_used_at) {
+            if (!$code->code_to_save_vote_used_at) {
                 \Log::warning('🔴 second_code_check: STRICT MODE - Code2 not yet verified', [
                     'code_id' => $code->id
                 ]);
-                $code->is_code1_usable      = 0;
-                $code->is_code2_usable      = 0;
+                $code->is_code_to_open_voting_form_usable      = 0;
+                $code->is_code_to_save_vote_usable      = 0;
                 $code->has_code2_sent       = 0;
                 $code->save();
                 $_message["return_to"]      = 'demo-vote.create';
@@ -3195,13 +3195,13 @@ public function verify_final_vote(Request $request)
                 return $_message;
             }
         } else {
-            // SIMPLE MODE: Check if vote was submitted (code2_used_at tracks second use)
+            // SIMPLE MODE: Check if vote was submitted (code_to_save_vote_used_at tracks second use)
             if (!$code->vote_submitted) {
                 \Log::warning('🔴 second_code_check: SIMPLE MODE - Vote not submitted', [
                     'code_id' => $code->id
                 ]);
-                $code->is_code1_usable      = 0;
-                $code->is_code2_usable      = 0;
+                $code->is_code_to_open_voting_form_usable      = 0;
+                $code->is_code_to_save_vote_usable      = 0;
                 $code->has_code2_sent       = 0;
                 $code->save();
                 $_message["return_to"]      = 'demo-vote.create';
@@ -3281,7 +3281,7 @@ public function verify_final_vote(Request $request)
                     'id' => $code->id,
                     'can_vote_now' => $code->can_vote_now,
                     'has_used_code2' => $code->has_used_code2 ?? null,
-                    'code2_used_at' => $code->code2_used_at ?? null
+                    'code_to_save_vote_used_at' => $code->code_to_save_vote_used_at ?? null
                 ] : null
             ]);
             $errors['can_vote_now'] = 'Voting is not open for you at this time.';
@@ -3328,7 +3328,7 @@ public function verify_final_vote(Request $request)
                 'condition' => 'code && code->has_used_code2 != 0',
                 'code' => $code ? 'present' : 'null',
                 'code.has_used_code2' => $code ? $code->has_used_code2 : 'N/A',
-                'code.code2_used_at' => $code ? $code->code2_used_at : 'N/A'
+                'code.code_to_save_vote_used_at' => $code ? $code->code_to_save_vote_used_at : 'N/A'
             ]);
             $errors['has_used_code2'] = 'You have already confirmed your vote with Code-2.';
         } else {
@@ -3391,7 +3391,7 @@ public function verify_final_vote(Request $request)
                     'id' => $code->id,
                     'can_vote_now' => $code->can_vote_now,
                     'has_used_code2' => $code->has_used_code2,
-                    'code2_used_at' => $code->code2_used_at,
+                    'code_to_save_vote_used_at' => $code->code_to_save_vote_used_at,
                     'vote_submitted' => $code->vote_submitted ?? null,
                     'has_voted' => $code->has_voted ?? null
                 ] : 'null',
@@ -4381,7 +4381,7 @@ private function isValidVoteDisplayData($data)
 /**
  * Verify submitted voting code against stored hashed code
  * 
- * @param string $in_code The hashed code stored in database (e.g., $code->code1)
+ * @param string $in_code The hashed code stored in database (e.g., $code->code_to_open_voting_form)
  * @param string $submitted_code The code submitted by user from form (e.g., $request['voting_code'])
  * @return bool True if codes match, false otherwise
  */

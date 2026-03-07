@@ -36,16 +36,16 @@ class DemoCode extends Model
         'organisation_id',      // MODE 1: NULL, MODE 2: org_id
         'user_id',
         'election_id',          // Reference to demo election
-        'code1',
-        'code2',
-        'is_code1_usable',
-        'is_code2_usable',
-        'code1_sent_at',
-        'code2_sent_at',
+        'code_to_open_voting_form',
+        'code_to_save_vote',
+        'is_code_to_open_voting_form_usable',
+        'is_code_to_save_vote_usable',
+        'code_to_open_voting_form_sent_at',
+        'code_to_save_vote_sent_at',
         'can_vote_now',
         'has_voted',
-        'code1_used_at',
-        'code2_used_at',
+        'code_to_open_voting_form_used_at',
+        'code_to_save_vote_used_at',
         'vote_submitted',
         'vote_submitted_at',
         'has_code1_sent',
@@ -63,8 +63,8 @@ class DemoCode extends Model
 
     protected $casts = [
         'has_code1_sent' => 'boolean',
-        'is_code1_usable' => 'boolean',
-        'is_code2_usable' => 'boolean',
+        'is_code_to_open_voting_form_usable' => 'boolean',
+        'is_code_to_save_vote_usable' => 'boolean',
         'can_vote_now' => 'boolean',
         'has_voted' => 'boolean',
         'vote_submitted' => 'boolean',
@@ -72,10 +72,10 @@ class DemoCode extends Model
         'has_used_code1' => 'boolean',
         'has_used_code2' => 'boolean',
         'is_codemodel_valid' => 'boolean',
-        'code1_sent_at' => 'datetime',
-        'code2_sent_at' => 'datetime',
-        'code1_used_at' => 'datetime',
-        'code2_used_at' => 'datetime',
+        'code_to_open_voting_form_sent_at' => 'datetime',
+        'code_to_save_vote_sent_at' => 'datetime',
+        'code_to_open_voting_form_used_at' => 'datetime',
+        'code_to_save_vote_used_at' => 'datetime',
         'vote_submitted_at' => 'datetime',
         'has_agreed_to_vote_at' => 'datetime',
         'voting_started_at' => 'datetime',
@@ -127,9 +127,47 @@ class DemoCode extends Model
      */
     public function isExpired(): bool
     {
-        if (!$this->code1_sent_at) {
+        if (!$this->code_to_open_voting_form_sent_at) {
             return false;
         }
-        return \Carbon\Carbon::parse($this->code1_sent_at)->diffInMinutes(now()) > ($this->voting_time_in_minutes ?? config('voting.time_in_minutes', 30));
+        return \Carbon\Carbon::parse($this->code_to_open_voting_form_sent_at)->diffInMinutes(now()) > ($this->voting_time_in_minutes ?? config('voting.time_in_minutes', 30));
+    }
+
+    /**
+     * Helper: Check if code to open voting form exists
+     */
+    public function hasOpenVotingFormCode(): bool
+    {
+        return !empty($this->code_to_open_voting_form);
+    }
+
+    /**
+     * Helper: Check if code to save vote exists
+     */
+    public function hasSaveVoteCode(): bool
+    {
+        return !empty($this->code_to_save_vote);
+    }
+
+    /**
+     * Helper: Mark code to open voting form as used
+     */
+    public function markOpenVotingFormCodeAsUsed(): void
+    {
+        $this->update([
+            'code_to_open_voting_form_used_at' => now(),
+            'is_code_to_open_voting_form_usable' => false,
+        ]);
+    }
+
+    /**
+     * Helper: Mark code to save vote as used
+     */
+    public function markSaveVoteCodeAsUsed(): void
+    {
+        $this->update([
+            'code_to_save_vote_used_at' => now(),
+            'is_code_to_save_vote_usable' => false,
+        ]);
     }
 }

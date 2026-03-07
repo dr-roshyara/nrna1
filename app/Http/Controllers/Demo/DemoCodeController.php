@@ -132,7 +132,7 @@ class DemoCodeController extends Controller
         // ✅ EXPIRATION IS HANDLED IN getOrCreateCode() - NO DUPLICATE LOGIC
         // This method should only DISPLAY the code time, not modify it
         // Calculate time since code was sent (for display only)
-        $minutesSinceSent = $code->code1_sent_at ? \Carbon\Carbon::parse($code->code1_sent_at)->diffInMinutes(now()) : 0;
+        $minutesSinceSent = $code->code_to_open_voting_form_sent_at ? \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)->diffInMinutes(now()) : 0;
 
         // For API requests
         if ($request->wantsJson()) {
@@ -158,7 +158,7 @@ class DemoCodeController extends Controller
             'useSlugPath' => $voterSlug !== null,
             'has_valid_email' => $hasValidEmail,
             'show_code_fallback' => !$hasValidEmail, // Show code on page if email can't be sent
-            'verification_code' => !$hasValidEmail ? $code->code1 : null, // Only show if no email
+            'verification_code' => !$hasValidEmail ? $code->code_to_open_voting_form : null, // Only show if no email
             'election_type' => 'demo',
         ]);
     }
@@ -231,7 +231,7 @@ class DemoCodeController extends Controller
         Log::info('🟢 [DEMO-STORE] markCodeAsVerified completed', [
             'code_id' => $code->id,
             'after_can_vote_now' => $freshCode->can_vote_now,
-            'is_code1_usable' => $freshCode->is_code1_usable,
+            'is_code_to_open_voting_form_usable' => $freshCode->is_code_to_open_voting_form_usable,
         ]);
 
         // ✅ NEW: Record step completion in voter_slug_steps table
@@ -650,34 +650,34 @@ class DemoCodeController extends Controller
 
         // ✅ CHECK CODE EXPIRATION FIRST (before any other logic)
         // Expired codes must be regenerated regardless of other flags
-        if ($code && $code->code1_sent_at) {
-            $isExpired = \Carbon\Carbon::parse($code->code1_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes;
+        if ($code && $code->code_to_open_voting_form_sent_at) {
+            $isExpired = \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes;
 
             if ($isExpired && !$code->has_voted) {
                 Log::info('🔄 [DEMO] Code expired - generating new one', [
                     'user_id' => $user->id,
                     'code_id' => $code->id,
-                    'sent_at' => $code->code1_sent_at,
+                    'sent_at' => $code->code_to_open_voting_form_sent_at,
                     'voting_time_minutes' => $this->votingTimeInMinutes,
                 ]);
 
                 // Generate new code and reset flags
-                $code->code1 = $this->generateCode();
-                $code->code1_sent_at = now();
+                $code->code_to_open_voting_form = $this->generateCode();
+                $code->code_to_open_voting_form_sent_at = now();
                 $code->has_code1_sent = 1;
-                $code->is_code1_usable = 1;
-                $code->code1_used_at = null;
+                $code->is_code_to_open_voting_form_usable = 1;
+                $code->code_to_open_voting_form_used_at = null;
                 $code->can_vote_now = 0;  // User needs to verify new code
                 $code->save();
 
                 // Send new code via email
                 if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
                     try {
-                        $user->notify(new SendFirstVerificationCode($user, $code->code1));
+                        $user->notify(new SendFirstVerificationCode($user, $code->code_to_open_voting_form));
                         Log::info('✅ [DEMO] New code sent after expiration', [
                             'user_id' => $user->id,
                             'code_id' => $code->id,
-                            'code' => $code->code1,
+                            'code' => $code->code_to_open_voting_form,
                         ]);
                     } catch (\Exception $e) {
                         Log::error('[DEMO] Failed to send code after expiration', [
@@ -705,13 +705,13 @@ class DemoCodeController extends Controller
                 'has_voted' => false,
                 'vote_submitted' => false,
                 'can_vote_now' => 0,
-                'is_code1_usable' => 1,
-                'code1' => $this->generateCode(),
-                'code1_sent_at' => now(),
+                'is_code_to_open_voting_form_usable' => 1,
+                'code_to_open_voting_form' => $this->generateCode(),
+                'code_to_open_voting_form_sent_at' => now(),
                 'has_code1_sent' => 1,
-                'code1_used_at' => null,
-                'code2_used_at' => null,
-                'is_code2_usable' => 1,
+                'code_to_open_voting_form_used_at' => null,
+                'code_to_save_vote_used_at' => null,
+                'is_code_to_save_vote_usable' => 1,
             ]);
 
             Log::info('✅ [DEMO] DemoCode reset for re-voting', [
@@ -723,11 +723,11 @@ class DemoCodeController extends Controller
             // Send new code via email
             if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
                 try {
-                    $user->notify(new SendFirstVerificationCode($user, $code->code1));
+                    $user->notify(new SendFirstVerificationCode($user, $code->code_to_open_voting_form));
                     Log::info('✅ [DEMO] New demo voting code sent for re-voting', [
                         'user_id' => $user->id,
                         'code_id' => $code->id,
-                        'code' => $code->code1,
+                        'code' => $code->code_to_open_voting_form,
                     ]);
                 } catch (\Exception $e) {
                     Log::error('[DEMO] Failed to send re-voting code', [
@@ -754,12 +754,12 @@ class DemoCodeController extends Controller
                 'user_id' => $user->id,
                 'election_id' => $election->id,
                 'organisation_id' => $election->organisation_id,  // ✅ EXPLICIT
-                'code1' => $this->generateCode(),
-                'code1_sent_at' => now(),
+                'code_to_open_voting_form' => $this->generateCode(),
+                'code_to_open_voting_form_sent_at' => now(),
                 'has_code1_sent' => 1,
                 'client_ip' => $this->clientIP,
                 'voting_time_in_minutes' => $this->votingTimeInMinutes,
-                'is_code1_usable' => 1,
+                'is_code_to_open_voting_form_usable' => 1,
                 'can_vote_now' => 0,
             ]);
 
@@ -786,26 +786,26 @@ class DemoCodeController extends Controller
                     Log::info('[DEMO] 📧 PRE-SEND EMAIL CHECK', [
                         'user_id' => $user->id,
                         'email' => $user->email,
-                        'code' => $code->code1,
+                        'code' => $code->code_to_open_voting_form,
                         'mailer' => config('mail.default'),
                         'mail_host' => config('mail.mailers.smtp.host'),
                         'mail_port' => config('mail.mailers.smtp.port'),
                         'mail_encryption' => config('mail.mailers.smtp.encryption'),
                     ]);
 
-                    $result = $user->notify(new SendFirstVerificationCode($user, $code->code1));
+                    $result = $user->notify(new SendFirstVerificationCode($user, $code->code_to_open_voting_form));
 
                     Log::info('[DEMO] ✅ Verification code email sent successfully', [
                         'user_id' => $user->id,
                         'email' => $user->email,
-                        'code' => $code->code1,
+                        'code' => $code->code_to_open_voting_form,
                         'notification_result' => $result,
                     ]);
                 } catch (\Exception $e) {
                     Log::error('[DEMO] ❌ Failed to send verification code email', [
                         'user_id' => $user->id,
                         'email' => $user->email,
-                        'code' => $code->code1,
+                        'code' => $code->code_to_open_voting_form,
                         'error' => $e->getMessage(),
                         'exception_class' => get_class($e),
                         'trace' => $e->getTraceAsString(),
@@ -823,7 +823,7 @@ class DemoCodeController extends Controller
             Log::info('[DEMO] New verification code created and sent', [
                 'user_id' => $user->id,
                 'code_id' => $code->id,
-                'code' => $code->code1,
+                'code' => $code->code_to_open_voting_form,
             ]);
         } else {
             // ✅ CRITICAL: If code already verified, DO NOT regenerate
@@ -838,8 +838,8 @@ class DemoCodeController extends Controller
             }
 
             // Code exists - check if it needs resending
-            $isExpired = $code->code1_sent_at && \Carbon\Carbon::parse($code->code1_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes;
-            $codeIsUsed = ($code->is_code1_usable == 0 || $code->code1_used_at !== null);
+            $isExpired = $code->code_to_open_voting_form_sent_at && \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes;
+            $codeIsUsed = ($code->is_code_to_open_voting_form_usable == 0 || $code->code_to_open_voting_form_used_at !== null);
             $notYetVoted = !$code->has_voted;
             $voteNotSubmitted = !$code->vote_submitted;
 
@@ -849,8 +849,8 @@ class DemoCodeController extends Controller
                 Log::info('🔄 [DEMO] Code used but user not yet voted - user should continue', [
                     'user_id' => $user->id,
                     'code_id' => $code->id,
-                    'is_code1_usable' => $code->is_code1_usable,
-                    'code1_used_at' => $code->code1_used_at,
+                    'is_code_to_open_voting_form_usable' => $code->is_code_to_open_voting_form_usable,
+                    'code_to_open_voting_form_used_at' => $code->code_to_open_voting_form_used_at,
                 ]);
                 return $code; // Return existing code - user is mid-voting
             }
@@ -867,10 +867,10 @@ class DemoCodeController extends Controller
                 $newCode = $this->generateCode();
 
                 $code->update([
-                    'code1' => $newCode,
-                    'code1_sent_at' => now(),
+                    'code_to_open_voting_form' => $newCode,
+                    'code_to_open_voting_form_sent_at' => now(),
                     'has_code1_sent' => 1,
-                    'is_code1_usable' => 1,
+                    'is_code_to_open_voting_form_usable' => 1,
                     'can_vote_now' => 0,
                     'vote_submitted' => 0, // Reset submission status
                 ]);
@@ -899,7 +899,7 @@ class DemoCodeController extends Controller
                     'new_code' => $newCode,
                     'reason' => $isExpired ? 'expired' : 'restart_after_use',
                     'was_used' => $codeIsUsed,
-                    'previous_sent_at' => $code->code1_sent_at,
+                    'previous_sent_at' => $code->code_to_open_voting_form_sent_at,
                 ]);
             }
         }
@@ -910,22 +910,22 @@ class DemoCodeController extends Controller
     private function verifyCode(DemoCode $code, string $submittedCode, User $user): array
     {
         // Check if code is usable
-        if (!$code->is_code1_usable) {
+        if (!$code->is_code_to_open_voting_form_usable) {
             return ['success' => false, 'message' => 'This verification code has already been used.'];
         }
 
         // Check if code matches
-        if ($code->code1 !== $submittedCode) {
+        if ($code->code_to_open_voting_form !== $submittedCode) {
             Log::warning('[DEMO] Invalid code submission', [
                 'user_id' => $user->id,
-                'expected' => $code->code1,
+                'expected' => $code->code_to_open_voting_form,
                 'submitted' => $submittedCode,
             ]);
             return ['success' => false, 'message' => 'Invalid verification code. Please check and try again.'];
         }
 
         // Check if code is expired (20 minutes)
-        if ($code->code1_sent_at && \Carbon\Carbon::parse($code->code1_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes) {
+        if ($code->code_to_open_voting_form_sent_at && \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes) {
             return ['success' => false, 'message' => 'Verification code has expired. Please request a new code.'];
         }
 
@@ -943,19 +943,19 @@ class DemoCodeController extends Controller
             // ✅ FIXED: Configurable code state based on voting system mode
             $updateData = [
                 'can_vote_now' => 1,
-                'code1_used_at' => now(),
+                'code_to_open_voting_form_used_at' => now(),
                 'is_codemodel_valid' => true,
                 'client_ip' => $this->clientIP,
             ];
 
-            // In SIMPLE MODE: Keep is_code1_usable = 1 so Code1 can be used again at vote submission
-            // In STRICT MODE: Set is_code1_usable = 0 since Code1 is only used for form access
+            // In SIMPLE MODE: Keep is_code_to_open_voting_form_usable = 1 so Code1 can be used again at vote submission
+            // In STRICT MODE: Set is_code_to_open_voting_form_usable = 0 since Code1 is only used for form access
             if (config('voting.two_codes_system') == 1) {
                 // STRICT MODE: Code1 is now exhausted for form access
-                $updateData['is_code1_usable'] = 0;
+                $updateData['is_code_to_open_voting_form_usable'] = 0;
             } else {
                 // SIMPLE MODE: Code1 is still usable for vote submission (second use)
-                $updateData['is_code1_usable'] = 1;
+                $updateData['is_code_to_open_voting_form_usable'] = 1;
             }
 
             $updateResult = $code->update($updateData);
@@ -964,7 +964,7 @@ class DemoCodeController extends Controller
                 'code_id' => $code->id,
                 'update_result' => $updateResult,
                 'can_vote_now' => $code->can_vote_now,
-                'is_code1_usable' => $code->is_code1_usable,
+                'is_code_to_open_voting_form_usable' => $code->is_code_to_open_voting_form_usable,
                 'mode' => config('voting.two_codes_system') == 1 ? 'STRICT' : 'SIMPLE',
             ]);
         } catch (\Exception $e) {

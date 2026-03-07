@@ -10,11 +10,11 @@ use App\Models\DemoCode;
 /**
  * CheckVotingWindow Middleware
  *
- * Detects when a voter's voting window (code1_used_at + voting_time_in_minutes) has expired
+ * Detects when a voter's voting window (code_to_open_voting_form_used_at + voting_time_in_minutes) has expired
  * and gracefully handles the restart flow instead of leaving the user in a redirect loop.
  *
  * PROBLEM SOLVED:
- *   When code1_used_at is older than voting_time_in_minutes but expireCode() was never called
+ *   When code_to_open_voting_form_used_at is older than voting_time_in_minutes but expireCode() was never called
  *   (because the user never submitted the vote form), can_vote_now remains 1.
  *   This causes DemoCodeController::create() to redirect to agreement, which redirects back
  *   to demo-vote/create → infinite loop.
@@ -61,7 +61,7 @@ class CheckVotingWindow
             ->first();
 
         // No code yet — user hasn't started, nothing to check
-        if (!$code || !$code->code1_used_at) {
+        if (!$code || !$code->code_to_open_voting_form_used_at) {
             return $next($request);
         }
 
@@ -73,7 +73,7 @@ class CheckVotingWindow
         // Check if the voting window has expired
         // Note: Carbon::parse($past)->diffInMinutes(now()) gives positive minutes elapsed
         $votingMinutes = (int) ($code->voting_time_in_minutes ?? config('voting.time_in_minutes', 30));
-        $minutesElapsed = \Carbon\Carbon::parse($code->code1_used_at)->diffInMinutes(now());
+        $minutesElapsed = \Carbon\Carbon::parse($code->code_to_open_voting_form_used_at)->diffInMinutes(now());
         $isExpired = $minutesElapsed > $votingMinutes;
 
         if (!$isExpired) {
@@ -85,7 +85,7 @@ class CheckVotingWindow
             'user_id'               => auth()->id(),
             'code_id'               => $code->id,
             'election_id'           => $election->id,
-            'code1_used_at'         => $code->code1_used_at,
+            'code_to_open_voting_form_used_at'         => $code->code_to_open_voting_form_used_at,
             'voting_time_minutes'   => $votingMinutes,
             'minutes_elapsed'       => $minutesElapsed,
             'route'                 => $request->route()?->getName(),

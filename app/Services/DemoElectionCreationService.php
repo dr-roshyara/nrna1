@@ -176,17 +176,17 @@ class DemoElectionCreationService
                 'user_id' => null,
                 'election_id' => $election->id,
                 'organisation_id' => $election->organisation_id, // CRITICAL: Propagate org context
-                'code1' => 'DEMO' . strtoupper(substr(md5($index . 'code1' . $region), 0, 8)),
-                'code2' => 'DEMO' . strtoupper(substr(md5($index . 'code2' . $region), 0, 8)),
+                'code_to_open_voting_form' => 'DEMO' . strtoupper(substr(md5($index . 'code_to_open_voting_form' . $region), 0, 8)),
+                'code_to_save_vote' => 'DEMO' . strtoupper(substr(md5($index . 'code_to_save_vote' . $region), 0, 8)),
                 'code3' => 'DEMO' . strtoupper(substr(md5($index . 'code3' . $region), 0, 8)),
                 'code4' => 'DEMO' . strtoupper(substr(md5($index . 'code4' . $region), 0, 8)),
-                'is_code1_usable' => true,
-                'is_code2_usable' => true,
+                'is_code_to_open_voting_form_usable' => true,
+                'is_code_to_save_vote_usable' => true,
                 'is_code3_usable' => true,
                 'is_code4_usable' => true,
                 'can_vote_now' => false,
                 'voting_time_in_minutes' => config('voting.time_in_minutes', 30),
-                'code1_sent_at' => now(),
+                'code_to_open_voting_form_sent_at' => now(),
             ]);
         }
     }

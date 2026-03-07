@@ -38,8 +38,8 @@ class CodeTest extends TestCase
             'organisation_id' => $org->id,
             'election_id' => $election->id,
             'user_id' => $user->id,
-            'code1' => 'ABC123',
-            'code2' => 'XYZ789',
+            'code_to_open_voting_form' => 'ABC123',
+            'code_to_save_vote' => 'XYZ789',
         ]);
 
         $this->assertEquals($user->id, $code->user->id);
@@ -68,8 +68,8 @@ class CodeTest extends TestCase
             'organisation_id' => $org->id,
             'election_id' => $election->id,
             'user_id' => $user->id,
-            'code1' => 'ABC123',
-            'code2' => 'XYZ789',
+            'code_to_open_voting_form' => 'ABC123',
+            'code_to_save_vote' => 'XYZ789',
         ]);
 
         $this->assertEquals($election->id, $code->election->id);
@@ -98,8 +98,8 @@ class CodeTest extends TestCase
             'organisation_id' => $org->id,
             'election_id' => $election->id,
             'user_id' => $user->id,
-            'code1' => 'ABC123',
-            'code2' => 'XYZ789',
+            'code_to_open_voting_form' => 'ABC123',
+            'code_to_save_vote' => 'XYZ789',
         ]);
 
         $this->assertEquals($org->id, $code->organisation->id);
@@ -128,16 +128,16 @@ class CodeTest extends TestCase
             'organisation_id' => $org->id,
             'election_id' => $election->id,
             'user_id' => $user->id,
-            'code1' => 'ABC123',
-            'code2' => 'XYZ789',
-            'is_code1_usable' => true,
+            'code_to_open_voting_form' => 'ABC123',
+            'code_to_save_vote' => 'XYZ789',
+            'is_code_to_open_voting_form_usable' => true,
         ]);
 
         // Use code1
         $code->useCode1();
 
-        $this->assertFalse($code->refresh()->is_code1_usable);
-        $this->assertNotNull($code->code1_used_at);
+        $this->assertFalse($code->refresh()->is_code_to_open_voting_form_usable);
+        $this->assertNotNull($code->code_to_open_voting_form_used_at);
     }
 
     /** @test */
@@ -163,16 +163,16 @@ class CodeTest extends TestCase
             'organisation_id' => $org->id,
             'election_id' => $election->id,
             'user_id' => $user->id,
-            'code1' => 'ABC123',
-            'code2' => 'XYZ789',
-            'is_code2_usable' => true,
+            'code_to_open_voting_form' => 'ABC123',
+            'code_to_save_vote' => 'XYZ789',
+            'is_code_to_save_vote_usable' => true,
         ]);
 
         // Use code2
         $code->useCode2();
 
-        $this->assertFalse($code->refresh()->is_code2_usable);
-        $this->assertNotNull($code->code2_used_at);
+        $this->assertFalse($code->refresh()->is_code_to_save_vote_usable);
+        $this->assertNotNull($code->code_to_save_vote_used_at);
     }
 
     /** @test */
@@ -198,8 +198,8 @@ class CodeTest extends TestCase
             'organisation_id' => $org->id,
             'election_id' => $election->id,
             'user_id' => $user->id,
-            'code1' => 'ABC123',
-            'code2' => 'XYZ789',
+            'code_to_open_voting_form' => 'ABC123',
+            'code_to_save_vote' => 'XYZ789',
         ]);
 
         // Use both codes
@@ -207,8 +207,8 @@ class CodeTest extends TestCase
         $code->useCode2();
 
         // Verify both are now unusable
-        $this->assertFalse($code->refresh()->is_code1_usable);
-        $this->assertFalse($code->refresh()->is_code2_usable);
+        $this->assertFalse($code->refresh()->is_code_to_open_voting_form_usable);
+        $this->assertFalse($code->refresh()->is_code_to_save_vote_usable);
         $this->assertFalse($code->isUsable());
     }
 
@@ -252,8 +252,8 @@ class CodeTest extends TestCase
             'organisation_id' => $org1->id,
             'election_id' => $election1->id,
             'user_id' => $user1->id,
-            'code1' => 'ORG1CODE1',
-            'code2' => 'ORG1CODE2',
+            'code_to_open_voting_form' => 'ORG1CODE1',
+            'code_to_save_vote' => 'ORG1CODE2',
         ]);
 
         Code::create([
@@ -261,8 +261,8 @@ class CodeTest extends TestCase
             'organisation_id' => $org2->id,
             'election_id' => $election2->id,
             'user_id' => $user2->id,
-            'code1' => 'ORG2CODE1',
-            'code2' => 'ORG2CODE2',
+            'code_to_open_voting_form' => 'ORG2CODE1',
+            'code_to_save_vote' => 'ORG2CODE2',
         ]);
 
         // Test scoping
@@ -297,8 +297,8 @@ class CodeTest extends TestCase
             'organisation_id' => $org->id,
             'election_id' => $election1->id,
             'user_id' => $user->id,
-            'code1' => 'ELEC1CODE1',
-            'code2' => 'ELEC1CODE2',
+            'code_to_open_voting_form' => 'ELEC1CODE1',
+            'code_to_save_vote' => 'ELEC1CODE2',
         ]);
 
         Code::create([
@@ -306,8 +306,8 @@ class CodeTest extends TestCase
             'organisation_id' => $org->id,
             'election_id' => $election2->id,
             'user_id' => $user->id,
-            'code1' => 'ELEC2CODE1',
-            'code2' => 'ELEC2CODE2',
+            'code_to_open_voting_form' => 'ELEC2CODE1',
+            'code_to_save_vote' => 'ELEC2CODE2',
         ]);
 
         // Test scoping
@@ -355,8 +355,8 @@ class CodeTest extends TestCase
             'organisation_id' => $org->id,
             'election_id' => $election->id,
             'user_id' => $user1->id,
-            'code1' => 'UNUSED1',
-            'code2' => 'UNUSED2',
+            'code_to_open_voting_form' => 'UNUSED1',
+            'code_to_save_vote' => 'UNUSED2',
         ]);
 
         $used_code = Code::create([
@@ -364,8 +364,8 @@ class CodeTest extends TestCase
             'organisation_id' => $org->id,
             'election_id' => $election->id,
             'user_id' => $user2->id,
-            'code1' => 'USED1',
-            'code2' => 'USED2',
+            'code_to_open_voting_form' => 'USED1',
+            'code_to_save_vote' => 'USED2',
         ]);
         $used_code->useCode1();
         $used_code->useCode2();
@@ -400,26 +400,26 @@ class CodeTest extends TestCase
             'organisation_id' => $org->id,
             'election_id' => $election->id,
             'user_id' => $user->id,
-            'code1' => 'TRACK1',
-            'code2' => 'TRACK2',
+            'code_to_open_voting_form' => 'TRACK1',
+            'code_to_save_vote' => 'TRACK2',
         ]);
 
         // Initially timestamps are null
-        $this->assertNull($code->code1_used_at);
-        $this->assertNull($code->code2_used_at);
+        $this->assertNull($code->code_to_open_voting_form_used_at);
+        $this->assertNull($code->code_to_save_vote_used_at);
 
         // After use, timestamp is recorded
         $code->useCode1();
         $code->refresh();
 
-        $this->assertNotNull($code->code1_used_at);
-        $this->assertNull($code->code2_used_at);
+        $this->assertNotNull($code->code_to_open_voting_form_used_at);
+        $this->assertNull($code->code_to_save_vote_used_at);
 
         // After second use
         $code->useCode2();
         $code->refresh();
 
-        $this->assertNotNull($code->code1_used_at);
-        $this->assertNotNull($code->code2_used_at);
+        $this->assertNotNull($code->code_to_open_voting_form_used_at);
+        $this->assertNotNull($code->code_to_save_vote_used_at);
     }
 }

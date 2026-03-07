@@ -25,6 +25,7 @@ use App\Models\File;
 use App\Models\Upload;
 use App\Models\Assignment;
 use App\Models\Code;
+use App\Models\DemoCode;
 use App\Models\Image;
 use App\Models\GoogleAccount;
 use App\Models\Calendar;
@@ -250,6 +251,14 @@ class User extends Authenticatable implements MustVerifyEmail
       */
       public function codes(){
           return $this->hasMany(Code::class);
+      }
+
+      /**
+       * Get all demo codes for this user (demo voting workflow)
+       * Demo codes are used for platform-wide and organisation-specific demo elections
+       */
+      public function demoCodes(){
+          return $this->hasMany(DemoCode::class);
       }
 
       /**
