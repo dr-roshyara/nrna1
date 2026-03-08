@@ -33,9 +33,10 @@ class DemoCode extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'organisation_id',      // MODE 1: NULL, MODE 2: org_id
+        'organisation_id',                              // MODE 1: NULL, MODE 2: org_id
         'user_id',
-        'election_id',          // Reference to demo election
+        'election_id',                                  // Reference to demo election
+        'voting_code',                                  // ✅ NEW: Anonymity bridge to vote record
         'code_to_open_voting_form',
         'code_to_save_vote',
         'is_code_to_open_voting_form_usable',
@@ -52,14 +53,14 @@ class DemoCode extends Model
         'has_code2_sent',
         'has_agreed_to_vote',
         'has_agreed_to_vote_at',
-        'has_used_code1',
-        'has_used_code2',
         'voting_started_at',
-        'voting_time_in_minutes',
+        'voting_time_in_minutes',                       // ✅ KEEP - critical for session expiration
         'client_ip',
         // ✅ Device fingerprinting for fraud detection (privacy-preserving)
         'device_fingerprint_hash',
         'device_metadata_anonymized',
+        'session_name',                                 // ✅ NEW: Session key for storing vote data
+        'voting_slug',                                  // ✅ NEW: Audit trail - which slug was used
     ];
 
     protected $casts = [
@@ -71,8 +72,6 @@ class DemoCode extends Model
         'has_voted' => 'boolean',
         'vote_submitted' => 'boolean',
         'has_agreed_to_vote' => 'boolean',
-        'has_used_code1' => 'boolean',
-        'has_used_code2' => 'boolean',
         'code_to_open_voting_form_sent_at' => 'datetime',
         'code_to_save_vote_sent_at' => 'datetime',
         'code_to_open_voting_form_used_at' => 'datetime',
@@ -80,6 +79,7 @@ class DemoCode extends Model
         'vote_submitted_at' => 'datetime',
         'has_agreed_to_vote_at' => 'datetime',
         'voting_started_at' => 'datetime',
+        'voting_time_in_minutes' => 'integer',         // ✅ Cast to integer
         'device_metadata_anonymized' => 'array',
     ];
 

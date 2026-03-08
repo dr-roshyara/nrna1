@@ -56,6 +56,8 @@ class Code extends Model
         // ✅ Device fingerprinting for fraud detection (privacy-preserving)
         'device_fingerprint_hash',
         'device_metadata_anonymized',
+        'session_name',      // ✅ NEW: Session key for storing vote data
+        'voting_slug',       // ✅ NEW: Audit trail - which slug was used
     ];
 
     protected $casts = [
