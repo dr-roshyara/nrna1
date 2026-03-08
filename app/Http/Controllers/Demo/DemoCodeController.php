@@ -754,21 +754,60 @@ class DemoCodeController extends Controller
             // - Demo elections (type='demo'): organisation_id=NULL (MODE 1) or org_id (MODE 2)
             // - Real elections (type='real'): organisation_id from election
 
-            // Generate unique code for this organisation
-            $uniqueCode = $this->generateUniqueCodeForOrganisation($election->organisation_id);
+            // Generate and create code with retry on duplicate (race condition handling)
+            $maxRetries = 5;
+            $attempt = 0;
+            $code = null;
 
-            $code = DemoCode::create([
-                'user_id' => $user->id,
-                'election_id' => $election->id,
-                'organisation_id' => $election->organisation_id,  // ✅ EXPLICIT
-                'code_to_open_voting_form' => $uniqueCode,
-                'code_to_open_voting_form_sent_at' => now(),
-                'has_code1_sent' => 1,
-                'client_ip' => $this->clientIP,
-                'voting_time_in_minutes' => $this->votingTimeInMinutes,
-                'is_code_to_open_voting_form_usable' => 1,
-                'can_vote_now' => 0,
-            ]);
+            while ($attempt < $maxRetries && !$code) {
+                try {
+                    // Generate unique code for this organisation
+                    $uniqueCode = $this->generateUniqueCodeForOrganisation($election->organisation_id);
+
+                    $code = DemoCode::create([
+                        'user_id' => $user->id,
+                        'election_id' => $election->id,
+                        'organisation_id' => $election->organisation_id,  // ✅ EXPLICIT
+                        'code_to_open_voting_form' => $uniqueCode,
+                        'code_to_open_voting_form_sent_at' => now(),
+                        'has_code1_sent' => 1,
+                        'client_ip' => $this->clientIP,
+                        'voting_time_in_minutes' => $this->votingTimeInMinutes,
+                        'is_code_to_open_voting_form_usable' => 1,
+                        'can_vote_now' => 0,
+                    ]);
+
+                    Log::info('✅ Code created successfully', [
+                        'user_id' => $user->id,
+                        'code' => $uniqueCode,
+                        'attempt' => $attempt + 1,
+                    ]);
+                } catch (\Illuminate\Database\UniqueConstraintViolationException $e) {
+                    $attempt++;
+                    Log::warning('⚠️ Duplicate code detected (race condition), retrying', [
+                        'user_id' => $user->id,
+                        'attempt' => $attempt,
+                        'max_retries' => $maxRetries,
+                        'error' => $e->getMessage(),
+                    ]);
+
+                    if ($attempt >= $maxRetries) {
+                        Log::error('❌ Failed to generate unique code after max retries', [
+                            'user_id' => $user->id,
+                            'election_id' => $election->id,
+                            'max_retries' => $maxRetries,
+                        ]);
+                        throw new \Exception('Unable to generate unique verification code. Please try again.');
+                    }
+
+                    // Wait briefly before retry
+                    usleep(100000); // 100ms
+                }
+            }
+
+            if (!$code) {
+                throw new \Exception('Failed to create verification code');
+            }
 
             \Log::info('✅ [DEMO] New DemoCode created with organisation_id', [
                 'code_id' => $code->id,
