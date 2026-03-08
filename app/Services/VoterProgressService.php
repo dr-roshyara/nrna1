@@ -3,14 +3,16 @@
 namespace App\Services;
 
 use App\Models\VoterSlug;
+use App\Models\DemoVoterSlug;
 use Illuminate\Support\Facades\DB;
 
 class VoterProgressService
 {
     /**
      * Advance voter to the next step if currently on the specified step
+     * Accepts both VoterSlug and DemoVoterSlug (polymorphic)
      */
-    public function advanceFrom(VoterSlug $vslug, string $fromRoute, array $stepMeta = []): void
+    public function advanceFrom($vslug, string $fromRoute, array $stepMeta = []): void
     {
         $map = config('election_steps');
         $fromStep = array_search($fromRoute, $map, true);
@@ -75,8 +77,9 @@ class VoterProgressService
 
     /**
      * Reset voter to a specific step and clear meta
+     * Accepts both VoterSlug and DemoVoterSlug (polymorphic)
      */
-    public function resetToStep(VoterSlug $vslug, int $step, array $stepMeta = []): void
+    public function resetToStep($vslug, int $step, array $stepMeta = []): void
     {
         $map = config('election_steps');
 
@@ -93,8 +96,9 @@ class VoterProgressService
 
     /**
      * Get the route name for the next step
+     * Accepts both VoterSlug and DemoVoterSlug (polymorphic)
      */
-    public function getNextRouteName(VoterSlug $vslug): ?string
+    public function getNextRouteName($vslug): ?string
     {
         $map = config('election_steps');
         $nextStep = $vslug->current_step + 1;
@@ -104,8 +108,9 @@ class VoterProgressService
 
     /**
      * Get the route name for the current step
+     * Accepts both VoterSlug and DemoVoterSlug (polymorphic)
      */
-    public function getCurrentRouteName(VoterSlug $vslug): string
+    public function getCurrentRouteName($vslug): string
     {
         $map = config('election_steps');
         return $map[$vslug->current_step] ?? reset($map);
@@ -113,8 +118,9 @@ class VoterProgressService
 
     /**
      * Check if voter can advance from current step
+     * Accepts both VoterSlug and DemoVoterSlug (polymorphic)
      */
-    public function canAdvanceFrom(VoterSlug $vslug, string $fromRoute): bool
+    public function canAdvanceFrom($vslug, string $fromRoute): bool
     {
         $map = config('election_steps');
         $fromStep = array_search($fromRoute, $map, true);
@@ -137,8 +143,9 @@ class VoterProgressService
 
     /**
      * Check if at final step
+     * Accepts both VoterSlug and DemoVoterSlug (polymorphic)
      */
-    public function isAtFinalStep(VoterSlug $vslug): bool
+    public function isAtFinalStep($vslug): bool
     {
         $map = config('election_steps');
         $maxStep = max(array_keys($map));
