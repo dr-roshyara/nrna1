@@ -187,10 +187,10 @@ class DemoCodeController extends Controller
         // Validate input
         try {
             $request->validate([
-                'voting_code' => 'required|string|size:6'
+                'voting_code' => 'required|string|size:8'
             ], [
                 'voting_code.required' => 'Please enter the verification code.',
-                'voting_code.size' => 'Code must be exactly 6 characters.',
+                'voting_code.size' => 'Code must be exactly 8 characters.',
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
             return $this->handleValidationError($e, $request);

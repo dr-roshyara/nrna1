@@ -981,7 +981,7 @@ public function send_second_voting_code(&$code, $auth_user)
         
         // Check if we need to send a new code
         if (!$code->has_code2_sent || !$code->is_code_to_save_vote_usable) {
-            $voting_code = get_random_string(6);
+            $voting_code = get_random_string(8);
             $code->code_to_save_vote = Hash::make($voting_code);
             $code->has_code2_sent = 1;
             $code->is_code_to_open_voting_form_usable = 0; 
@@ -1361,11 +1361,11 @@ private function has_valid_selections($selections)
         //verify second  submission code:
              // Validate request input
             $request->validate([
-                'voting_code' => 'required|string|min:6|max:6'
+                'voting_code' => 'required|string|min:8|max:8'
             ], [
                 'voting_code.required' => 'Please enter the verification code.',
-                'voting_code.min' => 'Code must be exactly 6 characters.',
-                'voting_code.max' => 'Code must be exactly 6 characters.',
+                'voting_code.min' => 'Code must be exactly 8 characters.',
+                'voting_code.max' => 'Code must be exactly 8 characters.',
             ]);
             
 
@@ -2192,7 +2192,7 @@ public function verifyVoteSubmit(): array
     $isCodeValid = false;
 
     $validator = Validator::make($request->all(), [
-        'voting_code' => 'required|string|size:6'
+        'voting_code' => 'required|string|size:8'
     ]);
  
     $validator->after(function ($validator) use ($code, $submittedCode, &$isCodeValid) {
