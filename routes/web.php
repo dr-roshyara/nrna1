@@ -34,7 +34,8 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\OpenionController;
 
-use App\Http\Controllers\Election\ElectionController;
+use App\Http\Controllers\ElectionController;
+use App\Http\Controllers\Election\ElectionManagementController;
 use App\Models\VoterSlug;
 
 // Role-based dashboard controllers (NEW)
@@ -148,7 +149,7 @@ Route::middleware('auth')->group(function () {
 
 // Home route: If authenticated, show election dashboard. Else, show welcome page.
 Route::get('/',
-[ElectionController::class, 'dashboard'])
+[ElectionManagementController::class, 'dashboard'])
 ->name('electiondashboard')
 ->middleware('no.cache');
 
@@ -204,7 +205,7 @@ Route::get('/voting/security', [App\Http\Controllers\VotingSecurityPageControlle
 //     ]);
 // });
 
-Route::get('/dashboard', [ElectionController::class, 'dashboard'])
+Route::get('/dashboard', [ElectionManagementController::class, 'dashboard'])
         ->name('dashboard')
         ->middleware('no.cache');
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

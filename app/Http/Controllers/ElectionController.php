@@ -114,7 +114,9 @@ class ElectionController extends Controller
 
         try {
             // Generate voter slug for the user using injected service
-            $slug = $this->slugService->getOrCreateActiveSlug(auth()->user());
+            // ✅ FIX: For demo elections, force fresh slug; for real elections, reuse if active
+            $forceNew = ($election->type === 'demo');
+            $slug = $this->slugService->getOrCreateSlug(auth()->user(), $election, $forceNew);
 
             // For API requests
             if ($request->wantsJson()) {

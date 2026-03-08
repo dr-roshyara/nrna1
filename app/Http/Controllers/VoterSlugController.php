@@ -97,9 +97,31 @@ class VoterSlugController extends Controller
             );
         }
 
-        // Use the enhanced getOrCreateActiveSlug method for better user experience
+        // Get the selected election from session
+        $selectedElectionId = session('selected_election_id');
+        if (!$selectedElectionId) {
+            Log::warning('No election selected in session', [
+                'user_id' => $user->id,
+            ]);
+            return redirect()->route('election.dashboard')->with('error',
+                'No election selected. Please select an election first.'
+            );
+        }
+
+        $election = \App\Models\Election::withoutGlobalScopes()->find($selectedElectionId);
+        if (!$election) {
+            Log::warning('Selected election not found', [
+                'user_id' => $user->id,
+                'election_id' => $selectedElectionId,
+            ]);
+            return redirect()->route('election.dashboard')->with('error',
+                'Selected election not found.'
+            );
+        }
+
+        // ✅ Use the new getOrCreateSlug method with proper election type handling
         try {
-            $slug = $this->slugService->getOrCreateActiveSlug($user);
+            $slug = $this->slugService->getOrCreateSlug($user, $election);
         } catch (\Exception $e) {
             Log::error('Failed to get or create voting slug', [
                 'user_id' => $user->id,
@@ -171,9 +193,34 @@ class VoterSlugController extends Controller
             }
         }
 
+        // Get the selected election from session
+        $selectedElectionId = session('selected_election_id');
+        if (!$selectedElectionId) {
+            Log::warning('No election selected in session during restart', [
+                'user_id' => $user->id,
+            ]);
+            return redirect()->route('election.dashboard')->with('error',
+                'No election selected. Please select an election first.'
+            );
+        }
+
+        $election = \App\Models\Election::withoutGlobalScopes()->find($selectedElectionId);
+        if (!$election) {
+            Log::warning('Selected election not found during restart', [
+                'user_id' => $user->id,
+                'election_id' => $selectedElectionId,
+            ]);
+            return redirect()->route('election.dashboard')->with('error',
+                'Selected election not found.'
+            );
+        }
+
         // Create a new voting session from scratch
         try {
-            $newSlug = $this->slugService->getOrCreateActiveSlug($user);
+            // ✅ Use the new getOrCreateSlug method with proper election type handling
+            // For demo elections with restart, force creation of new slug
+            $forceNew = ($election->type === 'demo');
+            $newSlug = $this->slugService->getOrCreateSlug($user, $election, $forceNew);
 
             Log::info('New voting session created for restart', [
                 'user_id' => $user->id,
