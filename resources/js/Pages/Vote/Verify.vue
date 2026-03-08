@@ -149,14 +149,14 @@
                                                 'border-gray-300': !form.voting_code || form.voting_code.length !== 6
                                             }"
                                             :placeholder="$t('pages.vote-verify.code_input.placeholder')"
-                                            maxlength="6"
+                                            maxlength="8"
                                             autocomplete="off"
                                             autofocus
                                         />
 
                                         <!-- Character Indicators -->
                                         <div class="mt-4 flex justify-center gap-1 md:gap-2">
-                                            <div v-for="i in 6" :key="i"
+                                            <div v-for="i in 8" :key="i"
                                                  class="w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 flex items-center justify-center"
                                                  :class="{
                                                      'border-blue-500 bg-blue-50': form.voting_code && form.voting_code.length >= i,
@@ -174,7 +174,7 @@
                                         <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                             <div class="text-xs md:text-sm text-gray-600">
                                                 <span v-if="form.voting_code">
-                                                    {{ form.voting_code.length }}/6 {{ $t('pages.vote-verify.code_input.characters') }}
+                                                    {{ form.voting_code.length }}/8 {{ $t('pages.vote-verify.code_input.characters') }}
                                                 </span>
                                                 <span v-else>{{ $t('pages.vote-verify.code_input.instruction') }}</span>
                                             </div>
