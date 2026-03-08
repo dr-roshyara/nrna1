@@ -12,7 +12,7 @@ use App\Http\Controllers\DeligateCandidacyController;
 use App\Http\Controllers\DeligateVoteController;
 use App\Http\Controllers\DeligateCodeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\Election\ElectionController as ElectionManagementController;
+use App\Http\Controllers\Election\ElectionManagementController;
 use App\Http\Controllers\ElectionController as VotingElectionController;
 use App\Http\Controllers\VoterSlugController;
 use App\Http\Controllers\Admin\VotingSecurityController;
@@ -31,9 +31,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/election/select', [Voting
 // Store selected election
 Route::middleware(['auth:sanctum', 'verified'])->post('/election/select', [VotingElectionController::class, 'storeElection'])->name('election.store');
 
-// NOTE: /election/demo/start is defined in web.php to avoid conflicts
-// Alias route for convenience
-Route::middleware(['auth:sanctum', 'verified'])->get('/election/demo/create', [VotingElectionController::class, 'startDemo'])->name('election.demo.create');
 
 // Voter slug generation - start voting process
 Route::middleware(['auth:sanctum', 'verified'])->get('/voter/start', [VoterSlugController::class, 'start'])->name('voter.start');

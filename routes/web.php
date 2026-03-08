@@ -37,6 +37,7 @@ use App\Http\Controllers\OpenionController;
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\Election\ElectionManagementController;
 use App\Models\VoterSlug;
+use App\Models\DemoVoterSlug;
 
 // Role-based dashboard controllers (NEW)
 use App\Http\Controllers\RoleSelectionController;
@@ -65,9 +66,19 @@ use App\Http\Controllers\Import\OrganisationUserImportController;
  * Register implicit model binding for VoterSlug
  */
 Route::bind('vslug', function (string $value) {
-    $voterSlug = VoterSlug::with('user')
+    // Try to find a real VoterSlug first
+    $voterSlug = VoterSlug::withoutGlobalScopes()
+        ->with('user')
         ->where('slug', $value)
         ->first();
+
+    // If not found, try DemoVoterSlug (for demo elections)
+    if (!$voterSlug) {
+        $voterSlug = DemoVoterSlug::withoutGlobalScopes()
+            ->with('user')
+            ->where('slug', $value)
+            ->first();
+    }
 
     if (!$voterSlug) {
         abort(404, 'Voting link not found.');
@@ -169,7 +180,7 @@ Route::get('/election/select', [ElectionController::class, 'selectElection'])
     ->name('election.select');
 
 // Demo election start - bypass voter checks
-Route::get('/election/demo/start', [ElectionController::class, 'startDemo'])
+Route::get('/election/demo/start', [ElectionManagementController::class, 'startDemo'])
     ->middleware('auth')
     ->name('election.demo.start');
 

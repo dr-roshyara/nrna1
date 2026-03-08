@@ -23,8 +23,9 @@ class VerifyVoterSlug
     {
         $slugParam = $request->route('vslug');
 
-        Log::info('🔍 [VerifyVoterSlug] Starting verification', [
-            'slug' => $slugParam,
+        Log::emergency('🔍 VERIFY VOTER SLUG - START', [
+            'slug_param' => $slugParam,
+            'url' => $request->fullUrl(),
             'user_id' => auth()->id(),
         ]);
 
@@ -35,15 +36,23 @@ class VerifyVoterSlug
             : ($slugParam instanceof DemoVoterSlug
                 ? $slugParam
                 : VoterSlug::withoutGlobalScopes()
-                    ->withEssentialRelations()
                     ->where('slug', $slugParam)
                     ->first());
 
+        Log::emergency('VoterSlug search result', ['found' => (bool)$voterSlug]);
+
         // If not found, try DemoVoterSlug (for demo election flows)
         if (!$voterSlug && !($slugParam instanceof VoterSlug) && !($slugParam instanceof DemoVoterSlug)) {
+            Log::emergency('Searching in DemoVoterSlug...');
             $voterSlug = DemoVoterSlug::withoutGlobalScopes()
                 ->where('slug', $slugParam)
                 ->first();
+
+            if ($voterSlug) {
+                Log::emergency('✅ Found in DemoVoterSlug!', ['id' => $voterSlug->id]);
+            } else {
+                Log::emergency('❌ NOT found in DemoVoterSlug!');
+            }
         }
 
         // CHECK 1: Does slug exist?
