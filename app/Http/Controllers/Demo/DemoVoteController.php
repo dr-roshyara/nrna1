@@ -365,26 +365,16 @@ public function create(Request $request)
 
     // --- Fetch National Posts and Candidates ---
     if ($election->isDemo()) {
-        // 🔴 DEBUG: Log election and post loading
-        \Log::info('========== DEMO VOTE CONTROLLER DEBUG ==========');
-        \Log::info('Election ID: ' . $election->id);
-        \Log::info('Election Name: ' . $election->name);
-        \Log::info('Election Type: ' . $election->type);
-
         // ✅ FIX-03: Fetch posts with their candidacies through proper relationships
-        // Avoid direct election_id queries on candidacies (column doesn't exist)
-        $nationalPosts = DemoPost::where('election_id', $election->id)
+        // withoutGlobalScopes() bypasses BelongsToTenant filtering for demo elections
+        $nationalPosts = DemoPost::withoutGlobalScopes()
+            ->where('election_id', $election->id)
             ->where('is_national_wide', 1)
             ->with(['candidacies' => function($query) {
                 $query->withoutGlobalScopes()->orderBy('position_order');
             }])
             ->orderBy('position_order')
             ->get();
-
-        \Log::info('National Posts found: ' . $nationalPosts->count());
-        foreach ($nationalPosts as $index => $post) {
-            \Log::info("Post {$index}: {$post->name} (ID: {$post->id}) - Candidates: " . $post->candidacies->count());
-        }
 
         $national_posts = $nationalPosts->map(function ($post) {
             return [
@@ -413,7 +403,8 @@ public function create(Request $request)
         // Regional posts
         $regional_posts = collect();
         if (!empty($auth_user->region)) {
-            $regionalPostsQuery = DemoPost::where('election_id', $election->id)
+            $regionalPostsQuery = DemoPost::withoutGlobalScopes()
+                ->where('election_id', $election->id)
                 ->where('is_national_wide', 0)
                 ->where('state_name', trim($auth_user->region))
                 ->with(['candidacies' => function($query) {
@@ -527,8 +518,7 @@ public function create(Request $request)
             'regional_posts_count' => $regional_posts->count(),
         ]);
     }
-    dd($national_posts, $regional_posts);
-
+    // dd($national_posts, $regional_posts);
     return Inertia::render('Vote/DemoVote/Create', [
         'posts' => [
             'national' => $national_posts,

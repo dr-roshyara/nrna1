@@ -54,7 +54,7 @@ class DemoCandidacy extends Model
     public function user()
     {
         return $this->belongsTo(User::class)
-               ->select(['id', 'user_id', 'name', 'region', 'email', 'first_name', 'last_name']);
+               ->select(['id', 'name', 'region', 'email']);
     }
 
     /**
@@ -96,22 +96,9 @@ class DemoCandidacy extends Model
             return $this->user->name;
         }
 
-        // Priority 2: Construct from first_name + last_name if available
-        if ($this->user && (!empty($this->user->first_name) || !empty($this->user->last_name))) {
-            $fullName = trim(($this->user->first_name ?? '') . ' ' . ($this->user->last_name ?? ''));
-            if (!empty($fullName)) {
-                return $fullName;
-            }
-        }
-
-        // Priority 3: Use user_name field from candidacy table (backup)
-        if (!empty($this->user_name)) {
-            return $this->user_name;
-        }
-
-        // Priority 4: Use candidacy_id
-        if (!empty($this->candidacy_id)) {
-            return 'Demo Candidate ' . str_replace(['_', '-'], ' ', $this->candidacy_id);
+        // Priority 2: Use name field from candidacy table (backup)
+        if (!empty($this->name)) {
+            return $this->name;
         }
 
         return 'Demo Candidate';
