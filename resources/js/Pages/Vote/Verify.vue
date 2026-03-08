@@ -145,8 +145,8 @@
                                             class="w-full px-4 md:px-6 py-4 md:py-5 text-xl md:text-2xl font-mono text-center tracking-widest border-2 md:border-3 rounded-xl md:rounded-2xl focus:ring-3 md:focus:ring-4 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 uppercase shadow-xs md:shadow-lg"
                                             :class="{
                                                 'border-red-300 bg-red-50': form.errors.voting_code,
-                                                'border-green-400 bg-green-50': form.voting_code && form.voting_code.length === 6,
-                                                'border-gray-300': !form.voting_code || form.voting_code.length !== 6
+                                                'border-green-400 bg-green-50': form.voting_code && form.voting_code.length === 8,
+                                                'border-gray-300': !form.voting_code || form.voting_code.length !== 8
                                             }"
                                             :placeholder="$t('pages.vote-verify.code_input.placeholder')"
                                             maxlength="8"
@@ -178,7 +178,7 @@
                                                 </span>
                                                 <span v-else>{{ $t('pages.vote-verify.code_input.instruction') }}</span>
                                             </div>
-                                            <div v-if="form.voting_code && form.voting_code.length === 6 && !form.errors.voting_code"
+                                            <div v-if="form.voting_code && form.voting_code.length === 8 && !form.errors.voting_code"
                                                  class="flex items-center text-green-600 text-xs md:text-sm">
                                                 <svg class="w-4 h-4 md:w-5 md:h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
@@ -204,7 +204,7 @@
                                 <div class="pt-4 md:pt-6">
                                     <button
                                         type="submit"
-                                        :disabled="form.processing || !form.voting_code || form.voting_code.length !== 6"
+                                        :disabled="form.processing || !form.voting_code || form.voting_code.length !== 8"
                                         class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-4 md:py-5 px-6 md:px-8 rounded-xl md:rounded-2xl transition-all duration-300 transform hover:scale-[1.02] disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                                     >
                                         <div class="flex items-center justify-center">
@@ -235,7 +235,7 @@
 
                                     <!-- Button Status -->
                                     <div class="mt-3 text-center">
-                                        <p class="text-xs text-gray-500" v-if="!form.voting_code || form.voting_code.length !== 6">
+                                        <p class="text-xs text-gray-500" v-if="!form.voting_code || form.voting_code.length !== 8">
                                             {{ $t('pages.vote-verify.save_button.help_incomplete') }}
                                         </p>
                                         <p class="text-xs text-green-600 font-medium" v-else>

@@ -103,18 +103,18 @@
                                             class="w-full px-6 py-5 text-3xl font-mono text-center tracking-widest border-3 rounded-2xl focus:ring-4 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 uppercase shadow-md"
                                             :class="{
                                                 'border-red-300 bg-red-50': form.errors.voting_code,
-                                                'border-green-400 bg-green-50': form.voting_code && form.voting_code.length === 6 && !form.errors.voting_code,
-                                                'border-gray-300': !form.voting_code || form.voting_code.length !== 6
+                                                'border-green-400 bg-green-50': form.voting_code && form.voting_code.length === 8 && !form.errors.voting_code,
+                                                'border-gray-300': !form.voting_code || form.voting_code.length !== 8
                                             }"
                                             :placeholder="$t('pages.vote_verify.verification_section.placeholder')"
-                                            maxlength="6"
+                                            maxlength="8"
                                             autocomplete="off"
                                             autofocus
                                         />
 
                                         <!-- Character Indicators -->
                                         <div class="mt-4 flex justify-center space-x-2">
-                                            <div v-for="i in 6" :key="i"
+                                            <div v-for="i in 8" :key="i"
                                                  class="w-12 h-12 rounded-lg border-2 flex items-center justify-center"
                                                  :class="{
                                                      'border-blue-500 bg-blue-50': (form.voting_code && form.voting_code.length >= i),
@@ -132,11 +132,11 @@
                                         <div class="mt-6 flex items-center justify-between">
                                             <div class="text-sm text-gray-600">
                                                 <span v-if="form.voting_code">
-                                                    {{ form.voting_code.length }}/6 {{ $t('pages.vote_verify.verification_section.characters_label') }}
+                                                    {{ form.voting_code.length }}/8 {{ $t('pages.vote_verify.verification_section.characters_label') }}
                                                 </span>
                                                 <span v-else>{{ $t('pages.vote_verify.verification_section.enter_instruction') }}</span>
                                             </div>
-                                            <div v-if="form.voting_code && form.voting_code.length === 6 && !form.errors.voting_code"
+                                            <div v-if="form.voting_code && form.voting_code.length === 8 && !form.errors.voting_code"
                                                  class="flex items-center text-green-600">
                                                 <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
@@ -162,7 +162,7 @@
                                 <div class="pt-6">
                                     <button
                                         type="submit"
-                                        :disabled="form.processing || !form.voting_code || form.voting_code.length !== 6"
+                                        :disabled="form.processing || !form.voting_code || form.voting_code.length !== 8"
                                         class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-5 px-8 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
                                     >
                                         <div class="flex items-center justify-center">
