@@ -24,10 +24,11 @@ class DemoPostFactory extends Factory
     public function definition()
     {
         $name = $this->faker->words(3, true);
+        $election = Election::factory()->create();
 
         return [
-            'election_id' => Election::factory(),
-            'post_id' => 'post-' . Str::random(8),
+            'election_id' => $election->id,
+            'organisation_id' => $election->organisation_id,
             'name' => $name,
             'nepali_name' => $name,
             'position_order' => $this->faker->numberBetween(1, 10),

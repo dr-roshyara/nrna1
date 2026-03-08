@@ -33,9 +33,13 @@ use Illuminate\Support\Facades\Hash;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Traits\Voting\CodeVerificationTrait;
+use App\Traits\Voting\VoteStorageTrait;
 
-class DemoVoteController extends Controller 
+class DemoVoteController extends Controller
 {
+    // ✅ Use consolidated traits for code quality and maintainability
+    use CodeVerificationTrait, VoteStorageTrait;
     public $vote ; 
     public $has_voted;
     public $in_code ; 
@@ -381,14 +385,14 @@ public function create(Request $request)
                 'candidates' => $post->candidacies->map(function ($c) {
                     return [
                         'id' => $c->id,
-                        'candidacy_id' => $c->candidacy_id,
+                        'candidacy_id' => $c->id,
                         'user_id' => $c->user_id,
-                        'user_name' => $c->user_name ?? 'Demo Candidate',
+                        'user_name' => $c->user->name ?? $c->name ?? 'Demo Candidate',
                         'post_id' => $c->post_id,
-                        'image_path_1' => $c->image_path_1,
-                        'candidacy_name' => $c->candidacy_name,
-                        'proposer_name' => $c->proposer_name,
-                        'supporter_name' => $c->supporter_name,
+                        'image_path_1' => null,
+                        'candidacy_name' => $c->name,
+                        'proposer_name' => null,
+                        'supporter_name' => null,
                         'position_order' => $c->position_order,
                     ];
                 })->values(),
@@ -417,14 +421,14 @@ public function create(Request $request)
                     'candidates' => $post->candidacies->map(function ($c) {
                         return [
                             'id' => $c->id,
-                            'candidacy_id' => $c->candidacy_id,
+                            'candidacy_id' => $c->id,
                             'user_id' => $c->user_id,
-                            'user_name' => $c->user_name ?? 'Demo Candidate',
+                            'user_name' => $c->user->name ?? $c->name ?? 'Demo Candidate',
                             'post_id' => $c->post_id,
-                            'image_path_1' => $c->image_path_1,
-                            'candidacy_name' => $c->candidacy_name,
-                            'proposer_name' => $c->proposer_name,
-                            'supporter_name' => $c->supporter_name,
+                            'image_path_1' => null,
+                            'candidacy_name' => $c->name,
+                            'proposer_name' => null,
+                            'supporter_name' => null,
                             'position_order' => $c->position_order,
                         ];
                     })->values(),
@@ -514,9 +518,11 @@ public function create(Request $request)
     }
     // dd($national_posts, $regional_posts);
 
-    return Inertia::render('Vote/CreateVotingPage', [
-        'national_posts' => $national_posts,
-        'regional_posts' => $regional_posts,
+    return Inertia::render('Vote/DemoVote/Create', [
+        'posts' => [
+            'national' => $national_posts,
+            'regional' => $regional_posts,
+        ],
         'user_name' => $auth_user->name,
         'user_id' => $auth_user->id,
         'user_region' => $auth_user->region,
@@ -1496,8 +1502,8 @@ private function has_valid_selections($selections)
             ]);
             
 
-            $_codeVerified =$this->verify_submitted_code($this->in_code, $this->out_code);
-            // Use the verification method
+            $_codeVerified = $this->verifyPlainCode($this->out_code, $this->in_code);
+            // Use the verification method (via CodeVerificationTrait)
             if (!$_codeVerified) {
             
                 \Log::warning('Code verification failed - returning with error',
@@ -1881,24 +1887,6 @@ protected function saveAnonymizedVote(string $voting_code, array $vote_data): Vo
     // Return the unhashed version only for the one-time notification
     return $private_key;
 }
-
-/**
- * Verify the submitted voting code against the hashed version
- * 
- * @param string $submitted_code
- * @param Code $code
- * @return bool
- */
-public function verifyVotingCode(string $submitted_code, Code $code): bool
-{
-    // Security checks before verification
-    if (empty($submitted_code) || empty($code->code_for_vote)) {
-        return false;
-    }
-    // Timing attack resistant comparison code_for_vote
-    return Hash::check($submitted_code, $code->code_for_vote);
-}
-
 
      public function verify_to_show(){
         //
@@ -2588,15 +2576,17 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
     // Generate cryptographic vote_hash using SHA256
     // This allows voters to verify their vote was counted WITHOUT revealing:
     // - Who they voted for
-    // - Their identity
-    // 
-    // Hash components:
-    // - code.user_id: Unique to the voter (but not publicly identifiable)
+    // - Their identity (ANONYMITY PRESERVED - uses code->id, NOT user_id)
+    //
+    // Hash components (CRITICAL FOR ANONYMITY):
+    // - code.id: Unique code UUID (NOT user_id which would break anonymity)
     // - election_id: Scoped to this election
-    // - code.code1: The first verification code (known only to voter)
+    // - code.code_to_open_voting_form: The first verification code (known only to voter)
     // - cast_at.timestamp: Prevents hash collisions
+    //
+    // SECURITY: Using code->id instead of user_id ensures votes are NOT linkable to voters
     $vote->vote_hash = hash('sha256',
-        $code->user_id .
+        $code->id .
         $election->id .
         $code->code_to_open_voting_form .
         $vote->cast_at->timestamp
@@ -3338,8 +3328,9 @@ public function verify_final_vote(Request $request)
                 'auth_user.has_voted' => $auth_user->has_voted,
                 'returning' => 'vote.verify_to_show'
             ]);
-            // Instead of redirecting back, return the 'vote.verify_to_show' route for already-voted users
-            return 'vote.verify_to_show';
+            // Redirect to vote verification page for already-voted users
+            $route = $isDemoElection ? 'slug.demo-vote.verify_to_show' : 'vote.verify_to_show';
+            return redirect()->route($route);
         } else {
             \Log::debug('✅ CHECK 6 PASSED: has_voted', [
                 'auth_user.has_voted' => $auth_user->has_voted
@@ -3450,17 +3441,6 @@ public function verify_final_vote(Request $request)
  
 // Add these methods to your VoteController class
 
-public function verify_code_saved_in_vote($voting_code, $hashed_voting_code)
-{
-    if (!password_verify($voting_code, $hashed_voting_code)) {
-        // If the codes do not match, redirect back with error and input
-        return redirect()->back()
-            ->withErrors(['voting_code' => 'Invalid verification code.'])
-            ->withInput();
-    }
-    // If matched, you can return true or handle success as you wish
-    return true;
-}
 /**
  * Process vote verification code and display the associated vote
  * 
@@ -3724,8 +3704,9 @@ private function prepare_demo_vote_display($demoVote, $election, $auth_user)
 {
     $voteSelections = [];
 
-    // Process all 60 candidate columns
-    for ($i = 1; $i <= 60; $i++) {
+    // Process all candidate columns (max configured candidates per election)
+    $maxCandidates = config('voting.max_candidates_per_election', 60);
+    for ($i = 1; $i <= $maxCandidates; $i++) {
         $candidateColumn = 'candidate_' . sprintf('%02d', $i);
         if (isset($demoVote->$candidateColumn) && !empty($demoVote->$candidateColumn)) {
             $voteSelections[] = [
@@ -4379,77 +4360,6 @@ private function isValidVoteDisplayData($data)
  * @param string $submitted_code The code submitted by user from form (e.g., $request['voting_code'])
  * @return bool True if codes match, false otherwise
  */
-public function verify_submitted_code($in_code, $submitted_code)
-{
-    // Input validation
-    if (empty($in_code) || empty($submitted_code)) {
-        \Log::warning('Code verification failed: empty parameters', [
-            'in_code_empty' => empty($in_code),
-            'submitted_code_empty' => empty($submitted_code),
-            'user_id' => auth()->id() ?? 'unknown',
-        ]);
-        return false;
-    }
-
-    // Clean and format submitted code (uppercase, trim whitespace)
-    $clean_submitted_code = strtoupper(trim($submitted_code));
-    
-    // Log verification attempt for audit trail
-    \Log::info('Code verification attempt', [
-        'user_id' => auth()->id() ?? 'unknown',
-        'submitted_code_length' => strlen($clean_submitted_code),
-        'submitted_code_format' => ctype_alnum($clean_submitted_code) ? 'valid_format' : 'invalid_format',
-        'has_stored_hash' => !empty($in_code),
-        'attempted_at' => now(),
-    ]);
-
-    try {
-        // Clean and format both codes for comparison
-        $clean_in_code = strtoupper(trim($in_code));
-
-        // Simple plain text comparison for code1 (always plain text)
-        $verification_result = ($clean_submitted_code === $clean_in_code);
-
-        \Log::info('Verifying plain text code', [
-            'user_id' => auth()->id() ?? 'unknown',
-            'method' => 'plain_text',
-            'expected_code' => $clean_in_code,
-            'submitted_code' => $clean_submitted_code,
-            'expected_length' => strlen($clean_in_code),
-            'submitted_length' => strlen($clean_submitted_code),
-        ]);
-
-        // Log the result for audit trail
-        if ($verification_result) {
-            \Log::info('✅ Code verification successful', [
-                'user_id' => auth()->id() ?? 'unknown',
-                'verified_at' => now(),
-                'method' => 'plain_text',
-            ]);
-        } else {
-            \Log::warning('❌ Code verification failed - Mismatch', [
-                'user_id' => auth()->id() ?? 'unknown',
-                'expected_code' => $clean_in_code,
-                'submitted_code' => $clean_submitted_code,
-                'submitted_code_length' => strlen($clean_submitted_code),
-                'failed_at' => now(),
-                'method' => 'plain_text',
-            ]);
-        }
-
-        return $verification_result;
-        
-    } catch (\Exception $e) {
-        // Handle any unexpected errors during verification
-        \Log::error('Code verification error', [
-            'user_id' => auth()->id() ?? 'unknown',
-            'error_message' => $e->getMessage(),
-            'error_trace' => $e->getTraceAsString(),
-        ]);
-        
-        return false;
-    }
-}
 
 
 
