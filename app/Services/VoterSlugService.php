@@ -270,12 +270,37 @@ class VoterSlugService
             'forceNew' => $forceNew,
         ]);
 
-        // BUSINESS LOGIC: Demo elections always get fresh slugs
-        if ($forceNew || $election->type === 'demo') {
-            Log::info('Creating fresh voter slug', [
+        // ✅ FIX: When forceNew = true, HARD DELETE ALL existing slugs first
+        // This ensures unique constraint violations don't prevent new slugs
+        if ($forceNew) {
+            Log::info('🔴 Force deleting all existing voter slugs', [
                 'user_id' => $user->id,
                 'election_id' => $election->id,
-                'reason' => $forceNew ? 'forced' : 'demo_election',
+                'reason' => 'forceNew=true',
+            ]);
+
+            // Hard delete ALL slugs (including soft-deleted ones)
+            $deleted = $model::withoutGlobalScopes()
+                ->where('user_id', $user->id)
+                ->where('election_id', $election->id)
+                ->forceDelete();  // 💥 HARD DELETE - bypass soft deletes
+
+            Log::info('Deleted old voter slugs before creating new one', [
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'deleted_count' => $deleted,
+            ]);
+
+            // Now create completely fresh slug
+            return $this->createNewSlug($user, $election, $model);
+        }
+
+        // BUSINESS LOGIC: Demo elections always get fresh slugs (non-forceNew path)
+        if ($election->type === 'demo') {
+            Log::info('Creating fresh voter slug for demo election', [
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'reason' => 'demo_election',
             ]);
             return $this->createNewSlug($user, $election, $model);
         }
