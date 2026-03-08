@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Models\VoterSlug;
+use App\Models\DemoVoterSlug;
 use App\Models\VoterSlugStep;
+use App\Models\DemoVoterSlugStep;
 use App\Models\Election;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -12,29 +14,34 @@ use Illuminate\Support\Facades\Log;
  * VoterStepTrackingService
  *
  * Manages voter step completion and routing.
- * Single source of truth: voter_slug_steps table
+ * Supports both real elections (voter_slug_steps) and demo elections (demo_voter_slug_steps)
  */
 class VoterStepTrackingService
 {
     /**
      * Complete a step for a voter in an election
      *
-     * @param VoterSlug $voterSlug
+     * @param VoterSlug|DemoVoterSlug $voterSlug
      * @param Election $election
      * @param int $step
      * @param array $stepData
-     * @return VoterSlugStep
+     * @return VoterSlugStep|DemoVoterSlugStep
      */
-    public function completeStep(VoterSlug $voterSlug, Election $election, int $step, array $stepData = []): VoterSlugStep
+    public function completeStep($voterSlug, Election $election, int $step, array $stepData = [])
     {
+        // Determine which model to use based on slug type
+        $isDemo = $voterSlug instanceof DemoVoterSlug;
+        $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
+
         Log::info('✅ Completing step', [
             'voter_slug_id' => $voterSlug->id,
             'election_id' => $election->id,
             'step' => $step,
+            'is_demo' => $isDemo,
         ]);
 
         // Check if step already completed
-        $existingStep = VoterSlugStep::where('voter_slug_id', $voterSlug->id)
+        $existingStep = $StepModel::where('voter_slug_id', $voterSlug->id)
             ->where('election_id', $election->id)
             ->where('step', $step)
             ->first();
@@ -49,13 +56,20 @@ class VoterStepTrackingService
         }
 
         // Create new step completion record
-        $voterSlugStep = VoterSlugStep::create([
+        $data = [
             'voter_slug_id' => $voterSlug->id,
             'election_id' => $election->id,
             'step' => $step,
             'step_data' => $stepData,
             'completed_at' => now(),
-        ]);
+        ];
+
+        // Add organisation_id if present
+        if ($voterSlug->organisation_id) {
+            $data['organisation_id'] = $voterSlug->organisation_id;
+        }
+
+        $voterSlugStep = $StepModel::create($data);
 
         Log::info('🟢 Step completed and recorded', [
             'voter_slug_step_id' => $voterSlugStep->id,
@@ -68,13 +82,17 @@ class VoterStepTrackingService
     /**
      * Get the highest completed step for a voter in an election
      *
-     * @param VoterSlug $voterSlug
+     * @param VoterSlug|DemoVoterSlug $voterSlug
      * @param Election $election
      * @return int (0 if no steps completed)
      */
-    public function getHighestCompletedStep(VoterSlug $voterSlug, Election $election): int
+    public function getHighestCompletedStep($voterSlug, Election $election): int
     {
-        $highest = VoterSlugStep::where('voter_slug_id', $voterSlug->id)
+        // Determine which model to use based on slug type
+        $isDemo = $voterSlug instanceof DemoVoterSlug;
+        $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
+
+        $highest = $StepModel::where('voter_slug_id', $voterSlug->id)
             ->where('election_id', $election->id)
             ->max('step');
 
@@ -84,11 +102,11 @@ class VoterStepTrackingService
     /**
      * Get the next step a voter should proceed to
      *
-     * @param VoterSlug $voterSlug
+     * @param VoterSlug|DemoVoterSlug $voterSlug
      * @param Election $election
      * @return int (1-5, or null if all steps completed)
      */
-    public function getNextStep(VoterSlug $voterSlug, Election $election): ?int
+    public function getNextStep($voterSlug, Election $election): ?int
     {
         $highestCompleted = $this->getHighestCompletedStep($voterSlug, $election);
         $nextStep = $highestCompleted + 1;
@@ -105,14 +123,18 @@ class VoterStepTrackingService
     /**
      * Check if a specific step has been completed
      *
-     * @param VoterSlug $voterSlug
+     * @param VoterSlug|DemoVoterSlug $voterSlug
      * @param Election $election
      * @param int $step
      * @return bool
      */
-    public function hasCompletedStep(VoterSlug $voterSlug, Election $election, int $step): bool
+    public function hasCompletedStep($voterSlug, Election $election, int $step): bool
     {
-        return VoterSlugStep::where('voter_slug_id', $voterSlug->id)
+        // Determine which model to use based on slug type
+        $isDemo = $voterSlug instanceof DemoVoterSlug;
+        $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
+
+        return $StepModel::where('voter_slug_id', $voterSlug->id)
             ->where('election_id', $election->id)
             ->where('step', '<=', $step)
             ->exists();
@@ -121,27 +143,39 @@ class VoterStepTrackingService
     /**
      * Get all completed steps for a voter in an election
      *
-     * @param VoterSlug $voterSlug
+     * @param VoterSlug|DemoVoterSlug $voterSlug
      * @param Election $election
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getCompletedSteps(VoterSlug $voterSlug, Election $election)
+    public function getCompletedSteps($voterSlug, Election $election)
     {
-        return VoterSlugStep::where('voter_slug_id', $voterSlug->id)
+        // Determine which model to use based on slug type
+        $isDemo = $voterSlug instanceof DemoVoterSlug;
+        $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
+
+        $query = $StepModel::where('voter_slug_id', $voterSlug->id)
             ->where('election_id', $election->id)
-            ->ordered()
-            ->get();
+            ->orderBy('step', 'asc');
+
+        // Use ordered() scope if available (VoterSlugStep has it, DemoVoterSlugStep also has it)
+        if (method_exists($StepModel, 'ordered')) {
+            $query = $StepModel::where('voter_slug_id', $voterSlug->id)
+                ->where('election_id', $election->id)
+                ->ordered();
+        }
+
+        return $query->get();
     }
 
     /**
      * Get the route name for the next step
      * Based on config/election_steps.php
      *
-     * @param VoterSlug $voterSlug
+     * @param VoterSlug|DemoVoterSlug $voterSlug
      * @param Election $election
      * @return string|null
      */
-    public function getNextStepRoute(VoterSlug $voterSlug, Election $election): ?string
+    public function getNextStepRoute($voterSlug, Election $election): ?string
     {
         $nextStep = $this->getNextStep($voterSlug, $election);
         if (!$nextStep) {
@@ -159,7 +193,7 @@ class VoterStepTrackingService
      * @param Election $election
      * @return array
      */
-    public function getStepTimeline(VoterSlug $voterSlug, Election $election): array
+    public function getStepTimeline($voterSlug, Election $election): array
     {
         $steps = $this->getCompletedSteps($voterSlug, $election);
         $stepNames = config('election_steps');
