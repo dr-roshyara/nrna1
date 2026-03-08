@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\VoterSlug;
+use App\Models\DemoVoterSlug;
 use App\Services\VoterStepTrackingService;
 
 class EnsureVoterStepOrder
@@ -19,11 +20,11 @@ class EnsureVoterStepOrder
      */
     public function handle(Request $request, Closure $next): Response
     {
-        /** @var VoterSlug $vslug */
+        /** @var VoterSlug|DemoVoterSlug $vslug */
         $vslug = $request->route('vslug');
 
-        // Ensure we have a VoterSlug instance, not a string
-        if (!$vslug instanceof VoterSlug) {
+        // Accept both VoterSlug (real elections) and DemoVoterSlug (demo elections)
+        if (!$vslug instanceof VoterSlug && !$vslug instanceof DemoVoterSlug) {
             abort(403, 'Invalid voting link.');
         }
 
