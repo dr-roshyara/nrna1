@@ -261,7 +261,25 @@ class VoterSlugService
      */
     public function getOrCreateSlug(User $user, Election $election, bool $forceNew = false)
     {
-        $model = $election->type === 'demo' ? DemoVoterSlug::class : VoterSlug::class;
+        // 🔧 CRITICAL DEBUG: Check election type detection
+        Log::info('🔍 [getOrCreateSlug] Election type check:', [
+            'election_id' => $election->id,
+            'raw_type' => $election->type,
+            'type_length' => strlen($election->type ?? ''),
+            'type_bytes' => $election->type ? implode(',', array_map('ord', str_split($election->type))) : null,
+            'is_demo_strict' => $election->type === 'demo',
+            'is_demo_loose' => trim($election->type ?? '') === 'demo',
+        ]);
+
+        // Select model based on election type - use BOTH strict and loose comparison
+        $model = (trim($election->type ?? '') === 'demo')
+            ? DemoVoterSlug::class
+            : VoterSlug::class;
+
+        Log::info('📊 [getOrCreateSlug] Selected model and table:', [
+            'model' => class_basename($model),
+            'table' => $model === DemoVoterSlug::class ? 'demo_voter_slugs' : 'voter_slugs',
+        ]);
 
         Log::debug('Voter slug service: getOrCreateSlug', [
             'user_id' => $user->id,
