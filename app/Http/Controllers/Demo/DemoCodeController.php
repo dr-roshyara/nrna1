@@ -1059,8 +1059,11 @@ class DemoCodeController extends Controller
     /**
      * Generate a code that is guaranteed unique for the given organisation
      * Uses a do-while loop to ensure no duplicates exist
+     *
+     * @param string|int|null $organisationId UUID or integer organisation ID
+     * @return string Unique 8-character code
      */
-    private function generateUniqueCodeForOrganisation(?int $organisationId): string
+    private function generateUniqueCodeForOrganisation($organisationId): string
     {
         $maxAttempts = 10;
         $attempts = 0;

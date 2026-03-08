@@ -184,6 +184,16 @@ Route::get('/election/demo/start', [ElectionManagementController::class, 'startD
     ->middleware('auth')
     ->name('election.demo.start');
 
+// Demo election selection - list multiple demo elections
+Route::get('/election/demo/list', [ElectionManagementController::class, 'listDemoElections'])
+    ->middleware('auth')
+    ->name('election.demo.list');
+
+// Start a specific demo election
+Route::post('/election/demo/select', [ElectionManagementController::class, 'startSpecificDemo'])
+    ->middleware('auth')
+    ->name('election.demo.select');
+
 // Pricing page
 Route::get('/pricing', function () {
     return Inertia::render('Pricing');

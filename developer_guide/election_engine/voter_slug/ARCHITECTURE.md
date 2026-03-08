@@ -1,242 +1,213 @@
-# Voter Slug Architecture
+# Voter Slug System Architecture
 
-## System Design
+## System Overview
 
-### Database Schema
+The Voter Slug System manages secure, anonymous voting sessions for both real and demo elections.
 
-#### voter_slugs table (Real Elections)
+## Two-Model Architecture
 
-Column Name | Type | Constraints | Purpose
----|---|---|---
-id | UUID | PRIMARY KEY | Unique identifier
-election_id | UUID | FOREIGN KEY | Links to election
-user_id | UUID | FOREIGN KEY | Links to voter
-organisation_id | UUID | FOREIGN KEY | Tenant isolation
-slug | VARCHAR(64) | UNIQUE | Public voting link
-expires_at | TIMESTAMP | NOT NULL | When voting session expires
-is_active | BOOLEAN | DEFAULT true | Active status
-current_step | INT | DEFAULT 1 | Voting step (1-5)
-step_meta | JSON | NULLABLE | Metadata per step
-status | ENUM | DEFAULT active | Status enum
-created_at | TIMESTAMP | DEFAULT NOW() | Creation timestamp
-updated_at | TIMESTAMP | DEFAULT NOW() | Update timestamp
-deleted_at | TIMESTAMP | NULLABLE | Soft delete timestamp
+Real Elections:
+- VoterSlug (model) -> voter_slugs (table)
+- VoterSlugStep (model) -> voter_slug_steps (table)
 
-#### demo_voter_slugs table (Demo Elections)
+Demo Elections:
+- DemoVoterSlug (model) -> demo_voter_slugs (table)
+- DemoVoterSlugStep (model) -> demo_voter_slug_steps (table)
 
-Same schema as voter_slugs EXCEPT:
-- deleted_at column does NOT exist (no soft delete)
-- Used only for demo elections
+Why? Demo elections need:
+- Different lifecycle (always fresh)
+- Isolation from real elections
+- Same UI/UX as real elections
+- Testable without affecting production
 
-### Composite Unique Constraint
+## Request Flow
 
-Both tables have: UNIQUE(election_id, user_id)
+1. User enters code in /election/demo/start
+   -> VoterSlugService::getOrCreateSlug()
+   -> Creates DemoVoterSlug with fresh slug
+   -> Redirects to /v/{slug}/demo-code/create
 
-This ensures one active voting session per voter per election.
+2. Browser requests /v/{slug}/demo-code/create
+   -> Route::bind('vslug') searches both tables
+   -> Returns DemoVoterSlug model instance
 
-### Why Soft Delete on voter_slugs?
+3. Middleware chain processes request
+   -> VerifyVoterSlug (owns slug? is active?)
+   -> EnsureVoterStepOrder (can proceed to this step?)
 
-Soft deletes preserve audit trails for real elections. When a voter completes voting:
-1. Slug is marked deleted_at = NOW()
-2. Slug remains in database for audit
-3. Old soft-deleted slugs are removed via background job
+4. Controller receives model instance
+   -> Calls VoterStepTrackingService->completeStep()
+   -> Service detects DemoVoterSlug
+   -> Creates DemoVoterSlugStep record
 
-### Why No Soft Delete on demo_voter_slugs?
+5. Response shows next form step
+   -> User continues through 5-step workflow
 
-Demo slugs are test data. Truncating or deleting demo slugs is safe.
+## Layer Responsibilities
 
----
+### Layer 1: Routing (routes/web.php)
 
-## VoterSlugService Architecture
+Job: Translate URL slug to Eloquent model
 
-### Core Responsibility
+Key Pattern:
+- Route::bind('vslug') searches VoterSlug first
+- Falls back to DemoVoterSlug
+- Returns 404 if neither found
+- No type hints on route parameters
 
-The VoterSlugService orchestrates the entire voter slug lifecycle:
-1. Creating new slugs
-2. Reusing active non-expired slugs
-3. Validating slug ownership
-4. Handling expiration
+### Layer 2: Middleware
 
-### Key Methods
+Job: Validate voter and authorize action
 
-#### getOrCreateSlug(user, election, forceNew = false)
+VerifyVoterSlug checks:
+- Slug ownership (user_id matches auth user)
+- Slug activation (is_active = 1)
 
-Purpose: Get existing valid slug or create new one
+EnsureVoterStepOrder checks:
+- Step progression (can't skip ahead)
+- Slug expiration
+- Accepts both VoterSlug and DemoVoterSlug
 
-Logic:
-- If forceNew = true: create new slug (demo elections)
-- If forceNew = false: reuse active non-expired slug (real elections)
+### Layer 3: Controllers
 
-Returns: VoterSlug or DemoVoterSlug instance
+Job: Handle HTTP requests
 
-#### getValidatedSlug(slugString, user, election)
-
-Purpose: Retrieve and validate slug in one operation
-
-Validation checks:
-1. Slug exists in database
-2. Slug belongs to this user
-3. Slug belongs to this election
-4. Slug is not expired
-5. Slug is active
-
-Returns: VoterSlug if valid, null if invalid
-
-#### validateSlugOwnership(slug, user, election)
-
-Purpose: Strict ownership validation
-
-Throws AccessDeniedHttpException if:
-- Slug user_id != user.id
-- Slug election_id != election.id
-
-Used by: EnsureVoterSlugWindow middleware
-
-#### createNewSlug(user, election, model)
-
-Purpose: Create new slug after hard-deleting old ones
-
-Steps:
-1. Find all soft-deleted slugs for this user/election
-2. Hard-delete them (critical!)
-3. Create new slug with auto-set defaults
-4. Return new slug
-
-Why hard-delete? Soft-deleted records still count toward UNIQUE constraint.
-
----
-
-## Model Boot Hooks
-
-### VoterSlug::booted() and DemoVoterSlug::booted()
-
-Two critical hooks prevent stale slugs from blocking new votes:
-
-#### Hook 1: retrieved() - Auto-mark expired slugs
-
-Triggered: When model is retrieved from database
-
-Logic:
-- If expires_at < now AND is_active = true:
-  - UPDATE database: is_active = false, status = expired
-  - UPDATE in-memory instance
-- Log the auto-marking
-
-Why: Ensures expired slugs are marked inactive on retrieval.
-
-#### Hook 2: creating() - Auto-set defaults
-
-Triggered: Before slug is saved to database
-
-Logic:
-- If expires_at not set: expires_at = now + 30 minutes
-- If status not set: status = active
-- If is_active not set: is_active = true
-- If can_vote_now not set: can_vote_now = true
-
-Why: Ensures slugs have sensible defaults.
-
----
-
-## Middleware: EnsureVoterSlugWindow
-
-### Request Flow
-
-1. HTTP Request arrives with vslug parameter
-2. Middleware extracts vslug from route parameter
-3. Query database to get VoterSlug object
-4. Boot hook retrieved() fires: auto-mark if expired
-5. Validate is VoterSlug instance (not string)
-6. Validate slug is active
-7. Validate slug is not expired
-8. Ownership validation via VoterSlugService
-9. Set request attributes (voter, voter_slug)
-10. Touch last_accessed timestamp
-11. Proceed to controller
-
-### Security Checks
-
-1. Instance validation: Is it really a VoterSlug object?
-2. Status validation: Is slug marked active?
-3. Expiration validation: Has it expired?
-4. Ownership validation: Does it belong to authenticated user?
-5. Election validation: Does it belong to requested election?
-
----
-
-## Background Job: voting:clean-expired-slugs
-
-### Purpose
-
-Remove old slug records to maintain database hygiene.
-
-### Signature
-
-php artisan voting:clean-expired-slugs {--hours=24} {--detailed}
-
-### Parameters
-
-- --hours=24 (default): Slugs older than N hours are removed
-- --detailed (optional): Show detailed removal information
-
-### Logic
-
-For real elections (voter_slugs):
-1. Find all soft-deleted slugs where expires_at < (now - 24 hours)
-2. Permanently delete them (forceDelete)
-3. Log number deleted
-
-For demo elections (demo_voter_slugs):
-1. Find all slugs where expires_at < (now - 24 hours)
-2. Delete them
-3. Log number deleted
-
----
-
-## Tenant Isolation
-
-All slugs are scoped to organisation via organisation_id column.
-
-BelongsToTenant trait:
-1. Automatically adds WHERE organisation_id = ? to all queries
-2. Prevents cross-tenant queries
-3. Requires withoutGlobalScopes() for schema operations
-
-Test setup must set organisation context:
-
-protected function setUp(): void
+Accept both model types:
+```php
+public function create(Request $request, VoterSlug|DemoVoterSlug $vslug)
 {
-    \$this->organisation = Organisation::factory()->create([type => tenant]);
-    session([current_organisation_id => \$this->organisation->id]);
+    // $vslug already bound and validated
 }
+```
 
----
+### Layer 4: Services
 
-## Vote Anonymity Design
+Job: Business logic (model-agnostic)
 
-### Critical: Code ID, Not User ID
+VoterStepTrackingService:
+- completeStep($voterSlug, $election, $step)
+- getHighestCompletedStep($voterSlug, $election)
+- getNextStep($voterSlug, $election)
+- getCompletedSteps($voterSlug, $election)
 
-Vote hash uses code->id:
+Key: Detect model type, select correct step model
 
-CORRECT:
-\$hash = hash(sha256,
-    \$code->id .               // Code UUID (no voter linkage!)
-    \$election->id .
-    \$code->code_to_open_voting_form .
-    \$vote->cast_at->timestamp
-);
+VoterSlugService:
+- getOrCreateSlug($election, $forceNew)
+- Creates VoterSlug or DemoVoterSlug
+- Handles expiration logic
 
-WRONG:
-\$hash = hash(sha256,
-    \$code->user_id .          // Links voter to vote!
-    ...
-);
+### Layer 5: Models
 
-### Why This Matters
+VoterSlug / DemoVoterSlug:
+- Relationships (user, steps, election)
+- Scopes (by election, by user)
+- Boot hooks (auto-set defaults)
 
-Voter slugs link voter to voting session (needed for access control).
-Votes must NOT link voter to selections (needed for anonymity).
+VoterSlugStep / DemoVoterSlugStep:
+- Identical columns (same fillable array)
+- Identical relationships
+- Identical scopes
+- Same foreign key name (voter_slug_id)
 
-By using code->id instead of user->id, we preserve voter anonymity.
+### Layer 6: Database
 
+Tables:
+- voter_slugs / demo_voter_slugs
+- voter_slug_steps / demo_voter_slug_steps
+- elections
+- users
+
+Constraint: Step tables IDENTICAL except FK reference
+
+## Design Patterns
+
+### Pattern 1: Runtime Type Detection
+
+Instead of type hints (compile-time):
+```php
+public function process($voterSlug)  // No type hint!
+{
+    $isDemo = $voterSlug instanceof DemoVoterSlug;
+    $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
+}
+```
+
+### Pattern 2: Model Selection
+
+Select once, use everywhere:
+```php
+$StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
+
+// Use in all queries
+$StepModel::where('voter_slug_id', $id)->first();
+$StepModel::create($data);
+$StepModel::find($id)->update($data);
+```
+
+### Pattern 3: Schema Consistency
+
+Identical columns = identical code:
+```php
+// Works for both step models
+$StepModel::where('voter_slug_id', $slug->id)
+    ->where('election_id', $election->id)
+    ->where('step', $step)
+    ->first();
+```
+
+### Pattern 4: Middleware Chain
+
+Validate at each layer:
+1. Route binding - Get model or 404
+2. VerifyVoterSlug - Check ownership
+3. EnsureVoterStepOrder - Check progression
+4. Controller - Use validated model
+
+## Key Guarantees
+
+1. Type Acceptance
+   - Route: Search both, return one or 404
+   - Middleware: Accept both or reject
+   - Service: Work with both
+   - Controllers: Type hint both
+
+2. Column Naming
+   - Both step tables: voter_slug_id
+   - Models: Same fillable array
+   - Queries: All use voter_slug_id
+
+3. Business Logic
+   - Same 5-step workflow
+   - Same validation rules
+   - Same expiration handling
+   - Same progression logic
+
+Only difference: Lifecycle
+   - Real: Reuse non-expired
+   - Demo: Always fresh
+
+## Testing Requirements
+
+Test both models:
+- Real election flow (VoterSlug)
+- Demo election flow (DemoVoterSlug)
+- Cross-model cases
+- Expiration handling
+- Step progression
+- Ownership validation
+
+Test both branches of instanceof:
+- if ($slug instanceof VoterSlug) path
+- if ($slug instanceof DemoVoterSlug) path
+
+## Performance Notes
+
+Route binding queries both tables:
+- First: voter_slugs (usually succeeds)
+- Fallback: demo_voter_slugs (rarely needed)
+
+Optimization: Index on (slug, is_active)
+
+Caching: Could cache results but careful with test data
 

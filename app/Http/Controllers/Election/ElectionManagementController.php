@@ -241,6 +241,171 @@ class ElectionManagementController extends Controller
         }
     }
 
+    /**
+     * List all available demo elections for the user
+     *
+     * Supports multiple demo elections per organisation
+     * Shows:
+     * - Organisation-specific demo elections
+     * - Platform-wide demo elections (PublicDigit)
+     */
+    public function listDemoElections()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        $elections = collect();
+
+        // 1️⃣ Get organisation-specific demo elections
+        if ($user->organisation_id) {
+            $orgElections = Election::withoutGlobalScopes()
+                ->where('type', 'demo')
+                ->where('organisation_id', $user->organisation_id)
+                ->where('status', 'active')
+                ->where('start_date', '<=', now())
+                ->where('end_date', '>=', now())
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+            $elections = $elections->concat($orgElections);
+
+            Log::info('📋 Found organisation demo elections', [
+                'user_id' => $user->id,
+                'organisation_id' => $user->organisation_id,
+                'count' => $orgElections->count(),
+            ]);
+        }
+
+        // 2️⃣ Get platform-wide demo elections (PublicDigit)
+        $publicElections = Election::withoutGlobalScopes()
+            ->where('type', 'demo')
+            ->whereNull('organisation_id')
+            ->where('status', 'active')
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $elections = $elections->concat($publicElections);
+
+        Log::info('📋 Demo elections list', [
+            'user_id' => $user->id,
+            'total_count' => $elections->count(),
+            'org_elections' => $elections->where('organisation_id', $user->organisation_id)->count(),
+            'public_elections' => $elections->whereNull('organisation_id')->count(),
+        ]);
+
+        // Group elections by organisation
+        $groupedElections = $elections->groupBy(function ($election) {
+            return $election->organisation_id
+                ? $election->organisation?->name ?? 'Unknown Organisation'
+                : 'PublicDigit';
+        });
+
+        return Inertia::render('Election/SelectDemoElection', [
+            'elections' => $elections->map(fn($e) => [
+                'id' => $e->id,
+                'name' => $e->name,
+                'description' => $e->description,
+                'organisation_name' => $e->organisation?->name ?? 'PublicDigit',
+                'start_date' => $e->start_date->format('d.m.Y'),
+                'end_date' => $e->end_date->format('d.m.Y'),
+                'posts_count' => $e->posts()->count(),
+                'candidates_count' => $e->posts()->withCount('candidacies')->get()->sum('candidacies_count'),
+            ]),
+            'groupedByOrganisation' => $groupedElections->map(function ($orgs, $orgName) {
+                return [
+                    'name' => $orgName,
+                    'elections' => $orgs->map(fn($e) => [
+                        'id' => $e->id,
+                        'name' => $e->name,
+                        'description' => $e->description,
+                    ]),
+                ];
+            })->values(),
+        ]);
+    }
+
+    /**
+     * Start a specific demo election (user selects from list)
+     *
+     * Validates user has access to the election and starts voting
+     */
+    public function startSpecificDemo(Request $request)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        $validated = $request->validate([
+            'election_id' => 'required|exists:elections,id'
+        ]);
+
+        try {
+            $election = Election::withoutGlobalScopes()
+                ->find($validated['election_id']);
+
+            if (!$election) {
+                Log::warning('Election not found', [
+                    'user_id' => $user->id,
+                    'election_id' => $validated['election_id'],
+                ]);
+                return redirect()->route('election.demo.list')
+                    ->with('error', 'Election not found');
+            }
+
+            // Check access permission
+            if ($election->organisation_id && $election->organisation_id !== $user->organisation_id) {
+                Log::warning('⚠️ User tried to access election from another organisation', [
+                    'user_id' => $user->id,
+                    'user_org_id' => $user->organisation_id,
+                    'election_org_id' => $election->organisation_id,
+                    'election_id' => $election->id,
+                ]);
+                abort(403, 'You do not have access to this election');
+            }
+
+            Log::info('✅ Starting specific demo election', [
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'election_name' => $election->name,
+            ]);
+
+            // Store election in session
+            session([
+                'selected_election_id' => $election->id,
+                'selected_election_type' => 'demo',
+            ]);
+
+            // Create fresh voter slug for this election
+            $slug = $this->slugService->getOrCreateSlug($user, $election, true);
+
+            Log::info('✅ Voter slug created for specific election', [
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'voter_slug' => $slug->slug,
+            ]);
+
+            return redirect()->route('slug.demo-code.create', ['vslug' => $slug->slug])
+                ->with('success', '🎮 Demo election selected. Test the voting system!');
+
+        } catch (\Exception $e) {
+            Log::error('❌ Failed to start specific demo election', [
+                'user_id' => $user->id,
+                'election_id' => $validated['election_id'] ?? null,
+                'error' => $e->getMessage(),
+            ]);
+
+            return redirect()->route('election.demo.list')
+                ->with('error', 'Unable to start this demo election. Please try again.');
+        }
+    }
+
     public function getUserIpAddr()
     {
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
