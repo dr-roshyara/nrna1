@@ -782,8 +782,19 @@ class DemoCodeController extends Controller
                         'code' => $uniqueCode,
                         'attempt' => $attempt + 1,
                     ]);
-                } catch (\Illuminate\Database\UniqueConstraintViolationException $e) {
+                } catch (\Illuminate\Database\UniqueConstraintViolationException | \PDOException $e) {
+                    // Catch both UniqueConstraintViolationException and PDOException (race condition)
                     $attempt++;
+
+                    // Check if it's actually a duplicate key error
+                    $isDuplicateKey = str_contains($e->getMessage(), '1062') ||
+                                     str_contains($e->getMessage(), 'Duplicate entry');
+
+                    if (!$isDuplicateKey) {
+                        // If not a duplicate key error, re-throw immediately
+                        throw $e;
+                    }
+
                     Log::warning('⚠️ Duplicate code detected (race condition), retrying', [
                         'user_id' => $user->id,
                         'attempt' => $attempt,
@@ -800,8 +811,16 @@ class DemoCodeController extends Controller
                         throw new \Exception('Unable to generate unique verification code. Please try again.');
                     }
 
-                    // Wait briefly before retry
-                    usleep(100000); // 100ms
+                    // Wait briefly before retry to reduce contention
+                    usleep(rand(50000, 150000)); // 50-150ms random delay
+                } catch (\Exception $e) {
+                    // Unexpected error - log and re-throw
+                    Log::error('❌ Unexpected error creating demo code', [
+                        'user_id' => $user->id,
+                        'error' => $e->getMessage(),
+                        'class' => get_class($e),
+                    ]);
+                    throw $e;
                 }
             }
 
