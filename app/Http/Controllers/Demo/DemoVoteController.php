@@ -370,7 +370,7 @@ public function create(Request $request)
         $nationalPosts = DemoPost::where('election_id', $election->id)
             ->where('is_national_wide', 1)
             ->with(['candidacies' => function($query) {
-                $query->orderBy('position_order');
+                $query->withoutGlobalScopes()->orderBy('position_order');
             }])
             ->orderBy('position_order')
             ->get();
@@ -406,7 +406,7 @@ public function create(Request $request)
                 ->where('is_national_wide', 0)
                 ->where('state_name', trim($auth_user->region))
                 ->with(['candidacies' => function($query) {
-                    $query->orderBy('position_order');
+                    $query->withoutGlobalScopes()->orderBy('position_order');
                 }])
                 ->orderBy('position_order')
                 ->get();
@@ -516,7 +516,7 @@ public function create(Request $request)
             'regional_posts_count' => $regional_posts->count(),
         ]);
     }
-    // dd($national_posts, $regional_posts);
+    dd($national_posts, $regional_posts);
 
     return Inertia::render('Vote/DemoVote/Create', [
         'posts' => [
