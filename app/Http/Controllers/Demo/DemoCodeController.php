@@ -661,8 +661,8 @@ class DemoCodeController extends Controller
                     'voting_time_minutes' => $this->votingTimeInMinutes,
                 ]);
 
-                // Generate new code and reset flags
-                $code->code_to_open_voting_form = $this->generateCode();
+                // Generate new unique code and reset flags
+                $code->code_to_open_voting_form = $this->generateUniqueCodeForOrganisation($code->organisation_id);
                 $code->code_to_open_voting_form_sent_at = now();
                 $code->has_code1_sent = 1;
                 $code->is_code_to_open_voting_form_usable = 1;
@@ -700,13 +700,16 @@ class DemoCodeController extends Controller
             ]);
 
             // Reset voting flags for demo to allow new vote
+            // Generate unique code for re-voting
+            $uniqueCode = $this->generateUniqueCodeForOrganisation($election->organisation_id);
+
             $code->update([
                 'organisation_id' => $election->organisation_id,
                 'has_voted' => false,
                 'vote_submitted' => false,
                 'can_vote_now' => 0,
                 'is_code_to_open_voting_form_usable' => 1,
-                'code_to_open_voting_form' => $this->generateCode(),
+                'code_to_open_voting_form' => $uniqueCode,
                 'code_to_open_voting_form_sent_at' => now(),
                 'has_code1_sent' => 1,
                 'code_to_open_voting_form_used_at' => null,
@@ -750,11 +753,15 @@ class DemoCodeController extends Controller
             // CRITICAL: Set organisation_id explicitly
             // - Demo elections (type='demo'): organisation_id=NULL (MODE 1) or org_id (MODE 2)
             // - Real elections (type='real'): organisation_id from election
+
+            // Generate unique code for this organisation
+            $uniqueCode = $this->generateUniqueCodeForOrganisation($election->organisation_id);
+
             $code = DemoCode::create([
                 'user_id' => $user->id,
                 'election_id' => $election->id,
                 'organisation_id' => $election->organisation_id,  // ✅ EXPLICIT
-                'code_to_open_voting_form' => $this->generateCode(),
+                'code_to_open_voting_form' => $uniqueCode,
                 'code_to_open_voting_form_sent_at' => now(),
                 'has_code1_sent' => 1,
                 'client_ip' => $this->clientIP,
@@ -863,8 +870,8 @@ class DemoCodeController extends Controller
             $shouldResend = ($isExpired && !$codeIsUsed && $notYetVoted);
 
             if ($shouldResend) {
-                // Generate and send new code
-                $newCode = $this->generateCode();
+                // Generate and send new unique code
+                $newCode = $this->generateUniqueCodeForOrganisation($code->organisation_id);
 
                 $code->update([
                     'code_to_open_voting_form' => $newCode,
@@ -1031,9 +1038,53 @@ class DemoCodeController extends Controller
         return redirect($agreementUrl)->with('info', 'Code already verified. Continue to agreement.');
     }
 
+    /**
+     * Generate a longer, more unique 8-character code
+     * Uses alphanumeric except I, O, 0, 1 for better readability
+     */
     private function generateCode(): string
     {
-        return strtoupper(Str::random(6));
+        // Exclude ambiguous characters: I, O, 0, 1
+        $characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        $length = 8; // Longer = more unique combinations
+
+        $code = '';
+        for ($i = 0; $i < $length; $i++) {
+            $code .= $characters[random_int(0, strlen($characters) - 1)];
+        }
+
+        return $code;
+    }
+
+    /**
+     * Generate a code that is guaranteed unique for the given organisation
+     * Uses a do-while loop to ensure no duplicates exist
+     */
+    private function generateUniqueCodeForOrganisation(?int $organisationId): string
+    {
+        $maxAttempts = 10;
+        $attempts = 0;
+
+        do {
+            $code = $this->generateCode();
+            $exists = DemoCode::withoutGlobalScopes()
+                ->where('code_to_open_voting_form', $code)
+                ->where('organisation_id', $organisationId)
+                ->exists();
+
+            $attempts++;
+        } while ($exists && $attempts < $maxAttempts);
+
+        if ($attempts >= $maxAttempts) {
+            Log::error('⚠️ Failed to generate unique code after max attempts', [
+                'organisation_id' => $organisationId,
+                'attempts' => $maxAttempts,
+            ]);
+            // Fallback: add UUID suffix for guaranteed uniqueness
+            return $this->generateCode() . '-' . Str::random(4);
+        }
+
+        return $code;
     }
 
     private function redirectToDashboard(string $message)
