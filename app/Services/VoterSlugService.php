@@ -267,27 +267,32 @@ class VoterSlugService
             'user_id' => $user->id,
             'election_id' => $election->id,
             'election_type' => $election->type,
+            'model' => $model,  // ✅ Show which model (table) will be used
             'forceNew' => $forceNew,
         ]);
 
         // ✅ FIX: When forceNew = true, HARD DELETE ALL existing slugs first
         // This ensures unique constraint violations don't prevent new slugs
         if ($forceNew) {
-            Log::info('🔴 Force deleting all existing voter slugs', [
+            Log::info('🔴 Force deleting all existing voter slugs from ' . class_basename($model), [
                 'user_id' => $user->id,
                 'election_id' => $election->id,
+                'table' => $model === DemoVoterSlug::class ? 'demo_voter_slugs' : 'voter_slugs',
                 'reason' => 'forceNew=true',
             ]);
 
             // Hard delete ALL slugs (including soft-deleted ones)
+            // ✅ Uses correct model: DemoVoterSlug for demo, VoterSlug for real
             $deleted = $model::withoutGlobalScopes()
                 ->where('user_id', $user->id)
                 ->where('election_id', $election->id)
                 ->forceDelete();  // 💥 HARD DELETE - bypass soft deletes
 
-            Log::info('Deleted old voter slugs before creating new one', [
+            Log::info('✅ Deleted old voter slugs', [
                 'user_id' => $user->id,
                 'election_id' => $election->id,
+                'model' => class_basename($model),
+                'table' => $model === DemoVoterSlug::class ? 'demo_voter_slugs' : 'voter_slugs',
                 'deleted_count' => $deleted,
             ]);
 
@@ -297,10 +302,12 @@ class VoterSlugService
 
         // BUSINESS LOGIC: Demo elections always get fresh slugs (non-forceNew path)
         if ($election->type === 'demo') {
-            Log::info('Creating fresh voter slug for demo election', [
+            Log::info('Creating fresh voter slug for demo election (no old slugs to delete)', [
                 'user_id' => $user->id,
                 'election_id' => $election->id,
-                'reason' => 'demo_election',
+                'model' => class_basename($model),
+                'table' => 'demo_voter_slugs',
+                'reason' => 'demo_election (no forceNew)',
             ]);
             return $this->createNewSlug($user, $election, $model);
         }
