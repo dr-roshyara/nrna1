@@ -35,12 +35,19 @@ class DemoCandidacy extends Model
     protected $table = 'demo_candidacies';
 
     protected $fillable = [
-        'post_id',
         'organisation_id',
+        'election_id',
+        'post_id',
         'user_id',
+        'candidacy_id',
+        'user_name',
         'name',
+        'candidacy_name',
+        'proposer_name',
+        'supporter_name',
         'description',
         'position_order',
+        'image_path_1',
     ];
 
     protected $casts = [
@@ -53,8 +60,7 @@ class DemoCandidacy extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class)
-               ->select(['id', 'name', 'region', 'email']);
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -89,14 +95,19 @@ class DemoCandidacy extends Model
      *
      * @return string
      */
-    public function getCandidateNameAttribute()
+    public function getCandidateNameAttribute(): string
     {
-        // Priority 1: Get name from related User
+        // Priority 1: Explicitly set user_name (e.g., imported candidates)
+        if (!empty($this->user_name)) {
+            return $this->user_name;
+        }
+
+        // Priority 2: Get name from related User
         if ($this->user && !empty($this->user->name)) {
             return $this->user->name;
         }
 
-        // Priority 2: Use name field from candidacy table (backup)
+        // Priority 3: Use name field from candidacy table (backup)
         if (!empty($this->name)) {
             return $this->name;
         }

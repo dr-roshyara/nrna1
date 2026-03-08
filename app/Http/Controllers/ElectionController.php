@@ -214,7 +214,9 @@ class ElectionController extends Controller
                 'user_id' => $user?->id,
             ]);
 
-            $slug = $this->slugService->getOrCreateActiveSlug($user);
+            // ✅ FIX: For DEMO elections, ALWAYS create a FRESH slug (forceNew = true)
+            // This allows users to vote in demo unlimited times with new slugs each time
+            $slug = $this->slugService->getOrCreateSlug($user, $demoElection, true);
 
             Log::info('✅ Voter slug generated successfully', [
                 'user_id' => $user?->id,

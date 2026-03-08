@@ -110,6 +110,22 @@ abstract class BaseVote extends Model
     protected static function booted()
     {
         static::creating(function ($vote) {
+            // ✅ AUTO-GENERATE receipt_hash if not provided
+            // This ensures all votes (demo and real) have cryptographic proof
+            if (empty($vote->receipt_hash)) {
+                $vote->receipt_hash = hash('sha256',
+                    uniqid() .           // Unique ID per request
+                    time() .             // Timestamp
+                    config('app.key')    // App secret key
+                );
+
+                \Log::channel('voting_security')->debug('Auto-generated receipt_hash for vote', [
+                    'vote_type' => get_class($vote),
+                    'election_id' => $vote->election_id,
+                    'receipt_hash_prefix' => substr($vote->receipt_hash, 0, 10) . '...',
+                ]);
+            }
+
             // Validate election_id is present
             if (is_null($vote->election_id)) {
                 \Log::channel('voting_security')->warning('Vote rejected: NULL election_id', [

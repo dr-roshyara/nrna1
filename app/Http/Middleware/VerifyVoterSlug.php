@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Models\VoterSlug;
+use App\Models\DemoVoterSlug;
 use Illuminate\Support\Facades\Log;
 use App\Exceptions\Voting\InvalidVoterSlugException;
 use App\Exceptions\Voting\SlugOwnershipException;
@@ -28,12 +29,22 @@ class VerifyVoterSlug
         ]);
 
         // Handle both model-bound and string slug parameters
+        // First, try to find a real VoterSlug
         $voterSlug = $slugParam instanceof VoterSlug
             ? $slugParam
-            : VoterSlug::withoutGlobalScopes()
-                ->withEssentialRelations()
+            : ($slugParam instanceof DemoVoterSlug
+                ? $slugParam
+                : VoterSlug::withoutGlobalScopes()
+                    ->withEssentialRelations()
+                    ->where('slug', $slugParam)
+                    ->first());
+
+        // If not found, try DemoVoterSlug (for demo election flows)
+        if (!$voterSlug && !($slugParam instanceof VoterSlug) && !($slugParam instanceof DemoVoterSlug)) {
+            $voterSlug = DemoVoterSlug::withoutGlobalScopes()
                 ->where('slug', $slugParam)
                 ->first();
+        }
 
         // CHECK 1: Does slug exist?
         if (!$voterSlug) {

@@ -221,7 +221,7 @@ class SetupDemoElection extends Command
                 'name'            => 'General Secretary (Geschäftsführer)',
                 'position_order'  => 2,
                 'required_number' => 1,
-                'candidates'      => $this->generateRandomCandidates('secretary', 2),
+                'candidates'      => $this->generateRandomCandidates('secretary', 3),
             ],
         ];
     }
@@ -233,10 +233,16 @@ class SetupDemoElection extends Command
     {
         return [
             [
-                'name'            => 'Regional Representative',
+                'name'            => 'Regional Representative 1',
                 'position_order'  => 3,
                 'required_number' => 1,
-                'candidates'      => $this->generateRandomCandidates('regional', 2),
+                'candidates'      => $this->generateRandomCandidates('regional', 3),
+            ],
+            [
+                'name'            => 'Regional Representative 2',
+                'position_order'  => 4,
+                'required_number' => 1,
+                'candidates'      => $this->generateRandomCandidates('regional', 3),
             ],
         ];
     }
@@ -370,11 +376,15 @@ class SetupDemoElection extends Command
 
         $this->info("\n📋 Candidate Breakdown:");
         $this->info("  ├─ President: 3 random candidates");
-        $this->info("  ├─ General Secretary (Geschäftsführer): 2 random candidates");
-        $this->info("  ├─ Regional Representative – Europe: 2 random candidates");
-        $this->info("  ├─ Regional Representative – America: 2 random candidates");
-        $this->info("  ├─ Regional Representative – Asia: 2 random candidates");
-        $this->info("  └─ Regional Representative – Africa: 2 random candidates");
+        $this->info("  ├─ General Secretary (Geschäftsführer): 3 random candidates");
+        $this->info("  ├─ Regional Representative 1 – Europe: 3 random candidates");
+        $this->info("  ├─ Regional Representative 2 – Europe: 3 random candidates");
+        $this->info("  ├─ Regional Representative 1 – America: 3 random candidates");
+        $this->info("  ├─ Regional Representative 2 – America: 3 random candidates");
+        $this->info("  ├─ Regional Representative 1 – Asia: 3 random candidates");
+        $this->info("  ├─ Regional Representative 2 – Asia: 3 random candidates");
+        $this->info("  ├─ Regional Representative 1 – Africa: 3 random candidates");
+        $this->info("  └─ Regional Representative 2 – Africa: 3 random candidates");
 
         $this->info("\n💡 Demo codes are created per-user when voters start the demo voting flow.");
         $this->info("💡 Voter progress is tracked via voter_slugs with current_step and step_meta.");

@@ -34,7 +34,11 @@ class DemoCandidacyFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory()->create(['region' => 'Test Region'])->id,
+            'election_id'    => null, // MUST be explicitly set when creating via factory
+            'organisation_id' => null, // MUST be explicitly set when creating via factory
+            'user_id'        => User::factory()->create(['region' => 'Test Region'])->id,
+            'name'           => $this->faker->name(),
+            'user_name'      => null,
             'position_order' => $this->faker->numberBetween(1, 10),
         ];
     }

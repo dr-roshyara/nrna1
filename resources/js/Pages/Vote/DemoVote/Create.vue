@@ -194,8 +194,8 @@
                                                         <img
                                                             v-if="candidate.image_path_1"
                                                             :src="candidate.image_path_1"
-                                                            :alt="candidate.user_name"
-                                                            class="w-full h-full object-cover"
+                                                            :alt="candidate.candidacy_name"
+                                                                class="w-full h-full object-cover"
                                                         />
                                                         <span v-else class="text-4xl">👤</span>
                                                     </div>
@@ -203,7 +203,7 @@
 
                                                 <!-- Candidate Info -->
                                                 <div class="p-4 text-center bg-white border-t-2 border-gray-100">
-                                                    <h4 class="font-bold text-gray-900">{{ candidate.user_name }}</h4>
+                                                    <h4 class="font-bold text-gray-900">{{ candidate.candidacy_name }}</h4>
                                                     <p class="text-xs text-gray-500 mt-1">Position #{{ candidate.position_order }}</p>
 
                                                     <!-- Selection Checkbox with Full Accessibility -->
@@ -214,7 +214,7 @@
                                                             :checked="isSelected(post.id, candidate)"
                                                             @change="toggleCandidate(post, candidate)"
                                                             :disabled="noVoteSelections[post.id]"
-                                                            :aria-label="`Select ${candidate.user_name} for ${post.name}`"
+                                                            :aria-label="`Select ${candidate.candidacy_name} for ${post.name}`"
                                                             :aria-describedby="`candidate-desc-${candidate.id}`"
                                                             class="sr-only peer"
                                                         />
@@ -402,7 +402,7 @@
                                                             :checked="isSelected(post.id, candidate)"
                                                             @change="toggleCandidate(post, candidate)"
                                                             :disabled="noVoteSelections[post.id]"
-                                                            :aria-label="`Select ${candidate.user_name} for ${post.name}`"
+                                                            :aria-label="`Select ${candidate.candidacy_name} for ${post.name}`"
                                                             :aria-describedby="`candidate-desc-${candidate.id}`"
                                                             class="sr-only peer"
                                                         />
@@ -819,14 +819,20 @@ export default {
                 if (noVoteSelections.value[post.id]) {
                     voteData.no_vote_posts.push(post.id)
                 } else if (selectedCandidates.value[post.id]?.length) {
-                    const postType = post.is_national_wide ? 'national' : 'regional'
+                    // ✅ FIX: Determine post type by checking which array it comes from
+                    // (post.is_national_wide is NOT available in props)
+                    const isNational = props.posts.national.some(p => p.id === post.id);
+                    const postType = isNational ? 'national' : 'regional';
+
+                    console.log(`Post "${post.name}" ist ${isNational ? 'NATIONAL' : 'REGIONAL'}`);
 
                     // Get full candidate objects
                     const selectedCandidatesList = selectedCandidates.value[post.id].map(id => {
                         const candidate = post.candidates.find(c => c.id === id)
                         return {
                             candidacy_id: candidate?.candidacy_id,
-                            user_name: candidate?.user_name,
+                            user_name: candidate?.candidacy_name,
+                            candidacy_name: candidate?.candidacy_name,
                             id: candidate?.id
                         }
                     })
@@ -839,6 +845,12 @@ export default {
                     })
                 }
             })
+
+            // Debug log
+            console.log('📊 FINAL VOTE DATA:', {
+                national: voteData.national_selected_candidates.map(p => p.post_name),
+                regional: voteData.regional_selected_candidates.map(p => p.post_name)
+            });
 
             // Submit via Inertia
             const routeName = props.useSlugPath ? 'slug.demo-vote.submit' : 'demo-vote.submit'

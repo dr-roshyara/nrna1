@@ -371,7 +371,9 @@ public function create(Request $request)
             ->where('election_id', $election->id)
             ->where('is_national_wide', 1)
             ->with(['candidacies' => function($query) {
-                $query->withoutGlobalScopes()->orderBy('position_order');
+                $query->withoutGlobalScopes()
+                      ->with('user')
+                      ->orderBy('position_order');
             }])
             ->orderBy('position_order')
             ->get();
@@ -388,12 +390,12 @@ public function create(Request $request)
                         'id' => $c->id,
                         'candidacy_id' => $c->id,
                         'user_id' => $c->user_id,
-                        'user_name' => $c->user->name ?? $c->name ?? 'Demo Candidate',
+                        'user_name' => $c->user_name ?? ($c->user ? $c->user->name : null) ?? $c->name ?? 'Demo Candidate',
                         'post_id' => $c->post_id,
-                        'image_path_1' => null,
-                        'candidacy_name' => $c->name,
-                        'proposer_name' => null,
-                        'supporter_name' => null,
+                        'image_path_1' => $c->image_path_1 ?? null,
+                        'candidacy_name' => $c->candidacy_name ?? $c->name ?? 'Demo Candidate',
+                        'proposer_name' => $c->proposer_name ?? null,
+                        'supporter_name' => $c->supporter_name ?? null,
                         'position_order' => $c->position_order,
                     ];
                 })->values(),
@@ -408,7 +410,9 @@ public function create(Request $request)
                 ->where('is_national_wide', 0)
                 ->where('state_name', trim($auth_user->region))
                 ->with(['candidacies' => function($query) {
-                    $query->withoutGlobalScopes()->orderBy('position_order');
+                    $query->withoutGlobalScopes()
+                          ->with('user')
+                          ->orderBy('position_order');
                 }])
                 ->orderBy('position_order')
                 ->get();
@@ -425,12 +429,12 @@ public function create(Request $request)
                             'id' => $c->id,
                             'candidacy_id' => $c->id,
                             'user_id' => $c->user_id,
-                            'user_name' => $c->user->name ?? $c->name ?? 'Demo Candidate',
+                            'user_name' => $c->user_name ?? ($c->user ? $c->user->name : null) ?? $c->name ?? 'Demo Candidate',
                             'post_id' => $c->post_id,
-                            'image_path_1' => null,
-                            'candidacy_name' => $c->name,
-                            'proposer_name' => null,
-                            'supporter_name' => null,
+                            'image_path_1' => $c->image_path_1 ?? null,
+                            'candidacy_name' => $c->candidacy_name ?? $c->name ?? 'Demo Candidate',
+                            'proposer_name' => $c->proposer_name ?? null,
+                            'supporter_name' => $c->supporter_name ?? null,
                             'position_order' => $c->position_order,
                         ];
                     })->values(),
@@ -640,7 +644,7 @@ public function first_submission(Request $request)
         'no_vote_posts',
         'agree_button'
     ]);
-
+    // dd($vote_data);
     // 🐛 BUG FIX: Sanitize vote data before validation to fix inconsistent no_vote flags
     $vote_data = $this->sanitize_vote_data($vote_data);
     // Validate candidate selections with SELECT_ALL_REQUIRED logic
@@ -2569,6 +2573,7 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
 
     // Set timestamp for cryptographic hash generation
     $vote->cast_at = now();
+    $vote->voted_at = now();  // ✅ ADD THIS LINE - both cast_at and voted_at
 
     // =========================================================================
     // SECTION 3: GENERATE VERIFIABLE VOTE HASH (ANONYMOUS VERIFICATION)
@@ -2672,36 +2677,41 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
                     $result->post_id = $post_id;
                     
                     // =================================================================
-                    // CRITICAL FIX: Extract the actual database ID from the complex string
-                    // The frontend sends "demo-general_secretary-1-1" 
-                    // We need to extract the last number (the actual database ID)
+                    // ✅ FIXED: Use UUID directly without extraction
+                    // The candidacy_id is now a proper UUID, not a compound string
                     // =================================================================
                     $candidate_string_id = $candidate_data['candidacy_id'];
-                    
-                    // Extract the last number from the string (e.g., from "demo-general_secretary-1-1" get "1")
-                    if (preg_match('/(\d+)$/', $candidate_string_id, $matches)) {
-                        $actual_candidate_id = $matches[1];
-                        
-                        \Log::debug('Extracted candidate ID from string', [
-                            'original' => $candidate_string_id,
-                            'extracted' => $actual_candidate_id,
-                            'post_id' => $post_id,
-                            'election_id' => $election->id
-                        ]);
-                        
-                        // Look up by the actual database ID
-                        $demoCandidacy = DemoCandidacy::where('id', $actual_candidate_id)
+
+                    // ✅ FIXED: Remove election_id filter - candidates don't have it set
+                    // Candidates are linked to elections through posts, not directly
+                    // The post_id filter ensures we're in the right election context
+                    // withoutGlobalScopes() bypasses BelongsToTenant scope filtering
+                    $demoCandidacy = DemoCandidacy::withoutGlobalScopes()
+                        ->where('id', $candidate_string_id)
+                        ->where('post_id', $post_id)
+                        ->first();
+
+                    \Log::debug('Looking up candidacy by UUID', [
+                        'candidacy_id' => $candidate_string_id,
+                        'post_id' => $post_id,
+                        'found' => ($demoCandidacy ? 'Yes' : 'No')
+                    ]);
+
+                    // ✅ Verify the post belongs to the correct election (separate validation)
+                    if ($demoCandidacy) {
+                        $postBelongsToElection = DemoPost::withoutGlobalScopes()
+                            ->where('id', $post_id)
                             ->where('election_id', $election->id)
-                            ->where('post_id', $post_id)
-                            ->first();
-                    }
-                    
-                    // Fallback: try to find by position if extraction fails
-                    if (!$demoCandidacy) {
-                        $demoCandidacy = DemoCandidacy::where('election_id', $election->id)
-                            ->where('post_id', $post_id)
-                            ->orderBy('position_order')
-                            ->first();
+                            ->exists();
+
+                        if (!$postBelongsToElection) {
+                            \Log::error('CRITICAL: Post does not belong to election', [
+                                'post_id' => $post_id,
+                                'election_id' => $election->id,
+                                'vote_id' => $vote->id
+                            ]);
+                            throw new \Exception('Post does not belong to this election');
+                        }
                     }
                     
                     if (!$demoCandidacy) {
@@ -2714,22 +2724,22 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
                         throw new \Exception('Cannot save result: Candidate not found in database. ID: ' . $candidate_string_id);
                     }
                     
-                    // ✅ Set candidate_id to the database ID
-                    $result->candidate_id = $demoCandidacy->id;
-                    
+                    // ✅ Set candidacy_id to the database ID (not candidate_id)
+                    $result->candidacy_id = $demoCandidacy->id;
+
                     // Set organisation_id based on election type
                     if ($election->type === 'real') {
                         $result->organisation_id = $election->organisation_id;
                     } else {
                         $result->organisation_id = session('current_organisation_id');
                     }
-                    
+
                     $result->save();
-                    
+
                     \Log::debug('Saved candidate result', [
                         'result_id' => $result->id,
                         'candidate_id' => $demoCandidacy->id,
-                        'candidate_string' => $candidate_string_id
+                        'receipt_hash_prefix' => substr($result->receipt_hash, 0, 8) . '...'
                     ]);
                     }
                 }
@@ -2776,18 +2786,37 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
  * @return int Normalized integer post ID
  * @throws \Exception If post_id cannot be normalized
  */
-private function normalizePostId($post_id, $election): int
+private function normalizePostId($post_id, $election)
 {
     // If already integer, return as-is
     if (is_int($post_id)) {
         return $post_id;
     }
-    
+
     // If not a string, we can't process it
     if (!is_string($post_id)) {
         throw new \Exception('Invalid post_id type: ' . gettype($post_id));
     }
-    
+
+    // ✅ NEW: Check if this is a UUID (36 chars with hyphens matching UUID pattern)
+    if (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i', $post_id)) {
+        \Log::debug('Received UUID as post_id, validating', [
+            'post_id' => $post_id
+        ]);
+
+        // Verify the UUID actually exists as a post in this election
+        $post = DemoPost::where('id', $post_id)
+            ->where('election_id', $election->id)
+            ->first();
+
+        if ($post) {
+            \Log::debug('UUID post_id validated', ['post_id' => $post_id, 'post_name' => $post->name]);
+            return $post_id; // Return UUID as-is since DemoPost uses UUIDs
+        }
+
+        throw new \Exception('Post with UUID not found in election: ' . $post_id);
+    }
+
     // Case 1: String contains only digits (e.g., "42")
     if (is_numeric($post_id)) {
         $converted = (int) $post_id;
@@ -2797,7 +2826,7 @@ private function normalizePostId($post_id, $election): int
         ]);
         return $converted;
     }
-    
+
     // Case 2: String ends with digits (e.g., "president-3")
     if (preg_match('/\d+$/', $post_id, $matches)) {
         $converted = (int) $matches[0];
@@ -2807,28 +2836,27 @@ private function normalizePostId($post_id, $election): int
         ]);
         return $converted;
     }
-    
-    // Case 3: String is a post name - try to look it up
+
+    // Case 3: String is a post name - try to look it up by name only
     $post = DemoPost::where('election_id', $election->id)
         ->whereRaw('LOWER(name) = ?', [strtolower($post_id)])
-        ->orWhereRaw('LOWER(post_id) = ?', [strtolower($post_id)])
         ->first();
-    
+
     if ($post) {
         \Log::info('Mapped post identifier to ID', [
             'identifier' => $post_id,
             'post_id' => $post->id,
             'post_name' => $post->name
         ]);
-        return $post->id;
+        return $post->id; // Returns UUID since DemoPost uses UUIDs
     }
-    
+
     // If all else fails, log error and throw exception
     \Log::error('Cannot normalize post_id', [
         'post_id' => $post_id,
         'election_id' => $election->id
     ]);
-    
+
     throw new \Exception('Invalid post_id format: ' . $post_id);
 }
 

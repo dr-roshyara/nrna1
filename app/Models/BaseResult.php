@@ -44,7 +44,6 @@ abstract class BaseResult extends Model
         'vote_id',
         'post_id',
         'candidacy_id',  // UUID FK to candidacies table
-        'vote_hash',     // For verification cross-reference
         'vote_count',    // For aggregation
         'position_order',
     ];

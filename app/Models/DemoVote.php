@@ -37,21 +37,21 @@ class DemoVote extends BaseVote
      * @var array
      */
     protected $casts = [
-        'candidate_selections' => 'array',
         'cast_at' => 'datetime',           // ✅ KEEP - inherited from parent but explicit
         'no_vote_posts' => 'array',        // ✅ KEEP - inherited from parent but explicit
         'device_metadata_anonymized' => 'array', // ✅ KEEP - fraud detection metadata
+        'metadata' => 'array',             // ✅ NEW - Additional vote metadata (JSON)
     ];
 
     /**
-     * Override fillable to match demo_votes table schema.
+     * Override fillable to match demo_votes table schema (post-migration).
      *
-     * IMPORTANT: DemoVote uses candidate_selections (JSON) NOT individual candidate_xx columns.
-     * The demo_votes table stores vote data differently than the real votes table:
-     * - Real votes (parent BaseVote): Individual candidate_01..60 columns
-     * - Demo votes: candidate_selections JSON + no_vote_option boolean
+     * IMPORTANT: DemoVote now uses individual candidate_xx columns (matching votes table).
+     * The demo_votes table has been aligned with the votes table structure:
+     * - Real votes & Demo votes: Individual candidate_01..60 columns (VARCHAR 36 for UUID storage)
+     * - Old candidate_selections JSON column has been dropped
      *
-     * For demo votes, we also use:
+     * Demo-specific fields:
      * - receipt_hash: For voter self-verification (e.g., via email receipt)
      * - participation_proof: For IP-based admin verification (prove participation without revealing vote)
      * - encrypted_vote: Encrypted vote data for voter verification
@@ -59,6 +59,8 @@ class DemoVote extends BaseVote
      * - no_vote_posts: ✅ KEEP - Posts where voter abstained
      * - device_fingerprint_hash: ✅ KEEP - Fraud detection (privacy-preserving)
      * - device_metadata_anonymized: ✅ KEEP - Anonymized device metadata
+     * - metadata: JSON column for additional vote metadata
+     * - candidate_01 through candidate_60: Individual candidate UUID columns
      *
      * @var array
      */
@@ -68,15 +70,28 @@ class DemoVote extends BaseVote
         'receipt_hash',
         'participation_proof',
         'encrypted_vote',
-        'vote_hash',                       // ✅ NEW - Critical for anonymity
-        'candidate_selections',
+        'vote_hash',                       // ✅ CRITICAL - Hash using code_id (NOT user_id) for anonymity
         'no_vote_option',
-        'no_vote_posts',                   // ✅ KEEP - Posts where voter abstained
+        'no_vote_posts',                   // ✅ Posts where voter abstained
         'voted_at',
         'voter_ip',
-        'device_fingerprint_hash',         // ✅ KEEP - Fraud detection (privacy-preserving hash)
-        'device_metadata_anonymized',      // ✅ KEEP - Anonymized device metadata
-        'cast_at',                         // ✅ NEW - Timestamp of vote casting
+        'device_fingerprint_hash',         // ✅ Fraud detection (privacy-preserving hash)
+        'device_metadata_anonymized',      // ✅ Anonymized device metadata
+        'cast_at',                         // ✅ Timestamp of vote casting
+        'metadata',                        // ✅ Additional vote metadata (JSON)
+        // Individual candidate columns (candidate_01 through candidate_60)
+        'candidate_01', 'candidate_02', 'candidate_03', 'candidate_04', 'candidate_05',
+        'candidate_06', 'candidate_07', 'candidate_08', 'candidate_09', 'candidate_10',
+        'candidate_11', 'candidate_12', 'candidate_13', 'candidate_14', 'candidate_15',
+        'candidate_16', 'candidate_17', 'candidate_18', 'candidate_19', 'candidate_20',
+        'candidate_21', 'candidate_22', 'candidate_23', 'candidate_24', 'candidate_25',
+        'candidate_26', 'candidate_27', 'candidate_28', 'candidate_29', 'candidate_30',
+        'candidate_31', 'candidate_32', 'candidate_33', 'candidate_34', 'candidate_35',
+        'candidate_36', 'candidate_37', 'candidate_38', 'candidate_39', 'candidate_40',
+        'candidate_41', 'candidate_42', 'candidate_43', 'candidate_44', 'candidate_45',
+        'candidate_46', 'candidate_47', 'candidate_48', 'candidate_49', 'candidate_50',
+        'candidate_51', 'candidate_52', 'candidate_53', 'candidate_54', 'candidate_55',
+        'candidate_56', 'candidate_57', 'candidate_58', 'candidate_59', 'candidate_60',
     ];
 
     /**
