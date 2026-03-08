@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use App\Traits\BelongsToTenant;
 
 /**
@@ -18,9 +19,12 @@ use App\Traits\BelongsToTenant;
 class VoterSlugStep extends Model
 {
     use HasFactory;
+    use HasUuids;
     use BelongsToTenant;
 
     protected $table = 'voter_slug_steps';
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     protected $fillable = [
         'organisation_id',
