@@ -844,7 +844,11 @@ export default {
             const routeName = props.useSlugPath ? 'slug.demo-vote.submit' : 'demo-vote.submit'
             const params = props.useSlugPath ? { vslug: props.slug } : {}
 
-            form.transform(() => voteData).post(route(routeName, params), {
+            form.transform(() => ({
+                ...voteData,
+                agree_button: form.agree_button,
+                user_id: form.user_id
+            })).post(route(routeName, params), {
                 onError: (formErrors) => {
                     errors.value = { ...errors.value, ...formErrors }
                     loading.value = false
