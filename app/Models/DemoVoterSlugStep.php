@@ -24,8 +24,7 @@ class DemoVoterSlugStep extends Model
 
     protected $fillable = [
         'organisation_id',
-        'demo_voter_slug_id',
-        'slug',
+        'voter_slug_id',
         'election_id',
         'step',
         'step_data',
@@ -42,7 +41,7 @@ class DemoVoterSlugStep extends Model
      */
     public function demoVoterSlug()
     {
-        return $this->belongsTo(DemoVoterSlug::class, 'demo_voter_slug_id');
+        return $this->belongsTo(DemoVoterSlug::class, 'voter_slug_id');
     }
 
     /**
@@ -56,9 +55,9 @@ class DemoVoterSlugStep extends Model
     /**
      * Scope: Get steps for a specific demo voter in an election
      */
-    public function scopeForVoterInElection($query, $demoVoterSlugId, $electionId)
+    public function scopeForVoterInElection($query, $voterSlugId, $electionId)
     {
-        return $query->where('demo_voter_slug_id', $demoVoterSlugId)
+        return $query->where('voter_slug_id', $voterSlugId)
                      ->where('election_id', $electionId);
     }
 
