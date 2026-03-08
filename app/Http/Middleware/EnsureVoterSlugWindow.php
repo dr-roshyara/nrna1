@@ -6,6 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\VoterSlug;
+use App\Services\VoterSlugService;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class EnsureVoterSlugWindow
 {
@@ -74,9 +76,32 @@ class EnsureVoterSlugWindow
             abort(403, 'Voting link has expired. Please request a new voting link.');
         }
 
+        // ✅ SECURITY: Validate slug ownership (belongs to correct user and election)
+        // This prevents vote theft and cross-election voting attacks
+        try {
+            $user = auth()->user();
+            $election = $request->attributes->get('election');
+
+            if ($user && $election) {
+                $service = app(VoterSlugService::class);
+                $service->validateSlugOwnership($vslug, $user, $election);
+            }
+        } catch (AccessDeniedHttpException $e) {
+            \Log::warning('Slug ownership validation failed', [
+                'slug' => $vslug->slug,
+                'slug_user_id' => $vslug->user_id,
+                'request_user_id' => auth()->id(),
+                'slug_election_id' => $vslug->election_id,
+                'request_election_id' => $request->attributes->get('election')?->id,
+                'error' => $e->getMessage(),
+            ]);
+            throw $e;
+        }
+
         \Log::info('Voting link validated successfully', [
             'slug' => $vslug->slug,
             'user_id' => $vslug->user_id,
+            'election_id' => $vslug->election_id,
         ]);
 
         // Make the user easily accessible to controllers/views

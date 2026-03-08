@@ -365,6 +365,12 @@ public function create(Request $request)
 
     // --- Fetch National Posts and Candidates ---
     if ($election->isDemo()) {
+        // 🔴 DEBUG: Log election and post loading
+        \Log::info('========== DEMO VOTE CONTROLLER DEBUG ==========');
+        \Log::info('Election ID: ' . $election->id);
+        \Log::info('Election Name: ' . $election->name);
+        \Log::info('Election Type: ' . $election->type);
+
         // ✅ FIX-03: Fetch posts with their candidacies through proper relationships
         // Avoid direct election_id queries on candidacies (column doesn't exist)
         $nationalPosts = DemoPost::where('election_id', $election->id)
@@ -374,6 +380,11 @@ public function create(Request $request)
             }])
             ->orderBy('position_order')
             ->get();
+
+        \Log::info('National Posts found: ' . $nationalPosts->count());
+        foreach ($nationalPosts as $index => $post) {
+            \Log::info("Post {$index}: {$post->name} (ID: {$post->id}) - Candidates: " . $post->candidacies->count());
+        }
 
         $national_posts = $nationalPosts->map(function ($post) {
             return [

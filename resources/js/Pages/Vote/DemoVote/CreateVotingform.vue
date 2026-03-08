@@ -545,7 +545,7 @@ export default {
                 };
             }
 
-            this.$emit('add_selected_candidates', selectionData);
+            this.$emit('update-votes', selectionData);
         },
 
         handleNoVoteChange() {

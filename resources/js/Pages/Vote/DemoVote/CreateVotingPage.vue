@@ -8,7 +8,7 @@
         <!-- Skip to Main Content Link -->
         <a href="#main-content" class="skip-link">
             {{ $t('pages.voting.aria_labels.skip_to_content') }}
-        </a>
+        </a> 
 
         <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -28,7 +28,8 @@
                         {{ $t('pages.voting.header.subtitle', { name: name }) }}
                     </p>
                     <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full" aria-hidden="true"></div>
-                </header>
+                </header> 
+                <p>testing </p>
 
                 <!-- Voter Information Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">

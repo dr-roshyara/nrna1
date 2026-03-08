@@ -29,12 +29,18 @@ class DemoVote extends BaseVote
     protected $table = 'demo_votes';
 
     /**
-     * Cast JSON fields to arrays
+     * Override parent casts for demo-specific fields
+     *
+     * Adds cast_at (inherited from parent, explicit here)
+     * and no_vote_posts (inherited from parent, explicit here)
      *
      * @var array
      */
     protected $casts = [
         'candidate_selections' => 'array',
+        'cast_at' => 'datetime',           // ✅ KEEP - inherited from parent but explicit
+        'no_vote_posts' => 'array',        // ✅ KEEP - inherited from parent but explicit
+        'device_metadata_anonymized' => 'array', // ✅ KEEP - fraud detection metadata
     ];
 
     /**
@@ -49,6 +55,10 @@ class DemoVote extends BaseVote
      * - receipt_hash: For voter self-verification (e.g., via email receipt)
      * - participation_proof: For IP-based admin verification (prove participation without revealing vote)
      * - encrypted_vote: Encrypted vote data for voter verification
+     * - vote_hash: ✅ CRITICAL - Hash using code_id (NOT user_id) for anonymity
+     * - no_vote_posts: ✅ KEEP - Posts where voter abstained
+     * - device_fingerprint_hash: ✅ KEEP - Fraud detection (privacy-preserving)
+     * - device_metadata_anonymized: ✅ KEEP - Anonymized device metadata
      *
      * @var array
      */
@@ -58,10 +68,15 @@ class DemoVote extends BaseVote
         'receipt_hash',
         'participation_proof',
         'encrypted_vote',
+        'vote_hash',                       // ✅ NEW - Critical for anonymity
         'candidate_selections',
         'no_vote_option',
+        'no_vote_posts',                   // ✅ KEEP - Posts where voter abstained
         'voted_at',
         'voter_ip',
+        'device_fingerprint_hash',         // ✅ KEEP - Fraud detection (privacy-preserving hash)
+        'device_metadata_anonymized',      // ✅ KEEP - Anonymized device metadata
+        'cast_at',                         // ✅ NEW - Timestamp of vote casting
     ];
 
     /**
@@ -125,49 +140,26 @@ class DemoVote extends BaseVote
     }
 
     /**
-     * Override boot hook to skip vote_hash validation for demo votes
+     * Override boot hook to call parent and customize demo vote validation
      *
-     * Demo votes use receipt_hash for voter verification instead of vote_hash.
-     * We still validate that election_id is present and valid.
+     * Demo votes use receipt_hash for voter verification.
+     * Parent validates: election_id exists, receipt_hash is present, cast_at is set
+     *
+     * Demo-specific: Does NOT enforce organisation_id matching (demos are public)
      */
     protected static function booted()
     {
+        // ✅ CRITICAL: Call parent::booted() to inherit validation logic
+        parent::booted();
+
         static::creating(function ($vote) {
-            // Validate election_id is present
-            if (is_null($vote->election_id)) {
-                \Log::channel('voting_security')->warning('Demo vote rejected: NULL election_id', [
-                    'reason' => 'Election reference is required',
-                    'timestamp' => now(),
-                    'ip' => request()->ip(),
-                ]);
-
-                throw new \App\Exceptions\InvalidRealVoteException(
-                    'Votes require a valid election (election_id cannot be NULL)',
-                    ['reason' => 'null_election_id']
-                );
-            }
-
-            // Verify election exists
-            $election = \App\Models\Election::withoutGlobalScopes()->find($vote->election_id);
-            if (!$election) {
-                \Log::channel('voting_security')->warning('Demo vote rejected: Invalid election_id', [
-                    'election_id' => $vote->election_id,
-                    'reason' => 'Election not found',
-                    'timestamp' => now(),
-                    'ip' => request()->ip(),
-                ]);
-
-                throw new \App\Exceptions\InvalidRealVoteException(
-                    "Election (id: {$vote->election_id}) not found",
-                    ['election_id' => $vote->election_id, 'reason' => 'election_not_found']
-                );
-            }
-
-            // ✅ Demo vote validation passed
+            // ✅ Demo vote validation passed (parent::booted() already validated election_id + receipt_hash)
             \Log::channel('voting_security')->info('Demo vote passed model validation', [
                 'election_id' => $vote->election_id,
                 'organisation_id' => $vote->organisation_id,
                 'receipt_hash_prefix' => substr($vote->receipt_hash ?? '', 0, 10) . '...',
+                'vote_hash_prefix' => substr($vote->vote_hash ?? '', 0, 10) . '...',
+                'device_fingerprint' => substr($vote->device_fingerprint_hash ?? '', 0, 10) . '...',
                 'timestamp' => now(),
                 'ip' => request()->ip(),
             ]);

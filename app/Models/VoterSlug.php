@@ -27,7 +27,7 @@ class VoterSlug extends Model
         'step_meta',
         'has_voted',
         'can_vote_now',
-        'voting_time_min',
+        'voting_time_in_minutes',
         'status',
         'step_1_ip',
         'step_1_completed_at',
@@ -47,7 +47,7 @@ class VoterSlug extends Model
         'has_voted' => 'boolean',
         'can_vote_now' => 'boolean',
         'current_step' => 'integer',
-        'voting_time_min' => 'integer',
+        'voting_time_in_minutes' => 'integer',
         'step_meta' => 'array',
         'step_1_completed_at' => 'datetime',
         'step_2_completed_at' => 'datetime',
@@ -113,5 +113,65 @@ class VoterSlug extends Model
     public function markAsVoted(): bool
     {
         return $this->update(['status' => 'voted']);
+    }
+
+    /**
+     * ✅ NEW: Boot method - Auto-mark expired slugs as inactive
+     *
+     * BUSINESS GUARANTEE: When a slug is retrieved from the database,
+     * if it has expired, it is immediately marked inactive to:
+     * - Prevent stale sessions from blocking new voting
+     * - Ensure fresh slugs are created when needed
+     * - Maintain audit trail (status = 'expired')
+     */
+    protected static function booted()
+    {
+        static::retrieved(function ($slug) {
+            // ✅ AUTO-CHECK when model is loaded from database
+            if ($slug->expires_at && now()->greaterThan($slug->expires_at) && $slug->is_active) {
+                // Use direct query update to persist immediately
+                static::query()->where('id', $slug->id)->update([
+                    'is_active' => false,
+                    'can_vote_now' => false,
+                    'status' => 'expired',
+                    'updated_at' => now(),
+                ]);
+
+                // Update the in-memory instance to match
+                $slug->is_active = false;
+                $slug->can_vote_now = false;
+                $slug->status = 'expired';
+
+                \Illuminate\Support\Facades\Log::info('Auto-marked expired voter slug', [
+                    'slug_id' => $slug->id,
+                    'expires_at' => $slug->expires_at,
+                    'marked_at' => now(),
+                ]);
+            }
+        });
+
+        static::creating(function ($slug) {
+            // Ensure expires_at is set
+            if (!$slug->expires_at) {
+                $slug->expires_at = now()->addMinutes(
+                    config('voting.slug_expiration_minutes', 30)
+                );
+            }
+
+            // Ensure status is set
+            if (!$slug->status) {
+                $slug->status = 'active';
+            }
+
+            // Ensure is_active is set
+            if (!isset($slug->is_active)) {
+                $slug->is_active = true;
+            }
+
+            // Ensure can_vote_now is set
+            if (!isset($slug->can_vote_now)) {
+                $slug->can_vote_now = true;
+            }
+        });
     }
 }
