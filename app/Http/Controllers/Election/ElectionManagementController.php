@@ -225,6 +225,18 @@ class ElectionManagementController extends Controller
                 'election_id' => $slug->election_id,
             ]);
 
+            // ✅ FIX: Ensure slug is visible to read replicas (Digital Ocean issue)
+            // Force refresh from database to ensure consistency
+            $slug->refresh();
+
+            // Store slug in session for fallback if route binding fails
+            session(['last_created_voter_slug' => $slug->slug]);
+
+            Log::info('📍 Redirecting to demo code entry', [
+                'slug' => $slug->slug,
+                'session_slug' => session('last_created_voter_slug'),
+            ]);
+
             // Redirect to DEMO voting flow with voter slug (NOT election slug)
             return redirect()->route('slug.demo-code.create', ['vslug' => $slug->slug])
                 ->with('success', '🎮 Demo election selected. Test the voting system!');

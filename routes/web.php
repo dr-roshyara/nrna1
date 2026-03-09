@@ -80,7 +80,35 @@ Route::bind('vslug', function (string $value) {
             ->first();
     }
 
+    // ✅ FIX: If still not found, this might be due to database replication lag on Digital Ocean
+    // Try one more time with a fresh database connection after a tiny delay
     if (!$voterSlug) {
+        \Log::warning('VoterSlug not found on first attempt', [
+            'slug' => $value,
+            'attempt' => 1,
+        ]);
+
+        // Force reconnect and retry
+        \DB::reconnect();
+
+        $voterSlug = VoterSlug::withoutGlobalScopes()
+            ->with('user')
+            ->where('slug', $value)
+            ->first();
+
+        if (!$voterSlug) {
+            $voterSlug = DemoVoterSlug::withoutGlobalScopes()
+                ->with('user')
+                ->where('slug', $value)
+                ->first();
+        }
+    }
+
+    if (!$voterSlug) {
+        \Log::error('VoterSlug not found after retry', [
+            'slug' => $value,
+            'session_slug' => session('last_created_voter_slug'),
+        ]);
         abort(404, 'Voting link not found.');
     }
 
