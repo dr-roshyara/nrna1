@@ -500,3 +500,8 @@ Route::get('/test-email', function () {
     }
 });
 
+
+// Diagnostic endpoint - check demo election setup
+Route::get('/diagnostic/demo', [App\Http\Controllers\DiagnosticController::class, 'diagnoseDemo'])
+    ->middleware('auth')
+    ->name('diagnostic.demo');
