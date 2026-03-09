@@ -18,18 +18,22 @@ return Application::configure(basePath: dirname(__DIR__))
         | Global & Web Middleware
         |--------------------------------------------------------------------------
         */
-        $middleware->trustProxies(at: '*'); // Professional way to handle TrustProxies in L12
+        $middleware->trustProxies(at: '*');
 
+        // ✅ CRITICAL FIX: Append custom global middleware (runs on all routes)
         $middleware->append([
             \App\Http\Middleware\TrackPerformance::class,
         ]);
 
+        // ✅ CRITICAL FIX: Append to web middleware stack (preserves session, CSRF, binding, etc.)
+        // MUST use append: [...] to add to existing Laravel 11 default web stack
         $middleware->web(append: [
             \App\Http\Middleware\SetLocale::class,
-            \App\Http\Middleware\HandleInertiaRequests::class, // Custom Inertia middleware with shared data
+            \App\Http\Middleware\HandleInertiaRequests::class,
             \App\Http\Middleware\TenantContext::class,
         ]);
 
+        // ✅ Enable stateful API authentication (for Sanctum)
         $middleware->statefulApi();
 
         /*
