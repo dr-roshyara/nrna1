@@ -225,12 +225,51 @@ class ElectionManagementController extends Controller
                 'election_id' => $slug->election_id,
             ]);
 
-            // ✅ FIX: Ensure slug is visible to read replicas (Digital Ocean issue)
-            // Force refresh from database to ensure consistency
+            // 🔥 DIGITAL OCEAN FIX 1: Refresh slug from database to ensure it's saved
             $slug->refresh();
+
+            // 🔥 DIGITAL OCEAN FIX 2: Force session save for database driver
+            session()->save();
+
+            // 🔥 DIGITAL OCEAN FIX 3: Verify slug exists with retry for replication lag
+            $verified = false;
+            $attempts = 0;
+            $maxAttempts = 3;
+
+            while (!$verified && $attempts < $maxAttempts) {
+                if ($attempts > 0) {
+                    Log::info('Retrying slug verification', [
+                        'attempt' => $attempts + 1,
+                        'slug_id' => $slug->id
+                    ]);
+                    sleep(1); // Wait 1 second between retries
+                    \DB::reconnect('mysql'); // Fresh connection
+                }
+
+                // Force write connection for read-after-write consistency
+                $verified = \DB::table('demo_voter_slugs')
+                    ->where('id', $slug->id)
+                    ->exists();
+
+                $attempts++;
+            }
+
+            if (!$verified) {
+                Log::error('⚠️ Slug verification failed after ' . $maxAttempts . ' attempts', [
+                    'slug_id' => $slug->id,
+                    'slug' => $slug->slug
+                ]);
+                // Continue anyway - route binding will have its own retry logic
+            } else {
+                Log::info('✅ Slug verified successfully', [
+                    'attempts' => $attempts,
+                    'slug_id' => $slug->id
+                ]);
+            }
 
             // Store slug in session for fallback if route binding fails
             session(['last_created_voter_slug' => $slug->slug]);
+            session()->save(); // Force save again
 
             Log::info('📍 Redirecting to demo code entry', [
                 'slug' => $slug->slug,

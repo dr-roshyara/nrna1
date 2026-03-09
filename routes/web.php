@@ -65,52 +65,64 @@ use App\Http\Controllers\Import\OrganisationUserImportController;
  * Route Model Binding
  * Register implicit model binding for VoterSlug
  */
+// 🔥 DIGITAL OCEAN FIX: Enhanced route binding with retry logic
 Route::bind('vslug', function (string $value) {
-    // Try to find a real VoterSlug first
-    $voterSlug = VoterSlug::withoutGlobalScopes()
-        ->with('user')
-        ->where('slug', $value)
-        ->first();
+    \Log::info('🔍 Route binding lookup', ['vslug' => $value, 'connection' => \DB::connection()->getName()]);
 
-    // If not found, try DemoVoterSlug (for demo elections)
-    if (!$voterSlug) {
-        $voterSlug = DemoVoterSlug::withoutGlobalScopes()
-            ->with('user')
-            ->where('slug', $value)
-            ->first();
-    }
+    // Try with retry for Digital Ocean replication lag
+    $voterSlug = null;
+    $attempts = 0;
+    $maxAttempts = 3;
 
-    // ✅ FIX: If still not found, this might be due to database replication lag on Digital Ocean
-    // Try one more time with a fresh database connection after a tiny delay
-    if (!$voterSlug) {
-        \Log::warning('VoterSlug not found on first attempt', [
-            'slug' => $value,
-            'attempt' => 1,
-        ]);
+    while (!$voterSlug && $attempts < $maxAttempts) {
+        if ($attempts > 0) {
+            \Log::info('🔄 Retry attempt ' . ($attempts + 1), ['vslug' => $value]);
+            sleep(1); // Wait 1 second between retries
+            \DB::reconnect('mysql'); // Fresh connection
+        }
 
-        // Force reconnect and retry
-        \DB::reconnect();
-
-        $voterSlug = VoterSlug::withoutGlobalScopes()
-            ->with('user')
+        // Try DemoVoterSlug first (for demo elections)
+        $voterSlug = DemoVoterSlug::on('mysql')
+            ->withoutGlobalScopes()
             ->where('slug', $value)
             ->first();
 
         if (!$voterSlug) {
-            $voterSlug = DemoVoterSlug::withoutGlobalScopes()
-                ->with('user')
+            // Try VoterSlug as fallback (for regular elections)
+            $voterSlug = VoterSlug::on('mysql')
+                ->withoutGlobalScopes()
                 ->where('slug', $value)
                 ->first();
         }
+
+        $attempts++;
     }
 
     if (!$voterSlug) {
-        \Log::error('VoterSlug not found after retry', [
+        \Log::error('❌ Voter slug not found after ' . $maxAttempts . ' attempts', [
             'slug' => $value,
-            'session_slug' => session('last_created_voter_slug'),
+            'attempts' => $attempts,
+            'session_data' => session()->all()
         ]);
-        abort(404, 'Voting link not found.');
+
+        // Check if it's in session as fallback
+        $sessionSlug = session('last_created_voter_slug');
+        if ($sessionSlug === $value) {
+            \Log::info('⚠️ Slug found in session but not in DB - possible replication lag', [
+                'slug' => $value
+            ]);
+            // Let them try again by redirecting back
+            abort(403, 'System is initializing. Please try again in 2 seconds.');
+        }
+
+        abort(403, 'Invalid voting link');
     }
+
+    \Log::info('✅ Route binding successful', [
+        'slug' => $value,
+        'type' => get_class($voterSlug),
+        'attempts' => $attempts
+    ]);
 
     return $voterSlug;
 });

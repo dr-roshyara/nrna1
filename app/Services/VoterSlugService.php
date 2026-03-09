@@ -393,6 +393,8 @@ class VoterSlugService
     /**
      * ✅ NEW: Create a new voter slug with auto-expiration
      *
+     * Includes retry logic for Digital Ocean read replica lag
+     *
      * @param User $user
      * @param Election $election
      * @param string $model VoterSlug or DemoVoterSlug
@@ -422,7 +424,8 @@ class VoterSlugService
         );
 
         // ✅ CREATE: Links to correct user and election
-        $voterSlug = $model::create([
+        // Force write connection to ensure we're not hitting read replicas
+        $voterSlug = $model::on('mysql')->create([
             'user_id' => $user->id,                          // ✅ Bind to user
             'election_id' => $election->id,                  // ✅ Bind to election
             'organisation_id' => $election->organisation_id,
@@ -441,6 +444,37 @@ class VoterSlugService
             'election_id' => $election->id,
             'expires_at' => $expiresAt->toDateTimeString(),
         ]);
+
+        // 🔥 DIGITAL OCEAN: Verify slug exists with retry logic
+        $maxRetries = 3;
+        $verified = false;
+        for ($attempt = 0; $attempt < $maxRetries; $attempt++) {
+            if ($attempt > 0) {
+                Log::debug("Retrying slug verification (attempt {$attempt})...");
+                sleep(1);  // Wait 1 second between retries
+                DB::reconnect('mysql');  // Force reconnect to write connection
+            }
+
+            $verified = $model::on('mysql')
+                ->where('id', $voterSlug->id)
+                ->exists();
+
+            if ($verified) {
+                Log::info('Voter slug verified on write connection', [
+                    'attempt' => $attempt + 1,
+                    'slug_id' => $voterSlug->id,
+                ]);
+                break;
+            }
+        }
+
+        if (!$verified) {
+            Log::warning('Slug verification failed after retries - continuing anyway', [
+                'slug_id' => $voterSlug->id,
+                'slug' => substr($slug, 0, 10) . '...',
+                'attempts' => $maxRetries,
+            ]);
+        }
 
         return $voterSlug;
     }
