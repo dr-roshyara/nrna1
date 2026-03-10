@@ -28,6 +28,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // ✅ CRITICAL FIX: Append to web middleware stack (preserves session, CSRF, binding, etc.)
         // MUST use append: [...] to add to existing Laravel 11 default web stack
         $middleware->web(append: [
+            \App\Http\Middleware\PreloadAssets::class,
             \App\Http\Middleware\SetLocale::class,
             \App\Http\Middleware\HandleInertiaRequests::class,
             \App\Http\Middleware\TenantContext::class,
