@@ -190,6 +190,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
+        App\Providers\SEOServiceProvider::class,
 
 
     ],
