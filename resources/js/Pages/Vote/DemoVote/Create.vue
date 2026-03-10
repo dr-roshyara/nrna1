@@ -716,7 +716,7 @@
 import { ref, computed, onMounted } from 'vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import NrnaLayout from '@/Layouts/NrnaLayout.vue'
-import WorkflowStepIndicator from '@/Components/WorkflowStepIndicator.vue'
+import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator.vue'
 import { useForm } from '@inertiajs/vue3'
 
 export default {
