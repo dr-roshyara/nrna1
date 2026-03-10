@@ -234,12 +234,77 @@
                                                             </svg>
                                                         </label>
 
+                                                        <!-- Selection Order Badge -->
+                                                        <div v-if="getSelectionOrder(post.id, candidate.id) > 0" class="mt-2">
+                                                            <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
+                                                                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                                                </svg>
+                                                                #{{ getSelectionOrder(post.id, candidate.id) }}
+                                                            </span>
+                                                        </div>
+
                                                         <!-- Hidden description for screen readers -->
                                                         <div :id="`candidate-desc-${candidate.id}`" class="sr-only">
                                                             {{ candidate.user_name }}, position {{ candidate.position_order }}
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Selection Status Section -->
+                                    <div class="mb-8 bg-gradient-to-r from-gray-50 to-blue-50 border-2 border-gray-200 rounded-xl p-5">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                            <!-- Status Message -->
+                                            <div class="flex-1">
+                                                <h3 class="text-lg font-bold text-gray-900 mb-3">{{ $t('pages.Vote.DemoVote.Create.voting_section.selected') }}</h3>
+
+                                                <!-- Status Box -->
+                                                <div
+                                                    class="rounded-lg p-4"
+                                                    :class="{
+                                                        'bg-green-50 border border-green-200 text-green-800': getPostSelectionStatus(post).type === 'valid',
+                                                        'bg-blue-50 border border-blue-200 text-blue-800': getPostSelectionStatus(post).type === 'partial',
+                                                        'bg-red-50 border border-red-200 text-red-800': getPostSelectionStatus(post).type === 'empty',
+                                                        'bg-gray-50 border border-gray-200 text-gray-800': getPostSelectionStatus(post).type === 'no-vote'
+                                                    }"
+                                                >
+                                                    <div class="flex items-start gap-3">
+                                                        <div class="text-lg shrink-0">{{ getPostSelectionStatus(post).icon }}</div>
+                                                        <div>
+                                                            <p class="font-semibold">{{ getPostSelectionStatus(post).message }}</p>
+                                                            <p v-if="getSelectedCandidateNames(post)" class="text-sm opacity-90 mt-1">
+                                                                Selected: <span class="font-medium">{{ getSelectedCandidateNames(post) }}</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Selection Counter -->
+                                            <div class="bg-white border-2 border-gray-200 rounded-lg px-6 py-3 text-center shrink-0">
+                                                <div class="text-2xl font-bold text-blue-600">{{ selectedCandidates[post.id]?.length || 0 }}</div>
+                                                <div class="text-sm text-gray-600">of {{ post.required_number }}</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Progress Bar -->
+                                        <div class="mt-4">
+                                            <div class="flex items-center justify-between text-sm text-gray-600 mb-1">
+                                                <span>Progress</span>
+                                                <span>{{ Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100)) }}%</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                                <div
+                                                    class="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500"
+                                                    :style="{ width: Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100)) + '%' }"
+                                                    role="progressbar"
+                                                    :aria-valuenow="Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100))"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                ></div>
                                             </div>
                                         </div>
                                     </div>
@@ -429,6 +494,61 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Selection Status Section (Regional) -->
+                                    <div class="mb-8 bg-gradient-to-r from-gray-50 to-green-50 border-2 border-gray-200 rounded-xl p-5">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                            <!-- Status Message -->
+                                            <div class="flex-1">
+                                                <h3 class="text-lg font-bold text-gray-900 mb-3">{{ $t('pages.Vote.DemoVote.Create.voting_section.selected') }}</h3>
+
+                                                <!-- Status Box -->
+                                                <div
+                                                    class="rounded-lg p-4"
+                                                    :class="{
+                                                        'bg-green-50 border border-green-200 text-green-800': getPostSelectionStatus(post).type === 'valid',
+                                                        'bg-blue-50 border border-blue-200 text-blue-800': getPostSelectionStatus(post).type === 'partial',
+                                                        'bg-red-50 border border-red-200 text-red-800': getPostSelectionStatus(post).type === 'empty',
+                                                        'bg-gray-50 border border-gray-200 text-gray-800': getPostSelectionStatus(post).type === 'no-vote'
+                                                    }"
+                                                >
+                                                    <div class="flex items-start gap-3">
+                                                        <div class="text-lg shrink-0">{{ getPostSelectionStatus(post).icon }}</div>
+                                                        <div>
+                                                            <p class="font-semibold">{{ getPostSelectionStatus(post).message }}</p>
+                                                            <p v-if="getSelectedCandidateNames(post)" class="text-sm opacity-90 mt-1">
+                                                                Selected: <span class="font-medium">{{ getSelectedCandidateNames(post) }}</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Selection Counter -->
+                                            <div class="bg-white border-2 border-gray-200 rounded-lg px-6 py-3 text-center shrink-0">
+                                                <div class="text-2xl font-bold text-green-600">{{ selectedCandidates[post.id]?.length || 0 }}</div>
+                                                <div class="text-sm text-gray-600">of {{ post.required_number }}</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Progress Bar -->
+                                        <div class="mt-4">
+                                            <div class="flex items-center justify-between text-sm text-gray-600 mb-1">
+                                                <span>Progress</span>
+                                                <span>{{ Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100)) }}%</span>
+                                            </div>
+                                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                                <div
+                                                    class="bg-gradient-to-r from-green-500 to-green-600 h-2 rounded-full transition-all duration-500"
+                                                    :style="{ width: Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100)) + '%' }"
+                                                    role="progressbar"
+                                                    :aria-valuenow="Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100))"
+                                                    aria-valuemin="0"
+                                                    aria-valuemax="100"
+                                                ></div>
                                             </div>
                                         </div>
                                     </div>
@@ -742,6 +862,66 @@ export default {
             return postNames
         })
 
+        // Get selection status per post
+        const getPostSelectionStatus = (post) => {
+            if (noVoteSelections.value[post.id]) {
+                return {
+                    type: 'no-vote',
+                    message: `You have chosen to skip ${post.name}`,
+                    color: 'gray',
+                    icon: '⏭️'
+                }
+            }
+
+            const selected = selectedCandidates.value[post.id]?.length || 0
+            const required = post.required_number || 1
+
+            if (selected === 0) {
+                return {
+                    type: 'empty',
+                    message: `No candidates selected. Select ${required} candidate${required > 1 ? 's' : ''}.`,
+                    color: 'red',
+                    icon: '⚠️'
+                }
+            } else if (selected === required) {
+                return {
+                    type: 'valid',
+                    message: `✓ Valid selection (${selected} of ${required})`,
+                    color: 'green',
+                    icon: '✓'
+                }
+            } else {
+                return {
+                    type: 'partial',
+                    message: `${selected} of ${required} selected`,
+                    color: 'blue',
+                    icon: 'ℹ️'
+                }
+            }
+        }
+
+        // Get selected candidate names for a post
+        const getSelectedCandidateNames = (post) => {
+            const selectedIds = selectedCandidates.value[post.id] || []
+            if (selectedIds.length === 0) return ''
+
+            const selectedNames = selectedIds
+                .map(id => {
+                    const candidate = post.candidates?.find(c => c.id === id)
+                    return candidate?.candidacy_name || candidate?.user_name || 'Unknown'
+                })
+                .filter(name => name)
+
+            return selectedNames.join(', ')
+        }
+
+        // Get selection order for a candidate
+        const getSelectionOrder = (postId, candidateId) => {
+            const selectedIds = selectedCandidates.value[postId] || []
+            const index = selectedIds.indexOf(candidateId)
+            return index >= 0 ? index + 1 : 0
+        }
+
         // Calculate voting progress
         const votingProgress = computed(() => {
             const allPosts = [...(props.posts.national || []), ...(props.posts.regional || [])]
@@ -947,7 +1127,10 @@ export default {
             toggleNoVote,
             getSubmitButtonLabel,
             skipToContent,
-            submit
+            submit,
+            getPostSelectionStatus,
+            getSelectedCandidateNames,
+            getSelectionOrder
         }
     }
 }
