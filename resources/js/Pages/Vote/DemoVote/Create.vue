@@ -91,6 +91,11 @@
                         </div>
                     </div>
 
+                    <!-- Workflow Step Indicator - Step 3/5 -->
+                    <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-6 md:py-8 mb-8">
+                        <WorkflowStepIndicator workflow="VOTING" :currentStep="3" />
+                    </div>
+
                     <!-- Demo Mode Notice -->
                     <div
                         class="max-w-4xl mx-auto bg-purple-50 border-2 border-purple-300 rounded-lg p-6 mb-8"
@@ -711,6 +716,7 @@
 import { ref, computed, onMounted } from 'vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import NrnaLayout from '@/Layouts/NrnaLayout.vue'
+import WorkflowStepIndicator from '@/Components/WorkflowStepIndicator.vue'
 import { useForm } from '@inertiajs/vue3'
 
 export default {
@@ -719,6 +725,7 @@ export default {
     components: {
         AppLayout,
         NrnaLayout,
+        WorkflowStepIndicator,
     },
 
     props: {
