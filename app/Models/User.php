@@ -1182,9 +1182,10 @@ public function getVoterState(): string
             return null;
         }
 
-        // Find active elections in those orgs
+        // Find active REAL elections in those orgs (exclude demo elections)
         return Election::whereIn('organisation_id', $orgIds)
             ->where('status', 'active')
+            ->where('type', 'real')
             ->where('start_date', '<=', now())
             ->where('end_date', '>=', now())
             ->whereDoesntHave('voterSlugs', function ($query) {

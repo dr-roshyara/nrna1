@@ -108,8 +108,8 @@ class DashboardResolver
                 'election_slug' => $activeElection->slug,
             ]);
             $this->tenantContext->setContext($user, $electionOrganisation);
-            $this->cacheResolution($user, route('election.dashboard', $activeElection->slug));
-            return redirect()->route('election.dashboard', $activeElection->slug);
+            $this->cacheResolution($user, route('election.dashboard'));
+            return redirect()->route('election.dashboard');
         }
         Log::debug('✗ PRIORITY 3 SKIPPED: No active election for user');
 
@@ -778,6 +778,7 @@ class DashboardResolver
             $activeElections = DB::table('elections')
                 ->whereIn('organisation_id', $orgIds)
                 ->where('status', 'active')
+                ->where('type', 'real')
                 ->where('start_date', '<=', now())
                 ->where('end_date', '>=', now())
                 ->select('elections.*')
