@@ -89,6 +89,10 @@ import voteDashboardDe from './locales/pages/Vote/Dashboard/de.json';
 import voteDashboardEn from './locales/pages/Vote/Dashboard/en.json';
 import voteDashboardNp from './locales/pages/Vote/Dashboard/np.json';
 
+import voteDemoCreateDe from './locales/pages/Vote/DemoVote/Create/de.json';
+import voteDemoCreateEn from './locales/pages/Vote/DemoVote/Create/en.json';
+import voteDemoCreateNp from './locales/pages/Vote/DemoVote/Create/np.json';
+
 import welcomeDashboardDe from './locales/pages/Welcome/Dashboard/de.json';
 import welcomeDashboardEn from './locales/pages/Welcome/Dashboard/en.json';
 import welcomeDashboardNp from './locales/pages/Welcome/Dashboard/np.json';
@@ -179,6 +183,11 @@ const messages = {
       'organisation-show': { ...organisationShowDe, ...organisationShowPageDe },
       security: securityDe,
       votingSecurity: votingSecurityDe,
+      'Vote': {
+        'DemoVote': {
+          'Create': voteDemoCreateDe
+        }
+      }
     },
   },
   en: {
@@ -214,6 +223,11 @@ const messages = {
       'organisation-show': { ...organisationShowEn, ...organisationShowPageEn },
       security: securityEn,
       votingSecurity: votingSecurityEn,
+      'Vote': {
+        'DemoVote': {
+          'Create': voteDemoCreateEn
+        }
+      }
     },
   },
   np: {
@@ -249,6 +263,11 @@ const messages = {
       'organisation-show': { ...organisationShowNp, ...organisationShowPageNp },
       security: securityNp,
       votingSecurity: votingSecurityNp,
+      'Vote': {
+        'DemoVote': {
+          'Create': voteDemoCreateNp
+        }
+      }
     },
   },
 };

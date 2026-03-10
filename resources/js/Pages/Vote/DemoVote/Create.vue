@@ -7,7 +7,7 @@
                 class="skip-link"
                 @click.prevent="skipToContent"
             >
-                Skip to main content
+                {{ $t('pages.Vote.DemoVote.Create.skip_link') }}
             </a>
 
             <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8">
@@ -16,16 +16,16 @@
                     <!-- Header with proper ARIA -->
                     <header class="text-center mb-12" role="banner">
                         <div class="inline-flex items-center gap-3 mb-4">
-                            <h1 class="text-4xl font-bold text-gray-900">Vote in Demo Election</h1>
+                            <h1 class="text-4xl font-bold text-gray-900">{{ $t('pages.Vote.DemoVote.Create.page_header.title') }}</h1>
                             <div
                                 class="bg-purple-700 text-white px-4 py-2 rounded-full font-semibold text-sm flex items-center gap-2"
                                 style="background-color: #6b21a5;"
                             >
                                 <span class="text-xl" aria-hidden="true">🎮</span>
-                                <span>Demo Mode</span>
+                                <span>{{ $t('pages.Vote.DemoVote.Create.page_header.badge') }}</span>
                             </div>
                         </div>
-                        <p class="text-xl text-gray-600 mb-4">Welcome {{ user_name }}!</p>
+                        <p class="text-xl text-gray-600 mb-4">{{ $t('pages.Vote.DemoVote.Create.page_header.welcome', { user_name: user_name }) }}</p>
                         <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full" aria-hidden="true"></div>
                     </header>
 
@@ -39,8 +39,8 @@
                                 </div>
                                 <div class="text-left">
                                     <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">
-                                        <span class="sr-only">Current voter: </span>
-                                        Voter
+                                        <span class="sr-only">{{ $t('pages.Vote.DemoVote.Create.voter_info.current_voter') }}</span>
+                                        {{ $t('pages.Vote.DemoVote.Create.voter_info.current_voter') }}
                                     </p>
                                     <p class="font-bold text-gray-900 text-lg">
                                         {{ user_name }}
@@ -57,8 +57,8 @@
                                 </div>
                                 <div class="text-left">
                                     <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">
-                                        <span class="sr-only">Current election: </span>
-                                        Election
+                                        <span class="sr-only">{{ $t('pages.Vote.DemoVote.Create.voter_info.current_election') }}</span>
+                                        {{ $t('pages.Vote.DemoVote.Create.voter_info.current_election') }}
                                     </p>
                                     <p class="font-bold text-gray-900 text-lg">
                                         {{ election?.name || 'Demo Election' }}
@@ -79,7 +79,7 @@
                                     <span class="text-purple-600 text-2xl">📊</span>
                                 </div>
                                 <div class="text-left">
-                                    <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">Progress</p>
+                                    <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">{{ $t('pages.Vote.DemoVote.Create.voter_info.progress') }}</p>
                                     <p class="font-bold text-gray-900 text-lg" aria-hidden="true">
                                         {{ votingProgress.completed }}/{{ votingProgress.total }}
                                     </p>
@@ -100,8 +100,8 @@
                         <div class="flex items-start gap-3">
                             <div class="text-2xl" aria-hidden="true">🎮</div>
                             <div class="text-left">
-                                <h3 class="font-bold text-purple-900 text-lg mb-2">Demo Election Mode</h3>
-                                <p class="text-purple-800">This is a test voting system. Your selections here are for testing purposes only.</p>
+                                <h3 class="font-bold text-purple-900 text-lg mb-2">{{ $t('pages.Vote.DemoVote.Create.demo_notice.title') }}</h3>
+                                <p class="text-purple-800">{{ $t('pages.Vote.DemoVote.Create.demo_notice.message') }}</p>
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                         aria-labelledby="national-posts-title"
                     >
                         <h2 id="national-posts-title" class="text-3xl font-bold text-gray-900 text-center mb-8">
-                            National Posts
+                            {{ $t('pages.Vote.DemoVote.Create.voting_section.national_posts') }}
                         </h2>
                         <div class="space-y-8">
                             <div
@@ -145,7 +145,7 @@
                                                 </svg>
                                                 <span class="font-bold text-lg">{{ post.required_number }}</span>
                                             </div>
-                                            <span class="text-sm font-medium">Required</span>
+                                            <span class="text-sm font-medium">{{ $t('pages.Vote.DemoVote.Create.voting_section.required') }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -185,7 +185,7 @@
                                                     class="bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center px-3 py-2"
                                                     :class="{ 'opacity-75': noVoteSelections[post.id] }"
                                                 >
-                                                    <p class="text-xs font-bold">Candidate for {{ post.name }}</p>
+                                                    <p class="text-xs font-bold">{{ $t('pages.Vote.DemoVote.Create.position_card.candidates_label', { post_name: post.name }) }}</p>
                                                 </div>
 
                                                 <!-- Candidate Photo -->
@@ -273,7 +273,7 @@
                                             </div>
                                             <div class="grow">
                                                 <label :for="`no_vote_${post.id}`" class="cursor-pointer block">
-                                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Skip this position</h4>
+                                                    <h4 class="text-xl font-bold text-gray-900 mb-2">{{ $t('pages.Vote.DemoVote.Create.position_card.skip_this_position') }}</h4>
                                                     <p :id="`no-vote-desc-${post.id}`" class="text-gray-700">
                                                         Select this if you wish to abstain from voting for this post.
                                                     </p>
@@ -300,7 +300,7 @@
                         aria-labelledby="regional-posts-title"
                     >
                         <h2 id="regional-posts-title" class="text-3xl font-bold text-gray-900 text-center mb-8">
-                            Regional Posts
+                            {{ $t('pages.Vote.DemoVote.Create.voting_section.regional_posts') }}
                         </h2>
                         <div class="space-y-8">
                             <div
@@ -333,7 +333,7 @@
                                                 </svg>
                                                 <span class="font-bold text-lg">{{ post.required_number }}</span>
                                             </div>
-                                            <span class="text-sm font-medium">Required</span>
+                                            <span class="text-sm font-medium">{{ $t('pages.Vote.DemoVote.Create.voting_section.required') }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -373,7 +373,7 @@
                                                     class="bg-gradient-to-r from-green-600 to-green-700 text-white text-center px-3 py-2"
                                                     :class="{ 'opacity-75': noVoteSelections[post.id] }"
                                                 >
-                                                    <p class="text-xs font-bold">Candidate for {{ post.name }}</p>
+                                                    <p class="text-xs font-bold">{{ $t('pages.Vote.DemoVote.Create.position_card.candidates_label', { post_name: post.name }) }}</p>
                                                 </div>
 
                                                 <!-- Candidate Photo -->
@@ -461,7 +461,7 @@
                                             </div>
                                             <div class="grow">
                                                 <label :for="`no_vote_${post.id}`" class="cursor-pointer block">
-                                                    <h4 class="text-xl font-bold text-gray-900 mb-2">Skip this position</h4>
+                                                    <h4 class="text-xl font-bold text-gray-900 mb-2">{{ $t('pages.Vote.DemoVote.Create.position_card.skip_this_position') }}</h4>
                                                     <p :id="`no-vote-desc-${post.id}`" class="text-gray-700">
                                                         Select this if you wish to abstain from voting for this post.
                                                     </p>
@@ -499,7 +499,7 @@
                             <!-- Agreement Checkbox -->
                             <div class="flex flex-col items-center justify-center mb-6">
                                 <div class="text-3xl mb-2" aria-hidden="true">✅</div>
-                                <h3 class="text-xl font-bold text-red-700 mb-1">Voting Agreement</h3>
+                                <h3 class="text-xl font-bold text-red-700 mb-1">{{ $t('pages.Vote.DemoVote.Create.voting_agreement.title') }}</h3>
                             </div>
 
                             <div class="flex justify-center mb-4">
@@ -507,11 +507,11 @@
                                     <input
                                         type="checkbox"
                                         v-model="form.agree_button"
-                                        class="w-6 h-6 text-blue-600 border-2 border-gray-400 rounded focus:ring-4 focus:ring-blue-300 focus:border-blue-500"
+                                        class="w-10 h-10 text-blue-600 border-3 border-gray-600 rounded focus:ring-4 focus:ring-blue-300 focus:border-blue-500"
                                         :aria-label="form.agree_button ? 'You have agreed to the terms' : 'You must agree to the terms to submit'"
                                         aria-describedby="agreement-desc"
                                     />
-                                    <span class="text-lg font-medium text-gray-900">I agree to the terms</span>
+                                    <span class="text-lg font-medium text-gray-900">{{ $t('pages.Vote.DemoVote.Create.voting_agreement.agree_label') }}</span>
                                 </label>
                             </div>
                             <p id="agreement-desc" class="text-sm text-gray-600 text-center">
@@ -523,8 +523,8 @@
                                 <button
                                     type="button"
                                     @click="submit"
-                                    class="w-full md:w-64 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700
-                                           text-white font-bold text-xl py-4 px-8 rounded-xl shadow-lg
+                                    class="w-full  bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-700 hover:to-purple-700
+                                           text-white font-bold text-xl py-10 px-10 m-3 rounded-xl shadow-lg
                                            focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-offset-2
                                            disabled:opacity-50 disabled:cursor-not-allowed
                                            transform transition-all duration-200 hover:scale-105"
@@ -532,8 +532,8 @@
                                     :aria-label="getSubmitButtonLabel()"
                                 >
                                     <span class="flex items-center justify-center gap-2">
-                                        <span class="text-2xl" aria-hidden="true">🗳️</span>
-                                        <span>{{ loading ? 'Submitting...' : 'Submit Your Vote' }}</span>
+                                        <span class="text-3xl font-bold " aria-hidden="true">🗳️</span>
+                                        <span  class="text-xl font-bold">{{ loading ? $t('pages.Vote.DemoVote.Create.buttons.submitting') : $t('pages.Vote.DemoVote.Create.buttons.submit_vote') }}</span>
                                     </span>
                                 </button>
                             </div>
@@ -554,8 +554,8 @@
                             <div class="flex items-start gap-4">
                                 <div class="text-4xl" aria-hidden="true">🔒</div>
                                 <div>
-                                    <h3 class="font-bold text-blue-900 text-lg mb-2">Your vote is secure</h3>
-                                    <p class="text-blue-800 text-sm">All votes are encrypted and anonymous</p>
+                                    <h3 class="font-bold text-blue-900 text-lg mb-2">{{ $t('pages.Vote.DemoVote.Create.demo_notice.security_note') }}</h3>
+                                    <p class="text-blue-800 text-sm">{{ $t('pages.Vote.DemoVote.Create.security.encryption_note') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -563,8 +563,8 @@
                             <div class="flex items-start gap-4">
                                 <div class="text-4xl" aria-hidden="true">⏱️</div>
                                 <div>
-                                    <h3 class="font-bold text-green-900 text-lg mb-2">Session timeout</h3>
-                                    <p class="text-green-800 text-sm">You have 30 minutes to complete voting</p>
+                                    <h3 class="font-bold text-green-900 text-lg mb-2">{{ $t('pages.Vote.DemoVote.Create.alerts.session_timeout') }}</h3>
+                                    <p class="text-green-800 text-sm">{{ $t('pages.Vote.DemoVote.Create.voter_info.voting_time_remaining') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -572,8 +572,8 @@
                             <div class="flex items-start gap-4">
                                 <div class="text-4xl" aria-hidden="true">❓</div>
                                 <div>
-                                    <h3 class="font-bold text-purple-900 text-lg mb-2">Need help?</h3>
-                                    <p class="text-purple-800 text-sm">Contact the election administrator</p>
+                                    <h3 class="font-bold text-purple-900 text-lg mb-2">{{ $t('pages.Vote.DemoVote.Create.buttons.need_help') }}</h3>
+                                    <p class="text-purple-800 text-sm">{{ $t('pages.Vote.DemoVote.Create.help_section.contact_admin') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -824,11 +824,14 @@ export default {
                     const isNational = props.posts.national.some(p => p.id === post.id);
                     const postType = isNational ? 'national' : 'regional';
 
-                    console.log(`Post "${post.name}" ist ${isNational ? 'NATIONAL' : 'REGIONAL'}`);
+                    console.log(`📌 Post "${post.name}" ist ${isNational ? 'NATIONAL' : 'REGIONAL'}`);
+                    console.log(`   - Selected candidate IDs: ${selectedCandidates.value[post.id]}`);
+                    console.log(`   - Available candidates in post: ${post.candidates?.length || 0}`);
 
                     // Get full candidate objects
                     const selectedCandidatesList = selectedCandidates.value[post.id].map(id => {
                         const candidate = post.candidates.find(c => c.id === id)
+                        console.log(`   - Looking for candidate ID ${id}: ${candidate ? '✅ FOUND' : '❌ NOT FOUND'}`);
                         return {
                             candidacy_id: candidate?.candidacy_id,
                             user_name: candidate?.candidacy_name,
@@ -846,11 +849,22 @@ export default {
                 }
             })
 
-            // Debug log
-            console.log('📊 FINAL VOTE DATA:', {
-                national: voteData.national_selected_candidates.map(p => p.post_name),
-                regional: voteData.regional_selected_candidates.map(p => p.post_name)
+            // 🔴 DEBUG: Log complete vote data structure
+            console.log('📊 FINAL VOTE DATA STRUCTURE:', {
+                national_posts_count: voteData.national_selected_candidates.length,
+                regional_posts_count: voteData.regional_selected_candidates.length,
+                first_national: voteData.national_selected_candidates[0] ? {
+                    post_name: voteData.national_selected_candidates[0].post_name,
+                    candidates_count: voteData.national_selected_candidates[0].candidates?.length || 0,
+                    first_candidate: voteData.national_selected_candidates[0].candidates?.[0]
+                } : 'NO NATIONAL POSTS',
+                first_regional: voteData.regional_selected_candidates[0] ? {
+                    post_name: voteData.regional_selected_candidates[0].post_name,
+                    candidates_count: voteData.regional_selected_candidates[0].candidates?.length || 0
+                } : 'NO REGIONAL POSTS'
             });
+
+            console.log('📊 FINAL VOTE DATA (FULL):', voteData);
 
             // Submit via Inertia
             const routeName = props.useSlugPath ? 'slug.demo-vote.submit' : 'demo-vote.submit'

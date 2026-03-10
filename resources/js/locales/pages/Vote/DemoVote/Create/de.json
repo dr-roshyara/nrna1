@@ -1,0 +1,60 @@
+{
+  "page_header": {
+    "title": "In Testwahl abstimmen",
+    "badge": "Demo Modus",
+    "welcome": "Willkommen {{ user_name }}!"
+  },
+  "voter_info": {
+    "current_election": "Aktuelle Wahl:",
+    "current_voter": "Aktueller Wähler:",
+    "region": "Region:",
+    "voting_time_remaining": "Sie haben 30 Minuten zum Abstimmen",
+    "progress": "Fortschritt"
+  },
+  "demo_notice": {
+    "title": "Demo-Abstimmungsmodus",
+    "message": "Dies ist ein Test-Abstimmungssystem. Ihre Auswahl hier dient nur zu Testzwecken.",
+    "security_note": "Ihre Stimme ist sicher"
+  },
+  "security": {
+    "encryption_note": "Alle Abstimmungen sind verschlüsselt und anonym",
+    "anonymous": "Anonym",
+    "encrypted": "Verschlüsselt"
+  },
+  "voting_section": {
+    "national_posts": "Nationale Positionen",
+    "regional_posts": "Regionale Positionen",
+    "required": "Erforderlich",
+    "selected": "Ausgewählt"
+  },
+  "position_card": {
+    "position_label": "Position #{{ position_order }}",
+    "candidates_label": "Kandidaten für {{ post_name }}",
+    "required_count": "{{ required_number }} erforderlich",
+    "skip_this_position": "Diese Position überspringen"
+  },
+  "candidate_selection": {
+    "select_candidate": "Kandidat auswählen",
+    "unselect_candidate": "Auswahl aufheben",
+    "max_selection_warning": "Sie können maximal {{ max }} Kandidat(en) für {{ post_name }} auswählen"
+  },
+  "voting_agreement": {
+    "title": "Abstimmungsvereinbarung",
+    "agree_label": "Ich stimme den Bedingungen zu",
+    "confirm_message": "Bitte akzeptieren Sie die Abstimmungsvereinbarung, um fortzufahren"
+  },
+  "buttons": {
+    "submit_vote": "Stimme einreichen",
+    "submitting": "Wird eingereicht...",
+    "need_help": "Benötigen Sie Hilfe?"
+  },
+  "help_section": {
+    "help_title": "Benötigen Sie Hilfe?",
+    "contact_admin": "Kontaktieren Sie den Wahlleiter"
+  },
+  "skip_link": "Zum Hauptinhalt springen",
+  "alerts": {
+    "session_timeout": "Sitzungs-Zeitüberschreitung",
+    "required_selection_error": "Bitte wählen Sie {{ required_number }} Kandidat(en) für {{ post_name }} oder überspringen Sie die Position"
+  }
+}

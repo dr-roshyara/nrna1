@@ -3239,97 +3239,112 @@ private function retrieve_vote_record($vote_id, $voting_code = null)
  * @param string $voting_code
  * @return array
  */
-private function retrieve_demo_vote_record($voting_code)
+/**
+ * Retrieve demo vote record from database using verification code with receipt_hash validation
+ *
+ * Correct Logic:
+ * 1. Code format: "privateKey_voteId" (e.g. "b7ef740a..._a142f6a4-...")
+ * 2. Extract voteId and privateKey
+ * 3. Find vote with voteId
+ * 4. Check if hash(privateKey + voteId + salt) matches receipt_hash
+ * 5. Timing-safe comparison to prevent timing attacks
+ *
+ * @param string $votingCode
+ * @return array
+ */
+private function retrieve_demo_vote_record($votingCode)
 {
     try {
-        // Extract vote_id from verification_code if possible (format: "private_key_vote_id")
-        $demo_vote_id = null;
-        if (strpos($voting_code, '_') !== false) {
-            $parts = explode('_', $voting_code);
-            $demo_vote_id = end($parts); // Get the last part (vote_id)
-        }
-
-        // Try to find by ID first
-        if ($demo_vote_id) {
-            $demoVote = DemoVote::find($demo_vote_id);
-
-            if ($demoVote) {
-                Log::info('Demo vote found by ID', [
-                    'vote_id' => $demoVote->id,
-                    'election_id' => $demoVote->election_id
-                ]);
-
-                return [
-                    'success' => true,
-                    'vote' => $demoVote
-                ];
-            }
-        }
-
-        // Fallback: If vote not found by ID, try searching by voting_code (exact match - plain for demo)
-        Log::info('Demo vote not found by ID, searching by voting code', [
-            'vote_id' => $demo_vote_id,
-            'code_provided' => substr($voting_code, 0, 20) . '...'
+        Log::info('🔍 Verifying demo vote with code', [
+            'code_length' => strlen($votingCode),
+            'code_prefix' => substr($votingCode, 0, 10) . '...'
         ]);
 
-        $demoVote = DemoVote::where('voting_code', $voting_code)->first();
-
-        if ($demoVote) {
-            Log::info('Demo vote found by exact voting_code match', [
-                'vote_id' => $demoVote->id,
-                'election_id' => $demoVote->election_id
-            ]);
-
+        // 1️⃣ Code muss '_' enthalten
+        if (!str_contains($votingCode, '_')) {
+            Log::warning('❌ Invalid code format: no underscore');
             return [
-                'success' => true,
-                'vote' => $demoVote
+                'success' => false,
+                'message' => 'Invalid verification code format.'
             ];
         }
 
-        // Fallback 2: Search through all demo votes for exact match
-        Log::info('Demo vote not found by voting_code, searching all demo votes', [
-            'code_provided' => substr($voting_code, 0, 20) . '...'
-        ]);
-
-        $allDemoVotes = DemoVote::all();
-        Log::info('Total demo votes in database', ['count' => count($allDemoVotes)]);
-
-        $exactMatches = 0;
-        foreach ($allDemoVotes as $candidateDemoVote) {
-            if (!empty($candidateDemoVote->voting_code) && $candidateDemoVote->voting_code === $voting_code) {
-                $exactMatches++;
-                Log::info('Demo vote found by exhaustive search', [
-                    'vote_id' => $candidateDemoVote->id,
-                    'election_id' => $candidateDemoVote->election_id
-                ]);
-
-                return [
-                    'success' => true,
-                    'vote' => $candidateDemoVote
-                ];
-            }
+        // 2️⃣ Extrahiere privateKey und voteId
+        $parts = explode('_', $votingCode);
+        if (count($parts) !== 2) {
+            Log::warning('❌ Invalid code format: wrong number of parts', [
+                'parts_count' => count($parts)
+            ]);
+            return [
+                'success' => false,
+                'message' => 'Invalid verification code format.'
+            ];
         }
 
-        Log::warning('Demo vote not found by any method', [
-            'vote_id_searched' => $demo_vote_id,
-            'total_votes_checked' => count($allDemoVotes),
-            'exact_matches_found' => $exactMatches,
-            'submitted_code_length' => strlen($voting_code)
+        $privateKey = $parts[0];
+        $voteId = $parts[1];
+
+        Log::debug('Code parts extracted', [
+            'private_key_length' => strlen($privateKey),
+            'vote_id' => $voteId
+        ]);
+
+        // 3️⃣ Finde Vote mit der ID
+        $vote = DemoVote::find($voteId);
+
+        if (!$vote) {
+            Log::warning('❌ Vote not found with ID', [
+                'vote_id' => $voteId
+            ]);
+            return [
+                'success' => false,
+                'message' => 'Vote record not found.'
+            ];
+        }
+
+        // 4️⃣ Generiere erwarteten Hash
+        $expectedHash = hash('sha256',
+            $privateKey .
+            $vote->id .
+            config('app.key')
+        );
+
+        Log::debug('Hash comparison', [
+            'expected_prefix' => substr($expectedHash, 0, 10) . '...',
+            'stored_prefix' => substr($vote->receipt_hash ?? '', 0, 10) . '...',
+            'match' => hash_equals($expectedHash, $vote->receipt_hash ?? '') ? 'YES' : 'NO'
+        ]);
+
+        // 5️⃣ Prüfe Übereinstimmung mit timing-safe Vergleich
+        if (!hash_equals($expectedHash, $vote->receipt_hash ?? '')) {
+            Log::warning('❌ Hash mismatch for vote', [
+                'vote_id' => $vote->id
+            ]);
+            return [
+                'success' => false,
+                'message' => 'Invalid verification code.'
+            ];
+        }
+
+        Log::info('✅ Demo vote successfully verified', [
+            'vote_id' => $vote->id,
+            'election_id' => $vote->election_id
         ]);
 
         return [
-            'success' => false,
-            'message' => 'Demo vote record not found. Please check your verification code.'
+            'success' => true,
+            'vote' => $vote
         ];
 
     } catch (\Exception $e) {
-        Log::error('Failed to retrieve demo vote record', [
-            'error' => $e->getMessage()
+        Log::error('❌ Failed to retrieve demo vote record', [
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
         ]);
 
         return [
             'success' => false,
-            'message' => 'Database error while retrieving demo vote.'
+            'message' => 'Database error while retrieving vote.'
         ];
     }
 }
@@ -3391,25 +3406,65 @@ private function prepare_vote_display_data($vote, $auth_user, $verification_code
 private function process_vote_selections($vote)
 {
     $selections = [];
-    
+
+    // 🔴 DEBUG: Log vote structure
+    Log::info('PROCESS_VOTE_SELECTIONS: Vote type and attributes', [
+        'vote_id' => $vote->id,
+        'vote_type' => get_class($vote),
+        'total_attributes' => count($vote->getAttributes()),
+    ]);
+
     // Process all candidate columns (candidate_01, candidate_02, etc.)
-    for ($i = 1; $i <= 30; $i++) {
+    // ✅ FIXED: Changed from 30 to 60 to process all candidate columns
+    for ($i = 1; $i <= 60; $i++) {
         $column_name = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
-        
+
         if (isset($vote->$column_name) && !empty($vote->$column_name)) {
+            Log::info("✅ PROCESS_VOTE_SELECTIONS: Found data in $column_name", [
+                'vote_id' => $vote->id,
+                'column' => $column_name,
+                'data_length' => strlen($vote->$column_name),
+                'first_50_chars' => substr($vote->$column_name, 0, 50)
+            ]);
+
             $selection_data = json_decode($vote->$column_name, true);
-            
+
             if ($selection_data && is_array($selection_data)) {
                 // Enrich candidate data with additional information
                 $enriched_selection = $this->enrich_selection_data($selection_data);
-                
+
                 if ($enriched_selection) {
+                    Log::info("✅ PROCESS_VOTE_SELECTIONS: Enriched selection", [
+                        'post_name' => $enriched_selection['post_name'] ?? 'Unknown',
+                        'candidates_count' => count($enriched_selection['candidates'] ?? []),
+                        'no_vote' => $enriched_selection['no_vote'] ?? false
+                    ]);
+
                     $selections[] = $enriched_selection;
+                } else {
+                    Log::warning("❌ PROCESS_VOTE_SELECTIONS: Failed to enrich selection", [
+                        'column' => $column_name,
+                        'post_name' => $selection_data['post_name'] ?? 'Unknown'
+                    ]);
                 }
+            } else {
+                Log::warning("❌ PROCESS_VOTE_SELECTIONS: JSON decode failed or not array", [
+                    'column' => $column_name,
+                    'is_array' => is_array($selection_data)
+                ]);
             }
         }
     }
-    
+
+    Log::info('PROCESS_VOTE_SELECTIONS: Final result', [
+        'vote_id' => $vote->id,
+        'total_selections' => count($selections),
+        'selections' => array_map(fn($s) => [
+            'post_name' => $s['post_name'] ?? 'Unknown',
+            'candidates_count' => count($s['candidates'] ?? [])
+        ], $selections)
+    ]);
+
     return $selections;
 }
 
@@ -3623,8 +3678,10 @@ private function getCandidateNameFromCandidacy($candidacy)
 public function show($vote_id)
 {
     try {
+
         $sessionKey = 'vote_display_data_' . $vote_id;
         $voteDisplayData = session()->get($sessionKey);
+        dd($voteDisplayData);
 
         if (!$voteDisplayData) {
             return redirect()->route('vote.verify_to_show')

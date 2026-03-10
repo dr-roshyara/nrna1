@@ -33,15 +33,20 @@ class VoterStepTrackingService
         $isDemo = $voterSlug instanceof DemoVoterSlug;
         $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
 
+        // ✅ Both demo and real voter slug steps use 'voter_slug_id' column
+        $slugForeignKey = 'voter_slug_id';
+
         Log::info('✅ Completing step', [
             'voter_slug_id' => $voterSlug->id,
             'election_id' => $election->id,
             'step' => $step,
             'is_demo' => $isDemo,
+            'foreign_key_column' => $slugForeignKey,
         ]);
 
         // Check if step already completed
-        $existingStep = $StepModel::where('voter_slug_id', $voterSlug->id)
+        // ✅ FIXED: Use correct foreign key column name
+        $existingStep = $StepModel::where($slugForeignKey, $voterSlug->id)
             ->where('election_id', $election->id)
             ->where('step', $step)
             ->first();
@@ -56,8 +61,9 @@ class VoterStepTrackingService
         }
 
         // Create new step completion record
+        // ✅ FIXED: Use correct foreign key column name
         $data = [
-            'voter_slug_id' => $voterSlug->id,
+            $slugForeignKey => $voterSlug->id,
             'election_id' => $election->id,
             'step' => $step,
             'step_data' => $stepData,
@@ -92,7 +98,10 @@ class VoterStepTrackingService
         $isDemo = $voterSlug instanceof DemoVoterSlug;
         $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
 
-        $highest = $StepModel::where('voter_slug_id', $voterSlug->id)
+        // ✅ Both demo and real voter slug steps use 'voter_slug_id' column
+        $slugForeignKey = 'voter_slug_id';
+
+        $highest = $StepModel::where($slugForeignKey, $voterSlug->id)
             ->where('election_id', $election->id)
             ->max('step');
 
@@ -134,7 +143,10 @@ class VoterStepTrackingService
         $isDemo = $voterSlug instanceof DemoVoterSlug;
         $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
 
-        return $StepModel::where('voter_slug_id', $voterSlug->id)
+        // ✅ Both demo and real voter slug steps use 'voter_slug_id' column
+        $slugForeignKey = 'voter_slug_id';
+
+        return $StepModel::where($slugForeignKey, $voterSlug->id)
             ->where('election_id', $election->id)
             ->where('step', '<=', $step)
             ->exists();
@@ -153,13 +165,16 @@ class VoterStepTrackingService
         $isDemo = $voterSlug instanceof DemoVoterSlug;
         $StepModel = $isDemo ? DemoVoterSlugStep::class : VoterSlugStep::class;
 
-        $query = $StepModel::where('voter_slug_id', $voterSlug->id)
+        // ✅ Both demo and real voter slug steps use 'voter_slug_id' column
+        $slugForeignKey = 'voter_slug_id';
+
+        $query = $StepModel::where($slugForeignKey, $voterSlug->id)
             ->where('election_id', $election->id)
             ->orderBy('step', 'asc');
 
         // Use ordered() scope if available (VoterSlugStep has it, DemoVoterSlugStep also has it)
         if (method_exists($StepModel, 'ordered')) {
-            $query = $StepModel::where('voter_slug_id', $voterSlug->id)
+            $query = $StepModel::where($slugForeignKey, $voterSlug->id)
                 ->where('election_id', $election->id)
                 ->ordered();
         }

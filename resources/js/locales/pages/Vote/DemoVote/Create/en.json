@@ -1,0 +1,60 @@
+{
+  "page_header": {
+    "title": "Vote in Demo Election",
+    "badge": "Demo Mode",
+    "welcome": "Welcome {{ user_name }}!"
+  },
+  "voter_info": {
+    "current_election": "Current election:",
+    "current_voter": "Current voter:",
+    "region": "Region:",
+    "voting_time_remaining": "You have 30 minutes to complete voting",
+    "progress": "Progress"
+  },
+  "demo_notice": {
+    "title": "Demo Election Mode",
+    "message": "This is a test voting system. Your selections here are for testing purposes only.",
+    "security_note": "Your vote is secure"
+  },
+  "security": {
+    "encryption_note": "All votes are encrypted and anonymous",
+    "anonymous": "Anonymous",
+    "encrypted": "Encrypted"
+  },
+  "voting_section": {
+    "national_posts": "National Positions",
+    "regional_posts": "Regional Positions",
+    "required": "Required",
+    "selected": "Selected"
+  },
+  "position_card": {
+    "position_label": "Position #{{ position_order }}",
+    "candidates_label": "Candidate for {{ post_name }}",
+    "required_count": "{{ required_number }} required",
+    "skip_this_position": "Skip this position"
+  },
+  "candidate_selection": {
+    "select_candidate": "Select candidate",
+    "unselect_candidate": "Unselect",
+    "max_selection_warning": "You can only select up to {{ max }} candidate(s) for {{ post_name }}"
+  },
+  "voting_agreement": {
+    "title": "Voting Agreement",
+    "agree_label": "I agree to the terms",
+    "confirm_message": "Please accept the voting agreement to continue"
+  },
+  "buttons": {
+    "submit_vote": "Submit Your Vote",
+    "submitting": "Submitting...",
+    "need_help": "Need help?"
+  },
+  "help_section": {
+    "help_title": "Need help?",
+    "contact_admin": "Contact the election administrator"
+  },
+  "skip_link": "Skip to main content",
+  "alerts": {
+    "session_timeout": "Session timeout",
+    "required_selection_error": "Please select {{ required_number }} candidate(s) for {{ post_name }} or skip this position"
+  }
+}

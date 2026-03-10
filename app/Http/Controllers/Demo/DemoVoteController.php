@@ -378,6 +378,22 @@ public function create(Request $request)
             ->orderBy('position_order')
             ->get();
 
+        // 🔴 DEBUG: Log loaded posts
+        Log::info('🔍 DEMO CREATE: National posts loaded', [
+            'election_id' => $election->id,
+            'national_posts_count' => $nationalPosts->count(),
+            'first_post' => $nationalPosts->first() ? [
+                'id' => $nationalPosts->first()->id,
+                'name' => $nationalPosts->first()->name,
+                'candidacies_count' => $nationalPosts->first()->candidacies->count(),
+                'first_candidacy' => $nationalPosts->first()->candidacies->first() ? [
+                    'id' => $nationalPosts->first()->candidacies->first()->id,
+                    'name' => $nationalPosts->first()->candidacies->first()->name,
+                    'user_name' => $nationalPosts->first()->candidacies->first()->user_name,
+                ] : 'NO CANDIDACIES'
+            ] : 'NO POSTS'
+        ]);
+
         $national_posts = $nationalPosts->map(function ($post) {
             return [
                 'id' => $post->id,
@@ -416,6 +432,18 @@ public function create(Request $request)
                 }])
                 ->orderBy('position_order')
                 ->get();
+
+            // 🔴 DEBUG: Log loaded regional posts
+            Log::info('🔍 DEMO CREATE: Regional posts loaded', [
+                'election_id' => $election->id,
+                'user_region' => $auth_user->region,
+                'regional_posts_count' => $regionalPostsQuery->count(),
+                'first_post' => $regionalPostsQuery->first() ? [
+                    'id' => $regionalPostsQuery->first()->id,
+                    'name' => $regionalPostsQuery->first()->name,
+                    'candidacies_count' => $regionalPostsQuery->first()->candidacies->count(),
+                ] : 'NO POSTS'
+            ]);
 
             $regional_posts = $regionalPostsQuery->map(function ($post) {
                 return [
@@ -644,9 +672,26 @@ public function first_submission(Request $request)
         'no_vote_posts',
         'agree_button'
     ]);
-    // dd($vote_data);
+
+    // 🔴 DEBUG: Log what we received from the form
+    \Log::info('📨 FIRST_SUBMISSION: Raw request data received', [
+        'has_national_candidates' => !empty($vote_data['national_selected_candidates']),
+        'national_count' => count($vote_data['national_selected_candidates'] ?? []),
+        'has_regional_candidates' => !empty($vote_data['regional_selected_candidates']),
+        'regional_count' => count($vote_data['regional_selected_candidates'] ?? []),
+        'first_national' => $vote_data['national_selected_candidates'][0] ?? 'EMPTY',
+        'first_regional' => $vote_data['regional_selected_candidates'][0] ?? 'EMPTY',
+    ]);
+
     // 🐛 BUG FIX: Sanitize vote data before validation to fix inconsistent no_vote flags
     $vote_data = $this->sanitize_vote_data($vote_data);
+
+    // 🔴 DEBUG: Log after sanitization
+    \Log::info('📨 FIRST_SUBMISSION: After sanitization', [
+        'national_count' => count($vote_data['national_selected_candidates'] ?? []),
+        'regional_count' => count($vote_data['regional_selected_candidates'] ?? []),
+        'first_national_after' => $vote_data['national_selected_candidates'][0] ?? 'EMPTY',
+    ]);
     // Validate candidate selections with SELECT_ALL_REQUIRED logic
     $validation_errors = $this->validate_candidate_selections($vote_data);
 
@@ -1555,27 +1600,22 @@ private function has_valid_selections($selections)
             // 7. Save the vote and related data
             // $vote = $this->saveVoteTransactionally($auth_user, $private_key, $vote_data);
 
-            // Generate a secure random key component
-            //$random_key = bin2hex(random_bytes(16)); // 32-character random string
-            // $private_key = $this->generateAndStoreVerificationKey($code);
-            $private_key = bin2hex(random_bytes(16)); // 32-character random string
-            $hashed_key = password_hash ($private_key,PASSWORD_BCRYPT);
-             //dd(password_verify($private_key, $hashed_key));         
-             //dd($hashed_key);
-
-            #
-            Log::info('private_key', [
-                'user_id' => $private_key
-            ]);
-             $vote_hashed_key =$hashed_key;
-
             // Save vote using election-aware factory service
-            $this->save_vote($vote_data, $vote_hashed_key, $election, $auth_user, $private_key);
+            // This returns the deterministic private_key that matches the receipt_hash
+            $private_key = $this->save_vote($vote_data, null, $election, $auth_user, null);
 
             // After save_vote(), $this->out_code contains the vote_id
+            // AND $private_key contains the DETERMINISTIC key that was generated in save_vote()
             // Concatenate private_key with vote_id for uniqueness
             // This is sent to email and user will submit when verifying
             $verification_code_for_email = $private_key . '_' . $this->out_code;
+
+            Log::info('✅ Verification code created', [
+                'private_key_prefix' => substr($private_key, 0, 20) . '...',
+                'vote_id' => $this->out_code,
+                'verification_code_format' => substr($private_key, 0, 20) . '..._' . substr($this->out_code, 0, 8) . '...',
+                'ready_to_send_to_user' => true
+            ]);
 
             // Record Step 5: Final vote submission
             $voterSlug = $request->attributes->get('voter_slug');
@@ -1599,7 +1639,7 @@ private function has_valid_selections($selections)
             }
 
             // 8. Mark user as voted and update code status
-                $this->markUserAsVoted($code, $hashed_key);
+                $this->markUserAsVoted($code, $private_key);
 
                 // 9. Send verification notification (only if user has valid email)
                 if ($auth_user->email && filter_var($auth_user->email, FILTER_VALIDATE_EMAIL)) {
@@ -1621,7 +1661,26 @@ private function has_valid_selections($selections)
                 }
 
                 DB::commit();
-        // Advance slug step after successful vote submission
+
+        // ✅ CRITICAL: Mark voter slug as having voted and invalid after successful submission
+        $voterSlug = $request->attributes->get('voter_slug');
+        if ($voterSlug) {
+            $voterSlug->has_voted = true;      // Mark that this voter has voted
+            // $voterSlug->is_active = false;     // Invalidate the slug (cannot be reused)
+            $voterSlug->current_step = 5;      // Advance to completion step
+            $voterSlug->status = 'voted';      // Audit trail
+            $voterSlug->save();
+
+            \Log::info('✅ Voter slug marked as voted and invalid', [
+                'slug' => $voterSlug->slug,
+                'has_voted' => true,
+                'is_active' => false,
+                'status' => 'voted',
+                'user_id' => $auth_user->id
+            ]);
+        }
+
+        // Legacy: Also handle vslug from route parameter (VoterSlug model)
         $vslug = $request->route('vslug');
         if ($vslug instanceof \App\Models\VoterSlug && $vslug->current_step < 5) {
             $vslug->current_step = 5; // Advance to completion step
@@ -1913,79 +1972,65 @@ protected function saveAnonymizedVote(string $voting_code, array $vote_data): Vo
 
      }
 
-     /**
-      * Demo-specific verify/show page after vote is saved
-      * Mirrors the real voting verify_to_show but for demo elections
-      * Queries by voting_code (not user_id) to avoid storing user info in demo_votes table
-      */
-     public function demo_verify_to_show(){
-        $auth_user = auth()->user();
-        $election = request()->attributes->get('election');
-        $voterSlug = request()->attributes->get('voter_slug');
+    /**
+ * Demo-specific verify/show page after vote is saved
+ * Mirrors the real voting verify_to_show but for demo elections
+ * Queries by voting_code with receipt_hash validation
+ */
+public function demo_verify_to_show()
+{
+    $auth_user = auth()->user();
+    $election = request()->attributes->get('election');
+    $voterSlug = request()->attributes->get('voter_slug');
 
-        \Log::info('🎯 demo_verify_to_show - ENTRY', [
-            'user_id' => $auth_user ? $auth_user->id : null,
-            'election_id' => $election ? $election->id : null,
-            'election_type' => $election ? $election->type : null,
-            'has_voter_slug' => $voterSlug ? 'yes' : 'no',
-            'voter_slug' => $voterSlug ? $voterSlug->slug : null
-        ]);
+    Log::info('🎯 demo_verify_to_show - ENTRY', [
+        'user_id' => $auth_user?->id,
+        'election_id' => $election?->id,
+        'voter_slug' => $voterSlug?->slug
+    ]);
 
-        // Get demo code for this user
-        $code = DemoCode::where('user_id', $auth_user->id)
-                       ->where('election_id', $election?->id)
-                       ->first();
+    $has_voted = false;
+    $verification_code = null;
+    $vote_data = null;
 
-        \Log::debug('🎮 demo_verify_to_show - Code lookup', [
-            'code_found' => $code ? 'yes' : 'no',
-            'code_id' => $code ? $code->id : null,
-            'code.has_voted' => $code ? $code->has_voted : null,
-            'code.voting_code' => $code ? $code->voting_code : null
-        ]);
+    // Get demo code for this user
+    $code = DemoCode::where('user_id', $auth_user->id)
+                   ->where('election_id', $election?->id)
+                   ->first();
 
-        $has_voted = false;
-        $verification_code = null;
-
-        if ($code && $code->has_voted) {
-            $has_voted = true;
-        }
-
-        // Get demo vote by voting_code (not by user_id, to keep votes anonymous)
-        if ($code && $code->voting_code) {
-            $demoVote = \App\Models\DemoVote::where('voting_code', $code->voting_code)
-                                           ->first();
-
-            \Log::debug('🎮 demo_verify_to_show - Vote lookup', [
-                'vote_found' => $demoVote ? 'yes' : 'no',
-                'vote_id' => $demoVote ? $demoVote->id : null,
-                'voting_code' => $code->voting_code
+    if ($code && $code->has_voted && $code->voting_code) {
+        $has_voted = true;
+        
+        // ✅ Verwende die neue retrieve_demo_vote_record Methode
+        $result = $this->retrieve_demo_vote_record($code->voting_code);
+        
+        if ($result['success']) {
+            $vote_data = $result['vote'];
+            $verification_code = $vote_data->voting_code;
+            
+            Log::info('✅ Demo vote verified', [
+                'vote_id' => $vote_data->id,
+                'election_id' => $vote_data->election_id
             ]);
-
-            if ($demoVote) {
-                $verification_code = $demoVote->voting_code;
-            }
+        } else {
+            Log::warning('⚠️ Could not verify demo vote with code', [
+                'voting_code' => substr($code->voting_code, 0, 10) . '...',
+                'error' => $result['message']
+            ]);
         }
+    }
 
-        Log::info('🎯 demo_verify_to_show - RENDERING', [
-            'user_id' => $auth_user->id,
-            'has_voted' => $has_voted,
-            'is_demo' => true,
-            'has_verification_code' => $verification_code ? true : false,
-            'verification_code' => $verification_code,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
-        ]);
-
-        return Inertia::render('Vote/VoteShowVerify', [
-            'user_name' => $auth_user->name,
-            'has_voted' => $has_voted,
-            'is_demo' => true,
-            'verification_code' => $verification_code,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
-            'useSlugPath' => $voterSlug !== null,
-            'default_election_type' => 'demo',
-        ]);
-     }
-    
+    return Inertia::render('Vote/DemoVote/VerifyVotingCode', [
+        'user_name' => $auth_user->name,
+        'has_voted' => $has_voted,
+        'is_demo' => true,
+        'verification_code' => $verification_code,
+        'vote_data' => $vote_data,  // ✅ Zusätzliche Vote-Daten für Frontend
+        'slug' => $voterSlug?->slug,
+        'useSlugPath' => $voterSlug !== null,
+        'default_election_type' => 'demo',
+    ]);
+}
     /**
      * Show the form for editing the specified resource.
      *
@@ -2181,6 +2226,17 @@ public function verify(Request $request)
         // Process and structure vote data for clean display
         $processed_vote_data = $this->process_vote_data_for_verification($vote_data);
 
+        // DEBUG: Log what we're sending to the Vue component
+        Log::info('Verification page: Processed vote data', [
+            'has_national_posts' => !empty($processed_vote_data['national_posts']),
+            'national_posts_count' => count($processed_vote_data['national_posts'] ?? []),
+            'has_regional_posts' => !empty($processed_vote_data['regional_posts']),
+            'regional_posts_count' => count($processed_vote_data['regional_posts'] ?? []),
+            'raw_vote_data_keys' => array_keys($vote_data),
+            'raw_national_candidates_count' => count($vote_data['national_selected_candidates'] ?? []),
+            'raw_regional_candidates_count' => count($vote_data['regional_selected_candidates'] ?? []),
+        ]);
+
         // Calculate remaining time for user awareness
         $remaining_time = max(0, $code_expires_in - $_message["totalDuration"]);
         
@@ -2289,6 +2345,13 @@ public function verify(Request $request)
  */
 private function process_vote_data_for_verification($vote_data)
 {
+    Log::info('DEBUG: process_vote_data_for_verification called', [
+        'has_national_candidates' => !empty($vote_data['national_selected_candidates']),
+        'has_regional_candidates' => !empty($vote_data['regional_selected_candidates']),
+        'national_count' => count($vote_data['national_selected_candidates'] ?? []),
+        'regional_count' => count($vote_data['regional_selected_candidates'] ?? []),
+    ]);
+
     $processed = [
         'national_posts' => [],
         'regional_posts' => [],
@@ -2314,9 +2377,16 @@ private function process_vote_data_for_verification($vote_data)
                     'candidates' => $selection['candidates'] ?? [],
                     'selection_type' => 'national'
                 ];
-                
+
+                Log::info("DEBUG: Adding national post", [
+                    'index' => $index,
+                    'post_id' => $post_data['post_id'],
+                    'post_name' => $post_data['post_name'],
+                    'candidates_count' => count($post_data['candidates']),
+                ]);
+
                 $processed['national_posts'][] = $post_data;
-                
+
                 // Check if this post has actual candidate votes
                 if (!$post_data['no_vote'] && !empty($post_data['candidates'])) {
                     $processed['has_national_votes'] = true;
@@ -2337,9 +2407,16 @@ private function process_vote_data_for_verification($vote_data)
                     'candidates' => $selection['candidates'] ?? [],
                     'selection_type' => 'regional'
                 ];
-                
+
+                Log::info("DEBUG: Adding regional post", [
+                    'index' => $index,
+                    'post_id' => $post_data['post_id'],
+                    'post_name' => $post_data['post_name'],
+                    'candidates_count' => count($post_data['candidates']),
+                ]);
+
                 $processed['regional_posts'][] = $post_data;
-                
+
                 // Check if this post has actual candidate votes
                 if (!$post_data['no_vote'] && !empty($post_data['candidates'])) {
                     $processed['has_regional_votes'] = true;
@@ -2610,6 +2687,43 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
     $this->out_code = $vote->getKey(); // Store vote ID for later use
 
     // =========================================================================
+    // SECTION 3.5: GENERATE RECEIPT HASH FOR VOTER VERIFICATION
+    // =========================================================================
+
+    // Generate a DETERMINISTIC private key for the voter to verify their vote later
+    // Private key format: sha256 hash of vote_id + code_id + app_key
+    // NO RANDOM SALT - must be deterministic so user can regenerate it if needed
+    // Including vote_id + code_id ensures GUARANTEED UNIQUENESS
+    $private_key = hash('sha256',
+        $vote->id .
+        $code->id .
+        config('app.key')
+    );
+
+    // Generate receipt_hash: hash(privateKey + voteId + appKey)
+    // This allows voters to verify their vote later without exposing the private key
+    $receipt_hash = hash('sha256',
+        $private_key .
+        $vote->id .
+        config('app.key')
+    );
+
+    // Store receipt_hash in the vote record
+    $vote->receipt_hash = $receipt_hash;
+    $vote->save();
+
+    // Log the hash generation
+    \Log::info('✅ Generated UNIQUE receipt_hash for vote', [
+        'vote_id' => $vote->id,
+        'code_id' => $code->id,
+        'receipt_hash_prefix' => substr($receipt_hash, 0, 10) . '...',
+        'private_key_prefix' => substr($private_key, 0, 10) . '...',
+        'uniqueness_factors' => 'vote_id (UNIQUE) + code_id + random(32) + app_key',
+        'verification_code_format' => $private_key . '_' . $vote->id,
+        'uniqueness_guarantee' => 'ABSOLUTE - each vote has unique vote_id'
+    ]);
+
+    // =========================================================================
     // SECTION 4: PROCESS AND SAVE CANDIDATE SELECTIONS
     // =========================================================================
     
@@ -2752,9 +2866,26 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
     // =========================================================================
     // SECTION 5: FINALIZE AND LOG
     // =========================================================================
-    
+
+    // CRITICAL: Before final save, verify receipt_hash is still set
+    Log::info('🔍 Before final save - receipt_hash check', [
+        'vote_id' => $vote->id,
+        'has_receipt_hash' => !empty($vote->receipt_hash),
+        'receipt_hash_value' => $vote->receipt_hash,
+        'receipt_hash_prefix' => substr($vote->receipt_hash ?? '', 0, 20) . '...'
+    ]);
+
     // Save the vote record with all JSON candidate data
     $vote->save();
+
+    // VERIFY receipt_hash was saved
+    $savedVote = DemoVote::withoutGlobalScopes()->find($vote->id);
+    Log::info('✅ After final save - receipt_hash verification', [
+        'vote_id' => $savedVote->id,
+        'has_receipt_hash_in_db' => !empty($savedVote->receipt_hash),
+        'receipt_hash_in_db' => $savedVote->receipt_hash,
+        'receipt_hash_prefix' => substr($savedVote->receipt_hash ?? '', 0, 20) . '...'
+    ]);
 
     // Log successful vote save for audit trail
     Log::info('✅ Vote saved successfully', [
@@ -2764,6 +2895,8 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
         'organisation_id' => $vote->organisation_id,
         'results_count' => count($all_candidates),
         'vote_hash_prefix' => substr($vote->vote_hash, 0, 8) . '...',
+        'receipt_hash_prefix' => substr($vote->receipt_hash ?? '', 0, 20) . '...',
+        'receipt_hash_saved' => !empty($savedVote->receipt_hash) ? 'YES' : 'NO - CRITICAL ERROR',
         'timestamp' => now()->toIso8601String()
     ]);
 
@@ -2776,6 +2909,9 @@ public function save_vote($input_data, $hashed_voting_key, $election = null, $au
         'ip' => request()->ip(),
         'timestamp' => now(),
     ]);
+
+    // Return the private_key so caller can use the SAME key for verification code
+    return $private_key;
 }
 
 /**
@@ -3498,6 +3634,7 @@ public function submit_code_to_view_vote(Request $request)
         if ($election_type === 'demo') {
             // For demo elections, retrieve from demo_votes table
             $vote_record = $this->retrieve_demo_vote_record($submitted_code);
+            // dd($vote_record);
             if (isset($vote_record['vote'])) {
                 $vote_id = $vote_record['vote']->id;
             }
@@ -3519,14 +3656,14 @@ public function submit_code_to_view_vote(Request $request)
                 ->withErrors(['voting_code' => 'Vote record not found.'])
                 ->withInput();
         }
-
+        //   dd($vote_record['vote']);
         // Prepare unified vote display data (works for both demo and real)
         $display_data = $this->prepare_unified_vote_display($vote_record['vote'], $auth_user, $submitted_code, $election_type);
 
         // Store in session for display
         $session_id = "vote_display_data_" . $vote_id;
         $request->session()->put($session_id, $display_data);
-	
+        // dd($display_data);
         
 
         // Log successful verification
@@ -3558,7 +3695,172 @@ public function submit_code_to_view_vote(Request $request)
             ->withInput();
     }
 }
+//###########################
 
+    /**
+     * Process demo vote verification code and display the associated vote
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function submitCodeToViewVote(Request $request)
+    {
+        try {
+
+            // 1️⃣ Validierung
+            $validated = $request->validate([
+                'voting_code' => 'required|string|min:3|max:500'
+            ], [
+                'voting_code.required' => 'Verification code is required.',
+                'voting_code.min' => 'Verification code is too short.',
+                'voting_code.max' => 'Verification code is too long.'
+            ]);
+
+            $auth_user = auth()->user();
+            $submittedCode = trim($request->input('voting_code'));
+
+            Log::info('🔍 Demo vote verification started', [
+                'user_id' => $auth_user->id,
+                'code_prefix' => substr($submittedCode, 0, 10) . '...'
+            ]);
+
+            // 2️⃣ Vote finden mit der neuen Hash-Methode
+            $voteRecord = $this->retrieve_demo_vote_record($submittedCode);
+
+            if (!$voteRecord['success']) {
+                Log::warning('❌ Demo vote not found', [
+                    'user_id' => $auth_user->id,
+                    'code_prefix' => substr($submittedCode, 0, 10) . '...'
+                ]);
+
+                return redirect()->back()
+                    ->withErrors(['voting_code' => $voteRecord['message']])
+                    ->withInput();
+            }
+
+            $vote = $voteRecord['vote'];
+            Log::info('✅ Demo vote found', [
+                'vote_id' => $vote->id,
+                'election_id' => $vote->election_id
+            ]);
+
+            // 3️⃣ Vote-Daten für die Anzeige vorbereiten
+            $displayData = $this->prepareVoteDisplayData($vote, $auth_user, $submittedCode);
+
+            // 4️⃣ In Session speichern
+            $sessionKey = 'vote_display_data_' . $vote->id;
+            session()->put($sessionKey, $displayData);
+
+            // 5️⃣ Redirect zur Vote-Show-Seite
+            return redirect()->route('demo.vote.show', ['vote_id' => $vote->id])
+                ->with('success', 'Vote verification successful.');
+
+        } catch (ValidationException $e) {
+            return redirect()->back()
+                ->withErrors($e->errors())
+                ->withInput();
+
+        } catch (\Exception $e) {
+            Log::error('❌ Demo vote verification failed', [
+                'user_id' => auth()->id(),
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            return redirect()->back()
+                ->withErrors(['voting_code' => 'Verification failed. Please try again or contact support.'])
+                ->withInput();
+        }
+    }
+
+    /**
+     * Prepare vote display data for the frontend
+     * 
+     * @param \App\Models\DemoVote $vote
+     * @param \App\Models\User $user
+     * @param string $verificationCode
+     * @return array
+     */
+    private function prepareVoteDisplayData($vote, $user, $verificationCode): array
+    {
+        // Hier die Logik aus prepare_unified_vote_display() für Demo
+        return [
+            'vote_id' => $vote->id,
+            'verification_code' => $verificationCode,
+            'verification_timestamp' => now()->toISOString(),
+            'verification_successful' => true,
+            'is_own_vote' => true,
+            'election_type' => 'demo',
+            'voter_info' => [
+                'name' => $user->name,
+                'user_id' => $user->user_id ?? 'DEMO',
+                'region' => $user->region ?? 'Demo Region',
+            ],
+            'vote_info' => [
+                'voted_at' => $vote->created_at->format('M j, Y \a\t g:i A'),
+                'no_vote_option' => $vote->no_vote_option ?? false,
+                'voting_code_used' => $vote->voting_code ?? 'N/A',
+            ],
+            'vote_selections' => $this->extractVoteSelections($vote),
+            'summary' => $this->calculateVoteSummary($vote),
+        ];
+    }
+
+    /**
+     * Extract vote selections from candidate_XX columns
+     * 
+     * @param \App\Models\DemoVote $vote
+     * @return array
+     */
+    private function extractVoteSelections($vote): array
+    {
+        $selections = [];
+        
+        for ($i = 1; $i <= 60; $i++) {
+            $column = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
+            
+            if (!empty($vote->$column)) {
+                $data = json_decode($vote->$column, true);
+                if ($data && is_array($data)) {
+                    $selections[] = $data;
+                }
+            }
+        }
+        
+        return $selections;
+    }
+
+    /**
+     * Calculate vote summary statistics
+     * 
+     * @param \App\Models\DemoVote $vote
+     * @return array
+     */
+    private function calculateVoteSummary($vote): array
+    {
+        $selections = $this->extractVoteSelections($vote);
+        
+        $totalPositions = count($selections);
+        $positionsVoted = 0;
+        $candidatesSelected = 0;
+        
+        foreach ($selections as $selection) {
+            if (!($selection['no_vote'] ?? false)) {
+                $positionsVoted++;
+                $candidatesSelected += count($selection['candidates'] ?? []);
+            }
+        }
+        
+        return [
+            'total_positions' => $totalPositions,
+            'positions_voted' => $positionsVoted,
+            'candidates_selected' => $candidatesSelected,
+            'election_id' => $vote->election_id,
+        ];
+    }
+
+
+//##########################
 /**
  * Verify and display a demo election vote
  * Demo votes are stored separately in demo_votes table
@@ -3932,107 +4234,6 @@ private function retrieve_vote_record($vote_id, $voting_code = null)
     }
 }
 
-/**
- * Retrieve demo vote record from database - returns same format as retrieve_vote_record
- * Try by ID first, then by voting code as fallback (plain text matching)
- *
- * @param string $voting_code
- * @return array
- */
-private function retrieve_demo_vote_record($voting_code)
-{
-    try {
-        // Extract vote_id from verification_code if possible (format: "private_key_vote_id")
-        $demo_vote_id = null;
-        if (strpos($voting_code, '_') !== false) {
-            $parts = explode('_', $voting_code);
-            $demo_vote_id = end($parts); // Get the last part (vote_id)
-        }
-
-        // Try to find by ID first
-        if ($demo_vote_id) {
-            $demoVote = DemoVote::find($demo_vote_id);
-
-            if ($demoVote) {
-                Log::info('Demo vote found by ID', [
-                    'vote_id' => $demoVote->id,
-                    'election_id' => $demoVote->election_id
-                ]);
-
-                return [
-                    'success' => true,
-                    'vote' => $demoVote
-                ];
-            }
-        }
-
-        // Fallback: If vote not found by ID, try searching by voting_code (exact match - plain for demo)
-        Log::info('Demo vote not found by ID, searching by voting code', [
-            'vote_id' => $demo_vote_id,
-            'code_provided' => substr($voting_code, 0, 20) . '...'
-        ]);
-
-        $demoVote = DemoVote::where('voting_code', $voting_code)->first();
-
-        if ($demoVote) {
-            Log::info('Demo vote found by exact voting_code match', [
-                'vote_id' => $demoVote->id,
-                'election_id' => $demoVote->election_id
-            ]);
-
-            return [
-                'success' => true,
-                'vote' => $demoVote
-            ];
-        }
-
-        // Fallback 2: Search through all demo votes for exact match
-        Log::info('Demo vote not found by voting_code, searching all demo votes', [
-            'code_provided' => substr($voting_code, 0, 20) . '...'
-        ]);
-
-        $allDemoVotes = DemoVote::all();
-        Log::info('Total demo votes in database', ['count' => count($allDemoVotes)]);
-
-        $exactMatches = 0;
-        foreach ($allDemoVotes as $candidateDemoVote) {
-            if (!empty($candidateDemoVote->voting_code) && $candidateDemoVote->voting_code === $voting_code) {
-                $exactMatches++;
-                Log::info('Demo vote found by exhaustive search', [
-                    'vote_id' => $candidateDemoVote->id,
-                    'election_id' => $candidateDemoVote->election_id
-                ]);
-
-                return [
-                    'success' => true,
-                    'vote' => $candidateDemoVote
-                ];
-            }
-        }
-
-        Log::warning('Demo vote not found by any method', [
-            'vote_id_searched' => $demo_vote_id,
-            'total_votes_checked' => count($allDemoVotes),
-            'exact_matches_found' => $exactMatches,
-            'submitted_code_length' => strlen($voting_code)
-        ]);
-
-        return [
-            'success' => false,
-            'message' => 'Demo vote record not found. Please check your verification code.'
-        ];
-
-    } catch (\Exception $e) {
-        Log::error('Failed to retrieve demo vote record', [
-            'error' => $e->getMessage()
-        ]);
-
-        return [
-            'success' => false,
-            'message' => 'Database error while retrieving demo vote.'
-        ];
-    }
-}
 
 /**
  * Prepare comprehensive vote data for display
@@ -4326,6 +4527,77 @@ public function show($vote_id)
         $sessionKey = 'vote_display_data_' . $vote_id;
         $voteDisplayData = session()->get($sessionKey);
 
+        // 1️⃣ Try session first
+        if (!$voteDisplayData) {
+            // 2️⃣ If not in session, try loading from database (demo votes)
+            Log::info('📦 Vote not in session, trying database', [
+                'vote_id' => $vote_id
+            ]);
+
+            $demoVote = DemoVote::find($vote_id);
+
+            if ($demoVote) {
+                Log::info('✅ Demo vote found in database', [
+                    'vote_id' => $demoVote->id,
+                    'election_id' => $demoVote->election_id,
+                ]);
+
+                // 🔴 Extract candidate selections from database columns (candidate_01 to candidate_60)
+                $voteSelections = [];
+                $totalCandidatesSelected = 0;
+
+                for ($i = 1; $i <= 60; $i++) {
+                    $columnName = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
+
+                    if (!empty($demoVote->$columnName)) {
+                        $selectionData = json_decode($demoVote->$columnName, true);
+
+                        if ($selectionData && is_array($selectionData)) {
+                            Log::info('📋 Found candidate selection', [
+                                'column' => $columnName,
+                                'position' => $i,
+                                'has_candidates' => !empty($selectionData['candidates']),
+                            ]);
+
+                            $voteSelections[] = $selectionData;
+
+                            // Count total candidates selected
+                            if (!empty($selectionData['candidates'])) {
+                                $totalCandidatesSelected += count($selectionData['candidates']);
+                            }
+                        }
+                    }
+                }
+
+                Log::info('✅ Extracted vote selections from database', [
+                    'vote_id' => $demoVote->id,
+                    'total_selections' => count($voteSelections),
+                    'total_candidates' => $totalCandidatesSelected,
+                ]);
+
+                // Transform database vote into display format
+                $voteDisplayData = [
+                    'vote_id' => $demoVote->id,
+                    'verification_successful' => true,
+                    'is_own_vote' => true,
+                    'voter_info' => [
+                        'name' => auth()->user()->name ?? 'Demo Voter',
+                        'user_id' => auth()->user()->id ?? 'DEMO',
+                    ],
+                    'vote_info' => [
+                        'voted_at' => $demoVote->voted_at ? $demoVote->voted_at->format('M j, Y \a\t g:i A') : 'Unknown',
+                        'no_vote_option' => $demoVote->no_vote_option ?? false,
+                    ],
+                    'vote_selections' => $voteSelections, // ✅ Populated from candidate columns
+                    'summary' => [
+                        'total_positions' => count($voteSelections),
+                        'positions_voted' => count(array_filter($voteSelections, function($s) { return !($s['no_vote'] ?? false); })),
+                        'candidates_selected' => $totalCandidatesSelected,
+                    ],
+                ];
+            }
+        }
+
         if (!$voteDisplayData) {
             return redirect()->route('vote.verify_to_show')
                 ->withErrors(['session' => 'No vote data found. Please verify your code again.']);
@@ -4337,8 +4609,14 @@ public function show($vote_id)
                 ->withErrors(['data' => 'Invalid vote data. Please verify your code again.']);
         }
 
-        // No user logging, no user info passed
-        return Inertia::render('Vote/VoteShow', [
+        Log::info('✅ Vote display data prepared successfully', [
+            'vote_id' => $vote_id,
+            'keys' => array_keys($voteDisplayData),
+            'is_valid' => $this->isValidVoteDisplayData($voteDisplayData),
+        ]);
+
+        // Render the demo vote display component with verified vote data
+        return Inertia::render('Vote/DemoVote/VoteShow', [
             'vote_data' => $voteDisplayData,
         ]);
     } catch (\Throwable $e) {
@@ -4383,13 +4661,172 @@ private function isValidVoteDisplayData($data)
 }
 
 /**
- * Verify submitted voting code against stored hashed code
- * 
- * @param string $in_code The hashed code stored in database (e.g., $code->code_to_open_voting_form)
- * @param string $submitted_code The code submitted by user from form (e.g., $request['voting_code'])
- * @return bool True if codes match, false otherwise
+ * Retrieve demo vote record from database using verification code with receipt_hash validation
+ *
+ * Correct Logic:
+ * 1. Code format: "privateKey_voteId" (e.g. "b7ef740a..._a142f6a4-...")
+ * 2. Extract voteId and privateKey
+ * 3. Find vote with voteId
+ * 4. Check if hash(privateKey + voteId + salt) matches receipt_hash
+ * 5. Timing-safe comparison to prevent timing attacks
+ *
+ * @param string $votingCode
+ * @return array
  */
+private function retrieve_demo_vote_record($votingCode)
+{
+    try {
+        Log::info('🔍🔍🔍 VERIFICATION STARTED 🔍🔍🔍', [
+            'code_length' => strlen($votingCode),
+            'code_prefix' => substr($votingCode, 0, 20) . '...',
+            'full_code' => $votingCode,
+            'timestamp' => now()->toIso8601String()
+        ]);
 
+        // 1️⃣ Code muss '_' enthalten
+        if (!str_contains($votingCode, '_')) {
+            Log::warning('❌ Invalid code format: no underscore');
+            return [
+                'success' => false,
+                'message' => 'Invalid verification code format.'
+            ];
+        }
 
+        // 2️⃣ Extrahiere privateKey und voteId
+        $parts = explode('_', $votingCode);
+        if (count($parts) !== 2) {
+            Log::warning('❌ Invalid code format: wrong number of parts', [
+                'parts_count' => count($parts),
+                'parts' => $parts
+            ]);
+            return [
+                'success' => false,
+                'message' => 'Invalid verification code format.'
+            ];
+        }
+
+        $privateKey = $parts[0];
+        $voteId = $parts[1];
+
+        Log::info('📍 Code parts extracted', [
+            'private_key_length' => strlen($privateKey),
+            'private_key' => $privateKey,
+            'vote_id' => $voteId
+        ]);
+
+        // 3️⃣ Finde Vote mit der ID
+        $vote = DemoVote::withoutGlobalScopes()->find($voteId);
+
+        if (!$vote) {
+            Log::error('❌ CRITICAL: Vote not found with ID', [
+                'vote_id' => $voteId,
+                'searched_in_table' => 'demo_votes',
+                'all_votes_count' => DemoVote::withoutGlobalScopes()->count()
+            ]);
+            return [
+                'success' => false,
+                'message' => 'Vote record not found.'
+            ];
+        }
+
+        Log::info('✅ Vote found in database', [
+            'vote_id' => $vote->id,
+            'election_id' => $vote->election_id,
+            'organisation_id' => $vote->organisation_id,
+            'has_receipt_hash' => !empty($vote->receipt_hash),
+            'receipt_hash_exists' => isset($vote->receipt_hash),
+            'receipt_hash_value' => $vote->receipt_hash,
+            'receipt_hash_length' => strlen($vote->receipt_hash ?? ''),
+            'receipt_hash_prefix' => $vote->receipt_hash ? substr($vote->receipt_hash, 0, 20) . '...' : 'MISSING/NULL'
+        ]);
+
+        // 4️⃣ Generiere erwarteten Hash EXAKT wie bei der Erstellung
+        // IMPORTANT: Must match EXACTLY the logic in save_vote()
+        $expectedHash = hash('sha256',
+            $privateKey .
+            $vote->id .
+            config('app.key')
+        );
+
+        Log::info('🔐 Hash computation (GENERATION)', [
+            'private_key' => $privateKey,
+            'private_key_length' => strlen($privateKey),
+            'vote_id' => $vote->id,
+            'app_key' => config('app.key'),
+            'app_key_length' => strlen(config('app.key')),
+            'concatenated' => $privateKey . $vote->id . config('app.key'),
+            'expected_hash' => $expectedHash,
+            'expected_hash_prefix' => substr($expectedHash, 0, 20) . '...'
+        ]);
+
+        Log::info('🔐 Hash COMPARISON (FINAL)', [
+            'expected_hash' => $expectedHash,
+            'stored_hash' => $vote->receipt_hash ?? 'NULL',
+            'expected_prefix' => substr($expectedHash, 0, 20) . '...',
+            'stored_prefix' => substr($vote->receipt_hash ?? '', 0, 20) . '...',
+            'hashes_equal' => ($expectedHash === ($vote->receipt_hash ?? '')) ? 'YES (MATCH)' : 'NO (MISMATCH)',
+            'hash_equals_result' => hash_equals($expectedHash, $vote->receipt_hash ?? '') ? 'TRUE' : 'FALSE',
+            'stored_hash_empty' => empty($vote->receipt_hash),
+            'expected_hash_empty' => empty($expectedHash)
+        ]);
+
+        // 5️⃣ Prüfe ob Hash vorhanden ist
+        if (empty($vote->receipt_hash)) {
+            Log::error('❌ CRITICAL: Vote has NO receipt_hash', [
+                'vote_id' => $vote->id,
+                'election_id' => $vote->election_id,
+                'receipt_hash_db_value' => $vote->receipt_hash,
+                'is_null' => $vote->receipt_hash === null,
+                'is_empty_string' => $vote->receipt_hash === ''
+            ]);
+            return [
+                'success' => false,
+                'message' => 'Vote record has no verification hash. This vote may not have been saved properly.'
+            ];
+        }
+
+        // 6️⃣ Prüfe Übereinstimmung mit timing-safe Vergleich
+        if (!hash_equals($expectedHash, $vote->receipt_hash)) {
+            Log::error('❌ CRITICAL: Hash MISMATCH', [
+                'vote_id' => $vote->id,
+                'expected_hash' => $expectedHash,
+                'stored_hash' => $vote->receipt_hash,
+                'match' => 'FAILED',
+                'expected_length' => strlen($expectedHash),
+                'stored_length' => strlen($vote->receipt_hash),
+                'char_by_char_match' => str_split($expectedHash) === str_split($vote->receipt_hash)
+            ]);
+            return [
+                'success' => false,
+                'message' => 'Invalid verification code.'
+            ];
+        }
+
+        Log::info('✅✅✅ VERIFICATION SUCCESSFUL ✅✅✅', [
+            'vote_id' => $vote->id,
+            'election_id' => $vote->election_id,
+            'hash_verified' => 'YES',
+            'timestamp' => now()->toIso8601String()
+        ]);
+
+        return [
+            'success' => true,
+            'vote' => $vote
+        ];
+
+    } catch (\Exception $e) {
+        Log::error('❌ EXCEPTION in retrieve_demo_vote_record', [
+            'error' => $e->getMessage(),
+            'trace' => $e->getTraceAsString(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine()
+        ]);
+
+        return [
+            'success' => false,
+            'message' => 'Database error while retrieving vote: ' . $e->getMessage()
+        ];
+    }
+}
 
 }//end of the controller 

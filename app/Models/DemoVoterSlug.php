@@ -88,7 +88,7 @@ class DemoVoterSlug extends Model
 
     public function steps()
     {
-        return $this->hasMany(DemoVoterSlugStep::class, 'demo_voter_slug_id');
+        return $this->hasMany(DemoVoterSlugStep::class, 'voter_slug_id');
     }
 
     public function scopeValid($query)
