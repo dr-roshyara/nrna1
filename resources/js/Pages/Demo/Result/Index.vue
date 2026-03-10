@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
     <!-- Election Header -->
-    <election-header />
+    <PublicDigitHeader />
 
     <!-- Mode Indicator Banner -->
     <mode-indicator :mode="mode" :organisation-id="organisation_id" />
@@ -113,7 +113,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
-import ElectionHeader from '@/Components/Header/ElectionHeader.vue';
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
 import ModeIndicator from './ModeIndicator.vue';
 import CandidateCard from './Candidate.vue';

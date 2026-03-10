@@ -1,7 +1,7 @@
 <template>
   <div class="welcome-dashboard min-h-screen bg-gray-50 flex flex-col">
     <!-- Header -->
-    <ElectionHeader :isLoggedIn="true" :locale="$page.props.locale" />
+    <PublicDigitHeader />
 
     <!-- Main Content -->
     <main class="grow max-w-4xl mx-auto w-full px-3 sm:px-4 lg:px-8 py-8 sm:py-12 lg:py-16">
@@ -251,7 +251,7 @@
 </template>
 
 <script>
-import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import OrganisationCreateModal from "@/Components/Organisation/OrganisationCreateModal.vue";
 import { useOrganizationCreation } from "@/composables/useOrganisationCreation";
 import { provide } from 'vue';
@@ -260,7 +260,7 @@ export default {
   name: 'WelcomeDashboard',
 
   components: {
-    ElectionHeader,
+    PublicDigitHeader,
     OrganisationCreateModal,
   },
   props: {

@@ -3,7 +3,7 @@
         <!-- Breadcrumb Schema for SEO -->
 
         <!-- Header -->
-        <ElectionHeader :isLoggedIn="false" :locale="$page.props.locale" />
+        <PublicDigitHeader />
 
         <!-- Hero Section -->
         <HeroSection :badges="heroBadges" />
@@ -30,7 +30,8 @@
         <!-- CTA Section -->
         <CTASection :perks="perks" />
 
-        <!-- Footer placeholder - replace with custom footer component -->
+        <!-- Footer -->
+        <PublicDigitFooter />
     </div>
     <div v-else>
         <Dashboard />
@@ -39,7 +40,8 @@
 
 <script>
 import Dashboard from "@/pages/Dashboard.vue";
-import ElectionHeader from "@/components/Header/ElectionHeader.vue";
+import PublicDigitHeader from "@/components/Jetstream/PublicDigitHeader.vue";
+import PublicDigitFooter from "@/components/Jetstream/PublicDigitFooter.vue";
 
 // Import Welcome section components
 import HeroSection from "@/components/Welcome/HeroSection.vue";
@@ -67,7 +69,8 @@ export default {
     },
     components: {
         Dashboard,
-        ElectionHeader,
+        PublicDigitHeader,
+        PublicDigitFooter,
         HeroSection,
         NGOFeaturesSection,
         HowItWorksSection,

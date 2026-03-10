@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
         <!-- Header - same as home page -->
-        <ElectionHeader />
+        <PublicDigitHeader />
 
         <!-- Main Content Area -->
         <main class="grow flex items-center justify-center py-8 md:py-12 px-4 sm:px-6 lg:px-8">
@@ -162,7 +162,7 @@
 <script setup>
 import { nextTick, onMounted } from 'vue';
 import { useForm } from "@inertiajs/vue3";
-import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 
 const props = defineProps({

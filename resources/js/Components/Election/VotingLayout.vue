@@ -1,7 +1,7 @@
 <template>
   <div class="voting-layout">
     <!-- Election Header with Logo, Language, Auth -->
-    <ElectionHeader :isLoggedIn="false" />
+    <PublicDigitHeader />
 
     <!-- Demo Mode Notice with proper ARIA -->
     <div
@@ -44,7 +44,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ElectionTypeBadge from './ElectionTypeBadge.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
-import ElectionHeader from '@/Components/Header/ElectionHeader.vue'
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 
 const { t } = useI18n()
 

@@ -118,6 +118,12 @@
           >
             {{ $t('navigation.security') }}
           </Link>
+          <Link
+            href="/demo/result"
+            class="text-white font-medium hover:text-blue-100 focus:outline-none focus:ring-2 focus:ring-white/50 px-3 py-2 rounded-sm transition-colors duration-200 text-sm"
+          >
+            {{ $t('navigation.demo_result') }}
+          </Link>
         </div>
 
         <!-- Demo Link - Special CTA -->
@@ -184,6 +190,20 @@
             class="block px-4 py-3 text-white hover:bg-white/20 active:bg-white/30 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             ❓ {{ $t('navigation.faq') }}
+          </Link>
+          <Link
+            href="/security"
+            @click="showMobileMenu = false"
+            class="block px-4 py-3 text-white hover:bg-white/20 active:bg-white/30 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+          >
+            🔒 {{ $t('navigation.security') }}
+          </Link>
+          <Link
+            href="/demo/result"
+            @click="showMobileMenu = false"
+            class="block px-4 py-3 text-white hover:bg-white/20 active:bg-white/30 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+          >
+            📊 {{ $t('navigation.demo_result') }}
           </Link>
         </div>
 

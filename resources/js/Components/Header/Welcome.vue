@@ -3,7 +3,7 @@
         <!-- Breadcrumb Schema for SEO -->
 
         <!-- Header -->
-        <ElectionHeader :isLoggedIn="false" :locale="$page.props.locale" />
+        <PublicDigitHeader />
 
         <!-- Hero Section -->
         <HeroSection :badges="heroBadges" />
@@ -39,7 +39,7 @@
 
 <script>
 import Dashboard from "@/pages/Dashboard.vue";
-import ElectionHeader from "@/components/Header/ElectionHeader.vue";
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 
 // Import Welcome section components
 import HeroSection from "@/components/Welcome/HeroSection.vue";
@@ -67,7 +67,7 @@ export default {
     },
     components: {
         Dashboard,
-        ElectionHeader,
+        PublicDigitHeader,
         HeroSection,
         NGOFeaturesSection,
         HowItWorksSection,

@@ -2,7 +2,7 @@
     <div class="min-h-screen flex flex-col">
         <!-- Header - sticks to top -->
         <!-- Note: Not passing :locale prop allows language preference to persist from localStorage -->
-        <election-header :isLoggedIn="true"></election-header>
+        <PublicDigitHeader />
         <navigation></navigation>
         
         <!-- Main content - grows to fill space -->
@@ -15,7 +15,7 @@
     </div>
 </template>
 <script>
-import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import profileHeader from "@/Components/Jetstream/ProfileHeader.vue";
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 import Navigation from "@/Components/Header/ElectionNavigation.vue";
@@ -32,7 +32,7 @@ export default {
         };
     },
     components: {
-        ElectionHeader,
+        PublicDigitHeader,
         profileHeader,
         PublicDigitFooter,
         Navigation,

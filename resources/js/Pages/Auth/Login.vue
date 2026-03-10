@@ -6,13 +6,7 @@
         </a>
 
         <!-- Header -->
-        <ElectionHeader
-            :isLoggedIn="false"
-            :locale="$page.props.locale"
-            :disable-language-selector="true"
-            role="banner"
-            aria-label="Site header"
-        />
+        <PublicDigitHeader />
 
         <!-- Main Content -->
         <main 
@@ -248,7 +242,7 @@
 
 <script>
 import { Link as InertiaLink } from '@inertiajs/vue3';
-import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 import JetButton from "@/Components/Jetstream/Button.vue";
 import JetInput from "@/Components/Jetstream/Input.vue";
@@ -259,7 +253,7 @@ import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 export default {
     components: {
         InertiaLink,
-        ElectionHeader,
+        PublicDigitHeader,
         PublicDigitFooter,
         JetButton,
         JetInput,

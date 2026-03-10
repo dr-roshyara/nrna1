@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen bg-gray-50">
         <!-- Header -->
-        <ElectionHeader :isLoggedIn="false" :locale="$page.props.locale" />
+        <PublicDigitHeader />
 
         <!-- Registration Section -->
         <section class="py-16 md:py-24 bg-white">
@@ -247,12 +247,12 @@
 </template>
 
 <script>
-import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 
 export default {
     components: {
-        ElectionHeader,
+        PublicDigitHeader,
         PublicDigitFooter,
     },
 

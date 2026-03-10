@@ -3,7 +3,7 @@
     <!-- Breadcrumb Schema for SEO -->
 
     <!-- Header -->
-    <ElectionHeader :isLoggedIn="false" :locale="$page.props.locale" />
+    <PublicDigitHeader />
 
     <!-- Hero Section -->
     <section class="bg-white border-b border-gray-200">
@@ -159,7 +159,7 @@
 </template>
 
 <script>
-import ElectionHeader from '@/Components/Header/ElectionHeader.vue'
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 import { useMeta } from '@/composables/useMeta'
 
@@ -171,7 +171,7 @@ import aboutNp from '@/locales/pages/about/np.json'
 export default {
   name: 'About',
   components: {
-    ElectionHeader,
+    PublicDigitHeader,
     PublicDigitFooter,
   },
 

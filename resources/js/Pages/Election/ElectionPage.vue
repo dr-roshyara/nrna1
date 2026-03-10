@@ -2,7 +2,7 @@
     <div class="min-h-screen bg-gray-50 flex flex-col">
         <!-- Header with proper ARIA landmark -->
         <header role="banner">
-            <ElectionHeader :isLoggedIn="true" :locale="$page.props.locale" />
+            <PublicDigitHeader />
         </header>
 
         <!-- Main content with landmark -->
@@ -230,13 +230,13 @@
 
 <script>
 import { Link as InertiaLink } from '@inertiajs/vue3';
-import ElectionHeader from "@/Components/Header/ElectionHeader.vue";
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 
 export default {
     components: {
         InertiaLink,
-        ElectionHeader,
+        PublicDigitHeader,
         PublicDigitFooter,
     },
 

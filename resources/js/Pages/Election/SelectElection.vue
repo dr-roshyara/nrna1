@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col bg-gray-50">
     <!-- Header -->
-    <ElectionHeader :isLoggedIn="true" :locale="$page.props.locale" />
+    <PublicDigitHeader />
 
     <!-- Main Content -->
     <main class="flex-1 py-12 px-4 sm:px-6 lg:px-8">
@@ -143,7 +143,7 @@
 <script setup>
 import { computed } from 'vue'
 import { Link as InertiaLink, usePage } from '@inertiajs/vue3'
-import ElectionHeader from '@/Components/Header/ElectionHeader.vue'
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 
 const props = defineProps({
