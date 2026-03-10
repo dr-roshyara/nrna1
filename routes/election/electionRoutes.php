@@ -409,6 +409,11 @@ Route::middleware(['auth:sanctum', 'verified', 'election', 'vote.organisation', 
     Route::post('demo/vote/submit', [DemoVoteController::class, 'first_submission'])->name('demo-vote.submit');
     Route::get('demo/vote/verify', [DemoVoteController::class, 'verify'])->name('demo-vote.verify');
     Route::post('demo/vote/final', [DemoVoteController::class, 'store'])->name('demo-vote.store');
+      
+   Route::post('/demo/vote/submit-code', [DemoVoteController::class, 'submitCodeToViewVote'])
+        ->name('demo.vote.submit_code_to_view_vote');
+   Route::get('/demo-vote/show/{vote_id}', [DemoVoteController::class, 'show'])->name('demo.vote.show');
+ 
     Route::get('demo/vote/thank-you', [DemoVoteController::class, 'thankYou'])->name('demo-vote.thank-you');
     Route::get('demo/vote/verify-show', [DemoVoteController::class, 'demo_verify_to_show'])->name('demo-vote.verify_to_show');
 });
@@ -443,7 +448,6 @@ Route::prefix('v/{vslug}')->middleware(['auth:sanctum', 'verified', \Illuminate\
 
         // STEP 6: Final vote storage
         Route::post('demo-vote/final', [DemoVoteController::class, 'store'])->name('slug.demo-vote.store');
-
         // STEP 7: Thank you page
         Route::get('demo-vote/thank-you', [DemoVoteController::class, 'thankYou'])->name('slug.demo-vote.thank-you');
 
