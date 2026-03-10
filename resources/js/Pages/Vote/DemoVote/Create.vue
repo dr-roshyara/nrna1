@@ -121,7 +121,8 @@
                             <div
                                 v-for="post in posts.national"
                                 :key="post.id"
-                                class="bg-white rounded-2xl shadow-lg border-2 border-gray-200 overflow-hidden"
+                                class="bg-white rounded-2xl shadow-lg border-2 overflow-hidden transition-all duration-200"
+                                :class="postsWithErrors.includes(post.name) ? 'border-red-500 ring-2 ring-red-300' : 'border-gray-200'"
                                 :aria-labelledby="`post-title-${post.id}`"
                             >
                                 <!-- Post Header -->
@@ -131,9 +132,10 @@
                                             <h3 :id="`post-title-${post.id}`" class="text-2xl font-bold mb-1">
                                                 {{ post.name }}
                                             </h3>
-                                            <p v-if="post.nepali_name" class="text-blue-100 text-sm">
-                                                {{ post.nepali_name }}
+                                            <p v-if="$i18n.locale === 'np'" class="text-blue-100 text-sm opacity-90">
+                                                {{ post.nepali_name || post.name }}
                                             </p>
+                        
                                         </div>
                                         <div
                                             class="bg-white/20 backdrop-blur-xs rounded-full px-5 py-2 inline-flex items-center gap-3"
@@ -306,7 +308,8 @@
                             <div
                                 v-for="post in posts.regional"
                                 :key="post.id"
-                                class="bg-white rounded-2xl shadow-lg border-2 border-gray-200 overflow-hidden"
+                                class="bg-white rounded-2xl shadow-lg border-2 overflow-hidden transition-all duration-200"
+                                :class="postsWithErrors.includes(post.name) ? 'border-red-500 ring-2 ring-red-300' : 'border-gray-200'"
                                 :aria-labelledby="`post-title-${post.id}`"
                             >
                                 <!-- Post Header -->
@@ -316,7 +319,7 @@
                                             <h3 :id="`post-title-${post.id}`" class="text-2xl font-bold mb-1">
                                                 {{ post.name }}
                                             </h3>
-                                            <p v-if="post.nepali_name" class="text-green-100 text-sm">
+                                            <p v-if="$i18n.locale === 'np' && post.nepali_name" class="text-green-100 text-sm opacity-90">
                                                 {{ post.nepali_name }}
                                             </p>
                                             <p v-if="post.state_name" class="text-green-100 text-sm">
@@ -721,6 +724,24 @@ export default {
             }
         }
 
+        // Extract post names from error messages
+        const postsWithErrors = computed(() => {
+            if (!errors.value.submit) return []
+
+            // Parse error message like "No selection made for Vice President. No selection made for State Representative - Europe"
+            const errorText = errors.value.submit
+            const postNames = []
+
+            // Find all "No selection made for {PostName}" patterns
+            const regex = /No selection made for (.+?)(?:\.|$)/g
+            let match
+            while ((match = regex.exec(errorText)) !== null) {
+                postNames.push(match[1].trim())
+            }
+
+            return postNames
+        })
+
         // Calculate voting progress
         const votingProgress = computed(() => {
             const allPosts = [...(props.posts.national || []), ...(props.posts.regional || [])]
@@ -916,6 +937,7 @@ export default {
 
             // Computed
             votingProgress,
+            postsWithErrors,
 
             // Methods
             sortedCandidates,
