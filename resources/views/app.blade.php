@@ -7,30 +7,10 @@
 
     {{-- Favicon - Use absolute paths for better compatibility --}}
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo-2.png') }}">
-    
-    @php
-        $getTranslation = function($key, $fallback = '') {
-            try {
-                // Using lang() helper is more modern in Laravel 11
-                return lang()->has($key) ? __($key) : $fallback;
-            } catch (\Throwable $e) {
-                return $fallback;
-            }
-        };
 
-        $localeMap = ['de' => 'de_DE', 'en' => 'en_US', 'np' => 'ne_NP'];
-        $ogLocale = $localeMap[app()->getLocale()] ?? 'en_US';
-        $currentTitle = $getTranslation('seo.pages.home.title', $getTranslation('seo.site.title', 'Public Digit'));
-    @endphp
-
-    <title inertia>{{ $currentTitle }}</title>
-
-    {{-- SEO & Open Graph --}}
-    <meta name="description" content="{{ $getTranslation('seo.pages.home.description', 'Secure digital voting platform') }}">
-    <meta property="og:title" content="{{ $currentTitle }}">
-    <meta property="og:locale" content="{{ $ogLocale }}">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <link rel="canonical" href="{{ url()->current() }}">
+    {{-- SEO Meta Tags (reads from config/meta.php, set dynamically by SeoService) --}}
+    <title inertia>{{ config('meta.title', 'Public Digit') }}</title>
+    @include('meta.meta-info')
 
     {{-- Fonts - Nunito is now default in Tailwind v4 config we wrote --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
