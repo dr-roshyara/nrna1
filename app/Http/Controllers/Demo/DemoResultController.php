@@ -19,7 +19,7 @@ class DemoResultController extends Controller
     public function index()
     {
         // BelongsToTenant scope automatically filters by organisation_id
-        $posts = DemoPost::get(['post_id', 'name', 'state_name', 'required_number']);
+        $posts = DemoPost::get(['id as post_id', 'name', 'state_name', 'required_number']);
 
         // Get results data (scoped to current organisation)
         $results = $this->getElectionResultsData($posts, 'organisation');
@@ -43,7 +43,7 @@ class DemoResultController extends Controller
         // Explicitly query NULL organisation_id records
         $posts = DemoPost::withoutGlobalScopes()
             ->whereNull('organisation_id')
-            ->get(['post_id', 'name', 'state_name', 'required_number']);
+            ->get(['id as post_id', 'name', 'state_name', 'required_number']);
 
         // Get results data (global demo only)
         $results = $this->getElectionResultsData($posts, 'global');
@@ -107,19 +107,21 @@ class DemoResultController extends Controller
 
             foreach ($allCandidates as $candidacy) {
                 $candidateName = $candidacy->user->name ?? $candidacy->user_name ?? 'Unknown';
-                $candidateVotes[$candidacy->candidacy_id] = [
+                // Key by `id` (UUID) — votes store the UUID in candidacy_id, not the short candidacy_id code
+                $candidateVotes[$candidacy->id] = [
                     'name' => $candidateName,
                     'count' => 0
                 ];
             }
 
             // Get all votes for this post (scoped by mode)
+            // Use JSON_EXTRACT syntax: 'field->key' instead of ['key' => value]
             if ($mode === 'global') {
                 $votes = DemoVote::withoutGlobalScopes()
                     ->where(function($query) use ($post) {
                         for ($i = 1; $i <= 60; $i++) {
                             $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
-                            $query->orWhereJsonContains($field, ['post_id' => $post->post_id]);
+                            $query->orWhereRaw("JSON_EXTRACT(`$field`, '$.post_id') = ?", [$post->post_id]);
                         }
                     })
                     ->whereNull('organisation_id')
@@ -128,7 +130,7 @@ class DemoResultController extends Controller
                 $votes = DemoVote::where(function($query) use ($post) {
                     for ($i = 1; $i <= 60; $i++) {
                         $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
-                        $query->orWhereJsonContains($field, ['post_id' => $post->post_id]);
+                        $query->orWhereRaw("JSON_EXTRACT(`$field`, '$.post_id') = ?", [$post->post_id]);
                     }
                 })->get(); // BelongsToTenant auto-scopes
             }
@@ -201,7 +203,7 @@ class DemoResultController extends Controller
                 ob_end_clean();
             }
 
-            $posts = DemoPost::get(['post_id', 'name', 'state_name', 'required_number']);
+            $posts = DemoPost::get(['id as post_id', 'name', 'state_name', 'required_number']);
             $results = $this->getElectionResultsData($posts, 'organisation');
 
             $pdf = $this->generateResultsPDF($results, $posts, 'MODE 2: Organisation Demo Results');
@@ -262,7 +264,7 @@ class DemoResultController extends Controller
 
             $posts = DemoPost::withoutGlobalScopes()
                 ->whereNull('organisation_id')
-                ->get(['post_id', 'name', 'state_name', 'required_number']);
+                ->get(['id as post_id', 'name', 'state_name', 'required_number']);
 
             $results = $this->getElectionResultsData($posts, 'global');
 
