@@ -46,8 +46,8 @@
             <DemoResultsSection />
           </section>
 
-          <!-- 5. Demo Setup Section (conditional - Distinct Card) -->
-          <section v-if="canManage">
+          <!-- 5. Demo Setup Section - only shown when no demo election exists yet -->
+          <section v-if="canManage && !demoStatus?.exists">
             <DemoSetupButton
               :organisation="organisation"
               :demo-status="demoStatus"

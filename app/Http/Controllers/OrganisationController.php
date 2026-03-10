@@ -85,10 +85,16 @@ class OrganisationController extends Controller
             'exited_members_30d' => 0, // TODO: Implement exited members logic
         ];
 
-        // Get demo status
+        // Get demo status - check if organisation already has a demo election
+        $demoExists = DB::table('elections')
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'demo')
+            ->exists();
+
         $demoStatus = [
-            'is_setup' => false, // TODO: Fetch from database
-            'last_reset' => null, // TODO: Fetch from database
+            'exists' => $demoExists,
+            'is_setup' => $demoExists,
+            'last_reset' => null,
         ];
 
         // Return organisation overview page

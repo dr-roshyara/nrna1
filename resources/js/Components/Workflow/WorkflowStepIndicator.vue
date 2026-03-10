@@ -4,7 +4,7 @@
         <div class="flex items-center justify-center w-full gap-2">
             <div v-for="step in totalSteps" :key="step" class="flex items-center gap-2">
                 <div
-                    class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300"
+                    class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-base transition-all duration-300"
                     :class="{
                         'bg-blue-600 text-white': step === currentStep,
                         'bg-blue-200 text-blue-700': step < currentStep,
