@@ -1881,13 +1881,21 @@ protected function saveCandidateSelections(Vote $vote, array $vote_data)
     foreach ($all_candidates as $index => $selection) {
         $column_name = 'candidate_' . str_pad($index + 1, 2, '0', STR_PAD_LEFT);
         $vote_data = $this->prepareVoteData($selection);
-        
+
         if ($vote_data) {
             $vote->$column_name = json_encode($vote_data);
-            
-            // Save individual candidate results if selection exists
+
             if (!empty($selection['candidates'])) {
+                // Save individual candidate results
                 $this->saveCandidateResults($vote->id, $selection);
+            } elseif (!empty($selection['no_vote'])) {
+                // Save no-vote abstention row for this post
+                DemoResult::create([
+                    'vote_id'      => $vote->id,
+                    'post_id'      => $selection['post_id'],
+                    'candidacy_id' => null,
+                    'no_vote'      => true,
+                ]);
             }
         }
     }

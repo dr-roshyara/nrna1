@@ -50,6 +50,7 @@
       "skipped": "Übersprungen",
       "total": "Insgesamt"
     },
+    "no_vote_label": "Keine Stimme / Enthaltung",
     "no_data": "Keine Abstimmungsdaten verfügbar"
   },
   "security_badge": {

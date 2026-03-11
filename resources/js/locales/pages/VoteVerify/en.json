@@ -50,6 +50,7 @@
       "skipped": "Skipped",
       "total": "Total"
     },
+    "no_vote_label": "No Vote / Abstention",
     "no_data": "No vote data available"
   },
   "security_badge": {

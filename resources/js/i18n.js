@@ -157,6 +157,7 @@ const messages = {
     organisations: {
       demo: organisationShowPageDe.demo,
     },
+    modals: organisationShowPageDe.modals,
     pages: {
       'voting-start': votingStartDe,
       'role-selection': roleSelectionDe,
@@ -197,6 +198,7 @@ const messages = {
     organisations: {
       demo: organisationShowPageEn.demo,
     },
+    modals: organisationShowPageEn.modals,
     pages: {
       'voting-start': votingStartEn,
       'role-selection': roleSelectionEn,
@@ -237,6 +239,7 @@ const messages = {
     organisations: {
       demo: organisationShowPageNp.demo,
     },
+    modals: organisationShowPageNp.modals,
     pages: {
       'voting-start': votingStartNp,
       'role-selection': roleSelectionNp,

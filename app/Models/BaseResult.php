@@ -43,9 +43,14 @@ abstract class BaseResult extends Model
         'election_id',
         'vote_id',
         'post_id',
-        'candidacy_id',  // UUID FK to candidacies table
+        'candidacy_id',  // UUID FK to candidacies table — NULL for no-vote rows
         'vote_count',    // For aggregation
         'position_order',
+        'no_vote',       // true when voter chose to abstain for this post
+    ];
+
+    protected $casts = [
+        'no_vote' => 'boolean',
     ];
 
     /**

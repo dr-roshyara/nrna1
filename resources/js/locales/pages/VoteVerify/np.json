@@ -50,6 +50,7 @@
       "skipped": "छोडिएको",
       "total": "कुल"
     },
+    "no_vote_label": "मत नगरेको / अनुपस्थित",
     "no_data": "मत डेटा उपलब्ध छैन"
   },
   "security_badge": {
