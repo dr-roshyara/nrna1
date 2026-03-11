@@ -65,13 +65,13 @@
           </div>
         </div>
 
-        <!-- No votes card -->
-        <div
-          v-if="final_result.no_vote_count > 0"
-          class="bg-gray-100 dark:bg-gray-700 rounded-lg p-4 border-l-4 border-gray-400"
-        >
-          <p class="font-semibold text-gray-900 dark:text-white text-sm">Abstentions</p>
-          <p class="text-xs text-gray-600 dark:text-gray-300 mt-1">{{ final_result.no_vote_count }} voters abstained</p>
+        <!-- No votes card (always shown) -->
+        <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-4 border-l-4 border-red-400">
+          <div class="flex justify-between items-start">
+            <p class="font-semibold text-red-600 dark:text-red-400 text-sm">Abstentions (No Vote)</p>
+            <span class="text-red-600 dark:text-red-400 font-bold text-sm">{{ noVotePercent }}%</span>
+          </div>
+          <p class="text-xs text-red-500 dark:text-red-400 mt-1">{{ final_result.no_vote_count || 0 }} voters abstained</p>
         </div>
       </div>
 
@@ -128,20 +128,16 @@
               </td>
             </tr>
 
-            <!-- Abstentions row -->
-            <tr v-if="final_result.no_vote_count > 0" class="bg-gray-50 dark:bg-gray-700 font-semibold">
-              <td colspan="2" class="px-4 py-4 text-sm text-gray-900 dark:text-white">
+            <!-- Abstentions row (always shown) -->
+            <tr class="bg-red-50 dark:bg-red-900/20 font-semibold">
+              <td colspan="2" class="px-4 py-4 text-sm text-red-600 dark:text-red-400">
                 Abstentions (No Vote)
               </td>
-              <td class="px-4 py-4 text-right text-sm text-gray-600 dark:text-gray-300">
-                {{ final_result.no_vote_count }}
+              <td class="px-4 py-4 text-right text-sm text-red-600 dark:text-red-400">
+                {{ final_result.no_vote_count || 0 }}
               </td>
-              <td class="px-4 py-4 text-right text-sm">
-                {{
-                  final_result.total_votes_for_post > 0
-                    ? ((final_result.no_vote_count / final_result.total_votes_for_post) * 100).toFixed(2)
-                    : 0
-                }}%
+              <td class="px-4 py-4 text-right text-sm text-red-600 dark:text-red-400">
+                {{ noVotePercent }}%
               </td>
               <td></td>
             </tr>
@@ -175,7 +171,9 @@
 </template>
 
 <script setup>
-defineProps({
+import { computed } from 'vue'
+
+const props = defineProps({
   post: {
     type: Object,
     required: true,
@@ -205,7 +203,17 @@ defineProps({
     type: Boolean,
     default: true
   }
-});
+})
+
+// Candidate percentages sum (rounded), no_vote gets the remainder to guarantee 100%
+const candidatePercentSum = computed(() =>
+  props.final_result.candidates.reduce((sum, c) => sum + parseFloat(c.vote_percent || 0), 0)
+)
+
+const noVotePercent = computed(() => {
+  if (!props.final_result.total_votes_for_post) return '0.00'
+  return Math.max(0, 100 - candidatePercentSum.value).toFixed(2)
+})
 </script>
 
 <style scoped>

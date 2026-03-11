@@ -422,14 +422,18 @@ class DemoResultController extends Controller
                         $rowColor++;
                     }
 
-                    // Abstentions row
-                    if (!empty($postResult['no_vote_count'])) {
-                        $pdf->SetFont('Helvetica', 'B', 8);
-                        $pdf->SetFillColor(255, 240, 240);
-                        $pdf->Cell(80, 6, 'Abstentions', 1, 0, 'L', true);
-                        $pdf->Cell(25, 6, (string)intval($postResult['no_vote_count']), 1, 0, 'C', true);
-                        $pdf->Cell(23, 6, '', 1, 1, 'R', true);
-                    }
+                    // Abstentions row (always shown) — percent is remainder to guarantee 100%
+                    $noVoteCount = intval($postResult['no_vote_count'] ?? 0);
+                    $candidatePercentSum = array_sum(array_column($postResult['candidates'], 'vote_percent'));
+                    $noVotePercent = round(max(0, 100 - $candidatePercentSum), 1) . '%';
+                    $pdf->SetFont('Helvetica', 'B', 8);
+                    $pdf->SetTextColor(180, 0, 0);
+                    $pdf->SetFillColor(255, 235, 235);
+                    $pdf->Cell(10, 6, '-', 1, 0, 'C', true);
+                    $pdf->Cell(70, 6, 'Abstentions (No Vote)', 1, 0, 'L', true);
+                    $pdf->Cell(25, 6, (string)$noVoteCount, 1, 0, 'C', true);
+                    $pdf->Cell(23, 6, $noVotePercent, 1, 1, 'R', true);
+                    $pdf->SetTextColor(0, 0, 0);
 
                     $pdf->Ln(4);
                 }

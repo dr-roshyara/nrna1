@@ -2231,6 +2231,9 @@ public function verify(Request $request)
             return redirect()->route($_message["return_to"]);
         }
 
+        // Sanitize before processing: fixes no_vote=false with empty candidates
+        $vote_data = $this->sanitize_vote_data($vote_data);
+
         // Process and structure vote data for clean display
         $processed_vote_data = $this->process_vote_data_for_verification($vote_data);
 

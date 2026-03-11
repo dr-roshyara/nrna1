@@ -1026,6 +1026,16 @@ export default {
             allPosts.forEach(post => {
                 if (noVoteSelections.value[post.id]) {
                     voteData.no_vote_posts.push(post.id)
+                    // Also add to the appropriate candidates array so verify page can display the abstention
+                    const isNationalNoVote = props.posts.national.some(p => p.id === post.id)
+                    const noVotePostType = isNationalNoVote ? 'national' : 'regional'
+                    voteData[`${noVotePostType}_selected_candidates`].push({
+                        post_id: post.id,
+                        post_name: post.name,
+                        required_number: post.required_number,
+                        no_vote: true,
+                        candidates: []
+                    })
                 } else if (selectedCandidates.value[post.id]?.length) {
                     // ✅ FIX: Determine post type by checking which array it comes from
                     // (post.is_national_wide is NOT available in props)
