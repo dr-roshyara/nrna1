@@ -1,9 +1,10 @@
 <template>
+  <Teleport to="body">
   <!-- Modal backdrop -->
   <transition name="modal-fade">
     <div
       v-if="isOpen"
-      class="fixed inset-0 bg-black/50 z-40 flex items-center justify-center"
+      class="fixed inset-0 bg-black/50 z-[9999] flex items-center justify-center"
       @click="closeModal"
       :aria-hidden="!isOpen"
     >
@@ -260,10 +261,11 @@
       </div>
     </div>
   </transition>
+  </Teleport>
 </template>
 
 <script setup>
-import { computed, inject } from 'vue';
+import { computed, inject, onMounted, onUnmounted, watch } from 'vue';
 import EducationSection from './Steps/EducationSection.vue';
 import OrganizationStepBasicInfo from './Steps/OrganizationStepBasicInfo.vue';
 import OrganizationStepAddress from './Steps/OrganizationStepAddress.vue';
@@ -271,24 +273,30 @@ import OrganizationStepRepresentative from './Steps/OrganizationStepRepresentati
 import FormNavigation from './Steps/FormNavigation.vue';
 
 // INJECT the composable from parent (Welcome.vue)
-// This ensures both components use the SAME state instance
 const organizationCreation = inject('organizationCreation');
 
-// Use refs and values directly from the composable
-const isModalOpen = organizationCreation.isModalOpen;
-const currentStep = organizationCreation.currentStep;
-const showEducation = organizationCreation.showEducation;
-const formData = organizationCreation.formData;
-const expandedSections = organizationCreation.expandedSections;
-const validationErrors = organizationCreation.validationErrors;
-const isSubmitting = organizationCreation.isSubmitting;
-const submissionError = organizationCreation.submissionError;
-const progressPercentage = organizationCreation.progressPercentage;
-const canGoNext = organizationCreation.canGoNext;
-const canGoPrevious = organizationCreation.canGoPrevious;
+// Debug: Check if injection worked
+console.log('🔍 Modal - organizationCreation injected:', organizationCreation);
 
-// Methods
-const { closeModal, nextStep, previousStep, submitForm, toggleSection } = organizationCreation;
+// Use computed refs with fallbacks in case inject fails
+const isModalOpen = computed(() => organizationCreation?.isModalOpen?.value ?? false);
+const currentStep = computed(() => organizationCreation?.currentStep?.value ?? 1);
+const showEducation = computed(() => organizationCreation?.showEducation?.value ?? true);
+const formData = organizationCreation?.formData ?? { basic: {}, address: {}, representative: {}, acceptance: {} };
+const expandedSections = organizationCreation?.expandedSections ?? {};
+const validationErrors = organizationCreation?.validationErrors ?? {};
+const isSubmitting = computed(() => organizationCreation?.isSubmitting?.value ?? false);
+const submissionError = computed(() => organizationCreation?.submissionError?.value ?? null);
+const progressPercentage = computed(() => organizationCreation?.progressPercentage?.value ?? 0);
+const canGoNext = computed(() => organizationCreation?.canGoNext?.value ?? false);
+const canGoPrevious = computed(() => organizationCreation?.canGoPrevious?.value ?? false);
+
+// Methods with fallbacks
+const closeModal = organizationCreation?.closeModal || (() => {});
+const nextStep = organizationCreation?.nextStep || (() => {});
+const previousStep = organizationCreation?.previousStep || (() => {});
+const submitForm = organizationCreation?.submitForm || (() => {});
+const toggleSection = organizationCreation?.toggleSection || (() => {});
 
 // Computed for template
 const isOpen = computed(() => isModalOpen.value);
@@ -296,15 +304,33 @@ const isEducationView = computed(() => showEducation.value);
 
 // Handle ESC key to close modal
 const handleKeydown = (e) => {
-  if (e.key === 'Escape') {
+  if (e.key === 'Escape' && isOpen.value) {
     closeModal();
   }
 };
 
-// Register escape key listener
-if (typeof window !== 'undefined') {
+// Proper lifecycle-bound event listeners (no memory leak)
+onMounted(() => {
+  console.log('🔍 Modal mounted');
   window.addEventListener('keydown', handleKeydown);
-}
+});
+
+onUnmounted(() => {
+  console.log('🔍 Modal unmounted');
+  window.removeEventListener('keydown', handleKeydown);
+});
+
+// Lock body scroll when modal is open
+watch(isOpen, (val) => {
+  console.log('🔍 Modal open state changed:', val);
+  if (val) {
+    console.log('🔍 Current step:', currentStep.value);
+    console.log('🔍 Form data exists:', !!formData.value);
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+});
 </script>
 
 <style scoped>
