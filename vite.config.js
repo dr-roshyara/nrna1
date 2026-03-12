@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
-import tailwindcss from '@tailwindcss/vite'; // 1. Added Tailwind v4 Plugin
-import { fileURLToPath, URL } from 'node:url'; // Modern way to handle paths
+import tailwindcss from '@tailwindcss/vite';
+import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
     plugins: [
-        tailwindcss(), // 2. MUST remain at the top
+        tailwindcss(),
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
@@ -22,21 +22,46 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            // Modern, cleaner alias definitions
             '@': fileURLToPath(new URL('./resources/js', import.meta.url)),
             '~': fileURLToPath(new URL('./resources/js', import.meta.url)),
-            '@components': fileURLToPath(new URL('./resources/js/Components', import.meta.url)),
-            '@jetstream': fileURLToPath(new URL('./resources/js/Jetstream', import.meta.url)),
-            '@layouts': fileURLToPath(new URL('./resources/js/Layouts', import.meta.url)),
-            '@pages': fileURLToPath(new URL('./resources/js/Pages', import.meta.url)),
         },
-        extensions: ['.js', '.vue', '.json', '.ts'],
+        extensions: ['.js', '.vue', '.json'],
     },
-    server: {
-        // host: 'localhost' is default, but explicit is fine
-        strictPort: true,
-        hmr: {
-            host: 'localhost',
+    build: {
+        // CRITICAL: Force Unix-style paths in manifest
+        manifest: true,
+        outDir: 'public/build',
+        emptyOutDir: true,
+        rollupOptions: {
+            output: {
+                // Force forward slashes in all generated paths
+                entryFileNames: 'assets/[name]-[hash].js',
+                chunkFileNames: 'assets/[name]-[hash].js',
+                assetFileNames: 'assets/[name]-[hash][extname]',
+                // Ensure consistent formatting
+                compact: true,
+                generatedCode: {
+                    constBindings: true,
+                    objectShorthand: true,
+                },
+            },
+        },
+        // Ensure consistent chunking
+        commonjsOptions: {
+            include: [/node_modules/],
+            transformMixedEsModules: true,
+        },
+        sourcemap: false,
+        minify: 'esbuild',
+        target: 'es2020',
+    },
+    // Force Unix line endings in generated files
+    optimizeDeps: {
+        esbuildOptions: {
+            target: 'es2020',
+            supported: {
+                'bigint': true
+            },
         },
     },
 });
