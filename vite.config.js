@@ -10,6 +10,8 @@ export default defineConfig({
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
+            // CRITICAL for Vite v6
+            buildDirectory: 'build',
         }),
         vue({
             template: {
@@ -20,6 +22,27 @@ export default defineConfig({
             },
         }),
     ],
+    // Vite v6 requires explicit manifest configuration
+    build: {
+        manifest: 'manifest.json',  // NOT just true - use string filename
+        outDir: 'public/build',
+        emptyOutDir: true,
+        rollupOptions: {
+            output: {
+                entryFileNames: 'assets/[name]-[hash].js',
+                chunkFileNames: 'assets/[name]-[hash].js',
+                assetFileNames: 'assets/[name]-[hash][extname]',
+                // Force chunk splitting to avoid large files
+                manualChunks: {
+                    vendor: ['vue', '@inertiajs/vue3', 'vue-i18n'],
+                },
+            },
+        },
+        // Ensure sourcemaps don't block manifest generation
+        sourcemap: false,
+        minify: 'esbuild',
+        target: 'es2020',
+    },
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./resources/js', import.meta.url)),
@@ -27,41 +50,11 @@ export default defineConfig({
         },
         extensions: ['.js', '.vue', '.json'],
     },
-    build: {
-        // CRITICAL: Force Unix-style paths in manifest
-        manifest: true,
-        outDir: 'public/build',
-        emptyOutDir: true,
-        rollupOptions: {
-            output: {
-                // Force forward slashes in all generated paths
-                entryFileNames: 'assets/[name]-[hash].js',
-                chunkFileNames: 'assets/[name]-[hash].js',
-                assetFileNames: 'assets/[name]-[hash][extname]',
-                // Ensure consistent formatting
-                compact: true,
-                generatedCode: {
-                    constBindings: true,
-                    objectShorthand: true,
-                },
-            },
-        },
-        // Ensure consistent chunking
-        commonjsOptions: {
-            include: [/node_modules/],
-            transformMixedEsModules: true,
-        },
-        sourcemap: false,
-        minify: 'esbuild',
-        target: 'es2020',
-    },
-    // Force Unix line endings in generated files
-    optimizeDeps: {
-        esbuildOptions: {
-            target: 'es2020',
-            supported: {
-                'bigint': true
-            },
+    // Server config for dev
+    server: {
+        strictPort: true,
+        hmr: {
+            host: 'localhost',
         },
     },
 });
