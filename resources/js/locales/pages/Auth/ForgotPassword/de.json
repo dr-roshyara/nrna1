@@ -8,7 +8,7 @@
   "form": {
     "email": {
       "label": "E-Mail-Adresse",
-      "placeholder": "ihre@email.de"
+      "placeholder": "E-Mail-Adresse eingeben"
     },
     "submit": {
       "normal": "Zurücksetzungslink senden",

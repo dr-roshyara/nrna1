@@ -22,7 +22,7 @@
       type="email"
       :label="$t('organisation.form.email_label', { fallback: 'E-Mail für Zustellungen' })"
       :model-value="data.email"
-      :placeholder="$t('organisation.form.email_placeholder', { fallback: 'vorstand@tv-muenchen.de' })"
+      :placeholder="$t('organisation.form.email_placeholder', { fallback: 'E-Mail-Adresse' })"
       :helper="$t('organisation.form.email_helper', { fallback: 'Rechtlich bindende Kommunikation' })"
       :error="errors.email"
       required

@@ -284,6 +284,8 @@ const i18n = createI18n({
   globalInjection: true,
   missingWarn: false,
   fallbackWarn: false,
+  warnHtmlMessage: false,
+  onWarn: () => {}, // suppress all vue-i18n warnings
 });
 
 export default i18n;

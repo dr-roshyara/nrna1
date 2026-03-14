@@ -34,7 +34,7 @@
       type="email"
       :label="$t('organisation.form.rep_email_label', { fallback: 'E-Mail des Vertreters' })"
       :model-value="data.email"
-      :placeholder="$t('organisation.form.rep_email_placeholder', { fallback: 't.schmidt@tv-muenchen.de' })"
+      :placeholder="$t('organisation.form.rep_email_placeholder', { fallback: 'E-Mail-Adresse' })"
       :helper="$t('organisation.form.rep_email_helper', { fallback: 'Falls abweichend von der Organisationsadresse' })"
       :error="errors.email"
       required

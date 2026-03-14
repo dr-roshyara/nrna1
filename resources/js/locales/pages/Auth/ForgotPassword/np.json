@@ -8,7 +8,7 @@
   "form": {
     "email": {
       "label": "इमेल ठेगाना",
-      "placeholder": "your@email.com"
+      "placeholder": "इमेल ठेगाना प्रविष्ट गर्नुहोस्"
     },
     "submit": {
       "normal": "रिसेट लिंक पठाउनुहोस्",

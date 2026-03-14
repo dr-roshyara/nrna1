@@ -8,7 +8,7 @@
   "form": {
     "email": {
       "label": "Email Address",
-      "placeholder": "your@email.com"
+      "placeholder": "Enter your email address"
     },
     "submit": {
       "normal": "Send Reset Link",
