@@ -21,7 +21,8 @@ class EnsureVoterStepOrder
     public function handle(Request $request, Closure $next): Response
     {
         /** @var VoterSlug|DemoVoterSlug $vslug */
-        $vslug = $request->route('vslug');
+        // Use the model already resolved and validated by VerifyVoterSlug middleware
+        $vslug = $request->attributes->get('voter_slug');
 
         // Accept both VoterSlug (real elections) and DemoVoterSlug (demo elections)
         if (!$vslug instanceof VoterSlug && !$vslug instanceof DemoVoterSlug) {
