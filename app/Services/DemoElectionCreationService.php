@@ -71,9 +71,9 @@ class DemoElectionCreationService
                 'position_order' => 1,
                 'required_number' => 1,
                 'candidates' => [
-                    ['name' => 'Alice Johnson', 'candidacy_name' => 'Alice Johnson - Progressive Platform'],
-                    ['name' => 'Bob Smith', 'candidacy_name' => 'Bob Smith - Economic Growth'],
-                    ['name' => 'Carol Williams', 'candidacy_name' => 'Carol Williams - Community First'],
+                    ['name' => 'Alice Johnson', 'candidacy_name' => 'Alice Johnson'],
+                    ['name' => 'Bob Smith', 'candidacy_name' => 'Bob Smith'],
+                    ['name' => 'Carol Williams', 'candidacy_name' => 'Carol Williams'],
                 ]
             ],
             [
@@ -83,9 +83,9 @@ class DemoElectionCreationService
                 'position_order' => 2,
                 'required_number' => 1,
                 'candidates' => [
-                    ['name' => 'Daniel Miller', 'candidacy_name' => 'Daniel Miller - Innovation Leader'],
-                    ['name' => 'Eva Martinez', 'candidacy_name' => 'Eva Martinez - Social Justice'],
-                    ['name' => 'Frank Wilson', 'candidacy_name' => 'Frank Wilson - Infrastructure Expert'],
+                    ['name' => 'Daniel Miller', 'candidacy_name' => 'Daniel Miller'],
+                    ['name' => 'Eva Martinez', 'candidacy_name' => 'Eva Martinez'],
+                    ['name' => 'Frank Wilson', 'candidacy_name' => 'Frank Wilson'],
                 ]
             ],
         ];
@@ -109,9 +109,9 @@ class DemoElectionCreationService
                 'position_order' => 3,
                 'required_number' => 2,
                 'candidates' => [
-                    ['name' => 'Hans Mueller', 'candidacy_name' => 'Hans Mueller - Local Development'],
-                    ['name' => 'Anna Schmidt', 'candidacy_name' => 'Anna Schmidt - Education Focus'],
-                    ['name' => 'Klaus Weber', 'candidacy_name' => 'Klaus Weber - Infrastructure'],
+                    ['name' => 'Hans Mueller', 'candidacy_name' => 'Hans Mueller'],
+                    ['name' => 'Anna Schmidt', 'candidacy_name' => 'Anna Schmidt'],
+                    ['name' => 'Klaus Weber', 'candidacy_name' => 'Klaus Weber'],
                 ]
             ],
             [
@@ -121,8 +121,8 @@ class DemoElectionCreationService
                 'position_order' => 4,
                 'required_number' => 1,
                 'candidates' => [
-                    ['name' => 'Maria Fischer', 'candidacy_name' => 'Maria Fischer - Health Services'],
-                    ['name' => 'Thomas Wagner', 'candidacy_name' => 'Thomas Wagner - Youth Empowerment'],
+                    ['name' => 'Maria Fischer', 'candidacy_name' => 'Maria Fischer'],
+                    ['name' => 'Thomas Wagner', 'candidacy_name' => 'Thomas Wagner'],
                 ]
             ],
         ];
@@ -172,22 +172,22 @@ class DemoElectionCreationService
             ]);
 
             // Create demo code for this candidate
-            DemoCode::create([
-                'user_id' => null,
-                'election_id' => $election->id,
-                'organisation_id' => $election->organisation_id, // CRITICAL: Propagate org context
-                'code_to_open_voting_form' => 'DEMO' . strtoupper(substr(md5($index . 'code_to_open_voting_form' . $region), 0, 8)),
-                'code_to_save_vote' => 'DEMO' . strtoupper(substr(md5($index . 'code_to_save_vote' . $region), 0, 8)),
-                'code3' => 'DEMO' . strtoupper(substr(md5($index . 'code3' . $region), 0, 8)),
-                'code4' => 'DEMO' . strtoupper(substr(md5($index . 'code4' . $region), 0, 8)),
-                'is_code_to_open_voting_form_usable' => true,
-                'is_code_to_save_vote_usable' => true,
-                'is_code3_usable' => true,
-                'is_code4_usable' => true,
-                'can_vote_now' => false,
-                'voting_time_in_minutes' => config('voting.time_in_minutes', 30),
-                'code_to_open_voting_form_sent_at' => now(),
-            ]);
+            // DemoCode::create([
+            //     'user_id' => null,
+            //     'election_id' => $election->id,
+            //     'organisation_id' => $election->organisation_id, // CRITICAL: Propagate org context
+            //     'code_to_open_voting_form' => 'DEMO' . strtoupper(substr(md5($index . 'code_to_open_voting_form' . $region), 0, 8)),
+            //     'code_to_save_vote' => 'DEMO' . strtoupper(substr(md5($index . 'code_to_save_vote' . $region), 0, 8)),
+            //     'code3' => 'DEMO' . strtoupper(substr(md5($index . 'code3' . $region), 0, 8)),
+            //     'code4' => 'DEMO' . strtoupper(substr(md5($index . 'code4' . $region), 0, 8)),
+            //     'is_code_to_open_voting_form_usable' => true,
+            //     'is_code_to_save_vote_usable' => true,
+            //     'is_code3_usable' => true,
+            //     'is_code4_usable' => true,
+            //     'can_vote_now' => false,
+            //     'voting_time_in_minutes' => config('voting.time_in_minutes', 30),
+            //     'code_to_open_voting_form_sent_at' => now(),
+            // ]);
         }
     }
 
@@ -214,9 +214,7 @@ class DemoElectionCreationService
      */
     private function getCandidateImagePath(string $name, string $postName, ?string $region, int $index): string
     {
-        $nameSlug = Str::slug($name);
-        $postSlug = Str::slug($postName);
-        $regionSlug = $region ? '-' . Str::slug($region) : '';
-        return "candidates/{$nameSlug}_{$postSlug}{$regionSlug}_" . str_pad($index + 1, 2, '0', STR_PAD_LEFT) . ".png";
+        $imageNumber = ($index % 8) + 1;
+        return "demo_candiate_images/candidates_" . str_pad($imageNumber, 2, '0', STR_PAD_LEFT) . ".png";
     }
 }

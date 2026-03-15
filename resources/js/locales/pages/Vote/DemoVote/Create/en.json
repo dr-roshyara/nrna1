@@ -2,7 +2,7 @@
   "page_header": {
     "title": "Vote in Demo Election",
     "badge": "Demo Mode",
-    "welcome": "Welcome {{ user_name }}!"
+    "welcome": "Welcome"
   },
   "voter_info": {
     "current_election": "Current election:",
@@ -29,7 +29,7 @@
   },
   "position_card": {
     "position_label": "Position #{{ position_order }}",
-    "candidates_label": "Candidate for {{ post_name }}",
+    "candidates_label": "Candidate for",
     "required_count": "{{ required_number }} required",
     "skip_this_position": "Skip this position"
   },

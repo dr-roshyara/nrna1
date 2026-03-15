@@ -25,7 +25,7 @@
                                 <span>{{ $t('pages.Vote.DemoVote.Create.page_header.badge') }}</span>
                             </div>
                         </div>
-                        <p class="text-xl text-gray-600 mb-4">{{ $t('pages.Vote.DemoVote.Create.page_header.welcome', { user_name: user_name }) }}</p>
+                        <p class="text-xl text-gray-600 mb-4">{{ $t('pages.Vote.DemoVote.Create.page_header.welcome') }} {{ user_name }}!</p>
                         <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full" aria-hidden="true"></div>
                     </header>
 
@@ -192,7 +192,7 @@
                                                     class="bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center px-3 py-2"
                                                     :class="{ 'opacity-75': noVoteSelections[post.id] }"
                                                 >
-                                                    <p class="text-xs font-bold">{{ $t('pages.Vote.DemoVote.Create.position_card.candidates_label', { post_name: post.name }) }}</p>
+                                                    <p class="text-xs font-bold">{{ $t('pages.Vote.DemoVote.Create.position_card.candidates_label') }} {{ post.name }}</p>
                                                 </div>
 
                                                 <!-- Candidate Photo -->
@@ -200,7 +200,7 @@
                                                     <div class="w-32 h-32 rounded-lg overflow-hidden border-2 border-gray-200 bg-gray-100 flex items-center justify-center">
                                                         <img
                                                             v-if="candidate.image_path_1"
-                                                            :src="candidate.image_path_1"
+                                                            :src="getImageUrl(candidate.image_path_1)"
                                                             :alt="candidate.candidacy_name"
                                                                 class="w-full h-full object-cover"
                                                         />
@@ -446,7 +446,7 @@
                                                     class="bg-gradient-to-r from-green-600 to-green-700 text-white text-center px-3 py-2"
                                                     :class="{ 'opacity-75': noVoteSelections[post.id] }"
                                                 >
-                                                    <p class="text-xs font-bold">{{ $t('pages.Vote.DemoVote.Create.position_card.candidates_label', { post_name: post.name }) }}</p>
+                                                    <p class="text-xs font-bold">{{ $t('pages.Vote.DemoVote.Create.position_card.candidates_label') }} {{ post.name }}</p>
                                                 </div>
 
                                                 <!-- Candidate Photo -->
@@ -454,7 +454,7 @@
                                                     <div class="w-32 h-32 rounded-lg overflow-hidden border-2 border-gray-200 bg-gray-100 flex items-center justify-center">
                                                         <img
                                                             v-if="candidate.image_path_1"
-                                                            :src="candidate.image_path_1"
+                                                            :src="getImageUrl(candidate.image_path_1)"
                                                             :alt="candidate.user_name"
                                                             class="w-full h-full object-cover"
                                                         />
@@ -1109,6 +1109,13 @@ export default {
             })
         }
 
+        // Helper: Prepend /storage/ to image paths stored without prefix
+        const getImageUrl = (path) => {
+            if (!path) return null
+            if (path.startsWith('http') || path.startsWith('/storage')) return path
+            return `/storage/${path}`
+        }
+
         // DEBUG: Log props to verify data flow
         onMounted(() => {
             console.log('===== VUE PROPS DEBUG =====');
@@ -1147,7 +1154,8 @@ export default {
             submit,
             getPostSelectionStatus,
             getSelectedCandidateNames,
-            getSelectionOrder
+            getSelectionOrder,
+            getImageUrl
         }
     }
 }

@@ -2,7 +2,7 @@
   "page_header": {
     "title": "In Testwahl abstimmen",
     "badge": "Demo Modus",
-    "welcome": "Willkommen {{ user_name }}!"
+    "welcome": "Willkommen"
   },
   "voter_info": {
     "current_election": "Aktuelle Wahl:",
@@ -29,7 +29,7 @@
   },
   "position_card": {
     "position_label": "Position #{{ position_order }}",
-    "candidates_label": "Kandidaten für {{ post_name }}",
+    "candidates_label": "Kandidaten für",
     "required_count": "{{ required_number }} erforderlich",
     "skip_this_position": "Diese Position überspringen"
   },

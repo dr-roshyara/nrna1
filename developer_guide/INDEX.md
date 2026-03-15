@@ -6,6 +6,17 @@ Welcome to the Public Digit Developer Guide. This is a comprehensive reference f
 
 ---
 
+## 🐛 Bug Fix Logs
+
+### **BUG_FIXES_20260314.md** — 2026-03-14
+Two production bugs fixed in one session:
+1. `SyntaxError: Invalid linked format` — vue-i18n crashes when locale JSON files contain `@` or `\u0040` (email addresses in placeholder strings)
+2. `403 Invalid voting link` — `EnsureVoterStepOrder` middleware read the raw route string instead of the resolved `VoterSlug` model from `$request->attributes`
+
+**Quick rule:** Never put `@` in any locale JSON value. In slug-route middleware, always use `$request->attributes->get('voter_slug')` — never `$request->route('vslug')`.
+
+---
+
 ## 📖 Documentation Files
 
 ### 1. **README.md** - Start Here

@@ -2,7 +2,7 @@
   "page_header": {
     "title": "डेमो चुनावमा मतदान गर्नुहोस्",
     "badge": "डेमो मोड",
-    "welcome": "स्वागत छ {{ user_name }}!"
+    "welcome": "स्वागत छ"
   },
   "voter_info": {
     "current_election": "हालको चुनाव:",
@@ -29,7 +29,7 @@
   },
   "position_card": {
     "position_label": "पद #{{ position_order }}",
-    "candidates_label": "{{ post_name }} को लागि उम्मेदवार",
+    "candidates_label": "को लागि उम्मेदवार",
     "required_count": "{{ required_number }} आवश्यक",
     "skip_this_position": "यो पद छोड्नुहोस्"
   },

@@ -245,7 +245,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
-import { useForm, usePage, Link } from '@inertiajs/vue3'
+import { router, usePage, Link } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { route } from 'ziggy-js'
 
@@ -253,10 +253,6 @@ const { t, locale } = useI18n()
 const page = usePage()
 
 const props = defineProps({
-  isLoggedIn: {
-    type: Boolean,
-    default: false,
-  },
   locale: {
     type: String,
     default: null,
@@ -280,10 +276,11 @@ const props = defineProps({
 
 const currentLocale = ref(getInitialLocale());
 const showMobileMenu = ref(false);
-const logoutForm = useForm({});
+const isLoggingOut = ref(false);
 
-// Track logout form processing state
-const isLoggingOut = computed(() => logoutForm.processing);
+// Auth state read directly from Inertia shared props (set by HandleInertiaRequests)
+// HandleInertiaRequests shares user at top-level 'user', not 'auth.user'
+const isLoggedIn = computed(() => !!page.props.user);
 
 // Get breadcrumbs from props or Inertia page props
 const breadcrumbs = computed(() => props.breadcrumbs || page.props.breadcrumbs || []);
@@ -387,13 +384,16 @@ function logout() {
   console.log('🚪 Logout initiated');
   closeMobileMenu();
 
-  logoutForm.post(route('logout'), {
+  isLoggingOut.value = true;
+  router.post(route('logout'), {}, {
     preserveState: false,
     preserveScroll: true,
     onFinish: () => {
+      isLoggingOut.value = false;
       console.log('✓ Logout completed');
     },
     onError: (errors) => {
+      isLoggingOut.value = false;
       console.error('❌ Logout error:', errors);
       alert('Logout failed. Please try again.');
     }
