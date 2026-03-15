@@ -104,9 +104,6 @@ class HandleInertiaRequests extends Middleware
              * useMeta is the single source of truth for all SEO data.
              */
             'canonicalUrl' => $request->url(),
-            // Fallback meta — InjectPageMeta middleware provides the real value per route.
-            // This lazy closure only fires if InjectPageMeta did not run (e.g. non-web routes).
-            'meta' => fn () => app(\App\Services\SeoService::class)->getMeta('home', [], true),
 
             /**
              * Breadcrumbs for Navigation & Schema
