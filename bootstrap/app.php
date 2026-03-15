@@ -30,6 +30,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             \App\Http\Middleware\PreloadAssets::class,
             \App\Http\Middleware\SetLocale::class,
+            \App\Http\Middleware\InjectPageMeta::class,
             \App\Http\Middleware\HandleInertiaRequests::class,
             \App\Http\Middleware\TenantContext::class,
         ]);

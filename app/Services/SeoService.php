@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
 
 /**
@@ -12,6 +14,134 @@ use Illuminate\Support\Facades\URL;
  */
 class SeoService
 {
+    /**
+     * Get complete meta data for a page.
+     * Reads translations from resources/lang/{locale}/seo.php via trans().
+     * Results are cached per locale+page key.
+     *
+     * @param string $page     Page identifier (home, about, login, elections.show, etc.)
+     * @param array  $overrides Dynamic title/description replacements
+     * @param bool   $skipCache Bypass cache (e.g. for fallbacks)
+     */
+    public function getMeta(string $page = 'home', array $overrides = [], bool $skipCache = false): array
+    {
+        $startTime = microtime(true);
+        $locale    = app()->getLocale();
+        $cacheKey  = config('meta.cache.key_prefix', 'meta:') . $locale . ':' . $page;
+
+        if (!$skipCache && config('meta.cache.enabled', true) && Cache::has($cacheKey)) {
+            return Cache::get($cacheKey);
+        }
+
+        $title       = trans("seo.pages.{$page}.title");
+        $description = trans("seo.pages.{$page}.description");
+        $keywords    = trans("seo.pages.{$page}.keywords");
+        $robots      = trans("seo.pages.{$page}.robots");
+
+        // Fallback to site defaults when page key is missing
+        if ($title === "seo.pages.{$page}.title") {
+            $t = trans('seo.site.title');
+            $title = ($t === 'seo.site.title') ? (config('meta.title') ?? 'Public Digit') : $t;
+        }
+        if ($description === "seo.pages.{$page}.description") {
+            $t = trans('seo.site.description');
+            $description = ($t === 'seo.site.description') ? (config('meta.description') ?? '') : $t;
+        }
+        if ($keywords === "seo.pages.{$page}.keywords") {
+            $t = trans('seo.site.keywords');
+            $keywords = ($t === 'seo.site.keywords') ? (config('meta.keywords') ?? '') : $t;
+        }
+        if ($robots === "seo.pages.{$page}.robots") {
+            $robots = 'index, follow';
+        }
+
+        // Apply string overrides
+        $title       = $overrides['title']       ?? $title;
+        $description = $overrides['description'] ?? $description;
+
+        $canonical    = URL::current();
+        $ogLocale     = config('meta.og_locales', [])[$locale] ?? 'en_US';
+        $siteUrl      = rtrim(config('meta.site_url', config('app.url')), '/');
+        $ogImage      = $siteUrl . config('meta.og.image', '/images/og-home.png');
+        $twitterImage = $siteUrl . config('meta.twitter.image', '/images/og-home.png');
+
+        $meta = [
+            'title'       => $title,
+            'description' => $description,
+            'keywords'    => $keywords,
+            'robots'      => $robots,
+            'canonical'   => $canonical,
+            'og'          => [
+                'type'        => config('meta.og.type', 'website'),
+                'url'         => $canonical,
+                'title'       => $title,
+                'description' => $description,
+                'image'       => $ogImage,
+                'width'       => config('meta.og.width', 1200),
+                'height'      => config('meta.og.height', 630),
+                'alt'         => config('meta.og_image_alt', 'Public Digit — Secure Online Voting Platform'),
+                'site_name'   => config('meta.og.site_name', 'Public Digit'),
+                'locale'      => $ogLocale,
+            ],
+            'twitter'     => [
+                'card'        => config('meta.twitter.card', 'summary_large_image'),
+                'site'        => config('meta.twitter.site', '@publicdigit'),
+                'creator'     => config('meta.twitter.creator', '@publicdigit'),
+                'title'       => $title,
+                'description' => $description,
+                'image'       => $twitterImage,
+                'alt'         => config('meta.og_image_alt', 'Public Digit — Secure Online Voting Platform'),
+            ],
+            'alternates'  => $this->buildHreflangUrls($canonical),
+            'json_ld'     => $this->buildJsonLd($canonical),
+        ];
+
+        if (config('meta.cache.enabled', true)) {
+            Cache::put($cacheKey, $meta, config('meta.cache.ttl', 3600));
+        }
+
+        $ms = (microtime(true) - $startTime) * 1000;
+        if (config('meta.performance.log_slow_generation', false) && $ms > config('meta.performance.slow_threshold_ms', 200)) {
+            Log::warning('Slow SEO meta generation', ['page' => $page, 'locale' => $locale, 'ms' => round($ms, 2)]);
+        }
+
+        return $meta;
+    }
+
+    private function buildHreflangUrls(string $canonical): array
+    {
+        $urls = [];
+        foreach (config('meta.supported_locales', ['de', 'en', 'np']) as $loc) {
+            $urls[$loc] = $canonical;
+        }
+        $urls['x-default'] = $canonical;
+        return $urls;
+    }
+
+    private function buildJsonLd(string $canonical): array
+    {
+        return [
+            'website' => [
+                '@context' => 'https://schema.org',
+                '@type'    => 'WebSite',
+                'name'     => config('meta.site_name', 'Public Digit'),
+                'url'      => config('meta.site_url', config('app.url')),
+            ],
+            'organization' => [
+                '@context'    => 'https://schema.org',
+                '@type'       => 'Organization',
+                'name'        => config('meta.organisation.name'),
+                'legalName'   => config('meta.organisation.legal_name'),
+                'url'         => config('meta.site_url', config('app.url')),
+                'logo'        => config('meta.organisation.logo'),
+                'foundingDate'=> config('meta.organisation.founding_date'),
+                'email'       => config('meta.organisation.email'),
+                'address'     => config('meta.organisation.address'),
+                'sameAs'      => config('meta.organisation.same_as', []),
+            ],
+        ];
+    }
+
     /**
      * Set page title
      *

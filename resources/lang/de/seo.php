@@ -57,5 +57,61 @@ return [
             'description' => 'Endergebnisse für {electionName}. Sehen Sie Wahlergebnisse, Kandidaten-Rankings und vollständige Abstimmungsstatistiken.',
             'keywords' => '{electionName}, Wahlergebnisse, Abstimmungsergebnisse, Wahlresultate',
         ],
+
+        'login' => [
+            'title'       => 'Anmelden | Public Digit',
+            'description' => 'Melden Sie sich bei Ihrem Public Digit-Konto an, um auf Ihre Wahlen zuzugreifen, zu wählen oder Ihre Organisation zu verwalten.',
+            'keywords'    => 'Anmelden, Einloggen, Public Digit Konto, Wahlplattform Login',
+            'robots'      => 'index, follow',
+        ],
+
+        'register' => [
+            'title'       => 'Konto erstellen | Public Digit',
+            'description' => 'Registrieren Sie sich für ein Public Digit-Konto, um sichere Online-Wahlen für Ihre Organisation zu nutzen.',
+            'keywords'    => 'Registrieren, Konto erstellen, Anmelden, Public Digit Registrierung',
+            'robots'      => 'index, follow',
+        ],
+
+        'about' => [
+            'title'       => 'Über Public Digit | Sichere Digitale Wahlplattform',
+            'description' => 'Erfahren Sie mehr über die Mission von Public Digit, digitale Demokratie sicher, transparent und zugänglich für Organisationen, NGOs und Diaspora-Gemeinschaften zu machen.',
+            'keywords'    => 'über public digit, digitale Wahlmission, sichere Wahlplattform, Diaspora-Wahlen',
+            'robots'      => 'index, follow',
+        ],
+
+        'faq' => [
+            'title'       => 'FAQ | Häufig gestellte Fragen | Public Digit',
+            'description' => 'Finden Sie Antworten auf häufige Fragen zu Online-Wahlen, Sicherheit, Datenschutz und wie Public Digit für Ihre Organisation funktioniert.',
+            'keywords'    => 'FAQ, häufige Fragen, Online-Wahlen Hilfe, Wahlplattform Fragen',
+            'robots'      => 'index, follow',
+        ],
+
+        'security' => [
+            'title'       => 'Sichere und anonyme Online-Wahlen | Public Digit',
+            'description' => 'Fünfschichtige Sicherheitsarchitektur zum Schutz Ihrer Wahlen. Vollständige Wähleranonymität, kryptografische Verifizierung und Multi-Tenant-Isolation für Vereine, NGOs und Organisationen.',
+            'keywords'    => 'sichere Online-Wahlen, anonyme Wahlen, Wahlsicherheit, digitale Wahlplattform, Wähleranonymität, DSGVO-Wahlen',
+            'robots'      => 'index, follow',
+        ],
+
+        'demo' => [
+            'title'       => 'Demo-Wahl ausprobieren | Public Digit',
+            'description' => 'Erleben Sie sichere Online-Wahlen hautnah mit unserer interaktiven Demo-Wahl. Keine Registrierung erforderlich.',
+            'keywords'    => 'Demo-Wahl, Abstimmung testen, Online-Wahl Demo, Wahlplattform testen',
+            'robots'      => 'index, follow',
+        ],
+
+        'dashboard' => [
+            'title'       => 'Dashboard | Public Digit',
+            'description' => 'Greifen Sie auf Ihre Wahlen, Abstimmungsaktivitäten und Kontoverwaltung über Ihr persönliches Dashboard zu.',
+            'keywords'    => 'Dashboard, meine Wahlen, Abstimmungs-Dashboard',
+            'robots'      => 'noindex, nofollow',
+        ],
+
+        'profile' => [
+            'title'       => 'Ihr Profil | Public Digit',
+            'description' => 'Verwalten Sie Ihre Public Digit-Kontoeinstellungen, Benachrichtigungen und Präferenzen.',
+            'keywords'    => 'Profil, Kontoeinstellungen, Benutzerprofil',
+            'robots'      => 'noindex, nofollow',
+        ],
     ],
 ];

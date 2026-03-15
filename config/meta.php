@@ -47,6 +47,44 @@ return [
     'bing_verification'   => env('BING_SITE_VERIFICATION', ''),
     'yandex_verification' => env('YANDEX_SITE_VERIFICATION', ''),
 
+    // Structured sections for SeoService::getMeta()
+    'site_url'          => env('APP_URL', 'https://publicdigit.com'),
+    'default_locale'    => env('APP_LOCALE', 'de'),
+    'supported_locales' => ['de', 'en', 'np'],
+    'og_locales'        => ['de' => 'de_DE', 'en' => 'en_US', 'np' => 'ne_NP'],
+
+    'og' => [
+        'type'      => 'website',
+        'image'     => '/images/og-home.png',
+        'site_name' => 'Public Digit',
+        'width'     => 1200,
+        'height'    => 630,
+    ],
+
+    'twitter' => [
+        'card'    => 'summary_large_image',
+        'site'    => '@publicdigit',
+        'creator' => '@publicdigit',
+        'image'   => '/images/og-home.png',
+    ],
+
+    'images' => [
+        'logo'       => '/images/logo-2.png',
+        'favicon'    => '/images/favicon.ico',
+        'og_default' => '/images/og-home.png',
+    ],
+
+    'cache' => [
+        'enabled'    => env('META_CACHE_ENABLED', true),
+        'ttl'        => env('META_CACHE_TTL', 3600),
+        'key_prefix' => 'meta:',
+    ],
+
+    'performance' => [
+        'log_slow_generation' => env('LOG_SLOW_META', false),
+        'slow_threshold_ms'   => env('META_SLOW_THRESHOLD', 200),
+    ],
+
     // Organisation (for JSON-LD)
     'organisation' => [
         'name'         => 'Public Digit',

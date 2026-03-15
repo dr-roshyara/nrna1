@@ -57,5 +57,61 @@ return [
             'description' => 'Final results for {electionName}. View election outcomes, candidate standings, and complete voting statistics.',
             'keywords' => '{electionName}, election results, voting results, election outcomes',
         ],
+
+        'login' => [
+            'title'       => 'Sign In | Public Digit',
+            'description' => 'Sign in to your Public Digit account to access your elections, vote, or manage your organisation.',
+            'keywords'    => 'login, sign in, public digit account, voting platform login',
+            'robots'      => 'index, follow',
+        ],
+
+        'register' => [
+            'title'       => 'Create Account | Public Digit',
+            'description' => 'Register for a Public Digit account to start using secure online voting for your organisation.',
+            'keywords'    => 'register, create account, sign up, public digit registration',
+            'robots'      => 'index, follow',
+        ],
+
+        'about' => [
+            'title'       => 'About Public Digit | Secure Digital Voting Platform',
+            'description' => 'Learn about Public Digit\'s mission to make digital democracy secure, transparent, and accessible for organisations, NGOs, and diaspora communities worldwide.',
+            'keywords'    => 'about public digit, digital voting mission, secure elections platform, diaspora voting',
+            'robots'      => 'index, follow',
+        ],
+
+        'faq' => [
+            'title'       => 'FAQ | Frequently Asked Questions | Public Digit',
+            'description' => 'Find answers to common questions about online voting, security, privacy, and how Public Digit works for your organisation.',
+            'keywords'    => 'faq, frequently asked questions, online voting help, voting platform questions',
+            'robots'      => 'index, follow',
+        ],
+
+        'security' => [
+            'title'       => 'Secure & Anonymous Online Voting | Public Digit',
+            'description' => 'Five-layer security architecture protecting your elections. Complete voter anonymity, cryptographic verification, and multi-tenant isolation for associations, NGOs, and organisations.',
+            'keywords'    => 'secure online voting, anonymous voting, election security, digital voting platform, voter anonymity, GDPR voting',
+            'robots'      => 'index, follow',
+        ],
+
+        'demo' => [
+            'title'       => 'Try Demo Election | Public Digit',
+            'description' => 'Experience secure online voting firsthand with our interactive demo election. No registration required.',
+            'keywords'    => 'demo election, try voting, online voting demo, test election platform',
+            'robots'      => 'index, follow',
+        ],
+
+        'dashboard' => [
+            'title'       => 'Dashboard | Public Digit',
+            'description' => 'Access your elections, voting activities, and account management from your personal dashboard.',
+            'keywords'    => 'dashboard, my elections, voting dashboard',
+            'robots'      => 'noindex, nofollow',
+        ],
+
+        'profile' => [
+            'title'       => 'Your Profile | Public Digit',
+            'description' => 'Manage your Public Digit account settings, notifications, and preferences.',
+            'keywords'    => 'profile, account settings, user profile',
+            'robots'      => 'noindex, nofollow',
+        ],
     ],
 ];

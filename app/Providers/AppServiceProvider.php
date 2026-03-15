@@ -45,6 +45,9 @@ class AppServiceProvider extends ServiceProvider
             return new DeviceFingerprint();
         });
 
+        // Register SeoService as singleton for injectable getMeta() usage
+        $this->app->singleton(\App\Services\SeoService::class);
+
         // Register custom Fortify login response
         // This ensures LoginResponse handles post-authentication redirection via DashboardResolver
         $this->app->bind(

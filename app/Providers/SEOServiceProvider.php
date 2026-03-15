@@ -11,15 +11,10 @@ class SEOServiceProvider extends ServiceProvider
     {
         // Share base SEO data with every Inertia page
         // Vue components can read this from usePage().props.seo
+        // Share basic seo prop for backward compatibility.
+        // noIndex logic moved to InjectPageMeta middleware.
+        // Rich meta is now in page.props.meta (set by InjectPageMeta).
         Inertia::share('seo', function () {
-            $route = optional(request()->route())->getName() ?? '';
-
-            // Per-route robots overrides
-            $noIndexRoutes = ['vote.create', 'demo-vote.create', 'code.create', 'voter.index'];
-            if (in_array($route, $noIndexRoutes, true)) {
-                \App\Services\SeoService::noIndex();
-            }
-
             return [
                 'title'       => config('meta.title'),
                 'description' => config('meta.description'),
