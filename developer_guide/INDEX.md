@@ -8,6 +8,24 @@ Welcome to the Public Digit Developer Guide. This is a comprehensive reference f
 
 ## 🐛 Bug Fix Logs
 
+### **BUG_FIXES_20260315.md** — 2026-03-15
+Six issues fixed in one session:
+1. `isLoggedIn` checked wrong prop path (`auth.user` vs `user`) — logout button invisible
+2. Logout used Inertia 1.0 `useForm.post()` in Composition API — silent failure
+3. Vue I18n v9 nesting error — `{{ }}` placeholders forbidden in locale JSON strings
+4. Candidate images 404 — service generated slug-based paths that never existed; old DB records not updated due to `BelongsToTenant` global scope
+5. Candidate names showed taglines (`Alice Johnson - Progressive Platform`) — stripped from service and DB
+6. Emails stopped sending — `cacert.pem` relative path in `php.ini` broke after PHP upgrade
+
+**Quick rules:**
+- Check `HandleInertiaRequests::share()` before writing `page.props.*` checks
+- Use `router.post()` (not `useForm`) for Composition API form submissions
+- Vue I18n v9: use `{param}` not `{{ param }}` in JSON; or concatenate in template
+- Global scopes hide records — use `DB::table()` to verify/update without scope interference
+- Always use absolute paths for `curl.cainfo` and `openssl.cafile` in `php.ini`
+
+---
+
 ### **BUG_FIXES_20260314.md** — 2026-03-14
 Two production bugs fixed in one session:
 1. `SyntaxError: Invalid linked format` — vue-i18n crashes when locale JSON files contain `@` or `\u0040` (email addresses in placeholder strings)

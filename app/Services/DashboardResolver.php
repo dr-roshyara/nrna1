@@ -968,33 +968,45 @@ class DashboardResolver
                 'onboarded_at' => $user->onboarded_at,
             ]);
 
-            // ===== CHECK 1: Does user have THEIR OWN organisation? =====
+            // ===== CHECK 1: Does user have THEIR OWN organisation (excluding platform)? =====
             if ($user->hasOwnOrganisation()) {
                 $ownOrg = $user->getOwnOrganisation();
+                $platformOrgId = $this->getPlatformOrgId();
 
-                Log::info('🏢 User has own organisation - redirecting', [
-                    'user_id' => $user->id,
-                    'organisation_id' => $ownOrg->id,
-                    'organisation_slug' => $ownOrg->slug,
-                    'type' => $ownOrg->type,
-                ]);
-
-                // Set TenantContext before redirecting
-                try {
-                    $this->tenantContext->setContext($user, $ownOrg);
-                    Log::debug('DashboardResolver: TenantContext set for own organisation', [
+                // Skip platform organisation — new users are assigned to it by default
+                // but should go to the welcome page, not the platform org dashboard
+                if ($ownOrg && $ownOrg->id === $platformOrgId) {
+                    Log::info('⚠️ User own organisation is platform org - skipping redirect to org page', [
                         'user_id' => $user->id,
                         'organisation_id' => $ownOrg->id,
+                        'organisation_slug' => $ownOrg->slug,
                     ]);
-                } catch (\RuntimeException $e) {
-                    Log::warning('DashboardResolver: Failed to set TenantContext for own org', [
+                    // Fall through to welcome/dashboard checks below
+                } elseif ($ownOrg) {
+                    Log::info('🏢 User has own non-platform organisation - redirecting', [
                         'user_id' => $user->id,
                         'organisation_id' => $ownOrg->id,
-                        'error' => $e->getMessage(),
+                        'organisation_slug' => $ownOrg->slug,
+                        'type' => $ownOrg->type,
                     ]);
+
+                    // Set TenantContext before redirecting
+                    try {
+                        $this->tenantContext->setContext($user, $ownOrg);
+                        Log::debug('DashboardResolver: TenantContext set for own organisation', [
+                            'user_id' => $user->id,
+                            'organisation_id' => $ownOrg->id,
+                        ]);
+                    } catch (\RuntimeException $e) {
+                        Log::warning('DashboardResolver: Failed to set TenantContext for own org', [
+                            'user_id' => $user->id,
+                            'organisation_id' => $ownOrg->id,
+                            'error' => $e->getMessage(),
+                        ]);
+                    }
+
+                    return redirect()->route('organisations.show', $ownOrg->slug);
                 }
-
-                return redirect()->route('organisations.show', $ownOrg->slug);
             }
 
             // ===== CHECK 2: User is in platform context =====
