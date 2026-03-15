@@ -6,6 +6,7 @@ use App\Services\SeoService;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 use Inertia\Inertia;
 
 class InjectPageMeta
@@ -44,7 +45,13 @@ class InjectPageMeta
             Log::debug('InjectPageMeta: unmapped route using home meta', ['route' => $routeName]);
         }
 
-        Inertia::share('meta', $this->seoService->getMeta($page));
+        $meta = $this->seoService->getMeta($page);
+
+        // Share with Inertia (Vue page.props.meta)
+        Inertia::share('meta', $meta);
+
+        // Share with Blade views so meta-info.blade.php can render server-side HTML
+        View::share('serverMeta', $meta);
 
         return $next($request);
     }

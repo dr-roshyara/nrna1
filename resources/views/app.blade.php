@@ -8,8 +8,8 @@
     {{-- Favicon - Use absolute paths for better compatibility --}}
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/logo-2.png') }}">
 
-    {{-- SEO Meta Tags (reads from config/meta.php, set dynamically by SeoService) --}}
-    <title inertia>{{ config('meta.title', 'Public Digit') }}</title>
+    {{-- SEO Meta Tags — serverMeta is set by InjectPageMeta middleware (locale-aware) --}}
+    <title inertia>{{ ($serverMeta['title'] ?? config('meta.title', 'Public Digit')) }}</title>
     @include('meta.meta-info')
 
     {{-- Fonts - Nunito is now default in Tailwind v4 config we wrote --}}

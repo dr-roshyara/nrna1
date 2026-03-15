@@ -19,9 +19,11 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         const app = createApp({ render: () => h(App, props) });
 
-        // Inject server locale to global window before mounting
-        if (props.initialPage.props.locale) {
-            window.__initialLocale = props.initialPage.props.locale;
+        // Set i18n locale from server-provided locale (page.props.locale)
+        // Must be done before mount so useMeta and other composables see the right locale
+        const serverLocale = props.initialPage.props.locale;
+        if (serverLocale && ['de', 'en', 'np'].includes(serverLocale)) {
+            i18n.global.locale.value = serverLocale;
         }
 
         app.use(plugin)
