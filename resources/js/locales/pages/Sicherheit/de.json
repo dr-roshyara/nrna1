@@ -1,0 +1,20 @@
+{
+  "title": "Sichere Online-Wahlen mit Ende-zu-Ende-Verschlüsselung",
+  "subtitle": "Banksicherheit für Ihre Wahlen: Ende-zu-Ende-Verschlüsselung, anonyme Stimmabgabe und manipulationssichere Protokolle.",
+  "features_title": "Fünf Sicherheitsschichten für Ihre Wahl",
+  "features": {
+    "e2e": "Ende-zu-Ende-Verschlüsselung",
+    "anon": "Vollständige Wähleranonymität",
+    "audit": "Manipulationssichere Audit-Protokolle",
+    "tenant": "Multi-Tenant-Isolation",
+    "dsgvo": "DSGVO-konform",
+    "crypto": "Kryptografische Verifikation"
+  },
+  "cta": {
+    "trial": "Kostenlos testen",
+    "demo": "Demo ansehen"
+  },
+  "cta_title": "Sicherheit, der Sie vertrauen können",
+  "cta_subtitle": "Geprüfte Sicherheitsarchitektur für Vereine, NGOs und Organisationen aller Größen.",
+  "cta_button": "Jetzt sicher wählen"
+}

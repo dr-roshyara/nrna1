@@ -29,6 +29,18 @@ import welcomeDe from './locales/pages/Welcome/de.json';
 import welcomeEn from './locales/pages/Welcome/en.json';
 import welcomeNp from './locales/pages/Welcome/np.json';
 
+import vereinswahlenDe from './locales/pages/Vereinswahlen/de.json';
+import vereinswahlenEn from './locales/pages/Vereinswahlen/en.json';
+import vereinswahlenNp from './locales/pages/Vereinswahlen/np.json';
+
+import hybridDe from './locales/pages/Hybrid/de.json';
+import hybridEn from './locales/pages/Hybrid/en.json';
+import hybridNp from './locales/pages/Hybrid/np.json';
+
+import sicherheitDe from './locales/pages/Sicherheit/de.json';
+import sicherheitEn from './locales/pages/Sicherheit/en.json';
+import sicherheitNp from './locales/pages/Sicherheit/np.json';
+
 import authDe from './locales/pages/Auth/de.json';
 import authEn from './locales/pages/Auth/en.json';
 import authNp from './locales/pages/Auth/np.json';
@@ -164,6 +176,9 @@ const messages = {
       'voting-election': votingElectionDe,
       pricing: pricingDe,
       welcome: welcomeDe,
+      vereinswahlen: vereinswahlenDe,
+      hybrid: hybridDe,
+      sicherheit: sicherheitDe,
       auth: authDe,
       'verify-email': verifyEmailDe,
       'forgot-password': forgotPasswordDe,
@@ -205,6 +220,9 @@ const messages = {
       'voting-election': votingElectionEn,
       pricing: pricingEn,
       welcome: welcomeEn,
+      vereinswahlen: vereinswahlenEn,
+      hybrid: hybridEn,
+      sicherheit: sicherheitEn,
       auth: authEn,
       'verify-email': verifyEmailEn,
       'forgot-password': forgotPasswordEn,
@@ -246,6 +264,9 @@ const messages = {
       'voting-election': votingElectionNp,
       pricing: pricingNp,
       welcome: welcomeNp,
+      vereinswahlen: vereinswahlenNp,
+      hybrid: hybridNp,
+      sicherheit: sicherheitNp,
       auth: authNp,
       'verify-email': verifyEmailNp,
       'forgot-password': forgotPasswordNp,

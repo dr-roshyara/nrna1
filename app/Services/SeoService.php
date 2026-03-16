@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers\SeoHelper;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
@@ -23,7 +24,7 @@ class SeoService
      * @param array  $overrides Dynamic title/description replacements
      * @param bool   $skipCache Bypass cache (e.g. for fallbacks)
      */
-    public function getMeta(string $page = 'home', array $overrides = [], bool $skipCache = false): array
+    public function getMeta(string $page = 'home', array $overrides = [], bool $skipCache = false, array $additional = []): array
     {
         $startTime = microtime(true);
         $locale    = app()->getLocale();
@@ -59,6 +60,10 @@ class SeoService
         $title       = $overrides['title']       ?? $title;
         $description = $overrides['description'] ?? $description;
 
+        // Enforce optimal SEO lengths
+        $title       = SeoHelper::optimizeTitle($title);
+        $description = SeoHelper::optimizeDescription($description);
+
         $canonical    = URL::current();
         $ogLocale     = config('meta.og_locales', [])[$locale] ?? 'en_US';
         $siteUrl      = rtrim(config('meta.site_url', config('app.url')), '/');
@@ -93,7 +98,7 @@ class SeoService
                 'alt'         => config('meta.og_image_alt', 'Public Digit — Secure Online Voting Platform'),
             ],
             'alternates'  => $this->buildHreflangUrls($canonical),
-            'json_ld'     => $this->buildJsonLd($canonical),
+            'json_ld'     => $this->buildJsonLd($canonical, $additional),
         ];
 
         if (config('meta.cache.enabled', true)) {
@@ -118,27 +123,150 @@ class SeoService
         return $urls;
     }
 
-    private function buildJsonLd(string $canonical): array
+    private function buildJsonLd(string $canonical, array $additional = []): array
     {
-        return [
+        $siteUrl = config('meta.site_url', config('app.url'));
+
+        $schemas = [
             'website' => [
                 '@context' => 'https://schema.org',
                 '@type'    => 'WebSite',
                 'name'     => config('meta.site_name', 'Public Digit'),
-                'url'      => config('meta.site_url', config('app.url')),
+                'url'      => $siteUrl,
+                'description' => trans('seo.site.description'),
+                'potentialAction' => [
+                    '@type'       => 'SearchAction',
+                    'target'      => $siteUrl . '/organisations?q={search_term_string}',
+                    'query-input' => 'required name=search_term_string',
+                ],
             ],
             'organization' => [
                 '@context'    => 'https://schema.org',
                 '@type'       => 'Organization',
                 'name'        => config('meta.organisation.name'),
                 'legalName'   => config('meta.organisation.legal_name'),
-                'url'         => config('meta.site_url', config('app.url')),
+                'url'         => $siteUrl,
                 'logo'        => config('meta.organisation.logo'),
                 'foundingDate'=> config('meta.organisation.founding_date'),
                 'email'       => config('meta.organisation.email'),
                 'address'     => config('meta.organisation.address'),
                 'sameAs'      => config('meta.organisation.same_as', []),
+                'contactPoint' => [
+                    '@type'             => 'ContactPoint',
+                    'email'             => config('meta.organisation.email'),
+                    'contactType'       => 'customer service',
+                    'availableLanguage' => ['German', 'English', 'Nepali'],
+                ],
             ],
+            'service' => [
+                '@context'    => 'https://schema.org',
+                '@type'       => 'Service',
+                'name'        => 'Digitale Online Wahlen',
+                'description' => 'Sichere Online-Wahlen für Vereine, NGOs, Verbände und Diaspora-Organisationen',
+                'provider'    => [
+                    '@type' => 'Organization',
+                    'name'  => config('meta.organisation.name'),
+                ],
+                'areaServed'  => ['DE', 'AT', 'CH', 'NP'],
+                'serviceType' => 'Online Voting Service',
+                'audience'    => [
+                    '@type' => 'Audience',
+                    'name'  => 'Vereine, NGOs und Mitgliedsorganisationen',
+                ],
+            ],
+        ];
+
+        // Vereinswahlen-specific rich Service schema (injected when page key is 'vereinswahlen')
+        if (!empty($additional['vereinswahlen'])) {
+            $schemas['vereinswahlen'] = $this->buildVereinswahlenSchema();
+        }
+
+        // Breadcrumb schema — injected from shared breadcrumbs when available
+        if (!empty($additional['breadcrumbs'])) {
+            $schemas['breadcrumb'] = $this->buildBreadcrumbSchema($additional['breadcrumbs']);
+        }
+
+        // Election-specific VoteAction schema
+        if (!empty($additional['election'])) {
+            $e = $additional['election'];
+            $schemas['election'] = [
+                '@context'    => 'https://schema.org',
+                '@type'       => 'VoteAction',
+                'name'        => $e['name'] ?? '',
+                'description' => $e['description'] ?? '',
+                'startTime'   => $e['start_date'] ?? null,
+                'endTime'     => $e['end_date'] ?? null,
+                'agent'       => [
+                    '@type' => 'Organization',
+                    'name'  => $e['organisation_name'] ?? config('meta.organisation.name'),
+                ],
+            ];
+        }
+
+        // FAQ schema — injected by controllers that have FAQ data
+        if (!empty($additional['faq'])) {
+            $schemas['faq'] = $additional['faq'];
+        }
+
+        return $schemas;
+    }
+
+    private function buildVereinswahlenSchema(): array
+    {
+        $siteUrl = config('meta.site_url', config('app.url'));
+
+        return [
+            '@context'    => 'https://schema.org',
+            '@type'       => 'Service',
+            'name'        => trans('seo.pages.vereinswahlen.title'),
+            'description' => trans('seo.pages.vereinswahlen.description'),
+            'provider'    => [
+                '@type'      => 'Organization',
+                'name'       => config('meta.organisation.name'),
+                'areaServed' => [
+                    ['@type' => 'Country', 'name' => 'Deutschland'],
+                    ['@type' => 'Country', 'name' => 'Österreich'],
+                    ['@type' => 'Country', 'name' => 'Schweiz'],
+                ],
+            ],
+            'audience' => [
+                '@type'          => 'Audience',
+                'name'           => trans('seo.pages.vereinswahlen.keywords'),
+                'geographicArea' => 'DE, AT, CH',
+            ],
+            'serviceType'    => 'Online Voting Service',
+            'termsOfService' => $siteUrl . '/agb',
+            'serviceOutput'  => [
+                '@type'       => 'VoteAction',
+                'name'        => 'Vorstandswahl',
+                'description' => 'Digitale Vorstandswahl für Vereine',
+            ],
+            'offers' => [
+                '@type'            => 'Offer',
+                'name'             => 'Vereinswahlen-Paket',
+                'description'      => 'Komplettlösung für digitale Vereinswahlen',
+                'priceCurrency'    => 'EUR',
+                'eligibleQuantity' => 'bis 500 Mitglieder',
+            ],
+        ];
+    }
+
+    private function buildBreadcrumbSchema(array $breadcrumbs): array
+    {
+        $items = [];
+        $position = 1;
+        foreach ($breadcrumbs as $crumb) {
+            $items[] = [
+                '@type'    => 'ListItem',
+                'position' => $position++,
+                'name'     => $crumb['label'] ?? $crumb['name'] ?? '',
+                'item'     => $crumb['url'] ?? null,
+            ];
+        }
+        return [
+            '@context'        => 'https://schema.org',
+            '@type'           => 'BreadcrumbList',
+            'itemListElement' => $items,
         ];
     }
 

@@ -113,5 +113,26 @@ return [
             'keywords'    => 'profile, account settings, user profile',
             'robots'      => 'noindex, nofollow',
         ],
+
+        'vereinswahlen' => [
+            'title'       => 'Digital Online Elections for Associations | Public Digit',
+            'description' => 'The platform for digital online elections for associations: ✓ Secret board elections ✓ Online voting ✓ Hybrid general meetings ✓ GDPR compliant ✓ End-to-end encrypted.',
+            'keywords'    => 'digital elections for associations, online board election, association voting, hybrid general meeting, GDPR voting',
+            'robots'      => 'index, follow',
+        ],
+
+        'hybrid' => [
+            'title'       => 'Hybrid Elections for General Meetings | Public Digit',
+            'description' => 'Combine in-person and online voting: Ideal for mixed general meetings with local and remote participants. Includes authentication and vote counting.',
+            'keywords'    => 'hybrid elections, mixed general meeting, remote voting, in-person voting, online meeting',
+            'robots'      => 'index, follow',
+        ],
+
+        'sicherheit' => [
+            'title'       => 'Secure Online Elections with End-to-End Encryption | Public Digit',
+            'description' => 'Bank-level security for your elections: End-to-end encryption, anonymous voting, tamper-proof audit logs, and GDPR compliance.',
+            'keywords'    => 'election security, end-to-end encryption, anonymous voting, tamper-proof, GDPR elections',
+            'robots'      => 'index, follow',
+        ],
     ],
 ];

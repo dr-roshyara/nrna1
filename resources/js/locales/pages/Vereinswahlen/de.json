@@ -1,0 +1,20 @@
+{
+  "title": "Digitale Online Wahlen für Verein",
+  "subtitle": "Geheime Vorstandswahlen, Online-Abstimmungen und hybride Mitgliederversammlungen — DSGVO-konform und Ende-zu-Ende-verschlüsselt.",
+  "features_title": "Alles, was Ihr Verein für sichere Wahlen braucht",
+  "features": {
+    "geheim": "Geheime Vorstandswahlen",
+    "hybrid": "Hybride Mitgliederversammlungen",
+    "rechts": "Rechtssichere Durchführung",
+    "dsgvo": "DSGVO-konform",
+    "encrypted": "Ende-zu-Ende-verschlüsselt",
+    "audit": "Vollständiger Audit-Trail"
+  },
+  "cta": {
+    "trial": "Kostenlos testen",
+    "demo": "Demo ansehen"
+  },
+  "cta_title": "Bereit für Ihre erste digitale Vereinswahl?",
+  "cta_subtitle": "Starten Sie in wenigen Minuten — kein technisches Know-how erforderlich.",
+  "cta_button": "Jetzt kostenlos starten"
+}

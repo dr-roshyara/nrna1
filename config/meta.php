@@ -85,6 +85,30 @@ return [
         'slow_threshold_ms'   => env('META_SLOW_THRESHOLD', 200),
     ],
 
+    // Social media platform-specific images
+    'social' => [
+        'facebook' => [
+            'image'        => '/images/social/fb-og.jpg',
+            'image_width'  => 1200,
+            'image_height' => 630,
+        ],
+        'twitter' => [
+            'image'        => '/images/social/twitter-card.jpg',
+            'image_width'  => 800,
+            'image_height' => 418,
+        ],
+        'linkedin' => [
+            'image'        => '/images/social/linkedin-og.jpg',
+            'image_width'  => 1200,
+            'image_height' => 627,
+        ],
+        'whatsapp' => [
+            'image'        => '/images/social/whatsapp-share.jpg',
+            'image_width'  => 300,
+            'image_height' => 300,
+        ],
+    ],
+
     // Organisation (for JSON-LD)
     'organisation' => [
         'name'         => 'Public Digit',

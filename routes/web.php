@@ -255,6 +255,31 @@ Route::get('/security', [App\Http\Controllers\SecurityPageController::class, 'sh
 // Voting Security page
 Route::get('/voting/security', [App\Http\Controllers\VotingSecurityPageController::class, 'show'])->name('voting.security');
 
+// SEO landing pages — keyword-targeted routes
+Route::get('/digitale-online-wahlen-fuer-verein', function () {
+    return Inertia\Inertia::render('Marketing/Vereinswahlen', [
+        'canonical' => config('app.url') . '/digitale-online-wahlen-fuer-verein',
+    ]);
+})->name('vereinswahlen.landing');
+
+Route::get('/wahlen/vereine', function () {
+    return Inertia\Inertia::render('Marketing/Vereinswahlen', [
+        'canonical' => config('app.url') . '/wahlen/vereine',
+    ]);
+})->name('wahlen.vereine');
+
+Route::get('/wahlen/hybrid', function () {
+    return Inertia\Inertia::render('Marketing/Hybrid', [
+        'canonical' => config('app.url') . '/wahlen/hybrid',
+    ]);
+})->name('wahlen.hybrid');
+
+Route::get('/wahlen/sicherheit', function () {
+    return Inertia\Inertia::render('Marketing/Sicherheit', [
+        'canonical' => config('app.url') . '/wahlen/sicherheit',
+    ]);
+})->name('wahlen.sicherheit');
+
 // Route::get('/', function () {
 //     if( auth()->user()!=null ){ return Inertia::render('Dashboard/MainDashboard'); }
 

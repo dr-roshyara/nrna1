@@ -37,6 +37,9 @@ class InjectPageMeta
             $routeName === 'elections.index'                    => 'elections.index',
             $routeName === 'organisations.show'                 => 'organisations.show',
             in_array($routeName, ['election.result', 'demo.result'], true) => 'election.result',
+            in_array($routeName, ['vereinswahlen.landing', 'wahlen.vereine'], true) => 'vereinswahlen',
+            $routeName === 'wahlen.hybrid'                      => 'hybrid',
+            $routeName === 'wahlen.sicherheit'                  => 'sicherheit',
             default                                             => 'home',
         };
 
@@ -45,7 +48,8 @@ class InjectPageMeta
             Log::debug('InjectPageMeta: unmapped route using home meta', ['route' => $routeName]);
         }
 
-        $meta = $this->seoService->getMeta($page);
+        $additional = $page === 'vereinswahlen' ? ['vereinswahlen' => true] : [];
+        $meta = $this->seoService->getMeta($page, [], false, $additional);
 
         // Share with Inertia (Vue page.props.meta)
         Inertia::share('meta', $meta);

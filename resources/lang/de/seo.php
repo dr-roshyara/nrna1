@@ -23,9 +23,16 @@ return [
 
     'pages' => [
         'home' => [
-            'title' => 'Sichere Online-Wahlen | Public Digit Elections',
-            'description' => 'Ermöglichen Sie Ihrer Organisation sichere, transparente Online-Wahlen. Public Digit bietet DSGVO-konforme Wahlen für Diaspora-Gemeinschaften, NGOs und Mitgliedsorganisationen weltweit.',
-            'keywords' => 'Online-Wahlen, digitale Abstimmungen, sichere Wahlen, Diaspora-Wahlen, NRNA',
+            'title' => 'Digitale Online Wahlen für Verein | Public Digit',
+            'description' => 'Digitale Online Wahlen für Verein: ✓ Geheime Vorstandswahlen ✓ Online-Abstimmungen ✓ Hybride Mitgliederversammlungen ✓ DSGVO-konform ✓ Ende-zu-Ende-verschlüsselt. Jetzt testen!',
+            'keywords' => 'Digitale Online Wahlen für Verein, Vereinswahlen online, digitale Vorstandswahl Verein, Online-Abstimmung Verein, hybride Wahlen Verein, Mitgliederbefragung online, Satzungsänderung digital',
+        ],
+
+        'vereinswahlen' => [
+            'title' => 'Digitale Online Wahlen für Verein | Public Digit',
+            'description' => 'Die Plattform für digitale Online Wahlen für Verein: Einfach, sicher und rechtssicher. Ideal für Vorstandswahlen, Satzungsänderungen und Mitgliederbefragungen.',
+            'keywords' => 'Digitale Online Wahlen für Verein, Vorstandswahl digital, Vereinssatzung online abstimmen, Mitgliederversammlung online',
+            'robots' => 'index, follow',
         ],
 
         'pricing' => [
@@ -112,6 +119,20 @@ return [
             'description' => 'Verwalten Sie Ihre Public Digit-Kontoeinstellungen, Benachrichtigungen und Präferenzen.',
             'keywords'    => 'Profil, Kontoeinstellungen, Benutzerprofil',
             'robots'      => 'noindex, nofollow',
+        ],
+
+        'hybrid' => [
+            'title'       => 'Hybride Wahlen für Mitgliederversammlungen • Public Digit',
+            'description' => 'Kombinieren Sie Präsenz- und Online-Wahl: Ideal für gemischte Mitgliederversammlungen mit Teilnehmern vor Ort und remote. Inklusive Authentifizierung und Auszählung.',
+            'keywords'    => 'hybride Wahlen, gemischte Mitgliederversammlung, remote voting, Präsenzwahl, Online-Versammlung',
+            'robots'      => 'index, follow',
+        ],
+
+        'sicherheit' => [
+            'title'       => 'Sichere Online-Wahlen mit Ende-zu-Ende-Verschlüsselung • Public Digit',
+            'description' => 'Banksicherheit für Ihre Wahlen: Ende-zu-Ende-Verschlüsselung, anonyme Stimmabgabe, manipulationssichere Protokolle und DSGVO-Konformität.',
+            'keywords'    => 'Wahlsicherheit, Ende-zu-Ende-Verschlüsselung, anonyme Wahl, manipulationssicher, DSGVO',
+            'robots'      => 'index, follow',
         ],
     ],
 ];

@@ -1,0 +1,20 @@
+{
+  "title": "Hybride Wahlen für Mitgliederversammlungen",
+  "subtitle": "Kombinieren Sie Präsenz- und Online-Wahl: Ideal für gemischte Mitgliederversammlungen mit Teilnehmern vor Ort und remote.",
+  "features_title": "Alles für Ihre hybride Mitgliederversammlung",
+  "features": {
+    "mixed": "Präsenz- und Online-Teilnehmer gleichzeitig",
+    "auth": "Sichere Authentifizierung für alle Formate",
+    "count": "Automatische Auszählung in Echtzeit",
+    "protocol": "Rechtssicheres Protokoll",
+    "dsgvo": "DSGVO-konform",
+    "audit": "Vollständiger Audit-Trail"
+  },
+  "cta": {
+    "trial": "Kostenlos testen",
+    "demo": "Demo ansehen"
+  },
+  "cta_title": "Bereit für Ihre hybride Mitgliederversammlung?",
+  "cta_subtitle": "Starten Sie in wenigen Minuten — kein technisches Know-how erforderlich.",
+  "cta_button": "Jetzt kostenlos starten"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Digital Online Elections for Associations",
+  "subtitle": "Secret board elections, online voting, and hybrid general meetings — GDPR compliant and end-to-end encrypted.",
+  "features_title": "Everything your association needs for secure elections",
+  "features": {
+    "geheim": "Secret Board Elections",
+    "hybrid": "Hybrid General Meetings",
+    "rechts": "Legally Compliant",
+    "dsgvo": "GDPR Compliant",
+    "encrypted": "End-to-End Encrypted",
+    "audit": "Complete Audit Trail"
+  },
+  "cta": {
+    "trial": "Free Trial",
+    "demo": "View Demo"
+  },
+  "cta_title": "Ready for your first digital association election?",
+  "cta_subtitle": "Get started in minutes — no technical knowledge required.",
+  "cta_button": "Start Free Now"
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Hybrid Elections for General Meetings",
+  "subtitle": "Combine in-person and online voting: Ideal for mixed general meetings with local and remote participants.",
+  "features_title": "Everything for your hybrid general meeting",
+  "features": {
+    "mixed": "In-person and online participants simultaneously",
+    "auth": "Secure authentication for all formats",
+    "count": "Automatic real-time vote counting",
+    "protocol": "Legally compliant minutes",
+    "dsgvo": "GDPR compliant",
+    "audit": "Complete audit trail"
+  },
+  "cta": {
+    "trial": "Free Trial",
+    "demo": "View Demo"
+  },
+  "cta_title": "Ready for your hybrid general meeting?",
+  "cta_subtitle": "Get started in minutes — no technical knowledge required.",
+  "cta_button": "Start Free Now"
+}

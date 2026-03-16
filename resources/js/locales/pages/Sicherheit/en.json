@@ -1,0 +1,20 @@
+{
+  "title": "Secure Online Elections with End-to-End Encryption",
+  "subtitle": "Bank-level security for your elections: End-to-end encryption, anonymous voting, and tamper-proof audit logs.",
+  "features_title": "Five security layers for your election",
+  "features": {
+    "e2e": "End-to-end encryption",
+    "anon": "Complete voter anonymity",
+    "audit": "Tamper-proof audit logs",
+    "tenant": "Multi-tenant isolation",
+    "dsgvo": "GDPR compliant",
+    "crypto": "Cryptographic verification"
+  },
+  "cta": {
+    "trial": "Free Trial",
+    "demo": "View Demo"
+  },
+  "cta_title": "Security you can trust",
+  "cta_subtitle": "Verified security architecture for associations, NGOs, and organisations of all sizes.",
+  "cta_button": "Vote Securely Now"
+}
