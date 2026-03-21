@@ -7,11 +7,21 @@ use Inertia\Inertia;
 use App\Models\Code;
 use App\Models\Election;
 use App\Http\Controllers\Controller;
+use App\Models\ElectionMembership;
 use App\Services\ElectionService;
 use App\Services\DemoElectionResolver;
 use App\Services\VoterSlugService;
 use App\Services\DashboardResolver;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
+use Inertia\Response;
+use App\Models\ElectionOfficer;
+use App\Models\Organisation;
+use App\Notifications\ElectionReadyForActivation;
+use Illuminate\Support\Facades\Notification;
 
 class ElectionManagementController extends Controller
 {
@@ -23,6 +33,106 @@ class ElectionManagementController extends Controller
         $this->demoResolver = $demoResolver;
         $this->slugService = $slugService;
     }
+
+    // =========================================================================
+    // Election Creation
+    // =========================================================================
+
+    /**
+     * Show the form to create a new real election.
+     *
+     * GET /organisations/{organisation:slug}/elections/create
+     */
+    public function create(Organisation $organisation): Response
+    {
+        $this->authorize('create', [Election::class, $organisation]);
+
+        return Inertia::render('Organisations/Elections/Create', [
+            'organisation' => $organisation,
+        ]);
+    }
+
+    /**
+     * Store a newly created real election.
+     *
+     * POST /organisations/{organisation:slug}/elections
+     */
+    public function store(Request $request, Organisation $organisation): RedirectResponse
+    {
+        $this->authorize('create', [Election::class, $organisation]);
+
+        $validated = $request->validate([
+            'name'        => ['required', 'string', 'max:255',
+                              Rule::unique('elections')->where('organisation_id', $organisation->id)],
+            'description' => ['nullable', 'string', 'max:5000'],
+            'start_date'  => ['required', 'date', 'after:today'],
+            'end_date'    => ['required', 'date', 'after:start_date'],
+            'type'        => ['sometimes', 'in:real'],
+        ]);
+
+        $election = Election::create([
+            'id'              => (string) Str::uuid(),
+            'organisation_id' => $organisation->id,
+            'name'            => $validated['name'],
+            'slug'            => $this->generateUniqueSlug($validated['name']),
+            'description'     => $validated['description'] ?? null,
+            'type'            => 'real',
+            'status'          => 'planned',
+            'start_date'      => $validated['start_date'],
+            'end_date'        => $validated['end_date'],
+        ]);
+
+        // Notify all active chiefs of this organisation
+        $activeChiefs = ElectionOfficer::with('user')
+            ->where('organisation_id', $organisation->id)
+            ->where('role', 'chief')
+            ->where('status', 'active')
+            ->get()
+            ->pluck('user')
+            ->filter();
+
+        if ($activeChiefs->isNotEmpty()) {
+            Notification::send($activeChiefs, new ElectionReadyForActivation($election));
+        }
+
+        return redirect()->route('organisations.show', $organisation->slug)
+            ->with('success', 'Election created successfully. Now add positions and voters.');
+    }
+
+    /**
+     * Generate a globally unique slug for the election name.
+     */
+    private function generateUniqueSlug(string $name): string
+    {
+        // Use a UUID suffix so we never need to loop — guaranteed unique.
+        $base = Str::slug($name) ?: 'election';
+        return $base . '-' . Str::lower(Str::random(8));
+    }
+
+    /**
+     * Activate a planned election (chief or deputy only).
+     *
+     * POST /elections/{election}/activate
+     */
+    public function activate(Election $election): RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        if ($election->status === 'active') {
+            return back()->with('error', 'Cannot activate an election that is already active.');
+        }
+
+        if ($election->status === 'completed') {
+            return back()->with('error', 'Cannot activate an election that is already completed.');
+        }
+
+        Election::withoutGlobalScopes()
+            ->where('id', $election->id)
+            ->update(['status' => 'active']);
+
+        return back()->with('success', 'Election activated successfully! Voting period is now open.');
+    }
+
     /**
      * ✅ Dashboard method - Route to appropriate page
      *
@@ -49,6 +159,31 @@ class ElectionManagementController extends Controller
                 'canRegister' => \Route::has('register'),
                 'user_ip' => $ipAddress
             ]);
+        }
+
+        // Real election multi-tenant flow:
+        // When the user has an org context and there is an active real election,
+        // render ElectionPage with is_eligible from ElectionMembership.
+        $orgId = session('current_organisation_id');
+        \Illuminate\Support\Facades\Log::info('DASHBOARD_DEBUG', ['orgId' => $orgId, 'user_id' => $authUser->id]);
+        if ($orgId) {
+            $activeElection = Election::withoutGlobalScopes()
+                ->where('organisation_id', $orgId)
+                ->where('type', 'real')
+                ->where('status', 'active')
+                ->first();
+
+            $allElectionsInDB = \Illuminate\Support\Facades\DB::table('elections')->get(['id', 'organisation_id', 'type', 'status'])->toArray();
+            \Illuminate\Support\Facades\Log::info('DASHBOARD_DEBUG2', ['session_orgId' => $orgId, 'activeElection' => $activeElection?->id, 'allElectionsInDB' => $allElectionsInDB]);
+
+            if ($activeElection) {
+                return Inertia::render('Election/ElectionPage', [
+                    'activeElection' => $activeElection,
+                    'authUser'       => array_merge($authUser->toArray(), [
+                        'is_eligible' => $authUser->isVoterInElection($activeElection->id),
+                    ]),
+                ]);
+            }
         }
 
         // Authenticated user: Use DashboardResolver for consistent routing
@@ -455,6 +590,126 @@ class ElectionManagementController extends Controller
             return redirect()->route('election.demo.list')
                 ->with('error', 'Unable to start this demo election. Please try again.');
         }
+    }
+
+    // ─── Election Management Methods ──────────────────────────────────────────
+
+    /**
+     * Management dashboard — chief or deputy only.
+     * Authorization enforced by route ->can('manageSettings', 'election').
+     */
+    public function index(Election $election): Response
+    {
+        $election->load(['organisation']);
+        return Inertia::render('Election/Management', [
+            'election'   => $election,
+            'stats'      => $election->voter_stats,
+            'canPublish' => auth()->user()->can('publishResults', $election),
+        ]);
+    }
+
+    /**
+     * Election status JSON — chief or deputy only.
+     */
+    public function status(Election $election): \Illuminate\Http\JsonResponse
+    {
+        return response()->json([
+            'election' => $election->only(['id', 'name', 'status', 'is_active', 'results_published']),
+            'stats'    => $election->voter_stats,
+        ]);
+    }
+
+    /**
+     * Viewboard — any active officer.
+     */
+    public function viewboard(Election $election): Response
+    {
+        $election->load(['organisation']);
+        return Inertia::render('Election/Viewboard', [
+            'election' => $election,
+            'stats'    => $election->voter_stats,
+            'readonly' => true,
+        ]);
+    }
+
+    /**
+     * Publish results — chief only.
+     */
+    public function publish(Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $election->update(['results_published' => true]);
+        return back()->with('success', 'Results published.');
+    }
+
+    /**
+     * Unpublish results — chief only.
+     */
+    public function unpublish(Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $election->update(['results_published' => false]);
+        return back()->with('success', 'Results unpublished.');
+    }
+
+    /**
+     * Open voting period — chief or deputy.
+     */
+    public function openVoting(Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $election->update(['status' => 'active', 'is_active' => true]);
+        return back()->with('success', 'Voting period opened.');
+    }
+
+    /**
+     * Close voting period — chief or deputy.
+     */
+    public function closeVoting(Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $election->update(['status' => 'completed', 'is_active' => false]);
+        return back()->with('success', 'Voting period closed.');
+    }
+
+    /**
+     * Bulk approve voters — chief or deputy.
+     */
+    public function bulkApproveVoters(Request $request, Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $validated = $request->validate([
+            'voter_ids'   => 'required|array|min:1|max:1000',
+            'voter_ids.*' => [
+                'uuid',
+                Rule::exists('election_memberships', 'id')
+                    ->where('election_id', $election->id),
+            ],
+        ]);
+
+        DB::transaction(function () use ($validated) {
+            ElectionMembership::whereIn('id', $validated['voter_ids'])
+                ->update(['status' => 'active']);
+        });
+
+        return back()->with('success', count($validated['voter_ids']) . ' voters approved.');
+    }
+
+    /**
+     * Bulk disapprove voters — chief or deputy.
+     */
+    public function bulkDisapproveVoters(Request $request, Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $validated = $request->validate([
+            'voter_ids'   => 'required|array|min:1|max:1000',
+            'voter_ids.*' => [
+                'uuid',
+                Rule::exists('election_memberships', 'id')
+                    ->where('election_id', $election->id),
+            ],
+        ]);
+
+        DB::transaction(function () use ($validated) {
+            ElectionMembership::whereIn('id', $validated['voter_ids'])
+                ->update(['status' => 'inactive']);
+        });
+
+        return back()->with('success', count($validated['voter_ids']) . ' voters disapproved.');
     }
 
     public function getUserIpAddr()

@@ -454,6 +454,8 @@ Route::middleware(['auth'])->group(function () {
              ->name('organisations.members.import');
         Route::post('/organisations/{slug}/members/import', [MemberImportController::class, 'store'])
              ->name('organisations.members.import.store');
+        Route::get('/organisations/{slug}/members/import/{jobId}/status', [MemberImportController::class, 'status'])
+             ->name('organisations.members.import.status');
     });
 
     // Excel import/export routes (use {organisation} parameter)

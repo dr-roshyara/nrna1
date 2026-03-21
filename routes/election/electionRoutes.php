@@ -20,7 +20,7 @@ use App\Http\Controllers\HasVotedController;
 use App\Services\ElectionService;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/election', [ElectionManagementController::class, 'dashboard'])->name('election.dashboard');
+Route::middleware(['auth', 'verified'])->get('/election', [ElectionManagementController::class, 'dashboard'])->name('election.dashboard');
 
 // ============================================================
 // NEW: Election Selection Routes (Phase 2c)
@@ -110,7 +110,13 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
     //   Route::middleware(['auth:sanctum', 'verified', 'vote.eligibility']) ->get('/vote/create', [VoteController::class, 'create'])->name('vote.create');
 
     // DEPRECATED: Legacy voting routes - all redirect to slug-based voting for security
-    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::middleware(['auth:sanctum',
+         'verified',
+        'web', 
+        'auth', 
+        'election',
+        'ensure.election.voter' 
+        ])->group(function () {
         // Redirect all legacy voting attempts to slug-based system
         Route::get('/vote/create', function () {
             return redirect()->route('vote.direct');
@@ -220,34 +226,55 @@ Route::get('/election/committee', function () {
 Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
 Route::get('posts/assign', [PostController::class, 'assign'])->name('post.assign');
 
-// Election Management Routes (Committee Only)
-Route::middleware(['auth:sanctum', 'verified', 'can:manage-election-settings'])->group(function () {
-    Route::get('/election/management', [ElectionManagementController::class, 'index'])->name('election.management');
-    Route::get('/election/status', [ElectionManagementController::class, 'status'])->name('election.status');
-});
+// Election Management & Viewboard Routes
+Route::middleware(['auth', 'verified'])
+    ->prefix('/elections/{election}')
+    ->group(function () {
+        // Management dashboard — chief or deputy only
+        Route::get('/management', [ElectionManagementController::class, 'index'])
+            ->name('elections.management')
+            ->can('manageSettings', 'election');
 
-// Election Viewboard Routes (View Rights Only)
-Route::middleware(['auth:sanctum', 'verified', 'can:view-election-results'])->group(function () {
-    Route::get('/election/viewboard', [ElectionManagementController::class, 'viewboard'])->name('election.viewboard');
-});
+        Route::get('/status', [ElectionManagementController::class, 'status'])
+            ->name('elections.status')
+            ->can('manageSettings', 'election');
 
-// Election Result Management (Committee Only)
-Route::middleware(['auth:sanctum', 'verified', 'can:publish-election-results'])->group(function () {
-    Route::post('/election/publish-results', [ElectionManagementController::class, 'publishResults'])->name('election.publish');
-    Route::post('/election/unpublish-results', [ElectionManagementController::class, 'unpublishResults'])->name('election.unpublish');
-});
+        // Viewboard — any active officer
+        Route::get('/viewboard', [ElectionManagementController::class, 'viewboard'])
+            ->name('elections.viewboard')
+            ->can('viewResults', 'election');
 
-// Election Voting Period Control (Committee Only)
-Route::middleware(['auth:sanctum', 'verified', 'can:manage-election-settings'])->group(function () {
-    Route::post('/election/start-voting', [ElectionManagementController::class, 'startVoting'])->name('election.start-voting');
-    Route::post('/election/end-voting', [ElectionManagementController::class, 'endVoting'])->name('election.end-voting');
-});
+        // Publish / unpublish results — chief only
+        Route::post('/publish', [ElectionManagementController::class, 'publish'])
+            ->name('elections.publish')
+            ->can('publishResults', 'election');
 
-// Bulk Voter Management (Committee Only)
-Route::middleware(['auth:sanctum', 'verified', 'can:manage-election-settings'])->group(function () {
-    Route::post('/election/bulk-approve-voters', [ElectionManagementController::class, 'bulkApproveVoters'])->name('election.bulk-approve-voters');
-    Route::post('/election/bulk-disapprove-voters', [ElectionManagementController::class, 'bulkDisapproveVoters'])->name('election.bulk-disapprove-voters');
-});
+        Route::post('/unpublish', [ElectionManagementController::class, 'unpublish'])
+            ->name('elections.unpublish')
+            ->can('publishResults', 'election');
+
+        // Voting period control — chief or deputy
+        Route::post('/open-voting', [ElectionManagementController::class, 'openVoting'])
+            ->name('elections.open-voting')
+            ->can('manageSettings', 'election');
+
+        Route::post('/close-voting', [ElectionManagementController::class, 'closeVoting'])
+            ->name('elections.close-voting')
+            ->can('manageSettings', 'election');
+
+        // Bulk voter management — chief or deputy
+        Route::post('/bulk-approve-voters', [ElectionManagementController::class, 'bulkApproveVoters'])
+            ->name('elections.bulk-approve-voters')
+            ->can('manageVoters', 'election');
+
+        Route::post('/bulk-disapprove-voters', [ElectionManagementController::class, 'bulkDisapproveVoters'])
+            ->name('elections.bulk-disapprove-voters')
+            ->can('manageVoters', 'election');
+
+        // Activate a planned election — chief or deputy
+        Route::post('/activate', [ElectionManagementController::class, 'activate'])
+            ->name('elections.activate');
+    });
 
 // Test routes for voter slug system (Phase 1)
 Route::middleware(['auth'])->group(function () {
@@ -359,7 +386,7 @@ Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\Substitut
 // 6. vote.eligibility - Check voting rights
 // 7. validate.voting.ip - IP restrictions (if enabled)
 // 8. vote.organisation - Organisation security
-Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.window', 'voter.slug.consistency', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'vote.organisation'])->group(function () {
+Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.window', 'voter.slug.consistency', 'ensure.election.voter', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'vote.organisation'])->group(function () {
 
     // Step 1: Code creation (using existing CodeController)
     Route::get('code/create', [CodeController::class, 'create'])->name('slug.code.create');

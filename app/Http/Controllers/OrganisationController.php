@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Election;
+use App\Models\ElectionOfficer;
 use App\Models\Organisation;
 use App\Models\UserOrganisationRole;
 use Illuminate\Http\Request;
@@ -73,16 +75,39 @@ class OrganisationController extends Controller
 
         // Check if user can manage this organisation (owner or admin role)
         $canManage = in_array($userRole, ['owner', 'admin']);
+        $canCreateElection = in_array($userRole, ['owner', 'admin']);
+
+        // Check if user is an active election officer
+        $officer = ElectionOfficer::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->where('status', 'active')
+            ->first();
+
+        $isOfficer      = !is_null($officer);
+        $isChief        = $isOfficer && $officer->role === 'chief';
+        $isDeputy       = $isOfficer && $officer->role === 'deputy';
+        $isCommissioner = $isOfficer && $officer->role === 'commissioner';
+
+        $canActivateElection = $isChief || $isDeputy;
+        $canManageVoters     = $isChief || $isDeputy;
+        $canPublishResults   = $isChief;
+
+        // Real elections for this organisation
+        $realElections = Election::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->orderByDesc('created_at')
+            ->get(['id', 'name', 'slug', 'status', 'start_date', 'end_date', 'results_published']);
 
         // Get organisation stats
         $stats = [
-            'members_count' => UserOrganisationRole::where('organisation_id', $organisation->id)->count(),
-            'active_members_count' => 0, // TODO: Implement active members logic
-            'elections_count' => 0, // TODO: Fetch from elections table
-            'active_elections_count' => 0, // TODO: Fetch from elections table
-            'completed_elections' => 0, // TODO: Fetch from elections table
-            'new_members_30d' => 0, // TODO: Implement 30-day member logic
-            'exited_members_30d' => 0, // TODO: Implement exited members logic
+            'members_count'          => UserOrganisationRole::where('organisation_id', $organisation->id)->count(),
+            'active_members_count'   => 0,
+            'elections_count'        => $realElections->count(),
+            'active_elections_count' => $realElections->where('status', 'active')->count(),
+            'completed_elections'    => $realElections->where('status', 'completed')->count(),
+            'new_members_30d'        => 0,
+            'exited_members_30d'     => 0,
         ];
 
         // Get demo status - check if organisation already has a demo election
@@ -97,12 +122,48 @@ class OrganisationController extends Controller
             'last_reset' => null,
         ];
 
+        // Active officers with user details
+        $officers = \App\Models\ElectionOfficer::with('user:id,name,email')
+            ->where('organisation_id', $organisation->id)
+            ->active()
+            ->orderBy('role')
+            ->get()
+            ->map(fn ($o) => [
+                'id'           => $o->id,
+                'user_id'      => $o->user_id,
+                'user_name'    => $o->user->name  ?? '',
+                'user_email'   => $o->user->email ?? '',
+                'role'         => $o->role,
+                'status'       => $o->status,
+                'appointed_at' => $o->appointed_at?->toDateString(),
+            ]);
+
+        // Members for the appointment modal dropdown
+        $orgMembers = DB::table('user_organisation_roles as ur')
+            ->join('users as u', 'u.id', '=', 'ur.user_id')
+            ->where('ur.organisation_id', $organisation->id)
+            ->select('u.id', 'u.name', 'u.email')
+            ->orderBy('u.name')
+            ->get();
+
         // Return organisation overview page
         return inertia('Organisations/Show', [
-            'organisation' => $organisation->only(['id', 'name', 'slug', 'type', 'email', 'address']),
-            'stats' => $stats,
-            'demoStatus' => $demoStatus,
-            'canManage' => $canManage,
+            'organisation'       => $organisation->only(['id', 'name', 'slug', 'type', 'email', 'address']),
+            'stats'              => $stats,
+            'demoStatus'         => $demoStatus,
+            'canManage'          => $canManage,
+            'canCreateElection'  => $canCreateElection,
+            'canActivateElection'=> $canActivateElection,
+            'canManageVoters'    => $canManageVoters,
+            'canPublishResults'  => $canPublishResults,
+            'userRole'           => $userRole,
+            'isOfficer'          => $isOfficer,
+            'isChief'            => $isChief,
+            'isDeputy'           => $isDeputy,
+            'isCommissioner'     => $isCommissioner,
+            'officers'           => $officers,
+            'orgMembers'         => $orgMembers,
+            'elections'          => $realElections->values(),
         ]);
     }
 

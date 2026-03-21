@@ -3,120 +3,175 @@
     aria-labelledby="actions-heading"
     class="mb-8"
   >
-    <div class="mb-6">
-      <h2
-        id="actions-heading"
-        class="text-xl font-semibold text-gray-900 mb-2"
-      >
-        {{ $t('pages.organisation-show.actions.title') }}
-      </h2>
-      <p class="text-gray-600">
-        {{ $t('pages.organisation-show.actions.description') }}
-      </p>
+    <!-- Section Header -->
+    <div class="mb-6 flex items-start gap-3">
+      <div class="flex-shrink-0 mt-0.5 p-2 bg-amber-50 rounded-lg">
+        <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      </div>
+      <div>
+        <h2
+          id="actions-heading"
+          class="text-xl font-semibold text-gray-900 mb-1"
+        >
+          {{ $t('pages.organisation-show.actions.title') }}
+        </h2>
+        <p class="text-sm text-gray-500">
+          {{ $t('pages.organisation-show.quick_actions.subtitle') }}
+        </p>
+      </div>
     </div>
 
     <!-- 3-Column Grid of Action Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Import Members Card (Link to dedicated page) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      <!-- Step 1: Import Members -->
       <Link
         :href="importMembersLink"
-        class="group relative bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 text-left border-2 border-gray-200 hover:border-blue-400 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 focus-within:rounded-xl"
+        class="group relative flex flex-col bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border-2 border-gray-200 hover:border-blue-400 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 focus-within:rounded-xl overflow-hidden"
         :aria-label="$t('pages.organisation-show.actions.import_members')"
       >
-        <!-- Icon -->
-        <div class="mb-6">
-          <div class="inline-flex p-4 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl group-hover:from-blue-200 group-hover:to-blue-100 transition-all">
-            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
+        <!-- Hover gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-100/0 group-hover:from-blue-50/60 group-hover:to-blue-100/30 transition-all duration-300 pointer-events-none rounded-xl" />
+
+        <div class="relative p-6 flex flex-col flex-1">
+          <!-- Step badge + Icon row -->
+          <div class="flex items-start justify-between mb-5">
+            <div class="inline-flex p-3 bg-gradient-to-br from-blue-100 to-blue-50 rounded-xl group-hover:from-blue-200 group-hover:to-blue-100 transition-all">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full">
+              {{ $t('pages.organisation-show.quick_actions.step_1') }}
+            </span>
           </div>
+
+          <!-- Content -->
+          <h3 class="text-base font-bold text-gray-900 mb-2">
+            {{ $t('pages.organisation-show.actions.import_members') }}
+          </h3>
+          <p class="text-sm text-gray-500 leading-relaxed flex-1">
+            {{ $t('pages.organisation-show.actions.import_members_desc') }}
+          </p>
         </div>
 
-        <!-- Content -->
-        <h3 class="text-lg font-bold text-gray-900 mb-3">
-          {{ $t('pages.organisation-show.actions.import_members') }}
-        </h3>
-        <p class="text-sm text-gray-600 mb-6 leading-relaxed">
-          {{ $t('pages.organisation-show.actions.import_members_desc') }}
-        </p>
-
-        <!-- CTA Button -->
-        <span class="inline-flex items-center text-sm font-semibold text-blue-600 group-hover:text-blue-700 group-hover:translate-x-1 transition-transform">
-          {{ $t('pages.organisation-show.actions.button_import') }}
-          <svg class="ml-2 w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </span>
-
+        <!-- Full-width action button -->
+        <div class="relative px-6 pb-5">
+          <span class="flex items-center justify-center w-full gap-2 bg-blue-600 group-hover:bg-blue-700 text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            {{ $t('pages.organisation-show.actions.button_import') }}
+          </span>
+        </div>
       </Link>
 
-      <!-- Appoint Election Officer Card -->
+      <!-- Step 2: Appoint Election Officer -->
       <button
         type="button"
         @click="$emit('appoint-officer')"
-        class="group relative bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 text-left border-2 border-gray-200 hover:border-purple-400 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:rounded-xl"
+        class="group relative flex flex-col bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 text-left border-2 border-gray-200 hover:border-amber-400 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:rounded-xl overflow-hidden"
         :aria-label="$t('pages.organisation-show.actions.appoint_officer')"
       >
-        <!-- Icon -->
-        <div class="mb-6">
-          <div class="inline-flex p-4 bg-gradient-to-br from-purple-100 to-purple-50 rounded-xl group-hover:from-purple-200 group-hover:to-purple-100 transition-all">
-            <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <!-- Hover gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-amber-50/0 to-amber-100/0 group-hover:from-amber-50/60 group-hover:to-amber-100/30 transition-all duration-300 pointer-events-none rounded-xl" />
+
+        <div class="relative p-6 flex flex-col flex-1">
+          <!-- Step badge + Icon row -->
+          <div class="flex items-start justify-between mb-5">
+            <div class="inline-flex p-3 bg-gradient-to-br from-amber-100 to-amber-50 rounded-xl group-hover:from-amber-200 group-hover:to-amber-100 transition-all">
+              <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold text-amber-600 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full">
+              {{ $t('pages.organisation-show.quick_actions.step_2') }}
+            </span>
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-base font-bold text-gray-900 mb-2">
+            {{ $t('pages.organisation-show.actions.appoint_officer') }}
+          </h3>
+          <p class="text-sm text-gray-500 leading-relaxed flex-1">
+            {{ $t('pages.organisation-show.actions.appoint_officer_desc') }}
+          </p>
+
+          <!-- Legal note -->
+          <div class="mt-4 flex items-center gap-1.5 text-xs text-amber-700 bg-amber-50 rounded-lg px-3 py-2">
+            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{{ $t('pages.organisation-show.quick_actions.legal_note') }}</span>
+          </div>
+        </div>
+
+        <!-- Full-width action button -->
+        <div class="relative px-6 pb-5">
+          <span class="flex items-center justify-center w-full gap-2 bg-amber-500 group-hover:bg-amber-600 text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
             </svg>
-          </div>
+            {{ $t('pages.organisation-show.actions.button_appoint') }}
+          </span>
         </div>
-
-        <!-- Content -->
-        <h3 class="text-lg font-bold text-gray-900 mb-3">
-          {{ $t('pages.organisation-show.actions.appoint_officer') }}
-        </h3>
-        <p class="text-sm text-gray-600 mb-6 leading-relaxed">
-          {{ $t('pages.organisation-show.actions.appoint_officer_desc') }}
-        </p>
-
-        <!-- CTA Button -->
-        <span class="inline-flex items-center text-sm font-semibold text-purple-600 group-hover:text-purple-700 group-hover:translate-x-1 transition-transform">
-          {{ $t('pages.organisation-show.actions.button_appoint') }}
-          <svg class="ml-2 w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </span>
-
       </button>
 
-      <!-- Create Election Card -->
-      <button
-        type="button"
-        @click="$emit('create-election')"
-        class="group relative bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-6 text-left border-2 border-gray-200 hover:border-green-400 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:rounded-xl"
+      <!-- Step 3: Create Election (owner/admin only) -->
+      <Link
+        v-if="canCreateElection"
+        :href="createElectionLink"
+        class="group relative flex flex-col bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 text-left border-2 border-gray-200 hover:border-green-400 focus-within:ring-2 focus-within:ring-green-500 focus-within:ring-offset-2 focus-within:rounded-xl overflow-hidden"
         :aria-label="$t('pages.organisation-show.actions.create_election')"
       >
-        <!-- Icon -->
-        <div class="mb-6">
-          <div class="inline-flex p-4 bg-gradient-to-br from-green-100 to-green-50 rounded-xl group-hover:from-green-200 group-hover:to-green-100 transition-all">
-            <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+        <!-- Hover gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-green-50/0 to-green-100/0 group-hover:from-green-50/60 group-hover:to-green-100/30 transition-all duration-300 pointer-events-none rounded-xl" />
+
+        <div class="relative p-6 flex flex-col flex-1">
+          <!-- Step badge + Icon row -->
+          <div class="flex items-start justify-between mb-5">
+            <div class="inline-flex p-3 bg-gradient-to-br from-green-100 to-green-50 rounded-xl group-hover:from-green-200 group-hover:to-green-100 transition-all">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold text-green-600 bg-green-50 border border-green-200 px-2.5 py-1 rounded-full">
+              {{ $t('pages.organisation-show.quick_actions.step_3') }}
+            </span>
           </div>
+
+          <!-- Content -->
+          <h3 class="text-base font-bold text-gray-900 mb-2">
+            {{ $t('pages.organisation-show.actions.create_election') }}
+          </h3>
+          <p class="text-sm text-gray-500 leading-relaxed flex-1">
+            {{ $t('pages.organisation-show.actions.create_election_desc') }}
+          </p>
         </div>
 
-        <!-- Content -->
-        <h3 class="text-lg font-bold text-gray-900 mb-3">
-          {{ $t('pages.organisation-show.actions.create_election') }}
-        </h3>
-        <p class="text-sm text-gray-600 mb-6 leading-relaxed">
-          {{ $t('pages.organisation-show.actions.create_election_desc') }}
-        </p>
+        <!-- Full-width action button -->
+        <div class="relative px-6 pb-5">
+          <span class="flex items-center justify-center w-full gap-2 bg-green-600 group-hover:bg-green-700 text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {{ $t('pages.organisation-show.actions.button_create') }}
+          </span>
+        </div>
+      </Link>
+    </div>
 
-        <!-- CTA Button -->
-        <span class="inline-flex items-center text-sm font-semibold text-green-600 group-hover:text-green-700 group-hover:translate-x-1 transition-transform">
-          {{ $t('pages.organisation-show.actions.button_create') }}
-          <svg class="ml-2 w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </span>
-
-      </button>
+    <!-- Progress indicator strip -->
+    <div class="mt-5 flex items-center gap-3 px-1">
+      <span class="text-xs text-gray-400 font-medium">{{ $t('pages.organisation-show.quick_actions.progress_label') }}</span>
+      <div class="flex items-center gap-1.5">
+        <div class="w-6 h-1.5 bg-blue-400 rounded-full" />
+        <div class="w-6 h-1.5 bg-amber-400 rounded-full" />
+        <div class="w-6 h-1.5 bg-green-400 rounded-full" />
+      </div>
+      <span class="text-xs text-gray-400">1 → 2 → 3</span>
     </div>
   </section>
 </template>
@@ -129,10 +184,12 @@ const props = defineProps({
   organisation: {
     type: Object,
     required: false
-  }
+  },
+  canManage: Boolean,
+  canCreateElection: Boolean,
 })
 
-defineEmits(['appoint-officer', 'create-election'])
+defineEmits(['appoint-officer'])
 
 /**
  * Compute the link to the member import page
@@ -140,6 +197,16 @@ defineEmits(['appoint-officer', 'create-election'])
 const importMembersLink = computed(() => {
   if (props.organisation?.slug) {
     return `/organisations/${props.organisation.slug}/members/import`
+  }
+  return '#'
+})
+
+/**
+ * Compute the link to the create election page
+ */
+const createElectionLink = computed(() => {
+  if (props.organisation?.slug) {
+    return `/organisations/${props.organisation.slug}/elections/create`
   }
   return '#'
 })
