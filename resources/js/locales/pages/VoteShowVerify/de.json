@@ -20,6 +20,12 @@
     "code_label": "Ihr Verifizierungscode:",
     "copy_button_initial": "Code kopieren",
     "copy_button_copied": "Kopiert!",
+    "code_notice": {
+      "badge": "Wichtig — Bitte lesen",
+      "heading": "Dies ist Ihr Verifizierungscode, nicht Ihr Abstimmungscode",
+      "body": "Nach der erfolgreichen Einreichung Ihrer Stimme wurde für Sie ein eindeutiger Verifizierungscode generiert. Dieser Code ist anders als der Abstimmungscode, den Sie zur Stimmabgabe verwendet haben. Er dient ausschließlich dazu, dass Sie zu dieser Seite zurückkehren und genau nachvollziehen können, welche Kandidaten Sie ausgewählt haben.",
+      "tip": "Kopieren und speichern Sie diesen Code jetzt — er kann nach dem Verlassen dieser Seite nicht erneut angezeigt werden."
+    },
     "instructions_title": "So verwenden Sie diesen Code:",
     "instructions_1": "Speichern Sie diesen Code an einem sicheren Ort",
     "instructions_2": "Kehren Sie zu dieser Seite zurück und wählen Sie \"Demo / Test\"",

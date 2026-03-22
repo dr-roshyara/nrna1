@@ -28,6 +28,13 @@ return [
             'keywords' => 'Digitale Online Wahlen für Verein, Vereinswahlen online, digitale Vorstandswahl Verein, Online-Abstimmung Verein, hybride Wahlen Verein, Mitgliederbefragung online, Satzungsänderung digital',
         ],
 
+        'demo.result' => [
+            'title'       => 'Demo-Wahlergebnisse | Public Digit',
+            'description' => 'Sehen Sie umfassende Ergebnisse der Public Digit Demo-Wahl — Stimmzahlen, Kandidaten-Rankings und vollständige Wahlstatistiken.',
+            'keywords'    => 'Demo-Wahlergebnisse, Online-Wahlresultate, Kandidatenranking, Wahlstatistiken',
+            'robots'      => 'noindex, nofollow',
+        ],
+
         'vereinswahlen' => [
             'title' => 'Digitale Online Wahlen für Verein | Public Digit',
             'description' => 'Die Plattform für digitale Online Wahlen für Verein: Einfach, sicher und rechtssicher. Ideal für Vorstandswahlen, Satzungsänderungen und Mitgliederbefragungen.',

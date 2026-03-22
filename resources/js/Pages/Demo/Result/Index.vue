@@ -11,42 +11,42 @@
       <!-- Header Section -->
       <header class="mb-8 sm:mb-12">
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-          {{ page_title }}
+          {{ page_title || $t('pages.demo-result.page_title') }}
         </h1>
 
         <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-          View comprehensive results from the demo election. Click on any position to see detailed voting breakdown.
+          {{ $t('pages.demo-result.subtitle') }}
         </p>
       </header>
 
       <!-- Stats Dashboard -->
       <section
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 sm:mb-12"
-        aria-label="Election statistics"
+        :aria-label="$t('pages.demo-result.stats_aria')"
       >
         <stat-card
           icon="users"
           :value="final_result.total_votes"
-          label="Total Votes Cast"
-          :aria-label="`Total votes cast: ${final_result.total_votes}`"
+          :label="$t('pages.demo-result.stats.total_votes')"
+          :aria-label="`${$t('pages.demo-result.stats.total_votes')}: ${final_result.total_votes}`"
         />
         <stat-card
           icon="clipboard-list"
           :value="posts.length"
-          label="Positions"
-          :aria-label="`Number of positions: ${posts.length}`"
+          :label="$t('pages.demo-result.stats.positions')"
+          :aria-label="`${$t('pages.demo-result.stats.positions')}: ${posts.length}`"
         />
         <stat-card
           icon="calendar"
           :value="new Date().toLocaleDateString()"
-          label="Generated Date"
-          :aria-label="`Results generated on ${new Date().toLocaleDateString()}`"
+          :label="$t('pages.demo-result.stats.generated_date')"
+          :aria-label="`${$t('pages.demo-result.stats.generated_date')}: ${new Date().toLocaleDateString()}`"
         />
         <stat-card
           icon="shield-check"
-          :value="mode === 'global' ? 'MODE 1' : 'MODE 2'"
-          label="Election Mode"
-          :aria-label="`Election running in ${mode === 'global' ? 'Global Demo Mode' : 'Organisation Demo Mode'}`"
+          :value="mode === 'global' ? $t('pages.demo-result.mode_indicator.mode1') : $t('pages.demo-result.mode_indicator.mode2')"
+          :label="$t('pages.demo-result.stats.election_mode')"
+          :aria-label="`${$t('pages.demo-result.stats.election_mode')}: ${mode}`"
         />
       </section>
 
@@ -56,25 +56,25 @@
           @click="downloadPDF"
           class="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-800 text-white rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-900 min-h-[44px] sm:min-h-[48px]"
           :disabled="isDownloading"
-          aria-label="Download election results as PDF"
+          :aria-label="$t('pages.demo-result.actions.download_aria')"
         >
           <svg v-if="!isDownloading" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
           </svg>
-          <span class="hidden sm:inline" v-if="!isDownloading">Download PDF</span>
-          <span class="sm:hidden" v-if="!isDownloading">PDF</span>
-          <span v-if="isDownloading">Generating...</span>
+          <span class="hidden sm:inline" v-if="!isDownloading">{{ $t('pages.demo-result.actions.download_pdf') }}</span>
+          <span class="sm:hidden" v-if="!isDownloading">{{ $t('pages.demo-result.actions.download_pdf_short') }}</span>
+          <span v-if="isDownloading">{{ $t('pages.demo-result.actions.generating') }}</span>
         </button>
 
         <button
           @click="printResults"
           class="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gray-600 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-800 text-white rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:focus:ring-offset-gray-900 min-h-[44px] sm:min-h-[48px]"
-          aria-label="Print election results"
+          :aria-label="$t('pages.demo-result.actions.print_aria')"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4H9a2 2 0 00-2 2v2a2 2 0 002 2h6a2 2 0 002-2v-2a2 2 0 00-2-2zm-6-4a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
-          <span class="hidden sm:inline">Print</span>
+          <span class="hidden sm:inline">{{ $t('pages.demo-result.actions.print') }}</span>
         </button>
       </section>
 
@@ -82,7 +82,7 @@
       <section
         class="space-y-6 sm:space-y-8"
         role="region"
-        aria-label="Election results by position"
+        :aria-label="$t('pages.demo-result.results_aria')"
       >
         <candidate-card
           v-for="post in posts"
@@ -99,8 +99,8 @@
         <svg class="w-16 h-16 sm:w-20 sm:h-20 mx-auto text-gray-400 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <p class="text-lg text-gray-500 dark:text-gray-400">No demo election posts found.</p>
-        <p class="text-sm text-gray-400 dark:text-gray-500 mt-2">Create demo posts to view results.</p>
+        <p class="text-lg text-gray-500 dark:text-gray-400">{{ $t('pages.demo-result.empty.message') }}</p>
+        <p class="text-sm text-gray-400 dark:text-gray-500 mt-2">{{ $t('pages.demo-result.empty.hint') }}</p>
       </section>
 
     </main>
@@ -111,48 +111,30 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import { usePage } from '@inertiajs/vue3';
+import { ref } from 'vue';
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
 import ModeIndicator from './ModeIndicator.vue';
 import CandidateCard from './Candidate.vue';
 import StatCard from '@/Components/StatCard.vue';
 
-const page = usePage();
 const isDownloading = ref(false);
 
 const props = defineProps({
-  final_result: {
-    type: Object,
-    required: true
-  },
-  posts: {
-    type: Array,
-    required: true
-  },
+  final_result: { type: Object, required: true },
+  posts:        { type: Array,  required: true },
   mode: {
     type: String,
     required: true,
     validator: (v) => ['global', 'organisation'].includes(v)
   },
-  organisation_id: {
-    type: Number,
-    default: null
-  },
-  is_demo: {
-    type: Boolean,
-    default: true
-  },
-  page_title: {
-    type: String,
-    default: 'Demo Election Results'
-  }
+  organisation_id: { type: Number,  default: null },
+  is_demo:         { type: Boolean, default: true },
+  page_title:      { type: String,  default: null },
 });
 
-const getPostResults = (postId) => {
-  return props.final_result?.posts?.find(p => p.post_id === postId) || {};
-};
+const getPostResults = (postId) =>
+  props.final_result?.posts?.find(p => p.post_id === postId) || {};
 
 const downloadPDF = async () => {
   isDownloading.value = true;
@@ -161,7 +143,6 @@ const downloadPDF = async () => {
       ? '/demo/global/result/download-pdf'
       : '/demo/result/download-pdf';
 
-    // Create a temporary link and trigger download
     const response = await fetch(route);
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
@@ -180,37 +161,18 @@ const downloadPDF = async () => {
   }
 };
 
-const printResults = () => {
-  window.print();
-};
+const printResults = () => window.print();
 </script>
 
 <style scoped>
-/* Print styles */
 @media print {
-  .no-print {
-    display: none !important;
-  }
-
-  /* Optimize for print */
-  section {
-    page-break-inside: avoid;
-  }
-
-  article {
-    page-break-inside: avoid;
-  }
+  .no-print { display: none !important; }
+  section   { page-break-inside: avoid; }
+  article   { page-break-inside: avoid; }
 }
-
-/* High contrast mode support */
 @media (prefers-contrast: more) {
-  button:focus {
-    outline: 3px solid currentColor;
-    outline-offset: 2px;
-  }
+  button:focus { outline: 3px solid currentColor; outline-offset: 2px; }
 }
-
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

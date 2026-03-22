@@ -26,6 +26,14 @@
     "election_officer": "Wahlleiter",
     "deputy_officer": "Stellvertreter"
   },
+  "quick_actions": {
+    "subtitle": "Schließen Sie diese 3 Schritte ab, um Ihre erste Wahl durchzuführen",
+    "step_1": "Schritt 1",
+    "step_2": "Schritt 2",
+    "step_3": "Schritt 3",
+    "legal_note": "Erforderlich gemäß §26 BGB Vereinsrecht",
+    "progress_label": "Einrichtungsfortschritt:"
+  },
   "actions": {
     "title": "Schnellaktionen",
     "description": "Starten Sie mit diesen wichtigen ersten Schritten",
@@ -334,6 +342,33 @@
     "message_error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
     "note_isolated": "Demo-Daten sind nur auf Ihre Organisation beschränkt. Das Neuerstellen löscht vorhandene Demo-Daten.",
     "note_setup": "Richten Sie eine Demo-Wahl ein, um den Abstimmungsablauf zu testen. Alle Daten sind auf Ihre Organisation beschränkt."
+  },
+  "election_officers": {
+    "page_title": "Wahlleiter",
+    "page_subtitle": "Erforderlich gemäß §26 BGB Vereinsrecht",
+    "back_link": "Zurück zum Dashboard",
+    "current_officers": "Aktuelle Wahlleiter",
+    "no_officers": "Noch keine Wahlleiter ernannt.",
+    "no_officers_hint": "Verwenden Sie das Formular, um Ihren ersten Wahlleiter zu ernennen.",
+    "appoint_new": "Neuen Wahlleiter ernennen",
+    "member_label": "Mitglied",
+    "search_placeholder": "Nach Name oder E-Mail suchen…",
+    "role_label": "Rolle",
+    "role_chief": "Vorsitzender",
+    "role_chief_desc": "Volle Befugnis",
+    "role_deputy": "Stellvertreter",
+    "role_deputy_desc": "Unterstützt den Vorsitzenden",
+    "role_commissioner": "Beisitzer",
+    "role_commissioner_desc": "Wahlbereich",
+    "appoint_button": "Wahlleiter ernennen",
+    "appointing": "Wird ernannt…",
+    "accept_button": "Annehmen",
+    "accepting": "Wird angenommen…",
+    "remove_button": "Entfernen",
+    "removing": "Wird entfernt…",
+    "no_permission": "Nur Administratoren können Wahlleiter ernennen.",
+    "appointed_on": "Ernannt am {date}",
+    "appointed_by": "von {name}"
   },
   "demo-results": {
     "title": "Demo-Wahlergebnisse",

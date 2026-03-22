@@ -1,0 +1,57 @@
+{
+  "page_title": "Demo Election Results",
+  "subtitle": "View comprehensive results from the demo election. Click on any position to see detailed voting breakdown.",
+
+  "stats": {
+    "total_votes": "Total Votes Cast",
+    "positions": "Positions",
+    "generated_date": "Generated Date",
+    "election_mode": "Election Mode"
+  },
+
+  "actions": {
+    "download_pdf": "Download PDF",
+    "download_pdf_short": "PDF",
+    "generating": "Generating...",
+    "print": "Print",
+    "download_aria": "Download election results as PDF",
+    "print_aria": "Print election results"
+  },
+
+  "results_aria": "Election results by position",
+  "stats_aria": "Election statistics",
+
+  "empty": {
+    "message": "No demo election posts found.",
+    "hint": "Create demo posts to view results."
+  },
+
+  "mode_indicator": {
+    "global_title": "Global Demo Mode",
+    "global_description": "Public testing environment - visible to all users",
+    "org_title": "Organisation Demo Mode",
+    "org_description": "Organisation Demo - ID: {id}",
+    "mode1": "MODE 1",
+    "mode2": "MODE 2"
+  },
+
+  "seo": {
+    "title": "Demo Election Results | Public Digit",
+    "description": "View comprehensive results from the Public Digit demo election — vote counts, candidate rankings, and full voting statistics.",
+    "keywords": "demo election results, online voting results, candidate ranking, voting statistics",
+    "robots": "noindex, nofollow"
+  },
+
+  "candidate": {
+    "rank": "Rank",
+    "candidate": "Candidate",
+    "votes": "Votes",
+    "percentage": "Percentage",
+    "trend": "Trend",
+    "abstentions": "Abstentions (No Vote)",
+    "voters_abstained": "{count} voters abstained",
+    "total_votes": "Total Votes",
+    "candidates": "Candidates",
+    "to_select": "To Select"
+  }
+}

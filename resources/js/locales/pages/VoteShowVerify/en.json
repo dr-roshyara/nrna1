@@ -20,6 +20,12 @@
     "code_label": "Your Verification Code:",
     "copy_button_initial": "Copy Code",
     "copy_button_copied": "Copied!",
+    "code_notice": {
+      "badge": "Important — Please Read",
+      "heading": "This is your Verification Code, not your Voting Code",
+      "body": "A unique verification code has been generated for you after your vote was successfully submitted. This code is different from the voting code you used to cast your vote. It exists solely so you can return to this page and confirm exactly which candidates you selected.",
+      "tip": "Copy and save this code now — it cannot be shown again after you leave this page."
+    },
     "instructions_title": "How to Use This Code:",
     "instructions_1": "Save this code in a safe place",
     "instructions_2": "Come back to this page and select \"Demo / Testing\"",

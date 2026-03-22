@@ -1,0 +1,57 @@
+{
+  "page_title": "Demo-Wahlergebnisse",
+  "subtitle": "Sehen Sie umfassende Ergebnisse der Demo-Wahl. Klicken Sie auf eine Position, um die detaillierte Stimmverteilung zu sehen.",
+
+  "stats": {
+    "total_votes": "Abgegebene Stimmen",
+    "positions": "Positionen",
+    "generated_date": "Erstellungsdatum",
+    "election_mode": "Wahlmodus"
+  },
+
+  "actions": {
+    "download_pdf": "PDF herunterladen",
+    "download_pdf_short": "PDF",
+    "generating": "Wird erstellt...",
+    "print": "Drucken",
+    "download_aria": "Wahlergebnisse als PDF herunterladen",
+    "print_aria": "Wahlergebnisse drucken"
+  },
+
+  "results_aria": "Wahlergebnisse nach Position",
+  "stats_aria": "Wahlstatistiken",
+
+  "empty": {
+    "message": "Keine Demo-Wahlpositionen gefunden.",
+    "hint": "Erstellen Sie Demo-Positionen, um Ergebnisse anzuzeigen."
+  },
+
+  "mode_indicator": {
+    "global_title": "Globaler Demo-Modus",
+    "global_description": "Öffentliche Testumgebung – für alle Benutzer sichtbar",
+    "org_title": "Organisations-Demo-Modus",
+    "org_description": "Organisations-Demo – ID: {id}",
+    "mode1": "MODUS 1",
+    "mode2": "MODUS 2"
+  },
+
+  "seo": {
+    "title": "Demo-Wahlergebnisse | Public Digit",
+    "description": "Sehen Sie umfassende Ergebnisse der Public Digit Demo-Wahl — Stimmzahlen, Kandidaten-Rankings und vollständige Wahlstatistiken.",
+    "keywords": "Demo-Wahlergebnisse, Online-Wahlresultate, Kandidatenranking, Wahlstatistiken",
+    "robots": "noindex, nofollow"
+  },
+
+  "candidate": {
+    "rank": "Rang",
+    "candidate": "Kandidat",
+    "votes": "Stimmen",
+    "percentage": "Prozent",
+    "trend": "Trend",
+    "abstentions": "Enthaltungen (Keine Stimme)",
+    "voters_abstained": "{count} Wähler enthielten sich",
+    "total_votes": "Gesamtstimmen",
+    "candidates": "Kandidaten",
+    "to_select": "Zu wählen"
+  }
+}

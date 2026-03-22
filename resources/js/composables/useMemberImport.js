@@ -1,97 +1,80 @@
-import { ref } from 'vue'
-import { useCsrfRequest } from './useCsrfRequest'
 import { useI18n } from 'vue-i18n'
 
 /**
- * Composable for handling member import functionality
- * Manages file parsing, validation, and CSRF-protected submission
+ * Composable for bulk member import (100–50,000 rows).
+ *
+ * Architecture:
+ *  1. uploadFile(file)   — POST multipart file → server stores it, dispatches queue job
+ *                          Returns { job_id, status_url } immediately (HTTP 202)
+ *  2. pollStatus(jobId)  — GET status endpoint every 2s until completed/failed
+ *  3. parsePreview(file) — Client-side parse for the preview table only (no server round-trip)
  */
 export const useMemberImport = (organisation) => {
-  const csrfRequest = useCsrfRequest()
   const { t } = useI18n()
 
+  // ── Preview (client-side only) ───────────────────────────────────────────
+
   /**
-   * Parse CSV or Excel file into structured data
+   * Parse the file locally for the preview table.
+   * We do NOT send parsed JSON to the server — that's wasteful for large files.
+   * The server will re-parse the raw file from the queue job.
    */
-  const parseFile = async (file) => {
+  const parsePreview = async (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader()
 
       reader.onload = (event) => {
         try {
           const content = event.target.result
-
-          // Check if CSV or Excel
-          if (file.name.match(/\.csv$/i)) {
-            const parsed = parseCSV(content)
-            resolve(parsed)
-          } else if (file.name.match(/\.(xlsx|xls)$/i)) {
-            // For Excel files, we'll need to use a library or handle it server-side
-            // For now, try to parse as text if it's text-based
-            try {
-              const parsed = parseCSV(content)
-              resolve(parsed)
-            } catch {
-              // If parsing as CSV fails, we'll send to server for parsing
-              resolve({
-                headers: [],
-                rows: [],
-                raw: content,
-                isExcel: true
-              })
-            }
-          } else {
-            reject(new Error(t('modals.member_import.validation.invalid_format')))
-          }
-        } catch (error) {
-          reject(error)
+          const parsed = parseCSV(content)
+          resolve(parsed)
+        } catch (err) {
+          reject(err)
         }
       }
 
-      reader.onerror = () => {
-        reject(new Error('Failed to read file'))
-      }
-
-      // Read as text
+      reader.onerror = () => reject(new Error('Failed to read file'))
       reader.readAsText(file)
     })
   }
 
-  /**
-   * Parse CSV content into headers and rows
-   */
+  const detectDelimiter = (firstLine) => {
+    const commas     = (firstLine.match(/,/g)  || []).length
+    const semicolons = (firstLine.match(/;/g)  || []).length
+    return semicolons > commas ? ';' : ','
+  }
+
+  const normaliseHeader = (h) =>
+    h.toLowerCase().trim().replace(/[-_\s]/g, '')
+
   const parseCSV = (content) => {
-    if (!content || !content.trim()) {
-      throw new Error(t('modals.member_import.validation.empty_file'))
-    }
+    if (!content?.trim()) throw new Error(t('modals.member_import.validation.empty_file'))
 
-    // Split by newlines
     const lines = content.trim().split(/\r?\n/)
+    if (lines.length < 2) throw new Error(t('modals.member_import.validation.empty_file'))
 
-    if (lines.length < 2) {
-      throw new Error(t('modals.member_import.validation.empty_file'))
+    const delimiter = detectDelimiter(lines[0])
+    const headers   = parseCSVLine(lines[0], delimiter)
+
+    if (!headers.length) throw new Error(t('modals.member_import.validation.invalid_headers'))
+
+    const normHeaders = headers.map(normaliseHeader)
+    if (!normHeaders.includes('email')) {
+      throw new Error(t('modals.member_import.validation.missing_email'))
     }
 
-    // Parse headers from first line
-    const headerLine = lines[0]
-    const headers = parseCSVLine(headerLine)
-
-    if (!headers || headers.length === 0) {
-      throw new Error(t('modals.member_import.validation.invalid_headers'))
-    }
-
-    // Parse data rows
     const rows = []
     for (let i = 1; i < lines.length; i++) {
       const line = lines[i].trim()
-      if (!line) continue // Skip empty lines
+      if (!line) continue
 
-      const values = parseCSVLine(line)
-      const row = {}
+      const values = parseCSVLine(line, delimiter)
+      const row    = {}
 
-      // Map values to headers
-      headers.forEach((header, index) => {
-        row[header] = values[index] || ''
+      headers.forEach((header, idx) => {
+        const value = values[idx] !== undefined ? values[idx].trim() : ''
+        row[header]                    = value
+        row[normaliseHeader(header)]   = value
       })
 
       rows.push(row)
@@ -100,145 +83,125 @@ export const useMemberImport = (organisation) => {
     return { headers, rows }
   }
 
-  /**
-   * Parse single CSV line handling quoted fields
-   */
-  const parseCSVLine = (line) => {
+  const parseCSVLine = (line, delimiter = ',') => {
     const result = []
     let current = ''
     let insideQuotes = false
 
     for (let i = 0; i < line.length; i++) {
       const char = line[i]
-      const nextChar = line[i + 1]
-
       if (char === '"') {
-        if (insideQuotes && nextChar === '"') {
-          // Escaped quote
-          current += '"'
-          i++ // Skip next quote
-        } else {
-          // Toggle quote state
-          insideQuotes = !insideQuotes
-        }
-      } else if (char === ',' && !insideQuotes) {
-        // Field separator
+        if (insideQuotes && line[i + 1] === '"') { current += '"'; i++ }
+        else insideQuotes = !insideQuotes
+      } else if (char === delimiter && !insideQuotes) {
         result.push(current.trim())
         current = ''
       } else {
         current += char
       }
     }
-
-    // Add last field
     result.push(current.trim())
-
     return result
   }
 
+  // ── Upload ───────────────────────────────────────────────────────────────
+
   /**
-   * Validate parsed member data
+   * Upload the raw file as multipart/form-data.
+   * Returns { job_id, status_url } on HTTP 202.
    */
-  const validateData = async (data) => {
-    const errors = []
-    const emails = new Set()
+  const uploadFile = async (file) => {
+    const formData = new FormData()
+    formData.append('file', file)
 
-    // Check if empty
-    if (!data.rows || data.rows.length === 0) {
-      return {
-        valid: false,
-        errors: [t('modals.member_import.validation.empty_file')]
+    const csrf = document.querySelector('meta[name="csrf-token"]')?.content
+    if (!csrf) throw new Error('CSRF token not found')
+
+    const response = await fetch(
+      `/organisations/${organisation.slug}/members/import`,
+      {
+        method:  'POST',
+        headers: {
+          'X-CSRF-TOKEN':    csrf,
+          'X-Requested-With': 'XMLHttpRequest',
+          'Accept':          'application/json',
+        },
+        body: formData,
       }
+    )
+
+    if (!response.ok) {
+      const data = await response.json().catch(() => ({}))
+      throw new Error(data.message || `Upload failed (HTTP ${response.status})`)
     }
 
-    // Check headers
-    const headers = data.headers.map(h => h.toLowerCase().trim())
-    const hasEmail = headers.includes('email')
-
-    if (!hasEmail) {
-      errors.push(t('modals.member_import.validation.missing_email'))
-      return { valid: false, errors }
-    }
-
-    // Validate each row
-    data.rows.forEach((row, index) => {
-      const rowNumber = index + 2 // +2 because row 1 is headers, 0-indexed
-      const email = row.email || row.Email || ''
-
-      // Check required fields
-      if (!email) {
-        errors.push(
-          t('modals.member_import.validation.missing_required', {
-            field: 'email',
-            row: rowNumber
-          })
-        )
-        return
-      }
-
-      // Validate email format
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-      if (!emailRegex.test(email)) {
-        errors.push(
-          t('modals.member_import.validation.invalid_email', {
-            row: rowNumber,
-            email: email
-          })
-        )
-        return
-      }
-
-      // Check for duplicates
-      if (emails.has(email.toLowerCase())) {
-        errors.push(
-          t('modals.member_import.validation.duplicate_email', {
-            row: rowNumber,
-            email: email
-          })
-        )
-        return
-      }
-
-      emails.add(email.toLowerCase())
-    })
-
-    return {
-      valid: errors.length === 0,
-      errors
-    }
+    return response.json() // { job_id, status_url }
   }
 
+  // ── Polling ──────────────────────────────────────────────────────────────
+
   /**
-   * Submit import to server with CSRF protection
+   * Poll the status endpoint every 2 seconds.
+   *
+   * @param {string}   jobId
+   * @param {Function} onProgress  called on each poll: (status) => void
+   * @param {Function} onComplete  called when status === 'completed': (status) => void
+   * @param {Function} onError     called on failure or timeout: (Error) => void
+   * @returns {Function}           cancel() — call to stop polling early
    */
-  const submitImport = async (importData) => {
-    try {
-      const response = await csrfRequest.post(
-        `/organizations/${organisation.slug}/members/import`,
-        {
-          headers: importData.headers,
-          rows: importData.rows,
-          fileName: importData.fileName
-        }
-      )
+  const pollStatus = (jobId, onProgress, onComplete, onError) => {
+    let cancelled = false
+    const slug = organisation.slug
 
-      if (!response.ok) {
-        throw new Error(
-          response.data?.message ||
-          t('modals.member_import.error', { error: 'Unknown error' })
+    const tick = async () => {
+      if (cancelled) return
+
+      try {
+        const response = await fetch(
+          `/organisations/${slug}/members/import/${jobId}/status`,
+          {
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+              'Accept': 'application/json',
+            },
+          }
         )
-      }
 
-      return response.data
-    } catch (error) {
-      console.error('Member import submission error:', error)
-      throw error
+        if (!response.ok) {
+          onError?.(new Error(`Status check failed (HTTP ${response.status})`))
+          return
+        }
+
+        const data = await response.json()
+        onProgress?.(data)
+
+        if (data.status === 'completed') {
+          onComplete?.(data)
+          return
+        }
+
+        if (data.status === 'failed') {
+          onError?.(new Error(data.error_log?.[0]?.message || 'Import failed'))
+          return
+        }
+
+        // Schedule next poll
+        if (!cancelled) setTimeout(tick, 2000)
+
+      } catch (err) {
+        onError?.(err)
+      }
     }
+
+    // Start polling immediately
+    tick()
+
+    return () => { cancelled = true }
   }
 
   return {
-    parseFile,
-    validateData,
-    submitImport
+    parsePreview,
+    uploadFile,
+    pollStatus,
   }
 }

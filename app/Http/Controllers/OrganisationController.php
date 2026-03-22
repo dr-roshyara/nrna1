@@ -77,16 +77,26 @@ class OrganisationController extends Controller
         $canManage = in_array($userRole, ['owner', 'admin']);
         $canCreateElection = in_array($userRole, ['owner', 'admin']);
 
-        // Check if user is an active election officer
-        $officer = ElectionOfficer::where('user_id', $user->id)
+        // Load ALL active officer records for this user in this org (one per election they manage)
+        $userOfficerRecords = ElectionOfficer::with('election:id,name')
+            ->where('user_id', $user->id)
             ->where('organisation_id', $organisation->id)
-            ->where('status', 'active')
-            ->first();
+            ->active()
+            ->get();
 
-        $isOfficer      = !is_null($officer);
-        $isChief        = $isOfficer && $officer->role === 'chief';
-        $isDeputy       = $isOfficer && $officer->role === 'deputy';
-        $isCommissioner = $isOfficer && $officer->role === 'commissioner';
+        $isOfficer      = $userOfficerRecords->isNotEmpty();
+        $isChief        = $userOfficerRecords->contains('role', 'chief');
+        $isDeputy       = $userOfficerRecords->contains('role', 'deputy');
+        $isCommissioner = $userOfficerRecords->contains('role', 'commissioner') && !$isChief && !$isDeputy;
+
+        // Build a human-readable list of which elections the officer manages
+        $officerElectionNames = $userOfficerRecords
+            ->filter(fn ($o) => $o->election_id !== null)
+            ->map(fn ($o) => $o->election?->name)
+            ->filter()
+            ->unique()
+            ->values()
+            ->all();
 
         $canActivateElection = $isChief || $isDeputy;
         $canManageVoters     = $isChief || $isDeputy;
@@ -157,10 +167,11 @@ class OrganisationController extends Controller
             'canManageVoters'    => $canManageVoters,
             'canPublishResults'  => $canPublishResults,
             'userRole'           => $userRole,
-            'isOfficer'          => $isOfficer,
-            'isChief'            => $isChief,
-            'isDeputy'           => $isDeputy,
-            'isCommissioner'     => $isCommissioner,
+            'isOfficer'           => $isOfficer,
+            'isChief'             => $isChief,
+            'isDeputy'            => $isDeputy,
+            'isCommissioner'      => $isCommissioner,
+            'officerElectionNames'=> $officerElectionNames,
             'officers'           => $officers,
             'orgMembers'         => $orgMembers,
             'elections'          => $realElections->values(),

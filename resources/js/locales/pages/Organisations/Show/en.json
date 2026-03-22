@@ -26,6 +26,14 @@
     "election_officer": "Election Officer",
     "deputy_officer": "Deputy Officer"
   },
+  "quick_actions": {
+    "subtitle": "Complete these 3 steps to run your first election",
+    "step_1": "Step 1",
+    "step_2": "Step 2",
+    "step_3": "Step 3",
+    "legal_note": "Required by §26 BGB Association Law",
+    "progress_label": "Setup progress:"
+  },
   "actions": {
     "title": "Quick Actions",
     "description": "Start with these important first steps",
@@ -334,6 +342,33 @@
     "message_error": "An error occurred. Please try again.",
     "note_isolated": "Demo data is isolated to your organisation only. Recreating will delete existing demo data.",
     "note_setup": "Setup a demo election to test the voting workflow. All data will be isolated to your organisation."
+  },
+  "election_officers": {
+    "page_title": "Election Officers",
+    "page_subtitle": "Required by §26 BGB Association Law",
+    "back_link": "Back to Dashboard",
+    "current_officers": "Current Officers",
+    "no_officers": "No election officers appointed yet.",
+    "no_officers_hint": "Use the form to appoint your first officer.",
+    "appoint_new": "Appoint New Officer",
+    "member_label": "Member",
+    "search_placeholder": "Search by name or email…",
+    "role_label": "Role",
+    "role_chief": "Chief",
+    "role_chief_desc": "Full authority",
+    "role_deputy": "Deputy",
+    "role_deputy_desc": "Assists chief",
+    "role_commissioner": "Commissioner",
+    "role_commissioner_desc": "Election scope",
+    "appoint_button": "Appoint Officer",
+    "appointing": "Appointing…",
+    "accept_button": "Accept",
+    "accepting": "Accepting…",
+    "remove_button": "Remove",
+    "removing": "Removing…",
+    "no_permission": "Only administrators can appoint election officers.",
+    "appointed_on": "Appointed {date}",
+    "appointed_by": "by {name}"
   },
   "demo-results": {
     "title": "Demo Election Results",

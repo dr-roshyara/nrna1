@@ -65,6 +65,31 @@
                                 </button>
                             </div>
 
+                            <!-- Code Notice: clarifies this is NOT the voting code -->
+                            <div class="bg-amber-50 border border-amber-300 rounded-xl p-5 mb-6 text-left">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 mt-0.5">
+                                        <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span class="inline-block bg-amber-100 text-amber-800 text-xs font-semibold px-2 py-0.5 rounded mb-2 uppercase tracking-wide">
+                                            {{ $t('pages.vote-show-verify.demo_success.code_notice.badge') }}
+                                        </span>
+                                        <p class="text-amber-900 font-semibold text-sm mb-1">
+                                            {{ $t('pages.vote-show-verify.demo_success.code_notice.heading') }}
+                                        </p>
+                                        <p class="text-amber-800 text-sm mb-3">
+                                            {{ $t('pages.vote-show-verify.demo_success.code_notice.body') }}
+                                        </p>
+                                        <p class="text-amber-700 text-xs font-medium italic">
+                                            ⚠ {{ $t('pages.vote-show-verify.demo_success.code_notice.tip') }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Instructions -->
                             <div class="bg-white bg-opacity-10 rounded-xl p-4 text-sm">
                                 <p class="mb-2"><strong>{{ $t('pages.vote-show-verify.demo_success.instructions_title') }}</strong></p>

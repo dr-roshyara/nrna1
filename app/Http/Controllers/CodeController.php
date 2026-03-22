@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\Log;
  */
 class CodeController extends Controller
 {
+    use \App\Traits\EnsuresVoterMembership;
+
     private $clientIP;
     private $maxUseClientIP;
     private $votingTimeInMinutes;
@@ -51,6 +53,11 @@ class CodeController extends Controller
         $user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
+
+        // Layer 0: Membership check (defense-in-depth — middleware is primary gate)
+        if ($redirect = $this->ensureVoterMembership($election, $user)) {
+            return $redirect;
+        }
 
         // Check if code is already verified (should not be accessing create page)
         $existingCode = Code::where('user_id', $user->id)
@@ -165,6 +172,11 @@ class CodeController extends Controller
         $user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
+
+        // Layer 0: Membership check (defense-in-depth)
+        if ($redirect = $this->ensureVoterMembership($election, $user)) {
+            return $redirect;
+        }
 
         Log::info('Code verification started', [
             'user_id' => $user->id,
@@ -319,6 +331,11 @@ class CodeController extends Controller
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
+        // Layer 0: Membership check (defense-in-depth)
+        if ($redirect = $this->ensureVoterMembership($election, $user)) {
+            return $redirect;
+        }
+
         Log::info('Agreement page accessed', [
             'user_id' => $user->id,
             'election_id' => $election->id,
@@ -427,6 +444,11 @@ class CodeController extends Controller
         $user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
+
+        // Layer 0: Membership check (defense-in-depth)
+        if ($redirect = $this->ensureVoterMembership($election, $user)) {
+            return $redirect;
+        }
 
         Log::info('Agreement submission started', [
             'user_id' => $user->id,

@@ -114,6 +114,13 @@ return [
             'robots'      => 'noindex, nofollow',
         ],
 
+        'demo.result' => [
+            'title'       => 'Demo Election Results | Public Digit',
+            'description' => 'View comprehensive results from the Public Digit demo election — vote counts, candidate rankings, and full voting statistics.',
+            'keywords'    => 'demo election results, online voting results, candidate ranking, voting statistics',
+            'robots'      => 'noindex, nofollow',
+        ],
+
         'vereinswahlen' => [
             'title'       => 'Digital Online Elections for Associations | Public Digit',
             'description' => 'The platform for digital online elections for associations: ✓ Secret board elections ✓ Online voting ✓ Hybrid general meetings ✓ GDPR compliant ✓ End-to-end encrypted.',

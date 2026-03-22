@@ -34,12 +34,15 @@ class SeoService
             return Cache::get($cacheKey);
         }
 
-        $title       = trans("seo.pages.{$page}.title");
-        $description = trans("seo.pages.{$page}.description");
-        $keywords    = trans("seo.pages.{$page}.keywords");
-        $robots      = trans("seo.pages.{$page}.robots");
+        // Priority 1: seo section inside the page's JS locale JSON file
+        // e.g. resources/js/locales/pages/DemoResult/de.json → { "seo": { "title": "..." } }
+        $jsonSeo     = $this->getMetaFromJsonLocale($page, $locale);
+        $title       = $jsonSeo['title']       ?? trans("seo.pages.{$page}.title");
+        $description = $jsonSeo['description'] ?? trans("seo.pages.{$page}.description");
+        $keywords    = $jsonSeo['keywords']    ?? trans("seo.pages.{$page}.keywords");
+        $robots      = $jsonSeo['robots']      ?? trans("seo.pages.{$page}.robots");
 
-        // Fallback to site defaults when page key is missing
+        // Priority 2: PHP seo.php site-level fallback when page key is missing
         if ($title === "seo.pages.{$page}.title") {
             $t = trans('seo.site.title');
             $title = ($t === 'seo.site.title') ? (config('meta.title') ?? 'Public Digit') : $t;
@@ -209,6 +212,32 @@ class SeoService
         }
 
         return $schemas;
+    }
+
+    /**
+     * Read the `seo` section from a page-specific JS locale JSON file.
+     * Convention: page key "demo.result" → folder "DemoResult"
+     *             page key "vereinswahlen" → folder "Vereinswahlen"
+     *
+     * Returns an array with title/description/keywords/robots, or empty array
+     * when the file / seo key does not exist.
+     */
+    private function getMetaFromJsonLocale(string $page, string $locale): array
+    {
+        // Convert page key → PascalCase folder name: "demo.result" → "DemoResult"
+        $folder = collect(explode('.', $page))
+            ->map(fn($part) => ucfirst($part))
+            ->implode('');
+
+        $path = resource_path("js/locales/pages/{$folder}/{$locale}.json");
+
+        if (!file_exists($path)) {
+            return [];
+        }
+
+        $data = json_decode(file_get_contents($path), true);
+
+        return $data['seo'] ?? [];
     }
 
     private function buildVereinswahlenSchema(): array

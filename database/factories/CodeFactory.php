@@ -25,73 +25,31 @@ class CodeFactory extends Factory
             'election_id' => Election::factory(),
             'code1' => $this->faker->numerify('######'),
             'code2' => $this->faker->numerify('######'),
-            'vote_show_code' => $this->faker->numerify('########'),
             'is_code1_usable' => 1,
-            'code1_sent_at' => now(),
             'can_vote_now' => 0,
             'has_voted' => 0,
-            'voting_time_in_minutes' => 20,
-            'vote_submitted' => 0,
-            'has_code1_sent' => 1,
-            'has_code2_sent' => 0,
             'client_ip' => $this->faker->ipv4(),
-            'has_agreed_to_vote' => 0,
-            'has_used_code1' => 0,
-            'has_used_code2' => 0,
         ];
     }
 
     /**
-     * Indicate that the code has been used
+     * Indicate that the code has been used (code1 spent)
      */
     public function used()
     {
-        return $this->state(function (array $attributes) {
-            return [
-                'is_code1_usable' => 0,
-                'has_used_code1' => 1,
-                'code1_used_at' => now(),
-            ];
-        });
+        return $this->state(fn () => [
+            'is_code1_usable' => 0,
+        ]);
     }
 
     /**
-     * Indicate that the user has agreed to vote
+     * Indicate that the voter has already voted
      */
-    public function agreedToVote()
+    public function voted()
     {
-        return $this->state(function (array $attributes) {
-            return [
-                'has_agreed_to_vote' => 1,
-                'has_agreed_to_vote_at' => now(),
-            ];
-        });
-    }
-
-    /**
-     * Indicate that voting has started
-     */
-    public function votingStarted()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'voting_started_at' => now(),
-                'can_vote_now' => 1,
-            ];
-        });
-    }
-
-    /**
-     * Indicate that the vote has been submitted
-     */
-    public function submitted()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'vote_submitted' => 1,
-                'vote_submitted_at' => now(),
-                'has_voted' => 1,
-            ];
-        });
+        return $this->state(fn () => [
+            'has_voted'    => 1,
+            'can_vote_now' => 0,
+        ]);
     }
 }

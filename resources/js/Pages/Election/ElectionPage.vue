@@ -264,7 +264,9 @@ export default {
 
     computed: {
         canVoteNow() {
-            return this.authUser.can_vote_now === 1 && !this.authUser.has_voted;
+            return this.authUser.can_vote_now === 1
+                && !this.authUser.has_voted
+                && this.authUser.is_eligible === true;
         },
     },
 

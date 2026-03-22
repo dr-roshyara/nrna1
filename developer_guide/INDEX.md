@@ -6,6 +6,56 @@ Welcome to the Public Digit Developer Guide. This is a comprehensive reference f
 
 ---
 
+## 🏛️ Election Management System (2026-03-20)
+
+**`election_management/`** — Full developer guide for election officer management, invitation flow, authorization, routes, Vue components, and tests.
+
+| File | Description |
+|------|-------------|
+| [01-overview.md](election_management/01-overview.md) | What was built, authorization matrix, file map |
+| [02-election-officer-model.md](election_management/02-election-officer-model.md) | Schema, roles, soft-delete restore pattern, `markAccepted()` |
+| [03-invitation-flow.md](election_management/03-invitation-flow.md) | Flow diagram, signed URL, guest handling, `OfficerAppointedNotification` |
+| [04-election-policy.md](election_management/04-election-policy.md) | 5 policy methods, route usage, tenant isolation, why policies over gates |
+| [05-routes-and-controller.md](election_management/05-routes-and-controller.md) | Route table, all controller methods, `voter_stats` format |
+| [06-vue-components.md](election_management/06-vue-components.md) | Management.vue + Viewboard.vue, Inertia 2.0 compliance checklist |
+| [07-testing.md](election_management/07-testing.md) | 3 test suites (30 tests), `makeOfficer()`, `orgSession()`, cross-org isolation |
+| [08-voter-management.md](election_management/08-voter-management.md) | Approve/suspend voters, architecture doc critique, FK constraint pitfall, 10 new tests |
+
+**Quick start:**
+```bash
+php artisan test tests/Feature/Election/
+# Expected: 22 passed (62 assertions)
+
+php artisan test --filter="ElectionOfficerManagementTest|ElectionOfficerInvitationTest|ElectionDashboardAccessTest"
+# Expected: 30 passed (122 assertions)
+```
+
+---
+
+## 🗳️ Election Membership System (2026-03-17)
+
+**`election/voter/`** — Full developer guide for the `election_memberships` table and its surrounding models and services.
+
+| File | Description |
+|------|-------------|
+| [01-overview.md](election/voter/01-overview.md) | Why the system exists, core concepts, design decisions |
+| [02-database-schema.md](election/voter/02-database-schema.md) | Tables, composite foreign keys, indexes, ER diagram |
+| [03-models.md](election/voter/03-models.md) | `ElectionMembership`, `Election`, and `User` model API reference |
+| [04-how-to-implement.md](election/voter/04-how-to-implement.md) | Step-by-step: assign voters, bulk import, check eligibility, controllers |
+| [05-service-layer.md](election/voter/05-service-layer.md) | `ElectionVoterService`: sync org members, stats, export, integrity command |
+| [06-caching.md](election/voter/06-caching.md) | Cache strategy (Option B — no Redis tags), invalidation hooks, upgrading |
+| [07-testing.md](election/voter/07-testing.md) | TDD walkthrough, test groups, common pitfalls, how to add tests |
+| [08-troubleshooting.md](election/voter/08-troubleshooting.md) | FK errors, null relationships, stale cache, orphaned rows |
+
+**Quick start:**
+```bash
+php artisan migrate
+php artisan test tests/Unit/Models/ElectionMembershipTest.php --no-coverage
+# Expected: 25 tests, 53 assertions, all green
+```
+
+---
+
 ## 🐛 Bug Fix Logs
 
 ### **BUG_FIXES_20260315.md** — 2026-03-15
@@ -512,6 +562,28 @@ KEY: One registration per user per election
 **What have you tried?**
 - Show solutions attempted
 - Reference troubleshooting.md items checked
+
+---
+
+## 🌐 Translation & SEO Guides
+
+### **translation/SEO_IN_TRANSLATION_FILES.md** — 2026-03-16
+How to add SEO meta tags directly inside page-specific JSON locale files (single source of truth pattern).
+
+**Covers:**
+- `"seo"` section inside `resources/js/locales/pages/{PageFolder}/{locale}.json`
+- Priority chain: JSON `seo` → PHP `seo.php` page key → site default → `config/meta.php`
+- Page key → PascalCase folder mapping (`demo.result` → `DemoResult`)
+- Step-by-step for adding SEO to any new page (4 steps)
+- SEO field reference (title ≤60 chars, description ≤160 chars, robots values)
+- Testing commands (`seo:optimize-meta`, `seo:check-vereinswahlen`, PHPUnit)
+- Common mistakes and file checklist
+
+**Quick rules:**
+- Put `seo` as a **nested object** in the JSON, not flat keys
+- Folder name is PascalCase with no separators: `vote.create` → `VoteCreate`
+- `robots: "noindex, nofollow"` for all authenticated/private pages
+- Run `php artisan test --filter=SeoServiceTest` after any changes
 
 ---
 

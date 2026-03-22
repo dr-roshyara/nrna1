@@ -86,6 +86,10 @@
                       {{ officer.status }}
                     </span>
                   </div>
+                  <p v-if="officer.election_name" class="text-xs text-blue-600 font-medium mt-1">
+                    For: {{ officer.election_name }}
+                  </p>
+                  <p v-else class="text-xs text-gray-400 mt-1 italic">Org-wide</p>
                   <p v-if="officer.appointed_at" class="text-xs text-gray-400 mt-1">
                     {{ $t('pages.organisation-show.election_officers.appointed_on', { date: officer.appointed_at }) }}
                     <span v-if="officer.appointed_by">
@@ -163,6 +167,22 @@
                   <p v-if="errors.user_id" class="mt-1 text-xs text-red-600">{{ errors.user_id }}</p>
                 </div>
 
+                <!-- Election (optional) -->
+                <div class="mb-4">
+                  <label class="block text-xs font-medium text-gray-600 mb-1" for="officer-election">
+                    For election <span class="text-gray-400">(leave blank for org-wide)</span>
+                  </label>
+                  <select
+                    id="officer-election"
+                    v-model="form.election_id"
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  >
+                    <option value="">— Organisation-wide —</option>
+                    <option v-for="e in elections" :key="e.id" :value="e.id">{{ e.name }}</option>
+                  </select>
+                  <p v-if="errors.election_id" class="mt-1 text-xs text-red-600">{{ errors.election_id }}</p>
+                </div>
+
                 <!-- Role -->
                 <div class="mb-4">
                   <label class="block text-xs font-medium text-gray-600 mb-2">
@@ -220,6 +240,7 @@ const props = defineProps({
   organisation: { type: Object, required: true },
   officers:     { type: Array,  default: () => [] },
   orgMembers:   { type: Array,  default: () => [] },
+  elections:    { type: Array,  default: () => [] },
   canManage:    { type: Boolean, default: false },
 })
 
@@ -229,7 +250,7 @@ const currentUserId = computed(() => page.props.auth?.user?.id)
 const search         = ref('')
 const dropdownOpen   = ref(false)
 const selectedMember = ref(null)
-const form           = ref({ role: 'commissioner' })
+const form           = ref({ role: 'commissioner', election_id: '' })
 const submitting     = ref(false)
 const removing       = ref(null)
 const accepting      = ref(null)
@@ -270,13 +291,14 @@ function appoint() {
 
   router.post(
     route('organisations.election-officers.store', props.organisation.slug),
-    { user_id: selectedMember.value.id, role: form.value.role },
+    { user_id: selectedMember.value.id, role: form.value.role, election_id: form.value.election_id || null },
     {
       preserveScroll: true,
       onSuccess: () => {
-        selectedMember.value = null
-        search.value         = ''
-        form.value.role      = 'commissioner'
+        selectedMember.value   = null
+        search.value           = ''
+        form.value.role        = 'commissioner'
+        form.value.election_id = ''
       },
       onError:  (e) => { errors.value = e },
       onFinish: () => { submitting.value = false },

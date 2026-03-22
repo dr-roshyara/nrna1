@@ -36,6 +36,9 @@ class BreadcrumbHelper
             case str_starts_with($routeName, 'organisations'):
                 $breadcrumbs = self::organisationBreadcrumbs($breadcrumbs, $params);
                 break;
+            case str_starts_with($routeName, 'elections.voters'):
+                // ElectionMembership voter management routes — no election model in params yet
+                break;
             case str_starts_with($routeName, 'election'):
                 $breadcrumbs = self::electionBreadcrumbs($breadcrumbs, $params);
                 break;

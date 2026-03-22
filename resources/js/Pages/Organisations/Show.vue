@@ -39,9 +39,15 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
             <span class="text-sm font-medium">
-              You are signed in as
+              You are
               <span class="font-bold capitalize">{{ isChief ? 'Election Chief' : isDeputy ? 'Election Deputy' : 'Election Commissioner' }}</span>
-              for this organisation.
+              <template v-if="officerElectionNames.length > 0">
+                for
+                <span class="font-bold">{{ officerElectionNames.join(', ') }}</span>.
+              </template>
+              <template v-else>
+                for this organisation.
+              </template>
             </span>
           </div>
 
@@ -352,8 +358,9 @@ const props = defineProps({
   isOfficer:           Boolean,
   isChief:             Boolean,
   isDeputy:            Boolean,
-  isCommissioner:      Boolean,
-  officers:            { type: Array, default: () => [] },
+  isCommissioner:       Boolean,
+  officerElectionNames: { type: Array, default: () => [] },
+  officers:             { type: Array, default: () => [] },
   orgMembers:          { type: Array, default: () => [] },
   elections:           { type: Array, default: () => [] },
 })

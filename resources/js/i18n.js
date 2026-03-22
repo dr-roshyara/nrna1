@@ -29,6 +29,10 @@ import welcomeDe from './locales/pages/Welcome/de.json';
 import welcomeEn from './locales/pages/Welcome/en.json';
 import welcomeNp from './locales/pages/Welcome/np.json';
 
+import demoResultDe from './locales/pages/DemoResult/de.json';
+import demoResultEn from './locales/pages/DemoResult/en.json';
+import demoResultNp from './locales/pages/DemoResult/np.json';
+
 import vereinswahlenDe from './locales/pages/Vereinswahlen/de.json';
 import vereinswahlenEn from './locales/pages/Vereinswahlen/en.json';
 import vereinswahlenNp from './locales/pages/Vereinswahlen/np.json';
@@ -176,6 +180,7 @@ const messages = {
       'voting-election': votingElectionDe,
       pricing: pricingDe,
       welcome: welcomeDe,
+      'demo-result': demoResultDe,
       vereinswahlen: vereinswahlenDe,
       hybrid: hybridDe,
       sicherheit: sicherheitDe,
@@ -220,6 +225,7 @@ const messages = {
       'voting-election': votingElectionEn,
       pricing: pricingEn,
       welcome: welcomeEn,
+      'demo-result': demoResultEn,
       vereinswahlen: vereinswahlenEn,
       hybrid: hybridEn,
       sicherheit: sicherheitEn,
@@ -264,6 +270,7 @@ const messages = {
       'voting-election': votingElectionNp,
       pricing: pricingNp,
       welcome: welcomeNp,
+      'demo-result': demoResultNp,
       vereinswahlen: vereinswahlenNp,
       hybrid: hybridNp,
       sicherheit: sicherheitNp,

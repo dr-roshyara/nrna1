@@ -74,6 +74,12 @@ class LoginController extends Controller
                 ->with('status', 'Please verify your email address to continue.');
         }
 
+        // Redirect to pending officer invitation acceptance if one is waiting
+        $pending = session('pending_acceptance');
+        if ($pending && isset($pending['url'])) {
+            return redirect($pending['url']);
+        }
+
         // ✅ Use DashboardResolver for intelligent post-login routing
         // This handles:
         // - Active voting sessions

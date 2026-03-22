@@ -29,3 +29,8 @@ Artisan::command('inspire', function () {
 |
 */
 Schedule::job(PeriodicSynchronizations::class)->everyFifteenMinutes();
+
+// Clear voter count/stats caches for elections that have memberships
+// expiring in the next hour. Covers the gap where expires_at passes
+// naturally without firing any Eloquent model events.
+Schedule::command('elections:flush-expiring-caches')->hourly();

@@ -31,6 +31,9 @@
 
 <script setup>
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const props = defineProps({
   mode: {
@@ -38,10 +41,7 @@ const props = defineProps({
     required: true,
     validator: (v) => ['global', 'organisation'].includes(v)
   },
-  organisationId: {
-    type: Number,
-    default: null
-  }
+  organisationId: { type: Number, default: null }
 });
 
 const isGlobal = computed(() => props.mode === 'global');
@@ -59,16 +59,22 @@ const badgeClass = computed(() =>
 );
 
 const title = computed(() =>
-  isGlobal.value ? 'Global Demo Mode' : 'Organisation Demo Mode'
+  isGlobal.value
+    ? t('pages.demo-result.mode_indicator.global_title')
+    : t('pages.demo-result.mode_indicator.org_title')
 );
 
 const description = computed(() =>
   isGlobal.value
-    ? 'Public testing environment - visible to all users'
-    : `Organisation Demo - ID: ${props.organisationId}`
+    ? t('pages.demo-result.mode_indicator.global_description')
+    : t('pages.demo-result.mode_indicator.org_description', { id: props.organisationId })
 );
 
-const badgeText = computed(() => isGlobal.value ? 'MODE 1' : 'MODE 2');
+const badgeText = computed(() =>
+  isGlobal.value
+    ? t('pages.demo-result.mode_indicator.mode1')
+    : t('pages.demo-result.mode_indicator.mode2')
+);
 
 const ariaLabel = computed(() => `${title.value}: ${description.value}`);
 </script>

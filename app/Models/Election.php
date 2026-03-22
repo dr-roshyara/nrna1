@@ -44,8 +44,9 @@ class Election extends Model
         'start_date',
         'end_date',
         'is_active',
+        'results_published',
         'settings',
-        'status', // Added for status field
+        'status',
     ];
 
     /**
@@ -64,7 +65,8 @@ class Election extends Model
         'settings' => 'array',
         'start_date' => 'datetime',
         'end_date' => 'datetime',
-        'is_active' => 'boolean',
+        'is_active'          => 'boolean',
+        'results_published'  => 'boolean',
     ];
 
     /**
@@ -73,6 +75,78 @@ class Election extends Model
     public function organisation()
     {
         return $this->belongsTo(Organisation::class);
+    }
+
+    // ── ElectionMembership relationships ─────────────────────────────────────
+
+    public function memberships()
+    {
+        return $this->hasMany(ElectionMembership::class);
+    }
+
+    /** ElectionMembership voters (role = voter, status = active) */
+    public function membershipVoters()
+    {
+        return $this->memberships()
+            ->where('role', 'voter')
+            ->where('status', 'active');
+    }
+
+    /** ElectionMembership voters whose eligibility has not expired */
+    public function eligibleVoters()
+    {
+        return $this->membershipVoters()
+            ->where(function ($q) {
+                $q->whereNull('expires_at')
+                  ->orWhere('expires_at', '>', now());
+            });
+    }
+
+    /**
+     * Cached membership voter count — invalidated by ElectionMembership::booted() hooks.
+     * Cache strategy: Option B (no tags, explicit key forget).
+     */
+    public function getVoterCountAttribute(): int
+    {
+        return \Illuminate\Support\Facades\Cache::remember(
+            "election.{$this->id}.voter_count",
+            300,
+            fn () => $this->membershipVoters()->count()
+        );
+    }
+
+    /**
+     * Cached membership voter statistics — all counts in one query burst.
+     * Cache strategy: Option B (no tags, explicit key forget).
+     * Invalidated by ElectionMembership::booted() hooks.
+     */
+    public function getVoterStatsAttribute(): array
+    {
+        return \Illuminate\Support\Facades\Cache::remember(
+            "election.{$this->id}.voter_stats",
+            300,
+            function () {
+                $base = fn () => $this->memberships();
+
+                return [
+                    'total_memberships' => $base()->count(),
+                    'active_voters'     => $this->membershipVoters()->count(),
+                    'eligible_voters'   => $this->eligibleVoters()->count(),
+                    'by_status' => [
+                        'active'   => $base()->where('status', 'active')->count(),
+                        'inactive' => $base()->where('status', 'inactive')->count(),
+                        'invited'  => $base()->where('status', 'invited')->count(),
+                        'removed'  => $base()->where('status', 'removed')->count(),
+                    ],
+                    'by_role' => [
+                        'voter'     => $base()->where('role', 'voter')->count(),
+                        'candidate' => $base()->where('role', 'candidate')->count(),
+                        'observer'  => $base()->where('role', 'observer')->count(),
+                        'admin'     => $base()->where('role', 'admin')->count(),
+                    ],
+                ];
+            }
+        );
     }
 
     /**

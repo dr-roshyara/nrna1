@@ -32,9 +32,11 @@ use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class VoteController extends Controller 
+class VoteController extends Controller
 {
-    public $vote ; 
+    use \App\Traits\EnsuresVoterMembership;
+
+    public $vote ;
     public $has_voted;
     public $in_code ; 
     public $out_code;
@@ -180,6 +182,11 @@ public function create(Request $request)
     $auth_user = $this->getUser($request);
     $election = $this->getElection($request);
     $voterSlug = $request->attributes->get('voter_slug');
+
+    // Layer 0: Membership check (defense-in-depth)
+    if ($redirect = $this->ensureVoterMembership($election, $auth_user)) {
+        return $redirect;
+    }
 
     // Get organisation_id from voter slug if available (correct context)
     // Fall back to election's organisation_id, then to user's organisation_id
@@ -424,6 +431,11 @@ public function first_submission(Request $request)
     // Get user and election context
     $auth_user = $this->getUser($request);
     $election = $this->getElection($request);
+
+    // Layer 0: Membership check (defense-in-depth)
+    if ($redirect = $this->ensureVoterMembership($election, $auth_user)) {
+        return $redirect;
+    }
 
     \Log::info('=== FIRST_SUBMISSION START ===', [
         'url' => $request->url(),
@@ -1283,6 +1295,11 @@ private function has_valid_selections($selections)
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
 
+        // Layer 0: FRESH membership check — no cache, inside active transaction
+        if ($redirect = $this->ensureVoterMembership($election, $auth_user, false, true)) {
+            return $redirect;
+        }
+
         // PHASE 3 VALIDATION: Election Validation
         // Demo elections: No organisation validation (can be voted by anyone)
         // Real elections: Require organisation matching
@@ -1855,6 +1872,12 @@ public function verify(Request $request)
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
+
+        // Layer 0: FRESH membership check — voter may be removed between first_submission and verify
+        if ($redirect = $this->ensureVoterMembership($election, $auth_user, false)) {
+            return $redirect;
+        }
+
         $code = $auth_user->code;
 
         Log::info('Vote verification page accessed', [
