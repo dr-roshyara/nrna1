@@ -1242,7 +1242,17 @@ public function getVoterState(): string
     }
 
     /**
-     * Get count of active elections user can vote in
+     * Count elections with status=active for routing decisions.
+     *
+     * Counts ALL elections where status='active', regardless of date window.
+     * This drives the Priority 3 routing branch:
+     *   0  → skip (no active election)
+     *   1  → send to election.dashboard (ElectionPage)
+     *   2+ → send to organisations.show (user chooses)
+     *
+     * Date range is intentionally excluded: if an admin has marked multiple
+     * elections as 'active', the org should always be shown regardless of
+     * whether voting has opened yet on each individual one.
      *
      * @return int
      */
@@ -1263,11 +1273,9 @@ public function getVoterState(): string
             ->whereIn('organisation_id', $orgIds)
             ->where('status', 'active')
             ->where('type', 'real')
-            ->where('start_date', '<=', now())
-            ->where('end_date', '>=', now())
-            ->whereDoesntHave('voterSlugs', function ($query) {
+            ->whereDoesntHave('memberships', function ($query) {
                 $query->where('user_id', $this->id)
-                    ->where('status', 'voted');
+                    ->where('has_voted', true);
             })
             ->count();
     }
