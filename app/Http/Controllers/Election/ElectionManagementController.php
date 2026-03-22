@@ -177,12 +177,7 @@ class ElectionManagementController extends Controller
             \Illuminate\Support\Facades\Log::info('DASHBOARD_DEBUG2', ['session_orgId' => $orgId, 'activeElection' => $activeElection?->id, 'allElectionsInDB' => $allElectionsInDB]);
 
             if ($activeElection) {
-                return Inertia::render('Election/ElectionPage', [
-                    'activeElection' => $activeElection,
-                    'authUser'       => array_merge($authUser->toArray(), [
-                        'is_eligible' => $authUser->isVoterInElection($activeElection->id),
-                    ]),
-                ]);
+                return redirect()->route('elections.show', $activeElection->slug);
             }
         }
 

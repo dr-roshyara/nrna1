@@ -18,8 +18,18 @@ use App\Http\Controllers\VoterSlugController;
 use App\Http\Controllers\Admin\VotingSecurityController;
 use App\Http\Controllers\HasVotedController;
 use App\Services\ElectionService;
+use App\Http\Controllers\ElectionVotingController;
 use Illuminate\Support\Facades\Route;
 
+// ============================================================
+// PRIMARY ELECTION PAGE (slug-based, shareable, bookmarkable)
+// ============================================================
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/elections/{slug}',        [ElectionVotingController::class, 'show']) ->name('elections.show');
+    Route::post('/elections/{slug}/start', [ElectionVotingController::class, 'start'])->name('elections.start');
+});
+
+// Legacy: session-based /election → redirects to /elections/{slug}
 Route::middleware(['auth', 'verified'])->get('/election', [ElectionManagementController::class, 'dashboard'])->name('election.dashboard');
 
 // ============================================================

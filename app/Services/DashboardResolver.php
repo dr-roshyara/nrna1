@@ -125,10 +125,9 @@ class DashboardResolver
                     }
 
                     if ($eligibleCount === 1) {
-                        // Single election: go directly to ElectionPage via election.dashboard
-                        // The dashboard controller reads current_organisation_id from session → shows ElectionPage
-                        $targetUrl = route('election.dashboard');
-                        Log::info('🎯 PRIORITY 3: Single election → election.dashboard', [
+                        // Single election: go directly to slug-based election show page
+                        $targetUrl = route('elections.show', $activeElection->slug);
+                        Log::info('🎯 PRIORITY 3: Single election → elections.show', [
                             'user_id' => $user->id,
                             'target'  => $targetUrl,
                         ]);
