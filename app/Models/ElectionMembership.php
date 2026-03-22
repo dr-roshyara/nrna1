@@ -41,6 +41,8 @@ class ElectionMembership extends Model
         'expires_at',
         'last_activity_at',
         'metadata',
+        'has_voted',
+        'voted_at',
     ];
 
     protected $casts = [
@@ -48,12 +50,15 @@ class ElectionMembership extends Model
         'expires_at'       => 'datetime',
         'last_activity_at' => 'datetime',
         'metadata'         => 'array',
+        'has_voted'        => 'boolean',
+        'voted_at'         => 'datetime',
     ];
 
     protected $attributes = [
-        'role'     => 'voter',
-        'status'   => 'active',
-        'metadata' => '{}',
+        'role'      => 'voter',
+        'status'    => 'active',
+        'metadata'  => '{}',
+        'has_voted' => false,
     ];
 
     // =========================================================================
@@ -116,6 +121,11 @@ class ElectionMembership extends Model
                 $q->whereNull('expires_at')
                   ->orWhere('expires_at', '>', now());
             });
+    }
+
+    public function scopeNotVoted($query)
+    {
+        return $query->where('has_voted', false);
     }
 
     // =========================================================================
@@ -258,8 +268,10 @@ class ElectionMembership extends Model
     public function markAsVoted(): void
     {
         $this->update([
-            'last_activity_at' => now(),
+            'has_voted'        => true,
+            'voted_at'         => now(),
             'status'           => 'inactive',
+            'last_activity_at' => now(),
         ]);
     }
 
@@ -296,6 +308,8 @@ class ElectionMembership extends Model
         $invalidate = function (self $membership) {
             Cache::forget("election.{$membership->election_id}.voter_count");
             Cache::forget("election.{$membership->election_id}.voter_stats");
+            // Also clear per-user voter eligibility cache
+            Cache::forget("user.{$membership->user_id}.voter.{$membership->election_id}");
         };
 
         static::saved($invalidate);
