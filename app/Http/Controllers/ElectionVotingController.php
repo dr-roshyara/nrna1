@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Election;
-use App\Models\VoterSlug;
+use App\Models\VoterSlug; // still used for active-session reuse in start()
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -29,13 +29,14 @@ class ElectionVotingController extends Controller
 
         $user = auth()->user();
 
-        $hasVoted = VoterSlug::withoutGlobalScopes()
-            ->where('user_id', $user->id)
+        $membership = $user->electionMemberships()
             ->where('election_id', $election->id)
-            ->where('status', 'voted')
-            ->exists();
+            ->first();
 
-        $isEligible = $user->isVoterInElection($election->id);
+        $hasVoted   = $membership?->has_voted ?? false;
+        $isEligible = $membership !== null
+            && $membership->role   === 'voter'
+            && $membership->status !== 'removed';
 
         $canVote = $isEligible
             && ! $hasVoted
@@ -68,18 +69,16 @@ class ElectionVotingController extends Controller
 
         $user = auth()->user();
 
-        if (! $user->isVoterInElection($election->id)) {
+        $membership = $user->electionMemberships()
+            ->where('election_id', $election->id)
+            ->first();
+
+        if (! $membership || $membership->role !== 'voter' || $membership->status === 'removed') {
             return redirect()->route('elections.show', $slug)
                 ->with('error', 'You are not eligible to vote in this election.');
         }
 
-        $hasVoted = VoterSlug::withoutGlobalScopes()
-            ->where('user_id', $user->id)
-            ->where('election_id', $election->id)
-            ->where('status', 'voted')
-            ->exists();
-
-        if ($hasVoted) {
+        if ($membership->has_voted) {
             return redirect()->route('elections.show', $slug)
                 ->with('info', 'You have already voted.');
         }

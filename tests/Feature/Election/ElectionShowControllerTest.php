@@ -84,6 +84,16 @@ class ElectionShowControllerTest extends TestCase
 
     private function markVoted(User $user, Election $election): void
     {
+        // Primary: set has_voted on ElectionMembership (new single source of truth)
+        ElectionMembership::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->update([
+                'has_voted' => true,
+                'voted_at'  => now(),
+                'status'    => 'inactive',
+            ]);
+
+        // Also insert VoterSlug for audit trail (existing voting flow still writes this)
         DB::table('voter_slugs')->insert([
             'id'              => Str::uuid(),
             'user_id'         => $user->id,
