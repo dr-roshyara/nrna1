@@ -30,6 +30,7 @@ use App\Models\Image;
 use App\Models\GoogleAccount;
 use App\Models\Calendar;
 use App\Models\Event;
+use App\Models\ElectionMembership;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
@@ -238,6 +239,47 @@ class User extends Authenticatable implements MustVerifyEmail
       {
           return $this->hasMany(VoterSlug::class);
       }
+
+    // ── ElectionMembership relationships ─────────────────────────────────────
+
+    public function electionMemberships()
+    {
+        return $this->hasMany(ElectionMembership::class);
+    }
+
+    /** All elections where the user has any membership role */
+    public function elections()
+    {
+        return $this->belongsToMany(Election::class, 'election_memberships')
+            ->withPivot(['role', 'status', 'assigned_at'])
+            ->withTimestamps()
+            ->withoutGlobalScopes();
+    }
+
+    /** Elections where the user is an active voter */
+    public function voterElections()
+    {
+        return $this->elections()
+            ->wherePivot('role', 'voter')
+            ->wherePivot('status', 'active');
+    }
+
+    /**
+     * Check if user is an active voter in a given election.
+     * Cached for 5 minutes (invalidated by ElectionMembership::booted() hooks).
+     */
+    public function isVoterInElection(string $electionId): bool
+    {
+        return \Illuminate\Support\Facades\Cache::remember(
+            "user.{$this->id}.voter.{$electionId}",
+            300,
+            fn () => $this->electionMemberships()
+                ->where('election_id', $electionId)
+                ->where('role', 'voter')
+                ->where('status', 'active')
+                ->exists()
+        );
+    }
 
      /**
       * Each user has extacly one code row
@@ -1183,7 +1225,10 @@ public function getVoterState(): string
         }
 
         // Find active REAL elections in those orgs (exclude demo elections)
-        return Election::whereIn('organisation_id', $orgIds)
+        // withoutGlobalScopes() bypasses BelongsToTenant which requires session context
+        // — not set yet when DashboardResolver runs at login time.
+        return Election::withoutGlobalScopes()
+            ->whereIn('organisation_id', $orgIds)
             ->where('status', 'active')
             ->where('type', 'real')
             ->where('start_date', '<=', now())
@@ -1212,8 +1257,12 @@ public function getVoterState(): string
             return 0;
         }
 
-        return Election::whereIn('organisation_id', $orgIds)
+        // withoutGlobalScopes() bypasses BelongsToTenant which requires session context
+        // — not set yet when DashboardResolver runs at login time.
+        return Election::withoutGlobalScopes()
+            ->whereIn('organisation_id', $orgIds)
             ->where('status', 'active')
+            ->where('type', 'real')
             ->where('start_date', '<=', now())
             ->where('end_date', '>=', now())
             ->whereDoesntHave('voterSlugs', function ($query) {

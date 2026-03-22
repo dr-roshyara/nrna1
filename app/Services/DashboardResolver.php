@@ -90,28 +90,69 @@ class DashboardResolver
                 'user_id' => $user->id,
                 'voter_slug_id' => $activeVoterSlug->id,
             ]);
-            $this->cacheResolution($user, route('voting.portal', ['voter_slug' => $activeVoterSlug->slug]));
-            return redirect()->route('voting.portal', ['voter_slug' => $activeVoterSlug->slug]);
+            $this->cacheResolution($user, route('slug.code.create', ['vslug' => $activeVoterSlug->slug]));
+            return redirect()->route('slug.code.create', ['vslug' => $activeVoterSlug->slug]);
         }
         Log::debug('✗ PRIORITY 2 SKIPPED: No active voting session');
 
         // =============================================
-        // PRIORITY 3: ACTIVE ELECTION AVAILABLE
-        // User has eligible organisation AND active election exists
+        // PRIORITY 3: ACTIVE ELECTIONS (User can vote)
+        // Count-based: 0 → skip | 1 → election.dashboard | 2+ → organisations.show
         // =============================================
-        if ($user->hasActiveElection()) {
+        $eligibleCount = $user->countActiveElections();
+
+        if ($eligibleCount > 0) {
             $activeElection = $user->getActiveElection();
-            $electionOrganisation = $activeElection->organisation;
-            Log::info('🗳️ PRIORITY 3 HIT: Active election found - user can vote', [
-                'user_id' => $user->id,
-                'election_id' => $activeElection->id,
-                'election_slug' => $activeElection->slug,
-            ]);
-            $this->tenantContext->setContext($user, $electionOrganisation);
-            $this->cacheResolution($user, route('election.dashboard'));
-            return redirect()->route('election.dashboard');
+
+            if ($activeElection) {
+                $electionOrg = \App\Models\Organisation::find($activeElection->organisation_id);
+
+                Log::info('🗳️ PRIORITY 3 HIT: Eligible elections found', [
+                    'user_id'        => $user->id,
+                    'eligible_count' => $eligibleCount,
+                    'election_id'    => $activeElection->id,
+                    'org_id'         => $electionOrg?->id,
+                ]);
+
+                if ($electionOrg) {
+                    try {
+                        $this->tenantContext->setContext($user, $electionOrg);
+                    } catch (\RuntimeException $e) {
+                        Log::warning('DashboardResolver: TenantContext failed in Priority 3', [
+                            'user_id' => $user->id,
+                            'error'   => $e->getMessage(),
+                        ]);
+                    }
+
+                    if ($eligibleCount === 1) {
+                        // Single election: go directly to ElectionPage via election.dashboard
+                        // The dashboard controller reads current_organisation_id from session → shows ElectionPage
+                        $targetUrl = route('election.dashboard');
+                        Log::info('🎯 PRIORITY 3: Single election → election.dashboard', [
+                            'user_id' => $user->id,
+                            'target'  => $targetUrl,
+                        ]);
+                        $this->cacheResolution($user, $targetUrl);
+                        return redirect()->to($targetUrl);
+                    }
+
+                    // Multiple elections: go to org page so user can choose which to vote in
+                    $targetUrl = route('organisations.show', $electionOrg->slug);
+                    Log::info('📋 PRIORITY 3: Multiple elections → organisations.show', [
+                        'user_id' => $user->id,
+                        'count'   => $eligibleCount,
+                        'target'  => $targetUrl,
+                    ]);
+                    $this->cacheResolution($user, $targetUrl);
+                    return redirect()->to($targetUrl);
+                }
+            } else {
+                Log::warning('DashboardResolver: countActiveElections > 0 but getActiveElection() returned null', [
+                    'user_id' => $user->id,
+                ]);
+            }
         }
-        Log::debug('✗ PRIORITY 3 SKIPPED: No active election for user');
+        Log::debug('✗ PRIORITY 3 SKIPPED: No eligible elections for user', ['user_id' => $user->id]);
 
         // =============================================
         // PRIORITY 4: HANDLE MISSING ORGANISATION/ELECTIONS
