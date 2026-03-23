@@ -57,38 +57,38 @@
           </section>
 
           <!-- ④ QUICK ACTIONS — owner/admin only -->
-          <section v-if="canManage" class="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
+          <Card v-if="canManage" mode="admin" padding="lg">
             <ActionButtons
               :organisation="organisation"
               :can-manage="canManage"
               :can-create-election="canCreateElection"
               @appoint-officer="openOfficerModal"
             />
-          </section>
+          </Card>
 
           <!-- ⑤ DEMO RESULTS — everyone -->
-          <section class="bg-white rounded-2xl shadow-sm p-8 border border-slate-200">
+          <Card mode="admin" padding="lg">
             <DemoResultsSection />
-          </section>
+          </Card>
 
           <!-- ⑥ DEMO SETUP — owner/admin only, when no demo exists -->
           <section v-if="canManage && !demoStatus?.exists">
             <DemoSetupButton :organisation="organisation" :demo-status="demoStatus" />
           </section>
 
-          <!-- ⑦ ACTIVE ELECTION NOTICE — visible to voters (non-admin, non-officer) -->
-          <section v-if="!canManage && !isOfficer && activeElections.length > 0">
-            <div class="rounded-2xl overflow-hidden border border-blue-200 shadow-sm">
-              <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-5">
+          <!-- ⑦ ACTIVE ELECTIONS — VOTER BALLOT SECTION (always visible when active elections exist) -->
+          <section v-if="activeElections.length > 0">
+            <div class="rounded-2xl overflow-hidden border border-emerald-200 shadow-sm">
+              <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-5">
                 <div class="flex items-center gap-3 text-white">
                   <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
                     </svg>
                   </div>
                   <div>
-                    <h2 class="text-lg font-bold">Active Election{{ activeElections.length !== 1 ? 's' : '' }}</h2>
-                    <p class="text-blue-100 text-sm">Voting is currently open</p>
+                    <h2 class="text-lg font-bold">Voting Open</h2>
+                    <p class="text-emerald-100 text-sm">{{ activeElections.length }} active election{{ activeElections.length !== 1 ? 's' : '' }}</p>
                   </div>
                 </div>
               </div>
@@ -96,13 +96,51 @@
                 <div
                   v-for="election in activeElections"
                   :key="election.id"
-                  class="rounded-xl border border-blue-100 bg-blue-50 p-4 flex items-center justify-between gap-3"
+                  class="rounded-xl border p-5 flex flex-col gap-4"
+                  :class="{
+                    'border-slate-200 bg-slate-50': voterStatus(election.id) === 'voted',
+                    'border-emerald-200 bg-emerald-50': voterStatus(election.id) === 'eligible',
+                    'border-slate-200 bg-white': voterStatus(election.id) === 'ineligible',
+                  }"
                 >
                   <div>
                     <p class="text-sm font-semibold text-slate-800">{{ election.name }}</p>
                     <p class="text-xs text-slate-500 mt-0.5">{{ formatDate(election.start_date) }} → {{ formatDate(election.end_date) }}</p>
                   </div>
-                  <StatusBadge :status="election.status" size="sm" />
+                  <div class="flex items-center justify-between">
+                    <!-- Already voted -->
+                    <span
+                      v-if="voterStatus(election.id) === 'voted'"
+                      class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-100 px-3 py-1.5 rounded-full"
+                    >
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                      Vote Cast
+                    </span>
+                    <!-- Not a voter -->
+                    <span
+                      v-else-if="voterStatus(election.id) === 'ineligible'"
+                      class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full"
+                    >
+                      Not a voter
+                    </span>
+                    <!-- Eligible — Vote Now -->
+                    <Button
+                      v-else
+                      as="a"
+                      :href="route('elections.show', election.slug)"
+                      variant="success"
+                      size="sm"
+                    >
+                      <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                      Vote Now
+                    </Button>
+                    <!-- View link for admins/officers regardless of voter status -->
+                    <a
+                      v-if="canManage || isOfficer"
+                      :href="route('elections.show', election.slug)"
+                      class="text-xs font-medium text-slate-400 hover:text-slate-600 underline underline-offset-2"
+                    >View →</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -110,7 +148,7 @@
 
           <!-- ⑧ ELECTIONS — everyone sees, actions gated by role -->
           <section>
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <Card mode="admin" padding="none" class="overflow-hidden">
               <!-- Header -->
               <div class="px-8 py-5 border-b border-slate-100 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -125,14 +163,16 @@
                   </div>
                 </div>
                 <!-- New Election — owner/admin only -->
-                <a
+                <Button
                   v-if="canCreateElection"
+                  as="a"
                   :href="route('organisations.elections.create', organisation.slug)"
-                  class="inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  variant="primary"
+                  size="sm"
                 >
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                  <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                   New Election
-                </a>
+                </Button>
               </div>
 
               <!-- Card Grid -->
@@ -161,22 +201,19 @@
                     </svg>
                   </template>
                   <template v-if="canCreateElection" #action>
-                    <a
-                      :href="route('organisations.elections.create', organisation.slug)"
-                      class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-                    >
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    <Button as="a" :href="route('organisations.elections.create', organisation.slug)" variant="primary">
+                      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                       Create First Election
-                    </a>
+                    </Button>
                   </template>
                 </EmptyState>
               </div>
-            </div>
+            </Card>
           </section>
 
           <!-- ⑨ OFFICER MANAGEMENT — owner/admin only -->
           <section v-if="canManage">
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <Card mode="admin" padding="none" class="overflow-hidden">
               <div class="px-8 py-5 border-b border-slate-100 flex items-center justify-between">
                 <div class="flex items-center gap-3">
                   <div class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center">
@@ -230,19 +267,18 @@
                     </svg>
                   </template>
                   <template #action>
-                    <a
-                      :href="route('organisations.election-officers.index', organisation.slug)"
-                      class="inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 bg-slate-800 hover:bg-slate-900 text-white rounded-lg transition-colors"
-                    >Appoint First Officer</a>
+                    <Button as="a" :href="route('organisations.election-officers.index', organisation.slug)" variant="secondary">
+                      Appoint First Officer
+                    </Button>
                   </template>
                 </EmptyState>
               </div>
-            </div>
+            </Card>
           </section>
 
           <!-- ⑩ VOTER MANAGEMENT — chief & deputy only (and owner/admin) -->
           <section v-if="canManageVoters || canManage">
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <Card mode="admin" padding="none" class="overflow-hidden">
               <div class="px-8 py-5 border-b border-slate-100 flex items-center justify-between">
                 <div class="flex items-center gap-3">
                   <div class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center">
@@ -255,11 +291,14 @@
                     <p class="text-xs text-slate-500">Approve or suspend election voters</p>
                   </div>
                 </div>
-                <a
-                  v-if="elections.length > 0"
-                  :href="route('elections.voters.index', { organisation: organisation.slug, election: elections[0].id })"
-                  class="text-sm font-semibold text-blue-600 hover:text-blue-800 hover:underline transition-colors"
-                >Manage →</a>
+                <div v-if="elections.length > 0" class="flex flex-col items-end gap-1">
+                  <a
+                    v-for="election in elections"
+                    :key="election.id"
+                    :href="route('elections.voters.index', { organisation: organisation.slug, election: election.slug })"
+                    class="text-sm font-semibold text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+                  >{{ election.name }} →</a>
+                </div>
               </div>
               <div class="px-8 py-5">
                 <div class="grid grid-cols-3 gap-4">
@@ -277,12 +316,12 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
           </section>
 
           <!-- ⑪ RESULTS MANAGEMENT — chief only (and owner/admin) -->
           <section v-if="(canPublishResults || canManage) && completedElections.length > 0">
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <Card mode="admin" padding="none" class="overflow-hidden">
               <div class="px-8 py-5 border-b border-slate-100 flex items-center gap-3">
                 <div class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center">
                   <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -298,7 +337,7 @@
                 <a
                   v-for="election in completedElections"
                   :key="election.id"
-                  :href="`/elections/${election.id}/management`"
+                  :href="`/elections/${election.slug}/management`"
                   class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg border transition-colors"
                   :class="election.results_published
                     ? 'border-emerald-300 text-emerald-700 hover:bg-emerald-50'
@@ -311,13 +350,13 @@
                   <span class="text-xs opacity-70">{{ election.results_published ? '· Published' : '· Unpublished' }}</span>
                 </a>
               </div>
-            </div>
+            </Card>
           </section>
 
           <!-- ⑫ SUPPORT SECTION — everyone -->
-          <section class="bg-white rounded-2xl shadow-sm overflow-hidden border border-slate-200">
+          <Card mode="admin" padding="none" class="overflow-hidden">
             <SupportSection />
-          </section>
+          </Card>
 
         </div>
       </div>
@@ -339,6 +378,8 @@ import DemoResultsSection from './Partials/DemoResultsSection.vue'
 import SupportSection from './Partials/SupportSection.vue'
 import DemoSetupButton from './Partials/DemoSetupButton.vue'
 import ElectionCard from './Partials/ElectionCard.vue'
+import Button from '@/Components/Button.vue'
+import Card from '@/Components/Card.vue'
 import SectionCard from '@/Components/SectionCard.vue'
 import StatusBadge from '@/Components/StatusBadge.vue'
 import EmptyState from '@/Components/EmptyState.vue'
@@ -363,6 +404,7 @@ const props = defineProps({
   officers:             { type: Array, default: () => [] },
   orgMembers:          { type: Array, default: () => [] },
   elections:           { type: Array, default: () => [] },
+  voterMemberships:    { type: Object, default: () => ({}) },
 })
 
 const page = usePage()
@@ -371,12 +413,20 @@ const activatingId = ref(null)
 const activeElections    = computed(() => props.elections.filter(e => e.status === 'active'))
 const completedElections = computed(() => props.elections.filter(e => e.status === 'completed'))
 
+const voterStatus = (electionId) => {
+  const m = props.voterMemberships[electionId]
+  if (!m || m.status === 'removed') return 'ineligible'
+  if (m.has_voted) return 'voted'
+  if (m.role === 'voter' && m.status === 'active') return 'eligible'
+  return 'ineligible'
+}
+
 const formatDate = (d) => d ? d.slice(0, 10) : '—'
 
-const activateElection = (electionId) => {
+const activateElection = (electionSlug) => {
   if (!confirm('Activate this election? Status will change to active.')) return
-  activatingId.value = electionId
-  router.post(route('elections.activate', { election: electionId }), {}, {
+  activatingId.value = electionSlug
+  router.post(route('elections.activate', { election: electionSlug }), {}, {
     preserveScroll: true,
     onFinish: () => { activatingId.value = null },
   })

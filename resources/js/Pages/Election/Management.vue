@@ -10,7 +10,7 @@
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
 
         <!-- Page Header -->
-        <header class="bg-white rounded-2xl border border-slate-200 shadow-sm px-8 py-6">
+        <Card mode="admin" padding="lg" class="rounded-2xl">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">Election Management</p>
@@ -19,7 +19,7 @@
             </div>
             <StatusBadge :status="election.status" size="md" />
           </div>
-        </header>
+        </Card>
 
         <!-- Flash Messages -->
         <div
@@ -139,6 +139,35 @@
               </div>
             </div>
           </div>
+        </SectionCard>
+
+        <!-- ── ELECTION DATES ─────────────────────────────────── -->
+        <SectionCard padding="lg">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+              <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h2 class="text-base font-semibold text-slate-800">मिति | Election Dates</h2>
+          </div>
+
+          <form @submit.prevent="updateDates" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">Start Date</label>
+              <input type="datetime-local" v-model="dateForm.start_date"
+                class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">End Date</label>
+              <input type="datetime-local" v-model="dateForm.end_date"
+                class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400" />
+            </div>
+            <div class="sm:col-span-2">
+              <ActionButton variant="outline" size="md" type="submit" :loading="isSavingDates">Save Dates</ActionButton>
+            </div>
+          </form>
         </SectionCard>
 
         <!-- ── VOTING STATISTICS ───────────────────────────────── -->
@@ -350,6 +379,7 @@
 import { ref, computed } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
+import Card from '@/Components/Card.vue'
 import StatusBadge from '@/Components/StatusBadge.vue'
 import ActionButton from '@/Components/ActionButton.vue'
 import SectionCard from '@/Components/SectionCard.vue'
@@ -364,20 +394,39 @@ const props = defineProps({
 const page = usePage()
 const isLoading    = ref(false)
 const isActivating = ref(false)
+const isSavingDates = ref(false)
+
+function toDatetimeLocal(raw) {
+  if (!raw) return ''
+  return new Date(raw).toISOString().slice(0, 16)
+}
+
+const dateForm = ref({
+  start_date: toDatetimeLocal(props.election.start_date),
+  end_date:   toDatetimeLocal(props.election.end_date),
+})
+
+const updateDates = () => {
+  isSavingDates.value = true
+  router.patch(route('elections.update-dates', { election: props.election.slug }), dateForm.value, {
+    preserveScroll: true,
+    onFinish: () => { isSavingDates.value = false },
+  })
+}
 
 const isVotingActive = computed(() => props.election.status === 'active')
 
 const voterListUrl = computed(() =>
   route('elections.voters.index', {
     organisation: props.election.organisation?.slug,
-    election:     props.election.id,
+    election:     props.election.slug,
   })
 )
 
 const activateElection = () => {
   if (!confirm('Are you sure you want to activate this election? The status will change to active and voting can begin.')) return
   isActivating.value = true
-  router.post(route('elections.activate', { election: props.election.id }), {}, {
+  router.post(route('elections.activate', { election: props.election.slug }), {}, {
     preserveScroll: true,
     onFinish: () => { isActivating.value = false },
   })
@@ -386,7 +435,7 @@ const activateElection = () => {
 const publishResults = () => {
   if (!confirm('Are you sure you want to publish the election results? This will make them available to all voters.')) return
   isLoading.value = true
-  router.post(route('elections.publish', { election: props.election.id }), {}, {
+  router.post(route('elections.publish', { election: props.election.slug }), {}, {
     preserveScroll: true,
     onFinish: () => { isLoading.value = false },
   })
@@ -395,7 +444,7 @@ const publishResults = () => {
 const unpublishResults = () => {
   if (!confirm('Are you sure you want to unpublish the election results?')) return
   isLoading.value = true
-  router.post(route('elections.unpublish', { election: props.election.id }), {}, {
+  router.post(route('elections.unpublish', { election: props.election.slug }), {}, {
     preserveScroll: true,
     onFinish: () => { isLoading.value = false },
   })
@@ -404,7 +453,7 @@ const unpublishResults = () => {
 const openVoting = () => {
   if (!confirm('Are you sure you want to open the voting period? Voters will be able to cast their votes.')) return
   isLoading.value = true
-  router.post(route('elections.open-voting', { election: props.election.id }), {}, {
+  router.post(route('elections.open-voting', { election: props.election.slug }), {}, {
     preserveScroll: true,
     onFinish: () => { isLoading.value = false },
   })
@@ -413,7 +462,7 @@ const openVoting = () => {
 const closeVoting = () => {
   if (!confirm('Are you sure you want to close the voting period? No new votes will be accepted.')) return
   isLoading.value = true
-  router.post(route('elections.close-voting', { election: props.election.id }), {}, {
+  router.post(route('elections.close-voting', { election: props.election.slug }), {}, {
     preserveScroll: true,
     onFinish: () => { isLoading.value = false },
   })
