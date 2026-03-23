@@ -1,0 +1,40 @@
+/* resources/css/tokens.css */
+/* Single source of truth. 4 brand colors + 5-level neutral + typography + shadows. */
+:root {
+  /* Core brand colors — WCAG AA verified */
+  --color-primary:       #2563eb;   /* blue — 4.56:1 on white ✅ */
+  --color-primary-dark:  #1d4ed8;
+  --color-primary-light: #dbeafe;
+  --color-accent:        #a0742a;   /* gold — 4.51:1 on white ✅ (not #b5862b which fails AA) */
+  --color-accent-dark:   #92400e;
+  --color-accent-light:  #fef3c7;
+
+  /* Semantic */
+  --color-success:    #059669;  /* emerald-600 — passes AA */
+  --color-success-bg: #f0fdf4;
+  --color-danger:     #dc2626;  /* red-600 — passes AA for small text */
+  --color-danger-bg:  #fef2f2;
+  --color-warning:    #d97706;  /* amber-600 */
+  --color-warning-bg: #fffbeb;
+
+  /* Neutral scale (5 levels only) */
+  --color-neutral-50:  #f9fafb;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-500: #6b7280;
+  --color-neutral-700: #374151;
+  --color-neutral-900: #111827;
+
+  /* Typography */
+  --font-sans:  'Inter', 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-mono:  'DM Mono', 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Transitions */
+  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}

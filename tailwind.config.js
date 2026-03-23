@@ -10,7 +10,9 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                sans:  ['Inter', 'Nunito', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                serif: ['Cormorant Garamond', 'Georgia', 'Times New Roman', 'serif'],
+                mono:  ['DM Mono', 'JetBrains Mono', 'Courier New', 'monospace'],
             },
         },
     },

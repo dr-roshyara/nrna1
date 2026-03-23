@@ -1,12 +1,6 @@
 <template>
     <ElectionLayout>
-        <Head>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link
-                href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap"
-                rel="stylesheet"
-            />
-        </Head>
+        <Head></Head>
 
         <div class="esp-root">
 
@@ -24,6 +18,12 @@
                         <span class="esp-meta-date">{{ formatDate(election.start_date) }} — {{ formatDate(election.end_date) }}</span>
                         <span class="esp-meta-dot" aria-hidden="true">·</span>
                         <span class="esp-meta-status" :class="`esp-status--${election.status}`">{{ election.status }}</span>
+                    </div>
+
+                    <div v-if="ipAddress" class="esp-ip-badge" aria-label="Your IP address">
+                        <span class="esp-ip-badge__icon" aria-hidden="true">⬡</span>
+                        <span class="esp-ip-badge__text">Voting from {{ ipAddress }}</span>
+                        <span class="esp-ip-badge__tooltip">Your IP address is recorded for security verification</span>
                     </div>
                 </div>
             </section>
@@ -179,6 +179,7 @@ const props = defineProps({
     hasVoted:   { type: Boolean, default: false },
     canVote:    { type: Boolean, default: false },
     isEligible: { type: Boolean, default: false },
+    ipAddress:  { type: String,  default: null },
 })
 
 // ─── Flash ────────────────────────────────────────────────────────────────────
@@ -353,6 +354,87 @@ const ballotCardClass = computed(() => ({
 .esp-status--active    { color: #4ade80; border-color: #4ade8055; background: #4ade800f; }
 .esp-status--planned   { color: #94a3b8; border-color: #94a3b855; background: #94a3b80f; }
 .esp-status--completed { color: var(--gold); border-color: #b5862b55; background: #b5862b0f; }
+
+/* ── IP Address Badge ──────────────────────────────────────────────────────── */
+.esp-ip-badge {
+    margin-top: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(247, 243, 236, 0.12);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(181, 134, 43, 0.3);
+    border-radius: 999px;
+    padding: 0.375rem 1rem;
+    font-size: 0.75rem;
+    position: relative;
+    cursor: help;
+    transition: all 0.2s ease;
+}
+
+.esp-ip-badge:hover {
+    background: rgba(247, 243, 236, 0.2);
+    border-color: rgba(181, 134, 43, 0.6);
+}
+
+.esp-ip-badge__icon {
+    font-size: 0.85rem;
+    color: var(--gold);
+}
+
+.esp-ip-badge__text {
+    font-family: var(--ff-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+}
+
+.esp-ip-badge__tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--ff-body);
+    font-size: 0.7rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+    z-index: 10;
+    border: 1px solid var(--gold);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.esp-ip-badge:hover .esp-ip-badge__tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.esp-ip-badge__tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--gold) transparent transparent transparent;
+}
+
+@media (max-width: 640px) {
+    .esp-ip-badge__tooltip {
+        white-space: normal;
+        width: 200px;
+        text-align: center;
+        font-size: 0.65rem;
+    }
+}
 
 /* ── Main ────────────────────────────────────────────────────────────────────── */
 .esp-main {
