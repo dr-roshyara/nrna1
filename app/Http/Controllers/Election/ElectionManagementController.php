@@ -596,11 +596,47 @@ class ElectionManagementController extends Controller
     public function index(Election $election): Response
     {
         $election->load(['organisation']);
+
+        $postsCount = \App\Models\Post::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->count();
+
+        $candidatesCount = \App\Models\Candidacy::withoutGlobalScopes()
+            ->whereHas('post', fn ($q) => $q->withoutGlobalScopes()->where('election_id', $election->id))
+            ->where('status', \App\Models\Candidacy::STATUS_APPROVED)
+            ->count();
+
         return Inertia::render('Election/Management', [
-            'election'   => $election,
-            'stats'      => $election->voter_stats,
-            'canPublish' => auth()->user()->can('publishResults', $election),
+            'election'        => $election,
+            'stats'           => $election->voter_stats,
+            'canPublish'      => auth()->user()->can('publishResults', $election),
+            'postsCount'      => $postsCount,
+            'candidatesCount' => $candidatesCount,
         ]);
+    }
+
+    /**
+     * Update the election's start/end dates.
+     *
+     * PATCH /elections/{election}/update-dates
+     */
+    public function updateDates(Request $request, Election $election): RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        $validated = $request->validate([
+            'start_date' => ['required', 'date'],
+            'end_date'   => ['required', 'date', 'after:start_date'],
+        ]);
+
+        Election::withoutGlobalScopes()
+            ->where('id', $election->id)
+            ->update([
+                'start_date' => $validated['start_date'],
+                'end_date'   => $validated['end_date'],
+            ]);
+
+        return back()->with('success', 'Election dates updated successfully.');
     }
 
     /**

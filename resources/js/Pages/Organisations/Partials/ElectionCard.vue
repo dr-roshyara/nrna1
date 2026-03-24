@@ -27,10 +27,10 @@
         v-if="canActivate"
         variant="warning"
         size="sm"
-        :loading="activatingId === election.id"
-        :disabled="activatingId === election.id"
+        :loading="activatingId === election.slug"
+        :disabled="activatingId === election.slug"
         class="flex-1 sm:flex-none"
-        @click="$emit('activate', election.id)"
+        @click="$emit('activate', election.slug)"
       >
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -41,7 +41,7 @@
       <!-- Manage — chief/deputy/admin/owner -->
       <a
         v-if="canManage && !isReadonly"
-        :href="`/elections/${election.id}/management`"
+        :href="`/elections/${election.slug}/management`"
         class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-3 py-1.5 border border-blue-300 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
         :aria-label="`Manage ${election.name}`"
       >

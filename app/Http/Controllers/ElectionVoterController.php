@@ -7,6 +7,7 @@ use App\Models\ElectionMembership;
 use App\Models\Organisation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
@@ -28,22 +29,44 @@ class ElectionVoterController extends Controller
 
     public function index(Organisation $organisation, string $election)
     {
-        $election = Election::withoutGlobalScopes()->findOrFail($election);
+        $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
         abort_if($election->type === 'demo', 404, 'Voter management is not available for demo elections.');
 
         $this->authorize('view', $election);
 
+        $search = request('search');
+        $status = request('status');
+
         $voters = $election->memberships()
             ->with('user:id,name,email')
             ->where('role', 'voter')
+            ->when($search, fn ($q) => $q->whereHas('user', fn ($u) => $u->where('name', 'like', "%{$search}%")->orWhere('email', 'like', "%{$search}%")))
+            ->when($status, fn ($q) => $q->where('status', $status))
             ->latest('assigned_at')
-            ->paginate(25);
+            ->paginate(25)
+            ->withQueryString();
+
+        // Org members not yet assigned to this election — for the assign dropdown
+        $assignedUserIds = $election->memberships()
+            ->where('role', 'voter')
+            ->pluck('user_id')
+            ->toArray();
+
+        $unassignedMembers = DB::table('user_organisation_roles as ur')
+            ->join('users as u', 'u.id', '=', 'ur.user_id')
+            ->where('ur.organisation_id', $organisation->id)
+            ->whereNotIn('ur.user_id', $assignedUserIds)
+            ->select('u.id', 'u.name', 'u.email')
+            ->orderBy('u.name')
+            ->get();
 
         return Inertia::render('Elections/Voters/Index', [
-            'election'     => $election->only('id', 'name', 'type', 'status'),
-            'organisation' => $organisation->only('id', 'slug', 'name'),
-            'voters'       => $voters,
-            'stats'        => $election->voter_stats,
+            'election'          => $election->only('id', 'name', 'type', 'status'),
+            'organisation'      => $organisation->only('id', 'slug', 'name'),
+            'voters'            => $voters,
+            'stats'             => $election->voter_stats,
+            'unassignedMembers' => $unassignedMembers,
+            'filters'           => ['search' => $search, 'status' => $status],
         ]);
     }
 
@@ -53,10 +76,10 @@ class ElectionVoterController extends Controller
 
     public function store(Request $request, Organisation $organisation, string $election)
     {
-        $election = Election::withoutGlobalScopes()->findOrFail($election);
+        $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
         abort_if($election->type === 'demo', 404);
 
-        $this->authorize('manage', $election);
+        $this->authorize('manageVoters', $election);
 
         $request->validate([
             'user_id' => [
@@ -94,10 +117,10 @@ class ElectionVoterController extends Controller
 
     public function bulkStore(Request $request, Organisation $organisation, string $election)
     {
-        $election = Election::withoutGlobalScopes()->findOrFail($election);
+        $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
         abort_if($election->type === 'demo', 404);
 
-        $this->authorize('manage', $election);
+        $this->authorize('manageVoters', $election);
 
         $request->validate([
             'user_ids'   => 'required|array|max:1000',
@@ -130,10 +153,10 @@ class ElectionVoterController extends Controller
 
     public function destroy(Organisation $organisation, string $election, ElectionMembership $membership)
     {
-        $election = Election::withoutGlobalScopes()->findOrFail($election);
+        $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
         abort_if($election->type === 'demo', 404);
 
-        $this->authorize('manage', $election);
+        $this->authorize('manageVoters', $election);
 
         // Row lock prevents race condition: if voter's VoteController::store() is in a
         // live transaction, lockForUpdate() blocks until one side commits.
@@ -154,7 +177,7 @@ class ElectionVoterController extends Controller
 
     public function approve(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
-        $election = Election::withoutGlobalScopes()->findOrFail($election);
+        $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -179,7 +202,7 @@ class ElectionVoterController extends Controller
 
     public function suspend(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
-        $election = Election::withoutGlobalScopes()->findOrFail($election);
+        $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -204,7 +227,7 @@ class ElectionVoterController extends Controller
 
     public function export(Organisation $organisation, string $election)
     {
-        $election = Election::withoutGlobalScopes()->findOrFail($election);
+        $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('view', $election);
@@ -237,5 +260,109 @@ class ElectionVoterController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    // =========================================================================
+    // proposeSuspension — first committee member proposes
+    // =========================================================================
+
+    public function proposeSuspension(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
+    {
+        $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->type === 'demo', 404);
+
+        $this->authorize('manageVoters', $election);
+
+        if ($membership->election_id !== $election->id) {
+            abort(404);
+        }
+
+        if ($membership->status !== 'active') {
+            return back()->with('error', 'Only active voters can have a suspension proposed.');
+        }
+
+        if ($membership->has_voted) {
+            return back()->with('error', 'Cannot suspend a voter who has already voted.');
+        }
+
+        if ($membership->isSuspensionProposed()) {
+            return back()->with('error', 'A suspension is already pending for this voter.');
+        }
+
+        $membership->proposeSuspension(auth()->user());
+
+        Log::channel('voting_security')->info('Suspension proposed', [
+            'proposer_id'   => auth()->id(),
+            'proposer_name' => auth()->user()->name,
+            'voter_id'      => $membership->user_id,
+            'election_id'   => $election->id,
+        ]);
+
+        return back()->with('success', "Suspension proposed for {$membership->user->name}. A second committee member must confirm.");
+    }
+
+    // =========================================================================
+    // confirmSuspension — second committee member confirms
+    // =========================================================================
+
+    public function confirmSuspension(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
+    {
+        $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->type === 'demo', 404);
+
+        $this->authorize('manageVoters', $election);
+
+        if ($membership->election_id !== $election->id) {
+            abort(404);
+        }
+
+        if (! $membership->canConfirmSuspension(auth()->user())) {
+            return back()->with('error', 'You cannot confirm a suspension you proposed, or no suspension is pending.');
+        }
+
+        $proposedBy = $membership->suspension_proposed_by;
+        $membership->confirmSuspension(auth()->user());
+        Cache::forget("election.{$election->id}.voter_stats");
+
+        Log::channel('voting_security')->info('Suspension confirmed', [
+            'confirmer_id'   => auth()->id(),
+            'confirmer_name' => auth()->user()->name,
+            'proposer_name'  => $proposedBy,
+            'voter_id'       => $membership->user_id,
+            'election_id'    => $election->id,
+        ]);
+
+        return back()->with('success', "Voter {$membership->user->name} suspended. Proposed by {$proposedBy}, confirmed by " . auth()->user()->name . '.');
+    }
+
+    // =========================================================================
+    // cancelProposal — proposer or admin cancels pending proposal
+    // =========================================================================
+
+    public function cancelProposal(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
+    {
+        $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->type === 'demo', 404);
+
+        $this->authorize('manageVoters', $election);
+
+        if ($membership->election_id !== $election->id) {
+            abort(404);
+        }
+
+        if (! $membership->isSuspensionProposed()) {
+            return back()->with('error', 'No pending suspension proposal to cancel.');
+        }
+
+        $isProposer = $membership->suspension_proposed_by === auth()->user()->name;
+        $isAdmin    = auth()->user()->hasRole('admin');
+
+        if (! $isProposer && ! $isAdmin) {
+            abort(403, 'Only the proposer or an admin can cancel the suspension proposal.');
+        }
+
+        $membership->cancelSuspensionProposal();
+
+        return back()->with('success', "Suspension proposal for {$membership->user->name} cancelled.");
     }
 }

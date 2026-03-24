@@ -40,14 +40,24 @@ class ElectionPolicy
     }
 
     /**
-     * Chief or deputy may manage election settings, control voting period, and manage voters.
+     * Chief or deputy (via election_officers) OR org owner/admin (via user_organisation_roles)
+     * may manage election settings, control voting period, and manage voters.
      */
     public function manageSettings(User $user, Election $election): bool
     {
-        return ElectionOfficer::where('user_id', $user->id)
+        $isOfficer = ElectionOfficer::where('user_id', $user->id)
             ->where('organisation_id', $election->organisation_id)
             ->whereIn('role', ['chief', 'deputy'])
             ->where('status', 'active')
+            ->exists();
+
+        if ($isOfficer) {
+            return true;
+        }
+
+        return UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $election->organisation_id)
+            ->whereIn('role', ['owner', 'admin'])
             ->exists();
     }
 
@@ -67,6 +77,14 @@ class ElectionPolicy
      * Chief or deputy may manage voters (approve, bulk operations).
      */
     public function manageVoters(User $user, Election $election): bool
+    {
+        return $this->manageSettings($user, $election);
+    }
+
+    /**
+     * Chief or deputy (or org owner/admin) may manage posts and candidacies.
+     */
+    public function managePosts(User $user, Election $election): bool
     {
         return $this->manageSettings($user, $election);
     }

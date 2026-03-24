@@ -18,11 +18,13 @@
  * - No cross-organisation data access is possible
  */
 
+use App\Http\Controllers\Election\CandidacyManagementController;
 use App\Http\Controllers\Election\ElectionManagementController;
+use App\Http\Controllers\Election\PostManagementController;
 use App\Http\Controllers\ElectionOfficerController;
 use App\Http\Controllers\ElectionOfficerInvitationController;
 use App\Http\Controllers\ElectionVoterController;
-use App\Http\Controllers\Organisations\VoterController;
+use App\Http\Controllers\OrganisationController;
 use Illuminate\Support\Facades\Route;
 
 // ── Invitation acceptance — public (signed middleware only, no auth required) ──
@@ -38,33 +40,9 @@ Route::prefix('organisations/{organisation:slug}')
 Route::prefix('organisations/{organisation:slug}')
     ->middleware(['auth', 'verified', 'ensure.organisation'])
     ->group(function () {
-        /**
-         * VOTER MANAGEMENT ROUTES
-         *
-         * These routes allow organisation members to view, approve, and manage voters.
-         * Commission members can approve/suspend voters.
-         * Regular members can only view voters.
-         */
-
-        // List voters for the organisation
-        Route::get('/voters', [VoterController::class, 'index'])
-            ->name('organisations.voters.index');
-
-        // Approve a single voter (requires commission membership)
-        Route::post('/voters/{voter}/approve', [VoterController::class, 'approve'])
-            ->name('organisations.voters.approve');
-
-        // Suspend a voter (revoke voting rights, requires commission membership)
-        Route::post('/voters/{voter}/suspend', [VoterController::class, 'suspend'])
-            ->name('organisations.voters.suspend');
-
-        // Bulk approve multiple voters (requires commission membership)
-        Route::post('/voters/bulk-approve', [VoterController::class, 'bulkApprove'])
-            ->name('organisations.voters.bulk-approve');
-
-        // Bulk suspend multiple voters (requires commission membership)
-        Route::post('/voters/bulk-suspend', [VoterController::class, 'bulkSuspend'])
-            ->name('organisations.voters.bulk-suspend');
+        // ── Organisation Hub Pages ─────────────────────────────────────────────────
+        Route::get('/voter-hub',           [OrganisationController::class, 'voterHub'])          ->name('organisations.voter-hub');
+        Route::get('/election-commission', [OrganisationController::class, 'electionCommission'])->name('organisations.election-commission');
 
         // ── Election Creation ──────────────────────────────────────────────────────
         Route::get('/elections/create', [ElectionManagementController::class, 'create'])->name('organisations.elections.create');
@@ -79,13 +57,27 @@ Route::prefix('organisations/{organisation:slug}')
         });
 
         // ── Election Voter Management (ElectionMembership — real elections only) ──
-        Route::prefix('/elections/{election}')->group(function () {
+        Route::prefix('/elections/{election:slug}')->group(function () {
             Route::get('/voters',                   [ElectionVoterController::class, 'index'])     ->name('elections.voters.index');
             Route::post('/voters',                  [ElectionVoterController::class, 'store'])     ->name('elections.voters.store');
             Route::post('/voters/bulk',             [ElectionVoterController::class, 'bulkStore']) ->name('elections.voters.bulk');
             Route::get('/voters/export',            [ElectionVoterController::class, 'export'])    ->name('elections.voters.export');
             Route::delete('/voters/{membership}',   [ElectionVoterController::class, 'destroy'])   ->name('elections.voters.destroy');
-            Route::post('/voters/{membership}/approve', [ElectionVoterController::class, 'approve'])->name('elections.voters.approve');
-            Route::post('/voters/{membership}/suspend', [ElectionVoterController::class, 'suspend'])->name('elections.voters.suspend');
+            Route::post('/voters/{membership}/approve',             [ElectionVoterController::class, 'approve'])           ->name('elections.voters.approve');
+            Route::post('/voters/{membership}/suspend',             [ElectionVoterController::class, 'suspend'])           ->name('elections.voters.suspend');
+            Route::post('/voters/{membership}/propose-suspension',  [ElectionVoterController::class, 'proposeSuspension']) ->name('elections.voters.propose-suspension');
+            Route::post('/voters/{membership}/confirm-suspension',  [ElectionVoterController::class, 'confirmSuspension']) ->name('elections.voters.confirm-suspension');
+            Route::post('/voters/{membership}/cancel-proposal',     [ElectionVoterController::class, 'cancelProposal'])    ->name('elections.voters.cancel-proposal');
+
+            // ── Posts management (positions within an election) ────────────────────
+            Route::get('/posts',              [PostManagementController::class, 'index'])  ->name('organisations.elections.posts.index');
+            Route::post('/posts',             [PostManagementController::class, 'store'])  ->name('organisations.elections.posts.store');
+            Route::patch('/posts/{post}',     [PostManagementController::class, 'update']) ->name('organisations.elections.posts.update');
+            Route::delete('/posts/{post}',    [PostManagementController::class, 'destroy'])->name('organisations.elections.posts.destroy');
+
+            // ── Candidacies management (candidates per post) ───────────────────────
+            Route::post('/posts/{post}/candidacies',               [CandidacyManagementController::class, 'store'])  ->name('organisations.elections.candidacies.store');
+            Route::patch('/posts/{post}/candidacies/{candidacy}', [CandidacyManagementController::class, 'update']) ->name('organisations.elections.candidacies.update');
+            Route::delete('/posts/{post}/candidacies/{candidacy}',[CandidacyManagementController::class, 'destroy'])->name('organisations.elections.candidacies.destroy');
         });
     });

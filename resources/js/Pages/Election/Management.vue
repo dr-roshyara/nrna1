@@ -292,6 +292,38 @@
           </div>
         </SectionCard>
 
+        <!-- ── POSTS & CANDIDATES MANAGEMENT ─────────────────────── -->
+        <SectionCard padding="lg">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
+                <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+              </div>
+              <h2 class="text-base font-semibold text-slate-800">पदहरू र उम्मेद्वार | Posts &amp; Candidates</h2>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 mb-5">
+            <div class="rounded-xl bg-slate-50 border border-slate-200 p-4 text-center">
+              <p class="text-2xl font-bold text-slate-700">{{ postsCount }}</p>
+              <p class="text-xs text-slate-500 mt-0.5">पदहरू | Positions</p>
+            </div>
+            <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-4 text-center">
+              <p class="text-2xl font-bold text-emerald-700">{{ candidatesCount }}</p>
+              <p class="text-xs text-slate-500 mt-0.5">स्वीकृत उम्मेद्वार | Approved Candidates</p>
+            </div>
+          </div>
+
+          <ActionButton as="a" variant="outline" size="md" :href="postsUrl" class="w-full sm:w-auto">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+            </svg>
+            पद र उम्मेद्वार व्यवस्थापन | Manage Posts &amp; Candidates
+          </ActionButton>
+        </SectionCard>
+
         <!-- ── VOTER MANAGEMENT ────────────────────────────────── -->
         <SectionCard padding="lg">
           <div class="flex items-center justify-between mb-6">
@@ -386,9 +418,11 @@ import SectionCard from '@/Components/SectionCard.vue'
 import EmptyState from '@/Components/EmptyState.vue'
 
 const props = defineProps({
-  election:   { type: Object, required: true },
-  stats:      { type: Object, default: () => ({}) },
-  canPublish: { type: Boolean, default: false },
+  election:        { type: Object,  required: true },
+  stats:           { type: Object,  default: () => ({}) },
+  canPublish:      { type: Boolean, default: false },
+  postsCount:      { type: Number,  default: 0 },
+  candidatesCount: { type: Number,  default: 0 },
 })
 
 const page = usePage()
@@ -418,6 +452,13 @@ const isVotingActive = computed(() => props.election.status === 'active')
 
 const voterListUrl = computed(() =>
   route('elections.voters.index', {
+    organisation: props.election.organisation?.slug,
+    election:     props.election.slug,
+  })
+)
+
+const postsUrl = computed(() =>
+  route('organisations.elections.posts.index', {
     organisation: props.election.organisation?.slug,
     election:     props.election.slug,
   })

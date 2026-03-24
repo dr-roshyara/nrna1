@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Election;
+use App\Models\ElectionMembership;
 use App\Models\ElectionOfficer;
 use App\Models\Organisation;
 use App\Models\UserOrganisationRole;
+use Inertia\Inertia;
+use Inertia\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -109,6 +112,22 @@ class OrganisationController extends Controller
             ->orderByDesc('created_at')
             ->get(['id', 'name', 'slug', 'status', 'start_date', 'end_date', 'results_published']);
 
+        // Voter membership context for the current user across these elections
+        $electionIds = $realElections->pluck('id')->toArray();
+        $voterMemberships = [];
+        if (!empty($electionIds)) {
+            \App\Models\ElectionMembership::where('user_id', $user->id)
+                ->whereIn('election_id', $electionIds)
+                ->get(['election_id', 'role', 'status', 'has_voted'])
+                ->each(function ($m) use (&$voterMemberships) {
+                    $voterMemberships[$m->election_id] = [
+                        'role'      => $m->role,
+                        'status'    => $m->status,
+                        'has_voted' => (bool) $m->has_voted,
+                    ];
+                });
+        }
+
         // Get organisation stats
         $stats = [
             'members_count'          => UserOrganisationRole::where('organisation_id', $organisation->id)->count(),
@@ -175,6 +194,7 @@ class OrganisationController extends Controller
             'officers'           => $officers,
             'orgMembers'         => $orgMembers,
             'elections'          => $realElections->values(),
+            'voterMemberships'   => $voterMemberships,
         ]);
     }
 
@@ -313,6 +333,115 @@ class OrganisationController extends Controller
                     ->value('role'),
                 ['owner', 'admin']
             ),
+        ]);
+    }
+
+    // =========================================================================
+    // voterHub — member-facing: active elections + voter status
+    // =========================================================================
+
+    public function voterHub(Organisation $organisation): Response
+    {
+        $user = auth()->user();
+
+        $role = UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->value('role');
+        abort_if(! $role, 403);
+
+        $activeElections = Election::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->where('status', 'active')
+            ->with(['posts' => fn ($q) => $q->withoutGlobalScopes()->orderBy('position_order')])
+            ->orderBy('start_date')
+            ->get()
+            ->map(fn ($e) => [
+                'id'          => $e->id,
+                'name'        => $e->name,
+                'slug'        => $e->slug,
+                'start_date'  => $e->start_date,
+                'end_date'    => $e->end_date,
+                'description' => $e->description,
+                'posts'       => $e->posts->map(fn ($p) => [
+                    'id'               => $p->id,
+                    'name'             => $p->name,
+                    'is_national_wide' => (bool) $p->is_national_wide,
+                    'state_name'       => $p->state_name,
+                    'required_number'  => $p->required_number,
+                    'position_order'   => $p->position_order,
+                ])->values(),
+            ]);
+
+        $voterMemberships = ElectionMembership::where('user_id', $user->id)
+            ->whereIn('election_id', $activeElections->pluck('id'))
+            ->get()
+            ->keyBy('election_id')
+            ->map(fn ($m) => [
+                'status'    => $m->status,
+                'role'      => $m->role,
+                'has_voted' => (bool) $m->has_voted,
+            ]);
+
+        return Inertia::render('Organisations/VoterHub', [
+            'organisation'     => $organisation->only('id', 'name', 'slug'),
+            'activeElections'  => $activeElections->values(),
+            'voterMemberships' => $voterMemberships,
+        ]);
+    }
+
+    // =========================================================================
+    // electionCommission — officer/admin-facing: per-election management links
+    // =========================================================================
+
+    public function electionCommission(Organisation $organisation): Response
+    {
+        $user = auth()->user();
+
+        $role = UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->value('role');
+        abort_if(! $role, 403);
+
+        $isOfficer = ElectionOfficer::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->where('status', 'active')
+            ->exists();
+
+        abort_if(! in_array($role, ['owner', 'admin']) && ! $isOfficer, 403);
+
+        $elections = Election::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->orderBy('created_at', 'desc')
+            ->get()
+            ->map(fn ($e) => [
+                'id'     => $e->id,
+                'name'   => $e->name,
+                'slug'   => $e->slug,
+                'status' => $e->status,
+            ]);
+
+        $stats = [
+            'elections_count'  => $elections->count(),
+            'active_elections' => $elections->where('status', 'active')->count(),
+            'total_voters'     => ElectionMembership::where('organisation_id', $organisation->id)
+                ->where('status', 'active')->count(),
+            'officers_count'   => ElectionOfficer::where('organisation_id', $organisation->id)
+                ->where('status', 'active')->count(),
+        ];
+
+        return Inertia::render('Organisations/ElectionCommission', [
+            'organisation' => $organisation->only('id', 'name', 'slug'),
+            'elections'    => $elections->values(),
+            'stats'        => $stats,
+            'canManage'    => in_array($role, ['owner', 'admin']),
+            'isChief'      => ElectionOfficer::where('user_id', $user->id)
+                ->where('organisation_id', $organisation->id)
+                ->where('role', 'chief')->where('status', 'active')->exists(),
+            'isDeputy'     => ElectionOfficer::where('user_id', $user->id)
+                ->where('organisation_id', $organisation->id)
+                ->where('role', 'deputy')->where('status', 'active')->exists(),
         ]);
     }
 }
