@@ -71,7 +71,7 @@ class CandidacyApplicationController extends Controller
                 'status_label'  => $this->getStatusLabel($a->status),
                 'created_at'    => $a->created_at->format('Y-m-d'),
                 'manifesto'     => $a->manifesto,
-                'documents'     => $a->documents,
+                'photo'         => $a->photo,
             ]);
 
         return Inertia::render('Organisations/CandidacyList', [
@@ -95,8 +95,7 @@ class CandidacyApplicationController extends Controller
             'supporter_name' => 'required|string|max:255',
             'proposer_name'  => 'required|string|max:255',
             'manifesto'      => 'nullable|string|max:5000',
-            'documents'      => 'nullable|array|max:5',
-            'documents.*'    => 'file|mimes:pdf,jpg,jpeg,png|max:5120',
+            'photo'          => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
         ]);
 
         $election = Election::withoutGlobalScopes()
@@ -121,11 +120,12 @@ class CandidacyApplicationController extends Controller
         }
 
         return DB::transaction(function () use ($user, $organisation, $election, $validated, $request) {
-            $documents = [];
-            if ($request->hasFile('documents')) {
-                foreach ($request->file('documents') as $doc) {
-                    $documents[] = $doc->store("candidacy/{$organisation->id}/{$user->id}", 'public');
-                }
+            $photoPath = null;
+            if ($request->hasFile('photo')) {
+                $photoPath = $request->file('photo')->store(
+                    "candidacy/{$organisation->id}/{$user->id}/photos",
+                    'public'
+                );
             }
 
             CandidacyApplication::create([
@@ -136,7 +136,7 @@ class CandidacyApplicationController extends Controller
                 'supporter_name'  => $validated['supporter_name'],
                 'proposer_name'   => $validated['proposer_name'],
                 'manifesto'       => $validated['manifesto'] ?? null,
-                'documents'       => $documents ?: null,
+                'photo'           => $photoPath,
                 'status'          => CandidacyApplication::STATUS_PENDING,
             ]);
 

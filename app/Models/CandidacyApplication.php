@@ -15,7 +15,7 @@ class CandidacyApplication extends Model
 
     protected $fillable = [
         'user_id', 'organisation_id', 'election_id', 'post_id',
-        'supporter_name', 'proposer_name', 'manifesto', 'documents',
+        'supporter_name', 'proposer_name', 'manifesto', 'documents', 'photo',
         'status', 'rejection_reason', 'reviewed_at', 'reviewed_by',
     ];
 

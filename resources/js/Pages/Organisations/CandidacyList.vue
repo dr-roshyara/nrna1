@@ -86,19 +86,20 @@
               <template v-for="app in applications" :key="'exp-' + app.id">
                 <tr v-if="expanded === app.id" class="bg-slate-50 border-b border-slate-100">
                   <td colspan="5" class="px-5 py-4">
-                    <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Election Statement</p>
-                    <p class="text-sm text-slate-700 whitespace-pre-line leading-relaxed">{{ app.manifesto }}</p>
-                    <div v-if="app.documents && app.documents.length > 0" class="mt-3">
-                      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Documents</p>
-                      <ul class="flex flex-wrap gap-2">
-                        <li v-for="(doc, i) in app.documents" :key="i">
-                          <a :href="'/storage/' + doc" target="_blank"
-                            class="inline-flex items-center gap-1 text-xs text-primary-600 hover:text-primary-800 underline"
-                          >
-                            Document {{ i + 1 }}
-                          </a>
-                        </li>
-                      </ul>
+                    <div class="flex gap-6 items-start">
+                      <!-- Photo -->
+                      <div v-if="app.photo" class="flex-shrink-0">
+                        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Photo</p>
+                        <img :src="'/storage/' + app.photo" alt="Candidate photo"
+                          class="w-20 h-20 object-cover rounded-lg border border-slate-200 shadow-sm"
+                        />
+                      </div>
+                      <!-- Statement -->
+                      <div class="flex-1 min-w-0">
+                        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Election Statement</p>
+                        <p v-if="app.manifesto" class="text-sm text-slate-700 whitespace-pre-line leading-relaxed">{{ app.manifesto }}</p>
+                        <p v-else class="text-sm text-slate-400 italic">No statement provided.</p>
+                      </div>
                     </div>
                   </td>
                 </tr>

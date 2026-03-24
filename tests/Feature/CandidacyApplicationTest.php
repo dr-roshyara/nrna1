@@ -147,10 +147,10 @@ class CandidacyApplicationTest extends TestCase
              ->assertSessionHas('error');
     }
 
-    public function test_documents_are_uploaded_and_stored(): void
+    public function test_photo_is_uploaded_and_stored(): void
     {
         Storage::fake('public');
-        $file = UploadedFile::fake()->create('manifesto.pdf', 500);
+        $photo = UploadedFile::fake()->image('candidate.jpg', 300, 300);
 
         $this->actingAs($this->member)
              ->post(route('organisations.candidacy.apply', $this->org->slug), [
@@ -158,11 +158,25 @@ class CandidacyApplicationTest extends TestCase
                  'post_id'        => $this->post->id,
                  'supporter_name' => 'John Supporter',
                  'proposer_name'  => 'Jane Proposer',
-                 'documents'      => [$file],
+                 'photo'          => $photo,
              ]);
 
         $application = CandidacyApplication::first();
-        $this->assertNotEmpty($application->documents);
+        $this->assertNotNull($application->photo);
+        Storage::disk('public')->assertExists($application->photo);
+    }
+
+    public function test_photo_must_be_image(): void
+    {
+        $this->actingAs($this->member)
+             ->post(route('organisations.candidacy.apply', $this->org->slug), [
+                 'election_id'    => $this->election->id,
+                 'post_id'        => $this->post->id,
+                 'supporter_name' => 'John Supporter',
+                 'proposer_name'  => 'Jane Proposer',
+                 'photo'          => UploadedFile::fake()->create('document.pdf', 100),
+             ])
+             ->assertSessionHasErrors('photo');
     }
 
     public function test_voter_hub_includes_my_applications(): void

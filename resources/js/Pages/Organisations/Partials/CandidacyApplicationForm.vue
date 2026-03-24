@@ -119,59 +119,48 @@
           </div>
         </div>
 
-        <!-- ── Section 4: Documents ── -->
+        <!-- ── Section 4: Candidate Photo ── -->
         <div class="form-section">
           <div class="section-label">
             <span class="section-number">04</span>
-            <span class="section-title">Supporting Documents</span>
+            <span class="section-title">Candidate Photo</span>
           </div>
-          <p class="section-hint">Attach up to 5 files (PDF, JPG, PNG). Maximum 5 MB each.</p>
+          <p class="section-hint">Upload a clear, recent photo of yourself. JPG or PNG, maximum 5 MB.</p>
 
-          <!-- Drop zone -->
-          <div class="drop-zone"
-            :class="{ 'drop-zone--active': isDragging, 'drop-zone--has-files': selectedFiles.length > 0 }"
-            @dragover.prevent="isDragging = true"
-            @dragleave.prevent="isDragging = false"
-            @drop.prevent="handleDrop"
-            @click="$refs.fileInput.click()"
-            role="button"
-            tabindex="0"
-            :aria-label="`Document upload zone. ${selectedFiles.length} file${selectedFiles.length !== 1 ? 's' : ''} selected.`"
-            @keydown.enter.prevent="$refs.fileInput.click()"
-            @keydown.space.prevent="$refs.fileInput.click()"
-          >
-            <input ref="fileInput" type="file" multiple accept=".pdf,.jpg,.jpeg,.png" class="sr-only"
-              @change="handleFileInput" :disabled="selectedFiles.length >= 5"
-            />
-
-            <div v-if="selectedFiles.length === 0" class="drop-zone-empty">
-              <svg class="drop-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/>
+          <div class="photo-upload-row">
+            <!-- Preview avatar -->
+            <div class="photo-preview" :class="{ 'photo-preview--filled': photoPreview }">
+              <img v-if="photoPreview" :src="photoPreview" alt="Candidate photo preview" class="photo-img" />
+              <svg v-else class="photo-placeholder-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
               </svg>
-              <p class="drop-text">Drop files here or <span class="drop-link">browse</span></p>
-              <p class="drop-hint">PDF, JPG, PNG · max 5 MB · up to 5 files</p>
             </div>
 
-            <div v-else class="drop-zone-files">
-              <div v-for="(f, i) in selectedFiles" :key="i" class="file-chip">
-                <svg class="file-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+            <!-- Upload controls -->
+            <div class="photo-controls">
+              <input ref="fileInput" type="file" accept=".jpg,.jpeg,.png" class="sr-only" @change="handlePhotoInput" />
+
+              <button type="button" @click="$refs.fileInput.click()" class="photo-pick-btn">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/>
                 </svg>
-                <span class="file-name">{{ f.name }}</span>
-                <span class="file-size">({{ formatSize(f.size) }})</span>
-                <button type="button" @click.stop="removeFile(i)" class="file-remove" :aria-label="`Remove ${f.name}`">
-                  <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"/></svg>
-                </button>
-              </div>
-              <button v-if="selectedFiles.length < 5" type="button" @click.stop="$refs.fileInput.click()" class="add-more-btn">
-                + Add more
+                {{ photoFile ? 'Change Photo' : 'Choose Photo' }}
               </button>
+
+              <button v-if="photoFile" type="button" @click="removePhoto" class="photo-remove-btn">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+                Remove
+              </button>
+
+              <p v-if="photoFile" class="photo-filename">{{ photoFile.name }} <span class="photo-filesize">({{ formatSize(photoFile.size) }})</span></p>
+              <p v-else class="photo-hint-text">JPG or PNG · max 5 MB</p>
             </div>
           </div>
 
-          <!-- Size errors -->
-          <p v-for="(err, i) in fileSizeErrors" :key="i" class="field-error-msg mt-1">{{ err }}</p>
-          <p v-if="errors.documents" class="field-error-msg mt-1">{{ errors.documents }}</p>
+          <p v-if="photoSizeError" class="field-error-msg mt-2">{{ photoSizeError }}</p>
+          <p v-if="errors.photo" class="field-error-msg mt-2">{{ errors.photo }}</p>
         </div>
 
         <!-- ── Section 5: Terms & Conditions ── -->
@@ -241,9 +230,9 @@ const form = ref({
   manifesto:      '',
 })
 
-const selectedFiles  = ref([])
-const fileSizeErrors = ref([])
-const isDragging     = ref(false)
+const photoFile      = ref(null)
+const photoPreview   = ref(null)
+const photoSizeError = ref('')
 const isSubmitting   = ref(false)
 const fileInput      = ref(null)
 const agreedToTerms  = ref(false)
@@ -258,33 +247,27 @@ const postsForSelectedElection = computed(() => {
   return election?.posts ?? []
 })
 
-// ── File handling ──────────────────────────────────────────────────────────
+// ── Photo handling ─────────────────────────────────────────────────────────
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5 MB
 
-function addFiles(fileList) {
-  fileSizeErrors.value = []
-  const remaining = 5 - selectedFiles.value.length
-  Array.from(fileList).slice(0, remaining).forEach(file => {
-    if (file.size > MAX_FILE_SIZE) {
-      fileSizeErrors.value.push(`"${file.name}" exceeds 5 MB (${formatSize(file.size)})`)
-      return
-    }
-    selectedFiles.value.push(file)
-  })
-}
-
-function handleFileInput(e) {
-  addFiles(e.target.files)
+function handlePhotoInput(e) {
+  const file = e.target.files[0]
   e.target.value = ''
+  if (!file) return
+  photoSizeError.value = ''
+  if (file.size > MAX_FILE_SIZE) {
+    photoSizeError.value = `"${file.name}" exceeds 5 MB (${formatSize(file.size)})`
+    return
+  }
+  photoFile.value = file
+  photoPreview.value = URL.createObjectURL(file)
 }
 
-function handleDrop(e) {
-  isDragging.value = false
-  addFiles(e.dataTransfer.files)
-}
-
-function removeFile(index) {
-  selectedFiles.value.splice(index, 1)
+function removePhoto() {
+  if (photoPreview.value) URL.revokeObjectURL(photoPreview.value)
+  photoFile.value    = null
+  photoPreview.value = null
+  photoSizeError.value = ''
 }
 
 function formatSize(bytes) {
@@ -307,7 +290,7 @@ function submit() {
   data.append('proposer_name',  form.value.proposer_name)
   data.append('supporter_name', form.value.supporter_name)
   data.append('manifesto',      form.value.manifesto)
-  selectedFiles.value.forEach(f => data.append('documents[]', f))
+  if (photoFile.value) data.append('photo', photoFile.value)
 
   router.post(
     route('organisations.candidacy.apply', props.organisation.slug),
@@ -316,8 +299,7 @@ function submit() {
       preserveScroll: true,
       onSuccess: () => {
         form.value = { election_id: '', post_id: '', proposer_name: '', supporter_name: '', manifesto: '' }
-        selectedFiles.value = []
-        fileSizeErrors.value = []
+        removePhoto()
         agreedToTerms.value = false
         termsError.value = false
       },
@@ -508,73 +490,61 @@ function submit() {
   pointer-events: none;
 }
 
-/* ── Drop zone ── */
-.drop-zone {
-  border: 2px dashed #cbd5e1;
+/* ── Photo upload ── */
+.photo-upload-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.photo-preview {
+  width: 6rem;
+  height: 6rem;
   border-radius: 0.875rem;
+  border: 2px dashed #cbd5e1;
   background: #f8fafc;
-  padding: 1.5rem;
-  cursor: pointer;
-  transition: border-color 0.2s, background-color 0.2s;
-  min-height: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: border-color 0.2s;
 }
-.drop-zone:hover,
-.drop-zone:focus-visible { border-color: #f59e0b; background: #fffbeb; outline: none; }
-.drop-zone--active { border-color: #f59e0b; background: #fffbeb; }
-.drop-zone--has-files { border-style: solid; border-color: #e2e8f0; }
-
-.drop-zone-empty { text-align: center; }
-.drop-icon { width: 2rem; height: 2rem; stroke: #94a3b8; margin: 0 auto 0.5rem; display: block; }
-.drop-text { font-size: 0.875rem; color: #475569; font-weight: 500; }
-.drop-link { color: #f59e0b; text-decoration: underline; text-underline-offset: 2px; }
-.drop-hint { font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem; }
-
-.drop-zone-files { width: 100%; }
-.file-chip {
-  display: flex;
+.photo-preview--filled { border-style: solid; border-color: #e2e8f0; }
+.photo-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-placeholder-icon { width: 2.5rem; height: 2.5rem; stroke: #cbd5e1; }
+.photo-controls { display: flex; flex-direction: column; gap: 0.625rem; }
+.photo-pick-btn {
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: #f1f5f9;
+  border: 1.5px solid #e2e8f0;
+  color: #334155;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  padding: 0.4375rem 0.625rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.8125rem;
-}
-.file-icon { width: 1rem; height: 1rem; stroke: #64748b; flex-shrink: 0; }
-.file-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #334155; font-weight: 500; }
-.file-size { color: #94a3b8; flex-shrink: 0; }
-.file-remove {
-  width: 1.25rem;
-  height: 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-  color: #94a3b8;
-  flex-shrink: 0;
-  transition: color 0.15s, background-color 0.15s;
-  border: none;
-  background: transparent;
   cursor: pointer;
-  padding: 0;
+  transition: border-color 0.15s, background-color 0.15s;
 }
-.file-remove:hover { color: #ef4444; background: #fee2e2; }
-.file-remove svg { width: 0.875rem; height: 0.875rem; }
-.add-more-btn {
-  font-size: 0.8125rem;
-  color: #f59e0b;
+.photo-pick-btn:hover { border-color: #f59e0b; background: #fffbeb; color: #92400e; }
+.photo-remove-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
   background: none;
   border: none;
+  color: #ef4444;
+  font-size: 0.8125rem;
+  font-weight: 500;
   cursor: pointer;
-  padding: 0.25rem 0;
-  font-weight: 600;
+  padding: 0;
   transition: color 0.15s;
 }
-.add-more-btn:hover { color: #d97706; }
+.photo-remove-btn:hover { color: #b91c1c; }
+.photo-filename { font-size: 0.8125rem; color: #334155; font-weight: 500; }
+.photo-filesize { color: #94a3b8; font-weight: 400; }
+.photo-hint-text { font-size: 0.75rem; color: #94a3b8; }
 
 /* ── Terms ── */
 .terms-section { background: #fffbeb; border-bottom: 1px solid #fde68a; }
