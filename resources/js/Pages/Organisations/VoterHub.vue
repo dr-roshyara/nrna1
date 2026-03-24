@@ -5,10 +5,6 @@
       <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
       {{ page.props.flash.success }}
     </div>
-    <div v-if="page.props.flash?.error" class="fixed top-4 right-4 z-50 max-w-sm rounded-xl bg-red-600 text-white text-sm font-medium px-5 py-3 shadow-xl flex items-center gap-2">
-      <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      {{ page.props.flash.error }}
-    </div>
 
     <main class="py-10 bg-slate-50 min-h-screen">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -31,11 +27,64 @@
               </div>
               <div>
                 <h1 class="text-xl font-bold text-slate-900">Voter Hub</h1>
-                <p class="text-sm text-slate-500">Your active elections, voting status and candidacy applications</p>
+                <p class="text-sm text-slate-500">Your member portal — vote, apply for candidacy, and track your activity</p>
               </div>
             </div>
           </template>
         </SectionCard>
+
+        <!-- Quick Navigation Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <!-- Apply for Candidacy -->
+          <a :href="route('organisations.candidacy.create', organisation.slug)"
+            class="group block rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-md hover:border-primary-300 transition-all"
+          >
+            <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center mb-3 group-hover:bg-amber-200 transition-colors">
+              <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900 mb-1">Apply for Candidacy</h3>
+            <p class="text-sm text-slate-500">Submit your nomination for an election post</p>
+          </a>
+
+          <!-- My Applications -->
+          <a :href="route('organisations.candidacy.list', organisation.slug)"
+            class="group block rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-md hover:border-primary-300 transition-all"
+          >
+            <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center mb-3 group-hover:bg-primary-200 transition-colors">
+              <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900 mb-1">My Applications</h3>
+            <p class="text-sm text-slate-500">Track the status of your candidacy submissions</p>
+          </a>
+
+          <!-- View Positions (first active election) -->
+          <a v-if="activeElections.length > 0"
+            :href="route('organisations.elections.posts.index', { organisation: organisation.slug, election: activeElections[0].slug })"
+            class="group block rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-md hover:border-primary-300 transition-all"
+          >
+            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center mb-3 group-hover:bg-slate-200 transition-colors">
+              <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900 mb-1">View Positions</h3>
+            <p class="text-sm text-slate-500">See all posts and existing candidates</p>
+          </a>
+          <!-- Placeholder when no active elections -->
+          <div v-else class="rounded-2xl border border-dashed border-slate-200 bg-white p-6 opacity-50">
+            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-500 mb-1">View Positions</h3>
+            <p class="text-sm text-slate-400">Available when elections are active</p>
+          </div>
+        </div>
 
         <!-- Active Elections -->
         <section>
@@ -67,7 +116,7 @@
                 <!-- Voter Status Badge -->
                 <div>
                   <span :class="statusBadgeClass(election.id)" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium">
-                    <span>{{ statusLabel(election.id) }}</span>
+                    {{ statusLabel(election.id) }}
                   </span>
                 </div>
 
@@ -75,9 +124,7 @@
                 <div v-if="election.posts && election.posts.length > 0">
                   <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Positions</p>
                   <ul class="space-y-1">
-                    <li v-for="post in election.posts" :key="post.id"
-                      class="flex items-center justify-between text-sm"
-                    >
+                    <li v-for="post in election.posts" :key="post.id" class="flex items-center justify-between text-sm">
                       <span class="text-slate-700">{{ post.name }}</span>
                       <span class="text-xs text-slate-400">
                         {{ post.is_national_wide ? 'National' : post.state_name || 'Regional' }}
@@ -87,7 +134,7 @@
                   </ul>
                 </div>
 
-                <!-- Vote action -->
+                <!-- Vote Action -->
                 <div class="pt-1">
                   <a v-if="voterStatus(election.id) === 'eligible'"
                     :href="route('elections.show', { slug: election.slug })"
@@ -105,44 +152,6 @@
           </div>
         </section>
 
-        <!-- Candidacy Application Form -->
-        <section v-if="activeElections.length > 0">
-          <CandidacyApplicationForm
-            :organisation="organisation"
-            :active-elections="activeElections"
-          />
-        </section>
-
-        <!-- My Applications -->
-        <section v-if="myApplications.length > 0">
-          <h2 class="text-lg font-semibold text-slate-800 mb-4">My Candidacy Applications</h2>
-
-          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-            <table class="w-full text-sm">
-              <thead>
-                <tr class="border-b border-slate-100 bg-slate-50">
-                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Election</th>
-                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Position</th>
-                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Submitted</th>
-                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="app in myApplications" :key="app.id" class="border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors">
-                  <td class="px-5 py-3 text-slate-700 font-medium">{{ app.election_name }}</td>
-                  <td class="px-5 py-3 text-slate-600">{{ app.post_name }}</td>
-                  <td class="px-5 py-3 text-slate-500">{{ app.created_at }}</td>
-                  <td class="px-5 py-3">
-                    <span :class="applicationStatusClass(app.status)" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium">
-                      {{ applicationStatusLabel(app.status) }}
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
       </div>
     </main>
   </ElectionLayout>
@@ -150,11 +159,9 @@
 
 <script setup>
 import { usePage } from '@inertiajs/vue3'
-
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import SectionCard from '@/Components/SectionCard.vue'
 import EmptyState from '@/Components/EmptyState.vue'
-import CandidacyApplicationForm from '@/Pages/Organisations/Partials/CandidacyApplicationForm.vue'
 
 const props = defineProps({
   organisation:     { type: Object, required: true },
@@ -185,18 +192,6 @@ function statusBadgeClass(electionId) {
   if (s === 'eligible') return 'bg-emerald-100 text-emerald-700'
   if (s === 'voted')    return 'bg-blue-100 text-blue-700'
   return 'bg-slate-100 text-slate-600'
-}
-
-function applicationStatusClass(status) {
-  if (status === 'approved') return 'bg-emerald-100 text-emerald-700'
-  if (status === 'rejected') return 'bg-red-100 text-red-700'
-  return 'bg-amber-100 text-amber-700'
-}
-
-function applicationStatusLabel(status) {
-  if (status === 'approved') return 'Approved'
-  if (status === 'rejected') return 'Rejected'
-  return 'Pending Review'
 }
 
 function formatDate(d) {

@@ -46,7 +46,9 @@ Route::prefix('organisations/{organisation:slug}')
         Route::get('/election-commission', [OrganisationController::class, 'electionCommission'])->name('organisations.election-commission');
 
         // ── Candidacy Applications (voter self-service) ────────────────────────────
-        Route::post('/candidacy/apply', [CandidacyApplicationController::class, 'store'])->name('organisations.candidacy.apply');
+        Route::get('/candidacy/apply', [CandidacyApplicationController::class, 'create'])->name('organisations.candidacy.create');
+        Route::post('/candidacy/apply', [CandidacyApplicationController::class, 'store']) ->name('organisations.candidacy.apply');
+        Route::get('/candidacy/list',  [CandidacyApplicationController::class, 'index']) ->name('organisations.candidacy.list');
 
         // ── Election Creation ──────────────────────────────────────────────────────
         Route::get('/elections/create', [ElectionManagementController::class, 'create'])->name('organisations.elections.create');

@@ -10,9 +10,76 @@ use App\Models\UserOrganisationRole;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class CandidacyApplicationController extends Controller
 {
+    public function create(Organisation $organisation): Response
+    {
+        $user = auth()->user();
+
+        $role = UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->value('role');
+        abort_if(! $role, 403);
+
+        $activeElections = Election::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->where('status', 'active')
+            ->with(['posts' => fn ($q) => $q->withoutGlobalScopes()->orderBy('position_order')])
+            ->get()
+            ->map(fn ($e) => [
+                'id'    => $e->id,
+                'name'  => $e->name,
+                'slug'  => $e->slug,
+                'posts' => $e->posts->map(fn ($p) => [
+                    'id'               => $p->id,
+                    'name'             => $p->name,
+                    'is_national_wide' => (bool) $p->is_national_wide,
+                    'state_name'       => $p->state_name,
+                    'required_number'  => $p->required_number,
+                ])->values(),
+            ]);
+
+        return Inertia::render('Organisations/CandidacyCreate', [
+            'organisation'    => $organisation->only('id', 'name', 'slug'),
+            'activeElections' => $activeElections->values(),
+        ]);
+    }
+
+    public function index(Organisation $organisation): Response
+    {
+        $user = auth()->user();
+
+        $role = UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->value('role');
+        abort_if(! $role, 403);
+
+        $applications = CandidacyApplication::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->with(['election:id,name', 'post:id,name'])
+            ->orderByDesc('created_at')
+            ->get()
+            ->map(fn ($a) => [
+                'id'            => $a->id,
+                'election_name' => $a->election?->name,
+                'post_name'     => $a->post?->name,
+                'status'        => $a->status,
+                'status_label'  => $this->getStatusLabel($a->status),
+                'created_at'    => $a->created_at->format('Y-m-d'),
+                'manifesto'     => $a->manifesto,
+                'documents'     => $a->documents,
+            ]);
+
+        return Inertia::render('Organisations/CandidacyList', [
+            'organisation' => $organisation->only('id', 'name', 'slug'),
+            'applications' => $applications->values(),
+        ]);
+    }
+
     public function store(Request $request, Organisation $organisation): RedirectResponse
     {
         $user = auth()->user();
@@ -73,7 +140,19 @@ class CandidacyApplicationController extends Controller
                 'status'          => CandidacyApplication::STATUS_PENDING,
             ]);
 
-            return back()->with('success', 'Your candidacy application has been submitted for review.');
+            return redirect()
+                ->route('organisations.candidacy.list', $organisation->slug)
+                ->with('success', 'Your candidacy application has been submitted for review.');
         });
+    }
+
+    private function getStatusLabel(string $status): string
+    {
+        return match ($status) {
+            'pending'  => 'Under Review',
+            'approved' => 'Approved',
+            'rejected' => 'Not Approved',
+            default    => $status,
+        };
     }
 }
