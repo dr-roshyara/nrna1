@@ -1,9 +1,13 @@
 <template>
   <ElectionLayout>
-    <!-- Flash Message -->
+    <!-- Flash Messages -->
     <div v-if="page.props.flash?.success" class="fixed top-4 right-4 z-50 max-w-sm rounded-xl bg-emerald-600 text-white text-sm font-medium px-5 py-3 shadow-xl flex items-center gap-2">
       <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
       {{ page.props.flash.success }}
+    </div>
+    <div v-if="page.props.flash?.error" class="fixed top-4 right-4 z-50 max-w-sm rounded-xl bg-red-600 text-white text-sm font-medium px-5 py-3 shadow-xl flex items-center gap-2">
+      <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      {{ page.props.flash.error }}
     </div>
 
     <main class="py-10 bg-slate-50 min-h-screen">
@@ -27,7 +31,7 @@
               </div>
               <div>
                 <h1 class="text-xl font-bold text-slate-900">Voter Hub</h1>
-                <p class="text-sm text-slate-500">Your active elections and voting status</p>
+                <p class="text-sm text-slate-500">Your active elections, voting status and candidacy applications</p>
               </div>
             </div>
           </template>
@@ -83,9 +87,8 @@
                   </ul>
                 </div>
 
-                <!-- Actions -->
-                <div class="flex flex-col gap-2 pt-1">
-                  <!-- Vote Now -->
+                <!-- Vote action -->
+                <div class="pt-1">
                   <a v-if="voterStatus(election.id) === 'eligible'"
                     :href="route('elections.show', { slug: election.slug })"
                     class="block w-full text-center bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium py-2 rounded-lg transition-colors"
@@ -96,16 +99,47 @@
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                     Vote submitted
                   </div>
-
-                  <!-- Apply for Candidacy -->
-                  <a :href="route('organisations.elections.posts.index', { organisation: organisation.slug, election: election.slug })"
-                    class="block w-full text-center border border-slate-300 hover:border-primary-400 hover:bg-primary-50 text-slate-700 hover:text-primary-700 text-sm font-medium py-2 rounded-lg transition-colors"
-                  >
-                    View Posts &amp; Apply for Candidacy
-                  </a>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <!-- Candidacy Application Form -->
+        <section v-if="activeElections.length > 0">
+          <CandidacyApplicationForm
+            :organisation="organisation"
+            :active-elections="activeElections"
+          />
+        </section>
+
+        <!-- My Applications -->
+        <section v-if="myApplications.length > 0">
+          <h2 class="text-lg font-semibold text-slate-800 mb-4">My Candidacy Applications</h2>
+
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-slate-100 bg-slate-50">
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Election</th>
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Position</th>
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Submitted</th>
+                  <th class="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="app in myApplications" :key="app.id" class="border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors">
+                  <td class="px-5 py-3 text-slate-700 font-medium">{{ app.election_name }}</td>
+                  <td class="px-5 py-3 text-slate-600">{{ app.post_name }}</td>
+                  <td class="px-5 py-3 text-slate-500">{{ app.created_at }}</td>
+                  <td class="px-5 py-3">
+                    <span :class="applicationStatusClass(app.status)" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium">
+                      {{ applicationStatusLabel(app.status) }}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -115,17 +149,18 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import SectionCard from '@/Components/SectionCard.vue'
 import EmptyState from '@/Components/EmptyState.vue'
+import CandidacyApplicationForm from '@/Pages/Organisations/Partials/CandidacyApplicationForm.vue'
 
 const props = defineProps({
   organisation:     { type: Object, required: true },
   activeElections:  { type: Array,  default: () => [] },
   voterMemberships: { type: Object, default: () => ({}) },
+  myApplications:   { type: Array,  default: () => [] },
 })
 
 const page = usePage()
@@ -140,8 +175,8 @@ function voterStatus(electionId) {
 
 function statusLabel(electionId) {
   const s = voterStatus(electionId)
-  if (s === 'eligible')   return 'Eligible to vote'
-  if (s === 'voted')      return 'Voted'
+  if (s === 'eligible') return 'Eligible to vote'
+  if (s === 'voted')    return 'Voted'
   return 'Not eligible'
 }
 
@@ -150,6 +185,18 @@ function statusBadgeClass(electionId) {
   if (s === 'eligible') return 'bg-emerald-100 text-emerald-700'
   if (s === 'voted')    return 'bg-blue-100 text-blue-700'
   return 'bg-slate-100 text-slate-600'
+}
+
+function applicationStatusClass(status) {
+  if (status === 'approved') return 'bg-emerald-100 text-emerald-700'
+  if (status === 'rejected') return 'bg-red-100 text-red-700'
+  return 'bg-amber-100 text-amber-700'
+}
+
+function applicationStatusLabel(status) {
+  if (status === 'approved') return 'Approved'
+  if (status === 'rejected') return 'Rejected'
+  return 'Pending Review'
 }
 
 function formatDate(d) {

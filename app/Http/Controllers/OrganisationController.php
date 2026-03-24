@@ -373,8 +373,10 @@ class OrganisationController extends Controller
                 ])->values(),
             ]);
 
+        $electionIds = $activeElections->pluck('id');
+
         $voterMemberships = ElectionMembership::where('user_id', $user->id)
-            ->whereIn('election_id', $activeElections->pluck('id'))
+            ->whereIn('election_id', $electionIds)
             ->get()
             ->keyBy('election_id')
             ->map(fn ($m) => [
@@ -383,10 +385,25 @@ class OrganisationController extends Controller
                 'has_voted' => (bool) $m->has_voted,
             ]);
 
+        $myApplications = \App\Models\CandidacyApplication::where('user_id', $user->id)
+            ->whereIn('election_id', $electionIds)
+            ->with(['election:id,name', 'post:id,name'])
+            ->orderByDesc('created_at')
+            ->get()
+            ->map(fn ($a) => [
+                'id'            => $a->id,
+                'election_id'   => $a->election_id,
+                'election_name' => $a->election?->name,
+                'post_name'     => $a->post?->name,
+                'status'        => $a->status,
+                'created_at'    => $a->created_at->format('Y-m-d'),
+            ]);
+
         return Inertia::render('Organisations/VoterHub', [
             'organisation'     => $organisation->only('id', 'name', 'slug'),
             'activeElections'  => $activeElections->values(),
             'voterMemberships' => $voterMemberships,
+            'myApplications'   => $myApplications->values(),
         ]);
     }
 

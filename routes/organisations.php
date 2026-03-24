@@ -18,6 +18,7 @@
  * - No cross-organisation data access is possible
  */
 
+use App\Http\Controllers\CandidacyApplicationController;
 use App\Http\Controllers\Election\CandidacyManagementController;
 use App\Http\Controllers\Election\ElectionManagementController;
 use App\Http\Controllers\Election\PostManagementController;
@@ -43,6 +44,9 @@ Route::prefix('organisations/{organisation:slug}')
         // ── Organisation Hub Pages ─────────────────────────────────────────────────
         Route::get('/voter-hub',           [OrganisationController::class, 'voterHub'])          ->name('organisations.voter-hub');
         Route::get('/election-commission', [OrganisationController::class, 'electionCommission'])->name('organisations.election-commission');
+
+        // ── Candidacy Applications (voter self-service) ────────────────────────────
+        Route::post('/candidacy/apply', [CandidacyApplicationController::class, 'store'])->name('organisations.candidacy.apply');
 
         // ── Election Creation ──────────────────────────────────────────────────────
         Route::get('/elections/create', [ElectionManagementController::class, 'create'])->name('organisations.elections.create');
