@@ -174,6 +174,33 @@
           <p v-if="errors.documents" class="field-error-msg mt-1">{{ errors.documents }}</p>
         </div>
 
+        <!-- ── Section 5: Terms & Conditions ── -->
+        <div class="form-section terms-section">
+          <div class="section-label">
+            <span class="section-number">05</span>
+            <span class="section-title">Declaration</span>
+          </div>
+
+          <label class="terms-label" :class="{ 'terms-error': termsError }">
+            <input
+              type="checkbox"
+              v-model="agreedToTerms"
+              class="terms-checkbox"
+              @change="termsError = false"
+            />
+            <span class="terms-text">
+              I confirm that the information provided is accurate and complete. I agree to the
+              <strong>terms and conditions of this election</strong>, including the eligibility
+              requirements, code of conduct, and the authority of the election commission to
+              review and approve or reject candidacy applications.
+            </span>
+          </label>
+          <p v-if="termsError" class="field-error-msg mt-2">
+            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            You must agree to the terms and conditions before submitting.
+          </p>
+        </div>
+
         <!-- ── Submit ── -->
         <div class="form-footer">
           <p class="form-note">
@@ -219,6 +246,8 @@ const fileSizeErrors = ref([])
 const isDragging     = ref(false)
 const isSubmitting   = ref(false)
 const fileInput      = ref(null)
+const agreedToTerms  = ref(false)
+const termsError     = ref(false)
 
 // ── Computed ───────────────────────────────────────────────────────────────
 const errors = computed(() => page.props.errors ?? {})
@@ -266,6 +295,10 @@ function formatSize(bytes) {
 
 // ── Submit ─────────────────────────────────────────────────────────────────
 function submit() {
+  if (!agreedToTerms.value) {
+    termsError.value = true
+    return
+  }
   isSubmitting.value = true
 
   const data = new FormData()
@@ -285,6 +318,8 @@ function submit() {
         form.value = { election_id: '', post_id: '', proposer_name: '', supporter_name: '', manifesto: '' }
         selectedFiles.value = []
         fileSizeErrors.value = []
+        agreedToTerms.value = false
+        termsError.value = false
       },
       onFinish: () => { isSubmitting.value = false },
     }
@@ -540,6 +575,32 @@ function submit() {
   transition: color 0.15s;
 }
 .add-more-btn:hover { color: #d97706; }
+
+/* ── Terms ── */
+.terms-section { background: #fffbeb; border-bottom: 1px solid #fde68a; }
+.terms-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+.terms-label.terms-error .terms-text { color: #b45309; }
+.terms-checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  accent-color: #1e293b;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+.terms-text {
+  font-size: 0.8125rem;
+  color: #475569;
+  line-height: 1.6;
+}
+.terms-text strong { color: #0f172a; font-weight: 600; }
 
 /* ── Footer ── */
 .form-footer {

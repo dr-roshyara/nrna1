@@ -110,14 +110,14 @@ class CandidacyApplicationController extends Controller
             ->where('election_id', $election->id)
             ->firstOrFail();
 
+        // One application per election (not just per post)
         $existing = CandidacyApplication::where('user_id', $user->id)
             ->where('election_id', $election->id)
-            ->where('post_id', $validated['post_id'])
             ->whereIn('status', ['pending', 'approved'])
             ->exists();
 
         if ($existing) {
-            return back()->with('error', 'You have already applied for this position.');
+            return back()->with('error', 'You have already submitted an application for this election. Only one application per election is allowed.');
         }
 
         return DB::transaction(function () use ($user, $organisation, $election, $validated, $request) {

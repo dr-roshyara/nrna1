@@ -100,7 +100,7 @@ class CandidacyApplicationTest extends TestCase
              ->assertSessionHasErrors('proposer_name');
     }
 
-    public function test_cannot_apply_twice_for_same_post(): void
+    public function test_cannot_apply_twice_for_same_election(): void
     {
         CandidacyApplication::create([
             'user_id'         => $this->member->id,
@@ -116,6 +116,31 @@ class CandidacyApplicationTest extends TestCase
              ->post(route('organisations.candidacy.apply', $this->org->slug), [
                  'election_id'    => $this->election->id,
                  'post_id'        => $this->post->id,
+                 'supporter_name' => 'Another Supporter',
+                 'proposer_name'  => 'Another Proposer',
+             ])
+             ->assertSessionHas('error');
+    }
+
+    public function test_cannot_apply_for_different_post_in_same_election(): void
+    {
+        $secondPost = Post::factory()->forElection($this->election)->create();
+
+        CandidacyApplication::create([
+            'user_id'         => $this->member->id,
+            'organisation_id' => $this->org->id,
+            'election_id'     => $this->election->id,
+            'post_id'         => $this->post->id,
+            'supporter_name'  => 'John Supporter',
+            'proposer_name'   => 'Jane Proposer',
+            'status'          => 'pending',
+        ]);
+
+        // Attempt to apply for a DIFFERENT post in the same election — must be blocked
+        $this->actingAs($this->member)
+             ->post(route('organisations.candidacy.apply', $this->org->slug), [
+                 'election_id'    => $this->election->id,
+                 'post_id'        => $secondPost->id,
                  'supporter_name' => 'Another Supporter',
                  'proposer_name'  => 'Another Proposer',
              ])
