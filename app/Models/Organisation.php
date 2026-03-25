@@ -52,6 +52,23 @@ class Organisation extends Model
         return $this->hasMany(Election::class);
     }
 
+    /**
+     * Resolve {election:slug} bindings nested under {organisation:slug} without
+     * the BelongsToTenant global scope, which requires session context that is
+     * only set later (by ensure.organisation middleware, after SubstituteBindings).
+     * Controllers must still validate organisation_id ownership explicitly.
+     */
+    public function resolveChildRouteBinding($childType, $value, $field = null)
+    {
+        if (strtolower($childType) === 'election') {
+            return Election::withoutGlobalScopes()
+                ->where('slug', $value)
+                ->first();
+        }
+
+        return parent::resolveChildRouteBinding($childType, $value, $field);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class, 'organisation_id', 'id')

@@ -30,6 +30,23 @@ class Election extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    /**
+     * Resolve route binding without global scope so the election can be found
+     * before session context is set by ensure.organisation middleware.
+     * Controller methods validate organisation ownership explicitly.
+     */
+    public function resolveRouteBinding($value, $field = null): ?self
+    {
+        return static::withoutGlobalScopes()
+            ->where($field ?? $this->getRouteKeyName(), $value)
+            ->first();
+    }
+
     /**
      * The attributes that are mass assignable.
      *
