@@ -79,24 +79,25 @@ class VoteController extends Controller
      */
     private function getElection(Request $request): Election
     {
+        $election  = null;
+        $voterSlug = $request->attributes->get('voter_slug');
+
         // First, check if middleware set an election
         if ($request->attributes->has('election')) {
-            return $request->attributes->get('election');
+            $election = $request->attributes->get('election');
         }
 
         // Second, check if voter slug has election_id
-        $voterSlug = $request->attributes->get('voter_slug');
-        if ($voterSlug && $voterSlug->election_id) {
+        if (!$election && $voterSlug && $voterSlug->election_id) {
             // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
             // to ALL users regardless of organisation context (organisation_id=NULL)
             $election = Election::withoutGlobalScopes()->find($voterSlug->election_id);
-            if ($election) {
-                return $election;
-            }
         }
 
         // Third, default to first real election
-        $election = Election::where('type', 'real')->first();
+        if (!$election) {
+            $election = Election::where('type', 'real')->first();
+        }
 
         // If no real election found, try any active election (including demo)
         if (!$election) {
@@ -104,6 +105,23 @@ class VoteController extends Controller
                 ->where('is_active', true)
                 ->orderBy('id')
                 ->first();
+        }
+
+        // Organisation mismatch check: voter slug must belong to the same org as election
+        if ($election && $voterSlug) {
+            $orgsMatch       = $election->organisation_id === $voterSlug->organisation_id;
+            $isPlatformElect = $election->organisation_id == 1;
+            $isPlatformSlug  = $voterSlug->organisation_id == 1;
+
+            if (!$orgsMatch && !$isPlatformElect && !$isPlatformSlug) {
+                Log::error('Organisation mismatch in getElection()', [
+                    'election_org' => $election->organisation_id,
+                    'slug_org'     => $voterSlug->organisation_id,
+                    'election_id'  => $election->id,
+                    'slug_id'      => $voterSlug->id,
+                ]);
+                throw new \Exception('Organisation mismatch detected');
+            }
         }
 
         return $election;
@@ -139,8 +157,12 @@ class VoteController extends Controller
             return true;
         }
 
-        // REAL: Must check can_vote_now flag (timing restrictions)
-        return $user->can_vote_now == 1;
+        // REAL: Check if user has a verified code (can_vote_now=1) for this election
+        return Code::withoutGlobalScopes()
+            ->where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->where('can_vote_now', 1)
+            ->exists();
     }
 
     /**
@@ -234,6 +256,26 @@ public function create(Request $request)
             ->with('error', 'Please verify your code first.');
     }
 
+    // Set session organisation context for tenant-scoped queries (candidates, posts)
+    if ($election->organisation_id) {
+        session(['current_organisation_id' => $election->organisation_id]);
+    }
+
+    // Store election_id in session so non-slug methods (verify_to_show, etc.) can scope code queries
+    session(['current_election_id' => $election->id]);
+
+    // Check if user has agreed to voting terms (Step 2 guard)
+    if ($election->type === 'real' && !$code->has_agreed_to_vote) {
+        Log::warning('User accessing vote form without accepting agreement', [
+            'user_id'     => $auth_user->id,
+            'election_id' => $election->id,
+        ]);
+        $route  = $voterSlug ? 'slug.code.agreement' : 'code.agreement';
+        $params = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
+        return redirect()->route($route, $params)
+            ->with('error', 'Please accept the voting agreement first.');
+    }
+
     // IP validation - single line replacement
     $ipValidation = validateVotingIpWithResponse();
     if ($ipValidation instanceof \Inertia\Response) {
@@ -279,37 +321,38 @@ public function create(Request $request)
                 ];
             })->values();
     } else {
-        // Real election: fetch real candidates with user join
-        $national_posts = QueryBuilder::for(Post::with(['candidates' => function($query) {
-            $query->join('users', 'users.user_id', '=', 'candidacies.user_id')
-                  ->select('candidacies.*', 'users.name as user_name');
-        }]))
-        ->where('is_national_wide', 1)
-        ->orderBy('post_id')
-        ->get()
-        ->map(function ($post) {
-            return [
-                'post_id' => $post->post_id,
-                'name' => $post->name,
-                'nepali_name' => $post->nepali_name,
-                'required_number' => $post->required_number,
-                'candidates' => $post->candidates->map(function ($c) {
-                    return [
-                        'candidacy_id' => $c->candidacy_id,
-                        'user' => [
-                            'id' => $c->user_id,
-                            'name' => $c->user_name, // Now using the joined user name
-                        ],
-                        'post_id' => $c->post_id,
-                        'image_path_1' => $c->image_path_1,
-                        'candidacy_name' => $c->candidacy_name,
-                        'proposer_name' => $c->proposer_name,
-                        'supporter_name' => $c->supporter_name,
-                        'position_order' => $c->position_order,
-                    ];
-                })->values(),
-            ];
-        })->values();
+        // Real election: fetch real candidates using model relationships
+        $national_posts = Post::withoutGlobalScopes()
+            ->with(['candidacies' => function ($query) {
+                $query->withoutGlobalScopes()->with('user')->orderBy('position_order');
+            }])
+            ->where('election_id', $election->id)
+            ->where('is_national_wide', 1)
+            ->orderBy('position_order')
+            ->get()
+            ->map(function ($post) {
+                return [
+                    'post_id' => $post->id,
+                    'name' => $post->name,
+                    'nepali_name' => $post->nepali_name,
+                    'required_number' => $post->required_number,
+                    'candidates' => $post->candidacies->map(function ($c) {
+                        return [
+                            'candidacy_id' => $c->id,
+                            'user' => [
+                                'id' => $c->user_id,
+                                'name' => $c->user?->name ?? $c->name ?? 'Candidate',
+                            ],
+                            'post_id' => $c->post_id,
+                            'image_path_1' => $c->image_path_1,
+                            'candidacy_name' => $c->name,
+                            'proposer_name' => null,
+                            'supporter_name' => null,
+                            'position_order' => $c->position_order,
+                        ];
+                    })->values(),
+                ];
+            })->values();
     }
 
     // Similarly update the regional posts query
@@ -353,38 +396,39 @@ public function create(Request $request)
                     ];
                 })->values();
         } else {
-            // Real election: fetch real candidates with user join
-            $regional_posts = QueryBuilder::for(Post::with(['candidates' => function($query) {
-                $query->join('users', 'users.id', '=', 'candidacies.user_id')
-                      ->select('candidacies.*', 'users.name as user_name');
-            }]))
-            ->where('is_national_wide', 0)
-            ->where('state_name', trim($auth_user->region))
-            ->orderBy('post_id')
-            ->get()
-            ->map(function ($post) {
-                return [
-                    'post_id' => $post->post_id,
-                    'name' => $post->name,
-                    'nepali_name' => $post->nepali_name,
-                    'required_number' => $post->required_number,
-                    'candidates' => $post->candidates->map(function ($c) {
-                        return [
-                            'candidacy_id' => $c->candidacy_id,
-                            'user' => [
-                                'id' => $c->user_id,
-                                'name' => $c->user_name,
-                            ],
-                            'post_id' => $c->post_id,
-                            'image_path_1' => $c->image_path_1,
-                            'candidacy_name' => $c->candidacy_name,
-                            'proposer_name' => $c->proposer_name,
-                            'supporter_name' => $c->supporter_name,
-                            'position_order' => $c->position_order,
-                        ];
-                    })->values(),
-                ];
-            })->values();
+            // Real election: fetch real candidates using model relationships
+            $regional_posts = Post::withoutGlobalScopes()
+                ->with(['candidacies' => function ($query) {
+                    $query->withoutGlobalScopes()->with('user')->orderBy('position_order');
+                }])
+                ->where('election_id', $election->id)
+                ->where('is_national_wide', 0)
+                ->where('state_name', trim($auth_user->region))
+                ->orderBy('position_order')
+                ->get()
+                ->map(function ($post) {
+                    return [
+                        'post_id' => $post->id,
+                        'name' => $post->name,
+                        'nepali_name' => $post->nepali_name,
+                        'required_number' => $post->required_number,
+                        'candidates' => $post->candidacies->map(function ($c) {
+                            return [
+                                'candidacy_id' => $c->id,
+                                'user' => [
+                                    'id' => $c->user_id,
+                                    'name' => $c->user?->name ?? $c->name ?? 'Candidate',
+                                ],
+                                'post_id' => $c->post_id,
+                                'image_path_1' => $c->image_path_1,
+                                'candidacy_name' => $c->name,
+                                'proposer_name' => null,
+                                'supporter_name' => null,
+                                'position_order' => $c->position_order,
+                            ];
+                        })->values(),
+                    ];
+                })->values();
         }
     }
 
@@ -459,14 +503,27 @@ public function first_submission(Request $request)
             'code_id' => $code ? $code->id : null
         ]);
     } else {
-        // REAL ELECTIONS: Get Code through relationship
-        $code = $auth_user->code;
+        // REAL ELECTIONS: Get Code scoped to this election (not via relationship)
+        $code = Code::withoutGlobalScopes()
+            ->where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
 
         \Log::info('📋 Fetching Code for real election', [
             'user_id' => $auth_user->id,
+            'election_id' => $election->id,
             'code_found' => $code !== null,
             'code_id' => $code ? $code->id : null
         ]);
+    }
+
+    // ⛔ REAL ELECTIONS: Code must exist and be scoped to this election
+    if ($election->type === 'real' && !$code) {
+        \Log::warning('⛔ Real election - no code found for election', [
+            'user_id'     => $auth_user->id,
+            'election_id' => $election->id,
+        ]);
+        return back()->withErrors(['code' => 'No verification code found for this election. Please request a code first.']);
     }
 
     // ⛔ REAL ELECTIONS: Block voting if already voted
@@ -645,8 +702,11 @@ public function second_submission(Request $request)
                 ->withErrors(['auth' => 'Authentication required. Please log in again.']);
         }
 
-        $code = $auth_user->code;
-        
+        $code = Code::withoutGlobalScopes()
+            ->where('user_id', $auth_user->id)
+            ->where('election_id', $election->id)
+            ->first();
+
         // Check if user has a code record
         if (!$code) {
             Log::error('Second submission attempted without code record', ['user_id' => $auth_user->id]);
@@ -1345,10 +1405,20 @@ private function has_valid_selections($selections)
             return back()->withErrors(['error' => 'Authentication required.'])->withInput();
         }
 
-        $code = $auth_user->code;
+        // REAL ELECTIONS: Get Code scoped to this election (not via relationship)
+        if ($election->type === 'real') {
+            $code = Code::withoutGlobalScopes()
+                ->where('user_id', $auth_user->id)
+                ->where('election_id', $election->id)
+                ->first();
+        } else {
+            $code = DemoCode::where('user_id', $auth_user->id)
+                ->where('election_id', $election->id)
+                ->first();
+        }
 
         // ⛔ REAL ELECTIONS: Block final vote submission if already voted
-        if ($election->type === 'real' && $code->has_voted) {
+        if ($election->type === 'real' && $code && $code->has_voted) {
             DB::rollBack();
             \Log::warning('⛔ Real election - blocking final vote submission for voter who already voted', [
                 'user_id' => $auth_user->id,
@@ -1481,6 +1551,14 @@ private function has_valid_selections($selections)
             // 8. Mark user as voted and update code status
                 $this->markUserAsVoted($code, $hashed_key);
 
+                // ✅ Mark voter slug as voted (prevents re-voting via same slug)
+                $voterSlug = $request->attributes->get('voter_slug');
+                if ($voterSlug) {
+                    $voterSlug->has_voted = true;
+                    $voterSlug->status = 'voted';
+                    $voterSlug->save();
+                }
+
                 // 9. Send verification notification (only if user has valid email)
                 if ($auth_user->email && filter_var($auth_user->email, FILTER_VALIDATE_EMAIL)) {
                     try {
@@ -1558,16 +1636,20 @@ private function has_valid_selections($selections)
  function markUserAsVoted($code, string $hashed_key )
 {
     // Accepts both Code and DemoCode models
-    $code->update([
+    $updateData = [
         'has_voted' => true,
         'can_vote_now' => false,
         'is_code_to_save_vote_usable' => false,
         'code_to_save_vote_used_at' => now(),
-        'vote_completed_at'=>now()
+        'vote_completed_at' => now(),
+    ];
 
-    ]);
-    $code->save();
-    // dd($code);
+    // SIMPLE MODE: Mark Code1 as fully used (second use completed)
+    if (config('voting.two_codes_system') != 1) {
+        $updateData['is_code_to_open_voting_form_usable'] = 0;
+    }
+
+    $code->update($updateData);
 }
 
 /**
@@ -1601,7 +1683,7 @@ protected function saveCandidateResults(int $vote_id, array $selection)
         Result::create([
             'vote_id' => $vote_id,
             'post_id' => $selection['post_id'],
-            'candidate_id' => $candidate['candidacy_id']  // candidacy_id from input maps to candidate_id in results table
+            'candidacy_id' => $candidate['candidacy_id']
         ]);
     }
 }
@@ -1740,24 +1822,65 @@ public function verifyVotingCode(string $submitted_code, Code $code): bool
 }
 
 
-     public function verify_to_show(){
-        //
-        //   $vote =$auth_user->vote();
-        $auth_user            = auth()->user();
-        $code                 = $auth_user->code;        
-        $this->user_id        =$auth_user->id;
-        $has_voted            =false;
-        if($code!=null) {
-            $has_voted            = $code->has_voted;
-        }       
-        
-      //   dd($selected_candidates);
-      return Inertia::render('Vote/VoteShowVerify', [
-         
-              'user_name'=>$auth_user->name,
-              'has_voted'=>$has_voted,                             
-       ]);    
+     public function verify_to_show(Request $request){
+        $auth_user = auth()->user();
+        $voterSlug = request()->attributes->get('voter_slug');
 
+        $vote_data             = null;
+        $verification_code     = null;
+        $verification_failed   = false;
+        $submitted_code        = trim($request->input('voting_code', ''));
+
+        // User submits their emailed verification code: "{private_key}_{vote_uuid}"
+        // Verification uses receipt_hash on the Vote — Code model is NOT consulted.
+        // This preserves vote anonymity: no link between Code (has user_id) and Vote.
+        if ($submitted_code !== '') {
+            $parts       = explode('_', $submitted_code, 2);
+            $private_key = $parts[0] ?? null;
+            $vote_id     = $parts[1] ?? null;
+
+            if ($private_key && $vote_id) {
+                $vote = \App\Models\Vote::withoutGlobalScopes()->find($vote_id);
+
+                if ($vote && $vote->receipt_hash) {
+                    $expected_hash = hash('sha256', $private_key . $vote->id . config('app.key'));
+
+                    if (hash_equals($expected_hash, $vote->receipt_hash)) {
+                        $vote_data         = $vote;
+                        $verification_code = $submitted_code;
+
+                        \Log::info('✅ Real vote verified via receipt_hash', [
+                            'vote_id'     => $vote->id,
+                            'election_id' => $vote->election_id,
+                        ]);
+                    } else {
+                        $verification_failed = true;
+                        \Log::warning('⚠️ receipt_hash mismatch in verify_to_show', [
+                            'vote_id' => $vote_id,
+                        ]);
+                    }
+                } else {
+                    $verification_failed = true;
+                    \Log::warning('⚠️ Vote not found or missing receipt_hash', [
+                        'vote_id' => $vote_id,
+                    ]);
+                }
+            } else {
+                $verification_failed = true;
+            }
+        }
+
+        return Inertia::render('Vote/VoteShowVerify', [
+            'user_name'             => $auth_user->name,
+            'has_voted'             => true,
+            'is_demo'               => false,
+            'verification_code'     => $verification_code,
+            'vote_data'             => $vote_data,
+            'verification_failed'   => $verification_failed,
+            'slug'                  => $voterSlug?->slug,
+            'useSlugPath'           => $voterSlug !== null,
+            'default_election_type' => 'real',
+        ]);
      }
     
     /**
@@ -1878,7 +2001,9 @@ public function verify(Request $request)
             return $redirect;
         }
 
-        $code = $auth_user->code;
+        $code = ($election->type === 'demo')
+            ? DemoCode::where('user_id', $auth_user->id)->where('election_id', $election->id)->first()
+            : Code::withoutGlobalScopes()->where('user_id', $auth_user->id)->where('election_id', $election->id)->first();
 
         Log::info('Vote verification page accessed', [
             'user_id' => $auth_user->id,
@@ -1906,7 +2031,7 @@ public function verify(Request $request)
        
 
         // Perform comprehensive post-submission checks
-        $_error = $this->vote_post_check($auth_user, $code, $vote_data);
+        $_error = $this->vote_post_check($auth_user, $code, $vote_data, $voterSlug);
         if ($_error["error_message"] != "") {
             Log::error('Vote verification post-check failed', [
                 'user_id' => $auth_user->id,
@@ -1943,7 +2068,19 @@ public function verify(Request $request)
         }
 
         if ($_message["return_to"] != "") {
-            return redirect()->route($_message["return_to"]);
+            // Map bare route names to slug-prefixed equivalents when a slug is present
+            $returnTo = $_message["return_to"];
+            if ($voterSlug) {
+                $slugRouteMap = [
+                    'code.create'      => 'slug.code.create',
+                    'vote.create'      => 'slug.vote.create',
+                    'vote.verify'      => 'slug.vote.verify',
+                    'demo-vote.create' => 'slug.vote.create',
+                ];
+                $returnTo = $slugRouteMap[$returnTo] ?? $returnTo;
+                return redirect()->route($returnTo, ['vslug' => $voterSlug->slug]);
+            }
+            return redirect()->route($returnTo);
         }
 
         // Process and structure vote data for clean display
@@ -2207,8 +2344,11 @@ public function verifyVoteSubmit(): array
     $request = request();
 
     $auth_user = auth()->user();
-    $code      =$auth_user->code;
-    $in_code  = $code->code_to_open_voting_form;
+    $electionId = session('current_election_id');
+    $code = $electionId
+        ? Code::withoutGlobalScopes()->where('user_id', $auth_user->id)->where('election_id', $electionId)->first()
+        : Code::withoutGlobalScopes()->where('user_id', $auth_user->id)->latest()->first();
+    $in_code  = $code ? $code->code_to_open_voting_form : null;
   
     $submittedCode = trim($request->input('voting_code'));
 
@@ -2296,18 +2436,14 @@ public function verifyVoteSubmit(): array
         $vote->save();   // Save the vote first (sets cast_at automatically)
         $this->out_code = $vote->getKey();  // Get the vote's primary key
 
-        // Generate cryptographic vote_hash for verification
-        // Uses SHA256(code.user_id + election_id + code1 + cast_at_timestamp)
-        // This allows voter to verify their vote WITHOUT exposing how they voted
-        if ($code && $auth_user && $vote->cast_at) {
-            $vote->vote_hash = hash('sha256',
-                $code->user_id .
-                $election->id .
-                $code->code_to_open_voting_form .
-                $vote->cast_at->timestamp
-            );
-            $vote->save(); // Update with vote_hash
-        }     
+        // Generate cryptographic receipt_hash for voter verification
+        // Uses SHA256(private_key + vote.id + app.key) — verifiable without exposing selections
+        if (!$private_key) {
+            // Deterministic fallback when private_key not supplied
+            $private_key = hash('sha256', ($code ? $code->id : '') . $vote->id . config('app.key'));
+        }
+        $vote->receipt_hash = hash('sha256', $private_key . $vote->id . config('app.key'));
+        $vote->save(); // Update with receipt_hash     
         //save the $this->vote_id_for_voter  it to voter ;
         {
          /**
@@ -2356,7 +2492,7 @@ public function verifyVoteSubmit(): array
                           $result->vote_id       =$vote->id;
                           $result->election_id   =$election->id;
                           $result->post_id       =$post_id;
-                          $result->candidate_id  =$candidates[$j]['candidacy_id'];
+                          $result->candidacy_id  =$candidates[$j]['candidacy_id'];
 
                           // PHASE 3: Explicitly set organisation_id based on election type
                           if ($election->type === 'real') {
@@ -2421,8 +2557,11 @@ public function verifyVoteSubmit(): array
 public function verify_final_vote(Request $request)
 {
     $this->out_code = trim($request['voting_code']);
-    $auth_user = auth()->user();
-    $code = $auth_user->code;
+    $auth_user  = auth()->user();
+    $electionId = session('current_election_id');
+    $code = $electionId
+        ? Code::withoutGlobalScopes()->where('user_id', $auth_user->id)->where('election_id', $electionId)->first()
+        : Code::withoutGlobalScopes()->where('user_id', $auth_user->id)->latest()->first();
 
     $validator = $this->verify_code_to_check_vote($code);
     if ($validator->fails()) {
@@ -2540,11 +2679,17 @@ public function verify_final_vote(Request $request)
 
             return   $return_to ="code.create";
         }
-        //if code 1 is still usable and you havent used it, then use it first.
-        //dd($code);
-        if($code->is_code_to_open_voting_form_usable ){
-
-            return   $return_to ="code.create";
+        // Mode-aware check: has the voter actually used the code to open the form?
+        // STRICT mode: is_code_to_open_voting_form_usable must be 0 (consumed after first use)
+        // SIMPLE mode: code stays usable=1 for second use; check code_to_open_voting_form_used_at instead
+        if (config('voting.two_codes_system', 0) == 1) {
+            if ($code->is_code_to_open_voting_form_usable) {
+                return $return_to = "code.create";
+            }
+        } else {
+            if (!$code->code_to_open_voting_form_used_at) {
+                return $return_to = "code.create";
+            }
         }
             /***
              * 
@@ -2574,7 +2719,7 @@ public function verify_final_vote(Request $request)
      * Check after submitting the code 
      *  
      */
- public function vote_post_check($auth_user, &$code, $vote)
+ public function vote_post_check($auth_user, &$code, $vote, $voterSlug = null)
 {
     $_error = [
         "return_to" => "",
@@ -2591,15 +2736,42 @@ public function verify_final_vote(Request $request)
         return $_error;
     }
 
-    // 2. IP address check
-    $clientIP = \Request::getClientIp(true);
+    // 2. IP address check — scoped to THIS election to prevent cross-election false positives
+    $clientIP         = \Request::getClientIp(true);
     $max_use_clientIP = config('app.max_use_clientIP');
-    $_message = check_ip_address($clientIP, $max_use_clientIP);
+    $electionId       = $code ? $code->election_id : null;
 
-    if (!empty($_message['error_message'])) {
-        // Just return the error, let the controller handle the redirect/flash
-        $_error['error_message'] = $_message['error_message'];
-        return $_error;
+    if ($electionId) {
+        $codeModel   = isset($election) && $election->type === 'demo'
+            ? \App\Models\DemoCode::withoutGlobalScopes()
+            : \App\Models\Code::withoutGlobalScopes();
+
+        $votesFromIP = $codeModel
+            ->where('client_ip', $clientIP)
+            ->where('election_id', $electionId)
+            ->where('has_voted', 1)
+            ->count();
+
+        if ($votesFromIP >= $max_use_clientIP) {
+            Log::warning('Security: IP rate limit exceeded (election-scoped)', [
+                'ip'          => $clientIP,
+                'election_id' => $electionId,
+                'count'       => $votesFromIP,
+            ]);
+            $_error['error_message'] = view('components.error_message', [
+                'message'   => 'Too many votes from this IP address in this election.',
+                'link'      => route('dashboard'),
+                'link_text' => 'Go to Dashboard',
+            ])->render();
+            return $_error;
+        }
+    } else {
+        // Fallback: global check when election_id not available
+        $_message = check_ip_address($clientIP, $max_use_clientIP);
+        if (!empty($_message['error_message'])) {
+            $_error['error_message'] = $_message['error_message'];
+            return $_error;
+        }
     }
 
     // // 3. Code is not usable
@@ -2622,9 +2794,12 @@ public function verify_final_vote(Request $request)
 
     // 5. Vote is missing (should never happen if code is valid and hasn't voted)
     if ($vote === null) {
+        $restartLink = $voterSlug
+            ? route('slug.code.create', ['vslug' => $voterSlug->slug])
+            : route('vote.create');
         $_error['error_message'] = view('components.error_message', [
             'message' => 'We could not find your vote. Please contact the administrator. You can also start to vote again.',
-            'link' => route('code.create'),
+            'link' => $restartLink,
             'link_text' => 'Click here to vote',
         ])->render();
         return $_error;
@@ -2639,32 +2814,44 @@ public function verify_final_vote(Request $request)
         $_message['error_message'] = "";
         $_message['return_to']     ="";
         $_message['totalDuration'] =0;
-      
+
+        $isStrictMode           = config('voting.two_codes_system', 0) == 1;
         $code_expires_in        = $code->voting_time_in_minutes;
         $current                = Carbon::now();
-        $code_to_open_voting_form_used_at          = $code->code_to_open_voting_form_used_at;       
+        $code_to_open_voting_form_used_at = $code->code_to_open_voting_form_used_at;
         $totalDuration          = \Carbon\Carbon::parse($code_to_open_voting_form_used_at)->diffInMinutes($current);
-        $_message['totalDuration']=$totalDuration;
-        if($totalDuration> $code_expires_in| $code->is_code_to_open_voting_form_usable){
-            $code->is_code_to_open_voting_form_usable      =0;
-            $code-> has_code2_sent      =0;
-            $code->vote_submitted       =0;
+        $_message['totalDuration'] = $totalDuration;
+
+        // Voting window expired — redirect to get new code
+        if ($totalDuration > $code_expires_in || $code->is_code_to_open_voting_form_usable) {
+            $code->is_code_to_open_voting_form_usable = 0;
+            $code->has_code2_sent   = 0;
+            $code->vote_submitted   = 0;
             $code->save();
-            $return_to                  = 'code.create';
-            $_message["return_to"]      = $return_to ;
-            $_message["totalDuration"]  = $totalDuration ;
+            $_message["return_to"]     = 'code.create';
+            $_message["totalDuration"] = $totalDuration;
             return $_message;
         }
-        if(!$code->vote_submitted){
-            $code->is_code_to_open_voting_form_usable      =0;
-            $code->is_code_to_save_vote_usable      =0;
-            $code-> has_code2_sent      =0;
+
+        // Vote not yet submitted — return to voting form
+        if (!$code->vote_submitted) {
+            $code->is_code_to_open_voting_form_usable = 0;
+            $code->is_code_to_save_vote_usable        = 0;
+            $code->has_code2_sent = 0;
             $code->save();
-            $_message["return_to"]      ='vote.create';
-            $_message["totalDuration"]  = $totalDuration ;
+            $_message["return_to"]     = 'vote.create';
+            $_message["totalDuration"] = $totalDuration;
             return $_message;
         }
-      return $_message;
+
+        // STRICT MODE: Code2 must have been used (code_to_save_vote_used_at not null)
+        if ($isStrictMode && empty($code->code_to_save_vote_used_at)) {
+            $_message["return_to"]     = 'vote.create';
+            $_message["totalDuration"] = $totalDuration;
+            return $_message;
+        }
+
+        return $_message;
     }
 
     /**
@@ -2696,40 +2883,24 @@ public function verify_final_vote(Request $request)
         }
         $isDemoElection = $election && $election->type === 'demo';
 
-        // 1. User must be a registered voter (skip for demo elections)
-        if (!$isDemoElection && $auth_user->is_voter != 1) {
-            $errors['is_voter'] = 'You are not registered as a voter.';
-        }
-
-        // 2. Voting window must be open for this user
-        if ($code->can_vote_now != 1) {
+        // 1. Voting window must be open for this user (code-based check)
+        if (!$code || $code->can_vote_now != 1) {
             $errors['can_vote_now'] = 'Voting is not open for you at this time.';
         }
 
-        // 3. User must be eligible to vote (skip for demo elections)
-        if (!$isDemoElection && $auth_user->can_vote != 1) {
-            $errors['can_vote'] = 'You are not eligible to vote.';
-        }
-
-        // 4. User must have used Code-1 to reach this step (check Code model)
-        $code = $auth_user->code;
-        if (!$code || $code->can_vote_now != 1) {
-            $errors['has_used_code1'] = 'You have not used your first voting code yet.';
-        }
-
-        // 5. User must NOT have used Code-2 (should be 0) - check Code model
+        // 2. User must NOT have used Code-2 (should be 0) - check Code model
         if ($code && $code->has_used_code2 != 0) {
             $errors['has_used_code2'] = 'You have already confirmed your vote with Code-2.';
         }
 
-        // 6. User must NOT have already voted
-        if ($auth_user->has_voted == 1) {
-            // Instead of redirecting back, return the 'vote.verify_to_show' route for already-voted users
-            return 'vote.verify_to_show';
+        // 3. User must NOT have already voted (check Code model, not User)
+        if ($code && $code->has_voted) {
+            return redirect()->route('dashboard')
+                ->with('error', 'You have already voted in this election.');
         }
 
         // 7. Ensure the submitted user ID matches the authenticated user
-        if ((int)$user_id !== (int)$auth_user->id) {
+        if ((string)$user_id !== (string)$auth_user->id) {
             $errors['user_id'] = 'Login user does not match form user.';
         }
 
@@ -2835,7 +3006,7 @@ public function submit_code_to_view_vote(Request $request)
                     ->withInput();
             }
 
-            $vote_record = $this->retrieve_vote_record($vote_data['vote_id'], $submitted_code);
+            $vote_record = $this->retrieve_vote_record($vote_data['vote_id'], $vote_data['private_key']);
             $vote_id = $vote_data['vote_id'];
         }   
         if (!$vote_record['success']) {
@@ -3135,37 +3306,31 @@ private function validate_vote_verification_code($submitted_code, $vote, $auth_u
  */
 private function extract_vote_data_from_code($verification_code)
 {
-    // Check if code contains underscore separator
+    // Format: "{32-hex-private_key}_{vote-uuid}"
+    // private_key is always 32 hex chars, UUID follows after first underscore group
     if (!str_contains($verification_code, '_')) {
-        return [
-            'success' => false,
-            'message' => 'Invalid code format.'
-        ];
+        return ['success' => false, 'message' => 'Invalid code format.'];
     }
 
-    // Extract vote ID from after the underscore
-    $parts = explode('_', $verification_code);
-    
-    if (count($parts) < 2) {
-        return [
-            'success' => false,
-            'message' => 'Invalid code format.'
-        ];
+    // Split on first underscore only — private_key has no underscores (32 hex chars)
+    $parts = explode('_', $verification_code, 2);
+
+    if (count($parts) < 2 || empty($parts[0]) || empty($parts[1])) {
+        return ['success' => false, 'message' => 'Invalid code format.'];
     }
 
-    $vote_id = (int) end($parts);
-    
-    if ($vote_id <= 0) {
-        return [
-            'success' => false,
-            'message' => 'Invalid vote ID in code.'
-        ];
+    $private_key = $parts[0];
+    $vote_id     = $parts[1]; // UUID string
+
+    // Validate UUID format
+    if (!preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i', $vote_id)) {
+        return ['success' => false, 'message' => 'Invalid vote ID format in code.'];
     }
 
     return [
-        'success' => true,
-        'vote_id' => $vote_id,
-        'random_part' => $parts[0]
+        'success'     => true,
+        'vote_id'     => $vote_id,
+        'private_key' => $private_key,
     ];
 }
 
@@ -3177,81 +3342,36 @@ private function extract_vote_data_from_code($verification_code)
  * @param string $voting_code Optional: voting code to search by hash
  * @return array
  */
-private function retrieve_vote_record($vote_id, $voting_code = null)
+/**
+ * Retrieve and verify a real vote record by UUID + receipt_hash.
+ *
+ * @param string $vote_id     UUID of the vote
+ * @param string $private_key 32-hex private key extracted from verification code
+ * @return array
+ */
+private function retrieve_vote_record($vote_id, $private_key = null)
 {
     try {
-        // Try to find by ID first
-        $vote = Vote::find($vote_id);
+        $vote = Vote::withoutGlobalScopes()->find($vote_id);
 
-        if ($vote) {
-            return [
-                'success' => true,
-                'vote' => $vote
-            ];
+        if (!$vote) {
+            return ['success' => false, 'message' => 'Vote record not found.'];
         }
 
-        // Fallback: If vote not found by ID, try searching by voting code hash
-        if ($voting_code) {
-            Log::info('Vote not found by ID, searching by voting code hash', [
-                'vote_id' => $vote_id,
-                'voting_code_length' => strlen($voting_code),
-                'voting_code_first_20_chars' => substr($voting_code, 0, 20)
-            ]);
-
-            // Search all votes where the voting code matches when hashed
-            $allVotes = Vote::all();
-            Log::info('Total votes in database', ['count' => count($allVotes)]);
-
-            $hashMatches = 0;
-            foreach ($allVotes as $candidateVote) {
-                if (!empty($candidateVote->voting_code)) {
-                    // Try to match the hash
-                    try {
-                        if (Hash::check($voting_code, $candidateVote->voting_code)) {
-                            $hashMatches++;
-                            Log::info('Vote found by voting code hash match', [
-                                'vote_id' => $candidateVote->id,
-                                'original_id_requested' => $vote_id,
-                                'voting_code_column_length' => strlen($candidateVote->voting_code)
-                            ]);
-
-                            return [
-                                'success' => true,
-                                'vote' => $candidateVote
-                            ];
-                        }
-                    } catch (\Exception $hashCheckError) {
-                        Log::debug('Hash check failed for vote', [
-                            'vote_id' => $candidateVote->id,
-                            'error' => $hashCheckError->getMessage()
-                        ]);
-                    }
-                }
+        // If private_key supplied, verify receipt_hash for cryptographic proof
+        if ($private_key && $vote->receipt_hash) {
+            $expected = hash('sha256', $private_key . $vote->id . config('app.key'));
+            if (!hash_equals($expected, $vote->receipt_hash)) {
+                Log::warning('receipt_hash mismatch in retrieve_vote_record', ['vote_id' => $vote_id]);
+                return ['success' => false, 'message' => 'Verification code does not match vote record.'];
             }
-
-            Log::warning('No vote found by hash matching', [
-                'vote_id_searched' => $vote_id,
-                'total_votes_checked' => count($allVotes),
-                'hash_matches_found' => $hashMatches,
-                'submitted_code_length' => strlen($voting_code)
-            ]);
         }
 
-        return [
-            'success' => false,
-            'message' => 'Vote record not found in database. Please check your verification code.'
-        ];
+        return ['success' => true, 'vote' => $vote];
 
     } catch (\Exception $e) {
-        Log::error('Failed to retrieve vote record', [
-            'vote_id' => $vote_id,
-            'error' => $e->getMessage()
-        ]);
-
-        return [
-            'success' => false,
-            'message' => 'Database error while retrieving vote.'
-        ];
+        Log::error('Failed to retrieve vote record', ['vote_id' => $vote_id, 'error' => $e->getMessage()]);
+        return ['success' => false, 'message' => 'Database error while retrieving vote.'];
     }
 }
 
@@ -3520,8 +3640,10 @@ private function enrich_selection_data($selection_data)
             
             if ($candidacy_id) {
                 // Load candidacy WITH user relationship
-                $candidacy = Candidacy::with('user')
-                    ->where('candidacy_id', $candidacy_id)
+                // candidacy_id stored in vote JSON is the UUID primary key (id), not a separate column
+                $candidacy = Candidacy::withoutGlobalScopes()
+                    ->with('user')
+                    ->where('id', $candidacy_id)
                     ->first();
                 
                 if ($candidacy) {
@@ -3542,19 +3664,14 @@ private function enrich_selection_data($selection_data)
                         ]
                     ];
                 } else {
-                    // Fallback if candidacy not found in database
+                    // Fallback: use name stored in vote JSON if candidacy not in DB
                     $enriched['candidates'][] = [
-                        'candidacy_id' => $candidacy_id,
-                        'candidacy_name' => 'Candidate ' . str_replace(['_', '-'], ' ', $candidacy_id),
-                        'proposer_name' => 'Unknown',
-                        'supporter_name' => 'Unknown',
-                        'image_path_1' => '',
-                        'user_info' => [
-                            'id' => null,
-                            'name' => 'Unknown',
-                            'user_id' => 'N/A',
-                            'region' => 'N/A',
-                        ]
+                        'candidacy_id'   => $candidacy_id,
+                        'candidacy_name' => $candidate_data['name'] ?? ('Candidate ' . substr($candidacy_id, 0, 8)),
+                        'proposer_name'  => null,
+                        'supporter_name' => null,
+                        'image_path_1'   => null,
+                        'user_info'      => ['id' => null, 'name' => 'Unknown', 'user_id' => 'N/A', 'region' => 'N/A'],
                     ];
                 }
             }
@@ -3704,7 +3821,6 @@ public function show($vote_id)
 
         $sessionKey = 'vote_display_data_' . $vote_id;
         $voteDisplayData = session()->get($sessionKey);
-        dd($voteDisplayData);
 
         if (!$voteDisplayData) {
             return redirect()->route('vote.verify_to_show')
