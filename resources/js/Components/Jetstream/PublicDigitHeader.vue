@@ -139,7 +139,7 @@
         <!-- Demo Link - Gold CTA -->
         <Link
           :href="route('election.demo.start')"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gold to-gold-dark text-slate-900 font-semibold text-sm rounded-md hover:from-gold-dark hover:to-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-slate-50 font-semibold text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-200 whitespace-nowrap shadow-md hover:shadow-lg group"
           :title="$t('navigation.demo_title', 'Try demo election without registration')"
         >
           <svg class="w-4 h-4 group-hover:rotate-12 transition-transform" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -214,13 +214,13 @@
         <!-- Mobile Demo CTA - Gold -->
         <div class="pt-3 border-t border-gold/20 px-3">
           <Link
-            :href="route('election.demo.start')"
-            @click="closeMobileMenu"
-            class="block px-4 py-3 bg-gradient-to-r from-gold to-gold-dark text-slate-900 font-semibold text-sm rounded-lg hover:from-gold-dark hover:to-gold active:opacity-90 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
+            :href="route('election.demo.start')" 
+            @click="closeMobileMenu" 
+            class="block px-4 py-3  text-slate-50  bg-green-600 font-semibold text-sm rounded-lg hover:from-gold-gold hover:to-white active:opacity-90 transition-all duration-150 text-center min-h-[44px] flex items-center justify-center shadow-md"
           >
             🎪 {{ $t('navigation.demo', 'Try Demo') }}
           </Link>
-        </div>
+        </div> 
 
         <!-- Mobile Auth -->
         <div class="pt-3 border-t border-gold/20 space-y-2 sm:hidden px-3">
