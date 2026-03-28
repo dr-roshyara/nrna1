@@ -11,122 +11,77 @@ use Illuminate\Support\Facades\DB;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Models\Election;
 use App\Services\ElectionService;
 class ResultController extends Controller
 {
-    public function index() {
-    // Load posts with basic information
-    $posts = Post::get(['post_id', 'name', 'state_name', 'required_number']);
+    public function index(string $election) {
+        $election = Election::withoutGlobalScopes()
+            ->where('slug', $election)
+            ->firstOrFail();
 
-    // Double check: Route registration AND controller check for extra security
-    if (!ElectionService::canViewResults()) {
-        return redirect()->back()->with('error',
-            'Election results will be available after the election is completed.'
-        );
-    }
+        $totalVotes = Vote::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->count();
 
-    // Initialize results array
-    $results = [
-        'total_votes' => Vote::count(),
-        'posts' => []
-    ];
+        // Load vote counts from results table (pre-aggregated at vote submission time)
+        $voteCounts = DB::table('results')
+            ->where('results.election_id', $election->id)
+            ->whereNotNull('results.candidacy_id')
+            ->select('results.post_id', 'results.candidacy_id', DB::raw('COUNT(*) as vote_count'))
+            ->groupBy('results.post_id', 'results.candidacy_id')
+            ->get()
+            ->groupBy('post_id');
 
-    // Process votes for each post
-    foreach ($posts as $post) {
-        $postResults = [
-            'post_id' => $post->post_id,
-            'post_name' => $post->name,
-            'candidates' => [],
-            'no_vote_count' => 0,
-            'total_votes_for_post' => 0
+        $posts = Post::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->get(['id', 'name', 'state_name', 'required_number']);
+
+        $postsData = [];
+        foreach ($posts as $post) {
+            $allCandidates = \App\Models\Candidacy::withoutGlobalScopes()
+                ->where('post_id', $post->id)
+                ->with('user')
+                ->get();
+
+            $postVoteCounts = $voteCounts->get($post->id, collect())->keyBy('candidacy_id');
+
+            $candidates = $allCandidates->map(function ($candidacy) use ($postVoteCounts, $totalVotes) {
+                $count = $postVoteCounts->get($candidacy->id)->vote_count ?? 0;
+                return [
+                    'candidacy_id' => $candidacy->id,
+                    'name'         => $candidacy->user->name ?? $candidacy->name ?? 'Unknown',
+                    'vote_count'   => $count,
+                    'vote_percent' => $totalVotes > 0 ? round($count / $totalVotes * 100, 2) : 0,
+                ];
+            })->sortByDesc('vote_count')->values()->toArray();
+
+            $noVoteCount = DB::table('results')
+                ->where('election_id', $election->id)
+                ->where('post_id', $post->id)
+                ->whereNull('candidacy_id')
+                ->count();
+
+            $postsData[] = [
+                'post_id'              => $post->id,
+                'post_name'            => $post->name,
+                'candidates'           => $candidates,
+                'no_vote_count'        => $noVoteCount,
+                'total_votes_for_post' => array_sum(array_column($candidates, 'vote_count')) + $noVoteCount,
+            ];
+        }
+
+        $results = [
+            'total_votes'   => $totalVotes,
+            'election_name' => $election->name,
+            'posts'         => $postsData,
         ];
 
-        // First, get ALL candidates for this post from candidacies table
-        $allCandidates = \App\Models\Candidacy::where('post_id', $post->post_id)
-            ->with('user')
-            ->get();
-
-        // Initialize candidate votes array with all candidates (starting with 0 votes)
-        $candidateVotes = [];
-        $noVoteCount = 0; // Track "no vote" selections
-
-        foreach ($allCandidates as $candidacy) {
-            $candidateName = $candidacy->user->name ?? $candidacy->name ?? $candidacy->user_name ?? 'Unknown';
-            $candidateVotes[$candidacy->candidacy_id] = [
-                'name' => $candidateName,
-                'count' => 0
-            ];
-        }
-
-        // Get all votes that contain this post in any candidate field
-        $votes = Vote::where(function($query) use ($post) {
-            for ($i = 1; $i <= 60; $i++) { // Adjust to 60 fields as per your schema
-                $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
-                $query->orWhereJsonContains($field, ['post_id' => $post->post_id]);
-            }
-        })->get();
-
-        foreach ($votes as $vote) {
-            // Check all candidate fields for this post
-            for ($i = 1; $i <= 60; $i++) {
-                $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
-                $candidateData = json_decode($vote->$field, true);
-
-                // Skip if this field doesn't contain data for our current post
-                if (!$candidateData || ($candidateData['post_id'] ?? null) !== $post->post_id) {
-                    continue;
-                }
-
-                // Check if this is a "no vote" selection
-                if (isset($candidateData['no_vote']) && $candidateData['no_vote'] === true) {
-                    $noVoteCount++;
-                    $postResults['total_votes_for_post']++;
-                    continue;
-                }
-
-                // Process each candidate in the candidates array
-                foreach ($candidateData['candidates'] ?? [] as $candidate) {
-                    $candidateId = $candidate['candidacy_id'] ?? null;
-
-                    if ($candidateId && isset($candidateVotes[$candidateId])) {
-                        $candidateVotes[$candidateId]['count']++;
-                        $postResults['total_votes_for_post']++;
-                    }
-                }
-            }
-        }
-
-        // Format results for this post
-        foreach ($candidateVotes as $candidateId => $data) {
-            $postResults['candidates'][] = [
-                'candidacy_id' => $candidateId,
-                'name' => $data['name'],
-                'vote_count' => $data['count'],
-                'vote_percent' => $results['total_votes'] > 0 
-                    ? round(($data['count'] / $results['total_votes']) * 100, 2)
-                    : 0
-            ];
-        }
-
-        // Store the no vote count in results
-        $postResults['no_vote_count'] = $noVoteCount;
-
-        // Sort candidates by vote count (highest first, but include zero-vote candidates)
-        usort($postResults['candidates'], function($a, $b) {
-            if ($a['vote_count'] == $b['vote_count']) {
-                return strcmp($a['name'], $b['name']); // Alphabetical if same vote count
-            }
-            return $b['vote_count'] - $a['vote_count'];
-        });
-
-        $results['posts'][] = $postResults;
+        return Inertia::render('Result/Index', [
+            'final_result' => $results,
+            'posts'        => $posts,
+        ]);
     }
-
-    return Inertia::render('Result/Index', [
-        'final_result' => $results,
-        'posts' => $posts
-    ]);
-  }
 
  //
  public function statisticalVerification($postId)
@@ -303,7 +258,7 @@ private function detectAnomalies($stats)
 
           foreach ($allCandidates as $candidacy) {
               $candidateName = $candidacy->user->name ?? $candidacy->name ?? $candidacy->user_name ?? 'Unknown';
-              $candidateVotes[$candidacy->candidacy_id] = [
+              $candidateVotes[$candidacy->id] = [
                   'name' => $candidateName,
                   'count' => 0
               ];
@@ -313,7 +268,7 @@ private function detectAnomalies($stats)
           $votes = Vote::where(function($query) use ($post) {
               for ($i = 1; $i <= 60; $i++) {
                   $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
-                  $query->orWhereJsonContains($field, ['post_id' => $post->post_id]);
+                  $query->orWhereJsonContains($field, ['post_id' => $post->id]);
               }
           })->get();
 
@@ -322,7 +277,7 @@ private function detectAnomalies($stats)
                   $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
                   $candidateData = json_decode($vote->$field, true);
 
-                  if (!$candidateData || ($candidateData['post_id'] ?? null) !== $post->post_id) {
+                  if (!$candidateData || ($candidateData['post_id'] ?? null) !== $post->id) {
                       continue;
                   }
 

@@ -10,7 +10,7 @@
                 <div class="esp-hero__inner">
                     <div class="esp-eyebrow">
                         <span class="esp-eyebrow__line"></span>
-                        <span class="esp-eyebrow__text">Official Election</span>
+                        <span class="esp-eyebrow__text">{{ $t('pages.election-show.hero.eyebrow') }}</span>
                         <span class="esp-eyebrow__line"></span>
                     </div>
                     <h1 class="esp-hero__title">{{ election.name }}</h1>
@@ -22,8 +22,8 @@
 
                     <div v-if="ipAddress" class="esp-ip-badge" aria-label="Your IP address">
                         <span class="esp-ip-badge__icon" aria-hidden="true">⬡</span>
-                        <span class="esp-ip-badge__text">Voting from {{ ipAddress }}</span>
-                        <span class="esp-ip-badge__tooltip">Your IP address is recorded for security verification</span>
+                        <span class="esp-ip-badge__text">{{ $t('pages.election-show.hero.ip_badge_text', { ip: ipAddress }) }}</span>
+                        <span class="esp-ip-badge__tooltip">{{ $t('pages.election-show.hero.ip_badge_tooltip') }}</span>
                     </div>
                 </div>
             </section>
@@ -47,28 +47,28 @@
                             <div class="esp-ballot__header">
                                 <div class="esp-ballot__icon esp-ballot__icon--active" aria-hidden="true">🗳</div>
                                 <div>
-                                    <p class="esp-ballot__eyebrow">YOUR BALLOT IS READY</p>
-                                    <h2 class="esp-ballot__heading">You are eligible to vote</h2>
+                                    <p class="esp-ballot__eyebrow">{{ $t('pages.election-show.can_vote.eyebrow') }}</p>
+                                    <h2 class="esp-ballot__heading">{{ $t('pages.election-show.can_vote.heading') }}</h2>
                                 </div>
                             </div>
 
                             <!-- Countdown -->
                             <div class="esp-countdown" aria-label="Time remaining to vote">
-                                <p class="esp-countdown__label">Voting window closes in</p>
+                                <p class="esp-countdown__label">{{ $t('pages.election-show.can_vote.countdown_label') }}</p>
                                 <div class="esp-countdown__display" aria-live="polite">
                                     <div class="esp-countdown__unit">
                                         <span class="esp-countdown__value">{{ countdown.hours }}</span>
-                                        <span class="esp-countdown__name">hrs</span>
+                                        <span class="esp-countdown__name">{{ $t('pages.election-show.can_vote.countdown_hrs') }}</span>
                                     </div>
                                     <span class="esp-countdown__sep" aria-hidden="true">:</span>
                                     <div class="esp-countdown__unit">
                                         <span class="esp-countdown__value">{{ countdown.minutes }}</span>
-                                        <span class="esp-countdown__name">min</span>
+                                        <span class="esp-countdown__name">{{ $t('pages.election-show.can_vote.countdown_min') }}</span>
                                     </div>
                                     <span class="esp-countdown__sep" aria-hidden="true">:</span>
                                     <div class="esp-countdown__unit">
                                         <span class="esp-countdown__value">{{ countdown.seconds }}</span>
-                                        <span class="esp-countdown__name">sec</span>
+                                        <span class="esp-countdown__name">{{ $t('pages.election-show.can_vote.countdown_sec') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -77,19 +77,19 @@
                             <ol class="esp-steps" aria-label="Voting process steps">
                                 <li class="esp-step">
                                     <span class="esp-step__num" aria-hidden="true">1</span>
-                                    <span class="esp-step__text">Click <em>Cast Your Vote</em> below to begin</span>
+                                    <span class="esp-step__text" v-html="$t('pages.election-show.can_vote.step_1')"></span>
                                 </li>
                                 <li class="esp-step">
                                     <span class="esp-step__num" aria-hidden="true">2</span>
-                                    <span class="esp-step__text">Enter your secure, single-use voting code</span>
+                                    <span class="esp-step__text">{{ $t('pages.election-show.can_vote.step_2') }}</span>
                                 </li>
                                 <li class="esp-step">
                                     <span class="esp-step__num" aria-hidden="true">3</span>
-                                    <span class="esp-step__text">Select your candidates for each position</span>
+                                    <span class="esp-step__text">{{ $t('pages.election-show.can_vote.step_3') }}</span>
                                 </li>
                                 <li class="esp-step">
                                     <span class="esp-step__num" aria-hidden="true">4</span>
-                                    <span class="esp-step__text">Confirm — your anonymous ballot is cast</span>
+                                    <span class="esp-step__text">{{ $t('pages.election-show.can_vote.step_4') }}</span>
                                 </li>
                             </ol>
 
@@ -100,14 +100,14 @@
                                 :aria-busy="voting"
                                 @click="startVoting"
                             >
-                                <span class="esp-cta__text">{{ voting ? 'Preparing ballot…' : 'Cast Your Vote' }}</span>
+                                <span class="esp-cta__text">{{ voting ? $t('pages.election-show.can_vote.cta_loading') : $t('pages.election-show.can_vote.cta_idle') }}</span>
                                 <span class="esp-cta__arrow" aria-hidden="true">→</span>
                             </button>
 
                             <ul class="esp-trust" aria-label="Security guarantees">
-                                <li class="esp-trust__item">🔒 End-to-end encrypted</li>
-                                <li class="esp-trust__item">👤 Completely anonymous</li>
-                                <li class="esp-trust__item">✓ Immutable audit trail</li>
+                                <li class="esp-trust__item">🔒 {{ $t('pages.election-show.can_vote.trust_encrypted') }}</li>
+                                <li class="esp-trust__item">👤 {{ $t('pages.election-show.can_vote.trust_anonymous') }}</li>
+                                <li class="esp-trust__item">✓ {{ $t('pages.election-show.can_vote.trust_audit') }}</li>
                             </ul>
                         </template>
 
@@ -116,29 +116,25 @@
                             <div class="esp-ballot__header">
                                 <div class="esp-ballot__icon esp-ballot__icon--voted" aria-label="Vote confirmed">✓</div>
                                 <div>
-                                    <p class="esp-ballot__eyebrow">VOTE RECORDED</p>
-                                    <h2 class="esp-ballot__heading">Your ballot has been cast</h2>
+                                    <p class="esp-ballot__eyebrow">{{ $t('pages.election-show.has_voted.eyebrow') }}</p>
+                                    <h2 class="esp-ballot__heading">{{ $t('pages.election-show.has_voted.heading') }}</h2>
                                 </div>
                             </div>
 
-                            <p class="esp-voted-body">
-                                Your vote has been securely recorded. Thank you for participating
-                                in this election. Your ballot is completely anonymous and cannot
-                                be linked back to your identity.
-                            </p>
+                            <p class="esp-voted-body">{{ $t('pages.election-show.has_voted.body') }}</p>
 
                             <dl class="esp-certificate">
                                 <div class="esp-certificate__row">
-                                    <dt class="esp-certificate__label">Election</dt>
+                                    <dt class="esp-certificate__label">{{ $t('pages.election-show.has_voted.cert_election_label') }}</dt>
                                     <dd class="esp-certificate__value">{{ election.name }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
-                                    <dt class="esp-certificate__label">Status</dt>
-                                    <dd class="esp-certificate__value esp-certificate__value--green">Recorded ✓</dd>
+                                    <dt class="esp-certificate__label">{{ $t('pages.election-show.has_voted.cert_status_label') }}</dt>
+                                    <dd class="esp-certificate__value esp-certificate__value--green">{{ $t('pages.election-show.has_voted.cert_status_value') }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
-                                    <dt class="esp-certificate__label">Anonymity</dt>
-                                    <dd class="esp-certificate__value">Guaranteed — no voter-vote linkage</dd>
+                                    <dt class="esp-certificate__label">{{ $t('pages.election-show.has_voted.cert_anonymity_label') }}</dt>
+                                    <dd class="esp-certificate__value">{{ $t('pages.election-show.has_voted.cert_anonymity_value') }}</dd>
                                 </div>
                             </dl>
                         </template>
@@ -148,14 +144,12 @@
                             <div class="esp-ballot__header">
                                 <div class="esp-ballot__icon esp-ballot__icon--ineligible" aria-label="Not eligible">⊘</div>
                                 <div>
-                                    <p class="esp-ballot__eyebrow">NOT REGISTERED</p>
-                                    <h2 class="esp-ballot__heading">You are not eligible to vote in this election</h2>
+                                    <p class="esp-ballot__eyebrow">{{ $t('pages.election-show.not_eligible.eyebrow') }}</p>
+                                    <h2 class="esp-ballot__heading">{{ $t('pages.election-show.not_eligible.heading') }}</h2>
                                 </div>
                             </div>
                             <p class="esp-ineligible-body">
-                                Your account is not registered as an eligible voter for
-                                <strong>{{ election.name }}</strong>. If you believe this is an
-                                error, please contact the election administrator.
+                                {{ $t('pages.election-show.not_eligible.body', { election: election.name }) }}
                             </p>
                         </template>
 
@@ -170,9 +164,11 @@
 </template>
 
 <script setup>
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { Head, router, usePage } from '@inertiajs/vue3'
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
+import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 
 const props = defineProps({
     election:   { type: Object,  required: true },
@@ -184,7 +180,11 @@ const props = defineProps({
 
 // ─── Flash ────────────────────────────────────────────────────────────────────
 const page  = usePage()
-const flash = computed(() => page.props.flash ?? {})
+const flash = computed(() => ({
+    success: page.props.success ?? null,
+    error:   page.props.error   ?? null,
+    info:    page.props.message ?? null,
+}))
 
 // ─── Start voting ─────────────────────────────────────────────────────────────
 const voting = ref(false)

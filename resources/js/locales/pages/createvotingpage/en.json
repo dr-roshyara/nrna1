@@ -1,0 +1,44 @@
+{
+  "voter_info": {
+    "progress": "Progress",
+    "region": "Region",
+    "national_only": "National"
+  },
+  "sections": {
+    "national": "National Posts",
+    "regional": "Regional Posts"
+  },
+  "regional_empty": {
+    "title": "No Regional Candidates",
+    "message": "No candidates are available for {region} at this time.",
+    "national_only": "You can still vote for national positions."
+  },
+  "errors": {
+    "validation_title": "Please fix the following before submitting:"
+  },
+  "agreement": {
+    "title": "Voting Agreement",
+    "final_warning": "Your vote is final and cannot be changed after submission.",
+    "progress_label": "Overall Progress"
+  },
+  "submit": {
+    "review_submit": "Review & Submit"
+  },
+  "footer": {
+    "security_title": "Your Vote is Secure",
+    "security_body": "All selections are encrypted and protected.",
+    "time_title": "Take Your Time",
+    "time_body": "Review carefully before submitting.",
+    "help_title": "Need Help?",
+    "help_body": "Contact the election support team for assistance."
+  },
+  "modal": {
+    "title": "Confirm Your Vote",
+    "greeting": "Hello {name}, please review your selections before submitting.",
+    "no_selections": "No selections to display.",
+    "warning_title": "This action is final.",
+    "warning_message": "Once submitted, your vote cannot be changed or retracted.",
+    "go_back": "Go Back",
+    "confirm_submit": "Confirm & Submit"
+  }
+}

@@ -9,9 +9,50 @@ use App\Models\Organisation;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class CandidacyManagementController extends Controller
 {
+    public function index(Organisation $organisation, string $election): Response
+    {
+        $electionModel = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($electionModel->type === 'demo', 404);
+        $this->authorize('managePosts', $electionModel);
+
+        $posts = Post::withoutGlobalScopes()
+            ->where('election_id', $electionModel->id)
+            ->where('organisation_id', $organisation->id)
+            ->orderBy('position_order')
+            ->with(['candidacies' => function ($q) {
+                $q->withoutGlobalScopes()
+                  ->with(['user' => fn ($u) => $u->withoutGlobalScopes()])
+                  ->orderBy('position_order');
+            }])
+            ->get()
+            ->map(fn ($post) => [
+                'id'               => $post->id,
+                'name'             => $post->name,
+                'required_number'  => $post->required_number,
+                'is_national_wide' => (bool) $post->is_national_wide,
+                'state_name'       => $post->state_name,
+                'candidacies'      => $post->candidacies->map(fn ($c) => [
+                    'id'             => $c->id,
+                    'name'           => $c->user?->name ?? $c->name ?? '—',
+                    'status'         => $c->status,
+                    'position_order' => $c->position_order,
+                    'image_path_1'   => $c->image_path_1,
+                    'from_application' => $c->candidacyApplication()->exists(),
+                ])->values(),
+            ]);
+
+        return Inertia::render('Election/Candidacy/Index', [
+            'organisation' => $organisation->only('id', 'name', 'slug'),
+            'election'     => $electionModel->only('id', 'name', 'slug', 'status'),
+            'posts'        => $posts->values(),
+        ]);
+    }
+
     public function store(Request $request, Organisation $organisation, string $election, Post $post)
     {
         $electionModel = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
@@ -65,7 +106,7 @@ class CandidacyManagementController extends Controller
         $data = $request->validate([
             'name'           => ['nullable', 'string', 'max:255'],
             'description'    => ['nullable', 'string', 'max:2000'],
-            'status'         => ['required', 'in:pending,approved,rejected,withdrawn'],
+            'status'         => ['required', 'in:draft,pending,approved,rejected,withdrawn'],
             'position_order' => ['nullable', 'integer', 'min:0'],
             'image_1'        => ['nullable', 'image', 'max:2048'],
             'image_2'        => ['nullable', 'image', 'max:2048'],

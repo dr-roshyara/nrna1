@@ -25,7 +25,7 @@ class Code extends Model
         // Old column names (for backward compatibility during migration)
         'code1',
         'code2',
-        'is_code1_usable',
+        'is_code_to_save_vote_usable',
         'is_code2_usable',
         'code1_sent_at',
         'code2_sent_at',
@@ -52,17 +52,19 @@ class Code extends Model
         'has_used_code2',
         'has_agreed_to_vote_at',
         'voting_started_at',
-        'is_codemodel_valid',
         // ✅ Device fingerprinting for fraud detection (privacy-preserving)
         'device_fingerprint_hash',
         'device_metadata_anonymized',
         'session_name',      // ✅ NEW: Session key for storing vote data
         'voting_slug',       // ✅ NEW: Audit trail - which slug was used
+        'client_ip',
+        'voting_time_in_minutes',
+        'voting_code',
     ];
 
     protected $casts = [
         'has_code1_sent' => 'boolean',
-        'is_code1_usable' => 'boolean',
+        'is_code_to_save_vote_usable' => 'boolean',
         'is_code2_usable' => 'boolean',
         'can_vote_now' => 'boolean',
         'has_voted' => 'boolean',
@@ -70,7 +72,6 @@ class Code extends Model
         'has_agreed_to_vote' => 'boolean',
         'has_used_code1' => 'boolean',
         'has_used_code2' => 'boolean',
-        'is_codemodel_valid' => 'boolean',
         'code1_sent_at' => 'datetime',
         'code2_sent_at' => 'datetime',
         'code1_used_at' => 'datetime',
@@ -216,7 +217,7 @@ class Code extends Model
     public function scopeUnused($query)
     {
         return $query->withoutGlobalScopes()
-                     ->where('is_code1_usable', true)
+                     ->where('is_code_to_save_vote_usable', true)
                      ->where('is_code2_usable', false);
     }
 
@@ -228,7 +229,7 @@ class Code extends Model
     public function useCode1(): bool
     {
         return $this->update([
-            'is_code1_usable' => false,
+            'is_code_to_save_vote_usable' => false,
             'code1_used_at' => now(),
         ]);
     }
@@ -253,6 +254,6 @@ class Code extends Model
      */
     public function isUsable(): bool
     {
-        return $this->is_code1_usable || $this->is_code2_usable;
+        return $this->is_code_to_save_vote_usable || $this->is_code2_usable;
     }
 }

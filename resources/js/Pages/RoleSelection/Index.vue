@@ -63,10 +63,10 @@
 </template>
 
 <script setup>
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { defineProps } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 
 const { t: $t } = useI18n()
 

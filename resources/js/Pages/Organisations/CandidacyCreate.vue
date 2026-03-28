@@ -33,6 +33,7 @@
           v-else
           :organisation="organisation"
           :active-elections="activeElections"
+          :applied-election-ids="appliedElectionIds"
         />
 
         <!-- Back Link -->
@@ -48,14 +49,15 @@
 </template>
 
 <script setup>
-import { usePage } from '@inertiajs/vue3'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
+import { usePage } from '@inertiajs/vue3'
 import EmptyState from '@/Components/EmptyState.vue'
 import CandidacyApplicationForm from '@/Pages/Organisations/Partials/CandidacyApplicationForm.vue'
 
 defineProps({
-  organisation:    { type: Object, required: true },
-  activeElections: { type: Array,  default: () => [] },
+  organisation:       { type: Object, required: true },
+  activeElections:    { type: Array,  default: () => [] },
+  appliedElectionIds: { type: Array,  default: () => [] },
 })
 
 const page = usePage()

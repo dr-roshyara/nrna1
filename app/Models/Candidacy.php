@@ -19,6 +19,7 @@ class Candidacy extends Model
     public $keyType = 'string';
     public $incrementing = false;
 
+    const STATUS_DRAFT = 'draft';
     const STATUS_PENDING = 'pending';
     const STATUS_APPROVED = 'approved';
     const STATUS_REJECTED = 'rejected';
@@ -272,5 +273,14 @@ class Candidacy extends Model
     {
         return $this->belongsTo(Organisation::class, 'organisation_id')
                     ->withoutGlobalScopes();
+    }
+
+    /**
+     * Trace back to the original voter application that created this candidacy.
+     * Uses the candidacy_id FK on candidacy_applications pointing to this record.
+     */
+    public function candidacyApplication()
+    {
+        return $this->hasOne(CandidacyApplication::class, 'candidacy_id', 'id');
     }
 }

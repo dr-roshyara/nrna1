@@ -61,29 +61,49 @@
             <p class="text-sm text-slate-500">Track the status of your candidacy submissions</p>
           </a>
 
-          <!-- View Positions (first active election) -->
-          <a v-if="activeElections.length > 0"
-            :href="route('organisations.elections.posts.index', { organisation: organisation.slug, election: activeElections[0].slug })"
+          <!-- View Positions — one card per active election -->
+          <a
+            v-for="election in activeElections"
+            :key="election.id"
+            :href="route('organisations.elections.positions', { organisation: organisation.slug, election: election.slug })"
             class="group block rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-md hover:border-primary-300 transition-all"
           >
-            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center mb-3 group-hover:bg-slate-200 transition-colors">
-              <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center mb-3 group-hover:bg-blue-200 transition-colors">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-slate-900 mb-1">View Positions</h3>
-            <p class="text-sm text-slate-500">See all posts and existing candidates</p>
+            <h3 class="font-semibold text-slate-900 mb-1">Positions</h3>
+            <p class="text-sm text-slate-500">{{ election.name }}</p>
           </a>
-          <!-- Placeholder when no active elections -->
-          <div v-else class="rounded-2xl border border-dashed border-slate-200 bg-white p-6 opacity-50">
-            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center mb-3">
-              <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          <!-- See Real Result — one card per active election -->
+          <a
+            v-for="election in activeElections"
+            :key="'result-' + election.id"
+            :href="route('result.index', { election: election.slug })"
+            class="group block rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-md hover:border-violet-300 transition-all"
+          >
+            <div class="w-10 h-10 rounded-xl bg-violet-100 flex items-center justify-center mb-3 group-hover:bg-violet-200 transition-colors">
+              <svg class="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
               </svg>
             </div>
-            <h3 class="font-semibold text-slate-500 mb-1">View Positions</h3>
-            <p class="text-sm text-slate-400">Available when elections are active</p>
-          </div>
+            <h3 class="font-semibold text-slate-900 mb-1">See Real Result</h3>
+            <p class="text-sm text-slate-500">{{ election.name }}</p>
+          </a>
+
+          <!-- See Demo Result -->
+          <a :href="route('demo-result.index')"
+            class="group block rounded-2xl border border-slate-200 bg-white p-6 hover:shadow-md hover:border-emerald-300 transition-all"
+          >
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center mb-3 group-hover:bg-emerald-200 transition-colors">
+              <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900 mb-1">See Demo Result</h3>
+            <p class="text-sm text-slate-500">View the demo election results</p>
+          </a>
         </div>
 
         <!-- Active Elections -->
@@ -158,8 +178,8 @@
 </template>
 
 <script setup>
-import { usePage } from '@inertiajs/vue3'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
+import { usePage } from '@inertiajs/vue3'
 import SectionCard from '@/Components/SectionCard.vue'
 import EmptyState from '@/Components/EmptyState.vue'
 

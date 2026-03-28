@@ -19,7 +19,7 @@ class RealVotingService extends VotingService
      *
      * @return string
      */
-    protected function getVoteModel(): string
+    public function getVoteModel(): string
     {
         return Vote::class;
     }
@@ -29,7 +29,7 @@ class RealVotingService extends VotingService
      *
      * @return string
      */
-    protected function getResultModel(): string
+    public function getResultModel(): string
     {
         return Result::class;
     }

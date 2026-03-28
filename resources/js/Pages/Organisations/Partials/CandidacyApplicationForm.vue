@@ -43,7 +43,12 @@
               <div class="select-wrap">
                 <select id="election_id" v-model="form.election_id" @change="form.post_id = ''" class="field-select" :class="{ 'field-error': errors.election_id }">
                   <option value="" disabled>Select an election…</option>
-                  <option v-for="e in activeElections" :key="e.id" :value="e.id">{{ e.name }}</option>
+                  <option
+                    v-for="e in activeElections"
+                    :key="e.id"
+                    :value="e.id"
+                    :disabled="appliedElectionIds.includes(e.id)"
+                  >{{ e.name }}{{ appliedElectionIds.includes(e.id) ? ' — Already applied' : '' }}</option>
                 </select>
                 <svg class="select-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
               </div>
@@ -215,8 +220,9 @@ import { ref, computed } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
 
 const props = defineProps({
-  organisation:    { type: Object, required: true },
-  activeElections: { type: Array,  default: () => [] },
+  organisation:       { type: Object, required: true },
+  activeElections:    { type: Array,  default: () => [] },
+  appliedElectionIds: { type: Array,  default: () => [] },
 })
 
 const page = usePage()

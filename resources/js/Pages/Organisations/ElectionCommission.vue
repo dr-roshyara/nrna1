@@ -90,6 +90,12 @@
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                   Posts &amp; Candidates
                 </a>
+                <a :href="route('organisations.elections.candidacy.applications', { organisation: organisation.slug, election: election.slug })"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  Candidacy Applications
+                </a>
               </div>
             </SectionCard>
           </div>
@@ -101,9 +107,9 @@
 </template>
 
 <script setup>
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { usePage } from '@inertiajs/vue3'
 
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import SectionCard from '@/Components/SectionCard.vue'
 import StatusBadge from '@/Components/StatusBadge.vue'
 import EmptyState from '@/Components/EmptyState.vue'

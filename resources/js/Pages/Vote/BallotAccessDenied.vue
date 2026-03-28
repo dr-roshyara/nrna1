@@ -235,7 +235,6 @@
 </template>
 
 <script>
-import ElectionLayout from "@/Layouts/ElectionLayout.vue";
 
 export default {
     name: 'BallotAccessDenied',

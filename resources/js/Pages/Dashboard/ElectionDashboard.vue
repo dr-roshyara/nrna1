@@ -385,7 +385,6 @@
 </template>
 
 <script>
-import ElectionLayout from "@/Layouts/ElectionLayout.vue";
 
 export default {
     components: {

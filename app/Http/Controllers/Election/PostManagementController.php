@@ -23,11 +23,6 @@ class PostManagementController extends Controller
         $posts = Post::withoutGlobalScopes()
             ->where('election_id', $election->id)
             ->where('organisation_id', $organisation->id)
-            ->with(['candidacies' => function ($q) {
-                $q->withoutGlobalScopes()
-                  ->with('user')
-                  ->orderBy('position_order');
-            }])
             ->orderBy('position_order')
             ->get()
             ->map(fn($post) => [
@@ -38,17 +33,6 @@ class PostManagementController extends Controller
                 'state_name'       => $post->state_name,
                 'required_number'  => $post->required_number,
                 'position_order'   => $post->position_order,
-                'candidacies'      => $post->candidacies->map(fn($c) => [
-                    'id'             => $c->id,
-                    'name'           => $c->candidate_name,
-                    'description'    => $c->description,
-                    'status'         => $c->status,
-                    'position_order' => $c->position_order,
-                    'user_id'        => $c->user_id,
-                    'image_path_1'   => $c->image_path_1,
-                    'image_path_2'   => $c->image_path_2,
-                    'image_path_3'   => $c->image_path_3,
-                ]),
             ]);
 
         return Inertia::render('Election/Posts/Index', [

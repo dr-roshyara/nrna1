@@ -192,8 +192,8 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
+import { computed } from 'vue'
 
 const props = defineProps({
     election: {

@@ -1,786 +1,671 @@
 <template>
     <election-layout>
-        <!-- Accessibility Announcement -->
-        <div class="sr-only" aria-live="polite" aria-label="Page announcement">
-            {{ $t('pages.voting.aria_labels.page_loaded') }}
-        </div>
-
-        <!-- Skip to Main Content Link -->
-        <a href="#main-content" class="skip-link">
+        <!-- Accessibility: skip link -->
+        <a href="#main-content"
+           class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50
+                  focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg
+                  focus:font-semibold focus:text-primary-700 focus:outline-none">
             {{ $t('pages.voting.aria_labels.skip_to_content') }}
         </a>
 
-        <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <!-- Live region for screen readers -->
+        <div role="status" aria-live="polite" aria-atomic="true" class="sr-only">
+            {{ votingProgress.completed }} of {{ votingProgress.total }} positions completed
+        </div>
 
-                <!-- Page Header with Badge -->
-                <header role="banner" class="text-center mb-12">
-                    <div class="inline-flex items-center gap-3 mb-4">
-                        <h1 class="text-4xl font-bold text-gray-900">
-                            {{ $t('pages.voting.header.title') }}
-                        </h1>
-                        <div class="bg-green-100 text-green-700 px-4 py-2 rounded-full font-semibold text-sm flex items-center gap-2">
-                            <span class="text-xl">✓</span>
-                            {{ $t('pages.voting.header.verified_badge') }}
-                        </div>
+        <div class="min-h-screen bg-gradient-to-br from-primary-50 to-indigo-50 py-8">
+            <div id="main-content" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" tabindex="-1">
+
+                <!-- ── Header ── -->
+                <header class="text-center mb-12">
+                    <div class="inline-flex items-center gap-2 bg-success-50 text-success-700
+                                border border-success-200 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        <span aria-hidden="true">✓</span>
+                        {{ $t('pages.voting.header.verified_badge') }}
                     </div>
-                    <p class="text-xl text-gray-600 mb-4">
+                    <h1 class="text-4xl font-serif text-neutral-900 mb-3">
+                        {{ $t('pages.voting.header.title') }}
+                    </h1>
+                    <p class="text-xl font-sans text-neutral-600 mb-4">
                         {{ $t('pages.voting.header.subtitle', { name: user_name }) }}
                     </p>
-                    <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full" aria-hidden="true"></div>
+                    <div class="w-24 h-1 bg-primary-600 mx-auto rounded-full" aria-hidden="true"></div>
                 </header>
 
-                <!-- Voter Information Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-green-200">
-                        <div class="flex items-center">
-                            <div class="bg-green-100 p-3 rounded-lg mr-4 shrink-0">
-                                <span class="text-green-600 text-2xl">👤</span>
+                <!-- ── Info Cards ── -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-10">
+                    <!-- Voter card -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-success-200">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-success-50 p-3 rounded-lg shrink-0">
+                                <span class="text-success-600 text-2xl" aria-hidden="true">👤</span>
                             </div>
-                            <div class="text-left">
-                                <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">{{ $t('pages.voting.voter_info.label') }}</p>
-                                <p class="font-bold text-gray-900 text-lg">{{ user_name }}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-blue-200">
-                        <div class="flex items-center">
-                            <div class="bg-blue-100 p-3 rounded-lg mr-4 shrink-0">
-                                <span class="text-blue-600 text-2xl">📍</span>
-                            </div>
-                            <div class="text-left">
-                                <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">{{ $t('pages.voting.region_info.label') }}</p>
-                                <p class="font-bold text-gray-900 text-lg">{{ user_region || $t('pages.voting.region_info.national') }}</p>
+                            <div class="text-left min-w-0">
+                                <p class="text-xs font-sans font-semibold uppercase tracking-wide text-neutral-500">
+                                    {{ $t('pages.voting.voter_info.label') }}
+                                </p>
+                                <p class="font-sans font-bold text-neutral-900 truncate">{{ user_name }}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-purple-200">
-                        <div class="flex items-center">
-                            <div class="bg-purple-100 p-3 rounded-lg mr-4 shrink-0">
-                                <span class="text-purple-600 text-2xl">📋</span>
+                    <!-- Progress card -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-primary-200">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-primary-50 p-3 rounded-lg shrink-0">
+                                <span class="text-primary-600 text-2xl" aria-hidden="true">📊</span>
                             </div>
                             <div class="text-left">
-                                <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">{{ $t('pages.voting.progress_info.label') }}</p>
-                                <p class="font-bold text-gray-900 text-lg">{{ votingProgress.completed }}/{{ votingProgress.total }}</p>
+                                <p class="text-xs font-sans font-semibold uppercase tracking-wide text-neutral-500">
+                                    {{ $t('pages.voting.voter_info.progress') }}
+                                </p>
+                                <p class="font-mono font-bold text-primary-700 text-lg">
+                                    {{ votingProgress.completed }}/{{ votingProgress.total }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Region card -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border-2 border-indigo-200">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-indigo-50 p-3 rounded-lg shrink-0">
+                                <span class="text-indigo-600 text-2xl" aria-hidden="true">📍</span>
+                            </div>
+                            <div class="text-left min-w-0">
+                                <p class="text-xs font-sans font-semibold uppercase tracking-wide text-neutral-500">
+                                    {{ $t('pages.voting.voter_info.region') }}
+                                </p>
+                                <p class="font-sans font-bold text-neutral-900 truncate">
+                                    {{ user_region || $t('pages.voting.voter_info.national_only') }}
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Workflow Step Indicator - Step 3/5 -->
-                <div class="w-full bg-gradient-to-br from-gray-50 to-blue-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-6 md:py-8 mb-8">
-                    <WorkflowStepIndicator :currentStep="3" />
+                <!-- ── Workflow Step Indicator ── -->
+                <WorkflowStepIndicator :currentStep="3" class="mb-10 max-w-4xl mx-auto" />
+
+                <!-- ── Loading Skeleton ── -->
+                <div v-if="isLoading" class="space-y-8" aria-busy="true" aria-label="Loading voting form">
+                    <div v-for="i in 3" :key="i" class="animate-pulse rounded-2xl overflow-hidden shadow-sm">
+                        <div class="h-20 bg-neutral-300 rounded-t-2xl"></div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-6 bg-white rounded-b-2xl border border-neutral-200">
+                            <div v-for="j in 4" :key="j" class="h-44 bg-neutral-100 rounded-xl"></div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Main Voting Form -->
-                <form @submit.prevent="submit" :aria-label="$t('pages.voting.aria_labels.voting_form')">
-                    <main id="main-content" role="main" :aria-label="$t('pages.voting.aria_labels.main_content')">
+                <!-- ── Main Voting Form ── -->
+                <form v-else
+                      @submit.prevent="requestSubmit"
+                      @keydown.right.prevent="moveFocus(1)"
+                      @keydown.left.prevent="moveFocus(-1)"
+                      @keydown.space="handleSpaceKey"
+                      class="space-y-8">
 
-                        <!-- National Posts Section -->
-                        <section v-if="national_posts && national_posts.length > 0" class="mb-12" aria-labelledby="national-posts-title">
-                            <h2 id="national-posts-title" class="text-3xl font-bold text-gray-900 text-center mb-8">
-                                {{ $t('pages.voting.national_posts.section_title') }}
-                            </h2>
-                            <div class="space-y-8">
-                                <div v-for="(post, postIndex) in national_posts" :key="`national-${post.post_id}`"
-                                     class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-                                     :data-post-key="`national-${post.post_id}`">
-                                    <div class="p-6">
-                                        <create-votingform
-                                            :candidates="post.candidates"
-                                            :post="post"
-                                            :errors="form.errors"
-                                            :postType="'national'"
-                                            :postIndex="postIndex"
-                                            @add_selected_candidates="handleCandidateSelection('national', postIndex, $event)"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Regional Posts Section -->
-                        <section v-if="regional_posts && regional_posts.length > 0" class="mb-12" aria-labelledby="regional-posts-title">
-                            <h2 id="regional-posts-title" class="text-3xl font-bold text-gray-900 text-center mb-8">
-                                {{ $t('pages.voting.regional_posts.section_title', { region: user_region }) }}
-                            </h2>
-                            <div class="space-y-8">
-                                <div v-for="(post, postIndex) in regional_posts" :key="`regional-${post.post_id}`"
-                                     class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-                                     :data-post-key="`regional-${post.post_id}`">
-                                    <div class="p-6">
-                                        <create-votingform
-                                            :candidates="post.candidates"
-                                            :post="post"
-                                            :errors="form.errors"
-                                            :postType="'regional'"
-                                            :postIndex="postIndex"
-                                            @add_selected_candidates="handleCandidateSelection('regional', postIndex, $event)"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Vote Summary -->
-                        <section v-if="votingProgress.completed > 0" class="mb-12 max-w-4xl mx-auto" aria-labelledby="summary-title">
-                            <h2 id="summary-title" class="text-2xl font-bold text-gray-900 mb-6">{{ $t('pages.voting.summary.title') }}</h2>
-                            <vote-summary
-                                :national-selections="form.national_selected_candidates"
-                                :regional-selections="form.regional_selected_candidates"
+                    <!-- National Posts -->
+                    <section v-if="normalizedNationalPosts.length" class="mb-12">
+                        <h2 class="text-3xl font-serif text-neutral-900 text-center mb-8">
+                            {{ $t('pages.voting.sections.national') }}
+                        </h2>
+                        <div class="space-y-8">
+                            <PostSection
+                                v-for="(post, index) in normalizedNationalPosts"
+                                :key="post.id"
+                                :ref="el => { if (el) postSectionRefs.push(el) }"
+                                :post="post"
+                                :selected-candidates="selectedCandidates[post.id] || []"
+                                :no-vote-selected="noVoteSelections[post.id] || false"
+                                :has-error="!!postErrors[post.id]"
+                                :error-message="postErrors[post.id] || ''"
+                                :post-index="index"
+                                @toggle-candidate="candidate => toggleCandidate(post, candidate)"
+                                @toggle-no-vote="() => toggleNoVote(post)"
                             />
-                        </section>
+                        </div>
+                    </section>
 
-                        <!-- Validation Issues Alert -->
-                        <div v-if="validationSummary.hasIssues" class="max-w-4xl mx-auto bg-amber-50 border-l-4 border-amber-500 p-6 mb-8 rounded-lg shadow-md" role="alert" aria-live="polite">
-                            <div class="flex">
-                                <div class="shrink-0">
-                                    <svg class="h-6 w-6 text-amber-600" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                <div class="ml-3">
-                                    <h3 class="text-sm font-bold text-amber-900">{{ $t('pages.voting.validation.title') }}</h3>
-                                    <ul class="text-sm text-amber-800 mt-2 space-y-1 list-disc list-inside">
-                                        <li v-for="issue in validationSummary.issues" :key="issue">
-                                            {{ issue }}
-                                        </li>
-                                    </ul>
-                                </div>
+                    <!-- Regional Empty State -->
+                    <div v-if="hasRegionButNoPosts"
+                         class="bg-warning-50 border-2 border-yellow-300 rounded-xl p-8 text-center mb-12">
+                        <span class="text-5xl mb-4 block" aria-hidden="true">⚠️</span>
+                        <h3 class="text-2xl font-sans font-bold text-yellow-800 mb-2">
+                            {{ $t('pages.voting.regional_empty.title') }}
+                        </h3>
+                        <p class="text-yellow-700 font-sans">
+                            {{ $t('pages.voting.regional_empty.message', { region: user_region }) }}
+                        </p>
+                        <p class="text-yellow-600 text-sm mt-2 font-sans">
+                            {{ $t('pages.voting.regional_empty.national_only') }}
+                        </p>
+                    </div>
+
+                    <!-- Regional Posts -->
+                    <section v-if="normalizedRegionalPosts.length" class="mb-12">
+                        <h2 class="text-3xl font-serif text-neutral-900 text-center mb-8">
+                            {{ $t('pages.voting.sections.regional') }} — {{ user_region }}
+                        </h2>
+                        <div class="space-y-8">
+                            <PostSection
+                                v-for="(post, index) in normalizedRegionalPosts"
+                                :key="post.id"
+                                :ref="el => { if (el) postSectionRefs.push(el) }"
+                                :post="post"
+                                :selected-candidates="selectedCandidates[post.id] || []"
+                                :no-vote-selected="noVoteSelections[post.id] || false"
+                                :has-error="!!postErrors[post.id]"
+                                :error-message="postErrors[post.id] || ''"
+                                :post-index="normalizedNationalPosts.length + index"
+                                @toggle-candidate="candidate => toggleCandidate(post, candidate)"
+                                @toggle-no-vote="() => toggleNoVote(post)"
+                            />
+                        </div>
+                    </section>
+
+                    <!-- Live Vote Summary (shown once at least one post is complete) -->
+                    <section v-if="votingProgress.completed > 0" class="mb-12 max-w-4xl mx-auto">
+                        <VoteSummary
+                            :national-selections="liveSummary.national_selected_candidates"
+                            :regional-selections="liveSummary.regional_selected_candidates"
+                        />
+                    </section>
+
+                    <!-- Validation Error List -->
+                    <div v-if="Object.keys(postErrors).length"
+                         role="alert"
+                         class="bg-danger-50 border border-danger-200 rounded-lg p-4 max-w-4xl mx-auto">
+                        <p class="font-sans font-semibold text-danger-800 mb-2">
+                            {{ $t('pages.voting.errors.validation_title') }}
+                        </p>
+                        <ul class="list-disc list-inside text-danger-700 font-sans text-sm space-y-1">
+                            <li v-for="(msg, id) in postErrors" :key="id">{{ msg }}</li>
+                        </ul>
+                    </div>
+
+                    <!-- ── Agreement & Submit ── -->
+                    <div class="bg-white rounded-xl shadow-lg border border-neutral-200 p-8 max-w-4xl mx-auto">
+                        <div class="border-2 border-primary-200 rounded-xl p-6 bg-primary-50 mb-6">
+                            <h3 class="text-xl font-serif text-primary-800 text-center mb-5">
+                                {{ $t('pages.voting.agreement.title') }}
+                            </h3>
+                            <div class="flex justify-center mb-4">
+                                <label class="flex items-start gap-4 cursor-pointer max-w-sm">
+                                    <input
+                                        type="checkbox"
+                                        v-model="form.agree_button"
+                                        class="w-6 h-6 mt-0.5 shrink-0 text-primary-600 rounded
+                                               border-2 border-neutral-400
+                                               focus:ring-4 focus:ring-primary-300 focus:ring-offset-1
+                                               cursor-pointer"
+                                    />
+                                    <span class="font-sans font-medium text-neutral-900 leading-relaxed">
+                                        {{ $t('pages.voting.agreement.checkbox_label') }}
+                                    </span>
+                                </label>
+                            </div>
+                            <p class="text-sm font-sans text-neutral-500 text-center">
+                                {{ $t('pages.voting.agreement.final_warning') }}
+                            </p>
+                            <p v-if="form.errors.agree_button"
+                               class="text-danger-600 text-sm text-center mt-2 font-sans">
+                                {{ form.errors.agree_button }}
+                            </p>
+                        </div>
+
+                        <!-- Overall progress bar -->
+                        <div class="mb-6">
+                            <div class="flex justify-between text-xs font-mono text-neutral-500 mb-1">
+                                <span>{{ $t('pages.voting.agreement.progress_label') }}</span>
+                                <span>{{ votingProgress.completed }}/{{ votingProgress.total }}</span>
+                            </div>
+                            <div class="w-full bg-neutral-100 rounded-full h-2 overflow-hidden">
+                                <div class="h-full rounded-full bg-primary-600 transition-all duration-500"
+                                     :style="{ width: votingProgress.percentage + '%' }"></div>
                             </div>
                         </div>
 
-                        <!-- Agreement Section -->
-                        <section class="max-w-4xl mx-auto mb-12" aria-labelledby="agreement-title">
-                            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                                <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-6 px-8">
-                                    <h2 id="agreement-title" class="text-2xl font-bold">{{ $t('pages.voting.agreement.section_title') }}</h2>
-                                    <p class="text-sm opacity-90 mt-2">{{ $t('pages.voting.agreement.section_subtitle') }}</p>
-                                </div>
-
-                                <div class="p-8 space-y-6">
-                                    <!-- Agreement Terms -->
-                                    <div>
-                                        <p class="text-gray-700 font-medium mb-4">
-                                            {{ $t('pages.voting.agreement.intro_text') }}
-                                        </p>
-                                        <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-lg">
-                                            <h3 class="font-bold text-blue-900 mb-4 text-lg">{{ $t('pages.voting.agreement.key_conditions') }}</h3>
-                                            <ul class="space-y-3">
-                                                <li class="flex items-start text-gray-800">
-                                                    <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
-                                                    <span class="text-base">{{ $t('pages.voting.agreement.condition_1') }}</span>
-                                                </li>
-                                                <li class="flex items-start text-gray-800">
-                                                    <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
-                                                    <span class="text-base">{{ $t('pages.voting.agreement.condition_2') }}</span>
-                                                </li>
-                                                <li class="flex items-start text-gray-800">
-                                                    <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
-                                                    <span class="text-base">{{ $t('pages.voting.agreement.condition_3') }}</span>
-                                                </li>
-                                                <li class="flex items-start text-gray-800">
-                                                    <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
-                                                    <span class="text-base">{{ $t('pages.voting.agreement.condition_4') }}</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <!-- Large Accessible Checkbox -->
-                                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-8">
-                                        <div class="flex items-start gap-4">
-                                            <div class="shrink-0 pt-2">
-                                                <input
-                                                    type="checkbox"
-                                                    id="agree_button"
-                                                    name="agree_button"
-                                                    v-model="form.agree_button"
-                                                    value="on"
-                                                    class="w-16 h-16 text-blue-600 border-3 border-gray-400 rounded-lg focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 cursor-pointer transition-all"
-                                                    :aria-label="$t('pages.voting.agreement.checkbox_aria_label')"
-                                                    @change="announceCheckboxStatus"
-                                                />
-                                            </div>
-                                            <div class="grow pt-2">
-                                                <label for="agree_button" class="cursor-pointer block">
-                                                    <div class="text-xl font-bold text-gray-900 mb-2 leading-tight">
-                                                        {{ $t('pages.voting.agreement.checkbox_label') }}
-                                                    </div>
-                                                    <div class="text-lg text-gray-700 leading-relaxed">
-                                                        {{ $t('pages.voting.agreement.checkbox_description') }}
-                                                    </div>
-                                                </label>
-
-                                                <!-- Confirmation When Checked -->
-                                                <div v-if="form.agree_button" class="mt-4 p-4 bg-green-50 border-2 border-green-300 rounded-lg flex items-center transition-all">
-                                                    <span class="text-green-600 text-2xl mr-3">✓</span>
-                                                    <span class="text-green-800 font-semibold text-lg">
-                                                        {{ $t('pages.voting.agreement.ready_message') }}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Error Message -->
-                                        <div v-if="form.errors.agree_button" class="mt-4 p-4 bg-red-50 border-l-4 border-red-500 rounded-sm text-red-700 font-medium" role="alert">
-                                            {{ form.errors.agree_button }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Sticky Submit Button -->
-                        <div class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 shadow-2xl z-40">
-                            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-                                    <div class="md:col-span-1 flex justify-center md:justify-start">
-                                        <div class="text-center md:text-left">
-                                            <p class="text-sm text-gray-600 font-medium">{{ $t('pages.voting.submit.progress_label') }}</p>
-                                            <p class="text-2xl font-bold text-blue-600">{{ votingProgress.completed }}/{{ votingProgress.total }}</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="md:col-span-1">
-                                        <div class="w-full bg-gray-200 rounded-full h-2">
-                                            <div
-                                                class="bg-gradient-to-r from-blue-600 to-indigo-600 h-2 rounded-full transition-all duration-300"
-                                                :style="{ width: votingProgress.percentage + '%' }"
-                                                role="progressbar"
-                                                :aria-valuenow="votingProgress.percentage"
-                                                aria-valuemin="0"
-                                                aria-valuemax="100"
-                                            ></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="md:col-span-1">
-                                        <button
-                                            type="submit"
-                                            @click="submit"
-                                            class="w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-200 shadow-lg focus:outline-none focus:ring-4 focus:ring-offset-2"
-                                            :class="submitButtonClasses"
-                                            :disabled="!canSubmit"
-                                            :aria-label="canSubmit ? $t('pages.voting.submit.button_aria_enabled') : $t('pages.voting.submit.button_aria_disabled')"
-                                        >
-                                            <div class="flex items-center justify-center gap-2">
-                                                <span v-if="form.processing" class="flex items-center gap-2">
-                                                    <svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                                    </svg>
-                                                    {{ $t('pages.voting.submit.submitting') }}
-                                                </span>
-                                                <span v-else-if="!canSubmit" class="flex items-center gap-2">
-                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
-                                                    </svg>
-                                                    {{ submitButtonText }}
-                                                </span>
-                                                <span v-else class="flex items-center gap-2">
-                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                                    </svg>
-                                                    {{ $t('pages.voting.submit.button_text') }}
-                                                </span>
-                                            </div>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="flex justify-center">
+                            <button
+                                type="submit"
+                                :disabled="!canSubmit"
+                                class="w-full max-w-md py-5 px-8 rounded-xl font-sans font-bold text-xl
+                                       shadow-md transition-colors duration-150
+                                       focus:outline-none focus:ring-4 focus:ring-offset-2"
+                                :class="canSubmit
+                                    ? 'bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-300 cursor-pointer'
+                                    : 'bg-neutral-200 text-neutral-400 cursor-not-allowed'"
+                            >
+                                <span class="flex items-center justify-center gap-2">
+                                    <span aria-hidden="true">🗳️</span>
+                                    <span>{{ loading
+                                        ? $t('pages.voting.submit.submitting')
+                                        : $t('pages.voting.submit.review_submit') }}</span>
+                                </span>
+                            </button>
                         </div>
+                    </div>
 
-                        <!-- Spacer for sticky button -->
-                        <div class="h-32 md:h-28"></div>
-
-                    </main>
                 </form>
 
-                <!-- Information Footer Cards -->
-                <section class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto" aria-labelledby="info-section">
-                    <h2 id="info-section" class="sr-only">{{ $t('pages.voting.footer.section_title') }}</h2>
-
-                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border-2 border-blue-200">
-                        <div class="flex items-start gap-4">
-                            <div class="text-4xl">🔒</div>
-                            <div>
-                                <h3 class="font-bold text-blue-900 text-lg mb-2">{{ $t('pages.voting.footer.security.title') }}</h3>
-                                <p class="text-blue-800 text-sm">{{ $t('pages.voting.footer.security.description') }}</p>
-                            </div>
-                        </div>
+                <!-- ── Footer Info Cards ── -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-neutral-200 text-center">
+                        <span class="text-3xl mb-2 block" aria-hidden="true">🔒</span>
+                        <p class="font-sans font-semibold text-neutral-800 text-sm">
+                            {{ $t('pages.voting.footer.security_title') }}
+                        </p>
+                        <p class="font-sans text-xs text-neutral-500 mt-1">
+                            {{ $t('pages.voting.footer.security_body') }}
+                        </p>
                     </div>
-
-                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border-2 border-green-200">
-                        <div class="flex items-start gap-4">
-                            <div class="text-4xl">⏱️</div>
-                            <div>
-                                <h3 class="font-bold text-green-900 text-lg mb-2">{{ $t('pages.voting.footer.time.title') }}</h3>
-                                <p class="text-green-800 text-sm">{{ $t('pages.voting.footer.time.description') }}</p>
-                            </div>
-                        </div>
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-neutral-200 text-center">
+                        <span class="text-3xl mb-2 block" aria-hidden="true">🕐</span>
+                        <p class="font-sans font-semibold text-neutral-800 text-sm">
+                            {{ $t('pages.voting.footer.time_title') }}
+                        </p>
+                        <p class="font-sans text-xs text-neutral-500 mt-1">
+                            {{ $t('pages.voting.footer.time_body') }}
+                        </p>
                     </div>
-
-                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border-2 border-purple-200">
-                        <div class="flex items-start gap-4">
-                            <div class="text-4xl">❓</div>
-                            <div>
-                                <h3 class="font-bold text-purple-900 text-lg mb-2">{{ $t('pages.voting.footer.help.title') }}</h3>
-                                <p class="text-purple-800 text-sm">{{ $t('pages.voting.footer.help.description') }}</p>
-                            </div>
-                        </div>
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-neutral-200 text-center">
+                        <span class="text-3xl mb-2 block" aria-hidden="true">❓</span>
+                        <p class="font-sans font-semibold text-neutral-800 text-sm">
+                            {{ $t('pages.voting.footer.help_title') }}
+                        </p>
+                        <p class="font-sans text-xs text-neutral-500 mt-1">
+                            {{ $t('pages.voting.footer.help_body') }}
+                        </p>
                     </div>
-                </section>
+                </div>
 
+                <div class="h-12"></div>
             </div>
         </div>
+
+        <!-- ── Confirmation Modal ── -->
+        <ConfirmationModal
+            :show="showConfirmModal"
+            :vote-data="builtVoteData"
+            :user-name="user_name"
+            @confirm="confirmSubmit"
+            @cancel="showConfirmModal = false"
+        />
+
     </election-layout>
 </template>
 
 <script>
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
-import CreateVotingform from '@/Pages/Vote/CreateVotingform.vue'
-import VoteSummary from '@/Pages/Vote/VoteSummary.vue'
-import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator.vue'
 import { useForm } from '@inertiajs/vue3'
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
+import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator.vue'
+import VoteSummary from '@/Pages/Vote/VoteSummary.vue'
+import PostSection from './components/PostSection.vue'
+import ConfirmationModal from './components/ConfirmationModal.vue'
 
 export default {
     name: 'CreateVotingPage',
 
     components: {
         ElectionLayout,
-        CreateVotingform,
-        VoteSummary,
         WorkflowStepIndicator,
+        VoteSummary,
+        PostSection,
+        ConfirmationModal,
     },
-    
+
+    layout: ElectionLayout,
+
     props: {
-        national_posts: {
-            type: Array,
-            default: () => []
-        },
-        regional_posts: {
-            type: Array,
-            default: () => []
-        },
-        user_name: {
-            type: String,
-            required: true
-        },
-        user_id: {
-            type: Number,
-            required: true
-        },
-        user_region: {
-            type: String,
-            default: ''
-        },
-        slug: {
-            type: String,
-            default: null
-        },
-        useSlugPath: {
-            type: Boolean,
-            default: false
-        },
-        election: {
-            type: Object,
-            default: null
-        }
+        national_posts: { type: Array,   default: () => [] },
+        regional_posts:  { type: Array,   default: () => [] },
+        user_name:       { type: String,  required: true },
+        user_id:         { type: Number,  required: true },
+        user_region:     { type: String,  default: '' },
+        slug:            { type: String,  default: null },
+        useSlugPath:     { type: Boolean, default: false },
+        election:        { type: Object,  default: null },
     },
-    
+
     setup(props) {
         const form = useForm({
-            user_id: props.user_id,
-            national_selected_candidates: [],
-            regional_selected_candidates: [],
-            no_vote_option: false,
+            user_id:      props.user_id,
             agree_button: false,
-        });
-
-        // Initialize arrays based on actual post counts
-        if (props.national_posts) {
-            form.national_selected_candidates = new Array(props.national_posts.length).fill(null);
-        }
-        if (props.regional_posts) {
-            form.regional_selected_candidates = new Array(props.regional_posts.length).fill(null);
-        }
-
-        function submit() {
-            // Validate before submission
-            const validation = validateVoteData();
-            if (!validation.isValid) {
-                alert('Please complete your selections before submitting:\n\n' + validation.issues.join('\n'));
-                return;
-            }
-
-            // ✅ FIX: Determine correct endpoint based on election type
-            const isDemo = props.election && props.election.type === 'demo';
-            const endpoint = isDemo ? 'demo-vote' : 'vote';
-
-            // Use slug-based route if available, otherwise use regular route
-            const submitUrl = props.useSlugPath && props.slug
-                ? `/v/${props.slug}/${endpoint}/submit`
-                : `/${endpoint}/submit`;
-
-            console.log('📤 Submitting form to:', submitUrl, {
-                electionType: props.election?.type,
-                isDemo,
-                endpoint
-            });
-
-            form.post(submitUrl, {
-                onError: (errors) => {
-                    console.error('Vote submission failed:', errors);
-                    // form.errors is automatically populated by Inertia
-                    // Components will reactively update due to form.errors binding
-
-                    // Scroll to first error post for user convenience
-                    this.scrollToFirstError();
-
-                    // Handle specific error cases
-                    if (errors.session) {
-                        alert('Your session has expired. Please refresh the page and try again.');
-                    } else if (errors.integrity) {
-                        alert('Vote validation failed. Please check your selections and try again.');
-                    }
-                }
-            });
-        }
-
-        function handleCandidateSelection(type, postIndex, selectionData) {
-            if (type === 'national') {
-                form.national_selected_candidates[postIndex] = selectionData;
-            } else if (type === 'regional') {
-                form.regional_selected_candidates[postIndex] = selectionData;
-            }
-        }
-
-        function validateVoteData() {
-            const issues = [];
-            const isSelectAllRequired = import.meta.env?.VITE_SELECT_ALL_REQUIRED === 'yes';
-
-            // Validate national posts
-            form.national_selected_candidates.forEach((selection, index) => {
-                if (!selection) {
-                    const post = props.national_posts[index];
-                    issues.push(`Please make a selection for ${post?.name || `National Post ${index + 1}`}`);
-                } else if (selection.no_vote) {
-                    // No vote selected - this is always valid
-                    return;
-                } else if (isSelectAllRequired) {
-                    // Must select exactly required_number candidates
-                    const required = props.national_posts[index]?.required_number || 1;
-                    const selected = selection.candidates.length;
-
-                    if (selected !== required) {
-                        const postName = props.national_posts[index]?.name || `National Post ${index + 1}`;
-                        issues.push(`Please select exactly ${required} candidate(s) for ${postName}`);
-                    }
-                } else {
-                    // Current behavior: validate max selections
-                    const required = props.national_posts[index]?.required_number || 1;
-                    const selected = selection.candidates.length;
-
-                    // 🐛 BUG FIX: Validate that at least one candidate is selected when no_vote is false
-                    if (selected === 0) {
-                        const postName = props.national_posts[index]?.name || `National Post ${index + 1}`;
-                        issues.push(`Please select at least one candidate for ${postName} or click "Skip this position"`);
-                    } else if (selected > required) {
-                        const postName = props.national_posts[index]?.name || `National Post ${index + 1}`;
-                        issues.push(`You can select maximum ${required} candidate(s) for ${postName}`);
-                    }
-                }
-            });
-
-            // Validate regional posts (same logic)
-            form.regional_selected_candidates.forEach((selection, index) => {
-                if (!selection) {
-                    const post = props.regional_posts[index];
-                    issues.push(`Please make a selection for ${post?.name || `Regional Post ${index + 1}`}`);
-                } else if (selection.no_vote) {
-                    return;
-                } else if (isSelectAllRequired) {
-                    const required = props.regional_posts[index]?.required_number || 1;
-                    const selected = selection.candidates.length;
-
-                    if (selected !== required) {
-                        const postName = props.regional_posts[index]?.name || `Regional Post ${index + 1}`;
-                        issues.push(`Please select exactly ${required} candidate(s) for ${postName}`);
-                    }
-                } else {
-                    const required = props.regional_posts[index]?.required_number || 1;
-                    const selected = selection.candidates.length;
-
-                    // 🐛 BUG FIX: Validate that at least one candidate is selected when no_vote is false
-                    if (selected === 0) {
-                        const postName = props.regional_posts[index]?.name || `Regional Post ${index + 1}`;
-                        issues.push(`Please select at least one candidate for ${postName} or click "Skip this position"`);
-                    } else if (selected > required) {
-                        const postName = props.regional_posts[index]?.name || `Regional Post ${index + 1}`;
-                        issues.push(`You can select maximum ${required} candidate(s) for ${postName}`);
-                    }
-                }
-            });
-
-            // Check agreement checkbox
-            if (!form.agree_button) {
-                issues.push('You must agree to the terms before submitting your vote.');
-            }
-
-            return {
-                isValid: issues.length === 0,
-                issues: issues
-            };
-        }
-
-        function scrollToFirstError() {
-            // Find first post with error
-            const allPosts = [
-                ...props.national_posts.map((p, i) => ({ type: 'national', index: i, post: p })),
-                ...props.regional_posts.map((p, i) => ({ type: 'regional', index: i, post: p }))
-            ];
-
-            for (const item of allPosts) {
-                const errorKey = `${item.type}_post_${item.index}`;
-                if (form.errors[errorKey]) {
-                    // Scroll to this component
-                    const element = document.querySelector(`[data-post-key="${item.type}-${item.post.post_id}"]`);
-                    if (element) {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        // Add visual focus indicator
-                        element.classList.add('ring-2', 'ring-red-500', 'ring-offset-2');
-                    }
-                    break;
-                }
-            }
-        }
-
-        return {
-            form,
-            submit,
-            handleCandidateSelection,
-            validateVoteData,
-            scrollToFirstError
-        };
+        })
+        return { form }
     },
-    
+
+    data() {
+        return {
+            selectedCandidates: {},
+            noVoteSelections:   {},
+            postErrors:         {},
+            loading:            false,
+            isLoading:          true,
+            showConfirmModal:   false,
+            builtVoteData:      null,
+            isDirty:            false,
+            postSectionRefs:    [],
+            currentFocusIndex:  0,
+            autoSaveInterval:   null,
+        }
+    },
+
     computed: {
+        normalizedNationalPosts() {
+            return this.national_posts.map(post => ({
+                ...post,
+                id: post.id ?? post.post_id,
+                candidates: (post.candidates || []).map(c => ({
+                    ...c,
+                    id:             c.id ?? c.candidacy_id,
+                    candidacy_id:   c.candidacy_id ?? c.id,
+                    candidacy_name: c.candidacy_name || c.user?.name,
+                    user_name:      c.user?.name || c.candidacy_name,
+                })),
+            }))
+        },
+
+        normalizedRegionalPosts() {
+            return (this.regional_posts || []).map(post => ({
+                ...post,
+                id: post.id ?? post.post_id,
+                candidates: (post.candidates || []).map(c => ({
+                    ...c,
+                    id:             c.id ?? c.candidacy_id,
+                    candidacy_id:   c.candidacy_id ?? c.id,
+                    candidacy_name: c.candidacy_name || c.user?.name,
+                    user_name:      c.user?.name || c.candidacy_name,
+                })),
+            }))
+        },
+
+        allPosts() {
+            return [...this.normalizedNationalPosts, ...this.normalizedRegionalPosts]
+        },
+
         votingProgress() {
-            const nationalCompleted = this.form.national_selected_candidates.filter(selection => 
-                selection && (selection.candidates.length > 0 || selection.no_vote)
-            ).length;
-            
-            const regionalCompleted = this.form.regional_selected_candidates.filter(selection => 
-                selection && (selection.candidates.length > 0 || selection.no_vote)
-            ).length;
-            
-            const completed = nationalCompleted + regionalCompleted;
-            const total = (this.national_posts?.length || 0) + (this.regional_posts?.length || 0);
-            const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
-            
+            let completed = 0
+            this.allPosts.forEach(post => {
+                if (this.noVoteSelections[post.id]) {
+                    completed++
+                } else if ((this.selectedCandidates[post.id]?.length || 0) === (post.required_number || 1)) {
+                    completed++
+                }
+            })
+            const total = this.allPosts.length
             return {
                 completed,
                 total,
-                percentage
-            };
+                percentage: total ? Math.round((completed / total) * 100) : 0,
+            }
         },
-        
-        validationSummary() {
-            const validation = this.validateVoteData();
-            return {
-                hasIssues: !validation.isValid,
-                issues: validation.issues
-            };
-        },
-        
+
         canSubmit() {
-            return this.validationSummary.hasIssues === false && !this.form.processing;
-        },
-        
-        submitButtonClasses() {
-            if (this.form.processing) {
-                return 'bg-blue-500 text-white cursor-not-allowed';
-            }
-            if (!this.canSubmit) {
-                return 'bg-gray-400 text-gray-600 cursor-not-allowed';
-            }
-            return 'bg-blue-600 hover:bg-blue-700 text-white hover:shadow-lg';
-        },
-        
-        submitButtonText() {
-            if (!this.form.agree_button) {
-                return 'Please agree to terms';
-            }
-            if (this.votingProgress.completed === 0) {
-                return 'Please make selections';
-            }
-            return 'Complete remaining selections';
-        }
-    },
-    
-    mounted() {
-        // Auto-save functionality (optional)
-        this.startAutoSave();
-        
-        // Add beforeunload listener to warn about unsaved changes
-        window.addEventListener('beforeunload', this.handleBeforeUnload);
-    },
-    
-    beforeUnmount() {
-        // Clean up auto-save and event listeners
-        if (this.autoSaveInterval) {
-            clearInterval(this.autoSaveInterval);
-        }
-        window.removeEventListener('beforeunload', this.handleBeforeUnload);
-    },
-    
-    methods: {
-        announceCheckboxStatus() {
-            if (this.form.agree_button) {
-                this.$nextTick(() => {
-                    const announcement = document.createElement('div');
-                    announcement.setAttribute('role', 'status');
-                    announcement.setAttribute('aria-live', 'polite');
-                    announcement.className = 'sr-only';
-                    announcement.textContent = this.$t('pages.voting.aria_labels.checkbox_checked');
-                    document.body.appendChild(announcement);
-                    setTimeout(() => {
-                        if (document.body.contains(announcement)) {
-                            document.body.removeChild(announcement);
-                        }
-                    }, 2000);
-                });
-            }
+            return this.form.agree_button &&
+                   !this.loading &&
+                   this.votingProgress.completed === this.votingProgress.total
         },
 
-        startAutoSave() {
-            // Save progress to localStorage every 30 seconds
-            this.autoSaveInterval = setInterval(() => {
-                this.saveProgress();
-            }, 30000);
+        hasRegionButNoPosts() {
+            return !!this.user_region &&
+                   this.normalizedRegionalPosts.length === 0 &&
+                   !this.isLoading
         },
 
-        saveProgress() {
-            try {
-                const progressData = {
-                    national_selected_candidates: this.form.national_selected_candidates,
-                    regional_selected_candidates: this.form.regional_selected_candidates,
-                    agree_button: this.form.agree_button,
-                    timestamp: new Date().toISOString(),
-                    user_id: this.user_id
-                };
-
-                localStorage.setItem('voting_progress', JSON.stringify(progressData));
-            } catch (error) {
-                console.warn('Failed to save voting progress:', error);
-            }
+        submitRoute() {
+            return this.useSlugPath && this.slug
+                ? route('slug.vote.submit', { vslug: this.slug })
+                : route('vote.submit')
         },
 
-        loadProgress() {
-            try {
-                const saved = localStorage.getItem('voting_progress');
-                if (saved) {
-                    const progressData = JSON.parse(saved);
+        draftKey() {
+            return `nrna_vote_draft_${this.election?.id || 'real'}_${this.user_id}`
+        },
 
-                    // Verify it's for the same user
-                    if (progressData.user_id === this.user_id) {
-                        // Check if saved data is not too old (e.g., within last hour)
-                        const saveTime = new Date(progressData.timestamp);
-                        const now = new Date();
-                        const hoursDiff = (now - saveTime) / (1000 * 60 * 60);
+        liveSummary() {
+            return this.buildVoteData()
+        },
 
-                        if (hoursDiff < 1) {
-                            this.form.national_selected_candidates = progressData.national_selected_candidates || [];
-                            this.form.regional_selected_candidates = progressData.regional_selected_candidates || [];
-                            this.form.agree_button = progressData.agree_button || false;
-                        }
-                    }
+        allCandidateCards() {
+            const cards = []
+            this.postSectionRefs.forEach(section => {
+                if (section && section.cardRefs) {
+                    cards.push(...section.cardRefs)
                 }
-            } catch (error) {
-                console.warn('Failed to load voting progress:', error);
+            })
+            return cards
+        },
+    },
+
+    watch: {
+        selectedCandidates: {
+            deep: true,
+            handler() { this.isDirty = true },
+        },
+        noVoteSelections: {
+            deep: true,
+            handler() { this.isDirty = true },
+        },
+    },
+
+    async mounted() {
+        await this.$nextTick()
+        this.isLoading = false
+        this.loadDraft()
+        this.autoSaveInterval = setInterval(() => this.saveDraft(), 30_000)
+    },
+
+    beforeUpdate() {
+        // Clear ref array before each re-render so stale refs don't accumulate
+        this.postSectionRefs = []
+    },
+
+    beforeUnmount() {
+        if (this.autoSaveInterval) clearInterval(this.autoSaveInterval)
+    },
+
+    methods: {
+        toggleCandidate(post, candidate) {
+            if (this.noVoteSelections[post.id]) return
+
+            const current = [...(this.selectedCandidates[post.id] || [])]
+            const index = current.indexOf(candidate.id)
+
+            if (index === -1) {
+                if (current.length < (post.required_number || 1)) {
+                    current.push(candidate.id)
+                    this.selectedCandidates = { ...this.selectedCandidates, [post.id]: current }
+                } else {
+                    this.postErrors = {
+                        ...this.postErrors,
+                        [post.id]: `Max ${post.required_number} candidate(s) allowed`,
+                    }
+                    setTimeout(() => {
+                        const errs = { ...this.postErrors }
+                        delete errs[post.id]
+                        this.postErrors = errs
+                    }, 3000)
+                    return
+                }
+            } else {
+                current.splice(index, 1)
+                this.selectedCandidates = { ...this.selectedCandidates, [post.id]: current }
+            }
+
+            this.isDirty = true
+        },
+
+        toggleNoVote(post) {
+            const next = !this.noVoteSelections[post.id]
+            this.noVoteSelections = { ...this.noVoteSelections, [post.id]: next }
+            if (next) {
+                this.selectedCandidates = { ...this.selectedCandidates, [post.id]: [] }
+            }
+            this.isDirty = true
+        },
+
+        validateAllPosts() {
+            const errors = []
+            this.allPosts.forEach(post => {
+                if (this.noVoteSelections[post.id]) return
+                const n   = this.selectedCandidates[post.id]?.length || 0
+                const req = post.required_number || 1
+                if (n === 0)        errors.push({ postId: post.id, msg: `No selection for: ${post.name}` })
+                else if (n !== req) errors.push({ postId: post.id, msg: `Select exactly ${req} candidate(s) for: ${post.name}` })
+            })
+            return errors
+        },
+
+        buildVoteData() {
+            const voteData = {
+                national_selected_candidates: [],
+                regional_selected_candidates: [],
+                no_vote_posts: [],
+            }
+
+            this.allPosts.forEach(post => {
+                const isNational = this.normalizedNationalPosts.some(p => p.id === post.id)
+                const key = isNational
+                    ? 'national_selected_candidates'
+                    : 'regional_selected_candidates'
+
+                if (this.noVoteSelections[post.id]) {
+                    voteData.no_vote_posts.push(post.id)
+                    voteData[key].push({
+                        post_id: post.id, post_name: post.name,
+                        required_number: post.required_number, no_vote: true, candidates: [],
+                    })
+                } else if (this.selectedCandidates[post.id]?.length) {
+                    const candidatesList = this.selectedCandidates[post.id].map(id => {
+                        const c = post.candidates.find(c => c.id === id)
+                        return {
+                            candidacy_id:   c?.candidacy_id || c?.id,
+                            user_name:      c?.user_name,
+                            candidacy_name: c?.candidacy_name,
+                        }
+                    })
+                    voteData[key].push({
+                        post_id: post.id, post_name: post.name,
+                        required_number: post.required_number, no_vote: false,
+                        candidates: candidatesList,
+                    })
+                }
+            })
+
+            return voteData
+        },
+
+        requestSubmit() {
+            this.postErrors = {}
+
+            const validationErrors = this.validateAllPosts()
+            if (validationErrors.length) {
+                const errs = {}
+                validationErrors.forEach(({ postId, msg }) => { errs[postId] = msg })
+                this.postErrors = errs
+                this.scrollToFirstError()
+                return
+            }
+
+            if (!this.form.agree_button) return
+
+            this.builtVoteData = this.buildVoteData()
+            this.showConfirmModal = true
+        },
+
+        confirmSubmit() {
+            this.showConfirmModal = false
+            this.loading = true
+
+            this.form.transform(() => ({
+                ...this.builtVoteData,
+                agree_button: this.form.agree_button,
+                user_id:      this.form.user_id,
+            })).post(this.submitRoute, {
+                onError: (errors) => {
+                    this.loading = false
+                    if (errors.vote) alert(errors.vote)
+                },
+                onSuccess: () => {
+                    this.clearDraft()
+                    this.loading = false
+                },
+            })
+        },
+
+        scrollToFirstError() {
+            const firstError = this.allPosts.find(p => this.postErrors[p.id])
+            if (firstError) {
+                const el = document.getElementById(`post-${firstError.id}`)
+                el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                el?.focus()
             }
         },
 
-        handleBeforeUnload(event) {
-            if (this.votingProgress.completed > 0 && !this.form.processing) {
-                event.preventDefault();
-                event.returnValue = 'You have unsaved voting selections. Are you sure you want to leave?';
-                return event.returnValue;
+        moveFocus(direction) {
+            const cards = this.allCandidateCards
+            if (!cards.length) return
+            this.currentFocusIndex = (this.currentFocusIndex + direction + cards.length) % cards.length
+            cards[this.currentFocusIndex]?.focus()
+        },
+
+        handleSpaceKey(e) {
+            const cards = this.allCandidateCards
+            const focused = cards[this.currentFocusIndex]
+            if (focused && focused === document.activeElement) {
+                e.preventDefault()
+                // Use string comparison — IDs may be UUIDs, not numeric
+                const candidateId = focused.dataset.candidateId
+                const postId      = focused.dataset.postId
+                const post        = this.allPosts.find(p => String(p.id) === String(postId))
+                const candidate   = post?.candidates.find(c => String(c.id) === String(candidateId))
+                if (post && candidate) this.toggleCandidate(post, candidate)
             }
-        }
-    }
+        },
+
+        saveDraft() {
+            if (!this.isDirty) return
+            try {
+                localStorage.setItem(this.draftKey, JSON.stringify({
+                    selectedCandidates: this.selectedCandidates,
+                    noVoteSelections:   this.noVoteSelections,
+                    savedAt:            Date.now(),
+                }))
+                this.isDirty = false
+            } catch (e) {
+                // Storage quota exceeded — silently ignore
+            }
+        },
+
+        loadDraft() {
+            try {
+                const raw = localStorage.getItem(this.draftKey)
+                if (!raw) return
+                const data = JSON.parse(raw)
+                if (Date.now() - data.savedAt < 3_600_000) {
+                    this.selectedCandidates = data.selectedCandidates ?? {}
+                    this.noVoteSelections   = data.noVoteSelections   ?? {}
+                    this.isDirty = false
+                } else {
+                    localStorage.removeItem(this.draftKey)
+                }
+            } catch (e) {
+                localStorage.removeItem(this.draftKey)
+            }
+        },
+
+        clearDraft() {
+            localStorage.removeItem(this.draftKey)
+        },
+    },
 }
 </script>
 
 <style scoped>
-/* Skip Link - Accessibility */
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: #2563eb;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    z-index: 100;
-    border-radius: 0 0 4px 0;
-    font-weight: 600;
-}
-
-.skip-link:focus {
-    top: 0;
-}
-
-/* Screen Reader Only Text */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-
-/* Focus Styles for Accessibility */
-a:focus-visible,
-button:focus-visible,
-[role="button"]:focus-visible,
-input:focus-visible {
-    outline: 3px solid #2563eb;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
-}
-
-/* Smooth transitions */
-.transition-all {
-    transition: all 0.3s ease-in-out;
-}
-
-.transition-shadow {
-    transition: box-shadow 0.3s ease-in-out;
-}
-
-/* Enhanced button hover effects */
-button:hover:not(:disabled) {
-    transform: translateY(-1px);
-}
-
-button:active:not(:disabled) {
-    transform: translateY(0);
-}
-
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 </style>

@@ -316,11 +316,42 @@
             </div>
           </div>
 
-          <ActionButton as="a" variant="outline" size="md" :href="postsUrl" class="w-full sm:w-auto">
+          <div class="flex flex-wrap gap-3">
+            <ActionButton as="a" variant="outline" size="md" :href="postsUrl" class="w-full sm:w-auto">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+              </svg>
+              पदहरू | Manage Positions
+            </ActionButton>
+            <ActionButton as="a" variant="outline" size="md" :href="candidaciesUrl" class="w-full sm:w-auto">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+              उम्मेद्वारहरू | Manage Candidates
+            </ActionButton>
+          </div>
+        </SectionCard>
+
+        <!-- ── CANDIDACY APPLICATION REVIEW ─────────────────────── -->
+        <SectionCard padding="lg">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
+                <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-base font-semibold text-slate-800">उम्मेद्वारी आवेदन | Candidacy Applications</h2>
+                <p class="text-xs text-slate-500 mt-0.5">Review and approve candidacy applications from members</p>
+              </div>
+            </div>
+          </div>
+          <ActionButton as="a" variant="outline" size="md" :href="candidacyApplicationsUrl" class="w-full sm:w-auto">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
             </svg>
-            पद र उम्मेद्वार व्यवस्थापन | Manage Posts &amp; Candidates
+            आवेदन समीक्षा गर्नुहोस् | Review Applications
           </ActionButton>
         </SectionCard>
 
@@ -408,9 +439,9 @@
 </template>
 
 <script setup>
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { ref, computed } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import Card from '@/Components/Card.vue'
 import StatusBadge from '@/Components/StatusBadge.vue'
 import ActionButton from '@/Components/ActionButton.vue'
@@ -459,6 +490,20 @@ const voterListUrl = computed(() =>
 
 const postsUrl = computed(() =>
   route('organisations.elections.posts.index', {
+    organisation: props.election.organisation?.slug,
+    election:     props.election.slug,
+  })
+)
+
+const candidacyApplicationsUrl = computed(() =>
+  route('organisations.elections.candidacy.applications', {
+    organisation: props.election.organisation?.slug,
+    election:     props.election.slug,
+  })
+)
+
+const candidaciesUrl = computed(() =>
+  route('organisations.elections.candidacies.index', {
     organisation: props.election.organisation?.slug,
     election:     props.election.slug,
   })

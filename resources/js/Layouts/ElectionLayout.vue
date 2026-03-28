@@ -3,7 +3,6 @@
         <!-- Header - sticks to top -->
         <!-- Note: Not passing :locale prop allows language preference to persist from localStorage -->
         <PublicDigitHeader />
-        <navigation></navigation>
         
         <!-- Main content - grows to fill space -->
         <main class="flex-1">
@@ -18,7 +17,6 @@
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import profileHeader from "@/Components/Jetstream/ProfileHeader.vue";
 import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
-import Navigation from "@/Components/Header/ElectionNavigation.vue";
 export default {
     props: {
         image2: String,
@@ -35,7 +33,6 @@ export default {
         PublicDigitHeader,
         profileHeader,
         PublicDigitFooter,
-        Navigation,
     },
 };
 </script>

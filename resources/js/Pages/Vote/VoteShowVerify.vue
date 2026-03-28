@@ -1,5 +1,8 @@
 <template>
-    <election-layout>
+    <div class="min-h-screen flex flex-col">
+        <PublicDigitHeader />
+
+        <div class="flex-1">
         <!-- ACCESSIBILITY: Skip link -->
         <a href="#main-content" class="skip-link">
             {{ $t('pages.vote-show-verify.aria_labels.skip_to_content') }}
@@ -465,11 +468,15 @@
                 </div>
             </div>
         </main>
-    </election-layout>
+        </div>
+
+        <PublicDigitFooter class="px-4" />
+    </div>
 </template>
 
 <script>
-import ElectionLayout from "@/Layouts/ElectionLayout.vue";
+import PublicDigitHeader from "@/Components/Jetstream/PublicDigitHeader.vue";
+import PublicDigitFooter from "@/Components/Jetstream/PublicDigitFooter.vue";
 import VoteFinal from "@/Pages/Vote/VoteFinal";
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator";
 import { useForm } from "@inertiajs/vue3";
@@ -477,7 +484,8 @@ import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 
 export default {
     components: {
-        ElectionLayout,
+        PublicDigitHeader,
+        PublicDigitFooter,
         VoteFinal,
         WorkflowStepIndicator,
         JetValidationErrors,

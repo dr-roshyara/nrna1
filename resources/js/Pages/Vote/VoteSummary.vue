@@ -17,7 +17,7 @@
                         <div class="font-medium">✓ Selected Candidates:</div>
                         <ul class="list-disc list-inside ml-4">
                             <li v-for="candidate in selection.candidates" :key="candidate.candidacy_id">
-                                {{ candidate.name }}
+                                {{ candidate.candidacy_name || candidate.user_name || candidate.name }}
                             </li>
                         </ul>
                     </div>
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Regional Posts Summary -->
         <div v-if="regionalSelections && regionalSelections.length > 0" class="mb-6">
             <h4 class="text-lg font-semibold text-purple-700 mb-3">Regional Posts</h4>
@@ -41,7 +41,7 @@
                         <div class="font-medium">✓ Selected Candidates:</div>
                         <ul class="list-disc list-inside ml-4">
                             <li v-for="candidate in selection.candidates" :key="candidate.candidacy_id">
-                                {{ candidate.name }}
+                                {{ candidate.candidacy_name || candidate.user_name || candidate.name }}
                             </li>
                         </ul>
                     </div>

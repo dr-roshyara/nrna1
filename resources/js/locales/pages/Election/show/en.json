@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "eyebrow": "Official Election",
+    "ip_badge_text": "Voting from {ip}",
+    "ip_badge_tooltip": "Your IP address is recorded for security verification"
+  },
+  "can_vote": {
+    "eyebrow": "YOUR BALLOT IS READY",
+    "heading": "You are eligible to vote",
+    "countdown_label": "Voting window closes in",
+    "countdown_hrs": "hrs",
+    "countdown_min": "min",
+    "countdown_sec": "sec",
+    "step_1": "Click <em>Cast Your Vote</em> below to begin",
+    "step_2": "Enter your secure, single-use voting code",
+    "step_3": "Select your candidates for each position",
+    "step_4": "Confirm — your anonymous ballot is cast",
+    "cta_idle": "Cast Your Vote",
+    "cta_loading": "Preparing ballot…",
+    "trust_encrypted": "End-to-end encrypted",
+    "trust_anonymous": "Completely anonymous",
+    "trust_audit": "Immutable audit trail"
+  },
+  "has_voted": {
+    "eyebrow": "VOTE RECORDED",
+    "heading": "Your ballot has been cast",
+    "body": "Your vote has been securely recorded. Thank you for participating in this election. Your ballot is completely anonymous and cannot be linked back to your identity.",
+    "cert_election_label": "Election",
+    "cert_status_label": "Status",
+    "cert_status_value": "Recorded ✓",
+    "cert_anonymity_label": "Anonymity",
+    "cert_anonymity_value": "Guaranteed — no voter-vote linkage"
+  },
+  "not_eligible": {
+    "eyebrow": "NOT REGISTERED",
+    "heading": "You are not eligible to vote in this election",
+    "body": "Your account is not registered as an eligible voter for {election}. If you believe this is an error, please contact the election administrator."
+  }
+}

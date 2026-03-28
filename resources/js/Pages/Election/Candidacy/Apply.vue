@@ -354,9 +354,9 @@
 </template>
 
 <script setup>
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { ref, computed } from 'vue'
 import { usePage, router } from '@inertiajs/vue3'
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 
 const props = defineProps({
   organisation:        { type: Object, required: true },

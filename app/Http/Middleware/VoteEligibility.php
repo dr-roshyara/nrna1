@@ -32,7 +32,15 @@ class VoteEligibility
             return $next($request);
         }
 
-        // ✅ REAL ELECTIONS: Use the improved eligibility check
+        // New ElectionMembership system: if a voter_slug is present, the full
+        // upstream middleware stack (VerifyVoterSlug → EnsureElectionVoter →
+        // EnsureVoterStepOrder) has already validated eligibility, voting status,
+        // and session window. Skip the legacy is_voter / can_vote column check.
+        if ($request->attributes->get('voter_slug')) {
+            return $next($request);
+        }
+
+        // ✅ REAL ELECTIONS (legacy flow): Use the improved eligibility check
         if (!$user->isEligibleToVote()) {
             // ✅ Get detailed status for better error message
             $ballotAccess = $user->getBallotAccessStatus();

@@ -6,6 +6,7 @@ use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\ElectionOfficer;
 use App\Models\Organisation;
+use App\Models\Post;
 use App\Models\UserOrganisationRole;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -459,6 +460,35 @@ class OrganisationController extends Controller
             'isDeputy'     => ElectionOfficer::where('user_id', $user->id)
                 ->where('organisation_id', $organisation->id)
                 ->where('role', 'deputy')->where('status', 'active')->exists(),
+        ]);
+    }
+
+    public function voterPosts(Organisation $organisation, string $election): Response
+    {
+        $electionModel = Election::withoutGlobalScopes()
+            ->where('slug', $election)
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->firstOrFail();
+
+        $posts = Post::withoutGlobalScopes()
+            ->where('election_id', $electionModel->id)
+            ->where('organisation_id', $organisation->id)
+            ->orderBy('position_order')
+            ->get()
+            ->map(fn ($post) => [
+                'id'               => $post->id,
+                'name'             => $post->name,
+                'nepali_name'      => $post->nepali_name,
+                'is_national_wide' => (bool) $post->is_national_wide,
+                'state_name'       => $post->state_name,
+                'required_number'  => $post->required_number,
+            ]);
+
+        return Inertia::render('Organisations/Posts', [
+            'organisation' => $organisation->only('id', 'name', 'slug'),
+            'election'     => $electionModel->only('id', 'name', 'slug', 'status'),
+            'posts'        => $posts->values(),
         ]);
     }
 }

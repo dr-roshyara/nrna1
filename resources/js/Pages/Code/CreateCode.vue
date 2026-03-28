@@ -161,9 +161,9 @@
     </election-layout>
 </template>
 <script>
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { useForm } from "@inertiajs/vue3";
 import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
-import ElectionLayout from "@/Layouts/ElectionLayout.vue";
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator.vue";
 export default {
     props: {

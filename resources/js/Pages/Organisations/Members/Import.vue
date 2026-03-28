@@ -235,10 +235,10 @@
 </template>
 
 <script setup>
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Link } from '@inertiajs/vue3'
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { useMemberImport } from '@/composables/useMemberImport'
 
 const { t } = useI18n()

@@ -494,7 +494,7 @@
 </template>
 
 <script>
-import ElectionLayout from "@/Layouts/ElectionLayout.vue";
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator";
 import { useForm } from "@inertiajs/vue3";
 import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";

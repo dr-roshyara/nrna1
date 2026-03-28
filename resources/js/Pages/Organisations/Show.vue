@@ -1,5 +1,7 @@
 <template>
-  <ElectionLayout>
+  <div class="min-h-screen flex flex-col">
+    <PublicDigitHeader />
+    <div class="flex-1">
     <!-- Skip to Main Content -->
     <a
       href="#main-content"
@@ -389,7 +391,9 @@
         </div>
       </div>
     </main>
-  </ElectionLayout>
+    </div>
+    <PublicDigitFooter class="px-4" />
+  </div>
 </template>
 
 <script setup>
@@ -398,7 +402,8 @@ import { router, usePage } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { useMeta } from '@/composables/useMeta'
 
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
+import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 import OrganizationHeader from './Partials/OrganizationHeader.vue'
 import StatsGrid from './Partials/StatsGrid.vue'
 import ActionButtons from './Partials/ActionButtons.vue'

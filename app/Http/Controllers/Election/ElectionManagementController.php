@@ -177,7 +177,15 @@ class ElectionManagementController extends Controller
             \Illuminate\Support\Facades\Log::info('DASHBOARD_DEBUG2', ['session_orgId' => $orgId, 'activeElection' => $activeElection?->id, 'allElectionsInDB' => $allElectionsInDB]);
 
             if ($activeElection) {
-                return redirect()->route('elections.show', $activeElection->slug);
+                $redirect = redirect()->route('elections.show', $activeElection->slug);
+                // Carry any flash messages through this intermediate redirect
+                if ($error = session('error')) {
+                    $redirect = $redirect->with('error', $error);
+                }
+                if ($success = session('success')) {
+                    $redirect = $redirect->with('success', $success);
+                }
+                return $redirect;
             }
         }
 

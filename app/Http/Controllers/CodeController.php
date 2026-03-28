@@ -36,7 +36,7 @@ class CodeController extends Controller
     public function __construct()
     {
         $this->clientIP = \Request::getClientIp(true);
-        $this->maxUseClientIP = config('app.max_use_clientIP', 7);
+        $this->maxUseClientIP = config('app.max_use_clientIP') ?? 7;
         $this->votingTimeInMinutes = (int) config('voting.time_in_minutes', 30); // Configurable voting window (matches voter slug expiry)
     }
 
@@ -54,8 +54,14 @@ class CodeController extends Controller
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
-        // Layer 0: Membership check (defense-in-depth — middleware is primary gate)
-        if ($redirect = $this->ensureVoterMembership($election, $user)) {
+        // Bind organisation context so BelongsToTenant scope resolves correctly
+        // for all Code queries within this request.
+        session(['current_organisation_id' => $election->organisation_id]);
+
+        // Layer 0: Membership check (defense-in-depth — middleware is primary gate).
+        // Skip when the voter-slug middleware stack has already verified eligibility;
+        // the cached isVoterInElection() result may be stale (5-min TTL).
+        if (! $voterSlug && $redirect = $this->ensureVoterMembership($election, $user)) {
             return $redirect;
         }
 
@@ -73,12 +79,13 @@ class CodeController extends Controller
             'existing_code_verified' => $existingCode ? $existingCode->can_vote_now : 'no_code',
         ]);
 
-        // ⚠️ If code is already verified, user should not be here!
+        // ⚠️ If code is already verified, redirect to the appropriate next step
         if ($existingCode && $existingCode->can_vote_now == 1) {
-            Log::warning('⚠️ [CREATE] User already has verified code - should be on agreement page!', [
+            Log::warning('⚠️ [CREATE] User already has verified code - redirecting to correct step', [
                 'user_id' => $user->id,
                 'code_id' => $existingCode->id,
             ]);
+            return $this->handleAlreadyVerified($request, $voterSlug);
         }
 
         // ⛔ REAL ELECTIONS: Block access to code page if already voted
@@ -92,28 +99,59 @@ class CodeController extends Controller
         }
 
         // Check basic eligibility
-        if (!$this->isUserEligible($user)) {
+        if (!$this->isUserEligible($user, $request)) {
             return $this->redirectToDashboard('You are not eligible to vote.');
         }
 
         // Get or create code record for this election
         $code = $this->getOrCreateCode($user, $election);
 
-        // ✅ CHECK IF CODE HAS EXPIRED - IF YES, SEND NEW ONE
-        $minutesSinceSent = $code->code_to_open_voting_form_sent_at ? \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)->diffInMinutes(now()) : 0;
+        // ✅ CHECK IF CODE HAS EXPIRED OR IS STALE - IF YES, SEND NEW ONE
+        $minutesSinceSent = $code->code_to_open_voting_form_sent_at
+            ? \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)->diffInMinutes(now())
+            : 0;
 
-        if ($minutesSinceSent >= $this->votingTimeInMinutes && $code->has_code1_sent) {
+        // Determine if code needs regeneration:
+        // - Window expired (>= voting time minutes) AND user hasn't voted yet
+        // - OR: code flags were zeroed by vote_pre_check timeout (has_code1_sent=0) but sent_at is stale
+        // Do NOT guard on can_vote_now or has_code1_sent — vote_pre_check() zeros those on timeout.
+        $codeNeedsReset = !$code->has_voted && (
+            ($minutesSinceSent >= $this->votingTimeInMinutes)
+            || (!$code->has_code1_sent && $code->code_to_open_voting_form_sent_at)
+        );
+
+        if ($codeNeedsReset) {
             Log::info('🔄 Code expired - sending new code', [
                 'user_id' => $user->id,
                 'minutes_since_sent' => $minutesSinceSent,
                 'max_minutes' => $this->votingTimeInMinutes,
             ]);
 
-            // Generate new code and reset timer
-            $code->code_to_open_voting_form = Str::random(6);
-            $code->code_to_open_voting_form_sent_at = now();
-            $code->has_code1_sent = true;
-            $code->save();
+            // Generate new code and reset all flags (full window reset)
+            $code->update([
+                'code_to_open_voting_form'           => $this->generateUniqueCodeForOrganisation($election->organisation_id),
+                'code_to_open_voting_form_sent_at'   => now(),
+                'has_code1_sent'                     => 1,
+                'is_code_to_open_voting_form_usable' => 1,
+                'can_vote_now'                       => 0,
+                'code_to_open_voting_form_used_at'   => null,
+                'voting_started_at'                  => null,
+                'vote_submitted'                     => 0,
+            ]);
+
+            // Extend voter slug expiry so the user gets a fresh 30-minute window
+            if ($voterSlug) {
+                $voterSlug->update([
+                    'expires_at'  => now()->addMinutes($this->votingTimeInMinutes),
+                    'is_active'   => true,
+                    'can_vote_now' => true,
+                    'status'      => 'active',
+                ]);
+                Log::info('✅ Voter slug window extended after code regeneration', [
+                    'voter_slug_id' => $voterSlug->id,
+                    'new_expires_at' => now()->addMinutes($this->votingTimeInMinutes),
+                ]);
+            }
 
             // Send new code notification
             try {
@@ -173,8 +211,9 @@ class CodeController extends Controller
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
-        // Layer 0: Membership check (defense-in-depth)
-        if ($redirect = $this->ensureVoterMembership($election, $user)) {
+        // Layer 0: Membership check (defense-in-depth).
+        // Skip for voter-slug requests — middleware already verified eligibility.
+        if (! $voterSlug && $redirect = $this->ensureVoterMembership($election, $user)) {
             return $redirect;
         }
 
@@ -202,7 +241,7 @@ class CodeController extends Controller
         $submittedCode = trim(strtoupper($request->input('voting_code')));
 
         // Check basic eligibility
-        if (!$this->isUserEligible($user)) {
+        if (!$this->isUserEligible($user, $request)) {
             return $this->redirectToDashboard('You are not eligible to vote.');
         }
 
@@ -344,9 +383,17 @@ class CodeController extends Controller
         ]);
 
         // Verify user has completed code verification for this election
-        $code = Code::where('user_id', $user->id)
+        $code = Code::withoutGlobalScopes()
+            ->where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->first();
+
+        // Block if already voted
+        if ($election->type === 'real' && $code && $code->has_voted) {
+            Log::warning('Security: Voted user attempted showAgreement', ['user_id' => $user->id, 'election_id' => $election->id]);
+            return $this->redirectToDashboard('You have already voted in this election.');
+        }
+
         if (!$code || $code->can_vote_now != 1) {
             $redirectUrl = $voterSlug
                 ? route('slug.code.create', ['vslug' => $voterSlug->slug])
@@ -466,9 +513,17 @@ class CodeController extends Controller
         ]);
 
         // Verify user has completed code verification for this election
-        $code = Code::where('user_id', $user->id)
+        $code = Code::withoutGlobalScopes()
+            ->where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->first();
+
+        // Block if already voted
+        if ($election->type === 'real' && $code && $code->has_voted) {
+            Log::warning('Security: Voted user attempted submitAgreement', ['user_id' => $user->id, 'election_id' => $election->id]);
+            return $this->redirectToDashboard('You have already voted in this election.');
+        }
+
         if (!$code || $code->can_vote_now != 1) {
             return $this->jsonOrRedirect($request, false, 'Code verification required.',
                 redirect()->route('slug.code.create', ['vslug' => $voterSlug->slug]));
@@ -554,18 +609,48 @@ class CodeController extends Controller
      */
     private function getElection(Request $request): Election
     {
-        return $request->attributes->get('election')
-            ?? Election::where('type', 'real')->first();
+        $election  = $request->attributes->get('election');
+        $voterSlug = $request->attributes->get('voter_slug');
+
+        if (! $election) {
+            Log::error('Election context missing from request attributes', [
+                'route'   => $request->route()?->getName(),
+                'user_id' => auth()->id(),
+            ]);
+            throw new \Exception('Election context is required but was not set by middleware.');
+        }
+
+        if ($voterSlug && $election) {
+            if ($election->id !== $voterSlug->election_id) {
+                Log::error('Election mismatch', ['election' => $election->id, 'slug_election' => $voterSlug->election_id]);
+                throw new \Exception('Election mismatch detected between voter slug and election context');
+            }
+            $orgsMatch       = $election->organisation_id === $voterSlug->organisation_id;
+            $isPlatformElect = $election->organisation_id == 1;
+            $isPlatformSlug  = $voterSlug->organisation_id == 1;
+            if (!$orgsMatch && !$isPlatformElect && !$isPlatformSlug) {
+                Log::error('Organisation mismatch', ['election_org' => $election->organisation_id, 'slug_org' => $voterSlug->organisation_id]);
+                throw new \Exception('Organisation mismatch detected');
+            }
+        }
+        return $election;
     }
 
-    private function isUserEligible(User $user): bool
+    private function isUserEligible(User $user, ?Request $request = null): bool
     {
         // Allow any authenticated user to vote in demo elections
         if (session('selected_election_type') === 'demo') {
             return true;
         }
 
-        // Real elections require can_vote permission
+        // If the request arrived via the new ElectionMembership voter-slug middleware
+        // stack, the user has already been validated as an eligible voter — skip the
+        // legacy can_vote column check.
+        if ($request && $request->attributes->get('voter_slug')) {
+            return true;
+        }
+
+        // Legacy: Real elections require can_vote permission
         return $user && $user->can_vote == 1;
     }
 
@@ -635,7 +720,7 @@ class CodeController extends Controller
                 'user_id' => $user->id,
                 'election_id' => $election->id,
                 'organisation_id' => $election->organisation_id,  // ✅ EXPLICIT
-                'code_to_open_voting_form' => $this->generateCode(),
+                'code_to_open_voting_form' => $this->generateUniqueCodeForOrganisation($election->organisation_id),
                 'code_to_open_voting_form_sent_at' => now(),
                 'has_code1_sent' => 1,
                 'client_ip' => $this->clientIP,
@@ -695,17 +780,20 @@ class CodeController extends Controller
             $shouldResend = ($isExpired && !$codeWasUsed && $notYetVoted);
 
             if ($shouldResend) {
-                // Generate and send new code
-                $newCode = $this->generateCode();
+                // Generate unique code and reset all flags
+                $newCode = $this->generateUniqueCodeForOrganisation($code->organisation_id);
 
                 $code->update([
-                    'code_to_open_voting_form' => $newCode,
-                    'code_to_open_voting_form_sent_at' => now(),
-                    'has_code1_sent' => 1,
+                    'code_to_open_voting_form'           => $newCode,
+                    'code_to_open_voting_form_sent_at'   => now(),
+                    'has_code1_sent'                     => 1,
                     'is_code_to_open_voting_form_usable' => 1,
-                    'can_vote_now' => 0,
-                    'vote_submitted' => 0, // Reset submission status
+                    'can_vote_now'                       => 0,
+                    'code_to_open_voting_form_used_at'   => null,
+                    'voting_started_at'                  => null,
+                    'vote_submitted'                     => 0,
                 ]);
+                Log::info('Security: Expired code regenerated', ['user_id' => $user->id, 'election_id' => $election->id]);
 
                 // Send new code via email only if user has valid email
                 if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
@@ -761,9 +849,14 @@ class CodeController extends Controller
             return ['success' => false, 'message' => 'Verification code has expired. Please request a new code.'];
         }
 
-        // Check IP rate limiting
-        $votesFromIP = Code::where('client_ip', $this->clientIP)->where('has_voted', 1)->count();
+        // Check IP rate limiting (scoped to current election only)
+        $votesFromIP = Code::withoutGlobalScopes()
+            ->where('client_ip', $this->clientIP)
+            ->where('election_id', $code->election_id)
+            ->where('has_voted', 1)
+            ->count();
         if ($votesFromIP >= $this->maxUseClientIP) {
+            Log::warning('Security: IP rate limit exceeded', ['ip' => $this->clientIP, 'election_id' => $code->election_id, 'count' => $votesFromIP]);
             return ['success' => false, 'message' => 'Too many votes from this IP address.'];
         }
 
@@ -776,11 +869,10 @@ class CodeController extends Controller
 
         try {
             $updateResult = $code->update([
-                'can_vote_now' => 1,
-                'is_code_to_open_voting_form_usable' => 0,
-                'code_to_open_voting_form_used_at' => now(),
-                'is_codemodel_valid' => true,
-                'client_ip' => $this->clientIP,
+                'can_vote_now'                       => 1,
+                'is_code_to_open_voting_form_usable' => config('voting.two_codes_system', 0) == 1 ? 0 : 1,
+                'code_to_open_voting_form_used_at'   => now(), 
+                'client_ip'                          => $this->clientIP,
             ]);
 
             Log::info('🟠 [markCodeAsVerified] Update result', [
@@ -845,17 +937,64 @@ class CodeController extends Controller
             }
         }
 
-        $agreementUrl = $voterSlug
-            ? route('slug.code.agreement', ['vslug' => $voterSlug->slug])
-            : route('code.agreement');
+        // Redirect to the correct next step based on how far the voter has progressed
+        if ($voterSlug) {
+            try {
+                $stepTrackingService = new VoterStepTrackingService();
+                $highestStep = $stepTrackingService->getHighestCompletedStep($voterSlug, $election);
 
-        // Already verified, just redirect to agreement
-        return redirect($agreementUrl)->with('info', 'Code already verified. Continue to agreement.');
+                // Step 2 (agreement) already done → redirect to vote page (step 3)
+                if ($highestStep >= 2) {
+                    Log::info('🔵 [handleAlreadyVerified] Steps 1+2 complete — redirecting to vote page', [
+                        'voter_slug_id' => $voterSlug->id,
+                        'highest_step'  => $highestStep,
+                    ]);
+                    return redirect(route('slug.vote.create', ['vslug' => $voterSlug->slug]))
+                        ->with('info', 'Code already verified. Continue to vote.');
+                }
+            } catch (\Exception $e) {
+                Log::error('❌ [handleAlreadyVerified] Failed to read step progress', [
+                    'voter_slug_id' => $voterSlug->id,
+                    'error' => $e->getMessage(),
+                ]);
+            }
+
+            return redirect(route('slug.code.agreement', ['vslug' => $voterSlug->slug]))
+                ->with('info', 'Code already verified. Continue to agreement.');
+        }
+
+        return redirect(route('code.agreement'))
+            ->with('info', 'Code already verified. Continue to agreement.');
     }
 
     private function generateCode(): string
     {
-        return strtoupper(Str::random(6));
+        $characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        $code = '';
+        for ($i = 0; $i < 8; $i++) {
+            $code .= $characters[random_int(0, strlen($characters) - 1)];
+        }
+        return $code;
+    }
+
+    private function generateUniqueCodeForOrganisation($organisationId): string
+    {
+        $maxAttempts = 10;
+        $attempts    = 0;
+        do {
+            $code   = $this->generateCode();
+            $exists = Code::withoutGlobalScopes()
+                ->where('code_to_open_voting_form', $code)
+                ->where('organisation_id', $organisationId)
+                ->exists();
+            $attempts++;
+        } while ($exists && $attempts < $maxAttempts);
+
+        if ($attempts >= $maxAttempts) {
+            Log::error('Failed to generate unique code after max attempts', ['organisation_id' => $organisationId]);
+            return $this->generateCode() . Str::random(4); // fallback
+        }
+        return $code;
     }
 
     private function redirectToDashboard(string $message)

@@ -50,8 +50,11 @@ class ValidateVoterSlugWindow
         }
 
         // CHECK 2: Is election still active? (if election has date range)
+        // Use end-of-day so a date-only end_date like "2026-03-23" means
+        // the election is open for the full day, not just until midnight UTC.
         if ($voterSlug->election && $voterSlug->election->end_date) {
-            if ($voterSlug->election->end_date->isPast()) {
+            $endOfDay = \Carbon\Carbon::parse($voterSlug->election->end_date)->endOfDay();
+            if ($endOfDay->isPast()) {
                 Log::warning('❌ [ValidateVoterSlugWindow] Election ended', [
                     'slug_id' => $voterSlug->id,
                     'election_id' => $voterSlug->election_id,

@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "eyebrow": "Offizielle Wahl",
+    "ip_badge_text": "Abstimmung von {ip}",
+    "ip_badge_tooltip": "Ihre IP-Adresse wird zur Sicherheitsüberprüfung aufgezeichnet"
+  },
+  "can_vote": {
+    "eyebrow": "IHR STIMMZETTEL IST BEREIT",
+    "heading": "Sie sind wahlberechtigt",
+    "countdown_label": "Abstimmungsfenster schließt in",
+    "countdown_hrs": "Std",
+    "countdown_min": "Min",
+    "countdown_sec": "Sek",
+    "step_1": "Klicken Sie unten auf <em>Stimme abgeben</em>",
+    "step_2": "Geben Sie Ihren sicheren Einmal-Abstimmungscode ein",
+    "step_3": "Wählen Sie Ihre Kandidaten für jede Position",
+    "step_4": "Bestätigen — Ihr anonymer Stimmzettel wird abgegeben",
+    "cta_idle": "Stimme abgeben",
+    "cta_loading": "Stimmzettel wird vorbereitet…",
+    "trust_encrypted": "Ende-zu-Ende verschlüsselt",
+    "trust_anonymous": "Vollständig anonym",
+    "trust_audit": "Unveränderliches Prüfprotokoll"
+  },
+  "has_voted": {
+    "eyebrow": "STIMME ERFASST",
+    "heading": "Ihr Stimmzettel wurde abgegeben",
+    "body": "Ihre Stimme wurde sicher erfasst. Danke für Ihre Teilnahme an dieser Wahl. Ihr Stimmzettel ist vollständig anonym und kann nicht mit Ihrer Identität verknüpft werden.",
+    "cert_election_label": "Wahl",
+    "cert_status_label": "Status",
+    "cert_status_value": "Erfasst ✓",
+    "cert_anonymity_label": "Anonymität",
+    "cert_anonymity_value": "Garantiert — keine Wähler-Stimmen-Verknüpfung"
+  },
+  "not_eligible": {
+    "eyebrow": "NICHT REGISTRIERT",
+    "heading": "Sie sind nicht wahlberechtigt für diese Wahl",
+    "body": "Ihr Konto ist nicht als wahlberechtigter Wähler für {election} registriert. Wenn Sie glauben, dass dies ein Fehler ist, kontaktieren Sie bitte den Wahlleiter."
+  }
+}

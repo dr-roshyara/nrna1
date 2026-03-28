@@ -20,6 +20,7 @@
 
 use App\Http\Controllers\CandidacyApplicationController;
 use App\Http\Controllers\Election\CandidacyManagementController;
+use App\Http\Controllers\Election\CandidacyReviewController;
 use App\Http\Controllers\Election\ElectionManagementController;
 use App\Http\Controllers\Election\PostManagementController;
 use App\Http\Controllers\ElectionOfficerController;
@@ -64,6 +65,9 @@ Route::prefix('organisations/{organisation:slug}')
 
         // ── Election Voter Management (ElectionMembership — real elections only) ──
         Route::prefix('/elections/{election:slug}')->group(function () {
+            // ── Public candidacy application page (voter-facing, per election) ────
+            Route::get('/candidacy/apply', [CandidacyApplicationController::class, 'applyForm'])
+                ->name('organisations.elections.candidacy.apply');
             Route::get('/voters',                   [ElectionVoterController::class, 'index'])     ->name('elections.voters.index');
             Route::post('/voters',                  [ElectionVoterController::class, 'store'])     ->name('elections.voters.store');
             Route::post('/voters/bulk',             [ElectionVoterController::class, 'bulkStore']) ->name('elections.voters.bulk');
@@ -75,6 +79,9 @@ Route::prefix('organisations/{organisation:slug}')
             Route::post('/voters/{membership}/confirm-suspension',  [ElectionVoterController::class, 'confirmSuspension']) ->name('elections.voters.confirm-suspension');
             Route::post('/voters/{membership}/cancel-proposal',     [ElectionVoterController::class, 'cancelProposal'])    ->name('elections.voters.cancel-proposal');
 
+            // ── Voter-facing positions page (read-only) ───────────────────────────
+            Route::get('/positions',          [OrganisationController::class, 'voterPosts'])->name('organisations.elections.positions');
+
             // ── Posts management (positions within an election) ────────────────────
             Route::get('/posts',              [PostManagementController::class, 'index'])  ->name('organisations.elections.posts.index');
             Route::post('/posts',             [PostManagementController::class, 'store'])  ->name('organisations.elections.posts.store');
@@ -82,8 +89,13 @@ Route::prefix('organisations/{organisation:slug}')
             Route::delete('/posts/{post}',    [PostManagementController::class, 'destroy'])->name('organisations.elections.posts.destroy');
 
             // ── Candidacies management (candidates per post) ───────────────────────
+            Route::get('/candidacies',                             [CandidacyManagementController::class, 'index'])  ->name('organisations.elections.candidacies.index');
             Route::post('/posts/{post}/candidacies',               [CandidacyManagementController::class, 'store'])  ->name('organisations.elections.candidacies.store');
             Route::patch('/posts/{post}/candidacies/{candidacy}', [CandidacyManagementController::class, 'update']) ->name('organisations.elections.candidacies.update');
             Route::delete('/posts/{post}/candidacies/{candidacy}',[CandidacyManagementController::class, 'destroy'])->name('organisations.elections.candidacies.destroy');
+
+            // ── Candidacy application review (officer-only) ────────────────────────
+            Route::get('/candidacy/applications',                        [CandidacyReviewController::class, 'index'])  ->name('organisations.elections.candidacy.applications');
+            Route::patch('/candidacy/applications/{application}',        [CandidacyReviewController::class, 'review']) ->name('organisations.elections.candidacy.review');
         });
     });

@@ -80,6 +80,33 @@ return Application::configure(basePath: dirname(__DIR__))
 
         /*
         |--------------------------------------------------------------------------
+        | Voting Exceptions → user-friendly redirects
+        |--------------------------------------------------------------------------
+        */
+        $exceptions->renderable(function (\App\Exceptions\Voting\VotingException $e, Request $request) {
+            \Illuminate\Support\Facades\Log::error('Voting exception', [
+                'exception' => get_class($e),
+                'message'   => $e->getMessage(),
+                'user_id'   => auth()->id(),
+                'ip'        => $request->ip(),
+                'url'       => $request->url(),
+                'context'   => $e->getContext(),
+            ]);
+
+            if ($request->wantsJson() || $request->isJson()) {
+                return response()->json([
+                    'error'  => $e->getUserMessage(),
+                    'code'   => get_class($e),
+                    'status' => $e->getHttpCode(),
+                ], $e->getHttpCode());
+            }
+
+            return redirect()->route('dashboard')
+                ->with('error', $e->getUserMessage());
+        });
+
+        /*
+        |--------------------------------------------------------------------------
         | CSRF / Session Expiration (419)
         |--------------------------------------------------------------------------
         */

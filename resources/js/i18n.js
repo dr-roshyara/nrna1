@@ -61,6 +61,10 @@ import electionDe from './locales/pages/Election/de.json';
 import electionEn from './locales/pages/Election/en.json';
 import electionNp from './locales/pages/Election/np.json';
 
+import electionShowDe from './locales/pages/election/show/de.json';
+import electionShowEn from './locales/pages/election/show/en.json';
+import electionShowNp from './locales/pages/election/show/np.json';
+
 import electionDashboardDe from './locales/pages/Dashboard/ElectionDashboard/de.json';
 import electionDashboardEn from './locales/pages/Dashboard/ElectionDashboard/en.json';
 import electionDashboardNp from './locales/pages/Dashboard/ElectionDashboard/np.json';
@@ -80,6 +84,10 @@ import agreementNp from './locales/pages/Code/Agreement/np.json';
 import votingDe from './locales/pages/Voting/de.json';
 import votingEn from './locales/pages/Voting/en.json';
 import votingNp from './locales/pages/Voting/np.json';
+
+import createVotingPageDe from './locales/pages/createvotingpage/de.json';
+import createVotingPageEn from './locales/pages/createvotingpage/en.json';
+import createVotingPageNp from './locales/pages/createvotingpage/np.json';
 
 import voteVerifyDe from './locales/pages/VoteVerify/de.json';
 import voteVerifyEn from './locales/pages/VoteVerify/en.json';
@@ -188,11 +196,12 @@ const messages = {
       'verify-email': verifyEmailDe,
       'forgot-password': forgotPasswordDe,
       election: electionDe,
+      'election-show': electionShowDe,
       'election-dashboard': electionDashboardDe,
       'election-navigation': electionNavigationDe,
       'code-create': createCodeDe,
       'code-agreement': agreementDe,
-      voting: votingDe,
+      voting: { ...votingDe, ...createVotingPageDe },
       'vote-verify': voteVerifyDe,
       'vote-show-verify': voteShowVerifyDe,
       'vote-final': voteFinalDe,
@@ -233,11 +242,12 @@ const messages = {
       'verify-email': verifyEmailEn,
       'forgot-password': forgotPasswordEn,
       election: electionEn,
+      'election-show': electionShowEn,
       'election-dashboard': electionDashboardEn,
       'election-navigation': electionNavigationEn,
       'code-create': createCodeEn,
       'code-agreement': agreementEn,
-      voting: votingEn,
+      voting: { ...votingEn, ...createVotingPageEn },
       'vote-verify': voteVerifyEn,
       'vote-show-verify': voteShowVerifyEn,
       'vote-final': voteFinalEn,
@@ -278,11 +288,12 @@ const messages = {
       'verify-email': verifyEmailNp,
       'forgot-password': forgotPasswordNp,
       election: electionNp,
+      'election-show': electionShowNp,
       'election-dashboard': electionDashboardNp,
       'election-navigation': electionNavigationNp,
       'code-create': createCodeNp,
       'code-agreement': agreementNp,
-      voting: votingNp,
+      voting: { ...votingNp, ...createVotingPageNp },
       'vote-verify': voteVerifyNp,
       'vote-show-verify': voteShowVerifyNp,
       'vote-final': voteFinalNp,

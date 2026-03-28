@@ -166,9 +166,9 @@
 </template>
 
 <script setup>
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { ref, computed, onMounted } from 'vue'
 import { useForm } from '@inertiajs/vue3'
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator.vue'
 
 const props = defineProps({

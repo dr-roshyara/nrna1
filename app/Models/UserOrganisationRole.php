@@ -16,6 +16,7 @@ class UserOrganisationRole extends Model
     protected $table = 'user_organisation_roles';
 
     protected $fillable = [
+        'id',
         'user_id',
         'organisation_id',
         'role',

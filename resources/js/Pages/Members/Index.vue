@@ -331,8 +331,8 @@
 </template>
 
 <script>
-import { Link } from '@inertiajs/vue3'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
+import { Link } from '@inertiajs/vue3'
 import _ from 'lodash'
 
 export default {

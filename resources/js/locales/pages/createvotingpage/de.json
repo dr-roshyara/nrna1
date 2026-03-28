@@ -1,0 +1,44 @@
+{
+  "voter_info": {
+    "progress": "Fortschritt",
+    "region": "Region",
+    "national_only": "National"
+  },
+  "sections": {
+    "national": "Nationale Positionen",
+    "regional": "Regionale Positionen"
+  },
+  "regional_empty": {
+    "title": "Keine regionalen Kandidaten",
+    "message": "Derzeit sind keine Kandidaten für {region} verfügbar.",
+    "national_only": "Sie können weiterhin für nationale Positionen stimmen."
+  },
+  "errors": {
+    "validation_title": "Bitte beheben Sie Folgendes vor dem Absenden:"
+  },
+  "agreement": {
+    "title": "Wahlvereinbarung",
+    "final_warning": "Ihre Stimme ist endgültig und kann nach der Abgabe nicht mehr geändert werden.",
+    "progress_label": "Gesamtfortschritt"
+  },
+  "submit": {
+    "review_submit": "Überprüfen & Absenden"
+  },
+  "footer": {
+    "security_title": "Ihre Stimme ist sicher",
+    "security_body": "Alle Auswahlen sind verschlüsselt und geschützt.",
+    "time_title": "Nehmen Sie sich Zeit",
+    "time_body": "Überprüfen Sie sorgfältig vor dem Absenden.",
+    "help_title": "Hilfe benötigt?",
+    "help_body": "Kontaktieren Sie das Wahlunterstützungsteam."
+  },
+  "modal": {
+    "title": "Bestätigen Sie Ihre Stimme",
+    "greeting": "Hallo {name}, bitte überprüfen Sie Ihre Auswahl vor dem Absenden.",
+    "no_selections": "Keine Auswahlen zum Anzeigen.",
+    "warning_title": "Diese Aktion ist endgültig.",
+    "warning_message": "Nach der Abgabe kann Ihre Stimme nicht mehr geändert oder zurückgezogen werden.",
+    "go_back": "Zurück",
+    "confirm_submit": "Bestätigen & Absenden"
+  }
+}

@@ -57,6 +57,7 @@ abstract class BaseVote extends Model
         'organisation_id',
         'election_id',
         'receipt_hash',
+        'no_vote_option',
         'participation_proof',
         'encrypted_vote',
         'device_fingerprint_hash',
@@ -82,6 +83,7 @@ abstract class BaseVote extends Model
      * @var array
      */
     protected $casts = [
+        'no_vote_option' => 'boolean',
         'no_vote_posts' => 'array',
         'metadata' => 'array',
         'device_metadata_anonymized' => 'array',

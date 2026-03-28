@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Election;
+use Carbon\Carbon;
 use App\Models\VoterSlug; // still used for active-session reuse in start()
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -38,17 +39,22 @@ class ElectionVotingController extends Controller
             && $membership->role   === 'voter'
             && $membership->status !== 'removed';
 
+        // Compare end_date as end-of-day: an election ending "on March 23" should
+        // remain open for the full day, regardless of whether it was stored as midnight.
+        $endOfDay = \Carbon\Carbon::parse($election->end_date)->endOfDay();
+
         $canVote = $isEligible
             && ! $hasVoted
             && $election->status === 'active'
             && $election->start_date <= now()
-            && $election->end_date   >= now();
+            && $endOfDay >= now();
 
         return Inertia::render('Election/Show', [
             'election'   => $election,
             'hasVoted'   => $hasVoted,
             'canVote'    => $canVote,
             'isEligible' => $isEligible,
+            'ipAddress'  => request()->ip(),
         ]);
     }
 
@@ -83,15 +89,21 @@ class ElectionVotingController extends Controller
                 ->with('info', 'You have already voted.');
         }
 
-        // Reuse an unexpired active slug rather than creating duplicates
+        // Reuse an unexpired active slug, or refresh any existing slug for this user+election
         $existing = VoterSlug::withoutGlobalScopes()
             ->where('user_id', $user->id)
             ->where('election_id', $election->id)
-            ->where('status', 'active')
-            ->where('expires_at', '>', now())
             ->first();
 
         if ($existing) {
+            // Refresh slug and expiry so it's valid for a new voting session
+            $existing->update([
+                'slug'       => Str::random(32),
+                'status'     => 'active',
+                'is_active'  => true,
+                'can_vote_now' => true,
+                'expires_at' => now()->addMinutes(30),
+            ]);
             return redirect()->route('slug.code.create', ['vslug' => $existing->slug]);
         }
 

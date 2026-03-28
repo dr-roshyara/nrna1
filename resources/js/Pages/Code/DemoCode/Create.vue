@@ -180,11 +180,11 @@
 </template>
 
 <script setup>
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { useForm } from "@inertiajs/vue3";
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
-import ElectionLayout from "@/Layouts/ElectionLayout.vue";
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator.vue";
 
 const props = defineProps({

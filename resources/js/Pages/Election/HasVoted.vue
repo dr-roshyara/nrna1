@@ -228,8 +228,8 @@
 </template>
 
 <script>
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { Link } from '@inertiajs/vue3';
-import ElectionLayout from '@/Layouts/ElectionLayout.vue';
 
 export default {
     components: {

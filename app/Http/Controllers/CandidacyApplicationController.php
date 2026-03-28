@@ -43,9 +43,17 @@ class CandidacyApplicationController extends Controller
                 ])->values(),
             ]);
 
+        // Elections where the user already has a pending or approved application
+        $appliedElectionIds = CandidacyApplication::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->whereIn('status', ['pending', 'approved'])
+            ->pluck('election_id')
+            ->all();
+
         return Inertia::render('Organisations/CandidacyCreate', [
-            'organisation'    => $organisation->only('id', 'name', 'slug'),
-            'activeElections' => $activeElections->values(),
+            'organisation'       => $organisation->only('id', 'name', 'slug'),
+            'activeElections'    => $activeElections->values(),
+            'appliedElectionIds' => $appliedElectionIds,
         ]);
     }
 
@@ -77,6 +85,53 @@ class CandidacyApplicationController extends Controller
         return Inertia::render('Organisations/CandidacyList', [
             'organisation' => $organisation->only('id', 'name', 'slug'),
             'applications' => $applications->values(),
+        ]);
+    }
+
+    public function applyForm(Organisation $organisation, Election $election): Response
+    {
+        abort_if($election->type === 'demo', 404, 'Candidacy applications are not available for demo elections.');
+
+        $user = auth()->user();
+
+        $role = UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->value('role');
+        abort_if(! $role, 403);
+
+        $posts = Post::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->where('organisation_id', $organisation->id)
+            ->orderBy('position_order')
+            ->get()
+            ->map(fn ($p) => [
+                'id'               => $p->id,
+                'name'             => $p->name,
+                'nepali_name'      => $p->nepali_name,
+                'is_national_wide' => (bool) $p->is_national_wide,
+                'state_name'       => $p->state_name,
+                'required_number'  => $p->required_number,
+                'position_order'   => $p->position_order,
+            ]);
+
+        $existingApplication = CandidacyApplication::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->whereIn('status', ['pending', 'approved', 'rejected'])
+            ->latest()
+            ->first();
+
+        return Inertia::render('Election/Candidacy/Apply', [
+            'organisation'        => $organisation->only('id', 'name', 'slug'),
+            'election'            => $election->only('id', 'name', 'slug', 'status', 'start_date', 'end_date'),
+            'posts'               => $posts->values(),
+            'existingApplication' => $existingApplication ? [
+                'id'            => $existingApplication->id,
+                'post_id'       => $existingApplication->post_id,
+                'post_name'     => $existingApplication->post?->name,
+                'status'        => $existingApplication->status,
+                'submitted_at'  => $existingApplication->created_at->format('Y-m-d'),
+                'photo'         => $existingApplication->photo,
+            ] : null,
         ]);
     }
 

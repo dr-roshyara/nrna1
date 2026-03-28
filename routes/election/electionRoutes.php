@@ -158,11 +158,9 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
 //    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/show', [VoteController::class, 'show'])->name('vote.show');
    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/show/{vote_id}', [VoteController::class, 'show'])->name('vote.show');
 
-   // Conditionally register result route only if results are published
-   if (ElectionService::areResultsPublished()) {
-       Route::middleware(['auth:sanctum', 'verified'])->get('/election/result', [ResultController::class, 'index'])->name('result.index');
-       Route::middleware(['auth:sanctum', 'verified'])->get('/election/result/download-pdf', [ResultController::class, 'downloadPDF'])->name('result.download.pdf');
-   }
+   // Election-specific result routes (scoped by election slug)
+   Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election}/result', [ResultController::class, 'index'])->name('result.index');
+   Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election}/result/download-pdf', [ResultController::class, 'downloadPDF'])->name('result.download.pdf');
 
    // Has voted - view all members who have voted
    Route::middleware(['auth:sanctum', 'verified'])->get('/election/hasvoted', [HasVotedController::class, 'index'])->name('hasvoted.index');
@@ -284,6 +282,11 @@ Route::middleware(['auth', 'verified'])
         // Activate a planned election — chief or deputy
         Route::post('/activate', [ElectionManagementController::class, 'activate'])
             ->name('elections.activate');
+
+        // Update election dates — chief or deputy
+        Route::patch('/update-dates', [ElectionManagementController::class, 'updateDates'])
+            ->name('elections.update-dates')
+            ->can('manageSettings', 'election');
     });
 
 // Test routes for voter slug system (Phase 1)

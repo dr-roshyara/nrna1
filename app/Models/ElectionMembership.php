@@ -43,6 +43,9 @@ class ElectionMembership extends Model
         'metadata',
         'has_voted',
         'voted_at',
+        'suspension_status',
+        'suspension_proposed_by',
+        'suspension_proposed_at',
     ];
 
     protected $casts = [
@@ -50,15 +53,18 @@ class ElectionMembership extends Model
         'expires_at'       => 'datetime',
         'last_activity_at' => 'datetime',
         'metadata'         => 'array',
-        'has_voted'        => 'boolean',
-        'voted_at'         => 'datetime',
+        'has_voted'               => 'boolean',
+        'voted_at'                => 'datetime',
+        'suspension_status'       => 'string',
+        'suspension_proposed_at'  => 'datetime',
     ];
 
     protected $attributes = [
-        'role'      => 'voter',
-        'status'    => 'active',
-        'metadata'  => '{}',
-        'has_voted' => false,
+        'role'             => 'voter',
+        'status'           => 'active',
+        'metadata'         => '{}',
+        'has_voted'        => false,
+        'suspension_status' => 'none',
     ];
 
     // =========================================================================
@@ -297,6 +303,47 @@ class ElectionMembership extends Model
                 'timestamp'   => now()->toIso8601String(),
             ]);
         }
+    }
+
+    // =========================================================================
+    // Two-person suspension workflow
+    // =========================================================================
+
+    public function proposeSuspension(User $proposer): void
+    {
+        $this->update([
+            'suspension_status'      => 'proposed',
+            'suspension_proposed_by' => $proposer->name,
+            'suspension_proposed_at' => now(),
+        ]);
+    }
+
+    public function confirmSuspension(User $confirmer): void
+    {
+        $this->update([
+            'status'            => 'inactive',
+            'suspension_status' => 'confirmed',
+        ]);
+    }
+
+    public function cancelSuspensionProposal(): void
+    {
+        $this->update([
+            'suspension_status'      => 'none',
+            'suspension_proposed_by' => null,
+            'suspension_proposed_at' => null,
+        ]);
+    }
+
+    public function isSuspensionProposed(): bool
+    {
+        return $this->suspension_status === 'proposed';
+    }
+
+    public function canConfirmSuspension(User $user): bool
+    {
+        return $this->suspension_status === 'proposed'
+            && $this->suspension_proposed_by !== $user->name;
     }
 
     // =========================================================================
