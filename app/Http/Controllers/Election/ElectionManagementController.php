@@ -171,6 +171,8 @@ class ElectionManagementController extends Controller
                 ->where('organisation_id', $orgId)
                 ->where('type', 'real')
                 ->where('status', 'active')
+                ->where('start_date', '<=', now())
+                ->where('end_date', '>=', now())
                 ->first();
 
             $allElectionsInDB = \Illuminate\Support\Facades\DB::table('elections')->get(['id', 'organisation_id', 'type', 'status'])->toArray();
@@ -614,13 +616,54 @@ class ElectionManagementController extends Controller
             ->where('status', \App\Models\Candidacy::STATUS_APPROVED)
             ->count();
 
+        $organisation = $election->organisation;
+
         return Inertia::render('Election/Management', [
             'election'        => $election,
+            'organisation'    => $organisation ? [
+                'id'   => $organisation->id,
+                'name' => $organisation->name,
+                'logo' => $organisation->logo ? asset($organisation->logo) : null,
+            ] : null,
             'stats'           => $election->voter_stats,
             'canPublish'      => auth()->user()->can('publishResults', $election),
             'postsCount'      => $postsCount,
             'candidatesCount' => $candidatesCount,
         ]);
+    }
+
+    /**
+     * Upload organisation logo from the election management page.
+     *
+     * POST /elections/{election}/upload-logo
+     */
+    public function uploadLogo(Request $request, Election $election): RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        $request->validate([
+            'logo' => ['required', 'image', 'mimes:jpg,jpeg,png,gif,webp,svg', 'max:2048'],
+        ]);
+
+        $organisation = $election->organisation;
+
+        if (! $organisation) {
+            return back()->withErrors(['logo' => 'No organisation linked to this election.']);
+        }
+
+        // Delete old logo
+        if ($organisation->logo) {
+            \Storage::delete($organisation->logo);
+        }
+
+        $path = $request->file('logo')->store(
+            "organisations/{$organisation->id}/logo",
+            'public'
+        );
+
+        $organisation->update(['logo' => $path]);
+
+        return back()->with('success', 'Logo uploaded successfully.');
     }
 
     /**

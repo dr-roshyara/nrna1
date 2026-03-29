@@ -69,7 +69,30 @@
             </button>
           </div>
 
-          <!-- Secondary Actions -->
+          <!-- SECONDARY ACTION: Try Demo -->
+          <div class="relative group">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-green-600 to-emerald-400 rounded-lg blur-sm opacity-20 group-hover:opacity-80 transition duration-1000 group-hover:duration-200"></div>
+            <a
+              :href="route('election.demo.start')"
+              aria-label="Demo election ausprobieren"
+              class="relative w-full p-4 sm:p-6 lg:p-8 bg-white border-2 border-green-500 rounded-lg hover:shadow-xl focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all text-left flex items-start justify-between gap-3 sm:gap-4 group-hover:border-green-600"
+            >
+              <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+                <span class="text-2xl sm:text-3xl shrink-0" aria-hidden="true">🎪</span>
+                <div class="min-w-0">
+                  <div class="font-bold text-gray-900 text-base sm:text-lg">
+                    {{ $t('pages.welcome-dashboard.actions.tryDemo', 'Demo Versuchen') }}
+                  </div>
+                  <div class="text-xs sm:text-sm text-gray-600 mt-1">
+                    {{ $t('pages.welcome-dashboard.actions.tryDemoDesc', 'Testen Sie den kompletten Abstimmungsprozess ohne Registrierung einer Organisation.') }}
+                  </div>
+                </div>
+              </div>
+              <span class="text-xl sm:text-2xl text-green-600 font-bold shrink-0">→</span>
+            </a>
+          </div>
+
+          <!-- Secondary Actions (commented out) -->
           <!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           // Join organisation
             <button

@@ -70,13 +70,11 @@ class RegisterController extends Controller
             ]);
         });
 
-        // ✅ CRITICAL: DO NOT auto-login after registration
-        // Email verification MUST happen first (Fortify requirement)
-        // The Registered event will send the verification email
-        // User will receive a link to verify their email
+        // Log the user in so they can access the verification notice page.
+        // The 'verified' middleware on all protected routes will block access
+        // until they confirm their email — this is safe.
+        auth()->login($user);
 
-        // Redirect to verification notice page instead of auto-logging in
-        // This ensures users verify their email before accessing the dashboard
         return redirect()->route('verification.notice');
     }
 }

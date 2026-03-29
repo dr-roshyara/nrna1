@@ -14,6 +14,8 @@
     "title": "What would you like to do?",
     "createOrg": "Create New organisation & Start Elections",
     "createOrgDesc": "Start managing elections for your community, union, or organisation",
+    "tryDemo": "Try Demo",
+    "tryDemoDesc": "Test the complete voting process without registering an organisation.",
     "joinOrg": "Join an Existing organisation",
     "joinOrgDesc": "Get invited to participate in elections from existing organisations",
     "skip": "Explore the Platform",

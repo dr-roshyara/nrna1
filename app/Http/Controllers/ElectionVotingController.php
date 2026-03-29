@@ -24,6 +24,7 @@ class ElectionVotingController extends Controller
     public function show(string $slug): Response
     {
         $election = Election::withoutGlobalScopes()
+            ->with('organisation:id,name,logo')
             ->where('slug', $slug)
             ->where('type', 'real')
             ->firstOrFail();
@@ -49,12 +50,16 @@ class ElectionVotingController extends Controller
             && $election->start_date <= now()
             && $endOfDay >= now();
 
+        $org = $election->organisation;
+
         return Inertia::render('Election/Show', [
-            'election'   => $election,
-            'hasVoted'   => $hasVoted,
-            'canVote'    => $canVote,
-            'isEligible' => $isEligible,
-            'ipAddress'  => request()->ip(),
+            'election'         => $election,
+            'hasVoted'         => $hasVoted,
+            'canVote'          => $canVote,
+            'isEligible'       => $isEligible,
+            'ipAddress'        => request()->ip(),
+            'organisationLogo' => $org?->logo ? asset($org->logo) : null,
+            'organisationName' => $org?->name,
         ]);
     }
 

@@ -1,5 +1,5 @@
 <template>
-    <ElectionLayout>
+    <!-- <ElectionLayout> -->
         <Head></Head>
 
         <div class="esp-root">
@@ -8,6 +8,13 @@
             <section class="esp-hero">
                 <div class="esp-hero__grid" aria-hidden="true"></div>
                 <div class="esp-hero__inner">
+                    <!-- Organisation logo -->
+                    <div v-if="organisationLogo" class="esp-org-logo">
+                        <img :src="organisationLogo"
+                             :alt="organisationName || 'Organisation logo'"
+                             class="esp-org-logo__img" />
+                    </div>
+
                     <div class="esp-eyebrow">
                         <span class="esp-eyebrow__line"></span>
                         <span class="esp-eyebrow__text">{{ $t('pages.election-show.hero.eyebrow') }}</span>
@@ -139,6 +146,34 @@
                             </dl>
                         </template>
 
+                        <!-- ── STATE: Eligible but not yet open ── -->
+                        <template v-else-if="isEligible">
+                            <div class="esp-ballot__header">
+                                <div class="esp-ballot__icon" style="font-size:2rem" aria-label="Not yet open">🕐</div>
+                                <div>
+                                    <p class="esp-ballot__eyebrow">{{ $t('pages.election-show.not_yet_open.eyebrow', 'Registriert') }}</p>
+                                    <h2 class="esp-ballot__heading">{{ $t('pages.election-show.not_yet_open.heading', 'Wahl noch nicht geöffnet') }}</h2>
+                                </div>
+                            </div>
+                            <p class="esp-ineligible-body" style="margin-bottom:1.5rem">
+                                {{ $t('pages.election-show.not_yet_open.body', { election: election.name, date: election.start_date }, `Sie sind registriert und können ab dem ${election.start_date} abstimmen. Bitte kommen Sie dann zurück.`) }}
+                            </p>
+                            <div class="esp-certificate">
+                                <div class="esp-certificate__row">
+                                    <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.opens_label', 'Öffnet am') }}</dt>
+                                    <dd class="esp-certificate__value">{{ election.start_date }}</dd>
+                                </div>
+                                <div class="esp-certificate__row">
+                                    <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.closes_label', 'Schließt am') }}</dt>
+                                    <dd class="esp-certificate__value">{{ election.end_date }}</dd>
+                                </div>
+                                <div class="esp-certificate__row">
+                                    <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.status_label', 'Ihr Status') }}</dt>
+                                    <dd class="esp-certificate__value esp-certificate__value--green">{{ $t('pages.election-show.not_yet_open.status_value', '✓ Wahlberechtigt') }}</dd>
+                                </div>
+                            </div>
+                        </template>
+
                         <!-- ── STATE: Not Eligible ── -->
                         <template v-else>
                             <div class="esp-ballot__header">
@@ -160,7 +195,7 @@
             </section>
 
         </div>
-    </ElectionLayout>
+    <!-- </ElectionLayout> -->
 </template>
 
 <script setup>
@@ -171,11 +206,13 @@ import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 
 const props = defineProps({
-    election:   { type: Object,  required: true },
-    hasVoted:   { type: Boolean, default: false },
-    canVote:    { type: Boolean, default: false },
-    isEligible: { type: Boolean, default: false },
-    ipAddress:  { type: String,  default: null },
+    election:          { type: Object,  required: true },
+    hasVoted:          { type: Boolean, default: false },
+    canVote:           { type: Boolean, default: false },
+    isEligible:        { type: Boolean, default: false },
+    ipAddress:         { type: String,  default: null },
+    organisationLogo:  { type: String,  default: null },
+    organisationName:  { type: String,  default: null },
 })
 
 // ─── Flash ────────────────────────────────────────────────────────────────────
@@ -246,8 +283,8 @@ const ballotCardClass = computed(() => ({
     --ink-mid:   #2c2c38;
     --cream:     #f7f3ec;
     --parchment: #ede8df;
-    --gold:      #b5862b;
-    --gold-lt:   #d4a84b;
+    --gold:      #c9973a;
+    --gold-lt:   #e0b55a;
     --vermeil:   #a0291e;
     --green:     #1e6b45;
     --slate:     #6b7280;
@@ -264,17 +301,28 @@ const ballotCardClass = computed(() => ({
 /* ── Hero ────────────────────────────────────────────────────────────────────── */
 .esp-hero {
     position: relative;
-    background: var(--ink);
+    background: linear-gradient(135deg, #0c1a3a 0%, #1a3a6e 45%, #0d2454 100%);
     padding: 5rem 1.5rem 4rem;
     overflow: hidden;
+}
+
+/* Radial aurora — warm amber glow off-centre top-right */
+.esp-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 50% at 72% 20%, rgba(99,179,255,.12) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 25% 80%, rgba(26,58,110,.45) 0%, transparent 60%);
+    pointer-events: none;
 }
 
 .esp-hero__grid {
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(181,134,43,.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(181,134,43,.08) 1px, transparent 1px);
+        linear-gradient(rgba(181,134,43,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(181,134,43,.07) 1px, transparent 1px);
     background-size: 48px 48px;
 }
 
@@ -283,6 +331,31 @@ const ballotCardClass = computed(() => ({
     max-width: 780px;
     margin: 0 auto;
     text-align: center;
+}
+
+/* ── Organisation Logo ───────────────────────────────────────────────────────── */
+.esp-org-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.esp-org-logo__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 16px;
+    background: rgba(247, 243, 236, 0.12);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(181, 134, 43, 0.35);
+    padding: 10px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+    animation: esp-logo-in 0.5s cubic-bezier(.22,.68,0,1.2) both;
+}
+
+@keyframes esp-logo-in {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
 }
 
 /* eyebrow */

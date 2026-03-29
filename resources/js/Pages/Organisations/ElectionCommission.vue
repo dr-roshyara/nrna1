@@ -63,15 +63,17 @@
           />
 
           <div v-else class="space-y-4">
-            <SectionCard v-for="election in elections" :key="election.id">
-              <template #header>
-                <div class="flex items-center justify-between">
-                  <h3 class="font-semibold text-slate-900">{{ election.name }}</h3>
-                  <StatusBadge :status="election.status" />
-                </div>
-              </template>
+            <div v-for="election in elections" :key="election.id"
+              class="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden"
+            >
+              <!-- Election header bar -->
+              <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50">
+                <h3 class="text-base font-bold text-slate-900">{{ election.name }}</h3>
+                <StatusBadge :status="election.status" />
+              </div>
 
-              <div class="flex flex-wrap gap-3 mt-4">
+              <!-- Action buttons -->
+              <div class="px-6 py-5 flex flex-wrap gap-3">
                 <a :href="route('elections.management', { election: election.slug })"
                   class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-sm font-medium transition-colors"
                 >
@@ -87,7 +89,7 @@
                 <a :href="route('organisations.elections.posts.index', { organisation: organisation.slug, election: election.slug })"
                   class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium transition-colors"
                 >
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                   Posts &amp; Candidates
                 </a>
                 <a :href="route('organisations.elections.candidacy.applications', { organisation: organisation.slug, election: election.slug })"
@@ -97,7 +99,7 @@
                   Candidacy Applications
                 </a>
               </div>
-            </SectionCard>
+            </div>
           </div>
         </section>
 

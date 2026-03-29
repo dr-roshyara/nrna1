@@ -1273,6 +1273,8 @@ public function getVoterState(): string
             ->whereIn('organisation_id', $orgIds)
             ->where('status', 'active')
             ->where('type', 'real')
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now())
             ->whereDoesntHave('memberships', function ($query) {
                 $query->where('user_id', $this->id)
                     ->where('has_voted', true);
