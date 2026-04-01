@@ -1,0 +1,39 @@
+{
+  "page_title": "मतदाता केन्द्र | Voter Hub",
+  "page_subtitle": "तपाईंको सदस्य पोर्टल — मतदान गर्नुहोस्, उम्मेद्वारी दिनुहोस् र गतिविधि ट्र्याक गर्नुहोस् | Your member portal — vote, apply for candidacy, and track your activity",
+  "breadcrumb": "मतदाता केन्द्र | Voter Hub",
+  "nav": {
+    "apply_candidacy": "उम्मेद्वारीका लागि आवेदन | Apply for Candidacy",
+    "apply_candidacy_sub": "निर्वाचन पदका लागि आफ्नो मनोनयन पेश गर्नुहोस् | Submit your nomination for an election post",
+    "my_applications": "मेरा आवेदनहरू | My Applications",
+    "my_applications_sub": "आफ्ना उम्मेद्वारी आवेदनको स्थिति ट्र्याक गर्नुहोस् | Track the status of your candidacy submissions",
+    "positions": "पदहरू | Positions",
+    "election_results": "चुनाव परिणाम | Election Results",
+    "demo_results": "डेमो परिणाम हेर्नुहोस् | See Demo Result",
+    "demo_results_sub": "डेमो चुनावको नतिजा हेर्नुहोस् | View the demo election results"
+  },
+  "active_elections": {
+    "title": "सक्रिय निर्वाचनहरू | Active Elections",
+    "empty_title": "कुनै सक्रिय निर्वाचन छैन | No active elections",
+    "empty_desc": "यस संस्थामा हाल कुनै सक्रिय निर्वाचन छैन | There are currently no active elections in this organisation.",
+    "positions_label": "पदहरू | Positions",
+    "national": "राष्ट्रिय | National",
+    "regional": "क्षेत्रीय | Regional",
+    "seat": "सिट | seat",
+    "seats": "सिटहरू | seats",
+    "vote_now": "अहिले मतदान गर्नुहोस् | Vote Now",
+    "vote_submitted": "मत दिइसकिएको | Vote submitted"
+  },
+  "sections": {
+    "actions": "द्रुत पहुँच | Quick Actions"
+  },
+  "status": {
+    "eligible": "मतदानको लागि योग्य | Eligible to vote",
+    "voted": "मत दिइसक्यो | Voted",
+    "ineligible": "अयोग्य | Not eligible"
+  },
+  "a11y": {
+    "skip_to_content": "मुख्य सामग्रीमा जानुहोस् | Skip to main content",
+    "status_label": "तपाईंको स्थिति | Your status"
+  }
+}

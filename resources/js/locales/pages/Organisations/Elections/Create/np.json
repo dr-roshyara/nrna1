@@ -1,0 +1,33 @@
+{
+  "title": "नयाँ निर्वाचन सिर्जना गर्नुहोस्",
+  "organisation_label": "संगठन",
+  "fields": {
+    "name": {
+      "label": "निर्वाचनको नाम",
+      "placeholder": "जस्तै: साधारण निर्वाचन २०२६"
+    },
+    "description": {
+      "label": "विवरण",
+      "optional": "(ऐच्छिक)",
+      "placeholder": "निर्वाचनको संक्षिप्त विवरण..."
+    },
+    "start": {
+      "section": "सुरु मिति र समय",
+      "date_label": "मिति",
+      "time_label": "खुल्ने समय"
+    },
+    "end": {
+      "section": "अन्त्य मिति र समय",
+      "date_label": "मिति",
+      "time_label": "बन्द हुने समय"
+    }
+  },
+  "validation": {
+    "end_after_start": "बन्द हुने समय खुल्ने समय पछि हुनुपर्छ।"
+  },
+  "actions": {
+    "cancel": "रद्द गर्नुहोस्",
+    "submit": "निर्वाचन सिर्जना गर्नुहोस्",
+    "submitting": "सिर्जना हुँदैछ…"
+  }
+}

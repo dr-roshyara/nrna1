@@ -1,0 +1,39 @@
+{
+  "page_title": "Voter Hub",
+  "page_subtitle": "Your member portal — vote, apply for candidacy, and track your activity",
+  "breadcrumb": "Voter Hub",
+  "nav": {
+    "apply_candidacy": "Apply for Candidacy",
+    "apply_candidacy_sub": "Submit your nomination for an election post",
+    "my_applications": "My Applications",
+    "my_applications_sub": "Track the status of your candidacy submissions",
+    "positions": "Positions",
+    "election_results": "Election Results",
+    "demo_results": "See Demo Result",
+    "demo_results_sub": "View the demo election results"
+  },
+  "active_elections": {
+    "title": "Active Elections",
+    "empty_title": "No active elections",
+    "empty_desc": "There are currently no active elections in this organisation.",
+    "positions_label": "Positions",
+    "national": "National",
+    "regional": "Regional",
+    "seat": "seat",
+    "seats": "seats",
+    "vote_now": "Vote Now",
+    "vote_submitted": "Vote submitted"
+  },
+  "sections": {
+    "actions": "Quick Actions"
+  },
+  "status": {
+    "eligible": "Eligible to vote",
+    "voted": "Voted",
+    "ineligible": "Not eligible"
+  },
+  "a11y": {
+    "skip_to_content": "Skip to main content",
+    "status_label": "Your status"
+  }
+}

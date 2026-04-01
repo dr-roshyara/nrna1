@@ -65,8 +65,8 @@ class ElectionManagementController extends Controller
             'name'        => ['required', 'string', 'max:255',
                               Rule::unique('elections')->where('organisation_id', $organisation->id)],
             'description' => ['nullable', 'string', 'max:5000'],
-            'start_date'  => ['required', 'date', 'after:today'],
-            'end_date'    => ['required', 'date', 'after:start_date'],
+            'start_date'  => ['required', 'date', 'after_or_equal:today'],
+            'end_date'    => ['required', 'date', 'after_or_equal:start_date'],
             'type'        => ['sometimes', 'in:real'],
         ]);
 
@@ -626,7 +626,7 @@ class ElectionManagementController extends Controller
                 'logo' => $organisation->logo ? asset($organisation->logo) : null,
             ] : null,
             'stats'           => $election->voter_stats,
-            'canPublish'      => auth()->user()->can('publishResults', $election),
+            'canPublish'      => auth()->user()->can('publishResults', $election) && $election->status === 'completed',
             'postsCount'      => $postsCount,
             'candidatesCount' => $candidatesCount,
         ]);
@@ -719,6 +719,9 @@ class ElectionManagementController extends Controller
      */
     public function publish(Election $election): \Illuminate\Http\RedirectResponse
     {
+        if ($election->status !== 'completed') {
+            return back()->with('error', 'Results can only be published after voting is closed.');
+        }
         $election->update(['results_published' => true]);
         return back()->with('success', 'Results published.');
     }
@@ -737,7 +740,11 @@ class ElectionManagementController extends Controller
      */
     public function openVoting(Election $election): \Illuminate\Http\RedirectResponse
     {
-        $election->update(['status' => 'active', 'is_active' => true]);
+        $election->update([
+            'status'            => 'active',
+            'is_active'         => true,
+            'results_published' => false,
+        ]);
         return back()->with('success', 'Voting period opened.');
     }
 

@@ -1,0 +1,39 @@
+{
+  "page_title": "Mitglieder-Portal",
+  "page_subtitle": "Abstimmen, Kandidatur beantragen und Aktivitäten verfolgen",
+  "breadcrumb": "Mitglieder-Portal",
+  "nav": {
+    "apply_candidacy": "Kandidatur beantragen",
+    "apply_candidacy_sub": "Nominierung für einen Wahlposten einreichen",
+    "my_applications": "Meine Bewerbungen",
+    "my_applications_sub": "Status meiner Kandidaturbewerbungen verfolgen",
+    "positions": "Positionen",
+    "election_results": "Wahlergebnisse",
+    "demo_results": "Demo-Ergebnisse ansehen",
+    "demo_results_sub": "Demo-Wahlresultate anzeigen"
+  },
+  "active_elections": {
+    "title": "Aktive Wahlen",
+    "empty_title": "Keine aktiven Wahlen",
+    "empty_desc": "Derzeit gibt es keine aktiven Wahlen in dieser Organisation.",
+    "positions_label": "Positionen",
+    "national": "National",
+    "regional": "Regional",
+    "seat": "Sitz",
+    "seats": "Sitze",
+    "vote_now": "Jetzt abstimmen",
+    "vote_submitted": "Stimme abgegeben"
+  },
+  "sections": {
+    "actions": "Schnellzugriff"
+  },
+  "status": {
+    "eligible": "Zur Abstimmung berechtigt",
+    "voted": "Abgestimmt",
+    "ineligible": "Nicht berechtigt"
+  },
+  "a11y": {
+    "skip_to_content": "Zum Hauptinhalt springen",
+    "status_label": "Ihr Status"
+  }
+}

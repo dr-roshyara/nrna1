@@ -20,6 +20,10 @@ class ResultController extends Controller
             ->where('slug', $election)
             ->firstOrFail();
 
+        if (! $election->results_published) {
+            abort(403, 'Election results have not been published yet.');
+        }
+
         $totalVotes = Vote::withoutGlobalScopes()
             ->where('election_id', $election->id)
             ->count();
@@ -71,10 +75,16 @@ class ResultController extends Controller
             ];
         }
 
+        $organisation = $election->organisation_id
+            ? \App\Models\Organisation::withoutGlobalScopes()->find($election->organisation_id)
+            : null;
+
         $results = [
             'total_votes'   => $totalVotes,
             'election_name' => $election->name,
             'posts'         => $postsData,
+            'logo_url'      => $organisation?->logo ? asset($organisation->logo) : null,
+            'org_name'      => $organisation?->name,
         ];
 
         return Inertia::render('Result/Index', [

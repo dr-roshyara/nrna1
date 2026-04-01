@@ -1,0 +1,62 @@
+{
+  "title": "सदस्यहरू आयात गर्नुहोस् | Import Members",
+  "description": "यस संस्थामा सदस्यहरू थप्न CSV वा Excel फाइल अपलोड गर्नुहोस् | Upload a CSV or Excel file to import members into this organisation.",
+  "back": "फिर्ता | Back",
+  "steps": {
+    "upload": "अपलोड | Upload",
+    "review": "समीक्षा | Review",
+    "processing": "प्रशोधन | Processing",
+    "complete": "सम्पन्न | Complete"
+  },
+  "upload": {
+    "title": "फाइल अपलोड गर्नुहोस् | Upload File",
+    "drag_hint": "फाइल यहाँ छोड्नुहोस् वा चयन गर्नुहोस् | Drop file here or click to select",
+    "select_btn": "फाइल चयन गर्नुहोस् | Select File",
+    "formats_hint": "CSV, XLSX वा XLS — अधिकतम ५०,००० पङ्क्तिहरू | up to 50,000 rows",
+    "aria_label": "सदस्य आयात फाइल चयन गर्नुहोस् | Select member import file"
+  },
+  "preview": {
+    "title": "पूर्वावलोकन ({count} पङ्क्तिहरू) | Preview ({count} rows)",
+    "showing": "{count} मध्ये १० पङ्क्ति देखाइँदैछ | Showing 10 of {count} rows",
+    "validation_issues": "प्रमाणीकरण समस्याहरू | Validation Issues:",
+    "change_file": "फाइल बदल्नुहोस् | Change File",
+    "import_btn": "आयात गर्नुहोस् | Import",
+    "importing_btn": "आयात हुँदैछ… | Importing…"
+  },
+  "processing": {
+    "title": "आयात प्रशोधन हुँदैछ… | Processing Import…",
+    "rows_label": "{processed} / {total} पङ्क्तिहरू प्रशोधित | rows processed",
+    "imported": "आयात भयो | Imported",
+    "skipped": "छोडिएको | Skipped",
+    "total": "जम्मा | Total",
+    "background_hint": "पृष्ठभूमिमा प्रशोधन हुँदैछ — तपाईं यो ट्याब बन्द गरेर पछि फर्कन सक्नुहुन्छ | Processing in background — you can close this tab and come back later."
+  },
+  "success": {
+    "title": "आयात सम्पन्न! | Import Complete!",
+    "imported_msg": "{count} सदस्यहरू सफलतापूर्वक आयात गरियो | members imported successfully.",
+    "skipped_msg": "{count} पङ्क्तिहरू छोडिए (डुप्लिकेट वा इमेल नभएका) | rows skipped (duplicates or missing email).",
+    "back_btn": "संस्थामा फिर्ता | Back to organisation"
+  },
+  "error": {
+    "label": "त्रुटि | Error:",
+    "try_again": "फेरि प्रयास गर्नुहोस् | Try again",
+    "invalid_format": "अमान्य फाइल ढाँचा। कृपया CSV वा Excel फाइल अपलोड गर्नुहोस् | Invalid file format. Please upload a CSV or Excel file."
+  },
+  "info_panel": {
+    "title": "फाइल ढाँचा | File Format",
+    "formats_heading": "समर्थित ढाँचाहरू | Supported Formats:",
+    "formats": [
+      "CSV (.csv) — अल्पविराम वा सेमिकोलन | comma or semicolon",
+      "Excel (.xlsx, .xls)"
+    ],
+    "columns_heading": "आवश्यक स्तम्भहरू | Required Columns:",
+    "columns": [
+      "Email / E-Mail (अनिवार्य | required)",
+      "पहिलो नाम / First Name",
+      "थर / Last Name"
+    ],
+    "scale_heading": "क्षमता | Scale:",
+    "scale_text": "प्रति आयात ५०,००० सदस्यसम्म समर्थन गर्दछ। ठूला फाइलहरू पृष्ठभूमिमा प्रशोधन हुन्छन् | Supports up to 50,000 members per import. Large files are processed in the background.",
+    "download_template": "टेम्प्लेट डाउनलोड गर्नुहोस् | Download Template"
+  }
+}

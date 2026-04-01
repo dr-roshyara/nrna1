@@ -24,6 +24,7 @@ class Organisation extends Model
         'representative',
         'settings',
         'languages',
+        'logo',
     ];
 
     protected $casts = [

@@ -1,0 +1,91 @@
+{
+  "page_eyebrow": "Wahlverwaltung",
+  "sections": {
+    "activate": {
+      "title": "Bereit zur Aktivierung?",
+      "description": "Nach der Aktivierung ändert sich der Status auf <strong>Aktiv</strong> und der Abstimmungszeitraum beginnt.",
+      "btn_activating": "Wird aktiviert…",
+      "btn_activate": "Wahl aktivieren"
+    },
+    "status": {
+      "title": "Aktueller Status",
+      "election_system": "Wahlsystem",
+      "active": "Aktiv",
+      "inactive": "Inaktiv",
+      "results": "Wahlergebnis",
+      "published": "Veröffentlicht",
+      "unpublished": "Unveröffentlicht"
+    },
+    "dates": {
+      "title": "Wahltermine",
+      "start_label": "Startdatum",
+      "end_label": "Enddatum",
+      "btn_saving": "Wird gespeichert…",
+      "btn_save": "Termine speichern"
+    },
+    "logo": {
+      "title": "Logo der Organisation",
+      "subtitle": "Wird auf der Wahlseite der Wähler angezeigt",
+      "current": "Aktuell",
+      "no_logo": "Kein Logo",
+      "upload_label": "Neues Logo hochladen",
+      "file_hint": "PNG, JPG, WebP oder SVG · max. 2 MB",
+      "btn_uploading": "Wird hochgeladen…",
+      "btn_upload": "Logo hochladen"
+    },
+    "statistics": {
+      "title": "Abstimmungsstatistik",
+      "total_members": "Mitglieder gesamt",
+      "registered": "Registriert",
+      "active_voters": "Aktive Wähler",
+      "approved": "Zur Abstimmung zugelassen",
+      "eligible_voters": "Wahlberechtigte",
+      "not_expired": "Noch nicht abgelaufen",
+      "breakdown_title": "Mitgliedschaftsstatus",
+      "status_active": "Aktiv",
+      "status_invited": "Eingeladen",
+      "status_inactive": "Inaktiv",
+      "status_removed": "Entfernt",
+      "empty_title": "Keine Wähler zugewiesen",
+      "empty_desc": "Fügen Sie Mitglieder zu dieser Wahl hinzu, um Statistiken zu verfolgen."
+    },
+    "voting_control": {
+      "title": "Abstimmungssteuerung",
+      "currently_active": "Abstimmung ist derzeit aktiv",
+      "currently_inactive": "Abstimmung ist derzeit inaktiv",
+      "btn_open": "Abstimmung öffnen",
+      "btn_close": "Abstimmung schließen"
+    },
+    "posts": {
+      "title": "Stellen & Kandidaten",
+      "positions_label": "Stellen",
+      "candidates_label": "Genehmigte Kandidaten",
+      "btn_positions": "Stellen verwalten",
+      "btn_candidates": "Kandidaten verwalten"
+    },
+    "applications": {
+      "title": "Kandidaturbewerbungen",
+      "subtitle": "Kandidaturbewerbungen von Mitgliedern prüfen und genehmigen",
+      "btn_review": "Bewerbungen prüfen"
+    },
+    "voter_management": {
+      "title": "Wählerverwaltung",
+      "total_label": "Gesamt",
+      "approved_label": "Genehmigt",
+      "suspended_label": "Gesperrt",
+      "btn_manage": "Wählerliste verwalten"
+    },
+    "results": {
+      "title": "Ergebnisverwaltung",
+      "btn_publish": "Ergebnisse veröffentlichen",
+      "btn_unpublish": "Veröffentlichung zurückziehen"
+    }
+  },
+  "confirm": {
+    "activate": "Möchten Sie diese Wahl wirklich aktivieren? Der Status ändert sich auf Aktiv und die Abstimmung kann beginnen.",
+    "publish": "Möchten Sie die Wahlergebnisse wirklich veröffentlichen? Diese werden dann für alle Wähler sichtbar.",
+    "unpublish": "Möchten Sie die Wahlergebnisse wirklich zurückziehen?",
+    "open_voting": "Möchten Sie den Abstimmungszeitraum wirklich öffnen? Wähler können ihre Stimme abgeben.",
+    "close_voting": "Möchten Sie den Abstimmungszeitraum wirklich schließen? Es werden keine neuen Stimmen mehr angenommen."
+  }
+}

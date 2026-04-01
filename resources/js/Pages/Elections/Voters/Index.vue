@@ -171,8 +171,13 @@
             <option value="inactive">Suspended</option>
             <option value="removed">Removed</option>
           </select>
+          <select v-model="perPage" @change="applyFilters" class="filter-select filter-select--narrow">
+            <option :value="25">25 / page</option>
+            <option :value="50">50 / page</option>
+            <option :value="100">100 / page</option>
+          </select>
           <button v-if="searchQuery || statusFilter" @click="clearFilters" class="filter-clear">Clear</button>
-          <span v-if="voters.total" class="filter-count">{{ voters.total }} voters</span>
+          <span v-if="voters.total" class="filter-count">{{ voters.from }}–{{ voters.to }} of {{ voters.total }}</span>
         </div>
 
         <!-- The register -->
@@ -364,7 +369,7 @@ const props = defineProps({
   filters:           { type: Object, default: () => ({}) },
 })
 
-const authUserName      = computed(() => usePage().props.auth?.user?.name)
+const authUserName      = computed(() => usePage().props.user?.name ?? usePage().props.auth?.user?.name)
 const assignUserId      = ref('')
 const assigning         = ref(false)
 const loadingId         = ref(null)
@@ -372,6 +377,7 @@ const selectedMemberIds = ref([])
 const memberSearch      = ref('')
 const searchQuery       = ref(props.filters?.search ?? '')
 const statusFilter      = ref(props.filters?.status ?? '')
+const perPage           = ref(props.filters?.per_page ?? 50)
 
 const exportUrl = computed(() =>
   route('elections.voters.export', { organisation: props.organisation.slug, election: props.election.slug })
@@ -395,11 +401,15 @@ const debouncedFilter = () => { clearTimeout(filterTimer); filterTimer = setTime
 const applyFilters = () => {
   router.get(
     route('elections.voters.index', { organisation: props.organisation.slug, election: props.election.slug }),
-    { search: searchQuery.value || undefined, status: statusFilter.value || undefined },
+    {
+      search:    searchQuery.value || undefined,
+      status:    statusFilter.value || undefined,
+      per_page:  perPage.value !== 50 ? perPage.value : undefined,
+    },
     { preserveScroll: true, replace: true }
   )
 }
-const clearFilters = () => { searchQuery.value = ''; statusFilter.value = ''; applyFilters() }
+const clearFilters = () => { searchQuery.value = ''; statusFilter.value = ''; perPage.value = 50; applyFilters() }
 
 // Assign
 const assignSingle = () => {
@@ -750,6 +760,7 @@ const cancelProposal = (m) => {
   outline: none;
   cursor: pointer;
 }
+.filter-select--narrow { min-width: 0; width: auto; }
 .filter-clear { font-size: 0.8rem; color: #9ca3af; cursor: pointer; background: none; border: none; padding: 0.25rem; }
 .filter-clear:hover { color: #374151; }
 .filter-count { font-size: 0.75rem; color: #9ca3af; font-family: 'JetBrains Mono', monospace; margin-left: auto; }

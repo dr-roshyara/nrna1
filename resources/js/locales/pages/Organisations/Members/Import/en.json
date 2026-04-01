@@ -1,0 +1,62 @@
+{
+  "title": "Import Members",
+  "description": "Upload a CSV or Excel file to import members into this organisation.",
+  "back": "Back",
+  "steps": {
+    "upload": "Upload",
+    "review": "Review",
+    "processing": "Processing",
+    "complete": "Complete"
+  },
+  "upload": {
+    "title": "Upload File",
+    "drag_hint": "Drop file here or click to select",
+    "select_btn": "Select File",
+    "formats_hint": "CSV, XLSX or XLS — up to 50,000 rows",
+    "aria_label": "Select member import file"
+  },
+  "preview": {
+    "title": "Preview ({count} rows)",
+    "showing": "Showing 10 of {count} rows",
+    "validation_issues": "Validation Issues:",
+    "change_file": "Change File",
+    "import_btn": "Import",
+    "importing_btn": "Importing…"
+  },
+  "processing": {
+    "title": "Processing Import…",
+    "rows_label": "{processed} / {total} rows processed",
+    "imported": "Imported",
+    "skipped": "Skipped",
+    "total": "Total",
+    "background_hint": "Processing in background — you can close this tab and come back later."
+  },
+  "success": {
+    "title": "Import Complete!",
+    "imported_msg": "{count} members imported successfully.",
+    "skipped_msg": "{count} rows skipped (duplicates or missing email).",
+    "back_btn": "Back to organisation"
+  },
+  "error": {
+    "label": "Error:",
+    "try_again": "Try again",
+    "invalid_format": "Invalid file format. Please upload a CSV or Excel file."
+  },
+  "info_panel": {
+    "title": "File Format",
+    "formats_heading": "Supported Formats:",
+    "formats": [
+      "CSV (.csv) — comma or semicolon",
+      "Excel (.xlsx, .xls)"
+    ],
+    "columns_heading": "Required Columns:",
+    "columns": [
+      "Email / E-Mail (required)",
+      "First Name / Vorname",
+      "Last Name / Nachname"
+    ],
+    "scale_heading": "Scale:",
+    "scale_text": "Supports up to 50,000 members per import. Large files are processed in the background.",
+    "download_template": "Download Template"
+  }
+}

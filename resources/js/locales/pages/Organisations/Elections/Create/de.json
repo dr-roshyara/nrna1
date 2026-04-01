@@ -1,0 +1,33 @@
+{
+  "title": "Neue Wahl erstellen",
+  "organisation_label": "Organisation",
+  "fields": {
+    "name": {
+      "label": "Wahlname",
+      "placeholder": "z. B. Vorstandswahl 2026"
+    },
+    "description": {
+      "label": "Beschreibung",
+      "optional": "(optional)",
+      "placeholder": "Kurze Beschreibung der Wahl..."
+    },
+    "start": {
+      "section": "Startdatum & -uhrzeit",
+      "date_label": "Datum",
+      "time_label": "Öffnungszeit"
+    },
+    "end": {
+      "section": "Enddatum & -uhrzeit",
+      "date_label": "Datum",
+      "time_label": "Schließungszeit"
+    }
+  },
+  "validation": {
+    "end_after_start": "Die Schließungszeit muss nach der Öffnungszeit liegen."
+  },
+  "actions": {
+    "cancel": "Abbrechen",
+    "submit": "Wahl erstellen",
+    "submitting": "Wird erstellt…"
+  }
+}

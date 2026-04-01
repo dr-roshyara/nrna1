@@ -374,6 +374,18 @@ class OrganisationController extends Controller
                 ])->values(),
             ]);
 
+        $publishedElections = Election::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->where('results_published', true)
+            ->orderBy('start_date')
+            ->get()
+            ->map(fn ($e) => [
+                'id'   => $e->id,
+                'name' => $e->name,
+                'slug' => $e->slug,
+            ]);
+
         $electionIds = $activeElections->pluck('id');
 
         $voterMemberships = ElectionMembership::where('user_id', $user->id)
@@ -401,10 +413,11 @@ class OrganisationController extends Controller
             ]);
 
         return Inertia::render('Organisations/VoterHub', [
-            'organisation'     => $organisation->only('id', 'name', 'slug'),
-            'activeElections'  => $activeElections->values(),
-            'voterMemberships' => $voterMemberships,
-            'myApplications'   => $myApplications->values(),
+            'organisation'       => $organisation->only('id', 'name', 'slug'),
+            'activeElections'    => $activeElections->values(),
+            'publishedElections' => $publishedElections->values(),
+            'voterMemberships'   => $voterMemberships,
+            'myApplications'     => $myApplications->values(),
         ]);
     }
 

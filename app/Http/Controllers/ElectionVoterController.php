@@ -34,8 +34,9 @@ class ElectionVoterController extends Controller
 
         $this->authorize('view', $election);
 
-        $search = request('search');
-        $status = request('status');
+        $search   = request('search');
+        $status   = request('status');
+        $perPage  = in_array((int) request('per_page'), [25, 50, 100]) ? (int) request('per_page') : 50;
 
         $voters = $election->memberships()
             ->with('user:id,name,email')
@@ -43,7 +44,7 @@ class ElectionVoterController extends Controller
             ->when($search, fn ($q) => $q->whereHas('user', fn ($u) => $u->where('name', 'like', "%{$search}%")->orWhere('email', 'like', "%{$search}%")))
             ->when($status, fn ($q) => $q->where('status', $status))
             ->latest('assigned_at')
-            ->paginate(25)
+            ->paginate($perPage)
             ->withQueryString();
 
         // Org members not yet assigned to this election — for the assign dropdown
@@ -61,12 +62,12 @@ class ElectionVoterController extends Controller
             ->get();
 
         return Inertia::render('Elections/Voters/Index', [
-            'election'          => $election->only('id', 'name', 'type', 'status'),
+            'election'          => $election->only('id', 'slug', 'name', 'type', 'status'),
             'organisation'      => $organisation->only('id', 'slug', 'name'),
             'voters'            => $voters,
             'stats'             => $election->voter_stats,
             'unassignedMembers' => $unassignedMembers,
-            'filters'           => ['search' => $search, 'status' => $status],
+            'filters'           => ['search' => $search, 'status' => $status, 'per_page' => $perPage],
         ]);
     }
 

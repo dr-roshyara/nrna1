@@ -1,0 +1,33 @@
+{
+  "title": "Create New Election",
+  "organisation_label": "Organisation",
+  "fields": {
+    "name": {
+      "label": "Election Name",
+      "placeholder": "e.g. General Election 2026"
+    },
+    "description": {
+      "label": "Description",
+      "optional": "(optional)",
+      "placeholder": "Brief description of the election..."
+    },
+    "start": {
+      "section": "Start Date & Time",
+      "date_label": "Date",
+      "time_label": "Opening Time"
+    },
+    "end": {
+      "section": "End Date & Time",
+      "date_label": "Date",
+      "time_label": "Closing Time"
+    }
+  },
+  "validation": {
+    "end_after_start": "Closing time must be after opening time."
+  },
+  "actions": {
+    "cancel": "Cancel",
+    "submit": "Create Election",
+    "submitting": "Creating…"
+  }
+}

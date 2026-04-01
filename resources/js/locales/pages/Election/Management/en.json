@@ -1,0 +1,91 @@
+{
+  "page_eyebrow": "Election Management",
+  "sections": {
+    "activate": {
+      "title": "Ready to Activate?",
+      "description": "Once activated, the status changes to <strong>Active</strong> and the voting period opens.",
+      "btn_activating": "Activating…",
+      "btn_activate": "Activate Election"
+    },
+    "status": {
+      "title": "Current Status",
+      "election_system": "Election System",
+      "active": "Active",
+      "inactive": "Inactive",
+      "results": "Election Results",
+      "published": "Published",
+      "unpublished": "Unpublished"
+    },
+    "dates": {
+      "title": "Election Dates",
+      "start_label": "Start Date",
+      "end_label": "End Date",
+      "btn_saving": "Saving…",
+      "btn_save": "Save Dates"
+    },
+    "logo": {
+      "title": "Organisation Logo",
+      "subtitle": "Displayed on the election page seen by voters",
+      "current": "Current",
+      "no_logo": "No logo",
+      "upload_label": "Upload new logo",
+      "file_hint": "PNG, JPG, WebP or SVG · max 2 MB",
+      "btn_uploading": "Uploading…",
+      "btn_upload": "Upload Logo"
+    },
+    "statistics": {
+      "title": "Voting Statistics",
+      "total_members": "Total Members",
+      "registered": "Registered",
+      "active_voters": "Active Voters",
+      "approved": "Approved to vote",
+      "eligible_voters": "Eligible Voters",
+      "not_expired": "Not yet expired",
+      "breakdown_title": "Membership Breakdown",
+      "status_active": "Active",
+      "status_invited": "Invited",
+      "status_inactive": "Inactive",
+      "status_removed": "Removed",
+      "empty_title": "No voters assigned",
+      "empty_desc": "Add members to this election to track voter statistics."
+    },
+    "voting_control": {
+      "title": "Voting Control",
+      "currently_active": "Voting is currently active",
+      "currently_inactive": "Voting is currently inactive",
+      "btn_open": "Open Voting",
+      "btn_close": "Close Voting"
+    },
+    "posts": {
+      "title": "Posts & Candidates",
+      "positions_label": "Positions",
+      "candidates_label": "Approved Candidates",
+      "btn_positions": "Manage Positions",
+      "btn_candidates": "Manage Candidates"
+    },
+    "applications": {
+      "title": "Candidacy Applications",
+      "subtitle": "Review and approve candidacy applications from members",
+      "btn_review": "Review Applications"
+    },
+    "voter_management": {
+      "title": "Voter Management",
+      "total_label": "Total",
+      "approved_label": "Approved",
+      "suspended_label": "Suspended",
+      "btn_manage": "Manage Voter List"
+    },
+    "results": {
+      "title": "Result Management",
+      "btn_publish": "Publish Results",
+      "btn_unpublish": "Unpublish Results"
+    }
+  },
+  "confirm": {
+    "activate": "Are you sure you want to activate this election? The status will change to active and voting can begin.",
+    "publish": "Are you sure you want to publish the election results? This will make them available to all voters.",
+    "unpublish": "Are you sure you want to unpublish the election results?",
+    "open_voting": "Are you sure you want to open the voting period? Voters will be able to cast their votes.",
+    "close_voting": "Are you sure you want to close the voting period? No new votes will be accepted."
+  }
+}

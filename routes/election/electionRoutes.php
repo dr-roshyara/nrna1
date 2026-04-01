@@ -287,6 +287,11 @@ Route::middleware(['auth', 'verified'])
         Route::patch('/update-dates', [ElectionManagementController::class, 'updateDates'])
             ->name('elections.update-dates')
             ->can('manageSettings', 'election');
+
+        // Upload organisation logo — chief or deputy
+        Route::post('/upload-logo', [ElectionManagementController::class, 'uploadLogo'])
+            ->name('elections.upload-logo')
+            ->can('manageSettings', 'election');
     });
 
 // Test routes for voter slug system (Phase 1)

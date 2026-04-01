@@ -1,0 +1,62 @@
+{
+  "title": "Mitglieder importieren",
+  "description": "Laden Sie eine CSV- oder Excel-Datei hoch, um Mitglieder in diese Organisation zu importieren.",
+  "back": "Zurück",
+  "steps": {
+    "upload": "Hochladen",
+    "review": "Überprüfen",
+    "processing": "Verarbeitung",
+    "complete": "Abgeschlossen"
+  },
+  "upload": {
+    "title": "Datei hochladen",
+    "drag_hint": "Datei hier ablegen oder auswählen",
+    "select_btn": "Datei auswählen",
+    "formats_hint": "CSV, XLSX oder XLS — max. 50.000 Zeilen",
+    "aria_label": "Mitglieder-Importdatei auswählen"
+  },
+  "preview": {
+    "title": "Vorschau ({count} Zeilen)",
+    "showing": "Zeige 10 von {count} Zeilen",
+    "validation_issues": "Validierungsprobleme:",
+    "change_file": "Andere Datei wählen",
+    "import_btn": "Importieren",
+    "importing_btn": "Wird importiert…"
+  },
+  "processing": {
+    "title": "Import wird verarbeitet…",
+    "rows_label": "{processed} / {total} Zeilen verarbeitet",
+    "imported": "Importiert",
+    "skipped": "Übersprungen",
+    "total": "Gesamt",
+    "background_hint": "Wird im Hintergrund verarbeitet — Sie können diesen Tab schließen und später zurückkehren."
+  },
+  "success": {
+    "title": "Import abgeschlossen!",
+    "imported_msg": "{count} Mitglieder erfolgreich importiert.",
+    "skipped_msg": "{count} Zeilen übersprungen (Duplikate oder fehlende E-Mail).",
+    "back_btn": "Zurück zur Organisation"
+  },
+  "error": {
+    "label": "Fehler:",
+    "try_again": "Erneut versuchen",
+    "invalid_format": "Ungültiges Dateiformat. Bitte laden Sie eine CSV- oder Excel-Datei hoch."
+  },
+  "info_panel": {
+    "title": "Dateiformat",
+    "formats_heading": "Unterstützte Formate:",
+    "formats": [
+      "CSV (.csv) — Komma oder Semikolon",
+      "Excel (.xlsx, .xls)"
+    ],
+    "columns_heading": "Erforderliche Spalten:",
+    "columns": [
+      "Email / E-Mail (Pflichtfeld)",
+      "Vorname / First Name",
+      "Nachname / Last Name"
+    ],
+    "scale_heading": "Kapazität:",
+    "scale_text": "Unterstützt bis zu 50.000 Mitglieder pro Import. Große Dateien werden im Hintergrund verarbeitet.",
+    "download_template": "Vorlage herunterladen"
+  }
+}

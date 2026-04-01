@@ -1,10 +1,17 @@
 <template>
-  <election-layout>
-    <div class="results-page">
+  <div class="results-page">
 
       <!-- Hero Header -->
       <header class="results-hero" role="banner">
         <div class="results-hero__inner">
+          <!-- Organisation Logo -->
+          <div v-if="final_result?.logo_url" class="results-hero__logo">
+            <img
+              :src="final_result.logo_url"
+              :alt="final_result.org_name || 'Organisation logo'"
+              class="results-hero__logo-img"
+            />
+          </div>
           <div class="results-hero__badge" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
             Official Results
@@ -56,16 +63,14 @@
         </p>
       </footer>
 
-    </div>
-  </election-layout>
+  </div>
 </template>
 
 <script>
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import PostResult from '@/Pages/Result/PostResult.vue'
 
 export default {
-  components: { ElectionLayout, PostResult },
+  components: { PostResult },
 
   props: {
     final_result: { type: Object, default: null },
@@ -112,6 +117,22 @@ export default {
   text-align: center;
   position: relative;
 }
+.results-hero__logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+.results-hero__logo-img {
+  height: 80px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background: rgba(255,255,255,0.10);
+  padding: 0.5rem;
+  backdrop-filter: blur(4px);
+}
+
 .results-hero__badge {
   display: inline-flex;
   align-items: center;
