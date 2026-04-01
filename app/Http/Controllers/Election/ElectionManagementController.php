@@ -128,7 +128,10 @@ class ElectionManagementController extends Controller
 
         Election::withoutGlobalScopes()
             ->where('id', $election->id)
-            ->update(['status' => 'active']);
+            ->update([
+                'status'            => 'active',
+                'results_published' => false,
+            ]);
 
         return back()->with('success', 'Election activated successfully! Voting period is now open.');
     }

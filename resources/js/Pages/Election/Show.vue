@@ -146,6 +146,58 @@
                             </dl>
                         </template>
 
+                        <!-- ── STATE: Election finished ── -->
+                        <template v-else-if="election.status === 'completed'">
+                            <div class="esp-ballot__header">
+                                <div class="esp-ballot__icon esp-ballot__icon--completed" aria-label="Election finished">🏁</div>
+                                <div>
+                                    <p class="esp-ballot__eyebrow">{{ $t('pages.election-show.completed.eyebrow', 'Abgeschlossen') }}</p>
+                                    <h2 class="esp-ballot__heading">{{ $t('pages.election-show.completed.heading', 'Wahl beendet') }}</h2>
+                                </div>
+                            </div>
+                            <p class="esp-ineligible-body" style="margin-bottom:1.5rem">
+                                {{ $t('pages.election-show.completed.body', { election: election.name }, `Die Abstimmungsphase für „${election.name}" ist abgeschlossen. Vielen Dank für Ihre Teilnahme.`) }}
+                            </p>
+                            <div class="esp-certificate">
+                                <div class="esp-certificate__row">
+                                    <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.started_label', 'Beginn') }}</dt>
+                                    <dd class="esp-certificate__value">{{ formatDate(election.start_date) }}</dd>
+                                </div>
+                                <div class="esp-certificate__row">
+                                    <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.ended_label', 'Ende') }}</dt>
+                                    <dd class="esp-certificate__value">{{ formatDate(election.end_date) }}</dd>
+                                </div>
+                                <div class="esp-certificate__row">
+                                    <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.status_label', 'Status') }}</dt>
+                                    <dd class="esp-certificate__value" style="color:var(--gold)">{{ $t('pages.election-show.completed.status_value', '✓ Abgeschlossen') }}</dd>
+                                </div>
+                            </div>
+                        </template>
+
+                        <!-- ── STATE: Eligible — voting period has passed ── -->
+                        <template v-else-if="isEligible && electionEnded">
+                            <div class="esp-ballot__header">
+                                <div class="esp-ballot__icon esp-ballot__icon--completed" aria-label="Voting period ended">🏁</div>
+                                <div>
+                                    <p class="esp-ballot__eyebrow">{{ $t('pages.election-show.period_ended.eyebrow', 'Abgestimmt') }}</p>
+                                    <h2 class="esp-ballot__heading">{{ $t('pages.election-show.period_ended.heading', 'Abstimmungszeitraum abgelaufen') }}</h2>
+                                </div>
+                            </div>
+                            <p class="esp-ineligible-body" style="margin-bottom:1.5rem">
+                                {{ $t('pages.election-show.period_ended.body', { election: election.name }, `Der Abstimmungszeitraum für „${election.name}" ist abgelaufen.`) }}
+                            </p>
+                            <div class="esp-certificate">
+                                <div class="esp-certificate__row">
+                                    <dt class="esp-certificate__label">{{ $t('pages.election-show.period_ended.started_label', 'Beginn') }}</dt>
+                                    <dd class="esp-certificate__value">{{ formatDate(election.start_date) }}</dd>
+                                </div>
+                                <div class="esp-certificate__row">
+                                    <dt class="esp-certificate__label">{{ $t('pages.election-show.period_ended.ended_label', 'Ende') }}</dt>
+                                    <dd class="esp-certificate__value">{{ formatDate(election.end_date) }}</dd>
+                                </div>
+                            </div>
+                        </template>
+
                         <!-- ── STATE: Eligible but not yet open ── -->
                         <template v-else-if="isEligible">
                             <div class="esp-ballot__header">
@@ -156,16 +208,16 @@
                                 </div>
                             </div>
                             <p class="esp-ineligible-body" style="margin-bottom:1.5rem">
-                                {{ $t('pages.election-show.not_yet_open.body', { election: election.name, date: election.start_date }, `Sie sind registriert und können ab dem ${election.start_date} abstimmen. Bitte kommen Sie dann zurück.`) }}
+                                {{ $t('pages.election-show.not_yet_open.body', { election: election.name, date: formatDate(election.start_date) }, `Sie sind registriert und können ab dem ${formatDate(election.start_date)} abstimmen. Bitte kommen Sie dann zurück.`) }}
                             </p>
                             <div class="esp-certificate">
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.opens_label', 'Öffnet am') }}</dt>
-                                    <dd class="esp-certificate__value">{{ election.start_date }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDate(election.start_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.closes_label', 'Schließt am') }}</dt>
-                                    <dd class="esp-certificate__value">{{ election.end_date }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDate(election.end_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.status_label', 'Ihr Status') }}</dt>
@@ -232,6 +284,10 @@ function startVoting () {
         onFinish: () => { voting.value = false },
     })
 }
+
+// ─── Date checks ──────────────────────────────────────────────────────────────
+const electionEnded  = computed(() => props.election.end_date   && Date.now() > new Date(props.election.end_date))
+const electionStarted = computed(() => props.election.start_date && Date.now() >= new Date(props.election.start_date))
 
 // ─── Countdown ────────────────────────────────────────────────────────────────
 const countdown = ref({ hours: '00', minutes: '00', seconds: '00' })
@@ -573,6 +629,7 @@ const ballotCardClass = computed(() => ({
 
 .esp-ballot__icon--active     { background: #fef3c7; }
 .esp-ballot__icon--voted      { background: #d1fae5; color: var(--green); font-size: 1.75rem; font-weight: 700; }
+.esp-ballot__icon--completed  { background: #fef9ec; font-size: 1.75rem; }
 .esp-ballot__icon--ineligible { background: var(--parchment); color: var(--slate); font-size: 1.75rem; }
 
 .esp-ballot__eyebrow {
