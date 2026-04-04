@@ -11,10 +11,12 @@ use App\Models\UserOrganisationRole;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Http\Request;
+use App\Traits\ChecksElectionAccess;
 use Illuminate\Support\Facades\DB;
 
 class OrganisationController extends Controller
 {
+    use ChecksElectionAccess;
     /**
      * Display an organisation's overview page
      *
@@ -132,7 +134,9 @@ class OrganisationController extends Controller
         // Get organisation stats
         $stats = [
             'members_count'          => UserOrganisationRole::where('organisation_id', $organisation->id)->count(),
-            'active_members_count'   => 0,
+            'active_members_count'   => UserOrganisationRole::where('organisation_id', $organisation->id)
+                                            ->whereHas('user', fn ($q) => $q->whereNull('deleted_at'))
+                                            ->count(),
             'elections_count'        => $realElections->count(),
             'active_elections_count' => $realElections->where('status', 'active')->count(),
             'completed_elections'    => $realElections->where('status', 'completed')->count(),
@@ -350,6 +354,13 @@ class OrganisationController extends Controller
             ->value('role');
         abort_if(! $role, 403);
 
+        $isElectionOfficer = ElectionOfficer::where('organisation_id', $organisation->id)
+            ->where('user_id', $user->id)
+            ->where('status', 'active')
+            ->exists();
+
+        $isOfficer = in_array($role, ['owner', 'admin', 'commission']) || $isElectionOfficer;
+
         $activeElections = Election::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
             ->where('type', 'real')
@@ -399,18 +410,21 @@ class OrganisationController extends Controller
             ]);
 
         $myApplications = \App\Models\CandidacyApplication::where('user_id', $user->id)
-            ->whereIn('election_id', $electionIds)
-            ->with(['election:id,name', 'post:id,name'])
+            ->where('organisation_id', $organisation->id)
+            ->with(['election:id,name,status', 'post:id,name'])
             ->orderByDesc('created_at')
             ->get()
             ->map(fn ($a) => [
-                'id'            => $a->id,
-                'election_id'   => $a->election_id,
-                'election_name' => $a->election?->name,
-                'post_name'     => $a->post?->name,
-                'status'        => $a->status,
-                'created_at'    => $a->created_at->format('Y-m-d'),
+                'id'             => $a->id,
+                'election_id'    => $a->election_id,
+                'election_name'  => $a->election?->name,
+                'election_status'=> $a->election?->status,
+                'post_name'      => $a->post?->name,
+                'status'         => $a->status,
+                'created_at'     => $a->created_at->format('Y-m-d'),
             ]);
+
+        $appliedElectionIds = $myApplications->pluck('election_id')->unique()->values();
 
         return Inertia::render('Organisations/VoterHub', [
             'organisation'       => $organisation->only('id', 'name', 'slug'),
@@ -418,6 +432,8 @@ class OrganisationController extends Controller
             'publishedElections' => $publishedElections->values(),
             'voterMemberships'   => $voterMemberships,
             'myApplications'     => $myApplications->values(),
+            'isOfficer'          => $isOfficer,
+            'appliedElectionIds' => $appliedElectionIds->values(),
         ]);
     }
 
@@ -484,6 +500,12 @@ class OrganisationController extends Controller
             ->where('type', 'real')
             ->firstOrFail();
 
+        abort_unless(
+            $this->canAccessElection($organisation, $electionModel->id),
+            403,
+            'You are not authorised to view this election.'
+        );
+
         $posts = Post::withoutGlobalScopes()
             ->where('election_id', $electionModel->id)
             ->where('organisation_id', $organisation->id)
@@ -504,4 +526,5 @@ class OrganisationController extends Controller
             'posts'        => $posts->values(),
         ]);
     }
+
 }

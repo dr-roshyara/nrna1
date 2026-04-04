@@ -50,7 +50,7 @@
           <OrganizationHeader :organisation="organisation" />
 
           <div class="mt-6">
-            <StatsGrid :stats="stats" />
+            <StatsGrid :stats="stats" :organisation-slug="organisation.slug" />
           </div>
         </div>
       </div>
@@ -67,6 +67,20 @@
           </div>
 
           <div class="portal-grid">
+            <!-- Membership Dashboard -->
+            <a :href="`/organisations/${organisation.slug}/membership`" class="portal-card portal-card--membership">
+              <div class="portal-card__icon-wrap portal-card__icon-wrap--membership">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div class="portal-card__body">
+                <h3 class="portal-card__title">Membership</h3>
+                <p class="portal-card__desc">Manage your membership, fees, and renewals</p>
+              </div>
+              <div class="portal-card__arrow">→</div>
+            </a>
+
             <!-- Voter Hub -->
             <a :href="route('organisations.voter-hub', organisation.slug)" class="portal-card portal-card--voter">
               <div class="portal-card__icon-wrap portal-card__icon-wrap--voter">
@@ -100,6 +114,7 @@
           </div>
         </div>
       </div>
+
 
       <!-- ═══════════════════════════════════════════════════
            ZONE 3 · LIVE VOTING  (only when elections open)
@@ -280,14 +295,20 @@
               </div>
               <div class="px-8 py-5">
                 <div class="grid grid-cols-3 gap-4">
-                  <div class="rounded-xl bg-slate-50 border border-slate-200 p-4 text-center">
-                    <p class="text-2xl font-bold text-slate-700">{{ stats?.members_count ?? 0 }}</p>
-                    <p class="text-xs text-slate-500 mt-0.5">Total Members</p>
-                  </div>
-                  <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-4 text-center">
-                    <p class="text-2xl font-bold text-emerald-700">{{ stats?.active_members_count ?? 0 }}</p>
-                    <p class="text-xs text-slate-500 mt-0.5">Active</p>
-                  </div>
+                  <a
+                    :href="`/organisations/${organisation.slug}/members`"
+                    class="block rounded-xl bg-slate-50 border border-slate-200 p-4 text-center hover:bg-slate-100 hover:border-slate-400 hover:shadow-sm transition-all duration-200 group no-underline"
+                  >
+                    <p class="text-2xl font-bold text-slate-700 group-hover:text-slate-900">{{ stats?.members_count ?? 0 }}</p>
+                    <p class="text-xs text-slate-500 mt-0.5 group-hover:text-slate-700">Total Members</p>
+                  </a>
+                  <a
+                    :href="`/organisations/${organisation.slug}/members`"
+                    class="block rounded-xl bg-emerald-50 border border-emerald-200 p-4 text-center hover:bg-emerald-100 hover:border-emerald-400 hover:shadow-sm transition-all duration-200 group no-underline"
+                  >
+                    <p class="text-2xl font-bold text-emerald-700 group-hover:text-emerald-900">{{ stats?.active_members_count ?? 0 }}</p>
+                    <p class="text-xs text-slate-500 mt-0.5 group-hover:text-slate-700">Active</p>
+                  </a>
                   <div class="rounded-xl bg-amber-50 border border-amber-200 p-4 text-center">
                     <p class="text-2xl font-bold text-amber-600">{{ stats?.active_elections_count ?? 0 }}</p>
                     <p class="text-xs text-slate-500 mt-0.5">Live Elections</p>
@@ -349,7 +370,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { router, usePage } from '@inertiajs/vue3'
+import { router, usePage, Link } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { useMeta } from '@/composables/useMeta'
 
@@ -526,6 +547,7 @@ useMeta({
   transform: translateY(-2px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
+.portal-card--membership:hover { border-color: #7c3aed; }
 .portal-card--voter:hover   { border-color: #3b82f6; }
 .portal-card--commission:hover { border-color: #10b981; }
 
@@ -538,6 +560,7 @@ useMeta({
   justify-content: center;
   flex-shrink: 0;
 }
+.portal-card__icon-wrap--membership { background: #ede9fe; color: #7c3aed; }
 .portal-card__icon-wrap--voter      { background: #dbeafe; color: #2563eb; }
 .portal-card__icon-wrap--commission { background: #d1fae5; color: #059669; }
 

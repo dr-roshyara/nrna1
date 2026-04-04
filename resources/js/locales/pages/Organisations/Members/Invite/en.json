@@ -1,0 +1,31 @@
+{
+  "title": "Invite Members",
+  "description": "Send email invitations to join {organisation}.",
+  "back": "Back to Dashboard",
+  "form": {
+    "title": "Send Invitation",
+    "email_label": "Email Address",
+    "email_placeholder": "member@example.com",
+    "role_label": "Role",
+    "message_label": "Personal Message",
+    "message_optional": "(optional)",
+    "message_placeholder": "Add a personal note to the invitation...",
+    "submit": "Send Invitation",
+    "submitting": "Sending…"
+  },
+  "roles": {
+    "member": "Member",
+    "admin": "Admin",
+    "commission": "Commission"
+  },
+  "pending": {
+    "title": "Pending Invitations",
+    "empty": "No pending invitations.",
+    "col_email": "Email",
+    "col_role": "Role",
+    "col_invited_by": "Invited By",
+    "col_expires": "Expires",
+    "col_action": "Action",
+    "cancel": "Cancel"
+  }
+}

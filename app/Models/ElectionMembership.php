@@ -122,10 +122,23 @@ class ElectionMembership extends Model
 
     public function scopeEligible($query)
     {
-        return $query->where('status', 'active')
+        return $query->where('election_memberships.status', 'active')
             ->where(function ($q) {
-                $q->whereNull('expires_at')
-                  ->orWhere('expires_at', '>', now());
+                $q->whereNull('election_memberships.expires_at')
+                  ->orWhere('election_memberships.expires_at', '>', now());
+            })
+            // Also enforce the member's own status (Issue 3 fix — member-level eligibility)
+            ->whereExists(function ($sub) {
+                $sub->select(\DB::raw(1))
+                    ->from('organisation_users')
+                    ->join('members', 'members.organisation_user_id', '=', 'organisation_users.id')
+                    ->whereColumn('organisation_users.user_id', 'election_memberships.user_id')
+                    ->whereColumn('organisation_users.organisation_id', 'election_memberships.organisation_id')
+                    ->where('members.status', 'active')
+                    ->where(function ($mq) {
+                        $mq->whereNull('members.membership_expires_at')
+                           ->orWhere('members.membership_expires_at', '>', now());
+                    });
             });
     }
 

@@ -7,6 +7,7 @@ use App\Models\Election;
 use App\Models\Organisation;
 use App\Models\Post;
 use App\Models\UserOrganisationRole;
+use App\Traits\ChecksElectionAccess;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,7 @@ use Inertia\Response;
 
 class CandidacyApplicationController extends Controller
 {
+    use ChecksElectionAccess;
     public function create(Organisation $organisation): Response
     {
         $user = auth()->user();
@@ -99,6 +101,12 @@ class CandidacyApplicationController extends Controller
             ->value('role');
         abort_if(! $role, 403);
 
+        abort_unless(
+            $this->canAccessElection($organisation, $election->id, $user->id),
+            403,
+            'You are not authorised to access this election.'
+        );
+
         $posts = Post::withoutGlobalScopes()
             ->where('election_id', $election->id)
             ->where('organisation_id', $organisation->id)
@@ -143,6 +151,13 @@ class CandidacyApplicationController extends Controller
             ->where('organisation_id', $organisation->id)
             ->value('role');
         abort_if(! $role, 403);
+
+        $electionId = $request->input('election_id');
+        abort_unless(
+            $this->canAccessElection($organisation, $electionId, $user->id),
+            403,
+            'You are not authorised to access this election.'
+        );
 
         $validated = $request->validate([
             'election_id'    => 'required|uuid|exists:elections,id',

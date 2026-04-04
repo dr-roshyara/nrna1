@@ -80,6 +80,11 @@ class LoginController extends Controller
             return redirect($pending['url']);
         }
 
+        // Redirect to intended URL if set (e.g., organisation member invitation acceptance)
+        if (session()->has('url.intended')) {
+            return redirect()->intended();
+        }
+
         // ✅ Use DashboardResolver for intelligent post-login routing
         // This handles:
         // - Active voting sessions

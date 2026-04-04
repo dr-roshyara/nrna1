@@ -27,10 +27,11 @@
     "deputy_officer": "सहायक अधिकृत"
   },
   "quick_actions": {
-    "subtitle": "पहिलो चुनाव सञ्चालन गर्न यी ३ चरणहरू पूरा गर्नुहोस्",
+    "subtitle": "पहिलो चुनाव सञ्चालन गर्न यी ४ चरणहरू पूरा गर्नुहोस्",
     "step_1": "चरण १",
     "step_2": "चरण २",
     "step_3": "चरण ३",
+    "step_4": "चरण ४",
     "legal_note": "संगठन कानून §२६ BGB अनुसार आवश्यक",
     "progress_label": "सेटअप प्रगति:"
   },
@@ -43,9 +44,12 @@
     "appoint_officer_desc": "संगठन कानून अनुसार",
     "create_election": "चुनाव सिर्जना गर्नुहोस्",
     "create_election_desc": "बोर्ड, सहायक, वा लेखा परीक्षक चुनाव",
+    "invite_members": "सदस्य आमन्त्रण गर्नुहोस्",
+    "invite_members_desc": "संगठनमा सामेल हुन इमेल आमन्त्रणहरू पठाउनुहोस्",
     "button_import": "आयात गर्नुहोस्",
     "button_appoint": "नियुक्त गर्नुहोस्",
     "button_create": "सिर्जना गर्नुहोस्",
+    "button_invite": "आमन्त्रण गर्नुहोस्",
     "more_options": "अधिक विकल्प"
   },
   "onboarding": {

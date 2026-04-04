@@ -12,7 +12,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <!-- Total Members Card -->
-      <div class="bg-gradient-to-br from-blue-50 to-blue-100/30 rounded-xl shadow-sm p-6 hover:shadow-md transition-all border border-blue-200 hover:border-blue-300">
+      <a :href="`/organisations/${organisationSlug}/members`" class="block bg-gradient-to-br from-blue-50 to-blue-100/30 rounded-xl shadow-sm p-6 hover:shadow-md hover:scale-[1.02] transition-all border border-blue-200 hover:border-blue-400 cursor-pointer no-underline">
         <div class="flex items-start justify-between">
           <div class="flex-1">
             <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-1">
@@ -28,10 +28,10 @@
             </svg>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- Active Members Card -->
-      <div class="bg-gradient-to-br from-green-50 to-green-100/30 rounded-xl shadow-sm p-6 hover:shadow-md transition-all border border-green-200 hover:border-green-300">
+      <a :href="`/organisations/${organisationSlug}/members`" class="block bg-gradient-to-br from-green-50 to-green-100/30 rounded-xl shadow-sm p-6 hover:shadow-md hover:scale-[1.02] transition-all border border-green-200 hover:border-green-400 cursor-pointer no-underline">
         <div class="flex items-start justify-between">
           <div class="flex-1">
             <p class="text-xs font-semibold text-green-600 uppercase tracking-wide mb-1">
@@ -47,10 +47,10 @@
             </svg>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- Total Elections Card -->
-      <div class="bg-gradient-to-br from-purple-50 to-purple-100/30 rounded-xl shadow-sm p-6 hover:shadow-md transition-all border border-purple-200 hover:border-purple-300">
+      <a :href="`/organisations/${organisationSlug}/elections`" class="block bg-gradient-to-br from-purple-50 to-purple-100/30 rounded-xl shadow-sm p-6 hover:shadow-md hover:scale-[1.02] transition-all border border-purple-200 hover:border-purple-400 cursor-pointer no-underline">
         <div class="flex items-start justify-between">
           <div class="flex-1">
             <p class="text-xs font-semibold text-purple-600 uppercase tracking-wide mb-1">
@@ -66,10 +66,10 @@
             </svg>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- Active Elections Card -->
-      <div class="bg-gradient-to-br from-orange-50 to-orange-100/30 rounded-xl shadow-sm p-6 hover:shadow-md transition-all border border-orange-200 hover:border-orange-300">
+      <a :href="`/organisations/${organisationSlug}/elections?status=active`" class="block bg-gradient-to-br from-orange-50 to-orange-100/30 rounded-xl shadow-sm p-6 hover:shadow-md hover:scale-[1.02] transition-all border border-orange-200 hover:border-orange-400 cursor-pointer no-underline">
         <div class="flex items-start justify-between">
           <div class="flex-1">
             <p class="text-xs font-semibold text-orange-600 uppercase tracking-wide mb-1">
@@ -85,7 +85,7 @@
             </svg>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- Completed Elections (optional) -->
       <div v-if="stats.completed_elections !== undefined" class="bg-gradient-to-br from-indigo-50 to-indigo-100/30 rounded-xl shadow-sm p-6 hover:shadow-md transition-all border border-indigo-200 hover:border-indigo-300">
@@ -106,31 +106,16 @@
         </div>
       </div>
 
-      <!-- New Members (30 days) -->
-      <div v-if="stats.new_members_30d !== undefined" class="bg-gradient-to-br from-cyan-50 to-cyan-100/30 rounded-xl shadow-sm p-6 hover:shadow-md transition-all border border-cyan-200 hover:border-cyan-300">
-        <div class="flex items-start justify-between">
-          <div class="flex-1">
-            <p class="text-xs font-semibold text-cyan-600 uppercase tracking-wide mb-1">
-              {{ $t('pages.organisation-show.stats.new_members_30d') }}
-            </p>
-            <p class="text-4xl font-bold text-cyan-600 mt-2">
-              {{ stats.new_members_30d ?? 0 }}
-            </p>
-          </div>
-          <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-cyan-100 p-3">
-            <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-              <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0015.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
-            </svg>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 </template>
 
 <script setup>
 defineProps({
+  organisationSlug: {
+    type: String,
+    required: true,
+  },
   stats: {
     type: Object,
     required: true,

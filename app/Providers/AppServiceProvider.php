@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contracts\PaymentGateway;
+use App\Services\ManualPaymentGateway;
 use Illuminate\Support\ServiceProvider;
 use App\Services\DemoElectionResolver;
 use App\Services\VoterSlugService;
@@ -47,6 +49,9 @@ class AppServiceProvider extends ServiceProvider
 
         // Register SeoService as singleton for injectable getMeta() usage
         $this->app->singleton(\App\Services\SeoService::class);
+
+        // Membership payment gateway — Phase 1: manual (no-op). Swap for Stripe in Phase 5.
+        $this->app->bind(PaymentGateway::class, ManualPaymentGateway::class);
 
         // Register custom Fortify login response
         // This ensures LoginResponse handles post-authentication redirection via DashboardResolver

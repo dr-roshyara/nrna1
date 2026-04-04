@@ -43,6 +43,39 @@ class ElectionManagementController extends Controller
      *
      * GET /organisations/{organisation:slug}/elections/create
      */
+    public function listForOrganisation(Organisation $organisation, \Illuminate\Http\Request $request): Response
+    {
+        $query = Election::where('organisation_id', $organisation->id)
+            ->where('type', '!=', 'demo')
+            ->orderByDesc('created_at');
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        $elections = $query->get()
+            ->map(fn ($e) => [
+                'id'         => $e->id,
+                'name'       => $e->name,
+                'slug'       => $e->slug,
+                'status'     => $e->status,
+                'start_date' => $e->start_date,
+                'end_date'   => $e->end_date,
+                'created_at' => $e->created_at,
+            ]);
+
+        $userRole = \App\Models\UserOrganisationRole::where('organisation_id', $organisation->id)
+            ->where('user_id', auth()->id())
+            ->value('role');
+
+        return Inertia::render('Organisations/Elections/Index', [
+            'organisation'   => $organisation->only('id', 'name', 'slug'),
+            'elections'      => $elections,
+            'canManage'      => in_array($userRole, ['owner', 'admin', 'commission']),
+            'statusFilter'   => $request->input('status'),
+        ]);
+    }
+
     public function create(Organisation $organisation): Response
     {
         $this->authorize('create', [Election::class, $organisation]);

@@ -27,10 +27,11 @@
     "deputy_officer": "Deputy Officer"
   },
   "quick_actions": {
-    "subtitle": "Complete these 3 steps to run your first election",
+    "subtitle": "Complete these 4 steps to run your first election",
     "step_1": "Step 1",
     "step_2": "Step 2",
     "step_3": "Step 3",
+    "step_4": "Step 4",
     "legal_note": "Required by §26 BGB Association Law",
     "progress_label": "Setup progress:"
   },
@@ -43,9 +44,12 @@
     "appoint_officer_desc": "According to §26 BGB Association Law",
     "create_election": "Create Election",
     "create_election_desc": "Board, Deputy, or Auditor elections",
+    "invite_members": "Invite Members",
+    "invite_members_desc": "Send email invitations to join your organisation",
     "button_import": "Import",
     "button_appoint": "Appoint",
     "button_create": "Create",
+    "button_invite": "Invite",
     "more_options": "More Options"
   },
   "onboarding": {

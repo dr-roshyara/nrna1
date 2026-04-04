@@ -1,0 +1,31 @@
+{
+  "title": "Mitglieder einladen",
+  "description": "E-Mail-Einladungen zum Beitritt zu {organisation} versenden.",
+  "back": "Zurück zum Dashboard",
+  "form": {
+    "title": "Einladung senden",
+    "email_label": "E-Mail-Adresse",
+    "email_placeholder": "mitglied@beispiel.de",
+    "role_label": "Rolle",
+    "message_label": "Persönliche Nachricht",
+    "message_optional": "(optional)",
+    "message_placeholder": "Fügen Sie eine persönliche Notiz zur Einladung hinzu...",
+    "submit": "Einladung senden",
+    "submitting": "Wird gesendet…"
+  },
+  "roles": {
+    "member": "Mitglied",
+    "admin": "Administrator",
+    "commission": "Kommission"
+  },
+  "pending": {
+    "title": "Ausstehende Einladungen",
+    "empty": "Keine ausstehenden Einladungen.",
+    "col_email": "E-Mail",
+    "col_role": "Rolle",
+    "col_invited_by": "Eingeladen von",
+    "col_expires": "Läuft ab",
+    "col_action": "Aktion",
+    "cancel": "Abbrechen"
+  }
+}

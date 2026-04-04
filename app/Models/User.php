@@ -13,10 +13,12 @@ use App\Traits\HasOrganisation;
 use App\Traits\HasAuditFields;
 
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Member;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 //models
+use App\Models\Organisation;
 use App\Models\Vote;
 use App\Models\Result;
 use App\Models\DeligateVote;
@@ -167,6 +169,30 @@ class User extends Authenticatable implements MustVerifyEmail
     public function organisationRoles()
     {
         return $this->hasMany(UserOrganisationRole::class);
+    }
+
+    public function roleIn(Organisation $organisation): ?string
+    {
+        return UserOrganisationRole::where('user_id', $this->id)
+            ->where('organisation_id', $organisation->id)
+            ->value('role');
+    }
+
+    /**
+     * Returns true only if the user has an active, non-expired formal membership record
+     * in the `members` table for the given organisation.
+     * Platform roles (admin, commission, voter, etc.) do NOT count as paid membership.
+     */
+    public function isPaidMember(Organisation $organisation): bool
+    {
+        return Member::where('organisation_id', $organisation->id)
+            ->whereHas('organisationUser', fn ($q) => $q->where('user_id', $this->id))
+            ->where('status', 'active')
+            ->where(fn ($q) =>
+                $q->whereNull('membership_expires_at')
+                  ->orWhere('membership_expires_at', '>', now())
+            )
+            ->exists();
     }
 
     /**
@@ -1308,9 +1334,23 @@ public function getVoterState(): string
             ]
         );
 
-        \Illuminate\Support\Facades\Mail::send(
-            new \App\Mail\VerifyEmailMail($this, $verificationUrl)
-        );
+        try {
+            \Illuminate\Support\Facades\Mail::send(
+                new \App\Mail\VerifyEmailMail($this, $verificationUrl)
+            );
+            \Illuminate\Support\Facades\Log::info('Verification email sent', [
+                'user_id' => $this->id,
+                'email'   => $this->email,
+            ]);
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Verification email failed — user can use resend link', [
+                'user_id' => $this->id,
+                'email'   => $this->email,
+                'error'   => $e->getMessage(),
+            ]);
+            // Do NOT re-throw — registration must complete even if mail fails.
+            // The user will see the verification page and can click "Resend".
+        }
     }
 
     /**

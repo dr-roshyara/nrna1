@@ -1,0 +1,363 @@
+<template>
+  <PublicDigitLayout>
+    <div class="max-w-3xl mx-auto py-8 px-4">
+
+      <!-- Flash -->
+      <div v-if="page.props.flash?.success"
+           class="mb-6 rounded-lg bg-green-50 border border-green-200 p-4 text-green-800 text-sm flex items-center gap-2">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        {{ page.props.flash.success }}
+      </div>
+      <div v-if="page.props.errors?.error"
+           class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
+        {{ page.props.errors.error }}
+      </div>
+
+      <!-- Back link -->
+      <a
+        :href="route('organisations.membership.applications.index', organisation.slug)"
+        class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 mb-6"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        {{ t.back }}
+      </a>
+
+      <!-- Status banner -->
+      <div
+        class="rounded-lg p-4 mb-6 flex items-center gap-3 text-sm font-medium"
+        :class="statusBannerClass"
+      >
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path v-if="application.status === 'approved'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          <path v-else-if="application.status === 'rejected'" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span>{{ statusLabel(application.status) }}</span>
+        <span v-if="application.reviewed_at" class="ml-auto text-xs font-normal opacity-75">
+          {{ t.reviewed_by }} {{ application.reviewer?.name ?? '—' }}
+          {{ t.on }} {{ formatDate(application.reviewed_at) }}
+        </span>
+      </div>
+
+      <!-- Application detail card -->
+      <div class="bg-white rounded-xl shadow divide-y divide-gray-100">
+
+        <!-- Applicant -->
+        <div class="px-6 py-5">
+          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.section_applicant }}</h2>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-lg font-bold flex-shrink-0">
+              {{ initials(application.user?.name) }}
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">{{ application.user?.name }}</p>
+              <p class="text-sm text-gray-500">{{ application.user?.email }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Membership type -->
+        <div class="px-6 py-5">
+          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.section_type }}</h2>
+          <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <div>
+              <p class="text-xs text-gray-400 mb-0.5">{{ t.type_name }}</p>
+              <p class="text-sm font-medium text-gray-800">{{ application.membership_type?.name ?? '—' }}</p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 mb-0.5">{{ t.type_fee }}</p>
+              <p class="text-sm font-medium text-gray-800">
+                {{ application.membership_type?.fee_amount }} {{ application.membership_type?.fee_currency }}
+              </p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 mb-0.5">{{ t.type_duration }}</p>
+              <p class="text-sm font-medium text-gray-800">
+                {{ application.membership_type?.duration_months
+                    ? application.membership_type.duration_months + ' ' + t.months
+                    : t.lifetime }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Application dates -->
+        <div class="px-6 py-5">
+          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.section_dates }}</h2>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <p class="text-xs text-gray-400 mb-0.5">{{ t.submitted_at }}</p>
+              <p class="text-sm font-medium text-gray-800">{{ formatDate(application.submitted_at) }}</p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 mb-0.5">{{ t.expires_at }}</p>
+              <p class="text-sm font-medium" :class="isExpired ? 'text-red-600' : 'text-gray-800'">
+                {{ formatDate(application.expires_at) }}
+                <span v-if="isExpired" class="ml-1 text-xs">({{ t.expired }})</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Application data (custom fields) -->
+        <div v-if="application.application_data && Object.keys(application.application_data).length > 0" class="px-6 py-5">
+          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.section_data }}</h2>
+          <dl class="space-y-2">
+            <div v-for="(value, key) in application.application_data" :key="key" class="flex gap-4">
+              <dt class="text-sm text-gray-500 w-36 flex-shrink-0 capitalize">{{ key.replace(/_/g, ' ') }}</dt>
+              <dd class="text-sm font-medium text-gray-800">{{ value }}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Rejection reason (if rejected) -->
+        <div v-if="application.status === 'rejected' && application.rejection_reason" class="px-6 py-5">
+          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.rejection_reason }}</h2>
+          <p class="text-sm text-gray-700 whitespace-pre-wrap">{{ application.rejection_reason }}</p>
+        </div>
+
+        <!-- Notes -->
+        <div v-if="application.notes" class="px-6 py-5">
+          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.notes }}</h2>
+          <p class="text-sm text-gray-700 whitespace-pre-wrap">{{ application.notes }}</p>
+        </div>
+
+      </div>
+
+      <!-- ── Action panel (only for pending applications) ── -->
+      <div v-if="isPending" class="mt-6 bg-white rounded-xl shadow p-6 space-y-5">
+        <h2 class="text-base font-semibold text-gray-900">{{ t.action_title }}</h2>
+
+        <!-- Approve -->
+        <div class="flex items-center justify-between p-4 rounded-lg border border-green-200 bg-green-50">
+          <div>
+            <p class="text-sm font-medium text-green-900">{{ t.approve_label }}</p>
+            <p class="text-xs text-green-700 mt-0.5">{{ t.approve_hint }}</p>
+          </div>
+          <button
+            @click="approve"
+            :disabled="approving || rejecting"
+            class="ml-4 flex-shrink-0 inline-flex items-center gap-2 rounded-md bg-green-600 px-5 py-2 text-sm font-semibold text-white shadow hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <svg v-if="approving" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+            </svg>
+            <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            {{ approving ? t.approving : t.approve_btn }}
+          </button>
+        </div>
+
+        <!-- Reject -->
+        <div class="p-4 rounded-lg border border-red-200 bg-red-50 space-y-3">
+          <div>
+            <p class="text-sm font-medium text-red-900">{{ t.reject_label }}</p>
+            <p class="text-xs text-red-700 mt-0.5">{{ t.reject_hint }}</p>
+          </div>
+          <textarea
+            v-model="rejectionReason"
+            rows="3"
+            :placeholder="t.rejection_reason_placeholder"
+            class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-red-400 resize-none"
+            :class="rejectError ? 'border-red-400' : 'border-red-200'"
+          />
+          <p v-if="rejectError" class="text-xs text-red-700">{{ rejectError }}</p>
+          <div class="flex justify-end">
+            <button
+              @click="reject"
+              :disabled="approving || rejecting"
+              class="inline-flex items-center gap-2 rounded-md bg-red-600 px-5 py-2 text-sm font-semibold text-white shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <svg v-if="rejecting" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+              </svg>
+              <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+              {{ rejecting ? t.rejecting : t.reject_btn }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </PublicDigitLayout>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+import { router, usePage } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
+
+const props = defineProps({
+  organisation: { type: Object, required: true },
+  application:  { type: Object, required: true },
+})
+
+const page = usePage()
+const { locale } = useI18n()
+
+// ── i18n ──────────────────────────────────────────────────────────────────────
+
+const translations = {
+  en: {
+    back: 'Back to Applications',
+    section_applicant: 'Applicant', section_type: 'Membership Type',
+    section_dates: 'Timeline', section_data: 'Application Data',
+    type_name: 'Type', type_fee: 'Fee', type_duration: 'Duration',
+    months: 'months', lifetime: 'Lifetime',
+    submitted_at: 'Submitted', expires_at: 'Application Expires',
+    expired: 'Expired', rejection_reason: 'Rejection Reason', notes: 'Notes',
+    reviewed_by: 'Reviewed by', on: 'on',
+    action_title: 'Review Decision',
+    approve_label: 'Approve Application',
+    approve_hint: 'Creates member record, organisation role, and a pending fee.',
+    approve_btn: 'Approve', approving: 'Approving…',
+    reject_label: 'Reject Application',
+    reject_hint: 'The applicant will be notified with your reason.',
+    reject_btn: 'Reject', rejecting: 'Rejecting…',
+    rejection_reason_placeholder: 'Provide a clear reason for rejection (required)…',
+    rejection_reason_required: 'Please enter a rejection reason.',
+    status_draft: 'Draft', status_submitted: 'Submitted',
+    status_under_review: 'Under Review', status_approved: 'Approved',
+    status_rejected: 'Rejected',
+  },
+  de: {
+    back: 'Zurück zu den Anträgen',
+    section_applicant: 'Antragsteller', section_type: 'Mitgliedschaftstyp',
+    section_dates: 'Zeitplan', section_data: 'Antragsdaten',
+    type_name: 'Typ', type_fee: 'Gebühr', type_duration: 'Dauer',
+    months: 'Monate', lifetime: 'Lebenslang',
+    submitted_at: 'Eingereicht', expires_at: 'Antrag läuft ab',
+    expired: 'Abgelaufen', rejection_reason: 'Ablehnungsgrund', notes: 'Notizen',
+    reviewed_by: 'Geprüft von', on: 'am',
+    action_title: 'Entscheidung treffen',
+    approve_label: 'Antrag genehmigen',
+    approve_hint: 'Erstellt Mitgliedsdatensatz, Organisationsrolle und eine ausstehende Gebühr.',
+    approve_btn: 'Genehmigen', approving: 'Wird genehmigt…',
+    reject_label: 'Antrag ablehnen',
+    reject_hint: 'Der Antragsteller wird mit Ihrem Grund benachrichtigt.',
+    reject_btn: 'Ablehnen', rejecting: 'Wird abgelehnt…',
+    rejection_reason_placeholder: 'Geben Sie einen klaren Ablehnungsgrund an (erforderlich)…',
+    rejection_reason_required: 'Bitte geben Sie einen Ablehnungsgrund ein.',
+    status_draft: 'Entwurf', status_submitted: 'Eingereicht',
+    status_under_review: 'In Prüfung', status_approved: 'Genehmigt',
+    status_rejected: 'Abgelehnt',
+  },
+  np: {
+    back: 'आवेदनहरूमा फर्कनुहोस्',
+    section_applicant: 'आवेदक', section_type: 'सदस्यता प्रकार',
+    section_dates: 'समयरेखा', section_data: 'आवेदन डेटा',
+    type_name: 'प्रकार', type_fee: 'शुल्क', type_duration: 'अवधि',
+    months: 'महिना', lifetime: 'आजीवन',
+    submitted_at: 'पेश गरिएको', expires_at: 'आवेदन म्याद',
+    expired: 'म्याद सकियो', rejection_reason: 'अस्वीकृतिको कारण', notes: 'नोटहरू',
+    reviewed_by: 'समीक्षक', on: 'मा',
+    action_title: 'समीक्षा निर्णय',
+    approve_label: 'आवेदन स्वीकृत गर्नुहोस्',
+    approve_hint: 'सदस्य रेकर्ड, संस्था भूमिका, र विचाराधीन शुल्क बनाउँछ।',
+    approve_btn: 'स्वीकृत गर्नुहोस्', approving: 'स्वीकृत गर्दै…',
+    reject_label: 'आवेदन अस्वीकार गर्नुहोस्',
+    reject_hint: 'आवेदकलाई तपाईंको कारण सहित सूचित गरिनेछ।',
+    reject_btn: 'अस्वीकार गर्नुहोस्', rejecting: 'अस्वीकार गर्दै…',
+    rejection_reason_placeholder: 'अस्वीकृतिको स्पष्ट कारण लेख्नुहोस् (आवश्यक)…',
+    rejection_reason_required: 'कृपया अस्वीकृतिको कारण लेख्नुहोस्।',
+    status_draft: 'मस्यौदा', status_submitted: 'पेश गरिएको',
+    status_under_review: 'समीक्षामा', status_approved: 'स्वीकृत',
+    status_rejected: 'अस्वीकृत',
+  },
+}
+
+const t = computed(() => translations[locale.value] ?? translations.en)
+
+// ── State ─────────────────────────────────────────────────────────────────────
+
+const rejectionReason = ref('')
+const rejectError     = ref('')
+const approving       = ref(false)
+const rejecting       = ref(false)
+
+// ── Computed ──────────────────────────────────────────────────────────────────
+
+const isPending = computed(() =>
+  ['submitted', 'under_review', 'draft'].includes(props.application.status)
+)
+
+const isExpired = computed(() => {
+  if (!props.application.expires_at) return false
+  return new Date(props.application.expires_at) < new Date()
+})
+
+const statusLabel = (status) => {
+  const map = {
+    draft: t.value.status_draft, submitted: t.value.status_submitted,
+    under_review: t.value.status_under_review, approved: t.value.status_approved,
+    rejected: t.value.status_rejected,
+  }
+  return map[status] ?? status
+}
+
+const statusBannerClass = computed(() => {
+  const map = {
+    draft:        'bg-gray-50 border border-gray-200 text-gray-700',
+    submitted:    'bg-blue-50 border border-blue-200 text-blue-800',
+    under_review: 'bg-yellow-50 border border-yellow-200 text-yellow-800',
+    approved:     'bg-green-50 border border-green-200 text-green-800',
+    rejected:     'bg-red-50 border border-red-200 text-red-800',
+  }
+  return map[props.application.status] ?? 'bg-gray-50 border border-gray-200 text-gray-700'
+})
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+const initials = (name) => {
+  if (!name) return '?'
+  return name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()
+}
+
+const formatDate = (val) => {
+  if (!val) return '—'
+  return new Date(val).toLocaleDateString(locale.value === 'np' ? 'en-NP' : locale.value, {
+    day: '2-digit', month: 'short', year: 'numeric'
+  })
+}
+
+// ── Actions ───────────────────────────────────────────────────────────────────
+
+const approve = () => {
+  approving.value = true
+  router.patch(
+    route('organisations.membership.applications.approve', [props.organisation.slug, props.application.id]),
+    {},
+    {
+      preserveScroll: true,
+      onFinish: () => { approving.value = false },
+    }
+  )
+}
+
+const reject = () => {
+  rejectError.value = ''
+  if (!rejectionReason.value.trim()) {
+    rejectError.value = t.value.rejection_reason_required
+    return
+  }
+  rejecting.value = true
+  router.patch(
+    route('organisations.membership.applications.reject', [props.organisation.slug, props.application.id]),
+    { rejection_reason: rejectionReason.value.trim() },
+    {
+      preserveScroll: true,
+      onFinish: () => { rejecting.value = false },
+    }
+  )
+}
+</script>

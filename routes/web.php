@@ -478,12 +478,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/api/organisations/{organisation}/demo-setup', [DemoSetupController::class, 'setup'])
          ->name('api.organisations.demo-setup');
 
-    // ============================================================================
-    // NEW: MEMBERS MANAGEMENT (Phase 3)
-    // ============================================================================
-    Route::prefix('members')->group(function () {
-        Route::get('/index', [MemberController::class, 'index'])->name('members.index');
-    });
 });
 
 // ============================================================================

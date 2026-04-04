@@ -27,10 +27,11 @@
     "deputy_officer": "Stellvertreter"
   },
   "quick_actions": {
-    "subtitle": "Schließen Sie diese 3 Schritte ab, um Ihre erste Wahl durchzuführen",
+    "subtitle": "Schließen Sie diese 4 Schritte ab, um Ihre erste Wahl durchzuführen",
     "step_1": "Schritt 1",
     "step_2": "Schritt 2",
     "step_3": "Schritt 3",
+    "step_4": "Schritt 4",
     "legal_note": "Erforderlich gemäß §26 BGB Vereinsrecht",
     "progress_label": "Einrichtungsfortschritt:"
   },
@@ -43,9 +44,12 @@
     "appoint_officer_desc": "Gemäß §26 BGB Vereinsgesetz",
     "create_election": "Wahl erstellen",
     "create_election_desc": "Vorstand-, Stellvertreter- oder Rechnungsprüfer-Wahlen",
+    "invite_members": "Mitglieder einladen",
+    "invite_members_desc": "E-Mail-Einladungen zum Beitritt zur Organisation versenden",
     "button_import": "Importieren",
     "button_appoint": "Ernennen",
     "button_create": "Erstellen",
+    "button_invite": "Einladen",
     "more_options": "Mehr Optionen"
   },
   "onboarding": {

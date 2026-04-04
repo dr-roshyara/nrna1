@@ -38,21 +38,32 @@
             <span class="text-slate-700 font-medium" aria-current="page">{{ t.breadcrumb }}</span>
           </nav>
 
-          <div class="flex items-start gap-4">
-            <!-- Icon -->
-            <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-primary-600 flex items-center justify-center shadow-sm" aria-hidden="true">
-              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2
-                     M9 5a2 2 0 002 2h2a2 2 0 002-2
-                     M9 5a2 2 0 012-2h2a2 2 0 012 2
-                     m-6 9l2 2 4-4"/>
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex items-start gap-4">
+              <!-- Icon -->
+              <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-primary-600 flex items-center justify-center shadow-sm" aria-hidden="true">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2
+                       M9 5a2 2 0 002 2h2a2 2 0 002-2
+                       M9 5a2 2 0 012-2h2a2 2 0 012 2
+                       m-6 9l2 2 4-4"/>
+                </svg>
+              </div>
+              <div>
+                <h1 class="text-2xl font-bold text-slate-900 leading-tight">{{ t.page_title }}</h1>
+                <p class="text-slate-500 text-sm mt-1 max-w-xl">{{ t.page_subtitle }}</p>
+              </div>
+            </div>
+            <a
+              :href="route('organisations.show', organisation.slug)"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors flex-shrink-0"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
               </svg>
-            </div>
-            <div>
-              <h1 class="text-2xl font-bold text-slate-900 leading-tight">{{ t.page_title }}</h1>
-              <p class="text-slate-500 text-sm mt-1 max-w-xl">{{ t.page_subtitle }}</p>
-            </div>
+              {{ organisation.name }}
+            </a>
           </div>
         </div>
       </header>
@@ -84,9 +95,9 @@
           <!-- Active election state -->
           <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
-            <!-- Apply for Candidacy -->
+            <!-- Apply for Candidacy — only if user can apply to at least one election -->
             <ActionCard
-              v-if="activeElections.length > 0"
+              v-if="electionsWithCandidacy.length > 0"
               :href="route('organisations.candidacy.create', organisation.slug)"
               accent="amber"
               :label="t.nav.apply_candidacy"
@@ -97,25 +108,13 @@
 
             <!-- My Applications -->
             <ActionCard
-              v-if="activeElections.length > 0"
+              v-if="activeElections.length > 0 || myApplications.length > 0"
               :href="route('organisations.candidacy.list', organisation.slug)"
               accent="primary"
               :label="t.nav.my_applications"
               :description="t.nav.my_applications_sub"
               icon="shield"
               :index="1"
-            />
-
-            <!-- Positions per active election -->
-            <ActionCard
-              v-for="(election, i) in activeElections"
-              :key="election.id"
-              :href="route('organisations.elections.positions', { organisation: organisation.slug, election: election.slug })"
-              accent="blue"
-              :label="t.nav.positions"
-              :description="election.name"
-              icon="list"
-              :index="activeElections.length > 0 ? 2 + i : i"
             />
 
             <!-- Election Results per published election -->
@@ -127,7 +126,7 @@
               :label="t.nav.election_results"
               :description="election.name"
               icon="chart"
-              :index="3 + i"
+              :index="2 + i"
             />
 
             <!-- Demo Result -->
@@ -137,7 +136,7 @@
               :label="t.nav.demo_results"
               :description="t.nav.demo_results_sub"
               icon="chart"
-              :index="4 + publishedElections.length"
+              :index="2 + publishedElections.length"
             />
           </div>
         </section>
@@ -243,6 +242,95 @@
                   </ul>
                 </div>
 
+                <!-- Per-election secondary actions -->
+                <!-- Per-election action buttons -->
+                <div v-if="voterStatus(election.id) !== 'ineligible' || isOfficer"
+                     class="border-t border-slate-100 pt-4 space-y-2">
+                  <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3">Quick Actions</p>
+                  <div class="grid grid-cols-1 gap-2">
+
+                    <!-- Positions -->
+                    <a
+                      :href="route('organisations.elections.positions', { organisation: organisation.slug, election: election.slug })"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white hover:border-slate-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-1"
+                      :aria-label="`View positions for ${election.name}`"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-slate-800">{{ t.nav.positions }}</span>
+                        <span class="block text-xs text-slate-500">View all election posts</span>
+                      </span>
+                      <svg class="w-4 h-4 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+
+                    <!-- Voter List — officers only -->
+                    <a
+                      v-if="isOfficer"
+                      :href="route('elections.voters.index', { organisation: organisation.slug, election: election.slug })"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-blue-200 bg-blue-50 hover:bg-white hover:border-blue-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1"
+                      :aria-label="`View voter list for ${election.name}`"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-blue-800">Voter List</span>
+                        <span class="block text-xs text-blue-600">Manage registered voters</span>
+                      </span>
+                      <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+
+                    <!-- Apply for Candidacy — only if not yet applied -->
+                    <a
+                      v-if="!appliedElectionIds.includes(election.id)"
+                      :href="route('organisations.elections.candidacy.apply', { organisation: organisation.slug, election: election.slug })"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-amber-200 bg-amber-50 hover:bg-white hover:border-amber-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-1"
+                      :aria-label="`Apply for candidacy in ${election.name}`"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-amber-800">{{ t.nav.apply_candidacy }}</span>
+                        <span class="block text-xs text-amber-600">Submit your nomination</span>
+                      </span>
+                      <svg class="w-4 h-4 text-amber-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+
+                    <!-- Applied badge -->
+                    <div
+                      v-else
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-emerald-200 bg-emerald-50"
+                      role="status"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-emerald-800">Application Submitted</span>
+                        <span class="block text-xs text-emerald-600">Awaiting commission review</span>
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+
                 <!-- CTA -->
                 <div class="pt-1">
                   <a
@@ -309,12 +397,28 @@ const pageData   = { de: pageDe, en: pageEn, np: pageNp }
 const t          = computed(() => pageData[locale.value] ?? pageData.de)
 
 const props = defineProps({
-  organisation:       { type: Object, required: true },
-  activeElections:    { type: Array,  default: () => [] },
-  publishedElections: { type: Array,  default: () => [] },
-  voterMemberships:   { type: Object, default: () => ({}) },
-  myApplications:     { type: Array,  default: () => [] },
+  organisation:       { type: Object,  required: true },
+  activeElections:    { type: Array,   default: () => [] },
+  publishedElections: { type: Array,   default: () => [] },
+  voterMemberships:   { type: Object,  default: () => ({}) },
+  myApplications:     { type: Array,   default: () => [] },
+  isOfficer:          { type: Boolean, default: false },
+  appliedElectionIds: { type: Array,   default: () => [] },
 })
+
+// Elections this user can access (voter OR officer)
+const accessibleElections = computed(() =>
+  props.activeElections.filter(e => {
+    if (props.isOfficer) return true
+    const m = props.voterMemberships[e.id]
+    return m && m.status === 'active'
+  })
+)
+
+// Elections where user can still apply (accessible + not yet applied)
+const electionsWithCandidacy = computed(() =>
+  accessibleElections.value.filter(e => !props.appliedElectionIds.includes(e.id))
+)
 
 const page = usePage()
 

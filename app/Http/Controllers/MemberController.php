@@ -2,108 +2,124 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
+use App\Models\MembershipFee;
 use App\Models\Organisation;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class MemberController extends Controller
 {
     /**
-     * Display members of current user's organisation
-     *
-     * GET /members/index
+     * Display formal (paid) members of the organisation.
+     * Only rows in the `members` table are shown — NOT everyone with a platform role.
      */
-    public function index(Request $request)
+    public function index(Request $request, Organisation $organisation): Response
     {
-        // Validate query parameters
         $request->validate([
             'direction' => 'in:asc,desc',
-            'field' => 'in:id,name,email,role,assigned_at,created_at',
+            'field'     => 'in:name,email,status,joined_at,membership_expires_at,created_at',
         ]);
 
-        // Get current user
-        $user = auth()->user();
+        $query = Member::where('organisation_id', $organisation->id)
+            ->with('organisationUser.user');
 
-        // Determine which organisation to show
-        // Priority: session > user's primary organisation
-        $organisationId = session('current_organisation_id') ?? $user->organisation_id;
-
-        if (!$organisationId) {
-            abort(403, 'No organisation selected. Please select an organisation first.');
-        }
-
-        $organisation = Organisation::findOrFail($organisationId);
-
-        // Check if user is member of this organisation
-        $isMember = $organisation->users()
-            ->where('users.id', $user->id)
-            ->exists();
-
-        if (!$isMember) {
-            abort(403, 'You do not have access to this organisation.');
-        }
-
-        // Build query for organisation members
-        $query = $organisation->users()
-            ->select('users.id', 'users.name', 'users.email', 'users.state', 'users.created_at')
-            ->withPivot(['role']);
-
-        // Apply filters
+        // Filtering
         if ($request->filled('name')) {
-            $query->where('users.name', 'LIKE', '%' . $request->name . '%');
+            $query->whereHas('organisationUser.user', fn ($q) =>
+                $q->where('name', 'LIKE', '%' . $request->name . '%')
+            );
         }
-
         if ($request->filled('email')) {
-            $query->where('users.email', 'LIKE', '%' . $request->email . '%');
+            $query->whereHas('organisationUser.user', fn ($q) =>
+                $q->where('email', 'LIKE', '%' . $request->email . '%')
+            );
+        }
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
         }
 
-        if ($request->filled('role')) {
-            $query->wherePivot('role', $request->role);
-        }
+        // Sorting
+        $allowedFields = ['status', 'joined_at', 'membership_expires_at', 'created_at'];
+        $direction = in_array($request->input('direction'), ['asc', 'desc'])
+            ? $request->input('direction') : 'desc';
+        $field = in_array($request->input('field'), $allowedFields)
+            ? $request->input('field') : 'created_at';
 
-        // Apply sorting
-        $field = $request->input('field', 'assigned_at');
-        $direction = $request->input('direction', 'desc');
+        $query->orderBy($field, $direction);
 
-        if (in_array($field, ['role', 'assigned_at'])) {
-            // Pivot column sorting
-            $query->orderByPivot($field, $direction);
-        } else {
-            // User table column sorting
-            $query->orderBy('users.' . $field, $direction);
-        }
-
-        // Paginate
-        $members = $query->paginate(20);
-
-        // Transform members to include pivot data in a clean format
-        $members->getCollection()->transform(function ($user) {
-            return [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'state' => $user->state,
-                'created_at' => $user->created_at,
-                'role' => $user->pivot->role,
-                'assigned_at' => $user->pivot->assigned_at,
-            ];
-        });
+        $members = $query->paginate(20)->through(fn ($m) => [
+            'id'                    => $m->id,
+            'name'                  => $m->organisationUser?->user?->name ?? '—',
+            'email'                 => $m->organisationUser?->user?->email ?? '—',
+            'status'                => $m->status,
+            'membership_expires_at' => $m->membership_expires_at?->toIso8601String(),
+            'joined_at'             => $m->joined_at?->toIso8601String(),
+            'pending_fees'          => (float) MembershipFee::where('member_id', $m->id)
+                                            ->where('status', 'pending')->sum('amount'),
+            'created_at'            => $m->created_at?->toIso8601String(),
+        ]);
 
         return Inertia::render('Members/Index', [
-            'members' => $members,
-            'organisation' => [
-                'id' => $organisation->id,
-                'name' => $organisation->name,
-                'slug' => $organisation->slug,
-            ],
-            'filters' => $request->only(['name', 'email', 'role', 'field', 'direction']),
-            'currentUser' => $user,
-            'stats' => [
-                'total_members' => $organisation->users()->count(),
-                'admins_count' => $organisation->admins()->count(),
-                'voters_count' => $organisation->voters()->count(),
+            'members'      => $members,
+            'organisation' => $organisation->only('id', 'name', 'slug'),
+            'filters'      => $request->only(['name', 'email', 'status', 'field', 'direction']),
+            'stats'        => [
+                'total_members'  => Member::where('organisation_id', $organisation->id)
+                                        ->where('status', 'active')->count(),
+                'expired_count'  => Member::where('organisation_id', $organisation->id)
+                                        ->where('status', 'expired')->count(),
+                'pending_fees'   => (float) MembershipFee::where('organisation_id', $organisation->id)
+                                        ->where('status', 'pending')->sum('amount'),
             ],
         ]);
+    }
+
+    public function export(Request $request, Organisation $organisation): StreamedResponse
+    {
+        $query = Member::where('organisation_id', $organisation->id)
+            ->with('organisationUser.user');
+
+        if ($request->filled('name')) {
+            $query->whereHas('organisationUser.user', fn ($q) =>
+                $q->where('name', 'LIKE', '%' . $request->name . '%')
+            );
+        }
+        if ($request->filled('email')) {
+            $query->whereHas('organisationUser.user', fn ($q) =>
+                $q->where('email', 'LIKE', '%' . $request->email . '%')
+            );
+        }
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        $members = $query->orderBy('created_at')->get();
+
+        $filename = 'members-' . $organisation->slug . '-' . now()->format('Y-m-d') . '.csv';
+
+        $headers = [
+            'Content-Type'        => 'text/csv',
+            'Content-Disposition' => "attachment; filename=\"{$filename}\"",
+        ];
+
+        $callback = function () use ($members) {
+            $handle = fopen('php://output', 'w');
+            fputcsv($handle, ['Name', 'Email', 'Status', 'Joined', 'Expires'], ';');
+            foreach ($members as $m) {
+                fputcsv($handle, [
+                    $m->organisationUser?->user?->name ?? '—',
+                    $m->organisationUser?->user?->email ?? '—',
+                    $m->status,
+                    $m->joined_at?->format('Y-m-d'),
+                    $m->membership_expires_at?->format('Y-m-d') ?? 'Lifetime',
+                ], ';');
+            }
+            fclose($handle);
+        };
+
+        return response()->stream($callback, 200, $headers);
     }
 }

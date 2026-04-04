@@ -23,8 +23,8 @@
       </div>
     </div>
 
-    <!-- 3-Column Grid of Action Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <!-- 4-Column Grid of Action Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 
       <!-- Step 1: Import Members -->
       <Link
@@ -161,6 +161,80 @@
           </span>
         </div>
       </Link>
+
+      <!-- Step 4: Invite Members (owner/admin only) -->
+      <Link
+        v-if="canManage"
+        :href="inviteMembersLink"
+        class="group relative flex flex-col bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 text-left border-2 border-gray-200 hover:border-indigo-400 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:rounded-xl overflow-hidden"
+        :aria-label="$t('pages.organisation-show.actions.invite_members')"
+      >
+        <!-- Hover gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/0 to-indigo-100/0 group-hover:from-indigo-50/60 group-hover:to-indigo-100/30 transition-all duration-300 pointer-events-none rounded-xl" />
+
+        <div class="relative p-6 flex flex-col flex-1">
+          <!-- Step badge + Icon row -->
+          <div class="flex items-start justify-between mb-5">
+            <div class="inline-flex p-3 bg-gradient-to-br from-indigo-100 to-indigo-50 rounded-xl group-hover:from-indigo-200 group-hover:to-indigo-100 transition-all">
+              <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold text-indigo-600 bg-indigo-50 border border-indigo-200 px-2.5 py-1 rounded-full">
+              {{ $t('pages.organisation-show.quick_actions.step_4') }}
+            </span>
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-base font-bold text-gray-900 mb-2">
+            {{ $t('pages.organisation-show.actions.invite_members') }}
+          </h3>
+          <p class="text-sm text-gray-500 leading-relaxed flex-1">
+            {{ $t('pages.organisation-show.actions.invite_members_desc') }}
+          </p>
+        </div>
+
+        <!-- Full-width action button -->
+        <div class="relative px-6 pb-5">
+          <span class="flex items-center justify-center w-full gap-2 bg-indigo-600 group-hover:bg-indigo-700 text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+            </svg>
+            {{ $t('pages.organisation-show.actions.button_invite') }}
+          </span>
+        </div>
+      </Link>
+      <!-- Step 5: Manage Membership -->
+      <Link
+        v-if="canManage"
+        :href="manageMembershipLink"
+        class="group relative flex flex-col bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 text-left border-2 border-gray-200 hover:border-purple-400 focus-within:ring-2 focus-within:ring-purple-500 focus-within:ring-offset-2 focus-within:rounded-xl overflow-hidden"
+        aria-label="Manage Membership"
+      >
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-50/0 to-purple-100/0 group-hover:from-purple-50/60 group-hover:to-purple-100/30 transition-all duration-300 pointer-events-none rounded-xl" />
+        <div class="relative p-6 flex flex-col flex-1">
+          <div class="flex items-start justify-between mb-5">
+            <div class="inline-flex p-3 bg-gradient-to-br from-purple-100 to-purple-50 rounded-xl group-hover:from-purple-200 group-hover:to-purple-100 transition-all">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <span class="text-xs font-semibold text-purple-600 bg-purple-50 border border-purple-200 px-2.5 py-1 rounded-full">
+              Step 5
+            </span>
+          </div>
+          <h3 class="text-base font-bold text-gray-900 mb-2">Manage Membership</h3>
+          <p class="text-sm text-gray-500 leading-relaxed flex-1">Review applications, track fees, and manage member renewals</p>
+        </div>
+        <div class="relative px-6 pb-5">
+          <span class="flex items-center justify-center w-full gap-2 bg-purple-600 group-hover:bg-purple-700 text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            Manage Membership
+          </span>
+        </div>
+      </Link>
     </div>
 
     <!-- Progress indicator strip -->
@@ -170,8 +244,9 @@
         <div class="w-6 h-1.5 bg-blue-400 rounded-full" />
         <div class="w-6 h-1.5 bg-amber-400 rounded-full" />
         <div class="w-6 h-1.5 bg-green-400 rounded-full" />
+        <div class="w-6 h-1.5 bg-indigo-400 rounded-full" />
       </div>
-      <span class="text-xs text-gray-400">1 → 2 → 3</span>
+      <span class="text-xs text-gray-400">1 → 2 → 3 → 4</span>
     </div>
   </section>
 </template>
@@ -207,6 +282,26 @@ const importMembersLink = computed(() => {
 const createElectionLink = computed(() => {
   if (props.organisation?.slug) {
     return `/organisations/${props.organisation.slug}/elections/create`
+  }
+  return '#'
+})
+
+/**
+ * Compute the link to the invite members page
+ */
+const inviteMembersLink = computed(() => {
+  if (props.organisation?.slug) {
+    return `/organisations/${props.organisation.slug}/members/invite`
+  }
+  return '#'
+})
+
+/**
+ * Compute the link to the membership dashboard
+ */
+const manageMembershipLink = computed(() => {
+  if (props.organisation?.slug) {
+    return `/organisations/${props.organisation.slug}/membership`
   }
   return '#'
 })

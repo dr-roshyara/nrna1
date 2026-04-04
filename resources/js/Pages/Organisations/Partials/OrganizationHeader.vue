@@ -62,7 +62,7 @@ defineProps({
     type: Object,
     required: true,
     validator: (org) => {
-      return org && typeof org.name === 'string' && typeof org.email === 'string'
+      return org && typeof org.name === 'string' && (org.email === null || typeof org.email === 'string')
     }
   }
 })

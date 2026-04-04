@@ -1,0 +1,31 @@
+{
+  "title": "सदस्य आमन्त्रण गर्नुहोस्",
+  "description": "{organisation} मा सामेल हुन इमेल आमन्त्रणहरू पठाउनुहोस्।",
+  "back": "ड्यासबोर्डमा फर्कनुहोस्",
+  "form": {
+    "title": "आमन्त्रण पठाउनुहोस्",
+    "email_label": "इमेल ठेगाना",
+    "email_placeholder": "sadashya@udaharan.com",
+    "role_label": "भूमिका",
+    "message_label": "व्यक्तिगत सन्देश",
+    "message_optional": "(वैकल्पिक)",
+    "message_placeholder": "आमन्त्रणमा व्यक्तिगत नोट थप्नुहोस्...",
+    "submit": "आमन्त्रण पठाउनुहोस्",
+    "submitting": "पठाउँदै…"
+  },
+  "roles": {
+    "member": "सदस्य",
+    "admin": "प्रशासक",
+    "commission": "आयोग"
+  },
+  "pending": {
+    "title": "लम्बित आमन्त्रणहरू",
+    "empty": "कुनै लम्बित आमन्त्रण छैन।",
+    "col_email": "इमेल",
+    "col_role": "भूमिका",
+    "col_invited_by": "द्वारा आमन्त्रित",
+    "col_expires": "समाप्त हुन्छ",
+    "col_action": "कार्य",
+    "cancel": "रद्द गर्नुहोस्"
+  }
+}

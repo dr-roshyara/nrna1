@@ -26,10 +26,21 @@ use App\Http\Controllers\Election\PostManagementController;
 use App\Http\Controllers\ElectionOfficerController;
 use App\Http\Controllers\ElectionOfficerInvitationController;
 use App\Http\Controllers\ElectionVoterController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\Membership\MembershipApplicationController;
+use App\Http\Controllers\Membership\MembershipDashboardController;
+use App\Http\Controllers\Membership\MembershipFeeController;
+use App\Http\Controllers\Membership\MembershipRenewalController;
+use App\Http\Controllers\Membership\MembershipTypeController;
+use App\Http\Controllers\Organisation\OrganisationMemberInvitationController;
 use App\Http\Controllers\OrganisationController;
 use Illuminate\Support\Facades\Route;
 
-// ── Invitation acceptance — public (signed middleware only, no auth required) ──
+// ── Invitation acceptance — requires login ──
+Route::get('/invitations/{token}', [OrganisationMemberInvitationController::class, 'accept'])
+    ->name('organisations.invitations.accept')
+    ->middleware(['auth']);
+
 Route::prefix('organisations/{organisation:slug}')
     ->group(function () {
         Route::prefix('/election-officers')->name('organisations.election-officers.')->group(function () {
@@ -37,6 +48,16 @@ Route::prefix('organisations/{organisation:slug}')
                 ->name('invitation.accept')
                 ->middleware('signed');
         });
+    });
+
+// ── Public Membership Application Routes (auth required, NO org membership required) ──
+// Non-members must be able to apply to join an organisation.
+Route::prefix('organisations/{organisation:slug}/membership')
+    ->name('organisations.membership.')
+    ->middleware(['auth', 'verified'])
+    ->group(function () {
+        Route::get('/apply',  [MembershipApplicationController::class, 'create'])->name('apply');
+        Route::post('/apply', [MembershipApplicationController::class, 'store']) ->name('apply.store');
     });
 
 Route::prefix('organisations/{organisation:slug}')
@@ -51,7 +72,54 @@ Route::prefix('organisations/{organisation:slug}')
         Route::post('/candidacy/apply', [CandidacyApplicationController::class, 'store']) ->name('organisations.candidacy.apply');
         Route::get('/candidacy/list',  [CandidacyApplicationController::class, 'index']) ->name('organisations.candidacy.list');
 
-        // ── Election Creation ──────────────────────────────────────────────────────
+        // ── Membership Types management (owner only) ──────────────────────────────
+        Route::prefix('/membership-types')->name('organisations.membership-types.')->group(function () {
+            Route::get('/',                            [MembershipTypeController::class, 'index'])  ->name('index');
+            Route::post('/',                           [MembershipTypeController::class, 'store'])  ->name('store');
+            Route::put('/{membershipType}',            [MembershipTypeController::class, 'update']) ->name('update');
+            Route::delete('/{membershipType}',         [MembershipTypeController::class, 'destroy'])->name('destroy');
+        });
+
+        // ── Membership Dashboard ───────────────────────────────────────────────────
+        Route::get('/membership', [MembershipDashboardController::class, 'index'])
+            ->name('organisations.membership.dashboard');
+
+        // ── Membership Applications management (admin/commission only) ──────────────
+        Route::prefix('/membership')->name('organisations.membership.')->group(function () {
+            Route::get('/applications', [MembershipApplicationController::class, 'index'])
+                ->name('applications.index');
+
+            Route::get('/applications/{application}', [MembershipApplicationController::class, 'show'])
+                ->name('applications.show');
+
+            Route::patch('/applications/{application}/approve', [MembershipApplicationController::class, 'approve'])
+                ->name('applications.approve');
+
+            Route::patch('/applications/{application}/reject', [MembershipApplicationController::class, 'reject'])
+                ->name('applications.reject');
+        });
+
+        // ── Members List ──────────────────────────────────────────────────────────
+        Route::get('/members',        [MemberController::class, 'index'])  ->name('organisations.members.index');
+        Route::get('/members/export', [MemberController::class, 'export']) ->name('organisations.members.export');
+
+        // ── Membership Fee & Renewal Management ──────────────────────────────────
+        Route::prefix('/members/{member}')->name('organisations.members.')->group(function () {
+            Route::get('/fees',             [MembershipFeeController::class,     'index']) ->name('fees.index');
+            Route::post('/fees/{fee}/pay',  [MembershipFeeController::class,     'pay'])   ->name('fees.pay');
+            Route::post('/fees/{fee}/waive',[MembershipFeeController::class,     'waive']) ->name('fees.waive');
+            Route::post('/renew',           [MembershipRenewalController::class, 'store']) ->name('renew');
+        });
+
+        // ── Member Invitations ────────────────────────────────────────────────────
+        Route::prefix('/members')->name('organisations.members.')->group(function () {
+            Route::get('/invite',              [OrganisationMemberInvitationController::class, 'index'])  ->name('invite');
+            Route::post('/invite',             [OrganisationMemberInvitationController::class, 'store'])  ->name('invite.store');
+            Route::delete('/invitations/{invitation}', [OrganisationMemberInvitationController::class, 'destroy'])->name('invitations.destroy');
+        });
+
+        // ── Elections ─────────────────────────────────────────────────────────────
+        Route::get('/elections',        [ElectionManagementController::class, 'listForOrganisation']) ->name('organisations.elections.index');
         Route::get('/elections/create', [ElectionManagementController::class, 'create'])->name('organisations.elections.create');
         Route::post('/elections',       [ElectionManagementController::class, 'store']) ->name('organisations.elections.store');
 

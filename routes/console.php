@@ -34,3 +34,6 @@ Schedule::job(PeriodicSynchronizations::class)->everyFifteenMinutes();
 // expiring in the next hour. Covers the gap where expires_at passes
 // naturally without firing any Eloquent model events.
 Schedule::command('elections:flush-expiring-caches')->hourly();
+
+// Membership: auto-reject expired applications + mark overdue fees (daily)
+Schedule::command('membership:process-expiry')->daily();
