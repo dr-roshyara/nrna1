@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,16 +10,19 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use App\Traits\BelongsToTenant;
+use App\Models\Election;
 
 class Member extends Model
 {
-    use HasUuids, SoftDeletes, BelongsToTenant;
+    use HasFactory, HasUuids, SoftDeletes, BelongsToTenant;
 
     protected $fillable = [
         'organisation_id',
         'organisation_user_id',
+        'membership_type_id',
         'membership_number',
         'status',
+        'fees_status',
         'joined_at',
         'membership_expires_at',
         'last_renewed_at',
@@ -63,6 +67,11 @@ class Member extends Model
         return $this->belongsTo(Organisation::class);
     }
 
+    public function membershipType()
+    {
+        return $this->belongsTo(MembershipType::class);
+    }
+
     /**
      * Downward relationships (hierarchy)
      */
@@ -79,6 +88,55 @@ class Member extends Model
     public function renewals()
     {
         return $this->hasMany(MembershipRenewal::class);
+    }
+
+    // ── Voting rights ─────────────────────────────────────────────────────────
+
+    /**
+     * Computed voting rights based on membership type + fees + status.
+     *
+     * full       → Full Member type + (paid or exempt fees) + active
+     * voice_only → Full Member type + partial fees + active
+     *              OR Associate Member type + (paid or exempt fees) + active
+     * none       → unpaid fees, expired, or suspended
+     */
+    public function getVotingRightsAttribute(): string
+    {
+        if (! in_array($this->status, ['active'])) {
+            return 'none';
+        }
+
+        $typeGrantsVoting = (bool) ($this->membershipType?->grants_voting_rights ?? false);
+
+        if ($typeGrantsVoting) {
+            return match ($this->fees_status) {
+                'paid', 'exempt' => 'full',
+                'partial'        => 'voice_only',
+                default          => 'none',  // unpaid
+            };
+        }
+
+        // Associate type — capped at voice_only when fees are met
+        return match ($this->fees_status) {
+            'paid', 'exempt' => 'voice_only',
+            default          => 'none',
+        };
+    }
+
+    /**
+     * Whether this member may cast a ballot in the given election.
+     *
+     * Requires:
+     *  - voting_rights === 'full'
+     *  - election belongs to the same organisation
+     */
+    public function canVoteInElection(Election $election): bool
+    {
+        if ($election->organisation_id !== $this->organisation_id) {
+            return false;
+        }
+
+        return $this->voting_rights === 'full';
     }
 
     // ── Business logic ────────────────────────────────────────────────────────

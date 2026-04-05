@@ -40,6 +40,19 @@ class VoteEligibility
             return $next($request);
         }
 
+        // Election-scoped check: verify the user is registered as a voter for
+        // THIS specific election, not just any election (legacy flow).
+        $electionId = $request->input('election_id') ?? $request->route('election');
+        if ($electionId && ! $user->isVoterInElection((string) $electionId)) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'message' => 'You are not registered as a voter for this election.',
+                ], 403);
+            }
+            return redirect()->route('dashboard')
+                ->with('error', 'You are not registered as a voter for this election.');
+        }
+
         // ✅ REAL ELECTIONS (legacy flow): Use the improved eligibility check
         if (!$user->isEligibleToVote()) {
             // ✅ Get detailed status for better error message

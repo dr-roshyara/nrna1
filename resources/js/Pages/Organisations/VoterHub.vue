@@ -290,6 +290,27 @@
                       </svg>
                     </a>
 
+                    <!-- Import Voters — officers only -->
+                    <a
+                      v-if="isOfficer"
+                      :href="route('elections.voters.import.create', { organisation: organisation.slug, election: election.slug })"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-teal-200 bg-teal-50 hover:bg-white hover:border-teal-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-1"
+                      :aria-label="`Import voters for ${election.name}`"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-teal-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-teal-800">Import Voters</span>
+                        <span class="block text-xs text-teal-600">Bulk upload from CSV / Excel</span>
+                      </span>
+                      <svg class="w-4 h-4 text-teal-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+
                     <!-- Apply for Candidacy — only if not yet applied -->
                     <a
                       v-if="!appliedElectionIds.includes(election.id)"

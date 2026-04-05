@@ -12,15 +12,23 @@
               Platform staff, commissioners and voters are managed separately.
             </p>
           </div>
-          <a
-            :href="`/organisations/${organisation.slug}`"
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back
-          </a>
+          <div class="flex items-center gap-3">
+            <a
+              :href="`/organisations/${organisation.slug}/participants`"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-300 text-slate-700 text-sm font-medium hover:bg-slate-50 transition-colors"
+            >
+              All Participants →
+            </a>
+            <a
+              :href="`/organisations/${organisation.slug}`"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Back
+            </a>
+          </div>
         </div>
 
         <!-- Stats -->

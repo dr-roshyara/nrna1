@@ -141,6 +141,10 @@ import votingSecurityDe from './locales/pages/VotingSecurity/de.json';
 import votingSecurityEn from './locales/pages/VotingSecurity/en.json';
 import votingSecurityNp from './locales/pages/VotingSecurity/np.json';
 
+import trustSignalsDe from './locales/pages/Dashboard/trust_signals/de.json';
+import trustSignalsEn from './locales/pages/Dashboard/trust_signals/en.json';
+import trustSignalsNp from './locales/pages/Dashboard/trust_signals/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -176,12 +180,19 @@ const initialLocale = getInitialLocale();
 const messages = {
   de: {
     ...de,
+<<<<<<< Updated upstream
     ...commonDe,
     organisation: organisationDe,
     organisations: {
       demo: organisationShowPageDe.demo,
     },
     modals: organisationShowPageDe.modals,
+=======
+    // Dashboard welcome page translations (root level for direct access)
+    ...welcomeDashboardDe,
+    // Trust signals translations (root level for direct access)
+    ...trustSignalsDe,
+>>>>>>> Stashed changes
     pages: {
       'voting-start': votingStartDe,
       'role-selection': roleSelectionDe,
@@ -222,12 +233,19 @@ const messages = {
   },
   en: {
     ...en,
+<<<<<<< Updated upstream
     ...commonEn,
     organisation: organisationEn,
     organisations: {
       demo: organisationShowPageEn.demo,
     },
     modals: organisationShowPageEn.modals,
+=======
+    // Dashboard welcome page translations (root level for direct access)
+    ...welcomeDashboardEn,
+    // Trust signals translations (root level for direct access)
+    ...trustSignalsEn,
+>>>>>>> Stashed changes
     pages: {
       'voting-start': votingStartEn,
       'role-selection': roleSelectionEn,
@@ -268,12 +286,19 @@ const messages = {
   },
   np: {
     ...np,
+<<<<<<< Updated upstream
     ...commonNp,
     organisation: organisationNp,
     organisations: {
       demo: organisationShowPageNp.demo,
     },
     modals: organisationShowPageNp.modals,
+=======
+    // Dashboard welcome page translations (root level for direct access)
+    ...welcomeDashboardNp,
+    // Trust signals translations (root level for direct access)
+    ...trustSignalsNp,
+>>>>>>> Stashed changes
     pages: {
       'voting-start': votingStartNp,
       'role-selection': roleSelectionNp,

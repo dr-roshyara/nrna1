@@ -20,6 +20,7 @@
 
 use App\Http\Controllers\CandidacyApplicationController;
 use App\Http\Controllers\Election\CandidacyManagementController;
+use App\Http\Controllers\Election\VoterImportController;
 use App\Http\Controllers\Election\CandidacyReviewController;
 use App\Http\Controllers\Election\ElectionManagementController;
 use App\Http\Controllers\Election\PostManagementController;
@@ -27,11 +28,14 @@ use App\Http\Controllers\ElectionOfficerController;
 use App\Http\Controllers\ElectionOfficerInvitationController;
 use App\Http\Controllers\ElectionVoterController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\Membership\MembershipApplicationController;
 use App\Http\Controllers\Membership\MembershipDashboardController;
 use App\Http\Controllers\Membership\MembershipFeeController;
 use App\Http\Controllers\Membership\MembershipRenewalController;
 use App\Http\Controllers\Membership\MembershipTypeController;
+use App\Http\Controllers\Membership\OrganisationParticipantController;
+use App\Http\Controllers\Membership\ParticipantImportController;
 use App\Http\Controllers\Organisation\OrganisationMemberInvitationController;
 use App\Http\Controllers\OrganisationController;
 use Illuminate\Support\Facades\Route;
@@ -97,9 +101,26 @@ Route::prefix('organisations/{organisation:slug}')
 
             Route::patch('/applications/{application}/reject', [MembershipApplicationController::class, 'reject'])
                 ->name('applications.reject');
+
+            // ── OrganisationParticipant management (staff/guest/election_committee) ──
+            Route::get('/participants',                      [OrganisationParticipantController::class, 'index'])  ->name('participants.index');
+            Route::post('/participants',                     [OrganisationParticipantController::class, 'store'])  ->name('participants.store');
+            Route::delete('/participants/{participant}',     [OrganisationParticipantController::class, 'destroy'])->name('participants.destroy');
+
+            // ── Participant bulk import ────────────────────────────────────────
+            Route::prefix('/participants')->name('participants.')->group(function () {
+                Route::get('/import',          [ParticipantImportController::class, 'create'])  ->name('import.create');
+                Route::get('/import/template', [ParticipantImportController::class, 'template'])->name('import.template');
+                Route::post('/import/preview', [ParticipantImportController::class, 'preview']) ->name('import.preview');
+                Route::post('/import',         [ParticipantImportController::class, 'import'])  ->name('import');
+            });
         });
 
-        // ── Members List ──────────────────────────────────────────────────────────
+        // ── Participants List (everyone with a platform role) ─────────────────────
+        Route::get('/participants',        [ParticipantController::class, 'index'])  ->name('organisations.participants.index');
+        Route::get('/participants/export', [ParticipantController::class, 'export']) ->name('organisations.participants.export');
+
+        // ── Members List (formal paid members only) ───────────────────────────────
         Route::get('/members',        [MemberController::class, 'index'])  ->name('organisations.members.index');
         Route::get('/members/export', [MemberController::class, 'export']) ->name('organisations.members.export');
 
@@ -136,6 +157,14 @@ Route::prefix('organisations/{organisation:slug}')
             // ── Public candidacy application page (voter-facing, per election) ────
             Route::get('/candidacy/apply', [CandidacyApplicationController::class, 'applyForm'])
                 ->name('organisations.elections.candidacy.apply');
+            // ── Voter bulk import ──────────────────────────────────────────────
+            Route::prefix('/voters')->name('elections.voters.')->group(function () {
+                Route::get('/import',          [VoterImportController::class, 'create'])  ->name('import.create');
+                Route::get('/import/template', [VoterImportController::class, 'template'])->name('import.template');
+                Route::post('/import/preview', [VoterImportController::class, 'preview']) ->name('import.preview');
+                Route::post('/import',         [VoterImportController::class, 'import'])  ->name('import');
+            });
+
             Route::get('/voters',                   [ElectionVoterController::class, 'index'])     ->name('elections.voters.index');
             Route::post('/voters',                  [ElectionVoterController::class, 'store'])     ->name('elections.voters.store');
             Route::post('/voters/bulk',             [ElectionVoterController::class, 'bulkStore']) ->name('elections.voters.bulk');

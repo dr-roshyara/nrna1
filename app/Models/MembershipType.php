@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MembershipType extends Model
 {
-    use HasUuids, SoftDeletes;
+    use HasUuids, SoftDeletes, HasFactory;
 
     protected $fillable = [
         'id',
@@ -19,6 +20,7 @@ class MembershipType extends Model
         'name',
         'slug',
         'description',
+        'grants_voting_rights',
         'fee_amount',
         'fee_currency',
         'duration_months',
@@ -30,11 +32,12 @@ class MembershipType extends Model
     ];
 
     protected $casts = [
-        'fee_amount'         => 'decimal:2',
-        'requires_approval'  => 'boolean',
-        'is_active'          => 'boolean',
-        'form_schema'        => 'array',
-        'duration_months'    => 'integer',
+        'fee_amount'           => 'decimal:2',
+        'grants_voting_rights' => 'boolean',
+        'requires_approval'    => 'boolean',
+        'is_active'            => 'boolean',
+        'form_schema'          => 'array',
+        'duration_months'      => 'integer',
     ];
 
     // ── Scopes ────────────────────────────────────────────────────────────────
@@ -42,6 +45,18 @@ class MembershipType extends Model
     public function scopeActive(Builder $query): Builder
     {
         return $query->where('is_active', true);
+    }
+
+    /** Full Member types — grant voting rights */
+    public function scopeFullMember(Builder $query): Builder
+    {
+        return $query->where('grants_voting_rights', true);
+    }
+
+    /** Associate Member types — observer / no voting rights */
+    public function scopeAssociateMember(Builder $query): Builder
+    {
+        return $query->where('grants_voting_rights', false);
     }
 
     // ── Business logic ────────────────────────────────────────────────────────

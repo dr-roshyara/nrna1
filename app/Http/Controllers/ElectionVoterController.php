@@ -53,12 +53,20 @@ class ElectionVoterController extends Controller
             ->pluck('user_id')
             ->toArray();
 
-        $unassignedMembers = DB::table('user_organisation_roles as ur')
-            ->join('users as u', 'u.id', '=', 'ur.user_id')
-            ->where('ur.organisation_id', $organisation->id)
-            ->whereNotIn('ur.user_id', $assignedUserIds)
-            ->select('u.id', 'u.name', 'u.email')
-            ->orderBy('u.name')
+        $unassignedMembers = DB::table('members')
+            ->join('organisation_users',  'members.organisation_user_id', '=', 'organisation_users.id')
+            ->join('membership_types',    'members.membership_type_id',   '=', 'membership_types.id')
+            ->join('users',               'organisation_users.user_id',   '=', 'users.id')
+            ->where('members.organisation_id', $organisation->id)
+            ->where('members.status', 'active')
+            ->whereIn('members.fees_status', ['paid', 'exempt'])
+            ->where('membership_types.grants_voting_rights', true)
+            ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
+                                 ->orWhere('members.membership_expires_at', '>', now()))
+            ->whereNull('members.deleted_at')
+            ->whereNotIn('organisation_users.user_id', $assignedUserIds)
+            ->select('users.id', 'users.name', 'users.email')
+            ->orderBy('users.name')
             ->get();
 
         return Inertia::render('Elections/Voters/Index', [
@@ -86,14 +94,11 @@ class ElectionVoterController extends Controller
             'user_id' => [
                 'required',
                 'uuid',
-                // Must be an org member
+                // Must be an active formal member with full voting rights
                 function ($attribute, $value, $fail) use ($organisation) {
-                    $isMember = DB::table('user_organisation_roles')
-                        ->where('user_id', $value)
-                        ->where('organisation_id', $organisation->id)
-                        ->exists();
-                    if (! $isMember) {
-                        $fail('The selected user is not a member of this organisation.');
+                    $user = \App\Models\User::find($value);
+                    if (! $user || ! $user->isEligibleVoter($organisation)) {
+                        $fail('The selected user is not an active formal member with full voting rights.');
                     }
                 },
             ],
@@ -128,11 +133,19 @@ class ElectionVoterController extends Controller
             'user_ids.*' => 'uuid',
         ]);
 
-        // Filter to org members only
-        $validIds = DB::table('user_organisation_roles')
-            ->where('organisation_id', $organisation->id)
-            ->whereIn('user_id', $request->user_ids)
-            ->pluck('user_id')
+        // Filter to eligible voters only (active formal members with full voting rights)
+        $validIds = DB::table('members')
+            ->join('organisation_users',  'members.organisation_user_id', '=', 'organisation_users.id')
+            ->join('membership_types',    'members.membership_type_id',   '=', 'membership_types.id')
+            ->whereIn('organisation_users.user_id', $request->user_ids)
+            ->where('members.organisation_id', $organisation->id)
+            ->where('members.status', 'active')
+            ->whereIn('members.fees_status', ['paid', 'exempt'])
+            ->where('membership_types.grants_voting_rights', true)
+            ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
+                                 ->orWhere('members.membership_expires_at', '>', now()))
+            ->whereNull('members.deleted_at')
+            ->pluck('organisation_users.user_id')
             ->toArray();
 
         $invalidCount = count($request->user_ids) - count($validIds);

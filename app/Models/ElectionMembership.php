@@ -226,10 +226,18 @@ class ElectionMembership extends Model
         return DB::transaction(function () use ($userIds, $electionId, $assignedBy) {
             $election = Election::withoutGlobalScopes()->lockForUpdate()->findOrFail($electionId);
 
-            $validUserIds = DB::table('user_organisation_roles')
-                ->whereIn('user_id', $userIds)
-                ->where('organisation_id', $election->organisation_id)
-                ->pluck('user_id')
+            $validUserIds = DB::table('members')
+                ->join('organisation_users',  'members.organisation_user_id', '=', 'organisation_users.id')
+                ->join('membership_types',    'members.membership_type_id',   '=', 'membership_types.id')
+                ->whereIn('organisation_users.user_id', $userIds)
+                ->where('members.organisation_id', $election->organisation_id)
+                ->where('members.status', 'active')
+                ->whereIn('members.fees_status', ['paid', 'exempt'])
+                ->where('membership_types.grants_voting_rights', true)
+                ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
+                                     ->orWhere('members.membership_expires_at', '>', now()))
+                ->whereNull('members.deleted_at')
+                ->pluck('organisation_users.user_id')
                 ->toArray();
 
             $invalidCount = count(array_diff($userIds, $validUserIds));

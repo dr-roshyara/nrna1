@@ -1,0 +1,59 @@
+{
+  "title": "सहभागी आयात गर्नुहोस्",
+  "description": "CSV वा Excel फाइलबाट कर्मचारी, अतिथि वा निर्वाचन समिति सदस्यहरू थोक आयात गर्नुहोस्।",
+  "back": "फिर्ता",
+  "steps": {
+    "upload": "अपलोड",
+    "review": "समीक्षा",
+    "complete": "सम्पन्न"
+  },
+  "upload": {
+    "title": "फाइल अपलोड गर्नुहोस्",
+    "drag_hint": "फाइल यहाँ छोड्नुहोस् वा छान्नुहोस्",
+    "select_btn": "फाइल छान्नुहोस्",
+    "formats_hint": "CSV, XLSX वा XLS — अधिकतम १० MB",
+    "aria_label": "सहभागी आयात फाइल छान्नुहोस्"
+  },
+  "preview": {
+    "title": "पूर्वावलोकन — {total} पङ्क्ति ({valid} वैध, {invalid} अवैध)",
+    "table": {
+      "row": "पङ्क्ति",
+      "email": "इमेल",
+      "type": "प्रकार",
+      "status": "स्थिति",
+      "errors": "त्रुटि"
+    },
+    "no_errors": "सबै पङ्क्ति वैध — आयातको लागि तयार।",
+    "has_errors": "{invalid} पङ्क्ति छोडिनेछ।",
+    "change_file": "फाइल परिवर्तन गर्नुहोस्",
+    "import_btn": "{count} वैध पङ्क्ति आयात गर्नुहोस्",
+    "importing_btn": "आयात हुँदैछ…"
+  },
+  "success": {
+    "title": "आयात सम्पन्न",
+    "created": "{n} सिर्जना भयो",
+    "updated": "{n} अपडेट भयो",
+    "skipped": "{n} छोडियो",
+    "back_btn": "सदस्यतामा फिर्ता"
+  },
+  "error": {
+    "label": "त्रुटि:",
+    "try_again": "फेरि प्रयास गर्नुहोस्",
+    "invalid_format": "अमान्य फाइल ढाँचा। कृपया CSV वा Excel फाइल अपलोड गर्नुहोस्।"
+  },
+  "info_panel": {
+    "title": "फाइल ढाँचा",
+    "formats_heading": "समर्थित ढाँचाहरू:",
+    "formats": ["CSV (.csv)", "Excel (.xlsx, .xls)"],
+    "columns_heading": "स्तम्भहरू:",
+    "columns": [
+      "email (आवश्यक) — दर्ता प्रयोगकर्ता हुनुपर्छ",
+      "participant_type (आवश्यक) — staff | guest | election_committee",
+      "role (वैकल्पिक) — स्वतन्त्र पाठ",
+      "expires_at (वैकल्पिक) — YYYY-MM-DD, भविष्यको मिति",
+      "permissions (वैकल्पिक) — JSON"
+    ],
+    "note": "इमेल ठेगाना पहिले नै दर्ता प्लेटफर्म खाताको रूपमा अवस्थित हुनुपर्छ।",
+    "download_template": "टेम्प्लेट डाउनलोड गर्नुहोस्"
+  }
+}

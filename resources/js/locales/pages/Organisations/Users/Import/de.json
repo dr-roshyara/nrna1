@@ -1,0 +1,59 @@
+{
+  "title": "Nutzer & Mitglieder importieren",
+  "description": "Nutzer, Mitglieder und Wähler per CSV- oder Excel-Datei importieren. Neue Nutzerkonten werden automatisch erstellt.",
+  "back": "Zurück",
+  "steps": {
+    "upload": "Hochladen",
+    "review": "Prüfen",
+    "complete": "Fertig"
+  },
+  "upload": {
+    "title": "Datei hochladen",
+    "drag_hint": "Datei hier ablegen oder auswählen",
+    "select_btn": "Datei auswählen",
+    "formats_hint": "CSV, XLSX oder XLS — max. 10 MB",
+    "aria_label": "Nutzer-Import-Datei auswählen"
+  },
+  "preview": {
+    "title": "Vorschau — {total} Zeilen ({valid} gültig, {invalid} ungültig)",
+    "table": {
+      "row": "Zeile",
+      "email": "E-Mail",
+      "name": "Name",
+      "member": "Mitglied",
+      "voter": "Wähler",
+      "status": "Status",
+      "errors": "Fehler"
+    },
+    "no_errors": "Alle Zeilen gültig — bereit zum Import.",
+    "has_errors": "{invalid} Zeile(n) werden übersprungen.",
+    "change_file": "Datei ändern",
+    "import_btn": "{count} gültige Zeilen importieren",
+    "importing_btn": "Importiere…"
+  },
+  "success": {
+    "title": "Import abgeschlossen",
+    "back_btn": "Zurück zur Organisation"
+  },
+  "error": {
+    "label": "Fehler:",
+    "try_again": "Erneut versuchen",
+    "invalid_format": "Ungültiges Dateiformat. Bitte CSV oder Excel hochladen."
+  },
+  "info_panel": {
+    "title": "Dateiformat",
+    "formats_heading": "Unterstützte Formate:",
+    "formats": ["CSV (.csv)", "Excel (.xlsx, .xls)"],
+    "columns_heading": "Spalten:",
+    "columns": [
+      "email (erforderlich)",
+      "name (erforderlich)",
+      "is_org_user — YES oder NO",
+      "is_member — YES oder NO",
+      "is_voter — YES oder NO",
+      "election_id — UUID (erforderlich wenn is_voter=YES)"
+    ],
+    "note": "Wenn die E-Mail nicht existiert, wird automatisch ein neues Konto mit einem temporären Passwort erstellt.",
+    "download_template": "Vorlage herunterladen"
+  }
+}

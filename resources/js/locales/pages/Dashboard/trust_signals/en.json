@@ -1,0 +1,57 @@
+{
+  "trust_signals": {
+    "compliance": {
+      "message": "GDPR compliant since 2024",
+      "tooltip": "All data is processed in compliance with GDPR"
+    },
+    "security": {
+      "message": "Data protected in Frankfurt",
+      "tooltip": "Your organization data is securely hosted in Germany"
+    },
+    "audit": {
+      "message": "Audit trail available",
+      "tooltip": "Complete logging of all actions for compliance"
+    },
+    "encryption": {
+      "message": "Your vote encrypted",
+      "tooltip": "Every vote is fully encrypted and anonymous"
+    },
+    "verification": {
+      "message": "Vote can be verified",
+      "tooltip": "You can verify your vote after submission"
+    },
+    "transparency": {
+      "message": "Complete transparency",
+      "tooltip": "All results are visible to election commissions"
+    },
+    "support": {
+      "message": "German support team",
+      "tooltip": "Our support team responds within 24 hours"
+    },
+    "data_protection": {
+      "message": "Member data protected",
+      "tooltip": "All imported member data is protected under GDPR immediately"
+    },
+    "ready": {
+      "message": "Ready for elections",
+      "tooltip": "Your organization is fully set up and secure"
+    },
+    "badge": {
+      "maximum": {
+        "message": "Fully trustworthy"
+      },
+      "high": {
+        "message": "High security"
+      },
+      "medium": {
+        "message": "GDPR compliant"
+      },
+      "low": {
+        "message": "Basic security"
+      },
+      "minimal": {
+        "message": "No rating"
+      }
+    }
+  }
+}

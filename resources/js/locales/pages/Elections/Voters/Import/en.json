@@ -1,0 +1,51 @@
+{
+  "title": "Import Voters",
+  "description": "Bulk-register organisation members as voters for this election from a CSV or Excel file.",
+  "back": "Back to Voters",
+  "steps": {
+    "upload": "Upload",
+    "review": "Review",
+    "complete": "Done"
+  },
+  "upload": {
+    "title": "Upload File",
+    "drag_hint": "Drop file here or click to select",
+    "select_btn": "Select File",
+    "formats_hint": "CSV, XLSX or XLS — up to 10 MB",
+    "aria_label": "Select voter import file"
+  },
+  "preview": {
+    "title": "Preview — {total} rows ({valid} valid, {invalid} invalid)",
+    "table": {
+      "row": "Row",
+      "email": "Email",
+      "status": "Status",
+      "errors": "Errors"
+    },
+    "no_errors": "All rows valid — ready to register voters.",
+    "has_errors": "{invalid} row(s) will be skipped.",
+    "change_file": "Change File",
+    "import_btn": "Register {count} voters",
+    "importing_btn": "Registering…"
+  },
+  "success": {
+    "title": "Import Complete",
+    "back_btn": "Back to voter list"
+  },
+  "error": {
+    "label": "Error:",
+    "try_again": "Try again",
+    "invalid_format": "Invalid file format. Please upload a CSV or Excel file."
+  },
+  "info_panel": {
+    "title": "File Format",
+    "formats_heading": "Supported Formats:",
+    "formats": ["CSV (.csv)", "Excel (.xlsx, .xls)"],
+    "columns_heading": "Columns:",
+    "columns": [
+      "email (required) — must be an organisation member"
+    ],
+    "note": "Only existing organisation members can be registered as voters. Non-members are skipped automatically.",
+    "download_template": "Download Template"
+  }
+}

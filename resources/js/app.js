@@ -9,7 +9,7 @@ import i18n from './i18n';
 createInertiaApp({
     id: 'app',
     title: (title) => title ? `${title} - Public Digit` : 'Public Digit',
-    
+
     // Modern Vite globbing
     resolve: (name) => resolvePageComponent(
         `./Pages/${name}.vue`,

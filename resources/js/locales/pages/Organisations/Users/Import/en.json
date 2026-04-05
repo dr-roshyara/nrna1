@@ -1,0 +1,59 @@
+{
+  "title": "Import Users & Members",
+  "description": "Bulk-import users, members, and voters from a CSV or Excel file. New user accounts are created automatically.",
+  "back": "Back",
+  "steps": {
+    "upload": "Upload",
+    "review": "Review",
+    "complete": "Done"
+  },
+  "upload": {
+    "title": "Upload File",
+    "drag_hint": "Drop file here or click to select",
+    "select_btn": "Select File",
+    "formats_hint": "CSV, XLSX or XLS — up to 10 MB",
+    "aria_label": "Select user import file"
+  },
+  "preview": {
+    "title": "Preview — {total} rows ({valid} valid, {invalid} invalid)",
+    "table": {
+      "row": "Row",
+      "email": "Email",
+      "name": "Name",
+      "member": "Member",
+      "voter": "Voter",
+      "status": "Status",
+      "errors": "Errors"
+    },
+    "no_errors": "All rows valid — ready to import.",
+    "has_errors": "{invalid} row(s) will be skipped.",
+    "change_file": "Change File",
+    "import_btn": "Import {count} valid rows",
+    "importing_btn": "Importing…"
+  },
+  "success": {
+    "title": "Import Complete",
+    "back_btn": "Back to organisation"
+  },
+  "error": {
+    "label": "Error:",
+    "try_again": "Try again",
+    "invalid_format": "Invalid file format. Please upload a CSV or Excel file."
+  },
+  "info_panel": {
+    "title": "File Format",
+    "formats_heading": "Supported Formats:",
+    "formats": ["CSV (.csv)", "Excel (.xlsx, .xls)"],
+    "columns_heading": "Columns:",
+    "columns": [
+      "email (required)",
+      "name (required)",
+      "is_org_user — YES or NO",
+      "is_member — YES or NO",
+      "is_voter — YES or NO",
+      "election_id — UUID (required if is_voter=YES)"
+    ],
+    "note": "If the email doesn't exist a new account is created with a temporary password.",
+    "download_template": "Download Template"
+  }
+}

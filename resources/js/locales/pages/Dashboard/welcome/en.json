@@ -1,0 +1,393 @@
+{
+  "dashboard": {
+    "quick_start_title": "Quick Start",
+    "quick_start_subtitle": "What would you like to do next?",
+    "pending_actions": "Pending Actions",
+    "no_pending_actions": "No pending actions"
+  },
+  "header": {
+    "greeting": "Welcome {name}",
+    "greeting_morning": "Good morning, {name}",
+    "greeting_afternoon": "Good afternoon, {name}",
+    "greeting_evening": "Good evening, {name}",
+    "last_login": "Last login",
+    "last_login_today": "Today",
+    "switch_organization": "Switch organization",
+    "role_admin": "Administrator",
+    "role_commission": "Committee Member",
+    "role_voter": "Voter",
+    "roles": "Roles",
+    "trust_score_tooltip": "Trust score - based on security and compliance signals",
+    "all_trust_indicators": "All Trust Indicators",
+    "user": "User"
+  },
+  "trust_signals": {
+    "compliance": "GDPR compliant",
+    "security": "Data protected",
+    "encryption": "Vote encrypted",
+    "audit": "Audit trail available",
+    "diaspora_notice": "Your vote is anonymous and secure"
+  },
+  "actions": {
+    "create_organization": {
+      "title": "Create Organization",
+      "description": "Establish your first voter organization",
+      "cta": "Create Organization"
+    },
+    "add_members": {
+      "title": "Add Members",
+      "description": "Invite members to your organization",
+      "cta": "Manage Members"
+    },
+    "create_election": {
+      "title": "Create Election",
+      "description": "Start a new election for your organization",
+      "cta": "Create Election"
+    },
+    "cast_vote": {
+      "title": "Cast Vote",
+      "description": "Participate in an ongoing election",
+      "cta": "Vote Now"
+    },
+    "manage_election": {
+      "title": "Manage Election",
+      "description": "Monitor election progress",
+      "cta": "Monitor Election"
+    },
+    "join_organization": {
+      "title": "Join an Existing Organization",
+      "description": "If you've been invited to an organization",
+      "cta": "Join"
+    },
+    "request_assistance": {
+      "title": "Request Setup Assistance",
+      "description": "Get help from our team setting up your election",
+      "cta": "Request Help"
+    }
+  },
+  "onboarding": {
+    "step_1_title": "New User",
+    "step_1_description": "Welcome to Public Digit",
+    "step_2_title": "Organization Created",
+    "step_2_description": "Add at least one member",
+    "step_3_title": "Members Added",
+    "step_3_description": "Create your first election",
+    "step_4_title": "Election Created",
+    "step_4_description": "At least 2 voters registered",
+    "step_5_title": "Setup Complete",
+    "step_5_description": "You are ready for production",
+    "progress": "{current}/{total}"
+  },
+  "pending_actions": {
+    "pending_votes": "You have {count} pending votes",
+    "onboarding_step": "Next onboarding step: {step}",
+    "gdpr_consent": "GDPR consent required",
+    "email_verification": "Email verification required",
+    "org_setup_incomplete": "Organization setup incomplete"
+  },
+  "help": {
+    "title": "Need Help?",
+    "live_request": "Send Live Request",
+    "contact_support": "Contact Support",
+    "documentation": "Documentation",
+    "book_training": "Book Training",
+    "contact_support_email": "support@publicdigit.eu",
+    "contact_support_phone": "+49 (0) 30 123456"
+  },
+  "compliance": {
+    "gdpr_compliant": "GDPR compliant",
+    "political_opinion_protected": "Political opinion protected",
+    "data_hosted_germany": "Data hosted in Germany",
+    "no_third_party_sharing": "No third-party sharing",
+    "encryption_end_to_end": "End-to-end encryption",
+    "audit_trail": "Audit trail available",
+    "transparent": "Transparency report available"
+  },
+  "gdpr_banner": {
+    "title": "🇩🇪 GDPR Compliant",
+    "subtitle": "PublicDigit is built with German privacy standards in mind",
+    "description": "All data is processed securely and transparently.",
+    "points": [
+      {"id": "gdpr", "text": "GDPR-compliant data processing"},
+      {"id": "servers", "text": "Encrypted data storage (German servers)"},
+      {"id": "certification", "text": "End-to-end security certification"}
+    ]
+  },
+  "user_cases": {
+    "title": "Who Uses PublicDigit?",
+    "german_orgs": {
+      "title": "German Organizations",
+      "description": "Trade unions, works councils, and German associations use PublicDigit for secure, transparent elections.",
+      "points": [
+        {"id": "works_council", "text": "Works council elections"},
+        {"id": "association", "text": "Association votes"}
+      ]
+    },
+    "diaspora": {
+      "title": "Diaspora Communities",
+      "description": "Diaspora associations across Europe organize elections in multiple languages with complete transparency.",
+      "points": [
+        {"id": "leadership", "text": "Community leadership elections (multiple countries)"},
+        {"id": "referendums", "text": "Member votes (8+ language support)"}
+      ]
+    }
+  },
+  "stats": {
+    "title": "Trust PublicDigit",
+    "organizations": "50+",
+    "organizations_label": "Active Organizations",
+    "languages": "3",
+    "languages_label": "Supported Languages",
+    "gdpr": "100%",
+    "gdpr_label": "GDPR Compliant"
+  },
+  "value_props": {
+    "title": "Why Choose PublicDigit?",
+    "subtitle": "We bring enterprise-grade security to grassroots organizations",
+    "points": [
+      {
+        "id": "transparency",
+        "icon": "🔍",
+        "title": "Complete Transparency",
+        "description": "Every vote is verifiable. Every step is traceable. No surprises."
+      },
+      {
+        "id": "security",
+        "icon": "🔒",
+        "title": "Bank-Grade Security",
+        "description": "End-to-end encryption, German data centers, and BSI certification"
+      },
+      {
+        "id": "global",
+        "icon": "🌐",
+        "title": "Truly Global",
+        "description": "Built from the ground up for diaspora communities with 8+ language support"
+      }
+    ]
+  },
+  "tips": {
+    "title": "💡 Getting Started Tips",
+    "points": [
+      {"id": "setup", "text": "Organizations can be set up in less than 5 minutes"},
+      {"id": "invite", "text": "Invite unlimited members to participate in elections"},
+      {"id": "analytics", "text": "Access detailed analytics and audit trails for every election"}
+    ]
+  },
+  "metrics": {
+    "title": "Platform Impact",
+    "subtitle": "Real-time statistics across all organizations",
+    "footnote": "Updated in real-time across all organizations",
+    "organizations_label": "Organizations",
+    "organizations_desc": "Using Public Digit",
+    "members_label": "Active Members",
+    "members_desc": "Active voters",
+    "elections_label": "Elections Conducted",
+    "elections_desc": "Democratic processes"
+  },
+  "insights": {
+    "title": "Get Started",
+    "subtitle": "Learn key features and best practices",
+    "icon": "💡",
+    "learn_more": "Learn More",
+    "read_security": "Read Security Policy",
+    "explore_guide": "Explore Guide",
+    "helpful_label": "Was this helpful?",
+    "start_election": {
+      "title": "Getting Started: Create Election",
+      "brief": "5 minutes setup",
+      "category": "Setup",
+      "content": "Set up your first election in 5 easy steps. This guide covers all essential features.",
+      "detail_1": "Define election title and description",
+      "detail_2": "Set voting period and rules",
+      "detail_3": "Add candidates or referendum options"
+    },
+    "security": {
+      "title": "Security & Privacy Features",
+      "brief": "GDPR + E2E encryption",
+      "category": "Trust",
+      "content": "Your election data is protected by enterprise-grade encryption and GDPR compliance measures.",
+      "detail_1": "End-to-end encryption for all votes",
+      "detail_2": "GDPR Article 32 compliance",
+      "detail_3": "Data hosted securely in Germany"
+    },
+    "best_practices": {
+      "title": "Best Practices: Voter Engagement",
+      "brief": "Tips for high participation",
+      "category": "Tips",
+      "content": "Learn proven strategies to increase voter participation and engagement in your elections.",
+      "detail_1": "Send timely reminders to members",
+      "detail_2": "Provide clear voting instructions",
+      "detail_3": "Show real-time participation rates"
+    }
+  },
+  "features": {
+    "title": "Why Choose Public Digit?",
+    "subtitle": "Powerful features for democratic decision-making",
+    "voting": {
+      "category": "Voting",
+      "title": "Secure Voting",
+      "description": "Anonymous, tamper-proof voting with real-time result aggregation.",
+      "benefit_1": "Anonymous ballot protection",
+      "benefit_2": "Cryptographic vote verification",
+      "benefit_3": "Real-time result aggregation",
+      "detail_1_title": "Encryption Standard",
+      "detail_1_desc": "AES-256 with end-to-end protection",
+      "detail_2_title": "Voter Verification",
+      "detail_2_desc": "Prove your vote was recorded without revealing it"
+    },
+    "members": {
+      "category": "Members",
+      "title": "Member Management",
+      "description": "Flexible member roles, permission controls, and profile management.",
+      "benefit_1": "Role-based access control",
+      "benefit_2": "Bulk member import",
+      "benefit_3": "Digital member profiles",
+      "detail_1_title": "Roles",
+      "detail_1_desc": "Admin, officer, and member tiers",
+      "detail_2_title": "Import",
+      "detail_2_desc": "CSV or API bulk uploads"
+    },
+    "analytics": {
+      "category": "Analytics",
+      "title": "Reporting & Analytics",
+      "description": "Detailed election results, participation trends, and compliance reports.",
+      "benefit_1": "Real-time result dashboards",
+      "benefit_2": "Participation analytics",
+      "benefit_3": "GDPR compliance audits",
+      "detail_1_title": "Dashboards",
+      "detail_1_desc": "Interactive election result visualization",
+      "detail_2_title": "Reports",
+      "detail_2_desc": "Downloadable CSV and PDF exports"
+    },
+    "start_voting": "Start Voting",
+    "manage_members": "Manage Members",
+    "view_analytics": "View Analytics"
+  },
+  "success": {
+    "title": "Success Stories",
+    "subtitle": "See how organizations are transforming with Public Digit",
+    "participation": "Participation",
+    "completion_time": "Avg. Time",
+    "countries": "Countries",
+    "compliant": "GDPR Compliant",
+    "incidents": "Incidents",
+    "read_story": "Read Full Story",
+    "case_1": {
+      "org_name": "German Union",
+      "type": "Trade Union (500 members)",
+      "quote": "Public Digit transformed our voting from postal to fully digital in just 2 weeks.",
+      "contact": "Maria Schmidt",
+      "role": "Operations Director"
+    },
+    "case_2": {
+      "org_name": "Nepal Diaspora Network",
+      "type": "Community Organization (2000 members)",
+      "quote": "Our members across 15 countries can now vote securely from home.",
+      "contact": "Rajesh Kumar",
+      "role": "Community Lead"
+    },
+    "case_3": {
+      "org_name": "Tech Association",
+      "type": "Professional Network (800 members)",
+      "quote": "GDPR compliance was automatic—one less thing to worry about.",
+      "contact": "Anna Weber",
+      "role": "Compliance Officer"
+    }
+  },
+  "trust_badge": {
+    "message": "Your data is safe with us",
+    "subtitle": "Enterprise-grade security & GDPR compliance"
+  },
+  "trust_center": {
+    "title": "Trust Center",
+    "description": "Your data is completely safe with us. We meet all required compliance standards.",
+    "data_hosted_label": "Data Hosted in Germany",
+    "learn_more": "Learn More →",
+    "trust_level_label": "Trust Level",
+    "trust_level_excellent": "Excellent - Fully compliant with all standards",
+    "dpo_contact": "Data Protection Officer",
+    "dpo_email": "dpo@publicdigit.eu",
+    "dpo_authority": "Berlin Data Protection Authority",
+    "compliance_badge_gdpr": "GDPR Compliant",
+    "compliance_badge_data": "Hosted in Germany",
+    "compliance_badge_e2e": "E2E Encryption"
+  },
+  "organization": {
+    "education": {
+      "title": "What is an Organization?",
+      "description": "An organization is your association, federation, or cooperative in the digital voting system.",
+      "point_1": "Your member data is managed here",
+      "point_2": "All elections take place within this organization",
+      "point_3": "GDPR-compliant on servers in Germany",
+      "data_privacy_title": "What happens to my data?",
+      "data_encrypted": "Encrypted storage in Germany",
+      "data_no_sharing": "No sharing with third parties",
+      "data_deletion": "Deletion after election according to GDPR Art. 17",
+      "data_control": "You retain data ownership",
+      "requirements_title": "What information do we need?",
+      "requirements_intro": "To represent your organization in a legally sound manner, we need:",
+      "req_name": "Organization name",
+      "req_name_desc": "as in the association register",
+      "req_email": "Email address",
+      "req_email_desc": "for official service of documents",
+      "req_address": "Address",
+      "req_address_desc": "of the association's seat",
+      "req_representative": "Representative",
+      "req_representative_desc": "Name and function",
+      "duration": "Duration: 3-5 minutes",
+      "start_cta": "Create organization now →"
+    },
+    "form": {
+      "title": "Create Organization",
+      "step": "Step {current} of {total}",
+      "step_1_title": "Basic Information",
+      "step_1_info": "After providing this information, we'll ask for your association's address and the chair of the board.",
+      "step_2_title": "Register Address",
+      "step_2_info": "This address will be used for legal notices and communication with authorities.",
+      "step_3_title": "Representative and Confirmation",
+      "step_3_info": "After confirmation, you'll receive a confirmation email. You can then invite members and create your first election.",
+      "name_label": "Organization Name",
+      "name_placeholder": "e.g., Munich Gymnastics Club 1860 e.V.",
+      "name_helper": "exactly as in the association register",
+      "email_label": "Email for Official Communication",
+      "email_placeholder": "board@gymnastics-club.de",
+      "email_helper": "Legally binding communication",
+      "info_title": "What's next?",
+      "street_label": "Street and House Number",
+      "street_placeholder": "Main Street 1",
+      "street_helper": "Registered address of the association",
+      "city_label": "City",
+      "city_placeholder": "Munich",
+      "zip_label": "Postal Code",
+      "zip_placeholder": "80331",
+      "zip_helper": "5-digit German postal code",
+      "country_label": "Country",
+      "country_germany": "Germany",
+      "country_info": "Public Digit is currently focused on Germany",
+      "legal_info_title": "Why this address?",
+      "rep_name_label": "Name of Chair/Representative",
+      "rep_name_placeholder": "Dr. Thomas Schmidt",
+      "rep_role_label": "Function",
+      "rep_role_placeholder": "Chair",
+      "rep_role_helper": "e.g., Chair, Executive Director, etc.",
+      "rep_email_label": "Representative Email",
+      "rep_email_placeholder": "t.schmidt@gymnastics-club.de",
+      "rep_email_helper": "If different from the organization address",
+      "is_self_representative": "I am the representative",
+      "is_self_representative_help": "Check this if you are the representative yourself. No separate email will be sent.",
+      "acceptance_legend": "Confirmations",
+      "gdpr_acceptance": "I accept GDPR-compliant processing of my data",
+      "terms_acceptance": "I accept Public Digit's Terms of Service",
+      "final_info_title": "Almost done!",
+      "read_terms": "Read Terms"
+    }
+  },
+  "common": {
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Create",
+    "press_esc_to_close": "Press ESC to close",
+    "read_terms": "Read Terms"
+  }
+}

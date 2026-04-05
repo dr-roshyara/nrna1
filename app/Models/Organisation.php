@@ -96,6 +96,31 @@ class Organisation extends Model
         return $this->hasMany(UserOrganisationRole::class);
     }
 
+    // ── Participant relationships (staff / guest / election_committee) ─────────
+
+    public function participants()
+    {
+        return $this->hasMany(OrganisationParticipant::class);
+    }
+
+    public function staff()
+    {
+        return $this->hasMany(OrganisationParticipant::class)
+                    ->where('participant_type', 'staff');
+    }
+
+    public function guests()
+    {
+        return $this->hasMany(OrganisationParticipant::class)
+                    ->where('participant_type', 'guest');
+    }
+
+    public function electionCommittee()
+    {
+        return $this->hasMany(OrganisationParticipant::class)
+                    ->where('participant_type', 'election_committee');
+    }
+
     public function userOrganisationRoles()
     {
         return $this->hasMany(UserOrganisationRole::class);

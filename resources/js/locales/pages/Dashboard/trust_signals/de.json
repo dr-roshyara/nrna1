@@ -1,0 +1,57 @@
+{
+  "trust_signals": {
+    "compliance": {
+      "message": "DSGVO-konform seit 2024",
+      "tooltip": "Alle Daten werden DSGVO-konform verarbeitet"
+    },
+    "security": {
+      "message": "Daten geschützt in Frankfurt",
+      "tooltip": "Ihre Organisationsdaten werden sicher in Deutschland gehostet"
+    },
+    "audit": {
+      "message": "Audit-Trail verfügbar",
+      "tooltip": "Vollständige Protokollierung aller Aktionen für Compliance"
+    },
+    "encryption": {
+      "message": "Ihre Stimme verschlüsselt",
+      "tooltip": "Jede Abstimmung ist vollständig verschlüsselt und anonym"
+    },
+    "verification": {
+      "message": "Stimmabgabe verifizierbar",
+      "tooltip": "Sie können Ihre Abstimmung nachträglich überprüfen"
+    },
+    "transparency": {
+      "message": "Vollständige Transparenz",
+      "tooltip": "Alle Ergebnisse sind für Wahlkommissionen einsehbar"
+    },
+    "support": {
+      "message": "Deutsches Support-Team",
+      "tooltip": "Unser Support-Team antwortet innerhalb von 24 Stunden"
+    },
+    "data_protection": {
+      "message": "Mitgliederdaten geschützt",
+      "tooltip": "Alle importierten Mitgliederdaten sind sofort DSGVO-geschützt"
+    },
+    "ready": {
+      "message": "Bereit für Wahlen",
+      "tooltip": "Ihre Organisation ist vollständig eingerichtet und sicher"
+    },
+    "badge": {
+      "maximum": {
+        "message": "Vollständig vertrauenswürdig"
+      },
+      "high": {
+        "message": "Hohe Sicherheit"
+      },
+      "medium": {
+        "message": "DSGVO-konform"
+      },
+      "low": {
+        "message": "Grundsicherheit"
+      },
+      "minimal": {
+        "message": "Keine Bewertung"
+      }
+    }
+  }
+}

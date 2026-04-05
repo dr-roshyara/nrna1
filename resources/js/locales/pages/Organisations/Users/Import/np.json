@@ -1,0 +1,59 @@
+{
+  "title": "प्रयोगकर्ता र सदस्यहरू आयात गर्नुहोस्",
+  "description": "CSV वा Excel फाइलबाट प्रयोगकर्ता, सदस्य र मतदाताहरू थोक आयात गर्नुहोस्। नयाँ खाताहरू स्वचालित रूपमा सिर्जना हुन्छन्।",
+  "back": "फिर्ता",
+  "steps": {
+    "upload": "अपलोड",
+    "review": "समीक्षा",
+    "complete": "सम्पन्न"
+  },
+  "upload": {
+    "title": "फाइल अपलोड गर्नुहोस्",
+    "drag_hint": "फाइल यहाँ छोड्नुहोस् वा छान्नुहोस्",
+    "select_btn": "फाइल छान्नुहोस्",
+    "formats_hint": "CSV, XLSX वा XLS — अधिकतम १० MB",
+    "aria_label": "प्रयोगकर्ता आयात फाइल छान्नुहोस्"
+  },
+  "preview": {
+    "title": "पूर्वावलोकन — {total} पङ्क्ति ({valid} वैध, {invalid} अवैध)",
+    "table": {
+      "row": "पङ्क्ति",
+      "email": "इमेल",
+      "name": "नाम",
+      "member": "सदस्य",
+      "voter": "मतदाता",
+      "status": "स्थिति",
+      "errors": "त्रुटि"
+    },
+    "no_errors": "सबै पङ्क्ति वैध — आयातको लागि तयार।",
+    "has_errors": "{invalid} पङ्क्ति छोडिनेछ।",
+    "change_file": "फाइल परिवर्तन गर्नुहोस्",
+    "import_btn": "{count} वैध पङ्क्ति आयात गर्नुहोस्",
+    "importing_btn": "आयात हुँदैछ…"
+  },
+  "success": {
+    "title": "आयात सम्पन्न",
+    "back_btn": "संस्थामा फिर्ता"
+  },
+  "error": {
+    "label": "त्रुटि:",
+    "try_again": "फेरि प्रयास गर्नुहोस्",
+    "invalid_format": "अमान्य फाइल ढाँचा। कृपया CSV वा Excel फाइल अपलोड गर्नुहोस्।"
+  },
+  "info_panel": {
+    "title": "फाइल ढाँचा",
+    "formats_heading": "समर्थित ढाँचाहरू:",
+    "formats": ["CSV (.csv)", "Excel (.xlsx, .xls)"],
+    "columns_heading": "स्तम्भहरू:",
+    "columns": [
+      "email (आवश्यक)",
+      "name (आवश्यक)",
+      "is_org_user — YES वा NO",
+      "is_member — YES वा NO",
+      "is_voter — YES वा NO",
+      "election_id — UUID (is_voter=YES भए आवश्यक)"
+    ],
+    "note": "इमेल अवस्थित नभएमा अस्थायी पासवर्डसहित नयाँ खाता स्वचालित रूपमा सिर्जना हुन्छ।",
+    "download_template": "टेम्प्लेट डाउनलोड गर्नुहोस्"
+  }
+}

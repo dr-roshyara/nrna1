@@ -1,0 +1,59 @@
+{
+  "title": "Import Participants",
+  "description": "Bulk-upload staff, guests, or election committee members from a CSV or Excel file.",
+  "back": "Back",
+  "steps": {
+    "upload": "Upload",
+    "review": "Review",
+    "complete": "Done"
+  },
+  "upload": {
+    "title": "Upload File",
+    "drag_hint": "Drop file here or click to select",
+    "select_btn": "Select File",
+    "formats_hint": "CSV, XLSX or XLS — up to 10 MB",
+    "aria_label": "Select participant import file"
+  },
+  "preview": {
+    "title": "Preview — {total} rows ({valid} valid, {invalid} invalid)",
+    "table": {
+      "row": "Row",
+      "email": "Email",
+      "type": "Type",
+      "status": "Status",
+      "errors": "Errors"
+    },
+    "no_errors": "All rows valid — ready to import.",
+    "has_errors": "{invalid} row(s) will be skipped.",
+    "change_file": "Change File",
+    "import_btn": "Import {count} valid rows",
+    "importing_btn": "Importing…"
+  },
+  "success": {
+    "title": "Import Complete",
+    "created": "{n} created",
+    "updated": "{n} updated",
+    "skipped": "{n} skipped",
+    "back_btn": "Back to membership"
+  },
+  "error": {
+    "label": "Error:",
+    "try_again": "Try again",
+    "invalid_format": "Invalid file format. Please upload a CSV or Excel file."
+  },
+  "info_panel": {
+    "title": "File Format",
+    "formats_heading": "Supported Formats:",
+    "formats": ["CSV (.csv)", "Excel (.xlsx, .xls)"],
+    "columns_heading": "Columns:",
+    "columns": [
+      "email (required) — must be a registered user",
+      "participant_type (required) — staff | guest | election_committee",
+      "role (optional) — free text",
+      "expires_at (optional) — YYYY-MM-DD, future date",
+      "permissions (optional) — JSON"
+    ],
+    "note": "The email address must already exist as a registered platform account.",
+    "download_template": "Download Template"
+  }
+}

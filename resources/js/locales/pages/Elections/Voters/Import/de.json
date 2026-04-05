@@ -1,0 +1,51 @@
+{
+  "title": "Wähler importieren",
+  "description": "Organisationsmitglieder als Wähler für diese Wahl per CSV- oder Excel-Datei registrieren.",
+  "back": "Zurück zur Wählerliste",
+  "steps": {
+    "upload": "Hochladen",
+    "review": "Prüfen",
+    "complete": "Fertig"
+  },
+  "upload": {
+    "title": "Datei hochladen",
+    "drag_hint": "Datei hier ablegen oder auswählen",
+    "select_btn": "Datei auswählen",
+    "formats_hint": "CSV, XLSX oder XLS — max. 10 MB",
+    "aria_label": "Wähler-Import-Datei auswählen"
+  },
+  "preview": {
+    "title": "Vorschau — {total} Zeilen ({valid} gültig, {invalid} ungültig)",
+    "table": {
+      "row": "Zeile",
+      "email": "E-Mail",
+      "status": "Status",
+      "errors": "Fehler"
+    },
+    "no_errors": "Alle Zeilen gültig — bereit zur Wählerregistrierung.",
+    "has_errors": "{invalid} Zeile(n) werden übersprungen.",
+    "change_file": "Datei ändern",
+    "import_btn": "{count} Wähler registrieren",
+    "importing_btn": "Registriere…"
+  },
+  "success": {
+    "title": "Import abgeschlossen",
+    "back_btn": "Zurück zur Wählerliste"
+  },
+  "error": {
+    "label": "Fehler:",
+    "try_again": "Erneut versuchen",
+    "invalid_format": "Ungültiges Dateiformat. Bitte CSV oder Excel hochladen."
+  },
+  "info_panel": {
+    "title": "Dateiformat",
+    "formats_heading": "Unterstützte Formate:",
+    "formats": ["CSV (.csv)", "Excel (.xlsx, .xls)"],
+    "columns_heading": "Spalten:",
+    "columns": [
+      "email (erforderlich) — muss ein Organisationsmitglied sein"
+    ],
+    "note": "Nur bestehende Organisationsmitglieder können als Wähler registriert werden. Nicht-Mitglieder werden automatisch übersprungen.",
+    "download_template": "Vorlage herunterladen"
+  }
+}

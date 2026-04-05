@@ -195,6 +195,18 @@ class User extends Authenticatable implements MustVerifyEmail
             ->exists();
     }
 
+    public function isEligibleVoter(Organisation $organisation): bool
+    {
+        return Member::where('organisation_id', $organisation->id)
+            ->whereHas('organisationUser', fn ($q) => $q->where('user_id', $this->id))
+            ->whereHas('membershipType',   fn ($q) => $q->where('grants_voting_rights', true))
+            ->where('status', 'active')
+            ->whereIn('fees_status', ['paid', 'exempt'])
+            ->where(fn ($q) => $q->whereNull('membership_expires_at')
+                                 ->orWhere('membership_expires_at', '>', now()))
+            ->exists();
+    }
+
     /**
      * Three-tier membership hierarchy: User → OrganisationUser → Member → Voter
      */
@@ -296,15 +308,26 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function isVoterInElection(string $electionId): bool
     {
+        $ttl = config('election.voter_cache_ttl', 300);
+
         return \Illuminate\Support\Facades\Cache::remember(
             "user.{$this->id}.voter.{$electionId}",
-            300,
+            $ttl,
             fn () => $this->electionMemberships()
                 ->where('election_id', $electionId)
                 ->where('role', 'voter')
                 ->where('status', 'active')
                 ->exists()
         );
+    }
+
+    /**
+     * Invalidate the isVoterInElection() cache for a specific election.
+     * Call this whenever the user's ElectionMembership status changes.
+     */
+    public function invalidateVoterCache(string $electionId): void
+    {
+        \Illuminate\Support\Facades\Cache::forget("user.{$this->id}.voter.{$electionId}");
     }
 
      /**

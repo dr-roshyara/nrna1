@@ -22,13 +22,15 @@ class MemberFactory extends Factory
     public function definition(): array
     {
         return [
-            'organisation_id' => Organisation::factory(),
+            'organisation_id'      => Organisation::factory(),
             'organisation_user_id' => OrganisationUser::factory(),
-            'membership_number' => 'M' . uniqid(),
-            'status' => 'active',
-            'joined_at' => now(),
+            'membership_type_id'   => null,
+            'membership_number'    => 'M' . uniqid(),
+            'status'               => 'active',
+            'fees_status'          => 'unpaid',
+            'joined_at'            => now(),
             'membership_expires_at' => null,
-            'last_renewed_at' => null,
+            'last_renewed_at'      => null,
         ];
     }
 

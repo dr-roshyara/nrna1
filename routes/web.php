@@ -477,7 +477,6 @@ Route::middleware(['auth'])->group(function () {
     // Demo setup API endpoint
     Route::post('/api/organisations/{organisation}/demo-setup', [DemoSetupController::class, 'setup'])
          ->name('api.organisations.demo-setup');
-
 });
 
 // ============================================================================

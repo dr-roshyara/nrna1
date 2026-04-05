@@ -43,4 +43,9 @@ return [
 
     // ✅ Slug-based voting system
     'use_slug_path' => env('USE_SLUG_PATH', true),
+
+    // Cache TTL (seconds) for isVoterInElection() per-user per-election result.
+    // Lower values reduce stale-cache window after a voter is suspended/removed.
+    // Set VOTER_CACHE_TTL=0 to disable caching (use in performance-sensitive tests).
+    'voter_cache_ttl' => env('VOTER_CACHE_TTL', 300),
 ];
