@@ -121,7 +121,7 @@
 </template>
 
 <script>
-import DashboardLayout from '@/Layouts/DashboardLayout.vue';
+import DashboardLayout from '@/Layouts/PublicDigitLayout.vue';
 import PersonalizedHeader from '@/Components/Dashboard/PersonalizedHeader.vue';
 import QuickStartGrid from '@/Components/Dashboard/QuickStartGrid.vue';
 import HelpWidget from '@/Components/Dashboard/HelpWidget.vue';

@@ -10,6 +10,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 
 class OrganisationNewsletterMail extends Mailable implements ShouldQueue
 {
@@ -37,6 +38,15 @@ class OrganisationNewsletterMail extends Mailable implements ShouldQueue
         return new Content(
             htmlString: $this->newsletter->html_content,
         );
+    }
+
+    public function attachments(): array
+    {
+        return $this->newsletter->attachments->map(function ($att) {
+            return \Illuminate\Mail\Mailables\Attachment::fromStorageDisk('private', $att->stored_path)
+                ->as($att->original_name)
+                ->withMime($att->mime_type);
+        })->all();
     }
 
     public function headers(): \Illuminate\Mail\Mailables\Headers

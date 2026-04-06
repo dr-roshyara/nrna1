@@ -345,6 +345,7 @@ import {
   TagIcon,
   ArrowUpTrayIcon,
   EnvelopeIcon,
+  EnvelopeOpenIcon,
 } from '@heroicons/vue/24/outline'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import KPICard         from './components/KPICard.vue'
@@ -401,6 +402,7 @@ const translations = {
     nav_import_members: 'Import Members', nav_import_members_desc: 'Bulk upload via Excel / CSV',
     nav_import_participants: 'Import Participants', nav_import_participants_desc: 'Staff, guests & committee',
     nav_import_users: 'Import Users', nav_import_users_desc: 'Users + members + voters in one file',
+    nav_newsletters: 'Newsletters', nav_newsletters_desc: 'Compose & send bulk emails to members',
     // Table columns
     applications_title: 'Recent Applications',
     col_applicant: 'Applicant', col_type: 'Type', col_status: 'Status', col_actions: 'Actions',
@@ -464,6 +466,7 @@ const translations = {
     nav_import_members: 'Mitglieder importieren', nav_import_members_desc: 'Massenupload via Excel / CSV',
     nav_import_participants: 'Teilnehmer importieren', nav_import_participants_desc: 'Mitarbeiter, Gäste & Ausschuss',
     nav_import_users: 'Benutzer importieren', nav_import_users_desc: 'Benutzer + Mitglieder + Wähler in einer Datei',
+    nav_newsletters: 'Newsletter', nav_newsletters_desc: 'Massen-E-Mails an Mitglieder senden',
     applications_title: 'Aktuelle Anträge',
     col_applicant: 'Antragsteller', col_type: 'Typ', col_status: 'Status', col_actions: 'Aktionen',
     applicant: 'Antragsteller', membership_type: 'Typ', date: 'Datum', action: 'Aktion',
@@ -521,6 +524,7 @@ const translations = {
     nav_import_members: 'सदस्य आयात', nav_import_members_desc: 'Excel / CSV मार्फत',
     nav_import_participants: 'सहभागी आयात', nav_import_participants_desc: 'कर्मचारी, अतिथि र समिति',
     nav_import_users: 'प्रयोगकर्ता आयात', nav_import_users_desc: 'प्रयोगकर्ता + सदस्य + मतदाता एकसाथ',
+    nav_newsletters: 'न्युजलेटर', nav_newsletters_desc: 'सदस्यहरूलाई सामूहिक इमेल पठाउनुहोस्',
     applications_title: 'हालका आवेदनहरू',
     col_applicant: 'आवेदक', col_type: 'प्रकार', col_status: 'स्थिति', col_actions: 'कार्यहरू',
     applicant: 'आवेदक', membership_type: 'प्रकार', date: 'मिति', action: 'कार्य',
@@ -636,6 +640,15 @@ const visibleKPIs = computed(() => {
 })
 
 // ── Quick Actions ─────────────────────────────────────────────────────────────
+const safeRoute = (name, params) => {
+  try {
+    return route(name, params)
+  } catch (e) {
+    console.error(`[Dashboard] Route not found: ${name}`, e.message)
+    return '#'
+  }
+}
+
 const quickActions = computed(() => {
   const actions = []
   const { role, organisation, memberSelf } = props
@@ -644,53 +657,58 @@ const quickActions = computed(() => {
     actions.push({
       key: 'applications', title: t.value.nav_applications,
       description: role === 'commission' ? t.value.nav_view_only : t.value.nav_manage,
-      href: route('organisations.membership.applications.index', organisation.slug),
+      href: safeRoute('organisations.membership.applications.index', organisation.slug),
       icon: DocumentTextIcon, color: 'purple',
     })
   }
   if (['owner', 'admin'].includes(role)) {
     actions.push({
       key: 'members', title: t.value.nav_members, description: t.value.nav_directory,
-      href: route('organisations.members.index', organisation.slug),
+      href: safeRoute('organisations.members.index', organisation.slug),
       icon: UsersIcon, color: 'blue',
     })
     actions.push({
       key: 'participants', title: t.value.nav_participants, description: t.value.nav_all_roles,
-      href: route('organisations.membership.participants.index', organisation.slug),
+      href: safeRoute('organisations.membership.participants.index', organisation.slug),
       icon: UsersIcon, color: 'slate',
     })
   }
   if (role === 'owner') {
     actions.push({
       key: 'types', title: t.value.nav_types, description: t.value.nav_manage_tiers,
-      href: route('organisations.membership-types.index', organisation.slug),
+      href: safeRoute('organisations.membership-types.index', organisation.slug),
       icon: TagIcon, color: 'indigo',
     })
   }
   if (['owner', 'admin'].includes(role)) {
     actions.push({
+      key: 'newsletters', title: t.value.nav_newsletters, description: t.value.nav_newsletters_desc,
+      href: safeRoute('organisations.membership.newsletters.index', organisation.slug),
+      icon: EnvelopeOpenIcon, color: 'emerald',
+    })
+    actions.push({
       key: 'invite_members', title: t.value.nav_invite_members, description: t.value.nav_invite_members_desc,
-      href: route('organisations.members.invite', organisation.slug),
+      href: safeRoute('organisations.members.invite', organisation.slug),
       icon: EnvelopeIcon, color: 'violet',
     })
     actions.push({
       key: 'invite_participants', title: t.value.nav_invite_participants, description: t.value.nav_invite_participants_desc,
-      href: route('organisations.membership.participant-invitations.index', organisation.slug),
+      href: safeRoute('organisations.membership.participant-invitations.index', organisation.slug),
       icon: EnvelopeIcon, color: 'indigo',
     })
     actions.push({
       key: 'import_users', title: t.value.nav_import_users, description: t.value.nav_import_users_desc,
-      href: route('organisations.users.import.index', organisation.slug),
+      href: safeRoute('organisations.users.import.index', organisation.slug),
       icon: ArrowUpTrayIcon, color: 'teal',
     })
     actions.push({
       key: 'import_members', title: t.value.nav_import_members, description: t.value.nav_import_members_desc,
-      href: route('organisations.members.import', organisation.slug),
+      href: safeRoute('organisations.members.import', organisation.slug),
       icon: ArrowUpTrayIcon, color: 'emerald',
     })
     actions.push({
       key: 'import_participants', title: t.value.nav_import_participants, description: t.value.nav_import_participants_desc,
-      href: route('organisations.membership.participants.import.create', organisation.slug),
+      href: safeRoute('organisations.membership.participants.import.create', organisation.slug),
       icon: ArrowUpTrayIcon, color: 'sky',
     })
   }

@@ -51,6 +51,11 @@ class OrganisationNewsletter extends Model
         return $this->hasMany(NewsletterAuditLog::class, 'organisation_newsletter_id');
     }
 
+    public function attachments()
+    {
+        return $this->hasMany(NewsletterAttachment::class, 'organisation_newsletter_id');
+    }
+
     public function scopeDraft($query)
     {
         return $query->where('status', 'draft');

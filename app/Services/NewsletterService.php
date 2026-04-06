@@ -18,6 +18,11 @@ class NewsletterService
 {
     private const ALLOWED_TAGS = '<p><br><strong><em><ul><ol><li><a><h1><h2><h3><img>';
 
+    public function sanitiseHtml(string $html): string
+    {
+        return strip_tags($html, self::ALLOWED_TAGS);
+    }
+
     public function createDraft(
         Organisation $org,
         User $creator,

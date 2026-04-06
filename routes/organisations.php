@@ -134,7 +134,11 @@ Route::prefix('organisations/{organisation:slug}')
                 Route::get('/create',                    [OrganisationNewsletterController::class, 'create'])          ->name('create');
                 Route::post('/',                         [OrganisationNewsletterController::class, 'store'])           ->name('store');
                 Route::get('/{newsletter}',              [OrganisationNewsletterController::class, 'show'])            ->name('show');
+                Route::get('/{newsletter}/edit',         [OrganisationNewsletterController::class, 'edit'])            ->name('edit');
+                Route::put('/{newsletter}',              [OrganisationNewsletterController::class, 'update'])          ->name('update');
                 Route::get('/{newsletter}/preview',      [OrganisationNewsletterController::class, 'previewRecipients'])->name('preview');
+                Route::post('/{newsletter}/attachments',              [OrganisationNewsletterController::class, 'storeAttachment'])   ->name('attachments.store');
+                Route::delete('/{newsletter}/attachments/{attachment}', [OrganisationNewsletterController::class, 'destroyAttachment'])->name('attachments.destroy');
                 Route::patch('/{newsletter}/send',       [OrganisationNewsletterController::class, 'send'])            ->name('send');
                 Route::patch('/{newsletter}/cancel',     [OrganisationNewsletterController::class, 'cancel'])          ->name('cancel');
                 Route::delete('/{newsletter}',           [OrganisationNewsletterController::class, 'destroy'])         ->name('destroy');

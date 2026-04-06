@@ -30,7 +30,7 @@ class SendNewsletterBatchJob implements ShouldQueue
 
     public function handle(): void
     {
-        $newsletter = OrganisationNewsletter::find($this->newsletterId);
+        $newsletter = OrganisationNewsletter::with('attachments')->find($this->newsletterId);
 
         if (! $newsletter || in_array($newsletter->status, ['cancelled', 'failed'])) {
             return;
