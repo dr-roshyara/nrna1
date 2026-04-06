@@ -30,6 +30,9 @@ class Member extends Model
         'end_reason',
         'created_by',
         'updated_by',
+        'newsletter_unsubscribed_at',
+        'newsletter_unsubscribe_token',
+        'newsletter_bounced_at',
     ];
 
     protected $casts = [

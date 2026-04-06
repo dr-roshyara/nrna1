@@ -21,22 +21,22 @@ return new class extends Migration
         // somehow has multiple voter_slugs with status='voted' for the same election.
         if (Schema::hasTable('voter_slugs')) {
             DB::statement("
-                UPDATE election_memberships em
-                SET em.has_voted = 1,
-                    em.voted_at  = (
-                        SELECT MIN(vs.updated_at)
-                        FROM voter_slugs vs
-                        WHERE vs.user_id     = em.user_id
-                          AND vs.election_id = em.election_id
-                          AND vs.status      = 'voted'
+                UPDATE election_memberships
+                SET has_voted = 1,
+                    voted_at  = (
+                        SELECT MIN(voter_slugs.updated_at)
+                        FROM voter_slugs
+                        WHERE voter_slugs.user_id     = election_memberships.user_id
+                          AND voter_slugs.election_id = election_memberships.election_id
+                          AND voter_slugs.status      = 'voted'
                     ),
-                    em.status = 'inactive'
-                WHERE em.has_voted = 0
+                    status = 'inactive'
+                WHERE has_voted = 0
                   AND EXISTS (
-                      SELECT 1 FROM voter_slugs vs
-                      WHERE vs.user_id     = em.user_id
-                        AND vs.election_id = em.election_id
-                        AND vs.status      = 'voted'
+                      SELECT 1 FROM voter_slugs
+                      WHERE voter_slugs.user_id     = election_memberships.user_id
+                        AND voter_slugs.election_id = election_memberships.election_id
+                        AND voter_slugs.status      = 'voted'
                   )
             ");
         }

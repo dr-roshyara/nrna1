@@ -12,6 +12,7 @@ use App\Http\Controllers\RobotsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\Api\DemoSetupController;
+use App\Http\Controllers\NewsletterUnsubscribeController;
 
 //voting
 use App\Http\Controllers\CandidacyController;
@@ -144,6 +145,10 @@ Route::get('/storage/images/{filename}', function ($filename)
 
     return $response;
 });
+
+// Newsletter unsubscribe (public — no auth required)
+Route::get('/unsubscribe/{token}', [NewsletterUnsubscribeController::class, 'unsubscribe'])
+    ->name('newsletter.unsubscribe');
 
 // SEO Routes
 // Sitemap Index (aggregates all sitemaps)

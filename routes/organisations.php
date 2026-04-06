@@ -36,6 +36,7 @@ use App\Http\Controllers\Membership\MembershipRenewalController;
 use App\Http\Controllers\Membership\MembershipTypeController;
 use App\Http\Controllers\Membership\OrganisationParticipantController;
 use App\Http\Controllers\Membership\ParticipantImportController;
+use App\Http\Controllers\Membership\OrganisationNewsletterController;
 use App\Http\Controllers\Membership\ParticipantInvitationController;
 use App\Http\Controllers\Organisation\OrganisationMemberInvitationController;
 use App\Http\Controllers\OrganisationController;
@@ -125,6 +126,18 @@ Route::prefix('organisations/{organisation:slug}')
                 Route::get('/',                             [ParticipantInvitationController::class, 'index'])  ->name('index');
                 Route::post('/',                            [ParticipantInvitationController::class, 'store'])  ->name('store');
                 Route::delete('/{invitation}',              [ParticipantInvitationController::class, 'destroy'])->name('destroy');
+            });
+
+            // ── Newsletters (admin/owner only) ────────────────────────────────
+            Route::prefix('/newsletters')->name('newsletters.')->group(function () {
+                Route::get('/',                          [OrganisationNewsletterController::class, 'index'])           ->name('index');
+                Route::get('/create',                    [OrganisationNewsletterController::class, 'create'])          ->name('create');
+                Route::post('/',                         [OrganisationNewsletterController::class, 'store'])           ->name('store');
+                Route::get('/{newsletter}',              [OrganisationNewsletterController::class, 'show'])            ->name('show');
+                Route::get('/{newsletter}/preview',      [OrganisationNewsletterController::class, 'previewRecipients'])->name('preview');
+                Route::patch('/{newsletter}/send',       [OrganisationNewsletterController::class, 'send'])            ->name('send');
+                Route::patch('/{newsletter}/cancel',     [OrganisationNewsletterController::class, 'cancel'])          ->name('cancel');
+                Route::delete('/{newsletter}',           [OrganisationNewsletterController::class, 'destroy'])         ->name('destroy');
             });
         });
 
