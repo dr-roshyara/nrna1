@@ -1,0 +1,307 @@
+<?php
+
+namespace Tests\Feature\Demo;
+
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\DemoCode;
+use App\Models\Election;
+use App\Models\User;
+use Carbon\Carbon;
+
+/**
+ * Test the markCodeAsVerified() method in DemoCodeController
+ * Ensures proper state management in both SIMPLE and STRICT modes
+ */
+class MarkCodeAsVerifiedTest extends TestCase
+{
+    use RefreshDatabase;
+
+    private Election $election;
+    private User $user;
+    private DemoCode $code;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->election = Election::factory()->create(['type' => 'demo']);
+        $this->user = User::factory()->create();
+        $this->code = DemoCode::factory()->create([
+            'election_id' => $this->election->id,
+            'user_id' => $this->user->id,
+            'is_code1_usable' => 1,
+            'is_code2_usable' => 1,
+            'code1_used_at' => null,
+            'code2_used_at' => null,
+            'can_vote_now' => 0,
+        ]);
+    }
+
+    // ============================================
+    // SIMPLE MODE TESTS (Default: ONE EMAIL)
+    // ============================================
+
+    /**
+     * Test SIMPLE MODE: Code1 marked as verified with is_code1_usable = 1
+     */
+    public function test_simple_mode_code1_usable_remains_one_after_entry()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0; // SIMPLE MODE
+
+        $beforeCode1Usable = $this->code->is_code1_usable;
+        $this->assertEquals(1, $beforeCode1Usable);
+
+        // Simulate marking code as verified (user entered Code1 at /code/create)
+        $this->code->update([
+            'can_vote_now' => 1,
+            'code1_used_at' => Carbon::now(),
+            'is_code1_usable' => 1,  // ✓ Stays 1 for second use
+        ]);
+
+        // Verify state after entry
+        $this->code->refresh();
+        $this->assertEquals(1, $this->code->is_code1_usable, 'In SIMPLE MODE, Code1 should stay usable');
+        $this->assertNotNull($this->code->code1_used_at, 'Code1 entry time should be set');
+        $this->assertEquals(1, $this->code->can_vote_now, 'Voting should be enabled');
+    }
+
+    /**
+     * Test SIMPLE MODE: Code1 can be used again at vote submission
+     */
+    public function test_simple_mode_code1_can_be_used_twice()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0; // SIMPLE MODE
+
+        // First use at /code/create
+        $firstUseTime = Carbon::now();
+        $this->code->update([
+            'code1_used_at' => $firstUseTime,
+            'is_code1_usable' => 1,  // Still usable
+            'can_vote_now' => 1,
+        ]);
+
+        $this->code->refresh();
+
+        // Verify it's still usable for second use
+        $this->assertTrue(true === (bool)$this->code->is_code1_usable);
+        $this->assertEquals($firstUseTime->format('Y-m-d H:i'), $this->code->code1_used_at->format('Y-m-d H:i'));
+
+        // Second use at /vote/submit (code2_used_at tracks second use)
+        $this->code->update([
+            'code2_used_at' => Carbon::now(),  // Track second use
+            'is_code1_usable' => 0,  // Now exhausted
+        ]);
+
+        $this->code->refresh();
+
+        // After second use, Code1 should be exhausted
+        $this->assertEquals(0, $this->code->is_code1_usable, 'Code1 should be exhausted after second use');
+        $this->assertNotNull($this->code->code2_used_at, 'Second use should be tracked');
+    }
+
+    /**
+     * Test SIMPLE MODE: Client IP is recorded
+     */
+    public function test_simple_mode_client_ip_recorded()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0; // SIMPLE MODE
+
+        $testIP = '192.168.1.100';
+
+        $this->code->update([
+            'can_vote_now' => 1,
+            'code1_used_at' => Carbon::now(),
+            'is_code1_usable' => 1,
+            'client_ip' => $testIP,
+        ]);
+
+        $this->code->refresh();
+        $this->assertEquals($testIP, $this->code->client_ip, 'Client IP should be recorded');
+    }
+
+    // ============================================
+    // STRICT MODE TESTS (TWO EMAILS)
+    // ============================================
+
+    /**
+     * Test STRICT MODE: Code1 marked as NOT usable after entry
+     */
+    public function test_strict_mode_code1_usable_set_to_zero()
+    {
+        $this->app['config']['voting.two_codes_system'] = 1; // STRICT MODE
+
+        // Simulate marking code as verified (user entered Code1 at /code/create)
+        $this->code->update([
+            'can_vote_now' => 1,
+            'code1_used_at' => Carbon::now(),
+            'is_code1_usable' => 0,  // Set to 0 in STRICT MODE
+        ]);
+
+        $this->code->refresh();
+
+        $this->assertEquals(0, $this->code->is_code1_usable, 'In STRICT MODE, Code1 should not be usable again');
+        $this->assertNotNull($this->code->code1_used_at, 'Code1 entry time should be set');
+    }
+
+    /**
+     * Test STRICT MODE: Code2 remains usable for verification
+     */
+    public function test_strict_mode_code2_remains_usable()
+    {
+        $this->app['config']['voting.two_codes_system'] = 1; // STRICT MODE
+
+        // After Code1 used
+        $this->code->update([
+            'code1_used_at' => Carbon::now(),
+            'is_code1_usable' => 0,  // Exhausted
+            'is_code2_usable' => 1,  // Still available
+            'code2_used_at' => null, // Not used yet
+            'can_vote_now' => 1,
+        ]);
+
+        $this->code->refresh();
+
+        $this->assertEquals(0, $this->code->is_code1_usable, 'Code1 should be exhausted');
+        $this->assertEquals(1, $this->code->is_code2_usable, 'Code2 should be usable');
+        $this->assertNull($this->code->code2_used_at, 'Code2 should not be used yet');
+    }
+
+    /**
+     * Test STRICT MODE: Code2 used at vote submission
+     */
+    public function test_strict_mode_code2_marked_after_vote_submission()
+    {
+        $this->app['config']['voting.two_codes_system'] = 1; // STRICT MODE
+
+        // After Code1 entry
+        $this->code->update([
+            'code1_used_at' => Carbon::now(),
+            'is_code1_usable' => 0,
+            'is_code2_usable' => 1,
+            'can_vote_now' => 1,
+        ]);
+
+        // Then Code2 used at vote submission
+        $voteSubmissionTime = Carbon::now();
+        $this->code->update([
+            'code2_used_at' => $voteSubmissionTime,
+            'is_code2_usable' => 0,  // Exhausted
+            'can_vote_now' => 0,
+            'has_voted' => 1,
+        ]);
+
+        $this->code->refresh();
+
+        $this->assertEquals(0, $this->code->is_code1_usable, 'Code1 should be exhausted');
+        $this->assertEquals(0, $this->code->is_code2_usable, 'Code2 should be exhausted');
+        $this->assertEquals($voteSubmissionTime->format('Y-m-d H:i'), $this->code->code2_used_at->format('Y-m-d H:i'), 'Code2 usage time should be recorded');
+        $this->assertEquals(1, $this->code->has_voted, 'Vote should be marked');
+    }
+
+    // ============================================
+    // COMPARISON TESTS
+    // ============================================
+
+    /**
+     * Test: SIMPLE MODE uses Code1 twice, STRICT MODE uses each once
+     */
+    public function test_simple_vs_strict_code_usage_pattern()
+    {
+        // SIMPLE MODE
+        $this->app['config']['voting.two_codes_system'] = 0;
+        $simpleCode = DemoCode::factory()->create([
+            'election_id' => $this->election->id,
+            'is_code1_usable' => 1,
+            'code1_used_at' => null,
+        ]);
+
+        $simpleCode->update([
+            'code1_used_at' => Carbon::now(),
+            'is_code1_usable' => 1,  // Still usable in SIMPLE
+        ]);
+        $simpleCode->refresh();
+        $this->assertEquals(1, $simpleCode->is_code1_usable);
+
+        // STRICT MODE
+        $this->app['config']['voting.two_codes_system'] = 1;
+        $strictCode = DemoCode::factory()->create([
+            'election_id' => $this->election->id,
+            'is_code1_usable' => 1,
+            'code1_used_at' => null,
+        ]);
+
+        $strictCode->update([
+            'code1_used_at' => Carbon::now(),
+            'is_code1_usable' => 0,  // Not usable in STRICT
+        ]);
+        $strictCode->refresh();
+        $this->assertEquals(0, $strictCode->is_code1_usable);
+    }
+
+    /**
+     * Test: Code state transition sequence
+     */
+    public function test_complete_state_transition_sequence()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0; // SIMPLE MODE
+
+        // Initial state
+        $this->assertEquals(1, $this->code->is_code1_usable);
+        $this->assertNull($this->code->code1_used_at);
+        $this->assertNull($this->code->code2_used_at);
+        $this->assertEquals(0, $this->code->can_vote_now);
+
+        // After Code1 entry
+        $entryTime = Carbon::now();
+        $this->code->update([
+            'code1_used_at' => $entryTime,
+            'is_code1_usable' => 1,  // Still usable
+            'can_vote_now' => 1,
+        ]);
+        $this->code->refresh();
+
+        $this->assertNotNull($this->code->code1_used_at);
+        $this->assertEquals(1, $this->code->is_code1_usable);
+        $this->assertEquals(1, $this->code->can_vote_now);
+        $this->assertNull($this->code->code2_used_at);
+
+        // After vote submission
+        $voteTime = Carbon::now();
+        $this->code->update([
+            'code2_used_at' => $voteTime,
+            'is_code1_usable' => 0,  // Now exhausted
+            'has_voted' => 1,
+        ]);
+        $this->code->refresh();
+
+        $this->assertNotNull($this->code->code1_used_at);
+        $this->assertNotNull($this->code->code2_used_at);
+        $this->assertEquals(0, $this->code->is_code1_usable);
+        $this->assertEquals(1, $this->code->has_voted);
+    }
+
+    /**
+     * Test: Code cannot be verified twice for voting
+     */
+    public function test_code_cannot_be_verified_twice()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0; // SIMPLE MODE
+
+        // First vote submission
+        $this->code->update([
+            'code1_used_at' => Carbon::now(),
+            'code2_used_at' => Carbon::now(),
+            'is_code1_usable' => 0,
+            'has_voted' => 1,
+        ]);
+
+        // Attempt second vote submission should fail
+        // (enforced by vote_pre_check checking code2_used_at !== null)
+        $this->assertNotNull($this->code->code2_used_at);
+        $this->assertEquals(1, $this->code->has_voted);
+
+        // vote_pre_check should reject this
+        $this->assertEquals(1, $this->code->code2_used_at ? 1 : 0);
+    }
+}

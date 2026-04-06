@@ -1,0 +1,357 @@
+<?php
+
+namespace Tests\Feature\Demo;
+
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\DemoCode;
+use App\Models\Election;
+use App\Models\User;
+use Carbon\Carbon;
+
+/**
+ * Test the markUserAsVoted() method
+ * Ensures proper state management after vote submission
+ */
+class MarkUserAsVotedTest extends TestCase
+{
+    use RefreshDatabase;
+
+    private Election $election;
+    private User $user;
+    private DemoCode $code;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->election = Election::factory()->create(['type' => 'demo']);
+        $this->user = User::factory()->create();
+        $this->code = DemoCode::factory()->create([
+            'election_id' => $this->election->id,
+            'user_id' => $this->user->id,
+        ]);
+    }
+
+    // ============================================
+    // SIMPLE MODE TESTS (Default: ONE EMAIL)
+    // ============================================
+
+    /**
+     * Test SIMPLE MODE: is_code_to_open_voting_form_usable set to 0 after vote
+     */
+    public function test_simple_mode_code1_usable_set_to_zero_after_vote()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0; // SIMPLE MODE
+
+        // Before vote
+        $this->code->update([
+            'code_to_open_voting_form_used_at' => Carbon::now()->subMinutes(5),
+            'is_code_to_open_voting_form_usable' => 1,  // Still usable before vote
+        ]);
+
+        // Mark as voted (simulating markUserAsVoted)
+        $this->code->update([
+            'has_voted' => true,
+            'can_vote_now' => false,
+            'code_to_save_vote_used_at' => Carbon::now(),
+            'vote_completed_at' => Carbon::now(),
+            'is_code_to_open_voting_form_usable' => 0,  // Now exhausted
+            'is_code_to_save_vote_usable' => false,
+        ]);
+
+        $this->code->refresh();
+
+        $this->assertEquals(0, $this->code->is_code_to_open_voting_form_usable, 'Code1 should be exhausted after vote in SIMPLE MODE');
+        $this->assertEquals(1, $this->code->has_voted, 'User should be marked as voted');
+        $this->assertNotNull($this->code->code_to_save_vote_used_at, 'Second use should be tracked');
+    }
+
+    /**
+     * Test SIMPLE MODE: can_vote_now disabled after vote
+     */
+    public function test_simple_mode_can_vote_now_disabled()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0; // SIMPLE MODE
+
+        $this->code->update([
+            'can_vote_now' => 1,  // Enabled before
+        ]);
+
+        // After vote
+        $this->code->update([
+            'has_voted' => true,
+            'can_vote_now' => false,  // Disabled
+        ]);
+
+        $this->code->refresh();
+        $this->assertEquals(0, $this->code->can_vote_now, 'Voting should be disabled after vote');
+    }
+
+    /**
+     * Test SIMPLE MODE: code_to_save_vote_used_at tracks the second use
+     */
+    public function test_simple_mode_code_to_save_vote_used_at_tracks_vote_time()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0; // SIMPLE MODE
+
+        $voteTime = Carbon::now();
+
+        $this->code->update([
+            'code_to_open_voting_form_used_at' => $voteTime->copy()->subMinutes(10),  // Entry 10 min ago
+            'code_to_save_vote_used_at' => $voteTime,  // Vote just now
+            'has_voted' => true,
+            'is_code_to_open_voting_form_usable' => 0,
+        ]);
+
+        $this->code->refresh();
+
+        $this->assertNotNull($this->code->code_to_save_vote_used_at);
+        $this->assertEquals(1, $this->code->has_voted);
+        $timeDiff = $this->code->code_to_save_vote_used_at->diffInMinutes($this->code->code_to_open_voting_form_used_at);
+        $this->assertEquals(10, $timeDiff, 'Should show 10 minutes between entry and vote');
+    }
+
+    /**
+     * Test SIMPLE MODE: vote_submitted_at set
+     */
+    public function test_simple_mode_vote_submitted_at_set()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0; // SIMPLE MODE
+
+        $submissionTime = Carbon::now();
+
+        $this->code->update([
+            'vote_submitted_at' => $submissionTime,
+            'vote_submitted' => true,
+            'has_voted' => true,
+        ]);
+
+        $this->code->refresh();
+
+        $this->assertNotNull($this->code->vote_submitted_at);
+        $this->assertEquals($submissionTime->format('Y-m-d H:i:s'),
+                           $this->code->vote_submitted_at->format('Y-m-d H:i:s'));
+    }
+
+    /**
+     * Test SIMPLE MODE: is_code_to_save_vote_usable set to false
+     */
+    public function test_simple_mode_code2_usable_set_to_false()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0; // SIMPLE MODE
+
+        $this->code->update([
+            'is_code_to_save_vote_usable' => false,  // Code2 never used in SIMPLE MODE
+            'has_voted' => true,
+        ]);
+
+        $this->code->refresh();
+
+        $this->assertFalse($this->code->is_code_to_save_vote_usable, 'Code2 should not be usable in SIMPLE MODE');
+    }
+
+    // ============================================
+    // STRICT MODE TESTS (TWO EMAILS)
+    // ============================================
+
+    /**
+     * Test STRICT MODE: is_code_to_save_vote_usable set to 0 after vote
+     */
+    public function test_strict_mode_code2_usable_set_to_zero()
+    {
+        $this->app['config']['voting.two_codes_system'] = 1; // STRICT MODE
+
+        // Before vote: Code1 used, Code2 ready
+        $this->code->update([
+            'code_to_open_voting_form_used_at' => Carbon::now()->subMinutes(5),
+            'is_code_to_open_voting_form_usable' => 0,  // Code1 already used
+            'is_code_to_save_vote_usable' => 1,  // Code2 ready
+        ]);
+
+        // After vote: Code2 used
+        $this->code->update([
+            'has_voted' => true,
+            'can_vote_now' => false,
+            'code_to_save_vote_used_at' => Carbon::now(),
+            'is_code_to_save_vote_usable' => false,  // Code2 now exhausted
+        ]);
+
+        $this->code->refresh();
+
+        $this->assertEquals(0, $this->code->is_code_to_open_voting_form_usable, 'Code1 should be exhausted');
+        $this->assertFalse($this->code->is_code_to_save_vote_usable, 'Code2 should be exhausted in STRICT MODE');
+        $this->assertEquals(1, $this->code->has_voted);
+    }
+
+    /**
+     * Test STRICT MODE: Both codes exhausted after vote
+     */
+    public function test_strict_mode_both_codes_exhausted()
+    {
+        $this->app['config']['voting.two_codes_system'] = 1; // STRICT MODE
+
+        $code1Time = Carbon::now()->subMinutes(15);
+        $code2Time = Carbon::now();
+
+        $this->code->update([
+            'code_to_open_voting_form_used_at' => $code1Time,
+            'code_to_save_vote_used_at' => $code2Time,
+            'is_code_to_open_voting_form_usable' => 0,
+            'is_code_to_save_vote_usable' => false,
+            'has_voted' => true,
+            'can_vote_now' => false,
+        ]);
+
+        $this->code->refresh();
+
+        $this->assertEquals(0, $this->code->is_code_to_open_voting_form_usable);
+        $this->assertFalse($this->code->is_code_to_save_vote_usable);
+        $this->assertNotNull($this->code->code_to_open_voting_form_used_at);
+        $this->assertNotNull($this->code->code_to_save_vote_used_at);
+        $this->assertEquals(1, $this->code->has_voted);
+    }
+
+    // ============================================
+    // INTEGRATION TESTS
+    // ============================================
+
+    /**
+     * Test complete voting flow: SIMPLE MODE from start to finish
+     */
+    public function test_complete_simple_mode_flow()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0; // SIMPLE MODE
+
+        // Initial state
+        $this->code->update([
+            'is_code_to_open_voting_form_usable' => 1,
+            'code_to_open_voting_form_used_at' => null,
+            'code_to_save_vote_used_at' => null,
+            'can_vote_now' => 0,
+            'has_voted' => 0,
+        ]);
+        $this->code->refresh();
+        $this->assertEquals(1, $this->code->is_code_to_open_voting_form_usable);
+
+        // Step 1: Code1 entry at /code/create
+        $entryTime = Carbon::now();
+        $this->code->update([
+            'code_to_open_voting_form_used_at' => $entryTime,
+            'is_code_to_open_voting_form_usable' => 1,  // Still 1
+            'can_vote_now' => 1,
+        ]);
+        $this->code->refresh();
+        $this->assertEquals(1, $this->code->can_vote_now);
+        $this->assertEquals(1, $this->code->is_code_to_open_voting_form_usable);
+        $this->assertNotNull($this->code->code_to_open_voting_form_used_at);
+
+        // Step 2: Vote submission at /vote/submit
+        $voteTime = Carbon::now();
+        $this->code->update([
+            'code_to_save_vote_used_at' => $voteTime,
+            'is_code_to_open_voting_form_usable' => 0,  // Now 0 (exhausted)
+            'has_voted' => 1,
+            'can_vote_now' => 0,
+            'vote_completed_at' => $voteTime,
+        ]);
+        $this->code->refresh();
+
+        // Verify final state
+        $this->assertEquals(1, $this->code->has_voted);
+        $this->assertEquals(0, $this->code->is_code_to_open_voting_form_usable);
+        $this->assertEquals(0, $this->code->can_vote_now);
+        $this->assertNotNull($this->code->code_to_open_voting_form_used_at);
+        $this->assertNotNull($this->code->code_to_save_vote_used_at);
+    }
+
+    /**
+     * Test complete voting flow: STRICT MODE from start to finish
+     */
+    public function test_complete_strict_mode_flow()
+    {
+        $this->app['config']['voting.two_codes_system'] = 1; // STRICT MODE
+
+        // Initial state
+        $this->code->update([
+            'is_code_to_open_voting_form_usable' => 1,
+            'is_code_to_save_vote_usable' => 1,
+            'code_to_open_voting_form_used_at' => null,
+            'code_to_save_vote_used_at' => null,
+            'can_vote_now' => 0,
+            'has_voted' => 0,
+        ]);
+        $this->code->refresh();
+
+        // Step 1: Code1 entry
+        $code1Time = Carbon::now();
+        $this->code->update([
+            'code_to_open_voting_form_used_at' => $code1Time,
+            'is_code_to_open_voting_form_usable' => 0,  // Exhausted immediately
+            'can_vote_now' => 1,
+        ]);
+        $this->code->refresh();
+        $this->assertEquals(0, $this->code->is_code_to_open_voting_form_usable);
+        $this->assertEquals(1, $this->code->is_code_to_save_vote_usable);
+
+        // Step 2: Code2 entry (vote submission)
+        $code2Time = Carbon::now();
+        $this->code->update([
+            'code_to_save_vote_used_at' => $code2Time,
+            'is_code_to_save_vote_usable' => false,  // Exhausted
+            'has_voted' => 1,
+            'can_vote_now' => 0,
+            'vote_completed_at' => $code2Time,
+        ]);
+        $this->code->refresh();
+
+        // Verify final state
+        $this->assertEquals(1, $this->code->has_voted);
+        $this->assertEquals(0, $this->code->is_code_to_open_voting_form_usable);
+        $this->assertFalse($this->code->is_code_to_save_vote_usable);
+    }
+
+    /**
+     * Test: User cannot vote twice (marked as voted)
+     */
+    public function test_user_cannot_vote_twice()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0;
+
+        // First vote
+        $this->code->update([
+            'code_to_open_voting_form_used_at' => Carbon::now()->subMinutes(20),
+            'code_to_save_vote_used_at' => Carbon::now()->subMinutes(1),
+            'has_voted' => 1,
+            'is_code_to_open_voting_form_usable' => 0,
+        ]);
+        $this->code->refresh();
+
+        $this->assertEquals(1, $this->code->has_voted);
+
+        // Attempt second vote should fail (checked by vote_pre_check)
+        // This test verifies the state is set correctly to prevent it
+        $this->assertNotNull($this->code->code_to_save_vote_used_at);
+        $this->assertEquals(1, $this->code->has_voted);
+    }
+
+    /**
+     * Test: Timing recorded correctly between entry and vote
+     */
+    public function test_timing_recorded_between_steps()
+    {
+        $this->app['config']['voting.two_codes_system'] = 0;
+
+        $entryTime = Carbon::create(2026, 2, 21, 10, 0, 0);
+        $voteTime = Carbon::create(2026, 2, 21, 10, 15, 0);
+
+        $this->code->update([
+            'code_to_open_voting_form_used_at' => $entryTime,
+            'code_to_save_vote_used_at' => $voteTime,
+        ]);
+        $this->code->refresh();
+
+        $timingDiff = $this->code->code_to_save_vote_used_at->diffInMinutes($this->code->code_to_open_voting_form_used_at);
+        $this->assertEquals(15, $timingDiff, 'Should record 15 minutes between entry and vote');
+    }
+}

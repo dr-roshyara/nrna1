@@ -1,0 +1,269 @@
+<?php
+
+namespace Tests\Feature;
+
+use App\Models\User;
+use App\Models\Election;
+use App\Models\Vote;
+use App\Models\Code;
+use App\Models\Organisation;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+class VoteAnonymityTest extends TestCase
+{
+    use RefreshDatabase;
+
+    protected Organisation $organisation;
+    protected User $user;
+    protected Election $election;
+    protected Code $code;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Create organisation
+        $this->organisation = Organisation::create([
+            'name' => 'Test Org',
+            'slug' => 'test-org',
+            'type' => 'organisation',
+        ]);
+
+        // Create user
+        $this->user = User::create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => bcrypt('password'),
+            'organisation_id' => $this->organisation->id,
+            'is_voter' => 1,
+            'can_vote' => 1,
+        ]);
+
+        // Create election
+        $this->election = Election::create([
+            'name' => 'Test Election',
+            'slug' => 'test-election-' . uniqid(),
+            'type' => 'demo',
+            'organisation_id' => $this->organisation->id,
+            'status' => 'active',
+        ]);
+
+        // Create code
+        $this->code = Code::create([
+            'user_id' => $this->user->id,
+            'election_id' => $this->election->id,
+            'code1' => 'CODE123',
+            'can_vote_now' => 1,
+        ]);
+    }
+
+    /** @test */
+    public function votes_table_has_no_user_id_column()
+    {
+        $columns = \DB::getSchemaBuilder()->getColumnListing('votes');
+
+        $this->assertNotContains(
+            'user_id',
+            $columns,
+            'CRITICAL SECURITY ISSUE: votes table should NOT have user_id column (breaks anonymity)'
+        );
+    }
+
+    /** @test */
+    public function vote_cannot_be_linked_to_user()
+    {
+        // Create a vote
+        $vote = Vote::create([
+            'election_id' => $this->election->id,
+            'organisation_id' => $this->organisation->id,
+            'vote_hash' => hash('sha256', $this->user->id . $this->election->id . time()),
+            'cast_at' => now(),
+        ]);
+
+        // Verify vote was created
+        $this->assertDatabaseHas('votes', ['id' => $vote->id]);
+
+        // Try to query: find user who cast this vote
+        // This should be IMPOSSIBLE because there's no user_id column
+        $exceptionThrown = false;
+        try {
+            $query = \DB::table('votes')
+                ->where('votes.id', $vote->id)
+                ->join('users', 'votes.user_id', '=', 'users.id');
+            $result = $query->first();
+        } catch (\Exception $e) {
+            // Expected! Should throw exception because votes.user_id doesn't exist
+            $exceptionThrown = true;
+            $this->assertStringContainsString(
+                'user_id',
+                $e->getMessage(),
+                'Exception should mention user_id column not found'
+            );
+        }
+
+        $this->assertTrue(
+            $exceptionThrown,
+            'Should throw exception when trying to join on votes.user_id (column doesn\'t exist)'
+        );
+    }
+
+    /** @test */
+    public function vote_hash_provides_cryptographic_proof_without_user_identity()
+    {
+        $timestamp = now();
+        $vote_hash = hash('sha256', $this->user->id . $this->election->id . $this->code->code1 . $timestamp);
+
+        $vote = Vote::create([
+            'election_id' => $this->election->id,
+            'organisation_id' => $this->organisation->id,
+            'vote_hash' => $vote_hash,
+            'cast_at' => $timestamp,
+        ]);
+
+        // Verify vote_hash is saved (this is the ONLY link to voting identity)
+        $this->assertDatabaseHas('votes', [
+            'id' => $vote->id,
+            'vote_hash' => $vote_hash,
+        ]);
+
+        // Verify the vote_hash is unique
+        $this->assertTrue(
+            \DB::table('votes')->where('vote_hash', $vote_hash)->count() === 1,
+            'vote_hash should be unique and irreversible'
+        );
+    }
+
+    /** @test */
+    public function code_model_links_user_to_voting_permission_not_vote_content()
+    {
+        // Code acts as bridge between user and voting permission
+        // But NOT between user and vote content
+
+        $this->assertDatabaseHas('codes', [
+            'user_id' => $this->user->id,
+            'code1' => 'CODE123',
+        ]);
+
+        // Get the code
+        $code = Code::find($this->code->id);
+
+        // Code knows the user
+        $this->assertEquals($this->user->id, $code->user_id);
+
+        // But code does NOT store what the user voted for
+        // The vote content is stored separately with only vote_hash as identifier
+        $this->assertNull($code->vote_content);
+        $this->assertNull($code->candidacy_selections);
+    }
+
+    /** @test */
+    public function multiple_votes_cannot_be_attributed_to_same_user()
+    {
+        // Create two votes from same user in same election
+        $vote1_hash = hash('sha256', $this->user->id . $this->election->id . 'vote1');
+        $vote2_hash = hash('sha256', $this->user->id . $this->election->id . 'vote2');
+
+        $vote1 = Vote::create([
+            'election_id' => $this->election->id,
+            'organisation_id' => $this->organisation->id,
+            'vote_hash' => $vote1_hash,
+            'cast_at' => now(),
+        ]);
+
+        $vote2 = Vote::create([
+            'election_id' => $this->election->id,
+            'organisation_id' => $this->organisation->id,
+            'vote_hash' => $vote2_hash,
+            'cast_at' => now()->addSecond(),
+        ]);
+
+        // Two votes created
+        $this->assertDatabaseHas('votes', ['vote_hash' => $vote1_hash]);
+        $this->assertDatabaseHas('votes', ['vote_hash' => $vote2_hash]);
+
+        // But there's NO WAY to prove they came from the same user
+        // because there's no user_id to link them
+        $exceptionThrown = false;
+        try {
+            // This query should fail because user_id column doesn't exist
+            $linkedVotes = \DB::table('votes')
+                ->whereIn('vote_hash', [$vote1_hash, $vote2_hash])
+                ->where('user_id', '=', $this->user->id)
+                ->count();
+        } catch (\Exception $e) {
+            // Expected! Should throw exception
+            $exceptionThrown = true;
+            $this->assertStringContainsString(
+                'user_id',
+                $e->getMessage(),
+                'Exception should mention user_id not found'
+            );
+        }
+
+        $this->assertTrue(
+            $exceptionThrown,
+            'Should be impossible to query votes by user_id - column doesn\'t exist'
+        );
+    }
+
+    /** @test */
+    public function election_results_have_no_user_identity()
+    {
+        // Results table should also not link to users
+        $columns = \DB::getSchemaBuilder()->getColumnListing('results');
+
+        $this->assertNotContains(
+            'user_id',
+            $columns,
+            'SECURITY: results table should NOT have user_id (breaks vote secrecy)'
+        );
+    }
+
+    /** @test */
+    public function voter_cannot_coerce_vote_because_vote_is_not_traceable()
+    {
+        // Scenario: Someone tries to coerce the voter by asking "prove you voted for X"
+        // Because vote is anonymous, voter can't prove it (even if they wanted to)
+
+        // Create a vote
+        $vote = Vote::create([
+            'election_id' => $this->election->id,
+            'organisation_id' => $this->organisation->id,
+            'vote_hash' => hash('sha256', $this->user->id . $this->election->id . time()),
+            'cast_at' => now(),
+        ]);
+
+        // Attacker asks voter: "Prove you voted for Candidate A"
+        // Voter CANNOT prove it because:
+        // 1. Vote is stored with hash, not user_id
+        // 2. No way to retrieve vote by user identity
+        // 3. Voter could claim ANY vote hash and system can't verify
+
+        $randomVoteHash = hash('sha256', 'random' . time());
+        $votesWithHash = \DB::table('votes')
+            ->where('vote_hash', $randomVoteHash)
+            ->count();
+
+        // This proves votes are truly anonymous - no linkage to identity
+        $this->assertEquals(0, $votesWithHash);
+    }
+
+    /** @test */
+    public function vote_data_schema_enforces_anonymity()
+    {
+        // Check that votes table schema supports anonymity requirement
+        $columns = \Schema::getColumnListing('votes');
+
+        // MUST HAVE: vote_hash (for verification)
+        $this->assertContains('vote_hash', $columns, 'votes must have vote_hash for verification');
+
+        // MUST NOT HAVE: user_id (breaks anonymity)
+        $this->assertNotContains('user_id', $columns, 'votes must NOT have user_id');
+
+        // MUST NOT HAVE: any user identifier
+        $this->assertNotContains('voter_email', $columns);
+        $this->assertNotContains('voter_name', $columns);
+        $this->assertNotContains('voter_id', $columns);
+    }
+}

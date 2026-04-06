@@ -1,0 +1,160 @@
+<?php
+
+namespace Tests\Feature\Demo;
+
+use App\Models\DemoCode;
+use App\Models\Election;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+/**
+ * Test-Driven Tests for Demo Election Endpoint Routing
+ *
+ * Verifies that all route redirects use demo-specific endpoints,
+ * not real election endpoints
+ */
+class EndpointRoutingTest extends TestCase
+{
+    use RefreshDatabase;
+
+    private $demoElection;
+    private $demoUser;
+    private $demoCode;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Create demo election
+        $this->demoElection = Election::factory()->create([
+            'type' => 'demo',
+            'organisation_id' => null
+        ]);
+
+        // Create user
+        $this->demoUser = User::factory()->create([
+            'is_voter' => 1,
+            'can_vote' => 1
+        ]);
+
+        // Create demo code without code1_used_at (to trigger pre-check failures)
+        $this->demoCode = DemoCode::factory()->create([
+            'user_id' => $this->demoUser->id,
+            'election_id' => $this->demoElection->id,
+            'can_vote_now' => 1,
+            'code1_used_at' => null  // Not yet entered
+        ]);
+    }
+
+    /**
+     * TEST 1: Routes Are Different
+     */
+    public function test_demo_routes_are_different_from_real_routes()
+    {
+        $demoRoute = route('demo-vote.create');
+        $realRoute = route('vote.create');
+
+        $this->assertNotEquals($demoRoute, $realRoute);
+        $this->assertStringContainsString('demo-vote', $demoRoute);
+    }
+
+    /**
+     * TEST 2: Slug Routes Are Different
+     */
+    public function test_slug_demo_routes_differ_from_slug_real_routes()
+    {
+        $voterSlug = \App\Models\VoterSlug::factory()->create([
+            'election_id' => $this->demoElection->id,
+            'slug' => 'test-slug'
+        ]);
+
+        $demoRoute = route('slug.demo-vote.create', ['vslug' => $voterSlug->slug]);
+        $realRoute = route('slug.vote.create', ['vslug' => $voterSlug->slug]);
+
+        $this->assertNotEquals($demoRoute, $realRoute);
+        $this->assertStringContainsString('demo-vote', $demoRoute);
+    }
+
+    /**
+     * TEST 3: All Demo Routes Exist
+     */
+    public function test_all_demo_routes_are_registered()
+    {
+        $routes = [
+            'demo-vote.create' => route('demo-vote.create'),
+            'demo-vote.verify' => route('demo-vote.verify'),
+            'demo-code.create' => route('demo-code.create'),
+        ];
+
+        foreach ($routes as $name => $route) {
+            $this->assertNotEmpty($route);
+            $this->assertStringContainsString('demo', $route);
+        }
+    }
+
+    /**
+     * TEST 4: Demo Code Routes Different from Real Code Routes
+     */
+    public function test_demo_code_routes_exist_and_differ()
+    {
+        $demoCodeCreate = route('demo-code.create');
+        $this->assertStringContainsString('demo-code', $demoCodeCreate);
+    }
+
+    /**
+     * TEST 5: Slug Parameters Work
+     */
+    public function test_slug_parameters_in_routes()
+    {
+        $voterSlug = \App\Models\VoterSlug::factory()->create([
+            'election_id' => $this->demoElection->id,
+            'slug' => 'my-test-slug'
+        ]);
+
+        $route = route('slug.demo-vote.create', ['vslug' => $voterSlug->slug]);
+
+        $this->assertStringContainsString('v/my-test-slug', $route);
+        $this->assertStringContainsString('demo-vote', $route);
+    }
+
+    /**
+     * TEST 6: Submit Endpoints Different
+     */
+    public function test_demo_submit_differs_from_real()
+    {
+        $demoSubmit = route('demo-vote.submit');
+        $realSubmit = route('vote.submit');
+
+        $this->assertNotEquals($demoSubmit, $realSubmit);
+        $this->assertStringContainsString('demo-vote', $demoSubmit);
+    }
+
+    /**
+     * TEST 7: Verify Endpoints Different
+     */
+    public function test_demo_verify_differs_from_real()
+    {
+        $demoVerify = route('demo-vote.verify');
+        $realVerify = route('vote.verify');
+
+        $this->assertNotEquals($demoVerify, $realVerify);
+        $this->assertStringContainsString('demo', $demoVerify);
+    }
+
+    /**
+     * TEST 8: Complete Flow Uses Demo Endpoints
+     */
+    public function test_complete_flow_routes()
+    {
+        $this->actingAs($this->demoUser);
+
+        // Demo voting page loads
+        $response = $this->get('/demo-vote/create');
+        $response->assertStatus(200);
+
+        // Verify endpoint is demo
+        $verifyRoute = route('demo-vote.verify');
+        $this->assertStringContainsString('demo-vote/verify', $verifyRoute);
+    }
+}

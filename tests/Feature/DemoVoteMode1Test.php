@@ -1,0 +1,107 @@
+<?php
+
+namespace Tests\Feature;
+
+use App\Models\User;
+use App\Models\Election;
+use App\Models\DemoPost;
+use App\Models\DemoCandidacy;
+use App\Models\DemoCode;
+use App\Models\DemoVote;
+use App\Models\DemoResult;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+class DemoVoteMode1Test extends TestCase
+{
+    use RefreshDatabase;
+
+    /**
+     * Test: MODE 1 - Public Demo Works Without Organisation
+     *
+     * A user without an organisation can vote in the public demo election
+     * using public demo data with NULL organisation_id
+     */
+    public function test_mode1_public_demo_allows_voting_without_org()
+    {
+        // Create user with NO organisation
+        $user = User::factory()->create(['organisation_id' => null]);
+        $this->actingAs($user);
+        session(['current_organisation_id' => null]);
+
+        // Create public demo election (NULL org)
+        $election = Election::withoutGlobalScopes()->create([
+            'name' => 'Public Demo',
+            'slug' => 'public-demo',
+            'type' => 'demo',
+            'organisation_id' => null
+        ]);
+
+        // Create public demo post (NULL org)
+        $post = DemoPost::create([
+            'post_id' => 'president-' . $election->id,
+            'election_id' => $election->id,
+            'name' => 'President',
+            'organisation_id' => null
+        ]);
+
+        // Create public demo candidates (NULL org)
+        $candidate1 = DemoCandidacy::create([
+            'candidacy_id' => 'cand-a-' . $election->id,
+            'user_id' => 'user-a',
+            'election_id' => $election->id,
+            'post_id' => $post->post_id,
+            'user_name' => 'Candidate A',
+            'organisation_id' => null
+        ]);
+
+        $candidate2 = DemoCandidacy::create([
+            'candidacy_id' => 'cand-b-' . $election->id,
+            'user_id' => 'user-b',
+            'election_id' => $election->id,
+            'post_id' => $post->post_id,
+            'user_name' => 'Candidate B',
+            'organisation_id' => null
+        ]);
+
+        // Create demo code (NULL org)
+        $code = DemoCode::create([
+            'user_id' => $user->id,
+            'election_id' => $election->id,
+            'code_to_open_voting_form' => 'PUBLIC1',
+            'code_to_save_vote' => 'PUBLIC2',
+            'organisation_id' => null
+        ]);
+
+        // Verify user can see public demo data
+        $this->assertEquals(1, DemoPost::count());
+        $this->assertEquals(2, DemoCandidacy::count());
+        $this->assertEquals(1, DemoCode::count());
+
+        // Simulate voting
+        $vote = DemoVote::create([
+            'election_id' => $election->id,
+            'voting_code' => 'hashed_value',
+            'organisation_id' => null
+        ]);
+
+        DemoResult::create([
+            'election_id' => $election->id,
+            'vote_id' => $vote->id,
+            'post_id' => $post->post_id,
+            'candidacy_id' => $candidate1->candidacy_id,
+            'organisation_id' => null
+        ]);
+
+        // Verify vote was recorded with NULL org
+        $this->assertDatabaseHas('demo_votes', [
+            'id' => $vote->id,
+            'organisation_id' => null
+        ]);
+
+        $this->assertDatabaseHas('demo_results', [
+            'vote_id' => $vote->id,
+            'organisation_id' => null
+        ]);
+    }
+}

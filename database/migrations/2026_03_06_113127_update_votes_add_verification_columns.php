@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('votes', function (Blueprint $table) {
             // Drop old vote_hash column
-            $table->dropColumn('vote_hash');
+            // $table->dropColumn('vote_hash');
 
             // Add new verification columns
             $table->string('receipt_hash')->unique()->after('election_id');

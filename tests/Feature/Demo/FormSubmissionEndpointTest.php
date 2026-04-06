@@ -1,0 +1,260 @@
+<?php
+
+namespace Tests\Feature\Demo;
+
+use App\Models\DemoCode;
+use App\Models\DemoPost;
+use App\Models\DemoCandidacy;
+use App\Models\Election;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+/**
+ * Test that demo election voting form submits to the correct endpoint
+ * This verifies the critical fix where forms must submit to demo-vote.submit
+ * instead of vote.submit for demo elections
+ */
+class FormSubmissionEndpointTest extends TestCase
+{
+    use RefreshDatabase;
+
+    private $demoElection;
+    private $demoUser;
+    private $demoCode;
+    private $demoPost;
+    private $demoCandidacy;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Create demo election
+        $this->demoElection = Election::factory()->create([
+            'type' => 'demo',
+            'organisation_id' => null
+        ]);
+
+        // Create user
+        $this->demoUser = User::factory()->create([
+            'is_voter' => 1,
+            'can_vote' => 1
+        ]);
+
+        // Create demo code
+        $this->demoCode = DemoCode::factory()->create([
+            'user_id' => $this->demoUser->id,
+            'election_id' => $this->demoElection->id,
+            'can_vote_now' => 1,
+            'code_to_open_voting_form_used_at' => now()
+        ]);
+
+        // Create demo post and candidacy
+        $this->demoPost = DemoPost::factory()->create([
+            'election_id' => $this->demoElection->id
+        ]);
+
+        $this->demoCandidacy = DemoCandidacy::factory()->create([
+            'post_id' => $this->demoPost->id
+        ]);
+    }
+
+    /**
+     * Test: Demo election form loads CreateVotingPage with election data
+     *
+     * This verifies that the controller passes election data with type='demo'
+     * to the Vue component, which is required for the component to determine
+     * the correct submission endpoint.
+     */
+    public function test_demo_voting_page_includes_election_data()
+    {
+        $this->actingAs($this->demoUser);
+
+        // Navigate to voting page (after code verification)
+        $response = $this->get('/demo-vote/create');
+
+        // The response should contain CreateVotingPage with election prop
+        $response->assertInertia(fn ($page) => $page
+            ->component('Vote/CreateVotingPage')
+            ->has('election')
+            ->where('election.type', 'demo')
+            ->where('election.id', $this->demoElection->id)
+        );
+    }
+
+    /**
+     * Test: Demo election form submission uses correct endpoint
+     *
+     * When submitting the voting form for a demo election,
+     * it should POST to /demo-vote/submit (not /vote/submit)
+     */
+    public function test_demo_election_form_submits_to_demo_endpoint()
+    {
+        $this->actingAs($this->demoUser);
+
+        // Create vote data
+        $voteData = [
+            'user_id' => $this->demoUser->id,
+            'national_selected_candidates' => [$this->demoCandidacy->id],
+            'regional_selected_candidates' => [],
+            'agree_button' => true
+        ];
+
+        // Submit to the DEMO endpoint
+        $response = $this->post('/demo-vote/submit', $voteData);
+
+        // Should succeed (not 404, not redirect to wrong place)
+        $response->assertStatus(302);
+
+        // Should redirect to verification page
+        $response->assertRedirect(route('demo-vote.verify'));
+    }
+
+    /**
+     * Test: Demo election form submission with slug uses correct endpoint
+     *
+     * When submitting via slug-based URL, should use /v/{slug}/demo-vote/submit
+     */
+    public function test_demo_election_slug_form_submits_to_slug_demo_endpoint()
+    {
+        $this->actingAs($this->demoUser);
+
+        // Create voter slug for this election
+        $voterSlug = \App\Models\VoterSlug::factory()->create([
+            'election_id' => $this->demoElection->id,
+            'slug' => 'test-voter-' . $this->demoUser->id
+        ]);
+
+        // Create vote data
+        $voteData = [
+            'user_id' => $this->demoUser->id,
+            'national_selected_candidates' => [$this->demoCandidacy->id],
+            'regional_selected_candidates' => [],
+            'agree_button' => true
+        ];
+
+        // Submit to the slug-based DEMO endpoint
+        $response = $this->post("/v/{$voterSlug->slug}/demo-vote/submit", $voteData);
+
+        // Should succeed
+        $response->assertStatus(302);
+
+        // Should redirect to slug-based verification page
+        $response->assertRedirect(route('slug.demo-vote.verify', ['vslug' => $voterSlug->slug]));
+    }
+
+    /**
+     * Test: Form cannot submit to wrong endpoint
+     *
+     * Submitting a demo election form to /vote/submit should fail
+     * because the voter slug middleware expects demo-vote route
+     */
+    public function test_demo_election_form_fails_on_wrong_endpoint()
+    {
+        $this->actingAs($this->demoUser);
+
+        // Create voter slug for demo election
+        $voterSlug = \App\Models\VoterSlug::factory()->create([
+            'election_id' => $this->demoElection->id,
+            'slug' => 'test-voter-' . $this->demoUser->id
+        ]);
+
+        // Create vote data
+        $voteData = [
+            'user_id' => $this->demoUser->id,
+            'national_selected_candidates' => [$this->demoCandidacy->id],
+            'regional_selected_candidates' => [],
+            'agree_button' => true
+        ];
+
+        // Try to submit to WRONG endpoint (vote/submit instead of demo-vote/submit)
+        $response = $this->post("/v/{$voterSlug->slug}/vote/submit", $voteData);
+
+        // Should fail - wrong endpoint for demo election
+        // Could be 404, 403, or redirect to error page
+        $this->assertFalse($response->isSuccessful());
+    }
+
+    /**
+     * Test: Component receives election prop for routing decision
+     *
+     * Verifies that the CreateVotingPage component receives the election object
+     * with the type property needed to determine correct endpoint
+     */
+    public function test_component_receives_election_prop()
+    {
+        $this->actingAs($this->demoUser);
+
+        // Get the voting page
+        $response = $this->get('/demo-vote/create');
+
+        // Verify election prop is passed with type property
+        $response->assertInertia(fn ($page) => $page
+            ->component('Vote/CreateVotingPage')
+            ->has('election', fn ($election) => $election
+                ->where('type', 'demo')
+                ->where('id', $this->demoElection->id)
+                ->where('name', $this->demoElection->name)
+                ->etc()
+            )
+        );
+    }
+
+    /**
+     * Test: Form submission flow for demo election complete
+     *
+     * Full integration test: Code entry → Voting page → Form submission → Verification
+     */
+    public function test_complete_demo_voting_form_flow()
+    {
+        $this->actingAs($this->demoUser);
+
+        // Step 1: Verify code (setup)
+        $this->assertNotNull($this->demoCode);
+        $this->assertEquals(1, $this->demoCode->can_vote_now);
+
+        // Step 2: Navigate to voting page
+        $response = $this->get('/demo-vote/create');
+        $response->assertInertia(fn ($page) => $page
+            ->component('Vote/CreateVotingPage')
+            ->where('election.type', 'demo')
+        );
+
+        // Step 3: Submit voting form to correct endpoint
+        $voteData = [
+            'user_id' => $this->demoUser->id,
+            'national_selected_candidates' => [$this->demoCandidacy->id],
+            'regional_selected_candidates' => [],
+            'agree_button' => true
+        ];
+
+        $response = $this->post('/demo-vote/submit', $voteData);
+
+        // Step 4: Should redirect to verification (not code.create or anywhere else)
+        $response->assertRedirect(route('demo-vote.verify'));
+        $response->assertStatus(302);
+    }
+
+    /**
+     * Test: Endpoint routing consistency
+     *
+     * Verifies that both slug and non-slug endpoints route to correct controllers
+     */
+    public function test_endpoint_routing_consistency()
+    {
+        $this->actingAs($this->demoUser);
+
+        // Demo election endpoints should be consistent
+        $routes = [
+            '/demo-vote/submit' => 'demo-vote.submit',
+            '/demo-vote/verify' => 'demo-vote.verify',
+        ];
+
+        foreach ($routes as $path => $route) {
+            $this->assertTrue(
+                in_array($route, array_keys(\Route::getRoutes()->getRoutesByPath($path))),
+                "Route {$route} not found for path {$path}"
+            );
+        }
+    }
+}

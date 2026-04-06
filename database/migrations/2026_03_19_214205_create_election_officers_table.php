@@ -36,9 +36,10 @@ return new class extends Migration
             $table->foreign('election_id')->references('id')->on('elections')->nullOnDelete();
             $table->foreign('appointed_by')->references('id')->on('users')->nullOnDelete();
 
-            $table->unique(['user_id', 'organisation_id'], 'unique_officer_per_org');
-            $table->index(['organisation_id', 'status', 'role'], 'idx_org_status_role');
-            $table->index(['user_id', 'status'], 'idx_user_status');
+            // Fixed: Table-specific index names to avoid conflicts
+            $table->unique(['user_id', 'organisation_id'], 'election_officers_user_org_unique');
+            $table->index(['organisation_id', 'status', 'role'], 'election_officers_org_status_role_idx');
+            $table->index(['user_id', 'status'], 'election_officers_user_status_idx');
         });
     }
 
@@ -46,4 +47,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('election_officers');
     }
-};
+}; 
