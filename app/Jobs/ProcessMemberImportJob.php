@@ -3,8 +3,10 @@
 namespace App\Jobs;
 
 use App\Models\MemberImportJob;
+use App\Models\MembershipType;
 use App\Models\Organisation;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
@@ -73,6 +75,11 @@ class ProcessMemberImportJob implements ShouldQueue
         $emailIdx     = $this->findIdx($normHeaders, ['email']);
         $firstNameIdx = $this->findIdx($normHeaders, ['firstname', 'vorname', 'givenname']);
         $lastNameIdx  = $this->findIdx($normHeaders, ['lastname', 'nachname', 'surname', 'familyname']);
+        $memberNoIdx  = $this->findIdx($normHeaders, ['membershipnumber', 'membernumber', 'number']);
+        $joinedAtIdx  = $this->findIdx($normHeaders, ['joinedat', 'joined', 'joindate']);
+        $statusIdx    = $this->findIdx($normHeaders, ['status']);
+        $feesIdx      = $this->findIdx($normHeaders, ['feesstatus', 'fees', 'feestatus']);
+        $expiresIdx   = $this->findIdx($normHeaders, ['expiresat', 'expires', 'expirydate', 'expiry']);
 
         if ($emailIdx === false) {
             $importJob->markFailed('Email column not found in CSV.');
@@ -90,13 +97,13 @@ class ProcessMemberImportJob implements ShouldQueue
         $importJob->update(['total_rows' => $totalRows]);
 
         // Third pass: process in chunks of 500
-        $org          = Organisation::find($importJob->organisation_id);
-        $chunkSize    = 500;
-        $chunk        = [];
-        $imported     = 0;
-        $skipped      = 0;
-        $errors       = [];
-        $rowNumber    = 1;
+        $org       = Organisation::find($importJob->organisation_id);
+        $chunkSize = 500;
+        $chunk     = [];
+        $imported  = 0;
+        $skipped   = 0;
+        $errors    = [];
+        $rowNumber = 1;
 
         while (($row = fgetcsv($handle, 0, $delimiter)) !== false) {
             $email = isset($row[$emailIdx]) ? trim($row[$emailIdx]) : '';
@@ -115,15 +122,20 @@ class ProcessMemberImportJob implements ShouldQueue
             }
 
             $chunk[] = [
-                'rowNumber' => $rowNumber,
-                'email'     => $email,
-                'firstName' => $firstName,
-                'lastName'  => $lastName,
+                'rowNumber'        => $rowNumber,
+                'email'            => $email,
+                'firstName'        => $firstName,
+                'lastName'         => $lastName,
+                'membershipNumber' => $memberNoIdx !== false ? trim($row[$memberNoIdx] ?? '') : '',
+                'joinedAt'         => $joinedAtIdx  !== false ? trim($row[$joinedAtIdx]  ?? '') : '',
+                'status'           => $statusIdx    !== false ? trim($row[$statusIdx]    ?? '') : '',
+                'feesStatus'       => $feesIdx      !== false ? trim($row[$feesIdx]      ?? '') : '',
+                'expiresAt'        => $expiresIdx   !== false ? trim($row[$expiresIdx]   ?? '') : '',
             ];
             $rowNumber++;
 
             if (count($chunk) >= $chunkSize) {
-                [$batchImported, $batchSkipped, $batchErrors] = $this->insertChunk($chunk, $org);
+                [$batchImported, $batchSkipped, $batchErrors] = $this->insertChunk($chunk, $org, $importJob->initiated_by);
                 $imported += $batchImported;
                 $skipped  += $batchSkipped;
                 $errors    = array_merge($errors, $batchErrors);
@@ -133,7 +145,6 @@ class ProcessMemberImportJob implements ShouldQueue
                     'processed_rows' => $imported + $skipped,
                     'imported_count' => $imported,
                     'skipped_count'  => $skipped,
-                    // Keep only last 200 errors to avoid huge JSON column
                     'error_log'      => array_slice($errors, -200),
                 ]);
             }
@@ -141,7 +152,7 @@ class ProcessMemberImportJob implements ShouldQueue
 
         // Final partial chunk
         if (!empty($chunk)) {
-            [$batchImported, $batchSkipped, $batchErrors] = $this->insertChunk($chunk, $org);
+            [$batchImported, $batchSkipped, $batchErrors] = $this->insertChunk($chunk, $org, $importJob->initiated_by);
             $imported += $batchImported;
             $skipped  += $batchSkipped;
             $errors    = array_merge($errors, $batchErrors);
@@ -161,64 +172,120 @@ class ProcessMemberImportJob implements ShouldQueue
     }
 
     /**
-     * Bulk-insert one chunk. Returns [imported, skipped, errors].
+     * Bulk-insert one chunk — creates users, user_organisation_roles,
+     * organisation_users, and members records.
+     * Returns [imported, skipped, errors].
      */
-    private function insertChunk(array $chunk, Organisation $org): array
+    private function insertChunk(array $chunk, Organisation $org, string $initiatedBy): array
     {
         $emails   = array_column($chunk, 'email');
-
-        // Bulk check for duplicates (one query, not N queries)
         $existing = User::whereIn('email', $emails)->pluck('email')->flip()->all();
 
-        $toInsert = [];
+        $imported = 0;
         $skipped  = 0;
         $errors   = [];
 
-        foreach ($chunk as $row) {
-            if (isset($existing[$row['email']])) {
-                $skipped++;
-                $errors[] = ['row' => $row['rowNumber'], 'email' => $row['email'], 'reason' => 'already exists'];
-                continue;
+        // Resolve default voting membership type for the org (used when none specified in CSV)
+        $defaultType = MembershipType::where('organisation_id', $org->id)
+            ->where('grants_voting_rights', true)
+            ->first();
+
+        DB::transaction(function () use (
+            $chunk, $org, $existing, $initiatedBy, $defaultType,
+            &$imported, &$skipped, &$errors
+        ) {
+            foreach ($chunk as $row) {
+                if (isset($existing[$row['email']])) {
+                    $skipped++;
+                    $errors[] = ['row' => $row['rowNumber'], 'email' => $row['email'], 'reason' => 'already exists'];
+                    continue;
+                }
+
+                $userId = (string) Str::uuid();
+                $name   = trim("{$row['firstName']} {$row['lastName']}") ?: $row['email'];
+
+                // 1. Create user
+                DB::table('users')->insert([
+                    'id'                => $userId,
+                    'organisation_id'   => $org->id,
+                    'name'              => $name,
+                    'first_name'        => $row['firstName'] ?: null,
+                    'last_name'         => $row['lastName']  ?: null,
+                    'region'            => '',
+                    'email'             => $row['email'],
+                    'password'          => bcrypt(Str::random(16)),
+                    'email_verified_at' => now(),
+                    'created_at'        => now(),
+                    'updated_at'        => now(),
+                ]);
+
+                // 2. Create user_organisation_roles (required FK for election_memberships)
+                DB::table('user_organisation_roles')->insert([
+                    'id'              => (string) Str::uuid(),
+                    'user_id'         => $userId,
+                    'organisation_id' => $org->id,
+                    'role'            => 'voter',
+                    'created_at'      => now(),
+                    'updated_at'      => now(),
+                ]);
+
+                // 3. Create organisation_users
+                $orgUserId = (string) Str::uuid();
+                DB::table('organisation_users')->insert([
+                    'id'              => $orgUserId,
+                    'user_id'         => $userId,
+                    'organisation_id' => $org->id,
+                    'created_at'      => now(),
+                    'updated_at'      => now(),
+                ]);
+
+                // 4. Create member record
+                $membershipNumber = $row['membershipNumber'] ?: ('M' . strtoupper(Str::random(8)));
+
+                $status = in_array($row['status'], ['active', 'expired', 'suspended', 'ended'])
+                    ? $row['status'] : 'active';
+
+                $feesStatus = in_array($row['feesStatus'], ['paid', 'unpaid', 'partial', 'exempt'])
+                    ? $row['feesStatus'] : 'unpaid';
+
+                $joinedAt  = $this->parseDate($row['joinedAt']) ?? now();
+                $expiresAt = $this->parseDate($row['expiresAt']);
+
+                DB::table('members')->insert([
+                    'id'                    => (string) Str::uuid(),
+                    'organisation_id'       => $org->id,
+                    'organisation_user_id'  => $orgUserId,
+                    'membership_type_id'    => $defaultType?->id,
+                    'membership_number'     => $membershipNumber,
+                    'status'                => $status,
+                    'fees_status'           => $feesStatus,
+                    'joined_at'             => $joinedAt,
+                    'membership_expires_at' => $expiresAt,
+                    'created_by'            => $initiatedBy,
+                    'created_at'            => now(),
+                    'updated_at'            => now(),
+                ]);
+
+                $imported++;
             }
-            $id = (string) Str::uuid();
-            $toInsert[] = [
-                'id'                => $id,
-                'organisation_id'   => $org->id,
-                'name'              => trim("{$row['firstName']} {$row['lastName']}") ?: $row['email'],
-                'region'            => '',
-                'email'             => $row['email'],
-                'password'          => bcrypt(Str::random(16)),
-                'email_verified_at' => now(),
-                'created_at'        => now(),
-                'updated_at'        => now(),
-            ];
-        }
-
-        if (empty($toInsert)) {
-            return [0, $skipped, $errors];
-        }
-
-        DB::transaction(function () use ($toInsert, $org) {
-            // Bulk insert users (no Eloquent events — this is intentional for performance)
-            DB::table('users')->insert($toInsert);
-
-            // Bulk attach to organisation (include uuid 'id' required by this pivot table)
-            $pivotRows = array_map(fn($u) => [
-                'id'              => (string) Str::uuid(),
-                'user_id'         => $u['id'],
-                'organisation_id' => $org->id,
-                'role'            => config('import.default_role', 'voter'),
-                'created_at'      => now(),
-                'updated_at'      => now(),
-            ], $toInsert);
-
-            DB::table('user_organisation_roles')->insert($pivotRows);
         });
 
-        return [count($toInsert), $skipped, $errors];
+        return [$imported, $skipped, $errors];
     }
 
     // ── Helpers ──────────────────────────────────────────────────────────────
+
+    private function parseDate(string $value): ?Carbon
+    {
+        if ($value === '') {
+            return null;
+        }
+        try {
+            return Carbon::parse($value);
+        } catch (\Throwable) {
+            return null;
+        }
+    }
 
     private function detectDelimiter(string $line): string
     {

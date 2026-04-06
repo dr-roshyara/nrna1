@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class MemberImportController extends Controller
 {
@@ -30,6 +31,38 @@ class MemberImportController extends Controller
                 'name' => $organisation->name,
                 'slug' => $organisation->slug,
             ],
+        ]);
+    }
+
+    /**
+     * Download the member import CSV template.
+     *
+     * Columns match exactly what ProcessMemberImportJob reads:
+     *   email, firstname, lastname
+     *
+     * GET /organisations/{slug}/members/import/template
+     */
+    public function template(string $slug): StreamedResponse
+    {
+        $organisation = Organisation::where('slug', $slug)->firstOrFail();
+
+        $this->authorizeMembership($organisation);
+
+        $rows = [
+            ['email', 'firstname', 'lastname', 'membership_number', 'joined_at',   'status', 'fees_status', 'expires_at'],
+            ['john.doe@example.com',   'John', 'Doe',    'MEM-001', '2024-01-15', 'active',  'paid',        '2025-12-31'],
+            ['jane.smith@example.com', 'Jane', 'Smith',  '',        '2024-02-01', 'active',  'unpaid',      ''],
+            ['bob.wilson@example.com', 'Bob',  'Wilson', '',        '2024-03-10', 'active',  'exempt',      '2026-03-10'],
+        ];
+
+        return response()->streamDownload(function () use ($rows) {
+            $handle = fopen('php://output', 'w');
+            foreach ($rows as $row) {
+                fputcsv($handle, $row, ';');
+            }
+            fclose($handle);
+        }, 'members_import_template.csv', [
+            'Content-Type' => 'text/csv; charset=UTF-8',
         ]);
     }
 

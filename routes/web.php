@@ -452,15 +452,17 @@ Route::middleware(['auth'])->group(function () {
              ->name('organisations.show');
         Route::get('/organisations/{slug}/members/import', [MemberImportController::class, 'create'])
              ->name('organisations.members.import');
+        Route::get('/organisations/{slug}/members/import/template', [MemberImportController::class, 'template'])
+             ->name('organisations.members.import.template');
         Route::post('/organisations/{slug}/members/import', [MemberImportController::class, 'store'])
              ->name('organisations.members.import.store');
         Route::get('/organisations/{slug}/members/import/{jobId}/status', [MemberImportController::class, 'status'])
              ->name('organisations.members.import.status');
     });
 
-    // Excel import/export routes (use {organisation} parameter)
+    // Excel import/export routes (use {organisation:slug} for slug-based model binding)
     Route::middleware(['auth', 'verified', 'ensure.organisation'])
-        ->prefix('organisations/{organisation}/users/import')
+        ->prefix('organisations/{organisation:slug}/users/import')
         ->name('organisations.users.import.')
         ->controller(OrganisationUserImportController::class)
         ->group(function () {
@@ -470,7 +472,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/process', 'process')->name('process');
         });
 
-    Route::get('/organisations/{organisation}/users/export', [OrganisationUserImportController::class, 'export'])
+    Route::get('/organisations/{organisation:slug}/users/export', [OrganisationUserImportController::class, 'export'])
         ->name('organisations.users.export')
         ->middleware(['auth', 'verified', 'ensure.organisation']);
 
