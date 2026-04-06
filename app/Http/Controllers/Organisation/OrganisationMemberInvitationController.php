@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Organisation;
 
 use App\Http\Controllers\Controller;
 use App\Mail\OrganisationInvitationMail;
+use App\Models\Member;
 use App\Models\Organisation;
 use App\Models\OrganisationInvitation;
+use App\Models\OrganisationUser;
 use App\Models\UserOrganisationRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -128,26 +131,52 @@ class OrganisationMemberInvitationController extends Controller
             'user_email'=> $user?->email,
         ]);
 
-        $alreadyMember = UserOrganisationRole::where('organisation_id', $invitation->organisation_id)
-            ->where('user_id', $user->id)
-            ->exists();
+        DB::transaction(function () use ($invitation, $user) {
+            // 1. OrganisationUser (platform link)
+            $orgUser = OrganisationUser::firstOrCreate(
+                [
+                    'organisation_id' => $invitation->organisation_id,
+                    'user_id'         => $user->id,
+                ],
+                [
+                    'role'       => $invitation->role,
+                    'status'     => 'active',
+                    'joined_at'  => now(),
+                    'created_by' => $invitation->invited_by,
+                ]
+            );
 
-        \Log::info('INVITE_ACCEPT: already member check', ['already_member' => $alreadyMember]);
+            // 2. UserOrganisationRole (access control)
+            UserOrganisationRole::firstOrCreate(
+                [
+                    'organisation_id' => $invitation->organisation_id,
+                    'user_id'         => $user->id,
+                ],
+                ['role' => $invitation->role]
+            );
 
-        if (! $alreadyMember) {
-            $role = UserOrganisationRole::create([
-                'organisation_id' => $invitation->organisation_id,
-                'user_id'         => $user->id,
-                'role'            => $invitation->role,
+            // 3. Member record (formal membership — fees assigned later by admin)
+            Member::firstOrCreate(
+                [
+                    'organisation_id'      => $invitation->organisation_id,
+                    'organisation_user_id' => $orgUser->id,
+                ],
+                [
+                    'membership_number' => 'M' . strtoupper(Str::random(8)),
+                    'status'            => 'active',
+                    'fees_status'       => 'unpaid',
+                    'joined_at'         => now(),
+                    'created_by'        => $invitation->invited_by,
+                ]
+            );
+
+            // 4. Mark invitation accepted
+            $invitation->update([
+                'status'      => 'accepted',
+                'accepted_by' => $user->id,
+                'accepted_at' => now(),
             ]);
-            \Log::info('INVITE_ACCEPT: role created', ['role_id' => $role->id]);
-        }
-
-        $invitation->update([
-            'status'      => 'accepted',
-            'accepted_by' => $user->id,
-            'accepted_at' => now(),
-        ]);
+        });
 
         \Log::info('INVITE_ACCEPT: complete, redirecting to org', [
             'slug' => $invitation->organisation->slug,

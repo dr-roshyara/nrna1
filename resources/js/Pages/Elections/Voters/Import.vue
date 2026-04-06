@@ -5,7 +5,7 @@
     </div>
 
     <main role="main" class="py-12">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Header -->
         <div class="mb-8">
@@ -16,18 +16,31 @@
             </svg>
             {{ t.back }}
           </Link>
-          <h1 class="text-3xl font-bold text-gray-900 mb-1">{{ t.title }}</h1>
-          <p class="text-gray-500 text-sm">
-            <span class="font-medium text-gray-700">{{ election.name }}</span>
-            · {{ organisation.name }}
-          </p>
-          <p class="text-gray-600 mt-1">{{ t.description }}</p>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h1 class="text-3xl font-bold text-gray-900 mb-1">{{ t.title }}</h1>
+              <p class="text-gray-500 text-sm">
+                <span class="font-medium text-gray-700">{{ election.name }}</span>
+                · {{ organisation.name }}
+              </p>
+              <p class="text-gray-600 mt-1">{{ t.description }}</p>
+            </div>
+            <Link
+              :href="route('elections.voters.import.tutorial', { organisation: organisation.slug, election: election.slug })"
+              class="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              {{ t.tutorial_link }}
+            </Link>
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
 
           <!-- Main area -->
-          <div class="lg:col-span-2">
+          <div class="lg:col-span-3">
 
             <!-- Step indicator -->
             <div class="mb-8">
@@ -74,10 +87,10 @@
               <h2 class="text-xl font-semibold text-gray-900 mb-4">{{ t.upload.title }}</h2>
 
               <div @drop="handleFileDrop" @dragover.prevent="isDragging = true" @dragleave="isDragging = false"
-                   :class="['border-2 border-dashed rounded-lg p-12 text-center transition-colors cursor-pointer',
+                   :class="['border-2 border-dashed rounded-lg p-16 text-center transition-colors cursor-pointer',
                      isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300 bg-gray-50']"
                    @click="$refs.fileInput.click()">
-                <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="mx-auto h-16 w-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>
                 <p class="text-gray-600 mb-3">{{ t.upload.drag_hint }}</p>
@@ -126,7 +139,7 @@
 
               <!-- Row table -->
               <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden mb-6">
-                <div class="overflow-x-auto max-h-80 overflow-y-auto">
+                <div class="overflow-x-auto max-h-[32rem] overflow-y-auto">
                   <table class="w-full text-sm">
                     <thead class="sticky top-0 bg-gray-100 border-b border-gray-200">
                       <tr>

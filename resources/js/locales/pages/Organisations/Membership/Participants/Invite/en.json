@@ -1,0 +1,48 @@
+{
+  "back": "Back to Participants",
+  "title": "Invite Participant",
+  "description": "Invite staff, guests or election committee members to {organisation}.",
+  "types": {
+    "staff":              "Staff",
+    "guest":              "Guest",
+    "election_committee": "Election Committee"
+  },
+  "form": {
+    "title":               "Send Invitation",
+    "email_label":         "Email address",
+    "email_placeholder":   "name@example.com",
+    "type_label":          "Participant type",
+    "message_label":       "Personal message",
+    "message_optional":    "(optional)",
+    "message_placeholder": "Add a short note to accompany the invitation…",
+    "submit":              "Send invitation",
+    "submitting":          "Sending…"
+  },
+  "pending": {
+    "title":       "Pending invitations",
+    "empty":       "No pending invitations.",
+    "col_email":   "Email",
+    "col_type":    "Type",
+    "col_invited_by": "Invited by",
+    "col_expires": "Expires",
+    "col_action":  "Action",
+    "cancel":      "Cancel"
+  },
+  "info_panel": {
+    "title": "Participant types",
+    "types_heading": "Available types",
+    "types": [
+      "Staff — internal team members with operational access",
+      "Guest — temporary external participants",
+      "Election Committee — members who oversee election integrity"
+    ],
+    "process_heading": "Invitation process",
+    "process": [
+      "Enter the email address and select a type",
+      "The recipient receives an email with a secure link",
+      "They click the link and are added as a participant",
+      "Link expires after 7 days"
+    ],
+    "note": "Note: invitations can only be sent by admins and owners."
+  }
+}

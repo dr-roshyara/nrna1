@@ -18,6 +18,23 @@
     "admin": "Administrator",
     "commission": "Kommission"
   },
+  "info_panel": {
+    "title": "So funktionieren Einladungen",
+    "roles_heading": "Verfügbare Rollen:",
+    "roles": [
+      "Mitglied — kann an Wahlen teilnehmen und Organisationsinhalte einsehen.",
+      "Administrator — kann Mitglieder, Wahlen und Einstellungen verwalten.",
+      "Kommission — Wahlausschussrolle für Wahlprüfer."
+    ],
+    "process_heading": "Einladungsprozess:",
+    "process": [
+      "E-Mail-Adresse der Person eingeben.",
+      "Rolle auswählen.",
+      "Person erhält eine E-Mail mit Registrierungslink.",
+      "Nach der Registrierung wird die Person aktives Mitglied."
+    ],
+    "note": "Die Einladung läuft nach 7 Tagen ab. Sie können sie erneut senden oder aus der Liste unten stornieren."
+  },
   "pending": {
     "title": "Ausstehende Einladungen",
     "empty": "Keine ausstehenden Einladungen.",

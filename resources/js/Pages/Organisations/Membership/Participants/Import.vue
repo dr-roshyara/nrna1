@@ -5,7 +5,7 @@
     </div>
 
     <main role="main" class="py-12">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Header -->
         <div class="mb-8">
@@ -20,10 +20,10 @@
           <p class="text-gray-600">{{ t.description }}</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
 
           <!-- Main area -->
-          <div class="lg:col-span-2">
+          <div class="lg:col-span-3">
 
             <!-- Step indicator -->
             <div class="mb-8">
@@ -68,10 +68,10 @@
               <h2 class="text-xl font-semibold text-gray-900 mb-4">{{ t.upload.title }}</h2>
 
               <div @drop="handleFileDrop" @dragover.prevent="isDragging = true" @dragleave="isDragging = false"
-                   :class="['border-2 border-dashed rounded-lg p-12 text-center transition-colors cursor-pointer',
+                   :class="['border-2 border-dashed rounded-lg p-16 text-center transition-colors cursor-pointer',
                      isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300 bg-gray-50']"
                    @click="$refs.fileInput.click()">
-                <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="mx-auto h-16 w-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>
                 <p class="text-gray-600 mb-3">{{ t.upload.drag_hint }}</p>
@@ -120,7 +120,7 @@
 
               <!-- Row table -->
               <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden mb-6">
-                <div class="overflow-x-auto max-h-80 overflow-y-auto">
+                <div class="overflow-x-auto max-h-[32rem] overflow-y-auto">
                   <table class="w-full text-sm">
                     <thead class="sticky top-0 bg-gray-100 border-b border-gray-200">
                       <tr>
@@ -145,7 +145,12 @@
                           </span>
                         </td>
                         <td class="px-3 py-2 text-red-600 text-xs">
-                          {{ row.errors?.join(', ') }}
+                          <ul v-if="row.errors?.length" class="space-y-1">
+                            <li v-for="(err, idx) in row.errors" :key="idx" class="flex items-start gap-1">
+                              <span class="flex-shrink-0 mt-0.5">•</span>
+                              <span>{{ err }}</span>
+                            </li>
+                          </ul>
                         </td>
                       </tr>
                     </tbody>
@@ -158,6 +163,14 @@
               </div>
               <div v-else class="p-3 bg-green-50 border border-green-200 rounded-lg mb-4 text-sm text-green-800">
                 {{ t.preview.no_errors }}
+              </div>
+
+              <!-- How-to-fix hints when there are invalid rows -->
+              <div v-if="previewData.stats.invalid > 0" class="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-4">
+                <p class="text-sm font-semibold text-blue-800 mb-2">💡 {{ t.preview.fix_hints.heading }}</p>
+                <ul class="text-xs text-blue-700 space-y-1">
+                  <li v-for="(hint, idx) in t.preview.fix_hints.items" :key="idx">• {{ hint }}</li>
+                </ul>
               </div>
 
               <div class="flex gap-3">
@@ -187,6 +200,14 @@
             <div class="bg-blue-50 rounded-lg p-6 border border-blue-200 sticky top-4">
               <h3 class="font-semibold text-gray-900 mb-4">📋 {{ t.info_panel.title }}</h3>
               <div class="space-y-4 text-sm">
+
+                <!-- Pre-import checklist -->
+                <div class="p-3 bg-white rounded border border-blue-100">
+                  <p class="text-xs font-semibold text-blue-800 mb-2">✅ {{ t.info_panel.checklist_heading }}</p>
+                  <ul class="text-xs text-gray-600 space-y-1">
+                    <li v-for="(item, idx) in t.info_panel.checklist" :key="idx">• {{ item }}</li>
+                  </ul>
+                </div>
 
                 <div>
                   <p class="font-medium text-gray-900 mb-1">{{ t.info_panel.formats_heading }}</p>

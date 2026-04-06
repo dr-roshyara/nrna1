@@ -11,6 +11,8 @@ class OrganisationInvitation extends Model
         'organisation_id',
         'email',
         'role',
+        'invitation_type',
+        'participant_type',
         'token',
         'status',
         'invited_by',

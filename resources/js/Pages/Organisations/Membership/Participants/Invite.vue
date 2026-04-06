@@ -9,7 +9,7 @@
 
         <!-- Header -->
         <div class="mb-8">
-          <Link :href="`/organisations/${organisation.slug}`"
+          <Link :href="`/organisations/${organisation.slug}/membership/participants`"
                 class="inline-flex items-center text-blue-600 hover:text-blue-700 mb-4">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -54,15 +54,15 @@
                     <p v-if="form.errors.email" class="mt-1.5 text-xs text-red-600">{{ form.errors.email }}</p>
                   </div>
 
-                  <!-- Role -->
+                  <!-- Participant Type -->
                   <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1.5">{{ t.form.role_label }}</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1.5">{{ t.form.type_label }}</label>
                     <select
-                      v-model="form.role"
+                      v-model="form.participant_type"
                       class="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
-                      <option v-for="role in allowedRoles" :key="role" :value="role">
-                        {{ t.roles[role] ?? role }}
+                      <option v-for="type in participantTypes" :key="type" :value="type">
+                        {{ t.types[type] ?? type }}
                       </option>
                     </select>
                   </div>
@@ -117,7 +117,7 @@
                   <thead class="bg-gray-50 border-b border-gray-200">
                     <tr class="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                       <th class="px-6 py-3 text-left">{{ t.pending.col_email }}</th>
-                      <th class="px-6 py-3 text-left">{{ t.pending.col_role }}</th>
+                      <th class="px-6 py-3 text-left">{{ t.pending.col_type }}</th>
                       <th class="px-6 py-3 text-left">{{ t.pending.col_invited_by }}</th>
                       <th class="px-6 py-3 text-left">{{ t.pending.col_expires }}</th>
                       <th class="px-6 py-3 text-right">{{ t.pending.col_action }}</th>
@@ -127,8 +127,8 @@
                     <tr v-for="inv in pendingInvitations" :key="inv.id" class="hover:bg-gray-50 transition-colors">
                       <td class="px-6 py-4 font-medium text-gray-900">{{ inv.email }}</td>
                       <td class="px-6 py-4">
-                        <span :class="roleBadgeClass(inv.role)" class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold">
-                          {{ t.roles[inv.role] ?? inv.role }}
+                        <span :class="typeBadgeClass(inv.participant_type)" class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold">
+                          {{ t.types[inv.participant_type] ?? inv.participant_type }}
                         </span>
                       </td>
                       <td class="px-6 py-4 text-gray-500">{{ inv.invited_by }}</td>
@@ -150,15 +150,15 @@
           </div>
 
           <!-- Info panel -->
-          <aside v-if="t.info_panel" class="lg:col-span-1" aria-label="Invitation information">
+          <aside v-if="t.info_panel" class="lg:col-span-1" aria-label="Participant invitation information">
             <div class="bg-blue-50 rounded-lg p-6 border border-blue-200 sticky top-4">
               <h3 class="font-semibold text-gray-900 mb-4">📋 {{ t.info_panel.title }}</h3>
               <div class="space-y-4 text-sm">
 
                 <div>
-                  <p class="font-medium text-gray-900 mb-2">{{ t.info_panel.roles_heading }}</p>
+                  <p class="font-medium text-gray-900 mb-2">{{ t.info_panel.types_heading }}</p>
                   <ul class="text-gray-600 space-y-2">
-                    <li v-for="item in t.info_panel.roles" :key="item">• {{ item }}</li>
+                    <li v-for="item in t.info_panel.types" :key="item">• {{ item }}</li>
                   </ul>
                 </div>
 
@@ -189,9 +189,9 @@ import { router, useForm, Link } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 
-import pageDe from '@/locales/pages/Organisations/Members/Invite/de.json'
-import pageEn from '@/locales/pages/Organisations/Members/Invite/en.json'
-import pageNp from '@/locales/pages/Organisations/Members/Invite/np.json'
+import pageDe from '@/locales/pages/Organisations/Membership/Participants/Invite/de.json'
+import pageEn from '@/locales/pages/Organisations/Membership/Participants/Invite/en.json'
+import pageNp from '@/locales/pages/Organisations/Membership/Participants/Invite/np.json'
 
 const { locale } = useI18n()
 const pageData = { de: pageDe, en: pageEn, np: pageNp }
@@ -200,34 +200,34 @@ const t = computed(() => pageData[locale.value] ?? pageData.en)
 const props = defineProps({
   organisation:       { type: Object, required: true },
   pendingInvitations: { type: Array,  default: () => [] },
-  allowedRoles:       { type: Array,  default: () => ['member', 'admin', 'commission'] },
+  participantTypes:   { type: Array,  default: () => ['staff', 'guest', 'election_committee'] },
 })
 
 const form = useForm({
-  email:   '',
-  role:    'member',
-  message: '',
+  email:            '',
+  participant_type: 'staff',
+  message:          '',
 })
 
 function submit() {
-  form.post(`/organisations/${props.organisation.slug}/members/invite`, {
+  form.post(`/organisations/${props.organisation.slug}/membership/participant-invitations`, {
     preserveScroll: true,
     onSuccess: () => form.reset(),
   })
 }
 
 function cancelInvitation(id) {
-  router.delete(`/organisations/${props.organisation.slug}/members/invitations/${id}`, {
+  router.delete(`/organisations/${props.organisation.slug}/membership/participant-invitations/${id}`, {
     preserveScroll: true,
   })
 }
 
-function roleBadgeClass(role) {
+function typeBadgeClass(type) {
   const classes = {
-    member:     'bg-gray-100 text-gray-700',
-    admin:      'bg-blue-100 text-blue-700',
-    commission: 'bg-amber-100 text-amber-700',
+    staff:              'bg-blue-100 text-blue-700',
+    guest:              'bg-gray-100 text-gray-700',
+    election_committee: 'bg-violet-100 text-violet-700',
   }
-  return classes[role] ?? 'bg-gray-100 text-gray-700'
+  return classes[type] ?? 'bg-gray-100 text-gray-700'
 }
 </script>

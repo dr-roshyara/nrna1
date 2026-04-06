@@ -344,6 +344,7 @@ import {
   CurrencyEuroIcon,
   TagIcon,
   ArrowUpTrayIcon,
+  EnvelopeIcon,
 } from '@heroicons/vue/24/outline'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import KPICard         from './components/KPICard.vue'
@@ -395,6 +396,8 @@ const translations = {
     nav_my_fees: 'My Fees', nav_payment_history: 'Payment history',
     nav_renew: 'Renew', nav_extend: 'Extend membership',
     nav_apply: 'Apply', nav_become_member: 'Become a member',
+    nav_invite_members: 'Invite Members', nav_invite_members_desc: 'Send email invitations to join',
+    nav_invite_participants: 'Invite Participants', nav_invite_participants_desc: 'Invite staff, guests & committee',
     nav_import_members: 'Import Members', nav_import_members_desc: 'Bulk upload via Excel / CSV',
     nav_import_participants: 'Import Participants', nav_import_participants_desc: 'Staff, guests & committee',
     nav_import_users: 'Import Users', nav_import_users_desc: 'Users + members + voters in one file',
@@ -456,6 +459,8 @@ const translations = {
     nav_my_fees: 'Meine Gebühren', nav_payment_history: 'Zahlungshistorie',
     nav_renew: 'Verlängern', nav_extend: 'Mitgliedschaft verlängern',
     nav_apply: 'Beantragen', nav_become_member: 'Mitglied werden',
+    nav_invite_members: 'Mitglieder einladen', nav_invite_members_desc: 'E-Mail-Einladungen versenden',
+    nav_invite_participants: 'Teilnehmer einladen', nav_invite_participants_desc: 'Mitarbeiter, Gäste & Ausschuss einladen',
     nav_import_members: 'Mitglieder importieren', nav_import_members_desc: 'Massenupload via Excel / CSV',
     nav_import_participants: 'Teilnehmer importieren', nav_import_participants_desc: 'Mitarbeiter, Gäste & Ausschuss',
     nav_import_users: 'Benutzer importieren', nav_import_users_desc: 'Benutzer + Mitglieder + Wähler in einer Datei',
@@ -511,6 +516,8 @@ const translations = {
     nav_my_fees: 'मेरो शुल्क', nav_payment_history: 'भुक्तानी इतिहास',
     nav_renew: 'नवीकरण', nav_extend: 'सदस्यता बढाउनुहोस्',
     nav_apply: 'आवेदन', nav_become_member: 'सदस्य बन्नुहोस्',
+    nav_invite_members: 'सदस्य आमन्त्रण', nav_invite_members_desc: 'इमेल आमन्त्रण पठाउनुहोस्',
+    nav_invite_participants: 'सहभागी आमन्त्रण', nav_invite_participants_desc: 'कर्मचारी, अतिथि र समिति आमन्त्रण',
     nav_import_members: 'सदस्य आयात', nav_import_members_desc: 'Excel / CSV मार्फत',
     nav_import_participants: 'सहभागी आयात', nav_import_participants_desc: 'कर्मचारी, अतिथि र समिति',
     nav_import_users: 'प्रयोगकर्ता आयात', nav_import_users_desc: 'प्रयोगकर्ता + सदस्य + मतदाता एकसाथ',
@@ -649,7 +656,7 @@ const quickActions = computed(() => {
     })
     actions.push({
       key: 'participants', title: t.value.nav_participants, description: t.value.nav_all_roles,
-      href: `/organisations/${organisation.slug}/participants`,
+      href: route('organisations.membership.participants.index', organisation.slug),
       icon: UsersIcon, color: 'slate',
     })
   }
@@ -661,6 +668,16 @@ const quickActions = computed(() => {
     })
   }
   if (['owner', 'admin'].includes(role)) {
+    actions.push({
+      key: 'invite_members', title: t.value.nav_invite_members, description: t.value.nav_invite_members_desc,
+      href: route('organisations.members.invite', organisation.slug),
+      icon: EnvelopeIcon, color: 'violet',
+    })
+    actions.push({
+      key: 'invite_participants', title: t.value.nav_invite_participants, description: t.value.nav_invite_participants_desc,
+      href: route('organisations.membership.participant-invitations.index', organisation.slug),
+      icon: EnvelopeIcon, color: 'indigo',
+    })
     actions.push({
       key: 'import_users', title: t.value.nav_import_users, description: t.value.nav_import_users_desc,
       href: route('organisations.users.import.index', organisation.slug),

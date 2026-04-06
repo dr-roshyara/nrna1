@@ -1,0 +1,48 @@
+{
+  "back": "Zurück zu Teilnehmern",
+  "title": "Teilnehmer einladen",
+  "description": "Laden Sie Mitarbeiter, Gäste oder Wahlkomiteemitglieder zu {organisation} ein.",
+  "types": {
+    "staff":              "Mitarbeiter",
+    "guest":              "Gast",
+    "election_committee": "Wahlkomitee"
+  },
+  "form": {
+    "title":               "Einladung senden",
+    "email_label":         "E-Mail-Adresse",
+    "email_placeholder":   "name@beispiel.de",
+    "type_label":          "Teilnehmertyp",
+    "message_label":       "Persönliche Nachricht",
+    "message_optional":    "(optional)",
+    "message_placeholder": "Kurze Nachricht zur Einladung hinzufügen…",
+    "submit":              "Einladung senden",
+    "submitting":          "Wird gesendet…"
+  },
+  "pending": {
+    "title":       "Ausstehende Einladungen",
+    "empty":       "Keine ausstehenden Einladungen.",
+    "col_email":   "E-Mail",
+    "col_type":    "Typ",
+    "col_invited_by": "Eingeladen von",
+    "col_expires": "Läuft ab",
+    "col_action":  "Aktion",
+    "cancel":      "Abbrechen"
+  },
+  "info_panel": {
+    "title": "Teilnehmertypen",
+    "types_heading": "Verfügbare Typen",
+    "types": [
+      "Mitarbeiter — interne Teammitglieder mit operativem Zugang",
+      "Gast — temporäre externe Teilnehmer",
+      "Wahlkomitee — Mitglieder, die die Integrität der Wahl überwachen"
+    ],
+    "process_heading": "Einladungsprozess",
+    "process": [
+      "E-Mail-Adresse eingeben und Typ auswählen",
+      "Der Empfänger erhält eine E-Mail mit einem sicheren Link",
+      "Er klickt den Link und wird als Teilnehmer hinzugefügt",
+      "Link läuft nach 7 Tagen ab"
+    ],
+    "note": "Hinweis: Einladungen können nur von Admins und Eigentümern gesendet werden."
+  }
+}

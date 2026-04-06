@@ -36,6 +36,7 @@ use App\Http\Controllers\Membership\MembershipRenewalController;
 use App\Http\Controllers\Membership\MembershipTypeController;
 use App\Http\Controllers\Membership\OrganisationParticipantController;
 use App\Http\Controllers\Membership\ParticipantImportController;
+use App\Http\Controllers\Membership\ParticipantInvitationController;
 use App\Http\Controllers\Organisation\OrganisationMemberInvitationController;
 use App\Http\Controllers\OrganisationController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,10 @@ use Illuminate\Support\Facades\Route;
 // ── Invitation acceptance — requires login ──
 Route::get('/invitations/{token}', [OrganisationMemberInvitationController::class, 'accept'])
     ->name('organisations.invitations.accept')
+    ->middleware(['auth']);
+
+Route::get('/participant-invitations/{token}', [ParticipantInvitationController::class, 'accept'])
+    ->name('organisations.participant-invitations.accept')
     ->middleware(['auth']);
 
 Route::prefix('organisations/{organisation:slug}')
@@ -114,6 +119,13 @@ Route::prefix('organisations/{organisation:slug}')
                 Route::post('/import/preview', [ParticipantImportController::class, 'preview']) ->name('import.preview');
                 Route::post('/import',         [ParticipantImportController::class, 'import'])  ->name('import');
             });
+
+            // ── Participant invitations (admin/owner only) ─────────────────────
+            Route::prefix('/participant-invitations')->name('participant-invitations.')->group(function () {
+                Route::get('/',                             [ParticipantInvitationController::class, 'index'])  ->name('index');
+                Route::post('/',                            [ParticipantInvitationController::class, 'store'])  ->name('store');
+                Route::delete('/{invitation}',              [ParticipantInvitationController::class, 'destroy'])->name('destroy');
+            });
         });
 
         // ── Participants List (everyone with a platform role) ─────────────────────
@@ -160,6 +172,7 @@ Route::prefix('organisations/{organisation:slug}')
             // ── Voter bulk import ──────────────────────────────────────────────
             Route::prefix('/voters')->name('elections.voters.')->group(function () {
                 Route::get('/import',          [VoterImportController::class, 'create'])  ->name('import.create');
+                Route::get('/import/tutorial', [VoterImportController::class, 'tutorial'])->name('import.tutorial');
                 Route::get('/import/template', [VoterImportController::class, 'template'])->name('import.template');
                 Route::post('/import/preview', [VoterImportController::class, 'preview']) ->name('import.preview');
                 Route::post('/import',         [VoterImportController::class, 'import'])  ->name('import');
