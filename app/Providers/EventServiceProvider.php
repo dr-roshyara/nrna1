@@ -7,6 +7,7 @@ use App\Events\Membership\MembershipApplicationRejected;
 use App\Events\Membership\MembershipFeePaid;
 use App\Events\Membership\MembershipRenewed;
 use App\Listeners\InvalidateMembershipDashboardCache;
+use App\Listeners\Membership\RecalculateMemberFeeStatus;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -31,7 +32,10 @@ class EventServiceProvider extends ServiceProvider
         // ── Membership dashboard cache invalidation ──────────────────────────
         MembershipApplicationApproved::class => [InvalidateMembershipDashboardCache::class],
         MembershipApplicationRejected::class => [InvalidateMembershipDashboardCache::class],
-        MembershipFeePaid::class             => [InvalidateMembershipDashboardCache::class],
+        MembershipFeePaid::class             => [
+            InvalidateMembershipDashboardCache::class,
+            RecalculateMemberFeeStatus::class,
+        ],
         MembershipRenewed::class             => [InvalidateMembershipDashboardCache::class],
         // MembershipExpired::class — event not yet created (Phase 4 job)
     ];

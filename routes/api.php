@@ -42,11 +42,8 @@ Route::get('/get-locale', [LocaleController::class, 'getLocale'])->name('api.get
 Route::group(['middleware'=>['auth:sanctum']], function(){
     Route::get('/openions/search', [OpenionController::class, 'search'])
         ->name('openions.search');
-<<<<<<< Updated upstream
 
     // Demo Setup API Endpoint
     Route::post('/organisations/{organisation}/demo-setup', [DemoSetupController::class, 'setup'])
         ->name('api.organisations.demo-setup');
-=======
->>>>>>> Stashed changes
 });

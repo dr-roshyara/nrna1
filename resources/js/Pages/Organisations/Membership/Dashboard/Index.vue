@@ -343,6 +343,7 @@ import {
   CreditCardIcon,
   CurrencyEuroIcon,
   TagIcon,
+  ArrowUpTrayIcon,
 } from '@heroicons/vue/24/outline'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import KPICard         from './components/KPICard.vue'
@@ -394,6 +395,9 @@ const translations = {
     nav_my_fees: 'My Fees', nav_payment_history: 'Payment history',
     nav_renew: 'Renew', nav_extend: 'Extend membership',
     nav_apply: 'Apply', nav_become_member: 'Become a member',
+    nav_import_members: 'Import Members', nav_import_members_desc: 'Bulk upload via Excel / CSV',
+    nav_import_participants: 'Import Participants', nav_import_participants_desc: 'Staff, guests & committee',
+    nav_import_users: 'Import Users', nav_import_users_desc: 'Users + members + voters in one file',
     // Table columns
     applications_title: 'Recent Applications',
     col_applicant: 'Applicant', col_type: 'Type', col_status: 'Status', col_actions: 'Actions',
@@ -452,6 +456,9 @@ const translations = {
     nav_my_fees: 'Meine Gebühren', nav_payment_history: 'Zahlungshistorie',
     nav_renew: 'Verlängern', nav_extend: 'Mitgliedschaft verlängern',
     nav_apply: 'Beantragen', nav_become_member: 'Mitglied werden',
+    nav_import_members: 'Mitglieder importieren', nav_import_members_desc: 'Massenupload via Excel / CSV',
+    nav_import_participants: 'Teilnehmer importieren', nav_import_participants_desc: 'Mitarbeiter, Gäste & Ausschuss',
+    nav_import_users: 'Benutzer importieren', nav_import_users_desc: 'Benutzer + Mitglieder + Wähler in einer Datei',
     applications_title: 'Aktuelle Anträge',
     col_applicant: 'Antragsteller', col_type: 'Typ', col_status: 'Status', col_actions: 'Aktionen',
     applicant: 'Antragsteller', membership_type: 'Typ', date: 'Datum', action: 'Aktion',
@@ -504,6 +511,9 @@ const translations = {
     nav_my_fees: 'मेरो शुल्क', nav_payment_history: 'भुक्तानी इतिहास',
     nav_renew: 'नवीकरण', nav_extend: 'सदस्यता बढाउनुहोस्',
     nav_apply: 'आवेदन', nav_become_member: 'सदस्य बन्नुहोस्',
+    nav_import_members: 'सदस्य आयात', nav_import_members_desc: 'Excel / CSV मार्फत',
+    nav_import_participants: 'सहभागी आयात', nav_import_participants_desc: 'कर्मचारी, अतिथि र समिति',
+    nav_import_users: 'प्रयोगकर्ता आयात', nav_import_users_desc: 'प्रयोगकर्ता + सदस्य + मतदाता एकसाथ',
     applications_title: 'हालका आवेदनहरू',
     col_applicant: 'आवेदक', col_type: 'प्रकार', col_status: 'स्थिति', col_actions: 'कार्यहरू',
     applicant: 'आवेदक', membership_type: 'प्रकार', date: 'मिति', action: 'कार्य',
@@ -648,6 +658,23 @@ const quickActions = computed(() => {
       key: 'types', title: t.value.nav_types, description: t.value.nav_manage_tiers,
       href: route('organisations.membership-types.index', organisation.slug),
       icon: TagIcon, color: 'indigo',
+    })
+  }
+  if (['owner', 'admin'].includes(role)) {
+    actions.push({
+      key: 'import_users', title: t.value.nav_import_users, description: t.value.nav_import_users_desc,
+      href: route('organisations.users.import.index', organisation.slug),
+      icon: ArrowUpTrayIcon, color: 'teal',
+    })
+    actions.push({
+      key: 'import_members', title: t.value.nav_import_members, description: t.value.nav_import_members_desc,
+      href: route('organisations.members.import', organisation.slug),
+      icon: ArrowUpTrayIcon, color: 'emerald',
+    })
+    actions.push({
+      key: 'import_participants', title: t.value.nav_import_participants, description: t.value.nav_import_participants_desc,
+      href: route('organisations.membership.participants.import.create', organisation.slug),
+      icon: ArrowUpTrayIcon, color: 'sky',
     })
   }
   if (role === 'member') {

@@ -15,6 +15,11 @@ return [
 
     'failed' => 'Validation failed',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Organization Validation Messages
+    |--------------------------------------------------------------------------
+    */
     'organization' => [
         'name' => [
             'required' => 'The organization name is required',
@@ -40,37 +45,11 @@ return [
         ],
     ],
 
-<<<<<<< Updated upstream
     /*
     |--------------------------------------------------------------------------
-    | Custom Validation Attributes
+    | Organisation-Specific Validation Messages (UK spelling)
     |--------------------------------------------------------------------------
-    |
-    | The following language lines are used to swap our attribute placeholder
-    | with something more reader friendly such as "E-Mail Address" instead
-    | of "email". This simply helps us make our message more expressive.
-    |
     */
-
-    'attributes' => [
-        'organization_name' => 'organisation name',
-        'organization_email' => 'organisation email',
-        'street' => 'Street address',
-        'city' => 'City',
-        'zip_code' => 'Postal code',
-        'representative_name' => 'Representative name',
-        'representative_role' => 'Representative role',
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | organisation-Specific Validation Messages
-    |--------------------------------------------------------------------------
-    |
-    | Custom messages for organisation creation form validation
-    |
-    */
-
     'organisation' => [
         'name' => [
             'required' => 'The organisation name is required.',
@@ -92,14 +71,18 @@ return [
         ],
     ],
 
-    'failed' => 'Validation failed.',
-
-=======
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Validation Attributes
+    |--------------------------------------------------------------------------
+    */
     'attributes' => [
         'name' => 'Name',
         'email' => 'Email Address',
         'organization_name' => 'Organization Name',
+        'organisation_name' => 'Organisation Name',
         'organization_email' => 'Organization Email',
+        'organisation_email' => 'Organisation Email',
         'street' => 'Street Address',
         'city' => 'City',
         'zip_code' => 'Postal Code',
@@ -107,5 +90,4 @@ return [
         'representative_name' => 'Representative Name',
         'representative_role' => 'Representative Role',
     ],
->>>>>>> Stashed changes
 ];

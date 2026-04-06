@@ -37,3 +37,6 @@ Schedule::command('elections:flush-expiring-caches')->hourly();
 
 // Membership: auto-reject expired applications + mark overdue fees (daily)
 Schedule::command('membership:process-expiry')->daily();
+
+// Membership: transition active→expired for members past their expiry date (daily)
+Schedule::command('membership:expire')->daily();

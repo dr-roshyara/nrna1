@@ -1,3 +1,4 @@
+
 import { createI18n } from 'vue-i18n';
 import de from './locales/de.json';
 import en from './locales/en.json';
@@ -180,19 +181,16 @@ const initialLocale = getInitialLocale();
 const messages = {
   de: {
     ...de,
-<<<<<<< Updated upstream
     ...commonDe,
+    // Dashboard welcome page translations (root level for direct access)
+    ...welcomeDashboardDe,
+    // Trust signals translations (root level for direct access)
+    ...trustSignalsDe,
     organisation: organisationDe,
     organisations: {
       demo: organisationShowPageDe.demo,
     },
     modals: organisationShowPageDe.modals,
-=======
-    // Dashboard welcome page translations (root level for direct access)
-    ...welcomeDashboardDe,
-    // Trust signals translations (root level for direct access)
-    ...trustSignalsDe,
->>>>>>> Stashed changes
     pages: {
       'voting-start': votingStartDe,
       'role-selection': roleSelectionDe,
@@ -216,7 +214,6 @@ const messages = {
       'vote-verify': voteVerifyDe,
       'vote-show-verify': voteShowVerifyDe,
       'vote-final': voteFinalDe,
-      'role-selection': roleSelectionDe,
       'admin': adminDe,
       'commission': commissionDe,
       'vote-dashboard': voteDashboardDe,
@@ -233,19 +230,16 @@ const messages = {
   },
   en: {
     ...en,
-<<<<<<< Updated upstream
     ...commonEn,
+    // Dashboard welcome page translations (root level for direct access)
+    ...welcomeDashboardEn,
+    // Trust signals translations (root level for direct access)
+    ...trustSignalsEn,
     organisation: organisationEn,
     organisations: {
       demo: organisationShowPageEn.demo,
     },
     modals: organisationShowPageEn.modals,
-=======
-    // Dashboard welcome page translations (root level for direct access)
-    ...welcomeDashboardEn,
-    // Trust signals translations (root level for direct access)
-    ...trustSignalsEn,
->>>>>>> Stashed changes
     pages: {
       'voting-start': votingStartEn,
       'role-selection': roleSelectionEn,
@@ -269,7 +263,6 @@ const messages = {
       'vote-verify': voteVerifyEn,
       'vote-show-verify': voteShowVerifyEn,
       'vote-final': voteFinalEn,
-      'role-selection': roleSelectionEn,
       'admin': adminEn,
       'commission': commissionEn,
       'vote-dashboard': voteDashboardEn,
@@ -286,19 +279,16 @@ const messages = {
   },
   np: {
     ...np,
-<<<<<<< Updated upstream
     ...commonNp,
+    // Dashboard welcome page translations (root level for direct access)
+    ...welcomeDashboardNp,
+    // Trust signals translations (root level for direct access)
+    ...trustSignalsNp,
     organisation: organisationNp,
     organisations: {
       demo: organisationShowPageNp.demo,
     },
     modals: organisationShowPageNp.modals,
-=======
-    // Dashboard welcome page translations (root level for direct access)
-    ...welcomeDashboardNp,
-    // Trust signals translations (root level for direct access)
-    ...trustSignalsNp,
->>>>>>> Stashed changes
     pages: {
       'voting-start': votingStartNp,
       'role-selection': roleSelectionNp,
@@ -322,7 +312,6 @@ const messages = {
       'vote-verify': voteVerifyNp,
       'vote-show-verify': voteShowVerifyNp,
       'vote-final': voteFinalNp,
-      'role-selection': roleSelectionNp,
       'admin': adminNp,
       'commission': commissionNp,
       'vote-dashboard': voteDashboardNp,
