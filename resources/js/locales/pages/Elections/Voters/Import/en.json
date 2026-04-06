@@ -37,6 +37,7 @@
     "try_again": "Try again",
     "invalid_format": "Invalid file format. Please upload a CSV or Excel file."
   },
+  "tutorial_link": "Import Tutorial",
   "info_panel": {
     "title": "File Format",
     "formats_heading": "Supported Formats:",

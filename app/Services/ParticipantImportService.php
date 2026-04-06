@@ -142,39 +142,45 @@ class ParticipantImportService
 
     private function validateRow(array $row): array
     {
-        $errors = [];
-        $email  = trim($row['email'] ?? '');
-        $type   = trim($row['participant_type'] ?? '');
+        $errors      = [];
+        $email       = trim($row['email'] ?? '');
+        $type        = trim($row['participant_type'] ?? '');
+        $expiresAt   = trim($row['expires_at'] ?? '');
+        $permissions = trim($row['permissions'] ?? '');
 
+        // ── Email ─────────────────────────────────────────────────────────────
         if (empty($email)) {
-            $errors[] = 'Email is required';
+            $errors[] = 'Email is required. Please provide a valid email address.';
         } elseif (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = 'Invalid email format';
+            $errors[] = "Invalid email format: '{$email}'. Expected format: name@example.com";
         } elseif (! User::where('email', $email)->exists()) {
-            $errors[] = "User '{$email}' does not exist in the platform";
+            $errors[] = "User '{$email}' does not exist on the platform. Please invite this person first (Organisation → Members → Invite) or ask them to register before importing.";
         }
 
+        // ── Participant type ──────────────────────────────────────────────────
         if (empty($type)) {
-            $errors[] = 'participant_type is required';
+            $errors[] = 'participant_type is required. Choose one: ' . implode(', ', self::VALID_TYPES);
         } elseif (! in_array($type, self::VALID_TYPES, true)) {
-            $errors[] = "participant_type must be one of: " . implode(', ', self::VALID_TYPES);
+            $errors[] = "Invalid participant_type: '{$type}'. Must be one of: \""
+                . implode('", "', self::VALID_TYPES) . "\". "
+                . "Use: staff (employees/administrators), guest (temporary participants), election_committee (vote officials/scrutineers).";
         }
 
-        $expiresAt = trim($row['expires_at'] ?? '');
+        // ── Expiry date ───────────────────────────────────────────────────────
         if (! empty($expiresAt)) {
             $parsed = strtotime($expiresAt);
             if ($parsed === false) {
-                $errors[] = 'expires_at is not a valid date';
+                $errors[] = "Invalid date format: '{$expiresAt}'. Please use YYYY-MM-DD format (e.g. " . date('Y') . "-12-31).";
             } elseif ($parsed <= strtotime('today')) {
-                $errors[] = 'expires_at must be a future date';
+                $errors[] = "expires_at must be a future date. Today is " . date('Y-m-d') . ", provided: {$expiresAt}.";
             }
         }
 
-        $permissions = trim($row['permissions'] ?? '');
+        // ── Permissions ───────────────────────────────────────────────────────
         if (! empty($permissions)) {
             json_decode($permissions);
             if (json_last_error() !== JSON_ERROR_NONE) {
-                $errors[] = 'permissions must be valid JSON';
+                $errors[] = "Invalid JSON in permissions: '{$permissions}'. Example valid JSON: {\"key\":\"value\"}";
             }
         }
 

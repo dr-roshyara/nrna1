@@ -1,0 +1,128 @@
+{
+  "title": "Mitglieder-Import Tutorial",
+  "subtitle": "Erfahren Sie, wie Sie Mitglieder per CSV-Datei in Ihre Organisation importieren.",
+  "back": "Zurück zum Import",
+
+  "section_overview": {
+    "heading": "Übersicht",
+    "body": "Mit dem Mitglieder-Import können Organisationsadministratoren mehrere Mitglieder in einem Schritt hinzufügen, indem sie eine CSV-Datei hochladen. Das System erstellt automatisch Benutzerkonten, verknüpft sie mit der Organisation und legt den formellen Mitgliedschaftseintrag an. Bestehende Mitglieder werden aktualisiert, nicht dupliziert."
+  },
+
+  "section_requirements": {
+    "heading": "Was muss die CSV-Datei enthalten?",
+    "intro": "Die Datei muss mindestens eine Spalte enthalten:",
+    "required": [
+      "email - die E-Mail-Adresse der Person (erforderlich)"
+    ],
+    "optional_heading": "Optionale Spalten (verbessern die Qualität der importierten Daten):",
+    "optional": [
+      "firstname - Vorname der Person",
+      "lastname - Nachname der Person",
+      "membership_number - eigene Mitgliedsnummer (wird automatisch generiert, wenn leer)",
+      "joined_at - Eintrittsdatum, z.B. 2024-01-15",
+      "status - active, expired, suspended oder ended (Standard: active)",
+      "fees_status - paid, unpaid, partial oder exempt (Standard: unpaid)",
+      "expires_at - Ablaufdatum der Mitgliedschaft, z.B. 2025-12-31"
+    ]
+  },
+
+  "section_file_format": {
+    "heading": "CSV-Dateiformat",
+    "intro": "Die Datei muss eine CSV-Datei mit Komma (,) oder Semikolon (;) als Trennzeichen sein - das System erkennt es automatisch.",
+    "rules_heading": "Regeln:",
+    "rules": [
+      "Die erste Zeile muss eine Kopfzeile mit den Spaltennamen wie oben angegeben sein.",
+      "Jede weitere Zeile steht fuer ein Mitglied.",
+      "Datumsangaben muessen im Format JJJJ-MM-TT erfolgen (z.B. 2024-01-15).",
+      "Die Datei muss in UTF-8-Kodierung gespeichert sein.",
+      "Maximale Dateigröße: 50 MB. Unterstützt bis zu 50.000 Mitglieder pro Import."
+    ],
+    "example_heading": "Beispiel Dateiinhalt (semikolon-getrennt):",
+    "example": "email;firstname;lastname;membership_number;joined_at;status;fees_status;expires_at\njohn.doe@example.com;John;Doe;MEM-001;2024-01-15;active;paid;2025-12-31\njane.smith@example.com;Jane;Smith;;2024-02-01;active;unpaid;\nbob.wilson@example.com;Bob;Wilson;;2024-03-10;active;exempt;2026-03-10",
+    "download_hint": "Verwenden Sie die Schaltflaeche 'Vorlage herunterladen' auf der Import-Seite, um eine vorformatierte CSV-Datei mit Beispieldaten zu erhalten."
+  },
+
+  "section_upsert": {
+    "heading": "Neue vs. bestehende Mitglieder",
+    "body": "Der Import behandelt neue und bestehende Mitglieder intelligent:",
+    "items": [
+      {
+        "label": "Neue E-Mail (nicht auf der Plattform)",
+        "description": "Ein neues Benutzerkonto wird erstellt, mit der Organisation verknüpft und ein Mitgliedseintrag angelegt."
+      },
+      {
+        "label": "Bestehender Plattform-Benutzer (noch kein Mitglied hier)",
+        "description": "Das vorhandene Konto wird wiederverwendet - kein doppelter Benutzer wird erstellt. Sie werden mit dieser Organisation verknüpft und ein Mitgliedseintrag angelegt."
+      },
+      {
+        "label": "Bereits Mitglied dieser Organisation",
+        "description": "Der Mitgliedseintrag wird mit den neuen Werten aus der CSV aktualisiert (Status, Gebührenstatus, Ablaufdatum, Eintrittsdatum, Mitgliedsnummer). Es wird nichts dupliziert."
+      }
+    ]
+  },
+
+  "section_steps": {
+    "heading": "Schritt-für-Schritt Import-Prozess",
+    "steps": [
+      {
+        "title": "Schritt 1 - CSV-Datei vorbereiten",
+        "body": "Laden Sie die Vorlage von der Import-Seite herunter und füllen Sie Ihre Mitgliederdaten ein. Stellen Sie sicher, dass die E-Mail-Spalte vorhanden ist und alle Daten das Format JJJJ-MM-TT verwenden."
+      },
+      {
+        "title": "Schritt 2 - Datei hochladen",
+        "body": "Klicken Sie auf der Import-Seite auf 'Datei auswaehlen' oder ziehen Sie Ihre CSV-Datei in den Upload-Bereich."
+      },
+      {
+        "title": "Schritt 3 - Vorschau prüfen",
+        "body": "Das System zeigt die ersten 10 Zeilen und eventuelle Validierungswarnungen. Wenn die Daten korrekt aussehen, fahren Sie mit dem Import fort."
+      },
+      {
+        "title": "Schritt 4 - Import starten",
+        "body": "Klicken Sie auf 'Importieren'. Grosse Dateien werden im Hintergrund verarbeitet - Sie können den Tab schliessen und später zurückkehren. Ein Fortschrittsbalken zeigt, wie viele Zeilen verarbeitet wurden."
+      },
+      {
+        "title": "Schritt 5 - Ergebnis ansehen",
+        "body": "Nach Abschluss sehen Sie, wie viele Mitglieder importiert und wie viele übersprungen wurden. Besuchen Sie die Mitgliederliste, um die Ergebnisse zu überprüfen."
+      }
+    ]
+  },
+
+  "section_faq": {
+    "heading": "Häufig gestellte Fragen",
+    "items": [
+      {
+        "question": "Was passiert, wenn ich dieselbe Datei zweimal importiere?",
+        "answer": "Bestehende Mitglieder werden aktualisiert, nicht dupliziert. Denselben Import zweimal auszuführen ist sicher."
+      },
+      {
+        "question": "Was bedeutet 'übersprungen' in den Ergebnissen?",
+        "answer": "Eine Zeile wird übersprungen, wenn die E-Mail-Spalte leer ist. Alle anderen Zeilen werden entweder importiert (neu) oder aktualisiert (bestehend)."
+      },
+      {
+        "question": "Kann ich nur das Ablaufdatum für bestehende Mitglieder aktualisieren?",
+        "answer": "Ja. Fügen Sie nur die Spalten email und expires_at ein. Das Ablaufdatum bestehender Mitglieder wird aktualisiert. Felder, die in der CSV leer gelassen werden, werden nicht überschrieben."
+      },
+      {
+        "question": "Welchen Mitgliedschaftsstatus soll ich verwenden?",
+        "answer": "Verwenden Sie 'active' für aktuelle Mitglieder, 'expired' für abgelaufene Mitgliedschaften, 'suspended' für vorübergehend gesperrte Mitglieder und 'ended' für dauerhaft beendete Mitgliedschaften. Ohne Angabe wird 'active' verwendet."
+      },
+      {
+        "question": "Was passiert mit den Stimmrechten eines Mitglieds nach dem Import?",
+        "answer": "Nur Mitglieder mit Status 'active' und einem Mitgliedschaftstyp, der Stimmrechte gewährt, können bei Wahlen abstimmen. Sie können nach dem Import auf der Mitgliederseite einen Mitgliedschaftstyp zuweisen."
+      },
+      {
+        "question": "Mein Import zeigt 0 importiert - was ist schiefgelaufen?",
+        "answer": "Prüfen Sie, ob die CSV eine Kopfzeile mit einer 'email'-Spalte hat, die E-Mails gültig sind und die Datei in UTF-8-Kodierung gespeichert ist. Laden Sie die Vorlage als Referenz herunter."
+      }
+    ]
+  },
+
+  "back_btn": "Zur Import-Seite",
+
+  "seo": {
+    "title": "Mitglieder-Import Tutorial | Public Digit",
+    "description": "Schritt-für-Schritt-Anleitung zum Import von Organisationsmitgliedern per CSV auf Public Digit. Pflichtfelder, Datumsformate, Upsert-Regeln und Umgang mit bestehenden Mitgliedern.",
+    "keywords": "Mitglieder importieren, CSV Import, Massenimport Mitglieder, Organisationsverwaltung, Public Digit Mitglieder",
+    "robots": "noindex, nofollow"
+  }
+}

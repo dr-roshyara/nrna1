@@ -25,6 +25,15 @@
     },
     "no_errors": "Alle Zeilen gültig — bereit zum Import.",
     "has_errors": "{invalid} Zeile(n) werden übersprungen.",
+    "fix_hints": {
+      "heading": "Häufige Fehler beheben:",
+      "items": [
+        "Nutzer existiert nicht — Person zuerst einladen: Organisation → Mitglieder → Einladen.",
+        "Ungültiger participant_type — Erlaubt: staff, guest oder election_committee.",
+        "Ungültiges Datumsformat — Format JJJJ-MM-TT verwenden (z.B. 2025-12-31). Muss in der Zukunft liegen.",
+        "Ungültiges JSON — Format wie {\"view\":true} mit doppelten Anführungszeichen verwenden."
+      ]
+    },
     "change_file": "Datei ändern",
     "import_btn": "{count} gültige Zeilen importieren",
     "importing_btn": "Importiere…"
@@ -52,6 +61,13 @@
       "role (optional) — Freitext",
       "expires_at (optional) — JJJJ-MM-TT, zukünftiges Datum",
       "permissions (optional) — JSON"
+    ],
+    "checklist_heading": "Vor dem Import prüfen:",
+    "checklist": [
+      "Alle E-Mails müssen registrierten Plattformbenutzern gehören.",
+      "Neue Benutzer zuerst einladen: Organisation → Mitglieder → Einladen.",
+      "Personal und Wahlkommission sollten bereits Organisationsmitglieder sein.",
+      "Gäste können ohne Mitgliedschaft hinzugefügt werden (temporärer Zugang)."
     ],
     "note": "Die E-Mail-Adresse muss bereits als registriertes Plattformkonto vorhanden sein.",
     "download_template": "Vorlage herunterladen"

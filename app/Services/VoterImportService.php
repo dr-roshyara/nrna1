@@ -26,24 +26,24 @@ class VoterImportService
 
     // ── Template ──────────────────────────────────────────────────────────────
 
-    public function downloadTemplate(): BinaryFileResponse
+    public function downloadTemplate(): \Symfony\Component\HttpFoundation\StreamedResponse
     {
-        $spreadsheet = new Spreadsheet();
-        $sheet       = $spreadsheet->getActiveSheet();
+        $rows = [
+            ['email'],
+            ['member@example.com'],
+            ['voter@yourorg.com'],
+            ['jane.doe@example.com'],
+        ];
 
-        // Headers
-        $sheet->setCellValue('A1', 'email');
-
-        // Sample rows
-        $sheet->setCellValue('A2', 'member@example.com');
-        $sheet->setCellValue('A3', 'voter@yourorg.com');
-        $sheet->setCellValue('A4', 'jane.doe@example.com');
-
-        $tmp    = tempnam(sys_get_temp_dir(), 'voter_template_') . '.xlsx';
-        $writer = new Xlsx($spreadsheet);
-        $writer->save($tmp);
-
-        return response()->download($tmp, 'voter-import-template.xlsx')->deleteFileAfterSend(true);
+        return response()->streamDownload(function () use ($rows) {
+            $handle = fopen('php://output', 'w');
+            foreach ($rows as $row) {
+                fputcsv($handle, $row, ';');
+            }
+            fclose($handle);
+        }, 'voter-import-template.csv', [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
     }
 
     // ── Preview ───────────────────────────────────────────────────────────────

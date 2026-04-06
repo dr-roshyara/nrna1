@@ -42,6 +42,7 @@
     "try_again": "फेरि प्रयास गर्नुहोस् | Try again",
     "invalid_format": "अमान्य फाइल ढाँचा। कृपया CSV वा Excel फाइल अपलोड गर्नुहोस् | Invalid file format. Please upload a CSV or Excel file."
   },
+  "tutorial_link": "आयात ट्युटोरियल",
   "info_panel": {
     "title": "फाइल ढाँचा | File Format",
     "formats_heading": "समर्थित ढाँचाहरू | Supported Formats:",

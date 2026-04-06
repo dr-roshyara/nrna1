@@ -65,7 +65,7 @@ class ParticipantImportController extends Controller
             ->import($request->file('file'));
 
         $message = sprintf(
-            'Import completed: %d created, %d updated, %d skipped.',
+            'Participant import completed: %d participant(s) created, %d participant(s) updated, %d row(s) skipped.',
             $result['created'],
             $result['updated'],
             $result['skipped']

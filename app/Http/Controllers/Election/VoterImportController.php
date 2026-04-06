@@ -28,9 +28,23 @@ class VoterImportController extends Controller
         ]);
     }
 
+    // ── Tutorial ──────────────────────────────────────────────────────────────
+
+    public function tutorial(Organisation $organisation, string $election): Response
+    {
+        $election = $this->resolveElection($election);
+
+        $this->authorize('manageVoters', $election);
+
+        return Inertia::render('Elections/Voters/ImportTutorial', [
+            'organisation' => $organisation->only('id', 'name', 'slug'),
+            'election'     => $election->only('id', 'slug', 'name'),
+        ]);
+    }
+
     // ── Template ──────────────────────────────────────────────────────────────
 
-    public function template(Organisation $organisation, string $election): BinaryFileResponse
+    public function template(Organisation $organisation, string $election)
     {
         $election = $this->resolveElection($election);
         $this->authorize('manageVoters', $election);

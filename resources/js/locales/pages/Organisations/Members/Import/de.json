@@ -42,6 +42,7 @@
     "try_again": "Erneut versuchen",
     "invalid_format": "Ungültiges Dateiformat. Bitte laden Sie eine CSV- oder Excel-Datei hoch."
   },
+  "tutorial_link": "Import-Tutorial",
   "info_panel": {
     "title": "Dateiformat",
     "formats_heading": "Unterstützte Formate:",

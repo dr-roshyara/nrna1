@@ -25,6 +25,15 @@
     },
     "no_errors": "All rows valid — ready to import.",
     "has_errors": "{invalid} row(s) will be skipped.",
+    "fix_hints": {
+      "heading": "How to fix common issues:",
+      "items": [
+        "\"User does not exist\" — Invite the person first via Organisation → Members → Invite, or ask them to register.",
+        "\"Invalid participant_type\" — Use exactly: staff, guest, or election_committee.",
+        "\"Invalid date format\" — Use YYYY-MM-DD (e.g. 2025-12-31). Must be a future date.",
+        "\"Invalid JSON\" — Use format like {\"view\":true} with double quotes."
+      ]
+    },
     "change_file": "Change File",
     "import_btn": "Import {count} valid rows",
     "importing_btn": "Importing…"
@@ -52,6 +61,13 @@
       "role (optional) — free text",
       "expires_at (optional) — YYYY-MM-DD, future date",
       "permissions (optional) — JSON"
+    ],
+    "checklist_heading": "Pre-import checklist:",
+    "checklist": [
+      "All emails must belong to registered platform users.",
+      "To add new users, invite them first via Organisation → Members → Invite.",
+      "Staff and Election Committee should already be org members.",
+      "Guests can be added without prior membership (temporary access)."
     ],
     "note": "The email address must already exist as a registered platform account.",
     "download_template": "Download Template"

@@ -36,6 +36,8 @@ class InjectPageMeta
             $routeName === 'elections.show'                     => 'elections.show',
             $routeName === 'elections.index'                    => 'elections.index',
             $routeName === 'organisations.show'                 => 'organisations.show',
+            $routeName === 'elections.voters.import.tutorial'   => 'elections.voters.import.tutorial',
+            $routeName === 'organisations.members.import.tutorial' => 'organisations.members.import.tutorial',
             $routeName === 'election.result'                    => 'election.result',
             $routeName === 'demo.result'                        => 'demo.result',
             in_array($routeName, ['vereinswahlen.landing', 'wahlen.vereine'], true) => 'vereinswahlen',

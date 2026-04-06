@@ -452,6 +452,8 @@ Route::middleware(['auth'])->group(function () {
              ->name('organisations.show');
         Route::get('/organisations/{slug}/members/import', [MemberImportController::class, 'create'])
              ->name('organisations.members.import');
+        Route::get('/organisations/{slug}/members/import/tutorial', [MemberImportController::class, 'tutorial'])
+             ->name('organisations.members.import.tutorial');
         Route::get('/organisations/{slug}/members/import/template', [MemberImportController::class, 'template'])
              ->name('organisations.members.import.template');
         Route::post('/organisations/{slug}/members/import', [MemberImportController::class, 'store'])

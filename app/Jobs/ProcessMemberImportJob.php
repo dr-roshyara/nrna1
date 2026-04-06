@@ -178,10 +178,26 @@ class ProcessMemberImportJob implements ShouldQueue
      */
     private function insertChunk(array $chunk, Organisation $org, string $initiatedBy): array
     {
-        $emails   = array_column($chunk, 'email');
-        $existing = User::whereIn('email', $emails)->pluck('email')->flip()->all();
+        $emails = array_column($chunk, 'email');
+
+        // Map email → existing User (platform-wide)
+        $existingUsers = User::whereIn('email', $emails)
+            ->select('id', 'email')
+            ->get()
+            ->keyBy('email');
+
+        // Map email → existing member record for THIS org (for update path)
+        $existingMembers = DB::table('members')
+            ->join('organisation_users', 'members.organisation_user_id', '=', 'organisation_users.id')
+            ->join('users', 'organisation_users.user_id', '=', 'users.id')
+            ->where('members.organisation_id', $org->id)
+            ->whereIn('users.email', $emails)
+            ->select('users.email', 'members.id as member_id')
+            ->get()
+            ->keyBy('email');
 
         $imported = 0;
+        $updated  = 0;
         $skipped  = 0;
         $errors   = [];
 
@@ -191,57 +207,10 @@ class ProcessMemberImportJob implements ShouldQueue
             ->first();
 
         DB::transaction(function () use (
-            $chunk, $org, $existing, $initiatedBy, $defaultType,
-            &$imported, &$skipped, &$errors
+            $chunk, $org, $existingUsers, $existingMembers, $initiatedBy, $defaultType,
+            &$imported, &$updated, &$skipped, &$errors
         ) {
             foreach ($chunk as $row) {
-                if (isset($existing[$row['email']])) {
-                    $skipped++;
-                    $errors[] = ['row' => $row['rowNumber'], 'email' => $row['email'], 'reason' => 'already exists'];
-                    continue;
-                }
-
-                $userId = (string) Str::uuid();
-                $name   = trim("{$row['firstName']} {$row['lastName']}") ?: $row['email'];
-
-                // 1. Create user
-                DB::table('users')->insert([
-                    'id'                => $userId,
-                    'organisation_id'   => $org->id,
-                    'name'              => $name,
-                    'first_name'        => $row['firstName'] ?: null,
-                    'last_name'         => $row['lastName']  ?: null,
-                    'region'            => '',
-                    'email'             => $row['email'],
-                    'password'          => bcrypt(Str::random(16)),
-                    'email_verified_at' => now(),
-                    'created_at'        => now(),
-                    'updated_at'        => now(),
-                ]);
-
-                // 2. Create user_organisation_roles (required FK for election_memberships)
-                DB::table('user_organisation_roles')->insert([
-                    'id'              => (string) Str::uuid(),
-                    'user_id'         => $userId,
-                    'organisation_id' => $org->id,
-                    'role'            => 'voter',
-                    'created_at'      => now(),
-                    'updated_at'      => now(),
-                ]);
-
-                // 3. Create organisation_users
-                $orgUserId = (string) Str::uuid();
-                DB::table('organisation_users')->insert([
-                    'id'              => $orgUserId,
-                    'user_id'         => $userId,
-                    'organisation_id' => $org->id,
-                    'created_at'      => now(),
-                    'updated_at'      => now(),
-                ]);
-
-                // 4. Create member record
-                $membershipNumber = $row['membershipNumber'] ?: ('M' . strtoupper(Str::random(8)));
-
                 $status = in_array($row['status'], ['active', 'expired', 'suspended', 'ended'])
                     ? $row['status'] : 'active';
 
@@ -250,6 +219,89 @@ class ProcessMemberImportJob implements ShouldQueue
 
                 $joinedAt  = $this->parseDate($row['joinedAt']) ?? now();
                 $expiresAt = $this->parseDate($row['expiresAt']);
+
+                // ── UPDATE path: member already exists in this org ────────────
+                if (isset($existingMembers[$row['email']])) {
+                    $memberId = $existingMembers[$row['email']]->member_id;
+
+                    $updateData = ['status' => $status, 'fees_status' => $feesStatus, 'updated_at' => now()];
+
+                    // Only overwrite expires_at / joined_at when the CSV provides a value
+                    if ($expiresAt !== null) {
+                        $updateData['membership_expires_at'] = $expiresAt;
+                    }
+                    if (!empty($row['joinedAt'])) {
+                        $updateData['joined_at'] = $joinedAt;
+                    }
+                    if (!empty($row['membershipNumber'])) {
+                        $updateData['membership_number'] = $row['membershipNumber'];
+                    }
+
+                    DB::table('members')->where('id', $memberId)->update($updateData);
+                    $updated++;
+                    continue;
+                }
+
+                // ── CREATE path: new member ───────────────────────────────────
+                $name = trim("{$row['firstName']} {$row['lastName']}") ?: $row['email'];
+
+                // Reuse existing platform user or create a new one
+                if (isset($existingUsers[$row['email']])) {
+                    $userId = $existingUsers[$row['email']]->id;
+                } else {
+                    $userId = (string) Str::uuid();
+
+                    DB::table('users')->insert([
+                        'id'                => $userId,
+                        'organisation_id'   => $org->id,
+                        'name'              => $name,
+                        'first_name'        => $row['firstName'] ?: null,
+                        'last_name'         => $row['lastName']  ?: null,
+                        'region'            => '',
+                        'email'             => $row['email'],
+                        'password'          => bcrypt(Str::random(16)),
+                        'email_verified_at' => now(),
+                        'created_at'        => now(),
+                        'updated_at'        => now(),
+                    ]);
+                }
+
+                // user_organisation_roles (idempotent)
+                $hasOrgRole = DB::table('user_organisation_roles')
+                    ->where('user_id', $userId)
+                    ->where('organisation_id', $org->id)
+                    ->exists();
+
+                if (!$hasOrgRole) {
+                    DB::table('user_organisation_roles')->insert([
+                        'id'              => (string) Str::uuid(),
+                        'user_id'         => $userId,
+                        'organisation_id' => $org->id,
+                        'role'            => 'voter',
+                        'created_at'      => now(),
+                        'updated_at'      => now(),
+                    ]);
+                }
+
+                // organisation_users (idempotent)
+                $orgUserId = DB::table('organisation_users')
+                    ->where('user_id', $userId)
+                    ->where('organisation_id', $org->id)
+                    ->value('id');
+
+                if (!$orgUserId) {
+                    $orgUserId = (string) Str::uuid();
+                    DB::table('organisation_users')->insert([
+                        'id'              => $orgUserId,
+                        'user_id'         => $userId,
+                        'organisation_id' => $org->id,
+                        'created_at'      => now(),
+                        'updated_at'      => now(),
+                    ]);
+                }
+
+                // members record
+                $membershipNumber = $row['membershipNumber'] ?: ('M' . strtoupper(Str::random(8)));
 
                 DB::table('members')->insert([
                     'id'                    => (string) Str::uuid(),
@@ -270,7 +322,7 @@ class ProcessMemberImportJob implements ShouldQueue
             }
         });
 
-        return [$imported, $skipped, $errors];
+        return [$imported + $updated, $skipped, $errors];
     }
 
     // ── Helpers ──────────────────────────────────────────────────────────────

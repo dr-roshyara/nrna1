@@ -7,6 +7,7 @@ use App\Models\ElectionMembership;
 use App\Models\ElectionOfficer;
 use App\Models\Organisation;
 use App\Models\Post;
+use App\Models\Member;
 use App\Models\UserOrganisationRole;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -133,9 +134,9 @@ class OrganisationController extends Controller
 
         // Get organisation stats
         $stats = [
-            'members_count'          => UserOrganisationRole::where('organisation_id', $organisation->id)->count(),
-            'active_members_count'   => UserOrganisationRole::where('organisation_id', $organisation->id)
-                                            ->whereHas('user', fn ($q) => $q->whereNull('deleted_at'))
+            'members_count'          => Member::where('organisation_id', $organisation->id)->count(),
+            'active_members_count'   => Member::where('organisation_id', $organisation->id)
+                                            ->where('status', 'active')
                                             ->count(),
             'elections_count'        => $realElections->count(),
             'active_elections_count' => $realElections->where('status', 'active')->count(),

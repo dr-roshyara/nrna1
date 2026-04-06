@@ -1,0 +1,93 @@
+{
+  "title": "Wähler-Import Tutorial",
+  "subtitle": "Erfahren Sie, wie Sie Organisationsmitglieder als Wähler für eine Wahl registrieren können.",
+  "back": "Zurück zum Import",
+
+  "section_overview": {
+    "heading": "Übersicht",
+    "body": "Mit dem Wähler-Import können Wahlverwalter mehrere Organisationsmitglieder in einem Schritt als Wähler registrieren, indem sie eine CSV-Datei hochladen. Nur Mitglieder, die bereits als aktive formelle Mitglieder der Organisation existieren, können registriert werden."
+  },
+
+  "section_requirements": {
+    "heading": "Wer kann als Wähler importiert werden?",
+    "intro": "Vor dem Import muss die Person alle drei Bedingungen erfüllen:",
+    "conditions": [
+      "Sie müssen ein Benutzerkonto auf der Plattform haben (eine registrierte E-Mail-Adresse).",
+      "Sie müssen formelles Mitglied dieser Organisation sein — in der Mitgliederliste vorhanden.",
+      "Ihr Mitgliedschaftsstatus muss aktiv sein (nicht abgelaufen, gesperrt oder beendet)."
+    ],
+    "warning": "E-Mails, die nicht alle drei Bedingungen erfüllen, werden beim Import automatisch übersprungen. Kein Fehler stoppt den Import — gültige Zeilen werden immer verarbeitet."
+  },
+
+  "section_file_format": {
+    "heading": "CSV-Dateiformat",
+    "intro": "Die Import-Datei muss eine CSV-Datei mit Semikolon (;) als Trennzeichen sein.",
+    "rules_heading": "Regeln:",
+    "rules": [
+      "Die erste Zeile muss eine Kopfzeile mit dem Spaltennamen sein: email",
+      "Jede weitere Zeile muss genau eine E-Mail-Adresse enthalten.",
+      "Die Datei muss in UTF-8-Kodierung gespeichert sein.",
+      "Maximale Dateigröße: 10 MB."
+    ],
+    "example_heading": "Beispiel Dateiinhalt:",
+    "example": "email\njohn.doe@example.com\njane.smith@example.com\nbob.wilson@example.com",
+    "download_hint": "Verwenden Sie die Schaltfläche 'Vorlage herunterladen' auf der Import-Seite, um eine fertige CSV-Datei zu erhalten."
+  },
+
+  "section_steps": {
+    "heading": "Schritt-für-Schritt Import-Prozess",
+    "steps": [
+      {
+        "title": "Schritt 1 — CSV-Datei vorbereiten",
+        "body": "Stellen Sie sicher, dass alle E-Mail-Adressen in Ihrer Datei zu aktiven formellen Mitgliedern dieser Organisation gehören. Laden Sie die Vorlage herunter und füllen Sie sie aus."
+      },
+      {
+        "title": "Schritt 2 — Datei hochladen",
+        "body": "Klicken Sie auf der Import-Seite auf 'Datei auswählen' oder ziehen Sie Ihre CSV-Datei in den Upload-Bereich."
+      },
+      {
+        "title": "Schritt 3 — Vorschau überprüfen",
+        "body": "Das System validiert jede Zeile und zeigt eine Vorschau-Tabelle an. Gültige Zeilen zeigen ✅, ungültige Zeilen zeigen ❌ mit dem Grund. Ungültige Zeilen werden übersprungen — sie blockieren den Import nicht."
+      },
+      {
+        "title": "Schritt 4 — Bestätigen und registrieren",
+        "body": "Klicken Sie auf die Schaltfläche 'Wähler registrieren'. Das System fügt alle gültigen Zeilen als Wähler für diese Wahl hinzu. Sie sehen eine Zusammenfassung, wie viele registriert wurden, wie viele bereits vorhanden waren und wie viele übersprungen wurden."
+      }
+    ]
+  },
+
+  "section_faq": {
+    "heading": "Häufig gestellte Fragen",
+    "items": [
+      {
+        "question": "Was passiert, wenn eine E-Mail bereits als Wähler registriert ist?",
+        "answer": "Sie wird als 'bereits vorhanden' gezählt und nicht dupliziert. Der Import kann sicher mehrfach ausgeführt werden."
+      },
+      {
+        "question": "Was passiert, wenn eine Person ein Plattform-Benutzer ist, aber kein Mitglied dieser Organisation?",
+        "answer": "Sie wird übersprungen. Nur aktive formelle Mitglieder mit vollen Stimmrechten können als Wähler registriert werden."
+      },
+      {
+        "question": "Kann ich Wähler von außerhalb der Organisation importieren?",
+        "answer": "Nein. Der Import ist absichtlich auf bestehende aktive Mitglieder beschränkt, um die Wahlintegrität zu schützen."
+      },
+      {
+        "question": "Der Import zeigt 0 registriert — was ist schiefgelaufen?",
+        "answer": "Die wahrscheinlichsten Gründe sind: Die E-Mails gehören nicht zu aktiven Mitgliedern dieser Organisation, oder die CSV-Spaltenüberschrift fehlt oder ist falsch geschrieben. Laden Sie die Vorlage herunter und überprüfen Sie Ihre Daten."
+      },
+      {
+        "question": "Kann ich eine kommagetrennte CSV anstelle von Semikolon verwenden?",
+        "answer": "Das System erkennt das Trennzeichen automatisch (Komma oder Semikolon), daher werden beide Formate akzeptiert."
+      }
+    ]
+  },
+
+  "back_btn": "Zur Import-Seite",
+
+  "seo": {
+    "title": "Wähler-Import Tutorial | Public Digit",
+    "description": "Erfahren Sie, wie Sie Wähler für eine Wahl auf Public Digit importieren. Schritt-für-Schritt-Anleitung zu Dateiformat, Mitgliedschaftsanforderungen und dem Importprozess.",
+    "keywords": "Wähler Import, Wahlwähler, CSV Import, Massenimport, Mitglieder Wähler",
+    "robots": "noindex, nofollow"
+  }
+}

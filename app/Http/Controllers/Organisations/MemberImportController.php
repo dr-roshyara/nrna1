@@ -35,6 +35,26 @@ class MemberImportController extends Controller
     }
 
     /**
+     * Show the member import tutorial page.
+     *
+     * GET /organisations/{slug}/members/import/tutorial
+     */
+    public function tutorial(string $slug)
+    {
+        $organisation = Organisation::where('slug', $slug)->firstOrFail();
+
+        $this->authorizeMembership($organisation);
+
+        return Inertia::render('Organisations/Members/ImportTutorial', [
+            'organisation' => [
+                'id'   => $organisation->id,
+                'name' => $organisation->name,
+                'slug' => $organisation->slug,
+            ],
+        ]);
+    }
+
+    /**
      * Download the member import CSV template.
      *
      * Columns match exactly what ProcessMemberImportJob reads:

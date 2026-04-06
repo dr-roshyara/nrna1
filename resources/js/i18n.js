@@ -146,6 +146,14 @@ import trustSignalsDe from './locales/pages/Dashboard/trust_signals/de.json';
 import trustSignalsEn from './locales/pages/Dashboard/trust_signals/en.json';
 import trustSignalsNp from './locales/pages/Dashboard/trust_signals/np.json';
 
+import voterImportTutorialDe from './locales/pages/Elections/Voters/ImportTutorial/de.json';
+import voterImportTutorialEn from './locales/pages/Elections/Voters/ImportTutorial/en.json';
+import voterImportTutorialNp from './locales/pages/Elections/Voters/ImportTutorial/np.json';
+
+import memberImportTutorialDe from './locales/pages/Organisations/Members/ImportTutorial/de.json';
+import memberImportTutorialEn from './locales/pages/Organisations/Members/ImportTutorial/en.json';
+import memberImportTutorialNp from './locales/pages/Organisations/Members/ImportTutorial/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -225,7 +233,9 @@ const messages = {
         'DemoVote': {
           'Create': voteDemoCreateDe
         }
-      }
+      },
+      'voter-import-tutorial': voterImportTutorialDe,
+      'member-import-tutorial': memberImportTutorialDe,
     },
   },
   en: {
@@ -274,7 +284,9 @@ const messages = {
         'DemoVote': {
           'Create': voteDemoCreateEn
         }
-      }
+      },
+      'voter-import-tutorial': voterImportTutorialEn,
+      'member-import-tutorial': memberImportTutorialEn,
     },
   },
   np: {
@@ -323,7 +335,9 @@ const messages = {
         'DemoVote': {
           'Create': voteDemoCreateNp
         }
-      }
+      },
+      'voter-import-tutorial': voterImportTutorialNp,
+      'member-import-tutorial': memberImportTutorialNp,
     },
   },
 };
