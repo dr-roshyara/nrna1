@@ -403,6 +403,7 @@ const translations = {
     nav_import_participants: 'Import Participants', nav_import_participants_desc: 'Staff, guests & committee',
     nav_import_users: 'Import Users', nav_import_users_desc: 'Users + members + voters in one file',
     nav_newsletters: 'Newsletters', nav_newsletters_desc: 'Compose & send bulk emails to members',
+    nav_public_apply: 'Public Application Form', nav_public_apply_desc: 'Share this link to accept new members',
     // Table columns
     applications_title: 'Recent Applications',
     col_applicant: 'Applicant', col_type: 'Type', col_status: 'Status', col_actions: 'Actions',
@@ -467,6 +468,7 @@ const translations = {
     nav_import_participants: 'Teilnehmer importieren', nav_import_participants_desc: 'Mitarbeiter, Gäste & Ausschuss',
     nav_import_users: 'Benutzer importieren', nav_import_users_desc: 'Benutzer + Mitglieder + Wähler in einer Datei',
     nav_newsletters: 'Newsletter', nav_newsletters_desc: 'Massen-E-Mails an Mitglieder senden',
+    nav_public_apply: 'Öffentliches Beitrittsformular', nav_public_apply_desc: 'Link teilen um neue Mitglieder aufzunehmen',
     applications_title: 'Aktuelle Anträge',
     col_applicant: 'Antragsteller', col_type: 'Typ', col_status: 'Status', col_actions: 'Aktionen',
     applicant: 'Antragsteller', membership_type: 'Typ', date: 'Datum', action: 'Aktion',
@@ -525,6 +527,7 @@ const translations = {
     nav_import_participants: 'सहभागी आयात', nav_import_participants_desc: 'कर्मचारी, अतिथि र समिति',
     nav_import_users: 'प्रयोगकर्ता आयात', nav_import_users_desc: 'प्रयोगकर्ता + सदस्य + मतदाता एकसाथ',
     nav_newsletters: 'न्युजलेटर', nav_newsletters_desc: 'सदस्यहरूलाई सामूहिक इमेल पठाउनुहोस्',
+    nav_public_apply: 'सार्वजनिक आवेदन फाराम', nav_public_apply_desc: 'नया सदस्यका लागि यो लिंक साझा गर्नुहोस्',
     applications_title: 'हालका आवेदनहरू',
     col_applicant: 'आवेदक', col_type: 'प्रकार', col_status: 'स्थिति', col_actions: 'कार्यहरू',
     applicant: 'आवेदक', membership_type: 'प्रकार', date: 'मिति', action: 'कार्य',
@@ -659,6 +662,13 @@ const quickActions = computed(() => {
       description: role === 'commission' ? t.value.nav_view_only : t.value.nav_manage,
       href: safeRoute('organisations.membership.applications.index', organisation.slug),
       icon: DocumentTextIcon, color: 'purple',
+    })
+  }
+  if (['owner', 'admin'].includes(role)) {
+    actions.push({
+      key: 'public_apply', title: t.value.nav_public_apply, description: t.value.nav_public_apply_desc,
+      href: safeRoute('organisations.join', organisation.slug),
+      icon: UserPlusIcon, color: 'amber',
     })
   }
   if (['owner', 'admin'].includes(role)) {

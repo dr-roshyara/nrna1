@@ -38,9 +38,19 @@ use App\Http\Controllers\Membership\OrganisationParticipantController;
 use App\Http\Controllers\Membership\ParticipantImportController;
 use App\Http\Controllers\Membership\OrganisationNewsletterController;
 use App\Http\Controllers\Membership\ParticipantInvitationController;
+use App\Http\Controllers\Membership\PublicMembershipApplicationController;
 use App\Http\Controllers\Organisation\OrganisationMemberInvitationController;
 use App\Http\Controllers\OrganisationController;
 use Illuminate\Support\Facades\Route;
+
+// ── Public membership application — no auth required ──
+Route::get('/organisations/{organisation:slug}/join',
+    [PublicMembershipApplicationController::class, 'create'])
+    ->name('organisations.join');
+
+Route::post('/organisations/{organisation:slug}/join',
+    [PublicMembershipApplicationController::class, 'store'])
+    ->name('organisations.join.store');
 
 // ── Invitation acceptance — requires login ──
 Route::get('/invitations/{token}', [OrganisationMemberInvitationController::class, 'accept'])

@@ -12,11 +12,14 @@ use App\Models\MembershipFee;
 use App\Models\MembershipType;
 use App\Models\Organisation;
 use App\Models\OrganisationUser;
+use App\Models\User;
 use App\Models\UserOrganisationRole;
 use App\Policies\MembershipPolicy;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -131,9 +134,18 @@ class MembershipApplicationController extends Controller
 
         $application->load(['user', 'membershipType', 'reviewer']);
 
+        // For public applications awaiting type assignment, pass available types
+        $types = $application->isPublicApplication()
+            ? MembershipType::where('organisation_id', $organisation->id)
+                ->where('is_active', true)
+                ->orderBy('sort_order')
+                ->get(['id', 'name', 'fee_amount', 'fee_currency', 'duration_months'])
+            : collect();
+
         return Inertia::render('Organisations/Membership/Applications/Show', [
             'organisation' => $organisation->only('id', 'name', 'slug'),
             'application'  => $application,
+            'types'        => $types,
         ]);
     }
 
@@ -149,8 +161,51 @@ class MembershipApplicationController extends Controller
             return back()->withErrors(['error' => 'This application has already been processed.']);
         }
 
+        // Public applications: admin must select a membership type at approval
+        if ($application->isPublicApplication()) {
+            $request->validate([
+                'membership_type_id' => ['required', 'uuid'],
+            ]);
+
+            $selectedType = MembershipType::where('id', $request->membership_type_id)
+                ->where('organisation_id', $organisation->id)
+                ->where('is_active', true)
+                ->first();
+
+            if (! $selectedType) {
+                return back()->withErrors(['membership_type_id' => 'The selected membership type is not available.']);
+            }
+
+            $application->update(['membership_type_id' => $selectedType->id]);
+            $application->refresh();
+        }
+
         try {
             DB::transaction(function () use ($application, $request, $organisation) {
+                // For public applications, create the user account first
+                if ($application->isPublicApplication()) {
+                    $data = $application->application_data ?? [];
+                    $user = User::create([
+                        'id'              => (string) Str::uuid(),
+                        'organisation_id' => $organisation->id,
+                        'name'            => trim(($data['first_name'] ?? '') . ' ' . ($data['last_name'] ?? '')),
+                        'first_name'      => $data['first_name'] ?? null,
+                        'last_name'       => $data['last_name'] ?? null,
+                        'email'           => $application->applicant_email,
+                        'telephone'       => $data['telephone_number'] ?? null,
+                        'city'            => $data['city'] ?? null,
+                        'country'         => $data['country'] ?? null,
+                        'education_level' => $data['education_level'] ?? null,
+                        'profession'      => $data['profession'] ?? null,
+                        'password'        => Hash::make(Str::random(32)),
+                    ]);
+                    $application->update(['user_id' => $user->id]);
+                    $application->refresh();
+
+                    // Send password-set invitation link
+                    Password::sendResetLink(['email' => $user->email]);
+                }
+
                 $application->approve($request->user()->id);
 
                 $type = $application->membershipType;
