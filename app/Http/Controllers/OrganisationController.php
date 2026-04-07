@@ -18,6 +18,32 @@ use Illuminate\Support\Facades\DB;
 class OrganisationController extends Controller
 {
     use ChecksElectionAccess;
+
+    public function index(): Response
+    {
+        $user = auth()->user();
+
+        $organisations = $user->organisationRoles()
+            ->with('organisation')
+            ->get()
+            ->map(fn ($role) => [
+                'id'        => $role->organisation->id,
+                'name'      => $role->organisation->name,
+                'slug'      => $role->organisation->slug,
+                'role'      => $role->role,
+                'joined_at' => $role->created_at?->format('Y-m-d'),
+            ]);
+
+        return Inertia::render('Organisations/Index', [
+            'organisations' => $organisations,
+        ]);
+    }
+
+    public function create(): Response
+    {
+        return Inertia::render('Organisations/Create');
+    }
+
     /**
      * Display an organisation's overview page
      *
@@ -213,7 +239,7 @@ class OrganisationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|min:3|max:255',
         ]);
 
         $user = auth()->user();

@@ -613,9 +613,7 @@ export default {
       // Route to appropriate page based on action
       switch (cardId) {
         case 'create_organization':
-          // Open organization creation modal
-          this.organizationCreation.openModal();
-          this.organizationCreation.trackOrganizationCreationStarted();
+          this.$inertia.visit(route('organisations.create'));
           break;
         case 'join_organization':
           this.$inertia.visit('/organizations/join');
