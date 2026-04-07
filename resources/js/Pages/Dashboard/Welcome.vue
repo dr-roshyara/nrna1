@@ -108,9 +108,6 @@
       @dismiss="handleTrustDismiss"
     />
 
-    <!-- Organization Creation Modal -->
-    <OrganizationCreateModal />
-
     <!-- Help Widget -->
     <HelpWidget
       sticky
@@ -136,11 +133,6 @@ import FeatureTabs from '@/Components/Dashboard/FeatureTabs.vue';
 import SuccessCarousel from '@/Components/Dashboard/SuccessCarousel.vue';
 import TrustBadgeBar from '@/Components/Dashboard/TrustBadgeBar.vue';
 
-// Import organization creation components
-import OrganizationCreateModal from '@/Components/Organization/OrganizationCreateModal.vue';
-import { useOrganizationCreation } from '@/Composables/useOrganizationCreation';
-import { provide } from 'vue';
-
 // Import Dashboard welcome locale files
 import welcomeDashboardDe from '@/locales/pages/Dashboard/welcome/de.json';
 import welcomeDashboardEn from '@/locales/pages/Dashboard/welcome/en.json';
@@ -161,18 +153,9 @@ export default {
     FeatureTabs,
     SuccessCarousel,
     TrustBadgeBar,
-    OrganizationCreateModal,
   },
   setup() {
-    // Create composable instance
-    const organizationCreation = useOrganizationCreation();
-
-    // Provide it to all child components
-    provide('organizationCreation', organizationCreation);
-
-    return {
-      organizationCreation,
-    };
+    return {};
   },
   props: {
     user: {
