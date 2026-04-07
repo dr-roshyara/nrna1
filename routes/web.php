@@ -448,9 +448,9 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // organisation management routes
-    Route::get('/organisations', [OrganisationController::class, 'index'])
+    Route::get('/my-organisations', [OrganisationController::class, 'index'])
          ->name('organisations.index');
-    Route::get('/organisations/create', [OrganisationController::class, 'create'])
+    Route::get('/my-organisations/create', [OrganisationController::class, 'create'])
          ->name('organisations.create');
     Route::post('/organisations', [OrganisationController::class, 'store'])
          ->name('organisations.store');
