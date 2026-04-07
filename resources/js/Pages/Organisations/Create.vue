@@ -1,5 +1,5 @@
 <template>
-  <DashboardLayout>
+  <PublicDigitLayout>
     <div class="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50 py-12 px-4">
       <div class="max-w-2xl mx-auto">
 
@@ -81,13 +81,13 @@
 
       </div>
     </div>
-  </DashboardLayout>
+  </PublicDigitLayout>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { usePage, router, Link } from '@inertiajs/vue3'
-import DashboardLayout from '@/Layouts/DashboardLayout.vue'
+import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import { BuildingOffice2Icon } from '@heroicons/vue/24/outline'
 
 const page = usePage()
