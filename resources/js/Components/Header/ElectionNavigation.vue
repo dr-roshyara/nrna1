@@ -48,7 +48,7 @@
                         </jet-nav-link>
                     </div>
                     <!-- next --link -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <div v-if="$page.props.auth && $page.props.auth.user" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <jet-nav-link
                             :href="route('members.index')"
                             :active="route().current('members.index')"

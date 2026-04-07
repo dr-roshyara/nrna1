@@ -35,7 +35,7 @@
                 <div class="space-y-4">
 
                   <!-- Demo Election -->
-                  <a href="/election/demo/start"
+                  <a :href="route('public-demo.start')"
                      class="block p-4 bg-green-50 rounded-lg border border-green-200 hover:border-green-400 transition-colors">
                     <div class="flex justify-between items-start">
                       <div>
@@ -121,7 +121,7 @@
             <div class="flex flex-col sm:flex-row gap-4">
               <!-- Try Demo Button -->
               <a
-                href="/election/demo/start"
+                :href="route('public-demo.start')"
                 class="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white font-bold text-lg rounded-lg hover:bg-green-700 focus:outline-hidden focus:ring-4 focus:ring-green-300 transition-colors shadow-lg min-h-[44px]"
                 title="Try demo election without registration"
               >
