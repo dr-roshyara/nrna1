@@ -239,7 +239,12 @@ class OrganisationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|min:3|max:255',
+            'name'           => 'required|string|min:3|max:255',
+            'email'          => 'nullable|email|max:255',
+            'representative' => 'nullable|string|max:255',
+            'languages'      => 'nullable|array',
+            'languages.*'    => 'string|in:en,de,np',
+            'logo'           => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
 
         $user = auth()->user();
@@ -255,12 +260,22 @@ class OrganisationController extends Controller
                 $slug = $originalSlug . '-' . $counter++;
             }
 
+            // Handle logo upload
+            $logoPath = null;
+            if ($request->hasFile('logo')) {
+                $logoPath = $request->file('logo')->store('organisations/logos', 'public');
+            }
+
             // Create new tenant organisation
             $org = Organisation::create([
-                'name' => $request->name,
-                'slug' => $slug,
-                'type' => 'tenant',
-                'is_default' => false,
+                'name'           => $request->name,
+                'slug'           => $slug,
+                'type'           => 'tenant',
+                'is_default'     => false,
+                'email'          => $request->email,
+                'representative' => $request->representative ? ['name' => $request->representative] : null,
+                'languages'      => $request->languages ?? [],
+                'logo'           => $logoPath,
             ]);
 
             \Log::info('Organisation created', [

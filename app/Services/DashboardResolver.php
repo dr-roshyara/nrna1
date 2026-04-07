@@ -934,7 +934,7 @@ class DashboardResolver
     {
         $cacheKey = 'app.platform_org_id';
 
-        return Cache::remember($cacheKey, 3600, function () {
+        return Cache::remember($cacheKey, 300, function () {
             $platformOrg = \App\Models\Organisation::where('type', 'platform')
                 ->where('is_default', true)
                 ->select('id')
