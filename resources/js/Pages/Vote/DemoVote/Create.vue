@@ -1,6 +1,5 @@
 <template>
-    <nrna-layout>
-        <app-layout>
+    <app-layout>
             <!-- Skip Link for Keyboard Users -->
             <a
                 href="#main-content"
@@ -708,14 +707,12 @@
                     </section>
                 </div>
             </div>
-        </app-layout>
-    </nrna-layout>
+    </app-layout>
 </template>
 
 <script>
 import { ref, computed, onMounted } from 'vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
-import NrnaLayout from '@/Layouts/NrnaLayout.vue'
 import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator.vue'
 import { useForm } from '@inertiajs/vue3'
 
@@ -724,7 +721,6 @@ export default {
 
     components: {
         AppLayout,
-        NrnaLayout,
         WorkflowStepIndicator,
     },
 

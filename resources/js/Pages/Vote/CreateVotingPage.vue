@@ -315,8 +315,6 @@ export default {
         ConfirmationModal,
     },
 
-    layout: ElectionLayout,
-
     props: {
         national_posts: { type: Array,   default: () => [] },
         regional_posts:  { type: Array,   default: () => [] },

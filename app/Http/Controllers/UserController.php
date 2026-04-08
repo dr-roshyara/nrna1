@@ -215,7 +215,7 @@ class UserController extends Controller
     public function show($userid)
     {
         //
-        $user = User::where('user_id', $userid)
+        $user = User::where('id', $userid)
                 ->with('images')
                 ->get()->first();
             // dd($user);

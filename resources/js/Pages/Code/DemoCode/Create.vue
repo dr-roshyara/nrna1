@@ -21,8 +21,8 @@
                 </div>
             </div>
 
-            <!-- Header -->
-            <div class="my-4 mx-auto bg-purple-600 text-white p-4 rounded-lg text-center shadow-lg max-w-md">
+            <!-- Header — hidden for public demo (code display box is sufficient) -->
+            <div v-if="!is_public_demo" class="my-4 mx-auto bg-purple-600 text-white p-4 rounded-lg text-center shadow-lg max-w-md">
                 <div class="text-3xl mb-2">🎮</div>
                 <p class="text-xl font-bold">{{ $t('pages.code-create.header.title') }} (Demo)</p>
             </div>

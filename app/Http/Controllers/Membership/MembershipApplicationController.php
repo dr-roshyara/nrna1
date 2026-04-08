@@ -71,11 +71,14 @@ class MembershipApplicationController extends Controller
             return back()->withErrors(['error' => 'You are already an active member of this organisation.']);
         }
 
-        // Guard: user already has a pending application
+        // Guard: user already has a pending application (match by user_id OR email)
         $hasPending = MembershipApplication::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
-            ->where('user_id', $user->id)
             ->whereIn('status', ['draft', 'submitted', 'under_review'])
+            ->where(function ($q) use ($user) {
+                $q->where('user_id', $user->id)
+                  ->orWhere('applicant_email', $user->email);
+            })
             ->exists();
 
         if ($hasPending) {
@@ -182,28 +185,35 @@ class MembershipApplicationController extends Controller
 
         try {
             DB::transaction(function () use ($application, $request, $organisation) {
-                // For public applications, create the user account first
+                // For public applications, link or create the user account
                 if ($application->isPublicApplication()) {
                     $data = $application->application_data ?? [];
-                    $user = User::create([
-                        'id'              => (string) Str::uuid(),
-                        'organisation_id' => $organisation->id,
-                        'name'            => trim(($data['first_name'] ?? '') . ' ' . ($data['last_name'] ?? '')),
-                        'first_name'      => $data['first_name'] ?? null,
-                        'last_name'       => $data['last_name'] ?? null,
-                        'email'           => $application->applicant_email,
-                        'telephone'       => $data['telephone_number'] ?? null,
-                        'city'            => $data['city'] ?? null,
-                        'country'         => $data['country'] ?? null,
-                        'education_level' => $data['education_level'] ?? null,
-                        'profession'      => $data['profession'] ?? null,
-                        'password'        => Hash::make(Str::random(32)),
-                    ]);
+
+                    // Re-use existing account if the email is already registered
+                    $user = User::where('email', $application->applicant_email)->first();
+
+                    if (! $user) {
+                        $user = User::create([
+                            'id'              => (string) Str::uuid(),
+                            'organisation_id' => $organisation->id,
+                            'name'            => trim(($data['first_name'] ?? '') . ' ' . ($data['last_name'] ?? '')),
+                            'first_name'      => $data['first_name'] ?? null,
+                            'last_name'       => $data['last_name'] ?? null,
+                            'email'           => $application->applicant_email,
+                            'telephone'       => $data['telephone_number'] ?? null,
+                            'city'            => $data['city'] ?? null,
+                            'country'         => $data['country'] ?? null,
+                            'education_level' => $data['education_level'] ?? null,
+                            'profession'      => $data['profession'] ?? null,
+                            'password'        => Hash::make(Str::random(32)),
+                        ]);
+
+                        // Send password-set invitation link only for brand-new accounts
+                        Password::sendResetLink(['email' => $user->email]);
+                    }
+
                     $application->update(['user_id' => $user->id]);
                     $application->refresh();
-
-                    // Send password-set invitation link
-                    Password::sendResetLink(['email' => $user->email]);
                 }
 
                 $application->approve($request->user()->id);
@@ -223,8 +233,8 @@ class MembershipApplicationController extends Controller
                     ]
                 );
 
-                // Create UserOrganisationRole
-                UserOrganisationRole::firstOrCreate(
+                // Create UserOrganisationRole only if no role exists yet (owner/admin takes precedence)
+                UserOrganisationRole::withoutGlobalScopes()->firstOrCreate(
                     [
                         'organisation_id' => $organisation->id,
                         'user_id'         => $application->user_id,
