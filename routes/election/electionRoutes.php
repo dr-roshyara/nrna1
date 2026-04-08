@@ -506,6 +506,9 @@ Route::prefix('v/{vslug}')->middleware(['auth:sanctum', 'verified', \Illuminate\
 // No auth middleware — identity is tracked via PublicDemoSession (session_token).
 // ============================================================================
 Route::prefix('public-demo')->name('public-demo.')->group(function () {
+    // Tutorial / Guide — MUST be before {publicDemoSession} to avoid slug conflict
+    Route::get('/guide', [\App\Http\Controllers\Demo\PublicDemoController::class, 'guide'])->name('guide');
+
     // Entry point — creates or reuses a PublicDemoSession, redirects to Step 1
     Route::get('/start', [\App\Http\Controllers\Demo\PublicDemoController::class, 'start'])->name('start');
 
@@ -527,6 +530,10 @@ Route::prefix('public-demo')->name('public-demo.')->group(function () {
 
     // Step 5: Thank you
     Route::get('/{publicDemoSession}/thank-you', [\App\Http\Controllers\Demo\PublicDemoController::class, 'thankYou'])->name('thankyou');
+
+    // Result: Enter receipt hash to view voted candidates
+    Route::get('/{publicDemoSession}/result', [\App\Http\Controllers\Demo\PublicDemoController::class, 'resultShow'])->name('result');
+    Route::post('/{publicDemoSession}/result', [\App\Http\Controllers\Demo\PublicDemoController::class, 'resultVerify'])->name('result.verify');
 });
 
 // ============================================================================

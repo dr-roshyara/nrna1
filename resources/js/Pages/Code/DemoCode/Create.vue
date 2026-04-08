@@ -55,7 +55,7 @@
                 <div v-if="is_public_demo && verification_code" class="p-5 bg-green-50 rounded-lg border-l-4 border-green-500 mb-4">
                     <p class="text-green-900 font-semibold flex items-center mb-3">
                         <span class="inline-block w-5 h-5 bg-green-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">✓</span>
-                        Ihr Abstimmungscode für die Demo:
+                        {{ $t('pages.code-create.public_demo.code_display_label') }}
                     </p>
                     <div class="text-center">
                         <span class="inline-block bg-white border-2 border-green-400 rounded-xl px-8 py-4 text-4xl font-mono font-bold tracking-widest text-green-800 shadow-sm select-all">
@@ -63,7 +63,7 @@
                         </span>
                     </div>
                     <p class="text-green-700 text-sm mt-3 text-center">
-                        Geben Sie diesen Code unten in das Eingabefeld ein, um fortzufahren.
+                        {{ $t('pages.code-create.public_demo.code_hint') }}
                     </p>
                 </div>
 
@@ -87,11 +87,20 @@
                 <div v-if="is_public_demo && !codeExpired" class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
                     <p class="text-gray-900 font-medium mb-2 flex items-center">
                         <span class="inline-block w-5 h-5 bg-blue-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">!</span>
-                        Anleitung
+                        {{ $t('pages.code-create.public_demo.instructions_title') }}
                     </p>
                     <p class="text-gray-800 leading-relaxed">
-                        Ihr persönlicher Abstimmungscode wird oben angezeigt. Geben Sie ihn in das Feld unten ein und klicken Sie auf "Weiter", um mit der Demo-Abstimmung zu beginnen.
+                        {{ $t('pages.code-create.public_demo.instructions_body') }}
                     </p>
+                </div>
+
+                <!-- Guide link: Public Demo only -->
+                <div v-if="is_public_demo" class="text-center mt-3">
+                    <a :href="route('public-demo.guide')"
+                       class="inline-flex items-center gap-1.5 text-sm text-purple-600 hover:text-purple-700 hover:underline focus:outline-none focus:ring-2 focus:ring-purple-400 rounded px-2 py-1">
+                        <span>❓</span>
+                        {{ $t('pages.code-create.public_demo.guide_link') }}
+                    </a>
                 </div>
 
                 <!-- Instructions: Normal Demo (email-based) -->

@@ -38,6 +38,17 @@ class PublicDemoController extends Controller
     public function __construct(private readonly DemoElectionResolver $resolver) {}
 
     // ─────────────────────────────────────────────────────────────────────────
+    // Tutorial / Guide (no session required)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    public function guide(): Response
+    {
+        return Inertia::render('Vote/DemoVote/Guide', [
+            'start_url' => route('public-demo.start'),
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
     // Entry Point
     // ─────────────────────────────────────────────────────────────────────────
 
@@ -294,6 +305,57 @@ class PublicDemoController extends Controller
             'national_posts' => $selections['national'] ?? [],
             'regional_posts' => $selections['regional'] ?? [],
             'votes_count' => count($allPosts),
+            'slug' => $publicDemoSession->session_token,
+        ]);
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Result: Enter receipt hash → reveal voted candidates
+    // ─────────────────────────────────────────────────────────────────────────
+
+    public function resultShow(PublicDemoSession $publicDemoSession): Response
+    {
+        if (!$publicDemoSession->has_voted) {
+            return redirect()->route('public-demo.thankyou', $publicDemoSession->session_token);
+        }
+
+        $receiptHash = session('public_demo_receipt_' . $publicDemoSession->session_token,
+            strtoupper(substr(hash('sha256', $publicDemoSession->session_token), 0, 12))
+        );
+
+        return Inertia::render('Vote/DemoVote/PublicResult', [
+            'verified'       => false,
+            'receipt_hash'   => $receiptHash,
+            'voted_at'       => $publicDemoSession->voted_at?->format('d.m.Y H:i:s'),
+            'national_posts' => [],
+            'regional_posts' => [],
+            'is_public_demo' => true,
+            'slug'           => $publicDemoSession->session_token,
+        ]);
+    }
+
+    public function resultVerify(Request $request, PublicDemoSession $publicDemoSession): \Illuminate\Http\RedirectResponse|Response
+    {
+        $request->validate(['receipt_hash' => ['required', 'string']]);
+
+        $expectedHash = session('public_demo_receipt_' . $publicDemoSession->session_token,
+            strtoupper(substr(hash('sha256', $publicDemoSession->session_token), 0, 12))
+        );
+
+        if (strtoupper(trim($request->receipt_hash)) !== $expectedHash) {
+            return back()->withErrors(['receipt_hash' => 'The receipt code is incorrect. Please check and try again.']);
+        }
+
+        $selections = $publicDemoSession->candidate_selections ?? [];
+
+        return Inertia::render('Vote/DemoVote/PublicResult', [
+            'verified'       => true,
+            'receipt_hash'   => $expectedHash,
+            'voted_at'       => $publicDemoSession->voted_at?->format('d.m.Y H:i:s'),
+            'national_posts' => $selections['national'] ?? [],
+            'regional_posts' => $selections['regional'] ?? [],
+            'is_public_demo' => true,
+            'slug'           => $publicDemoSession->session_token,
         ]);
     }
 

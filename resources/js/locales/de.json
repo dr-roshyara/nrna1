@@ -91,6 +91,7 @@
     "insights": "Insights",
     "security": "Sicherheit",
     "demo_result": "Demo Ergebnis",
+    "demo_guide": "Demo Anleitung",
     "industries": "Branchen",
     "services": "Services"
   },
@@ -220,6 +221,11 @@
         "title": "Sichere Wahl durchführen - Fünf-Schicht-Sicherheit für Online-Abstimmungen | Public Digit",
         "description": "Sichere Wahl durchführen mit Public Digit. Fünf-Schicht-Sicherheitsarchitektur garantiert vollständige Anonymität, kryptographische Verifizierung und Multi-Tenant-Isolation. DSGVO-konform mit Geräte-Fingerprinting und End-to-End Verschlüsselung.",
         "keywords": "sichere Wahl durchführen, Online-Abstimmung sicher, sichere Wahlen für Vereine, Wahl durchführen digital, Wahlsicherheit, anonyme Abstimmungen, kryptografische Verifizierung, Geräte-Fingerprinting, sichere digitale Wahlen, Wahlintegrität"
+      },
+      "demo-guide": {
+        "title": "Online-Wahl Demo - Sichere anonyme Wahlen testen",
+        "description": "Erleben Sie eine vollständige Online-Wahl in 5 Schritten. Keine Registrierung erforderlich. Testen Sie sichere, anonyme, verifizierbare Wahlen mit Belegcode-Prüfung.",
+        "keywords": "Online-Wahl Demo, Demo-Wahl, sichere Online-Wahl, anonymes Wahlsystem, wie online wählen, Wahlprüfung, anonym wählen, Online-Wahl kostenlos"
       }
     }
   },

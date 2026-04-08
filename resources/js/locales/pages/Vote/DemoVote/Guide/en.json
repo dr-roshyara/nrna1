@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "badge": "Fully anonymous - GDPR compliant",
+    "title": "How the Demo Election Works",
+    "title_accent": "in 5 simple steps",
+    "subtitle": "Experience a complete online election - secure, anonymous, and without registration.",
+    "cta_start": "Start Demo",
+    "cta_learn": "Learn more"
+  },
+  "overview": {
+    "title": "Your path through the demo election",
+    "step1": "Code",
+    "step2": "Agreement",
+    "step3": "Vote",
+    "step4": "Confirm",
+    "step5": "Done"
+  },
+  "step1": {
+    "title": "Enter Your Code",
+    "description": "Your personal 8-character code is displayed directly on screen. This simulates the code you would receive by email or SMS in a real election.",
+    "example_label": "Here is what it looks like:",
+    "note": "The code is only valid for this session and expires after 60 minutes."
+  },
+  "step2": {
+    "title": "Accept the Voting Agreement",
+    "description": "Read the election rules and confirm your agreement. This is an important legal step in every democratic election.",
+    "checkbox_example": "I agree to the voting rules and accept the terms and conditions."
+  },
+  "step3": {
+    "title": "Select Your Candidates",
+    "description": "Choose your preferred candidates. There are national positions (visible to all voters) and regional positions (filtered by your location).",
+    "candidate_example_role": "Candidate for the position of President",
+    "select_btn": "Select",
+    "skip_btn": "Skip",
+    "no_vote_title": "No Vote - What does this mean?",
+    "no_vote_body": "You can skip individual positions if you do not want to support any candidate. Your ballot remains valid - you do not have to vote for every position."
+  },
+  "step4": {
+    "title": "Review & Confirm",
+    "description": "Review your selections and confirm your vote by entering your code a second time.",
+    "two_codes_title": "Why do I need to enter the code twice?",
+    "two_codes_body": "The second code entry proves that the same person who started the voting session is also finalising it. This prevents session hijacking - even if someone intercepts your session between steps, they cannot complete the vote without your code.",
+    "preview_label": "Your selections:",
+    "preview_line1": "President: Dr. Anna Schmidt",
+    "preview_line2": "Vice President: Michael Weber",
+    "preview_line3": "Regional Representative: Abstained"
+  },
+  "step5": {
+    "title": "Done - Your Vote is Counted",
+    "description": "After confirmation you receive a unique receipt code. You can use it at any time to verify that your vote was correctly recorded.",
+    "receipt_caption": "Your personal receipt code - 12 characters, unique and anonymous",
+    "anon_title": "Your Vote is Anonymous",
+    "anon_body": "The receipt code is stored as a one-way hash - your name or email is never linked to your vote. You can use the code to verify the record without revealing how you voted.",
+    "verify_label": "Verify your vote:",
+    "verify_placeholder": "Enter receipt code",
+    "verify_btn": "Verify",
+    "verify_note": "Enter your receipt code to confirm that your vote was counted."
+  },
+  "cta": {
+    "title": "Ready for your first demo election?",
+    "subtitle": "No registration required - start now in 5 simple steps.",
+    "button": "Start the Demo Now"
+  },
+  "footer": {
+    "accessible": "Accessible (WCAG 2.1)",
+    "gdpr": "GDPR compliant",
+    "encrypted": "End-to-end encrypted"
+  }
+}

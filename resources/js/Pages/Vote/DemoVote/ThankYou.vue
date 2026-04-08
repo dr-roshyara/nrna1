@@ -31,35 +31,24 @@
                     </p>
                 </div>
 
-                <!-- Receipt + Vote Grid (two columns on md+) -->
-                <div class="w-full grid md:grid-cols-2 gap-6 mb-6">
+                <!-- Receipt summary + View Result link -->
+                <div class="w-full mb-6">
+                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg p-6 border border-gray-200">
 
-                    <!-- Receipt Card -->
-                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg p-6 border border-gray-200 flex flex-col">
-                        <h3 class="text-lg font-bold text-gray-900 mb-2">
-                            {{ $t('pages.Vote.DemoVote.ThankYou.receipt.title') }}
-                        </h3>
-                        <p class="text-sm text-gray-500 mb-4">
-                            {{ $t('pages.Vote.DemoVote.ThankYou.receipt.subtitle') }}
-                        </p>
-
-                        <div class="space-y-3 text-sm mb-6">
-                            <div class="flex justify-between items-center p-3 bg-white rounded-lg border">
-                                <span class="text-gray-600">{{ $t('pages.Vote.DemoVote.ThankYou.receipt.hash_label') }}</span>
-                                <span class="font-mono font-bold text-blue-700 tracking-widest text-base select-all">
-                                    {{ receipt_hash }}
-                                </span>
-                            </div>
-                            <div class="flex justify-between items-center p-3 bg-white rounded-lg border">
-                                <span class="text-gray-600">{{ $t('pages.Vote.DemoVote.ThankYou.receipt.timestamp_label') }}</span>
-                                <span class="font-mono text-gray-900 text-xs">{{ voted_at }}</span>
-                            </div>
+                        <!-- Receipt code row -->
+                        <div class="flex justify-between items-center p-3 bg-white rounded-lg border mb-3">
+                            <span class="text-gray-600 text-sm">{{ $t('pages.Vote.DemoVote.ThankYou.receipt.hash_label') }}</span>
+                            <span class="font-mono font-bold text-blue-700 tracking-widest text-base select-all">{{ receipt_hash }}</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white rounded-lg border mb-5">
+                            <span class="text-gray-600 text-sm">{{ $t('pages.Vote.DemoVote.ThankYou.receipt.timestamp_label') }}</span>
+                            <span class="font-mono text-gray-900 text-xs">{{ voted_at }}</span>
                         </div>
 
-                        <!-- Verify vote link -->
-                        <!-- <a v-if="is_public_demo && verify_url"
-                           :href="verify_url"
-                           class="w-full mb-2 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
+                        <!-- View result button -->
+                        <a v-if="is_public_demo && slug"
+                           :href="route('public-demo.result', slug)"
+                           class="w-full mb-2 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors text-sm">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
@@ -67,73 +56,13 @@
                         </a>
                         <a v-else-if="!is_public_demo"
                            :href="route('demo-vote.verify_to_show')"
-                           class="w-full mb-2 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
+                           class="w-full mb-2 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors text-sm">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                             {{ $t('pages.Vote.DemoVote.ThankYou.receipt.verify_button') }}
                         </a>
-                         -->
 
-                        <div class="space-y-2">
-                            <button @click="copyHash"
-                                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
-                                {{ copied ? $t('pages.Vote.DemoVote.ThankYou.receipt.copied') : $t('pages.Vote.DemoVote.ThankYou.receipt.copy_button') }}
-                            </button>
-                            <button @click="printPage"
-                                    class="w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
-                                {{ $t('pages.Vote.DemoVote.ThankYou.receipt.print_button') }}
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Votes Summary Grid -->
-                    <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
-                        <!-- National Posts -->
-                        <div v-if="national_posts && national_posts.length > 0" class="mb-4">
-                            <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                                {{ $t('pages.Vote.DemoVote.ThankYou.receipt.national_posts') }}
-                            </h4>
-                            <div v-for="post in national_posts" :key="post.post_id" class="mb-3">
-                                <p class="text-xs font-bold text-gray-500 uppercase mb-1">{{ post.post_name }}</p>
-                                <div v-if="post.no_vote" class="flex items-center gap-2 p-2 bg-red-50 rounded-lg border border-red-200">
-                                    <span class="text-red-500 text-xs">—</span>
-                                    <span class="text-red-700 text-sm italic">{{ $t('pages.Vote.DemoVote.ThankYou.receipt.no_vote') }}</span>
-                                </div>
-                                <div v-else>
-                                    <div v-for="candidate in post.candidates" :key="candidate.candidacy_id"
-                                         class="flex items-center gap-2 p-2 bg-green-50 rounded-lg border border-green-200 mb-1">
-                                        <svg class="w-4 h-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                        </svg>
-                                        <span class="text-gray-900 text-sm font-medium">{{ candidate.candidacy_name }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Regional Posts -->
-                        <div v-if="regional_posts && regional_posts.length > 0">
-                            <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                                {{ $t('pages.Vote.DemoVote.ThankYou.receipt.regional_posts') }}
-                            </h4>
-                            <div v-for="post in regional_posts" :key="post.post_id" class="mb-3">
-                                <p class="text-xs font-bold text-gray-500 uppercase mb-1">{{ post.post_name }}</p>
-                                <div v-if="post.no_vote" class="flex items-center gap-2 p-2 bg-red-50 rounded-lg border border-red-200">
-                                    <span class="text-red-500 text-xs">—</span>
-                                    <span class="text-red-700 text-sm italic">{{ $t('pages.Vote.DemoVote.ThankYou.receipt.no_vote') }}</span>
-                                </div>
-                                <div v-else>
-                                    <div v-for="candidate in post.candidates" :key="candidate.candidacy_id"
-                                         class="flex items-center gap-2 p-2 bg-green-50 rounded-lg border border-green-200 mb-1">
-                                        <svg class="w-4 h-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                        </svg>
-                                        <span class="text-gray-900 text-sm font-medium">{{ candidate.candidacy_name }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
