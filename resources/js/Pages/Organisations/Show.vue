@@ -111,6 +111,23 @@
               </div>
               <div class="portal-card__arrow">→</div>
             </a>
+
+            <!-- Organisation Roles — owner & admin only -->
+            <a v-if="canManage"
+               :href="route('organisations.membership.roles.index', organisation.slug)"
+               class="portal-card portal-card--roles"
+            >
+              <div class="portal-card__icon-wrap portal-card__icon-wrap--roles">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div class="portal-card__body">
+                <h3 class="portal-card__title">Organisation Roles</h3>
+                <p class="portal-card__desc">View roles and add role-holders as members</p>
+              </div>
+              <div class="portal-card__arrow">→</div>
+            </a>
           </div>
         </div>
       </div>
@@ -550,6 +567,7 @@ useMeta({
 .portal-card--membership:hover { border-color: #7c3aed; }
 .portal-card--voter:hover   { border-color: #3b82f6; }
 .portal-card--commission:hover { border-color: #10b981; }
+.portal-card--roles:hover      { border-color: #7c3aed; }
 
 .portal-card__icon-wrap {
   width: 3rem;
@@ -563,6 +581,7 @@ useMeta({
 .portal-card__icon-wrap--membership { background: #ede9fe; color: #7c3aed; }
 .portal-card__icon-wrap--voter      { background: #dbeafe; color: #2563eb; }
 .portal-card__icon-wrap--commission { background: #d1fae5; color: #059669; }
+.portal-card__icon-wrap--roles      { background: #ede9fe; color: #7c3aed; }
 
 .portal-card__body { flex: 1; min-width: 0; }
 .portal-card__title {

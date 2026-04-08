@@ -35,6 +35,7 @@ use App\Http\Controllers\Membership\MembershipFeeController;
 use App\Http\Controllers\Membership\MembershipRenewalController;
 use App\Http\Controllers\Membership\MembershipTypeController;
 use App\Http\Controllers\Membership\OrganisationParticipantController;
+use App\Http\Controllers\Membership\OrganisationRoleController;
 use App\Http\Controllers\Membership\ParticipantImportController;
 use App\Http\Controllers\Membership\OrganisationNewsletterController;
 use App\Http\Controllers\Membership\ParticipantInvitationController;
@@ -122,6 +123,12 @@ Route::prefix('organisations/{organisation:slug}')
             Route::get('/participants',                      [OrganisationParticipantController::class, 'index'])  ->name('participants.index');
             Route::post('/participants',                     [OrganisationParticipantController::class, 'store'])  ->name('participants.store');
             Route::delete('/participants/{participant}',     [OrganisationParticipantController::class, 'destroy'])->name('participants.destroy');
+
+            // ── Organisation Roles — view roles, promote to formal member ──────────
+            Route::get('/roles',                    [OrganisationRoleController::class, 'index'])        ->name('roles.index');
+            Route::post('/roles/add-member',        [OrganisationRoleController::class, 'addMember'])    ->name('roles.add-member');
+            Route::post('/roles/assign-officer',    [OrganisationRoleController::class, 'assignOfficer'])->name('roles.assign-officer');
+            Route::post('/roles/remove-officer',    [OrganisationRoleController::class, 'removeOfficer'])->name('roles.remove-officer');
 
             // ── Participant bulk import ────────────────────────────────────────
             Route::prefix('/participants')->name('participants.')->group(function () {

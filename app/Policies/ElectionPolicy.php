@@ -6,7 +6,6 @@ use App\Models\Election;
 use App\Models\ElectionOfficer;
 use App\Models\Organisation;
 use App\Models\User;
-use App\Models\UserOrganisationRole;
 
 /**
  * ElectionPolicy
@@ -40,24 +39,15 @@ class ElectionPolicy
     }
 
     /**
-     * Chief or deputy (via election_officers) OR org owner/admin (via user_organisation_roles)
-     * may manage election settings, control voting period, and manage voters.
+     * Chief or deputy assigned to this specific election may manage its settings.
+     * Org owner/admin no longer auto-granted — must be explicitly assigned as an officer.
      */
     public function manageSettings(User $user, Election $election): bool
     {
-        $isOfficer = ElectionOfficer::where('user_id', $user->id)
-            ->where('organisation_id', $election->organisation_id)
+        return ElectionOfficer::where('user_id', $user->id)
+            ->where('election_id', $election->id)
             ->whereIn('role', ['chief', 'deputy'])
             ->where('status', 'active')
-            ->exists();
-
-        if ($isOfficer) {
-            return true;
-        }
-
-        return UserOrganisationRole::where('user_id', $user->id)
-            ->where('organisation_id', $election->organisation_id)
-            ->whereIn('role', ['owner', 'admin'])
             ->exists();
     }
 
@@ -67,22 +57,26 @@ class ElectionPolicy
     public function publishResults(User $user, Election $election): bool
     {
         return ElectionOfficer::where('user_id', $user->id)
-            ->where('organisation_id', $election->organisation_id)
+            ->where('election_id', $election->id)
             ->where('role', 'chief')
             ->where('status', 'active')
             ->exists();
     }
 
     /**
-     * Chief or deputy may manage voters (approve, bulk operations).
+     * Chief or deputy may manage voters (add/remove).
      */
     public function manageVoters(User $user, Election $election): bool
     {
-        return $this->manageSettings($user, $election);
+        return ElectionOfficer::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->whereIn('role', ['chief', 'deputy'])
+            ->where('status', 'active')
+            ->exists();
     }
 
     /**
-     * Chief or deputy (or org owner/admin) may manage posts and candidacies.
+     * Chief or deputy may manage posts and candidacies.
      */
     public function managePosts(User $user, Election $election): bool
     {

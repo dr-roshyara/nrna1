@@ -393,6 +393,7 @@ const translations = {
     nav_applications: 'Applications', nav_manage: 'Manage requests', nav_view_only: 'View only',
     nav_members: 'Members', nav_directory: 'Directory & management',
     nav_participants: 'Participants', nav_all_roles: 'All platform roles',
+    nav_roles: 'Organisation Roles', nav_roles_desc: 'View roles & add as member',
     nav_types: 'Types', nav_manage_tiers: 'Manage tiers',
     nav_my_fees: 'My Fees', nav_payment_history: 'Payment history',
     nav_renew: 'Renew', nav_extend: 'Extend membership',
@@ -458,6 +459,7 @@ const translations = {
     nav_applications: 'Anträge', nav_manage: 'Verwalten', nav_view_only: 'Nur lesen',
     nav_members: 'Mitglieder', nav_directory: 'Verzeichnis',
     nav_participants: 'Teilnehmer', nav_all_roles: 'Alle Plattformrollen',
+    nav_roles: 'Organisationsrollen', nav_roles_desc: 'Rollen anzeigen & als Mitglied hinzufügen',
     nav_types: 'Typen', nav_manage_tiers: 'Stufen verwalten',
     nav_my_fees: 'Meine Gebühren', nav_payment_history: 'Zahlungshistorie',
     nav_renew: 'Verlängern', nav_extend: 'Mitgliedschaft verlängern',
@@ -517,6 +519,7 @@ const translations = {
     nav_applications: 'आवेदनहरू', nav_manage: 'व्यवस्थापन', nav_view_only: 'हेर्न मात्र',
     nav_members: 'सदस्यहरू', nav_directory: 'निर्देशिका',
     nav_participants: 'सहभागीहरू', nav_all_roles: 'सबै भूमिकाहरू',
+    nav_roles: 'संगठन भूमिकाहरू', nav_roles_desc: 'भूमिका हेर्नुहोस् र सदस्य थप्नुहोस्',
     nav_types: 'प्रकारहरू', nav_manage_tiers: 'स्तर व्यवस्थापन',
     nav_my_fees: 'मेरो शुल्क', nav_payment_history: 'भुक्तानी इतिहास',
     nav_renew: 'नवीकरण', nav_extend: 'सदस्यता बढाउनुहोस्',
@@ -681,6 +684,11 @@ const quickActions = computed(() => {
       key: 'participants', title: t.value.nav_participants, description: t.value.nav_all_roles,
       href: safeRoute('organisations.membership.participants.index', organisation.slug),
       icon: UsersIcon, color: 'slate',
+    })
+    actions.push({
+      key: 'roles', title: t.value.nav_roles, description: t.value.nav_roles_desc,
+      href: safeRoute('organisations.membership.roles.index', organisation.slug),
+      icon: UsersIcon, color: 'purple',
     })
   }
   if (role === 'owner') {
