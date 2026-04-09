@@ -6,6 +6,7 @@ use App\Models\Election;
 use App\Models\ElectionOfficer;
 use App\Models\Organisation;
 use App\Models\User;
+use App\Models\UserOrganisationRole;
 
 /**
  * ElectionPolicy
