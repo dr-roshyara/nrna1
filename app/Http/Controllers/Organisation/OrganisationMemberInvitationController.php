@@ -113,9 +113,51 @@ class OrganisationMemberInvitationController extends Controller
 
         $invitation = OrganisationInvitation::with('organisation')
             ->where('token', $token)
-            ->where('status', 'pending')
-            ->where('expires_at', '>', now())
-            ->firstOrFail();
+            ->first();
+
+        if (! $invitation) {
+            abort(404, 'Invitation not found.');
+        }
+
+        // Determine if the invited person has an account
+        $userExists = \App\Models\User::where('email', $invitation->email)->exists();
+
+        // If not logged in, always redirect to login or register first
+        if (! auth()->check()) {
+            session([
+                'url.intended'     => url()->current(),
+                'invitation_token' => $token,
+            ]);
+
+            if (! $userExists) {
+                // New user — must register first, then will be redirected back here
+                return redirect()->route('register')
+                    ->with('invitation_email', $invitation->email)
+                    ->with('status', 'Please create an account to accept your invitation to ' . $invitation->organisation->name . '.');
+            }
+
+            // Existing user — but invitation may already be accepted (they are already a member)
+            if ($invitation->status === 'accepted') {
+                return redirect()->route('login')
+                    ->with('status', 'You are already a member of ' . $invitation->organisation->name . '. Please log in to access it.');
+            }
+
+            return redirect()->route('login')
+                ->with('invitation_email', $invitation->email)
+                ->with('status', 'Please log in to accept your invitation to ' . $invitation->organisation->name . '.');
+        }
+
+        // Logged in — check invitation validity
+        if ($invitation->status === 'accepted') {
+            return redirect()
+                ->route('organisations.show', $invitation->organisation->slug)
+                ->with('success', 'You are already a member of ' . $invitation->organisation->name . '.');
+        }
+
+        if ($invitation->status !== 'pending' || $invitation->expires_at->isPast()) {
+            return back()
+                ->with('error', 'This invitation link has expired or been cancelled. Please contact the organisation admin for a new invitation.');
+        }
 
         \Log::info('INVITE_ACCEPT: invitation found', [
             'invitation_id'   => $invitation->id,
@@ -133,7 +175,7 @@ class OrganisationMemberInvitationController extends Controller
 
         DB::transaction(function () use ($invitation, $user) {
             // 1. OrganisationUser (platform link)
-            $orgUser = OrganisationUser::firstOrCreate(
+            $orgUser = OrganisationUser::withoutGlobalScopes()->firstOrCreate(
                 [
                     'organisation_id' => $invitation->organisation_id,
                     'user_id'         => $user->id,
@@ -147,7 +189,7 @@ class OrganisationMemberInvitationController extends Controller
             );
 
             // 2. UserOrganisationRole (access control)
-            UserOrganisationRole::firstOrCreate(
+            UserOrganisationRole::withoutGlobalScopes()->firstOrCreate(
                 [
                     'organisation_id' => $invitation->organisation_id,
                     'user_id'         => $user->id,
@@ -156,7 +198,7 @@ class OrganisationMemberInvitationController extends Controller
             );
 
             // 3. Member record (formal membership — fees assigned later by admin)
-            Member::firstOrCreate(
+            Member::withoutGlobalScopes()->firstOrCreate(
                 [
                     'organisation_id'      => $invitation->organisation_id,
                     'organisation_user_id' => $orgUser->id,

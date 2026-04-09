@@ -53,10 +53,9 @@ Route::post('/organisations/{organisation:slug}/join',
     [PublicMembershipApplicationController::class, 'store'])
     ->name('organisations.join.store');
 
-// ── Invitation acceptance — requires login ──
+// ── Invitation acceptance — no auth required (handles guest redirect internally) ──
 Route::get('/invitations/{token}', [OrganisationMemberInvitationController::class, 'accept'])
-    ->name('organisations.invitations.accept')
-    ->middleware(['auth']);
+    ->name('organisations.invitations.accept');
 
 Route::get('/participant-invitations/{token}', [ParticipantInvitationController::class, 'accept'])
     ->name('organisations.participant-invitations.accept')
