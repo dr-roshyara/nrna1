@@ -1,0 +1,583 @@
+<?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+use App\Models\User;
+use App\Models\Organisation;
+use App\Models\OrganisationUser;
+use App\Models\Member;
+use App\Models\Voter;
+use App\Models\Election;
+use App\Models\Code;
+use App\Models\VoterSlug;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class UserHierarchyTest extends TestCase
+{
+    use RefreshDatabase;
+
+    protected User $user;
+    protected Organisation $org;
+    protected Election $election;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->org = Organisation::factory()->create(['type' => 'tenant', 'slug' => 'test-org']);
+        $this->user = User::factory()->create();
+        $this->election = Election::factory()->create([
+            'organisation_id' => $this->org->id,
+            'status' => 'active',
+            'is_active' => true,
+        ]);
+
+        session(['current_organisation_id' => $this->org->id]);
+    }
+
+    /** @test */
+    public function user_can_become_organisation_user()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $this->assertNotNull($orgUser);
+        $this->assertEquals($this->user->id, $orgUser->user_id);
+        $this->assertEquals('member', $orgUser->role);
+        $this->assertEquals('active', $orgUser->status);
+    }
+
+    /** @test */
+    public function organisation_user_is_isolated_per_organisation()
+    {
+        $org2 = Organisation::factory()->create(['type' => 'tenant', 'slug' => 'test-org-2']);
+
+        OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        OrganisationUser::create([
+            'organisation_id' => $org2->id,
+            'user_id' => $this->user->id,
+            'role' => 'admin',
+            'status' => 'active',
+        ]);
+
+        session(['current_organisation_id' => $this->org->id]);
+        $orgUsers = OrganisationUser::all();
+
+        $this->assertCount(1, $orgUsers);
+        $this->assertEquals('member', $orgUsers->first()->role);
+    }
+
+    /** @test */
+    public function organisation_user_can_become_member()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+            'joined_at' => now(),
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'membership_number' => 'M' . uniqid(),
+            'status' => 'active',
+            'joined_at' => now(),
+        ]);
+
+        $this->assertNotNull($member);
+        $this->assertEquals($orgUser->id, $member->organisation_user_id);
+        $this->assertEquals('active', $member->status);
+        $this->assertTrue($member->organisationUser()->exists());
+    }
+
+    /** @test */
+    public function member_is_isolated_per_organisation()
+    {
+        $org2 = Organisation::factory()->create(['type' => 'tenant', 'slug' => 'test-org-2']);
+        $user2 = User::factory()->create();
+
+        $orgUser1 = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member1 = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser1->id,
+            'membership_number' => 'M1',
+            'status' => 'active',
+        ]);
+
+        $orgUser2 = OrganisationUser::create([
+            'organisation_id' => $org2->id,
+            'user_id' => $user2->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        Member::create([
+            'organisation_id' => $org2->id,
+            'organisation_user_id' => $orgUser2->id,
+            'membership_number' => 'M2',
+            'status' => 'active',
+        ]);
+
+        session(['current_organisation_id' => $this->org->id]);
+        $members = Member::all();
+
+        $this->assertCount(1, $members);
+        $this->assertEquals($member1->id, $members->first()->id);
+    }
+
+    /** @test */
+    public function member_can_become_voter_for_election()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'membership_number' => 'M' . uniqid(),
+            'status' => 'active',
+        ]);
+
+        $voter = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $this->election->id,
+            'status' => 'eligible',
+            'voter_number' => 'V' . uniqid(),
+        ]);
+
+        $this->assertNotNull($voter);
+        $this->assertEquals($member->id, $voter->member_id);
+        $this->assertEquals($this->election->id, $voter->election_id);
+        $this->assertEquals('eligible', $voter->status);
+    }
+
+    /** @test */
+    public function voter_is_isolated_per_organisation()
+    {
+        $org2 = Organisation::factory()->create(['type' => 'tenant', 'slug' => 'test-org-2']);
+        $election2 = Election::factory()->create(['organisation_id' => $org2->id]);
+
+        $orgUser1 = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member1 = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser1->id,
+            'status' => 'active',
+        ]);
+
+        $voter1 = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member1->id,
+            'election_id' => $this->election->id,
+            'status' => 'eligible',
+        ]);
+
+        $user2 = User::factory()->create();
+        $orgUser2 = OrganisationUser::create([
+            'organisation_id' => $org2->id,
+            'user_id' => $user2->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member2 = Member::create([
+            'organisation_id' => $org2->id,
+            'organisation_user_id' => $orgUser2->id,
+            'status' => 'active',
+        ]);
+
+        Voter::create([
+            'organisation_id' => $org2->id,
+            'member_id' => $member2->id,
+            'election_id' => $election2->id,
+            'status' => 'eligible',
+        ]);
+
+        session(['current_organisation_id' => $this->org->id]);
+        $voters = Voter::all();
+
+        $this->assertCount(1, $voters);
+        $this->assertEquals($voter1->id, $voters->first()->id);
+    }
+
+    /** @test */
+    public function voter_unique_per_member_per_election()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'status' => 'active',
+        ]);
+
+        $voter1 = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $this->election->id,
+            'status' => 'eligible',
+        ]);
+
+        $this->expectException(\Illuminate\Database\QueryException::class);
+
+        // Try to create duplicate
+        Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $this->election->id,
+            'status' => 'eligible',
+        ]);
+    }
+
+    /** @test */
+    public function member_can_vote_in_multiple_elections()
+    {
+        $election2 = Election::factory()->create(['organisation_id' => $this->org->id]);
+
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'status' => 'active',
+        ]);
+
+        $voter1 = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $this->election->id,
+            'status' => 'eligible',
+        ]);
+
+        $voter2 = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $election2->id,
+            'status' => 'eligible',
+        ]);
+
+        $voters = $member->voters;
+
+        $this->assertCount(2, $voters);
+        $this->assertTrue($voters->contains($voter1));
+        $this->assertTrue($voters->contains($voter2));
+    }
+
+    /** @test */
+    public function voter_can_vote_returns_true_when_eligible()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'status' => 'active',
+        ]);
+
+        $voter = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $this->election->id,
+            'status' => 'eligible',
+            'has_voted' => false,
+        ]);
+
+        $this->assertTrue($voter->canVote());
+    }
+
+    /** @test */
+    public function voter_can_vote_returns_false_when_already_voted()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'status' => 'active',
+        ]);
+
+        $voter = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $this->election->id,
+            'status' => 'voted',
+            'has_voted' => true,
+            'voted_at' => now(),
+        ]);
+
+        $this->assertFalse($voter->canVote());
+    }
+
+    /** @test */
+    public function code_has_voter_relationship()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'status' => 'active',
+        ]);
+
+        $voter = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $this->election->id,
+            'status' => 'eligible',
+        ]);
+
+        $code = Code::create([
+            'organisation_id' => $this->org->id,
+            'election_id' => $this->election->id,
+            'user_id' => $this->user->id,
+            'voter_id' => $voter->id,
+            'code_to_open_voting_form' => 'CODE1',
+            'code_to_save_vote' => 'CODE2',
+            'is_code_to_open_voting_form_usable' => true,
+            'is_code_to_save_vote_usable' => false,
+        ]);
+
+        $this->assertNotNull($code->voter);
+        $this->assertEquals($voter->id, $code->voter->id);
+    }
+
+    /** @test */
+    public function voter_slug_has_voter_relationship()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'status' => 'active',
+        ]);
+
+        $voter = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $this->election->id,
+            'status' => 'eligible',
+        ]);
+
+        $slug = VoterSlug::create([
+            'organisation_id' => $this->org->id,
+            'election_id' => $this->election->id,
+            'user_id' => $this->user->id,
+            'voter_id' => $voter->id,
+            'slug' => 'unique-slug-' . uniqid(),
+            'current_step' => 1,
+        ]);
+
+        $this->assertNotNull($slug->voter);
+        $this->assertEquals($voter->id, $slug->voter->id);
+    }
+
+    /** @test */
+    public function user_hierarchy_traversal()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'status' => 'active',
+        ]);
+
+        $voter = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $this->election->id,
+            'status' => 'eligible',
+        ]);
+
+        // Traverse from voter back to user
+        $this->assertEquals($member->id, $voter->member_id);
+        $this->assertEquals($orgUser->id, $member->organisation_user_id);
+        $this->assertEquals($this->user->id, $orgUser->user_id);
+
+        // Traverse from user down: User→OrganisationUser→Member
+        $userOrgUsers = $this->user->organisationUsers()->get();
+        $this->assertCount(1, $userOrgUsers);
+        $this->assertEquals($orgUser->id, $userOrgUsers->first()->id);
+
+        // Check members via organisation users
+        $userMembers = $this->user->members()->get();
+        $this->assertCount(1, $userMembers);
+        $this->assertEquals($member->id, $userMembers->first()->id);
+
+        // Can also traverse back from member
+        $memberOrg = $member->organisationUser;
+        $this->assertEquals($orgUser->id, $memberOrg->id);
+    }
+
+    /** @test */
+    public function mark_as_voted_updates_status()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'status' => 'active',
+        ]);
+
+        $voter = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $this->election->id,
+            'status' => 'eligible',
+            'has_voted' => false,
+        ]);
+
+        $this->assertEquals('eligible', $voter->status);
+        $this->assertFalse($voter->has_voted);
+
+        $voter->markAsVoted();
+
+        $this->assertEquals('voted', $voter->status);
+        $this->assertTrue($voter->has_voted);
+        $this->assertNotNull($voter->voted_at);
+    }
+
+    /** @test */
+    public function organisation_user_role_is_tracked()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'admin',
+            'status' => 'active',
+        ]);
+
+        $this->assertEquals('admin', $orgUser->role);
+
+        $orgUser->update(['role' => 'owner']);
+
+        $this->assertEquals('owner', $orgUser->fresh()->role);
+    }
+
+    /** @test */
+    public function member_expiry_is_enforced()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'status' => 'active',
+            'membership_expires_at' => now()->subDay(),
+        ]);
+
+        // Expired member should have status 'expired' when checked
+        $this->assertEquals('active', $member->status);
+        $this->assertTrue($member->membership_expires_at->isPast());
+
+        // Update status to expired
+        $member->update(['status' => 'expired']);
+        $this->assertEquals('expired', $member->fresh()->status);
+    }
+
+    /** @test */
+    public function voter_ineligibility_reason_is_recorded()
+    {
+        $orgUser = OrganisationUser::create([
+            'organisation_id' => $this->org->id,
+            'user_id' => $this->user->id,
+            'role' => 'member',
+            'status' => 'active',
+        ]);
+
+        $member = Member::create([
+            'organisation_id' => $this->org->id,
+            'organisation_user_id' => $orgUser->id,
+            'status' => 'active',
+        ]);
+
+        $reason = 'Member membership expired on 2026-03-01';
+
+        $voter = Voter::create([
+            'organisation_id' => $this->org->id,
+            'member_id' => $member->id,
+            'election_id' => $this->election->id,
+            'status' => 'ineligible',
+            'ineligibility_reason' => $reason,
+        ]);
+
+        $this->assertEquals('ineligible', $voter->status);
+        $this->assertEquals($reason, $voter->ineligibility_reason);
+    }
+}

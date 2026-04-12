@@ -1,0 +1,35 @@
+{
+  "title": "Danke für Ihre Stimmabgabe!",
+  "thank_you_card": {
+    "title": "🎮 Demo-Wahl – Dankesnachricht",
+    "salutation": "Sehr geehrte/r Wähler/in,",
+    "body1": "Vielen Dank für Ihre Teilnahme an dieser Demo-Wahl. Ihre Stimme ist ein wichtiger Teil des demokratischen Prozesses.",
+    "body2": "Alle Stimmen werden während des gesamten Prozesses anonym und sicher aufbewahrt."
+  },
+  "receipt": {
+    "title": "🧾 Ihr Stimmzettel-Nachweis",
+    "subtitle": "Bewahren Sie diesen Nachweis für Ihre Unterlagen auf.",
+    "hash_label": "Quittungscode",
+    "timestamp_label": "Abgestimmt am",
+    "national_posts": "Nationale Positionen",
+    "regional_posts": "Regionale Positionen",
+    "no_vote": "Enthaltung",
+    "candidates_label": "Kandidaten",
+    "print_button": "🖨️ Drucken",
+    "copy_button": "📋 Code kopieren",
+    "copied": "✓ Kopiert!",
+    "verify_button": "Stimme überprüfen"
+  },
+  "demo_info": {
+    "title": "🎮 Demo-Wahlmodus",
+    "body": "Dies ist eine Testwahl. Sie können zu Test- und Demonstrationszwecken mehrfach abstimmen."
+  },
+  "security": {
+    "title": "Sicher & Anonym",
+    "body": "Alle Stimmen werden anonym und sicher verschlüsselt gespeichert."
+  },
+  "buttons": {
+    "try_again": "🗳️ Erneut abstimmen",
+    "dashboard": "Zurück zum Dashboard"
+  }
+}

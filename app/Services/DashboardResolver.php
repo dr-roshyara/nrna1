@@ -839,7 +839,10 @@ class DashboardResolver
                 $hasVoted = DB::table('voter_slugs')
                     ->where('user_id', $user->id)
                     ->where('election_id', $election->id)
-                    ->whereNotNull('vote_completed_at')
+                    ->where(function ($q) {
+                        $q->where('status', 'voted')
+                          ->orWhereNotNull('step_5_completed_at');
+                    })
                     ->exists();
 
                 if (!$hasVoted) {
@@ -885,13 +888,15 @@ class DashboardResolver
         try {
             return DB::table('voter_slugs')
                 ->where('user_id', $user->id)
-                ->where('is_active', true)  // Must be marked as active
+                ->where('is_active', true)
                 ->where('expires_at', '>', now())
-                ->whereNull('vote_completed_at')  // Not finished voting
-                ->where(function($query) {
-                    $query->whereNotNull('code_to_open_voting_form_used_at')  // Started voting
-                          ->orWhereNotNull('has_agreed_to_vote_at')
-                          ->orWhereNotNull('vote_submitted_at');
+                ->where('status', '!=', 'voted')          // Not finished voting
+                ->whereNull('step_5_completed_at')        // Step 5 not completed
+                ->where(function ($query) {
+                    $query->whereNotNull('step_1_completed_at')  // Started: entered code
+                          ->orWhereNotNull('step_2_completed_at') // Agreed to vote
+                          ->orWhereNotNull('step_3_completed_at') // Selected candidates
+                          ->orWhereNotNull('step_4_completed_at'); // Vote submitted
                 })
                 ->orderBy('updated_at', 'desc')
                 ->first();
@@ -934,7 +939,7 @@ class DashboardResolver
     {
         $cacheKey = 'app.platform_org_id';
 
-        return Cache::remember($cacheKey, 3600, function () {
+        return Cache::remember($cacheKey, 300, function () {
             $platformOrg = \App\Models\Organisation::where('type', 'platform')
                 ->where('is_default', true)
                 ->select('id')

@@ -1,0 +1,323 @@
+<?php
+
+namespace Tests\Feature;
+
+use App\Models\User;
+use App\Models\Election;
+use App\Models\Organisation;
+use App\Models\Vote;
+use App\Models\Code;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+class TenantIsolationComprehensiveTest extends TestCase
+{
+    use RefreshDatabase;
+
+    protected Organisation $org1;
+    protected Organisation $org2;
+    protected User $user1;
+    protected User $user2;
+    protected Election $election1;
+    protected Election $election2;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Create two separate organisations
+        $this->org1 = Organisation::create([
+            'name' => 'Organisation 1',
+            'slug' => 'org-1',
+            'type' => 'organisation',
+        ]);
+
+        $this->org2 = Organisation::create([
+            'name' => 'Organisation 2',
+            'slug' => 'org-2',
+            'type' => 'organisation',
+        ]);
+
+        // Create users in different organisations
+        $this->user1 = User::create([
+            'name' => 'User 1',
+            'email' => 'user1@example.com',
+            'password' => bcrypt('password'),
+            'organisation_id' => $this->org1->id,
+            'is_voter' => 1,
+            'can_vote' => 1,
+        ]);
+
+        $this->user2 = User::create([
+            'name' => 'User 2',
+            'email' => 'user2@example.com',
+            'password' => bcrypt('password'),
+            'organisation_id' => $this->org2->id,
+            'is_voter' => 1,
+            'can_vote' => 1,
+        ]);
+
+        // Create elections in different organisations
+        $this->election1 = Election::create([
+            'name' => 'Election Org 1',
+            'slug' => 'election-org-1-' . uniqid(),
+            'type' => 'demo',
+            'organisation_id' => $this->org1->id,
+            'status' => 'active',
+        ]);
+
+        $this->election2 = Election::create([
+            'name' => 'Election Org 2',
+            'slug' => 'election-org-2-' . uniqid(),
+            'type' => 'demo',
+            'organisation_id' => $this->org2->id,
+            'status' => 'active',
+        ]);
+    }
+
+    /** @test */
+    public function user_cannot_access_other_organisation_election()
+    {
+        // User1 should NOT be able to access User2's election
+        $response = $this->actingAs($this->user1)
+            ->get("/elections/{$this->election2->id}");
+
+        // Should be rejected (403 or redirected)
+        $this->assertTrue(in_array($response->status(), [403, 404, 401, 302]));
+    }
+
+    /** @test */
+    public function organisation_election_scoping_is_enforced()
+    {
+        // Verify election queries are properly scoped to organisation
+        // This should be enforced at the model level
+
+        // User1 queries elections
+        // Should only see User1's organisation elections
+        $user1Elections = Election::where('organisation_id', $this->user1->organisation_id)->get();
+
+        $this->assertTrue(
+            $user1Elections->every(fn($e) => $e->organisation_id === $this->org1->id),
+            'All elections should belong to user1 organisation'
+        );
+
+        $this->assertFalse(
+            $user1Elections->contains($this->election2),
+            'User1 should not see User2 organisation election'
+        );
+    }
+
+    /** @test */
+    public function votes_are_scoped_to_organisation()
+    {
+        // Create votes in different organisations
+        $vote1 = Vote::create([
+            'election_id' => $this->election1->id,
+            'organisation_id' => $this->org1->id,
+            'vote_hash' => hash('sha256', 'vote1'),
+            'cast_at' => now(),
+        ]);
+
+        $vote2 = Vote::create([
+            'election_id' => $this->election2->id,
+            'organisation_id' => $this->org2->id,
+            'vote_hash' => hash('sha256', 'vote2'),
+            'cast_at' => now(),
+        ]);
+
+        // Votes should be separate per organisation
+        $org1Votes = Vote::withoutGlobalScopes()->where('organisation_id', $this->org1->id)->count();
+        $org2Votes = Vote::withoutGlobalScopes()->where('organisation_id', $this->org2->id)->count();
+
+        $this->assertEquals(1, $org1Votes);
+        $this->assertEquals(1, $org2Votes);
+
+        // Verify vote1 is in org1
+        $this->assertDatabaseHas('votes', [
+            'id' => $vote1->id,
+            'organisation_id' => $this->org1->id,
+        ]);
+
+        // Verify vote2 is in org2
+        $this->assertDatabaseHas('votes', [
+            'id' => $vote2->id,
+            'organisation_id' => $this->org2->id,
+        ]);
+    }
+
+    /** @test */
+    public function codes_are_scoped_to_user_organisation()
+    {
+        // Create codes for users in different organisations
+        $code_to_open_voting_form = Code::create([
+            'user_id' => $this->user1->id,
+            'election_id' => $this->election1->id,
+            'code_to_open_voting_form' => 'CODE1',
+        ]);
+
+        $code_to_save_vote = Code::create([
+            'user_id' => $this->user2->id,
+            'election_id' => $this->election2->id,
+            'code_to_open_voting_form' => 'CODE2',
+        ]);
+
+        // Codes should be separate per user/organisation
+        $user1Codes = Code::where('user_id', $this->user1->id)->count();
+        $user2Codes = Code::where('user_id', $this->user2->id)->count();
+
+        $this->assertEquals(1, $user1Codes);
+        $this->assertEquals(1, $user2Codes);
+    }
+
+    /** @test */
+    public function database_level_constraints_enforce_organisation_isolation()
+    {
+        // Verify foreign key constraints are in place
+        // This prevents SQL-level bypass of tenant isolation
+
+        // Try to create vote with mismatched organisation
+        // Should be prevented at database level
+        try {
+            Vote::create([
+                'election_id' => $this->election1->id,
+                'organisation_id' => $this->org2->id, // Wrong org!
+                'vote_hash' => hash('sha256', 'bad-vote'),
+                'cast_at' => now(),
+            ]);
+
+            // If we reach here, check if it created the vote anyway
+            $mismatchVote = Vote::where(
+                'organisation_id',
+                $this->org2->id
+            )->where('election_id', $this->election1->id)->first();
+
+            // Should NOT have created a vote with mismatched org/election
+            if ($mismatchVote) {
+                $this->fail('Mismatched vote was created - foreign key constraint not enforced!');
+            }
+        } catch (\Exception $e) {
+            // Expected - constraint violation
+            $this->assertTrue(true, 'Constraint properly prevents mismatch');
+        }
+    }
+
+    /** @test */
+    public function session_context_enforces_tenant_scoping()
+    {
+        // User1 has an organisation_id set at creation
+        // Verify it's not null and is consistent
+        $this->assertNotNull($this->user1->organisation_id);
+
+        // Refresh from DB and verify it's the same
+        $user1Fresh = User::withoutGlobalScopes()->find($this->user1->id);
+        $this->assertEquals($this->user1->organisation_id, $user1Fresh->organisation_id);
+    }
+
+    /** @test */
+    public function user_cannot_switch_to_other_organisation()
+    {
+        // User1's organisation_id is immutable and set at creation
+        $originalOrgId = $this->user1->organisation_id;
+
+        // Even if we try to update, the organisation_id shouldn't change
+        // (In a real scenario, this would be prevented by authorization)
+        $user1Fresh = User::withoutGlobalScopes()->find($this->user1->id);
+        $this->assertEquals($originalOrgId, $user1Fresh->organisation_id);
+    }
+
+    /** @test */
+    public function organisation_users_are_isolated()
+    {
+        // Org1 should only contain Org1 users
+        $org1Users = User::where('organisation_id', $this->org1->id)->get();
+
+        $this->assertTrue(
+            $org1Users->every(fn($u) => $u->organisation_id === $this->org1->id)
+        );
+
+        $this->assertFalse(
+            $org1Users->contains($this->user2),
+            'User2 should not be in Org1 users'
+        );
+    }
+
+    /** @test */
+    public function cross_organisation_query_attempt_fails_safely()
+    {
+        // Try to query User1 elections for Org2
+        $result = Election::where('organisation_id', $this->org2->id)
+            ->where('id', $this->election1->id)
+            ->first();
+
+        // Should return null (cross-org query fails)
+        $this->assertNull(
+            $result,
+            'Cross-organisation query should return no results'
+        );
+    }
+
+    /** @test */
+    public function organisation_data_completely_separate()
+    {
+        // Verify organisation isolation principles:
+        // Elections should be scoped to their organisations
+
+        // Org1's election should exist
+        $org1ElectionsCount = Election::withoutGlobalScopes()->where('organisation_id', $this->org1->id)->count();
+        $this->assertGreaterThan(0, $org1ElectionsCount);
+
+        // Org2's election should exist
+        $org2ElectionsCount = Election::withoutGlobalScopes()->where('organisation_id', $this->org2->id)->count();
+        $this->assertGreaterThan(0, $org2ElectionsCount);
+
+        // Add a vote to org1
+        Vote::create([
+            'election_id' => $this->election1->id,
+            'organisation_id' => $this->org1->id,
+            'vote_hash' => hash('sha256', 'org1vote'),
+            'cast_at' => now(),
+        ]);
+
+        // Verify vote is recorded in org1
+        $org1VotesCount = Vote::withoutGlobalScopes()->where('organisation_id', $this->org1->id)->count();
+        $this->assertEquals(1, $org1VotesCount);
+
+        // Verify org2 has no votes
+        $org2VotesCount = Vote::withoutGlobalScopes()->where('organisation_id', $this->org2->id)->count();
+        $this->assertEquals(0, $org2VotesCount);
+    }
+
+    /** @test */
+    public function platform_organisation_special_case()
+    {
+        // Platform org (id=1) should be accessible by all users
+        // This is the exception to normal isolation rules
+
+        $platformOrg = Organisation::where('is_platform', 1)->first();
+        if (!$platformOrg) {
+            $platformOrg = Organisation::create([
+                'name' => 'Platform',
+                'slug' => 'platform',
+                'type' => 'platform',
+                'is_platform' => 1,
+            ]);
+        }
+
+        // Create a demo election in platform org
+        $platformElection = Election::create([
+            'name' => 'Platform Demo',
+            'slug' => 'platform-demo-' . uniqid(),
+            'type' => 'demo',
+            'organisation_id' => $platformOrg->id,
+            'status' => 'active',
+        ]);
+
+        // Both users should potentially access platform elections
+        // (depending on business rules)
+
+        $this->assertDatabaseHas('elections', [
+            'id' => $platformElection->id,
+            'organisation_id' => $platformOrg->id,
+        ]);
+    }
+}

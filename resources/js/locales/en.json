@@ -92,6 +92,7 @@
     "insights": "Insights",
     "security": "Security",
     "demo_result": "Demo Results",
+    "demo_guide": "Demo Guide",
     "industries": "Industries",
     "services": "Services"
   },
@@ -221,6 +222,11 @@
         "title": "Five-Layer Security Architecture for Secure Online Voting | Public Digit",
         "description": "Conduct secure elections with Public Digit's five-layer security architecture. Complete voter anonymity, cryptographic verification, device fingerprinting, and multi-tenant isolation. GDPR-compliant end-to-end encrypted voting.",
         "keywords": "secure online voting, election security, cryptographic voting, device fingerprinting, voter anonymity, secure elections online, multi-layer security, voting platform security, encrypted voting system, election integrity"
+      },
+      "demo-guide": {
+        "title": "Online Voting Demo - Test Secure Anonymous Elections",
+        "description": "Experience a complete online election in 5 steps. No registration required. Test secure, anonymous, verifiable voting with receipt code verification.",
+        "keywords": "online voting demo, demo election, secure online voting, anonymous voting system, how to vote online, election verification, vote anonymously, online election demo free"
       }
     }
   },

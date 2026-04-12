@@ -118,6 +118,18 @@ import voteDemoCreateDe from './locales/pages/Vote/DemoVote/Create/de.json';
 import voteDemoCreateEn from './locales/pages/Vote/DemoVote/Create/en.json';
 import voteDemoCreateNp from './locales/pages/Vote/DemoVote/Create/np.json';
 
+import voteDemoThankYouDe from './locales/pages/Vote/DemoVote/ThankYou/de.json';
+import voteDemoThankYouEn from './locales/pages/Vote/DemoVote/ThankYou/en.json';
+import voteDemoThankYouNp from './locales/pages/Vote/DemoVote/ThankYou/np.json';
+
+import voteDemoPublicResultDe from './locales/pages/Vote/DemoVote/PublicResult/de.json';
+import voteDemoPublicResultEn from './locales/pages/Vote/DemoVote/PublicResult/en.json';
+import voteDemoPublicResultNp from './locales/pages/Vote/DemoVote/PublicResult/np.json';
+
+import voteDemoGuideDe from './locales/pages/Vote/DemoVote/Guide/de.json';
+import voteDemoGuideEn from './locales/pages/Vote/DemoVote/Guide/en.json';
+import voteDemoGuideNp from './locales/pages/Vote/DemoVote/Guide/np.json';
+
 import welcomeDashboardDe from './locales/pages/Welcome/Dashboard/de.json';
 import welcomeDashboardEn from './locales/pages/Welcome/Dashboard/en.json';
 import welcomeDashboardNp from './locales/pages/Welcome/Dashboard/np.json';
@@ -231,7 +243,10 @@ const messages = {
       votingSecurity: votingSecurityDe,
       'Vote': {
         'DemoVote': {
-          'Create': voteDemoCreateDe
+          'Create': voteDemoCreateDe,
+          'ThankYou': voteDemoThankYouDe,
+          'PublicResult': voteDemoPublicResultDe,
+          'Guide': voteDemoGuideDe,
         }
       },
       'voter-import-tutorial': voterImportTutorialDe,
@@ -282,7 +297,10 @@ const messages = {
       votingSecurity: votingSecurityEn,
       'Vote': {
         'DemoVote': {
-          'Create': voteDemoCreateEn
+          'Create': voteDemoCreateEn,
+          'ThankYou': voteDemoThankYouEn,
+          'PublicResult': voteDemoPublicResultEn,
+          'Guide': voteDemoGuideEn,
         }
       },
       'voter-import-tutorial': voterImportTutorialEn,
@@ -333,7 +351,10 @@ const messages = {
       votingSecurity: votingSecurityNp,
       'Vote': {
         'DemoVote': {
-          'Create': voteDemoCreateNp
+          'Create': voteDemoCreateNp,
+          'ThankYou': voteDemoThankYouNp,
+          'PublicResult': voteDemoPublicResultNp,
+          'Guide': voteDemoGuideNp,
         }
       },
       'voter-import-tutorial': voterImportTutorialNp,

@@ -86,6 +86,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'postalcode',
         'city',
         'additional_address',
+        'education_level',
+        'profession',
         'lcc',
         'profile_photo_path',
         'social_id',
@@ -202,7 +204,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return Member::where('organisation_id', $organisation->id)
             ->whereHas('organisationUser', fn ($q) => $q->where('user_id', $this->id))
-            ->whereHas('membershipType',   fn ($q) => $q->where('grants_voting_rights', true))
+            ->where(fn ($q) => $q
+                ->whereNull('membership_type_id')
+                ->orWhereHas('membershipType', fn ($mt) => $mt->where('grants_voting_rights', true))
+            )
             ->where('status', 'active')
             ->whereIn('fees_status', ['paid', 'exempt'])
             ->where(fn ($q) => $q->whereNull('membership_expires_at')

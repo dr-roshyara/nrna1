@@ -22,6 +22,13 @@
     "nepali_remaining": "Minuten verwenden, um das Abstimmungsformular zu öffnen.",
     "nepali_spam_warning": "Wenn Sie die E-Mail in Ihrem Postfach nicht finden, überprüfen Sie bitte auch Ihren Spam-Ordner."
   },
+  "public_demo": {
+    "code_display_label": "Ihr Demo-Abstimmungscode:",
+    "code_hint": "Geben Sie diesen Code unten ein, um fortzufahren.",
+    "instructions_title": "Anleitung",
+    "instructions_body": "Ihr persönlicher Abstimmungscode wird oben angezeigt. Geben Sie ihn in das Feld unten ein und klicken Sie auf 'Weiter'.",
+    "guide_link": "Wie funktioniert die Demo-Wahl?"
+  },
   "form": {
     "code_label": "Erster Wahlcode",
     "code_placeholder": "Geben Sie Ihren Wahlcode ein",

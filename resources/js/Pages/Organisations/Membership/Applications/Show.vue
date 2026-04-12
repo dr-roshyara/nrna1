@@ -26,6 +26,14 @@
         {{ t.back }}
       </a>
 
+      <!-- Public application badge -->
+      <div v-if="isPublicApp" class="mb-4 inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+        </svg>
+        {{ t.public_badge }}
+      </div>
+
       <!-- Status banner -->
       <div
         class="rounded-lg p-4 mb-6 flex items-center gap-3 text-sm font-medium"
@@ -51,13 +59,52 @@
           <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.section_applicant }}</h2>
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-lg font-bold flex-shrink-0">
-              {{ initials(application.user?.name) }}
+              {{ isPublicApp
+                  ? initials((application.application_data?.first_name ?? '') + ' ' + (application.application_data?.last_name ?? ''))
+                  : initials(application.user?.name) }}
             </div>
             <div>
-              <p class="text-sm font-semibold text-gray-900">{{ application.user?.name }}</p>
-              <p class="text-sm text-gray-500">{{ application.user?.email }}</p>
+              <p class="text-sm font-semibold text-gray-900">
+                {{ isPublicApp
+                    ? ((application.application_data?.first_name ?? '') + ' ' + (application.application_data?.last_name ?? '')).trim()
+                    : application.user?.name }}
+              </p>
+              <p class="text-sm text-gray-500">
+                {{ isPublicApp ? application.applicant_email : application.user?.email }}
+              </p>
             </div>
           </div>
+        </div>
+
+        <!-- Public application details panel -->
+        <div v-if="isPublicApp" class="px-6 py-5">
+          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{{ t.section_public_details }}</h2>
+          <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div v-if="application.application_data?.telephone_number">
+              <dt class="text-xs text-gray-400">Phone</dt>
+              <dd class="text-sm font-medium text-gray-800 mt-0.5">{{ application.application_data.telephone_number }}</dd>
+            </div>
+            <div v-if="application.application_data?.education_level">
+              <dt class="text-xs text-gray-400">Education</dt>
+              <dd class="text-sm font-medium text-gray-800 mt-0.5">{{ application.application_data.education_level }}</dd>
+            </div>
+            <div v-if="application.application_data?.profession">
+              <dt class="text-xs text-gray-400">Profession</dt>
+              <dd class="text-sm font-medium text-gray-800 mt-0.5">{{ application.application_data.profession }}</dd>
+            </div>
+            <div v-if="application.application_data?.city">
+              <dt class="text-xs text-gray-400">City</dt>
+              <dd class="text-sm font-medium text-gray-800 mt-0.5">{{ application.application_data.city }}</dd>
+            </div>
+            <div v-if="application.application_data?.country">
+              <dt class="text-xs text-gray-400">Country</dt>
+              <dd class="text-sm font-medium text-gray-800 mt-0.5">{{ application.application_data.country }}</dd>
+            </div>
+            <div v-if="application.application_data?.message" class="sm:col-span-2">
+              <dt class="text-xs text-gray-400">Message</dt>
+              <dd class="text-sm font-medium text-gray-800 mt-0.5 whitespace-pre-wrap">{{ application.application_data.message }}</dd>
+            </div>
+          </dl>
         </div>
 
         <!-- Membership type -->
@@ -132,6 +179,21 @@
       <div v-if="isPending" class="mt-6 bg-white rounded-xl shadow p-6 space-y-5">
         <h2 class="text-base font-semibold text-gray-900">{{ t.action_title }}</h2>
 
+        <!-- Membership type selector (required for public applications) -->
+        <div v-if="isPublicApp" class="p-4 rounded-lg border border-amber-200 bg-amber-50 space-y-2">
+          <label class="text-sm font-medium text-amber-900 block">{{ t.select_type_label }} <span class="text-red-500">*</span></label>
+          <select
+            v-model="selectedTypeId"
+            class="w-full rounded-md border border-amber-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white"
+          >
+            <option value="">{{ t.select_type_placeholder }}</option>
+            <option v-for="type in types" :key="type.id" :value="type.id">
+              {{ type.name }} — {{ type.fee_amount }} {{ type.fee_currency }}
+            </option>
+          </select>
+          <p v-if="page.props.errors?.membership_type_id" class="text-xs text-red-700">{{ page.props.errors.membership_type_id }}</p>
+        </div>
+
         <!-- Approve -->
         <div class="flex items-center justify-between p-4 rounded-lg border border-green-200 bg-green-50">
           <div>
@@ -140,7 +202,7 @@
           </div>
           <button
             @click="approve"
-            :disabled="approving || rejecting"
+            :disabled="approving || rejecting || (isPublicApp && !selectedTypeId)"
             class="ml-4 flex-shrink-0 inline-flex items-center gap-2 rounded-md bg-green-600 px-5 py-2 text-sm font-semibold text-white shadow hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <svg v-if="approving" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -200,6 +262,7 @@ import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 const props = defineProps({
   organisation: { type: Object, required: true },
   application:  { type: Object, required: true },
+  types:        { type: Array, default: () => [] },
 })
 
 const page = usePage()
@@ -210,7 +273,12 @@ const { locale } = useI18n()
 const translations = {
   en: {
     back: 'Back to Applications',
+    public_badge: 'Public Application',
+    section_public_details: 'Submitted Details',
     section_applicant: 'Applicant', section_type: 'Membership Type',
+    select_type_label: 'Assign Membership Type',
+    select_type_placeholder: '— select a type —',
+    select_type_required: 'Please select a membership type before approving.',
     section_dates: 'Timeline', section_data: 'Application Data',
     type_name: 'Type', type_fee: 'Fee', type_duration: 'Duration',
     months: 'months', lifetime: 'Lifetime',
@@ -232,7 +300,12 @@ const translations = {
   },
   de: {
     back: 'Zurück zu den Anträgen',
+    public_badge: 'Öffentlicher Antrag',
+    section_public_details: 'Eingereichte Details',
     section_applicant: 'Antragsteller', section_type: 'Mitgliedschaftstyp',
+    select_type_label: 'Mitgliedschaftstyp zuweisen',
+    select_type_placeholder: '— Typ auswählen —',
+    select_type_required: 'Bitte wählen Sie einen Mitgliedschaftstyp vor der Genehmigung.',
     section_dates: 'Zeitplan', section_data: 'Antragsdaten',
     type_name: 'Typ', type_fee: 'Gebühr', type_duration: 'Dauer',
     months: 'Monate', lifetime: 'Lebenslang',
@@ -254,7 +327,12 @@ const translations = {
   },
   np: {
     back: 'आवेदनहरूमा फर्कनुहोस्',
+    public_badge: 'सार्वजनिक आवेदन',
+    section_public_details: 'पेश गरिएका विवरणहरू',
     section_applicant: 'आवेदक', section_type: 'सदस्यता प्रकार',
+    select_type_label: 'सदस्यता प्रकार तोक्नुहोस्',
+    select_type_placeholder: '— प्रकार छान्नुहोस् —',
+    select_type_required: 'स्वीकृति दिनुअघि कृपया सदस्यता प्रकार छान्नुहोस्।',
     section_dates: 'समयरेखा', section_data: 'आवेदन डेटा',
     type_name: 'प्रकार', type_fee: 'शुल्क', type_duration: 'अवधि',
     months: 'महिना', lifetime: 'आजीवन',
@@ -284,12 +362,15 @@ const rejectionReason = ref('')
 const rejectError     = ref('')
 const approving       = ref(false)
 const rejecting       = ref(false)
+const selectedTypeId  = ref(props.application.membership_type_id ?? '')
 
 // ── Computed ──────────────────────────────────────────────────────────────────
 
 const isPending = computed(() =>
   ['submitted', 'under_review', 'draft'].includes(props.application.status)
 )
+
+const isPublicApp = computed(() => props.application.source === 'public')
 
 const isExpired = computed(() => {
   if (!props.application.expires_at) return false
@@ -334,9 +415,10 @@ const formatDate = (val) => {
 
 const approve = () => {
   approving.value = true
+  const payload = isPublicApp.value ? { membership_type_id: selectedTypeId.value } : {}
   router.patch(
     route('organisations.membership.applications.approve', [props.organisation.slug, props.application.id]),
-    {},
+    payload,
     {
       preserveScroll: true,
       onFinish: () => { approving.value = false },

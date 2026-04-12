@@ -1,9 +1,9 @@
 <template>
     <div>
-        <jet-banner />
+        <jet-banner v-if="$page.props.auth && $page.props.auth.user" />
 
         <div class="min-h-screen bg-gray-100">
-            <navigation></navigation>
+            <navigation v-if="$page.props.auth && $page.props.auth.user"></navigation>
             <!-- Page Content -->
             <main>
                 <slot></slot>

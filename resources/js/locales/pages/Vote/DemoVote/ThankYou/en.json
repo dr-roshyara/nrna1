@@ -1,0 +1,35 @@
+{
+  "title": "Thank you for voting!",
+  "thank_you_card": {
+    "title": "🎮 Demo Election - Thank You",
+    "salutation": "Dear Voter,",
+    "body1": "Thank you for participating in this demo election. Your vote is an important part of the democratic process.",
+    "body2": "All votes are kept anonymous and secure throughout the process."
+  },
+  "receipt": {
+    "title": "🧾 Your Vote Receipt",
+    "subtitle": "Keep this receipt for your records.",
+    "hash_label": "Receipt Code",
+    "timestamp_label": "Voted At",
+    "national_posts": "National Positions",
+    "regional_posts": "Regional Positions",
+    "no_vote": "Abstained",
+    "candidates_label": "Candidates",
+    "print_button": "🖨️ Print",
+    "copy_button": "📋 Copy Code",
+    "copied": "✓ Copied!",
+    "verify_button": "Verify Your Vote"
+  },
+  "demo_info": {
+    "title": "🎮 Demo Election Mode",
+    "body": "This is a test election. You can vote multiple times for testing and demonstration purposes."
+  },
+  "security": {
+    "title": "Secure & Anonymous",
+    "body": "All votes are recorded anonymously and securely encrypted."
+  },
+  "buttons": {
+    "try_again": "🗳️ Try Again",
+    "dashboard": "Return to Dashboard"
+  }
+}

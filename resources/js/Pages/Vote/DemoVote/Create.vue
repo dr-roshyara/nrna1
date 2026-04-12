@@ -1,6 +1,5 @@
 <template>
-    <nrna-layout>
-        <app-layout>
+    <app-layout>
             <!-- Skip Link for Keyboard Users -->
             <a
                 href="#main-content"
@@ -708,14 +707,12 @@
                     </section>
                 </div>
             </div>
-        </app-layout>
-    </nrna-layout>
+    </app-layout>
 </template>
 
 <script>
 import { ref, computed, onMounted } from 'vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
-import NrnaLayout from '@/Layouts/NrnaLayout.vue'
 import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator.vue'
 import { useForm } from '@inertiajs/vue3'
 
@@ -724,7 +721,6 @@ export default {
 
     components: {
         AppLayout,
-        NrnaLayout,
         WorkflowStepIndicator,
     },
 
@@ -739,6 +735,10 @@ export default {
         user_region: String,
         slug: String,
         useSlugPath: Boolean,
+        is_public_demo: {
+            type: Boolean,
+            default: false
+        },
         election: Object,
     },
 
@@ -1085,14 +1085,20 @@ export default {
             console.log('📊 FINAL VOTE DATA (FULL):', voteData);
 
             // Submit via Inertia
-            const routeName = props.useSlugPath ? 'slug.demo-vote.submit' : 'demo-vote.submit'
-            const params = props.useSlugPath ? { vslug: props.slug } : {}
+            let submitUrl;
+            if (props.is_public_demo && props.slug) {
+                submitUrl = `/public-demo/${props.slug}/vote`;
+            } else {
+                const routeName = props.useSlugPath ? 'slug.demo-vote.submit' : 'demo-vote.submit'
+                const params = props.useSlugPath ? { vslug: props.slug } : {}
+                submitUrl = route(routeName, params);
+            }
 
             form.transform(() => ({
                 ...voteData,
                 agree_button: form.agree_button,
                 user_id: form.user_id
-            })).post(route(routeName, params), {
+            })).post(submitUrl, {
                 onError: (formErrors) => {
                     errors.value = { ...errors.value, ...formErrors }
                     loading.value = false

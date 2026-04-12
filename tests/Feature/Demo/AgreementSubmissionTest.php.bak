@@ -1,0 +1,160 @@
+<?php
+
+namespace Tests\Feature\Demo;
+
+use App\Models\DemoCode;
+use App\Models\Election;
+use App\Models\User;
+use App\Models\VoterSlug;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+/**
+ * AgreementSubmissionTest
+ *
+ * Tests the agreement submission flow in demo elections.
+ * Reproduces the 404 error when submitting the agreement form.
+ */
+class AgreementSubmissionTest extends TestCase
+{
+    use RefreshDatabase;
+
+    private $user;
+    private $election;
+    private $voterSlug;
+    private $demoCode;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Create test user
+        $this->user = User::factory()->create([
+            'email' => 'test@example.com',
+            'is_voter' => 1,
+            'can_vote' => 1
+        ]);
+
+        // Create demo election
+        $this->election = Election::create([
+            'name' => 'Test Demo Election',
+            'slug' => 'test-demo-' . time(),
+            'type' => 'demo',
+            'organisation_id' => null,
+            'is_active' => true,
+        ]);
+
+        // Create voter slug (what the user gets when they start demo)
+        $this->voterSlug = VoterSlug::create([
+            'user_id' => $this->user->id,
+            'election_id' => $this->election->id,
+            'slug' => 'tb6h8z_c8OHT4Hq5iu4UX5SWwTRIH0_e3LN',
+            'expires_at' => now()->addHour(),
+            'current_step' => 2, // User is at step 2 (agreement)
+            'is_active' => true,
+        ]);
+
+        // Create demo code (user has verified code)
+        $this->demoCode = DemoCode::create([
+            'user_id' => $this->user->id,
+            'election_id' => $this->election->id,
+            'code1' => 'ABC123',
+            'code1_sent_at' => now(),
+            'has_code1_sent' => true,
+            'is_code1_usable' => 0,
+            'code1_used_at' => now(),
+            'can_vote_now' => 1,
+            'has_voted' => false,
+        ]);
+    }
+
+    /**
+     * TEST 1: User can access the agreement page
+     *
+     * Verifies that the GET /v/{slug}/demo-code/agreement works
+     */
+    public function test_user_can_access_agreement_page()
+    {
+        $this->actingAs($this->user);
+
+        $response = $this->get("/v/{$this->voterSlug->slug}/demo-code/agreement");
+
+        $response->assertStatus(200);
+        $response->assertInertia(fn ($page) => $page
+            ->component('Code/DemoCode/Agreement')
+        );
+    }
+
+    /**
+     * TEST 2: User can submit agreement form
+     *
+     * FIXED: Using correct form field name 'agreement' instead of 'agree'
+     */
+    public function test_user_can_submit_agreement_form()
+    {
+        $this->actingAs($this->user);
+
+        // First, verify the user can access the agreement page
+        $getResponse = $this->get("/v/{$this->voterSlug->slug}/demo-code/agreement");
+        $this->assertEquals(200, $getResponse->getStatusCode(), 'GET /demo-code/agreement should return 200');
+
+        // Now submit the agreement form with CORRECT field name
+        $postResponse = $this->post(
+            "/v/{$this->voterSlug->slug}/demo-code/agreement",
+            ['agreement' => true],  // ✅ FIXED: was 'agree', now 'agreement'
+            [
+                'X-Requested-With' => 'XMLHttpRequest',
+                'Accept' => 'application/json',
+            ]
+        );
+
+        // Should succeed now
+        $this->assertContains($postResponse->getStatusCode(), [200, 302],
+            'POST /demo-code/agreement should return 200 or 302 redirect, but got ' . $postResponse->getStatusCode() . '. Response: ' . $postResponse->getContent());
+    }
+
+    /**
+     * TEST 3: Agreement submission redirects to demo vote page
+     *
+     * After submitting agreement, user should be redirected to demo voting page
+     */
+    public function test_agreement_submission_redirects_to_vote_page()
+    {
+        $this->actingAs($this->user);
+
+        $response = $this->post(
+            "/v/{$this->voterSlug->slug}/demo-code/agreement",
+            ['agreement' => true]  // ✅ FIXED: correct field name
+        );
+
+        // Should redirect to demo vote page (step 3)
+        $response->assertRedirect(route('slug.demo-vote.create', ['vslug' => $this->voterSlug->slug]));
+    }
+
+    /**
+     * TEST 4: Agreement is marked in DemoCode after submission
+     *
+     * After submitting agreement, the DemoCode should be marked as having accepted the agreement
+     */
+    public function test_agreement_submission_marks_code_as_agreed()
+    {
+        $this->actingAs($this->user);
+
+        // Verify code has not agreed before submission
+        $this->assertEquals(false, $this->demoCode->has_agreed_to_vote,
+            'Before agreement, code should not be marked as agreed');
+
+        // Submit agreement
+        $this->post(
+            "/v/{$this->voterSlug->slug}/demo-code/agreement",
+            ['agreement' => true]  // ✅ FIXED: correct field name
+        );
+
+        // Verify code is now marked as agreed
+        $this->demoCode->refresh();
+        $this->assertEquals(true, $this->demoCode->has_agreed_to_vote,
+            'After agreement submission, code should be marked as having agreed to vote');
+        $this->assertNotNull($this->demoCode->has_agreed_to_vote_at,
+            'Agreement timestamp should be recorded');
+    }
+}

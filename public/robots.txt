@@ -18,6 +18,10 @@ Disallow: /election/
 # Allow public pages
 Allow: /candidacies/index
 Allow: /users/index
+Allow: /public-demo/guide
+
+# Disallow private demo session routes (contain tokens)
+Disallow: /public-demo/
 
 # Disallow private user data
 Disallow: /user/*/edit

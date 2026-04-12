@@ -517,6 +517,10 @@ export default {
         },
         slug: String,
         useSlugPath: Boolean,
+        is_public_demo: {
+            type: Boolean,
+            default: false
+        },
         debug_code: String,
     },
 
@@ -531,6 +535,11 @@ export default {
         });
 
         function submit() {
+            if (props.is_public_demo && props.slug) {
+                form.post(`/public-demo/${props.slug}/verify`);
+                return;
+            }
+
             const currentPath = window.location.pathname;
             const slugMatch = currentPath.match(/\/v\/([^\/]+)\//);
 

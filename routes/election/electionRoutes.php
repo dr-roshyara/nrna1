@@ -502,6 +502,41 @@ Route::prefix('v/{vslug}')->middleware(['auth:sanctum', 'verified', \Illuminate\
 });
 
 // ============================================================================
+// PUBLIC DEMO: Full 5-step voting without login (anonymous visitors)
+// No auth middleware — identity is tracked via PublicDemoSession (session_token).
+// ============================================================================
+Route::prefix('public-demo')->name('public-demo.')->group(function () {
+    // Tutorial / Guide — MUST be before {publicDemoSession} to avoid slug conflict
+    Route::get('/guide', [\App\Http\Controllers\Demo\PublicDemoController::class, 'guide'])->name('guide');
+
+    // Entry point — creates or reuses a PublicDemoSession, redirects to Step 1
+    Route::get('/start', [\App\Http\Controllers\Demo\PublicDemoController::class, 'start'])->name('start');
+
+    // Step 1: Code entry (code displayed on screen)
+    Route::get('/{publicDemoSession}/code', [\App\Http\Controllers\Demo\PublicDemoController::class, 'codeShow'])->name('code.show');
+    Route::post('/{publicDemoSession}/code', [\App\Http\Controllers\Demo\PublicDemoController::class, 'codeVerify'])->name('code.verify');
+
+    // Step 2: Agreement
+    Route::get('/{publicDemoSession}/agreement', [\App\Http\Controllers\Demo\PublicDemoController::class, 'agreementShow'])->name('agreement.show');
+    Route::post('/{publicDemoSession}/agreement', [\App\Http\Controllers\Demo\PublicDemoController::class, 'agreementSubmit'])->name('agreement.submit');
+
+    // Step 3: Ballot selection
+    Route::get('/{publicDemoSession}/vote', [\App\Http\Controllers\Demo\PublicDemoController::class, 'voteShow'])->name('vote.show');
+    Route::post('/{publicDemoSession}/vote', [\App\Http\Controllers\Demo\PublicDemoController::class, 'voteSubmit'])->name('vote.submit');
+
+    // Step 4: Review & confirm
+    Route::get('/{publicDemoSession}/verify', [\App\Http\Controllers\Demo\PublicDemoController::class, 'verifyShow'])->name('verify.show');
+    Route::post('/{publicDemoSession}/verify', [\App\Http\Controllers\Demo\PublicDemoController::class, 'verifyConfirm'])->name('verify.confirm');
+
+    // Step 5: Thank you
+    Route::get('/{publicDemoSession}/thank-you', [\App\Http\Controllers\Demo\PublicDemoController::class, 'thankYou'])->name('thankyou');
+
+    // Result: Enter receipt hash to view voted candidates
+    Route::get('/{publicDemoSession}/result', [\App\Http\Controllers\Demo\PublicDemoController::class, 'resultShow'])->name('result');
+    Route::post('/{publicDemoSession}/result', [\App\Http\Controllers\Demo\PublicDemoController::class, 'resultVerify'])->name('result.verify');
+});
+
+// ============================================================================
 // DEMO RESULTS PAGES - MODE 1 (Global) & MODE 2 (Organisation)
 // ============================================================================
 // MODE 1: Global demo results (organisation_id = NULL) - Public demo view

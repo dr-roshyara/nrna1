@@ -110,6 +110,47 @@ class DemoElectionResolver
     }
 
     /**
+     * Get the demo election for public (anonymous) access.
+     *
+     * Priority:
+     * 1️⃣ Default platform organisation's demo election (auto-creates if missing)
+     * 2️⃣ Any platform-wide demo (organisation_id = null)
+     *
+     * @return Election|null
+     */
+    public function getPublicDemoElection(): ?Election
+    {
+        // Priority 1: Default platform organisation demo
+        $platformOrg = \App\Models\Organisation::getDefaultPlatform();
+
+        if ($platformOrg) {
+            $orgDemo = Election::withoutGlobalScopes()
+                ->where('type', 'demo')
+                ->where('organisation_id', $platformOrg->id)
+                ->first();
+
+            if (!$orgDemo) {
+                try {
+                    $orgDemo = app(DemoElectionCreationService::class)
+                        ->createOrganisationDemoElection($platformOrg->id, $platformOrg);
+                } catch (\Exception $e) {
+                    \Log::error('Failed to auto-create public demo election', ['error' => $e->getMessage()]);
+                }
+            }
+
+            if ($orgDemo) {
+                return $orgDemo;
+            }
+        }
+
+        // Priority 2: Platform-wide demo (no organisation_id)
+        return Election::withoutGlobalScopes()
+            ->where('type', 'demo')
+            ->whereNull('organisation_id')
+            ->first();
+    }
+
+    /**
      * Validate that an election is appropriate for a user
      *
      * @param User $user

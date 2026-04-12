@@ -12,22 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('votes', function (Blueprint $table) {
-            // Drop old vote_hash column
-            $table->dropColumn('vote_hash');
-
-            // Add new verification columns
-            $table->string('receipt_hash')->unique()->after('election_id');
-            $table->string('participation_proof')->nullable()->after('receipt_hash');
-            $table->text('encrypted_vote')->nullable()->after('participation_proof');
-
-            // Add device fingerprinting for fraud detection (privacy-preserving)
-            $table->string('device_fingerprint_hash')->nullable()->after('encrypted_vote');
-            $table->json('device_metadata_anonymized')->nullable()->after('device_fingerprint_hash');
-
-            // Add indexes for new columns
-            $table->index('receipt_hash');
-            $table->index('participation_proof');
-            $table->index('device_fingerprint_hash');
+            if (!Schema::hasColumn('votes', 'receipt_hash')) {
+                $table->string('receipt_hash')->unique()->after('election_id');
+                $table->index('receipt_hash');
+            }
+            if (!Schema::hasColumn('votes', 'participation_proof')) {
+                $table->string('participation_proof')->nullable()->after('receipt_hash');
+                $table->index('participation_proof');
+            }
+            if (!Schema::hasColumn('votes', 'encrypted_vote')) {
+                $table->text('encrypted_vote')->nullable()->after('participation_proof');
+            }
+            if (!Schema::hasColumn('votes', 'device_fingerprint_hash')) {
+                $table->text('device_fingerprint_hash')->nullable()->after('encrypted_vote');
+            }
+            if (!Schema::hasColumn('votes', 'device_metadata_anonymized')) {
+                $table->json('device_metadata_anonymized')->nullable()->after('device_fingerprint_hash');
+            }
         });
     }
 
@@ -40,7 +41,6 @@ return new class extends Migration
             // Drop indexes
             $table->dropIndex(['receipt_hash']);
             $table->dropIndex(['participation_proof']);
-            $table->dropIndex(['device_fingerprint_hash']);
 
             // Drop new columns
             $table->dropColumn(['receipt_hash', 'participation_proof', 'encrypted_vote', 'device_fingerprint_hash', 'device_metadata_anonymized']);

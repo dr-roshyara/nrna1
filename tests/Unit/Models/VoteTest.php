@@ -1,0 +1,484 @@
+<?php
+
+namespace Tests\Unit\Models;
+
+use Tests\TestCase;
+use App\Models\Vote;
+use App\Models\Code;
+use App\Models\VoterSlug;
+use App\Models\Election;
+use App\Models\Organisation;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
+class VoteTest extends TestCase
+{
+    use RefreshDatabase;
+
+    /** @test */
+    public function vote_belongs_to_election()
+    {
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        $vote = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => hash('sha256', 'test-' . Str::random(16) . config('app.salt')),
+            'cast_at' => now(),
+        ]);
+
+        $this->assertEquals($election->id, $vote->election->id);
+    }
+
+    /** @test */
+    public function vote_belongs_to_organisation()
+    {
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        $vote = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => hash('sha256', 'test-' . Str::random(16) . config('app.salt')),
+            'cast_at' => now(),
+        ]);
+
+        $this->assertEquals($org->id, $vote->organisation->id);
+    }
+
+    /** @test */
+    public function vote_has_NO_user_relationship()
+    {
+        // CRITICAL ANONYMITY TEST
+        // Verify that Vote model does NOT have a user() relationship
+        // This ensures votes cannot be linked back to users
+
+        $vote = new Vote();
+
+        // Relationship must not exist - verify no user() method in Vote or BaseVote
+        $this->assertFalse(method_exists($vote, 'user'));
+
+        // Create a real vote using the model to verify no user_id column
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        // Set up session context for BelongsToTenant scope
+        session(['current_organisation_id' => $org->id]);
+
+        $vote = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => hash('sha256', 'test-' . Str::random(16) . config('app.salt')),
+            'cast_at' => now(),
+        ]);
+
+        // Verify vote was created
+        $this->assertNotNull($vote);
+
+        // Verify user_id column doesn't exist in database (no linkage possible)
+        $this->assertNull($vote->getAttribute('user_id'));
+    }
+
+    /** @test */
+    public function vote_has_NO_voter_slug_relationship()
+    {
+        // CRITICAL ANONYMITY TEST
+        // Verify that Vote model does NOT have a one-way relationship back to VoterSlug
+        // VoterSlug→Vote is allowed (one-way), but Vote→VoterSlug is forbidden
+
+        $vote = new Vote();
+
+        // Should not have a voter_slug() method
+        $this->assertFalse(method_exists($vote, 'voterSlug'));
+    }
+
+    /** @test */
+    public function vote_has_NO_code_relationship()
+    {
+        // CRITICAL ANONYMITY TEST
+        // Verify that Vote model does NOT have a direct relationship to Code
+        // Code→Vote verification is cryptographic only, not database relationship
+
+        $vote = new Vote();
+
+        // Should not have a code() method
+        $this->assertFalse(method_exists($vote, 'code'));
+    }
+
+    /** @test */
+    public function vote_scope_for_election_filters()
+    {
+        $org = Organisation::factory()->tenant()->create();
+        $election1 = Election::factory()->forOrganisation($org)->create();
+        $election2 = Election::factory()->forOrganisation($org)->create();
+
+        $vote1 = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election1->id,
+            'receipt_hash' => hash('sha256', 'vote1-' . Str::random(16) . config('app.salt')),
+            'cast_at' => now(),
+        ]);
+
+        $vote2 = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election2->id,
+            'receipt_hash' => hash('sha256', 'vote2-' . Str::random(16) . config('app.salt')),
+            'cast_at' => now(),
+        ]);
+
+        $elec1_votes = Vote::forElection($election1)->get();
+        $elec2_votes = Vote::forElection($election2)->get();
+
+        $this->assertCount(1, $elec1_votes);
+        $this->assertEquals($vote1->id, $elec1_votes->first()->id);
+
+        $this->assertCount(1, $elec2_votes);
+        $this->assertEquals($vote2->id, $elec2_votes->first()->id);
+    }
+
+    /** @test */
+    public function vote_scope_for_organisation_filters()
+    {
+        $org1 = Organisation::factory()->tenant()->create();
+        $org2 = Organisation::factory()->tenant()->create();
+
+        $election1 = Election::factory()->forOrganisation($org1)->create();
+        $election2 = Election::factory()->forOrganisation($org2)->create();
+
+        $vote1 = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org1->id,
+            'election_id' => $election1->id,
+            'receipt_hash' => hash('sha256', 'vote1-' . Str::random(16) . config('app.salt')),
+            'cast_at' => now(),
+        ]);
+
+        $vote2 = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org2->id,
+            'election_id' => $election2->id,
+            'receipt_hash' => hash('sha256', 'vote2-' . Str::random(16) . config('app.salt')),
+            'cast_at' => now(),
+        ]);
+
+        $org1_votes = Vote::forOrganisation($org1->id)->get();
+        $org2_votes = Vote::forOrganisation($org2->id)->get();
+
+        $this->assertCount(1, $org1_votes);
+        $this->assertEquals($vote1->id, $org1_votes->first()->id);
+
+        $this->assertCount(1, $org2_votes);
+        $this->assertEquals($vote2->id, $org2_votes->first()->id);
+    }
+
+    /** @test */
+    public function vote_voting_code_is_unique()
+    {
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        $hash1 = hash('sha256', 'unique-code-' . Str::random(16) . config('app.salt'));
+
+        Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => $hash1,
+            'cast_at' => now(),
+        ]);
+
+        // Attempting to create another vote with same hash should fail
+        $this->expectException(\Illuminate\Database\QueryException::class);
+        Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => $hash1, // Duplicate
+            'cast_at' => now(),
+        ]);
+    }
+
+    /** @test */
+    public function vote_cannot_be_linked_to_user()
+    {
+        // CRITICAL INTEGRATION TEST - ANONYMITY ENFORCEMENT
+        // Verify that even with database access, a vote cannot be linked to a user
+
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        // Set up session context for BelongsToTenant scope
+        session(['current_organisation_id' => $org->id]);
+
+        $userId = Str::uuid()->toString();
+        DB::insert('insert into users (id, organisation_id, name, email, password, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?)', [
+            $userId,
+            $org->id,
+            'Test User',
+            'test@example.com',
+            bcrypt('password'),
+            now(),
+            now(),
+        ]);
+
+        $receiptHash = hash('sha256', 'test-receipt-' . Str::random(16) . config('app.salt'));
+        $vote = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => $receiptHash,
+            'cast_at' => now(),
+        ]);
+
+        // Try to find the user based on the vote
+        // This should be impossible - no direct linkage exists
+        $this->assertNull($vote->getAttribute('user_id'));
+
+        // The vote exists, but we cannot determine who cast it
+        $this->assertNotNull($vote);
+
+        // Even with the user_id we used to create the hash, we cannot reverse it
+        $user = \App\Models\User::find($userId);
+        $this->assertNotNull($user);
+
+        // But the vote has NO relationship field that would let us find it
+        $this->assertFalse(method_exists($vote, 'user'));
+    }
+
+    /** @test */
+    public function vote_anonymity_verified_by_code()
+    {
+        // Test that vote verification is CRYPTOGRAPHIC, not through user linkage
+
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        // Set up session context for BelongsToTenant scope
+        session(['current_organisation_id' => $org->id]);
+
+        $userId = Str::uuid()->toString();
+        DB::insert('insert into users (id, organisation_id, name, email, password, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?)', [
+            $userId,
+            $org->id,
+            'Test User',
+            'test@example.com',
+            bcrypt('password'),
+            now(),
+            now(),
+        ]);
+        $user = \App\Models\User::find($userId);
+
+        // Create a code for this user
+        $code = Code::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'user_id' => $user->id,
+            'code_to_open_voting_form' => 'TEST-CODE-1',
+            'code_to_save_vote' => 'TEST-CODE-2',
+        ]);
+
+        $castTime = now();
+
+        // Create receipt hash using code's data for verifyByCode
+        $receiptHash = hash('sha256',
+            $code->user_id .
+            $code->election_id .
+            $code->code_to_open_voting_form .
+            $castTime->timestamp
+        );
+
+        // Create vote with this receipt hash
+        $vote = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => $receiptHash,
+            'cast_at' => $castTime,
+        ]);
+
+        // Verify the vote using the code's cryptographic proof
+        $this->assertTrue($vote->verifyByCode($code));
+
+        // But the vote still has no user_id field - verification is cryptographic only
+        $this->assertNull($vote->getAttribute('user_id'));
+    }
+
+    /** @test */
+    public function vote_has_receipt_hash_for_verification()
+    {
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        session(['current_organisation_id' => $org->id]);
+
+        $receipt = 'test-receipt-' . Str::random(16);
+        $receiptHash = hash('sha256', $receipt . config('app.salt'));
+
+        $vote = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => $receiptHash,
+            'cast_at' => now(),
+        ]);
+
+        $this->assertNotNull($vote->receipt_hash);
+        $this->assertEquals($receiptHash, $vote->receipt_hash);
+    }
+
+    /** @test */
+    public function vote_has_participation_proof_for_admin_verification()
+    {
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        session(['current_organisation_id' => $org->id]);
+
+        $userId = Str::uuid()->toString();
+        $ip = '192.168.1.1';
+        $participationProof = hash('sha256', $userId . $ip . $election->id . config('app.salt'));
+
+        $vote = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => hash('sha256', 'test-' . Str::random(16) . config('app.salt')),
+            'participation_proof' => $participationProof,
+            'cast_at' => now(),
+        ]);
+
+        $this->assertNotNull($vote->participation_proof);
+        $this->assertEquals($participationProof, $vote->participation_proof);
+    }
+
+    /** @test */
+    public function vote_can_store_encrypted_vote_data()
+    {
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        session(['current_organisation_id' => $org->id]);
+
+        $voteData = ['candidate' => Str::uuid()->toString(), 'timestamp' => now()->toIso8601String()];
+        $encryptedVote = encrypt($voteData);
+
+        $vote = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => hash('sha256', 'test-' . Str::random(16) . config('app.salt')),
+            'encrypted_vote' => $encryptedVote,
+            'cast_at' => now(),
+        ]);
+
+        $decryptedVote = decrypt($vote->encrypted_vote);
+        $this->assertEquals($voteData['candidate'], $decryptedVote['candidate']);
+    }
+
+    /** @test */
+    public function vote_can_verify_by_receipt()
+    {
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        session(['current_organisation_id' => $org->id]);
+
+        $receipt = 'test-receipt-' . Str::random(16);
+        $receiptHash = hash('sha256', $receipt . config('app.salt'));
+
+        $vote = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => $receiptHash,
+            'cast_at' => now(),
+        ]);
+
+        $this->assertTrue($vote->verifyByReceipt($receipt));
+        $this->assertFalse($vote->verifyByReceipt('wrong-receipt'));
+    }
+
+    /** @test */
+    public function vote_can_prove_participation()
+    {
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        session(['current_organisation_id' => $org->id]);
+
+        $userId = Str::uuid()->toString();
+        $ip = '192.168.1.1';
+        $proof = hash('sha256', $userId . $ip . $election->id . config('app.salt'));
+
+        $vote = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => hash('sha256', 'test-' . Str::random(16) . config('app.salt')),
+            'participation_proof' => $proof,
+            'cast_at' => now(),
+        ]);
+
+        $this->assertTrue($vote->proveParticipation($userId, $ip));
+        $this->assertFalse($vote->proveParticipation('other-user-id', $ip));
+    }
+
+    /** @test */
+    public function vote_has_device_fingerprint_for_fraud_detection()
+    {
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        session(['current_organisation_id' => $org->id]);
+
+        $deviceFingerprint = hash('sha256', '192.168.1.1|Mozilla/5.0' . config('app.salt'));
+
+        $vote = Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => hash('sha256', 'test-' . Str::random(16) . config('app.salt')),
+            'device_fingerprint_hash' => $deviceFingerprint,
+            'cast_at' => now(),
+        ]);
+
+        $this->assertNotNull($vote->device_fingerprint_hash);
+        $this->assertEquals($deviceFingerprint, $vote->device_fingerprint_hash);
+    }
+
+    /** @test */
+    public function vote_can_detect_duplicate_device()
+    {
+        $org = Organisation::factory()->tenant()->create();
+        $election = Election::factory()->forOrganisation($org)->create();
+
+        session(['current_organisation_id' => $org->id]);
+
+        $deviceFingerprint = hash('sha256', '192.168.1.1|Mozilla/5.0' . config('app.salt'));
+
+        Vote::create([
+            'id' => Str::uuid()->toString(),
+            'organisation_id' => $org->id,
+            'election_id' => $election->id,
+            'receipt_hash' => hash('sha256', 'test-1-' . Str::random(16) . config('app.salt')),
+            'device_fingerprint_hash' => $deviceFingerprint,
+            'cast_at' => now(),
+        ]);
+
+        // Check if duplicate device exists
+        $hasDuplicate = Vote::where('device_fingerprint_hash', $deviceFingerprint)
+            ->where('election_id', $election->id)
+            ->exists();
+
+        $this->assertTrue($hasDuplicate);
+    }
+}

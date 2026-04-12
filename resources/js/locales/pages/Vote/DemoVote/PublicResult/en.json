@@ -1,0 +1,47 @@
+{
+  "header": {
+    "title": "Verify Your Vote",
+    "subtitle": "Enter your receipt code to see the candidates you voted for."
+  },
+  "form": {
+    "card_title": "Verify Vote",
+    "card_subtitle": "Please enter the receipt code you received after voting.",
+    "instructions_badge": "Demo Election",
+    "instructions_body": "Enter the 12-character receipt code from your confirmation page to view your votes.",
+    "your_receipt_label": "Your Receipt Code",
+    "receipt_hint": "Copy this code and enter it below to verify your vote.",
+    "copy_button": "Copy",
+    "copied": "Copied!",
+    "input_label": "Enter Receipt Code",
+    "input_placeholder": "e.g. A1B2C3D4E5F6",
+    "submit_button": "Show My Vote",
+    "processing": "Verifying ..."
+  },
+  "success": {
+    "title": "Vote Successfully Verified",
+    "subtitle": "Your submitted votes are shown below."
+  },
+  "receipt": {
+    "title": "Vote Receipt",
+    "hash_label": "Receipt Code",
+    "timestamp_label": "Voted At",
+    "copy_button": "Copy Code",
+    "copied": "Copied!",
+    "print_button": "Print"
+  },
+  "votes": {
+    "title": "Your Submitted Votes",
+    "national_posts": "National Positions",
+    "regional_posts": "Regional Positions",
+    "abstained": "Abstained",
+    "no_votes": "No votes recorded."
+  },
+  "demo_info": {
+    "title": "Demo Mode",
+    "body": "This is a test election. You can vote as many times as you like."
+  },
+  "buttons": {
+    "try_again": "Vote Again",
+    "home": "Back to Home"
+  }
+}

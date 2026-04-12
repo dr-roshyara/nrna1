@@ -180,6 +180,10 @@ const props = defineProps({
     slug: String,
     useSlugPath: Boolean,
     is_demo: Boolean,
+    is_public_demo: {
+        type: Boolean,
+        default: false
+    },
 });
 
 const displayTime = ref(30);
@@ -219,10 +223,16 @@ const submitAgreement = () => {
 
     loading.value = true;
 
-    const routeName = props.useSlugPath ? 'slug.demo-code.agreement.submit' : 'demo-code.agreement.submit';
-    const params = props.useSlugPath ? { vslug: props.slug } : {};
+    let submitUrl;
+    if (props.is_public_demo && props.slug) {
+        submitUrl = `/public-demo/${props.slug}/agreement`;
+    } else {
+        const routeName = props.useSlugPath ? 'slug.demo-code.agreement.submit' : 'demo-code.agreement.submit';
+        const params = props.useSlugPath ? { vslug: props.slug } : {};
+        submitUrl = route(routeName, params);
+    }
 
-    form.post(route(routeName, params), {
+    form.post(submitUrl, {
         onError: (formErrors) => {
             errors.value = formErrors;
             loading.value = false;

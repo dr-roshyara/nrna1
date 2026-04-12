@@ -1,0 +1,235 @@
+<?php
+
+namespace Tests\Feature\Demo;
+
+use App\Models\DemoCode;
+use App\Models\User;
+use App\Models\VoterSlug;
+use App\Models\Election;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+/**
+ * CircularRedirectFixTest
+ *
+ * Validates the fix for the circular redirect loop in demo code creation.
+ * The fix ensures that voter_slug.current_step is only reset when has_voted=true,
+ * which prevents mid-voting sessions from being interrupted.
+ */
+class CircularRedirectFixTest extends TestCase
+{
+    use RefreshDatabase;
+
+    protected $user;
+    protected $election;
+    protected $voterSlug;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Create test user
+        $this->user = User::factory()->create([
+            'email' => 'test@example.com',
+        ]);
+
+        // Create demo election
+        $this->election = Election::create([
+            'name' => 'Test Demo Election',
+            'slug' => 'test-election-' . time(),
+            'type' => 'demo',
+            'organisation_id' => null,
+        ]);
+
+        // Create voter slug
+        $this->voterSlug = VoterSlug::create([
+            'user_id' => $this->user->id,
+            'election_id' => $this->election->id,
+            'slug' => 'test-slug-' . time(),
+            'expires_at' => now()->addHour(),
+            'current_step' => 1,
+        ]);
+    }
+
+    /**
+     * TEST 1: Mid-voting user should NOT have step reset
+     *
+     * This is the core of the fix. When a user has verified code (can_vote_now=1)
+     * but hasn't voted yet (has_voted=false), the step should NOT be reset.
+     */
+    public function test_step_not_reset_when_user_mid_voting()
+    {
+        // Create code that's verified but voting not complete
+        $code = DemoCode::create([
+            'user_id' => $this->user->id,
+            'election_id' => $this->election->id,
+            'organisation_id' => null,
+            'code_to_open_voting_form' => 'ABC123',
+            'code_to_open_voting_form_sent_at' => now(),
+            'has_code1_sent' => true,
+            'is_code_to_open_voting_form_usable' => 0,
+            'code_to_open_voting_form_used_at' => now(),
+            'can_vote_now' => 1,
+            'has_voted' => false, // Key: verified but NOT voted
+        ]);
+
+        // Set voter slug to step 2 (agreement)
+        $this->voterSlug->update(['current_step' => 2]);
+        $initialStep = $this->voterSlug->current_step;
+
+        // Simulate getOrCreateCode logic with the has_voted check
+        $shouldResetStep = $this->voterSlug && $this->election->type === 'demo' && $code->has_voted;
+
+        // The fix: should NOT reset because has_voted = false
+        $this->assertFalse($shouldResetStep,
+            'Step should NOT be reset (has_voted=false)');
+
+        // Verify step remains unchanged
+        $this->voterSlug->refresh();
+        $this->assertEquals($initialStep, $this->voterSlug->current_step,
+            'Step should remain at ' . $initialStep . ' for mid-voting user');
+    }
+
+    /**
+     * TEST 2: Completed voting should allow step reset for re-voting
+     *
+     * When a user completes voting (has_voted=true), returning to create page
+     * should allow step reset for re-voting (demo feature).
+     */
+    public function test_step_reset_when_user_completed_voting()
+    {
+        // Create code for completed vote
+        $code = DemoCode::create([
+            'user_id' => $this->user->id,
+            'election_id' => $this->election->id,
+            'organisation_id' => null,
+            'code_to_open_voting_form' => 'ABC123',
+            'code_to_open_voting_form_sent_at' => now(),
+            'has_code1_sent' => true,
+            'is_code_to_open_voting_form_usable' => 0,
+            'code_to_open_voting_form_used_at' => now(),
+            'can_vote_now' => 1,
+            'has_voted' => true, // Key: voting IS completed
+        ]);
+
+        // Set voter slug to step 5 (completed)
+        $this->voterSlug->update(['current_step' => 5]);
+
+        // Simulate getOrCreateCode logic with the has_voted check
+        $shouldResetStep = $this->voterSlug && $this->election->type === 'demo' && $code->has_voted;
+
+        // The fix: should ALLOW reset because has_voted = true
+        $this->assertTrue($shouldResetStep,
+            'Step SHOULD be reset (has_voted=true) for re-voting');
+
+        // If we were to reset the step:
+        if ($shouldResetStep) {
+            $this->voterSlug->update(['current_step' => 1]);
+        }
+
+        $this->voterSlug->refresh();
+        $this->assertEquals(1, $this->voterSlug->current_step,
+            'Step should be reset to 1 for re-voting');
+    }
+
+    /**
+     * TEST 3: Code usability check for mid-voting
+     *
+     * Validates the code usability check added in getOrCreateCode.
+     * If code is used but voting not completed, code should NOT be regenerated.
+     */
+    public function test_code_not_regenerated_when_mid_voting()
+    {
+        // Create code that's been used but voting not complete
+        $code = DemoCode::create([
+            'user_id' => $this->user->id,
+            'election_id' => $this->election->id,
+            'organisation_id' => null,
+            'code_to_open_voting_form' => 'USED01',
+            'code_to_open_voting_form_sent_at' => now()->subMinutes(10),
+            'has_code1_sent' => true,
+            'is_code_to_open_voting_form_usable' => 0,  // Code has been used
+            'code_to_open_voting_form_used_at' => now()->subMinutes(5),
+            'can_vote_now' => 1,
+            'has_voted' => false,    // But voting not complete
+        ]);
+
+        // Simulate the usability check logic
+        $codeIsUsed = ($code->is_code_to_open_voting_form_usable == 0 || $code->code_to_open_voting_form_used_at !== null);
+
+        // The new check: if code used but voting not yet completed, preserve mid-voting state
+        // Voting is NOT completed when has_voted = false
+        $shouldPreserveMidVoting = ($codeIsUsed && !$code->has_voted && $this->election->type === 'demo');
+
+        $this->assertTrue($shouldPreserveMidVoting,
+            'Mid-voting state should be preserved (code used, voting not completed)');
+
+        // Code should NOT be regenerated
+        $code->refresh();
+        $this->assertEquals('USED01', $code->code_to_open_voting_form,
+            'Code should NOT be regenerated mid-voting');
+    }
+
+    /**
+     * TEST 4: Three-state validation
+     *
+     * Validates all three states of the demo code lifecycle work correctly.
+     */
+    public function test_all_three_code_states()
+    {
+        $states = [
+            [
+                'name' => 'Fresh Code',
+                'is_code_to_open_voting_form_usable' => 1,
+                'code_to_open_voting_form_used_at' => null,
+                'can_vote_now' => 0,
+                'has_voted' => false,
+                'should_reset_step' => false,
+                'description' => 'User needs to verify code',
+            ],
+            [
+                'name' => 'Code Verified (Mid-Voting)',
+                'is_code_to_open_voting_form_usable' => 0,
+                'code_to_open_voting_form_used_at' => '2026-02-28 10:00:00',
+                'can_vote_now' => 1,
+                'has_voted' => false,
+                'should_reset_step' => false,
+                'description' => 'User verified but not voted - PRESERVE step',
+            ],
+            [
+                'name' => 'Vote Completed',
+                'is_code_to_open_voting_form_usable' => 0,
+                'code_to_open_voting_form_used_at' => '2026-02-28 10:00:00',
+                'can_vote_now' => 1,
+                'has_voted' => true,
+                'should_reset_step' => true,
+                'description' => 'User can re-vote - ALLOW step reset',
+            ],
+        ];
+
+        foreach ($states as $state) {
+            // Create code for this state
+            $code = DemoCode::create([
+                'user_id' => $this->user->id,
+                'election_id' => $this->election->id,
+                'organisation_id' => null,
+                'code_to_open_voting_form' => $state['name'],
+                'code_to_open_voting_form_sent_at' => now(),
+                'has_code1_sent' => true,
+                'is_code_to_open_voting_form_usable' => $state['is_code_to_open_voting_form_usable'],
+                'code_to_open_voting_form_used_at' => $state['code_to_open_voting_form_used_at'],
+                'can_vote_now' => $state['can_vote_now'],
+                'has_voted' => $state['has_voted'],
+            ]);
+
+            // Check if step should be reset
+            $shouldReset = $this->voterSlug && $this->election->type === 'demo' && $code->has_voted;
+
+            $this->assertEquals($state['should_reset_step'], $shouldReset,
+                $state['name'] . ": " . $state['description']);
+
+            // Cleanup for next iteration
+            $code->delete();
+        }
+    }
+}

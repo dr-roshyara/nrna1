@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use App\Events\Membership\MembershipApplicationApproved;
+use App\Events\Newsletter\NewsletterEmailFailed;
+use App\Events\Newsletter\NewsletterEmailSent;
+use App\Listeners\Newsletter\UpdateNewsletterCounters;
 use App\Events\Membership\MembershipApplicationRejected;
 use App\Events\Membership\MembershipFeePaid;
 use App\Events\Membership\MembershipRenewed;
@@ -38,7 +41,17 @@ class EventServiceProvider extends ServiceProvider
         ],
         MembershipRenewed::class             => [InvalidateMembershipDashboardCache::class],
         // MembershipExpired::class — event not yet created (Phase 4 job)
+
+        // MembershipExpired::class — event not yet created (Phase 4 job) (duplicate removed)
     ];
+
+    /**
+     * Disable auto-discovery so listeners are only registered via $listen above.
+     */
+    public function shouldDiscoverEvents(): bool
+    {
+        return false;
+    }
 
     /**
      * Register any events for your application.
@@ -47,6 +60,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // ── Newsletter send counters + kill switch ───────────────────────────
+        Event::listen(NewsletterEmailSent::class, [UpdateNewsletterCounters::class, 'handleSent']);
+        Event::listen(NewsletterEmailFailed::class, [UpdateNewsletterCounters::class, 'handleFailed']);
     }
 }

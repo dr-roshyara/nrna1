@@ -108,9 +108,6 @@
       @dismiss="handleTrustDismiss"
     />
 
-    <!-- Organization Creation Modal -->
-    <OrganizationCreateModal />
-
     <!-- Help Widget -->
     <HelpWidget
       sticky
@@ -121,7 +118,7 @@
 </template>
 
 <script>
-import DashboardLayout from '@/Layouts/DashboardLayout.vue';
+import DashboardLayout from '@/Layouts/PublicDigitLayout.vue';
 import PersonalizedHeader from '@/Components/Dashboard/PersonalizedHeader.vue';
 import QuickStartGrid from '@/Components/Dashboard/QuickStartGrid.vue';
 import HelpWidget from '@/Components/Dashboard/HelpWidget.vue';
@@ -135,11 +132,6 @@ import InsightsAccordion from '@/Components/Dashboard/InsightsAccordion.vue';
 import FeatureTabs from '@/Components/Dashboard/FeatureTabs.vue';
 import SuccessCarousel from '@/Components/Dashboard/SuccessCarousel.vue';
 import TrustBadgeBar from '@/Components/Dashboard/TrustBadgeBar.vue';
-
-// Import organization creation components
-import OrganizationCreateModal from '@/Components/Organization/OrganizationCreateModal.vue';
-import { useOrganizationCreation } from '@/Composables/useOrganizationCreation';
-import { provide } from 'vue';
 
 // Import Dashboard welcome locale files
 import welcomeDashboardDe from '@/locales/pages/Dashboard/welcome/de.json';
@@ -161,18 +153,9 @@ export default {
     FeatureTabs,
     SuccessCarousel,
     TrustBadgeBar,
-    OrganizationCreateModal,
   },
   setup() {
-    // Create composable instance
-    const organizationCreation = useOrganizationCreation();
-
-    // Provide it to all child components
-    provide('organizationCreation', organizationCreation);
-
-    return {
-      organizationCreation,
-    };
+    return {};
   },
   props: {
     user: {
@@ -613,9 +596,7 @@ export default {
       // Route to appropriate page based on action
       switch (cardId) {
         case 'create_organization':
-          // Open organization creation modal
-          this.organizationCreation.openModal();
-          this.organizationCreation.trackOrganizationCreationStarted();
+          this.$inertia.visit(route('organisations.create'));
           break;
         case 'join_organization':
           this.$inertia.visit('/organizations/join');

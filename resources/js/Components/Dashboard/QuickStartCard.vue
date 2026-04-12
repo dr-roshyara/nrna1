@@ -232,41 +232,29 @@ export default {
 <style scoped>
 /* Card primary gradient */
 .card-primary {
-  background: linear-gradient(135deg,
-    theme('colors.white') 0%,
-    theme('colors.primary.50') 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);
 }
 
 .dark .card-primary {
-  background: linear-gradient(135deg,
-    theme('colors.gray.900') 0%,
-    theme('colors.primary.900/20') 100%);
+  background: linear-gradient(135deg, #111827 0%, rgba(88, 28, 235, 0.2) 100%);
 }
 
 /* Card secondary */
 .card-secondary {
-  background: linear-gradient(135deg,
-    theme('colors.white') 0%,
-    theme('colors.gray.50') 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
 }
 
 .dark .card-secondary {
-  background: linear-gradient(135deg,
-    theme('colors.gray.900') 0%,
-    theme('colors.gray.800') 100%);
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
 }
 
 /* Hover states */
 .card-primary:hover {
-  background: linear-gradient(135deg,
-    theme('colors.white') 0%,
-    theme('colors.primary.100') 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ede9fe 100%);
 }
 
 .dark .card-primary:hover {
-  background: linear-gradient(135deg,
-    theme('colors.gray.900') 0%,
-    theme('colors.primary.900/40') 100%);
+  background: linear-gradient(135deg, #111827 0%, rgba(88, 28, 235, 0.4) 100%);
 }
 
 /* Shimmer animation */
@@ -308,15 +296,15 @@ export default {
 @media (prefers-contrast: more) {
   .quick-start-card {
     border-width: 2px;
-    border-color: theme('colors.gray.300');
+    border-color: #d1d5db;
   }
 
   .dark .quick-start-card {
-    border-color: theme('colors.gray.600');
+    border-color: #4b5563;
   }
 
   .card-primary {
-    border-color: theme('colors.primary.500');
+    border-color: #8b5cf6;
   }
 }
 </style>

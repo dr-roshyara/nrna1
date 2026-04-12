@@ -65,7 +65,7 @@ class BreadcrumbHelper
             'url' => url('/organisations') 
         ];
 
-        if ($organisation = $params['organisation'] ?? null) {
+        if (($organisation = $params['organisation'] ?? null) && is_object($organisation)) {
             $breadcrumbs[] = [
                 'label' => $organisation->name,
                 'url' => route('organisations.show', ['slug' => $organisation->slug]),

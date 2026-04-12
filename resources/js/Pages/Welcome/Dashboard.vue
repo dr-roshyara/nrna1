@@ -265,9 +265,6 @@
       </div>
     </main>
 
-    <!-- organisation Creation Modal -->
-    <OrganisationCreateModal />
-
     <!-- Footer -->
     <!-- Footer placeholder - replace with custom footer component -->
   </div>
@@ -275,16 +272,11 @@
 
 <script>
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
-import OrganisationCreateModal from "@/Components/Organisation/OrganisationCreateModal.vue";
-import { useOrganizationCreation } from "@/composables/useOrganisationCreation";
-import { provide } from 'vue';
-
 export default {
   name: 'WelcomeDashboard',
 
   components: {
     PublicDigitHeader,
-    OrganisationCreateModal,
   },
   props: {
     userName: String,
@@ -293,65 +285,7 @@ export default {
   },
 
   setup() {
-    // Create and provide the organisation creation composable
-    const organizationCreation = useOrganizationCreation();
-
-    // Destructure all properties for template use
-    const {
-      currentStep,
-      isModalOpen,
-      showEducation,
-      formData,
-      expandedSections,
-      validationErrors,
-      isSubmitting,
-      submissionError,
-      stepTitles,
-      openModal,
-      closeModal,
-      resetForm,
-      nextStep,
-      previousStep,
-      validateStep,
-      submitForm,
-      toggleSection,
-      trackOrganizationCreationStarted,
-      trackStepCompleted,
-      isFormStep,
-      canGoNext,
-      canGoPrevious,
-      progressPercentage,
-    } = organizationCreation;
-
-    // Provide it to all child components (including modal)
-    provide('organizationCreation', organizationCreation);
-
-    return {
-      organizationCreation,
-      currentStep,
-      isModalOpen,
-      showEducation,
-      formData,
-      expandedSections,
-      validationErrors,
-      isSubmitting,
-      submissionError,
-      stepTitles,
-      openModal,
-      closeModal,
-      resetForm,
-      nextStep,
-      previousStep,
-      validateStep,
-      submitForm,
-      toggleSection,
-      trackOrganizationCreationStarted,
-      trackStepCompleted,
-      isFormStep,
-      canGoNext,
-      canGoPrevious,
-      progressPercentage,
-    };
+    return {};
   },
 
   data() {
@@ -362,9 +296,7 @@ export default {
 
   methods: {
     createOrganization() {
-      console.log('🏢 Opening organisation creation modal');
-      this.organizationCreation.openModal();
-      this.organizationCreation.trackOrganizationCreationStarted();
+      this.$inertia.visit(route('organisations.create'));
     },
 
     joinOrganization() {

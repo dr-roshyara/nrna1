@@ -1,0 +1,69 @@
+{
+  "hero": {
+    "badge": "Vollstaendig anonym - DSGVO-konform",
+    "title": "Demo-Wahl verstehen",
+    "title_accent": "in 5 einfachen Schritten",
+    "subtitle": "Erleben Sie eine vollstaendige Online-Wahl - sicher, anonym und ohne Registrierung.",
+    "cta_start": "Demo starten",
+    "cta_learn": "Mehr erfahren"
+  },
+  "overview": {
+    "title": "Ihr Weg zur Demo-Wahl",
+    "step1": "Code",
+    "step2": "Zustimmung",
+    "step3": "Wahl",
+    "step4": "Bestaetigen",
+    "step5": "Fertig"
+  },
+  "step1": {
+    "title": "Code eingeben",
+    "description": "Ihr persoenlicher 8-stelliger Code wird direkt auf dem Bildschirm angezeigt. Dies simuliert den Code, den Sie in einer echten Wahl per E-Mail oder SMS erhalten wuerden.",
+    "example_label": "So sieht es aus:",
+    "note": "Der Code ist nur fuer diese Sitzung gueltig und laeuft nach 60 Minuten ab."
+  },
+  "step2": {
+    "title": "Wahlordnung akzeptieren",
+    "description": "Lesen Sie die Wahlordnung und bestaetigen Sie Ihre Zustimmung. Dies ist ein wichtiger rechtlicher Schritt in jeder demokratischen Wahl.",
+    "checkbox_example": "Ich stimme der Wahlordnung zu und erklaere mich mit den Bedingungen einverstanden."
+  },
+  "step3": {
+    "title": "Kandidaten auswaehlen",
+    "description": "Waehlen Sie Ihre bevorzugten Kandidaten. Es gibt nationale Positionen (fuer alle Waehler sichtbar) und regionale Positionen (nach Ihrem Standort gefiltert).",
+    "candidate_example_role": "Kandidatin fuer das Praesidentenamt",
+    "select_btn": "Auswaehlen",
+    "skip_btn": "Ueberspringen",
+    "no_vote_title": "Keine Stimme - Was bedeutet das?",
+    "no_vote_body": "Sie koennen einzelne Positionen ueberspringen, wenn Sie keinen Kandidaten unterstuetzen moechten. Ihre Stimme bleibt gueltig - Sie muessen nicht fuer jede Position abstimmen."
+  },
+  "step4": {
+    "title": "Ueberpruefe & Bestaetigen",
+    "description": "Ueberpruefe Ihre Auswahl und bestaetigen Sie Ihre Stimme durch erneute Eingabe Ihres Codes.",
+    "two_codes_title": "Warum muss ich den Code zweimal eingeben?",
+    "two_codes_body": "Die zweite Code-Eingabe beweist, dass dieselbe Person, die den Wahlvorgang gestartet hat, ihn auch abschliesst. Dies verhindert Sitzungsuebertragungen - selbst wenn jemand Ihre Sitzung zwischen den Schritten abfaengt, kann er die Stimme nicht ohne Ihren Code abschliessen.",
+    "preview_label": "Ihre Auswahl:",
+    "preview_line1": "Praesident: Dr. Anna Schmidt",
+    "preview_line2": "Vizepraesidentin: Michael Weber",
+    "preview_line3": "Regionalvertreter: Enthaltung"
+  },
+  "step5": {
+    "title": "Abgeschlossen - Ihre Stimme ist gezaehlt",
+    "description": "Nach der Bestaetigung erhalten Sie einen eindeutigen Belegcode. Damit koennen Sie jederzeit pruefen, ob Ihre Stimme korrekt erfasst wurde.",
+    "receipt_caption": "Ihr persoenlicher Belegcode - 12 Zeichen, einmalig und anonym",
+    "anon_title": "Ihre Stimme ist anonym",
+    "anon_body": "Der Belegcode wird gehasht gespeichert - Ihr Name oder Ihre E-Mail-Adresse wird niemals mit Ihrer Stimme verknuepft. Sie koennen den Code verwenden, um die Aufzeichnung zu pruefen, ohne preiszugeben, wie Sie gewaehlt haben.",
+    "verify_label": "Stimme ueberpruefen:",
+    "verify_placeholder": "Belegcode eingeben",
+    "verify_btn": "Pruefen",
+    "verify_note": "Geben Sie Ihren Belegcode ein, um zu sehen, dass Ihre Stimme gezaehlt wurde."
+  },
+  "cta": {
+    "title": "Bereit fuer Ihre erste Demo-Wahl?",
+    "subtitle": "Keine Registrierung erforderlich - starten Sie jetzt in 5 einfachen Schritten.",
+    "button": "Demo jetzt starten"
+  },
+  "footer": {
+    "accessible": "Barrierefrei nach WCAG 2.1",
+    "gdpr": "DSGVO-konform",
+    "encrypted": "Ende-zu-Ende-verschluesselt"
+  }
+}

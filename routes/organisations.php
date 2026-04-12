@@ -35,16 +35,27 @@ use App\Http\Controllers\Membership\MembershipFeeController;
 use App\Http\Controllers\Membership\MembershipRenewalController;
 use App\Http\Controllers\Membership\MembershipTypeController;
 use App\Http\Controllers\Membership\OrganisationParticipantController;
+use App\Http\Controllers\Membership\OrganisationRoleController;
 use App\Http\Controllers\Membership\ParticipantImportController;
+use App\Http\Controllers\Membership\OrganisationNewsletterController;
 use App\Http\Controllers\Membership\ParticipantInvitationController;
+use App\Http\Controllers\Membership\PublicMembershipApplicationController;
 use App\Http\Controllers\Organisation\OrganisationMemberInvitationController;
 use App\Http\Controllers\OrganisationController;
 use Illuminate\Support\Facades\Route;
 
-// ── Invitation acceptance — requires login ──
+// ── Public membership application — no auth required ──
+Route::get('/organisations/{organisation:slug}/join',
+    [PublicMembershipApplicationController::class, 'create'])
+    ->name('organisations.join');
+
+Route::post('/organisations/{organisation:slug}/join',
+    [PublicMembershipApplicationController::class, 'store'])
+    ->name('organisations.join.store');
+
+// ── Invitation acceptance — no auth required (handles guest redirect internally) ──
 Route::get('/invitations/{token}', [OrganisationMemberInvitationController::class, 'accept'])
-    ->name('organisations.invitations.accept')
-    ->middleware(['auth']);
+    ->name('organisations.invitations.accept');
 
 Route::get('/participant-invitations/{token}', [ParticipantInvitationController::class, 'accept'])
     ->name('organisations.participant-invitations.accept')
@@ -112,6 +123,12 @@ Route::prefix('organisations/{organisation:slug}')
             Route::post('/participants',                     [OrganisationParticipantController::class, 'store'])  ->name('participants.store');
             Route::delete('/participants/{participant}',     [OrganisationParticipantController::class, 'destroy'])->name('participants.destroy');
 
+            // ── Organisation Roles — view roles, promote to formal member ──────────
+            Route::get('/roles',                    [OrganisationRoleController::class, 'index'])        ->name('roles.index');
+            Route::post('/roles/add-member',        [OrganisationRoleController::class, 'addMember'])    ->name('roles.add-member');
+            Route::post('/roles/assign-officer',    [OrganisationRoleController::class, 'assignOfficer'])->name('roles.assign-officer');
+            Route::post('/roles/remove-officer',    [OrganisationRoleController::class, 'removeOfficer'])->name('roles.remove-officer');
+
             // ── Participant bulk import ────────────────────────────────────────
             Route::prefix('/participants')->name('participants.')->group(function () {
                 Route::get('/import',          [ParticipantImportController::class, 'create'])  ->name('import.create');
@@ -125,6 +142,22 @@ Route::prefix('organisations/{organisation:slug}')
                 Route::get('/',                             [ParticipantInvitationController::class, 'index'])  ->name('index');
                 Route::post('/',                            [ParticipantInvitationController::class, 'store'])  ->name('store');
                 Route::delete('/{invitation}',              [ParticipantInvitationController::class, 'destroy'])->name('destroy');
+            });
+
+            // ── Newsletters (admin/owner only) ────────────────────────────────
+            Route::prefix('/newsletters')->name('newsletters.')->group(function () {
+                Route::get('/',                          [OrganisationNewsletterController::class, 'index'])           ->name('index');
+                Route::get('/create',                    [OrganisationNewsletterController::class, 'create'])          ->name('create');
+                Route::post('/',                         [OrganisationNewsletterController::class, 'store'])           ->name('store');
+                Route::get('/{newsletter}',              [OrganisationNewsletterController::class, 'show'])            ->name('show');
+                Route::get('/{newsletter}/edit',         [OrganisationNewsletterController::class, 'edit'])            ->name('edit');
+                Route::put('/{newsletter}',              [OrganisationNewsletterController::class, 'update'])          ->name('update');
+                Route::get('/{newsletter}/preview',      [OrganisationNewsletterController::class, 'previewRecipients'])->name('preview');
+                Route::post('/{newsletter}/attachments',              [OrganisationNewsletterController::class, 'storeAttachment'])   ->name('attachments.store');
+                Route::delete('/{newsletter}/attachments/{attachment}', [OrganisationNewsletterController::class, 'destroyAttachment'])->name('attachments.destroy');
+                Route::patch('/{newsletter}/send',       [OrganisationNewsletterController::class, 'send'])            ->name('send');
+                Route::patch('/{newsletter}/cancel',     [OrganisationNewsletterController::class, 'cancel'])          ->name('cancel');
+                Route::delete('/{newsletter}',           [OrganisationNewsletterController::class, 'destroy'])         ->name('destroy');
             });
         });
 

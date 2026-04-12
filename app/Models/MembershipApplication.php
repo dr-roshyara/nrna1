@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -10,13 +11,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MembershipApplication extends Model
 {
-    use HasUuids, SoftDeletes;
+    use HasUuids, SoftDeletes, BelongsToTenant;
 
     protected $fillable = [
         'id',
         'organisation_id',
         'user_id',
         'membership_type_id',
+        'applicant_email',
+        'source',
         'status',
         'application_data',
         'expires_at',
@@ -35,6 +38,19 @@ class MembershipApplication extends Model
         'reviewed_at'      => 'datetime',
         'lock_version'     => 'integer',
     ];
+
+    // ── Public application helpers ────────────────────────────────────────────
+
+    public function isPublicApplication(): bool
+    {
+        return $this->user_id === null && $this->source === 'public';
+    }
+
+    public function applicantName(): string
+    {
+        $data = $this->application_data ?? [];
+        return trim(($data['first_name'] ?? '') . ' ' . ($data['last_name'] ?? ''));
+    }
 
     // ── Status helpers ────────────────────────────────────────────────────────
 

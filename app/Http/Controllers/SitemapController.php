@@ -195,6 +195,7 @@ class SitemapController extends Controller
         $staticPages = [
             '/candidacies/index' => ['priority' => '0.8', 'changefreq' => 'weekly'],
             '/users/index' => ['priority' => '0.7', 'changefreq' => 'weekly'],
+            '/public-demo/guide' => ['priority' => '0.8', 'changefreq' => 'monthly'],
         ];
 
         foreach ($staticPages as $url => $config) {

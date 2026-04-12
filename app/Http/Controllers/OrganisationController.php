@@ -18,6 +18,32 @@ use Illuminate\Support\Facades\DB;
 class OrganisationController extends Controller
 {
     use ChecksElectionAccess;
+
+    public function index(): Response
+    {
+        $user = auth()->user();
+
+        $organisations = $user->organisationRoles()
+            ->with('organisation')
+            ->get()
+            ->map(fn ($role) => [
+                'id'        => $role->organisation->id,
+                'name'      => $role->organisation->name,
+                'slug'      => $role->organisation->slug,
+                'role'      => $role->role,
+                'joined_at' => $role->created_at?->format('Y-m-d'),
+            ]);
+
+        return Inertia::render('Organisations/Index', [
+            'organisations' => $organisations,
+        ]);
+    }
+
+    public function create(): Response
+    {
+        return Inertia::render('Organisations/Create');
+    }
+
     /**
      * Display an organisation's overview page
      *
@@ -213,7 +239,12 @@ class OrganisationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name'           => 'required|string|min:3|max:255',
+            'email'          => 'nullable|email|max:255',
+            'representative' => 'nullable|string|max:255',
+            'languages'      => 'nullable|array',
+            'languages.*'    => 'string|in:en,de,np',
+            'logo'           => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
 
         $user = auth()->user();
@@ -229,12 +260,22 @@ class OrganisationController extends Controller
                 $slug = $originalSlug . '-' . $counter++;
             }
 
+            // Handle logo upload
+            $logoPath = null;
+            if ($request->hasFile('logo')) {
+                $logoPath = $request->file('logo')->store('organisations/logos', 'public');
+            }
+
             // Create new tenant organisation
             $org = Organisation::create([
-                'name' => $request->name,
-                'slug' => $slug,
-                'type' => 'tenant',
-                'is_default' => false,
+                'name'           => $request->name,
+                'slug'           => $slug,
+                'type'           => 'tenant',
+                'is_default'     => false,
+                'email'          => $request->email,
+                'representative' => $request->representative ? ['name' => $request->representative] : null,
+                'languages'      => $request->languages ?? [],
+                'logo'           => $logoPath,
             ]);
 
             \Log::info('Organisation created', [

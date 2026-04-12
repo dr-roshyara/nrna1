@@ -14,6 +14,12 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
+    # Force Laravel routes that conflict with the real public/organisations/ directory
+    RewriteRule ^organisations/?$ index.php [L]
+    RewriteRule ^organisations/create/?$ index.php [L]
+    RewriteRule ^organisations/[^/]+/join/?$ index.php [L]
+    RewriteRule ^my-organisations.*$ index.php [L]
+
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f

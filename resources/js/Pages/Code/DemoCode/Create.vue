@@ -21,8 +21,8 @@
                 </div>
             </div>
 
-            <!-- Header -->
-            <div class="my-4 mx-auto bg-purple-600 text-white p-4 rounded-lg text-center shadow-lg max-w-md">
+            <!-- Header — hidden for public demo (code display box is sufficient) -->
+            <div v-if="!is_public_demo" class="my-4 mx-auto bg-purple-600 text-white p-4 rounded-lg text-center shadow-lg max-w-md">
                 <div class="text-3xl mb-2">🎮</div>
                 <p class="text-xl font-bold">{{ $t('pages.code-create.header.title') }} (Demo)</p>
             </div>
@@ -51,8 +51,24 @@
                     </p>
                 </div>
 
+                <!-- Public Demo: Code displayed prominently -->
+                <div v-if="is_public_demo && verification_code" class="p-5 bg-green-50 rounded-lg border-l-4 border-green-500 mb-4">
+                    <p class="text-green-900 font-semibold flex items-center mb-3">
+                        <span class="inline-block w-5 h-5 bg-green-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">✓</span>
+                        {{ $t('pages.code-create.public_demo.code_display_label') }}
+                    </p>
+                    <div class="text-center">
+                        <span class="inline-block bg-white border-2 border-green-400 rounded-xl px-8 py-4 text-4xl font-mono font-bold tracking-widest text-green-800 shadow-sm select-all">
+                            {{ verification_code }}
+                        </span>
+                    </div>
+                    <p class="text-green-700 text-sm mt-3 text-center">
+                        {{ $t('pages.code-create.public_demo.code_hint') }}
+                    </p>
+                </div>
+
                 <!-- Email Failed - Showing Fallback Code -->
-                <div v-else-if="show_code_fallback && !email_sent" class="p-4 bg-amber-50 rounded-lg border-l-4 border-amber-500 mb-4">
+                <div v-else-if="show_code_fallback && !email_sent && !is_public_demo" class="p-4 bg-amber-50 rounded-lg border-l-4 border-amber-500 mb-4">
                     <p class="text-amber-900 font-medium flex items-center">
                         <span class="inline-block w-5 h-5 bg-amber-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">⚠</span>
                         Email not sent - using fallback code
@@ -60,10 +76,35 @@
                     <p class="text-amber-800 text-sm mt-2">
                         The verification code is displayed below. Enter it in the form to continue.
                     </p>
+                    <div v-if="verification_code" class="text-center mt-3">
+                        <span class="inline-block bg-white border-2 border-amber-400 rounded-xl px-6 py-3 text-3xl font-mono font-bold tracking-widest text-amber-800 shadow-sm select-all">
+                            {{ verification_code }}
+                        </span>
+                    </div>
                 </div>
 
-                <!-- Instructions -->
-                <div v-if="!codeExpired" class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                <!-- Instructions: Public Demo -->
+                <div v-if="is_public_demo && !codeExpired" class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                    <p class="text-gray-900 font-medium mb-2 flex items-center">
+                        <span class="inline-block w-5 h-5 bg-blue-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">!</span>
+                        {{ $t('pages.code-create.public_demo.instructions_title') }}
+                    </p>
+                    <p class="text-gray-800 leading-relaxed">
+                        {{ $t('pages.code-create.public_demo.instructions_body') }}
+                    </p>
+                </div>
+
+                <!-- Guide link: Public Demo only -->
+                <div v-if="is_public_demo" class="text-center mt-3">
+                    <a :href="route('public-demo.guide')"
+                       class="inline-flex items-center gap-1.5 text-sm text-purple-600 hover:text-purple-700 hover:underline focus:outline-none focus:ring-2 focus:ring-purple-400 rounded px-2 py-1">
+                        <span>❓</span>
+                        {{ $t('pages.code-create.public_demo.guide_link') }}
+                    </a>
+                </div>
+
+                <!-- Instructions: Normal Demo (email-based) -->
+                <div v-else-if="!is_public_demo && !codeExpired" class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
                     <p class="text-gray-900 font-medium mb-3 flex items-center">
                         <span class="inline-block w-5 h-5 bg-blue-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">!</span>
                         {{ $t('pages.code-create.instructions.nepali_section') }}
@@ -209,6 +250,14 @@ const props = defineProps({
         type: Boolean,
         default: false
     },
+    verification_code: {
+        type: String,
+        default: null
+    },
+    is_public_demo: {
+        type: Boolean,
+        default: false
+    },
 });
 
 const { t, locale } = useI18n();
@@ -241,16 +290,15 @@ const getInstructions = () => {
 };
 
 const submit = () => {
-    console.log(form.voting_code);
-
     let submitUrl;
-    if (props.useSlugPath && props.slug) {
+    if (props.is_public_demo && props.slug) {
+        submitUrl = `/public-demo/${props.slug}/code`;
+    } else if (props.useSlugPath && props.slug) {
         submitUrl = `/v/${props.slug}/demo-code`;
     } else {
         submitUrl = "/demo/codes";
     }
 
-    console.log('Submitting to DEMO URL:', submitUrl);
     form.post(submitUrl);
 };
 

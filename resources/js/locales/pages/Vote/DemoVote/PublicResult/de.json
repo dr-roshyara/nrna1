@@ -1,0 +1,47 @@
+{
+  "header": {
+    "title": "Abstimmung überprüfen",
+    "subtitle": "Geben Sie Ihren Quittungscode ein, um Ihre abgegebenen Stimmen anzuzeigen."
+  },
+  "form": {
+    "card_title": "Stimme überprüfen",
+    "card_subtitle": "Bitte geben Sie den Quittungscode ein, den Sie nach der Abstimmung erhalten haben.",
+    "instructions_badge": "Demo-Abstimmung",
+    "instructions_body": "Geben Sie den 12-stelligen Quittungscode aus Ihrer Bestätigungsseite ein, um Ihre Stimmen anzuzeigen.",
+    "your_receipt_label": "Ihr Quittungscode",
+    "receipt_hint": "Kopieren Sie diesen Code und geben Sie ihn unten ein.",
+    "copy_button": "Kopieren",
+    "copied": "Kopiert!",
+    "input_label": "Quittungscode eingeben",
+    "input_placeholder": "z.B. A1B2C3D4E5F6",
+    "submit_button": "Stimme anzeigen",
+    "processing": "Wird überprüft ..."
+  },
+  "success": {
+    "title": "Stimme erfolgreich überprüft",
+    "subtitle": "Ihre abgegebenen Stimmen werden unten angezeigt."
+  },
+  "receipt": {
+    "title": "Stimmzettel-Quittung",
+    "hash_label": "Quittungscode",
+    "timestamp_label": "Abgestimmt am",
+    "copy_button": "Code kopieren",
+    "copied": "Kopiert!",
+    "print_button": "Drucken"
+  },
+  "votes": {
+    "title": "Ihre abgegebenen Stimmen",
+    "national_posts": "Nationale Positionen",
+    "regional_posts": "Regionale Positionen",
+    "abstained": "Enthalten",
+    "no_votes": "Keine Stimmen aufgezeichnet."
+  },
+  "demo_info": {
+    "title": "Demo-Modus",
+    "body": "Dies ist eine Testabstimmung. Sie koennen beliebig oft abstimmen."
+  },
+  "buttons": {
+    "try_again": "Erneut abstimmen",
+    "home": "Zur Startseite"
+  }
+}

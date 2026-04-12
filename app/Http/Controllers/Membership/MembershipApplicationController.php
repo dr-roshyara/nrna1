@@ -12,11 +12,14 @@ use App\Models\MembershipFee;
 use App\Models\MembershipType;
 use App\Models\Organisation;
 use App\Models\OrganisationUser;
+use App\Models\User;
 use App\Models\UserOrganisationRole;
 use App\Policies\MembershipPolicy;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -68,11 +71,14 @@ class MembershipApplicationController extends Controller
             return back()->withErrors(['error' => 'You are already an active member of this organisation.']);
         }
 
-        // Guard: user already has a pending application
+        // Guard: user already has a pending application (match by user_id OR email)
         $hasPending = MembershipApplication::withoutGlobalScopes()
             ->where('organisation_id', $organisation->id)
-            ->where('user_id', $user->id)
             ->whereIn('status', ['draft', 'submitted', 'under_review'])
+            ->where(function ($q) use ($user) {
+                $q->where('user_id', $user->id)
+                  ->orWhere('applicant_email', $user->email);
+            })
             ->exists();
 
         if ($hasPending) {
@@ -131,9 +137,18 @@ class MembershipApplicationController extends Controller
 
         $application->load(['user', 'membershipType', 'reviewer']);
 
+        // For public applications awaiting type assignment, pass available types
+        $types = $application->isPublicApplication()
+            ? MembershipType::where('organisation_id', $organisation->id)
+                ->where('is_active', true)
+                ->orderBy('sort_order')
+                ->get(['id', 'name', 'fee_amount', 'fee_currency', 'duration_months'])
+            : collect();
+
         return Inertia::render('Organisations/Membership/Applications/Show', [
             'organisation' => $organisation->only('id', 'name', 'slug'),
             'application'  => $application,
+            'types'        => $types,
         ]);
     }
 
@@ -149,8 +164,58 @@ class MembershipApplicationController extends Controller
             return back()->withErrors(['error' => 'This application has already been processed.']);
         }
 
+        // Public applications: admin must select a membership type at approval
+        if ($application->isPublicApplication()) {
+            $request->validate([
+                'membership_type_id' => ['required', 'uuid'],
+            ]);
+
+            $selectedType = MembershipType::where('id', $request->membership_type_id)
+                ->where('organisation_id', $organisation->id)
+                ->where('is_active', true)
+                ->first();
+
+            if (! $selectedType) {
+                return back()->withErrors(['membership_type_id' => 'The selected membership type is not available.']);
+            }
+
+            $application->update(['membership_type_id' => $selectedType->id]);
+            $application->refresh();
+        }
+
         try {
             DB::transaction(function () use ($application, $request, $organisation) {
+                // For public applications, link or create the user account
+                if ($application->isPublicApplication()) {
+                    $data = $application->application_data ?? [];
+
+                    // Re-use existing account if the email is already registered
+                    $user = User::where('email', $application->applicant_email)->first();
+
+                    if (! $user) {
+                        $user = User::create([
+                            'id'              => (string) Str::uuid(),
+                            'organisation_id' => $organisation->id,
+                            'name'            => trim(($data['first_name'] ?? '') . ' ' . ($data['last_name'] ?? '')),
+                            'first_name'      => $data['first_name'] ?? null,
+                            'last_name'       => $data['last_name'] ?? null,
+                            'email'           => $application->applicant_email,
+                            'telephone'       => $data['telephone_number'] ?? null,
+                            'city'            => $data['city'] ?? null,
+                            'country'         => $data['country'] ?? null,
+                            'education_level' => $data['education_level'] ?? null,
+                            'profession'      => $data['profession'] ?? null,
+                            'password'        => Hash::make(Str::random(32)),
+                        ]);
+
+                        // Send password-set invitation link only for brand-new accounts
+                        Password::sendResetLink(['email' => $user->email]);
+                    }
+
+                    $application->update(['user_id' => $user->id]);
+                    $application->refresh();
+                }
+
                 $application->approve($request->user()->id);
 
                 $type = $application->membershipType;
@@ -168,8 +233,8 @@ class MembershipApplicationController extends Controller
                     ]
                 );
 
-                // Create UserOrganisationRole
-                UserOrganisationRole::firstOrCreate(
+                // Create UserOrganisationRole only if no role exists yet (owner/admin takes precedence)
+                UserOrganisationRole::withoutGlobalScopes()->firstOrCreate(
                     [
                         'organisation_id' => $organisation->id,
                         'user_id'         => $application->user_id,
