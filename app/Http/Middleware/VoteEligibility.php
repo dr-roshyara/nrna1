@@ -19,6 +19,12 @@ class VoteEligibility
     {
         $user = Auth::user();
 
+        \Illuminate\Support\Facades\Log::info('🔵 [VoteEligibility] Middleware START', [
+            'user_id' => $user?->id,
+            'has_voter_slug' => $request->attributes->get('voter_slug') !== null,
+            'route' => $request->route()->getName(),
+        ]);
+
         // ✅ Check if user is authenticated
         if (!$user) {
             return redirect()->route('login')
@@ -37,6 +43,7 @@ class VoteEligibility
         // EnsureVoterStepOrder) has already validated eligibility, voting status,
         // and session window. Skip the legacy is_voter / can_vote column check.
         if ($request->attributes->get('voter_slug')) {
+            \Illuminate\Support\Facades\Log::info('✅ [VoteEligibility] Voter slug present - bypassing legacy check');
             return $next($request);
         }
 

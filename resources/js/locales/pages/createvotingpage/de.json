@@ -19,7 +19,10 @@
   "agreement": {
     "title": "Wahlvereinbarung",
     "final_warning": "Ihre Stimme ist endgültig und kann nach der Abgabe nicht mehr geändert werden.",
-    "progress_label": "Gesamtfortschritt"
+    "progress_label": "Gesamtfortschritt",
+    "checkbox_label": "Ich bestätige und akzeptiere die Bedingungen",
+    "checkbox_description": "Ich stimme den oben genannten Bedingungen zu und bestätige, dass meine Stimmabgabe korrekt und endgültig ist.",
+    "ready_message": "Sie sind bereit, Ihre Stimme abzugeben!"
   },
   "submit": {
     "review_submit": "Überprüfen & Absenden"

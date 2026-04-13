@@ -79,8 +79,9 @@ class CodeController extends Controller
             'existing_code_verified' => $existingCode ? $existingCode->can_vote_now : 'no_code',
         ]);
 
-        // ⚠️ If code is already verified, redirect to the appropriate next step
-        if ($existingCode && $existingCode->can_vote_now == 1) {
+        // ⚠️ If code is already verified AND no fresh voter slug is being used, redirect to the appropriate next step
+        // When a voter slug is present, we allow a fresh code verification flow (don't redirect)
+        if ($existingCode && $existingCode->can_vote_now == 1 && !$voterSlug) {
             Log::warning('⚠️ [CREATE] User already has verified code - redirecting to correct step', [
                 'user_id' => $user->id,
                 'code_id' => $existingCode->id,

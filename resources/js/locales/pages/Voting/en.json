@@ -28,7 +28,14 @@
     "post_label": "Regional Position"
   },
   "summary": {
-    "title": "Your Vote Summary"
+    "title": "Your Vote Summary",
+    "no_vote_selected": "No Vote Selected",
+    "selected_candidates": "Selected Candidates",
+    "no_selection_made": "No selection made",
+    "summary_stats": "Summary",
+    "positions_selected": "positions selected",
+    "no_vote_selections": "no-vote selections",
+    "incomplete_selections": "incomplete selections"
   },
   "validation": {
     "title": "Please Review Your Selections"

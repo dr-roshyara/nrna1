@@ -28,7 +28,14 @@
     "post_label": "क्षेत्रीय पद"
   },
   "summary": {
-    "title": "आपनो मत सारांश"
+    "title": "आपनो मत सारांश",
+    "no_vote_selected": "मतदान नगरिएको",
+    "selected_candidates": "चयन गरिएका उम्मेदवारहरू",
+    "no_selection_made": "कुनै छनौट गरिएको छैन",
+    "summary_stats": "सारांश",
+    "positions_selected": "पद चयन गरिएको",
+    "no_vote_selections": "मतदान नगरिएको",
+    "incomplete_selections": "अपूर्ण छनौट"
   },
   "validation": {
     "title": "कृपया आपनो चयन पुनरावलोकन गर्नुहोस्"

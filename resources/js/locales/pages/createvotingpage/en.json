@@ -19,7 +19,10 @@
   "agreement": {
     "title": "Voting Agreement",
     "final_warning": "Your vote is final and cannot be changed after submission.",
-    "progress_label": "Overall Progress"
+    "progress_label": "Overall Progress",
+    "checkbox_label": "I Confirm and Accept the Terms",
+    "checkbox_description": "I agree to the terms and conditions above and confirm that my vote selections are accurate and final.",
+    "ready_message": "You're ready to submit your vote!"
   },
   "submit": {
     "review_submit": "Review & Submit"

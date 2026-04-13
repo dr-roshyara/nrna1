@@ -28,7 +28,14 @@
     "post_label": "Regionale Position"
   },
   "summary": {
-    "title": "Zusammenfassung Ihrer Stimme"
+    "title": "Zusammenfassung Ihrer Stimme",
+    "no_vote_selected": "Keine Stimme ausgewählt",
+    "selected_candidates": "Ausgewählte Kandidaten",
+    "no_selection_made": "Keine Auswahl getroffen",
+    "summary_stats": "Zusammenfassung",
+    "positions_selected": "Positionen ausgewählt",
+    "no_vote_selections": "Nichtwahl-Auswahlen",
+    "incomplete_selections": "unvollständige Auswahlen"
   },
   "validation": {
     "title": "Bitte überprüfen Sie Ihre Auswahl"

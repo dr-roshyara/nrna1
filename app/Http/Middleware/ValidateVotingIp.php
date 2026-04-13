@@ -21,12 +21,18 @@ class ValidateVotingIp
      */
     public function handle(Request $request, Closure $next): Response
     {
+        \Illuminate\Support\Facades\Log::info('🔵 [ValidateVotingIp] Middleware START', [
+            'user_id' => auth()->id(),
+            'route' => $request->route()->getName(),
+        ]);
+
         // Check if IP address control is enabled
         $ipControlEnabled = config('voting_security.control_ip_address', 1) == 1;
 
         // If IP control is disabled globally, allow all requests
         if (!$ipControlEnabled) {
             $this->logBypassedCheck($request, 'IP control disabled globally');
+            \Illuminate\Support\Facades\Log::info('✅ [ValidateVotingIp] IP control disabled - bypassing');
             return $next($request);
         }
 
@@ -40,9 +46,16 @@ class ValidateVotingIp
         $currentIp = $this->getClientIp($request);
         $votingIp = $user->voting_ip;
 
+        \Illuminate\Support\Facades\Log::info('🔵 [ValidateVotingIp] IP check details', [
+            'user_voting_ip' => $votingIp,
+            'current_ip' => $currentIp,
+            'is_null' => is_null($votingIp),
+        ]);
+
         // If user has no voting_ip set (null), they can vote from any IP
         // This is the intended behavior when voter is approved WITHOUT IP checking
         if (is_null($votingIp)) {
+            \Illuminate\Support\Facades\Log::info('✅ [ValidateVotingIp] User has no IP restriction - allowing');
             $this->logBypassedCheck($request, 'User has no IP restriction', [
                 'user_id' => $user->id,
                 'user_name' => $user->name,

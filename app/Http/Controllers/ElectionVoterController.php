@@ -67,6 +67,7 @@ class ElectionVoterController extends Controller
                                  ->orWhere('members.membership_expires_at', '>', now()))
             ->whereNull('members.deleted_at')
             ->whereNotIn('organisation_users.user_id', $assignedUserIds)
+            ->distinct()
             ->select('users.id', 'users.name', 'users.email')
             ->orderBy('users.name')
             ->get();
@@ -155,6 +156,7 @@ class ElectionVoterController extends Controller
             ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
                                  ->orWhere('members.membership_expires_at', '>', now()))
             ->whereNull('members.deleted_at')
+            ->distinct()
             ->pluck('organisation_users.user_id')
             ->toArray();
 
