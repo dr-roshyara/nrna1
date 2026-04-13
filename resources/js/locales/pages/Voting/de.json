@@ -90,6 +90,8 @@
     "selected_candidates": "Ausgewählte Kandidaten",
     "of": "von",
     "progress": "Fortschritt",
+    "checkbox_select": "Wählen",
+    "checkbox_selected": "Ausgewählt",
     "status_no_vote": "Sie haben sich entschieden, für diese Position nicht zu stimmen",
     "status_valid": "Perfekt! Sie haben genau {number} Kandidat(en) gewählt",
     "status_invalid": "Bitte wählen Sie genau {number} Kandidat(en)",

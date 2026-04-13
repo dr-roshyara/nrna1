@@ -90,6 +90,8 @@
     "selected_candidates": "चयन गरिएका उम्मेदवारहरू",
     "of": "को",
     "progress": "प्रगति",
+    "checkbox_select": "छान्नुहोस्",
+    "checkbox_selected": "चयन गरिएको",
     "status_no_vote": "तपाइँले यो पदको लागि मतदान नगर्ने रोज्नुभएको छ",
     "status_valid": "उत्तम! तपाइँले ठीक {number} जना उम्मेदवार छान्नुभएको छ",
     "status_invalid": "कृपया ठीक {number} जना उम्मेदवार छान्नुहोस्",

@@ -211,16 +211,16 @@
                                 {{ $t('pages.voting.agreement.title') }}
                             </h3>
                             <div class="flex justify-center mb-4">
-                                <label class="flex items-start gap-4 cursor-pointer max-w-sm">
+                                <label class="flex items-start gap-5 cursor-pointer max-w-2xl">
                                     <input
                                         type="checkbox"
                                         v-model="form.agree_button"
-                                        class="w-6 h-6 mt-0.5 shrink-0 text-primary-600 rounded
-                                               border-2 border-neutral-400
+                                        class="w-14 h-14 mt-1 shrink-0 text-primary-600 rounded
+                                               border-4 border-neutral-500
                                                focus:ring-4 focus:ring-primary-300 focus:ring-offset-1
-                                               cursor-pointer"
+                                               cursor-pointer transition-all"
                                     />
-                                    <span class="font-sans font-medium text-neutral-900 leading-relaxed">
+                                    <span class="font-sans font-bold text-lg text-neutral-900 leading-relaxed">
                                         {{ $t('pages.voting.agreement.checkbox_label') }}
                                     </span>
                                 </label>
