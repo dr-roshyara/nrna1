@@ -130,21 +130,32 @@ Route::bind('vslug', function (string $value) {
 
 // Auth::routes();
 
-Route::get('/storage/images/{filename}', function ($filename)
-{
-    $path = storage_path('images/' . $filename);
-    if (!File::exists($path)) {
-        abort(404);
+// ── Serve files from storage/app/public/* via /storage/* ──
+Route::get('/storage/{path?}', function ($path = null) {
+    if (!$path) {
+        abort(404, 'File not found');
     }
 
-    $file = File::get($path);
-    $type = File::mimeType($path);
+    // Prevent directory traversal attacks
+    $safe_path = str_replace('..', '', $path);
+    if ($safe_path !== $path) {
+        abort(403, 'Access denied');
+    }
+
+    $full_path = storage_path('app/public/' . $safe_path);
+
+    if (!File::exists($full_path) || !is_file($full_path)) {
+        abort(404, 'File not found: ' . $safe_path);
+    }
+
+    $file = File::get($full_path);
+    $type = File::mimeType($full_path);
 
     $response = Response::make($file, 200);
     $response->header("Content-Type", $type);
 
     return $response;
-});
+})->where('path', '.*');
 
 // Newsletter unsubscribe (public — no auth required)
 Route::get('/unsubscribe/{token}', [NewsletterUnsubscribeController::class, 'unsubscribe'])
