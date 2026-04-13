@@ -174,6 +174,13 @@ class OrganisationMemberInvitationController extends Controller
         ]);
 
         DB::transaction(function () use ($invitation, $user) {
+            // 0. Update user's organisation_id (CRITICAL for voting and other operations)
+            $user->update(['organisation_id' => $invitation->organisation_id]);
+            \Log::info('INVITE_ACCEPT: user organisation_id updated', [
+                'user_id' => $user->id,
+                'organisation_id' => $invitation->organisation_id,
+            ]);
+
             // 1. OrganisationUser (platform link)
             $orgUser = OrganisationUser::withoutGlobalScopes()->firstOrCreate(
                 [

@@ -54,6 +54,13 @@ class CodeController extends Controller
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
+        Log::emergency('🔴 [CREATE] ENTERED create() method', [
+            'user_id' => $user->id ?? 'null',
+            'election_id' => $election->id ?? 'null',
+            'has_voter_slug' => $voterSlug !== null,
+            'voter_slug_value' => $voterSlug ? $voterSlug->slug : 'null',
+        ]);
+
         // Bind organisation context so BelongsToTenant scope resolves correctly
         // for all Code queries within this request.
         session(['current_organisation_id' => $election->organisation_id]);
@@ -81,6 +88,14 @@ class CodeController extends Controller
 
         // ⚠️ If code is already verified AND no fresh voter slug is being used, redirect to the appropriate next step
         // When a voter slug is present, we allow a fresh code verification flow (don't redirect)
+        Log::emergency('🔴 [CREATE] Checking redirect condition', [
+            'existing_code_exists' => $existingCode !== null,
+            'can_vote_now' => $existingCode ? $existingCode->can_vote_now : 'no_code',
+            'has_voter_slug' => $voterSlug !== null,
+            'voter_slug_value' => $voterSlug ? $voterSlug->slug : 'null',
+            'should_redirect' => $existingCode && $existingCode->can_vote_now == 1 && !$voterSlug,
+        ]);
+
         if ($existingCode && $existingCode->can_vote_now == 1 && !$voterSlug) {
             Log::warning('⚠️ [CREATE] User already has verified code - redirecting to correct step', [
                 'user_id' => $user->id,
