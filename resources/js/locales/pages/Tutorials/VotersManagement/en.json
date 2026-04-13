@@ -1,0 +1,235 @@
+{
+  "meta": {
+    "title": "Voter Verification Guide",
+    "description": "Complete guide to adding members as voters, verifying identities, and managing election voter assignments with IP and device verification.",
+    "read_time": "5 min read",
+    "badge_label": "⏱️"
+  },
+  "page": {
+    "title": "Voter Management Guide",
+    "subtitle": "Learn how to assign members as voters and set up identity verification for your elections."
+  },
+  "toc": {
+    "label": "Contents",
+    "items": [
+      { "id": "overview", "label": "Overview" },
+      { "id": "before-you-begin", "label": "Before You Begin" },
+      { "id": "add-voters", "label": "Adding Members as Voters" },
+      { "id": "verification-modes", "label": "Voter Verification Modes" },
+      { "id": "video-call-workflow", "label": "Video Call Verification Workflow" },
+      { "id": "ip-capture", "label": "How IP Capture Works" },
+      { "id": "voting-enforcement", "label": "Voting Enforcement" },
+      { "id": "scenarios", "label": "Common Scenarios" },
+      { "id": "faq", "label": "FAQ" }
+    ]
+  },
+  "section_overview": {
+    "heading": "Overview",
+    "body": "The Voter Management page allows election officers to assign eligible members as voters and set up identity verification to prevent fraud.\n\nKey responsibilities:\n• Add members to the election as eligible voters\n• Configure verification modes (None, IP Only, Fingerprint Only, or Both)\n• Conduct identity verification via video call\n• Monitor voter status and manage suspensions\n\nThis guide walks through the entire process from assignment to verification."
+  },
+  "section_prerequisites": {
+    "heading": "Before You Begin",
+    "intro": "Ensure you have the following prerequisites in place:",
+    "steps": [
+      {
+        "title": "Election Created",
+        "body": "You have already created a real (non-demo) election. Demo elections do not support voter management."
+      },
+      {
+        "title": "Officer Role",
+        "body": "You have been assigned the Election Officer role for this election by an Admin."
+      },
+      {
+        "title": "Members Imported",
+        "body": "Organization members have been created and are marked as Active with fees paid or exempt."
+      },
+      {
+        "title": "Membership Types (Optional)",
+        "body": "If using membership types, ensure they grant voting rights. Members without a type are eligible by default."
+      }
+    ]
+  },
+  "section_add_voters": {
+    "heading": "Adding Members as Voters",
+    "steps": [
+      {
+        "title": "Navigate to Voters Page",
+        "body": "Go to your election and click the Voters tab to see the voter management dashboard."
+      },
+      {
+        "title": "Search for Members",
+        "body": "Use the search box to find eligible members by name or email. Only active members with paid/exempt fees appear."
+      },
+      {
+        "title": "Select Members",
+        "body": "Click the checkbox next to one or more members. You can select up to 1,000 members at once."
+      },
+      {
+        "title": "Click Assign Button",
+        "body": "Click the green Assign button. Selected members are instantly assigned as voters for this election."
+      },
+      {
+        "title": "Verify Assignment",
+        "body": "Members now appear in the voters table. Their status is Pending until you approve them."
+      }
+    ],
+    "eligibility_heading": "Who Can Be Assigned as a Voter?",
+    "eligibility_items": [
+      "Active organization members",
+      "Fees status must be Paid or Exempt",
+      "Membership type either: (a) none (eligible by default), OR (b) grants voting rights = true",
+      "Membership must not be expired",
+      "Must not already be assigned to this election"
+    ]
+  },
+  "section_verification_modes": {
+    "heading": "Voter Verification Modes",
+    "body": "Elections support four verification modes to balance security with usability. You set the mode in Election Settings, and it applies to all voters in that election.",
+    "table_headers": ["Mode", "Description", "Use Case"],
+    "modes": [
+      {
+        "name": "None",
+        "description": "No verification required. Voters can vote immediately upon login.",
+        "use_case": "Small, low-risk organizations (sports clubs, hobby groups) where voter identity is already well-known."
+      },
+      {
+        "name": "IP Only",
+        "description": "Voter must vote from a verified IP address. Prevents voting from multiple locations.",
+        "use_case": "Remote organizations where voters work from home offices. Officers verify once, voters can use that location for voting."
+      },
+      {
+        "name": "Fingerprint Only",
+        "description": "Voter must use a verified device. Prevents voting from shared or borrowed devices.",
+        "use_case": "High-security elections where device ownership is critical (board votes, leadership elections)."
+      },
+      {
+        "name": "Both (IP + Fingerprint)",
+        "description": "Voter must vote from verified IP AND verified device. Maximum security.",
+        "use_case": "Diaspora organizations or international elections requiring maximum fraud prevention."
+      }
+    ]
+  },
+  "section_video_call": {
+    "heading": "Video Call Verification Workflow",
+    "steps": [
+      "Member is assigned as voter (status: Pending)",
+      "Configure verification mode in Election Settings (None/IP Only/Fingerprint/Both)",
+      "Tell voter: 'Please log in from the location/device you'll use for voting'",
+      "Voter logs in — their IP and device fingerprint are automatically captured",
+      "Schedule a brief video call with the voter (over Zoom, phone, or in-person)",
+      "During call: open the Voter Management page and click the Verify button next to the voter",
+      "The Verify Modal opens with voter's IP pre-populated (read-only) and device fingerprint (read-only)",
+      "Confirm voter identity visually during the video call",
+      "Add optional notes about the verification (e.g., 'Verified passport', 'Video call 2024-01-15')",
+      "Click Verify Voter button in the modal",
+      "A green verification badge appears next to the voter's name — they can now vote!"
+    ]
+  },
+  "section_ip_capture": {
+    "heading": "How IP Capture Works",
+    "body": "IP addresses are automatically captured when voters log in. You do NOT need to ask voters for their IP or manually enter it.\n\nHere's why this matters:\n1. Voters control their IP by choosing WHERE to log in (home, office, cafe, etc.)\n2. Officers cannot edit or falsify the IP in the verification modal\n3. The system enforces that voters vote from the same IP they logged in with\n4. If a voter's IP changes (e.g., they move locations), they must re-verify",
+    "how_header": "How it works:",
+    "how_it_works": [
+      "Voter logs in from their home office (IP: 192.168.1.100)",
+      "System captures IP automatically and stores it in their account",
+      "Officer verifies voter via video call — IP is read-only in the modal",
+      "Voter later votes — system confirms IP matches (192.168.1.100)",
+      "If voter tries voting from different IP (coffee shop), vote is blocked"
+    ]
+  },
+  "section_enforcement": {
+    "heading": "Voting Enforcement",
+    "modes": [
+      {
+        "name": "Mode: None",
+        "behavior": "Voter can vote immediately upon login. No verification check required."
+      },
+      {
+        "name": "Mode: IP Only",
+        "behavior": "Voter must have an active IP verification. If unverified or IP mismatch, vote is denied with message: 'Your current IP does not match your verified IP.'"
+      },
+      {
+        "name": "Mode: Fingerprint Only",
+        "behavior": "Voter must have an active device verification. If unverified or device mismatch, vote is denied with message: 'Your device does not match your verified device.'"
+      },
+      {
+        "name": "Mode: Both (IP + Fingerprint)",
+        "behavior": "Voter must have BOTH active verifications and both must match. Any mismatch blocks vote: 'IP or device mismatch. Cannot vote from this location/device.'"
+      }
+    ]
+  },
+  "section_scenarios": {
+    "heading": "Common Scenarios",
+    "items": [
+      {
+        "title": "Scenario 1: Small Club Election (No Verification)",
+        "setup": "A sports club with 50 members votes on leadership positions. All members know each other; fraud risk is low.",
+        "steps": [
+          "Set election verification mode to: None",
+          "Assign all 50 members as voters",
+          "No verification step needed — members can vote immediately upon login"
+        ]
+      },
+      {
+        "title": "Scenario 2: Remote Team Board Vote (IP Only)",
+        "setup": "A remote-first software company (50 employees across 10 countries) votes on executive positions. Team members work from home offices.",
+        "steps": [
+          "Set election verification mode to: IP Only",
+          "Tell team: 'Vote from your usual home office location'",
+          "Schedule brief video calls with each team member",
+          "During call, verify their identity and record their IP",
+          "Team members can vote anytime from that home office IP"
+        ]
+      },
+      {
+        "title": "Scenario 3: International Diaspora Organization (Both IP + Fingerprint)",
+        "setup": "A 5,000-member diaspora organization with chapters in 12 countries. Members are scattered; fraud risk is very high.",
+        "steps": [
+          "Set election verification mode to: Both",
+          "Schedule mandatory in-person or video verification sessions",
+          "During sessions: verify identity (passport/ID), record IP + device fingerprint",
+          "Members can only vote from verified location/device combination",
+          "Maximum security ensures one-person-one-vote guarantee"
+        ]
+      }
+    ]
+  },
+  "section_faq": {
+    "heading": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "Can I assign a member who isn't in our organization?",
+        "answer": "No. Only active organization members with paid/exempt fees can be assigned as voters. This is enforced at the system level."
+      },
+      {
+        "question": "What if a voter's IP changes after I verify them?",
+        "answer": "If a voter logs in from a different IP, they will not be able to vote (if IP mode is enabled). They must contact you to re-verify with their new IP. You can open the Verify Modal again and confirm their new IP."
+      },
+      {
+        "question": "Can I edit the IP after verification?",
+        "answer": "No. The IP field in the Verify Modal is read-only — it shows the voter's actual login IP and cannot be changed. This prevents fraudulent edits."
+      },
+      {
+        "question": "What if a member has no membership type?",
+        "answer": "Members with NULL membership_type_id are eligible by default. They don't need any special membership type to vote."
+      },
+      {
+        "question": "Can I remove a voter after assigning them?",
+        "answer": "Yes. Click the Remove button next to any voter to unassign them. If they haven't voted yet, they're immediately removed. If they've voted, the vote remains valid but they're marked removed."
+      },
+      {
+        "question": "What is the suspension system?",
+        "answer": "Election Officers can propose suspending an active voter (e.g., for fraud). A second officer must confirm before suspension takes effect. This two-person approval prevents accidental vote suppression. Suspended voters cannot vote."
+      },
+      {
+        "question": "Can I export the voter list?",
+        "answer": "Yes. Click the Export CSV button to download a list of all voters, their status, and assignment date. Useful for records and auditing."
+      },
+      {
+        "question": "What does the verification badge mean?",
+        "answer": "The green checkmark badge next to a voter's name means their identity has been verified via video call (or equivalent) by an officer. They can now vote (if verification mode requires it)."
+      }
+    ]
+  },
+  "back_text": "Back to Voters"
+}

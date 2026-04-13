@@ -87,6 +87,22 @@
                 <!-- ── Workflow Step Indicator ── -->
                 <WorkflowStepIndicator :currentStep="3" class="mb-10 max-w-4xl mx-auto" />
 
+                <!-- ── Election Constraint Hint ── -->
+                <div v-if="election" class="constraint-hint mb-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded max-w-4xl mx-auto">
+                    <template v-if="election.selection_constraint_type === 'exact'">
+                        ⚠️ You must select exactly {{ election.selection_constraint_max }} candidate(s) per post.
+                    </template>
+                    <template v-else-if="election.selection_constraint_type === 'minimum'">
+                        ⚠️ Select at least {{ election.selection_constraint_min }} candidate(s) per post.
+                    </template>
+                    <template v-else-if="election.selection_constraint_type === 'range'">
+                        ⚠️ Select between {{ election.selection_constraint_min }} and {{ election.selection_constraint_max }} candidate(s) per post.
+                    </template>
+                    <template v-else-if="election.selection_constraint_type === 'maximum'">
+                        Select up to {{ election.selection_constraint_max }} candidate(s) per post.
+                    </template>
+                </div>
+
                 <!-- ── Loading Skeleton ── -->
                 <div v-if="isLoading" class="space-y-8" aria-busy="true" aria-label="Loading voting form">
                     <div v-for="i in 3" :key="i" class="animate-pulse rounded-2xl overflow-hidden shadow-sm">
@@ -118,6 +134,8 @@
                                 :post="post"
                                 :selected-candidates="selectedCandidates[post.id] || []"
                                 :no-vote-selected="noVoteSelections[post.id] || false"
+                                :no-vote-enabled="election?.no_vote_option_enabled ?? true"
+                                :no-vote-label="election?.no_vote_option_label ?? 'Abstain'"
                                 :has-error="!!postErrors[post.id]"
                                 :error-message="postErrors[post.id] || ''"
                                 :post-index="index"
@@ -155,6 +173,8 @@
                                 :post="post"
                                 :selected-candidates="selectedCandidates[post.id] || []"
                                 :no-vote-selected="noVoteSelections[post.id] || false"
+                                :no-vote-enabled="election?.no_vote_option_enabled ?? true"
+                                :no-vote-label="election?.no_vote_option_label ?? 'Abstain'"
                                 :has-error="!!postErrors[post.id]"
                                 :error-message="postErrors[post.id] || ''"
                                 :post-index="normalizedNationalPosts.length + index"

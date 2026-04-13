@@ -135,6 +135,26 @@
       ═══════════════════════════════════════════════════════════ -->
       <main class="voters-main">
 
+        <!-- Page Header with Guide Link -->
+        <div class="voters-page-header">
+          <div class="voters-page-title-block">
+            <h2 class="voters-page-title">Voter Management</h2>
+            <p class="voters-page-subtitle">Assign, verify and manage election voters</p>
+          </div>
+          <a
+            href="/help/voters-verification_guide"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="voters-guide-link"
+            aria-label="Open Voter Management Guide in new window"
+          >
+            <svg class="voters-guide-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>View Voter Guide</span>
+          </a>
+        </div>
+
         <!-- Flash -->
         <div v-if="$page.props.flash?.success" class="flash flash--ok">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -775,6 +795,64 @@ const cancelProposal = (m) => {
   gap: 1.25rem;
 }
 
+/* Page Header with Guide Link */
+.voters-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #d4a847;
+}
+
+.voters-page-title-block {
+  flex: 1;
+}
+
+.voters-page-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #0d1117;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.01em;
+}
+
+.voters-page-subtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.voters-guide-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #d4a847 0%, #c9992d 100%);
+  color: white;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(212, 168, 71, 0.3);
+}
+
+.voters-guide-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(212, 168, 71, 0.4);
+}
+
+.voters-guide-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke-width: 2;
+}
+
 /* Flash */
 .flash {
   display: flex;
@@ -1018,5 +1096,20 @@ const cancelProposal = (m) => {
   .voters-sidebar { width: 100%; min-height: auto; flex-direction: row; flex-wrap: wrap; }
   .sidebar-section--grow { flex-basis: 100%; }
   .voters-main { padding: 1.25rem 1rem; }
+
+  .voters-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .voters-guide-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .voters-page-title {
+    font-size: 1.35rem;
+  }
 }
 </style>

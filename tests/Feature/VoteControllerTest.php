@@ -427,4 +427,133 @@ class VoteControllerTest extends TestCase
 
         $this->invokePrivateMethod($controller, 'getElection', [$request]);
     }
+
+    // ── Test: create() exposes election settings in props ──────────────────────
+
+    /** @test */
+    public function create_exposes_election_settings_in_props(): void
+    {
+        $user      = $this->createEligibleVoter();
+        $election  = $this->createRealElection();
+
+        // Configure election settings
+        $election->update([
+            'no_vote_option_enabled'   => true,
+            'no_vote_option_label'     => 'Abstain',
+            'selection_constraint_type' => 'exact',
+            'selection_constraint_min'  => 1,
+            'selection_constraint_max'  => 2,
+        ]);
+
+        $voterSlug = $this->createVoterSlug($user, $election);
+        $this->completeSteps($voterSlug, $election, 2);
+        ElectionMembership::assignVoter($user->id, $election->id);
+
+        // Create a valid code so create() doesn't redirect
+        $this->createVerifiedCode($user, $election, [
+            'can_vote_now'       => 1,
+            'has_voted'          => 0,
+            'has_agreed_to_vote' => 1,
+        ]);
+
+        $response = $this->actingAs($user)
+            ->withSession(['current_organisation_id' => $this->org->id])
+            ->get(route('slug.vote.create', ['vslug' => $voterSlug->slug]));
+
+        // Assert response is successful (Inertia renders as 'app' view)
+        $response->assertStatus(200);
+
+        // Inertia returns HTML with embedded JSON props
+        // The props are serialized into the HTML response
+        $content = $response->getContent();
+
+        // Assert the most basic settings are present
+        $this->assertStringContainsString('no_vote_option_enabled', $content, 'no_vote_option_enabled should be in response');
+        $this->assertStringContainsString('selection_constraint_type', $content, 'selection_constraint_type should be in response');
+    }
+
+    // ── Test: first_submission() validates per-election settings ────────────────
+
+    /** @test */
+    public function first_submission_rejects_no_vote_when_disabled(): void
+    {
+        $user      = $this->createEligibleVoter();
+        $election  = $this->createRealElection();
+
+        // Configure election to DISABLE no-vote option
+        $election->update([
+            'no_vote_option_enabled'   => false,
+            'selection_constraint_type' => 'exact',
+            'selection_constraint_max'  => 2,
+        ]);
+
+        $voterSlug = $this->createVoterSlug($user, $election);
+        $this->completeSteps($voterSlug, $election, 2);
+        ElectionMembership::assignVoter($user->id, $election->id);
+
+        // Create valid code
+        $code = $this->createVerifiedCode($user, $election, [
+            'can_vote_now'       => 1,
+            'has_agreed_to_vote' => 1,
+        ]);
+
+        // Try to submit with no_vote=true when disabled
+        // This should be rejected and redirect back with errors
+        $response = $this->actingAs($user)
+            ->withSession(['current_organisation_id' => $this->org->id])
+            ->post(route('slug.vote.submit', ['vslug' => $voterSlug->slug]), [
+                'agree_button'                 => 1,
+                'national_selected_candidates' => [
+                    ['no_vote' => true, 'post_name' => 'President']  // no_vote inside selection
+                ],
+                'regional_selected_candidates' => [],
+            ]);
+
+        // Inertia pattern: 302 redirect with session errors (not 422)
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors('no_vote');
+    }
+
+    /** @test */
+    public function first_submission_enforces_exact_constraint(): void
+    {
+        $user      = $this->createEligibleVoter();
+        $election  = $this->createRealElection();
+
+        // Configure EXACT constraint: must select exactly 2 candidates per post
+        $election->update([
+            'selection_constraint_type' => 'exact',
+            'selection_constraint_max'  => 2,
+            'no_vote_option_enabled'   => false,
+        ]);
+
+        $voterSlug = $this->createVoterSlug($user, $election);
+        $this->completeSteps($voterSlug, $election, 2);
+        ElectionMembership::assignVoter($user->id, $election->id);
+
+        $code = $this->createVerifiedCode($user, $election, [
+            'can_vote_now'       => 1,
+            'has_agreed_to_vote' => 1,
+        ]);
+
+        // Try to submit with 1 candidate (should require exactly 2)
+        $response = $this->actingAs($user)
+            ->withSession(['current_organisation_id' => $this->org->id])
+            ->post(route('slug.vote.submit', ['vslug' => $voterSlug->slug]), [
+                'agree_button'                 => 1,
+                'national_selected_candidates' => [
+                    0 => [
+                        'candidates' => ['cand-1'],  // Only 1, but exact=2 required
+                        'no_vote' => false,
+                        'post_name' => 'Test Post',
+                        'required_number' => 2,
+                    ]
+                ],
+                'regional_selected_candidates' => [],
+            ]);
+
+        // Should fail with redirect and validation errors (Inertia pattern)
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors();
+    }
 }

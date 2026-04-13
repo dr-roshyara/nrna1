@@ -104,7 +104,7 @@
         />
 
         <!-- Skip Position (No Vote) -->
-        <div class="px-6 pb-5">
+        <div v-if="noVoteEnabled" class="px-6 pb-5">
             <label class="inline-flex items-center gap-3 cursor-pointer group
                           px-4 py-2.5 rounded-lg border border-neutral-200
                           hover:bg-neutral-50 hover:border-neutral-300 transition-all duration-150">
@@ -114,7 +114,7 @@
                        class="w-5 h-5 text-neutral-600 rounded border-neutral-400
                               focus:ring-2 focus:ring-neutral-400 focus:ring-offset-1 cursor-pointer" />
                 <span class="font-sans text-neutral-600 text-sm font-medium group-hover:text-neutral-800">
-                    ⏭️ Skip this position (No vote)
+                    ⏭️ {{ noVoteLabel }}
                 </span>
             </label>
         </div>
@@ -132,6 +132,8 @@ export default {
         post:           { type: Object,  required: true },
         selectedCandidates: { type: Array,   default: () => [] },  // array of candidate IDs
         noVoteSelected: { type: Boolean, default: false },
+        noVoteEnabled:  { type: Boolean, default: true },
+        noVoteLabel:    { type: String,  default: 'Abstain' },
         hasError:       { type: Boolean, default: false },
         errorMessage:   { type: String,  default: '' },
         postIndex:      { type: Number,  default: 0 },

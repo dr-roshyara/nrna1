@@ -447,6 +447,24 @@ public function create(Request $request)
 
     $election = $this->getElection($request);
 
+    // Get election settings with 5-minute cache (invalidated by Election::booted())
+    $electionSettings = null;
+    if ($election) {
+        $electionSettings = \Illuminate\Support\Facades\Cache::remember(
+            "election-settings-{$election->id}",
+            300,
+            function () use ($election) {
+                return [
+                    'no_vote_option_enabled'    => $election->isNoVoteEnabled(),
+                    'no_vote_option_label'      => $election->no_vote_option_label ?? 'Abstain',
+                    'selection_constraint_type' => $election->getSelectionConstraintType(),
+                    'selection_constraint_min'  => $election->selection_constraint_min,
+                    'selection_constraint_max'  => $election->selection_constraint_max,
+                ];
+            }
+        );
+    }
+
     return Inertia::render('Vote/CreateVotingPage', [
         'national_posts' => $national_posts,
         'regional_posts' => $regional_posts,
@@ -455,13 +473,13 @@ public function create(Request $request)
         'user_region' => $auth_user->region,
         'slug' => $voterSlug ? $voterSlug->slug : null,
         'useSlugPath' => $voterSlug !== null,
-        'election' => $election ? [
+        'election' => $election ? array_merge([
             'id' => $election->id,
             'name' => $election->name,
             'type' => $election->type,
             'description' => $election->description,
             'is_active' => $election->is_active,
-        ] : null,
+        ], $electionSettings ?? []) : null,
     ]);
 }
 
@@ -591,8 +609,8 @@ public function first_submission(Request $request)
     // 🐛 BUG FIX: Sanitize vote data before validation to fix inconsistent no_vote flags
     $vote_data = $this->sanitize_vote_data($vote_data);
 
-    // Validate candidate selections with SELECT_ALL_REQUIRED logic
-    $validation_errors = $this->validate_candidate_selections($vote_data);
+    // Validate candidate selections with per-election settings
+    $validation_errors = $this->validate_candidate_selections($vote_data, $election);
 
     if (!empty($validation_errors)) {
         \Log::warning('Vote selection validation failed in first_submission', [
@@ -776,7 +794,7 @@ public function second_submission(Request $request)
         // 🐛 BUG FIX: Sanitize vote data before validation to fix inconsistent no_vote flags
         $vote_data = $this->sanitize_vote_data($vote_data);
 
-        $validation_errors = $this->validate_candidate_selections($vote_data);
+        $validation_errors = $this->validate_candidate_selections($vote_data, $election);
         
         if (!empty($validation_errors)) {
             Log::warning('Vote selection validation failed', [
@@ -1169,10 +1187,18 @@ private function sanitize_selection($selection)
     return $selection;
 }
 
-private function validate_candidate_selections($vote_data)
+private function validate_candidate_selections($vote_data, $election = null)
 {
     $errors = [];
-    $isSelectAllRequired = config('app.select_all_required', 'no') === 'yes';
+
+    // Get per-election settings (default to true/enabled if no election)
+    $noVoteEnabled = $election ? $election->isNoVoteEnabled() : true;
+    $constraintType = $election ? $election->getSelectionConstraintType() : 'maximum';
+    $constraintMin = $election ? $election->selection_constraint_min : null;
+    $constraintMax = $election ? $election->selection_constraint_max : null;
+
+    // Legacy fallback for elections without new settings
+    $isSelectAllRequired = (!$election) ? (config('app.select_all_required', 'no') === 'yes') : false;
 
     // Get selections
     $national_selections = $vote_data['national_selected_candidates'] ?? [];
@@ -1181,84 +1207,85 @@ private function validate_candidate_selections($vote_data)
     // Check if user made any selections at all
     $has_any_selection = false;
 
-    // Check national selections
-    foreach ($national_selections as $index => $selection) {
-        if ($selection) {
-            if (isset($selection['no_vote']) && $selection['no_vote']) {
-                $has_any_selection = true;
-            } elseif (isset($selection['candidates']) && is_array($selection['candidates']) && count($selection['candidates']) > 0) {
+    // Process all selections (national + regional)
+    $all_selections = array_merge($national_selections, $regional_selections);
+
+    foreach ($all_selections as $index => $selection) {
+        if (!$selection) {
+            continue;
+        }
+
+        $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
+        $isNoVote = isset($selection['no_vote']) && $selection['no_vote'];
+
+        // ⚠️  SECURITY: Reject no_vote when disabled (critical check)
+        if ($isNoVote) {
+            if (!$noVoteEnabled) {
+                $errors['no_vote'] = 'Abstaining is not permitted for this election.';
+                continue; // ← CRITICAL: Skip candidate validation for this post
+            }
+            $has_any_selection = true;
+            continue; // ← CRITICAL: Skip candidate validation when no_vote selected
+        }
+
+        // Candidate validation (only if NOT no_vote)
+        if (isset($selection['candidates']) && is_array($selection['candidates'])) {
+            $candidate_count = count($selection['candidates']);
+
+            if ($candidate_count > 0) {
                 $has_any_selection = true;
 
-                $required_count = $selection['required_number'] ?? 1;
-                $candidate_count = count($selection['candidates']);
-                $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
-
-                if ($isSelectAllRequired) {
-                    // Must select exactly required_number candidates
-                    if ($candidate_count !== $required_count) {
-                        $errors["national_post_{$index}"] = "You must select exactly {$required_count} candidate(s) for {$post_name}.";
+                // Use per-election constraint validation if available
+                if ($election) {
+                    if (!$election->validateSelectionCount($candidate_count)) {
+                        $errors[$index] = $this->buildConstraintErrorMessage(
+                            $constraintType, $constraintMin, $constraintMax, $candidate_count, $post_name
+                        );
                     }
                 } else {
-                    // Current behavior: validate max selections
-                    if ($candidate_count > $required_count) {
-                        $errors["national_post_{$index}"] = "Too many candidates selected for {$post_name}. Maximum: {$required_count}";
+                    // Legacy: use global config
+                    $required_count = $selection['required_number'] ?? 1;
+                    if ($isSelectAllRequired) {
+                        if ($candidate_count !== $required_count) {
+                            $errors[$index] = "You must select exactly {$required_count} candidate(s) for {$post_name}.";
+                        }
+                    } else {
+                        if ($candidate_count > $required_count) {
+                            $errors[$index] = "Too many candidates selected for {$post_name}. Maximum: {$required_count}";
+                        }
                     }
                 }
             } else {
-                // 🐛 BUG FIX: Detect inconsistent data (no_vote=false with no candidates)
-                $no_vote = $selection['no_vote'] ?? false;
-                $candidates_count = isset($selection['candidates']) && is_array($selection['candidates']) ? count($selection['candidates']) : 0;
-
-                if ($no_vote === false && $candidates_count === 0) {
-                    $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
-                    $errors["national_post_{$index}"] = "Invalid selection for {$post_name}. Please select candidates or choose to skip.";
-                }
+                // No candidates selected and not no_vote
+                $errors[$index] = "Invalid selection for {$post_name}. Please select candidates or choose to abstain.";
             }
+        } else {
+            // No candidates array at all
+            $errors[$index] = "Invalid selection for {$post_name}. Please select candidates or choose to abstain.";
         }
     }
 
-    // Check regional selections
-    foreach ($regional_selections as $index => $selection) {
-        if ($selection) {
-            if (isset($selection['no_vote']) && $selection['no_vote']) {
-                $has_any_selection = true;
-            } elseif (isset($selection['candidates']) && is_array($selection['candidates']) && count($selection['candidates']) > 0) {
-                $has_any_selection = true;
-
-                $required_count = $selection['required_number'] ?? 1;
-                $candidate_count = count($selection['candidates']);
-                $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
-
-                if ($isSelectAllRequired) {
-                    // Must select exactly required_number candidates
-                    if ($candidate_count !== $required_count) {
-                        $errors["regional_post_{$index}"] = "You must select exactly {$required_count} candidate(s) for {$post_name}.";
-                    }
-                } else {
-                    // Current behavior: validate max selections
-                    if ($candidate_count > $required_count) {
-                        $errors["regional_post_{$index}"] = "Too many candidates selected for {$post_name}. Maximum: {$required_count}";
-                    }
-                }
-            } else {
-                // 🐛 BUG FIX: Detect inconsistent data (no_vote=false with no candidates)
-                $no_vote = $selection['no_vote'] ?? false;
-                $candidates_count = isset($selection['candidates']) && is_array($selection['candidates']) ? count($selection['candidates']) : 0;
-
-                if ($no_vote === false && $candidates_count === 0) {
-                    $post_name = $selection['post_name'] ?? "Post #" . ($index + 1);
-                    $errors["regional_post_{$index}"] = "Invalid selection for {$post_name}. Please select candidates or choose to skip.";
-                }
-            }
-        }
-    }
-
-    // Ensure user made at least one selection or no-vote choice
+    // Ensure user made at least one selection
     if (!$has_any_selection) {
-        $errors['no_selections'] = 'Please make at least one selection or choose "Skip" for the positions you wish to abstain from.';
+        $errors['no_selections'] = 'Please make at least one selection or choose to abstain.';
     }
 
     return $errors;
+}
+
+/**
+ * Build constraint error message based on constraint type and actual values
+ */
+private function buildConstraintErrorMessage($type, $min, $max, $count, $postName)
+{
+    return match ($type) {
+        'exact'   => "\"{$postName}\": Select exactly {$max} candidate(s). You selected {$count}.",
+        'minimum' => "\"{$postName}\": Select at least {$min} candidate(s). You selected {$count}.",
+        'maximum' => "\"{$postName}\": Select at most {$max} candidate(s). You selected {$count}.",
+        'range'   => "\"{$postName}\": Select between {$min} and {$max} candidate(s). You selected {$count}.",
+        'any'     => "\"{$postName}\": At least one candidate must be selected.",
+        default   => "\"{$postName}\": Invalid selection count ({$count}).",
+    };
 }
 /**
  * Validate vote selections to ensure proper choices are made

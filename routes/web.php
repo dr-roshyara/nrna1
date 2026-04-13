@@ -259,6 +259,11 @@ Route::get('/help/election-setup', function () {
     return Inertia::render('Tutorials/ElectionSettings');
 })->name('tutorials.election-settings');
 
+// Voter verification tutorial — public, no auth required
+Route::get('/help/voters-verification_guide', function () {
+    return Inertia::render('Tutorials/VotersManagement');
+})->name('tutorials.voters-verification-guide');
+
 // Security page
 Route::get('/security', [App\Http\Controllers\SecurityPageController::class, 'show'])->name('security');
 
