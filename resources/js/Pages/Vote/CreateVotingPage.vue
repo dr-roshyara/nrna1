@@ -246,25 +246,23 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-center">
-                            <button
-                                type="submit"
-                                :disabled="!canSubmit"
-                                class="w-full max-w-md py-5 px-8 rounded-xl font-sans font-bold text-xl
-                                       shadow-md transition-colors duration-150
-                                       focus:outline-none focus:ring-4 focus:ring-offset-2"
-                                :class="canSubmit
-                                    ? 'bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-300 cursor-pointer'
-                                    : 'bg-neutral-200 text-neutral-400 cursor-not-allowed'"
-                            >
-                                <span class="flex items-center justify-center gap-2">
-                                    <span aria-hidden="true">🗳️</span>
-                                    <span>{{ loading
-                                        ? $t('pages.voting.submit.submitting')
-                                        : $t('pages.voting.submit.review_submit') }}</span>
-                                </span>
-                            </button>
-                        </div>
+                        <button
+                            type="submit"
+                            :disabled="!canSubmit"
+                            class="w-full py-5 px-8 rounded-xl font-sans font-bold text-xl
+                                   shadow-md transition-colors duration-150
+                                   focus:outline-none focus:ring-4 focus:ring-offset-2"
+                            :class="canSubmit
+                                ? 'bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-300 cursor-pointer'
+                                : 'bg-neutral-200 text-neutral-400 cursor-not-allowed'"
+                        >
+                            <span class="flex items-center justify-center gap-2">
+                                <span aria-hidden="true">🗳️</span>
+                                <span>{{ loading
+                                    ? $t('pages.voting.submit.submitting')
+                                    : $t('pages.voting.submit.review_submit') }}</span>
+                            </span>
+                        </button>
                     </div>
 
                 </form>

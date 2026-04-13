@@ -51,6 +51,7 @@
     "progress_label": "Ihr Fortschritt",
     "submitting": "Reiche deine Stimme ein...",
     "button_text": "Stimme Jetzt Einreichen",
+    "review_submit": "Überprüfen & Absenden",
     "button_aria_enabled": "Reichen Sie Ihre Stimme ein - alle Auswahlen abgeschlossen",
     "button_aria_disabled": "Schließen Sie alle Auswahlen ab, um Ihre Stimme einzureichen"
   },

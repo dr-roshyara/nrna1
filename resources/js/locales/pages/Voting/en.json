@@ -51,6 +51,7 @@
     "progress_label": "Your Progress",
     "submitting": "Submitting Your Vote...",
     "button_text": "Submit Vote Now",
+    "review_submit": "Review & Submit",
     "button_aria_enabled": "Submit your vote - all selections complete",
     "button_aria_disabled": "Complete all selections to submit your vote"
   },
