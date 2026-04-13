@@ -65,8 +65,8 @@
                     <div class="flex justify-center pt-4 pb-2 bg-white">
                         <div class="w-24 h-24 rounded-lg overflow-hidden border-2 bg-neutral-50"
                              :class="isSelected(candidate) ? 'border-primary-300' : 'border-neutral-200'">
-                            <img v-if="getImageUrl(candidate.image_path)"
-                                 :src="getImageUrl(candidate.image_path)"
+                            <img v-if="getImageUrl(candidate.image_path_1)"
+                                 :src="getImageUrl(candidate.image_path_1)"
                                  :alt="candidate.candidacy_name || candidate.user_name"
                                  class="w-full h-full object-cover"
                                  @error="e => e.target.style.display = 'none'" />
