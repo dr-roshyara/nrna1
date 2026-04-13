@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
+use App\Models\VoterVerification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -39,7 +40,7 @@ class ElectionVoterController extends Controller
         $perPage  = in_array((int) request('per_page'), [25, 50, 100]) ? (int) request('per_page') : 50;
 
         $voters = $election->memberships()
-            ->with('user:id,name,email')
+            ->with('user:id,name,email,current_ip,updated_at')
             ->where('role', 'voter')
             ->when($search, fn ($q) => $q->whereHas('user', fn ($u) => $u->where('name', 'like', "%{$search}%")->orWhere('email', 'like', "%{$search}%")))
             ->when($status, fn ($q) => $q->where('status', $status))
@@ -70,13 +71,20 @@ class ElectionVoterController extends Controller
             ->orderBy('users.name')
             ->get();
 
+        // Load active verifications for this election, keyed by user_id
+        $verifications = VoterVerification::where('election_id', $election->id)
+            ->where('status', 'active')
+            ->get(['id', 'user_id', 'verified_ip', 'verified_device_fingerprint_hash', 'verified_at', 'notes'])
+            ->keyBy('user_id');
+
         return Inertia::render('Elections/Voters/Index', [
-            'election'          => $election->only('id', 'slug', 'name', 'type', 'status'),
+            'election'          => $election->only('id', 'slug', 'name', 'type', 'status', 'voter_verification_mode'),
             'organisation'      => $organisation->only('id', 'slug', 'name'),
             'voters'            => $voters,
             'stats'             => $election->voter_stats,
             'unassignedMembers' => $unassignedMembers,
             'filters'           => ['search' => $search, 'status' => $status, 'per_page' => $perPage],
+            'verifications'     => $verifications,
         ]);
     }
 
@@ -160,7 +168,10 @@ class ElectionVoterController extends Controller
 
         $result['invalid'] = ($result['invalid'] ?? 0) + $invalidCount;
 
-        return back()->with('bulk_result', $result);
+        return redirect()->route('elections.voters.index', [
+            'organisation' => $organisation->slug,
+            'election' => $election->slug
+        ])->with('bulk_result', $result);
     }
 
     // =========================================================================

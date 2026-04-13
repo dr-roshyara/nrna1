@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "title": "Election Setup Guide | Public Digit",
+    "description": "Learn how to configure every election setting on Public Digit — IP restrictions, ballot options, voter verification, and more.",
+    "read_time": "5 min read",
+    "badge_label": "Admin Guide"
+  },
+
+  "page": {
+    "title": "Election Settings Guide",
+    "subtitle": "A complete walkthrough of every setting available for your election — what it does, when to use it, and how to configure it correctly."
+  },
+
+  "toc": {
+    "label": "Contents",
+    "items": [
+      { "id": "overview",      "label": "Overview" },
+      { "id": "prerequisites", "label": "Before You Begin" },
+      { "id": "access",        "label": "Voter Access Control" },
+      { "id": "ballot",        "label": "Ballot Options" },
+      { "id": "verification",  "label": "Voter Verification" },
+      { "id": "scenarios",     "label": "Common Scenarios" },
+      { "id": "faq",           "label": "FAQ" }
+    ]
+  },
+
+  "section_overview": {
+    "heading": "Overview",
+    "body": "Election settings let you precisely control how voters interact with your ballot. They are split into three areas: Voter Access Control (who can vote and from where), Ballot Options (how candidates are selected), and Voter Verification (identity checks before voting). You can change settings at any time before voting opens. Once the election is active and has received votes, a confirmation checkbox is required to acknowledge the impact of mid-election changes.",
+    "tip_label": "Good to know",
+    "tip": "Settings are stored per election — changing them for one election has no effect on others in your organisation."
+  },
+
+  "section_prerequisites": {
+    "heading": "Before You Begin",
+    "intro": "Make sure these steps are complete before configuring settings:",
+    "steps": [
+      {
+        "title": "Election created",
+        "body": "Your election must exist in the system with a name, dates, and at least one post (position)."
+      },
+      {
+        "title": "Voters registered",
+        "body": "Members must be imported as voters via the Voters tab. Settings have no effect until people are eligible to vote."
+      },
+      {
+        "title": "Election not yet open",
+        "body": "Certain settings (especially IP restrictions and verification mode) are best configured before the election opens. Changing them after voting begins requires confirmation."
+      }
+    ]
+  },
+
+  "section_access": {
+    "heading": "Voter Access Control",
+    "intro": "These settings control where and how often voters can cast their ballot.",
+
+    "ip_restriction": {
+      "heading": "IP Address Restriction",
+      "body": "When enabled, the system counts how many votes have been submitted from each IP address and blocks additional votes once the limit is reached. This prevents one computer from being used to submit votes on behalf of multiple people.",
+      "analogy_label": "Real-world analogy",
+      "analogy": "Think of an IP address like a physical ballot box location. If your rule is 'each table may only submit 4 ballots', enabling IP restriction with max=4 enforces exactly that limit.",
+      "toggle_label": "Enable / Disable",
+      "toggle_body": "Off by default. Turn on when your election is conducted at a shared location (office, community centre) where multiple voters share an internet connection.",
+
+      "max_per_ip": {
+        "heading": "Maximum Votes per IP Address",
+        "body": "Sets how many individual votes may be submitted from the same IP address. The default is 4.",
+        "table_caption": "Example configurations:",
+        "table": [
+          { "scenario": "Home voting (each voter on own connection)", "recommended": "1" },
+          { "scenario": "Small office with 4 computers",             "recommended": "4" },
+          { "scenario": "Community hall with shared Wi-Fi (20 voters)", "recommended": "20" },
+          { "scenario": "No restriction needed (everyone verified)",  "recommended": "Disable entirely" }
+        ]
+      },
+
+      "whitelist": {
+        "heading": "IP Whitelist",
+        "body": "Whitelisted IP addresses are exempt from the vote-per-IP limit. Use this for trusted locations — for example, your organisation's office server — that legitimately submit many requests.",
+        "format_label": "Supported formats",
+        "formats": [
+          "Single IP address: 192.168.1.100",
+          "CIDR range (subnet): 192.168.1.0/24 means all addresses from 192.168.1.0 to 192.168.1.255",
+          "One address or range per line"
+        ],
+        "cidr_tip_label": "What is CIDR notation?",
+        "cidr_tip": "CIDR (Classless Inter-Domain Routing) is a compact way to specify a range of IP addresses. The number after the slash (/24, /16) controls the range size. /32 = single IP. /24 = 256 addresses. /16 = 65,536 addresses. When in doubt, use a single IP address instead."
+      }
+    }
+  },
+
+  "section_ballot": {
+    "heading": "Ballot Options",
+    "intro": "These settings control what voters see on the ballot and how many candidates they must choose.",
+
+    "no_vote": {
+      "heading": "Allow \"No Vote\" / Abstain",
+      "body": "When enabled, voters see an additional option on each post (position) that lets them explicitly abstain — registering their participation without choosing any candidate.",
+      "when_label": "When to use",
+      "when": "Enable this when your organisation's rules allow formal abstentions and you want them counted separately from 'did not vote'.",
+      "label_tip": "You can customise the text shown to voters. Common choices: \"No vote\", \"Abstain\", \"None of the above\", \"Enthalten\"."
+    },
+
+    "selection_constraint": {
+      "heading": "Selection Constraint Type",
+      "body": "Controls how many candidates a voter must or may select for each position. Choose the rule that matches your election bylaws.",
+      "table_caption": "All five constraint types explained:",
+      "table": [
+        {
+          "type": "Any number",
+          "description": "Voters can select as many or as few candidates as they wish — including none.",
+          "example": "Open ballot, survey-style voting"
+        },
+        {
+          "type": "Exactly N",
+          "description": "Voters must select exactly the specified number. Submitting with more or fewer is blocked.",
+          "example": "Elect exactly 3 board members"
+        },
+        {
+          "type": "Between min and max",
+          "description": "Voters must select at least the minimum and no more than the maximum.",
+          "example": "Select between 2 and 5 committee members"
+        },
+        {
+          "type": "At least N",
+          "description": "Voters must select a minimum number but may select more.",
+          "example": "Mandatory selection of at least 1, free to select more"
+        },
+        {
+          "type": "At most N",
+          "description": "Voters may select any number up to the maximum, including none.",
+          "example": "Select up to 4 candidates"
+        }
+      ],
+      "note_label": "Note",
+      "note": "The constraint applies per post (position). If your election has multiple posts, each post is evaluated independently."
+    }
+  },
+
+  "section_verification": {
+    "heading": "Voter Verification",
+    "badge": "Advanced",
+    "intro": "Voter Verification adds a layer of identity confirmation before a voter is allowed to access the ballot. An administrator verifies each voter's identity (typically via a video call) and records their IP address and/or device fingerprint. When the voter arrives to vote, the system checks they match what was recorded.",
+
+    "modes_heading": "Verification Modes",
+    "modes": [
+      {
+        "value": "none",
+        "label": "None (default)",
+        "description": "No per-voter identity check. Voters access the ballot using only their login credentials. IP restrictions from the Voter Access Control section still apply if enabled."
+      },
+      {
+        "value": "ip_only",
+        "label": "IP Address Only",
+        "description": "The voter must vote from the same IP address that was recorded during their identity check. Useful for elections where the voter's physical location is predictable."
+      },
+      {
+        "value": "fingerprint_only",
+        "label": "Device Fingerprint Only",
+        "description": "The voter must use the same device (browser + hardware) that was verified. Works even if the voter changes location and their IP address changes."
+      },
+      {
+        "value": "both",
+        "label": "Both — IP + Device",
+        "description": "The highest security level. Voter must match both the recorded IP address and the same device. Recommended for high-stakes elections where identity fraud is a concern."
+      }
+    ],
+
+    "workflow_heading": "Admin Verification Workflow",
+    "workflow_steps": [
+      "Open the Voters tab for the election.",
+      "For each voter, click the Verify button to open the verification panel.",
+      "Conduct a video or audio call with the voter to confirm their identity.",
+      "While they are on the call, note their current IP address (they can visit whatismyip.com) and/or capture their device fingerprint.",
+      "Enter these details in the verification panel and save.",
+      "The voter's status changes to Verified. They can now access the ballot."
+    ],
+
+    "bypass_note_label": "Interaction with IP Restriction",
+    "bypass_note": "Verified voters automatically bypass the per-IP vote count limit from the Voter Access Control section. This prevents a verified voter from being incorrectly blocked if they happen to share an IP with another voter."
+  },
+
+  "section_scenarios": {
+    "heading": "Common Scenarios",
+    "intro": "Here are three typical election configurations to guide your setup.",
+    "scenarios": [
+      {
+        "title": "Simple Club Election",
+        "tag": "Low security",
+        "tag_color": "green",
+        "description": "Members vote online from their own homes over several days.",
+        "settings": [
+          { "setting": "IP Restriction",       "value": "Off" },
+          { "setting": "No Vote Option",        "value": "On (optional)" },
+          { "setting": "Selection Constraint",  "value": "Exactly N (per post rules)" },
+          { "setting": "Voter Verification",    "value": "None" }
+        ],
+        "rationale": "Each voter is at home on their own connection. There is no shared-IP concern. No identity verification is needed beyond the platform login."
+      },
+      {
+        "title": "Secure Board Election",
+        "tag": "High security",
+        "tag_color": "red",
+        "description": "Board members vote in person from a single office. Only verified members may vote.",
+        "settings": [
+          { "setting": "IP Restriction",       "value": "On — max 15 (size of board)" },
+          { "setting": "No Vote Option",        "value": "Off" },
+          { "setting": "Selection Constraint",  "value": "Exactly 1 per post" },
+          { "setting": "Voter Verification",    "value": "IP Address Only" }
+        ],
+        "rationale": "All voters share the office internet connection. IP restriction limits total submissions. Voter verification ensures that only pre-identified individuals can vote."
+      },
+      {
+        "title": "Diaspora Organisation",
+        "tag": "Remote + identity check",
+        "tag_color": "blue",
+        "description": "Members vote remotely from different countries. Identity is checked beforehand via video call.",
+        "settings": [
+          { "setting": "IP Restriction",       "value": "Off" },
+          { "setting": "No Vote Option",        "value": "On" },
+          { "setting": "Selection Constraint",  "value": "At most N" },
+          { "setting": "Voter Verification",    "value": "Both (IP + Device)" }
+        ],
+        "rationale": "Voters are geographically dispersed so IP restriction is unhelpful. Video-call verification with both IP and device fingerprint provides the highest assurance that the correct person is voting."
+      }
+    ]
+  },
+
+  "section_faq": {
+    "heading": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "Can I change settings after the election has started?",
+        "answer": "Yes. However, if the election is active and votes have been received, you will be required to check a confirmation box acknowledging that the change takes effect immediately. Some changes — like tightening IP restrictions — could block voters who have already started the process."
+      },
+      {
+        "question": "What happens if a verified voter's IP address changes?",
+        "answer": "If Voter Verification mode is set to 'IP Only' or 'Both' and the voter's IP changes (e.g. they switched from Wi-Fi to mobile data), they will be blocked from voting. The administrator can update the verification record with the new IP address, or temporarily change the mode to 'None'."
+      },
+      {
+        "question": "What is a device fingerprint?",
+        "answer": "A device fingerprint is a digital profile built from the voter's browser settings, screen resolution, installed fonts, and other technical signals. It identifies a specific browser on a specific computer without using cookies or storing personal data."
+      },
+      {
+        "question": "Does IP restriction affect verified voters?",
+        "answer": "No. Verified voters bypass the IP count limit automatically. This prevents a legitimate voter from being blocked because they share an IP address with another voter."
+      },
+      {
+        "question": "What does the Settings History section show?",
+        "answer": "It shows the current settings version number, when settings were last saved, and which administrator made the last change. This provides a basic audit trail for accountability."
+      },
+      {
+        "question": "Can I use different constraints for different posts in the same election?",
+        "answer": "The selection constraint type is set at the election level and applies to all posts equally. If your election needs different rules per post, use the required number field on each post to control the exact count independently."
+      }
+    ]
+  },
+
+  "back_btn": "Go to Election Settings",
+
+  "seo": {
+    "robots": "index, follow"
+  }
+}

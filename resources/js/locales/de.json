@@ -226,6 +226,11 @@
         "title": "Online-Wahl Demo - Sichere anonyme Wahlen testen",
         "description": "Erleben Sie eine vollständige Online-Wahl in 5 Schritten. Keine Registrierung erforderlich. Testen Sie sichere, anonyme, verifizierbare Wahlen mit Belegcode-Prüfung.",
         "keywords": "Online-Wahl Demo, Demo-Wahl, sichere Online-Wahl, anonymes Wahlsystem, wie online wählen, Wahlprüfung, anonym wählen, Online-Wahl kostenlos"
+      },
+      "tutorials.election-settings": {
+        "title": "Wahlkonfiguration - Einstellungen erklaert | Public Digit",
+        "description": "Schritt-fuer-Schritt-Anleitung fuer alle Wahleinstellungen in Public Digit: IP-Beschraenkungen, Stimmzetteloptionen, Auswahlregeln und Waehlerverifizierung.",
+        "keywords": "Wahleinstellungen, Online-Wahl konfigurieren, IP-Beschrankung Wahl, Wahlerverifizierung, Stimmzettel Einstellungen, Wahlverwaltung, Public Digit Anleitung, Diaspora-Wahl einrichten, NGO Abstimmungssystem, Vereinswahl konfigurieren, Online-Wahl für gemeinnützige Organisationen, Mitgliederabstimmung Plattform, Auslandsorganisation Wahl Leitfaden"
       }
     }
   },
@@ -322,5 +327,5 @@
     "contact_text": "Interessiert an Public Digit? Wir helfen gerne mit Demonstrationen und technischen Beratungen.",
     "testimonial_title": "Was unsere Nutzer sagen",
     "testimonial_text": "Public Digit hat verändert, wie unsere Organisation Wahlen durchführt. Der Prozess ist sicher, transparent und unsere Mitglieder lieben die Bequemlichkeit."
-}
+  }
 }

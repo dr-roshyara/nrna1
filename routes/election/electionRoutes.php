@@ -13,6 +13,7 @@ use App\Http\Controllers\DeligateVoteController;
 use App\Http\Controllers\DeligateCodeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Election\ElectionManagementController;
+use App\Http\Controllers\Election\ElectionSettingsController;
 use App\Http\Controllers\ElectionController as VotingElectionController;
 use App\Http\Controllers\VoterSlugController;
 use App\Http\Controllers\Admin\VotingSecurityController;
@@ -291,6 +292,15 @@ Route::middleware(['auth', 'verified'])
         // Upload organisation logo — chief or deputy
         Route::post('/upload-logo', [ElectionManagementController::class, 'uploadLogo'])
             ->name('elections.upload-logo')
+            ->can('manageSettings', 'election');
+
+        // ── Election Settings ─────────────────────────────────────────────────────
+        Route::get('/settings', [ElectionSettingsController::class, 'edit'])
+            ->name('elections.settings.edit')
+            ->can('manageSettings', 'election');
+
+        Route::patch('/settings', [ElectionSettingsController::class, 'update'])
+            ->name('elections.settings.update')
             ->can('manageSettings', 'election');
     });
 

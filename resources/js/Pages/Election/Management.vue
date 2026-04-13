@@ -6,17 +6,55 @@
       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
     >Skip to main content</a>
 
-    <main id="main-content" class="min-h-screen bg-slate-50 py-8">
-      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
+    <main id="main-content" class="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50 py-8 relative overflow-hidden">
+      <!-- Decorative left frame gradient -->
+      <div
+        class="absolute left-0 top-0 w-1/2 h-full pointer-events-none opacity-40"
+        style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, transparent 50%);"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Decorative right frame gradient -->
+      <div
+        class="absolute right-0 top-0 w-1/2 h-full pointer-events-none opacity-40"
+        style="background: linear-gradient(-135deg, rgba(245, 158, 11, 0.1) 0%, transparent 50%);"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Geometric accent borders -->
+      <div
+        class="absolute left-0 top-0 w-full h-1 pointer-events-none"
+        style="background: linear-gradient(90deg, rgba(6, 182, 212, 0.5) 0%, rgba(245, 158, 11, 0.5) 50%, rgba(6, 182, 212, 0.5) 100%);"
+        aria-hidden="true"
+      ></div>
+
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6 relative z-10">
 
         <!-- Page Header -->
         <Card mode="admin" padding="lg" class="rounded-2xl">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
+            <div class="flex-1">
               <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1">{{ t.page_eyebrow }}</p>
               <h1 class="text-2xl font-bold text-slate-900 leading-tight">{{ election.name }}</h1>
             </div>
-            <StatusBadge :status="election.status" size="md" />
+            <div class="flex items-center gap-3 flex-wrap sm:flex-nowrap">
+              <!-- Tutorial/Help Link -->
+              <a
+                href="/help/election-setup"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-700 font-semibold rounded-lg border-2 border-blue-200 hover:border-blue-400 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all duration-200 whitespace-nowrap"
+                aria-label="Open Election Setup Guide (opens in new window)"
+                title="Learn how to configure election settings and voter verification"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="hidden sm:inline">Setup Guide</span>
+                <span class="sm:hidden">Guide</span>
+              </a>
+              <StatusBadge :status="election.status" size="md" />
+            </div>
           </div>
         </Card>
 
@@ -454,6 +492,30 @@
           </ActionButton>
         </SectionCard>
 
+        <!-- ── ELECTION SETTINGS ───────────────────────────────── -->
+        <SectionCard padding="lg">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-base font-semibold text-slate-800">Election Settings</h2>
+              <p class="text-xs text-slate-500 mt-0.5">Configure voting rules and security restrictions</p>
+            </div>
+          </div>
+
+          <ActionButton as="a" variant="outline" size="md" :href="settingsUrl" class="w-full sm:w-auto">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            Configure Settings
+          </ActionButton>
+        </SectionCard>
+
         <!-- ── RESULT MANAGEMENT ───────────────────────────────── -->
         <SectionCard v-if="canPublish" padding="lg">
           <div class="flex items-center gap-3 mb-6">
@@ -579,6 +641,12 @@ const updateDates = () => {
 
 const isVotingActive = computed(() => props.election.status === 'active')
 
+const settingsUrl = computed(() =>
+  route('elections.settings.edit', {
+    election: props.election.slug,
+  })
+)
+
 const voterListUrl = computed(() =>
   route('elections.voters.index', {
     organisation: props.election.organisation?.slug,
@@ -652,3 +720,93 @@ const closeVoting = () => {
   })
 }
 </script>
+
+<style scoped>
+/* Modern Democratic Design - Framed Main Content */
+
+/* Enhanced card styling for visual hierarchy */
+:deep(.rounded-2xl) {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:deep(.rounded-2xl:hover) {
+  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Animated entrance for content sections */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main > div > * {
+  animation: slideInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+main > div > *:nth-child(1) { animation-delay: 0.1s; }
+main > div > *:nth-child(2) { animation-delay: 0.2s; }
+main > div > *:nth-child(3) { animation-delay: 0.3s; }
+main > div > *:nth-child(4) { animation-delay: 0.4s; }
+main > div > *:nth-child(5) { animation-delay: 0.5s; }
+main > div > *:nth-child(n+6) { animation-delay: 0.6s; }
+
+/* Decorative elements positioning and animation */
+:deep(main > div) {
+  position: relative;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  main > div > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Enhanced focus states for accessibility */
+:deep(main a):focus-visible,
+:deep(main button):focus-visible {
+  outline: 3px solid #0369a1;
+  outline-offset: 2px;
+}
+
+/* Gradient text effect for headers (subtle) */
+:deep(main h1) {
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card border animation on hover */
+:deep(.rounded-xl) {
+  position: relative;
+  overflow: hidden;
+}
+
+:deep(.rounded-xl)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+:deep(.rounded-xl:hover)::before {
+  left: 100%;
+}
+</style>

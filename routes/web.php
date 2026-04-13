@@ -254,6 +254,11 @@ Route::get('/faq', function () {
     return Inertia::render('FAQ');
 })->name('faq');
 
+// Election settings tutorial — public, no auth required
+Route::get('/help/election-setup', function () {
+    return Inertia::render('Tutorials/ElectionSettings');
+})->name('tutorials.election-settings');
+
 // Security page
 Route::get('/security', [App\Http\Controllers\SecurityPageController::class, 'show'])->name('security');
 

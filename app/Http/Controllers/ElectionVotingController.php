@@ -71,7 +71,7 @@ class ElectionVotingController extends Controller
      * Validates eligibility, creates (or reuses) a VoterSlug,
      * then redirects into the existing voting workflow at slug.code.create.
      */
-    public function start(string $slug): RedirectResponse
+    public function start(Request $request, string $slug): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()
             ->where('slug', $slug)
@@ -92,6 +92,23 @@ class ElectionVotingController extends Controller
         if ($membership->has_voted) {
             return redirect()->route('elections.show', $slug)
                 ->with('info', 'You have already voted.');
+        }
+
+        // Per-election IP restriction check
+        if ($election->isIpRestricted()) {
+            $ip = $request->ip();
+
+            // Whitelisted IPs (exact or CIDR) bypass all limits
+            if (!$election->isIpWhitelisted($ip)) {
+                $votedCount = VoterSlug::where('election_id', $election->id)
+                    ->where('step_1_ip', $ip)
+                    ->where('has_voted', true)
+                    ->count();
+
+                if ($votedCount >= $election->ip_restriction_max_per_ip) {
+                    abort(403, "Maximum {$election->ip_restriction_max_per_ip} votes allowed from your IP address");
+                }
+            }
         }
 
         // Reuse an unexpired active slug, or refresh any existing slug for this user+election

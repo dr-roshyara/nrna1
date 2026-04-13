@@ -40,11 +40,19 @@ class ElectionPolicy
     }
 
     /**
-     * Chief or deputy assigned to this specific election may manage its settings.
-     * Org owner/admin no longer auto-granted — must be explicitly assigned as an officer.
+     * Chief, deputy, or organisation owner/admin may manage election settings.
      */
     public function manageSettings(User $user, Election $election): bool
     {
+        // Org owner/admin has full access (same check as create())
+        if (UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $election->organisation_id)
+            ->whereIn('role', ['owner', 'admin'])
+            ->exists()) {
+            return true;
+        }
+
+        // Election chief or deputy also has access
         return ElectionOfficer::where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->whereIn('role', ['chief', 'deputy'])

@@ -7,6 +7,11 @@ return new class extends Migration
 {
     public function up(): void
     {
+        // SQLite doesn't support MODIFY COLUMN
+        if (DB::getDriverName() === 'sqlite') {
+            return;
+        }
+
         // MySQL requires ALTER COLUMN to redefine the full ENUM list
         DB::statement("
             ALTER TABLE contributions
@@ -18,6 +23,11 @@ return new class extends Migration
 
     public function down(): void
     {
+        // SQLite doesn't support MODIFY COLUMN
+        if (DB::getDriverName() === 'sqlite') {
+            return;
+        }
+
         // Remove community_attestation — any existing rows with that value
         // must be migrated first (safe for fresh installs, requires data review in production)
         DB::statement("

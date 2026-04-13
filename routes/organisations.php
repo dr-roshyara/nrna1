@@ -21,6 +21,7 @@
 use App\Http\Controllers\CandidacyApplicationController;
 use App\Http\Controllers\Election\CandidacyManagementController;
 use App\Http\Controllers\Election\VoterImportController;
+use App\Http\Controllers\Election\VoterVerificationController;
 use App\Http\Controllers\Election\CandidacyReviewController;
 use App\Http\Controllers\Election\ElectionManagementController;
 use App\Http\Controllers\Election\PostManagementController;
@@ -42,6 +43,7 @@ use App\Http\Controllers\Membership\ParticipantInvitationController;
 use App\Http\Controllers\Membership\PublicMembershipApplicationController;
 use App\Http\Controllers\Organisation\OrganisationMemberInvitationController;
 use App\Http\Controllers\OrganisationController;
+use App\Http\Controllers\Contribution\ContributionController;
 use Illuminate\Support\Facades\Route;
 
 // ── Public membership application — no auth required ──
@@ -177,6 +179,16 @@ Route::prefix('organisations/{organisation:slug}')
             Route::post('/renew',           [MembershipRenewalController::class, 'store']) ->name('renew');
         });
 
+        // ── Contributions ─────────────────────────────────────────────────────────
+        Route::prefix('contributions')->name('organisations.contributions.')->group(function () {
+            Route::get('/', [ContributionController::class, 'index'])->name('index');
+            Route::get('/create', [ContributionController::class, 'create'])->name('create');
+            Route::post('/', [ContributionController::class, 'store'])->name('store');
+            Route::get('/{contribution}', [ContributionController::class, 'show'])->name('show');
+        });
+
+        Route::get('/leaderboard', [ContributionController::class, 'leaderboard'])->name('organisations.leaderboard');
+
         // ── Member Invitations ────────────────────────────────────────────────────
         Route::prefix('/members')->name('organisations.members.')->group(function () {
             Route::get('/invite',              [OrganisationMemberInvitationController::class, 'index'])  ->name('invite');
@@ -221,6 +233,10 @@ Route::prefix('organisations/{organisation:slug}')
             Route::post('/voters/{membership}/propose-suspension',  [ElectionVoterController::class, 'proposeSuspension']) ->name('elections.voters.propose-suspension');
             Route::post('/voters/{membership}/confirm-suspension',  [ElectionVoterController::class, 'confirmSuspension']) ->name('elections.voters.confirm-suspension');
             Route::post('/voters/{membership}/cancel-proposal',     [ElectionVoterController::class, 'cancelProposal'])    ->name('elections.voters.cancel-proposal');
+
+            // ── Voter verification (IP & device fingerprint) ──────────────────────
+            Route::post('/voters/verify',                           [VoterVerificationController::class, 'store'])  ->name('elections.voters.verify');
+            Route::delete('/voters/{verification}/revoke',          [VoterVerificationController::class, 'revoke']) ->name('elections.voters.verification.revoke');
 
             // ── Voter-facing positions page (read-only) ───────────────────────────
             Route::get('/positions',          [OrganisationController::class, 'voterPosts'])->name('organisations.elections.positions');

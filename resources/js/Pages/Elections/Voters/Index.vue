@@ -208,8 +208,21 @@
                 <td class="reg-td">
                   <div class="voter-cell">
                     <div class="voter-avatar">{{ (membership.user?.name ?? '?').charAt(0).toUpperCase() }}</div>
-                    <div>
-                      <p class="voter-name">{{ membership.user?.name ?? '—' }}</p>
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2">
+                        <p class="voter-name">{{ membership.user?.name ?? '—' }}</p>
+                        <!-- Verification Badge -->
+                        <span
+                          v-if="getVerificationStatus(membership.user_id)"
+                          class="verification-badge verification-badge--active"
+                          title="Voter identity verified"
+                        >
+                          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          Verified
+                        </span>
+                      </div>
                       <p class="voter-email">{{ membership.user?.email ?? '—' }}</p>
                     </div>
                   </div>
@@ -247,6 +260,19 @@
                 <!-- Actions -->
                 <td class="reg-td reg-td--actions">
                   <div class="action-row" v-if="!membership.has_voted">
+                    <!-- Verify Voter Identity -->
+                    <button
+                      @click="openVerificationModal(membership)"
+                      :disabled="loadingId === membership.id"
+                      class="act-btn act-btn--verify"
+                      :title="getVerificationStatus(membership.user_id) ? 'Re-verify voter' : 'Verify voter identity'"
+                    >
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      {{ getVerificationStatus(membership.user_id) ? 'Re-verify' : 'Verify' }}
+                    </button>
+
                     <!-- Approve (invited → active) -->
                     <button
                       v-if="membership.status !== 'active' && membership.status !== 'removed'"
@@ -352,6 +378,21 @@
 
     <PublicDigitFooter />
   </div>
+
+  <!-- Voter Verification Modal -->
+  <VoterVerificationModal
+    :show="showVerificationModal"
+    :voter-id="verificationModalVoter?.id"
+    :voter-name="verificationModalVoter?.name"
+    :voter-email="verificationModalVoter?.email"
+    :voter-current-ip="verificationModalVoter?.currentIp"
+    :voter-last-login="verificationModalVoter?.lastLogin"
+    :organisation="organisation"
+    :election="election"
+    :existing-verification="verificationModalVoter?.verification"
+    @close="showVerificationModal = false"
+    @success="() => { showVerificationModal = false; router.reload() }"
+  />
 </template>
 
 <script setup>
@@ -359,6 +400,7 @@ import { ref, computed } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import VoterVerificationModal from '@/Components/Election/VoterVerificationModal.vue'
 
 const props = defineProps({
   election:          { type: Object, required: true },
@@ -367,17 +409,22 @@ const props = defineProps({
   stats:             { type: Object, required: true },
   unassignedMembers: { type: Array,  default: () => [] },
   filters:           { type: Object, default: () => ({}) },
+  verifications:     { type: Object, default: () => ({}) },
 })
 
-const authUserName      = computed(() => usePage().props.user?.name ?? usePage().props.auth?.user?.name)
-const assignUserId      = ref('')
-const assigning         = ref(false)
-const loadingId         = ref(null)
-const selectedMemberIds = ref([])
-const memberSearch      = ref('')
-const searchQuery       = ref(props.filters?.search ?? '')
-const statusFilter      = ref(props.filters?.status ?? '')
-const perPage           = ref(props.filters?.per_page ?? 50)
+const authUserName           = computed(() => usePage().props.user?.name ?? usePage().props.auth?.user?.name)
+const assignUserId           = ref('')
+const assigning              = ref(false)
+const loadingId              = ref(null)
+const selectedMemberIds      = ref([])
+const memberSearch           = ref('')
+const searchQuery            = ref(props.filters?.search ?? '')
+const statusFilter           = ref(props.filters?.status ?? '')
+const perPage                = ref(props.filters?.per_page ?? 50)
+
+// Voter verification modal
+const showVerificationModal   = ref(false)
+const verificationModalVoter  = ref(null)
 
 const exportUrl = computed(() =>
   route('elections.voters.export', { organisation: props.organisation.slug, election: props.election.slug })
@@ -394,6 +441,21 @@ const filteredMembers = computed(() => {
 const statusLabel = (s) => ({ active: 'Active', inactive: 'Suspended', invited: 'Invited', removed: 'Removed' }[s] ?? s)
 
 const formatDate = (d) => d ? new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'
+
+// Voter verification helpers
+const getVerificationStatus = (userId) => props.verifications[userId] ?? null
+
+const openVerificationModal = (membership) => {
+  verificationModalVoter.value = {
+    id: membership.user_id,
+    name: membership.user?.name ?? 'Unknown',
+    email: membership.user?.email ?? '',
+    currentIp: membership.user?.current_ip ?? '—',
+    lastLogin: membership.user?.updated_at ?? null,
+    verification: getVerificationStatus(membership.user_id)
+  }
+  showVerificationModal.value = true
+}
 
 // Filters
 let filterTimer = null
@@ -883,6 +945,25 @@ const cancelProposal = (m) => {
 .act-btn--confirm:hover:not(:disabled)  { background: #dcfce7; }
 .act-btn--cancel   { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
 .act-btn--cancel:hover:not(:disabled)   { background: #fee2e2; }
+.act-btn--verify   { background: #dbeafe; color: #0c4a6e; border-color: #bfdbfe; display: inline-flex; align-items: center; gap: 0.25rem; }
+.act-btn--verify:hover:not(:disabled)   { background: #bfdbfe; }
+
+/* Verification badge */
+.verification-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.verification-badge--active {
+  background: #d1fae5;
+  color: #065f46;
+}
 
 /* Pending suspension row highlight */
 .reg-row--suspension-pending { background: #fffbeb !important; border-left: 3px solid #f59e0b; }

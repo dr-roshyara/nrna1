@@ -64,6 +64,21 @@ class Election extends Model
         'results_published',
         'settings',
         'status',
+        'ip_restriction_enabled',
+        'ip_restriction_max_per_ip',
+        'ip_whitelist',
+        'ip_mismatch_action',
+        'voting_ip_mode',
+        'voter_verification_mode',
+        'no_vote_option_enabled',
+        'no_vote_option_label',
+        'selection_constraint_type',
+        'selection_constraint_min',
+        'selection_constraint_max',
+        'settings_version',
+        'settings_updated_by',
+        'settings_updated_at',
+        'settings_changes',
     ];
 
     /**
@@ -84,6 +99,11 @@ class Election extends Model
         'end_date' => 'datetime',
         'is_active'          => 'boolean',
         'results_published'  => 'boolean',
+        'ip_restriction_enabled' => 'boolean',
+        'no_vote_option_enabled' => 'boolean',
+        'ip_whitelist'           => 'array',
+        'settings_changes'       => 'array',
+        'settings_updated_at'    => 'datetime',
     ];
 
     /**
@@ -92,6 +112,46 @@ class Election extends Model
     public function organisation()
     {
         return $this->belongsTo(Organisation::class);
+    }
+
+    /**
+     * Get the user who last updated election settings
+     */
+    public function settingsUpdatedBy()
+    {
+        return $this->belongsTo(User::class, 'settings_updated_by');
+    }
+
+    /**
+     * Get voter verifications for this election
+     */
+    public function voterVerifications()
+    {
+        return $this->hasMany(VoterVerification::class);
+    }
+
+    /**
+     * Check if this election requires voter verification
+     */
+    public function requiresVoterVerification(): bool
+    {
+        return ($this->voter_verification_mode ?? 'none') !== 'none';
+    }
+
+    /**
+     * Check if this election verifies voter IP addresses
+     */
+    public function checksIp(): bool
+    {
+        return in_array($this->voter_verification_mode, ['ip_only', 'both']);
+    }
+
+    /**
+     * Check if this election verifies device fingerprints
+     */
+    public function checksFingerprint(): bool
+    {
+        return in_array($this->voter_verification_mode, ['fingerprint_only', 'both']);
     }
 
     // ── ElectionMembership relationships ─────────────────────────────────────
@@ -536,9 +596,85 @@ class Election extends Model
             'is_active' => $this->isCurrentlyActive(),
         ];
     }
-    // 
-    
-    
 
-    
+    // ── Settings Helper Methods ────────────────────────────────────────────────
+
+    public function isIpRestricted(): bool
+    {
+        return (bool) $this->ip_restriction_enabled;
+    }
+
+    public function isNoVoteEnabled(): bool
+    {
+        return (bool) $this->no_vote_option_enabled;
+    }
+
+    public function getSelectionConstraintType(): string
+    {
+        return $this->selection_constraint_type ?? 'maximum';
+    }
+
+    public function validateSelectionCount(int $count): bool
+    {
+        return match ($this->getSelectionConstraintType()) {
+            'any'     => true,
+            'exact'   => $count === (int) $this->selection_constraint_max,
+            'range'   => $count >= ($this->selection_constraint_min ?? 1)
+                      && $count <= ($this->selection_constraint_max ?? PHP_INT_MAX),
+            'minimum' => $count >= ($this->selection_constraint_min ?? 1),
+            'maximum' => $count <= ($this->selection_constraint_max ?? PHP_INT_MAX),
+            default   => true,
+        };
+    }
+
+    public function isIpWhitelisted(string $ip): bool
+    {
+        if (empty($this->ip_whitelist)) {
+            return false;
+        }
+
+        foreach ($this->ip_whitelist as $range) {
+            if ($this->ipInRange($ip, trim($range))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function ipInRange(string $ip, string $range): bool
+    {
+        if (!str_contains($range, '/')) {
+            return $ip === $range;
+        }
+
+        [$subnet, $bits] = explode('/', $range);
+        $ip     = ip2long($ip);
+        $subnet = ip2long($subnet);
+        $mask   = -1 << (32 - (int) $bits);
+
+        return ($ip & $mask) === ($subnet & $mask);
+    }
+
+    // ── Lifecycle Hooks ────────────────────────────────────────────────────────
+
+    protected static function booted(): void
+    {
+        static::updated(function (Election $election) {
+            $cols = [
+                'ip_restriction_enabled',
+                'ip_restriction_max_per_ip',
+                'ip_whitelist',
+                'no_vote_option_enabled',
+                'no_vote_option_label',
+                'selection_constraint_type',
+                'selection_constraint_min',
+                'selection_constraint_max',
+            ];
+
+            if ($election->wasChanged($cols)) {
+                \Illuminate\Support\Facades\Cache::forget("election-settings-{$election->id}");
+            }
+        });
+    }
 }

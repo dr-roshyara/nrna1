@@ -93,7 +93,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'social_id',
         'social_type',
         'facebook_id',
-        'voting_ip',  // Voting IP is mass-assignable for audit trail
+        'voting_ip',              // Voting IP is mass-assignable for audit trail
+        'leaderboard_visibility', // Contribution leaderboard privacy preference
     ];
 
     /**
@@ -135,7 +136,8 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at'      => 'datetime',
+        'leaderboard_visibility' => 'string',
     ];
 
     /**
