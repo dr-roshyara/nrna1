@@ -337,7 +337,7 @@ export default {
         national_posts: { type: Array,   default: () => [] },
         regional_posts:  { type: Array,   default: () => [] },
         user_name:       { type: String,  required: true },
-        user_id:         { type: Number,  required: true },
+        user_id:         { type: [String, Number],  required: true },
         user_region:     { type: String,  default: '' },
         slug:            { type: String,  default: null },
         useSlugPath:     { type: Boolean, default: false },
@@ -369,6 +369,20 @@ export default {
     },
 
     computed: {
+        // DEBUG: Log election settings
+        debugElectionSettings() {
+            if (this.election) {
+                console.log('🔵 [CreateVotingPage] Election settings:', {
+                    id: this.election.id,
+                    name: this.election.name,
+                    no_vote_option_enabled: this.election.no_vote_option_enabled,
+                    no_vote_option_label: this.election.no_vote_option_label,
+                    selection_constraint_type: this.election.selection_constraint_type,
+                });
+            }
+            return this.election?.no_vote_option_enabled;
+        },
+
         normalizedNationalPosts() {
             return this.national_posts.map(post => ({
                 ...post,
@@ -467,6 +481,13 @@ export default {
     },
 
     async mounted() {
+        // DEBUG: Log election settings on mount
+        console.log('🔵 [CreateVotingPage] MOUNTED - Election data:', {
+            election: this.election,
+            no_vote_enabled: this.election?.no_vote_option_enabled,
+            debugSettings: this.debugElectionSettings,
+        });
+
         await this.$nextTick()
         this.isLoading = false
         this.loadDraft()

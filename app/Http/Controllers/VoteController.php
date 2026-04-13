@@ -463,6 +463,15 @@ public function create(Request $request)
                 ];
             }
         );
+
+        // DEBUG: Log election settings being passed to frontend
+        \Illuminate\Support\Facades\Log::debug('🔵 [VoteController] Election settings being passed to frontend', [
+            'election_id' => $election->id,
+            'election_name' => $election->name,
+            'no_vote_option_enabled' => $electionSettings['no_vote_option_enabled'],
+            'election_no_vote_enabled_raw' => $election->no_vote_option_enabled,
+            'isNoVoteEnabled_method' => $election->isNoVoteEnabled(),
+        ]);
     }
 
     return Inertia::render('Vote/CreateVotingPage', [
