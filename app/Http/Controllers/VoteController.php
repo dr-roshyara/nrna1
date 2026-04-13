@@ -463,16 +463,15 @@ public function create(Request $request)
                 ];
             }
         );
-
-        // DEBUG: Log election settings being passed to frontend
-        \Illuminate\Support\Facades\Log::debug('🔵 [VoteController] Election settings being passed to frontend', [
-            'election_id' => $election->id,
-            'election_name' => $election->name,
-            'no_vote_option_enabled' => $electionSettings['no_vote_option_enabled'],
-            'election_no_vote_enabled_raw' => $election->no_vote_option_enabled,
-            'isNoVoteEnabled_method' => $election->isNoVoteEnabled(),
-        ]);
     }
+
+    $electionProp = $election ? array_merge([
+        'id' => $election->id,
+        'name' => $election->name,
+        'type' => $election->type,
+        'description' => $election->description,
+        'is_active' => $election->is_active,
+    ], $electionSettings ?? []) : null;
 
     return Inertia::render('Vote/CreateVotingPage', [
         'national_posts' => $national_posts,
@@ -482,13 +481,7 @@ public function create(Request $request)
         'user_region' => $auth_user->region,
         'slug' => $voterSlug ? $voterSlug->slug : null,
         'useSlugPath' => $voterSlug !== null,
-        'election' => $election ? array_merge([
-            'id' => $election->id,
-            'name' => $election->name,
-            'type' => $election->type,
-            'description' => $election->description,
-            'is_active' => $election->is_active,
-        ], $electionSettings ?? []) : null,
+        'election' => $electionProp,
     ]);
 }
 

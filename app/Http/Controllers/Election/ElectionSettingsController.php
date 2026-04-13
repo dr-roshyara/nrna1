@@ -79,7 +79,7 @@ class ElectionSettingsController extends Controller
             }
         }
 
-        $election->update(array_merge(
+        $updateData = array_merge(
             collect($validated)->except(['settings_version', 'confirmed_active_changes'])->toArray(),
             [
                 'settings_version'    => $election->settings_version + 1,
@@ -87,7 +87,22 @@ class ElectionSettingsController extends Controller
                 'settings_updated_at' => now(),
                 'settings_changes'    => $changes,
             ]
-        ));
+        );
+
+        \Illuminate\Support\Facades\Log::debug('🔵 [ElectionSettingsController] Saving settings', [
+            'election_id' => $election->id,
+            'election_name' => $election->name,
+            'update_data' => $updateData,
+            'validated_no_vote_enabled' => $validated['no_vote_option_enabled'] ?? 'NOT IN VALIDATED',
+        ]);
+
+        $election->update($updateData);
+
+        \Illuminate\Support\Facades\Log::debug('🔵 [ElectionSettingsController] Settings saved', [
+            'election_id' => $election->id,
+            'no_vote_option_enabled_after_save' => $election->no_vote_option_enabled,
+            'fresh_from_db' => \App\Models\Election::find($election->id)?->no_vote_option_enabled,
+        ]);
 
         return back()->with('success', 'Settings saved.');
     }

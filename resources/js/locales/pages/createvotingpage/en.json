@@ -8,6 +8,10 @@
     "national": "National Posts",
     "regional": "Regional Posts"
   },
+  "no_vote": {
+    "label": "Skip this position",
+    "button_text": "⏭️ Skip this position"
+  },
   "regional_empty": {
     "title": "No Regional Candidates",
     "message": "No candidates are available for {region} at this time.",

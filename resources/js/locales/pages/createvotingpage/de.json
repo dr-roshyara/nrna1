@@ -8,6 +8,10 @@
     "national": "Nationale Positionen",
     "regional": "Regionale Positionen"
   },
+  "no_vote": {
+    "label": "Diese Position überspringen",
+    "button_text": "⏭️ Diese Position überspringen"
+  },
   "regional_empty": {
     "title": "Keine regionalen Kandidaten",
     "message": "Derzeit sind keine Kandidaten für {region} verfügbar.",

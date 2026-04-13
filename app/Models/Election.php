@@ -248,10 +248,16 @@ class Election extends Model
 
     /**
      * Load essential relationships for validation
+     * CRITICAL: Include election settings columns so they're not null in middleware
      */
     public function scopeWithEssentialRelations($query)
     {
-        return $query->select('id', 'name', 'organisation_id', 'type', 'status', 'end_date')
+        return $query->select(
+            'id', 'name', 'organisation_id', 'type', 'status', 'end_date',
+            'is_active',  // Voting state
+            'no_vote_option_enabled', 'no_vote_option_label',  // No-vote settings
+            'selection_constraint_type', 'selection_constraint_min', 'selection_constraint_max'  // Selection rules
+        )
             ->with(['organisation' => function($q) {
                 $q->select('id', 'name');
             }]);

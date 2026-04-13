@@ -107,7 +107,7 @@
                        :checked="noVoteSelected"
                        @change="$emit('toggle-no-vote')"
                        class="no-vote-checkbox" />
-                <span class="no-vote-text">⏭️ {{ noVoteLabel }}</span>
+                <span class="no-vote-text">{{ $t('pages.voting.no_vote.button_text', '⏭️ Abstain') }}</span>
             </label>
         </div>
     </div>

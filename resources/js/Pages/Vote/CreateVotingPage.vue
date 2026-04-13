@@ -369,17 +369,7 @@ export default {
     },
 
     computed: {
-        // DEBUG: Log election settings
         debugElectionSettings() {
-            if (this.election) {
-                console.log('🔵 [CreateVotingPage] Election settings:', {
-                    id: this.election.id,
-                    name: this.election.name,
-                    no_vote_option_enabled: this.election.no_vote_option_enabled,
-                    no_vote_option_label: this.election.no_vote_option_label,
-                    selection_constraint_type: this.election.selection_constraint_type,
-                });
-            }
             return this.election?.no_vote_option_enabled;
         },
 

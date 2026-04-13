@@ -374,40 +374,6 @@ const flashWarning = computed(() => {
           </div>
         </section>
 
-        <!-- 3. Active Election Warning (if applicable) -->
-        <div v-if="isShowingNeedsConfirmation" class="card-elevated border-l-4 border-orange-500 bg-orange-50" role="alert">
-          <div class="flex items-start gap-4">
-            <div class="flex-shrink-0">
-              <svg class="h-6 w-6 text-orange-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-              </svg>
-            </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold text-orange-900">Election In Progress</h3>
-              <p class="text-orange-800 mt-2 leading-relaxed">
-                This election is active with received votes. Changes will take effect <strong>immediately</strong> and may affect voters currently participating.
-              </p>
-              <fieldset class="mt-4 p-4 bg-white rounded-lg border-2 border-orange-200">
-                <legend class="text-sm font-semibold text-slate-900">Confirmation required</legend>
-                <label class="flex items-center mt-3 cursor-pointer group">
-                  <input
-                    v-model="form.confirmed_active_changes"
-                    type="checkbox"
-                    class="w-5 h-5 rounded border-2 border-orange-400 focus:ring-2 focus:ring-orange-500 cursor-pointer"
-                    aria-describedby="confirm-help"
-                  />
-                  <span class="ml-3 text-sm font-semibold text-orange-900 group-hover:text-orange-700">
-                    I understand the impact and want to proceed
-                  </span>
-                </label>
-                <p id="confirm-help" class="text-xs text-orange-700 mt-2 ml-8">
-                  This change will be applied to all currently voting voters.
-                </p>
-              </fieldset>
-            </div>
-          </div>
-        </div>
-
         <!-- 3. Voter Verification Mode Section -->
         <section class="card-elevated" aria-labelledby="verification-heading">
           <div class="section-header">
@@ -490,6 +456,47 @@ const flashWarning = computed(() => {
             </div>
           </div>
         </section>
+
+        <!-- Election In Progress Warning & Confirmation (if applicable) -->
+        <div v-if="isShowingNeedsConfirmation" class="space-y-4">
+          <!-- Warning Alert -->
+          <div class="card-elevated border-l-4 border-orange-500 bg-orange-50" role="alert">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0">
+                <svg class="h-6 w-6 text-orange-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-lg font-bold text-orange-900">Election In Progress</h3>
+                <p class="text-orange-800 mt-2 leading-relaxed">
+                  This election is active with received votes. Changes will take effect <strong>immediately</strong> and may affect voters currently participating.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirmation Checkbox -->
+          <div class="card-elevated border-l-4 border-orange-500 bg-orange-50">
+            <fieldset class="p-4 rounded-lg border-2 border-orange-200">
+              <legend class="text-sm font-semibold text-slate-900 mb-3">Confirmation required</legend>
+              <label class="flex items-center cursor-pointer group">
+                <input
+                  v-model="form.confirmed_active_changes"
+                  type="checkbox"
+                  class="w-5 h-5 rounded border-2 border-orange-400 focus:ring-2 focus:ring-orange-500 cursor-pointer"
+                  aria-describedby="confirm-help-2"
+                />
+                <span class="ml-3 text-sm font-semibold text-orange-900 group-hover:text-orange-700">
+                  I understand the impact and want to proceed
+                </span>
+              </label>
+              <p id="confirm-help-2" class="text-xs text-orange-700 mt-2 ml-8">
+                This change will be applied to all currently voting voters.
+              </p>
+            </fieldset>
+          </div>
+        </div>
 
         <!-- Form Actions -->
         <div class="flex gap-4 pt-4">
