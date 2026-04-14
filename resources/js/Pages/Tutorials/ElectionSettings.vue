@@ -1,6 +1,7 @@
 <script setup>
 import { useMeta } from '@/composables/useMeta'
 import { computed } from 'vue'
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 
 useMeta({
   pageKey: 'tutorials.election-settings',
@@ -23,7 +24,18 @@ const activeSection = computed(() => 'overview')
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+  <div class="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-white to-slate-100">
+    <!-- PublicDigit Header with breadcrumbs -->
+    <PublicDigitHeader
+      :breadcrumbs="[
+        { label: $t('navigation.home', 'Home'), url: '/' },
+        { label: $t('navigation.help', 'Help & Guides'), url: null },
+        { label: t.page?.title || 'Election Setup Guide', url: null }
+      ]"
+      :disable-language-selector="false"
+    />
+
+    <div class="flex-1">
     <!-- Hero Section -->
     <header class="bg-gradient-to-r from-teal-600 via-teal-500 to-cyan-600 text-white py-16 md:py-20 border-b-4 border-amber-400">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -382,6 +394,7 @@ const activeSection = computed(() => 'overview')
         </div>
       </div>
     </main>
+    </div>
   </div>
 </template>
 
