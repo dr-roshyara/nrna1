@@ -77,9 +77,10 @@ class ElectionIpRestrictionTest extends TestCase
             'end_date'                  => now()->addDay(),
         ]);
 
-        $election->members()->attach($this->voter->id, [
-            'role'   => 'voter',
-            'status' => 'active',
+        $election->memberships()->create([
+            'user_id' => $this->voter->id,
+            'role'    => 'voter',
+            'status'  => 'active',
         ]);
 
         // Create 1 completed vote from same IP
@@ -111,9 +112,10 @@ class ElectionIpRestrictionTest extends TestCase
             'end_date'                  => now()->addDay(),
         ]);
 
-        $election->members()->attach($this->voter->id, [
-            'role'   => 'voter',
-            'status' => 'active',
+        $election->memberships()->create([
+            'user_id' => $this->voter->id,
+            'role'    => 'voter',
+            'status'  => 'active',
         ]);
 
         // Create only 2 completed votes (under limit of 3)
@@ -147,9 +149,10 @@ class ElectionIpRestrictionTest extends TestCase
             'status'                    => 'active',
         ]);
 
-        $election->members()->attach($this->voter->id, [
-            'role'   => 'voter',
-            'status' => 'active',
+        $election->memberships()->create([
+            'user_id' => $this->voter->id,
+            'role'    => 'voter',
+            'status'  => 'active',
         ]);
 
         // Create 1 completed vote from same IP
@@ -182,9 +185,10 @@ class ElectionIpRestrictionTest extends TestCase
             'status'                    => 'active',
         ]);
 
-        $election->members()->attach($this->voter->id, [
-            'role'   => 'voter',
-            'status' => 'active',
+        $election->memberships()->create([
+            'user_id' => $this->voter->id,
+            'role'    => 'voter',
+            'status'  => 'active',
         ]);
 
         // Create 1 completed vote from same IP
@@ -220,9 +224,10 @@ class ElectionIpRestrictionTest extends TestCase
             'end_date'               => now()->addDay(),
         ]);
 
-        $election->members()->attach($this->voter->id, [
-            'role'   => 'voter',
-            'status' => 'active',
+        $election->memberships()->create([
+            'user_id' => $this->voter->id,
+            'role'    => 'voter',
+            'status'  => 'active',
         ]);
 
         // Create 3 completed votes from same IP (hitting global limit)
@@ -259,9 +264,10 @@ class ElectionIpRestrictionTest extends TestCase
             'end_date'               => now()->addDay(),
         ]);
 
-        $election->members()->attach($this->voter->id, [
-            'role'   => 'voter',
-            'status' => 'active',
+        $election->memberships()->create([
+            'user_id' => $this->voter->id,
+            'role'    => 'voter',
+            'status'  => 'active',
         ]);
 
         // Create 1 completed vote from whitelisted IP
@@ -293,9 +299,10 @@ class ElectionIpRestrictionTest extends TestCase
             'end_date'                  => now()->addDay(),
         ]);
 
-        $election->members()->attach($this->voter->id, [
-            'role'   => 'voter',
-            'status' => 'active',
+        $election->memberships()->create([
+            'user_id' => $this->voter->id,
+            'role'    => 'voter',
+            'status'  => 'active',
         ]);
 
         // Create 2 completed votes from same IP
