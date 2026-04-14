@@ -100,10 +100,23 @@
                                 </li>
                             </ol>
 
+                            <!-- IP restriction: blocked -->
+                            <div v-if="props.ipBlocked"
+                                 class="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 mb-4">
+                                <p class="font-semibold">{{ $t('pages.election-show.ip_blocked.title', 'Voting Not Available From This Network') }}</p>
+                                <p class="mt-1">{{ props.ipBlockMessage }}</p>
+                            </div>
+
+                            <!-- IP restriction: remaining votes hint (optional, only when limit applies) -->
+                            <div v-else-if="props.remainingVotes !== null && props.remainingVotes > 0"
+                                 class="text-xs text-gray-500 mt-1 mb-4">
+                                {{ $t('pages.election-show.ip_remaining.text', `{count} vote(s) remaining from your network`, { count: props.remainingVotes }) }}
+                            </div>
+
                             <button
                                 class="esp-cta"
                                 :class="{ 'esp-cta--loading': voting }"
-                                :disabled="voting"
+                                :disabled="voting || props.ipBlocked"
                                 :aria-busy="voting"
                                 @click="startVoting"
                             >
@@ -263,6 +276,9 @@ const props = defineProps({
     canVote:           { type: Boolean, default: false },
     isEligible:        { type: Boolean, default: false },
     ipAddress:         { type: String,  default: null },
+    ipBlocked:         { type: Boolean, default: false },
+    ipBlockMessage:    { type: String,  default: null },
+    remainingVotes:    { type: Number,  default: null },
     organisationLogo:  { type: String,  default: null },
     organisationName:  { type: String,  default: null },
 })

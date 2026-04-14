@@ -52,12 +52,19 @@ class ElectionVotingController extends Controller
 
         $org = $election->organisation;
 
+        // Evaluate IP restriction status
+        $ip      = request()->ip();
+        $ipBlock = $this->resolveIpBlock($election, $ip);
+
         return Inertia::render('Election/Show', [
             'election'         => $election,
             'hasVoted'         => $hasVoted,
             'canVote'          => $canVote,
             'isEligible'       => $isEligible,
-            'ipAddress'        => request()->ip(),
+            'ipAddress'        => $ip,
+            'ipBlocked'        => $ipBlock['blocked'],
+            'ipBlockMessage'   => $ipBlock['message'],
+            'remainingVotes'   => $ipBlock['remainingVotes'] ?? null,
             'organisationLogo' => $org?->logo ? asset($org->logo) : null,
             'organisationName' => $org?->name,
         ]);
@@ -94,21 +101,11 @@ class ElectionVotingController extends Controller
                 ->with('info', 'You have already voted.');
         }
 
-        // Per-election IP restriction check
-        if ($election->isIpRestricted()) {
-            $ip = $request->ip();
-
-            // Whitelisted IPs (exact or CIDR) bypass all limits
-            if (!$election->isIpWhitelisted($ip)) {
-                $votedCount = VoterSlug::where('election_id', $election->id)
-                    ->where('step_1_ip', $ip)
-                    ->where('has_voted', true)
-                    ->count();
-
-                if ($votedCount >= $election->ip_restriction_max_per_ip) {
-                    abort(403, "Maximum {$election->ip_restriction_max_per_ip} votes allowed from your IP address");
-                }
-            }
+        // IP restriction check (replaces bare abort() with friendly redirect)
+        $ipBlock = $this->resolveIpBlock($election, $request->ip());
+        if ($ipBlock['blocked']) {
+            return redirect()->route('elections.show', $slug)
+                ->with('error', $ipBlock['message']);
         }
 
         // Reuse an unexpired active slug, or refresh any existing slug for this user+election
@@ -140,5 +137,59 @@ class ElectionVotingController extends Controller
         ]);
 
         return redirect()->route('slug.code.create', ['vslug' => $voterSlug->slug]);
+    }
+
+    /**
+     * Evaluate IP restriction status.
+     *
+     * Three-layer precedence:
+     * 1. Whitelist (always bypasses all layers)
+     * 2. Layer 3: Per-election IP restriction (ip_restriction_enabled)
+     * 3. Layer 2: Global fallback (config('app.max_use_clientIP'))
+     */
+    private function resolveIpBlock(Election $election, string $ip): array
+    {
+        // Whitelist always bypasses ALL layers (Layer 3 AND Layer 2)
+        if ($election->ip_whitelist && $election->isIpWhitelisted($ip)) {
+            return ['blocked' => false, 'message' => null];
+        }
+
+        // Layer 3: Per-election setting (takes precedence when enabled)
+        if ($election->isIpRestricted()) {
+            return $this->evaluateIpCount($election, $ip, $election->ip_restriction_max_per_ip);
+        }
+
+        // Layer 2: Global platform fallback (config('app.max_use_clientIP'))
+        $globalMax = (int) config('app.max_use_clientIP', 0);
+        if ($globalMax > 0) {
+            return $this->evaluateIpCount($election, $ip, $globalMax);
+        }
+
+        return ['blocked' => false, 'message' => null];
+    }
+
+    /**
+     * Count completed votes from an IP and determine if blocked.
+     */
+    private function evaluateIpCount(Election $election, string $ip, int $max): array
+    {
+        $votedCount = VoterSlug::where('election_id', $election->id)
+            ->where('step_1_ip', $ip)
+            ->where('has_voted', true)
+            ->count();
+
+        if ($votedCount >= $max) {
+            return [
+                'blocked'        => true,
+                'message'        => "The maximum of {$max} vote(s) from your network has been reached.",
+                'remainingVotes' => 0,
+            ];
+        }
+
+        return [
+            'blocked'        => false,
+            'message'        => null,
+            'remainingVotes' => $max - $votedCount,
+        ];
     }
 }
