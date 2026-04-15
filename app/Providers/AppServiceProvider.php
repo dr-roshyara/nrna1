@@ -10,6 +10,7 @@ use App\Services\VoterSlugService;
 use App\Services\DemoElectionCreationService;
 use App\Services\TenantContext;
 use App\Services\DeviceFingerprint;
+use App\Services\ElectionAuditService;
 use App\Models\UserOrganisationRole;
 use App\Observers\UserOrganisationObserver;
 
@@ -45,6 +46,11 @@ class AppServiceProvider extends ServiceProvider
         // Register DeviceFingerprint service as singleton for device-based fraud detection
         $this->app->singleton(DeviceFingerprint::class, function () {
             return new DeviceFingerprint();
+        });
+
+        // Register ElectionAuditService as singleton for audit logging
+        $this->app->singleton(ElectionAuditService::class, function () {
+            return new ElectionAuditService();
         });
 
         // Register SeoService as singleton for injectable getMeta() usage

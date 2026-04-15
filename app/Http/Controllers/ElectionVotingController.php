@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Election;
+use App\Services\ElectionAuditService;
 use Carbon\Carbon;
 use App\Models\VoterSlug; // still used for active-session reuse in start()
 use Illuminate\Http\RedirectResponse;
@@ -104,6 +105,19 @@ class ElectionVotingController extends Controller
         // IP restriction check (replaces bare abort() with friendly redirect)
         $ipBlock = $this->resolveIpBlock($election, $request->ip());
         if ($ipBlock['blocked']) {
+            // Log IP block event BEFORE redirect
+            app(ElectionAuditService::class)->log(
+                election: $election,
+                event: 'ip_blocked',
+                user: $user,
+                category: 'voters',
+                ip: $request->ip(),
+                metadata: [
+                    'reason' => 'limit_exceeded',
+                    'max' => $election->ip_restriction_max_per_ip,
+                ]
+            );
+
             return redirect()->route('elections.show', $slug)
                 ->with('error', $ipBlock['message']);
         }
@@ -123,6 +137,16 @@ class ElectionVotingController extends Controller
                 'can_vote_now' => true,
                 'expires_at' => now()->addMinutes(30),
             ]);
+
+            // Log voting_started event
+            app(ElectionAuditService::class)->log(
+                election: $election,
+                event: 'voting_started',
+                user: $user,
+                category: 'voters',
+                ip: $request->ip()
+            );
+
             return redirect()->route('slug.code.create', ['vslug' => $existing->slug]);
         }
 
@@ -135,6 +159,15 @@ class ElectionVotingController extends Controller
             'status'          => 'active',
             'expires_at'      => now()->addMinutes(30),
         ]);
+
+        // Log voting_started event
+        app(ElectionAuditService::class)->log(
+            election: $election,
+            event: 'voting_started',
+            user: $user,
+            category: 'voters',
+            ip: $request->ip()
+        );
 
         return redirect()->route('slug.code.create', ['vslug' => $voterSlug->slug]);
     }

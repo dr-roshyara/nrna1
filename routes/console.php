@@ -40,3 +40,6 @@ Schedule::command('membership:process-expiry')->daily();
 
 // Membership: transition active→expired for members past their expiry date (daily)
 Schedule::command('membership:expire')->daily();
+
+// Audit: delete election audit folders older than 30 days (daily at 3 AM)
+Schedule::command('audit:cleanup')->dailyAt('03:00');

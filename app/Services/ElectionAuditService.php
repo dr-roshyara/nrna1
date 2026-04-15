@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\File;
 class ElectionAuditService
 {
     /**
+     * Maximum file size before rotation (100 MB)
+     * Prevents indefinite growth of audit logs within 30-day retention window
+     */
+    private const MAX_FILE_SIZE = 104857600; // 100 MB in bytes
+
+    /**
      * Log an election event to JSONL audit files.
      *
      * @param Election $election
@@ -39,6 +45,7 @@ class ElectionAuditService
         // Build log entry
         $entry = [
             'event' => $event,
+            'category' => $category,
             'election_id' => $election->id,
             'election_slug' => $election->slug,
             'timestamp' => now()->toIso8601String(),
@@ -87,16 +94,38 @@ class ElectionAuditService
 
     /**
      * Append a JSON object to a JSONL file (one JSON per line).
+     * Implements log rotation when file exceeds MAX_FILE_SIZE.
      */
     private function appendToJsonlFile(string $folderPath, string $filename, array $entry): void
     {
         $filePath = $folderPath . DIRECTORY_SEPARATOR . $filename;
+
+        // Check if file needs rotation (exceeds max size)
+        if (File::exists($filePath) && filesize($filePath) >= self::MAX_FILE_SIZE) {
+            $this->rotateFile($filePath);
+        }
 
         // Encode entry as JSON
         $jsonLine = json_encode($entry, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "\n";
 
         // Append to file (create if doesn't exist)
         File::append($filePath, $jsonLine);
+    }
+
+    /**
+     * Rotate a log file by renaming it with a timestamp suffix.
+     * Original: voters.jsonl → voters.jsonl.1713177600 (unix timestamp)
+     * New: voters.jsonl (fresh, empty, ready for new entries)
+     */
+    private function rotateFile(string $filePath): void
+    {
+        $timestamp = time();
+        $rotatedPath = $filePath . '.' . $timestamp;
+
+        // Rename existing file with timestamp
+        if (File::exists($filePath)) {
+            File::move($filePath, $rotatedPath);
+        }
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Election;
 
 use App\Http\Controllers\Controller;
 use App\Models\Election;
+use App\Services\ElectionAuditService;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
@@ -103,6 +104,18 @@ class ElectionSettingsController extends Controller
             'no_vote_option_enabled_after_save' => $election->no_vote_option_enabled,
             'fresh_from_db' => \App\Models\Election::find($election->id)?->no_vote_option_enabled,
         ]);
+
+        // Log settings_changed event
+        if (!empty($changes)) {
+            app(ElectionAuditService::class)->log(
+                election: $election,
+                event: 'settings_changed',
+                user: $request->user(),
+                category: 'committee',
+                ip: $request->ip(),
+                metadata: ['changes' => $changes]
+            );
+        }
 
         return back()->with('success', 'Settings saved.');
     }

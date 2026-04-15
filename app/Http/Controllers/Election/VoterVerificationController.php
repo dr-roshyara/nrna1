@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Election;
 use App\Models\Organisation;
 use App\Models\VoterVerification;
+use App\Services\ElectionAuditService;
 use Illuminate\Http\Request;
 
 class VoterVerificationController extends Controller
@@ -62,6 +63,19 @@ class VoterVerificationController extends Controller
             ));
         }
 
+        // Log voter_verified event
+        app(ElectionAuditService::class)->log(
+            election: $election,
+            event: 'voter_verified',
+            user: auth()->user(),
+            category: 'committee',
+            ip: $request->ip(),
+            metadata: [
+                'verified_ip' => $validated['verified_ip'] ?? null,
+                'fingerprint' => $validated['verified_device_fingerprint_hash'] ?? null,
+            ]
+        );
+
         return redirect()->back()
             ->with('success', 'Voter verification saved successfully');
     }
@@ -88,6 +102,15 @@ class VoterVerificationController extends Controller
             'revoked_by' => auth()->id(),
             'revoked_at' => now(),
         ]);
+
+        // Log verification_revoked event
+        app(ElectionAuditService::class)->log(
+            election: $election,
+            event: 'verification_revoked',
+            user: auth()->user(),
+            category: 'committee',
+            ip: $request->ip()
+        );
 
         return redirect()->back()
             ->with('success', 'Voter verification revoked successfully');

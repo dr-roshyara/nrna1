@@ -17,6 +17,7 @@ use App\Models\Code;
 use App\Models\Election;
 use App\Models\Upload;
 use App\Services\VotingServiceFactory;
+use App\Services\ElectionAuditService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -887,6 +888,18 @@ public function second_submission(Request $request)
 
         DB::commit();
 
+        // Log vote_submitted event
+        $postCount = count($vote_data['national_selected_candidates'] ?? []) +
+                     count($vote_data['regional_selected_candidates'] ?? []);
+        app(ElectionAuditService::class)->log(
+            election: $election,
+            event: 'vote_submitted',
+            user: $auth_user,
+            category: 'voters',
+            ip: $request->ip(),
+            metadata: ['post_count' => $postCount]
+        );
+
         // Redirect to verification with success message
         $route = $voterSlug ? 'slug.vote.verify' : 'vote.verify';
         $routeParams = $voterSlug ? ['vslug' => $voterSlug->slug] : [];
@@ -1608,6 +1621,18 @@ private function has_valid_selections($selections)
                 }
 
                 DB::commit();
+
+        // Log vote_confirmed event
+        $receiptHash = hash('sha256', $this->out_code . $auth_user->id . $election->id);
+        app(ElectionAuditService::class)->log(
+            election: $election,
+            event: 'vote_confirmed',
+            user: $auth_user,
+            category: 'voters',
+            ip: $request->ip(),
+            metadata: ['receipt_hash' => $receiptHash]
+        );
+
         // Advance slug step after successful vote submission
         $vslug = $request->route('vslug');
         if ($vslug instanceof \App\Models\VoterSlug && $vslug->current_step < 5) {
