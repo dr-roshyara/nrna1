@@ -644,6 +644,28 @@ public function first_submission(Request $request)
         'data_keys' => array_keys($vote_data)
     ]);
 
+    // Calculate post count for audit logging
+    $postCount = 0;
+    if (!empty($vote_data['national_selected_candidates'])) {
+        $postCount += count(array_filter($vote_data['national_selected_candidates']));
+    }
+    if (!empty($vote_data['regional_selected_candidates'])) {
+        $postCount += count(array_filter($vote_data['regional_selected_candidates']));
+    }
+    if (!empty($vote_data['no_vote_posts'])) {
+        $postCount += count($vote_data['no_vote_posts']);
+    }
+
+    // Log vote_submitted event
+    app(\App\Services\ElectionAuditService::class)->log(
+        election: $election,
+        event: 'vote_submitted',
+        user: $auth_user,
+        category: 'voters',
+        ip: $request->ip(),
+        metadata: ['post_count' => $postCount]
+    );
+
     // No need to send second verification code - reuse the first code to reduce emails
     \Log::info('Using first verification code for second verification', [
         'user_id' => $auth_user->id,
