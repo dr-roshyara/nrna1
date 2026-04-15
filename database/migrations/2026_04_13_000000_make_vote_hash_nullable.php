@@ -7,24 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Make vote_hash nullable in votes table (replaced by receipt_hash)
+     * DEPRECATED: Removed vote_hash references (replaced by receipt_hash)
      *
-     * vote_hash was replaced by receipt_hash for verification, but was never
-     * made nullable. This caused "Field 'vote_hash' doesn't have a default value" errors.
+     * vote_hash has been completely removed in favor of receipt_hash.
+     * This migration is now a no-op to maintain migration history.
      */
     public function up(): void
     {
-        Schema::table('votes', function (Blueprint $table) {
-            // Make vote_hash nullable since receipt_hash is now used for verification
-            $table->string('vote_hash')->nullable()->change();
-        });
+        // No-op: vote_hash removed, using receipt_hash instead
     }
 
     public function down(): void
     {
-        Schema::table('votes', function (Blueprint $table) {
-            // Restore vote_hash as non-nullable
-            $table->string('vote_hash')->nullable(false)->change();
-        });
+        // No-op: vote_hash removed, using receipt_hash instead
     }
 };
