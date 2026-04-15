@@ -73,6 +73,13 @@ class ElectionSettingsControllerAuditTest extends TestCase
             ]);
 
         // Assert: Successful redirect
+        if ($response->status() !== 302) {
+            \Log::error('Unexpected response', [
+                'status' => $response->status(),
+                'content' => $response->getContent(),
+                'errors' => $response->json(),
+            ]);
+        }
         $response->assertRedirect();
 
         // Assert: Audit log created
@@ -104,6 +111,60 @@ class ElectionSettingsControllerAuditTest extends TestCase
             in_array('description', $changedFields),
             "Changed fields not properly tracked in audit log"
         );
+    }
+
+    /**
+     * Test helper: Verify that election settings are actually being updated
+     */
+    public function test_election_update_actually_works(): void
+    {
+        // Setup
+        $organisation = Organisation::factory()->create();
+        $election = Election::factory()->create([
+            'organisation_id' => $organisation->id,
+            'ip_restriction_enabled' => true,
+            'ip_restriction_max_per_ip' => 1,
+        ]);
+
+        $admin = User::factory()->create(['organisation_id' => $organisation->id]);
+        \App\Models\UserOrganisationRole::create([
+            'id' => Str::uuid(),
+            'user_id' => $admin->id,
+            'organisation_id' => $organisation->id,
+            'role' => 'admin',
+        ]);
+
+        // Act: Update settings
+        $response = $this->actingAs($admin)
+            ->patch(route('elections.settings.update', [
+                'election' => $election->slug,
+            ]), [
+                'settings_version' => $election->settings_version,
+                'ip_restriction_enabled' => false,
+                'ip_restriction_max_per_ip' => 5,
+                'selection_constraint_type' => 'exact',
+                'selection_constraint_min' => 2,
+                'selection_constraint_max' => 2,
+            ]);
+
+        // Debug output
+        $this->assertTrue(true); // Placeholder assertion
+
+        // Refresh election from database
+        $updated = Election::find($election->id);
+
+        // Log values for debugging
+        \Log::info('Election update test', [
+            'original_enabled' => $election->ip_restriction_enabled,
+            'updated_enabled' => $updated->ip_restriction_enabled,
+            'original_max_per_ip' => $election->ip_restriction_max_per_ip,
+            'updated_max_per_ip' => $updated->ip_restriction_max_per_ip,
+            'response_status' => $response->status(),
+        ]);
+
+        // Verify update actually happened
+        $this->assertFalse($updated->ip_restriction_enabled, "Setting should have been updated to false");
+        $this->assertEquals(5, $updated->ip_restriction_max_per_ip, "Max per IP should have been updated to 5");
     }
 
     /**

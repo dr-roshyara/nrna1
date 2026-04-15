@@ -75,8 +75,11 @@ class ElectionSettingsController extends Controller
         $settingsKeys = array_diff(array_keys($validated), ['settings_version', 'confirmed_active_changes']);
         $changes = [];
         foreach ($settingsKeys as $key) {
-            if ($election->$key != ($validated[$key] ?? null)) {
-                $changes[$key] = ['from' => $election->$key, 'to' => $validated[$key] ?? null];
+            $oldValue = $election->$key;
+            $newValue = $validated[$key] ?? null;
+            // Detect actual value changes (handles type coercion from database)
+            if ((string) $oldValue !== (string) $newValue) {
+                $changes[$key] = ['from' => $oldValue, 'to' => $newValue];
             }
         }
 

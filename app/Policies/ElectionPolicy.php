@@ -21,10 +21,19 @@ use App\Models\UserOrganisationRole;
 class ElectionPolicy
 {
     /**
-     * Any active officer for this organisation may view voter management pages.
+     * Org owner/admin or any active officer may view voter management pages.
      */
     public function view(User $user, Election $election): bool
     {
+        // Org owner/admin has access
+        if (UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $election->organisation_id)
+            ->whereIn('role', ['owner', 'admin'])
+            ->exists()) {
+            return true;
+        }
+
+        // Election officers also have access
         return ElectionOfficer::where('user_id', $user->id)
             ->where('organisation_id', $election->organisation_id)
             ->where('status', 'active')
@@ -32,7 +41,7 @@ class ElectionPolicy
     }
 
     /**
-     * Any active officer may view results.
+     * Org owner/admin or any active officer may view results.
      */
     public function viewResults(User $user, Election $election): bool
     {
