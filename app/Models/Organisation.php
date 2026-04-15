@@ -25,6 +25,7 @@ class Organisation extends Model
         'settings',
         'languages',
         'logo',
+        'uses_full_membership',
     ];
 
     protected $casts = [
@@ -33,6 +34,7 @@ class Organisation extends Model
         'settings' => 'array',
         'languages' => 'array',
         'is_default' => 'boolean',
+        'uses_full_membership' => 'boolean',
     ];
 
     // Relationships
@@ -150,5 +152,21 @@ class Organisation extends Model
         return static::where('type', 'platform')
                      ->where('is_default', true)
                      ->first();
+    }
+
+    /**
+     * Check if organisation uses election-only mode (no formal membership required)
+     */
+    public function isElectionOnly(): bool
+    {
+        return !$this->uses_full_membership;
+    }
+
+    /**
+     * Check if organisation uses full membership mode (requires formal members with paid fees)
+     */
+    public function usesFullMembership(): bool
+    {
+        return $this->uses_full_membership === true;
     }
 }

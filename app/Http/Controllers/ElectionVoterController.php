@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
+use App\Models\OrganisationUser;
 use App\Models\VoterVerification;
+use App\Services\VoterEligibilityService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -24,6 +26,10 @@ use Inertia\Inertia;
  */
 class ElectionVoterController extends Controller
 {
+    public function __construct(
+        private VoterEligibilityService $eligibilityService
+    ) {}
+
     // =========================================================================
     // index — list voters assigned to the election
     // =========================================================================
@@ -54,22 +60,8 @@ class ElectionVoterController extends Controller
             ->pluck('user_id')
             ->toArray();
 
-        $unassignedMembers = DB::table('members')
-            ->join('organisation_users',       'members.organisation_user_id', '=', 'organisation_users.id')
-            ->leftJoin('membership_types',     'members.membership_type_id',   '=', 'membership_types.id')
-            ->join('users',                    'organisation_users.user_id',   '=', 'users.id')
-            ->where('members.organisation_id', $organisation->id)
-            ->where('members.status', 'active')
-            ->whereIn('members.fees_status', ['paid', 'exempt'])
-            ->where(fn ($q) => $q->whereNull('members.membership_type_id')
-                                 ->orWhere('membership_types.grants_voting_rights', true))
-            ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
-                                 ->orWhere('members.membership_expires_at', '>', now()))
-            ->whereNull('members.deleted_at')
-            ->whereNotIn('organisation_users.user_id', $assignedUserIds)
-            ->distinct()
-            ->select('users.id', 'users.name', 'users.email')
-            ->orderBy('users.name')
+        $unassignedMembers = $this->eligibilityService
+            ->unassignedEligibleQuery($organisation, $assignedUserIds)
             ->get();
 
         // Load active verifications for this election, keyed by user_id
@@ -104,11 +96,11 @@ class ElectionVoterController extends Controller
             'user_id' => [
                 'required',
                 'uuid',
-                // Must be an active formal member with full voting rights
+                // Must be eligible voter (depends on organisation's membership mode)
                 function ($attribute, $value, $fail) use ($organisation) {
                     $user = \App\Models\User::find($value);
-                    if (! $user || ! $user->isEligibleVoter($organisation)) {
-                        $fail('The selected user is not an active formal member with full voting rights.');
+                    if (! $user || ! $this->eligibilityService->isEligibleVoter($organisation, $user)) {
+                        $fail('The selected user is not eligible to vote in this election.');
                     }
                 },
             ],
@@ -143,22 +135,32 @@ class ElectionVoterController extends Controller
             'user_ids.*' => 'uuid',
         ]);
 
-        // Filter to eligible voters only (active formal members with full voting rights)
-        $validIds = DB::table('members')
-            ->join('organisation_users',       'members.organisation_user_id', '=', 'organisation_users.id')
-            ->leftJoin('membership_types',     'members.membership_type_id',   '=', 'membership_types.id')
-            ->whereIn('organisation_users.user_id', $request->user_ids)
-            ->where('members.organisation_id', $organisation->id)
-            ->where('members.status', 'active')
-            ->whereIn('members.fees_status', ['paid', 'exempt'])
-            ->where(fn ($q) => $q->whereNull('members.membership_type_id')
-                                 ->orWhere('membership_types.grants_voting_rights', true))
-            ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
-                                 ->orWhere('members.membership_expires_at', '>', now()))
-            ->whereNull('members.deleted_at')
-            ->distinct()
-            ->pluck('organisation_users.user_id')
-            ->toArray();
+        // Filter to eligible voters only (depends on organisation's membership mode)
+        if ($organisation->usesFullMembership()) {
+            // Full membership mode: single efficient query
+            $validIds = DB::table('members')
+                ->join('organisation_users',       'members.organisation_user_id', '=', 'organisation_users.id')
+                ->leftJoin('membership_types',     'members.membership_type_id',   '=', 'membership_types.id')
+                ->whereIn('organisation_users.user_id', $request->user_ids)
+                ->where('members.organisation_id', $organisation->id)
+                ->where('members.status', 'active')
+                ->whereIn('members.fees_status', ['paid', 'exempt'])
+                ->where(fn ($q) => $q->whereNull('members.membership_type_id')
+                                     ->orWhere('membership_types.grants_voting_rights', true))
+                ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
+                                     ->orWhere('members.membership_expires_at', '>', now()))
+                ->whereNull('members.deleted_at')
+                ->distinct()
+                ->pluck('organisation_users.user_id')
+                ->toArray();
+        } else {
+            // Election-only mode: single efficient query
+            $validIds = OrganisationUser::where('organisation_id', $organisation->id)
+                ->whereIn('user_id', $request->user_ids)
+                ->where('status', 'active')
+                ->pluck('user_id')
+                ->toArray();
+        }
 
         $invalidCount = count($request->user_ids) - count($validIds);
 
