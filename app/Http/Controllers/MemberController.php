@@ -18,6 +18,9 @@ class MemberController extends Controller
      */
     public function index(Request $request, Organisation $organisation): Response
     {
+        // ← ADD THIS
+        $this->authorize('viewApplications', $organisation);
+
         $request->validate([
             'direction' => 'in:asc,desc',
             'field'     => 'in:name,email,status,joined_at,membership_expires_at,created_at',
@@ -75,6 +78,34 @@ class MemberController extends Controller
                                         ->where('status', 'pending')->sum('amount'),
             ],
         ]);
+    }
+
+    /**
+     * Mark a member's fees as exempt (administratively "paid").
+     *
+     * Note: Sets fees_status='exempt', not 'paid' — this grants immediate voting
+     * eligibility without recording a payment transaction. Use MembershipFeeController::pay()
+     * when an actual payment reference needs to be recorded.
+     */
+    public function markPaid(Organisation $organisation, Member $member)
+    {
+        // ← ADD THIS — uses Laravel's built-in authorize() helper
+        $this->authorize('recordFeePayment', $organisation);
+
+        // Verify member belongs to this organisation
+        if ($member->organisation_id !== $organisation->id) {
+            abort(404);
+        }
+
+        $member->update(['fees_status' => 'exempt']);
+
+        // ← ADD THIS — waive pending fee rows so UI badge clears
+        $member->fees()->where('status', 'pending')->update([
+            'status'      => 'waived',
+            'recorded_by' => auth()->id(),
+        ]);
+
+        return back()->with('success', ($member->organisationUser?->user?->name ?? 'Member') . ' marked as paid.');
     }
 
     public function export(Request $request, Organisation $organisation): StreamedResponse

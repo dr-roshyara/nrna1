@@ -170,6 +170,7 @@ Route::prefix('organisations/{organisation:slug}')
         // ── Members List (formal paid members only) ───────────────────────────────
         Route::get('/members',        [MemberController::class, 'index'])  ->name('organisations.members.index');
         Route::get('/members/export', [MemberController::class, 'export']) ->name('organisations.members.export');
+        Route::patch('/members/{member}/mark-paid', [MemberController::class, 'markPaid']) ->name('organisations.members.mark-paid');
 
         // ── Membership Fee & Renewal Management ──────────────────────────────────
         Route::prefix('/members/{member}')->name('organisations.members.')->group(function () {

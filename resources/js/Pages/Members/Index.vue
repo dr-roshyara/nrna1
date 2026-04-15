@@ -160,7 +160,14 @@
                 </span>
                 <span v-else class="text-gray-400 text-xs">—</span>
               </td>
-              <td class="px-4 py-3">
+              <td class="px-4 py-3 flex items-center gap-2">
+                <button
+                  v-if="member.pending_fees > 0"
+                  @click="markAsPaid(member.id, member.name)"
+                  class="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1.5 bg-green-100 text-green-700 hover:bg-green-200 rounded transition-colors"
+                >
+                  ✓ Mark Paid
+                </button>
                 <a
                   :href="`/organisations/${organisation.slug}/members/${member.id}/fees`"
                   class="inline-flex items-center gap-1 text-xs font-medium text-indigo-600 hover:text-indigo-800 hover:underline"
@@ -271,6 +278,21 @@ export default {
         Object.fromEntries(Object.entries(this.params).filter(([, v]) => v !== ''))
       )
       window.location.href = `/organisations/${this.organisation.slug}/members/export?${params.toString()}`
+    },
+
+    markAsPaid(memberId, memberName) {
+      if (confirm(`Mark ${memberName} as paid?`)) {
+        this.$inertia.patch(
+          `/organisations/${this.organisation.slug}/members/${memberId}/mark-paid`,
+          {},
+          {
+            preserveScroll: true,
+            onSuccess: () => {
+              // Page will refresh automatically showing updated status
+            },
+          }
+        )
+      }
     },
   },
 }
