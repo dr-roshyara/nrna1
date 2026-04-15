@@ -129,19 +129,20 @@ class OrganisationRoleController extends Controller
             ->where('organisation_id', $organisation->id)
             ->firstOrFail();
 
-        // Check for existing assignment on this election
+        // Check for existing assignment in this organisation (unique constraint on user_id, organisation_id)
         $existing = ElectionOfficer::where('user_id', $validated['user_id'])
-            ->where('election_id', $election->id)
+            ->where('organisation_id', $organisation->id)
             ->first();
 
         if ($existing) {
-            // Update role if different
-            if ($existing->role !== $validated['role']) {
-                $existing->update(['role' => $validated['role'], 'status' => 'active']);
-                $user = User::find($validated['user_id']);
-                return back()->with('success', ($user->name ?? 'User') . ' officer role updated to ' . $validated['role'] . ' for "' . $election->name . '".');
+            // Update if it's the same election, or if changing across elections
+            if ($existing->election_id === $validated['election_id'] && $existing->role === $validated['role']) {
+                return back()->with('error', 'This user is already assigned as ' . $existing->role . ' for this election.');
             }
-            return back()->with('error', 'This user is already assigned as ' . $existing->role . ' for this election.');
+            // Update to new election and role
+            $existing->update(['election_id' => $validated['election_id'], 'role' => $validated['role'], 'status' => 'active']);
+            $user = User::find($validated['user_id']);
+            return back()->with('success', ($user->name ?? 'User') . ' officer role updated to ' . $validated['role'] . ' for "' . $election->name . '".');
         }
 
         ElectionOfficer::create([
