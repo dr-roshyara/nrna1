@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('membership_payments', function (Blueprint $table) {
+        Schema::createIfNotExists('membership_payments', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
             // Links to member and fee

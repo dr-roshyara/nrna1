@@ -15,33 +15,36 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Step 1: Add columns as nullable first
-        Schema::table('incomes', function (Blueprint $table) {
-            $table->uuid('organisation_id')->nullable()->after('id');
-            $table->string('source_type')->nullable()->after('organisation_id'); // 'membership_fee'
-            $table->uuid('source_id')->nullable()->after('source_type');
-            $table->foreign('organisation_id')->references('id')->on('organisations')->cascadeOnDelete();
-            // Composite index for Finance reporting queries
-            $table->index(['organisation_id', 'source_type', 'created_at'], 'idx_income_org_source_date');
-        });
+        // Only run if columns don't already exist (idempotent)
+        if (! Schema::hasColumn('incomes', 'organisation_id')) {
+            // Step 1: Add columns as nullable first
+            Schema::table('incomes', function (Blueprint $table) {
+                $table->uuid('organisation_id')->nullable()->after('id');
+                $table->string('source_type')->nullable()->after('organisation_id'); // 'membership_fee'
+                $table->uuid('source_id')->nullable()->after('source_type');
+                $table->foreign('organisation_id')->references('id')->on('organisations')->cascadeOnDelete();
+                // Composite index for Finance reporting queries
+                $table->index(['organisation_id', 'source_type', 'created_at'], 'idx_income_org_source_date');
+            });
 
-        // Step 2: BACKFILL organisation_id from the user who submitted the income
-        // This is critical for existing records to maintain data integrity
-        DB::statement('
-            UPDATE incomes
-            SET organisation_id = (
-                SELECT organisation_id
-                FROM users
-                WHERE users.id = incomes.user_id
-                LIMIT 1
-            )
-            WHERE organisation_id IS NULL
-        ');
+            // Step 2: BACKFILL organisation_id from the user who submitted the income
+            // This is critical for existing records to maintain data integrity
+            DB::statement('
+                UPDATE incomes
+                SET organisation_id = (
+                    SELECT organisation_id
+                    FROM users
+                    WHERE users.id = incomes.user_id
+                    LIMIT 1
+                )
+                WHERE organisation_id IS NULL
+            ');
 
-        // Step 3: Make organisation_id non-nullable after backfill
-        Schema::table('incomes', function (Blueprint $table) {
-            $table->uuid('organisation_id')->nullable(false)->change();
-        });
+            // Step 3: Make organisation_id non-nullable after backfill
+            Schema::table('incomes', function (Blueprint $table) {
+                $table->uuid('organisation_id')->nullable(false)->change();
+            });
+        }
     }
 
     /**
