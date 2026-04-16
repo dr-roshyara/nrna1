@@ -8,23 +8,42 @@
             <section class="esp-hero">
                 <div class="esp-hero__grid" aria-hidden="true"></div>
                 <div class="esp-hero__inner">
-                    <!-- Organisation logo -->
-                    <div v-if="organisationLogo" class="esp-org-logo">
-                        <img :src="organisationLogo"
-                             :alt="organisationName || 'Organisation logo'"
-                             class="esp-org-logo__img" />
-                    </div>
+                    <!-- Header with Organisation Button -->
+                    <div class="esp-hero__header">
+                        <div>
+                            <!-- Organisation logo -->
+                            <div v-if="organisationLogo" class="esp-org-logo">
+                                <img :src="organisationLogo"
+                                     :alt="organisationName || 'Organisation logo'"
+                                     class="esp-org-logo__img" />
+                            </div>
 
-                    <div class="esp-eyebrow">
-                        <span class="esp-eyebrow__line"></span>
-                        <span class="esp-eyebrow__text">{{ $t('pages.election-show.hero.eyebrow') }}</span>
-                        <span class="esp-eyebrow__line"></span>
-                    </div>
-                    <h1 class="esp-hero__title">{{ election.name }}</h1>
-                    <div class="esp-hero__meta">
-                        <span class="esp-meta-date">{{ formatDate(election.start_date) }} — {{ formatDate(election.end_date) }}</span>
-                        <span class="esp-meta-dot" aria-hidden="true">·</span>
-                        <span class="esp-meta-status" :class="`esp-status--${election.status}`">{{ election.status }}</span>
+                            <div class="esp-eyebrow">
+                                <span class="esp-eyebrow__line"></span>
+                                <span class="esp-eyebrow__text">{{ $t('pages.election-show.hero.eyebrow') }}</span>
+                                <span class="esp-eyebrow__line"></span>
+                            </div>
+                            <h1 class="esp-hero__title">{{ election.name }}</h1>
+                            <div class="esp-hero__meta">
+                                <span class="esp-meta-date">{{ formatDate(election.start_date) }} — {{ formatDate(election.end_date) }}</span>
+                                <span class="esp-meta-dot" aria-hidden="true">·</span>
+                                <span class="esp-meta-status" :class="`esp-status--${election.status}`">{{ election.status }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Organisation Button -->
+                        <a v-if="organisation && organisation.slug"
+                           :href="route('organisations.show', organisation.slug)"
+                           class="esp-org-button"
+                           :title="`Go to ${organisationName}`">
+                            <svg class="esp-org-button__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            <span class="esp-org-button__text">{{ organisationName }}</span>
+                            <svg class="esp-org-button__arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
                     </div>
 
                     <div v-if="ipAddress" class="esp-ip-badge" aria-label="Your IP address">
@@ -281,6 +300,7 @@ const props = defineProps({
     remainingVotes:    { type: Number,  default: null },
     organisationLogo:  { type: String,  default: null },
     organisationName:  { type: String,  default: null },
+    organisation:      { type: Object,  default: null },
 })
 
 // ─── Flash ────────────────────────────────────────────────────────────────────
@@ -578,6 +598,100 @@ const ballotCardClass = computed(() => ({
         width: 200px;
         text-align: center;
         font-size: 0.65rem;
+    }
+}
+
+/* ── Hero Header Layout (Title + Organisation Button) ──────────────────────── */
+.esp-hero__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.esp-hero__header > div:first-child {
+    flex: 1;
+    text-align: center;
+}
+
+/* ── Organisation Button ───────────────────────────────────────────────────── */
+.esp-org-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(201, 151, 58, 0.1);
+    border: 1.5px solid rgba(201, 151, 58, 0.3);
+    border-radius: 8px;
+    color: var(--gold-lt);
+    text-decoration: none;
+    font-family: var(--ff-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: all 0.3s cubic-bezier(0.22, 0.68, 0, 1.2);
+    cursor: pointer;
+    backdrop-filter: blur(2px);
+    white-space: nowrap;
+}
+
+.esp-org-button:hover {
+    background: rgba(201, 151, 58, 0.2);
+    border-color: rgba(224, 181, 90, 0.6);
+    color: var(--cream);
+    transform: translateX(4px);
+}
+
+.esp-org-button:active {
+    transform: translateX(2px);
+}
+
+.esp-org-button__icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.esp-org-button:hover .esp-org-button__icon {
+    transform: scale(1.1);
+}
+
+.esp-org-button__text {
+    display: inline;
+}
+
+.esp-org-button__arrow {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.esp-org-button:hover .esp-org-button__arrow {
+    transform: translateX(3px);
+}
+
+/* Responsive: Stack on mobile */
+@media (max-width: 768px) {
+    .esp-hero__header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+    }
+
+    .esp-hero__header > div:first-child {
+        text-align: center;
+    }
+
+    .esp-org-button {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .esp-org-button__text {
+        display: inline;
     }
 }
 
