@@ -658,6 +658,7 @@ class ElectionManagementController extends Controller
             'election'        => $election,
             'organisation'    => $organisation ? [
                 'id'   => $organisation->id,
+                'slug' => $organisation->slug,
                 'name' => $organisation->name,
                 'logo' => $organisation->logo ? asset($organisation->logo) : null,
             ] : null,

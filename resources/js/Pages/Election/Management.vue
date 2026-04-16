@@ -38,6 +38,20 @@
               <h1 class="text-2xl font-bold text-slate-900 leading-tight">{{ election.name }}</h1>
             </div>
             <div class="flex items-center gap-3 flex-wrap sm:flex-nowrap">
+              <!-- Voter Import Link -->
+              <a
+                v-if="organisation"
+                :href="route('elections.voters.import.create', { organisation: organisation.slug, election: election.slug })"
+                class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-emerald-50 to-teal-50 text-emerald-700 font-semibold rounded-lg border-2 border-emerald-200 hover:border-emerald-400 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-emerald-200 transition-all duration-200 whitespace-nowrap"
+                aria-label="Import voters from CSV file"
+                title="Bulk import voters from a spreadsheet"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                <span class="hidden sm:inline">Import Voters</span>
+                <span class="sm:hidden">Import</span>
+              </a>
               <!-- Tutorial/Help Link -->
               <a
                 href="/help/election-setup"
