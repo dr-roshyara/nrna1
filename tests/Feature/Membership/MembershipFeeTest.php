@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Membership;
 
-use App\Events\Membership\MembershipFeePaid;
+use App\Events\MembershipFeePaid;
 use App\Models\Member;
 use App\Models\MembershipFee;
 use App\Models\MembershipType;

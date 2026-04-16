@@ -65,5 +65,8 @@ class EventServiceProvider extends ServiceProvider
         // ── Newsletter send counters + kill switch ───────────────────────────
         Event::listen(NewsletterEmailSent::class, [UpdateNewsletterCounters::class, 'handleSent']);
         Event::listen(NewsletterEmailFailed::class, [UpdateNewsletterCounters::class, 'handleFailed']);
+
+        // ── Membership fee paid event listeners ───────────────────────────────
+        Event::listen(MembershipFeePaid::class, [CreateIncomeForMembershipFee::class, 'handle']);
     }
 }

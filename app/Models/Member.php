@@ -88,6 +88,11 @@ class Member extends Model
         return $this->hasMany(MembershipFee::class);
     }
 
+    public function payments()
+    {
+        return $this->hasMany(MembershipPayment::class);
+    }
+
     public function renewals()
     {
         return $this->hasMany(MembershipRenewal::class);

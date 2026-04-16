@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Member;
 use App\Models\MembershipFee;
 use App\Models\Organisation;
+use App\Services\MembershipPaymentService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -152,5 +153,27 @@ class MemberController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    /**
+     * Display member's financial dashboard (fees, payments, income).
+     */
+    public function finance(
+        Organisation $organisation,
+        Member $member,
+        MembershipPaymentService $service
+    ): Response {
+        $this->authorize('recordFeePayment', $organisation);
+
+        // Tenant isolation
+        abort_if($member->organisation_id !== $organisation->id, 404);
+
+        return Inertia::render('Organisations/Membership/Member/Finance', [
+            'organisation' => $organisation->only('id', 'name', 'slug'),
+            'member' => $member->load('organisationUser.user', 'membershipType'),
+            'outstandingFees' => $service->getOutstandingFees($member),
+            'paymentHistory' => $service->getPaymentHistory($member),
+            'stats' => $service->getDashboardStats($member),
+        ]);
     }
 }

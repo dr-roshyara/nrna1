@@ -182,6 +182,7 @@ Route::prefix('organisations/{organisation:slug}')
             Route::get('/fees',             [MembershipFeeController::class,     'index']) ->name('fees.index');
             Route::post('/fees/{fee}/pay',  [MembershipFeeController::class,     'pay'])   ->name('fees.pay');
             Route::post('/fees/{fee}/waive',[MembershipFeeController::class,     'waive']) ->name('fees.waive');
+            Route::get('/finance',          [MemberController::class,            'finance']) ->name('finance');
             Route::post('/renew',           [MembershipRenewalController::class, 'store']) ->name('renew');
         });
 
