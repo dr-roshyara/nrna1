@@ -66,6 +66,7 @@ class ElectionVotingController extends Controller
             'ipBlocked'        => $ipBlock['blocked'],
             'ipBlockMessage'   => $ipBlock['message'],
             'remainingVotes'   => $ipBlock['remainingVotes'] ?? null,
+            'organisation'     => $org,
             'organisationLogo' => $org?->logo ? asset($org->logo) : null,
             'organisationName' => $org?->name,
         ]);
