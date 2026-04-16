@@ -52,10 +52,29 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('incomes', function (Blueprint $table) {
-            $table->dropIndex('idx_income_org_source_date');
-            $table->dropForeign(['organisation_id']);
-            $table->dropColumn(['organisation_id', 'source_type', 'source_id']);
-        });
+        // Only drop if columns still exist (idempotent)
+        if (Schema::hasColumn('incomes', 'organisation_id')) {
+            Schema::table('incomes', function (Blueprint $table) {
+                // Drop foreign key first if it exists
+                $sm = Schema::getConnection()->getDoctrineSchemaManager();
+                $indexesDetail = $sm->listTableIndexes('incomes');
+
+                // Only drop index if it exists
+                if (isset($indexesDetail['idx_income_org_source_date'])) {
+                    $table->dropIndex('idx_income_org_source_date');
+                }
+
+                // Check before dropping foreign key
+                $foreignKeys = $sm->listTableForeignKeys('incomes');
+                foreach ($foreignKeys as $fk) {
+                    if ($fk->getLocalColumns()[0] === 'organisation_id') {
+                        $table->dropForeign(['organisation_id']);
+                        break;
+                    }
+                }
+
+                $table->dropColumn(['organisation_id', 'source_type', 'source_id']);
+            });
+        }
     }
 };

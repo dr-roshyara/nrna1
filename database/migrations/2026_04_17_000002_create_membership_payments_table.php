@@ -14,7 +14,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::createIfNotExists('membership_payments', function (Blueprint $table) {
+        // Only create if table doesn't already exist (idempotent)
+        if (! Schema::hasTable('membership_payments')) {
+            Schema::create('membership_payments', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
             // Links to member and fee
@@ -32,8 +34,8 @@ return new class extends Migration
             // Audit trail
             $table->uuid('recorded_by');
 
-            // Links to Income record created by listener
-            $table->uuid('income_id')->nullable();
+            // Links to Income record created by listener (incomes table uses bigint id)
+            $table->unsignedBigInteger('income_id')->nullable();
 
             // Timestamps
             $table->timestamp('paid_at');
@@ -49,7 +51,8 @@ return new class extends Migration
             // Indexes for common queries
             $table->index(['organisation_id', 'paid_at']);
             $table->index(['member_id', 'status']);
-        });
+            });
+        }
     }
 
     /**
