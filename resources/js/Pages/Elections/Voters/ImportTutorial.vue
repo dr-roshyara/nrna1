@@ -35,10 +35,20 @@
               <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-700 text-sm">✓</span>
               {{ t.section_requirements.heading }}
             </h2>
-            <p class="text-gray-700 mb-4">{{ t.section_requirements.intro }}</p>
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 flex gap-3">
+              <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p class="text-blue-800 text-sm">
+                <strong>Your mode:</strong> {{ uses_full_membership ? 'Full Membership Mode' : 'Election-Only Mode' }}
+              </p>
+            </div>
+            <p class="text-gray-700 mb-4">
+              {{ uses_full_membership ? t.section_requirements.intro_full : t.section_requirements.intro_election }}
+            </p>
             <ul class="space-y-2 mb-4">
               <li
-                v-for="(condition, idx) in t.section_requirements.conditions"
+                v-for="(condition, idx) in (uses_full_membership ? t.section_requirements.conditions_full : t.section_requirements.conditions_election)"
                 :key="idx"
                 class="flex items-start gap-3"
               >
@@ -52,7 +62,9 @@
               <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
               </svg>
-              <p class="text-amber-800 text-sm">{{ t.section_requirements.warning }}</p>
+              <p class="text-amber-800 text-sm">
+                {{ uses_full_membership ? t.section_requirements.warning_full : t.section_requirements.warning_election }}
+              </p>
             </div>
           </section>
 
@@ -64,20 +76,30 @@
             </h2>
             <p class="text-gray-700 mb-4">{{ t.section_file_format.intro }}</p>
 
-            <p class="font-medium text-gray-800 mb-2">{{ t.section_file_format.rules_heading }}</p>
-            <ul class="space-y-2 mb-5">
-              <li
-                v-for="(rule, idx) in t.section_file_format.rules"
-                :key="idx"
-                class="flex items-start gap-2 text-gray-700 text-sm"
-              >
-                <span class="text-blue-500 mt-0.5">•</span>
-                {{ rule }}
-              </li>
-            </ul>
+            <!-- Format Section based on Mode -->
+            <div :class="uses_full_membership ? '' : ''">
+              <p class="font-bold text-gray-900 mb-2 text-lg">
+                {{ uses_full_membership ? t.section_file_format.format_full.title : t.section_file_format.format_election.title }}
+              </p>
+              <p class="text-gray-600 mb-4">
+                {{ uses_full_membership ? t.section_file_format.format_full.description : t.section_file_format.format_election.description }}
+              </p>
 
-            <p class="font-medium text-gray-800 mb-2">{{ t.section_file_format.example_heading }}</p>
-            <pre class="bg-gray-900 text-green-400 rounded-lg p-4 text-sm font-mono overflow-x-auto mb-4">{{ t.section_file_format.example }}</pre>
+              <p class="font-medium text-gray-800 mb-2">{{ uses_full_membership ? t.section_file_format.format_full.rules_heading : t.section_file_format.format_election.rules_heading }}</p>
+              <ul class="space-y-2 mb-5">
+                <li
+                  v-for="(rule, idx) in (uses_full_membership ? t.section_file_format.format_full.rules : t.section_file_format.format_election.rules)"
+                  :key="idx"
+                  class="flex items-start gap-2 text-gray-700 text-sm"
+                >
+                  <span class="text-blue-500 mt-0.5">•</span>
+                  {{ rule }}
+                </li>
+              </ul>
+
+              <p class="font-medium text-gray-800 mb-2">{{ uses_full_membership ? t.section_file_format.format_full.example_heading : t.section_file_format.format_election.example_heading }}</p>
+              <pre class="bg-gray-900 text-green-400 rounded-lg p-4 text-sm font-mono overflow-x-auto mb-4">{{ uses_full_membership ? t.section_file_format.format_full.example : t.section_file_format.format_election.example }}</pre>
+            </div>
 
             <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 flex gap-3">
               <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -92,7 +114,7 @@
             <h2 class="text-xl font-semibold text-gray-900 mb-6">{{ t.section_steps.heading }}</h2>
             <div class="space-y-6">
               <div
-                v-for="(step, idx) in t.section_steps.steps"
+                v-for="(step, idx) in (uses_full_membership ? t.section_steps.steps_full : t.section_steps.steps_election)"
                 :key="idx"
                 class="flex gap-4"
               >
@@ -100,7 +122,7 @@
                   <div class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center">
                     {{ idx + 1 }}
                   </div>
-                  <div v-if="idx < t.section_steps.steps.length - 1" class="w-0.5 h-full bg-blue-100 mt-2" />
+                  <div v-if="idx < (uses_full_membership ? t.section_steps.steps_full : t.section_steps.steps_election).length - 1" class="w-0.5 h-full bg-blue-100 mt-2" />
                 </div>
                 <div class="pb-6">
                   <p class="font-semibold text-gray-900 mb-1">{{ step.title }}</p>
@@ -162,7 +184,8 @@ const pageData = { en: pageEn, de: pageDe, np: pageNp }
 const t = computed(() => pageData[locale.value] ?? pageData.en)
 
 defineProps({
-  organisation: { type: Object, required: true },
-  election:     { type: Object, required: true },
+  organisation:        { type: Object,  required: true },
+  election:            { type: Object,  required: true },
+  uses_full_membership: { type: Boolean, default: true },
 })
 </script>

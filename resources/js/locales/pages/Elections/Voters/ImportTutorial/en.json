@@ -1,45 +1,81 @@
 {
   "title": "Voter Import Tutorial",
-  "subtitle": "Learn how to bulk-register organisation members as voters for an election.",
+  "subtitle": "Learn how to bulk-register voters for an election.",
   "back": "Back to Import",
 
   "section_overview": {
     "heading": "Overview",
-    "body": "The voter import feature lets election administrators register multiple organisation members as voters in one step by uploading a CSV file. Only members who already exist as active formal members of the organisation can be registered."
+    "body": "The voter import feature lets election administrators register multiple voters in one step by uploading a CSV file. Depending on your organisation's membership mode, the import process works differently:",
+    "modes": {
+      "full_membership": {
+        "label": "Full Membership Mode",
+        "description": "Voters must already be active formal members of the organisation. The import links existing members to the election as voters."
+      },
+      "election_only": {
+        "label": "Election-Only Mode",
+        "description": "Voters can be new — the system auto-creates user accounts for unknown emails. Each new voter receives an invitation email to set their password and participate in the election."
+      }
+    }
   },
 
   "section_requirements": {
     "heading": "Who Can Be Imported as a Voter?",
-    "intro": "Before importing, the person must fulfil all three conditions:",
-    "conditions": [
+    "intro_full": "In Full Membership Mode, the person must fulfil all three conditions:",
+    "intro_election": "In Election-Only Mode, you have two options:",
+    "conditions_full": [
       "They must have a user account on the platform (a registered email address).",
       "They must be a formal member of this organisation — present in the Members list.",
       "Their membership status must be active (not expired, suspended, or ended)."
     ],
-    "warning": "Emails that do not meet all three conditions will be automatically skipped during import. No error will stop the import — valid rows are always processed."
+    "conditions_election": [
+      "EXISTING USERS: Platform members who are active organisation members will be automatically registered as voters.",
+      "NEW USERS: Unknown email addresses will be auto-created as new user accounts, and invitation emails will be sent with a password-setup link."
+    ],
+    "warning_full": "Emails that do not meet all three conditions will be automatically skipped during import. No error will stop the import — valid rows are always processed.",
+    "warning_election": "All valid email addresses will be processed. Existing users are linked to the election. New users receive invitation emails — be sure to check your email configuration before importing."
   },
 
   "section_file_format": {
     "heading": "CSV File Format",
-    "intro": "The import file must be a CSV with semicolon (;) as the delimiter.",
-    "rules_heading": "Rules:",
-    "rules": [
-      "The first row must be a header row containing the column name: email",
-      "Each subsequent row must contain exactly one email address.",
-      "The file must be saved in UTF-8 encoding.",
-      "Maximum file size: 10 MB."
-    ],
-    "example_heading": "Example file content:",
-    "example": "email\njohn.doe@example.com\njane.smith@example.com\nbob.wilson@example.com",
-    "download_hint": "Use the Download Template button on the import page to get a ready-to-use CSV file."
+    "intro": "The import file format depends on your membership mode:",
+    "format_full": {
+      "title": "Full Membership Mode",
+      "description": "Simple format with email addresses only.",
+      "rules_heading": "Rules:",
+      "rules": [
+        "The first row must be a header row: email",
+        "Each subsequent row must contain exactly one email address.",
+        "The file must be saved in UTF-8 encoding.",
+        "Maximum file size: 10 MB.",
+        "Supports both comma (,) and semicolon (;) delimiters."
+      ],
+      "example_heading": "Example:",
+      "example": "email\njohn.doe@example.com\njane.smith@example.com\nbob.wilson@example.com"
+    },
+    "format_election": {
+      "title": "Election-Only Mode",
+      "description": "Extended format for name and email (new users get proper profiles).",
+      "rules_heading": "Rules:",
+      "rules": [
+        "The first row must be a header row: firstname;lastname;email (semicolon-delimited)",
+        "Each subsequent row: First Name;Last Name;Email",
+        "The file must be saved in UTF-8 encoding.",
+        "Maximum file size: 10 MB.",
+        "Supports both comma and semicolon delimiters.",
+        "Names can be empty (email-only rows are accepted)."
+      ],
+      "example_heading": "Example:",
+      "example": "firstname;lastname;email\nJohn;Doe;john.doe@example.com\nJane;Smith;jane.smith@example.com\n;Wilson;bob.wilson@example.com"
+    },
+    "download_hint": "Use the Download Template button on the import page to get the correct format for your organisation's membership mode."
   },
 
   "section_steps": {
     "heading": "Step-by-Step Import Process",
-    "steps": [
+    "steps_full": [
       {
         "title": "Step 1 — Prepare your CSV file",
-        "body": "Make sure all email addresses in your file belong to active formal members of this organisation. Download the template and fill it in."
+        "body": "Collect email addresses of organisation members who are active and should vote in this election. Download the template and fill it in."
       },
       {
         "title": "Step 2 — Upload the file",
@@ -47,11 +83,33 @@
       },
       {
         "title": "Step 3 — Review the preview",
-        "body": "The system will validate each row and show a preview table. Valid rows show ✅, invalid rows show ❌ with the reason. Invalid rows will be skipped — they do not block the import."
+        "body": "The system validates each row against membership status. Valid rows show ✅, invalid rows show ❌ with the reason. Invalid rows will be skipped — they do not block the import."
       },
       {
         "title": "Step 4 — Confirm and register",
-        "body": "Click the \"Register voters\" button. The system will add all valid rows as voters for this election. You will see a summary of how many were registered, how many were already existing voters, and how many were skipped."
+        "body": "Click \"Import Voters\". The system registers all valid voters for this election. You will see how many were registered, how many were already voters, and how many were skipped."
+      }
+    ],
+    "steps_election": [
+      {
+        "title": "Step 1 — Prepare your CSV file",
+        "body": "List all voters: existing members and new participants. Include first name, last name, and email. Download the template to ensure correct format."
+      },
+      {
+        "title": "Step 2 — Upload the file",
+        "body": "On the import page, click \"Select File\" or drag and drop your CSV file into the upload area."
+      },
+      {
+        "title": "Step 3 — Review the preview",
+        "body": "The system shows which users exist (marked 'existing') and which are new (marked 'will be created'). Verify everything looks correct before proceeding."
+      },
+      {
+        "title": "Step 4 — Confirm and import",
+        "body": "Click \"Import Voters\". Existing users are registered as voters immediately. New users receive invitation emails with a password-setup link. You will see a summary of counts and how many invitation emails were sent."
+      },
+      {
+        "title": "Step 5 — Check email delivery",
+        "body": "Monitor your email system to ensure invitation emails were delivered. New voters need the invitation email to set their password and vote."
       }
     ]
   },
@@ -60,24 +118,40 @@
     "heading": "Frequently Asked Questions",
     "items": [
       {
+        "question": "What's the difference between Full Membership and Election-Only modes?",
+        "answer": "Full Membership Mode requires voters to already be active formal members. Election-Only Mode allows auto-creating new voter accounts from the CSV — new voters receive invitation emails to set passwords. Check your organisation settings to see which mode is active."
+      },
+      {
         "question": "What happens if an email is already registered as a voter?",
         "answer": "It is counted as 'already existing' and not duplicated. The import is safe to run multiple times."
       },
       {
-        "question": "What happens if a person is a platform user but not a member of this organisation?",
+        "question": "What happens to new voters after import (Election-Only Mode)?",
+        "answer": "New voters receive invitation emails with a link to set their password. They must complete the password setup before voting. The invitation expires after 7 days."
+      },
+      {
+        "question": "What happens if a person is a platform user but not a member (Full Membership Mode)?",
         "answer": "They will be skipped. Only active formal members with full voting rights can be registered as voters."
       },
       {
         "question": "Can I import voters from outside the organisation?",
-        "answer": "No. The import is intentionally restricted to existing active members to protect election integrity."
+        "answer": "In Full Membership Mode: No, import is restricted to active members only. In Election-Only Mode: Yes, anyone with an email can be registered as a voter."
       },
       {
         "question": "The import says 0 registered — what went wrong?",
-        "answer": "The most likely reasons are: the emails do not belong to active members of this organisation, or the CSV column header is missing or misspelled. Download the template and verify your data."
+        "answer": "Check: (1) CSV format matches your mode (email-only for Full, firstname;lastname;email for Election-Only), (2) Header row is correct, (3) In Full Mode, emails belong to active members."
       },
       {
         "question": "Can I use a comma-separated CSV instead of semicolon?",
         "answer": "The system auto-detects the delimiter (comma or semicolon), so both formats are accepted."
+      },
+      {
+        "question": "Do I need to create member accounts first?",
+        "answer": "In Full Membership Mode: Yes. In Election-Only Mode: No — the system auto-creates accounts for new emails."
+      },
+      {
+        "question": "What if an invitation email bounces or is not delivered?",
+        "answer": "The voter is still registered but cannot set a password or vote without the email. Check your email configuration and resend invitations if needed."
       }
     ]
   },

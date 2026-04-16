@@ -40,8 +40,9 @@ class VoterImportController extends Controller
         $this->authorize('manageVoters', $election);
 
         return Inertia::render('Elections/Voters/ImportTutorial', [
-            'organisation' => $organisation->only('id', 'name', 'slug'),
-            'election'     => $election->only('id', 'slug', 'name'),
+            'organisation'       => $organisation->only('id', 'name', 'slug'),
+            'election'           => $election->only('id', 'slug', 'name'),
+            'uses_full_membership' => $organisation->uses_full_membership ?? true,
         ]);
     }
 
