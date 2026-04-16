@@ -25,7 +25,7 @@ class ElectionVotingController extends Controller
     public function show(string $slug): Response
     {
         $election = Election::withoutGlobalScopes()
-            ->with('organisation:id,name,logo')
+            ->with('organisation:id,name,slug,logo')
             ->where('slug', $slug)
             ->where('type', 'real')
             ->firstOrFail();
