@@ -396,4 +396,5 @@ class ElectionVoterController extends Controller
 
         return back()->with('success', "Suspension proposal for {$membership->user->name} cancelled.");
     }
+
 }

@@ -55,7 +55,14 @@
 
         <!-- Assign from members -->
         <div class="sidebar-section sidebar-section--grow">
-          <p class="sidebar-label">ASSIGN VOTERS</p>
+          <p class="sidebar-label">
+            {{ organisation.uses_full_membership ? 'ASSIGN MEMBERS AS VOTERS' : 'ASSIGN USERS AS VOTERS' }}
+          </p>
+          <p class="text-xs text-gray-500 mb-2">
+            {{ organisation.uses_full_membership
+              ? 'Only active members with paid fees appear below.'
+              : 'All organisation users can be assigned as voters.' }}
+          </p>
 
           <div v-if="unassignedMembers.length > 0">
             <input

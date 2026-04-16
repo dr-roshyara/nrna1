@@ -50,6 +50,7 @@ use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\Organisations\MemberImportController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\Import\OrganisationUserImportController;
+use App\Http\Controllers\VoterInvitationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -189,6 +190,13 @@ Route::middleware('guest')->group(function () {
     Route::post('/forgot-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'sendResetLink'])->name('password.email');
     Route::get('/reset-password/{token}', [App\Http\Controllers\Auth\PasswordResetController::class, 'showResetForm'])->name('password.reset');
     Route::post('/reset-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'reset'])->name('password.reset.store');
+
+    // Voter invitation routes (public — no auth required)
+    Route::get('/invitation/{token}', [VoterInvitationController::class, 'showSetPassword'])
+        ->name('invitation.show-set-password');
+    Route::post('/invitation/{token}', [VoterInvitationController::class, 'setPassword'])
+        ->name('invitation.store-password')
+        ->middleware('throttle:10,1');
 });
 
 Route::middleware('auth')->group(function () {
@@ -274,6 +282,11 @@ Route::get('/help/election-setup', function () {
 Route::get('/help/voters-verification_guide', function () {
     return Inertia::render('Tutorials/VotersManagement');
 })->name('tutorials.voters-verification-guide');
+
+// Membership modes tutorial — public, no auth required
+Route::get('/help/membership-modes', function () {
+    return Inertia::render('Tutorials/MembershipModes');
+})->name('tutorials.membership-modes');
 
 // Security page
 Route::get('/security', [App\Http\Controllers\SecurityPageController::class, 'show'])->name('security');

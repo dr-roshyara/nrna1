@@ -26,6 +26,51 @@
     <!-- 4-Column Grid of Action Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
 
+      <!-- Settings: Organization Configuration (Foundation) -->
+      <Link
+        v-if="canManage"
+        :href="settingsLink"
+        class="group relative flex flex-col bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 text-left border-2 border-gray-200 hover:border-rose-400 focus-within:ring-2 focus-within:ring-rose-500 focus-within:ring-offset-2 focus-within:rounded-xl overflow-hidden"
+        :aria-label="$t('common.settings', 'Settings')"
+      >
+        <!-- Hover gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-rose-50/0 to-rose-100/0 group-hover:from-rose-50/60 group-hover:to-rose-100/30 transition-all duration-300 pointer-events-none rounded-xl" />
+
+        <div class="relative p-6 flex flex-col flex-1">
+          <!-- Badge + Icon row -->
+          <div class="flex items-start justify-between mb-5">
+            <div class="inline-flex p-3 bg-gradient-to-br from-rose-100 to-rose-50 rounded-xl group-hover:from-rose-200 group-hover:to-rose-100 transition-all">
+              <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <span class="text-xs font-semibold text-rose-600 bg-rose-50 border border-rose-200 px-2.5 py-1 rounded-full">
+              {{ $t('common.foundation', 'Foundation') }}
+            </span>
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-base font-bold text-gray-900 mb-2">
+            {{ $t('common.settings', 'Organization Settings') }}
+          </h3>
+          <p class="text-sm text-gray-500 leading-relaxed flex-1">
+            Configure voter eligibility, membership modes, and core election settings
+          </p>
+        </div>
+
+        <!-- Full-width action button -->
+        <div class="relative px-6 pb-5">
+          <span class="flex items-center justify-center w-full gap-2 bg-rose-600 group-hover:bg-rose-700 text-white text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            Configure
+          </span>
+        </div>
+      </Link>
+
       <!-- Step 1: Import Members -->
       <Link
         :href="importMembersLink"
@@ -265,6 +310,16 @@ const props = defineProps({
 })
 
 defineEmits(['appoint-officer'])
+
+/**
+ * Compute the link to the settings page
+ */
+const settingsLink = computed(() => {
+  if (props.organisation?.slug) {
+    return `/organisations/${props.organisation.slug}/settings`
+  }
+  return '#'
+})
 
 /**
  * Compute the link to the member import page

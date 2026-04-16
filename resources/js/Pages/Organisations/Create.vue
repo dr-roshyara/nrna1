@@ -196,6 +196,49 @@
                 </ul>
               </div>
 
+              <!-- Membership System Configuration -->
+              <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                <fieldset>
+                  <legend class="text-sm font-semibold text-slate-900 mb-3">Membership System</legend>
+                  <p class="text-xs text-slate-600 mb-4">
+                    Choose how voters are eligible for elections in this organisation.
+                  </p>
+                  <div class="space-y-3">
+                    <label class="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:bg-white cursor-pointer transition"
+                           :class="form.uses_full_membership ? 'border-purple-300 bg-purple-50' : ''">
+                      <input
+                        type="radio"
+                        v-model="form.uses_full_membership"
+                        :value="true"
+                        class="mt-1 border-slate-300 text-purple-600 focus:ring-purple-500"
+                      />
+                      <div class="flex-1">
+                        <span class="block font-medium text-slate-900">Full Membership</span>
+                        <span class="block text-xs text-slate-600 mt-1">
+                          Voters must be formal members with paid fees. Best for organisations with membership tracking.
+                        </span>
+                      </div>
+                    </label>
+
+                    <label class="flex items-start gap-3 p-3 border border-slate-200 rounded-lg hover:bg-white cursor-pointer transition"
+                           :class="!form.uses_full_membership ? 'border-green-300 bg-green-50' : ''">
+                      <input
+                        type="radio"
+                        v-model="form.uses_full_membership"
+                        :value="false"
+                        class="mt-1 border-slate-300 text-purple-600 focus:ring-purple-500"
+                      />
+                      <div class="flex-1">
+                        <span class="block font-medium text-slate-900">Election-Only</span>
+                        <span class="block text-xs text-slate-600 mt-1">
+                          Any registered user can vote. Best for simple elections without membership tracking.
+                        </span>
+                      </div>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+
               <!-- Actions -->
               <div class="flex flex-col-reverse sm:flex-row gap-3 pt-2">
                 <Link
@@ -245,6 +288,7 @@ const form = ref({
   representative: '',
   languages: [],
   logo: null,
+  uses_full_membership: true,
 })
 const submitting = ref(false)
 const successMessage = ref(null)
@@ -288,6 +332,7 @@ const submit = () => {
   if (form.value.representative) data.append('representative', form.value.representative)
   form.value.languages.forEach(lang => data.append('languages[]', lang))
   if (form.value.logo) data.append('logo', form.value.logo)
+  data.append('uses_full_membership', form.value.uses_full_membership ? '1' : '0')
 
   router.post(route('organisations.store'), data, {
     preserveScroll: true,

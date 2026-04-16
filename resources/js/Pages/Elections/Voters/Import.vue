@@ -37,6 +37,19 @@
           </div>
         </div>
 
+        <!-- Election-only mode banner -->
+        <div v-if="!uses_full_membership" class="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+            <div class="flex-1">
+              <p class="text-sm font-medium text-amber-900">Election-Only Mode</p>
+              <p class="text-xs text-amber-800 mt-1">Non-registered users will be auto-created and sent an invitation email to set their password.</p>
+            </div>
+          </div>
+        </div>
+
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
 
           <!-- Main area -->
@@ -121,8 +134,8 @@
                     .replace('{invalid}', previewData.stats.invalid) }}
               </h2>
 
-              <!-- Stats -->
-              <div class="flex gap-4 mb-6">
+              <!-- Stats (Full Membership Mode) -->
+              <div v-if="uses_full_membership" class="flex gap-4 mb-6">
                 <div class="flex-1 bg-green-50 border border-green-200 rounded-lg p-3 text-center">
                   <div class="text-2xl font-bold text-green-700">{{ previewData.stats.valid }}</div>
                   <div class="text-xs text-green-600">Valid</div>
@@ -137,8 +150,24 @@
                 </div>
               </div>
 
-              <!-- Row table -->
-              <div class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden mb-6">
+              <!-- Stats (Election-Only Mode) -->
+              <div v-else class="flex gap-4 mb-6">
+                <div class="flex-1 bg-blue-50 border border-blue-200 rounded-lg p-3 text-center">
+                  <div class="text-2xl font-bold text-blue-700">{{ previewData.stats.new }}</div>
+                  <div class="text-xs text-blue-600">New Users</div>
+                </div>
+                <div class="flex-1 bg-purple-50 border border-purple-200 rounded-lg p-3 text-center">
+                  <div class="text-2xl font-bold text-purple-700">{{ previewData.stats.existing }}</div>
+                  <div class="text-xs text-purple-600">Existing Users</div>
+                </div>
+                <div class="flex-1 bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                  <div class="text-2xl font-bold text-red-700">{{ previewData.stats.invalid }}</div>
+                  <div class="text-xs text-red-600">Invalid</div>
+                </div>
+              </div>
+
+              <!-- Row table (Full Membership Mode) -->
+              <div v-if="uses_full_membership" class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden mb-6">
                 <div class="overflow-x-auto max-h-[32rem] overflow-y-auto">
                   <table class="w-full text-sm">
                     <thead class="sticky top-0 bg-gray-100 border-b border-gray-200">
@@ -168,11 +197,66 @@
                 </div>
               </div>
 
-              <div v-if="previewData.stats.invalid > 0" class="p-3 bg-amber-50 border border-amber-200 rounded-lg mb-4 text-sm text-amber-800">
-                {{ t.preview.has_errors.replace('{invalid}', previewData.stats.invalid) }}
+              <!-- Row table (Election-Only Mode) -->
+              <div v-else class="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden mb-6">
+                <div class="overflow-x-auto max-h-[32rem] overflow-y-auto">
+                  <table class="w-full text-sm">
+                    <thead class="sticky top-0 bg-gray-100 border-b border-gray-200">
+                      <tr>
+                        <th class="px-3 py-2 text-left font-medium text-gray-700">{{ t.preview.table.row }}</th>
+                        <th class="px-3 py-2 text-left font-medium text-gray-700">Name</th>
+                        <th class="px-3 py-2 text-left font-medium text-gray-700">{{ t.preview.table.email }}</th>
+                        <th class="px-3 py-2 text-left font-medium text-gray-700">{{ t.preview.table.status }}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="row in previewData.preview" :key="row.row"
+                          :class="['border-b border-gray-200', row.status === 'invalid' ? 'bg-red-50' : 'hover:bg-gray-100']">
+                        <td class="px-3 py-2 text-gray-500">{{ row.row }}</td>
+                        <td class="px-3 py-2 text-gray-900">
+                          <span v-if="row.firstname || row.lastname">{{ [row.firstname, row.lastname].filter(Boolean).join(' ') }}</span>
+                          <span v-else class="text-gray-500 italic">—</span>
+                        </td>
+                        <td class="px-3 py-2 text-gray-900">{{ row.email }}</td>
+                        <td class="px-3 py-2">
+                          <span v-if="row.status === 'new'" class="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs font-medium">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                            </svg>
+                            New
+                          </span>
+                          <span v-else-if="row.status === 'existing'" class="inline-flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-medium">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            Existing
+                          </span>
+                          <span v-else class="text-red-700 font-medium">Invalid</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-              <div v-else class="p-3 bg-green-50 border border-green-200 rounded-lg mb-4 text-sm text-green-800">
-                {{ t.preview.no_errors }}
+
+              <!-- Full Membership Mode Messages -->
+              <div v-if="uses_full_membership">
+                <div v-if="previewData.stats.invalid > 0" class="p-3 bg-amber-50 border border-amber-200 rounded-lg mb-4 text-sm text-amber-800">
+                  {{ t.preview.has_errors.replace('{invalid}', previewData.stats.invalid) }}
+                </div>
+                <div v-else class="p-3 bg-green-50 border border-green-200 rounded-lg mb-4 text-sm text-green-800">
+                  {{ t.preview.no_errors }}
+                </div>
+              </div>
+
+              <!-- Election-Only Mode Messages -->
+              <div v-else>
+                <div v-if="previewData.stats.invalid > 0" class="p-3 bg-amber-50 border border-amber-200 rounded-lg mb-4 text-sm text-amber-800">
+                  {{ previewData.stats.invalid }} invalid record(s) will be skipped during import.
+                </div>
+                <div v-if="previewData.stats.new > 0 || previewData.stats.existing > 0" class="p-3 bg-blue-50 border border-blue-200 rounded-lg mb-4 text-sm text-blue-800">
+                  {{ previewData.stats.new }} new user(s) will be created and {{ previewData.stats.existing }} existing user(s) will be added.
+                </div>
               </div>
 
               <div class="flex gap-3">
@@ -180,13 +264,23 @@
                         class="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2">
                   {{ t.preview.change_file }}
                 </button>
-                <button v-if="previewData.stats.valid > 0"
+                <!-- Full Membership Mode: Show import if valid > 0 -->
+                <button v-if="uses_full_membership && previewData.stats.valid > 0"
                         type="button" @click="runImport"
                         :disabled="isImporting"
                         class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50">
                   {{ isImporting
                       ? t.preview.importing_btn
                       : t.preview.import_btn.replace('{count}', previewData.stats.valid) }}
+                </button>
+                <!-- Election-Only Mode: Show import if new + existing > 0 -->
+                <button v-else-if="!uses_full_membership && (previewData.stats.new + previewData.stats.existing) > 0"
+                        type="button" @click="runImport"
+                        :disabled="isImporting"
+                        class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50">
+                  {{ isImporting
+                      ? t.preview.importing_btn
+                      : t.preview.import_btn.replace('{count}', previewData.stats.new + previewData.stats.existing) }}
                 </button>
               </div>
 
@@ -258,6 +352,7 @@ const t = computed(() => pageData[locale.value] ?? pageData.en)
 const props = defineProps({
   organisation: { type: Object, required: true },
   election:     { type: Object, required: true },
+  uses_full_membership: { type: Boolean, default: true },
 })
 
 // ── State ─────────────────────────────────────────────────────────────────────

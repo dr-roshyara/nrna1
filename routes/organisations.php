@@ -29,6 +29,7 @@ use App\Http\Controllers\ElectionOfficerController;
 use App\Http\Controllers\ElectionOfficerInvitationController;
 use App\Http\Controllers\ElectionVoterController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\OrganisationSettingsController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\Membership\MembershipApplicationController;
 use App\Http\Controllers\Membership\MembershipDashboardController;
@@ -88,6 +89,10 @@ Route::prefix('organisations/{organisation:slug}')
         // ── Organisation Hub Pages ─────────────────────────────────────────────────
         Route::get('/voter-hub',           [OrganisationController::class, 'voterHub'])          ->name('organisations.voter-hub');
         Route::get('/election-commission', [OrganisationController::class, 'electionCommission'])->name('organisations.election-commission');
+
+        // ── Organisation Settings ────────────────────────────────────────────────────
+        Route::get('/settings',                                           [OrganisationSettingsController::class, 'index'])               ->name('organisations.settings.index');
+        Route::patch('/settings/membership-mode',                         [OrganisationSettingsController::class, 'updateMembershipMode'])->name('organisations.settings.update-membership-mode');
 
         // ── Candidacy Applications (voter self-service) ────────────────────────────
         Route::get('/candidacy/apply', [CandidacyApplicationController::class, 'create'])->name('organisations.candidacy.create');

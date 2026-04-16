@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Election;
 use App\Http\Controllers\Controller;
 use App\Models\Election;
 use App\Models\Organisation;
+use App\Services\VoterEligibilityService;
 use App\Services\VoterImportService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class VoterImportController extends Controller
 {
+    public function __construct(private readonly VoterEligibilityService $eligibilityService) {}
     // ── Import page ───────────────────────────────────────────────────────────
 
     public function create(Organisation $organisation, string $election): Response
@@ -25,6 +27,7 @@ class VoterImportController extends Controller
         return Inertia::render('Elections/Voters/Import', [
             'organisation' => $organisation->only('id', 'name', 'slug'),
             'election'     => $election->only('id', 'slug', 'name'),
+            'uses_full_membership' => $organisation->uses_full_membership ?? true,
         ]);
     }
 
@@ -49,7 +52,7 @@ class VoterImportController extends Controller
         $election = $this->resolveElection($election);
         $this->authorize('manageVoters', $election);
 
-        return (new VoterImportService($election))->downloadTemplate();
+        return (new VoterImportService($election, $this->eligibilityService))->downloadTemplate();
     }
 
     // ── Preview ───────────────────────────────────────────────────────────────
@@ -63,14 +66,21 @@ class VoterImportController extends Controller
             'file' => 'required|file|mimes:xlsx,xls,csv,txt|max:10240',
         ]);
 
-        $result = (new VoterImportService($election))->preview($request->file('file'));
+        $service = new VoterImportService($election, $this->eligibilityService);
+
+        // Route to correct preview method based on membership mode
+        if (!$organisation->uses_full_membership) {
+            $result = $service->previewElectionOnly($request->file('file'));
+        } else {
+            $result = $service->preview($request->file('file'));
+        }
 
         return response()->json($result);
     }
 
     // ── Import ────────────────────────────────────────────────────────────────
 
-    public function import(Request $request, Organisation $organisation, string $election): RedirectResponse
+    public function import(Request $request, Organisation $organisation, string $election)
     {
         $election = $this->resolveElection($election);
         $this->authorize('manageVoters', $election);
@@ -80,14 +90,31 @@ class VoterImportController extends Controller
             'confirmed' => 'required|accepted',
         ]);
 
-        $result = (new VoterImportService($election))->import($request->file('file'));
+        $service = new VoterImportService($election, $this->eligibilityService);
 
-        $message = sprintf(
-            'Voter import completed: %d registered, %d already existing, %d skipped.',
-            $result['created'],
-            $result['already_existing'],
-            $result['skipped']
-        );
+        // Route to correct import method based on membership mode
+        if (!$organisation->uses_full_membership) {
+            $result = $service->importElectionOnly($request->file('file'));
+            $message = sprintf(
+                'Voter import completed: %d users created, %d already existing, %d invitation emails queued.',
+                $result['created'],
+                $result['existing'],
+                $result['invitations']
+            );
+        } else {
+            $result = $service->import($request->file('file'));
+            $message = sprintf(
+                'Voter import completed: %d registered, %d already existing, %d skipped.',
+                $result['created'],
+                $result['already_existing'],
+                $result['skipped']
+            );
+        }
+
+        // Return JSON for API requests, redirect for browser requests
+        if ($request->wantsJson()) {
+            return response()->json(['success' => $message, 'result' => $result]);
+        }
 
         return back()->with('success', $message);
     }

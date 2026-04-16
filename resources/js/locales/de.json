@@ -231,6 +231,16 @@
         "title": "Wahlkonfiguration - Einstellungen erklaert | Public Digit",
         "description": "Schritt-fuer-Schritt-Anleitung fuer alle Wahleinstellungen in Public Digit: IP-Beschraenkungen, Stimmzetteloptionen, Auswahlregeln und Waehlerverifizierung.",
         "keywords": "Wahleinstellungen, Online-Wahl konfigurieren, IP-Beschrankung Wahl, Wahlerverifizierung, Stimmzettel Einstellungen, Wahlverwaltung, Public Digit Anleitung, Diaspora-Wahl einrichten, NGO Abstimmungssystem, Vereinswahl konfigurieren, Online-Wahl für gemeinnützige Organisationen, Mitgliederabstimmung Plattform, Auslandsorganisation Wahl Leitfaden"
+      },
+      "tutorials.membership-modes": {
+        "title": "Mitgliedschaftsmodi - Vollständig vs. Wahl-Nur | Public Digit",
+        "description": "Verstehen Sie die Unterschiede zwischen Vollständiger Mitgliedschaft und Wahl-Nur-Modi. Lernen Sie, welcher Modus für Ihre Organisation geeignet ist und wie Sie wechseln können.",
+        "keywords": "Mitgliedschaftsmodi, vollständige Mitgliedschaft, Wahlberechtigung, Wählerverifikation, Organisationseinstellungen, Mitgliedschaftsverwaltung, Online-Wahl, Public Digit Leitfaden, NGO Wahlen, Vereinswahlen, Diaspora-Wahlen, Mitgliedschaftsgebühren"
+      },
+      "organisations.settings": {
+        "title": "Organisationseinstellungen - {organisationName} | Public Digit",
+        "description": "Konfigurieren Sie den Mitgliedschaftsmodus und Organisationseinstellungen für {organisationName}. Verwalten Sie die Wählerberechtigung, wählen Sie zwischen Vollständiger Mitgliedschaft oder Wahl-Nur-Modus, mit {memberCount} Mitgliedern.",
+        "keywords": "Organisationseinstellungen, Mitgliedschaftsmodus, vollständige Mitgliedschaft, Wahlberechtigung, Wählerverifizierung, Organisationsverwaltung, Mitgliederverwaltung, Public Digit Einstellungen, Vereinsverwaltung, NGO Einstellungen"
       }
     }
   },

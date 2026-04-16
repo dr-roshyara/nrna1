@@ -232,6 +232,16 @@
         "title": "Election Setup Guide - Configure Your Online Election | Public Digit",
         "description": "Learn how to configure every election setting on Public Digit: IP restrictions, ballot options, selection constraints, voter verification, and more. Step-by-step admin guide.",
         "keywords": "election settings, online election setup, IP restriction voting, voter verification, ballot configuration, election administration, Public Digit guide, election security settings, diaspora election setup, NGO voting system, verein election guide, association voting configuration, online voting for nonprofits, membership voting platform, diaspora organization elections, German club election setup, NRNA election guide"
+      },
+      "tutorials.membership-modes": {
+        "title": "Membership Modes Guide - Full vs Election-Only | Public Digit",
+        "description": "Understand Full Membership and Election-Only modes for your organisation. Learn when to use each mode, how they differ, and how to switch between them without losing data.",
+        "keywords": "membership modes, full membership, election-only voting, voter eligibility, membership requirements, election setup, organisation settings, fee tracking, member voting, public digit guide, NGO elections, association voting, diaspora elections, membership voting system"
+      },
+      "organisations.settings": {
+        "title": "Organisation Settings - {organisationName} | Public Digit",
+        "description": "Configure membership mode, election settings, and organisation preferences for {organisationName}. Manage voter eligibility rules, Full Membership vs Election-Only mode, and member count: {memberCount} members.",
+        "keywords": "organisation settings, membership mode, full membership, election-only, voter eligibility, election configuration, member management, election security, organisation administration, Public Digit settings"
       }
     }
   },

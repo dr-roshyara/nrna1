@@ -79,6 +79,16 @@ class MembershipPolicy
         return false;
     }
 
+    // ── update ───────────────────────────────────────────────────────────────
+
+    /**
+     * Only organisation owners and admins may update organisation settings.
+     */
+    public function update(User $user, Organisation $organisation): bool
+    {
+        return $this->hasRole($user, $organisation, ['owner', 'admin']);
+    }
+
     // ── Internal helper ──────────────────────────────────────────────────────
 
     private function hasRole(User $user, Organisation $organisation, array $roles): bool
