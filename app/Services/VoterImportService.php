@@ -272,6 +272,7 @@ class VoterImportService
                         'last_name' => $data['lastname'] ?: null,
                         'password' => bcrypt(\Illuminate\Support\Str::random(32)),
                         'organisation_id' => $organisation->id,
+                        'email_verified_at' => now(),
                     ]
                 );
 
@@ -336,7 +337,6 @@ class VoterImportService
             } catch (\Exception $e) {
                 $errorMsg = "Row " . ($index + 1) . ": " . $e->getMessage();
                 $results['errors'][] = $errorMsg;
-                \Log::error('Import Error', ['message' => $errorMsg, 'code' => $e->getCode()]);
             }
         }
 

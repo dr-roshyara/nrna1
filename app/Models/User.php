@@ -73,6 +73,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'current_ip',
         'region',
         'email',
+        'email_verified_at',
         'password',
         'telephone',
         'first_name',
