@@ -38,6 +38,8 @@
               <h1 class="text-2xl font-bold text-slate-900 leading-tight">{{ election.name }}</h1>
             </div>
             <div class="flex items-center gap-3 flex-wrap sm:flex-nowrap">
+              <!-- DEBUG: Show organisation status -->
+              <span style="font-size: 0.75rem; color: #999; padding: 4px 8px;">org={{ organisation ? 'yes' : 'no' }}</span>
               <!-- Voter Import Link -->
               <a
                 v-if="organisation"
