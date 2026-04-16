@@ -15,14 +15,18 @@ class VoterInvitationController extends Controller
         $invitation = VoterInvitation::where('token', $token)
             ->whereNull('used_at')
             ->where('expires_at', '>', now())
-            ->with(['user', 'election', 'organisation'])
+            ->with(['user', 'organisation'])
             ->firstOrFail();
+
+        // Load election without global scopes (it may belong to a different tenant context)
+        $election = \App\Models\Election::withoutGlobalScopes()
+            ->findOrFail($invitation->election_id);
 
         return Inertia::render('Auth/SetPassword', [
             'token' => $token,
             'email' => $invitation->user->email,
             'name' => $invitation->user->name,
-            'election' => $invitation->election->name,
+            'election' => $election->name,
             'organisation' => $invitation->organisation->name,
         ]);
     }
@@ -32,7 +36,7 @@ class VoterInvitationController extends Controller
         $invitation = VoterInvitation::where('token', $token)
             ->whereNull('used_at')
             ->where('expires_at', '>', now())
-            ->with(['user', 'election', 'organisation'])
+            ->with(['user', 'organisation'])
             ->firstOrFail();
 
         $request->validate([
@@ -57,9 +61,10 @@ class VoterInvitationController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('elections.show', [
-            'organisation' => $invitation->organisation->slug,
-            'election' => $invitation->election->slug,
-        ]);
+        // Load election without global scopes
+        $election = \App\Models\Election::withoutGlobalScopes()
+            ->findOrFail($invitation->election_id);
+
+        return redirect()->route('elections.show', $election->slug);
     }
 }

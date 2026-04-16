@@ -257,77 +257,86 @@ class VoterImportService
                     continue;
                 }
 
-                // Wrap in transaction for data integrity
-                DB::transaction(function () use ($data, $email, $organisation, &$results) {
-                    // Build name
-                    $fullName = trim($data['firstname'] . ' ' . $data['lastname']);
-                    if (empty($fullName)) {
-                        $fullName = explode('@', $email)[0];
-                    }
+                // Build name
+                $fullName = trim($data['firstname'] . ' ' . $data['lastname']);
+                if (empty($fullName)) {
+                    $fullName = explode('@', $email)[0];
+                }
 
-                    // Find or create user
-                    $user = User::firstOrCreate(
-                        ['email' => $email],
-                        [
-                            'name' => $fullName,
-                            'first_name' => $data['firstname'] ?: null,
-                            'last_name' => $data['lastname'] ?: null,
-                            'password' => bcrypt(\Illuminate\Support\Str::random(32)),
-                            'organisation_id' => $organisation->id,
-                        ]
-                    );
+                // Find or create user
+                $user = User::firstOrCreate(
+                    ['email' => $email],
+                    [
+                        'name' => $fullName,
+                        'first_name' => $data['firstname'] ?: null,
+                        'last_name' => $data['lastname'] ?: null,
+                        'password' => bcrypt(\Illuminate\Support\Str::random(32)),
+                        'organisation_id' => $organisation->id,
+                    ]
+                );
 
-                    $isNewUser = $user->wasRecentlyCreated;
+                $isNewUser = $user->wasRecentlyCreated;
 
-                    // Link to organisation
-                    \App\Models\OrganisationUser::firstOrCreate(
-                        [
-                            'organisation_id' => $organisation->id,
-                            'user_id' => $user->id,
-                        ],
-                        ['status' => 'active']
-                    );
+                // Link to organisation - Create BOTH records for full compatibility
+                // 1. user_organisation_roles (CRITICAL for FK constraint on election_memberships)
+                \App\Models\UserOrganisationRole::firstOrCreate(
+                    [
+                        'user_id' => $user->id,
+                        'organisation_id' => $organisation->id,
+                    ],
+                    ['role' => 'member']
+                );
 
-                    // Assign to election
-                    ElectionMembership::firstOrCreate(
+                // 2. organisation_users (for compatibility with existing system)
+                \App\Models\OrganisationUser::firstOrCreate(
+                    [
+                        'organisation_id' => $organisation->id,
+                        'user_id' => $user->id,
+                    ],
+                    ['status' => 'active']
+                );
+
+                // Assign to election
+                ElectionMembership::firstOrCreate(
+                    [
+                        'election_id' => $this->election->id,
+                        'user_id' => $user->id,
+                    ],
+                    [
+                        'organisation_id' => $organisation->id,
+                        'role' => 'voter',
+                        'status' => 'active',
+                    ]
+                );
+
+                // Create invitation for new users OR existing unverified users
+                if ($isNewUser || !$user->email_verified_at) {
+                    $invitation = \App\Models\VoterInvitation::firstOrCreate(
                         [
                             'election_id' => $this->election->id,
                             'user_id' => $user->id,
                         ],
                         [
                             'organisation_id' => $organisation->id,
-                            'role' => 'voter',
-                            'status' => 'active',
+                            'token' => \Illuminate\Support\Str::random(64),
+                            'email_status' => 'pending',
+                            'expires_at' => now()->addDays(7),
                         ]
                     );
 
-                    // Create invitation for new users OR existing unverified users
-                    if ($isNewUser || !$user->email_verified_at) {
-                        $invitation = \App\Models\VoterInvitation::firstOrCreate(
-                            [
-                                'election_id' => $this->election->id,
-                                'user_id' => $user->id,
-                            ],
-                            [
-                                'organisation_id' => $organisation->id,
-                                'token' => \Illuminate\Support\Str::random(64),
-                                'email_status' => 'pending',
-                                'expires_at' => now()->addDays(7),
-                            ]
-                        );
-
-                        // Only dispatch if newly created and not already sent
-                        if ($invitation->wasRecentlyCreated) {
-                            \App\Jobs\SendVoterInvitation::dispatch($invitation);
-                            $results['invitations']++;
-                        }
+                    // Only dispatch if newly created and not already sent
+                    if ($invitation->wasRecentlyCreated) {
+                        \App\Jobs\SendVoterInvitation::dispatch($invitation);
+                        $results['invitations']++;
                     }
+                }
 
-                    $results[$isNewUser ? 'created' : 'existing']++;
-                });
+                $results[$isNewUser ? 'created' : 'existing']++;
 
             } catch (\Exception $e) {
-                $results['errors'][] = "Row " . ($index + 1) . ": " . $e->getMessage();
+                $errorMsg = "Row " . ($index + 1) . ": " . $e->getMessage();
+                $results['errors'][] = $errorMsg;
+                \Log::error('Import Error', ['message' => $errorMsg, 'code' => $e->getCode()]);
             }
         }
 

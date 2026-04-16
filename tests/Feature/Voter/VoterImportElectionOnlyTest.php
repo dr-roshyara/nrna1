@@ -26,6 +26,7 @@ class VoterImportElectionOnlyTest extends TestCase
     protected Organisation $organisation;
     protected Election $election;
     protected User $admin;
+    private array $cleanupPaths = [];
 
     protected function setUp(): void
     {
@@ -65,7 +66,23 @@ class VoterImportElectionOnlyTest extends TestCase
 
     private function makeCsv(string $content): UploadedFile
     {
-        return UploadedFile::fake()->createWithContent('test.csv', $content);
+        $path = tempnam(sys_get_temp_dir(), 'voter_import_');
+        file_put_contents($path, $content);
+
+        // Register for cleanup
+        $this->cleanupPaths[] = $path;
+
+        return new UploadedFile($path, 'test.csv', 'text/csv', null, true);
+    }
+
+    protected function tearDown(): void
+    {
+        foreach ($this->cleanupPaths as $path) {
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+        parent::tearDown();
     }
 
     /** @test */
