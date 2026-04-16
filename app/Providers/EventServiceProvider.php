@@ -7,9 +7,10 @@ use App\Events\Newsletter\NewsletterEmailFailed;
 use App\Events\Newsletter\NewsletterEmailSent;
 use App\Listeners\Newsletter\UpdateNewsletterCounters;
 use App\Events\Membership\MembershipApplicationRejected;
-use App\Events\Membership\MembershipFeePaid;
+use App\Events\MembershipFeePaid;
 use App\Events\Membership\MembershipRenewed;
 use App\Listeners\InvalidateMembershipDashboardCache;
+use App\Listeners\CreateIncomeForMembershipFee;
 use App\Listeners\Membership\RecalculateMemberFeeStatus;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -38,6 +39,7 @@ class EventServiceProvider extends ServiceProvider
         MembershipFeePaid::class             => [
             InvalidateMembershipDashboardCache::class,
             RecalculateMemberFeeStatus::class,
+            CreateIncomeForMembershipFee::class,
         ],
         MembershipRenewed::class             => [InvalidateMembershipDashboardCache::class],
         // MembershipExpired::class — event not yet created (Phase 4 job)

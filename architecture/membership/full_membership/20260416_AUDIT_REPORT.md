@@ -33,6 +33,9 @@ The Public Digit platform has achieved **95% completion** of the Full Membership
   - `previewElectionOnly()` - Election-only preview with "new/existing" badges
   - `import()` - Full mode import
   - `importElectionOnly()` - Election-only import with auto user creation + VoterInvitation generation
+- ✅ **Finance Domain Services** - Existing in App\Domain\Finance\Services
+  - IncomeService, OutcomeService for income/expense tracking
+  - Ready to extend for membership fee integration
 
 ### Controllers (100% Coverage)
 - ✅ **ElectionVoterController** - Complete voter management
@@ -54,6 +57,11 @@ The Public Digit platform has achieved **95% completion** of the Full Membership
   - `showSetPassword(token)` - Public form page
   - `setPassword(token)` - Processes password setup, marks invitation used
   - Redirects to election voting page after setup
+- ✅ **Finance Module Controllers** - Existing income/outcome tracking
+  - **IncomeController** - Manages income records with verification workflow
+  - **OutcomeController** - Manages outcome/expense records
+  - Routes: `/finance/income/*` and `/finance/outcome/*` (create, submit, verify, store)
+  - **Status**: Existing foundation ready for membership fee integration
 
 ### Database Migrations (19 migrations - Comprehensive)
 - ✅ **Core Membership** (6 migrations)
@@ -143,22 +151,26 @@ DELETE /organisations/{org}/elections/{election}/voters/{membership}
 
 ## WHAT IS PARTIALLY COMPLETE 🟡
 
-### Finance Dashboard
-- **Status**: Exists but minimal functionality
-- **Current**: Basic Finance/Index.vue with simple links
-- **Missing**: Real dashboard with stats, charts, analytics
-- **Required for Phase 3**: Dashboard showing:
-  - Total outstanding fees
-  - Collected this year
-  - Overdue members count
-  - Recent payments
-  - Upcoming renewals
+### Finance Module Integration
+- **Status**: Core finance module exists (income/outcome tracking) but NOT integrated with membership
+- **Current**: Finance routes exist at `/finance/*` with IncomeController and OutcomeController
+- **Current Routes**:
+  - GET/POST `/finance/income/*` - Income record management
+  - GET/POST `/finance/outcome/*` - Outcome/expense record management
+  - Template: Finance/Index.vue with basic navigation
+- **Missing**: Membership-specific finance integration
+- **Required**: Extend finance module with:
+  - MembershipFinanceController (record member payments, invoices)
+  - Routes: `/finance/membership/dashboard`, `/finance/membership/{member}/record-payment`
+  - Service: MembershipFinanceService for report generation
+  - Components: Finance/Membership/Dashboard.vue, RecordPayment.vue
+- **Impact**: Membership fees currently not integrated into finance system; payments tracked separately
 
 ### Member Fee Payment UI
-- **Status**: Fee tracking exists, but no payment recording interface
+- **Status**: Fee tracking exists, but no admin UI to record payments
 - **Current**: MemberController.markPaid() sets status='exempt' (waives fee)
-- **Missing**: UI to record actual payments (bank transfer, cash, card)
-- **Impact**: Admins must manually update database or use markPaid() workaround
+- **Missing**: UI to record actual payments (bank transfer, cash, card) linked to finance module
+- **Impact**: Admins must use markPaid() to exempt fees; no proper payment recording interface
 
 ### Membership Application Approval
 - **Status**: Application model and approval logic exist

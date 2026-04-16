@@ -1,0 +1,482 @@
+## Implementation Roadmap: Full Membership with Finance
+
+Based on the complete analysis (audit report + domain layer analysis), here's the prioritized path forward.
+
+### Current State Summary
+
+| Layer | Status | Ready for Full Membership? |
+|-------|--------|---------------------------|
+| **Database** | ✅ Complete | All required tables exist |
+| **Models** | ✅ Complete | Member, Fee, Type, Application |
+| **Voter Eligibility** | ✅ Complete | Dual-mode working |
+| **Import System** | ✅ Complete | Election-only with invitations |
+| **Finance Routes** | 🟡 Partial | Basic income/outcome exist |
+| **Finance Controllers** | 🔴 Needs Move | Controllers in wrong location |
+| **Payment Recording** | ❌ Missing | No UI to record payments |
+| **Invoice Generation** | ❌ Missing | No PDF invoices |
+
+---
+
+### Week 1: Critical Foundation Fixes
+
+#### Step 1.1: Move Finance Controllers (1 hour)
+
+```bash
+# Move controllers to correct location
+mv app/Domain/Finance/Controllers/IncomeController.php app/Http/Controllers/Finance/
+mv app/Domain/Finance/Controllers/OutcomeController.php app/Http/Controllers/Finance/
+
+# Update namespaces
+# From: namespace App\Domain\Finance\Controllers;
+# To:   namespace App\Http\Controllers\Finance;
+```
+
+#### Step 1.2: Add organisation_id to Income/Outcome (2 hours)
+
+```php
+// database/migrations/xxxx_add_organisation_id_to_finance_tables.php
+Schema::table('incomes', function (Blueprint $table) {
+    $table->uuid('organisation_id')->nullable()->after('id');
+    $table->foreign('organisation_id')->references('id')->on('organisations');
+});
+
+Schema::table('outcomes', function (Blueprint $table) {
+    $table->uuid('organisation_id')->nullable()->after('id');
+    $table->foreign('organisation_id')->references('id')->on('organisations');
+});
+
+// Backfill from session or user context
+```
+
+#### Step 1.3: Move Hardcoded Emails to Organisation Settings (2 hours)
+
+```php
+// app/Models/Organisation.php
+public function getTreasurerEmails(): array
+{
+    return $this->settings['treasurer_emails'] ?? [];
+}
+
+// In controller, replace:
+$emails = ['treasurer2@nrna.org', $user->email];
+// With:
+$emails = array_merge(
+    $organisation->getTreasurerEmails(),
+    [$user->email]
+);
+```
+
+---
+
+### Week 1-2: Payment Recording Foundation
+
+#### Step 2.1: Create MembershipPayment Model & Migration (2 hours)
+
+```php
+// database/migrations/xxxx_create_membership_payments_table.php
+Schema::create('membership_payments', function (Blueprint $table) {
+    $table->uuid('id')->primary();
+    $table->uuid('member_id');
+    $table->uuid('fee_id')->nullable();
+    $table->uuid('organisation_id');
+    $table->decimal('amount', 10, 2);
+    $table->string('currency')->default('EUR');
+    $table->string('payment_method'); // bank_transfer, cash, card
+    $table->string('transaction_id')->nullable();
+    $table->string('status')->default('pending'); // pending, completed, failed
+    $table->uuid('recorded_by');
+    $table->timestamp('paid_at')->nullable();
+    $table->text('notes')->nullable();
+    $table->timestamps();
+    
+    $table->foreign('member_id')->references('id')->on('members');
+    $table->foreign('fee_id')->references('id')->on('membership_fees');
+    $table->foreign('organisation_id')->references('id')->on('organisations');
+    $table->foreign('recorded_by')->references('id')->on('users');
+});
+```
+
+```php
+// app/Models/MembershipPayment.php
+class MembershipPayment extends Model
+{
+    use HasUuids;
+    
+    protected $fillable = [
+        'member_id', 'fee_id', 'organisation_id',
+        'amount', 'currency', 'payment_method',
+        'transaction_id', 'status', 'recorded_by',
+        'paid_at', 'notes',
+    ];
+    
+    protected $casts = [
+        'amount' => 'decimal:2',
+        'paid_at' => 'datetime',
+    ];
+    
+    public function member(): BelongsTo
+    {
+        return $this->belongsTo(Member::class);
+    }
+    
+    public function fee(): BelongsTo
+    {
+        return $this->belongsTo(MembershipFee::class);
+    }
+    
+    public function recordedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'recorded_by');
+    }
+}
+```
+
+#### Step 2.2: Create MembershipFinanceController (3 hours)
+
+```php
+// app/Http/Controllers/Finance/MembershipFinanceController.php
+namespace App\Http\Controllers\Finance;
+
+use App\Http\Controllers\Controller;
+use App\Models\Member;
+use App\Models\MembershipFee;
+use App\Models\MembershipPayment;
+use App\Models\Organisation;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
+
+class MembershipFinanceController extends Controller
+{
+    public function dashboard(Organisation $organisation)
+    {
+        $this->authorize('viewFinance', $organisation);
+        
+        $stats = [
+            'total_outstanding' => MembershipFee::where('organisation_id', $organisation->id)
+                ->whereIn('status', ['pending', 'overdue'])
+                ->sum('amount'),
+            'collected_this_month' => MembershipPayment::where('organisation_id', $organisation->id)
+                ->whereMonth('paid_at', now()->month)
+                ->where('status', 'completed')
+                ->sum('amount'),
+            'overdue_count' => MembershipFee::where('organisation_id', $organisation->id)
+                ->where('status', 'overdue')
+                ->count(),
+            'pending_payments' => MembershipPayment::where('organisation_id', $organisation->id)
+                ->where('status', 'pending')
+                ->count(),
+        ];
+        
+        $recentPayments = MembershipPayment::where('organisation_id', $organisation->id)
+            ->with(['member.organisationUser.user', 'recordedBy'])
+            ->latest()
+            ->limit(10)
+            ->get();
+            
+        $overdueMembers = Member::where('organisation_id', $organisation->id)
+            ->where('fees_status', 'overdue')
+            ->with('organisationUser.user')
+            ->limit(10)
+            ->get();
+        
+        return Inertia::render('Finance/Membership/Dashboard', [
+            'organisation' => $organisation,
+            'stats' => $stats,
+            'recentPayments' => $recentPayments,
+            'overdueMembers' => $overdueMembers,
+        ]);
+    }
+    
+    public function recordPayment(Organisation $organisation, Member $member)
+    {
+        $this->authorize('manageFinance', $organisation);
+        
+        $pendingFees = $member->fees()
+            ->whereIn('status', ['pending', 'overdue'])
+            ->get();
+            
+        return Inertia::render('Finance/Membership/RecordPayment', [
+            'organisation' => $organisation,
+            'member' => $member->load('organisationUser.user'),
+            'pendingFees' => $pendingFees,
+        ]);
+    }
+    
+    public function storePayment(Request $request, Organisation $organisation, Member $member)
+    {
+        $this->authorize('manageFinance', $organisation);
+        
+        $validated = $request->validate([
+            'fee_id' => 'required|exists:membership_fees,id',
+            'amount' => 'required|numeric|min:0.01',
+            'payment_method' => 'required|in:bank_transfer,cash,card,other',
+            'transaction_id' => 'nullable|string',
+            'notes' => 'nullable|string',
+        ]);
+        
+        $payment = MembershipPayment::create([
+            'member_id' => $member->id,
+            'fee_id' => $validated['fee_id'],
+            'organisation_id' => $organisation->id,
+            'amount' => $validated['amount'],
+            'currency' => 'EUR',
+            'payment_method' => $validated['payment_method'],
+            'transaction_id' => $validated['transaction_id'],
+            'status' => 'completed',
+            'recorded_by' => auth()->id(),
+            'paid_at' => now(),
+            'notes' => $validated['notes'],
+        ]);
+        
+        // Update fee status
+        $fee = MembershipFee::find($validated['fee_id']);
+        $fee->update(['status' => 'paid', 'paid_at' => now()]);
+        
+        // Update member fees_status if no pending fees remain
+        $hasPendingFees = $member->fees()
+            ->whereIn('status', ['pending', 'overdue'])
+            ->exists();
+            
+        if (!$hasPendingFees) {
+            $member->update(['fees_status' => 'paid']);
+        }
+        
+        return redirect()
+            ->route('finance.membership.dashboard', $organisation->slug)
+            ->with('success', 'Payment recorded successfully.');
+    }
+}
+```
+
+#### Step 2.3: Add Routes (30 min)
+
+```php
+// routes/finance.php or routes/organisations.php
+Route::prefix('/{organisation:slug}')->group(function () {
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+        
+        // Membership Finance
+        Route::get('/finance/membership', [MembershipFinanceController::class, 'dashboard'])
+            ->name('finance.membership.dashboard')
+            ->can('viewFinance', 'organisation');
+            
+        Route::get('/finance/membership/{member}/record-payment', [MembershipFinanceController::class, 'recordPayment'])
+            ->name('finance.membership.payment.create')
+            ->can('manageFinance', 'organisation');
+            
+        Route::post('/finance/membership/{member}/record-payment', [MembershipFinanceController::class, 'storePayment'])
+            ->name('finance.membership.payment.store')
+            ->can('manageFinance', 'organisation');
+    });
+});
+```
+
+---
+
+### Week 2: Finance Dashboard UI
+
+#### Step 3.1: Create Vue Components (4 hours)
+
+```
+resources/js/Pages/Finance/Membership/
+├── Dashboard.vue           # Main dashboard with stats
+└── RecordPayment.vue       # Modal/page to record payment
+```
+
+**Dashboard.vue Key Elements:**
+```vue
+<template>
+  <AppLayout :title="`${organisation.name} - Membership Finance`">
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-4 gap-4 mb-8">
+      <StatCard 
+        title="Outstanding Balance" 
+        :value="formatCurrency(stats.total_outstanding)"
+        trend="up"
+      />
+      <StatCard 
+        title="Collected This Month" 
+        :value="formatCurrency(stats.collected_this_month)"
+        trend="neutral"
+      />
+      <StatCard 
+        title="Overdue Members" 
+        :value="stats.overdue_count"
+        trend="down"
+      />
+      <StatCard 
+        title="Pending Payments" 
+        :value="stats.pending_payments"
+      />
+    </div>
+    
+    <!-- Recent Payments Table -->
+    <div class="bg-white rounded-lg shadow p-6 mb-8">
+      <h2 class="text-lg font-semibold mb-4">Recent Payments</h2>
+      <table class="w-full">
+        <thead>
+          <tr>
+            <th>Member</th>
+            <th>Amount</th>
+            <th>Method</th>
+            <th>Date</th>
+            <th>Recorded By</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="payment in recentPayments" :key="payment.id">
+            <td>{{ payment.member.organisationUser.user.name }}</td>
+            <td>{{ formatCurrency(payment.amount) }}</td>
+            <td>{{ payment.payment_method }}</td>
+            <td>{{ formatDate(payment.paid_at) }}</td>
+            <td>{{ payment.recordedBy.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Overdue Members -->
+    <div class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-lg font-semibold mb-4">Overdue Members</h2>
+      <table class="w-full">
+        <thead>
+          <tr>
+            <th>Member</th>
+            <th>Email</th>
+            <th>Amount Due</th>
+            <th>Days Overdue</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="member in overdueMembers" :key="member.id">
+            <td>{{ member.organisationUser.user.name }}</td>
+            <td>{{ member.organisationUser.user.email }}</td>
+            <td>{{ formatCurrency(member.outstanding_balance) }}</td>
+            <td>{{ member.days_overdue }}</td>
+            <td>
+              <Link :href="route('finance.membership.payment.create', [organisation.slug, member.id])"
+                    class="text-blue-600 hover:text-blue-800">
+                Record Payment
+              </Link>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </AppLayout>
+</template>
+```
+
+---
+
+### Week 2-3: Member List Integration
+
+#### Step 4.1: Add "Record Payment" Button to Members Page (2 hours)
+
+```vue
+<!-- resources/js/Pages/Members/Index.vue -->
+<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+    <!-- Existing Mark Paid button -->
+    <button v-if="member.pending_fees > 0"
+            @click="markPaid(member)"
+            class="text-green-600 hover:text-green-900 mr-3">
+        Mark Paid
+    </button>
+    
+    <!-- NEW: Record Payment button -->
+    <Link :href="route('finance.membership.payment.create', [organisation.slug, member.id])"
+          class="text-blue-600 hover:text-blue-900">
+        Record Payment
+    </Link>
+</td>
+```
+
+---
+
+### Week 3: Invoice Generation
+
+#### Step 5.1: InvoiceService (3 hours)
+
+```php
+// app/Services/InvoiceService.php
+namespace App\Services;
+
+use App\Models\MembershipFee;
+use App\Models\MembershipPayment;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
+
+class InvoiceService
+{
+    public function generateForFee(MembershipFee $fee): string
+    {
+        $member = $fee->member;
+        $organisation = $fee->organisation;
+        
+        $invoiceNumber = sprintf(
+            'INV-%s-%04d',
+            now()->format('Ymd'),
+            $fee->id
+        );
+        
+        $pdf = Pdf::loadView('invoices.membership-fee', [
+            'fee' => $fee,
+            'member' => $member,
+            'organisation' => $organisation,
+            'invoiceNumber' => $invoiceNumber,
+        ]);
+        
+        $path = "invoices/{$organisation->id}/{$invoiceNumber}.pdf";
+        Storage::put($path, $pdf->output());
+        
+        $fee->update(['invoice_number' => $invoiceNumber]);
+        
+        return $path;
+    }
+    
+    public function generateReceipt(MembershipPayment $payment): string
+    {
+        $receiptNumber = sprintf('RCP-%s-%04d', now()->format('Ymd'), $payment->id);
+        
+        $pdf = Pdf::loadView('invoices.payment-receipt', [
+            'payment' => $payment,
+            'receiptNumber' => $receiptNumber,
+        ]);
+        
+        $path = "receipts/{$payment->organisation_id}/{$receiptNumber}.pdf";
+        Storage::put($path, $pdf->output());
+        
+        return $path;
+    }
+}
+```
+
+---
+
+### Summary: 3-Week Implementation Plan
+
+| Week | Deliverable | Files to Create/Modify |
+|------|-------------|----------------------|
+| **Week 1** | Foundation Fixes | Move controllers, add organisation_id, create MembershipPayment model, create MembershipFinanceController |
+| **Week 2** | Finance Dashboard | Dashboard.vue, RecordPayment.vue, routes |
+| **Week 3** | Integration & Polish | Member list integration, InvoiceService, email notifications |
+
+### Ready to Start?
+
+**Immediate Next Action:**
+```bash
+# Step 1: Move controllers to correct location
+mv app/Domain/Finance/Controllers/IncomeController.php app/Http/Controllers/Finance/
+mv app/Domain/Finance/Controllers/OutcomeController.php app/Http/Controllers/Finance/
+
+# Step 2: Create MembershipPayment migration
+php artisan make:migration create_membership_payments_table
+
+# Step 3: Create MembershipFinanceController
+php artisan make:controller Finance/MembershipFinanceController
+```
+
+**Om Gam Ganapataye Namah** 🪔🐘
+
+Shall I begin with Step 1: Moving the finance controllers?

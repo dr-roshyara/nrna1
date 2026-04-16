@@ -2,7 +2,7 @@
 
 namespace App\Listeners\Membership;
 
-use App\Events\Membership\MembershipFeePaid;
+use App\Events\MembershipFeePaid;
 use App\Models\Member;
 
 class RecalculateMemberFeeStatus
