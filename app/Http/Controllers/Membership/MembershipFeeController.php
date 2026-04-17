@@ -7,16 +7,75 @@ use App\Exceptions\FeeAlreadyPaidException;
 use App\Http\Controllers\Controller;
 use App\Models\Member;
 use App\Models\MembershipFee;
+use App\Models\MembershipType;
 use App\Models\Organisation;
 use App\Policies\MembershipPolicy;
 use App\Services\MembershipPaymentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class MembershipFeeController extends Controller
 {
+    public function create(Organisation $organisation, Member $member): Response
+    {
+        $this->authorize('recordFeePayment', $organisation);
+        abort_if($member->organisation_id !== $organisation->id, 404);
+
+        $types = MembershipType::where('organisation_id', $organisation->id)
+            ->active()
+            ->get(['id', 'name', 'fee_amount', 'fee_currency', 'duration_months', 'grants_voting_rights']);
+
+        return Inertia::render('Organisations/Membership/Member/FeeCreate', [
+            'organisation'    => $organisation->only('id', 'name', 'slug'),
+            'member'          => $member->load('organisationUser.user'),
+            'membershipTypes' => $types,
+        ]);
+    }
+
+    public function store(Request $request, Organisation $organisation, Member $member): RedirectResponse
+    {
+        $this->authorize('recordFeePayment', $organisation);
+        abort_if($member->organisation_id !== $organisation->id, 404);
+
+        $validated = $request->validate([
+            'membership_type_id' => [
+                'required',
+                'uuid',
+                Rule::exists('membership_types', 'id')
+                    ->where('organisation_id', $organisation->id),
+            ],
+            'due_date'    => 'required|date|after_or_equal:today',
+            'period_label' => 'nullable|string|max:100',
+            'notes'       => 'nullable|string|max:500',
+        ]);
+
+        $type = MembershipType::findOrFail($validated['membership_type_id']);
+
+        MembershipFee::create([
+            'id'                 => (string) Str::uuid(),
+            'organisation_id'    => $organisation->id,
+            'member_id'          => $member->id,
+            'membership_type_id' => $type->id,
+            'amount'             => $type->fee_amount,
+            'currency'           => $type->fee_currency,
+            'fee_amount_at_time' => $type->fee_amount,
+            'currency_at_time'   => $type->fee_currency,
+            'period_label'       => $validated['period_label'] ?? null,
+            'due_date'           => $validated['due_date'],
+            'status'             => 'pending',
+            'recorded_by'        => auth()->id(),
+            'notes'              => $validated['notes'] ?? null,
+        ]);
+
+        return redirect()
+            ->route('organisations.members.fees.index', [$organisation->slug, $member->id])
+            ->with('success', 'Fee assigned successfully.');
+    }
+
     public function index(Request $request, Organisation $organisation, Member $member): Response
     {
         $this->authorizeRecordPayment($request->user(), $organisation);

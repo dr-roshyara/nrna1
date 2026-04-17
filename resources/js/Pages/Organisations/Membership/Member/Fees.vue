@@ -58,11 +58,23 @@
         <!-- Fee list -->
         <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
           <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-            <h2 class="text-base font-semibold text-slate-800">{{ t.fees_title }}</h2>
-            <span v-if="pendingCount > 0"
-                  class="inline-flex items-center rounded-full bg-amber-100 text-amber-700 text-xs font-semibold px-2.5 py-0.5">
-              {{ pendingCount }} {{ t.pending_badge }}
-            </span>
+            <div class="flex items-center gap-3">
+              <h2 class="text-base font-semibold text-slate-800">{{ t.fees_title }}</h2>
+              <span v-if="pendingCount > 0"
+                    class="inline-flex items-center rounded-full bg-amber-100 text-amber-700 text-xs font-semibold px-2.5 py-0.5">
+                {{ pendingCount }} {{ t.pending_badge }}
+              </span>
+            </div>
+            <Link
+              v-if="canManage"
+              :href="route('organisations.members.fees.create', [organisation.slug, member.id])"
+              class="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+              Assign Fee
+            </Link>
           </div>
 
           <div v-if="fees.data && fees.data.length > 0" class="overflow-x-auto">
@@ -241,7 +253,7 @@
 
 <script setup>
 import { ref, computed, reactive } from 'vue'
-import { router, usePage } from '@inertiajs/vue3'
+import { router, usePage, Link } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 

@@ -180,6 +180,8 @@ Route::prefix('organisations/{organisation:slug}')
         // ── Membership Fee & Renewal Management ──────────────────────────────────
         Route::prefix('/members/{member}')->name('organisations.members.')->group(function () {
             Route::get('/fees',             [MembershipFeeController::class,     'index']) ->name('fees.index');
+            Route::get('/fees/create',      [MembershipFeeController::class,     'create']) ->name('fees.create');
+            Route::post('/fees',            [MembershipFeeController::class,     'store'])  ->name('fees.store');
             Route::post('/fees/{fee}/pay',  [MembershipFeeController::class,     'pay'])   ->name('fees.pay');
             Route::post('/fees/{fee}/waive',[MembershipFeeController::class,     'waive']) ->name('fees.waive');
             Route::get('/finance',          [MemberController::class,            'finance']) ->name('finance');
