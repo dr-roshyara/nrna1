@@ -1,10 +1,10 @@
 <script setup>
 import { computed, ref } from 'vue';
-import { router, usePage } from '@inertiajs/vue3';
-import { useLocale } from '@/Composables/useLocale';
+import { router, usePage, Link } from '@inertiajs/vue3';
+import { useI18n } from 'vue-i18n';
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue';
 
-const { locale } = useLocale();
+const { locale } = useI18n();
 
 const props = defineProps({
   organisation: { type: Object, required: true },
