@@ -249,71 +249,6 @@
         class="fixed inset-0 bg-black/20 z-40"
       />
     </transition>
-
-    <!-- Styles -->
-    <style scoped>
-      @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
-      :root {
-        --bg: #fafaf9;
-        --ink: #111827;
-        --muted: #6b7280;
-        --surface: #ffffff;
-        --border: #e5e7eb;
-        --accent: #1d4ed8;
-        --amber: #f59e0b;
-      }
-
-      h1, h2, h3 {
-        font-family: 'Instrument Serif', serif;
-        letter-spacing: -0.02em;
-      }
-
-      .font-mono {
-        font-family: 'JetBrains Mono', monospace;
-      }
-
-      /* Animated Counter */
-      @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .animate-slide-up {
-        animation: slideUp 0.6s ease-out forwards;
-      }
-
-      /* Ripple Effect for successful payment */
-      @keyframes ripple {
-        0% {
-          transform: scale(0);
-          opacity: 1;
-        }
-        100% {
-          transform: scale(4);
-          opacity: 0;
-        }
-      }
-
-      .ripple::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 20px;
-        height: 20px;
-        background: #10b981;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        animation: ripple 0.6s ease-out;
-      }
-    </style>
   </PublicDigitLayout>
 </template>
 
@@ -483,3 +418,67 @@ const submitPayment = () => {
   )
 }
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #fafaf9;
+  --ink: #111827;
+  --muted: #6b7280;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --accent: #1d4ed8;
+  --amber: #f59e0b;
+}
+
+h1, h2, h3 {
+  font-family: 'Instrument Serif', serif;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Animated Counter */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+/* Ripple Effect for successful payment */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: #10b981;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple 0.6s ease-out;
+}
+</style>

@@ -2,6 +2,7 @@
 import { useMeta } from '@/composables/useMeta'
 import { computed } from 'vue'
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
+import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 
 useMeta({
   pageKey: 'tutorials.election-settings',
@@ -25,13 +26,9 @@ const activeSection = computed(() => 'overview')
 
 <template>
   <div class="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-white to-slate-100">
-    <!-- PublicDigit Header with breadcrumbs -->
+    <!-- PublicDigit Header without breadcrumbs -->
     <PublicDigitHeader
-      :breadcrumbs="[
-        { label: $t('navigation.home', 'Home'), url: '/' },
-        { label: $t('navigation.help', 'Help & Guides'), url: null },
-        { label: t.page?.title || 'Election Setup Guide', url: null }
-      ]"
+      :breadcrumbs="[]"
       :disable-language-selector="false"
     />
 
@@ -395,6 +392,9 @@ const activeSection = computed(() => 'overview')
       </div>
     </main>
     </div>
+
+    <!-- PublicDigit Footer -->
+    <PublicDigitFooter />
   </div>
 </template>
 

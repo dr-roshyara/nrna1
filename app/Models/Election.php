@@ -679,7 +679,24 @@ class Election extends Model
             ];
 
             if ($election->wasChanged($cols)) {
+                // Backward compatibility: clear old cache key
                 \Illuminate\Support\Facades\Cache::forget("election-settings-{$election->id}");
+
+                // Clear ElectionSettingsService cache keys
+                $settingKeys = [
+                    'max_use_ip_address',
+                    'control_ip_address',
+                    'select_all_required',
+                    'ip_mismatch_action',
+                    'voting_ip_mode',
+                    'ip_whitelist',
+                    'no_vote_enabled',
+                    'no_vote_label',
+                ];
+
+                foreach ($settingKeys as $key) {
+                    \Illuminate\Support\Facades\Cache::forget("election:{$election->id}:setting:{$key}");
+                }
             }
         });
     }

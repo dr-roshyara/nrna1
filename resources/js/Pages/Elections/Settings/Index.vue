@@ -24,6 +24,7 @@ const form = ref({
   voter_verification_mode: props.election.voter_verification_mode ?? 'none',
   settings_version: props.election.settings_version ?? 0,
   confirmed_active_changes: false,
+  agreed_to_settings: false,
 })
 
 const whitelistText = ref((props.election.ip_whitelist ?? []).join('\n'))
@@ -498,11 +499,32 @@ const flashWarning = computed(() => {
           </div>
         </div>
 
+        <!-- General Agreement Required -->
+        <div class="card-elevated border-l-4 border-blue-500 bg-blue-50">
+          <fieldset class="space-y-3">
+            <legend class="text-sm font-semibold text-slate-900 mb-4">Confirmation Required</legend>
+            <label class="flex items-start cursor-pointer group">
+              <input
+                v-model="form.agreed_to_settings"
+                type="checkbox"
+                class="w-5 h-5 rounded border-2 border-blue-400 focus:ring-2 focus:ring-blue-500 cursor-pointer mt-1 flex-shrink-0"
+                aria-describedby="agree-help"
+              />
+              <span class="ml-3 text-sm font-semibold text-blue-900 group-hover:text-blue-700">
+                I agree to save these election settings and understand they will take effect immediately
+              </span>
+            </label>
+            <p id="agree-help" class="text-xs text-blue-700 ml-8">
+              Please review all settings above before confirming. These changes cannot be undone automatically.
+            </p>
+          </fieldset>
+        </div>
+
         <!-- Form Actions -->
         <div class="flex gap-4 pt-4">
           <button
             type="submit"
-            :disabled="!validateWhitelist() || (isShowingNeedsConfirmation && !form.confirmed_active_changes) || isValidating"
+            :disabled="!form.agreed_to_settings || !validateWhitelist() || (isShowingNeedsConfirmation && !form.confirmed_active_changes) || isValidating"
             aria-busy="isValidating"
             :aria-label="`Save settings${isValidating ? ' (saving)' : ''}`"
             class="px-8 py-4 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-200 disabled:bg-slate-400 disabled:cursor-not-allowed transition-all duration-200 inline-flex items-center gap-2"

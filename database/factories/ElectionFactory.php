@@ -43,6 +43,11 @@ class ElectionFactory extends Factory
         });
     }
 
+    public function isDemo()
+    {
+        return $this->demo();
+    }
+
     public function real()
     {
         return $this->state(function (array $attributes) {

@@ -48,4 +48,8 @@ return [
     // Lower values reduce stale-cache window after a voter is suspended/removed.
     // Set VOTER_CACHE_TTL=0 to disable caching (use in performance-sensitive tests).
     'voter_cache_ttl' => env('VOTER_CACHE_TTL', 300),
+
+    // Cache TTL (seconds) for election settings via ElectionSettingsService.
+    // Settings include IP restrictions, voting rules, and display options.
+    'settings_cache_ttl' => env('ELECTION_SETTINGS_CACHE_TTL', 300),
 ];
