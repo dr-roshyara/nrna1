@@ -11,6 +11,11 @@ class VoterInvitation extends Model
 {
     use HasFactory, HasUuids;
 
+    // Email status constants
+    public const EMAIL_PENDING = 'pending';
+    public const EMAIL_SENT = 'sent';
+    public const EMAIL_FAILED = 'failed';
+
     protected $fillable = [
         'election_id',
         'user_id',
@@ -57,5 +62,41 @@ class VoterInvitation extends Model
     public function isValid(): bool
     {
         return !$this->isUsed() && !$this->isExpired();
+    }
+
+    public function scopePending($query)
+    {
+        return $query->whereNull('used_at')
+            ->where('expires_at', '>', now());
+    }
+
+    public function scopeUsed($query)
+    {
+        return $query->whereNotNull('used_at');
+    }
+
+    public function scopeExpired($query)
+    {
+        return $query->where('expires_at', '<=', now());
+    }
+
+    public function scopeEmailSent($query)
+    {
+        return $query->where('email_status', self::EMAIL_SENT);
+    }
+
+    public function scopeEmailFailed($query)
+    {
+        return $query->where('email_status', self::EMAIL_FAILED);
+    }
+
+    public function scopeForElection($query, $electionId)
+    {
+        return $query->where('election_id', $electionId);
+    }
+
+    public function scopeForOrganisation($query, $organisationId)
+    {
+        return $query->where('organisation_id', $organisationId);
     }
 }

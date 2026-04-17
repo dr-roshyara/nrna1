@@ -36,7 +36,7 @@ class VoterInvitationController extends Controller
         $invitation = VoterInvitation::where('token', $token)
             ->whereNull('used_at')
             ->where('expires_at', '>', now())
-            ->with(['user', 'organisation'])
+            ->with(['user', 'organisation', 'election'])
             ->firstOrFail();
 
         $request->validate([
@@ -61,10 +61,8 @@ class VoterInvitationController extends Controller
 
         Auth::login($user);
 
-        // Load election without global scopes
-        $election = \App\Models\Election::withoutGlobalScopes()
-            ->findOrFail($invitation->election_id);
+        $election = $invitation->election;
 
-        return redirect()->route('elections.show', $election->slug);
+        return redirect()->route('elections.show', ['slug' => $election->slug]);
     }
 }

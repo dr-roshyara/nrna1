@@ -237,7 +237,7 @@ Route::get('posts/assign', [PostController::class, 'assign'])->name('post.assign
 
 // Election Management & Viewboard Routes
 Route::middleware(['auth', 'verified'])
-    ->prefix('/elections/{election}')
+    ->prefix('/elections/{election:slug}')
     ->group(function () {
         // Management dashboard — chief or deputy only
         Route::get('/management', [ElectionManagementController::class, 'index'])
