@@ -147,10 +147,14 @@
                     <span v-if="memberSelf.pending_fees <= 0" class="sr-only">— paid up</span>
                   </p>
                 </div>
-                <div v-if="memberSelf.member_id" class="p-5 sm:p-6 flex items-end">
+                <div v-if="memberSelf.member_id" class="p-5 sm:p-6 flex items-end gap-4">
                   <a :href="route('organisations.members.fees.index', [organisation.slug, memberSelf.member_id])"
                      class="text-sm font-medium text-indigo-600 hover:text-indigo-800 hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 rounded">
                     {{ t.nav_my_fees }} →
+                  </a>
+                  <a :href="route('organisations.members.finance', [organisation.slug, memberSelf.member_id])"
+                     class="text-sm font-medium text-green-600 hover:text-green-800 hover:underline focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1 rounded">
+                    {{ t.nav_my_finance }} →
                   </a>
                 </div>
               </div>
@@ -396,6 +400,7 @@ const translations = {
     nav_roles: 'Organisation Roles', nav_roles_desc: 'View roles & add as member',
     nav_types: 'Types', nav_manage_tiers: 'Manage tiers',
     nav_my_fees: 'My Fees', nav_payment_history: 'Payment history',
+    nav_my_finance: 'Finance', nav_financial_overview: 'Financial overview',
     nav_renew: 'Renew', nav_extend: 'Extend membership',
     nav_apply: 'Apply', nav_become_member: 'Become a member',
     nav_invite_members: 'Invite Members', nav_invite_members_desc: 'Send email invitations to join',
@@ -462,6 +467,7 @@ const translations = {
     nav_roles: 'Organisationsrollen', nav_roles_desc: 'Rollen anzeigen & als Mitglied hinzufügen',
     nav_types: 'Typen', nav_manage_tiers: 'Stufen verwalten',
     nav_my_fees: 'Meine Gebühren', nav_payment_history: 'Zahlungshistorie',
+    nav_my_finance: 'Finanzen', nav_financial_overview: 'Finanzielle Übersicht',
     nav_renew: 'Verlängern', nav_extend: 'Mitgliedschaft verlängern',
     nav_apply: 'Beantragen', nav_become_member: 'Mitglied werden',
     nav_invite_members: 'Mitglieder einladen', nav_invite_members_desc: 'E-Mail-Einladungen versenden',
@@ -522,6 +528,7 @@ const translations = {
     nav_roles: 'संगठन भूमिकाहरू', nav_roles_desc: 'भूमिका हेर्नुहोस् र सदस्य थप्नुहोस्',
     nav_types: 'प्रकारहरू', nav_manage_tiers: 'स्तर व्यवस्थापन',
     nav_my_fees: 'मेरो शुल्क', nav_payment_history: 'भुक्तानी इतिहास',
+    nav_my_finance: 'वित्त', nav_financial_overview: 'वित्तीय सारांश',
     nav_renew: 'नवीकरण', nav_extend: 'सदस्यता बढाउनुहोस्',
     nav_apply: 'आवेदन', nav_become_member: 'सदस्य बन्नुहोस्',
     nav_invite_members: 'सदस्य आमन्त्रण', nav_invite_members_desc: 'इमेल आमन्त्रण पठाउनुहोस्',
