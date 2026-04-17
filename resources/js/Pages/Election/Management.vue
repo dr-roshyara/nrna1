@@ -498,12 +498,20 @@
             </div>
           </div>
 
-          <ActionButton variant="outline" size="md" :href="voterListUrl" class="w-full sm:w-auto">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
-            </svg>
-            {{ t.sections.voter_management.btn_manage }}
-          </ActionButton>
+          <div class="flex flex-wrap gap-3">
+            <ActionButton as="a" variant="outline" size="md" :href="voterManageUrl" class="w-full sm:w-auto">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+              </svg>
+              {{ t.sections.voter_management.btn_manage }}
+            </ActionButton>
+            <ActionButton as="a" variant="outline" size="md" :href="voterListUrl" class="w-full sm:w-auto">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+              </svg>
+              View Public List
+            </ActionButton>
+          </div>
         </SectionCard>
 
         <!-- ── ELECTION SETTINGS ───────────────────────────────── -->
@@ -663,6 +671,13 @@ const settingsUrl = computed(() =>
 
 const voterListUrl = computed(() =>
   route('organisations.elections.voters', {
+    organisation: props.election.organisation?.slug,
+    election:     props.election.slug,
+  })
+)
+
+const voterManageUrl = computed(() =>
+  route('elections.voters.index', {
     organisation: props.election.organisation?.slug,
     election:     props.election.slug,
   })
