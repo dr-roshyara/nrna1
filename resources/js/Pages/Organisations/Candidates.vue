@@ -3,13 +3,13 @@ import { computed } from 'vue'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { Link } from '@inertiajs/vue3'
 
-defineProps({
+const props = defineProps({
   organisation: Object,
   election: Object,
   posts: Array,
 })
 
-const backUrl = computed(() => route('organisations.voter-hub', organisation.slug))
+const backUrl = computed(() => route('organisations.voter-hub', props.organisation.slug))
 </script>
 
 <template>
