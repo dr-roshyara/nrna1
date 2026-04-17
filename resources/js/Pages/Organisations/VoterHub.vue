@@ -289,7 +289,27 @@
                       </svg>
                     </a>
 
-                    <!-- Voter List — officers only -->
+                    <!-- Voters List — all election members -->
+                    <a
+                      :href="route('organisations.elections.voters', { organisation: organisation.slug, election: election.slug })"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-teal-200 bg-teal-50 hover:bg-white hover:border-teal-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-1"
+                      :aria-label="`View voters for ${election.name}`"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-teal-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 12H9m6 0a6 6 0 11-12 0 6 6 0 0112 0z"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-teal-800">Voters</span>
+                        <span class="block text-xs text-teal-600">View registered voters</span>
+                      </span>
+                      <svg class="w-4 h-4 text-teal-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+
+                    <!-- Voter Management — officers only -->
                     <a
                       v-if="isOfficer"
                       :href="route('elections.voters.index', { organisation: organisation.slug, election: election.slug })"

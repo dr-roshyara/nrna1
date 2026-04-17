@@ -622,4 +622,64 @@ class OrganisationController extends Controller
         ]);
     }
 
+    // READ-ONLY voter list for ALL election members (including officers).
+    // Admin management remains at ElectionVoterController@index.
+    public function voters(Organisation $organisation, string $election): Response
+    {
+        $electionModel = Election::withoutGlobalScopes()
+            ->where('slug', $election)
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->firstOrFail();
+
+        abort_unless(
+            $this->canAccessElection($organisation, $electionModel->id),
+            403,
+            'You are not authorised to view this election.'
+        );
+
+        $query = $electionModel->memberships()
+            ->withoutGlobalScopes()
+            ->with(['user' => fn ($q) => $q->withoutGlobalScopes()->select('id', 'name')])
+            ->where('role', 'voter');
+
+        $sort      = request('sort', 'assigned_at');
+        $direction = in_array(request('direction'), ['asc', 'desc']) ? request('direction') : 'asc';
+        $allowed   = ['name', 'status', 'assigned_at'];
+
+        if ($sort === 'name') {
+            $query->join('users', 'election_memberships.user_id', '=', 'users.id')
+                  ->orderBy('users.name', $direction)
+                  ->select('election_memberships.*');
+        } elseif (in_array($sort, $allowed)) {
+            $query->orderBy($sort, $direction);
+        } else {
+            $query->orderBy('assigned_at', 'asc');
+        }
+
+        if ($status = request('status')) {
+            if ($status === 'pending_suspension') {
+                $query->where('suspension_status', 'proposed');
+            } elseif (in_array($status, ['active', 'invited', 'inactive', 'removed'])) {
+                $query->where('status', $status);
+            }
+        }
+
+        $voters = $query->paginate(50)
+            ->through(fn ($m) => [
+                'id'                => $m->id,
+                'name'              => $m->user?->name ?? '—',
+                'status'            => $m->status,
+                'suspension_status' => $m->suspension_status,
+                'has_voted'         => (bool) $m->has_voted,
+            ]);
+
+        return Inertia::render('Organisations/Voters', [
+            'organisation' => $organisation->only('id', 'name', 'slug'),
+            'election'     => $electionModel->only('id', 'name', 'slug', 'status'),
+            'voters'       => $voters,
+            'filters'      => ['sort' => $sort, 'direction' => $direction, 'status' => request('status')],
+        ]);
+    }
+
 }

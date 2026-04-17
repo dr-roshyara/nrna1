@@ -251,6 +251,11 @@ Route::prefix('organisations/{organisation:slug}')
             // ── Voter-facing candidates page (positions & candidates) ──────────────
             Route::get('/candidates',         [OrganisationController::class, 'voterCandidates'])->name('organisations.elections.candidates');
 
+            // ── Voter-facing voter list (name + status, all election members) ──────
+            Route::get('/voters', [OrganisationController::class, 'voters'])
+                ->name('organisations.elections.voters')
+                ->middleware('throttle:60,1');
+
             // ── Posts management (positions within an election) ────────────────────
             Route::get('/posts',              [PostManagementController::class, 'index'])  ->name('organisations.elections.posts.index');
             Route::post('/posts',             [PostManagementController::class, 'store'])  ->name('organisations.elections.posts.store');
