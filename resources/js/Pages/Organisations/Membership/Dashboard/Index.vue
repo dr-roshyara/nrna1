@@ -401,6 +401,7 @@ const translations = {
     nav_types: 'Types', nav_manage_tiers: 'Manage tiers',
     nav_my_fees: 'My Fees', nav_payment_history: 'Payment history',
     nav_my_finance: 'Finance', nav_financial_overview: 'Financial overview',
+    nav_manage_fees: 'Manage Fees', nav_manage_fees_desc: 'Assign and track member fees',
     nav_renew: 'Renew', nav_extend: 'Extend membership',
     nav_apply: 'Apply', nav_become_member: 'Become a member',
     nav_invite_members: 'Invite Members', nav_invite_members_desc: 'Send email invitations to join',
@@ -468,6 +469,7 @@ const translations = {
     nav_types: 'Typen', nav_manage_tiers: 'Stufen verwalten',
     nav_my_fees: 'Meine Gebühren', nav_payment_history: 'Zahlungshistorie',
     nav_my_finance: 'Finanzen', nav_financial_overview: 'Finanzielle Übersicht',
+    nav_manage_fees: 'Gebühren verwalten', nav_manage_fees_desc: 'Mitgliedsgebühren zuweisen und verfolgen',
     nav_renew: 'Verlängern', nav_extend: 'Mitgliedschaft verlängern',
     nav_apply: 'Beantragen', nav_become_member: 'Mitglied werden',
     nav_invite_members: 'Mitglieder einladen', nav_invite_members_desc: 'E-Mail-Einladungen versenden',
@@ -529,6 +531,7 @@ const translations = {
     nav_types: 'प्रकारहरू', nav_manage_tiers: 'स्तर व्यवस्थापन',
     nav_my_fees: 'मेरो शुल्क', nav_payment_history: 'भुक्तानी इतिहास',
     nav_my_finance: 'वित्त', nav_financial_overview: 'वित्तीय सारांश',
+    nav_manage_fees: 'शुल्क व्यवस्थापन', nav_manage_fees_desc: 'सदस्य शुल्क नियुक्त र ट्र्याक गर्नुहोस्',
     nav_renew: 'नवीकरण', nav_extend: 'सदस्यता बढाउनुहोस्',
     nav_apply: 'आवेदन', nav_become_member: 'सदस्य बन्नुहोस्',
     nav_invite_members: 'सदस्य आमन्त्रण', nav_invite_members_desc: 'इमेल आमन्त्रण पठाउनुहोस्',
@@ -686,6 +689,11 @@ const quickActions = computed(() => {
       key: 'members', title: t.value.nav_members, description: t.value.nav_directory,
       href: safeRoute('organisations.members.index', organisation.slug),
       icon: UsersIcon, color: 'blue',
+    })
+    actions.push({
+      key: 'manage_fees', title: t.value.nav_manage_fees, description: t.value.nav_manage_fees_desc,
+      href: safeRoute('organisations.members.index', organisation.slug),
+      icon: CurrencyEuroIcon, color: 'green',
     })
     actions.push({
       key: 'participants', title: t.value.nav_participants, description: t.value.nav_all_roles,
