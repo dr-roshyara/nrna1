@@ -269,6 +269,26 @@
                       </svg>
                     </a>
 
+                    <!-- Candidates List -->
+                    <a
+                      :href="route('organisations.elections.candidacies.index', { organisation: organisation.slug, election: election.slug })"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-purple-200 bg-purple-50 hover:bg-white hover:border-purple-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-1"
+                      :aria-label="`View candidates for ${election.name}`"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-purple-800">Candidates</span>
+                        <span class="block text-xs text-purple-600">View all running candidates</span>
+                      </span>
+                      <svg class="w-4 h-4 text-purple-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+
                     <!-- Voter List — officers only -->
                     <a
                       v-if="isOfficer"
