@@ -6,7 +6,7 @@
       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
     >Skip to main content</a>
 
-    <main id="main-content" class="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50 py-8 relative overflow-hidden">
+    <main id="main-content" class="min-h-screen bg-slate-100 py-8 relative overflow-hidden">
       <!-- Decorative left frame gradient -->
       <div
         class="absolute left-0 top-0 w-1/2 h-full pointer-events-none opacity-40"
