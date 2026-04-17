@@ -74,6 +74,6 @@ class MembershipPayment extends Model
      */
     public function income()
     {
-        return $this->belongsTo(\App\Domain\Finance\Models\Income::class);
+        return $this->belongsTo(\App\Models\Income::class);
     }
 }

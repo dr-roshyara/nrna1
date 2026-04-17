@@ -12,9 +12,10 @@
 
 namespace Tests\Feature\Membership;
 
-use App\Events\Membership\MembershipFeePaid;
+use App\Events\MembershipFeePaid;
 use App\Models\Member;
 use App\Models\MembershipFee;
+use App\Models\MembershipPayment;
 use App\Models\MembershipType;
 use App\Models\Organisation;
 use App\Models\OrganisationUser;
@@ -82,6 +83,21 @@ class FeeStatusRecalculationTest extends TestCase
         ]);
     }
 
+    private function makePaymentForEvent(MembershipFee $fee): MembershipPayment
+    {
+        return MembershipPayment::create([
+            'id'                 => (string) Str::uuid(),
+            'member_id'          => $fee->member_id,
+            'fee_id'             => $fee->id,
+            'organisation_id'    => $this->org->id,
+            'amount'             => $fee->amount,
+            'currency'           => 'EUR',
+            'payment_method'     => 'bank_transfer',
+            'recorded_by'        => User::factory()->create()->id,
+            'paid_at'            => now(),
+        ]);
+    }
+
     // ══════════════════════════════════════════════════════════════════════════
     //  Group 1 — Single fee scenarios
     // ══════════════════════════════════════════════════════════════════════════
@@ -93,7 +109,8 @@ class FeeStatusRecalculationTest extends TestCase
 
         // Mark fee as paid and fire event
         $fee->update(['status' => 'paid', 'paid_at' => now()]);
-        event(new MembershipFeePaid($fee->fresh()));
+        $payment = $this->makePaymentForEvent($fee->fresh());
+        event(new MembershipFeePaid($fee->fresh()->load('member'), $payment, $this->org));
 
         $this->assertEquals('paid', $member->fresh()->fees_status,
             'fees_status should be paid after only fee is paid');
@@ -105,7 +122,8 @@ class FeeStatusRecalculationTest extends TestCase
         $fee    = $this->makeFee($member, 'pending');
 
         $fee->update(['status' => 'paid', 'paid_at' => now()]);
-        event(new MembershipFeePaid($fee->fresh()));
+        $payment = $this->makePaymentForEvent($fee->fresh());
+        event(new MembershipFeePaid($fee->fresh()->load('member'), $payment, $this->org));
 
         $member->refresh()->load('membershipType');
         $this->assertEquals('full', $member->voting_rights,
@@ -124,7 +142,8 @@ class FeeStatusRecalculationTest extends TestCase
 
         // Pay only the first fee
         $fee1->update(['status' => 'paid', 'paid_at' => now()]);
-        event(new MembershipFeePaid($fee1->fresh()));
+        $payment1 = $this->makePaymentForEvent($fee1->fresh());
+        event(new MembershipFeePaid($fee1->fresh(), $payment1, $this->org));
 
         $this->assertEquals('partial', $member->fresh()->fees_status,
             'fees_status should be partial when one of two fees is paid');
@@ -137,10 +156,12 @@ class FeeStatusRecalculationTest extends TestCase
         $fee2   = $this->makeFee($member, 'pending', 50.00);
 
         $fee1->update(['status' => 'paid', 'paid_at' => now()]);
-        event(new MembershipFeePaid($fee1->fresh()));
+        $payment1 = $this->makePaymentForEvent($fee1->fresh());
+        event(new MembershipFeePaid($fee1->fresh(), $payment1, $this->org));
 
         $fee2->update(['status' => 'paid', 'paid_at' => now()]);
-        event(new MembershipFeePaid($fee2->fresh()));
+        $payment2 = $this->makePaymentForEvent($fee2->fresh());
+        event(new MembershipFeePaid($fee2->fresh(), $payment2, $this->org));
 
         $this->assertEquals('paid', $member->fresh()->fees_status,
             'fees_status should be paid when all fees are paid');
@@ -159,7 +180,8 @@ class FeeStatusRecalculationTest extends TestCase
 
         // Recalculation via direct event (waive doesn't fire MembershipFeePaid)
         // We dispatch manually to test the listener logic
-        event(new MembershipFeePaid($fee->fresh()));
+        $payment = $this->makePaymentForEvent($fee->fresh());
+        event(new MembershipFeePaid($fee->fresh()->load('member'), $payment, $this->org));
 
         $this->assertEquals('exempt', $member->fresh()->fees_status,
             'fees_status should be exempt when all fees are waived');
@@ -178,7 +200,8 @@ class FeeStatusRecalculationTest extends TestCase
         $this->makeFee($member2, 'pending'); // member2 still unpaid
 
         $fee1->update(['status' => 'paid', 'paid_at' => now()]);
-        event(new MembershipFeePaid($fee1->fresh()));
+        $payment1 = $this->makePaymentForEvent($fee1->fresh());
+        event(new MembershipFeePaid($fee1->fresh(), $payment1, $this->org));
 
         // member1 should be paid, member2 must remain unpaid
         $this->assertEquals('paid',   $member1->fresh()->fees_status);

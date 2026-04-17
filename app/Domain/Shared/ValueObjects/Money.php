@@ -59,4 +59,12 @@ class Money
     {
         return $this->amount === $other->amount && $this->currency === $other->currency;
     }
+
+    /**
+     * Add another Money object to this one.
+     */
+    public function add(Money $other): Money
+    {
+        return new Money($this->amount + $other->amount, $this->currency);
+    }
 }

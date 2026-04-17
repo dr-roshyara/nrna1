@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Finance\Controllers;
+namespace App\Http\Controllers\Finance;
 
-use App\Domain\Finance\Models\Income;
+use App\Models\Income;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;

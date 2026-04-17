@@ -1,7 +1,7 @@
 <?php
 
-use App\Domain\Finance\Controllers\IncomeController;
-use App\Domain\Finance\Controllers\OutcomeController;
+use App\Http\Controllers\Finance\IncomeController;
+use App\Http\Controllers\Finance\OutcomeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;Route::middleware(['auth:sanctum', 'verified']) ->get('/finance', function(){
     return Inertia::render('Finance/Index');

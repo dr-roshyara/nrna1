@@ -52,7 +52,7 @@ class IncomeOrganisationMigrationTest extends TestCase
         $user = \App\Models\User::factory()->create();
 
         // This should not throw an error
-        $income = \App\Domain\Finance\Models\Income::create([
+        $income = \App\Models\Income::create([
             'user_id'        => $user->id,
             'organisation_id' => $organisation->id,
             'country'        => 'NP',
@@ -74,7 +74,7 @@ class IncomeOrganisationMigrationTest extends TestCase
     public function test_existing_income_records_have_organisation_id_after_backfill(): void
     {
         // Get any existing income records (from earlier migrations/seeds)
-        $incomes = \App\Domain\Finance\Models\Income::all();
+        $incomes = \App\Models\Income::all();
 
         // If any exist, they must have organisation_id
         foreach ($incomes as $income) {

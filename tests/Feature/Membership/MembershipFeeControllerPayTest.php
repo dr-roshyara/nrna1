@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Membership;
 
-use App\Domain\Finance\Models\Income;
+use App\Models\Income;
 use App\Models\Member;
 use App\Models\MembershipFee;
 use App\Models\Organisation;

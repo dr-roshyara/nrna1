@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Domain\Finance\Models\Income;
+use App\Models\Income;
 use App\Events\MembershipFeePaid;
 
 class CreateIncomeForMembershipFee
