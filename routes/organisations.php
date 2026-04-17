@@ -248,6 +248,9 @@ Route::prefix('organisations/{organisation:slug}')
             // ── Voter-facing positions page (read-only) ───────────────────────────
             Route::get('/positions',          [OrganisationController::class, 'voterPosts'])->name('organisations.elections.positions');
 
+            // ── Voter-facing candidates page (positions & candidates) ──────────────
+            Route::get('/candidates',         [OrganisationController::class, 'voterCandidates'])->name('organisations.elections.candidates');
+
             // ── Posts management (positions within an election) ────────────────────
             Route::get('/posts',              [PostManagementController::class, 'index'])  ->name('organisations.elections.posts.index');
             Route::post('/posts',             [PostManagementController::class, 'store'])  ->name('organisations.elections.posts.store');

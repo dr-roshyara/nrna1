@@ -569,4 +569,57 @@ class OrganisationController extends Controller
         ]);
     }
 
+    /**
+     * Show voter-facing candidates list with positions
+     */
+    public function voterCandidates(Organisation $organisation, string $election): Response
+    {
+        $electionModel = Election::withoutGlobalScopes()
+            ->where('slug', $election)
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->firstOrFail();
+
+        abort_unless(
+            $this->canAccessElection($organisation, $electionModel->id),
+            403,
+            'You are not authorised to view this election.'
+        );
+
+        $posts = Post::withoutGlobalScopes()
+            ->where('election_id', $electionModel->id)
+            ->where('organisation_id', $organisation->id)
+            ->orderBy('position_order')
+            ->with(['candidacies' => function ($q) {
+                $q->withoutGlobalScopes()
+                  ->where('status', 'approved')
+                  ->with(['user' => fn ($u) => $u->withoutGlobalScopes()])
+                  ->orderBy('position_order');
+            }])
+            ->get()
+            ->map(fn ($post) => [
+                'id'               => $post->id,
+                'name'             => $post->name,
+                'nepali_name'      => $post->nepali_name,
+                'is_national_wide' => (bool) $post->is_national_wide,
+                'state_name'       => $post->state_name,
+                'required_number'  => $post->required_number,
+                'candidacies'      => $post->candidacies->map(fn ($c) => [
+                    'id'             => $c->id,
+                    'name'           => $c->user?->name ?? $c->name ?? '—',
+                    'description'    => $c->description,
+                    'image_path_1'   => $c->image_path_1,
+                    'image_path_2'   => $c->image_path_2,
+                    'image_path_3'   => $c->image_path_3,
+                    'position_order' => $c->position_order,
+                ])->values(),
+            ]);
+
+        return Inertia::render('Organisations/Candidates', [
+            'organisation' => $organisation->only('id', 'name', 'slug'),
+            'election'     => $electionModel->only('id', 'name', 'slug', 'status'),
+            'posts'        => $posts->values(),
+        ]);
+    }
+
 }
