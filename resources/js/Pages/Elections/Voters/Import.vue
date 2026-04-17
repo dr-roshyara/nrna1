@@ -9,7 +9,7 @@
 
         <!-- Header -->
         <div class="mb-8">
-          <Link :href="route('elections.voters.index', { organisation: organisation.slug, election: election.slug })"
+          <Link :href="route('organisations.elections.voters', { organisation: organisation.slug, election: election.slug })"
                 class="inline-flex items-center text-blue-600 hover:text-blue-700 mb-4">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -89,7 +89,7 @@
               <p v-if="$page.props.flash?.success" class="text-gray-600 mb-6">
                 {{ $page.props.flash.success }}
               </p>
-              <Link :href="route('elections.voters.index', { organisation: organisation.slug, election: election.slug })"
+              <Link :href="route('organisations.elections.voters', { organisation: organisation.slug, election: election.slug })"
                     class="inline-flex items-center px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                 {{ t.success.back_btn }}
               </Link>

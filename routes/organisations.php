@@ -230,10 +230,11 @@ Route::prefix('organisations/{organisation:slug}')
                 Route::post('/import',         [VoterImportController::class, 'import'])  ->name('import');
             });
 
-            Route::get('/voters',                   [ElectionVoterController::class, 'index'])     ->name('elections.voters.index');
-            Route::post('/voters',                  [ElectionVoterController::class, 'store'])     ->name('elections.voters.store');
-            Route::post('/voters/bulk',             [ElectionVoterController::class, 'bulkStore']) ->name('elections.voters.bulk');
-            Route::get('/voters/export',            [ElectionVoterController::class, 'export'])    ->name('elections.voters.export');
+            // ── Officer-only voter management (with admin buttons) ─────────────────
+            Route::get('/voters/manage',            [ElectionVoterController::class, 'index'])     ->name('elections.voters.index');
+            Route::post('/voters/manage',           [ElectionVoterController::class, 'store'])     ->name('elections.voters.store');
+            Route::post('/voters/manage/bulk',      [ElectionVoterController::class, 'bulkStore']) ->name('elections.voters.bulk');
+            Route::get('/voters/manage/export',     [ElectionVoterController::class, 'export'])    ->name('elections.voters.export');
             Route::delete('/voters/{membership}',   [ElectionVoterController::class, 'destroy'])   ->name('elections.voters.destroy');
             Route::post('/voters/{membership}/approve',             [ElectionVoterController::class, 'approve'])           ->name('elections.voters.approve');
             Route::post('/voters/{membership}/suspend',             [ElectionVoterController::class, 'suspend'])           ->name('elections.voters.suspend');

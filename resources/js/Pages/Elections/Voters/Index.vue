@@ -489,7 +489,7 @@ let filterTimer = null
 const debouncedFilter = () => { clearTimeout(filterTimer); filterTimer = setTimeout(applyFilters, 350) }
 const applyFilters = () => {
   router.get(
-    route('elections.voters.index', { organisation: props.organisation.slug, election: props.election.slug }),
+    route('organisations.elections.voters', { organisation: props.organisation.slug, election: props.election.slug }),
     {
       search:    searchQuery.value || undefined,
       status:    statusFilter.value || undefined,

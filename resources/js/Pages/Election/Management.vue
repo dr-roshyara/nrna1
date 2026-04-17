@@ -662,7 +662,7 @@ const settingsUrl = computed(() =>
 )
 
 const voterListUrl = computed(() =>
-  route('elections.voters.index', {
+  route('organisations.elections.voters', {
     organisation: props.election.organisation?.slug,
     election:     props.election.slug,
   })

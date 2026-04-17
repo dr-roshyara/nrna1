@@ -304,7 +304,7 @@
                 </div>
                 <div v-if="elections.length > 0" class="flex flex-col items-end gap-1">
                   <a v-for="election in elections" :key="election.id"
-                    :href="route('elections.voters.index', { organisation: organisation.slug, election: election.slug })"
+                    :href="route('organisations.elections.voters', { organisation: organisation.slug, election: election.slug })"
                     class="text-sm font-semibold text-blue-600 hover:text-blue-800 hover:underline transition-colors">
                     {{ election.name }} →
                   </a>

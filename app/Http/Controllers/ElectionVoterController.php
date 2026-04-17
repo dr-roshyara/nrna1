@@ -172,7 +172,7 @@ class ElectionVoterController extends Controller
 
         $result['invalid'] = ($result['invalid'] ?? 0) + $invalidCount;
 
-        return redirect()->route('elections.voters.index', [
+        return redirect()->route('organisations.elections.voters', [
             'organisation' => $organisation->slug,
             'election' => $election->slug
         ])->with('bulk_result', $result);
