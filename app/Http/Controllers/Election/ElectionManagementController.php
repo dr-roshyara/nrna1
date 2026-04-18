@@ -443,11 +443,6 @@ class ElectionManagementController extends Controller
                 // PostgreSQL has strong consistency - no verification delay needed
                 $verified = true;
                 Log::debug('Slug created on ' . ucfirst($driver) . ' (strong consistency)');
-            } else {
-                Log::info('✅ Slug verified successfully', [
-                    'attempts' => $attempts,
-                    'slug_id' => $slug->id
-                ]);
             }
 
             // Store slug in session for fallback if route binding fails
