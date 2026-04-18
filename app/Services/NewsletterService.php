@@ -137,48 +137,48 @@ class NewsletterService
     private function queryAllMembers(Organisation $organisation): Builder
     {
         return Member::withoutGlobalScopes()
-            ->where('organisation_id', $organisation->id)
-            ->where('status', 'active')
-            ->whereNull('newsletter_unsubscribed_at')
-            ->whereNull('newsletter_bounced_at')
-            ->with('organisationUser.user')
-            ->selectRaw('DISTINCT email, name, id as member_id, NULL as user_id, ? as consent_source', ['member_agreement']);
+            ->join('users', 'members.user_id', '=', 'users.id')
+            ->where('members.organisation_id', $organisation->id)
+            ->where('members.status', 'active')
+            ->whereNull('members.newsletter_unsubscribed_at')
+            ->whereNull('members.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, members.id as member_id, users.id as user_id, ? as consent_source', ['member_agreement']);
     }
 
     private function queryFullMembers(Organisation $organisation): Builder
     {
         return Member::withoutGlobalScopes()
-            ->where('organisation_id', $organisation->id)
-            ->where('status', 'active')
-            ->whereNull('newsletter_unsubscribed_at')
-            ->whereNull('newsletter_bounced_at')
+            ->join('users', 'members.user_id', '=', 'users.id')
+            ->where('members.organisation_id', $organisation->id)
+            ->where('members.status', 'active')
+            ->whereNull('members.newsletter_unsubscribed_at')
+            ->whereNull('members.newsletter_bounced_at')
             ->whereHas('membershipType', fn($q) => $q->where('grants_voting_rights', true))
-            ->with('organisationUser.user')
-            ->selectRaw('DISTINCT email, name, id as member_id, NULL as user_id, ? as consent_source', ['member_agreement']);
+            ->selectRaw('DISTINCT users.email, users.name, members.id as member_id, users.id as user_id, ? as consent_source', ['member_agreement']);
     }
 
     private function queryAssociateMembers(Organisation $organisation): Builder
     {
         return Member::withoutGlobalScopes()
-            ->where('organisation_id', $organisation->id)
-            ->where('status', 'active')
-            ->whereNull('newsletter_unsubscribed_at')
-            ->whereNull('newsletter_bounced_at')
+            ->join('users', 'members.user_id', '=', 'users.id')
+            ->where('members.organisation_id', $organisation->id)
+            ->where('members.status', 'active')
+            ->whereNull('members.newsletter_unsubscribed_at')
+            ->whereNull('members.newsletter_bounced_at')
             ->whereHas('membershipType', fn($q) => $q->where('grants_voting_rights', false))
-            ->with('organisationUser.user')
-            ->selectRaw('DISTINCT email, name, id as member_id, NULL as user_id, ? as consent_source', ['member_agreement']);
+            ->selectRaw('DISTINCT users.email, users.name, members.id as member_id, users.id as user_id, ? as consent_source', ['member_agreement']);
     }
 
     private function queryMembersWithOverdueFees(Organisation $organisation): Builder
     {
         return Member::withoutGlobalScopes()
-            ->where('organisation_id', $organisation->id)
-            ->where('status', 'active')
-            ->whereNull('newsletter_unsubscribed_at')
-            ->whereNull('newsletter_bounced_at')
-            ->whereIn('fees_status', ['unpaid', 'partial'])
-            ->with('organisationUser.user')
-            ->selectRaw('DISTINCT email, name, id as member_id, NULL as user_id, ? as consent_source', ['member_agreement']);
+            ->join('users', 'members.user_id', '=', 'users.id')
+            ->where('members.organisation_id', $organisation->id)
+            ->where('members.status', 'active')
+            ->whereNull('members.newsletter_unsubscribed_at')
+            ->whereNull('members.newsletter_bounced_at')
+            ->whereIn('members.fees_status', ['unpaid', 'partial'])
+            ->selectRaw('DISTINCT users.email, users.name, members.id as member_id, users.id as user_id, ? as consent_source', ['member_agreement']);
     }
 
     private function queryElectionVoters(Organisation $organisation, array $meta): Builder
@@ -265,8 +265,8 @@ class NewsletterService
         $electionId = $meta['election_id'] ?? null;
 
         return ElectionOfficer::withoutGlobalScopes()
-            ->where('election_id', $electionId)
-            ->where('status', 'active')
+            ->where('election_officers.election_id', $electionId)
+            ->where('election_officers.status', 'active')
             ->join('users', 'election_officers.user_id', '=', 'users.id')
             ->leftJoin('members', 'users.id', '=', 'members.user_id')
             ->where('users.organisation_id', $organisation->id)
@@ -340,19 +340,17 @@ class NewsletterService
             ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['member_agreement']);
     }
 
-    public function dispatch(
-        OrganisationNewsletter $newsletter,
-        Organisation $org,
-        User $actor,
-        Request $request
-    ): void {
+    public function dispatch(OrganisationNewsletter $newsletter): void
+    {
         if ($newsletter->status !== 'draft') {
             throw new InvalidNewsletterStateException(
                 "Newsletter cannot be dispatched from status [{$newsletter->status}]."
             );
         }
 
-        DB::transaction(function () use ($newsletter, $org, $actor, $request) {
+        $org = $newsletter->organisation;
+
+        DB::transaction(function () use ($newsletter, $org) {
             // Always bypass cache on actual send - must use fresh data
             $audience = $this->resolveAudience(
                 $org,

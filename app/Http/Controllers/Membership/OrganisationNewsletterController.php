@@ -86,6 +86,13 @@ class OrganisationNewsletterController extends Controller
         $data = $request->validate([
             'subject'      => ['required', 'string', 'max:255'],
             'html_content' => ['required', 'string'],
+            'audience_type' => ['required', 'string', 'in:' . implode(',', NewsletterService::AUDIENCE_TYPES)],
+            'audience_meta.election_id' => [
+                'required_if:audience_type,election_voters,election_not_voted,election_voted,election_candidates,election_observers,election_committee,election_all',
+                'nullable',
+                'uuid',
+                'exists:elections,id',
+            ],
         ]);
 
         $newsletter = $this->service->createDraft($org, $request->user(), $data, $request);
@@ -219,7 +226,7 @@ class OrganisationNewsletterController extends Controller
         $newsletter = OrganisationNewsletter::where('organisation_id', $org->id)->findOrFail($id);
 
         try {
-            $this->service->dispatch($newsletter, $org, $request->user(), $request);
+            $this->service->dispatch($newsletter);
         } catch (InvalidNewsletterStateException $e) {
             return response()->json(['error' => $e->getMessage()], 422);
         }
