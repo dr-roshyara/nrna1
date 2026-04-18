@@ -202,17 +202,25 @@ onMounted(() => {
 
     <!-- Back button -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
-      <component
-        :is="organisation ? 'a' : 'button'"
-        :href="organisation ? route('organisations.membership.newsletters.index', organisation.slug) : undefined"
-        @click="!organisation ? window.history.back() : null"
-        class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors cursor-pointer"
-      >
+      <a
+        v-if="organisation"
+        :href="route('organisations.membership.newsletters.index', organisation.slug)"
+        class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>
         Back to Newsletters
-      </component>
+      </a>
+      <button
+        v-else
+        @click="window.history.back()"
+        type="button"
+        class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back
+      </button>
     </div>
 
     <!-- Hero section -->
