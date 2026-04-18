@@ -24,9 +24,14 @@ class SetupDemoElection extends Command
         $orgIdentifier = $this->option('org');
 
         // STEP 2: Find the organisation (by slug OR ID for flexibility)
-        $organisation = Organisation::where('slug', $orgIdentifier)
-            ->orWhere('id', $orgIdentifier)
-            ->first();
+        // PostgreSQL requires strict type matching: only query ID if it's a valid UUID
+        $organisation = Organisation::where('slug', $orgIdentifier);
+
+        if (Str::isUuid($orgIdentifier)) {
+            $organisation = $organisation->orWhere('id', $orgIdentifier);
+        }
+
+        $organisation = $organisation->first();
 
         if (!$organisation) {
             $this->error("❌ Organisation with slug/ID '{$orgIdentifier}' not found!");
