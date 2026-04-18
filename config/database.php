@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -96,18 +96,16 @@ return [
         ],
 
         'testing' => [
-            'driver' => 'mysql',
+            'driver' => 'pgsql',
             'host' => '127.0.0.1',
-            'port' => 3306,
+            'port' => 5432,
             'database' => 'nrna_test',
             'username' => 'nrna',
             'password' => 'Nrna%2025%Germany',
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
         ],
 
     ],

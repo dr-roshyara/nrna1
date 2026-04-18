@@ -121,7 +121,7 @@ class DemoResultController extends Controller
                     ->where(function($query) use ($post) {
                         for ($i = 1; $i <= 60; $i++) {
                             $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
-                            $query->orWhereRaw("JSON_EXTRACT(`$field`, '$.post_id') = ?", [$post->post_id]);
+                            $query->orWhereRaw("\"$field\"->>'post_id' = ?", [$post->post_id]);
                         }
                     })
                     ->whereNull('organisation_id')
@@ -130,7 +130,7 @@ class DemoResultController extends Controller
                 $votes = DemoVote::where(function($query) use ($post) {
                     for ($i = 1; $i <= 60; $i++) {
                         $field = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
-                        $query->orWhereRaw("JSON_EXTRACT(`$field`, '$.post_id') = ?", [$post->post_id]);
+                        $query->orWhereRaw("\"$field\"->>'post_id' = ?", [$post->post_id]);
                     }
                 })->get(); // BelongsToTenant auto-scopes
             }

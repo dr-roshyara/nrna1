@@ -7,39 +7,51 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // SQLite doesn't support MODIFY COLUMN
         if (DB::getDriverName() === 'sqlite') {
             return;
         }
 
-        // MySQL requires ALTER COLUMN to redefine the full ENUM list
-        DB::statement("
-            ALTER TABLE contributions
-            MODIFY COLUMN proof_type
-            ENUM('self_report','photo','document','third_party','community_attestation','institutional')
-            NOT NULL DEFAULT 'self_report'
-        ");
+        if (DB::getDriverName() === 'pgsql') {
+            DB::statement("ALTER TABLE contributions ADD COLUMN proof_type_new VARCHAR(50)");
+            DB::statement("UPDATE contributions SET proof_type_new = proof_type::text");
+            DB::statement("ALTER TABLE contributions DROP COLUMN proof_type");
+            DB::statement("ALTER TABLE contributions RENAME COLUMN proof_type_new TO proof_type");
+            DB::statement("ALTER TABLE contributions ADD CONSTRAINT contributions_proof_type_check CHECK (proof_type IN ('self_report','photo','document','third_party','community_attestation','institutional'))");
+        } else {
+            DB::statement("
+                ALTER TABLE contributions
+                MODIFY COLUMN proof_type
+                ENUM('self_report','photo','document','third_party','community_attestation','institutional')
+                NOT NULL DEFAULT 'self_report'
+            ");
+        }
     }
 
     public function down(): void
     {
-        // SQLite doesn't support MODIFY COLUMN
         if (DB::getDriverName() === 'sqlite') {
             return;
         }
 
-        // Remove community_attestation — any existing rows with that value
-        // must be migrated first (safe for fresh installs, requires data review in production)
         DB::statement("
             UPDATE contributions SET proof_type = 'third_party'
             WHERE proof_type = 'community_attestation'
         ");
 
-        DB::statement("
-            ALTER TABLE contributions
-            MODIFY COLUMN proof_type
-            ENUM('self_report','photo','document','third_party','institutional')
-            NOT NULL DEFAULT 'self_report'
-        ");
+        if (DB::getDriverName() === 'pgsql') {
+            DB::statement("ALTER TABLE contributions DROP CONSTRAINT contributions_proof_type_check");
+            DB::statement("ALTER TABLE contributions ADD COLUMN proof_type_new VARCHAR(50)");
+            DB::statement("UPDATE contributions SET proof_type_new = proof_type");
+            DB::statement("ALTER TABLE contributions DROP COLUMN proof_type");
+            DB::statement("ALTER TABLE contributions RENAME COLUMN proof_type_new TO proof_type");
+            DB::statement("ALTER TABLE contributions ADD CONSTRAINT contributions_proof_type_check CHECK (proof_type IN ('self_report','photo','document','third_party','institutional'))");
+        } else {
+            DB::statement("
+                ALTER TABLE contributions
+                MODIFY COLUMN proof_type
+                ENUM('self_report','photo','document','third_party','institutional')
+                NOT NULL DEFAULT 'self_report'
+            ");
+        }
     }
 };

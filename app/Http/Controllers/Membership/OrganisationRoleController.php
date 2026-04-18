@@ -24,7 +24,7 @@ class OrganisationRoleController extends Controller
 
         $roles = UserOrganisationRole::where('organisation_id', $organisation->id)
             ->with('user')
-            ->orderByRaw("FIELD(role, 'owner', 'admin', 'commission', 'voter', 'member')")
+            ->orderByRaw("CASE WHEN role = 'owner' THEN 1 WHEN role = 'admin' THEN 2 WHEN role = 'commission' THEN 3 WHEN role = 'voter' THEN 4 WHEN role = 'member' THEN 5 ELSE 6 END")
             ->get();
 
         // User IDs that already have a Member record

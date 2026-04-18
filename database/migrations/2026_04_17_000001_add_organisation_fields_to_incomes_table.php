@@ -35,7 +35,6 @@ return new class extends Migration
                     SELECT organisation_id
                     FROM users
                     WHERE users.id = incomes.user_id
-                    LIMIT 1
                 )
                 WHERE organisation_id IS NULL
             ');
