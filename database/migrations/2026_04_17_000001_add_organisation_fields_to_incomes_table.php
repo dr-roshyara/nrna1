@@ -28,16 +28,22 @@ return new class extends Migration
             });
 
             // Step 2: BACKFILL organisation_id from the user who submitted the income
-            // This is critical for existing records to maintain data integrity
-            DB::statement('
-                UPDATE incomes
-                SET organisation_id = (
-                    SELECT organisation_id
-                    FROM users
-                    WHERE users.id = incomes.user_id
-                )
-                WHERE organisation_id IS NULL
-            ');
+            // NOTE: incomes.user_id is bigint (legacy), users.id is uuid (modern)
+            // PostgreSQL has no legacy data, so backfill is skipped for fresh start
+            // MySQL backfill links existing records to organisations
+            if (DB::getDriverName() === 'mysql') {
+                DB::statement('
+                    UPDATE incomes
+                    SET organisation_id = (
+                        SELECT organisation_id
+                        FROM users
+                        WHERE users.id = incomes.user_id
+                    )
+                    WHERE organisation_id IS NULL
+                ');
+            }
+            // PostgreSQL: organisation_id remains NULL for any unlinked records
+            // This is acceptable as PostgreSQL is a fresh database start
 
             // Step 3: Make organisation_id non-nullable after backfill
             Schema::table('incomes', function (Blueprint $table) {
