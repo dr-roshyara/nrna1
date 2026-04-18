@@ -282,7 +282,7 @@ class NewsletterService
         $voters = ElectionMembership::withoutGlobalScopes()
             ->where('election_id', $electionId)
             ->whereIn('role', ['voter', 'candidate', 'observer'])
-            ->where('status', 'active')
+            ->where('election_memberships.status', 'active')
             ->join('users', 'election_memberships.user_id', '=', 'users.id')
             ->leftJoin('members', 'users.id', '=', 'members.user_id')
             ->where('users.organisation_id', $organisation->id)
@@ -292,7 +292,7 @@ class NewsletterService
 
         $committee = ElectionOfficer::withoutGlobalScopes()
             ->where('election_id', $electionId)
-            ->where('status', 'active')
+            ->where('election_officers.status', 'active')
             ->join('users', 'election_officers.user_id', '=', 'users.id')
             ->leftJoin('members', 'users.id', '=', 'members.user_id')
             ->where('users.organisation_id', $organisation->id)
@@ -390,14 +390,14 @@ class NewsletterService
             NewsletterAuditLog::create([
                 'organisation_newsletter_id' => $newsletter->id,
                 'organisation_id'            => $org->id,
-                'actor_user_id'              => $actor->id,
+                'actor_user_id'              => auth()->id(),
                 'action'                     => 'dispatched',
                 'metadata'                   => [
                     'recipient_count' => $recipientRows->count(),
                     'audience_type' => $newsletter->audience_type,
                     'audience_meta' => $newsletter->audience_meta,
                 ],
-                'ip_address'                 => $request->ip(),
+                'ip_address'                 => request()->ip(),
             ]);
 
             DispatchNewsletterBatchJob::dispatch($newsletter->id)->onQueue('emails-normal');
