@@ -192,7 +192,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-amber-50 via-white to-amber-50">
+  <div class="min-h-screen bg-slate-50">
     <!-- Skip navigation -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-amber-900 focus:text-white focus:rounded">
       {{ t?.skip_nav }}
