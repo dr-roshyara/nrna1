@@ -407,35 +407,42 @@ class ElectionManagementController extends Controller
             // 🔥 DIGITAL OCEAN FIX 2: Force session save for database driver
             session()->save();
 
-            // 🔥 DIGITAL OCEAN FIX 3: Verify slug exists with retry for replication lag
+            // ✅ Database-specific slug verification
+            $driver = \DB::getDriverName();
             $verified = false;
-            $attempts = 0;
-            $maxAttempts = 3;
 
-            while (!$verified && $attempts < $maxAttempts) {
-                if ($attempts > 0) {
-                    Log::info('Retrying slug verification', [
-                        'attempt' => $attempts + 1,
-                        'slug_id' => $slug->id
-                    ]);
-                    sleep(1); // Wait 1 second between retries
-                    \DB::reconnect('mysql'); // Fresh connection
+            if ($driver === 'mysql') {
+                // MySQL with Digital Ocean replicas may have read lag - retry verification
+                $maxAttempts = 3;
+                $attempts = 0;
+
+                while (!$verified && $attempts < $maxAttempts) {
+                    if ($attempts > 0) {
+                        Log::debug('Retrying slug verification on MySQL', [
+                            'attempt' => $attempts + 1,
+                            'slug_id' => $slug->id
+                        ]);
+                        sleep(1);
+                        \DB::reconnect($driver);
+                    }
+
+                    $verified = \DB::table('demo_voter_slugs')
+                        ->where('id', $slug->id)
+                        ->exists();
+
+                    $attempts++;
                 }
 
-                // Force write connection for read-after-write consistency
-                $verified = \DB::table('demo_voter_slugs')
-                    ->where('id', $slug->id)
-                    ->exists();
-
-                $attempts++;
-            }
-
-            if (!$verified) {
-                Log::error('⚠️ Slug verification failed after ' . $maxAttempts . ' attempts', [
-                    'slug_id' => $slug->id,
-                    'slug' => $slug->slug
-                ]);
-                // Continue anyway - route binding will have its own retry logic
+                if (!$verified) {
+                    Log::error('Slug verification failed after retries on MySQL', [
+                        'slug_id' => $slug->id,
+                        'attempts' => $maxAttempts
+                    ]);
+                }
+            } else {
+                // PostgreSQL has strong consistency - no verification delay needed
+                $verified = true;
+                Log::debug('Slug created on ' . ucfirst($driver) . ' (strong consistency)');
             } else {
                 Log::info('✅ Slug verified successfully', [
                     'attempts' => $attempts,
