@@ -259,7 +259,7 @@ class VoterSlugService
      * @param bool $forceNew Force creation of new slug (used for demo restart)
      * @return VoterSlug|DemoVoterSlug
      */
-    public function getOrCreateSlug(User $user, Election $election, bool $forceNew = false)
+    public function getOrCreateSlug(User $user, Election $election, bool $forceNew = false): VoterSlug|DemoVoterSlug
     {
         // 🔧 CRITICAL DEBUG: Check election type detection
         Log::info('🔍 [getOrCreateSlug] Election type check:', [
@@ -424,8 +424,8 @@ class VoterSlugService
         );
 
         // ✅ CREATE: Links to correct user and election
-        // Force write connection to ensure we're not hitting read replicas
-        $voterSlug = $model::on('mysql')->create([
+        // Use current database connection (mysql, pgsql, sqlite, etc.)
+        $voterSlug = $model::create([
             'user_id' => $user->id,                          // ✅ Bind to user
             'election_id' => $election->id,                  // ✅ Bind to election
             'organisation_id' => $election->organisation_id,
@@ -445,35 +445,34 @@ class VoterSlugService
             'expires_at' => $expiresAt->toDateTimeString(),
         ]);
 
-        // 🔥 DIGITAL OCEAN: Verify slug exists with retry logic
-        $maxRetries = 3;
-        $verified = false;
-        for ($attempt = 0; $attempt < $maxRetries; $attempt++) {
-            if ($attempt > 0) {
-                Log::debug("Retrying slug verification (attempt {$attempt})...");
-                sleep(1);  // Wait 1 second between retries
-                DB::reconnect('mysql');  // Force reconnect to write connection
+        // ✅ Database-specific consistency handling
+        $driver = DB::getDriverName();
+
+        if ($driver === 'mysql') {
+            // MySQL with Digital Ocean replicas may have read lag - retry verification
+            $maxRetries = 3;
+            $verified = false;
+            for ($attempt = 0; $attempt < $maxRetries; $attempt++) {
+                if ($attempt > 0) {
+                    Log::debug("Retrying slug verification (attempt {$attempt})...");
+                    sleep(1);
+                    DB::reconnect($driver);
+                }
+
+                $verified = $model::where('id', $voterSlug->id)->exists();
+
+                if ($verified) {
+                    Log::debug('Slug verified on MySQL', ['attempt' => $attempt + 1]);
+                    break;
+                }
             }
 
-            $verified = $model::on('mysql')
-                ->where('id', $voterSlug->id)
-                ->exists();
-
-            if ($verified) {
-                Log::info('Voter slug verified on write connection', [
-                    'attempt' => $attempt + 1,
-                    'slug_id' => $voterSlug->id,
-                ]);
-                break;
+            if (!$verified) {
+                Log::warning('Slug verification failed after MySQL retries');
             }
-        }
-
-        if (!$verified) {
-            Log::warning('Slug verification failed after retries - continuing anyway', [
-                'slug_id' => $voterSlug->id,
-                'slug' => substr($slug, 0, 10) . '...',
-                'attempts' => $maxRetries,
-            ]);
+        } else {
+            // PostgreSQL has strong consistency - no verification delay needed
+            Log::debug('Slug created on ' . ucfirst($driver) . ' (strong consistency)');
         }
 
         return $voterSlug;

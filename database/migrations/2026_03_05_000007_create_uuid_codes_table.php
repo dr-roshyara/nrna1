@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->boolean('has_voted')->default(false);
             $table->integer('voting_time_min')->nullable();
             //
-             $table->string('device_fingerprint_hash')->nullable();
+            $table->string('device_fingerprint_hash')->nullable();
             $table->json('device_metadata_anonymized')->nullable();
 
             // Add indexes for efficient device-based queries
