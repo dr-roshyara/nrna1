@@ -137,7 +137,8 @@ class NewsletterService
     private function queryAllMembers(Organisation $organisation): Builder
     {
         return Member::withoutGlobalScopes()
-            ->join('users', 'members.user_id', '=', 'users.id')
+            ->join('organisation_users', 'members.organisation_user_id', '=', 'organisation_users.id')
+            ->join('users', 'organisation_users.user_id', '=', 'users.id')
             ->where('members.organisation_id', $organisation->id)
             ->where('members.status', 'active')
             ->whereNull('members.newsletter_unsubscribed_at')
@@ -148,7 +149,8 @@ class NewsletterService
     private function queryFullMembers(Organisation $organisation): Builder
     {
         return Member::withoutGlobalScopes()
-            ->join('users', 'members.user_id', '=', 'users.id')
+            ->join('organisation_users', 'members.organisation_user_id', '=', 'organisation_users.id')
+            ->join('users', 'organisation_users.user_id', '=', 'users.id')
             ->where('members.organisation_id', $organisation->id)
             ->where('members.status', 'active')
             ->whereNull('members.newsletter_unsubscribed_at')
@@ -160,7 +162,8 @@ class NewsletterService
     private function queryAssociateMembers(Organisation $organisation): Builder
     {
         return Member::withoutGlobalScopes()
-            ->join('users', 'members.user_id', '=', 'users.id')
+            ->join('organisation_users', 'members.organisation_user_id', '=', 'organisation_users.id')
+            ->join('users', 'organisation_users.user_id', '=', 'users.id')
             ->where('members.organisation_id', $organisation->id)
             ->where('members.status', 'active')
             ->whereNull('members.newsletter_unsubscribed_at')
@@ -172,7 +175,8 @@ class NewsletterService
     private function queryMembersWithOverdueFees(Organisation $organisation): Builder
     {
         return Member::withoutGlobalScopes()
-            ->join('users', 'members.user_id', '=', 'users.id')
+            ->join('organisation_users', 'members.organisation_user_id', '=', 'organisation_users.id')
+            ->join('users', 'organisation_users.user_id', '=', 'users.id')
             ->where('members.organisation_id', $organisation->id)
             ->where('members.status', 'active')
             ->whereNull('members.newsletter_unsubscribed_at')
