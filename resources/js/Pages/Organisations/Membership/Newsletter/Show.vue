@@ -101,6 +101,27 @@
         </div>
       </div>
 
+      <!-- Audience Details Card -->
+      <div class="rounded-lg bg-white border border-slate-200 shadow-sm p-6 mb-6">
+        <h3 class="text-lg font-semibold text-slate-900 mb-4">{{ t.audience }}</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div>
+            <p class="text-sm text-slate-500">{{ t.audience_type }}</p>
+            <span :class="audienceBadgeClass(newsletter.audience_type)" class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold mt-1">
+              {{ getAudienceLabel(newsletter.audience_type) }}
+            </span>
+          </div>
+          <div v-if="newsletter.audience_meta?.election_id">
+            <p class="text-sm text-slate-500">{{ t.election }}</p>
+            <p class="font-medium mt-1 text-sm">{{ getElectionName(newsletter.audience_meta.election_id) }}</p>
+          </div>
+          <div>
+            <p class="text-sm text-slate-500">{{ t.total_recipients }}</p>
+            <p class="font-medium mt-1 text-sm">{{ newsletter.total_recipients?.toLocaleString() || '—' }}</p>
+          </div>
+        </div>
+      </div>
+
       <!-- Preview count (draft only) -->
       <div v-if="newsletter.status === 'draft' && recipientCount !== null"
            class="mb-6 rounded-lg bg-purple-50 border border-purple-200 px-4 py-3 text-sm text-purple-800 flex items-center gap-2">
@@ -149,15 +170,37 @@ import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 const props = defineProps({
   organisation: { type: Object, required: true },
   newsletter:   { type: Object, required: true },
+  elections:    { type: Array, default: () => [] },
   stats:        { type: Object, default: () => ({}) },
 })
 
 const page       = usePage()
 const { locale } = useI18n()
 
+const audienceLabels = {
+  all_members: 'All Members',
+  members_full: 'Full Members',
+  members_associate: 'Associate Members',
+  members_overdue: 'Members with Overdue Fees',
+  election_voters: 'Election Voters',
+  election_not_voted: 'Voters Who Haven\'t Voted',
+  election_voted: 'Voters Who Already Voted',
+  election_candidates: 'Candidates',
+  election_observers: 'Observers',
+  election_committee: 'Election Committee',
+  election_all: 'All Election Participants',
+  org_participants_staff: 'Staff',
+  org_participants_guests: 'Guests',
+  org_admins: 'Organisation Admins',
+}
+
 const translations = {
   en: {
     newsletters: 'Newsletters',
+    audience: 'Audience',
+    audience_type: 'Type',
+    election: 'Election',
+    total_recipients: 'Total Recipients',
     attachments: 'Attachments',
     edit: 'Edit Draft',
     send: 'Send to Members', sending: 'Sending…', cancel: 'Cancel Campaign',
@@ -172,6 +215,10 @@ const translations = {
   },
   de: {
     newsletters: 'Newsletter',
+    audience: 'Zielgruppe',
+    audience_type: 'Typ',
+    election: 'Wahl',
+    total_recipients: 'Gesamtempfänger',
     attachments: 'Anhänge',
     edit: 'Entwurf bearbeiten',
     send: 'An Mitglieder senden', sending: 'Wird gesendet…', cancel: 'Kampagne abbrechen',
@@ -186,6 +233,10 @@ const translations = {
   },
   np: {
     newsletters: 'न्युजलेटर',
+    audience: 'दर्शक',
+    audience_type: 'किसिम',
+    election: 'चुनाव',
+    total_recipients: 'कुल प्राप्तकर्ता',
     attachments: 'संलग्नकहरू',
     edit: 'मस्यौदा सम्पादन गर्नुहोस्',
     send: 'सदस्यहरूलाई पठाउनुहोस्', sending: 'पठाउँदै…', cancel: 'अभियान रद्द गर्नुहोस्',
@@ -237,6 +288,35 @@ const attachmentIconBg = (mime) => {
 const formatDate = (iso) => {
   if (!iso) return '—'
   return new Date(iso).toLocaleString(undefined, { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+}
+
+const getAudienceLabel = (type) => {
+  return audienceLabels[type] || type
+}
+
+const audienceBadgeClass = (type) => {
+  const classes = {
+    all_members: 'bg-blue-100 text-blue-800',
+    members_full: 'bg-green-100 text-green-800',
+    members_associate: 'bg-purple-100 text-purple-800',
+    members_overdue: 'bg-orange-100 text-orange-800',
+    election_voters: 'bg-indigo-100 text-indigo-800',
+    election_not_voted: 'bg-yellow-100 text-yellow-800',
+    election_voted: 'bg-green-100 text-green-800',
+    election_candidates: 'bg-red-100 text-red-800',
+    election_observers: 'bg-cyan-100 text-cyan-800',
+    election_committee: 'bg-rose-100 text-rose-800',
+    election_all: 'bg-violet-100 text-violet-800',
+    org_participants_staff: 'bg-amber-100 text-amber-800',
+    org_participants_guests: 'bg-lime-100 text-lime-800',
+    org_admins: 'bg-fuchsia-100 text-fuchsia-800',
+  }
+  return classes[type] || 'bg-gray-100 text-gray-800'
+}
+
+const getElectionName = (electionId) => {
+  const election = props.elections?.find(e => e.id === electionId)
+  return election?.name || electionId
 }
 
 onMounted(async () => {

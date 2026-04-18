@@ -104,10 +104,16 @@ class OrganisationNewsletterController extends Controller
 
         $recipients = $newsletter->recipients()->paginate(20);
 
+        $elections = Election::where('organisation_id', $org->id)
+            ->where('status', '!=', 'deleted')
+            ->select('id', 'name', 'status')
+            ->get();
+
         return Inertia::render('Organisations/Membership/Newsletter/Show', [
             'organisation' => $org,
             'newsletter'   => $newsletter,
             'recipients'   => $recipients,
+            'elections'    => $elections,
         ]);
     }
 
