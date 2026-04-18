@@ -25,8 +25,18 @@
       </div>
 
       <!-- Page header -->
-      <div class="flex items-center justify-between mb-6">
-        <div>
+      <div class="flex items-start gap-4 mb-6">
+        <!-- Back button -->
+        <a :href="route('organisations.membership.dashboard', organisation.slug)"
+           class="mt-1 inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+           title="Back to Membership Hub">
+          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </a>
+
+        <!-- Title -->
+        <div class="flex-1">
           <h1 class="text-2xl font-bold text-gray-900">{{ t.title }}</h1>
           <p class="text-sm text-gray-500 mt-1">{{ organisation.name }}</p>
         </div>
