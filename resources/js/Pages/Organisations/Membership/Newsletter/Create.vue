@@ -22,13 +22,56 @@
         <h1 class="text-2xl font-bold text-slate-900">{{ t.title }}</h1>
       </div>
 
+      <!-- Audience Type Selector -->
+      <div class="mb-6 rounded-lg bg-white border border-slate-200 shadow-sm p-4">
+        <label class="block text-sm font-semibold text-slate-700 mb-3">
+          {{ t.audience_type || 'Audience Type' }} <span class="text-red-500">*</span>
+        </label>
+        <select v-model="form.audience_type" @change="onAudienceChange"
+                class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900
+                       focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+          <option v-for="type in audienceTypes" :key="type" :value="type">
+            {{ audienceLabels[type] || type }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Election Selector (for election-based audiences) -->
+      <div v-if="isElectionAudience" class="mb-6 rounded-lg bg-white border border-slate-200 shadow-sm p-4">
+        <label class="block text-sm font-semibold text-slate-700 mb-3">
+          {{ t.election || 'Election' }} <span class="text-red-500">*</span>
+        </label>
+        <select v-model="form.audience_meta.election_id"
+                class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900
+                       focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+          <option value="">-- Choose an election --</option>
+          <option v-for="election in elections" :key="election.id" :value="election.id">
+            {{ election.name }} ({{ election.status }})
+          </option>
+        </select>
+      </div>
+
       <!-- Recipient preview -->
       <div class="mb-6 rounded-lg bg-purple-50 border border-purple-200 px-4 py-3 text-sm text-purple-800 flex items-center gap-2">
         <UsersIcon class="w-4 h-4 flex-shrink-0" />
         <span v-if="recipientCount !== null">
-          {{ t.will_send_to }} <strong>{{ recipientCount }}</strong> {{ t.members }}
+          {{ t.will_send_to }} <strong>{{ recipientCount.toLocaleString() }}</strong> {{ t.members }}
         </span>
         <span v-else class="text-purple-400">{{ t.loading_count }}</span>
+      </div>
+
+      <!-- Recipient Sample Preview -->
+      <div v-if="previewSample.length > 0" class="mb-6 rounded-lg bg-white border border-slate-200 shadow-sm p-4">
+        <h3 class="text-sm font-semibold text-slate-700 mb-3">{{ t.sample_recipients || 'Sample Recipients' }}</h3>
+        <div class="space-y-2">
+          <div v-for="(recipient, i) in previewSample" :key="i" class="flex items-center justify-between bg-slate-50 px-3 py-2 rounded">
+            <div>
+              <p class="text-sm font-medium text-slate-900">{{ recipient.name }}</p>
+              <p class="text-xs text-slate-500">{{ recipient.email }}</p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-2 text-xs text-slate-500">{{ t.showing }} 5 {{ t.of }} {{ recipientCount.toLocaleString() }} {{ t.recipients }}</p>
       </div>
 
       <!-- Form -->
@@ -86,15 +129,19 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { usePage, router } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { UsersIcon } from '@heroicons/vue/24/outline'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import RichTextEditor from '@/Components/Newsletter/RichTextEditor.vue'
+import axios from 'axios'
 
 const props = defineProps({
   organisation: { type: Object, required: true },
+  elections: { type: Array, default: () => [] },
+  audienceTypes: { type: Array, default: () => ['all_members'] },
+  audienceLabels: { type: Object, default: () => {} },
 })
 
 const page       = usePage()
@@ -108,8 +155,10 @@ const translations = {
     plain_text: 'Plain Text Version', plain_text_placeholder: 'Plain text fallback for email clients that do not render HTML.',
     optional: 'optional',
     save_draft: 'Save Draft', saving: 'Saving…', cancel: 'Cancel',
-    will_send_to: 'This newsletter will be sent to', members: 'active members.',
+    audience_type: 'Audience Type', election: 'Election',
+    will_send_to: 'This newsletter will be sent to', members: 'recipients.',
     loading_count: 'Loading recipient count…',
+    sample_recipients: 'Sample Recipients', showing: 'Showing', of: 'of', recipients: 'recipients',
   },
   de: {
     title: 'Newsletter verfassen', newsletters: 'Newsletter',
@@ -118,8 +167,10 @@ const translations = {
     plain_text: 'Nur-Text-Version', plain_text_placeholder: 'Nur-Text-Fallback für E-Mail-Clients ohne HTML.',
     optional: 'optional',
     save_draft: 'Entwurf speichern', saving: 'Speichern…', cancel: 'Abbrechen',
-    will_send_to: 'Dieser Newsletter wird an', members: 'aktive Mitglieder gesendet.',
+    audience_type: 'Zielgruppe', election: 'Wahl',
+    will_send_to: 'Dieser Newsletter wird an', members: 'Empfänger versendet.',
     loading_count: 'Empfängeranzahl wird geladen…',
+    sample_recipients: 'Beispielempfänger', showing: 'Zeige', of: 'von', recipients: 'Empfänger',
   },
   np: {
     title: 'न्युजलेटर लेख्नुहोस्', newsletters: 'न्युजलेटर',
@@ -128,25 +179,85 @@ const translations = {
     plain_text: 'सादा पाठ संस्करण', plain_text_placeholder: 'HTML नदेखाउने इमेल क्लाइन्टका लागि।',
     optional: 'वैकल्पिक',
     save_draft: 'मस्यौदा सुरक्षित गर्नुहोस्', saving: 'सुरक्षित गर्दै…', cancel: 'रद्द गर्नुहोस्',
-    will_send_to: 'यो न्युजलेटर', members: 'सक्रिय सदस्यहरूलाई पठाइनेछ।',
+    audience_type: 'दर्शक', election: 'चुनाव',
+    will_send_to: 'यो न्युजलेटर', members: 'प्राप्तकर्तालाई पठाइनेछ।',
     loading_count: 'प्राप्तकर्ता गणना लोड हुँदैछ…',
+    sample_recipients: 'नमुना प्राप्तकर्ता', showing: 'देखाइँदै', of: 'को', recipients: 'प्राप्तकर्ता',
   },
 }
 
 const t = computed(() => translations[locale.value] ?? translations.en)
 
-const form = ref({ subject: '', html_content: '', plain_text: '' })
+const form = ref({
+  subject: '',
+  html_content: '',
+  plain_text: '',
+  audience_type: 'all_members',
+  audience_meta: { election_id: null },
+})
 const errors = ref({})
 const submitting = ref(false)
 const recipientCount = ref(null)
+const previewSample = ref([])
+const loadingPreview = ref(false)
 
-onMounted(async () => {
+const isElectionAudience = computed(() => {
+  const electionTypes = [
+    'election_voters',
+    'election_not_voted',
+    'election_voted',
+    'election_candidates',
+    'election_observers',
+    'election_committee',
+    'election_all',
+  ]
+  return electionTypes.includes(form.value.audience_type)
+})
+
+const loadPreview = async () => {
+  if (!form.value.audience_type) return
+
+  loadingPreview.value = true
   try {
-    // We don't have a newsletter ID yet on create — fetch via a temp preview
-    // The controller's previewRecipients needs a newsletter ID, so we skip this on create
-    // and show a general count instead by calling a lightweight endpoint if available.
-    // For now, leave as null (shows "Loading…" then nothing — acceptable for MVP).
-  } catch {}
+    const response = await axios.post(
+      route('organisations.membership.newsletters.previewCount', props.organisation.slug),
+      {
+        audience_type: form.value.audience_type,
+        audience_meta: form.value.audience_meta,
+      }
+    )
+    recipientCount.value = response.data.count
+    previewSample.value = response.data.sample || []
+  } catch (error) {
+    console.error('Preview failed:', error)
+    recipientCount.value = 0
+    previewSample.value = []
+  } finally {
+    loadingPreview.value = false
+  }
+}
+
+const onAudienceChange = () => {
+  // Reset election selection when audience type changes
+  if (!isElectionAudience.value) {
+    form.value.audience_meta.election_id = null
+  }
+  loadPreview()
+}
+
+// Watch for election changes
+watch(
+  () => form.value.audience_meta.election_id,
+  () => {
+    if (isElectionAudience.value && form.value.audience_meta.election_id) {
+      loadPreview()
+    }
+  }
+)
+
+onMounted(() => {
+  // Load initial preview count
+  loadPreview()
 })
 
 const submit = () => {
