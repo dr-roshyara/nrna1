@@ -10,13 +10,41 @@ use App\Models\NewsletterRecipient;
 use App\Models\Organisation;
 use App\Models\OrganisationNewsletter;
 use App\Models\User;
+use App\Models\Election;
+use App\Models\ElectionMembership;
+use App\Models\ElectionOfficer;
+use App\Models\OrganisationParticipant;
+use App\Models\UserOrganisationRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 
 class NewsletterService
 {
     private const ALLOWED_TAGS = '<p><br><strong><em><ul><ol><li><a><h1><h2><h3><img>';
+
+    public const AUDIENCE_TYPES = [
+        'all_members',
+        'members_full',
+        'members_associate',
+        'members_overdue',
+        'election_voters',
+        'election_not_voted',
+        'election_voted',
+        'election_candidates',
+        'election_observers',
+        'election_committee',
+        'election_all',
+        'org_participants_staff',
+        'org_participants_guests',
+        'org_admins',
+    ];
+
+    private const CACHE_TTL = 300;
+    private const BATCH_SIZE = 500;
 
     public function sanitiseHtml(string $html): string
     {
@@ -38,6 +66,8 @@ class NewsletterService
             'html_content'    => $html,
             'plain_text'      => $data['plain_text'] ?? null,
             'status'          => 'draft',
+            'audience_type'   => $data['audience_type'] ?? 'all_members',
+            'audience_meta'   => $data['audience_meta'] ?? null,
         ]);
 
         NewsletterAuditLog::create([
@@ -54,12 +84,260 @@ class NewsletterService
 
     public function previewRecipientCount(OrganisationNewsletter $newsletter): int
     {
+        $org = $newsletter->organisation;
+        $audience = $this->resolveAudience(
+            $org,
+            $newsletter->audience_type,
+            $newsletter->audience_meta ?? []
+        );
+        return $audience->count();
+    }
+
+    public function resolveAudience(
+        Organisation $organisation,
+        string $type,
+        array $meta = [],
+        bool $forceRefresh = false
+    ): Collection {
+        $cacheKey = "audience:{$organisation->id}:{$type}:" . md5(json_encode($meta));
+
+        if ($forceRefresh) {
+            Cache::forget($cacheKey);
+        }
+
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($organisation, $type, $meta) {
+            return $this->buildAudienceQuery($organisation, $type, $meta)->get();
+        });
+    }
+
+    public function buildAudienceQuery(
+        Organisation $organisation,
+        string $type,
+        array $meta = []
+    ): Builder {
+        return match ($type) {
+            'all_members' => $this->queryAllMembers($organisation),
+            'members_full' => $this->queryFullMembers($organisation),
+            'members_associate' => $this->queryAssociateMembers($organisation),
+            'members_overdue' => $this->queryMembersWithOverdueFees($organisation),
+            'election_voters' => $this->queryElectionVoters($organisation, $meta),
+            'election_not_voted' => $this->queryElectionNotVoted($organisation, $meta),
+            'election_voted' => $this->queryElectionVoted($organisation, $meta),
+            'election_candidates' => $this->queryElectionCandidates($organisation, $meta),
+            'election_observers' => $this->queryElectionObservers($organisation, $meta),
+            'election_committee' => $this->queryElectionCommittee($organisation, $meta),
+            'election_all' => $this->queryElectionAll($organisation, $meta),
+            'org_participants_staff' => $this->queryOrgParticipantsStaff($organisation),
+            'org_participants_guests' => $this->queryOrgParticipantsGuests($organisation),
+            'org_admins' => $this->queryOrgAdmins($organisation),
+            default => $this->queryAllMembers($organisation),
+        };
+    }
+
+    private function queryAllMembers(Organisation $organisation): Builder
+    {
         return Member::withoutGlobalScopes()
-            ->where('organisation_id', $newsletter->organisation_id)
+            ->where('organisation_id', $organisation->id)
             ->where('status', 'active')
             ->whereNull('newsletter_unsubscribed_at')
             ->whereNull('newsletter_bounced_at')
-            ->count();
+            ->with('organisationUser.user')
+            ->selectRaw('DISTINCT email, name, id as member_id, NULL as user_id, ? as consent_source', ['member_agreement']);
+    }
+
+    private function queryFullMembers(Organisation $organisation): Builder
+    {
+        return Member::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('status', 'active')
+            ->whereNull('newsletter_unsubscribed_at')
+            ->whereNull('newsletter_bounced_at')
+            ->whereHas('membershipType', fn($q) => $q->where('grants_voting_rights', true))
+            ->with('organisationUser.user')
+            ->selectRaw('DISTINCT email, name, id as member_id, NULL as user_id, ? as consent_source', ['member_agreement']);
+    }
+
+    private function queryAssociateMembers(Organisation $organisation): Builder
+    {
+        return Member::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('status', 'active')
+            ->whereNull('newsletter_unsubscribed_at')
+            ->whereNull('newsletter_bounced_at')
+            ->whereHas('membershipType', fn($q) => $q->where('grants_voting_rights', false))
+            ->with('organisationUser.user')
+            ->selectRaw('DISTINCT email, name, id as member_id, NULL as user_id, ? as consent_source', ['member_agreement']);
+    }
+
+    private function queryMembersWithOverdueFees(Organisation $organisation): Builder
+    {
+        return Member::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('status', 'active')
+            ->whereNull('newsletter_unsubscribed_at')
+            ->whereNull('newsletter_bounced_at')
+            ->whereIn('fees_status', ['unpaid', 'partial'])
+            ->with('organisationUser.user')
+            ->selectRaw('DISTINCT email, name, id as member_id, NULL as user_id, ? as consent_source', ['member_agreement']);
+    }
+
+    private function queryElectionVoters(Organisation $organisation, array $meta): Builder
+    {
+        $electionId = $meta['election_id'] ?? null;
+
+        return ElectionMembership::withoutGlobalScopes()
+            ->where('election_id', $electionId)
+            ->where('role', 'voter')
+            ->where('status', 'active')
+            ->join('users', 'election_memberships.user_id', '=', 'users.id')
+            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->where('users.organisation_id', $organisation->id)
+            ->whereNull('users.newsletter_unsubscribed_at')
+            ->whereNull('users.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
+    }
+
+    private function queryElectionNotVoted(Organisation $organisation, array $meta): Builder
+    {
+        $electionId = $meta['election_id'] ?? null;
+
+        return ElectionMembership::withoutGlobalScopes()
+            ->where('election_id', $electionId)
+            ->where('role', 'voter')
+            ->where('has_voted', false)
+            ->where('status', 'active')
+            ->join('users', 'election_memberships.user_id', '=', 'users.id')
+            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->where('users.organisation_id', $organisation->id)
+            ->whereNull('users.newsletter_unsubscribed_at')
+            ->whereNull('users.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
+    }
+
+    private function queryElectionVoted(Organisation $organisation, array $meta): Builder
+    {
+        $electionId = $meta['election_id'] ?? null;
+
+        return ElectionMembership::withoutGlobalScopes()
+            ->where('election_id', $electionId)
+            ->where('role', 'voter')
+            ->where('has_voted', true)
+            ->join('users', 'election_memberships.user_id', '=', 'users.id')
+            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->where('users.organisation_id', $organisation->id)
+            ->whereNull('users.newsletter_unsubscribed_at')
+            ->whereNull('users.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
+    }
+
+    private function queryElectionCandidates(Organisation $organisation, array $meta): Builder
+    {
+        $electionId = $meta['election_id'] ?? null;
+
+        return ElectionMembership::withoutGlobalScopes()
+            ->where('election_id', $electionId)
+            ->where('role', 'candidate')
+            ->join('users', 'election_memberships.user_id', '=', 'users.id')
+            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->where('users.organisation_id', $organisation->id)
+            ->whereNull('users.newsletter_unsubscribed_at')
+            ->whereNull('users.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
+    }
+
+    private function queryElectionObservers(Organisation $organisation, array $meta): Builder
+    {
+        $electionId = $meta['election_id'] ?? null;
+
+        return ElectionMembership::withoutGlobalScopes()
+            ->where('election_id', $electionId)
+            ->where('role', 'observer')
+            ->join('users', 'election_memberships.user_id', '=', 'users.id')
+            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->where('users.organisation_id', $organisation->id)
+            ->whereNull('users.newsletter_unsubscribed_at')
+            ->whereNull('users.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
+    }
+
+    private function queryElectionCommittee(Organisation $organisation, array $meta): Builder
+    {
+        $electionId = $meta['election_id'] ?? null;
+
+        return ElectionOfficer::withoutGlobalScopes()
+            ->where('election_id', $electionId)
+            ->where('status', 'active')
+            ->join('users', 'election_officers.user_id', '=', 'users.id')
+            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->where('users.organisation_id', $organisation->id)
+            ->whereNull('users.newsletter_unsubscribed_at')
+            ->whereNull('users.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
+    }
+
+    private function queryElectionAll(Organisation $organisation, array $meta): Builder
+    {
+        $electionId = $meta['election_id'] ?? null;
+
+        $voters = ElectionMembership::withoutGlobalScopes()
+            ->where('election_id', $electionId)
+            ->whereIn('role', ['voter', 'candidate', 'observer'])
+            ->where('status', 'active')
+            ->join('users', 'election_memberships.user_id', '=', 'users.id')
+            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->where('users.organisation_id', $organisation->id)
+            ->whereNull('users.newsletter_unsubscribed_at')
+            ->whereNull('users.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
+
+        $committee = ElectionOfficer::withoutGlobalScopes()
+            ->where('election_id', $electionId)
+            ->where('status', 'active')
+            ->join('users', 'election_officers.user_id', '=', 'users.id')
+            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->where('users.organisation_id', $organisation->id)
+            ->whereNull('users.newsletter_unsubscribed_at')
+            ->whereNull('users.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
+
+        return $voters->union($committee);
+    }
+
+    private function queryOrgParticipantsStaff(Organisation $organisation): Builder
+    {
+        return OrganisationParticipant::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('participant_type', 'staff')
+            ->join('users', 'organisation_participants.user_id', '=', 'users.id')
+            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->whereNull('users.newsletter_unsubscribed_at')
+            ->whereNull('users.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
+    }
+
+    private function queryOrgParticipantsGuests(Organisation $organisation): Builder
+    {
+        return OrganisationParticipant::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('participant_type', 'guest')
+            ->join('users', 'organisation_participants.user_id', '=', 'users.id')
+            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->whereNull('users.newsletter_unsubscribed_at')
+            ->whereNull('users.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
+    }
+
+    private function queryOrgAdmins(Organisation $organisation): Builder
+    {
+        return UserOrganisationRole::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->whereIn('role', ['admin', 'owner', 'commission'])
+            ->join('users', 'user_organisation_roles.user_id', '=', 'users.id')
+            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->where('users.organisation_id', $organisation->id)
+            ->whereNull('users.newsletter_unsubscribed_at')
+            ->whereNull('users.newsletter_bounced_at')
+            ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['member_agreement']);
     }
 
     public function dispatch(
@@ -75,39 +353,33 @@ class NewsletterService
         }
 
         DB::transaction(function () use ($newsletter, $org, $actor, $request) {
-            // Assign unsubscribe tokens to members that don't have one
-            Member::withoutGlobalScopes()
-                ->where('organisation_id', $org->id)
-                ->whereNull('newsletter_unsubscribe_token')
-                ->each(function (Member $member) {
-                    $member->update(['newsletter_unsubscribe_token' => Str::random(64)]);
-                });
+            // Always bypass cache on actual send - must use fresh data
+            $audience = $this->resolveAudience(
+                $org,
+                $newsletter->audience_type,
+                $newsletter->audience_meta ?? [],
+                forceRefresh: true
+            );
 
-            // Build recipient list
-            $members = Member::withoutGlobalScopes()
-                ->where('organisation_id', $org->id)
-                ->where('status', 'active')
-                ->whereNull('newsletter_unsubscribed_at')
-                ->whereNull('newsletter_bounced_at')
-                ->with('organisationUser.user')
-                ->get();
-
-            $recipientRows = $members->map(function (Member $member) use ($newsletter) {
-                $user = $member->organisationUser->user ?? null;
+            $recipientRows = $audience->map(function ($recipient) use ($newsletter) {
                 return [
+                    'id'                         => Str::uuid(),
                     'organisation_newsletter_id' => $newsletter->id,
-                    'member_id'                  => $member->id,
-                    'email'                      => $user?->email ?? '',
-                    'name'                       => $user?->name ?? null,
+                    'member_id'                  => $recipient->member_id,
+                    'user_id'                    => $recipient->user_id,
+                    'email'                      => $recipient->email,
+                    'name'                       => $recipient->name,
                     'status'                     => 'pending',
-                    'idempotency_key'            => hash('sha256', $newsletter->id . ':' . $member->id),
+                    'consent_source'             => $recipient->consent_source ?? 'member_agreement',
+                    'consent_given_at'           => now(),
+                    'idempotency_key'            => hash('sha256', $newsletter->id . ':' . ($recipient->member_id ?? $recipient->user_id)),
                     'created_at'                 => now(),
                     'updated_at'                 => now(),
                 ];
-            })->filter(fn($r) => $r['email'] !== '')->values();
+            });
 
-            foreach ($recipientRows->chunk(500) as $chunk) {
-                NewsletterRecipient::insert($chunk->toArray());
+            foreach ($recipientRows->chunk(self::BATCH_SIZE) as $chunk) {
+                retry(2, fn() => NewsletterRecipient::insert($chunk->toArray()), 100);
             }
 
             $newsletter->update([
@@ -122,7 +394,11 @@ class NewsletterService
                 'organisation_id'            => $org->id,
                 'actor_user_id'              => $actor->id,
                 'action'                     => 'dispatched',
-                'metadata'                   => ['recipient_count' => $recipientRows->count()],
+                'metadata'                   => [
+                    'recipient_count' => $recipientRows->count(),
+                    'audience_type' => $newsletter->audience_type,
+                    'audience_meta' => $newsletter->audience_meta,
+                ],
                 'ip_address'                 => $request->ip(),
             ]);
 

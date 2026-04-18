@@ -1,6 +1,6 @@
 <template>
   <PublicDigitLayout>
-    <div class="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div class="min-h-screen bg-blue-50">
 
       <!-- ── Sticky Hero Header ─────────────────────────────────────────── -->
       <div class="bg-white/95 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-10">
@@ -82,9 +82,12 @@
         </div>
 
         <!-- Quick Actions -->
-        <div v-if="quickActions.length" class="mt-8">
-          <h2 class="text-base font-semibold text-slate-700 mb-3">{{ t.quick_actions }}</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div v-if="quickActions.length" class="mt-10">
+          <div class="mb-5">
+            <h2 class="text-lg font-bold text-slate-900">{{ t.quick_actions }}</h2>
+            <p class="text-sm text-slate-500 mt-1">{{ t.quick_actions_desc }}</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5">
             <QuickActionCard
               v-for="action in quickActions"
               :key="action.key"
@@ -377,6 +380,7 @@ const translations = {
   en: {
     title: 'Membership Dashboard',
     quick_actions: 'Quick Actions',
+    quick_actions_desc: 'Common tasks and shortcuts for managing membership',
     your_membership: 'Your Membership',
     days_left: 'left',
     // Stat card labels
@@ -448,6 +452,7 @@ const translations = {
   de: {
     title: 'Mitgliedschafts-Dashboard',
     quick_actions: 'Schnellaktionen',
+    quick_actions_desc: 'Häufige Aufgaben und Verknüpfungen für die Mitgliedschaftsverwaltung',
     your_membership: 'Ihre Mitgliedschaft',
     days_left: 'verbleibend',
     stat_total_members: 'Mitglieder gesamt',
@@ -510,6 +515,7 @@ const translations = {
   np: {
     title: 'सदस्यता ड्यासबोर्ड',
     quick_actions: 'द्रुत कार्यहरू',
+    quick_actions_desc: 'सदस्यता प्रबन्धनका लागि सामान्य कार्य र शर्टकट',
     your_membership: 'तपाईंको सदस्यता',
     days_left: 'बाँकी',
     stat_total_members: 'कुल सदस्यहरू',

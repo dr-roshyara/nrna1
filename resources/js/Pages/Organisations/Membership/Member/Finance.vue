@@ -1,5 +1,46 @@
 <template>
   <PublicDigitLayout :organisation="organisation">
+    <!-- Header -->
+    <div class="bg-white border-b border-slate-200">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-slate-400 mb-5">
+          <a :href="route('organisations.show', organisation.slug)" class="hover:text-purple-600 transition-colors">
+            {{ organisation.name }}
+          </a>
+          <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+          <a :href="route('organisations.membership.dashboard', organisation.slug)" class="hover:text-purple-600 transition-colors">
+            {{ t('breadcrumb_membership') }}
+          </a>
+          <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+          <span class="text-slate-700 font-medium">{{ t('page_title') }}</span>
+        </nav>
+
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-13 h-13 rounded-2xl bg-green-600 flex items-center justify-center shadow-sm p-3">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-2xl font-bold text-slate-900 leading-tight">{{ t('page_title') }}</h1>
+            <p class="text-slate-500 text-sm mt-1">
+              {{ member.organisationUser?.user?.name || 'Member' }}
+              <span class="text-slate-300 mx-1">·</span>
+              {{ organisation.name }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
     <!-- Page Header -->
     <div class="space-y-8">
       <!-- Stats Bar - Animated Counters -->
@@ -62,25 +103,28 @@
           <div
             v-for="fee in outstandingFees"
             :key="fee.id"
-            class="flex items-center justify-between p-4 bg-gray-50 rounded border border-gray-100 hover:bg-gray-100 transition-colors"
+            class="flex items-center justify-between p-6 bg-white rounded-lg border-2 border-amber-100 hover:border-amber-200 hover:shadow-md transition-all"
           >
             <div class="flex-1">
-              <p class="text-sm text-gray-600 font-mono">
+              <p class="text-sm font-semibold text-gray-900">
                 {{ fee.period_label || '—' }}
               </p>
-              <p class="text-xs text-gray-500 mt-1">
+              <p class="text-xs text-gray-500 mt-2">
                 {{ formatDate(fee.due_date) }} •
                 <BadgeStatus :status="fee.status" size="sm" />
               </p>
             </div>
-            <div class="text-right">
-              <p class="text-lg font-mono font-bold text-gray-900">
+            <div class="text-right ml-6">
+              <p class="text-2xl font-mono font-bold text-gray-900 mb-4">
                 {{ formatCurrency(fee.amount, fee.currency) }}
               </p>
               <button
                 @click="openPaymentDrawer(fee)"
-                class="mt-2 px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded hover:bg-blue-700 transition-colors"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-all shadow-sm hover:shadow-md"
               >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
                 {{ t('record_payment') }}
               </button>
             </div>
@@ -249,6 +293,7 @@
         class="fixed inset-0 bg-black/20 z-40"
       />
     </transition>
+    </div>
   </PublicDigitLayout>
 </template>
 
@@ -281,6 +326,8 @@ const form = ref({
 const translations = {
   en: {
     page_title: 'Member Finance',
+    breadcrumb_membership: 'Membership',
+    back_to_fees: 'Back to Fees',
     stats_outstanding: 'Outstanding Total',
     stats_paid_month: 'Paid This Month',
     stats_overdue: 'Overdue Count',
@@ -303,6 +350,8 @@ const translations = {
   },
   de: {
     page_title: 'Mitglied Finanzen',
+    breadcrumb_membership: 'Mitgliedschaft',
+    back_to_fees: 'Zurück zu Gebühren',
     stats_outstanding: 'Ausstehend Gesamt',
     stats_paid_month: 'Diesen Monat bezahlt',
     stats_overdue: 'Überfällig Anzahl',
@@ -325,6 +374,8 @@ const translations = {
   },
   np: {
     page_title: 'सदस्य वित्त',
+    breadcrumb_membership: 'सदस्यता',
+    back_to_fees: 'शुल्कमा फर्कनुहोस्',
     stats_outstanding: 'बकाया कुल',
     stats_paid_month: 'यस महिना भुक्तानी',
     stats_overdue: 'अतिक्रमण गणना',
