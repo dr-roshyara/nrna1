@@ -53,6 +53,7 @@ class NewsletterAudienceSegmentationTest extends TestCase
             'audience_type' => 'all_members',
             'subject' => 'Test',
             'html_content' => 'Test',
+            'status' => 'draft',
         ]);
 
         $this->service->dispatch($newsletter);
@@ -85,6 +86,7 @@ class NewsletterAudienceSegmentationTest extends TestCase
             'audience_type' => 'members_full',
             'subject' => 'Test',
             'html_content' => 'Test',
+            'status' => 'draft',
         ]);
 
         $audience = $this->service->resolveAudience($this->organisation, 'members_full');
@@ -278,6 +280,7 @@ class NewsletterAudienceSegmentationTest extends TestCase
                 'audience_meta' => [],
                 'subject' => 'Test',
                 'html_content' => 'Test',
+            'status' => 'draft',
             ]);
             $this->fail('Expected validation exception');
         } catch (\Illuminate\Validation\ValidationException $e) {
@@ -295,6 +298,7 @@ class NewsletterAudienceSegmentationTest extends TestCase
                 'audience_type' => 'invalid_type',
                 'subject' => 'Test',
                 'html_content' => 'Test',
+            'status' => 'draft',
             ]);
             $this->fail('Expected validation exception');
         } catch (\Illuminate\Validation\ValidationException $e) {
@@ -317,6 +321,7 @@ class NewsletterAudienceSegmentationTest extends TestCase
                 'audience_type' => 'all_members',
                 'subject' => 'Test',
                 'html_content' => 'Test',
+            'status' => 'draft',
             ]);
             $this->fail('Expected 429 rate limit exception');
         } catch (\Symfony\Component\HttpKernel\Exception\HttpException $e) {
@@ -349,6 +354,7 @@ class NewsletterAudienceSegmentationTest extends TestCase
             'audience_type' => 'all_members',
             'subject' => 'Test',
             'html_content' => 'Test',
+            'status' => 'draft',
         ]);
 
         $this->service->dispatch($newsletter);
@@ -416,6 +422,7 @@ class NewsletterAudienceSegmentationTest extends TestCase
             'audience_type' => 'all_members',
             'subject' => 'Test 1',
             'html_content' => 'Test',
+            'status' => 'draft',
         ]);
 
         $newsletter2 = OrganisationNewsletter::create([
@@ -424,6 +431,7 @@ class NewsletterAudienceSegmentationTest extends TestCase
             'audience_type' => 'all_members',
             'subject' => 'Test 2',
             'html_content' => 'Test',
+            'status' => 'draft',
         ]);
 
         $this->service->dispatch($newsletter1);
@@ -444,6 +452,7 @@ class NewsletterAudienceSegmentationTest extends TestCase
             'audience_type' => 'all_members',
             'subject' => 'Test',
             'html_content' => 'Test',
+            'status' => 'draft',
         ]);
 
         $this->service->dispatch($newsletter);
@@ -471,6 +480,7 @@ class NewsletterAudienceSegmentationTest extends TestCase
             'audience_type' => 'all_members',
             'subject' => 'Test',
             'html_content' => 'Test',
+            'status' => 'draft',
         ]);
 
         $this->service->dispatch($newsletter);
