@@ -192,11 +192,7 @@ onMounted(() => {
 
 // Back button handler
 const goBack = () => {
-  if (props.organisation && props.organisation.slug) {
-    window.location.href = route('organisations.membership.newsletters.index', props.organisation.slug)
-  } else {
-    window.history.back()
-  }
+  window.history.back()
 }
 </script>
 
