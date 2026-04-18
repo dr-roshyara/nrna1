@@ -155,6 +155,7 @@ Route::prefix('organisations/{organisation:slug}')
             Route::prefix('/newsletters')->name('newsletters.')->group(function () {
                 Route::get('/',                          [OrganisationNewsletterController::class, 'index'])           ->name('index');
                 Route::get('/create',                    [OrganisationNewsletterController::class, 'create'])          ->name('create');
+                Route::post('/preview-count',            [OrganisationNewsletterController::class, 'previewCount'])    ->name('previewCount');
                 Route::post('/',                         [OrganisationNewsletterController::class, 'store'])           ->name('store');
                 Route::get('/{newsletter}',              [OrganisationNewsletterController::class, 'show'])            ->name('show');
                 Route::get('/{newsletter}/edit',         [OrganisationNewsletterController::class, 'edit'])            ->name('edit');

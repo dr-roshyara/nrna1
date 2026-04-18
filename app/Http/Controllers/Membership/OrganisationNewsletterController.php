@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Membership;
 
 use App\Exceptions\InvalidNewsletterStateException;
 use App\Http\Controllers\Controller;
+use App\Models\Election;
 use App\Models\NewsletterAttachment;
 use App\Models\Organisation;
 use App\Models\OrganisationNewsletter;
@@ -41,8 +42,33 @@ class OrganisationNewsletterController extends Controller
         $org = Organisation::where('slug', $slug)->firstOrFail();
         $this->authorizeAdmin($org, $request->user());
 
+        $elections = Election::where('organisation_id', $org->id)
+            ->where('status', '!=', 'deleted')
+            ->select('id', 'name', 'status')
+            ->get();
+
+        $audienceLabels = [
+            'all_members' => 'All Members',
+            'members_full' => 'Full Members',
+            'members_associate' => 'Associate Members',
+            'members_overdue' => 'Members with Overdue Fees',
+            'election_voters' => 'Election Voters',
+            'election_not_voted' => 'Voters Who Haven\'t Voted',
+            'election_voted' => 'Voters Who Already Voted',
+            'election_candidates' => 'Candidates',
+            'election_observers' => 'Observers',
+            'election_committee' => 'Election Committee',
+            'election_all' => 'All Election Participants',
+            'org_participants_staff' => 'Staff',
+            'org_participants_guests' => 'Guests',
+            'org_admins' => 'Organisation Admins',
+        ];
+
         return Inertia::render('Organisations/Membership/Newsletter/Create', [
             'organisation' => $org,
+            'elections' => $elections,
+            'audienceTypes' => NewsletterService::AUDIENCE_TYPES,
+            'audienceLabels' => $audienceLabels,
         ]);
     }
 
@@ -136,6 +162,47 @@ class OrganisationNewsletterController extends Controller
         return response()->json([
             'count' => $this->service->previewRecipientCount($newsletter),
         ]);
+    }
+
+    public function previewCount(Request $request, string $slug)
+    {
+        $org = Organisation::where('slug', $slug)->firstOrFail();
+        $this->authorizeAdmin($org, $request->user());
+
+        // Rate limit: 30 requests per minute per user
+        $rateLimitKey = "newsletters:preview:{$request->user()->id}";
+        $executed = RateLimiter::attempt($rateLimitKey, 30, fn() => true, 60);
+
+        if (!$executed) {
+            return response()->json(['error' => 'Too many preview requests.'], 429);
+        }
+
+        $validated = $request->validate([
+            'audience_type' => 'required|in:' . implode(',', NewsletterService::AUDIENCE_TYPES),
+            'audience_meta' => 'nullable|array',
+            'audience_meta.election_id' => 'nullable|uuid|exists:elections,id',
+        ]);
+
+        $count = $this->service->previewRecipientCount(
+            OrganisationNewsletter::make([
+                'organisation_id' => $org->id,
+                'audience_type' => $validated['audience_type'],
+                'audience_meta' => $validated['audience_meta'] ?? null,
+            ])
+        );
+
+        $audience = $this->service->resolveAudience(
+            $org,
+            $validated['audience_type'],
+            $validated['audience_meta'] ?? []
+        );
+
+        $sample = $audience->take(5)->map(fn($r) => [
+            'name' => $r->name,
+            'email' => $r->email,
+        ])->values();
+
+        return response()->json(['count' => $count, 'sample' => $sample]);
     }
 
     public function send(Request $request, string $slug, int $id)
