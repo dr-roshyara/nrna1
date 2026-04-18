@@ -163,10 +163,11 @@ Route::get('/unsubscribe/{token}', [NewsletterUnsubscribeController::class, 'uns
     ->name('newsletter.unsubscribe');
 
 // Newsletter user guide (public — no auth required, optional org context)
-Route::get('/newsletter-guide/{organisation?}', function ($slug = null) {
-    $org = $slug
-        ? \App\Models\Organisation::where('slug', $slug)->first()
-        : null;
+Route::get('/newsletter-guide/{organisationSlug?}', function ($organisationSlug = null) {
+    $org = null;
+    if ($organisationSlug) {
+        $org = \App\Models\Organisation::where('slug', $organisationSlug)->first();
+    }
 
     return Inertia::render('Guides/NewsletterGuide', [
         'organisation'       => $org ? $org->only('id', 'name', 'slug') : null,
