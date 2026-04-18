@@ -24,11 +24,20 @@
           </nav>
           <h1 class="text-2xl font-bold text-slate-900">{{ t.title }}</h1>
         </div>
-        <a :href="route('organisations.membership.newsletters.create', organisation.slug)"
-           class="inline-flex items-center gap-2 rounded-lg bg-purple-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 transition-colors">
-          <PencilSquareIcon class="w-4 h-4" />
-          {{ t.compose }}
-        </a>
+        <div class="flex items-center gap-2">
+          <a :href="route('organisations.membership.newsletters.create', organisation.slug)"
+             class="inline-flex items-center gap-2 rounded-lg bg-purple-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 transition-colors">
+            <PencilSquareIcon class="w-4 h-4" />
+            {{ t.compose }}
+          </a>
+          <a :href="route('guides.newsletter-guide', organisation.slug)"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 rounded-lg border border-amber-300 bg-amber-50 px-4 py-2.5 text-amber-700 text-sm font-medium hover:bg-amber-100 transition-colors">
+            <BookOpenIcon class="w-4 h-4" />
+            {{ t.guide_button }}
+          </a>
+        </div>
       </div>
 
       <!-- Empty state -->
@@ -121,7 +130,7 @@
 import { computed } from 'vue'
 import { usePage, router } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
-import { CheckCircleIcon, EnvelopeOpenIcon, PencilSquareIcon } from '@heroicons/vue/24/outline'
+import { BookOpenIcon, CheckCircleIcon, EnvelopeOpenIcon, PencilSquareIcon } from '@heroicons/vue/24/outline'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 
 const props = defineProps({
@@ -151,7 +160,7 @@ const audienceLabels = {
 
 const translations = {
   en: {
-    title: 'Newsletters', compose: 'Compose',
+    title: 'Newsletters', compose: 'Compose', guide_button: 'User Guide',
     empty_title: 'No newsletters yet', empty_desc: 'Compose your first newsletter to send to all active members.',
     col_subject: 'Subject', col_audience: 'Audience', col_status: 'Status', col_recipients: 'Sent / Total', col_date: 'Date',
     view: 'View', edit: 'Edit', delete: 'Delete', page: 'Page',
@@ -159,7 +168,7 @@ const translations = {
     status_completed: 'Completed', status_failed: 'Failed', status_cancelled: 'Cancelled',
   },
   de: {
-    title: 'Newsletter', compose: 'Verfassen',
+    title: 'Newsletter', compose: 'Verfassen', guide_button: 'Benutzerhandbuch',
     empty_title: 'Noch keine Newsletter', empty_desc: 'Verfassen Sie Ihren ersten Newsletter für alle aktiven Mitglieder.',
     col_subject: 'Betreff', col_audience: 'Zielgruppe', col_status: 'Status', col_recipients: 'Gesendet / Gesamt', col_date: 'Datum',
     view: 'Ansehen', edit: 'Bearbeiten', delete: 'Löschen', page: 'Seite',
@@ -167,7 +176,7 @@ const translations = {
     status_completed: 'Abgeschlossen', status_failed: 'Fehlgeschlagen', status_cancelled: 'Abgebrochen',
   },
   np: {
-    title: 'न्युजलेटर', compose: 'लेख्नुहोस्',
+    title: 'न्युजलेटर', compose: 'लेख्नुहोस्', guide_button: 'प्रयोगकर्ता गाइड',
     empty_title: 'अहिलेसम्म कुनै न्युजलेटर छैन', empty_desc: 'सबै सक्रिय सदस्यहरूलाई पठाउन पहिलो न्युजलेटर लेख्नुहोस्।',
     col_subject: 'विषय', col_audience: 'दर्शक', col_status: 'स्थिति', col_recipients: 'पठाइएको / जम्मा', col_date: 'मिति',
     view: 'हेर्नुहोस्', edit: 'सम्पादन', delete: 'मेटाउनुहोस्', page: 'पृष्ठ',

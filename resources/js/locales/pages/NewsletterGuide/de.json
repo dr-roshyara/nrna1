@@ -1,0 +1,271 @@
+{
+  "seo": {
+    "title": "Newsletter-Anleitung — Public Digit",
+    "description": "Schritt-für-Schritt-Anleitung für Organisationsadministratoren und Wahlkomitees zum Verfassen, Konfigurieren und Versenden von Newslettern an Mitglieder und Wahlbeteiligte.",
+    "keywords": "Newsletter, Organisation, E-Mail, Admin-Anleitung, Wahlkomitee, Audience-Segmentierung, Mitgliederkommunikation",
+    "robots": "index, follow"
+  },
+  "skip_nav": "Zum Hauptinhalt springen",
+  "meta": {
+    "badge_label": "Benutzerhandbuch",
+    "read_time": "8 Min. Lesedauer",
+    "audience_admin": "Organisations-Admin",
+    "audience_owner": "Organisations-Inhaber",
+    "audience_committee": "Wahlkomitee"
+  },
+  "hero": {
+    "title": "Newsletter-Anleitung",
+    "subtitle": "Erfahren Sie, wie Sie Newsletter an Ihre Organisationsmitglieder und Wahlbeteiligte verfassen, konfigurieren und versenden",
+    "description": "Diese Anleitung führt Sie durch jeden Schritt des Newsletter-Workflows – vom Entwurf Ihrer Nachricht bis zur Überwachung der Zustellung. Egal ob Sie Updates an alle Mitglieder oder gezielt an Wähler senden – Public Digit macht es einfach und sicher."
+  },
+  "search": {
+    "placeholder": "Anleitung durchsuchen... (Strg+K)",
+    "no_results": "Keine Ergebnisse gefunden. Versuchen Sie andere Suchbegriffe.",
+    "results_count": "{count} Ergebnis | {count} Ergebnisse"
+  },
+  "toc": {
+    "heading": "Inhaltsverzeichnis",
+    "items": {
+      "who_can_use": "Wer kann diese Anleitung verwenden?",
+      "lifecycle": "Newsletter-Lebenszyklus",
+      "compose": "Schritte 1–3: Newsletter verfassen",
+      "send": "Schritte 4–6: Versenden & Überwachung",
+      "election_committee": "Für Wahlkomitees",
+      "unsubscribe": "Abmeldungen & Bounce",
+      "faq": "Häufig gestellte Fragen"
+    }
+  },
+  "who_can_use": {
+    "title": "Wer kann diese Anleitung verwenden?",
+    "description": "Die Newsletter-Funktionalität steht Benutzern mit Administratorrechten zur Verfügung. Hier ist eine kurze Übersicht:",
+    "roles": [
+      {
+        "name": "Organisations-Admin",
+        "description": "Vollständige Kontrolle über alle Newsletter, alle Audience-Typen und Rate Limits. Kann an Mitglieder, Wahlbeteiligte und Mitarbeiter senden.",
+        "icon": "admin"
+      },
+      {
+        "name": "Organisations-Inhaber",
+        "description": "Gleiche Rechte wie Admin. Typischerweise der Organisationsgründer oder primäre Kontoinhaber.",
+        "icon": "owner"
+      },
+      {
+        "name": "Wahlkomitee",
+        "description": "Kann Newsletter an wahlspezifische Audiences versenden: Wähler, Kandidaten, Beobachter und andere Wahlbeteiligte. Regionale Gliederung verfügbar.",
+        "icon": "committee"
+      }
+    ]
+  },
+  "lifecycle": {
+    "title": "Newsletter-Lebenszyklus",
+    "intro": "Jeder Newsletter folgt der gleichen Reise von der Erstellung bis zum Abschluss. Das Verständnis dieser Phasen hilft Ihnen, Ihre Kampagnen zu planen und zu überwachen.",
+    "description": "Newsletter durchlaufen 6 unterschiedliche Status. Sie kontrollieren den Ablauf von Entwurf bis Versand; das System verwaltet den Rest.",
+    "stages": {
+      "draft": {
+        "label": "Entwurf",
+        "icon": "pencil",
+        "description": "Ihr Newsletter wird erstellt und lokal gespeichert. Sie können den Betreff, Text, Audience-Typ und Anhänge bearbeiten. Empfänger werden noch nicht benachrichtigt. Rate Limit: 10 Entwürfe pro Stunde pro Organisation."
+      },
+      "queued": {
+        "label": "Warteschlange",
+        "icon": "inbox",
+        "description": "Sie haben auf Versenden geklickt. Das System validiert den Entwurf, löst die Audience auf und reiht den Newsletter in die Versendwarteschlange ein. Rate Limit: Alle Newsletter respektieren 30 Vorschauanfragen pro Minute."
+      },
+      "processing": {
+        "label": "Verarbeitung",
+        "icon": "spinner",
+        "description": "Das System versendet aktiv E-Mails an Empfänger in Chargen. Ein Hintergrundauftrag liest Empfängerdatensätze und versendet E-Mails an Ihren E-Mail-Anbieter."
+      },
+      "completed": {
+        "label": "Abgeschlossen",
+        "icon": "check",
+        "description": "Alle Empfänger haben den Newsletter erhalten (oder er ist gekentert/fehlgeschlagen). Der Newsletter wird archiviert. Sie können die endgültige Empfängerliste und Engagement-Metriken anzeigen."
+      },
+      "failed": {
+        "label": "Fehlgeschlagen",
+        "icon": "x",
+        "description": "Ein Systemfehler ist beim Versand aufgetreten. Überprüfen Sie das Fehlerprotokoll und versuchen Sie erneut zu versenden, oder erstellen Sie einen neuen Entwurf."
+      },
+      "cancelled": {
+        "label": "Abgebrochen",
+        "icon": "stop",
+        "description": "Sie haben auf Abbrechen geklickt, während der Newsletter im Versand war. Es werden keine weiteren E-Mails versendet. Empfänger, die den Newsletter bereits erhalten haben, behalten ihn; andere nicht."
+      }
+    }
+  },
+  "compose": {
+    "title": "Schritte 1–3: Newsletter verfassen",
+    "intro": "Die Verfassungsphase ist, wo Sie Ihre Nachricht entwerfen und konfigurieren, wer sie erhält.",
+    "steps": [
+      {
+        "number": 1,
+        "heading": "Zu Newslettern navigieren",
+        "body": "Gehen Sie zum Dashboard Ihrer Organisation. Klicken Sie in der linken Seitenleiste auf Mitgliedschaften, dann auf Newsletter. Sie sehen eine Liste aller bisherigen Newsletter für Ihre Organisation. Klicken Sie oben rechts auf die Schaltfläche Verfassen.",
+        "tip": "Neu bei Newslettern? Klicken Sie neben Verfassen auf den Link Benutzerhandbuch, um zu dieser Anleitung zurückzukehren."
+      },
+      {
+        "number": 2,
+        "heading": "Wählen Sie Ihre Audience",
+        "body": "Die erste Entscheidung lautet: Wer wird diesen Newsletter erhalten? Public Digit bietet 14 Audience-Typen: Alle Mitglieder, Vollmitglieder, Assoziierte Mitglieder, Mitglieder mit ausstehenden Gebühren, Wähler, Nicht abgestimmte Wähler, Abgestimmte Wähler, Kandidaten, Beobachter, Wahlkomitee, Alle Wahlbeteiligten, Mitarbeiter, Gäste und Organisations-Admins. Wählen Sie die Audience, die am besten zu Ihrer Nachricht passt.",
+        "tip": "Unsicher? Verwenden Sie die Schaltfläche Vorschauanzahl (unter dem Formular), um zu sehen, wie viele Empfänger den Newsletter erhalten. Dies hilft Ihnen, Ihre Audience-Auswahl vor dem Versand zu validieren."
+      },
+      {
+        "number": 3,
+        "heading": "Schreiben Sie Ihre Nachricht",
+        "body": "Verfassen Sie Ihren Newsletter im Editor: 1. Betreffzeile (255 Zeichen max.) - Diese wird im Posteingang der Empfänger angezeigt. 2. HTML-Inhalt - Verwenden Sie den Rich-Text-Editor zur Formatierung. 3. Nur-Text (Optional) - Geben Sie eine Text-Version für Empfänger an, deren E-Mail-Clients kein HTML unterstützen. 4. Anhänge (Optional) - Sie können bis zu 3 Dateien pro Newsletter anhängen. Wenn fertig, klicken Sie auf Vorschauanzahl, um Ihre Empfängerliste zu sehen.",
+        "tip": "Vorschauanzahl verwendet Caching zur Schnelligkeit. Sie können bis zu 30 Mal pro Minute in der Vorschau sehen. Wenn sich Ihre Audience gerade geändert hat, kann die Vorschau alte Daten anzeigen; das System aktualisiert sie nach 5 Minuten."
+      }
+    ]
+  },
+  "send": {
+    "title": "Schritte 4–6: Versenden & Überwachung",
+    "intro": "Sobald Sie mit Ihrem Entwurf zufrieden sind, ist es Zeit, ihn an Ihre Audience zu versenden und die Zustellung zu überwachen.",
+    "steps": [
+      {
+        "number": 4,
+        "heading": "Überprüfen Sie Ihren Entwurf",
+        "body": "Überprüfen Sie auf der Newsletter-Detailseite noch einmal alles: Betreffzeile - Klar und prägnant? Nachrichtentext - Korrekter Inhalt und Formatierung? Audience - Ist dies die richtige Empfängergruppe? Empfängeranzahl - Sieht die Anzahl richtig aus? Anhänge - Alle Dateien vorhanden und korrekt? Wenn Sie Änderungen vornehmen müssen, klicken Sie auf Bearbeiten, um zum Komposer zurückzugehen.",
+        "tip": "Sie können nur bearbeiten, während sich der Newsletter im Entwurfsstatus befindet. Nach dem Versand ist die Nachricht zum Audit und zur Compliance gesperrt."
+      },
+      {
+        "number": 5,
+        "heading": "Klicken Sie auf Versenden",
+        "body": "Wenn Sie bereit sind, klicken Sie auf die Schaltfläche Versenden. Ein Bestätigungsdialog wird angezeigt und fragt: Sind Sie sicher? Dieser Newsletter wird an X Empfänger versendet. Das System wird: 1. Validieren, dass sich der Newsletter im Entwurfsstatus befindet, 2. Ihre Audience auflösen, 3. Empfängerdatensätze erstellen, 4. E-Mails in die Versendwarteschlange einreihen, 5. Newsletter als Versendet markieren. Mal versendet, kann der Newsletter nicht zurückgerufen werden. Empfänger beginnen sofort mit dem Empfang von E-Mails.",
+        "tip": "Rate Limiting: Sie können bis zu 10 Newsletter pro Stunde pro Organisation erstellen und versenden. Wenn Sie das Limit erreichen, warten Sie eine Stunde und versuchen Sie es erneut."
+      },
+      {
+        "number": 6,
+        "heading": "Überwachen Sie die Zustellung",
+        "body": "Nach dem Versand zeigt die Newsletter-Detailseite Echtzeit-Zustellmetriken: Gesamt-Empfänger, Ausstehend, Versendet, Gekentert und Fehlgeschlagen. Die Empfängerliste unten zeigt jede E-Mail-Adresse, den Zustellstatus und ggf. Fehlermeldungen. Engagement-Metriken (falls Ihr E-Mail-Anbieter diese unterstützt) werden ebenfalls angezeigt: Geöffnet und Angeklickt.",
+        "tip": "Die Zustellung dauert Zeit. Je nach Anzahl der Empfänger und der Warteschlange Ihres E-Mail-Anbieters kann die Zustellung Minuten bis Stunden dauern. Aktualisieren Sie die Seite, um die aktualisierten Metriken zu sehen."
+      }
+    ],
+    "warning": "Kann ich nach dem Versand abbrechen? Ja. Solange E-Mails noch Ausstehend sind (noch nicht versendet), können Sie auf Abbrechen klicken, um weitere Versendungen zu stoppen. Empfänger, die die E-Mail bereits erhalten haben, behalten sie."
+  },
+  "monitor": {
+    "title": "Überwachung & Metriken",
+    "description": "Das Newsletter-Dashboard bietet Echtzeit-Einblick in die Zustellung.",
+    "counters": {
+      "total": "Gesamt-Empfänger",
+      "sent": "Erfolgreich versendet",
+      "failed": "Fehlgeschlagene Zustellungen",
+      "pending": "Noch in Warteschlange",
+      "bounced": "Gekenterte Adressen"
+    },
+    "delivery_time": "Die Zustellung ist typischerweise innerhalb von 5–30 Minuten für bis zu 1.000 Empfänger abgeschlossen. Große Newsletter (10.000+ Empfänger) können mehrere Stunden dauern.",
+    "refresh_note": "Metriken aktualisieren sich alle 30 Sekunden. Sie können die Seite manuell aktualisieren, um sofortige Updates zu sehen."
+  },
+  "election_committee": {
+    "title": "Für Wahlkomitees",
+    "intro": "Wenn Sie eine Wahl leiten, wird die Newsletter-Funktion noch leistungsstarker. Sie können gezielte Nachrichten an Wähler versenden, bevor die Abstimmung beginnt, sie vor der Frist erinnern, Ergebnisse ankündigen und Beobachter sowie Kandidaten danken.",
+    "description": "Wahlkomitees haben Zugriff auf wahlspezifische Audience-Typen, die die Wählerkommunikation präzise und effizient machen.",
+    "use_cases": [
+      {
+        "heading": "Vorabankündigung zum Abstimmen",
+        "audience_type": "election_voters",
+        "description": "Versenden Sie 24 Stunden vor Öffnung des Abstimmungsfensters eine Nachricht an alle registrierten Wähler. Fügen Sie einen Link zur Abstimmungsseite und Anweisungen ein.",
+        "example": "Betreff: Wahl 2026 Abstimmung öffnet morgen – Ihr Code im Inneren. Audience: Wähler. Empfänger: 847 Mitglieder"
+      },
+      {
+        "heading": "Abstimmungserinnerung (Mitte der Wahl)",
+        "audience_type": "election_not_voted",
+        "description": "Am dritten Tag eines 7-tägigen Abstimmungsfensters versenden Sie eine Erinnerung nur an Wähler, die noch nicht abgestimmt haben.",
+        "example": "Betreff: Erinnerung: Abstimmung endet in 4 Tagen. Audience: Nicht abgestimmte Wähler. Empfänger: 312 Mitglieder"
+      },
+      {
+        "heading": "Letzter Aufruf (Stunden vor Ablauf)",
+        "audience_type": "election_not_voted",
+        "description": "Versenden Sie eine letzte Erinnerung an Nicht-Wähler eine Stunde vor Ablauf der Abstimmung.",
+        "example": "Betreff: LETZTER AUFRUF: Abstimmung endet in 1 Stunde. Audience: Nicht abgestimmte Wähler. Empfänger: 45 Mitglieder"
+      },
+      {
+        "heading": "Ergebnisankündigung",
+        "audience_type": "election_all",
+        "description": "Nach Ablauf der Abstimmung und Veröffentlichung der Ergebnisse kündigen Sie die Ergebnisse allen Wahlbeteiligten an.",
+        "example": "Betreff: Wahlergebnisse – Danke für die Teilnahme. Audience: Alle Wahlbeteiligten. Empfänger: 1.100+"
+      },
+      {
+        "heading": "Danke (Kandidaten & Beobachter)",
+        "audience_type": "election_candidates",
+        "description": "Versenden Sie eine personalisierte Dankesnachricht an alle Kandidaten und später an Beobachter.",
+        "example": "Betreff: Danke – Kandidateninformationen. Audience: Kandidaten. Empfänger: 23 Kandidaten"
+      },
+      {
+        "heading": "Komitee-Koordination",
+        "audience_type": "election_committee",
+        "description": "Versenden Sie interne Updates nur an das Wahlkomitee.",
+        "example": "Betreff: [Nur Komitee] Wahlabschluss – Letzte Schritte. Audience: Wahlkomitee. Empfänger: 7 Komiteemitglieder"
+      }
+    ]
+  },
+  "demo": {
+    "title": "Interaktive Demo",
+    "subtitle": "Probieren Sie es aus: Wählen Sie einen Audience-Typ, um zu sehen, wie viele Empfänger einen Newsletter erhalten würden",
+    "select_label": "Wählen Sie einen Audience-Typ:",
+    "will_send_to": "Dieser Newsletter würde an {count} Mitglieder versendet werden",
+    "audience_types": {
+      "all_members": {"label": "Alle Mitglieder", "mock_count": 847},
+      "members_full": {"label": "Vollmitglieder", "mock_count": 612},
+      "members_associate": {"label": "Assoziierte Mitglieder", "mock_count": 235},
+      "members_overdue": {"label": "Mitglieder mit ausstehenden Gebühren", "mock_count": 89},
+      "election_voters": {"label": "Wähler", "mock_count": 756},
+      "election_not_voted": {"label": "Nicht abgestimmte Wähler", "mock_count": 312},
+      "election_voted": {"label": "Abgestimmte Wähler", "mock_count": 444},
+      "election_candidates": {"label": "Kandidaten", "mock_count": 23},
+      "election_observers": {"label": "Beobachter", "mock_count": 8},
+      "election_committee": {"label": "Wahlkomitee", "mock_count": 7},
+      "election_all": {"label": "Alle Wahlbeteiligten", "mock_count": 1088},
+      "org_participants_staff": {"label": "Mitarbeiter", "mock_count": 12},
+      "org_participants_guests": {"label": "Gäste", "mock_count": 34},
+      "org_admins": {"label": "Organisations-Admins", "mock_count": 3}
+    }
+  },
+  "unsubscribe": {
+    "title": "Abmeldungen & Bounce",
+    "description": "Public Digit respektiert die Vorlieben der Mitglieder und die E-Mail-Hygiene.",
+    "automatic_note": "Automatischer Ausschluss: Wenn sich ein Mitglied von Newslettern abmeldet oder seine E-Mail korrekt, wird es automatisch aus allen zukünftigen Newslettern ausgeschlossen.",
+    "bounce_note": "Soft Bounces: Temporäre Zustellfehler. Public Digit markiert diese und kann einen erneuten Versuch unternehmen.",
+    "hard_bounce_note": "Hard Bounces: Permanente Fehler. Public Digit markiert diese als gekentert und schließt sie dauerhaft aus.",
+    "resubscribe_note": "Erneute Anmeldung: Mitglieder können sich über ihre Kontoeinstellungen erneut anmelden."
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "items": [
+      {"q": "Wie viele Newsletter kann ich pro Tag versenden?", "a": "Sie können bis zu 10 Newsletter pro Stunde pro Organisation erstellen und versenden. Das bedeutet bis zu 240 pro Tag."},
+      {"q": "Was passiert, wenn ich einen Tippfehler in der Betreffzeile mache?", "a": "Sie können den Newsletter bearbeiten, während er sich im Entwurfsstatus befindet. Nach dem Versand ist der Newsletter gesperrt."},
+      {"q": "Kann ich an eine Mischung von Audiences senden?", "a": "Nein, nicht in einem einzigen Newsletter. Jeder Newsletter zielt auf einen Audience-Typ. Das System dedupliziert Empfänger automatisch."},
+      {"q": "Wie lange dauert die Zustellung?", "a": "Die Zustellung dauert typischerweise 5–30 Minuten für bis zu 1.000 Empfänger."},
+      {"q": "Kann ich einen Newsletter nach dem Versand abbrechen?", "a": "Ja. Wenn E-Mails noch Ausstehend sind, klicken Sie auf Abbrechen, um weitere Zustellungen zu stoppen."},
+      {"q": "Gibt es Kosten für den Versand von Newslettern?", "a": "Der Newsletter-Versand ist in Ihrem Organisationsplan enthalten. Es gibt keine Pro-E-Mail-Gebühren."},
+      {"q": "Was ist der Unterschied zwischen nicht abgestimmten Wählern und allen Wählern?", "a": "Alle Wähler umfasst alle registrierten Wähler. Nicht abgestimmte Wähler umfasst nur diejenigen, die noch nicht abgestimmt haben."},
+      {"q": "Kann ich Dateien an Newsletter anhängen?", "a": "Ja. Sie können bis zu 3 Dateien pro Newsletter anhängen. Dateien müssen unter 10 MB groß sein."},
+      {"q": "Gibt es eine Möglichkeit, meinen Newsletter vor dem Versand in der Vorschau anzusehen?", "a": "Ja. Die Schaltfläche Vorschauanzahl zeigt Ihnen eine Stichprobe von 5 Empfängern."},
+      {"q": "Was passiert, wenn eine E-Mail-Adresse ungültig ist?", "a": "Ungültige Adressen werden automatisch als Gekentert markiert und von zukünftigen Newslettern ausgeschlossen."},
+      {"q": "Können sich Mitglieder von Newslettern abmelden?", "a": "Ja. Mitglieder können sich über ihre Kontoeinstellungen abmelden."},
+      {"q": "Gibt es eine Vorlagenbibliothek, die ich verwenden kann?", "a": "Derzeit schreiben Sie jeden Newsletter von Grund auf neu. Wir planen Vorlagenunterstützung für zukünftige Versionen."},
+      {"q": "Muss ich Empfänger manuell hinzufügen, oder findet das System sie automatisch?", "a": "Das System findet sie automatisch basierend auf Ihrem Audience-Typ. Keine manuelle Eingabe erforderlich."},
+      {"q": "Was ist, wenn ich einen Newsletter an eine bestimmte Teilmenge von Wählern versenden möchte?", "a": "Derzeit sind Audience-Typen festgelegt. Kontaktieren Sie Ihren Organisationsadministrator für benutzerdefinierte Filter."}
+    ]
+  },
+  "feedback": {
+    "prompt": "War diese Anleitung hilfreich?",
+    "yes": "Ja, hilfreich",
+    "no": "Verbesserung erforderlich",
+    "textarea_placeholder": "Wie können wir diese Anleitung verbessern?",
+    "submit": "Feedback abschicken",
+    "thank_you": "Vielen Dank für Ihr Feedback!"
+  },
+  "print": {
+    "button": "Drucken / Als PDF speichern"
+  },
+  "last_updated": {
+    "label": "Zuletzt aktualisiert",
+    "date": "April 2026"
+  },
+  "cta": {
+    "title": "Bereit, Ihren ersten Newsletter zu versenden?",
+    "with_org": "Zu {org} Newslettern",
+    "without_org": "Zu Newslettern",
+    "login_prompt": "Sie müssen sich anmelden, um auf den Newsletter-Komposer zuzugreifen."
+  }
+}

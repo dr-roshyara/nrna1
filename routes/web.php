@@ -162,6 +162,18 @@ Route::get('/storage/{path?}', function ($path = null) {
 Route::get('/unsubscribe/{token}', [NewsletterUnsubscribeController::class, 'unsubscribe'])
     ->name('newsletter.unsubscribe');
 
+// Newsletter user guide (public — no auth required, optional org context)
+Route::get('/newsletter-guide/{organisation?}', function ($slug = null) {
+    $org = $slug
+        ? \App\Models\Organisation::where('slug', $slug)->first()
+        : null;
+
+    return Inertia::render('Guides/NewsletterGuide', [
+        'organisation'       => $org ? $org->only('id', 'name', 'slug') : null,
+        'usesFullMembership' => $org?->uses_full_membership ?? null,
+    ]);
+})->name('guides.newsletter-guide');
+
 // SEO Routes
 // Sitemap Index (aggregates all sitemaps)
 Route::get('/sitemap.xml', [SitemapController::class, 'sitemapIndex'])->name('sitemap.index');

@@ -1,0 +1,271 @@
+{
+  "seo": {
+    "title": "Newsletter Guide — Public Digit",
+    "description": "Step-by-step guide for organisation admins and election committees on writing, configuring, and sending newsletters to members and election participants.",
+    "keywords": "newsletter, organisation, email, admin guide, election committee, audience segmentation, member communication",
+    "robots": "index, follow"
+  },
+  "skip_nav": "Skip to main content",
+  "meta": {
+    "badge_label": "User Guide",
+    "read_time": "8 min read",
+    "audience_admin": "Organisation Admin",
+    "audience_owner": "Organisation Owner",
+    "audience_committee": "Election Committee"
+  },
+  "hero": {
+    "title": "Newsletter Guide",
+    "subtitle": "Learn how to compose, configure, and send newsletters to your organisation members and election participants",
+    "description": "This guide walks you through every step of the newsletter workflow—from drafting your message to monitoring delivery. Whether you're sending updates to all members or targeted messages to election voters, Public Digit makes it simple and secure."
+  },
+  "search": {
+    "placeholder": "Search guide... (Ctrl+K)",
+    "no_results": "No results found. Try different keywords.",
+    "results_count": "{count} result | {count} results"
+  },
+  "toc": {
+    "heading": "Contents",
+    "items": {
+      "who_can_use": "Who Can Use This Guide",
+      "lifecycle": "Newsletter Lifecycle",
+      "compose": "Step 1–3: Composing Your Newsletter",
+      "send": "Step 4–6: Sending & Monitoring",
+      "election_committee": "For Election Committees",
+      "unsubscribe": "Unsubscribes & Bounces",
+      "faq": "Frequently Asked Questions"
+    }
+  },
+  "who_can_use": {
+    "title": "Who Can Use This Guide",
+    "description": "Newsletter functionality is available to users with administrative permissions. Here's a quick breakdown:",
+    "roles": [
+      {
+        "name": "Organisation Admin",
+        "description": "Full control over all newsletters, all audience types, and rate limits. Can send to members, election participants, and staff.",
+        "icon": "admin"
+      },
+      {
+        "name": "Organisation Owner",
+        "description": "Same permissions as Admin. Typically the organisation founder or primary account holder.",
+        "icon": "owner"
+      },
+      {
+        "name": "Election Committee",
+        "description": "Can send newsletters to election-specific audiences: voters, candidates, observers, and other election participants. Regional scoping available.",
+        "icon": "committee"
+      }
+    ]
+  },
+  "lifecycle": {
+    "title": "Newsletter Lifecycle",
+    "intro": "Every newsletter follows the same journey from creation to completion. Understanding these stages helps you plan and monitor your campaigns.",
+    "description": "Newsletters move through 6 distinct states. You control the flow from Draft to Send; the system manages the rest.",
+    "stages": {
+      "draft": {
+        "label": "Draft",
+        "icon": "pencil",
+        "description": "Your newsletter is created and saved locally. You can edit the subject, body, audience type, and attachments. No recipients are notified yet. Rate limited to 10 drafts per hour per organisation."
+      },
+      "queued": {
+        "label": "Queued",
+        "icon": "inbox",
+        "description": "You clicked Send. The system validates the draft, resolves the audience, and queues the newsletter for delivery. Rate limited: all newsletters respect 30 preview requests per minute."
+      },
+      "processing": {
+        "label": "Processing",
+        "icon": "spinner",
+        "description": "The system is actively sending emails to recipients in batches. A background job reads recipient records and dispatches emails to your email provider."
+      },
+      "completed": {
+        "label": "Completed",
+        "icon": "check",
+        "description": "All recipients have been sent (or bounced/failed). The newsletter is archived. You can view the final recipient list and engagement metrics."
+      },
+      "failed": {
+        "label": "Failed",
+        "icon": "x",
+        "description": "A system error occurred during sending. Check the error log and try sending again, or create a new draft."
+      },
+      "cancelled": {
+        "label": "Cancelled",
+        "icon": "stop",
+        "description": "You clicked Cancel while the newsletter was in progress. No further emails will be sent. Recipients who already received it will keep it; others did not."
+      }
+    }
+  },
+  "compose": {
+    "title": "Step 1–3: Composing Your Newsletter",
+    "intro": "The composition phase is where you design your message and configure who will receive it.",
+    "steps": [
+      {
+        "number": 1,
+        "heading": "Navigate to Newsletters",
+        "body": "Go to your organisation's Admin Dashboard. Click Membership in the left sidebar, then Newsletters. You'll see a list of all past newsletters for your organisation. Click the Compose button in the top-right corner.",
+        "tip": "New to newsletters? Click the User Guide link next to Compose to return to this guide."
+      },
+      {
+        "number": 2,
+        "heading": "Choose Your Audience",
+        "body": "The first decision is: Who will receive this newsletter? Public Digit offers 14 audience types: All Members, Full Members, Associate Members, Members with Overdue Fees, Election Voters, Voters Who Haven't Voted, Voters Who Already Voted, Candidates, Observers, Election Committee, All Election Participants, Staff, Guests, and Organisation Admins. Choose the audience that best fits your message.",
+        "tip": "Can't decide? Use the Preview Count button (below the form) to see how many recipients will receive your newsletter. This helps you validate your audience selection before sending."
+      },
+      {
+        "number": 3,
+        "heading": "Write Your Message",
+        "body": "Compose your newsletter in the editor: 1. Subject Line (255 characters max) - This appears in recipients' email inboxes. Make it clear and compelling. 2. HTML Content - Use the rich text editor to format your message. You can add headings, lists, links, and images. 3. Plain Text (Optional) - Provide a plain-text version for recipients whose email clients don't support HTML. 4. Attachments (Optional) - You can attach up to 3 files per newsletter. When ready, click Preview Count to see your recipient list.",
+        "tip": "Preview Count uses caching for speed. When you click Send, the system always uses fresh data—so don't worry about stale previews affecting your actual send."
+      }
+    ]
+  },
+  "send": {
+    "title": "Step 4–6: Sending & Monitoring",
+    "intro": "Once you're happy with your draft, it's time to send it to your audience and monitor delivery.",
+    "steps": [
+      {
+        "number": 4,
+        "heading": "Review Your Draft",
+        "body": "On the newsletter details page, review everything one more time: Subject line, Message body, Audience, Recipient count, and Attachments. If you need to make changes, click Edit to go back to the composer.",
+        "tip": "You can only edit while the newsletter is in Draft status. Once sent, the message is locked for audit and compliance reasons."
+      },
+      {
+        "number": 5,
+        "heading": "Click Send",
+        "body": "When you're ready, click the Send button. A confirmation dialog will appear asking: Are you sure? This newsletter will be sent to X recipients. The system will: 1. Validate that the newsletter is in Draft status, 2. Resolve your audience, 3. Create newsletter_recipient records for each recipient, 4. Queue the emails for delivery, 5. Mark the newsletter as Sent. Once sent, the newsletter cannot be unsent. Recipients will start receiving emails immediately.",
+        "tip": "Rate limiting: You can create and send up to 10 newsletters per hour per organisation. If you hit the limit, wait an hour and try again."
+      },
+      {
+        "number": 6,
+        "heading": "Monitor Delivery",
+        "body": "After sending, the newsletter details page shows real-time delivery metrics: Total Recipients, Pending, Sent, Bounced, and Failed. The recipient list at the bottom shows each email address, delivery status, and any error messages. Engagement metrics (if your email provider supports it) also appear: Opened and Clicked.",
+        "tip": "Delivery takes time. Depending on the number of recipients and your email provider's queue, delivery can take minutes to hours. Refresh the page to see updated metrics."
+      }
+    ],
+    "warning": "Can I cancel after sending? Yes. As long as emails are still Pending (not yet sent), you can click Cancel to stop further sends. Recipients who already received the email will keep it. This is useful if you notice a critical error right after sending."
+  },
+  "monitor": {
+    "title": "Monitoring & Metrics",
+    "description": "The newsletter dashboard provides real-time insight into delivery.",
+    "counters": {
+      "total": "Total Recipients",
+      "sent": "Successfully Sent",
+      "failed": "Failed Deliveries",
+      "pending": "Still Queued",
+      "bounced": "Bounced Addresses"
+    },
+    "delivery_time": "Delivery typically completes within 5–30 minutes for up to 1,000 recipients. Large newsletters (10,000+ recipients) may take several hours.",
+    "refresh_note": "Metrics refresh every 30 seconds. You can manually refresh the page to see immediate updates."
+  },
+  "election_committee": {
+    "title": "For Election Committees",
+    "intro": "If you're running an election, the Newsletter feature becomes even more powerful. You can send targeted messages to voters before voting opens, remind them to vote before the deadline, announce results, and thank observers and candidates.",
+    "description": "Election committees have access to election-specific audience types that make voter communication precise and efficient.",
+    "use_cases": [
+      {
+        "heading": "Pre-Voting Announcement",
+        "audience_type": "election_voters",
+        "description": "Send a 'Voting Opens Tomorrow' message to all registered voters 24 hours before the voting window opens. Include a link to the voting page and instructions on how to access their unique voting code.",
+        "example": "Subject: Election 2026 Voting Opens Tomorrow – Your Code Inside. Audience: Election Voters. Recipients: 847 members"
+      },
+      {
+        "heading": "Voting Reminder (Mid-Election)",
+        "audience_type": "election_not_voted",
+        "description": "On the third day of a 7-day voting window, send a gentle reminder only to voters who haven't voted yet. This targets procrastinators without spamming those who already participated.",
+        "example": "Subject: Reminder: Voting closes in 4 days – Don't miss your chance. Audience: Voters Who Haven't Voted. Recipients: 312 members"
+      },
+      {
+        "heading": "Last Call (Hours Before Deadline)",
+        "audience_type": "election_not_voted",
+        "description": "Send a final reminder to non-voters an hour before voting closes. High urgency, clear deadline.",
+        "example": "Subject: FINAL CALL: Voting closes in 1 hour. Audience: Voters Who Haven't Voted. Recipients: 45 members"
+      },
+      {
+        "heading": "Results Announcement",
+        "audience_type": "election_all",
+        "description": "Once voting closes and results are published, announce the outcomes to all election participants: voters, candidates, observers, and the election committee. Everyone stays informed.",
+        "example": "Subject: Election Results – Thank You for Participating. Audience: All Election Participants. Recipients: 1,100+"
+      },
+      {
+        "heading": "Thank You (Candidates & Observers)",
+        "audience_type": "election_candidates",
+        "description": "Send a personalised thank-you message to all candidates. Later, send a separate message to observers thanking them for their role in election integrity.",
+        "example": "Subject: Thank You – Candidate Information. Audience: Candidates. Recipients: 23 candidates"
+      },
+      {
+        "heading": "Committee Coordination",
+        "audience_type": "election_committee",
+        "description": "Send internal updates to the election committee only. Report technical issues, share final metrics, or coordinate post-election tasks.",
+        "example": "Subject: [Committee Only] Election Closure – Final Steps. Audience: Election Committee. Recipients: 7 committee members"
+      }
+    ]
+  },
+  "demo": {
+    "title": "Interactive Demo",
+    "subtitle": "Try it out: Select an audience type to see how many recipients would receive a newsletter",
+    "select_label": "Choose an audience type:",
+    "will_send_to": "This newsletter would send to {count} members",
+    "audience_types": {
+      "all_members": {"label": "All Members", "mock_count": 847},
+      "members_full": {"label": "Full Members", "mock_count": 612},
+      "members_associate": {"label": "Associate Members", "mock_count": 235},
+      "members_overdue": {"label": "Members with Overdue Fees", "mock_count": 89},
+      "election_voters": {"label": "Election Voters", "mock_count": 756},
+      "election_not_voted": {"label": "Voters Who Haven't Voted", "mock_count": 312},
+      "election_voted": {"label": "Voters Who Already Voted", "mock_count": 444},
+      "election_candidates": {"label": "Candidates", "mock_count": 23},
+      "election_observers": {"label": "Observers", "mock_count": 8},
+      "election_committee": {"label": "Election Committee", "mock_count": 7},
+      "election_all": {"label": "All Election Participants", "mock_count": 1088},
+      "org_participants_staff": {"label": "Staff", "mock_count": 12},
+      "org_participants_guests": {"label": "Guests", "mock_count": 34},
+      "org_admins": {"label": "Organisation Admins", "mock_count": 3}
+    }
+  },
+  "unsubscribe": {
+    "title": "Unsubscribes & Bounces",
+    "description": "Public Digit respects member preferences and email hygiene. Here's how unsubscriptions and bounces work.",
+    "automatic_note": "Automatic Exclusion: If a member unsubscribes from newsletters or their email bounces (invalid address, full inbox), they are automatically excluded from all future newsletters. They won't be sent emails unless they re-subscribe.",
+    "bounce_note": "Soft Bounces: Temporary delivery failures (recipient's mailbox full, server temporarily down). Public Digit marks these and may retry.",
+    "hard_bounce_note": "Hard Bounces: Permanent failures (invalid address, domain doesn't exist). Public Digit marks these as bounced and excludes them permanently.",
+    "resubscribe_note": "Re-subscription: Members can re-subscribe through their account preferences or by contacting the organisation administrator. Once re-subscribed, they can receive newsletters again."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {"q": "How many newsletters can I send per day?", "a": "You can create and send up to 10 newsletters per hour per organisation. This means up to 240 per day. If you need higher limits, contact your organisation administrator."},
+      {"q": "What happens if I make a typo in the subject line?", "a": "You can edit the newsletter while it's in Draft status. Click Edit, make your changes, and save. Once sent, the newsletter is locked for audit compliance and cannot be edited."},
+      {"q": "Can I send to a mix of audiences (e.g., Full Members + Election Voters)?", "a": "Not in a single newsletter. Each newsletter targets one audience type. However, the system automatically deduplicates recipients, so if a voter is also a full member, they'll receive the newsletter only once."},
+      {"q": "How long does delivery take?", "a": "Delivery typically takes 5–30 minutes for up to 1,000 recipients. Larger sends (10,000+ recipients) may take several hours due to email provider rate limits."},
+      {"q": "Can I cancel a newsletter after I've sent it?", "a": "Yes. If emails are still Pending (not yet sent), click Cancel to stop further delivery. Recipients who already received the email will keep it; those still waiting won't get it."},
+      {"q": "Are there any costs for sending newsletters?", "a": "Newsletter sending is included in your organisation plan. There are no per-email charges. Volume limits are determined by your organisation's subscription level."},
+      {"q": "What's the difference between 'Voters Who Haven't Voted' and 'All Election Voters'?", "a": "'All Election Voters' includes everyone registered to vote. 'Voters Who Haven't Voted' includes only those who haven't cast their ballot yet. Use the second one for reminders during voting."},
+      {"q": "Can I attach files to newsletters?", "a": "Yes. You can attach up to 3 files per newsletter. Supported formats: PDF, Word (doc/docx), Excel (xls/xlsx), Images (jpg/png/gif/webp). Files must be under 10 MB each."},
+      {"q": "Is there a way to preview my newsletter before sending?", "a": "Yes. The Preview Count button shows you a sample of 5 recipients (name and email) and the total recipient count. The button is rate-limited to 30 previews per minute per user."},
+      {"q": "What happens if an email address is invalid?", "a": "Invalid addresses are automatically marked as Bounced and excluded from future newsletters. The recipient won't receive future sends unless they update their email address in their account."},
+      {"q": "Can members unsubscribe from newsletters?", "a": "Yes. Members can unsubscribe via their account settings under Email Preferences. Once unsubscribed, they won't receive any newsletters until they re-subscribe."},
+      {"q": "Is there a template library I can use?", "a": "Not yet. Currently, you write each newsletter from scratch. We're planning template support for future releases."},
+      {"q": "Do I need to manually add recipients, or does the system find them automatically?", "a": "The system finds them automatically based on your audience type. Select an audience, and the system builds the recipient list from your organisation's database. No manual entry required."},
+      {"q": "What if I want to send a newsletter to a specific subset of voters (e.g., only certain regions)?", "a": "Currently, audience types are fixed. If you need custom filtering, contact your organisation administrator or wait for custom audience support in a future release."}
+    ]
+  },
+  "feedback": {
+    "prompt": "Was this guide helpful?",
+    "yes": "Yes, helpful",
+    "no": "Needs improvement",
+    "textarea_placeholder": "How can we improve this guide?",
+    "submit": "Send feedback",
+    "thank_you": "Thank you for your feedback!"
+  },
+  "print": {
+    "button": "Print / Save as PDF"
+  },
+  "last_updated": {
+    "label": "Last updated",
+    "date": "April 2026"
+  },
+  "cta": {
+    "title": "Ready to send your first newsletter?",
+    "with_org": "Go to {org} Newsletters",
+    "without_org": "Go to Newsletters",
+    "login_prompt": "You'll need to log in to access the newsletter composer."
+  }
+}
