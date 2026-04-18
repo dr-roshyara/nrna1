@@ -37,6 +37,35 @@
       <!-- Form -->
       <form @submit.prevent="submit" class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-5">
 
+        <!-- Audience Type Selector -->
+        <div>
+          <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+            {{ t.audience_type || 'Audience Type' }} <span class="text-red-500">*</span>
+          </label>
+          <select v-model="form.audience_type" @change="onAudienceChange"
+                  class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900
+                         focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+            <option v-for="type in audienceTypes" :key="type" :value="type">
+              {{ getAudienceLabel(type) }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Election Selector (for election-based audiences) -->
+        <div v-if="isElectionAudience">
+          <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+            {{ t.election || 'Election' }} <span class="text-red-500">*</span>
+          </label>
+          <select v-model="form.audience_meta.election_id"
+                  class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900
+                         focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+            <option value="">-- Choose an election --</option>
+            <option v-for="election in elections" :key="election.id" :value="election.id">
+              {{ election.name }} ({{ election.status }})
+            </option>
+          </select>
+        </div>
+
         <!-- Subject -->
         <div>
           <label class="block text-sm font-semibold text-slate-700 mb-1.5">
@@ -101,17 +130,20 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { usePage, router } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { UsersIcon } from '@heroicons/vue/24/outline'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import RichTextEditor from '@/Components/Newsletter/RichTextEditor.vue'
 import AttachmentUploader from '@/Components/Newsletter/AttachmentUploader.vue'
+import axios from 'axios'
 
 const props = defineProps({
   organisation: { type: Object, required: true },
   newsletter:   { type: Object, required: true },
+  elections:    { type: Array, default: () => [] },
+  audienceTypes: { type: Array, default: () => ['all_members'] },
 })
 
 const page       = usePage()
@@ -121,34 +153,37 @@ const translations = {
   en: {
     title: 'Edit Draft', newsletters: 'Newsletters',
     subject: 'Subject', subject_placeholder: 'e.g. NRNA EU — June 2026 Update',
+    audience_type: 'Audience Type', election: 'Election',
     content: 'Content', content_placeholder: 'Dear Member,\n\nWrite your newsletter here…',
     plain_text: 'Plain Text Version', plain_text_placeholder: 'Plain text fallback for email clients that do not render HTML.',
     optional: 'optional',
     attachments: 'Attachments',
     save: 'Save Changes', saving: 'Saving…', cancel: 'Cancel',
-    will_send_to: 'This newsletter will be sent to', members: 'active members.',
+    will_send_to: 'This newsletter will be sent to', members: 'recipients.',
     loading_count: 'Loading recipient count…',
   },
   de: {
     title: 'Entwurf bearbeiten', newsletters: 'Newsletter',
     subject: 'Betreff', subject_placeholder: 'z.B. NRNA EU — Juni 2026 Update',
+    audience_type: 'Zielgruppe', election: 'Wahl',
     content: 'Inhalt', content_placeholder: 'Liebes Mitglied,\n\nSchreiben Sie Ihren Newsletter hier…',
     plain_text: 'Nur-Text-Version', plain_text_placeholder: 'Nur-Text-Fallback für E-Mail-Clients ohne HTML.',
     optional: 'optional',
     attachments: 'Anhänge',
     save: 'Änderungen speichern', saving: 'Speichern…', cancel: 'Abbrechen',
-    will_send_to: 'Dieser Newsletter wird an', members: 'aktive Mitglieder gesendet.',
+    will_send_to: 'Dieser Newsletter wird an', members: 'Empfänger versendet.',
     loading_count: 'Empfängeranzahl wird geladen…',
   },
   np: {
     title: 'मस्यौदा सम्पादन', newsletters: 'न्युजलेटर',
     subject: 'विषय', subject_placeholder: 'उदा. NRNA EU — जुन २०२६ अपडेट',
+    audience_type: 'दर्शक', election: 'चुनाव',
     content: 'सामग्री', content_placeholder: 'प्रिय सदस्य,\n\nयहाँ न्युजलेटर लेख्नुहोस्…',
     plain_text: 'सादा पाठ संस्करण', plain_text_placeholder: 'HTML नदेखाउने इमेल क्लाइन्टका लागि।',
     optional: 'वैकल्पिक',
     attachments: 'संलग्नकहरू',
     save: 'परिवर्तन सुरक्षित गर्नुहोस्', saving: 'सुरक्षित गर्दै…', cancel: 'रद्द गर्नुहोस्',
-    will_send_to: 'यो न्युजलेटर', members: 'सक्रिय सदस्यहरूलाई पठाइनेछ।',
+    will_send_to: 'यो न्युजलेटर', members: 'प्राप्तकर्तालाई पठाइनेछ।',
     loading_count: 'प्राप्तकर्ता गणना लोड हुँदैछ…',
   },
 }
@@ -156,9 +191,11 @@ const translations = {
 const t = computed(() => translations[locale.value] ?? translations.en)
 
 const form = ref({
-  subject:      props.newsletter.subject,
-  html_content: props.newsletter.html_content,
-  plain_text:   props.newsletter.plain_text ?? '',
+  subject:       props.newsletter.subject,
+  html_content:  props.newsletter.html_content,
+  plain_text:    props.newsletter.plain_text ?? '',
+  audience_type: props.newsletter.audience_type || 'all_members',
+  audience_meta: props.newsletter.audience_meta || { election_id: null },
 })
 
 // attachment list is managed locally; uploads/deletes go directly to the API
@@ -166,6 +203,45 @@ const attachmentList = ref(props.newsletter.attachments ?? [])
 const errors     = ref({})
 const submitting = ref(false)
 const recipientCount = ref(null)
+
+const isElectionAudience = computed(() => {
+  const electionTypes = [
+    'election_voters',
+    'election_not_voted',
+    'election_voted',
+    'election_candidates',
+    'election_observers',
+    'election_committee',
+    'election_all',
+  ]
+  return electionTypes.includes(form.value.audience_type)
+})
+
+const getAudienceLabel = (type) => {
+  const labels = {
+    all_members: 'All Members',
+    members_full: 'Full Members',
+    members_associate: 'Associate Members',
+    members_overdue: 'Members with Overdue Fees',
+    election_voters: 'Election Voters',
+    election_not_voted: 'Voters Who Haven\'t Voted',
+    election_voted: 'Voters Who Already Voted',
+    election_candidates: 'Candidates',
+    election_observers: 'Observers',
+    election_committee: 'Election Committee',
+    election_all: 'All Election Participants',
+    org_participants_staff: 'Staff',
+    org_participants_guests: 'Guests',
+    org_admins: 'Organisation Admins',
+  }
+  return labels[type] || type
+}
+
+const onAudienceChange = () => {
+  if (!isElectionAudience.value) {
+    form.value.audience_meta.election_id = null
+  }
+}
 
 onMounted(async () => {
   try {
