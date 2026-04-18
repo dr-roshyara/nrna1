@@ -50,6 +50,7 @@
           <thead class="bg-slate-50">
             <tr>
               <th class="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{{ t.col_subject }}</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{{ t.col_audience }}</th>
               <th class="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{{ t.col_status }}</th>
               <th class="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{{ t.col_recipients }}</th>
               <th class="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide">{{ t.col_date }}</th>
@@ -60,6 +61,11 @@
             <tr v-for="nl in newsletters.data" :key="nl.id" class="hover:bg-slate-50 transition-colors">
               <td class="px-5 py-4">
                 <p class="text-sm font-medium text-slate-900 truncate max-w-xs">{{ nl.subject }}</p>
+              </td>
+              <td class="px-5 py-4">
+                <span :class="audienceBadgeClass(nl.audience_type)" class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap">
+                  {{ getAudienceLabel(nl.audience_type) }}
+                </span>
               </td>
               <td class="px-5 py-4">
                 <span :class="statusClass(nl.status)" class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold">
@@ -126,11 +132,28 @@ const props = defineProps({
 const page       = usePage()
 const { locale } = useI18n()
 
+const audienceLabels = {
+  all_members: 'All Members',
+  members_full: 'Full Members',
+  members_associate: 'Associate Members',
+  members_overdue: 'Members with Overdue Fees',
+  election_voters: 'Election Voters',
+  election_not_voted: 'Voters Who Haven\'t Voted',
+  election_voted: 'Voters Who Already Voted',
+  election_candidates: 'Candidates',
+  election_observers: 'Observers',
+  election_committee: 'Election Committee',
+  election_all: 'All Election Participants',
+  org_participants_staff: 'Staff',
+  org_participants_guests: 'Guests',
+  org_admins: 'Organisation Admins',
+}
+
 const translations = {
   en: {
     title: 'Newsletters', compose: 'Compose',
     empty_title: 'No newsletters yet', empty_desc: 'Compose your first newsletter to send to all active members.',
-    col_subject: 'Subject', col_status: 'Status', col_recipients: 'Sent / Total', col_date: 'Date',
+    col_subject: 'Subject', col_audience: 'Audience', col_status: 'Status', col_recipients: 'Sent / Total', col_date: 'Date',
     view: 'View', edit: 'Edit', delete: 'Delete', page: 'Page',
     status_draft: 'Draft', status_queued: 'Queued', status_processing: 'Sending',
     status_completed: 'Completed', status_failed: 'Failed', status_cancelled: 'Cancelled',
@@ -138,7 +161,7 @@ const translations = {
   de: {
     title: 'Newsletter', compose: 'Verfassen',
     empty_title: 'Noch keine Newsletter', empty_desc: 'Verfassen Sie Ihren ersten Newsletter für alle aktiven Mitglieder.',
-    col_subject: 'Betreff', col_status: 'Status', col_recipients: 'Gesendet / Gesamt', col_date: 'Datum',
+    col_subject: 'Betreff', col_audience: 'Zielgruppe', col_status: 'Status', col_recipients: 'Gesendet / Gesamt', col_date: 'Datum',
     view: 'Ansehen', edit: 'Bearbeiten', delete: 'Löschen', page: 'Seite',
     status_draft: 'Entwurf', status_queued: 'In Warteschlange', status_processing: 'Wird gesendet',
     status_completed: 'Abgeschlossen', status_failed: 'Fehlgeschlagen', status_cancelled: 'Abgebrochen',
@@ -146,7 +169,7 @@ const translations = {
   np: {
     title: 'न्युजलेटर', compose: 'लेख्नुहोस्',
     empty_title: 'अहिलेसम्म कुनै न्युजलेटर छैन', empty_desc: 'सबै सक्रिय सदस्यहरूलाई पठाउन पहिलो न्युजलेटर लेख्नुहोस्।',
-    col_subject: 'विषय', col_status: 'स्थिति', col_recipients: 'पठाइएको / जम्मा', col_date: 'मिति',
+    col_subject: 'विषय', col_audience: 'दर्शक', col_status: 'स्थिति', col_recipients: 'पठाइएको / जम्मा', col_date: 'मिति',
     view: 'हेर्नुहोस्', edit: 'सम्पादन', delete: 'मेटाउनुहोस्', page: 'पृष्ठ',
     status_draft: 'मस्यौदा', status_queued: 'पंक्तिमा', status_processing: 'पठाउँदै',
     status_completed: 'सम्पन्न', status_failed: 'असफल', status_cancelled: 'रद्द',
@@ -163,6 +186,30 @@ const statusClass = (status) => ({
   failed:     'bg-red-100 text-red-700',
   cancelled:  'bg-slate-100 text-slate-500',
 }[status] ?? 'bg-slate-100 text-slate-500')
+
+const getAudienceLabel = (type) => {
+  return audienceLabels[type] || type
+}
+
+const audienceBadgeClass = (type) => {
+  const classes = {
+    all_members: 'bg-blue-100 text-blue-800',
+    members_full: 'bg-green-100 text-green-800',
+    members_associate: 'bg-purple-100 text-purple-800',
+    members_overdue: 'bg-orange-100 text-orange-800',
+    election_voters: 'bg-indigo-100 text-indigo-800',
+    election_not_voted: 'bg-yellow-100 text-yellow-800',
+    election_voted: 'bg-green-100 text-green-800',
+    election_candidates: 'bg-red-100 text-red-800',
+    election_observers: 'bg-cyan-100 text-cyan-800',
+    election_committee: 'bg-rose-100 text-rose-800',
+    election_all: 'bg-violet-100 text-violet-800',
+    org_participants_staff: 'bg-amber-100 text-amber-800',
+    org_participants_guests: 'bg-lime-100 text-lime-800',
+    org_admins: 'bg-fuchsia-100 text-fuchsia-800',
+  }
+  return classes[type] || 'bg-gray-100 text-gray-800'
+}
 
 const formatDate = (iso) => {
   if (!iso) return '—'
