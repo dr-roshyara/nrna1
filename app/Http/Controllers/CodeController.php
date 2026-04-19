@@ -128,10 +128,10 @@ class CodeController extends Controller
             : 0;
 
         // Determine if code needs regeneration:
-        // - Window expired (>= voting time minutes) AND user hasn't voted yet
+        // - Window expired (>= voting time minutes) AND user hasn't voted yet AND code not verified
         // - OR: code flags were zeroed by vote_pre_check timeout (has_code1_sent=0) but sent_at is stale
-        // Do NOT guard on can_vote_now or has_code1_sent — vote_pre_check() zeros those on timeout.
-        $codeNeedsReset = !$code->has_voted && (
+        // ✅ CRITICAL: Do NOT regenerate if code is already verified (can_vote_now === true)
+        $codeNeedsReset = !$code->has_voted && $code->can_vote_now !== true && (
             ($minutesSinceSent >= $this->votingTimeInMinutes)
             || (!$code->has_code1_sent && $code->code_to_open_voting_form_sent_at)
         );
