@@ -58,9 +58,8 @@ class OrganisationController extends Controller
     {
         \Log::info('Organisation show method called', ['slug' => $slug]);
 
-        // Get organisation by slug OR UUID
+        // Get organisation by slug (route key is defined as 'slug' in model)
         $organisation = Organisation::where('slug', $slug)
-            ->orWhere('id', $slug)
             ->whereNull('deleted_at')
             ->firstOrFail();
 
