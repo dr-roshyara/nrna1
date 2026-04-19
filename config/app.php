@@ -29,6 +29,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Platform Organisation ID
+    |--------------------------------------------------------------------------
+    |
+    | The ID of the platform (landlord) organisation. Used to distinguish
+    | platform-level operations from tenant-specific operations.
+    |
+    */
+
+    'platform_organisation_id' => env('PLATFORM_ORGANISATION_ID', null),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
@@ -190,6 +202,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
         App\Providers\SEOServiceProvider::class,
 
 

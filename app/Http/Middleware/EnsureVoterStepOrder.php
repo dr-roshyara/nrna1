@@ -43,6 +43,10 @@ class EnsureVoterStepOrder
         // to ALL users regardless of organisation context (organisation_id=NULL)
         $election = \App\Models\Election::withoutGlobalScopes()->find($vslug->election_id);
         if (!$election) {
+            \Log::error('❌ Election not found', [
+                'vslug_id' => $vslug->id,
+                'vslug_election_id' => $vslug->election_id,
+            ]);
             abort(403, 'Election not found for this voting link.');
         }
 
@@ -51,19 +55,26 @@ class EnsureVoterStepOrder
         $highestCompletedStep = $stepTracker->getHighestCompletedStep($vslug, $election);
         $nextAllowedStep = $highestCompletedStep + 1;
 
-        \Log::info('🔵 EnsureVoterStepOrder - NEW SYSTEM', [
+        \Log::info('🔵 EnsureVoterStepOrder - DETAILED', [
+            'vslug_id' => $vslug->id,
             'route_name' => $routeName,
             'target_step' => $targetStep,
             'highest_completed_step' => $highestCompletedStep,
             'next_allowed_step' => $nextAllowedStep,
             'is_non_step_route' => $targetStep === false,
             'election_id' => $election->id,
+            'election_type' => $election->type,
             'vslug_election_id' => $vslug->election_id,
+            'vslug_is_active' => $vslug->is_active,
+            'vslug_expires_at' => $vslug->expires_at?->toIso8601String(),
+            'config_step_map' => $map,
         ]);
 
         // Non-step routes (e.g., POST actions) pass through
         if ($targetStep === false) {
-            \Log::info('✅ Non-step route passing through');
+            \Log::info('✅ EnsureVoterStepOrder: Non-step route passing through', [
+                'route_name' => $routeName,
+            ]);
             return $next($request);
         }
 
@@ -73,15 +84,25 @@ class EnsureVoterStepOrder
         // - Block future incomplete steps
         if ($targetStep > $nextAllowedStep) {
             $nextRoute = $map[$nextAllowedStep] ?? reset($map);
-            \Log::warning('⚠️ User tried to skip ahead', [
+            \Log::warning('⚠️ EnsureVoterStepOrder: User tried to skip ahead', [
                 'target_step' => $targetStep,
                 'next_allowed_step' => $nextAllowedStep,
                 'redirecting_to' => $nextRoute,
+                'vslug_slug' => $vslug->slug,
             ]);
 
             return redirect()->route($nextRoute, ['vslug' => $vslug->slug])
                 ->with('info', 'Please complete the current step first.');
         }
+
+        \Log::info('✅ EnsureVoterStepOrder: Step order check passed', [
+            'target_step' => $targetStep,
+            'next_allowed_step' => $nextAllowedStep,
+        ]);
+
+        // ✅ CRITICAL FIX: Set election on request attributes for downstream middleware
+        // EnsureRealVoteOrganisation expects this to be present
+        $request->attributes->set('election', $election);
 
         return $next($request);
     }

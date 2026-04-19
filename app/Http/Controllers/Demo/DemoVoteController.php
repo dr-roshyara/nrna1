@@ -137,7 +137,7 @@ class DemoVoteController extends Controller
     private function verifyStrictModeCodeState(&$code): string
     {
         // In STRICT MODE, Code2 should not have been used yet
-        if ($code->code_to_save_vote_used_at !== null || $code->is_code_to_save_vote_usable == 0) {
+        if ($code->code_to_save_vote_used_at !== null || $code->is_code_to_save_vote_usable === false) {
             return "dashboard";  // Code expired or already used
         }
 
@@ -255,7 +255,7 @@ class DemoVoteController extends Controller
         }
 
         // REAL: Must check can_vote_now flag (timing restrictions)
-        return $user->can_vote_now == 1;
+        return $user->can_vote_now === true;
     }
 
     /**
@@ -3158,20 +3158,15 @@ public function verify_final_vote(Request $request)
             return "dashboard";
         }
 
-          // ========== GUARD CLAUSE 4: Code1 never sent ==========
-        if (!$code->has_code1_sent) {
-            \Log::warning('🔴 vote_pre_check: GUARD 4 TRIGGERED - has_code1_sent is false', [
-                'has_code1_sent' => $code->has_code1_sent
+        // ========== GUARD CLAUSE 4: Code1 never sent ==========
+        // Check if code_to_open_voting_form_sent_at is set (indicates code was sent)
+        // Legacy has_code1_sent column was removed from database
+        if (!$code->code_to_open_voting_form_sent_at) {
+            \Log::warning('🔴 vote_pre_check: GUARD 4 TRIGGERED - code_to_open_voting_form_sent_at is null', [
+                'code_to_open_voting_form_sent_at' => $code->code_to_open_voting_form_sent_at
             ]);
             return "code.create";
         }
-        // ========== GUARD CLAUSE 4: Code1 never sent ==========
-        // if (!$code->has_code1_sent) {
-         //     \Log::warning('🔴 vote_pre_check: GUARD 4 - has_code1_sent is false', [
-        //         'has_code1_sent' => $code->has_code1_sent
-        //     ]);
-        //     return "code.create";
-        // }
          // ========== GUARD CLAUSE 5: Check if code has already been used for voting ==========
         if ($code->code_to_save_vote_used_at !== null) {
             \Log::warning('🔴 vote_pre_check: GUARD 5 TRIGGERED - code_to_save_vote_used_at is set', [
@@ -3270,7 +3265,7 @@ public function verify_final_vote(Request $request)
     // 2. IP address check
     $clientIP = \Request::getClientIp(true);
     $max_use_clientIP = config('app.max_use_clientIP');
-    $_message = check_ip_address($clientIP, $max_use_clientIP);
+    $_message = check_ip_address($clientIP, $max_use_clientIP, 'demo_codes');
 
     if (!empty($_message['error_message'])) {
         // Just return the error, let the controller handle the redirect/flash
@@ -3499,7 +3494,7 @@ public function verify_final_vote(Request $request)
         }
 
         // 6. User must NOT have already voted
-        if ($auth_user->has_voted == 1) {
+        if ($auth_user->has_voted === true) {
             \Log::info('⚠️ CHECK 6: User already voted', [
                 'auth_user.has_voted' => $auth_user->has_voted,
                 'returning' => 'vote.verify_to_show'

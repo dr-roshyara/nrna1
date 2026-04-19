@@ -68,66 +68,14 @@ use App\Http\Controllers\VoterInvitationController;
  * Register implicit model binding for VoterSlug
  */
 // 🔥 DIGITAL OCEAN FIX: Enhanced route binding with retry logic
+// ⚠️ DEPRECATED: Route binding moved to App\Providers\RouteServiceProvider
+// This binding has been replaced by the custom RouteServiceProvider
+// which provides better error handling, rate limiting, and expiration checks.
+/*
 Route::bind('vslug', function (string $value) {
-    \Log::info('🔍 Route binding lookup', ['vslug' => $value, 'connection' => \DB::connection()->getName()]);
-
-    // Try with retry for Digital Ocean replication lag
-    $voterSlug = null;
-    $attempts = 0;
-    $maxAttempts = 3;
-
-    while (!$voterSlug && $attempts < $maxAttempts) {
-        if ($attempts > 0) {
-            \Log::info('🔄 Retry attempt ' . ($attempts + 1), ['vslug' => $value]);
-            sleep(1); // Wait 1 second between retries
-            \DB::reconnect('mysql'); // Fresh connection
-        }
-
-        // Try DemoVoterSlug first (for demo elections)
-        $voterSlug = DemoVoterSlug::on('mysql')
-            ->withoutGlobalScopes()
-            ->where('slug', $value)
-            ->first();
-
-        if (!$voterSlug) {
-            // Try VoterSlug as fallback (for regular elections)
-            $voterSlug = VoterSlug::on('mysql')
-                ->withoutGlobalScopes()
-                ->where('slug', $value)
-                ->first();
-        }
-
-        $attempts++;
-    }
-
-    if (!$voterSlug) {
-        \Log::error('❌ Voter slug not found after ' . $maxAttempts . ' attempts', [
-            'slug' => $value,
-            'attempts' => $attempts,
-            'session_data' => session()->all()
-        ]);
-
-        // Check if it's in session as fallback
-        $sessionSlug = session('last_created_voter_slug');
-        if ($sessionSlug === $value) {
-            \Log::info('⚠️ Slug found in session but not in DB - possible replication lag', [
-                'slug' => $value
-            ]);
-            // Let them try again by redirecting back
-            abort(403, 'System is initializing. Please try again in 2 seconds.');
-        }
-
-        abort(403, 'Invalid voting link');
-    }
-
-    \Log::info('✅ Route binding successful', [
-        'slug' => $value,
-        'type' => get_class($voterSlug),
-        'attempts' => $attempts
-    ]);
-
-    return $voterSlug;
+    // ... old binding code removed ...
 });
+*/
 
 // Auth::routes();
 

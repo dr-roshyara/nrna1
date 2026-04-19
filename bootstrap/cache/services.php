@@ -41,7 +41,8 @@
     37 => 'Spatie\\Permission\\PermissionServiceProvider',
     38 => 'Laravel\\Socialite\\SocialiteServiceProvider',
     39 => 'App\\Providers\\RepositoryServiceProvider',
-    40 => 'App\\Providers\\SEOServiceProvider',
+    40 => 'App\\Providers\\RouteServiceProvider',
+    41 => 'App\\Providers\\SEOServiceProvider',
   ),
   'eager' => 
   array (
@@ -69,7 +70,8 @@
     21 => 'App\\Providers\\EventServiceProvider',
     22 => 'Spatie\\Permission\\PermissionServiceProvider',
     23 => 'App\\Providers\\RepositoryServiceProvider',
-    24 => 'App\\Providers\\SEOServiceProvider',
+    24 => 'App\\Providers\\RouteServiceProvider',
+    25 => 'App\\Providers\\SEOServiceProvider',
   ),
   'deferred' => 
   array (

@@ -57,10 +57,24 @@
                         <span class="inline-block w-5 h-5 bg-green-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">✓</span>
                         {{ $t('pages.code-create.public_demo.code_display_label') }}
                     </p>
-                    <div class="text-center">
+                    <div class="text-center flex flex-col sm:flex-row items-center justify-center gap-4">
                         <span class="inline-block bg-white border-2 border-green-400 rounded-xl px-8 py-4 text-4xl font-mono font-bold tracking-widest text-green-800 shadow-sm select-all">
                             {{ verification_code }}
                         </span>
+                        <button
+                            @click="copyCodeToClipboard"
+                            :class="codeCopied ? 'bg-green-500 text-white shadow-lg' : 'bg-white text-green-600 hover:bg-green-50 hover:shadow-md'"
+                            class="font-bold py-3 px-6 rounded-lg transition-all flex items-center justify-center gap-2 border-2 border-green-400 hover:border-green-500 whitespace-nowrap"
+                            title="Copy code to clipboard"
+                        >
+                            <svg v-if="!codeCopied" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <svg v-else class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="hidden sm:inline">{{ codeCopied ? 'Copied!' : 'Copy' }}</span>
+                        </button>
                     </div>
                     <p class="text-green-700 text-sm mt-3 text-center">
                         {{ $t('pages.code-create.public_demo.code_hint') }}
@@ -94,12 +108,64 @@
                     </p>
                 </div>
 
-                <!-- Guide link: Public Demo only -->
-                <div v-if="is_public_demo" class="text-center mt-3">
-                    <a :href="route('public-demo.guide')"
-                       class="inline-flex items-center gap-1.5 text-sm text-purple-600 hover:text-purple-700 hover:underline focus:outline-none focus:ring-2 focus:ring-purple-400 rounded px-2 py-1">
-                        <span>❓</span>
-                        {{ $t('pages.code-create.public_demo.guide_link') }}
+                <!-- How It Works — BOLD CTA Card -->
+                <div v-if="is_public_demo" class="mt-6">
+                    <a :href="route('public-demo.guide')" class="block group">
+                        <div class="relative bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 border-3 border-amber-300 rounded-3xl p-8 md:p-10 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden">
+                            <!-- Animated background accent -->
+                            <div class="absolute -top-20 -right-20 w-40 h-40 bg-amber-200 opacity-20 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-500"></div>
+                            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-orange-200 opacity-15 rounded-full blur-2xl"></div>
+
+                            <!-- Content wrapper -->
+                            <div class="relative z-10">
+                                <!-- Badge -->
+                                <div class="inline-block mb-4">
+                                    <span class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest shadow-lg">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                        </svg>
+                                        Start Here
+                                    </span>
+                                </div>
+
+                                <!-- Main content -->
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                                    <div class="flex-1">
+                                        <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight">
+                                            ❓ How does the demo election work?
+                                        </h3>
+                                        <p class="text-gray-700 text-lg leading-relaxed mb-4 max-w-lg">
+                                            Get complete step-by-step guidance and understand the entire voting process before you begin.
+                                        </p>
+
+                                        <!-- CTA Button inside card -->
+                                        <div class="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform group-hover:scale-105 transition-all duration-200">
+                                            <span class="text-lg">View Guide</span>
+                                            <svg class="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <!-- Animated icon on right -->
+                                    <div class="hidden md:flex flex-shrink-0">
+                                        <div class="relative w-24 h-24">
+                                            <!-- Rotating outer ring -->
+                                            <div class="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full opacity-20 animate-spin" style="animation-duration: 3s;"></div>
+                                            <!-- Main icon circle -->
+                                            <div class="absolute inset-2 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                                <svg class="w-12 h-12 text-white animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="animation-duration: 2s;">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Border glow effect on hover -->
+                            <div class="absolute inset-0 rounded-3xl border-3 border-amber-300 opacity-0 group-hover:opacity-100 group-hover:shadow-2xl group-hover:shadow-amber-200 transition-all duration-300" style="box-shadow: 0 0 30px rgba(217, 119, 6, 0.3) inset;"></div>
+                        </div>
                     </a>
                 </div>
 
@@ -223,7 +289,7 @@
 <script setup>
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { useForm } from "@inertiajs/vue3";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import JetValidationErrors from "@/Components/Jetstream/ValidationErrors.vue";
 import WorkflowStepIndicator from "@/Components/Workflow/WorkflowStepIndicator.vue";
@@ -265,6 +331,33 @@ const { t, locale } = useI18n();
 const form = useForm({
     voting_code: "",
 });
+
+const codeCopied = ref(false);
+
+const copyCodeToClipboard = () => {
+    if (!props.verification_code) return;
+
+    navigator.clipboard.writeText(props.verification_code)
+        .then(() => {
+            codeCopied.value = true;
+            setTimeout(() => {
+                codeCopied.value = false;
+            }, 2000);
+        })
+        .catch(() => {
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = props.verification_code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            codeCopied.value = true;
+            setTimeout(() => {
+                codeCopied.value = false;
+            }, 2000);
+        });
+};
 
 const codeExpired = computed(() => {
     const duration = Number(props.code_duration);

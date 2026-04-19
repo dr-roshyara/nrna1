@@ -89,6 +89,16 @@ class MembershipPolicy
         return $this->hasRole($user, $organisation, ['owner', 'admin']);
     }
 
+    // ── manageMembership ─────────────────────────────────────────────────────
+
+    /**
+     * Only organisation owners and admins may manage membership settings.
+     */
+    public function manageMembership(User $user, Organisation $organisation): bool
+    {
+        return $this->hasRole($user, $organisation, ['owner', 'admin']);
+    }
+
     // ── Internal helper ──────────────────────────────────────────────────────
 
     private function hasRole(User $user, Organisation $organisation, array $roles): bool

@@ -147,12 +147,12 @@ class CodeController extends Controller
             $code->update([
                 'code_to_open_voting_form'           => $this->generateUniqueCodeForOrganisation($election->organisation_id),
                 'code_to_open_voting_form_sent_at'   => now(),
-                'has_code1_sent'                     => 1,
-                'is_code_to_open_voting_form_usable' => 1,
-                'can_vote_now'                       => 0,
+                'has_code1_sent'                     => true,
+                'is_code_to_open_voting_form_usable' => true,
+                'can_vote_now'                       => false,
                 'code_to_open_voting_form_used_at'   => null,
                 'voting_started_at'                  => null,
-                'vote_submitted'                     => 0,
+                'vote_submitted'                     => false,
             ]);
 
             // Extend voter slug expiry so the user gets a fresh 30-minute window
@@ -547,7 +547,7 @@ class CodeController extends Controller
 
         // Mark agreement as accepted
         $code->update([
-            'has_agreed_to_vote' => 1,
+            'has_agreed_to_vote' => true,
             'has_agreed_to_vote_at' => now(),
             'voting_started_at' => now(),
         ]);
@@ -642,8 +642,9 @@ class CodeController extends Controller
                 throw new \Exception('Election mismatch detected between voter slug and election context');
             }
             $orgsMatch       = $election->organisation_id === $voterSlug->organisation_id;
-            $isPlatformElect = $election->organisation_id == 1;
-            $isPlatformSlug  = $voterSlug->organisation_id == 1;
+            $platformOrgId   = config('app.platform_organisation_id');
+            $isPlatformElect = $platformOrgId && $election->organisation_id === $platformOrgId;
+            $isPlatformSlug  = $platformOrgId && $voterSlug->organisation_id === $platformOrgId;
             if (!$orgsMatch && !$isPlatformElect && !$isPlatformSlug) {
                 Log::error('Organisation mismatch', ['election_org' => $election->organisation_id, 'slug_org' => $voterSlug->organisation_id]);
                 throw new \Exception('Organisation mismatch detected');
@@ -700,11 +701,11 @@ class CodeController extends Controller
             $code->update([
                 'has_voted' => false,
                 'vote_submitted' => false,
-                'can_vote_now' => 0,
-                'is_code_to_open_voting_form_usable' => 1,
+                'can_vote_now' => false,
+                'is_code_to_open_voting_form_usable' => true,
                 'code_to_open_voting_form' => $this->generateCode(),
                 'code_to_open_voting_form_sent_at' => now(),
-                'has_code1_sent' => 1,
+                'has_code1_sent' => true,
             ]);
 
             // Send new code via email
@@ -738,10 +739,10 @@ class CodeController extends Controller
                 'organisation_id' => $election->organisation_id,  // ✅ EXPLICIT
                 'code_to_open_voting_form' => $this->generateUniqueCodeForOrganisation($election->organisation_id),
                 'code_to_open_voting_form_sent_at' => now(),
-                'has_code1_sent' => 1,
+                'has_code1_sent' => true,
                 'client_ip' => $this->clientIP,
                 'voting_time_in_minutes' => $this->votingTimeInMinutes,
-                'is_code_to_open_voting_form_usable' => 1,
+                'is_code_to_open_voting_form_usable' => true,
                 'can_vote_now' => 0,
             ]);
 
@@ -802,12 +803,12 @@ class CodeController extends Controller
                 $code->update([
                     'code_to_open_voting_form'           => $newCode,
                     'code_to_open_voting_form_sent_at'   => now(),
-                    'has_code1_sent'                     => 1,
-                    'is_code_to_open_voting_form_usable' => 1,
-                    'can_vote_now'                       => 0,
+                    'has_code1_sent'                     => true,
+                    'is_code_to_open_voting_form_usable' => true,
+                    'can_vote_now'                       => false,
                     'code_to_open_voting_form_used_at'   => null,
                     'voting_started_at'                  => null,
-                    'vote_submitted'                     => 0,
+                    'vote_submitted'                     => false,
                 ]);
                 Log::info('Security: Expired code regenerated', ['user_id' => $user->id, 'election_id' => $election->id]);
 

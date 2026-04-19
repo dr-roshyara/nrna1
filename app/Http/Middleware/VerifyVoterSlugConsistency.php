@@ -39,9 +39,8 @@ class VerifyVoterSlugConsistency
         ]);
 
         // CHECK 1: Does the referenced election exist?
-        // Use optimized query with selective columns
+        // Use optimized query - removed withEssentialRelations() to prevent schema introspection
         $election = Election::withoutGlobalScopes()
-            ->withEssentialRelations()
             ->find($voterSlug->election_id);
 
         if (!$election) {
