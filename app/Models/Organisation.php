@@ -37,6 +37,11 @@ class Organisation extends Model
         'uses_full_membership' => 'boolean',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     // Relationships
     public function creator()
     {
