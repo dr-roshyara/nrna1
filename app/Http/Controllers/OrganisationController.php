@@ -14,6 +14,7 @@ use Inertia\Response;
 use Illuminate\Http\Request;
 use App\Traits\ChecksElectionAccess;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class OrganisationController extends Controller
 {
@@ -318,6 +319,9 @@ class OrganisationController extends Controller
             'org_slug' => $org->slug,
             'route' => 'organisations.show',
         ]);
+
+        // Clear cache to prevent stale organisation_id in TenantContext middleware
+        Cache::forget("user.{$user->id}.organisation_id");
 
         return redirect()->route('organisations.show', $org->slug);
     }

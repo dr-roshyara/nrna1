@@ -262,10 +262,18 @@ class CodeController extends Controller
         }
 
         // Get code record for this election
+        // ✅ CRITICAL: Use organisation_id from election to scope correctly
         $code = Code::where('user_id', $user->id)
             ->where('election_id', $election->id)
+            ->where('organisation_id', $election->organisation_id)
             ->first();
         if (!$code) {
+            Log::warning('Code not found in verification', [
+                'user_id' => $user->id,
+                'election_id' => $election->id,
+                'election_org_id' => $election->organisation_id,
+                'user_org_id' => $user->organisation_id,
+            ]);
             return back()->withErrors(['voting_code' => 'No verification code found. Please request a new code.']);
         }
 
@@ -743,7 +751,7 @@ class CodeController extends Controller
                 'client_ip' => $this->clientIP,
                 'voting_time_in_minutes' => $this->votingTimeInMinutes,
                 'is_code_to_open_voting_form_usable' => true,
-                'can_vote_now' => 0,
+                'can_vote_now' => false,
             ]);
 
             // Send code via email only if user has valid email

@@ -54,11 +54,8 @@ class CodeControllerTest extends TestCase
             'current_step'    => 1,
         ]);
 
-        UserOrganisationRole::create([
-            'user_id'         => $this->user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'voter',
-        ]);
+        // UserOrganisationRole is auto-created by UserFactory.configure()
+        // No need to manually create it
 
         ElectionMembership::create([
             'user_id'     => $this->user->id,
