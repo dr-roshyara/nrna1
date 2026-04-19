@@ -7,6 +7,7 @@ use App\Http\Requests\Election\UpdateElectionSettingsRequest;
 use App\Models\DemoVote;
 use App\Models\Election;
 use App\Models\Vote;
+use App\Services\ElectionAuditService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Cache;
 use Inertia\Inertia;
@@ -163,6 +164,16 @@ class ElectionSettingsController extends Controller
      */
     private function logSettingsChange(Election $election, array $changes): void
     {
+        // Audit trail
+        app(ElectionAuditService::class)->log(
+            election: $election,
+            event: 'settings_changed',
+            user: auth()->user(),
+            category: 'committee',
+            metadata: ['changes' => $changes]
+        );
+
+        // Debug log
         if (config('app.debug')) {
             \Illuminate\Support\Facades\Log::debug('⚙️ [ElectionSettings] Updated', [
                 'election_id'   => $election->id,
