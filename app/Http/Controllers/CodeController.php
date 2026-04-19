@@ -410,7 +410,7 @@ class CodeController extends Controller
             return $this->redirectToDashboard('You have already voted in this election.');
         }
 
-        if (!$code || $code->can_vote_now != 1) {
+        if (!$code || $code->can_vote_now !== true) {
             $redirectUrl = $voterSlug
                 ? route('slug.code.create', ['vslug' => $voterSlug->slug])
                 : route('code.create');
@@ -540,7 +540,7 @@ class CodeController extends Controller
             return $this->redirectToDashboard('You have already voted in this election.');
         }
 
-        if (!$code || $code->can_vote_now != 1) {
+        if (!$code || $code->can_vote_now !== true) {
             return $this->jsonOrRedirect($request, false, 'Code verification required.',
                 redirect()->route('slug.code.create', ['vslug' => $voterSlug->slug]));
         }
@@ -885,8 +885,8 @@ class CodeController extends Controller
 
         try {
             $updateResult = $code->update([
-                'can_vote_now'                       => 1,
-                'is_code_to_open_voting_form_usable' => config('voting.two_codes_system', 0) == 1 ? 0 : 1,
+                'can_vote_now'                       => true,
+                'is_code_to_open_voting_form_usable' => config('voting.two_codes_system', false) === true ? false : true,
                 'code_to_open_voting_form_used_at'   => now(), 
                 'client_ip'                          => $this->clientIP,
             ]);
