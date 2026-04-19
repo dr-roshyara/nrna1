@@ -352,6 +352,6 @@ class CodeControllerTest extends TestCase
 
         $code->refresh();
         $this->assertEquals($originalCode, $code->code_to_open_voting_form, 'Verified code must not be regenerated even if expired');
-        $this->assertEquals(1, $code->can_vote_now);
+        $this->assertTrue($code->can_vote_now);
     }
 }

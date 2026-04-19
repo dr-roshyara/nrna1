@@ -93,11 +93,7 @@ class UserFactory extends Factory
     public function voter()
     {
         return $this->state(function (array $attributes) {
-            return [
-                'is_voter' => true,
-                'can_vote' => true,
-                'has_voted' => false,
-            ];
+            return [];
         });
     }
 
