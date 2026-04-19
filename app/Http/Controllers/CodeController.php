@@ -93,10 +93,10 @@ class CodeController extends Controller
             'can_vote_now' => $existingCode ? $existingCode->can_vote_now : 'no_code',
             'has_voter_slug' => $voterSlug !== null,
             'voter_slug_value' => $voterSlug ? $voterSlug->slug : 'null',
-            'should_redirect' => $existingCode && $existingCode->can_vote_now == 1 && !$voterSlug,
+            'should_redirect' => $existingCode && $existingCode->can_vote_now === true && !$voterSlug,
         ]);
 
-        if ($existingCode && $existingCode->can_vote_now == 1 && !$voterSlug) {
+        if ($existingCode && $existingCode->can_vote_now === true && !$voterSlug) {
             Log::warning('⚠️ [CREATE] User already has verified code - redirecting to correct step', [
                 'user_id' => $user->id,
                 'code_id' => $existingCode->id,
@@ -105,7 +105,7 @@ class CodeController extends Controller
         }
 
         // ⛔ REAL ELECTIONS: Block access to code page if already voted
-        if ($election->type === 'real' && $existingCode && $existingCode->has_voted) {
+        if ($election->type === 'real' && $existingCode && $existingCode->has_voted === true) {
             Log::warning('⛔ Real election - blocking code page access for voter who already voted', [
                 'user_id' => $user->id,
                 'election_id' => $election->id,
@@ -280,7 +280,7 @@ class CodeController extends Controller
         }
 
         // Check if already verified
-        if ($code->can_vote_now == 1) {
+        if ($code->can_vote_now === true) {
             return $this->handleAlreadyVerified($request, $voterSlug);
         }
 
@@ -667,7 +667,7 @@ class CodeController extends Controller
         }
 
         // Legacy: Real elections require can_vote permission
-        return $user && $user->can_vote == 1;
+        return $user && $user->can_vote === true;
     }
 
     /**
@@ -773,7 +773,7 @@ class CodeController extends Controller
         } else {
             // ✅ CRITICAL: If code already verified, DO NOT regenerate
             // Code was successfully verified and user should go to agreement page
-            if ($code->can_vote_now == 1) {
+            if ($code->can_vote_now === true) {
                 Log::info('Code already verified - returning existing code', [
                     'user_id' => $user->id,
                     'election_id' => $election->id,
@@ -784,7 +784,7 @@ class CodeController extends Controller
 
             // Code exists - check if it needs resending
             $isExpired = $code->code_to_open_voting_form_sent_at && \Carbon\Carbon::parse($code->code_to_open_voting_form_sent_at)->diffInMinutes(now()) > $this->votingTimeInMinutes;
-            $codeWasUsed = $code->is_code_to_open_voting_form_usable == 0;
+            $codeWasUsed = $code->is_code_to_open_voting_form_usable === false;
             $notYetVoted = !$code->has_voted;
             $voteNotSubmitted = !$code->vote_submitted;
 
