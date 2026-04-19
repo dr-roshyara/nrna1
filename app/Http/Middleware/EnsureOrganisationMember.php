@@ -170,9 +170,9 @@ class EnsureOrganisationMember
      */
     protected function resolveOrganisation(string $identifier): ?Organisation
     {
-        // Try to resolve by UUID first
+        // Try to resolve by UUID first (use explicit id column, not route key)
         if ($this->isValidUuid($identifier)) {
-            return Organisation::withTrashed()->find($identifier);
+            return Organisation::withTrashed()->where('id', $identifier)->first();
         }
 
         // Fall back to slug resolution
