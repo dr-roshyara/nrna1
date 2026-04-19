@@ -1,11 +1,58 @@
 {
   "hero": {
-    "badge": "Fully anonymous - GDPR compliant",
+    "badge": "Fully anonymous · GDPR compliant · No registration required",
     "title": "How the Demo Election Works",
-    "title_accent": "in 5 simple steps",
-    "subtitle": "Experience a complete online election - secure, anonymous, and without registration.",
-    "cta_start": "Start Demo",
-    "cta_learn": "Learn more"
+    "title_accent": "— choose your demo type",
+    "subtitle": "Experience a complete online election. We offer two demo modes: a fully public demo (no login needed) and an organisation-specific demo for registered members.",
+    "cta_start": "Start Public Demo",
+    "cta_org": "Start Organisation Demo",
+    "cta_learn": "See how it works ↓"
+  },
+  "modes": {
+    "title": "Two Demo Modes — Which One is Right for You?",
+    "subtitle": "Both modes walk you through the same 5-step voting process. The difference is how you receive your voting code.",
+    "public": {
+      "badge": "No login required",
+      "title": "Public Demo",
+      "url_label": "/election/public-demo/start",
+      "description": "The fastest way to experience the voting system. No account needed. Your personal 8-character verification code is displayed directly on the screen as soon as you start.",
+      "highlights": [
+        "Open to everyone — no account required",
+        "Voting code shown immediately on screen",
+        "Start voting within seconds",
+        "Perfect for first-time visitors and live demonstrations"
+      ],
+      "cta": "Try the Public Demo"
+    },
+    "org": {
+      "badge": "Login required",
+      "title": "Organisation Demo",
+      "url_label": "/election/demo/start",
+      "description": "Simulates a real organisational election. You must be logged in as a member. Once you start, the system sends your personal voting code to your registered email address — just like a live election.",
+      "highlights": [
+        "Requires a member account and login",
+        "Voting code delivered to your registered email",
+        "Mirrors the exact flow of a live election",
+        "Ideal for committee members and staff training"
+      ],
+      "cta": "Try the Organisation Demo"
+    },
+    "comparison": {
+      "title": "Quick Comparison",
+      "header_feature": "Feature",
+      "header_public": "Public Demo",
+      "header_org": "Organisation Demo",
+      "rows": [
+        { "feature": "Login required", "public": "No", "org": "Yes" },
+        { "feature": "Code delivery", "public": "Shown on screen", "org": "Sent by email" },
+        { "feature": "Setup time", "public": "Instant", "org": "< 1 minute" },
+        { "feature": "Best for", "public": "Anyone / Live demos", "org": "Member training" }
+      ]
+    }
+  },
+  "steps_intro": {
+    "title": "The 5-Step Voting Process",
+    "subtitle": "Both demo modes follow the same secure 5-step process used in every real election."
   },
   "overview": {
     "title": "Your path through the demo election",
@@ -16,10 +63,10 @@
     "step5": "Done"
   },
   "step1": {
-    "title": "Enter Your Code",
-    "description": "Your personal 8-character code is displayed directly on screen. This simulates the code you would receive by email or SMS in a real election.",
-    "example_label": "Here is what it looks like:",
-    "note": "The code is only valid for this session and expires after 60 minutes."
+    "title": "Enter Your Voting Code",
+    "description": "You receive a unique 8-character personal code. In the Public Demo it is displayed directly on screen. In the Organisation Demo it is sent to your registered email address.",
+    "example_label": "Example code:",
+    "note": "The code is only valid for this session and expires after 60 minutes. Keep it safe — you will need it again at Step 4."
   },
   "step2": {
     "title": "Accept the Voting Agreement",
@@ -28,37 +75,64 @@
   },
   "step3": {
     "title": "Select Your Candidates",
-    "description": "Choose your preferred candidates. There are national positions (visible to all voters) and regional positions (filtered by your location).",
-    "candidate_example_role": "Candidate for the position of President",
+    "description": "Choose your preferred candidates for each position. There are national positions (visible to all voters) and regional positions (filtered by your registered location).",
+    "candidate_example_role": "Candidate for President",
     "select_btn": "Select",
     "skip_btn": "Skip",
-    "no_vote_title": "No Vote - What does this mean?",
-    "no_vote_body": "You can skip individual positions if you do not want to support any candidate. Your ballot remains valid - you do not have to vote for every position."
+    "no_vote_title": "What is a "No Vote"?",
+    "no_vote_body": "You may abstain on any individual position. Your ballot remains valid — you do not have to vote for every position."
   },
   "step4": {
-    "title": "Review & Confirm",
-    "description": "Review your selections and confirm your vote by entering your code a second time.",
-    "two_codes_title": "Why do I need to enter the code twice?",
-    "two_codes_body": "The second code entry proves that the same person who started the voting session is also finalising it. This prevents session hijacking - even if someone intercepts your session between steps, they cannot complete the vote without your code.",
+    "title": "Review & Confirm Your Vote",
+    "description": "Check your selections carefully. Then enter your voting code a second time to confirm. This final step is identical in both demo modes.",
+    "two_codes_title": "Why enter the code twice?",
+    "two_codes_body": "Entering your code a second time proves that the same person who opened the ballot is also finalising it. This prevents session hijacking — even if someone intercepts your session, they cannot submit a vote without your code.",
     "preview_label": "Your selections:",
     "preview_line1": "President: Dr. Anna Schmidt",
     "preview_line2": "Vice President: Michael Weber",
     "preview_line3": "Regional Representative: Abstained"
   },
   "step5": {
-    "title": "Done - Your Vote is Counted",
-    "description": "After confirmation you receive a unique receipt code. You can use it at any time to verify that your vote was correctly recorded.",
-    "receipt_caption": "Your personal receipt code - 12 characters, unique and anonymous",
-    "anon_title": "Your Vote is Anonymous",
-    "anon_body": "The receipt code is stored as a one-way hash - your name or email is never linked to your vote. You can use the code to verify the record without revealing how you voted.",
+    "title": "Done — Your Vote is Counted",
+    "description": "After confirmation you receive a unique 12-character receipt code. Use it at any time to verify that your vote was correctly recorded.",
+    "receipt_caption": "Your personal receipt code — 12 characters, unique and anonymous",
+    "anon_title": "Your Vote is Completely Anonymous",
+    "anon_body": "The receipt code is stored as a cryptographic hash. Your name, email address, or any personal data is never linked to your vote. The code lets you verify the record without revealing how you voted.",
     "verify_label": "Verify your vote:",
     "verify_placeholder": "Enter receipt code",
     "verify_btn": "Verify",
-    "verify_note": "Enter your receipt code to confirm that your vote was counted."
+    "verify_note": "Enter your 12-character receipt code to confirm your vote is in the system."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "What is the difference between the Public Demo and the Organisation Demo?",
+        "answer": "The Public Demo is open to everyone without any login. Your voting code is shown directly on screen — you can start in seconds. The Organisation Demo requires a member login and sends the code to your registered email address, exactly as in a live election."
+      },
+      {
+        "question": "Do I need to create an account to try the demo?",
+        "answer": "Not for the Public Demo. Simply click \"Start Public Demo\" and you are taken straight to the voting screen. For the Organisation Demo you need an existing member account and must be logged in."
+      },
+      {
+        "question": "Is my vote truly anonymous?",
+        "answer": "Yes. Neither demo mode stores any link between your identity and your ballot. Votes are recorded with a one-way cryptographic hash only. Even platform administrators cannot see how you voted."
+      },
+      {
+        "question": "Can I vote more than once in the demo?",
+        "answer": "Each browser session allows one completed demo vote. You can restart the demo at any time with a fresh session — for example by using a private/incognito browser window."
+      },
+      {
+        "question": "How is the Organisation Demo different from a real election?",
+        "answer": "The only difference is the data: the Organisation Demo uses sample candidates and posts. The entire 5-step flow, the code system, the anonymity guarantees, and the receipt verification are identical to a live production election."
+      }
+    ]
   },
   "cta": {
-    "title": "Ready for your first demo election?",
-    "subtitle": "No registration required - start now in 5 simple steps.",
+    "title": "Ready to experience secure online voting?",
+    "subtitle": "Choose the demo that suits you best — no commitment, no data stored permanently.",
+    "button_public": "Start Public Demo",
+    "button_org": "Start Organisation Demo",
     "button": "Start the Demo Now"
   },
   "footer": {

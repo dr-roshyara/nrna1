@@ -44,7 +44,8 @@ class PublicDemoController extends Controller
     public function guide(): Response
     {
         return Inertia::render('Vote/DemoVote/Guide', [
-            'start_url' => route('public-demo.start'),
+            'start_url'     => route('public-demo.start'),
+            'org_demo_url'  => route('election.demo.start'),
         ]);
     }
 
