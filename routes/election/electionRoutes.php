@@ -158,6 +158,7 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
    Route::middleware(['auth:sanctum', 'verified'])->get('/votes/index', [VoteController::class, 'index'])->name('vote.index');
 //    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/show', [VoteController::class, 'show'])->name('vote.show');
    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/show/{vote_id}', [VoteController::class, 'show'])->name('vote.show');
+   Route::middleware(['auth:sanctum', 'verified'])->get('/vote/download-pdf/{vote_id}', [VoteController::class, 'downloadVotePDF'])->name('vote.download-pdf');
 
    // Election-specific result routes (scoped by election slug)
    Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election}/result', [ResultController::class, 'index'])->name('result.index');

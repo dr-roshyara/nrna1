@@ -117,18 +117,6 @@
               :index="1"
             />
 
-            <!-- Election Results per published election -->
-            <ActionCard
-              v-for="(election, i) in publishedElections"
-              :key="'result-' + election.id"
-              :href="route('result.index', { election: election.slug })"
-              accent="violet"
-              :label="t.nav.election_results"
-              :description="election.name"
-              icon="chart"
-              :index="2 + i"
-            />
-
             <!-- Demo Result -->
             <ActionCard
               :href="route('demo-result.index')"
@@ -136,8 +124,71 @@
               :label="t.nav.demo_results"
               :description="t.nav.demo_results_sub"
               icon="chart"
-              :index="2 + publishedElections.length"
+              :index="2"
             />
+          </div>
+        </section>
+
+        <!-- ── SECTION 1.5: PUBLISHED ELECTION RESULTS ──────── -->
+        <section v-if="publishedElections.length > 0" aria-labelledby="results-heading" class="space-y-6">
+          <h2 id="results-heading" class="text-xs font-bold uppercase tracking-widest text-slate-400">
+            {{ publishedElections.length === 1 ? 'Election Result Available' : 'Published Election Results' }}
+          </h2>
+
+          <!-- Results Grid: Bold, Striking Design -->
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <a
+              v-for="(election, idx) in publishedElections"
+              :key="'published-' + election.id"
+              :href="route('result.index', { election: election.slug })"
+              class="result-card group relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              :style="{ animationDelay: `${idx * 120}ms` }"
+              :aria-label="`View results for ${election.name}`"
+            >
+              <!-- Animated gradient overlay -->
+              <div class="absolute inset-0 bg-gradient-to-tr from-black/0 via-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
+
+              <!-- Subtle grid pattern background -->
+              <div class="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300"
+                   style="backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0.1) 1px, transparent 1px)', 'linear-gradient(-45deg, rgba(255,255,255,0.1) 1px, transparent 1px)'; backgroundSize: '20px 20px';"
+                   aria-hidden="true"></div>
+
+              <!-- Content -->
+              <div class="relative z-10 flex flex-col h-full">
+                <!-- Header with icon -->
+                <div class="flex items-start justify-between mb-6">
+                  <div class="flex-1">
+                    <p class="text-white/70 text-xs font-semibold uppercase tracking-wider mb-2">Election Results</p>
+                    <h3 class="text-white font-black text-xl md:text-2xl leading-tight">
+                      {{ election.name }}
+                    </h3>
+                  </div>
+                  <!-- Chart Icon -->
+                  <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300" aria-hidden="true">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Spacer -->
+                <div class="flex-grow"></div>
+
+                <!-- CTA Button -->
+                <div class="pt-6 border-t border-white/20 group-hover:border-white/40 transition-colors duration-300">
+                  <div class="inline-flex items-center gap-2 text-white font-bold text-sm group-hover:gap-3 transition-all duration-300">
+                    View Results
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hover accent line -->
+              <div class="absolute bottom-0 left-0 h-1 bg-white/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
+            </a>
           </div>
         </section>
 
@@ -570,9 +621,36 @@ export default { components: { ActionCard } }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes slideUpReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .action-card,
-.election-card {
-  animation: fadeUp 0.32s ease-out both;
+.election-card,
+.result-card {
+  animation: slideUpReveal 0.48s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.result-card {
+  /* Glowing effect on hover */
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.result-card:hover {
+  box-shadow: 0 20px 40px -8px rgba(16, 185, 129, 0.4);
+}
+
+.result-card:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
 }
 
 /* High-contrast focus ring for WCAG 2.1 AA */

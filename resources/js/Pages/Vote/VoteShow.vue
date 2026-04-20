@@ -87,6 +87,20 @@
                         <p class="text-gray-600">{{ page.vote_summary.subtitle }}</p>
                     </div>
 
+                    <!-- Election Name Display with Dates -->
+                    <div class="px-6 py-6 bg-gradient-to-r from-indigo-50 to-blue-50 border-b border-indigo-100">
+                        <p class="text-sm font-medium text-indigo-600 uppercase tracking-wide mb-2">{{ page.vote_summary.election }}</p>
+                        <h2 class="text-3xl font-bold text-indigo-900 mb-3">{{ vote_data.summary.election_name }}</h2>
+                        <div v-if="vote_data.summary.election_start_date || vote_data.summary.election_end_date" class="flex items-center gap-2 text-indigo-700 font-semibold text-lg">
+                            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>{{ vote_data.summary.election_start_date }}</span>
+                            <span class="text-indigo-500">—</span>
+                            <span>{{ vote_data.summary.election_end_date }}</span>
+                        </div>
+                    </div>
+
                     <div class="p-6">
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="text-center p-4 bg-blue-50 rounded-xl">
@@ -276,6 +290,36 @@
                     </button>
                 </div>
 
+                <!-- Action Buttons -->
+                <div class="mt-8 flex gap-4 justify-center flex-wrap">
+                    <!-- Print Button -->
+                    <button
+                        @click="printVote"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                        </svg>
+                        Print Vote
+                    </button>
+
+                    <!-- Download PDF Button -->
+                    <button
+                        @click="downloadPDF"
+                        :disabled="isDownloading"
+                        class="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                    >
+                        <svg v-if="!isDownloading" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        <svg v-else class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        {{ isDownloading ? 'Generating...' : 'Download PDF' }}
+                    </button>
+                </div>
+
                 <!-- Security Notice -->
                 <div class="mt-8 text-center">
                     <div class="inline-flex items-center space-x-2 text-sm text-gray-500">
@@ -315,6 +359,7 @@ export default {
                 en: voteShowEn || {},
                 np: voteShowNp || {},
             },
+            isDownloading: false,
         };
     },
 
@@ -412,6 +457,39 @@ export default {
                 return name.charAt(0).toUpperCase();
             }
             return 'C';
+        },
+
+        /**
+         * Print the vote record
+         */
+        printVote() {
+            window.print();
+        },
+
+        /**
+         * Download vote record as PDF
+         */
+        async downloadPDF() {
+            this.isDownloading = true;
+            try {
+                const response = await fetch(route('vote.download-pdf', { vote_id: this.vote_data.vote_id }));
+                if (!response.ok) throw new Error('Failed to generate PDF');
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `vote-${this.vote_data.vote_id}.pdf`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('PDF download error:', error);
+                alert('Failed to download PDF. Please try again.');
+            } finally {
+                this.isDownloading = false;
+            }
         }
     },
 
