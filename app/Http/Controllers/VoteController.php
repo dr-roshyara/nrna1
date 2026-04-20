@@ -735,10 +735,12 @@ public function first_submission(Request $request)
 public function second_submission(Request $request)
 {
     DB::beginTransaction();
-    
+
     try {
         $auth_user = auth()->user();
-        
+        $election = $this->getElection($request);
+        $voterSlug = $request->attributes->get('voter_slug');
+
         // Basic authentication check
         if (!$auth_user) {
             Log::error('Second submission attempted without authentication');
@@ -2758,8 +2760,9 @@ public function verify_final_vote(Request $request)
           return "code.create";
        }
 
-       // If vote has already been submitted, allow progression to verification
-       if ($code->vote_submitted) {
+       // ✅ If vote already submitted, allow progression to verification
+       if ($code->vote_submitted === true) {
+           \Log::info('vote_pre_check: vote_submitted=true, allowing progression');
            return "";
        }
 
@@ -2768,26 +2771,25 @@ public function verify_final_vote(Request $request)
         $code_to_open_voting_form_used_at   =$code->code_to_open_voting_form_used_at;
         $voting_time     =$code->voting_time_in_minutes;
         $totalDuration   = \Carbon\Carbon::parse($code_to_open_voting_form_used_at)->diffInMinutes($current);
-        //    dd($code->can_vote_now);  
-       ($code->can_vote_now);
-        if(!$code->can_vote_now){
+
+       if($code->can_vote_now !== true){
             return     $return_to ="dashboard";
         }
-        // dd("test1"); 
-        if($code->has_voted){
 
+        if($code->has_voted === true){
             return     $return_to ="dashboard";
-        }      
-        //if code1 is not sent then return to code create
-        if(!$code->has_code1_sent ){
+        }
 
+        if($code->has_code1_sent !== true){
             return   $return_to ="code.create";
         }
+
         // Mode-aware check: has the voter actually used the code to open the form?
-        // STRICT mode: is_code_to_open_voting_form_usable must be 0 (consumed after first use)
-        // SIMPLE mode: code stays usable=1 for second use; check code_to_open_voting_form_used_at instead
+        // STRICT mode: is_code_to_open_voting_form_usable must be false (consumed after first use)
+        // SIMPLE mode: code stays usable=true for second use; check code_to_open_voting_form_used_at instead
         if (config('voting.two_codes_system', 0) == 1) {
-            if ($code->is_code_to_open_voting_form_usable) {
+            // ✅ EXPLICIT BOOLEAN CHECK for PostgreSQL compatibility
+            if ($code->is_code_to_open_voting_form_usable === true) {
                 return $return_to = "code.create";
             }
         } else {
@@ -2796,24 +2798,22 @@ public function verify_final_vote(Request $request)
             }
         }
             /***
-             * 
-             * check when the first code was verified last time . 
-             * If the time after first verification is longer thean the 
-             * voting period then, we should return to code and send a new code 
-             * s
+             * check when the first code was verified last time .
+             * If the time after first verification is longer than the
+             * voting period then, we should return to code and send a new code
              */
-       
+
         if($totalDuration>$voting_time)
          {
-            $code->can_vote_now     =0;
-            $code->is_code_to_open_voting_form_usable  =0;
-            $code->is_code_to_save_vote_usable  =0;
-            $code->has_code1_sent   =0;
-            $code->has_code2_sent   =0;
+            $code->can_vote_now     = false;
+            $code->is_code_to_open_voting_form_usable  = false;
+            $code->is_code_to_save_vote_usable  = false;
+            $code->has_code1_sent   = false;
+            $code->has_code2_sent   = false;
             $code->save();
-            $return_to = "code.create";     
+            $return_to = "code.create";
         }
-        return  $return_to;    
+        return  $return_to;
     } //end of vote_pre_check
    
     
@@ -2926,8 +2926,8 @@ public function verify_final_vote(Request $request)
         $totalDuration          = \Carbon\Carbon::parse($code_to_open_voting_form_used_at)->diffInMinutes($current);
         $_message['totalDuration'] = $totalDuration;
 
-        // Voting window expired OR code already used — redirect to get new code
-        if ($totalDuration > $code_expires_in || !$code->is_code_to_open_voting_form_usable) {
+        // Voting window expired — redirect to get new code
+        if ($totalDuration > $code_expires_in) {
             $code->is_code_to_open_voting_form_usable = false;
             $code->has_code2_sent   = false;
             $code->vote_submitted   = false;
