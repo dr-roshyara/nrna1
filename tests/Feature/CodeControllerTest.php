@@ -128,15 +128,44 @@ class CodeControllerTest extends TestCase
     }
 
     // ──────────────────────────────────────────────────────────────────────────
-    // T3: Verified code (can_vote_now=1) not regenerated
+    // T3: Verified code (can_vote_now=1) IS regenerated if expired
     // ──────────────────────────────────────────────────────────────────────────
 
-    public function test_verified_code_is_not_regenerated(): void
+    public function test_verified_code_regenerated_if_expired(): void
     {
+        // Create a verified code that was sent yesterday (expired)
         $code = Code::factory()->verified()->create([
-            'user_id'         => $this->user->id,
-            'election_id'     => $this->election->id,
-            'organisation_id' => $this->org->id,
+            'user_id'                          => $this->user->id,
+            'election_id'                      => $this->election->id,
+            'organisation_id'                  => $this->org->id,
+            'code_to_open_voting_form_sent_at' => now()->subMinutes(35), // More than 30-min window
+            'can_vote_now'                     => 1,
+        ]);
+        $originalCode = $code->code_to_open_voting_form;
+
+        // Visit code/create page
+        $this->actingAs($this->user)
+            ->get(route('slug.code.create', ['vslug' => $this->voterSlug->slug]));
+
+        $code->refresh();
+        // Verified code that's EXPIRED must be regenerated
+        $this->assertNotEquals($originalCode, $code->code_to_open_voting_form, 'Expired verified code must be regenerated');
+        $this->assertEquals(1, $code->can_vote_now, 'can_vote_now must stay true after regeneration');
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // T3a: Fresh verified code (within window) is NOT regenerated
+    // ──────────────────────────────────────────────────────────────────────────
+
+    public function test_fresh_verified_code_is_not_regenerated(): void
+    {
+        // Create a verified code that was just sent (still within window)
+        $code = Code::factory()->verified()->create([
+            'user_id'                          => $this->user->id,
+            'election_id'                      => $this->election->id,
+            'organisation_id'                  => $this->org->id,
+            'code_to_open_voting_form_sent_at' => now()->subMinutes(5), // Within 30-min window
+            'can_vote_now'                     => 1,
         ]);
         $originalCode = $code->code_to_open_voting_form;
 
@@ -144,7 +173,8 @@ class CodeControllerTest extends TestCase
             ->get(route('slug.code.create', ['vslug' => $this->voterSlug->slug]));
 
         $code->refresh();
-        $this->assertEquals($originalCode, $code->code_to_open_voting_form, 'Verified code must not be regenerated');
+        // Fresh verified code must NOT be regenerated
+        $this->assertEquals($originalCode, $code->code_to_open_voting_form, 'Fresh verified code must not be regenerated');
         $this->assertEquals(1, $code->can_vote_now);
     }
 
@@ -330,10 +360,10 @@ class CodeControllerTest extends TestCase
     }
 
     // ──────────────────────────────────────────────────────────────────────────
-    // T11: Expired AND verified code (can_vote_now=1) not regenerated [edge case]
+    // T11: Expired AND verified code (can_vote_now=1) IS regenerated [fixed!]
     // ──────────────────────────────────────────────────────────────────────────
 
-    public function test_expired_verified_code_is_not_regenerated(): void
+    public function test_expired_verified_code_is_regenerated(): void
     {
         $code = Code::factory()->verified()->create([
             'user_id'                          => $this->user->id,
@@ -348,7 +378,7 @@ class CodeControllerTest extends TestCase
             ->get(route('slug.code.create', ['vslug' => $this->voterSlug->slug]));
 
         $code->refresh();
-        $this->assertEquals($originalCode, $code->code_to_open_voting_form, 'Verified code must not be regenerated even if expired');
-        $this->assertTrue($code->can_vote_now);
+        $this->assertNotEquals($originalCode, $code->code_to_open_voting_form, 'Expired verified code MUST be regenerated');
+        $this->assertTrue($code->can_vote_now, 'Verified status must remain true after regeneration');
     }
 }

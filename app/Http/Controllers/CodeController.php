@@ -142,15 +142,18 @@ class CodeController extends Controller
                 'user_id' => $user->id,
                 'minutes_since_sent' => $minutesSinceSent,
                 'max_minutes' => $this->votingTimeInMinutes,
+                'was_verified' => $code->can_vote_now,
             ]);
 
             // Generate new code and reset all flags (full window reset)
+            // ✅ CRITICAL: Preserve verified status (can_vote_now=true) after regeneration
+            //    If code was already verified, it should stay verified
             $code->update([
                 'code_to_open_voting_form'           => $this->generateUniqueCodeForOrganisation($election->organisation_id),
                 'code_to_open_voting_form_sent_at'   => now(),
                 'has_code1_sent'                     => true,
                 'is_code_to_open_voting_form_usable' => true,
-                'can_vote_now'                       => false,
+                'can_vote_now'                       => $code->can_vote_now, // Preserve verified status
                 'code_to_open_voting_form_used_at'   => null,
                 'voting_started_at'                  => null,
                 'vote_submitted'                     => false,
