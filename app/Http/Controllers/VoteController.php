@@ -3782,8 +3782,14 @@ private function generateVotePDF($voteData)
             // Selected candidates
             if (!empty($post['candidates']) && is_array($post['candidates'])) {
                 foreach ($post['candidates'] as $candidate) {
+                    // Handle both string candidates and array candidates with candidacy_name
+                    $candidateName = $candidate;
+                    if (is_array($candidate)) {
+                        $candidateName = $candidate['candidacy_name'] ??
+                                        ($candidate['user_info']['name'] ?? 'Unknown Candidate');
+                    }
                     $pdf->Cell(5, 8, '', 0, 0, 'L');
-                    $pdf->Cell(0, 8, '• ' . $candidate, 0, 1, 'L');
+                    $pdf->Cell(0, 8, '• ' . (is_string($candidateName) ? $candidateName : json_encode($candidateName)), 0, 1, 'L');
                 }
             } elseif (!empty($post['no_vote'])) {
                 $pdf->Cell(5, 8, '', 0, 0, 'L');
