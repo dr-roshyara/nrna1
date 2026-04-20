@@ -58,6 +58,9 @@ abstract class BaseVote extends Model
         'election_id',
         'vote_hash',
         'receipt_hash',
+        'data_checksum',
+        'results_last_synced_at',
+        'is_verified',
         'no_vote_option',
         'participation_proof',
         'encrypted_vote',
@@ -114,6 +117,13 @@ abstract class BaseVote extends Model
      */
     protected static function booted()
     {
+        static::creating(function ($vote) {
+            // ✅ Calculate data checksum for integrity verification
+            if ($vote instanceof Vote && !$vote->data_checksum) {
+                $vote->data_checksum = $vote->calculateChecksum();
+            }
+        });
+
         static::saved(function ($vote) {
             // ✅ Create Result records for each selected candidate
             if ($vote instanceof Vote) {
