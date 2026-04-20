@@ -56,6 +56,7 @@ abstract class BaseVote extends Model
     protected $fillable = [
         'organisation_id',
         'election_id',
+        'vote_hash',
         'receipt_hash',
         'no_vote_option',
         'participation_proof',

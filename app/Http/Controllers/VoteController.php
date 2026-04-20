@@ -2511,6 +2511,27 @@ public function verifyVoteSubmit(): array
             $vote->organisation_id = session('current_organisation_id');
         }
 
+        // Generate vote_hash BEFORE first save (required by schema, ensures anonymity)
+        // Uses SHA256(code_id + election_id + code_value + timestamp + salt) — no voter identification
+        $castAt = now();
+        if ($code && $code->code_to_open_voting_form) {
+            $vote->vote_hash = hash('sha256',
+                $code->id .
+                $election->id .
+                $code->code_to_open_voting_form .
+                $castAt->timestamp .
+                config('app.vote_salt', '')
+            );
+        } else {
+            // Fallback: use private_key if code data unavailable
+            $vote->vote_hash = hash('sha256',
+                ($private_key ? $private_key : bin2hex(random_bytes(16))) .
+                $election->id .
+                $castAt->timestamp .
+                config('app.vote_salt', '')
+            );
+        }
+
         $vote->save();   // Save the vote first (sets cast_at automatically)
         $this->out_code = $vote->getKey();  // Get the vote's primary key
 
