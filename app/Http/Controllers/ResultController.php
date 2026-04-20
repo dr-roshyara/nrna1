@@ -85,6 +85,7 @@ class ResultController extends Controller
             'posts'         => $postsData,
             'logo_url'      => $organisation?->logo ? asset($organisation->logo) : null,
             'org_name'      => $organisation?->name,
+            'org_slug'      => $organisation?->slug,
         ];
 
         $postsArray = $posts->map(fn($post) => [

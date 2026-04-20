@@ -4,25 +4,43 @@
       <!-- Hero Header -->
       <header class="results-hero" role="banner">
         <div class="results-hero__inner">
-          <!-- Organisation Logo -->
-          <div v-if="final_result?.logo_url" class="results-hero__logo">
-            <img
-              :src="final_result.logo_url"
-              :alt="final_result.org_name || 'Organisation logo'"
-              class="results-hero__logo-img"
-            />
-          </div>
-          <div class="results-hero__badge" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-            Official Results
-          </div>
-          <h1 class="results-hero__title">Election Results</h1>
-          <p class="results-hero__subtitle" v-if="final_result?.election_name">
-            {{ final_result.election_name }}
-          </p>
-          <div class="results-hero__stat" aria-label="Total votes cast">
-            <span class="results-hero__stat-number">{{ formatNumber(final_result?.total_votes || 0) }}</span>
-            <span class="results-hero__stat-label">Total Votes Cast</span>
+          <div class="results-hero__header">
+            <div>
+              <!-- Organisation Logo -->
+              <div v-if="final_result?.logo_url" class="results-hero__logo">
+                <img
+                  :src="final_result.logo_url"
+                  :alt="final_result.org_name || 'Organisation logo'"
+                  class="results-hero__logo-img"
+                />
+              </div>
+              <div class="results-hero__badge" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                Official Results
+              </div>
+              <h1 class="results-hero__title">Election Results</h1>
+              <p class="results-hero__subtitle" v-if="final_result?.election_name">
+                {{ final_result.election_name }}
+              </p>
+              <div class="results-hero__stat" aria-label="Total votes cast">
+                <span class="results-hero__stat-number">{{ formatNumber(final_result?.total_votes || 0) }}</span>
+                <span class="results-hero__stat-label">Total Votes Cast</span>
+              </div>
+            </div>
+
+            <!-- Organisation Button -->
+            <a v-if="final_result?.org_slug"
+               :href="route('organisations.show', final_result.org_slug)"
+               class="results-org-button"
+               :title="`Go to ${final_result.org_name}`">
+              <svg class="results-org-button__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              <span class="results-org-button__text">{{ final_result.org_name }}</span>
+              <svg class="results-org-button__arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
           </div>
         </div>
       </header>
@@ -189,6 +207,71 @@ export default {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #94a3b8;
+}
+
+.results-hero__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.results-hero__header > div {
+  flex: 1;
+  min-width: 250px;
+}
+
+.results-org-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  height: fit-content;
+}
+
+.results-org-button:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: rgba(212, 175, 55, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+}
+
+.results-org-button:focus-visible {
+  outline: 3px solid #d4af37;
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+.results-org-button__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.results-org-button__text {
+  font-weight: 600;
+}
+
+.results-org-button__arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.results-org-button:hover .results-org-button__arrow {
+  transform: translateX(3px);
 }
 
 /* ── Main ───────────────────────────────────────────── */
