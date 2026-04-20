@@ -124,14 +124,12 @@ abstract class BaseVote extends Model
             }
         });
 
-        // TEMPORARILY DISABLED - Using controller's result creation (working code)
-        // Will be enabled on staging after verifying no duplicates with model event
-        // static::saved(function ($vote) {
-        //     // ✅ Create Result records for each selected candidate
-        //     if ($vote instanceof Vote) {
-        //         $vote->createResultsFromCandidates();
-        //     }
-        // });
+        static::saved(function ($vote) {
+            // ✅ Create Result records for each selected candidate
+            if ($vote instanceof Vote) {
+                $vote->createResultsFromCandidates();
+            }
+        });
 
         static::creating(function ($vote) {
             // ✅ AUTO-GENERATE receipt_hash if not provided

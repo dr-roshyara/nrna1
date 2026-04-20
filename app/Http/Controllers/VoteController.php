@@ -1725,8 +1725,8 @@ private function has_valid_selections($selections)
     ];
 
     // SIMPLE MODE: Mark Code1 as fully used (second use completed)
-    if (config('voting.two_codes_system') != 1) {
-        $updateData['is_code_to_open_voting_form_usable'] = 0;
+    if (config('voting.two_codes_system') !== 1) {
+        $updateData['is_code_to_open_voting_form_usable'] = false;
     }
 
     $code->update($updateData);
@@ -1757,16 +1757,6 @@ protected function prepareVoteData(?array $selection): ?array
  * @param int $vote_id
  * @param array $selection
  */
-protected function saveCandidateResults(int $vote_id, array $selection)
-{
-    foreach ($selection['candidates'] as $candidate) {
-        Result::create([
-            'vote_id' => $vote_id,
-            'post_id' => $selection['post_id'],
-            'candidacy_id' => $candidate['candidacy_id']
-        ]);
-    }
-}
 
 protected function handleVoteError(string $message)
 {
@@ -1813,14 +1803,12 @@ protected function saveCandidateSelections(Vote $vote, array $vote_data)
     foreach ($all_candidates as $index => $selection) {
         $column_name = 'candidate_' . str_pad($index + 1, 2, '0', STR_PAD_LEFT);
         $vote_data = $this->prepareVoteData($selection);
-        
+
         if ($vote_data) {
             $vote->$column_name = json_encode($vote_data);
-            
-            // Save individual candidate results if selection exists
-            if (!empty($selection['candidates'])) {
-                $this->saveCandidateResults($vote->id, $selection);
-            }
+
+            // Results will be created by the model event (BaseVote::saved hook)
+            // All result creation delegated to createResultsFromCandidates()
         }
     }
 
@@ -2584,31 +2572,7 @@ public function verifyVoteSubmit(): array
                         $_vote_json["no_vote"]  =true;
                     } else {
                         $_vote_json["no_vote"]  =false;
-                        //Here save the vote result one by one in Result
-                        $post_id                = $_vote_json['post_id'];
-                        // dd($candidates);
-                        for($j=0;$j<sizeof($candidates);$j++){
-                          //save each selected candidates in the result
-                          $result                = new $resultModel;
-                          $result->vote_id       =$vote->id;
-                          $result->election_id   =$election->id;
-                          $result->post_id       =$post_id;
-                          $result->candidacy_id  =$candidates[$j]['candidacy_id'];
-
-                          // PHASE 3: Explicitly set organisation_id based on election type
-                          if ($election->type === 'real') {
-                              // Real results: Always set from election's organisation_id (enforced at all 4 layers)
-                              $result->organisation_id = $election->organisation_id;
-                          } else {
-                              // Demo results: Set from session context if available
-                              // MODE 1: organisation_id = NULL (no organisation)
-                              // MODE 2: organisation_id = user's organisation_id
-                              $result->organisation_id = session('current_organisation_id');
-                          }
-
-                          $result->save();
-
-                        }
+                        // Result creation delegated to BaseVote::saved() model event
                     }
 
 
@@ -2787,7 +2751,7 @@ public function verify_final_vote(Request $request)
         // Mode-aware check: has the voter actually used the code to open the form?
         // STRICT mode: is_code_to_open_voting_form_usable must be false (consumed after first use)
         // SIMPLE mode: code stays usable=true for second use; check code_to_open_voting_form_used_at instead
-        if (config('voting.two_codes_system', 0) == 1) {
+        if (config('voting.two_codes_system', 0) === 1) {
             // ✅ EXPLICIT BOOLEAN CHECK for PostgreSQL compatibility
             if ($code->is_code_to_open_voting_form_usable === true) {
                 return $return_to = "code.create";
@@ -2919,7 +2883,7 @@ public function verify_final_vote(Request $request)
         $_message['return_to']     ="";
         $_message['totalDuration'] =0;
 
-        $isStrictMode           = config('voting.two_codes_system', 0) == 1;
+        $isStrictMode           = config('voting.two_codes_system', 0) === 1;
         $code_expires_in        = $code->voting_time_in_minutes;
         $current                = Carbon::now();
         $code_to_open_voting_form_used_at = $code->code_to_open_voting_form_used_at;

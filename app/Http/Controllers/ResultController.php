@@ -87,9 +87,16 @@ class ResultController extends Controller
             'org_name'      => $organisation?->name,
         ];
 
+        $postsArray = $posts->map(fn($post) => [
+            'id'              => $post->id,
+            'name'            => $post->name,
+            'state_name'      => $post->state_name,
+            'required_number' => $post->required_number,
+        ])->values()->toArray();
+
         return Inertia::render('Result/Index', [
             'final_result' => $results,
-            'posts'        => $posts,
+            'posts'        => $postsArray,
         ]);
     }
 

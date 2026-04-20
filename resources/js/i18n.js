@@ -185,8 +185,8 @@ function getInitialLocale() {
     }
   }
 
-  // 3. Check environment variable
-  const envLocale = process.env.MIX_DEFAULT_LOCALE || 'de';
+  // 3. Check environment variable (Vite)
+  const envLocale = import.meta.env.VITE_DEFAULT_LOCALE || 'de';
   if (['de', 'en', 'np'].includes(envLocale)) {
     return envLocale;
   }

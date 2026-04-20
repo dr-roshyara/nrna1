@@ -60,7 +60,7 @@ class Vote extends BaseVote
      */
     public function createResultsFromCandidates(): void
     {
-        // Delete existing results first (idempotent)
+        // Delete existing results first (idempotent - safe if called multiple times)
         Result::where('vote_id', $this->id)->forceDelete();
 
         $candidateCount = 0;

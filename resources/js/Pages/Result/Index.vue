@@ -77,6 +77,10 @@ export default {
     posts:        { type: Array,  default: () => [] },
   },
 
+  mounted() {
+    // Data logging
+  },
+
   methods: {
     getPostResults(postId) {
       return this.final_result?.posts?.find(p => p.post_id === postId) ?? {}
