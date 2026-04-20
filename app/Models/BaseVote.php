@@ -124,8 +124,8 @@ abstract class BaseVote extends Model
             }
         });
 
-        // TEMPORARILY DISABLED - Using controller's saveCandidateResults() instead
-        // Will be enabled in staging after verifying no duplicates with new model event
+        // TEMPORARILY DISABLED - Using controller's result creation (working code)
+        // Will be enabled on staging after verifying no duplicates with model event
         // static::saved(function ($vote) {
         //     // ✅ Create Result records for each selected candidate
         //     if ($vote instanceof Vote) {
