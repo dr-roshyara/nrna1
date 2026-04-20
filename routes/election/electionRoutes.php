@@ -404,21 +404,36 @@ Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\Substitut
 //     })->name('voter.vote.submit');
 // });
 
-// Slug-based voting workflow routes (integrated with existing controllers)
+// ============================================================================
+// STEP 1: CODE CREATION (Allow expired voter slugs - CodeController extends them)
+// ============================================================================
+// NOTE: Does NOT include 'voter.slug.window' middleware because expired slugs
+// should be allowed here so CodeController can extend them. The CodeController
+// regenerates the code and extends the voter slug window.
 // Middleware chain:
 // 1. SubstituteBindings - Route model binding
 // 2. voter.slug.verify - Verify slug exists, belongs to user, is active
-// 3. voter.slug.window - Check expiration
+// 3. voter.slug.consistency - Validate election exists and org consistency
+// 4. ensure.election.voter - Check voter membership
+// 5. vote.organisation - Organisation security
+Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.consistency', 'ensure.election.voter', 'vote.organisation'])->group(function () {
+    Route::get('code/create', [CodeController::class, 'create'])->name('slug.code.create');
+    Route::post('code', [CodeController::class, 'store'])->name('slug.code.store');
+});
+
+// ============================================================================
+// STEPS 2-5: FULL VOTING WORKFLOW (with expiration enforcement)
+// ============================================================================
+// Middleware chain:
+// 1. SubstituteBindings - Route model binding
+// 2. voter.slug.verify - Verify slug exists, belongs to user, is active
+// 3. voter.slug.window - Check expiration ← NOW enforced here
 // 4. voter.slug.consistency - Validate election exists and org consistency
 // 5. voter.step.order - Ensure step progression
 // 6. vote.eligibility - Check voting rights
 // 7. validate.voting.ip - IP restrictions (if enabled)
 // 8. vote.organisation - Organisation security
 Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.window', 'voter.slug.consistency', 'ensure.election.voter', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'vote.organisation'])->group(function () {
-
-    // Step 1: Code creation (using existing CodeController)
-    Route::get('code/create', [CodeController::class, 'create'])->name('slug.code.create');
-    Route::post('code', [CodeController::class, 'store'])->name('slug.code.store');
 
     // Step 2: Agreement (using existing CodeController)
     Route::get('vote/agreement', [CodeController::class, 'showAgreement'])->name('slug.code.agreement');
