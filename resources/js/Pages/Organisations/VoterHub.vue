@@ -370,6 +370,26 @@
                       </svg>
                     </a>
 
+                    <!-- Verify Vote -->
+                    <a
+                      href="/vote/verify_to_show"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-blue-200 bg-blue-50 hover:bg-white hover:border-blue-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1"
+                      aria-label="Verify your submitted vote"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-blue-800">Verify Vote</span>
+                        <span class="block text-xs text-blue-600">View and verify your vote</span>
+                      </span>
+                      <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+
                     <!-- Import Voters — officers only -->
                     <a
                       v-if="isOfficer"
