@@ -80,12 +80,13 @@ class ResultController extends Controller
             : null;
 
         $results = [
-            'total_votes'   => $totalVotes,
-            'election_name' => $election->name,
-            'posts'         => $postsData,
-            'logo_url'      => $organisation?->logo ? asset($organisation->logo) : null,
-            'org_name'      => $organisation?->name,
-            'org_slug'      => $organisation?->slug,
+            'total_votes'      => $totalVotes,
+            'election_name'    => $election->name,
+            'election_slug'    => $election->slug,
+            'posts'            => $postsData,
+            'logo_url'         => $organisation?->logo ? asset($organisation->logo) : null,
+            'org_name'         => $organisation?->name,
+            'org_slug'         => $organisation?->slug,
         ];
 
         $postsArray = $posts->map(fn($post) => [
@@ -221,20 +222,75 @@ private function detectAnomalies($stats)
   /**
    * Generate and download PDF report of election results
    */
-  public function downloadPDF()
+  public function downloadPDF(string $election)
   {
+      // Get the election
+      $election = Election::withoutGlobalScopes()
+          ->where('slug', $election)
+          ->firstOrFail();
+
       // Check if results can be viewed (election finished and published)
-      if (!ElectionService::canViewResults()) {
-          return redirect()->back()->with('error',
-              'PDF download is only available after election results are published.'
-          );
+      if (!$election->results_published) {
+          abort(403, 'Election results have not been published yet.');
       }
 
-      // Get the same data as the web view
-      $posts = Post::get(['post_id', 'name', 'state_name', 'required_number']);
+      // Get total votes for this election
+      $totalVotes = Vote::withoutGlobalScopes()
+          ->where('election_id', $election->id)
+          ->count();
 
-      // Get results data
-      $results = $this->getElectionResultsData($posts);
+      // Load vote counts from results table (pre-aggregated at vote submission time)
+      $voteCounts = DB::table('results')
+          ->where('results.election_id', $election->id)
+          ->whereNotNull('results.candidacy_id')
+          ->select('results.post_id', 'results.candidacy_id', DB::raw('COUNT(*) as vote_count'))
+          ->groupBy('results.post_id', 'results.candidacy_id')
+          ->get()
+          ->groupBy('post_id');
+
+      $posts = Post::withoutGlobalScopes()
+          ->where('election_id', $election->id)
+          ->get(['id', 'name', 'state_name', 'required_number']);
+
+      $postsData = [];
+      foreach ($posts as $post) {
+          $allCandidates = \App\Models\Candidacy::withoutGlobalScopes()
+              ->where('post_id', $post->id)
+              ->with('user')
+              ->get();
+
+          $postVoteCounts = $voteCounts->get($post->id, collect())->keyBy('candidacy_id');
+
+          $candidates = $allCandidates->map(function ($candidacy) use ($postVoteCounts, $totalVotes) {
+              $count = $postVoteCounts->get($candidacy->id)->vote_count ?? 0;
+              return [
+                  'candidacy_id' => $candidacy->id,
+                  'name'         => $candidacy->user->name ?? $candidacy->name ?? 'Unknown',
+                  'vote_count'   => $count,
+                  'vote_percent' => $totalVotes > 0 ? round($count / $totalVotes * 100, 2) : 0,
+              ];
+          })->sortByDesc('vote_count')->values()->toArray();
+
+          $noVoteCount = DB::table('results')
+              ->where('election_id', $election->id)
+              ->where('post_id', $post->id)
+              ->whereNull('candidacy_id')
+              ->count();
+
+          $postsData[] = [
+              'post_id'              => $post->id,
+              'post_name'            => $post->name,
+              'candidates'           => $candidates,
+              'no_vote_count'        => $noVoteCount,
+              'total_votes_for_post' => array_sum(array_column($candidates, 'vote_count')) + $noVoteCount,
+          ];
+      }
+
+      $results = [
+          'total_votes'   => $totalVotes,
+          'election_name' => $election->name,
+          'posts'         => $postsData,
+      ];
 
       // Generate PDF
       $pdf = $this->generateResultsPDF($results, $posts);

@@ -45,6 +45,31 @@
         </div>
       </header>
 
+      <!-- Action Buttons -->
+      <section class="results-actions">
+        <button
+          @click="downloadPDF"
+          class="results-btn results-btn--primary"
+          :disabled="isDownloading"
+          :aria-label="isDownloading ? 'Generating PDF...' : 'Download results as PDF'">
+          <svg v-if="!isDownloading" class="results-btn__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          <span v-if="isDownloading">Generating PDF...</span>
+          <span v-else>Download PDF</span>
+        </button>
+
+        <button
+          @click="printResults"
+          class="results-btn results-btn--secondary"
+          aria-label="Print results">
+          <svg class="results-btn__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4H9a2 2 0 00-2 2v2a2 2 0 002 2h6a2 2 0 002-2v-2a2 2 0 00-2-2zm-6-4a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span>Print</span>
+        </button>
+      </section>
+
       <!-- Main content -->
       <main class="results-main" id="main-content">
 
@@ -95,6 +120,12 @@ export default {
     posts:        { type: Array,  default: () => [] },
   },
 
+  data() {
+    return {
+      isDownloading: false,
+    };
+  },
+
   mounted() {
     // Data logging
   },
@@ -105,6 +136,31 @@ export default {
     },
     formatNumber(n) {
       return new Intl.NumberFormat().format(n)
+    },
+    async downloadPDF() {
+      this.isDownloading = true;
+      try {
+        const response = await fetch(
+          route('result.download.pdf', this.final_result?.election_slug || '')
+        );
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `election_results_${new Date().toISOString().split('T')[0]}.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(link);
+      } catch (error) {
+        console.error('Failed to download PDF:', error);
+        alert('Failed to download PDF. Please try again.');
+      } finally {
+        this.isDownloading = false;
+      }
+    },
+    printResults() {
+      window.print();
     },
   },
 }
@@ -331,6 +387,78 @@ export default {
   font-size: 0.75rem;
   color: #94a3b8;
   text-align: center;
+}
+
+/* ── Actions ────────────────────────────────────────── */
+.results-actions {
+  max-width: 56rem;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.results-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px;
+}
+
+.results-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.results-btn__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.results-btn--primary {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+  color: #d4af37;
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+}
+
+.results-btn--primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1a2845 0%, #2a4575 100%);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+}
+
+.results-btn--secondary {
+  background: #64748b;
+  color: #fff;
+}
+
+.results-btn--secondary:hover:not(:disabled) {
+  background: #475569;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.results-btn:focus-visible {
+  outline: 3px solid #d4af37;
+  outline-offset: 2px;
+}
+
+/* ── Print styles ──────────────────────────────────── */
+@media print {
+  .results-actions { display: none !important; }
+  .results-hero__header { flex-direction: column; }
+  .results-org-button { display: none !important; }
+  .results-post { page-break-inside: avoid; }
+  main { max-width: 100%; }
 }
 
 /* ── Skip-to-content (accessibility) ───────────────── */
