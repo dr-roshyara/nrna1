@@ -564,9 +564,9 @@ public function first_submission(Request $request)
 
     // Get the code model and set as submitted (only for real elections with codes)
     if ($code) {
-        $code->vote_submitted    = 1;
+        $code->vote_submitted    = true;
         $code->vote_submitted_at = \Carbon\Carbon::now();
-        // $code->save(); // Save the state!
+        $code->save();
     }
 
     // Pre-checks (time, code usability, etc.)
@@ -848,7 +848,7 @@ public function second_submission(Request $request)
         }
 
         // Update submission status
-        $code->vote_submitted = 1;
+        $code->vote_submitted = true;
         $code->vote_submitted_at = Carbon::now();
          $code->session_name = 'vote_' . $code->id."_". auth()->id();
 
@@ -1112,9 +1112,9 @@ public function send_second_voting_code(&$code, $auth_user)
         if (!$code->has_code2_sent || !$code->is_code_to_save_vote_usable) {
             $voting_code = get_random_string(8);
             $code->code_to_save_vote = Hash::make($voting_code);
-            $code->has_code2_sent = 1;
-            $code->is_code_to_open_voting_form_usable = 0; 
-            $code->is_code_to_save_vote_usable = 1;
+            $code->has_code2_sent = true;
+            $code->is_code_to_open_voting_form_usable = false;
+            $code->is_code_to_save_vote_usable = true;
             $code->code_to_save_vote_sent_at = Carbon::now();
             $code->save();
             
@@ -2737,6 +2737,11 @@ public function verify_final_vote(Request $request)
           return "code.create";
        }
 
+       // If vote has already been submitted, allow progression to verification
+       if ($code->vote_submitted) {
+           return "";
+       }
+
         $return_to       ="";
         $current         = Carbon::now();
         $code_to_open_voting_form_used_at   =$code->code_to_open_voting_form_used_at;
@@ -2902,9 +2907,9 @@ public function verify_final_vote(Request $request)
 
         // Voting window expired — redirect to get new code
         if ($totalDuration > $code_expires_in || $code->is_code_to_open_voting_form_usable) {
-            $code->is_code_to_open_voting_form_usable = 0;
-            $code->has_code2_sent   = 0;
-            $code->vote_submitted   = 0;
+            $code->is_code_to_open_voting_form_usable = false;
+            $code->has_code2_sent   = false;
+            $code->vote_submitted   = false;
             $code->save();
             $_message["return_to"]     = 'code.create';
             $_message["totalDuration"] = $totalDuration;
@@ -2913,9 +2918,9 @@ public function verify_final_vote(Request $request)
 
         // Vote not yet submitted — return to voting form
         if (!$code->vote_submitted) {
-            $code->is_code_to_open_voting_form_usable = 0;
-            $code->is_code_to_save_vote_usable        = 0;
-            $code->has_code2_sent = 0;
+            $code->is_code_to_open_voting_form_usable = false;
+            $code->is_code_to_save_vote_usable        = false;
+            $code->has_code2_sent = false;
             $code->save();
             $_message["return_to"]     = 'vote.create';
             $_message["totalDuration"] = $totalDuration;
