@@ -109,9 +109,18 @@ abstract class BaseVote extends Model
      * 2. organisation_id matches election's organisation
      * 3. vote_hash is provided (cryptographic proof)
      * 4. cast_at timestamp is set
+     *
+     * After save, creates Result records for each selected candidate
      */
     protected static function booted()
     {
+        static::saved(function ($vote) {
+            // ✅ Create Result records for each selected candidate
+            if ($vote instanceof Vote) {
+                $vote->createResultsFromCandidates();
+            }
+        });
+
         static::creating(function ($vote) {
             // ✅ AUTO-GENERATE receipt_hash if not provided
             // This ensures all votes (demo and real) have cryptographic proof

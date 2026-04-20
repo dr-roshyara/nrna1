@@ -35,6 +35,74 @@ class Vote extends BaseVote
     }
 
     /**
+     * Create Result records for each selected candidate AND abstentions in this vote
+     * Extracts data from candidate_01 through candidate_60 columns (JSON format)
+     * and creates Result records for:
+     * 1. Selected candidates (no_vote = false, candidacy_id set)
+     * 2. Abstentions (no_vote = true, candidacy_id = null)
+     *
+     * @return void
+     */
+    public function createResultsFromCandidates(): void
+    {
+        // Delete existing results first (idempotent)
+        Result::where('vote_id', $this->id)->forceDelete();
+
+        $candidateCount = 0;
+        $abstentionCount = 0;
+
+        // Iterate through all candidate columns (candidate_01 through candidate_60)
+        for ($i = 1; $i <= 60; $i++) {
+            $candidateKey = 'candidate_' . str_pad($i, 2, '0', STR_PAD_LEFT);
+            $value = $this->$candidateKey;
+
+            if ($value !== null && is_string($value) && str_starts_with($value, '{')) {
+                $decoded = json_decode($value, true);
+                $postId = $decoded['post_id'] ?? null;
+
+                // ✅ Handle "No Vote" / Abstention
+                if (isset($decoded['no_vote']) && $decoded['no_vote'] === true) {
+                    Result::create([
+                        'organisation_id' => $this->organisation_id,
+                        'election_id' => $this->election_id,
+                        'vote_id' => $this->id,
+                        'post_id' => $postId,
+                        'candidacy_id' => null,  // NULL for abstention
+                        'no_vote' => true,
+                        'position_order' => $i,
+                    ]);
+                    $abstentionCount++;
+                    continue;  // Skip candidate processing
+                }
+
+                // ✅ Handle selected candidates
+                if (isset($decoded['candidates']) && is_array($decoded['candidates'])) {
+                    foreach ($decoded['candidates'] as $candidate) {
+                        if (isset($candidate['candidacy_id'])) {
+                            Result::create([
+                                'organisation_id' => $this->organisation_id,
+                                'election_id' => $this->election_id,
+                                'vote_id' => $this->id,
+                                'post_id' => $postId,
+                                'candidacy_id' => $candidate['candidacy_id'],
+                                'no_vote' => false,
+                                'position_order' => $i,
+                            ]);
+                            $candidateCount++;
+                        }
+                    }
+                }
+            }
+        }
+
+        \Log::info('Results created for vote', [
+            'vote_id' => $this->id,
+            'candidate_count' => $candidateCount,
+            'abstention_count' => $abstentionCount,
+        ]);
+    }
+
+    /**
      * Check if this is a real vote (always true for this class)
      *
      * @return bool
