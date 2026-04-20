@@ -3003,22 +3003,15 @@ public function verify_final_vote(Request $request)
         // Return the appropriate redirect response to the verification page
         // Check if this is slug-based voting by looking for voter slug in request
         $voterSlug = $request->attributes->get('voter_slug');
-        \Log::info('verify_first_submission redirect decision', [
-            'has_voter_slug' => $voterSlug !== null,
-            'slug' => $voterSlug ? $voterSlug->slug : null,
-            'is_demo_election' => $isDemoElection
-        ]);
 
         // ✅ FIX: Redirect to demo routes for demo elections, regular routes for real elections
         if ($voterSlug) {
             if ($isDemoElection) {
                 // Demo election with slug - use demo verification route
                 $redirect = redirect()->route('slug.demo-vote.verify', ['vslug' => $voterSlug->slug]);
-                \Log::info('Returning slug-based demo redirect', ['url' => $redirect->getTargetUrl()]);
             } else {
                 // Real election with slug - use regular verification route
                 $redirect = redirect()->route('slug.vote.verify', ['vslug' => $voterSlug->slug]);
-                \Log::info('Returning slug-based regular redirect', ['url' => $redirect->getTargetUrl()]);
             }
             return $redirect;
         } else {

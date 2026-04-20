@@ -92,6 +92,7 @@ class VoteSubmissionRedirectTest extends TestCase
         $response = $this->post(
             route('slug.vote.submit', ['vslug' => $this->voterSlug->slug]),
             [
+                'user_id' => $this->user->id,
                 'agree_button' => true,
                 'national_selected_candidates' => [
                     [
@@ -107,11 +108,8 @@ class VoteSubmissionRedirectTest extends TestCase
             ]
         );
 
-        $response->assertRedirect();
-        $redirectUrl = $response->headers->get('Location');
-
-        $this->assertStringNotContainsString('/code/create', $redirectUrl, "Should NOT redirect to code/create. Got: $redirectUrl");
-        $this->assertStringContainsString('/vote/verify', $redirectUrl, "Should redirect to vote/verify. Got: $redirectUrl");
+        // Use assertRedirectToRoute which properly handles slug-based routes
+        $response->assertRedirectToRoute('slug.vote.verify', ['vslug' => $this->voterSlug->slug]);
     }
 
     public function test_vote_submitted_flag_persisted_after_first_submission(): void
