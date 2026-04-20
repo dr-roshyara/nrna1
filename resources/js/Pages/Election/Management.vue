@@ -577,6 +577,18 @@
               </svg>
               {{ t.sections.results.btn_unpublish }}
             </ActionButton>
+
+            <a
+              v-if="election.results_published"
+              :href="route('result.index', election.slug)"
+              class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-indigo-50 to-blue-50 text-indigo-700 font-semibold rounded-lg border-2 border-indigo-200 hover:border-indigo-400 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-indigo-200 transition-all duration-200 w-full sm:w-auto"
+              title="View published election results"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>Election Results</span>
+            </a>
           </div>
         </SectionCard>
 
