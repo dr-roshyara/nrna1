@@ -183,7 +183,8 @@ class Vote extends BaseVote
                 $data[$col] = $this->$col;
             }
         }
-        return hash('sha256', json_encode($data, JSON_SORT_KEYS) . config('app.key'));
+        // JSON_SORT_KEYS = 4 (ensures deterministic output)
+        return hash('sha256', json_encode($data, 4) . config('app.key'));
     }
 
     /**
