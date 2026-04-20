@@ -110,9 +110,11 @@ class VoteController extends Controller
 
         // Organisation mismatch check: voter slug must belong to the same org as election
         if ($election && $voterSlug) {
+            $platformOrgId   = config('app.platform_organisation_id')
+                ?? \App\Models\Organisation::where('slug', 'public-digit')->value('id');
             $orgsMatch       = $election->organisation_id === $voterSlug->organisation_id;
-            $isPlatformElect = $election->organisation_id == 1;
-            $isPlatformSlug  = $voterSlug->organisation_id == 1;
+            $isPlatformElect = $election->organisation_id == $platformOrgId;
+            $isPlatformSlug  = $voterSlug->organisation_id == $platformOrgId;
 
             if (!$orgsMatch && !$isPlatformElect && !$isPlatformSlug) {
                 Log::error('Organisation mismatch in getElection()', [
@@ -158,11 +160,11 @@ class VoteController extends Controller
             return true;
         }
 
-        // REAL: Check if user has a verified code (can_vote_now=1) for this election
+        // REAL: Check if user has a verified code (can_vote_now=true) for this election
         return Code::withoutGlobalScopes()
             ->where('user_id', $user->id)
             ->where('election_id', $election->id)
-            ->where('can_vote_now', 1)
+            ->where('can_vote_now', true)
             ->exists();
     }
 
@@ -2825,7 +2827,7 @@ public function verify_final_vote(Request $request)
         $votesFromIP = $codeModel
             ->where('client_ip', $clientIP)
             ->where('election_id', $electionId)
-            ->where('has_voted', 1)
+            ->where('has_voted', true)
             ->count();
 
         if ($votesFromIP >= $max_use_clientIP) {
@@ -2960,12 +2962,12 @@ public function verify_final_vote(Request $request)
         $isDemoElection = $election && $election->type === 'demo';
 
         // 1. Voting window must be open for this user (code-based check)
-        if (!$code || $code->can_vote_now != 1) {
+        if (!$code || !$code->can_vote_now) {
             $errors['can_vote_now'] = 'Voting is not open for you at this time.';
         }
 
         // 2. User must NOT have used Code-2 (should be 0) - check Code model
-        if ($code && $code->has_used_code2 != 0) {
+        if ($code && $code->has_used_code2) {
             $errors['has_used_code2'] = 'You have already confirmed your vote with Code-2.';
         }
 

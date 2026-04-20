@@ -433,7 +433,7 @@ Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\Substitut
 // 6. vote.eligibility - Check voting rights
 // 7. validate.voting.ip - IP restrictions (if enabled)
 // 8. vote.organisation - Organisation security
-Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.window', 'voter.slug.consistency', 'ensure.election.voter', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'vote.organisation'])->group(function () {
+Route::prefix('v/{vslug}')->middleware([\Illuminate\Routing\Middleware\SubstituteBindings::class, 'voter.slug.verify', 'voter.slug.window', 'voter.slug.consistency', 'ensure.election.voter', 'voter.step.order', 'vote.eligibility', 'validate.voting.ip', 'vote.organisation', 'throttle:10,1'])->group(function () {
 
     // Step 2: Agreement (using existing CodeController)
     Route::get('vote/agreement', [CodeController::class, 'showAgreement'])->name('slug.code.agreement');

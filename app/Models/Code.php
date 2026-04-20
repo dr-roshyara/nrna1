@@ -64,6 +64,7 @@ class Code extends Model
 
     protected $casts = [
         'has_code1_sent' => 'boolean',
+        'is_code_to_open_voting_form_usable' => 'boolean',
         'is_code_to_save_vote_usable' => 'boolean',
         'is_code2_usable' => 'boolean',
         'can_vote_now' => 'boolean',
