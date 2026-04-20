@@ -183,7 +183,7 @@ class Vote extends BaseVote
                 $data[$col] = $this->$col;
             }
         }
-        return hash('sha256', json_encode($data) . config('app.key'));
+        return hash('sha256', json_encode($data, JSON_SORT_KEYS) . config('app.key'));
     }
 
     /**
@@ -235,7 +235,7 @@ class Vote extends BaseVote
      */
     public function verifyResultsIntegrity(): array
     {
-        $storedCount = Result::where('vote_id', $this->id)->count();
+        $storedCount = Result::withoutGlobalScopes()->where('vote_id', $this->id)->count();
         $expectedCount = $this->getExpectedResultCount();
 
         return [
