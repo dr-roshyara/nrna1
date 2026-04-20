@@ -117,6 +117,16 @@
               :index="1"
             />
 
+            <!-- Verify Vote -->
+            <ActionCard
+              href="/vote/verify_to_show"
+              accent="blue"
+              label="Verify Vote"
+              description="View and verify your submitted vote"
+              icon="check"
+              :index="2"
+            />
+
             <!-- Demo Result -->
             <ActionCard
               :href="route('demo-result.index')"
@@ -124,7 +134,7 @@
               :label="t.nav.demo_results"
               :description="t.nav.demo_results_sub"
               icon="chart"
-              :index="2"
+              :index="3"
             />
           </div>
         </section>
