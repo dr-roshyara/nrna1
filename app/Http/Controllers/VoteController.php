@@ -2926,8 +2926,8 @@ public function verify_final_vote(Request $request)
         $totalDuration          = \Carbon\Carbon::parse($code_to_open_voting_form_used_at)->diffInMinutes($current);
         $_message['totalDuration'] = $totalDuration;
 
-        // Voting window expired — redirect to get new code
-        if ($totalDuration > $code_expires_in || $code->is_code_to_open_voting_form_usable) {
+        // Voting window expired OR code already used — redirect to get new code
+        if ($totalDuration > $code_expires_in || !$code->is_code_to_open_voting_form_usable) {
             $code->is_code_to_open_voting_form_usable = false;
             $code->has_code2_sent   = false;
             $code->vote_submitted   = false;
