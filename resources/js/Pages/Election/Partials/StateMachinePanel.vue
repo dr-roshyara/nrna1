@@ -927,13 +927,18 @@ const saveDates = () => {
 }
 
 .btn-complete {
-  background: var(--color-admin);
+  background: #3b82f6;
   color: white;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  border: none;
 }
 
 .btn-complete:hover {
   background: #2563eb;
   transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
 }
 
 .btn-dates {
