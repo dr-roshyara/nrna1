@@ -385,9 +385,18 @@ const canUpdateDates = (state) => {
 const openDateModal = (state) => {
   editingPhaseState.value = state
   const dates = getPhaseDates(state)
+
+  // Convert dates to datetime-local format (YYYY-MM-DDTHH:mm)
+  const formatDateForInput = (dateString) => {
+    if (!dateString) return ''
+    const date = new Date(dateString)
+    if (isNaN(date.getTime())) return ''
+    return date.toISOString().slice(0, 16)
+  }
+
   dateForm.value = {
-    start: dates?.start || '',
-    end: dates?.end || '',
+    start: formatDateForInput(dates?.start),
+    end: formatDateForInput(dates?.end),
   }
   dateError.value = ''
   showDateModal.value = true
@@ -1070,21 +1079,28 @@ const saveDates = () => {
 }
 
 .btn-primary {
-  background: var(--color-admin);
+  background: #3b82f6;
   color: white;
+  font-weight: 700;
 }
 
 .btn-primary:hover {
   background: #2563eb;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
-  background: var(--color-border);
-  color: var(--color-text-primary);
+  background: #6b7280;
+  color: white;
+  font-weight: 700;
+  border: none;
 }
 
 .btn-secondary:hover {
-  background: #d1d5db;
+  background: #4b5563;
+  box-shadow: 0 4px 6px rgba(107, 114, 128, 0.3);
+  transform: translateY(-1px);
 }
 
 /* Phase Details Section */
