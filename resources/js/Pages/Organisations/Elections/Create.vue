@@ -124,6 +124,98 @@
             <p v-if="clientDateError" class="mt-1 text-sm text-red-600">{{ clientDateError }}</p>
           </div>
 
+          <!-- STATE MACHINE PHASE DATES SECTION -->
+          <div class="border-t pt-8 mb-8">
+            <h3 class="text-lg font-semibold text-gray-900 mb-6">Election Phases Timeline</h3>
+            <p class="text-sm text-gray-500 mb-6">Define when each phase of the election takes place</p>
+
+            <!-- Administration Phase -->
+            <div class="mb-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <h4 class="text-sm font-semibold text-blue-900 mb-4">⚙️ Administration Phase</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs text-gray-600 font-medium mb-1">Start Date & Time</label>
+                  <input
+                    v-model="form.administration_suggested_start"
+                    type="datetime-local"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    :class="errors.administration_suggested_start ? 'border-red-400' : 'border-gray-300'"
+                  />
+                  <p v-if="errors.administration_suggested_start" class="mt-1 text-xs text-red-600">{{ errors.administration_suggested_start }}</p>
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 font-medium mb-1">End Date & Time</label>
+                  <input
+                    v-model="form.administration_suggested_end"
+                    type="datetime-local"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    :class="errors.administration_suggested_end ? 'border-red-400' : 'border-gray-300'"
+                  />
+                  <p v-if="errors.administration_suggested_end" class="mt-1 text-xs text-red-600">{{ errors.administration_suggested_end }}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nomination Phase -->
+            <div class="mb-8 p-4 bg-green-50 rounded-lg border border-green-200">
+              <h4 class="text-sm font-semibold text-green-900 mb-4">📋 Nomination Phase</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs text-gray-600 font-medium mb-1">Start Date & Time</label>
+                  <input
+                    v-model="form.nomination_suggested_start"
+                    type="datetime-local"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                    :class="errors.nomination_suggested_start ? 'border-red-400' : 'border-gray-300'"
+                  />
+                  <p v-if="errors.nomination_suggested_start" class="mt-1 text-xs text-red-600">{{ errors.nomination_suggested_start }}</p>
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 font-medium mb-1">End Date & Time</label>
+                  <input
+                    v-model="form.nomination_suggested_end"
+                    type="datetime-local"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                    :class="errors.nomination_suggested_end ? 'border-red-400' : 'border-gray-300'"
+                  />
+                  <p v-if="errors.nomination_suggested_end" class="mt-1 text-xs text-red-600">{{ errors.nomination_suggested_end }}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Voting Phase -->
+            <div class="mb-8 p-4 bg-purple-50 rounded-lg border border-purple-200">
+              <h4 class="text-sm font-semibold text-purple-900 mb-4">🗳️ Voting Phase</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs text-gray-600 font-medium mb-1">Voting Starts</label>
+                  <input
+                    v-model="form.voting_starts_at"
+                    type="datetime-local"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    :class="errors.voting_starts_at ? 'border-red-400' : 'border-gray-300'"
+                  />
+                  <p v-if="errors.voting_starts_at" class="mt-1 text-xs text-red-600">{{ errors.voting_starts_at }}</p>
+                </div>
+                <div>
+                  <label class="block text-xs text-gray-600 font-medium mb-1">Voting Ends</label>
+                  <input
+                    v-model="form.voting_ends_at"
+                    type="datetime-local"
+                    class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    :class="errors.voting_ends_at ? 'border-red-400' : 'border-gray-300'"
+                  />
+                  <p v-if="errors.voting_ends_at" class="mt-1 text-xs text-red-600">{{ errors.voting_ends_at }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase Dates Error -->
+          <div v-if="phasesDatesError" class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
+            {{ phasesDatesError }}
+          </div>
+
           <!-- Actions -->
           <div class="flex items-center justify-between">
             <a
@@ -134,7 +226,7 @@
             </a>
             <button
               type="submit"
-              :disabled="isLoading || !!clientDateError"
+              :disabled="isLoading || !!clientDateError || !!phasesDatesError"
               class="rounded-md bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {{ isLoading ? t.actions.submitting : t.actions.submit }}
@@ -180,6 +272,12 @@ const form = reactive({
   start_time:  '08:00',
   end_date:    '',
   end_time:    '20:00',
+  administration_suggested_start: '',
+  administration_suggested_end: '',
+  nomination_suggested_start: '',
+  nomination_suggested_end: '',
+  voting_starts_at: '',
+  voting_ends_at: '',
 })
 
 // Client-side: end datetime must be after start datetime
@@ -191,8 +289,48 @@ const clientDateError = computed(() => {
   return null
 })
 
+// Client-side: phase dates validation
+const phasesDatesError = computed(() => {
+  if (!form.administration_suggested_start || !form.administration_suggested_end ||
+      !form.nomination_suggested_start || !form.nomination_suggested_end ||
+      !form.voting_starts_at || !form.voting_ends_at) {
+    return null
+  }
+
+  const adminStart = new Date(form.administration_suggested_start)
+  const adminEnd = new Date(form.administration_suggested_end)
+  const nomStart = new Date(form.nomination_suggested_start)
+  const nomEnd = new Date(form.nomination_suggested_end)
+  const votStart = new Date(form.voting_starts_at)
+  const votEnd = new Date(form.voting_ends_at)
+
+  // Admin phase: end must be after start
+  if (adminEnd <= adminStart) return 'Administration phase end must be after start'
+
+  // Nomination phase: end must be after start
+  if (nomEnd <= nomStart) return 'Nomination phase end must be after start'
+
+  // Voting phase: end must be after start
+  if (votEnd <= votStart) return 'Voting phase end must be after start'
+
+  // Chronological order: admin → nomination → voting
+  if (nomStart < adminEnd) return 'Nomination phase must start after administration ends'
+  if (votStart < nomEnd) return 'Voting phase must start after nomination ends'
+
+  // Election envelope validation (if both are set)
+  if (form.start_date && form.end_date) {
+    const elecStart = new Date(`${form.start_date}T${form.start_time || '00:00'}`)
+    const elecEnd = new Date(`${form.end_date}T${form.end_time || '23:59'}`)
+
+    if (adminStart < elecStart) return 'Administration cannot start before election start'
+    if (votEnd > elecEnd) return 'Voting cannot end after election end'
+  }
+
+  return null
+})
+
 const submit = () => {
-  if (clientDateError.value) return
+  if (clientDateError.value || phasesDatesError.value) return
   isLoading.value = true
   router.post(
     route('organisations.elections.store', props.organisation.slug),
@@ -201,6 +339,12 @@ const submit = () => {
       description: form.description,
       start_date:  `${form.start_date} ${form.start_time || '00:00'}:00`,
       end_date:    `${form.end_date} ${form.end_time || '23:59'}:00`,
+      administration_suggested_start: form.administration_suggested_start,
+      administration_suggested_end: form.administration_suggested_end,
+      nomination_suggested_start: form.nomination_suggested_start,
+      nomination_suggested_end: form.nomination_suggested_end,
+      voting_starts_at: form.voting_starts_at,
+      voting_ends_at: form.voting_ends_at,
     },
     {
       preserveScroll: true,
