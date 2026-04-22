@@ -28,7 +28,7 @@
         aria-hidden="true"
       ></div>
 
-      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6 relative z-10">
+      <div class="mx-auto max-w-4xl lg:max-w-full xl:max-w-full px-4 sm:px-6 lg:px-12 xl:px-16 space-y-6 relative z-10">
 
         <!-- Page Header -->
         <Card mode="admin" padding="lg" class="rounded-2xl">
@@ -94,6 +94,50 @@
           <p class="text-sm font-medium text-red-800">{{ page.props.flash.error }}</p>
         </div>
 
+        <!-- State Machine Panel (Election Lifecycle) -->
+        <StateMachinePanel
+          v-if="stateMachine"
+          :state-machine="stateMachine"
+          :election="election"
+          :organisation="organisation"
+          @phase-completed="handlePhaseCompleted"
+          @dates-updated="handleDatesUpdated"
+        />
+
+        <!-- ── TIMELINE SETTINGS ───────────────────────────────── -->
+        <SectionCard padding="lg">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center">
+              <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-base font-semibold text-slate-800">Timeline Configuration</h2>
+              <p class="text-xs text-slate-500 mt-0.5">Configure all election phase dates in one place</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 flex-col sm:flex-row">
+            <!-- View Timeline (Read-only) -->
+            <ActionButton as="a" variant="outline" size="md" :href="route('elections.timeline-view', election.slug)" class="flex-1 sm:flex-auto">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              View Timeline
+            </ActionButton>
+
+            <!-- Edit Timeline (Form) -->
+            <ActionButton as="a" variant="outline" size="md" :href="route('elections.timeline', election.slug)" class="flex-1 sm:flex-auto">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+              </svg>
+              Edit Timeline
+            </ActionButton>
+          </div>
+        </SectionCard>
+
         <!-- ── ACTIVATION BANNER ───────────────────────────────── -->
         <SectionCard v-if="election.status === 'planned'" variant="warning" padding="lg">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
@@ -134,7 +178,7 @@
             <h2 class="text-base font-semibold text-slate-800">{{ t.sections.status.title }}</h2>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
             <!-- Election System -->
             <div
               class="rounded-xl border p-5 flex items-center gap-4"
@@ -297,7 +341,7 @@
           </div>
 
           <!-- Summary Cards -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 mb-5">
             <div class="rounded-xl bg-violet-50 border border-violet-200 p-5">
               <p class="text-xs font-semibold text-violet-500 uppercase tracking-wide">{{ t.sections.statistics.total_members }}</p>
               <p class="text-3xl font-bold text-violet-800 mt-1">{{ stats.total_memberships ?? 0 }}</p>
@@ -318,7 +362,7 @@
           <!-- Status Breakdown -->
           <div v-if="stats.by_status" class="rounded-xl bg-slate-50 border border-slate-200 p-5">
             <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">{{ t.sections.statistics.breakdown_title }}</p>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4">
               <div class="text-center">
                 <p class="text-2xl font-bold text-emerald-700">{{ stats.by_status.active ?? 0 }}</p>
                 <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.statistics.status_active }}</p>
@@ -420,7 +464,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-3 mb-5">
+          <div class="grid grid-cols-2 lg:grid-cols-2 gap-3 mb-5">
             <div class="rounded-xl bg-slate-50 border border-slate-200 p-4 text-center">
               <p class="text-2xl font-bold text-slate-700">{{ postsCount }}</p>
               <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.posts.positions_label }}</p>
@@ -483,7 +527,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-3 gap-3 mb-5">
+          <div class="grid grid-cols-3 lg:grid-cols-3 gap-3 mb-5">
             <div class="rounded-xl bg-slate-50 border border-slate-200 p-4 text-center">
               <p class="text-2xl font-bold text-slate-700">{{ stats.total_memberships ?? 0 }}</p>
               <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.voter_management.total_label }}</p>
@@ -594,6 +638,65 @@
 
       </div>
     </main>
+
+    <!-- Phase Completion Modal -->
+    <Teleport to="body">
+      <div
+        v-if="showCompletionModal"
+        class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+        @click.self="closeCompletionModal"
+      >
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all">
+          <div class="px-6 py-4 border-b border-slate-200">
+            <h3 class="text-lg font-bold text-slate-900 capitalize">
+              Complete {{ selectedPhase }} Phase
+            </h3>
+            <p class="text-sm text-slate-500 mt-1">
+              Please provide a reason for completing this phase.
+            </p>
+          </div>
+
+          <div class="px-6 py-4">
+            <label class="block text-sm font-semibold text-slate-700 mb-2">
+              Reason for Completion
+            </label>
+            <textarea
+              v-model="completionReason"
+              placeholder="e.g., All posts and voters have been configured. Ready to proceed to nomination phase."
+              rows="4"
+              class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+              :aria-label="`Reason for completing ${selectedPhase} phase`"
+            ></textarea>
+            <p v-if="reasonError" class="text-red-500 text-sm mt-2 font-medium">
+              {{ reasonError }}
+            </p>
+            <p class="text-xs text-slate-500 mt-2">
+              Minimum 5 characters required
+            </p>
+          </div>
+
+          <div class="px-6 py-4 border-t border-slate-200 flex justify-end gap-3">
+            <button
+              @click="closeCompletionModal"
+              :disabled="isLoading"
+              class="px-4 py-2 text-slate-700 font-semibold border border-slate-300 rounded-lg hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              aria-label="Cancel phase completion"
+            >
+              Cancel
+            </button>
+            <button
+              @click="submitPhaseCompletion"
+              :disabled="!completionReason.trim() || isLoading"
+              class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+              :aria-label="`Confirm completion of ${selectedPhase} phase`"
+            >
+              <span v-if="isLoading" class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+              <span>{{ isLoading ? 'Completing...' : 'Confirm Completion' }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </ElectionLayout>
 </template>
 
@@ -607,6 +710,7 @@ import StatusBadge from '@/Components/StatusBadge.vue'
 import ActionButton from '@/Components/ActionButton.vue'
 import SectionCard from '@/Components/SectionCard.vue'
 import EmptyState from '@/Components/EmptyState.vue'
+import StateMachinePanel from '@/Pages/Election/Partials/StateMachinePanel.vue'
 
 import pageDe from '@/locales/pages/Election/Management/de.json'
 import pageEn from '@/locales/pages/Election/Management/en.json'
@@ -619,6 +723,7 @@ const props = defineProps({
   canPublish:      { type: Boolean, default: false },
   postsCount:      { type: Number,  default: 0 },
   candidatesCount: { type: Number,  default: 0 },
+  stateMachine:    { type: Object,  default: null },
 })
 
 const page = usePage()
@@ -628,15 +733,45 @@ const { locale } = useI18n()
 const pageData = { de: pageDe, en: pageEn, np: pageNp }
 const t = computed(() => pageData[locale.value] ?? pageData.de)
 
-const isLoading       = ref(false)
-const isActivating    = ref(false)
-const isSavingDates   = ref(false)
-const isUploadingLogo = ref(false)
-const logoFile        = ref(null)
-const logoFileInput   = ref(null)
+const isLoading           = ref(false)
+const isActivating        = ref(false)
+const isSavingDates       = ref(false)
+const isUploadingLogo     = ref(false)
+const logoFile            = ref(null)
+const logoFileInput       = ref(null)
+
+// Phase completion modal
+const showCompletionModal  = ref(false)
+const selectedPhase       = ref(null)
+const completionReason    = ref('')
+const reasonError         = ref('')
 
 const onLogoFileChange = (e) => {
-  logoFile.value = e.target.files[0] ?? null
+  const file = e.target.files?.[0]
+  if (!file) {
+    logoFile.value = null
+    return
+  }
+
+  // Validate file size (max 2MB)
+  const maxSize = 2 * 1024 * 1024 // 2MB
+  if (file.size > maxSize) {
+    alert('File too large. Maximum file size is 2MB.')
+    logoFile.value = null
+    e.target.value = ''
+    return
+  }
+
+  // Validate file type
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml']
+  if (!allowedTypes.includes(file.type)) {
+    alert('Invalid file type. Please upload an image (JPEG, PNG, GIF, WebP, or SVG).')
+    logoFile.value = null
+    e.target.value = ''
+    return
+  }
+
+  logoFile.value = file
 }
 
 const uploadLogo = () => {
@@ -759,6 +894,70 @@ const closeVoting = () => {
     preserveScroll: true,
     onFinish: () => { isLoading.value = false },
   })
+}
+
+// State Machine Event Handlers
+const handlePhaseCompleted = (phase) => {
+  selectedPhase.value = phase
+  completionReason.value = ''
+  reasonError.value = ''
+  showCompletionModal.value = true
+}
+
+const submitPhaseCompletion = () => {
+  // Validate reason
+  if (!completionReason.value.trim()) {
+    reasonError.value = 'Reason is required'
+    return
+  }
+
+  if (completionReason.value.trim().length < 5) {
+    reasonError.value = 'Reason must be at least 5 characters'
+    return
+  }
+
+  const routes = {
+    administration: 'organisations.elections.complete-administration',
+    nomination: 'organisations.elections.complete-nomination',
+  }
+
+  const routeName = routes[selectedPhase.value]
+  if (!routeName) {
+    reasonError.value = 'Invalid phase'
+    return
+  }
+
+  isLoading.value = true
+  router.post(
+    route(routeName, {
+      organisation: props.organisation.slug,
+      election: props.election.slug,
+    }),
+    { reason: completionReason.value.trim() },
+    {
+      preserveScroll: true,
+      onFinish: () => {
+        isLoading.value = false
+        showCompletionModal.value = false
+        selectedPhase.value = null
+        completionReason.value = ''
+        reasonError.value = ''
+      },
+    }
+  )
+}
+
+const closeCompletionModal = () => {
+  showCompletionModal.value = false
+  selectedPhase.value = null
+  completionReason.value = ''
+  reasonError.value = ''
+}
+
+const handleDatesUpdated = (phase) => {
+  // The date picker is already handled by StateMachinePanel component
+  // This method can be used for post-update actions if needed
+  console.log(`Dates updated for phase: ${phase}`)
 }
 </script>
 

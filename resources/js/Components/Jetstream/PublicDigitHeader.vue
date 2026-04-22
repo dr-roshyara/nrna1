@@ -57,7 +57,7 @@
             <a
               v-if="!isLoggedIn"
               :href="route('login')"
-              class="inline-flex items-center px-3 md:px-4 py-2 bg-white text-slate-900 font-semibold text-xs md:text-sm rounded-md hover:bg-gold hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-200 whitespace-nowrap group"
+              class="inline-flex items-center px-3 md:px-4 py-2 bg-white text-slate-900 font-semibold text-xs md:text-sm rounded-md hover:bg-gold hover:text-white focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-200 whitespace-nowrap group"
             >
               <svg class="w-4 h-4 mr-1 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />

@@ -30,6 +30,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
+        $this->registerElectionBinding();
         $this->registerVoterSlugBinding();
 
         $this->routes(function () {
@@ -39,6 +40,27 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+        });
+    }
+
+    /**
+     * Register the {election:slug} route model binding.
+     *
+     * Resolves election slugs to Election models without global scopes
+     * so elections can be found during all phases.
+     */
+    protected function registerElectionBinding(): void
+    {
+        Route::bind('election', function (string $value) {
+            $election = \App\Models\Election::withoutGlobalScopes()
+                ->where('slug', $value)
+                ->first();
+
+            if (!$election) {
+                abort(404, 'Election not found.');
+            }
+
+            return $election;
         });
     }
 

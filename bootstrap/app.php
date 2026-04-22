@@ -67,6 +67,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'ensure.organisation' => \App\Http\Middleware\EnsureOrganisationMember::class,
             'ensure.election.voter' => \App\Http\Middleware\EnsureElectionVoter::class,
 
+            // Election State Machine
+            'election.state' => \App\Http\Middleware\EnsureElectionState::class,
+
             // Utility
             'no.cache' => \App\Http\Middleware\NoCacheMiddleware::class,
             'dashboard.role' => \App\Http\Middleware\CheckUserRole::class,

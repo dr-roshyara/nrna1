@@ -33,6 +33,7 @@ class Candidacy extends Model
         'description',
         'position_order',
         'status',
+        'rejection_reason',
         'image_path_1',
         'image_path_2',
         'image_path_3',

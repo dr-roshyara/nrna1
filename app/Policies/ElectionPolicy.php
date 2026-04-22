@@ -93,6 +93,15 @@ class ElectionPolicy
     }
 
     /**
+     * Generic manage method for state machine operations.
+     * Delegates to manageSettings for permission check.
+     */
+    public function manage(User $user, Election $election): bool
+    {
+        return $this->manageSettings($user, $election);
+    }
+
+    /**
      * Chief or deputy may create a new election for this organisation.
      * Receives Organisation (not Election) because no election exists yet.
      */

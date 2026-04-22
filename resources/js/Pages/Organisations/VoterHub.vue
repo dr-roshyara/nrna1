@@ -147,13 +147,11 @@
 
           <!-- Results Grid: Bold, Striking Design -->
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            <a
+            <div
               v-for="(election, idx) in publishedElections"
               :key="'published-' + election.id"
-              :href="route('result.index', { election: election.slug })"
               class="result-card group relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
               :style="{ animationDelay: `${idx * 120}ms` }"
-              :aria-label="`View results for ${election.name}`"
             >
               <!-- Animated gradient overlay -->
               <div class="absolute inset-0 bg-gradient-to-tr from-black/0 via-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
@@ -168,16 +166,15 @@
                 <!-- Header with icon -->
                 <div class="flex items-start justify-between mb-6">
                   <div class="flex-1">
-                    <p class="text-white/70 text-xs font-semibold uppercase tracking-wider mb-2">Election Results</p>
+                    <p class="text-white/70 text-xs font-semibold uppercase tracking-wider mb-2">Election Complete</p>
                     <h3 class="text-white font-black text-xl md:text-2xl leading-tight">
                       {{ election.name }}
                     </h3>
                   </div>
-                  <!-- Chart Icon -->
+                  <!-- Checkmark Icon -->
                   <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300" aria-hidden="true">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                   </div>
                 </div>
@@ -185,20 +182,37 @@
                 <!-- Spacer -->
                 <div class="flex-grow"></div>
 
-                <!-- CTA Button -->
-                <div class="pt-6 border-t border-white/20 group-hover:border-white/40 transition-colors duration-300">
-                  <div class="inline-flex items-center gap-2 text-white font-bold text-sm group-hover:gap-3 transition-all duration-300">
-                    View Results
-                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <!-- Dual CTA: Results + Receipt Codes -->
+                <div class="pt-6 border-t border-white/20 group-hover:border-white/40 transition-colors duration-300 space-y-2 flex flex-col gap-2">
+                  <!-- View Results Button -->
+                  <a
+                    :href="route('result.index', { election: election.slug })"
+                    class="inline-flex items-center justify-center gap-2 w-full bg-blue-500/80 hover:bg-blue-400 text-white font-extrabold text-base py-3 px-4 rounded-lg transition-all duration-300 border border-blue-400/50 hover:border-blue-300 shadow-md hover:shadow-lg hover:scale-105"
+                    :aria-label="`View results for ${election.name}`"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                     </svg>
-                  </div>
+                    View Results
+                  </a>
+
+                  <!-- View Receipt Codes Button -->
+                  <a
+                    :href="route('organisations.election.receipt-codes', { organisation: organisation.slug, election: election.slug })"
+                    class="inline-flex items-center justify-center gap-2 w-full bg-green-600/80 hover:bg-green-500 text-white font-extrabold text-base py-3 px-4 rounded-lg transition-all duration-300 border border-green-500/50 hover:border-green-400 shadow-md hover:shadow-lg hover:scale-105"
+                    :aria-label="`View receipt codes for ${election.name}`"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    Receipt Codes
+                  </a>
                 </div>
               </div>
 
               <!-- Hover accent line -->
               <div class="absolute bottom-0 left-0 h-1 bg-white/80 w-0 group-hover:w-full transition-all duration-500" aria-hidden="true"></div>
-            </a>
+            </div>
           </div>
         </section>
 
@@ -390,6 +404,27 @@
                       </svg>
                     </a>
 
+                    <!-- View Receipt Codes — only if results are published -->
+                    <a
+                      v-if="election.results_published_at"
+                      :href="route('organisations.election.receipt-codes', { organisation: organisation.slug, election: election.slug })"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-green-200 bg-green-50 hover:bg-white hover:border-green-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1"
+                      :aria-label="`View verification codes for ${election.name}`"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01m-.01 4h.01"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-green-800">Receipt Codes</span>
+                        <span class="block text-xs text-green-600">Verify all voter codes</span>
+                      </span>
+                      <svg class="w-4 h-4 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+
                     <!-- Import Voters — officers only -->
                     <a
                       v-if="isOfficer"
@@ -454,8 +489,22 @@
 
                 <!-- CTA -->
                 <div class="pt-1">
+                  <!-- Results Published: Show Receipt Codes CTA -->
                   <a
-                    v-if="voterStatus(election.id) === 'eligible'"
+                    v-if="election.results_published_at"
+                    :href="route('organisations.election.receipt-codes', { organisation: organisation.slug, election: election.slug })"
+                    class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white text-sm font-semibold py-2.5 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
+                    :aria-label="`View receipt codes for ${election.name}`"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    View Receipt Codes
+                  </a>
+
+                  <!-- Still Active: Vote or Status -->
+                  <a
+                    v-else-if="voterStatus(election.id) === 'eligible'"
                     :href="route('elections.show', { slug: election.slug })"
                     class="flex items-center justify-center gap-2 w-full bg-primary-600 hover:bg-primary-700 active:bg-primary-800 text-white text-sm font-semibold py-2.5 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2"
                     :aria-label="`${t.active_elections.vote_now} — ${election.name}`"
@@ -470,7 +519,7 @@
                   </a>
 
                   <div
-                    v-else-if="voterStatus(election.id) === 'voted'"
+                    v-else-if="voterStatus(election.id) === 'voted' && !election.results_published_at"
                     class="flex items-center justify-center gap-2 w-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-semibold py-2.5 rounded-xl"
                     role="status"
                     :aria-label="t.active_elections.vote_submitted"

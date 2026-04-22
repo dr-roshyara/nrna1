@@ -87,17 +87,77 @@
                         <p class="text-gray-600">{{ page.vote_summary.subtitle }}</p>
                     </div>
 
-                    <!-- Election Name Display with Dates -->
-                    <div class="px-6 py-6 bg-gradient-to-r from-indigo-50 to-blue-50 border-b border-indigo-100">
-                        <p class="text-sm font-medium text-indigo-600 uppercase tracking-wide mb-2">{{ page.vote_summary.election }}</p>
-                        <h2 class="text-3xl font-bold text-indigo-900 mb-3">{{ vote_data.summary.election_name }}</h2>
-                        <div v-if="vote_data.summary.election_start_date || vote_data.summary.election_end_date" class="flex items-center gap-2 text-indigo-700 font-semibold text-lg">
-                            <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            <span>{{ vote_data.summary.election_start_date }}</span>
-                            <span class="text-indigo-500">—</span>
-                            <span>{{ vote_data.summary.election_end_date }}</span>
+                    <!-- Election Name Display with Dates and Confirm Button -->
+                    <div class="px-6 py-8 bg-gradient-to-b from-white to-slate-50 border-b border-slate-200">
+                        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+                            <div class="flex-1 space-y-4">
+                                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest letter-spacing-2">{{ page.vote_summary.election }}</p>
+                                <h2 class="text-4xl lg:text-5xl font-light text-slate-900 leading-tight">{{ vote_data.summary.election_name }}</h2>
+                                <div v-if="vote_data.summary.election_start_date || vote_data.summary.election_end_date" class="flex items-center gap-3 text-slate-600 text-base pt-2">
+                                    <svg class="w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span class="font-medium">{{ vote_data.summary.election_start_date }} – {{ vote_data.summary.election_end_date }}</span>
+                                </div>
+                            </div>
+
+                            <!-- Confirm Vote Section -->
+                            <div class="lg:text-right space-y-3">
+                                <!-- Unverified State: Button -->
+                                <div v-if="!vote_data.is_reverified" class="space-y-3">
+                                    <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Verify & Confirm</p>
+                                    <button
+                                        @click="confirmVoteCorrect"
+                                        :disabled="isSubmitting"
+                                        class="btn-reconfirm relative w-full lg:w-auto px-8 py-4 bg-gradient-to-br from-emerald-500 via-green-500 to-green-600 text-white font-bold rounded-full uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-2xl hover:from-emerald-600 hover:via-green-600 hover:to-green-700 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:shadow-lg group overflow-hidden border border-green-400 border-opacity-50"
+                                    >
+                                        <!-- Shimmer overlay on hover -->
+                                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -skew-x-12 group-hover:translate-x-full transition-all duration-700 rounded-full"></div>
+
+                                        <span v-if="!isSubmitting" class="relative flex items-center justify-center gap-3">
+                                            <svg class="w-5 h-5 flex-shrink-0 transition-transform duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                            </svg>
+                                            <span class="relative">Reconfirm Your Vote</span>
+                                        </span>
+                                        <span v-else class="relative flex items-center justify-center gap-3">
+                                            <svg class="w-5 h-5 animate-spin flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 12a8 8 0 018-8v0m0 0a8 8 0 110 16v0m0-16v8m0 0h8"/>
+                                            </svg>
+                                            <span>Verifying...</span>
+                                        </span>
+                                    </button>
+                                    <p class="text-xs text-slate-500 text-center lg:text-right leading-relaxed">Your vote will be officially recorded in our system.</p>
+                                </div>
+
+                                <!-- Verified State: Reconfirmed Stamp -->
+                                <div v-else class="relative space-y-3 flex flex-col items-center lg:items-end">
+                                    <div class="stamp-verified relative w-full lg:w-auto h-32 lg:h-40 flex items-center justify-center">
+                                        <!-- Outer stamp circle border -->
+                                        <div class="absolute inset-0 border-4 border-green-500 rounded-full opacity-60 transform -rotate-12"></div>
+
+                                        <!-- Inner stamp circle -->
+                                        <div class="relative w-full h-full bg-gradient-to-br from-green-400 to-emerald-600 rounded-full shadow-2xl flex flex-col items-center justify-center overflow-hidden">
+                                            <!-- Radial glow -->
+                                            <div class="absolute inset-0 bg-radial-gradient opacity-20"></div>
+
+                                            <!-- Stamp content -->
+                                            <div class="relative text-center space-y-1">
+                                                <!-- Top accent -->
+                                                <div class="text-green-100 text-xs font-bold tracking-widest">✓</div>
+
+                                                <!-- Main text -->
+                                                <p class="text-white font-black text-2xl lg:text-3xl uppercase tracking-wider leading-tight transform -rotate-6">
+                                                    Reconfirmed
+                                                </p>
+
+                                                <!-- Timestamp -->
+                                                <p class="text-green-50 text-xs font-semibold mt-2">{{ vote_data.reverified_at }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -360,6 +420,7 @@ export default {
                 np: voteShowNp || {},
             },
             isDownloading: false,
+            isSubmitting: false,
         };
     },
 
@@ -490,6 +551,35 @@ export default {
             } finally {
                 this.isDownloading = false;
             }
+        },
+
+        /**
+         * Mark the current vote as verified (voter confirms it's correct)
+         */
+        confirmVoteCorrect() {
+            this.isSubmitting = true;
+
+            this.$inertia.post(
+                route('vote.confirm-correct'),
+                {
+                    receipt_code: this.vote_data.verification_code
+                },
+                {
+                    onSuccess: (page) => {
+                        // Page reloads with updated session data that includes is_reverified
+                        // The page.props.vote_data will now have is_reverified = true from the session
+                        if (page.props.vote_data) {
+                            this.vote_data = page.props.vote_data;
+                        }
+                        this.isSubmitting = false;
+                    },
+                    onError: (errors) => {
+                        const errorMessage = errors.error || 'Failed to confirm vote. Please try again.';
+                        alert(errorMessage);
+                        this.isSubmitting = false;
+                    }
+                }
+            );
         }
     },
 
@@ -538,6 +628,61 @@ export default {
 
 .fade-in-up {
     animation: fadeInUp 0.6s ease-out;
+}
+
+/* Reconfirm button glow pulse */
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4), 0 0 20px 0 rgba(34, 197, 94, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0), 0 0 30px 0 rgba(34, 197, 94, 0.4);
+    }
+}
+
+@keyframes scale-in-reconfirm {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.08);
+    }
+}
+
+.btn-reconfirm {
+    animation: glow-pulse 2s infinite;
+}
+
+.btn-reconfirm:hover {
+    animation: glow-pulse 1.5s infinite, scale-in-reconfirm 0.3s ease-out forwards;
+}
+
+/* Stamp verified entrance animation */
+@keyframes stamp-press {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-45deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(-12deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(-12deg);
+    }
+}
+
+@keyframes stamp-bounce {
+    0%, 100% {
+        box-shadow: 0 10px 40px rgba(34, 197, 94, 0.3);
+    }
+    50% {
+        box-shadow: 0 15px 50px rgba(34, 197, 94, 0.5);
+    }
+}
+
+.stamp-verified {
+    animation: stamp-press 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), stamp-bounce 2s ease-in-out infinite;
 }
 
 /* Print styles */

@@ -7,6 +7,7 @@ use App\Models\DemoVote;
 use App\Models\DemoCode;
 use App\Models\DemoCandidacy;
 use App\Models\DemoPost;
+use App\Models\ReceiptCode;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -1625,6 +1626,29 @@ private function has_valid_selections($selections)
                     $voterSlug->has_voted = true;
                     $voterSlug->status = 'voted';
                     $voterSlug->save();
+                }
+
+                // ✅ Store receipt code for public verification display
+                try {
+                    $receiptCodeString = $private_key . '_' . $this->out_code;
+                    \App\Models\ReceiptCode::firstOrCreate(
+                        ['receipt_code' => $receiptCodeString],
+                        [
+                            'election_id' => $election->id,
+                            'reverified_at' => null
+                        ]
+                    );
+                    Log::info('Receipt code stored for verification', [
+                        'receipt_code_prefix' => substr($receiptCodeString, 0, 20) . '...',
+                        'election_id' => $election->id,
+                        'vote_id' => $this->out_code,
+                    ]);
+                } catch (\Exception $e) {
+                    Log::error('Failed to store receipt code', [
+                        'vote_id' => $this->out_code,
+                        'election_id' => $election->id,
+                        'error' => $e->getMessage(),
+                    ]);
                 }
 
                 // 9. Send verification notification (only if user has valid email)
@@ -3493,6 +3517,11 @@ private function prepare_unified_vote_display($vote, $auth_user, $verification_c
         // Get election info
         $election = Election::withoutGlobalScopes()->find($vote->election_id);
 
+        // Check if this vote has been reverified using the verification_code
+        $receiptCode = ReceiptCode::where('receipt_code', $verification_code)->first();
+        $is_reverified = $receiptCode && !is_null($receiptCode->reverified_at);
+        $reverified_at = $is_reverified ? $receiptCode->reverified_at->format('F j, Y \a\t g:i A') : null;
+
         return [
             'vote_id' => $vote->id,
             'verification_code' => $verification_code,
@@ -3500,6 +3529,8 @@ private function prepare_unified_vote_display($vote, $auth_user, $verification_c
             'verification_successful' => true,
             'is_own_vote' => $is_own_vote,
             'election_type' => $election_type,
+            'is_reverified' => $is_reverified,
+            'reverified_at' => $reverified_at,
             'voter_info' => $voter_info,
             'vote_info' => [
                 'voted_at' => $voted_at,
@@ -3923,6 +3954,59 @@ public function verify_submitted_code($in_code, $submitted_code)
     }
 }
 
+/**
+ * Confirm that the voter's vote is correct (mark as reverified)
+ *
+ * @param Request $request
+ * @return \Illuminate\Http\RedirectResponse
+ */
+public function confirmCorrect(Request $request)
+{
+    try {
+        $request->validate([
+            'receipt_code' => 'required|string',
+        ]);
 
+        // Find receipt code by exact match
+        $receiptCode = ReceiptCode::where('receipt_code', $request->receipt_code)->first();
+
+        if (!$receiptCode) {
+            return back()->withErrors(['error' => 'Receipt code not found.']);
+        }
+
+        if ($receiptCode->reverified_at) {
+            return back()->withErrors(['error' => 'This vote has already been verified.']);
+        }
+
+        $receiptCode->markAsReverified();
+
+        // Refresh to get the updated value from database (defensive programming)
+        $receiptCode->refresh();
+
+        // Log audit trail
+        \Log::info('Vote verified as correct', [
+            'receipt_code' => $request->receipt_code,
+            'election_id' => $receiptCode->election_id,
+            'user_id' => auth()->id(),
+            'verified_at' => $receiptCode->reverified_at,
+        ]);
+
+        // Return updated status via flash data (read from database, not hardcoded)
+        return back()->with([
+            'success' => 'Thank you for confirming your vote is correct!',
+            'reverified' => [
+                'is_reverified' => !is_null($receiptCode->reverified_at),
+                'reverified_at' => $receiptCode->reverified_at->format('F j, Y \a\t g:i A')
+            ]
+        ]);
+    } catch (\Exception $e) {
+        \Log::error('Vote confirmation failed', [
+            'error' => $e->getMessage(),
+            'user_id' => auth()->id(),
+        ]);
+
+        return back()->withErrors(['error' => 'Failed to confirm vote. Please try again.']);
+    }
+}
 
 }//end of the controller 
