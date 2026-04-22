@@ -379,7 +379,30 @@ const canCompletePhase = (state) => {
 }
 
 const canUpdateDates = (state) => {
-  return ['administration', 'nomination', 'voting'].includes(state)
+  // Matches backend canUpdatePhaseDates() logic
+  // Can only update dates for phases that haven't started yet
+
+  switch (state) {
+    case 'administration':
+      return !props.election.administration_completed
+
+    case 'nomination':
+      return !props.election.nomination_completed
+
+    case 'voting':
+      // Can update only if voting hasn't started and isn't locked
+      return !props.election.voting_locked &&
+             (!props.election.voting_starts_at ||
+              new Date() < new Date(props.election.voting_starts_at))
+
+    case 'results_pending':
+    case 'results':
+      // Never editable (final phases)
+      return false
+
+    default:
+      return false
+  }
 }
 
 const openDateModal = (state) => {
