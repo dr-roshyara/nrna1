@@ -579,11 +579,13 @@ const saveDates = () => {
   gap: 1.5rem;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .timeline-phase {
   width: 100%;
-  flex: 0 0 auto;
+  max-width: none;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -598,12 +600,14 @@ const saveDates = () => {
     flex-direction: row;
     min-width: min-content;
     gap: 1.5rem;
+    width: auto;
   }
 
   .timeline-phase {
     width: auto;
     min-width: 240px;
     max-width: 240px;
+    flex: 0 0 auto;
   }
 }
 
@@ -614,10 +618,12 @@ const saveDates = () => {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     justify-items: center;
+    width: 100%;
   }
 
   .timeline-phase {
     width: 100%;
+    max-width: none;
   }
 }
 
