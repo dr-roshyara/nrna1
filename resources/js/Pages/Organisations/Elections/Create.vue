@@ -193,6 +193,8 @@ const t = computed(() => pageData[locale.value] ?? pageData.de)
 
 // Today's date in YYYY-MM-DD for the min attribute
 const today = new Date().toISOString().split('T')[0]
+const defaultVotingStartTime = `${today}T08:00`
+const defaultVotingEndTime = `${today}T18:00`
 
 const form = reactive({
   name:        '',
@@ -201,8 +203,8 @@ const form = reactive({
   administration_suggested_end: '',
   nomination_suggested_start: '',
   nomination_suggested_end: '',
-  voting_starts_at: '',
-  voting_ends_at: '',
+  voting_starts_at: defaultVotingStartTime,
+  voting_ends_at: defaultVotingEndTime,
 })
 
 // Client-side: phase dates validation
