@@ -79,7 +79,7 @@
             </div>
 
             <!-- Metrics -->
-            <div v-if="getPhaseMetrics(phase.state)" class="phase-metrics">
+            <div v-if="getPhaseMetrics(phase.state)" class="phase-metrics mx-auto">
               <div v-for="(value, metric) in getPhaseMetrics(phase.state)" :key="metric" class="metric">
                 <span class="metric-label">{{ getMetricLabel(metric) }}:</span>
                 <span class="metric-value">{{ value }}</span>
@@ -87,7 +87,7 @@
             </div>
 
             <!-- Dates -->
-            <div v-if="getPhaseDates(phase.state)" class="phase-dates">
+            <div v-if="getPhaseDates(phase.state)" class="phase-dates mx-auto">
               <div v-if="getPhaseDates(phase.state).start" class="date-item">
                 <span class="date-label">Start:</span>
                 <span class="date-value">{{ formatDate(getPhaseDates(phase.state).start) }}</span>
