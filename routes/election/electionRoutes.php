@@ -159,6 +159,7 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
 //    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/show', [VoteController::class, 'show'])->name('vote.show');
    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/show/{vote_id}', [VoteController::class, 'show'])->name('vote.show');
    Route::middleware(['auth:sanctum', 'verified'])->get('/vote/download-pdf/{vote_id}', [VoteController::class, 'downloadVotePDF'])->name('vote.download-pdf');
+   Route::middleware(['auth:sanctum', 'verified'])->post('/vote/confirm-correct', [VoteController::class, 'confirmCorrect'])->name('vote.confirm-correct');
 
    // Election-specific result routes (scoped by election slug)
    Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election}/result', [ResultController::class, 'index'])->name('result.index');
@@ -303,6 +304,22 @@ Route::middleware(['auth', 'verified'])
         Route::patch('/settings', [ElectionSettingsController::class, 'update'])
             ->name('elections.settings.update')
             ->can('manageSettings', 'election');
+
+        // ── Timeline View (Read-only - always accessible for audit trail) ────────────
+        Route::get('/timeline-view', [ElectionManagementController::class, 'timelineView'])
+            ->name('elections.timeline-view')
+            ->can('manageSettings', 'election');
+
+        // ── Timeline Edit (Administration + Nomination phases only) ──────────────────
+        Route::middleware(['election.state:configure_election'])->group(function () {
+            Route::get('/timeline', [ElectionManagementController::class, 'timeline'])
+                ->name('elections.timeline')
+                ->can('manageSettings', 'election');
+
+            Route::patch('/timeline', [ElectionManagementController::class, 'updateTimeline'])
+                ->name('elections.update-timeline')
+                ->can('manageSettings', 'election');
+        });
     });
 
 // Test routes for voter slug system (Phase 1)
