@@ -1065,6 +1065,9 @@ class ElectionManagementController extends Controller
 
         $this->authorize('manageSettings', $election);
 
+        // Validate phase update permissions - cannot change dates for phases that have started
+        $this->validatePhaseUpdatePermissions($election, $request);
+
         $rules = [
             'administration_suggested_start' => 'nullable|date',
             'administration_suggested_end'   => 'nullable|date|after:administration_suggested_start',
@@ -1121,6 +1124,62 @@ class ElectionManagementController extends Controller
         $election->update($validated);
 
         return back()->with('success', 'Election timeline updated successfully.');
+    }
+
+    /**
+     * Validate that date updates are allowed for the current phase state
+     * Prevents updating dates for phases that have already started
+     */
+    private function validatePhaseUpdatePermissions(Election $election, Request $request): void
+    {
+        // Administration dates - cannot update if administration is completed
+        if ($request->filled(['administration_suggested_start', 'administration_suggested_end'])) {
+            if (!$election->canUpdatePhaseDates('administration')) {
+                throw new \Illuminate\Validation\ValidationException(
+                    Validator::make([], [])->errors()->add(
+                        'administration_dates',
+                        'Cannot update administration dates after the phase is completed.'
+                    )
+                );
+            }
+        }
+
+        // Nomination dates - cannot update if nomination is completed
+        if ($request->filled(['nomination_suggested_start', 'nomination_suggested_end'])) {
+            if (!$election->canUpdatePhaseDates('nomination')) {
+                throw new \Illuminate\Validation\ValidationException(
+                    Validator::make([], [])->errors()->add(
+                        'nomination_dates',
+                        'Cannot update nomination dates after the phase is completed.'
+                    )
+                );
+            }
+        }
+
+        // Voting dates - cannot update if voting has started or is locked
+        if ($request->filled(['voting_starts_at', 'voting_ends_at'])) {
+            if (!$election->canUpdatePhaseDates('voting')) {
+                $message = $election->voting_locked
+                    ? 'Cannot update voting dates - voting phase is locked.'
+                    : 'Cannot update voting dates - voting has already started.';
+
+                throw new \Illuminate\Validation\ValidationException(
+                    Validator::make([], [])->errors()->add('voting_dates', $message)
+                );
+            }
+        }
+
+        // Results dates - never editable directly
+        if ($request->filled('results_published_at')) {
+            if (!$election->canUpdatePhaseDates('results')) {
+                throw new \Illuminate\Validation\ValidationException(
+                    Validator::make([], [])->errors()->add(
+                        'results_dates',
+                        'Cannot update results publication date - results already published.'
+                    )
+                );
+            }
+        }
     }
 
 }

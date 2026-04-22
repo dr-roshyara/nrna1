@@ -810,6 +810,26 @@ class Election extends Model
     }
 
     /**
+     * Check if dates for a specific phase can be updated
+     * Enforces that you can only update dates for phases that haven't started yet
+     */
+    public function canUpdatePhaseDates(string $phase): bool
+    {
+        return match ($phase) {
+            'administration' => !$this->administration_completed,
+
+            'nomination' => !$this->nomination_completed,
+
+            'voting' => !$this->voting_locked &&
+                       (!$this->voting_starts_at || now()->lt($this->voting_starts_at)),
+
+            'results_pending', 'results' => false,  // Never editable
+
+            default => false,
+        };
+    }
+
+    /**
      * Get state info for UI display
      */
     public function getStateInfoAttribute(): array
