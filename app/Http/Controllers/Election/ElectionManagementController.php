@@ -103,6 +103,12 @@ class ElectionManagementController extends Controller
             'start_date'  => ['required', 'date', 'after_or_equal:today'],
             'end_date'    => ['required', 'date', 'after_or_equal:start_date'],
             'type'        => ['sometimes', 'in:real'],
+            'administration_suggested_start' => ['nullable', 'date_format:Y-m-d\TH:i'],
+            'administration_suggested_end'   => ['nullable', 'date_format:Y-m-d\TH:i'],
+            'nomination_suggested_start'     => ['nullable', 'date_format:Y-m-d\TH:i'],
+            'nomination_suggested_end'       => ['nullable', 'date_format:Y-m-d\TH:i'],
+            'voting_starts_at'               => ['nullable', 'date_format:Y-m-d\TH:i'],
+            'voting_ends_at'                 => ['nullable', 'date_format:Y-m-d\TH:i'],
         ]);
 
         $election = Election::create([
@@ -115,6 +121,12 @@ class ElectionManagementController extends Controller
             'status'          => 'planned',
             'start_date'      => $validated['start_date'],
             'end_date'        => $validated['end_date'],
+            'administration_suggested_start' => $validated['administration_suggested_start'] ?? null,
+            'administration_suggested_end'   => $validated['administration_suggested_end'] ?? null,
+            'nomination_suggested_start'     => $validated['nomination_suggested_start'] ?? null,
+            'nomination_suggested_end'       => $validated['nomination_suggested_end'] ?? null,
+            'voting_starts_at'               => $validated['voting_starts_at'] ?? null,
+            'voting_ends_at'                 => $validated['voting_ends_at'] ?? null,
         ]);
 
         // Notify all active chiefs of this organisation
