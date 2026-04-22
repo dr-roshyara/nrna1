@@ -80,7 +80,7 @@
 
             <!-- Metrics -->
             <div v-if="getPhaseMetrics(phase.state)" class="phase-metrics">
-              <div v-for="(value, metric) in getPhaseMetrics(phase.state)" :key="metric" class="metric">
+              <div v-for="(value, metric) in getPhaseMetrics(phase.state)" :key="metric">
                 <span class="metric-label">{{ getMetricLabel(metric) }}:</span>
                 <span class="metric-value">{{ value }}</span>
               </div>
@@ -855,11 +855,12 @@ const saveDates = () => {
   text-align: center;
 }
 
-.metric {
+.phase-metrics > div {
   display: flex;
   flex-direction: row;
   gap: 0.25rem;
   align-items: baseline;
+  justify-content: center;
 }
 
 .metric-value {
