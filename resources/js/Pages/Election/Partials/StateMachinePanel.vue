@@ -107,10 +107,38 @@
               >
                 Complete
               </button>
+
+              <!-- Locked Badge (for locked phases) -->
+              <div v-if="isPhaseLockedFromEdit(phase.state)" class="locked-badge">
+                <svg class="lock-icon" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                </svg>
+                <span class="lock-text">{{ getLockReason(phase.state) }}</span>
+              </div>
+
+              <!-- Countdown Timer (for active voting phase) -->
+              <div v-if="phase.state === 'voting' && isPhaseActive(phase.state)" class="countdown-timer">
+                <svg class="timer-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                </svg>
+                <span class="timer-label">Voting ends in</span>
+                <span class="timer-value">{{ getCountdownTime(phase.state) }}</span>
+              </div>
+
+              <!-- Update Dates Button (with proper disabled styling) -->
               <button
                 v-if="canUpdateDates(phase.state)"
                 class="action-btn btn-dates"
                 @click="openDateModal(phase.state)"
+              >
+                Update Dates
+              </button>
+              <button
+                v-else-if="isPhaseActive(phase.state) || isPhaseCompleted(phase.state)"
+                class="action-btn btn-dates disabled"
+                disabled
+                :title="getUpdateDisabledReason(phase.state)"
               >
                 Update Dates
               </button>
@@ -179,7 +207,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const props = defineProps({
   stateMachine: {
@@ -203,6 +231,19 @@ const showDateModal = ref(false)
 const editingPhaseState = ref(null)
 const dateForm = ref({ start: '', end: '' })
 const dateError = ref('')
+const currentTime = ref(new Date())
+let countdownInterval = null
+
+// Update countdown timer every second
+onMounted(() => {
+  countdownInterval = setInterval(() => {
+    currentTime.value = new Date()
+  }, 1000)
+})
+
+onUnmounted(() => {
+  if (countdownInterval) clearInterval(countdownInterval)
+})
 
 const phases = [
   {
@@ -403,6 +444,90 @@ const canUpdateDates = (state) => {
     default:
       return false
   }
+}
+
+// NEW: Check if phase is locked from editing
+const isPhaseLockedFromEdit = (state) => {
+  switch (state) {
+    case 'administration':
+      return props.election.administration_completed
+    case 'nomination':
+      return props.election.nomination_completed
+    case 'voting':
+      return props.election.voting_locked ||
+             (props.election.voting_starts_at && new Date() >= new Date(props.election.voting_starts_at))
+    case 'results_pending':
+    case 'results':
+      return true // Always locked
+    default:
+      return false
+  }
+}
+
+// NEW: Get reason why phase is locked
+const getLockReason = (state) => {
+  switch (state) {
+    case 'administration':
+      return 'Admin Locked'
+    case 'nomination':
+      return 'Nomination Locked'
+    case 'voting':
+      if (props.election.voting_locked) return 'Voting Closed'
+      if (props.election.voting_starts_at && new Date() >= new Date(props.election.voting_starts_at))
+        return 'In Progress'
+      return 'Locked'
+    case 'results_pending':
+      return 'Results Pending'
+    case 'results':
+      return 'Results Published'
+    default:
+      return 'Locked'
+  }
+}
+
+// NEW: Check if phase is currently active
+const isPhaseActive = (state) => {
+  switch (state) {
+    case 'voting':
+      return props.election.voting_starts_at && props.election.voting_ends_at &&
+             new Date() >= new Date(props.election.voting_starts_at) &&
+             new Date() < new Date(props.election.voting_ends_at)
+    default:
+      return state === props.stateMachine.currentState
+  }
+}
+
+// NEW: Get countdown time until voting ends
+const getCountdownTime = (state) => {
+  if (state !== 'voting' || !props.election.voting_ends_at) return '--:--:--'
+
+  const endTime = new Date(props.election.voting_ends_at)
+  const now = currentTime.value
+  const diffMs = endTime - now
+
+  if (diffMs <= 0) return '00:00:00'
+
+  const hours = Math.floor(diffMs / (1000 * 60 * 60))
+  const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60))
+  const seconds = Math.floor((diffMs % (1000 * 60)) / 1000)
+
+  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+}
+
+// NEW: Get reason why update is disabled
+const getUpdateDisabledReason = (state) => {
+  if (isPhaseCompleted(state)) {
+    return 'Phase is complete. Dates cannot be edited.'
+  }
+  if (state === 'voting') {
+    if (props.election.voting_locked) {
+      return 'Voting is locked. Dates cannot be edited.'
+    }
+    if (props.election.voting_starts_at && new Date() >= new Date(props.election.voting_starts_at)) {
+      return 'Voting has started. Dates cannot be edited.'
+    }
+  }
+  return 'Phase is locked. Dates cannot be edited.'
 }
 
 const openDateModal = (state) => {
@@ -986,6 +1111,118 @@ const saveDates = () => {
   background: #4f46e5;
   box-shadow: 0 4px 6px rgba(99, 102, 241, 0.3);
   transform: translateY(-1px);
+}
+
+/* Disabled state for Update Dates button */
+.action-btn.disabled {
+  background: #d1d5db;
+  color: #6b7280;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.action-btn.disabled:hover {
+  background: #d1d5db;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Locked Badge - Prominent visual indicator */
+.locked-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background: #fee2e2;
+  border: 2px solid #ef4444;
+  border-radius: 8px;
+  color: #991b1b;
+  font-weight: 700;
+  font-size: 0.875rem;
+  animation: badge-appear 0.3s ease-out;
+}
+
+.locked-badge .lock-icon {
+  width: 16px;
+  height: 16px;
+  fill: #ef4444;
+  flex-shrink: 0;
+}
+
+.locked-badge .lock-text {
+  display: block;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+@keyframes badge-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Countdown Timer - For active voting phase */
+.countdown-timer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+  border: 2px solid #f59e0b;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #92400e;
+}
+
+.countdown-timer .timer-icon {
+  width: 18px;
+  height: 18px;
+  color: #f59e0b;
+  flex-shrink: 0;
+  animation: spin-slow 3s linear infinite;
+}
+
+.countdown-timer .timer-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.75rem;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.countdown-timer .timer-value {
+  display: block;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #b45309;
+  letter-spacing: 1px;
+  animation: pulse-gentle 1.5s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
 }
 
 /* Responsive - Uses mobile-first approach with min-width media queries */
