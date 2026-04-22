@@ -32,7 +32,7 @@
         <div
           v-for="(phase, index) in phases"
           :key="phase.state"
-          class="timeline-phase"
+          class="timeline-phase mx-auto"
           :class="[
             `phase-${phase.state}`,
             {
