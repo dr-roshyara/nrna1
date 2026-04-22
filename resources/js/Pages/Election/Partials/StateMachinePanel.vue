@@ -1038,10 +1038,10 @@ const saveDates = () => {
 
 .form-input {
   width: 100%;
-  padding: 0.75rem;
+  padding: 1rem;
   border: 1px solid var(--color-border);
   border-radius: 6px;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   font-family: inherit;
 }
 
