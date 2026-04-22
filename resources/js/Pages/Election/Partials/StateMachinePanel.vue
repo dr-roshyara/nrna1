@@ -88,11 +88,11 @@
 
             <!-- Dates -->
             <div v-if="getPhaseDates(phase.state)" class="phase-dates">
-              <div v-if="getPhaseDates(phase.state).start" class="date-item">
+              <div v-if="getPhaseDates(phase.state).start">
                 <span class="date-label">Start:</span>
                 <span class="date-value">{{ formatDate(getPhaseDates(phase.state).start) }}</span>
               </div>
-              <div v-if="getPhaseDates(phase.state).end" class="date-item">
+              <div v-if="getPhaseDates(phase.state).end">
                 <span class="date-label">End:</span>
                 <span class="date-value">{{ formatDate(getPhaseDates(phase.state).end) }}</span>
               </div>
@@ -887,11 +887,12 @@ const saveDates = () => {
   text-align: center;
 }
 
-.date-item {
+.phase-dates > div {
   display: flex;
   flex-direction: row;
   gap: 0.25rem;
   align-items: baseline;
+  justify-content: center;
 }
 
 .date-label {
