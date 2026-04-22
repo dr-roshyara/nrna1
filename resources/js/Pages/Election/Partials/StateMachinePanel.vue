@@ -942,13 +942,18 @@ const saveDates = () => {
 }
 
 .btn-dates {
-  background: #f3f4f6;
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-border);
+  background: #6366f1;
+  color: white;
+  border: none;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
 }
 
 .btn-dates:hover {
-  background: #e5e7eb;
+  background: #4f46e5;
+  box-shadow: 0 4px 6px rgba(99, 102, 241, 0.3);
+  transform: translateY(-1px);
 }
 
 /* Responsive - Uses mobile-first approach with min-width media queries */
