@@ -849,15 +849,16 @@ const saveDates = () => {
 .phase-metrics {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
   margin-bottom: 0.75rem;
   font-size: 0.8rem;
 }
 
 .metric {
   display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
+  flex-direction: row;
+  gap: 0.25rem;
+  align-items: baseline;
 }
 
 .metric-value {
@@ -867,14 +868,15 @@ const saveDates = () => {
 
 .metric-label {
   color: var(--color-text-secondary);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 /* Dates */
 .phase-dates {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
   padding: 0.75rem;
   background: #f9fafb;
   border-radius: 6px;
@@ -884,15 +886,17 @@ const saveDates = () => {
 
 .date-item {
   display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
+  flex-direction: row;
+  gap: 0.25rem;
+  align-items: baseline;
 }
 
 .date-label {
   color: var(--color-text-secondary);
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 0.5px;
+  min-width: 35px;
 }
 
 .date-value {
