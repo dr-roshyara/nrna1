@@ -871,7 +871,7 @@ const saveDates = () => {
 .metric-label {
   color: var(--color-text-secondary);
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 /* Dates */
@@ -897,7 +897,7 @@ const saveDates = () => {
 
 .date-label {
   color: var(--color-text-secondary);
-  font-weight: 600;
+  font-weight: 700;
   text-transform: capitalize;
   letter-spacing: 0.5px;
   min-width: 35px;
