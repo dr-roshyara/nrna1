@@ -121,12 +121,12 @@ class ElectionManagementController extends Controller
             'status'          => 'planned',
             'start_date'      => Carbon::createFromFormat('Y-m-d\TH:i', $validated['start_datetime'])->format('Y-m-d'),
             'end_date'        => Carbon::createFromFormat('Y-m-d\TH:i', $validated['end_datetime'])->format('Y-m-d'),
-            'administration_suggested_start' => $validated['administration_suggested_start'] ?? null,
-            'administration_suggested_end'   => $validated['administration_suggested_end'] ?? null,
-            'nomination_suggested_start'     => $validated['nomination_suggested_start'] ?? null,
-            'nomination_suggested_end'       => $validated['nomination_suggested_end'] ?? null,
-            'voting_starts_at'               => $validated['voting_starts_at'] ?? null,
-            'voting_ends_at'                 => $validated['voting_ends_at'] ?? null,
+            'administration_suggested_start' => $validated['administration_suggested_start'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_start'])->format('Y-m-d H:i:00') : null,
+            'administration_suggested_end'   => $validated['administration_suggested_end'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_end'])->format('Y-m-d H:i:00') : null,
+            'nomination_suggested_start'     => $validated['nomination_suggested_start'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['nomination_suggested_start'])->format('Y-m-d H:i:00') : null,
+            'nomination_suggested_end'       => $validated['nomination_suggested_end'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['nomination_suggested_end'])->format('Y-m-d H:i:00') : null,
+            'voting_starts_at'               => $validated['voting_starts_at'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_starts_at'])->format('Y-m-d H:i:00') : null,
+            'voting_ends_at'                 => $validated['voting_ends_at'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_ends_at'])->format('Y-m-d H:i:00') : null,
         ]);
 
         // Notify all active chiefs of this organisation

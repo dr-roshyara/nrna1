@@ -53,37 +53,6 @@
             <p v-if="errors.description" class="mt-1 text-sm text-red-600">{{ errors.description }}</p>
           </div>
 
-          <!-- Start Date & Time -->
-          <div class="mb-4">
-            <label for="start_datetime" class="block text-sm font-medium text-gray-700 mb-1">
-              {{ t.fields.start.section }} <span class="text-red-500">*</span>
-            </label>
-            <input
-              id="start_datetime"
-              v-model="form.start_datetime"
-              type="datetime-local"
-              class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              :class="errors.start_date ? 'border-red-400' : 'border-gray-300'"
-            />
-            <p v-if="errors.start_date" class="mt-1 text-sm text-red-600">{{ errors.start_date }}</p>
-          </div>
-
-          <!-- End Date & Time -->
-          <div class="mb-8">
-            <label for="end_datetime" class="block text-sm font-medium text-gray-700 mb-1">
-              {{ t.fields.end.section }} <span class="text-red-500">*</span>
-            </label>
-            <input
-              id="end_datetime"
-              v-model="form.end_datetime"
-              type="datetime-local"
-              class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              :class="errors.end_date ? 'border-red-400' : 'border-gray-300'"
-            />
-            <p v-if="errors.end_date" class="mt-1 text-sm text-red-600">{{ errors.end_date }}</p>
-            <p v-if="clientDateError" class="mt-1 text-sm text-red-600">{{ clientDateError }}</p>
-          </div>
-
           <!-- STATE MACHINE PHASE DATES SECTION -->
           <div class="border-t pt-8 mb-8">
             <h3 class="text-lg font-semibold text-gray-900 mb-6">Election Phases Timeline</h3>
@@ -186,7 +155,7 @@
             </a>
             <button
               type="submit"
-              :disabled="isLoading || !!clientDateError || !!phasesDatesError"
+              :disabled="isLoading || !!phasesDatesError"
               class="rounded-md bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {{ isLoading ? t.actions.submitting : t.actions.submit }}
@@ -228,23 +197,12 @@ const today = new Date().toISOString().split('T')[0]
 const form = reactive({
   name:        '',
   description: '',
-  start_datetime: '',
-  end_datetime: '',
   administration_suggested_start: '',
   administration_suggested_end: '',
   nomination_suggested_start: '',
   nomination_suggested_end: '',
   voting_starts_at: '',
   voting_ends_at: '',
-})
-
-// Client-side: end datetime must be after start datetime
-const clientDateError = computed(() => {
-  if (!form.start_datetime || !form.end_datetime) return null
-  const start = new Date(form.start_datetime)
-  const end   = new Date(form.end_datetime)
-  if (end <= start) return t.value.validation.end_after_start
-  return null
 })
 
 // Client-side: phase dates validation
@@ -275,28 +233,25 @@ const phasesDatesError = computed(() => {
   if (nomStart < adminEnd) return 'Nomination phase must start after administration ends'
   if (votStart < nomEnd) return 'Voting phase must start after nomination ends'
 
-  // Election envelope validation (if both are set)
-  if (form.start_datetime && form.end_datetime) {
-    const elecStart = new Date(form.start_datetime)
-    const elecEnd = new Date(form.end_datetime)
-
-    if (adminStart < elecStart) return 'Administration cannot start before election start'
-    if (votEnd > elecEnd) return 'Voting cannot end after election end'
-  }
 
   return null
 })
 
 const submit = () => {
-  if (clientDateError.value || phasesDatesError.value) return
+  if (phasesDatesError.value) return
   isLoading.value = true
+
+  // Derive election dates from phase dates
+  const adminStart = form.administration_suggested_start ? new Date(form.administration_suggested_start) : null
+  const votEnd = form.voting_ends_at ? new Date(form.voting_ends_at) : null
+
   router.post(
     route('organisations.elections.store', props.organisation.slug),
     {
       name:        form.name,
       description: form.description,
-      start_datetime: form.start_datetime,
-      end_datetime: form.end_datetime,
+      start_date: adminStart ? adminStart.toISOString().split('T')[0] : '',
+      end_date: votEnd ? votEnd.toISOString().split('T')[0] : '',
       administration_suggested_start: form.administration_suggested_start,
       administration_suggested_end: form.administration_suggested_end,
       nomination_suggested_start: form.nomination_suggested_start,
