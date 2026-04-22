@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Election;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -100,8 +101,8 @@ class ElectionManagementController extends Controller
             'name'        => ['required', 'string', 'max:255',
                               Rule::unique('elections')->where('organisation_id', $organisation->id)],
             'description' => ['nullable', 'string', 'max:5000'],
-            'start_date'  => ['required', 'date', 'after_or_equal:today'],
-            'end_date'    => ['required', 'date', 'after_or_equal:start_date'],
+            'start_datetime' => ['required', 'date_format:Y-m-d\TH:i'],
+            'end_datetime'   => ['required', 'date_format:Y-m-d\TH:i'],
             'type'        => ['sometimes', 'in:real'],
             'administration_suggested_start' => ['nullable', 'date_format:Y-m-d\TH:i'],
             'administration_suggested_end'   => ['nullable', 'date_format:Y-m-d\TH:i'],
@@ -119,8 +120,8 @@ class ElectionManagementController extends Controller
             'description'     => $validated['description'] ?? null,
             'type'            => 'real',
             'status'          => 'planned',
-            'start_date'      => $validated['start_date'],
-            'end_date'        => $validated['end_date'],
+            'start_date'      => Carbon::createFromFormat('Y-m-d\TH:i', $validated['start_datetime'])->format('Y-m-d'),
+            'end_date'        => Carbon::createFromFormat('Y-m-d\TH:i', $validated['end_datetime'])->format('Y-m-d'),
             'administration_suggested_start' => $validated['administration_suggested_start'] ?? null,
             'administration_suggested_end'   => $validated['administration_suggested_end'] ?? null,
             'nomination_suggested_start'     => $validated['nomination_suggested_start'] ?? null,

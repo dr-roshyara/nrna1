@@ -53,73 +53,33 @@
             <p v-if="errors.description" class="mt-1 text-sm text-red-600">{{ errors.description }}</p>
           </div>
 
-          <!-- Start Date + Time -->
+          <!-- Start Date & Time -->
           <div class="mb-4">
-            <p class="text-sm font-medium text-gray-700 mb-2">
+            <label for="start_datetime" class="block text-sm font-medium text-gray-700 mb-1">
               {{ t.fields.start.section }} <span class="text-red-500">*</span>
-            </p>
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label for="start_date" class="block text-xs text-gray-500 mb-1">
-                  {{ t.fields.start.date_label }}
-                </label>
-                <input
-                  id="start_date"
-                  v-model="form.start_date"
-                  type="date"
-                  :min="today"
-                  class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  :class="errors.start_date ? 'border-red-400' : 'border-gray-300'"
-                />
-              </div>
-              <div>
-                <label for="start_time" class="block text-xs text-gray-500 mb-1">
-                  {{ t.fields.start.time_label }}
-                </label>
-                <input
-                  id="start_time"
-                  v-model="form.start_time"
-                  type="time"
-                  class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  :class="errors.start_date ? 'border-red-400' : 'border-gray-300'"
-                />
-              </div>
-            </div>
+            </label>
+            <input
+              id="start_datetime"
+              v-model="form.start_datetime"
+              type="datetime-local"
+              class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              :class="errors.start_date ? 'border-red-400' : 'border-gray-300'"
+            />
             <p v-if="errors.start_date" class="mt-1 text-sm text-red-600">{{ errors.start_date }}</p>
           </div>
 
-          <!-- End Date + Time -->
+          <!-- End Date & Time -->
           <div class="mb-8">
-            <p class="text-sm font-medium text-gray-700 mb-2">
+            <label for="end_datetime" class="block text-sm font-medium text-gray-700 mb-1">
               {{ t.fields.end.section }} <span class="text-red-500">*</span>
-            </p>
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label for="end_date" class="block text-xs text-gray-500 mb-1">
-                  {{ t.fields.end.date_label }}
-                </label>
-                <input
-                  id="end_date"
-                  v-model="form.end_date"
-                  type="date"
-                  :min="form.start_date || today"
-                  class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  :class="errors.end_date ? 'border-red-400' : 'border-gray-300'"
-                />
-              </div>
-              <div>
-                <label for="end_time" class="block text-xs text-gray-500 mb-1">
-                  {{ t.fields.end.time_label }}
-                </label>
-                <input
-                  id="end_time"
-                  v-model="form.end_time"
-                  type="time"
-                  class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  :class="errors.end_date ? 'border-red-400' : 'border-gray-300'"
-                />
-              </div>
-            </div>
+            </label>
+            <input
+              id="end_datetime"
+              v-model="form.end_datetime"
+              type="datetime-local"
+              class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              :class="errors.end_date ? 'border-red-400' : 'border-gray-300'"
+            />
             <p v-if="errors.end_date" class="mt-1 text-sm text-red-600">{{ errors.end_date }}</p>
             <p v-if="clientDateError" class="mt-1 text-sm text-red-600">{{ clientDateError }}</p>
           </div>
@@ -268,10 +228,8 @@ const today = new Date().toISOString().split('T')[0]
 const form = reactive({
   name:        '',
   description: '',
-  start_date:  '',
-  start_time:  '08:00',
-  end_date:    '',
-  end_time:    '20:00',
+  start_datetime: '',
+  end_datetime: '',
   administration_suggested_start: '',
   administration_suggested_end: '',
   nomination_suggested_start: '',
@@ -282,9 +240,9 @@ const form = reactive({
 
 // Client-side: end datetime must be after start datetime
 const clientDateError = computed(() => {
-  if (!form.start_date || !form.end_date) return null
-  const start = new Date(`${form.start_date}T${form.start_time || '00:00'}`)
-  const end   = new Date(`${form.end_date}T${form.end_time   || '23:59'}`)
+  if (!form.start_datetime || !form.end_datetime) return null
+  const start = new Date(form.start_datetime)
+  const end   = new Date(form.end_datetime)
   if (end <= start) return t.value.validation.end_after_start
   return null
 })
@@ -318,9 +276,9 @@ const phasesDatesError = computed(() => {
   if (votStart < nomEnd) return 'Voting phase must start after nomination ends'
 
   // Election envelope validation (if both are set)
-  if (form.start_date && form.end_date) {
-    const elecStart = new Date(`${form.start_date}T${form.start_time || '00:00'}`)
-    const elecEnd = new Date(`${form.end_date}T${form.end_time || '23:59'}`)
+  if (form.start_datetime && form.end_datetime) {
+    const elecStart = new Date(form.start_datetime)
+    const elecEnd = new Date(form.end_datetime)
 
     if (adminStart < elecStart) return 'Administration cannot start before election start'
     if (votEnd > elecEnd) return 'Voting cannot end after election end'
@@ -337,8 +295,8 @@ const submit = () => {
     {
       name:        form.name,
       description: form.description,
-      start_date:  `${form.start_date} ${form.start_time || '00:00'}:00`,
-      end_date:    `${form.end_date} ${form.end_time || '23:59'}:00`,
+      start_datetime: form.start_datetime,
+      end_datetime: form.end_datetime,
       administration_suggested_start: form.administration_suggested_start,
       administration_suggested_end: form.administration_suggested_end,
       nomination_suggested_start: form.nomination_suggested_start,
