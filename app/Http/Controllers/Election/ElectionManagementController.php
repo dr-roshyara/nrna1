@@ -100,16 +100,25 @@ class ElectionManagementController extends Controller
             'name'        => ['required', 'string', 'max:255',
                               Rule::unique('elections')->where('organisation_id', $organisation->id)],
             'description' => ['nullable', 'string', 'max:5000'],
-            'start_datetime' => ['required', 'date_format:Y-m-d\TH:i'],
-            'end_datetime'   => ['required', 'date_format:Y-m-d\TH:i'],
             'type'        => ['sometimes', 'in:real'],
             'administration_suggested_start' => ['nullable', 'date_format:Y-m-d\TH:i'],
-            'administration_suggested_end'   => ['nullable', 'date_format:Y-m-d\TH:i'],
+            'administration_suggested_end'   => ['nullable', 'date_format:Y-m-d\TH:i', 'after:administration_suggested_start'],
             'nomination_suggested_start'     => ['nullable', 'date_format:Y-m-d\TH:i'],
-            'nomination_suggested_end'       => ['nullable', 'date_format:Y-m-d\TH:i'],
+            'nomination_suggested_end'       => ['nullable', 'date_format:Y-m-d\TH:i', 'after:nomination_suggested_start'],
             'voting_starts_at'               => ['nullable', 'date_format:Y-m-d\TH:i'],
-            'voting_ends_at'                 => ['nullable', 'date_format:Y-m-d\TH:i'],
+            'voting_ends_at'                 => ['nullable', 'date_format:Y-m-d\TH:i', 'after:voting_starts_at'],
         ]);
+
+        // Auto-sync legacy dates from voting period (source of truth)
+        $startDate = null;
+        $endDate = null;
+
+        if ($validated['voting_starts_at']) {
+            $startDate = Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_starts_at']);
+        }
+        if ($validated['voting_ends_at']) {
+            $endDate = Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_ends_at']);
+        }
 
         $election = Election::create([
             'id'              => (string) Str::uuid(),
@@ -119,14 +128,16 @@ class ElectionManagementController extends Controller
             'description'     => $validated['description'] ?? null,
             'type'            => 'real',
             'status'          => 'planned',
-            'start_date'      => Carbon::createFromFormat('Y-m-d\TH:i', $validated['start_datetime'])->format('Y-m-d'),
-            'end_date'        => Carbon::createFromFormat('Y-m-d\TH:i', $validated['end_datetime'])->format('Y-m-d'),
+            'start_date'      => $startDate,
+            'end_date'        => $endDate,
             'administration_suggested_start' => $validated['administration_suggested_start'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_start'])->format('Y-m-d H:i:00') : null,
             'administration_suggested_end'   => $validated['administration_suggested_end'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['administration_suggested_end'])->format('Y-m-d H:i:00') : null,
             'nomination_suggested_start'     => $validated['nomination_suggested_start'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['nomination_suggested_start'])->format('Y-m-d H:i:00') : null,
             'nomination_suggested_end'       => $validated['nomination_suggested_end'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['nomination_suggested_end'])->format('Y-m-d H:i:00') : null,
             'voting_starts_at'               => $validated['voting_starts_at'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_starts_at'])->format('Y-m-d H:i:00') : null,
             'voting_ends_at'                 => $validated['voting_ends_at'] ? Carbon::createFromFormat('Y-m-d\TH:i', $validated['voting_ends_at'])->format('Y-m-d H:i:00') : null,
+            'allow_auto_transition'          => true,
+            'auto_transition_grace_days'     => 7,
         ]);
 
         // Notify all active chiefs of this organisation

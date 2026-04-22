@@ -1093,6 +1093,15 @@ class Election extends Model
     protected static function booted(): void
     {
         static::saving(function (Election $election) {
+            // Auto-sync legacy dates from voting period (one-way sync)
+            if ($election->isDirty('voting_starts_at') && $election->voting_starts_at) {
+                $election->start_date = $election->voting_starts_at;
+            }
+
+            if ($election->isDirty('voting_ends_at') && $election->voting_ends_at) {
+                $election->end_date = $election->voting_ends_at;
+            }
+
             $election->validateTimeline();
         });
         static::updated(function (Election $election) {
