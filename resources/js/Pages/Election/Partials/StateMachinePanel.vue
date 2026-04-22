@@ -576,7 +576,7 @@ const saveDates = () => {
 .timeline-phases {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.75rem;
   position: relative;
   z-index: 2;
   width: 100%;
@@ -599,7 +599,7 @@ const saveDates = () => {
   .timeline-phases {
     flex-direction: row;
     min-width: min-content;
-    gap: 1.5rem;
+    gap: 1rem;
     width: auto;
   }
 
@@ -616,7 +616,7 @@ const saveDates = () => {
   .timeline-phases {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
     justify-items: center;
     width: 100%;
   }
