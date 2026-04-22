@@ -787,7 +787,7 @@ const saveDates = () => {
 
 .phase-name {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 800;
   color: var(--color-text-primary);
   margin: 0;
   letter-spacing: -0.01em;
