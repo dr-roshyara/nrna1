@@ -81,8 +81,8 @@
             <!-- Metrics -->
             <div v-if="getPhaseMetrics(phase.state)" class="phase-metrics">
               <div v-for="(value, metric) in getPhaseMetrics(phase.state)" :key="metric" class="metric">
+                <span class="metric-label">{{ getMetricLabel(metric) }}:</span>
                 <span class="metric-value">{{ value }}</span>
-                <span class="metric-label">{{ getMetricLabel(metric) }}</span>
               </div>
             </div>
 
