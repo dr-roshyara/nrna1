@@ -23,7 +23,6 @@ use App\Models\ElectionOfficer;
 use App\Models\Organisation;
 use App\Notifications\ElectionReadyForActivation;
 use Illuminate\Support\Facades\Notification;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class ElectionManagementController extends Controller
