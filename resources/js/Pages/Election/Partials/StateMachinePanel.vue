@@ -771,11 +771,14 @@ const saveDates = () => {
 /* Desktop: Grid layout */
 @media (min-width: 1024px) {
   .timeline-phases {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-auto-flow: row !important;
     gap: 1.5rem;
     justify-items: center;
-    width: 100%;
+    width: 100% !important;
+    min-width: unset !important;
+    flex-direction: unset !important;
   }
 
   .timeline-phase {
