@@ -336,6 +336,180 @@
         </div>
       </section>
 
+      <!-- Election State Machine Section - New -->
+      <section
+        class="w-full bg-gradient-to-b from-indigo-50 via-blue-50 to-indigo-50 px-4 py-12 sm:px-6 sm:py-16 md:py-24 lg:px-8 lg:py-32 border-t-4 border-b-4 border-indigo-200"
+        aria-labelledby="state-machine-heading"
+      >
+        <div class="mx-auto max-w-6xl">
+          <!-- Section Header -->
+          <div class="mb-8 text-center sm:mb-12 md:mb-16">
+            <div class="mb-6 inline-flex items-center rounded-full bg-indigo-100 px-4 py-2">
+              <span class="text-sm font-semibold text-indigo-700">🔐 Advanced Security Architecture</span>
+            </div>
+            <h2
+              id="state-machine-heading"
+              class="text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
+            >
+              Election State Machine
+            </h2>
+            <p class="mt-4 text-base text-gray-600 sm:text-lg max-w-2xl mx-auto">
+              Behind every secure election is a tamper-proof state machine that enforces a rigid progression through five distinct phases, preventing manipulation and ensuring complete verifiability.
+            </p>
+          </div>
+
+          <!-- State Machine Flow - Visual Diagram Alternative -->
+          <div class="mb-12 rounded-xl bg-white shadow-lg overflow-hidden">
+            <div class="p-6 sm:p-8">
+              <div class="grid grid-cols-1 md:grid-cols-5 gap-2 md:gap-0">
+                <!-- Phase 1 -->
+                <div class="flex flex-col items-center relative">
+                  <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg">
+                    1
+                  </div>
+                  <p class="mt-3 text-xs sm:text-sm font-semibold text-gray-900 text-center">
+                    Administration
+                  </p>
+                  <p class="text-xs text-gray-600 text-center">Setup</p>
+                  <div v-if="locale === 'en'" class="absolute -right-3 md:right-1/2 md:translate-x-1/2 top-1/4 hidden md:block">
+                    <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="flex flex-col items-center relative">
+                  <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg">
+                    2
+                  </div>
+                  <p class="mt-3 text-xs sm:text-sm font-semibold text-gray-900 text-center">
+                    Nomination
+                  </p>
+                  <p class="text-xs text-gray-600 text-center">Candidates</p>
+                  <div v-if="locale === 'en'" class="absolute -right-3 md:right-1/2 md:translate-x-1/2 top-1/4 hidden md:block">
+                    <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="flex flex-col items-center relative">
+                  <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-purple-400 to-purple-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg">
+                    3
+                  </div>
+                  <p class="mt-3 text-xs sm:text-sm font-semibold text-gray-900 text-center">
+                    Voting
+                  </p>
+                  <p class="text-xs text-gray-600 text-center">Secure</p>
+                  <div v-if="locale === 'en'" class="absolute -right-3 md:right-1/2 md:translate-x-1/2 top-1/4 hidden md:block">
+                    <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="flex flex-col items-center relative">
+                  <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg">
+                    4
+                  </div>
+                  <p class="mt-3 text-xs sm:text-sm font-semibold text-gray-900 text-center">
+                    Counting
+                  </p>
+                  <p class="text-xs text-gray-600 text-center">Verify</p>
+                  <div v-if="locale === 'en'" class="absolute -right-3 md:right-1/2 md:translate-x-1/2 top-1/4 hidden md:block">
+                    <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Phase 5 -->
+                <div class="flex flex-col items-center">
+                  <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg">
+                    5
+                  </div>
+                  <p class="mt-3 text-xs sm:text-sm font-semibold text-gray-900 text-center">
+                    Results
+                  </p>
+                  <p class="text-xs text-gray-600 text-center">Published</p>
+                </div>
+              </div>
+
+              <!-- Locked Transition Info -->
+              <div class="mt-8 pt-6 border-t border-indigo-100">
+                <p class="text-xs sm:text-sm text-gray-600 text-center">
+                  <span class="font-semibold text-indigo-700">✓ One-way progression:</span> Each phase locks automatically. No phase can be skipped or reversed.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- State Machine Benefits - 3 Cards -->
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Immutable Audit Trail -->
+            <article class="overflow-hidden rounded-lg bg-white p-6 sm:p-8 shadow hover:shadow-lg transition duration-200">
+              <div class="mb-4 flex justify-center">
+                <div class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-indigo-100">
+                  <span class="text-2xl">📜</span>
+                </div>
+              </div>
+              <h3 class="mb-3 text-center text-lg font-bold text-gray-900 sm:text-xl">
+                Immutable Audit Trail
+              </h3>
+              <p class="text-center text-sm text-gray-700 sm:text-base">
+                Every state transition is recorded cryptographically and cannot be altered, modified, or deleted — even by system administrators.
+              </p>
+            </article>
+
+            <!-- Tamper-Proof Verification -->
+            <article class="overflow-hidden rounded-lg bg-white p-6 sm:p-8 shadow hover:shadow-lg transition duration-200">
+              <div class="mb-4 flex justify-center">
+                <div class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
+                  <span class="text-2xl">🔒</span>
+                </div>
+              </div>
+              <h3 class="mb-3 text-center text-lg font-bold text-gray-900 sm:text-xl">
+                Tamper-Proof Design
+              </h3>
+              <p class="text-center text-sm text-gray-700 sm:text-base">
+                Cryptographic hashes detect any attempt to tamper with votes or election state. Mathematical verification proves integrity without revealing details.
+              </p>
+            </article>
+
+            <!-- Legal Compliance -->
+            <article class="overflow-hidden rounded-lg bg-white p-6 sm:p-8 shadow hover:shadow-lg transition duration-200">
+              <div class="mb-4 flex justify-center">
+                <div class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-purple-100">
+                  <span class="text-2xl">⚖️</span>
+                </div>
+              </div>
+              <h3 class="mb-3 text-center text-lg font-bold text-gray-900 sm:text-xl">
+                Legal Compliance Ready
+              </h3>
+              <p class="text-center text-sm text-gray-700 sm:text-base">
+                Designed to meet election integrity requirements. Complete transparency for auditors while maintaining voter anonymity.
+              </p>
+            </article>
+          </div>
+
+          <!-- CTA to Election Security Page -->
+          <div class="mt-12 flex justify-center">
+            <a
+              :href="route('public.election-security')"
+              class="inline-flex items-center gap-3 rounded-lg bg-gradient-to-r from-indigo-600 to-blue-600 px-6 py-3 sm:px-8 sm:py-4 font-semibold text-white hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-200"
+            >
+              <span>Learn About State Machine Security</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <!-- Voting Journey Section -->
       <section
         class="w-full bg-gray-50 px-4 py-12 sm:px-6 sm:py-16 md:py-24 lg:px-8 lg:py-32"
@@ -552,9 +726,13 @@
 
 <script setup>
 import { defineProps } from 'vue';
+import { route } from 'ziggy-js';
+import { useI18n } from 'vue-i18n';
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
 import { useMeta } from '@/composables/useMeta';
+
+const { locale } = useI18n();
 
 // Set SEO meta tags for this page
 useMeta({ pageKey: 'security' });

@@ -129,6 +129,12 @@
             {{ $t('navigation.security') }}
           </Link>
           <Link
+            :href="route('public.election-architecture')"
+            class="px-3 py-2 text-white/80 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+          >
+            {{ $t('navigation.election_architecture', 'Architecture') }}
+          </Link>
+          <Link
             href="/demo/result"
             class="px-3 py-2 text-white/80 hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold/50 rounded-sm transition-colors duration-200 text-sm font-medium"
           >
@@ -209,6 +215,11 @@
             class="block px-4 py-3 text-white/80 hover:text-gold hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             🔒 {{ $t('navigation.security') }}
+          </Link>
+          <Link :href="route('public.election-architecture')" @click="closeMobileMenu"
+            class="block px-4 py-3 text-white/80 hover:text-gold hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+          >
+            🏛️ {{ $t('navigation.election_architecture', 'Architecture') }}
           </Link>
           <Link href="/demo/result" @click="closeMobileMenu"
             class="block px-4 py-3 text-white/80 hover:text-gold hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"

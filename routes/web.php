@@ -258,6 +258,11 @@ Route::get('/voting/security', [App\Http\Controllers\VotingSecurityPageControlle
 // Election Architecture page
 Route::get('/election-architecture', [App\Http\Controllers\ElectionArchitectureController::class, 'show'])->name('public.election-architecture');
 
+// Election Security & State Machine page
+Route::get('/election-security', function () {
+    return inertia('Public/ElectionSecurity');
+})->name('public.election-security');
+
 // SEO landing pages — keyword-targeted routes
 Route::get('/digitale-online-wahlen-fuer-verein', function () {
     return Inertia\Inertia::render('Marketing/Vereinswahlen', [
