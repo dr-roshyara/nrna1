@@ -187,10 +187,14 @@
       </section>
 
       <!-- CTA Section -->
-      <section class="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-20 mt-16 border-t border-gray-200">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-          <h2 class="text-4xl font-bold mb-4">{{ t.cta.heading }}</h2>
-          <p class="text-xl text-blue-100 mb-8">{{ t.cta.subheading }}</p>
+      <section class="relative bg-gradient-to-br from-blue-200 via-blue-300 to-blue-100 text-gray-900 py-20 mt-16 border-t border-gray-200 overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+          <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-4xl font-bold mb-4 text-gray-900">{{ t.cta.heading }}</h2>
+          <p class="text-xl text-gray-700 mb-8">{{ t.cta.subheading }}</p>
           <div class="flex flex-wrap justify-center gap-4">
             <a
               href="#"
@@ -201,7 +205,7 @@
             </a>
             <a
               href="mailto:sales@publicdigit.com"
-              class="border-2 border-white text-white font-bold px-8 py-3 rounded-lg hover:bg-white/10 transition-colors"
+              class="border-2 border-gray-900 text-gray-900 font-bold px-8 py-3 rounded-lg hover:bg-gray-900/10 transition-colors"
             >
               {{ t.cta.contact_sales }}
             </a>
