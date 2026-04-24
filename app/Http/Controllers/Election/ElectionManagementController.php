@@ -807,12 +807,19 @@ class ElectionManagementController extends Controller
      */
     public function openVoting(Election $election): \Illuminate\Http\RedirectResponse
     {
-        $election->update([
-            'status'            => 'active',
-            'is_active'         => true,
-            'results_published' => false,
-        ]);
-        return back()->with('success', 'Voting period opened.');
+        if ($election->current_state !== 'nomination') {
+            return back()->with('error', sprintf(
+                'Cannot open voting from "%s" phase. Election must be in nomination phase.',
+                $election->current_state
+            ));
+        }
+
+        try {
+            $election->transitionTo('voting', 'manual', 'Manually opened voting', auth()->id());
+            return back()->with('success', 'Voting period opened successfully.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Failed to open voting: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -820,8 +827,23 @@ class ElectionManagementController extends Controller
      */
     public function closeVoting(Election $election): \Illuminate\Http\RedirectResponse
     {
-        $election->update(['status' => 'completed', 'is_active' => false]);
-        return back()->with('success', 'Voting period closed.');
+        if ($election->voting_locked && $election->voting_ends_at?->lt(now())) {
+            return back()->with('error', 'Voting already ended and locked. Cannot close again.');
+        }
+
+        if ($election->current_state !== 'voting') {
+            return back()->with('error', sprintf(
+                'Cannot close voting from "%s" phase. Election must be in voting phase.',
+                $election->current_state
+            ));
+        }
+
+        try {
+            $election->transitionTo('results_pending', 'manual', 'Manually closed voting', auth()->id());
+            return back()->with('success', 'Voting period closed successfully.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Failed to close voting: ' . $e->getMessage());
+        }
     }
 
     /**
