@@ -386,7 +386,7 @@
 
           <div class="flex flex-col sm:flex-row gap-3">
             <ActionButton
-              v-if="!isVotingActive"
+              v-if="canOpenVoting"
               variant="success"
               size="md"
               :loading="isLoading"
@@ -401,7 +401,7 @@
             </ActionButton>
 
             <ActionButton
-              v-if="isVotingActive"
+              v-if="canCloseVoting"
               variant="danger"
               size="md"
               :loading="isLoading"
@@ -759,7 +759,10 @@ function toDatetimeLocal(raw) {
   return new Date(raw).toISOString().slice(0, 16)
 }
 
-const isVotingActive = computed(() => props.election.status === 'active')
+const currentState = computed(() => props.election.current_state)
+const canOpenVoting = computed(() => currentState.value === 'nomination')
+const canCloseVoting = computed(() => currentState.value === 'voting')
+const isVotingActive = computed(() => canCloseVoting.value)
 
 const settingsUrl = computed(() =>
   route('elections.settings.edit', {
