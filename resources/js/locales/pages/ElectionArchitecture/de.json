@@ -1,0 +1,143 @@
+{
+  "seo": {
+    "title": "Wahlmaschine | Manipulationssicheres sicheres Abstimmungssystem",
+    "description": "Erfahren Sie, wie unsere Wahlmaschine manipulationssichere, überprüfbare und nachvollziehbare Wahlen gewährleistet. 5-Phasen-Zyklus mit unveränderlichem Audit-Trail.",
+    "keywords": "Wahlmaschine, sichere Abstimmung, manipulationssichere Wahlen, überprüfbare Abstimmung, Audit-Trail",
+    "og_title": "Wahlmaschine - Sichere Wahlarchitektur",
+    "og_description": "Produktionsreife Wahlmaschine mit unveränderlichen Audit-Logs und kryptografischer Verifizierung."
+  },
+  "hero": {
+    "title": "Manipulationssichere Wahlmaschine",
+    "subtitle": "Überprüfbare, nachvollziehbare und sichere Wahlen von der Vorbereitung bis zu den Ergebnissen",
+    "trust_badge_1": "Branchenstandard-Verschlüsselung",
+    "trust_badge_2": "Unveränderliche Audit-Logs",
+    "trust_badge_3": "Vollständige Wählananonymität"
+  },
+  "phases": {
+    "title": "5-Phasen-Wahlzyklus",
+    "subtitle": "Ein strukturierter, transparenter Prozess von der Vorbereitung bis zu den Ergebnissen",
+    "administration": {
+      "title": "Verwaltung",
+      "icon": "⚙️",
+      "description": "Wahlparameter definieren, Positionen festlegen, Abstimmungsregeln konfigurieren und das System auf Nominierungen vorbereiten."
+    },
+    "nomination": {
+      "title": "Nominierung",
+      "icon": "📋",
+      "description": "Kandidaten nominieren sich selbst oder werden nominiert. Der Ausschuss überprüft und validiert alle Kandidaturen vor der Abstimmung."
+    },
+    "voting": {
+      "title": "Abstimmung",
+      "icon": "🗳️",
+      "description": "Wähler stimmen anonym ab. Sobald diese Phase beginnt, sind Daten und Regeln gesperrt, um Manipulationen zu verhindern."
+    },
+    "counting": {
+      "title": "Auszählung",
+      "icon": "📊",
+      "description": "Automatische Stimmenzählung und Ergebnisberechnung. Jede Stimme wird kryptografisch verifiziert und nachvollziehbar."
+    },
+    "results": {
+      "title": "Ergebnisse",
+      "icon": "✅",
+      "description": "Ergebnisse veröffentlicht und endgültig. Vollständiger Audit-Trail für Verifikation und Konfliktlösung verfügbar."
+    }
+  },
+  "security_features": [
+    {
+      "title": "Unveränderliches Audit-Trail",
+      "icon": "📋",
+      "description": "Jede Statusänderung, jede abgegebene Stimme und jede Systemoperation wird permanent aufgezeichnet und kann nicht geändert oder gelöscht werden."
+    },
+    {
+      "title": "Kryptografische Verifizierung",
+      "icon": "🔐",
+      "description": "Jede Stimme wird kryptografisch verschlüsselt und kann von Wählern verifiziert werden. Manipulationen sind mathematisch erkennbar."
+    },
+    {
+      "title": "Abstimmungsphase gesperrt",
+      "icon": "🔒",
+      "description": "Sobald die Abstimmung beginnt, können Daten und Regeln nicht geändert werden. Verhindert Manipulation in letzter Minute."
+    },
+    {
+      "title": "Vollständige Anonymität",
+      "icon": "👤",
+      "description": "Die Wähleridentität ist vollständig von ihrer Abstimmung getrennt. Keine Möglichkeit, einzelne Wähler mit ihren Auswahlen zu verknüpfen."
+    },
+    {
+      "title": "Übergangspausen",
+      "icon": "⏱️",
+      "description": "Konfigurierbare Pausen zwischen Phasen ermöglichen ordnungsgemäße Übergänge und verhindern Überraschungen."
+    },
+    {
+      "title": "Transparente Architektur",
+      "icon": "👁️",
+      "description": "Vollständig nachvollziehbares Systemdesign bedeutet, dass jeder die Wahlintegrität überprüfen kann."
+    }
+  ],
+  "benefits_admin": {
+    "title": "Für Wahlleiter",
+    "items": [
+      "Einfache Einrichtung mit geführter Wahlkonfiguration",
+      "Phasenvervollständigungs-Tracking mit Fortschrittsanzeigen",
+      "Automatische Übergänge mit Gnadenfrist",
+      "Vollständige Audit-Logs für jede Aktion",
+      "Kandidaten-Review- und Genehmigungsworkflow"
+    ]
+  },
+  "benefits_voter": {
+    "title": "Für Wähler",
+    "items": [
+      "Anonyme Abstimmung - Ihre Identität ist nie mit Ihrer Abstimmung verknüpft",
+      "Quittungsbasierte Verifizierung - Bestätigen Sie, dass Ihre Stimme korrekt aufgezeichnet wurde",
+      "Manipulationssichere Ergebnisse - mathematischer Integritätsnachweis",
+      "24/7-Zugriff - Stimmen Sie von überall aus ab",
+      "Mehrsprachige Unterstützung"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Wie wird die Wählananonymität gewährleistet?",
+      "answer": "Die Wähleridentität ist auf Datenbankebene vollständig von den Stimmendaten getrennt. Es gibt keine user_id-Spalten in Stimmentabellen, was es mathematisch unmöglich macht, Wähler mit ihren Auswahlen zu verknüpfen."
+    },
+    {
+      "question": "Können Stimmen manipuliert werden?",
+      "answer": "Nein. Jede Stimme wird kryptografisch verschlüsselt und in einem unveränderlichen Audit-Log aufgezeichnet. Jede Manipulation ist sofort durch kryptografische Verifizierung erkennbar."
+    },
+    {
+      "question": "Was passiert, wenn jemand zweimal abstimmt?",
+      "answer": "Das System verhindert Doppelabstimmungen durch eindeutige Abstimmungscodes. Jeder Wähler erhält eindeutige Codes und kann pro Wahl nur einmal abstimmen."
+    },
+    {
+      "question": "Können Abstimmungsregeln während der Abstimmung geändert werden?",
+      "answer": "Nein. Sobald die Abstimmungsphase beginnt, sind alle Daten und Regeln gesperrt. Dies verhindert Manipulationen oder Verwirrungen in letzter Minute."
+    },
+    {
+      "question": "Wie wird Konfliktlösung gehandhabt?",
+      "answer": "Vollständige Audit-Logs ermöglichen es, Konflikte zu untersuchen. Systemadministratoren können jede Aktion nachverfolgeln, ohne die Wählananonymität zu gefährden."
+    },
+    {
+      "question": "Ist das System konform mit Wahlbestimmungen?",
+      "answer": "Ja. Das unveränderliche Audit-Trail und die Transparenz sind speziell für die Einhaltung von Vorschriften ausgelegt und können internationalen Wahlstandards entsprechen."
+    }
+  ],
+  "cta": {
+    "start_election": "Wahl starten",
+    "contact_sales": "Verkauf kontaktieren",
+    "request_demo": "Demo anfordern",
+    "heading": "Bereit für sichere Wahlen?",
+    "subheading": "Probieren Sie Public Digit heute noch aus und erleben Sie die Zukunft demokratischer Prozesse."
+  },
+  "images": {
+    "state_machine_alt": "Wahlmaschinen-Diagramm",
+    "sequence_diagram_alt": "Sequenzdiagramm für Stimmabgabe und Verifizierung"
+  },
+  "breadcrumbs": {
+    "home": "Startseite",
+    "election_architecture": "Wahlarchitektur"
+  },
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "np": "नेपाली"
+  }
+}

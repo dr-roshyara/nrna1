@@ -16,6 +16,20 @@
           {{ t.organisation_label }}: <span class="font-medium text-gray-700">{{ organisation.name }}</span>
         </p>
 
+        <!-- Info Banner - Election Architecture -->
+        <div class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg flex items-start gap-3">
+          <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <p class="text-sm text-blue-800">
+            <strong>Secure by design:</strong> Our elections use a
+            <a :href="route('public.election-architecture')" target="_blank" class="underline font-medium hover:text-blue-900">
+              tamper-proof state machine architecture
+            </a>
+            with immutable audit trails.
+          </p>
+        </div>
+
         <form @submit.prevent="submit" novalidate>
 
           <!-- Name -->

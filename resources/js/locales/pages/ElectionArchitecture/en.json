@@ -1,0 +1,143 @@
+{
+  "seo": {
+    "title": "Election State Machine | Tamper-Proof Secure Voting System",
+    "description": "Learn how our election state machine ensures tamper-proof, verifiable, and auditable elections. 5-phase lifecycle with immutable audit trail.",
+    "keywords": "election state machine, secure voting, tamper-proof elections, verifiable voting, audit trail",
+    "og_title": "Election State Machine - Secure Voting Architecture",
+    "og_description": "Production-grade election state machine with immutable audit logs and cryptographic verification."
+  },
+  "hero": {
+    "title": "Tamper-Proof Election State Machine",
+    "subtitle": "Verifiable, auditable, and secure elections from setup to results",
+    "trust_badge_1": "Industry-Standard Encryption",
+    "trust_badge_2": "Immutable Audit Logs",
+    "trust_badge_3": "Complete Voter Anonymity"
+  },
+  "phases": {
+    "title": "5-Phase Election Lifecycle",
+    "subtitle": "A structured, transparent process from setup to results",
+    "administration": {
+      "title": "Administration",
+      "icon": "⚙️",
+      "description": "Set up election parameters, define positions, configure voting rules, and prepare the system for nominations."
+    },
+    "nomination": {
+      "title": "Nomination",
+      "icon": "📋",
+      "description": "Candidates nominate themselves or are nominated. Committee reviews and validates all candidacies before voting begins."
+    },
+    "voting": {
+      "title": "Voting",
+      "icon": "🗳️",
+      "description": "Voters cast their votes anonymously. Once this phase starts, dates and rules are locked to prevent tampering."
+    },
+    "counting": {
+      "title": "Counting",
+      "icon": "📊",
+      "description": "Automatic vote count and result calculation. Every vote is cryptographically verified and auditable."
+    },
+    "results": {
+      "title": "Results",
+      "icon": "✅",
+      "description": "Results published and final. Complete audit trail available for verification and dispute resolution."
+    }
+  },
+  "security_features": [
+    {
+      "title": "Immutable Audit Trail",
+      "icon": "📋",
+      "description": "Every state change, vote cast, and system action is permanently recorded and cannot be modified or deleted. Perfect for compliance and dispute resolution."
+    },
+    {
+      "title": "Cryptographic Verification",
+      "icon": "🔐",
+      "description": "Each vote is cryptographically hashed and verifiable by voters. Tampering is mathematically detectable."
+    },
+    {
+      "title": "Voting Phase Lock",
+      "icon": "🔒",
+      "description": "Once voting starts, dates and rules cannot be changed. Prevents late-minute manipulation or confusion."
+    },
+    {
+      "title": "Complete Anonymity",
+      "icon": "👤",
+      "description": "Voter identity is completely separated from their vote. No way to link individual voters to their selections."
+    },
+    {
+      "title": "Grace Periods",
+      "icon": "⏱️",
+      "description": "Configurable grace periods between phases allow orderly transitions and prevent surprises."
+    },
+    {
+      "title": "Transparent Architecture",
+      "icon": "👁️",
+      "description": "Fully auditable system design means anyone can verify election integrity."
+    }
+  ],
+  "benefits_admin": {
+    "title": "For Election Administrators",
+    "items": [
+      "Easy setup with guided election configuration",
+      "Phase completion tracking with progress indicators",
+      "Automatic transitions with grace periods",
+      "Complete audit logs for every action",
+      "Candidate review and approval workflow"
+    ]
+  },
+  "benefits_voter": {
+    "title": "For Voters",
+    "items": [
+      "Anonymous voting - your identity is never linked to your vote",
+      "Receipt-based verification - confirm your vote was recorded correctly",
+      "Tamper-proof results - mathematical proof of integrity",
+      "24/7 access - vote from anywhere, anytime during voting period",
+      "Multiple language support"
+    ]
+  },
+  "faq": [
+    {
+      "question": "How is voter anonymity ensured?",
+      "answer": "Voter identity is completely separated from vote data at the database level. There are no user_id columns in votes tables, making it mathematically impossible to link voters to their selections."
+    },
+    {
+      "question": "Can votes be tampered with?",
+      "answer": "No. Every vote is cryptographically hashed and recorded in an immutable audit log. Any tampering is immediately detectable through cryptographic verification."
+    },
+    {
+      "question": "What happens if someone votes twice?",
+      "answer": "The system prevents duplicate voting through unique voting codes. Each voter receives unique codes and can only vote once per election."
+    },
+    {
+      "question": "Can voting rules be changed during voting?",
+      "answer": "No. Once the voting phase starts, all dates and rules are locked. This prevents last-minute manipulation or confusion."
+    },
+    {
+      "question": "How is dispute resolution handled?",
+      "answer": "Complete audit logs make it possible to investigate any disputes. System administrators can trace every action without compromising voter anonymity."
+    },
+    {
+      "question": "Is the system compliant with election regulations?",
+      "answer": "Yes. The immutable audit trail and transparency are specifically designed for regulatory compliance and can meet international election standards."
+    }
+  ],
+  "cta": {
+    "start_election": "Start an Election",
+    "contact_sales": "Contact Sales",
+    "request_demo": "Request Demo",
+    "heading": "Ready to Conduct Secure Elections?",
+    "subheading": "Try Public Digit today and experience the future of democratic processes."
+  },
+  "images": {
+    "state_machine_alt": "Election State Machine Diagram",
+    "sequence_diagram_alt": "Vote Casting and Verification Sequence"
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "election_architecture": "Election Architecture"
+  },
+  "language": {
+    "en": "English",
+    "de": "Deutsch",
+    "np": "नेपाली"
+  }
+}
