@@ -34,26 +34,26 @@
       </div>
 
       <!-- Hero Section -->
-      <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 text-white py-20 px-4 overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-          <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
-          <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-400 rounded-full blur-3xl"></div>
+      <section class="relative bg-gradient-to-br from-blue-200 via-blue-300 to-blue-100 text-gray-900 py-20 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+          <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
         </div>
         <div class="relative max-w-4xl mx-auto text-center">
-          <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
             {{ t.hero.title }}
           </h1>
-          <p class="text-xl md:text-2xl text-blue-100 mb-12 max-w-2xl mx-auto">
+          <p class="text-xl md:text-2xl text-gray-700 mb-12 max-w-2xl mx-auto">
             {{ t.hero.subtitle }}
           </p>
           <div class="flex flex-wrap justify-center gap-4">
-            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-6 py-3 text-sm font-medium">
+            <div class="bg-white/60 backdrop-blur-sm border border-blue-400/30 rounded-lg px-6 py-3 text-sm font-medium text-gray-900">
               ✓ {{ t.hero.trust_badge_1 }}
             </div>
-            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-6 py-3 text-sm font-medium">
+            <div class="bg-white/60 backdrop-blur-sm border border-blue-400/30 rounded-lg px-6 py-3 text-sm font-medium text-gray-900">
               ✓ {{ t.hero.trust_badge_2 }}
             </div>
-            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-6 py-3 text-sm font-medium">
+            <div class="bg-white/60 backdrop-blur-sm border border-blue-400/30 rounded-lg px-6 py-3 text-sm font-medium text-gray-900">
               ✓ {{ t.hero.trust_badge_3 }}
             </div>
           </div>
