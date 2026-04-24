@@ -98,15 +98,15 @@
       <section class="max-w-6xl mx-auto px-4 py-16 border-t border-gray-200">
         <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Visual Architecture</h2>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div class="space-y-8">
           <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
             <img
               :src="images.stateMachine"
               :alt="t.images.state_machine_alt"
               loading="lazy"
               class="w-full h-auto"
-              width="600"
-              height="400"
+              width="800"
+              height="600"
             />
           </div>
           <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
@@ -115,27 +115,9 @@
               :alt="t.images.sequence_diagram_alt"
               loading="lazy"
               class="w-full h-auto"
-              width="600"
-              height="400"
+              width="800"
+              height="600"
             />
-          </div>
-        </div>
-      </section>
-
-      <!-- Mermaid Diagram Section -->
-      <section class="bg-gray-50 py-16 border-t border-gray-200">
-        <div class="max-w-6xl mx-auto px-4">
-          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">State Machine Flow</h2>
-          <div class="bg-white rounded-lg p-8 shadow-md overflow-x-auto">
-            <pre class="mermaid">
-stateDiagram-v2
-    [*] --> Administration: Election Created
-    Administration --> Nomination: Complete Setup
-    Nomination --> Voting: Complete Nominations
-    Voting --> Counting: Voting Ends
-    Counting --> Results: Publish Results
-    Results --> [*]: Archived
-            </pre>
           </div>
         </div>
       </section>
