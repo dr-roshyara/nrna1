@@ -1061,6 +1061,77 @@ class Election extends Model
         $this->logStateChange('results_locked', []);
     }
 
+    public function transitionTo(string $toState, string $trigger, ?string $reason = null, ?string $actorId = null): ElectionStateTransition
+    {
+        $lockKey = "election_transition:{$this->id}";
+        $lock = \Illuminate\Support\Facades\Cache::lock($lockKey, 30);
+
+        if (!$lock->get()) {
+            throw new \RuntimeException('Another transition is already in progress. Please try again.');
+        }
+
+        try {
+            return \Illuminate\Support\Facades\DB::transaction(function () use ($toState, $trigger, $reason, $actorId) {
+                $originalFlags = [
+                    'administration_completed' => $this->administration_completed,
+                    'nomination_completed' => $this->nomination_completed,
+                    'voting_locked' => $this->voting_locked,
+                    'voting_starts_at' => $this->voting_starts_at,
+                    'voting_ends_at' => $this->voting_ends_at,
+                ];
+
+                $fromState = $this->current_state;
+
+                try {
+                    $transition = $this->getStateMachine()->transitionTo($toState, $trigger, $reason, $actorId);
+
+                    match ($toState) {
+                        'voting' => $this->applyVotingTransition($actorId),
+                        'results_pending' => $this->applyResultsPendingTransition(),
+                        default => null,
+                    };
+
+                    event(new \App\Events\ElectionStateChangedEvent(
+                        election: $this,
+                        fromState: $fromState,
+                        toState: $toState,
+                        trigger: $trigger,
+                        actorId: $actorId
+                    ));
+
+                    return $transition;
+                } catch (\Exception $e) {
+                    $this->forceFill($originalFlags)->save();
+                    throw $e;
+                }
+            });
+        } finally {
+            $lock->release();
+        }
+    }
+
+    private function applyVotingTransition(?string $actorId): void
+    {
+        if (!$this->voting_starts_at) {
+            $this->update([
+                'voting_starts_at' => now(),
+                'voting_ends_at' => now()->addDays(4),
+                'nomination_completed' => true,
+                'nomination_completed_at' => now(),
+            ]);
+        }
+        $this->lockVoting($actorId);
+    }
+
+    private function applyResultsPendingTransition(): void
+    {
+        $this->update([
+            'voting_ends_at' => now(),
+            'voting_locked' => true,
+            'voting_locked_at' => now(),
+        ]);
+    }
+
     /**
      * Log state changes to audit trail (append-only, capped at 200 entries) + dual-write to audit_logs
      */
