@@ -236,41 +236,6 @@
           </div>
         </SectionCard>
 
-        <!-- ── ELECTION DATES ─────────────────────────────────── -->
-        <SectionCard padding="lg">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
-              <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <h2 class="text-base font-semibold text-slate-800">{{ t.sections.dates.title }}</h2>
-          </div>
-
-          <form @submit.prevent="updateDates" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">
-                {{ t.sections.dates.start_label }}
-              </label>
-              <input type="datetime-local" v-model="dateForm.start_date"
-                class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">
-                {{ t.sections.dates.end_label }}
-              </label>
-              <input type="datetime-local" v-model="dateForm.end_date"
-                class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400" />
-            </div>
-            <div class="sm:col-span-2">
-              <ActionButton variant="outline" size="md" type="submit" :loading="isSavingDates">
-                {{ isSavingDates ? t.sections.dates.btn_saving : t.sections.dates.btn_save }}
-              </ActionButton>
-            </div>
-          </form>
-        </SectionCard>
-
         <!-- ── ORGANISATION LOGO ─────────────────────────────────── -->
         <SectionCard padding="lg">
           <div class="flex items-center gap-3 mb-6">
@@ -735,7 +700,6 @@ const t = computed(() => pageData[locale.value] ?? pageData.de)
 
 const isLoading           = ref(false)
 const isActivating        = ref(false)
-const isSavingDates       = ref(false)
 const isUploadingLogo     = ref(false)
 const logoFile            = ref(null)
 const logoFileInput       = ref(null)
@@ -793,19 +757,6 @@ const uploadLogo = () => {
 function toDatetimeLocal(raw) {
   if (!raw) return ''
   return new Date(raw).toISOString().slice(0, 16)
-}
-
-const dateForm = ref({
-  start_date: toDatetimeLocal(props.election.start_date),
-  end_date:   toDatetimeLocal(props.election.end_date),
-})
-
-const updateDates = () => {
-  isSavingDates.value = true
-  router.patch(route('elections.update-dates', { election: props.election.slug }), dateForm.value, {
-    preserveScroll: true,
-    onFinish: () => { isSavingDates.value = false },
-  })
 }
 
 const isVotingActive = computed(() => props.election.status === 'active')
