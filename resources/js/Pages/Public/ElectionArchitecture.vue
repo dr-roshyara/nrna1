@@ -14,13 +14,7 @@
     <link rel="preload" :href="images.stateMachine" as="image" />
   </Head>
 
-  <!-- Structured Data (Schema.org) -->
-  <script type="application/ld+json" v-html="JSON.stringify(structuredData)"></script>
-
   <PublicDigitLayout>
-    <!-- Mermaid CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
-
     <div class="bg-white">
       <!-- Language Switcher -->
       <div class="fixed top-4 right-4 z-50 flex gap-2 bg-white rounded-full shadow-lg p-1">
@@ -270,26 +264,33 @@ const setLocale = (lang) => {
   localStorage.setItem('preferred_locale', lang)
 }
 
-// Load saved locale preference on mount
+// Load saved locale preference and Mermaid on mount
 onMounted(() => {
   const saved = localStorage.getItem('preferred_locale')
   if (saved && ['en', 'de', 'np'].includes(saved)) {
     locale.value = saved
   }
-  // Mermaid initialization
-  if (window.mermaid) {
-    window.mermaid.initialize({
-      startOnLoad: true,
-      theme: 'base',
-      securityLevel: 'loose',
-      themeVariables: {
-        primaryColor: '#1B2E4B',
-        primaryBorderColor: '#D97706',
-        lineColor: '#D97706',
-      },
-    })
-    window.mermaid.contentLoaded()
+
+  // Load Mermaid script dynamically
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js'
+  script.defer = true
+  script.onload = () => {
+    if (window.mermaid) {
+      window.mermaid.initialize({
+        startOnLoad: true,
+        theme: 'base',
+        securityLevel: 'loose',
+        themeVariables: {
+          primaryColor: '#1B2E4B',
+          primaryBorderColor: '#D97706',
+          lineColor: '#D97706',
+        },
+      })
+      window.mermaid.contentLoaded()
+    }
   }
+  document.head.appendChild(script)
 })
 
 // Structured data (Schema.org)
