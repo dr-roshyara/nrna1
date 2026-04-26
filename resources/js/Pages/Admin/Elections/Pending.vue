@@ -1,5 +1,5 @@
 <template>
-  <AdminLayout>
+  <ElectionLayout>
     <div class="min-h-screen bg-slate-100 py-8">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header -->
@@ -112,14 +112,14 @@
       @cancel="closeRejectionModal"
       :loading="isLoading"
     />
-  </AdminLayout>
+  </ElectionLayout>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { router } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
-import AdminLayout from '@/Layouts/AdminLayout.vue'
+import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import StateBadge from '@/Components/Election/StateBadge.vue'
 import ActionButton from '@/Components/ActionButton.vue'
 import ApprovalModal from '@/Components/Election/Modals/ApprovalModal.vue'
