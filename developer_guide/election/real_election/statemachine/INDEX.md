@@ -71,6 +71,17 @@ Start here if you're new to the election state machine.
   - Debugging checklist
   - Error message reference
 
+### Voting Button Implementation
+- **[07_VOTING_BUTTON_IMPLEMENTATION.md](./07_VOTING_BUTTON_IMPLEMENTATION.md)**
+  - Complete voting button architecture
+  - Open voting / Close voting flows
+  - Phase 4 critical fixes (updateQuietly, nomination_completed)
+  - Testing strategy (9 integration tests)
+  - Common pitfalls and solutions
+  - Integration patterns
+  - Database schema
+  - Deployment checklist
+
 ---
 
 ## By Role
