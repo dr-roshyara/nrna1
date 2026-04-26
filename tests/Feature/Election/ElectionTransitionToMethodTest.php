@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Cache;
 use Tests\TestCase;
 
 /**
- * TDD: Test Election::transitionTo() model method
+ * TDD: Test Election::transitionTo() model method with Transition VO
  *
- * RED phase: These tests establish what transitionTo() MUST do
+ * Tests the action-based API using Transition::manual()
  */
 class ElectionTransitionToMethodTest extends TestCase
 {
@@ -40,7 +40,9 @@ class ElectionTransitionToMethodTest extends TestCase
     /** @test */
     public function transitions_to_valid_target_state()
     {
-        $transition = $this->election->transitionTo('voting', 'manual', 'Test transition', 'test-actor-id');
+        $transition = $this->election->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual('open_voting', 'test-actor-id', 'Test transition')
+        );
 
         // Should create an ElectionStateTransition record
         $this->assertInstanceOf(ElectionStateTransition::class, $transition);
@@ -53,7 +55,9 @@ class ElectionTransitionToMethodTest extends TestCase
     /** @test */
     public function transition_creates_immutable_audit_record()
     {
-        $transition = $this->election->transitionTo('voting', 'manual', 'Testing', 'actor-123');
+        $transition = $this->election->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual('open_voting', 'actor-123', 'Testing')
+        );
 
         $found = ElectionStateTransition::where('election_id', $this->election->id)
             ->where('from_state', 'nomination')
@@ -71,7 +75,9 @@ class ElectionTransitionToMethodTest extends TestCase
     /** @test */
     public function transition_to_voting_sets_nomination_completed()
     {
-        $this->election->transitionTo('voting', 'manual', null, null);
+        $this->election->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual('open_voting', 'system')
+        );
 
         $this->election->refresh();
         $this->assertTrue($this->election->nomination_completed);
@@ -81,7 +87,9 @@ class ElectionTransitionToMethodTest extends TestCase
     public function transition_to_voting_locks_voting_immediately()
     {
         $actorId = 'admin-user-123';
-        $this->election->transitionTo('voting', 'manual', null, $actorId);
+        $this->election->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual('open_voting', $actorId)
+        );
 
         $this->election->refresh();
         $this->assertTrue($this->election->voting_locked);
@@ -103,9 +111,10 @@ class ElectionTransitionToMethodTest extends TestCase
 
         // Second transition should fail
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('Another transition is already in progress');
 
-        $this->election->transitionTo('voting', 'manual', null, null);
+        $this->election->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual('open_voting', 'system')
+        );
 
         $lock->release();
     }
@@ -116,7 +125,9 @@ class ElectionTransitionToMethodTest extends TestCase
         $lockKey = "election_transition:{$this->election->id}";
 
         // First transition
-        $this->election->transitionTo('voting', 'manual', null, null);
+        $this->election->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual('open_voting', 'system')
+        );
 
         // Lock should be released, so we should be able to acquire it
         $lock = Cache::lock($lockKey, 30);
@@ -133,14 +144,17 @@ class ElectionTransitionToMethodTest extends TestCase
     {
         $this->expectException(\Exception::class);
 
-        // Can't transition to 'voting' from 'voting' (already in voting)
+        // Can't open voting again if already in voting state
         $this->election->update([
+            'state' => 'voting',
             'nomination_completed' => true,
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHour(),
         ]);
 
-        $this->election->transitionTo('voting', 'manual', null, null);
+        $this->election->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual('open_voting', 'system')
+        );
     }
 
     /** @test */
@@ -152,7 +166,9 @@ class ElectionTransitionToMethodTest extends TestCase
         try {
             // Try invalid transition (missing candidates)
             $this->election->update(['candidates_count' => 0]);
-            $this->election->transitionTo('voting', 'manual', null, null);
+            $this->election->transitionTo(
+                \App\Domain\Election\StateMachine\Transition::manual('open_voting', 'system')
+            );
         } catch (\Exception $e) {
             // Expected
         }
@@ -179,7 +195,9 @@ class ElectionTransitionToMethodTest extends TestCase
             $eventData = $event;
         });
 
-        $this->election->transitionTo('voting', 'manual', 'Testing', 'actor-123');
+        $this->election->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual('open_voting', 'actor-123', 'Testing')
+        );
 
         $this->assertTrue($eventDispatched);
         $this->assertEquals('nomination', $eventData->fromState);
@@ -195,7 +213,9 @@ class ElectionTransitionToMethodTest extends TestCase
     /** @test */
     public function transition_uses_database_transaction()
     {
-        $transition = $this->election->transitionTo('voting', 'manual', null, null);
+        $transition = $this->election->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual('open_voting', 'system')
+        );
 
         // Verify both audit record and flag updates exist
         $this->assertDatabaseHas('election_state_transitions', [

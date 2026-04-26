@@ -39,6 +39,11 @@ class ElectionFactory extends Factory
             'candidates_count' => 0,
             'pending_candidacies_count' => 0,
             'votes_count' => 0,
+            // Locking columns - must not be NULL
+            'voting_locked' => false,
+            'voting_starts_at' => null,
+            'voting_ends_at' => null,
+            'results_locked' => false,
         ];
     }
 
@@ -97,6 +102,28 @@ class ElectionFactory extends Factory
      * State factory methods for explicit state control
      * Only set the state column; let tests override other flags as needed
      */
+    public function pendingApproval()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'state' => 'pending_approval',
+                'submitted_for_approval_at' => now(),
+                'submitted_by' => fake()->uuid(),
+            ];
+        });
+    }
+
+    public function inAdministrationState()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'state' => 'administration',
+                'approved_at' => now(),
+                'approved_by' => fake()->uuid(),
+            ];
+        });
+    }
+
     public function inNominationState()
     {
         return $this->state(function (array $attributes) {

@@ -62,6 +62,8 @@ class VotingButtonsStateMachineIntegrationTest extends TestCase
             'state' => 'draft',
         ]);
 
+        // Follow the new approval workflow: draft → pending_approval → administration
+        $election->submitForApproval($this->officer->id);
         $election->approve($this->officer->id, 'Approved for testing');
 
         return $election;

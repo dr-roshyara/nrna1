@@ -40,6 +40,8 @@ class Election extends Model
     public $incrementing = false;
 
     // ── State Machine Constants ────────────────────────────────────────────────
+    const STATE_DRAFT            = 'draft';
+    const STATE_PENDING_APPROVAL = 'pending_approval';
     const STATE_ADMINISTRATION  = 'administration';
     const STATE_NOMINATION      = 'nomination';
     const STATE_VOTING          = 'voting';
@@ -58,9 +60,9 @@ class Election extends Model
      */
     public function resolveRouteBinding($value, $field = null)
     {
-        return static::withoutGlobalScope(\App\Traits\BelongsToTenant::class)
+        return static::withoutGlobalScopes()
             ->where($field ?? $this->getRouteKeyName(), $value)
-            ->first();
+            ->firstOrFail();
     }
 
     /**
@@ -342,6 +344,11 @@ class Election extends Model
             ->with(['organisation' => function($q) {
                 $q->select('id', 'name');
             }]);
+    }
+
+    public function scopePendingApproval($query)
+    {
+        return $query->where('state', self::STATE_PENDING_APPROVAL);
     }
 
     /**
@@ -943,6 +950,16 @@ class Election extends Model
         };
     }
 
+    public function isPendingApproval(): bool
+    {
+        return $this->state === self::STATE_PENDING_APPROVAL;
+    }
+
+    public function wasRejected(): bool
+    {
+        return $this->state === self::STATE_DRAFT && $this->rejected_at !== null;
+    }
+
     /**
      * Get the reason why voting phase is blocked (single reason)
      */
@@ -1128,16 +1145,15 @@ class Election extends Model
      */
     public function submitForApproval(string $submittedBy): void
     {
-        if ($this->state !== 'draft') {
-            throw new \DomainException('Only draft elections can be submitted for approval.');
-        }
+        $this->transitionTo(\App\Domain\Election\StateMachine\Transition::manual('submit_for_approval', $submittedBy, 'Submitted for admin approval'));
 
-        $this->update([
+        $this->updateQuietly([
             'submitted_for_approval_at' => now(),
             'submitted_by' => $submittedBy,
+            'rejected_at' => null,
+            'rejected_by' => null,
+            'rejection_reason' => null,
         ]);
-
-        $this->logStateChange('submitted_for_approval', ['submitted_by' => $submittedBy]);
     }
 
     /**
@@ -1145,20 +1161,11 @@ class Election extends Model
      */
     public function approve(string $approvedBy, ?string $notes = null): void
     {
-        if ($this->state !== 'draft') {
-            throw new \DomainException('Only draft elections can be approved.');
+        $this->transitionTo(\App\Domain\Election\StateMachine\Transition::manual('approve', $approvedBy, $notes ?? 'Approved by admin'));
+
+        if ($notes) {
+            $this->updateQuietly(['approval_notes' => $notes]);
         }
-
-        $this->update([
-            'state' => 'administration',
-            'approved_at' => now(),
-            'approved_by' => $approvedBy,
-            'approval_notes' => $notes,
-        ]);
-
-        $this->logStateChange('approved', ['approved_by' => $approvedBy, 'notes' => $notes]);
-
-        Event::dispatch(new ElectionApproved($this, $approvedBy, $notes));
     }
 
     /**
@@ -1166,17 +1173,13 @@ class Election extends Model
      */
     public function reject(string $rejectedBy, string $reason): void
     {
-        if ($this->state !== 'draft') {
-            throw new \DomainException('Only draft elections can be rejected.');
-        }
+        $this->transitionTo(\App\Domain\Election\StateMachine\Transition::manual('reject', $rejectedBy, $reason));
 
-        $this->update([
+        $this->updateQuietly([
             'rejected_at' => now(),
             'rejected_by' => $rejectedBy,
             'rejection_reason' => $reason,
         ]);
-
-        $this->logStateChange('rejected', ['rejected_by' => $rejectedBy, 'reason' => $reason]);
     }
 
     /**
@@ -1377,14 +1380,12 @@ class Election extends Model
         $this->logStateChange('results_locked', []);
     }
 
-    public function transitionTo(string $toState, string $trigger, ?string $reason = null, ?string $actorId = null): ElectionStateTransition
+    public function transitionTo(\App\Domain\Election\StateMachine\Transition $transition): ElectionStateTransition
     {
-        $lockKey = "election_transition:{$this->id}";
-        $lock = \Illuminate\Support\Facades\Cache::lock($lockKey, 10);
+        $lock = \Illuminate\Support\Facades\Cache::lock("election_transition:{$this->id}", 10);
         $currentTime = now();
-        $fromState = $this->current_state;
 
-        return $lock->block(5, function () use ($toState, $trigger, $reason, $actorId, $currentTime, $fromState) {
+        return $lock->block(5, function () use ($transition, $currentTime) {
             $originalFlags = [
                 'administration_completed' => $this->administration_completed,
                 'nomination_completed' => $this->nomination_completed,
@@ -1394,45 +1395,78 @@ class Election extends Model
             ];
 
             try {
-                $transition = \Illuminate\Support\Facades\DB::transaction(function () use ($toState, $trigger, $reason, $actorId, $currentTime, $fromState) {
-                    // Create audit record with atomic timestamp
-                    $transition = ElectionStateTransition::create([
+                $record = \Illuminate\Support\Facades\DB::transaction(function () use ($transition, $currentTime) {
+                    // Refresh instance to avoid stale state in validation methods
+                    $freshElection = $this->fresh();
+
+                    // FIX 2: fromState captured INSIDE lock using fresh() to avoid race condition
+                    $fromState = $freshElection->current_state;
+                    $toState = \App\Domain\Election\StateMachine\TransitionMatrix::getResultingState($transition->action);
+
+                    // ── 1. Validate: action allowed from current state ──────────────
+                    if (!\App\Domain\Election\StateMachine\TransitionMatrix::canPerformAction($fromState, $transition->action)) {
+                        throw new \App\Domain\Election\Exceptions\InvalidTransitionException(
+                            "Action '{$transition->action}' is not allowed from state '{$fromState}'. " .
+                            "Allowed: " . implode(', ', \App\Domain\Election\StateMachine\TransitionMatrix::getAllowedActions($fromState))
+                        );
+                    }
+
+                    // ── 2. Authorize: role must be allowed for this action ──────────
+                    // System transitions bypass permission check
+                    if (!$transition->isSystemTriggered()) {
+                        $actorRole = $this->resolveActorRole($transition->actorId);
+                        if (!\App\Domain\Election\StateMachine\TransitionMatrix::actionRequiresRole($transition->action, $actorRole)) {
+                            throw new \DomainException(
+                                "Action '{$transition->action}' is not permitted for role '{$actorRole}'."
+                            );
+                        }
+                    }
+
+                    // ── 3. Guard: business rules ────────────────────────────────────
+                    // Validate using fresh instance data
+                    $freshElection->validateTransitionRules($transition);
+
+                    // ── 4. Audit record ─────────────────────────────────────────────
+                    $record = ElectionStateTransition::create([
                         'election_id' => $this->id,
-                        'from_state' => $fromState,
-                        'to_state' => $toState,
-                        'trigger' => $trigger,
-                        'actor_id' => $actorId,
-                        'reason' => $reason,
-                        'created_at' => $currentTime,
+                        'from_state'  => $fromState,
+                        'to_state'    => $toState,
+                        'trigger'     => $transition->trigger->value,
+                        'actor_id'    => $transition->actorId,
+                        'reason'      => $transition->reason,
+                        'metadata'    => $transition->metadata ?: null,
+                        'created_at'  => $currentTime,
                     ]);
 
-                    // Apply flag updates with atomic time
-                    match ($toState) {
-                        'voting' => $this->applyVotingTransition($actorId, $currentTime),
-                        'results_pending' => $this->applyResultsPendingTransition($currentTime),
-                        default => null,
+                    // ── 5. State change (only place in codebase) ────────────────────
+                    $this->updateQuietly(['state' => $toState]);
+
+                    // ── 6. Side effects (no state changes inside these) ─────────────
+                    match ($transition->action) {
+                        'open_voting'  => $this->applySideEffectsForOpenVoting($transition->actorId, $currentTime),
+                        'close_voting' => $this->applySideEffectsForCloseVoting($currentTime),
+                        'approve'      => $this->applySideEffectsForApprove($transition->actorId, $currentTime),
+                        default        => null,
                     };
 
-                    return $transition;
+                    return $record;
                 });
 
-                // Fire event AFTER commit — listeners see committed data
-                event(new \App\Events\ElectionStateChangedEvent(
-                    election: $this,
-                    fromState: $fromState,
-                    toState: $toState,
-                    trigger: $trigger,
-                    actorId: $actorId
-                ));
+                // ── 7. Events after commit (action-based dispatch) ──────────────────
+                // Refresh to get latest state for events
+                $this->refresh();
 
-                // Fire state-specific events
-                match ($toState) {
-                    'voting' => event(new VotingOpened($this, $actorId)),
-                    'results_pending' => event(new VotingClosed($this, $actorId)),
-                    default => null,
+                match ($transition->action) {
+                    'open_voting'         => event(new VotingOpened($this, $transition->actorId)),
+                    'close_voting'        => event(new VotingClosed($this, $transition->actorId)),
+                    'approve'             => event(new \App\Domain\Election\Events\ElectionApproved($this, $transition->actorId, $transition->reason)),
+                    'submit_for_approval' => event(new \App\Domain\Election\Events\ElectionSubmittedForApproval($this, $transition->actorId)),
+                    'reject'              => event(new \App\Domain\Election\Events\ElectionRejected($this, $transition->actorId, $transition->reason)),
+                    default               => event(new \App\Events\ElectionStateChangedEvent($this, $fromState, $toState, $transition->trigger->value, $transition->actorId)),
                 };
 
-                return $transition;
+                return $record;
+
             } catch (\Exception $e) {
                 $this->forceFill($originalFlags)->save();
                 throw $e;
@@ -1440,14 +1474,86 @@ class Election extends Model
         });
     }
 
-    private function applyVotingTransition(?string $actorId, \Carbon\Carbon $currentTime): void
+    private function validateTransitionRules(\App\Domain\Election\StateMachine\Transition $transition): void
     {
+        // Build method name: 'open_voting' → 'validateOpenVoting'
+        $method = 'validate' . str_replace('_', '', ucwords($transition->action, '_'));
+
+        if (method_exists($this, $method)) {
+            $this->{$method}($transition);
+        }
+    }
+
+    private function validateOpenVoting(\App\Domain\Election\StateMachine\Transition $transition): void
+    {
+        if (!$this->nomination_completed) {
+            throw new \DomainException('Cannot open voting: Nomination phase is not completed.');
+        }
+
         if (($this->candidates_count ?? 0) === 0) {
             throw new \DomainException('Cannot open voting: No candidates registered.');
         }
 
+        if (($this->pending_candidacies_count ?? 0) > 0) {
+            throw new \DomainException('Cannot open voting: There are pending candidacy applications.');
+        }
+    }
+
+    private function validateCloseVoting(\App\Domain\Election\StateMachine\Transition $transition): void
+    {
+        if ($this->voting_ends_at
+            && $this->voting_ends_at->lt(now())
+            && ($this->votes_count ?? 0) === 0
+        ) {
+            throw new \DomainException('Cannot close voting: Voting ended with no votes recorded.');
+        }
+    }
+
+    private function validateCompleteAdministration(\App\Domain\Election\StateMachine\Transition $transition): void
+    {
+        if (!$this->posts()->exists()) {
+            throw new \InvalidArgumentException('Cannot complete administration: No posts created.');
+        }
+        if (!$this->members()->where('role', 'voter')->where('status', 'active')->exists()) {
+            throw new \InvalidArgumentException('Cannot complete administration: No voters added.');
+        }
+        if (!$this->members()->where('role', 'committee')->where('status', 'active')->exists()) {
+            throw new \InvalidArgumentException('Cannot complete administration: No committee members added.');
+        }
+    }
+
+    private function resolveActorRole(string $actorId): string
+    {
+        if ($actorId === 'system') {
+            return 'system';
+        }
+
+        // 1. Check election-level role first (higher priority for election-specific actions)
+        $electionRole = \App\Models\ElectionOfficer::where('user_id', $actorId)
+            ->where('election_id', $this->id)
+            ->where('status', 'active')
+            ->value('role');
+
+        if ($electionRole) {
+            return $electionRole;
+        }
+
+        // 2. Fall back to org-level roles (admin, owner) via user_organisation_roles
+        $orgRole = \App\Models\UserOrganisationRole::where('user_id', $actorId)
+            ->where('organisation_id', $this->organisation_id)
+            ->value('role');
+
+        if (in_array($orgRole, ['admin', 'owner'], strict: true)) {
+            return $orgRole;
+        }
+
+        return 'observer';
+    }
+
+    private function applySideEffectsForOpenVoting(?string $actorId, \Carbon\Carbon $currentTime): void
+    {
         $updateData = [
-            'state' => 'voting', // Explicitly set state
+            // NO 'state' here — state is set by transitionTo()
             'nomination_completed' => true,
             'nomination_completed_at' => $currentTime,
             'voting_locked' => true,
@@ -1463,24 +1569,34 @@ class Election extends Model
             $updateData['voting_locked_by'] = $actorId;
         }
 
-        // Bypass model events by using query builder directly
         \Illuminate\Support\Facades\DB::table('elections')
             ->where('id', $this->id)
             ->update($updateData);
-
-        // Refresh the model with updated values
-        $this->refresh();
     }
 
-    private function applyResultsPendingTransition(\Carbon\Carbon $currentTime): void
+    private function applySideEffectsForCloseVoting(\Carbon\Carbon $currentTime): void
     {
-        // Use updateQuietly to bypass model events (avoiding validateTimeline hook during transition)
-        $this->updateQuietly([
-            'state' => 'results_pending', // Explicitly set state
-            'voting_ends_at' => $currentTime,
-            'voting_locked' => true,
-            'voting_locked_at' => $currentTime,
-        ]);
+        // Bypass model events by using query builder directly (avoiding validateTimeline hook during transition)
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update([
+                // NO 'state' here — state is set by transitionTo()
+                'voting_ends_at' => $currentTime,
+                'voting_locked' => true,
+                'voting_locked_at' => $currentTime,
+            ]);
+    }
+
+    private function applySideEffectsForApprove(?string $actorId, \Carbon\Carbon $currentTime): void
+    {
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update([
+                // NO 'state' here — state is set by transitionTo()
+                'approved_at' => $currentTime,
+                'approved_by' => $actorId,
+                'administration_completed' => false,
+            ]);
     }
 
     /**

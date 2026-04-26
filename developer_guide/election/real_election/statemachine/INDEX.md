@@ -82,6 +82,20 @@ Start here if you're new to the election state machine.
   - Database schema
   - Deployment checklist
 
+### Action-Based State Machine (NEW - Refactoring v2.0)
+- **[08_ACTION_BASED_STATE_MACHINE.md](./08_ACTION_BASED_STATE_MACHINE.md)**
+  - Overview of action-based architecture (vs state-based)
+  - TransitionMatrix: ALLOWED_ACTIONS + ACTION_RESULTS constants
+  - transitionTo(action, trigger, reason, actorId) method
+  - Single responsibility: only place that sets state
+  - Side effects separation (no state changes in apply* methods)
+  - Events dispatched by action name
+  - Data flow diagrams
+  - Testing examples (unit + feature)
+  - Migration guide (old way vs new way)
+  - Common patterns and troubleshooting
+  - File locations and performance notes
+
 ---
 
 ## By Role
@@ -176,6 +190,9 @@ tail -f storage/logs/laravel.log | grep "ElectionStateChanged"
 
 ---
 
-**Last Updated:** April 25, 2026
-**Status:** Production Ready ✅
-**Test Coverage:** 35/35 passing
+**Last Updated:** April 26, 2026
+**Status:** Production Ready ✅ (Action-Based Refactoring Complete)
+**Test Coverage:** 67/67 passing
+  - TransitionMatrixTest: 23 tests
+  - ElectionStateMachineTest: 35 tests
+  - VotingButtonsStateMachineIntegrationTest: 9 tests

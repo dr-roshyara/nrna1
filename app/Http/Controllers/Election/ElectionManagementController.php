@@ -809,47 +809,21 @@ class ElectionManagementController extends Controller
     {
         $this->authorize('manageSettings', $election);
 
-        // Validate current state
-        if ($election->current_state !== 'nomination') {
-            return back()->with('error', sprintf(
-                'Cannot open voting from "%s" phase. Election must be in nomination phase. (posts=%d, voters=%d, cmembers=%d)',
-                $election->current_state,
-                $election->posts_count ?? 'null',
-                $election->voters_count ?? 'null',
-                $election->election_committee_members_count ?? 'null'
-            ));
-        }
-
-        // Validate business conditions
-        if (!$election->canEnterVotingPhase()) {
-            $reasons = $election->getVotingPhaseBlockedReasons();
-            $reasonText = implode(', ', $reasons);
-            return back()->with('error', sprintf(
-                'Cannot open voting: %s',
-                $reasonText
-            ));
-        }
-
         try {
-            $transition = $election->transitionTo(
-                toState: 'voting',
-                trigger: 'manual',
-                reason: request()->input('reason', 'Manually opened voting by election officer'),
-                actorId: auth()->id()
+            $election->transitionTo(
+                \App\Domain\Election\StateMachine\Transition::manual(
+                    action: 'open_voting',
+                    actorId: auth()->id(),
+                    reason: request()->input('reason', 'Manually opened voting by election officer'),
+                    metadata: ['ip' => request()->ip()]
+                )
             );
+            return back()->with('success', 'Voting period opened successfully.');
 
-            return back()->with('success', sprintf(
-                'Voting period opened successfully. Transition ID: %s',
-                $transition->id
-            ));
-
-        } catch (\Exception $e) {
-            Log::error('Failed to open voting', [
-                'election_id' => $election->id,
-                'user_id' => auth()->id(),
-                'error' => $e->getMessage()
-            ]);
-            return back()->with('error', 'Failed to open voting: ' . $e->getMessage());
+        } catch (\App\Domain\Election\Exceptions\InvalidTransitionException $e) {
+            return back()->with('error', $e->getMessage());
+        } catch (\DomainException $e) {
+            return back()->with('error', $e->getMessage());
         }
     }
 
@@ -860,39 +834,41 @@ class ElectionManagementController extends Controller
     {
         $this->authorize('manageSettings', $election);
 
-        // Validate current state
-        if ($election->current_state !== 'voting') {
-            return back()->with('error', sprintf(
-                'Cannot close voting from "%s" phase. Election must be in voting phase.',
-                $election->current_state
-            ));
-        }
+        try {
+            $election->transitionTo(
+                \App\Domain\Election\StateMachine\Transition::manual(
+                    action: 'close_voting',
+                    actorId: auth()->id(),
+                    reason: request()->input('reason', 'Manually closed voting by election officer'),
+                    metadata: ['ip' => request()->ip()]
+                )
+            );
+            return back()->with('success', 'Voting period closed successfully.');
 
-        // Safety check: if voting naturally ended (past the end_time), require votes to have been recorded
-        if ($election->voting_ends_at && $election->voting_ends_at->lt(now()) && ($election->votes_count ?? 0) === 0) {
-            return back()->with('error', 'Cannot close voting: Voting ended with no votes recorded.');
+        } catch (\App\Domain\Election\Exceptions\InvalidTransitionException $e) {
+            return back()->with('error', $e->getMessage());
+        } catch (\DomainException $e) {
+            return back()->with('error', $e->getMessage());
         }
+    }
+
+    /**
+     * Submit election for approval — officer action.
+     */
+    public function submitForApproval(Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
 
         try {
-            $transition = $election->transitionTo(
-                toState: 'results_pending',
-                trigger: 'manual',
-                reason: request()->input('reason', 'Manually closed voting by election officer'),
-                actorId: auth()->id()
-            );
-
-            return back()->with('success', sprintf(
-                'Voting period closed successfully. Transition ID: %s',
-                $transition->id
-            ));
-
+            $election->submitForApproval(auth()->id());
+            return back()->with('success', 'Election submitted for approval successfully.');
         } catch (\Exception $e) {
-            Log::error('Failed to close voting', [
+            Log::error('Failed to submit election for approval', [
                 'election_id' => $election->id,
                 'user_id' => auth()->id(),
                 'error' => $e->getMessage()
             ]);
-            return back()->with('error', 'Failed to close voting: ' . $e->getMessage());
+            return back()->with('error', 'Failed to submit election for approval: ' . $e->getMessage());
         }
     }
 

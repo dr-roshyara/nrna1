@@ -275,6 +275,11 @@ Route::middleware(['auth', 'verified'])
             ->name('elections.close-voting')
             ->can('manageSettings', 'election');
 
+        // Election approval workflow — officer action
+        Route::post('/submit-for-approval', [ElectionManagementController::class, 'submitForApproval'])
+            ->name('elections.submit-for-approval')
+            ->can('manageSettings', 'election');
+
         // Bulk voter management — chief or deputy
         Route::post('/bulk-approve-voters', [ElectionManagementController::class, 'bulkApproveVoters'])
             ->name('elections.bulk-approve-voters')
@@ -606,6 +611,18 @@ Route::middleware(['auth:sanctum', 'verified'])
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/api/demo/verify-results/{postId}', [DemoResultController::class, 'verifyResults']);
     Route::get('/api/demo/statistical-verification/{postId}', [DemoResultController::class, 'statisticalVerification']);
+});
+
+// Admin routes for election approval workflow
+Route::prefix('admin')->middleware(['auth:sanctum', 'verified'])->group(function () {
+    // Pending elections list
+    Route::get('/elections/pending', [\App\Http\Controllers\Admin\AdminElectionController::class, 'pending'])->name('admin.elections.pending');
+
+    // Approve an election
+    Route::post('/elections/{election:slug}/approve', [\App\Http\Controllers\Admin\AdminElectionController::class, 'approve'])->name('admin.elections.approve');
+
+    // Reject an election
+    Route::post('/elections/{election:slug}/reject', [\App\Http\Controllers\Admin\AdminElectionController::class, 'reject'])->name('admin.elections.reject');
 });
 
 // Admin routes for election committee

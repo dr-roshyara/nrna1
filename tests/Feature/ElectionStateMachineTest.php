@@ -60,7 +60,8 @@ class ElectionStateMachineTest extends TestCase
     /** @test */
     public function state_is_nomination_after_administration_completed(): void
     {
-        // Transition: draft → administration → nomination
+        // Transition: draft → pending_approval → administration
+        $this->election->submitForApproval($this->admin->id);
         $this->election->approve($this->admin->id);
         $this->election->refresh();
         $this->assertEquals('administration', $this->election->current_state);
@@ -70,6 +71,7 @@ class ElectionStateMachineTest extends TestCase
     public function state_remains_nomination_after_nomination_completed_until_voting_starts(): void
     {
         // Setup election in nomination state
+        $this->election->submitForApproval($this->admin->id);
         $this->election->approve($this->admin->id);
         Post::factory()->create(['election_id' => $this->election->id]);
         $committee = User::factory()->forOrganisation($this->organisation)->create();
@@ -130,6 +132,7 @@ class ElectionStateMachineTest extends TestCase
     /** @test */
     public function administration_state_allows_manage_posts(): void
     {
+        $this->election->submitForApproval($this->admin->id);
         $this->election->approve($this->admin->id);
         $this->election->refresh();
 
@@ -546,10 +549,14 @@ class ElectionStateMachineTest extends TestCase
     /** @test */
     public function election_approved_event_is_dispatched(): void
     {
-        $election = Election::factory()->create(['state' => 'draft']);
+        $election = Election::factory()->create([
+            'organisation_id' => $this->organisation->id,
+            'state' => 'draft'
+        ]);
 
         \Illuminate\Support\Facades\Event::fake();
 
+        $election->submitForApproval($this->admin->id);
         $election->approve($this->admin->id, 'Approved for testing');
 
         \Illuminate\Support\Facades\Event::assertDispatched(
@@ -622,6 +629,15 @@ class ElectionStateMachineTest extends TestCase
     /** @test */
     public function voting_opened_event_is_dispatched(): void
     {
+        // Create ElectionOfficer relationship so admin has 'chief' role for voting actions
+        \App\Models\ElectionOfficer::create([
+            'organisation_id' => $this->organisation->id,
+            'election_id' => $this->election->id,
+            'user_id' => $this->admin->id,
+            'role' => 'chief',
+            'status' => 'active',
+        ]);
+
         $this->election->update(['state' => 'nomination', 'nomination_completed' => true, 'voting_locked' => false]);
         $post = Post::factory()->create(['election_id' => $this->election->id]);
         Candidacy::factory()->create([
@@ -637,7 +653,9 @@ class ElectionStateMachineTest extends TestCase
 
         \Illuminate\Support\Facades\Event::fake();
 
-        $this->election->transitionTo('voting', 'manual', 'Opening voting', $this->admin->id);
+        $this->election->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual('open_voting', $this->admin->id, 'Opening voting')
+        );
 
         \Illuminate\Support\Facades\Event::assertDispatched(
             \App\Domain\Election\Events\VotingOpened::class,
@@ -651,6 +669,15 @@ class ElectionStateMachineTest extends TestCase
     /** @test */
     public function voting_closed_event_is_dispatched(): void
     {
+        // Create ElectionOfficer relationship so admin has 'chief' role for voting actions
+        \App\Models\ElectionOfficer::create([
+            'organisation_id' => $this->organisation->id,
+            'election_id' => $this->election->id,
+            'user_id' => $this->admin->id,
+            'role' => 'chief',
+            'status' => 'active',
+        ]);
+
         $this->election->update([
             'state' => 'voting',
             'nomination_completed' => true,
@@ -661,7 +688,9 @@ class ElectionStateMachineTest extends TestCase
 
         \Illuminate\Support\Facades\Event::fake();
 
-        $this->election->transitionTo('results_pending', 'manual', 'Closing voting', $this->admin->id);
+        $this->election->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual('close_voting', $this->admin->id, 'Closing voting')
+        );
 
         \Illuminate\Support\Facades\Event::assertDispatched(
             \App\Domain\Election\Events\VotingClosed::class,
