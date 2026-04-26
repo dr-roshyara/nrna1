@@ -162,8 +162,8 @@ Route::get('candidacies/assign', [CandidacyController::class, 'assign'])->name('
    Route::middleware(['auth:sanctum', 'verified'])->post('/vote/confirm-correct', [VoteController::class, 'confirmCorrect'])->name('vote.confirm-correct');
 
    // Election-specific result routes (scoped by election slug)
-   Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election}/result', [ResultController::class, 'index'])->name('result.index');
-   Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election}/result/download-pdf', [ResultController::class, 'downloadPDF'])->name('result.download.pdf');
+   Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election:slug}/result', [ResultController::class, 'index'])->name('result.index');
+   Route::middleware(['auth:sanctum', 'verified'])->get('/election/{election:slug}/result/download-pdf', [ResultController::class, 'downloadPDF'])->name('result.download.pdf');
 
    // Has voted - view all members who have voted
    Route::middleware(['auth:sanctum', 'verified'])->get('/election/hasvoted', [HasVotedController::class, 'index'])->name('hasvoted.index');
@@ -238,6 +238,8 @@ Route::get('posts/index', [PostController::class, 'index'])->name('post.index');
 Route::get('posts/assign', [PostController::class, 'assign'])->name('post.assign');
 
 // Election Management & Viewboard Routes
+// Using explicit {election:slug} to trigger implicit model binding
+// The Election model's resolveRouteBinding() bypasses global scopes
 Route::middleware(['auth', 'verified'])
     ->prefix('/elections/{election:slug}')
     ->group(function () {

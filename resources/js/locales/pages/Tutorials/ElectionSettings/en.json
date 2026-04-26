@@ -15,6 +15,7 @@
     "label": "Contents",
     "items": [
       { "id": "overview",      "label": "Overview" },
+      { "id": "statemachine",  "label": "Election Lifecycle" },
       { "id": "prerequisites", "label": "Before You Begin" },
       { "id": "access",        "label": "Voter Access Control" },
       { "id": "ballot",        "label": "Ballot Options" },
@@ -29,6 +30,199 @@
     "body": "Election settings let you precisely control how voters interact with your ballot. They are split into three areas: Voter Access Control (who can vote and from where), Ballot Options (how candidates are selected), and Voter Verification (identity checks before voting). You can change settings at any time before voting opens. Once the election is active and has received votes, a confirmation checkbox is required to acknowledge the impact of mid-election changes.",
     "tip_label": "Good to know",
     "tip": "Settings are stored per election — changing them for one election has no effect on others in your organisation."
+  },
+
+  "section_statemachine": {
+    "heading": "Election Lifecycle",
+    "intro": "Every election progresses through five distinct phases, each with its own rules and capabilities. The phase your election is in is determined automatically by the dates you set.",
+    "key_concept": "Elections are date-driven, not action-driven. You specify when voting begins and ends, and the system automatically manages phase transitions.",
+
+    "timeline": {
+      "description": "Your election follows this five-phase lifecycle:",
+      "phases": [
+        {
+          "number": 1,
+          "name": "Administration",
+          "icon": "⚙️",
+          "description": "Set up the election structure",
+          "color": "slate",
+          "duration": "Before any dates are set",
+          "what_happens": "You create posts (positions), add candidates, configure voters, and customise all settings. No voters can access the ballot yet.",
+          "actions": [
+            "Add or edit posts (positions)",
+            "Create and edit candidacies",
+            "Configure election settings",
+            "Import voters",
+            "Set voting dates",
+            "Change settings freely"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "Nomination",
+          "icon": "📋",
+          "description": "Candidates confirm and campaign",
+          "color": "amber",
+          "duration": "Administration is marked complete",
+          "what_happens": "The administration phase has been locked in. Candidates review their information. You can still make adjustments, but the voting dates are now visible to all.",
+          "actions": [
+            "Manage candidate confirmations",
+            "Allow candidates to view their listings",
+            "Make final adjustments to posts and candidates",
+            "Prepare communications to voters"
+          ]
+        },
+        {
+          "number": 3,
+          "name": "Voting",
+          "icon": "🗳️",
+          "description": "Voters cast their ballots",
+          "color": "purple",
+          "triggers": "When voting_starts_at is reached",
+          "what_happens": "The voting period is now open. Voters see the ballot and can submit their selections. The system locks voting immediately when this phase starts to ensure fair count.",
+          "actions": [
+            "Voters access and complete the ballot",
+            "Monitor voting progress and real-time tallies",
+            "Support voters with questions",
+            "Prepare for results publication"
+          ],
+          "note": "Once voting opens, settings changes require explicit confirmation. Changing IP restrictions or verification rules can affect voters who are in progress."
+        },
+        {
+          "number": 4,
+          "name": "Results Pending",
+          "icon": "📊",
+          "description": "Votes are being counted",
+          "color": "orange",
+          "triggers": "When voting_ends_at is reached",
+          "what_happens": "Voting has closed. The ballot is locked and no new votes are accepted. Results are being tabulated and prepared for publication.",
+          "actions": [
+            "Review vote count and validate results",
+            "Check for irregularities or disputes",
+            "Notify stakeholders results are ready",
+            "Publish results"
+          ]
+        },
+        {
+          "number": 5,
+          "name": "Results",
+          "icon": "✅",
+          "description": "Results are published",
+          "color": "emerald",
+          "triggers": "When results are manually published",
+          "what_happens": "Final results are published. Voters can verify their own votes using their code. This is the final state — the election is complete.",
+          "actions": [
+            "Voters verify their individual votes",
+            "Public review of results",
+            "Archive election records",
+            "Generate final reports"
+          ]
+        }
+      ]
+    },
+
+    "dates_section": {
+      "heading": "How Dates Drive Phase Transitions",
+      "description": "Two critical dates determine when your election automatically progresses:",
+      "dates": [
+        {
+          "field": "Voting Starts At",
+          "variable": "voting_starts_at",
+          "when": "Election automatically transitions from Nomination → Voting",
+          "sets": "The beginning of the voting period",
+          "important": "Voting is locked immediately when this phase starts to prevent tampering"
+        },
+        {
+          "field": "Voting Ends At",
+          "variable": "voting_ends_at",
+          "when": "Election automatically transitions from Voting → Results Pending",
+          "sets": "The deadline for voter submissions",
+          "important": "No votes are accepted after this moment. You must wait until results are counted."
+        }
+      ],
+      "example": "If you set voting_starts_at = 'Mar 1, 9am' and voting_ends_at = 'Mar 3, 5pm', the election will automatically move through Nomination → Voting (Mar 1 9am) → Results Pending (Mar 3 5pm)."
+    },
+
+    "permissions_section": {
+      "heading": "What Can Happen in Each Phase",
+      "description": "Different actions are available depending on the current phase:",
+      "matrix": [
+        {
+          "action": "Add/edit posts",
+          "administration": true,
+          "nomination": true,
+          "voting": false,
+          "results_pending": false,
+          "results": false
+        },
+        {
+          "action": "Manage candidates",
+          "administration": true,
+          "nomination": true,
+          "voting": false,
+          "results_pending": false,
+          "results": false
+        },
+        {
+          "action": "Import voters",
+          "administration": true,
+          "nomination": true,
+          "voting": true,
+          "results_pending": false,
+          "results": false
+        },
+        {
+          "action": "Change settings",
+          "administration": true,
+          "nomination": true,
+          "voting": true,
+          "results_pending": true,
+          "results": false
+        },
+        {
+          "action": "Voters access ballot",
+          "administration": false,
+          "nomination": false,
+          "voting": true,
+          "results_pending": false,
+          "results": false
+        },
+        {
+          "action": "View results",
+          "administration": false,
+          "nomination": false,
+          "voting": false,
+          "results_pending": true,
+          "results": true
+        },
+        {
+          "action": "Voters verify votes",
+          "administration": false,
+          "nomination": false,
+          "voting": false,
+          "results_pending": false,
+          "results": true
+        }
+      ]
+    },
+
+    "tips": [
+      {
+        "icon": "📅",
+        "label": "Set dates strategically",
+        "text": "Leave enough time in Administration and Nomination phases. Once you set voting dates, they determine when the election automatically progresses."
+      },
+      {
+        "icon": "🔒",
+        "label": "Voting is locked",
+        "text": "When voting begins, the system immediately prevents any further candidate changes. This ensures vote integrity."
+      },
+      {
+        "icon": "⏰",
+        "label": "Dates are in server time",
+        "text": "All dates use the server's timezone. Make sure to account for timezone differences when setting voting start and end times."
+      }
+    ]
   },
 
   "section_prerequisites": {

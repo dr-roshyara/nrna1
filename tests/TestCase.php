@@ -27,7 +27,10 @@ abstract class TestCase extends BaseTestCase
             return; // Skip — RefreshDatabase uses migrate:fresh for PostgreSQL isolation
         }
 
-        parent::beginDatabaseTransaction();
+        // Call parent if method exists (for compatibility with different Laravel versions)
+        if (method_exists(parent::class, 'beginDatabaseTransaction')) {
+            parent::beginDatabaseTransaction();
+        }
     }
 
     /**

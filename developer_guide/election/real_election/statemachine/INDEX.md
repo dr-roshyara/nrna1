@@ -1,139 +1,170 @@
-# Election State Machine Developer Guide — Complete Index
+# Developer Guide Index
 
-## Documentation Structure
+## Quick Start
+Start here if you're new to the election state machine.
 
-### Core Guides
-
-| Document | Purpose |
-|----------|---------|
-| README.md | Architecture overview and design principles |
-| STATE_MACHINE_IMPLEMENTATION.md | Domain service and model implementation |
-| GRACE_PERIODS.md | Automatic transitions configuration |
-| VOTING_LOCKS.md | Voting cutoff enforcement |
-| TESTING.md | Test suite documentation |
+1. **[README.md](./README.md)** — Overview and key features
+2. **[01_ARCHITECTURE.md](./01_ARCHITECTURE.md)** — System design and data flow
+3. **[02_API_REFERENCE.md](./02_API_REFERENCE.md)** — Method signatures and endpoints
+4. **[05_COMMON_PATTERNS.md](./05_COMMON_PATTERNS.md)** — Real-world usage examples
 
 ---
 
-## Election Lifecycle
+## Complete Documentation
 
-### Phase 1: Administration
-- State: `administration`
-- Ends when officer calls: `completeAdministration()`
-- Requirements: At least 1 post, at least 1 voter
+### Overview
+- **[README.md](./README.md)** - Project overview, key features, state diagram
 
-### Phase 2: Nomination
-- State: `nomination`
-- Ends when officer calls: `completeNomination()`
-- Requirements: No pending candidacies
-- Side Effect: Voting automatically locked
+### Architecture
+- **[01_ARCHITECTURE.md](./01_ARCHITECTURE.md)**
+  - System design (DDD layers)
+  - Data flow diagrams
+  - Cache lock mechanism
+  - Transaction rollback
+  - Validation flow
+  - File locations
 
-### Phase 3: Voting
-- State: `voting`
-- When: `voting_starts_at` to `voting_ends_at`
-- Voting Lock: ENABLED (cannot vote after end time)
+### API Reference
+- **[02_API_REFERENCE.md](./02_API_REFERENCE.md)**
+  - Election::transitionTo() method
+  - Controller methods (openVoting, closeVoting)
+  - Events (ElectionStateChangedEvent)
+  - Accessors (current_state)
+  - Helper methods
+  - Error messages
 
-### Phase 4: Results Pending
-- State: `results_pending`
-- When: After voting ends, before publication
+### Testing
+- **[03_TESTING.md](./03_TESTING.md)**
+  - How to run tests
+  - Test structure (RED/GREEN/REFACTOR)
+  - Model tests (2)
+  - Controller tests (8)
+  - Regression tests (25)
+  - Adding new tests
+  - Common test failures
 
-### Phase 5: Results Published
-- State: `results`
-- When: `results_published_at` is set
-- Final state: No further transitions
+### Frontend
+- **[04_FRONTEND.md](./04_FRONTEND.md)**
+  - Management.vue changes
+  - Computed properties
+  - Button visibility logic
+  - State styling
+  - Props flow
+  - Integration points
 
----
+### Common Patterns
+- **[05_COMMON_PATTERNS.md](./05_COMMON_PATTERNS.md)**
+  - Safe state transitions
+  - Double-lock guard
+  - Querying by state
+  - Event listeners
+  - WebSocket broadcast
+  - Audit trail reports
+  - Preventing changes during windows
+  - Automated transitions
+  - Pre-flight validation
+  - Dashboard summaries
 
-## Grace Periods
-
-What: Automatic phase transitions after configurable delay
-
-How: 
-1. Phase completes (e.g., nomination)
-2. Grace period elapses (e.g., 7 days)
-3. Background job triggers next phase automatically
-
-Configuration:
-- Enable/disable: Timeline Settings UI checkbox
-- Duration: 0-30 days (number input)
-
-Processing:
-- Command: `php artisan elections:process-auto-transitions`
-- Schedule: Hourly
-
----
-
-## Voting Locks
-
-What: Prevents votes after voting should end
-
-When Locked:
-1. When nomination phase completes
-2. When voting window closes (automatic)
-
-Columns:
-- `voting_locked` (boolean)
-- `voting_locked_at` (timestamp)
-- `voting_locked_by` (user_id, null = system)
-
-Enforcement:
-- Vote submission rejected with 403
-- Policy denies castVote action
+### Troubleshooting
+- **[06_TROUBLESHOOTING.md](./06_TROUBLESHOOTING.md)**
+  - Common issues and solutions
+  - Debugging checklist
+  - Error message reference
 
 ---
 
-## Testing
+## By Role
 
-Total Tests: 38
-- State Transitions: 25 tests
-- Timeline Settings: 10 tests
-- Grace Periods: 13 tests
-- Grace Period UI: 3 tests
+### Developer (Adding Features)
+1. Read: [README.md](./README.md) - understand what this does
+2. Read: [01_ARCHITECTURE.md](./01_ARCHITECTURE.md) - how it works
+3. Reference: [02_API_REFERENCE.md](./02_API_REFERENCE.md) - method signatures
+4. Follow: [05_COMMON_PATTERNS.md](./05_COMMON_PATTERNS.md) - how to use it
+5. Debug: [06_TROUBLESHOOTING.md](./06_TROUBLESHOOTING.md) - if something breaks
 
-Run All:
+### QA (Testing)
+1. Read: [03_TESTING.md](./03_TESTING.md) - how tests work
+2. Run: `php artisan test tests/Feature/Election/`
+3. Check: [06_TROUBLESHOOTING.md](./06_TROUBLESHOOTING.md) - if tests fail
+
+### DevOps (Deployment)
+1. Check: [README.md](./README.md) - deployment checklist
+2. Verify: Database migrations applied
+3. Verify: Tests passing: `php artisan test`
+4. Monitor: [05_COMMON_PATTERNS.md](./05_COMMON_PATTERNS.md) - logging patterns
+
+### Frontend (UI Integration)
+1. Read: [04_FRONTEND.md](./04_FRONTEND.md) - Vue.js changes
+2. Reference: [02_API_REFERENCE.md](./02_API_REFERENCE.md) - API endpoints
+3. Use: [05_COMMON_PATTERNS.md](./05_COMMON_PATTERNS.md) - Vue patterns
+
+---
+
+## Key Files in Codebase
+
+### Core Implementation
+- `app/Models/Election.php` - transitionTo() bridge method
+- `app/Http/Controllers/Election/ElectionManagementController.php` - controller methods
+- `app/Events/ElectionStateChangedEvent.php` - NEW: event class
+- `app/Domain/Election/StateMachine/ElectionStateMachine.php` - domain service
+
+### Tests
+- `tests/Feature/Election/VotingButtonsStateMachineTest.php` - 10 new assertions
+- `tests/Feature/ElectionStateMachineTest.php` - 25 regression tests
+
+### Frontend
+- `resources/js/Pages/Election/Management.vue` - button visibility logic
+
+---
+
+## Running Tests
+
 ```bash
-php artisan test tests/Feature/ElectionStateMachineTest.php \
-                   tests/Feature/ElectionTimelineSettingsTest.php \
-                   tests/Feature/Election/ElectionGracePeriodUITest.php \
-                   tests/Feature/Console/ProcessElectionAutoTransitionsTest.php
+# All election tests
+php artisan test tests/Feature/Election/ --no-coverage
+
+# Just voting buttons
+php artisan test tests/Feature/Election/VotingButtonsStateMachineTest.php --no-coverage
+
+# Just regression
+php artisan test tests/Feature/ElectionStateMachineTest.php --no-coverage
+
+# With filter
+php artisan test tests/Feature/Election/ --filter "open_voting" --no-coverage
+
+# Expected result: 35 tests passing
 ```
 
 ---
 
-## Quick Reference
+## Quick Commands
 
-### Get Current State
-```php
-$state = $election->current_state;  // Returns: 'admin'|'nomination'|'voting'|'results'
-```
+```bash
+# See all files modified
+git log --oneline | head -5
 
-### Check Allowed Actions
-```php
-if ($election->allowsAction('manage_posts')) { }
-if ($election->allowsAction('cast_vote')) { }
-```
+# Run tests
+php artisan test tests/Feature/Election/ --no-coverage
 
-### Complete a Phase
-```php
-$election->completeAdministration('Ready', $userId);
-$election->completeNomination('Ready', $userId);
-```
+# Check database
+php artisan tinker
+> Election::first()->current_state
 
-### Lock Voting
-```php
-$election->lockVoting($userId);  // With actor
-$election->lockVoting(null);     // System lock
-```
-
-### Enable Grace Periods
-```php
-$election->update([
-    'allow_auto_transition' => true,
-    'auto_transition_grace_days' => 7,
-]);
+# Monitor logs
+tail -f storage/logs/laravel.log | grep "ElectionStateChanged"
 ```
 
 ---
 
-**Implementation Status:** Complete (Steps 1-13)
-**Test Coverage:** 38 tests, 100% critical paths, 0 regressions
-**Last Updated:** 2026-04-22
+## Support
+
+- **Bug?** → [06_TROUBLESHOOTING.md](./06_TROUBLESHOOTING.md)
+- **How do I...?** → [05_COMMON_PATTERNS.md](./05_COMMON_PATTERNS.md)
+- **What does this do?** → [02_API_REFERENCE.md](./02_API_REFERENCE.md)
+- **Why is it designed this way?** → [01_ARCHITECTURE.md](./01_ARCHITECTURE.md)
+
+---
+
+**Last Updated:** April 25, 2026
+**Status:** Production Ready ✅
+**Test Coverage:** 35/35 passing

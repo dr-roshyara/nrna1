@@ -1,6 +1,6 @@
 <script setup>
 import { useMeta } from '@/composables/useMeta'
-import { computed } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 
@@ -10,14 +10,48 @@ useMeta({
   type: 'article',
 })
 
-const locale = computed(() => (window.location.pathname.includes('/de') ? 'de' : window.location.pathname.includes('/np') ? 'np' : 'en'))
+// Detect locale from cookie, fallback to 'de' (server default)
+const getCookie = (name) => {
+  const nameEQ = name + '='
+  const cookies = document.cookie.split(';')
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim()
+    if (cookie.indexOf(nameEQ) === 0) {
+      return cookie.substring(nameEQ.length)
+    }
+  }
+  return null
+}
+
+const locale = ref(getCookie('locale') || 'de')
+
+// Watch for cookie changes from PublicDigitHeader
+let localeCheckInterval = null
+onMounted(() => {
+  const checkLocaleChange = () => {
+    const newLocale = getCookie('locale') || 'de'
+    if (newLocale !== locale.value) {
+      locale.value = newLocale
+    }
+  }
+
+  // Check for locale changes every 100ms
+  localeCheckInterval = setInterval(checkLocaleChange, 100)
+})
+
+// Cleanup interval on component unmount
+onBeforeUnmount(() => {
+  if (localeCheckInterval) {
+    clearInterval(localeCheckInterval)
+  }
+})
 
 // Import locale JSON based on current language
 const localeModule = import.meta.glob('../../locales/pages/Tutorials/ElectionSettings/*.json', { eager: true })
 const t = computed(() => {
   const lang = locale.value
   const key = `../../locales/pages/Tutorials/ElectionSettings/${lang}.json`
-  return localeModule[key]?.default || localeModule['../../locales/pages/Tutorials/ElectionSettings/en.json'].default
+  return localeModule[key]?.default || localeModule['../../locales/pages/Tutorials/ElectionSettings/de.json'].default
 })
 
 // Track active section for scroll-spy
@@ -128,10 +162,181 @@ const activeSection = computed(() => 'overview')
               </div>
             </section>
 
+            <!-- Section: Election Lifecycle / State Machine -->
+            <section id="statemachine" class="bg-white rounded-2xl border-2 border-slate-200 shadow-lg p-8 md:p-10 hover:shadow-xl transition-shadow scroll-mt-8">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-indigo-400 to-violet-600 text-white font-bold text-lg flex items-center justify-center">2</div>
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900">{{ t.section_statemachine.heading }}</h2>
+              </div>
+              <p class="text-lg text-slate-700 leading-relaxed mb-6">{{ t.section_statemachine.intro }}</p>
+
+              <!-- Key Concept Box -->
+              <div class="bg-gradient-to-r from-indigo-50 via-purple-50 to-violet-50 border-l-4 border-indigo-500 rounded-lg p-6 mb-10 flex gap-4">
+                <svg class="w-6 h-6 text-indigo-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zm-11-1a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd" />
+                </svg>
+                <div>
+                  <p class="font-bold text-indigo-900 text-lg">💡 {{ t.section_statemachine.key_concept }}</p>
+                </div>
+              </div>
+
+              <!-- Timeline Description -->
+              <p class="text-slate-700 mb-8 text-lg font-medium">{{ t.section_statemachine.timeline.description }}</p>
+
+              <!-- Interactive Timeline - Horizontal Layout -->
+              <div class="mb-12 overflow-x-auto pb-4">
+                <div class="flex gap-4 min-w-max md:min-w-full md:flex-wrap md:gap-4 px-4 md:px-0">
+                  <div
+                    v-for="(phase, idx) in t.section_statemachine.timeline.phases"
+                    :key="idx"
+                    class="flex-1 min-w-[280px] bg-gradient-to-br rounded-xl border-2 p-6 cursor-pointer transform transition-all hover:scale-105 hover:shadow-lg"
+                    :class="{
+                      'from-slate-100 to-slate-50 border-slate-300': phase.color === 'slate',
+                      'from-amber-100 to-amber-50 border-amber-300': phase.color === 'amber',
+                      'from-purple-100 to-purple-50 border-purple-300': phase.color === 'purple',
+                      'from-orange-100 to-orange-50 border-orange-300': phase.color === 'orange',
+                      'from-emerald-100 to-emerald-50 border-emerald-300': phase.color === 'emerald'
+                    }"
+                  >
+                    <!-- Phase Number and Icon -->
+                    <div class="flex items-center gap-3 mb-4">
+                      <span class="text-3xl">{{ phase.icon }}</span>
+                      <div>
+                        <p class="text-xs font-black uppercase tracking-widest text-slate-600">Phase {{ phase.number }}</p>
+                        <h3 class="text-xl font-black text-slate-900">{{ phase.name }}</h3>
+                      </div>
+                    </div>
+
+                    <!-- Phase Description -->
+                    <p class="text-sm font-semibold text-slate-700 mb-3">{{ phase.description }}</p>
+
+                    <!-- Duration/Trigger -->
+                    <div class="text-xs mb-4">
+                      <p v-if="phase.duration" class="text-slate-600"><strong>Duration:</strong> {{ phase.duration }}</p>
+                      <p v-if="phase.triggers" class="text-slate-600"><strong>Triggered:</strong> {{ phase.triggers }}</p>
+                    </div>
+
+                    <!-- What Happens -->
+                    <div class="bg-white bg-opacity-60 rounded p-3 mb-4 border border-slate-200">
+                      <p class="text-sm text-slate-700">{{ phase.what_happens }}</p>
+                    </div>
+
+                    <!-- Note if exists -->
+                    <div v-if="phase.note" class="bg-amber-100 border-l-2 border-amber-500 text-amber-800 text-xs p-2 rounded mb-4">
+                      <strong>⚠️ Note:</strong> {{ phase.note }}
+                    </div>
+
+                    <!-- Available Actions -->
+                    <div>
+                      <p class="text-xs font-bold text-slate-700 uppercase mb-2">Available actions:</p>
+                      <ul class="space-y-1">
+                        <li v-for="(action, aidx) in phase.actions" :key="aidx" class="flex items-start gap-2 text-xs text-slate-600">
+                          <span class="text-emerald-600 font-bold mt-0.5">✓</span>
+                          <span>{{ action }}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dates Section -->
+              <div class="mb-12 pb-10 border-b-2 border-slate-200">
+                <h3 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-indigo-500"></span>
+                  {{ t.section_statemachine.dates_section.heading }}
+                </h3>
+                <p class="text-slate-700 mb-6 text-base">{{ t.section_statemachine.dates_section.description }}</p>
+
+                <div class="space-y-4">
+                  <div v-for="(date, didx) in t.section_statemachine.dates_section.dates" :key="didx" class="p-5 bg-gradient-to-r from-slate-50 to-white rounded-lg border-2 border-slate-200 hover:border-indigo-300 transition-colors">
+                    <div class="flex items-start gap-4">
+                      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center text-sm">{{ didx + 1 }}</div>
+                      <div class="flex-1">
+                        <p class="font-bold text-slate-900 text-lg">{{ date.field }}</p>
+                        <p class="text-slate-700 text-base mt-2">
+                          <strong>Variable:</strong> <code class="bg-slate-100 px-2 py-1 rounded font-mono text-sm">{{ date.variable }}</code>
+                        </p>
+                        <p class="text-slate-700 text-base mt-2"><strong>Triggers:</strong> {{ date.when }}</p>
+                        <p class="text-slate-700 text-base mt-2"><strong>Sets:</strong> {{ date.sets }}</p>
+                        <div class="mt-3 p-3 bg-amber-50 border-l-2 border-amber-500 rounded">
+                          <p class="text-sm text-amber-900"><strong>⚡ Important:</strong> {{ date.important }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Timeline Example -->
+                <div class="mt-8 p-6 bg-blue-50 border-2 border-blue-200 rounded-lg">
+                  <p class="font-bold text-blue-900 text-base mb-3">📌 Example Timeline</p>
+                  <p class="text-blue-800 text-sm">{{ t.section_statemachine.dates_section.example }}</p>
+                </div>
+              </div>
+
+              <!-- Permissions Matrix -->
+              <div class="mb-12">
+                <h3 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-indigo-500"></span>
+                  {{ t.section_statemachine.permissions_section.heading }}
+                </h3>
+                <p class="text-slate-700 mb-6 text-base">{{ t.section_statemachine.permissions_section.description }}</p>
+
+                <div class="overflow-x-auto">
+                  <table class="w-full text-sm">
+                    <thead class="bg-gradient-to-r from-slate-100 to-slate-50 border-b-2 border-slate-300">
+                      <tr>
+                        <th class="text-left px-4 py-3 font-bold text-slate-900">Action</th>
+                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-slate-50">Admin</th>
+                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-amber-50">Nomination</th>
+                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-purple-50">Voting</th>
+                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-orange-50">Pending</th>
+                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-emerald-50">Results</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200">
+                      <tr v-for="(row, ridx) in t.section_statemachine.permissions_section.matrix" :key="ridx" class="hover:bg-slate-50 transition-colors">
+                        <td class="px-4 py-4 text-slate-700 font-semibold">{{ row.action }}</td>
+                        <td class="text-center px-3 py-4">
+                          <span v-if="row.administration" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
+                          <span v-else class="text-slate-400">—</span>
+                        </td>
+                        <td class="text-center px-3 py-4">
+                          <span v-if="row.nomination" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
+                          <span v-else class="text-slate-400">—</span>
+                        </td>
+                        <td class="text-center px-3 py-4">
+                          <span v-if="row.voting" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
+                          <span v-else class="text-slate-400">—</span>
+                        </td>
+                        <td class="text-center px-3 py-4">
+                          <span v-if="row.results_pending" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
+                          <span v-else class="text-slate-400">—</span>
+                        </td>
+                        <td class="text-center px-3 py-4">
+                          <span v-if="row.results" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
+                          <span v-else class="text-slate-400">—</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Tips -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div v-for="(tip, tidx) in t.section_statemachine.tips" :key="tidx" class="p-5 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border-2 border-blue-200 hover:shadow-md transition-shadow">
+                  <p class="text-3xl mb-2">{{ tip.icon }}</p>
+                  <p class="font-bold text-slate-900 text-base mb-2">{{ tip.label }}</p>
+                  <p class="text-slate-700 text-sm">{{ tip.text }}</p>
+                </div>
+              </div>
+            </section>
+
             <!-- Section: Before You Begin -->
             <section id="prerequisites" class="bg-white rounded-2xl border-2 border-slate-200 shadow-lg p-8 md:p-10 hover:shadow-xl transition-shadow scroll-mt-8">
               <div class="flex items-start gap-4 mb-6">
-                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-600 text-white font-bold text-lg flex items-center justify-center">2</div>
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-orange-600 text-white font-bold text-lg flex items-center justify-center">3</div>
                 <h2 class="text-3xl md:text-4xl font-black text-slate-900">{{ t.section_prerequisites.heading }}</h2>
               </div>
               <p class="text-slate-700 mb-8 text-lg font-medium">{{ t.section_prerequisites.intro }}</p>
@@ -149,7 +354,7 @@ const activeSection = computed(() => 'overview')
             <!-- Section: Voter Access Control -->
             <section id="access" class="bg-white rounded-2xl border-2 border-slate-200 shadow-lg p-8 md:p-10 hover:shadow-xl transition-shadow scroll-mt-8">
               <div class="flex items-start gap-4 mb-6">
-                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-teal-600 text-white font-bold text-lg flex items-center justify-center">3</div>
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-teal-600 text-white font-bold text-lg flex items-center justify-center">4</div>
                 <h2 class="text-3xl md:text-4xl font-black text-slate-900">{{ t.section_access.heading }}</h2>
               </div>
               <p class="text-slate-700 mb-8 text-lg">{{ t.section_access.intro }}</p>
@@ -217,7 +422,7 @@ const activeSection = computed(() => 'overview')
             <!-- Section: Ballot Options -->
             <section id="ballot" class="bg-white rounded-2xl border-2 border-slate-200 shadow-lg p-8 md:p-10 hover:shadow-xl transition-shadow scroll-mt-8">
               <div class="flex items-start gap-4 mb-6">
-                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 text-white font-bold text-lg flex items-center justify-center">4</div>
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 text-white font-bold text-lg flex items-center justify-center">5</div>
                 <h2 class="text-3xl md:text-4xl font-black text-slate-900">{{ t.section_ballot.heading }}</h2>
               </div>
               <p class="text-slate-700 mb-8 text-lg">{{ t.section_ballot.intro }}</p>
@@ -262,7 +467,7 @@ const activeSection = computed(() => 'overview')
             <!-- Section: Voter Verification -->
             <section id="verification" class="bg-white rounded-2xl border-2 border-slate-200 shadow-lg p-8 md:p-10 hover:shadow-xl transition-shadow scroll-mt-8">
               <div class="flex items-start gap-4 mb-2">
-                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-red-400 to-pink-600 text-white font-bold text-lg flex items-center justify-center">5</div>
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-red-400 to-pink-600 text-white font-bold text-lg flex items-center justify-center">6</div>
                 <div class="flex-1">
                   <h2 class="text-3xl md:text-4xl font-black text-slate-900">{{ t.section_verification.heading }}</h2>
                   <span class="inline-block mt-2 px-3 py-1 bg-red-100 text-red-800 font-bold text-xs rounded-full">{{ t.section_verification.badge }}</span>
@@ -307,7 +512,7 @@ const activeSection = computed(() => 'overview')
             <!-- Section: Common Scenarios -->
             <section id="scenarios" class="bg-white rounded-2xl border-2 border-slate-200 shadow-lg p-8 md:p-10 hover:shadow-xl transition-shadow scroll-mt-8">
               <div class="flex items-start gap-4 mb-6">
-                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 text-white font-bold text-lg flex items-center justify-center">6</div>
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 text-white font-bold text-lg flex items-center justify-center">7</div>
                 <h2 class="text-3xl md:text-4xl font-black text-slate-900">{{ t.section_scenarios.heading }}</h2>
               </div>
               <p class="text-slate-700 mb-8 text-lg">{{ t.section_scenarios.intro }}</p>
@@ -346,7 +551,7 @@ const activeSection = computed(() => 'overview')
             <!-- Section: FAQ -->
             <section id="faq" class="bg-white rounded-2xl border-2 border-slate-200 shadow-lg p-8 md:p-10 hover:shadow-xl transition-shadow scroll-mt-8">
               <div class="flex items-start gap-4 mb-6">
-                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-indigo-400 to-purple-600 text-white font-bold text-lg flex items-center justify-center">7</div>
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-indigo-400 to-purple-600 text-white font-bold text-lg flex items-center justify-center">8</div>
                 <h2 class="text-3xl md:text-4xl font-black text-slate-900">{{ t.section_faq.heading }}</h2>
               </div>
               <div class="space-y-4">

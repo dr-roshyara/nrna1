@@ -15,6 +15,7 @@
     "label": "Inhalt",
     "items": [
       { "id": "overview",      "label": "Übersicht" },
+      { "id": "statemachine",  "label": "Wahlablauf" },
       { "id": "prerequisites", "label": "Voraussetzungen" },
       { "id": "access",        "label": "Wählerzugangskontrolle" },
       { "id": "ballot",        "label": "Stimmzetteloptionen" },
@@ -29,6 +30,199 @@
     "body": "Die Wahleinstellungen ermöglichen es Ihnen, genau zu steuern, wie Wähler mit Ihrem Stimmzettel interagieren. Sie sind in drei Bereiche unterteilt: Wählerzugangskontrolle (wer abstimmen darf und von wo), Stimmzetteloptionen (wie Kandidaten ausgewählt werden) und Wählerverifizierung (Identitätsprüfungen vor der Wahl). Einstellungen können jederzeit vor der Öffnung der Wahl geändert werden. Sobald die Wahl aktiv ist und Stimmen eingegangen sind, ist ein Bestätigungshäkchen erforderlich.",
     "tip_label": "Gut zu wissen",
     "tip": "Einstellungen werden pro Wahl gespeichert – Änderungen bei einer Wahl haben keinen Einfluss auf andere Wahlen in Ihrer Organisation."
+  },
+
+  "section_statemachine": {
+    "heading": "Wahlablauf",
+    "intro": "Jede Wahl durchläuft fünf verschiedene Phasen, die jeweils eigene Regeln und Möglichkeiten haben. Die Phase, in der sich Ihre Wahl befindet, wird automatisch anhand der von Ihnen festgelegten Daten bestimmt.",
+    "key_concept": "Wahlen sind datumsgesteuert, nicht aktionsgesteuert. Sie geben an, wann die Abstimmung beginnt und endet, und das System verwaltet die Phasenwechsel automatisch.",
+
+    "timeline": {
+      "description": "Ihre Wahl folgt diesem fünfphasigen Ablauf:",
+      "phases": [
+        {
+          "number": 1,
+          "name": "Vorbereitung",
+          "icon": "⚙️",
+          "description": "Wahlstruktur einrichten",
+          "color": "slate",
+          "duration": "Vor dem Festlegen von Terminen",
+          "what_happens": "Sie erstellen Ämter, fügen Kandidaten hinzu, konfigurieren Wähler und passen alle Einstellungen an. Wähler können noch nicht auf den Stimmzettel zugreifen.",
+          "actions": [
+            "Ämter hinzufügen oder bearbeiten",
+            "Kandidaturen erstellen und bearbeiten",
+            "Wahleinstellungen konfigurieren",
+            "Wähler importieren",
+            "Abstimmungstermine festlegen",
+            "Einstellungen frei ändern"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "Kandidaturfrist",
+          "icon": "📋",
+          "description": "Kandidaten bestätigen und werben",
+          "color": "amber",
+          "duration": "Nach Abschluss der Vorbereitung",
+          "what_happens": "Die Vorbereitungsphase ist abgeschlossen. Kandidaten überprüfen ihre Informationen. Sie können noch Anpassungen vornehmen, aber die Abstimmungstermine sind jetzt für alle sichtbar.",
+          "actions": [
+            "Kandidatenbestätigungen verwalten",
+            "Kandidaten ihre Einträge überprüfen lassen",
+            "Letzte Anpassungen an Ämtern und Kandidaten",
+            "Vorbereitung von Mitteilungen an Wähler"
+          ]
+        },
+        {
+          "number": 3,
+          "name": "Abstimmung",
+          "icon": "🗳️",
+          "description": "Wähler geben ihre Stimmen ab",
+          "color": "purple",
+          "triggers": "Wenn voting_starts_at erreicht ist",
+          "what_happens": "Die Abstimmungsperiode ist offen. Wähler sehen den Stimmzettel und können ihre Auswahl einreichen. Das System sperrt die Abstimmung sofort, wenn diese Phase beginnt, um faire Zählung zu gewährleisten.",
+          "actions": [
+            "Wähler greifen auf den Stimmzettel zu",
+            "Fortschritt überwachen und Live-Auszählungen einsehen",
+            "Wähler bei Fragen unterstützen",
+            "Vorbereitung zur Ergebnisvéröffentlichung"
+          ],
+          "note": "Sobald die Abstimmung beginnt, erfordern Änderungen der Einstellungen eine explizite Bestätigung."
+        },
+        {
+          "number": 4,
+          "name": "Auszählung",
+          "icon": "📊",
+          "description": "Stimmen werden gezählt",
+          "color": "orange",
+          "triggers": "Wenn voting_ends_at erreicht ist",
+          "what_happens": "Die Abstimmung ist abgeschlossen. Der Stimmzettel ist gesperrt und neue Stimmen werden nicht akzeptiert. Ergebnisse werden tabelliert und zur Veröffentlichung vorbereitet.",
+          "actions": [
+            "Stimmenzahl überprüfen und Ergebnisse validieren",
+            "Nach Unregelmäßigkeiten suchen",
+            "Beteiligten mitteilen, dass Ergebnisse bereit sind",
+            "Ergebnisse veröffentlichen"
+          ]
+        },
+        {
+          "number": 5,
+          "name": "Ergebnisse",
+          "icon": "✅",
+          "description": "Ergebnisse sind veröffentlicht",
+          "color": "emerald",
+          "triggers": "Wenn Ergebnisse manuell veröffentlicht werden",
+          "what_happens": "Endergebnisse sind veröffentlicht. Wähler können ihre eigenen Stimmen mit ihrem Code überprüfen. Dies ist der Endzustand – die Wahl ist abgeschlossen.",
+          "actions": [
+            "Wähler verifizieren ihre individuellen Stimmen",
+            "Öffentliche Überprüfung der Ergebnisse",
+            "Wahlunterlagen archivieren",
+            "Endberichte generieren"
+          ]
+        }
+      ]
+    },
+
+    "dates_section": {
+      "heading": "Wie Daten Phasenwechsel auslösen",
+      "description": "Zwei kritische Daten bestimmen, wann Ihre Wahl automatisch fortschreitet:",
+      "dates": [
+        {
+          "field": "Abstimmung beginnt am",
+          "variable": "voting_starts_at",
+          "when": "Wahl automatisch von Kandidaturfrist → Abstimmung",
+          "sets": "Der Anfang der Abstimmungsperiode",
+          "important": "Die Abstimmung wird sofort gesperrt, wenn diese Phase beginnt, um Manipulation zu verhindern"
+        },
+        {
+          "field": "Abstimmung endet am",
+          "variable": "voting_ends_at",
+          "when": "Wahl automatisch von Abstimmung → Auszählung",
+          "sets": "Die Frist für Stimmabgaben",
+          "important": "Nach diesem Moment werden keine Stimmen mehr akzeptiert. Sie müssen bis zur Ergebniszählung warten."
+        }
+      ],
+      "example": "Wenn Sie voting_starts_at = '1. März, 9:00 Uhr' und voting_ends_at = '3. März, 17:00 Uhr' festlegen, durchläuft die Wahl automatisch Kandidaturfrist → Abstimmung (1. März 9:00) → Auszählung (3. März 17:00)."
+    },
+
+    "permissions_section": {
+      "heading": "Was in jeder Phase möglich ist",
+      "description": "Je nach Phase stehen verschiedene Aktionen zur Verfügung:",
+      "matrix": [
+        {
+          "action": "Ämter hinzufügen/bearbeiten",
+          "administration": true,
+          "nomination": true,
+          "voting": false,
+          "results_pending": false,
+          "results": false
+        },
+        {
+          "action": "Kandidaten verwalten",
+          "administration": true,
+          "nomination": true,
+          "voting": false,
+          "results_pending": false,
+          "results": false
+        },
+        {
+          "action": "Wähler importieren",
+          "administration": true,
+          "nomination": true,
+          "voting": true,
+          "results_pending": false,
+          "results": false
+        },
+        {
+          "action": "Einstellungen ändern",
+          "administration": true,
+          "nomination": true,
+          "voting": true,
+          "results_pending": true,
+          "results": false
+        },
+        {
+          "action": "Wähler greifen auf Stimmzettel zu",
+          "administration": false,
+          "nomination": false,
+          "voting": true,
+          "results_pending": false,
+          "results": false
+        },
+        {
+          "action": "Ergebnisse anzeigen",
+          "administration": false,
+          "nomination": false,
+          "voting": false,
+          "results_pending": true,
+          "results": true
+        },
+        {
+          "action": "Wähler verifizieren Stimmen",
+          "administration": false,
+          "nomination": false,
+          "voting": false,
+          "results_pending": false,
+          "results": true
+        }
+      ]
+    },
+
+    "tips": [
+      {
+        "icon": "📅",
+        "label": "Daten strategisch festlegen",
+        "text": "Reservieren Sie ausreichend Zeit für Vorbereitung und Kandidaturfrist. Sobald Sie Abstimmungsdaten festlegen, bestimmen diese den automatischen Phasenwechsel."
+      },
+      {
+        "icon": "🔒",
+        "label": "Abstimmung ist gesperrt",
+        "text": "Wenn die Abstimmung beginnt, verhindert das System sofort weitere Kandidatenänderungen. Dies gewährleistet die Integrität der Wahl."
+      },
+      {
+        "icon": "⏰",
+        "label": "Daten verwenden Server-Zeit",
+        "text": "Alle Daten verwenden die Zeitzone des Servers. Berücksichtigen Sie Zeitzonendifferenzen beim Festlegen von Abstimmungszeiten."
+      }
+    ]
   },
 
   "section_prerequisites": {

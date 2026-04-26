@@ -1,5 +1,5 @@
 <template>
-  <div :class="wrapperClass">
+  <div :class="[wrapperClass, 'overflow-hidden']">
     <div v-if="title || $slots.actions" class="flex items-center justify-between mb-6">
       <div class="flex items-center gap-3">
         <div v-if="$slots.icon" :class="iconWrapClass">

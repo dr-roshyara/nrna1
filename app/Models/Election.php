@@ -17,6 +17,14 @@ use App\Models\Result;
 use App\Models\VoterSlug;
 use App\Traits\BelongsToTenant;
 use App\Domain\Election\StateMachine\ElectionStateMachine;
+use App\Domain\Election\StateMachine\TransitionMatrix;
+use App\Domain\Election\Events\ElectionApproved;
+use App\Domain\Election\Events\AdministrationCompleted;
+use App\Domain\Election\Events\NominationCompleted;
+use App\Domain\Election\Events\VotingOpened;
+use App\Domain\Election\Events\VotingClosed;
+use App\Domain\Election\Events\ResultsPublished;
+use Illuminate\Support\Facades\Event;
 
 /**
  * Election Model
@@ -44,13 +52,13 @@ class Election extends Model
     }
 
     /**
-     * Resolve route binding without global scope so the election can be found
-     * before session context is set by ensure.organisation middleware.
-     * Controller methods validate organisation ownership explicitly.
+     * Override implicit route binding to bypass tenant scope.
+     * Allows elections to be found by slug regardless of organisation context.
+     * Controller methods validate organisation ownership explicitly afterward.
      */
-    public function resolveRouteBinding($value, $field = null): ?self
+    public function resolveRouteBinding($value, $field = null)
     {
-        return static::withoutGlobalScopes()
+        return static::withoutGlobalScope(\App\Traits\BelongsToTenant::class)
             ->where($field ?? $this->getRouteKeyName(), $value)
             ->first();
     }
@@ -88,6 +96,13 @@ class Election extends Model
         'settings_updated_by',
         'settings_updated_at',
         'settings_changes',
+        // Business condition counters
+        'posts_count',
+        'voters_count',
+        'election_committee_members_count',
+        'candidates_count',
+        'pending_candidacies_count',
+        'votes_count',
         // State machine columns
         'administration_suggested_start',
         'administration_suggested_end',
@@ -102,6 +117,16 @@ class Election extends Model
         'allow_auto_transition',
         'auto_transition_grace_days',
         'state_audit_log',
+        'state', // Explicit stored state (replaces computed state)
+        // Approval workflow fields
+        'submitted_for_approval_at',
+        'submitted_by',
+        'approved_at',
+        'approved_by',
+        'approval_notes',
+        'rejected_at',
+        'rejected_by',
+        'rejection_reason',
         // Locking columns
         'voting_locked',
         'voting_locked_at',
@@ -134,6 +159,13 @@ class Election extends Model
         'ip_whitelist'           => 'array',
         'settings_changes'       => 'array',
         'settings_updated_at'    => 'datetime',
+        // Business condition casts
+        'posts_count'                        => 'integer',
+        'voters_count'                       => 'integer',
+        'election_committee_members_count'   => 'integer',
+        'candidates_count'                   => 'integer',
+        'pending_candidacies_count'          => 'integer',
+        'votes_count'                        => 'integer',
         // State machine casts
         'administration_suggested_start' => 'datetime',
         'administration_suggested_end'   => 'datetime',
@@ -734,41 +766,23 @@ class Election extends Model
     // ── State Machine Methods ─────────────────────────────────────────────────
 
     /**
-     * Get current state (derived from dates and completion flags — pure, no side effects)
-     * Linear priority ensures no ambiguity between states.
+     * Get current state (derived from time windows + business conditions)
+     *
+     * Returns both active states (voting, counting) and blocked states
+     * (voting_blocked, counting_blocked) when business conditions aren't met.
+     *
+     * State priority (first match wins):
+     * 1. results (final)
+     * 2. counting / counting_blocked
+     * 3. voting / voting_blocked
+     * 4. nomination / nomination_blocked
+     * 5. administration / draft
      */
     public function getCurrentStateAttribute(): string
     {
-        $now = now();
-
-        // 1. Results published (final)
-        if ($this->results_published_at) {
-            return self::STATE_RESULTS;
-        }
-
-        // 2. Voting active or ended
-        if ($this->voting_starts_at && $this->voting_ends_at) {
-            if ($now->between($this->voting_starts_at, $this->voting_ends_at)) {
-                return self::STATE_VOTING;
-            }
-            if ($now->gt($this->voting_ends_at)) {
-                return self::STATE_RESULTS_PENDING;
-            }
-        }
-
-        // 3. Administration phase (not yet completed)
-        if (!$this->administration_completed) {
-            return self::STATE_ADMINISTRATION;
-        }
-
-        // 4. Nomination phase (administration done, nomination not yet done OR done but voting not started)
-        // Stay in nomination until voting window opens
-        if (!$this->nomination_completed || !($this->voting_starts_at && $now->gte($this->voting_starts_at))) {
-            return self::STATE_NOMINATION;
-        }
-
-        // 5. Fallback (shouldn't reach here)
-        return self::STATE_ADMINISTRATION;
+        // Return explicitly stored state instead of computing from timestamps
+        // State is set deterministically during transitions via transitionTo()
+        return $this->state ?? 'draft';
     }
 
     /**
@@ -778,6 +792,10 @@ class Election extends Model
     public function allowsAction(string $action): bool
     {
         $allowed = [
+            'draft' => [
+                'configure_election',
+                'manage_settings',
+            ],
             self::STATE_ADMINISTRATION  => [
                 'manage_posts',
                 'import_voters',
@@ -829,6 +847,239 @@ class Election extends Model
         };
     }
 
+    // ── TDD: Business Condition Validation Methods ──────────────────────────────
+
+    /**
+     * Can enter administration phase?
+     * Requires: Posts, Voters, Committee members
+     */
+    public function canEnterAdministrationPhase(): bool
+    {
+        return $this->posts_count > 0
+            && $this->voters_count > 0
+            && $this->election_committee_members_count > 0;
+    }
+
+    /**
+     * Can enter nomination phase?
+     * Requires: Administration completed + posts, voters, committee
+     */
+    public function canEnterNominationPhase(): bool
+    {
+        if (!$this->administration_completed) {
+            return false;
+        }
+
+        return $this->posts_count > 0
+            && $this->voters_count > 0
+            && $this->election_committee_members_count > 0;
+    }
+
+    /**
+     * Can enter voting phase?
+     * Requires: Nomination completed + candidates exist + no pending candidacies + respects config minimum
+     */
+    public function canEnterVotingPhase(): bool
+    {
+        if (!$this->nomination_completed) {
+            return false;
+        }
+
+        $minCandidates = config('election.min_candidates_for_voting', 1);
+        $pendingCount = $this->pending_candidacies_count ?? 0;
+
+        return ($this->candidates_count ?? 0) >= $minCandidates
+            && $pendingCount === 0;
+    }
+
+    /**
+     * Can enter counting phase?
+     * Requires: Voting window ended + voting locked + votes exist
+     */
+    public function canEnterCountingPhase(): bool
+    {
+        // Voting must be ended (not active)
+        if ($this->voting_ends_at && now()->lt($this->voting_ends_at)) {
+            return false;
+        }
+
+        // Voting must be locked
+        if (!$this->voting_locked) {
+            return false;
+        }
+
+        // Must have votes recorded
+        return $this->votes_count > 0;
+    }
+
+    /**
+     * Can enter results phase?
+     * Requires: Results published
+     */
+    public function canEnterResultsPhase(): bool
+    {
+        return $this->results_published_at !== null;
+    }
+
+    /**
+     * Can transition to a given state?
+     * Validates both the transition path and business conditions
+     */
+    public function canTransitionTo(string $toState): bool
+    {
+        // Check if transition is valid according to state machine
+        if (!TransitionMatrix::canTransition($this->current_state, $toState)) {
+            return false;
+        }
+
+        // Check business conditions for target state
+        return match ($toState) {
+            'administration' => $this->canEnterAdministrationPhase(),
+            'nomination' => $this->canEnterNominationPhase(),
+            'voting' => $this->canEnterVotingPhase(),
+            'results_pending' => $this->canEnterCountingPhase(),
+            'results' => $this->canEnterResultsPhase(),
+            default => false,
+        };
+    }
+
+    /**
+     * Get the reason why voting phase is blocked (single reason)
+     */
+    public function getVotingPhaseBlockedReason(): ?string
+    {
+        if (!$this->nomination_completed) {
+            return 'nomination_incomplete';
+        }
+
+        if ($this->candidates_count === 0) {
+            return 'no_candidates';
+        }
+
+        $minCandidates = config('election.min_candidates_for_voting', 1);
+        if ($this->candidates_count < $minCandidates) {
+            return sprintf('insufficient_candidates_need_%d', $minCandidates);
+        }
+
+        if ($this->pending_candidacies_count > 0) {
+            return 'pending_applications';
+        }
+
+        return null;
+    }
+
+    /**
+     * Get all reasons why voting phase is blocked (multiple reasons)
+     */
+    public function getVotingPhaseBlockedReasons(): array
+    {
+        $reasons = [];
+
+        if (!$this->nomination_completed) {
+            $reasons[] = 'nomination_incomplete';
+        }
+
+        $candidateCount = $this->candidates_count ?? 0;
+        if ($candidateCount === 0) {
+            $reasons[] = 'no_candidates';
+        }
+
+        $minCandidates = config('election.min_candidates_for_voting', 1);
+        if ($candidateCount > 0 && $candidateCount < $minCandidates) {
+            $reasons[] = sprintf('insufficient_candidates_need_%d', $minCandidates);
+        }
+
+        $pendingCount = $this->pending_candidacies_count ?? 0;
+        if ($pendingCount > 0) {
+            $reasons[] = 'pending_applications';
+        }
+
+        return $reasons;
+    }
+
+    /**
+     * Get counting phase blocked reason
+     */
+    public function getCountingPhaseBlockedReason(): ?string
+    {
+        if ($this->voting_ends_at && now()->lt($this->voting_ends_at)) {
+            return 'voting_still_active';
+        }
+
+        if (!$this->voting_locked) {
+            return 'voting_not_locked';
+        }
+
+        if ($this->votes_count === 0) {
+            return 'no_votes_recorded';
+        }
+
+        return null;
+    }
+
+    /**
+     * Get reason why a state transition is blocked
+     */
+    public function getTransitionBlockedReason(string $toState): ?string
+    {
+        return match ($toState) {
+            'voting' => $this->getVotingPhaseBlockedReason(),
+            'counting' => $this->getCountingPhaseBlockedReason(),
+            default => null,
+        };
+    }
+
+    /**
+     * Get all reasons why a state transition is blocked
+     */
+    public function getTransitionBlockedReasons(string $toState): array
+    {
+        return match ($toState) {
+            'voting' => $this->getVotingPhaseBlockedReasons(),
+            default => [],
+        };
+    }
+
+    /**
+     * Can extend voting period?
+     * Requires: Voting phase active, not locked, within limits
+     */
+    public function canExtendVoting(): bool
+    {
+        if ($this->current_state !== 'voting') {
+            return false;
+        }
+
+        if ($this->voting_locked) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Can postpone current phase?
+     * Requires: Phase not completed, valid phase
+     */
+    public function canPostpone(string $phase): bool
+    {
+        // Only nomination and administration can be postponed
+        if (!in_array($phase, ['administration', 'nomination'])) {
+            return false;
+        }
+
+        // Cannot postpone if phase is already completed
+        if ($phase === 'administration' && $this->administration_completed) {
+            return false;
+        }
+
+        if ($phase === 'nomination' && $this->nomination_completed) {
+            return false;
+        }
+
+        return true;
+    }
+
     /**
      * Get state info for UI display
      */
@@ -873,19 +1124,79 @@ class Election extends Model
     }
 
     /**
+     * Submit election for approval (customer/officer action)
+     */
+    public function submitForApproval(string $submittedBy): void
+    {
+        if ($this->state !== 'draft') {
+            throw new \DomainException('Only draft elections can be submitted for approval.');
+        }
+
+        $this->update([
+            'submitted_for_approval_at' => now(),
+            'submitted_by' => $submittedBy,
+        ]);
+
+        $this->logStateChange('submitted_for_approval', ['submitted_by' => $submittedBy]);
+    }
+
+    /**
+     * Approve election (PublicDigit admin action)
+     */
+    public function approve(string $approvedBy, ?string $notes = null): void
+    {
+        if ($this->state !== 'draft') {
+            throw new \DomainException('Only draft elections can be approved.');
+        }
+
+        $this->update([
+            'state' => 'administration',
+            'approved_at' => now(),
+            'approved_by' => $approvedBy,
+            'approval_notes' => $notes,
+        ]);
+
+        $this->logStateChange('approved', ['approved_by' => $approvedBy, 'notes' => $notes]);
+
+        Event::dispatch(new ElectionApproved($this, $approvedBy, $notes));
+    }
+
+    /**
+     * Reject election (PublicDigit admin action)
+     */
+    public function reject(string $rejectedBy, string $reason): void
+    {
+        if ($this->state !== 'draft') {
+            throw new \DomainException('Only draft elections can be rejected.');
+        }
+
+        $this->update([
+            'rejected_at' => now(),
+            'rejected_by' => $rejectedBy,
+            'rejection_reason' => $reason,
+        ]);
+
+        $this->logStateChange('rejected', ['rejected_by' => $rejectedBy, 'reason' => $reason]);
+    }
+
+    /**
      * Mark administration as complete (admin action with reason audit)
      */
     public function completeAdministration(string $reason, string $actorId): void
     {
         // Validate prerequisites
         if ($this->posts()->count() === 0) {
-            throw new \Exception('Cannot complete administration: No posts created');
+            throw new \InvalidArgumentException('Cannot complete administration: No posts created');
         }
         if ($this->memberships()->where('role', 'voter')->where('status', 'active')->count() === 0) {
-            throw new \Exception('Cannot complete administration: No voters imported');
+            throw new \InvalidArgumentException('Cannot complete administration: No voters imported');
+        }
+        if ($this->memberships()->where('role', 'committee')->where('status', 'active')->count() === 0) {
+            throw new \InvalidArgumentException('Cannot complete administration: No committee members assigned');
         }
 
         $this->update([
+            'state'                       => 'nomination', // Explicitly set state
             'administration_completed'   => true,
             'administration_completed_at' => now(),
         ]);
@@ -899,6 +1210,8 @@ class Election extends Model
         }
 
         $this->logStateChange('administration_completed', ['reason' => $reason, 'actor_id' => $actorId]);
+
+        Event::dispatch(new AdministrationCompleted($this, $actorId, $reason));
     }
 
     /**
@@ -909,14 +1222,15 @@ class Election extends Model
         $pendingCount = $this->candidacies()->withoutGlobalScopes()->where('status', 'pending')->count();
 
         if ($pendingCount > 0) {
-            throw new \Exception("Cannot complete nomination: {$pendingCount} candidates pending approval");
+            throw new \InvalidArgumentException("Cannot complete nomination: {$pendingCount} candidates pending approval");
         }
 
         if ($this->candidacies()->withoutGlobalScopes()->where('status', 'approved')->count() === 0) {
-            throw new \Exception('Cannot complete nomination: No candidates approved');
+            throw new \InvalidArgumentException('Cannot complete nomination: No candidates approved');
         }
 
         $this->update([
+            'state'                  => 'voting', // Explicitly set state
             'nomination_completed'   => true,
             'nomination_completed_at' => now(),
         ]);
@@ -933,6 +1247,8 @@ class Election extends Model
         $this->lockVoting($actorId);
 
         $this->logStateChange('nomination_completed', ['reason' => $reason, 'actor_id' => $actorId]);
+
+        Event::dispatch(new NominationCompleted($this, $actorId, $reason));
     }
 
     /**
@@ -942,7 +1258,7 @@ class Election extends Model
     {
         // Guard: cannot force close after voting has started
         if ($this->voting_starts_at && now()->gte($this->voting_starts_at)) {
-            throw new \Exception('Cannot modify nomination after voting has started');
+            throw new \InvalidArgumentException('Cannot modify nomination after voting has started');
         }
 
         // Auto-reject pending candidates
@@ -1064,71 +1380,106 @@ class Election extends Model
     public function transitionTo(string $toState, string $trigger, ?string $reason = null, ?string $actorId = null): ElectionStateTransition
     {
         $lockKey = "election_transition:{$this->id}";
-        $lock = \Illuminate\Support\Facades\Cache::lock($lockKey, 30);
+        $lock = \Illuminate\Support\Facades\Cache::lock($lockKey, 10);
+        $currentTime = now();
+        $fromState = $this->current_state;
 
-        if (!$lock->get()) {
-            throw new \RuntimeException('Another transition is already in progress. Please try again.');
-        }
+        return $lock->block(5, function () use ($toState, $trigger, $reason, $actorId, $currentTime, $fromState) {
+            $originalFlags = [
+                'administration_completed' => $this->administration_completed,
+                'nomination_completed' => $this->nomination_completed,
+                'voting_locked' => $this->voting_locked,
+                'voting_starts_at' => $this->voting_starts_at,
+                'voting_ends_at' => $this->voting_ends_at,
+            ];
 
-        try {
-            return \Illuminate\Support\Facades\DB::transaction(function () use ($toState, $trigger, $reason, $actorId) {
-                $originalFlags = [
-                    'administration_completed' => $this->administration_completed,
-                    'nomination_completed' => $this->nomination_completed,
-                    'voting_locked' => $this->voting_locked,
-                    'voting_starts_at' => $this->voting_starts_at,
-                    'voting_ends_at' => $this->voting_ends_at,
-                ];
+            try {
+                $transition = \Illuminate\Support\Facades\DB::transaction(function () use ($toState, $trigger, $reason, $actorId, $currentTime, $fromState) {
+                    // Create audit record with atomic timestamp
+                    $transition = ElectionStateTransition::create([
+                        'election_id' => $this->id,
+                        'from_state' => $fromState,
+                        'to_state' => $toState,
+                        'trigger' => $trigger,
+                        'actor_id' => $actorId,
+                        'reason' => $reason,
+                        'created_at' => $currentTime,
+                    ]);
 
-                $fromState = $this->current_state;
-
-                try {
-                    $transition = $this->getStateMachine()->transitionTo($toState, $trigger, $reason, $actorId);
-
+                    // Apply flag updates with atomic time
                     match ($toState) {
-                        'voting' => $this->applyVotingTransition($actorId),
-                        'results_pending' => $this->applyResultsPendingTransition(),
+                        'voting' => $this->applyVotingTransition($actorId, $currentTime),
+                        'results_pending' => $this->applyResultsPendingTransition($currentTime),
                         default => null,
                     };
 
-                    event(new \App\Events\ElectionStateChangedEvent(
-                        election: $this,
-                        fromState: $fromState,
-                        toState: $toState,
-                        trigger: $trigger,
-                        actorId: $actorId
-                    ));
-
                     return $transition;
-                } catch (\Exception $e) {
-                    $this->forceFill($originalFlags)->save();
-                    throw $e;
-                }
-            });
-        } finally {
-            $lock->release();
-        }
+                });
+
+                // Fire event AFTER commit — listeners see committed data
+                event(new \App\Events\ElectionStateChangedEvent(
+                    election: $this,
+                    fromState: $fromState,
+                    toState: $toState,
+                    trigger: $trigger,
+                    actorId: $actorId
+                ));
+
+                // Fire state-specific events
+                match ($toState) {
+                    'voting' => event(new VotingOpened($this, $actorId)),
+                    'results_pending' => event(new VotingClosed($this, $actorId)),
+                    default => null,
+                };
+
+                return $transition;
+            } catch (\Exception $e) {
+                $this->forceFill($originalFlags)->save();
+                throw $e;
+            }
+        });
     }
 
-    private function applyVotingTransition(?string $actorId): void
+    private function applyVotingTransition(?string $actorId, \Carbon\Carbon $currentTime): void
     {
-        if (!$this->voting_starts_at) {
-            $this->update([
-                'voting_starts_at' => now(),
-                'voting_ends_at' => now()->addDays(4),
-                'nomination_completed' => true,
-                'nomination_completed_at' => now(),
-            ]);
+        if (($this->candidates_count ?? 0) === 0) {
+            throw new \DomainException('Cannot open voting: No candidates registered.');
         }
-        $this->lockVoting($actorId);
-    }
 
-    private function applyResultsPendingTransition(): void
-    {
-        $this->update([
-            'voting_ends_at' => now(),
+        $updateData = [
+            'state' => 'voting', // Explicitly set state
+            'nomination_completed' => true,
+            'nomination_completed_at' => $currentTime,
             'voting_locked' => true,
-            'voting_locked_at' => now(),
+            'voting_locked_at' => $currentTime,
+        ];
+
+        if (!$this->voting_starts_at) {
+            $updateData['voting_starts_at'] = $currentTime;
+            $updateData['voting_ends_at'] = $currentTime->addDays(4);
+        }
+
+        if ($actorId) {
+            $updateData['voting_locked_by'] = $actorId;
+        }
+
+        // Bypass model events by using query builder directly
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update($updateData);
+
+        // Refresh the model with updated values
+        $this->refresh();
+    }
+
+    private function applyResultsPendingTransition(\Carbon\Carbon $currentTime): void
+    {
+        // Use updateQuietly to bypass model events (avoiding validateTimeline hook during transition)
+        $this->updateQuietly([
+            'state' => 'results_pending', // Explicitly set state
+            'voting_ends_at' => $currentTime,
+            'voting_locked' => true,
+            'voting_locked_at' => $currentTime,
         ]);
     }
 
@@ -1207,6 +1558,9 @@ class Election extends Model
                     \Illuminate\Support\Facades\Cache::forget("election:{$election->id}:setting:{$key}");
                 }
             }
+        });
+        static::created(function (Election $election) {
+            Event::dispatch(new \App\Domain\Election\Events\ElectionCreated($election));
         });
     }
 }

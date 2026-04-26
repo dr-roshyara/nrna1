@@ -44,24 +44,14 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the {election:slug} route model binding.
-     *
-     * Resolves election slugs to Election models without global scopes
-     * so elections can be found during all phases.
+     * Register the {election} route model binding.
+     * The Election model's resolveRouteBinding() handles implicit binding.
+     * It bypasses the tenant global scope to find elections by slug.
      */
     protected function registerElectionBinding(): void
     {
-        Route::bind('election', function (string $value) {
-            $election = \App\Models\Election::withoutGlobalScopes()
-                ->where('slug', $value)
-                ->first();
-
-            if (!$election) {
-                abort(404, 'Election not found.');
-            }
-
-            return $election;
-        });
+        // Implicit binding is handled by Election::resolveRouteBinding()
+        // No explicit registration needed
     }
 
     /**

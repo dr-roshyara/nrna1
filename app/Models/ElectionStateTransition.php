@@ -22,6 +22,7 @@ class ElectionStateTransition extends Model
         'actor_id',
         'reason',
         'metadata',
+        'created_at',
     ];
 
     protected $casts = [

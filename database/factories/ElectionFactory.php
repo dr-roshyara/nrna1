@@ -12,15 +12,33 @@ class ElectionFactory extends Factory
 
     public function definition()
     {
+        $platform = null;
+        try {
+            $platform = Organisation::getDefaultPlatform();
+        } catch (\Exception $e) {
+            // In tests, getDefaultPlatform might fail if no platform exists
+            // The test will override organisation_id anyway
+        }
+
         return [
-            'organisation_id' => Organisation::getDefaultPlatform()->id,
+            'organisation_id' => $platform?->id,
             'name' => $this->faker->word(),
             'slug' => $this->faker->unique()->slug(),
             'description' => $this->faker->sentence(),
             'type' => $this->faker->randomElement(['demo', 'real']),
             'is_active' => true,
+            'status' => 'active',
+            'state' => 'draft', // Explicit state: draft by default
+            'administration_completed' => false,
+            'nomination_completed' => false,
             'start_date' => now(),
             'end_date' => now()->addDays(7),
+            'posts_count' => 0,
+            'voters_count' => 0,
+            'election_committee_members_count' => 0,
+            'candidates_count' => 0,
+            'pending_candidacies_count' => 0,
+            'votes_count' => 0,
         ];
     }
 
@@ -71,6 +89,43 @@ class ElectionFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'is_active' => false,
+            ];
+        });
+    }
+
+    /**
+     * State factory methods for explicit state control
+     * Only set the state column; let tests override other flags as needed
+     */
+    public function inNominationState()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'state' => 'nomination',
+                'administration_completed' => true,
+                'administration_completed_at' => now(),
+            ];
+        });
+    }
+
+    public function inVotingState()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'state' => 'voting',
+                'nomination_completed' => true,
+                'nomination_completed_at' => now(),
+                'voting_locked' => true,
+            ];
+        });
+    }
+
+    public function inResultsPendingState()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'state' => 'results_pending',
+                'voting_locked' => true,
             ];
         });
     }
