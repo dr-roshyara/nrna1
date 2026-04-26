@@ -692,6 +692,15 @@
         </div>
       </div>
     </Teleport>
+
+    <!-- Submit for Approval Modal -->
+    <SubmitApprovalModal
+      :show="showSubmitApprovalModal"
+      :election="election"
+      :loading="isLoading"
+      @submit="submitForApproval"
+      @cancel="showSubmitApprovalModal = false"
+    />
   </ElectionLayout>
 </template>
 
@@ -706,6 +715,8 @@ import ActionButton from '@/Components/ActionButton.vue'
 import SectionCard from '@/Components/SectionCard.vue'
 import EmptyState from '@/Components/EmptyState.vue'
 import StateMachinePanel from '@/Pages/Election/Partials/StateMachinePanel.vue'
+import StateBadge from '@/Components/Election/StateBadge.vue'
+import SubmitApprovalModal from '@/Components/Election/Modals/SubmitApprovalModal.vue'
 
 import pageDe from '@/locales/pages/Election/Management/de.json'
 import pageEn from '@/locales/pages/Election/Management/en.json'
@@ -739,6 +750,9 @@ const showCompletionModal  = ref(false)
 const selectedPhase       = ref(null)
 const completionReason    = ref('')
 const reasonError         = ref('')
+
+// Submit for approval modal
+const showSubmitApprovalModal = ref(false)
 
 const onLogoFileChange = (e) => {
   const file = e.target.files?.[0]
@@ -790,8 +804,14 @@ function toDatetimeLocal(raw) {
 }
 
 const currentState = computed(() => props.election.current_state)
-const canOpenVoting = computed(() => currentState.value === 'nomination')
-const canCloseVoting = computed(() => currentState.value === 'voting')
+const allowedActions = computed(() => props.stateMachine?.allowedActions ?? [])
+
+const canSubmitForApproval = computed(() => allowedActions.value.includes('submit_for_approval'))
+const isPendingApproval = computed(() => currentState.value === 'pending_approval')
+const canCompleteAdministration = computed(() => allowedActions.value.includes('complete_administration'))
+const canOpenVoting = computed(() => allowedActions.value.includes('open_voting'))
+const canCloseVoting = computed(() => allowedActions.value.includes('close_voting'))
+const canPublishResults = computed(() => allowedActions.value.includes('publish_results'))
 const isVotingActive = computed(() => canCloseVoting.value)
 
 const settingsUrl = computed(() =>
@@ -877,6 +897,17 @@ const closeVoting = () => {
   router.post(route('elections.close-voting', { election: props.election.slug }), {}, {
     preserveScroll: true,
     onFinish: () => { isLoading.value = false },
+  })
+}
+
+const submitForApproval = () => {
+  isLoading.value = true
+  router.post(route('elections.submit-for-approval', { election: props.election.slug }), {}, {
+    preserveScroll: true,
+    onFinish: () => {
+      isLoading.value = false
+      showSubmitApprovalModal.value = false
+    },
   })
 }
 

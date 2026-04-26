@@ -1076,6 +1076,7 @@ class ElectionManagementController extends Controller
             'committeeCount'     => $committeeCount,
             'pendingCandidates'  => $pendingCandidatesCount,
             'approvedCandidates' => $approvedCandidatesCount,
+            'allowedActions'     => $election->getAllowedActionsForUser(auth()->id()),
         ];
     }
 

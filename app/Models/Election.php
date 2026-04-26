@@ -1550,6 +1550,21 @@ class Election extends Model
         return 'observer';
     }
 
+    public function getAllowedActionsForUser(string|int|null $userId = null): array
+    {
+        $userId = $userId ?? auth()->id();
+        if (!$userId) {
+            return [];
+        }
+
+        $actorRole = $this->resolveActorRole((string) $userId);
+        $stateActions = \App\Domain\Election\StateMachine\TransitionMatrix::getAllowedActions($this->state ?? '');
+
+        return array_values(array_filter($stateActions, fn($action) =>
+            \App\Domain\Election\StateMachine\TransitionMatrix::actionRequiresRole($action, $actorRole)
+        ));
+    }
+
     private function applySideEffectsForOpenVoting(?string $actorId, \Carbon\Carbon $currentTime): void
     {
         $updateData = [
