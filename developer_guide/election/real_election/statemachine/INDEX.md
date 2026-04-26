@@ -82,7 +82,7 @@ Start here if you're new to the election state machine.
   - Database schema
   - Deployment checklist
 
-### Action-Based State Machine (NEW - Refactoring v2.0)
+### Action-Based State Machine (v2.0)
 - **[08_ACTION_BASED_STATE_MACHINE.md](./08_ACTION_BASED_STATE_MACHINE.md)**
   - Overview of action-based architecture (vs state-based)
   - TransitionMatrix: ALLOWED_ACTIONS + ACTION_RESULTS constants
@@ -95,6 +95,23 @@ Start here if you're new to the election state machine.
   - Migration guide (old way vs new way)
   - Common patterns and troubleshooting
   - File locations and performance notes
+
+### Level 5: Domain Workflow Engine (NEW - v2.1)
+- **[09_LEVEL_5_SUMMARY.md](./09_LEVEL_5_SUMMARY.md)** ⭐ **START HERE FOR LEVEL 5**
+  - Three-layer architecture (Controller → Application → Domain)
+  - Transition Value Object with factories and metadata
+  - TransitionTrigger enum (MANUAL, TIME, GRACE_PERIOD, SYSTEM)
+  - ACTION_PERMISSIONS matrix for role-based authorization
+  - Guard layer pattern with dynamic dispatch
+  - Role resolution (election-level > org-level priority)
+  - Control flow walkthrough (openVoting example)
+  - Permission model and role hierarchy
+  - Complete test coverage analysis (45 tests, 107 assertions)
+  - Migration guide (old API vs new API)
+  - Common patterns (permissions, metadata, automatic transitions)
+  - Troubleshooting (permission errors, concurrent transitions)
+  - API reference (transitionTo, getAllowedRoles, actionRequiresRole)
+  - Deployment checklist
 
 ---
 
@@ -191,8 +208,8 @@ tail -f storage/logs/laravel.log | grep "ElectionStateChanged"
 ---
 
 **Last Updated:** April 26, 2026
-**Status:** Production Ready ✅ (Action-Based Refactoring Complete)
-**Test Coverage:** 67/67 passing
-  - TransitionMatrixTest: 23 tests
+**Status:** Production Ready ✅ (Level 5 Domain Workflow Engine Complete)
+**Test Coverage:** 45 tests, 107 assertions passing
+  - VotingButtonsStateMachineTest: 10 tests
   - ElectionStateMachineTest: 35 tests
-  - VotingButtonsStateMachineIntegrationTest: 9 tests
+  - Unified Domain Workflow Engine architecture

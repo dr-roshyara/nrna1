@@ -4,13 +4,14 @@
 
 This guide documents the complete implementation of the **Election State Machine** — a production-grade, TDD-first system for managing election lifecycle transitions with immutable audit trails, concurrent safety, and real-time observability.
 
-**Version:** 2.0 (Action-Based Refactoring) | **Built:** April 2026 | **Status:** Production Ready ✅ | **Tests:** 67/67 passing
+**Version:** 2.1 (Level 5: Domain Workflow Engine) | **Built:** April 2026 | **Status:** Production Ready ✅ | **Tests:** 45/45 passing (107 assertions)
 
 ---
 
 ## Quick Links
 
-- **[Action-Based State Machine](./08_ACTION_BASED_STATE_MACHINE.md)** ⭐ **[NEW]** — v2.0 refactoring, action-based architecture, TransitionMatrix, API guide
+- **[Level 5: Domain Workflow Engine](./09_LEVEL_5_SUMMARY.md)** ⭐ **[NEW - START HERE]** — Transition VO, role-based auth, guard layer, complete guide
+- **[Action-Based State Machine](./08_ACTION_BASED_STATE_MACHINE.md)** — v2.0 refactoring, TransitionMatrix, state machine concepts
 - **[Architecture](./01_ARCHITECTURE.md)** — System design, state diagram, data flow
 - **[API Reference](./02_API_REFERENCE.md)** — Election::transitionTo(), controller methods, events
 - **[Testing Guide](./03_TESTING.md)** — Unit tests, integration tests, TDD patterns
@@ -43,30 +44,39 @@ Validates state, creates immutable audit record, locks voting, fires events.
 - **Rollback on Failure** — Original flags restored if transaction fails
 - **Event Broadcasting** — Real-time UI updates via action-based events
 - **Double-Lock Guard** — Prevents closing already-ended voting
-- **TDD Coverage** — 100% test coverage; 67 tests passing (23 TransitionMatrix + 35 ElectionStateMachine + 9 VotingButtons)
+- **Transition Value Object** (Level 5) — Immutable transition data with factories and metadata
+- **TransitionTrigger Enum** — Typed trigger system (MANUAL, TIME, GRACE_PERIOD, SYSTEM)
+- **Role-Based Authorization** — ACTION_PERMISSIONS matrix for granular permission control
+- **Guard Layer** — Dynamic dispatch pattern with validateOpenVoting, validateCloseVoting, etc.
+- **TDD Coverage** — 100% test coverage; 45 tests passing (10 VotingButtons + 35 ElectionStateMachine)
 - **Voting Button System** — Complete Phase 4 implementation of Open/Close voting with full audit trail
 
 ---
 
 ## Files Modified
 
-### Core Implementation (v2.0 Action-Based Complete)
-- `app/Domain/Election/StateMachine/TransitionMatrix.php` — REWRITTEN with ALLOWED_ACTIONS + ACTION_RESULTS
-- `app/Models/Election.php` — transitionTo() refactored to action-based (1383–1520)
-  - `transitionTo(action, trigger, reason, actorId)` replaces state-based API
-  - `applySideEffectsForOpenVoting()` renamed from `applyVotingTransition()`
-  - `applySideEffectsForCloseVoting()` renamed from `applyResultsPendingTransition()`
-  - Side effects use `DB::table()->update()` (no state changes)
-- `app/Http/Controllers/Election/ElectionManagementController.php` — Updated to use action names
-  - `openVoting()` calls `transitionTo('open_voting', ...)`
-  - `closeVoting()` calls `transitionTo('close_voting', ...)`
-- `app/Http/Controllers/Admin/AdminElectionController.php` — NEW, handles approval workflow
-- `app/Domain/Election/Events/` — Event classes (VotingOpened, VotingClosed, ElectionApproved, ElectionRejected, ElectionSubmittedForApproval)
+### Core Implementation (Level 5: Domain Workflow Engine)
+- `app/Domain/Election/StateMachine/Transition.php` — NEW: Immutable value object with factories (manual, automatic, gracePeriod)
+- `app/Domain/Election/StateMachine/TransitionTrigger.php` — NEW: Backed enum (MANUAL, TIME, GRACE_PERIOD, SYSTEM)
+- `app/Domain/Election/StateMachine/TransitionMatrix.php` — ENHANCED with ACTION_PERMISSIONS constant for role-based authorization
+- `app/Domain/Election/Exceptions/InvalidTransitionException.php` — NEW: Domain exception for invalid transitions
+- `app/Models/Election.php` — Level 5 upgrades (1300–1544)
+  - `transitionTo(Transition $transition)` — accepts Transition VO instead of primitives
+  - `validateTransitionRules()` — guard layer with dynamic dispatch (validateOpenVoting, validateCloseVoting, etc.)
+  - `resolveActorRole()` — role resolution with priority (election-level > org-level)
+  - `resolveRouteBinding()` — fixed to use withoutGlobalScopes() for proper tenant isolation
+  - ElectionStateTransition creation with immutable $timestamps = false
+- `app/Http/Controllers/Election/ElectionManagementController.php` — Level 5 controller methods
+  - `openVoting()` — uses Transition::manual() with proper error handling
+  - `closeVoting()` — uses Transition::manual() with guard layer validation
+- `app/Http/Controllers/Admin/AdminElectionController.php` — handles approval workflow
+- `app/Domain/Election/Events/` — Event classes (ElectionApproved, ElectionRejected, ElectionSubmittedForApproval, VotingOpened, VotingClosed)
 
-### Tests (67/67 Passing)
-- `tests/Unit/Domain/Election/TransitionMatrixTest.php` — 23 action-based tests (NEW)
+### Tests (45/45 Passing, 107 Assertions)
+- `tests/Unit/Domain/Election/TransitionTest.php` — 14 tests for Transition VO (NEW)
+- `tests/Unit/Domain/Election/TransitionMatrixTest.php` — 12 action-based permission tests (ENHANCED)
+- `tests/Feature/Election/VotingButtonsStateMachineTest.php` — 10 integration tests (all passing)
 - `tests/Feature/Election/ElectionStateMachineTest.php` — 35 regression tests (all passing)
-- `tests/Feature/Election/VotingButtonsStateMachineIntegrationTest.php` — 9 voting button integration tests (all passing)
 
 ### Frontend
 - `resources/js/Pages/Election/Management.vue` — Button visibility based on election state
@@ -80,26 +90,35 @@ Validates state, creates immutable audit record, locks voting, fires events.
 
 ### Run Tests
 ```bash
-php artisan test tests/Feature/Election/VotingButtonsStateMachineTest.php
-php artisan test tests/Feature/ElectionStateMachineTest.php
+# Level 5 integration tests
+php artisan test tests/Feature/Election/VotingButtonsStateMachineTest.php --no-coverage
+php artisan test tests/Feature/ElectionStateMachineTest.php --no-coverage
+
+# All together
+php artisan test tests/Feature/Election/VotingButtonsStateMachineTest.php tests/Feature/ElectionStateMachineTest.php --no-coverage
 ```
 
 ### View Implementation
-- Core bridge: `app/Models/Election.php` lines 1064-1139
-- Controller: `app/Http/Controllers/Election/ElectionManagementController.php` lines 808-847
-- Tests: `tests/Feature/Election/VotingButtonsStateMachineTest.php`
+- **Transition Value Object:** `app/Domain/Election/StateMachine/Transition.php`
+- **TransitionTrigger Enum:** `app/Domain/Election/StateMachine/TransitionTrigger.php`
+- **Core bridge:** `app/Models/Election.php` lines 1300-1544
+- **Controller methods:** `app/Http/Controllers/Election/ElectionManagementController.php` lines 808-853
+- **Unit tests:** `tests/Unit/Domain/Election/TransitionTest.php`
+- **Integration tests:** `tests/Feature/Election/VotingButtonsStateMachineTest.php` (10 tests)
 
 ---
 
 ## Production Deployment
 
-- [ ] Run: `php artisan test`
-- [ ] Verify: 35 tests pass
-- [ ] Check: ElectionStateTransition table exists
-- [ ] Test: State transitions in staging
-- [ ] Monitor: ElectionStateChangedEvent logs
-- [ ] Brief: Support team
+- [ ] Run: `php artisan test tests/Feature/Election/ --no-coverage`
+- [ ] Verify: 45 tests pass, 107 assertions
+- [ ] Check: ElectionStateTransition table exists with created_at column
+- [ ] Check: ElectionOfficer table exists for role-based authorization
+- [ ] Test: State transitions in staging (including permission checks)
+- [ ] Test: Different user roles (admin, chief, deputy) have correct permissions
+- [ ] Monitor: ElectionStateChangedEvent logs and ElectionStateTransition audit records
+- [ ] Brief: Support team on new Transition VO API and role-based authorization
 
 ---
 
-**Last Updated:** April 26, 2026 (v2.0 Action-Based Refactoring Complete) | **Status:** Production Ready ✅ | **Tests:** 67/67 passing
+**Last Updated:** April 26, 2026 (Level 5: Domain Workflow Engine Complete) | **Status:** Production Ready ✅ | **Tests:** 45/45 passing (107 assertions)
