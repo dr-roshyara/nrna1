@@ -87,5 +87,49 @@
     "unpublish": "Möchten Sie die Wahlergebnisse wirklich zurückziehen?",
     "open_voting": "Möchten Sie den Abstimmungszeitraum wirklich öffnen? Wähler können ihre Stimme abgeben.",
     "close_voting": "Möchten Sie den Abstimmungszeitraum wirklich schließen? Es werden keine neuen Stimmen mehr angenommen."
+  },
+  "states": {
+    "draft": "Entwurf",
+    "pending_approval": "Ausstehende Genehmigung",
+    "administration": "Verwaltung",
+    "nomination": "Nominierung",
+    "voting": "Abstimmung",
+    "results_pending": "Auszählung",
+    "results": "Abgeschlossen"
+  },
+  "actions": {
+    "submit_for_approval": "Zur Genehmigung einreichen",
+    "approve": "Genehmigen",
+    "reject": "Ablehnen",
+    "complete_administration": "Verwaltung abschließen",
+    "open_voting": "Abstimmung öffnen",
+    "close_voting": "Abstimmung schließen",
+    "publish_results": "Ergebnisse veröffentlichen"
+  },
+  "modals": {
+    "submit_for_approval": "Wahl zur Genehmigung einreichen",
+    "submit_checklist": "Stellen Sie vor dem Einreichen sicher, dass alle erforderlichen Einrichtungen abgeschlossen sind:",
+    "posts_created": "Mindestens 1 Posten erstellt",
+    "candidates_approved": "Mindestens 1 Kandidat genehmigt",
+    "voters_registered": "Mindestens 1 Wähler registriert",
+    "complete_setup": "Bitte schließen Sie die erforderliche Einrichtung ab, bevor Sie einreichen.",
+    "approve_election": "Wahl genehmigen",
+    "approval_notes_optional": "Genehmigungsnotizen (Optional)",
+    "approval_notes_placeholder": "Fügen Sie optionale Notizen zur Genehmigung hinzu...",
+    "reject_election": "Wahl ablehnen",
+    "rejection_reason_required": "Ablehnungsgrund",
+    "rejection_reason_placeholder": "Bitte geben Sie einen detaillierten Grund für die Ablehnung an...",
+    "min_characters": "Mindestens 10 Zeichen erforderlich",
+    "reason_required": "Grund erforderlich",
+    "reason_min_length": "Grund muss mindestens 10 Zeichen umfassen",
+    "previously_rejected": "Zuvor abgelehnt",
+    "cancel": "Abbrechen",
+    "pending_elections": "Ausstehende Wahlen",
+    "review_and_process": "Überprüfen und genehmigen/lehnen Sie Wahleinreichungen ab",
+    "submitted_by": "Eingereicht von",
+    "on": "am",
+    "no_pending": "Keine ausstehenden Wahlen",
+    "all_processed": "Alle Wahleinreichungen wurden bearbeitet",
+    "preview": "Vorschau"
   }
 }

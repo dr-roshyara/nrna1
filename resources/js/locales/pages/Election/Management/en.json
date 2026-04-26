@@ -87,5 +87,49 @@
     "unpublish": "Are you sure you want to unpublish the election results?",
     "open_voting": "Are you sure you want to open the voting period? Voters will be able to cast their votes.",
     "close_voting": "Are you sure you want to close the voting period? No new votes will be accepted."
+  },
+  "states": {
+    "draft": "Draft",
+    "pending_approval": "Pending Approval",
+    "administration": "Administration",
+    "nomination": "Nomination",
+    "voting": "Voting",
+    "results_pending": "Counting",
+    "results": "Complete"
+  },
+  "actions": {
+    "submit_for_approval": "Submit for Approval",
+    "approve": "Approve",
+    "reject": "Reject",
+    "complete_administration": "Complete Administration",
+    "open_voting": "Open Voting",
+    "close_voting": "Close Voting",
+    "publish_results": "Publish Results"
+  },
+  "modals": {
+    "submit_for_approval": "Submit Election for Approval",
+    "submit_checklist": "Before submission, ensure all required setup is complete:",
+    "posts_created": "At least 1 post created",
+    "candidates_approved": "At least 1 candidate approved",
+    "voters_registered": "At least 1 voter registered",
+    "complete_setup": "Please complete all required setup before submitting.",
+    "approve_election": "Approve Election",
+    "approval_notes_optional": "Approval Notes (Optional)",
+    "approval_notes_placeholder": "Add optional notes about approval...",
+    "reject_election": "Reject Election",
+    "rejection_reason_required": "Reason for Rejection",
+    "rejection_reason_placeholder": "Please provide a detailed reason for rejection...",
+    "min_characters": "Minimum 10 characters required",
+    "reason_required": "Reason is required",
+    "reason_min_length": "Reason must be at least 10 characters",
+    "previously_rejected": "Previously Rejected",
+    "cancel": "Cancel",
+    "pending_elections": "Pending Elections",
+    "review_and_process": "Review and approve/reject election submissions",
+    "submitted_by": "Submitted by",
+    "on": "on",
+    "no_pending": "No pending elections",
+    "all_processed": "All election submissions have been processed",
+    "preview": "Preview"
   }
 }

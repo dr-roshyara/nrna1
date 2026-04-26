@@ -399,6 +399,25 @@
 
           <!-- Action Zone (Single Button - Never Overlaps) -->
           <div class="w-full min-w-0">
+            <!-- Submit for Approval: Show when in Draft state -->
+            <transition name="fade-scale" mode="out-in">
+              <div v-if="canSubmitForApproval" key="submit" class="w-full">
+                <ActionButton
+                  variant="primary"
+                  size="lg"
+                  :loading="isLoading"
+                  class="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transition-all duration-200"
+                  @click="showSubmitApprovalModal = true"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span class="font-bold text-base">{{ t.actions?.submit_for_approval || 'Submit for Approval' }}</span>
+                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ Begin review</span>
+                </ActionButton>
+              </div>
+            </transition>
+
             <!-- Open Voting: Show when in Nomination phase -->
             <transition name="fade-scale" mode="out-in">
               <div v-if="canOpenVoting" key="open" class="w-full">
@@ -439,7 +458,7 @@
 
             <!-- Empty State: When no action available (safety fallback) -->
             <transition name="fade-scale" mode="out-in">
-              <div v-if="!canOpenVoting && !canCloseVoting" key="empty" class="w-full px-6 py-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-lg text-center">
+              <div v-if="!canSubmitForApproval && !canOpenVoting && !canCloseVoting" key="empty" class="w-full px-6 py-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-lg text-center">
                 <p class="text-sm font-medium text-slate-600">✓ Election state locked</p>
               </div>
             </transition>
