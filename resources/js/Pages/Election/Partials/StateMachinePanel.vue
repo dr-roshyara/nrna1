@@ -102,7 +102,7 @@
             <div v-if="hasActions(phase.state)" class="phase-actions">
               <button
                 v-if="canCompletePhase(phase.state)"
-                class="action-btn btn-complete"
+                class="action-btn btn-complete y-focus h-auto"
                 @click="$emit('phase-completed', phase.state)"
               >
                 Complete
@@ -126,22 +126,8 @@
                 <span class="timer-value">{{ getCountdownTime(phase.state) }}</span>
               </div>
 
-              <!-- Update Dates Button (with proper disabled styling) -->
-              <button
-                v-if="canUpdateDates(phase.state)"
-                class="action-btn btn-dates"
-                @click="openDateModal(phase.state)"
-              >
-                Update Dates
-              </button>
-              <button
-                v-else-if="isPhaseActive(phase.state) || isPhaseCompleted(phase.state)"
-                class="action-btn btn-dates disabled"
-                disabled
-                :title="getUpdateDisabledReason(phase.state)"
-              >
-                Update Dates
-              </button>
+              <!-- Note: Use Timeline page to edit dates -->
+              <!-- Dates are read-only here for clarity -->
             </div>
           </div>
         </div>
@@ -165,44 +151,7 @@
       </div>
     </div>
 
-    <!-- Date Editor Modal -->
-    <div v-if="showDateModal" class="date-modal-overlay" @click="closeModal">
-      <div class="date-modal" @click.stop>
-        <div class="modal-header">
-          <h3>{{ editingPhaseLabel }} - Update Dates</h3>
-          <button class="modal-close" @click="closeModal">×</button>
-        </div>
-
-        <div class="modal-body">
-          <div class="form-group">
-            <label class="form-label">Start Date</label>
-            <input
-              v-model="dateForm.start"
-              type="datetime-local"
-              class="form-input"
-            />
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">End Date</label>
-            <input
-              v-model="dateForm.end"
-              type="datetime-local"
-              class="form-input"
-            />
-          </div>
-
-          <div v-if="dateError" class="error-message">
-            {{ dateError }}
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button class="btn btn-secondary" @click="closeModal">Cancel</button>
-          <button class="btn btn-primary" @click="saveDates">Save Changes</button>
-        </div>
-      </div>
-    </div>
+    <!-- Date modal removed - use Timeline page to edit dates -->
   </div>
 </template>
 
@@ -222,27 +171,58 @@ const props = defineProps({
     type: Object,
     default: null,
   },
+  allowedActions: {
+    type: Array,
+    default: () => [],
+  },
 })
 
-const emit = defineEmits(['phase-completed', 'dates-updated'])
+const emit = defineEmits(['phase-completed'])
 
 const selectedPhase = ref(null)
-const showDateModal = ref(false)
-const editingPhaseState = ref(null)
-const dateForm = ref({ start: '', end: '' })
-const dateError = ref('')
 const currentTime = ref(new Date())
 let countdownInterval = null
 
 // Update countdown timer every second
+// Equalize column heights on desktop
+const equalizePhaseHeights = () => {
+  if (window.innerWidth < 1024) return // Only on desktop
+
+  setTimeout(() => {
+    const phases = document.querySelectorAll('.timeline-phase')
+    if (phases.length === 0) return
+
+    // Reset heights to auto
+    phases.forEach(phase => {
+      phase.style.height = 'auto'
+    })
+
+    // Get max height
+    let maxHeight = 0
+    phases.forEach(phase => {
+      maxHeight = Math.max(maxHeight, phase.offsetHeight)
+    })
+
+    // Set all to max height
+    phases.forEach(phase => {
+      phase.style.height = maxHeight + 'px'
+    })
+  }, 100)
+}
+
 onMounted(() => {
   countdownInterval = setInterval(() => {
     currentTime.value = new Date()
   }, 1000)
+
+  // Equalize column heights
+  equalizePhaseHeights()
+  window.addEventListener('resize', equalizePhaseHeights)
 })
 
 onUnmounted(() => {
   if (countdownInterval) clearInterval(countdownInterval)
+  window.removeEventListener('resize', equalizePhaseHeights)
 })
 
 const phases = [
@@ -413,10 +393,9 @@ const hasActions = (state) => {
 }
 
 const canCompletePhase = (state) => {
-  return (
-    (state === 'administration' && !isPhaseCompleted(state)) ||
-    (state === 'nomination' && !isPhaseCompleted(state))
-  )
+  if (state === 'administration') return props.allowedActions.includes('complete_administration')
+  if (state === 'nomination') return props.allowedActions.includes('open_voting')
+  return false
 }
 
 const canUpdateDates = (state) => {
@@ -558,14 +537,21 @@ const closeModal = () => {
 }
 
 const saveDates = () => {
+  console.log('💾 saveDates called, form:', dateForm.value)
+
   if (dateForm.value.start && dateForm.value.end && dateForm.value.start >= dateForm.value.end) {
     dateError.value = 'End date must be after start date'
+    console.error('❌ Date validation failed: end before start')
     return
   }
-  emit('dates-updated', {
+
+  const eventPayload = {
     phase: editingPhaseState.value,
     dates: dateForm.value,
-  })
+  }
+
+  console.log('🎯 Emitting dates-updated event:', eventPayload)
+  emit('dates-updated', eventPayload)
   closeModal()
 }
 </script>

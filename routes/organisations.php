@@ -221,7 +221,9 @@ Route::prefix('organisations/{organisation:slug}')
         });
 
         // ── Election Voter Management (ElectionMembership — real elections only) ──
-        Route::prefix('/elections/{election:slug}')->group(function () {
+        Route::prefix('/elections/{election}')
+            ->scopeBindings()
+            ->group(function () {
 
             // ── ADMINISTRATION PHASE ONLY ──────────────────────────────────────────
             Route::middleware(['election.state:manage_posts'])->group(function () {

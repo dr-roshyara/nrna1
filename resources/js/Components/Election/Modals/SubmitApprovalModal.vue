@@ -9,38 +9,38 @@
 
       <div class="space-y-2">
         <div class="flex items-center gap-2">
-          <svg v-if="election.postsCount > 0" class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+          <svg v-if="postsCount > 0" class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
           </svg>
           <svg v-else class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
-          <span :class="election.postsCount > 0 ? 'text-slate-700' : 'text-slate-500'">
-            {{ t.posts_created }} ({{ election.postsCount }})
+          <span :class="postsCount > 0 ? 'text-slate-700' : 'text-slate-500'">
+            {{ t.posts_created }} ({{ postsCount }})
           </span>
         </div>
 
         <div class="flex items-center gap-2">
-          <svg v-if="election.candidatesCount > 0" class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+          <svg v-if="candidatesCount > 0" class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
           </svg>
           <svg v-else class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
-          <span :class="election.candidatesCount > 0 ? 'text-slate-700' : 'text-slate-500'">
-            {{ t.candidates_approved }} ({{ election.candidatesCount }})
+          <span :class="candidatesCount > 0 ? 'text-slate-700' : 'text-slate-500'">
+            {{ t.candidates_approved }} ({{ candidatesCount }})
           </span>
         </div>
 
         <div class="flex items-center gap-2">
-          <svg v-if="election.votersCount > 0" class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+          <svg v-if="votersCount > 0" class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
           </svg>
           <svg v-else class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
-          <span :class="election.votersCount > 0 ? 'text-slate-700' : 'text-slate-500'">
-            {{ t.voters_registered }} ({{ election.votersCount }})
+          <span :class="votersCount > 0 ? 'text-slate-700' : 'text-slate-500'">
+            {{ t.voters_registered }} ({{ votersCount }})
           </span>
         </div>
       </div>
@@ -73,13 +73,16 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import DialogModal from '@/Components/DialogModal.vue'
+import DialogModal from '@/Components/Jetstream/DialogModal.vue'
 import ActionButton from '@/Components/ActionButton.vue'
 
 const props = defineProps({
   show: Boolean,
   election: Object,
   loading: Boolean,
+  postsCount: { type: Number, default: 0 },
+  candidatesCount: { type: Number, default: 0 },
+  votersCount: { type: Number, default: 0 },
 })
 
 defineEmits(['submit', 'cancel'])
@@ -87,8 +90,8 @@ defineEmits(['submit', 'cancel'])
 const { t } = useI18n()
 
 const hasErrors = computed(() =>
-  !props.election.postsCount ||
-  !props.election.candidatesCount ||
-  !props.election.votersCount
+  !props.postsCount ||
+  !props.candidatesCount ||
+  !props.votersCount
 )
 </script>

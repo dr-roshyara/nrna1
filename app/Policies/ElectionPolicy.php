@@ -44,7 +44,7 @@ class ElectionPolicy
      */
     public function manageSettings(User $user, Election $election): bool
     {
-        // Org owner/admin has full access (same check as create())
+        // Org owner/admin has full access
         if (UserOrganisationRole::where('user_id', $user->id)
             ->where('organisation_id', $election->organisation_id)
             ->whereIn('role', ['owner', 'admin'])

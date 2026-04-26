@@ -60,9 +60,37 @@ class Election extends Model
      */
     public function resolveRouteBinding($value, $field = null)
     {
-        return static::withoutGlobalScopes()
-            ->where($field ?? $this->getRouteKeyName(), $value)
-            ->firstOrFail();
+        \Log::error('🔥 resolveRouteBinding CALLED', [
+            'value' => $value,
+            'field' => $field,
+            'route_key_name' => $this->getRouteKeyName(),
+        ]);
+
+        try {
+            $result = static::withoutGlobalScopes()
+                ->where($field ?? $this->getRouteKeyName(), $value)
+                ->first();
+
+            \Log::error('resolveRouteBinding RESULT', [
+                'found' => $result !== null,
+                'election_id' => $result?->id,
+                'election_slug' => $result?->slug,
+            ]);
+
+            if (!$result) {
+                \Log::error('❌ resolveRouteBinding: Election NOT found, returning null');
+                return null;
+            }
+
+            \Log::error('✅ resolveRouteBinding: Election found, returning instance');
+            return $result;
+        } catch (\Exception $e) {
+            \Log::error('❌ resolveRouteBinding: EXCEPTION', [
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            return null;
+        }
     }
 
     /**

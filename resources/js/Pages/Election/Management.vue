@@ -116,6 +116,7 @@
           :state-machine="stateMachine"
           :election="election"
           :organisation="organisation"
+          :allowed-actions="allowedActions"
           @phase-completed="handlePhaseCompleted"
           @dates-updated="handleDatesUpdated"
         />
@@ -613,7 +614,7 @@
         </SectionCard>
 
         <!-- ── RESULT MANAGEMENT ───────────────────────────────── -->
-        <SectionCard v-if="canPublish" padding="lg">
+        <SectionCard v-if="canPublishResults" padding="lg">
           <div class="flex items-center gap-3 mb-6 min-w-0">
             <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
               <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -732,6 +733,9 @@
     <SubmitApprovalModal
       :show="showSubmitApprovalModal"
       :election="election"
+      :posts-count="postsCount"
+      :candidates-count="candidatesCount"
+      :voters-count="stats.total_memberships ?? 0"
       :loading="isLoading"
       @submit="submitForApproval"
       @cancel="showSubmitApprovalModal = false"
@@ -986,12 +990,18 @@ const submitPhaseCompletion = () => {
     { reason: completionReason.value.trim() },
     {
       preserveScroll: true,
+      onSuccess: () => {
+        // Force hard reload to refresh page data
+        setTimeout(() => {
+          window.location.reload()
+        }, 500)
+      },
+      onError: (errors) => {
+        reasonError.value = errors.error || errors.reason || 'Failed to complete phase'
+        isLoading.value = false
+      },
       onFinish: () => {
         isLoading.value = false
-        showCompletionModal.value = false
-        selectedPhase.value = null
-        completionReason.value = ''
-        reasonError.value = ''
       },
     }
   )
@@ -1004,10 +1014,29 @@ const closeCompletionModal = () => {
   reasonError.value = ''
 }
 
-const handleDatesUpdated = (phase) => {
-  // The date picker is already handled by StateMachinePanel component
-  // This method can be used for post-update actions if needed
-  console.log(`Dates updated for phase: ${phase}`)
+const handleDatesUpdated = ({ phase, dates }) => {
+  if (!phase || !dates) {
+    console.error('❌ Missing phase or dates')
+    return
+  }
+
+  const payload = {
+    [`${phase}_suggested_start`]: dates.start,
+    [`${phase}_suggested_end`]: dates.end,
+  }
+
+  router.patch(route('elections.update-timeline', props.election.slug), payload, {
+    onSuccess: () => {
+      console.log('✅ Dates updated successfully. Reloading page...')
+      // Hard reload to refresh the page and show updated dates
+      setTimeout(() => {
+        window.location.reload()
+      }, 500)
+    },
+    onError: (errors) => {
+      console.error('❌ Update failed:', errors)
+    },
+  })
 }
 </script>
 

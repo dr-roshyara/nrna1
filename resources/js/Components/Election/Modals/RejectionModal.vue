@@ -41,7 +41,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import DialogModal from '@/Components/DialogModal.vue'
+import DialogModal from '@/Components/Jetstream/DialogModal.vue'
 import ActionButton from '@/Components/ActionButton.vue'
 
 defineProps({

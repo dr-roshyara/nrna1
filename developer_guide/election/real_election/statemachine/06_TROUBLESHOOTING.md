@@ -208,4 +208,86 @@ Check flash handling:
 
 ---
 
-**Last Updated:** April 24, 2026
+## Issue: 403 Forbidden on Election Management Page
+
+### Symptoms
+- Visiting `/elections/{slug}/management` returns 403 Unauthorized
+- User is logged in and has correct permissions (election chief, org owner, etc.)
+- Policy authorization seems correct but still blocked
+
+### Root Cause: Route Model Binding Not Working
+
+The route binding converts URL slug to Election model:
+
+```
+/elections/namaste-lk0dziy6/management
+                    ↓
+Route::bind('election', ...) should resolve this
+                    ↓
+Pass Election object to controller
+```
+
+If binding is broken, the raw string slug is passed instead, causing authorization to fail.
+
+### How to Debug
+
+1. **Check the logs** for parameter type:
+   ```
+   "is_string":true  ❌ Route binding not working
+   "is_election":true  ✅ Route binding working correctly
+   ```
+
+2. **Verify RouteServiceProvider registration**:
+   ```php
+   // File: app/Providers/RouteServiceProvider.php
+   protected function registerElectionBinding(): void
+   {
+       Route::bind('election', function (string $value) {
+           return \App\Models\Election::withoutGlobalScopes()
+               ->where('slug', $value)
+               ->firstOrFail();
+       });
+   }
+   ```
+
+3. **Common causes**:
+   - Empty `registerElectionBinding()` method (no code to bind)
+   - Stale route cache not reloaded
+   - Service provider changes not picked up by PHP
+
+### Solution
+
+#### Step 1: Ensure explicit route binding exists
+```php
+// In RouteServiceProvider.php::registerElectionBinding()
+Route::bind('election', function (string $value) {
+    return \App\Models\Election::withoutGlobalScopes()
+        ->where('slug', $value)
+        ->firstOrFail();
+});
+```
+
+#### Step 2: Clear route cache
+```bash
+php artisan route:clear
+php artisan optimize:clear
+```
+
+#### Step 3: Restart dev server (forces PHP code reload)
+```bash
+# Kill current dev server, then restart:
+php artisan serve
+```
+
+#### Step 4: Test with fresh request
+- Visit management page again
+- Check logs: should now show `"is_election":true`
+
+### Prevention
+- Don't rely on implicit binding for route prefixes like `{election:slug}`
+- Always add explicit `Route::bind()` for custom resolution logic
+- Remember to **clear caches and restart after changing RouteServiceProvider**
+
+---
+
+**Last Updated:** April 26, 2026

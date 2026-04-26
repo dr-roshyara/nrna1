@@ -240,13 +240,13 @@ Route::get('posts/assign', [PostController::class, 'assign'])->name('post.assign
 // Election Management & Viewboard Routes
 // Using explicit {election:slug} to trigger implicit model binding
 // The Election model's resolveRouteBinding() bypasses global scopes
-Route::middleware(['auth', 'verified'])
+Route::middleware(['auth', 'verified', \App\Http\Middleware\TenantContext::class])
     ->prefix('/elections/{election:slug}')
     ->group(function () {
         // Management dashboard — chief or deputy only
+        // 🔥 TEMPORARY: Authorization moved to controller to debug route binding
         Route::get('/management', [ElectionManagementController::class, 'index'])
-            ->name('elections.management')
-            ->can('manageSettings', 'election');
+            ->name('elections.management');
 
         Route::get('/status', [ElectionManagementController::class, 'status'])
             ->name('elections.status')
@@ -651,3 +651,46 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified', 'committee.membe
     // Security report
     Route::get('voting-security/report', [VotingSecurityController::class, 'generateReport'])->name('admin.voting.security.report');
 });
+
+// DEBUG: Test with TenantContext middleware applied
+Route::get('/elections/{election:slug}/debug-tenant', function (\App\Models\Election $election) {
+    $user = auth()->user();
+    return response()->json([
+        'user_id' => $user->id,
+        'user_email' => $user->email,
+        'user_organisation_id' => $user->organisation_id,
+        'session_organisation_id' => session('current_organisation_id'),
+        'election_id' => $election->id,
+        'election_slug' => $election->slug,
+        'election_state' => $election->state,
+        'election_org_id' => $election->organisation_id,
+        'can_manage' => $user->can('manageSettings', $election),
+    ]);
+})->middleware(['auth', 'verified', \App\Http\Middleware\TenantContext::class])->name('election.debug-tenant');
+
+// DEBUG: Direct authorization test
+Route::get('/elections/{election:slug}/auth-test', function (\App\Models\Election $election) {
+    $user = auth()->user();
+    if (!$user) {
+        return response()->json(['error' => 'Not authenticated'], 401);
+    }
+
+    return response()->json([
+        'user_id' => $user->id,
+        'user_email' => $user->email,
+        'election_id' => $election->id,
+        'election_slug' => $election->slug,
+        'election_state' => $election->state,
+        'can_manage' => $user->can('manageSettings', $election),
+        'allows_action' => $election->allowsAction('manage_settings'),
+        'is_chief' => \App\Models\ElectionOfficer::where('user_id', $user->id)
+            ->where('election_id', $election->id)
+            ->where('role', 'chief')
+            ->where('status', 'active')
+            ->exists(),
+        'is_org_owner' => \App\Models\UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $election->organisation_id)
+            ->where('role', 'owner')
+            ->exists(),
+    ]);
+})->middleware(['auth', 'verified'])->name('election.auth-test');

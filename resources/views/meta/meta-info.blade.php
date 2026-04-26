@@ -60,7 +60,7 @@
 
 {{-- Mobile & PWA --}}
 <meta name="theme-color" content="{{ config('meta.theme_color') }}">
-<meta name="apple-mobile-web-app-capable" content="{{ config('meta.mobile_app_capable') }}">
+<meta name="mobile-web-app-capable" content="{{ config('meta.mobile_app_capable') }}">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 {{-- Security & Referrer --}}

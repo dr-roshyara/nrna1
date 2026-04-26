@@ -70,6 +70,15 @@ Start here if you're new to the election state machine.
   - Common issues and solutions
   - Debugging checklist
   - Error message reference
+  - Route model binding issues (403 Forbidden)
+
+### Debug Sessions
+- **[20260426_DEBUG_ROUTE_BINDING_403.md](./20260426_DEBUG_ROUTE_BINDING_403.md)** ⭐ **LATEST DEBUG SESSION**
+  - Root cause analysis: Empty RouteServiceProvider binding registration
+  - How route model binding works and why it failed
+  - Complete fix walkthrough with logs
+  - Secondary issues: Modal import paths, route caching
+  - Key learnings and prevention checklist
 
 ### Voting Button Implementation
 - **[07_VOTING_BUTTON_IMPLEMENTATION.md](./07_VOTING_BUTTON_IMPLEMENTATION.md)**

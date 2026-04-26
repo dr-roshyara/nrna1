@@ -51,6 +51,7 @@ use App\Http\Controllers\Organisations\MemberImportController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\Import\OrganisationUserImportController;
 use App\Http\Controllers\VoterInvitationController;
+use App\Http\Controllers\Election\VoterImportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -248,6 +249,9 @@ Route::get('/help/voters-verification_guide', function () {
 Route::get('/help/membership-modes', function () {
     return Inertia::render('Tutorials/MembershipModes');
 })->name('tutorials.membership-modes');
+
+// Public Voter Import Tutorial
+Route::get('/voter-import-tutorial', [VoterImportController::class, 'publicTutorial'])->name('voter-import-tutorial');
 
 // Security page
 Route::get('/security', [App\Http\Controllers\SecurityPageController::class, 'show'])->name('security');

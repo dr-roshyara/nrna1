@@ -668,12 +668,14 @@ class ElectionManagementController extends Controller
      */
     public function index(string|Election $election): Response
     {
-        // Resolve election if passed as slug string
+        // Handle case where route binding passes string instead of model
         if (is_string($election)) {
             $election = Election::withoutGlobalScopes()
                 ->where('slug', $election)
                 ->firstOrFail();
         }
+
+        $this->authorize('manageSettings', $election);
 
         $election->load(['organisation']);
 

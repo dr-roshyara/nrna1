@@ -237,6 +237,11 @@
         "description": "Verstehen Sie die Unterschiede zwischen Vollständiger Mitgliedschaft und Wahl-Nur-Modi. Lernen Sie, welcher Modus für Ihre Organisation geeignet ist und wie Sie wechseln können.",
         "keywords": "Mitgliedschaftsmodi, vollständige Mitgliedschaft, Wahlberechtigung, Wählerverifikation, Organisationseinstellungen, Mitgliedschaftsverwaltung, Online-Wahl, Public Digit Leitfaden, NGO Wahlen, Vereinswahlen, Diaspora-Wahlen, Mitgliedschaftsgebühren"
       },
+      "elections.voters.import.tutorial": {
+        "title": "Wähler-Import Anleitung & Vollständiger Leitfaden | Public Digit",
+        "description": "Beherrschen Sie den Wählerimport für Wahlen auf Public Digit. Lernen Sie Vollständigem vs. Wahl-Nur-Modus, CSV-Formate, Massenregistrierung, Schritt-für-Schritt-Prozess und automatische Erstellung von Wählerkonten.",
+        "keywords": "Wähler-Import, Wahlwähler, CSV-Import, Massenverwaltung, Wählerregistrierung, Wahlvorbereitung, Import-Anleitung, Mitgliedschaftsmodi, Wahlvorbereitung, Verwaltung, Public Digit Tutorial, sichere Wahlen, Online-Wahlen, Diaspora-Wahlen"
+      },
       "organisations.settings": {
         "title": "Organisationseinstellungen - {organisationName} | Public Digit",
         "description": "Konfigurieren Sie den Mitgliedschaftsmodus und Organisationseinstellungen für {organisationName}. Verwalten Sie die Wählerberechtigung, wählen Sie zwischen Vollständiger Mitgliedschaft oder Wahl-Nur-Modus, mit {memberCount} Mitgliedern.",

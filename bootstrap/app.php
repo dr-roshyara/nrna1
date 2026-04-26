@@ -26,14 +26,19 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\TrackPerformance::class,
         ]);
 
-        // ✅ CRITICAL FIX: Append to web middleware stack (preserves session, CSRF, binding, etc.)
-        // MUST use append: [...] to add to existing Laravel 11 default web stack
+        // ✅ CRITICAL FIX: TenantContext MUST run BEFORE route model binding
+        // Use prependToGroup to insert BEFORE SubstituteBindings (route binding)
+        // This ensures tenant context is set BEFORE election model is resolved
+        $middleware->web(prepend: [
+            \App\Http\Middleware\TenantContext::class,
+        ]);
+
+        // ✅ Then append other middleware (runs AFTER binding)
         $middleware->web(append: [
             \App\Http\Middleware\PreloadAssets::class,
             \App\Http\Middleware\SetLocale::class,
             \App\Http\Middleware\InjectPageMeta::class,
             \App\Http\Middleware\HandleInertiaRequests::class,
-            \App\Http\Middleware\TenantContext::class,
         ]);
 
         // ✅ Enable stateful API authentication (for Sanctum)

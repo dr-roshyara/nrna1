@@ -159,9 +159,14 @@
   "back_btn": "Go to Import Page",
 
   "seo": {
-    "title": "Voter Import Tutorial | Public Digit",
-    "description": "Learn how to import voters for an election on Public Digit. Step-by-step guide covering file format, membership requirements, and the import process.",
-    "keywords": "voter import, election voters, CSV import, bulk import, member voters",
-    "robots": "noindex, nofollow"
+    "title": "Voter Import Tutorial & Guide | Public Digit",
+    "description": "Master voter importing for elections. Complete guide on Full Membership vs Election-Only modes, CSV file formats, step-by-step import process, and how to bulk-register voters on Public Digit.",
+    "keywords": "voter import, election voters, CSV import, bulk import, voter registration, election setup, import tutorial, membership modes",
+    "robots": "index, follow",
+    "og_title": "How to Import Voters for Elections | Public Digit Tutorial",
+    "og_description": "Learn the two ways to import voters: Full Membership Mode (existing users) and Election-Only Mode (auto-create new voters). Complete step-by-step tutorial with examples.",
+    "og_type": "article",
+    "author": "Public Digit Team",
+    "canonical": "https://publicdigit.org/voter-import-tutorial"
   }
 }

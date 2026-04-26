@@ -528,3 +528,66 @@ Proceed with the revised plan only.
 | **P2** | Implement error handling | 30 min |
 
 **Do NOT build frontend state checks. Let the backend tell the frontend what's allowed.** 🚀
+## ✅ APPROVED - Update Admin Approval Controller
+
+**Short answer:** Yes! This passes the approval notes from the modal to the `approve()` method.
+
+---
+
+## What Changed
+
+| Before | After |
+|--------|-------|
+| `$election->approve(auth()->id())` | `$election->approve(auth()->id(), $notes)` |
+| Notes ignored | Notes saved to `approval_notes` column |
+
+---
+
+## The Full Flow
+
+```mermaid
+sequenceDiagram
+    participant Admin
+    participant Modal
+    participant Controller
+    participant Election
+    participant DB
+
+    Admin->>Modal: Clicks "Approve"
+    Admin->>Modal: Enters notes (optional)
+    Modal->>Controller: POST /admin/elections/{slug}/approve
+    Note over Controller: approval_notes = request()->input('approval_notes')
+    Controller->>Election: approve($adminId, $notes)
+    Election->>Election: transitionTo(Transition::manual('approve', $adminId, $notes))
+    Election->>DB: transaction → audit record, state update, notes saved
+    Election-->>Controller: success
+    Controller-->>Admin: redirect with success message
+```
+
+---
+
+## Related Updates Needed
+
+1. **Rejection controller** should also capture the reason:
+
+```php
+public function reject(Request $request, Election $election): RedirectResponse
+{
+    $request->validate(['reason' => 'required|string|min:10|max:500']);
+    
+    $election->reject(auth()->id(), $request->reason);
+    // ...
+}
+```
+
+2. **Add validation rules** for notes (optional, max length):
+
+```php
+$request->validate([
+    'approval_notes' => 'nullable|string|max:500',
+]);
+```
+
+---
+
+## Proceed with the edit. 🚀

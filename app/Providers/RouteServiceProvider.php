@@ -30,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        $this->registerElectionBinding();
+        // ✅ Election binding now uses scopeBindings() in routes — no custom override needed
         $this->registerVoterSlugBinding();
 
         $this->routes(function () {
@@ -43,16 +43,6 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Register the {election} route model binding.
-     * The Election model's resolveRouteBinding() handles implicit binding.
-     * It bypasses the tenant global scope to find elections by slug.
-     */
-    protected function registerElectionBinding(): void
-    {
-        // Implicit binding is handled by Election::resolveRouteBinding()
-        // No explicit registration needed
-    }
 
     /**
      * Register the {vslug} route model binding with support for both real and demo slugs.

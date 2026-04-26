@@ -46,6 +46,18 @@ class VoterImportController extends Controller
         ]);
     }
 
+    // ── Public Tutorial (no auth required) ─────────────────────────────────────
+
+    public function publicTutorial(): Response
+    {
+        return Inertia::render('Elections/Voters/ImportTutorial', [
+            'organisation'       => null,
+            'election'           => null,
+            'uses_full_membership' => true,
+            'isPublic'           => true,
+        ]);
+    }
+
     // ── Template ──────────────────────────────────────────────────────────────
 
     public function template(Organisation $organisation, string $election)

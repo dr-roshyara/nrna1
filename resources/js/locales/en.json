@@ -238,6 +238,11 @@
         "description": "Understand Full Membership and Election-Only modes for your organisation. Learn when to use each mode, how they differ, and how to switch between them without losing data.",
         "keywords": "membership modes, full membership, election-only voting, voter eligibility, membership requirements, election setup, organisation settings, fee tracking, member voting, public digit guide, NGO elections, association voting, diaspora elections, membership voting system"
       },
+      "elections.voters.import.tutorial": {
+        "title": "Voter Import Tutorial & Complete Guide | Public Digit",
+        "description": "Master voter importing for elections on Public Digit. Learn Full Membership vs Election-Only modes, CSV formats, bulk registration, step-by-step import process, and auto-create voter accounts.",
+        "keywords": "voter import, election voters, CSV import, bulk voter registration, voter management, election setup, import guide, membership modes, voter eligibility, election administration, Public Digit tutorial, secure voting, online elections, diaspora voting"
+      },
       "organisations.settings": {
         "title": "Organisation Settings - {organisationName} | Public Digit",
         "description": "Configure membership mode, election settings, and organisation preferences for {organisationName}. Manage voter eligibility rules, Full Membership vs Election-Only mode, and member count: {memberCount} members.",
