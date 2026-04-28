@@ -250,6 +250,11 @@ Route::get('/help/membership-modes', function () {
     return Inertia::render('Tutorials/MembershipModes');
 })->name('tutorials.membership-modes');
 
+// Election Journey tutorial — explains the 7-phase election lifecycle
+Route::get('/help/election-journey', function () {
+    return Inertia::render('Tutorials/ElectionJourney');
+})->name('tutorials.election-journey');
+
 // Public Voter Import Tutorial
 Route::get('/voter-import-tutorial', [VoterImportController::class, 'publicTutorial'])->name('voter-import-tutorial');
 

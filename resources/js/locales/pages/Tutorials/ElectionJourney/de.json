@@ -1,0 +1,95 @@
+{
+  "hero": {
+    "title": "Wahlreise",
+    "subtitle": "Verstehen Sie den vollständigen Lebenszyklus einer Wahl — von der Erstellung bis zur Veröffentlichung der Ergebnisse."
+  },
+  "subscription": {
+    "title": "Kostenlos vs. Bezahlte Wahlen",
+    "free": {
+      "title": "Kostenlos",
+      "badge": "≤ 40 Wähler",
+      "description": "Wahlen mit bis zu 40 erwarteten Wählern werden automatisch genehmigt und gehen direkt zur Verwaltungsphase über.",
+      "feature": "Sofort automatisch genehmigt"
+    },
+    "paid": {
+      "title": "Bezahlt",
+      "badge": "> 40 Wähler",
+      "description": "Wahlen mit mehr als 40 erwarteten Wählern erfordern eine Überprüfung und Genehmigung durch einen Plattformadministrator.",
+      "feature": "Überprüfung durch Admin"
+    }
+  },
+  "timeline": {
+    "title": "Die 7 Phasen"
+  },
+  "phases": {
+    "draft": {
+      "name": "Entwurf",
+      "description": "Die Wahl wird mit Name, Beschreibung, erwarteter Wählerzahl und Phasendaten erstellt. Niemand außerhalb der Organisation kann sie sehen.",
+      "who_acts": "Organisationsinhaber oder Administrator",
+      "locked_means": null
+    },
+    "pending_approval": {
+      "name": "Genehmigung ausstehend",
+      "description": "Große Wahlen warten auf eine Überprüfung und Genehmigung durch den Plattformadministrator. Kleine Wahlen überspringen diese Phase ganz.",
+      "who_acts": "Plattform-Administrator",
+      "locked_means": "Die Wahl kann nicht bearbeitet werden, während die Genehmigung aussteht. Der Administrator muss sie genehmigen oder ablehnen."
+    },
+    "administration": {
+      "name": "Verwaltung",
+      "description": "Positionen werden erstellt, Wähler werden importiert, und der Wahlausschuss wird ernannt. Dies ist, wo die Wahlstruktur aufgebaut wird.",
+      "who_acts": "Wahlleiter oder Stellvertreter",
+      "locked_means": "\"Admin-Sperre\" — diese Phase ist abgeschlossen. Positionen, Wähler und Ausschussmitglieder sind festgelegt und können nicht geändert werden."
+    },
+    "nomination": {
+      "name": "Kandidatur",
+      "description": "Kandidaten stellen ihre Bewerbungen für bestimmte Positionen ein. Der Wahlleiter prüft und genehmigt oder lehnt jede Kandidatur ab.",
+      "who_acts": "Kandidaten (Bewerbung), Wahlleiter (Genehmigung/Ablehnung)",
+      "locked_means": "\"Kandidatur gesperrt\" — die Daten sind eingefroren und Bewerbungen können nicht mehr eingereicht werden. Dies bedeutet NICHT, dass die Wahl steckenbleibt — der Wahlleiter kann immer noch auf \"Abstimmung öffnen\" klicken, um zur nächsten Phase zu gehen."
+    },
+    "voting": {
+      "name": "Abstimmung",
+      "description": "Wähler geben ihre Stimmen während des definierten Abstimmungszeitraums ab. Die Abstimmung kann bei Bedarf verlängert werden, bevor sie endet.",
+      "who_acts": "Wähler",
+      "locked_means": "\"Abstimmung beendet\" oder \"Läuft\" — der Abstimmungszeitraum ist aktiv. Die Daten können nicht geändert werden, sobald die Abstimmung begonnen hat."
+    },
+    "results_pending": {
+      "name": "Ergebnisse ausstehend",
+      "description": "Die Abstimmung ist beendet. Die Ergebnisse werden gezählt und überprüft. Es können keine neuen Stimmen abgegeben werden.",
+      "who_acts": "System / Wahlleiter",
+      "locked_means": "\"Ergebnisse ausstehend\" — die Ergebnisse werden endgültig. Diese Phase endet, wenn der Wahlleiter die Ergebnisse veröffentlicht."
+    },
+    "results": {
+      "name": "Ergebnisse",
+      "description": "Die endgültigen Ergebnisse werden veröffentlicht und sind für die Öffentlichkeit sichtbar. Die Wahl ist abgeschlossen.",
+      "who_acts": "Alle (öffentliche Ansicht)",
+      "locked_means": "\"Ergebnisse veröffentlicht\" — endgültig und unveränderlich. Es können keine weiteren Änderungen vorgenommen werden."
+    }
+  },
+  "glossary": {
+    "title": "Verständnis von Statusabzeichen",
+    "terms": {
+      "nomination_locked": {
+        "term": "\"Kandidatur gesperrt\"",
+        "definition": "Dies bedeutet, dass die Daten der Kandidaturphase eingefroren sind und keine neuen Kandidaturen eingereicht werden können. Es bedeutet NICHT, dass die Wahl steckenbleibt — der Wahlleiter kann immer noch auf \"Abstimmung öffnen\" klicken, um zur nächsten Phase zu gehen."
+      },
+      "admin_locked": {
+        "term": "\"Admin-Sperre\"",
+        "definition": "Die Verwaltungsphase ist abgeschlossen. Positionen, Wähler und Ausschussmitglieder sind festgelegt und können nicht geändert werden."
+      },
+      "voting_closed": {
+        "term": "\"Abstimmung beendet\"",
+        "definition": "Der Abstimmungszeitraum ist beendet. Es können keine neuen Stimmen mehr abgegeben werden. Die Ergebnisse werden vorbereitet."
+      },
+      "pending_approval": {
+        "term": "\"Genehmigung ausstehend\"",
+        "definition": "Die Wahl wartet auf die Genehmigung durch einen Plattformadministrator. Dies gilt nur für Wahlen mit mehr als 40 erwarteten Wählern."
+      }
+    }
+  },
+  "screenshot_caption": "Das Abzeichen \"Kandidatur gesperrt\" zeigt an, dass die Daten eingefroren sind, aber die Schaltfläche \"Abstimmung öffnen\" ist immer noch anklickbar, um zur nächsten Phase zu gehen.",
+  "cta": {
+    "title": "Bereit, eine Wahl durchzuführen?",
+    "subtitle": "Erstellen Sie Ihre erste Wahl und führen Sie Ihre Organisation durch den demokratischen Prozess.",
+    "button": "Erste Schritte"
+  }
+}

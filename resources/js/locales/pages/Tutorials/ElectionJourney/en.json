@@ -1,0 +1,95 @@
+{
+  "hero": {
+    "title": "Election Journey",
+    "subtitle": "Understand the complete lifecycle of an election — from creation to published results."
+  },
+  "subscription": {
+    "title": "Free vs Paid Elections",
+    "free": {
+      "title": "Free",
+      "badge": "≤ 40 voters",
+      "description": "Elections with up to 40 expected voters are automatically approved and proceed directly to the administration phase.",
+      "feature": "Auto-approved instantly"
+    },
+    "paid": {
+      "title": "Paid",
+      "badge": "> 40 voters",
+      "description": "Elections with more than 40 expected voters require platform administrator review and approval before proceeding.",
+      "feature": "Platform admin review"
+    }
+  },
+  "timeline": {
+    "title": "The 7 Phases"
+  },
+  "phases": {
+    "draft": {
+      "name": "Draft",
+      "description": "The election is created with a name, description, expected voter count, and phase dates. No one outside the organisation can see it yet.",
+      "who_acts": "Organisation Owner or Admin",
+      "locked_means": null
+    },
+    "pending_approval": {
+      "name": "Pending Approval",
+      "description": "Large elections wait for a platform administrator to review and approve. Small elections skip this phase entirely.",
+      "who_acts": "Platform Admin",
+      "locked_means": "The election cannot be edited while waiting for approval. The platform admin must approve or reject it."
+    },
+    "administration": {
+      "name": "Administration",
+      "description": "Posts (positions) are created, voters are imported, and the election committee is appointed. This is where the election structure is built.",
+      "who_acts": "Election Chief or Deputy",
+      "locked_means": "\"Admin Locked\" — this phase is complete. Posts, voters, and committee members are fixed and cannot be changed."
+    },
+    "nomination": {
+      "name": "Nomination",
+      "description": "Candidates submit their applications for specific posts. The Election Chief reviews and approves or rejects each candidacy.",
+      "who_acts": "Candidates (apply), Chief (approve/reject)",
+      "locked_means": "\"Nomination Locked\" — dates are frozen and candidacy applications are closed. This does NOT mean the election is stuck — the Chief can still click \"Open Voting\" to advance to the next phase."
+    },
+    "voting": {
+      "name": "Voting",
+      "description": "Voters cast their votes during the defined voting period. Voting can be extended if needed before it ends.",
+      "who_acts": "Voters",
+      "locked_means": "\"Voting Closed\" or \"In Progress\" — the voting period is active. Dates cannot be changed once voting has started."
+    },
+    "results_pending": {
+      "name": "Results Pending",
+      "description": "Voting has ended. Results are being counted and verified. No new votes can be cast.",
+      "who_acts": "System / Chief",
+      "locked_means": "\"Results Pending\" — results are being finalized. This phase ends when the Chief publishes the results."
+    },
+    "results": {
+      "name": "Results",
+      "description": "Final results are published and visible to the public. The election is complete.",
+      "who_acts": "Everyone (public viewing)",
+      "locked_means": "\"Results Published\" — final and immutable. No further changes can be made."
+    }
+  },
+  "glossary": {
+    "title": "Understanding Status Badges",
+    "terms": {
+      "nomination_locked": {
+        "term": "\"Nomination Locked\"",
+        "definition": "This means the nomination phase dates are frozen and candidacies can no longer be submitted. It does NOT mean the election is stuck — the Chief can still click \"Open Voting\" to move to the next phase."
+      },
+      "admin_locked": {
+        "term": "\"Admin Locked\"",
+        "definition": "The administration phase is complete. Posts, voters, and committee members are finalized and cannot be changed."
+      },
+      "voting_closed": {
+        "term": "\"Voting Closed\"",
+        "definition": "The voting period has ended. No more votes can be cast. Results are being prepared."
+      },
+      "pending_approval": {
+        "term": "\"Pending Approval\"",
+        "definition": "The election is waiting for a platform administrator to approve it. This only applies to elections with more than 40 expected voters."
+      }
+    }
+  },
+  "screenshot_caption": "The \"Nomination Locked\" badge indicates dates are frozen, but the \"Open Voting\" button is still clickable to advance to the next phase.",
+  "cta": {
+    "title": "Ready to run an election?",
+    "subtitle": "Create your first election and guide your organisation through the democratic process.",
+    "button": "Get Started"
+  }
+}
