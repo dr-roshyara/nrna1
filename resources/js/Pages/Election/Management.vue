@@ -155,7 +155,6 @@
           :state-machine="stateMachine"
           :election="election"
           :organisation="organisation"
-          :allowed-actions="allowedActions"
           @phase-completed="handlePhaseCompleted"
           @dates-updated="handleDatesUpdated"
           @lock-voting="lockVoting"

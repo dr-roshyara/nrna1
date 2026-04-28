@@ -207,10 +207,6 @@ const props = defineProps({
     type: Object,
     default: null,
   },
-  allowedActions: {
-    type: Array,
-    default: () => [],
-  },
 })
 
 const emit = defineEmits(['phase-completed', 'lock-voting'])
@@ -259,6 +255,14 @@ onMounted(() => {
   // Equalize column heights
   equalizePhaseHeights()
   window.addEventListener('resize', equalizePhaseHeights)
+
+  // DEBUG: Log state and permissions
+  console.log('🔍 StateMachinePanel Debug Info:')
+  console.log('  Current State:', props.stateMachine.currentState)
+  console.log('  Allowed Actions:', props.stateMachine.allowedActions)
+  console.log('  Voting Locked:', props.election.voting_locked)
+  console.log('  Voting Starts At:', props.election.voting_starts_at)
+  console.log('  Election State:', props.election.state)
 })
 
 onUnmounted(() => {
@@ -426,14 +430,21 @@ const hasActions = (state) => {
 }
 
 const canCompletePhase = (state) => {
-  if (state === 'administration') return props.allowedActions.includes('complete_administration')
-  if (state === 'nomination') return props.allowedActions.includes('open_voting')
+  const actions = props.stateMachine?.allowedActions || []
+  if (state === 'administration') return actions.includes('complete_administration')
+  if (state === 'nomination') return actions.includes('open_voting')
   return false
 }
 
 const canLockVotingPhase = (state) => {
-  if (state !== 'voting') return false
-  return !props.election.voting_locked && props.allowedActions.includes('lock_voting')
+  const actions = props.stateMachine?.allowedActions || []
+
+  return (
+    state === 'voting' &&
+    props.stateMachine.currentState === 'voting' &&
+    !props.election.voting_locked &&
+    actions.includes('lock_voting')
+  )
 }
 
 const canUpdateDates = (state) => {
