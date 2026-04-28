@@ -934,6 +934,14 @@ const lockVoting = () => {
   isLoading.value = true
   router.post(route('elections.lock-voting', { election: props.election.slug }), {}, {
     preserveScroll: true,
+    onSuccess: () => {
+      // Reload page to show updated state (voting_locked=true, badge change, etc.)
+      router.reload({ preserveScroll: true })
+    },
+    onError: (errors) => {
+      console.error('Failed to lock voting:', errors)
+      isLoading.value = false
+    },
     onFinish: () => { isLoading.value = false },
   })
 }
