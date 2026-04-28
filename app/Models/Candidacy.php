@@ -42,6 +42,18 @@ class Candidacy extends Model
     protected $casts = [
         'status' => 'string',
     ];
+
+    protected static function booted(): void
+    {
+        static::saved(function (Candidacy $candidacy) {
+            if ($candidacy->post) {
+                $electionId = $candidacy->post->election_id;
+                \Illuminate\Support\Facades\Cache::forget("election.{$electionId}.candidates_count");
+                \Illuminate\Support\Facades\Cache::forget("election.{$electionId}.pending_candidacies_count");
+            }
+        });
+    }
+
     /**
      * Each candidacy belongs to one election (through post)
      * Access via: $candidacy->post->election

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Post;
 use App\Models\Candidacy;
+use App\Models\CandidacyApplication;
 use App\Models\VoterRegistration;
 use App\Models\Code;
 use App\Models\Vote;
@@ -18,6 +19,7 @@ use App\Models\VoterSlug;
 use App\Traits\BelongsToTenant;
 use App\Domain\Election\StateMachine\ElectionStateMachine;
 use App\Domain\Election\StateMachine\TransitionMatrix;
+use App\Domain\Election\StateMachine\TransitionTrigger;
 use App\Domain\Election\Events\ElectionApproved;
 use App\Domain\Election\Events\AdministrationCompleted;
 use App\Domain\Election\Events\NominationCompleted;
@@ -163,6 +165,8 @@ class Election extends Model
         'voting_locked_by',
         'results_locked',
         'results_locked_at',
+        // Capacity
+        'expected_voter_count',
     ];
 
     /**
@@ -215,6 +219,8 @@ class Election extends Model
         'voting_locked_at'               => 'datetime',
         'results_locked'                 => 'boolean',
         'results_locked_at'              => 'datetime',
+        // Capacity
+        'expected_voter_count'           => 'integer',
     ];
 
     /**
@@ -300,6 +306,40 @@ class Election extends Model
             "election.{$this->id}.voter_count",
             300,
             fn () => $this->membershipVoters()->count()
+        );
+    }
+
+    /**
+     * Computed approved candidates count — never out of sync.
+     * Source of truth is the candidacies table.
+     * Cache strategy: Computed on-demand, invalidated by Candidacy::booted() hooks.
+     */
+    public function getCandidatesCountAttribute(): int
+    {
+        return \Illuminate\Support\Facades\Cache::remember(
+            "election.{$this->id}.candidates_count",
+            300,
+            fn () => Candidacy::withoutGlobalScopes()
+                ->whereHas('post', fn ($q) => $q->withoutGlobalScopes()->where('election_id', $this->id))
+                ->where('status', 'approved')
+                ->count()
+        );
+    }
+
+    /**
+     * Computed pending candidacies count — never out of sync.
+     * Source of truth is the candidacies table.
+     * Cache strategy: Computed on-demand, invalidated by Candidacy::booted() hooks.
+     */
+    public function getPendingCandidaciesCountAttribute(): int
+    {
+        return \Illuminate\Support\Facades\Cache::remember(
+            "election.{$this->id}.pending_candidacies_count",
+            300,
+            fn () => Candidacy::withoutGlobalScopes()
+                ->whereHas('post', fn ($q) => $q->withoutGlobalScopes()->where('election_id', $this->id))
+                ->where('status', 'pending')
+                ->count()
         );
     }
 
@@ -496,6 +536,11 @@ class Election extends Model
             'id',
             'user_id'
         );
+    }
+
+    public function applications(): HasMany
+    {
+        return $this->hasMany(CandidacyApplication::class, 'election_id');
     }
 
     /**
@@ -1169,19 +1214,16 @@ class Election extends Model
     }
 
     /**
-     * Submit election for approval (customer/officer action)
+     * Submit election for approval — routes to auto-approve or manual approval based on capacity
      */
     public function submitForApproval(string $submittedBy): void
     {
-        $this->transitionTo(\App\Domain\Election\StateMachine\Transition::manual('submit_for_approval', $submittedBy, 'Submitted for admin approval'));
-
-        $this->updateQuietly([
-            'submitted_for_approval_at' => now(),
-            'submitted_by' => $submittedBy,
-            'rejected_at' => null,
-            'rejected_by' => null,
-            'rejection_reason' => null,
-        ]);
+        $this->refresh();
+        if ($this->requiresApproval()) {
+            $this->processManualApproval($submittedBy);
+        } else {
+            $this->processAutoApproval($submittedBy);
+        }
     }
 
     /**
@@ -1211,42 +1253,78 @@ class Election extends Model
     }
 
     /**
+     * Auto-approve path: single transition draft → administration (SYSTEM trigger)
+     */
+    private function processAutoApproval(string $submittedBy): void
+    {
+        $this->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::automatic(
+                action: 'auto_submit',
+                trigger: \App\Domain\Election\StateMachine\TransitionTrigger::SYSTEM,
+                reason: sprintf(
+                    'Auto-approved: %d expected voters within self-service limit of %d.',
+                    $this->expected_voter_count,
+                    config('election.self_service_voter_limit', 40)
+                ),
+            )
+        );
+
+        $this->updateQuietly([
+            'submitted_for_approval_at' => now(),
+            'submitted_by'              => $submittedBy,
+            'approved_at'               => now(),
+            'approved_by'               => null,
+            'approval_notes'            => 'Auto-approved (self-service)',
+        ]);
+    }
+
+    /**
+     * Manual approval path: transition draft → pending_approval (MANUAL trigger)
+     */
+    private function processManualApproval(string $submittedBy): void
+    {
+        $this->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual(
+                action: 'submit_for_approval',
+                actorId: $submittedBy,
+                reason: sprintf(
+                    'Submitted for admin approval: %d expected voters exceeds self-service limit of %d.',
+                    $this->expected_voter_count,
+                    config('election.self_service_voter_limit', 40)
+                ),
+            )
+        );
+
+        $this->updateQuietly([
+            'submitted_for_approval_at' => now(),
+            'submitted_by'              => $submittedBy,
+            'rejected_at'               => null,
+            'rejected_by'               => null,
+            'rejection_reason'          => null,
+        ]);
+    }
+
+    /**
      * Mark administration as complete (admin action with reason audit)
      */
     public function completeAdministration(string $reason, string $actorId): void
     {
-        // Validate prerequisites
-        if ($this->posts()->count() === 0) {
-            throw new \InvalidArgumentException('Cannot complete administration: No posts created');
-        }
-        if ($this->memberships()->where('role', 'voter')->where('status', 'active')->count() === 0) {
-            throw new \InvalidArgumentException('Cannot complete administration: No voters imported');
-        }
-        if ($this->memberships()->where('role', 'committee')->where('status', 'active')->count() === 0) {
-            throw new \InvalidArgumentException('Cannot complete administration: No committee members assigned');
-        }
-
-        $this->update([
-            'state'                       => 'nomination', // Explicitly set state
-            'administration_completed'   => true,
-            'administration_completed_at' => now(),
-        ]);
-
-        // Auto-set nomination suggested dates if not already set
-        if (!$this->nomination_suggested_start) {
-            $this->update([
-                'nomination_suggested_start' => now(),
-                'nomination_suggested_end'   => now()->addDays(14),
-            ]);
-        }
-
-        $this->logStateChange('administration_completed', ['reason' => $reason, 'actor_id' => $actorId]);
+        $this->transitionTo(
+            \App\Domain\Election\StateMachine\Transition::manual(
+                action: 'complete_administration',
+                actorId: $actorId,
+                reason: $reason
+            )
+        );
 
         Event::dispatch(new AdministrationCompleted($this, $actorId, $reason));
     }
 
     /**
-     * Mark nomination as complete (admin action with audit)
+     * Mark nomination as complete (prerequisite setter for open_voting)
+     *
+     * Sets nomination_completed flag and auto-configures voting dates.
+     * Does NOT change state — that happens via open_voting transition.
      */
     public function completeNomination(string $reason, ?string $actorId = null): void
     {
@@ -1261,7 +1339,6 @@ class Election extends Model
         }
 
         $this->update([
-            'state'                  => 'voting', // Explicitly set state
             'nomination_completed'   => true,
             'nomination_completed_at' => now(),
         ]);
@@ -1273,9 +1350,6 @@ class Election extends Model
                 'voting_ends_at'   => now()->addDays(4),
             ]);
         }
-
-        // Lock voting immediately when nomination completes (at START)
-        $this->lockVoting($actorId);
 
         $this->logStateChange('nomination_completed', ['reason' => $reason, 'actor_id' => $actorId]);
 
@@ -1422,8 +1496,11 @@ class Election extends Model
                 'voting_ends_at' => $this->voting_ends_at,
             ];
 
+            $fromState = null;
+            $toState = null;
+
             try {
-                $record = \Illuminate\Support\Facades\DB::transaction(function () use ($transition, $currentTime) {
+                $record = \Illuminate\Support\Facades\DB::transaction(function () use ($transition, $currentTime, &$fromState, &$toState) {
                     // Refresh instance to avoid stale state in validation methods
                     $freshElection = $this->fresh();
 
@@ -1460,7 +1537,7 @@ class Election extends Model
                         'from_state'  => $fromState,
                         'to_state'    => $toState,
                         'trigger'     => $transition->trigger->value,
-                        'actor_id'    => $transition->actorId,
+                        'actor_id'    => $transition->actorId === 'system' ? null : $transition->actorId,
                         'reason'      => $transition->reason,
                         'metadata'    => $transition->metadata ?: null,
                         'created_at'  => $currentTime,
@@ -1474,6 +1551,8 @@ class Election extends Model
                         'open_voting'  => $this->applySideEffectsForOpenVoting($transition->actorId, $currentTime),
                         'close_voting' => $this->applySideEffectsForCloseVoting($currentTime),
                         'approve'      => $this->applySideEffectsForApprove($transition->actorId, $currentTime),
+                        'complete_administration' => $this->applySideEffectsForCompleteAdministration($currentTime),
+                        'publish_results' => $this->applySideEffectsForPublishResults($currentTime),
                         default        => null,
                     };
 
@@ -1514,16 +1593,8 @@ class Election extends Model
 
     private function validateOpenVoting(\App\Domain\Election\StateMachine\Transition $transition): void
     {
-        if (!$this->nomination_completed) {
-            throw new \DomainException('Cannot open voting: Nomination phase is not completed.');
-        }
-
-        if (($this->candidates_count ?? 0) === 0) {
-            throw new \DomainException('Cannot open voting: No candidates registered.');
-        }
-
-        if (($this->pending_candidacies_count ?? 0) > 0) {
-            throw new \DomainException('Cannot open voting: There are pending candidacy applications.');
+        if ($reason = $this->whyCannotOpenVoting()) {
+            throw new \DomainException($reason);
         }
     }
 
@@ -1539,24 +1610,18 @@ class Election extends Model
 
     private function validateCompleteAdministration(\App\Domain\Election\StateMachine\Transition $transition): void
     {
-        if (!$this->posts()->exists()) {
-            throw new \InvalidArgumentException('Cannot complete administration: No posts created.');
-        }
-        if (!$this->members()->where('role', 'voter')->where('status', 'active')->exists()) {
-            throw new \InvalidArgumentException('Cannot complete administration: No voters added.');
-        }
-        if (!$this->members()->where('role', 'committee')->where('status', 'active')->exists()) {
-            throw new \InvalidArgumentException('Cannot complete administration: No committee members added.');
+        if ($reason = $this->whyCannotCompleteAdministration()) {
+            throw new \InvalidArgumentException($reason);
         }
     }
 
-    private function resolveActorRole(string $actorId): string
+    public function resolveActorRole(string $actorId): string
     {
         if ($actorId === 'system') {
             return 'system';
         }
 
-        // 1. Check election-level role first (higher priority for election-specific actions)
+        // 1. Check election-level role FIRST (highest priority for election-specific actions)
         $electionRole = \App\Models\ElectionOfficer::where('user_id', $actorId)
             ->where('election_id', $this->id)
             ->where('status', 'active')
@@ -1566,7 +1631,16 @@ class Election extends Model
             return $electionRole;
         }
 
-        // 2. Fall back to org-level roles (admin, owner) via user_organisation_roles
+        // 2. Platform-level roles (super_admin or platform_admin) — for actions outside any election
+        $user = \App\Models\User::find($actorId);
+        if ($user && $user->isSuperAdmin()) {
+            return 'super_admin';
+        }
+        if ($user && $user->platform_role === 'platform_admin') {
+            return 'platform_admin';
+        }
+
+        // 3. Fall back to org-level roles (admin, owner) via user_organisation_roles
         $orgRole = \App\Models\UserOrganisationRole::where('user_id', $actorId)
             ->where('organisation_id', $this->organisation_id)
             ->value('role');
@@ -1642,6 +1716,33 @@ class Election extends Model
             ]);
     }
 
+    private function applySideEffectsForCompleteAdministration(\Carbon\Carbon $currentTime): void
+    {
+        $updateData = [
+            'administration_completed'    => true,
+            'administration_completed_at' => $currentTime,
+        ];
+
+        if (!$this->nomination_suggested_start) {
+            $updateData['nomination_suggested_start'] = $currentTime;
+            $updateData['nomination_suggested_end']   = $currentTime->copy()->addDays(14);
+        }
+
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update($updateData);
+    }
+
+    private function applySideEffectsForPublishResults(\Carbon\Carbon $currentTime): void
+    {
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update([
+                'results_published'    => true,
+                'results_published_at' => $currentTime,
+            ]);
+    }
+
     /**
      * Log state changes to audit trail (append-only, capped at 200 entries) + dual-write to audit_logs
      */
@@ -1667,6 +1768,167 @@ class Election extends Model
             'action' => $action,
             'new_values' => $metadata,
         ]);
+    }
+
+    public function getProgress(): array
+    {
+        $states = \App\Domain\Election\StateMachine\TransitionMatrix::getAllStates();
+        $currentState = $this->state ?? 'draft';
+        $currentIndex = (int) array_search($currentState, $states);
+        $nextState = $states[$currentIndex + 1] ?? null;
+
+        return collect($states)->map(function (string $state, int $index) use ($currentState, $currentIndex, $nextState) {
+            if ($state === $currentState) {
+                return $this->progressEntry($state, 'current');
+            }
+
+            if ($index < $currentIndex) {
+                return $this->progressEntry($state, 'completed');
+            }
+
+            if ($state === $nextState) {
+                $reason = $this->getBlockedReasonForState($state);
+                return $this->progressEntry($state, $reason ? 'blocked' : 'future', $reason);
+            }
+
+            return $this->progressEntry($state, 'future');
+        })->toArray();
+    }
+
+    private function progressEntry(string $state, string $status, ?string $blockedReason = null): array
+    {
+        $entry = [
+            'state'  => $state,
+            'label'  => $this->formatStateLabel($state),
+            'status' => $status,
+        ];
+
+        if ($blockedReason !== null) {
+            $entry['blockedReason'] = $blockedReason;
+        }
+
+        return $entry;
+    }
+
+    private function formatStateLabel(string $state): string
+    {
+        return match ($state) {
+            'draft' => 'Draft',
+            'pending_approval' => 'Pending Approval',
+            'administration' => 'Administration',
+            'nomination' => 'Nomination',
+            'voting' => 'Voting',
+            'results_pending' => 'Results Pending',
+            'results' => 'Results',
+            default => ucfirst(str_replace('_', ' ', $state)),
+        };
+    }
+
+    private function getBlockedReasonForState(string $state): ?string
+    {
+        return match ($state) {
+            'nomination' => $this->whyCannotCompleteAdministration(),
+            'voting'     => $this->whyCannotOpenVoting(),
+            default      => null,
+        };
+    }
+
+    private function whyCannotCompleteAdministration(): ?string
+    {
+        if (!$this->posts()->exists()) {
+            return 'No election posts have been created.';
+        }
+        if (!$this->memberships()->where('role', 'voter')->where('status', 'active')->exists()) {
+            return 'No voters have been added.';
+        }
+        if (!ElectionOfficer::where('election_id', $this->id)->active()->exists()) {
+            return 'No committee members have been added.';
+        }
+        return null;
+    }
+
+    private function whyCannotOpenVoting(): ?string
+    {
+        if (!$this->nomination_completed) {
+            return 'Nomination phase has not been completed.';
+        }
+        if (($this->candidates_count ?? 0) === 0) {
+            return 'No candidates have been registered.';
+        }
+        if (($this->pending_candidacies_count ?? 0) > 0) {
+            return 'There are pending candidacy applications.';
+        }
+        return null;
+    }
+
+    // ── Capacity & Approval Rules ──────────────────────────────────────────────
+
+    /**
+     * Does this election require platform admin approval?
+     * Based on expected_voter_count (declared at creation), not actual count.
+     */
+    public function requiresApproval(): bool
+    {
+        return ($this->expected_voter_count ?? 0) > config('election.self_service_voter_limit', 40);
+    }
+
+    /**
+     * Get effective voter count for capacity checks
+     */
+    public function getEffectiveVoterCount(): int
+    {
+        return $this->voters_count ?? $this->memberships()
+            ->where('role', 'voter')
+            ->where('status', 'active')
+            ->count();
+    }
+
+    /**
+     * Can this election accept more voters?
+     * Hard capacity check — aggregate invariant, not state-dependent.
+     * Enforces BOTH the declared expected_voter_count AND the system max.
+     */
+    public function canAcceptVoters(int $additionalCount = 1): bool
+    {
+        $newTotal = $this->getEffectiveVoterCount() + $additionalCount;
+        $expectedCap = ($this->expected_voter_count > 0)
+            ? $this->expected_voter_count
+            : \PHP_INT_MAX;
+
+        return $newTotal <= min($expectedCap, config('election.max_voters_per_election', 10000));
+    }
+
+    /**
+     * Assert voter capacity. Throws DomainException if exceeded.
+     * MUST be called before any voter import operation.
+     */
+    public function assertCanAcceptVoters(int $additionalCount = 1): void
+    {
+        if (!$this->canAcceptVoters($additionalCount)) {
+            $currentCount = $this->getEffectiveVoterCount();
+            throw new \DomainException(sprintf(
+                'Cannot add %d voter(s): would exceed capacity. Current: %d, Expected limit: %s, System max: %d.',
+                $additionalCount,
+                $currentCount,
+                $this->expected_voter_count > 0 ? $this->expected_voter_count : 'unlimited',
+                config('election.max_voters_per_election', 10000)
+            ));
+        }
+    }
+
+    /**
+     * Get capacity information for UI projection
+     */
+    public function getCapacityInfo(): array
+    {
+        return [
+            'expected_voter_count'   => $this->expected_voter_count ?? 0,
+            'actual_voter_count'     => $this->getEffectiveVoterCount(),
+            'self_service_limit'     => config('election.self_service_voter_limit', 40),
+            'max_voters'             => config('election.max_voters_per_election', 10000),
+            'requires_approval'      => $this->requiresApproval(),
+            'can_accept_more_voters' => $this->canAcceptVoters(),
+        ];
     }
 
     // ── Lifecycle Hooks ────────────────────────────────────────────────────────
