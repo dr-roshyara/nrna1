@@ -1,26 +1,35 @@
 <template>
   <div class="state-machine-panel">
-    <!-- Timeline Header -->
-    <div class="timeline-header">
-      <div>
+    <!-- Timeline Header - 3 Column Layout -->
+    <div class="timeline-header-3col">
+      <!-- Column 1: Title -->
+      <div class="header-col col-1">
         <h2 class="timeline-title">Election Journey</h2>
+        <p class="timeline-subtitle">Currently in <span class="phase-name-current">{{ currentPhaseLabel }}</span> phase</p>
+      </div>
+
+      <!-- Column 2: Learn More Link -->
+      <div class="header-col col-2">
         <a
           :href="route('tutorials.election-journey')"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 hover:underline mt-1"
+          class="learn-more-link"
         >
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          Learn more
+          <span>Learn More</span>
         </a>
-        <p class="timeline-subtitle">Currently in <span class="phase-name-current">{{ currentPhaseLabel }}</span> phase</p>
       </div>
-      <div class="header-progress">
-        <div class="progress-number">{{ completedPhasesCount }}/5</div>
-        <div class="progress-label">phases complete</div>
+
+      <!-- Column 3: Progress -->
+      <div class="header-col col-3">
+        <div class="header-progress">
+          <div class="progress-number">{{ completedPhasesCount }}/5</div>
+          <div class="progress-label">phases complete</div>
+        </div>
       </div>
     </div>
 
@@ -592,6 +601,77 @@ const saveDates = () => {
   .state-machine-panel {
     padding: 2rem;
   }
+}
+
+.timeline-header-3col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .timeline-header-3col {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.header-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-col.col-1 {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+  .header-col.col-1 {
+    grid-column: 1;
+    text-align: left;
+  }
+
+  .header-col.col-2 {
+    grid-column: 2;
+    text-align: center;
+  }
+
+  .header-col.col-3 {
+    grid-column: 3;
+    text-align: right;
+  }
+}
+
+.learn-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1e40af;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.learn-more-link:hover {
+  background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 100%);
+  color: #1e3a8a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
+}
+
+.learn-more-link svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
 }
 
 .timeline-header {
