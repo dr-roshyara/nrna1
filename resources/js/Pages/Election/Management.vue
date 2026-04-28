@@ -149,23 +149,7 @@
           <StateProgress :progress="progress" />
         </SectionCard>
 
-        <!-- State Machine Panel (Election Lifecycle) with Help Link -->
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="text-base font-semibold text-slate-800">Election Journey</h2>
-          <a
-            :href="route('tutorials.election-journey')"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 hover:underline"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            📖 Guide
-          </a>
-        </div>
-
+        <!-- State Machine Panel (Election Lifecycle) -->
         <StateMachinePanel
           v-if="stateMachine"
           :state-machine="stateMachine"

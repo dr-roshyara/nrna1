@@ -4,6 +4,18 @@
     <div class="timeline-header">
       <div>
         <h2 class="timeline-title">Election Journey</h2>
+        <a
+          :href="route('tutorials.election-journey')"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800 hover:underline mt-1"
+        >
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Learn more
+        </a>
         <p class="timeline-subtitle">Currently in <span class="phase-name-current">{{ currentPhaseLabel }}</span> phase</p>
       </div>
       <div class="header-progress">
@@ -157,6 +169,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { route } from 'ziggy-js'
 
 const props = defineProps({
   stateMachine: {
