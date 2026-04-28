@@ -160,19 +160,21 @@ class CandidacyApplicationController extends Controller
             'photo'          => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
         ]);
 
+        $election = Election::withoutGlobalScopes()
+            ->where('id', $validated['election_id'])
+            ->where('organisation_id', $organisation->id)
+            ->firstOrFail();
+
+        abort_if($election->type === 'demo', 404);
+        abort_unless($election->state === 'nomination', 403);
+
         abort_unless(
             $this->canAccessElection($organisation, $validated['election_id'], $user->id),
             403
         );
 
         try {
-            DB::transaction(function () use ($user, $organisation, $validated, $request) {
-                $election = Election::withoutGlobalScopes()
-                    ->where('id', $validated['election_id'])
-                    ->where('organisation_id', $organisation->id)
-                    ->where('state', 'nomination')
-                    ->firstOrFail();
-
+            DB::transaction(function () use ($user, $organisation, $election, $validated, $request) {
                 Post::withoutGlobalScopes()
                     ->where('id', $validated['post_id'])
                     ->where('election_id', $election->id)

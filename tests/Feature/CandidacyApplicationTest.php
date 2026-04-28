@@ -30,7 +30,7 @@ class CandidacyApplicationTest extends TestCase
         $this->election = Election::factory()->create([
             'organisation_id' => $this->org->id,
             'type'            => 'real',
-            'status'          => 'active',
+            'state'           => 'nomination',
         ]);
         $this->post = Post::factory()->forElection($this->election)->create();
         UserOrganisationRole::create([
@@ -50,7 +50,7 @@ class CandidacyApplicationTest extends TestCase
     {
         $this->actingAs(User::factory()->create())
              ->post(route('organisations.candidacy.apply', $this->org->slug), [])
-             ->assertRedirect(); // ensure.organisation middleware redirects non-members
+             ->assertStatus(403);
     }
 
     public function test_member_can_submit_valid_application(): void
@@ -65,8 +65,7 @@ class CandidacyApplicationTest extends TestCase
                  'proposer_name'  => 'Jane Proposer',
                  'manifesto'      => 'I will serve the community with dedication.',
              ])
-             ->assertRedirect()
-             ->assertSessionHas('success');
+             ->assertStatus(200);
 
         $this->assertDatabaseHas('candidacy_applications', [
             'user_id'        => $this->member->id,
@@ -119,7 +118,7 @@ class CandidacyApplicationTest extends TestCase
                  'supporter_name' => 'Another Supporter',
                  'proposer_name'  => 'Another Proposer',
              ])
-             ->assertSessionHas('error');
+             ->assertSessionHasErrors('form');
     }
 
     public function test_cannot_apply_for_different_post_in_same_election(): void
@@ -144,7 +143,7 @@ class CandidacyApplicationTest extends TestCase
                  'supporter_name' => 'Another Supporter',
                  'proposer_name'  => 'Another Proposer',
              ])
-             ->assertSessionHas('error');
+             ->assertSessionHasErrors('form');
     }
 
     public function test_photo_is_uploaded_and_stored(): void
@@ -177,6 +176,39 @@ class CandidacyApplicationTest extends TestCase
                  'photo'          => UploadedFile::fake()->create('document.pdf', 100),
              ])
              ->assertSessionHasErrors('photo');
+    }
+
+    public function test_cannot_apply_for_demo_election(): void
+    {
+        $demoElection = Election::factory()->create([
+            'organisation_id' => $this->org->id,
+            'type'            => 'demo',
+            'state'           => 'nomination',
+        ]);
+        $demoPost = Post::factory()->forElection($demoElection)->create();
+
+        $this->actingAs($this->member)
+             ->post(route('organisations.candidacy.apply', $this->org->slug), [
+                 'election_id'    => $demoElection->id,
+                 'post_id'        => $demoPost->id,
+                 'supporter_name' => 'John Supporter',
+                 'proposer_name'  => 'Jane Proposer',
+             ])
+             ->assertStatus(404);
+    }
+
+    public function test_cannot_apply_when_election_not_in_nomination(): void
+    {
+        $this->election->update(['state' => 'administration']);
+
+        $this->actingAs($this->member)
+             ->post(route('organisations.candidacy.apply', $this->org->slug), [
+                 'election_id'    => $this->election->id,
+                 'post_id'        => $this->post->id,
+                 'supporter_name' => 'John Supporter',
+                 'proposer_name'  => 'Jane Proposer',
+             ])
+             ->assertStatus(403);
     }
 
     public function test_voter_hub_includes_my_applications(): void
