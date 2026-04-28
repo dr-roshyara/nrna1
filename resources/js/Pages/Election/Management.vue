@@ -110,6 +110,45 @@
           <p class="text-sm font-medium text-red-800">{{ page.props.flash.error }}</p>
         </div>
 
+        <!-- Capacity/Approval Warning Banner -->
+        <div
+          v-if="capacity?.requires_approval && election.state === 'draft'"
+          class="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-6"
+        >
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-amber-800">Admin Approval Required</h3>
+              <p class="text-sm text-amber-700 mt-1">
+                This election expects <strong>{{ capacity.expected_voter_count }}</strong> voters
+                (self-service limit: {{ capacity.self_service_limit }}).
+                A platform administrator must approve it before it can proceed.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Election State Progress Timeline -->
+        <SectionCard v-if="progress.length > 0" padding="lg" class="rounded-2xl">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-base font-semibold text-slate-800">Election Progress</h2>
+              <p class="text-xs text-slate-500 mt-0.5">Current status and workflow progression</p>
+            </div>
+          </div>
+          <StateProgress :progress="progress" />
+        </SectionCard>
+
         <!-- State Machine Panel (Election Lifecycle) -->
         <StateMachinePanel
           v-if="stateMachine"
@@ -155,34 +194,6 @@
           </div>
         </SectionCard>
 
-        <!-- ── ACTIVATION BANNER ───────────────────────────────── -->
-        <SectionCard v-if="election.status === 'planned'" variant="warning" padding="lg">
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                </svg>
-              </div>
-              <div>
-                <h2 class="text-base font-semibold text-amber-900">{{ t.sections.activate.title }}</h2>
-                <p class="text-sm text-amber-700 mt-0.5" v-html="t.sections.activate.description"></p>
-              </div>
-            </div>
-            <ActionButton
-              variant="warning"
-              size="md"
-              :loading="isActivating"
-              class="sm:flex-shrink-0 w-full sm:w-auto"
-              @click="activateElection"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-              </svg>
-              {{ isActivating ? t.sections.activate.btn_activating : t.sections.activate.btn_activate }}
-            </ActionButton>
-          </div>
-        </SectionCard>
 
         <!-- ── CURRENT STATUS ──────────────────────────────────── -->
         <SectionCard padding="lg">
@@ -424,7 +435,7 @@
                   size="lg"
                   :loading="isLoading"
                   class="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transition-all duration-200"
-                  @click="showSubmitApprovalModal = true"
+                  @click="router.visit(route('elections.submit-for-approval.show', { organisation: organisation.slug, election: election.slug }))"
                 >
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -729,17 +740,6 @@
       </div>
     </Teleport>
 
-    <!-- Submit for Approval Modal -->
-    <SubmitApprovalModal
-      :show="showSubmitApprovalModal"
-      :election="election"
-      :posts-count="postsCount"
-      :candidates-count="candidatesCount"
-      :voters-count="stats.total_memberships ?? 0"
-      :loading="isLoading"
-      @submit="submitForApproval"
-      @cancel="showSubmitApprovalModal = false"
-    />
   </ElectionLayout>
 </template>
 
@@ -755,7 +755,7 @@ import SectionCard from '@/Components/SectionCard.vue'
 import EmptyState from '@/Components/EmptyState.vue'
 import StateMachinePanel from '@/Pages/Election/Partials/StateMachinePanel.vue'
 import StateBadge from '@/Components/Election/StateBadge.vue'
-import SubmitApprovalModal from '@/Components/Election/Modals/SubmitApprovalModal.vue'
+import StateProgress from '@/Components/Election/StateProgress.vue'
 
 import pageDe from '@/locales/pages/Election/Management/de.json'
 import pageEn from '@/locales/pages/Election/Management/en.json'
@@ -769,6 +769,8 @@ const props = defineProps({
   postsCount:      { type: Number,  default: 0 },
   candidatesCount: { type: Number,  default: 0 },
   stateMachine:    { type: Object,  default: null },
+  progress:        { type: Array,   default: () => [] },
+  capacity:        { type: Object,  default: null },
 })
 
 const page = usePage()
@@ -779,7 +781,6 @@ const pageData = { de: pageDe, en: pageEn, np: pageNp }
 const t = computed(() => pageData[locale.value] ?? pageData.de)
 
 const isLoading           = ref(false)
-const isActivating        = ref(false)
 const isUploadingLogo     = ref(false)
 const logoFile            = ref(null)
 const logoFileInput       = ref(null)
@@ -790,8 +791,6 @@ const selectedPhase       = ref(null)
 const completionReason    = ref('')
 const reasonError         = ref('')
 
-// Submit for approval modal
-const showSubmitApprovalModal = ref(false)
 
 const onLogoFileChange = (e) => {
   const file = e.target.files?.[0]
@@ -894,15 +893,6 @@ const candidaciesUrl = computed(() =>
   })
 )
 
-const activateElection = () => {
-  if (!confirm(t.value.confirm.activate)) return
-  isActivating.value = true
-  router.post(route('elections.activate', { election: props.election.slug }), {}, {
-    preserveScroll: true,
-    onFinish: () => { isActivating.value = false },
-  })
-}
-
 const publishResults = () => {
   if (!confirm(t.value.confirm.publish)) return
   isLoading.value = true
@@ -936,17 +926,6 @@ const closeVoting = () => {
   router.post(route('elections.close-voting', { election: props.election.slug }), {}, {
     preserveScroll: true,
     onFinish: () => { isLoading.value = false },
-  })
-}
-
-const submitForApproval = () => {
-  isLoading.value = true
-  router.post(route('elections.submit-for-approval', { election: props.election.slug }), {}, {
-    preserveScroll: true,
-    onFinish: () => {
-      isLoading.value = false
-      showSubmitApprovalModal.value = false
-    },
   })
 }
 
@@ -991,10 +970,9 @@ const submitPhaseCompletion = () => {
     {
       preserveScroll: true,
       onSuccess: () => {
-        // Force hard reload to refresh page data
-        setTimeout(() => {
-          window.location.reload()
-        }, 500)
+        // Use Inertia router.reload() for simple, reliable page refresh
+        // This automatically updates all props when the transition succeeds
+        router.reload({ preserveScroll: true })
       },
       onError: (errors) => {
         reasonError.value = errors.error || errors.reason || 'Failed to complete phase'
@@ -1027,11 +1005,9 @@ const handleDatesUpdated = ({ phase, dates }) => {
 
   router.patch(route('elections.update-timeline', props.election.slug), payload, {
     onSuccess: () => {
-      console.log('✅ Dates updated successfully. Reloading page...')
-      // Hard reload to refresh the page and show updated dates
-      setTimeout(() => {
-        window.location.reload()
-      }, 500)
+      console.log('✅ Dates updated successfully. Refreshing page...')
+      // Use Inertia router.reload() for simple, reliable page refresh
+      router.reload({ preserveScroll: true })
     },
     onError: (errors) => {
       console.error('❌ Update failed:', errors)

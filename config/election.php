@@ -52,4 +52,10 @@ return [
     // Cache TTL (seconds) for election settings via ElectionSettingsService.
     // Settings include IP restrictions, voting rules, and display options.
     'settings_cache_ttl' => env('ELECTION_SETTINGS_CACHE_TTL', 300),
+
+    // Self-service election voter limit — elections ≤ this auto-approve
+    'self_service_voter_limit' => env('ELECTION_SELF_SERVICE_VOTER_LIMIT', 40),
+
+    // Hard system cap — enforced on every voter import regardless of state
+    'max_voters_per_election' => env('ELECTION_MAX_VOTERS', 10000),
 ];

@@ -1,198 +1,220 @@
 <template>
-  <ElectionLayout>
-    <div class="min-h-screen bg-slate-100 py-8">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Header -->
-        <div class="mb-8">
-          <h1 class="text-3xl font-bold text-slate-900">
-            {{ t.pending_elections }} ({{ elections.length }})
-          </h1>
-          <p class="text-slate-600 mt-2">
-            {{ t.review_and_process }}
-          </p>
-        </div>
-
-        <!-- Elections List -->
-        <div class="grid grid-cols-1 gap-4">
-          <div
-            v-for="election in elections"
-            :key="election.id"
-            class="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-lg transition-shadow"
-          >
-            <!-- Election Info Section -->
-            <div class="flex items-start justify-between mb-4 gap-4 flex-wrap">
-              <div class="flex-1 min-w-0">
-                <h3 class="text-lg font-bold text-slate-900">{{ election.name }}</h3>
-                <p class="text-sm text-slate-600 mt-1">
-                  {{ t.submitted_by }}
-                  {{ election.submitted_by_user?.name }}
-                  {{ t.on }}
-                  {{ formatDate(election.submitted_for_approval_at) }}
+    <AdminLayout>
+        <div class="space-y-6">
+            <!-- Header -->
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Pending Elections</h1>
+                <p class="mt-2 text-gray-600">
+                    Review and approve elections awaiting platform admin approval.
                 </p>
+            </div>
 
-                <!-- Rejection reason (if applicable) -->
-                <div v-if="election.rejection_reason" class="mt-3 p-3 bg-red-50 border-l-4 border-red-500 rounded">
-                  <p class="text-sm font-semibold text-red-700">{{ t.previously_rejected }}:</p>
-                  <p class="text-sm text-red-600 mt-1">{{ election.rejection_reason }}</p>
+            <!-- Flash Messages -->
+            <div v-if="$page.props.success" class="rounded-md bg-green-50 p-4">
+                <div class="text-sm text-green-800">{{ $page.props.success }}</div>
+            </div>
+            <div v-if="$page.props.error" class="rounded-md bg-red-50 p-4">
+                <div class="text-sm text-red-800">{{ $page.props.error }}</div>
+            </div>
+
+            <!-- Elections Table -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table v-if="elections.data.length > 0" class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                Election Name
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                Organization
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                Expected Voters
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                                Submitted
+                            </th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr v-for="election in elections.data" :key="election.id" class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                {{ election.name }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                {{ election.organisation?.name || '—' }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                {{ election.expected_voter_count }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                {{ formatDate(election.submitted_for_approval_at) }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right space-x-2">
+                                <button
+                                    @click="openApproveDialog(election)"
+                                    class="inline-block px-3 py-1 text-sm font-medium text-white bg-green-600 rounded hover:bg-green-700">
+                                    Approve
+                                </button>
+                                <button
+                                    @click="openRejectDialog(election)"
+                                    class="inline-block px-3 py-1 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700">
+                                    Reject
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div v-else class="px-6 py-8 text-center text-gray-600">
+                    No pending elections.
                 </div>
-              </div>
-
-              <!-- State Badge -->
-              <div class="flex-shrink-0">
-                <StateBadge :state="election.current_state" size="md" />
-              </div>
             </div>
 
-            <!-- Action Buttons -->
-            <div class="flex gap-3 flex-wrap">
-              <ActionButton
-                variant="success"
-                size="sm"
-                @click="openApproveModal(election)"
-              >
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-                {{ t.approve }}
-              </ActionButton>
-
-              <ActionButton
-                variant="danger"
-                size="sm"
-                @click="openRejectModal(election)"
-              >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                {{ t.reject }}
-              </ActionButton>
-
-              <a
-                :href="route('elections.show', election.slug)"
-                target="_blank"
-                class="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-700 font-semibold rounded-lg hover:bg-slate-200 transition-colors"
-              >
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-                {{ t.preview }}
-              </a>
+            <!-- Approve Dialog -->
+            <div v-if="showApproveDialog" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+                    <h2 class="text-lg font-bold text-gray-900 mb-4">Approve Election</h2>
+                    <p class="text-gray-600 mb-4">
+                        Are you sure you want to approve <strong>{{ selectedElection?.name }}</strong>?
+                    </p>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Notes (optional)</label>
+                        <textarea
+                            v-model="approveNotes"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+                            placeholder="Add approval notes..."
+                            rows="3"></textarea>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button
+                            @click="showApproveDialog = false"
+                            class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                            Cancel
+                        </button>
+                        <button
+                            @click="submitApprove"
+                            class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700">
+                            Approve
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <!-- Reject Dialog -->
+            <div v-if="showRejectDialog" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+                    <h2 class="text-lg font-bold text-gray-900 mb-4">Reject Election</h2>
+                    <p class="text-gray-600 mb-4">
+                        Are you sure you want to reject <strong>{{ selectedElection?.name }}</strong>?
+                    </p>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Reason (required)</label>
+                        <textarea
+                            v-model="rejectReason"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+                            placeholder="Explain the reason for rejection..."
+                            rows="3"></textarea>
+                        <p v-if="rejectReasonError" class="mt-2 text-sm text-red-600">{{ rejectReasonError }}</p>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <button
+                            @click="showRejectDialog = false"
+                            class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                            Cancel
+                        </button>
+                        <button
+                            @click="submitReject"
+                            class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700">
+                            Reject
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Empty State -->
-        <div v-if="!elections.length" class="text-center py-12">
-          <svg class="w-12 h-12 text-slate-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-          </svg>
-          <p class="text-slate-600 font-medium">{{ t.no_pending }}</p>
-          <p class="text-slate-500 text-sm">{{ t.all_processed }}</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Approval Modal -->
-    <ApprovalModal
-      v-if="selectedElection"
-      :show="showApprovalModal"
-      :election="selectedElection"
-      @approve="confirmApprove"
-      @cancel="closeApprovalModal"
-      :loading="isLoading"
-    />
-
-    <!-- Rejection Modal -->
-    <RejectionModal
-      v-if="selectedElection"
-      :show="showRejectionModal"
-      :election="selectedElection"
-      @reject="confirmReject"
-      @cancel="closeRejectionModal"
-      :loading="isLoading"
-    />
-  </ElectionLayout>
+    </AdminLayout>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import { router } from '@inertiajs/vue3'
-import { useI18n } from 'vue-i18n'
-import ElectionLayout from '@/Layouts/ElectionLayout.vue'
-import StateBadge from '@/Components/Election/StateBadge.vue'
-import ActionButton from '@/Components/ActionButton.vue'
-import ApprovalModal from '@/Components/Election/Modals/ApprovalModal.vue'
-import RejectionModal from '@/Components/Election/Modals/RejectionModal.vue'
+<script>
+import AdminLayout from '@/Layouts/AdminLayout.vue'
+import { Link, router } from '@inertiajs/vue3'
 
-const props = defineProps({
-  elections: {
-    type: Array,
-    required: true,
-  },
-})
+export default {
+    components: { AdminLayout, Link },
+    props: {
+        elections: Object,
+    },
+    data() {
+        return {
+            showApproveDialog: false,
+            showRejectDialog: false,
+            selectedElection: null,
+            approveNotes: '',
+            rejectReason: '',
+            rejectReasonError: '',
+        }
+    },
+    methods: {
+        openApproveDialog(election) {
+            this.selectedElection = election
+            this.approveNotes = ''
+            this.showApproveDialog = true
+        },
+        openRejectDialog(election) {
+            this.selectedElection = election
+            this.rejectReason = ''
+            this.rejectReasonError = ''
+            this.showRejectDialog = true
+        },
+        submitApprove() {
+            router.post(
+                route('platform.elections.approve', this.selectedElection.id),
+                { notes: this.approveNotes },
+                {
+                    onSuccess: () => {
+                        this.showApproveDialog = false
+                    },
+                    onError: (errors) => {
+                        console.error('Approve error:', errors)
+                    },
+                }
+            )
+        },
+        submitReject() {
+            if (!this.rejectReason.trim()) {
+                this.rejectReasonError = 'Reason is required'
+                return
+            }
+            if (this.rejectReason.length < 10) {
+                this.rejectReasonError = 'Reason must be at least 10 characters'
+                return
+            }
 
-const { t } = useI18n()
-
-const selectedElection = ref(null)
-const showApprovalModal = ref(false)
-const showRejectionModal = ref(false)
-const isLoading = ref(false)
-
-const openApproveModal = (election) => {
-  selectedElection.value = election
-  showApprovalModal.value = true
-}
-
-const confirmApprove = (notes) => {
-  isLoading.value = true
-  router.post(
-    route('admin.elections.approve', selectedElection.value.slug),
-    { approval_notes: notes },
-    {
-      onFinish: () => {
-        isLoading.value = false
-        closeApprovalModal()
-      },
-    }
-  )
-}
-
-const openRejectModal = (election) => {
-  selectedElection.value = election
-  showRejectionModal.value = true
-}
-
-const confirmReject = (reason) => {
-  isLoading.value = true
-  router.post(
-    route('admin.elections.reject', selectedElection.value.slug),
-    { rejection_reason: reason },
-    {
-      onFinish: () => {
-        isLoading.value = false
-        closeRejectionModal()
-      },
-    }
-  )
-}
-
-const closeApprovalModal = () => {
-  showApprovalModal.value = false
-  selectedElection.value = null
-}
-
-const closeRejectionModal = () => {
-  showRejectionModal.value = false
-  selectedElection.value = null
-}
-
-const formatDate = (date) => {
-  if (!date) return ''
-  return new Date(date).toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+            router.post(
+                route('platform.elections.reject', this.selectedElection.id),
+                { reason: this.rejectReason },
+                {
+                    onSuccess: () => {
+                        this.showRejectDialog = false
+                    },
+                    onError: (errors) => {
+                        console.error('Reject error:', errors)
+                    },
+                }
+            )
+        },
+        formatDate(date) {
+            if (!date) return '—'
+            return new Date(date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+            })
+        },
+    },
 }
 </script>

@@ -273,6 +273,14 @@ const editingPhaseLabel = computed(() => {
   return phase?.name || ''
 })
 
+const phaseStates = computed(() => ({
+  administration: props.election.administration_completed,
+  nomination: props.election.nomination_completed,
+  voting: props.election.voting_ends_at && new Date() > new Date(props.election.voting_ends_at),
+  results_pending: props.election.results_published_at !== null,
+  results: props.election.results_published,
+}))
+
 const completedPhasesCount = computed(() => {
   return phases.filter(p => isPhaseCompleted(p.state)).length
 })
@@ -282,20 +290,7 @@ const progressPercentage = computed(() => {
 })
 
 const isPhaseCompleted = (state) => {
-  switch (state) {
-    case 'administration':
-      return props.election.administration_completed
-    case 'nomination':
-      return props.election.nomination_completed
-    case 'voting':
-      return props.election.voting_ends_at && new Date() > new Date(props.election.voting_ends_at)
-    case 'results_pending':
-      return props.election.results_published_at !== null
-    case 'results':
-      return props.election.results_published
-    default:
-      return false
-  }
+  return phaseStates.value[state] ?? false
 }
 
 const isPhaseUpcoming = (state) => {

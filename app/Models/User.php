@@ -139,6 +139,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at'      => 'datetime',
         'leaderboard_visibility' => 'string',
+        'is_super_admin'         => 'boolean',
     ];
 
     /**
@@ -1249,6 +1250,21 @@ public function getVoterState(): string
             ->where('organisation_id', $organisationId)
             ->where('role', 'owner')
             ->exists();
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->is_super_admin === true;
+    }
+
+    public function isPlatformAdmin(): bool
+    {
+        return $this->is_super_admin === true || $this->platform_role === 'platform_admin';
+    }
+
+    public function canManagePlatformAdmins(): bool
+    {
+        return $this->isSuperAdmin();
     }
 
     /**

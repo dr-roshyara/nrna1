@@ -146,6 +146,14 @@
           >
             {{ $t('navigation.demo_guide') }}
           </Link>
+          <!-- Platform Admin Link -->
+          <Link
+            v-if="$page.props.user?.is_platform_admin"
+            :href="route('platform.dashboard')"
+            class="px-3 py-2 text-purple-300 hover:text-purple-100 focus:outline-none focus:ring-2 focus:ring-purple-400/50 rounded-sm transition-colors duration-200 text-sm font-medium border-l border-purple-400/30 ml-1 pl-4"
+          >
+            🔑 Platform Admin
+          </Link>
         </div>
 
         <!-- Demo Link - Gold CTA -->

@@ -20,6 +20,16 @@
                             {{ $t('pages.election-navigation.primary_navigation.dashboard') }}
                         </jet-nav-link>
                     </div>
+                    <!-- Platform Admin Link -->
+                    <div v-if="$page.props.auth?.user?.is_platform_admin" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <jet-nav-link
+                            :href="route('platform.dashboard')"
+                            :active="route().current('platform.*')"
+                            class="text-purple-600 hover:text-purple-800"
+                        >
+                            Platform Admin
+                        </jet-nav-link>
+                    </div>
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <jet-nav-link

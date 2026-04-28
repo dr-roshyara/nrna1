@@ -78,6 +78,9 @@ return Application::configure(basePath: dirname(__DIR__))
             // Utility
             'no.cache' => \App\Http\Middleware\NoCacheMiddleware::class,
             'dashboard.role' => \App\Http\Middleware\CheckUserRole::class,
+
+            // Platform Admin
+            'platform_admin' => \App\Http\Middleware\EnsurePlatformAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

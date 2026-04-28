@@ -507,6 +507,12 @@ Route::middleware(['auth'])->group(function () {
 require __DIR__.'/organisations.php';
 
 // ============================================================================
+// PLATFORM ADMIN ROUTES (Phase 4 - Election Approval)
+// ============================================================================
+// These routes are restricted to platform super_admin users
+require __DIR__.'/platform.php';
+
+// ============================================================================
 // STATIC PAGES (Terms of Service & Privacy Policy)
 // ============================================================================
 Route::get('/terms-of-service', function () {

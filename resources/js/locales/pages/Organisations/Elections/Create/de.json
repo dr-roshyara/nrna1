@@ -11,6 +11,11 @@
       "optional": "(optional)",
       "placeholder": "Kurze Beschreibung der Wahl..."
     },
+    "expected_voter_count": {
+      "label": "Erwartete Anzahl Wähler",
+      "help": "Wahlen mit bis zu 40 Wählern sind kostenlos und werden automatisch genehmigt. Mehr als 40 benötigen die Genehmigung des Plattform-Administrators.",
+      "approval_warning": "Diese Wahl benötigt die Genehmigung des Plattform-Administrators, bevor sie fortgesetzt werden kann."
+    },
     "start": {
       "section": "Startdatum & -uhrzeit",
       "date_label": "Datum",

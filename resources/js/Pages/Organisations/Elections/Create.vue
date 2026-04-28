@@ -79,6 +79,39 @@
             <p v-if="errors.description" class="mt-1 text-sm text-red-600">{{ errors.description }}</p>
           </div>
 
+          <!-- Expected Voters -->
+          <div class="mb-6">
+            <label for="expected_voter_count" class="block text-sm font-medium text-gray-700 mb-1">
+              {{ t.fields.expected_voter_count.label }} <span class="text-red-500">*</span>
+            </label>
+            <input
+              id="expected_voter_count"
+              v-model.number="form.expected_voter_count"
+              type="number"
+              min="1"
+              max="10000"
+              placeholder="e.g. 50"
+              class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              :class="errors.expected_voter_count ? 'border-red-400' : 'border-gray-300'"
+            />
+            <p v-if="errors.expected_voter_count" class="mt-1 text-sm text-red-600">{{ errors.expected_voter_count }}</p>
+
+            <!-- Approval warning -->
+            <div
+              v-if="form.expected_voter_count > 40"
+              class="mt-2 p-3 bg-amber-50 border border-amber-200 rounded-lg"
+            >
+              <p class="text-sm text-amber-800">
+                ⚠️ {{ t.fields.expected_voter_count.approval_warning }}
+              </p>
+            </div>
+
+            <!-- Help text -->
+            <p class="mt-1 text-xs text-gray-400">
+              {{ t.fields.expected_voter_count.help }}
+            </p>
+          </div>
+
           <!-- STATE MACHINE PHASE DATES SECTION -->
           <div class="border-t pt-8 mb-8">
             <h3 class="text-lg font-semibold text-gray-900 mb-6">Election Phases Timeline</h3>
@@ -226,6 +259,7 @@ const defaultVotingEndTime = `${today}T18:00`
 const form = reactive({
   name:        '',
   description: '',
+  expected_voter_count: 1,
   administration_suggested_start: '',
   administration_suggested_end: '',
   nomination_suggested_start: '',
@@ -279,6 +313,7 @@ const submit = () => {
     {
       name:        form.name,
       description: form.description,
+      expected_voter_count: form.expected_voter_count,
       start_date: adminStart ? adminStart.toISOString().split('T')[0] : '',
       end_date: votEnd ? votEnd.toISOString().split('T')[0] : '',
       administration_suggested_start: form.administration_suggested_start,

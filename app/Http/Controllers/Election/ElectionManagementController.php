@@ -21,6 +21,7 @@ use Illuminate\Validation\Rule;
 use Inertia\Response;
 use App\Models\ElectionOfficer;
 use App\Models\Organisation;
+use App\Models\Candidacy;
 use App\Notifications\ElectionReadyForActivation;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
@@ -691,10 +692,11 @@ class ElectionManagementController extends Controller
                 'logo' => $organisation->logo ? asset($organisation->logo) : null,
             ] : null,
             'stats'           => $election->voter_stats,
-            'canPublish'      => auth()->user()->can('publishResults', $election) && $election->status === 'completed',
             'postsCount'      => $stateMachine['postsCount'],
             'candidatesCount' => $stateMachine['approvedCandidates'],
             'stateMachine'    => $stateMachine,
+            'progress'        => $election->getProgress(),
+            'capacity'        => $election->getCapacityInfo(),
         ]);
     }
 
@@ -781,18 +783,27 @@ class ElectionManagementController extends Controller
     }
 
     /**
-     * Publish results — chief only. Sets both legacy flag and timestamp.
+     * Publish results — chief only. Transitions state and sets timestamp via state machine.
      */
     public function publish(Election $election): \Illuminate\Http\RedirectResponse
     {
-        if ($election->status !== 'completed') {
-            return back()->with('error', 'Results can only be published after voting is closed.');
+        $this->authorize('publishResults', $election);
+
+        try {
+            $election->transitionTo(
+                \App\Domain\Election\StateMachine\Transition::manual(
+                    action: 'publish_results',
+                    actorId: auth()->id(),
+                    reason: 'Results published by election officer',
+                    metadata: ['ip' => request()->ip()]
+                )
+            );
+            return back()->with('success', 'Results published successfully.');
+        } catch (\App\Domain\Election\Exceptions\InvalidTransitionException $e) {
+            return back()->with('error', $e->getMessage());
+        } catch (\DomainException $e) {
+            return back()->with('error', $e->getMessage());
         }
-        $election->update([
-            'results_published'    => true,
-            'results_published_at' => now(),
-        ]);
-        return back()->with('success', 'Results published.');
     }
 
     /**
@@ -852,6 +863,19 @@ class ElectionManagementController extends Controller
         } catch (\DomainException $e) {
             return back()->with('error', $e->getMessage());
         }
+    }
+
+    /**
+     * Show submission review page.
+     */
+    public function showSubmitForApproval(Election $election)
+    {
+        $this->authorize('manageSettings', $election);
+
+        return inertia('Election/SubmitForApproval', [
+            'election' => $election->only(['id', 'slug', 'name', 'expected_voter_count']),
+            'organisation' => $election->organisation->only(['slug', 'name']),
+        ]);
     }
 
     /**

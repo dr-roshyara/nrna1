@@ -11,6 +11,11 @@
       "optional": "(optional)",
       "placeholder": "Brief description of the election..."
     },
+    "expected_voter_count": {
+      "label": "Expected Number of Voters",
+      "help": "Elections with up to 40 voters are free and auto-approved. More than 40 requires platform admin approval.",
+      "approval_warning": "This election will require platform admin approval before it can proceed."
+    },
     "start": {
       "section": "Start Date & Time",
       "date_label": "Date",

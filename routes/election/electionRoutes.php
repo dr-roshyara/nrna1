@@ -276,6 +276,10 @@ Route::middleware(['auth', 'verified', \App\Http\Middleware\TenantContext::class
             ->can('manageSettings', 'election');
 
         // Election approval workflow — officer action
+        Route::get('/submit-for-approval', [ElectionManagementController::class, 'showSubmitForApproval'])
+            ->name('elections.submit-for-approval.show')
+            ->can('manageSettings', 'election');
+
         Route::post('/submit-for-approval', [ElectionManagementController::class, 'submitForApproval'])
             ->name('elections.submit-for-approval')
             ->can('manageSettings', 'election');

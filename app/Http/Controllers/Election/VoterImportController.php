@@ -103,6 +103,14 @@ class VoterImportController extends Controller
             'confirmed' => 'required|accepted',
         ]);
 
+        // Early gate check — file not yet parsed, so we check minimum capacity
+        // Full enforcement (with actual voter count) happens in VoterImportService after parsing
+        try {
+            $election->assertCanAcceptVoters(1);
+        } catch (\DomainException $e) {
+            return back()->with('error', $e->getMessage());
+        }
+
         $service = new VoterImportService($election, $this->eligibilityService);
 
         // Route to correct import method based on membership mode

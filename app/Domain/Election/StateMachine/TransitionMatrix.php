@@ -6,7 +6,7 @@ class TransitionMatrix
 {
     // State → allowed actions (what can be triggered from each state)
     public const ALLOWED_ACTIONS = [
-        'draft'            => ['submit_for_approval'],
+        'draft'            => ['submit_for_approval', 'auto_submit'],
         'pending_approval' => ['approve', 'reject'],
         'administration'   => ['complete_administration'],
         'nomination'       => ['open_voting'],
@@ -18,6 +18,7 @@ class TransitionMatrix
     // Action → resulting state (pure lookup, no logic)
     public const ACTION_RESULTS = [
         'submit_for_approval'     => 'pending_approval',
+        'auto_submit'             => 'administration',
         'approve'                 => 'administration',
         'reject'                  => 'draft',
         'complete_administration' => 'nomination',
@@ -28,9 +29,10 @@ class TransitionMatrix
 
     // Action → allowed roles (which roles can perform each action)
     public const ACTION_PERMISSIONS = [
-        'submit_for_approval'     => ['owner', 'admin', 'chief'],
-        'approve'                 => ['admin'],
-        'reject'                  => ['admin'],
+        'submit_for_approval'     => ['chief'],
+        'auto_submit'             => ['system'],
+        'approve'                 => ['super_admin', 'platform_admin'],
+        'reject'                  => ['super_admin', 'platform_admin'],
         'complete_administration' => ['chief', 'deputy'],
         'open_voting'             => ['chief', 'deputy'],
         'close_voting'            => ['chief', 'deputy'],

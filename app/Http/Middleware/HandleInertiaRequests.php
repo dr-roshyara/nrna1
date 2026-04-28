@@ -92,6 +92,8 @@ class HandleInertiaRequests extends Middleware
                 'user_id' => $request->user()->user_id,
                 'is_voter' => $request->user()->is_voter,
                 'can_vote' => $request->user()->can_vote,
+                'is_platform_admin' => $request->user()->isPlatformAdmin(),
+                'is_super_admin' => $request->user()->isSuperAdmin(),
             ] : null,
             /**
              * SEO Configuration
