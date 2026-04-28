@@ -1549,6 +1549,7 @@ class Election extends Model
                     // ── 6. Side effects (no state changes inside these) ─────────────
                     match ($transition->action) {
                         'open_voting'  => $this->applySideEffectsForOpenVoting($transition->actorId, $currentTime),
+                        'lock_voting'  => $this->applySideEffectsForLockVoting($currentTime),
                         'close_voting' => $this->applySideEffectsForCloseVoting($currentTime),
                         'approve'      => $this->applySideEffectsForApprove($transition->actorId, $currentTime),
                         'complete_administration' => $this->applySideEffectsForCompleteAdministration($currentTime),
@@ -1605,6 +1606,13 @@ class Election extends Model
             && ($this->votes_count ?? 0) === 0
         ) {
             throw new \DomainException('Cannot close voting: Voting ended with no votes recorded.');
+        }
+    }
+
+    private function validateLockVoting(\App\Domain\Election\StateMachine\Transition $transition): void
+    {
+        if ($this->voting_locked) {
+            throw new \DomainException('Cannot lock voting: Voting is already locked.');
         }
     }
 
@@ -1673,8 +1681,6 @@ class Election extends Model
             // NO 'state' here — state is set by transitionTo()
             'nomination_completed' => true,
             'nomination_completed_at' => $currentTime,
-            'voting_locked' => true,
-            'voting_locked_at' => $currentTime,
         ];
 
         if (!$this->voting_starts_at) {
@@ -1689,6 +1695,20 @@ class Election extends Model
         \Illuminate\Support\Facades\DB::table('elections')
             ->where('id', $this->id)
             ->update($updateData);
+    }
+
+    /**
+     * Lock voting — marks voting as officially started.
+     * After this, dates can no longer be edited.
+     */
+    private function applySideEffectsForLockVoting(\Carbon\Carbon $currentTime): void
+    {
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update([
+                'voting_locked'    => true,
+                'voting_locked_at' => $currentTime,
+            ]);
     }
 
     private function applySideEffectsForCloseVoting(\Carbon\Carbon $currentTime): void

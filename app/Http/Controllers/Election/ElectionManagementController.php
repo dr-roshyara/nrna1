@@ -866,6 +866,32 @@ class ElectionManagementController extends Controller
     }
 
     /**
+     * Lock voting period — chief or deputy.
+     * Freezes voting dates and officially begins the election.
+     */
+    public function lockVoting(Election $election): \Illuminate\Http\RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        try {
+            $election->transitionTo(
+                \App\Domain\Election\StateMachine\Transition::manual(
+                    action: 'lock_voting',
+                    actorId: auth()->id(),
+                    reason: 'Voting locked and officially started',
+                    metadata: ['ip' => request()->ip()]
+                )
+            );
+            return back()->with('success', 'Voting locked and officially started.');
+
+        } catch (\App\Domain\Election\Exceptions\InvalidTransitionException $e) {
+            return back()->with('error', $e->getMessage());
+        } catch (\DomainException $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    /**
      * Show submission review page.
      */
     public function showSubmitForApproval(Election $election)

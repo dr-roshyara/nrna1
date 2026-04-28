@@ -1,5 +1,13 @@
 {
   "page_eyebrow": "Election Management",
+  "timeline": {
+    "title": "Election Journey",
+    "currently_in": "Currently in",
+    "phase": "phase",
+    "phases_complete": "phases complete",
+    "learn_more": "Learn More",
+    "progress": "Complete"
+  },
   "sections": {
     "activate": {
       "title": "Ready to Activate?",
@@ -54,6 +62,7 @@
       "currently_active": "Voting is currently active",
       "currently_inactive": "Voting is currently inactive",
       "btn_open": "Open Voting",
+      "btn_lock": "Lock & Start",
       "btn_close": "Close Voting"
     },
     "posts": {

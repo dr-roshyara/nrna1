@@ -10,7 +10,7 @@ class TransitionMatrix
         'pending_approval' => ['approve', 'reject'],
         'administration'   => ['complete_administration'],
         'nomination'       => ['open_voting'],
-        'voting'           => ['close_voting'],
+        'voting'           => ['close_voting', 'lock_voting'],
         'results_pending'  => ['publish_results'],
         'results'          => [],
     ];
@@ -23,6 +23,7 @@ class TransitionMatrix
         'reject'                  => 'draft',
         'complete_administration' => 'nomination',
         'open_voting'             => 'voting',
+        'lock_voting'             => 'voting',
         'close_voting'            => 'results_pending',
         'publish_results'         => 'results',
     ];
@@ -35,6 +36,7 @@ class TransitionMatrix
         'reject'                  => ['super_admin', 'platform_admin'],
         'complete_administration' => ['chief', 'deputy'],
         'open_voting'             => ['chief', 'deputy'],
+        'lock_voting'             => ['chief', 'deputy'],
         'close_voting'            => ['chief', 'deputy'],
         'publish_results'         => ['chief'],
     ];

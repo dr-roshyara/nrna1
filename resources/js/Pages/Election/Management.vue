@@ -158,6 +158,7 @@
           :allowed-actions="allowedActions"
           @phase-completed="handlePhaseCompleted"
           @dates-updated="handleDatesUpdated"
+          @lock-voting="lockVoting"
         />
 
         <!-- ── TIMELINE SETTINGS ───────────────────────────────── -->
@@ -924,6 +925,15 @@ const closeVoting = () => {
   if (!confirm(t.value.confirm.close_voting)) return
   isLoading.value = true
   router.post(route('elections.close-voting', { election: props.election.slug }), {}, {
+    preserveScroll: true,
+    onFinish: () => { isLoading.value = false },
+  })
+}
+
+const lockVoting = () => {
+  if (!confirm('Lock voting and officially begin the election? Voting dates will be frozen and cannot be changed after locking.')) return
+  isLoading.value = true
+  router.post(route('elections.lock-voting', { election: props.election.slug }), {}, {
     preserveScroll: true,
     onFinish: () => { isLoading.value = false },
   })

@@ -1,7 +1,16 @@
 {
+  "meta": {
+    "title": "Online Wahl für Vereine | Sichere digitale Wahlen durchführen",
+    "description": "Erfahren Sie, wie Sie eine sichere Online-Wahl für Ihren Verein oder Ihre Organisation durchführen. 7-Phasen-Anleitung mit vollständiger Erklärung jeder Wahlphase.",
+    "keywords": "online wahl für Vereine, online wahl durchführen, digitale Wahlen, sichere Online-Abstimmung, elektronische Wahl, Vereinswahlsystem, demokratische Abstimmung online, Wahlprozess digital",
+    "og": {
+      "title": "Online Wahl für Vereine | Public Digit",
+      "description": "Sichere und transparente Online-Wahlen für Clubs, Verbände und Organisationen durchführen"
+    }
+  },
   "hero": {
     "title": "Wahlreise",
-    "subtitle": "Verstehen Sie den vollständigen Lebenszyklus einer Wahl — von der Erstellung bis zur Veröffentlichung der Ergebnisse."
+    "subtitle": "Verstehen Sie den vollständigen Lebenszyklus einer Wahl — von der Erstellung bis zur Veröffentlichung der Ergebnisse. Perfekt für Vereine, die eine sichere Online-Wahl durchführen möchten."
   },
   "subscription": {
     "title": "Kostenlos vs. Bezahlte Wahlen",
@@ -87,6 +96,10 @@
     }
   },
   "screenshot_caption": "Das Abzeichen \"Kandidatur gesperrt\" zeigt an, dass die Daten eingefroren sind, aber die Schaltfläche \"Abstimmung öffnen\" ist immer noch anklickbar, um zur nächsten Phase zu gehen.",
+  "progress_bar": {
+    "title": "Wahlfortschrittsanzeige",
+    "caption": "Der Fortschrittsbalken auf der Verwaltungsseite zeigt den aktuellen Status Ihrer Wahl auf einen Blick. In diesem Beispiel befindet sich die Wahl in der Abstimmungsphase (3 von 5 Phasen abgeschlossen = 60% Fortschritt). Die Anzeige hilft Wahlleitern, den Phasenabschluss zu überwachen und zu verstehen, wo sie sich im Wahllebenszyklus befinden."
+  },
   "cta": {
     "title": "Bereit, eine Wahl durchzuführen?",
     "subtitle": "Erstellen Sie Ihre erste Wahl und führen Sie Ihre Organisation durch den demokratischen Prozess.",

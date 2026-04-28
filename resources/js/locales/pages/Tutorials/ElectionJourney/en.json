@@ -1,7 +1,16 @@
 {
+  "meta": {
+    "title": "Election Journey Guide | Conduct Secure Online Elections",
+    "description": "Learn how to conduct a secure online election for your club, association, or organization. Complete 7-phase guide explaining every step of the election process.",
+    "keywords": "online elections, digital voting platform, conduct online elections, secure voting, election management, how to run an election, club elections, organisation voting, electronic voting",
+    "og": {
+      "title": "Election Journey Guide | Public Digit",
+      "description": "Secure and transparent online elections for clubs, associations, and organizations"
+    }
+  },
   "hero": {
     "title": "Election Journey",
-    "subtitle": "Understand the complete lifecycle of an election — from creation to published results."
+    "subtitle": "Understand the complete lifecycle of an election — from creation to published results. The essential guide for running secure online elections in your organization."
   },
   "subscription": {
     "title": "Free vs Paid Elections",
@@ -87,6 +96,10 @@
     }
   },
   "screenshot_caption": "The \"Nomination Locked\" badge indicates dates are frozen, but the \"Open Voting\" button is still clickable to advance to the next phase.",
+  "progress_bar": {
+    "title": "Election Progress Tracker",
+    "caption": "The progress bar on the Management page shows your election's current status at a glance. In this example, the election is in the Voting phase (3 of 5 phases complete = 60% progress). The tracker helps election chiefs monitor phase completion and understand where they are in the election lifecycle."
+  },
   "cta": {
     "title": "Ready to run an election?",
     "subtitle": "Create your first election and guide your organisation through the democratic process.",

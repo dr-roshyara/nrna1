@@ -1,22 +1,11 @@
 <script setup>
 import { useMeta } from '@/composables/useMeta'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 
-useMeta({
-  pageKey: 'tutorials.election-journey',
-  url: '/help/election-journey',
-  type: 'article',
-})
-
-// Locale detection from pathname
-const locale = ref(() => {
-  const pathname = window.location.pathname
-  if (pathname.startsWith('/de')) return 'de'
-  if (pathname.startsWith('/np')) return 'np'
-  return 'en'
-})
+const { locale } = useI18n()
 
 // Import locale JSON based on current language
 const localeModule = import.meta.glob(
@@ -25,11 +14,30 @@ const localeModule = import.meta.glob(
 )
 
 const t = computed(() => {
-  const lang = locale.value()
+  const lang = locale.value
   const key = `../../locales/pages/Tutorials/ElectionJourney/${lang}.json`
   return localeModule[key]?.default
     || localeModule['../../locales/pages/Tutorials/ElectionJourney/en.json'].default
 })
+
+// Update SEO metadata based on translations
+watch(() => t.value, (newT) => {
+  if (newT?.meta) {
+    useMeta({
+      title: newT.meta.title,
+      description: newT.meta.description,
+      keywords: newT.meta.keywords,
+      og: {
+        title: newT.meta.og.title,
+        description: newT.meta.og.description,
+        image: '/images/election-journey/nomination_is_locked.png',
+        type: 'article'
+      },
+      url: `/help/election-journey`,
+      type: 'article',
+    })
+  }
+}, { immediate: true })
 
 const phases = [
   { state: 'draft', name: 'Draft', icon: '📝' },
@@ -163,15 +171,34 @@ const phases = [
             <div v-if="phase.state === 'nomination'" class="phase-screenshot">
               <img
                 src="/images/election-journey/nomination_is_locked.png"
-                alt="Nomination Locked badge showing on the Election Journey panel — dates are frozen but Open Voting is still available"
+                alt="Nomination Locked status badge in secure online election management system — shows nomination phase is frozen but voting can proceed for clubs and associations conducting digital elections"
                 loading="lazy"
                 class="screenshot-image"
+                title="Online Election Management: Nomination Locked Phase - How to conduct secure online elections for your organization"
               />
               <div class="screenshot-caption">
                 <svg class="caption-icon" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
                 </svg>
                 <p>{{ t.screenshot_caption }}</p>
+              </div>
+            </div>
+
+            <!-- Progress Bar Screenshot for Voting Phase -->
+            <div v-if="phase.state === 'voting'" class="phase-screenshot">
+              <h4 v-if="t.progress_bar" class="progress-bar-heading">{{ t.progress_bar.title }}</h4>
+              <img
+                src="/images/election-journey/election_progress_bar.png"
+                alt="Election progress bar showing 3 of 5 phases complete at 60% - currently in voting phase - election management dashboard for tracking secure online election progress"
+                loading="lazy"
+                class="screenshot-image"
+                title="Election Progress Tracker: Voting Phase Progress Bar - Monitor election lifecycle completion"
+              />
+              <div class="screenshot-caption">
+                <svg class="caption-icon" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
+                </svg>
+                <p v-if="t.progress_bar">{{ t.progress_bar.caption }}</p>
               </div>
             </div>
           </div>
@@ -196,12 +223,13 @@ const phases = [
         </div>
       </section>
 
-      <!-- CTA Section -->
+      <!-- CTA Section with SEO Keywords -->
       <section class="section-cta">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 class="cta-title">{{ t.cta.title }}</h2>
           <p class="cta-subtitle">{{ t.cta.subtitle }}</p>
-          <a href="/" class="cta-button">{{ t.cta.button }}</a>
+          <p class="cta-meta">{{ locale === 'de' ? '✓ Sicher • ✓ Anonym • ✓ Transparent' : '✓ Secure • ✓ Anonymous • ✓ Transparent' }}</p>
+          <a href="/" class="cta-button" :title="locale === 'de' ? 'Sichere Online-Wahl für Vereine durchführen' : 'Start conducting secure online elections'">{{ t.cta.button }}</a>
         </div>
       </section>
     </main>
@@ -563,6 +591,17 @@ const phases = [
   background: white;
 }
 
+.progress-bar-heading {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+  padding: 1.5rem 1.5rem 0.5rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .screenshot-image {
   width: 100%;
   height: auto;
@@ -672,13 +711,23 @@ const phases = [
 .cta-subtitle {
   font-size: 1.125rem;
   opacity: 0.9;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
   z-index: 1;
   line-height: 1.6;
+}
+
+.cta-meta {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-bottom: 2rem;
+  letter-spacing: 0.03em;
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
 }
 
 .cta-button {

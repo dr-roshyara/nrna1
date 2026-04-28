@@ -4,8 +4,8 @@
     <div class="timeline-header-3col">
       <!-- Column 1: Title -->
       <div class="header-col col-1">
-        <h2 class="timeline-title">Election Journey</h2>
-        <p class="timeline-subtitle">Currently in <span class="phase-name-current">{{ currentPhaseLabel }}</span> phase</p>
+        <h2 class="timeline-title">{{ t.timeline.title }}</h2>
+        <p class="timeline-subtitle">{{ t.timeline.currently_in }} <span class="phase-name-current">{{ currentPhaseLabel }}</span> {{ t.timeline.phase }}</p>
       </div>
 
       <!-- Column 2: Learn More Link -->
@@ -20,7 +20,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span>Learn More</span>
+          <span>{{ t.timeline.learn_more }}</span>
         </a>
       </div>
 
@@ -28,7 +28,7 @@
       <div class="header-col col-3">
         <div class="header-progress">
           <div class="progress-number">{{ completedPhasesCount }}/5</div>
-          <div class="progress-label">phases complete</div>
+          <div class="progress-label">{{ t.timeline.phases_complete }}</div>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
           <div class="progress-fill" :style="{ width: progressPercentage + '%' }"></div>
         </div>
       </div>
-      <div class="progress-text">{{ Math.round(progressPercentage) }}% Complete</div>
+      <div class="progress-text">{{ Math.round(progressPercentage) }}% {{ t.timeline.progress }}</div>
     </div>
 
     <!-- Horizontal Timeline -->
@@ -79,7 +79,7 @@
             <!-- Icon and Name -->
             <div class="phase-header">
               <span class="phase-icon">{{ phase.icon }}</span>
-              <h3 class="phase-name">{{ phase.name }}</h3>
+              <h3 class="phase-name">{{ getPhaseLabel(phase.state) }}</h3>
             </div>
 
             <!-- Status Badge -->
@@ -129,6 +129,16 @@
                 Complete
               </button>
 
+              <!-- Lock Voting button (voting phase — NEW) -->
+              <button
+                v-if="canLockVotingPhase(phase.state)"
+                class="action-btn y-focus h-auto font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
+                style="background: #f59e0b; color: #fff; border: none; cursor: pointer;"
+                @click="$emit('lock-voting')"
+              >
+                🔒 Lock & Start Voting
+              </button>
+
               <!-- Locked Badge (for locked phases) -->
               <div v-if="isPhaseLockedFromEdit(phase.state)" class="locked-badge">
                 <svg class="lock-icon" viewBox="0 0 20 20" fill="currentColor">
@@ -158,7 +168,7 @@
     <!-- Phase Details Section -->
     <div v-if="selectedPhase" class="phase-details">
       <div class="details-header">
-        <h3>{{ selectedPhase.name }} Details</h3>
+        <h3>{{ getPhaseLabel(selectedPhase.state) }} Details</h3>
         <button class="btn-close" @click="selectedPhase = null">×</button>
       </div>
       <div class="details-content">
@@ -179,6 +189,10 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { route } from 'ziggy-js'
+import { useI18n } from 'vue-i18n'
+import pageDe from '@/locales/pages/Election/Management/de.json'
+import pageEn from '@/locales/pages/Election/Management/en.json'
+import pageNp from '@/locales/pages/Election/Management/np.json'
 
 const props = defineProps({
   stateMachine: {
@@ -199,7 +213,12 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['phase-completed'])
+const emit = defineEmits(['phase-completed', 'lock-voting'])
+
+// Translation
+const { locale } = useI18n()
+const pageData = { de: pageDe, en: pageEn, np: pageNp }
+const t = computed(() => pageData[locale.value] ?? pageData.de)
 
 const selectedPhase = ref(null)
 const currentTime = ref(new Date())
@@ -250,49 +269,46 @@ onUnmounted(() => {
 const phases = [
   {
     state: 'administration',
-    name: 'Administration',
     icon: '⚙️',
     description: 'Setup the election structure including posts, voters, and committee members.',
     requirements: ['At least one post', 'At least one voter', 'Election name and configuration'],
   },
   {
     state: 'nomination',
-    name: 'Nomination',
     icon: '📋',
     description: 'Accept and approve candidate applications.',
     requirements: ['At least one approved candidate', 'No pending candidacies'],
   },
   {
     state: 'voting',
-    name: 'Voting',
     icon: '🗳️',
     description: 'Members cast their votes in a secure voting window.',
     requirements: ['Voting dates must be set', 'Voting window must be active'],
   },
   {
     state: 'results_pending',
-    name: 'Counting',
     icon: '⏳',
     description: 'Voting period is complete, awaiting results publication.',
     requirements: ['Voting period must be finished'],
   },
   {
     state: 'results',
-    name: 'Results',
     icon: '📊',
     description: 'Results are published and final.',
     requirements: ['Manual publication required'],
   },
 ]
 
+const getPhaseLabel = (state) => {
+  return t.value.states?.[state] || state
+}
+
 const currentPhaseLabel = computed(() => {
-  const phase = phases.find(p => p.state === props.stateMachine.currentState)
-  return phase?.name || 'Unknown'
+  return getPhaseLabel(props.stateMachine.currentState)
 })
 
 const editingPhaseLabel = computed(() => {
-  const phase = phases.find(p => p.state === editingPhaseState.value)
-  return phase?.name || ''
+  return getPhaseLabel(editingPhaseState.value)
 })
 
 const phaseStates = computed(() => ({
@@ -406,13 +422,18 @@ const formatDate = (date) => {
 }
 
 const hasActions = (state) => {
-  return canCompletePhase(state) || canUpdateDates(state)
+  return canCompletePhase(state) || canUpdateDates(state) || canLockVotingPhase(state)
 }
 
 const canCompletePhase = (state) => {
   if (state === 'administration') return props.allowedActions.includes('complete_administration')
   if (state === 'nomination') return props.allowedActions.includes('open_voting')
   return false
+}
+
+const canLockVotingPhase = (state) => {
+  if (state !== 'voting') return false
+  return !props.election.voting_locked && props.allowedActions.includes('lock_voting')
 }
 
 const canUpdateDates = (state) => {

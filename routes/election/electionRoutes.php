@@ -275,6 +275,10 @@ Route::middleware(['auth', 'verified', \App\Http\Middleware\TenantContext::class
             ->name('elections.close-voting')
             ->can('manageSettings', 'election');
 
+        Route::post('/lock-voting', [ElectionManagementController::class, 'lockVoting'])
+            ->name('elections.lock-voting')
+            ->can('manageSettings', 'election');
+
         // Election approval workflow — officer action
         Route::get('/submit-for-approval', [ElectionManagementController::class, 'showSubmitForApproval'])
             ->name('elections.submit-for-approval.show')
