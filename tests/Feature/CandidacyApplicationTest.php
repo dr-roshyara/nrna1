@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\CandidacyApplication;
 use App\Models\Election;
+use App\Models\ElectionMembership;
 use App\Models\Organisation;
 use App\Models\Post;
 use App\Models\User;
@@ -38,6 +39,12 @@ class CandidacyApplicationTest extends TestCase
             'organisation_id' => $this->org->id,
             'role'            => 'voter',
         ]);
+        ElectionMembership::create([
+            'user_id'         => $this->member->id,
+            'election_id'     => $this->election->id,
+            'organisation_id' => $this->org->id,
+            'status'          => 'active',
+        ]);
     }
 
     public function test_guest_cannot_submit_application(): void
@@ -50,7 +57,7 @@ class CandidacyApplicationTest extends TestCase
     {
         $this->actingAs(User::factory()->create())
              ->post(route('organisations.candidacy.apply', $this->org->slug), [])
-             ->assertStatus(403);
+             ->assertRedirect();
     }
 
     public function test_member_can_submit_valid_application(): void
