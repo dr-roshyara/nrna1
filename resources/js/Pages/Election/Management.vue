@@ -486,7 +486,7 @@
 
             <!-- Empty State: When no action available (safety fallback) -->
             <transition name="fade-scale" mode="out-in">
-              <div v-if="!canSubmitForApproval && !canOpenVoting && !canCloseVoting" key="empty" class="w-full px-6 py-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-lg text-center">
+              <div v-if="!canSubmitForApproval && !canOpenVoting && !canLockVoting && !canCloseVoting" key="empty" class="w-full px-6 py-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-lg text-center">
                 <p class="text-sm font-medium text-slate-600">✓ Election state locked</p>
               </div>
             </transition>
