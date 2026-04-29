@@ -67,20 +67,6 @@
           </div>
 
           <div class="portal-grid">
-            <!-- Membership Dashboard -->
-            <a :href="`/organisations/${organisation.slug}/membership`" class="portal-card portal-card--membership">
-              <div class="portal-card__icon-wrap portal-card__icon-wrap--membership">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-              </div>
-              <div class="portal-card__body">
-                <h3 class="portal-card__title">Membership</h3>
-                <p class="portal-card__desc">Manage your membership, fees, and renewals</p>
-              </div>
-              <div class="portal-card__arrow">→</div>
-            </a>
-
             <!-- Voter Hub -->
             <a :href="route('organisations.voter-hub', organisation.slug)" class="portal-card portal-card--voter">
               <div class="portal-card__icon-wrap portal-card__icon-wrap--voter">
@@ -108,6 +94,20 @@
               <div class="portal-card__body">
                 <h3 class="portal-card__title">Election Commission</h3>
                 <p class="portal-card__desc">Manage elections, voters, and candidates</p>
+              </div>
+              <div class="portal-card__arrow">→</div>
+            </a>
+
+            <!-- Membership Dashboard -->
+            <a :href="`/organisations/${organisation.slug}/membership`" class="portal-card portal-card--membership">
+              <div class="portal-card__icon-wrap portal-card__icon-wrap--membership">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div class="portal-card__body">
+                <h3 class="portal-card__title">Membership</h3>
+                <p class="portal-card__desc">Manage your membership, fees, and renewals</p>
               </div>
               <div class="portal-card__arrow">→</div>
             </a>
@@ -205,9 +205,6 @@
                 @appoint-officer="openOfficerModal"
               />
             </Card>
-
-            <!-- Demo Setup -->
-            <DemoSetupButton v-if="canManage && !demoStatus?.exists" :organisation="organisation" :demo-status="demoStatus" />
 
             <!-- Elections List -->
             <Card mode="admin" padding="none" class="overflow-hidden">
@@ -333,6 +330,9 @@
                 </div>
               </div>
             </Card>
+
+            <!-- Demo Setup -->
+            <DemoSetupButton v-if="canManage && !demoStatus?.exists" :organisation="organisation" :demo-status="demoStatus" />
 
             <!-- Results Management -->
             <Card v-if="(canPublishResults || canManage) && completedElections.length > 0" mode="admin" padding="none" class="overflow-hidden">
