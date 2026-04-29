@@ -44,20 +44,18 @@ class ElectionPolicy
      */
     public function manageSettings(User $user, Election $election): bool
     {
-        // Org owner/admin has full access
-        if (UserOrganisationRole::where('user_id', $user->id)
+        $isOwnerAdmin = UserOrganisationRole::where('user_id', $user->id)
             ->where('organisation_id', $election->organisation_id)
             ->whereIn('role', ['owner', 'admin'])
-            ->exists()) {
-            return true;
-        }
+            ->exists();
 
-        // Election chief or deputy also has access
-        return ElectionOfficer::where('user_id', $user->id)
+        $isChiefDeputy = ElectionOfficer::where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->whereIn('role', ['chief', 'deputy'])
             ->where('status', 'active')
             ->exists();
+
+        return $isOwnerAdmin || $isChiefDeputy;
     }
 
     /**

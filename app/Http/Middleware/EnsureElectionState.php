@@ -25,7 +25,9 @@ class EnsureElectionState
             }
         }
 
-        if (!$election->getStateMachine()->allowsAction($operation)) {
+        $allowsAction = $election->getStateMachine()->allowsAction($operation);
+
+        if (!$allowsAction) {
             $stateInfo = $election->state_info;
 
             abort(403, sprintf(
