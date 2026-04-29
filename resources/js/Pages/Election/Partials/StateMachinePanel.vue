@@ -620,11 +620,8 @@ const closeModal = () => {
 }
 
 const saveDates = () => {
-  console.log('💾 saveDates called, form:', dateForm.value)
-
   if (dateForm.value.start && dateForm.value.end && dateForm.value.start >= dateForm.value.end) {
     dateError.value = 'End date must be after start date'
-    console.error('❌ Date validation failed: end before start')
     return
   }
 
@@ -633,7 +630,6 @@ const saveDates = () => {
     dates: dateForm.value,
   }
 
-  console.log('🎯 Emitting dates-updated event:', eventPayload)
   emit('dates-updated', eventPayload)
   closeModal()
 }
