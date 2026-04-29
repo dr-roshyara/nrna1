@@ -72,22 +72,6 @@
           </div>
         </Card>
 
-        <!-- Pending Approval Banner -->
-        <div v-if="isPendingApproval" class="bg-amber-50 border border-amber-200 rounded-lg p-4">
-          <div class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-            </svg>
-            <div class="flex-1">
-              <p class="font-semibold text-amber-900">⏳ {{ t.modals?.pending_elections || 'Pending Approval' }}</p>
-              <p class="text-sm text-amber-800 mt-1">{{ t.modals?.review_and_process || 'This election is awaiting admin approval.' }}</p>
-              <p v-if="election.rejection_reason" class="text-sm text-red-700 mt-2 font-medium">
-                📋 {{ t.modals?.previously_rejected || 'Previously Rejected' }}: {{ election.rejection_reason }}
-              </p>
-            </div>
-          </div>
-        </div>
-
         <!-- Flash Messages -->
         <div
           v-if="page.props.flash?.success"
@@ -108,6 +92,22 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
           <p class="text-sm font-medium text-red-800">{{ page.props.flash.error }}</p>
+        </div>
+
+        <!-- Pending Approval Banner -->
+        <div v-if="isPendingApproval" class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+            <div class="flex-1">
+              <p class="font-semibold text-amber-900">⏳ {{ t.modals?.pending_elections || 'Pending Approval' }}</p>
+              <p class="text-sm text-amber-800 mt-1">{{ t.modals?.review_and_process || 'This election is awaiting admin approval.' }}</p>
+              <p v-if="election.rejection_reason" class="text-sm text-red-700 mt-2 font-medium">
+                📋 {{ t.modals?.previously_rejected || 'Previously Rejected' }}: {{ election.rejection_reason }}
+              </p>
+            </div>
+          </div>
         </div>
 
         <!-- Capacity/Approval Warning Banner -->
@@ -159,235 +159,6 @@
           @dates-updated="handleDatesUpdated"
           @lock-voting="lockVoting"
         />
-
-        <!-- ── TIMELINE SETTINGS ───────────────────────────────── -->
-        <SectionCard padding="lg">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center">
-              <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <div>
-              <h2 class="text-base font-semibold text-slate-800">Timeline Configuration</h2>
-              <p class="text-xs text-slate-500 mt-0.5">Configure all election phase dates in one place</p>
-            </div>
-          </div>
-
-          <div class="flex gap-3 flex-col sm:flex-row">
-            <!-- View Timeline (Read-only) -->
-            <ActionButton as="a" variant="outline" size="md" :href="route('elections.timeline-view', election.slug)" class="flex-1 sm:flex-auto">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              View Timeline
-            </ActionButton>
-
-            <!-- Edit Timeline (Form) -->
-            <ActionButton as="a" variant="outline" size="md" :href="route('elections.timeline', election.slug)" class="flex-1 sm:flex-auto">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-              </svg>
-              Edit Timeline
-            </ActionButton>
-          </div>
-        </SectionCard>
-
-
-        <!-- ── CURRENT STATUS ──────────────────────────────────── -->
-        <SectionCard padding="lg">
-          <div class="flex items-center gap-3 mb-6 min-w-0">
-            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-              </svg>
-            </div>
-            <h2 class="text-base font-semibold text-slate-800">{{ t.sections.status.title }}</h2>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
-            <!-- Election System -->
-            <div
-              class="rounded-xl border p-5 flex items-center gap-4"
-              :class="election.is_active ? 'bg-emerald-50 border-emerald-200' : 'bg-slate-50 border-slate-200'"
-            >
-              <div
-                class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                :class="election.is_active ? 'bg-emerald-100' : 'bg-slate-100'"
-              >
-                <svg
-                  class="w-5 h-5"
-                  :class="election.is_active ? 'text-emerald-600' : 'text-slate-400'"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
-                >
-                  <path v-if="election.is_active" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-              <div>
-                <p class="text-xs font-semibold uppercase tracking-wide" :class="election.is_active ? 'text-emerald-600' : 'text-slate-400'">
-                  {{ t.sections.status.election_system }}
-                </p>
-                <p class="text-sm font-semibold mt-0.5" :class="election.is_active ? 'text-emerald-800' : 'text-slate-600'">
-                  {{ election.is_active ? t.sections.status.active : t.sections.status.inactive }}
-                </p>
-              </div>
-            </div>
-
-            <!-- Results Status -->
-            <div
-              class="rounded-xl border p-5 flex items-center gap-4"
-              :class="election.results_published ? 'bg-blue-50 border-blue-200' : 'bg-slate-50 border-slate-200'"
-            >
-              <div
-                class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                :class="election.results_published ? 'bg-blue-100' : 'bg-slate-100'"
-              >
-                <svg
-                  class="w-5 h-5"
-                  :class="election.results_published ? 'text-blue-600' : 'text-slate-400'"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                </svg>
-              </div>
-              <div>
-                <p class="text-xs font-semibold uppercase tracking-wide" :class="election.results_published ? 'text-blue-600' : 'text-slate-400'">
-                  {{ t.sections.status.results }}
-                </p>
-                <p class="text-sm font-semibold mt-0.5" :class="election.results_published ? 'text-blue-800' : 'text-slate-600'">
-                  {{ election.results_published ? t.sections.status.published : t.sections.status.unpublished }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </SectionCard>
-
-        <!-- ── ORGANISATION LOGO ─────────────────────────────────── -->
-        <SectionCard padding="lg">
-          <div class="flex items-center gap-3 mb-6 min-w-0">
-            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <div class="min-w-0">
-              <h2 class="text-base font-semibold text-slate-800">{{ t.sections.logo.title }}</h2>
-              <p class="text-xs text-slate-400 mt-0.5">{{ t.sections.logo.subtitle }}</p>
-            </div>
-          </div>
-
-          <div class="flex flex-col sm:flex-row gap-6 items-start">
-            <!-- Current logo preview -->
-            <div class="flex-shrink-0">
-              <div class="w-24 h-24 rounded-xl border-2 border-slate-200 bg-slate-50 flex items-center justify-center overflow-hidden">
-                <img v-if="organisation?.logo"
-                     :src="organisation.logo"
-                     alt="Organisation logo"
-                     class="w-full h-full object-contain p-1" />
-                <svg v-else class="w-10 h-10 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                </svg>
-              </div>
-              <p class="text-xs text-slate-400 text-center mt-1.5">
-                {{ organisation?.logo ? t.sections.logo.current : t.sections.logo.no_logo }}
-              </p>
-            </div>
-
-            <!-- Upload form -->
-            <form @submit.prevent="uploadLogo" class="flex-1 space-y-3">
-              <label class="block">
-                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">
-                  {{ t.sections.logo.upload_label }}
-                </span>
-                <input type="file"
-                       ref="logoFileInput"
-                       accept="image/*"
-                       @change="onLogoFileChange"
-                       class="block w-full text-sm text-slate-600
-                              file:mr-3 file:py-2 file:px-4 file:rounded-lg
-                              file:border-0 file:text-sm file:font-semibold
-                              file:bg-slate-100 file:text-slate-700
-                              hover:file:bg-slate-200 cursor-pointer" />
-              </label>
-              <p class="text-xs text-slate-400">{{ t.sections.logo.file_hint }}</p>
-              <ActionButton variant="outline" size="md" type="submit" :loading="isUploadingLogo" :disabled="!logoFile">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
-                </svg>
-                {{ isUploadingLogo ? t.sections.logo.btn_uploading : t.sections.logo.btn_upload }}
-              </ActionButton>
-            </form>
-          </div>
-        </SectionCard>
-
-        <!-- ── VOTING STATISTICS ───────────────────────────────── -->
-        <SectionCard v-if="stats && Object.keys(stats).length" padding="lg">
-          <div class="flex items-center gap-3 mb-6 min-w-0">
-            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <h2 class="text-base font-semibold text-slate-800">{{ t.sections.statistics.title }}</h2>
-          </div>
-
-          <!-- Summary Cards -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 mb-5">
-            <div class="rounded-xl bg-violet-50 border border-violet-200 p-5">
-              <p class="text-xs font-semibold text-violet-500 uppercase tracking-wide">{{ t.sections.statistics.total_members }}</p>
-              <p class="text-3xl font-bold text-violet-800 mt-1">{{ stats.total_memberships ?? 0 }}</p>
-              <p class="text-xs text-violet-500 mt-0.5">{{ t.sections.statistics.registered }}</p>
-            </div>
-            <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-5">
-              <p class="text-xs font-semibold text-emerald-500 uppercase tracking-wide">{{ t.sections.statistics.active_voters }}</p>
-              <p class="text-3xl font-bold text-emerald-800 mt-1">{{ stats.active_voters ?? 0 }}</p>
-              <p class="text-xs text-emerald-500 mt-0.5">{{ t.sections.statistics.approved }}</p>
-            </div>
-            <div class="rounded-xl bg-blue-50 border border-blue-200 p-5">
-              <p class="text-xs font-semibold text-blue-500 uppercase tracking-wide">{{ t.sections.statistics.eligible_voters }}</p>
-              <p class="text-3xl font-bold text-blue-800 mt-1">{{ stats.eligible_voters ?? 0 }}</p>
-              <p class="text-xs text-blue-500 mt-0.5">{{ t.sections.statistics.not_expired }}</p>
-            </div>
-          </div>
-
-          <!-- Status Breakdown -->
-          <div v-if="stats.by_status" class="rounded-xl bg-slate-50 border border-slate-200 p-5">
-            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">{{ t.sections.statistics.breakdown_title }}</p>
-            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4">
-              <div class="text-center">
-                <p class="text-2xl font-bold text-emerald-700">{{ stats.by_status.active ?? 0 }}</p>
-                <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.statistics.status_active }}</p>
-              </div>
-              <div class="text-center">
-                <p class="text-2xl font-bold text-amber-600">{{ stats.by_status.invited ?? 0 }}</p>
-                <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.statistics.status_invited }}</p>
-              </div>
-              <div class="text-center">
-                <p class="text-2xl font-bold text-slate-400">{{ stats.by_status.inactive ?? 0 }}</p>
-                <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.statistics.status_inactive }}</p>
-              </div>
-              <div class="text-center">
-                <p class="text-2xl font-bold text-red-500">{{ stats.by_status.removed ?? 0 }}</p>
-                <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.statistics.status_removed }}</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Empty state: no voters -->
-          <EmptyState
-            v-if="!stats.total_memberships"
-            :title="t.sections.statistics.empty_title"
-            :description="t.sections.statistics.empty_desc"
-          >
-            <template #icon>
-              <svg class="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-              </svg>
-            </template>
-          </EmptyState>
-        </SectionCard>
 
         <!-- ── VOTING PERIOD CONTROL ───────────────────────────── -->
         <SectionCard padding="lg">
@@ -493,6 +264,49 @@
           </div>
         </SectionCard>
 
+        <!-- ── TIMELINE SETTINGS ───────────────────────────────── -->
+        <SectionCard padding="lg">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center">
+              <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-base font-semibold text-slate-800">Timeline Configuration</h2>
+              <p class="text-xs text-slate-500 mt-0.5">Configure all election phase dates in one place</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 flex-col sm:flex-row">
+            <!-- View Timeline (Read-only) -->
+            <ActionButton as="a" variant="outline" size="md" :href="route('elections.timeline-view', election.slug)" class="flex-1 sm:flex-auto">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              View Timeline
+            </ActionButton>
+
+            <!-- Edit Timeline (Form) -->
+            <ActionButton as="a" variant="outline" size="md" :href="route('elections.timeline', election.slug)" class="flex-1 sm:flex-auto">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+              </svg>
+              Edit Timeline
+            </ActionButton>
+          </div>
+        </SectionCard>
+
+        <!-- ── ADMINISTRATION PHASE ──────────────────────────── -->
+        <div class="flex items-center gap-3 pt-4 pb-2">
+          <div class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-300 to-slate-300"></div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest whitespace-nowrap px-3 py-1 bg-slate-50 rounded-full border border-slate-200">
+            {{ t.phase_groups?.administration || 'Administration Phase' }}
+          </span>
+          <div class="h-px flex-1 bg-gradient-to-l from-transparent via-slate-300 to-slate-300"></div>
+        </div>
+
         <!-- ── POSTS & CANDIDATES MANAGEMENT ─────────────────────── -->
         <SectionCard padding="lg">
           <div class="flex items-center justify-between gap-4 mb-6 min-w-0">
@@ -531,29 +345,6 @@
               {{ t.sections.posts.btn_candidates }}
             </ActionButton>
           </div>
-        </SectionCard>
-
-        <!-- ── CANDIDACY APPLICATION REVIEW ─────────────────────── -->
-        <SectionCard padding="lg">
-          <div class="flex items-center justify-between gap-4 mb-4 min-w-0">
-            <div class="flex items-center gap-3 min-w-0">
-              <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-              <div class="min-w-0">
-                <h2 class="text-base font-semibold text-slate-800">{{ t.sections.applications.title }}</h2>
-                <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.applications.subtitle }}</p>
-              </div>
-            </div>
-          </div>
-          <ActionButton as="a" variant="outline" size="md" :href="candidacyApplicationsUrl" class="w-full sm:w-auto">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
-            </svg>
-            {{ t.sections.applications.btn_review }}
-          </ActionButton>
         </SectionCard>
 
         <!-- ── VOTER MANAGEMENT ────────────────────────────────── -->
@@ -600,6 +391,192 @@
           </div>
         </SectionCard>
 
+        <!-- ── NOMINATION PHASE ────────────────────────────── -->
+        <div class="flex items-center gap-3 pt-4 pb-2">
+          <div class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-300 to-slate-300"></div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest whitespace-nowrap px-3 py-1 bg-slate-50 rounded-full border border-slate-200">
+            {{ t.phase_groups?.nomination || 'Nomination Phase' }}
+          </span>
+          <div class="h-px flex-1 bg-gradient-to-l from-transparent via-slate-300 to-slate-300"></div>
+        </div>
+
+        <!-- ── CANDIDACY APPLICATION REVIEW ─────────────────────── -->
+        <SectionCard padding="lg">
+          <div class="flex items-center justify-between gap-4 mb-4 min-w-0">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <h2 class="text-base font-semibold text-slate-800">{{ t.sections.applications.title }}</h2>
+                <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.applications.subtitle }}</p>
+              </div>
+            </div>
+          </div>
+          <ActionButton as="a" variant="outline" size="md" :href="candidacyApplicationsUrl" class="w-full sm:w-auto">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+            </svg>
+            {{ t.sections.applications.btn_review }}
+          </ActionButton>
+        </SectionCard>
+
+        <!-- ── MONITORING ───────────────────────────────────── -->
+        <div class="flex items-center gap-3 pt-4 pb-2">
+          <div class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-300 to-slate-300"></div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest whitespace-nowrap px-3 py-1 bg-slate-50 rounded-full border border-slate-200">
+            {{ t.phase_groups?.monitoring || 'Monitoring' }}
+          </span>
+          <div class="h-px flex-1 bg-gradient-to-l from-transparent via-slate-300 to-slate-300"></div>
+        </div>
+
+        <!-- ── VOTING STATISTICS ───────────────────────────────── -->
+        <SectionCard v-if="stats && Object.keys(stats).length" padding="lg">
+          <div class="flex items-center gap-3 mb-6 min-w-0">
+            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h2 class="text-base font-semibold text-slate-800">{{ t.sections.statistics.title }}</h2>
+          </div>
+
+          <!-- Summary Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 mb-5">
+            <div class="rounded-xl bg-violet-50 border border-violet-200 p-5">
+              <p class="text-xs font-semibold text-violet-500 uppercase tracking-wide">{{ t.sections.statistics.total_members }}</p>
+              <p class="text-3xl font-bold text-violet-800 mt-1">{{ stats.total_memberships ?? 0 }}</p>
+              <p class="text-xs text-violet-500 mt-0.5">{{ t.sections.statistics.registered }}</p>
+            </div>
+            <div class="rounded-xl bg-emerald-50 border border-emerald-200 p-5">
+              <p class="text-xs font-semibold text-emerald-500 uppercase tracking-wide">{{ t.sections.statistics.active_voters }}</p>
+              <p class="text-3xl font-bold text-emerald-800 mt-1">{{ stats.active_voters ?? 0 }}</p>
+              <p class="text-xs text-emerald-500 mt-0.5">{{ t.sections.statistics.approved }}</p>
+            </div>
+            <div class="rounded-xl bg-blue-50 border border-blue-200 p-5">
+              <p class="text-xs font-semibold text-blue-500 uppercase tracking-wide">{{ t.sections.statistics.eligible_voters }}</p>
+              <p class="text-3xl font-bold text-blue-800 mt-1">{{ stats.eligible_voters ?? 0 }}</p>
+              <p class="text-xs text-blue-500 mt-0.5">{{ t.sections.statistics.not_expired }}</p>
+            </div>
+          </div>
+
+          <!-- Status Breakdown -->
+          <div v-if="stats.by_status" class="rounded-xl bg-slate-50 border border-slate-200 p-5">
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">{{ t.sections.statistics.breakdown_title }}</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4">
+              <div class="text-center">
+                <p class="text-2xl font-bold text-emerald-700">{{ stats.by_status.active ?? 0 }}</p>
+                <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.statistics.status_active }}</p>
+              </div>
+              <div class="text-center">
+                <p class="text-2xl font-bold text-amber-600">{{ stats.by_status.invited ?? 0 }}</p>
+                <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.statistics.status_invited }}</p>
+              </div>
+              <div class="text-center">
+                <p class="text-2xl font-bold text-slate-400">{{ stats.by_status.inactive ?? 0 }}</p>
+                <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.statistics.status_inactive }}</p>
+              </div>
+              <div class="text-center">
+                <p class="text-2xl font-bold text-red-500">{{ stats.by_status.removed ?? 0 }}</p>
+                <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.statistics.status_removed }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty state: no voters -->
+          <EmptyState
+            v-if="!stats.total_memberships"
+            :title="t.sections.statistics.empty_title"
+            :description="t.sections.statistics.empty_desc"
+          >
+            <template #icon>
+              <svg class="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </template>
+          </EmptyState>
+        </SectionCard>
+
+        <!-- ── CURRENT STATUS ──────────────────────────────────── -->
+        <SectionCard padding="lg">
+          <div class="flex items-center gap-3 mb-6 min-w-0">
+            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <h2 class="text-base font-semibold text-slate-800">{{ t.sections.status.title }}</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+            <!-- Election System -->
+            <div
+              class="rounded-xl border p-5 flex items-center gap-4"
+              :class="election.is_active ? 'bg-emerald-50 border-emerald-200' : 'bg-slate-50 border-slate-200'"
+            >
+              <div
+                class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                :class="election.is_active ? 'bg-emerald-100' : 'bg-slate-100'"
+              >
+                <svg
+                  class="w-5 h-5"
+                  :class="election.is_active ? 'text-emerald-600' : 'text-slate-400'"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
+                >
+                  <path v-if="election.is_active" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-wide" :class="election.is_active ? 'text-emerald-600' : 'text-slate-400'">
+                  {{ t.sections.status.election_system }}
+                </p>
+                <p class="text-sm font-semibold mt-0.5" :class="election.is_active ? 'text-emerald-800' : 'text-slate-600'">
+                  {{ election.is_active ? t.sections.status.active : t.sections.status.inactive }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Results Status -->
+            <div
+              class="rounded-xl border p-5 flex items-center gap-4"
+              :class="election.results_published ? 'bg-blue-50 border-blue-200' : 'bg-slate-50 border-slate-200'"
+            >
+              <div
+                class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                :class="election.results_published ? 'bg-blue-100' : 'bg-slate-100'"
+              >
+                <svg
+                  class="w-5 h-5"
+                  :class="election.results_published ? 'text-blue-600' : 'text-slate-400'"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-wide" :class="election.results_published ? 'text-blue-600' : 'text-slate-400'">
+                  {{ t.sections.status.results }}
+                </p>
+                <p class="text-sm font-semibold mt-0.5" :class="election.results_published ? 'text-blue-800' : 'text-slate-600'">
+                  {{ election.results_published ? t.sections.status.published : t.sections.status.unpublished }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </SectionCard>
+
+        <!-- ── SETTINGS ──────────────────────────────────── -->
+        <div class="flex items-center gap-3 pt-4 pb-2">
+          <div class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-300 to-slate-300"></div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest whitespace-nowrap px-3 py-1 bg-slate-50 rounded-full border border-slate-200">
+            {{ t.phase_groups?.settings || 'Settings' }}
+          </span>
+          <div class="h-px flex-1 bg-gradient-to-l from-transparent via-slate-300 to-slate-300"></div>
+        </div>
+
         <!-- ── ELECTION SETTINGS ───────────────────────────────── -->
         <SectionCard padding="lg">
           <div class="flex items-center gap-3 mb-6 min-w-0">
@@ -623,6 +600,73 @@
             Configure Settings
           </ActionButton>
         </SectionCard>
+
+        <!-- ── ORGANISATION LOGO ─────────────────────────────────── -->
+        <SectionCard padding="lg">
+          <div class="flex items-center gap-3 mb-6 min-w-0">
+            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="min-w-0">
+              <h2 class="text-base font-semibold text-slate-800">{{ t.sections.logo.title }}</h2>
+              <p class="text-xs text-slate-400 mt-0.5">{{ t.sections.logo.subtitle }}</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-6 items-start">
+            <!-- Current logo preview -->
+            <div class="flex-shrink-0">
+              <div class="w-24 h-24 rounded-xl border-2 border-slate-200 bg-slate-50 flex items-center justify-center overflow-hidden">
+                <img v-if="organisation?.logo"
+                     :src="organisation.logo"
+                     alt="Organisation logo"
+                     class="w-full h-full object-contain p-1" />
+                <svg v-else class="w-10 h-10 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+              </div>
+              <p class="text-xs text-slate-400 text-center mt-1.5">
+                {{ organisation?.logo ? t.sections.logo.current : t.sections.logo.no_logo }}
+              </p>
+            </div>
+
+            <!-- Upload form -->
+            <form @submit.prevent="uploadLogo" class="flex-1 space-y-3">
+              <label class="block">
+                <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide block mb-1.5">
+                  {{ t.sections.logo.upload_label }}
+                </span>
+                <input type="file"
+                       ref="logoFileInput"
+                       accept="image/*"
+                       @change="onLogoFileChange"
+                       class="block w-full text-sm text-slate-600
+                              file:mr-3 file:py-2 file:px-4 file:rounded-lg
+                              file:border-0 file:text-sm file:font-semibold
+                              file:bg-slate-100 file:text-slate-700
+                              hover:file:bg-slate-200 cursor-pointer" />
+              </label>
+              <p class="text-xs text-slate-400">{{ t.sections.logo.file_hint }}</p>
+              <ActionButton variant="outline" size="md" type="submit" :loading="isUploadingLogo" :disabled="!logoFile">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                </svg>
+                {{ isUploadingLogo ? t.sections.logo.btn_uploading : t.sections.logo.btn_upload }}
+              </ActionButton>
+            </form>
+          </div>
+        </SectionCard>
+
+        <!-- ── RESULTS ────────────────────────────────────── -->
+        <div class="flex items-center gap-3 pt-4 pb-2">
+          <div class="h-px flex-1 bg-gradient-to-r from-transparent via-slate-300 to-slate-300"></div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest whitespace-nowrap px-3 py-1 bg-slate-50 rounded-full border border-slate-200">
+            {{ t.phase_groups?.results || 'Results' }}
+          </span>
+          <div class="h-px flex-1 bg-gradient-to-l from-transparent via-slate-300 to-slate-300"></div>
+        </div>
 
         <!-- ── RESULT MANAGEMENT ───────────────────────────────── -->
         <SectionCard v-if="canPublishResults" padding="lg">
