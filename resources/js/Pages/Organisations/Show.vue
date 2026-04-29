@@ -531,8 +531,8 @@ useMeta({
   box-shadow: 0 8px 32px rgba(6,78,59,0.18);
 }
 .zone--admin {
-  background: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
+  background: #e2e8f0;
+  border-bottom: 1px solid #cbd5e1;
 }
 .zone--support {
   background: #f1f5f9;
