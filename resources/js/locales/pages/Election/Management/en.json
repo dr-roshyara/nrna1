@@ -140,5 +140,12 @@
     "no_pending": "No pending elections",
     "all_processed": "All election submissions have been processed",
     "preview": "Preview"
+  },
+  "phase_groups": {
+    "administration": "Administration Phase",
+    "nomination": "Nomination Phase",
+    "monitoring": "Monitoring",
+    "settings": "Settings",
+    "results": "Results"
   }
 }

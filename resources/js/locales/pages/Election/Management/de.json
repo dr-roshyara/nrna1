@@ -140,5 +140,12 @@
     "no_pending": "Keine ausstehenden Wahlen",
     "all_processed": "Alle Wahleinreichungen wurden bearbeitet",
     "preview": "Vorschau"
+  },
+  "phase_groups": {
+    "administration": "Verwaltungsphase",
+    "nomination": "Nominierungsphase",
+    "monitoring": "Überwachung",
+    "settings": "Einstellungen",
+    "results": "Ergebnisse"
   }
 }

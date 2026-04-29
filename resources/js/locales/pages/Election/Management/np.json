@@ -140,5 +140,12 @@
     "no_pending": "कुनै पेन्डिङ निर्वाचन छैन | No pending elections",
     "all_processed": "सबै निर्वाचन सबमिशन प्रशोधित भएका छन् | All election submissions have been processed",
     "preview": "पूर्वावलोकन | Preview"
+  },
+  "phase_groups": {
+    "administration": "प्रशासन चरण | Administration Phase",
+    "nomination": "नामांकन चरण | Nomination Phase",
+    "monitoring": "अनुगमन | Monitoring",
+    "settings": "सेटिङ | Settings",
+    "results": "परिणाम | Results"
   }
 }
