@@ -129,9 +129,18 @@
                 Complete
               </button>
 
+              <!-- Update Dates button -->
+              <button
+                v-if="canUpdateDates(phase.state)"
+                class="action-btn btn-dates"
+                @click="openDateModal(phase.state)"
+              >
+                📅 Update Dates
+              </button>
+
               <!-- Lock Voting button (voting phase — NEW) -->
               <button
-                v-if="canLockVotingPhase(phase.state)"
+                v-if="phase.state === 'voting'"
                 class="action-btn y-focus h-auto font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
                 style="background: #f59e0b; color: #fff; border: none; cursor: pointer;"
                 @click="$emit('lock-voting')"
@@ -156,9 +165,6 @@
                 <span class="timer-label">Voting ends in</span>
                 <span class="timer-value">{{ getCountdownTime(phase.state) }}</span>
               </div>
-
-              <!-- Note: Use Timeline page to edit dates -->
-              <!-- Dates are read-only here for clarity -->
             </div>
           </div>
         </div>
@@ -182,7 +188,42 @@
       </div>
     </div>
 
-    <!-- Date modal removed - use Timeline page to edit dates -->
+    <!-- Date Editing Modal -->
+    <div v-if="showDateModal" class="date-modal-overlay" @click.self="closeModal">
+      <div class="date-modal">
+        <div class="modal-header">
+          <h3>Edit {{ editingPhaseLabel }} Dates</h3>
+          <button class="modal-close" @click="closeModal">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Start Date & Time</label>
+            <input
+              v-model="dateForm.start"
+              type="datetime-local"
+              class="form-input"
+              @keyup.enter="saveDates"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">End Date & Time</label>
+            <input
+              v-model="dateForm.end"
+              type="datetime-local"
+              class="form-input"
+              @keyup.enter="saveDates"
+            />
+          </div>
+          <div v-if="dateError" class="error-message">
+            {{ dateError }}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" @click="closeModal">Cancel</button>
+          <button class="btn btn-primary" @click="saveDates">Save Dates</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -218,6 +259,10 @@ const t = computed(() => pageData[locale.value] ?? pageData.de)
 
 const selectedPhase = ref(null)
 const currentTime = ref(new Date())
+const showDateModal = ref(false)
+const editingPhaseState = ref(null)
+const dateForm = ref({ start: '', end: '' })
+const dateError = ref('')
 let countdownInterval = null
 
 // Update countdown timer every second
@@ -255,14 +300,6 @@ onMounted(() => {
   // Equalize column heights
   equalizePhaseHeights()
   window.addEventListener('resize', equalizePhaseHeights)
-
-  // DEBUG: Log state and permissions
-  console.log('🔍 StateMachinePanel Debug Info:')
-  console.log('  Current State:', props.stateMachine.currentState)
-  console.log('  Allowed Actions:', props.stateMachine.allowedActions)
-  console.log('  Voting Locked:', props.election.voting_locked)
-  console.log('  Voting Starts At:', props.election.voting_starts_at)
-  console.log('  Election State:', props.election.state)
 })
 
 onUnmounted(() => {
@@ -314,6 +351,7 @@ const currentPhaseLabel = computed(() => {
 const editingPhaseLabel = computed(() => {
   return getPhaseLabel(editingPhaseState.value)
 })
+
 
 const phaseStates = computed(() => ({
   administration: props.election.administration_completed,
@@ -448,8 +486,8 @@ const canLockVotingPhase = (state) => {
 }
 
 const canUpdateDates = (state) => {
-  // Matches backend canUpdatePhaseDates() logic
-  // Can only update dates for phases that haven't started yet
+  // Core rule: dates are editable until election is LOCKED
+  // Final phases are never editable
 
   switch (state) {
     case 'administration':
@@ -459,10 +497,8 @@ const canUpdateDates = (state) => {
       return !props.election.nomination_completed
 
     case 'voting':
-      // Can update only if voting hasn't started and isn't locked
-      return !props.election.voting_locked &&
-             (!props.election.voting_starts_at ||
-              new Date() < new Date(props.election.voting_starts_at))
+      // Editable until voting is locked (regardless of voting start time)
+      return !props.election.voting_locked
 
     case 'results_pending':
     case 'results':
@@ -482,8 +518,7 @@ const isPhaseLockedFromEdit = (state) => {
     case 'nomination':
       return props.election.nomination_completed
     case 'voting':
-      return props.election.voting_locked ||
-             (props.election.voting_starts_at && new Date() >= new Date(props.election.voting_starts_at))
+      return props.election.voting_locked  // Only locked when explicitly locked
     case 'results_pending':
     case 'results':
       return true // Always locked
@@ -492,7 +527,7 @@ const isPhaseLockedFromEdit = (state) => {
   }
 }
 
-// NEW: Get reason why phase is locked
+// Get reason why phase is locked
 const getLockReason = (state) => {
   switch (state) {
     case 'administration':
@@ -500,10 +535,9 @@ const getLockReason = (state) => {
     case 'nomination':
       return 'Nomination Locked'
     case 'voting':
-      if (props.election.voting_locked) return 'Voting Closed'
-      if (props.election.voting_starts_at && new Date() >= new Date(props.election.voting_starts_at))
-        return 'In Progress'
-      return 'Locked'
+      if (props.election.voting_locked) return 'Voting Locked'
+      // Not locked = editable (regardless of start time)
+      return 'Editable'
     case 'results_pending':
       return 'Results Pending'
     case 'results':
@@ -525,7 +559,7 @@ const isPhaseActive = (state) => {
   }
 }
 
-// NEW: Get countdown time until voting ends
+// Get countdown time until voting ends
 const getCountdownTime = (state) => {
   if (state !== 'voting' || !props.election.voting_ends_at) return '--:--:--'
 

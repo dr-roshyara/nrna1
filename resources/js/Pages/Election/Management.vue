@@ -1015,19 +1015,39 @@ const handleDatesUpdated = ({ phase, dates }) => {
     return
   }
 
+  // Map phases to correct database column names
+  const columnMap = {
+    administration: {
+      start: 'administration_suggested_start',
+      end: 'administration_suggested_end',
+    },
+    nomination: {
+      start: 'nomination_suggested_start',
+      end: 'nomination_suggested_end',
+    },
+    voting: {
+      start: 'voting_starts_at',   // Voting uses different naming
+      end: 'voting_ends_at',
+    },
+  }
+
+  const cols = columnMap[phase]
+  if (!cols) {
+    console.error('❌ Unknown phase:', phase)
+    return
+  }
+
   const payload = {
-    [`${phase}_suggested_start`]: dates.start,
-    [`${phase}_suggested_end`]: dates.end,
+    [cols.start]: dates.start,
+    [cols.end]: dates.end,
   }
 
   router.patch(route('elections.update-timeline', props.election.slug), payload, {
     onSuccess: () => {
-      console.log('✅ Dates updated successfully. Refreshing page...')
-      // Use Inertia router.reload() for simple, reliable page refresh
       router.reload({ preserveScroll: true })
     },
     onError: (errors) => {
-      console.error('❌ Update failed:', errors)
+      // Handle validation errors
     },
   })
 }
