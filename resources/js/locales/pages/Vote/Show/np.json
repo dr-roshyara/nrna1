@@ -6,7 +6,7 @@
   },
   "voter_information": {
     "title": "मतदाता जानकारी | Voter Information",
-    "own_vote": "आपको मतदानको रेकर्ड | Your voting record",
+    "own_vote": "तपाईंको मतदानको रेकर्ड | Your voting record",
     "verification_result": "प्रस्तुत गरिएको कोडको लागि सत्यापन परिणाम | Verification result for submitted code",
     "voter_name": "मतदाताको नाम | Voter Name",
     "voter_id": "मतदाता आईडी | Voter ID",
