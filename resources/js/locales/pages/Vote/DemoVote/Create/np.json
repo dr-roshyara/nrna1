@@ -24,13 +24,13 @@
   "voting_section": {
     "national_posts": "राष्ट्रीय पद",
     "regional_posts": "क्षेत्रीय पद",
-    "required": "आवश्यक",
+    "required": "चाहिन्छ",
     "selected": "चयनित"
   },
   "position_card": {
     "position_label": "पद #{{ position_order }}",
     "candidates_label": "को लागि उम्मेदवार",
-    "required_count": "{{ required_number }} आवश्यक",
+    "required_count": "{{ required_number }} चाहिन्छ",
     "skip_this_position": "यो पद छोड्नुहोस्"
   },
   "candidate_selection": {

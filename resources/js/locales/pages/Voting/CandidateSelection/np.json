@@ -1,5 +1,5 @@
 {
-  "required_candidates": "आवश्यक",
+  "required_candidates": "चाहिन्छ",
   "all_required": "तपाइँले यो पदको लागि सबै उम्मेदवार छान्नु अनिवार्य छ",
   "instruction": "{position} को पदको लागि {number} जना उम्मेदवार छान्नुहोस्",
   "instruction_nepali": "{position} को पदको लागि {number} जना उम्मेदवार छान्नुहोस्",

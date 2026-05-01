@@ -46,12 +46,12 @@
     "formats": ["CSV (.csv)", "Excel (.xlsx, .xls)"],
     "columns_heading": "स्तम्भहरू:",
     "columns": [
-      "email (आवश्यक)",
-      "name (आवश्यक)",
+      "email (चाहिन्छ)",
+      "name (चाहिन्छ)",
       "is_org_user — YES वा NO",
       "is_member — YES वा NO",
       "is_voter — YES वा NO",
-      "election_id — UUID (is_voter=YES भए आवश्यक)"
+      "election_id — UUID (is_voter=YES भए चाहिन्छ)"
     ],
     "note": "इमेल अवस्थित नभएमा अस्थायी पासवर्डसहित नयाँ खाता स्वचालित रूपमा सिर्जना हुन्छ।",
     "download_template": "टेम्प्लेट डाउनलोड गर्नुहोस्"

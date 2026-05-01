@@ -50,7 +50,7 @@
       "CSV (.csv) — अल्पविराम वा सेमिकोलन | comma or semicolon",
       "Excel (.xlsx, .xls)"
     ],
-    "columns_heading": "आवश्यक स्तम्भहरू | Required Columns:",
+    "columns_heading": "चाहिन्छ स्तम्भहरू | Required Columns:",
     "columns": [
       "Email / E-Mail (अनिवार्य | required)",
       "पहिलो नाम / First Name",

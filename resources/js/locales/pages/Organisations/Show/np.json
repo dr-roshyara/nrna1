@@ -32,7 +32,7 @@
     "step_2": "चरण २",
     "step_3": "चरण ३",
     "step_4": "चरण ४",
-    "legal_note": "संगठन कानून §२६ BGB अनुसार आवश्यक",
+    "legal_note": "संगठन कानून §२६ BGB अनुसार चाहिन्छ",
     "progress_label": "सेटअप प्रगति:"
   },
   "actions": {
@@ -127,7 +127,7 @@
     "proxy": "प्रतिनिधित्व पत्र फाराम"
   },
   "support": {
-    "title": "सहायताको आवश्यकता छ?",
+    "title": "सहायता आवश्यक छ?",
     "description": "हामारो समर्थन टीम तपाईलाई सहायता गर्न यहाँ छ",
     "contact_us": "हामीलाई सम्पर्क गर्नुहोस्",
     "email_us": "इमेल गर्नुहोस्",
@@ -161,7 +161,7 @@
       "columns": {
         "email": "इमेल",
         "first_name": "पहिलो नाम",
-        "last_name": "अन्तिम नाम",
+        "last_name": "थर",
         "phone": "फोन",
         "region": "क्षेत्र",
         "join_date": "सदस्यता मिति"
@@ -173,7 +173,7 @@
         "missing_email": "इमेल स्तम्भ लाग्छ",
         "invalid_email": "पंक्ति {row} मा अमान्य इमेल: {email}",
         "duplicate_email": "पंक्ति {row} मा दोहोरिएको इमेल: {email}",
-        "missing_required": "पंक्ति {row} मा आवश्यक क्षेत्र '{field}' हराइएको छ"
+        "missing_required": "पंक्ति {row} मा चाहिन्छ क्षेत्र '{field}' हराइएको छ"
       },
       "success": "{count} सदस्य सफलतापूर्वक आयात गरिए",
       "partial": "{total} मा {imported} सदस्य आयात गरिए ({skipped} छोडियो)",
@@ -209,7 +209,7 @@
       "step_1_title": "चुनाव विवरण",
       "step_1_description": "आधारभूत चुनाव जानकारी",
       "step_2_title": "चुनाव अधिकृत",
-      "step_2_description": "चुनाव अधिकृत पुष्टि गर्नुहोस्",
+      "step_2_description": "चुनाव अधिकृत Confirm",
       "step_3_title": "उम्मेद्वार",
       "step_3_description": "उम्मेद्वार वा पद थप्नुहोस्",
       "step_4_title": "समीक्षा",
@@ -236,7 +236,7 @@
       "positions": "पदहरू",
       "add_position": "पद थप्नुहोस्",
       "position_name": "पद नाम",
-      "required_candidates": "आवश्यक उम्मेद्वार",
+      "required_candidates": "चाहिन्छ उम्मेद्वार",
       "next": "अगलो",
       "previous": "अघिल्लो",
       "create": "चुनाव सिर्जना गर्नुहोस्",
@@ -298,7 +298,7 @@
   },
   "compliance_dashboard": {
     "title": "अनुपालन ड्यासबोर्ड",
-    "subtitle": "संगठन कानून र आवश्यकताहरू",
+    "subtitle": "संगठन कानून र चाहिन्छताहरू",
     "officer_status": "चुनाव अधिकृत स्थिति",
     "officer_appointed": "नियुक्त",
     "officer_pending": "बाध्य",
@@ -349,7 +349,7 @@
   },
   "election_officers": {
     "page_title": "चुनाव अधिकृतहरू",
-    "page_subtitle": "संगठन कानून §२६ BGB अनुसार आवश्यक",
+    "page_subtitle": "संगठन कानून §२६ BGB अनुसार चाहिन्छ",
     "back_link": "ड्यासबोर्डमा फर्कनुहोस्",
     "current_officers": "हालका अधिकृतहरू",
     "no_officers": "अहिलेसम्म कुनै चुनाव अधिकृत नियुक्त गरिएको छैन।",

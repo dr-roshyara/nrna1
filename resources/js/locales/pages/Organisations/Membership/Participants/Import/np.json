@@ -56,8 +56,8 @@
     "formats": ["CSV (.csv)", "Excel (.xlsx, .xls)"],
     "columns_heading": "स्तम्भहरू:",
     "columns": [
-      "email (आवश्यक) — दर्ता प्रयोगकर्ता हुनुपर्छ",
-      "participant_type (आवश्यक) — staff | guest | election_committee",
+      "email (चाहिन्छ) — दर्ता प्रयोगकर्ता हुनुपर्छ",
+      "participant_type (चाहिन्छ) — staff | guest | election_committee",
       "role (वैकल्पिक) — स्वतन्त्र पाठ",
       "expires_at (वैकल्पिक) — YYYY-MM-DD, भविष्यको मिति",
       "permissions (वैकल्पिक) — JSON"

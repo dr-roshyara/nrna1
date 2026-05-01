@@ -9,8 +9,8 @@
         "placeholder": "आफ्नो पहिलो नाम भर"
       },
       "lastName": {
-        "label": "अन्तिम नाम",
-        "placeholder": "आफ्नो अन्तिम नाम भर"
+        "label": "थर",
+        "placeholder": "आफ्नो थर भर"
       },
       "region": {
         "label": "क्षेत्र",
@@ -32,11 +32,11 @@
       "password": {
         "label": "पासवर्ड",
         "placeholder": "एक शक्तिशाली पासवर्ड बनाउनुहोस्",
-        "help": "कम्तिमा 8 अक्षर आवश्यक",
+        "help": "कम्तिमा 8 अक्षर चाहिन्छ",
         "requirements": "शक्तिशाली पासवर्डको लागि बडो अक्षर, साना अक्षर, संख्या र प्रतीकहरूको मिश्रण प्रयोग गर्नुहोस्"
       },
       "password_confirmation": {
-        "label": "पासवर्ड पुष्टि गर्नुहोस्",
+        "label": "पासवर्ड Confirm",
         "placeholder": "आफ्नो पासवर्ड दोबारा भर",
         "help": "पुष्टि गर्न आफ्नो पासवर्ड दोबारा टाइप गर्नुहोस्"
       },
@@ -66,14 +66,14 @@
     },
     "validation": {
       "firstName_required": "पहिलो नाम लाग्छ",
-      "lastName_required": "अन्तिम नाम लाग्छ",
+      "lastName_required": "थर लाग्छ",
       "email_required": "ईमेल लाग्छ",
       "email_invalid": "मान्य ईमेल ठेगाना भर",
       "email_taken": "यो ईमेल पहिलेबाट दर्ता भएको छ",
       "region_required": "एक क्षेत्र चयन गर्नुहोस्",
       "password_required": "पासवर्ड लाग्छ",
       "password_min": "पासवर्ड कम्तिमा 8 अक्षर लामो हुनुपर्छ",
-      "password_confirmation_required": "पासवर्ड पुष्टि लाग्छ",
+      "password_confirmation_required": "पासवर्ड दोबारा लाग्छ",
       "password_mismatch": "पासवर्डहरु मेल खाएन",
       "terms_required": "तपाईंले सेवा सर्तहरू र गोपनीयता नीति स्वीकार गर्नुपर्छ"
     }
