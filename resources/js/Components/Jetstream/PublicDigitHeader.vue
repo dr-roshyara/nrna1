@@ -33,23 +33,37 @@
 
         <!-- Right Controls: Language + Auth + Mobile Menu -->
         <div class="flex items-center gap-2 md:gap-3 shrink-0">
-          <!-- Language Selector -->
-          <div v-if="!disableLanguageSelector" class="relative">
-            <select
-              :value="currentLocale"
-              @change="handleLanguageChange"
-              class="appearance-none bg-white/5 border border-brand-gold-500/30 rounded-md px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-brand-gold-500 focus:border-transparent cursor-pointer transition-all"
-              :aria-label="$t('common.select_language')"
-            >
-              <option value="de" class="bg-slate-800 text-white">DE</option>
-              <option value="en" class="bg-slate-800 text-white">EN</option>
-              <option value="np" class="bg-slate-800 text-white">NP</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 md:px-2 text-brand-gold-500">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
+          <!-- Language Selector + Reset Button -->
+          <div v-if="!disableLanguageSelector" class="flex items-center gap-1">
+            <!-- Language Dropdown -->
+            <div class="relative">
+              <select
+                :value="currentLocale"
+                @change="handleLanguageChange"
+                class="appearance-none bg-white/5 border border-brand-gold-500/30 rounded-md px-2 md:px-4 py-2 text-xs md:text-sm font-medium text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-brand-gold-500 focus:border-transparent cursor-pointer transition-all"
+                :aria-label="$t('common.select_language')"
+              >
+                <option value="de" class="bg-slate-800 text-white">DE</option>
+                <option value="en" class="bg-slate-800 text-white">EN</option>
+                <option value="np" class="bg-slate-800 text-white">NP</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-1 md:px-2 text-brand-gold-500">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </div>
             </div>
+
+            <!-- Reset Button: Clear preferences and re-detect location -->
+            <button
+              @click="resetLanguagePreferences"
+              type="button"
+              title="Clear saved language preference and detect your location automatically"
+              class="px-2 py-2 text-brand-gold-400 hover:text-brand-gold-500 hover:bg-white/10 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-brand-gold-500"
+              aria-label="Reset language to auto-detect"
+            >
+              🔄
+            </button>
           </div>
 
           <!-- Auth Links - Desktop -->
@@ -360,6 +374,19 @@ function switchLanguage(newLocale) {
   const date = new Date()
   date.setFullYear(date.getFullYear() + 1)
   document.cookie = `locale=${newLocale}; expires=${date.toUTCString()}; path=/`
+}
+
+function resetLanguagePreferences() {
+  // Clear all stored language preferences
+  localStorage.removeItem('preferred_locale')
+  document.cookie = 'locale=; max-age=0; path=/'
+
+  // Show debug info in console
+  console.log('🔄 Language preferences cleared. Reloading to detect location...')
+  console.log('Browser timezone:', Intl.DateTimeFormat().resolvedOptions().timeZone)
+
+  // Reload page to trigger geo-detection in app.js
+  location.reload()
 }
 
 function toggleMobileMenu() {
