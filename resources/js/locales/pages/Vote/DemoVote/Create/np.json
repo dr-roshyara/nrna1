@@ -41,7 +41,7 @@
   "voting_agreement": {
     "title": "मतदान सहमति",
     "agree_label": "मम् शर्तहरूसँग सहमत हुँ",
-    "confirm_message": "जारी राख्न कृपया मतदान सहमति स्वीकार गर्नुहोस्"
+    "confirm_message": "जारी राख्न मतदान सहमति स्वीकार गर्नुहोस्"
   },
   "buttons": {
     "submit_vote": "आफ्नो मत जमा गर्नुहोस्",
@@ -55,6 +55,6 @@
   "skip_link": "मुख्य सामग्रीमा जानुहोस्",
   "alerts": {
     "session_timeout": "सत्र समय सीमा समाप्त",
-    "required_selection_error": "कृपया {{ post_name }} को लागि {{ required_number }} उम्मेदवार(हरू) चयन गर्नुहोस् वा यो पद छोड्नुहोस्"
+    "required_selection_error": "{{ post_name }} को लागि {{ required_number }} उम्मेदवार(हरू) चयन गर्नुहोस् वा यो पद छोड्नुहोस्"
   }
 }

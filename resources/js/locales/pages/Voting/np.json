@@ -38,7 +38,7 @@
     "incomplete_selections": "अपूर्ण छनौट"
   },
   "validation": {
-    "title": "कृपया आफ्नो चयन पुनरावलोकन गर्नुहोस्"
+    "title": "आफ्नो चयन पुनरावलोकन गर्नुहोस्"
   },
   "agreement": {
     "section_title": "अन्तिम पुष्टिकरण",
@@ -87,8 +87,8 @@
   "candidate_selection": {
     "required_candidates": "आवश्यक",
     "all_required": "तपाइँले यो पदको लागि सबै उम्मेदवार छान्नु अनिवार्य छ",
-    "instruction": "कृपया {position} को पदको लागि {number} जना उम्मेदवार छान्नुहोस्",
-    "instruction_nepali": "कृपया {position} को पदको लागि {number} जना उम्मेदवार छान्नुहोस्",
+    "instruction": "{position} को पदको लागि {number} जना उम्मेदवार छान्नुहोस्",
+    "instruction_nepali": "{position} को पदको लागि {number} जना उम्मेदवार छान्नुहोस्",
     "candidate_number": "उम्मेदवार #{number}",
     "candidate_for_post": "Candidate for {post} {post} को उम्मेदवार",
     "unknown": "अज्ञात उम्मेदवार",
@@ -102,7 +102,7 @@
     "checkbox_selected": "चयन गरिएको",
     "status_no_vote": "तपाइँले यो पदको लागि मतदान नगर्ने रोज्नुभएको छ",
     "status_valid": "उत्तम! तपाइँले ठीक {number} जना उम्मेदवार छान्नुभएको छ",
-    "status_invalid": "कृपया ठीक {number} जना उम्मेदवार छान्नुहोस्",
+    "status_invalid": "ठीक {number} जना उम्मेदवार छान्नुहोस्",
     "status_empty": "कुनै उम्मेदवार चयन गरिएको छैन - एक जना छान्नुहोस् वा यो पद छोड्नुहोस्",
     "status_full": "अधिकतम {number} जना चयन गरिएका छन् - उत्तम!",
     "status_partial": "तपाइँले {selected} जना {total} उम्मेदवार मध्ये छान्नुभएको छ",
