@@ -54,9 +54,9 @@
                     ? 'bg-primary-600 text-white hover:bg-primary-700 focus:ring-blue-500 active:bg-primary-800'
                     : 'bg-neutral-200 text-neutral-900 hover:bg-neutral-300 focus:ring-gray-400 active:bg-neutral-400',
                 ]"
-                :aria-label="`${button.label} - ${button.href}`"
+                :aria-label="`${$t(button.labelKey)} - ${button.href}`"
               >
-                {{ button.label }}
+                {{ $t(button.labelKey) }}
               </a>
             </div>
           </div>
@@ -738,10 +738,6 @@ const { locale } = useI18n();
 useMeta({ pageKey: 'security' });
 
 defineProps({
-  hero: {
-    type: Object,
-    required: true,
-  },
   layers: {
     type: Array,
     required: true,
