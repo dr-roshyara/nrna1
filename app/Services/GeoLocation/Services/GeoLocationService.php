@@ -2,6 +2,7 @@
 
 namespace App\Services\GeoLocation\Services;
 
+use App\Domain\Locale\Policies\LocalePolicy;
 use App\Services\GeoLocation\Contracts\GeoIpProvider;
 use App\Services\GeoLocation\ValueObjects\Location;
 
@@ -26,10 +27,6 @@ class GeoLocationService
 
     public function mapCountryToLocale(?string $countryCode): string
     {
-        return match ($countryCode) {
-            'NP' => 'np',
-            'DE', 'AT', 'CH', 'LI', 'LU', 'BE' => 'de',
-            default => 'en',
-        };
+        return LocalePolicy::fromCountry($countryCode)->value();
     }
 }

@@ -24,6 +24,7 @@ class Organisation extends Model
         'representative',
         'settings',
         'languages',
+        'default_language',
         'logo',
         'uses_full_membership',
     ];
@@ -173,5 +174,21 @@ class Organisation extends Model
     public function usesFullMembership(): bool
     {
         return $this->uses_full_membership === true;
+    }
+
+    /**
+     * Get the organisation's default language
+     */
+    public function getDefaultLanguage(): ?string
+    {
+        return $this->default_language;
+    }
+
+    /**
+     * Check if organisation has a default language set
+     */
+    public function hasDefaultLanguage(): bool
+    {
+        return !is_null($this->default_language);
     }
 }
