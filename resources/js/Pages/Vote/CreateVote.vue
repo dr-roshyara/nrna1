@@ -7,8 +7,8 @@
 >
       <div class="mt-6 text-center"> 
         <jet-validation-errors class="mb-4  mx-auto text-center " />  
-         <div class="m-auto text-center bg-blue-200 py-4 ">  
-        <p class="m-auto text-blue-700 font-bold text-sm"> Congratulation {{user_name}}! </p> 
+         <div class="m-auto text-center bg-primary-200 py-4 ">  
+        <p class="m-auto text-primary-700 font-bold text-sm"> Congratulation {{user_name}}! </p> 
           <p> You have given the correct voting code. you can Vote now!</p>
         <p class="m-auto"> Please select the correct candidates of your choice</p>
         <p> यहाँले दिएको भोटिङ कोड सही भएको प्रमाणित भाईसकेको छ। कृपया अब आफ्नो इच्छा अनुसार मतदान गर्न सक्नु हुने छ। </p>
@@ -25,8 +25,8 @@
 
                   <!-- ****************ICC Member ******************************************************************************************************** -->       
                     <div id="first_vote_window" 
-                     class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">      
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                     class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">      
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please choose one  Candidate as the ICC Member. </label> 
                       <label class="p-2"> कृपया एक जना लाई आइसीसी सदस्य  चुन्नुहोस ।  </label>   
                     </div>
@@ -34,7 +34,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(icc_member, pIndx) in icc_members" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                             :candidacy_image_path ="icc_member.image_path_1"
                             :post_name          ="icc_member.post_name"   
@@ -49,7 +49,7 @@
                             :name     ="icc_member.post_name"
                             :value    ="icc_member.candidacy_id"  
                             v-model   ="form.icc_member"
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 
+                            class     ="p-6 rounded border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 
                             focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change    ="updateBoxes(this.icc_members,this.form.icc_member,this.icc_memberTicks)" 
                             :disabled ="icc_member.disabled"
@@ -67,8 +67,8 @@
                   <!-- ****************President ******************************************************************************************* -->       
                     <!-- label -->
                   <div  id="second_vote_window"
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">        
-                    <div class="flex flex-col text-xl text-gray-900 font-bold">
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">        
+                    <div class="flex flex-col text-xl text-neutral-900 font-bold">
                       <label> Please choose one  Candidate as the president. </label> 
                       <label class="p-2"> कृपया एक जना लाई अद्यक्ष चुन्नुहोस । </label>   
                     </div>
@@ -76,7 +76,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(president, pIndx) in presidents" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                              :candidacy_image_path ="president.image_path_1"
                             :post_name          ="president.post_name"   
@@ -91,7 +91,7 @@
                             :name     ="president.post_name"
                             :value    ="president.candidacy_id"  
                             v-model   ="form.president"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.presidents,this.form.president,this.presidentTicks)" 
                             :disabled ="president.disabled"
                           />
@@ -109,8 +109,8 @@
                                   <!-- next -->
                   <!-- ****************Vice president **************************************************************************** -->  
                   <div id="first_vote_window" 
-                    class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">        
-                   <div class="flex flex-col text-xl text-gray-900 font-bold">
+                    class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">        
+                   <div class="flex flex-col text-xl text-neutral-900 font-bold">
                       <label> Please choose one  Candidate as the Vice-president. </label> 
                       <label class="p-2"> कृपया दुई जना लाई उपाद्यक्ष  चुन्नुहोस । </label>   
                     </div>
@@ -118,7 +118,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(vice_president, pIndx) in vice_presidents" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                               :candidacy_image_path ="vice_president.image_path_1"
                               :post_name          ="vice_president.post_name"   
@@ -133,7 +133,7 @@
                             :name     ="vice_president.post_name"
                             :value    ="vice_president.candidacy_id"  
                             v-model   ="form.vice_president"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.vice_presidents, this.form.vice_president,this.vice_presidentTicks)" 
                             :disabled ="vice_president.disabled"
                           />
@@ -153,8 +153,8 @@
                   <!-- ****************woman vice president **************************************************************************** -->  
                   <div  id="second_vote_window" 
                   v-if ="this.wvps.length>0" 
-                    class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">        
-                   <div class="flex flex-col text-xl text-gray-900 font-bold">
+                    class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">        
+                   <div class="flex flex-col text-xl text-neutral-900 font-bold">
                       <label> Please choose one  Candidate as the  Woman Vice President. </label> 
                       <label class="p-2"> कृपया एक जना लाई  महिला उपाद्यक्ष  चुन्नुहोस । </label>   
                     </div>
@@ -162,7 +162,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(wvp, pIndx) in wvps" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                              :candidacy_image_path ="wvp.image_path_1"
                              :post_name          ="wvp.post_name"   
@@ -177,7 +177,7 @@
                             :name     ="wvp.post_name"
                             :value    ="wvp.candidacy_id"  
                             v-model   ="form.wvp"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.wvps, this.form.wvp,this.wvpTicks)" 
                             :disabled ="wvp.disabled"
                           />
@@ -196,8 +196,8 @@
                             <!-- next -->
                   <!-- ****************General Secretary  **************************************************************************** -->  
                   <div id="first_vote_window"  v-if="this. general_secretarys.length>0" 
-                  class="flex flex-col border border-3 border-blue-300 m-2 py-4 px-6">        
-                 <div class="flex flex-col text-xl text-gray-900 font-bold">
+                  class="flex flex-col border border-3 border-primary-300 m-2 py-4 px-6">        
+                 <div class="flex flex-col text-xl text-neutral-900 font-bold">
                       <label> Please choose one  Candidate as the General Secretary. </label> 
                       <label class="p-2"> कृपया एक जनालाई महासचिव चुन्नुहोस । </label>   
                     </div>
@@ -205,7 +205,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(general_secretary, pIndx) in general_secretarys" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                              :candidacy_image_path ="general_secretary.image_path_1"
                              :post_name          ="general_secretary.post_name"   
@@ -220,7 +220,7 @@
                             :name     ="general_secretary.post_name"
                             :value    ="general_secretary.candidacy_id"  
                             v-model   ="form.general_secretary"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.general_secretarys, this.form.general_secretary,this.general_secretaryTicks)" 
                             :disabled ="general_secretary.disabled"
                           />
@@ -241,9 +241,9 @@
                                           <!-- next -->
                   <!-- **************** Secretary **************************************************************************** -->  
                   <div  id="second_vote_window" v-if ="this.secretarys.length>0" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-blue-50 shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-primary-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any two candidates as Secretarys</label> 
                       <label class="p-2"> कृपया दुई जना लाई सचिव छान्नु होस । </label>   
                     </div>
@@ -251,7 +251,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(secretary, pIndx) in secretarys" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                              :candidacy_image_path ="secretary.image_path_1"
                              :post_name          ="secretary.post_name"   
@@ -266,7 +266,7 @@
                             :name     ="secretary.post_name"
                             :value    ="secretary.candidacy_id"  
                             v-model   ="form.secretary"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.secretarys, this.form.secretary,this.secretaryTicks)" 
                             :disabled ="secretary.disabled"
                           />
@@ -287,9 +287,9 @@
         
                   <!-- **************** Treasure **************************************************************************** -->  
                   <div id="first_vote_window" v-if ="this.treasures.length>0" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया एक  जना लाई कोषाद्यक्ष  छान्नु होस ।   </label>   
                     </div>
@@ -297,7 +297,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(treasure, pIndx) in treasures" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                             :candidacy_image_path ="treasure.image_path_1"
                             :post_name          ="treasure.post_name"   
@@ -312,7 +312,7 @@
                             :name     ="treasure.post_name"
                             :value    ="treasure.candidacy_id"  
                             v-model   ="form.treasure"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.treasures, this.form.treasure,this.treasureTicks)" 
                             :disabled ="treasure.disabled"
                           />
@@ -330,9 +330,9 @@
                   <!--end of  Treasure president -->
                 <!-- **************** Woman Coordinator **************************************************************************** -->  
                   <div  id="second_vote_window" v-if ="this.w_coordinators.length>0" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6  shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6  shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया एक  जना लाई महिला कोर्डिनेटर   छान्नु होस  । </label>   
                     </div>
@@ -340,7 +340,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(w_coordinator, pIndx) in w_coordinators" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                              :candidacy_image_path ="w_coordinator.image_path_1"
                             :post_name          ="w_coordinator.post_name"   
@@ -355,7 +355,7 @@
                             :name     ="w_coordinator.post_name"
                             :value    ="w_coordinator.candidacy_id"  
                             v-model   ="form.w_coordinator"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.w_coordinators, this.form.w_coordinator,this.w_coordinatorTicks)" 
                             :disabled ="w_coordinator.disabled"
                           />
@@ -373,9 +373,9 @@
                   <!--end of  w_coordinator  -->
                             <!-- **************** Youth Coordinator **************************************************************************** -->  
                   <div id="first_vote_window" v-if ="this.y_coordinators.length>0" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया एक  जना लाई युबा  कोर्डिनेटर   छान्नु होस ।  </label>   
                     </div>
@@ -383,7 +383,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(y_coordinator, pIndx) in y_coordinators" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                              :candidacy_image_path ="y_coordinator.image_path_1"
                             :post_name          ="y_coordinator.post_name"   
@@ -398,7 +398,7 @@
                             :name     ="y_coordinator.post_name"
                             :value    ="y_coordinator.candidacy_id"  
                             v-model   ="form.y_coordinator"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.y_coordinators, this.form.y_coordinator,this.y_coordinatorTicks)" 
                             :disabled ="y_coordinator.disabled"
                           />
@@ -416,9 +416,9 @@
                   <!--end of  Y_coordinator  -->
                               <!-- **************** Culture Coordinator **************************************************************************** -->  
                   <div id="second_vote_window" 
-                  v-if ="this.cult_coordinators.length>0" class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 shadow-md my-4">   
+                  v-if ="this.cult_coordinators.length>0" class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2">कृपया एक  जना लाई साँस्क्रितिक   कोर्डिनेटर   छान्नु होस ।</label>    
                     </div>
@@ -426,7 +426,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(cult_coordinator, pIndx) in cult_coordinators" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                              :candidacy_image_path ="cult_coordinator.image_path_1"
                              :post_name          ="cult_coordinator.post_name"   
@@ -441,7 +441,7 @@
                             :name     ="cult_coordinator.post_name"
                             :value    ="cult_coordinator.candidacy_id"  
                             v-model   ="form.cult_coordinator"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.cult_coordinators, this.form.cult_coordinator,this.cult_coordinatorTicks)" 
                             :disabled ="cult_coordinator.disabled"
                           />
@@ -460,9 +460,9 @@
                 <!-- **************** child Coordinator **************************************************************************** -->  
                   <div id="first_vote_window"  
                   v-if ="this.child_coordinators.length>0" 
-                    class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">   
+                    class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया एक  जना लाई भाषा साहित्य तथा बालबालिका कोर्डिनेटर   छान्नु होस ।</label>   
                     </div>
@@ -470,7 +470,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(child_coordinator, pIndx) in child_coordinators" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                              :candidacy_image_path ="child_coordinator.image_path_1"
                              :post_name          ="child_coordinator.post_name"   
@@ -485,7 +485,7 @@
                             :name     ="child_coordinator.post_name"
                             :value    ="child_coordinator.candidacy_id"  
                             v-model   ="form.child_coordinator"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.child_coordinators, this.form.child_coordinator,this.child_coordinatorTicks)" 
                             :disabled ="child_coordinator.disabled"
                           />
@@ -504,9 +504,9 @@
                 <!-- **************** Student  Coordinator **************************************************************************** -->  
                   <div id="second_vote_window"
                   v-if ="this.studt_coordinators.length>0" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया एक  जना लाई विद्यार्थी   कोर्डिनेटर   छान्नु होस  ।</label>   
                     </div>
@@ -514,7 +514,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(studt_coordinator, pIndx) in studt_coordinators" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                             :candidacy_image_path ="studt_coordinator.image_path_1"
                             :post_name          ="studt_coordinator.post_name"   
@@ -529,7 +529,7 @@
                             :name     ="studt_coordinator.post_name"
                             :value    ="studt_coordinator.candidacy_id"  
                             v-model   ="form.studt_coordinator"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.studt_coordinators, this.form.studt_coordinator,this.studt_coordinatorTicks)" 
                             :disabled ="studt_coordinator.disabled"
                           />
@@ -548,9 +548,9 @@
                 <!-- **************** Member Berlin **************************************************************************** -->  
                   <div id="first_vote_window"
                   v-if ="this.member_berlins.length>0 & this.user_lcc=='Berlin'" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया एलसीसी बर्लिन   बाट दुई जना सदस्यहरु   छान्नु होस । </label>   
                     </div>
@@ -558,7 +558,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(member_berlin, pIndx) in member_berlins" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                             :candidacy_image_path ="member_berlin.image_path_1"
                             :post_name          ="member_berlin.post_name"   
@@ -573,7 +573,7 @@
                             :name     ="member_berlin.post_name"
                             :value    ="member_berlin.candidacy_id"  
                             v-model   ="form.member_berlin"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_berlins, this.form.member_berlin,this.member_berlinTicks)" 
                             :disabled ="member_berlin.disabled"
                           />
@@ -592,9 +592,9 @@
                     <!-- **************** Member Hamburg **************************************************************************** -->  
                   <div id="second_vote_window"
                     v-if ="this.member_hamburgs.length>0 & this.user_lcc==='Hamburg'" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया एलसीसी ह्याम्बुर्ग  बाट दुई जना सदस्यहरु   छान्नु होस । </label>   
                     </div>
@@ -602,7 +602,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(member_hamburg, pIndx) in member_hamburgs" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                             :candidacy_image_path ="member_hamburg.image_path_1"
                             :post_name          ="member_hamburg.post_name"   
@@ -617,7 +617,7 @@
                             :name     ="member_hamburg.post_name"
                             :value    ="member_hamburg.candidacy_id"  
                             v-model   ="form.member_hamburg"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_hamburgs, this.form.member_hamburg,this.member_hamburgTicks)" 
                             :disabled ="member_hamburg.disabled"
                           />
@@ -637,9 +637,9 @@
                   <!-- **************** Member Niedersachsen **************************************************************************** -->  
                   <div id="first_vote_window"
                   v-if ="this.member_nsachsens.length>0 & this.user_lcc==='Niedersachsen'" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया एलसीसी निदरज्याक्सन   बाट  दुई जना सदस्यहरु   छान्नु होस । </label>   
                     </div>
@@ -647,7 +647,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(member_nsachsen, pIndx) in member_nsachsens" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                              :candidacy_image_path ="member_nsachsen.image_path_1"
                              :post_name          ="member_nsachsen.post_name"   
@@ -662,7 +662,7 @@
                             :name     ="member_nsachsen.post_name"
                             :value    ="member_nsachsen.candidacy_id"  
                             v-model   ="form.member_nsachsen"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_nsachsens, this.form.member_nsachsen,this.member_nsachsenTicks)" 
                             :disabled ="member_nsachsen.disabled"
                           />
@@ -682,9 +682,9 @@
                   <!-- **************** Member NRW **************************************************************************** -->  
                   <div id="second_vote_window"
                   v-if ="this.member_nrws.length>0 & this.user_lcc==='NRW'" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया  एलसीसी एनआरड्ब्ल्यु    बाट  दुई जना सदस्यहरु   छान्नु होस । </label>   
                     </div>
@@ -692,7 +692,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(member_nrw, pIndx) in member_nrws" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                              :candidacy_image_path ="member_nrw.image_path_1"
                              :post_name          ="member_nrw.post_name"   
@@ -707,7 +707,7 @@
                             :name     ="member_nrw.post_name"
                             :value    ="member_nrw.candidacy_id"  
                             v-model   ="form.member_nrw"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_nrws, this.form.member_nrw,this.member_nrwTicks)" 
                             :disabled ="member_nrw.disabled"
                           />
@@ -727,9 +727,9 @@
                         <!-- **************** Member Hessen **************************************************************************** -->  
                   <div id="first_vote_window" 
                   v-if ="this.member_hessens.length>0 & this.user_lcc=='Hessen'" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया एलसीसी एलसीसी हेस्सेन बाट दुई जना सदस्यहरु   छान्नु होस । </label>   
                     </div>
@@ -737,7 +737,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(member_hessen, pIndx) in member_hessens" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                              :candidacy_image_path ="member_hessen.image_path_1"
                              :post_name          ="member_hessen.post_name"   
@@ -752,7 +752,7 @@
                             :name     ="member_hessen.post_name"
                             :value    ="member_hessen.candidacy_id"  
                             v-model   ="form.member_hessen"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_hessens, this.form.member_hessen,this.member_hessenTicks)" 
                             :disabled ="member_hessen.disabled"
                           />
@@ -772,9 +772,9 @@
                         <!-- **************** Member Rhein pfalz **************************************************************************** -->  
                   <div id="second_vote_window"
                   v-if ="this.member_rhein_pfalzs.length>0 & this.user_lcc=='Rheinland Pfalz'" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया एलसीसी राइन ल्यान्ड फाल्ज  बाट दुई जना सदस्यहरु   छान्नु होस । </label>   
                     </div>
@@ -782,7 +782,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(member_rhein_pfalz, pIndx) in member_rhein_pfalzs" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                             :candidacy_image_path ="member_rhein_pfalz.image_path_1"
                             :post_name          ="member_rhein_pfalz.post_name"   
@@ -797,7 +797,7 @@
                             :name     ="member_rhein_pfalz.post_name"
                             :value    ="member_rhein_pfalz.candidacy_id"  
                             v-model   ="form.member_rhein_pfalz"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_rhein_pfalzs, this.form.member_rhein_pfalz,this.member_rhein_pfalzTicks)" 
                             :disabled ="member_rhein_pfalz.disabled"
                           />
@@ -817,9 +817,9 @@
                         <!-- **************** Member Hamburg **************************************************************************** -->  
                   <div id="first_vote_window"
                   v-if ="this.member_bayerns.length>0 & this.user_lcc==='Bayern'" 
-                  class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">   
+                  class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">   
                       
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please Choose any one candidates</label> 
                       <label class="p-2"> कृपया एलसीसी बायर्न  बाट दुई जना सदस्यहरु   छान्नु होस । </label>   
                     </div>
@@ -827,7 +827,7 @@
                     <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                         <div  v-for="(member_bayern, pIndx) in member_bayerns" :key="pIndx"  
                             class="flex flex-col justify-center p-4 mb-2 text-center  
-                            border border-gray-100 rounded"> 
+                            border border-neutral-100 rounded"> 
                             <show-candidate 
                             :candidacy_image_path ="member_bayern.image_path_1"
                             :post_name          ="member_bayern.post_name"   
@@ -842,7 +842,7 @@
                             :name     ="member_bayern.post_name"
                             :value    ="member_bayern.candidacy_id"  
                             v-model   ="form.member_bayern"
-                            class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             @change  ="updateBoxes(this.member_bayerns, this.form.member_bayern,this.member_bayernTicks)" 
                             :disabled ="member_bayern.disabled"
                           />
@@ -867,8 +867,8 @@
              
               <!-- Here comes the no vote Button  -->
               <div  id="second_vote_window"
-               class="flex flex-col border border-2 border-blue-300 m-2 py-4 px-6"> 
-                <div class=" flex flex-col items-center justify-center py-2 mb-2 text-bold text-red-500 text-xl">
+               class="flex flex-col border border-2 border-primary-300 m-2 py-4 px-6"> 
+                <div class=" flex flex-col items-center justify-center py-2 mb-2 text-bold text-danger-500 text-xl">
                  <p> !!कुनै पनि उमेद्बारहरुलाई स्विकार गर्न नचाहने हरुका लागि मात्र !!</p> 
                 <p>  !! Attention Please!, This is option only for the Rejection!!</p>
                 <p> !! उमेदवारहरु लाई अस्विकार को लागि मतदान । !!!</p> 
@@ -880,7 +880,7 @@
                     :name     ="no_vote_option"
                     :value    =true
                     v-model   ="form.no_vote_option"
-                    class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                    class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                     @change  ="update_no_vote_option()" 
                   />
                   </div> 
@@ -893,8 +893,8 @@
            <!--end of no vote button -->             
             <div class="flex flex-col items-center mx-auto my-4 w-full by-4 " style="background-color: #F1F1F1;"> 
               <!-- Here comes the no vote Button  -->
-              <div  class="flex flex-col border border-3 border-blue-300 mx-2 my-4 py-4 px-6"> 
-                <div class=" flex flex-col items-center justify-center py-2 mb-2 text-bold text-red-700 text-xl">
+              <div  class="flex flex-col border border-3 border-primary-300 mx-2 my-4 py-4 px-6"> 
+                <div class=" flex flex-col items-center justify-center py-2 mb-2 text-bold text-danger-700 text-xl">
                       <p> Button for Agreement </p> 
                      <p> मतदान गरेको स्विकार </p>  
                 </div>
@@ -905,14 +905,14 @@
                     :name     ="agree_button"
                     :value    =true
                     v-model   ="form.agree_button"
-                    class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                    class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                  
                   />
                   </div> 
                   <p>  By clicking this button, I conform that I have chosen the candidates correctly and I followed the online rules to vote the candidates. </p>
                 <p>यो बटनमा थिचेर मैले माथि छाने आनुसार  मतदान गरेको साचो हो। मैले बिद्दुतिय नियम हरुलाई पलना गरेर आफ्नो मत जाहेर गरेर मतदान गरेको कुरा स्विकार्छु। </p> 
              
-                   <button type="submit" class="mx-2 my-4 px-2 py-6 rounded-lg bg-blue-300 w-full mx-auto shadow-xs text-xl font-bold text-gray-900">
+                   <button type="submit" class="mx-2 my-4 px-2 py-6 rounded-lg bg-primary-300 w-full mx-auto shadow-xs text-xl font-bold text-neutral-900">
                    Submit
                    </button>
               

@@ -4,20 +4,20 @@
         <!-- {{vote}} -->
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="shadow-sm overflow-hidden border-b border-gray-200 sm:rounded-lg">
+      <div class="shadow-sm overflow-hidden border-b border-neutral-200 sm:rounded-lg">
         <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
+          <thead class="bg-neutral-50">
             <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                 Name
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                 Designation 
               </th> 
-                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                 Region
               </th>
-              <!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">
                 Role
               </th>
               <th scope="col" class="relative px-6 py-3">
@@ -37,13 +37,13 @@
                   
                   </div>
                   <div class="ml-4">
-                    <div class="text-sm font-bold text-gray-900 ">
+                    <div class="text-sm font-bold text-neutral-900 ">
                       {{candiVote.user.name}}
                     </div>
-                    <div class="text-sm text-gray-500">
+                    <div class="text-sm text-neutral-500">
                       Candidacy Id: {{candiVote.candidacy_id}}
                     </div>
-                    <div class="text-sm text-gray-500">
+                    <div class="text-sm text-neutral-500">
                       User Id: {{candiVote.user_id}}
                     </div>
                   
@@ -51,8 +51,8 @@
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">{{candidate["post_name"] }}</div> 
-                <div class="text-sm text-gray-500">post ID: {{candidate["post_id"] }}</div>
+                <div class="text-sm text-neutral-900">{{candidate["post_name"] }}</div> 
+                <div class="text-sm text-neutral-500">post ID: {{candidate["post_id"] }}</div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                      {{candiVote.user.region }} 
@@ -74,13 +74,13 @@
                   
                   </div>
                   <div class="ml-4">
-                    <div class="text-sm font-medium text-gray-900">
+                    <div class="text-sm font-medium text-neutral-900">
                       {{candiVote.user.name}}
                     </div>
-                    <div class="text-sm text-gray-500">
+                    <div class="text-sm text-neutral-500">
                       Candidacy Id: {{candiVote.candidacy_id}}
                     </div>
-                    <div class="text-sm text-gray-500">
+                    <div class="text-sm text-neutral-500">
                       User Id: {{candiVote.user_id}}
                     </div>
                   
@@ -88,8 +88,8 @@
                 </div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">{{candidate["post_name"] }}</div> 
-                <div class="text-sm text-gray-500">post ID: {{candidate["post_id"] }}</div>
+                <div class="text-sm text-neutral-900">{{candidate["post_name"] }}</div> 
+                <div class="text-sm text-neutral-500">post ID: {{candidate["post_id"] }}</div>
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                    <!-- {{candiVote.user.region }}  -->
@@ -128,3 +128,4 @@ methods:{
 }  
 }
 </script>
+

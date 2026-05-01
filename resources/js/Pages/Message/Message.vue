@@ -2,15 +2,15 @@
   <form class="m-2 p-4" @submit.prevent="submit">
     <div> 
     <label for="from">Send message from </label>
-    <input class="bg-gray-200"  id="from" v-model="form.from" /> 
+    <input class="bg-neutral-200"  id="from" v-model="form.from" /> 
     </div>
     <div> 
     <label for="to">Send message to</label>
-    <input  class="bg-gray-200" id="to" v-model="form.to" />
+    <input  class="bg-neutral-200" id="to" v-model="form.to" />
     </div>
       <div> 
     <label for="message">Message</label>
-    <input class="bg-gray-200"  id="message" v-model="form.message" />
+    <input class="bg-neutral-200"  id="message" v-model="form.message" />
     </div>
     <div>
     <button type="submit">Submit</button>

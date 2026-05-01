@@ -2,7 +2,7 @@
     <public-digit-layout>
         <app-layout>
             <template #header>
-                <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                <h2 class="text-xl font-semibold leading-tight text-neutral-800">
                     Dashboard
                 </h2>
             </template>
@@ -44,3 +44,4 @@ export default {
     }
 };
 </script>
+

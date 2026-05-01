@@ -5,10 +5,10 @@
         <!-- Main Card -->
         <div class="bg-white rounded-lg shadow-lg p-8">
           <!-- Title -->
-          <h2 class="text-2xl font-bold text-center text-gray-900 mb-2">
+          <h2 class="text-2xl font-bold text-center text-neutral-900 mb-2">
             {{ $t('pages.role-selection.roleSelection.welcome_short') }}
           </h2>
-          <p class="text-center text-gray-600 mb-8">
+          <p class="text-center text-neutral-600 mb-8">
             {{ $t('pages.role-selection.roleSelection.select_role_subtitle') }}
           </p>
 
@@ -18,7 +18,7 @@
             <button
               v-if="availableRoles.includes('admin')"
               @click="selectRole('admin')"
-              class="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold flex items-center justify-center"
+              class="w-full px-4 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-semibold flex items-center justify-center"
               :aria-label="$t('pages.role-selection.roleSelection.roles.admin.ariaLabel')"
             >
               <span class="mr-2">👑</span>
@@ -106,3 +106,4 @@ button:focus {
   }
 }
 </style>
+

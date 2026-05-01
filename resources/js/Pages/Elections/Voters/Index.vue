@@ -58,7 +58,7 @@
           <p class="sidebar-label">
             {{ organisation.uses_full_membership ? 'ASSIGN MEMBERS AS VOTERS' : 'ASSIGN USERS AS VOTERS' }}
           </p>
-          <p class="text-xs text-gray-500 mb-2">
+          <p class="text-xs text-neutral-500 mb-2">
             {{ organisation.uses_full_membership
               ? 'Only active members with paid fees appear below.'
               : 'All organisation users can be assigned as voters.' }}
@@ -1120,3 +1120,4 @@ const cancelProposal = (m) => {
   }
 }
 </style>
+

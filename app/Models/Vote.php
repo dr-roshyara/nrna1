@@ -115,6 +115,10 @@ class Vote extends BaseVote
             'candidate_count' => $candidateCount,
             'abstention_count' => $abstentionCount,
         ]);
+
+        // Recalculate checksum now that candidate columns are final
+        $this->data_checksum = $this->calculateChecksum();
+        $this->saveQuietly();
     }
 
     /**

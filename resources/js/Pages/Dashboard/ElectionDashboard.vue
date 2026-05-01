@@ -9,7 +9,7 @@
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <!-- Primary Actions Section -->
                 <section class="mb-16" aria-labelledby="primary-actions" role="region">
-                    <h2 id="primary-actions" class="text-3xl font-semibold text-gray-900 text-center mb-10">
+                    <h2 id="primary-actions" class="text-3xl font-semibold text-neutral-900 text-center mb-10">
                         {{ $t('pages.election-dashboard.primary_actions.section_title') }}
                     </h2>
                     <div class="flex justify-center mb-6">
@@ -22,8 +22,8 @@
                         </a>
                     </div>
 
-                    <div class="max-w-md mx-auto mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl shadow-lg overflow-hidden" role="region" aria-labelledby="system-info-title">
-                        <div class="bg-blue-600 px-6 py-3">
+                    <div class="max-w-md mx-auto mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-primary-200 rounded-xl shadow-lg overflow-hidden" role="region" aria-labelledby="system-info-title">
+                        <div class="bg-primary-600 px-6 py-3">
                             <div class="flex items-center justify-center text-white">
                                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
@@ -36,13 +36,13 @@
                             <!-- IP Address Section -->
                             <div class="flex items-start">
                                 <div class="shrink-0 mt-1">
-                                    <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-4 h-4 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z" clip-rule="evenodd"/>
                                     </svg>
                                 </div>
                                 <div class="ml-3">
-                                    <p class="text-xs font-medium text-gray-700 uppercase tracking-wide">{{ $t('pages.election-dashboard.system_info.ip_label') }}</p>
-                                    <p class="text-sm font-bold text-gray-900 font-mono">{{ ipAddress }}</p>
+                                    <p class="text-xs font-medium text-neutral-700 uppercase tracking-wide">{{ $t('pages.election-dashboard.system_info.ip_label') }}</p>
+                                    <p class="text-sm font-bold text-neutral-900 font-mono">{{ ipAddress }}</p>
                                 </div>
                             </div>
 
@@ -54,20 +54,20 @@
                                     </svg>
                                 </div>
                                 <div class="ml-3">
-                                    <p class="text-xs font-medium text-gray-700 uppercase tracking-wide">{{ $t('pages.election-dashboard.system_info.user_label') }}</p>
-                                    <p class="text-sm font-semibold text-gray-900">
+                                    <p class="text-xs font-medium text-neutral-700 uppercase tracking-wide">{{ $t('pages.election-dashboard.system_info.user_label') }}</p>
+                                    <p class="text-sm font-semibold text-neutral-900">
                                         {{ authUser?.name }}
-                                        <span class="text-xs text-gray-900 font-medium">(ID: {{ authUser?.id }})</span>
+                                        <span class="text-xs text-neutral-900 font-medium">(ID: {{ authUser?.id }})</span>
                                     </p>
                                 </div>
                             </div>
                             <!-- User Email with Icon -->
                             <div class="flex items-center mt-1">
-                                <svg class="w-3 h-3 text-gray-500 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-3 h-3 text-neutral-500 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                                 </svg>
-                                <span class="text-xs text-gray-700" :aria-label="$t('pages.election-dashboard.system_info.email_icon_alt')">{{ authUser?.email }}</span>
+                                <span class="text-xs text-neutral-700" :aria-label="$t('pages.election-dashboard.system_info.email_icon_alt')">{{ authUser?.email }}</span>
                             </div>
                         </div>
                     </div>
@@ -112,13 +112,13 @@
 
                                     <!-- Access Status Indicator -->
                                     <div class="mt-4 text-center">
-                                        <span v-if="canAccessVoting" class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white text-blue-800 shadow-lg">
+                                        <span v-if="canAccessVoting" class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white text-primary-800 shadow-lg">
                                             <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                                             </svg>
                                             {{ $t('pages.election-dashboard.voting_section.access_available') }}
                                         </span>
-                                        <span v-else class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-red-600 text-white">
+                                        <span v-else class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-danger-600 text-white">
                                             <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
                                             </svg>
@@ -132,16 +132,16 @@
                             </component>
 
                             <!-- 🚨 ERROR MESSAGE -->
-                            <div v-if="!canAccessVoting && ballotAccess" class="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl">
+                            <div v-if="!canAccessVoting && ballotAccess" class="mt-4 p-4 bg-danger-50 border border-danger-200 rounded-xl">
                                 <div class="flex items-start">
-                                    <svg class="w-5 h-5 text-red-500 mr-3 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-danger-500 mr-3 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
                                     </svg>
                                     <div class="text-sm">
-                                        <p class="font-semibold text-red-800 mb-1">
+                                        <p class="font-semibold text-danger-800 mb-1">
                                             {{ getErrorTitle() }}
                                         </p>
-                                        <p class="text-red-700">
+                                        <p class="text-danger-700">
                                             {{ getErrorMessage() }}
                                         </p>
                                     </div>
@@ -208,7 +208,7 @@
 
                 <!-- Candidate Information Section -->
                 <section class="mb-16" aria-labelledby="candidate-info" role="region">
-                    <h2 id="candidate-info" class="text-3xl font-semibold text-gray-900 text-center mb-10">
+                    <h2 id="candidate-info" class="text-3xl font-semibold text-neutral-900 text-center mb-10">
                         {{ $t('pages.election-dashboard.candidate_info.section_title') }}
                     </h2>
 
@@ -216,22 +216,22 @@
                         <!-- Candidacy Posts -->
                         <a
                             href="posts/index"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-blue-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-neutral-100 hover:border-primary-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-200"
                         >
                             <div class="text-center">
-                                <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors duration-300">
-                                    <svg class="w-10 h-10 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                <div class="bg-primary-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-200 transition-colors duration-300">
+                                    <svg class="w-10 h-10 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.candidate_info.posts_title') }}</h3>
+                                <h3 class="text-xl font-semibold text-neutral-900 mb-3">{{ $t('pages.election-dashboard.candidate_info.posts_title') }}</h3>
                             </div>
                         </a>
 
                         <!-- Candidacy List -->
                         <a
                             href="candidacies/index"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-purple-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-neutral-100 hover:border-purple-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-purple-200"
                         >
                             <div class="text-center">
                                 <div class="bg-purple-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-purple-200 transition-colors duration-300">
@@ -239,14 +239,14 @@
                                         <path d="M12,2A3,3 0 0,1 15,5A3,3 0 0,1 12,8A3,3 0 0,1 9,5A3,3 0 0,1 12,2M21,9V7H15L13.5,7.5C13.1,7.4 12.6,7.5 12,7.5C11.4,7.5 10.9,7.4 10.5,7.5L9,7H3V9H9L10.5,9.5C10.9,9.6 11.4,9.5 12,9.5C12.6,9.5 13.1,9.6 13.5,9.5L15,9H21M12,10.5C11.2,10.5 10.5,11.2 10.5,12C10.5,12.8 11.2,13.5 12,13.5C12.8,13.5 13.5,12.8 13.5,12C13.5,11.2 12.8,10.5 12,10.5Z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.candidate_info.list_title') }}</h3>
+                                <h3 class="text-xl font-semibold text-neutral-900 mb-3">{{ $t('pages.election-dashboard.candidate_info.list_title') }}</h3>
                             </div>
                         </a>
 
                         <!-- Candidacy Form -->
                         <a
                             href="candidacy/create"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-orange-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-neutral-100 hover:border-orange-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-200"
                         >
                             <div class="text-center">
                                 <div class="bg-orange-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-200 transition-colors duration-300">
@@ -254,7 +254,7 @@
                                         <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.candidate_info.form_title') }}</h3>
+                                <h3 class="text-xl font-semibold text-neutral-900 mb-3">{{ $t('pages.election-dashboard.candidate_info.form_title') }}</h3>
                             </div>
                         </a>
                     </div>
@@ -262,7 +262,7 @@
 
                 <!-- Voter Information Section -->
                 <section class="mb-16" aria-labelledby="voter-info" role="region">
-                    <h2 id="voter-info" class="text-3xl font-semibold text-gray-900 text-center mb-10">
+                    <h2 id="voter-info" class="text-3xl font-semibold text-neutral-900 text-center mb-10">
                         {{ $t('pages.election-dashboard.voter_info.section_title') }}
                     </h2>
 
@@ -270,7 +270,7 @@
                         <!-- Voter List -->
                         <a
                             href="voters"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-indigo-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-neutral-100 hover:border-indigo-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-200"
                         >
                             <div class="text-center">
                                 <div class="bg-indigo-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-indigo-200 transition-colors duration-300">
@@ -278,14 +278,14 @@
                                         <path d="M16,4C16.88,4 17.67,4.84 17.67,5.84C17.67,6.84 16.88,7.68 16,7.68C15.12,7.68 14.33,6.84 14.33,5.84C14.33,4.84 15.12,4 16,4M16,8.48C18.67,8.48 20.33,10.5 20.33,12.85C20.33,15.2 18.67,17.22 16,17.22C13.33,17.22 11.67,15.2 11.67,12.85C11.67,10.5 13.33,8.48 16,8.48M16,9.68C14.12,9.68 12.67,11.04 12.67,12.85C12.67,14.66 14.12,16 16,16C17.88,16 19.33,14.66 19.33,12.85C19.33,11.04 17.88,9.68 16,9.68Z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.voter_info.list_title') }}</h3>
+                                <h3 class="text-xl font-semibold text-neutral-900 mb-3">{{ $t('pages.election-dashboard.voter_info.list_title') }}</h3>
                             </div>
                         </a>
 
                         <!-- Your Vote -->
                         <a
                             href="vote/verify_to_show"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-teal-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-teal-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-neutral-100 hover:border-teal-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-teal-200"
                         >
                             <div class="text-center">
                                 <div class="bg-teal-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-teal-200 transition-colors duration-300">
@@ -293,14 +293,14 @@
                                         <path d="M10,17L5,12L6.41,10.59L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.voter_info.your_vote_title') }}</h3>
+                                <h3 class="text-xl font-semibold text-neutral-900 mb-3">{{ $t('pages.election-dashboard.voter_info.your_vote_title') }}</h3>
                             </div>
                         </a>
 
                         <!-- NRNA Members -->
                         <a
                             href="members/index"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-gray-100 hover:border-rose-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-rose-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-8 border border-neutral-100 hover:border-rose-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-rose-200"
                         >
                             <div class="text-center">
                                 <div class="bg-rose-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:bg-rose-200 transition-colors duration-300">
@@ -308,7 +308,7 @@
                                         <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2M4 18v-6h3v7H5.5c-.83 0-1.5-.67-1.5-1.5M22 22H10v-1h12v1M13.5 12.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5M5.5 6h2c.83 0 1.5.67 1.5 1.5V9H7v6H5V7.5C5 6.67 5.67 6 6.5 6"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $t('pages.election-dashboard.voter_info.members_title') }}</h3>
+                                <h3 class="text-xl font-semibold text-neutral-900 mb-3">{{ $t('pages.election-dashboard.voter_info.members_title') }}</h3>
                             </div>
                         </a>
                     </div>
@@ -316,7 +316,7 @@
 
                 <!-- Administrative Section -->
                 <section class="mb-16" aria-labelledby="admin-functions" role="region">
-                    <h2 id="admin-functions" class="text-3xl font-semibold text-gray-900 text-center mb-10">
+                    <h2 id="admin-functions" class="text-3xl font-semibold text-neutral-900 text-center mb-10">
                         {{ $t('pages.election-dashboard.admin_functions.section_title') }}
                     </h2>
 
@@ -324,16 +324,16 @@
                         <!-- Election Committee -->
                         <a
                             href="election/committee"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-gray-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-gray-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-neutral-100 hover:border-neutral-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-gray-200"
                         >
                             <div class="flex items-center">
-                                <div class="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mr-8 group-hover:bg-gray-200 transition-colors duration-300">
-                                    <svg class="w-10 h-10 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                <div class="bg-neutral-100 rounded-full w-20 h-20 flex items-center justify-center mr-8 group-hover:bg-neutral-200 transition-colors duration-300">
+                                    <svg class="w-10 h-10 text-neutral-600" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,8C5.56,8 6.08,8.15 6.53,8.42C6.38,9.85 6.8,11.27 7.66,12.38C7.16,13.34 6.16,14 5,14A3,3 0 0,1 2,11A3,3 0 0,1 5,8M19,8A3,3 0 0,1 22,11A3,3 0 0,1 19,14C17.84,14 16.84,13.34 16.34,12.38C17.2,11.27 17.62,9.85 17.47,8.42C17.92,8.15 18.44,8 19,8M5.5,18.25C5.5,16.18 8.41,14.5 12,14.5C15.59,14.5 18.5,16.18 18.5,18.25V20H5.5V18.25M0,20V18.5C0,17.11 1.89,15.94 4.45,15.6C3.86,16.28 3.5,17.22 3.5,18.25V20H0M24,20H20.5V18.25C20.5,17.22 20.14,16.28 19.55,15.6C22.11,15.94 24,17.11 24,18.5V20Z"/>
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">{{ $t('pages.election-dashboard.admin_functions.committee_title') }}</h3>
+                                    <h3 class="text-2xl font-semibold text-neutral-900 mb-2">{{ $t('pages.election-dashboard.admin_functions.committee_title') }}</h3>
                                 </div>
                             </div>
                         </a>
@@ -341,7 +341,7 @@
                         <!-- General Information -->
                         <a
                             href="#"
-                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-gray-100 hover:border-yellow-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-200"
+                            class="group bg-white rounded-2xl shadow-lg hover:shadow-xl p-10 border border-neutral-100 hover:border-yellow-300 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-yellow-200"
                         >
                             <div class="flex items-center">
                                 <div class="bg-yellow-100 rounded-full w-20 h-20 flex items-center justify-center mr-8 group-hover:bg-yellow-200 transition-colors duration-300">
@@ -350,7 +350,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 class="text-2xl font-semibold text-gray-900 mb-2">{{ $t('pages.election-dashboard.admin_functions.general_info_title') }}</h3>
+                                    <h3 class="text-2xl font-semibold text-neutral-900 mb-2">{{ $t('pages.election-dashboard.admin_functions.general_info_title') }}</h3>
                                 </div>
                             </div>
                         </a>
@@ -358,22 +358,22 @@
                 </section>
 
                 <!-- Help Section -->
-                <section class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-12 text-center border border-blue-100" aria-label="Help and Support">
+                <section class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-12 text-center border border-primary-100" aria-label="Help and Support">
                     <div class="max-w-3xl mx-auto">
-                        <div class="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-8">
-                            <svg class="w-10 h-10 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <div class="bg-primary-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-8">
+                            <svg class="w-10 h-10 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,10.27 15.45,11.4 14.59,12.26L15.07,11.25M13,19H11V17H13V19Z"/>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">{{ $t('pages.election-dashboard.help_section.title') }}</h3>
-                        <p class="text-gray-700 mb-8 text-lg leading-relaxed">
+                        <h3 class="text-2xl font-semibold text-neutral-900 mb-4">{{ $t('pages.election-dashboard.help_section.title') }}</h3>
+                        <p class="text-neutral-700 mb-8 text-lg leading-relaxed">
                             {{ $t('pages.election-dashboard.help_section.description') }}
                         </p>
                         <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg">
+                            <button class="bg-primary-600 hover:bg-primary-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg">
                                 {{ $t('pages.election-dashboard.help_section.contact_button') }}
                             </button>
-                            <button class="bg-white hover:bg-blue-50 text-blue-600 border-2 border-blue-600 font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg">
+                            <button class="bg-white hover:bg-primary-50 text-primary-600 border-2 border-primary-600 font-semibold px-8 py-4 rounded-xl transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg">
                                 {{ $t('pages.election-dashboard.help_section.guide_button') }}
                             </button>
                         </div>
@@ -612,7 +612,7 @@ export default {
                 event.stopPropagation();
 
                 this.$nextTick(() => {
-                    const errorDiv = document.querySelector('.bg-red-50');
+                    const errorDiv = document.querySelector('.bg-danger-50');
                     if (errorDiv) {
                         errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         errorDiv.classList.add('ring-2', 'ring-red-400', 'ring-opacity-75');
@@ -768,7 +768,7 @@ button:focus-visible,
 
 /* High contrast mode */
 @media (prefers-contrast: high) {
-    .border-gray-100 {
+    .border-neutral-100 {
         border-color: #000000 !important;
         border-width: 2px !important;
     }
@@ -866,3 +866,4 @@ a[href]:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
 }
 </style>
+

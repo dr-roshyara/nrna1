@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-gray-50">
+  <div class="min-h-screen flex flex-col bg-neutral-50">
     <!-- Header -->
     <PublicDigitHeader />
 
@@ -8,13 +8,13 @@
       <div class="max-w-4xl mx-auto">
         <!-- Page Title -->
         <div class="mb-8">
-          <h1 class="text-4xl font-bold text-gray-900 mb-2">
+          <h1 class="text-4xl font-bold text-neutral-900 mb-2">
             {{ $t('pages.election.select_election.heading') }}
           </h1>
-          <p class="text-lg text-gray-600">
+          <p class="text-lg text-neutral-600">
             {{ $t('pages.election.select_election.subtitle') }}
           </p>
-          <p class="text-gray-500 mt-4">
+          <p class="text-neutral-500 mt-4">
             {{ $t('pages.election.select_election.instructions') }}
           </p>
         </div>
@@ -28,10 +28,10 @@
             :class="getElectionBorderClass(election)"
           >
             <!-- Election Card Header -->
-            <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
+            <div class="px-6 py-4 border-b border-neutral-200 bg-neutral-50">
               <div class="flex items-start justify-between">
                 <div class="flex-1">
-                  <h2 class="text-2xl font-bold text-gray-900">
+                  <h2 class="text-2xl font-bold text-neutral-900">
                     {{ election.name }}
                   </h2>
                   <div class="flex items-center gap-3 mt-2 flex-wrap">
@@ -59,42 +59,42 @@
             <div class="px-6 py-6 space-y-4">
               <!-- Description -->
               <div v-if="election.description" class="prose prose-sm max-w-none">
-                <p class="text-gray-700">
+                <p class="text-neutral-700">
                   {{ election.description }}
                 </p>
               </div>
 
               <!-- Election Details -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 border-t border-b border-gray-200">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 border-t border-b border-neutral-200">
                 <!-- Voting Period -->
                 <div>
-                  <p class="text-sm text-gray-600 font-semibold">
+                  <p class="text-sm text-neutral-600 font-semibold">
                     {{ $t('pages.election.select_election.voting_period') }}
                   </p>
-                  <p class="text-gray-900 mt-1 text-sm">
+                  <p class="text-neutral-900 mt-1 text-sm">
                     {{ formatDate(election.start_date) }} <br>
-                    <span class="text-xs text-gray-600">{{ $t('pages.election.election_card.voting_ends') }}</span><br>
+                    <span class="text-xs text-neutral-600">{{ $t('pages.election.election_card.voting_ends') }}</span><br>
                     <span class="font-semibold">{{ formatDate(election.end_date) }}</span>
                   </p>
                 </div>
 
                 <!-- Candidates (if available) -->
                 <div>
-                  <p class="text-sm text-gray-600 font-semibold">
+                  <p class="text-sm text-neutral-600 font-semibold">
                     {{ $t('pages.election.select_election.candidates') }}
                   </p>
-                  <p class="text-gray-900 mt-1 text-lg">
+                  <p class="text-neutral-900 mt-1 text-lg">
                     {{ getCandidateCount(election) }}
                   </p>
                 </div>
               </div>
 
               <!-- Election Info -->
-              <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <p class="text-sm text-blue-900">
+              <div class="bg-primary-50 border border-primary-200 rounded-lg p-4">
+                <p class="text-sm text-primary-900">
                   <strong>{{ $t('pages.election.select_election.learn_more') }}</strong>
                 </p>
-                <p class="text-sm text-blue-700 mt-2">
+                <p class="text-sm text-primary-700 mt-2">
                   {{ getElectionInfo(election) }}
                 </p>
               </div>
@@ -104,7 +104,7 @@
                 <button
                   @click="selectElection(election)"
                   :aria-label="`${$t('pages.election.select_election.select_button')}: ${election.name}`"
-                  class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {{ $t('pages.election.select_election.select_button') }}
                 </button>
@@ -127,7 +127,7 @@
           </p>
           <InertiaLink
             href="/dashboard"
-            class="mt-4 inline-block bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+            class="mt-4 inline-block bg-neutral-600 hover:bg-neutral-700 text-white font-bold py-2 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
           >
             {{ $t('pages.election.actions.back') }}
           </InertiaLink>
@@ -164,7 +164,7 @@ const page = usePage()
  * Get CSS class for election border based on type
  */
 const getElectionBorderClass = (election) => {
-  return election.type === 'demo' ? 'border-orange-400' : 'border-blue-400'
+  return election.type === 'demo' ? 'border-orange-400' : 'border-primary-400'
 }
 
 /**
@@ -187,7 +187,7 @@ const getElectionType = (election) => {
 const getElectionTypeClass = (election) => {
   return election.type === 'demo'
     ? 'bg-orange-100 text-orange-800'
-    : 'bg-blue-100 text-blue-800'
+    : 'bg-primary-100 text-primary-800'
 }
 
 /**
@@ -287,3 +287,4 @@ a:focus-visible {
   }
 }
 </style>
+

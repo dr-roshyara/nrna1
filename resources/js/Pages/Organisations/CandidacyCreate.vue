@@ -5,7 +5,7 @@
       <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
       {{ page.props.flash.success }}
     </div>
-    <div v-if="page.props.flash?.error" class="fixed top-4 right-4 z-50 max-w-sm rounded-xl bg-red-600 text-white text-sm font-medium px-5 py-3 shadow-xl flex items-center gap-2">
+    <div v-if="page.props.flash?.error" class="fixed top-4 right-4 z-50 max-w-sm rounded-xl bg-danger-600 text-white text-sm font-medium px-5 py-3 shadow-xl flex items-center gap-2">
       <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       {{ page.props.flash.error }}
     </div>
@@ -62,3 +62,4 @@ defineProps({
 
 const page = usePage()
 </script>
+

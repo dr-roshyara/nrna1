@@ -4,7 +4,7 @@
 
       <!-- Flash / errors -->
       <div v-if="page.props.errors?.error"
-           class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
+           class="mb-6 rounded-lg bg-danger-50 border border-danger-200 p-4 text-danger-800 text-sm">
         {{ page.props.errors.error }}
       </div>
 
@@ -25,7 +25,7 @@
       <!-- Audience Type Selector -->
       <div class="mb-6 rounded-lg bg-white border border-slate-200 shadow-sm p-4">
         <label class="block text-sm font-semibold text-slate-700 mb-3">
-          {{ t.audience_type || 'Audience Type' }} <span class="text-red-500">*</span>
+          {{ t.audience_type || 'Audience Type' }} <span class="text-danger-500">*</span>
         </label>
         <select v-model="form.audience_type" @change="onAudienceChange"
                 class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900
@@ -39,7 +39,7 @@
       <!-- Election Selector (for election-based audiences) -->
       <div v-if="isElectionAudience" class="mb-6 rounded-lg bg-white border border-slate-200 shadow-sm p-4">
         <label class="block text-sm font-semibold text-slate-700 mb-3">
-          {{ t.election || 'Election' }} <span class="text-red-500">*</span>
+          {{ t.election || 'Election' }} <span class="text-danger-500">*</span>
         </label>
         <select v-model="form.audience_meta.election_id"
                 class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900
@@ -80,23 +80,23 @@
         <!-- Subject -->
         <div>
           <label class="block text-sm font-semibold text-slate-700 mb-1.5">
-            {{ t.subject }} <span class="text-red-500">*</span>
+            {{ t.subject }} <span class="text-danger-500">*</span>
           </label>
           <input v-model="form.subject" type="text" required maxlength="255"
                  class="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-900
                         focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent
                         placeholder:text-slate-400"
                  :placeholder="t.subject_placeholder" />
-          <p v-if="errors.subject" class="mt-1 text-xs text-red-600">{{ errors.subject }}</p>
+          <p v-if="errors.subject" class="mt-1 text-xs text-danger-600">{{ errors.subject }}</p>
         </div>
 
         <!-- HTML Content — rich text editor -->
         <div>
           <label class="block text-sm font-semibold text-slate-700 mb-1.5">
-            {{ t.content }} <span class="text-red-500">*</span>
+            {{ t.content }} <span class="text-danger-500">*</span>
           </label>
           <RichTextEditor v-model="form.html_content" :placeholder="t.content_placeholder" />
-          <p v-if="errors.html_content" class="mt-1 text-xs text-red-600">{{ errors.html_content }}</p>
+          <p v-if="errors.html_content" class="mt-1 text-xs text-danger-600">{{ errors.html_content }}</p>
         </div>
 
         <!-- Plain text (optional) -->
@@ -273,3 +273,4 @@ const submit = () => {
   )
 }
 </script>
+

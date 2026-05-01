@@ -231,7 +231,7 @@ const flashWarning = computed(() => {
                   aria-label="Whitelisted IP addresses"
                   class="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:outline-none focus:border-teal-500 font-mono text-sm bg-white hover:border-slate-400 transition-colors"
                 />
-                <p v-if="whitelistError" class="text-red-600 font-semibold text-sm mt-3 flex items-center gap-2" role="alert">
+                <p v-if="whitelistError" class="text-danger-600 font-semibold text-sm mt-3 flex items-center gap-2" role="alert">
                   <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
                   {{ whitelistError }}
                 </p>
@@ -500,21 +500,21 @@ const flashWarning = computed(() => {
         </div>
 
         <!-- General Agreement Required -->
-        <div class="card-elevated border-l-4 border-blue-500 bg-blue-50">
+        <div class="card-elevated border-l-4 border-primary-500 bg-primary-50">
           <fieldset class="space-y-3">
             <legend class="text-sm font-semibold text-slate-900 mb-4">Confirmation Required</legend>
             <label class="flex items-start cursor-pointer group">
               <input
                 v-model="form.agreed_to_settings"
                 type="checkbox"
-                class="w-5 h-5 rounded border-2 border-blue-400 focus:ring-2 focus:ring-blue-500 cursor-pointer mt-1 flex-shrink-0"
+                class="w-5 h-5 rounded border-2 border-primary-400 focus:ring-2 focus:ring-blue-500 cursor-pointer mt-1 flex-shrink-0"
                 aria-describedby="agree-help"
               />
-              <span class="ml-3 text-sm font-semibold text-blue-900 group-hover:text-blue-700">
+              <span class="ml-3 text-sm font-semibold text-primary-900 group-hover:text-primary-700">
                 I agree to save these election settings and understand they will take effect immediately
               </span>
             </label>
-            <p id="agree-help" class="text-xs text-blue-700 ml-8">
+            <p id="agree-help" class="text-xs text-primary-700 ml-8">
               Please review all settings above before confirming. These changes cannot be undone automatically.
             </p>
           </fieldset>
@@ -623,3 +623,4 @@ const flashWarning = computed(() => {
   border-color: var(--color-primary);
 }
 </style>
+

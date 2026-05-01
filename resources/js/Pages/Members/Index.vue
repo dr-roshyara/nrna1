@@ -1,13 +1,13 @@
 <template>
   <election-layout>
-    <div class="m-2 min-h-screen bg-gray-100 p-2">
+    <div class="m-2 min-h-screen bg-neutral-100 p-2">
 
       <!-- Header -->
       <div class="mb-6 bg-white rounded-lg shadow-sm p-6">
         <div class="flex items-center justify-between mb-2">
           <div>
-            <h1 class="text-2xl font-bold text-gray-900">Formal Members — {{ organisation.name }}</h1>
-            <p class="text-sm text-gray-500 mt-1">
+            <h1 class="text-2xl font-bold text-neutral-900">Formal Members — {{ organisation.name }}</h1>
+            <p class="text-sm text-neutral-500 mt-1">
               Only persons with an active membership record are listed here.
               Platform staff, commissioners and voters are managed separately.
             </p>
@@ -21,7 +21,7 @@
             </a>
             <a
               :href="`/organisations/${organisation.slug}`"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-600 text-white text-sm font-medium hover:bg-primary-700 transition-colors"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -33,16 +33,16 @@
 
         <!-- Stats -->
         <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="bg-blue-50 p-4 rounded border-l-4 border-blue-500">
-            <div class="text-xs text-gray-500 font-medium uppercase tracking-wide">Active Members</div>
-            <div class="text-3xl font-bold text-blue-600 mt-1">{{ stats.total_members }}</div>
+          <div class="bg-primary-50 p-4 rounded border-l-4 border-primary-500">
+            <div class="text-xs text-neutral-500 font-medium uppercase tracking-wide">Active Members</div>
+            <div class="text-3xl font-bold text-primary-600 mt-1">{{ stats.total_members }}</div>
           </div>
           <div class="bg-orange-50 p-4 rounded border-l-4 border-orange-400">
-            <div class="text-xs text-gray-500 font-medium uppercase tracking-wide">Expired</div>
+            <div class="text-xs text-neutral-500 font-medium uppercase tracking-wide">Expired</div>
             <div class="text-3xl font-bold text-orange-500 mt-1">{{ stats.expired_count }}</div>
           </div>
           <div class="bg-amber-50 p-4 rounded border-l-4 border-amber-500">
-            <div class="text-xs text-gray-500 font-medium uppercase tracking-wide">Pending Fees (total)</div>
+            <div class="text-xs text-neutral-500 font-medium uppercase tracking-wide">Pending Fees (total)</div>
             <div class="text-3xl font-bold text-amber-600 mt-1">€{{ stats.pending_fees.toFixed(2) }}</div>
           </div>
         </div>
@@ -52,28 +52,28 @@
       <div class="mb-4 bg-white rounded-lg shadow-sm p-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <label class="block text-sm font-medium text-neutral-700 mb-1">Name</label>
             <input
               v-model="params.name"
               type="text"
-              class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded border border-neutral-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Search by name…"
             />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label class="block text-sm font-medium text-neutral-700 mb-1">Email</label>
             <input
               v-model="params.email"
               type="text"
-              class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded border border-neutral-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Search by email…"
             />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+            <label class="block text-sm font-medium text-neutral-700 mb-1">Status</label>
             <select
               v-model="params.status"
-              class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded border border-neutral-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All</option>
               <option value="active">Active</option>
@@ -95,16 +95,16 @@
       <!-- Pagination top -->
       <div class="flex items-center justify-between px-5 py-3 bg-white rounded-t-lg shadow-xs">
         <Link v-if="members.prev_page_url" :href="members.prev_page_url"
-          class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600">
+          class="flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-primary-600">
           ← Previous
         </Link>
         <div v-else class="invisible text-sm">← Previous</div>
-        <span class="text-sm text-gray-600">
+        <span class="text-sm text-neutral-600">
           Page <strong>{{ members.current_page }}</strong> of <strong>{{ members.last_page }}</strong>
           &nbsp;({{ members.total }} records)
         </span>
         <Link v-if="members.next_page_url" :href="members.next_page_url"
-          class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600">
+          class="flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-primary-600">
           Next →
         </Link>
         <div v-else class="invisible text-sm">Next →</div>
@@ -133,25 +133,25 @@
           </thead>
           <tbody>
             <tr v-if="!members.data || members.data.length === 0">
-              <td colspan="8" class="px-4 py-12 text-center text-gray-400">
+              <td colspan="8" class="px-4 py-12 text-center text-neutral-400">
                 No formal members found. Members are created when a membership application is approved.
               </td>
             </tr>
             <tr
               v-for="(member, index) in members.data"
               :key="member.id"
-              :class="index % 2 === 0 ? 'bg-white' : 'bg-gray-50'"
-              class="hover:bg-indigo-50 transition-colors border-b border-gray-100"
+              :class="index % 2 === 0 ? 'bg-white' : 'bg-neutral-50'"
+              class="hover:bg-indigo-50 transition-colors border-b border-neutral-100"
             >
-              <td class="px-4 py-3 font-medium text-gray-900">{{ member.name }}</td>
-              <td class="px-4 py-3 text-gray-600">{{ member.email }}</td>
+              <td class="px-4 py-3 font-medium text-neutral-900">{{ member.name }}</td>
+              <td class="px-4 py-3 text-neutral-600">{{ member.email }}</td>
               <td class="px-4 py-3">
                 <span :class="statusClass(member.status)" class="px-2.5 py-0.5 rounded-full text-xs font-semibold capitalize">
                   {{ member.status }}
                 </span>
               </td>
-              <td class="px-4 py-3 text-gray-600">{{ formatDate(member.joined_at) }}</td>
-              <td class="px-4 py-3 text-gray-600" :class="{ 'text-red-600 font-medium': isExpired(member.membership_expires_at) }">
+              <td class="px-4 py-3 text-neutral-600">{{ formatDate(member.joined_at) }}</td>
+              <td class="px-4 py-3 text-neutral-600" :class="{ 'text-danger-600 font-medium': isExpired(member.membership_expires_at) }">
                 {{ member.membership_expires_at ? formatDate(member.membership_expires_at) : 'Lifetime' }}
               </td>
               <td class="px-4 py-3">
@@ -159,12 +159,12 @@
                   class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-amber-100 text-amber-800 rounded-full text-xs font-semibold">
                   €{{ member.pending_fees.toFixed(2) }}
                 </span>
-                <span v-else class="text-gray-400 text-xs">—</span>
+                <span v-else class="text-neutral-400 text-xs">—</span>
               </td>
               <td class="px-4 py-3">
                 <a
                   :href="`/organisations/${organisation.slug}/members/${member.id}/finance`"
-                  class="inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 bg-blue-100 text-blue-700 hover:bg-blue-200 rounded transition-colors"
+                  class="inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 bg-primary-100 text-primary-700 hover:bg-primary-200 rounded transition-colors"
                 >
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -195,13 +195,13 @@
       <!-- Pagination bottom -->
       <div class="flex items-center justify-between px-5 py-3 bg-white rounded-b-lg shadow-xs">
         <Link v-if="members.prev_page_url" :href="members.prev_page_url"
-          class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600">
+          class="flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-primary-600">
           ← Previous
         </Link>
         <div v-else class="invisible text-sm">← Previous</div>
-        <span class="text-sm text-gray-500">{{ members.total }} total formal members</span>
+        <span class="text-sm text-neutral-500">{{ members.total }} total formal members</span>
         <Link v-if="members.next_page_url" :href="members.next_page_url"
-          class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-blue-600">
+          class="flex items-center gap-2 text-sm font-medium text-neutral-600 hover:text-primary-600">
           Next →
         </Link>
         <div v-else class="invisible text-sm">Next →</div>
@@ -267,10 +267,10 @@ export default {
       const map = {
         active:  'bg-green-100 text-green-800',
         expired: 'bg-orange-100 text-orange-800',
-        ended:   'bg-gray-100 text-gray-600',
+        ended:   'bg-neutral-100 text-neutral-600',
         pending: 'bg-yellow-100 text-yellow-800',
       }
-      return map[status] ?? 'bg-gray-100 text-gray-600'
+      return map[status] ?? 'bg-neutral-100 text-neutral-600'
     },
 
     isExpired(expiresAt) {
@@ -309,3 +309,4 @@ export default {
   },
 }
 </script>
+

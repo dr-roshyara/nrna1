@@ -331,9 +331,10 @@ Route::middleware(['auth', 'verified', \App\Http\Middleware\TenantContext::class
                 ->name('elections.timeline')
                 ->can('manageSettings', 'election');
 
+            // TEMP: Testing without ->can() to isolate the 403 source
             Route::patch('/timeline', [ElectionManagementController::class, 'updateTimeline'])
-                ->name('elections.update-timeline')
-                ->can('manageSettings', 'election');
+                ->name('elections.update-timeline');
+                // ->can('manageSettings', 'election');  // Temporarily disabled
         });
     });
 

@@ -48,13 +48,13 @@ const isGlobal = computed(() => props.mode === 'global');
 
 const bannerClass = computed(() =>
   isGlobal.value
-    ? 'bg-blue-50 text-blue-900 border-b-2 border-blue-200 dark:bg-blue-900 dark:text-blue-50 dark:border-blue-700'
+    ? 'bg-primary-50 text-primary-900 border-b-2 border-primary-200 dark:bg-primary-900 dark:text-primary-50 dark:border-primary-700'
     : 'bg-purple-50 text-purple-900 border-b-2 border-purple-200 dark:bg-purple-900 dark:text-purple-50 dark:border-purple-700'
 );
 
 const badgeClass = computed(() =>
   isGlobal.value
-    ? 'px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 whitespace-nowrap'
+    ? 'px-3 py-1 rounded-full text-xs font-medium bg-primary-100 text-primary-800 dark:bg-primary-800 dark:text-primary-100 whitespace-nowrap'
     : 'px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-800 dark:text-purple-100 whitespace-nowrap'
 );
 
@@ -78,3 +78,4 @@ const badgeText = computed(() =>
 
 const ariaLabel = computed(() => `${title.value}: ${description.value}`);
 </script>
+

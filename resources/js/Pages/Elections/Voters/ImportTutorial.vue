@@ -8,7 +8,7 @@
           <Link
             v-if="!isPublic && organisation && election"
             :href="route('elections.voters.import.create', { organisation: organisation.slug, election: election.slug })"
-            class="inline-flex items-center text-blue-600 hover:text-blue-700 mb-4"
+            class="inline-flex items-center text-primary-600 hover:text-primary-700 mb-4"
           >
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -17,8 +17,8 @@
           </Link>
           <div class="flex items-center justify-between mb-4">
             <div>
-              <h1 class="text-4xl font-black text-gray-900 mb-1 tracking-tight">{{ t.title }}</h1>
-              <p class="text-lg text-gray-600">{{ t.subtitle }}</p>
+              <h1 class="text-4xl font-black text-neutral-900 mb-1 tracking-tight">{{ t.title }}</h1>
+              <p class="text-lg text-neutral-600">{{ t.subtitle }}</p>
             </div>
             <div
               :class="[
@@ -73,15 +73,15 @@
                   <div class="space-y-2 text-sm">
                     <div class="flex gap-3 items-start">
                       <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-900 text-white text-xs font-bold flex-shrink-0">1</span>
-                      <span class="text-gray-700">User <strong>must exist</strong> in platform</span>
+                      <span class="text-neutral-700">User <strong>must exist</strong> in platform</span>
                     </div>
                     <div class="flex gap-3 items-start">
                       <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-900 text-white text-xs font-bold flex-shrink-0">2</span>
-                      <span class="text-gray-700">User <strong>must be member</strong> of organisation</span>
+                      <span class="text-neutral-700">User <strong>must be member</strong> of organisation</span>
                     </div>
                     <div class="flex gap-3 items-start">
                       <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-900 text-white text-xs font-bold flex-shrink-0">3</span>
-                      <span class="text-gray-700">Status <strong>must be active</strong></span>
+                      <span class="text-neutral-700">Status <strong>must be active</strong></span>
                     </div>
                   </div>
                 </div>
@@ -89,7 +89,7 @@
                 <!-- Use Cases -->
                 <div class="bg-amber-900 bg-opacity-5 rounded-lg p-4 border border-amber-200">
                   <p class="text-xs font-bold text-amber-900 uppercase tracking-wider mb-2">Best For</p>
-                  <ul class="text-sm text-gray-700 space-y-1">
+                  <ul class="text-sm text-neutral-700 space-y-1">
                     <li>✓ Internal organisation votes</li>
                     <li>✓ Existing member participation</li>
                     <li>✓ Controlled, pre-vetted voters</li>
@@ -130,15 +130,15 @@
                   <div class="space-y-2 text-sm">
                     <div class="flex gap-3 items-start">
                       <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-900 text-white text-xs font-bold flex-shrink-0">1</span>
-                      <span class="text-gray-700">Check if email exists</span>
+                      <span class="text-neutral-700">Check if email exists</span>
                     </div>
                     <div class="flex gap-3 items-start">
                       <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-900 text-white text-xs font-bold flex-shrink-0">2</span>
-                      <span class="text-gray-700"><strong>Auto-create</strong> if new</span>
+                      <span class="text-neutral-700"><strong>Auto-create</strong> if new</span>
                     </div>
                     <div class="flex gap-3 items-start">
                       <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-900 text-white text-xs font-bold flex-shrink-0">3</span>
-                      <span class="text-gray-700"><strong>Send invitation</strong> email</span>
+                      <span class="text-neutral-700"><strong>Send invitation</strong> email</span>
                     </div>
                   </div>
                 </div>
@@ -146,7 +146,7 @@
                 <!-- Use Cases -->
                 <div class="bg-emerald-900 bg-opacity-5 rounded-lg p-4 border border-emerald-200">
                   <p class="text-xs font-bold text-emerald-900 uppercase tracking-wider mb-2">Best For</p>
-                  <ul class="text-sm text-gray-700 space-y-1">
+                  <ul class="text-sm text-neutral-700 space-y-1">
                     <li>✓ Open elections (public participation)</li>
                     <li>✓ Rapid onboarding of new voters</li>
                     <li>✓ Flexible, inclusive voting</li>
@@ -157,19 +157,19 @@
           </div>
 
           <!-- Quick Decision Guide -->
-          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-2 border-blue-200 p-6 shadow-sm">
+          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border-2 border-primary-200 p-6 shadow-sm">
             <div class="flex gap-4">
               <div class="flex-shrink-0 pt-1">
-                <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <svg class="w-6 h-6 text-primary-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zm-11-1a1 1 0 11-2 0 1 1 0 012 0zM8 7a1 1 0 100-2 1 1 0 000 2zm5-1a1 1 0 11-2 0 1 1 0 012 0zM14 7a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                 </svg>
               </div>
               <div>
-                <h3 class="text-lg font-bold text-blue-900 mb-2">Which Mode Should You Use?</h3>
+                <h3 class="text-lg font-bold text-primary-900 mb-2">Which Mode Should You Use?</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p class="font-semibold text-blue-900 mb-1">📋 Choose <strong>Full Membership</strong> if:</p>
-                    <ul class="text-blue-800 space-y-1 ml-4">
+                    <p class="font-semibold text-primary-900 mb-1">📋 Choose <strong>Full Membership</strong> if:</p>
+                    <ul class="text-primary-800 space-y-1 ml-4">
                       <li>• All voters are existing platform users</li>
                       <li>• You want to restrict to formal members only</li>
                       <li>• Pre-registration ensures quality control</li>
@@ -189,29 +189,29 @@
           </div>
 
           <!-- Overview -->
-          <section class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-            <h2 class="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-2">
-              <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-100 text-blue-700 text-sm font-bold">i</span>
+          <section class="bg-white rounded-xl border border-neutral-200 shadow-sm p-6">
+            <h2 class="text-xl font-semibold text-neutral-900 mb-3 flex items-center gap-2">
+              <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary-100 text-primary-700 text-sm font-bold">i</span>
               {{ t.section_overview.heading }}
             </h2>
-            <p class="text-gray-700 leading-relaxed">{{ t.section_overview.body }}</p>
+            <p class="text-neutral-700 leading-relaxed">{{ t.section_overview.body }}</p>
           </section>
 
           <!-- Requirements -->
-          <section class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-            <h2 class="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-2">
+          <section class="bg-white rounded-xl border border-neutral-200 shadow-sm p-6">
+            <h2 class="text-xl font-semibold text-neutral-900 mb-3 flex items-center gap-2">
               <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-700 text-sm">✓</span>
               {{ t.section_requirements.heading }}
             </h2>
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 flex gap-3">
-              <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <div class="bg-primary-50 border border-primary-200 rounded-lg p-4 mb-6 flex gap-3">
+              <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <p class="text-blue-800 text-sm">
+              <p class="text-primary-800 text-sm">
                 <strong>Your mode:</strong> {{ uses_full_membership ? 'Full Membership Mode' : 'Election-Only Mode' }}
               </p>
             </div>
-            <p class="text-gray-700 mb-4">
+            <p class="text-neutral-700 mb-4">
               {{ uses_full_membership ? t.section_requirements.intro_full : t.section_requirements.intro_election }}
             </p>
             <ul class="space-y-2 mb-4">
@@ -223,7 +223,7 @@
                 <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-green-100 text-green-700 text-xs font-bold flex items-center justify-center">
                   {{ idx + 1 }}
                 </span>
-                <span class="text-gray-700">{{ condition }}</span>
+                <span class="text-neutral-700">{{ condition }}</span>
               </li>
             </ul>
             <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 flex gap-3">
@@ -237,49 +237,49 @@
           </section>
 
           <!-- File Format -->
-          <section class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-            <h2 class="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-2">
+          <section class="bg-white rounded-xl border border-neutral-200 shadow-sm p-6">
+            <h2 class="text-xl font-semibold text-neutral-900 mb-3 flex items-center gap-2">
               <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-purple-100 text-purple-700 text-sm">📄</span>
               {{ t.section_file_format.heading }}
             </h2>
-            <p class="text-gray-700 mb-4">{{ t.section_file_format.intro }}</p>
+            <p class="text-neutral-700 mb-4">{{ t.section_file_format.intro }}</p>
 
             <!-- Format Section based on Mode -->
             <div :class="uses_full_membership ? '' : ''">
-              <p class="font-bold text-gray-900 mb-2 text-lg">
+              <p class="font-bold text-neutral-900 mb-2 text-lg">
                 {{ uses_full_membership ? t.section_file_format.format_full.title : t.section_file_format.format_election.title }}
               </p>
-              <p class="text-gray-600 mb-4">
+              <p class="text-neutral-600 mb-4">
                 {{ uses_full_membership ? t.section_file_format.format_full.description : t.section_file_format.format_election.description }}
               </p>
 
-              <p class="font-medium text-gray-800 mb-2">{{ uses_full_membership ? t.section_file_format.format_full.rules_heading : t.section_file_format.format_election.rules_heading }}</p>
+              <p class="font-medium text-neutral-800 mb-2">{{ uses_full_membership ? t.section_file_format.format_full.rules_heading : t.section_file_format.format_election.rules_heading }}</p>
               <ul class="space-y-2 mb-5">
                 <li
                   v-for="(rule, idx) in (uses_full_membership ? t.section_file_format.format_full.rules : t.section_file_format.format_election.rules)"
                   :key="idx"
-                  class="flex items-start gap-2 text-gray-700 text-sm"
+                  class="flex items-start gap-2 text-neutral-700 text-sm"
                 >
-                  <span class="text-blue-500 mt-0.5">•</span>
+                  <span class="text-primary-500 mt-0.5">•</span>
                   {{ rule }}
                 </li>
               </ul>
 
-              <p class="font-medium text-gray-800 mb-2">{{ uses_full_membership ? t.section_file_format.format_full.example_heading : t.section_file_format.format_election.example_heading }}</p>
-              <pre class="bg-gray-900 text-green-400 rounded-lg p-4 text-sm font-mono overflow-x-auto mb-4">{{ uses_full_membership ? t.section_file_format.format_full.example : t.section_file_format.format_election.example }}</pre>
+              <p class="font-medium text-neutral-800 mb-2">{{ uses_full_membership ? t.section_file_format.format_full.example_heading : t.section_file_format.format_election.example_heading }}</p>
+              <pre class="bg-neutral-900 text-green-400 rounded-lg p-4 text-sm font-mono overflow-x-auto mb-4">{{ uses_full_membership ? t.section_file_format.format_full.example : t.section_file_format.format_election.example }}</pre>
             </div>
 
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 flex gap-3">
-              <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <div class="bg-primary-50 border border-primary-200 rounded-lg p-4 flex gap-3">
+              <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <p class="text-blue-800 text-sm">{{ t.section_file_format.download_hint }}</p>
+              <p class="text-primary-800 text-sm">{{ t.section_file_format.download_hint }}</p>
             </div>
           </section>
 
           <!-- Steps -->
-          <section class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-            <h2 class="text-xl font-semibold text-gray-900 mb-6">{{ t.section_steps.heading }}</h2>
+          <section class="bg-white rounded-xl border border-neutral-200 shadow-sm p-6">
+            <h2 class="text-xl font-semibold text-neutral-900 mb-6">{{ t.section_steps.heading }}</h2>
             <div class="space-y-6">
               <div
                 v-for="(step, idx) in (uses_full_membership ? t.section_steps.steps_full : t.section_steps.steps_election)"
@@ -287,33 +287,33 @@
                 class="flex gap-4"
               >
                 <div class="flex-shrink-0 flex flex-col items-center">
-                  <div class="w-9 h-9 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center">
+                  <div class="w-9 h-9 rounded-full bg-primary-600 text-white font-bold text-sm flex items-center justify-center">
                     {{ idx + 1 }}
                   </div>
-                  <div v-if="idx < (uses_full_membership ? t.section_steps.steps_full : t.section_steps.steps_election).length - 1" class="w-0.5 h-full bg-blue-100 mt-2" />
+                  <div v-if="idx < (uses_full_membership ? t.section_steps.steps_full : t.section_steps.steps_election).length - 1" class="w-0.5 h-full bg-primary-100 mt-2" />
                 </div>
                 <div class="pb-6">
-                  <p class="font-semibold text-gray-900 mb-1">{{ step.title }}</p>
-                  <p class="text-gray-600 text-sm leading-relaxed">{{ step.body }}</p>
+                  <p class="font-semibold text-neutral-900 mb-1">{{ step.title }}</p>
+                  <p class="text-neutral-600 text-sm leading-relaxed">{{ step.body }}</p>
                 </div>
               </div>
             </div>
           </section>
 
           <!-- FAQ -->
-          <section class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-            <h2 class="text-xl font-semibold text-gray-900 mb-5">{{ t.section_faq.heading }}</h2>
+          <section class="bg-white rounded-xl border border-neutral-200 shadow-sm p-6">
+            <h2 class="text-xl font-semibold text-neutral-900 mb-5">{{ t.section_faq.heading }}</h2>
             <div class="space-y-4">
               <div
                 v-for="(item, idx) in t.section_faq.items"
                 :key="idx"
-                class="border border-gray-100 rounded-lg p-4 bg-gray-50"
+                class="border border-neutral-100 rounded-lg p-4 bg-neutral-50"
               >
-                <p class="font-medium text-gray-900 mb-1 flex items-start gap-2">
-                  <span class="text-blue-500 font-bold flex-shrink-0">Q.</span>
+                <p class="font-medium text-neutral-900 mb-1 flex items-start gap-2">
+                  <span class="text-primary-500 font-bold flex-shrink-0">Q.</span>
                   {{ item.question }}
                 </p>
-                <p class="text-gray-600 text-sm pl-5">{{ item.answer }}</p>
+                <p class="text-neutral-600 text-sm pl-5">{{ item.answer }}</p>
               </div>
             </div>
           </section>
@@ -322,7 +322,7 @@
           <div v-if="!isPublic && organisation && election" class="flex justify-start pb-4">
             <Link
               :href="route('elections.voters.import.create', { organisation: organisation.slug, election: election.slug })"
-              class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
@@ -367,3 +367,4 @@ useMeta({
   nofollow: false,
 })
 </script>
+

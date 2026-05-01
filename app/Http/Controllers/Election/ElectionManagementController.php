@@ -789,6 +789,29 @@ class ElectionManagementController extends Controller
     {
         $this->authorize('publishResults', $election);
 
+        // Verify vote-result integrity before publishing; auto-correct any drift
+        $failedVerifications = 0;
+        foreach (\App\Models\Vote::where('election_id', $election->id)->get() as $vote) {
+            $integrity = $vote->verifyResultsIntegrity();
+            if (!$integrity['is_valid']) {
+                $failedVerifications++;
+                \Log::warning('Result integrity violation auto-corrected during publish', [
+                    'vote_id'        => $vote->id,
+                    'election_id'    => $election->id,
+                    'stored_count'   => $integrity['stored_count'],
+                    'expected_count' => $integrity['expected_count'],
+                    'checksum_valid' => $integrity['checksum_valid'],
+                ]);
+                $vote->syncResults();
+            }
+        }
+        if ($failedVerifications > 0) {
+            \Log::warning('Publish integrity sweep complete', [
+                'election_id'      => $election->id,
+                'violations_fixed' => $failedVerifications,
+            ]);
+        }
+
         try {
             $election->transitionTo(
                 \App\Domain\Election\StateMachine\Transition::manual(

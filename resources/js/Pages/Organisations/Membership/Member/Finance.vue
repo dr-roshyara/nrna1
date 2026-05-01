@@ -69,18 +69,18 @@
       </div>
 
       <!-- Member Header Card -->
-      <div class="bg-white border border-gray-200 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
+      <div class="bg-white border border-neutral-200 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
         <div class="flex items-start justify-between">
           <div class="flex-1">
-            <h1 class="text-3xl font-serif font-bold text-gray-900 mb-2">
+            <h1 class="text-3xl font-serif font-bold text-neutral-900 mb-2">
               {{ member.organisationUser?.user?.name || 'Member' }}
             </h1>
-            <p class="text-gray-600 font-mono text-sm">
+            <p class="text-neutral-600 font-mono text-sm">
               {{ member.organisationUser?.user?.email || '—' }}
             </p>
             <div class="mt-4 flex gap-3">
               <BadgeStatus :status="member.fees_status" />
-              <span v-if="member.membershipType" class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded border border-blue-200">
+              <span v-if="member.membershipType" class="inline-block px-3 py-1 bg-primary-50 text-primary-700 text-sm rounded border border-primary-200">
                 {{ member.membershipType.name }}
               </span>
             </div>
@@ -89,14 +89,14 @@
       </div>
 
       <!-- Outstanding Fees Panel - Amber Accent -->
-      <div class="border-l-2 border-amber-400 bg-white border border-gray-200 rounded-lg p-8 shadow-sm">
-        <h2 class="text-xl font-serif font-bold text-gray-900 mb-6 flex items-center gap-2">
+      <div class="border-l-2 border-amber-400 bg-white border border-neutral-200 rounded-lg p-8 shadow-sm">
+        <h2 class="text-xl font-serif font-bold text-neutral-900 mb-6 flex items-center gap-2">
           <span class="inline-block w-2 h-2 rounded-full bg-amber-400"></span>
           {{ t('outstanding_fees') }}
         </h2>
 
         <div v-if="outstandingFees.length === 0" class="text-center py-8">
-          <p class="text-gray-500">{{ t('no_outstanding') }}</p>
+          <p class="text-neutral-500">{{ t('no_outstanding') }}</p>
         </div>
 
         <div v-else class="space-y-4">
@@ -106,21 +106,21 @@
             class="flex items-center justify-between p-6 bg-white rounded-lg border-2 border-amber-100 hover:border-amber-200 hover:shadow-md transition-all"
           >
             <div class="flex-1">
-              <p class="text-sm font-semibold text-gray-900">
+              <p class="text-sm font-semibold text-neutral-900">
                 {{ fee.period_label || '—' }}
               </p>
-              <p class="text-xs text-gray-500 mt-2">
+              <p class="text-xs text-neutral-500 mt-2">
                 {{ formatDate(fee.due_date) }} •
                 <BadgeStatus :status="fee.status" size="sm" />
               </p>
             </div>
             <div class="text-right ml-6">
-              <p class="text-2xl font-mono font-bold text-gray-900 mb-4">
+              <p class="text-2xl font-mono font-bold text-neutral-900 mb-4">
                 {{ formatCurrency(fee.amount, fee.currency) }}
               </p>
               <button
                 @click="openPaymentDrawer(fee)"
-                class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 active:bg-blue-800 transition-all shadow-sm hover:shadow-md"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 active:bg-primary-800 transition-all shadow-sm hover:shadow-md"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -133,38 +133,38 @@
       </div>
 
       <!-- Payment History Panel -->
-      <div class="bg-white border border-gray-200 rounded-lg p-8 shadow-sm">
-        <h2 class="text-xl font-serif font-bold text-gray-900 mb-6">
+      <div class="bg-white border border-neutral-200 rounded-lg p-8 shadow-sm">
+        <h2 class="text-xl font-serif font-bold text-neutral-900 mb-6">
           {{ t('payment_history') }}
         </h2>
 
         <div v-if="paymentHistory.length === 0" class="text-center py-8">
-          <p class="text-gray-500">{{ t('no_history') }}</p>
+          <p class="text-neutral-500">{{ t('no_history') }}</p>
         </div>
 
         <div v-else class="space-y-2">
           <div
             v-for="payment in paymentHistory"
             :key="payment.id"
-            class="flex items-center justify-between p-4 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 transition-colors"
+            class="flex items-center justify-between p-4 border-b border-neutral-100 last:border-b-0 hover:bg-neutral-50 transition-colors"
           >
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-3 mb-2">
-                <p class="text-sm text-gray-600 font-mono">
+                <p class="text-sm text-neutral-600 font-mono">
                   {{ payment.fee?.period_label || '—' }}
                 </p>
-                <span class="inline-block px-2 py-0.5 bg-gray-100 text-gray-700 text-xs rounded-full font-mono">
+                <span class="inline-block px-2 py-0.5 bg-neutral-100 text-neutral-700 text-xs rounded-full font-mono">
                   {{ t(`method_${payment.payment_method}`) || payment.payment_method }}
                 </span>
                 <span v-if="payment.income_id" class="inline-block px-2 py-0.5 bg-green-50 text-green-700 text-xs rounded font-mono">
                   {{ t('income_linked') }}
                 </span>
               </div>
-              <p class="text-xs text-gray-500">
+              <p class="text-xs text-neutral-500">
                 {{ formatDate(payment.paid_at) }}
               </p>
             </div>
-            <p class="text-lg font-mono font-bold text-gray-900 ml-4 flex-shrink-0">
+            <p class="text-lg font-mono font-bold text-neutral-900 ml-4 flex-shrink-0">
               {{ formatCurrency(payment.amount, payment.currency) }}
             </p>
           </div>
@@ -181,15 +181,15 @@
     >
       <div
         v-if="showPaymentDrawer"
-        class="fixed inset-y-0 right-0 w-96 bg-white border-l border-gray-200 shadow-2xl z-50 p-8 overflow-y-auto"
+        class="fixed inset-y-0 right-0 w-96 bg-white border-l border-neutral-200 shadow-2xl z-50 p-8 overflow-y-auto"
       >
         <div class="flex items-center justify-between mb-8">
-          <h3 class="text-2xl font-serif font-bold text-gray-900">
+          <h3 class="text-2xl font-serif font-bold text-neutral-900">
             {{ t('confirm_payment') }}
           </h3>
           <button
             @click="closePaymentDrawer"
-            class="text-gray-400 hover:text-gray-600 transition-colors"
+            class="text-neutral-400 hover:text-neutral-600 transition-colors"
           >
             <span class="text-2xl">×</span>
           </button>
@@ -197,16 +197,16 @@
 
         <form @submit.prevent="submitPayment" class="space-y-6">
           <!-- Selected Fee Info -->
-          <div v-if="selectedFee" class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <p class="text-sm text-gray-600 mb-2">{{ selectedFee.period_label }}</p>
-            <p class="text-2xl font-mono font-bold text-gray-900">
+          <div v-if="selectedFee" class="bg-primary-50 border border-primary-200 rounded-lg p-4">
+            <p class="text-sm text-neutral-600 mb-2">{{ selectedFee.period_label }}</p>
+            <p class="text-2xl font-mono font-bold text-neutral-900">
               {{ formatCurrency(selectedFee.amount, selectedFee.currency) }}
             </p>
           </div>
 
           <!-- Amount -->
           <div>
-            <label class="block text-sm font-mono text-gray-700 mb-2">
+            <label class="block text-sm font-mono text-neutral-700 mb-2">
               {{ t('field_amount') }} *
             </label>
             <input
@@ -214,20 +214,20 @@
               type="number"
               step="0.01"
               required
-              class="w-full px-4 py-2 border border-gray-300 rounded font-mono text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors"
+              class="w-full px-4 py-2 border border-neutral-300 rounded font-mono text-neutral-900 focus:border-primary-500 focus:ring-2 focus:ring-blue-200 transition-colors"
               :placeholder="selectedFee ? formatCurrency(selectedFee.amount, 'EUR').replace('EUR', '').trim() : '0.00'"
             />
           </div>
 
           <!-- Payment Method -->
           <div>
-            <label class="block text-sm font-mono text-gray-700 mb-2">
+            <label class="block text-sm font-mono text-neutral-700 mb-2">
               {{ t('field_method') }} *
             </label>
             <select
               v-model="form.payment_method"
               required
-              class="w-full px-4 py-2 border border-gray-300 rounded font-mono text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors"
+              class="w-full px-4 py-2 border border-neutral-300 rounded font-mono text-neutral-900 focus:border-primary-500 focus:ring-2 focus:ring-blue-200 transition-colors"
             >
               <option value="">— Select —</option>
               <option value="bank_transfer">{{ t('method_bank_transfer') }}</option>
@@ -240,21 +240,21 @@
 
           <!-- Reference -->
           <div>
-            <label class="block text-sm font-mono text-gray-700 mb-2">
+            <label class="block text-sm font-mono text-neutral-700 mb-2">
               {{ t('field_reference') }}
             </label>
             <input
               v-model="form.payment_reference"
               type="text"
-              class="w-full px-4 py-2 border border-gray-300 rounded font-mono text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors"
+              class="w-full px-4 py-2 border border-neutral-300 rounded font-mono text-neutral-900 focus:border-primary-500 focus:ring-2 focus:ring-blue-200 transition-colors"
               placeholder="REF-001"
             />
           </div>
 
           <!-- Errors -->
-          <div v-if="form.errors && Object.keys(form.errors).length > 0" class="bg-red-50 border border-red-200 rounded-lg p-4">
+          <div v-if="form.errors && Object.keys(form.errors).length > 0" class="bg-danger-50 border border-danger-200 rounded-lg p-4">
             <ul class="list-disc list-inside space-y-1">
-              <li v-for="(error, field) in form.errors" :key="field" class="text-sm text-red-700">
+              <li v-for="(error, field) in form.errors" :key="field" class="text-sm text-danger-700">
                 {{ error[0] || error }}
               </li>
             </ul>
@@ -264,7 +264,7 @@
           <button
             type="submit"
             :disabled="form.processing"
-            class="w-full px-6 py-3 bg-blue-600 text-white font-serif font-bold rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors"
+            class="w-full px-6 py-3 bg-primary-600 text-white font-serif font-bold rounded-lg hover:bg-primary-700 disabled:opacity-50 transition-colors"
           >
             {{ form.processing ? 'Processing...' : t('confirm_payment') }}
           </button>
@@ -272,7 +272,7 @@
           <button
             type="button"
             @click="closePaymentDrawer"
-            class="w-full px-6 py-2 border border-gray-300 text-gray-700 font-mono rounded-lg hover:bg-gray-50 transition-colors"
+            class="w-full px-6 py-2 border border-neutral-300 text-neutral-700 font-mono rounded-lg hover:bg-neutral-50 transition-colors"
           >
             Cancel
           </button>
@@ -533,3 +533,4 @@ h1, h2, h3 {
   animation: ripple 0.6s ease-out;
 }
 </style>
+

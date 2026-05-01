@@ -1,13 +1,13 @@
 <template>
    <election-layout>
-        <div class="m-2 min-h-screen bg-gray-100 p-2">
+        <div class="m-2 min-h-screen bg-neutral-100 p-2">
             <div class="mx-auto w-full text-center">
                 <!-- Top Pagination -->
                 <div class="flex items-center justify-between px-5 py-4">
                     <Link
                         v-if="users.prev_page_url"
                         :href="users.prev_page_url"
-                        class="group flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+                        class="group flex items-center gap-2 text-sm font-medium text-neutral-600 transition-colors hover:text-primary-600"
                     >
                         <svg class="h-5 w-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -21,14 +21,14 @@
                         <span>Previous</span>
                     </div>
 
-                    <div class="text-sm text-gray-600">
-                        Page <span class="font-semibold text-gray-900">{{ users.current_page }}</span> of <span class="font-semibold text-gray-900">{{ users.last_page }}</span>
+                    <div class="text-sm text-neutral-600">
+                        Page <span class="font-semibold text-neutral-900">{{ users.current_page }}</span> of <span class="font-semibold text-neutral-900">{{ users.last_page }}</span>
                     </div>
 
                     <Link
                         v-if="users.next_page_url"
                         :href="users.next_page_url"
-                        class="group flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+                        class="group flex items-center gap-2 text-sm font-medium text-neutral-600 transition-colors hover:text-primary-600"
                     >
                         <span>Next</span>
                         <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,14 +51,14 @@
                             id="name"
                             type="text"
                             v-model="params.name"
-                            class="ml-2 rounded-sm border bg-blue-200 px-2 py-1 text-sm"
+                            class="ml-2 rounded-sm border bg-primary-200 px-2 py-1 text-sm"
                         />
                     </div>
                     <!-- next -->
                     <!-- <div class="p-2 m-1 " >
                         <label for="search" >Search by Familyname</label>
                         <input  id="search" type="text" v-model="params.search"
-                        class="ml-2 px-2 py-1 text-sm bg-blue-200 rounded-sm border">
+                        class="ml-2 px-2 py-1 text-sm bg-primary-200 rounded-sm border">
 
                     </div> -->
                     <!-- next -->
@@ -68,7 +68,7 @@
                             id="user_id"
                             type="text"
                             v-model="params.user_id"
-                            class="ml-2 rounded-sm border bg-blue-200 px-2 py-1 text-sm"
+                            class="ml-2 rounded-sm border bg-primary-200 px-2 py-1 text-sm"
                         />
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                         </span>
                         <button
                             @click="bulkAddAsVoter"
-                            class="rounded-sm bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+                            class="rounded-sm bg-primary-500 px-4 py-2 text-white hover:bg-primary-600"
                         >
                             Add Selected as Voters
                         </button>
@@ -91,7 +91,7 @@
                 <div class="table w-full p-2">
                     <table class="w-full table-auto">
                         <thead>
-                            <tr class="bg-blue-600 p-2 text-white">
+                            <tr class="bg-primary-600 p-2 text-white">
                                 <!-- Checkbox column header -->
                                 <th class="mb-1 px-2 py-2 text-left text-sm font-bold">
                                     <input
@@ -444,8 +444,8 @@
                                 v-for="(user, index) in users.data"
                                 :key="index"
                                 :class="{
-                                    'my-6 bg-gray-200 py-2 ': index % 2 === 0,
-                                    'my-6 bg-gray-50 py-2': index % 2 > 0,
+                                    'my-6 bg-neutral-200 py-2 ': index % 2 === 0,
+                                    'my-6 bg-neutral-50 py-2': index % 2 > 0,
                                 }"
                             >
                                 <!-- Checkbox for each user -->
@@ -489,8 +489,8 @@
                                         v-if="currentUser?.is_committee_member == 1"
                                         :class="{
                                             'rounded-sm px-3 py-1 text-white': true,
-                                            'bg-blue-500 hover:bg-blue-600 cursor-pointer': user.is_voter != 1,
-                                            'bg-gray-400 cursor-not-allowed': user.is_voter == 1
+                                            'bg-primary-500 hover:bg-primary-600 cursor-pointer': user.is_voter != 1,
+                                            'bg-neutral-400 cursor-not-allowed': user.is_voter == 1
                                         }"
                                         :disabled="user.is_voter == 1"
                                         @click="user.is_voter != 1 ? showAddVoterButton(user.id) : null"
@@ -513,7 +513,7 @@
                 <Link
                     v-if="users.prev_page_url"
                     :href="users.prev_page_url"
-                    class="group flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+                    class="group flex items-center gap-2 text-sm font-medium text-neutral-600 transition-colors hover:text-primary-600"
                 >
                     <svg class="h-5 w-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -527,14 +527,14 @@
                     <span>Previous</span>
                 </div>
 
-                <div class="text-sm text-gray-600">
-                    Page <span class="font-semibold text-gray-900">{{ users.current_page }}</span> of <span class="font-semibold text-gray-900">{{ users.last_page }}</span>
+                <div class="text-sm text-neutral-600">
+                    Page <span class="font-semibold text-neutral-900">{{ users.current_page }}</span> of <span class="font-semibold text-neutral-900">{{ users.last_page }}</span>
                 </div>
 
                 <Link
                     v-if="users.next_page_url"
                     :href="users.next_page_url"
-                    class="group flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+                    class="group flex items-center gap-2 text-sm font-medium text-neutral-600 transition-colors hover:text-primary-600"
                 >
                     <span>Next</span>
                     <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -678,3 +678,4 @@ export default {
     },
 };
 </script>
+

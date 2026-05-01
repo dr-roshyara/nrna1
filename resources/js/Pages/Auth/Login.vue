@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-50 flex flex-col">
+    <div class="min-h-screen bg-neutral-50 flex flex-col">
         <!-- Skip to main content link for keyboard users -->
         <a href="#main-content" class="skip-to-main">
             {{ $t('accessibility.skip_to_main') }}
@@ -23,20 +23,20 @@
 
                 <!-- Visual Heading (for sighted users) -->
                 <div class="text-center mb-8 md:mb-10" aria-hidden="true">
-                    <p class="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+                    <p class="text-sm font-semibold text-primary-600 uppercase tracking-wide mb-2">
                         {{ $t('pages.auth.login.welcome') }}
                     </p>
-                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-neutral-900 mb-3">
                         {{ $t('pages.auth.login.heading') }}
                     </h2>
-                    <p class="text-base sm:text-lg text-gray-600">
+                    <p class="text-base sm:text-lg text-neutral-600">
                         {{ $t('pages.auth.login.subtitle') }}
                     </p>
                 </div>
 
                 <!-- Login Card -->
                 <div 
-                    class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8"
+                    class="bg-white rounded-2xl shadow-lg border border-neutral-200 p-6 sm:p-8"
                     role="region"
                     aria-label="Login form"
                 >
@@ -58,11 +58,11 @@
                     <!-- Validation Errors - Enhanced accessibility -->
                     <div 
                         v-if="$page.props.errors && Object.keys($page.props.errors).length > 0"
-                        class="mb-6 p-4 bg-red-50 border-2 border-red-200 rounded-lg"
+                        class="mb-6 p-4 bg-danger-50 border-2 border-danger-200 rounded-lg"
                         role="alert"
                         aria-live="assertive"
                     >
-                        <p class="text-sm font-medium text-red-800 mb-2" id="error-heading">
+                        <p class="text-sm font-medium text-danger-800 mb-2" id="error-heading">
                             {{ $t('pages.auth.login.errors.heading') }}
                         </p>
                         <jet-validation-errors 
@@ -79,13 +79,13 @@
                                 <jet-label 
                                     for="email" 
                                     :value="$t('pages.auth.login.fields.email.label')" 
-                                    class="text-base font-semibold text-gray-700"
+                                    class="text-base font-semibold text-neutral-700"
                                 />
                                 <div class="mt-2">
                                     <jet-input
                                         id="email"
                                         type="email"
-                                        class="w-full text-base p-4 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:ring-4 focus:ring-blue-200 transition"
+                                        class="w-full text-base p-4 border-2 border-neutral-300 rounded-lg focus:border-primary-600 focus:ring-4 focus:ring-blue-200 transition"
                                         v-model="form.email"
                                         :placeholder="$t('pages.auth.login.fields.email.placeholder')"
                                         :aria-required="true"
@@ -99,7 +99,7 @@
                                     <p 
                                         v-if="form.errors.email" 
                                         id="email-error" 
-                                        class="mt-2 text-sm text-red-600 flex items-center gap-1"
+                                        class="mt-2 text-sm text-danger-600 flex items-center gap-1"
                                         role="alert"
                                     >
                                         <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -115,14 +115,14 @@
                                 <jet-label 
                                     for="password" 
                                     :value="$t('pages.auth.login.fields.password.label')" 
-                                    class="text-base font-semibold text-gray-700"
+                                    class="text-base font-semibold text-neutral-700"
                                 />
                                 <div class="mt-2">
                                     <div class="relative">
                                         <jet-input
                                             id="password"
                                             :type="showPassword ? 'text' : 'password'"
-                                            class="w-full text-base p-4 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:ring-4 focus:ring-blue-200 transition pr-12"
+                                            class="w-full text-base p-4 border-2 border-neutral-300 rounded-lg focus:border-primary-600 focus:ring-4 focus:ring-blue-200 transition pr-12"
                                             v-model="form.password"
                                             :placeholder="$t('pages.auth.login.fields.password.placeholder')"
                                             :aria-required="true"
@@ -135,7 +135,7 @@
                                         <button
                                             type="button"
                                             @click="togglePasswordVisibility"
-                                            class="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+                                            class="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-neutral-500 hover:text-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
                                             :aria-label="showPassword ? $t('accessibility.hide_password') : $t('accessibility.show_password')"
                                         >
                                             <svg v-if="!showPassword" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -150,7 +150,7 @@
                                     <p 
                                         v-if="form.errors.password" 
                                         id="password-error" 
-                                        class="mt-2 text-sm text-red-600 flex items-center gap-1"
+                                        class="mt-2 text-sm text-danger-600 flex items-center gap-1"
                                         role="alert"
                                     >
                                         <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -170,7 +170,7 @@
                                         class="w-5 h-5"
                                         :aria-label="$t('pages.auth.login.fields.remember.label')"
                                     />
-                                    <span class="ml-3 text-base text-gray-700 select-none">
+                                    <span class="ml-3 text-base text-neutral-700 select-none">
                                         {{ $t('pages.auth.login.fields.remember.label') }}
                                     </span>
                                 </label>
@@ -178,7 +178,7 @@
                                 <InertiaLink
                                     v-if="canResetPassword"
                                     :href="route('password.request')"
-                                    class="text-base font-medium text-blue-600 hover:text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg py-2 px-4 -ml-4 sm:ml-0 text-center sm:text-left"
+                                    class="text-base font-medium text-primary-600 hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg py-2 px-4 -ml-4 sm:ml-0 text-center sm:text-left"
                                     :aria-label="$t('pages.auth.login.links.forgot_password_aria')"
                                 >
                                     {{ $t('pages.auth.login.links.forgot_password') }}
@@ -190,7 +190,7 @@
                                 <jet-button
                                     type="submit"
                                     :disabled="form.processing"
-                                    class="w-full min-h-[56px] text-base sm:text-lg font-bold bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-50 disabled:cursor-not-allowed transition rounded-xl shadow-lg"
+                                    class="w-full min-h-[56px] text-base sm:text-lg font-bold bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-blue-300 disabled:opacity-50 disabled:cursor-not-allowed transition rounded-xl shadow-lg"
                                     :aria-busy="form.processing ? 'true' : 'false'"
                                 >
                                     <span class="flex items-center justify-center gap-3">
@@ -207,14 +207,14 @@
                     </form>
 
                     <!-- Registration Section - Enhanced mobile layout -->
-                    <div v-if="canRegister" class="mt-8 pt-8 border-t-2 border-gray-200">
+                    <div v-if="canRegister" class="mt-8 pt-8 border-t-2 border-neutral-200">
                         <div class="text-center space-y-4">
-                            <p class="text-base text-gray-700">
+                            <p class="text-base text-neutral-700">
                                 {{ $t('pages.auth.login.messages.register_prompt') }}
                             </p>
                             <InertiaLink
                                 :href="route('register')"
-                                class="inline-flex items-center justify-center w-full sm:w-auto min-h-[56px] px-8 py-4 border-2 border-blue-600 text-base font-bold rounded-xl text-blue-600 bg-white hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-300 transition shadow-md"
+                                class="inline-flex items-center justify-center w-full sm:w-auto min-h-[56px] px-8 py-4 border-2 border-primary-600 text-base font-bold rounded-xl text-primary-600 bg-white hover:bg-primary-50 focus:outline-none focus:ring-4 focus:ring-blue-300 transition shadow-md"
                                 :aria-label="$t('pages.auth.login.links.register_aria')"
                             >
                                 {{ $t('pages.auth.login.links.register') }}
@@ -225,7 +225,7 @@
 
                 <!-- Trust Badge - Enhanced accessibility -->
                 <div class="mt-8 text-center" role="contentinfo" aria-label="Security information">
-                    <p class="text-sm text-gray-600 flex items-center justify-center gap-2 flex-wrap">
+                    <p class="text-sm text-neutral-600 flex items-center justify-center gap-2 flex-wrap">
                         <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                             <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
                         </svg>
@@ -393,24 +393,24 @@ textarea {
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-    .text-gray-900,
-    .text-gray-800,
-    .text-gray-700,
-    .text-gray-600,
-    .text-gray-500 {
+    .text-neutral-900,
+    .text-neutral-800,
+    .text-neutral-700,
+    .text-neutral-600,
+    .text-neutral-500 {
         color: #000000 !important;
     }
 
     .bg-white,
-    .bg-gray-50 {
+    .bg-neutral-50 {
         background: #ffffff !important;
     }
 
     input,
     select,
     textarea,
-    .border-gray-200,
-    .border-gray-300 {
+    .border-neutral-200,
+    .border-neutral-300 {
         border: 2px solid #000000 !important;
     }
 

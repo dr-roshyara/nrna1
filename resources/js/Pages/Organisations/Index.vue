@@ -72,7 +72,7 @@ defineProps({
 const roleBadgeClass = (role) => {
   const map = {
     owner:      'bg-purple-100 text-purple-700',
-    admin:      'bg-blue-100 text-blue-700',
+    admin:      'bg-primary-100 text-primary-700',
     commission: 'bg-amber-100 text-amber-700',
     member:     'bg-slate-100 text-slate-600',
     voter:      'bg-green-100 text-green-700',
@@ -80,3 +80,4 @@ const roleBadgeClass = (role) => {
   return map[role] ?? 'bg-slate-100 text-slate-600'
 }
 </script>
+

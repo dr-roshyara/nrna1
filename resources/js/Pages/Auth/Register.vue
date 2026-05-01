@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-50">
+    <div class="min-h-screen bg-neutral-50">
         <!-- Header -->
         <PublicDigitHeader />
 
@@ -9,22 +9,22 @@
                 <div class="max-w-2xl mx-auto">
                     <!-- Section Header -->
                     <div class="text-center mb-12">
-                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        <h1 class="text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
                             {{ $t('pages.auth.register.title') }}
                         </h1>
-                        <p class="text-xl text-gray-600">
+                        <p class="text-xl text-neutral-600">
                             {{ $t('pages.auth.register.subtitle') }}
                         </p>
                     </div>
 
                     <!-- Registration Card -->
-                    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 md:p-12">
+                    <div class="bg-white rounded-2xl shadow-lg border border-neutral-200 p-8 md:p-12">
                         <!-- Validation Errors -->
-                        <div v-if="form.errors && Object.keys(form.errors).length > 0" class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                            <div class="text-red-800">
+                        <div v-if="form.errors && Object.keys(form.errors).length > 0" class="mb-6 p-4 bg-danger-50 border border-danger-200 rounded-lg">
+                            <div class="text-danger-800">
                                 <p class="font-bold mb-2">{{ $t('pages.auth.register.messages.validation_error') || 'Please fix the following errors:' }}</p>
                                 <ul class="list-disc list-inside space-y-1 text-sm">
-                                    <li v-for="(errors, field) in form.errors" :key="field" class="text-red-700">
+                                    <li v-for="(errors, field) in form.errors" :key="field" class="text-danger-700">
                                         <strong>{{ field }}:</strong> {{ Array.isArray(errors) ? errors[0] : errors }}
                                     </li>
                                 </ul>
@@ -34,13 +34,13 @@
                         <form @submit.prevent="submit" class="space-y-6">
                             <!-- First Name -->
                             <div>
-                                <label for="firstname" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                <label for="firstname" class="block font-bold text-base md:text-lg text-neutral-900 mb-2">
                                     {{ $t('pages.auth.register.fields.firstName.label') }}
                                 </label>
                                 <input
                                     id="firstname"
                                     type="text"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     v-model="form.firstName"
                                     :placeholder="$t('pages.auth.register.fields.firstName.placeholder')"
                                     required
@@ -51,13 +51,13 @@
 
                             <!-- Last Name -->
                             <div>
-                                <label for="lastName" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                <label for="lastName" class="block font-bold text-base md:text-lg text-neutral-900 mb-2">
                                     {{ $t('pages.auth.register.fields.lastName.label') }}
                                 </label>
                                 <input
                                     id="lastName"
                                     type="text"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     v-model="form.lastName"
                                     :placeholder="$t('pages.auth.register.fields.lastName.placeholder')"
                                     required
@@ -67,14 +67,14 @@
 
                             <!-- Region Selection -->
                             <div>
-                                <label for="region" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                <label for="region" class="block font-bold text-base md:text-lg text-neutral-900 mb-2">
                                     {{ $t('pages.auth.register.fields.region.label') }}
                                 </label>
                                 <select
                                     name="region"
                                     id="region"
                                     v-model="form.region"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     required
                                 >
                                     <option value="">{{ $t('pages.auth.register.fields.region.placeholder') }}</option>
@@ -89,35 +89,35 @@
 
                             <!-- Email -->
                             <div>
-                                <label for="email" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                <label for="email" class="block font-bold text-base md:text-lg text-neutral-900 mb-2">
                                     {{ $t('pages.auth.register.fields.email.label') }}
                                 </label>
                                 <input
                                     id="email"
                                     type="email"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     v-model="form.email"
                                     :placeholder="$t('pages.auth.register.fields.email.placeholder')"
                                     required
                                     autocomplete="email"
                                 />
-                                <p class="text-xs text-gray-500 mt-2">{{ $t('pages.auth.register.fields.email.help') }}</p>
+                                <p class="text-xs text-neutral-500 mt-2">{{ $t('pages.auth.register.fields.email.help') }}</p>
                             </div>
 
                             <!-- Password -->
                             <div>
-                                <label for="password" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                <label for="password" class="block font-bold text-base md:text-lg text-neutral-900 mb-2">
                                     {{ $t('pages.auth.register.fields.password.label') }}
                                 </label>
-                                <p class="text-xs text-gray-600 mt-1 mb-2">
-                                    <span class="text-red-500 font-medium">{{ $t('pages.auth.register.fields.password.help') }}</span>
+                                <p class="text-xs text-neutral-600 mt-1 mb-2">
+                                    <span class="text-danger-500 font-medium">{{ $t('pages.auth.register.fields.password.help') }}</span>
                                     <br>
                                     {{ $t('pages.auth.register.fields.password.requirements') }}
                                 </p>
                                 <input
                                     id="password"
                                     type="password"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     v-model="form.password"
                                     :placeholder="$t('pages.auth.register.fields.password.placeholder')"
                                     required
@@ -127,16 +127,16 @@
 
                             <!-- Password Confirmation -->
                             <div>
-                                <label for="password_confirmation" class="block font-bold text-base md:text-lg text-gray-900 mb-2">
+                                <label for="password_confirmation" class="block font-bold text-base md:text-lg text-neutral-900 mb-2">
                                     {{ $t('pages.auth.register.fields.password_confirmation.label') }}
                                 </label>
-                                <p class="text-xs text-gray-600 mt-1 mb-2">
+                                <p class="text-xs text-neutral-600 mt-1 mb-2">
                                     {{ $t('pages.auth.register.fields.password_confirmation.help') }}
                                 </p>
                                 <input
                                     id="password_confirmation"
                                     type="password"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     v-model="form.password_confirmation"
                                     :placeholder="$t('pages.auth.register.fields.password_confirmation.placeholder')"
                                     required
@@ -145,8 +145,8 @@
                             </div>
 
                             <!-- Terms and Privacy Policy -->
-                            <div class="pt-6 border-t-2 border-gray-300">
-                                <div class="bg-blue-50 rounded-lg p-6 md:p-8 border-2 border-blue-200">
+                            <div class="pt-6 border-t-2 border-neutral-300">
+                                <div class="bg-primary-50 rounded-lg p-6 md:p-8 border-2 border-primary-200">
                                     <label for="terms" class="cursor-pointer">
                                         <div class="flex items-start gap-4">
                                             <!-- Large Checkbox -->
@@ -157,29 +157,29 @@
                                                     id="terms"
                                                     v-model="form.terms"
                                                     required
-                                                    class="w-6 h-6 cursor-pointer text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
+                                                    class="w-6 h-6 cursor-pointer text-primary-600 rounded focus:ring-2 focus:ring-blue-500"
                                                 />
                                             </div>
 
                                             <!-- Agreement Text -->
                                             <div class="grow">
-                                                <p class="text-base md:text-lg font-semibold text-gray-900 mb-2">
+                                                <p class="text-base md:text-lg font-semibold text-neutral-900 mb-2">
                                                     {{ $t('pages.auth.register.messages.agreement') }}
                                                 </p>
-                                                <p class="text-sm md:text-base text-gray-700 leading-relaxed">
-                                                    <span class="text-gray-700">{{ $t('pages.auth.register.messages.i_agree') }}</span>
+                                                <p class="text-sm md:text-base text-neutral-700 leading-relaxed">
+                                                    <span class="text-neutral-700">{{ $t('pages.auth.register.messages.i_agree') }}</span>
                                                     <a
                                                         target="_blank"
                                                         :href="route('terms.show')"
-                                                        class="text-blue-600 hover:text-blue-800 font-bold underline hover:no-underline transition"
+                                                        class="text-primary-600 hover:text-primary-800 font-bold underline hover:no-underline transition"
                                                     >
                                                         {{ $t('pages.auth.register.links.terms') }}
                                                     </a>
-                                                    <span class="text-gray-700">{{ $t('pages.auth.register.messages.and') }}</span>
+                                                    <span class="text-neutral-700">{{ $t('pages.auth.register.messages.and') }}</span>
                                                     <a
                                                         target="_blank"
                                                         :href="route('policy.show')"
-                                                        class="text-blue-600 hover:text-blue-800 font-bold underline hover:no-underline transition"
+                                                        class="text-primary-600 hover:text-primary-800 font-bold underline hover:no-underline transition"
                                                     >
                                                         {{ $t('pages.auth.register.links.privacy') }}
                                                     </a>
@@ -197,7 +197,7 @@
                                     </div>
 
                                     <!-- Error Indicator -->
-                                    <div v-else-if="form.errors && form.errors.terms" class="mt-4 flex items-center text-red-700">
+                                    <div v-else-if="form.errors && form.errors.terms" class="mt-4 flex items-center text-danger-700">
                                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                                         </svg>
@@ -207,19 +207,19 @@
                             </div>
 
                             <!-- Action Buttons -->
-                            <div class="pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div class="pt-6 border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                                 <a
                                     :href="route('login')"
-                                    class="text-sm text-gray-600 hover:text-gray-900 transition"
+                                    class="text-sm text-neutral-600 hover:text-neutral-900 transition"
                                 >
                                     {{ $t('pages.auth.register.links.already_registered') }}
-                                    <span class="font-medium text-blue-600">{{ $t('pages.auth.register.links.go_to_login') }}</span>
+                                    <span class="font-medium text-primary-600">{{ $t('pages.auth.register.links.go_to_login') }}</span>
                                 </a>
 
                                 <button
                                     type="submit"
                                     :disabled="form.processing"
-                                    class="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                                    class="w-full sm:w-auto px-8 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     <span v-if="!form.processing">{{ $t('pages.auth.register.buttons.register') }}</span>
                                     <span v-else>{{ $t('pages.auth.register.buttons.registering') }}</span>
@@ -230,7 +230,7 @@
 
                     <!-- Trust Badge -->
                     <div class="mt-8 text-center">
-                        <p class="text-sm text-gray-600">
+                        <p class="text-sm text-neutral-600">
                             <svg class="inline-block w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                             </svg>
@@ -305,13 +305,13 @@ select:focus {
 
 /* High contrast mode */
 @media (prefers-contrast: high) {
-  .text-gray-900,
-  .text-gray-700 {
+  .text-neutral-900,
+  .text-neutral-700 {
     color: #000000 !important;
   }
 
-  .text-gray-600,
-  .text-gray-500 {
+  .text-neutral-600,
+  .text-neutral-500 {
     color: #000000 !important;
   }
 
@@ -330,3 +330,4 @@ select:focus {
   }
 }
 </style>
+

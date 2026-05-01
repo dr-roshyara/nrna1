@@ -28,7 +28,7 @@
             </div>
             <div class="text-right">
               <p class="text-sm text-slate-500">Remaining</p>
-              <p class="text-2xl font-bold" :class="weeklyRemaining > 0 ? 'text-green-600' : 'text-red-500'">
+              <p class="text-2xl font-bold" :class="weeklyRemaining > 0 ? 'text-green-600' : 'text-danger-500'">
                 {{ weeklyRemaining }}
               </p>
             </div>
@@ -132,7 +132,7 @@ const props = defineProps({
 const weeklyRemaining = computed(() => Math.max(0, props.weeklyCap - props.weeklyPoints))
 
 const trackBadgeClass = (track) => ({
-  micro:    'bg-blue-100 text-blue-700',
+  micro:    'bg-primary-100 text-primary-700',
   standard: 'bg-amber-100 text-amber-700',
   major:    'bg-purple-100 text-purple-700',
 }[track] || 'bg-slate-100 text-slate-700')
@@ -140,10 +140,10 @@ const trackBadgeClass = (track) => ({
 const statusBadgeClass = (status) => ({
   draft:     'bg-slate-100 text-slate-600',
   pending:   'bg-yellow-100 text-yellow-700',
-  verified:  'bg-blue-100 text-blue-700',
+  verified:  'bg-primary-100 text-primary-700',
   approved:  'bg-green-100 text-green-700',
   completed: 'bg-green-100 text-green-700',
-  rejected:  'bg-red-100 text-red-700',
+  rejected:  'bg-danger-100 text-danger-700',
   appealed:  'bg-orange-100 text-orange-700',
 }[status] || 'bg-slate-100 text-slate-600')
 
@@ -153,3 +153,4 @@ const formatDate = (dateStr) => {
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
 }
 </script>
+

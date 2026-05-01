@@ -187,7 +187,7 @@
                   <!-- View Results Button -->
                   <a
                     :href="route('result.index', { election: election.slug })"
-                    class="inline-flex items-center justify-center gap-2 w-full bg-blue-500/80 hover:bg-blue-400 text-white font-extrabold text-base py-3 px-4 rounded-lg transition-all duration-300 border border-blue-400/50 hover:border-blue-300 shadow-md hover:shadow-lg hover:scale-105"
+                    class="inline-flex items-center justify-center gap-2 w-full bg-primary-500/80 hover:bg-primary-400 text-white font-extrabold text-base py-3 px-4 rounded-lg transition-all duration-300 border border-primary-400/50 hover:border-primary-300 shadow-md hover:shadow-lg hover:scale-105"
                     :aria-label="`View results for ${election.name}`"
                   >
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -304,7 +304,7 @@
                       <div class="flex items-center gap-1.5 flex-shrink-0">
                         <span class="text-[10px] px-1.5 py-0.5 rounded font-semibold"
                               :class="post.is_national_wide
-                                ? 'bg-blue-50 text-blue-600'
+                                ? 'bg-primary-50 text-primary-600'
                                 : 'bg-amber-50 text-amber-600'">
                           {{ post.is_national_wide ? t.active_elections.national : (post.state_name || t.active_elections.regional) }}
                         </span>
@@ -387,19 +387,19 @@
                     <!-- Verify Vote -->
                     <a
                       href="/vote/verify_to_show"
-                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-blue-200 bg-blue-50 hover:bg-white hover:border-blue-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-primary-200 bg-primary-50 hover:bg-white hover:border-primary-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1"
                       aria-label="Verify your submitted vote"
                     >
-                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center" aria-hidden="true">
-                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                       </span>
                       <span class="flex-1 min-w-0">
-                        <span class="block text-sm font-semibold text-blue-800">Verify Vote</span>
-                        <span class="block text-xs text-blue-600">View and verify your vote</span>
+                        <span class="block text-sm font-semibold text-primary-800">Verify Vote</span>
+                        <span class="block text-xs text-primary-600">View and verify your vote</span>
                       </span>
-                      <svg class="w-4 h-4 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <svg class="w-4 h-4 text-primary-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                       </svg>
                     </a>
@@ -640,7 +640,7 @@ export const ActionCard = {
     const accentMap = {
       primary: { border: 'border-l-primary-500', bg: 'bg-primary-50',  icon: 'text-primary-600', hover: 'hover:border-primary-300 hover:bg-primary-50/80' },
       amber:   { border: 'border-l-amber-500',   bg: 'bg-amber-50',    icon: 'text-amber-600',   hover: 'hover:border-amber-300   hover:bg-amber-50/80'   },
-      blue:    { border: 'border-l-blue-500',     bg: 'bg-blue-50',     icon: 'text-blue-600',    hover: 'hover:border-blue-300    hover:bg-blue-50/80'    },
+      blue:    { border: 'border-l-blue-500',     bg: 'bg-primary-50',     icon: 'text-primary-600',    hover: 'hover:border-primary-300    hover:bg-primary-50/80'    },
       violet:  { border: 'border-l-violet-500',   bg: 'bg-violet-50',   icon: 'text-violet-600',  hover: 'hover:border-violet-300  hover:bg-violet-50/80'  },
       emerald: { border: 'border-l-emerald-500',  bg: 'bg-emerald-50',  icon: 'text-emerald-600', hover: 'hover:border-emerald-300 hover:bg-emerald-50/80' },
     }
@@ -738,3 +738,4 @@ export default { components: { ActionCard } }
   outline-offset: 3px;
 }
 </style>
+

@@ -192,7 +192,7 @@
                             <div class="bg-slate-50 rounded-xl p-4 mb-4 border border-slate-200">
                                 <p class="text-sm font-medium text-slate-700 mb-3">{{ $t('pages.Vote.DemoVote.Guide.step1.example_label') }}</p>
                                 <div class="flex items-center gap-4 flex-wrap">
-                                    <div class="bg-white border-2 border-blue-400 rounded-xl px-6 py-3 text-2xl font-mono font-bold tracking-wider text-blue-800 shadow-sm select-all">
+                                    <div class="bg-white border-2 border-primary-400 rounded-xl px-6 py-3 text-2xl font-mono font-bold tracking-wider text-primary-800 shadow-sm select-all">
                                         A7B3K9M2
                                     </div>
                                     <span class="text-slate-400 text-lg">→</span>
@@ -330,14 +330,14 @@
                             </div>
 
                             <!-- Anonymity guarantee -->
-                            <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-4">
+                            <div class="bg-primary-50 border border-primary-200 rounded-xl p-4 mb-4">
                                 <div class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-blue-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-primary-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                                     </svg>
                                     <div>
-                                        <p class="font-semibold text-blue-800 mb-1">{{ $t('pages.Vote.DemoVote.Guide.step5.anon_title') }}</p>
-                                        <p class="text-sm text-blue-700">{{ $t('pages.Vote.DemoVote.Guide.step5.anon_body') }}</p>
+                                        <p class="font-semibold text-primary-800 mb-1">{{ $t('pages.Vote.DemoVote.Guide.step5.anon_title') }}</p>
+                                        <p class="text-sm text-primary-700">{{ $t('pages.Vote.DemoVote.Guide.step5.anon_body') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -439,7 +439,7 @@ export default {
     data() {
         return {
             stepDefs: [
-                { number: 1, labelKey: 'pages.Vote.DemoVote.Guide.overview.step1', color: 'bg-blue-100 text-blue-700' },
+                { number: 1, labelKey: 'pages.Vote.DemoVote.Guide.overview.step1', color: 'bg-primary-100 text-primary-700' },
                 { number: 2, labelKey: 'pages.Vote.DemoVote.Guide.overview.step2', color: 'bg-emerald-100 text-emerald-700' },
                 { number: 3, labelKey: 'pages.Vote.DemoVote.Guide.overview.step3', color: 'bg-purple-100 text-purple-700' },
                 { number: 4, labelKey: 'pages.Vote.DemoVote.Guide.overview.step4', color: 'bg-orange-100 text-orange-700' },
@@ -545,3 +545,4 @@ export default {
     },
 }
 </script>
+

@@ -9,7 +9,7 @@
           <!-- Breadcrumb -->
           <nav class="flex items-center gap-2 text-sm text-slate-400 mb-5">
             <a :href="route('organisations.show', organisation.slug)"
-               class="hover:text-blue-600 transition-colors">
+               class="hover:text-primary-600 transition-colors">
               {{ organisation.name }}
             </a>
             <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -19,7 +19,7 @@
           </nav>
 
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-13 h-13 rounded-2xl bg-blue-600 flex items-center justify-center shadow-sm p-3">
+            <div class="flex-shrink-0 w-13 h-13 rounded-2xl bg-primary-600 flex items-center justify-center shadow-sm p-3">
               <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                   d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857
@@ -52,7 +52,7 @@
 
         <!-- Global errors -->
         <div v-if="page.props.errors?.error"
-             class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm flex items-center gap-2">
+             class="mb-6 rounded-lg bg-danger-50 border border-danger-200 p-4 text-danger-800 text-sm flex items-center gap-2">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
@@ -86,7 +86,7 @@
                 @click="selectedTypeId = type.id"
                 class="w-full text-left rounded-xl border-2 p-4 transition-all focus:outline-none focus:ring-2 focus:ring-blue-400"
                 :class="selectedTypeId === type.id
-                  ? 'border-blue-600 bg-blue-50 shadow-sm'
+                  ? 'border-primary-600 bg-primary-50 shadow-sm'
                   : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm'"
               >
                 <div class="flex items-start gap-4">
@@ -94,7 +94,7 @@
                   <div
                     class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors"
                     :class="selectedTypeId === type.id
-                      ? 'border-blue-600 bg-blue-600'
+                      ? 'border-primary-600 bg-primary-600'
                       : 'border-slate-300 bg-white'"
                   >
                     <div v-if="selectedTypeId === type.id" class="w-2 h-2 rounded-full bg-white"></div>
@@ -106,7 +106,7 @@
                       <p class="text-sm font-semibold text-slate-900">{{ type.name }}</p>
                       <div class="flex items-center gap-2 flex-shrink-0">
                         <!-- Fee badge -->
-                        <span class="inline-flex items-center rounded-full bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5">
+                        <span class="inline-flex items-center rounded-full bg-primary-100 text-primary-800 text-xs font-semibold px-2.5 py-0.5">
                           {{ formatFee(type.fee_amount, type.fee_currency) }}
                         </span>
                         <!-- Duration badge -->
@@ -123,38 +123,38 @@
               </button>
             </div>
 
-            <p v-if="typeError" class="mt-2 text-xs text-red-600 flex items-center gap-1">
+            <p v-if="typeError" class="mt-2 text-xs text-danger-600 flex items-center gap-1">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
               {{ typeError }}
             </p>
-            <p v-if="page.props.errors?.membership_type_id" class="mt-2 text-xs text-red-600">
+            <p v-if="page.props.errors?.membership_type_id" class="mt-2 text-xs text-danger-600">
               {{ page.props.errors.membership_type_id }}
             </p>
           </div>
 
           <!-- Selected summary -->
           <div v-if="selectedType"
-               class="mb-6 rounded-xl bg-blue-50 border border-blue-200 p-4">
-            <p class="text-xs font-semibold text-blue-700 uppercase tracking-wider mb-2">{{ t.summary_title }}</p>
+               class="mb-6 rounded-xl bg-primary-50 border border-primary-200 p-4">
+            <p class="text-xs font-semibold text-primary-700 uppercase tracking-wider mb-2">{{ t.summary_title }}</p>
             <div class="grid grid-cols-3 gap-3 text-sm">
               <div>
-                <p class="text-xs text-blue-500 mb-0.5">{{ t.summary_type }}</p>
-                <p class="font-semibold text-blue-900">{{ selectedType.name }}</p>
+                <p class="text-xs text-primary-500 mb-0.5">{{ t.summary_type }}</p>
+                <p class="font-semibold text-primary-900">{{ selectedType.name }}</p>
               </div>
               <div>
-                <p class="text-xs text-blue-500 mb-0.5">{{ t.summary_fee }}</p>
-                <p class="font-semibold text-blue-900">{{ formatFee(selectedType.fee_amount, selectedType.fee_currency) }}</p>
+                <p class="text-xs text-primary-500 mb-0.5">{{ t.summary_fee }}</p>
+                <p class="font-semibold text-primary-900">{{ formatFee(selectedType.fee_amount, selectedType.fee_currency) }}</p>
               </div>
               <div>
-                <p class="text-xs text-blue-500 mb-0.5">{{ t.summary_duration }}</p>
-                <p class="font-semibold text-blue-900">
+                <p class="text-xs text-primary-500 mb-0.5">{{ t.summary_duration }}</p>
+                <p class="font-semibold text-primary-900">
                   {{ selectedType.duration_months ? selectedType.duration_months + ' ' + t.months : t.lifetime }}
                 </p>
               </div>
             </div>
-            <p v-if="selectedType.requires_approval" class="mt-3 text-xs text-blue-600 flex items-center gap-1.5">
+            <p v-if="selectedType.requires_approval" class="mt-3 text-xs text-primary-600 flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
@@ -172,7 +172,7 @@
             <button
               type="submit"
               :disabled="submitting"
-              class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-6 py-2.5 text-sm font-semibold text-white shadow hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               <svg v-if="submitting" class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
@@ -298,3 +298,4 @@ const submit = () => {
   )
 }
 </script>
+

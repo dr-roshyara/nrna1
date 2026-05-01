@@ -25,7 +25,7 @@
                   <td>{{ getCandidateName(candId) }}</td>
                   <td>{{ diff.official }}</td>
                   <td>{{ diff.raw }}</td>
-                  <td :class="{'text-red-500': diff.official < diff.raw, 'text-green-500': diff.official > diff.raw}">
+                  <td :class="{'text-danger-500': diff.official < diff.raw, 'text-green-500': diff.official > diff.raw}">
                     {{ diff.official - diff.raw }}
                   </td>
                   <td>
@@ -252,7 +252,7 @@ export default {
   background-color: #fef2f2;
 }
 
-.text-red-500 {
+.text-danger-500 {
   color: #ef4444;
 }
 

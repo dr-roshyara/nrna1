@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "description": "Design system exceptions and approved deviations",
+  "last_updated": "2026-05-01",
+  "owner": "Design System Team",
+  "governance": {
+    "approval_required": true,
+    "min_approvers": 2,
+    "max_duration_days": 90
+  },
+  "exceptions": {
+    "raw_buttons": [
+      {
+        "file": "resources/js/Pages/Vote/DemoVote/Guide.vue",
+        "reason": "Legacy demo voting UI - scheduled for Phase 5 migration",
+        "approved_by": ["nab.raj.sharma"],
+        "approved_date": "2026-05-01",
+        "expires": "2026-08-01",
+        "status": "active",
+        "priority": "medium"
+      }
+    ],
+    "raw_colors": [
+      {
+        "file": "resources/js/Pages/Vote/Create.vue",
+        "element": "Gradient success banner",
+        "lines": [23],
+        "reason": "Intentional celebratory design for voter UX - preserves emotional feedback",
+        "approved_by": ["nab.raj.sharma"],
+        "approved_date": "2026-05-01",
+        "expires": null,
+        "status": "permanent",
+        "priority": "low",
+        "colors": ["from-green-500", "to-blue-600"]
+      },
+      {
+        "file": "resources/js/Pages/VotingStart.vue",
+        "element": "Marketing page branding",
+        "reason": "Public marketing page - intentional blue branding for consistency with voter-facing materials",
+        "approved_by": ["nab.raj.sharma"],
+        "approved_date": "2026-05-01",
+        "expires": null,
+        "status": "permanent",
+        "priority": "low"
+      },
+      {
+        "file": "resources/js/Pages/Election/Management.vue",
+        "element": "Results link gradient",
+        "lines": [711],
+        "reason": "Intentional decorative gradient for results CTA - visual hierarchy",
+        "approved_by": ["nab.raj.sharma"],
+        "approved_date": "2026-05-01",
+        "expires": null,
+        "status": "permanent",
+        "priority": "low",
+        "colors": ["from-indigo-50", "to-blue-50"]
+      }
+    ],
+    "component_deviations": [
+      {
+        "component": "StateMachinePanel.vue",
+        "reason": "Sub-component with internal color logic - managed separately from Pages layer",
+        "status": "deferred",
+        "phase": "5",
+        "notes": "Will be refactored as part of layout consolidation"
+      }
+    ]
+  },
+  "tracking": {
+    "total_exceptions": 6,
+    "active_exceptions": 1,
+    "permanent_exceptions": 3,
+    "expired_exceptions": 0,
+    "pending_review": 0
+  }
+}

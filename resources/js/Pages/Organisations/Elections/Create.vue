@@ -11,29 +11,29 @@
       </div>
 
       <div class="bg-white rounded-lg shadow p-8">
-        <h1 class="text-2xl font-bold text-gray-900 mb-2">{{ t.title }}</h1>
-        <p class="text-gray-500 text-sm mb-8">
-          {{ t.organisation_label }}: <span class="font-medium text-gray-700">{{ organisation.name }}</span>
+        <h1 class="text-2xl font-bold text-neutral-900 mb-2">{{ t.title }}</h1>
+        <p class="text-neutral-500 text-sm mb-8">
+          {{ t.organisation_label }}: <span class="font-medium text-neutral-700">{{ organisation.name }}</span>
         </p>
 
         <!-- Info Banner - Election Architecture & Security -->
-        <div class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div class="mb-6 p-4 bg-primary-50 border border-primary-200 rounded-lg">
           <div class="flex items-start gap-3 mb-3">
-            <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
-            <p class="text-sm text-blue-800">
+            <p class="text-sm text-primary-800">
               <strong>Secure by design:</strong> Our elections use a tamper-proof state machine with immutable audit trails.
             </p>
           </div>
           <div class="flex flex-wrap gap-3 ml-8">
-            <a :href="route('public.election-architecture')" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-800 underline">
+            <a :href="route('public.election-architecture')" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-800 underline">
               Learn Architecture
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
               </svg>
             </a>
-            <a :href="route('public.election-security')" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-800 underline">
+            <a :href="route('public.election-security')" target="_blank" class="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-800 underline">
               Security Deep Dive
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -46,8 +46,8 @@
 
           <!-- Name -->
           <div class="mb-6">
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
-              {{ t.fields.name.label }} <span class="text-red-500">*</span>
+            <label for="name" class="block text-sm font-medium text-neutral-700 mb-1">
+              {{ t.fields.name.label }} <span class="text-danger-500">*</span>
             </label>
             <input
               id="name"
@@ -56,16 +56,16 @@
               maxlength="255"
               :placeholder="t.fields.name.placeholder"
               class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              :class="errors.name ? 'border-red-400' : 'border-gray-300'"
+              :class="errors.name ? 'border-danger-400' : 'border-neutral-300'"
             />
-            <p v-if="errors.name" class="mt-1 text-sm text-red-600">{{ errors.name }}</p>
+            <p v-if="errors.name" class="mt-1 text-sm text-danger-600">{{ errors.name }}</p>
           </div>
 
           <!-- Description -->
           <div class="mb-6">
-            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+            <label for="description" class="block text-sm font-medium text-neutral-700 mb-1">
               {{ t.fields.description.label }}
-              <span class="text-gray-400 font-normal">{{ t.fields.description.optional }}</span>
+              <span class="text-neutral-400 font-normal">{{ t.fields.description.optional }}</span>
             </label>
             <textarea
               id="description"
@@ -73,16 +73,16 @@
               rows="3"
               maxlength="5000"
               :placeholder="t.fields.description.placeholder"
-              class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              :class="errors.description ? 'border-red-400' : 'border-gray-300'"
+              class="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              :class="errors.description ? 'border-danger-400' : 'border-neutral-300'"
             />
-            <p v-if="errors.description" class="mt-1 text-sm text-red-600">{{ errors.description }}</p>
+            <p v-if="errors.description" class="mt-1 text-sm text-danger-600">{{ errors.description }}</p>
           </div>
 
           <!-- Expected Voters -->
           <div class="mb-6">
-            <label for="expected_voter_count" class="block text-sm font-medium text-gray-700 mb-1">
-              {{ t.fields.expected_voter_count.label }} <span class="text-red-500">*</span>
+            <label for="expected_voter_count" class="block text-sm font-medium text-neutral-700 mb-1">
+              {{ t.fields.expected_voter_count.label }} <span class="text-danger-500">*</span>
             </label>
             <input
               id="expected_voter_count"
@@ -92,9 +92,9 @@
               max="10000"
               placeholder="e.g. 50"
               class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              :class="errors.expected_voter_count ? 'border-red-400' : 'border-gray-300'"
+              :class="errors.expected_voter_count ? 'border-danger-400' : 'border-neutral-300'"
             />
-            <p v-if="errors.expected_voter_count" class="mt-1 text-sm text-red-600">{{ errors.expected_voter_count }}</p>
+            <p v-if="errors.expected_voter_count" class="mt-1 text-sm text-danger-600">{{ errors.expected_voter_count }}</p>
 
             <!-- Approval warning -->
             <div
@@ -107,39 +107,39 @@
             </div>
 
             <!-- Help text -->
-            <p class="mt-1 text-xs text-gray-400">
+            <p class="mt-1 text-xs text-neutral-400">
               {{ t.fields.expected_voter_count.help }}
             </p>
           </div>
 
           <!-- STATE MACHINE PHASE DATES SECTION -->
           <div class="border-t pt-8 mb-8">
-            <h3 class="text-lg font-semibold text-gray-900 mb-6">Election Phases Timeline</h3>
-            <p class="text-sm text-gray-500 mb-6">Define when each phase of the election takes place</p>
+            <h3 class="text-lg font-semibold text-neutral-900 mb-6">Election Phases Timeline</h3>
+            <p class="text-sm text-neutral-500 mb-6">Define when each phase of the election takes place</p>
 
             <!-- Administration Phase -->
-            <div class="mb-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h4 class="text-sm font-semibold text-blue-900 mb-4">⚙️ Administration Phase</h4>
+            <div class="mb-8 p-4 bg-primary-50 rounded-lg border border-primary-200">
+              <h4 class="text-sm font-semibold text-primary-900 mb-4">⚙️ Administration Phase</h4>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs text-gray-600 font-medium mb-1">Start Date & Time</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">Start Date & Time</label>
                   <input
                     v-model="form.administration_suggested_start"
                     type="datetime-local"
                     class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    :class="errors.administration_suggested_start ? 'border-red-400' : 'border-gray-300'"
+                    :class="errors.administration_suggested_start ? 'border-danger-400' : 'border-neutral-300'"
                   />
-                  <p v-if="errors.administration_suggested_start" class="mt-1 text-xs text-red-600">{{ errors.administration_suggested_start }}</p>
+                  <p v-if="errors.administration_suggested_start" class="mt-1 text-xs text-danger-600">{{ errors.administration_suggested_start }}</p>
                 </div>
                 <div>
-                  <label class="block text-xs text-gray-600 font-medium mb-1">End Date & Time</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">End Date & Time</label>
                   <input
                     v-model="form.administration_suggested_end"
                     type="datetime-local"
                     class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    :class="errors.administration_suggested_end ? 'border-red-400' : 'border-gray-300'"
+                    :class="errors.administration_suggested_end ? 'border-danger-400' : 'border-neutral-300'"
                   />
-                  <p v-if="errors.administration_suggested_end" class="mt-1 text-xs text-red-600">{{ errors.administration_suggested_end }}</p>
+                  <p v-if="errors.administration_suggested_end" class="mt-1 text-xs text-danger-600">{{ errors.administration_suggested_end }}</p>
                 </div>
               </div>
             </div>
@@ -149,24 +149,24 @@
               <h4 class="text-sm font-semibold text-green-900 mb-4">📋 Nomination Phase</h4>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs text-gray-600 font-medium mb-1">Start Date & Time</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">Start Date & Time</label>
                   <input
                     v-model="form.nomination_suggested_start"
                     type="datetime-local"
                     class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                    :class="errors.nomination_suggested_start ? 'border-red-400' : 'border-gray-300'"
+                    :class="errors.nomination_suggested_start ? 'border-danger-400' : 'border-neutral-300'"
                   />
-                  <p v-if="errors.nomination_suggested_start" class="mt-1 text-xs text-red-600">{{ errors.nomination_suggested_start }}</p>
+                  <p v-if="errors.nomination_suggested_start" class="mt-1 text-xs text-danger-600">{{ errors.nomination_suggested_start }}</p>
                 </div>
                 <div>
-                  <label class="block text-xs text-gray-600 font-medium mb-1">End Date & Time</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">End Date & Time</label>
                   <input
                     v-model="form.nomination_suggested_end"
                     type="datetime-local"
                     class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-                    :class="errors.nomination_suggested_end ? 'border-red-400' : 'border-gray-300'"
+                    :class="errors.nomination_suggested_end ? 'border-danger-400' : 'border-neutral-300'"
                   />
-                  <p v-if="errors.nomination_suggested_end" class="mt-1 text-xs text-red-600">{{ errors.nomination_suggested_end }}</p>
+                  <p v-if="errors.nomination_suggested_end" class="mt-1 text-xs text-danger-600">{{ errors.nomination_suggested_end }}</p>
                 </div>
               </div>
             </div>
@@ -176,31 +176,31 @@
               <h4 class="text-sm font-semibold text-purple-900 mb-4">🗳️ Voting Phase</h4>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs text-gray-600 font-medium mb-1">Voting Starts</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">Voting Starts</label>
                   <input
                     v-model="form.voting_starts_at"
                     type="datetime-local"
                     class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    :class="errors.voting_starts_at ? 'border-red-400' : 'border-gray-300'"
+                    :class="errors.voting_starts_at ? 'border-danger-400' : 'border-neutral-300'"
                   />
-                  <p v-if="errors.voting_starts_at" class="mt-1 text-xs text-red-600">{{ errors.voting_starts_at }}</p>
+                  <p v-if="errors.voting_starts_at" class="mt-1 text-xs text-danger-600">{{ errors.voting_starts_at }}</p>
                 </div>
                 <div>
-                  <label class="block text-xs text-gray-600 font-medium mb-1">Voting Ends</label>
+                  <label class="block text-xs text-neutral-600 font-medium mb-1">Voting Ends</label>
                   <input
                     v-model="form.voting_ends_at"
                     type="datetime-local"
                     class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    :class="errors.voting_ends_at ? 'border-red-400' : 'border-gray-300'"
+                    :class="errors.voting_ends_at ? 'border-danger-400' : 'border-neutral-300'"
                   />
-                  <p v-if="errors.voting_ends_at" class="mt-1 text-xs text-red-600">{{ errors.voting_ends_at }}</p>
+                  <p v-if="errors.voting_ends_at" class="mt-1 text-xs text-danger-600">{{ errors.voting_ends_at }}</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Phase Dates Error -->
-          <div v-if="phasesDatesError" class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
+          <div v-if="phasesDatesError" class="mb-6 rounded-lg bg-danger-50 border border-danger-200 p-4 text-danger-800 text-sm">
             {{ phasesDatesError }}
           </div>
 
@@ -208,14 +208,14 @@
           <div class="flex items-center justify-between">
             <a
               :href="route('organisations.show', organisation.slug)"
-              class="text-sm text-gray-500 hover:text-gray-700 underline"
+              class="text-sm text-neutral-500 hover:text-neutral-700 underline"
             >
               {{ t.actions.cancel }}
             </a>
             <button
               type="submit"
               :disabled="isLoading || !!phasesDatesError"
-              class="rounded-md bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="rounded-md bg-primary-600 px-6 py-2 text-sm font-semibold text-white shadow hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {{ isLoading ? t.actions.submitting : t.actions.submit }}
             </button>
@@ -330,3 +330,4 @@ const submit = () => {
   )
 }
 </script>
+

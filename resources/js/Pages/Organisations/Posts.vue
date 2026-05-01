@@ -15,8 +15,8 @@
         <!-- Header -->
         <SectionCard padding="lg">
           <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
               </svg>
             </div>
@@ -50,11 +50,11 @@
 
               <div
                 class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                :class="post.is_national_wide ? 'bg-blue-100' : 'bg-amber-100'"
+                :class="post.is_national_wide ? 'bg-primary-100' : 'bg-amber-100'"
               >
                 <svg
                   class="w-5 h-5"
-                  :class="post.is_national_wide ? 'text-blue-600' : 'text-amber-600'"
+                  :class="post.is_national_wide ? 'text-primary-600' : 'text-amber-600'"
                   fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
                 >
                   <path v-if="post.is_national_wide" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -70,7 +70,7 @@
                 <div class="flex items-center gap-3 mt-1 flex-wrap">
                   <span
                     class="text-xs px-2 py-0.5 rounded-full font-medium"
-                    :class="post.is_national_wide ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700'"
+                    :class="post.is_national_wide ? 'bg-primary-100 text-primary-700' : 'bg-amber-100 text-amber-700'"
                   >
                     {{ post.is_national_wide ? 'National' : post.state_name }}
                   </span>
@@ -88,7 +88,7 @@
         <div v-if="election.status === 'active'" class="pt-2">
           <a
             :href="route('organisations.candidacy.create', organisation.slug)"
-            class="inline-flex items-center gap-2 text-sm font-medium text-blue-700 bg-blue-50 border border-blue-200 rounded-lg px-5 py-3 hover:bg-blue-100 transition-colors"
+            class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 bg-primary-50 border border-primary-200 rounded-lg px-5 py-3 hover:bg-primary-100 transition-colors"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
@@ -114,3 +114,4 @@ defineProps({
   posts:        { type: Array,  default: () => [] },
 })
 </script>
+

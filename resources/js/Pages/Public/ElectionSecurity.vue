@@ -16,7 +16,7 @@
       <!-- Hero Section -->
       <div class="relative overflow-hidden bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
         <div class="absolute inset-0 opacity-10">
-          <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+          <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
           <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-400 rounded-full blur-3xl"></div>
         </div>
         <div class="container mx-auto px-4 py-20 relative z-10">
@@ -33,12 +33,12 @@
                 State Machine Technology
               </span>
             </h1>
-            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
               Every election on our platform is secured by a tamper-proof state machine that guarantees transparency,
               immutability, and verifiable results.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#how-it-works" class="px-6 py-3 bg-white text-blue-900 font-semibold rounded-lg hover:shadow-lg transition">
+              <a href="#how-it-works" class="px-6 py-3 bg-white text-primary-900 font-semibold rounded-lg hover:shadow-lg transition">
                 How It Works
               </a>
               <a href="mailto:sales@publicdigit.com" class="px-6 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition">
@@ -139,8 +139,8 @@
 
           <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition">
-              <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center mb-4">
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="w-12 h-12 rounded-lg bg-primary-100 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                 </svg>
               </div>
@@ -217,7 +217,7 @@
                 <tr class="border-b-2 border-slate-200 bg-slate-50">
                   <th class="text-left py-4 px-6 text-slate-600 font-semibold">Feature</th>
                   <th class="text-left py-4 px-6 text-slate-400 font-medium">Traditional Systems</th>
-                  <th class="text-left py-4 px-6 text-blue-600 font-semibold">Our State Machine</th>
+                  <th class="text-left py-4 px-6 text-primary-600 font-semibold">Our State Machine</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100">
@@ -268,11 +268,11 @@
       <div class="py-16 bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
         <div class="container mx-auto px-4 text-center">
           <h2 class="text-3xl font-bold mb-4">Ready to Run a Secure Election?</h2>
-          <p class="text-xl text-blue-200 mb-8 max-w-2xl mx-auto">
+          <p class="text-xl text-primary-200 mb-8 max-w-2xl mx-auto">
             Join organizations that trust our tamper-proof state machine technology.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:sales@publicdigit.com" class="px-8 py-3 bg-white text-blue-900 font-semibold rounded-lg hover:shadow-lg transition">
+            <a href="mailto:sales@publicdigit.com" class="px-8 py-3 bg-white text-primary-900 font-semibold rounded-lg hover:shadow-lg transition">
               Contact Sales
             </a>
             <a href="mailto:demo@publicdigit.com" class="px-8 py-3 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition">
@@ -301,7 +301,7 @@ const trustBadges = [
 ]
 
 const phases = [
-  { key: 'administration',  icon: '⚙️', bg: 'bg-blue-100',   label: 'Administration', sub: 'Setup & Configuration' },
+  { key: 'administration',  icon: '⚙️', bg: 'bg-primary-100',   label: 'Administration', sub: 'Setup & Configuration' },
   { key: 'nomination',      icon: '📋', bg: 'bg-green-100',  label: 'Nomination',     sub: 'Candidate Applications' },
   { key: 'voting',          icon: '🗳️', bg: 'bg-purple-100', label: 'Voting',         sub: 'Secure Vote Casting' },
   { key: 'results_pending', icon: '⏳', bg: 'bg-orange-100', label: 'Counting',       sub: 'Verification & Tally' },
@@ -310,7 +310,7 @@ const phases = [
 
 const phaseDetails = {
   administration: {
-    icon: '⚙️', iconBg: 'bg-blue-100',
+    icon: '⚙️', iconBg: 'bg-primary-100',
     title: 'Administration Phase',
     description: 'Election setup and configuration period. Election officers configure posts, import voters, and form the election committee.',
     features: [
@@ -416,3 +416,4 @@ const toggleFaq = (idx) => {
   overflow: hidden;
 }
 </style>
+

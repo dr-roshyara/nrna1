@@ -46,12 +46,12 @@
         <div
           v-if="page.props.flash?.error"
           role="alert"
-          class="flex items-center gap-3 bg-red-50 border border-red-200 rounded-xl px-5 py-4"
+          class="flex items-center gap-3 bg-danger-50 border border-danger-200 rounded-xl px-5 py-4"
         >
-          <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="w-5 h-5 text-danger-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
-          <p class="text-sm font-medium text-red-800">{{ page.props.flash.error }}</p>
+          <p class="text-sm font-medium text-danger-800">{{ page.props.flash.error }}</p>
         </div>
 
         <!-- Add Post Form -->
@@ -100,7 +100,7 @@
               <div class="flex flex-wrap items-center gap-2 mt-2 ml-8">
                 <span
                   class="text-xs px-2 py-0.5 rounded-full font-medium"
-                  :class="post.is_national_wide ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700'"
+                  :class="post.is_national_wide ? 'bg-primary-100 text-primary-700' : 'bg-amber-100 text-amber-700'"
                 >
                   {{ post.is_national_wide ? 'National' : post.state_name }}
                 </span>
@@ -235,3 +235,4 @@ function deletePost(post) {
   )
 }
 </script>
+

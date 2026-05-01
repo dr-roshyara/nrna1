@@ -18,7 +18,7 @@
                 <form @submit.prevent="submit" class="text-center mx-auto mt-8">
                     <!-- National Posts Section -->
                     <div v-if="posts.national && posts.national.length" class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4 text-gray-800">National Posts</h2>
+                        <h2 class="text-2xl font-bold mb-4 text-neutral-800">National Posts</h2>
                         <create-votingform
                             v-for="(post, postIndex) in posts.national"
                             :key="post.id"
@@ -31,7 +31,7 @@
 
                     <!-- Regional Posts Section -->
                     <div v-if="posts.regional && posts.regional.length" class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4 text-gray-800">Regional Posts</h2>
+                        <h2 class="text-2xl font-bold mb-4 text-neutral-800">Regional Posts</h2>
                         <create-votingform
                             v-for="(post, postIndex) in posts.regional"
                             :key="post.id"
@@ -44,19 +44,19 @@
 
 
                     <!-- Errors -->
-                    <div v-if="errors.votes" class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-                        <p class="text-red-800 font-semibold">{{ errors.votes }}</p>
+                    <div v-if="errors.votes" class="bg-danger-50 border border-danger-200 rounded-lg p-4 mb-6">
+                        <p class="text-danger-800 font-semibold">{{ errors.votes }}</p>
                     </div>
 
                     <!-- Agreement and Submit Section -->
-                    <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mt-8">
+                    <div class="bg-white rounded-xl shadow-lg border border-neutral-200 p-8 mt-8">
                         <!-- Agreement Section -->
-                        <div class="border-2 border-blue-300 rounded-lg p-6 mb-6 bg-blue-50">
+                        <div class="border-2 border-primary-300 rounded-lg p-6 mb-6 bg-primary-50">
                             <!-- Header -->
                             <div class="flex flex-col items-center justify-center mb-6">
                                 <div class="text-3xl mb-2">✅</div>
-                                <h3 class="text-xl font-bold text-red-700 mb-1">Voting Agreement | मतदान समझौता</h3>
-                                <p class="text-lg font-semibold text-red-700">मतदान गरेको स्विकार</p>
+                                <h3 class="text-xl font-bold text-danger-700 mb-1">Voting Agreement | मतदान समझौता</h3>
+                                <p class="text-lg font-semibold text-danger-700">मतदान गरेको स्विकार</p>
                             </div>
 
                             <!-- Checkbox -->
@@ -65,18 +65,18 @@
                                     <input
                                         type="checkbox"
                                         v-model="form.agree_button"
-                                        class="w-5 h-5 text-blue-600 border-2 border-gray-400 rounded-sm focus:ring-blue-500 focus:ring-2"
+                                        class="w-5 h-5 text-primary-600 border-2 border-neutral-400 rounded-sm focus:ring-blue-500 focus:ring-2"
                                     />
-                                    <span class="ml-3 text-lg font-medium text-gray-900">I agree to the terms</span>
+                                    <span class="ml-3 text-lg font-medium text-neutral-900">I agree to the terms</span>
                                 </label>
                             </div>
 
                             <!-- Agreement Text -->
-                            <div class="bg-white rounded-lg p-4 border border-gray-200 mb-4">
-                                <p class="text-gray-700 mb-3 leading-relaxed">
+                            <div class="bg-white rounded-lg p-4 border border-neutral-200 mb-4">
+                                <p class="text-neutral-700 mb-3 leading-relaxed">
                                     By clicking this button, I confirm that I have chosen the candidates correctly and I followed the online rules to vote the candidates.
                                 </p>
-                                <p class="text-gray-700 text-sm leading-relaxed">
+                                <p class="text-neutral-700 text-sm leading-relaxed">
                                     यो बटनमा थिचेर मैले माथि छाने आनुसार मतदान गरेको साचो हो। मैले बिद्दुतिय नियम हरुलाई पलना गरेर आफ्नो मत जाहेर गरेर मतदान गरेको कुरा स्विकार्छु।
                                 </p>
                             </div>
@@ -89,7 +89,7 @@
                             </div>
 
                             <!-- Checkbox Error -->
-                            <div v-if="errors.agree_button" class="text-red-600 text-sm mb-4 bg-red-50 p-2 rounded-sm">
+                            <div v-if="errors.agree_button" class="text-danger-600 text-sm mb-4 bg-danger-50 p-2 rounded-sm">
                                 {{ errors.agree_button }}
                             </div>
 

@@ -11,38 +11,38 @@
             <div class="mt-4 mx-auto flex flex-col items-center justify-center max-w-4xl px-4">
 
                 <!-- Title -->
-                <p class="py-4 text-2xl md:text-3xl font-bold text-blue-600 text-center">
+                <p class="py-4 text-2xl md:text-3xl font-bold text-primary-600 text-center">
                     {{ $t('pages.Vote.DemoVote.ThankYou.title') }}
                 </p>
 
                 <!-- Thank You Message -->
                 <div class="text-left w-full bg-white rounded-lg shadow-lg p-6 md:p-8 mb-6">
-                    <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-3">
+                    <h2 class="text-lg md:text-xl font-bold text-neutral-900 mb-3">
                         {{ $t('pages.Vote.DemoVote.ThankYou.thank_you_card.title') }}
                     </h2>
-                    <p class="text-gray-700 leading-relaxed mb-2">
+                    <p class="text-neutral-700 leading-relaxed mb-2">
                         {{ $t('pages.Vote.DemoVote.ThankYou.thank_you_card.salutation') }}
                     </p>
-                    <p class="text-gray-700 leading-relaxed mb-2">
+                    <p class="text-neutral-700 leading-relaxed mb-2">
                         {{ $t('pages.Vote.DemoVote.ThankYou.thank_you_card.body1') }}
                     </p>
-                    <p class="text-gray-700 leading-relaxed">
+                    <p class="text-neutral-700 leading-relaxed">
                         {{ $t('pages.Vote.DemoVote.ThankYou.thank_you_card.body2') }}
                     </p>
                 </div>
 
                 <!-- Receipt summary + View Result link -->
                 <div class="w-full mb-6">
-                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg p-6 border border-gray-200">
+                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg p-6 border border-neutral-200">
 
                         <!-- Receipt code row -->
                         <div class="flex justify-between items-center p-3 bg-white rounded-lg border mb-3">
-                            <span class="text-gray-600 text-sm">{{ $t('pages.Vote.DemoVote.ThankYou.receipt.hash_label') }}</span>
-                            <span class="font-mono font-bold text-blue-700 tracking-widest text-base select-all">{{ receipt_hash }}</span>
+                            <span class="text-neutral-600 text-sm">{{ $t('pages.Vote.DemoVote.ThankYou.receipt.hash_label') }}</span>
+                            <span class="font-mono font-bold text-primary-700 tracking-widest text-base select-all">{{ receipt_hash }}</span>
                         </div>
                         <div class="flex justify-between items-center p-3 bg-white rounded-lg border mb-5">
-                            <span class="text-gray-600 text-sm">{{ $t('pages.Vote.DemoVote.ThankYou.receipt.timestamp_label') }}</span>
-                            <span class="font-mono text-gray-900 text-xs">{{ voted_at }}</span>
+                            <span class="text-neutral-600 text-sm">{{ $t('pages.Vote.DemoVote.ThankYou.receipt.timestamp_label') }}</span>
+                            <span class="font-mono text-neutral-900 text-xs">{{ voted_at }}</span>
                         </div>
 
                         <!-- View result button -->
@@ -83,29 +83,29 @@
                 <div class="w-full flex flex-col sm:flex-row gap-3 mb-6">
                     <a v-if="is_public_demo"
                        :href="route('public-demo.start')"
-                       class="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition shadow-lg text-center">
+                       class="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-lg transition shadow-lg text-center">
                         {{ $t('pages.Vote.DemoVote.ThankYou.buttons.try_again') }}
                     </a>
                     <button v-else @click="voteAgain"
-                            class="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition shadow-lg">
+                            class="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-lg transition shadow-lg">
                         {{ $t('pages.Vote.DemoVote.ThankYou.buttons.try_again') }}
                     </button>
                     <button v-if="!is_public_demo" @click="goToDashboard"
-                            class="flex-1 px-6 py-3 border border-gray-300 text-gray-700 hover:bg-gray-50 font-bold rounded-lg transition">
+                            class="flex-1 px-6 py-3 border border-neutral-300 text-neutral-700 hover:bg-neutral-50 font-bold rounded-lg transition">
                         {{ $t('pages.Vote.DemoVote.ThankYou.buttons.dashboard') }}
                     </button>
                 </div>
 
                 <!-- Security Footer -->
-                <div class="w-full bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
+                <div class="w-full bg-primary-50 border-l-4 border-primary-500 rounded-lg p-4">
                     <div class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-blue-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-primary-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
                         <div>
-                            <p class="text-blue-900 font-semibold text-sm">{{ $t('pages.Vote.DemoVote.ThankYou.security.title') }}</p>
-                            <p class="text-blue-700 text-xs">{{ $t('pages.Vote.DemoVote.ThankYou.security.body') }}</p>
+                            <p class="text-primary-900 font-semibold text-sm">{{ $t('pages.Vote.DemoVote.ThankYou.security.title') }}</p>
+                            <p class="text-primary-700 text-xs">{{ $t('pages.Vote.DemoVote.ThankYou.security.body') }}</p>
                         </div>
                     </div>
                 </div>
@@ -166,3 +166,4 @@ export default {
     }
 }
 </script>
+

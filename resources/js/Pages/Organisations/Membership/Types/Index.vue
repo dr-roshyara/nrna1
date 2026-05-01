@@ -12,7 +12,7 @@
       </div>
 
       <div v-if="page.props.flash?.error"
-           class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm flex items-center gap-2">
+           class="mb-6 rounded-lg bg-danger-50 border border-danger-200 p-4 text-danger-800 text-sm flex items-center gap-2">
         <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
@@ -20,7 +20,7 @@
       </div>
 
       <div v-if="page.props.errors?.error"
-           class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
+           class="mb-6 rounded-lg bg-danger-50 border border-danger-200 p-4 text-danger-800 text-sm">
         {{ page.props.errors.error }}
       </div>
 
@@ -28,21 +28,21 @@
       <div class="flex items-start gap-4 mb-6">
         <!-- Back button -->
         <a :href="route('organisations.membership.dashboard', organisation.slug)"
-           class="mt-1 inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+           class="mt-1 inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-neutral-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
            title="Back to Membership Hub">
-          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
           </svg>
         </a>
 
         <!-- Title -->
         <div class="flex-1">
-          <h1 class="text-2xl font-bold text-gray-900">{{ t.title }}</h1>
-          <p class="text-sm text-gray-500 mt-1">{{ organisation.name }}</p>
+          <h1 class="text-2xl font-bold text-neutral-900">{{ t.title }}</h1>
+          <p class="text-sm text-neutral-500 mt-1">{{ organisation.name }}</p>
         </div>
         <button
           @click="openCreate"
-          class="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="inline-flex items-center gap-2 rounded-md bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
@@ -54,49 +54,49 @@
       <!-- Types table -->
       <div class="bg-white rounded-lg shadow overflow-hidden">
         <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
+          <thead class="bg-neutral-50">
             <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ t.col_name }}</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ t.col_fee }}</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ t.col_duration }}</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ t.col_status }}</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ t.col_sort }}</th>
-              <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{{ t.col_actions }}</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">{{ t.col_name }}</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">{{ t.col_fee }}</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">{{ t.col_duration }}</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">{{ t.col_status }}</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase tracking-wider">{{ t.col_sort }}</th>
+              <th class="px-6 py-3 text-right text-xs font-medium text-neutral-500 uppercase tracking-wider">{{ t.col_actions }}</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-            <tr v-for="type in types.data" :key="type.id" class="hover:bg-gray-50 transition-colors">
+            <tr v-for="type in types.data" :key="type.id" class="hover:bg-neutral-50 transition-colors">
               <td class="px-6 py-4">
-                <div class="text-sm font-medium text-gray-900">{{ type.name }}</div>
-                <div class="text-xs text-gray-400">{{ type.slug }}</div>
-                <div v-if="type.description" class="text-xs text-gray-500 mt-0.5 max-w-xs truncate">{{ type.description }}</div>
+                <div class="text-sm font-medium text-neutral-900">{{ type.name }}</div>
+                <div class="text-xs text-neutral-400">{{ type.slug }}</div>
+                <div v-if="type.description" class="text-xs text-neutral-500 mt-0.5 max-w-xs truncate">{{ type.description }}</div>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-700">
                 {{ type.fee_amount }} {{ type.fee_currency }}
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-700">
                 {{ type.duration_months ? type.duration_months + ' ' + t.months : t.lifetime }}
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                 <span
                   :class="type.is_active
                     ? 'bg-green-100 text-green-800'
-                    : 'bg-gray-100 text-gray-500'"
+                    : 'bg-neutral-100 text-neutral-500'"
                   class="px-2 py-0.5 rounded-full text-xs font-medium"
                 >
                   {{ type.is_active ? t.active : t.inactive }}
                 </span>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ type.sort_order }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-500">{{ type.sort_order }}</td>
               <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
                 <button
                   @click="openEdit(type)"
-                  class="text-blue-600 hover:text-blue-900 mr-4 font-medium"
+                  class="text-primary-600 hover:text-primary-900 mr-4 font-medium"
                 >{{ t.edit }}</button>
                 <button
                   @click="destroy(type)"
                   :disabled="deleting[type.id]"
-                  class="text-red-600 hover:text-red-900 font-medium disabled:opacity-40"
+                  class="text-danger-600 hover:text-danger-900 font-medium disabled:opacity-40"
                 >
                   <span v-if="deleting[type.id]">…</span>
                   <span v-else>{{ t.delete }}</span>
@@ -104,7 +104,7 @@
               </td>
             </tr>
             <tr v-if="types.data.length === 0">
-              <td colspan="6" class="px-6 py-16 text-center text-gray-400 text-sm">
+              <td colspan="6" class="px-6 py-16 text-center text-neutral-400 text-sm">
                 {{ t.no_types }}
               </td>
             </tr>
@@ -112,18 +112,18 @@
         </table>
 
         <!-- Pagination -->
-        <div v-if="types.last_page > 1" class="px-6 py-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-600">
+        <div v-if="types.last_page > 1" class="px-6 py-4 border-t border-neutral-100 flex items-center justify-between text-sm text-neutral-600">
           <span>{{ t.page }} {{ types.current_page }} / {{ types.last_page }}</span>
           <div class="flex gap-2">
             <a
               v-if="types.prev_page_url"
               :href="types.prev_page_url"
-              class="px-3 py-1 rounded border border-gray-300 hover:bg-gray-50"
+              class="px-3 py-1 rounded border border-neutral-300 hover:bg-neutral-50"
             >{{ t.prev }}</a>
             <a
               v-if="types.next_page_url"
               :href="types.next_page_url"
-              class="px-3 py-1 rounded border border-gray-300 hover:bg-gray-50"
+              class="px-3 py-1 rounded border border-neutral-300 hover:bg-neutral-50"
             >{{ t.next }}</a>
           </div>
         </div>
@@ -138,11 +138,11 @@
       @click.self="closeModal"
     >
       <div class="bg-white rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
-        <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <h2 class="text-lg font-semibold text-gray-900">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-neutral-100">
+          <h2 class="text-lg font-semibold text-neutral-900">
             {{ isEditing ? t.modal_edit_title : t.modal_create_title }}
           </h2>
-          <button @click="closeModal" class="text-gray-400 hover:text-gray-600">
+          <button @click="closeModal" class="text-neutral-400 hover:text-neutral-600">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
@@ -153,8 +153,8 @@
 
           <!-- Name -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
-              {{ t.field_name }} <span class="text-red-500">*</span>
+            <label class="block text-sm font-medium text-neutral-700 mb-1">
+              {{ t.field_name }} <span class="text-danger-500">*</span>
             </label>
             <input
               v-model="form.name"
@@ -163,15 +163,15 @@
               maxlength="100"
               required
               class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              :class="formErrors.name ? 'border-red-400' : 'border-gray-300'"
+              :class="formErrors.name ? 'border-danger-400' : 'border-neutral-300'"
             />
-            <p v-if="formErrors.name" class="mt-1 text-xs text-red-600">{{ formErrors.name }}</p>
+            <p v-if="formErrors.name" class="mt-1 text-xs text-danger-600">{{ formErrors.name }}</p>
           </div>
 
           <!-- Slug -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">
-              {{ t.field_slug }} <span class="text-red-500">*</span>
+            <label class="block text-sm font-medium text-neutral-700 mb-1">
+              {{ t.field_slug }} <span class="text-danger-500">*</span>
             </label>
             <input
               v-model="form.slug"
@@ -179,27 +179,27 @@
               maxlength="100"
               required
               class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
-              :class="formErrors.slug ? 'border-red-400' : 'border-gray-300'"
+              :class="formErrors.slug ? 'border-danger-400' : 'border-neutral-300'"
             />
-            <p class="mt-1 text-xs text-gray-400">{{ t.slug_hint }}</p>
-            <p v-if="formErrors.slug" class="mt-1 text-xs text-red-600">{{ formErrors.slug }}</p>
+            <p class="mt-1 text-xs text-neutral-400">{{ t.slug_hint }}</p>
+            <p v-if="formErrors.slug" class="mt-1 text-xs text-danger-600">{{ formErrors.slug }}</p>
           </div>
 
           <!-- Description -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">{{ t.field_description }}</label>
+            <label class="block text-sm font-medium text-neutral-700 mb-1">{{ t.field_description }}</label>
             <textarea
               v-model="form.description"
               rows="2"
-              class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           <!-- Fee amount + currency -->
           <div class="grid grid-cols-3 gap-3">
             <div class="col-span-2">
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t.field_fee_amount }} <span class="text-red-500">*</span>
+              <label class="block text-sm font-medium text-neutral-700 mb-1">
+                {{ t.field_fee_amount }} <span class="text-danger-500">*</span>
               </label>
               <input
                 v-model="form.fee_amount"
@@ -208,13 +208,13 @@
                 min="0"
                 required
                 class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                :class="formErrors.fee_amount ? 'border-red-400' : 'border-gray-300'"
+                :class="formErrors.fee_amount ? 'border-danger-400' : 'border-neutral-300'"
               />
-              <p v-if="formErrors.fee_amount" class="mt-1 text-xs text-red-600">{{ formErrors.fee_amount }}</p>
+              <p v-if="formErrors.fee_amount" class="mt-1 text-xs text-danger-600">{{ formErrors.fee_amount }}</p>
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1">
-                {{ t.field_currency }} <span class="text-red-500">*</span>
+              <label class="block text-sm font-medium text-neutral-700 mb-1">
+                {{ t.field_currency }} <span class="text-danger-500">*</span>
               </label>
               <input
                 v-model="form.fee_currency"
@@ -223,59 +223,59 @@
                 required
                 placeholder="EUR"
                 class="w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 uppercase font-mono"
-                :class="formErrors.fee_currency ? 'border-red-400' : 'border-gray-300'"
+                :class="formErrors.fee_currency ? 'border-danger-400' : 'border-neutral-300'"
               />
             </div>
           </div>
 
           <!-- Duration -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">{{ t.field_duration }}</label>
+            <label class="block text-sm font-medium text-neutral-700 mb-1">{{ t.field_duration }}</label>
             <input
               v-model="form.duration_months"
               type="number"
               min="1"
-              class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <p class="mt-1 text-xs text-gray-400">{{ t.duration_hint }}</p>
+            <p class="mt-1 text-xs text-neutral-400">{{ t.duration_hint }}</p>
           </div>
 
           <!-- Sort order -->
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">{{ t.field_sort_order }}</label>
+            <label class="block text-sm font-medium text-neutral-700 mb-1">{{ t.field_sort_order }}</label>
             <input
               v-model="form.sort_order"
               type="number"
               min="0"
-              class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              class="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           <!-- Toggles -->
           <div class="space-y-3 pt-1">
             <label class="flex items-center gap-3 cursor-pointer">
-              <input v-model="form.requires_approval" type="checkbox" class="rounded border-gray-300 text-blue-600" />
-              <span class="text-sm text-gray-700">{{ t.field_requires_approval }}</span>
+              <input v-model="form.requires_approval" type="checkbox" class="rounded border-neutral-300 text-primary-600" />
+              <span class="text-sm text-neutral-700">{{ t.field_requires_approval }}</span>
             </label>
             <label class="flex items-center gap-3 cursor-pointer">
-              <input v-model="form.is_active" type="checkbox" class="rounded border-gray-300 text-blue-600" />
-              <span class="text-sm text-gray-700">{{ t.field_is_active }}</span>
+              <input v-model="form.is_active" type="checkbox" class="rounded border-neutral-300 text-primary-600" />
+              <span class="text-sm text-neutral-700">{{ t.field_is_active }}</span>
             </label>
           </div>
 
           <!-- Actions -->
-          <div class="flex items-center justify-end gap-3 pt-2 border-t border-gray-100">
+          <div class="flex items-center justify-end gap-3 pt-2 border-t border-neutral-100">
             <button
               type="button"
               @click="closeModal"
-              class="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 border border-gray-300 rounded-md hover:bg-gray-50"
+              class="px-4 py-2 text-sm text-neutral-600 hover:text-neutral-800 border border-neutral-300 rounded-md hover:bg-neutral-50"
             >
               {{ t.cancel }}
             </button>
             <button
               type="submit"
               :disabled="saving"
-              class="px-5 py-2 text-sm font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="px-5 py-2 text-sm font-semibold text-white bg-primary-600 rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {{ saving ? t.saving : (isEditing ? t.save_changes : t.create_btn) }}
             </button>
@@ -502,3 +502,4 @@ const destroy = (type) => {
   )
 }
 </script>
+

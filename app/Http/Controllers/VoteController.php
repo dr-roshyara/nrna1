@@ -30,6 +30,7 @@ use App\Notifications\SendVoteSavingCode;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Cache;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -666,6 +667,14 @@ public function first_submission(Request $request)
         user: $auth_user,
         category: 'voters',
         ip: $request->ip(),
+        metadata: ['post_count' => $postCount]
+    );
+
+    app(\App\Services\ElectionAuditService::class)->logVoterAction(
+        election: $election,
+        voter: $auth_user,
+        step: 3,
+        action: 'vote_submitted',
         metadata: ['post_count' => $postCount]
     );
 
@@ -1486,13 +1495,29 @@ private function has_valid_selections($selections)
                 ->first();
         }
 
+        // ⛔ Acquire lock to prevent concurrent vote submission
+        $voterSlug = $request->attributes->get('voter_slug');
+        $lockKey = $voterSlug
+            ? "voter_slug_transition:{$voterSlug->id}"
+            : "vote_submission:{$auth_user->id}:{$election->id}";
+        $lock = Cache::lock($lockKey, 10);
+
+        if (!$lock->get()) {
+            DB::rollBack();
+            return back()->with('error', 'Please wait, your vote is being processed. Another submission is in progress.');
+        }
+
+        // Re-check has_voted inside lock (fresh read)
+        $freshCode = $code->fresh();
+
         // ⛔ REAL ELECTIONS: Block final vote submission if already voted
-        if ($election->type === 'real' && $code && $code->has_voted) {
+        if ($election->type === 'real' && $freshCode && $freshCode->has_voted) {
+            $lock->release();
             DB::rollBack();
             \Log::warning('⛔ Real election - blocking final vote submission for voter who already voted', [
                 'user_id' => $auth_user->id,
                 'election_id' => $election->id,
-                'code_id' => $code->id,
+                'code_id' => $freshCode->id,
             ]);
 
             return redirect()->route('dashboard')
@@ -1529,7 +1554,7 @@ private function has_valid_selections($selections)
             // Use the verification method
             //dd($_codeVerified);
             if (!$_codeVerified) {
-            
+
                 \Log::warning('Code verification failed - returning with error',
                 [
                 'user_id' => $auth_user->id,
@@ -1537,7 +1562,10 @@ private function has_valid_selections($selections)
                 'submitted_code_length' => strlen($request['voting_code'] ?? ''),
                 'failed_at' => now()
                 ]);
-            
+
+                // Release lock before returning
+                $lock->release();
+                DB::rollBack();
             // Return back with your specified error message
             return back()->withErrors([
                 'voting_code' => 'Submitted code is false. Please check your email and try again.'
@@ -1670,7 +1698,8 @@ private function has_valid_selections($selections)
                     ]);
                 }
 
-                DB::commit();
+                        DB::commit();
+                $lock->release();
 
         // Log vote_confirmed event
         $receiptHash = hash('sha256', $this->out_code . $auth_user->id . $election->id);
@@ -1680,6 +1709,14 @@ private function has_valid_selections($selections)
             user: $auth_user,
             category: 'voters',
             ip: $request->ip(),
+            metadata: ['receipt_hash' => $receiptHash]
+        );
+
+        app(ElectionAuditService::class)->logVoterAction(
+            election: $election,
+            voter: $auth_user,
+            step: 5,
+            action: 'vote_confirmed',
             metadata: ['receipt_hash' => $receiptHash]
         );
 
@@ -1714,17 +1751,23 @@ private function has_valid_selections($selections)
         return redirect()->route('vote.verify_to_show')->with('success', 'Your vote has been successfully submitted.');
 
     } catch (\Illuminate\Validation\ValidationException $e) {
+        if (isset($lock)) {
+            $lock->release();
+        }
         DB::rollBack();
         return redirect()->back()->withErrors($e->errors())->withInput();
-        
+
     } catch (\Exception $e) {
+        if (isset($lock)) {
+            $lock->release();
+        }
         DB::rollBack();
         Log::error('Vote submission failed', [
             'user_id' => auth()->id(),
             'error' => $e->getMessage(),
             'trace' => $e->getTraceAsString()
         ]);
-        
+
         return $this->handleVoteError('An error occurred while processing your vote. Please try again.');
     }
 
@@ -2210,6 +2253,13 @@ public function verify(Request $request)
                 'error' => $e->getMessage(),
             ]);
         }
+
+        app(ElectionAuditService::class)->logVoterAction(
+            election: $election,
+            voter: $auth_user,
+            step: 4,
+            action: 'vote_verified'
+        );
 
         // Log successful verification page load
         Log::info('Vote verification page loaded successfully', [

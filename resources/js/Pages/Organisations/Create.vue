@@ -35,10 +35,10 @@
             <div v-if="Object.keys(page.props.errors ?? {}).length"
                  role="alert"
                  aria-live="assertive"
-                 class="mb-6 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm">
-              <p class="font-semibold text-red-800 mb-2">Please correct the following errors:</p>
+                 class="mb-6 bg-danger-50 border border-danger-200 rounded-lg px-4 py-3 text-sm">
+              <p class="font-semibold text-danger-800 mb-2">Please correct the following errors:</p>
               <ul class="space-y-1">
-                <li v-for="(msg, field) in page.props.errors" :key="field" class="text-red-700">{{ msg }}</li>
+                <li v-for="(msg, field) in page.props.errors" :key="field" class="text-danger-700">{{ msg }}</li>
               </ul>
             </div>
 
@@ -49,7 +49,7 @@
                 <div class="flex justify-between items-center mb-1">
                   <label for="organisation-name" class="text-sm font-medium text-slate-700">
                     Organisation Name
-                    <span class="text-red-500" aria-hidden="true">*</span>
+                    <span class="text-danger-500" aria-hidden="true">*</span>
                     <span class="sr-only">required</span>
                   </label>
                   <span class="text-xs text-slate-400" aria-live="polite">{{ form.name.length }}/255</span>
@@ -69,7 +69,7 @@
                 <p id="name-hint" class="mt-1 text-xs text-slate-500">
                   Minimum 3 characters. A URL slug will be generated automatically.
                 </p>
-                <p v-if="page.props.errors?.name" role="alert" class="mt-1 text-xs text-red-600">
+                <p v-if="page.props.errors?.name" role="alert" class="mt-1 text-xs text-danger-600">
                   {{ page.props.errors.name }}
                 </p>
               </div>
@@ -89,7 +89,7 @@
                   placeholder="contact@organisation.org"
                   autocomplete="email"
                 />
-                <p v-if="page.props.errors?.email" role="alert" class="mt-1 text-xs text-red-600">
+                <p v-if="page.props.errors?.email" role="alert" class="mt-1 text-xs text-danger-600">
                   {{ page.props.errors.email }}
                 </p>
               </div>
@@ -109,7 +109,7 @@
                   placeholder="e.g., Dr. Jane Smith"
                 />
                 <p class="mt-1 text-xs text-slate-500">The primary contact or head of the organisation.</p>
-                <p v-if="page.props.errors?.representative" role="alert" class="mt-1 text-xs text-red-600">
+                <p v-if="page.props.errors?.representative" role="alert" class="mt-1 text-xs text-danger-600">
                   {{ page.props.errors.representative }}
                 </p>
               </div>
@@ -136,7 +136,7 @@
                       <span class="text-sm text-slate-700">{{ lang.flag }} {{ lang.label }}</span>
                     </label>
                   </div>
-                  <p v-if="page.props.errors?.languages" role="alert" class="mt-1 text-xs text-red-600">
+                  <p v-if="page.props.errors?.languages" role="alert" class="mt-1 text-xs text-danger-600">
                     {{ page.props.errors.languages }}
                   </p>
                 </fieldset>
@@ -176,11 +176,11 @@
                   v-if="logoPreview"
                   type="button"
                   @click="clearLogo"
-                  class="mt-2 text-xs text-red-600 hover:text-red-700 focus:outline-none focus:underline"
+                  class="mt-2 text-xs text-danger-600 hover:text-danger-700 focus:outline-none focus:underline"
                 >
                   Remove logo
                 </button>
-                <p v-if="page.props.errors?.logo" role="alert" class="mt-1 text-xs text-red-600">
+                <p v-if="page.props.errors?.logo" role="alert" class="mt-1 text-xs text-danger-600">
                   {{ page.props.errors.logo }}
                 </p>
               </div>
@@ -305,7 +305,7 @@ const inputClass = (field) => [
   'w-full rounded-lg border px-3 py-2.5 text-sm text-slate-900',
   'transition-colors focus:outline-none focus:ring-2 focus:border-transparent',
   page.props.errors?.[field]
-    ? 'border-red-400 bg-red-50 focus:ring-red-500'
+    ? 'border-danger-400 bg-danger-50 focus:ring-red-500'
     : 'border-slate-300 bg-white hover:border-slate-400 focus:ring-purple-500',
 ]
 
@@ -345,3 +345,4 @@ const submit = () => {
   })
 }
 </script>
+

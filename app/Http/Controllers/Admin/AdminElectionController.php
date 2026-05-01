@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Election;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -107,6 +108,30 @@ class AdminElectionController extends Controller
                 'sort'      => $sort,
                 'direction' => $direction,
             ],
+        ]);
+    }
+
+    /**
+     * Download a voter audit file from the election audit trail.
+     * GET /platform/elections/{election}/audit/{folder}/{file}
+     */
+    public function downloadAuditFile(Election $election, string $folder, string $file): \Symfony\Component\HttpFoundation\BinaryFileResponse
+    {
+        $filePath = storage_path("logs/audit/{$folder}/voters/{$file}");
+
+        if (!File::exists($filePath)) {
+            abort(404, 'Audit file not found.');
+        }
+
+        // Prevent path traversal — ensure file is within audit directory
+        $realPath = realpath($filePath);
+        $auditBase = realpath(storage_path('logs/audit'));
+        if ($realPath === false || !str_starts_with($realPath, $auditBase)) {
+            abort(403, 'Access denied.');
+        }
+
+        return response()->download($filePath, basename($file), [
+            'Content-Type' => 'application/octet-stream',
         ]);
     }
 }

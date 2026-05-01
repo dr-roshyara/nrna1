@@ -12,11 +12,11 @@
 
                 <!-- Page Header -->
                 <div class="text-center mb-8">
-                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    <h1 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-2">
                         {{ $t('pages.Vote.DemoVote.PublicResult.header.title') }}
                     </h1>
-                    <p class="text-gray-600">{{ $t('pages.Vote.DemoVote.PublicResult.header.subtitle') }}</p>
-                    <div class="w-16 h-1 bg-blue-600 mx-auto rounded-full mt-4"></div>
+                    <p class="text-neutral-600">{{ $t('pages.Vote.DemoVote.PublicResult.header.subtitle') }}</p>
+                    <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full mt-4"></div>
                 </div>
 
                 <!-- ── STEP 1: Entry form (not yet verified) ── -->
@@ -31,7 +31,7 @@
                         <h2 class="text-2xl font-bold text-white mb-1">
                             {{ $t('pages.Vote.DemoVote.PublicResult.form.card_title') }}
                         </h2>
-                        <p class="text-blue-100 text-sm">
+                        <p class="text-primary-100 text-sm">
                             {{ $t('pages.Vote.DemoVote.PublicResult.form.card_subtitle') }}
                         </p>
                     </div>
@@ -45,26 +45,26 @@
                                 </svg>
                                 <span>{{ $t('pages.Vote.DemoVote.PublicResult.form.instructions_badge') }}</span>
                             </div>
-                            <p class="text-gray-600 max-w-md mx-auto text-sm">
+                            <p class="text-neutral-600 max-w-md mx-auto text-sm">
                                 {{ $t('pages.Vote.DemoVote.PublicResult.form.instructions_body') }}
                             </p>
                         </div>
 
                         <!-- Your receipt code display -->
-                        <div v-if="receipt_hash" class="mb-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
-                            <p class="text-blue-800 text-xs font-semibold uppercase tracking-wider mb-2">
+                        <div v-if="receipt_hash" class="mb-6 p-4 bg-primary-50 rounded-xl border border-primary-200">
+                            <p class="text-primary-800 text-xs font-semibold uppercase tracking-wider mb-2">
                                 {{ $t('pages.Vote.DemoVote.PublicResult.form.your_receipt_label') }}
                             </p>
                             <div class="flex items-center gap-3">
-                                <span class="flex-1 font-mono font-bold text-blue-700 tracking-widest text-2xl select-all">
+                                <span class="flex-1 font-mono font-bold text-primary-700 tracking-widest text-2xl select-all">
                                     {{ receipt_hash }}
                                 </span>
                                 <button type="button" @click="copyReceiptCode"
-                                        class="shrink-0 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors">
+                                        class="shrink-0 px-3 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-lg transition-colors">
                                     {{ copiedReceipt ? $t('pages.Vote.DemoVote.PublicResult.form.copied') : $t('pages.Vote.DemoVote.PublicResult.form.copy_button') }}
                                 </button>
                             </div>
-                            <p class="text-blue-600 text-xs mt-2">
+                            <p class="text-primary-600 text-xs mt-2">
                                 {{ $t('pages.Vote.DemoVote.PublicResult.form.receipt_hint') }}
                             </p>
                         </div>
@@ -72,7 +72,7 @@
                         <!-- Receipt hash input form -->
                         <form @submit.prevent="submitReceiptHash" class="space-y-5">
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                <label class="block text-sm font-semibold text-neutral-700 mb-2">
                                     <span class="flex items-center gap-2">
                                         <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -85,12 +85,12 @@
                                     type="text"
                                     v-model="enteredHash"
                                     :placeholder="$t('pages.Vote.DemoVote.PublicResult.form.input_placeholder')"
-                                    class="w-full px-6 py-4 text-lg font-mono border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all bg-gray-50 focus:bg-white uppercase"
-                                    :class="{ 'border-red-300 focus:border-red-500 focus:ring-red-100': errors.receipt_hash }"
+                                    class="w-full px-6 py-4 text-lg font-mono border-2 border-neutral-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all bg-neutral-50 focus:bg-white uppercase"
+                                    :class="{ 'border-danger-300 focus:border-danger-500 focus:ring-red-100': errors.receipt_hash }"
                                     autocomplete="off"
                                     :disabled="submitting"
                                 />
-                                <p v-if="errors.receipt_hash" class="mt-2 text-red-600 text-sm">
+                                <p v-if="errors.receipt_hash" class="mt-2 text-danger-600 text-sm">
                                     {{ errors.receipt_hash }}
                                 </p>
                             </div>
@@ -135,26 +135,26 @@
                     </div>
 
                     <!-- Receipt -->
-                    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden mb-6">
-                        <div class="bg-gray-800 px-6 py-4">
+                    <div class="bg-white rounded-2xl shadow-lg border border-neutral-200 overflow-hidden mb-6">
+                        <div class="bg-neutral-800 px-6 py-4">
                             <h2 class="text-white font-bold">{{ $t('pages.Vote.DemoVote.PublicResult.receipt.title') }}</h2>
                         </div>
                         <div class="p-6 space-y-3">
-                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg border">
-                                <span class="text-gray-600 text-sm">{{ $t('pages.Vote.DemoVote.PublicResult.receipt.hash_label') }}</span>
-                                <span class="font-mono font-bold text-blue-700 tracking-widest text-lg select-all">{{ receipt_hash }}</span>
+                            <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg border">
+                                <span class="text-neutral-600 text-sm">{{ $t('pages.Vote.DemoVote.PublicResult.receipt.hash_label') }}</span>
+                                <span class="font-mono font-bold text-primary-700 tracking-widest text-lg select-all">{{ receipt_hash }}</span>
                             </div>
-                            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg border">
-                                <span class="text-gray-600 text-sm">{{ $t('pages.Vote.DemoVote.PublicResult.receipt.timestamp_label') }}</span>
-                                <span class="font-mono text-gray-900 text-sm">{{ voted_at }}</span>
+                            <div class="flex justify-between items-center p-3 bg-neutral-50 rounded-lg border">
+                                <span class="text-neutral-600 text-sm">{{ $t('pages.Vote.DemoVote.PublicResult.receipt.timestamp_label') }}</span>
+                                <span class="font-mono text-neutral-900 text-sm">{{ voted_at }}</span>
                             </div>
                             <div class="flex gap-2 pt-1">
                                 <button @click="copyHash"
-                                        class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
+                                        class="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
                                     {{ copied ? $t('pages.Vote.DemoVote.PublicResult.receipt.copied') : $t('pages.Vote.DemoVote.PublicResult.receipt.copy_button') }}
                                 </button>
                                 <button @click="printPage"
-                                        class="flex-1 bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
+                                        class="flex-1 bg-neutral-600 hover:bg-neutral-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm">
                                     {{ $t('pages.Vote.DemoVote.PublicResult.receipt.print_button') }}
                                 </button>
                             </div>
@@ -162,21 +162,21 @@
                     </div>
 
                     <!-- Voted Candidates -->
-                    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden mb-6">
-                        <div class="bg-blue-600 px-6 py-4">
+                    <div class="bg-white rounded-2xl shadow-lg border border-neutral-200 overflow-hidden mb-6">
+                        <div class="bg-primary-600 px-6 py-4">
                             <h2 class="text-white font-bold">{{ $t('pages.Vote.DemoVote.PublicResult.votes.title') }}</h2>
                         </div>
                         <div class="p-6">
                             <!-- National -->
                             <div v-if="national_posts && national_posts.length > 0" class="mb-6">
-                                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                                <h3 class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">
                                     {{ $t('pages.Vote.DemoVote.PublicResult.votes.national_posts') }}
                                 </h3>
                                 <div v-for="post in national_posts" :key="post.post_id" class="mb-4">
-                                    <p class="text-sm font-bold text-gray-700 mb-2">{{ post.post_name }}</p>
-                                    <div v-if="post.no_vote" class="flex items-center gap-2 p-3 bg-red-50 rounded-lg border border-red-200">
-                                        <span class="text-red-500">—</span>
-                                        <span class="text-red-700 text-sm italic">{{ $t('pages.Vote.DemoVote.PublicResult.votes.abstained') }}</span>
+                                    <p class="text-sm font-bold text-neutral-700 mb-2">{{ post.post_name }}</p>
+                                    <div v-if="post.no_vote" class="flex items-center gap-2 p-3 bg-danger-50 rounded-lg border border-danger-200">
+                                        <span class="text-danger-500">—</span>
+                                        <span class="text-danger-700 text-sm italic">{{ $t('pages.Vote.DemoVote.PublicResult.votes.abstained') }}</span>
                                     </div>
                                     <div v-else>
                                         <div v-for="candidate in post.candidates" :key="candidate.candidacy_id"
@@ -184,7 +184,7 @@
                                             <svg class="w-4 h-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                                             </svg>
-                                            <span class="text-gray-900 text-sm font-medium">{{ candidate.candidacy_name }}</span>
+                                            <span class="text-neutral-900 text-sm font-medium">{{ candidate.candidacy_name }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -192,14 +192,14 @@
 
                             <!-- Regional -->
                             <div v-if="regional_posts && regional_posts.length > 0">
-                                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                                <h3 class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-3">
                                     {{ $t('pages.Vote.DemoVote.PublicResult.votes.regional_posts') }}
                                 </h3>
                                 <div v-for="post in regional_posts" :key="post.post_id" class="mb-4">
-                                    <p class="text-sm font-bold text-gray-700 mb-2">{{ post.post_name }}</p>
-                                    <div v-if="post.no_vote" class="flex items-center gap-2 p-3 bg-red-50 rounded-lg border border-red-200">
-                                        <span class="text-red-500">—</span>
-                                        <span class="text-red-700 text-sm italic">{{ $t('pages.Vote.DemoVote.PublicResult.votes.abstained') }}</span>
+                                    <p class="text-sm font-bold text-neutral-700 mb-2">{{ post.post_name }}</p>
+                                    <div v-if="post.no_vote" class="flex items-center gap-2 p-3 bg-danger-50 rounded-lg border border-danger-200">
+                                        <span class="text-danger-500">—</span>
+                                        <span class="text-danger-700 text-sm italic">{{ $t('pages.Vote.DemoVote.PublicResult.votes.abstained') }}</span>
                                     </div>
                                     <div v-else>
                                         <div v-for="candidate in post.candidates" :key="candidate.candidacy_id"
@@ -207,14 +207,14 @@
                                             <svg class="w-4 h-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                                             </svg>
-                                            <span class="text-gray-900 text-sm font-medium">{{ candidate.candidacy_name }}</span>
+                                            <span class="text-neutral-900 text-sm font-medium">{{ candidate.candidacy_name }}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div v-if="(!national_posts || !national_posts.length) && (!regional_posts || !regional_posts.length)"
-                                 class="text-center text-gray-500 py-6">
+                                 class="text-center text-neutral-500 py-6">
                                 {{ $t('pages.Vote.DemoVote.PublicResult.votes.no_votes') }}
                             </div>
                         </div>
@@ -236,11 +236,11 @@
                     <!-- Action Buttons -->
                     <div class="flex flex-col sm:flex-row gap-3">
                         <a :href="route('public-demo.start')"
-                           class="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition shadow-lg text-center">
+                           class="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-lg transition shadow-lg text-center">
                             {{ $t('pages.Vote.DemoVote.PublicResult.buttons.try_again') }}
                         </a>
                         <a href="/"
-                           class="flex-1 px-6 py-3 border border-gray-300 text-gray-700 hover:bg-gray-50 font-bold rounded-lg transition text-center">
+                           class="flex-1 px-6 py-3 border border-neutral-300 text-neutral-700 hover:bg-neutral-50 font-bold rounded-lg transition text-center">
                             {{ $t('pages.Vote.DemoVote.PublicResult.buttons.home') }}
                         </a>
                     </div>
@@ -312,3 +312,4 @@ export default {
     }
 }
 </script>
+

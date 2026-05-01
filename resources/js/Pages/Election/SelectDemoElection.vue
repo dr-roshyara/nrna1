@@ -1,18 +1,18 @@
 <template>
-    <div class="min-h-screen bg-gray-50 py-12 px-4">
+    <div class="min-h-screen bg-neutral-50 py-12 px-4">
         <div class="max-w-4xl mx-auto">
             <!-- Header -->
             <div class="mb-8">
-                <h1 class="text-4xl font-bold text-gray-900 mb-2">Select a Demo Election</h1>
-                <p class="text-gray-600">Choose a demo election to test the voting system</p>
+                <h1 class="text-4xl font-bold text-neutral-900 mb-2">Select a Demo Election</h1>
+                <p class="text-neutral-600">Choose a demo election to test the voting system</p>
             </div>
 
             <!-- Grouped Elections -->
             <div class="space-y-8">
                 <div v-for="group in groupedByOrganisation" :key="group.name" class="space-y-4">
                     <!-- Organisation Header -->
-                    <div class="border-b-2 border-blue-500 pb-2">
-                        <h2 class="text-2xl font-semibold text-gray-800">{{ group.name }}</h2>
+                    <div class="border-b-2 border-primary-500 pb-2">
+                        <h2 class="text-2xl font-semibold text-neutral-800">{{ group.name }}</h2>
                     </div>
 
                     <!-- Elections Grid -->
@@ -23,35 +23,35 @@
                                  (group.name === 'PublicDigit' && e.organisation_name === 'PublicDigit'))
                             )"
                             :key="election.id"
-                            class="border border-gray-200 rounded-lg p-6 hover:shadow-lg hover:border-blue-500 transition cursor-pointer"
+                            class="border border-neutral-200 rounded-lg p-6 hover:shadow-lg hover:border-primary-500 transition cursor-pointer"
                             @click="selectElection(election.id)">
                             
                             <!-- Election Name -->
-                            <h3 class="font-bold text-lg text-gray-900 mb-2">{{ election.name }}</h3>
+                            <h3 class="font-bold text-lg text-neutral-900 mb-2">{{ election.name }}</h3>
                             
                             <!-- Description -->
-                            <p v-if="election.description" class="text-gray-600 text-sm mb-3">
+                            <p v-if="election.description" class="text-neutral-600 text-sm mb-3">
                                 {{ election.description }}
                             </p>
 
                             <!-- Election Details -->
-                            <div class="grid grid-cols-2 gap-2 text-sm text-gray-700 mb-4">
+                            <div class="grid grid-cols-2 gap-2 text-sm text-neutral-700 mb-4">
                                 <div class="flex items-center">
                                     <span class="font-semibold mr-1">Posts:</span>
-                                    <span class="text-blue-600">{{ election.posts_count }}</span>
+                                    <span class="text-primary-600">{{ election.posts_count }}</span>
                                 </div>
                                 <div class="flex items-center">
                                     <span class="font-semibold mr-1">Candidates:</span>
-                                    <span class="text-blue-600">{{ election.candidates_count }}</span>
+                                    <span class="text-primary-600">{{ election.candidates_count }}</span>
                                 </div>
-                                <div class="col-span-2 text-xs text-gray-500">
+                                <div class="col-span-2 text-xs text-neutral-500">
                                     Valid until: {{ election.end_date }}
                                 </div>
                             </div>
 
                             <!-- Start Button -->
                             <button
-                                class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition font-semibold">
+                                class="w-full bg-primary-600 text-white py-2 rounded hover:bg-primary-700 transition font-semibold">
                                 Start Demo Election →
                             </button>
                         </div>
@@ -61,15 +61,15 @@
 
             <!-- No Elections Message -->
             <div v-if="elections.length === 0" class="text-center py-12">
-                <p class="text-gray-600 text-lg">No demo elections available</p>
-                <Link href="/dashboard" class="text-blue-600 hover:underline mt-2">
+                <p class="text-neutral-600 text-lg">No demo elections available</p>
+                <Link href="/dashboard" class="text-primary-600 hover:underline mt-2">
                     Return to Dashboard
                 </Link>
             </div>
 
             <!-- Back Button -->
             <div class="mt-8">
-                <Link href="/dashboard" class="text-blue-600 hover:underline">
+                <Link href="/dashboard" class="text-primary-600 hover:underline">
                     ← Back to Dashboard
                 </Link>
             </div>
@@ -122,3 +122,4 @@ const selectElection = (electionId) => {
     transition: all 0.3s ease;
 }
 </style>
+

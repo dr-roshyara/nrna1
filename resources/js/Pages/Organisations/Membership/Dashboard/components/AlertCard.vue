@@ -36,9 +36,10 @@ defineProps({
 })
 
 const alertIcon      = (type) => type === 'warning' ? ExclamationTriangleIcon : InformationCircleIcon
-const alertBgClass   = (type) => type === 'warning' ? 'bg-amber-50'   : 'bg-blue-50'
-const alertIconClass = (type) => type === 'warning' ? 'text-amber-500' : 'text-blue-500'
-const alertTitleClass= (type) => type === 'warning' ? 'text-amber-800' : 'text-blue-800'
-const alertMsgClass  = (type) => type === 'warning' ? 'text-amber-700' : 'text-blue-700'
-const alertLinkClass = (type) => type === 'warning' ? 'text-amber-800 focus:ring-amber-500' : 'text-blue-800 focus:ring-blue-500'
+const alertBgClass   = (type) => type === 'warning' ? 'bg-amber-50'   : 'bg-primary-50'
+const alertIconClass = (type) => type === 'warning' ? 'text-amber-500' : 'text-primary-500'
+const alertTitleClass= (type) => type === 'warning' ? 'text-amber-800' : 'text-primary-800'
+const alertMsgClass  = (type) => type === 'warning' ? 'text-amber-700' : 'text-primary-700'
+const alertLinkClass = (type) => type === 'warning' ? 'text-amber-800 focus:ring-amber-500' : 'text-primary-800 focus:ring-blue-500'
 </script>
+

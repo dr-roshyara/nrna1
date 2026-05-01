@@ -39,7 +39,7 @@ const props = defineProps({
 
 const colorMap = {
   purple: { bg: 'bg-purple-100', text: 'text-purple-600' },
-  blue:   { bg: 'bg-blue-100',   text: 'text-blue-600' },
+  blue:   { bg: 'bg-primary-100',   text: 'text-primary-600' },
   amber:  { bg: 'bg-amber-100',  text: 'text-amber-600' },
   orange: { bg: 'bg-orange-100', text: 'text-orange-600' },
   green:  { bg: 'bg-green-100',  text: 'text-green-600' },
@@ -49,8 +49,9 @@ const iconBgClass   = computed(() => colorMap[props.color]?.bg   ?? 'bg-slate-10
 const iconColorClass= computed(() => colorMap[props.color]?.text ?? 'text-slate-600')
 
 const trendBadgeClass = computed(() => {
-  if (props.trend === 'danger')  return 'bg-red-100 text-red-700'
+  if (props.trend === 'danger')  return 'bg-danger-100 text-danger-700'
   if (props.trend === 'warning') return 'bg-amber-100 text-amber-700'
   return 'bg-green-100 text-green-700'
 })
 </script>
+

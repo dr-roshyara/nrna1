@@ -151,13 +151,13 @@ const activeSection = computed(() => 'overview')
                 <h2 class="text-3xl md:text-4xl font-black text-slate-900">{{ t.section_overview.heading }}</h2>
               </div>
               <p class="text-lg text-slate-700 leading-relaxed mb-6">{{ t.section_overview.body }}</p>
-              <div class="bg-gradient-to-r from-blue-50 to-cyan-50 border-l-4 border-blue-500 rounded-lg p-6 flex gap-4">
-                <svg class="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <div class="bg-gradient-to-r from-blue-50 to-cyan-50 border-l-4 border-primary-500 rounded-lg p-6 flex gap-4">
+                <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div>
-                  <p class="font-bold text-blue-900 text-lg">💡 {{ t.section_overview.tip_label }}</p>
-                  <p class="text-blue-800 text-base mt-2">{{ t.section_overview.tip }}</p>
+                  <p class="font-bold text-primary-900 text-lg">💡 {{ t.section_overview.tip_label }}</p>
+                  <p class="text-primary-800 text-base mt-2">{{ t.section_overview.tip }}</p>
                 </div>
               </div>
             </section>
@@ -268,9 +268,9 @@ const activeSection = computed(() => 'overview')
                 </div>
 
                 <!-- Timeline Example -->
-                <div class="mt-8 p-6 bg-blue-50 border-2 border-blue-200 rounded-lg">
-                  <p class="font-bold text-blue-900 text-base mb-3">📌 Example Timeline</p>
-                  <p class="text-blue-800 text-sm">{{ t.section_statemachine.dates_section.example }}</p>
+                <div class="mt-8 p-6 bg-primary-50 border-2 border-primary-200 rounded-lg">
+                  <p class="font-bold text-primary-900 text-base mb-3">📌 Example Timeline</p>
+                  <p class="text-primary-800 text-sm">{{ t.section_statemachine.dates_section.example }}</p>
                 </div>
               </div>
 
@@ -325,7 +325,7 @@ const activeSection = computed(() => 'overview')
 
               <!-- Tips -->
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div v-for="(tip, tidx) in t.section_statemachine.tips" :key="tidx" class="p-5 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border-2 border-blue-200 hover:shadow-md transition-shadow">
+                <div v-for="(tip, tidx) in t.section_statemachine.tips" :key="tidx" class="p-5 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border-2 border-primary-200 hover:shadow-md transition-shadow">
                   <p class="text-3xl mb-2">{{ tip.icon }}</p>
                   <p class="font-bold text-slate-900 text-base mb-2">{{ tip.label }}</p>
                   <p class="text-slate-700 text-sm">{{ tip.text }}</p>
@@ -401,7 +401,7 @@ const activeSection = computed(() => 'overview')
                 </div>
 
                 <!-- IP Whitelist Subsection -->
-                <div class="p-5 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border-2 border-blue-200">
+                <div class="p-5 bg-gradient-to-br from-slate-50 to-blue-50 rounded-lg border-2 border-primary-200">
                   <p class="font-bold text-slate-900 text-lg mb-3">{{ t.section_access.ip_restriction.whitelist.heading }}</p>
                   <p class="text-slate-700 mb-5 text-base">{{ t.section_access.ip_restriction.whitelist.body }}</p>
                   <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-3">{{ t.section_access.ip_restriction.whitelist.format_label }}</p>
@@ -411,9 +411,9 @@ const activeSection = computed(() => 'overview')
                       <code class="bg-slate-700 text-yellow-300 px-2 py-1 rounded font-mono text-xs">{{ fmt }}</code>
                     </li>
                   </ul>
-                  <div class="bg-white border border-blue-200 rounded p-4 mt-4">
-                    <p class="font-bold text-blue-900 text-sm mb-2">❓ {{ t.section_access.ip_restriction.whitelist.cidr_tip_label }}</p>
-                    <p class="text-blue-800 text-sm">{{ t.section_access.ip_restriction.whitelist.cidr_tip }}</p>
+                  <div class="bg-white border border-primary-200 rounded p-4 mt-4">
+                    <p class="font-bold text-primary-900 text-sm mb-2">❓ {{ t.section_access.ip_restriction.whitelist.cidr_tip_label }}</p>
+                    <p class="text-primary-800 text-sm">{{ t.section_access.ip_restriction.whitelist.cidr_tip }}</p>
                   </div>
                 </div>
               </div>
@@ -470,7 +470,7 @@ const activeSection = computed(() => 'overview')
                 <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-red-400 to-pink-600 text-white font-bold text-lg flex items-center justify-center">6</div>
                 <div class="flex-1">
                   <h2 class="text-3xl md:text-4xl font-black text-slate-900">{{ t.section_verification.heading }}</h2>
-                  <span class="inline-block mt-2 px-3 py-1 bg-red-100 text-red-800 font-bold text-xs rounded-full">{{ t.section_verification.badge }}</span>
+                  <span class="inline-block mt-2 px-3 py-1 bg-danger-100 text-danger-800 font-bold text-xs rounded-full">{{ t.section_verification.badge }}</span>
                 </div>
               </div>
               <p class="text-slate-700 mb-8 text-lg mt-6">{{ t.section_verification.intro }}</p>
@@ -479,7 +479,7 @@ const activeSection = computed(() => 'overview')
               <div class="mb-10">
                 <p class="font-bold text-slate-900 text-lg mb-5">{{ t.section_verification.modes_heading }}</p>
                 <div class="space-y-3">
-                  <div v-for="(mode, idx) in t.section_verification.modes" :key="idx" class="p-5 bg-slate-50 rounded-lg border-2 border-slate-200 hover:border-red-400 transition-colors">
+                  <div v-for="(mode, idx) in t.section_verification.modes" :key="idx" class="p-5 bg-slate-50 rounded-lg border-2 border-slate-200 hover:border-danger-400 transition-colors">
                     <p class="font-bold text-slate-900 text-base">{{ mode.label }}</p>
                     <p class="text-slate-700 text-sm mt-2">{{ mode.description }}</p>
                   </div>
@@ -491,7 +491,7 @@ const activeSection = computed(() => 'overview')
                 <p class="font-bold text-slate-900 text-lg mb-5">{{ t.section_verification.workflow_heading }}</p>
                 <ol class="space-y-3">
                   <li v-for="(step, idx) in t.section_verification.workflow_steps" :key="idx" class="flex gap-4 p-4 bg-gradient-to-r from-slate-50 to-white rounded-lg border border-slate-200">
-                    <span class="flex-shrink-0 font-bold text-white bg-red-600 w-7 h-7 rounded-full flex items-center justify-center text-sm">{{ idx + 1 }}</span>
+                    <span class="flex-shrink-0 font-bold text-white bg-danger-600 w-7 h-7 rounded-full flex items-center justify-center text-sm">{{ idx + 1 }}</span>
                     <span class="text-slate-700 text-base">{{ step }}</span>
                   </li>
                 </ol>
@@ -517,15 +517,15 @@ const activeSection = computed(() => 'overview')
               </div>
               <p class="text-slate-700 mb-8 text-lg">{{ t.section_scenarios.intro }}</p>
               <div class="space-y-6">
-                <div v-for="(scenario, idx) in t.section_scenarios.scenarios" :key="idx" class="p-6 rounded-xl border-3 transition-all hover:shadow-lg" :class="scenario.tag_color === 'green' ? 'border-green-400 bg-green-50' : scenario.tag_color === 'red' ? 'border-red-400 bg-red-50' : 'border-blue-400 bg-blue-50'">
+                <div v-for="(scenario, idx) in t.section_scenarios.scenarios" :key="idx" class="p-6 rounded-xl border-3 transition-all hover:shadow-lg" :class="scenario.tag_color === 'green' ? 'border-green-400 bg-green-50' : scenario.tag_color === 'red' ? 'border-danger-400 bg-danger-50' : 'border-primary-400 bg-primary-50'">
                   <div class="flex items-start justify-between mb-4 flex-wrap gap-2">
                     <h3 class="text-2xl font-bold text-slate-900">{{ scenario.title }}</h3>
-                    <span class="inline-block px-3 py-1 font-bold text-white text-xs rounded-full" :class="scenario.tag_color === 'green' ? 'bg-green-600' : scenario.tag_color === 'red' ? 'bg-red-600' : 'bg-blue-600'">
+                    <span class="inline-block px-3 py-1 font-bold text-white text-xs rounded-full" :class="scenario.tag_color === 'green' ? 'bg-green-600' : scenario.tag_color === 'red' ? 'bg-danger-600' : 'bg-primary-600'">
                       {{ scenario.tag }}
                     </span>
                   </div>
                   <p class="text-slate-700 text-base mb-5">{{ scenario.description }}</p>
-                  <div class="bg-white rounded-lg p-4 border-2" :class="scenario.tag_color === 'green' ? 'border-green-200' : scenario.tag_color === 'red' ? 'border-red-200' : 'border-blue-200'">
+                  <div class="bg-white rounded-lg p-4 border-2" :class="scenario.tag_color === 'green' ? 'border-green-200' : scenario.tag_color === 'red' ? 'border-danger-200' : 'border-primary-200'">
                     <table class="w-full text-sm">
                       <thead>
                         <tr class="border-b-2 border-slate-300">
@@ -541,7 +541,7 @@ const activeSection = computed(() => 'overview')
                       </tbody>
                     </table>
                   </div>
-                  <p class="text-slate-700 text-sm italic mt-4 border-t-2 pt-4" :class="scenario.tag_color === 'green' ? 'border-green-200' : scenario.tag_color === 'red' ? 'border-red-200' : 'border-blue-200'">
+                  <p class="text-slate-700 text-sm italic mt-4 border-t-2 pt-4" :class="scenario.tag_color === 'green' ? 'border-green-200' : scenario.tag_color === 'red' ? 'border-danger-200' : 'border-primary-200'">
                     💡 <strong>Why:</strong> {{ scenario.rationale }}
                   </p>
                 </div>
@@ -655,3 +655,4 @@ table tbody tr {
   transition: background-color 0.2s ease;
 }
 </style>
+

@@ -6,7 +6,7 @@
         <!-- Page Header -->
         <Card mode="admin" padding="lg" class="rounded-2xl">
           <div class="flex items-center gap-3 mb-2">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest">Submit for Approval</p>
@@ -16,27 +16,27 @@
         </Card>
 
         <!-- Approval Workflow Info -->
-        <Card mode="admin" padding="lg" class="rounded-2xl border-2 border-blue-200 bg-blue-50">
+        <Card mode="admin" padding="lg" class="rounded-2xl border-2 border-primary-200 bg-primary-50">
           <div class="flex gap-4">
-            <svg class="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div>
-              <h3 class="text-lg font-bold text-blue-900 mb-2">Approval Workflow</h3>
+              <h3 class="text-lg font-bold text-primary-900 mb-2">Approval Workflow</h3>
               <div v-if="election.expected_voter_count > 40" class="space-y-2">
-                <p class="text-blue-800 font-medium">
+                <p class="text-primary-800 font-medium">
                   ⭐ PAID ELECTION ({{ election.expected_voter_count }} expected voters)
                 </p>
-                <p class="text-blue-700 text-sm leading-relaxed">
+                <p class="text-primary-700 text-sm leading-relaxed">
                   Elections with more than 40 expected voters require platform administrator review and approval.
                   This typically takes 1-5 business days. You will receive an email notification when approved or rejected.
                 </p>
               </div>
               <div v-else class="space-y-2">
-                <p class="text-blue-800 font-medium">
+                <p class="text-primary-800 font-medium">
                   ✓ FREE ELECTION ({{ election.expected_voter_count }} expected voters)
                 </p>
-                <p class="text-blue-700 text-sm leading-relaxed">
+                <p class="text-primary-700 text-sm leading-relaxed">
                   Elections with 40 or fewer expected voters are automatically approved.
                   Your election will move to the setup phase immediately upon submission.
                 </p>
@@ -63,18 +63,18 @@
             </div>
 
             <!-- Expected Voter Count -->
-            <div class="flex items-start gap-4 p-4 rounded-lg border-2 transition-colors" :class="election.expected_voter_count > 0 ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'">
+            <div class="flex items-start gap-4 p-4 rounded-lg border-2 transition-colors" :class="election.expected_voter_count > 0 ? 'border-green-200 bg-green-50' : 'border-danger-200 bg-danger-50'">
               <svg v-if="election.expected_voter_count > 0" class="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
               </svg>
-              <svg v-else class="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg v-else class="w-6 h-6 text-danger-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
               <div class="flex-1">
-                <p :class="election.expected_voter_count > 0 ? 'text-green-900 font-semibold' : 'text-red-900 font-semibold'">
+                <p :class="election.expected_voter_count > 0 ? 'text-green-900 font-semibold' : 'text-danger-900 font-semibold'">
                   Expected Voter Count
                 </p>
-                <p :class="election.expected_voter_count > 0 ? 'text-green-700 text-sm' : 'text-red-700 text-sm'">
+                <p :class="election.expected_voter_count > 0 ? 'text-green-700 text-sm' : 'text-danger-700 text-sm'">
                   {{ election.expected_voter_count }} voter{{ election.expected_voter_count !== 1 ? 's' : '' }} expected
                   <span v-if="!isReady"> — At least 1 voter is required</span>
                 </p>
@@ -83,12 +83,12 @@
           </div>
 
           <!-- Setup Timing Info -->
-          <div class="mt-6 p-4 rounded-lg bg-blue-50 border border-blue-200">
+          <div class="mt-6 p-4 rounded-lg bg-primary-50 border border-primary-200">
             <div class="flex gap-3">
-              <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <div class="text-sm text-blue-700">
+              <div class="text-sm text-primary-700">
                 <p class="font-semibold">Posts, candidates, and voters are configured during the <strong>administration phase</strong> — after this submission is approved.</p>
               </div>
             </div>
@@ -99,7 +99,7 @@
         <div class="flex gap-3 justify-end">
           <Link
             :href="route('organisations.elections.management', { organisation: organisation.slug, election: election.slug })"
-            class="px-6 py-3 rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 font-semibold transition-colors"
+            class="px-6 py-3 rounded-lg border border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-50 font-semibold transition-colors"
           >
             Back to Management
           </Link>
@@ -107,7 +107,7 @@
             v-if="isReady"
             @click="submitForApproval"
             :disabled="isLoading"
-            class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold transition-colors disabled:cursor-not-allowed flex items-center gap-2"
+            class="px-6 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 disabled:bg-primary-400 text-white font-semibold transition-colors disabled:cursor-not-allowed flex items-center gap-2"
           >
             <span v-if="isLoading" class="inline-block animate-spin">⟳</span>
             {{ isLoading ? 'Submitting...' : 'Submit for Approval' }}
@@ -115,7 +115,7 @@
           <button
             v-else
             disabled
-            class="px-6 py-3 rounded-lg bg-gray-300 text-gray-600 font-semibold cursor-not-allowed"
+            class="px-6 py-3 rounded-lg bg-neutral-300 text-neutral-600 font-semibold cursor-not-allowed"
             :title="!isDraft ? 'Election already submitted for approval' : 'Expected voter count is required before submitting'"
           >
             {{ !isDraft ? 'Already Submitted' : 'Set Expected Voter Count First' }}
@@ -177,3 +177,4 @@ const submitForApproval = () => {
   )
 }
 </script>
+

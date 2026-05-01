@@ -11,7 +11,7 @@
             <a class="flex my-2 justify-center xl:justify-start" href="#">
               <svg
                 viewBox="0 0 24 24"
-                class="w-8 h-8 text-blue-400 dark:text-white"
+                class="w-8 h-8 text-primary-400 dark:text-white"
                 fill="currentColor"
               >
                 <g>
@@ -27,7 +27,7 @@
             <nav class="mt-5">
               <a
                 href="#"
-                class="flex items-center justify-center xl:justify-start text-blue-400 mb-8 transition duration-350 ease-in-out"
+                class="flex items-center justify-center xl:justify-start text-primary-400 mb-8 transition duration-350 ease-in-out"
               >
                 <svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
                   <path
@@ -42,7 +42,7 @@
 
               <a
                 href="#"
-                class="flex items-center justify-center xl:justify-start text-gray-800 dark:text-white hover:text-blue-400 dark:hover:text-blue-400 mb-8 transition duration-350 ease-in-out"
+                class="flex items-center justify-center xl:justify-start text-neutral-800 dark:text-white hover:text-primary-400 dark:hover:text-primary-400 mb-8 transition duration-350 ease-in-out"
               >
                 <svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
                   <path
@@ -59,7 +59,7 @@
 
               <a
                 href="#"
-                class="flex items-center justify-center xl:justify-start text-gray-800 dark:text-white hover:text-blue-400 dark:hover:text-blue-400 mb-8 transition duration-350 ease-in-out"
+                class="flex items-center justify-center xl:justify-start text-neutral-800 dark:text-white hover:text-primary-400 dark:hover:text-primary-400 mb-8 transition duration-350 ease-in-out"
               >
                 <svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
                   <path
@@ -76,7 +76,7 @@
 
               <a
                 href="#"
-                class="flex items-center justify-center xl:justify-start text-gray-800 dark:text-white hover:text-blue-400 dark:hover:text-blue-400 mb-8 transition duration-350 ease-in-out"
+                class="flex items-center justify-center xl:justify-start text-neutral-800 dark:text-white hover:text-primary-400 dark:hover:text-primary-400 mb-8 transition duration-350 ease-in-out"
               >
                 <svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
                   <path
@@ -93,7 +93,7 @@
 
               <a
                 href="#"
-                class="flex items-center justify-center xl:justify-start text-gray-800 dark:text-white hover:text-blue-400 dark:hover:text-blue-400 mb-8 transition duration-350 ease-in-out"
+                class="flex items-center justify-center xl:justify-start text-neutral-800 dark:text-white hover:text-primary-400 dark:hover:text-primary-400 mb-8 transition duration-350 ease-in-out"
               >
                 <svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
                   <path
@@ -110,7 +110,7 @@
 
               <a
                 href="#"
-                class="flex items-center justify-center xl:justify-start text-gray-800 dark:text-white hover:text-blue-400 dark:hover:text-blue-400 mb-8 transition duration-350 ease-in-out"
+                class="flex items-center justify-center xl:justify-start text-neutral-800 dark:text-white hover:text-primary-400 dark:hover:text-primary-400 mb-8 transition duration-350 ease-in-out"
               >
                 <svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
                   <g>
@@ -129,7 +129,7 @@
 
               <a
                 href="#"
-                class="flex items-center justify-center xl:justify-start text-gray-800 dark:text-white hover:text-blue-400 dark:hover:text-blue-400 mb-8 transition duration-350 ease-in-out"
+                class="flex items-center justify-center xl:justify-start text-neutral-800 dark:text-white hover:text-primary-400 dark:hover:text-primary-400 mb-8 transition duration-350 ease-in-out"
               >
                 <svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
                   <path
@@ -146,7 +146,7 @@
 
               <a
                 href="#"
-                class="flex items-center justify-center xl:justify-start text-gray-800 dark:text-white hover:text-blue-400 dark:hover:text-blue-400 mb-8 transition duration-350 ease-in-out"
+                class="flex items-center justify-center xl:justify-start text-neutral-800 dark:text-white hover:text-primary-400 dark:hover:text-primary-400 mb-8 transition duration-350 ease-in-out"
               >
                 <svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6">
                   <g>
@@ -163,7 +163,7 @@
 
               <a
                 href="#"
-                class="mx-auto w-11 h-11 xl:w-auto flex items-center justify-center bg-blue-400 hover:bg-blue-500 py-3 rounded-full text-white font-bold font-sm transition duration-350 ease-in-out mb-10"
+                class="mx-auto w-11 h-11 xl:w-auto flex items-center justify-center bg-primary-400 hover:bg-primary-500 py-3 rounded-full text-white font-bold font-sm transition duration-350 ease-in-out mb-10"
               >
                 <svg
                   fill="currentColor"
@@ -181,7 +181,7 @@
 
             <!-- User Menu -->
             <div
-              class="w-14 xl:w-full mx-auto mt-auto flex flex-row justify-between mb-5 rounded-full hover:bg-blue-50 dark:hover:bg-dim-800 p-2 cursor-pointer transition duration-350 ease-in-out mb-2"
+              class="w-14 xl:w-full mx-auto mt-auto flex flex-row justify-between mb-5 rounded-full hover:bg-primary-50 dark:hover:bg-dim-800 p-2 cursor-pointer transition duration-350 ease-in-out mb-2"
             >
               <div class="flex flex-row">
                 <img
@@ -190,15 +190,15 @@
                   alt="Joe Biden"
                 />
                 <div class="hidden xl:block flex flex-col ml-2">
-                  <h1 class="text-gray-800 dark:text-white font-bold text-sm">
+                  <h1 class="text-neutral-800 dark:text-white font-bold text-sm">
                     Joe Biden
                   </h1>
-                  <p class="text-gray-400 text-sm">@JoeBiden</p>
+                  <p class="text-neutral-400 text-sm">@JoeBiden</p>
                 </div>
               </div>
               <div class="hidden xl:block">
                 <div
-                  class="flex items-center h-full text-gray-800 dark:text-white"
+                  class="flex items-center h-full text-neutral-800 dark:text-white"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -223,10 +223,10 @@
         <div class="w-full sm:w-600 h-screen">
           <!-- Header -->
           <div
-            class="flex justify-between items-center border-b px-4 py-3 sticky top-0 bg-white dark:bg-dim-900 border-l border-r border-gray-200 dark:border-gray-700"
+            class="flex justify-between items-center border-b px-4 py-3 sticky top-0 bg-white dark:bg-dim-900 border-l border-r border-neutral-200 dark:border-neutral-700"
           >
             <!-- Title -->
-            <h2 class="text-gray-800 dark:text-gray-100 font-bold font-sm">
+            <h2 class="text-neutral-800 dark:text-neutral-100 font-bold font-sm">
               Home
             </h2>
             <!-- /Title -->
@@ -235,7 +235,7 @@
             <div>
               <svg
                 viewBox="0 0 24 24"
-                class="w-5 h-5 text-blue-400"
+                class="w-5 h-5 text-primary-400"
                 fill="currentColor"
               >
                 <g>
@@ -251,7 +251,7 @@
 
           <!-- Post Tweet -->
           <div
-            class="border-b border-gray-200 dark:border-dim-200 pb-4 border-l border-r"
+            class="border-b border-neutral-200 dark:border-dim-200 pb-4 border-l border-r"
           >
             <div class="flex shrink-0 p-4 pb-0">
               <div class="w-12 flex items-top">
@@ -263,7 +263,7 @@
               </div>
               <div class="w-full p-2">
                 <textarea
-                  class="dark:text-white text-gray-900 placeholder-gray-400 w-full h-10 bg-transparent border-0 focus:outline-none resize-none"
+                  class="dark:text-white text-neutral-900 placeholder-gray-400 w-full h-10 bg-transparent border-0 focus:outline-none resize-none"
                   placeholder="What's happening?"
                 ></textarea>
               </div>
@@ -271,7 +271,7 @@
             <div class="w-full flex items-top p-2 text-white pl-14">
               <a
                 href="#"
-                class="text-blue-400 hover:bg-blue-50 dark:hover:bg-dim-800 rounded-full p-2"
+                class="text-primary-400 hover:bg-primary-50 dark:hover:bg-dim-800 rounded-full p-2"
               >
                 <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
                   <g>
@@ -285,7 +285,7 @@
 
               <a
                 href="#"
-                class="text-blue-400 hover:bg-blue-50 dark:hover:bg-dim-800 rounded-full p-2"
+                class="text-primary-400 hover:bg-primary-50 dark:hover:bg-dim-800 rounded-full p-2"
               >
                 <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
                   <g>
@@ -301,7 +301,7 @@
 
               <a
                 href="#"
-                class="text-blue-400 hover:bg-blue-50 dark:hover:bg-dim-800 rounded-full p-2"
+                class="text-primary-400 hover:bg-primary-50 dark:hover:bg-dim-800 rounded-full p-2"
               >
                 <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
                   <g>
@@ -314,7 +314,7 @@
 
               <a
                 href="#"
-                class="text-blue-400 hover:bg-blue-50 dark:hover:bg-dim-800 rounded-full p-2"
+                class="text-primary-400 hover:bg-primary-50 dark:hover:bg-dim-800 rounded-full p-2"
               >
                 <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
                   <g>
@@ -332,7 +332,7 @@
 
               <a
                 href="#"
-                class="text-blue-400 hover:bg-blue-50 dark:hover:bg-dim-800 rounded-full p-2"
+                class="text-primary-400 hover:bg-primary-50 dark:hover:bg-dim-800 rounded-full p-2"
               >
                 <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor">
                   <g>
@@ -352,7 +352,7 @@
 
               <a
                 href="#"
-                class="bg-blue-400 hover:bg-blue-500 text-white rounded-full py-1 px-4 ml-auto mr-1"
+                class="bg-primary-400 hover:bg-primary-500 text-white rounded-full py-1 px-4 ml-auto mr-1"
               >
                 <span class="font-bold text-sm">Tweet</span>
               </a>
@@ -365,10 +365,10 @@
 
           <!-- New Tweets -->
           <div
-            class="border-b border-gray-200 dark:border-dim-200 bg-gray-50 dark:bg-dim-300 py-2 border-l border-r"
+            class="border-b border-neutral-200 dark:border-dim-200 bg-neutral-50 dark:bg-dim-300 py-2 border-l border-r"
           >
             <div
-              class="flex shrink-0 items-center justify-center py-4 bg-white dark:bg-dim-900 border-b border-t border-gray-200 dark:border-dim-200 hover:bg-gray-50 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out text-blue-400 text-sm"
+              class="flex shrink-0 items-center justify-center py-4 bg-white dark:bg-dim-900 border-b border-t border-neutral-200 dark:border-dim-200 hover:bg-neutral-50 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out text-primary-400 text-sm"
             >
               Show 9 Tweets
             </div>
@@ -377,7 +377,7 @@
 
           <!-- Tweet -->
           <div
-            class="border-b border-gray-200 dark:border-dim-200 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out pb-4 border-l border-r"
+            class="border-b border-neutral-200 dark:border-dim-200 hover:bg-neutral-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out pb-4 border-l border-r"
           >
             <div class="flex shrink-0 p-4 pb-0">
               <a href="#" class="shrink-0 group block">
@@ -391,14 +391,14 @@
                   </div>
                   <div class="ml-3">
                     <p
-                      class="flex items-center text-base leading-6 font-medium text-gray-800 dark:text-white"
+                      class="flex items-center text-base leading-6 font-medium text-neutral-800 dark:text-white"
                     >
                       Joe Biden
                       <svg
                         viewBox="0 0 24 24"
                         aria-label="Verified account"
                         fill="currentColor"
-                        class="w-4 h-4 ml-1 text-blue-500 dark:text-white"
+                        class="w-4 h-4 ml-1 text-primary-500 dark:text-white"
                       >
                         <g>
                           <path
@@ -407,7 +407,7 @@
                         </g>
                       </svg>
                       <span
-                        class="ml-1 text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150"
+                        class="ml-1 text-sm leading-5 font-medium text-neutral-400 group-hover:text-neutral-300 transition ease-in-out duration-150"
                       >
                         @JoeBiden . Nov 7
                       </span>
@@ -418,20 +418,20 @@
             </div>
             <div class="pl-16">
               <p
-                class="text-base width-auto font-medium text-gray-800 dark:text-white shrink"
+                class="text-base width-auto font-medium text-neutral-800 dark:text-white shrink"
               >
                 America, I’m honored that you have chosen me to lead our great
                 country.<br />
                 <br />
                 The work ahead of us will be hard, but I promise you this: I
                 will be a
-                <a href="#" class="text-blue-400 hover:underline">#President</a>
+                <a href="#" class="text-primary-400 hover:underline">#President</a>
                 for all Americans — whether you voted for me or not.<br />
                 <br />
                 I will keep the faith that you have placed in me.
               </p>
 
-              <div class="flex my-3 mr-2 rounded-2xl border border-gray-600">
+              <div class="flex my-3 mr-2 rounded-2xl border border-neutral-600">
                 <img
                   class="rounded-2xl"
                   src="https://pbs.twimg.com/media/EnTkhz-XYAEH2kY?format=jpg&name=small"
@@ -443,7 +443,7 @@
                 <div class="w-full">
                   <div class="flex items-center">
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-blue-400 dark:hover:text-blue-400 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-primary-400 dark:hover:text-primary-400 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -459,7 +459,7 @@
                       12.3 k
                     </div>
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-green-400 dark:hover:text-green-400 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-green-400 dark:hover:text-green-400 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -475,7 +475,7 @@
                       14 k
                     </div>
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-red-600 dark:hover:text-red-600 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-danger-600 dark:hover:text-danger-600 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -491,7 +491,7 @@
                       14 k
                     </div>
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-blue-400 dark:hover:text-blue-400 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-primary-400 dark:hover:text-primary-400 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -517,22 +517,22 @@
 
           <!-- Timeline Notification -->
           <div
-            class="border-b border-gray-200 dark:border-dim-200 bg-gray-50 dark:bg-dim-300 py-2 border-l border-r"
+            class="border-b border-neutral-200 dark:border-dim-200 bg-neutral-50 dark:bg-dim-300 py-2 border-l border-r"
           >
             <div
-              class="flex flex-col items-center justify-center text-center p-6 bg-white dark:bg-dim-900 border-b border-t border-gray-200 dark:border-dim-200 hover:bg-gray-50 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out text-blue-400 text-sm"
+              class="flex flex-col items-center justify-center text-center p-6 bg-white dark:bg-dim-900 border-b border-t border-neutral-200 dark:border-dim-200 hover:bg-neutral-50 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out text-primary-400 text-sm"
             >
-              <h1 class="dark:text-white text-gray-900 text-2xl font-bold mb-2">
+              <h1 class="dark:text-white text-neutral-900 text-2xl font-bold mb-2">
                 Customize your view
               </h1>
-              <p class="text-gray-500 mb-5">
+              <p class="text-neutral-500 mb-5">
                 Manage your font size, color and background. These settings
                 affect all the Twitter accounts on this browser.
               </p>
               <a
                 href="javascript:void(0)"
                 onclick="document.querySelector('html').classList.toggle('dark')"
-                class="mx-auto w-11 h-11 xl:w-48 flex items-center justify-center bg-blue-400 hover:bg-blue-500 py-3 rounded-full text-white font-bold font-sm transition duration-350 ease-in-out"
+                class="mx-auto w-11 h-11 xl:w-48 flex items-center justify-center bg-primary-400 hover:bg-primary-500 py-3 rounded-full text-white font-bold font-sm transition duration-350 ease-in-out"
               >
                 <svg
                   fill="currentColor"
@@ -558,9 +558,9 @@
 
           <!-- Tweet -->
           <div
-            class="border-b border-gray-200 dark:border-dim-200 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out pb-4 border-l border-r"
+            class="border-b border-neutral-200 dark:border-dim-200 hover:bg-neutral-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out pb-4 border-l border-r"
           >
-            <div class="flex shrink-0 pt-4 pb-0 text-gray-400">
+            <div class="flex shrink-0 pt-4 pb-0 text-neutral-400">
               <div class="w-16 flex justify-end pr-2 pb-1">
                 <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
                   <g>
@@ -584,14 +584,14 @@
                   </div>
                   <div class="ml-3">
                     <p
-                      class="flex items-center text-base leading-6 font-medium text-gray-800 dark:text-white"
+                      class="flex items-center text-base leading-6 font-medium text-neutral-800 dark:text-white"
                     >
                       Presidential Transition
                       <svg
                         viewBox="0 0 24 24"
                         aria-label="Verified account"
                         fill="currentColor"
-                        class="w-4 h-4 ml-1 text-blue-500 dark:text-white"
+                        class="w-4 h-4 ml-1 text-primary-500 dark:text-white"
                       >
                         <g>
                           <path
@@ -600,7 +600,7 @@
                         </g>
                       </svg>
                       <span
-                        class="ml-1 text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150"
+                        class="ml-1 text-sm leading-5 font-medium text-neutral-400 group-hover:text-neutral-300 transition ease-in-out duration-150"
                       >
                         @Transition46 . 19h
                       </span>
@@ -611,7 +611,7 @@
             </div>
             <div class="pl-16">
               <p
-                class="text-base width-auto font-medium text-gray-800 dark:text-white shrink mb-6"
+                class="text-base width-auto font-medium text-neutral-800 dark:text-white shrink mb-6"
               >
                 Under the Biden-Harris administration, American national
                 security and foreign policy will be led by experienced
@@ -623,7 +623,7 @@
                 <div class="w-full">
                   <div class="flex items-center">
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-blue-400 dark:hover:text-blue-400 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-primary-400 dark:hover:text-primary-400 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -639,7 +639,7 @@
                       12.3 k
                     </div>
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-green-400 dark:hover:text-green-400 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-green-400 dark:hover:text-green-400 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -655,7 +655,7 @@
                       14 k
                     </div>
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-red-600 dark:hover:text-red-600 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-danger-600 dark:hover:text-danger-600 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -671,7 +671,7 @@
                       14 k
                     </div>
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-blue-400 dark:hover:text-blue-400 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-primary-400 dark:hover:text-primary-400 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -697,7 +697,7 @@
 
           <!-- Tweet -->
           <div
-            class="border-b border-gray-200 dark:border-dim-200 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out pb-4 border-l border-r"
+            class="border-b border-neutral-200 dark:border-dim-200 hover:bg-neutral-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out pb-4 border-l border-r"
           >
             <div class="flex shrink-0 p-4 pb-0">
               <a href="#" class="shrink-0 group block">
@@ -711,14 +711,14 @@
                   </div>
                   <div class="ml-3">
                     <p
-                      class="flex items-center text-base leading-6 font-medium text-gray-800 dark:text-white"
+                      class="flex items-center text-base leading-6 font-medium text-neutral-800 dark:text-white"
                     >
                       Joe Biden
                       <svg
                         viewBox="0 0 24 24"
                         aria-label="Verified account"
                         fill="currentColor"
-                        class="w-4 h-4 ml-1 text-blue-500 dark:text-white"
+                        class="w-4 h-4 ml-1 text-primary-500 dark:text-white"
                       >
                         <g>
                           <path
@@ -727,7 +727,7 @@
                         </g>
                       </svg>
                       <span
-                        class="ml-1 text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150"
+                        class="ml-1 text-sm leading-5 font-medium text-neutral-400 group-hover:text-neutral-300 transition ease-in-out duration-150"
                       >
                         @JoeBiden . Nov 7
                       </span>
@@ -738,7 +738,7 @@
             </div>
             <div class="pl-16">
               <p
-                class="text-base width-auto font-medium text-gray-800 dark:text-white shrink"
+                class="text-base width-auto font-medium text-neutral-800 dark:text-white shrink"
               >
                 America, I’m honored that you have chosen me to lead our great
                 country.<br />
@@ -750,7 +750,7 @@
                 I will keep the faith that you have placed in me.
               </p>
 
-              <div class="flex my-3 mr-2 rounded-2xl border border-gray-600">
+              <div class="flex my-3 mr-2 rounded-2xl border border-neutral-600">
                 <img
                   class="rounded-2xl"
                   src="https://pbs.twimg.com/media/EnTkhz-XYAEH2kY?format=jpg&name=small"
@@ -762,7 +762,7 @@
                 <div class="w-full">
                   <div class="flex items-center">
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-blue-400 dark:hover:text-blue-400 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-primary-400 dark:hover:text-primary-400 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -778,7 +778,7 @@
                       12.3 k
                     </div>
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-green-400 dark:hover:text-green-400 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-green-400 dark:hover:text-green-400 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -794,7 +794,7 @@
                       14 k
                     </div>
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-red-600 dark:hover:text-red-600 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-danger-600 dark:hover:text-danger-600 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -810,7 +810,7 @@
                       14 k
                     </div>
                     <div
-                      class="flex-1 flex items-center text-gray-800 dark:text-white text-xs text-gray-400 hover:text-blue-400 dark:hover:text-blue-400 transition duration-350 ease-in-out"
+                      class="flex-1 flex items-center text-neutral-800 dark:text-white text-xs text-neutral-400 hover:text-primary-400 dark:hover:text-primary-400 transition duration-350 ease-in-out"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -836,7 +836,7 @@
 
           <!-- Spinner -->
           <div
-            class="flex items-center justify-center p-4 border-b border-l border-r border-gray-200 dark:border-gray-700"
+            class="flex items-center justify-center p-4 border-b border-l border-r border-neutral-200 dark:border-neutral-700"
           >
             <svg class="w-8 h-8 animate-spin-fast">
               <circle
@@ -875,7 +875,7 @@
             <!-- Search -->
             <div class="relative m-2">
               <div
-                class="absolute text-gray-600 flex items-center pl-4 h-full cursor-pointer"
+                class="absolute text-neutral-600 flex items-center pl-4 h-full cursor-pointer"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -895,55 +895,55 @@
                 </svg>
               </div>
               <input
-                class="w-full bg-gray-200 dark:bg-dim-400 border-gray-200 dark:border-dim-400 text-gray-100 focus:bg-gray-100 dark:focus:bg-dim-900 focus:outline-none focus:border focus:border-blue-200 font-normal h-9 flex items-center pl-12 text-sm rounded-full border shadow-sm"
+                class="w-full bg-neutral-200 dark:bg-dim-400 border-neutral-200 dark:border-dim-400 text-neutral-100 focus:bg-neutral-100 dark:focus:bg-dim-900 focus:outline-none focus:border focus:border-primary-200 font-normal h-9 flex items-center pl-12 text-sm rounded-full border shadow-sm"
                 placeholder="Search Twitter"
               />
             </div>
             <!-- /Search -->
 
             <!-- What’s happening -->
-            <div class="bg-gray-50 dark:bg-dim-700 rounded-2xl m-2">
+            <div class="bg-neutral-50 dark:bg-dim-700 rounded-2xl m-2">
               <h1
-                class="text-gray-900 dark:text-white text-md font-bold p-3 border-b border-gray-200 dark:border-dim-200"
+                class="text-neutral-900 dark:text-white text-md font-bold p-3 border-b border-neutral-200 dark:border-dim-200"
               >
                 What’s happening
               </h1>
 
               <!-- Trending Topic -->
               <div
-                class="text-blue-400 text-sm font-normal p-3 border-b border-gray-200 dark:border-dim-200 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
+                class="text-primary-400 text-sm font-normal p-3 border-b border-neutral-200 dark:border-dim-200 hover:bg-neutral-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
               >
-                <h2 class="font-bold text-md text-gray-800 dark:text-white">
+                <h2 class="font-bold text-md text-neutral-800 dark:text-white">
                   #FreePS5Monday
                 </h2>
-                <p class="text-xs text-gray-400">29.7K Tweets</p>
+                <p class="text-xs text-neutral-400">29.7K Tweets</p>
               </div>
               <!-- /Trending Topic -->
 
               <!-- Trending Topic -->
               <div
-                class="text-blue-400 text-sm font-normal p-3 border-b border-gray-200 dark:border-dim-200 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
+                class="text-primary-400 text-sm font-normal p-3 border-b border-neutral-200 dark:border-dim-200 hover:bg-neutral-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
               >
-                <h2 class="font-bold text-md text-gray-800 dark:text-white">
+                <h2 class="font-bold text-md text-neutral-800 dark:text-white">
                   #BTSonGMA
                 </h2>
-                <p class="text-xs text-gray-400">351K Tweets</p>
+                <p class="text-xs text-neutral-400">351K Tweets</p>
               </div>
               <!-- /Trending Topic -->
 
               <!-- Trending Topic -->
               <div
-                class="text-blue-400 text-sm font-normal p-3 border-b border-gray-200 dark:border-dim-200 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
+                class="text-primary-400 text-sm font-normal p-3 border-b border-neutral-200 dark:border-dim-200 hover:bg-neutral-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
               >
-                <h2 class="font-bold text-md text-gray-800 dark:text-white">
+                <h2 class="font-bold text-md text-neutral-800 dark:text-white">
                   #AstraZeneca
                 </h2>
-                <p class="text-xs text-gray-400">52.7K Tweets</p>
+                <p class="text-xs text-neutral-400">52.7K Tweets</p>
               </div>
               <!-- /Trending Topic -->
 
               <div
-                class="text-blue-400 text-sm font-normal p-3 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
+                class="text-primary-400 text-sm font-normal p-3 hover:bg-neutral-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
               >
                 Show more
               </div>
@@ -951,16 +951,16 @@
             <!-- /What’s happening -->
 
             <!-- Who to follow -->
-            <div class="bg-gray-50 dark:bg-dim-700 rounded-2xl m-2">
+            <div class="bg-neutral-50 dark:bg-dim-700 rounded-2xl m-2">
               <h1
-                class="text-gray-900 dark:text-white text-md font-bold p-3 border-b border-gray-200 dark:border-dim-200"
+                class="text-neutral-900 dark:text-white text-md font-bold p-3 border-b border-neutral-200 dark:border-dim-200"
               >
                 Who to follow
               </h1>
 
               <!-- Twitter Account -->
               <div
-                class="text-blue-400 text-sm font-normal p-3 border-b border-gray-200 dark:border-dim-200 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
+                class="text-primary-400 text-sm font-normal p-3 border-b border-neutral-200 dark:border-dim-200 hover:bg-neutral-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
               >
                 <div class="flex flex-row justify-between p-2">
                   <div class="flex flex-row">
@@ -971,20 +971,20 @@
                     />
                     <div class="flex flex-col ml-2">
                       <h1
-                        class="text-gray-900 dark:text-white font-bold text-sm"
+                        class="text-neutral-900 dark:text-white font-bold text-sm"
                       >
                         Joe Biden
                       </h1>
-                      <p class="text-gray-400 text-sm">@JoeBiden</p>
+                      <p class="text-neutral-400 text-sm">@JoeBiden</p>
                     </div>
                   </div>
                   <div class="">
                     <div
-                      class="flex items-center h-full text-gray-800 dark:text-white"
+                      class="flex items-center h-full text-neutral-800 dark:text-white"
                     >
                       <a
                         href="#"
-                        class="text-xs font-bold text-blue-400 px-4 py-1 rounded-full border-2 border-blue-400"
+                        class="text-xs font-bold text-primary-400 px-4 py-1 rounded-full border-2 border-primary-400"
                         >Follow</a
                       >
                     </div>
@@ -995,7 +995,7 @@
 
               <!-- Twitter Account -->
               <div
-                class="text-blue-400 text-sm font-normal p-3 border-b border-gray-200 dark:border-dim-200 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
+                class="text-primary-400 text-sm font-normal p-3 border-b border-neutral-200 dark:border-dim-200 hover:bg-neutral-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
               >
                 <div class="flex flex-row justify-between p-2">
                   <div class="flex flex-row">
@@ -1006,20 +1006,20 @@
                     />
                     <div class="flex flex-col ml-2">
                       <h1
-                        class="text-gray-900 dark:text-white font-bold text-sm"
+                        class="text-neutral-900 dark:text-white font-bold text-sm"
                       >
                         Joe Biden
                       </h1>
-                      <p class="text-gray-400 text-sm">@JoeBiden</p>
+                      <p class="text-neutral-400 text-sm">@JoeBiden</p>
                     </div>
                   </div>
                   <div class="">
                     <div
-                      class="flex items-center h-full text-gray-800 dark:text-white"
+                      class="flex items-center h-full text-neutral-800 dark:text-white"
                     >
                       <a
                         href="#"
-                        class="text-xs font-bold text-blue-400 px-4 py-1 rounded-full border-2 border-blue-400"
+                        class="text-xs font-bold text-primary-400 px-4 py-1 rounded-full border-2 border-primary-400"
                         >Follow</a
                       >
                     </div>
@@ -1030,15 +1030,15 @@
 
               <!-- Loader -->
               <div
-                class="border-b border-gray-200 dark:border-dim-200 p-4 max-w-sm w-full mx-auto"
+                class="border-b border-neutral-200 dark:border-dim-200 p-4 max-w-sm w-full mx-auto"
               >
                 <div class="animate-pulse flex space-x-4">
-                  <div class="rounded-full bg-gray-400 h-12 w-12"></div>
+                  <div class="rounded-full bg-neutral-400 h-12 w-12"></div>
                   <div class="flex-1 space-y-4 py-1">
-                    <div class="h-4 bg-gray-400 rounded-sm w-3/4"></div>
+                    <div class="h-4 bg-neutral-400 rounded-sm w-3/4"></div>
                     <div class="space-y-2">
-                      <div class="h-4 bg-gray-400 rounded-sm"></div>
-                      <div class="h-4 bg-gray-400 rounded-sm w-5/6"></div>
+                      <div class="h-4 bg-neutral-400 rounded-sm"></div>
+                      <div class="h-4 bg-neutral-400 rounded-sm w-5/6"></div>
                     </div>
                   </div>
                 </div>
@@ -1046,7 +1046,7 @@
               <!-- /Loader -->
 
               <div
-                class="text-blue-400 text-sm font-normal p-3 hover:bg-gray-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
+                class="text-primary-400 text-sm font-normal p-3 hover:bg-neutral-100 dark:hover:bg-dim-300 cursor-pointer transition duration-350 ease-in-out"
               >
                 Show more
               </div>
@@ -1054,7 +1054,7 @@
             <!-- /Who to follow -->
 
             <footer>
-              <ul class="text-xs text-gray-500 my-4 mx-2">
+              <ul class="text-xs text-neutral-500 my-4 mx-2">
                 <li class="inline-block mx-2">
                   <a class="hover:underline" href="#">Terms of Service</a>
                 </li>
@@ -1708,47 +1708,47 @@ video {
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
 }
 
-.bg-gray-50 {
+.bg-neutral-50 {
   --tw-bg-opacity: 1;
   background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
 }
 
-.bg-gray-200 {
+.bg-neutral-200 {
   --tw-bg-opacity: 1;
   background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
 }
 
-.bg-gray-400 {
+.bg-neutral-400 {
   --tw-bg-opacity: 1;
   background-color: rgba(156, 163, 175, var(--tw-bg-opacity));
 }
 
-.bg-blue-400 {
+.bg-primary-400 {
   --tw-bg-opacity: 1;
   background-color: rgba(96, 165, 250, var(--tw-bg-opacity));
 }
 
-.hover\:bg-gray-50:hover {
+.hover\:bg-neutral-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
 }
 
-.hover\:bg-gray-100:hover {
+.hover\:bg-neutral-100:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
 }
 
-.hover\:bg-blue-50:hover {
+.hover\:bg-primary-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(239, 246, 255, var(--tw-bg-opacity));
 }
 
-.hover\:bg-blue-500:hover {
+.hover\:bg-primary-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
 }
 
-.focus\:bg-gray-100:focus {
+.focus\:bg-neutral-100:focus {
   --tw-bg-opacity: 1;
   background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
 }
@@ -1788,27 +1788,27 @@ video {
   background-color: rgba(21, 32, 43, var(--tw-bg-opacity));
 }
 
-.border-gray-200 {
+.border-neutral-200 {
   --tw-border-opacity: 1;
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
 }
 
-.border-gray-600 {
+.border-neutral-600 {
   --tw-border-opacity: 1;
   border-color: rgba(75, 85, 99, var(--tw-border-opacity));
 }
 
-.border-blue-400 {
+.border-primary-400 {
   --tw-border-opacity: 1;
   border-color: rgba(96, 165, 250, var(--tw-border-opacity));
 }
 
-.focus\:border-blue-200:focus {
+.focus\:border-primary-200:focus {
   --tw-border-opacity: 1;
   border-color: rgba(191, 219, 254, var(--tw-border-opacity));
 }
 
-.dark .dark\:border-gray-700 {
+.dark .dark\:border-neutral-700 {
   --tw-border-opacity: 1;
   border-color: rgba(55, 65, 81, var(--tw-border-opacity));
 }
@@ -2273,52 +2273,52 @@ video {
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
-.text-gray-100 {
+.text-neutral-100 {
   --tw-text-opacity: 1;
   color: rgba(243, 244, 246, var(--tw-text-opacity));
 }
 
-.text-gray-400 {
+.text-neutral-400 {
   --tw-text-opacity: 1;
   color: rgba(156, 163, 175, var(--tw-text-opacity));
 }
 
-.text-gray-500 {
+.text-neutral-500 {
   --tw-text-opacity: 1;
   color: rgba(107, 114, 128, var(--tw-text-opacity));
 }
 
-.text-gray-600 {
+.text-neutral-600 {
   --tw-text-opacity: 1;
   color: rgba(75, 85, 99, var(--tw-text-opacity));
 }
 
-.text-gray-800 {
+.text-neutral-800 {
   --tw-text-opacity: 1;
   color: rgba(31, 41, 55, var(--tw-text-opacity));
 }
 
-.text-gray-900 {
+.text-neutral-900 {
   --tw-text-opacity: 1;
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
 
-.text-blue-400 {
+.text-primary-400 {
   --tw-text-opacity: 1;
   color: rgba(96, 165, 250, var(--tw-text-opacity));
 }
 
-.text-blue-500 {
+.text-primary-500 {
   --tw-text-opacity: 1;
   color: rgba(59, 130, 246, var(--tw-text-opacity));
 }
 
-.group:hover .group-hover\:text-gray-300 {
+.group:hover .group-hover\:text-neutral-300 {
   --tw-text-opacity: 1;
   color: rgba(209, 213, 219, var(--tw-text-opacity));
 }
 
-.hover\:text-red-600:hover {
+.hover\:text-danger-600:hover {
   --tw-text-opacity: 1;
   color: rgba(220, 38, 38, var(--tw-text-opacity));
 }
@@ -2328,7 +2328,7 @@ video {
   color: rgba(52, 211, 153, var(--tw-text-opacity));
 }
 
-.hover\:text-blue-400:hover {
+.hover\:text-primary-400:hover {
   --tw-text-opacity: 1;
   color: rgba(96, 165, 250, var(--tw-text-opacity));
 }
@@ -2338,12 +2338,12 @@ video {
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
-.dark .dark\:text-gray-100 {
+.dark .dark\:text-neutral-100 {
   --tw-text-opacity: 1;
   color: rgba(243, 244, 246, var(--tw-text-opacity));
 }
 
-.dark .dark\:hover\:text-red-600:hover {
+.dark .dark\:hover\:text-danger-600:hover {
   --tw-text-opacity: 1;
   color: rgba(220, 38, 38, var(--tw-text-opacity));
 }
@@ -2353,7 +2353,7 @@ video {
   color: rgba(52, 211, 153, var(--tw-text-opacity));
 }
 
-.dark .dark\:hover\:text-blue-400:hover {
+.dark .dark\:hover\:text-primary-400:hover {
   --tw-text-opacity: 1;
   color: rgba(96, 165, 250, var(--tw-text-opacity));
 }

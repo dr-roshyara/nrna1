@@ -12,11 +12,11 @@
           <div>
             <h3
               id="demo-setup-heading"
-              class="text-2xl font-bold text-gray-900 mb-2"
+              class="text-2xl font-bold text-neutral-900 mb-2"
             >
               {{ $t('pages.organisation-show.demo.title') }}
             </h3>
-            <p class="text-sm text-gray-600 max-w-2xl">
+            <p class="text-sm text-neutral-600 max-w-2xl">
               {{ $t('pages.organisation-show.demo.message_intro') }}
             </p>
           </div>
@@ -26,13 +26,13 @@
             class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold w-fit"
             :class="demoStatus.exists
               ? 'bg-green-100 text-green-800 ring-1 ring-green-300'
-              : 'bg-gray-100 text-gray-800 ring-1 ring-gray-300'"
+              : 'bg-neutral-100 text-neutral-800 ring-1 ring-gray-300'"
             role="status"
             :aria-label="demoStatus.exists ? $t('pages.organisation-show.demo.status_setup_complete') : $t('pages.organisation-show.demo.status_not_setup')"
           >
             <span
               class="w-2 h-2 rounded-full mr-2"
-              :class="demoStatus.exists ? 'bg-green-600' : 'bg-gray-600'"
+              :class="demoStatus.exists ? 'bg-green-600' : 'bg-neutral-600'"
               aria-hidden="true"
             ></span>
             {{ demoStatus.exists ? $t('pages.organisation-show.demo.status_setup_complete') : $t('pages.organisation-show.demo.status_not_setup') }}
@@ -42,15 +42,15 @@
         <!-- Stats Grid (if demo exists) -->
         <div v-if="demoStatus.exists" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <!-- Posts Stat -->
-          <div class="bg-white rounded-lg p-4 border border-blue-100 hover:border-blue-300 transition-colors">
+          <div class="bg-white rounded-lg p-4 border border-primary-100 hover:border-primary-300 transition-colors">
             <div class="text-center">
-              <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 mb-2">
-                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary-100 mb-2">
+                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <p class="text-3xl font-bold text-blue-600 mb-1">{{ demoStatus.posts }}</p>
-              <p class="text-xs font-medium text-gray-600 uppercase tracking-wide">{{ $t('pages.organisation-show.demo.stats_posts') }}</p>
+              <p class="text-3xl font-bold text-primary-600 mb-1">{{ demoStatus.posts }}</p>
+              <p class="text-xs font-medium text-neutral-600 uppercase tracking-wide">{{ $t('pages.organisation-show.demo.stats_posts') }}</p>
             </div>
           </div>
 
@@ -64,7 +64,7 @@
                 </svg>
               </div>
               <p class="text-3xl font-bold text-green-600 mb-1">{{ demoStatus.candidates }}</p>
-              <p class="text-xs font-medium text-gray-600 uppercase tracking-wide">{{ $t('pages.organisation-show.demo.stats_candidates') }}</p>
+              <p class="text-xs font-medium text-neutral-600 uppercase tracking-wide">{{ $t('pages.organisation-show.demo.stats_candidates') }}</p>
             </div>
           </div>
 
@@ -77,7 +77,7 @@
                 </svg>
               </div>
               <p class="text-3xl font-bold text-purple-600 mb-1">{{ demoStatus.codes }}</p>
-              <p class="text-xs font-medium text-gray-600 uppercase tracking-wide">{{ $t('pages.organisation-show.demo.stats_codes') }}</p>
+              <p class="text-xs font-medium text-neutral-600 uppercase tracking-wide">{{ $t('pages.organisation-show.demo.stats_codes') }}</p>
             </div>
           </div>
 
@@ -90,7 +90,7 @@
                 </svg>
               </div>
               <p class="text-3xl font-bold text-orange-600 mb-1">{{ demoStatus.votes }}</p>
-              <p class="text-xs font-medium text-gray-600 uppercase tracking-wide">{{ $t('pages.organisation-show.demo.stats_test_votes') }}</p>
+              <p class="text-xs font-medium text-neutral-600 uppercase tracking-wide">{{ $t('pages.organisation-show.demo.stats_test_votes') }}</p>
             </div>
           </div>
         </div>
@@ -150,11 +150,11 @@
           <div
             :class="messageType === 'success'
               ? 'bg-green-50 text-green-800 border-green-300'
-              : 'bg-red-50 text-red-800 border-red-300'"
+              : 'bg-danger-50 text-danger-800 border-danger-300'"
             class="p-4 rounded-lg border-l-4 flex items-start gap-3"
           >
             <svg
-              :class="messageType === 'success' ? 'text-green-600' : 'text-red-600'"
+              :class="messageType === 'success' ? 'text-green-600' : 'text-danger-600'"
               class="w-5 h-5 shrink-0 mt-0.5"
               fill="currentColor"
               viewBox="0 0 20 20"
@@ -178,11 +178,11 @@
         </div>
 
         <!-- Info Section -->
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 flex gap-3">
-          <svg class="w-5 h-5 text-blue-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+        <div class="bg-primary-50 border border-primary-200 rounded-lg p-4 flex gap-3">
+          <svg class="w-5 h-5 text-primary-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
             <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zm-11-1a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd" />
           </svg>
-          <div class="text-sm text-blue-900">
+          <div class="text-sm text-primary-900">
             <p class="text-xs opacity-90">
               {{ demoStatus.exists
                 ? $t('pages.organisation-show.demo.note_isolated')
@@ -276,3 +276,4 @@ export default {
   }
 }
 </script>
+

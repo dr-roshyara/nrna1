@@ -3,8 +3,8 @@
 <app-layout>
       <div class="mt-6 text-center"> 
         <jet-validation-errors class="mb-4  mx-auto text-center " />  
-         <div class="m-auto text-center bg-blue-200 py-4 ">  
-        <p class="m-auto text-blue-700 font-bold text-sm"> Congratulation {{user_name}}! </p> 
+         <div class="m-auto text-center bg-primary-200 py-4 ">  
+        <p class="m-auto text-primary-700 font-bold text-sm"> Congratulation {{user_name}}! </p> 
           <p> You have given the correct voting code. you can Vote now!</p>
         <p class="m-auto"> Please select the correct candidates of your choice</p>
         <p> यहाँले दिएको भोटिङ कोड सही भएको प्रमाणित भाईसकेको छ। कृपया अब आफ्नो इच्छा अनुसार मतदान गर्न सक्नु हुने छ। </p>
@@ -24,8 +24,8 @@
                       <!-- {{members}} -->
                   <div id="first_vote_window" 
                       v-if ="this.members.length>0" 
-                     class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">      
-                    <div class="flex flex-col text-xl font-bold text-gray-900">
+                     class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">      
+                    <div class="flex flex-col text-xl font-bold text-neutral-900">
                       <label> Please choose 30 deligates  for the ICC global conference</label> 
                       <label class="p-2"> कृपया ३० जना डेलिगेटहरु  चुन्नुहोस ।  </label>   
                     </div>
@@ -33,7 +33,7 @@
                       <div class="md:flex md:flex-wrap md:justify-between md:px-4 py-4">  
                           <div  v-for="(member, pIndx) in members" :key="pIndx"  
                               class="flex flex-col justify-center p-4 mb-2 text-center  
-                              border border-gray-100 rounded"> 
+                              border border-neutral-100 rounded"> 
                               <show-candidate 
                               :candidacy_image_path ="member.image_path_1"
                               post_name          ="Deligate Member"   
@@ -48,7 +48,7 @@
                               :name     ="member.post_name"
                               :value    ="member.nrna_id"  
                               v-model   ="form.member"
-                              class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 
+                              class     ="p-6 rounded border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 
                               focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                               @change    ="updateBoxes(this.members,this.form.member,this.memberTicks)" 
                               :disabled ="member.disabled"
@@ -73,8 +73,8 @@
              
               <!-- Here comes the no vote Button  -->
               <div  id="second_vote_window"
-               class="flex flex-col border border-2 border-blue-300 m-2 py-4 px-6"> 
-                <div class=" flex flex-col items-center justify-center py-2 mb-2 text-bold text-red-500 text-xl">
+               class="flex flex-col border border-2 border-primary-300 m-2 py-4 px-6"> 
+                <div class=" flex flex-col items-center justify-center py-2 mb-2 text-bold text-danger-500 text-xl">
                  <p> !!कुनै पनि उमेद्बारहरुलाई स्विकार गर्न नचाहने हरुका लागि मात्र !!</p> 
                 <p>  !! Attention Please!, This is option only for the Rejection!!</p>
                 <p> !! उमेदवारहरु लाई अस्विकार को लागि मतदान । !!!</p> 
@@ -86,7 +86,7 @@
                     :name     ="no_vote_option"
                     :value    =true
                     v-model   ="form.no_vote_option"
-                    class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                    class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                     @change  ="update_no_vote_option()" 
                   />
                   </div> 
@@ -99,8 +99,8 @@
            <!--end of no vote button -->             
             <div class="flex flex-col items-center mx-auto my-4 w-full by-4 " style="background-color: #F1F1F1;"> 
               <!-- Here comes the no vote Button  -->
-              <div  class="flex flex-col border border-3 border-blue-300 mx-2 my-4 py-4 px-6"> 
-                <div class=" flex flex-col items-center justify-center py-2 mb-2 text-bold text-red-700 text-xl">
+              <div  class="flex flex-col border border-3 border-primary-300 mx-2 my-4 py-4 px-6"> 
+                <div class=" flex flex-col items-center justify-center py-2 mb-2 text-bold text-danger-700 text-xl">
                       <p> Button for Agreement </p> 
                      <p> मतदान गरेको स्विकार </p>  
                 </div>
@@ -111,7 +111,7 @@
                     :name     ="agree_button"
                     :value    =true
                     v-model   ="form.agree_button"
-                    class     ="p-6 rounded-sm border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                    class     ="p-6 rounded-sm border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                  
                   />
                   </div> 
@@ -119,7 +119,7 @@
                 <p>यो बटनमा थिचेर मैले माथि छाने आनुसार  मतदान गरेको साचो हो। मैले बिद्दुतिय नियम हरुलाई पलना गरेर आफ्नो मत जाहेर गरेर मतदान गरेको कुरा स्विकार्छु। </p> 
              
                    <button type="submit" 
-                     class="mx-2 my-4 px-2 py-6 rounded-lg bg-blue-300 w-full mx-auto shadow-xs text-xl font-bold text-gray-900">
+                     class="mx-2 my-4 px-2 py-6 rounded-lg bg-primary-300 w-full mx-auto shadow-xs text-xl font-bold text-neutral-900">
                    Submit
                    </button>
               

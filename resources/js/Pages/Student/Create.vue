@@ -7,11 +7,11 @@
     </Head> -->
         <div class="min-h-screen w-full px-2">
             <div class="mt-2 mb-2 flex flex-col items-center py-2">
-                <p class="mx-auto mb-2 text-xl font-bold text-gray-900">
+                <p class="mx-auto mb-2 text-xl font-bold text-neutral-900">
                     निशुल्क आइटीकक्षामा एक्सेल फर बिजनेस
                 </p>
                 <div
-                    class="mb-2 border border-green-50 bg-blue-50 p-3 text-gray-900 shadow-md md:p-4"
+                    class="mb-2 border border-green-50 bg-primary-50 p-3 text-neutral-900 shadow-md md:p-4"
                 >
                     <p>
                         <b>अभिवावक सहितको पहिलो भेटघाटः</b> २९ जनवरी २०२२ शनिवार
@@ -45,7 +45,7 @@
                         >First name</label
                     >
                     <jet-input
-                        class="w-full border border-blue-100 bg-green-50 py-2 focus:ring-indigo-300 md:mx-2 md:w-2/3"
+                        class="w-full border border-primary-100 bg-green-50 py-2 focus:ring-indigo-300 md:mx-2 md:w-2/3"
                         id="first_name"
                         type="text"
                         v-model="form.first_name"
@@ -58,7 +58,7 @@
                         >Last name</label
                     >
                     <jet-input
-                        class="w-full border border-blue-100 bg-green-50 py-2 focus:ring-indigo-300 md:mx-2 md:w-2/3"
+                        class="w-full border border-primary-100 bg-green-50 py-2 focus:ring-indigo-300 md:mx-2 md:w-2/3"
                         id="last_name"
                         type="text"
                         v-model="form.last_name"
@@ -71,7 +71,7 @@
                         >Child's full name</label
                     >
                     <jet-input
-                        class="w-full border border-blue-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
+                        class="w-full border border-primary-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
                         id="child_name"
                         type="text"
                         v-model="form.child_name"
@@ -84,7 +84,7 @@
                         >Child's grade</label
                     >
                     <jet-input
-                        class="w-full border border-blue-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
+                        class="w-full border border-primary-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
                         id="child_grade"
                         type="text"
                         v-model="form.child_grade"
@@ -97,7 +97,7 @@
                         Child's birth year</label
                     >
                     <jet-input
-                        class="w-full border border-blue-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
+                        class="w-full border border-primary-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
                         id="birth_year"
                         type="month"
                         v-model="form.birth_year"
@@ -110,7 +110,7 @@
                         >Child can Speak</label
                     >
                     <jet-input
-                        class="w-full border border-blue-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
+                        class="w-full border border-primary-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
                         id="child_language"
                         placeholder="Nepali, English, German"
                         type="text"
@@ -122,7 +122,7 @@
                 <div class="mb-2 flex w-full w-full flex-col md:flex-row">
                     <label class="w-full md:w-1/3" for="city">City</label>
                     <jet-input
-                        class="w-full border border-blue-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
+                        class="w-full border border-primary-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
                         id="city"
                         placeholder=""
                         type="text"
@@ -134,7 +134,7 @@
                 <div class="mb-2 flex w-full w-full flex-col md:flex-row">
                     <label class="w-full md:w-1/3" for="country">Country</label>
                     <jet-input
-                        class="w-full border border-blue-100 bg-green-50 py-2 focus:ring-indigo-300 md:mx-2 md:w-2/3"
+                        class="w-full border border-primary-100 bg-green-50 py-2 focus:ring-indigo-300 md:mx-2 md:w-2/3"
                         id="country"
                         placeholder=""
                         type="text"
@@ -146,7 +146,7 @@
                 <div class="mb-2 flex w-full w-full flex-col md:flex-row">
                     <label class="w-full md:w-1/3" for="email">Email</label>
                     <jet-input
-                        class="w-full border border-blue-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
+                        class="w-full border border-primary-100 bg-green-50 py-2 md:mx-2 md:w-2/3"
                         id="email"
                         type="email"
                         placeholder="roshyara@gmail.com"
@@ -160,7 +160,7 @@
                         >Telephone</label
                     >
                     <jet-input
-                        class="w-full border border-blue-100 bg-green-50 py-2 focus:ring-indigo-300 md:mx-2 md:w-2/3"
+                        class="w-full border border-primary-100 bg-green-50 py-2 focus:ring-indigo-300 md:mx-2 md:w-2/3"
                         id="telephone"
                         placeholder="+4915164322589"
                         type="text"
@@ -177,7 +177,7 @@
                         id="about"
                         name="about"
                         rows="3"
-                        class="mt-1 block w-full w-full rounded-md border border-gray-300 bg-green-50 shadow-xs focus:border-indigo-300 focus:ring-indigo-300 sm:text-sm md:w-2/3"
+                        class="mt-1 block w-full w-full rounded-md border border-neutral-300 bg-green-50 shadow-xs focus:border-indigo-300 focus:ring-indigo-300 sm:text-sm md:w-2/3"
                         required
                         v-model="form.about"
                         placeholder="Please write what you except from the class. तपाइले यो आइटी कक्षा वाट के अपेक्षा गर्नु भाको छ र हामीलाइ के सुझाव दिन चाहनु हुन्छ? "
@@ -280,3 +280,4 @@ export default {
     },
 };
 </script>
+

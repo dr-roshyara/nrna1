@@ -1,6 +1,6 @@
 <template>
   <article
-    class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden"
+    class="bg-white dark:bg-neutral-800 rounded-lg shadow-md overflow-hidden"
     :aria-labelledby="`post-title-${post.post_id}`"
   >
     <!-- Header with gradient -->
@@ -35,23 +35,23 @@
         <div
           v-for="(candidate, index) in final_result.candidates"
           :key="candidate.candidacy_id"
-          class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border-l-4 border-indigo-600"
+          class="bg-neutral-50 dark:bg-neutral-700 rounded-lg p-4 border-l-4 border-indigo-600"
         >
           <div class="flex justify-between items-start mb-3">
             <div>
-              <span class="text-xs font-semibold text-gray-500 dark:text-gray-400">{{ $t('pages.demo-result.candidate.rank') }} #{{ index + 1 }}</span>
-              <p class="font-semibold text-gray-900 dark:text-white text-sm mt-1">{{ candidate.name }}</p>
+              <span class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">{{ $t('pages.demo-result.candidate.rank') }} #{{ index + 1 }}</span>
+              <p class="font-semibold text-neutral-900 dark:text-white text-sm mt-1">{{ candidate.name }}</p>
             </div>
             <span class="text-indigo-600 dark:text-indigo-400 font-bold">{{ candidate.vote_percent }}%</span>
           </div>
 
           <!-- Progress Bar -->
           <div class="space-y-2">
-            <div class="flex justify-between text-xs text-gray-600 dark:text-gray-300">
+            <div class="flex justify-between text-xs text-neutral-600 dark:text-neutral-300">
               <span>{{ candidate.vote_count }} {{ $t('pages.demo-result.candidate.votes') }}</span>
               <span>{{ final_result.total_votes_for_post }} {{ $t('pages.demo-result.stats.total_votes') }}</span>
             </div>
-            <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5 overflow-hidden">
+            <div class="w-full bg-neutral-200 dark:bg-neutral-600 rounded-full h-2.5 overflow-hidden">
               <div
                 class="bg-gradient-to-r from-indigo-500 to-purple-600 h-2.5 rounded-full transition-all duration-300"
                 :style="{ width: `${candidate.vote_percent}%` }"
@@ -66,12 +66,12 @@
         </div>
 
         <!-- No votes card -->
-        <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-4 border-l-4 border-red-400">
+        <div class="bg-danger-50 dark:bg-danger-900/20 rounded-lg p-4 border-l-4 border-danger-400">
           <div class="flex justify-between items-start">
-            <p class="font-semibold text-red-600 dark:text-red-400 text-sm">{{ $t('pages.demo-result.candidate.abstentions') }}</p>
-            <span class="text-red-600 dark:text-red-400 font-bold text-sm">{{ noVotePercent }}%</span>
+            <p class="font-semibold text-danger-600 dark:text-danger-400 text-sm">{{ $t('pages.demo-result.candidate.abstentions') }}</p>
+            <span class="text-danger-600 dark:text-danger-400 font-bold text-sm">{{ noVotePercent }}%</span>
           </div>
-          <p class="text-xs text-red-500 dark:text-red-400 mt-1">
+          <p class="text-xs text-danger-500 dark:text-danger-400 mt-1">
             {{ $t('pages.demo-result.candidate.voters_abstained', { count: final_result.no_vote_count || 0 }) }}
           </p>
         </div>
@@ -80,45 +80,45 @@
       <!-- Desktop: Table View -->
       <div class="hidden sm:block overflow-x-auto">
         <table class="min-w-full">
-          <thead class="bg-gray-50 dark:bg-gray-700 sticky top-0">
+          <thead class="bg-neutral-50 dark:bg-neutral-700 sticky top-0">
             <tr>
-              <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+              <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-neutral-700 dark:text-neutral-300 uppercase tracking-wider">
                 {{ $t('pages.demo-result.candidate.rank') }}
               </th>
-              <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+              <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-neutral-700 dark:text-neutral-300 uppercase tracking-wider">
                 {{ $t('pages.demo-result.candidate.candidate') }}
               </th>
-              <th scope="col" class="px-4 py-3 text-right text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+              <th scope="col" class="px-4 py-3 text-right text-xs font-medium text-neutral-700 dark:text-neutral-300 uppercase tracking-wider">
                 {{ $t('pages.demo-result.candidate.votes') }}
               </th>
-              <th scope="col" class="px-4 py-3 text-right text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+              <th scope="col" class="px-4 py-3 text-right text-xs font-medium text-neutral-700 dark:text-neutral-300 uppercase tracking-wider">
                 {{ $t('pages.demo-result.candidate.percentage') }}
               </th>
-              <th scope="col" class="px-4 py-3 text-right text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+              <th scope="col" class="px-4 py-3 text-right text-xs font-medium text-neutral-700 dark:text-neutral-300 uppercase tracking-wider">
                 {{ $t('pages.demo-result.candidate.trend') }}
               </th>
             </tr>
           </thead>
-          <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+          <tbody class="bg-white dark:bg-neutral-800 divide-y divide-gray-200 dark:divide-gray-700">
             <tr
               v-for="(candidate, index) in final_result.candidates"
               :key="candidate.candidacy_id"
-              class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              class="hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors"
             >
-              <td class="px-4 py-4 whitespace-nowrap text-sm font-bold text-gray-900 dark:text-white">
+              <td class="px-4 py-4 whitespace-nowrap text-sm font-bold text-neutral-900 dark:text-white">
                 #{{ index + 1 }}
               </td>
-              <td class="px-4 py-4 text-sm text-gray-900 dark:text-white font-medium">
+              <td class="px-4 py-4 text-sm text-neutral-900 dark:text-white font-medium">
                 {{ candidate.name }}
               </td>
-              <td class="px-4 py-4 whitespace-nowrap text-sm text-right text-gray-600 dark:text-gray-300">
+              <td class="px-4 py-4 whitespace-nowrap text-sm text-right text-neutral-600 dark:text-neutral-300">
                 {{ candidate.vote_count }}
               </td>
               <td class="px-4 py-4 whitespace-nowrap text-sm text-right font-bold text-indigo-600 dark:text-indigo-400">
                 {{ candidate.vote_percent }}%
               </td>
               <td class="px-4 py-4 whitespace-nowrap">
-                <div class="w-12 h-6 bg-gray-100 dark:bg-gray-700 rounded-sm inline-flex items-center justify-center overflow-hidden">
+                <div class="w-12 h-6 bg-neutral-100 dark:bg-neutral-700 rounded-sm inline-flex items-center justify-center overflow-hidden">
                   <div
                     class="bg-indigo-600 h-full"
                     :style="{ width: `${Math.min(candidate.vote_percent * 2, 100)}%` }"
@@ -128,14 +128,14 @@
             </tr>
 
             <!-- Abstentions row -->
-            <tr class="bg-red-50 dark:bg-red-900/20 font-semibold">
-              <td colspan="2" class="px-4 py-4 text-sm text-red-600 dark:text-red-400">
+            <tr class="bg-danger-50 dark:bg-danger-900/20 font-semibold">
+              <td colspan="2" class="px-4 py-4 text-sm text-danger-600 dark:text-danger-400">
                 {{ $t('pages.demo-result.candidate.abstentions') }}
               </td>
-              <td class="px-4 py-4 text-right text-sm text-red-600 dark:text-red-400">
+              <td class="px-4 py-4 text-right text-sm text-danger-600 dark:text-danger-400">
                 {{ final_result.no_vote_count || 0 }}
               </td>
-              <td class="px-4 py-4 text-right text-sm text-red-600 dark:text-red-400">
+              <td class="px-4 py-4 text-right text-sm text-danger-600 dark:text-danger-400">
                 {{ noVotePercent }}%
               </td>
               <td></td>
@@ -145,22 +145,22 @@
       </div>
 
       <!-- Summary Stats -->
-      <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <div class="mt-6 pt-6 border-t border-neutral-200 dark:border-neutral-700 grid grid-cols-2 sm:grid-cols-3 gap-4">
         <div class="text-center">
-          <p class="text-xs text-gray-600 dark:text-gray-400 uppercase tracking-wide">{{ $t('pages.demo-result.candidate.total_votes') }}</p>
-          <p class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mt-1">
+          <p class="text-xs text-neutral-600 dark:text-neutral-400 uppercase tracking-wide">{{ $t('pages.demo-result.candidate.total_votes') }}</p>
+          <p class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mt-1">
             {{ final_result.total_votes_for_post }}
           </p>
         </div>
         <div class="text-center">
-          <p class="text-xs text-gray-600 dark:text-gray-400 uppercase tracking-wide">{{ $t('pages.demo-result.candidate.candidates') }}</p>
-          <p class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mt-1">
+          <p class="text-xs text-neutral-600 dark:text-neutral-400 uppercase tracking-wide">{{ $t('pages.demo-result.candidate.candidates') }}</p>
+          <p class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mt-1">
             {{ final_result.candidates.length }}
           </p>
         </div>
         <div v-if="post.required_number" class="text-center">
-          <p class="text-xs text-gray-600 dark:text-gray-400 uppercase tracking-wide">{{ $t('pages.demo-result.candidate.to_select') }}</p>
-          <p class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mt-1">
+          <p class="text-xs text-neutral-600 dark:text-neutral-400 uppercase tracking-wide">{{ $t('pages.demo-result.candidate.to_select') }}</p>
+          <p class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mt-1">
             {{ post.required_number }}
           </p>
         </div>
@@ -208,3 +208,4 @@ div[role="progressbar"] {
   ::-webkit-scrollbar-thumb  { background: #cbd5e1; border-radius: 2px; }
 }
 </style>
+

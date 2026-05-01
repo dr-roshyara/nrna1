@@ -6,7 +6,7 @@
       <!-- Administration Phase -->
       <div class="border-b border-slate-200 pb-6">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
+          <div class="w-10 h-10 rounded-xl bg-primary-100 flex items-center justify-center">
             <span class="text-xl">⚙️</span>
           </div>
           <div>
@@ -21,9 +21,9 @@
             <input
               type="datetime-local"
               v-model="form.administration_suggested_start"
-              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-primary-500"
             />
-            <p v-if="errors.administration_suggested_start" class="text-red-500 text-sm mt-1">
+            <p v-if="errors.administration_suggested_start" class="text-danger-500 text-sm mt-1">
               {{ errors.administration_suggested_start }}
             </p>
           </div>
@@ -32,9 +32,9 @@
             <input
               type="datetime-local"
               v-model="form.administration_suggested_end"
-              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-primary-500"
             />
-            <p v-if="errors.administration_suggested_end" class="text-red-500 text-sm mt-1">
+            <p v-if="errors.administration_suggested_end" class="text-danger-500 text-sm mt-1">
               {{ errors.administration_suggested_end }}
             </p>
           </div>
@@ -59,9 +59,9 @@
             <input
               type="datetime-local"
               v-model="form.nomination_suggested_start"
-              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-primary-500"
             />
-            <p v-if="errors.nomination_suggested_start" class="text-red-500 text-sm mt-1">
+            <p v-if="errors.nomination_suggested_start" class="text-danger-500 text-sm mt-1">
               {{ errors.nomination_suggested_start }}
             </p>
           </div>
@@ -70,9 +70,9 @@
             <input
               type="datetime-local"
               v-model="form.nomination_suggested_end"
-              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-primary-500"
             />
-            <p v-if="errors.nomination_suggested_end" class="text-red-500 text-sm mt-1">
+            <p v-if="errors.nomination_suggested_end" class="text-danger-500 text-sm mt-1">
               {{ errors.nomination_suggested_end }}
             </p>
           </div>
@@ -97,9 +97,9 @@
             <input
               type="datetime-local"
               v-model="form.voting_starts_at"
-              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-primary-500"
             />
-            <p v-if="errors.voting_starts_at" class="text-red-500 text-sm mt-1">
+            <p v-if="errors.voting_starts_at" class="text-danger-500 text-sm mt-1">
               {{ errors.voting_starts_at }}
             </p>
           </div>
@@ -108,9 +108,9 @@
             <input
               type="datetime-local"
               v-model="form.voting_ends_at"
-              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-primary-500"
             />
-            <p v-if="errors.voting_ends_at" class="text-red-500 text-sm mt-1">
+            <p v-if="errors.voting_ends_at" class="text-danger-500 text-sm mt-1">
               {{ errors.voting_ends_at }}
             </p>
           </div>
@@ -135,10 +135,10 @@
             <input
               type="datetime-local"
               v-model="form.results_published_at"
-              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-primary-500"
             />
             <p class="text-xs text-slate-500 mt-1">Leave empty to publish manually</p>
-            <p v-if="errors.results_published_at" class="text-red-500 text-sm mt-1">
+            <p v-if="errors.results_published_at" class="text-danger-500 text-sm mt-1">
               {{ errors.results_published_at }}
             </p>
           </div>
@@ -169,7 +169,7 @@
             </div>
             <label class="relative inline-flex items-center cursor-pointer">
               <input type="checkbox" v-model="form.allow_auto_transition" class="sr-only peer">
-              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+              <div class="w-11 h-6 bg-neutral-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
             </label>
           </div>
 
@@ -184,7 +184,7 @@
               class="w-full border border-slate-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             />
             <p class="text-xs text-slate-500 mt-1">Days after suggested end date before auto-transition (0-30)</p>
-            <p v-if="errors.auto_transition_grace_days" class="text-red-500 text-sm mt-1">
+            <p v-if="errors.auto_transition_grace_days" class="text-danger-500 text-sm mt-1">
               {{ errors.auto_transition_grace_days }}
             </p>
           </div>
@@ -196,7 +196,7 @@
         <button
           type="submit"
           :disabled="isSaving"
-          class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2 transition-colors"
+          class="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 flex items-center gap-2 transition-colors"
         >
           <svg
             v-if="isSaving"
@@ -318,3 +318,4 @@ const saveTimeline = () => {
   )
 }
 </script>
+

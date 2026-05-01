@@ -43,6 +43,7 @@ const variantMap = {
   ghost:     'hover:bg-neutral-100 text-neutral-700 focus:ring-neutral-400',
   danger:    'bg-danger-600    hover:bg-danger-700    text-white shadow-sm focus:ring-danger-500',
   accent:    'bg-accent-600    hover:bg-accent-700    text-white shadow-sm focus:ring-accent-500',
+  warning:   'bg-accent-600    hover:bg-accent-700    text-white shadow-sm focus:ring-accent-500',
   success:   'bg-success-600   hover:bg-success-700   text-white shadow-sm focus:ring-success-500',
 }
 

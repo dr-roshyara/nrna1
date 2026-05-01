@@ -1,9 +1,9 @@
 <template>
    <div  v-if ="post.candidates.length"
-        class="flex flex-col border border-3 border-blue-600 mx-2 py-4 px-6 bg-gray-50 shadow-md my-4">      
-          <div class="flex flex-col text-xl font-bold text-gray-900 mx-auto text-center justify-center">
-                      <label> Please choose <span>   {{post.required_number}} </span>   Candidate as the <span class="text-gray-900 font-bold"> {{post.name}} </span>. </label> 
-                      <label class="p-2"> कृपया <span>   {{post.required_number}} </span> जना लाई  <span class="text-gray-900 font-bold"> {{get_nepali_name(post.post_id)}} </span> चुन्नुहोस ।  </label>   
+        class="flex flex-col border border-3 border-primary-600 mx-2 py-4 px-6 bg-neutral-50 shadow-md my-4">      
+          <div class="flex flex-col text-xl font-bold text-neutral-900 mx-auto text-center justify-center">
+                      <label> Please choose <span>   {{post.required_number}} </span>   Candidate as the <span class="text-neutral-900 font-bold"> {{post.name}} </span>. </label> 
+                      <label class="p-2"> कृपया <span>   {{post.required_number}} </span> जना लाई  <span class="text-neutral-900 font-bold"> {{get_nepali_name(post.post_id)}} </span> चुन्नुहोस ।  </label>   
           </div>  
    
        <!-- Display the candidates here  -->
@@ -13,7 +13,7 @@
                 <!-- {{post.candidates}} -->
             <div  v-for="(candidate, candiIndx) in post.candidates" :key="candiIndx"  
                 class="flex flex-col justify-center p-4 mb-2 text-center  
-                border border-gray-100 rounded"> 
+                border border-neutral-100 rounded"> 
                
                     <!-- {{disabledVec}} -->
 
@@ -30,7 +30,7 @@
                             :id       ="candidate.candidacy_id"
                             :name     ="post.name"
                             :value    ="candidate.candidacy_id"  
-                            class     ="p-6 rounded border-gray-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 
+                            class     ="p-6 rounded border-neutral-900 border-2 text-indigo-600 shadow-xs focus:border-indigo-300 
                                 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                             v-model= "selectedVec"                           
                             :disabled  ="disabledVec[candiIndx]"
@@ -57,7 +57,7 @@
             <p>     You have selected 
                 <span class="font-bold text-indigo-600"> 
                           {{find_selected_name(this.post.candidates,this.selectedVec)}} </span> 
-                    as <span class="font-bold text-lg text-gray-900"> 
+                    as <span class="font-bold text-lg text-neutral-900"> 
                         {{post.name}} 
                     </span>  of NRNA !
                 </p>

@@ -1,18 +1,18 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="min-h-screen bg-neutral-50">
     <!-- Breadcrumb Schema for SEO -->
 
     <!-- Header -->
     <PublicDigitHeader />
 
     <!-- Hero Section -->
-    <section class="bg-white border-b border-gray-200">
+    <section class="bg-white border-b border-neutral-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div class="text-center">
-          <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h1 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-4">
             {{ faqTitle }}
           </h1>
-          <p class="text-xl text-gray-600">
+          <p class="text-xl text-neutral-600">
             {{ faqSubtitle }}
           </p>
         </div>
@@ -20,21 +20,21 @@
     </section>
 
     <!-- Search Section -->
-    <section class="py-8 bg-white border-b border-gray-200">
+    <section class="py-8 bg-white border-b border-neutral-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl mx-auto">
           <input
             v-model="searchQuery"
             type="text"
             :placeholder="$t('common.search')"
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
       </div>
     </section>
 
     <!-- Category Filter -->
-    <section class="py-8 bg-gray-50">
+    <section class="py-8 bg-neutral-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap gap-2 justify-center">
           <button
@@ -42,8 +42,8 @@
             :class="[
               'px-4 py-2 rounded-full font-semibold transition',
               selectedCategory === null
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-700 border border-gray-300 hover:border-blue-500'
+                ? 'bg-primary-600 text-white'
+                : 'bg-white text-neutral-700 border border-neutral-300 hover:border-primary-500'
             ]"
           >
             All Categories
@@ -55,8 +55,8 @@
             :class="[
               'px-4 py-2 rounded-full font-semibold transition',
               selectedCategory === category
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-700 border border-gray-300 hover:border-blue-500'
+                ? 'bg-primary-600 text-white'
+                : 'bg-white text-neutral-700 border border-neutral-300 hover:border-primary-500'
             ]"
           >
             {{ category }}
@@ -73,7 +73,7 @@
           v-if="filteredQuestions.length === 0"
           class="text-center py-12"
         >
-          <p class="text-gray-600 text-lg">
+          <p class="text-neutral-600 text-lg">
             No questions found matching your search or filter.
           </p>
         </div>
@@ -83,29 +83,29 @@
           <div
             v-for="(item, index) in filteredQuestions"
             :key="item.id"
-            class="border border-gray-200 rounded-lg overflow-hidden bg-white hover:shadow-md transition"
+            class="border border-neutral-200 rounded-lg overflow-hidden bg-white hover:shadow-md transition"
           >
             <!-- Question Button -->
             <button
               @click="toggleItem(item.id)"
-              class="w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-gray-50 transition text-left"
+              class="w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-neutral-50 transition text-left"
             >
               <div class="flex items-start gap-4">
-                <span class="text-blue-600 font-bold text-lg shrink-0">
+                <span class="text-primary-600 font-bold text-lg shrink-0">
                   Q{{ index + 1 }}
                 </span>
                 <div>
-                  <h3 class="text-lg font-semibold text-gray-900">
+                  <h3 class="text-lg font-semibold text-neutral-900">
                     {{ item.question }}
                   </h3>
-                  <span class="text-sm text-gray-500 mt-1 inline-block">
+                  <span class="text-sm text-neutral-500 mt-1 inline-block">
                     {{ item.category }}
                   </span>
                 </div>
               </div>
               <svg
                 :class="[
-                  'h-6 w-6 text-gray-500 shrink-0 transition transform',
+                  'h-6 w-6 text-neutral-500 shrink-0 transition transform',
                   expandedItems.includes(item.id) ? 'rotate-180' : ''
                 ]"
                 fill="none"
@@ -124,9 +124,9 @@
             <!-- Answer Content -->
             <div
               v-show="expandedItems.includes(item.id)"
-              class="px-6 py-4 bg-gray-50 border-t border-gray-200"
+              class="px-6 py-4 bg-neutral-50 border-t border-neutral-200"
             >
-              <p class="text-gray-700 leading-relaxed">
+              <p class="text-neutral-700 leading-relaxed">
                 {{ item.answer }}
               </p>
             </div>
@@ -136,17 +136,17 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 sm:py-24 bg-blue-600">
+    <section class="py-16 sm:py-24 bg-primary-600">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-bold text-white mb-4">
           {{ $t('cta.schedule_demo') }}
         </h2>
-        <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
           Still have questions? Our team is ready to help you get started with secure digital voting.
         </p>
         <a
           :href="`mailto:${supportEmail}`"
-          class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition"
+          class="inline-flex items-center px-6 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-neutral-100 transition"
         >
           {{ supportEmail }}
         </a>
@@ -292,3 +292,4 @@ export default {
   transition: all 0.2s ease-in-out;
 }
 </style>
+

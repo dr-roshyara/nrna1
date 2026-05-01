@@ -88,7 +88,7 @@
                 <WorkflowStepIndicator :currentStep="3" class="mb-10 max-w-4xl mx-auto" />
 
                 <!-- ── Election Constraint Hint ── -->
-                <div v-if="election" class="constraint-hint mb-6 p-4 bg-blue-50 border-l-4 border-blue-400 rounded max-w-4xl mx-auto">
+                <div v-if="election" class="constraint-hint mb-6 p-4 bg-primary-50 border-l-4 border-primary-400 rounded max-w-4xl mx-auto">
                     <template v-if="election.selection_constraint_type === 'exact'">
                         ⚠️ You must select exactly {{ election.selection_constraint_max }} candidate(s) per post.
                     </template>
@@ -696,3 +696,4 @@ export default {
     to   { opacity: 1; transform: translateY(0); }
 }
 </style>
+

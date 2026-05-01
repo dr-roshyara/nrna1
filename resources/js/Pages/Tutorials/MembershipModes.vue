@@ -32,7 +32,7 @@ const activeSection = ref('overview')
       <header class="relative bg-slate-900 text-white overflow-hidden py-20 md:py-32">
         <!-- Decorative background elements -->
         <div class="absolute inset-0 opacity-5">
-          <div class="absolute top-0 right-0 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+          <div class="absolute top-0 right-0 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
           <div class="absolute bottom-0 left-0 w-72 h-72 bg-teal-400 rounded-full blur-3xl"></div>
         </div>
 
@@ -57,7 +57,7 @@ const activeSection = ref('overview')
             <div class="hidden lg:flex justify-end items-center">
               <div class="relative w-full h-full min-h-96">
                 <!-- Geometric shapes representing the two modes -->
-                <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-500/20 to-blue-600/10 rounded-2xl border border-blue-400/30 backdrop-blur-sm" style="animation: float 6s ease-in-out infinite;"></div>
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-500/20 to-blue-600/10 rounded-2xl border border-primary-400/30 backdrop-blur-sm" style="animation: float 6s ease-in-out infinite;"></div>
                 <div class="absolute bottom-8 right-32 w-48 h-48 bg-gradient-to-br from-teal-500/20 to-teal-600/10 rounded-2xl border border-teal-400/30 backdrop-blur-sm" style="animation: float 8s ease-in-out infinite; animation-delay: 1s;"></div>
                 <div class="absolute top-1/2 right-12 w-32 h-32 border-2 border-slate-600/50 rounded-full" style="animation: rotate 20s linear infinite;"></div>
               </div>
@@ -114,18 +114,18 @@ const activeSection = ref('overview')
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <!-- Full Membership Card -->
-                <div class="p-6 bg-blue-50 border-2 border-blue-200 rounded-xl">
+                <div class="p-6 bg-primary-50 border-2 border-primary-200 rounded-xl">
                   <div class="flex items-center gap-3 mb-4">
                     <div class="flex-shrink-0">
-                      <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-200">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-primary-200">
+                        <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
                     </div>
-                    <h3 class="text-xl font-bold text-blue-900">Full Membership</h3>
+                    <h3 class="text-xl font-bold text-primary-900">Full Membership</h3>
                   </div>
-                  <p class="text-blue-800">Formal member tracking with fees, membership types, and expiration dates</p>
+                  <p class="text-primary-800">Formal member tracking with fees, membership types, and expiration dates</p>
                 </div>
 
                 <!-- Election-Only Card -->
@@ -150,7 +150,7 @@ const activeSection = ref('overview')
                 <div class="space-y-3 text-slate-700">
                   <p><strong>❓ Do you track formal memberships?</strong></p>
                   <div class="pl-6 space-y-2">
-                    <p><strong>✅ YES</strong> → Choose <span class="text-blue-600 font-semibold">"Full Membership"</span></p>
+                    <p><strong>✅ YES</strong> → Choose <span class="text-primary-600 font-semibold">"Full Membership"</span></p>
                     <ul class="text-sm text-slate-600 space-y-1 pl-4">
                       <li>• Voters must be members</li>
                       <li>• Track fees and membership types</li>
@@ -178,28 +178,28 @@ const activeSection = ref('overview')
 
               <h3 class="text-2xl font-bold text-slate-900 mb-4">User Journey</h3>
               <div class="space-y-3 mb-8">
-                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-blue-500 rounded">
-                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-700 font-bold">1</span></div>
+                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-primary-500 rounded">
+                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary-100 text-primary-700 font-bold">1</span></div>
                   <div><p class="font-semibold text-slate-900">Create Organisation</p><p class="text-sm text-slate-600">Select "Full Membership" mode</p></div>
                 </div>
-                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-blue-500 rounded">
-                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-700 font-bold">2</span></div>
+                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-primary-500 rounded">
+                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary-100 text-primary-700 font-bold">2</span></div>
                   <div><p class="font-semibold text-slate-900">Add Members</p><p class="text-sm text-slate-600">Add member records manually or via application</p></div>
                 </div>
-                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-blue-500 rounded">
-                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-700 font-bold">3</span></div>
+                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-primary-500 rounded">
+                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary-100 text-primary-700 font-bold">3</span></div>
                   <div><p class="font-semibold text-slate-900">Mark Fees as Paid</p><p class="text-sm text-slate-600">Update member fee status (paid/exempt)</p></div>
                 </div>
-                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-blue-500 rounded">
-                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-700 font-bold">4</span></div>
+                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-primary-500 rounded">
+                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary-100 text-primary-700 font-bold">4</span></div>
                   <div><p class="font-semibold text-slate-900">Create Election</p><p class="text-sm text-slate-600">Set up election and configuration</p></div>
                 </div>
-                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-blue-500 rounded">
-                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-700 font-bold">5</span></div>
+                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-primary-500 rounded">
+                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary-100 text-primary-700 font-bold">5</span></div>
                   <div><p class="font-semibold text-slate-900">Assign Voters</p><p class="text-sm text-slate-600">Only paid members appear in dropdown</p></div>
                 </div>
-                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-blue-500 rounded">
-                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-700 font-bold">6</span></div>
+                <div class="flex gap-4 p-4 bg-slate-50 border-l-4 border-primary-500 rounded">
+                  <div class="flex-shrink-0"><span class="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary-100 text-primary-700 font-bold">6</span></div>
                   <div><p class="font-semibold text-slate-900">Voting</p><p class="text-sm text-slate-600">Only assigned, paid members can vote</p></div>
                 </div>
               </div>
@@ -208,23 +208,23 @@ const activeSection = ref('overview')
               <div class="overflow-x-auto mb-8">
                 <table class="w-full text-sm border-collapse">
                   <thead>
-                    <tr class="bg-blue-100">
-                      <th class="border border-blue-300 px-4 py-2 text-left font-semibold text-blue-900">Scenario</th>
-                      <th class="border border-blue-300 px-4 py-2 text-left font-semibold text-blue-900">Why</th>
+                    <tr class="bg-primary-100">
+                      <th class="border border-primary-300 px-4 py-2 text-left font-semibold text-primary-900">Scenario</th>
+                      <th class="border border-primary-300 px-4 py-2 text-left font-semibold text-primary-900">Why</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="hover:bg-blue-50">
-                      <td class="border border-blue-200 px-4 py-2">Verein/Club with annual fees</td>
-                      <td class="border border-blue-200 px-4 py-2">Track paid members, only they can vote</td>
+                    <tr class="hover:bg-primary-50">
+                      <td class="border border-primary-200 px-4 py-2">Verein/Club with annual fees</td>
+                      <td class="border border-primary-200 px-4 py-2">Track paid members, only they can vote</td>
                     </tr>
-                    <tr class="hover:bg-blue-50">
-                      <td class="border border-blue-200 px-4 py-2">NGO with formal membership</td>
-                      <td class="border border-blue-200 px-4 py-2">Membership types, voting rights by tier</td>
+                    <tr class="hover:bg-primary-50">
+                      <td class="border border-primary-200 px-4 py-2">NGO with formal membership</td>
+                      <td class="border border-primary-200 px-4 py-2">Membership types, voting rights by tier</td>
                     </tr>
-                    <tr class="hover:bg-blue-50">
-                      <td class="border border-blue-200 px-4 py-2">Diaspora organisation</td>
-                      <td class="border border-blue-200 px-4 py-2">Verify members, fee collection</td>
+                    <tr class="hover:bg-primary-50">
+                      <td class="border border-primary-200 px-4 py-2">Diaspora organisation</td>
+                      <td class="border border-primary-200 px-4 py-2">Verify members, fee collection</td>
                     </tr>
                   </tbody>
                 </table>
@@ -298,7 +298,7 @@ const activeSection = ref('overview')
 
               <div class="mb-12">
                 <h3 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                  <span class="text-blue-600">Full Membership</span>
+                  <span class="text-primary-600">Full Membership</span>
                   <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                   <span class="text-emerald-600">Election-Only</span>
                 </h3>
@@ -313,7 +313,7 @@ const activeSection = ref('overview')
                   <div class="p-4 bg-slate-100 border-l-4 border-amber-500 rounded">
                     <p class="text-sm text-slate-700"><strong>⚠ Membership checks removed:</strong> Fees, membership types, and expiration dates are no longer checked</p>
                   </div>
-                  <div class="p-4 bg-slate-100 border-l-4 border-blue-500 rounded">
+                  <div class="p-4 bg-slate-100 border-l-4 border-primary-500 rounded">
                     <p class="text-sm text-slate-700"><strong>✓ Elections unaffected:</strong> Existing elections continue to work normally</p>
                   </div>
                 </div>
@@ -327,7 +327,7 @@ const activeSection = ref('overview')
                 <h3 class="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-3">
                   <span class="text-emerald-600">Election-Only</span>
                   <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                  <span class="text-blue-600">Full Membership</span>
+                  <span class="text-primary-600">Full Membership</span>
                 </h3>
 
                 <div class="space-y-3 mb-6">
@@ -337,7 +337,7 @@ const activeSection = ref('overview')
                   <div class="p-4 bg-slate-100 border-l-4 border-amber-500 rounded">
                     <p class="text-sm text-slate-700"><strong>⚠ Import members first:</strong> You'll need to import or create member records before elections can run</p>
                   </div>
-                  <div class="p-4 bg-slate-100 border-l-4 border-blue-500 rounded">
+                  <div class="p-4 bg-slate-100 border-l-4 border-primary-500 rounded">
                     <p class="text-sm text-slate-700"><strong>✓ Previous users not auto-imported:</strong> Users from Election-Only elections must be manually added as members</p>
                   </div>
                   <div class="p-4 bg-slate-100 border-l-4 border-green-500 rounded">
@@ -359,7 +359,7 @@ const activeSection = ref('overview')
                   <thead>
                     <tr class="bg-slate-200">
                       <th class="border border-slate-300 px-4 py-3 text-left font-bold text-slate-900">Feature</th>
-                      <th class="border border-slate-300 px-4 py-3 text-center font-bold text-blue-900 bg-blue-50">Full Membership</th>
+                      <th class="border border-slate-300 px-4 py-3 text-center font-bold text-primary-900 bg-primary-50">Full Membership</th>
                       <th class="border border-slate-300 px-4 py-3 text-center font-bold text-emerald-900 bg-emerald-50">Election-Only</th>
                     </tr>
                   </thead>
@@ -367,31 +367,31 @@ const activeSection = ref('overview')
                     <tr class="hover:bg-slate-50">
                       <td class="border border-slate-300 px-4 py-3 font-semibold text-slate-900">Member records required</td>
                       <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-700 font-bold text-xs">✓</span></td>
-                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-red-100 text-red-700 font-bold text-xs">✕</span></td>
+                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-danger-100 text-danger-700 font-bold text-xs">✕</span></td>
                     </tr>
                     <tr class="hover:bg-slate-50">
                       <td class="border border-slate-300 px-4 py-3 font-semibold text-slate-900">Fee tracking</td>
                       <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-700 font-bold text-xs">✓</span></td>
-                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-red-100 text-red-700 font-bold text-xs">✕</span></td>
+                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-danger-100 text-danger-700 font-bold text-xs">✕</span></td>
                     </tr>
                     <tr class="hover:bg-slate-50">
                       <td class="border border-slate-300 px-4 py-3 font-semibold text-slate-900">Membership types</td>
                       <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-700 font-bold text-xs">✓</span></td>
-                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-red-100 text-red-700 font-bold text-xs">✕</span></td>
+                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-danger-100 text-danger-700 font-bold text-xs">✕</span></td>
                     </tr>
                     <tr class="hover:bg-slate-50">
                       <td class="border border-slate-300 px-4 py-3 font-semibold text-slate-900">Expiration dates</td>
                       <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-700 font-bold text-xs">✓</span></td>
-                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-red-100 text-red-700 font-bold text-xs">✕</span></td>
+                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-danger-100 text-danger-700 font-bold text-xs">✕</span></td>
                     </tr>
                     <tr class="hover:bg-slate-50">
                       <td class="border border-slate-300 px-4 py-3 font-semibold text-slate-900">Quick setup</td>
-                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-red-100 text-red-700 font-bold text-xs">✕</span></td>
+                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-danger-100 text-danger-700 font-bold text-xs">✕</span></td>
                       <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-700 font-bold text-xs">✓</span></td>
                     </tr>
                     <tr class="hover:bg-slate-50">
                       <td class="border border-slate-300 px-4 py-3 font-semibold text-slate-900">Broad participation</td>
-                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-red-100 text-red-700 font-bold text-xs">✕</span></td>
+                      <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-danger-100 text-danger-700 font-bold text-xs">✕</span></td>
                       <td class="border border-slate-300 px-4 py-3 text-center"><span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-green-100 text-green-700 font-bold text-xs">✓</span></td>
                     </tr>
                   </tbody>
@@ -433,3 +433,4 @@ const activeSection = ref('overview')
   100% { transform: rotate(360deg); }
 }
 </style>
+

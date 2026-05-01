@@ -1,6 +1,6 @@
 <template>
   <article
-    class="group bg-white rounded-xl border border-slate-200 shadow-sm hover:border-blue-300 hover:shadow-md transition-all duration-200 flex flex-col overflow-hidden"
+    class="group bg-white rounded-xl border border-slate-200 shadow-sm hover:border-primary-300 hover:shadow-md transition-all duration-200 flex flex-col overflow-hidden"
     :aria-label="election.name"
   >
     <!-- Card Header -->
@@ -42,7 +42,7 @@
       <a
         v-if="canManage && !isReadonly"
         :href="`/elections/${election.slug}/management`"
-        class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-3 py-1.5 border border-blue-300 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+        class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-3 py-1.5 border border-primary-300 text-primary-600 rounded-lg hover:bg-primary-50 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
         :aria-label="`Manage ${election.name}`"
       >
         Manage
@@ -79,3 +79,4 @@ defineEmits(['activate'])
 
 const formatDate = (dateStr) => dateStr ? dateStr.slice(0, 10) : '—'
 </script>
+

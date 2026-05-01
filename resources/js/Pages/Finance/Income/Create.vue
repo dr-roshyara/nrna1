@@ -3,7 +3,7 @@
         <div class="mx-auto flex max-w-md flex-col sm:w-full">
             <jet-validation-errors class="mb-4" />
             <p
-                class="my-2 mx-auto p-2 text-center text-2xl font-bold text-gray-900"
+                class="my-2 mx-auto p-2 text-center text-2xl font-bold text-neutral-900"
             >
                 Income Formula
             </p>
@@ -12,13 +12,13 @@
                 <div class="mt-4">
                     <jet-label for="region" value="Region" />
                     <div
-                        class="rounded-md border-gray-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                        class="rounded-md border-neutral-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                     >
                         <select
                             name="region"
                             id="region"
                             v-model="form.region"
-                            class="focus:shadow-outline block w-full appearance-none rounded-sm border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-gray-500 focus:outline-none"
+                            class="focus:shadow-outline block w-full appearance-none rounded-sm border border-neutral-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-neutral-500 focus:outline-none"
                         >
                             <option>Europe</option>
                             <option>America</option>
@@ -29,7 +29,7 @@
                             <option>Oceania</option>
                         </select>
                         <div
-                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-neutral-700"
                         >
                             <svg
                                 class="h-4 w-4 fill-current"
@@ -63,13 +63,13 @@
                 <div class="mt-4">
                     <jet-label for="committee_name" value="Committee Name" />
                     <div
-                        class="rounded-md border-gray-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                        class="rounded-md border-neutral-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                     >
                         <select
                             name="committee_name"
                             id="committee_name"
                             v-model="form.committee_name"
-                            class="focus:shadow-outline block w-full appearance-none rounded-sm border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-gray-500 focus:outline-none"
+                            class="focus:shadow-outline block w-full appearance-none rounded-sm border border-neutral-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-neutral-500 focus:outline-none"
                         >
                             <option>ICC</option>
                             <option>NCC</option>
@@ -79,7 +79,7 @@
                             <option>LCC</option>
                         </select>
                         <div
-                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-neutral-700"
                         >
                             <svg
                                 class="h-4 w-4 fill-current"
@@ -123,7 +123,7 @@
                     <jet-input
                         id="membership_fee"
                         type="decimal"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.membership_fee"
                         required
                     />
@@ -134,7 +134,7 @@
                     <jet-input
                         id="nomination_fee"
                         type="decimal"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.nomination_fee"
                         required
                     />
@@ -145,7 +145,7 @@
                     <jet-input
                         id="sponser_fee"
                         type="decimal"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.sponser_fee"
                         required
                     />
@@ -156,7 +156,7 @@
                     <jet-input
                         id="donation"
                         type="decimal"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.donation"
                     />
                 </div>
@@ -167,7 +167,7 @@
                     <jet-input
                         id="levy"
                         type="levy"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.levy"
                     />
                 </div>
@@ -181,7 +181,7 @@
                     <jet-input
                         id="interest_income"
                         type="interest_income"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.interest_income"
                     />
                 </div>
@@ -191,7 +191,7 @@
                     <jet-input
                         id="event_fee"
                         type="event_fee"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.event_fee"
                     />
                 </div>
@@ -204,7 +204,7 @@
                     <jet-input
                         id="event_contribution"
                         type="event_contribution"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.event_contribution"
                     />
                 </div>
@@ -215,7 +215,7 @@
                     <jet-input
                         id="event_income"
                         type="event_income"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.event_income"
                     />
                 </div>
@@ -225,7 +225,7 @@
                     <jet-input
                         id="deligate_fee"
                         type="deligate_fee"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.deligate_fee"
                     />
                 </div>
@@ -239,7 +239,7 @@
                     <jet-input
                         id="deligate_contribution"
                         type="deligate_contribution"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.deligate_contribution"
                     />
                 </div>
@@ -252,7 +252,7 @@
                     <jet-input
                         id="business_income"
                         type="business_income"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.business_income"
                     />
                 </div>
@@ -262,7 +262,7 @@
                     <jet-input
                         id="other_incomes"
                         type="other_incomes"
-                        class="mt-1 block w-full border border-blue-100"
+                        class="mt-1 block w-full border border-primary-100"
                         v-model="form.other_incomes"
                     />
                 </div>
@@ -336,3 +336,4 @@ export default {
     },
 };
 </script>
+

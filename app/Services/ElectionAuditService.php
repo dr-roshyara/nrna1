@@ -66,6 +66,60 @@ class ElectionAuditService
     }
 
     /**
+     * Log a per-voter action to the voter's individual audit file.
+     * Creates the election folder and voters/ subfolder automatically.
+     */
+    public function logVoterAction(
+        Election $election,
+        User $voter,
+        int $step,
+        string $action,
+        array $metadata = []
+    ): void {
+        $folderPath = $this->getOrCreateAuditFolder($election);
+
+        $votersFolder = $folderPath . DIRECTORY_SEPARATOR . 'voters';
+        if (!is_dir($votersFolder)) {
+            File::makeDirectory($votersFolder, 0755, true, true);
+        }
+
+        $safeName = $this->sanitizeFileName($voter->name);
+
+        $entry = [
+            'step'         => $step,
+            'action'       => $action,
+            'election_id'  => $election->id,
+            'election_slug' => $election->slug,
+            'timestamp'    => now()->toIso8601String(),
+            'voter_id'     => $voter->id,
+            'voter_name'   => $voter->name,
+            'voter_email'  => $this->maskEmail($voter->email),
+            'ip'           => request()->ip(),
+            'user_agent'   => request()->userAgent(),
+            'metadata'     => $metadata,
+        ];
+
+        $this->appendToJsonlFile($votersFolder, $safeName . '.jsonl', $entry);
+    }
+
+    /**
+     * Sanitize a voter name into a safe filename (without extension).
+     */
+    private function sanitizeFileName(string $name): string
+    {
+        $safe = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
+        $safe = preg_replace('/[^a-zA-Z0-9]/', '_', $safe);
+        $safe = preg_replace('/_+/', '_', $safe);
+        $safe = trim($safe, '_');
+
+        if (empty($safe)) {
+            $safe = 'voter_' . substr(hash('sha256', $name), 0, 8);
+        }
+
+        return $safe;
+    }
+
+    /**
      * Get or create the audit folder for an election.
      * Folder format: {slug}_{YYYYMMDD}_{HHmm} using election.start_date
      */

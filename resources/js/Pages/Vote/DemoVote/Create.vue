@@ -15,7 +15,7 @@
                     <!-- Header with proper ARIA -->
                     <header class="text-center mb-12" role="banner">
                         <div class="inline-flex items-center gap-3 mb-4">
-                            <h1 class="text-4xl font-bold text-gray-900">{{ $t('pages.Vote.DemoVote.Create.page_header.title') }}</h1>
+                            <h1 class="text-4xl font-bold text-neutral-900">{{ $t('pages.Vote.DemoVote.Create.page_header.title') }}</h1>
                             <div
                                 class="bg-purple-700 text-white px-4 py-2 rounded-full font-semibold text-sm flex items-center gap-2"
                                 style="background-color: #6b21a5;"
@@ -24,8 +24,8 @@
                                 <span>{{ $t('pages.Vote.DemoVote.Create.page_header.badge') }}</span>
                             </div>
                         </div>
-                        <p class="text-xl text-gray-600 mb-4">{{ $t('pages.Vote.DemoVote.Create.page_header.welcome') }} {{ user_name }}!</p>
-                        <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full" aria-hidden="true"></div>
+                        <p class="text-xl text-neutral-600 mb-4">{{ $t('pages.Vote.DemoVote.Create.page_header.welcome') }} {{ user_name }}!</p>
+                        <div class="w-24 h-1 bg-primary-600 mx-auto rounded-full" aria-hidden="true"></div>
                     </header>
 
                     <!-- Voter Information Cards with Screen Reader Text -->
@@ -37,11 +37,11 @@
                                     <span class="text-green-600 text-2xl">👤</span>
                                 </div>
                                 <div class="text-left">
-                                    <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">
+                                    <p class="text-sm text-neutral-600 font-medium uppercase tracking-wide">
                                         <span class="sr-only">{{ $t('pages.Vote.DemoVote.Create.voter_info.current_voter') }}</span>
                                         {{ $t('pages.Vote.DemoVote.Create.voter_info.current_voter') }}
                                     </p>
-                                    <p class="font-bold text-gray-900 text-lg">
+                                    <p class="font-bold text-neutral-900 text-lg">
                                         {{ user_name }}
                                     </p>
                                 </div>
@@ -49,17 +49,17 @@
                         </div>
 
                         <!-- Election Card -->
-                        <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-blue-200">
+                        <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-primary-200">
                             <div class="flex items-center">
-                                <div class="bg-blue-100 p-3 rounded-lg mr-4 shrink-0" aria-hidden="true">
-                                    <span class="text-blue-600 text-2xl">📋</span>
+                                <div class="bg-primary-100 p-3 rounded-lg mr-4 shrink-0" aria-hidden="true">
+                                    <span class="text-primary-600 text-2xl">📋</span>
                                 </div>
                                 <div class="text-left">
-                                    <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">
+                                    <p class="text-sm text-neutral-600 font-medium uppercase tracking-wide">
                                         <span class="sr-only">{{ $t('pages.Vote.DemoVote.Create.voter_info.current_election') }}</span>
                                         {{ $t('pages.Vote.DemoVote.Create.voter_info.current_election') }}
                                     </p>
-                                    <p class="font-bold text-gray-900 text-lg">
+                                    <p class="font-bold text-neutral-900 text-lg">
                                         {{ election?.name || 'Demo Election' }}
                                     </p>
                                 </div>
@@ -78,8 +78,8 @@
                                     <span class="text-purple-600 text-2xl">📊</span>
                                 </div>
                                 <div class="text-left">
-                                    <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">{{ $t('pages.Vote.DemoVote.Create.voter_info.progress') }}</p>
-                                    <p class="font-bold text-gray-900 text-lg" aria-hidden="true">
+                                    <p class="text-sm text-neutral-600 font-medium uppercase tracking-wide">{{ $t('pages.Vote.DemoVote.Create.voter_info.progress') }}</p>
+                                    <p class="font-bold text-neutral-900 text-lg" aria-hidden="true">
                                         {{ votingProgress.completed }}/{{ votingProgress.total }}
                                     </p>
                                     <span class="sr-only">
@@ -118,7 +118,7 @@
                         class="mb-12"
                         aria-labelledby="national-posts-title"
                     >
-                        <h2 id="national-posts-title" class="text-3xl font-bold text-gray-900 text-center mb-8">
+                        <h2 id="national-posts-title" class="text-3xl font-bold text-neutral-900 text-center mb-8">
                             {{ $t('pages.Vote.DemoVote.Create.voting_section.national_posts') }}
                         </h2>
                         <div class="space-y-8">
@@ -126,7 +126,7 @@
                                 v-for="post in posts.national"
                                 :key="post.id"
                                 class="bg-white rounded-2xl shadow-lg border-2 overflow-hidden transition-all duration-200"
-                                :class="postsWithErrors.includes(post.name) ? 'border-red-500 ring-2 ring-red-300' : 'border-gray-200'"
+                                :class="postsWithErrors.includes(post.name) ? 'border-danger-500 ring-2 ring-red-300' : 'border-neutral-200'"
                                 :aria-labelledby="`post-title-${post.id}`"
                             >
                                 <!-- Post Header -->
@@ -136,7 +136,7 @@
                                             <h3 :id="`post-title-${post.id}`" class="text-2xl font-bold mb-1">
                                                 {{ post.name }}
                                             </h3>
-                                            <p v-if="$i18n.locale === 'np'" class="text-blue-100 text-sm opacity-90">
+                                            <p v-if="$i18n.locale === 'np'" class="text-primary-100 text-sm opacity-90">
                                                 {{ post.nepali_name || post.name }}
                                             </p>
                         
@@ -180,7 +180,7 @@
                                             <div
                                                 class="w-full bg-gradient-to-b from-gray-50 to-white border-2 rounded-xl overflow-hidden transition-all duration-200"
                                                 :class="[
-                                                    isSelected(post.id, candidate) ? 'border-blue-600 bg-blue-50' : 'border-gray-200',
+                                                    isSelected(post.id, candidate) ? 'border-primary-600 bg-primary-50' : 'border-neutral-200',
                                                     noVoteSelections[post.id] ? 'opacity-50' : ''
                                                 ]"
                                                 :aria-selected="isSelected(post.id, candidate)"
@@ -196,7 +196,7 @@
 
                                                 <!-- Candidate Photo -->
                                                 <div class="flex justify-center p-6 bg-white">
-                                                    <div class="w-32 h-32 rounded-lg overflow-hidden border-2 border-gray-200 bg-gray-100 flex items-center justify-center">
+                                                    <div class="w-32 h-32 rounded-lg overflow-hidden border-2 border-neutral-200 bg-neutral-100 flex items-center justify-center">
                                                         <img
                                                             v-if="candidate.image_path_1"
                                                             :src="getImageUrl(candidate.image_path_1)"
@@ -208,9 +208,9 @@
                                                 </div>
 
                                                 <!-- Candidate Info -->
-                                                <div class="p-4 text-center bg-white border-t-2 border-gray-100">
-                                                    <h4 class="font-bold text-gray-900">{{ candidate.candidacy_name }}</h4>
-                                                    <p class="text-xs text-gray-500 mt-1">Position #{{ candidate.position_order }}</p>
+                                                <div class="p-4 text-center bg-white border-t-2 border-neutral-100">
+                                                    <h4 class="font-bold text-neutral-900">{{ candidate.candidacy_name }}</h4>
+                                                    <p class="text-xs text-neutral-500 mt-1">Position #{{ candidate.position_order }}</p>
 
                                                     <!-- Selection Checkbox with Full Accessibility -->
                                                     <div class="mt-3">
@@ -226,11 +226,11 @@
                                                         />
                                                         <label
                                                             :for="`candidate-${candidate.id}`"
-                                                            class="flex items-center justify-center w-10 h-10 mx-auto bg-white border-2 border-gray-300 rounded-lg cursor-pointer
-                                                                   peer-checked:bg-blue-600 peer-checked:border-blue-600 peer-checked:text-white
-                                                                   peer-focus:ring-4 peer-focus:ring-blue-300 peer-focus:border-blue-500
+                                                            class="flex items-center justify-center w-10 h-10 mx-auto bg-white border-2 border-neutral-300 rounded-lg cursor-pointer
+                                                                   peer-checked:bg-primary-600 peer-checked:border-primary-600 peer-checked:text-white
+                                                                   peer-focus:ring-4 peer-focus:ring-blue-300 peer-focus:border-primary-500
                                                                    peer-disabled:opacity-50 peer-disabled:cursor-not-allowed
-                                                                   hover:border-blue-400 transition-all duration-200"
+                                                                   hover:border-primary-400 transition-all duration-200"
                                                             :class="{ 'cursor-not-allowed opacity-50': noVoteSelections[post.id] }"
                                                         >
                                                             <svg v-if="isSelected(post.id, candidate)" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -240,7 +240,7 @@
 
                                                         <!-- Selection Order Badge -->
                                                         <div v-if="getSelectionOrder(post.id, candidate.id) > 0" class="mt-2">
-                                                            <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
+                                                            <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-full text-xs font-bold bg-primary-100 text-primary-800">
                                                                 <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                                                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                                                                 </svg>
@@ -259,20 +259,20 @@
                                     </div>
 
                                     <!-- Selection Status Section -->
-                                    <div class="mb-8 bg-gradient-to-r from-gray-50 to-blue-50 border-2 border-gray-200 rounded-xl p-5">
+                                    <div class="mb-8 bg-gradient-to-r from-gray-50 to-blue-50 border-2 border-neutral-200 rounded-xl p-5">
                                         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                                             <!-- Status Message -->
                                             <div class="flex-1">
-                                                <h3 class="text-lg font-bold text-gray-900 mb-3">{{ $t('pages.Vote.DemoVote.Create.voting_section.selected') }}</h3>
+                                                <h3 class="text-lg font-bold text-neutral-900 mb-3">{{ $t('pages.Vote.DemoVote.Create.voting_section.selected') }}</h3>
 
                                                 <!-- Status Box -->
                                                 <div
                                                     class="rounded-lg p-4"
                                                     :class="{
                                                         'bg-green-50 border border-green-200 text-green-800': getPostSelectionStatus(post).type === 'valid',
-                                                        'bg-blue-50 border border-blue-200 text-blue-800': getPostSelectionStatus(post).type === 'partial',
-                                                        'bg-red-50 border border-red-200 text-red-800': getPostSelectionStatus(post).type === 'empty',
-                                                        'bg-gray-50 border border-gray-200 text-gray-800': getPostSelectionStatus(post).type === 'no-vote'
+                                                        'bg-primary-50 border border-primary-200 text-primary-800': getPostSelectionStatus(post).type === 'partial',
+                                                        'bg-danger-50 border border-danger-200 text-danger-800': getPostSelectionStatus(post).type === 'empty',
+                                                        'bg-neutral-50 border border-neutral-200 text-neutral-800': getPostSelectionStatus(post).type === 'no-vote'
                                                     }"
                                                 >
                                                     <div class="flex items-start gap-3">
@@ -288,19 +288,19 @@
                                             </div>
 
                                             <!-- Selection Counter -->
-                                            <div class="bg-white border-2 border-gray-200 rounded-lg px-6 py-3 text-center shrink-0">
-                                                <div class="text-2xl font-bold text-blue-600">{{ selectedCandidates[post.id]?.length || 0 }}</div>
-                                                <div class="text-sm text-gray-600">of {{ post.required_number }}</div>
+                                            <div class="bg-white border-2 border-neutral-200 rounded-lg px-6 py-3 text-center shrink-0">
+                                                <div class="text-2xl font-bold text-primary-600">{{ selectedCandidates[post.id]?.length || 0 }}</div>
+                                                <div class="text-sm text-neutral-600">of {{ post.required_number }}</div>
                                             </div>
                                         </div>
 
                                         <!-- Progress Bar -->
                                         <div class="mt-4">
-                                            <div class="flex items-center justify-between text-sm text-gray-600 mb-1">
+                                            <div class="flex items-center justify-between text-sm text-neutral-600 mb-1">
                                                 <span>Progress</span>
                                                 <span>{{ Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100)) }}%</span>
                                             </div>
-                                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="w-full bg-neutral-200 rounded-full h-2">
                                                 <div
                                                     class="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all duration-500"
                                                     :style="{ width: Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100)) + '%' }"
@@ -315,7 +315,7 @@
 
                                     <!-- No Vote Option with Full Accessibility -->
                                     <div
-                                        class="border-2 border-gray-300 rounded-xl p-6 bg-gradient-to-br from-gray-50 to-white"
+                                        class="border-2 border-neutral-300 rounded-xl p-6 bg-gradient-to-br from-gray-50 to-white"
                                         role="group"
                                         :aria-label="`Skip voting for ${post.name}`"
                                     >
@@ -333,8 +333,8 @@
                                                 <label
                                                     :for="`no_vote_${post.id}`"
                                                     class="flex items-center justify-center w-12 h-12 bg-white border-3 border-black rounded-lg cursor-pointer
-                                                           peer-checked:bg-blue-600 peer-checked:border-blue-600
-                                                           peer-focus:ring-4 peer-focus:ring-blue-300 peer-focus:border-blue-500
+                                                           peer-checked:bg-primary-600 peer-checked:border-primary-600
+                                                           peer-focus:ring-4 peer-focus:ring-blue-300 peer-focus:border-primary-500
                                                            transition-all duration-200 hover:border-black"
                                                 >
                                                     <svg v-if="noVoteSelections[post.id]" class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -344,13 +344,13 @@
                                             </div>
                                             <div class="grow">
                                                 <label :for="`no_vote_${post.id}`" class="cursor-pointer block">
-                                                    <h4 class="text-xl font-bold text-gray-900 mb-2">{{ $t('pages.Vote.DemoVote.Create.position_card.skip_this_position') }}</h4>
-                                                    <p :id="`no-vote-desc-${post.id}`" class="text-gray-700">
+                                                    <h4 class="text-xl font-bold text-neutral-900 mb-2">{{ $t('pages.Vote.DemoVote.Create.position_card.skip_this_position') }}</h4>
+                                                    <p :id="`no-vote-desc-${post.id}`" class="text-neutral-700">
                                                         Select this if you wish to abstain from voting for this post.
                                                     </p>
                                                 </label>
-                                                <div v-if="noVoteSelections[post.id]" class="mt-4 p-4 bg-gray-100 rounded-lg" role="status" aria-live="polite">
-                                                    <p class="font-semibold text-gray-800">
+                                                <div v-if="noVoteSelections[post.id]" class="mt-4 p-4 bg-neutral-100 rounded-lg" role="status" aria-live="polite">
+                                                    <p class="font-semibold text-neutral-800">
                                                         You have chosen to skip {{ post.name }}
                                                     </p>
                                                 </div>
@@ -370,7 +370,7 @@
                         class="mb-12"
                         aria-labelledby="regional-posts-title"
                     >
-                        <h2 id="regional-posts-title" class="text-3xl font-bold text-gray-900 text-center mb-8">
+                        <h2 id="regional-posts-title" class="text-3xl font-bold text-neutral-900 text-center mb-8">
                             {{ $t('pages.Vote.DemoVote.Create.voting_section.regional_posts') }}
                         </h2>
                         <div class="space-y-8">
@@ -378,7 +378,7 @@
                                 v-for="post in posts.regional"
                                 :key="post.id"
                                 class="bg-white rounded-2xl shadow-lg border-2 overflow-hidden transition-all duration-200"
-                                :class="postsWithErrors.includes(post.name) ? 'border-red-500 ring-2 ring-red-300' : 'border-gray-200'"
+                                :class="postsWithErrors.includes(post.name) ? 'border-danger-500 ring-2 ring-red-300' : 'border-neutral-200'"
                                 :aria-labelledby="`post-title-${post.id}`"
                             >
                                 <!-- Post Header -->
@@ -434,7 +434,7 @@
                                             <div
                                                 class="w-full bg-gradient-to-b from-gray-50 to-white border-2 rounded-xl overflow-hidden transition-all duration-200"
                                                 :class="[
-                                                    isSelected(post.id, candidate) ? 'border-green-600 bg-green-50' : 'border-gray-200',
+                                                    isSelected(post.id, candidate) ? 'border-green-600 bg-green-50' : 'border-neutral-200',
                                                     noVoteSelections[post.id] ? 'opacity-50' : ''
                                                 ]"
                                                 :aria-selected="isSelected(post.id, candidate)"
@@ -450,7 +450,7 @@
 
                                                 <!-- Candidate Photo -->
                                                 <div class="flex justify-center p-6 bg-white">
-                                                    <div class="w-32 h-32 rounded-lg overflow-hidden border-2 border-gray-200 bg-gray-100 flex items-center justify-center">
+                                                    <div class="w-32 h-32 rounded-lg overflow-hidden border-2 border-neutral-200 bg-neutral-100 flex items-center justify-center">
                                                         <img
                                                             v-if="candidate.image_path_1"
                                                             :src="getImageUrl(candidate.image_path_1)"
@@ -462,9 +462,9 @@
                                                 </div>
 
                                                 <!-- Candidate Info -->
-                                                <div class="p-4 text-center bg-white border-t-2 border-gray-100">
-                                                    <h4 class="font-bold text-gray-900">{{ candidate.user_name }}</h4>
-                                                    <p class="text-xs text-gray-500 mt-1">Position #{{ candidate.position_order }}</p>
+                                                <div class="p-4 text-center bg-white border-t-2 border-neutral-100">
+                                                    <h4 class="font-bold text-neutral-900">{{ candidate.user_name }}</h4>
+                                                    <p class="text-xs text-neutral-500 mt-1">Position #{{ candidate.position_order }}</p>
 
                                                     <!-- Selection Checkbox with Full Accessibility -->
                                                     <div class="mt-3">
@@ -480,7 +480,7 @@
                                                         />
                                                         <label
                                                             :for="`candidate-${candidate.id}`"
-                                                            class="flex items-center justify-center w-10 h-10 mx-auto bg-white border-2 border-gray-300 rounded-lg cursor-pointer
+                                                            class="flex items-center justify-center w-10 h-10 mx-auto bg-white border-2 border-neutral-300 rounded-lg cursor-pointer
                                                                    peer-checked:bg-green-600 peer-checked:border-green-600 peer-checked:text-white
                                                                    peer-focus:ring-4 peer-focus:ring-green-300 peer-focus:border-green-500
                                                                    peer-disabled:opacity-50 peer-disabled:cursor-not-allowed
@@ -503,20 +503,20 @@
                                     </div>
 
                                     <!-- Selection Status Section (Regional) -->
-                                    <div class="mb-8 bg-gradient-to-r from-gray-50 to-green-50 border-2 border-gray-200 rounded-xl p-5">
+                                    <div class="mb-8 bg-gradient-to-r from-gray-50 to-green-50 border-2 border-neutral-200 rounded-xl p-5">
                                         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                                             <!-- Status Message -->
                                             <div class="flex-1">
-                                                <h3 class="text-lg font-bold text-gray-900 mb-3">{{ $t('pages.Vote.DemoVote.Create.voting_section.selected') }}</h3>
+                                                <h3 class="text-lg font-bold text-neutral-900 mb-3">{{ $t('pages.Vote.DemoVote.Create.voting_section.selected') }}</h3>
 
                                                 <!-- Status Box -->
                                                 <div
                                                     class="rounded-lg p-4"
                                                     :class="{
                                                         'bg-green-50 border border-green-200 text-green-800': getPostSelectionStatus(post).type === 'valid',
-                                                        'bg-blue-50 border border-blue-200 text-blue-800': getPostSelectionStatus(post).type === 'partial',
-                                                        'bg-red-50 border border-red-200 text-red-800': getPostSelectionStatus(post).type === 'empty',
-                                                        'bg-gray-50 border border-gray-200 text-gray-800': getPostSelectionStatus(post).type === 'no-vote'
+                                                        'bg-primary-50 border border-primary-200 text-primary-800': getPostSelectionStatus(post).type === 'partial',
+                                                        'bg-danger-50 border border-danger-200 text-danger-800': getPostSelectionStatus(post).type === 'empty',
+                                                        'bg-neutral-50 border border-neutral-200 text-neutral-800': getPostSelectionStatus(post).type === 'no-vote'
                                                     }"
                                                 >
                                                     <div class="flex items-start gap-3">
@@ -532,19 +532,19 @@
                                             </div>
 
                                             <!-- Selection Counter -->
-                                            <div class="bg-white border-2 border-gray-200 rounded-lg px-6 py-3 text-center shrink-0">
+                                            <div class="bg-white border-2 border-neutral-200 rounded-lg px-6 py-3 text-center shrink-0">
                                                 <div class="text-2xl font-bold text-green-600">{{ selectedCandidates[post.id]?.length || 0 }}</div>
-                                                <div class="text-sm text-gray-600">of {{ post.required_number }}</div>
+                                                <div class="text-sm text-neutral-600">of {{ post.required_number }}</div>
                                             </div>
                                         </div>
 
                                         <!-- Progress Bar -->
                                         <div class="mt-4">
-                                            <div class="flex items-center justify-between text-sm text-gray-600 mb-1">
+                                            <div class="flex items-center justify-between text-sm text-neutral-600 mb-1">
                                                 <span>Progress</span>
                                                 <span>{{ Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100)) }}%</span>
                                             </div>
-                                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="w-full bg-neutral-200 rounded-full h-2">
                                                 <div
                                                     class="bg-gradient-to-r from-green-500 to-green-600 h-2 rounded-full transition-all duration-500"
                                                     :style="{ width: Math.min(100, Math.round(((selectedCandidates[post.id]?.length || 0) / post.required_number) * 100)) + '%' }"
@@ -559,7 +559,7 @@
 
                                     <!-- No Vote Option with Full Accessibility -->
                                     <div
-                                        class="border-2 border-gray-300 rounded-xl p-6 bg-gradient-to-br from-gray-50 to-white"
+                                        class="border-2 border-neutral-300 rounded-xl p-6 bg-gradient-to-br from-gray-50 to-white"
                                         role="group"
                                         :aria-label="`Skip voting for ${post.name}`"
                                     >
@@ -588,13 +588,13 @@
                                             </div>
                                             <div class="grow">
                                                 <label :for="`no_vote_${post.id}`" class="cursor-pointer block">
-                                                    <h4 class="text-xl font-bold text-gray-900 mb-2">{{ $t('pages.Vote.DemoVote.Create.position_card.skip_this_position') }}</h4>
-                                                    <p :id="`no-vote-desc-${post.id}`" class="text-gray-700">
+                                                    <h4 class="text-xl font-bold text-neutral-900 mb-2">{{ $t('pages.Vote.DemoVote.Create.position_card.skip_this_position') }}</h4>
+                                                    <p :id="`no-vote-desc-${post.id}`" class="text-neutral-700">
                                                         Select this if you wish to abstain from voting for this post.
                                                     </p>
                                                 </label>
-                                                <div v-if="noVoteSelections[post.id]" class="mt-4 p-4 bg-gray-100 rounded-lg" role="status" aria-live="polite">
-                                                    <p class="font-semibold text-gray-800">
+                                                <div v-if="noVoteSelections[post.id]" class="mt-4 p-4 bg-neutral-100 rounded-lg" role="status" aria-live="polite">
+                                                    <p class="font-semibold text-neutral-800">
                                                         You have chosen to skip {{ post.name }}
                                                     </p>
                                                 </div>
@@ -609,24 +609,24 @@
                     <!-- Error Display with Live Region -->
                     <div
                         v-if="errors.submit"
-                        class="max-w-4xl mx-auto mt-6 p-4 bg-red-50 border-2 border-red-300 rounded-lg"
+                        class="max-w-4xl mx-auto mt-6 p-4 bg-danger-50 border-2 border-danger-300 rounded-lg"
                         role="alert"
                         aria-live="assertive"
                         aria-atomic="true"
                     >
                         <div class="flex items-center gap-3">
-                            <span class="text-red-600 text-xl" aria-hidden="true">⚠️</span>
-                            <span class="text-red-800 font-medium">{{ errors.submit }}</span>
+                            <span class="text-danger-600 text-xl" aria-hidden="true">⚠️</span>
+                            <span class="text-danger-800 font-medium">{{ errors.submit }}</span>
                         </div>
                     </div>
 
                     <!-- Agreement and Submit Section -->
-                    <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mt-8 max-w-4xl mx-auto">
-                        <div class="border-2 border-blue-300 rounded-lg p-6 mb-6 bg-blue-50">
+                    <div class="bg-white rounded-xl shadow-lg border border-neutral-200 p-8 mt-8 max-w-4xl mx-auto">
+                        <div class="border-2 border-primary-300 rounded-lg p-6 mb-6 bg-primary-50">
                             <!-- Agreement Checkbox -->
                             <div class="flex flex-col items-center justify-center mb-6">
                                 <div class="text-3xl mb-2" aria-hidden="true">✅</div>
-                                <h3 class="text-xl font-bold text-red-700 mb-1">{{ $t('pages.Vote.DemoVote.Create.voting_agreement.title') }}</h3>
+                                <h3 class="text-xl font-bold text-danger-700 mb-1">{{ $t('pages.Vote.DemoVote.Create.voting_agreement.title') }}</h3>
                             </div>
 
                             <div class="flex justify-center mb-4">
@@ -634,14 +634,14 @@
                                     <input
                                         type="checkbox"
                                         v-model="form.agree_button"
-                                        class="w-10 h-10 text-blue-600 border-3 border-gray-600 rounded focus:ring-4 focus:ring-blue-300 focus:border-blue-500"
+                                        class="w-10 h-10 text-primary-600 border-3 border-neutral-600 rounded focus:ring-4 focus:ring-blue-300 focus:border-primary-500"
                                         :aria-label="form.agree_button ? 'You have agreed to the terms' : 'You must agree to the terms to submit'"
                                         aria-describedby="agreement-desc"
                                     />
-                                    <span class="text-lg font-medium text-gray-900">{{ $t('pages.Vote.DemoVote.Create.voting_agreement.agree_label') }}</span>
+                                    <span class="text-lg font-medium text-neutral-900">{{ $t('pages.Vote.DemoVote.Create.voting_agreement.agree_label') }}</span>
                                 </label>
                             </div>
-                            <p id="agreement-desc" class="text-sm text-gray-600 text-center">
+                            <p id="agreement-desc" class="text-sm text-neutral-600 text-center">
                                 By agreeing, you confirm your selections are correct and follow voting rules
                             </p>
 
@@ -677,12 +677,12 @@
                         class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12"
                         aria-label="Additional information"
                     >
-                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border-2 border-blue-200">
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border-2 border-primary-200">
                             <div class="flex items-start gap-4">
                                 <div class="text-4xl" aria-hidden="true">🔒</div>
                                 <div>
-                                    <h3 class="font-bold text-blue-900 text-lg mb-2">{{ $t('pages.Vote.DemoVote.Create.demo_notice.security_note') }}</h3>
-                                    <p class="text-blue-800 text-sm">{{ $t('pages.Vote.DemoVote.Create.security.encryption_note') }}</p>
+                                    <h3 class="font-bold text-primary-900 text-lg mb-2">{{ $t('pages.Vote.DemoVote.Create.demo_notice.security_note') }}</h3>
+                                    <p class="text-primary-800 text-sm">{{ $t('pages.Vote.DemoVote.Create.security.encryption_note') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -1247,3 +1247,4 @@ export default {
     }
 }
 </style>
+

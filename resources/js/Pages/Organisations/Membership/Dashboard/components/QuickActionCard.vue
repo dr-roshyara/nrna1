@@ -46,7 +46,7 @@ const props = defineProps({
 const colorMap = {
   purple: { bg: 'bg-purple-100 group-hover:bg-purple-200', text: 'text-purple-600', ring: 'focus:ring-purple-500', bar: 'bg-gradient-to-r from-purple-500 to-purple-400' },
   violet: { bg: 'bg-violet-100 group-hover:bg-violet-200', text: 'text-violet-600', ring: 'focus:ring-violet-500', bar: 'bg-gradient-to-r from-violet-500 to-violet-400' },
-  blue:   { bg: 'bg-blue-100   group-hover:bg-blue-200',   text: 'text-blue-600',   ring: 'focus:ring-blue-500',   bar: 'bg-gradient-to-r from-blue-500   to-blue-400' },
+  blue:   { bg: 'bg-primary-100   group-hover:bg-primary-200',   text: 'text-primary-600',   ring: 'focus:ring-blue-500',   bar: 'bg-gradient-to-r from-blue-500   to-blue-400' },
   indigo: { bg: 'bg-indigo-100 group-hover:bg-indigo-200', text: 'text-indigo-600', ring: 'focus:ring-indigo-500', bar: 'bg-gradient-to-r from-indigo-500 to-indigo-400' },
   green:  { bg: 'bg-green-100  group-hover:bg-green-200',  text: 'text-green-600',  ring: 'focus:ring-green-500',  bar: 'bg-gradient-to-r from-green-500  to-emerald-400' },
   emerald:{ bg: 'bg-emerald-100 group-hover:bg-emerald-200', text: 'text-emerald-600', ring: 'focus:ring-emerald-500', bar: 'bg-gradient-to-r from-emerald-500 to-teal-400' },
@@ -67,3 +67,4 @@ const iconTextClass  = computed(() => c.value.text)
 const focusRingClass = computed(() => c.value.ring)
 const accentBarClass = computed(() => c.value.bar)
 </script>
+

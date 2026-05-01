@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-gray-50 flex flex-col">
+    <div class="min-h-screen bg-neutral-50 flex flex-col">
         <!-- Header with proper ARIA landmark -->
         <header role="banner">
             <PublicDigitHeader />
@@ -20,7 +20,7 @@
                         <div class="flex items-center gap-4">
                             <div class="text-4xl" role="img" aria-label="Ballot box">🗳️</div>
                             <div class="grow">
-                                <h2 class="text-2xl font-bold text-gray-900 mb-2">
+                                <h2 class="text-2xl font-bold text-neutral-900 mb-2">
                                     {{ activeElection.name }}
                                 </h2>
                                 <p class="text-green-800 font-semibold">
@@ -29,7 +29,7 @@
                                 </p>
                             </div>
                             <div v-if="votingTimeRemaining" class="text-right">
-                                <div class="text-sm text-gray-700 font-medium mb-1">
+                                <div class="text-sm text-neutral-700 font-medium mb-1">
                                     {{ $t('pages.election.voting_page.time_remaining') }}
                                 </div>
                                 <div class="text-2xl font-bold text-green-700"
@@ -55,13 +55,13 @@
                     </div>
 
                     <!-- Voter Status Check - Not Eligible -->
-                    <div v-if="!canVoteNow" class="mb-6 p-4 bg-red-50 border-l-4 border-red-400 rounded-sm"
+                    <div v-if="!canVoteNow" class="mb-6 p-4 bg-danger-50 border-l-4 border-danger-400 rounded-sm"
                          role="alert">
                         <div class="flex gap-3">
                             <span class="text-2xl" role="img" aria-label="Error">❌</span>
                             <div>
-                                <h3 class="font-bold text-red-800 mb-1">{{ $t('pages.election.voting_page.voter_status') }}</h3>
-                                <p class="text-red-700">
+                                <h3 class="font-bold text-danger-800 mb-1">{{ $t('pages.election.voting_page.voter_status') }}</h3>
+                                <p class="text-danger-700">
                                     {{ $t('pages.election.voting_page.not_eligible') }}
                                 </p>
                             </div>
@@ -71,73 +71,73 @@
                     <!-- Election Information -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                         <!-- Election Details -->
-                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                            <h3 class="text-lg font-bold text-gray-900 mb-4">
+                        <div class="bg-neutral-50 p-6 rounded-lg border border-neutral-200">
+                            <h3 class="text-lg font-bold text-neutral-900 mb-4">
                                 {{ $t('pages.election.voting_page.details') }}
                             </h3>
 
                             <div class="space-y-4">
                                 <div>
-                                    <p class="text-sm text-gray-700 font-medium">
+                                    <p class="text-sm text-neutral-700 font-medium">
                                         {{ $t('pages.election.voting_page.election_type') }}
                                     </p>
-                                    <p class="text-gray-900">
+                                    <p class="text-neutral-900">
                                         {{ activeElection.type === 'demo' ? $t('pages.election.voting_page.demo') : $t('pages.election.voting_page.real') }}
                                     </p>
                                 </div>
 
                                 <div>
-                                    <p class="text-sm text-gray-700 font-medium">
+                                    <p class="text-sm text-neutral-700 font-medium">
                                         {{ $t('pages.election.voting_page.voting_period') }}
                                     </p>
-                                    <p class="text-gray-900">
+                                    <p class="text-neutral-900">
                                         {{ formatDate(activeElection.start_date) }} - {{ formatDate(activeElection.end_date) }}
                                     </p>
-                                    <p class="text-xs text-gray-600 mt-1">
+                                    <p class="text-xs text-neutral-600 mt-1">
                                         ({{ activeElection.timezone || 'UTC' }})
                                     </p>
                                 </div>
 
                                 <div v-if="activeElection.description">
-                                    <p class="text-sm text-gray-700 font-medium">
+                                    <p class="text-sm text-neutral-700 font-medium">
                                         {{ $t('pages.election.voting_page.description') }}
                                     </p>
-                                    <p class="text-gray-900 text-sm">{{ activeElection.description }}</p>
+                                    <p class="text-neutral-900 text-sm">{{ activeElection.description }}</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Voting Instructions -->
-                        <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
-                            <h3 class="text-lg font-bold text-gray-900 mb-4">
+                        <div class="bg-primary-50 p-6 rounded-lg border-l-4 border-primary-400">
+                            <h3 class="text-lg font-bold text-neutral-900 mb-4">
                                 {{ $t('pages.election.voting_page.voting_instructions') }}
                             </h3>
 
                             <ol class="space-y-3 text-sm">
                                 <li class="flex gap-3">
-                                    <span class="shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
+                                    <span class="shrink-0 w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
                                           aria-hidden="true">1</span>
-                                    <span class="text-gray-700">{{ $t('pages.election.voting_page.step1') }}</span>
+                                    <span class="text-neutral-700">{{ $t('pages.election.voting_page.step1') }}</span>
                                 </li>
                                 <li class="flex gap-3">
-                                    <span class="shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
+                                    <span class="shrink-0 w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
                                           aria-hidden="true">2</span>
-                                    <span class="text-gray-700">{{ $t('pages.election.voting_page.step2') }}</span>
+                                    <span class="text-neutral-700">{{ $t('pages.election.voting_page.step2') }}</span>
                                 </li>
                                 <li class="flex gap-3">
-                                    <span class="shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
+                                    <span class="shrink-0 w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
                                           aria-hidden="true">3</span>
-                                    <span class="text-gray-700">{{ $t('pages.election.voting_page.step3') }}</span>
+                                    <span class="text-neutral-700">{{ $t('pages.election.voting_page.step3') }}</span>
                                 </li>
                                 <li class="flex gap-3">
-                                    <span class="shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
+                                    <span class="shrink-0 w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
                                           aria-hidden="true">4</span>
-                                    <span class="text-gray-700">{{ $t('pages.election.voting_page.step4') }}</span>
+                                    <span class="text-neutral-700">{{ $t('pages.election.voting_page.step4') }}</span>
                                 </li>
                                 <li class="flex gap-3">
-                                    <span class="shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
+                                    <span class="shrink-0 w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center text-xs font-bold"
                                           aria-hidden="true">5</span>
-                                    <span class="text-gray-700">{{ $t('pages.election.voting_page.step5') }}</span>
+                                    <span class="text-neutral-700">{{ $t('pages.election.voting_page.step5') }}</span>
                                 </li>
                             </ol>
                         </div>
@@ -147,27 +147,27 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                         <div class="bg-gradient-to-br from-purple-100 to-purple-50 p-6 rounded-lg border border-purple-300">
                             <div class="text-3xl mb-2" role="img" aria-label="Lock">🔒</div>
-                            <h4 class="font-semibold text-gray-900 mb-2">{{ $t('pages.election.voting_page.secure') }}</h4>
-                            <p class="text-sm text-gray-700">{{ $t('pages.election.voting_page.secure_desc') }}</p>
+                            <h4 class="font-semibold text-neutral-900 mb-2">{{ $t('pages.election.voting_page.secure') }}</h4>
+                            <p class="text-sm text-neutral-700">{{ $t('pages.election.voting_page.secure_desc') }}</p>
                         </div>
 
                         <div class="bg-gradient-to-br from-green-100 to-green-50 p-6 rounded-lg border border-green-300">
                             <div class="text-3xl mb-2" role="img" aria-label="Checkmark">✓</div>
-                            <h4 class="font-semibold text-gray-900 mb-2">{{ $t('pages.election.voting_page.verified') }}</h4>
-                            <p class="text-sm text-gray-700">{{ $t('pages.election.voting_page.verified_desc') }}</p>
+                            <h4 class="font-semibold text-neutral-900 mb-2">{{ $t('pages.election.voting_page.verified') }}</h4>
+                            <p class="text-sm text-neutral-700">{{ $t('pages.election.voting_page.verified_desc') }}</p>
                         </div>
 
-                        <div class="bg-gradient-to-br from-blue-100 to-blue-50 p-6 rounded-lg border border-blue-300">
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-50 p-6 rounded-lg border border-primary-300">
                             <div class="text-3xl mb-2" role="img" aria-label="Globe">🌍</div>
-                            <h4 class="font-semibold text-gray-900 mb-2">{{ $t('pages.election.voting_page.global') }}</h4>
-                            <p class="text-sm text-gray-700">{{ $t('pages.election.voting_page.global_desc') }}</p>
+                            <h4 class="font-semibold text-neutral-900 mb-2">{{ $t('pages.election.voting_page.global') }}</h4>
+                            <p class="text-sm text-neutral-700">{{ $t('pages.election.voting_page.global_desc') }}</p>
                         </div>
                     </div>
 
                     <!-- Voter Information Section -->
-                    <div class="mb-8 p-4 bg-gray-50 border border-gray-200 rounded-lg">
-                        <h3 class="font-bold text-gray-900 mb-3">👤 {{ $t('pages.election.voting_page.voter_status') }}</h3>
-                        <ul class="text-sm text-gray-700 space-y-2">
+                    <div class="mb-8 p-4 bg-neutral-50 border border-neutral-200 rounded-lg">
+                        <h3 class="font-bold text-neutral-900 mb-3">👤 {{ $t('pages.election.voting_page.voter_status') }}</h3>
+                        <ul class="text-sm text-neutral-700 space-y-2">
                             <li>• <strong>{{ $t('pages.election.voting_page.verified_voter') }}:</strong> {{ authUser.name }}</li>
                             <li>• <strong>📧 {{ $t('common.email') }}:</strong> {{ authUser.email }}</li>
                             <li v-if="ipAddress">• <strong>📍 {{ $t('pages.election.voting_page.voting_from') }}:</strong> {{ ipAddress }}</li>
@@ -175,9 +175,9 @@
                     </div>
 
                     <!-- Important Rules Section -->
-                    <div class="mb-8 p-4 bg-red-50 border-l-4 border-red-400 rounded-lg" role="note">
-                        <h3 class="font-bold text-red-800 mb-3">⚠️ {{ $t('pages.election.voting_page.important_rules') }}</h3>
-                        <ul class="text-sm text-red-700 space-y-2">
+                    <div class="mb-8 p-4 bg-danger-50 border-l-4 border-danger-400 rounded-lg" role="note">
+                        <h3 class="font-bold text-danger-800 mb-3">⚠️ {{ $t('pages.election.voting_page.important_rules') }}</h3>
+                        <ul class="text-sm text-danger-700 space-y-2">
                             <li>• {{ $t('pages.election.voting_page.rule_no_share') }}</li>
                             <li>• {{ $t('pages.election.voting_page.rule_one_vote') }}</li>
                             <li>• {{ $t('pages.election.voting_page.rule_no_change') }}</li>
@@ -198,20 +198,20 @@
                     </div>
 
                     <!-- Additional Information -->
-                    <div class="pt-8 border-t border-gray-200">
+                    <div class="pt-8 border-t border-neutral-200">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div>
-                                <h4 class="font-bold text-gray-900 mb-3">{{ $t('pages.election.voting_page.need_help') }}</h4>
-                                <p class="text-sm text-gray-700 mb-4">{{ $t('pages.election.voting_page.help_desc') }}</p>
+                                <h4 class="font-bold text-neutral-900 mb-3">{{ $t('pages.election.voting_page.need_help') }}</h4>
+                                <p class="text-sm text-neutral-700 mb-4">{{ $t('pages.election.voting_page.help_desc') }}</p>
                                 <a href="mailto:support(at)publicdigit.com"
-                                   class="text-blue-700 hover:text-blue-800 hover:underline font-medium text-sm">
+                                   class="text-primary-700 hover:text-primary-800 hover:underline font-medium text-sm">
                                     {{ $t('pages.election.voting_page.contact_support') }}
                                 </a>
                             </div>
 
                             <div>
-                                <h4 class="font-bold text-gray-900 mb-3">{{ $t('pages.election.voting_page.important_notes') }}</h4>
-                                <ul class="text-sm text-gray-700 space-y-2">
+                                <h4 class="font-bold text-neutral-900 mb-3">{{ $t('pages.election.voting_page.important_notes') }}</h4>
+                                <ul class="text-sm text-neutral-700 space-y-2">
                                     <li>• {{ $t('pages.election.voting_page.note1') }}</li>
                                     <li>• {{ $t('pages.election.voting_page.note2') }} {{ formatDate(activeElection.end_date) }}</li>
                                     <li>• {{ $t('pages.election.voting_page.note3') }}</li>
@@ -389,14 +389,14 @@ button:focus {
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-    .text-gray-900,
-    .text-gray-800,
-    .text-gray-700 {
+    .text-neutral-900,
+    .text-neutral-800,
+    .text-neutral-700 {
         color: #000000 !important;
     }
 
-    .text-red-800,
-    .text-red-700,
+    .text-danger-800,
+    .text-danger-700,
     .text-yellow-800,
     .text-yellow-700 {
         color: #000000 !important;
@@ -408,3 +408,4 @@ button:focus {
     }
 }
 </style>
+

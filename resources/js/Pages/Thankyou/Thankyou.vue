@@ -9,7 +9,7 @@
 
          <div class="min-h-screen m-auto py-2"> 
               <div class=" mt-10 mx-auto flex  flex-col items-center justify-center">        
-              <p class="py-2 text-2xl font-bold text-blue-600 "> Thank you  for the vote ! मतदान गर्नु भएकोमा धन्यवाद । </p>
+              <p class="py-2 text-2xl font-bold text-primary-600 "> Thank you  for the vote ! मतदान गर्नु भएकोमा धन्यवाद । </p>
 				<div class="text-left w-1/2"> 	आदरणिय मतदाता ज्यु,<br>
 यहाले अमुल्य मतदान गर्नु भएकोमा धेरै धन्यवाद। <br>
 गैर आवासिय नेपाली संघ एक सामाजिक अभियान हो। यस्मा जस्ले बढी मत प्राप्त गरे पनि जित सवैको हुन्छ। हार्ने कोहि पनि हुदैन । त्यसैले आज सम्पन्न हुन गईरहेको निर्वाचन लाई सहज रुपमा लिनु हुनेछ। 

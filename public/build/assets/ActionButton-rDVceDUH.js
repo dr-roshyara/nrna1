@@ -1,0 +1,1 @@
+import{_ as t}from"./Button-Dxrs_szJ.js";import{o,e as r,w as s,l as e,aa as n,ab as _}from"./vendor-DyDPAvlY.js";const m={__name:"ActionButton",setup(c){return(a,p)=>(o(),r(t,n(_(a.$attrs)),{default:s(()=>[e(a.$slots,"default")]),_:3},16))}};export{m as _};

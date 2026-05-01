@@ -17,13 +17,13 @@
 
                 <!-- Page Title Section - Dashboard Style -->
                 <div class="text-center mb-12">
-                    <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                    <h1 class="text-4xl font-bold text-neutral-900 mb-4">
                         {{ $t('pages.code-agreement.header.title') }}
                     </h1>
-                    <p class="text-xl text-gray-700 mb-2">
+                    <p class="text-xl text-neutral-700 mb-2">
                         {{ formatMessage($t('pages.code-agreement.header.subtitle'), { name: user_name }) }}
                     </p>
-                    <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+                    <div class="w-24 h-1 bg-primary-600 mx-auto rounded-full"></div>
                 </div>
 
                 <!-- Info Cards - Voter & Time Info -->
@@ -34,20 +34,20 @@
                                 <span class="text-green-600 text-2xl">👤</span>
                             </div>
                             <div class="text-left">
-                                <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">{{ $t('pages.code-agreement.header.info_voter') }}</p>
-                                <p class="font-bold text-gray-900 text-lg">{{ user_name }}</p>
+                                <p class="text-sm text-neutral-600 font-medium uppercase tracking-wide">{{ $t('pages.code-agreement.header.info_voter') }}</p>
+                                <p class="font-bold text-neutral-900 text-lg">{{ user_name }}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-blue-200">
+                    <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-primary-200">
                         <div class="flex items-center">
-                            <div class="bg-blue-100 p-3 rounded-lg mr-4 shrink-0">
-                                <span class="text-blue-600 text-2xl">⏰</span>
+                            <div class="bg-primary-100 p-3 rounded-lg mr-4 shrink-0">
+                                <span class="text-primary-600 text-2xl">⏰</span>
                             </div>
                             <div class="text-left">
-                                <p class="text-sm text-gray-600 font-medium uppercase tracking-wide">{{ $t('pages.code-agreement.header.info_time') }}</p>
-                                <p class="font-bold text-gray-900 text-lg">{{ $t('pages.code-agreement.header.info_time_value', { minutes: votingTime }) }}</p>
+                                <p class="text-sm text-neutral-600 font-medium uppercase tracking-wide">{{ $t('pages.code-agreement.header.info_time') }}</p>
+                                <p class="font-bold text-neutral-900 text-lg">{{ $t('pages.code-agreement.header.info_time_value', { minutes: votingTime }) }}</p>
                             </div>
                         </div>
                     </div>
@@ -98,26 +98,26 @@
 
                         <!-- Terms Content -->
                         <div>
-                            <p class="text-gray-700 font-medium mb-4">
+                            <p class="text-neutral-700 font-medium mb-4">
                                 {{ $t('pages.code-agreement.terms_and_conditions.intro_text') }}
                             </p>
 
-                            <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-lg">
-                                <h4 class="font-bold text-blue-900 mb-4 text-lg">{{ $t('pages.code-agreement.terms_and_conditions.key_conditions') }}</h4>
+                            <div class="bg-primary-50 border-l-4 border-primary-500 p-5 rounded-r-lg">
+                                <h4 class="font-bold text-primary-900 mb-4 text-lg">{{ $t('pages.code-agreement.terms_and_conditions.key_conditions') }}</h4>
                                 <ul class="space-y-3">
-                                    <li class="flex items-start text-gray-800">
+                                    <li class="flex items-start text-neutral-800">
                                         <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
                                         <span class="text-base">{{ $t('pages.code-agreement.terms_and_conditions.condition_1') }}</span>
                                     </li>
-                                    <li class="flex items-start text-gray-800">
+                                    <li class="flex items-start text-neutral-800">
                                         <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
                                         <span class="text-base">{{ $t('pages.code-agreement.terms_and_conditions.condition_2', { minutes: votingTime }) }}</span>
                                     </li>
-                                    <li class="flex items-start text-gray-800">
+                                    <li class="flex items-start text-neutral-800">
                                         <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
                                         <span class="text-base">{{ $t('pages.code-agreement.terms_and_conditions.condition_3') }}</span>
                                     </li>
-                                    <li class="flex items-start text-gray-800">
+                                    <li class="flex items-start text-neutral-800">
                                         <span class="text-green-600 font-bold mr-3 shrink-0 mt-1">✓</span>
                                         <span class="text-base">{{ $t('pages.code-agreement.terms_and_conditions.condition_4') }}</span>
                                     </li>
@@ -126,7 +126,7 @@
                         </div>
 
                         <!-- Large, Accessible Checkbox - IMPORTANT FOR ELDERLY USERS -->
-                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-xl p-8 my-8">
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-primary-300 rounded-xl p-8 my-8">
                             <div class="flex items-start">
                                 <!-- Large checkbox - Much bigger for accessibility -->
                                 <div class="shrink-0 pt-1">
@@ -136,7 +136,7 @@
                                         name="agreement"
                                         v-model="form.agreement"
                                         value="on"
-                                        class="w-10 h-10 text-blue-600 border-3 border-gray-400 rounded-lg focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 cursor-pointer transition-all"
+                                        class="w-10 h-10 text-primary-600 border-3 border-neutral-400 rounded-lg focus:ring-4 focus:ring-blue-400 focus:ring-offset-2 cursor-pointer transition-all"
                                         :aria-label="$t('pages.code-agreement.agreement_required.aria_label')"
                                         @change="announceCheckboxStatus"
                                     />
@@ -145,10 +145,10 @@
                                 <!-- Label with bilingual text -->
                                 <div class="ml-5 grow">
                                     <label for="agreement" class="cursor-pointer block">
-                                        <div class="text-xl font-bold text-gray-900 mb-2 leading-tight">
+                                        <div class="text-xl font-bold text-neutral-900 mb-2 leading-tight">
                                             {{ $t('pages.code-agreement.agreement_required.checkbox_label') }}
                                         </div>
-                                        <div class="text-lg text-gray-700 leading-relaxed">
+                                        <div class="text-lg text-neutral-700 leading-relaxed">
                                             {{ getNepaliCheckboxLabel() }}
                                         </div>
                                     </label>
@@ -164,7 +164,7 @@
                             </div>
 
                             <!-- Error message if not agreed -->
-                            <div v-if="$page.props.errors.agreement" class="mt-4 p-4 bg-red-50 border-l-4 border-red-500 rounded-sm text-red-700 font-medium" role="alert">
+                            <div v-if="$page.props.errors.agreement" class="mt-4 p-4 bg-danger-50 border-l-4 border-danger-500 rounded-sm text-danger-700 font-medium" role="alert">
                                 {{ $page.props.errors.agreement }}
                             </div>
                         </div>
@@ -177,7 +177,7 @@
                                 class="w-full py-5 px-8 rounded-xl font-bold text-xl transition-all duration-200 shadow-lg focus:outline-none focus:ring-4 focus:ring-offset-2"
                                 :class="{
                                     'bg-gradient-to-r from-green-600 to-emerald-700 text-white hover:from-green-700 hover:to-emerald-800 cursor-pointer focus:ring-green-300': form.agreement,
-                                    'bg-gray-300 text-gray-500 cursor-not-allowed': !form.agreement
+                                    'bg-neutral-300 text-neutral-500 cursor-not-allowed': !form.agreement
                                 }"
                                 :aria-label="form.agreement ? $t('pages.code-agreement.submit_button.aria_label_enabled') : $t('pages.code-agreement.submit_button.aria_label_disabled')"
                             >
@@ -191,7 +191,7 @@
                             </button>
 
                             <!-- Help text -->
-                            <p class="text-center text-sm text-gray-600 mt-4">
+                            <p class="text-center text-sm text-neutral-600 mt-4">
                                 {{ $t('pages.code-agreement.submit_button.help_text') }}
                             </p>
                         </div>
@@ -320,3 +320,4 @@ export default {
     }
 }
 </script>
+

@@ -10,13 +10,13 @@
           <!-- Hero Content -->
           <div class="space-y-4 text-center sm:space-y-6">
             <h1
-              class="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl"
+              class="text-3xl font-bold leading-tight text-neutral-900 sm:text-4xl md:text-5xl lg:text-6xl"
               tabindex="-1"
             >
               🔐 {{ $t('pages.votingSecurity.hero.title') }}
             </h1>
 
-            <p class="text-base text-gray-600 sm:text-lg md:text-xl">
+            <p class="text-base text-neutral-600 sm:text-lg md:text-xl">
               {{ $t('pages.votingSecurity.hero.subtitle') }}
             </p>
           </div>
@@ -29,10 +29,10 @@
 
           <!-- Architecture Explanation Section -->
           <div class="bg-gradient-to-b from-slate-50 to-slate-100 rounded-2xl p-8 sm:p-12 mb-12">
-            <h2 class="text-2xl sm:text-3xl lg:text-4xl text-gray-900 font-bold mb-4">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl text-neutral-900 font-bold mb-4">
               {{ $t('pages.votingSecurity.architecture.fingerprint_title') }}
             </h2>
-            <p class="text-base sm:text-lg text-gray-700 mb-8">
+            <p class="text-base sm:text-lg text-neutral-700 mb-8">
               {{ $t('pages.votingSecurity.architecture.fingerprint_subtitle') }}
             </p>
 
@@ -42,19 +42,19 @@
                 1
               </div>
               <div class="flex-grow">
-                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 mb-3">
                   {{ $t('pages.votingSecurity.architecture.fingerprint_layer1.title') }}
                 </h3>
-                <p class="text-gray-700 mb-4">
+                <p class="text-neutral-700 mb-4">
                   {{ $t('pages.votingSecurity.architecture.fingerprint_layer1.description') }}
                 </p>
-                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-4">
-                  <p class="text-sm text-gray-700">
+                <div class="bg-primary-50 border-l-4 border-primary-500 p-4 rounded mb-4">
+                  <p class="text-sm text-neutral-700">
                     {{ $t('pages.votingSecurity.architecture.fingerprint_layer1.note') }}
                   </p>
                 </div>
                 <ul class="space-y-2">
-                  <li v-for="item in deviceDataPoints" :key="item" class="flex items-center gap-3 text-gray-700">
+                  <li v-for="item in deviceDataPoints" :key="item" class="flex items-center gap-3 text-neutral-700">
                     <span class="text-lg">📱</span>
                     <span>{{ item }}</span>
                   </li>
@@ -68,29 +68,29 @@
                 2
               </div>
               <div class="flex-grow">
-                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 mb-3">
                   {{ $t('pages.votingSecurity.architecture.fingerprint_layer2.title') }}
                 </h3>
-                <p class="text-gray-700 mb-4">
+                <p class="text-neutral-700 mb-4">
                   {{ $t('pages.votingSecurity.architecture.fingerprint_layer2.description') }}
                 </p>
 
                 <!-- Coffee Bean Analogy -->
                 <div class="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-lg mb-6">
-                  <p class="font-semibold text-gray-900 mb-3">
+                  <p class="font-semibold text-neutral-900 mb-3">
                     {{ $t('pages.votingSecurity.architecture.fingerprint_layer2.one_way_explanation') }}
                   </p>
-                  <p class="text-sm text-gray-700 mb-4">
+                  <p class="text-sm text-neutral-700 mb-4">
                     {{ $t('pages.votingSecurity.architecture.fingerprint_layer2.analogy') }}
                   </p>
                   <div class="space-y-2 text-sm font-mono bg-white p-3 rounded border border-purple-200">
-                    <div class="text-gray-800">{{ $t('pages.votingSecurity.architecture.fingerprint_layer2.analogy_forward') }}</div>
-                    <div class="text-red-600">{{ $t('pages.votingSecurity.architecture.fingerprint_layer2.analogy_reverse') }}</div>
+                    <div class="text-neutral-800">{{ $t('pages.votingSecurity.architecture.fingerprint_layer2.analogy_forward') }}</div>
+                    <div class="text-danger-600">{{ $t('pages.votingSecurity.architecture.fingerprint_layer2.analogy_reverse') }}</div>
                   </div>
                 </div>
 
                 <!-- Equation Box -->
-                <div class="bg-gray-900 text-white p-6 rounded-lg font-mono text-sm overflow-x-auto mb-6">
+                <div class="bg-neutral-900 text-white p-6 rounded-lg font-mono text-sm overflow-x-auto mb-6">
                   <pre class="whitespace-pre-wrap">{{ $t('pages.votingSecurity.architecture.fingerprint_layer2.equation') }}</pre>
                 </div>
 
@@ -106,7 +106,7 @@
 
             <!-- CENTERPIECE: Architecture Diagram PNG -->
             <div class="diagram-container my-16 text-center bg-white rounded-2xl p-8 shadow-lg">
-              <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
+              <h3 class="text-2xl sm:text-3xl font-bold text-neutral-900 mb-6">
                 {{ $t('pages.votingSecurity.architecture.fingerprint_diagram_title') }}
               </h3>
               <div class="rounded-xl overflow-hidden">
@@ -116,21 +116,21 @@
                   class="w-full h-auto"
                 >
               </div>
-              <p class="mt-6 text-gray-600 italic text-sm sm:text-base max-w-2xl mx-auto">
+              <p class="mt-6 text-neutral-600 italic text-sm sm:text-base max-w-2xl mx-auto">
                 {{ $t('pages.votingSecurity.architecture.fingerprint_diagram_caption') }}
               </p>
             </div>
 
             <!-- LAYER 3: Storage Layer -->
-            <div class="layer bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-red-500 shadow-sm flex flex-col sm:flex-row gap-6 transition-transform duration-300 hover:shadow-md">
+            <div class="layer bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-danger-500 shadow-sm flex flex-col sm:flex-row gap-6 transition-transform duration-300 hover:shadow-md">
               <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-red-500 to-rose-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
                 3
               </div>
               <div class="flex-grow">
-                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 mb-3">
                   {{ $t('pages.votingSecurity.architecture.fingerprint_layer3.title') }}
                 </h3>
-                <p class="text-gray-700 mb-6">
+                <p class="text-neutral-700 mb-6">
                   {{ $t('pages.votingSecurity.architecture.fingerprint_layer3.description') }}
                 </p>
 
@@ -144,7 +144,7 @@
                     <ul class="space-y-3">
                       <li v-for="(item, key) in storedItems" :key="key" class="flex gap-3 text-sm">
                         <span class="text-green-600 font-bold flex-shrink-0 text-lg">✓</span>
-                        <span class="text-gray-700">
+                        <span class="text-neutral-700">
                           <strong>{{ $t(`pages.votingSecurity.architecture.fingerprint_layer3.stored.${key}`) }}</strong>
                         </span>
                       </li>
@@ -152,14 +152,14 @@
                   </div>
 
                   <!-- Not Stored Items -->
-                  <div class="storage-item bg-red-50 rounded-lg p-6 border-2 border-red-200 hover:bg-opacity-75">
-                    <h4 class="text-lg font-semibold text-red-700 mb-4">
+                  <div class="storage-item bg-danger-50 rounded-lg p-6 border-2 border-danger-200 hover:bg-opacity-75">
+                    <h4 class="text-lg font-semibold text-danger-700 mb-4">
                       {{ $t('pages.votingSecurity.architecture.fingerprint_layer3.not_stored_title') }}
                     </h4>
                     <ul class="space-y-3">
                       <li v-for="(item, key) in notStoredItems" :key="key" class="flex gap-3 text-sm">
-                        <span class="text-red-600 font-bold flex-shrink-0 text-lg">✗</span>
-                        <span class="text-gray-700">
+                        <span class="text-danger-600 font-bold flex-shrink-0 text-lg">✗</span>
+                        <span class="text-neutral-700">
                           {{ $t(`pages.votingSecurity.architecture.fingerprint_layer3.not_stored.${key}`) }}
                         </span>
                       </li>
@@ -170,30 +170,30 @@
             </div>
 
             <!-- LAYER 4: Verification Layer -->
-            <div class="layer bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-blue-500 shadow-sm flex flex-col sm:flex-row gap-6 transition-transform duration-300 hover:shadow-md">
+            <div class="layer bg-white rounded-xl p-6 sm:p-8 mb-8 border-l-6 border-primary-500 shadow-sm flex flex-col sm:flex-row gap-6 transition-transform duration-300 hover:shadow-md">
               <div class="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
                 4
               </div>
               <div class="flex-grow">
-                <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
+                <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 mb-3">
                   {{ $t('pages.votingSecurity.architecture.fingerprint_layer4.title') }}
                 </h3>
-                <p class="text-gray-700 mb-6">
+                <p class="text-neutral-700 mb-6">
                   {{ $t('pages.votingSecurity.architecture.fingerprint_layer4.description') }}
                 </p>
 
                 <!-- Verification Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                  <div v-for="item in verificationItems" :key="item.title" class="verification-item bg-blue-50 rounded-lg p-4 text-center border border-blue-200 hover:-translate-y-1">
+                  <div v-for="item in verificationItems" :key="item.title" class="verification-item bg-primary-50 rounded-lg p-4 text-center border border-primary-200 hover:-translate-y-1">
                     <div class="text-3xl mb-2">{{ item.icon }}</div>
-                    <h5 class="font-semibold text-gray-900 text-sm mb-1">{{ item.title }}</h5>
-                    <p class="text-xs text-gray-600">{{ item.description }}</p>
+                    <h5 class="font-semibold text-neutral-900 text-sm mb-1">{{ item.title }}</h5>
+                    <p class="text-xs text-neutral-600">{{ item.description }}</p>
                   </div>
                 </div>
 
                 <!-- Key Message -->
                 <div class="bg-gradient-to-r from-indigo-100 to-purple-100 border-2 border-indigo-300 rounded-lg p-6 text-center">
-                  <p class="text-gray-900 font-semibold text-lg">
+                  <p class="text-neutral-900 font-semibold text-lg">
                     {{ $t('pages.votingSecurity.architecture.fingerprint_layer4.key_message') }}
                   </p>
                 </div>
@@ -205,10 +205,10 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 my-12">
           <div v-for="(pillarKey, index) in pillarKeys" :key="pillarKey" class="bg-white rounded-2xl p-6 sm:p-8 text-center hover:shadow-lg transition-shadow duration-300 shadow-sm">
             <div class="text-4xl mb-4">{{ getPillarIcon(index) }}</div>
-            <h3 class="text-gray-800 mb-3 text-lg sm:text-xl font-semibold">
+            <h3 class="text-neutral-800 mb-3 text-lg sm:text-xl font-semibold">
               {{ $t(`pages.votingSecurity.pillars.${pillarKey}.title`) }}
             </h3>
-            <p class="text-gray-600 text-sm sm:text-base">
+            <p class="text-neutral-600 text-sm sm:text-base">
               {{ $t(`pages.votingSecurity.pillars.${pillarKey}.description`) }}
             </p>
           </div>
@@ -216,7 +216,7 @@
 
 
         <!-- Verification Methods -->
-        <h2 class="text-2xl sm:text-3xl text-gray-700 mb-6 border-b-4 border-indigo-600 pb-2 inline-block mt-8">
+        <h2 class="text-2xl sm:text-3xl text-neutral-700 mb-6 border-b-4 border-indigo-600 pb-2 inline-block mt-8">
           🔍 {{ $t('pages.votingSecurity.verification.title') }}
         </h2>
 
@@ -255,12 +255,12 @@
         </div>
 
         <!-- Device Fingerprinting Deep Dive -->
-        <h2 class="text-2xl sm:text-3xl text-gray-700 mb-6 border-b-4 border-indigo-600 pb-2 inline-block mt-8">
+        <h2 class="text-2xl sm:text-3xl text-neutral-700 mb-6 border-b-4 border-indigo-600 pb-2 inline-block mt-8">
           📱 {{ $t('pages.votingSecurity.fingerprint.title') }}
         </h2>
 
         <div class="bg-white rounded-2xl p-8 my-8 shadow-sm">
-          <h3 class="text-gray-800 mb-3 text-lg sm:text-xl font-semibold">{{ $t('pages.votingSecurity.fingerprint.why_title') }}</h3>
+          <h3 class="text-neutral-800 mb-3 text-lg sm:text-xl font-semibold">{{ $t('pages.votingSecurity.fingerprint.why_title') }}</h3>
           <p class="mb-6">{{ $t('pages.votingSecurity.fingerprint.why_intro') }}</p>
 
           <ul class="list-none p-0">
@@ -270,7 +270,7 @@
             </li>
           </ul>
 
-          <h3 class="text-gray-800 my-6 text-lg sm:text-xl font-semibold">{{ $t('pages.votingSecurity.fingerprint.how_title') }}</h3>
+          <h3 class="text-neutral-800 my-6 text-lg sm:text-xl font-semibold">{{ $t('pages.votingSecurity.fingerprint.how_title') }}</h3>
 
           <div class="flex flex-wrap gap-4 justify-between items-stretch">
             <div v-for="step in 4" :key="step" class="flex-1 min-w-32 text-center p-4 sm:p-6 bg-white rounded-xl shadow-sm">
@@ -278,11 +278,11 @@
                 {{ step }}
               </div>
               <p class="text-sm sm:text-base">{{ $t(`pages.votingSecurity.fingerprint.steps.step${step}`) }}</p>
-              <small class="text-gray-500 text-xs sm:text-sm">{{ $t(`pages.votingSecurity.fingerprint.steps.step${step}_detail`) }}</small>
+              <small class="text-neutral-500 text-xs sm:text-sm">{{ $t(`pages.votingSecurity.fingerprint.steps.step${step}_detail`) }}</small>
             </div>
           </div>
 
-          <p class="mt-6 italic text-gray-600 text-sm sm:text-base">
+          <p class="mt-6 italic text-neutral-600 text-sm sm:text-base">
             🔒 {{ $t('pages.votingSecurity.fingerprint.how_note') }}
           </p>
         </div>
@@ -304,16 +304,16 @@
         </div>
 
         <!-- FAQ -->
-        <h2 class="text-2xl sm:text-3xl text-gray-700 mb-6 border-b-4 border-indigo-600 pb-2 inline-block mt-8">
+        <h2 class="text-2xl sm:text-3xl text-neutral-700 mb-6 border-b-4 border-indigo-600 pb-2 inline-block mt-8">
           ❓ {{ $t('pages.votingSecurity.faq_title') }}
         </h2>
 
         <div class="my-12">
-          <div v-for="(item, index) in 5" :key="index" class="border-b border-gray-200 py-4 sm:py-6">
-            <div class="font-semibold text-gray-800 mb-2 text-base sm:text-lg">
+          <div v-for="(item, index) in 5" :key="index" class="border-b border-neutral-200 py-4 sm:py-6">
+            <div class="font-semibold text-neutral-800 mb-2 text-base sm:text-lg">
               Q: {{ $t(`pages.votingSecurity.faq.question${index + 1}.question`) }}
             </div>
-            <div class="text-gray-600 pl-4 border-l-4 border-indigo-600 text-sm sm:text-base">
+            <div class="text-neutral-600 pl-4 border-l-4 border-indigo-600 text-sm sm:text-base">
               A: {{ $t(`pages.votingSecurity.faq.question${index + 1}.answer`) }}
             </div>
           </div>
@@ -715,3 +715,4 @@ const getPillarIcon = (index: number) => {
   return icons[index] || '🛡️'
 }
 </script>
+

@@ -51,6 +51,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'region' => $this->faker->state(), // Required for multi-tenancy
             'organisation_id' => $platform->id,
+            'is_committee_member' => false,
         ];
     }
 

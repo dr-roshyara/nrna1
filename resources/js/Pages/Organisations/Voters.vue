@@ -60,9 +60,9 @@ const displayStatus = (voter) => {
   }
   const map = {
     active:   { label: 'Active',   cls: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
-    invited:  { label: 'Invited',  cls: 'bg-blue-50 text-blue-700 border-blue-200' },
+    invited:  { label: 'Invited',  cls: 'bg-primary-50 text-primary-700 border-primary-200' },
     inactive: { label: 'Inactive', cls: 'bg-slate-100 text-slate-600 border-slate-200' },
-    removed:  { label: 'Removed',  cls: 'bg-red-50 text-red-700 border-red-200' },
+    removed:  { label: 'Removed',  cls: 'bg-danger-50 text-danger-700 border-danger-200' },
   }
   return map[voter.status] ?? { label: voter.status, cls: 'bg-slate-100 text-slate-600 border-slate-200' }
 }
@@ -223,3 +223,4 @@ const goToPage = (url) => {
     </div>
   </ElectionLayout>
 </template>
+

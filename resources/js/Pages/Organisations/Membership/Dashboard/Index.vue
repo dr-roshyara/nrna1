@@ -1,6 +1,6 @@
 <template>
   <PublicDigitLayout>
-    <div class="min-h-screen bg-blue-50">
+    <div class="min-h-screen bg-primary-50">
 
       <!-- ── Sticky Hero Header ─────────────────────────────────────────── -->
       <div class="bg-white/95 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-10">
@@ -56,9 +56,9 @@
         </Transition>
         <div v-if="page.props.errors?.error"
              role="alert" aria-live="assertive"
-             class="mb-4 rounded-xl bg-red-50 border border-red-200 p-4 flex items-center gap-3">
-          <XCircleIcon class="w-5 h-5 text-red-600 flex-shrink-0" aria-hidden="true" />
-          <p class="text-sm text-red-800">{{ page.props.errors.error }}</p>
+             class="mb-4 rounded-xl bg-danger-50 border border-danger-200 p-4 flex items-center gap-3">
+          <XCircleIcon class="w-5 h-5 text-danger-600 flex-shrink-0" aria-hidden="true" />
+          <p class="text-sm text-danger-800">{{ page.props.errors.error }}</p>
         </div>
       </div>
 
@@ -145,7 +145,7 @@
                 </div>
                 <div class="p-5 sm:p-6">
                   <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">{{ t.stat_pending_fees }}</p>
-                  <p class="text-base font-semibold" :class="memberSelf.pending_fees > 0 ? 'text-red-600' : 'text-green-700'">
+                  <p class="text-base font-semibold" :class="memberSelf.pending_fees > 0 ? 'text-danger-600' : 'text-green-700'">
                     {{ memberSelf.pending_fees > 0 ? memberSelf.pending_fees.toFixed(2) + ' €' : t.no_pending_fees }}
                     <span v-if="memberSelf.pending_fees <= 0" class="sr-only">— paid up</span>
                   </p>
@@ -305,11 +305,11 @@
                   <li v-for="(item, i) in recentActivity.slice(0, 6)" :key="i"
                       class="px-5 py-3 flex items-start gap-3">
                     <div class="mt-0.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
-                         :class="item.type === 'payment' ? 'bg-green-100' : 'bg-blue-100'"
+                         :class="item.type === 'payment' ? 'bg-green-100' : 'bg-primary-100'"
                          aria-hidden="true">
                       <component :is="item.type === 'payment' ? CheckCircleIcon : UserIcon"
                                  class="w-3.5 h-3.5"
-                                 :class="item.type === 'payment' ? 'text-green-600' : 'text-blue-600'" />
+                                 :class="item.type === 'payment' ? 'text-green-600' : 'text-primary-600'" />
                     </div>
                     <span class="text-xs text-slate-600 leading-snug">{{ item.message }}</span>
                   </li>
@@ -588,7 +588,7 @@ const roleLabel = computed(() => {
 const roleBadgeClass = computed(() => {
   const map = {
     owner:      'bg-purple-100 text-purple-700',
-    admin:      'bg-blue-100 text-blue-700',
+    admin:      'bg-primary-100 text-primary-700',
     commission: 'bg-yellow-100 text-yellow-700',
     member:     'bg-green-100 text-green-700',
   }
@@ -821,19 +821,19 @@ const noMembershipDesc = computed(() => {
 const memberStatusIconBg = computed(() => {
   const s = props.memberSelf?.status
   if (s === 'active')  return 'bg-green-100'
-  if (s === 'expired') return 'bg-red-100'
+  if (s === 'expired') return 'bg-danger-100'
   return 'bg-slate-100'
 })
 const memberStatusIconColor = computed(() => {
   const s = props.memberSelf?.status
   if (s === 'active')  return 'text-green-600'
-  if (s === 'expired') return 'text-red-600'
+  if (s === 'expired') return 'text-danger-600'
   return 'text-slate-500'
 })
 const memberStatusTextClass = computed(() => {
   const s = props.memberSelf?.status
   if (s === 'active')  return 'text-green-700'
-  if (s === 'expired') return 'text-red-700'
+  if (s === 'expired') return 'text-danger-700'
   return 'text-slate-700'
 })
 const memberStatusIcon = computed(() => {
@@ -863,3 +863,4 @@ const formatDate = (val) => {
   transform: translateY(-6px);
 }
 </style>
+

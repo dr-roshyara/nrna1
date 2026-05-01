@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 export default {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
@@ -9,10 +11,18 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                primary: colors.blue,
+                accent:  colors.amber,
+                success: colors.green,
+                danger:  colors.red,
+                warning: colors.amber,
+                neutral: colors.slate,
+            },
             fontFamily: {
-                sans:  ['Inter', 'Nunito', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-                serif: ['Cormorant Garamond', 'Georgia', 'Times New Roman', 'serif'],
-                mono:  ['DM Mono', 'JetBrains Mono', 'Courier New', 'monospace'],
+                sans:  ['Inter', 'Nunito', 'system-ui', 'sans-serif'],
+                serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                mono:  ['DM Mono', 'monospace'],
             },
             animation: {
                 'pulse-slow': 'pulse-slow 3s ease-in-out infinite',

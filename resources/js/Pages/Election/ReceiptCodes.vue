@@ -25,7 +25,7 @@
             <!-- Verify Vote Button -->
             <a
               href="/vote/verify_to_show"
-              class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+              class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold text-sm rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4"/>
@@ -116,7 +116,7 @@
                         <button
                           v-else-if="hoveredSerial === item.serial"
                           @click="copyToClipboard(item.code, item.serial)"
-                          class="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-600 hover:text-blue-700 rounded-lg transition-colors duration-150 font-semibold text-sm"
+                          class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-100 hover:bg-primary-200 text-primary-600 hover:text-primary-700 rounded-lg transition-colors duration-150 font-semibold text-sm"
                           :title="`Copy ${item.code}`"
                         >
                           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -275,3 +275,4 @@ defineProps({
   }
 });
 </script>
+

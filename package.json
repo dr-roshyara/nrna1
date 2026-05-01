@@ -13,7 +13,10 @@
         "preview": "vite preview",
         "test": "vitest",
         "test:ui": "vitest --ui",
-        "test:coverage": "vitest --coverage"
+        "test:coverage": "vitest --coverage",
+        "design-check": "bash scripts/design-check.sh",
+        "design:fix": "npm run lint -- --fix && npm run design-check",
+        "migration-progress": "bash scripts/migration-progress.sh"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",

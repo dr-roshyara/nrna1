@@ -85,8 +85,8 @@
           <h2 class="font-semibold text-slate-800 text-lg">Review History</h2>
 
           <div v-if="contribution.verified_at" class="flex items-start gap-3">
-            <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-0.5">
-              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
               </svg>
             </div>
@@ -123,7 +123,7 @@
                 <p class="text-xs text-slate-400">{{ formatDate(entry.created_at) }}</p>
               </div>
               <p class="font-bold text-lg"
-                 :class="entry.points >= 0 ? 'text-green-600' : 'text-red-600'">
+                 :class="entry.points >= 0 ? 'text-green-600' : 'text-danger-600'">
                 {{ entry.points >= 0 ? '+' : '' }}{{ entry.points }}
               </p>
             </div>
@@ -136,9 +136,9 @@
           <p class="text-sm text-yellow-700">This contribution is awaiting admin review.</p>
         </div>
         <div v-else-if="contribution.status === 'rejected'"
-             class="bg-red-50 border border-red-200 rounded-2xl p-4 text-center">
-          <p class="text-sm text-red-700">This contribution was rejected.</p>
-          <p v-if="contribution.verifier_notes" class="text-xs text-red-500 mt-1">{{ contribution.verifier_notes }}</p>
+             class="bg-danger-50 border border-danger-200 rounded-2xl p-4 text-center">
+          <p class="text-sm text-danger-700">This contribution was rejected.</p>
+          <p v-if="contribution.verifier_notes" class="text-xs text-danger-500 mt-1">{{ contribution.verifier_notes }}</p>
         </div>
 
       </div>
@@ -156,7 +156,7 @@ defineProps({
 })
 
 const trackBadgeClass = (track) => ({
-  micro:    'bg-blue-100 text-blue-700',
+  micro:    'bg-primary-100 text-primary-700',
   standard: 'bg-amber-100 text-amber-700',
   major:    'bg-purple-100 text-purple-700',
 }[track] || 'bg-slate-100 text-slate-700')
@@ -164,10 +164,10 @@ const trackBadgeClass = (track) => ({
 const statusBadgeClass = (status) => ({
   draft:     'bg-slate-100 text-slate-600',
   pending:   'bg-yellow-100 text-yellow-700',
-  verified:  'bg-blue-100 text-blue-700',
+  verified:  'bg-primary-100 text-primary-700',
   approved:  'bg-green-100 text-green-700',
   completed: 'bg-green-100 text-green-700',
-  rejected:  'bg-red-100 text-red-700',
+  rejected:  'bg-danger-100 text-danger-700',
   appealed:  'bg-orange-100 text-orange-700',
 }[status] || 'bg-slate-100 text-slate-600')
 
@@ -182,3 +182,4 @@ const formatDate = (dateStr) => {
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
 }
 </script>
+

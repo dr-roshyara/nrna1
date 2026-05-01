@@ -4,7 +4,7 @@
     <div class="flex-1">
 
     <a href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:shadow-lg"
     >{{ $t('pages.organisation-show.accessibility.skip_to_main') }}</a>
     <div role="status" aria-live="polite" class="sr-only">
       {{ $t('pages.organisation-show.accessibility.page_loaded', { organisation: organisation.name }) }}
@@ -261,7 +261,7 @@
                   </div>
                 </div>
                 <a :href="route('organisations.election-officers.index', organisation.slug)"
-                  class="text-sm font-semibold text-blue-600 hover:text-blue-800 hover:underline transition-colors">Manage →</a>
+                  class="text-sm font-semibold text-primary-600 hover:text-primary-800 hover:underline transition-colors">Manage →</a>
               </div>
               <div class="px-8 py-5">
                 <div v-if="officers && officers.length > 0" class="flex flex-wrap gap-2">
@@ -272,7 +272,7 @@
                     </div>
                     <span class="font-medium text-slate-700">{{ officer.user_name }}</span>
                     <span class="text-xs font-semibold px-1.5 py-0.5 rounded"
-                      :class="{ 'bg-emerald-100 text-emerald-700': officer.role === 'chief', 'bg-blue-100 text-blue-700': officer.role === 'deputy', 'bg-slate-100 text-slate-600': officer.role === 'commissioner' }">
+                      :class="{ 'bg-emerald-100 text-emerald-700': officer.role === 'chief', 'bg-primary-100 text-primary-700': officer.role === 'deputy', 'bg-slate-100 text-slate-600': officer.role === 'commissioner' }">
                       {{ officer.role }}
                     </span>
                   </div>
@@ -302,7 +302,7 @@
                 <div v-if="elections.length > 0" class="flex flex-col items-end gap-1">
                   <a v-for="election in elections" :key="election.id"
                     :href="route('organisations.elections.voters', { organisation: organisation.slug, election: election.slug })"
-                    class="text-sm font-semibold text-blue-600 hover:text-blue-800 hover:underline transition-colors">
+                    class="text-sm font-semibold text-primary-600 hover:text-primary-800 hover:underline transition-colors">
                     {{ election.name }} →
                   </a>
                 </div>
@@ -351,7 +351,7 @@
                 <a v-for="election in completedElections" :key="election.id"
                   :href="`/elections/${election.slug}/management`"
                   class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg border transition-colors"
-                  :class="election.results_published ? 'border-emerald-300 text-emerald-700 hover:bg-emerald-50' : 'border-blue-300 text-blue-700 hover:bg-blue-50'">
+                  :class="election.results_published ? 'border-emerald-300 text-emerald-700 hover:bg-emerald-50' : 'border-primary-300 text-primary-700 hover:bg-primary-50'">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                   {{ election.name }}
                   <span class="text-xs opacity-70">{{ election.results_published ? '· Published' : '· Unpublished' }}</span>
@@ -694,3 +694,4 @@ useMeta({
 .officer-banner--deputy      { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
 .officer-banner--commissioner { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
 </style>
+

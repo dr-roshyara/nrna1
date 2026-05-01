@@ -17,13 +17,13 @@
 
         <!-- Page Header -->
         <header role="banner" class="text-center mb-12 pt-8 px-4">
-            <h1 class="text-4xl font-bold text-gray-900 mb-3">
+            <h1 class="text-4xl font-bold text-neutral-900 mb-3">
                 {{ $t('pages.vote-show-verify.header.title') }}
             </h1>
-            <p class="text-xl text-gray-700 mb-4">
+            <p class="text-xl text-neutral-700 mb-4">
                 {{ $t('pages.vote-show-verify.header.subtitle') }}
             </p>
-            <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full" aria-hidden="true"></div>
+            <div class="w-24 h-1 bg-primary-600 mx-auto rounded-full" aria-hidden="true"></div>
         </header>
 
         <!-- Main Container -->
@@ -61,7 +61,7 @@
                                 </div>
                                 <button
                                     @click="copyToClipboard"
-                                    :class="copied ? 'bg-green-400 text-white' : 'bg-white text-green-600 hover:bg-gray-100'"
+                                    :class="copied ? 'bg-green-400 text-white' : 'bg-white text-green-600 hover:bg-neutral-100'"
                                     class="font-bold py-2 px-6 rounded-lg transition-colors"
                                 >
                                     {{ copied ? $t('pages.vote-show-verify.demo_success.copy_button_copied') : $t('pages.vote-show-verify.demo_success.copy_button_initial') }}
@@ -132,21 +132,21 @@
                         <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">
                             {{ $t('pages.vote-show-verify.main_card.title') }}
                         </h2>
-                        <p class="text-blue-100 text-lg">
+                        <p class="text-primary-100 text-lg">
                             {{ $t('pages.vote-show-verify.main_card.subtitle') }}
                         </p>
                     </div>
 
                     <!-- Election Type Selector -->
-                    <div class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200 px-8 py-8">
+                    <div class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-neutral-200 px-8 py-8">
                         <div class="max-w-2xl mx-auto">
-                            <p class="text-base md:text-lg font-bold text-gray-900 mb-6 text-center">{{ $t('pages.vote-show-verify.election_type.label') }}</p>
+                            <p class="text-base md:text-lg font-bold text-neutral-900 mb-6 text-center">{{ $t('pages.vote-show-verify.election_type.label') }}</p>
                             <div class="flex flex-col md:flex-row gap-6 md:gap-12">
                                 <!-- Real Election Option -->
                                 <label class="flex items-center cursor-pointer flex-1 p-6 rounded-xl border-3 hover:bg-white hover:shadow-lg transition-all duration-200"
                                     :class="form.electionType === 'real'
-                                        ? 'border-blue-600 bg-blue-50'
-                                        : 'border-gray-400 bg-gray-50 hover:border-blue-400'"
+                                        ? 'border-primary-600 bg-primary-50'
+                                        : 'border-neutral-400 bg-neutral-50 hover:border-primary-400'"
                                 >
                                     <div class="relative shrink-0">
                                         <input
@@ -158,23 +158,23 @@
                                         <div
                                             class="w-8 h-8 border-4 rounded-full transition-all duration-200 flex items-center justify-center"
                                             :class="form.electionType === 'real'
-                                                ? 'border-blue-600 bg-white'
-                                                : 'border-gray-500 bg-white hover:border-blue-500'"
+                                                ? 'border-primary-600 bg-white'
+                                                : 'border-neutral-500 bg-white hover:border-primary-500'"
                                         >
                                             <div
                                                 v-if="form.electionType === 'real'"
-                                                class="w-4 h-4 bg-blue-600 rounded-full"
+                                                class="w-4 h-4 bg-primary-600 rounded-full"
                                             ></div>
                                         </div>
                                     </div>
-                                    <span class="ml-4 text-lg font-bold text-gray-900">{{ $t('pages.vote-show-verify.election_type.real') }}</span>
+                                    <span class="ml-4 text-lg font-bold text-neutral-900">{{ $t('pages.vote-show-verify.election_type.real') }}</span>
                                 </label>
 
                                 <!-- Demo Election Option -->
                                 <label class="flex items-center cursor-pointer flex-1 p-6 rounded-xl border-3 hover:bg-white hover:shadow-lg transition-all duration-200"
                                     :class="form.electionType === 'demo'
                                         ? 'border-green-600 bg-green-50'
-                                        : 'border-gray-400 bg-gray-50 hover:border-green-400'"
+                                        : 'border-neutral-400 bg-neutral-50 hover:border-green-400'"
                                 >
                                     <div class="relative shrink-0">
                                         <input
@@ -187,7 +187,7 @@
                                             class="w-8 h-8 border-4 rounded-full transition-all duration-200 flex items-center justify-center"
                                             :class="form.electionType === 'demo'
                                                 ? 'border-green-600 bg-white'
-                                                : 'border-gray-500 bg-white hover:border-green-500'"
+                                                : 'border-neutral-500 bg-white hover:border-green-500'"
                                         >
                                             <div
                                                 v-if="form.electionType === 'demo'"
@@ -195,7 +195,7 @@
                                             ></div>
                                         </div>
                                     </div>
-                                    <span class="ml-4 text-lg font-bold text-gray-900">{{ $t('pages.vote-show-verify.election_type.demo') }}</span>
+                                    <span class="ml-4 text-lg font-bold text-neutral-900">{{ $t('pages.vote-show-verify.election_type.demo') }}</span>
                                 </label>
                             </div>
                         </div>
@@ -207,13 +207,13 @@
                         <div v-if="form.electionType === 'real'">
                             <!-- Instructions -->
                             <div class="mb-8 text-center">
-                                <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                <div class="inline-flex items-center space-x-2 bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                     </svg>
                                     <span>{{ $t('pages.vote-show-verify.real_election.instructions_title') }}</span>
                                 </div>
-                                <p class="text-gray-600 max-w-md mx-auto">
+                                <p class="text-neutral-600 max-w-md mx-auto">
                                     {{ $t('pages.vote-show-verify.real_election.instructions') }}
                                 </p>
                             </div>
@@ -222,9 +222,9 @@
                             <form @submit.prevent="submit" class="space-y-6">
                                 <!-- Verification Code Input -->
                                 <div class="space-y-2">
-                                    <label for="voting_code_real" class="block text-sm font-semibold text-gray-700 mb-3">
+                                    <label for="voting_code_real" class="block text-sm font-semibold text-neutral-700 mb-3">
                                         <span class="flex items-center space-x-2">
-                                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
                                             </svg>
                                             <span>{{ $t('pages.vote-show-verify.real_election.label') }}</span>
@@ -237,9 +237,9 @@
                                             type="text"
                                             v-model="form.voting_code"
                                             :placeholder="$t('pages.vote-show-verify.real_election.placeholder')"
-                                            class="w-full px-6 py-4 text-lg font-mono border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 bg-gray-50 focus:bg-white"
+                                            class="w-full px-6 py-4 text-lg font-mono border-2 border-neutral-200 rounded-xl focus:border-primary-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 bg-neutral-50 focus:bg-white"
                                             :class="{
-                                                'border-red-300 focus:border-red-500 focus:ring-red-100': form.errors.voting_code,
+                                                'border-danger-300 focus:border-danger-500 focus:ring-red-100': form.errors.voting_code,
                                                 'border-green-300 focus:border-green-500 focus:ring-green-100': form.voting_code && !form.errors.voting_code
                                             }"
                                             autocomplete="off"
@@ -250,7 +250,7 @@
                                         <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
                                             <svg
                                                 v-if="form.processing"
-                                                class="w-5 h-5 text-blue-500 animate-spin"
+                                                class="w-5 h-5 text-primary-500 animate-spin"
                                                 fill="none"
                                                 viewBox="0 0 24 24"
                                             >
@@ -268,7 +268,7 @@
                                             </svg>
                                             <svg
                                                 v-else
-                                                class="w-5 h-5 text-gray-400"
+                                                class="w-5 h-5 text-neutral-400"
                                                 fill="none"
                                                 stroke="currentColor"
                                                 viewBox="0 0 24 24"
@@ -320,7 +320,7 @@
                                     </svg>
                                     <span>{{ $t('pages.vote-show-verify.demo_election.instructions_title') }}</span>
                                 </div>
-                                <p class="text-gray-600 max-w-md mx-auto">
+                                <p class="text-neutral-600 max-w-md mx-auto">
                                     {{ $t('pages.vote-show-verify.demo_election.instructions') }}
                                 </p>
                             </div>
@@ -329,7 +329,7 @@
                             <form @submit.prevent="submitDemo" class="space-y-6">
                                 <!-- Verification Code Input -->
                                 <div class="space-y-2">
-                                    <label for="voting_code_demo" class="block text-sm font-semibold text-gray-700 mb-3">
+                                    <label for="voting_code_demo" class="block text-sm font-semibold text-neutral-700 mb-3">
                                         <span class="flex items-center space-x-2">
                                             <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -344,9 +344,9 @@
                                             type="text"
                                             v-model="form.demo_voting_code"
                                             :placeholder="$t('pages.vote-show-verify.demo_election.placeholder')"
-                                            class="w-full px-6 py-4 text-lg font-mono border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-200 bg-gray-50 focus:bg-white"
+                                            class="w-full px-6 py-4 text-lg font-mono border-2 border-neutral-200 rounded-xl focus:border-green-500 focus:ring-4 focus:ring-green-100 transition-all duration-200 bg-neutral-50 focus:bg-white"
                                             :class="{
-                                                'border-red-300 focus:border-red-500 focus:ring-red-100': form.errors.demo_voting_code,
+                                                'border-danger-300 focus:border-danger-500 focus:ring-red-100': form.errors.demo_voting_code,
                                                 'border-green-300 focus:border-green-500 focus:ring-green-100': form.demo_voting_code && !form.errors.demo_voting_code
                                             }"
                                             autocomplete="off"
@@ -375,7 +375,7 @@
                                             </svg>
                                             <svg
                                                 v-else
-                                                class="w-5 h-5 text-gray-400"
+                                                class="w-5 h-5 text-neutral-400"
                                                 fill="none"
                                                 stroke="currentColor"
                                                 viewBox="0 0 24 24"
@@ -418,27 +418,27 @@
                         </div>
 
                         <!-- Help Section -->
-                        <div class="mt-12 pt-8 border-t border-gray-100">
+                        <div class="mt-12 pt-8 border-t border-neutral-100">
                             <div class="text-center">
-                                <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ $t('pages.vote-show-verify.help.title') }}</h3>
+                                <h3 class="text-lg font-semibold text-neutral-900 mb-4">{{ $t('pages.vote-show-verify.help.title') }}</h3>
                                 <div class="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
                                     <!-- Help Item 1 -->
-                                    <div class="bg-gray-50 rounded-lg p-4 text-left">
+                                    <div class="bg-neutral-50 rounded-lg p-4 text-left">
                                         <div class="flex items-start space-x-3">
-                                            <div class="shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <div class="shrink-0 w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                                                <svg class="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                                 </svg>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-gray-900">{{ $t('pages.vote-show-verify.help.check_email.title') }}</h4>
-                                                <p class="text-sm text-gray-600">{{ $t('pages.vote-show-verify.help.check_email.description') }}</p>
+                                                <h4 class="font-medium text-neutral-900">{{ $t('pages.vote-show-verify.help.check_email.title') }}</h4>
+                                                <p class="text-sm text-neutral-600">{{ $t('pages.vote-show-verify.help.check_email.description') }}</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Help Item 2 -->
-                                    <div class="bg-gray-50 rounded-lg p-4 text-left">
+                                    <div class="bg-neutral-50 rounded-lg p-4 text-left">
                                         <div class="flex items-start space-x-3">
                                             <div class="shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                                                 <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -446,8 +446,8 @@
                                                 </svg>
                                             </div>
                                             <div>
-                                                <h4 class="font-medium text-gray-900">{{ $t('pages.vote-show-verify.help.contact_support.title') }}</h4>
-                                                <p class="text-sm text-gray-600">{{ $t('pages.vote-show-verify.help.contact_support.description') }}</p>
+                                                <h4 class="font-medium text-neutral-900">{{ $t('pages.vote-show-verify.help.contact_support.title') }}</h4>
+                                                <p class="text-sm text-neutral-600">{{ $t('pages.vote-show-verify.help.contact_support.description') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -459,7 +459,7 @@
 
                 <!-- Footer Notice -->
                 <div class="mt-8 text-center">
-                    <div class="inline-flex items-center space-x-2 text-sm text-gray-500">
+                    <div class="inline-flex items-center space-x-2 text-sm text-neutral-500">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>

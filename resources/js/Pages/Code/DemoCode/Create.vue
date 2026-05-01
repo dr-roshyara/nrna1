@@ -30,12 +30,12 @@
             <!-- Instructions -->
             <div class="bg-white rounded-lg shadow-md p-6 mb-6 max-w-4xl mx-auto">
                 <!-- Code Expired Warning -->
-                <div v-if="codeExpired" class="p-4 bg-red-50 rounded-lg border-l-4 border-red-500 mb-4">
-                    <p class="text-red-900 font-medium flex items-center">
-                        <span class="inline-block w-5 h-5 bg-red-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">⏱</span>
+                <div v-if="codeExpired" class="p-4 bg-danger-50 rounded-lg border-l-4 border-danger-500 mb-4">
+                    <p class="text-danger-900 font-medium flex items-center">
+                        <span class="inline-block w-5 h-5 bg-danger-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">⏱</span>
                         {{ $i18n.locale === 'np' ? 'आपको कोड समाप्त भएको छ' : $i18n.locale === 'de' ? 'Ihr Code ist abgelaufen' : 'Your code has expired' }}
                     </p>
-                    <p class="text-red-800 text-sm mt-2">
+                    <p class="text-danger-800 text-sm mt-2">
                         {{ $i18n.locale === 'np' ? 'कृपया नई कोड के लिए हमसे संपर्क करें' : $i18n.locale === 'de' ? 'Bitte kontaktieren Sie uns für einen neuen Code' : 'Please contact us for a new code' }}
                     </p>
                 </div>
@@ -98,12 +98,12 @@
                 </div>
 
                 <!-- Instructions: Public Demo -->
-                <div v-if="is_public_demo && !codeExpired" class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-                    <p class="text-gray-900 font-medium mb-2 flex items-center">
-                        <span class="inline-block w-5 h-5 bg-blue-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">!</span>
+                <div v-if="is_public_demo && !codeExpired" class="p-4 bg-primary-50 rounded-lg border-l-4 border-primary-500">
+                    <p class="text-neutral-900 font-medium mb-2 flex items-center">
+                        <span class="inline-block w-5 h-5 bg-primary-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">!</span>
                         {{ $t('pages.code-create.public_demo.instructions_title') }}
                     </p>
-                    <p class="text-gray-800 leading-relaxed">
+                    <p class="text-neutral-800 leading-relaxed">
                         {{ $t('pages.code-create.public_demo.instructions_body') }}
                     </p>
                 </div>
@@ -131,10 +131,10 @@
                                 <!-- Main content -->
                                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                                     <div class="flex-1">
-                                        <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight">
+                                        <h3 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-2 leading-tight">
                                             ❓ {{ $t('pages.code-create.public_demo.how_it_works.title') }}
                                         </h3>
-                                        <p class="text-gray-700 text-lg leading-relaxed mb-4 max-w-lg">
+                                        <p class="text-neutral-700 text-lg leading-relaxed mb-4 max-w-lg">
                                             {{ $t('pages.code-create.public_demo.how_it_works.description') }}
                                         </p>
 
@@ -170,12 +170,12 @@
                 </div>
 
                 <!-- Instructions: Normal Demo (email-based) -->
-                <div v-else-if="!is_public_demo && !codeExpired" class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-                    <p class="text-gray-900 font-medium mb-3 flex items-center">
-                        <span class="inline-block w-5 h-5 bg-blue-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">!</span>
+                <div v-else-if="!is_public_demo && !codeExpired" class="p-4 bg-primary-50 rounded-lg border-l-4 border-primary-500">
+                    <p class="text-neutral-900 font-medium mb-3 flex items-center">
+                        <span class="inline-block w-5 h-5 bg-primary-600 text-white rounded-full text-xs leading-5 mr-2 flex items-center justify-center">!</span>
                         {{ $t('pages.code-create.instructions.nepali_section') }}
                     </p>
-                    <p class="text-gray-800 leading-relaxed mb-1">
+                    <p class="text-neutral-800 leading-relaxed mb-1">
                         {{ getInstructions() }}
                     </p>
                     <p v-if="$i18n.locale !== 'en'" class="mt-4 text-sm font-semibold text-amber-800 bg-amber-50 p-3 rounded-sm border-l-4 border-amber-400">
@@ -191,13 +191,13 @@
 
             <!-- Form -->
             <form @submit.prevent="submit" class="mx-auto mt-6 w-full text-center">
-                <div class="bg-white rounded-lg shadow-lg border border-gray-200 px-6 py-8 max-w-2xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg border border-neutral-200 px-6 py-8 max-w-2xl mx-auto">
                     <!-- Code Input -->
                     <div class="mb-8">
                         <label for="voting_code" class="block mb-6">
                             <div class="flex items-center justify-center mb-2">
                                 <span class="text-2xl mr-2">🔑</span>
-                                <p class="text-xl font-bold text-gray-900">{{ $t('pages.code-create.form.code_label') }}</p>
+                                <p class="text-xl font-bold text-neutral-900">{{ $t('pages.code-create.form.code_label') }}</p>
                             </div>
                         </label>
 
@@ -209,9 +209,9 @@
                                 v-model="form.voting_code"
                                 class="w-full px-6 py-5 text-3xl font-mono text-center tracking-widest border-3 rounded-2xl focus:ring-4 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 uppercase shadow-md"
                                 :class="{
-                                    'border-red-300 bg-red-50': form.errors.voting_code,
+                                    'border-danger-300 bg-danger-50': form.errors.voting_code,
                                     'border-green-400 bg-green-50': form.voting_code && form.voting_code.length === 8 && !form.errors.voting_code,
-                                    'border-gray-300': !form.voting_code || form.voting_code.length !== 8 || !form.errors.voting_code
+                                    'border-neutral-300': !form.voting_code || form.voting_code.length !== 8 || !form.errors.voting_code
                                 }"
                                 :placeholder="$t('pages.code-create.form.code_placeholder')"
                                 maxlength="8"
@@ -226,19 +226,19 @@
                                      class="w-12 h-12 rounded-lg border-2 flex items-center justify-center font-bold text-lg transition-all"
                                      :class="{
                                          'border-purple-500 bg-purple-50': (form.voting_code && form.voting_code.length >= i),
-                                         'border-gray-300': !form.voting_code || form.voting_code.length < i
+                                         'border-neutral-300': !form.voting_code || form.voting_code.length < i
                                      }">
                                     <span v-if="form.voting_code && form.voting_code.length >= i"
-                                          class="text-gray-900">
+                                          class="text-neutral-900">
                                         {{ form.voting_code.charAt(i-1) }}
                                     </span>
-                                    <span v-else class="text-gray-400">_</span>
+                                    <span v-else class="text-neutral-400">_</span>
                                 </div>
                             </div>
 
                             <!-- Status Indicators -->
                             <div class="mt-6 flex items-center justify-between px-2">
-                                <div class="text-sm text-gray-600">
+                                <div class="text-sm text-neutral-600">
                                     <span v-if="form.voting_code">
                                         {{ form.voting_code.length }}/8 {{ $t('pages.code-create.form.characters_label') }}
                                     </span>
@@ -254,13 +254,13 @@
                             </div>
 
                             <!-- Validation Errors -->
-                            <div v-if="form.errors.voting_code" class="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                            <div v-if="form.errors.voting_code" class="mt-4 p-3 bg-danger-50 border border-danger-200 rounded-lg">
                                 <div class="flex items-center">
-                                    <svg class="w-5 h-5 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5 text-danger-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                               d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    <span class="text-red-700">{{ form.errors.voting_code }}</span>
+                                    <span class="text-danger-700">{{ form.errors.voting_code }}</span>
                                 </div>
                             </div>
                         </div>
@@ -274,7 +274,7 @@
                             class="w-full font-bold py-4 px-6 rounded-lg transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
                             :class="{
                                 'bg-purple-600 hover:bg-purple-700 text-white cursor-pointer': form.voting_code.length === 8 && !codeExpired,
-                                'bg-gray-300 text-gray-500 cursor-not-allowed': form.voting_code.length !== 8 || codeExpired
+                                'bg-neutral-300 text-neutral-500 cursor-not-allowed': form.voting_code.length !== 8 || codeExpired
                             }"
                         >
                             {{ $t('pages.code-create.form.submit_button') }}
@@ -401,3 +401,4 @@ const handleSubmit = () => {
     }
 };
 </script>
+

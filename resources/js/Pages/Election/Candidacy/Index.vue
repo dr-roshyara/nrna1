@@ -72,7 +72,7 @@
                 <div class="flex items-center gap-2 mt-1">
                   <span
                     class="text-xs px-2 py-0.5 rounded-full font-medium"
-                    :class="post.is_national_wide ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700'"
+                    :class="post.is_national_wide ? 'bg-primary-100 text-primary-700' : 'bg-amber-100 text-amber-700'"
                   >
                     {{ post.is_national_wide ? 'National' : post.state_name }}
                   </span>
@@ -204,8 +204,8 @@ function statusClass(status) {
   return {
     draft:     'bg-orange-100 text-orange-700',
     approved:  'bg-emerald-100 text-emerald-700',
-    pending:   'bg-blue-100 text-blue-700',
-    rejected:  'bg-red-100 text-red-700',
+    pending:   'bg-primary-100 text-primary-700',
+    rejected:  'bg-danger-100 text-danger-700',
     withdrawn: 'bg-slate-100 text-slate-500',
   }[status] ?? 'bg-slate-100 text-slate-500'
 }
@@ -248,3 +248,4 @@ function remove(post, candidate) {
   )
 }
 </script>
+

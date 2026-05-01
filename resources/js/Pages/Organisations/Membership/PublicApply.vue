@@ -33,7 +33,7 @@
 
           <!-- Error summary -->
           <div v-if="Object.keys(page.props.errors ?? {}).length"
-               class="bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-700">
+               class="bg-danger-50 border border-danger-200 rounded-lg px-4 py-3 text-sm text-danger-700">
             <ul class="space-y-1">
               <li v-for="(msg, field) in page.props.errors" :key="field">{{ msg }}</li>
             </ul>
@@ -43,33 +43,33 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium text-slate-700 mb-1">
-                {{ t.first_name }} <span class="text-red-500">*</span>
+                {{ t.first_name }} <span class="text-danger-500">*</span>
               </label>
               <input v-model="form.first_name" type="text" required
                      :class="inputClass('first_name')"
                      :placeholder="t.first_name" />
-              <p v-if="page.props.errors?.first_name" class="mt-1 text-xs text-red-600">{{ page.props.errors.first_name }}</p>
+              <p v-if="page.props.errors?.first_name" class="mt-1 text-xs text-danger-600">{{ page.props.errors.first_name }}</p>
             </div>
             <div>
               <label class="block text-sm font-medium text-slate-700 mb-1">
-                {{ t.last_name }} <span class="text-red-500">*</span>
+                {{ t.last_name }} <span class="text-danger-500">*</span>
               </label>
               <input v-model="form.last_name" type="text" required
                      :class="inputClass('last_name')"
                      :placeholder="t.last_name" />
-              <p v-if="page.props.errors?.last_name" class="mt-1 text-xs text-red-600">{{ page.props.errors.last_name }}</p>
+              <p v-if="page.props.errors?.last_name" class="mt-1 text-xs text-danger-600">{{ page.props.errors.last_name }}</p>
             </div>
           </div>
 
           <!-- Email -->
           <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">
-              {{ t.email }} <span class="text-red-500">*</span>
+              {{ t.email }} <span class="text-danger-500">*</span>
             </label>
             <input v-model="form.email" type="email" required
                    :class="inputClass('email')"
                    :placeholder="t.email" />
-            <p v-if="page.props.errors?.email" class="mt-1 text-xs text-red-600">{{ page.props.errors.email }}</p>
+            <p v-if="page.props.errors?.email" class="mt-1 text-xs text-danger-600">{{ page.props.errors.email }}</p>
           </div>
 
           <!-- Telephone -->
@@ -218,7 +218,7 @@ const submitting = ref(false)
 const inputClass = (field) => {
   const base = 'w-full rounded-lg border px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-colors'
   const hasError = page.props.errors?.[field]
-  return base + (hasError ? ' border-red-400 bg-red-50' : ' border-slate-300 bg-white hover:border-slate-400')
+  return base + (hasError ? ' border-danger-400 bg-danger-50' : ' border-slate-300 bg-white hover:border-slate-400')
 }
 
 const submit = () => {
@@ -233,3 +233,4 @@ const submit = () => {
   )
 }
 </script>
+

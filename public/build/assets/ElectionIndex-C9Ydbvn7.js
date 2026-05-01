@@ -1,1 +1,0 @@
-import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{j as o,o as t}from"./vendor-Bs2ZqbsM.js";const n={};function c(r,s,a,p,_,f){return t(),o("div",null," Election Menfesto ")}const d=e(n,[["render",c]]);export{d as default};

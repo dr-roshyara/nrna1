@@ -42,8 +42,8 @@
               <div class="text-2xl font-bold text-emerald-700">{{ stats.active_elections }}</div>
               <div class="text-xs text-slate-500 mt-1">Active</div>
             </div>
-            <div class="text-center p-4 bg-blue-50 rounded-xl">
-              <div class="text-2xl font-bold text-blue-700">{{ stats.total_voters }}</div>
+            <div class="text-center p-4 bg-primary-50 rounded-xl">
+              <div class="text-2xl font-bold text-primary-700">{{ stats.total_voters }}</div>
               <div class="text-xs text-slate-500 mt-1">Active Voters</div>
             </div>
             <div class="text-center p-4 bg-slate-50 rounded-xl">
@@ -81,7 +81,7 @@
                   Election Management
                 </a>
                 <a :href="route('organisations.elections.voters', { organisation: organisation.slug, election: election.slug })"
-                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium transition-colors"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium transition-colors"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                   Voter Management
@@ -127,3 +127,4 @@ const props = defineProps({
 
 const page = usePage()
 </script>
+

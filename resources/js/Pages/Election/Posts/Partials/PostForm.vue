@@ -3,24 +3,24 @@
 
     <!-- Server validation errors summary -->
     <div v-if="Object.keys(errors).length"
-         class="bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-800 space-y-1">
+         class="bg-danger-50 border border-danger-200 rounded-lg px-4 py-3 text-sm text-danger-800 space-y-1">
       <p v-for="(msg, field) in errors" :key="field">{{ Array.isArray(msg) ? msg[0] : msg }}</p>
     </div>
 
     <div class="grid grid-cols-2 gap-4">
       <div>
         <label class="block text-sm font-medium text-neutral-700 mb-1">
-          Position Name <span class="text-red-500">*</span>
+          Position Name <span class="text-danger-500">*</span>
         </label>
         <input v-model="form.name" type="text" required maxlength="255"
                :class="inputClass('name')" />
-        <p v-if="errors.name" class="text-xs text-red-600 mt-1">{{ firstError('name') }}</p>
+        <p v-if="errors.name" class="text-xs text-danger-600 mt-1">{{ firstError('name') }}</p>
       </div>
       <div>
         <label class="block text-sm font-medium text-neutral-700 mb-1">Nepali Name</label>
         <input v-model="form.nepali_name" type="text" maxlength="255"
                :class="inputClass('nepali_name')" />
-        <p v-if="errors.nepali_name" class="text-xs text-red-600 mt-1">{{ firstError('nepali_name') }}</p>
+        <p v-if="errors.nepali_name" class="text-xs text-danger-600 mt-1">{{ firstError('nepali_name') }}</p>
       </div>
     </div>
 
@@ -34,26 +34,26 @@
       </div>
       <div v-if="!form.is_national_wide">
         <label class="block text-sm font-medium text-neutral-700 mb-1">
-          State / Region <span class="text-red-500">*</span>
+          State / Region <span class="text-danger-500">*</span>
         </label>
         <input v-model="form.state_name" type="text"
                :required="!form.is_national_wide" maxlength="255"
                :class="inputClass('state_name')" />
-        <p v-if="errors.state_name" class="text-xs text-red-600 mt-1">{{ firstError('state_name') }}</p>
+        <p v-if="errors.state_name" class="text-xs text-danger-600 mt-1">{{ firstError('state_name') }}</p>
       </div>
       <div>
         <label class="block text-sm font-medium text-neutral-700 mb-1">
-          Seats <span class="text-red-500">*</span>
+          Seats <span class="text-danger-500">*</span>
         </label>
         <input v-model.number="form.required_number" type="number" min="1" max="50" step="1" required
                :class="inputClass('required_number')" />
-        <p v-if="errors.required_number" class="text-xs text-red-600 mt-1">{{ firstError('required_number') }}</p>
+        <p v-if="errors.required_number" class="text-xs text-danger-600 mt-1">{{ firstError('required_number') }}</p>
       </div>
       <div>
         <label class="block text-sm font-medium text-neutral-700 mb-1">Display Order</label>
         <input v-model.number="form.position_order" type="number" min="0" max="999" step="1"
                :class="inputClass('position_order')" />
-        <p v-if="errors.position_order" class="text-xs text-red-600 mt-1">{{ firstError('position_order') }}</p>
+        <p v-if="errors.position_order" class="text-xs text-danger-600 mt-1">{{ firstError('position_order') }}</p>
       </div>
     </div>
 
@@ -83,7 +83,7 @@ defineEmits(['submit', 'cancel'])
 function inputClass(field) {
   return [
     'w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500',
-    props.errors[field] ? 'border-red-500' : 'border-neutral-300',
+    props.errors[field] ? 'border-danger-500' : 'border-neutral-300',
   ]
 }
 
@@ -92,3 +92,4 @@ function firstError(field) {
   return Array.isArray(e) ? e[0] : e
 }
 </script>
+

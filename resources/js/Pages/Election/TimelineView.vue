@@ -5,7 +5,7 @@
       <div class="mb-6">
         <Link
           :href="route('elections.management', election.slug)"
-          class="text-blue-600 hover:text-blue-800 inline-flex items-center gap-1 transition-colors"
+          class="text-primary-600 hover:text-primary-800 inline-flex items-center gap-1 transition-colors"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -19,7 +19,7 @@
           </div>
           <Link
             :href="route('elections.timeline', election.slug)"
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-2 transition-colors"
+            class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 flex items-center gap-2 transition-colors"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -34,7 +34,7 @@
 
         <!-- Administration Phase -->
         <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          <div class="p-4 bg-blue-50 border-b border-blue-100">
+          <div class="p-4 bg-primary-50 border-b border-primary-100">
             <div class="flex items-center gap-2">
               <span class="text-2xl">⚙️</span>
               <h2 class="font-semibold text-slate-800">Administration Phase</h2>
@@ -191,3 +191,4 @@ const progressPercentage = computed(() => {
   return (completed / 4) * 100
 })
 </script>
+

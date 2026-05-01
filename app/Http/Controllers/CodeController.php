@@ -363,6 +363,14 @@ class CodeController extends Controller
             'slug' => $voterSlug ? $voterSlug->slug : null,
         ]);
 
+        app(\App\Services\ElectionAuditService::class)->logVoterAction(
+            election: $election,
+            voter: $user,
+            step: 1,
+            action: 'code_verified',
+            metadata: ['code_id' => $code->id]
+        );
+
         // Redirect to agreement page
         $agreementUrl = $voterSlug
             ? route('slug.code.agreement', ['vslug' => $voterSlug->slug])
@@ -601,6 +609,13 @@ class CodeController extends Controller
             'user_id' => $user->id,
             'slug' => $voterSlug ? $voterSlug->slug : null,
         ]);
+
+        app(\App\Services\ElectionAuditService::class)->logVoterAction(
+            election: $election,
+            voter: $user,
+            step: 2,
+            action: 'agreement_accepted'
+        );
 
         // Redirect to voting page
         $voteUrl = $voterSlug

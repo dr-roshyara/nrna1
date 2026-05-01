@@ -29,13 +29,13 @@
                             value="Name Prefex (optional)"
                         />
                         <div
-                            class="rounded-md border-gray-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class="rounded-md border-neutral-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                         >
                             <select
                                 name="name_prefex"
                                 id="name_prefex"
                                 v-model="form.name_prefex"
-                                class="focus:shadow-outline block w-full appearance-none rounded-sm border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-gray-500 focus:outline-none"
+                                class="focus:shadow-outline block w-full appearance-none rounded-sm border border-neutral-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-neutral-500 focus:outline-none"
                             >
                                 <option value="Ms">Ms</option>
                                 <option value="Miss">Miss</option>
@@ -49,7 +49,7 @@
                                 </option>
                             </select>
                             <div
-                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-neutral-700"
                             >
                                 <svg
                                     class="h-4 w-4 fill-current"
@@ -106,20 +106,20 @@
                     <div class="mt-4">
                         <jet-label for="gender" value="Gender (optional)" />
                         <div
-                            class="rounded-md border-gray-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class="rounded-md border-neutral-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                         >
                             <select
                                 name="gender"
                                 id="gender"
                                 v-model="form.gender"
-                                class="focus:shadow-outline block w-full appearance-none rounded-sm border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-gray-500 focus:outline-none"
+                                class="focus:shadow-outline block w-full appearance-none rounded-sm border border-neutral-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-neutral-500 focus:outline-none"
                             >
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Other">Other</option>
                             </select>
                             <div
-                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-neutral-700"
                             >
                                 <svg
                                     class="h-4 w-4 fill-current"
@@ -137,13 +137,13 @@
                     <div class="mt-4">
                         <jet-label for="region" value="Region" />
                         <div
-                            class="rounded-md border-gray-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
+                            class="rounded-md border-neutral-300 shadow-xs focus:border-indigo-300 focus:ring-3 focus:ring-indigo-200 focus:ring-opacity-50"
                         >
                             <select
                                 name="region"
                                 id="region"
                                 v-model="form.region"
-                                class="focus:shadow-outline block w-full appearance-none rounded-sm border border-gray-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-gray-500 focus:outline-none"
+                                class="focus:shadow-outline block w-full appearance-none rounded-sm border border-neutral-400 bg-white px-4 py-2 pr-8 leading-tight shadow-sm hover:border-neutral-500 focus:outline-none"
                             >
                                 <option>Europe</option>
                                 <option>America</option>
@@ -154,7 +154,7 @@
                                 <option>Oceania</option>
                             </select>
                             <div
-                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-neutral-700"
                             >
                                 <svg
                                     class="h-4 w-4 fill-current"
@@ -373,3 +373,4 @@ export default {
     },
 };
 </script>
+

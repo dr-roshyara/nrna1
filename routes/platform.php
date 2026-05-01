@@ -23,4 +23,7 @@ Route::middleware(['auth', 'verified', 'platform_admin'])
 
         Route::post('/elections/{election}/reject', [AdminElectionController::class, 'reject'])
             ->name('elections.reject');
+
+        Route::get('/elections/{election}/audit/{folder}/voters/{file}', [AdminElectionController::class, 'downloadAuditFile'])
+            ->name('elections.audit.download');
     });

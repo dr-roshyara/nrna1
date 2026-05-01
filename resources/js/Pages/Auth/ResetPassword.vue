@@ -11,13 +11,13 @@
                 <!-- Card -->
                 <div class="bg-white rounded-lg shadow-lg p-8 border border-slate-200">
                     <!-- Error Messages -->
-                    <div v-if="Object.keys(form.errors).length > 0" class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <div v-if="Object.keys(form.errors).length > 0" class="mb-6 p-4 bg-danger-50 border border-danger-200 rounded-lg">
                         <div class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-5 h-5 text-danger-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                             </svg>
                             <div class="flex-1">
-                                <p v-for="(error, field) in form.errors" :key="field" class="text-sm text-red-700 font-medium">
+                                <p v-for="(error, field) in form.errors" :key="field" class="text-sm text-danger-700 font-medium">
                                     {{ error }}
                                 </p>
                             </div>
@@ -164,10 +164,10 @@
                                 </button>
                             </div>
                             <div v-if="form.password_confirmation && !passwordsMatch" class="mt-2 flex items-center gap-2">
-                                <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                <svg class="w-4 h-4 text-danger-500" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M18.169 12.842A8.003 8.003 0 002.999 7C3 5.668 3.331 4.406 3.901 3.289l-1.414-1.414A9.969 9.969 0 001 7a10 10 0 0018.834 0 9.963 9.963 0 00-.098-.93l-1.608.608A8.003 8.003 0 0118.169 12.842zM1.831 7.158A8.003 8.003 0 0017.001 13c0 1.332-.331 2.594-.901 3.711l1.414 1.414a9.969 9.969 0 002.486-3.711 10 10 0 00-18.834 0 9.964 9.964 0 00.098.93l1.608-.608zM10 15a5 5 0 110-10 5 5 0 010 10zm0-2a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
                                 </svg>
-                                <p class="text-sm text-red-600 font-medium">Passwords do not match</p>
+                                <p class="text-sm text-danger-600 font-medium">Passwords do not match</p>
                             </div>
                             <div v-else-if="form.password_confirmation && passwordsMatch" class="mt-2 flex items-center gap-2">
                                 <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
@@ -267,7 +267,7 @@ export default {
         passwordStrengthColor() {
             const percent = this.passwordStrengthPercent
             if (percent === 0) return 'text-slate-500'
-            if (percent <= 25) return 'text-red-600'
+            if (percent <= 25) return 'text-danger-600'
             if (percent <= 50) return 'text-orange-600'
             if (percent <= 75) return 'text-yellow-600'
             return 'text-green-600'
@@ -276,7 +276,7 @@ export default {
         passwordStrengthBarColor() {
             const percent = this.passwordStrengthPercent
             if (percent === 0) return 'bg-slate-300'
-            if (percent <= 25) return 'bg-red-500'
+            if (percent <= 25) return 'bg-danger-500'
             if (percent <= 50) return 'bg-orange-500'
             if (percent <= 75) return 'bg-yellow-500'
             return 'bg-green-500'
@@ -310,3 +310,4 @@ export default {
     },
 }
 </script>
+

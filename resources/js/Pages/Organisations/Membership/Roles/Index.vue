@@ -12,21 +12,21 @@
           {{ $page.props.flash.success }}
         </div>
         <div v-if="$page.props.flash?.error"
-             class="mb-6 flex items-center gap-3 bg-red-50 border border-red-200 text-red-800 rounded-lg px-5 py-4 text-sm">
+             class="mb-6 flex items-center gap-3 bg-danger-50 border border-danger-200 text-danger-800 rounded-lg px-5 py-4 text-sm">
           {{ $page.props.flash.error }}
         </div>
 
         <!-- Header -->
         <div class="mb-8">
           <Link :href="`/organisations/${organisation.slug}/membership`"
-                class="inline-flex items-center text-blue-600 hover:text-blue-700 text-sm mb-2">
+                class="inline-flex items-center text-primary-600 hover:text-primary-700 text-sm mb-2">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
             {{ t.back }}
           </Link>
-          <h1 class="text-3xl font-bold text-gray-900">{{ t.title }}</h1>
-          <p class="text-gray-500 mt-1 text-sm">{{ t.description.replace('{organisation}', organisation.name) }}</p>
+          <h1 class="text-3xl font-bold text-neutral-900">{{ t.title }}</h1>
+          <p class="text-neutral-500 mt-1 text-sm">{{ t.description.replace('{organisation}', organisation.name) }}</p>
         </div>
 
         <!-- Table -->
@@ -43,14 +43,14 @@
             </thead>
             <tbody class="divide-y divide-slate-100">
               <tr v-if="users.length === 0">
-                <td colspan="5" class="px-6 py-12 text-center text-sm text-gray-400">{{ t.empty }}</td>
+                <td colspan="5" class="px-6 py-12 text-center text-sm text-neutral-400">{{ t.empty }}</td>
               </tr>
               <tr v-for="u in users" :key="u.user_id" class="hover:bg-slate-50 transition-colors">
 
                 <!-- Name / email -->
                 <td class="px-6 py-4">
-                  <div class="text-sm font-medium text-gray-900">{{ u.name }}</div>
-                  <div class="text-xs text-gray-400">{{ u.email }}</div>
+                  <div class="text-sm font-medium text-neutral-900">{{ u.name }}</div>
+                  <div class="text-xs text-neutral-400">{{ u.email }}</div>
                 </td>
 
                 <!-- Org role badge -->
@@ -73,18 +73,18 @@
 
                 <!-- Officer assignments -->
                 <td class="px-6 py-4 text-sm">
-                  <div v-if="u.officer_assignments.length === 0" class="text-gray-400 text-xs">{{ t.no_assignments }}</div>
+                  <div v-if="u.officer_assignments.length === 0" class="text-neutral-400 text-xs">{{ t.no_assignments }}</div>
                   <div v-else class="space-y-1">
                     <div v-for="a in u.officer_assignments" :key="a.election_id"
                          class="flex items-center gap-2 flex-wrap">
                       <span :class="officerRoleBadge(a.role)" class="px-2 py-0.5 rounded text-xs font-medium">
                         {{ a.role }}
                       </span>
-                      <span class="text-xs text-gray-600 truncate max-w-[160px]" :title="a.election_name">
+                      <span class="text-xs text-neutral-600 truncate max-w-[160px]" :title="a.election_name">
                         {{ a.election_name }}
                       </span>
                       <button @click="removeOfficer(u.user_id, a.election_id)"
-                              class="text-red-400 hover:text-red-600 text-xs transition-colors ml-1">
+                              class="text-danger-400 hover:text-danger-600 text-xs transition-colors ml-1">
                         ✕
                       </button>
                     </div>
@@ -106,7 +106,7 @@
                   <div>
                     <button
                       @click="openAssignModal(u)"
-                      class="text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors block w-full text-right"
+                      class="text-primary-600 hover:text-primary-800 text-sm font-medium transition-colors block w-full text-right"
                     >
                       {{ t.assign_officer }}
                     </button>
@@ -128,8 +128,8 @@
            @click.self="modal.open = false">
         <div class="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
 
-          <h2 class="text-lg font-semibold text-gray-900 mb-1">{{ t.modal_title }}</h2>
-          <p class="text-sm text-gray-500 mb-5">{{ modal.user?.name }}</p>
+          <h2 class="text-lg font-semibold text-neutral-900 mb-1">{{ t.modal_title }}</h2>
+          <p class="text-sm text-neutral-500 mb-5">{{ modal.user?.name }}</p>
 
           <div v-if="elections.length === 0" class="text-sm text-amber-700 bg-amber-50 rounded p-3 mb-4">
             {{ t.no_elections }}
@@ -138,27 +138,27 @@
           <template v-else>
             <!-- Election picker -->
             <div class="mb-4">
-              <label class="block text-sm font-medium text-gray-700 mb-1.5">{{ t.modal_select_election }}</label>
+              <label class="block text-sm font-medium text-neutral-700 mb-1.5">{{ t.modal_select_election }}</label>
               <select v-model="modal.election_id"
-                      class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                      class="w-full border border-neutral-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 <option value="" disabled>— select —</option>
                 <option v-for="e in elections" :key="e.id" :value="e.id">
-                  {{ e.name }} <span class="text-gray-400">({{ e.status }})</span>
+                  {{ e.name }} <span class="text-neutral-400">({{ e.status }})</span>
                 </option>
               </select>
             </div>
 
             <!-- Role picker -->
             <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2">{{ t.modal_select_role }}</label>
+              <label class="block text-sm font-medium text-neutral-700 mb-2">{{ t.modal_select_role }}</label>
               <div class="space-y-2">
                 <label v-for="opt in roleOptions" :key="opt.value"
                        class="flex items-start gap-3 p-3 rounded-lg border cursor-pointer transition-colors"
-                       :class="modal.role === opt.value ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:bg-gray-50'">
+                       :class="modal.role === opt.value ? 'border-primary-500 bg-primary-50' : 'border-neutral-200 hover:bg-neutral-50'">
                   <input type="radio" :value="opt.value" v-model="modal.role" class="mt-0.5 accent-blue-600"/>
                   <div>
-                    <div class="text-sm font-medium text-gray-900">{{ opt.label }}</div>
-                    <div class="text-xs text-gray-500 mt-0.5">{{ opt.desc }}</div>
+                    <div class="text-sm font-medium text-neutral-900">{{ opt.label }}</div>
+                    <div class="text-xs text-neutral-500 mt-0.5">{{ opt.desc }}</div>
                   </div>
                 </label>
               </div>
@@ -167,12 +167,12 @@
             <!-- Buttons -->
             <div class="flex justify-end gap-3">
               <button @click="modal.open = false"
-                      class="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 font-medium transition-colors">
+                      class="px-4 py-2 text-sm text-neutral-600 hover:text-neutral-800 font-medium transition-colors">
                 {{ t.modal_cancel }}
               </button>
               <button @click="submitAssign"
                       :disabled="!modal.election_id || !modal.role"
-                      class="px-5 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors">
+                      class="px-5 py-2 bg-primary-600 hover:bg-primary-700 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-lg transition-colors">
                 {{ t.modal_assign }}
               </button>
             </div>
@@ -257,18 +257,19 @@ function roleLabel(role) {
 function roleBadgeClass(role) {
   return {
     owner:      'bg-purple-100 text-purple-700',
-    admin:      'bg-blue-100 text-blue-700',
+    admin:      'bg-primary-100 text-primary-700',
     commission: 'bg-yellow-100 text-yellow-700',
     voter:      'bg-green-100 text-green-700',
     member:     'bg-slate-100 text-slate-600',
-  }[role] ?? 'bg-gray-100 text-gray-700'
+  }[role] ?? 'bg-neutral-100 text-neutral-700'
 }
 
 function officerRoleBadge(role) {
   return {
-    chief:        'bg-red-100 text-red-700',
+    chief:        'bg-danger-100 text-danger-700',
     deputy:       'bg-orange-100 text-orange-700',
     commissioner: 'bg-sky-100 text-sky-700',
-  }[role] ?? 'bg-gray-100 text-gray-700'
+  }[role] ?? 'bg-neutral-100 text-neutral-700'
 }
 </script>
+

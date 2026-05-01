@@ -13,7 +13,7 @@
             {{ status }}
         </div>
          <!-- next -->
-         <div class=" my-2 text-gray-900 " > 
+         <div class=" my-2 text-neutral-900 " > 
         आदरणिय दिदी बहिनी तथा दाजुभाइहरु,<br> 
         लगइन मा आफ्नो टेलिफोन नम्बर कन्ट्रीकोड सहित<br> 
          <span class="text-bold"> (तर विना '+' र विना '00') </span> <br> 
@@ -30,7 +30,7 @@
             </div>
             -->
             <!--next --> 
-            <div class=" my-4 text-bold text-gray-900 text-xl ">
+            <div class=" my-4 text-bold text-neutral-900 text-xl ">
                 <jet-label for="telephone" value="Telephone (टेलिफोन नम्बर)"  /> 
                 <jet-input id="telephone" type="text" class="mt-1 block w-full"  placeholder="4915164322589"
                 v-model="form.telephone" required autofocus />
@@ -45,12 +45,12 @@
             <div class="block mt-4">
                 <label class="flex items-center">
                     <jet-checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-900">Remember me</span>
+                    <span class="ml-2 text-sm text-neutral-900">Remember me</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <inertia-link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <inertia-link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-neutral-600 hover:text-neutral-900">
                     Forgot your password?
                 </inertia-link>
 
@@ -116,7 +116,7 @@
     }
 </script>
 <style scoped>
-    .text-gray-900 {
+    .text-neutral-900 {
         color: #1a202c;
         color: rgba(26, 32, 44, var(--tw-text-opacity));
     }
@@ -128,3 +128,4 @@
     }
     
 </style>
+

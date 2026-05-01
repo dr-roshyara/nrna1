@@ -2,27 +2,27 @@
     <AdminLayout>
         <div class="space-y-6">
             <div>
-                <h1 class="text-3xl font-bold text-gray-900">Platform Admin Dashboard</h1>
-                <p class="mt-2 text-gray-600">Manage elections and platform configurations.</p>
+                <h1 class="text-3xl font-bold text-neutral-900">Platform Admin Dashboard</h1>
+                <p class="mt-2 text-neutral-600">Manage elections and platform configurations.</p>
             </div>
 
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 <Link :href="route('platform.elections.pending')" class="rounded-lg bg-white p-6 shadow hover:shadow-lg transition">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p class="text-sm text-gray-600">Pending Approvals</p>
-                            <p class="text-3xl font-bold text-gray-900 mt-2">{{ stats.pending_elections }}</p>
+                            <p class="text-sm text-neutral-600">Pending Approvals</p>
+                            <p class="text-3xl font-bold text-neutral-900 mt-2">{{ stats.pending_elections }}</p>
                         </div>
                         <div class="text-4xl text-yellow-500">⏳</div>
                     </div>
-                    <p class="mt-4 text-xs text-blue-600">View all pending →</p>
+                    <p class="mt-4 text-xs text-primary-600">View all pending →</p>
                 </Link>
 
                 <div class="rounded-lg bg-white p-6 shadow">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p class="text-sm text-gray-600">Platform Admins</p>
-                            <p class="text-3xl font-bold text-gray-900 mt-2">{{ stats.platform_admins }}</p>
+                            <p class="text-sm text-neutral-600">Platform Admins</p>
+                            <p class="text-3xl font-bold text-neutral-900 mt-2">{{ stats.platform_admins }}</p>
                         </div>
                         <div class="text-4xl text-purple-500">👥</div>
                     </div>
@@ -31,18 +31,18 @@
                 <div class="rounded-lg bg-white p-6 shadow">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p class="text-sm text-gray-600">Active Organizations</p>
-                            <p class="text-3xl font-bold text-gray-900 mt-2">{{ stats.organisations }}</p>
+                            <p class="text-sm text-neutral-600">Active Organizations</p>
+                            <p class="text-3xl font-bold text-neutral-900 mt-2">{{ stats.organisations }}</p>
                         </div>
-                        <div class="text-4xl text-blue-500">🏢</div>
+                        <div class="text-4xl text-primary-500">🏢</div>
                     </div>
                 </div>
 
                 <div class="rounded-lg bg-white p-6 shadow">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p class="text-sm text-gray-600">Total Elections</p>
-                            <p class="text-3xl font-bold text-gray-900 mt-2">{{ stats.total_elections }}</p>
+                            <p class="text-sm text-neutral-600">Total Elections</p>
+                            <p class="text-3xl font-bold text-neutral-900 mt-2">{{ stats.total_elections }}</p>
                         </div>
                         <div class="text-4xl text-green-500">🗳️</div>
                     </div>
@@ -51,7 +51,7 @@
 
             <!-- Elections Management Navigation -->
             <div class="rounded-lg bg-white p-6 shadow">
-                <h2 class="text-lg font-bold text-gray-900 mb-6">Elections Management</h2>
+                <h2 class="text-lg font-bold text-neutral-900 mb-6">Elections Management</h2>
 
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <!-- Pending Approvals Navigation -->
@@ -96,16 +96,16 @@
                 </div>
 
                 <!-- Subscription Status Legend -->
-                <div class="mt-6 pt-6 border-t border-gray-200">
-                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Subscription Status</p>
+                <div class="mt-6 pt-6 border-t border-neutral-200">
+                    <p class="text-xs font-semibold text-neutral-500 uppercase tracking-wide mb-3">Subscription Status</p>
                     <div class="grid grid-cols-2 gap-4 md:grid-cols-2">
                         <div class="flex items-center gap-3">
                             <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-green-100">
                                 <span class="text-sm font-bold text-green-700">✓</span>
                             </div>
                             <div>
-                                <p class="text-sm font-medium text-gray-900">Free</p>
-                                <p class="text-xs text-gray-500">≤ 40 voters (auto-approved)</p>
+                                <p class="text-sm font-medium text-neutral-900">Free</p>
+                                <p class="text-xs text-neutral-500">≤ 40 voters (auto-approved)</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-3">
@@ -113,8 +113,8 @@
                                 <span class="text-sm font-bold text-amber-700">⭐</span>
                             </div>
                             <div>
-                                <p class="text-sm font-medium text-gray-900">Paid</p>
-                                <p class="text-xs text-gray-500">> 40 voters (requires approval)</p>
+                                <p class="text-sm font-medium text-neutral-900">Paid</p>
+                                <p class="text-xs text-neutral-500">> 40 voters (requires approval)</p>
                             </div>
                         </div>
                     </div>
@@ -122,23 +122,23 @@
             </div>
 
             <div class="rounded-lg bg-white p-6 shadow">
-                <h2 class="text-lg font-bold text-gray-900 mb-4">Coming Soon</h2>
+                <h2 class="text-lg font-bold text-neutral-900 mb-4">Coming Soon</h2>
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div class="rounded-lg bg-purple-50 p-4 border border-purple-200">
                         <p class="font-medium text-purple-900">Manage Platform Admins</p>
                         <p class="text-sm text-purple-700 mt-1">Add/remove platform staff members</p>
                     </div>
 
-                    <div class="rounded-lg bg-blue-50 p-4 border border-blue-200">
-                        <p class="font-medium text-blue-900">System Settings</p>
-                        <p class="text-sm text-blue-700 mt-1">Configure platform-wide settings</p>
+                    <div class="rounded-lg bg-primary-50 p-4 border border-primary-200">
+                        <p class="font-medium text-primary-900">System Settings</p>
+                        <p class="text-sm text-primary-700 mt-1">Configure platform-wide settings</p>
                     </div>
                 </div>
             </div>
 
-            <div class="rounded-lg bg-blue-50 border border-blue-200 p-6">
-                <h3 class="font-bold text-blue-900">Platform Admin Guide</h3>
-                <ul class="mt-3 space-y-2 text-sm text-blue-800">
+            <div class="rounded-lg bg-primary-50 border border-primary-200 p-6">
+                <h3 class="font-bold text-primary-900">Platform Admin Guide</h3>
+                <ul class="mt-3 space-y-2 text-sm text-primary-800">
                     <li>• <strong>Pending Approvals:</strong> Elections requesting approval when voter count exceeds 40</li>
                     <li>• <strong>Approve:</strong> Move election to administration phase to proceed with voting setup</li>
                     <li>• <strong>Reject:</strong> Return election to draft with rejection reason</li>

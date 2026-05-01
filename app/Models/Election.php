@@ -904,6 +904,14 @@ class Election extends Model
             ],
         ];
 
+        // Special case: Allow date editing during voting phase
+        // ONLY if voting is not yet locked (chief can adjust dates before locking)
+        if (($action === 'configure_election' || $action === 'manage_settings')
+            && $this->current_state === self::STATE_VOTING
+            && !$this->voting_locked) {
+            return true;
+        }
+
         return in_array($action, $allowed[$this->current_state] ?? []);
     }
 
@@ -918,8 +926,7 @@ class Election extends Model
 
             'nomination' => !$this->nomination_completed,
 
-            'voting' => !$this->voting_locked &&
-                       (!$this->voting_starts_at || now()->lt($this->voting_starts_at)),
+            'voting' => !$this->voting_locked,  // Editable until locked (voting start time doesn't block)
 
             'results_pending', 'results' => false,  // Never editable
 

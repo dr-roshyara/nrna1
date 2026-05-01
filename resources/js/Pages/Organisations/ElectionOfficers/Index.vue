@@ -1,6 +1,6 @@
 <template>
   <ElectionLayout>
-    <main role="main" class="py-12 bg-gray-50 min-h-screen">
+    <main role="main" class="py-12 bg-neutral-50 min-h-screen">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Back link -->
@@ -25,7 +25,7 @@
               </svg>
             </div>
             <div>
-              <h1 class="text-2xl font-bold text-gray-900">
+              <h1 class="text-2xl font-bold text-neutral-900">
                 {{ $t('pages.organisation-show.election_officers.page_title') }}
               </h1>
               <p class="text-sm text-amber-700 font-medium">
@@ -50,11 +50,11 @@
 
           <!-- Officers list -->
           <div class="lg:col-span-2 space-y-4">
-            <h2 class="text-base font-semibold text-gray-700">
+            <h2 class="text-base font-semibold text-neutral-700">
               {{ $t('pages.organisation-show.election_officers.current_officers') }}
             </h2>
 
-            <div v-if="!officers.length" class="bg-white rounded-xl border border-gray-200 p-8 text-center">
+            <div v-if="!officers.length" class="bg-white rounded-xl border border-neutral-200 p-8 text-center">
               <div class="w-12 h-12 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-3">
                 <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -62,22 +62,22 @@
                   />
                 </svg>
               </div>
-              <p class="text-gray-500 text-sm">{{ $t('pages.organisation-show.election_officers.no_officers') }}</p>
-              <p class="text-gray-400 text-xs mt-1">{{ $t('pages.organisation-show.election_officers.no_officers_hint') }}</p>
+              <p class="text-neutral-500 text-sm">{{ $t('pages.organisation-show.election_officers.no_officers') }}</p>
+              <p class="text-neutral-400 text-xs mt-1">{{ $t('pages.organisation-show.election_officers.no_officers_hint') }}</p>
             </div>
 
             <div
               v-for="officer in officers"
               :key="officer.id"
-              class="bg-white rounded-xl border border-gray-200 p-5 flex items-start justify-between gap-4"
+              class="bg-white rounded-xl border border-neutral-200 p-5 flex items-start justify-between gap-4"
             >
               <div class="flex items-center gap-3 min-w-0">
-                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span class="text-gray-600 font-semibold text-sm">{{ officer.user_name.charAt(0).toUpperCase() }}</span>
+                <div class="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-neutral-600 font-semibold text-sm">{{ officer.user_name.charAt(0).toUpperCase() }}</span>
                 </div>
                 <div class="min-w-0">
-                  <p class="text-sm font-semibold text-gray-900 truncate">{{ officer.user_name }}</p>
-                  <p class="text-xs text-gray-500 truncate">{{ officer.user_email }}</p>
+                  <p class="text-sm font-semibold text-neutral-900 truncate">{{ officer.user_name }}</p>
+                  <p class="text-xs text-neutral-500 truncate">{{ officer.user_email }}</p>
                   <div class="flex items-center gap-2 mt-1">
                     <span class="text-xs px-2 py-0.5 rounded-full font-medium" :class="roleBadgeClass(officer.role)">
                       {{ $t(`pages.organisation-show.election_officers.role_${officer.role}`) }}
@@ -86,11 +86,11 @@
                       {{ officer.status }}
                     </span>
                   </div>
-                  <p v-if="officer.election_name" class="text-xs text-blue-600 font-medium mt-1">
+                  <p v-if="officer.election_name" class="text-xs text-primary-600 font-medium mt-1">
                     For: {{ officer.election_name }}
                   </p>
-                  <p v-else class="text-xs text-gray-400 mt-1 italic">Org-wide</p>
-                  <p v-if="officer.appointed_at" class="text-xs text-gray-400 mt-1">
+                  <p v-else class="text-xs text-neutral-400 mt-1 italic">Org-wide</p>
+                  <p v-if="officer.appointed_at" class="text-xs text-neutral-400 mt-1">
                     {{ $t('pages.organisation-show.election_officers.appointed_on', { date: officer.appointed_at }) }}
                     <span v-if="officer.appointed_by">
                       {{ $t('pages.organisation-show.election_officers.appointed_by', { name: officer.appointed_by }) }}
@@ -116,7 +116,7 @@
                 v-else-if="canManage"
                 @click="removeOfficer(officer.id)"
                 :disabled="removing === officer.id"
-                class="flex-shrink-0 text-red-400 hover:text-red-600 disabled:opacity-50 text-xs font-medium transition-colors"
+                class="flex-shrink-0 text-danger-400 hover:text-danger-600 disabled:opacity-50 text-xs font-medium transition-colors"
               >
                 {{ removing === officer.id
                   ? $t('pages.organisation-show.election_officers.removing')
@@ -128,7 +128,7 @@
           <!-- Appoint form -->
           <div class="lg:col-span-1">
             <div class="bg-white rounded-xl border border-amber-200 p-5 sticky top-6">
-              <h2 class="text-sm font-semibold text-gray-700 mb-4">
+              <h2 class="text-sm font-semibold text-neutral-700 mb-4">
                 {{ $t('pages.organisation-show.election_officers.appoint_new') }}
               </h2>
 
@@ -136,7 +136,7 @@
 
                 <!-- Member search -->
                 <div class="mb-4 relative">
-                  <label class="block text-xs font-medium text-gray-600 mb-1" for="officer-search">
+                  <label class="block text-xs font-medium text-neutral-600 mb-1" for="officer-search">
                     {{ $t('pages.organisation-show.election_officers.member_label') }}
                   </label>
                   <input
@@ -144,14 +144,14 @@
                     v-model="search"
                     type="text"
                     :placeholder="$t('pages.organisation-show.election_officers.search_placeholder')"
-                    class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                    class="w-full border border-neutral-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
                     autocomplete="off"
                     @focus="dropdownOpen = true"
                     @blur="dropdownOpen = false"
                   />
                   <ul
                     v-if="dropdownOpen && filteredMembers.length"
-                    class="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg max-h-40 overflow-y-auto"
+                    class="absolute z-10 mt-1 w-full bg-white border border-neutral-200 rounded-lg shadow-lg max-h-40 overflow-y-auto"
                   >
                     <li
                       v-for="m in filteredMembers"
@@ -160,32 +160,32 @@
                       class="px-3 py-2 text-sm hover:bg-amber-50 cursor-pointer"
                     >
                       <span class="font-medium">{{ m.name }}</span>
-                      <span class="text-gray-400 ml-1 text-xs">{{ m.email }}</span>
+                      <span class="text-neutral-400 ml-1 text-xs">{{ m.email }}</span>
                     </li>
                   </ul>
                   <p v-if="selectedMember" class="mt-1 text-xs text-amber-700 font-medium">✓ {{ selectedMember.name }}</p>
-                  <p v-if="errors.user_id" class="mt-1 text-xs text-red-600">{{ errors.user_id }}</p>
+                  <p v-if="errors.user_id" class="mt-1 text-xs text-danger-600">{{ errors.user_id }}</p>
                 </div>
 
                 <!-- Election (optional) -->
                 <div class="mb-4">
-                  <label class="block text-xs font-medium text-gray-600 mb-1" for="officer-election">
-                    For election <span class="text-gray-400">(leave blank for org-wide)</span>
+                  <label class="block text-xs font-medium text-neutral-600 mb-1" for="officer-election">
+                    For election <span class="text-neutral-400">(leave blank for org-wide)</span>
                   </label>
                   <select
                     id="officer-election"
                     v-model="form.election_id"
-                    class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                    class="w-full border border-neutral-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
                   >
                     <option value="">— Organisation-wide —</option>
                     <option v-for="e in elections" :key="e.id" :value="e.id">{{ e.name }}</option>
                   </select>
-                  <p v-if="errors.election_id" class="mt-1 text-xs text-red-600">{{ errors.election_id }}</p>
+                  <p v-if="errors.election_id" class="mt-1 text-xs text-danger-600">{{ errors.election_id }}</p>
                 </div>
 
                 <!-- Role -->
                 <div class="mb-4">
-                  <label class="block text-xs font-medium text-gray-600 mb-2">
+                  <label class="block text-xs font-medium text-neutral-600 mb-2">
                     {{ $t('pages.organisation-show.election_officers.role_label') }}
                   </label>
                   <div class="space-y-2">
@@ -193,16 +193,16 @@
                       v-for="r in roles"
                       :key="r.value"
                       class="flex items-center gap-2 border rounded-lg px-3 py-2 cursor-pointer transition-all"
-                      :class="form.role === r.value ? 'border-amber-400 bg-amber-50' : 'border-gray-200 hover:border-amber-300'"
+                      :class="form.role === r.value ? 'border-amber-400 bg-amber-50' : 'border-neutral-200 hover:border-amber-300'"
                     >
                       <input type="radio" :value="r.value" v-model="form.role" class="accent-amber-500" />
                       <div>
-                        <p class="text-xs font-semibold text-gray-800">{{ r.label }}</p>
-                        <p class="text-xs text-gray-400">{{ r.desc }}</p>
+                        <p class="text-xs font-semibold text-neutral-800">{{ r.label }}</p>
+                        <p class="text-xs text-neutral-400">{{ r.desc }}</p>
                       </div>
                     </label>
                   </div>
-                  <p v-if="errors.role" class="mt-1 text-xs text-red-600">{{ errors.role }}</p>
+                  <p v-if="errors.role" class="mt-1 text-xs text-danger-600">{{ errors.role }}</p>
                 </div>
 
                 <button
@@ -216,7 +216,7 @@
                 </button>
               </form>
 
-              <p v-else class="text-xs text-gray-400">
+              <p v-else class="text-xs text-neutral-400">
                 {{ $t('pages.organisation-show.election_officers.no_permission') }}
               </p>
             </div>
@@ -277,11 +277,11 @@ function selectMember(member) {
 }
 
 function roleBadgeClass(role) {
-  return { chief: 'bg-purple-100 text-purple-700', deputy: 'bg-blue-100 text-blue-700', commissioner: 'bg-gray-100 text-gray-700' }[role] ?? 'bg-gray-100 text-gray-600'
+  return { chief: 'bg-purple-100 text-purple-700', deputy: 'bg-primary-100 text-primary-700', commissioner: 'bg-neutral-100 text-neutral-700' }[role] ?? 'bg-neutral-100 text-neutral-600'
 }
 
 function statusBadgeClass(status) {
-  return { active: 'bg-green-100 text-green-700', pending: 'bg-yellow-100 text-yellow-700', inactive: 'bg-gray-100 text-gray-500', resigned: 'bg-red-100 text-red-600' }[status] ?? 'bg-gray-100 text-gray-500'
+  return { active: 'bg-green-100 text-green-700', pending: 'bg-yellow-100 text-yellow-700', inactive: 'bg-neutral-100 text-neutral-500', resigned: 'bg-danger-100 text-danger-600' }[status] ?? 'bg-neutral-100 text-neutral-500'
 }
 
 function appoint() {
@@ -335,3 +335,4 @@ function removeOfficer(officerId) {
   )
 }
 </script>
+

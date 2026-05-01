@@ -1,19 +1,19 @@
 <template>
   <div class="space-y-4">
-    <h2 class="text-2xl font-semibold text-gray-800">
+    <h2 class="text-2xl font-semibold text-neutral-800">
       {{ post.name }} - Election Results
     </h2>
     
-    <div class="text-lg font-medium text-gray-700">
+    <div class="text-lg font-medium text-neutral-700">
       Total Votes: {{ final_result.total_votes_for_post || 0 }}
     </div>
 
-    <div v-if="final_result.no_vote_count && final_result.no_vote_count > 0" class="text-md font-medium text-gray-600">
+    <div v-if="final_result.no_vote_count && final_result.no_vote_count > 0" class="text-md font-medium text-neutral-600">
       No Votes (Abstentions): {{ final_result.no_vote_count }}
     </div>
     
     <div class="mt-6">
-      <h3 class="text-xl font-medium mb-4 text-gray-800">
+      <h3 class="text-xl font-medium mb-4 text-neutral-800">
         Election Results - {{ post.name }}
       </h3>
       <bar-chart 
@@ -24,7 +24,7 @@
 
     <button 
       @click="verifyResults"
-      class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-sm hover:bg-blue-700"
+      class="mt-4 px-4 py-2 bg-primary-600 text-white rounded-sm hover:bg-primary-700"
     >
       Verify Results
     </button>
@@ -34,14 +34,14 @@
       <div v-if="verification.match" class="text-green-600">
         Results verified successfully! All counts match.
       </div>
-      <div v-else-if="verification.error" class="text-red-600">
+      <div v-else-if="verification.error" class="text-danger-600">
         Error: {{ verification.error }}
       </div>
       <div v-else>
-        <div class="text-red-600 mb-2">Discrepancies found:</div>
+        <div class="text-danger-600 mb-2">Discrepancies found:</div>
         <table class="w-full border">
           <thead>
-            <tr class="bg-gray-100">
+            <tr class="bg-neutral-100">
               <th class="p-2">Candidate</th>
               <th class="p-2">Official Count</th>
               <th class="p-2">Raw Count</th>

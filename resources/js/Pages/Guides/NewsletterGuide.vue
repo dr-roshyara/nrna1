@@ -210,7 +210,7 @@ const goBack = () => {
       <button
         @click="goBack"
         type="button"
-        class="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+        class="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-neutral-700 bg-white border border-neutral-300 rounded-lg hover:bg-neutral-50 transition-colors">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
         </svg>
@@ -223,12 +223,12 @@ const goBack = () => {
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-wrap gap-2 mb-4">
           <span class="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full">{{ t?.meta?.badge_label }}</span>
-          <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">{{ t?.meta?.read_time }}</span>
+          <span class="inline-block px-3 py-1 bg-primary-100 text-primary-800 text-xs font-medium rounded-full">{{ t?.meta?.read_time }}</span>
         </div>
 
         <h1 class="text-4xl md:text-5xl font-serif text-amber-900 mb-4">{{ t?.hero?.title }}</h1>
         <p class="text-xl text-amber-800 mb-4">{{ t?.hero?.subtitle }}</p>
-        <p class="text-base text-gray-700 leading-relaxed max-w-3xl">{{ t?.hero?.description }}</p>
+        <p class="text-base text-neutral-700 leading-relaxed max-w-3xl">{{ t?.hero?.description }}</p>
       </div>
     </section>
 
@@ -246,7 +246,7 @@ const goBack = () => {
                   'w-full text-left px-3 py-2 rounded transition-colors',
                   activeSection === key
                     ? 'bg-amber-100 text-amber-900 font-semibold border-l-2 border-amber-700'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    : 'text-neutral-700 hover:bg-neutral-100'
                 ]"
               >
                 {{ label }}
@@ -255,21 +255,21 @@ const goBack = () => {
           </ul>
 
           <!-- Search box -->
-          <div class="pt-4 border-t border-gray-200">
+          <div class="pt-4 border-t border-neutral-200">
             <div class="relative">
               <input
                 id="search-input"
                 v-model="searchQuery"
                 type="text"
                 :placeholder="t?.search?.placeholder"
-                class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                class="w-full px-3 py-2 border border-neutral-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
               />
-              <MagnifyingGlassIcon class="absolute right-3 top-2.5 w-4 h-4 text-gray-400" />
+              <MagnifyingGlassIcon class="absolute right-3 top-2.5 w-4 h-4 text-neutral-400" />
             </div>
 
             <!-- Search results -->
-            <div v-if="showSearch || searchQuery" class="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto">
-              <div v-if="searchResults.length === 0" class="p-4 text-sm text-gray-600">
+            <div v-if="showSearch || searchQuery" class="absolute top-full left-0 right-0 mt-2 bg-white border border-neutral-300 rounded-lg shadow-lg z-10 max-h-64 overflow-y-auto">
+              <div v-if="searchResults.length === 0" class="p-4 text-sm text-neutral-600">
                 {{ t?.search?.no_results }}
               </div>
               <ul v-else class="divide-y">
@@ -279,7 +279,7 @@ const goBack = () => {
                     class="w-full text-left px-4 py-3 hover:bg-amber-50 transition-colors"
                   >
                     <div class="font-medium text-sm text-amber-900">{{ result.title }}</div>
-                    <div v-if="result.snippet" class="text-xs text-gray-600 mt-1">{{ result.snippet }}</div>
+                    <div v-if="result.snippet" class="text-xs text-neutral-600 mt-1">{{ result.snippet }}</div>
                   </button>
                 </li>
               </ul>
@@ -293,12 +293,12 @@ const goBack = () => {
         <!-- Who Can Use -->
         <section id="who_can_use" aria-labelledby="who_can_use-heading" class="scroll-mt-8">
           <h2 id="who_can_use-heading" class="text-3xl font-serif text-amber-900 mb-6">{{ t?.who_can_use?.title }}</h2>
-          <p class="text-gray-700 mb-8">{{ t?.who_can_use?.description }}</p>
+          <p class="text-neutral-700 mb-8">{{ t?.who_can_use?.description }}</p>
 
           <div class="grid md:grid-cols-3 gap-6">
             <div v-for="role in t?.who_can_use?.roles" :key="role.name" class="border border-amber-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
               <h3 class="font-semibold text-amber-900 mb-2">{{ role.name }}</h3>
-              <p class="text-sm text-gray-700">{{ role.description }}</p>
+              <p class="text-sm text-neutral-700">{{ role.description }}</p>
             </div>
           </div>
         </section>
@@ -306,12 +306,12 @@ const goBack = () => {
         <!-- Lifecycle -->
         <section id="lifecycle" aria-labelledby="lifecycle-heading" class="scroll-mt-8">
           <h2 id="lifecycle-heading" class="text-3xl font-serif text-amber-900 mb-6">{{ t?.lifecycle?.title }}</h2>
-          <p class="text-gray-700 mb-8">{{ t?.lifecycle?.description }}</p>
+          <p class="text-neutral-700 mb-8">{{ t?.lifecycle?.description }}</p>
 
           <div class="space-y-4">
             <div v-for="(stage, key) in t?.lifecycle?.stages" :key="key" class="border-l-4 border-amber-600 pl-6 py-4">
               <h3 class="font-semibold text-lg text-amber-900">{{ stage.label }}</h3>
-              <p class="text-gray-700 mt-2">{{ stage.description }}</p>
+              <p class="text-neutral-700 mt-2">{{ stage.description }}</p>
             </div>
           </div>
         </section>
@@ -319,7 +319,7 @@ const goBack = () => {
         <!-- Compose Steps -->
         <section id="compose" aria-labelledby="compose-heading" class="scroll-mt-8">
           <h2 id="compose-heading" class="text-3xl font-serif text-amber-900 mb-6">{{ t?.compose?.title }}</h2>
-          <p class="text-gray-700 mb-8">{{ t?.compose?.intro }}</p>
+          <p class="text-neutral-700 mb-8">{{ t?.compose?.intro }}</p>
 
           <div class="space-y-8">
             <div v-for="step in t?.compose?.steps" :key="step.number" class="border border-amber-200 rounded-lg p-6 hover:shadow-md transition-shadow">
@@ -331,8 +331,8 @@ const goBack = () => {
                 </div>
                 <div class="flex-1">
                   <h3 class="font-semibold text-lg text-amber-900 mb-2">{{ step.heading }}</h3>
-                  <p class="text-gray-700 whitespace-pre-wrap mb-3">{{ step.body }}</p>
-                  <div v-if="step.tip" class="bg-blue-50 border-l-4 border-blue-400 p-3 text-sm text-blue-900">
+                  <p class="text-neutral-700 whitespace-pre-wrap mb-3">{{ step.body }}</p>
+                  <div v-if="step.tip" class="bg-primary-50 border-l-4 border-primary-400 p-3 text-sm text-primary-900">
                     <strong>💡 Tip:</strong> {{ step.tip }}
                   </div>
                 </div>
@@ -344,9 +344,9 @@ const goBack = () => {
         <!-- Send & Monitor Steps -->
         <section id="send" aria-labelledby="send-heading" class="scroll-mt-8">
           <h2 id="send-heading" class="text-3xl font-serif text-amber-900 mb-6">{{ t?.send?.title }}</h2>
-          <p class="text-gray-700 mb-8">{{ t?.send?.intro }}</p>
+          <p class="text-neutral-700 mb-8">{{ t?.send?.intro }}</p>
 
-          <div v-if="t?.send?.warning" class="bg-red-50 border-l-4 border-red-500 p-4 mb-8 text-red-900 text-sm">
+          <div v-if="t?.send?.warning" class="bg-danger-50 border-l-4 border-danger-500 p-4 mb-8 text-danger-900 text-sm">
             <strong>⚠️ Important:</strong> {{ t.send.warning }}
           </div>
 
@@ -360,8 +360,8 @@ const goBack = () => {
                 </div>
                 <div class="flex-1">
                   <h3 class="font-semibold text-lg text-amber-900 mb-2">{{ step.heading }}</h3>
-                  <p class="text-gray-700 whitespace-pre-wrap mb-3">{{ step.body }}</p>
-                  <div v-if="step.tip" class="bg-blue-50 border-l-4 border-blue-400 p-3 text-sm text-blue-900">
+                  <p class="text-neutral-700 whitespace-pre-wrap mb-3">{{ step.body }}</p>
+                  <div v-if="step.tip" class="bg-primary-50 border-l-4 border-primary-400 p-3 text-sm text-primary-900">
                     <strong>💡 Tip:</strong> {{ step.tip }}
                   </div>
                 </div>
@@ -373,13 +373,13 @@ const goBack = () => {
         <!-- Election Committee (conditional) -->
         <section v-if="usesFullMembership !== false" id="election_committee" aria-labelledby="election_committee-heading" class="scroll-mt-8">
           <h2 id="election_committee-heading" class="text-3xl font-serif text-amber-900 mb-6">{{ t?.election_committee?.title }}</h2>
-          <p class="text-gray-700 mb-8">{{ t?.election_committee?.description }}</p>
+          <p class="text-neutral-700 mb-8">{{ t?.election_committee?.description }}</p>
 
           <div class="space-y-6">
-            <div v-for="useCase in t?.election_committee?.use_cases" :key="useCase.heading" class="border border-blue-200 rounded-lg p-6 bg-blue-50">
-              <h3 class="font-semibold text-lg text-blue-900 mb-2">{{ useCase.heading }}</h3>
-              <p class="text-gray-700 mb-3">{{ useCase.description }}</p>
-              <div class="bg-white rounded p-3 text-sm text-gray-600 font-mono">{{ useCase.example }}</div>
+            <div v-for="useCase in t?.election_committee?.use_cases" :key="useCase.heading" class="border border-primary-200 rounded-lg p-6 bg-primary-50">
+              <h3 class="font-semibold text-lg text-primary-900 mb-2">{{ useCase.heading }}</h3>
+              <p class="text-neutral-700 mb-3">{{ useCase.description }}</p>
+              <div class="bg-white rounded p-3 text-sm text-neutral-600 font-mono">{{ useCase.example }}</div>
             </div>
           </div>
         </section>
@@ -387,7 +387,7 @@ const goBack = () => {
         <!-- Interactive Demo -->
         <section class="bg-gradient-to-r from-amber-50 to-yellow-50 border border-amber-200 rounded-lg p-8">
           <h2 class="text-2xl font-serif text-amber-900 mb-2">{{ t?.demo?.title }}</h2>
-          <p class="text-gray-700 mb-6">{{ t?.demo?.subtitle }}</p>
+          <p class="text-neutral-700 mb-6">{{ t?.demo?.subtitle }}</p>
 
           <label class="block mb-6">
             <span class="text-sm font-semibold text-amber-900 mb-2 block">{{ t?.demo?.select_label }}</span>
@@ -401,7 +401,7 @@ const goBack = () => {
           <div class="bg-white rounded-lg p-6 border border-amber-200">
             <div class="text-center">
               <div class="text-4xl font-bold text-amber-600 mb-2">{{ demoCount }}</div>
-              <p class="text-gray-700">{{ t?.demo?.will_send_to?.replace('{count}', demoCount) }}</p>
+              <p class="text-neutral-700">{{ t?.demo?.will_send_to?.replace('{count}', demoCount) }}</p>
             </div>
           </div>
         </section>
@@ -409,19 +409,19 @@ const goBack = () => {
         <!-- Unsubscribe -->
         <section id="unsubscribe" aria-labelledby="unsubscribe-heading" class="scroll-mt-8">
           <h2 id="unsubscribe-heading" class="text-3xl font-serif text-amber-900 mb-6">{{ t?.unsubscribe?.title }}</h2>
-          <p class="text-gray-700 mb-6">{{ t?.unsubscribe?.description }}</p>
+          <p class="text-neutral-700 mb-6">{{ t?.unsubscribe?.description }}</p>
 
           <div class="space-y-4">
-            <div v-if="t?.unsubscribe?.automatic_note" class="bg-gray-50 border-l-4 border-gray-400 p-4 text-gray-900 text-sm">
+            <div v-if="t?.unsubscribe?.automatic_note" class="bg-neutral-50 border-l-4 border-neutral-400 p-4 text-neutral-900 text-sm">
               {{ t.unsubscribe.automatic_note }}
             </div>
-            <div v-if="t?.unsubscribe?.bounce_note" class="bg-gray-50 border-l-4 border-gray-400 p-4 text-gray-900 text-sm">
+            <div v-if="t?.unsubscribe?.bounce_note" class="bg-neutral-50 border-l-4 border-neutral-400 p-4 text-neutral-900 text-sm">
               {{ t.unsubscribe.bounce_note }}
             </div>
-            <div v-if="t?.unsubscribe?.hard_bounce_note" class="bg-gray-50 border-l-4 border-gray-400 p-4 text-gray-900 text-sm">
+            <div v-if="t?.unsubscribe?.hard_bounce_note" class="bg-neutral-50 border-l-4 border-neutral-400 p-4 text-neutral-900 text-sm">
               {{ t.unsubscribe.hard_bounce_note }}
             </div>
-            <div v-if="t?.unsubscribe?.resubscribe_note" class="bg-gray-50 border-l-4 border-gray-400 p-4 text-gray-900 text-sm">
+            <div v-if="t?.unsubscribe?.resubscribe_note" class="bg-neutral-50 border-l-4 border-neutral-400 p-4 text-neutral-900 text-sm">
               {{ t.unsubscribe.resubscribe_note }}
             </div>
           </div>
@@ -436,7 +436,7 @@ const goBack = () => {
               <summary class="px-6 py-4 font-semibold text-amber-900 cursor-pointer hover:bg-amber-50 transition-colors">
                 {{ item.q }}
               </summary>
-              <div class="px-6 py-4 border-t border-amber-200 bg-amber-50 text-gray-700">
+              <div class="px-6 py-4 border-t border-amber-200 bg-amber-50 text-neutral-700">
                 {{ item.a }}
               </div>
             </details>
@@ -466,8 +466,8 @@ const goBack = () => {
                 :class="[
                   'flex-1 px-4 py-2 rounded-lg font-medium transition-all',
                   feedbackGiven === false
-                    ? 'bg-red-600 text-white'
-                    : 'bg-red-100 text-red-900 hover:bg-red-200'
+                    ? 'bg-danger-600 text-white'
+                    : 'bg-danger-100 text-danger-900 hover:bg-danger-200'
                 ]"
               >
                 <HandThumbDownIcon class="w-5 h-5 inline-block mr-2" />
@@ -479,7 +479,7 @@ const goBack = () => {
               v-if="showFeedbackForm && feedbackGiven === false"
               v-model="feedbackText"
               :placeholder="t?.feedback?.textarea_placeholder"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              class="w-full px-4 py-2 border border-neutral-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
               rows="3"
             ></textarea>
 
@@ -501,7 +501,7 @@ const goBack = () => {
         <div class="flex justify-center mb-8">
           <button
             @click="window.print()"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-gray-200 text-gray-900 rounded-lg font-medium hover:bg-gray-300 transition-colors no-print"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-neutral-200 text-neutral-900 rounded-lg font-medium hover:bg-neutral-300 transition-colors no-print"
           >
             <PrinterIcon class="w-5 h-5" />
             {{ t?.print?.button }}
@@ -509,7 +509,7 @@ const goBack = () => {
         </div>
 
         <!-- Last updated -->
-        <div class="text-center text-sm text-gray-600 py-6">
+        <div class="text-center text-sm text-neutral-600 py-6">
           {{ t?.last_updated?.label }}: {{ t?.last_updated?.date }}
         </div>
 
@@ -519,7 +519,7 @@ const goBack = () => {
           <a
             v-if="organisation"
             :href="route('organisations.membership.newsletters.index', organisation.slug)"
-            class="inline-block px-8 py-3 bg-white text-amber-700 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            class="inline-block px-8 py-3 bg-white text-amber-700 rounded-lg font-semibold hover:bg-neutral-100 transition-colors"
           >
             {{ t?.cta?.with_org?.replace('{org}', organisation.name) }}
           </a>
@@ -564,3 +564,4 @@ const goBack = () => {
   background: #94a3b8;
 }
 </style>
+

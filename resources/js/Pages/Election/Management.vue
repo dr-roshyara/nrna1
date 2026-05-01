@@ -3,10 +3,10 @@
     <!-- Skip link -->
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
     >Skip to main content</a>
 
-    <main id="main-content" class="min-h-screen bg-slate-100 py-8 relative overflow-hidden">
+    <main id="main-content" class="min-h-screen bg-neutral-100 py-8 relative overflow-hidden">
       <!-- Decorative left frame gradient -->
       <div
         class="absolute left-0 top-0 w-1/2 h-full pointer-events-none opacity-40"
@@ -57,7 +57,7 @@
                 href="/help/election-setup"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-50 to-cyan-50 text-blue-700 font-semibold rounded-lg border-2 border-blue-200 hover:border-blue-400 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all duration-200 whitespace-nowrap"
+                class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-50 to-cyan-50 text-primary-700 font-semibold rounded-lg border-2 border-primary-200 hover:border-primary-400 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all duration-200 whitespace-nowrap"
                 aria-label="Open Election Setup Guide (opens in new window)"
                 title="Learn how to configure election settings and voter verification"
               >
@@ -86,12 +86,12 @@
         <div
           v-if="page.props.flash?.error"
           role="alert"
-          class="flex items-center gap-3 bg-red-50 border border-red-200 rounded-xl px-5 py-4"
+          class="flex items-center gap-3 bg-danger-50 border border-danger-200 rounded-xl px-5 py-4"
         >
-          <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="w-5 h-5 text-danger-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
-          <p class="text-sm font-medium text-red-800">{{ page.props.flash.error }}</p>
+          <p class="text-sm font-medium text-danger-800">{{ page.props.flash.error }}</p>
         </div>
 
         <!-- Pending Approval Banner -->
@@ -103,7 +103,7 @@
             <div class="flex-1">
               <p class="font-semibold text-amber-900">⏳ {{ t.modals?.pending_elections || 'Pending Approval' }}</p>
               <p class="text-sm text-amber-800 mt-1">{{ t.modals?.review_and_process || 'This election is awaiting admin approval.' }}</p>
-              <p v-if="election.rejection_reason" class="text-sm text-red-700 mt-2 font-medium">
+              <p v-if="election.rejection_reason" class="text-sm text-danger-700 mt-2 font-medium">
                 📋 {{ t.modals?.previously_rejected || 'Previously Rejected' }}: {{ election.rejection_reason }}
               </p>
             </div>
@@ -455,10 +455,10 @@
               <p class="text-3xl font-bold text-emerald-800 mt-1">{{ stats.active_voters ?? 0 }}</p>
               <p class="text-xs text-emerald-500 mt-0.5">{{ t.sections.statistics.approved }}</p>
             </div>
-            <div class="rounded-xl bg-blue-50 border border-blue-200 p-5">
-              <p class="text-xs font-semibold text-blue-500 uppercase tracking-wide">{{ t.sections.statistics.eligible_voters }}</p>
-              <p class="text-3xl font-bold text-blue-800 mt-1">{{ stats.eligible_voters ?? 0 }}</p>
-              <p class="text-xs text-blue-500 mt-0.5">{{ t.sections.statistics.not_expired }}</p>
+            <div class="rounded-xl bg-primary-50 border border-primary-200 p-5">
+              <p class="text-xs font-semibold text-primary-500 uppercase tracking-wide">{{ t.sections.statistics.eligible_voters }}</p>
+              <p class="text-3xl font-bold text-primary-800 mt-1">{{ stats.eligible_voters ?? 0 }}</p>
+              <p class="text-xs text-primary-500 mt-0.5">{{ t.sections.statistics.not_expired }}</p>
             </div>
           </div>
 
@@ -479,7 +479,7 @@
                 <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.statistics.status_inactive }}</p>
               </div>
               <div class="text-center">
-                <p class="text-2xl font-bold text-red-500">{{ stats.by_status.removed ?? 0 }}</p>
+                <p class="text-2xl font-bold text-danger-500">{{ stats.by_status.removed ?? 0 }}</p>
                 <p class="text-xs text-slate-500 mt-0.5">{{ t.sections.statistics.status_removed }}</p>
               </div>
             </div>
@@ -542,25 +542,25 @@
             <!-- Results Status -->
             <div
               class="rounded-xl border p-5 flex items-center gap-4"
-              :class="election.results_published ? 'bg-blue-50 border-blue-200' : 'bg-slate-50 border-slate-200'"
+              :class="election.results_published ? 'bg-primary-50 border-primary-200' : 'bg-slate-50 border-slate-200'"
             >
               <div
                 class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                :class="election.results_published ? 'bg-blue-100' : 'bg-slate-100'"
+                :class="election.results_published ? 'bg-primary-100' : 'bg-slate-100'"
               >
                 <svg
                   class="w-5 h-5"
-                  :class="election.results_published ? 'text-blue-600' : 'text-slate-400'"
+                  :class="election.results_published ? 'text-primary-600' : 'text-slate-400'"
                   fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
                 >
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                 </svg>
               </div>
               <div>
-                <p class="text-xs font-semibold uppercase tracking-wide" :class="election.results_published ? 'text-blue-600' : 'text-slate-400'">
+                <p class="text-xs font-semibold uppercase tracking-wide" :class="election.results_published ? 'text-primary-600' : 'text-slate-400'">
                   {{ t.sections.status.results }}
                 </p>
-                <p class="text-sm font-semibold mt-0.5" :class="election.results_published ? 'text-blue-800' : 'text-slate-600'">
+                <p class="text-sm font-semibold mt-0.5" :class="election.results_published ? 'text-primary-800' : 'text-slate-600'">
                   {{ election.results_published ? t.sections.status.published : t.sections.status.unpublished }}
                 </p>
               </div>
@@ -750,10 +750,10 @@
               v-model="completionReason"
               placeholder="e.g., All posts and voters have been configured. Ready to proceed to nomination phase."
               rows="4"
-              class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+              class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
               :aria-label="`Reason for completing ${selectedPhase} phase`"
             ></textarea>
-            <p v-if="reasonError" class="text-red-500 text-sm mt-2 font-medium">
+            <p v-if="reasonError" class="text-danger-500 text-sm mt-2 font-medium">
               {{ reasonError }}
             </p>
             <p class="text-xs text-slate-500 mt-2">
@@ -770,15 +770,16 @@
             >
               Cancel
             </button>
-            <button
+            <Button
               @click="submitPhaseCompletion"
               :disabled="!completionReason.trim() || isLoading"
-              class="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+              variant="primary"
               :aria-label="`Confirm completion of ${selectedPhase} phase`"
+              class="flex items-center gap-2"
             >
               <span v-if="isLoading" class="inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
               <span>{{ isLoading ? 'Completing...' : 'Confirm Completion' }}</span>
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -792,6 +793,7 @@ import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { ref, computed } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
+import Button from '@/Components/Button.vue'
 import Card from '@/Components/Card.vue'
 import StatusBadge from '@/Components/StatusBadge.vue'
 import ActionButton from '@/Components/ActionButton.vue'
@@ -1208,3 +1210,4 @@ main > div > *:nth-child(n+6) { animation-delay: 0.6s; }
   left: 100%;
 }
 </style>
+

@@ -5,7 +5,7 @@
         <EventSchema />
 
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-neutral-800 leading-tight">
                 {{ electionName || 'Election Result' }}
             </h2>
         </template>
@@ -47,3 +47,4 @@ export default {
     }
 };
 </script>
+

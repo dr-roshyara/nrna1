@@ -11,7 +11,7 @@
           <!-- CEO Tags - Accessible Badge Design -->
           <div class="mb-8 flex flex-wrap justify-center gap-2 sm:gap-3">
             <span
-              class="inline-flex items-center rounded-full bg-blue-100 px-3 py-2 text-xs font-semibold text-blue-700 sm:px-4 sm:py-2 sm:text-sm"
+              class="inline-flex items-center rounded-full bg-primary-100 px-3 py-2 text-xs font-semibold text-primary-700 sm:px-4 sm:py-2 sm:text-sm"
               aria-label="Secure Online Voting certification badge"
             >
               🔐 Secure Online Voting
@@ -27,17 +27,17 @@
           <!-- Hero Content -->
           <div class="space-y-4 text-center sm:space-y-6">
             <h1
-              class="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl"
+              class="text-3xl font-bold leading-tight text-neutral-900 sm:text-4xl md:text-5xl lg:text-6xl"
               tabindex="-1"
             >
               {{ $t('pages.security.hero.title') }}
             </h1>
 
-            <p class="text-base text-gray-600 sm:text-lg md:text-xl">
+            <p class="text-base text-neutral-600 sm:text-lg md:text-xl">
               {{ $t('pages.security.hero.subtitle') }}
             </p>
 
-            <p class="text-base font-semibold text-blue-600 sm:text-lg md:text-xl">
+            <p class="text-base font-semibold text-primary-600 sm:text-lg md:text-xl">
               {{ $t('pages.security.hero.promise') }}
             </p>
 
@@ -51,8 +51,8 @@
                   'inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold transition duration-200 sm:px-8 sm:py-3',
                   'focus:outline-none focus:ring-2 focus:ring-offset-2',
                   button.variant === 'primary'
-                    ? 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 active:bg-blue-800'
-                    : 'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-400 active:bg-gray-400',
+                    ? 'bg-primary-600 text-white hover:bg-primary-700 focus:ring-blue-500 active:bg-primary-800'
+                    : 'bg-neutral-200 text-neutral-900 hover:bg-neutral-300 focus:ring-gray-400 active:bg-neutral-400',
                 ]"
                 :aria-label="`${button.label} - ${button.href}`"
               >
@@ -65,7 +65,7 @@
 
       <!-- Five-Layer Architecture Section -->
       <section
-        class="w-full bg-blue-50 px-4 py-12 sm:px-6 sm:py-16 md:py-24 lg:px-8 lg:py-32"
+        class="w-full bg-primary-50 px-4 py-12 sm:px-6 sm:py-16 md:py-24 lg:px-8 lg:py-32"
         aria-labelledby="security-architecture-heading"
       >
         <div class="mx-auto max-w-6xl">
@@ -73,11 +73,11 @@
           <div class="mb-8 text-center sm:mb-12 md:mb-16">
             <h2
               id="security-architecture-heading"
-              class="text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
+              class="text-2xl font-bold text-neutral-900 sm:text-3xl md:text-4xl"
             >
               {{ $t('pages.security.architecture.title') || 'Security Architecture' }}
             </h2>
-            <p class="mt-2 text-sm text-gray-600 sm:mt-4 sm:text-base">
+            <p class="mt-2 text-sm text-neutral-600 sm:mt-4 sm:text-base">
               {{ $t('pages.security.architecture.subtitle') || 'Five independent layers protect every vote' }}
             </p>
           </div>
@@ -105,20 +105,20 @@
               aria-labelledby="layer-1-title"
             >
               <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-100"
+                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary-100"
                 aria-hidden="true"
               >
-                <span class="text-lg font-bold text-blue-600">1</span>
+                <span class="text-lg font-bold text-primary-600">1</span>
               </div>
-              <h3 id="layer-1-title" class="mb-2 text-base font-semibold text-gray-900 sm:text-lg">
+              <h3 id="layer-1-title" class="mb-2 text-base font-semibold text-neutral-900 sm:text-lg">
                 {{ $t(`pages.security.layers.layer1.title`) }}
               </h3>
-              <p class="mb-3 text-xs text-gray-600 sm:text-sm md:mb-4">
+              <p class="mb-3 text-xs text-neutral-600 sm:text-sm md:mb-4">
                 {{ $t(`pages.security.layers.layer1.description`) }}
               </p>
               <!-- Customer-Friendly Explanation -->
-              <div class="border-t border-blue-200 pt-3 sm:pt-4">
-                <p class="text-xs font-medium text-blue-700">
+              <div class="border-t border-primary-200 pt-3 sm:pt-4">
+                <p class="text-xs font-medium text-primary-700">
                   <span aria-hidden="true">🔍</span>
                   <strong>{{ $t('pages.security.what_means') || 'What this means:' }}</strong>
                   {{ $t('pages.security.layers.layer1.explanation') || 'We check that your voting link is real, belongs to you, and hasn\'t been stolen or deactivated.' }}
@@ -137,10 +137,10 @@
               >
                 <span class="text-lg font-bold text-green-600">2</span>
               </div>
-              <h3 id="layer-2-title" class="mb-2 text-base font-semibold text-gray-900 sm:text-lg">
+              <h3 id="layer-2-title" class="mb-2 text-base font-semibold text-neutral-900 sm:text-lg">
                 {{ $t(`pages.security.layers.layer2.title`) }}
               </h3>
-              <p class="mb-3 text-xs text-gray-600 sm:text-sm md:mb-4">
+              <p class="mb-3 text-xs text-neutral-600 sm:text-sm md:mb-4">
                 {{ $t(`pages.security.layers.layer2.description`) }}
               </p>
               <!-- Customer-Friendly Explanation -->
@@ -164,10 +164,10 @@
               >
                 <span class="text-lg font-bold text-purple-600">3</span>
               </div>
-              <h3 id="layer-3-title" class="mb-2 text-base font-semibold text-gray-900 sm:text-lg">
+              <h3 id="layer-3-title" class="mb-2 text-base font-semibold text-neutral-900 sm:text-lg">
                 {{ $t(`pages.security.layers.layer3.title`) }}
               </h3>
-              <p class="mb-3 text-xs text-gray-600 sm:text-sm md:mb-4">
+              <p class="mb-3 text-xs text-neutral-600 sm:text-sm md:mb-4">
                 {{ $t(`pages.security.layers.layer3.description`) }}
               </p>
               <!-- Customer-Friendly Explanation -->
@@ -191,10 +191,10 @@
               >
                 <span class="text-lg font-bold text-amber-600">4</span>
               </div>
-              <h3 id="layer-4-title" class="mb-2 text-base font-semibold text-gray-900 sm:text-lg">
+              <h3 id="layer-4-title" class="mb-2 text-base font-semibold text-neutral-900 sm:text-lg">
                 {{ $t(`pages.security.layers.layer4.title`) }}
               </h3>
-              <p class="mb-3 text-xs text-gray-600 sm:text-sm md:mb-4">
+              <p class="mb-3 text-xs text-neutral-600 sm:text-sm md:mb-4">
                 {{ $t(`pages.security.layers.layer4.description`) }}
               </p>
               <!-- Customer-Friendly Explanation -->
@@ -213,20 +213,20 @@
               aria-labelledby="layer-5-title"
             >
               <div
-                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-100"
+                class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-danger-100"
                 aria-hidden="true"
               >
-                <span class="text-lg font-bold text-red-600">5</span>
+                <span class="text-lg font-bold text-danger-600">5</span>
               </div>
-              <h3 id="layer-5-title" class="mb-2 text-base font-semibold text-gray-900 sm:text-lg">
+              <h3 id="layer-5-title" class="mb-2 text-base font-semibold text-neutral-900 sm:text-lg">
                 {{ $t(`pages.security.layers.layer5.title`) }}
               </h3>
-              <p class="mb-3 text-xs text-gray-600 sm:text-sm md:mb-4">
+              <p class="mb-3 text-xs text-neutral-600 sm:text-sm md:mb-4">
                 {{ $t(`pages.security.layers.layer5.description`) }}
               </p>
               <!-- Customer-Friendly Explanation -->
-              <div class="border-t border-red-200 pt-3 sm:pt-4">
-                <p class="text-xs font-medium text-red-700">
+              <div class="border-t border-danger-200 pt-3 sm:pt-4">
+                <p class="text-xs font-medium text-danger-700">
                   <span aria-hidden="true">🔒</span>
                   <strong>{{ $t('pages.security.what_means') || 'What this means:' }}</strong>
                   {{ $t('pages.security.layers.layer5.explanation') || 'We literally cannot see how you voted. Your vote is stored with no connection to your identity, but you can still verify it was counted.' }}
@@ -238,8 +238,8 @@
           <!-- Summary Statement - Accessible Info Box -->
           <div class="mt-8 overflow-hidden rounded-lg bg-white p-5 shadow sm:mt-12 md:mt-16 md:p-8">
             <div class="max-w-3xl">
-              <p class="text-sm text-gray-700 sm:text-base md:text-lg">
-                <span class="font-bold text-blue-600">{{ $t('pages.security.bottom_line') || 'The bottom line:' }}</span>
+              <p class="text-sm text-neutral-700 sm:text-base md:text-lg">
+                <span class="font-bold text-primary-600">{{ $t('pages.security.bottom_line') || 'The bottom line:' }}</span>
                 {{ $t('pages.security.summary') || 'Five layers of security mean your vote is protected at every step. Even if one layer were compromised, the other four still protect you.' }}
               </p>
             </div>
@@ -255,7 +255,7 @@
         <div class="mx-auto max-w-6xl">
           <h2
             id="security-pillars-heading"
-            class="mb-8 text-center text-2xl font-bold text-gray-900 sm:mb-12 sm:text-3xl md:mb-16 md:text-4xl"
+            class="mb-8 text-center text-2xl font-bold text-neutral-900 sm:mb-12 sm:text-3xl md:mb-16 md:text-4xl"
           >
             {{ $t('pages.security.pillars_title') || 'Security Pillars' }}
           </h2>
@@ -268,19 +268,19 @@
             >
               <div class="mb-6 flex justify-center">
                 <div
-                  class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 sm:h-20 sm:w-20"
+                  class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary-600 sm:h-20 sm:w-20"
                   aria-hidden="true"
                 >
                   <span class="text-2xl sm:text-4xl">🔒</span>
                 </div>
               </div>
-              <h3 id="pillar-anonymity-title" class="mb-4 text-center text-lg font-bold text-gray-900 sm:text-xl">
+              <h3 id="pillar-anonymity-title" class="mb-4 text-center text-lg font-bold text-neutral-900 sm:text-xl">
                 {{ $t(`pages.security.pillars.anonymity.title`) }}
               </h3>
-              <p class="mb-4 text-center text-sm text-gray-700 sm:text-base">
+              <p class="mb-4 text-center text-sm text-neutral-700 sm:text-base">
                 {{ $t(`pages.security.pillars.anonymity.description`) }}
               </p>
-              <p class="text-center text-xs font-medium text-blue-700 sm:text-sm">
+              <p class="text-center text-xs font-medium text-primary-700 sm:text-sm">
                 ✅ {{ $t('pages.security.pillars.anonymity.tagline') || 'Even we don\'t know how you voted' }}
               </p>
             </article>
@@ -298,10 +298,10 @@
                   <span class="text-2xl sm:text-4xl">✅</span>
                 </div>
               </div>
-              <h3 id="pillar-verification-title" class="mb-4 text-center text-lg font-bold text-gray-900 sm:text-xl">
+              <h3 id="pillar-verification-title" class="mb-4 text-center text-lg font-bold text-neutral-900 sm:text-xl">
                 {{ $t(`pages.security.pillars.verification.title`) }}
               </h3>
-              <p class="mb-4 text-center text-sm text-gray-700 sm:text-base">
+              <p class="mb-4 text-center text-sm text-neutral-700 sm:text-base">
                 {{ $t(`pages.security.pillars.verification.description`) }}
               </p>
               <p class="text-center text-xs font-medium text-green-700 sm:text-sm">
@@ -322,10 +322,10 @@
                   <span class="text-2xl sm:text-4xl">🔐</span>
                 </div>
               </div>
-              <h3 id="pillar-isolation-title" class="mb-4 text-center text-lg font-bold text-gray-900 sm:text-xl">
+              <h3 id="pillar-isolation-title" class="mb-4 text-center text-lg font-bold text-neutral-900 sm:text-xl">
                 {{ $t(`pages.security.pillars.isolation.title`) }}
               </h3>
-              <p class="mb-4 text-center text-sm text-gray-700 sm:text-base">
+              <p class="mb-4 text-center text-sm text-neutral-700 sm:text-base">
                 {{ $t(`pages.security.pillars.isolation.description`) }}
               </p>
               <p class="text-center text-xs font-medium text-purple-700 sm:text-sm">
@@ -349,11 +349,11 @@
             </div>
             <h2
               id="state-machine-heading"
-              class="text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
+              class="text-2xl font-bold text-neutral-900 sm:text-3xl md:text-4xl"
             >
               Election State Machine
             </h2>
-            <p class="mt-4 text-base text-gray-600 sm:text-lg max-w-2xl mx-auto">
+            <p class="mt-4 text-base text-neutral-600 sm:text-lg max-w-2xl mx-auto">
               Behind every secure election is a tamper-proof state machine that enforces a rigid progression through five distinct phases, preventing manipulation and ensuring complete verifiability.
             </p>
           </div>
@@ -367,10 +367,10 @@
                   <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg">
                     1
                   </div>
-                  <p class="mt-3 text-xs sm:text-sm font-semibold text-gray-900 text-center">
+                  <p class="mt-3 text-xs sm:text-sm font-semibold text-neutral-900 text-center">
                     Administration
                   </p>
-                  <p class="text-xs text-gray-600 text-center">Setup</p>
+                  <p class="text-xs text-neutral-600 text-center">Setup</p>
                   <div v-if="locale === 'en'" class="absolute -right-3 md:right-1/2 md:translate-x-1/2 top-1/4 hidden md:block">
                     <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -383,10 +383,10 @@
                   <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg">
                     2
                   </div>
-                  <p class="mt-3 text-xs sm:text-sm font-semibold text-gray-900 text-center">
+                  <p class="mt-3 text-xs sm:text-sm font-semibold text-neutral-900 text-center">
                     Nomination
                   </p>
-                  <p class="text-xs text-gray-600 text-center">Candidates</p>
+                  <p class="text-xs text-neutral-600 text-center">Candidates</p>
                   <div v-if="locale === 'en'" class="absolute -right-3 md:right-1/2 md:translate-x-1/2 top-1/4 hidden md:block">
                     <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -399,10 +399,10 @@
                   <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-purple-400 to-purple-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg">
                     3
                   </div>
-                  <p class="mt-3 text-xs sm:text-sm font-semibold text-gray-900 text-center">
+                  <p class="mt-3 text-xs sm:text-sm font-semibold text-neutral-900 text-center">
                     Voting
                   </p>
-                  <p class="text-xs text-gray-600 text-center">Secure</p>
+                  <p class="text-xs text-neutral-600 text-center">Secure</p>
                   <div v-if="locale === 'en'" class="absolute -right-3 md:right-1/2 md:translate-x-1/2 top-1/4 hidden md:block">
                     <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -415,10 +415,10 @@
                   <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg">
                     4
                   </div>
-                  <p class="mt-3 text-xs sm:text-sm font-semibold text-gray-900 text-center">
+                  <p class="mt-3 text-xs sm:text-sm font-semibold text-neutral-900 text-center">
                     Counting
                   </p>
-                  <p class="text-xs text-gray-600 text-center">Verify</p>
+                  <p class="text-xs text-neutral-600 text-center">Verify</p>
                   <div v-if="locale === 'en'" class="absolute -right-3 md:right-1/2 md:translate-x-1/2 top-1/4 hidden md:block">
                     <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -431,16 +431,16 @@
                   <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg">
                     5
                   </div>
-                  <p class="mt-3 text-xs sm:text-sm font-semibold text-gray-900 text-center">
+                  <p class="mt-3 text-xs sm:text-sm font-semibold text-neutral-900 text-center">
                     Results
                   </p>
-                  <p class="text-xs text-gray-600 text-center">Published</p>
+                  <p class="text-xs text-neutral-600 text-center">Published</p>
                 </div>
               </div>
 
               <!-- Locked Transition Info -->
               <div class="mt-8 pt-6 border-t border-indigo-100">
-                <p class="text-xs sm:text-sm text-gray-600 text-center">
+                <p class="text-xs sm:text-sm text-neutral-600 text-center">
                   <span class="font-semibold text-indigo-700">✓ One-way progression:</span> Each phase locks automatically. No phase can be skipped or reversed.
                 </p>
               </div>
@@ -456,10 +456,10 @@
                   <span class="text-2xl">📜</span>
                 </div>
               </div>
-              <h3 class="mb-3 text-center text-lg font-bold text-gray-900 sm:text-xl">
+              <h3 class="mb-3 text-center text-lg font-bold text-neutral-900 sm:text-xl">
                 Immutable Audit Trail
               </h3>
-              <p class="text-center text-sm text-gray-700 sm:text-base">
+              <p class="text-center text-sm text-neutral-700 sm:text-base">
                 Every state transition is recorded cryptographically and cannot be altered, modified, or deleted — even by system administrators.
               </p>
             </article>
@@ -471,10 +471,10 @@
                   <span class="text-2xl">🔒</span>
                 </div>
               </div>
-              <h3 class="mb-3 text-center text-lg font-bold text-gray-900 sm:text-xl">
+              <h3 class="mb-3 text-center text-lg font-bold text-neutral-900 sm:text-xl">
                 Tamper-Proof Design
               </h3>
-              <p class="text-center text-sm text-gray-700 sm:text-base">
+              <p class="text-center text-sm text-neutral-700 sm:text-base">
                 Cryptographic hashes detect any attempt to tamper with votes or election state. Mathematical verification proves integrity without revealing details.
               </p>
             </article>
@@ -486,10 +486,10 @@
                   <span class="text-2xl">⚖️</span>
                 </div>
               </div>
-              <h3 class="mb-3 text-center text-lg font-bold text-gray-900 sm:text-xl">
+              <h3 class="mb-3 text-center text-lg font-bold text-neutral-900 sm:text-xl">
                 Legal Compliance Ready
               </h3>
-              <p class="text-center text-sm text-gray-700 sm:text-base">
+              <p class="text-center text-sm text-neutral-700 sm:text-base">
                 Designed to meet election integrity requirements. Complete transparency for auditors while maintaining voter anonymity.
               </p>
             </article>
@@ -512,18 +512,18 @@
 
       <!-- Voting Journey Section -->
       <section
-        class="w-full bg-gray-50 px-4 py-12 sm:px-6 sm:py-16 md:py-24 lg:px-8 lg:py-32"
+        class="w-full bg-neutral-50 px-4 py-12 sm:px-6 sm:py-16 md:py-24 lg:px-8 lg:py-32"
         aria-labelledby="voting-journey-heading"
       >
         <div class="mx-auto max-w-6xl">
           <div class="mb-8 text-center sm:mb-12 md:mb-16">
             <h2
               id="voting-journey-heading"
-              class="text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
+              class="text-2xl font-bold text-neutral-900 sm:text-3xl md:text-4xl"
             >
               {{ $t('pages.security.journey_title') || 'Voting Journey' }}
             </h2>
-            <p class="mt-2 text-sm text-gray-600 sm:mt-4 sm:text-base">
+            <p class="mt-2 text-sm text-neutral-600 sm:mt-4 sm:text-base">
               {{ $t('pages.security.journey_subtitle') || 'Complete protection through five secure steps' }}
             </p>
           </div>
@@ -544,10 +544,10 @@
           <!-- Journey Steps - Mobile Friendly -->
           <div class="grid grid-cols-1 gap-3 text-center sm:grid-cols-2 md:grid-cols-5 md:gap-2">
             <div class="rounded bg-white p-3 shadow-sm sm:p-4">
-              <span class="block text-xs font-bold text-blue-600 sm:text-sm">
+              <span class="block text-xs font-bold text-primary-600 sm:text-sm">
                 {{ $t('pages.security.step1') || '1. Identity Check' }}
               </span>
-              <span class="block text-xs text-gray-600 sm:text-sm">
+              <span class="block text-xs text-neutral-600 sm:text-sm">
                 {{ $t('pages.security.step1_desc') || 'Your link is valid' }}
               </span>
             </div>
@@ -555,7 +555,7 @@
               <span class="block text-xs font-bold text-green-600 sm:text-sm">
                 {{ $t('pages.security.step2') || '2. Timing Check' }}
               </span>
-              <span class="block text-xs text-gray-600 sm:text-sm">
+              <span class="block text-xs text-neutral-600 sm:text-sm">
                 {{ $t('pages.security.step2_desc') || 'Session not expired' }}
               </span>
             </div>
@@ -563,7 +563,7 @@
               <span class="block text-xs font-bold text-purple-600 sm:text-sm">
                 {{ $t('pages.security.step3') || '3. Organization Check' }}
               </span>
-              <span class="block text-xs text-gray-600 sm:text-sm">
+              <span class="block text-xs text-neutral-600 sm:text-sm">
                 {{ $t('pages.security.step3_desc') || 'Right election' }}
               </span>
             </div>
@@ -571,15 +571,15 @@
               <span class="block text-xs font-bold text-amber-600 sm:text-sm">
                 {{ $t('pages.security.step4') || '4. Rules Check' }}
               </span>
-              <span class="block text-xs text-gray-600 sm:text-sm">
+              <span class="block text-xs text-neutral-600 sm:text-sm">
                 {{ $t('pages.security.step4_desc') || 'Can vote' }}
               </span>
             </div>
             <div class="rounded bg-white p-3 shadow-sm sm:p-4">
-              <span class="block text-xs font-bold text-red-600 sm:text-sm">
+              <span class="block text-xs font-bold text-danger-600 sm:text-sm">
                 {{ $t('pages.security.step5') || '5. Storage' }}
               </span>
-              <span class="block text-xs text-gray-600 sm:text-sm">
+              <span class="block text-xs text-neutral-600 sm:text-sm">
                 {{ $t('pages.security.step5_desc') || 'Anonymous but verifiable' }}
               </span>
             </div>
@@ -595,7 +595,7 @@
         <div class="mx-auto max-w-6xl">
           <h2
             id="trust-badges-heading"
-            class="mb-8 text-center text-2xl font-bold text-gray-900 sm:mb-12 sm:text-3xl md:mb-16 md:text-4xl"
+            class="mb-8 text-center text-2xl font-bold text-neutral-900 sm:mb-12 sm:text-3xl md:mb-16 md:text-4xl"
           >
             {{ $t('pages.security.trust_title') || 'Why Trust Us' }}
           </h2>
@@ -604,16 +604,16 @@
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             <!-- Security Tests Badge -->
             <article
-              class="overflow-hidden rounded-lg bg-blue-50 p-6 text-center transition hover:shadow-md sm:p-8"
+              class="overflow-hidden rounded-lg bg-primary-50 p-6 text-center transition hover:shadow-md sm:p-8"
               aria-labelledby="badge-security-tests"
             >
-              <div id="badge-security-tests" class="mb-2 text-3xl font-bold text-blue-600 sm:text-4xl">
+              <div id="badge-security-tests" class="mb-2 text-3xl font-bold text-primary-600 sm:text-4xl">
                 {{ badges.securityTests }}
               </div>
-              <p class="text-xs font-semibold text-gray-700 sm:text-sm">
+              <p class="text-xs font-semibold text-neutral-700 sm:text-sm">
                 {{ $t('pages.security.badges.security_tests') }}
               </p>
-              <p class="mt-2 text-xs text-gray-600">
+              <p class="mt-2 text-xs text-neutral-600">
                 {{ $t('pages.security.badges.security_tests_desc') || 'Every security feature tested' }}
               </p>
             </article>
@@ -626,10 +626,10 @@
               <div id="badge-anonymity" class="mb-2 text-3xl font-bold text-green-600 sm:text-4xl">
                 {{ badges.anonymity }}
               </div>
-              <p class="text-xs font-semibold text-gray-700 sm:text-sm">
+              <p class="text-xs font-semibold text-neutral-700 sm:text-sm">
                 {{ $t('pages.security.badges.anonymity') }}
               </p>
-              <p class="mt-2 text-xs text-gray-600">
+              <p class="mt-2 text-xs text-neutral-600">
                 {{ $t('pages.security.badges.anonymity_desc') || 'No voter ID stored with votes' }}
               </p>
             </article>
@@ -642,10 +642,10 @@
               <div id="badge-protection" class="mb-2 text-3xl font-bold text-purple-600 sm:text-4xl">
                 {{ badges.protection }}
               </div>
-              <p class="text-xs font-semibold text-gray-700 sm:text-sm">
+              <p class="text-xs font-semibold text-neutral-700 sm:text-sm">
                 {{ $t('pages.security.badges.protection') }}
               </p>
-              <p class="mt-2 text-xs text-gray-600">
+              <p class="mt-2 text-xs text-neutral-600">
                 {{ $t('pages.security.badges.protection_desc') || 'Independent security layers' }}
               </p>
             </article>
@@ -658,10 +658,10 @@
               <div id="badge-coverage" class="mb-2 text-3xl font-bold text-orange-600 sm:text-4xl">
                 {{ badges.coverage }}
               </div>
-              <p class="text-xs font-semibold text-gray-700 sm:text-sm">
+              <p class="text-xs font-semibold text-neutral-700 sm:text-sm">
                 {{ $t('pages.security.badges.coverage') }}
               </p>
-              <p class="mt-2 text-xs text-gray-600">
+              <p class="mt-2 text-xs text-neutral-600">
                 {{ $t('pages.security.badges.coverage_desc') || 'Industry-leading test coverage' }}
               </p>
             </article>
@@ -671,13 +671,13 @@
 
       <!-- FAQ Section - Accessible Details/Summary -->
       <section
-        class="w-full bg-gray-50 px-4 py-12 sm:px-6 sm:py-16 md:py-24 lg:px-8 lg:py-32"
+        class="w-full bg-neutral-50 px-4 py-12 sm:px-6 sm:py-16 md:py-24 lg:px-8 lg:py-32"
         aria-labelledby="faq-heading"
       >
         <div class="mx-auto max-w-3xl">
           <h2
             id="faq-heading"
-            class="mb-8 text-center text-2xl font-bold text-gray-900 sm:mb-12 sm:text-3xl md:mb-16 md:text-4xl"
+            class="mb-8 text-center text-2xl font-bold text-neutral-900 sm:mb-12 sm:text-3xl md:mb-16 md:text-4xl"
           >
             {{ $t('pages.security.faq_title') || 'Frequently Asked Questions' }}
           </h2>
@@ -689,15 +689,15 @@
               class="group overflow-hidden rounded-lg bg-white shadow transition hover:shadow-md"
             >
               <summary
-                class="flex cursor-pointer select-none items-center gap-4 px-4 py-4 sm:px-6 sm:py-5 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                class="flex cursor-pointer select-none items-center gap-4 px-4 py-4 sm:px-6 sm:py-5 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                 :aria-expanded="false"
               >
-                <span class="flex-1 text-sm font-semibold text-gray-900 sm:text-base">
+                <span class="flex-1 text-sm font-semibold text-neutral-900 sm:text-base">
                   {{ $t(`pages.security.faq.${item.id}.question`) }}
                 </span>
                 <!-- Chevron Icon for Accessibility -->
                 <svg
-                  class="h-5 w-5 flex-shrink-0 text-gray-500 transition group-open:rotate-180 sm:h-6 sm:w-6"
+                  class="h-5 w-5 flex-shrink-0 text-neutral-500 transition group-open:rotate-180 sm:h-6 sm:w-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -708,8 +708,8 @@
               </summary>
 
               <!-- FAQ Answer -->
-              <div class="border-t border-gray-100 px-4 py-4 sm:px-6 sm:py-5">
-                <p class="text-sm leading-relaxed text-gray-700 sm:text-base">
+              <div class="border-t border-neutral-100 px-4 py-4 sm:px-6 sm:py-5">
+                <p class="text-sm leading-relaxed text-neutral-700 sm:text-base">
                   {{ $t(`pages.security.faq.${item.id}.answer`) }}
                 </p>
               </div>
@@ -768,3 +768,4 @@ defineProps({
   },
 });
 </script>
+

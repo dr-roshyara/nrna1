@@ -63,7 +63,7 @@ const backUrl = computed(() => route('organisations.voter-hub', props.organisati
                   <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur rounded-full text-sm font-semibold">
                     {{ post.required_number }} {{ post.required_number === 1 ? 'seat' : 'seats' }}
                   </span>
-                  <span v-if="post.is_national_wide" class="inline-block px-3 py-1 bg-blue-400/30 backdrop-blur rounded-full text-sm font-semibold">
+                  <span v-if="post.is_national_wide" class="inline-block px-3 py-1 bg-primary-400/30 backdrop-blur rounded-full text-sm font-semibold">
                     National
                   </span>
                   <span v-else-if="post.state_name" class="inline-block px-3 py-1 bg-amber-400/30 backdrop-blur rounded-full text-sm font-semibold">
@@ -118,3 +118,4 @@ const backUrl = computed(() => route('organisations.voter-hub', props.organisati
     </div>
   </ElectionLayout>
 </template>
+

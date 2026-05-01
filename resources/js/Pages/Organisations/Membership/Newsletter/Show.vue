@@ -9,7 +9,7 @@
         {{ page.props.flash.success }}
       </div>
       <div v-if="page.props.errors?.state || page.props.errors?.error"
-           class="mb-6 rounded-lg bg-red-50 border border-red-200 p-4 text-red-800 text-sm">
+           class="mb-6 rounded-lg bg-danger-50 border border-danger-200 p-4 text-danger-800 text-sm">
         {{ page.props.errors?.state ?? page.props.errors?.error }}
       </div>
 
@@ -71,7 +71,7 @@
           <p class="text-xs text-slate-400 mt-0.5">{{ t.sent }}</p>
         </div>
         <div class="bg-white rounded-xl border border-slate-200 p-4 text-center shadow-sm">
-          <p class="text-2xl font-bold text-red-500">{{ newsletter.failed_count }}</p>
+          <p class="text-2xl font-bold text-danger-500">{{ newsletter.failed_count }}</p>
           <p class="text-xs text-slate-400 mt-0.5">{{ t.failed }}</p>
         </div>
         <div class="bg-white rounded-xl border border-slate-200 p-4 text-center shadow-sm">
@@ -147,7 +147,7 @@
           <div v-for="log in newsletter.audit_logs" :key="log.id"
                class="flex items-start gap-3 px-4 py-3">
             <div class="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
-                 :class="log.action === 'completed' ? 'bg-green-500' : log.action === 'failed' ? 'bg-red-500' : 'bg-purple-400'" />
+                 :class="log.action === 'completed' ? 'bg-green-500' : log.action === 'failed' ? 'bg-danger-500' : 'bg-purple-400'" />
             <div class="min-w-0">
               <p class="text-sm text-slate-800 capitalize font-medium">{{ t['action_' + log.action] ?? log.action }}</p>
               <p class="text-xs text-slate-400">{{ formatDate(log.created_at) }}</p>
@@ -258,10 +258,10 @@ const recipientCount = ref(null)
 
 const statusClass = computed(() => ({
   draft:      'bg-slate-100 text-slate-600',
-  queued:     'bg-blue-100 text-blue-700',
+  queued:     'bg-primary-100 text-primary-700',
   processing: 'bg-yellow-100 text-yellow-700',
   completed:  'bg-green-100 text-green-700',
-  failed:     'bg-red-100 text-red-700',
+  failed:     'bg-danger-100 text-danger-700',
   cancelled:  'bg-slate-100 text-slate-500',
 }[props.newsletter.status] ?? 'bg-slate-100 text-slate-500'))
 
@@ -278,9 +278,9 @@ const formatFileSize = (bytes) => {
 }
 
 const attachmentIconBg = (mime) => {
-  if (mime === 'application/pdf')       return 'bg-red-100 text-red-600'
+  if (mime === 'application/pdf')       return 'bg-danger-100 text-danger-600'
   if (mime?.startsWith('image/'))       return 'bg-green-100 text-green-600'
-  if (mime?.includes('word'))           return 'bg-blue-100 text-blue-600'
+  if (mime?.includes('word'))           return 'bg-primary-100 text-primary-600'
   if (mime?.includes('excel') || mime?.includes('spreadsheet')) return 'bg-emerald-100 text-emerald-600'
   return 'bg-slate-100 text-slate-500'
 }
@@ -296,14 +296,14 @@ const getAudienceLabel = (type) => {
 
 const audienceBadgeClass = (type) => {
   const classes = {
-    all_members: 'bg-blue-100 text-blue-800',
+    all_members: 'bg-primary-100 text-primary-800',
     members_full: 'bg-green-100 text-green-800',
     members_associate: 'bg-purple-100 text-purple-800',
     members_overdue: 'bg-orange-100 text-orange-800',
     election_voters: 'bg-indigo-100 text-indigo-800',
     election_not_voted: 'bg-yellow-100 text-yellow-800',
     election_voted: 'bg-green-100 text-green-800',
-    election_candidates: 'bg-red-100 text-red-800',
+    election_candidates: 'bg-danger-100 text-danger-800',
     election_observers: 'bg-cyan-100 text-cyan-800',
     election_committee: 'bg-rose-100 text-rose-800',
     election_all: 'bg-violet-100 text-violet-800',
@@ -311,7 +311,7 @@ const audienceBadgeClass = (type) => {
     org_participants_guests: 'bg-lime-100 text-lime-800',
     org_admins: 'bg-fuchsia-100 text-fuchsia-800',
   }
-  return classes[type] || 'bg-gray-100 text-gray-800'
+  return classes[type] || 'bg-neutral-100 text-neutral-800'
 }
 
 const getElectionName = (electionId) => {
@@ -343,3 +343,4 @@ const cancelNewsletter = () => {
   router.patch(route('organisations.membership.newsletters.cancel', [props.organisation.slug, props.newsletter.id]))
 }
 </script>
+

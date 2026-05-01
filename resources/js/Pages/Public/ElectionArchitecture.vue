@@ -25,8 +25,8 @@
           :class="[
             'px-4 py-2 rounded-full transition-all font-medium text-sm',
             locale === lang
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'text-gray-600 hover:text-gray-900'
+              ? 'bg-primary-600 text-white shadow-md'
+              : 'text-neutral-600 hover:text-neutral-900'
           ]"
         >
           {{ lang.toUpperCase() }}
@@ -34,26 +34,26 @@
       </div>
 
       <!-- Hero Section -->
-      <section class="relative bg-gradient-to-br from-blue-200 via-blue-300 to-blue-100 text-gray-900 py-20 px-4 overflow-hidden">
+      <section class="relative bg-gradient-to-br from-blue-200 via-blue-300 to-blue-100 text-neutral-900 py-20 px-4 overflow-hidden">
         <div class="absolute inset-0 opacity-20">
-          <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
-          <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+          <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
         </div>
         <div class="relative max-w-4xl mx-auto text-center">
-          <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight text-neutral-900">
             {{ t.hero.title }}
           </h1>
-          <p class="text-xl md:text-2xl text-gray-700 mb-12 max-w-2xl mx-auto">
+          <p class="text-xl md:text-2xl text-neutral-700 mb-12 max-w-2xl mx-auto">
             {{ t.hero.subtitle }}
           </p>
           <div class="flex flex-wrap justify-center gap-4">
-            <div class="bg-white/60 backdrop-blur-sm border border-blue-400/30 rounded-lg px-6 py-3 text-sm font-medium text-gray-900">
+            <div class="bg-white/60 backdrop-blur-sm border border-primary-400/30 rounded-lg px-6 py-3 text-sm font-medium text-neutral-900">
               ✓ {{ t.hero.trust_badge_1 }}
             </div>
-            <div class="bg-white/60 backdrop-blur-sm border border-blue-400/30 rounded-lg px-6 py-3 text-sm font-medium text-gray-900">
+            <div class="bg-white/60 backdrop-blur-sm border border-primary-400/30 rounded-lg px-6 py-3 text-sm font-medium text-neutral-900">
               ✓ {{ t.hero.trust_badge_2 }}
             </div>
-            <div class="bg-white/60 backdrop-blur-sm border border-blue-400/30 rounded-lg px-6 py-3 text-sm font-medium text-gray-900">
+            <div class="bg-white/60 backdrop-blur-sm border border-primary-400/30 rounded-lg px-6 py-3 text-sm font-medium text-neutral-900">
               ✓ {{ t.hero.trust_badge_3 }}
             </div>
           </div>
@@ -61,17 +61,17 @@
       </section>
 
       <!-- Breadcrumbs -->
-      <nav class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-600">
-        <a href="/" class="hover:text-gray-900">{{ t.breadcrumbs.home }}</a>
+      <nav class="max-w-6xl mx-auto px-4 py-6 text-sm text-neutral-600">
+        <a href="/" class="hover:text-neutral-900">{{ t.breadcrumbs.home }}</a>
         <span class="mx-2">/</span>
-        <span class="text-gray-900 font-medium">{{ t.breadcrumbs.election_architecture }}</span>
+        <span class="text-neutral-900 font-medium">{{ t.breadcrumbs.election_architecture }}</span>
       </nav>
 
       <!-- 5-Phase Lifecycle Section -->
       <section class="max-w-6xl mx-auto px-4 py-16">
         <div class="text-center mb-12">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">{{ t.phases.title }}</h2>
-          <p class="text-xl text-gray-600">{{ t.phases.subtitle }}</p>
+          <h2 class="text-4xl font-bold text-neutral-900 mb-4">{{ t.phases.title }}</h2>
+          <p class="text-xl text-neutral-600">{{ t.phases.subtitle }}</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -95,11 +95,11 @@
       </section>
 
       <!-- Architecture Images Section -->
-      <section class="max-w-6xl mx-auto px-4 py-16 border-t border-gray-200">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Visual Architecture</h2>
+      <section class="max-w-6xl mx-auto px-4 py-16 border-t border-neutral-200">
+        <h2 class="text-3xl font-bold text-neutral-900 mb-8 text-center">Visual Architecture</h2>
 
         <div class="space-y-8">
-          <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
+          <div class="bg-neutral-50 rounded-lg overflow-hidden shadow-md">
             <img
               :src="images.stateMachine"
               :alt="t.images.state_machine_alt"
@@ -109,7 +109,7 @@
               height="600"
             />
           </div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
+          <div class="bg-neutral-50 rounded-lg overflow-hidden shadow-md">
             <img
               :src="images.sequenceDiagram"
               :alt="t.images.sequence_diagram_alt"
@@ -123,27 +123,27 @@
       </section>
 
       <!-- Security Features Grid -->
-      <section class="max-w-6xl mx-auto px-4 py-16 border-t border-gray-200">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Security Features</h2>
+      <section class="max-w-6xl mx-auto px-4 py-16 border-t border-neutral-200">
+        <h2 class="text-3xl font-bold text-neutral-900 mb-12 text-center">Security Features</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div v-for="(feature, idx) in t.security_features" :key="idx" class="bg-white rounded-lg p-8 border border-gray-200 hover:border-blue-500 transition-colors">
+          <div v-for="(feature, idx) in t.security_features" :key="idx" class="bg-white rounded-lg p-8 border border-neutral-200 hover:border-primary-500 transition-colors">
             <div class="text-4xl mb-4">{{ feature.icon }}</div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">{{ feature.title }}</h3>
-            <p class="text-gray-600">{{ feature.description }}</p>
+            <h3 class="text-xl font-bold text-neutral-900 mb-3">{{ feature.title }}</h3>
+            <p class="text-neutral-600">{{ feature.description }}</p>
           </div>
         </div>
       </section>
 
       <!-- Benefits Section -->
-      <section class="bg-blue-50 py-16 border-t border-gray-200">
+      <section class="bg-primary-50 py-16 border-t border-neutral-200">
         <div class="max-w-6xl mx-auto px-4">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             <!-- Admins Benefits -->
             <div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-6">{{ t.benefits_admin.title }}</h3>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-6">{{ t.benefits_admin.title }}</h3>
               <ul class="space-y-3">
-                <li v-for="(item, idx) in t.benefits_admin.items" :key="idx" class="flex items-start gap-3 text-gray-700">
-                  <span class="text-blue-600 font-bold flex-shrink-0">✓</span>
+                <li v-for="(item, idx) in t.benefits_admin.items" :key="idx" class="flex items-start gap-3 text-neutral-700">
+                  <span class="text-primary-600 font-bold flex-shrink-0">✓</span>
                   <span>{{ item }}</span>
                 </li>
               </ul>
@@ -151,10 +151,10 @@
 
             <!-- Voter Benefits -->
             <div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-6">{{ t.benefits_voter.title }}</h3>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-6">{{ t.benefits_voter.title }}</h3>
               <ul class="space-y-3">
-                <li v-for="(item, idx) in t.benefits_voter.items" :key="idx" class="flex items-start gap-3 text-gray-700">
-                  <span class="text-blue-600 font-bold flex-shrink-0">✓</span>
+                <li v-for="(item, idx) in t.benefits_voter.items" :key="idx" class="flex items-start gap-3 text-neutral-700">
+                  <span class="text-primary-600 font-bold flex-shrink-0">✓</span>
                   <span>{{ item }}</span>
                 </li>
               </ul>
@@ -164,22 +164,22 @@
       </section>
 
       <!-- FAQ Section -->
-      <section class="max-w-4xl mx-auto px-4 py-16 border-t border-gray-200">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Frequently Asked Questions</h2>
+      <section class="max-w-4xl mx-auto px-4 py-16 border-t border-neutral-200">
+        <h2 class="text-3xl font-bold text-neutral-900 mb-12 text-center">Frequently Asked Questions</h2>
         <div class="space-y-4">
-          <div v-for="(item, idx) in t.faq" :key="idx" class="border border-gray-200 rounded-lg overflow-hidden hover:border-blue-500 transition-colors">
+          <div v-for="(item, idx) in t.faq" :key="idx" class="border border-neutral-200 rounded-lg overflow-hidden hover:border-primary-500 transition-colors">
             <button
               @click="toggleFaq(idx)"
-              class="w-full flex justify-between items-center p-6 bg-white hover:bg-gray-50 transition-colors"
+              class="w-full flex justify-between items-center p-6 bg-white hover:bg-neutral-50 transition-colors"
             >
-              <span class="text-lg font-semibold text-gray-900 text-left">{{ item.question }}</span>
-              <span class="text-blue-600 font-bold text-xl flex-shrink-0 ml-4">
+              <span class="text-lg font-semibold text-neutral-900 text-left">{{ item.question }}</span>
+              <span class="text-primary-600 font-bold text-xl flex-shrink-0 ml-4">
                 {{ openFaq === idx ? '−' : '+' }}
               </span>
             </button>
             <transition name="expand">
-              <div v-show="openFaq === idx" class="border-t border-gray-200 bg-gray-50 p-6">
-                <p class="text-gray-700">{{ item.answer }}</p>
+              <div v-show="openFaq === idx" class="border-t border-neutral-200 bg-neutral-50 p-6">
+                <p class="text-neutral-700">{{ item.answer }}</p>
               </div>
             </transition>
           </div>
@@ -187,25 +187,25 @@
       </section>
 
       <!-- CTA Section -->
-      <section class="relative bg-gradient-to-br from-blue-200 via-blue-300 to-blue-100 text-gray-900 py-20 mt-16 border-t border-gray-200 overflow-hidden">
+      <section class="relative bg-gradient-to-br from-blue-200 via-blue-300 to-blue-100 text-neutral-900 py-20 mt-16 border-t border-neutral-200 overflow-hidden">
         <div class="absolute inset-0 opacity-20">
-          <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
-          <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+          <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
         </div>
         <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h2 class="text-4xl font-bold mb-4 text-gray-900">{{ t.cta.heading }}</h2>
-          <p class="text-xl text-gray-700 mb-8">{{ t.cta.subheading }}</p>
+          <h2 class="text-4xl font-bold mb-4 text-neutral-900">{{ t.cta.heading }}</h2>
+          <p class="text-xl text-neutral-700 mb-8">{{ t.cta.subheading }}</p>
           <div class="flex flex-wrap justify-center gap-4">
             <a
               href="#"
               @click.prevent="router.get(route('organisations.elections.create'))"
-              class="bg-white text-blue-600 font-bold px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors shadow-lg cursor-pointer"
+              class="bg-white text-primary-600 font-bold px-8 py-3 rounded-lg hover:bg-primary-50 transition-colors shadow-lg cursor-pointer"
             >
               {{ t.cta.start_election }}
             </a>
             <a
               href="mailto:sales@publicdigit.com"
-              class="border-2 border-gray-900 text-gray-900 font-bold px-8 py-3 rounded-lg hover:bg-gray-900/10 transition-colors"
+              class="border-2 border-neutral-900 text-neutral-900 font-bold px-8 py-3 rounded-lg hover:bg-neutral-900/10 transition-colors"
             >
               {{ t.cta.contact_sales }}
             </a>
@@ -313,3 +313,4 @@ const structuredData = {
   overflow: hidden;
 }
 </style>
+

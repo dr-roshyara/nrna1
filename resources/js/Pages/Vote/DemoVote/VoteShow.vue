@@ -10,10 +10,10 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    <h1 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-2">
                         {{ page.page_header.title }}
                     </h1>
-                    <p class="text-lg text-gray-600">
+                    <p class="text-lg text-neutral-600">
                         {{ page.page_header.subtitle }}
                     </p>
                 </div>
@@ -26,7 +26,7 @@
                                 <h2 class="text-xl md:text-2xl font-bold text-white mb-1">
                                     {{ page.voter_information.title }}
                                 </h2>
-                                <p class="text-blue-100">
+                                <p class="text-primary-100">
                                     {{ vote_data.is_own_vote ? page.voter_information.own_vote : page.voter_information.verification_result }}
                                 </p>
                             </div>
@@ -45,31 +45,31 @@
                             <!-- Voter Details -->
                             <div class="space-y-4">
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.voter_name }}</label>
-                                    <p class="text-lg font-semibold text-gray-900">{{ vote_data.voter_info.name }}</p>
+                                    <label class="text-sm font-medium text-neutral-500 uppercase tracking-wide">{{ page.voter_information.voter_name }}</label>
+                                    <p class="text-lg font-semibold text-neutral-900">{{ vote_data.voter_info.name }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.voter_id }}</label>
-                                    <p class="text-lg font-semibold text-gray-900">{{ vote_data.voter_info.user_id }}</p>
+                                    <label class="text-sm font-medium text-neutral-500 uppercase tracking-wide">{{ page.voter_information.voter_id }}</label>
+                                    <p class="text-lg font-semibold text-neutral-900">{{ vote_data.voter_info.user_id }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.region }}</label>
-                                    <p class="text-lg font-semibold text-gray-900">{{ vote_data.voter_info.region }}</p>
+                                    <label class="text-sm font-medium text-neutral-500 uppercase tracking-wide">{{ page.voter_information.region }}</label>
+                                    <p class="text-lg font-semibold text-neutral-900">{{ vote_data.voter_info.region }}</p>
                                 </div>
                             </div>
 
                             <!-- Vote Details -->
                             <div class="space-y-4">
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.vote_date }}</label>
-                                    <p class="text-lg font-semibold text-gray-900">{{ vote_data.vote_info.voted_at }}</p>
+                                    <label class="text-sm font-medium text-neutral-500 uppercase tracking-wide">{{ page.voter_information.vote_date }}</label>
+                                    <p class="text-lg font-semibold text-neutral-900">{{ vote_data.vote_info.voted_at }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.vote_id }}</label>
-                                    <p class="text-lg font-semibold text-gray-900">#{{ vote_data.vote_id }}</p>
+                                    <label class="text-sm font-medium text-neutral-500 uppercase tracking-wide">{{ page.voter_information.vote_id }}</label>
+                                    <p class="text-lg font-semibold text-neutral-900">#{{ vote_data.vote_id }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-sm font-medium text-gray-500 uppercase tracking-wide">{{ page.voter_information.verification_status }}</label>
+                                    <label class="text-sm font-medium text-neutral-500 uppercase tracking-wide">{{ page.voter_information.verification_status }}</label>
                                     <div class="flex items-center space-x-2">
                                         <div class="w-3 h-3 bg-green-500 rounded-full"></div>
                                         <span class="text-lg font-semibold text-green-600">{{ page.voter_information.verified }}</span>
@@ -82,16 +82,16 @@
 
                 <!-- Vote Summary Card -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
-                    <div class="px-6 py-6 border-b border-gray-100">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">{{ page.vote_summary.title }}</h3>
-                        <p class="text-gray-600">{{ page.vote_summary.subtitle }}</p>
+                    <div class="px-6 py-6 border-b border-neutral-100">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-2">{{ page.vote_summary.title }}</h3>
+                        <p class="text-neutral-600">{{ page.vote_summary.subtitle }}</p>
                     </div>
 
                     <div class="p-6">
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div class="text-center p-4 bg-blue-50 rounded-xl">
-                                <div class="text-3xl font-bold text-blue-600 mb-1">{{ vote_data.summary.total_positions }}</div>
-                                <div class="text-sm font-medium text-blue-700">{{ page.vote_summary.total_positions }}</div>
+                            <div class="text-center p-4 bg-primary-50 rounded-xl">
+                                <div class="text-3xl font-bold text-primary-600 mb-1">{{ vote_data.summary.total_positions }}</div>
+                                <div class="text-sm font-medium text-primary-700">{{ page.vote_summary.total_positions }}</div>
                             </div>
                             <div class="text-center p-4 bg-green-50 rounded-xl">
                                 <div class="text-3xl font-bold text-green-600 mb-1">{{ vote_data.summary.positions_voted }}</div>
@@ -108,13 +108,13 @@
                 <!-- No Vote Option Display -->
                 <div v-if="vote_data.vote_info.no_vote_option" class="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
                     <div class="p-8 text-center">
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
-                            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-danger-100 rounded-full mb-4">
+                            <svg class="w-8 h-8 text-danger-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728"></path>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ page.no_vote_option.title }}</h3>
-                        <p class="text-lg text-gray-600 max-w-md mx-auto">
+                        <h3 class="text-2xl font-bold text-neutral-900 mb-2">{{ page.no_vote_option.title }}</h3>
+                        <p class="text-lg text-neutral-600 max-w-md mx-auto">
                             {{ page.no_vote_option.description }}
                         </p>
                     </div>
@@ -123,9 +123,9 @@
                 <!-- Vote Selections -->
                 <div v-else-if="vote_data.vote_selections && vote_data.vote_selections.length > 0">
                     <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-                        <div class="px-6 py-6 border-b border-gray-100">
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">{{ page.vote_selections.title }}</h3>
-                            <p class="text-gray-600">{{ page.vote_selections.subtitle }}</p>
+                        <div class="px-6 py-6 border-b border-neutral-100">
+                            <h3 class="text-xl font-bold text-neutral-900 mb-2">{{ page.vote_selections.title }}</h3>
+                            <p class="text-neutral-600">{{ page.vote_selections.subtitle }}</p>
                         </div>
                         
                         <div class="divide-y divide-gray-100">
@@ -137,30 +137,30 @@
                                 <!-- Position Header -->
                                 <div class="flex items-center justify-between mb-4">
                                     <div>
-                                        <h4 class="text-lg font-bold text-gray-900">
+                                        <h4 class="text-lg font-bold text-neutral-900">
                                             {{ selection.post_name }}
                                         </h4>
-                                        <p v-if="selection.post_nepali_name" class="text-sm text-gray-600">
+                                        <p v-if="selection.post_nepali_name" class="text-sm text-neutral-600">
                                             {{ selection.post_nepali_name }}
                                         </p>
                                     </div>
                                     <div class="text-right">
-                                        <div class="text-sm font-medium text-gray-500">{{ page.vote_selections.position_id }}</div>
-                                        <div class="text-sm text-gray-900">{{ selection.post_id }}</div>
+                                        <div class="text-sm font-medium text-neutral-500">{{ page.vote_selections.position_id }}</div>
+                                        <div class="text-sm text-neutral-900">{{ selection.post_id }}</div>
                                     </div>
                                 </div>
 
                                 <!-- No Vote for this position -->
-                                <div v-if="selection.no_vote" class="bg-gray-50 rounded-xl p-4">
+                                <div v-if="selection.no_vote" class="bg-neutral-50 rounded-xl p-4">
                                     <div class="flex items-center space-x-3">
-                                        <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <div class="w-10 h-10 bg-danger-100 rounded-full flex items-center justify-center">
+                                            <svg class="w-5 h-5 text-danger-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                                             </svg>
                                         </div>
                                         <div>
-                                            <p class="font-medium text-red-600">{{ page.vote_selections.no_vote_cast }}</p>
-                                            <p class="text-sm text-red-500">{{ page.vote_selections.no_vote_description }}</p>
+                                            <p class="font-medium text-danger-600">{{ page.vote_selections.no_vote_cast }}</p>
+                                            <p class="text-sm text-danger-500">{{ page.vote_selections.no_vote_description }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -182,26 +182,26 @@
                                             
                                             <!-- Candidate Info -->
                                             <div class="flex-1 min-w-0">
-                                                <h5 class="text-lg font-bold text-gray-900 mb-1">
+                                                <h5 class="text-lg font-bold text-neutral-900 mb-1">
                                                     {{ getCandidateName(candidate) }}
                                                 </h5>
                                                 
                                                 <div class="grid md:grid-cols-2 gap-4 text-sm">
                                                     <div>
-                                                        <span class="font-medium text-gray-700">{{ page.vote_selections.candidate_id }}:</span>
-                                                        <span class="text-gray-900 ml-1">{{ candidate.candidacy_id }}</span>
+                                                        <span class="font-medium text-neutral-700">{{ page.vote_selections.candidate_id }}:</span>
+                                                        <span class="text-neutral-900 ml-1">{{ candidate.candidacy_id }}</span>
                                                     </div>
                                                     <div v-if="candidate.user_info && candidate.user_info.user_id">
-                                                        <span class="font-medium text-gray-700">{{ page.vote_selections.user_id }}:</span>
-                                                        <span class="text-gray-900 ml-1">{{ candidate.user_info.user_id }}</span>
+                                                        <span class="font-medium text-neutral-700">{{ page.vote_selections.user_id }}:</span>
+                                                        <span class="text-neutral-900 ml-1">{{ candidate.user_info.user_id }}</span>
                                                     </div>
                                                     <div v-if="candidate.proposer_name">
-                                                        <span class="font-medium text-gray-700">{{ page.vote_selections.proposer }}:</span>
-                                                        <span class="text-gray-900 ml-1">{{ candidate.proposer_name }}</span>
+                                                        <span class="font-medium text-neutral-700">{{ page.vote_selections.proposer }}:</span>
+                                                        <span class="text-neutral-900 ml-1">{{ candidate.proposer_name }}</span>
                                                     </div>
                                                     <div v-if="candidate.supporter_name">
-                                                        <span class="font-medium text-gray-700">{{ page.vote_selections.supporter }}:</span>
-                                                        <span class="text-gray-900 ml-1">{{ candidate.supporter_name }}</span>
+                                                        <span class="font-medium text-neutral-700">{{ page.vote_selections.supporter }}:</span>
+                                                        <span class="text-neutral-900 ml-1">{{ candidate.supporter_name }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -228,8 +228,8 @@
                                             </svg>
                                         </div>
                                         <div>
-                                            <p class="font-medium text-gray-900">{{ page.vote_selections.no_selection_made }}</p>
-                                            <p class="text-sm text-gray-600">{{ page.vote_selections.no_selection_description }}</p>
+                                            <p class="font-medium text-neutral-900">{{ page.vote_selections.no_selection_made }}</p>
+                                            <p class="text-sm text-neutral-600">{{ page.vote_selections.no_selection_description }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -241,13 +241,13 @@
                 <!-- No Vote Data Available -->
                 <div v-else class="bg-white rounded-2xl shadow-xl overflow-hidden">
                     <div class="p-8 text-center">
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
-                            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-neutral-100 rounded-full mb-4">
+                            <svg class="w-8 h-8 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">{{ page.no_vote_data.title }}</h3>
-                        <p class="text-gray-600 max-w-md mx-auto">
+                        <h3 class="text-xl font-bold text-neutral-900 mb-2">{{ page.no_vote_data.title }}</h3>
+                        <p class="text-neutral-600 max-w-md mx-auto">
                             {{ page.no_vote_data.description }}
                         </p>
                     </div>
@@ -257,7 +257,7 @@
                 <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                     <button
                         @click="goToVerifyAnother"
-                        class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
+                        class="inline-flex items-center justify-center px-6 py-3 border border-neutral-300 text-base font-medium rounded-xl text-neutral-700 bg-white hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
                     >
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -278,7 +278,7 @@
 
                 <!-- Security Notice -->
                 <div class="mt-8 text-center">
-                    <div class="inline-flex items-center space-x-2 text-sm text-gray-500">
+                    <div class="inline-flex items-center space-x-2 text-sm text-neutral-500">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>

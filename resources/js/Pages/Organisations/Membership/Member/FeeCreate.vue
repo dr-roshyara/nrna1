@@ -94,37 +94,37 @@ const handleSubmit = () => {
 
 <template>
   <PublicDigitLayout>
-    <div class="min-h-screen bg-gray-50 py-12">
+    <div class="min-h-screen bg-neutral-50 py-12">
       <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Breadcrumb -->
-        <nav class="flex items-center space-x-2 mb-8 text-sm text-gray-600">
-          <a :href="route('organisations.members.index', [organisation.slug])" class="hover:text-gray-900">
+        <nav class="flex items-center space-x-2 mb-8 text-sm text-neutral-600">
+          <a :href="route('organisations.members.index', [organisation.slug])" class="hover:text-neutral-900">
             {{ organisation.name }}
           </a>
           <span>/</span>
-          <a :href="route('organisations.members.fees.index', [organisation.slug, member.id])" class="hover:text-gray-900">
+          <a :href="route('organisations.members.fees.index', [organisation.slug, member.id])" class="hover:text-neutral-900">
             {{ member.organisation_user.user.name }}
           </a>
           <span>/</span>
-          <span class="text-gray-900">{{ t.page_title }}</span>
+          <span class="text-neutral-900">{{ t.page_title }}</span>
         </nav>
 
         <!-- Header -->
         <div class="mb-8">
-          <h1 class="text-3xl font-bold text-gray-900">{{ t.page_title }}</h1>
-          <p class="mt-2 text-gray-600">
+          <h1 class="text-3xl font-bold text-neutral-900">{{ t.page_title }}</h1>
+          <p class="mt-2 text-neutral-600">
             Assign a new membership fee to {{ member.organisation_user.user.name }}
           </p>
         </div>
 
         <!-- Flash Messages -->
-        <div v-if="page.props.flash?.error" class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
+        <div v-if="page.props.flash?.error" class="mb-6 p-4 bg-danger-50 border border-danger-200 rounded-lg text-danger-800">
           {{ page.props.flash.error }}
         </div>
 
         <!-- Type Selection Cards -->
         <div class="bg-white rounded-lg shadow mb-8 p-6">
-          <h2 class="text-lg font-semibold text-gray-900 mb-6">{{ t.select_type }}</h2>
+          <h2 class="text-lg font-semibold text-neutral-900 mb-6">{{ t.select_type }}</h2>
           <div class="grid gap-4 md:grid-cols-2">
             <div
               v-for="type in membershipTypes"
@@ -132,30 +132,30 @@ const handleSubmit = () => {
               @click="selectedTypeId = type.id"
               class="relative p-4 border-2 rounded-lg cursor-pointer transition"
               :class="selectedTypeId === type.id
-                ? 'border-blue-600 bg-blue-50'
-                : 'border-gray-300 bg-white hover:border-gray-400'"
+                ? 'border-primary-600 bg-primary-50'
+                : 'border-neutral-300 bg-white hover:border-neutral-400'"
             >
               <!-- Checkmark indicator -->
               <div
                 v-if="selectedTypeId === type.id"
-                class="absolute top-3 right-3 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center"
+                class="absolute top-3 right-3 w-6 h-6 bg-primary-600 text-white rounded-full flex items-center justify-center"
               >
                 ✓
               </div>
 
               <!-- Type info -->
               <div class="pr-8">
-                <h3 class="font-semibold text-gray-900">{{ type.name }}</h3>
-                <p class="text-2xl font-bold text-blue-600 mt-2">
+                <h3 class="font-semibold text-neutral-900">{{ type.name }}</h3>
+                <p class="text-2xl font-bold text-primary-600 mt-2">
                   {{ new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR' }).format(type.fee_amount) }}
                 </p>
-                <p class="text-sm text-gray-600 mt-1">
+                <p class="text-sm text-neutral-600 mt-1">
                   {{ t.duration }}: {{ type.duration_months ? `${type.duration_months} months` : t.duration_lifetime }}
                 </p>
               </div>
             </div>
           </div>
-          <div v-if="page.props.errors.membership_type_id" class="mt-3 text-sm text-red-600">
+          <div v-if="page.props.errors.membership_type_id" class="mt-3 text-sm text-danger-600">
             {{ page.props.errors.membership_type_id }}
           </div>
         </div>
@@ -164,66 +164,66 @@ const handleSubmit = () => {
         <form @submit.prevent="handleSubmit" class="bg-white rounded-lg shadow p-6">
           <!-- Due Date -->
           <div class="mb-6">
-            <label class="block text-sm font-medium text-gray-900 mb-2">
+            <label class="block text-sm font-medium text-neutral-900 mb-2">
               {{ t.due_date }}
-              <span class="text-red-600">*</span>
+              <span class="text-danger-600">*</span>
             </label>
             <input
               v-model="dueDate"
               type="date"
               :min="new Date().toISOString().split('T')[0]"
-              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              :class="page.props.errors.due_date && 'border-red-500'"
+              class="w-full px-3 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-blue-500"
+              :class="page.props.errors.due_date && 'border-danger-500'"
             />
-            <div v-if="page.props.errors.due_date" class="mt-1 text-sm text-red-600">
+            <div v-if="page.props.errors.due_date" class="mt-1 text-sm text-danger-600">
               {{ page.props.errors.due_date }}
             </div>
           </div>
 
           <!-- Period Label -->
           <div class="mb-6">
-            <label class="block text-sm font-medium text-gray-900 mb-2">
+            <label class="block text-sm font-medium text-neutral-900 mb-2">
               {{ t.period_label }}
             </label>
             <input
               v-model="periodLabel"
               type="text"
               placeholder="e.g., 2026, 2025-2026"
-              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              :class="page.props.errors.period_label && 'border-red-500'"
+              class="w-full px-3 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-blue-500"
+              :class="page.props.errors.period_label && 'border-danger-500'"
             />
-            <div v-if="page.props.errors.period_label" class="mt-1 text-sm text-red-600">
+            <div v-if="page.props.errors.period_label" class="mt-1 text-sm text-danger-600">
               {{ page.props.errors.period_label }}
             </div>
           </div>
 
           <!-- Notes -->
           <div class="mb-8">
-            <label class="block text-sm font-medium text-gray-900 mb-2">
+            <label class="block text-sm font-medium text-neutral-900 mb-2">
               {{ t.notes }}
             </label>
             <textarea
               v-model="notes"
               rows="3"
               placeholder="Optional notes about this fee..."
-              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              :class="page.props.errors.notes && 'border-red-500'"
+              class="w-full px-3 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-blue-500"
+              :class="page.props.errors.notes && 'border-danger-500'"
             />
-            <div v-if="page.props.errors.notes" class="mt-1 text-sm text-red-600">
+            <div v-if="page.props.errors.notes" class="mt-1 text-sm text-danger-600">
               {{ page.props.errors.notes }}
             </div>
           </div>
 
           <!-- Summary Panel -->
-          <div v-if="selectedType" class="mb-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div v-if="selectedType" class="mb-8 p-4 bg-primary-50 border border-primary-200 rounded-lg">
             <div class="flex justify-between items-center">
               <div>
-                <p class="text-sm text-gray-600">Selected Type</p>
-                <p class="text-lg font-semibold text-gray-900">{{ selectedType.name }}</p>
+                <p class="text-sm text-neutral-600">Selected Type</p>
+                <p class="text-lg font-semibold text-neutral-900">{{ selectedType.name }}</p>
               </div>
               <div>
-                <p class="text-sm text-gray-600">Amount</p>
-                <p class="text-2xl font-bold text-blue-600">
+                <p class="text-sm text-neutral-600">Amount</p>
+                <p class="text-2xl font-bold text-primary-600">
                   {{ new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR' }).format(selectedType.fee_amount) }}
                 </p>
               </div>
@@ -234,14 +234,14 @@ const handleSubmit = () => {
           <div class="flex gap-3">
             <a
               :href="route('organisations.members.fees.index', [organisation.slug, member.id])"
-              class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50"
+              class="px-4 py-2 border border-neutral-300 rounded-lg text-neutral-700 font-medium hover:bg-neutral-50"
             >
               {{ t.back }}
             </a>
             <button
               type="submit"
               :disabled="submitting || !selectedTypeId"
-              class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="px-4 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {{ submitting ? 'Assigning...' : t.assign_fee }}
             </button>
@@ -251,3 +251,4 @@ const handleSubmit = () => {
     </div>
   </PublicDigitLayout>
 </template>
+

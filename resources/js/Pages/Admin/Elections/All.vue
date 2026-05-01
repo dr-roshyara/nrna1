@@ -3,8 +3,8 @@
         <div class="space-y-6">
             <!-- Header -->
             <div>
-                <h1 class="text-3xl font-bold text-gray-900">All Elections</h1>
-                <p class="mt-2 text-gray-600">
+                <h1 class="text-3xl font-bold text-neutral-900">All Elections</h1>
+                <p class="mt-2 text-neutral-600">
                     Overview of all elections with subscription status: Free (≤40 voters) vs Paid (>40 voters).
                 </p>
             </div>
@@ -12,8 +12,8 @@
             <!-- Summary Cards -->
             <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
                 <div class="rounded-lg bg-white p-6 shadow">
-                    <p class="text-sm text-gray-600">Total Elections</p>
-                    <p class="text-3xl font-bold text-gray-900 mt-2">{{ elections.total }}</p>
+                    <p class="text-sm text-neutral-600">Total Elections</p>
+                    <p class="text-3xl font-bold text-neutral-900 mt-2">{{ elections.total }}</p>
                 </div>
                 <div class="rounded-lg bg-green-50 p-6 shadow border border-green-200">
                     <p class="text-sm text-green-600 font-medium">Free Elections</p>
@@ -28,7 +28,7 @@
             </div>
 
             <!-- Filter Tabs -->
-            <div class="flex gap-2 border-b border-gray-200 pb-2">
+            <div class="flex gap-2 border-b border-neutral-200 pb-2">
                 <Link
                     :href="route('platform.elections.all', { filter: 'all', sort: filters.sort, direction: filters.direction })"
                     :class="filterClass('all')"
@@ -52,46 +52,46 @@
             <!-- Elections Table -->
             <div class="bg-white rounded-lg shadow overflow-hidden">
                 <table v-if="elections.data.length > 0" class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
+                    <thead class="bg-neutral-50">
                         <tr>
                             <th class="px-6 py-3 text-left">
-                                <button @click="toggleSort('name')" class="text-xs font-medium text-gray-500 uppercase hover:text-gray-900 inline-flex items-center gap-1">
+                                <button @click="toggleSort('name')" class="text-xs font-medium text-neutral-500 uppercase hover:text-neutral-900 inline-flex items-center gap-1">
                                     Election Name
-                                    <span v-if="filters.sort === 'name'" class="text-gray-400">{{ filters.direction === 'asc' ? '↑' : '↓' }}</span>
+                                    <span v-if="filters.sort === 'name'" class="text-neutral-400">{{ filters.direction === 'asc' ? '↑' : '↓' }}</span>
                                 </button>
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase">
                                 Organisation
                             </th>
                             <th class="px-6 py-3 text-left">
-                                <button @click="toggleSort('expected_voter_count')" class="text-xs font-medium text-gray-500 uppercase hover:text-gray-900 inline-flex items-center gap-1">
+                                <button @click="toggleSort('expected_voter_count')" class="text-xs font-medium text-neutral-500 uppercase hover:text-neutral-900 inline-flex items-center gap-1">
                                     Expected Voters
-                                    <span v-if="filters.sort === 'expected_voter_count'" class="text-gray-400">{{ filters.direction === 'asc' ? '↑' : '↓' }}</span>
+                                    <span v-if="filters.sort === 'expected_voter_count'" class="text-neutral-400">{{ filters.direction === 'asc' ? '↑' : '↓' }}</span>
                                 </button>
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase">
                                 Subscription
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-neutral-500 uppercase">
                                 State
                             </th>
                             <th class="px-6 py-3 text-left">
-                                <button @click="toggleSort('created_at')" class="text-xs font-medium text-gray-500 uppercase hover:text-gray-900 inline-flex items-center gap-1">
+                                <button @click="toggleSort('created_at')" class="text-xs font-medium text-neutral-500 uppercase hover:text-neutral-900 inline-flex items-center gap-1">
                                     Created
-                                    <span v-if="filters.sort === 'created_at'" class="text-gray-400">{{ filters.direction === 'asc' ? '↑' : '↓' }}</span>
+                                    <span v-if="filters.sort === 'created_at'" class="text-neutral-400">{{ filters.direction === 'asc' ? '↑' : '↓' }}</span>
                                 </button>
                             </th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        <tr v-for="election in elections.data" :key="election.id" class="hover:bg-gray-50">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <tr v-for="election in elections.data" :key="election.id" class="hover:bg-neutral-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-neutral-900">
                                 {{ election.name }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-600">
                                 {{ election.organisation?.name || '—' }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-600">
                                 {{ election.expected_voter_count }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -110,13 +110,13 @@
                                     {{ formatState(election.state) }}
                                 </span>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-600">
                                 {{ formatDate(election.created_at) }}
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div v-else class="px-6 py-8 text-center text-gray-600">
+                <div v-else class="px-6 py-8 text-center text-neutral-600">
                     No elections found.
                 </div>
             </div>
@@ -128,16 +128,16 @@
                     :key="link.label"
                     :href="link.url || '#'"
                     :class="link.active
-                        ? 'px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium'
-                        : 'px-4 py-2 border border-gray-300 text-gray-700 rounded-lg text-sm hover:bg-gray-50'"
+                        ? 'px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium'
+                        : 'px-4 py-2 border border-neutral-300 text-neutral-700 rounded-lg text-sm hover:bg-neutral-50'"
                     v-html="link.label"
                 />
             </div>
 
             <!-- Info Section -->
-            <div class="rounded-lg bg-blue-50 border border-blue-200 p-6">
-                <h3 class="font-bold text-blue-900">Subscription Model</h3>
-                <ul class="mt-3 space-y-2 text-sm text-blue-800">
+            <div class="rounded-lg bg-primary-50 border border-primary-200 p-6">
+                <h3 class="font-bold text-primary-900">Subscription Model</h3>
+                <ul class="mt-3 space-y-2 text-sm text-primary-800">
                     <li>• <strong>Free (≤40 voters):</strong> Automatically approved and ready to use immediately</li>
                     <li>• <strong>Paid (>40 voters):</strong> Requires platform admin approval before proceeding</li>
                     <li>• <strong>Pending Approvals:</strong> Check "Pending Approvals" page to review large elections</li>
@@ -169,8 +169,8 @@ export default {
         filterClass(filter) {
             const active = this.filters.filter === filter
             return active
-                ? 'px-4 py-2 text-sm font-medium text-blue-600 border-b-2 border-blue-600'
-                : 'px-4 py-2 text-sm text-gray-500 hover:text-gray-700'
+                ? 'px-4 py-2 text-sm font-medium text-primary-600 border-b-2 border-blue-600'
+                : 'px-4 py-2 text-sm text-neutral-500 hover:text-neutral-700'
         },
         toggleSort(field) {
             const direction = this.filters.sort === field && this.filters.direction === 'asc' ? 'desc' : 'asc'
@@ -192,16 +192,18 @@ export default {
         },
         stateClass(state) {
             const classes = {
-                draft: 'bg-gray-100 text-gray-800',
+                draft: 'bg-neutral-100 text-neutral-800',
                 pending_approval: 'bg-yellow-100 text-yellow-800',
-                administration: 'bg-blue-100 text-blue-800',
+                administration: 'bg-primary-100 text-primary-800',
                 nomination: 'bg-purple-100 text-purple-800',
                 voting: 'bg-green-100 text-green-800',
                 results_pending: 'bg-orange-100 text-orange-800',
                 results: 'bg-teal-100 text-teal-800',
             }
-            return classes[state] || 'bg-gray-100 text-gray-800'
+            return classes[state] || 'bg-neutral-100 text-neutral-800'
         },
     },
 }
 </script>
+
+

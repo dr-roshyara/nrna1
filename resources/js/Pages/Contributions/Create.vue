@@ -13,22 +13,22 @@
       </div>
 
       <!-- Weekly Cap Indicator -->
-      <div class="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+      <div class="mb-6 p-4 bg-primary-50 rounded-lg border border-primary-200">
         <div class="flex justify-between items-center">
           <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
-            <span class="text-sm text-blue-800">Weekly Micro-track Points</span>
+            <span class="text-sm text-primary-800">Weekly Micro-track Points</span>
           </div>
-          <span class="font-bold text-blue-900">{{ weeklyPointsUsed }} / {{ weeklyCap }} used</span>
+          <span class="font-bold text-primary-900">{{ weeklyPointsUsed }} / {{ weeklyCap }} used</span>
         </div>
-        <div class="mt-2 w-full bg-blue-200 rounded-full h-1.5">
-          <div class="bg-blue-600 h-1.5 rounded-full transition-all"
+        <div class="mt-2 w-full bg-primary-200 rounded-full h-1.5">
+          <div class="bg-primary-600 h-1.5 rounded-full transition-all"
                :style="{ width: weeklyProgressPercent + '%' }"></div>
         </div>
-        <p class="text-xs text-blue-600 mt-2" v-if="weeklyPointsRemaining < 30">
+        <p class="text-xs text-primary-600 mt-2" v-if="weeklyPointsRemaining < 30">
           Only {{ weeklyPointsRemaining }} points remaining this week!
         </p>
       </div>
@@ -39,23 +39,23 @@
         <!-- Title -->
         <div>
           <label class="block text-sm font-medium text-slate-700 mb-1">
-            Title <span class="text-red-500">*</span>
+            Title <span class="text-danger-500">*</span>
           </label>
           <input type="text" v-model="form.title" required maxlength="255"
                  class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                  placeholder="e.g., Weekly Math Tutoring for 5 Students">
-          <p v-if="errors.title" class="text-xs text-red-600 mt-1">{{ errors.title }}</p>
+          <p v-if="errors.title" class="text-xs text-danger-600 mt-1">{{ errors.title }}</p>
         </div>
 
         <!-- Description -->
         <div>
           <label class="block text-sm font-medium text-slate-700 mb-1">
-            Description <span class="text-red-500">*</span>
+            Description <span class="text-danger-500">*</span>
           </label>
           <textarea v-model="form.description" rows="4" required
                     class="w-full border border-slate-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     placeholder="What did you do? Who did it help? How many hours?"></textarea>
-          <p v-if="errors.description" class="text-xs text-red-600 mt-1">{{ errors.description }}</p>
+          <p v-if="errors.description" class="text-xs text-danger-600 mt-1">{{ errors.description }}</p>
         </div>
 
         <!-- Track Selection (3 cards) -->
@@ -80,7 +80,7 @@
         <!-- Effort Hours (Slider + Input) -->
         <div>
           <label class="block text-sm font-medium text-slate-700 mb-2">
-            Effort Hours <span class="text-red-500">*</span>
+            Effort Hours <span class="text-danger-500">*</span>
           </label>
           <div class="flex items-center gap-4">
             <input type="range" v-model.number="form.effort_units" min="1" max="40" step="1"
@@ -345,3 +345,4 @@ const submit = () => {
   })
 }
 </script>
+

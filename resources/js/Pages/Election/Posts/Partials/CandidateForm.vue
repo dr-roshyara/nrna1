@@ -3,7 +3,7 @@
 
     <!-- Server validation errors -->
     <div v-if="Object.keys(errors).length"
-         class="bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm text-red-800 space-y-1">
+         class="bg-danger-50 border border-danger-200 rounded-lg px-4 py-3 text-sm text-danger-800 space-y-1">
       <p v-for="(msg, field) in errors" :key="field">{{ Array.isArray(msg) ? msg[0] : msg }}</p>
     </div>
 
@@ -11,18 +11,18 @@
     <div class="grid grid-cols-2 gap-3">
       <div>
         <label class="block text-xs font-medium text-neutral-700 mb-1">
-          Candidate Name <span v-if="!form.user_id" class="text-red-500">*</span>
+          Candidate Name <span v-if="!form.user_id" class="text-danger-500">*</span>
         </label>
         <input v-model="form.name" type="text" :required="!form.user_id"
                maxlength="255" placeholder="Full name"
                :class="inputClass('name')" />
-        <p v-if="errors.name" class="text-xs text-red-600 mt-1">{{ firstError('name') }}</p>
+        <p v-if="errors.name" class="text-xs text-danger-600 mt-1">{{ firstError('name') }}</p>
       </div>
       <div>
         <label class="block text-xs font-medium text-neutral-700 mb-1">User ID (optional)</label>
         <input v-model="form.user_id" type="text" placeholder="Link to a registered user"
                :class="inputClass('user_id')" />
-        <p v-if="errors.user_id" class="text-xs text-red-600 mt-1">{{ firstError('user_id') }}</p>
+        <p v-if="errors.user_id" class="text-xs text-danger-600 mt-1">{{ firstError('user_id') }}</p>
       </div>
     </div>
 
@@ -33,7 +33,7 @@
         <textarea v-model="form.description" rows="3" maxlength="2000"
                   placeholder="Short biography or election statement"
                   :class="inputClass('description')" />
-        <p v-if="errors.description" class="text-xs text-red-600 mt-1">{{ firstError('description') }}</p>
+        <p v-if="errors.description" class="text-xs text-danger-600 mt-1">{{ firstError('description') }}</p>
       </div>
       <div v-if="editMode" class="space-y-3">
         <div>
@@ -44,13 +44,13 @@
             <option value="rejected">Rejected</option>
             <option value="withdrawn">Withdrawn</option>
           </select>
-          <p v-if="errors.status" class="text-xs text-red-600 mt-1">{{ firstError('status') }}</p>
+          <p v-if="errors.status" class="text-xs text-danger-600 mt-1">{{ firstError('status') }}</p>
         </div>
         <div>
           <label class="block text-xs font-medium text-neutral-700 mb-1">Display Order</label>
           <input v-model.number="form.position_order" type="number" min="0" max="999" step="1"
                  :class="inputClass('position_order')" />
-          <p v-if="errors.position_order" class="text-xs text-red-600 mt-1">{{ firstError('position_order') }}</p>
+          <p v-if="errors.position_order" class="text-xs text-danger-600 mt-1">{{ firstError('position_order') }}</p>
         </div>
       </div>
     </div>
@@ -77,8 +77,8 @@
             @change="e => handleImage(e, i)"
             class="w-full text-xs text-neutral-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 cursor-pointer"
           />
-          <p v-if="fileSizeErrors[i]" class="text-xs text-red-600 mt-1">{{ fileSizeErrors[i] }}</p>
-          <p v-if="errors[`image_${i + 1}`]" class="text-xs text-red-600 mt-1">
+          <p v-if="fileSizeErrors[i]" class="text-xs text-danger-600 mt-1">{{ fileSizeErrors[i] }}</p>
+          <p v-if="errors[`image_${i + 1}`]" class="text-xs text-danger-600 mt-1">
             {{ firstError(`image_${i + 1}`) }}
           </p>
           <!-- New file preview -->
@@ -149,7 +149,7 @@ function handleImage(event, index) {
 function inputClass(field) {
   return [
     'w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500',
-    props.errors[field] ? 'border-red-500' : 'border-neutral-300',
+    props.errors[field] ? 'border-danger-500' : 'border-neutral-300',
   ]
 }
 
@@ -158,3 +158,4 @@ function firstError(field) {
   return Array.isArray(e) ? e[0] : e
 }
 </script>
+

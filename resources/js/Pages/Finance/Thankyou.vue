@@ -1,8 +1,8 @@
 <template>
     <social-layout>
         <div class="flex min-h-screen flex-col items-center">
-            <div class="mx-auto py-2 text-gray-800">
-                <p class="mx-auto text-xl text-red-500">
+            <div class="mx-auto py-2 text-neutral-800">
+                <p class="mx-auto text-xl text-danger-500">
                     Thank you so much for updating your financial statement.
                 </p>
                 <div class="flex flex-col items-center py-2">
@@ -36,3 +36,4 @@ export default {
     },
 };
 </script>
+

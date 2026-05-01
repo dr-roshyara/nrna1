@@ -1,12 +1,12 @@
 <template>
-    <div v-if="!loggedIn" class="min-h-screen bg-gray-50">
+    <div v-if="!loggedIn" class="min-h-screen bg-neutral-50">
         <!-- Breadcrumb Schema for SEO -->
 
         <!-- Header -->
         <PublicDigitHeader />
 
         <!-- Top-Level Action Grid -->
-        <div class="bg-white border-b border-gray-100 py-8">
+        <div class="bg-white border-b border-neutral-100 py-8">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
 
@@ -189,3 +189,4 @@ export default {
     },
 };
 </script>
+

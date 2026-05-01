@@ -137,7 +137,8 @@ const expanded = ref(null)
 
 function statusClass(status) {
   if (status === 'approved') return 'bg-emerald-100 text-emerald-700'
-  if (status === 'rejected') return 'bg-red-100 text-red-700'
+  if (status === 'rejected') return 'bg-danger-100 text-danger-700'
   return 'bg-amber-100 text-amber-700'
 }
 </script>
+

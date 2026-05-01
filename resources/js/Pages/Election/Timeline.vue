@@ -8,18 +8,18 @@
       <p class="text-sm font-medium text-emerald-800">{{ page.props.flash.success }}</p>
     </div>
 
-    <div v-if="page.props.flash?.error" class="bg-red-50 border border-red-200 rounded-lg mx-4 mt-4 px-5 py-4 flex items-center gap-3">
-      <svg class="w-5 h-5 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div v-if="page.props.flash?.error" class="bg-danger-50 border border-danger-200 rounded-lg mx-4 mt-4 px-5 py-4 flex items-center gap-3">
+      <svg class="w-5 h-5 text-danger-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
       </svg>
-      <p class="text-sm font-medium text-red-800">{{ page.props.flash.error }}</p>
+      <p class="text-sm font-medium text-danger-800">{{ page.props.flash.error }}</p>
     </div>
 
     <div class="container mx-auto py-8 px-4">
       <div class="mb-6">
         <Link
           :href="route('elections.management', election.slug)"
-          class="text-blue-600 hover:text-blue-800 inline-flex items-center gap-1 transition-colors"
+          class="text-primary-600 hover:text-primary-800 inline-flex items-center gap-1 transition-colors"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -65,3 +65,4 @@ if (typeof window !== 'undefined') {
   })
 }
 </script>
+

@@ -38,9 +38,9 @@
                   Your organisation can configure how voters are eligible to participate in elections. This fundamental setting affects who can vote, what data is tracked, and how your election operates.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <h4 class="font-semibold text-blue-900 mb-2">Full Membership Mode</h4>
-                    <p class="text-sm text-blue-800">Formal member tracking with fees, membership types, and expiration dates</p>
+                  <div class="p-4 bg-primary-50 border border-primary-200 rounded-lg">
+                    <h4 class="font-semibold text-primary-900 mb-2">Full Membership Mode</h4>
+                    <p class="text-sm text-primary-800">Formal member tracking with fees, membership types, and expiration dates</p>
                   </div>
                   <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
                     <h4 class="font-semibold text-emerald-900 mb-2">Election-Only Mode</h4>
@@ -59,8 +59,8 @@
                 <div class="space-y-4 mb-6">
                   <div class="flex gap-4">
                     <div class="flex-shrink-0">
-                      <div class="flex items-center justify-center h-10 w-10 rounded-xl bg-blue-100">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div class="flex items-center justify-center h-10 w-10 rounded-xl bg-primary-100">
+                        <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
@@ -73,8 +73,8 @@
 
                   <div class="flex gap-4">
                     <div class="flex-shrink-0">
-                      <div class="flex items-center justify-center h-10 w-10 rounded-xl bg-blue-100">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div class="flex items-center justify-center h-10 w-10 rounded-xl bg-primary-100">
+                        <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
@@ -87,8 +87,8 @@
 
                   <div class="flex gap-4">
                     <div class="flex-shrink-0">
-                      <div class="flex items-center justify-center h-10 w-10 rounded-xl bg-blue-100">
-                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div class="flex items-center justify-center h-10 w-10 rounded-xl bg-primary-100">
+                        <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
@@ -100,8 +100,8 @@
                   </div>
                 </div>
 
-                <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                  <p class="text-sm text-blue-900"><strong>Use this if:</strong> You have formal membership structures, charge fees, have membership tiers, or need detailed member auditing.</p>
+                <div class="p-4 bg-primary-50 border border-primary-200 rounded-lg">
+                  <p class="text-sm text-primary-900"><strong>Use this if:</strong> You have formal membership structures, charge fees, have membership tiers, or need detailed member auditing.</p>
                 </div>
               </div>
 
@@ -183,7 +183,7 @@
                     <div class="p-3 bg-slate-100 border-l-4 border-amber-500 rounded">
                       <p class="text-sm text-slate-700"><strong>⚠ Membership checks removed:</strong> Fees, membership types, and expiration dates are no longer checked</p>
                     </div>
-                    <div class="p-3 bg-slate-100 border-l-4 border-blue-500 rounded">
+                    <div class="p-3 bg-slate-100 border-l-4 border-primary-500 rounded">
                       <p class="text-sm text-slate-700"><strong>✓ Elections unaffected:</strong> Existing elections continue to work normally</p>
                     </div>
                   </div>
@@ -208,7 +208,7 @@
                     <div class="p-3 bg-slate-100 border-l-4 border-amber-500 rounded">
                       <p class="text-sm text-slate-700"><strong>⚠ Import members first:</strong> You'll need to import or create member records before elections can run</p>
                     </div>
-                    <div class="p-3 bg-slate-100 border-l-4 border-blue-500 rounded">
+                    <div class="p-3 bg-slate-100 border-l-4 border-primary-500 rounded">
                       <p class="text-sm text-slate-700"><strong>✓ Previous users not auto-imported:</strong> Users from Election-Only elections must be manually added as members</p>
                     </div>
                     <div class="p-3 bg-slate-100 border-l-4 border-green-500 rounded">
@@ -270,7 +270,7 @@
                   class="inline-flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-sm border"
                   :class="
                     organisation.uses_full_membership
-                      ? 'bg-blue-100 border-blue-300 text-blue-900'
+                      ? 'bg-primary-100 border-primary-300 text-primary-900'
                       : 'bg-emerald-100 border-emerald-300 text-emerald-900'
                   "
                 >
@@ -278,7 +278,7 @@
                     class="inline-block w-2.5 h-2.5 rounded-full"
                     :class="
                       organisation.uses_full_membership
-                        ? 'bg-blue-600'
+                        ? 'bg-primary-600'
                         : 'bg-emerald-600'
                     "
                   ></span>
@@ -302,7 +302,7 @@
                   </p>
 
                   <!-- Current Status Indicator -->
-                  <div v-if="organisation.uses_full_membership" class="inline-flex items-center gap-2 text-xs font-medium text-blue-700">
+                  <div v-if="organisation.uses_full_membership" class="inline-flex items-center gap-2 text-xs font-medium text-primary-700">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
@@ -320,7 +320,7 @@
                     class="relative inline-flex flex-shrink-0 h-7 w-14 border-2 rounded-full cursor-pointer transition-all ease-in-out duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold disabled:opacity-50 disabled:cursor-not-allowed"
                     :class="
                       form.uses_full_membership
-                        ? 'bg-gradient-to-r from-blue-600 to-blue-500 border-blue-600 shadow-lg shadow-blue-500/50'
+                        ? 'bg-gradient-to-r from-blue-600 to-blue-500 border-primary-600 shadow-lg shadow-blue-500/50'
                         : 'bg-slate-300 border-slate-400'
                     "
                   >
@@ -376,10 +376,10 @@
 
             <!-- Stats Section -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="p-5 border border-blue-200 bg-blue-50 rounded-xl">
-                <p class="text-xs font-semibold text-blue-700 uppercase tracking-wider mb-2">Active Members</p>
-                <p class="text-3xl font-bold text-blue-900">{{ memberCount }}</p>
-                <p class="text-xs text-blue-600 mt-2">Members eligible to vote</p>
+              <div class="p-5 border border-primary-200 bg-primary-50 rounded-xl">
+                <p class="text-xs font-semibold text-primary-700 uppercase tracking-wider mb-2">Active Members</p>
+                <p class="text-3xl font-bold text-primary-900">{{ memberCount }}</p>
+                <p class="text-xs text-primary-600 mt-2">Members eligible to vote</p>
               </div>
               <div class="p-5 border border-gold/40 bg-gold/5 rounded-xl">
                 <p class="text-xs font-semibold text-gold uppercase tracking-wider mb-2">Current Configuration</p>
@@ -451,10 +451,10 @@
         <!-- Information Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 animate-fade-in-up" style="animation-delay: 100ms">
           <!-- Full Membership Card -->
-          <div class="bg-white border border-blue-200 rounded-xl p-6 hover:border-blue-300 hover:shadow-md transition-all duration-300">
+          <div class="bg-white border border-primary-200 rounded-xl p-6 hover:border-primary-300 hover:shadow-md transition-all duration-300">
             <div class="flex items-start gap-3 mb-4">
-              <div class="p-2 bg-blue-100 rounded-lg">
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="p-2 bg-primary-100 rounded-lg">
+                <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
@@ -462,19 +462,19 @@
             </div>
             <ul class="space-y-3">
               <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
                 <span class="text-sm text-slate-700">Voters must have active memberships</span>
               </li>
               <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
                 <span class="text-sm text-slate-700">Membership fees must be paid or exempt</span>
               </li>
               <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
                 <span class="text-sm text-slate-700">Best for formal membership tracking</span>
@@ -727,3 +727,4 @@ button {
   background: rgba(181, 134, 43, 0.5);
 }
 </style>
+
