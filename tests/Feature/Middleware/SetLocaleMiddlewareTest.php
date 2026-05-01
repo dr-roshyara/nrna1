@@ -125,4 +125,61 @@ class SetLocaleMiddlewareTest extends TestCase
         $this->assertEquals('es', app()->getLocale());
         $this->assertNotEquals(401, $response->status());
     }
+
+    /**
+     * Test organization default language overrides cookie.
+     */
+    public function test_org_default_language_overrides_cookie()
+    {
+        $user = User::factory()->create();
+        $organisation = \App\Models\Organisation::factory()->create(['default_language' => 'np']);
+        $user->userOrganisationRoles()->create([
+            'organisation_id' => $organisation->id,
+            'role' => 'voter',
+        ]);
+        $user->update(['organisation_id' => $organisation->id]);
+
+        $this->actingAs($user);
+        session(['locale' => 'de']);
+
+        $response = $this->get('/dashboard');
+
+        // Org language should win over cookie
+        $this->assertEquals('np', app()->getLocale());
+    }
+
+    /**
+     * Test no org language, falls through to cookie.
+     */
+    public function test_falls_through_to_cookie_when_org_has_no_language()
+    {
+        $user = User::factory()->create();
+        $organisation = \App\Models\Organisation::factory()->create(['default_language' => null]);
+        $user->userOrganisationRoles()->create([
+            'organisation_id' => $organisation->id,
+            'role' => 'voter',
+        ]);
+        $user->update(['organisation_id' => $organisation->id]);
+
+        $this->actingAs($user);
+        session(['locale' => 'de']);
+
+        $response = $this->get('/dashboard');
+
+        // Should use session/cookie value
+        $this->assertEquals('de', app()->getLocale());
+    }
+
+    /**
+     * Test unauthenticated guest skips org check.
+     */
+    public function test_unauthenticated_user_skips_org_check()
+    {
+        session(['locale' => 'en']);
+
+        $response = $this->get('/dashboard');
+
+        // Should use session value
+        $this->assertEquals('en', app()->getLocale());
+    }
 }
