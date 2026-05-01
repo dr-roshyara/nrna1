@@ -3,6 +3,7 @@
 return [
     'messages' => [
         'membership_mode_updated' => 'Membership mode updated successfully.',
+        'language_updated' => 'Default language set to :language. New sessions will use this language.',
     ],
     'errors' => [
         'membership_mode_rate_limit' => 'Too many attempts to change membership mode. Please wait before trying again.',

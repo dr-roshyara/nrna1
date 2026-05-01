@@ -255,6 +255,82 @@
           </p>
         </div>
 
+        <!-- Language Preference Card -->
+        <div class="bg-white border border-gold/30 rounded-2xl overflow-hidden shadow-xl mb-8 animate-fade-in-up" style="animation-delay: 30ms">
+          <!-- Card Header -->
+          <div class="px-6 md:px-8 py-6 md:py-8 border-b border-gold/20 bg-gradient-to-r from-slate-50 to-transparent">
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-2">Default Language</h2>
+              <p class="text-slate-600">Set the default language for your organisation. Users will still be able to change their preference.</p>
+            </div>
+          </div>
+
+          <!-- Card Content -->
+          <div class="px-6 md:px-8 py-8 space-y-6">
+            <!-- Language Selector -->
+            <div class="space-y-3">
+              <label for="default-language" class="block text-sm font-semibold text-slate-900">
+                Default Language
+              </label>
+              <select
+                id="default-language"
+                v-model="langForm.default_language"
+                class="w-full px-4 py-3 border border-slate-300 rounded-lg shadow-sm focus:border-gold focus:ring-2 focus:ring-gold/20 text-slate-900 bg-white"
+              >
+                <option :value="null">Auto-detect (Browser/Geo-location)</option>
+                <option value="de">Deutsch (German)</option>
+                <option value="en">English</option>
+                <option value="np">नेपाली (Nepali)</option>
+              </select>
+              <p class="text-sm text-slate-600 mt-2">
+                When set, all users in this organisation will initially see the interface in this language.
+                They can always change it in the language switcher.
+              </p>
+            </div>
+
+            <!-- Info Box -->
+            <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+              <p class="text-sm text-amber-900">
+                <strong>Note:</strong> This setting applies to new sessions. Existing users' preferences are preserved unless they clear their settings.
+              </p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
+              <button
+                type="button"
+                @click="resetLangForm"
+                :disabled="langForm.processing"
+                class="px-6 py-2.5 text-sm font-medium text-slate-700 bg-slate-100 border border-slate-300 rounded-lg hover:bg-slate-200 hover:border-slate-400 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-slate-200 disabled:opacity-50 transition-all duration-200"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                @click="submitLang"
+                :disabled="!hasLangChanges || langForm.processing"
+                class="px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-widest transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-200 disabled:cursor-not-allowed"
+                :class="
+                  !hasLangChanges || langForm.processing
+                    ? 'bg-slate-300 text-slate-500'
+                    : 'bg-gradient-to-br from-amber-600 via-amber-700 to-amber-800 text-white shadow-xl shadow-amber-700/40 hover:shadow-2xl hover:shadow-amber-700/50 hover:-translate-y-0.5 focus:ring-amber-600'
+                "
+              >
+                <span class="flex items-center justify-center gap-2.5">
+                  <svg v-if="!langForm.processing" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <svg v-else class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  {{ langForm.processing ? 'Saving...' : 'Save Language' }}
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
         <!-- Main Settings Card -->
         <div class="bg-white border border-gold/30 rounded-2xl overflow-hidden shadow-xl mb-8 animate-fade-in-up" style="animation-delay: 50ms">
           <!-- Card Header -->
@@ -579,8 +655,16 @@ const form = useForm({
   confirm_mode_change: false,
 });
 
+const langForm = useForm({
+  default_language: props.organisation.default_language,
+});
+
 const hasChanges = computed(() => {
   return form.uses_full_membership !== props.organisation.uses_full_membership;
+});
+
+const hasLangChanges = computed(() => {
+  return langForm.default_language !== props.organisation.default_language;
 });
 
 const showWarning = computed(() => {
@@ -609,6 +693,20 @@ const submit = () => {
       onSuccess: () => {
         form.confirm_mode_change = false;
       },
+    }
+  );
+};
+
+const resetLangForm = () => {
+  langForm.reset();
+  langForm.clearErrors();
+};
+
+const submitLang = () => {
+  langForm.patch(
+    route('organisations.settings.update-language', props.organisation.slug),
+    {
+      preserveScroll: true,
     }
   );
 };

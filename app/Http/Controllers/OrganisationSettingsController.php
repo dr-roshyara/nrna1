@@ -73,6 +73,37 @@ class OrganisationSettingsController extends Controller
         return back()->with('success', __('organisations.messages.membership_mode_updated'));
     }
 
+    public function updateLanguage(Request $request, Organisation $organisation): RedirectResponse
+    {
+        $this->authorize('manageMembership', $organisation);
+
+        $validated = $request->validate([
+            'default_language' => 'nullable|in:de,en,np',
+        ]);
+
+        $organisation->update(['default_language' => $validated['default_language']]);
+
+        Log::info('Organisation default language updated', [
+            'organisation_id' => $organisation->id,
+            'language' => $validated['default_language'],
+            'user_id' => auth()->id(),
+        ]);
+
+        return back()->with('success', __('organisations.messages.language_updated', [
+            'language' => $validated['default_language'] ? $this->getLanguageName($validated['default_language']) : 'Auto-detect',
+        ]));
+    }
+
+    private function getLanguageName(?string $code): string
+    {
+        return match ($code) {
+            'de' => 'Deutsch (German)',
+            'en' => 'English',
+            'np' => 'नेपाली (Nepali)',
+            default => 'Auto-detect',
+        };
+    }
+
     /**
      * Validate membership mode change request
      */

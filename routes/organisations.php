@@ -94,6 +94,7 @@ Route::prefix('organisations/{organisation:slug}')
         // ── Organisation Settings ────────────────────────────────────────────────────
         Route::get('/settings',                                           [OrganisationSettingsController::class, 'index'])               ->name('organisations.settings.index');
         Route::patch('/settings/membership-mode',                         [OrganisationSettingsController::class, 'updateMembershipMode'])->name('organisations.settings.update-membership-mode');
+        Route::patch('/settings/language',                                [OrganisationSettingsController::class, 'updateLanguage'])      ->name('organisations.settings.update-language');
 
         // ── Candidacy Applications (voter self-service) ────────────────────────────
         Route::get('/candidacy/apply', [CandidacyApplicationController::class, 'create'])->name('organisations.candidacy.create');
