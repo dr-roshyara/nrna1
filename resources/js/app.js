@@ -7,6 +7,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy'; // Recommended way for Vue 3
 import i18n from './i18n';
 import { useGeoLocation } from './composables/useGeoLocation';
+import { useLocaleDebug } from './composables/useLocaleDebug';
 
 createInertiaApp({
     id: 'app',
@@ -43,6 +44,9 @@ createInertiaApp({
            .use(i18n)
            .use(ZiggyVue) // Modern way: makes route() available in templates & scripts
            .mount(el);
+
+        // Initialize debug utilities (available in browser console during development)
+        useLocaleDebug();
 
         // 🌍 Auto-detect user locale from geo-location (fire-and-forget, non-blocking)
         // Always detect, but respect manual choice via LanguageSwitcher (which sets cookie)

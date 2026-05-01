@@ -1,5 +1,5 @@
 <template>
-    <div class="language-switcher">
+    <div class="language-switcher flex items-center gap-2">
         <select
             v-model="currentLocale"
             @change="switchLanguage"
@@ -12,6 +12,16 @@
             <option value="en">English</option>
             <option value="np">नेपाली</option>
         </select>
+
+        <!-- Reset button: clears saved preferences and re-detects location -->
+        <button
+            @click="resetLanguage"
+            type="button"
+            title="Clear saved language preference and detect your location automatically"
+            class="px-2 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
+        >
+            🔄
+        </button>
     </div>
 </template>
 
@@ -44,6 +54,19 @@ export default {
             localStorage.setItem('preferred_locale', this.currentLocale);
 
             // No need to reload - Vue will reactively update all $t() calls
+        },
+
+        resetLanguage() {
+            // Clear all stored language preferences
+            localStorage.removeItem('preferred_locale');
+            document.cookie = 'locale=; max-age=0; path=/';
+
+            // Show debug info in console
+            console.log('🔄 Language preferences cleared. Reloading to detect location...');
+            console.log('Browser timezone:', Intl.DateTimeFormat().resolvedOptions().timeZone);
+
+            // Reload page to trigger geo-detection in app.js
+            location.reload();
         },
     },
 
