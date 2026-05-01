@@ -5,6 +5,7 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy'; // Recommended way for Vue 3
 import i18n from './i18n';
+import { useGeoLocation } from './composables/useGeoLocation';
 
 createInertiaApp({
     id: 'app',
@@ -41,6 +42,18 @@ createInertiaApp({
            .use(i18n)
            .use(ZiggyVue) // Modern way: makes route() available in templates & scripts
            .mount(el);
+
+        // 🌍 Auto-detect user locale from geo-location (fire-and-forget, non-blocking)
+        const { detect } = useGeoLocation()
+        detect().then(locale => {
+            if (locale && !localStorage.getItem('preferred_locale')) {
+                i18n.global.locale.value = locale
+                // Set cookie so Laravel SetLocale middleware picks it up on next request
+                document.cookie = `locale=${locale};path=/;max-age=31536000`
+                localStorage.setItem('preferred_locale', locale)
+                console.log('✅ Geo-location auto-detected locale:', locale)
+            }
+        })
     },
 
     // In Inertia 2.0, progress is a configuration object here.

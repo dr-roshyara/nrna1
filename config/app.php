@@ -204,7 +204,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\SEOServiceProvider::class,
-
+        App\Services\GeoLocation\GeoLocationServiceProvider::class,
 
     ],
 
@@ -260,6 +260,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'GeoLocation' => App\Services\GeoLocation\Facades\GeoLocation::class,
 
     ],
 

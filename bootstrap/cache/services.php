@@ -43,6 +43,7 @@
     39 => 'App\\Providers\\RepositoryServiceProvider',
     40 => 'App\\Providers\\RouteServiceProvider',
     41 => 'App\\Providers\\SEOServiceProvider',
+    42 => 'App\\Services\\GeoLocation\\GeoLocationServiceProvider',
   ),
   'eager' => 
   array (
@@ -72,6 +73,7 @@
     23 => 'App\\Providers\\RepositoryServiceProvider',
     24 => 'App\\Providers\\RouteServiceProvider',
     25 => 'App\\Providers\\SEOServiceProvider',
+    26 => 'App\\Services\\GeoLocation\\GeoLocationServiceProvider',
   ),
   'deferred' => 
   array (
