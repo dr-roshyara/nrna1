@@ -6,21 +6,22 @@ export function useGeoLocation() {
     const detectedLocation = ref(null)
     const detectedTimezone = ref(null)
 
-    const detect = async () => {
-        // Never override an explicit user choice
-        if (localStorage.getItem('preferred_locale')) {
-            status.value = 'skipped'
-            return null
-        }
-
+    const detect = async (csrfToken = null) => {
         status.value = 'detecting'
 
         const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
         try {
+            const headers = { 'Content-Type': 'application/json' }
+
+            // Add CSRF token if provided
+            if (csrfToken) {
+                headers['X-CSRF-TOKEN'] = csrfToken
+            }
+
             const res = await fetch('/api/detect-location', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers,
                 body: JSON.stringify({ timezone })
             })
 
