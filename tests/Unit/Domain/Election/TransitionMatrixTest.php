@@ -134,7 +134,8 @@ class TransitionMatrixTest extends TestCase
     {
         $draftActions = TransitionMatrix::getAllowedActions('draft');
         $this->assertContains('submit_for_approval', $draftActions);
-        $this->assertCount(1, $draftActions);
+        $this->assertContains('auto_submit', $draftActions);
+        $this->assertCount(2, $draftActions);
 
         $pendingApprovalActions = TransitionMatrix::getAllowedActions('pending_approval');
         $this->assertContains('approve', $pendingApprovalActions);
@@ -220,23 +221,22 @@ class TransitionMatrixTest extends TestCase
     }
 
     /** @test */
-    public function get_allowed_roles_for_approve_returns_admin_only(): void
+    public function get_allowed_roles_for_approve_returns_super_and_platform_admin(): void
     {
         $roles = TransitionMatrix::getAllowedRoles('approve');
 
-        $this->assertContains('admin', $roles);
-        $this->assertCount(1, $roles);
+        $this->assertContains('super_admin', $roles);
+        $this->assertContains('platform_admin', $roles);
+        $this->assertCount(2, $roles);
     }
 
     /** @test */
-    public function get_allowed_roles_for_submit_for_approval(): void
+    public function get_allowed_roles_for_submit_for_approval_returns_chief_only(): void
     {
         $roles = TransitionMatrix::getAllowedRoles('submit_for_approval');
 
-        $this->assertContains('owner', $roles);
-        $this->assertContains('admin', $roles);
         $this->assertContains('chief', $roles);
-        $this->assertCount(3, $roles);
+        $this->assertCount(1, $roles);
     }
 
     /** @test */
@@ -279,5 +279,119 @@ class TransitionMatrixTest extends TestCase
     {
         // Only admin can approve
         $this->assertFalse(TransitionMatrix::actionRequiresRole('approve', 'chief'));
+    }
+
+    // ── INVARIANT VALIDATION TESTS ────────────────────────────────────────────
+
+    /** @test */
+    public function state_machine_config_is_structurally_valid(): void
+    {
+        // Should not throw
+        TransitionMatrix::validate();
+        $this->assertTrue(true);
+    }
+
+    /** @test */
+    public function every_transition_target_is_a_valid_state(): void
+    {
+        foreach (TransitionMatrix::TRANSITIONS as $state => $actions) {
+            foreach ($actions as $action => $config) {
+                $this->assertTrue(
+                    TransitionMatrix::isValidState($config['to']),
+                    "Action '{$action}' from '{$state}' targets invalid state '{$config['to']}'"
+                );
+            }
+        }
+    }
+
+    /** @test */
+    public function every_action_name_is_unique_across_all_states(): void
+    {
+        $allActions = [];
+        foreach (TransitionMatrix::TRANSITIONS as $state => $actions) {
+            foreach (array_keys($actions) as $action) {
+                $this->assertNotContains(
+                    $action,
+                    $allActions,
+                    "Action '{$action}' appears in multiple states"
+                );
+                $allActions[] = $action;
+            }
+        }
+    }
+
+    /** @test */
+    public function all_roles_in_transitions_are_valid(): void
+    {
+        $validRoles = ['chief', 'deputy', 'super_admin', 'platform_admin', 'system', 'admin', 'owner', 'observer'];
+
+        foreach (TransitionMatrix::TRANSITIONS as $state => $actions) {
+            foreach ($actions as $action => $config) {
+                foreach ($config['roles'] as $role) {
+                    $this->assertContains(
+                        $role,
+                        $validRoles,
+                        "Invalid role '{$role}' in action '{$action}' from state '{$state}'"
+                    );
+                }
+            }
+        }
+    }
+
+    /** @test */
+    public function lock_voting_stays_in_voting_state(): void
+    {
+        $this->assertEquals('voting', TransitionMatrix::getResultingState('lock_voting'));
+    }
+
+    /** @test */
+    public function auto_submit_is_system_only(): void
+    {
+        $roles = TransitionMatrix::getAllowedRoles('auto_submit');
+        $this->assertEquals(['system'], $roles);
+    }
+
+    /** @test */
+    public function every_action_is_defined_once(): void
+    {
+        $seen = [];
+        foreach (TransitionMatrix::TRANSITIONS as $state => $actions) {
+            foreach ($actions as $action => $_) {
+                if (isset($seen[$action])) {
+                    $this->fail(
+                        "Action '{$action}' appears in multiple states (first in '{$seen[$action]}', also in '{$state}')"
+                    );
+                }
+                $seen[$action] = $state;
+            }
+        }
+        $this->assertTrue(true);
+    }
+
+    /** @test */
+    public function every_action_has_at_least_one_role(): void
+    {
+        foreach (TransitionMatrix::TRANSITIONS as $state => $actions) {
+            foreach ($actions as $action => $config) {
+                $this->assertNotEmpty(
+                    $config['roles'],
+                    "Action '{$action}' in state '{$state}' has no roles defined"
+                );
+            }
+        }
+    }
+
+    /** @test */
+    public function terminal_states_have_no_actions(): void
+    {
+        $terminalStates = ['results'];
+
+        foreach ($terminalStates as $state) {
+            $actions = TransitionMatrix::getAllowedActions($state);
+            $this->assertEmpty(
+                $actions,
+                "Terminal state '{$state}' should have no actions, but has: " . implode(', ', $actions)
+            );
+        }
     }
 }

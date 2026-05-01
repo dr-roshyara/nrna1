@@ -894,6 +894,7 @@ const canSubmitForApproval = computed(() => allowedActions.value.includes('submi
 const isPendingApproval = computed(() => currentState.value === 'pending_approval')
 const canCompleteAdministration = computed(() => allowedActions.value.includes('complete_administration'))
 const canOpenVoting = computed(() => allowedActions.value.includes('open_voting'))
+const canLockVoting = computed(() => allowedActions.value.includes('lock_voting'))
 const canCloseVoting = computed(() => allowedActions.value.includes('close_voting'))
 const canPublishResults = computed(() => allowedActions.value.includes('publish_results'))
 const isVotingActive = computed(() => canCloseVoting.value)

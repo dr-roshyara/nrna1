@@ -141,6 +141,9 @@ class ElectionManagementController extends Controller
             'auto_transition_grace_days'     => 7,
         ]);
 
+        // Validate timeline dates after creation (strict past-date checks)
+        $election->validateTimelineForEdit();
+
         // Notify all active chiefs of this organisation
         $activeChiefs = ElectionOfficer::with('user')
             ->where('organisation_id', $organisation->id)
@@ -871,6 +874,12 @@ class ElectionManagementController extends Controller
         $this->authorize('manageSettings', $election);
 
         try {
+             \Log::info('closeVoting: About to transition', [
+            'election_id' => $election->id,
+            'election_state' => $election->state,
+            'user_id' => auth()->id(),
+            ]);
+
             $election->transitionTo(
                 \App\Domain\Election\StateMachine\Transition::manual(
                     action: 'close_voting',
@@ -1112,6 +1121,9 @@ class ElectionManagementController extends Controller
             'voting_ends_at'   => $validated['end'],
         ]);
 
+        // Validate timeline dates after update (strict past-date checks)
+        $election->validateTimelineForEdit();
+
         return back()->with('success', 'Voting window dates updated.');
     }
 
@@ -1269,6 +1281,9 @@ class ElectionManagementController extends Controller
         }
 
         $election->update($validated);
+
+        // Validate timeline dates after update (strict past-date checks)
+        $election->validateTimelineForEdit();
 
         return back()->with('success', 'Election timeline updated successfully.');
     }

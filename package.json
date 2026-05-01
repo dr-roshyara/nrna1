@@ -14,8 +14,11 @@
         "test": "vitest",
         "test:ui": "vitest --ui",
         "test:coverage": "vitest --coverage",
+        "lint": "eslint resources/js --ext .js,.vue",
+        "lint:fix": "npm run lint -- --fix",
+        "type-check": "vue-tsc --noEmit",
         "design-check": "bash scripts/design-check.sh",
-        "design:fix": "npm run lint -- --fix && npm run design-check",
+        "design:fix": "npm run lint:fix && npm run design-check",
         "migration-progress": "bash scripts/migration-progress.sh"
     },
     "devDependencies": {
@@ -28,6 +31,8 @@
         "autoprefixer": "^10.4.27",
         "axios": "^0.27.2",
         "cross-env": "^10.1.0",
+        "eslint": "^10.2.1",
+        "eslint-plugin-vue": "^10.9.0",
         "jsdom": "^23.0.0",
         "laravel-vite-plugin": "^2.1.0",
         "lodash": "^4.17.21",
@@ -35,7 +40,8 @@
         "tailwindcss": "^4.2.1",
         "vite": "^6.4.1",
         "vitest": "^4.0.18",
-        "vue": "^3.2.33"
+        "vue": "^3.2.33",
+        "vue-tsc": "^3.2.7"
     },
     "dependencies": {
         "@headlessui/vue": "^1.6.1",

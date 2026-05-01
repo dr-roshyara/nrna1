@@ -4,64 +4,60 @@ namespace App\Domain\Election\StateMachine;
 
 class TransitionMatrix
 {
-    // State → allowed actions (what can be triggered from each state)
-    public const ALLOWED_ACTIONS = [
-        'draft'            => ['submit_for_approval', 'auto_submit'],
-        'pending_approval' => ['approve', 'reject'],
-        'administration'   => ['complete_administration'],
-        'nomination'       => ['open_voting'],
-        'voting'           => ['close_voting', 'lock_voting'],
-        'results_pending'  => ['publish_results'],
-        'results'          => [],
-    ];
-
-    // Action → resulting state (pure lookup, no logic)
-    public const ACTION_RESULTS = [
-        'submit_for_approval'     => 'pending_approval',
-        'auto_submit'             => 'administration',
-        'approve'                 => 'administration',
-        'reject'                  => 'draft',
-        'complete_administration' => 'nomination',
-        'open_voting'             => 'voting',
-        'lock_voting'             => 'voting',
-        'close_voting'            => 'results_pending',
-        'publish_results'         => 'results',
-    ];
-
-    // Action → allowed roles (which roles can perform each action)
-    public const ACTION_PERMISSIONS = [
-        'submit_for_approval'     => ['chief'],
-        'auto_submit'             => ['system'],
-        'approve'                 => ['super_admin', 'platform_admin'],
-        'reject'                  => ['super_admin', 'platform_admin'],
-        'complete_administration' => ['chief', 'deputy'],
-        'open_voting'             => ['chief', 'deputy'],
-        'lock_voting'             => ['chief', 'deputy'],
-        'close_voting'            => ['chief', 'deputy'],
-        'publish_results'         => ['chief'],
+    // Single source of truth: all transitions, their target states, and required roles
+    public const TRANSITIONS = [
+        'draft' => [
+            'submit_for_approval' => ['to' => 'pending_approval', 'roles' => ['chief']],
+            'auto_submit'         => ['to' => 'administration',   'roles' => ['system']],
+        ],
+        'pending_approval' => [
+            'approve' => ['to' => 'administration', 'roles' => ['super_admin', 'platform_admin']],
+            'reject'  => ['to' => 'draft',          'roles' => ['super_admin', 'platform_admin']],
+        ],
+        'administration' => [
+            'complete_administration' => ['to' => 'nomination', 'roles' => ['chief', 'deputy']],
+        ],
+        'nomination' => [
+            'open_voting' => ['to' => 'voting', 'roles' => ['chief', 'deputy']],
+        ],
+        'voting' => [
+            'close_voting' => ['to' => 'results_pending', 'roles' => ['chief', 'deputy']],
+            'lock_voting'  => ['to' => 'voting',          'roles' => ['chief', 'deputy']],
+        ],
+        'results_pending' => [
+            'publish_results' => ['to' => 'results', 'roles' => ['chief']],
+        ],
+        'results' => [],
     ];
 
     public static function canPerformAction(string $fromState, string $action): bool
     {
-        return in_array($action, self::ALLOWED_ACTIONS[$fromState] ?? []);
+        return isset(self::TRANSITIONS[$fromState][$action]);
     }
 
     public static function getResultingState(string $action): string
     {
-        if (!array_key_exists($action, self::ACTION_RESULTS)) {
-            throw new \InvalidArgumentException("Unknown action: '{$action}'");
+        foreach (self::TRANSITIONS as $actions) {
+            if (isset($actions[$action])) {
+                return $actions[$action]['to'];
+            }
         }
-        return self::ACTION_RESULTS[$action];
+        throw new \InvalidArgumentException("Unknown action: '{$action}'");
     }
 
     public static function getAllowedActions(string $state): array
     {
-        return self::ALLOWED_ACTIONS[$state] ?? [];
+        return array_keys(self::TRANSITIONS[$state] ?? []);
     }
 
     public static function getAllowedRoles(string $action): array
     {
-        return self::ACTION_PERMISSIONS[$action] ?? [];
+        foreach (self::TRANSITIONS as $actions) {
+            if (isset($actions[$action])) {
+                return $actions[$action]['roles'];
+            }
+        }
+        return [];
     }
 
     public static function actionRequiresRole(string $action, string $role): bool
@@ -76,12 +72,12 @@ class TransitionMatrix
 
     public static function isValidState(string $state): bool
     {
-        return array_key_exists($state, self::ALLOWED_ACTIONS);
+        return array_key_exists($state, self::TRANSITIONS);
     }
 
     public static function getAllStates(): array
     {
-        return array_keys(self::ALLOWED_ACTIONS);
+        return array_keys(self::TRANSITIONS);
     }
 
     // ─── BACKWARD COMPATIBILITY METHODS ───────────────────────────────────────
@@ -91,9 +87,9 @@ class TransitionMatrix
 
     public static function canTransition(string $fromState, string $toState): bool
     {
-        $allowedActions = self::ALLOWED_ACTIONS[$fromState] ?? [];
-        foreach ($allowedActions as $action) {
-            if (self::ACTION_RESULTS[$action] === $toState) {
+        $allowedActions = self::TRANSITIONS[$fromState] ?? [];
+        foreach ($allowedActions as $config) {
+            if ($config['to'] === $toState) {
                 return true;
             }
         }
@@ -102,11 +98,43 @@ class TransitionMatrix
 
     public static function getAllowedTransitions(string $state): array
     {
-        $allowedActions = self::ALLOWED_ACTIONS[$state] ?? [];
+        $allowedActions = self::TRANSITIONS[$state] ?? [];
         $transitions = [];
-        foreach ($allowedActions as $action) {
-            $transitions[] = self::ACTION_RESULTS[$action] ?? null;
+        foreach ($allowedActions as $config) {
+            $transitions[] = $config['to'];
         }
-        return array_filter($transitions);
+        return array_unique($transitions);
+    }
+
+    // ─── INVARIANT VALIDATION ─────────────────────────────────────────────────
+    // Called at boot time to detect configuration inconsistencies immediately
+
+    public static function validate(): void
+    {
+        foreach (self::TRANSITIONS as $state => $actions) {
+            if (!\App\Domain\Election\Enum\ElectionState::tryFrom($state)) {
+                throw new \LogicException("Invalid state in TRANSITIONS: '{$state}'");
+            }
+
+            foreach ($actions as $action => $config) {
+                if (!\App\Domain\Election\Enum\ElectionAction::tryFrom($action)) {
+                    throw new \LogicException("Invalid action in TRANSITIONS: '{$action}'");
+                }
+
+                if (!isset($config['to'], $config['roles'])) {
+                    throw new \LogicException("Action '{$action}' missing 'to' or 'roles'");
+                }
+
+                if (!\App\Domain\Election\Enum\ElectionState::tryFrom($config['to'])) {
+                    throw new \LogicException("Invalid target state '{$config['to']}'");
+                }
+
+                foreach ($config['roles'] as $role) {
+                    if (!\App\Domain\Election\Enum\ElectionRole::tryFrom($role)) {
+                        throw new \LogicException("Invalid role '{$role}' in action '{$action}'");
+                    }
+                }
+            }
+        }
     }
 }

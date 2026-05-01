@@ -54,6 +54,18 @@
         "status": "permanent",
         "priority": "low",
         "colors": ["from-indigo-50", "to-blue-50"]
+      },
+      {
+        "file": "resources/js/Pages/Result/Index.vue, resources/js/Pages/Result/PostResult.vue, resources/js/Components/Jetstream/PublicDigitHeader.vue",
+        "element": "Brand gold ceremonial color (brand-gold-500 = #d4af37)",
+        "reason": "Unified brand gold color for premium/ceremonial design across headers and results pages. Creates prestige and authority feel distinct from functional warning colors. Not a functional semantic color, pure branding/ceremonial design. Standardized via Tailwind config.",
+        "approved_by": ["nab.raj.sharma"],
+        "approved_date": "2026-05-01",
+        "expires": null,
+        "status": "permanent",
+        "priority": "high",
+        "colors": ["brand-gold-500 (#d4af37)"],
+        "notes": "Defined in tailwind.config.js as 'brand-gold' color scale. Replaces previous inconsistent gold values (#b5862b in header, #d4af37 in results)."
       }
     ],
     "component_deviations": [
@@ -67,9 +79,9 @@
     ]
   },
   "tracking": {
-    "total_exceptions": 6,
+    "total_exceptions": 7,
     "active_exceptions": 1,
-    "permanent_exceptions": 3,
+    "permanent_exceptions": 4,
     "expired_exceptions": 0,
     "pending_review": 0
   }

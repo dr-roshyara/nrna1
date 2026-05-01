@@ -18,11 +18,23 @@ export default {
                 danger:  colors.red,
                 warning: colors.amber,
                 neutral: colors.slate,
+                'brand-gold': {
+                    50:  '#fdf8ed',
+                    100: '#faf0d9',
+                    200: '#f5e1b3',
+                    300: '#f0d27d',
+                    400: '#ebc347',
+                    500: '#d4af37',  // Primary brand gold
+                    600: '#c4a530',
+                    700: '#b49b28',
+                    800: '#a49120',
+                    900: '#8a7818',
+                },
             },
             fontFamily: {
-                sans:  ['Inter', 'Nunito', 'system-ui', 'sans-serif'],
-                serif: ['Cormorant Garamond', 'Georgia', 'serif'],
-                mono:  ['DM Mono', 'monospace'],
+                sans:  ['system-ui', 'sans-serif'],
+                serif: ['Georgia', 'serif'],
+                mono:  ['monospace'],
             },
             animation: {
                 'pulse-slow': 'pulse-slow 3s ease-in-out infinite',

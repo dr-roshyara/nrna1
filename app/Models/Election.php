@@ -1396,6 +1396,73 @@ class Election extends Model
     /**
      * Validate election timeline (called in boot saving hook)
      */
+    /**
+     * Validate timeline for edit/creation context (strict)
+     * Called only when timeline dates are explicitly being updated
+     * Enforces that voting cannot be scheduled in the past
+     */
+    public function validateTimelineForEdit(?array $dates = null): void
+    {
+        $dates = $dates ?? [
+            'administration_starts_at' => $this->administration_starts_at,
+            'administration_ends_at' => $this->administration_ends_at,
+            'nomination_starts_at' => $this->nomination_starts_at,
+            'nomination_ends_at' => $this->nomination_ends_at,
+            'voting_starts_at' => $this->voting_starts_at,
+            'voting_ends_at' => $this->voting_ends_at,
+        ];
+
+        $adminStart = $dates['administration_starts_at'] ?? null;
+        $adminEnd = $dates['administration_ends_at'] ?? null;
+        $nomStart = $dates['nomination_starts_at'] ?? null;
+        $nomEnd = $dates['nomination_ends_at'] ?? null;
+        $votingStart = $dates['voting_starts_at'] ?? null;
+        $votingEnd = $dates['voting_ends_at'] ?? null;
+
+        // Minimum durations
+        if ($adminStart && $adminEnd) {
+            if ($adminEnd->diffInHours($adminStart) < 24) {
+                throw new \InvalidArgumentException('Administration phase must last at least 24 hours');
+            }
+        }
+
+        if ($nomStart && $nomEnd) {
+            if ($nomEnd->diffInHours($nomStart) < 24) {
+                throw new \InvalidArgumentException('Nomination phase must last at least 24 hours');
+            }
+        }
+
+        // Chronological order
+        if ($adminEnd && $nomStart) {
+            if ($adminEnd->gte($nomStart)) {
+                throw new \InvalidArgumentException('Administration must end before nomination starts (chronological order)');
+            }
+        }
+
+        if ($nomEnd && $votingStart) {
+            if ($nomEnd->gte($votingStart)) {
+                throw new \InvalidArgumentException('Nomination must end before voting starts (chronological order)');
+            }
+        }
+
+        // Voting dates validation: start before end
+        if ($votingStart && $votingEnd) {
+            if ($votingStart->gte($votingEnd)) {
+                throw new \InvalidArgumentException('Voting start date must be before end date');
+            }
+
+            // Voting start cannot be in the past (integrity critical) — skip in tests
+            // This check ONLY applies when editing timeline, not during state transitions
+            if ($this->type === 'real' && !app()->environment('testing') && $votingStart->lt(now())) {
+                throw new \InvalidArgumentException('Voting start date cannot be in the past');
+            }
+        }
+    }
+
+    /**
+     * Validate timeline without strict past-date checks
+     * Used during state transitions where voting may already be in progress
+     */
     public function validateTimeline(?array $dates = null): void
     {
         $dates = $dates ?? [
@@ -1448,15 +1515,10 @@ class Election extends Model
             }
         }
 
-        // Voting dates validation: start before end
+        // Voting dates validation: start before end (no past-date check in permissive version)
         if ($votingStart && $votingEnd) {
             if ($votingStart->gte($votingEnd)) {
                 throw new \InvalidArgumentException('Voting start date must be before end date');
-            }
-
-            // Voting start cannot be in the past (integrity critical) — skip in tests
-            if ($this->type === 'real' && !app()->environment('testing') && $votingStart->lt(now())) {
-                throw new \InvalidArgumentException('Voting start date cannot be in the past');
             }
         }
     }
@@ -1608,11 +1670,19 @@ class Election extends Model
 
     private function validateCloseVoting(\App\Domain\Election\StateMachine\Transition $transition): void
     {
-        if ($this->voting_ends_at
-            && $this->voting_ends_at->lt(now())
-            && ($this->votes_count ?? 0) === 0
-        ) {
-            throw new \DomainException('Cannot close voting: Voting ended with no votes recorded.');
+        // Allow closing even with zero votes (valid election outcome)
+        if ($this->voting_ends_at && $this->voting_ends_at->lt(now())) {
+            // Log warning for audit trail if zero votes
+            if (($this->votes_count ?? 0) === 0) {
+                \Illuminate\Support\Facades\Log::warning('Voting closed with zero votes recorded', [
+                    'election_id' => $this->id,
+                    'election_name' => $this->name,
+                    'voting_ends_at' => $this->voting_ends_at,
+                    'closed_by' => $transition->actorId,
+                    'reason' => $transition->reason ?? 'No reason provided'
+                ]);
+            }
+            return; // Allow closure
         }
     }
 
@@ -1637,7 +1707,8 @@ class Election extends Model
         }
 
         // 1. Check election-level role FIRST (highest priority for election-specific actions)
-        $electionRole = \App\Models\ElectionOfficer::where('user_id', $actorId)
+        $electionRole = \App\Models\ElectionOfficer::withoutGlobalScopes()
+            ->where('user_id', $actorId)
             ->where('election_id', $this->id)
             ->where('status', 'active')
             ->value('role');
@@ -1971,8 +2042,6 @@ class Election extends Model
             if ($election->isDirty('voting_ends_at') && $election->voting_ends_at) {
                 $election->end_date = $election->voting_ends_at;
             }
-
-            $election->validateTimeline();
         });
         static::updated(function (Election $election) {
             $cols = [

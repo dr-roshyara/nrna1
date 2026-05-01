@@ -74,6 +74,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Validate election state machine configuration at boot time (fail fast)
+        \App\Domain\Election\StateMachine\TransitionMatrix::validate();
+
         // Register mail components as Blade aliases
         // This allows x-mail::message etc. to work in custom email templates
         // Each component is mapped to its view file in resources/views/vendor/mail/html/

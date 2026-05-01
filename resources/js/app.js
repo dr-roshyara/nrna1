@@ -19,6 +19,17 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         const app = createApp({ render: () => h(App, props) });
 
+        // 🔴 CRASH ON VUE WARNINGS IN DEVELOPMENT
+        // Any missing property, undefined computed, or template error will throw
+        // This catches bugs immediately instead of silently failing in production
+        if (import.meta.env.DEV) {
+            app.config.warnHandler = (msg, instance, trace) => {
+                console.error('❌ Vue Warning (will crash in dev):', msg);
+                if (trace) console.error('Trace:', trace);
+                throw new Error(`Vue Warning: ${msg}`);
+            };
+        }
+
         // Set i18n locale from server-provided locale (page.props.locale)
         // Must be done before mount so useMeta and other composables see the right locale
         const serverLocale = props.initialPage.props.locale;
