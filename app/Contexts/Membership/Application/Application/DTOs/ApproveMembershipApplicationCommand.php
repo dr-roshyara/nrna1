@@ -16,6 +16,7 @@ final readonly class ApproveMembershipApplicationCommand
         public ApplicationId $applicationId,
         public TenantId $tenantId,
         public string $userId,
+        public string $organisationUserId,
         public string $name,
         public string $email,
         public ?string $phone,

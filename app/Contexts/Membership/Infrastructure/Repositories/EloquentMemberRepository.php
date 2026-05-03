@@ -33,20 +33,23 @@ final class EloquentMemberRepository implements MemberRepositoryInterface
         return $this->reconstitute($record);
     }
 
-    public function save(Member $member, TenantId $tenantId): void
+    public function save(Member $member, TenantId $tenantId, ?string $organisationUserId = null): void
     {
         $personalInfo = $member->getPersonalInfo();
+        $memberId = $member->getId()->value();
+        $orgId = $tenantId->value();
 
         $model = $this->model
             ->withoutGlobalScopes()
-            ->where('id', $member->getId()->value())
-            ->where('organisation_id', $tenantId->value())
-            ->firstOrCreate(
-                [
-                    'id' => $member->getId()->value(),
-                    'organisation_id' => $tenantId->value(),
-                ]
-            );
+            ->where('id', $memberId)
+            ->where('organisation_id', $orgId)
+            ->first();
+
+        if (!$model) {
+            $model = new $this->model();
+            $model->id = $memberId;
+            $model->organisation_id = $orgId;
+        }
 
         $model->personal_info = json_encode([
             'fullName' => $personalInfo->getFullName(),
@@ -55,6 +58,10 @@ final class EloquentMemberRepository implements MemberRepositoryInterface
         ]);
         $model->membership_type_id = $member->getMembershipTypeId()->value();
         $model->status = $member->getStatus()->value();
+
+        if ($organisationUserId !== null) {
+            $model->organisation_user_id = $organisationUserId;
+        }
 
         $model->save();
     }

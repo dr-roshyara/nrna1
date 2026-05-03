@@ -35,19 +35,23 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
     public function save(Fee $fee, TenantId $tenantId): void
     {
         $amount = $fee->getAmount();
+        $feeId = $fee->getId()->value();
+        $orgId = $tenantId->value();
 
         $model = $this->model
             ->withoutGlobalScopes()
-            ->where('id', $fee->getId()->value())
-            ->where('organisation_id', $tenantId->value())
-            ->firstOrCreate(
-                [
-                    'id' => $fee->getId()->value(),
-                    'organisation_id' => $tenantId->value(),
-                ]
-            );
+            ->where('id', $feeId)
+            ->where('organisation_id', $orgId)
+            ->first();
+
+        if (!$model) {
+            $model = new $this->model();
+            $model->id = $feeId;
+            $model->organisation_id = $orgId;
+        }
 
         $model->member_id = $fee->getMemberId()->value();
+        $model->membership_type_id = $fee->getMembershipTypeId()->value();
         $model->amount = $amount;
         $model->fee_amount_at_time = $amount;
         $model->status = $fee->getStatus()->value();
@@ -88,6 +92,7 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
         return Fee::reconstitute(
             FeeId::fromString($record->id),
             MemberId::fromString($record->member_id),
+            MembershipTypeId::fromString($record->membership_type_id),
             FeeStatus::fromString($record->status),
             TenantId::fromOrganisationId($record->organisation_id),
             (string) $record->amount,

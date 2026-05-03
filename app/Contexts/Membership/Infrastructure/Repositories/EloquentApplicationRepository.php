@@ -37,27 +37,17 @@ final class EloquentApplicationRepository implements ApplicationRepositoryInterf
         $appId = $application->getId()->value();
         $orgId = $tenantId->value();
 
-        \Log::info('ApplicationRepository.save() - starting', [
-            'id' => $appId,
-            'org_id' => $orgId,
-            'status' => $application->getStatus()->value(),
-        ]);
-
         $model = $this->model
             ->withoutGlobalScopes()
             ->where('id', $appId)
             ->where('organisation_id', $orgId)
-            ->firstOrCreate(
-                [
-                    'id' => $appId,
-                    'organisation_id' => $orgId,
-                ]
-            );
+            ->first();
 
-        \Log::info('ApplicationRepository.save() - found or created model', [
-            'found' => !$model->wasRecentlyCreated,
-            'current_status' => $model->status,
-        ]);
+        if (!$model) {
+            $model = new $this->model();
+            $model->id = $appId;
+            $model->organisation_id = $orgId;
+        }
 
         $model->user_id = $application->getUserId();
         $model->membership_type_id = $application->getMembershipTypeId()->value();
@@ -65,19 +55,7 @@ final class EloquentApplicationRepository implements ApplicationRepositoryInterf
         $model->rejection_reason = $application->getRejectionReason();
         $model->application_data = $application->getApplicationData();
 
-        $saved = $model->save();
-
-        \Log::info('ApplicationRepository.save() - after save', [
-            'saved' => $saved,
-            'status_after' => $model->status,
-            'dirty_attributes' => $model->getDirty(),
-        ]);
-
-        // Verify from database
-        $verify = $this->model->withoutGlobalScopes()->find($appId);
-        \Log::info('ApplicationRepository.save() - verified from DB', [
-            'db_status' => $verify?->status,
-        ]);
+        $model->save();
     }
 
     public function findByStatusForTenant(ApplicationStatus $status, TenantId $tenantId): array

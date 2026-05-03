@@ -26,17 +26,11 @@ final class ApproveMembershipApplication
 
     public function execute(ApproveMembershipApplicationCommand $command): void
     {
-        \Log::info('ApproveMembershipApplication.execute - START');
-
         // 1. Find and approve the application
         $application = $this->applicationRepository->find(
             $command->applicationId,
             $command->tenantId
         );
-
-        \Log::info('ApproveMembershipApplication.execute - found application', [
-            'found' => $application !== null,
-        ]);
 
         if (!$application) {
             throw new \RuntimeException(
@@ -44,15 +38,7 @@ final class ApproveMembershipApplication
             );
         }
 
-        \Log::info('ApproveMembershipApplication.execute - before approve()', [
-            'status_before' => $application->getStatus()->value(),
-        ]);
-
         $application->approve();
-
-        \Log::info('ApproveMembershipApplication.execute - after approve()', [
-            'status_after' => $application->getStatus()->value(),
-        ]);
 
         // 2. Create Member aggregate from approved application
         $personalInfo = PersonalInfo::create(
@@ -70,25 +56,21 @@ final class ApproveMembershipApplication
         // 3. Create Fee aggregate for the new member
         $fee = Fee::create(
             $member->getId(),
+            $command->membershipTypeId,
             $command->tenantId,
             (string) $command->membershipFeeAmount,
             $command->feeDueDate
         );
 
+        \Log::info('After Fee creation', [
+            'fee_id' => $fee->getId()->value(),
+            'fee_member_id' => $fee->getMemberId()->value(),
+        ]);
+
         // 4. Save all aggregates (controller handles transaction boundary)
-        \Log::info('ApproveMembershipApplication.execute - before saving aggregates');
-
         $this->applicationRepository->save($application, $command->tenantId);
-
-        \Log::info('ApproveMembershipApplication.execute - application saved');
-
-        $this->memberRepository->save($member, $command->tenantId);
-
-        \Log::info('ApproveMembershipApplication.execute - member saved');
-
+        $this->memberRepository->save($member, $command->tenantId, $command->organisationUserId);
         $this->feeRepository->save($fee, $command->tenantId);
-
-        \Log::info('ApproveMembershipApplication.execute - fee saved');
 
         // 5. Dispatch all domain events
         $events = array_merge(
@@ -98,13 +80,5 @@ final class ApproveMembershipApplication
         );
 
         $this->eventBus->dispatchAll($events);
-
-        Log::info('Membership application approved and member created', [
-            'application_id' => $command->applicationId->toString(),
-            'member_id' => $member->getId()->toString(),
-            'fee_id' => $fee->getId()->toString(),
-            'tenant_id' => $command->tenantId->value(),
-            'user_id' => $command->userId,
-        ]);
     }
 }

@@ -6,6 +6,7 @@ namespace App\Contexts\Membership\Domain\Fee;
 
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
 use App\Contexts\Membership\Domain\Traits\RecordsEvents;
 use App\Contexts\Membership\Domain\Fee\Events\FeePaid;
 use App\Contexts\Membership\Domain\Fee\Events\FeeOverdue;
@@ -17,6 +18,7 @@ final class Fee
 
     private FeeId $id;
     private MemberId $memberId;
+    private MembershipTypeId $membershipTypeId;
     private FeeStatus $status;
     private TenantId $tenantId;
     private string $amount;
@@ -25,6 +27,7 @@ final class Fee
     private function __construct(
         FeeId $id,
         MemberId $memberId,
+        MembershipTypeId $membershipTypeId,
         FeeStatus $status,
         TenantId $tenantId,
         string $amount,
@@ -32,6 +35,7 @@ final class Fee
     ) {
         $this->id = $id;
         $this->memberId = $memberId;
+        $this->membershipTypeId = $membershipTypeId;
         $this->status = $status;
         $this->tenantId = $tenantId;
         $this->amount = $amount;
@@ -40,6 +44,7 @@ final class Fee
 
     public static function create(
         MemberId $memberId,
+        MembershipTypeId $membershipTypeId,
         TenantId $tenantId,
         string $amount,
         DateTimeImmutable $dueDate
@@ -47,6 +52,7 @@ final class Fee
         return new self(
             FeeId::generate(),
             $memberId,
+            $membershipTypeId,
             FeeStatus::pending(),
             $tenantId,
             $amount,
@@ -57,12 +63,13 @@ final class Fee
     public static function reconstitute(
         FeeId $id,
         MemberId $memberId,
+        MembershipTypeId $membershipTypeId,
         FeeStatus $status,
         TenantId $tenantId,
         string $amount,
         DateTimeImmutable $dueDate
     ): self {
-        return new self($id, $memberId, $status, $tenantId, $amount, $dueDate);
+        return new self($id, $memberId, $membershipTypeId, $status, $tenantId, $amount, $dueDate);
     }
 
     public function markAsPaid(): void
@@ -100,6 +107,11 @@ final class Fee
     public function getMemberId(): MemberId
     {
         return $this->memberId;
+    }
+
+    public function getMembershipTypeId(): MembershipTypeId
+    {
+        return $this->membershipTypeId;
     }
 
     public function getStatus(): FeeStatus

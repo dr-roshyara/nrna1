@@ -17,7 +17,7 @@ final readonly class ApplicationId
 
     public static function generate(): self
     {
-        return new self((string) Str::ulid());
+        return new self((string) Str::uuid());
     }
 
     public static function fromString(string $value): self

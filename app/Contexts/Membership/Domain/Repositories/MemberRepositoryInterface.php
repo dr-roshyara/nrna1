@@ -13,7 +13,7 @@ interface MemberRepositoryInterface
 {
     public function find(MemberId $id, TenantId $tenantId): ?Member;
 
-    public function save(Member $member, TenantId $tenantId): void;
+    public function save(Member $member, TenantId $tenantId, ?string $organisationUserId = null): void;
 
     public function findByStatusForTenant(MemberStatus $status, TenantId $tenantId): array;
 

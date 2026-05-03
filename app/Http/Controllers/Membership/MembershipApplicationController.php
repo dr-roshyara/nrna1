@@ -283,6 +283,7 @@ class MembershipApplicationController extends Controller
                     applicationId: ApplicationId::fromString($application->id),
                     tenantId: TenantId::fromOrganisationId($organisation->id),
                     userId: $application->user_id,
+                    organisationUserId: $orgUser->id,
                     name: $user->name,
                     email: $user->email,
                     phone: $user->telephone,
