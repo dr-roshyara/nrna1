@@ -19,6 +19,9 @@ use App\Models\User;
 use App\Models\OrganisationUser;
 use DateTimeImmutable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
@@ -29,11 +32,14 @@ class OutboxIntegrationTest extends TestCase
     private Organisation $organisation;
     private TenantId $tenantId;
     private MembershipType $membershipType;
-    private int $transactionCounter = 0;
 
     protected function setUp(): void
     {
         parent::setUp();
+
+        // Disable async execution in tests
+        Queue::fake();
+        Event::fake();
 
         $this->organisation = Organisation::create([
             'id' => '11111111-1111-1111-1111-111111111111',
@@ -64,11 +70,6 @@ class OutboxIntegrationTest extends TestCase
         ]);
     }
 
-    private function uniqueTransactionReference(): string
-    {
-        return 'TXN-TEST-' . (++$this->transactionCounter) . '-' . now()->timestamp;
-    }
-
     /** @test */
     public function payment_creates_outbox_event(): void
     {
@@ -95,8 +96,8 @@ class OutboxIntegrationTest extends TestCase
             tenantId: $this->tenantId,
             paymentMethod: 'bank_transfer',
             paidAt: new DateTimeImmutable(),
-            transactionReference: $this->uniqueTransactionReference(),
-            recordedByUserId: 'user-123'
+            transactionReference: 'TXN-' . $fee->getId()->value(),
+            recordedByUserId: Str::uuid()->toString()
         );
 
         app(RecordFeePayment::class)->execute($command);
@@ -133,8 +134,8 @@ class OutboxIntegrationTest extends TestCase
             tenantId: $this->tenantId,
             paymentMethod: 'card',
             paidAt: new DateTimeImmutable(),
-            transactionReference: $this->uniqueTransactionReference(),
-            recordedByUserId: 'user-456'
+            transactionReference: 'TXN-' . $fee->getId()->value(),
+            recordedByUserId: Str::uuid()->toString()
         );
 
         app(RecordFeePayment::class)->execute($command);
