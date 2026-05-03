@@ -11,7 +11,12 @@ final readonly class FeePaid
 {
     public function __construct(
         private FeeId $feeId,
-        private DateTimeImmutable $occurredAt
+        private string $amount,
+        private string $paymentMethod,
+        private DateTimeImmutable $paidAt,
+        private ?string $transactionReference = null,
+        private ?string $recordedByUserId = null,
+        private string $currency = 'EUR',
     ) {}
 
     public function getFeeId(): FeeId
@@ -19,8 +24,33 @@ final readonly class FeePaid
         return $this->feeId;
     }
 
-    public function getOccurredAt(): DateTimeImmutable
+    public function getAmount(): string
     {
-        return $this->occurredAt;
+        return $this->amount;
+    }
+
+    public function getPaymentMethod(): string
+    {
+        return $this->paymentMethod;
+    }
+
+    public function getPaidAt(): DateTimeImmutable
+    {
+        return $this->paidAt;
+    }
+
+    public function getTransactionReference(): ?string
+    {
+        return $this->transactionReference;
+    }
+
+    public function getRecordedByUserId(): ?string
+    {
+        return $this->recordedByUserId;
+    }
+
+    public function getCurrency(): string
+    {
+        return $this->currency;
     }
 }

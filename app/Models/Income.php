@@ -39,6 +39,7 @@ class Income extends Model
         'other_incomes',
         'source_type',
         'source_id',
+        'metadata',
     ];
 
     /**

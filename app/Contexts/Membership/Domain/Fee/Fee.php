@@ -89,7 +89,15 @@ final class Fee
         $this->status = FeeStatus::paid();
         $this->paymentDetails = $payment;
 
-        $this->recordThat(new FeePaid($this->id, $payment->paidAt));
+        $this->recordThat(new FeePaid(
+            feeId: $this->id,
+            amount: $this->amount,
+            paymentMethod: $payment->method,
+            paidAt: $payment->paidAt,
+            transactionReference: $payment->transactionReference,
+            recordedByUserId: $payment->recordedByUserId,
+            currency: 'EUR',
+        ));
     }
 
     public function markAsOverdue(): void

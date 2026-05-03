@@ -99,7 +99,9 @@ class OutboxIntegrationTest extends TestCase
         // Assert: Payload structure (serialized domain event)
         $payload = is_string($event->payload) ? json_decode($event->payload, true) : $event->payload;
         $this->assertArrayHasKey('feeId', $payload);
-        $this->assertArrayHasKey('occurredAt', $payload);
+        $this->assertArrayHasKey('amount', $payload);
+        $this->assertArrayHasKey('paymentMethod', $payload);
+        $this->assertArrayHasKey('paidAt', $payload);
     }
 
     /** @test */

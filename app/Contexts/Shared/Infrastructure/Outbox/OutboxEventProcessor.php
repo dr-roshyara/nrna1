@@ -64,11 +64,12 @@ final class OutboxEventProcessor
         // Reconstruct the domain event from payload
         // This will be expanded as more event types are added
         $eventClass = $this->resolveEventClass($event->event_type);
-        $payload = $event->payload;
+        $payload = is_string($event->payload) ? json_decode($event->payload, true) : $event->payload;
 
         // For now, return a generic integration event
         // In Phase 4B, this becomes a proper event hydration factory
         return new IntegrationEvent(
+            eventId: $event->event_id,
             eventType: $event->event_type,
             aggregateType: $event->aggregate_type,
             aggregateId: $event->aggregate_id,

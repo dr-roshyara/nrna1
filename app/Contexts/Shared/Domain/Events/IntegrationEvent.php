@@ -7,6 +7,7 @@ namespace App\Contexts\Shared\Domain\Events;
 final readonly class IntegrationEvent
 {
     public function __construct(
+        public string $eventId,
         public string $eventType,
         public string $aggregateType,
         public string $aggregateId,
@@ -14,6 +15,11 @@ final readonly class IntegrationEvent
         public array $payload,
         public \DateTimeInterface $occurredAt,
     ) {}
+
+    public function getEventId(): string
+    {
+        return $this->eventId;
+    }
 
     public function getEventType(): string
     {

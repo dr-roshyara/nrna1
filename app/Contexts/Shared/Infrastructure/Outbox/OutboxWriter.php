@@ -61,9 +61,9 @@ final class OutboxWriter
             $value = $property->getValue($event);
 
             // Convert domain objects to strings
-            if (method_exists($value, 'value')) {
+            if ($value !== null && method_exists($value, 'value')) {
                 $value = $value->value();
-            } elseif (method_exists($value, 'toString')) {
+            } elseif ($value !== null && method_exists($value, 'toString')) {
                 $value = $value->toString();
             } elseif ($value instanceof \DateTimeImmutable) {
                 $value = $value->format('Y-m-d H:i:s');
