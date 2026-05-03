@@ -59,7 +59,7 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
         $paymentDetails = $fee->getPaymentDetails();
         if ($paymentDetails !== null) {
             $model->payment_method = $paymentDetails->method;
-            $model->transaction_reference = $paymentDetails->transactionReference;
+            $model->payment_reference = $paymentDetails->transactionReference;
             $model->paid_at = $paymentDetails->paidAt;
             $model->recorded_by = $paymentDetails->recordedByUserId;
         }
