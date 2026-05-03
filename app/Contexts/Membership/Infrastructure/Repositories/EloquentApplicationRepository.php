@@ -21,8 +21,8 @@ final class EloquentApplicationRepository implements ApplicationRepositoryInterf
     {
         $record = $this->model
             ->withoutGlobalScopes()
-            ->where('id', $id->toString())
-            ->where('organisation_id', $tenantId->toString())
+            ->where('id', $id->value())
+            ->where('organisation_id', $tenantId->value())
             ->first();
 
         if (!$record) {
@@ -34,24 +34,57 @@ final class EloquentApplicationRepository implements ApplicationRepositoryInterf
 
     public function save(Application $application, TenantId $tenantId): void
     {
-        $this->model->withoutGlobalScopes()->updateOrCreate(
-            [
-                'id' => $application->getId()->toString(),
-                'organisation_id' => $tenantId->toString(),
-            ],
-            [
-                'member_id' => $application->getMemberId()->toString(),
-                'membership_type_id' => $application->getMembershipTypeId()->toString(),
-                'status' => $application->getStatus()->value(),
-            ]
-        );
+        $appId = $application->getId()->value();
+        $orgId = $tenantId->value();
+
+        \Log::info('ApplicationRepository.save() - starting', [
+            'id' => $appId,
+            'org_id' => $orgId,
+            'status' => $application->getStatus()->value(),
+        ]);
+
+        $model = $this->model
+            ->withoutGlobalScopes()
+            ->where('id', $appId)
+            ->where('organisation_id', $orgId)
+            ->firstOrCreate(
+                [
+                    'id' => $appId,
+                    'organisation_id' => $orgId,
+                ]
+            );
+
+        \Log::info('ApplicationRepository.save() - found or created model', [
+            'found' => !$model->wasRecentlyCreated,
+            'current_status' => $model->status,
+        ]);
+
+        $model->user_id = $application->getUserId();
+        $model->membership_type_id = $application->getMembershipTypeId()->value();
+        $model->status = $application->getStatus()->value();
+        $model->rejection_reason = $application->getRejectionReason();
+        $model->application_data = $application->getApplicationData();
+
+        $saved = $model->save();
+
+        \Log::info('ApplicationRepository.save() - after save', [
+            'saved' => $saved,
+            'status_after' => $model->status,
+            'dirty_attributes' => $model->getDirty(),
+        ]);
+
+        // Verify from database
+        $verify = $this->model->withoutGlobalScopes()->find($appId);
+        \Log::info('ApplicationRepository.save() - verified from DB', [
+            'db_status' => $verify?->status,
+        ]);
     }
 
     public function findByStatusForTenant(ApplicationStatus $status, TenantId $tenantId): array
     {
         $records = $this->model
             ->withoutGlobalScopes()
-            ->where('organisation_id', $tenantId->toString())
+            ->where('organisation_id', $tenantId->value())
             ->where('status', $status->value())
             ->get();
 
@@ -68,9 +101,11 @@ final class EloquentApplicationRepository implements ApplicationRepositoryInterf
         return Application::reconstitute(
             ApplicationId::fromString($record->id),
             ApplicationStatus::fromString($record->status),
-            TenantId::fromString($record->organisation_id),
-            MemberId::fromString($record->member_id),
-            MembershipTypeId::fromString($record->membership_type_id)
+            TenantId::fromOrganisationId($record->organisation_id),
+            $record->user_id,
+            MembershipTypeId::fromString($record->membership_type_id),
+            $record->application_data,
+            $record->rejection_reason
         );
     }
 }

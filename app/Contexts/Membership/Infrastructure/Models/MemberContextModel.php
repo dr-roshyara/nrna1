@@ -6,18 +6,18 @@ namespace App\Contexts\Membership\Infrastructure\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Shared\Domain\Scopes\BelongsToTenant;
+use App\Traits\BelongsToTenant;
 
 class MemberContextModel extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, BelongsToTenant;
 
     protected $table = 'members';
 
     protected $fillable = [
         'id',
         'organisation_id',
-        'personal_info',
+        'organisation_user_id',
         'membership_type_id',
         'status',
         'fees_status',
@@ -29,22 +29,12 @@ class MemberContextModel extends Model
     protected $casts = [
         'id' => 'string',
         'organisation_id' => 'string',
+        'organisation_user_id' => 'string',
         'membership_type_id' => 'string',
-        'personal_info' => 'json',
         'status' => 'string',
         'fees_status' => 'string',
     ];
 
     protected $keyType = 'string';
     public $incrementing = false;
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope(new BelongsToTenant());
-    }
-
-    public function getOrganisationIdAttribute($value)
-    {
-        return $value;
-    }
 }

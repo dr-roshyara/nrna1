@@ -20,40 +20,48 @@ final class Application
     private ApplicationId $id;
     private ApplicationStatus $status;
     private TenantId $tenantId;
-    private MemberId $memberId;
+    private string $userId;
     private MembershipTypeId $membershipTypeId;
+    private ?array $applicationData;
+    private ?string $rejectionReason = null;
 
     private function __construct(
         ApplicationId $id,
         ApplicationStatus $status,
         TenantId $tenantId,
-        MemberId $memberId,
-        MembershipTypeId $membershipTypeId
+        string $userId,
+        MembershipTypeId $membershipTypeId,
+        ?array $applicationData = null,
+        ?string $rejectionReason = null
     ) {
         $this->id = $id;
         $this->status = $status;
         $this->tenantId = $tenantId;
-        $this->memberId = $memberId;
+        $this->userId = $userId;
         $this->membershipTypeId = $membershipTypeId;
+        $this->applicationData = $applicationData;
+        $this->rejectionReason = $rejectionReason;
     }
 
     public static function submit(
         TenantId $tenantId,
-        MemberId $memberId,
-        MembershipTypeId $membershipTypeId
+        string $userId,
+        MembershipTypeId $membershipTypeId,
+        ?array $applicationData = null
     ): self {
         $application = new self(
             ApplicationId::generate(),
             ApplicationStatus::submitted(),
             $tenantId,
-            $memberId,
-            $membershipTypeId
+            $userId,
+            $membershipTypeId,
+            $applicationData
         );
 
         $application->recordThat(new ApplicationSubmitted(
             $application->id,
             $tenantId,
-            $memberId,
+            $userId,
             $membershipTypeId,
             new DateTimeImmutable()
         ));
@@ -65,10 +73,12 @@ final class Application
         ApplicationId $id,
         ApplicationStatus $status,
         TenantId $tenantId,
-        MemberId $memberId,
-        MembershipTypeId $membershipTypeId
+        string $userId,
+        MembershipTypeId $membershipTypeId,
+        ?array $applicationData = null,
+        ?string $rejectionReason = null
     ): self {
-        return new self($id, $status, $tenantId, $memberId, $membershipTypeId);
+        return new self($id, $status, $tenantId, $userId, $membershipTypeId, $applicationData, $rejectionReason);
     }
 
     public function approve(): void
@@ -92,6 +102,7 @@ final class Application
         }
 
         $this->status = ApplicationStatus::rejected();
+        $this->rejectionReason = $reason ?: null;
 
         $this->recordThat(new ApplicationRejected(
             $this->id,
@@ -115,14 +126,24 @@ final class Application
         return $this->tenantId;
     }
 
-    public function getMemberId(): MemberId
+    public function getUserId(): string
     {
-        return $this->memberId;
+        return $this->userId;
     }
 
     public function getMembershipTypeId(): MembershipTypeId
     {
         return $this->membershipTypeId;
+    }
+
+    public function getApplicationData(): ?array
+    {
+        return $this->applicationData;
+    }
+
+    public function getRejectionReason(): ?string
+    {
+        return $this->rejectionReason;
     }
 
     public function pullEvents(): array

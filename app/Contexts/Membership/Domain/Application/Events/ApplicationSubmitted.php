@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Domain\Application\Events;
 
 use App\Contexts\Membership\Domain\Application\ApplicationId;
-use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
 use App\Contexts\Membership\Domain\ValueObjects\TenantId;
 use DateTimeImmutable;
@@ -15,7 +14,7 @@ final readonly class ApplicationSubmitted
     public function __construct(
         private ApplicationId $applicationId,
         private TenantId $tenantId,
-        private MemberId $memberId,
+        private string $userId,
         private MembershipTypeId $membershipTypeId,
         private DateTimeImmutable $occurredAt
     ) {}
@@ -30,9 +29,9 @@ final readonly class ApplicationSubmitted
         return $this->tenantId;
     }
 
-    public function getMemberId(): MemberId
+    public function getUserId(): string
     {
-        return $this->memberId;
+        return $this->userId;
     }
 
     public function getMembershipTypeId(): MembershipTypeId

@@ -21,8 +21,8 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
     {
         $record = $this->model
             ->withoutGlobalScopes()
-            ->where('id', $id->toString())
-            ->where('organisation_id', $tenantId->toString())
+            ->where('id', $id->value())
+            ->where('organisation_id', $tenantId->value())
             ->first();
 
         if (!$record) {
@@ -34,25 +34,33 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
 
     public function save(Fee $fee, TenantId $tenantId): void
     {
-        $this->model->withoutGlobalScopes()->updateOrCreate(
-            [
-                'id' => $fee->getId()->toString(),
-                'organisation_id' => $tenantId->toString(),
-            ],
-            [
-                'member_id' => $fee->getMemberId()->toString(),
-                'amount' => $fee->getAmount(),
-                'status' => $fee->getStatus()->value(),
-                'due_date' => $fee->getDueDate(),
-            ]
-        );
+        $amount = $fee->getAmount();
+
+        $model = $this->model
+            ->withoutGlobalScopes()
+            ->where('id', $fee->getId()->value())
+            ->where('organisation_id', $tenantId->value())
+            ->firstOrCreate(
+                [
+                    'id' => $fee->getId()->value(),
+                    'organisation_id' => $tenantId->value(),
+                ]
+            );
+
+        $model->member_id = $fee->getMemberId()->value();
+        $model->amount = $amount;
+        $model->fee_amount_at_time = $amount;
+        $model->status = $fee->getStatus()->value();
+        $model->due_date = $fee->getDueDate();
+
+        $model->save();
     }
 
     public function findByStatusForTenant(FeeStatus $status, TenantId $tenantId): array
     {
         $records = $this->model
             ->withoutGlobalScopes()
-            ->where('organisation_id', $tenantId->toString())
+            ->where('organisation_id', $tenantId->value())
             ->where('status', $status->value())
             ->get();
 
@@ -63,8 +71,8 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
     {
         $records = $this->model
             ->withoutGlobalScopes()
-            ->where('organisation_id', $tenantId->toString())
-            ->where('member_id', $memberId->toString())
+            ->where('organisation_id', $tenantId->value())
+            ->where('member_id', $memberId->value())
             ->get();
 
         return $records->map(fn($record) => $this->reconstitute($record))->all();
@@ -81,7 +89,7 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
             FeeId::fromString($record->id),
             MemberId::fromString($record->member_id),
             FeeStatus::fromString($record->status),
-            TenantId::fromString($record->organisation_id),
+            TenantId::fromOrganisationId($record->organisation_id),
             (string) $record->amount,
             new DateTimeImmutable($record->due_date)
         );

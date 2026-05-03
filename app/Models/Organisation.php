@@ -61,6 +61,11 @@ class Organisation extends Model
         return $this->hasMany(Election::class);
     }
 
+    public function applications()
+    {
+        return $this->hasMany(MembershipApplication::class, 'organisation_id', 'id');
+    }
+
     /**
      * Resolve {election:slug} bindings nested under {organisation:slug} without
      * the BelongsToTenant global scope, which requires session context that is

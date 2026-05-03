@@ -207,9 +207,19 @@ class MembershipApplicationTest extends TestCase
             'expires_at'         => now()->addDays(30),
         ]);
 
-        $this->actingAs($this->admin)->patch(
-            route('organisations.membership.applications.approve', [$this->org->slug, $app->id])
-        );
+        $url = route('organisations.membership.applications.approve', [$this->org->slug, $app->id]);
+        \Log::info('TEST: Approving application', [
+            'app_id' => $app->id,
+            'url' => $url,
+        ]);
+
+        $response = $this->actingAs($this->admin)->patch($url);
+
+        \Log::info('TEST: Response received', [
+            'status' => $response->getStatusCode(),
+        ]);
+
+        $response->assertRedirect();
 
         $this->assertDatabaseHas('membership_applications', [
             'id'     => $app->id,

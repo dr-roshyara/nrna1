@@ -19,6 +19,9 @@ use App\Contexts\Membership\Application\Member\UseCases\ArchiveMember;
 use App\Contexts\Membership\Application\Application\UseCases\SubmitApplication;
 use App\Contexts\Membership\Application\Application\UseCases\ApproveApplication;
 use App\Contexts\Membership\Application\Application\UseCases\RejectApplication;
+use App\Contexts\Membership\Application\Application\UseCases\SubmitMembershipApplication;
+use App\Contexts\Membership\Application\Application\UseCases\RejectMembershipApplication;
+use App\Contexts\Membership\Application\Application\UseCases\ApproveMembershipApplication;
 use App\Contexts\Membership\Application\Fee\UseCases\RecordFeePayment;
 use App\Contexts\Membership\Application\Fee\UseCases\WaiveFee;
 use App\Shared\Domain\Events\EventBus;
@@ -153,6 +156,29 @@ class MembershipServiceProvider extends ServiceProvider
         $this->app->bind(RejectApplication::class, function ($app) {
             return new RejectApplication(
                 $app->make(ApplicationRepositoryInterface::class),
+                $app->make(LaravelEventBus::class)
+            );
+        });
+
+        $this->app->bind(SubmitMembershipApplication::class, function ($app) {
+            return new SubmitMembershipApplication(
+                $app->make(ApplicationRepositoryInterface::class),
+                $app->make(LaravelEventBus::class)
+            );
+        });
+
+        $this->app->bind(RejectMembershipApplication::class, function ($app) {
+            return new RejectMembershipApplication(
+                $app->make(ApplicationRepositoryInterface::class),
+                $app->make(LaravelEventBus::class)
+            );
+        });
+
+        $this->app->bind(ApproveMembershipApplication::class, function ($app) {
+            return new ApproveMembershipApplication(
+                $app->make(ApplicationRepositoryInterface::class),
+                $app->make(MemberRepositoryInterface::class),
+                $app->make(FeeRepositoryInterface::class),
                 $app->make(LaravelEventBus::class)
             );
         });

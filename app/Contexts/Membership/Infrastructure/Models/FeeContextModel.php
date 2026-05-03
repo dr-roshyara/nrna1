@@ -6,11 +6,11 @@ namespace App\Contexts\Membership\Infrastructure\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Shared\Domain\Scopes\BelongsToTenant;
+use App\Traits\BelongsToTenant;
 
 class FeeContextModel extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, BelongsToTenant;
 
     protected $table = 'membership_fees';
 
@@ -18,11 +18,20 @@ class FeeContextModel extends Model
         'id',
         'organisation_id',
         'member_id',
+        'membership_type_id',
         'amount',
         'currency',
+        'fee_amount_at_time',
+        'currency_at_time',
+        'period_label',
         'status',
         'due_date',
         'paid_at',
+        'payment_method',
+        'payment_reference',
+        'idempotency_key',
+        'recorded_by',
+        'notes',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -40,9 +49,4 @@ class FeeContextModel extends Model
 
     protected $keyType = 'string';
     public $incrementing = false;
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope(new BelongsToTenant());
-    }
 }

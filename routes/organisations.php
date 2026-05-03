@@ -114,7 +114,7 @@ Route::prefix('organisations/{organisation:slug}')
             ->name('organisations.membership.dashboard');
 
         // ── Membership Applications management (admin/commission only) ──────────────
-        Route::prefix('/membership')->name('organisations.membership.')->group(function () {
+        Route::prefix('/membership')->name('organisations.membership.')->scopeBindings()->group(function () {
             Route::get('/applications', [MembershipApplicationController::class, 'index'])
                 ->name('applications.index');
 

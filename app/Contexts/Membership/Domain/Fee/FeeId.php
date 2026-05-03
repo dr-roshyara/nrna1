@@ -25,6 +25,11 @@ final readonly class FeeId
         return new self($value);
     }
 
+    public function value(): string
+    {
+        return $this->value;
+    }
+
     public function toString(): string
     {
         return $this->value;
