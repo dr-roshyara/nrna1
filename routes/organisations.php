@@ -178,16 +178,25 @@ Route::prefix('organisations/{organisation:slug}')
         // ── Members List (formal paid members only) ───────────────────────────────
         Route::get('/members',        [MemberController::class, 'index'])  ->name('organisations.members.index');
         Route::get('/members/export', [MemberController::class, 'export']) ->name('organisations.members.export');
-        Route::patch('/members/{member}/mark-paid', [MemberController::class, 'markPaid']) ->name('organisations.members.mark-paid');
+        Route::post('/members',       [MemberController::class, 'store'])   ->name('organisations.members.store');
 
-        // ── Membership Fee & Renewal Management ──────────────────────────────────
+        // ── Member Lifecycle (Phase 3D: DDD Use Cases) ────────────────────────────
         Route::prefix('/members/{member}')->name('organisations.members.')->group(function () {
+            // Financial operations (DDD use cases)
+            Route::patch('/waive-fees',      [MemberController::class, 'waiveFees'])      ->name('waive-fees');
+            Route::post('/record-payment',   [MemberController::class, 'recordPayment'])  ->name('record-payment');
+            Route::get('/finance',           [MemberController::class, 'finance'])        ->name('finance');
+
+            // Member status operations (DDD use cases)
+            Route::patch('/suspend',         [MemberController::class, 'suspend'])        ->name('suspend');
+            Route::patch('/archive',         [MemberController::class, 'archive'])        ->name('archive');
+
+            // Legacy routes (to be refactored in Phase 4)
             Route::get('/fees',             [MembershipFeeController::class,     'index']) ->name('fees.index');
             Route::get('/fees/create',      [MembershipFeeController::class,     'create']) ->name('fees.create');
             Route::post('/fees',            [MembershipFeeController::class,     'store'])  ->name('fees.store');
             Route::post('/fees/{fee}/pay',  [MembershipFeeController::class,     'pay'])   ->name('fees.pay');
             Route::post('/fees/{fee}/waive',[MembershipFeeController::class,     'waive']) ->name('fees.waive');
-            Route::get('/finance',          [MemberController::class,            'finance']) ->name('finance');
             Route::post('/renew',           [MembershipRenewalController::class, 'store']) ->name('renew');
         });
 

@@ -1,25 +1,39 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Models\Member;
+use App\Models\Member as LegacyMember;
 use App\Models\MembershipFee;
+use App\Models\MembershipType;
 use App\Models\Organisation;
 use App\Services\MembershipPaymentService;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Membership\Domain\Fee\FeeId;
+use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
+use App\Contexts\Membership\Application\Member\UseCases\RegisterMember;
+use App\Contexts\Membership\Application\Member\UseCases\SuspendMember;
+use App\Contexts\Membership\Application\Member\UseCases\ArchiveMember;
+use App\Contexts\Membership\Application\Fee\UseCases\RecordFeePayment;
+use App\Contexts\Membership\Application\Fee\UseCases\WaiveFee;
+use App\Contexts\Membership\Application\Member\DTOs\RegisterMemberCommand;
+use App\Contexts\Membership\Application\Fee\DTOs\RecordFeePaymentCommand;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
-class MemberController extends Controller
+final class MemberController extends Controller
 {
     /**
-     * Display formal (paid) members of the organisation.
-     * Only rows in the `members` table are shown — NOT everyone with a platform role.
+     * Display list of members.
+     * Phase 3D: Read operation - still uses legacy Eloquent for now
      */
     public function index(Request $request, Organisation $organisation): Response
     {
-        // ← ADD THIS
         $this->authorize('viewApplications', $organisation);
 
         $request->validate([
@@ -27,7 +41,7 @@ class MemberController extends Controller
             'field'     => 'in:name,email,status,joined_at,membership_expires_at,created_at',
         ]);
 
-        $query = Member::where('organisation_id', $organisation->id)
+        $query = LegacyMember::where('organisation_id', $organisation->id)
             ->with('organisationUser.user');
 
         // Filtering
@@ -70,48 +84,49 @@ class MemberController extends Controller
             'members'      => $members,
             'organisation' => $organisation->only('id', 'name', 'slug'),
             'filters'      => $request->only(['name', 'email', 'status', 'field', 'direction']),
-            'stats'        => [
-                'total_members'  => Member::where('organisation_id', $organisation->id)
-                                        ->where('status', 'active')->count(),
-                'expired_count'  => Member::where('organisation_id', $organisation->id)
-                                        ->where('status', 'expired')->count(),
-                'pending_fees'   => (float) MembershipFee::where('organisation_id', $organisation->id)
-                                        ->where('status', 'pending')->sum('amount'),
-            ],
+            'stats'        => $this->getStats($organisation),
         ]);
     }
 
     /**
-     * Mark a member's fees as exempt (administratively "paid").
-     *
-     * Note: Sets fees_status='exempt', not 'paid' — this grants immediate voting
-     * eligibility without recording a payment transaction. Use MembershipFeeController::pay()
-     * when an actual payment reference needs to be recorded.
+     * Register a new member using DDD use case.
+     * Phase 3D: Routes through RegisterMember use case
      */
-    public function markPaid(Organisation $organisation, Member $member)
+    public function store(Request $request, Organisation $organisation, RegisterMember $registerMember): RedirectResponse
     {
-        // ← ADD THIS — uses Laravel's built-in authorize() helper
-        $this->authorize('recordFeePayment', $organisation);
+        $this->authorize('create', [LegacyMember::class, $organisation]);
 
-        // Verify member belongs to this organisation
-        if ($member->organisation_id !== $organisation->id) {
-            abort(404);
-        }
-
-        $member->update(['fees_status' => 'exempt']);
-
-        // ← ADD THIS — waive pending fee rows so UI badge clears
-        $member->fees()->where('status', 'pending')->update([
-            'status'      => 'waived',
-            'recorded_by' => auth()->id(),
+        $validated = $request->validate([
+            'full_name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'nullable|string|max:20',
+            'membership_type_id' => 'required|uuid|exists:membership_types,id',
         ]);
 
-        return back()->with('success', ($member->organisationUser?->user?->name ?? 'Member') . ' marked as paid.');
+        $command = new RegisterMemberCommand(
+            tenantId: TenantId::fromOrganisationId($organisation->id),
+            fullName: $validated['full_name'],
+            email: $validated['email'],
+            phone: $validated['phone'] ?? '',
+            membershipTypeId: MembershipTypeId::fromString($validated['membership_type_id'])
+        );
+
+        try {
+            $memberView = $registerMember->execute($command);
+            return redirect()->route('organisations.members.index', $organisation->slug)
+                ->with('success', "Member {$memberView->getFullName()} registered successfully.");
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Failed to register member: ' . $e->getMessage()]);
+        }
     }
 
+    /**
+     * Export members to CSV.
+     * Phase 3D: Read operation - legacy is fine
+     */
     public function export(Request $request, Organisation $organisation): StreamedResponse
     {
-        $query = Member::where('organisation_id', $organisation->id)
+        $query = LegacyMember::where('organisation_id', $organisation->id)
             ->with('organisationUser.user');
 
         if ($request->filled('name')) {
@@ -156,16 +171,16 @@ class MemberController extends Controller
     }
 
     /**
-     * Display member's financial dashboard (fees, payments, income).
+     * Display member's financial dashboard.
+     * Phase 3D: Read operation - legacy service is fine
      */
     public function finance(
         Organisation $organisation,
-        Member $member,
+        LegacyMember $member,
         MembershipPaymentService $service
     ): Response {
         $this->authorize('recordFeePayment', $organisation);
 
-        // Tenant isolation
         abort_if($member->organisation_id !== $organisation->id, 404);
 
         return Inertia::render('Organisations/Membership/Member/Finance', [
@@ -175,5 +190,155 @@ class MemberController extends Controller
             'paymentHistory' => $service->getPaymentHistory($member),
             'stats' => $service->getDashboardStats($member),
         ]);
+    }
+
+    /**
+     * Waive all pending fees for a member.
+     * Phase 3D: Routes through WaiveFee use case
+     */
+    public function waiveFees(
+        Organisation $organisation,
+        LegacyMember $member,
+        WaiveFee $waiveFeeUseCase
+    ): RedirectResponse {
+        $this->authorize('recordFeePayment', $organisation);
+
+        if ($member->organisation_id !== $organisation->id) {
+            abort(404);
+        }
+
+        $tenantId = TenantId::fromOrganisationId($organisation->id);
+        $pendingFees = $member->fees()->where('status', 'pending')->get();
+        $waivedCount = 0;
+
+        foreach ($pendingFees as $fee) {
+            try {
+                $waiveFeeUseCase->execute(
+                    FeeId::fromString($fee->id),
+                    $tenantId
+                );
+                $waivedCount++;
+            } catch (\Exception $e) {
+                \Log::error("Failed to waive fee {$fee->id}: " . $e->getMessage(), [
+                    'member_id' => $member->id,
+                    'organisation_id' => $organisation->id,
+                ]);
+            }
+        }
+
+        $message = $waivedCount > 0
+            ? "Waived {$waivedCount} pending fee(s) for " . ($member->organisationUser?->user?->name ?? 'member')
+            : "No pending fees to waive.";
+
+        return back()->with('success', $message);
+    }
+
+    /**
+     * Record a payment against a specific fee.
+     * Phase 3D: Routes through RecordFeePayment use case
+     */
+    public function recordPayment(
+        Organisation $organisation,
+        LegacyMember $member,
+        Request $request,
+        RecordFeePayment $recordFeePayment
+    ): RedirectResponse {
+        $this->authorize('recordFeePayment', $organisation);
+
+        if ($member->organisation_id !== $organisation->id) {
+            abort(404);
+        }
+
+        $validated = $request->validate([
+            'fee_id' => 'required|uuid|exists:membership_fees,id',
+            'payment_method' => 'nullable|string|in:bank_transfer,cash,card',
+        ]);
+
+        $tenantId = TenantId::fromOrganisationId($organisation->id);
+
+        try {
+            $command = new RecordFeePaymentCommand(
+                feeId: FeeId::fromString($validated['fee_id']),
+                tenantId: $tenantId,
+                paymentMethod: $validated['payment_method'] ?? 'bank_transfer'
+            );
+            $recordFeePayment->execute($command);
+            return back()->with('success', 'Payment recorded successfully.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Failed to record payment: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Suspend a member.
+     * Phase 3D: Routes through SuspendMember use case
+     */
+    public function suspend(
+        Organisation $organisation,
+        LegacyMember $member,
+        SuspendMember $suspendMember,
+        Request $request
+    ): RedirectResponse {
+        $this->authorize('manageMembers', $organisation);
+
+        if ($member->organisation_id !== $organisation->id) {
+            abort(404);
+        }
+
+        $tenantId = TenantId::fromOrganisationId($organisation->id);
+
+        try {
+            $suspendMember->execute(
+                MemberId::fromString($member->id),
+                $tenantId,
+                $request->input('reason', 'Suspended by administrator')
+            );
+            return back()->with('success', 'Member suspended successfully.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Failed to suspend member: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Archive a member (terminal state).
+     * Phase 3D: Routes through ArchiveMember use case
+     */
+    public function archive(
+        Organisation $organisation,
+        LegacyMember $member,
+        ArchiveMember $archiveMember
+    ): RedirectResponse {
+        $this->authorize('manageMembers', $organisation);
+
+        if ($member->organisation_id !== $organisation->id) {
+            abort(404);
+        }
+
+        $tenantId = TenantId::fromOrganisationId($organisation->id);
+
+        try {
+            $archiveMember->execute(
+                MemberId::fromString($member->id),
+                $tenantId
+            );
+            return back()->with('success', 'Member archived successfully.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Failed to archive member: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Get dashboard statistics.
+     */
+    private function getStats(Organisation $organisation): array
+    {
+        return [
+            'total_members'  => LegacyMember::where('organisation_id', $organisation->id)
+                                    ->where('status', 'active')->count(),
+            'expired_count'  => LegacyMember::where('organisation_id', $organisation->id)
+                                    ->where('status', 'expired')->count(),
+            'pending_fees'   => (float) MembershipFee::where('organisation_id', $organisation->id)
+                                    ->where('status', 'pending')->sum('amount'),
+        ];
     }
 }
