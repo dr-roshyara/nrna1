@@ -20,6 +20,8 @@ use App\Contexts\Membership\Application\Fee\UseCases\RecordFeePayment;
 use App\Contexts\Membership\Application\Fee\UseCases\WaiveFee;
 use App\Contexts\Membership\Application\Member\DTOs\RegisterMemberCommand;
 use App\Contexts\Membership\Application\Fee\DTOs\RecordFeePaymentCommand;
+use App\Contexts\Membership\Application\Fee\DTOs\WaiveFeeCommand;
+use DateTimeImmutable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -213,10 +215,13 @@ final class MemberController extends Controller
 
         foreach ($pendingFees as $fee) {
             try {
-                $waiveFeeUseCase->execute(
-                    FeeId::fromString($fee->id),
-                    $tenantId
+                $command = new WaiveFeeCommand(
+                    feeId: FeeId::fromString($fee->id),
+                    tenantId: $tenantId,
+                    reason: 'Waived by administrator',
+                    waivedByUserId: auth()->id(),
                 );
+                $waiveFeeUseCase->execute($command);
                 $waivedCount++;
             } catch (\Exception $e) {
                 \Log::error("Failed to waive fee {$fee->id}: " . $e->getMessage(), [
@@ -251,16 +256,24 @@ final class MemberController extends Controller
 
         $validated = $request->validate([
             'fee_id' => 'required|uuid|exists:membership_fees,id',
-            'payment_method' => 'nullable|string|in:bank_transfer,cash,card',
+            'payment_method' => 'required|string|in:bank_transfer,cash,card',
+            'transaction_reference' => 'nullable|string|max:200',
         ]);
 
         $tenantId = TenantId::fromOrganisationId($organisation->id);
 
         try {
+            $fee = MembershipFee::where('id', $validated['fee_id'])
+                ->where('organisation_id', $organisation->id)
+                ->firstOrFail();
+
             $command = new RecordFeePaymentCommand(
                 feeId: FeeId::fromString($validated['fee_id']),
                 tenantId: $tenantId,
-                paymentMethod: $validated['payment_method'] ?? 'bank_transfer'
+                paymentMethod: $validated['payment_method'],
+                paidAt: new DateTimeImmutable(),
+                transactionReference: $validated['transaction_reference'] ?? null,
+                recordedByUserId: auth()->id(),
             );
             $recordFeePayment->execute($command);
             return back()->with('success', 'Payment recorded successfully.');

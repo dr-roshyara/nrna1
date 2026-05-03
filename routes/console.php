@@ -51,5 +51,8 @@ Schedule::job(SendRenewalReminder::class)->daily()->at('08:00');         // 8 AM
 Schedule::job(MarkOverdueMembers::class)->daily()->at('00:30');          // 12:30 AM daily
 Schedule::job(CleanupExpiredInvitations::class)->daily()->at('02:00');   // 2 AM daily
 
+// Phase 4A: Outbox event processor (process pending events every minute)
+Schedule::command('outbox:process')->everyMinute();
+
 // Audit: delete election audit folders older than 30 days (daily at 3 AM)
 Schedule::command('audit:cleanup')->dailyAt('03:00');

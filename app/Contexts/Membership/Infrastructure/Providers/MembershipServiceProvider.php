@@ -24,6 +24,8 @@ use App\Contexts\Membership\Application\Application\UseCases\RejectMembershipApp
 use App\Contexts\Membership\Application\Application\UseCases\ApproveMembershipApplication;
 use App\Contexts\Membership\Application\Fee\UseCases\RecordFeePayment;
 use App\Contexts\Membership\Application\Fee\UseCases\WaiveFee;
+use App\Contexts\Membership\Domain\Fee\Services\PaymentPolicy;
+use App\Contexts\Shared\Infrastructure\Outbox\OutboxWriter;
 use App\Shared\Domain\Events\EventBus;
 use App\Shared\Infrastructure\Events\LaravelEventBus;
 use App\Contexts\Membership\Domain\Repositories\MemberRepositoryInterface;
@@ -187,13 +189,15 @@ class MembershipServiceProvider extends ServiceProvider
         $this->app->bind(RecordFeePayment::class, function ($app) {
             return new RecordFeePayment(
                 $app->make(FeeRepositoryInterface::class),
-                $app->make(LaravelEventBus::class)
+                $app->make(PaymentPolicy::class),
+                $app->make(OutboxWriter::class)
             );
         });
 
         $this->app->bind(WaiveFee::class, function ($app) {
             return new WaiveFee(
-                $app->make(FeeRepositoryInterface::class)
+                $app->make(FeeRepositoryInterface::class),
+                $app->make(OutboxWriter::class)
             );
         });
 

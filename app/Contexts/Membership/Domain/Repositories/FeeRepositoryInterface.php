@@ -21,4 +21,6 @@ interface FeeRepositoryInterface
     public function findForMember(MemberId $memberId, TenantId $tenantId): array;
 
     public function findOverdueForTenant(TenantId $tenantId): array;
+
+    public function findByTransactionReference(string $ref, TenantId $tenantId): ?Fee;
 }

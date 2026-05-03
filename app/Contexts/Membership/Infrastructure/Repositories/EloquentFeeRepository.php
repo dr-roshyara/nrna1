@@ -8,7 +8,9 @@ use App\Contexts\Membership\Domain\Repositories\FeeRepositoryInterface;
 use App\Contexts\Membership\Domain\Fee\Fee;
 use App\Contexts\Membership\Domain\Fee\FeeId;
 use App\Contexts\Membership\Domain\Fee\FeeStatus;
+use App\Contexts\Membership\Domain\Fee\ValueObjects\PaymentDetails;
 use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
 use App\Contexts\Membership\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Infrastructure\Models\FeeContextModel;
 use DateTimeImmutable;
@@ -19,10 +21,8 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
 
     public function find(FeeId $id, TenantId $tenantId): ?Fee
     {
-        $record = $this->model
-            ->withoutGlobalScopes()
+        $record = $this->scopedQuery($tenantId)
             ->where('id', $id->value())
-            ->where('organisation_id', $tenantId->value())
             ->first();
 
         if (!$record) {
@@ -38,10 +38,8 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
         $feeId = $fee->getId()->value();
         $orgId = $tenantId->value();
 
-        $model = $this->model
-            ->withoutGlobalScopes()
+        $model = $this->scopedQuery($tenantId)
             ->where('id', $feeId)
-            ->where('organisation_id', $orgId)
             ->first();
 
         if (!$model) {
@@ -57,14 +55,21 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
         $model->status = $fee->getStatus()->value();
         $model->due_date = $fee->getDueDate();
 
+        // Persist payment details if present
+        $paymentDetails = $fee->getPaymentDetails();
+        if ($paymentDetails !== null) {
+            $model->payment_method = $paymentDetails->method;
+            $model->transaction_reference = $paymentDetails->transactionReference;
+            $model->paid_at = $paymentDetails->paidAt;
+            $model->recorded_by = $paymentDetails->recordedByUserId;
+        }
+
         $model->save();
     }
 
     public function findByStatusForTenant(FeeStatus $status, TenantId $tenantId): array
     {
-        $records = $this->model
-            ->withoutGlobalScopes()
-            ->where('organisation_id', $tenantId->value())
+        $records = $this->scopedQuery($tenantId)
             ->where('status', $status->value())
             ->get();
 
@@ -73,9 +78,7 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
 
     public function findForMember(MemberId $memberId, TenantId $tenantId): array
     {
-        $records = $this->model
-            ->withoutGlobalScopes()
-            ->where('organisation_id', $tenantId->value())
+        $records = $this->scopedQuery($tenantId)
             ->where('member_id', $memberId->value())
             ->get();
 
@@ -87,8 +90,35 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
         return $this->findByStatusForTenant(FeeStatus::overdue(), $tenantId);
     }
 
+    public function findByTransactionReference(string $ref, TenantId $tenantId): ?Fee
+    {
+        $record = $this->scopedQuery($tenantId)
+            ->where('transaction_reference', $ref)
+            ->first();
+
+        return $record ? $this->reconstitute($record) : null;
+    }
+
     private function reconstitute(FeeContextModel $record): Fee
     {
+        $paymentDetails = null;
+        if ($record->payment_method !== null && $record->paid_at !== null) {
+            $paidAtString = is_string($record->paid_at)
+                ? $record->paid_at
+                : $record->paid_at->format('Y-m-d H:i:s');
+
+            $paymentDetails = new PaymentDetails(
+                method: $record->payment_method,
+                paidAt: new DateTimeImmutable($paidAtString),
+                transactionReference: $record->transaction_reference,
+                recordedByUserId: $record->recorded_by,
+            );
+        }
+
+        $dueDateString = is_string($record->due_date)
+            ? $record->due_date
+            : $record->due_date->format('Y-m-d H:i:s');
+
         return Fee::reconstitute(
             FeeId::fromString($record->id),
             MemberId::fromString($record->member_id),
@@ -96,7 +126,15 @@ final class EloquentFeeRepository implements FeeRepositoryInterface
             FeeStatus::fromString($record->status),
             TenantId::fromOrganisationId($record->organisation_id),
             (string) $record->amount,
-            new DateTimeImmutable($record->due_date)
+            new DateTimeImmutable($dueDateString),
+            $paymentDetails,
         );
+    }
+
+    private function scopedQuery(TenantId $tenantId)
+    {
+        return $this->model
+            ->withoutGlobalScopes()
+            ->where('organisation_id', $tenantId->value());
     }
 }

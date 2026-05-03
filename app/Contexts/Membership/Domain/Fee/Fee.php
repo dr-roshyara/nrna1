@@ -10,6 +10,8 @@ use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
 use App\Contexts\Membership\Domain\Traits\RecordsEvents;
 use App\Contexts\Membership\Domain\Fee\Events\FeePaid;
 use App\Contexts\Membership\Domain\Fee\Events\FeeOverdue;
+use App\Contexts\Membership\Domain\Fee\Events\FeeWaived;
+use App\Contexts\Membership\Domain\Fee\ValueObjects\PaymentDetails;
 use DateTimeImmutable;
 
 final class Fee
@@ -23,6 +25,7 @@ final class Fee
     private TenantId $tenantId;
     private string $amount;
     private DateTimeImmutable $dueDate;
+    private ?PaymentDetails $paymentDetails = null;
 
     private function __construct(
         FeeId $id,
@@ -67,20 +70,26 @@ final class Fee
         FeeStatus $status,
         TenantId $tenantId,
         string $amount,
-        DateTimeImmutable $dueDate
+        DateTimeImmutable $dueDate,
+        ?PaymentDetails $paymentDetails = null
     ): self {
-        return new self($id, $memberId, $membershipTypeId, $status, $tenantId, $amount, $dueDate);
+        $instance = new self($id, $memberId, $membershipTypeId, $status, $tenantId, $amount, $dueDate);
+        if ($paymentDetails !== null) {
+            $instance->paymentDetails = $paymentDetails;
+        }
+        return $instance;
     }
 
-    public function markAsPaid(): void
+    public function markAsPaid(PaymentDetails $payment): void
     {
-        if ($this->status->isPaid()) {
-            throw new \Exception('Fee is already paid');
+        if (!$this->status->isPending() && !$this->status->isOverdue()) {
+            throw new \DomainException('Fee cannot be paid in its current state');
         }
 
         $this->status = FeeStatus::paid();
+        $this->paymentDetails = $payment;
 
-        $this->recordThat(new FeePaid($this->id, new DateTimeImmutable()));
+        $this->recordThat(new FeePaid($this->id, $payment->paidAt));
     }
 
     public function markAsOverdue(): void
@@ -94,9 +103,15 @@ final class Fee
         $this->recordThat(new FeeOverdue($this->id, new DateTimeImmutable()));
     }
 
-    public function waive(): void
+    public function waive(string $reason = ''): void
     {
+        if (!$this->status->isPending()) {
+            throw new \DomainException('Only pending fees can be waived');
+        }
+
         $this->status = FeeStatus::waived();
+
+        $this->recordThat(new FeeWaived($this->id, $reason, new DateTimeImmutable()));
     }
 
     public function getId(): FeeId
@@ -132,6 +147,11 @@ final class Fee
     public function getDueDate(): DateTimeImmutable
     {
         return $this->dueDate;
+    }
+
+    public function getPaymentDetails(): ?PaymentDetails
+    {
+        return $this->paymentDetails;
     }
 
     public function pullEvents(): array

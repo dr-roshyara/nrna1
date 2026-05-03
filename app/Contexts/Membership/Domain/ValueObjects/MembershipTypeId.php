@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Domain\ValueObjects;
 
+use Illuminate\Support\Str;
+
 final readonly class MembershipTypeId
 {
     private string $value;
@@ -14,6 +16,11 @@ final readonly class MembershipTypeId
             throw new \InvalidArgumentException("Invalid UUID format: {$value}");
         }
         $this->value = strtolower($value);
+    }
+
+    public static function generate(): self
+    {
+        return new self((string) Str::uuid());
     }
 
     public static function fromString(string $value): self
