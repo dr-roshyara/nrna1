@@ -143,6 +143,59 @@ final class CommitteeAssignment
     }
 
     /**
+     * Factory method for reconstructing assignment from database (hydration only)
+     *
+     * Used by repository to rebuild assignment entities from persisted data.
+     * No events fired - this is hydration only.
+     *
+     * @param CommitteeAssignmentId $id Assignment identifier
+     * @param CommitteeId $committeeId Owning committee
+     * @param MemberId $memberId Assigned member
+     * @param RolePath $rolePath Role hierarchy path
+     * @param DateTimeImmutable $joinedDate Assignment start date
+     * @param NominationType $nominationType How member was nominated
+     * @param DateTimeImmutable|null $electionDate Election date (if elected)
+     * @param DateTimeImmutable|null $termEndDate Term end date
+     * @param DateTimeImmutable|null $leftDate End date (null if active)
+     * @param TenantUserId|null $appointedByUserId Who made the appointment
+     * @param string|null $notes Assignment notes
+     * @param array $metadata Additional metadata
+     * @return self Reconstructed assignment
+     */
+    public static function reconstruct(
+        CommitteeAssignmentId $id,
+        CommitteeId $committeeId,
+        MemberId $memberId,
+        RolePath $rolePath,
+        DateTimeImmutable $joinedDate,
+        NominationType $nominationType,
+        ?DateTimeImmutable $electionDate,
+        ?DateTimeImmutable $termEndDate,
+        ?DateTimeImmutable $leftDate,
+        ?TenantUserId $appointedByUserId,
+        ?string $notes,
+        array $metadata = []
+    ): self {
+        $isActive = $leftDate === null;
+
+        return new self(
+            id: $id,
+            committeeId: $committeeId,
+            memberId: $memberId,
+            rolePath: $rolePath,
+            joinedDate: $joinedDate,
+            leftDate: $leftDate,
+            isActive: $isActive,
+            electionDate: $electionDate,
+            termEndDate: $termEndDate,
+            nominationType: $nominationType,
+            appointedByUserId: $appointedByUserId,
+            notes: $notes,
+            metadata: $metadata
+        );
+    }
+
+    /**
      * End assignment (mark as inactive)
      *
      * @param DateTimeImmutable $leftDate Date assignment ended
