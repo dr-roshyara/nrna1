@@ -12,13 +12,27 @@ use App\Contexts\Membership\Application\Services\DesktopMemberRejectionService;
 use App\Contexts\Membership\Application\Committee\AssignMemberToCommittee;
 use App\Contexts\Membership\Application\Committee\CreateCommittee;
 use App\Contexts\Membership\Application\Committee\GetCommitteeDashboard;
+use App\Contexts\Membership\Application\Member\UseCases\RegisterMember;
+use App\Contexts\Membership\Application\Member\UseCases\ActivateMember;
+use App\Contexts\Membership\Application\Member\UseCases\SuspendMember;
+use App\Contexts\Membership\Application\Member\UseCases\ArchiveMember;
+use App\Contexts\Membership\Application\Application\UseCases\SubmitApplication;
+use App\Contexts\Membership\Application\Application\UseCases\ApproveApplication;
+use App\Contexts\Membership\Application\Application\UseCases\RejectApplication;
+use App\Contexts\Membership\Application\Fee\UseCases\RecordFeePayment;
+use App\Contexts\Membership\Application\Fee\UseCases\WaiveFee;
 use App\Shared\Domain\Events\EventBus;
+use App\Shared\Infrastructure\Events\LaravelEventBus;
 use App\Contexts\Membership\Domain\Repositories\MemberRepositoryInterface;
+use App\Contexts\Membership\Domain\Repositories\ApplicationRepositoryInterface;
+use App\Contexts\Membership\Domain\Repositories\FeeRepositoryInterface;
 use App\Contexts\Membership\Domain\Repositories\CommitteeRepositoryInterface;
 use App\Contexts\Membership\Domain\Services\IdentityVerificationInterface;
 use App\Contexts\Membership\Domain\Services\TenantUserProvisioningInterface;
 use App\Contexts\Membership\Domain\Services\GeographyResolverInterface;
 use App\Contexts\Membership\Infrastructure\Repositories\EloquentMemberRepository;
+use App\Contexts\Membership\Infrastructure\Repositories\EloquentApplicationRepository;
+use App\Contexts\Membership\Infrastructure\Repositories\EloquentFeeRepository;
 use App\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepository;
 use App\Contexts\Membership\Infrastructure\Services\TenantUserIdentityVerification;
 use App\Contexts\Membership\Infrastructure\Services\TenantAuthProvisioningAdapter;
@@ -57,6 +71,16 @@ class MembershipServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
+            ApplicationRepositoryInterface::class,
+            EloquentApplicationRepository::class
+        );
+
+        $this->app->bind(
+            FeeRepositoryInterface::class,
+            EloquentFeeRepository::class
+        );
+
+        $this->app->bind(
             CommitteeRepositoryInterface::class,
             EloquentCommitteeRepository::class
         );
@@ -79,6 +103,71 @@ class MembershipServiceProvider extends ServiceProvider
             return new CreateCommittee(
                 $app->make(CommitteeRepositoryInterface::class),
                 $app->make(EventBus::class)
+            );
+        });
+
+        // Member use case bindings
+        $this->app->bind(RegisterMember::class, function ($app) {
+            return new RegisterMember(
+                $app->make(MemberRepositoryInterface::class),
+                $app->make(LaravelEventBus::class)
+            );
+        });
+
+        $this->app->bind(ActivateMember::class, function ($app) {
+            return new ActivateMember(
+                $app->make(MemberRepositoryInterface::class),
+                $app->make(LaravelEventBus::class)
+            );
+        });
+
+        $this->app->bind(SuspendMember::class, function ($app) {
+            return new SuspendMember(
+                $app->make(MemberRepositoryInterface::class),
+                $app->make(LaravelEventBus::class)
+            );
+        });
+
+        $this->app->bind(ArchiveMember::class, function ($app) {
+            return new ArchiveMember(
+                $app->make(MemberRepositoryInterface::class),
+                $app->make(LaravelEventBus::class)
+            );
+        });
+
+        // Application use case bindings
+        $this->app->bind(SubmitApplication::class, function ($app) {
+            return new SubmitApplication(
+                $app->make(ApplicationRepositoryInterface::class),
+                $app->make(LaravelEventBus::class)
+            );
+        });
+
+        $this->app->bind(ApproveApplication::class, function ($app) {
+            return new ApproveApplication(
+                $app->make(ApplicationRepositoryInterface::class),
+                $app->make(LaravelEventBus::class)
+            );
+        });
+
+        $this->app->bind(RejectApplication::class, function ($app) {
+            return new RejectApplication(
+                $app->make(ApplicationRepositoryInterface::class),
+                $app->make(LaravelEventBus::class)
+            );
+        });
+
+        // Fee use case bindings
+        $this->app->bind(RecordFeePayment::class, function ($app) {
+            return new RecordFeePayment(
+                $app->make(FeeRepositoryInterface::class),
+                $app->make(LaravelEventBus::class)
+            );
+        });
+
+        $this->app->bind(WaiveFee::class, function ($app) {
+            return new WaiveFee(
+                $app->make(FeeRepositoryInterface::class)
             );
         });
 
