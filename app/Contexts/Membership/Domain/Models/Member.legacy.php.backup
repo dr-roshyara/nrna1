@@ -1,0 +1,331 @@
+<?php
+
+namespace App\Contexts\Membership\Domain\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+/**
+ * Member Model (Domain Entity)
+ *
+ * Represents a political party member in the Membership Context.
+ *
+ * Business Rules:
+ * - Province and District (levels 1 & 2) are REQUIRED
+ * - Local Level and Ward (levels 3 & 4) are OPTIONAL
+ * - Membership number format: {TENANT_SLUG}-{YEAR}-{SEQUENCE}
+ * - tenant_user_id is OPTIONAL (some members have accounts, some don't)
+ *
+ * @property int $id
+ * @property string $tenant_id UUID from landlord.tenants
+ * @property int|null $tenant_user_id Optional link to tenant_users
+ * @property string $country_code ISO 3166-1 alpha-2 (default 'NP')
+ * @property int $admin_unit_level1_id Province (REQUIRED)
+ * @property int $admin_unit_level2_id District (REQUIRED)
+ * @property int|null $admin_unit_level3_id Local Level (OPTIONAL)
+ * @property int|null $admin_unit_level4_id Ward (OPTIONAL)
+ * @property string $full_name Member's full name
+ * @property string $membership_number Unique membership number
+ * @property string $membership_type full, associate, youth, student
+ * @property string $status active, suspended, expired
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
+ */
+class Member extends Model
+{
+    use HasFactory, SoftDeletes;
+
+    /**
+     * The table associated with the model.
+     */
+    protected $table = 'members';    
+    protected $connection = 'tenant';  
+    /**
+     * Create a new Eloquent model instance.
+     *
+     * Dynamically sets connection for tests.
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        // Use tenant_test connection during tests
+        if (app()->runningInConsole() && app()->runningUnitTests()) {
+            $this->setConnection('tenant_test');
+        }
+        // In production, Spatie will handle connection switching
+    }
+
+    /**
+     * The attributes that are mass assignable.
+     */
+    protected $fillable = [
+        'tenant_id',
+        'tenant_user_id',
+        'country_code',
+        'admin_unit_level1_id',
+        'admin_unit_level2_id',
+        'admin_unit_level3_id',
+        'admin_unit_level4_id',
+        'admin_unit_level5_id', // Day 2: Neighborhood
+        'admin_unit_level6_id', // Day 2: Street/Block
+        'admin_unit_level7_id', // Day 2: House Number
+        'admin_unit_level8_id', // Day 2: Household
+        'geo_path',             // Day 2: ltree materialized path
+        'full_name',
+        'membership_number',
+        'membership_type',
+        'status',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     */
+    protected $casts = [
+        'admin_unit_level1_id' => 'integer',
+        'admin_unit_level2_id' => 'integer',
+        'admin_unit_level3_id' => 'integer',
+        'admin_unit_level4_id' => 'integer',
+        'admin_unit_level5_id' => 'integer', // Day 2
+        'admin_unit_level6_id' => 'integer', // Day 2
+        'admin_unit_level7_id' => 'integer', // Day 2
+        'admin_unit_level8_id' => 'integer', // Day 2
+        'tenant_user_id' => 'integer',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime',
+    ];
+
+    /**
+     * The attributes that should be hidden.
+     */
+    protected $hidden = [];
+
+    /**
+     * Default attribute values.
+     */
+    protected $attributes = [
+        'country_code' => 'NP',
+        'status' => 'active',
+        'membership_type' => 'full',
+    ];
+
+    /**
+     * Membership type constants
+     */
+    const TYPE_FULL = 'full';
+    const TYPE_ASSOCIATE = 'associate';
+    const TYPE_YOUTH = 'youth';
+    const TYPE_STUDENT = 'student';
+
+    /**
+     * Status constants
+     */
+    const STATUS_ACTIVE = 'active';
+    const STATUS_SUSPENDED = 'suspended';
+    const STATUS_EXPIRED = 'expired';
+
+    /**
+     * Scopes
+     */
+
+    /**
+     * Scope: Filter by tenant
+     */
+    public function scopeForTenant($query, string $tenantId)
+    {
+        return $query->where('tenant_id', $tenantId);
+    }
+
+    /**
+     * Scope: Active members only
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', self::STATUS_ACTIVE);
+    }
+
+    /**
+     * Scope: Filter by province (level 1)
+     */
+    public function scopeInProvince($query, int $provinceId)
+    {
+        return $query->where('admin_unit_level1_id', $provinceId);
+    }
+
+    /**
+     * Scope: Filter by district (level 2)
+     */
+    public function scopeInDistrict($query, int $districtId)
+    {
+        return $query->where('admin_unit_level2_id', $districtId);
+    }
+
+    /**
+     * Scope: Filter by local level (level 3) - Day 2
+     */
+    public function scopeInLocalLevel($query, int $localLevelId)
+    {
+        return $query->where('admin_unit_level3_id', $localLevelId);
+    }
+
+    /**
+     * Scope: Filter by ward (level 4) - Day 2
+     */
+    public function scopeInWard($query, int $wardId)
+    {
+        return $query->where('admin_unit_level4_id', $wardId);
+    }
+
+    /**
+     * Scope: Filter by neighborhood (level 5) - Day 2
+     */
+    public function scopeInNeighborhood($query, int $neighborhoodId)
+    {
+        return $query->where('admin_unit_level5_id', $neighborhoodId);
+    }
+
+    /**
+     * Scope: Filter by street/block (level 6) - Day 2
+     */
+    public function scopeInStreet($query, int $streetId)
+    {
+        return $query->where('admin_unit_level6_id', $streetId);
+    }
+
+    /**
+     * Scope: Filter by house (level 7) - Day 2
+     */
+    public function scopeInHouse($query, int $houseId)
+    {
+        return $query->where('admin_unit_level7_id', $houseId);
+    }
+
+    /**
+     * Scope: Filter by household (level 8) - Day 2
+     */
+    public function scopeInHousehold($query, int $householdId)
+    {
+        return $query->where('admin_unit_level8_id', $householdId);
+    }
+
+    /**
+     * Scope: Find descendants using ltree (PostgreSQL) - Day 2
+     *
+     * Example: Find all members under District 12
+     * Member::descendantsOf('1.12')->get();
+     */
+    public function scopeDescendantsOf($query, string $geoPath)
+    {
+        return $query->whereRaw('geo_path <@ ?::ltree', [$geoPath]);
+    }
+
+    /**
+     * Scope: Find ancestors using ltree (PostgreSQL) - Day 2
+     *
+     * Example: Find all ancestor geography units of a member
+     * Member::ancestorsOf('1.12.123.1234')->get();
+     */
+    public function scopeAncestorsOf($query, string $geoPath)
+    {
+        return $query->whereRaw('geo_path @> ?::ltree', [$geoPath]);
+    }
+
+    /**
+     * Business Methods
+     */
+
+    /**
+     * Check if member is active
+     */
+    public function isActive(): bool
+    {
+        return $this->status === self::STATUS_ACTIVE;
+    }
+
+    /**
+     * Check if member is suspended
+     */
+    public function isSuspended(): bool
+    {
+        return $this->status === self::STATUS_SUSPENDED;
+    }
+
+    /**
+     * Check if member has user account
+     */
+    public function hasUserAccount(): bool
+    {
+        return $this->tenant_user_id !== null;
+    }
+
+    /**
+     * Get geography unit IDs as array (all 8 levels) - Day 2 Updated
+     */
+    public function getGeographyUnitIds(): array
+    {
+        return array_filter([
+            $this->admin_unit_level1_id,
+            $this->admin_unit_level2_id,
+            $this->admin_unit_level3_id,
+            $this->admin_unit_level4_id,
+            $this->admin_unit_level5_id, // Day 2
+            $this->admin_unit_level6_id, // Day 2
+            $this->admin_unit_level7_id, // Day 2
+            $this->admin_unit_level8_id, // Day 2
+        ]);
+    }
+
+    /**
+     * Get ltree path for this member - Day 2
+     *
+     * Returns materialized path for hierarchical queries
+     */
+    public function getGeoPath(): ?string
+    {
+        return $this->geo_path;
+    }
+
+    /**
+     * Check if member is descendant of given geography path - Day 2
+     *
+     * @param string $ancestorPath ltree path (e.g., "1.12")
+     * @return bool
+     */
+    public function isDescendantOf(string $ancestorPath): bool
+    {
+        if (!$this->geo_path) {
+            return false;
+        }
+
+        // Use PostgreSQL ltree descendant operator <@
+        $result = \DB::selectOne(
+            'SELECT ?::ltree <@ ?::ltree as is_descendant',
+            [$this->geo_path, $ancestorPath]
+        );
+
+        return (bool) ($result->is_descendant ?? false);
+    }
+
+    /**
+     * Get depth of geography hierarchy - Day 2
+     *
+     * Returns number of levels in the member's geography (1-8)
+     */
+    public function getGeographyDepth(): int
+    {
+        if (!$this->geo_path) {
+            return count($this->getGeographyUnitIds());
+        }
+
+        // Use PostgreSQL ltree nlevel() function
+        $result = \DB::selectOne(
+            'SELECT nlevel(?::ltree) as depth',
+            [$this->geo_path]
+        );
+
+        return (int) ($result->depth ?? 0);
+    }
+}

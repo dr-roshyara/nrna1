@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use App\Contracts\PaymentGateway;
+use App\Contracts\TenantContextInterface;
 use App\Services\ManualPaymentGateway;
+use App\Shared\Domain\Events\EventBus;
+use App\Shared\Infrastructure\Events\LaravelEventBus;
 use Illuminate\Support\ServiceProvider;
 use App\Services\DemoElectionResolver;
 use App\Services\VoterSlugService;
@@ -38,10 +41,14 @@ class AppServiceProvider extends ServiceProvider
             );
         });
 
-        // Register TenantContext service as singleton for UUID multi-tenancy
+        // EventBus: swap LaravelEventBus for a queue-backed bus when ready
+        $this->app->bind(EventBus::class, LaravelEventBus::class);
+
+        // TenantContext: bind both the concrete class and its interface (HTTP implementation)
         $this->app->singleton(TenantContext::class, function () {
             return new TenantContext();
         });
+        $this->app->bind(TenantContextInterface::class, TenantContext::class);
 
         // Register DeviceFingerprint service as singleton for device-based fraud detection
         $this->app->singleton(DeviceFingerprint::class, function () {
@@ -74,6 +81,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Load migrations from context directories
+        $this->loadMigrationsFrom(app_path('Contexts/Membership/Infrastructure/Database/Migrations/Tenant'));
+        $this->loadMigrationsFrom(app_path('Contexts/Geography/Infrastructure/Database/Migrations'));
+
         // Validate election state machine configuration at boot time (fail fast)
         \App\Domain\Election\StateMachine\TransitionMatrix::validate();
 

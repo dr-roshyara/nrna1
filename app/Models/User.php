@@ -25,7 +25,6 @@ use App\Models\DeligateVote;
 use \App\Models\Candidacy;
 use App\Models\File;
 use App\Models\Upload;
-use App\Models\Assignment;
 use App\Models\Code;
 use App\Models\DemoCode;
 use App\Models\Image;
@@ -260,13 +259,6 @@ class User extends Authenticatable implements MustVerifyEmail
        public function candidacy(){
            return $this->hasOne(Candidacy::class, 'user_id', 'id')->where('status', 'approved');
        }
-       /**
-        * Assignments and Roles A user can be assigned to many roles
-        */
-          public function assignments(){
-              return $this->belongsToMany(Assignment::class);
-          }
-
      /**
         * User has many files
      */

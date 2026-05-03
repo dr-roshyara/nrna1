@@ -4,6 +4,10 @@ use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;
 use App\Jobs\PeriodicSynchronizations;
+use App\Contexts\Membership\Infrastructure\Jobs\GenerateAnnualMembershipFees;
+use App\Contexts\Membership\Infrastructure\Jobs\SendRenewalReminder;
+use App\Contexts\Membership\Infrastructure\Jobs\MarkOverdueMembers;
+use App\Contexts\Membership\Infrastructure\Jobs\CleanupExpiredInvitations;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +44,12 @@ Schedule::command('membership:process-expiry')->daily();
 
 // Membership: transition active→expired for members past their expiry date (daily)
 Schedule::command('membership:expire')->daily();
+
+// Membership: Scheduled jobs for automation (Phase 3A)
+Schedule::job(GenerateAnnualMembershipFees::class)->daily()->at('01:00'); // 1 AM daily
+Schedule::job(SendRenewalReminder::class)->daily()->at('08:00');         // 8 AM daily
+Schedule::job(MarkOverdueMembers::class)->daily()->at('00:30');          // 12:30 AM daily
+Schedule::job(CleanupExpiredInvitations::class)->daily()->at('02:00');   // 2 AM daily
 
 // Audit: delete election audit folders older than 30 days (daily at 3 AM)
 Schedule::command('audit:cleanup')->dailyAt('03:00');

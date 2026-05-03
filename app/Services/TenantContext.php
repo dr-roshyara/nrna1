@@ -1,12 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Contracts\TenantContextInterface;
 use App\Models\Organisation;
 use App\Models\User;
 use RuntimeException;
 
-class TenantContext
+class TenantContext implements TenantContextInterface
 {
     private ?Organisation $currentOrganisation = null;
     private ?User $currentUser = null;
@@ -106,5 +110,41 @@ class TenantContext
     public function isTenantContext(): bool
     {
         return $this->getCurrentOrganisation()->isTenant();
+    }
+
+    /**
+     * Get current tenant ID as domain value object.
+     *
+     * Resolution order:
+     *   1. Explicit context set via setContext() (always wins)
+     *   2. Authenticated user's organisation_id (HTTP requests after login)
+     *   3. Session fallback (legacy / session-only flows)
+     *
+     * @throws RuntimeException When no tenant context can be determined
+     */
+    public function currentTenantId(): TenantId
+    {
+        // Tier 1: explicit context (setContext was called)
+        if ($this->currentOrganisation !== null) {
+            return TenantId::fromOrganisationId($this->currentOrganisation->id);
+        }
+
+        // Tier 2: authenticated user carries their organisation
+        if (auth()->check()) {
+            $orgId = auth()->user()->organisation_id ?? null;
+            if ($orgId) {
+                return TenantId::fromOrganisationId($orgId);
+            }
+        }
+
+        // Tier 3: session fallback (CLI seeds, middleware-less tests)
+        $orgId = session('current_organisation_id');
+        if ($orgId) {
+            return TenantId::fromOrganisationId((string) $orgId);
+        }
+
+        throw new RuntimeException(
+            'No tenant context: setContext() was not called, no authenticated user with organisation_id, and no current_organisation_id in session'
+        );
     }
 }

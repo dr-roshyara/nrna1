@@ -205,6 +205,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\SEOServiceProvider::class,
         App\Services\GeoLocation\GeoLocationServiceProvider::class,
+        App\Contexts\Membership\Infrastructure\Providers\MembershipServiceProvider::class,
 
     ],
 
