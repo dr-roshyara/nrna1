@@ -9,9 +9,9 @@ use App\Contexts\Membership\Application\Committee\RemoveMemberFromCommittee;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeAssignmentId;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
 use App\Models\Organisation;
-use App\Shared\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 
 final class CommitteeMemberController extends Controller
 {

@@ -55,6 +55,7 @@ final class CommitteeManagementTest extends TestCase
             'email' => 'admin@test.com',
             'password' => bcrypt('password'),
             'organisation_id' => $this->organisation->id,
+            'email_verified_at' => now(),
         ]);
 
         // Assign admin role
@@ -134,7 +135,7 @@ final class CommitteeManagementTest extends TestCase
         $record = \DB::table('committee_assignments')
             ->where('id', $this->assignmentId)
             ->first();
-            
+
         $this->assertNotNull($record->left_date, 'left_date should be set on removal');
     }
 
