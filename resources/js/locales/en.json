@@ -353,5 +353,18 @@
     "contact_text": "Interested in learning more about Public Digit? We're here to help with demonstrations, technical consultations, and custom solutions for your organisation.",
     "testimonial_title": "What Our Users Say",
     "testimonial_text": "Public Digit has transformed how our organisation conducts elections. The process is secure, transparent, and our members love the convenience of voting from anywhere in the world."
+  },
+  "seo": {
+    "site": {
+      "title": "Public Digit",
+      "description": "Secure voting platform for organisations and diaspora groups"
+    },
+    "pages": {
+      "committee_tutorial": {
+        "title": "Committee Management Tutorial | Public Digit",
+        "description": "Learn how to create, edit, manage members, and remove members from committees. Step-by-step guide for democratic organizations.",
+        "keywords": "committee management, tutorial, guide, democratic governance, elections"
+      }
+    }
   }
 }

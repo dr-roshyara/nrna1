@@ -166,6 +166,10 @@ import memberImportTutorialDe from './locales/pages/Organisations/Members/Import
 import memberImportTutorialEn from './locales/pages/Organisations/Members/ImportTutorial/en.json';
 import memberImportTutorialNp from './locales/pages/Organisations/Members/ImportTutorial/np.json';
 
+import committeeDe from './locales/pages/Committee/de.json';
+import committeeEn from './locales/pages/Committee/en.json';
+import committeeNp from './locales/pages/Committee/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -251,6 +255,7 @@ const messages = {
       },
       'voter-import-tutorial': voterImportTutorialDe,
       'member-import-tutorial': memberImportTutorialDe,
+      committee: committeeDe,
     },
   },
   en: {
@@ -305,6 +310,7 @@ const messages = {
       },
       'voter-import-tutorial': voterImportTutorialEn,
       'member-import-tutorial': memberImportTutorialEn,
+      committee: committeeEn,
     },
   },
   np: {
@@ -359,6 +365,7 @@ const messages = {
       },
       'voter-import-tutorial': voterImportTutorialNp,
       'member-import-tutorial': memberImportTutorialNp,
+      committee: committeeNp,
     },
   },
 };

@@ -246,6 +246,11 @@
         "title": "Organisationseinstellungen - {organisationName} | Public Digit",
         "description": "Konfigurieren Sie den Mitgliedschaftsmodus und Organisationseinstellungen für {organisationName}. Verwalten Sie die Wählerberechtigung, wählen Sie zwischen Vollständiger Mitgliedschaft oder Wahl-Nur-Modus, mit {memberCount} Mitgliedern.",
         "keywords": "Organisationseinstellungen, Mitgliedschaftsmodus, vollständige Mitgliedschaft, Wahlberechtigung, Wählerverifizierung, Organisationsverwaltung, Mitgliederverwaltung, Public Digit Einstellungen, Vereinsverwaltung, NGO Einstellungen"
+      },
+      "committee_tutorial": {
+        "title": "Ausschussverwaltung Anleitung | Public Digit",
+        "description": "Erfahren Sie, wie Sie Ausschüsse erstellen, bearbeiten, Mitglieder verwalten und aus Ausschüssen entfernen. Schritt-für-Schritt-Anleitung für demokratische Organisationen.",
+        "keywords": "Ausschussverwaltung, Anleitung, Leitfaden, demokratische Verwaltung, Wahlen, Ausschussleitung"
       }
     }
   },

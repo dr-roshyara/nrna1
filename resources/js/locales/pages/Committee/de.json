@@ -1,1 +1,193 @@
-{}
+{
+  "create": {
+    "title": "Ausschuss erstellen",
+    "form": {
+      "name": "Ausschussname",
+      "name_placeholder": "z.B. Zentraler Ausschuss",
+      "code": "Ausschusscode",
+      "code_placeholder": "z.B. ZA-001",
+      "type": "Ausschusstyp",
+      "type_label": "Wählen Sie einen Ausschusstyp",
+      "geo_reference": "Geografische Referenz",
+      "geo_placeholder": "z.B. np.1.12 (optional)"
+    },
+    "button_create": "Ausschuss erstellen",
+    "button_cancel": "Abbrechen",
+    "messages": {
+      "success": "Ausschuss erfolgreich erstellt",
+      "error": "Fehler beim Erstellen des Ausschusses",
+      "name_required": "Ausschussname ist erforderlich",
+      "code_required": "Ausschusscode ist erforderlich",
+      "type_required": "Ausschusstyp ist erforderlich"
+    }
+  },
+  "edit": {
+    "title": "Ausschuss bearbeiten",
+    "form": {
+      "name": "Ausschussname",
+      "status": "Status",
+      "status_active": "Aktiv",
+      "status_inactive": "Inaktiv"
+    },
+    "button_update": "Ausschuss aktualisieren",
+    "button_cancel": "Abbrechen",
+    "messages": {
+      "success": "Ausschuss erfolgreich aktualisiert",
+      "error": "Fehler beim Aktualisieren des Ausschusses"
+    }
+  },
+  "assign_member": {
+    "title": "Mitglied dem Ausschuss zuweisen",
+    "form": {
+      "member": "Mitglied",
+      "member_search": "Mitglied nach Name oder E-Mail suchen",
+      "member_placeholder": "Zum Suchen eingeben...",
+      "role": "Rollenpfad",
+      "role_placeholder": "Wählen Sie eine Rolle",
+      "nomination_type": "Nominierungstyp",
+      "elected": "Gewählt",
+      "appointed": "Ernannt",
+      "volunteered": "Freiwillig",
+      "election_date": "Wahltermin",
+      "election_date_placeholder": "Datum der Wahl",
+      "term_end_date": "Amtsendtermin (Optional)",
+      "term_end_placeholder": "Wann endet die Amtszeit?"
+    },
+    "button_assign": "Mitglied zuweisen",
+    "button_cancel": "Abbrechen",
+    "messages": {
+      "success": "Mitglied erfolgreich zugewiesen",
+      "error": "Fehler beim Zuweisen des Mitglieds",
+      "member_required": "Bitte wählen Sie ein Mitglied",
+      "role_required": "Bitte wählen Sie eine Rolle",
+      "nomination_required": "Bitte wählen Sie einen Nominierungstyp",
+      "already_assigned": "Dieses Mitglied hat bereits eine aktive Zuweisung",
+      "election_date_required": "Wahltermin ist erforderlich für gewählte Mitglieder"
+    }
+  },
+  "remove_member": {
+    "title": "Mitglied entfernen",
+    "confirmation": "Möchten Sie dieses Mitglied wirklich aus dem Ausschuss entfernen?",
+    "button_confirm": "Ja, entfernen",
+    "button_cancel": "Abbrechen",
+    "messages": {
+      "success": "Mitglied erfolgreich entfernt",
+      "error": "Fehler beim Entfernen des Mitglieds"
+    }
+  },
+  "dashboard": {
+    "title": "Ausschuss-Dashboard",
+    "section_details": "Ausschussdetails",
+    "section_members": "Aktive Mitglieder",
+    "field_name": "Name",
+    "field_type": "Typ",
+    "field_status": "Status",
+    "field_geo": "Geografische Referenz",
+    "button_edit": "Bearbeiten",
+    "button_add_member": "Mitglied hinzufügen",
+    "members_table": {
+      "header_member": "Mitglied",
+      "header_role": "Rolle",
+      "header_joined": "Beigetreten",
+      "header_action": "Aktion",
+      "action_remove": "Entfernen"
+    },
+    "empty_state": "Noch keine aktiven Mitglieder"
+  },
+  "common": {
+    "types": {
+      "central": "Zentraler Ausschuss",
+      "province": "Provinzausschuss",
+      "district": "Bezirksausschuss",
+      "ward": "Wahlkreisausschuss",
+      "youth": "Jugendflügel",
+      "women": "Frauenflügel",
+      "student": "Studentenflügel"
+    }
+  },
+  "tutorial": {
+    "title": "Anleitung zur Ausschussverwaltung",
+    "subtitle": "Erfahren Sie, wie Sie Ausschüsse verwalten, Mitglieder zuweisen und demokratische Verwaltung gewährleisten",
+    "back_home": "← Zurück zur Startseite",
+    "pro_tip": "Profi-Tipps",
+    "create": {
+      "heading": "Einen Ausschuss erstellen",
+      "description": "Folgen Sie diesen Schritten, um einen neuen Ausschuss für Ihre Organisation zu erstellen.",
+      "step1_title": "1. Geben Sie Ausschussdetails ein",
+      "step1_text": "Geben Sie einen aussagekräftigen Namen des Ausschusses (z. B. 'Zentraler Ausschuss') und einen eindeutigen Code (z. B. 'ZA-001') ein.",
+      "step2_title": "2. Wählen Sie den Ausschusstyp",
+      "step2_text": "Wählen Sie aus Zentral, Provinz, Bezirk, Wahlkreis oder spezialisierten Typen wie Jugend- oder Frauenflügel.",
+      "field_name": "Ausschussname",
+      "field_code": "Ausschusscode",
+      "field_type": "Ausschusstyp",
+      "field_geo": "Geografische Referenz",
+      "step3_title": "3. Fügen Sie geografische Referenz hinzu (optional)",
+      "step3_text": "Falls Ihr Ausschuss in einer bestimmten Region tätig ist, geben Sie den geografischen Referenzcode ein (z. B. 'np.3.15').",
+      "step4_title": "4. Senden Sie & Vervollständigen Sie",
+      "step4_text": "Klicken Sie auf 'Ausschuss erstellen', um den Vorgang abzuschließen. Der Ausschuss ist nun bereit für die Mitgliederzuweisung.",
+      "pro_tip": "Verwenden Sie konsistente Benennungskonventionen wie AUSSCH-JAHR-ID für einfache Identifikation"
+    },
+    "edit": {
+      "heading": "Ausschussdetails bearbeiten",
+      "description": "Aktualisieren Sie Ausschussinformationen wie Name und Status nach der Erstellung.",
+      "step1_title": "1. Navigieren Sie zum Ausschuss-Dashboard",
+      "step1_text": "Gehen Sie zu dem Ausschuss, den Sie bearbeiten möchten, und klicken Sie auf die Schaltfläche 'Bearbeiten'.",
+      "step2_title": "2. Aktualisieren Sie den Ausschussnamen",
+      "step2_text": "Ändern Sie den Namen des Ausschusses bei Bedarf. Dies ist nützlich, wenn sich Organisationsstrukturen weiterentwickeln.",
+      "option_name": "Ausschussnamen aktualisieren",
+      "option_status": "Status ändern (Aktiv/Inaktiv)",
+      "step3_title": "3. Verwalten Sie den Status des Ausschusses",
+      "step3_text": "Setzen Sie den Ausschuss auf 'Aktiv' oder 'Inaktiv', um zu steuern, ob er an Wahlen teilnimmt.",
+      "step4_title": "4. Speichern Sie die Änderungen",
+      "step4_text": "Klicken Sie auf 'Ausschuss aktualisieren', um alle Änderungen anzuwenden. Die Mitglieder bleiben weiterhin zugewiesen."
+    },
+    "assign": {
+      "heading": "Mitglieder dem Ausschuss zuweisen",
+      "description": "Fügen Sie Organisationsmitglieder mit spezifischen Rollen und Nominerungstypen zu Ausschüssen hinzu.",
+      "step1_title": "1. Öffnen Sie den Ausschuss",
+      "step1_text": "Navigieren Sie zu Ihrem Ausschuss-Dashboard und klicken Sie auf 'Mitglied hinzufügen'.",
+      "step2_title": "2. Durchsuchen & Wählen Sie Mitglied",
+      "step2_text": "Verwenden Sie das Suchfeld, um Mitglieder nach Name oder E-Mail zu finden.",
+      "step3_title": "3. Wählen Sie Rolle & Nominerungstyp",
+      "step3_text": "Wählen Sie die Rolle des Mitglieds (mit dem numerischen Rollenpfad wie 1.1, 1.2, etc.) und den Nominerungstyp.",
+      "step4_title": "4. Schließen Sie die Zuweisung ab",
+      "step4_text": "Falls das Mitglied gewählt wurde, geben Sie das Wahldatum ein. Klicken Sie auf 'Mitglied zuweisen', um abzuschließen."
+    },
+    "remove": {
+      "heading": "Mitglieder aus dem Ausschuss entfernen",
+      "description": "Verwalten Sie die Ausschussstruktur durch Entfernung von Mitgliedern bei Amtszeit-Ablauf oder Status-Änderung.",
+      "step1_title": "1. Zeigen Sie aktive Mitglieder an",
+      "step1_text": "Scrollen Sie im Ausschuss-Dashboard zum Abschnitt 'Aktive Mitglieder'.",
+      "step2_title": "2. Finden Sie das Mitglied zum Entfernen",
+      "step2_text": "Finden Sie das Mitglied, das Sie entfernen möchten, in der Mitgliedertabelle.",
+      "step3_title": "3. Klicken Sie auf Entfernen-Schaltfläche",
+      "step3_text": "Klicken Sie auf 'Entfernen' neben dem Namen des Mitglieds. Ein Bestätigungsdialog erscheint.",
+      "step4_title": "4. Bestätigen Sie das Entfernen",
+      "step4_text": "Klicken Sie auf 'Ja, Entfernen', um zu bestätigen. Das Mitglied wird sofort entfernt."
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "q1": "Kann dieselbe Person in mehreren Ausschüssen tätig sein?",
+      "a1": "Ja! Eine Person kann gleichzeitig Rollen in mehreren Ausschüssen ausüben.",
+      "q2": "Was ist der Unterschied zwischen Gewählt, Ernannt und Freiwillig?",
+      "a2": "Gewählte Mitglieder wurden durch eine Abstimmung ausgewählt. Ernannte Mitglieder wurden von der Leitung ausgewählt. Freiwillige boten ihre Dienste an.",
+      "q3": "Kann ich die Rolle eines Mitglieds nach der Zuweisung bearbeiten?",
+      "a3": "Derzeit müssen Sie das Mitglied entfernen und mit der neuen Rolle neu zuweisen.",
+      "q4": "Was passiert, wenn die Amtszeit eines Ausschussmitglieds endet?",
+      "a4": "Entfernen Sie das Mitglied aus dem Ausschuss, um seine Rolle zu deaktivieren.",
+      "q5": "Kann ich einen Ausschuss löschen?",
+      "a5": "Ausschüsse können als Inaktiv markiert werden, anstatt sie zu löschen.",
+      "q6": "Was ist das Rollenpfad-Nummerierungssystem?",
+      "a6": "Rollenpfade wie 1.1, 1.2, 2.1 repräsentieren hierarchische Positionen."
+    },
+    "pro_tips": "Profi-Tipps",
+    "pro_tip_1": "Verwenden Sie konsistente Ausschusscodes (z. B. AUSSCH-JAHR-ID) zur einfachen Identifikation",
+    "pro_tip_2": "Weisen Sie frühzeitig einen Ausschussschreiber zu",
+    "pro_tip_3": "Halten Sie geografische Referenzen für regionale Ausschüsse auf dem neuesten Stand",
+    "warnings": "Wichtige Hinweise",
+    "warning_1": "Ausschusszuweisungen werden für Transparenz und Rechenschaftspflicht protokolliert",
+    "warning_2": "Das Ändern des Status eines Ausschusses wirkt sich sofort auf die Wahlbeteiligung aus",
+    "note_1": "Alle Ausschussdaten sind verschlüsselt und pro Organisation isoliert",
+    "note_2": "Ausschussstrukturvorlagen sind verfügbar"
+  }
+}

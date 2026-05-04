@@ -7,8 +7,10 @@ namespace App\Http\Controllers\Committee;
 use App\Contexts\Membership\Application\Committee\GetCommitteeDashboard;
 use App\Contexts\Membership\Domain\Exceptions\CommitteeNotFoundException;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contracts\TenantContextInterface;
 use App\Http\Controllers\Controller;
+use App\Models\Organisation;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -19,9 +21,9 @@ final class CommitteeDashboardController extends Controller
         private readonly TenantContextInterface $tenantContext
     ) {}
 
-    public function show(string $committeeId): Response
+    public function show(Organisation $organisation, string $committeeId): Response
     {
-        $tenantId = $this->tenantContext->currentTenantId();
+        $tenantId = TenantId::fromString($organisation->id);
 
         try {
             $dashboard = $this->useCase->execute(

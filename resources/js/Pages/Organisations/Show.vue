@@ -248,6 +248,38 @@
               </div>
             </Card>
 
+            <!-- Committee Management -->
+            <Card v-if="canManage" mode="admin" padding="none" class="overflow-hidden">
+              <div class="admin-card-header">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 class="text-base font-semibold text-slate-800">Committee Management</h2>
+                    <p class="text-xs text-slate-500">Manage committees at all levels</p>
+                  </div>
+                </div>
+                <a :href="`/organisations/${organisation.slug}/committees`"
+                  class="text-sm font-semibold text-primary-600 hover:text-primary-800 hover:underline transition-colors">Manage →</a>
+              </div>
+              <div class="px-8 py-5">
+                <div class="flex items-center justify-between">
+                  <div class="text-sm text-slate-600">
+                    <p><strong>Committees</strong> organize governance at different levels</p>
+                    <p class="text-xs text-slate-500 mt-1">Central, Provincial, District, Ward</p>
+                  </div>
+                  <a :href="`/organisations/${organisation.slug}/committees/create`"
+                    class="inline-flex items-center gap-1.5 px-3 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    New
+                  </a>
+                </div>
+              </div>
+            </Card>
+
             <!-- Officer Management -->
             <Card v-if="canManage" mode="admin" padding="none" class="overflow-hidden">
               <div class="admin-card-header">
