@@ -739,6 +739,26 @@ final class Committee extends TenantAggregateRoot
     }
 
     /**
+     * Update committee name
+     *
+     * @param CommitteeName $name New committee name
+     */
+    public function updateName(CommitteeName $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Update committee status
+     *
+     * @param CommitteeStatus $status New committee status
+     */
+    public function updateStatus(CommitteeStatus $status): void
+    {
+        $this->status = $status;
+    }
+
+    /**
      * Check if committee is in a valid state
      *
      * @return bool True if committee is valid

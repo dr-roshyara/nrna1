@@ -211,4 +211,101 @@ final class CommitteeManagementTest extends TestCase
         $response->assertRedirect();
         $response->assertSessionHas('errors');
     }
+
+    /** @test */
+    public function admin_can_update_committee_name(): void
+    {
+        $this->actingAs($this->admin);
+
+        $newName = 'Updated Committee Name';
+
+        $response = $this->patch(route('committees.update', [
+            'organisation' => $this->organisation->slug,
+            'committeeId' => $this->committeeId->value(),
+        ]), [
+            'name' => $newName,
+        ]);
+
+        $response->assertRedirect();
+        $response->assertSessionHas('success');
+
+        $this->assertDatabaseHas('committees', [
+            'id' => $this->committeeId->value(),
+            'name' => $newName,
+        ]);
+    }
+
+    /** @test */
+    public function admin_can_update_committee_status(): void
+    {
+        $this->actingAs($this->admin);
+
+        $response = $this->patch(route('committees.update', [
+            'organisation' => $this->organisation->slug,
+            'committeeId' => $this->committeeId->value(),
+        ]), [
+            'status' => 'inactive',
+        ]);
+
+        $response->assertRedirect();
+        $response->assertSessionHas('success');
+
+        $this->assertDatabaseHas('committees', [
+            'id' => $this->committeeId->value(),
+            'status' => 'inactive',
+        ]);
+    }
+
+    /** @test */
+    public function guest_cannot_update_committee(): void
+    {
+        $response = $this->patch(route('committees.update', [
+            'organisation' => $this->organisation->slug,
+            'committeeId' => $this->committeeId->value(),
+        ]), [
+            'name' => 'Updated Name',
+        ]);
+
+        $response->assertRedirect(route('login'));
+    }
+
+    /** @test */
+    public function non_admin_cannot_update_committee(): void
+    {
+        $member = User::create([
+            'name' => 'Regular Member',
+            'email' => 'member@test.com',
+            'password' => bcrypt('password'),
+            'organisation_id' => $this->organisation->id,
+            'email_verified_at' => now(),
+        ]);
+
+        $this->actingAs($member);
+
+        $response = $this->patch(route('committees.update', [
+            'organisation' => $this->organisation->slug,
+            'committeeId' => $this->committeeId->value(),
+        ]), [
+            'name' => 'Updated Name',
+        ]);
+
+        $response->assertForbidden();
+    }
+
+    /** @test */
+    public function cannot_update_committee_from_different_tenant(): void
+    {
+        $this->actingAs($this->admin);
+
+        $otherOrgId = '22222222-2222-2222-2222-222222222222';
+
+        $response = $this->patch(route('committees.update', [
+            'organisation' => $otherOrgId,
+            'committeeId' => $this->committeeId->value(),
+        ]), [
+            'name' => 'Updated Name',
+        ]);
+
+        $response->assertNotFound();
+    }
 }
