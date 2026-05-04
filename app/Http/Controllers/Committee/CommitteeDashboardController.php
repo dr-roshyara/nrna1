@@ -24,7 +24,7 @@ final class CommitteeDashboardController extends Controller
         $tenantId = $this->tenantContext->currentTenantId();
 
         try {
-            $view = $this->useCase->execute(
+            $dashboard = $this->useCase->execute(
                 CommitteeId::fromString($committeeId),
                 $tenantId
             );
@@ -32,6 +32,6 @@ final class CommitteeDashboardController extends Controller
             abort(404);
         }
 
-        return Inertia::render('Committee/Dashboard', $view->toArray());
+        return Inertia::render('Committee/Dashboard', $dashboard->toArray());
     }
 }
