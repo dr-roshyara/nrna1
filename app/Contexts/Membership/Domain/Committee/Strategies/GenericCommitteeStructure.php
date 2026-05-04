@@ -38,6 +38,13 @@ final class GenericCommitteeStructure implements CommitteeStructure
         'member' => null, // Unlimited regular members
     ];
 
+    public function canAssignRole(string $rolePath): bool
+    {
+        // Generic committees allow any reasonable role path (up to 3 levels deep)
+        $segments = explode('.', $rolePath);
+        return count($segments) <= 3;
+    }
+
     public function validateAssignment(Member $member, Role $role): bool
     {
         // Generic committees have no special validation rules

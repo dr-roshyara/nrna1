@@ -6,6 +6,7 @@ namespace App\Contexts\Membership\Infrastructure\Models;
 
 use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 final class CommitteeModel extends Model
@@ -42,4 +43,9 @@ final class CommitteeModel extends Model
         'term_end_date' => 'date',
         'geo_cache_updated_at' => 'datetime',
     ];
+
+    public function assignments(): HasMany
+    {
+        return $this->hasMany(CommitteeAssignmentModel::class, 'committee_id', 'id');
+    }
 }

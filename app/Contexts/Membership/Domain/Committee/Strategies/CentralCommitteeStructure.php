@@ -43,6 +43,26 @@ final class CentralCommitteeStructure implements CommitteeStructure
         'member' => null, // Unlimited regular members
     ];
 
+    public function canAssignRole(string $rolePath): bool
+    {
+        // Central Committee allows role paths in standard hierarchy (1-3 levels deep)
+        // Examples: '1', '1.1', '1.1.1', '2.1', etc.
+        $segments = explode('.', $rolePath);
+
+        // Allow up to 3 levels deep
+        if (count($segments) > 3) {
+            return false;
+        }
+
+        // First level should be 1-7 (7 major role categories)
+        $firstLevel = (int) $segments[0];
+        if ($firstLevel < 1 || $firstLevel > 7) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function validateAssignment(Member $member, Role $role): bool
     {
         // Central Committee requires active member status

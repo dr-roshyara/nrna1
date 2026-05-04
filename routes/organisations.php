@@ -217,6 +217,11 @@ Route::prefix('organisations/{organisation:slug}')
             Route::delete('/invitations/{invitation}', [OrganisationMemberInvitationController::class, 'destroy'])->name('invitations.destroy');
         });
 
+        // ── Committee Management ───────────────────────────────────────────────────
+        Route::prefix('/committees/{committeeId}')->name('committees.')->group(function () {
+            Route::delete('/members/{assignmentId}', [\App\Http\Controllers\Committee\CommitteeMemberController::class, 'remove'])->name('members.remove');
+        });
+
         // ── Elections ─────────────────────────────────────────────────────────────
         Route::get('/elections',        [ElectionManagementController::class, 'listForOrganisation']) ->name('organisations.elections.index');
         Route::get('/elections/create', [ElectionManagementController::class, 'create'])->name('organisations.elections.create');

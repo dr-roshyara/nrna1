@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -62,6 +63,9 @@ return new class extends Migration
             $table->text('notes')->nullable(); // Assignment notes, reasons, etc.
             $table->json('metadata')->nullable(); // Extensibility for future fields
 
+            // Tenant isolation
+            $table->uuid('organisation_id')->nullable(false);
+
             // Audit timestamps
             $table->timestamps();
             $table->softDeletes();
@@ -72,17 +76,18 @@ return new class extends Migration
                   ->on('committees')
                   ->onDelete('cascade');
 
-            // member_id is a ULID varchar(26); the legacy members.id is uuid — incompatible types.
-            // FK omitted intentionally: referential integrity is enforced at application layer.
-            $table->index('member_id', 'idx_assignment_member_id');
+            // FK to organisations and member_id: omitted intentionally
+            // Referential integrity is enforced at application layer for cross-database references
 
             // Performance indexes
+            $table->index('member_id', 'idx_assignment_member_id');
             $table->index(['member_id', 'is_active'], 'idx_member_active_assignments');
             $table->index(['committee_id', 'is_active'], 'idx_committee_active_members');
             $table->index(['committee_id', 'role_path', 'is_active'], 'idx_committee_role_active');
             $table->index('role_path', 'idx_assignment_role_path');
             $table->index('joined_date', 'idx_assignment_joined_date');
             $table->index('term_end_date', 'idx_assignment_term_end');
+            $table->index('organisation_id', 'idx_assignment_organisation_id');
 
             // Unique constraint: One active membership per member per committee
             // PostgreSQL partial unique index (only for active assignments)

@@ -12,6 +12,7 @@ use App\Contexts\Membership\Application\Services\DesktopMemberRejectionService;
 use App\Contexts\Membership\Application\Committee\AssignMemberToCommittee;
 use App\Contexts\Membership\Application\Committee\CreateCommittee;
 use App\Contexts\Membership\Application\Committee\GetCommitteeDashboard;
+use App\Contexts\Membership\Application\Committee\RemoveMemberFromCommittee;
 use App\Contexts\Membership\Application\Member\UseCases\RegisterMember;
 use App\Contexts\Membership\Application\Member\UseCases\ActivateMember;
 use App\Contexts\Membership\Application\Member\UseCases\SuspendMember;
@@ -106,6 +107,13 @@ class MembershipServiceProvider extends ServiceProvider
 
         $this->app->bind(CreateCommittee::class, function ($app) {
             return new CreateCommittee(
+                $app->make(CommitteeRepositoryInterface::class),
+                $app->make(EventBus::class)
+            );
+        });
+
+        $this->app->bind(RemoveMemberFromCommittee::class, function ($app) {
+            return new RemoveMemberFromCommittee(
                 $app->make(CommitteeRepositoryInterface::class),
                 $app->make(EventBus::class)
             );

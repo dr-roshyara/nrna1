@@ -40,6 +40,16 @@ interface CommitteeStructure
     public function validateAssignment(Member $member, Role $role): bool;
 
     /**
+     * Check if a role path is valid for this committee type
+     *
+     * Validates that the role path is within the allowed hierarchy for this committee.
+     *
+     * @param string $rolePath Role path (e.g., '1.1.1' for President)
+     * @return bool True if role path is valid for this committee type
+     */
+    public function canAssignRole(string $rolePath): bool;
+
+    /**
      * Get role limits for this committee type
      *
      * Political parties have specific role limits:

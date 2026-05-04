@@ -131,7 +131,7 @@ final class Committee extends TenantAggregateRoot
         // Record domain event CommitteeFormed
         $committee->recordEvent(new CommitteeFormed(
             committeeId: $committee->id->value(),
-            tenantId: $tenantId->toString(),
+            tenantId: $tenantId->value(),
             type: $type->value(),
             name: $name->value(),
             operationalGeo: $operationalGeo?->value()
@@ -155,8 +155,14 @@ final class Committee extends TenantAggregateRoot
         CommitteeName $name,
         string $code,
         ?GeoReference $operationalGeo,
-        CommitteeStatus $status
+        CommitteeStatus $status,
+        ?CommitteeStructure $structure = null,
+        array $assignments = []
     ): self {
+        if ($structure === null) {
+            throw new \LogicException('CommitteeStructure must be provided to reconstruct()');
+        }
+
         $committee = new self($tenantId);
         $committee->id = $id;
         $committee->type = $type;
@@ -164,7 +170,8 @@ final class Committee extends TenantAggregateRoot
         $committee->code = $code;
         $committee->operationalGeo = $operationalGeo;
         $committee->status = $status;
-        // structure and assignments are set separately or loaded on demand
+        $committee->structure = $structure;
+        $committee->assignments = $assignments;
 
         return $committee;
     }
@@ -326,7 +333,7 @@ final class Committee extends TenantAggregateRoot
         }
 
         // 3. Validate role path with committee structure (CHEAP)
-        if (!$this->structure->canAssignRole($rolePath)) {
+        if (!$this->structure->canAssignRole($rolePath->value())) {
             throw new DomainException(
                 sprintf(
                     'Role path "%s" is not allowed for %s committee',
@@ -379,7 +386,7 @@ final class Committee extends TenantAggregateRoot
         // Record domain event CommitteeMemberAssigned
         $this->recordEvent(new CommitteeMemberAssigned(
             committeeId: $this->id->value(),
-            tenantId: $this->getTenantId()->toString(),
+            tenantId: $this->getTenantId()->value(),
             memberId: $memberId->value(),
             assignmentId: $assignment->getId()->value(),
             rolePath: $rolePath->value(),
@@ -483,7 +490,7 @@ final class Committee extends TenantAggregateRoot
         // Record domain event CommitteeMemberRemoved
         $this->recordEvent(new CommitteeMemberRemoved(
             committeeId: $this->id->value(),
-            tenantId: $this->getTenantId()->toString(),
+            tenantId: $this->getTenantId()->value(),
             memberId: $memberId->value(),
             assignmentId: $assignment->getId()->value(),
             rolePath: $assignment->getRolePath()->value(),
@@ -528,7 +535,7 @@ final class Committee extends TenantAggregateRoot
         // Record domain event CommitteeMemberRoleUpdated
         $this->recordEvent(new CommitteeMemberRoleUpdated(
             committeeId: $this->id->value(),
-            tenantId: $this->getTenantId()->toString(),
+            tenantId: $this->getTenantId()->value(),
             memberId: $memberId->value(),
             assignmentId: $assignment->getId()->value(),
             oldRolePath: $oldRolePath->value(),
