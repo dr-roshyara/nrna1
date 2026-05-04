@@ -59,7 +59,14 @@ final class CommitteeManagementTest extends TestCase
         ]);
 
         // Assign admin role
-        UserOrganisationRole::create([
+        $role = UserOrganisationRole::create([
+            'user_id' => $this->admin->id,
+            'organisation_id' => $this->organisation->id,
+            'role' => 'admin',
+        ]);
+
+        // Verify the role was created
+        $this->assertDatabaseHas('user_organisation_roles', [
             'user_id' => $this->admin->id,
             'organisation_id' => $this->organisation->id,
             'role' => 'admin',
@@ -201,7 +208,7 @@ final class CommitteeManagementTest extends TestCase
             'assignmentId' => $fakeAssignmentId,
         ]));
 
+        $response->assertRedirect();
         $response->assertSessionHas('errors');
-        // Or assertNotFound() depending on use case behavior
     }
 }

@@ -17,7 +17,7 @@ final class CommitteeMemberController extends Controller
 {
     public function remove(Organisation $organisation, string $committeeId, string $assignmentId): RedirectResponse
     {
-        $this->authorize('manage-committee', $organisation);
+        $this->authorize('manageCommittee', $organisation);
 
         try {
             $dto = new RemoveMemberDto(
@@ -28,10 +28,13 @@ final class CommitteeMemberController extends Controller
 
             app(RemoveMemberFromCommittee::class)->execute($dto);
 
+            \Log::info('Successfully removed member from committee', ['assignment_id' => $assignmentId]);
             return redirect()->back()->with('success', 'Member removed from committee.');
         } catch (\Throwable $e) {
-            \Log::error('Error removing member from committee: ' . $e->getMessage(), [
-                'exception' => $e,
+            \Log::error('Error removing member from committee', [
+                'message' => $e->getMessage(),
+                'class' => $e::class,
+                'assignment_id' => $assignmentId,
             ]);
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

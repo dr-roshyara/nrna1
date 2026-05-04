@@ -35,9 +35,17 @@ class OrganisationPolicy
      */
     public function manageCommittee(User $user, Organisation $organisation): bool
     {
-        return UserOrganisationRole::where('user_id', $user->id)
+        $roles = UserOrganisationRole::where('user_id', $user->id)
             ->where('organisation_id', $organisation->id)
-            ->whereIn('role', ['owner', 'admin'])
-            ->exists();
+            ->get();
+
+        \Log::info('ManageCommittee policy check', [
+            'user_id' => $user->id,
+            'org_id' => $organisation->id,
+            'roles_count' => $roles->count(),
+            'roles' => $roles->pluck('role')->toArray(),
+        ]);
+
+        return $roles->whereIn('role', ['owner', 'admin'])->count() > 0;
     }
 }
