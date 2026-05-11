@@ -141,5 +141,19 @@ return [
             'keywords'    => 'election security, end-to-end encryption, anonymous voting, tamper-proof, GDPR elections',
             'robots'      => 'index, follow',
         ],
+
+        'organisation-create-tutorial' => [
+            'title'       => 'How to Create an Organisation with Geographic Scope | Public Digit',
+            'description' => 'Complete step-by-step tutorial on setting up your organisation in Public Digit. Learn about committee structures, geographic scope configuration, and membership systems. Perfect for first-time users.',
+            'keywords'    => 'create organisation, organisation setup, geographic scope, committee structure, online voting setup, tutorial, guide',
+            'robots'      => 'index, follow',
+        ],
+
+        'governance-levels-tutorial' => [
+            'title'       => 'Governance Levels Explained | Committee Hierarchy Guide | Public Digit',
+            'description' => 'Learn what governance levels are, why they matter for your organisation, and how to configure committee hierarchies with geographic scopes. Includes real-world examples from NRNA, SPD, and more.',
+            'keywords'    => 'governance levels, committee hierarchy, organisational structure, geographic scope, committee management, governance tutorial, NRNA governance',
+            'robots'      => 'index, follow',
+        ],
     ],
 ];

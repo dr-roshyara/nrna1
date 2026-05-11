@@ -1,0 +1,44 @@
+{
+  "title": "Governance-Ebenen verwalten",
+  "description": "Definieren Sie die Hierarchieebenen für Ausschüsse und geografische Einheiten",
+  "fields": {
+    "level": "Ebene",
+    "committee_name": "Ausschussname",
+    "committee_code": "Ausschusscode",
+    "geo_name": "Geo-Name",
+    "geo_code": "Geo-Code",
+    "geo_parent_code": "Übergeordneter Geo-Code",
+    "description": "Beschreibung",
+    "is_active": "Aktiv",
+    "sort_order": "Sortierung",
+    "actions": "Aktionen"
+  },
+  "placeholders": {
+    "committee_name": "z.B. Globaler Ausschuss",
+    "committee_code": "z.B. GLOBAL",
+    "geo_name": "z.B. Welt",
+    "geo_code": "z.B. WORLD",
+    "geo_parent_code": "Keine (Root-Ebene)",
+    "description": "Optionale Beschreibung dieser Ebene"
+  },
+  "help_text": "Leitfaden",
+  "actions": {
+    "add": "+ Ebene hinzufügen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "create": "Erstellen",
+    "refresh": "Aktualisieren",
+    "confirm_delete": "Sind Sie sicher, dass Sie diese Ebene löschen möchten?",
+    "confirm_delete_text": "Diese Aktion kann nicht rückgängig gemacht werden."
+  },
+  "messages": {
+    "create_success": "Governance-Ebene erfolgreich erstellt",
+    "update_success": "Governance-Ebene erfolgreich aktualisiert",
+    "delete_success": "Governance-Ebene erfolgreich gelöscht",
+    "error": "Ein Fehler ist aufgetreten",
+    "loading": "Ebenen werden geladen...",
+    "empty": "Noch keine Governance-Ebenen definiert. Klicken Sie auf \"+ Ebene hinzufügen\", um zu beginnen."
+  }
+}

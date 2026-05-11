@@ -40,6 +40,8 @@ class InjectPageMeta
             $routeName === 'organisations.members.import.tutorial' => 'organisations.members.import.tutorial',
             $routeName === 'election.result'                    => 'election.result',
             $routeName === 'demo.result'                        => 'demo.result',
+            $routeName === 'organisation-create-tutorial'       => 'organisation-create-tutorial',
+            $routeName === 'governance.levels.tutorial'          => 'governance-levels-tutorial',
             in_array($routeName, ['vereinswahlen.landing', 'wahlen.vereine'], true) => 'vereinswahlen',
             $routeName === 'wahlen.hybrid'                      => 'hybrid',
             $routeName === 'wahlen.sicherheit'                  => 'sicherheit',

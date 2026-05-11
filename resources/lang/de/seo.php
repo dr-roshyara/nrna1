@@ -141,5 +141,19 @@ return [
             'keywords'    => 'Wahlsicherheit, Ende-zu-Ende-Verschlüsselung, anonyme Wahl, manipulationssicher, DSGVO',
             'robots'      => 'index, follow',
         ],
+
+        'organisation-create-tutorial' => [
+            'title'       => 'Anleitung: Organisation mit geografischem Geltungsbereich erstellen | Public Digit',
+            'description' => 'Vollständige Schritt-für-Schritt-Anleitung zur Einrichtung Ihrer Organisation in Public Digit. Lernen Sie mehr über Ausschussstrukturen, geografische Geltungsbereiche und Mitgliedschaftssysteme. Perfekt für neue Benutzer.',
+            'keywords'    => 'Organisation erstellen, Organisations-Setup, geografischer Geltungsbereich, Ausschussstruktur, Online-Wahl-Setup, Anleitung, Tutorial',
+            'robots'      => 'index, follow',
+        ],
+
+        'governance-levels-tutorial' => [
+            'title'       => 'Governance-Ebenen erklärt | Ausschusspyramide | Public Digit',
+            'description' => 'Erfahren Sie, was Governance-Ebenen sind, warum sie für Ihr Organisation wichtig sind und wie Sie Ausschusshierarchien mit geografischen Geltungsbereichen konfigurieren. Mit Praxisbeispielen von NRNA, SPD und mehr.',
+            'keywords'    => 'Governance-Ebenen, Ausschusspyramide, Organisationsstruktur, geografischer Geltungsbereich, Ausschussverwaltung, Governance-Tutorial, NRNA Governance',
+            'robots'      => 'index, follow',
+        ],
     ],
 ];

@@ -255,6 +255,16 @@ Route::get('/help/election-journey', function () {
     return Inertia::render('Tutorials/ElectionJourney');
 })->name('tutorials.election-journey');
 
+// Organisation Creation tutorial — step-by-step guide for creating organisations with geographic scope
+Route::get('/organisation-create-tutorial', function () {
+    return Inertia::render('Tutorials/OrganisationCreateTutorial');
+})->name('organisation-create-tutorial');
+
+// Governance Levels Tutorial — public, no auth required
+Route::get('/governance-levels', function () {
+    return Inertia::render('Tutorials/GovernanceLevelsTutorial');
+})->name('governance.levels.tutorial');
+
 // Public Voter Import Tutorial
 Route::get('/voter-import-tutorial', [VoterImportController::class, 'publicTutorial'])->name('voter-import-tutorial');
 
@@ -447,6 +457,7 @@ Route::middleware(['auth'])->group(function () {
     // Admin dashboard (requires admin role)
     Route::prefix('dashboard/admin')->middleware(['dashboard.role:admin'])->group(function () {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
     });
 
     // Commission dashboard (requires commission role)

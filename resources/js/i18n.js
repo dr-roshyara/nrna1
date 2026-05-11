@@ -170,6 +170,18 @@ import committeeDe from './locales/pages/Committee/de.json';
 import committeeEn from './locales/pages/Committee/en.json';
 import committeeNp from './locales/pages/Committee/np.json';
 
+import organisationCreateTutorialDe from './locales/pages/OrganisationCreateTutorial/de.json';
+import organisationCreateTutorialEn from './locales/pages/OrganisationCreateTutorial/en.json';
+import organisationCreateTutorialNp from './locales/pages/OrganisationCreateTutorial/np.json';
+
+import governanceLevelsDe from './locales/pages/GovernanceLevels/de.json';
+import governanceLevelsEn from './locales/pages/GovernanceLevels/en.json';
+import governanceLevelsNp from './locales/pages/GovernanceLevels/np.json';
+
+import governanceLevelsTutorialDe from './locales/pages/GovernanceLevelsTutorial/de.json';
+import governanceLevelsTutorialEn from './locales/pages/GovernanceLevelsTutorial/en.json';
+import governanceLevelsTutorialNp from './locales/pages/GovernanceLevelsTutorial/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -256,7 +268,11 @@ const messages = {
       'voter-import-tutorial': voterImportTutorialDe,
       'member-import-tutorial': memberImportTutorialDe,
       committee: committeeDe,
+      'organisation-create-tutorial': organisationCreateTutorialDe,
+      'governance-levels': governanceLevelsDe,
     },
+    // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
+    ...governanceLevelsTutorialDe,
   },
   en: {
     ...en,
@@ -311,7 +327,11 @@ const messages = {
       'voter-import-tutorial': voterImportTutorialEn,
       'member-import-tutorial': memberImportTutorialEn,
       committee: committeeEn,
+      'organisation-create-tutorial': organisationCreateTutorialEn,
+      'governance-levels': governanceLevelsEn,
     },
+    // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
+    ...governanceLevelsTutorialEn,
   },
   np: {
     ...np,
@@ -366,7 +386,11 @@ const messages = {
       'voter-import-tutorial': voterImportTutorialNp,
       'member-import-tutorial': memberImportTutorialNp,
       committee: committeeNp,
+      'organisation-create-tutorial': organisationCreateTutorialNp,
+      'governance-levels': governanceLevelsNp,
     },
+    // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
+    ...governanceLevelsTutorialNp,
   },
 };
 

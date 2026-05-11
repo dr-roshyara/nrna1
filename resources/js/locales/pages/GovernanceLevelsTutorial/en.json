@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "Governance Levels — Understanding the Foundation",
+    "description": "Learn what governance levels are, why they matter, and how to configure them for your organisation."
+  },
+  "hero": {
+    "title": "What Are Governance Levels?",
+    "subtitle": "The constitutional backbone of your organisation's hierarchy",
+    "summary": "Governance levels define the chain of command in your organisation — from the global executive down to the local branch. Each level represents a tier in the hierarchy with its own committee, geographic scope, and authority."
+  },
+  "why": {
+    "title": "Why Define Governance Levels?",
+    "points": [
+      {
+        "title": "Establish Clear Hierarchy",
+        "description": "Define who reports to whom. Each level has a clear position in the organisational structure."
+      },
+      {
+        "title": "Enable Authority Delegation",
+        "description": "Higher levels can delegate authority to lower levels while maintaining oversight."
+      },
+      {
+        "title": "Define Geographic Scope",
+        "description": "Each level operates within a defined geographic area — global, continental, national, regional, or local."
+      },
+      {
+        "title": "Power Approval Workflows",
+        "description": "Decisions flow through the hierarchy — lower levels propose, higher levels approve."
+      },
+      {
+        "title": "Tenant-Specific Configuration",
+        "description": "Every organisation defines its own levels. Your hierarchy is independent from others."
+      }
+    ]
+  },
+  "how": {
+    "title": "How to Use the Form",
+    "table_header": {
+      "field": "Field",
+      "description": "Description"
+    },
+    "fields": [
+      {
+        "field": "Level",
+        "description": "Numeric position in the hierarchy. Level 0 is the highest (global), higher numbers are more local."
+      },
+      {
+        "field": "Committee Name",
+        "description": "What this level's committee is called, e.g. \"Central Working Committee\" or \"District Executive\"."
+      },
+      {
+        "field": "Committee Code",
+        "description": "A short identifier used in APIs and references, e.g. \"CWC\" or \"DISTRICT_EXEC\"."
+      },
+      {
+        "field": "Geo Name",
+        "description": "The geographic scope this level covers, e.g. \"Nepal\" or \"Europe\"."
+      },
+      {
+        "field": "Geo Code",
+        "description": "A short code for the geographic area, e.g. \"NP\" or \"EU\"."
+      },
+      {
+        "field": "Parent Geo Code",
+        "description": "The parent geographic scope. Level 0 has no parent; each lower level references the level above it."
+      },
+      {
+        "field": "Active",
+        "description": "Uncheck to temporarily disable a level without deleting its configuration."
+      }
+    ]
+  },
+  "examples": {
+    "title": "Real-World Examples",
+    "subtitle": "See how different organisations structure their governance levels"
+  },
+  "examples_table": {
+    "level": "Level",
+    "committee": "Committee",
+    "committee_name": "Committee Name",
+    "committee_code": "Committee Code",
+    "geo_name": "Geo Name",
+    "geo_code": "Geo Code",
+    "parent_geo_code": "Parent Geo Code",
+    "active": "Active",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "geo_scope": "Geo Scope"
+  },
+  "cta": {
+    "title": "Ready to Set Up Your Governance Levels?",
+    "description": "Visit the governance levels page in your organisation dashboard to start configuring your hierarchy.",
+    "login_hint": "Log in to access your organisation's governance settings.",
+    "button": "Go to Governance Levels"
+  }
+}
