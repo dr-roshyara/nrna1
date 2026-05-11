@@ -40,8 +40,7 @@ class EloquentFuzzyMatchingRepository implements FuzzyMatchingRepositoryInterfac
     ): array {
         $normalizedName = $this->normalizeNepaliName($candidateName);
 
-        $query = DB::connection('landlord')
-            ->table('geo_administrative_units')
+        $query = DB::table('geo_administrative_units')
             ->select([
                 'id',
                 'name_local',
@@ -73,8 +72,7 @@ class EloquentFuzzyMatchingRepository implements FuzzyMatchingRepositoryInterfac
     ): ?string {
         $normalizedName = $this->normalizeNepaliName($candidateName);
 
-        $result = DB::connection('landlord')
-            ->table('geo_administrative_units')
+        $result = DB::table('geo_administrative_units')
             ->select('name_local')
             ->where('country_code', $countryCode->toString())
             ->whereRaw("similarity(name_local->>'np', ?) > ?", [$normalizedName, $similarityThreshold])

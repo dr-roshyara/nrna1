@@ -38,6 +38,10 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
+            Route::middleware('api')
+                ->prefix('api/v1')
+                ->group(base_path('routes/api/governance_v1.php'));
+
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
@@ -126,6 +130,11 @@ class RouteServiceProvider extends ServiceProvider
     {
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
+
+        RateLimiter::for('governance', function (Request $request) {
+            $tenantId = session('current_organisation_id', 'guest');
+            return Limit::perMinute(100)->by((string) $tenantId);
         });
     }
 }

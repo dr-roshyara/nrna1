@@ -14,5 +14,7 @@ final readonly class UpdateCommitteeDetailsCommand
         public TenantId $tenantId,
         public ?string $name = null,
         public ?string $status = null,
+        public ?string $regionCode = null,
+        public ?string $countryCode = null,
     ) {}
 }

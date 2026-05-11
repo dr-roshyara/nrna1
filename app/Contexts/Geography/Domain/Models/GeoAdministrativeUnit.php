@@ -29,13 +29,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class GeoAdministrativeUnit extends Model
 {
     /**
-     * The connection name for the model.
-     *
-     * @var string
-     */
-    protected $connection = 'landlord';
-
-    /**
      * The table associated with the model.
      *
      * @var string

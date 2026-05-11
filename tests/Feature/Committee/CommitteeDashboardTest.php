@@ -51,9 +51,18 @@ class CommitteeDashboardTest extends TestCase
         // Fixture setup (acceptable for feature tests)
         $this->repository->saveForTenant($committee);
 
+        // Fetch the persisted committee to get its slug
+        $committeeModel = \App\Contexts\Membership\Infrastructure\Models\CommitteeModel::withoutGlobalScopes()
+            ->find($committeeId->value());
+
+        $this->assertNotNull($committeeModel, 'Committee not found in database');
+
         $response = $this->actingAs($this->user)
             ->withSession(['current_organisation_id' => $this->tenantId->value()])
-            ->get(route('committee.dashboard', ['committeeId' => $committeeId->value()]));
+            ->get(route('committee.dashboard', [
+                'organisation' => $this->user->organisation,
+                'committee' => $committeeModel->slug
+            ]));
 
         $response->assertStatus(200);
 
@@ -106,11 +115,20 @@ class CommitteeDashboardTest extends TestCase
         // The HTTP request's withSession() should be the only session context
         session()->forget('current_organisation_id');
 
+        // Fetch the persisted committee to get its slug
+        $committeeModel = \App\Contexts\Membership\Infrastructure\Models\CommitteeModel::withoutGlobalScopes()
+            ->find($committeeId->value());
+
+        $this->assertNotNull($committeeModel, 'Committee not found in database');
+
         // Try to access with different tenant context
         // GlobalScope should filter out the committee because it belongs to other tenant
         $response = $this->actingAs($this->user)
             ->withSession(['current_organisation_id' => $this->tenantId->value()])
-            ->get(route('committee.dashboard', ['committeeId' => $committeeId->value()]));
+            ->get(route('committee.dashboard', [
+                'organisation' => $this->user->organisation,
+                'committee' => $committeeModel->slug
+            ]));
 
         // Should not find committee - different tenant, so 404
         $response->assertStatus(404);
@@ -130,8 +148,10 @@ class CommitteeDashboardTest extends TestCase
 
     public function test_unauthenticated_user_cannot_view_dashboard(): void
     {
-        $committeeId = CommitteeId::generate();
-        $response = $this->get(route('committee.dashboard', ['committeeId' => $committeeId->value()]));
+        $response = $this->get(route('committee.dashboard', [
+            'organisation' => $this->user->organisation,
+            'committee' => 'test-committee'
+        ]));
 
         $response->assertRedirect(route('login'));
     }

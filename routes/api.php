@@ -50,3 +50,5 @@ Route::group(['middleware'=>['auth:sanctum']], function(){
     Route::post('/organisations/{organisation}/demo-setup', [DemoSetupController::class, 'setup'])
         ->name('api.organisations.demo-setup');
 });
+
+Route::group([], __DIR__ . '/geography/geographyApiRoutes.php');

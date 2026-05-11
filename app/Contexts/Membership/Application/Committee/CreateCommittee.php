@@ -4,66 +4,67 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Application\Committee;
 
-use App\Contexts\Membership\Application\Committee\DTOs\CreateCommitteeCommand;
 use App\Contexts\Membership\Domain\Committee\Committee;
-use App\Contexts\Membership\Domain\Repositories\CommitteeRepositoryInterface;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
-use App\Shared\Domain\Events\EventBus;
+use App\Contexts\Membership\Domain\ValueObjects\CommitteeName;
+use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface;
+use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeStructureRepositoryInterface;
+use App\Contexts\Membership\Domain\Committee\CommitteeCreationPolicy;
+use App\Contexts\Membership\Domain\ValueObjects\GeoReference;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use DomainException;
-use Illuminate\Support\Facades\DB;
 
 final class CreateCommittee
 {
     public function __construct(
-        private readonly CommitteeRepositoryInterface $committees,
-        private readonly EventBus $eventBus
+        private CommitteeStructureRepositoryInterface $structureRepo,
+        private CommitteeRepositoryInterface $committeeRepo,
+        private CommitteeCreationPolicy $policy
     ) {}
 
-    public function execute(CreateCommitteeCommand $command): CommitteeId
+    public function execute(array $command): Committee
     {
-        $committeeId = CommitteeId::generate();
+        $tenantId = TenantId::fromString($command['tenantId']);
 
-        $committee = $this->buildCommittee($committeeId, $command);
+        // Step 1: Load active structure (REQUIRED)
+        $structure = $this->structureRepo->findActiveByTenant($tenantId);
+        if ($structure === null) {
+            throw new DomainException('No active committee structure defined for this organization');
+        }
 
-        DB::transaction(function () use ($committee) {
-            $this->committees->saveForTenant($committee);
-            $this->eventBus->dispatchAll($committee->pullEvents());
-        });
+        // Step 2: Get level from structure
+        $level = $structure->getLevel($command['levelIndex']);
 
-        return $committeeId;
+        // Step 3: Parse geo reference (if provided)
+        $geoReference = isset($command['geoReference']) && $command['geoReference'] !== null
+            ? GeoReference::fromString($command['geoReference'])
+            : null;
+
+        // Step 4: Validate against policy (CRITICAL - validates structure + level + geo)
+        $this->policy->assertCanCreate($structure, $level->index, $geoReference);
+
+        // Step 5: Create committee with SNAPSHOT data (not structure object)
+        $committee = Committee::create(
+            id: CommitteeId::generate(),
+            tenantId: $tenantId,
+            structureId: $structure->getId(),
+            levelIndex: $level->index,
+            levelName: $level->name,
+            geoPolicy: $level->geoPolicy,
+            geoScope: $level->geoScope,
+            name: CommitteeName::fromString($command['name']),
+            code: $command['code'] ?? $this->generateCommitteeCode(),
+            operationalGeo: $geoReference
+        );
+
+        // Step 6: Persist
+        $this->committeeRepo->persist($committee);
+
+        return $committee;
     }
 
-    private function buildCommittee(CommitteeId $id, CreateCommitteeCommand $command): Committee
+    private function generateCommitteeCode(): string
     {
-        if ($command->type->isCentral()) {
-            return Committee::createCentral(
-                $id,
-                $command->tenantId,
-                $command->name,
-                $command->code
-            );
-        }
-
-        if ($command->type->isGeographic()) {
-            if ($command->geoReference === null) {
-                throw new DomainException(
-                    "Geographic committee type '{$command->type->value()}' requires a geo reference"
-                );
-            }
-
-            return Committee::createForGeography(
-                $id,
-                $command->tenantId,
-                $command->name,
-                $command->code,
-                $command->type,
-                $command->geoReference,
-                ''
-            );
-        }
-
-        throw new DomainException(
-            "Committee type '{$command->type->value()}' is not supported by CreateCommittee — use the full form() factory for wing types"
-        );
+        return strtoupper(bin2hex(random_bytes(4)));
     }
 }

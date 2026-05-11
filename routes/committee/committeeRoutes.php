@@ -17,10 +17,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->prefix('organisations/{organisation}')->group(function () {
+    // Cascader Config (API endpoint)
+    Route::get('/api/geography/cascader-config', [CommitteeManagementController::class, 'cascaderConfig'])
+        ->name('committee.geography.config');
+
+    // Committee Code Validation (API endpoint)
+    Route::get('/api/committees/check-code/{code}', [CommitteeManagementController::class, 'checkCodeExists'])
+        ->name('committee.check-code');
+
     // Committee List & Dashboard
     Route::get('/committees', [CommitteeManagementController::class, 'index'])
         ->name('committees.index');
-    Route::get('/committees/{committeeId}/dashboard', [CommitteeDashboardController::class, 'show'])
+    Route::get('/committees/{committee}/dashboard', [CommitteeDashboardController::class, 'show'])
         ->name('committee.dashboard');
 
     // Committee Management
@@ -28,16 +36,16 @@ Route::middleware(['auth', 'verified'])->prefix('organisations/{organisation}')-
         ->name('committees.create');
     Route::post('/committees', [CommitteeManagementController::class, 'store'])
         ->name('committees.store');
-    Route::get('/committees/{committeeId}/edit', [CommitteeManagementController::class, 'edit'])
+    Route::get('/committees/{committee}/edit', [CommitteeManagementController::class, 'edit'])
         ->name('committees.edit');
-    Route::patch('/committees/{committeeId}', [CommitteeManagementController::class, 'update'])
+    Route::patch('/committees/{committee}', [CommitteeManagementController::class, 'update'])
         ->name('committees.update');
 
     // Committee Members
-    Route::post('/committees/{committeeId}/members', [CommitteeMemberController::class, 'assign'])
+    Route::post('/committees/{committee}/members', [CommitteeMemberController::class, 'assign'])
         ->name('committees.members.assign')
         ->middleware(['throttle:20,60']);
-    Route::delete('/committees/{committeeId}/members/{assignmentId}', [CommitteeMemberController::class, 'remove'])
+    Route::delete('/committees/{committee}/members/{assignmentId}', [CommitteeMemberController::class, 'remove'])
         ->name('committees.members.remove')
         ->middleware(['throttle:20,60']);
 

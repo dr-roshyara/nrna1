@@ -2,7 +2,9 @@
 
 namespace App\Contexts\Geography\Domain\Models;
 
+use App\Models\Region;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -26,13 +28,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Country extends Model
 {
-    /**
-     * The connection name for the model.
-     *
-     * @var string
-     */
-    protected $connection = 'landlord';
-
     /**
      * The table associated with the model.
      *
@@ -104,6 +99,23 @@ class Country extends Model
     public function administrativeUnits(): HasMany
     {
         return $this->hasMany(GeoAdministrativeUnit::class, 'country_code', 'code');
+    }
+
+    /**
+     * Get all regions this country belongs to.
+     *
+     * @return BelongsToMany
+     */
+    public function regions(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Region::class,
+            'region_country',
+            'country_code',
+            'region_id',
+            'code',
+            'id'
+        );
     }
 
     /**

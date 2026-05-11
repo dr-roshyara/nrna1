@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('landlord')->create('countries', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             // ISO Standards
             $table->char('code', 2)->primary()->comment('ISO 3166-1 alpha-2: NP, IN, US');
             $table->char('code_alpha3', 3)->unique()->comment('ISO 3166-1 alpha-3: NPL, IND, USA');
@@ -66,6 +66,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::connection('landlord')->dropIfExists('countries');
+        Schema::dropIfExists('countries');
     }
 };

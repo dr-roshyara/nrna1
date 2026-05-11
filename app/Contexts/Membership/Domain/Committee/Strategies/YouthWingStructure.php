@@ -60,6 +60,12 @@ final class YouthWingStructure implements CommitteeStructure
         return true;
     }
 
+    public function canAssignRole(string $rolePath): bool
+    {
+        $segments = explode('.', $rolePath);
+        return count($segments) <= 3;
+    }
+
     public function getRoleLimits(): array
     {
         return self::ROLE_LIMITS;

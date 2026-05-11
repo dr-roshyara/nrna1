@@ -31,7 +31,7 @@
           </div>
           <div class="flex gap-2 ml-4">
             <a
-              :href="`/organisations/${organisationSlug}/committees/${committee.id}/dashboard`"
+              :href="`/organisations/${organisationSlug}/committees/${committee.slug}/dashboard`"
               class="inline-flex items-center gap-1 px-3 py-2 text-sm font-medium text-primary-600 hover:text-primary-700 hover:bg-primary-50 rounded-lg transition-colors"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -41,7 +41,7 @@
               View
             </a>
             <a
-              :href="`/organisations/${organisationSlug}/committees/${committee.id}/edit`"
+              :href="`/organisations/${organisationSlug}/committees/${committee.slug}/edit`"
               class="inline-flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

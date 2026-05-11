@@ -48,7 +48,7 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./resources/js', import.meta.url)),
             '~': fileURLToPath(new URL('./resources/js', import.meta.url)),
         },
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.ts', '.tsx', '.js', '.vue', '.json'],
     },
     // Server config for dev
     server: {

@@ -8,6 +8,7 @@ use App\Contexts\Membership\Application\Committee\DTOs\UpdateCommitteeDetailsCom
 use App\Contexts\Membership\Domain\Repositories\CommitteeRepositoryInterface;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeName;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeStatus;
+use App\Contexts\Membership\Domain\ValueObjects\GeoReference;
 use App\Shared\Domain\Events\EventBus;
 use Illuminate\Support\Facades\DB;
 
@@ -32,6 +33,11 @@ final class UpdateCommitteeDetails
 
             if ($command->status !== null) {
                 $committee->updateStatus(CommitteeStatus::fromString($command->status));
+            }
+
+            if ($command->regionCode !== null || $command->countryCode !== null) {
+                $geoRef = new GeoReference($command->countryCode ?? '', $command->regionCode ?? '', 0);
+                $committee->updateOperationalGeo($geoRef, $command->regionCode, $command->countryCode);
             }
 
             $this->repository->saveForTenant($committee, $command->tenantId);

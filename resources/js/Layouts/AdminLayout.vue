@@ -87,9 +87,11 @@ import { ref } from 'vue'
 import { Link } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
+import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
+
 
 export default {
-    components: { Link, PublicDigitFooter },
+    components: { Link, PublicDigitFooter, PublicDigitHeader },
     setup() {
         const { locale } = useI18n()
         const currentLocale = ref(locale.value)

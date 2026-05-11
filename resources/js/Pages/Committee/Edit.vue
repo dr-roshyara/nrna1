@@ -45,6 +45,20 @@
             </span>
           </div>
 
+          <!-- Geographic Reference -->
+          <div>
+            <label class="block text-sm font-medium mb-1">
+              {{ $t('pages.committee.edit.form.geography') || 'Geographic Reference' }}
+            </label>
+            <GeographyCascader
+              v-model="form.geo_reference"
+              :organisation-slug="organisationSlug"
+            />
+            <span v-if="errors.geo_reference" class="text-red-600 text-sm mt-1">
+              {{ errors.geo_reference }}
+            </span>
+          </div>
+
           <!-- Form Actions -->
           <div class="flex gap-3 pt-4">
             <button
@@ -76,15 +90,18 @@ import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
+import GeographyCascader from '@/Components/Geography/GeographyCascader.vue';
 
 const props = defineProps({
   organisation: Object,
   committee: Object,
+  organisationSlug: String,
 });
 
 const form = ref({
   name: props.committee.name || '',
   status: props.committee.status || 'active',
+  geo_reference: props.committee.geo_reference || '',
 });
 
 const errors = ref({});
@@ -96,9 +113,9 @@ const handleSubmit = () => {
 
   // Submit via Inertia 2.0
   router.patch(
-    route('committees.update', { 
+    route('committees.update', {
       organisation: props.organisation.slug,
-      committeeId: props.committee.id,
+      committee: props.committee.slug,
     }),
     form.value,
     {
@@ -107,9 +124,9 @@ const handleSubmit = () => {
       onSuccess: () => {
         loading.value = false;
       },
-      onError: (errors) => {
+      onError: (serverErrors) => {
         loading.value = false;
-        Object.assign(errors, errors);
+        errors.value = serverErrors;
       },
     }
   );
@@ -117,7 +134,10 @@ const handleSubmit = () => {
 
 const handleCancel = () => {
   router.visit(
-    route('committee.dashboard', { committeeId: props.committee.id })
+    route('committee.dashboard', {
+      organisation: props.organisation.slug,
+      committee: props.committee.slug
+    })
   );
 };
 </script>

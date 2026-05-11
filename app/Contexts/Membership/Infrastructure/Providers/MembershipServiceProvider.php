@@ -4,16 +4,31 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Infrastructure\Providers;
 
+use App\Contexts\Membership\Application\CommitteeStructure\ActivateCommitteeStructure;
+use App\Contexts\Membership\Application\CommitteeStructure\ActivateCommitteeStructureUseCase;
+use App\Contexts\Membership\Application\CommitteeStructure\DefineCommitteeStructure;
+use App\Contexts\Membership\Infrastructure\Application\TransactionalActivateCommitteeStructure;
 use App\Contexts\Membership\Application\Handlers\RegisterMemberHandler;
 use App\Contexts\Membership\Application\Services\MobileMemberRegistrationService;
 use App\Contexts\Membership\Application\Services\DesktopMemberRegistrationService;
 use App\Contexts\Membership\Application\Services\DesktopMemberApprovalService;
 use App\Contexts\Membership\Application\Services\DesktopMemberRejectionService;
 use App\Contexts\Membership\Application\Committee\AssignMemberToCommittee;
-use App\Contexts\Membership\Application\Committee\CreateCommittee;
+use App\Contexts\Membership\Application\Committee\CreateCommitteeUseCase;
+use App\Contexts\Membership\Application\Committee\InternalCreateCommittee;
 use App\Contexts\Membership\Application\Committee\GetCommitteeDashboard;
 use App\Contexts\Membership\Application\Committee\RemoveMemberFromCommittee;
 use App\Contexts\Membership\Application\Committee\UpdateCommitteeDetails;
+use App\Contexts\Membership\Application\Committee\Policies\GovernanceAccessPolicyInterface;
+use App\Contexts\Membership\Application\Committee\Policies\PermissiveGovernanceAccessPolicy;
+use App\Contexts\Membership\Application\Committee\Policies\GovernanceCapabilityPolicy;
+use App\Contexts\Membership\Application\Committee\Policies\GovernanceCapabilityContextFactory;
+use App\Contexts\Membership\Domain\Committee\Capability\GovernanceCapabilityPolicyEngine;
+use App\Contexts\Membership\Domain\Committee\Capability\CommitteeCreationPolicy as CapabilityCommitteeCreationPolicy;
+use App\Contexts\Membership\Domain\Committee\Capability\StructureActivationPolicy;
+use App\Contexts\Membership\Domain\Committee\Capability\CommitteeModificationPolicy;
+use App\Contexts\Membership\Domain\Committee\Capability\StructureDeprecationPolicy;
+use App\Contexts\Membership\Infrastructure\Application\TransactionalCreateCommittee;
 use App\Contexts\Membership\Application\Member\UseCases\RegisterMember;
 use App\Contexts\Membership\Application\Member\UseCases\ActivateMember;
 use App\Contexts\Membership\Application\Member\UseCases\SuspendMember;
@@ -34,6 +49,11 @@ use App\Contexts\Membership\Domain\Repositories\MemberRepositoryInterface;
 use App\Contexts\Membership\Domain\Repositories\ApplicationRepositoryInterface;
 use App\Contexts\Membership\Domain\Repositories\FeeRepositoryInterface;
 use App\Contexts\Membership\Domain\Repositories\CommitteeRepositoryInterface;
+use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeStructureRepositoryInterface;
+use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface as CommitteeAggregateRepositoryInterface;
+use App\Contexts\Membership\Domain\Committee\CommitteeCreationPolicy;
+use App\Contexts\Membership\Domain\Committee\Ports\GeoContextPort;
+use App\Contexts\Membership\Infrastructure\Ports\GeographyContextAdapter;
 use App\Contexts\Membership\Domain\Services\IdentityVerificationInterface;
 use App\Contexts\Membership\Domain\Services\TenantUserProvisioningInterface;
 use App\Contexts\Membership\Domain\Services\GeographyResolverInterface;
@@ -41,6 +61,10 @@ use App\Contexts\Membership\Infrastructure\Repositories\EloquentMemberRepository
 use App\Contexts\Membership\Infrastructure\Repositories\EloquentApplicationRepository;
 use App\Contexts\Membership\Infrastructure\Repositories\EloquentFeeRepository;
 use App\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeRepository;
+use App\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeAggregateRepository;
+use App\Contexts\Membership\Infrastructure\Persistence\Repositories\EloquentCommitteeStructureRepository;
+use App\Contexts\Membership\Domain\Committee\Constitutional\GovernanceDecisionStore;
+use App\Contexts\Membership\Infrastructure\Persistence\Repositories\EloquentGovernanceDecisionStore;
 use App\Contexts\Membership\Infrastructure\Services\TenantUserIdentityVerification;
 use App\Contexts\Membership\Infrastructure\Services\TenantAuthProvisioningAdapter;
 use App\Contexts\Membership\Infrastructure\Services\GeographyValidationAdapter;
@@ -92,6 +116,50 @@ class MembershipServiceProvider extends ServiceProvider
             EloquentCommitteeRepository::class
         );
 
+        $this->app->bind(
+            CommitteeStructureRepositoryInterface::class,
+            EloquentCommitteeStructureRepository::class
+        );
+
+        $this->app->bind(
+            CommitteeAggregateRepositoryInterface::class,
+            EloquentCommitteeAggregateRepository::class
+        );
+
+        $this->app->bind(
+            GovernanceDecisionStore::class,
+            EloquentGovernanceDecisionStore::class
+        );
+
+        // Domain service bindings
+        $this->app->bind(CommitteeCreationPolicy::class, function ($app) {
+            return new CommitteeCreationPolicy(
+                $app->make(GeoContextPort::class)
+            );
+        });
+
+        $this->app->bind(
+            GeoContextPort::class,
+            GeographyContextAdapter::class
+        );
+
+        // CommitteeStructure use case bindings (with transactional decorators)
+        $this->app->bind(DefineCommitteeStructure::class, function ($app) {
+            return new DefineCommitteeStructure(
+                $app->make(CommitteeStructureRepositoryInterface::class)
+            );
+        });
+
+        // CRITICAL: Bind ONLY the interface, never the concrete class
+        // This makes it STRUCTURALLY IMPOSSIBLE to bypass the decorator
+        $this->app->bind(ActivateCommitteeStructureUseCase::class, function ($app) {
+            $core = new ActivateCommitteeStructure(
+                $app->make(CommitteeStructureRepositoryInterface::class)
+            );
+
+            return new TransactionalActivateCommitteeStructure($core);
+        });
+
         // Use case bindings
         $this->app->bind(GetCommitteeDashboard::class, function ($app) {
             return new GetCommitteeDashboard(
@@ -106,11 +174,32 @@ class MembershipServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->bind(CreateCommittee::class, function ($app) {
-            return new CreateCommittee(
-                $app->make(CommitteeRepositoryInterface::class),
-                $app->make(EventBus::class)
+        // Phase C: Transactional Hardening - Bind the interface to the decorator
+        // CRITICAL: Bind ONLY the interface, never the concrete class
+        // This makes it STRUCTURALLY IMPOSSIBLE to bypass the decorator
+        $this->app->bind(CreateCommitteeUseCase::class, function ($app) {
+            $internal = new InternalCreateCommittee(
+                $app->make(CommitteeStructureRepositoryInterface::class),
+                $app->make(CommitteeAggregateRepositoryInterface::class),
+                $app->make(CommitteeCreationPolicy::class),
+                $app->make(GovernanceAccessPolicyInterface::class)
             );
+
+            return new TransactionalCreateCommittee($internal);
+        });
+
+        // Phase B: Bind real governance enforcement
+        $this->app->bind(GovernanceAccessPolicyInterface::class, function ($app) {
+            $engine = new GovernanceCapabilityPolicyEngine(
+                new CapabilityCommitteeCreationPolicy(),
+                new StructureActivationPolicy(),
+                new CommitteeModificationPolicy(),
+                new StructureDeprecationPolicy(),
+            );
+
+            $factory = new GovernanceCapabilityContextFactory();
+
+            return new GovernanceCapabilityPolicy($factory, $engine);
         });
 
         $this->app->bind(RemoveMemberFromCommittee::class, function ($app) {
@@ -230,7 +319,10 @@ class MembershipServiceProvider extends ServiceProvider
 
         $this->app->bind(
             GeographyResolverInterface::class,
-            GeographyValidationAdapter::class
+            fn($app) => new GeographyValidationAdapter(
+                $app->make(\App\Contexts\Geography\Domain\Services\GeographyDomainService::class),
+                $app->make(\App\Contexts\Geography\Application\Services\GeographyService::class)
+            )
         );
 
         // Application service bindings (singleton for performance)

@@ -90,10 +90,20 @@ final class EloquentCommitteeRepository implements CommitteeRepositoryInterface
             ->where('organisation_id', $committee->getTenantId()->value())
             ->first();
 
+        $data = $this->serialize($committee);
+
         if ($existingCommittee) {
-            $existingCommittee->update($this->serialize($committee));
+            // Detect name change and regenerate slug
+            if ($existingCommittee->name !== $committee->getName()->value()) {
+                $data['slug'] = CommitteeModel::generateUniqueSlug(
+                    $committee->getName()->value(),
+                    $committee->getTenantId()->value(),
+                    $committee->getId()->value()
+                );
+            }
+            $existingCommittee->update($data);
         } else {
-            CommitteeModel::create($this->serialize($committee));
+            CommitteeModel::create($data);
         }
 
         // Step 2: Sync assignments — load current DB assignment IDs
@@ -292,6 +302,8 @@ final class EloquentCommitteeRepository implements CommitteeRepositoryInterface
             'level' => $level,
             'operational_geo_reference' => $committee->getOperationalGeoReference()?->value(),
             'status' => $committee->getStatus()->value(),
+            'region_code' => $committee->getRegionCode(),
+            'country_code' => $committee->getCountryCode(),
         ];
     }
 

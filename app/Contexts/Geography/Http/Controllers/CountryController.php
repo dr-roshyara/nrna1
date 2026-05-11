@@ -39,7 +39,7 @@ class CountryController extends Controller
      * @param Request $request
      * @return AnonymousResourceCollection
      */
-    public function index(Request $request): AnonymousResourceCollection
+    public function index(Request $request): \Illuminate\Http\JsonResponse
     {
         $showAll = $request->boolean('show_all', false);
 
@@ -51,14 +51,20 @@ class CountryController extends Controller
 
         $countries = $query->orderBy('name_en')->get();
 
-        return CountryResource::collection($countries)
+        $collection = CountryResource::collection($countries)
             ->additional([
                 'meta' => [
                     'total' => $countries->count(),
                     'showing' => $showAll ? 'all' : 'supported_only',
                 ],
-            ])
-            ->withHeaders($this->getCachingHeaders('countries_index', 3600));
+            ]);
+
+        $response = response()->json($collection);
+        foreach ($this->getCachingHeaders('countries_index', 3600) as $key => $value) {
+            $response->header($key, $value);
+        }
+
+        return $response;
     }
 
     /**
@@ -195,6 +201,38 @@ class CountryController extends Controller
                 'message' => $e->getMessage(),
             ], 500);
         }
+    }
+
+    /**
+     * Get all units for a country as a flat list (for GeographyCascader).
+     *
+     * GET /api/geography/countries/{code}/flat
+     *
+     * @param string $code
+     * @return JsonResponse
+     */
+    public function flat(string $code): JsonResponse
+    {
+        $code    = strtoupper($code);
+        $country = Country::where('code', $code)->where('is_active', true)->first();
+
+        if (!$country) {
+            return response()->json(['error' => "Country '{$code}' not found"], 404);
+        }
+
+        $flat = $this->geographyService->getAllUnitsFlat($code);
+
+        return response()->json([
+            'schema'  => 'geo.flat.v1',
+            'version' => (string) $flat['version'],
+            'data'    => [
+                'country_code' => $flat['country_code'],
+                'count'        => $flat['count'],
+                'nodes'        => $flat['nodes'],
+            ],
+        ])
+        ->header('Cache-Control', 'public, max-age=86400')
+        ->header('ETag', '"geo-flat-' . $flat['version'] . '"');
     }
 
     /**

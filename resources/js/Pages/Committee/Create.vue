@@ -85,7 +85,19 @@
                         : 'border-neutral-200 bg-neutral-50 hover:border-neutral-300 hover:bg-white'
                     ]"
                     @focus="clearError('code')"
+                    @input="handleCodeInput"
                   />
+                  <!-- Validation indicator -->
+                  <div v-if="form.code && codeValidating" class="absolute right-3 top-3 animate-spin">
+                    <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                  </div>
+                  <div v-else-if="form.code && !codeExists && !errors.code" class="absolute right-3 top-3.5">
+                    <svg class="w-5 h-5 text-success-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
                   <transition name="slideDown">
                     <span v-if="errors.code" class="absolute top-full mt-2 flex items-center gap-1 text-sm text-danger-600">
                       <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18.101 12.93a1 1 0 00-1.414-1.414L10 14.586l-6.687-6.687a1 1 0 00-1.414 1.414l8.101 8.101a1 1 0 001.414 0l8.687-8.687z" clip-rule="evenodd" /></svg>
@@ -148,22 +160,15 @@
 
               <!-- Geographic Reference (Optional) -->
               <div class="group">
-                <label for="geo_reference" class="block text-sm font-semibold text-neutral-900 mb-2">
+                <label class="block text-sm font-semibold text-neutral-900 mb-2">
                   {{ $t('pages.committee.create.form.geo_reference') }}
                   <span class="text-neutral-400 text-xs font-normal ml-1">(Optional)</span>
                 </label>
-                <input
-                  id="geo_reference"
-                  v-model="form.geo_reference"
-                  type="text"
-                  :placeholder="$t('pages.committee.create.form.geo_placeholder')"
-                  :class="[
-                    'w-full px-4 py-3 rounded-lg border transition-all duration-300',
-                    'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-0 focus:border-primary-500',
-                    'border-neutral-200 bg-white hover:border-neutral-300'
-                  ]"
+                <GeographyCascader
+                  v-model="form.geo_selections"
+                  :organisation-slug="organisationSlug"
                 />
-                <p class="text-xs text-neutral-500 mt-2">e.g., Kathmandu, Western Region</p>
+                <p v-if="errors.geo_selections" class="text-xs text-danger-600 mt-2">{{ errors.geo_selections }}</p>
               </div>
             </div>
           </div>
@@ -220,24 +225,75 @@ import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
+import GeographyCascader from '@/Components/Geography/GeographyCascader.vue';
 
 defineProps({
   organisation: Object,
   committeeTypes: Array,
+  organisationSlug: String,
 });
 
 const form = ref({
   name: '',
   code: '',
   type: '',
-  geo_reference: '',
+  geo_selections: {
+    region: null,
+    country: null,
+    geo: [],
+  },
 });
 
 const errors = ref({});
 const loading = ref(false);
+const codeValidating = ref(false);
+const codeExists = ref(false);
+let codeValidationTimeout = null;
 
 const clearError = (field) => {
   delete errors.value[field];
+};
+
+// Debounced code validation
+const checkCodeUniqueness = async () => {
+  if (!form.value.code?.trim()) {
+    codeExists.value = false;
+    return;
+  }
+
+  codeValidating.value = true;
+
+  try {
+    const response = await fetch(
+      route('committee.check-code', {
+        organisation: route().params.organisation,
+        code: form.value.code,
+      })
+    );
+    const data = await response.json();
+    codeExists.value = data.exists;
+
+    if (data.exists) {
+      errors.value.code = `Committee code "${form.value.code}" already exists`;
+    } else {
+      delete errors.value.code;
+    }
+  } catch (error) {
+    console.error('Error checking code uniqueness:', error);
+  } finally {
+    codeValidating.value = false;
+  }
+};
+
+const handleCodeInput = () => {
+  clearError('code');
+  codeExists.value = false;
+
+  // Debounce the API call
+  clearTimeout(codeValidationTimeout);
+  codeValidationTimeout = setTimeout(() => {
+    checkCodeUniqueness();
+  }, 500);
 };
 
 const handleSubmit = () => {
@@ -253,6 +309,11 @@ const handleSubmit = () => {
   }
   if (!form.value.type?.trim()) {
     errors.value.type = 'Committee type is required';
+  }
+
+  // Check if code already exists (prevent submission if it does)
+  if (codeExists.value) {
+    errors.value.code = `Committee code "${form.value.code}" already exists`;
   }
 
   if (Object.keys(errors.value).length > 0) {

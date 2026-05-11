@@ -5,7 +5,12 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Domain\ValueObjects;
 
 /**
- * Geography Reference Value Object
+ * Geography Reference Value Object (DEPRECATED)
+ *
+ * @deprecated Use App\Contexts\Geography\Domain\ValueObjects\GeoReference instead.
+ * This class is maintained for backward compatibility. New code should use the
+ * canonical GeoReference in the Geography domain and MembershipGeoReferenceAdapter
+ * for translation between contexts.
  *
  * Represents a validated reference to a geographic unit in the Geography context.
  * This is a string path that identifies a specific location in the hierarchy.
@@ -143,6 +148,34 @@ final readonly class GeoReference
         // e.g., np.3.15 starts with np.3.
         $otherPrefix = $other->value . '.';
         return str_starts_with($this->value . '.', $otherPrefix);
+    }
+
+    /**
+     * Returns unit IDs (int > 0) from the path.
+     * Filters out zero values and non-numeric levels.
+     * Domain logic: adapters must call this, not parse themselves.
+     */
+    public function getValidUnitIds(): array
+    {
+        return array_values(
+            array_filter(array_map('intval', $this->levels()), fn(int $id) => $id > 0)
+        );
+    }
+
+    /**
+     * Returns true if all required levels in $structure are non-zero in this reference.
+     * Used for validating geo_reference completeness against organisation's level config.
+     */
+    public function isCompleteForStructure(object $structure): bool
+    {
+        $levelValues = array_map('intval', $this->levels());
+        foreach ($structure->getLevels() as $level) {
+            // Check if the level value at the position is present and > 0
+            if ($level->required && (!isset($levelValues[$level->index - 1]) || $levelValues[$level->index - 1] <= 0)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public function __toString(): string

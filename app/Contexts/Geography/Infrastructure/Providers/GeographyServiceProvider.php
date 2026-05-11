@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace App\Contexts\Geography\Infrastructure\Providers;
 
+use App\Contexts\Geography\Domain\Repositories\GeoUnitRepositoryInterface;
+use App\Contexts\Geography\Domain\Services\GeographyDomainService;
+use App\Contexts\Geography\Domain\Services\GeoLevelMappingResolver;
+use App\Contexts\Geography\Infrastructure\Services\DatabaseGeoLevelMappingResolver;
 use App\Contexts\Geography\Infrastructure\Services\GeographyLookupService;
 use App\Contexts\Membership\Domain\Services\GeographyLookupInterface;
 use Illuminate\Support\ServiceProvider;
@@ -54,6 +58,20 @@ class GeographyServiceProvider extends ServiceProvider
             GeographyLookupInterface::class,
             GeographyLookupService::class
         );
+
+        // Bind Geography Domain Service (hierarchy validation)
+        $this->app->singleton(
+            GeographyDomainService::class,
+            fn($app) => new GeographyDomainService(
+                $app->make(GeoUnitRepositoryInterface::class)
+            )
+        );
+
+        // Bind GeoLevelMappingResolver for country-specific db_level resolution
+        $this->app->bind(
+            GeoLevelMappingResolver::class,
+            DatabaseGeoLevelMappingResolver::class
+        );
     }
 
     /**
@@ -65,8 +83,7 @@ class GeographyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // No boot actions needed currently
-        // Future: Register event listeners, publish config, etc.
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations/Landlord');
     }
 
     /**
@@ -78,6 +95,8 @@ class GeographyServiceProvider extends ServiceProvider
     {
         return [
             GeographyLookupInterface::class,
+            GeographyDomainService::class,
+            GeoLevelMappingResolver::class,
         ];
     }
 }

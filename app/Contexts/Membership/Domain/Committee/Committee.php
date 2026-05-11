@@ -23,6 +23,9 @@ use App\Contexts\Shared\Domain\TenantAggregateRoot;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use DateTimeImmutable;
 use DomainException;
+use App\Contexts\Membership\Domain\Committee\GeoPolicy;
+use App\Contexts\Membership\Domain\Committee\GeoScope;
+use App\Contexts\Membership\Domain\Committee\CommitteeStructureId;
 
 /**
  * Committee Aggregate Root
@@ -56,6 +59,20 @@ final class Committee extends TenantAggregateRoot
     private ?GeoReference $operationalGeo;
     private CommitteeStructure $structure;
     private CommitteeStatus $status;
+
+    // Snapshot fields (Phase 5): Immutable at creation time
+    // These snapshot the CommitteeStructure data so committee is independent after creation
+    private ?CommitteeStructureId $createdFromStructureId = null;  // Temporal identity: what structure created this
+    private ?int $structureVersion = null;                           // Temporal identity: what version was active
+    private ?CommitteeStructureId $structureId = null;
+    private ?int $levelIndex = null;
+    private ?string $levelName = null;
+    private ?GeoPolicy $geoPolicy = null;
+    private ?GeoScope $geoScope = null;
+
+    // Constitutional boundary fields (GEO-3.4 Task 1)
+    private ?string $regionCode = null;
+    private ?string $countryCode = null;
 
     /** @var array<CommitteeAssignment> Committee assignments owned by this aggregate */
     private array $assignments = [];
@@ -141,6 +158,69 @@ final class Committee extends TenantAggregateRoot
     }
 
     /**
+     * Factory method - Create committee with snapshotted structure data
+     *
+     * CRITICAL: This factory takes SNAPSHOT DATA, not structure object.
+     * This ensures Committee is independent after creation.
+     *
+     * @param CommitteeId $id Committee ID
+     * @param TenantId $tenantId Tenant ID
+     * @param CommitteeStructureId $structureId Reference to structure (historical only)
+     * @param int $levelIndex Snapshotted level index
+     * @param string $levelName Snapshotted level name
+     * @param GeoPolicy $geoPolicy Snapshotted geo policy
+     * @param ?GeoScope $geoScope Snapshotted geo scope (nullable)
+     * @param CommitteeName $name Committee name
+     * @param string $code Committee code
+     * @param ?GeoReference $operationalGeo Operational geography
+     * @param ?CommitteeStructureId $createdFromStructureId Temporal identity: what structure created this
+     * @param ?int $structureVersion Temporal identity: what version was active at creation
+     * @return self
+     */
+    public static function create(
+        CommitteeId $id,
+        TenantId $tenantId,
+        CommitteeStructureId $structureId,
+        int $levelIndex,
+        string $levelName,
+        GeoPolicy $geoPolicy,
+        ?GeoScope $geoScope,
+        CommitteeName $name,
+        string $code,
+        ?GeoReference $operationalGeo = null,
+        ?CommitteeStructureId $createdFromStructureId = null,
+        ?int $structureVersion = null
+    ): self {
+        $committee = new self($tenantId);
+        $committee->id = $id;
+        $committee->structureId = $structureId;
+        $committee->levelIndex = $levelIndex;
+        $committee->levelName = $levelName;
+        $committee->geoPolicy = $geoPolicy;
+        $committee->geoScope = $geoScope;
+        $committee->name = $name;
+        $committee->code = $code;
+        $committee->operationalGeo = $operationalGeo;
+        $committee->createdFromStructureId = $createdFromStructureId ?? $structureId;
+        $committee->structureVersion = $structureVersion;
+
+        // Infer type from level name (temporary mapping until full Phase 5)
+        $committee->type = CommitteeType::central();
+        $committee->structure = new \App\Contexts\Membership\Domain\Committee\Strategies\CentralCommitteeStructure();
+        $committee->status = CommitteeStatus::active();
+
+        $committee->recordEvent(new CommitteeFormed(
+            committeeId: $id->value(),
+            tenantId: $tenantId->value(),
+            type: $committee->type->value(),
+            name: $name->value(),
+            operationalGeo: $operationalGeo?->value()
+        ));
+
+        return $committee;
+    }
+
+    /**
      * Reconstruct a Committee from persistence (used by repository)
      *
      * Does NOT record domain events since this is hydration from storage,
@@ -157,7 +237,14 @@ final class Committee extends TenantAggregateRoot
         ?GeoReference $operationalGeo,
         CommitteeStatus $status,
         ?CommitteeStructure $structure = null,
-        array $assignments = []
+        array $assignments = [],
+        ?CommitteeStructureId $structureId = null,
+        ?int $levelIndex = null,
+        ?string $levelName = null,
+        ?GeoPolicy $geoPolicy = null,
+        ?GeoScope $geoScope = null,
+        ?CommitteeStructureId $createdFromStructureId = null,
+        ?int $structureVersion = null
     ): self {
         if ($structure === null) {
             throw new \LogicException('CommitteeStructure must be provided to reconstruct()');
@@ -172,6 +259,13 @@ final class Committee extends TenantAggregateRoot
         $committee->status = $status;
         $committee->structure = $structure;
         $committee->assignments = $assignments;
+        $committee->structureId = $structureId;
+        $committee->levelIndex = $levelIndex;
+        $committee->levelName = $levelName;
+        $committee->geoPolicy = $geoPolicy;
+        $committee->geoScope = $geoScope;
+        $committee->createdFromStructureId = $createdFromStructureId;
+        $committee->structureVersion = $structureVersion;
 
         return $committee;
     }
@@ -276,6 +370,64 @@ final class Committee extends TenantAggregateRoot
     public function getStructure(): CommitteeStructure
     {
         return $this->structure;
+    }
+
+    /**
+     * Get structure ID (snapshot reference - immutable after creation)
+     */
+    public function structureId(): ?CommitteeStructureId
+    {
+        return $this->structureId;
+    }
+
+    /**
+     * Get level index (snapshot - immutable after creation)
+     */
+    public function levelIndex(): ?int
+    {
+        return $this->levelIndex;
+    }
+
+    /**
+     * Get level name (snapshot - immutable after creation)
+     */
+    public function levelName(): ?string
+    {
+        return $this->levelName;
+    }
+
+    /**
+     * Get geo policy (snapshot - immutable after creation)
+     */
+    public function geoPolicy(): ?GeoPolicy
+    {
+        return $this->geoPolicy;
+    }
+
+    /**
+     * Get geo scope (snapshot - immutable after creation)
+     */
+    public function geoScope(): ?GeoScope
+    {
+        return $this->geoScope;
+    }
+
+    /**
+     * Get temporal identity: what structure created this committee
+     * Snapshot of structure ID at creation time (immutable)
+     */
+    public function createdFromStructureId(): ?CommitteeStructureId
+    {
+        return $this->createdFromStructureId;
+    }
+
+    /**
+     * Get temporal identity: what version of structure was active at creation
+     * Snapshot of structure version at creation time (immutable)
+     */
+    public function structureVersion(): ?int
+    {
+        return $this->structureVersion;
     }
 
     /**
@@ -756,6 +908,43 @@ final class Committee extends TenantAggregateRoot
     public function updateStatus(CommitteeStatus $status): void
     {
         $this->status = $status;
+    }
+
+    /**
+     * Update committee operational geography and boundary codes
+     *
+     * @param GeoReference $geoReference Geographic reference
+     * @param ?string $regionCode Region code
+     * @param ?string $countryCode Country code
+     */
+    public function updateOperationalGeo(
+        GeoReference $geoReference,
+        ?string $regionCode,
+        ?string $countryCode
+    ): void {
+        $this->operationalGeo = $geoReference;
+        $this->regionCode = $regionCode;
+        $this->countryCode = $countryCode;
+    }
+
+    /**
+     * Get region code
+     *
+     * @return ?string Region code or null
+     */
+    public function getRegionCode(): ?string
+    {
+        return $this->regionCode;
+    }
+
+    /**
+     * Get country code
+     *
+     * @return ?string Country code or null
+     */
+    public function getCountryCode(): ?string
+    {
+        return $this->countryCode;
     }
 
     /**

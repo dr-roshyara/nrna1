@@ -20,7 +20,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('landlord')->create('geo_administrative_units', function (Blueprint $table) {
+        Schema::create('geo_administrative_units', function (Blueprint $table) {
             $table->id();
 
             // Country & Hierarchy (CRITICAL - determines structure)
@@ -98,6 +98,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::connection('landlord')->dropIfExists('geo_administrative_units');
+        Schema::dropIfExists('geo_administrative_units');
     }
 };

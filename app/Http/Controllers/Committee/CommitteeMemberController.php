@@ -12,6 +12,7 @@ use App\Contexts\Membership\Domain\ValueObjects\CommitteeAssignmentId;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
 use App\Contexts\Membership\Domain\ValueObjects\MemberId;
 use App\Contexts\Membership\Domain\ValueObjects\RolePath;
+use App\Contexts\Membership\Infrastructure\Models\CommitteeModel;
 use App\Models\Organisation;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use DateTimeImmutable;
@@ -20,7 +21,7 @@ use App\Http\Controllers\Controller;
 
 final class CommitteeMemberController extends Controller
 {
-    public function assign(Organisation $organisation, string $committeeId): RedirectResponse
+    public function assign(Organisation $organisation, CommitteeModel $committee): RedirectResponse
     {
         $this->authorize('manageCommittee', $organisation);
 
@@ -34,7 +35,7 @@ final class CommitteeMemberController extends Controller
             ]);
 
             $dto = new AssignMemberDto(
-                committeeId: CommitteeId::fromString($committeeId),
+                committeeId: CommitteeId::fromString($committee->id),
                 tenantId: TenantId::fromString($organisation->id),
                 memberId: $validated['member_id'],
                 rolePath: RolePath::fromString($validated['role_path']),
@@ -55,13 +56,13 @@ final class CommitteeMemberController extends Controller
         }
     }
 
-    public function remove(Organisation $organisation, string $committeeId, string $assignmentId): RedirectResponse
+    public function remove(Organisation $organisation, CommitteeModel $committee, string $assignmentId): RedirectResponse
     {
         $this->authorize('manageCommittee', $organisation);
 
         try {
             $dto = new RemoveMemberDto(
-                committeeId: CommitteeId::fromString($committeeId),
+                committeeId: CommitteeId::fromString($committee->id),
                 tenantId: TenantId::fromString($organisation->id),
                 assignmentId: CommitteeAssignmentId::fromString($assignmentId),
             );

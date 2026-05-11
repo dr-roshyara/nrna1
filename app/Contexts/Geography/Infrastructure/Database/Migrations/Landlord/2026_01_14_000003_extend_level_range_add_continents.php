@@ -18,24 +18,24 @@ return new class extends Migration
     public function up(): void
     {
         // 1. Make country_code nullable (for Level 0 continents)
-        Schema::connection('landlord')->table('geo_administrative_units', function (Blueprint $table) {
+        Schema::table('geo_administrative_units', function (Blueprint $table) {
             $table->char('country_code', 2)->nullable()->change();
         });
 
         // 2. Update admin_level constraint to 0-10 range
-        DB::connection('landlord')->statement("
+        DB::statement("
             ALTER TABLE geo_administrative_units
             DROP CONSTRAINT IF EXISTS geo_administrative_units_admin_level_check
         ");
 
-        DB::connection('landlord')->statement("
+        DB::statement("
             ALTER TABLE geo_administrative_units
             ADD CONSTRAINT geo_administrative_units_admin_level_check
             CHECK (admin_level BETWEEN 0 AND 10)
         ");
 
         // 3. Update column comment to reflect new range
-        DB::connection('landlord')->statement("
+        DB::statement("
             COMMENT ON COLUMN geo_administrative_units.admin_level IS
             '0=continent, 1=country, 2=province/state, 3=district/county, 4=local level/city, 5=ward/zip code, 6=neighborhood/tole, 7=street/block, 8=house number, 9=block/unit, 10=reserved for future'
         ");
@@ -50,24 +50,24 @@ return new class extends Migration
     public function down(): void
     {
         // 1. Delete continent data first
-        DB::connection('landlord')->table('geo_administrative_units')
+        DB::table('geo_administrative_units')
             ->where('admin_level', 0)
             ->delete();
 
         // 2. Restore admin_level constraint to 1-8
-        DB::connection('landlord')->statement("
+        DB::statement("
             ALTER TABLE geo_administrative_units
             DROP CONSTRAINT IF EXISTS geo_administrative_units_admin_level_check
         ");
 
-        DB::connection('landlord')->statement("
+        DB::statement("
             ALTER TABLE geo_administrative_units
             ADD CONSTRAINT geo_administrative_units_admin_level_check
             CHECK (admin_level BETWEEN 1 AND 8)
         ");
 
         // 3. Restore original column comment
-        DB::connection('landlord')->statement("
+        DB::statement("
             COMMENT ON COLUMN geo_administrative_units.admin_level IS
             '1=province/state, 2=district, 3=local level, 4=ward'
         ");
@@ -75,13 +75,13 @@ return new class extends Migration
         // 4. Make country_code NOT NULL again
         // Note: This will fail if any NULL values exist
         // We deleted continents, so should be safe
-        DB::connection('landlord')->statement("
+        DB::statement("
             UPDATE geo_administrative_units
             SET country_code = COALESCE(country_code, '')
             WHERE country_code IS NULL
         ");
 
-        Schema::connection('landlord')->table('geo_administrative_units', function (Blueprint $table) {
+        Schema::table('geo_administrative_units', function (Blueprint $table) {
             $table->char('country_code', 2)->nullable(false)->change();
         });
     }
@@ -138,13 +138,13 @@ return new class extends Migration
 
         foreach ($continents as $continent) {
             // Check if continent already exists
-            $exists = DB::connection('landlord')->table('geo_administrative_units')
+            $exists = DB::table('geo_administrative_units')
                 ->where('code', $continent['code'])
                 ->where('admin_level', 0)
                 ->exists();
 
             if (!$exists) {
-                DB::connection('landlord')->table('geo_administrative_units')->insert([
+                DB::table('geo_administrative_units')->insert([
                     'country_code' => null, // Continents have no country
                     'admin_level' => 0,
                     'admin_type' => $continent['admin_type'],

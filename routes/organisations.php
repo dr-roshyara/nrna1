@@ -30,6 +30,7 @@ use App\Http\Controllers\ElectionOfficerInvitationController;
 use App\Http\Controllers\ElectionVoterController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OrganisationSettingsController;
+use App\Http\Controllers\OrganisationGeographyController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\Membership\MembershipApplicationController;
 use App\Http\Controllers\Membership\MembershipDashboardController;
@@ -95,6 +96,10 @@ Route::prefix('organisations/{organisation:slug}')
         Route::get('/settings',                                           [OrganisationSettingsController::class, 'index'])               ->name('organisations.settings.index');
         Route::patch('/settings/membership-mode',                         [OrganisationSettingsController::class, 'updateMembershipMode'])->name('organisations.settings.update-membership-mode');
         Route::patch('/settings/language',                                [OrganisationSettingsController::class, 'updateLanguage'])      ->name('organisations.settings.update-language');
+
+        // ── Geography Configuration ────────────────────────────────────────────────────
+        Route::get('/geography/cascader-config', [OrganisationGeographyController::class, 'cascaderConfig'])
+            ->name('organisation.geography.cascader-config');
 
         // ── Candidacy Applications (voter self-service) ────────────────────────────
         Route::get('/candidacy/apply', [CandidacyApplicationController::class, 'create'])->name('organisations.candidacy.create');
@@ -327,6 +332,24 @@ Route::prefix('organisations/{organisation:slug}')
                     ->name('organisations.elections.update-suggested-dates');
                 Route::patch('/voting-dates', [ElectionManagementController::class, 'updateVotingDates'])
                     ->name('organisations.elections.update-voting-dates');
+            });
+        });
+
+        // ── Governance Levels Configuration (admin/owner only) ──────────────────
+        Route::prefix('/governance/levels')->name('organisations.governance.levels.')->group(function () {
+            Route::get('/', function (\Illuminate\Http\Request $request) {
+                $organisation = $request->attributes->get('organisation');
+                return \Inertia\Inertia::render('Admin/GovernanceLevels', [
+                    'organisation' => $organisation,
+                ]);
+            })->name('index');
+
+            Route::prefix('api')->group(function () {
+                Route::get('/',                  [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'index']);
+                Route::post('/',                 [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'store']);
+                Route::get('/{id}',              [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'show']);
+                Route::put('/{id}',              [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'update']);
+                Route::delete('/{id}',           [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'destroy']);
             });
         });
     });

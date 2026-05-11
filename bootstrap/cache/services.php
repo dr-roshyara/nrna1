@@ -44,7 +44,9 @@
     40 => 'App\\Providers\\RouteServiceProvider',
     41 => 'App\\Providers\\SEOServiceProvider',
     42 => 'App\\Services\\GeoLocation\\GeoLocationServiceProvider',
-    43 => 'App\\Contexts\\Membership\\Infrastructure\\Providers\\MembershipServiceProvider',
+    43 => 'App\\Contexts\\Geography\\Infrastructure\\Providers\\GeographyServiceProvider',
+    44 => 'App\\Contexts\\Membership\\Infrastructure\\Providers\\MembershipServiceProvider',
+    45 => 'App\\Contexts\\Governance\\Infrastructure\\Providers\\GovernanceServiceProvider',
   ),
   'eager' => 
   array (
@@ -75,7 +77,9 @@
     24 => 'App\\Providers\\RouteServiceProvider',
     25 => 'App\\Providers\\SEOServiceProvider',
     26 => 'App\\Services\\GeoLocation\\GeoLocationServiceProvider',
-    27 => 'App\\Contexts\\Membership\\Infrastructure\\Providers\\MembershipServiceProvider',
+    27 => 'App\\Contexts\\Geography\\Infrastructure\\Providers\\GeographyServiceProvider',
+    28 => 'App\\Contexts\\Membership\\Infrastructure\\Providers\\MembershipServiceProvider',
+    29 => 'App\\Contexts\\Governance\\Infrastructure\\Providers\\GovernanceServiceProvider',
   ),
   'deferred' => 
   array (

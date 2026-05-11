@@ -303,6 +303,37 @@ class GeographyService
     }
 
     /**
+     * Get all active units for a country as a flat list for client-side tree building.
+     * Uses max(updated_at) for versioning so any content change invalidates the cache.
+     *
+     * @param string $countryCode ISO 3166-1 alpha-2 code
+     * @return array{nodes: array, version: int, count: int, country_code: string}
+     */
+    public function getAllUnitsFlat(string $countryCode): array
+    {
+        $code        = strtoupper($countryCode);
+        $lastUpdated = GeoAdministrativeUnit::byCountry($code)->active()->max('updated_at');
+        $version     = $lastUpdated ? strtotime($lastUpdated) : 1;
+        $cacheKey    = $this->getCacheKey("flat:{$code}:v{$version}");
+
+        return Cache::remember($cacheKey, self::CACHE_TTL, function () use ($code, $version) {
+            $nodes = GeoAdministrativeUnit::byCountry($code)
+                ->active()
+                ->orderBy('admin_level')
+                ->orderBy('id')
+                ->get(['id', 'parent_id', 'admin_level', 'admin_type', 'name_local', 'code', 'path'])
+                ->toArray();
+
+            return [
+                'nodes'        => $nodes,
+                'version'      => $version,
+                'count'        => count($nodes),
+                'country_code' => $code,
+            ];
+        });
+    }
+
+    /**
      * Clear geography cache for a specific country.
      *
      * @param string|null $countryCode If null, clears all geography cache

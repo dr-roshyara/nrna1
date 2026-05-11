@@ -9,6 +9,16 @@ use App\Models\UserOrganisationRole;
 class OrganisationPolicy
 {
     /**
+     * Any authenticated member may view the organisation.
+     */
+    public function view(User $user, Organisation $organisation): bool
+    {
+        return UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->exists();
+    }
+
+    /**
      * Only organisation owners and admins may update organisation settings.
      */
     public function update(User $user, Organisation $organisation): bool
@@ -47,5 +57,29 @@ class OrganisationPolicy
         ]);
 
         return $roles->whereIn('role', ['owner', 'admin'])->count() > 0;
+    }
+
+    /**
+     * Only organisation owners may setup governance structure.
+     */
+    public function setupGovernance(User $user, Organisation $organisation): bool
+    {
+        return UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->where('role', 'owner')
+            ->exists() &&
+            $organisation->governance_status !== 'active';
+    }
+
+    /**
+     * Only organisation owners may activate governance.
+     */
+    public function activateGovernance(User $user, Organisation $organisation): bool
+    {
+        return UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->where('role', 'owner')
+            ->exists() &&
+            $organisation->governance_status === 'governance_configured';
     }
 }

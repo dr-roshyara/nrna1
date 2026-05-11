@@ -15,6 +15,8 @@ final readonly class CreateCommitteeCommand
         public CommitteeType $type,
         public string $name,
         public string $code,
-        public ?GeoReference $geoReference = null
+        public ?GeoReference $geoReference = null,
+        public ?string $regionCode = null,
+        public ?string $countryCode = null
     ) {}
 }

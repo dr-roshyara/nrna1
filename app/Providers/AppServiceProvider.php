@@ -85,6 +85,9 @@ class AppServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(app_path('Contexts/Membership/Infrastructure/Database/Migrations/Tenant'));
         $this->loadMigrationsFrom(app_path('Contexts/Geography/Infrastructure/Database/Migrations'));
 
+        // Load migrations from database/migrations/landlord/ (temporal governance constraints)
+        $this->loadMigrationsFrom(database_path('migrations/landlord'));
+
         // Validate election state machine configuration at boot time (fail fast)
         \App\Domain\Election\StateMachine\TransitionMatrix::validate();
 

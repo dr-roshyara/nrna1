@@ -5,6 +5,7 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { router } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy'; // Recommended way for Vue 3
+import { createPinia } from 'pinia';
 import i18n from './i18n';
 import { useGeoLocation } from './composables/useGeoLocation';
 import { useLocaleDebug } from './composables/useLocaleDebug';
@@ -43,6 +44,7 @@ createInertiaApp({
         app.use(plugin)
            .use(i18n)
            .use(ZiggyVue) // Modern way: makes route() available in templates & scripts
+           .use(createPinia()) // State management
            .mount(el);
 
         // Initialize debug utilities (available in browser console during development)
