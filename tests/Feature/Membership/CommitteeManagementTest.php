@@ -31,6 +31,7 @@ final class CommitteeManagementTest extends TestCase
     private TenantId $tenantId;
     private User $admin;
     private CommitteeId $committeeId;
+    private string $committeeSlug; // Slug for route model binding (CommitteeModel uses slug as route key)
     private string $assignmentId; // Store as string for DB lookup
     private Organisation $organisation;
     private EloquentCommitteeRepository $repository;
@@ -111,6 +112,11 @@ final class CommitteeManagementTest extends TestCase
 
         // Persist to database
         $this->repository->saveForTenant($committee);
+
+        // Fetch the slug for route model binding (CommitteeModel uses slug as route key)
+        $this->committeeSlug = \DB::table('committees')
+            ->where('id', $this->committeeId->value())
+            ->value('slug');
     }
 
     /** @test */
@@ -126,7 +132,7 @@ final class CommitteeManagementTest extends TestCase
 
         $response = $this->delete(route('committees.members.remove', [
             'organisation' => $this->organisation->slug,
-            'committeeId' => $this->committeeId->value(),
+            'committee' => $this->committeeSlug,
             'assignmentId' => $this->assignmentId,
         ]));
 
@@ -151,7 +157,7 @@ final class CommitteeManagementTest extends TestCase
     {
         $response = $this->delete(route('committees.members.remove', [
             'organisation' => $this->organisation->slug,
-            'committeeId' => $this->committeeId->value(),
+            'committee' => $this->committeeSlug,
             'assignmentId' => $this->assignmentId,
         ]));
 
@@ -172,7 +178,7 @@ final class CommitteeManagementTest extends TestCase
 
         $response = $this->delete(route('committees.members.remove', [
             'organisation' => $this->organisation->slug,
-            'committeeId' => $this->committeeId->value(),
+            'committee' => $this->committeeSlug,
             'assignmentId' => $this->assignmentId,
         ]));
 
@@ -188,7 +194,7 @@ final class CommitteeManagementTest extends TestCase
 
         $response = $this->delete(route('committees.members.remove', [
             'organisation' => $otherOrgId,
-            'committeeId' => $this->committeeId->value(),
+            'committee' => $this->committeeSlug,
             'assignmentId' => $this->assignmentId,
         ]));
 
@@ -204,7 +210,7 @@ final class CommitteeManagementTest extends TestCase
 
         $response = $this->delete(route('committees.members.remove', [
             'organisation' => $this->organisation->slug,
-            'committeeId' => $this->committeeId->value(),
+            'committee' => $this->committeeSlug,
             'assignmentId' => $fakeAssignmentId,
         ]));
 
@@ -221,7 +227,7 @@ final class CommitteeManagementTest extends TestCase
 
         $response = $this->patch(route('committees.update', [
             'organisation' => $this->organisation->slug,
-            'committeeId' => $this->committeeId->value(),
+            'committee' => $this->committeeSlug,
         ]), [
             'name' => $newName,
         ]);
@@ -242,7 +248,7 @@ final class CommitteeManagementTest extends TestCase
 
         $response = $this->patch(route('committees.update', [
             'organisation' => $this->organisation->slug,
-            'committeeId' => $this->committeeId->value(),
+            'committee' => $this->committeeSlug,
         ]), [
             'status' => 'inactive',
         ]);
@@ -261,7 +267,7 @@ final class CommitteeManagementTest extends TestCase
     {
         $response = $this->patch(route('committees.update', [
             'organisation' => $this->organisation->slug,
-            'committeeId' => $this->committeeId->value(),
+            'committee' => $this->committeeSlug,
         ]), [
             'name' => 'Updated Name',
         ]);
@@ -284,7 +290,7 @@ final class CommitteeManagementTest extends TestCase
 
         $response = $this->patch(route('committees.update', [
             'organisation' => $this->organisation->slug,
-            'committeeId' => $this->committeeId->value(),
+            'committee' => $this->committeeSlug,
         ]), [
             'name' => 'Updated Name',
         ]);
@@ -301,7 +307,7 @@ final class CommitteeManagementTest extends TestCase
 
         $response = $this->patch(route('committees.update', [
             'organisation' => $otherOrgId,
-            'committeeId' => $this->committeeId->value(),
+            'committee' => $this->committeeSlug,
         ]), [
             'name' => 'Updated Name',
         ]);

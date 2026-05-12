@@ -231,12 +231,14 @@ class TransitionMatrixTest extends TestCase
     }
 
     /** @test */
-    public function get_allowed_roles_for_submit_for_approval_returns_chief_only(): void
+    public function get_allowed_roles_for_submit_for_approval_returns_chief_admin_owner(): void
     {
         $roles = TransitionMatrix::getAllowedRoles('submit_for_approval');
 
         $this->assertContains('chief', $roles);
-        $this->assertCount(1, $roles);
+        $this->assertContains('admin', $roles);
+        $this->assertContains('owner', $roles);
+        $this->assertCount(3, $roles);
     }
 
     /** @test */

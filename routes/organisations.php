@@ -223,9 +223,7 @@ Route::prefix('organisations/{organisation:slug}')
         });
 
         // ── Committee Management ───────────────────────────────────────────────────
-        Route::prefix('/committees/{committeeId}')->name('committees.')->group(function () {
-            Route::delete('/members/{assignmentId}', [\App\Http\Controllers\Committee\CommitteeMemberController::class, 'remove'])->name('members.remove');
-        });
+        // (Route lives in routes/committee/committeeRoutes.php for proper model binding)
 
         // ── Elections ─────────────────────────────────────────────────────────────
         Route::get('/elections',        [ElectionManagementController::class, 'listForOrganisation']) ->name('organisations.elections.index');

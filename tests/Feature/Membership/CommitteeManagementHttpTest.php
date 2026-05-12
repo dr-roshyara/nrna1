@@ -122,7 +122,7 @@ class CommitteeManagementHttpTest extends TestCase
         $response = $this->actingAs($this->admin)
             ->get(route('committees.edit', [
                 'organisation' => $this->organisation,
-                'committeeId' => $committee->id,
+                'committee' => $committee->slug,
             ]));
 
         $response->assertStatus(200);
@@ -140,7 +140,7 @@ class CommitteeManagementHttpTest extends TestCase
         $response = $this->actingAs($this->admin)
             ->patch(route('committees.update', [
                 'organisation' => $this->organisation,
-                'committeeId' => $committee->id,
+                'committee' => $committee->slug,
             ]), [
                 'name' => 'Updated Committee',
                 'status' => 'inactive',
@@ -184,7 +184,7 @@ class CommitteeManagementHttpTest extends TestCase
         $response = $this->actingAs($this->admin)
             ->post(route('committees.members.assign', [
                 'organisation' => $this->organisation,
-                'committeeId' => $committee->id,
+                'committee' => $committee->slug,
             ]), [
                 'member_id' => $this->member->id,
                 'role_path' => '1.1',
@@ -201,7 +201,7 @@ class CommitteeManagementHttpTest extends TestCase
         $response = $this->actingAs($this->admin)
             ->delete(route('committees.members.remove', [
                 'organisation' => $this->organisation,
-                'committeeId' => $committee->id,
+                'committee' => $committee->slug,
                 'assignmentId' => CommitteeAssignmentId::generate()->value(),
             ]));
 
