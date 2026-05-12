@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::table('organisations', function (Blueprint $table) {
             $table->string('governance_status', 30)
                 ->default('pending_setup')
-                ->after('status')
+                ->after('languages')
                 ->comment('pending_setup, governance_configured, active, suspended');
 
             $table->timestamp('governance_configured_at')
