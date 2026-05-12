@@ -193,11 +193,11 @@
                             <div class="esp-certificate">
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.started_label', 'Beginn') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.start_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.start_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.ended_label', 'Ende') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.end_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.end_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.status_label', 'Status') }}</dt>
@@ -221,11 +221,11 @@
                             <div class="esp-certificate">
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.period_ended.started_label', 'Beginn') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.start_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.start_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.period_ended.ended_label', 'Ende') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.end_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.end_date) }}</dd>
                                 </div>
                             </div>
                         </template>
@@ -240,16 +240,16 @@
                                 </div>
                             </div>
                             <p class="esp-ineligible-body" style="margin-bottom:1.5rem">
-                                {{ $t('pages.election-show.not_yet_open.body', { election: election.name, date: formatDate(election.start_date) }, `Sie sind registriert und können ab dem ${formatDate(election.start_date)} abstimmen. Bitte kommen Sie dann zurück.`) }}
+                                {{ $t('pages.election-show.not_yet_open.body', { election: election.name, date: formatDateTime(election.start_date) }, `Sie sind registriert und können ab dem ${formatDateTime(election.start_date)} abstimmen. Bitte kommen Sie dann zurück.`) }}
                             </p>
                             <div class="esp-certificate">
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.opens_label', 'Öffnet am') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.start_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.start_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.closes_label', 'Schließt am') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDate(election.end_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(election.end_date) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.status_label', 'Ihr Status') }}</dt>
@@ -352,6 +352,13 @@ onUnmounted(() => clearInterval(timer))
 function formatDate (raw) {
     return new Date(raw).toLocaleDateString('en-GB', {
         day: 'numeric', month: 'long', year: 'numeric',
+    })
+}
+
+function formatDateTime (raw) {
+    return new Date(raw).toLocaleString('en-GB', {
+        day: 'numeric', month: 'long', year: 'numeric',
+        hour: '2-digit', minute: '2-digit',
     })
 }
 

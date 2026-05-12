@@ -183,7 +183,7 @@ php artisan test tests/Feature/ElectionStateMachineTest.php --no-coverage
 # With filter
 php artisan test tests/Feature/Election/ --filter "open_voting" --no-coverage
 
-# Expected result: 35 tests passing
+# Expected result: 40 tests passing
 ```
 
 ---
@@ -218,7 +218,7 @@ tail -f storage/logs/laravel.log | grep "ElectionStateChanged"
 
 **Last Updated:** April 26, 2026
 **Status:** Production Ready ✅ (Level 5 Domain Workflow Engine Complete)
-**Test Coverage:** 45 tests, 107 assertions passing
-  - VotingButtonsStateMachineTest: 10 tests
-  - ElectionStateMachineTest: 35 tests
+**Test Coverage:** 50 tests passing
+  - ElectionStateMachineTest: 40 tests (state derivation, transitions, events, temporal guards, role auth)
+  - VotingButtonsStateMachineTest: 10 tests (voting button flows)
   - Unified Domain Workflow Engine architecture

@@ -1,8 +1,8 @@
 # 08: Action-Based State Machine Architecture
 
 **Date:** April 26, 2026  
-**Status:** ✅ Complete - 67/67 Tests Passing  
-**Version:** 2.0 (Refactored from state-based to action-based)
+**Status:** ✅ Complete - 40/40 Tests Passing (ElectionStateMachineTest)  
+**Version:** 2.2 (Transition VO, role auth, temporal guards)
 
 ---
 
@@ -19,33 +19,38 @@ The election state machine has been refactored from a **state-to-state** model t
 
 ## Architecture (Action-Based)
 
-### The Two Constants: ALLOWED_ACTIONS + ACTION_RESULTS
+### The Single Source of Truth: TRANSITIONS Constant
 
 ```php
 // app/Domain/Election/StateMachine/TransitionMatrix.php
 
-const ALLOWED_ACTIONS = [
-    'draft'            => ['submit_for_approval'],
-    'pending_approval' => ['approve', 'reject'],
-    'administration'   => ['complete_administration'],
-    'nomination'       => ['open_voting'],
-    'voting'           => ['close_voting'],
-    'results_pending'  => ['publish_results'],
-    'results'          => [],
-];
-
-const ACTION_RESULTS = [
-    'submit_for_approval'    => 'pending_approval',
-    'approve'                => 'administration',
-    'reject'                 => 'draft',
-    'complete_administration' => 'nomination',
-    'open_voting'            => 'voting',
-    'close_voting'           => 'results_pending',
-    'publish_results'        => 'results',
+const TRANSITIONS = [
+    'draft' => [
+        'submit_for_approval' => ['to' => 'pending_approval', 'roles' => ['chief']],
+        'auto_submit'         => ['to' => 'administration',   'roles' => ['system']],
+    ],
+    'pending_approval' => [
+        'approve' => ['to' => 'administration', 'roles' => ['super_admin', 'platform_admin']],
+        'reject'  => ['to' => 'draft',          'roles' => ['super_admin', 'platform_admin']],
+    ],
+    'administration' => [
+        'complete_administration' => ['to' => 'nomination', 'roles' => ['chief', 'deputy']],
+    ],
+    'nomination' => [
+        'open_voting' => ['to' => 'voting', 'roles' => ['chief', 'deputy']],
+    ],
+    'voting' => [
+        'close_voting' => ['to' => 'results_pending', 'roles' => ['chief', 'deputy']],
+        'lock_voting'  => ['to' => 'voting',          'roles' => ['chief', 'deputy']],
+    ],
+    'results_pending' => [
+        'publish_results' => ['to' => 'results', 'roles' => ['chief']],
+    ],
+    'results' => [],
 ];
 ```
 
-**Key Insight:** An action maps to ONE resulting state. This is deterministic and testable.
+**Key Insight:** A single constant defines the entire state machine: which actions are allowed from each state, the resulting state for each action, and the roles permitted to perform it. This is deterministic, testable, and self-validating (`TransitionMatrix::validate()` is called at boot).
 
 ---
 
@@ -54,150 +59,224 @@ const ACTION_RESULTS = [
 ### Signature
 
 ```php
-public function transitionTo(
-    string  $action,      // What to do: 'open_voting', 'approve', etc.
-    string  $trigger,     // Who triggered: 'manual', 'time', 'grace_period'
-    ?string $reason = null,      // Why (optional): "Approved by officer"
-    ?string $actorId = null      // Who did it (optional): user ID
-): ElectionStateTransition
+public function transitionTo(Transition $transition): ElectionStateTransition
 ```
 
-### How It Works (Step by Step)
+Takes a `Transition` value object — immutable, typed, with metadata support:
 
 ```php
-// 1. VALIDATE: Check if action is allowed from current state
-if (!TransitionMatrix::canPerformAction($fromState, $action)) {
-    throw new InvalidTransitionException(
-        "Action '{$action}' not allowed from '{$fromState}'"
-    );
+// Factories
+Transition::manual(string $action, string|int $actorId, ?string $reason = null, array $metadata = [])
+Transition::automatic(string $action, TransitionTrigger $trigger = TransitionTrigger::TIME, ?string $reason = null, array $metadata = [])
+Transition::gracePeriod(string $action, ?string $reason = null, array $metadata = [])
+```
+
+The `TransitionTrigger` enum classifies the trigger source:
+
+```php
+enum TransitionTrigger: string {
+    case MANUAL       = 'manual';        // User-initiated
+    case TIME         = 'time';          // Scheduled/cron
+    case GRACE_PERIOD = 'grace_period';  // Grace period expiry
+    case SYSTEM       = 'system';        // Auto-approval, system-initiated
 }
+```
 
-// 2. DERIVE: Get target state from action
-$toState = TransitionMatrix::getResultingState($action);
+### How It Works (7-Step Process)
 
-// 3. LOCK: Acquire cache lock to prevent race conditions
+```php
+// LOCK: Acquire cache lock to prevent race conditions (10s TTL, 5s block wait)
 $lock = Cache::lock("election_transition:{$this->id}", 10);
 
-// 4. AUDIT: Create ElectionStateTransition record
-$transition = ElectionStateTransition::create([
-    'election_id' => $this->id,
-    'from_state'  => $fromState,
-    'to_state'    => $toState,
-    'trigger'     => $trigger,
-    'actor_id'    => $actorId,
-    'reason'      => $reason,
-]);
+return $lock->block(5, function () use ($transition, $currentTime) {
+    return DB::transaction(function () use ($transition, $currentTime) {
 
-// 5. SET STATE: Only place in codebase that sets state
-$this->updateQuietly(['state' => $toState]);
+        // ── 1. VALIDATE STATE: Action allowed from current state? ──────────
+        // Throws InvalidTransitionException (extends DomainException)
+        if (!TransitionMatrix::canPerformAction($fromState, $transition->action)) {
+            throw new InvalidTransitionException(
+                "Action '{$transition->action}' is not allowed from state '{$fromState}'. " .
+                "Allowed: " . implode(', ', TransitionMatrix::getAllowedActions($fromState))
+            );
+        }
 
-// 6. SIDE EFFECTS: Execute action-specific side effects
-match ($action) {
-    'open_voting'  => $this->applySideEffectsForOpenVoting($actorId, $currentTime),
-    'close_voting' => $this->applySideEffectsForCloseVoting($currentTime),
-    'approve'      => $this->applySideEffectsForApprove($actorId, $currentTime),
-    // ... etc
-};
+        // ── 2. AUTHORIZE ROLE: Does the actor have permission? ─────────────
+        // System transitions (auto_submit) bypass role check.
+        // Uses resolveActorRole() with priority: ElectionOfficer > super_admin > org_role > 'observer'
+        // Throws DomainException if role is not in TRANSITIONS[state][action]['roles']
+        if (!$transition->isSystemTriggered()) {
+            $actorRole = $this->resolveActorRole($transition->actorId);
+            if (!TransitionMatrix::actionRequiresRole($transition->action, $actorRole)) {
+                throw new DomainException(
+                    "Action '{$transition->action}' is not permitted for role '{$actorRole}'."
+                );
+            }
+        }
 
-// 7. EVENTS: Dispatch action-based events
-match ($action) {
-    'open_voting'  => event(new VotingOpened($this, $actorId)),
-    'close_voting' => event(new VotingClosed($this, $actorId)),
-    'approve'      => event(new ElectionApproved($this, $actorId, $reason)),
-    // ... etc
-};
+        // ── 3. GUARD: Business rule validation ────────────────────────────
+        // Dispatches to validate{Action}() method via naming convention.
+        // E.g. 'open_voting' → validateOpenVoting() → calls whyCannotOpenVoting()
+        // Throws InvalidArgumentException with human-readable reason.
+        $freshElection->validateTransitionRules($transition);
+
+        // ── 4. AUDIT: Create immutable ElectionStateTransition record ──────
+        $record = ElectionStateTransition::create([
+            'election_id' => $this->id,
+            'from_state'  => $fromState,
+            'to_state'    => $toState,
+            'trigger'     => $transition->trigger->value,
+            'actor_id'    => $transition->actorId === 'system' ? null : $transition->actorId,
+            'reason'      => $transition->reason,
+            'metadata'    => $transition->metadata ?: null,
+            'created_at'  => $currentTime,
+        ]);
+
+        // ── 5. STATE CHANGE: Only place in codebase that sets state ───────
+        $this->updateQuietly(['state' => $toState]);
+
+        // ── 6. SIDE EFFECTS: Apply action-specific side effects (no state!) ─
+        match ($transition->action) {
+            'open_voting'  => $this->applySideEffectsForOpenVoting(...),
+            'lock_voting'  => $this->applySideEffectsForLockVoting(...),
+            'close_voting' => $this->applySideEffectsForCloseVoting(...),
+            'approve'      => $this->applySideEffectsForApprove(...),
+            'complete_administration' => $this->applySideEffectsForCompleteAdministration(...),
+            'publish_results' => $this->applySideEffectsForPublishResults(...),
+            default        => null,
+        };
+
+        return $record;
+    });
+    // Exception → original flags restored via forceFill()
+
+    // ── 7. EVENTS (after commit): Action-based event dispatch ─────────────
+    match ($transition->action) {
+        'open_voting'         => event(new VotingOpened($this, $transition->actorId)),
+        'close_voting'        => event(new VotingClosed($this, $transition->actorId)),
+        'approve'             => event(new ElectionApproved($this, $transition->actorId, $transition->reason)),
+        'submit_for_approval' => event(new ElectionSubmittedForApproval($this, $transition->actorId)),
+        'reject'              => event(new ElectionRejected($this, $transition->actorId, $transition->reason)),
+        default               => event(new ElectionStateChangedEvent(...)),
+    };
+});
 ```
+
+### Exception Hierarchy
+
+| Step | Exception | When |
+|------|-----------|------|
+| 1 | `InvalidTransitionException` (extends `DomainException`) | Action not allowed from current state |
+| 2 | `DomainException` | Actor role lacks permission |
+| 3 | `InvalidArgumentException` | Business rule violated (no posts, no voters, temporal guard, etc.) |
 
 ---
 
 ## Usage Examples
 
-### Example 1: Opening Voting (Controller)
+### Example 1: Opening Voting (Controller with Transition VO)
 
 ```php
-// app/Http/Controllers/Election/ElectionManagementController.php
+use App\Domain\Election\StateMachine\Transition;
 
 public function openVoting(Election $election): RedirectResponse
 {
-    // Validation happens in controller
-    if ($election->current_state !== 'nomination') {
-        return back()->with('error', 'Must be in nomination phase');
-    }
-
-    if (!$election->canEnterVotingPhase()) {
-        return back()->with('error', $election->getVotingPhaseBlockedReasons());
-    }
-
     try {
-        // Call action (NOT state name)
         $transition = $election->transitionTo(
-            action: 'open_voting',           // ← Action name, not 'voting'
-            trigger: 'manual',
-            reason: 'Opened by election officer',
-            actorId: auth()->id()
+            Transition::manual(
+                action: 'open_voting',
+                actorId: auth()->id(),
+                reason: 'Opened by election officer',
+            )
         );
 
         return back()->with('success', 'Voting opened');
 
-    } catch (\Exception $e) {
+    } catch (\DomainException $e) {
         return back()->with('error', $e->getMessage());
     }
 }
 ```
 
-### Example 2: Approval Workflow (Domain)
+### Example 2: Approval Workflow (with auto-approval)
 
 ```php
 // app/Models/Election.php
 
-public function submitForApproval(string $userId): void
+public function submitForApproval(string $submittedBy): void
 {
-    $this->transitionTo(
-        'submit_for_approval',  // ← Action
-        'manual',
-        'Submitted for admin review',
-        $userId
-    );
-    
-    $this->updateQuietly([
-        'submitted_for_approval_at' => now(),
-        'submitted_by' => $userId,
-    ]);
+    $this->refresh();
+    if ($this->requiresApproval()) {
+        // expected_voter_count > 40 → manual: draft → pending_approval
+        $this->processManualApproval($submittedBy);
+    } else {
+        // expected_voter_count ≤ 40 → auto: draft → administration
+        $this->processAutoApproval($submittedBy);
+    }
+}
+
+// Manual: needs super_admin/platform_admin to approve
+private function processManualApproval(string $submittedBy): void
+{
+    $this->transitionTo(Transition::manual(
+        action: 'submit_for_approval',
+        actorId: $submittedBy,
+        reason: 'Submitted for admin approval',
+    ));
+}
+
+// Auto: system-triggered, skips pending_approval
+private function processAutoApproval(string $submittedBy): void
+{
+    $this->transitionTo(Transition::automatic(
+        action: 'auto_submit',
+        trigger: TransitionTrigger::SYSTEM,
+        reason: 'Auto-approved (self-service)',
+    ));
 }
 
 public function approve(string $approvedBy, ?string $notes = null): void
 {
-    // State transitions from pending_approval → administration
-    $this->transitionTo(
-        'approve',              // ← Action (not 'administration')
-        'manual',
-        $notes ?? 'Approved',
-        $approvedBy
-    );
-}
-
-public function reject(string $rejectedBy, string $reason): void
-{
-    // State transitions from pending_approval → draft
-    $this->transitionTo(
-        'reject',               // ← Action (not 'draft')
-        'manual',
-        $reason,
-        $rejectedBy
-    );
+    $this->transitionTo(Transition::manual(
+        action: 'approve',
+        actorId: $approvedBy,
+        reason: $notes ?? 'Approved',
+    ));
 }
 ```
 
-### Example 3: Querying by State
+### Example 3: Complete Administration (with temporal guard)
 
 ```php
-// Find elections pending approval
-$pending = Election::where('state', Election::STATE_PENDING_APPROVAL)->get();
+public function completeAdministration(string $reason, string $actorId): void
+{
+    $this->transitionTo(Transition::manual(
+        action: 'complete_administration',
+        actorId: $actorId,
+        reason: $reason,
+    ));
+}
 
-// Or use scope
+// Business validation (called via guard layer, step 3)
+private function whyCannotCompleteAdministration(): ?string
+{
+    if (!$this->posts()->exists())               return 'No election posts have been created.';
+    if (!$this->memberships()->where('role', 'voter')->where('status', 'active')->exists())
+        return 'No voters have been added.';
+    if (!ElectionOfficer::where('election_id', $this->id)->active()->exists())
+        return 'No committee members have been added.';
+    // Temporal guard: prevent completing admin before scheduled start
+    if ($this->administration_suggested_start && now()->lt($this->administration_suggested_start))
+        return 'Administration phase has not yet started.';
+    return null;
+}
+```
+
+### Example 4: Querying by State
+
+```php
+$pending = Election::where('state', Election::STATE_PENDING_APPROVAL)->get();
 $pending = Election::pendingApproval()->get();
 
-// Check if in specific state
 if ($election->current_state === 'voting') {
     // Can call closeVoting
 }
@@ -250,6 +329,87 @@ private function applySideEffectsForOpenVoting(...): void
 ```
 
 ---
+
+## Role Authorization
+
+### Role Resolution Priority
+
+The `resolveActorRole()` method resolves the actor's role with election-level taking precedence:
+
+```php
+public function resolveActorRole(string $actorId): string
+{
+    // 1. Election-level: ElectionOfficer role (highest priority)
+    $electionRole = ElectionOfficer::withoutGlobalScopes()
+        ->where('user_id', $actorId)
+        ->where('election_id', $this->id)
+        ->where('status', 'active')
+        ->value('role');
+    if ($electionRole) return $electionRole;
+
+    // 2. Platform-level: super_admin or platform_admin
+    if ($user->isSuperAdmin()) return 'super_admin';
+    if ($user->platform_role === 'platform_admin') return 'platform_admin';
+
+    // 3. Org-level: admin or owner via user_organisation_roles
+    $orgRole = UserOrganisationRole::where('user_id', $actorId)
+        ->where('organisation_id', $this->organisation_id)
+        ->value('role');
+    if (in_array($orgRole, ['admin', 'owner'], strict: true)) return $orgRole;
+
+    return 'observer';  // Read-only
+}
+```
+
+### Required Roles Per Action (from TRANSITIONS)
+
+| Action | Required Roles |
+|--------|---------------|
+| `submit_for_approval` | chief |
+| `auto_submit` | system (bypasses check) |
+| `approve` | super_admin, platform_admin |
+| `reject` | super_admin, platform_admin |
+| `complete_administration` | chief, deputy |
+| `open_voting` | chief, deputy |
+| `close_voting` | chief, deputy |
+| `lock_voting` | chief, deputy |
+| `publish_results` | chief |
+
+### Exception on Permission Denied
+
+```
+Step 2 throws: DomainException("Action 'open_voting' is not permitted for role 'admin'.")
+```
+
+This is distinct from step 1 (`InvalidTransitionException` — wrong state) and step 3 (`InvalidArgumentException` — business rule violation).
+
+## Temporal Guards
+
+The guard layer enforces scheduled dates, preventing phase transitions before their configured start times:
+
+### Administration Phase
+
+```php
+// Guard: cannot complete admin before administration_suggested_start
+if ($this->administration_suggested_start && now()->lt($this->administration_suggested_start)) {
+    throw new \InvalidArgumentException(
+        'Administration phase has not yet started. Scheduled start: ' . $this->administration_suggested_start->format('Y-m-d H:i')
+    );
+}
+```
+
+### Voting Phase
+
+```php
+// Guard: cannot open voting before voting_starts_at
+if ($this->voting_starts_at && now()->lt($this->voting_starts_at)) {
+    throw new \InvalidArgumentException(
+        'Voting phase has not yet started. Scheduled start: ' . $this->voting_starts_at->format('Y-m-d H:i')
+    );
+}
+```
+
+Both guards are checked inside the respective `whyCannot{Action}()` methods, called by the guard layer at step 3. They pass when the scheduled start is in the past (or null), and block when it is in the future.
 
 ## Events (Action-Based Dispatch)
 
@@ -439,29 +599,29 @@ public function test_voting_opened_event_is_dispatched(): void
 ```php
 try {
     $transition = $election->transitionTo(
-        'open_voting',
-        'manual',
-        'Officer opened voting',
-        auth()->id()
+        Transition::manual(
+            action: 'open_voting',
+            actorId: auth()->id(),
+            reason: 'Officer opened voting',
+        )
     );
     
-    // Action succeeded
     Log::info('Voting opened', ['election_id' => $election->id]);
     
 } catch (InvalidTransitionException $e) {
-    // Action not allowed from current state
+    // Step 1: Action not allowed from current state
     Log::warning('Invalid transition', ['error' => $e->getMessage()]);
     return back()->with('error', 'Cannot transition: ' . $e->getMessage());
     
 } catch (DomainException $e) {
-    // Business rule violated (e.g., no candidates)
-    Log::warning('Business rule violation', ['error' => $e->getMessage()]);
+    // Step 2: Permission denied
+    Log::warning('Permission denied', ['error' => $e->getMessage()]);
     return back()->with('error', $e->getMessage());
     
-} catch (\Exception $e) {
-    // Unexpected error
-    Log::error('Transition failed', ['error' => $e->getMessage()]);
-    return back()->with('error', 'Failed to transition election');
+} catch (\InvalidArgumentException $e) {
+    // Step 3: Business rule violation (no posts, temporal guard, etc.)
+    Log::warning('Business rule violation', ['error' => $e->getMessage()]);
+    return back()->with('error', $e->getMessage());
 }
 ```
 
@@ -526,41 +686,51 @@ foreach ($transitions as $t) {
 
 If you're updating existing code, here are the key changes:
 
-### Old Way (State-Based)
+### Old Way (v2.0 — string params + two constants)
 
 ```php
-// ❌ OLD: Pass target state
-$election->transitionTo('voting', 'manual', 'Opened voting', $userId);
-
-// ❌ OLD: Check if can transition to state
-if (!TransitionMatrix::canTransition('nomination', 'voting')) {
-    // ...
-}
-```
-
-### New Way (Action-Based)
-
-```php
-// ✅ NEW: Pass action name
+// ❌ OLD: transitionTo took 4 string params
 $election->transitionTo('open_voting', 'manual', 'Opened voting', $userId);
 
-// ✅ NEW: Check if can perform action
-if (!TransitionMatrix::canPerformAction('nomination', 'open_voting')) {
-    // ...
-}
+// ❌ OLD: Two separate constants: ALLOWED_ACTIONS + ACTION_RESULTS
+TransitionMatrix::ALLOWED_ACTIONS['nomination']  // → ['open_voting']
+TransitionMatrix::ACTION_RESULTS['open_voting']  // → 'voting'
+
+// ❌ OLD: Check via state-to-state
+TransitionMatrix::canTransition('nomination', 'voting')
 ```
 
-### Mapping Reference
+### New Way (v2.2 — Transition VO + single TRANSITIONS constant)
 
-| Old State | Action | New State |
-|-----------|--------|-----------|
-| draft | submit_for_approval | pending_approval |
-| pending_approval | approve | administration |
-| pending_approval | reject | draft |
-| administration | complete_administration | nomination |
-| nomination | open_voting | voting |
-| voting | close_voting | results_pending |
-| results_pending | publish_results | results |
+```php
+// ✅ NEW: Transition value object with typed trigger
+$election->transitionTo(
+    Transition::manual(action: 'open_voting', actorId: auth()->id(), reason: 'Opened voting')
+);
+
+// ✅ NEW: Single TRANSITIONS constant with roles embedded
+TransitionMatrix::TRANSITIONS['nomination']['open_voting']
+// → ['to' => 'voting', 'roles' => ['chief', 'deputy']]
+
+// ✅ NEW: Role-aware checks
+TransitionMatrix::canPerformAction('nomination', 'open_voting')
+TransitionMatrix::actionRequiresRole('open_voting', 'chief')
+TransitionMatrix::getAllowedRoles('open_voting')
+```
+
+### Action Mapping Reference
+
+| Current State | Action | Target State | Required Roles |
+|---------------|--------|-------------|----------------|
+| draft | submit_for_approval | pending_approval | chief |
+| draft | auto_submit | administration | system |
+| pending_approval | approve | administration | super_admin, platform_admin |
+| pending_approval | reject | draft | super_admin, platform_admin |
+| administration | complete_administration | nomination | chief, deputy |
+| nomination | open_voting | voting | chief, deputy |
+| voting | close_voting | results_pending | chief, deputy |
+| voting | lock_voting | voting | chief, deputy |
+| results_pending | publish_results | results | chief |
 
 ---
 
@@ -573,19 +743,24 @@ app/
 ├── Domain/
 │   └── Election/
 │       ├── StateMachine/
-│       │   └── TransitionMatrix.php        ← Two constants (ALLOWED_ACTIONS, ACTION_RESULTS)
-│       └── Events/
-│           ├── ElectionApproved.php
-│           ├── ElectionRejected.php
-│           ├── ElectionSubmittedForApproval.php
-│           ├── VotingOpened.php
-│           └── VotingClosed.php
+│       │   ├── TransitionMatrix.php         ← Single TRANSITIONS constant (state → actions → to + roles)
+│       │   ├── Transition.php               ← Immutable value object with factories
+│       │   └── TransitionTrigger.php        ← Backed enum (MANUAL, TIME, GRACE_PERIOD, SYSTEM)
+│       ├── Events/
+│       │   ├── ElectionApproved.php
+│       │   ├── ElectionRejected.php
+│       │   ├── ElectionSubmittedForApproval.php
+│       │   ├── VotingOpened.php
+│       │   └── VotingClosed.php
+│       └── Exceptions/
+│           └── InvalidTransitionException.php
 ├── Models/
-│   └── Election.php                        ← transitionTo() method (1383-1520)
+│   └── Election.php                        ← transitionTo() method (1554-1652), guard layer, role resolution
 └── Http/
     └── Controllers/
         └── Election/
             └── ElectionManagementController.php  ← openVoting(), closeVoting()
+            └── CandidacyManagementController.php
 ```
 
 ### Testing
@@ -595,19 +770,12 @@ tests/
 ├── Unit/
 │   └── Domain/
 │       └── Election/
-│           └── TransitionMatrixTest.php    ← 23 tests
+│           ├── TransitionMatrixTest.php    ← Unit tests for action/role checks
+│           └── TransitionTest.php          ← 14 tests for Transition VO
 ├── Feature/
 │   └── Election/
-│       ├── ElectionStateMachineTest.php    ← 35 tests
-│       └── VotingButtonsStateMachineIntegrationTest.php  ← 9 tests
-```
-
-### Routes
-
-```
-routes/
-└── election/
-    └── electionRoutes.php                   ← Lines 270-276 (voting routes)
+│       ├── ElectionStateMachineTest.php    ← 40 tests (state derivation, transitions, events, temporal guards)
+│       └── VotingButtonsStateMachineTest.php  ← 10 tests (voting button flows)
 ```
 
 ---
@@ -709,15 +877,24 @@ The action-based state machine provides:
 **Key API:**
 
 ```php
-TransitionMatrix::canPerformAction($state, $action)    // Validate action allowed
-TransitionMatrix::getResultingState($action)           // Get target state
-$election->transitionTo($action, $trigger, $reason, $actorId)  // Perform transition
+TransitionMatrix::canPerformAction($state, $action)      // Validate action allowed
+TransitionMatrix::getResultingState($action)             // Get target state
+TransitionMatrix::actionRequiresRole($action, $role)     // Check role permission
+TransitionMatrix::getAllowedRoles($action)               // Get roles permitted for action
+$election->transitionTo(Transition::manual(...))         // Perform transition
+$election->resolveActorRole($userId)                    // Resolve user role
+$election->whyCannotCompleteAdministration()            // Pre-flight check
+$election->whyCannotOpenVoting()                        // Pre-flight check
 ```
 
-**Test All:** `php artisan test tests/Feature/Election/ tests/Unit/Domain/Election/ --no-coverage`
+**Test All:**
+```bash
+php artisan test tests/Feature/ElectionStateMachineTest.php
+php artisan test tests/Feature/Election/VotingButtonsStateMachineTest.php
+php artisan test tests/Unit/Domain/Election/
+```
 
 ---
 
-**Last Updated:** April 26, 2026  
-**Status:** ✅ Complete (67/67 tests passing)  
-**Author:** System Architecture
+**Last Updated:** May 12, 2026  
+**Status:** ✅ Complete (40/40 ElectionStateMachineTest + 10 VotingButtonsStateMachineTest passing)

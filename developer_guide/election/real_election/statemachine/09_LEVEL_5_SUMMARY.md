@@ -1,6 +1,6 @@
 # Level 5: Domain Workflow Engine — Complete Implementation Guide
 
-**Status:** ✅ Production Ready | **Date:** April 26, 2026 | **Tests:** 45 passing (107 assertions)
+**Status:** ✅ Production Ready | **Date:** May 12, 2026 | **Tests:** 50 passing (ElectionStateMachine: 40, VotingButtons: 10)
 
 ---
 
@@ -309,7 +309,7 @@ TransitionMatrix::actionRequiresRole('open_voting', 'admin');
 
 ### Integration Tests (State Machine)
 
-**File:** `tests/Feature/ElectionStateMachineTest.php` (35 tests)
+**File:** `tests/Feature/ElectionStateMachineTest.php` (40 tests)
 
 ```
 State Derivation (5)
@@ -319,27 +319,47 @@ State Derivation (5)
 ├─ state_is_voting_when_within_voting_window
 └─ state_is_results_pending_after_voting_ends
 
-Transitions (20)
-├─ submit_for_approval_transitions_to_pending_approval
-├─ approve_transitions_to_administration
-├─ reject_returns_to_draft
-├─ complete_administration_transitions_to_nomination
-├─ open_voting_transitions_to_voting
-├─ close_voting_transitions_to_results_pending
-└─ ... more transition tests
+Allows Action (4)
+├─ administration_state_allows_manage_posts
+├─ nomination_state_allows_candidacy_actions
+├─ voting_state_allows_cast_vote_only
+└─ results_state_allows_view_results
 
-Events (6)
+Complete Administration (5)
+├─ cannot_complete_administration_without_posts
+├─ cannot_complete_administration_without_voters
+├─ complete_administration_transitions_to_nomination
+├─ completing_administration_auto_sets_nomination_suggested_dates
+└─ cannot_complete_administration_without_committee_members
+
+Complete Nomination (3)
+├─ cannot_complete_nomination_with_pending_candidates
+├─ complete_nomination_transitions_state_correctly
+└─ completing_nomination_auto_sets_voting_dates
+
+Force Close Nomination (2)
+├─ force_close_nomination_rejects_pending_candidates
+└─ cannot_force_close_nomination_after_voting_started
+
+Temporal Guards (5) ← NEW
+├─ cannot_complete_administration_before_scheduled_start
+├─ can_complete_administration_on_or_after_scheduled_start
+├─ cannot_open_voting_before_voting_start_date
+├─ can_open_voting_on_or_after_voting_start_date
+└─ why_cannot_open_voting_returns_reason_when_before_voting_start
+
+Events (7)
 ├─ election_created_event_is_dispatched
 ├─ election_approved_event_is_dispatched
+├─ administration_completed_event_is_dispatched
+├─ nomination_completed_event_is_dispatched
 ├─ voting_opened_event_is_dispatched
 ├─ voting_closed_event_is_dispatched
 └─ ... more event tests
 
-Permissions (4)
-├─ admin_can_approve_elections
-├─ chief_can_open_voting
-├─ deputy_can_close_voting
-└─ observer_cannot_perform_actions
+HTTP Routes (2)
+├─ complete_administration_route_transitions_state
+└─ complete_administration_route_requires_reason
 ```
 
 ---
@@ -397,6 +417,20 @@ if (!in_array($userRole, TransitionMatrix::getAllowedRoles('open_voting'))) {
 }
 
 $election->transitionTo($transition);
+```
+
+### Pre-Flight Validation (Temporal Guards)
+
+```php
+// Check why an action would fail BEFORE calling transitionTo
+$reason = $election->whyCannotCompleteAdministration();
+if ($reason) {
+    return back()->with('error', "Cannot complete administration: {$reason}");
+    // e.g. "Administration phase has not yet started. Scheduled start: 2026-05-14 09:00"
+}
+
+// Safe to proceed
+$election->completeAdministration('Ready', auth()->id());
 ```
 
 ### Using Metadata for Audit Trails
@@ -489,13 +523,15 @@ if ($election->current_state !== 'nomination') {
 
 Before deploying to production:
 
-- [ ] All 45 tests passing: `php artisan test tests/Feature/Election/ --no-coverage`
+- [ ] All 50 tests passing: `php artisan test tests/Feature/ElectionStateMachineTest.php tests/Feature/Election/VotingButtonsStateMachineTest.php`
 - [ ] ElectionStateTransition table exists with `created_at` column
 - [ ] ElectionOfficer table exists for role-based authorization
-- [ ] Test transitions with different user roles
+- [ ] Test transitions with different user roles (chief, deputy, super_admin)
+- [ ] Test temporal guards — try completing admin before administration_suggested_start
 - [ ] Verify permission errors are catchable
 - [ ] Test concurrent transitions (cache lock works)
 - [ ] Monitor ElectionStateTransition creation
+- [ ] Verify TransitionMatrix::validate() passes (boot-time consistency check)
 
 ---
 
@@ -507,9 +543,9 @@ Before deploying to production:
 public function transitionTo(Transition $transition): ElectionStateTransition
 
 Throws:
-  - InvalidTransitionException: State/action mismatch
-  - DomainException: Guard validation failed
-  - DomainException: Permission denied
+  - InvalidTransitionException: State/action mismatch (step 1)
+  - DomainException: Permission denied for role (step 2)
+  - InvalidArgumentException: Business rule violation (step 3)
 
 Returns:
   - ElectionStateTransition: Immutable audit record
@@ -545,11 +581,11 @@ Returns: true if role can perform action, false otherwise
 | Election.php | transitionTo() + guards | 250 |
 | ElectionManagementController.php | HTTP endpoints | 50 |
 | VotingButtonsStateMachineTest.php | 10 integration tests | 300 |
-| ElectionStateMachineTest.php | 35 integration tests | 700 |
+| ElectionStateMachineTest.php | 40 integration tests | 850 |
 | TransitionTest.php | 14 unit tests | 250 |
 
-**Total: 45 tests, 107 assertions, ~1,700 lines of production + test code**
+**Total: 50 tests, ~2,000 lines of production + test code**
 
 ---
 
-**Version:** 2.1 (Level 5) | **Status:** Production Ready ✅ | **Last Updated:** April 26, 2026
+**Version:** 2.2 (Transition VO + Role Auth + Temporal Guards) | **Status:** Production Ready ✅ | **Last Updated:** May 12, 2026

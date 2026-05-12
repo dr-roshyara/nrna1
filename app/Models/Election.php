@@ -1757,6 +1757,7 @@ class Election extends Model
     {
         $updateData = [
             // NO 'state' here — state is set by transitionTo()
+            'status' => 'active',
             'nomination_completed' => true,
             'nomination_completed_at' => $currentTime,
         ];
@@ -1942,10 +1943,13 @@ class Election extends Model
         if (!ElectionOfficer::where('election_id', $this->id)->active()->exists()) {
             return 'No committee members have been added.';
         }
+        if ($this->administration_suggested_start && now()->lt($this->administration_suggested_start)) {
+            return 'Administration phase has not yet started. Scheduled start: ' . $this->administration_suggested_start->format('Y-m-d H:i');
+        }
         return null;
     }
 
-    private function whyCannotOpenVoting(): ?string
+    public function whyCannotOpenVoting(): ?string
     {
         if (!$this->nomination_completed) {
             return 'Nomination phase has not been completed.';
@@ -1955,6 +1959,9 @@ class Election extends Model
         }
         if (($this->pending_candidacies_count ?? 0) > 0) {
             return 'There are pending candidacy applications.';
+        }
+        if ($this->voting_starts_at && now()->lt($this->voting_starts_at)) {
+            return 'Voting phase has not yet started. Scheduled start: ' . $this->voting_starts_at->format('Y-m-d H:i');
         }
         return null;
     }

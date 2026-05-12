@@ -4,7 +4,7 @@
 
 This guide documents the complete implementation of the **Election State Machine** — a production-grade, TDD-first system for managing election lifecycle transitions with immutable audit trails, concurrent safety, and real-time observability.
 
-**Version:** 2.1 (Level 5: Domain Workflow Engine) | **Built:** April 2026 | **Status:** Production Ready ✅ | **Tests:** 45/45 passing (107 assertions)
+**Version:** 2.2 (Transition VO + Role Auth + Temporal Guards) | **Built:** May 2026 | **Status:** Production Ready ✅ | **Tests:** 50/50 passing (ElectionStateMachine: 40, VotingButtons: 10)
 
 ---
 
@@ -48,8 +48,10 @@ Validates state, creates immutable audit record, locks voting, fires events.
 - **TransitionTrigger Enum** — Typed trigger system (MANUAL, TIME, GRACE_PERIOD, SYSTEM)
 - **Role-Based Authorization** — ACTION_PERMISSIONS matrix for granular permission control
 - **Guard Layer** — Dynamic dispatch pattern with validateOpenVoting, validateCloseVoting, etc.
-- **TDD Coverage** — 100% test coverage; 45 tests passing (10 VotingButtons + 35 ElectionStateMachine)
+- **TDD Coverage** — 100% test coverage; 50 tests passing (40 ElectionStateMachine + 10 VotingButtons)
 - **Voting Button System** — Complete Phase 4 implementation of Open/Close voting with full audit trail
+- **Temporal Guards** — Scheduled date enforcement prevents phase transitions before configured start times
+- **Role-Based Authorization** — ElectionOfficer roles (chief/deputy/super_admin) gate every action via resolveActorRole()
 
 ---
 
@@ -72,11 +74,11 @@ Validates state, creates immutable audit record, locks voting, fires events.
 - `app/Http/Controllers/Admin/AdminElectionController.php` — handles approval workflow
 - `app/Domain/Election/Events/` — Event classes (ElectionApproved, ElectionRejected, ElectionSubmittedForApproval, VotingOpened, VotingClosed)
 
-### Tests (45/45 Passing, 107 Assertions)
-- `tests/Unit/Domain/Election/TransitionTest.php` — 14 tests for Transition VO (NEW)
-- `tests/Unit/Domain/Election/TransitionMatrixTest.php` — 12 action-based permission tests (ENHANCED)
+### Tests (50/50 Passing)
+- `tests/Unit/Domain/Election/TransitionTest.php` — 14 tests for Transition VO
+- `tests/Unit/Domain/Election/TransitionMatrixTest.php` — action-based permission tests
 - `tests/Feature/Election/VotingButtonsStateMachineTest.php` — 10 integration tests (all passing)
-- `tests/Feature/Election/ElectionStateMachineTest.php` — 35 regression tests (all passing)
+- `tests/Feature/ElectionStateMachineTest.php` — **40** regression + temporal guard tests (all passing)
 
 ### Frontend
 - `resources/js/Pages/Election/Management.vue` — Button visibility based on election state
@@ -110,15 +112,17 @@ php artisan test tests/Feature/Election/VotingButtonsStateMachineTest.php tests/
 
 ## Production Deployment
 
-- [ ] Run: `php artisan test tests/Feature/Election/ --no-coverage`
-- [ ] Verify: 45 tests pass, 107 assertions
+- [ ] Run: `php artisan test tests/Feature/ElectionStateMachineTest.php tests/Feature/Election/VotingButtonsStateMachineTest.php`
+- [ ] Verify: 50 tests pass (40 + 10)
 - [ ] Check: ElectionStateTransition table exists with created_at column
 - [ ] Check: ElectionOfficer table exists for role-based authorization
 - [ ] Test: State transitions in staging (including permission checks)
-- [ ] Test: Different user roles (admin, chief, deputy) have correct permissions
+- [ ] Test: Temporal guards — try completing admin before `administration_suggested_start`
+- [ ] Test: Different user roles (chief, deputy, super_admin, admin) have correct permissions
+- [ ] Verify: `TransitionMatrix::validate()` passes (boot-time invariant check)
 - [ ] Monitor: ElectionStateChangedEvent logs and ElectionStateTransition audit records
-- [ ] Brief: Support team on new Transition VO API and role-based authorization
+- [ ] Brief: Support team on Transition VO API, role-based authorization, and temporal guard errors
 
 ---
 
-**Last Updated:** April 26, 2026 (Level 5: Domain Workflow Engine Complete) | **Status:** Production Ready ✅ | **Tests:** 45/45 passing (107 assertions)
+**Last Updated:** May 12, 2026 | **Status:** Production Ready ✅ | **Tests:** 50/50 passing (ElectionStateMachine: 40, VotingButtons: 10)
