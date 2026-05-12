@@ -26,6 +26,11 @@ use DomainException;
 use App\Contexts\Membership\Domain\Committee\GeoPolicy;
 use App\Contexts\Membership\Domain\Committee\GeoScope;
 use App\Contexts\Membership\Domain\Committee\CommitteeStructureId;
+use App\Contexts\Membership\Domain\Committee\Events\CommitteeLifecycleChanged;
+use App\Contexts\Membership\Domain\Committee\Events\CommitteeParentAttached;
+use App\Contexts\Membership\Domain\Committee\Events\CommitteeTermUpdated;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeFacts;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\TermPeriod;
 
 /**
  * Committee Aggregate Root
@@ -77,12 +82,16 @@ final class Committee extends TenantAggregateRoot
     /** @var array<CommitteeAssignment> Committee assignments owned by this aggregate */
     private array $assignments = [];
 
+    /** Governance lifecycle state (entity within the aggregate boundary) */
+    private GovernanceState $governanceState;
+
     /**
      * Private constructor for factory methods
      */
     private function __construct(TenantId $tenantId)
     {
         $this->tenantId = $tenantId;
+        $this->governanceState = new GovernanceState();
     }
 
     /**
@@ -244,7 +253,8 @@ final class Committee extends TenantAggregateRoot
         ?GeoPolicy $geoPolicy = null,
         ?GeoScope $geoScope = null,
         ?CommitteeStructureId $createdFromStructureId = null,
-        ?int $structureVersion = null
+        ?int $structureVersion = null,
+        ?GovernanceState $governanceState = null
     ): self {
         if ($structure === null) {
             throw new \LogicException('CommitteeStructure must be provided to reconstruct()');
@@ -266,6 +276,7 @@ final class Committee extends TenantAggregateRoot
         $committee->geoScope = $geoScope;
         $committee->createdFromStructureId = $createdFromStructureId;
         $committee->structureVersion = $structureVersion;
+        $committee->governanceState = $governanceState ?? new GovernanceState();
 
         return $committee;
     }
@@ -477,6 +488,11 @@ final class Committee extends TenantAggregateRoot
         // 1. Validate committee is active (CHEAP)
         if (!$this->status->isActive()) {
             throw new DomainException('Cannot assign members to inactive committee');
+        }
+
+        // 1b. Validate committee is not dissolved (governance invariant)
+        if ($this->governanceState->isDissolved()) {
+            throw new DomainException('Cannot assign members to dissolved committee');
         }
 
         // 2. Check for existing active assignment (CHEAP - prevents duplicates)
@@ -964,4 +980,130 @@ final class Committee extends TenantAggregateRoot
     /**
      * Note: belongsToTenant() is inherited from TenantAggregateRoot
      */
+
+    // ─── Governance lifecycle delegates ───────────────────────────
+
+    /**
+     * Suspend this committee.
+     */
+    public function suspend(string $changedBy, string $reason): void
+    {
+        $this->governanceState->suspend();
+
+        $this->recordEvent(new CommitteeLifecycleChanged(
+            aggregateId: $this->id->value(),
+            newState: StructuralOperationalState::SUSPENDED->value,
+            changedBy: $changedBy,
+            reason: $reason,
+            occurredAt: new DateTimeImmutable(),
+        ));
+    }
+
+    /**
+     * Restore a suspended committee.
+     */
+    public function restore(string $changedBy): void
+    {
+        $this->governanceState->restore();
+
+        $this->recordEvent(new CommitteeLifecycleChanged(
+            aggregateId: $this->id->value(),
+            newState: StructuralOperationalState::ACTIVE->value,
+            changedBy: $changedBy,
+            reason: 'Restored from suspension',
+            occurredAt: new DateTimeImmutable(),
+        ));
+    }
+
+    /**
+     * Dissolve this committee (terminal state).
+     */
+    public function dissolve(string $changedBy, string $reason): void
+    {
+        $this->governanceState->dissolve();
+
+        $this->recordEvent(new CommitteeLifecycleChanged(
+            aggregateId: $this->id->value(),
+            newState: StructuralOperationalState::DISSOLVED->value,
+            changedBy: $changedBy,
+            reason: $reason,
+            occurredAt: new DateTimeImmutable(),
+        ));
+    }
+
+    /**
+     * Attach to a parent committee in the structural hierarchy.
+     */
+    public function attachToParent(CommitteeId $parentId): void
+    {
+        $this->governanceState->attachToParent($parentId, $this->id);
+
+        $this->recordEvent(new CommitteeParentAttached(
+            aggregateId: $this->id->value(),
+            parentId: $parentId->value(),
+            occurredAt: new DateTimeImmutable(),
+        ));
+    }
+
+    /**
+     * Start a constitutional term.
+     */
+    public function startTerm(\DateTimeImmutable $start, \DateTimeImmutable $end): void
+    {
+        $period = TermPeriod::from($start, $end);
+        $this->governanceState->startTerm($period);
+
+        $this->recordEvent(new CommitteeTermUpdated(
+            aggregateId: $this->id->value(),
+            termStart: $period->start(),
+            termEnd: $period->end(),
+            occurredAt: new DateTimeImmutable(),
+        ));
+    }
+
+    /**
+     * Extend the current term.
+     */
+    public function extendTerm(\DateTimeImmutable $start, \DateTimeImmutable $end): void
+    {
+        $period = TermPeriod::from($start, $end);
+        $this->governanceState->extendTerm($period);
+
+        $this->recordEvent(new CommitteeTermUpdated(
+            aggregateId: $this->id->value(),
+            termStart: $period->start(),
+            termEnd: $period->end(),
+            occurredAt: new DateTimeImmutable(),
+        ));
+    }
+
+    // ─── Governance accessors ─────────────────────────────────────
+
+    public function governanceState(): GovernanceState
+    {
+        return $this->governanceState;
+    }
+
+    public function parentId(): ?CommitteeId
+    {
+        return $this->governanceState->parentId();
+    }
+
+    public function term(): ?TermPeriod
+    {
+        return $this->governanceState->term();
+    }
+
+    /**
+     * Extract governance facts for policy evaluation.
+     */
+    public function toFacts(): CommitteeFacts
+    {
+        return new CommitteeFacts(
+            id: $this->id,
+            operationalState: $this->governanceState->state()->value,
+            term: $this->governanceState->term(),
+            parentId: $this->governanceState->parentId(),
+        );
+    }
 }

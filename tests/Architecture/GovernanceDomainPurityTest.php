@@ -304,7 +304,7 @@ final class GovernanceDomainPurityTest extends TestCase
         // Allowed: value objects (CommitteeId), DateTimeImmutable
         $forbiddenPatterns = [
             'CommitteeFacts',
-            'CommitteeAggregate',
+            'CommitteeConstitution',
             'CommitteeGovernanceProjection',
             'CommitteeGovernanceInterpreter',
         ];

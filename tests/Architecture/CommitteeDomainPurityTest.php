@@ -43,13 +43,13 @@ final class CommitteeDomainPurityTest extends TestCase
 
     public function test_aggregate_is_final(): void
     {
-        $filePath = self::DOMAIN_PATH . '/CommitteeAggregate.php';
+        $filePath = self::DOMAIN_PATH . '/CommitteeConstitution.php';
         $content = file_get_contents($filePath);
 
         $this->assertStringContainsString(
-            'final class CommitteeAggregate',
+            'final class CommitteeConstitution',
             $content,
-            'CommitteeAggregate must be final'
+            'CommitteeConstitution must be final'
         );
     }
 
@@ -144,7 +144,7 @@ final class CommitteeDomainPurityTest extends TestCase
 
     public function test_aggregate_exposes_release_events_only(): void
     {
-        $filePath = self::DOMAIN_PATH . '/CommitteeAggregate.php';
+        $filePath = self::DOMAIN_PATH . '/CommitteeConstitution.php';
         $content = file_get_contents($filePath);
 
         $this->assertStringContainsString('public function releaseEvents', $content);
@@ -154,7 +154,7 @@ final class CommitteeDomainPurityTest extends TestCase
 
     public function test_no_public_setters_in_aggregate(): void
     {
-        $filePath = self::DOMAIN_PATH . '/CommitteeAggregate.php';
+        $filePath = self::DOMAIN_PATH . '/CommitteeConstitution.php';
         $content = file_get_contents($filePath);
 
         $setters = preg_match_all('/public\s+function\s+set\w+\(/', $content);

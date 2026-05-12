@@ -1438,29 +1438,11 @@ private function has_valid_selections($selections)
             return $redirect;
         }
 
-        // PHASE 3 VALIDATION: Election Validation
-        // Demo elections: No organisation validation (can be voted by anyone)
-        // Real elections: Require organisation matching
-        if ($election->type === 'real') {
-            // REAL ELECTION: Validate organisation matching
-            if ($auth_user->organisation_id !== $election->organisation_id) {
-                DB::rollBack();
-                \Log::channel('voting_security')->error('Organisation mismatch in vote submission', [
-                    'user_organisation_id' => $auth_user->organisation_id,
-                    'election_organisation_id' => $election->organisation_id,
-                    'election_id' => $election->id,
-                    'user_id' => $auth_user->id,
-                    'reason' => 'organisation_mismatch',
-                    'timestamp' => now(),
-                    'ip' => request()->ip(),
-                ]);
-
-                return redirect()->route('dashboard')->withErrors([
-                    'vote' => __('You do not have permission to vote in this election.')
-                ]);
-            }
-        }
-        // Demo elections bypass organisation validation (backward compatibility)
+        // Voter eligibility is already enforced by EnsureElectionVoter middleware
+        // and ensureVoterMembership() above. The user.organisation_id field is a
+        // profile convenience field — ElectionMembership is the authoritative voter
+        // registry. Removing the redundant org_id check that was blocking legitimate
+        // voters whose profile org_id differed from the election's org_id.
 
         // PHASE 3 VALIDATION: Log successful validation
         \Log::channel('voting_audit')->info('Vote submission validated at controller level', [
@@ -1575,7 +1557,7 @@ private function has_valid_selections($selections)
         $this->user_id      =$code->user_id;
         // Use the existing session_name from the code (set during first_submission)
         // Don't overwrite it, just use what's already there
-        $session_name       =$code->session_name;
+        $session_name       = $code->session_name ?: ('vote_data_' . $auth_user->id);
         //get deligatevote from session
         $vote_data = $request->session()->get($session_name);
         // check the  voting codes 
