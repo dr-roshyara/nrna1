@@ -762,6 +762,26 @@ class ElectionManagementController extends Controller
     }
 
     /**
+     * Update expected voter count — chief or deputy.
+     *
+     * PATCH /elections/{election}/expected-voter-count
+     */
+    public function updateExpectedVoterCount(Request $request, Election $election): RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        $validated = $request->validate([
+            'expected_voter_count' => ['required', 'integer', 'min:1', 'max:10000'],
+        ]);
+
+        Election::withoutGlobalScopes()
+            ->where('id', $election->id)
+            ->update(['expected_voter_count' => $validated['expected_voter_count']]);
+
+        return back()->with('success', 'Expected voter count updated successfully.');
+    }
+
+    /**
      * Election status JSON — chief or deputy only.
      */
     public function status(Election $election): \Illuminate\Http\JsonResponse
@@ -931,7 +951,7 @@ class ElectionManagementController extends Controller
         $this->authorize('manageSettings', $election);
 
         return inertia('Election/SubmitForApproval', [
-            'election' => $election->only(['id', 'slug', 'name', 'expected_voter_count']),
+            'election' => $election->only(['id', 'slug', 'name', 'state', 'expected_voter_count']),
             'organisation' => $election->organisation->only(['slug', 'name']),
         ]);
     }
@@ -1163,7 +1183,8 @@ class ElectionManagementController extends Controller
             'committeeCount'     => $committeeCount,
             'pendingCandidates'  => $pendingCandidatesCount,
             'approvedCandidates' => $approvedCandidatesCount,
-            'allowedActions'     => $election->getAllowedActionsForUser(auth()->id()),
+            'allowedActions'             => $election->getAllowedActionsForUser(auth()->id()),
+            'openVotingBlockedReason'    => $election->whyCannotOpenVoting(),
         ];
     }
 

@@ -72,6 +72,110 @@
           </div>
         </Card>
 
+        <!-- ── ELECTION CONTROL ───────────────────────────── -->
+        <SectionCard padding="lg">
+          <!-- State Status Row -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-6 border-b-2 border-slate-200">
+            <div class="flex items-center gap-4 min-w-0">
+              <div
+                class="w-12 h-12 rounded-full flex items-center justify-center text-xl transition-all duration-300 flex-shrink-0"
+                :class="phaseInfo.color === 'emerald' ? 'bg-emerald-100 text-emerald-600' : 'bg-amber-100 text-amber-600'"
+              >
+                {{ phaseInfo.icon }}
+              </div>
+              <div class="min-w-0">
+                <h2 class="text-lg font-bold text-slate-900">{{ t.sections.election_control.title }}</h2>
+                <p
+                  class="text-sm font-semibold mt-1 transition-colors duration-300"
+                  :class="phaseInfo.color === 'emerald' ? 'text-emerald-600' : 'text-amber-600'"
+                >
+                  {{ phaseInfo.status }}
+                </p>
+              </div>
+            </div>
+            <!-- State Indicator Badge -->
+            <div
+              class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex-shrink-0"
+              :class="phaseInfo.color === 'emerald' ? 'bg-emerald-50 text-emerald-700 border-2 border-emerald-200' : 'bg-amber-50 text-amber-700 border-2 border-amber-200'"
+            >
+              {{ phaseInfo.badge }}
+            </div>
+          </div>
+
+          <!-- Action Zone (Single Button - Never Overlaps) -->
+          <div class="w-full min-w-0">
+            <!-- Submit for Approval: Show when in Draft state -->
+            <transition name="fade-scale" mode="out-in">
+              <div v-if="canSubmitForApproval" key="submit" class="w-full">
+                <ActionButton
+                  variant="primary"
+                  size="lg"
+                  :loading="isLoading"
+                  class="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transition-all duration-200"
+                  @click="router.visit(route('elections.submit-for-approval.show', { organisation: organisation.slug, election: election.slug }))"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span class="font-bold text-base">{{ t.actions?.submit_for_approval || 'Submit for Approval' }}</span>
+                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ Begin review</span>
+                </ActionButton>
+              </div>
+            </transition>
+
+            <!-- Open Voting: Show when in Nomination phase, disabled until preconditions are met -->
+            <transition name="fade-scale" mode="out-in">
+              <div v-if="canOpenVoting" key="open" class="w-full">
+                <div :title="openVotingBlockedReason || ''">
+                  <ActionButton
+                    variant="success"
+                    size="lg"
+                    :loading="isLoading"
+                    :disabled="isOpenVotingDisabled"
+                    class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-200"
+                    @click="openVoting"
+                  >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                    </svg>
+                    <span class="font-bold text-base">{{ t.sections.election_control.btn_open }}</span>
+                    <span v-if="!isOpenVotingDisabled" class="text-xs opacity-90 ml-2 hidden sm:inline">→ Begin voting</span>
+                  </ActionButton>
+                  <p v-if="openVotingBlockedReason" class="mt-2 text-xs text-amber-600 font-medium">
+                    {{ openVotingBlockedReason }}
+                  </p>
+                </div>
+              </div>
+            </transition>
+
+            <!-- Close Voting: Show when in Voting phase -->
+            <transition name="fade-scale" mode="out-in">
+              <div v-if="canCloseVoting" key="close" class="w-full">
+                <ActionButton
+                  variant="danger"
+                  size="lg"
+                  :loading="isLoading"
+                  class="w-full sm:w-auto bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 shadow-lg hover:shadow-xl transition-all duration-200"
+                  @click="closeVoting"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 1112.01 3.715M9 9a1 1 0 112 0V5.525a1 1 0 00-2 0v3.475z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="font-bold text-base">{{ t.sections.election_control.btn_close }}</span>
+                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ End voting</span>
+                </ActionButton>
+              </div>
+            </transition>
+
+            <!-- Empty State: When no action available (safety fallback) -->
+            <transition name="fade-scale" mode="out-in">
+              <div v-if="!canSubmitForApproval && !canOpenVoting && !canLockVoting && !canCloseVoting" key="empty" class="w-full px-6 py-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-lg text-center">
+                <p class="text-sm font-medium text-slate-600">✓ Election state locked</p>
+              </div>
+            </transition>
+          </div>
+        </SectionCard>
+
         <!-- Flash Messages -->
         <div
           v-if="page.props.flash?.success"
@@ -112,7 +216,7 @@
 
         <!-- Capacity/Approval Warning Banner -->
         <div
-          v-if="capacity?.requires_approval && election.state === 'draft'"
+          v-if="election.state === 'draft'"
           class="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-6"
         >
           <div class="flex items-start gap-3">
@@ -122,12 +226,37 @@
                       d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
               </svg>
             </div>
-            <div>
-              <h3 class="text-sm font-semibold text-amber-800">Admin Approval Required</h3>
-              <p class="text-sm text-amber-700 mt-1">
-                This election expects <strong>{{ capacity.expected_voter_count }}</strong> voters
-                (self-service limit: {{ capacity.self_service_limit }}).
-                A platform administrator must approve it before it can proceed.
+            <div class="flex-1">
+              <h3 class="text-sm font-semibold text-amber-800">Expected Voter Count</h3>
+              <div class="flex items-center gap-2 mt-1">
+                <input
+                  type="number"
+                  min="1"
+                  max="10000"
+                  v-model.number="expectedVoterCount"
+                  class="w-24 rounded-md border border-amber-300 px-2 py-1 text-sm text-amber-900 bg-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+                <span class="text-sm text-amber-700">voters expected</span>
+                <button
+                  @click="saveExpectedVoterCount"
+                  :disabled="saveStatus === 'saving'"
+                  class="px-3 py-1 text-xs font-semibold rounded-md transition-all duration-200"
+                  :class="saveButtonClass"
+                >
+                  {{ saveButtonText }}
+                </button>
+              </div>
+              <p v-if="saveStatus === 'success'" class="text-sm text-emerald-600 font-medium mt-1">
+                ✓ Saved — {{ expectedVoterCount }} voters expected
+              </p>
+              <p v-else-if="saveStatus === 'error'" class="text-sm text-danger-600 font-medium mt-1">
+                ✗ Failed to save. Please try again.
+              </p>
+              <p v-else-if="capacity?.requires_approval" class="text-sm text-amber-700 mt-2">
+                Exceeds self-service limit of {{ capacity.self_service_limit }} — platform admin approval required.
+              </p>
+              <p v-else class="text-sm text-amber-700 mt-1">
+                Set the expected number of voters before submitting for approval.
               </p>
             </div>
           </div>
@@ -159,110 +288,6 @@
           @dates-updated="handleDatesUpdated"
           @lock-voting="lockVoting"
         />
-
-        <!-- ── VOTING PERIOD CONTROL ───────────────────────────── -->
-        <SectionCard padding="lg">
-          <!-- State Status Row -->
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-6 border-b-2 border-slate-200">
-            <div class="flex items-center gap-4 min-w-0">
-              <div
-                class="w-12 h-12 rounded-full flex items-center justify-center text-xl transition-all duration-300 flex-shrink-0"
-                :class="isVotingActive
-                  ? 'bg-emerald-100 text-emerald-600'
-                  : 'bg-amber-100 text-amber-600'"
-              >
-                {{ isVotingActive ? '🗳️' : '📋' }}
-              </div>
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-slate-900">{{ t.sections.voting_control.title }}</h2>
-                <p
-                  class="text-sm font-semibold mt-1 transition-colors duration-300"
-                  :class="isVotingActive
-                    ? 'text-emerald-600'
-                    : 'text-amber-600'"
-                >
-                  {{ isVotingActive ? '✓ Voting Active' : '⏳ Awaiting Voting' }}
-                </p>
-              </div>
-            </div>
-            <!-- State Indicator Badge -->
-            <div
-              class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex-shrink-0"
-              :class="isVotingActive
-                ? 'bg-emerald-50 text-emerald-700 border-2 border-emerald-200'
-                : 'bg-amber-50 text-amber-700 border-2 border-amber-200'"
-            >
-              {{ isVotingActive ? 'Voting Phase' : 'Nomination Phase' }}
-            </div>
-          </div>
-
-          <!-- Action Zone (Single Button - Never Overlaps) -->
-          <div class="w-full min-w-0">
-            <!-- Submit for Approval: Show when in Draft state -->
-            <transition name="fade-scale" mode="out-in">
-              <div v-if="canSubmitForApproval" key="submit" class="w-full">
-                <ActionButton
-                  variant="primary"
-                  size="lg"
-                  :loading="isLoading"
-                  class="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transition-all duration-200"
-                  @click="router.visit(route('elections.submit-for-approval.show', { organisation: organisation.slug, election: election.slug }))"
-                >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  <span class="font-bold text-base">{{ t.actions?.submit_for_approval || 'Submit for Approval' }}</span>
-                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ Begin review</span>
-                </ActionButton>
-              </div>
-            </transition>
-
-            <!-- Open Voting: Show when in Nomination phase -->
-            <transition name="fade-scale" mode="out-in">
-              <div v-if="canOpenVoting" key="open" class="w-full">
-                <ActionButton
-                  variant="success"
-                  size="lg"
-                  :loading="isLoading"
-                  class="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 shadow-lg hover:shadow-xl transition-all duration-200"
-                  @click="openVoting"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-                  </svg>
-                  <span class="font-bold text-base">{{ t.sections.voting_control.btn_open }}</span>
-                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ Begin voting</span>
-                </ActionButton>
-              </div>
-            </transition>
-
-            <!-- Close Voting: Show when in Voting phase -->
-            <transition name="fade-scale" mode="out-in">
-              <div v-if="canCloseVoting" key="close" class="w-full">
-                <ActionButton
-                  variant="danger"
-                  size="lg"
-                  :loading="isLoading"
-                  class="w-full sm:w-auto bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 shadow-lg hover:shadow-xl transition-all duration-200"
-                  @click="closeVoting"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 1112.01 3.715M9 9a1 1 0 112 0V5.525a1 1 0 00-2 0v3.475z" clip-rule="evenodd"/>
-                  </svg>
-                  <span class="font-bold text-base">{{ t.sections.voting_control.btn_close }}</span>
-                  <span class="text-xs opacity-90 ml-2 hidden sm:inline">→ End voting</span>
-                </ActionButton>
-              </div>
-            </transition>
-
-            <!-- Empty State: When no action available (safety fallback) -->
-            <transition name="fade-scale" mode="out-in">
-              <div v-if="!canSubmitForApproval && !canOpenVoting && !canLockVoting && !canCloseVoting" key="empty" class="w-full px-6 py-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-lg text-center">
-                <p class="text-sm font-medium text-slate-600">✓ Election state locked</p>
-              </div>
-            </transition>
-          </div>
-        </SectionCard>
 
         <!-- ── TIMELINE SETTINGS ───────────────────────────────── -->
         <SectionCard padding="lg">
@@ -381,6 +406,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
               </svg>
               {{ t.sections.voter_management.btn_manage }}
+            </ActionButton>
+            <ActionButton as="a" variant="outline" size="md" :href="voterImportUrl" class="w-full sm:w-auto">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+              {{ t.sections.voter_management.btn_import }}
             </ActionButton>
             <ActionButton as="a" variant="outline" size="md" :href="voterListUrl" class="w-full sm:w-auto">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -887,17 +918,70 @@ function toDatetimeLocal(raw) {
   return new Date(raw).toISOString().slice(0, 16)
 }
 
-const currentState = computed(() => props.election.current_state)
+const currentState = computed(() => props.stateMachine?.currentState ?? props.election.state ?? 'draft')
 const allowedActions = computed(() => props.stateMachine?.allowedActions ?? [])
+
+const expectedVoterCount = ref(props.capacity?.expected_voter_count ?? 0)
+const saveStatus = ref('idle') // 'idle' | 'saving' | 'success' | 'error'
+
+const isSavingVoterCount = computed(() => saveStatus.value === 'saving')
+
+const saveExpectedVoterCount = () => {
+  if (expectedVoterCount.value < 1) return
+  saveStatus.value = 'saving'
+  router.patch(
+    route('elections.expected-voter-count', { election: props.election.slug }),
+    { expected_voter_count: expectedVoterCount.value },
+    {
+      preserveScroll: true,
+      onSuccess: () => {
+        saveStatus.value = 'success'
+        setTimeout(() => { saveStatus.value = 'idle' }, 2500)
+      },
+      onError: () => {
+        saveStatus.value = 'error'
+        setTimeout(() => { saveStatus.value = 'idle' }, 2500)
+      },
+    }
+  )
+}
+
+const saveButtonClass = computed(() => {
+  if (saveStatus.value === 'saving') return 'bg-amber-500 text-white cursor-wait'
+  if (saveStatus.value === 'success') return 'bg-emerald-500 text-white'
+  if (saveStatus.value === 'error') return 'bg-danger-500 text-white'
+  return 'bg-amber-600 text-white hover:bg-amber-700'
+})
+
+const saveButtonText = computed(() => {
+  if (saveStatus.value === 'saving') return 'Saving...'
+  if (saveStatus.value === 'success') return '✓ Saved'
+  if (saveStatus.value === 'error') return '✗ Failed'
+  return 'Save'
+})
 
 const canSubmitForApproval = computed(() => allowedActions.value.includes('submit_for_approval'))
 const isPendingApproval = computed(() => currentState.value === 'pending_approval')
 const canCompleteAdministration = computed(() => allowedActions.value.includes('complete_administration'))
 const canOpenVoting = computed(() => allowedActions.value.includes('open_voting'))
+const openVotingBlockedReason = computed(() => props.stateMachine?.openVotingBlockedReason ?? null)
+const isOpenVotingDisabled = computed(() => !!openVotingBlockedReason.value)
 const canLockVoting = computed(() => allowedActions.value.includes('lock_voting'))
 const canCloseVoting = computed(() => allowedActions.value.includes('close_voting'))
 const canPublishResults = computed(() => allowedActions.value.includes('publish_results'))
 const isVotingActive = computed(() => canCloseVoting.value)
+
+const phaseInfo = computed(() => {
+  const state = currentState.value
+  if (state === 'draft') return { icon: '📋', status: 'Set up election posts, candidates, and voter list. When ready, submit for approval to begin the election workflow.', badge: 'Draft Phase', color: 'amber' }
+  if (state === 'pending_approval') return { icon: '⏳', status: 'Awaiting review by election committee. The election will move to administration once approved.', badge: 'Approval Phase', color: 'amber' }
+  if (state === 'administration') return { icon: '⚙️', status: 'Configure posts and positions, assign candidates, import and approve voters. Complete administration to open nominations.', badge: 'Administration Phase', color: 'amber' }
+  if (state === 'nomination') return { icon: '📋', status: 'Review and approve/reject candidacy applications from members below. Open voting when ready to begin the election.', badge: 'Nomination Phase', color: 'amber' }
+  if (state === 'voting') return { icon: '🗳️', status: '✓ Voting is active — members can cast their votes. Monitor participation and close voting when the period ends.', badge: 'Voting Phase', color: 'emerald' }
+  if (state === 'results_pending') return { icon: '📊', status: 'Voting has closed. Results are being counted. Publish results when ready to make them visible to members.', badge: 'Counting Phase', color: 'amber' }
+  if (state === 'results') return { icon: '✅', status: 'Election complete and results published. All phases are finished.', badge: 'Results Phase', color: 'emerald' }
+  return { icon: '📋', status: 'Unknown', badge: '', color: 'slate' }
+})
 
 const settingsUrl = computed(() =>
   route('elections.settings.edit', {
@@ -914,6 +998,13 @@ const voterListUrl = computed(() =>
 
 const voterManageUrl = computed(() =>
   route('elections.voters.index', {
+    organisation: props.election.organisation?.slug,
+    election:     props.election.slug,
+  })
+)
+
+const voterImportUrl = computed(() =>
+  route('elections.voters.import.create', {
     organisation: props.election.organisation?.slug,
     election:     props.election.slug,
   })
@@ -1034,8 +1125,8 @@ const submitPhaseCompletion = () => {
     {
       preserveScroll: true,
       onSuccess: () => {
-        // Use Inertia router.reload() for simple, reliable page refresh
-        // This automatically updates all props when the transition succeeds
+        // Close modal, then refresh page
+        showCompletionModal.value = false
         router.reload({ preserveScroll: true })
       },
       onError: (errors) => {

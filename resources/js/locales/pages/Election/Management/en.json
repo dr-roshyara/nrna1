@@ -57,8 +57,8 @@
       "empty_title": "No voters assigned",
       "empty_desc": "Add members to this election to track voter statistics."
     },
-    "voting_control": {
-      "title": "Voting Control",
+    "election_control": {
+      "title": "Election Control",
       "currently_active": "Voting is currently active",
       "currently_inactive": "Voting is currently inactive",
       "btn_open": "Open Voting",
@@ -82,7 +82,8 @@
       "total_label": "Total",
       "approved_label": "Approved",
       "suspended_label": "Suspended",
-      "btn_manage": "Manage Voter List"
+      "btn_manage": "Manage Voter List",
+      "btn_import": "Import Voters"
     },
     "results": {
       "title": "Result Management",

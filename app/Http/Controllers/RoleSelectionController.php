@@ -38,13 +38,12 @@ class RoleSelectionController extends Controller
             'commissionStats' => $this->getCommissionStats($user),
             'voterStats' => $this->getVoterStats($user),
             'userOrganizations' => $user->organisationRoles()
-                ->withPivot('role')
                 ->get()
                 ->map(function ($org) {
                     return [
                         'id' => $org->id,
                         'name' => $org->name,
-                        'role' => $org->pivot->role,
+                        'role' => $org->role,
                     ];
                 })
                 ->toArray(),
@@ -102,7 +101,7 @@ class RoleSelectionController extends Controller
     private function getAdminStats($user)
     {
         $adminOrgs = $user->organisationRoles()
-            ->wherePivot('role', 'admin')
+            ->where('role', 'admin')
             ->count();
 
         return [

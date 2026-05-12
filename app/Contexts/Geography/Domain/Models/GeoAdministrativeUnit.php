@@ -55,6 +55,7 @@ class GeoAdministrativeUnit extends Model
         'is_active',
         'valid_from',
         'valid_to',
+        'version',
     ];
 
     /**
@@ -68,20 +69,8 @@ class GeoAdministrativeUnit extends Model
         'is_active' => 'boolean',
         'valid_from' => 'date',
         'valid_to' => 'date',
+        'version' => 'integer',
     ];
-
-    /**
-     * Boot the model.
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        // Automatically update materialized path on save
-        static::saving(function ($unit) {
-            $unit->updateMaterializedPath();
-        });
-    }
 
     /**
      * Get the country this unit belongs to.
@@ -174,21 +163,6 @@ class GeoAdministrativeUnit extends Model
     public function getMeta(string $key, $default = null)
     {
         return $this->metadata[$key] ?? $default;
-    }
-
-    /**
-     * Update materialized path based on parent.
-     *
-     * @return void
-     */
-    protected function updateMaterializedPath(): void
-    {
-        if ($this->parent_id) {
-            $parent = $this->parent;
-            $this->path = ($parent->path ?? '/') . $parent->id . '/';
-        } else {
-            $this->path = '/';
-        }
     }
 
     /**

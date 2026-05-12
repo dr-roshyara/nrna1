@@ -13,6 +13,7 @@ use App\Contexts\Geography\Domain\ValueObjects\GeographyLevel;
 use App\Contexts\Geography\Domain\ValueObjects\GeoPath;
 use App\Contexts\Geography\Domain\ValueObjects\LocalizedName;
 use App\Contexts\Geography\Domain\ValueObjects\GeographicCode;
+use App\Contexts\Geography\Infrastructure\Exceptions\ConcurrencyException;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -248,6 +249,121 @@ class EloquentGeoUnitRepository implements GeoUnitRepositoryInterface
     }
 
     /**
+     * Persist a geographic unit with optimistic locking.
+     *
+     * For new units: INSERT with version=1.
+     * For existing units: UPDATE with WHERE version = expected, increment version.
+     * Throws ConcurrencyException if the version doesn't match (record was modified).
+     */
+    public function save(GeoAdministrativeUnit $unit): void
+    {
+        $model = GeoAdministrativeUnitModel::find($unit->getId()->toInt());
+
+        if ($model) {
+            // UPDATE with optimistic locking
+            $expectedVersion = $unit->getVersion();
+            $attributes = $this->entityToAttributes($unit);
+
+            // Increment version in the same UPDATE
+            $attributes['version'] = $expectedVersion + 1;
+
+            $affected = GeoAdministrativeUnitModel::where('id', $unit->getId()->toInt())
+                ->where('version', $expectedVersion)
+                ->update($attributes);
+
+            if ($affected === 0) {
+                // Reload to get actual version for error message
+                $current = GeoAdministrativeUnitModel::find($unit->getId()->toInt());
+                $actualVersion = $current ? $current->version : 0;
+
+                throw ConcurrencyException::versionMismatch(
+                    $unit->getId()->toInt(),
+                    $expectedVersion,
+                    $actualVersion
+                );
+            }
+
+            // Sync entity version to match DB state
+            $unit->incrementVersion();
+        } else {
+            // INSERT: repository controls identity + path explicitly (bypasses mass-assignment guard)
+            $attributes = $this->entityToAttributes($unit);
+            $attributes['version'] = 1;
+            $attributes['is_active'] = $attributes['is_active'] ?? true;
+
+            $model = new GeoAdministrativeUnitModel();
+            $model->forceFill($attributes);
+            $model->save();
+        }
+    }
+
+    /**
+     * Delete a geographic unit by ID.
+     */
+    public function delete(GeoUnitId $unitId): void
+    {
+        GeoAdministrativeUnitModel::where('id', $unitId->toInt())->delete();
+    }
+
+    /**
+     * Find a geographic unit by country code and local code.
+     */
+    public function findByCode(CountryCode $countryCode, string $code): ?GeoAdministrativeUnit
+    {
+        $model = GeoAdministrativeUnitModel::where('country_code', $countryCode->toString())
+            ->where('code', $code)
+            ->first();
+
+        if (!$model) {
+            return null;
+        }
+
+        return $this->convertModelToEntity($model);
+    }
+
+    /**
+     * Convert domain entity attributes to model-compatible array.
+     * Does NOT include version — handled by save() for optimistic locking.
+     */
+    private function entityToAttributes(GeoAdministrativeUnit $unit): array
+    {
+        // Convert entity path (dot-notation: "100" or "100.501") to model format (slash-notation: "/100/" or "/100/501/")
+        $rawPath = $unit->getPath()->toString();
+        $pathStr = $rawPath === '' ? '/' : '/' . str_replace('.', '/', $rawPath) . '/';
+
+        return [
+            'id' => $unit->getId()->toInt(),
+            'country_code' => $unit->getCountryCode()->toString(),
+            'admin_level' => $unit->getLevel()->toInt(),
+            'admin_type' => $this->levelToAdminType($unit->getLevel()),
+            'parent_id' => $unit->getParentId()?->toInt(),
+            'path' => $pathStr,
+            'code' => $unit->getOfficialCode()?->toString(),
+            'name_local' => $unit->getName()->toArray(),
+            'is_active' => true,
+            'valid_from' => $unit->getValidFrom(),
+            'valid_to' => $unit->getValidTo(),
+        ];
+    }
+
+    /**
+     * Map GeographyLevel to admin_type string.
+     */
+    private function levelToAdminType(GeographyLevel $level): string
+    {
+        $types = [
+            0 => 'continent',
+            1 => 'country',
+            2 => 'province',
+            3 => 'district',
+            4 => 'local_level',
+            5 => 'ward',
+        ];
+
+        return $types[$level->toInt()] ?? 'custom_' . $level->toInt();
+    }
+
+    /**
      * Convert Eloquent model to DDD Entity
      */
     private function convertModelToEntity(GeoAdministrativeUnitModel $model): GeoAdministrativeUnit
@@ -258,11 +374,13 @@ class EloquentGeoUnitRepository implements GeoUnitRepositoryInterface
         $level = GeographyLevel::fromInt($model->admin_level);
 
         $parentId = $model->parent_id ? GeoUnitId::fromInt($model->parent_id) : null;
-        $path = GeoPath::fromString($model->path ?? '');
+
+        // Path: handle both slash-format (/1/2/) and dot-format (1.2.3)
+        $path = $this->parsePath($model->path ?? '');
 
         // Create LocalizedName from name_local JSON
         $nameLocal = $model->name_local ?? ['en' => ''];
-        $name = LocalizedName::english($nameLocal['en'] ?? '');
+        $name = LocalizedName::fromArray($nameLocal);
 
         // Create official code if available
         $officialCode = null;
@@ -277,7 +395,28 @@ class EloquentGeoUnitRepository implements GeoUnitRepositoryInterface
             $parentId,
             $path,
             $name,
-            $officialCode
+            $officialCode,
+            $model->version ?? 1,
+            $model->valid_from ? new \DateTimeImmutable($model->valid_from) : null,
+            $model->valid_to ? new \DateTimeImmutable($model->valid_to) : null,
         );
+    }
+
+    /**
+     * Parse a path string in either slash-format (/1/2/) or dot-format (1.2.3).
+     */
+    private function parsePath(string $pathStr): GeoPath
+    {
+        if (empty($pathStr)) {
+            return GeoPath::empty();
+        }
+
+        // Normalize: replace slashes with dots for uniform parsing
+        $normalized = str_replace('/', '.', trim($pathStr, '/'));
+        if (empty($normalized)) {
+            return GeoPath::empty();
+        }
+
+        return GeoPath::fromString($normalized);
     }
 }

@@ -1131,8 +1131,10 @@ public function getVoterState(): string
      */
     public function electionCommissionRoles()
     {
-        return $this->belongsToMany(Election::class, 'election_commission_members')
-                    ->withTimestamps();
+        return $this->belongsToMany(Election::class, 'election_officers')
+            ->wherePivotIn('role', ['chief', 'deputy', 'commissioner'])
+            ->wherePivot('status', 'active')
+            ->whereNull('election_officers.deleted_at');
     }
 
     /**

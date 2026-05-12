@@ -287,16 +287,26 @@ const activeSection = computed(() => 'overview')
                     <thead class="bg-gradient-to-r from-slate-100 to-slate-50 border-b-2 border-slate-300">
                       <tr>
                         <th class="text-left px-4 py-3 font-bold text-slate-900">Action</th>
-                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-slate-50">Admin</th>
-                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-amber-50">Nomination</th>
+                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-slate-100">Draft</th>
+                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-slate-50">Awaiting Approval</th>
+                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-amber-50">Administration</th>
+                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-amber-100">Nomination</th>
                         <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-purple-50">Voting</th>
-                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-orange-50">Pending</th>
+                        <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-orange-50">Counting</th>
                         <th class="text-center px-3 py-3 font-bold text-slate-700 text-xs bg-emerald-50">Results</th>
                       </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-200">
                       <tr v-for="(row, ridx) in t.section_statemachine.permissions_section.matrix" :key="ridx" class="hover:bg-slate-50 transition-colors">
                         <td class="px-4 py-4 text-slate-700 font-semibold">{{ row.action }}</td>
+                        <td class="text-center px-3 py-4">
+                          <span v-if="row.draft" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
+                          <span v-else class="text-slate-400">—</span>
+                        </td>
+                        <td class="text-center px-3 py-4">
+                          <span v-if="row.pending_approval" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
+                          <span v-else class="text-slate-400">—</span>
+                        </td>
                         <td class="text-center px-3 py-4">
                           <span v-if="row.administration" class="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full font-bold text-sm">✓</span>
                           <span v-else class="text-slate-400">—</span>

@@ -94,7 +94,6 @@
                 <span class="text-xs font-mono text-neutral-400 w-5 text-right" aria-hidden="true">{{ post.position_order ?? '—' }}</span>
                 <div>
                   <h3 class="font-semibold text-slate-900">{{ post.name }}</h3>
-                  <p v-if="post.nepali_name" class="text-sm text-slate-500">{{ post.nepali_name }}</p>
                 </div>
               </div>
               <div class="flex flex-wrap items-center gap-2 mt-2 ml-8">
@@ -172,7 +171,7 @@ const isAddingPost = ref(false)
 const addPostForm  = ref(emptyPostForm())
 
 function emptyPostForm() {
-  return { name: '', nepali_name: '', is_national_wide: true, state_name: '', required_number: 1, position_order: 0 }
+  return { name: '', is_national_wide: true, state_name: '', required_number: 1, position_order: 0 }
 }
 
 function openAddPost() {

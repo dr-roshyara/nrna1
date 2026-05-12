@@ -24,8 +24,8 @@
 
         <!-- No Active Elections -->
         <EmptyState v-if="activeElections.length === 0"
-          title="No active elections"
-          description="There are no active elections accepting candidacy applications right now."
+          title="No elections in nomination phase"
+          :description="emptyStateDescription"
         />
 
         <!-- Form -->
@@ -49,17 +49,27 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import { usePage } from '@inertiajs/vue3'
 import EmptyState from '@/Components/EmptyState.vue'
 import CandidacyApplicationForm from '@/Pages/Organisations/Partials/CandidacyApplicationForm.vue'
 
-defineProps({
-  organisation:       { type: Object, required: true },
-  activeElections:    { type: Array,  default: () => [] },
-  appliedElectionIds: { type: Array,  default: () => [] },
+const props = defineProps({
+  organisation:           { type: Object, required: true },
+  activeElections:        { type: Array,  default: () => [] },
+  appliedElectionIds:     { type: Array,  default: () => [] },
+  nonNominationElections: { type: Array,  default: () => [] },
 })
 
 const page = usePage()
+
+const emptyStateDescription = computed(() => {
+  if (props.nonNominationElections.length > 0) {
+    const names = props.nonNominationElections.map(e => e.name).join(', ')
+    return `"${names}" ${props.nonNominationElections.length === 1 ? 'is' : 'are'} not in the nomination phase yet. Candidacy applications can only be submitted when the election reaches the nomination phase.`
+  }
+  return 'There are no elections accepting candidacy applications right now.'
+})
 </script>
 

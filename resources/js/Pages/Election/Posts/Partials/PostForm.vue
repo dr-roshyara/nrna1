@@ -7,21 +7,13 @@
       <p v-for="(msg, field) in errors" :key="field">{{ Array.isArray(msg) ? msg[0] : msg }}</p>
     </div>
 
-    <div class="grid grid-cols-2 gap-4">
-      <div>
-        <label class="block text-sm font-medium text-neutral-700 mb-1">
-          Position Name <span class="text-danger-500">*</span>
-        </label>
-        <input v-model="form.name" type="text" required maxlength="255"
-               :class="inputClass('name')" />
-        <p v-if="errors.name" class="text-xs text-danger-600 mt-1">{{ firstError('name') }}</p>
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-neutral-700 mb-1">Nepali Name</label>
-        <input v-model="form.nepali_name" type="text" maxlength="255"
-               :class="inputClass('nepali_name')" />
-        <p v-if="errors.nepali_name" class="text-xs text-danger-600 mt-1">{{ firstError('nepali_name') }}</p>
-      </div>
+    <div>
+      <label class="block text-sm font-medium text-neutral-700 mb-1">
+        Position Name <span class="text-danger-500">*</span>
+      </label>
+      <input v-model="form.name" type="text" required maxlength="255"
+             :class="inputClass('name')" />
+      <p v-if="errors.name" class="text-xs text-danger-600 mt-1">{{ firstError('name') }}</p>
     </div>
 
     <div class="grid grid-cols-3 gap-4">

@@ -57,8 +57,8 @@
       "empty_title": "Keine Wähler zugewiesen",
       "empty_desc": "Fügen Sie Mitglieder zu dieser Wahl hinzu, um Statistiken zu verfolgen."
     },
-    "voting_control": {
-      "title": "Abstimmungssteuerung",
+    "election_control": {
+      "title": "Wahlkontrolle",
       "currently_active": "Abstimmung ist derzeit aktiv",
       "currently_inactive": "Abstimmung ist derzeit inaktiv",
       "btn_open": "Abstimmung öffnen",
@@ -82,7 +82,8 @@
       "total_label": "Gesamt",
       "approved_label": "Genehmigt",
       "suspended_label": "Gesperrt",
-      "btn_manage": "Wählerliste verwalten"
+      "btn_manage": "Wählerliste verwalten",
+      "btn_import": "Wähler importieren"
     },
     "results": {
       "title": "Ergebnisverwaltung",

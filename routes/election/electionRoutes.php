@@ -306,6 +306,11 @@ Route::middleware(['auth', 'verified', \App\Http\Middleware\TenantContext::class
             ->name('elections.update-dates')
             ->can('manageSettings', 'election');
 
+        // Update expected voter count — chief or deputy
+        Route::patch('/expected-voter-count', [ElectionManagementController::class, 'updateExpectedVoterCount'])
+            ->name('elections.expected-voter-count')
+            ->can('manageSettings', 'election');
+
         // Upload organisation logo — chief or deputy
         Route::post('/upload-logo', [ElectionManagementController::class, 'uploadLogo'])
             ->name('elections.upload-logo')

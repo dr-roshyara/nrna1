@@ -16,24 +16,34 @@ use DomainException;
  * GeoAdministrativeUnit Aggregate Root
  *
  * Represents a geographic administrative unit in the hierarchy.
- * Aggregate Root for geography bounded context.
+ * Each GeoUnit is an independent aggregate root. Cross-unit
+ * hierarchy rules (cycle detection, level ordering) are enforced
+ * via GeographyHierarchyDomainService, not within the aggregate.
  *
- * Business rules:
- * 1. Cannot be own parent
- * 2. Max depth 8 levels (enforced by GeographyLevel)
- * 3. Official codes unique within country+level (enforced by repository)
- * 4. Path must match parent hierarchy
+ * Transaction boundary: single geo unit mutation.
+ *
+ * Business rules (GEO-INV):
+ * 1. Cannot be own parent (GEO-INV-01)
+ * 2. Level must be within 0-10 range (enforced by GeographyLevel)
+ * 3. Child level must be lower (higher number) than parent level (GEO-INV-02)
+ * 4. Path must contain full ancestor chain matching parent hierarchy (GEO-INV-03)
+ * 5. Country code must match parent's country (GEO-INV-04)
+ * 6. Temporal ranges must be consistent with parent (GEO-INV-05)
+ * 7. Version field for optimistic locking (GEO-INV-06)
  */
 class GeoAdministrativeUnit
 {
     /**
      * @param GeoUnitId $id Unique identifier
      * @param CountryCode $countryCode ISO country code
-     * @param GeographyLevel $level Administrative level (1-8)
+     * @param GeographyLevel $level Administrative level (0-10)
      * @param GeoUnitId|null $parentId Immediate parent unit ID
      * @param GeoPath $path Materialized hierarchy path
      * @param LocalizedName $name Multilingual unit name
      * @param GeographicCode|null $officialCode Official geographic code
+     * @param int $version Optimistic locking version (starts at 1)
+     * @param \DateTimeImmutable|null $validFrom When this unit became valid
+     * @param \DateTimeImmutable|null $validTo When this unit ceased to be valid
      */
     public function __construct(
         private GeoUnitId $id,
@@ -43,6 +53,9 @@ class GeoAdministrativeUnit
         private GeoPath $path,
         private LocalizedName $name,
         private ?GeographicCode $officialCode = null,
+        private int $version = 1,
+        private ?\DateTimeImmutable $validFrom = null,
+        private ?\DateTimeImmutable $validTo = null,
     ) {
         $this->validate();
     }
@@ -54,16 +67,22 @@ class GeoAdministrativeUnit
         GeoUnitId $id,
         CountryCode $countryCode,
         LocalizedName $name,
-        ?GeographicCode $officialCode = null
+        ?GeographicCode $officialCode = null,
+        int $version = 1,
+        ?\DateTimeImmutable $validFrom = null,
+        ?\DateTimeImmutable $validTo = null
     ): self {
         return new self(
             $id,
             $countryCode,
-            GeographyLevel::root(),
-            null, // No parent for root
+            GeographyLevel::fromInt(1),
+            null,
             GeoPath::fromIds([$id->toInt()]),
             $name,
-            $officialCode
+            $officialCode,
+            $version,
+            $validFrom,
+            $validTo
         );
     }
 
@@ -85,10 +104,10 @@ class GeoAdministrativeUnit
         LocalizedName $name,
         ?GeographicCode $officialCode = null
     ): self {
-        // Validate child level is lower than parent level
-        if (!$level->isLowerThan($parent->level)) {
+        // GEO-INV-02: Child level must be higher (more granular) than parent level
+        if (!$level->isHigherThan($parent->level)) {
             throw new DomainException(
-                "Child level {$level->toInt()} must be lower than parent level {$parent->level->toInt()}"
+                "Child level {$level->toInt()} must be higher than parent level {$parent->level->toInt()}"
             );
         }
 
@@ -118,13 +137,20 @@ class GeoAdministrativeUnit
      */
     private function validate(): void
     {
-        // Rule 1: Cannot be own parent
+        // GEO-INV-01: Cannot be own parent
         if ($this->parentId !== null && $this->parentId->equals($this->id)) {
             throw new DomainException('Unit cannot be its own parent');
         }
 
-        // Rule 4: Path must match parent hierarchy
+        // GEO-INV-03: Path must match parent hierarchy
         $this->validatePathMatchesParent();
+
+        // GEO-INV-05: Temporal range consistency
+        if ($this->validFrom !== null && $this->validTo !== null && $this->validFrom > $this->validTo) {
+            throw new DomainException(
+                'valid_from must be before or equal to valid_to'
+            );
+        }
     }
 
     /**
@@ -280,6 +306,29 @@ class GeoAdministrativeUnit
         return $this->officialCode;
     }
 
+    public function getVersion(): int
+    {
+        return $this->version;
+    }
+
+    /**
+     * Increment optimistic locking version.
+     */
+    public function incrementVersion(): void
+    {
+        $this->version++;
+    }
+
+    public function getValidFrom(): ?\DateTimeImmutable
+    {
+        return $this->validFrom;
+    }
+
+    public function getValidTo(): ?\DateTimeImmutable
+    {
+        return $this->validTo;
+    }
+
     /**
      * Get English name (convenience method)
      */
@@ -295,4 +344,22 @@ class GeoAdministrativeUnit
     {
         return $this->name->getWithFallback($preferredLanguages);
     }
+
+    /**
+     * Check if this unit is active at the given point in time.
+     * A unit is active if valid_from ≤ now ≤ valid_to (or boundaries are null).
+     */
+    public function isActiveAt(\DateTimeImmutable $now): bool
+    {
+        if ($this->validFrom !== null && $this->validFrom > $now) {
+            return false;
+        }
+
+        if ($this->validTo !== null && $this->validTo < $now) {
+            return false;
+        }
+
+        return true;
+    }
+
 }

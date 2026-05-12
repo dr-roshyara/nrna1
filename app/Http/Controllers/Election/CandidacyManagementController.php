@@ -47,9 +47,11 @@ class CandidacyManagementController extends Controller
             ]);
 
         return Inertia::render('Election/Candidacy/Index', [
-            'organisation' => $organisation->only('id', 'name', 'slug'),
-            'election'     => $electionModel->only('id', 'name', 'slug', 'status'),
-            'posts'        => $posts->values(),
+            'organisation'         => $organisation->only('id', 'name', 'slug'),
+            'election'             => $electionModel->only('id', 'name', 'slug', 'status'),
+            'nominationLocked'     => (bool) $electionModel->nomination_completed,
+            'currentElectionState' => $electionModel->state ?? 'draft',
+            'posts'                => $posts->values(),
         ]);
     }
 

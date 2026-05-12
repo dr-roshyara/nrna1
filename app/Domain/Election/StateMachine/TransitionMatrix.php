@@ -7,7 +7,7 @@ class TransitionMatrix
     // Single source of truth: all transitions, their target states, and required roles
     public const TRANSITIONS = [
         'draft' => [
-            'submit_for_approval' => ['to' => 'pending_approval', 'roles' => ['chief']],
+            'submit_for_approval' => ['to' => 'pending_approval', 'roles' => ['chief', 'admin', 'owner']],
             'auto_submit'         => ['to' => 'administration',   'roles' => ['system']],
         ],
         'pending_approval' => [

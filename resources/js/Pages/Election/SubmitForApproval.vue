@@ -98,7 +98,7 @@
         <!-- Actions -->
         <div class="flex gap-3 justify-end">
           <Link
-            :href="route('organisations.elections.management', { organisation: organisation.slug, election: election.slug })"
+            :href="route('elections.management', { election: election.slug })"
             class="px-6 py-3 rounded-lg border border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-50 font-semibold transition-colors"
           >
             Back to Management
@@ -141,8 +141,7 @@ const props = defineProps({
 // Redirect if election is not in draft state (already submitted)
 watch(() => props.election?.state, (state) => {
   if (state && state !== 'draft') {
-    router.visit(route('organisations.elections.management', {
-      organisation: props.organisation.slug,
+    router.visit(route('elections.management', {
       election: props.election.slug
     }))
   }
@@ -165,7 +164,7 @@ const submitForApproval = () => {
     {},
     {
       onSuccess: () => {
-        router.visit(route('organisations.elections.management', { organisation: props.organisation.slug, election: props.election.slug }))
+        router.visit(route('elections.management', { election: props.election.slug }))
       },
       onError: () => {
         isLoading.value = false

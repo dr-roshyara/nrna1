@@ -37,14 +37,17 @@ final class EloquentCommitteeRepository implements CommitteeRepositoryInterface
             return null;
         }
 
-        // Load assignments explicitly with tenant scoping
+        // Load assignments explicitly with tenant scoping (include inactive for historical reconstruction)
         $assignmentModels = CommitteeAssignmentModel::query()
             ->where('committee_id', $model->id)
             ->where('organisation_id', $tenantId->value())
             ->get();
 
-        // Map all assignments (both active and inactive)
-        $assignments = $assignmentModels->map(function (CommitteeAssignmentModel $a) {
+        // Map active assignments to domain entities; filtering at mapping layer preserves
+        // historical data for future domain interpretation (e.g. reconstitution queries)
+        $assignments = $assignmentModels
+            ->filter(fn (CommitteeAssignmentModel $a) => $a->is_active)
+            ->map(function (CommitteeAssignmentModel $a) {
             return CommitteeAssignment::reconstruct(
                 CommitteeAssignmentId::fromString($a->id),
                 CommitteeId::fromString($a->committee_id),

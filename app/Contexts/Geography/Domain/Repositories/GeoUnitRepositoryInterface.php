@@ -81,4 +81,28 @@ interface GeoUnitRepositoryInterface
      * Get unit's administrative level
      */
     public function getUnitLevel(GeoUnitId $unitId): ?int;
+
+    /**
+     * Persist a geographic unit with optimistic locking.
+     *
+     * For updates: uses compare-and-swap on version field.
+     * Throws ConcurrencyException if version doesn't match.
+     * For creates: version starts at 1.
+     *
+     * @throws \App\Contexts\Geography\Infrastructure\Exceptions\ConcurrencyException
+     */
+    public function save(GeoAdministrativeUnit $unit): void;
+
+    /**
+     * Delete a geographic unit by ID.
+     * Should reject deletion if the unit has active children or committee bindings.
+     *
+     * @throws \RuntimeException if unit has children or cannot be deleted
+     */
+    public function delete(GeoUnitId $unitId): void;
+
+    /**
+     * Find a geographic unit by country code and local code.
+     */
+    public function findByCode(CountryCode $countryCode, string $code): ?GeoAdministrativeUnit;
 }

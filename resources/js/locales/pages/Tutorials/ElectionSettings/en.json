@@ -34,19 +34,49 @@
 
   "section_statemachine": {
     "heading": "Election Lifecycle",
-    "intro": "Every election progresses through five distinct phases, each with its own rules and capabilities. The phase your election is in is determined automatically by the dates you set.",
+    "intro": "Every election progresses through seven distinct phases, each with its own rules and capabilities. The phase your election is in is determined automatically by the dates you set.",
     "key_concept": "Elections are date-driven, not action-driven. You specify when voting begins and ends, and the system automatically manages phase transitions.",
 
     "timeline": {
-      "description": "Your election follows this five-phase lifecycle:",
+      "description": "Your election follows this seven-phase lifecycle:",
       "phases": [
         {
           "number": 1,
+          "name": "Draft",
+          "icon": "📝",
+          "description": "Create and configure the election",
+          "color": "slate",
+          "duration": "From election creation until submitted for approval",
+          "what_happens": "The election is newly created and in its initial setup phase. You can configure all settings, create posts, set up the timeline, and prepare everything. No one else can access the election yet.",
+          "actions": [
+            "Edit election name and description",
+            "Configure suggested phase dates",
+            "Set expected voter count",
+            "Prepare settings before review"
+          ]
+        },
+        {
+          "number": 2,
+          "name": "Pending Approval",
+          "icon": "⏳",
+          "description": "Awaiting review by election committee",
+          "color": "slate",
+          "triggers": "When submitted for approval by election officer",
+          "what_happens": "The election has been submitted for approval. An election committee or platform admin reviews the configuration. If approved, it moves to Administration where full setup begins.",
+          "note": "The election can be rejected here with a reason provided. You can then revise and resubmit.",
+          "actions": [
+            "Review by election committee",
+            "Approve and move to Administration phase",
+            "Reject with reason for revision"
+          ]
+        },
+        {
+          "number": 3,
           "name": "Administration",
           "icon": "⚙️",
           "description": "Set up the election structure",
-          "color": "slate",
-          "duration": "Before any dates are set",
+          "color": "amber",
+          "duration": "Approval granted",
           "what_happens": "You create posts (positions), add candidates, configure voters, and customise all settings. No voters can access the ballot yet.",
           "actions": [
             "Add or edit posts (positions)",
@@ -58,12 +88,12 @@
           ]
         },
         {
-          "number": 2,
+          "number": 4,
           "name": "Nomination",
           "icon": "📋",
           "description": "Candidates confirm and campaign",
           "color": "amber",
-          "duration": "Administration is marked complete",
+          "triggers": "When administration is marked complete",
           "what_happens": "The administration phase has been locked in. Candidates review their information. You can still make adjustments, but the voting dates are now visible to all.",
           "actions": [
             "Manage candidate confirmations",
@@ -73,7 +103,7 @@
           ]
         },
         {
-          "number": 3,
+          "number": 5,
           "name": "Voting",
           "icon": "🗳️",
           "description": "Voters cast their ballots",
@@ -89,7 +119,7 @@
           "note": "Once voting opens, settings changes require explicit confirmation. Changing IP restrictions or verification rules can affect voters who are in progress."
         },
         {
-          "number": 4,
+          "number": 6,
           "name": "Results Pending",
           "icon": "📊",
           "description": "Votes are being counted",
@@ -104,7 +134,7 @@
           ]
         },
         {
-          "number": 5,
+          "number": 7,
           "name": "Results",
           "icon": "✅",
           "description": "Results are published",
@@ -148,7 +178,19 @@
       "description": "Different actions are available depending on the current phase:",
       "matrix": [
         {
+          "action": "Edit election name/description",
+          "draft": true,
+          "pending_approval": false,
+          "administration": false,
+          "nomination": false,
+          "voting": false,
+          "results_pending": false,
+          "results": false
+        },
+        {
           "action": "Add/edit posts",
+          "draft": true,
+          "pending_approval": false,
           "administration": true,
           "nomination": true,
           "voting": false,
@@ -157,6 +199,8 @@
         },
         {
           "action": "Manage candidates",
+          "draft": true,
+          "pending_approval": false,
           "administration": true,
           "nomination": true,
           "voting": false,
@@ -165,6 +209,8 @@
         },
         {
           "action": "Import voters",
+          "draft": false,
+          "pending_approval": false,
           "administration": true,
           "nomination": true,
           "voting": true,
@@ -173,6 +219,8 @@
         },
         {
           "action": "Change settings",
+          "draft": true,
+          "pending_approval": false,
           "administration": true,
           "nomination": true,
           "voting": true,
@@ -180,7 +228,29 @@
           "results": false
         },
         {
+          "action": "Submit for approval",
+          "draft": true,
+          "pending_approval": false,
+          "administration": false,
+          "nomination": false,
+          "voting": false,
+          "results_pending": false,
+          "results": false
+        },
+        {
+          "action": "Approve or reject submission",
+          "draft": false,
+          "pending_approval": true,
+          "administration": false,
+          "nomination": false,
+          "voting": false,
+          "results_pending": false,
+          "results": false
+        },
+        {
           "action": "Voters access ballot",
+          "draft": false,
+          "pending_approval": false,
           "administration": false,
           "nomination": false,
           "voting": true,
@@ -189,6 +259,8 @@
         },
         {
           "action": "View results",
+          "draft": false,
+          "pending_approval": false,
           "administration": false,
           "nomination": false,
           "voting": false,
@@ -197,6 +269,8 @@
         },
         {
           "action": "Voters verify votes",
+          "draft": false,
+          "pending_approval": false,
           "administration": false,
           "nomination": false,
           "voting": false,

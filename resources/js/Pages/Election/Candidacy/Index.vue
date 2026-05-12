@@ -137,8 +137,8 @@
                 </div>
               </div>
 
-              <!-- Publish button (draft only) -->
-              <div class="flex items-center gap-2 flex-shrink-0">
+              <!-- Action buttons (only when nomination is not locked) -->
+              <div v-if="!nominationLocked" class="flex items-center gap-2 flex-shrink-0">
                 <ActionButton
                   v-if="candidate.status === 'draft'"
                   variant="success"
@@ -165,6 +165,15 @@
                   Remove
                 </ActionButton>
               </div>
+              <!-- Locked notice when nomination is complete -->
+              <div v-else class="flex items-center gap-2 flex-shrink-0">
+                <span class="text-xs text-slate-400 italic flex items-center gap-1">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                  </svg>
+                  Locked
+                </span>
+              </div>
             </div>
           </div>
         </Card>
@@ -184,9 +193,11 @@ import ActionButton from '@/Components/ActionButton.vue'
 import EmptyState from '@/Components/EmptyState.vue'
 
 const props = defineProps({
-  organisation: { type: Object, required: true },
-  election:     { type: Object, required: true },
-  posts:        { type: Array,  default: () => [] },
+  organisation:         { type: Object, required: true },
+  election:             { type: Object, required: true },
+  posts:                { type: Array,  default: () => [] },
+  nominationLocked:     { type: Boolean, default: false },
+  currentElectionState: { type: String,  default: 'draft' },
 })
 
 const page      = usePage()

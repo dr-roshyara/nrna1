@@ -52,6 +52,16 @@ class CandidacyApplicationController extends Controller
                 ])->values(),
             ]);
 
+        $nonNominationElections = Election::withoutGlobalScopes()
+            ->where('organisation_id', $organisation->id)
+            ->where('type', 'real')
+            ->whereIn('state', ['administration', 'voting', 'results_pending', 'results'])
+            ->get()
+            ->map(fn ($e) => [
+                'name'  => $e->name,
+                'state' => $e->state,
+            ]);
+
         $appliedElectionIds = CandidacyApplication::where('user_id', $user->id)
             ->where('organisation_id', $organisation->id)
             ->whereIn('status', ['pending', 'approved'])
@@ -59,9 +69,10 @@ class CandidacyApplicationController extends Controller
             ->all();
 
         return Inertia::render('Organisations/CandidacyCreate', [
-            'organisation'       => $organisation->only('id', 'name', 'slug'),
-            'activeElections'    => $activeElections->values(),
-            'appliedElectionIds' => $appliedElectionIds,
+            'organisation'           => $organisation->only('id', 'name', 'slug'),
+            'activeElections'        => $activeElections->values(),
+            'appliedElectionIds'     => $appliedElectionIds,
+            'nonNominationElections' => $nonNominationElections,
         ]);
     }
 
@@ -214,8 +225,9 @@ class CandidacyApplicationController extends Controller
             });
 
             return Inertia::render('Thankyou/Thankyou', [
-                'message' => 'Your candidacy application has been submitted successfully and is now under review.',
-                'subMessage' => 'You will be notified once a decision has been made.',
+                'message'       => 'Your candidacy application has been submitted successfully and is now under review.',
+                'subMessage'    => 'You will be notified once a decision has been made.',
+                'previousRoute' => route('organisations.voter-hub', $organisation->slug),
             ]);
 
         } catch (\RuntimeException $e) {
