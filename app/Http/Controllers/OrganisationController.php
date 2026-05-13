@@ -238,48 +238,57 @@ class OrganisationController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'           => 'required|string|min:3|max:255',
-            'email'          => 'nullable|email|max:255',
-            'representative' => 'nullable|string|max:255',
-            'languages'      => 'nullable|array',
-            'languages.*'    => 'string|in:en,de,np',
-            'logo'           => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+        \Log::info('Store method called', [
+            'user_id' => auth()->id(),
+            'all_data' => $request->all(),
+            'files' => $request->hasFile('logo') ? 'has logo' : 'no logo',
+            'method' => $request->method(),
+            'headers' => $request->headers->all(),
         ]);
 
-        $user = auth()->user();
-
-        $org = DB::transaction(function () use ($request, $user) {
-            // Generate unique slug from organisation name
-            $slug = \Illuminate\Support\Str::slug($request->name);
-            $originalSlug = $slug;
-            $counter = 1;
-
-            // Ensure slug is unique
-            while (Organisation::where('slug', $slug)->exists()) {
-                $slug = $originalSlug . '-' . $counter++;
-            }
-
-            // Handle logo upload
-            $logoPath = null;
-            if ($request->hasFile('logo')) {
-                $logoPath = $request->file('logo')->store('organisations/logos', 'public');
-            }
-
-            // Create new tenant organisation
-            $org = Organisation::create([
-                'name'           => $request->name,
-                'slug'           => $slug,
-                'type'           => 'tenant',
-                'is_default'     => false,
-                'email'          => $request->email,
-                'representative' => $request->representative ? ['name' => $request->representative] : null,
-                'languages'      => $request->languages ?? [],
-                'logo'           => $logoPath,
+        try {
+            $request->validate([
+                'name'           => 'required|string|min:3|max:255',
+                'email'          => 'nullable|email|max:255',
+                'representative' => 'nullable|string|max:255',
+                'languages'      => 'nullable|array',
+                'languages.*'    => 'string|in:en,de,np',
+                'logo'           => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             ]);
 
-            \Log::info('Organisation created', [
-                'org_id' => $org->id,
+            $user = auth()->user();
+
+            $org = DB::transaction(function () use ($request, $user) {
+                // Generate unique slug from organisation name
+                $slug = \Illuminate\Support\Str::slug($request->name);
+                $originalSlug = $slug;
+                $counter = 1;
+
+                // Ensure slug is unique
+                while (Organisation::where('slug', $slug)->exists()) {
+                    $slug = $originalSlug . '-' . $counter++;
+                }
+
+                // Handle logo upload
+                $logoPath = null;
+                if ($request->hasFile('logo')) {
+                    $logoPath = $request->file('logo')->store('organisations/logos', 'public');
+                }
+
+                // Create new tenant organisation
+                $org = Organisation::create([
+                    'name'           => $request->name,
+                    'slug'           => $slug,
+                    'type'           => 'tenant',
+                    'is_default'     => false,
+                    'email'          => $request->email,
+                    'representative' => $request->representative ? ['name' => $request->representative] : null,
+                    'languages'      => $request->languages ?? [],
+                    'logo'           => $logoPath,
+                ]);
+
+                \Log::info('Organisation created', [
+                    'org_id' => $org->id,
                 'org_slug' => $org->slug,
                 'org_name' => $org->name,
             ]);
@@ -326,6 +335,14 @@ class OrganisationController extends Controller
         Cache::forget("user.{$user->id}.organisation_id");
 
         return redirect()->route('organisations.show', $org->slug);
+        } catch (\Exception $e) {
+            \Log::error('Organisation creation failed', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return back()->withErrors(['error' => 'Creation failed: ' . $e->getMessage()]);
+        }
     }
 
     /**
