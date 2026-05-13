@@ -728,7 +728,7 @@ class ElectionManagementController extends Controller
         }
 
         $path = $request->file('logo')->store(
-            "organisations/{$organisation->id}/logo",
+            "uploads/logos/{$organisation->id}",
             'public'
         );
 

@@ -272,7 +272,7 @@ class OrganisationController extends Controller
                 // Handle logo upload
                 $logoPath = null;
                 if ($request->hasFile('logo')) {
-                    $logoPath = $request->file('logo')->store('organisations/logos', 'public');
+                    $logoPath = $request->file('logo')->store('uploads/logos', 'public');
                 }
 
                 // Create new tenant organisation
