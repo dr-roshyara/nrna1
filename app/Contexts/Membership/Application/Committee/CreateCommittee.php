@@ -14,6 +14,12 @@ use App\Contexts\Membership\Domain\ValueObjects\GeoReference;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use DomainException;
 
+/**
+ * @deprecated Use CreateCommitteeHandler in UseCases\CreateCommittee instead.
+ * This legacy class will be removed after all consumers are migrated to the new
+ * CreateCommitteeHandler which uses GovernancePolicy and ConstitutionalCommittee.
+ * The new handler is matrix-aware and event-sourced.
+ */
 final class CreateCommittee
 {
     public function __construct(

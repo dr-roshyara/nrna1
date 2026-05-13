@@ -11,6 +11,17 @@
           <Button variant="outline" size="sm" @click="fetchUnits" :disabled="loading">
             {{ $t('pages.geo-units.actions.refresh') }}
           </Button>
+          <Button
+            variant="primary"
+            size="sm"
+            @click="showCreateModal = true"
+            class="gap-2"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            {{ $t('pages.geo-units.actions.add') || 'Add Unit' }}
+          </Button>
         </div>
       </div>
 
@@ -148,6 +159,14 @@
           {{ toast.message }}
         </div>
       </transition>
+
+      <!-- Create Geo Unit Modal -->
+      <GeoUnitCreateModal
+        :is-open="showCreateModal"
+        :all-units="treeUnits"
+        @close="showCreateModal = false"
+        @submit="handleCreateUnit"
+      />
     </div>
   </PublicDigitLayout>
 </template>
@@ -159,6 +178,7 @@ import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import Card from '@/Components/Card.vue'
 import Button from '@/Components/Button.vue'
 import GeoUnitRow from './GeoUnitRow.vue'
+import GeoUnitCreateModal from './GeoUnitCreateModal.vue'
 import type { GovernanceGeoUnit, GeoUnitBreadcrumb } from '@/types/geo.types'
 
 const props = defineProps<{
@@ -176,6 +196,7 @@ const loading = ref(false)
 const error = ref<string | null>(null)
 const expandedIds = ref<Set<number>>(new Set())
 const breadcrumb = ref<GeoUnitBreadcrumb[]>([])
+const showCreateModal = ref(false)
 
 const filters = ref({
   search: '',
@@ -324,6 +345,18 @@ async function fetchUnits() {
     treeUnits.value = []
   } finally {
     loading.value = false
+  }
+}
+
+async function handleCreateUnit(formData: any) {
+  try {
+    await axios.post(`${apiBase.value}/`, formData)
+    showToast('Geographic unit created successfully!', 'success')
+    showCreateModal.value = false
+    await fetchUnits()
+  } catch (err: any) {
+    const message = err.response?.data?.message || 'Failed to create geographic unit'
+    showToast(message, 'error')
   }
 }
 

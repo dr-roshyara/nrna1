@@ -21,6 +21,18 @@ Membership Context (Write Side)          Governance Context (Read Side)
 
 ---
 
+## ⚠️ Current Architecture Decision
+
+**See:** [ADR: Dual Committee Creation Paths](./ADR_COMMITTEE_CREATION_DUAL_PATH.md)
+
+The codebase contains two committee creation implementations during a transition period:
+- **Legacy path** (currently active): Structure-based validation, operational Committee aggregate
+- **New canonical path** (being introduced): Matrix-based GovernancePolicy, event-sourced ConstitutionalCommittee
+
+Both paths coexist during Phase 1 migration. The legacy path is marked `@deprecated` and will be removed in v3.0 after all consumers are migrated to the new path. See the ADR for the full deprecation strategy, feature parity assessment, and migration timeline.
+
+---
+
 ## 1. Bounded Contexts
 
 ### 1.1 Membership Context (Write)

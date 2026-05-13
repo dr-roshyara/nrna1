@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Contexts\Governance\Application\DTOs\GeoUnitQueryFilter;
 use App\Contexts\Governance\Application\Services\GovernanceGeoUnitQueryService;
+use App\Contexts\Geography\Domain\Models\GeoAdministrativeUnit;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -74,5 +75,60 @@ class GeoUnitController extends Controller
         $results = $this->queryService->lookup($this->getTenantId($request), $q);
 
         return response()->json(['data' => $results]);
+    }
+
+    /**
+     * Create a new geographic unit.
+     */
+    public function store(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'code'        => 'required|string|max:50',
+            'name'        => 'required|string|max:255',
+            'admin_level' => 'required|integer|min:0|max:10',
+            'type'        => 'required|string|max:50',
+            'parent_id'   => 'nullable|integer|exists:geo_administrative_units,id',
+            'is_active'   => 'nullable|boolean',
+        ]);
+
+        $organisation = $request->attributes->get('organisation');
+        $countryCode = $organisation?->base_country_code ?? 'XX';
+
+        try {
+            $parentPath = '';
+            if ($validated['parent_id']) {
+                $parent = GeoAdministrativeUnit::findOrFail($validated['parent_id']);
+                $parentPath = $parent->path . $parent->id . '/';
+            }
+
+            $unit = GeoAdministrativeUnit::create([
+                'country_code' => $countryCode,
+                'admin_level'  => $validated['admin_level'],
+                'admin_type'   => $validated['type'],
+                'parent_id'    => $validated['parent_id'] ?? null,
+                'code'         => $validated['code'],
+                'path'         => $parentPath,
+                'name_local'   => json_encode(['en' => $validated['name']]),
+                'is_active'    => $validated['is_active'] ?? true,
+            ]);
+
+            return response()->json([
+                'data' => [
+                    'id'            => $unit->id,
+                    'code'          => $unit->code,
+                    'name'          => $unit->name_local['en'] ?? $validated['name'],
+                    'admin_level'   => $unit->admin_level,
+                    'admin_type'    => $unit->admin_type,
+                    'parent_id'     => $unit->parent_id,
+                    'path'          => $unit->path,
+                    'is_active'     => $unit->is_active,
+                    'children_count'=> 0,
+                ],
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to create geographic unit: ' . $e->getMessage(),
+            ], 422);
+        }
     }
 }

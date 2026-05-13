@@ -363,6 +363,7 @@ Route::prefix('organisations/{organisation:slug}')
 
             Route::prefix('api')->group(function () {
                 Route::get('/',          [GeoUnitController::class, 'index']);
+                Route::post('/',         [GeoUnitController::class, 'store']);
                 Route::get('/tree',      [GeoUnitController::class, 'tree']);
                 Route::get('/lookup',    [GeoUnitController::class, 'lookup']);
                 Route::get('/{id}',      [GeoUnitController::class, 'show']);
