@@ -235,6 +235,11 @@ Route::get('/faq', function () {
     return Inertia::render('FAQ');
 })->name('faq');
 
+// Tutorial Hub — links to all tutorials, public
+Route::get('/tutorial', function () {
+    return Inertia::render('Tutorials/TutorialHub');
+})->name('tutorials.hub');
+
 // Election settings tutorial — public, no auth required
 Route::get('/help/election-setup', function () {
     return Inertia::render('Tutorials/ElectionSettings');

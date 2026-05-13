@@ -1512,3 +1512,5 @@ This is how senior architects are trained in real enterprise architecture boards
 ---
 
 When ready, start with **Exercise 1** and write your decision journal.
+Correct — and this is exactly where the design must *stay domain-correct* and not drift back into “code-as-ontology”.
+

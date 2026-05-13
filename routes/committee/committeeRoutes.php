@@ -9,7 +9,7 @@ use App\Http\Controllers\Committee\MemberGeographyController;
 use App\Http\Controllers\Committee\MemberSearchController;
 
 // Public routes (no authentication required)
-Route::get('/tutorial', [CommitteeManagementController::class, 'tutorial'])
+Route::get('/create-committee-tutorial', [CommitteeManagementController::class, 'tutorial'])
     ->name('committees.tutorial');
 
 Route::middleware(['auth', 'verified'])->group(function () {

@@ -127,6 +127,9 @@
     "heading": "Bereit für sichere Wahlen?",
     "subheading": "Probieren Sie Public Digit heute noch aus und erleben Sie die Zukunft demokratischer Prozesse."
   },
+  "visual_architecture_title": "Visuelle Architektur",
+  "security_features_title": "Sicherheitsfunktionen",
+  "faq_title": "Häufig gestellte Fragen",
   "images": {
     "state_machine_alt": "Wahlmaschinen-Diagramm",
     "sequence_diagram_alt": "Sequenzdiagramm für Stimmabgabe und Verifizierung"

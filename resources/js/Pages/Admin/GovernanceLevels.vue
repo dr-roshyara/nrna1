@@ -228,12 +228,15 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import axios from 'axios'
 import { Link } from '@inertiajs/vue3'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import Card from '@/Components/Card.vue'
 import Button from '@/Components/Button.vue'
 import type { GovernanceLevelDefinition, GovernanceLevelFormData } from '@/types/governance.types'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   organisation: {
@@ -325,7 +328,7 @@ async function saveLevel(id: number) {
   editErrors.value = {}
   try {
     await axios.put(`${apiBase.value}/${id}`, editForm.value)
-    showToast('pages.governance-levels.messages.update_success' as any)
+    showToast(t('pages.governance-levels.messages.update_success'))
     editingId.value = null
     await fetchLevels()
   } catch (err: any) {
@@ -333,7 +336,7 @@ async function saveLevel(id: number) {
       const fields = err.response.data.errors
       Object.keys(fields).forEach(key => { editErrors.value[key] = true })
     }
-    showToast(err.response?.data?.message || 'pages.governance-levels.messages.error' as any, 'error')
+    showToast(err.response?.data?.message || t('pages.governance-levels.messages.error'), 'error')
   } finally {
     saving.value = false
   }
@@ -357,27 +360,32 @@ async function createLevel() {
   saving.value = true
   try {
     await axios.post(apiBase.value, newForm.value)
-    showToast('pages.governance-levels.messages.create_success' as any)
+    showToast(t('pages.governance-levels.messages.create_success'))
     showAddForm.value = false
     newForm.value = defaultForm()
     await fetchLevels()
   } catch (err: any) {
-    showToast(err.response?.data?.message || 'pages.governance-levels.messages.error' as any, 'error')
+    showToast(err.response?.data?.message || t('pages.governance-levels.messages.error'), 'error')
   } finally {
     saving.value = false
   }
 }
 
 function confirmDelete(level: GovernanceLevelDefinition) {
-  if (!confirm(`${level.committee_name} (Level ${level.level}): ${'pages.governance-levels.actions.confirm_delete_text' as any}`)) return
+  const confirmText = t('pages.governance-levels.actions.confirm_delete_text')
+  if (!confirm(`${level.committee_name} (Level ${level.level}): ${confirmText}`)) return
 
+  saving.value = true
   axios.delete(`${apiBase.value}/${level.id}`)
     .then(() => {
-      showToast('pages.governance-levels.messages.delete_success' as any)
+      showToast(t('pages.governance-levels.messages.delete_success'))
       fetchLevels()
     })
     .catch(() => {
-      showToast('pages.governance-levels.messages.error' as any, 'error')
+      showToast(t('pages.governance-levels.messages.error'), 'error')
+    })
+    .finally(() => {
+      saving.value = false
     })
 }
 

@@ -127,6 +127,9 @@
     "heading": "सुरक्षित चुनाव संचालन गर्न तयार?",
     "subheading": "आज Public Digit को परीक्षण गर्नुहोस् र लोकतान्त्रिक प्रक्रियाको भविष्य अनुभव गर्नुहोस्।"
   },
+  "visual_architecture_title": "दृश्य आर्किटेक्चर",
+  "security_features_title": "सुरक्षा सुविधाहरू",
+  "faq_title": "बारम्बार सोधिने प्रश्नहरू",
   "images": {
     "state_machine_alt": "चुनाव स्टेट मेशिन रेखाचित्र",
     "sequence_diagram_alt": "मत अभिव्यक्ति र प्रमाणीकरण अनुक्रम"

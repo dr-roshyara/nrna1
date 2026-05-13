@@ -186,6 +186,14 @@ import geoUnitsDe from './locales/pages/GeoUnits/de.json';
 import geoUnitsEn from './locales/pages/GeoUnits/en.json';
 import geoUnitsNp from './locales/pages/GeoUnits/np.json';
 
+import electionArchitectureDe from './locales/pages/ElectionArchitecture/de.json';
+import electionArchitectureEn from './locales/pages/ElectionArchitecture/en.json';
+import electionArchitectureNp from './locales/pages/ElectionArchitecture/np.json';
+
+import tutorialHubDe from './locales/pages/TutorialHub/de.json';
+import tutorialHubEn from './locales/pages/TutorialHub/en.json';
+import tutorialHubNp from './locales/pages/TutorialHub/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -275,6 +283,8 @@ const messages = {
       'organisation-create-tutorial': organisationCreateTutorialDe,
       'governance-levels': governanceLevelsDe,
       'geo-units': geoUnitsDe,
+      'election-architecture': electionArchitectureDe,
+      'tutorial-hub': tutorialHubDe,
     },
     // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
     ...governanceLevelsTutorialDe,
@@ -335,6 +345,8 @@ const messages = {
       'organisation-create-tutorial': organisationCreateTutorialEn,
       'governance-levels': governanceLevelsEn,
       'geo-units': geoUnitsEn,
+      'election-architecture': electionArchitectureEn,
+      'tutorial-hub': tutorialHubEn,
     },
     // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
     ...governanceLevelsTutorialEn,
@@ -395,6 +407,8 @@ const messages = {
       'organisation-create-tutorial': organisationCreateTutorialNp,
       'governance-levels': governanceLevelsNp,
       'geo-units': geoUnitsNp,
+      'election-architecture': electionArchitectureNp,
+      'tutorial-hub': tutorialHubNp,
     },
     // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
     ...governanceLevelsTutorialNp,

@@ -160,6 +160,12 @@
           >
             {{ $t('navigation.demo_guide') }}
           </Link>
+          <Link
+            :href="route('tutorials.hub')"
+            class="px-3 py-2 text-white/80 hover:text-brand-gold-500 focus:outline-none focus:ring-2 focus:ring-brand-gold-500/50 rounded-sm transition-colors duration-200 text-sm font-medium"
+          >
+            {{ $t('navigation.tutorials') }}
+          </Link>
           <!-- Platform Admin Link -->
           <Link
             v-if="$page.props.user?.is_platform_admin"
@@ -252,6 +258,11 @@
             class="block px-4 py-3 text-white/80 hover:text-brand-gold-500 hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
           >
             ❓ {{ $t('navigation.demo_guide') }}
+          </Link>
+          <Link :href="route('tutorials.hub')" @click="closeMobileMenu"
+            class="block px-4 py-3 text-white/80 hover:text-brand-gold-500 hover:bg-white/5 active:bg-white/10 rounded-lg transition-colors duration-150 text-sm font-medium min-h-[44px] flex items-center"
+          >
+            📚 {{ $t('navigation.tutorials') }}
           </Link>
         </div>
 

@@ -67,7 +67,7 @@ class GovernanceLevelController extends Controller
         return response()->json($level, 201);
     }
 
-    public function show(Request $request, int $id): JsonResponse
+    public function show(Request $request, string $organisation, int $id): JsonResponse
     {
         $tenantId = $this->getTenantId($request);
 
@@ -78,7 +78,7 @@ class GovernanceLevelController extends Controller
         return response()->json($level);
     }
 
-    public function update(Request $request, int $id): JsonResponse
+    public function update(Request $request, string $organisation, int $id): JsonResponse
     {
         $tenantId = $this->getTenantId($request);
 
@@ -111,7 +111,7 @@ class GovernanceLevelController extends Controller
         return response()->json($level->fresh());
     }
 
-    public function destroy(Request $request, int $id): JsonResponse
+    public function destroy(Request $request, string $organisation, int $id): JsonResponse
     {
         $tenantId = $this->getTenantId($request);
 

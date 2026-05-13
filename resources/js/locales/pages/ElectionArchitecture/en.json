@@ -127,6 +127,9 @@
     "heading": "Ready to Conduct Secure Elections?",
     "subheading": "Try Public Digit today and experience the future of democratic processes."
   },
+  "visual_architecture_title": "Visual Architecture",
+  "security_features_title": "Security Features",
+  "faq_title": "Frequently Asked Questions",
   "images": {
     "state_machine_alt": "Election State Machine Diagram",
     "sequence_diagram_alt": "Vote Casting and Verification Sequence"

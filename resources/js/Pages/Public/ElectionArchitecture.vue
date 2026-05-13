@@ -1,12 +1,12 @@
 <template>
   <Head>
-    <title>{{ t.seo.title }}</title>
-    <meta name="description" :content="t.seo.description" />
-    <meta name="keywords" :content="t.seo.keywords" />
+    <title>{{ $t('pages.election-architecture.seo.title') }}</title>
+    <meta name="description" :content="$t('pages.election-architecture.seo.description')" />
+    <meta name="keywords" :content="$t('pages.election-architecture.seo.keywords')" />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
-    <meta property="og:title" :content="t.seo.og_title" />
-    <meta property="og:description" :content="t.seo.og_description" />
+    <meta property="og:title" :content="$t('pages.election-architecture.seo.og_title')" />
+    <meta property="og:description" :content="$t('pages.election-architecture.seo.og_description')" />
     <meta property="og:image" content="/storage/architecture/architecture-state-machine.png" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -29,7 +29,7 @@
               : 'text-neutral-600 hover:text-neutral-900'
           ]"
         >
-          {{ lang.toUpperCase() }}
+          {{ $t('pages.election-architecture.language.' + lang) }}
         </button>
       </div>
 
@@ -41,20 +41,20 @@
         </div>
         <div class="relative max-w-4xl mx-auto text-center">
           <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight text-neutral-900">
-            {{ t.hero.title }}
+            {{ $t('pages.election-architecture.hero.title') }}
           </h1>
           <p class="text-xl md:text-2xl text-neutral-700 mb-12 max-w-2xl mx-auto">
-            {{ t.hero.subtitle }}
+            {{ $t('pages.election-architecture.hero.subtitle') }}
           </p>
           <div class="flex flex-wrap justify-center gap-4">
             <div class="bg-white/60 backdrop-blur-sm border border-primary-400/30 rounded-lg px-6 py-3 text-sm font-medium text-neutral-900">
-              ✓ {{ t.hero.trust_badge_1 }}
+              ✓ {{ $t('pages.election-architecture.hero.trust_badge_1') }}
             </div>
             <div class="bg-white/60 backdrop-blur-sm border border-primary-400/30 rounded-lg px-6 py-3 text-sm font-medium text-neutral-900">
-              ✓ {{ t.hero.trust_badge_2 }}
+              ✓ {{ $t('pages.election-architecture.hero.trust_badge_2') }}
             </div>
             <div class="bg-white/60 backdrop-blur-sm border border-primary-400/30 rounded-lg px-6 py-3 text-sm font-medium text-neutral-900">
-              ✓ {{ t.hero.trust_badge_3 }}
+              ✓ {{ $t('pages.election-architecture.hero.trust_badge_3') }}
             </div>
           </div>
         </div>
@@ -62,16 +62,16 @@
 
       <!-- Breadcrumbs -->
       <nav class="max-w-6xl mx-auto px-4 py-6 text-sm text-neutral-600">
-        <a href="/" class="hover:text-neutral-900">{{ t.breadcrumbs.home }}</a>
+        <a href="/" class="hover:text-neutral-900">{{ $t('pages.election-architecture.breadcrumbs.home') }}</a>
         <span class="mx-2">/</span>
-        <span class="text-neutral-900 font-medium">{{ t.breadcrumbs.election_architecture }}</span>
+        <span class="text-neutral-900 font-medium">{{ $t('pages.election-architecture.breadcrumbs.election_architecture') }}</span>
       </nav>
 
       <!-- 5-Phase Lifecycle Section -->
       <section class="max-w-6xl mx-auto px-4 py-16">
         <div class="text-center mb-12">
-          <h2 class="text-4xl font-bold text-neutral-900 mb-4">{{ t.phases.title }}</h2>
-          <p class="text-xl text-neutral-600">{{ t.phases.subtitle }}</p>
+          <h2 class="text-4xl font-bold text-neutral-900 mb-4">{{ $t('pages.election-architecture.phases.title') }}</h2>
+          <p class="text-xl text-neutral-600">{{ $t('pages.election-architecture.phases.subtitle') }}</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -88,21 +88,23 @@
             }"
           >
             <div class="text-4xl mb-4">{{ phase.icon }}</div>
-            <h3 class="text-lg font-bold mb-2">{{ idx + 1 }}. {{ t.phases[phase.key].title }}</h3>
-            <p class="text-sm text-white/90">{{ t.phases[phase.key].description }}</p>
+            <h3 class="text-lg font-bold mb-2">{{ idx + 1 }}. {{ $t('pages.election-architecture.phases.' + phase.key + '.title') }}</h3>
+            <p class="text-sm text-white/90">{{ $t('pages.election-architecture.phases.' + phase.key + '.description') }}</p>
           </div>
         </div>
       </section>
 
       <!-- Architecture Images Section -->
       <section class="max-w-6xl mx-auto px-4 py-16 border-t border-neutral-200">
-        <h2 class="text-3xl font-bold text-neutral-900 mb-8 text-center">Visual Architecture</h2>
+        <h2 class="text-3xl font-bold text-neutral-900 mb-8 text-center">
+          {{ $t('pages.election-architecture.visual_architecture_title') }}
+        </h2>
 
         <div class="space-y-8">
           <div class="bg-neutral-50 rounded-lg overflow-hidden shadow-md">
             <img
               :src="images.stateMachine"
-              :alt="t.images.state_machine_alt"
+              :alt="$t('pages.election-architecture.images.state_machine_alt')"
               loading="lazy"
               class="w-full h-auto"
               width="800"
@@ -112,7 +114,7 @@
           <div class="bg-neutral-50 rounded-lg overflow-hidden shadow-md">
             <img
               :src="images.sequenceDiagram"
-              :alt="t.images.sequence_diagram_alt"
+              :alt="$t('pages.election-architecture.images.sequence_diagram_alt')"
               loading="lazy"
               class="w-full h-auto"
               width="800"
@@ -124,9 +126,11 @@
 
       <!-- Security Features Grid -->
       <section class="max-w-6xl mx-auto px-4 py-16 border-t border-neutral-200">
-        <h2 class="text-3xl font-bold text-neutral-900 mb-12 text-center">Security Features</h2>
+        <h2 class="text-3xl font-bold text-neutral-900 mb-12 text-center">
+          {{ $t('pages.election-architecture.security_features_title') }}
+        </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div v-for="(feature, idx) in t.security_features" :key="idx" class="bg-white rounded-lg p-8 border border-neutral-200 hover:border-primary-500 transition-colors">
+          <div v-for="(feature, idx) in securityFeatures" :key="idx" class="bg-white rounded-lg p-8 border border-neutral-200 hover:border-primary-500 transition-colors">
             <div class="text-4xl mb-4">{{ feature.icon }}</div>
             <h3 class="text-xl font-bold text-neutral-900 mb-3">{{ feature.title }}</h3>
             <p class="text-neutral-600">{{ feature.description }}</p>
@@ -140,9 +144,9 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             <!-- Admins Benefits -->
             <div>
-              <h3 class="text-2xl font-bold text-neutral-900 mb-6">{{ t.benefits_admin.title }}</h3>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-6">{{ $t('pages.election-architecture.benefits_admin.title') }}</h3>
               <ul class="space-y-3">
-                <li v-for="(item, idx) in t.benefits_admin.items" :key="idx" class="flex items-start gap-3 text-neutral-700">
+                <li v-for="(item, idx) in adminBenefits" :key="idx" class="flex items-start gap-3 text-neutral-700">
                   <span class="text-primary-600 font-bold flex-shrink-0">✓</span>
                   <span>{{ item }}</span>
                 </li>
@@ -151,9 +155,9 @@
 
             <!-- Voter Benefits -->
             <div>
-              <h3 class="text-2xl font-bold text-neutral-900 mb-6">{{ t.benefits_voter.title }}</h3>
+              <h3 class="text-2xl font-bold text-neutral-900 mb-6">{{ $t('pages.election-architecture.benefits_voter.title') }}</h3>
               <ul class="space-y-3">
-                <li v-for="(item, idx) in t.benefits_voter.items" :key="idx" class="flex items-start gap-3 text-neutral-700">
+                <li v-for="(item, idx) in voterBenefits" :key="idx" class="flex items-start gap-3 text-neutral-700">
                   <span class="text-primary-600 font-bold flex-shrink-0">✓</span>
                   <span>{{ item }}</span>
                 </li>
@@ -165,9 +169,11 @@
 
       <!-- FAQ Section -->
       <section class="max-w-4xl mx-auto px-4 py-16 border-t border-neutral-200">
-        <h2 class="text-3xl font-bold text-neutral-900 mb-12 text-center">Frequently Asked Questions</h2>
+        <h2 class="text-3xl font-bold text-neutral-900 mb-12 text-center">
+          {{ $t('pages.election-architecture.faq_title') }}
+        </h2>
         <div class="space-y-4">
-          <div v-for="(item, idx) in t.faq" :key="idx" class="border border-neutral-200 rounded-lg overflow-hidden hover:border-primary-500 transition-colors">
+          <div v-for="(item, idx) in faqItems" :key="idx" class="border border-neutral-200 rounded-lg overflow-hidden hover:border-primary-500 transition-colors">
             <button
               @click="toggleFaq(idx)"
               class="w-full flex justify-between items-center p-6 bg-white hover:bg-neutral-50 transition-colors"
@@ -193,21 +199,21 @@
           <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-400 rounded-full blur-3xl"></div>
         </div>
         <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h2 class="text-4xl font-bold mb-4 text-neutral-900">{{ t.cta.heading }}</h2>
-          <p class="text-xl text-neutral-700 mb-8">{{ t.cta.subheading }}</p>
+          <h2 class="text-4xl font-bold mb-4 text-neutral-900">{{ $t('pages.election-architecture.cta.heading') }}</h2>
+          <p class="text-xl text-neutral-700 mb-8">{{ $t('pages.election-architecture.cta.subheading') }}</p>
           <div class="flex flex-wrap justify-center gap-4">
             <a
               href="#"
               @click.prevent="router.get(route('organisations.elections.create'))"
               class="bg-white text-primary-600 font-bold px-8 py-3 rounded-lg hover:bg-primary-50 transition-colors shadow-lg cursor-pointer"
             >
-              {{ t.cta.start_election }}
+              {{ $t('pages.election-architecture.cta.start_election') }}
             </a>
             <a
               href="mailto:sales@publicdigit.com"
               class="border-2 border-neutral-900 text-neutral-900 font-bold px-8 py-3 rounded-lg hover:bg-neutral-900/10 transition-colors"
             >
-              {{ t.cta.contact_sales }}
+              {{ $t('pages.election-architecture.cta.contact_sales') }}
             </a>
           </div>
         </div>
@@ -225,18 +231,19 @@ import { Head, router } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { route } from 'ziggy-js'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
-import pageEn from '@/locales/pages/ElectionArchitecture/en.json'
-import pageDe from '@/locales/pages/ElectionArchitecture/de.json'
-import pageNp from '@/locales/pages/ElectionArchitecture/np.json'
 
 const props = defineProps({
   phases: { type: Array, default: () => [] },
   images: { type: Object, default: () => ({}) },
 })
 
-const { locale } = useI18n()
-const pageData = { en: pageEn, de: pageDe, np: pageNp }
-const t = computed(() => pageData[locale.value] ?? pageData.en)
+const { locale, tm } = useI18n()
+
+// Arrays sourced from locale — reactive to language changes
+const securityFeatures = computed(() => tm('pages.election-architecture.security_features'))
+const faqItems         = computed(() => tm('pages.election-architecture.faq'))
+const adminBenefits    = computed(() => tm('pages.election-architecture.benefits_admin.items'))
+const voterBenefits    = computed(() => tm('pages.election-architecture.benefits_voter.items'))
 
 // FAQ accordion state
 const openFaq = ref(null)
@@ -250,7 +257,6 @@ const setLocale = (lang) => {
   localStorage.setItem('preferred_locale', lang)
 }
 
-// Load saved locale preference and Mermaid on mount
 onMounted(() => {
   const saved = localStorage.getItem('preferred_locale')
   if (saved && ['en', 'de', 'np'].includes(saved)) {
@@ -278,21 +284,6 @@ onMounted(() => {
   }
   document.head.appendChild(script)
 })
-
-// Structured data (Schema.org)
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'Public Digit Election System',
-  applicationCategory: 'BusinessApplication',
-  description: 'Tamper-proof election state machine with immutable audit trails',
-  featureList: '5-phase lifecycle, Cryptographic verification, Immutable audit log',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
-  },
-}
 </script>
 
 <style scoped>
@@ -313,4 +304,3 @@ const structuredData = {
   overflow: hidden;
 }
 </style>
-
