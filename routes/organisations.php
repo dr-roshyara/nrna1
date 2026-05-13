@@ -30,6 +30,7 @@ use App\Http\Controllers\ElectionOfficerInvitationController;
 use App\Http\Controllers\ElectionVoterController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OrganisationSettingsController;
+use App\Http\Controllers\Admin\GeoUnitController;
 use App\Http\Controllers\OrganisationGeographyController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\Membership\MembershipApplicationController;
@@ -348,6 +349,23 @@ Route::prefix('organisations/{organisation:slug}')
                 Route::get('/{id}',              [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'show']);
                 Route::put('/{id}',              [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'update']);
                 Route::delete('/{id}',           [\App\Http\Controllers\Admin\GovernanceLevelController::class, 'destroy']);
+            });
+        });
+
+        // ── Geo Units (governance-projected geography) ─────────────────────────
+        Route::prefix('/geo/units')->name('organisations.geo.units.')->group(function () {
+            Route::get('/', function (\Illuminate\Http\Request $request) {
+                $organisation = $request->attributes->get('organisation');
+                return \Inertia\Inertia::render('Admin/GeoUnits', [
+                    'organisation' => $organisation,
+                ]);
+            })->name('index');
+
+            Route::prefix('api')->group(function () {
+                Route::get('/',          [GeoUnitController::class, 'index']);
+                Route::get('/tree',      [GeoUnitController::class, 'tree']);
+                Route::get('/lookup',    [GeoUnitController::class, 'lookup']);
+                Route::get('/{id}',      [GeoUnitController::class, 'show']);
             });
         });
     });

@@ -245,19 +245,6 @@ class OrganisationController extends Controller
             'languages'      => 'nullable|array',
             'languages.*'    => 'string|in:en,de,np',
             'logo'           => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'committee_structure'  => 'nullable|string|in:flat,geographical',
-            'geographic_scope'     => 'required_if:committee_structure,geographical|nullable|in:worldwide,multi_country,single_country,sub_country',
-            'allowed_countries'    => 'required_if:geographic_scope,multi_country|nullable|array|min:2|max:50',
-            'allowed_countries.*'  => ['string', 'size:2', \Illuminate\Validation\Rule::exists('countries', 'code')->where('is_active', true)],
-            'base_country_code'    => ['required_if:geographic_scope,single_country,sub_country', 'nullable', 'string', 'size:2',
-                                        \Illuminate\Validation\Rule::exists('countries', 'code')->where('is_active', true)],
-            'base_region_id'       => 'required_if:geographic_scope,sub_country|nullable|integer|exists:geo_administrative_units,id',
-            // Geographic levels configuration
-            'max_geo_depth'        => 'nullable|integer|min:1|max:10',
-            'level_enabled.*'      => 'nullable|boolean',
-            'level_type.*'         => 'nullable|string|in:static,region,country,geo_unit',
-            'level_names.*'        => 'nullable|string|max:255',
-            'level_local_names.*'  => 'nullable|string|max:255',
         ]);
 
         $user = auth()->user();
@@ -279,12 +266,6 @@ class OrganisationController extends Controller
                 $logoPath = $request->file('logo')->store('organisations/logos', 'public');
             }
 
-            // Build geographic_levels if geographical structure is selected
-            $geographicLevels = null;
-            if ($request->input('committee_structure') === 'geographical') {
-                $geographicLevels = $this->buildGeographicLevels($request);
-            }
-
             // Create new tenant organisation
             $org = Organisation::create([
                 'name'           => $request->name,
@@ -295,12 +276,6 @@ class OrganisationController extends Controller
                 'representative' => $request->representative ? ['name' => $request->representative] : null,
                 'languages'      => $request->languages ?? [],
                 'logo'           => $logoPath,
-                'committee_structure' => $request->input('committee_structure', 'flat'),
-                'geographic_scope'    => $request->geographic_scope,
-                'allowed_countries'   => $request->allowed_countries ?? [],
-                'base_country_code'   => $request->base_country_code,
-                'base_region_id'      => $request->base_region_id,
-                'geographic_levels'   => $geographicLevels,
             ]);
 
             \Log::info('Organisation created', [
@@ -337,12 +312,7 @@ class OrganisationController extends Controller
                 'is_member' => $isMember,
             ]);
 
-            event(new \App\Events\OrganisationCreated($org, [
-                'committee_structure' => $org->committee_structure,
-                'geographic_scope'    => $org->geographic_scope,
-                'allowed_countries'   => $org->allowed_countries,
-                'base_country_code'   => $org->base_country_code,
-            ]));
+            event(new \App\Events\OrganisationCreated($org));
 
             return $org;
         });
@@ -356,88 +326,6 @@ class OrganisationController extends Controller
         Cache::forget("user.{$user->id}.organisation_id");
 
         return redirect()->route('organisations.show', $org->slug);
-    }
-
-    /**
-     * Build geographic levels configuration from request form data
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|null
-     */
-    private function buildGeographicLevels(Request $request)
-    {
-        $maxDepth = $request->input('max_geo_depth', 4);
-        $levels = [];
-
-        for ($i = 1; $i <= $maxDepth; $i++) {
-            if (!$request->input("level_enabled.{$i}")) {
-                continue;
-            }
-
-            $type = $request->input("level_type.{$i}", 'geo_unit');
-            $label = $request->input("level_names.{$i}") ?: $this->getDefaultLevelName($i);
-            $localLabel = $request->input("level_local_names.{$i}");
-
-            // Determine db_level based on type
-            $dbLevel = match ($type) {
-                'geo_unit' => $i,
-                default => null,
-            };
-
-            $levels[] = [
-                'index'       => $i,
-                'type'        => $type,
-                'db_level'    => $dbLevel,
-                'label'       => $label,
-                'local_label' => $localLabel,
-                'required'    => $i <= 2,  // First 2 levels required
-            ];
-        }
-
-        // Validate the structure if levels exist
-        if (!empty($levels)) {
-            $this->validateGeographicStructure($levels);
-            return $levels;
-        }
-
-        return null;
-    }
-
-    private function validateGeographicStructure(array $levelConfigs): void
-    {
-        try {
-            $structure = \App\Contexts\Geography\Domain\ValueObjects\GeographicStructure::fromArray($levelConfigs);
-            $validator = new \App\Contexts\Geography\Domain\Services\GeographicStructureTypeValidator();
-            $validator->validate($structure);
-        } catch (\DomainException|\InvalidArgumentException $e) {
-            throw \Illuminate\Validation\ValidationException::withMessages([
-                'geographic_levels' => [$e->getMessage()],
-            ]);
-        }
-    }
-
-    /**
-     * Get default level name by position
-     *
-     * @param  int  $level
-     * @return string
-     */
-    private function getDefaultLevelName(int $level): string
-    {
-        $defaults = [
-            1 => 'Province / State',
-            2 => 'District / County',
-            3 => 'Municipality / City',
-            4 => 'Ward / Neighborhood',
-            5 => 'Village / Hamlet',
-            6 => 'Block / Sector',
-            7 => 'Street',
-            8 => 'Building',
-            9 => 'Floor',
-            10 => 'Unit',
-        ];
-
-        return $defaults[$level] ?? "Level {$level}";
     }
 
     /**

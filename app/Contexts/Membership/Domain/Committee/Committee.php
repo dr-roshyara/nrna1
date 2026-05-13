@@ -26,10 +26,12 @@ use DomainException;
 use App\Contexts\Membership\Domain\Committee\GeoPolicy;
 use App\Contexts\Membership\Domain\Committee\GeoScope;
 use App\Contexts\Membership\Domain\Committee\CommitteeStructureId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteePolicy;
 use App\Contexts\Membership\Domain\Committee\Events\CommitteeLifecycleChanged;
 use App\Contexts\Membership\Domain\Committee\Events\CommitteeParentAttached;
 use App\Contexts\Membership\Domain\Committee\Events\CommitteeTermUpdated;
 use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeFacts;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeGeoIdentity;
 use App\Contexts\Membership\Domain\Committee\ValueObjects\TermPeriod;
 
 /**
@@ -78,6 +80,12 @@ final class Committee extends TenantAggregateRoot
     // Constitutional boundary fields (GEO-3.4 Task 1)
     private ?string $regionCode = null;
     private ?string $countryCode = null;
+
+    // Direct reference to geographic administrative unit (Phase 8C.2A)
+    private ?int $geoUnitId = null;
+
+    // Geo identity value object (Phase 8C.2C — derived from geoUnitId)
+    private ?CommitteeGeoIdentity $geoIdentity = null;
 
     /** @var array<CommitteeAssignment> Committee assignments owned by this aggregate */
     private array $assignments = [];
@@ -174,6 +182,7 @@ final class Committee extends TenantAggregateRoot
      *
      * @param CommitteeId $id Committee ID
      * @param TenantId $tenantId Tenant ID
+     * @param CommitteePolicy $policy Resolved governance policy (type, structure, level)
      * @param CommitteeStructureId $structureId Reference to structure (historical only)
      * @param int $levelIndex Snapshotted level index
      * @param string $levelName Snapshotted level name
@@ -189,6 +198,7 @@ final class Committee extends TenantAggregateRoot
     public static function create(
         CommitteeId $id,
         TenantId $tenantId,
+        CommitteePolicy $policy,
         CommitteeStructureId $structureId,
         int $levelIndex,
         string $levelName,
@@ -198,7 +208,11 @@ final class Committee extends TenantAggregateRoot
         string $code,
         ?GeoReference $operationalGeo = null,
         ?CommitteeStructureId $createdFromStructureId = null,
-        ?int $structureVersion = null
+        ?int $structureVersion = null,
+        ?string $regionCode = null,
+        ?string $countryCode = null,
+        ?int $geoUnitId = null,
+        ?CommitteeGeoIdentity $geoIdentity = null,
     ): self {
         $committee = new self($tenantId);
         $committee->id = $id;
@@ -212,10 +226,14 @@ final class Committee extends TenantAggregateRoot
         $committee->operationalGeo = $operationalGeo;
         $committee->createdFromStructureId = $createdFromStructureId ?? $structureId;
         $committee->structureVersion = $structureVersion;
+        $committee->regionCode = $regionCode;
+        $committee->countryCode = $countryCode;
+        $committee->geoUnitId = $geoUnitId;
+        $committee->geoIdentity = $geoIdentity ?? ($geoUnitId !== null ? new CommitteeGeoIdentity($geoUnitId) : null);
 
-        // Infer type from level name (temporary mapping until full Phase 5)
-        $committee->type = CommitteeType::central();
-        $committee->structure = new \App\Contexts\Membership\Domain\Committee\Strategies\CentralCommitteeStructure();
+        // Policy drives type and structure — single source of truth
+        $committee->type = $policy->type;
+        $committee->structure = $policy->structure;
         $committee->status = CommitteeStatus::active();
 
         $committee->recordEvent(new CommitteeFormed(
@@ -254,7 +272,11 @@ final class Committee extends TenantAggregateRoot
         ?GeoScope $geoScope = null,
         ?CommitteeStructureId $createdFromStructureId = null,
         ?int $structureVersion = null,
-        ?GovernanceState $governanceState = null
+        ?GovernanceState $governanceState = null,
+        ?string $regionCode = null,
+        ?string $countryCode = null,
+        ?int $geoUnitId = null,
+        ?CommitteeGeoIdentity $geoIdentity = null,
     ): self {
         if ($structure === null) {
             throw new \LogicException('CommitteeStructure must be provided to reconstruct()');
@@ -277,6 +299,10 @@ final class Committee extends TenantAggregateRoot
         $committee->createdFromStructureId = $createdFromStructureId;
         $committee->structureVersion = $structureVersion;
         $committee->governanceState = $governanceState ?? new GovernanceState();
+        $committee->regionCode = $regionCode;
+        $committee->countryCode = $countryCode;
+        $committee->geoUnitId = $geoUnitId;
+        $committee->geoIdentity = $geoIdentity ?? ($geoUnitId !== null ? new CommitteeGeoIdentity($geoUnitId) : null);
 
         return $committee;
     }
@@ -961,6 +987,27 @@ final class Committee extends TenantAggregateRoot
     public function getCountryCode(): ?string
     {
         return $this->countryCode;
+    }
+
+    /**
+     * Get geo unit ID (direct FK reference to geo_administrative_units)
+     *
+     * @return ?int Geo unit ID or null for central committees
+     */
+    public function getGeoUnitId(): ?int
+    {
+        return $this->geoUnitId;
+    }
+
+    /**
+     * Get geo identity value object.
+     *
+     * Identity is the immutable geographic anchor. Null for committees
+     * without geographic anchoring (e.g., central committees).
+     */
+    public function getGeoIdentity(): ?CommitteeGeoIdentity
+    {
+        return $this->geoIdentity;
     }
 
     /**

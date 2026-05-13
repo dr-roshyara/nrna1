@@ -1,0 +1,20 @@
+{
+  "title": "Wohnort",
+  "description": "Wählen Sie das geografische Gebiet, in dem das Mitglied wohnt. Dies bestimmt die Ausschussberechtigung.",
+  "select_geo": "Geografisches Gebiet auswählen",
+  "no_selection": "Keine Geografie ausgewählt",
+  "clear": "Auswahl löschen",
+  "errors": {
+    "load_failed": "Fehler beim Laden der Geografie-Konfiguration",
+    "invalid_selection": "Ungültige Geografie-Auswahl"
+  },
+  "hints": {
+    "committee_eligibility": "Der Wohnort bestimmt, für welche Ausschüsse das Mitglied berechtigt ist",
+    "optional": "Geografie ist optional. Mitglieder ohne Geografie können nur Zentralausschüssen zugewiesen werden."
+  },
+  "form": {
+    "label": "Wohnort",
+    "placeholder": "Provinz / Bezirk / Gemeinde auswählen",
+    "helper": "Optional — wählen Sie den Wohnort des Mitglieds"
+  }
+}

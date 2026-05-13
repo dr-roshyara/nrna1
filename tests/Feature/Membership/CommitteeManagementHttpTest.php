@@ -10,6 +10,7 @@ use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
 use App\Contexts\Membership\Domain\ValueObjects\MemberId;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class CommitteeManagementHttpTest extends TestCase
@@ -24,13 +25,79 @@ class CommitteeManagementHttpTest extends TestCase
     {
         parent::setUp();
 
-        $this->organisation = Organisation::factory()->create();
+        $this->organisation = Organisation::factory()->create([
+            'governance_status' => 'active',
+        ]);
         $this->admin = User::factory()->create(['organisation_id' => $this->organisation->id]);
         $this->member = User::factory()->create(['organisation_id' => $this->organisation->id]);
 
         UserOrganisationRole::where('user_id', $this->admin->id)
             ->where('organisation_id', $this->organisation->id)
             ->update(['role' => 'admin']);
+
+        $this->activateTestStructure($this->organisation->id);
+    }
+
+    private function activateTestStructure(string $organisationId): void
+    {
+        $structureId = Str::ulid()->toBase32();
+
+        \DB::table('committee_structures')->insert([
+            'id' => $structureId,
+            'organisation_id' => $organisationId,
+            'name' => 'Test Structure',
+            'status' => 'active',
+            'version' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        \DB::table('committee_structure_levels')->insert([
+            [
+                'committee_structure_id' => $structureId,
+                'level_index' => 1,
+                'name' => 'Level 1',
+                'geo_policy' => 'none',
+                'geo_scope' => null,
+                'role_limits' => json_encode([]),
+                'min_membership_years' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'committee_structure_id' => $structureId,
+                'level_index' => 2,
+                'name' => 'Level 2',
+                'geo_policy' => 'none',
+                'geo_scope' => null,
+                'role_limits' => json_encode([]),
+                'min_membership_years' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'committee_structure_id' => $structureId,
+                'level_index' => 3,
+                'name' => 'Level 3',
+                'geo_policy' => 'none',
+                'geo_scope' => null,
+                'role_limits' => json_encode([]),
+                'min_membership_years' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'committee_structure_id' => $structureId,
+                'level_index' => 4,
+                'name' => 'Level 4',
+                'geo_policy' => 'none',
+                'geo_scope' => null,
+                'role_limits' => json_encode([]),
+                'min_membership_years' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 
     public function test_guest_cannot_create_committee(): void
@@ -54,7 +121,7 @@ class CommitteeManagementHttpTest extends TestCase
         $response->assertStatus(200);
         $response->assertInertia(fn ($page) => $page
             ->component('Committee/Create')
-            ->has('committeeTypes', 4)
+            ->missing('committeeTypes')
         );
     }
 
@@ -64,8 +131,6 @@ class CommitteeManagementHttpTest extends TestCase
             ->post(route('committees.store', ['organisation' => $this->organisation]), [
                 'name' => 'Test Committee',
                 'code' => 'TEST-001',
-                'type' => 'district',
-                'geo_reference' => 'np.3.15',
             ]);
 
         $response->assertRedirect();
@@ -75,7 +140,7 @@ class CommitteeManagementHttpTest extends TestCase
             'organisation_id' => $this->organisation->id,
             'name' => 'Test Committee',
             'code' => 'TEST-001',
-            'type' => 'district',
+            'type' => 'central',
         ]);
     }
 
@@ -94,11 +159,9 @@ class CommitteeManagementHttpTest extends TestCase
             ->post(route('committees.store', ['organisation' => $this->organisation]), [
                 'name' => 'Europe Committee',
                 'code' => 'EU-001',
-                'type' => 'district',
                 'geo_selections' => [
                     'region' => 'europe',
                     'country' => 'de',
-                    'geo' => [3, 15],
                 ],
             ]);
 
@@ -109,7 +172,7 @@ class CommitteeManagementHttpTest extends TestCase
             'organisation_id' => $this->organisation->id,
             'name' => 'Europe Committee',
             'code' => 'EU-001',
-            'type' => 'district',
+            'type' => 'central',
             'region_code' => 'europe',
             'country_code' => 'DE',
         ]);

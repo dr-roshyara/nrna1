@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Infrastructure\Application;
 
 use App\Contexts\Membership\Application\Committee\CreateCommitteeUseCase;
+use App\Contexts\Membership\Application\Committee\DTOs\InternalCreateCommitteeCommand;
 use App\Contexts\Membership\Application\Committee\InternalCreateCommittee;
 use App\Contexts\Membership\Domain\Committee\Committee;
 use Illuminate\Support\Facades\DB;
@@ -24,8 +25,6 @@ use Illuminate\Support\Facades\DB;
  *
  * Pattern: Implements same interface as inner class, injects concrete class
  * (not interface), delegates all work to inner class within transaction boundary.
- *
- * Phase C — Transactional Hardening
  */
 final class TransactionalCreateCommittee implements CreateCommitteeUseCase
 {
@@ -42,7 +41,7 @@ final class TransactionalCreateCommittee implements CreateCommitteeUseCase
      * Deadlock retries (attempts: 3) provide operational resilience without
      * sacrificing correctness.
      */
-    public function execute(array $command): Committee
+    public function execute(InternalCreateCommitteeCommand $command): Committee
     {
         return DB::transaction(
             fn () => $this->innerUseCase->execute($command),

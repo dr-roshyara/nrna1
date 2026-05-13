@@ -12,6 +12,6 @@ class OrganisationCreated
 
     public function __construct(
         public readonly Organisation $organisation,
-        public readonly array $geographicConfig,
+        public readonly array $geographicConfig = [],
     ) {}
 }

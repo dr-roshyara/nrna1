@@ -110,55 +110,15 @@
             </div>
           </div>
 
-          <!-- Section 2: Committee Type & Geography -->
+          <!-- Section 2: Geographic Scope -->
           <div>
             <div class="flex items-center gap-2 mb-6">
               <div class="h-1 w-12 bg-gradient-to-r from-accent-600 to-accent-400 rounded-full"></div>
-              <h2 class="text-xs font-semibold uppercase tracking-widest text-neutral-600">Classification</h2>
+              <h2 class="text-xs font-semibold uppercase tracking-widest text-neutral-600">Geographic Scope</h2>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <!-- Committee Type -->
-              <div class="group">
-                <label for="type" class="block text-sm font-semibold text-neutral-900 mb-2">
-                  {{ $t('pages.committee.create.form.type') }}
-                  <span class="text-danger-600">*</span>
-                </label>
-                <div class="relative">
-                  <select
-                    id="type"
-                    v-model="form.type"
-                    :class="[
-                      'w-full px-4 py-3 rounded-lg border transition-all duration-300 appearance-none',
-                      'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-0 focus:border-primary-500',
-                      errors.type
-                        ? 'border-danger-300 bg-danger-50 focus:ring-danger-500 focus:border-danger-500'
-                        : 'border-neutral-200 bg-white hover:border-neutral-300'
-                    ]"
-                    @focus="clearError('type')"
-                    required
-                  >
-                    <option value="">{{ $t('pages.committee.create.form.type_label') }}</option>
-                    <option value="central">{{ $t('pages.committee.common.types.central') }}</option>
-                    <option value="province">{{ $t('pages.committee.common.types.province') }}</option>
-                    <option value="district">{{ $t('pages.committee.common.types.district') }}</option>
-                    <option value="ward">{{ $t('pages.committee.common.types.ward') }}</option>
-                    <option value="youth">{{ $t('pages.committee.common.types.youth') }}</option>
-                    <option value="women">{{ $t('pages.committee.common.types.women') }}</option>
-                    <option value="student">{{ $t('pages.committee.common.types.student') }}</option>
-                  </select>
-                  <svg class="absolute right-3 top-3.5 w-5 h-5 pointer-events-none text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
-                  <transition name="slideDown">
-                    <span v-if="errors.type" class="absolute top-full mt-2 flex items-center gap-1 text-sm text-danger-600">
-                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18.101 12.93a1 1 0 00-1.414-1.414L10 14.586l-6.687-6.687a1 1 0 00-1.414 1.414l8.101 8.101a1 1 0 001.414 0l8.687-8.687z" clip-rule="evenodd" /></svg>
-                      {{ errors.type }}
-                    </span>
-                  </transition>
-                </div>
-                <p class="text-xs text-neutral-500 mt-2">Committee governance level</p>
-              </div>
-
-              <!-- Geographic Reference (Optional) -->
+            <div>
+              <!-- Geographic Reference -->
               <div class="group">
                 <label class="block text-sm font-semibold text-neutral-900 mb-2">
                   {{ $t('pages.committee.create.form.geo_reference') }}
@@ -229,14 +189,12 @@ import GeographyCascader from '@/Components/Geography/GeographyCascader.vue';
 
 defineProps({
   organisation: Object,
-  committeeTypes: Array,
   organisationSlug: String,
 });
 
 const form = ref({
   name: '',
   code: '',
-  type: '',
   geo_selections: {
     region: null,
     country: null,
@@ -307,10 +265,6 @@ const handleSubmit = () => {
   if (!form.value.code?.trim()) {
     errors.value.code = 'Committee code is required';
   }
-  if (!form.value.type?.trim()) {
-    errors.value.type = 'Committee type is required';
-  }
-
   // Check if code already exists (prevent submission if it does)
   if (codeExists.value) {
     errors.value.code = `Committee code "${form.value.code}" already exists`;

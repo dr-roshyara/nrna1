@@ -7,13 +7,13 @@ namespace App\Http\Controllers\Committee;
 use App\Contexts\Geography\Application\DTOs\CascaderConfigDTO;
 use App\Contexts\Geography\Application\Services\GeoReferenceBuilder;
 use App\Contexts\Membership\Application\Committee\CreateCommitteeUseCase;
-use App\Contexts\Membership\Application\Committee\DTOs\CreateCommitteeCommand;
+use App\Contexts\Membership\Application\Committee\DTOs\InternalCreateCommitteeCommand;
 use App\Contexts\Membership\Application\Committee\DTOs\UpdateCommitteeDetailsCommand;
 use App\Contexts\Membership\Application\Committee\GetCommitteeDashboard;
+use App\Contexts\Membership\Application\Committee\Services\CommitteeCategoryDerivationService;
 use App\Contexts\Membership\Application\Committee\UpdateCommitteeDetails;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeCategory;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
-use App\Contexts\Membership\Domain\ValueObjects\CommitteeType;
-use App\Contexts\Membership\Domain\ValueObjects\GeoReference;
 use App\Contexts\Membership\Infrastructure\Models\CommitteeModel;
 use App\Models\Organisation;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
@@ -25,6 +25,10 @@ use App\Http\Controllers\Controller;
 
 final class CommitteeManagementController extends Controller
 {
+    public function __construct(
+        private readonly CommitteeCategoryDerivationService $categoryDerivation,
+    ) {}
+
     public function tutorial(): Response
     {
         return Inertia::render('Committee/Tutorial');
@@ -55,12 +59,6 @@ final class CommitteeManagementController extends Controller
         $this->authorize('manageCommittee', $organisation);
 
         return Inertia::render('Committee/Create', [
-            'committeeTypes' => [
-                ['value' => 'central', 'label' => 'Central Committee'],
-                ['value' => 'province', 'label' => 'Province Committee'],
-                ['value' => 'district', 'label' => 'District Committee'],
-                ['value' => 'ward', 'label' => 'Ward Committee'],
-            ],
             'organisationSlug' => $organisation->slug,
         ]);
     }
@@ -73,7 +71,7 @@ final class CommitteeManagementController extends Controller
             $validated = request()->validate([
                 'name' => 'required|string|max:255',
                 'code' => 'required|string|max:100',
-                'type' => 'required|string|in:central,province,district,ward',
+                'type' => 'nullable|string|in:central,youth,women,student',
                 'geo_reference' => 'nullable|string|max:255',
                 'geo_selections' => 'nullable|array',
                 'geo_selections.region' => 'nullable|string|max:50',
@@ -83,7 +81,7 @@ final class CommitteeManagementController extends Controller
             ]);
 
             $canonicalGeoRef = null;
-            $membershipGeoRef = null;
+            $geoReferenceString = null;
             $regionCode = null;
             $countryCode = null;
 
@@ -96,41 +94,46 @@ final class CommitteeManagementController extends Controller
                 $countryCode = $canonicalGeoRef->getCountryCode();
 
                 if ($countryCode !== null && !$canonicalGeoRef->geoPath->isEmpty()) {
-                    // Only create membershipGeoRef if there's a geo path beyond country
-                    $legacyFormat = strtolower($countryCode) . '.' . $canonicalGeoRef->geoPath->toString();
-                    $membershipGeoRef = GeoReference::fromString($legacyFormat);
+                    $geoReferenceString = strtolower($countryCode) . '.' . $canonicalGeoRef->geoPath->toString();
                 }
             } elseif ($validated['geo_reference'] ?? false) {
-                $membershipGeoRef = GeoReference::fromString($validated['geo_reference']);
+                $geoReferenceString = $validated['geo_reference'];
             }
 
-            $command = new CreateCommitteeCommand(
-                name: $validated['name'],
-                code: $validated['code'],
-                type: CommitteeType::fromString($validated['type']),
-                geoReference: $membershipGeoRef,
-                tenantId: TenantId::fromString($organisation->id),
-                regionCode: $regionCode,
-                countryCode: $countryCode,
+            $geoUnitId = !empty($validated['geo_selections']['geo'])
+                ? (int) end($validated['geo_selections']['geo'])
+                : null;
+
+            // Phase 8C.2D: Derive committee category via application service
+            $committeeCategory = $this->categoryDerivation->derive(
+                explicitType: $validated['type'] ?? null,
+                geoUnitId: $geoUnitId,
             );
 
-            try {
-                $committeeId = app(CreateCommitteeUseCase::class)->execute($command);
-            } catch (\Throwable $e) {
-                \Log::error('CreateCommittee failed', ['error' => $e->getMessage()]);
-                throw $e;
-            }
+            $command = new InternalCreateCommitteeCommand(
+                tenantId: TenantId::fromString($organisation->id),
+                committeeCode: $validated['code'],
+                committeeName: $validated['name'],
+                committeeCategory: $committeeCategory,
+                geoReference: $geoReferenceString,
+                regionCode: $regionCode,
+                countryCode: $countryCode,
+                geoUnitId: $geoUnitId,
+            );
 
-            // Fetch committee using withoutGlobalScopes to avoid tenant filtering issues
-            $committee = CommitteeModel::withoutGlobalScopes()
-                ->where('id', $committeeId->value())
+            $committee = app(CreateCommitteeUseCase::class)->execute($command);
+
+            $committeeModel = CommitteeModel::withoutGlobalScopes()
+                ->where('id', $committee->getId()->value())
                 ->where('organisation_id', $organisation->id)
                 ->firstOrFail();
 
             return redirect()->route('committee.dashboard', [
                 'organisation' => $organisation,
-                'committee' => $committee->slug
+                'committee' => $committeeModel->slug,
             ])->with('success', 'Committee created successfully.');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            throw $e;
         } catch (\Throwable $e) {
             \Log::error('Committee creation error', [
                 'message' => $e->getMessage(),

@@ -21,6 +21,7 @@ final class CommitteeStructureRegistry
             'province' => new GeographicCommitteeStructure(),
             'district' => new GeographicCommitteeStructure(),
             'ward' => new GeographicCommitteeStructure(),
+            'geographic' => new GeographicCommitteeStructure(),
             'youth_wing' => new YouthWingStructure(),
             'women_wing' => new WomenWingStructure(),
             'student_wing' => new StudentWingStructure(),

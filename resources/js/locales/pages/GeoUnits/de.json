@@ -1,0 +1,30 @@
+{
+  "title": "Geografische Einheiten",
+  "description": "Governance-projizierte geografische Hierarchie",
+  "fields": {
+    "level": "Ebene",
+    "code": "Code",
+    "name": "Name",
+    "type": "Typ",
+    "governance_level": "Governance-Ebene",
+    "committee": "Komitee",
+    "is_active": "Aktiv",
+    "actions": "Aktionen"
+  },
+  "actions": {
+    "refresh": "Aktualisieren",
+    "expand_all": "Alle erweitern",
+    "collapse_all": "Alle einklappen"
+  },
+  "messages": {
+    "loading": "Lade geografische Einheiten...",
+    "empty": "Keine geografischen Einheiten gefunden. Governance-Ebenen müssen zuerst definiert werden.",
+    "empty_filtered": "Keine Einheiten entsprechen den aktuellen Filtern.",
+    "error": "Fehler beim Laden der geografischen Einheiten."
+  },
+  "filter": {
+    "placeholder": "Suche nach Name oder Code...",
+    "level": "Alle Ebenen",
+    "country": "Alle Länder"
+  }
+}

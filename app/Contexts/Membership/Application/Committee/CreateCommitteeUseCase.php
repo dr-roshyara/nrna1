@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Application\Committee;
 
+use App\Contexts\Membership\Application\Committee\DTOs\InternalCreateCommitteeCommand;
 use App\Contexts\Membership\Domain\Committee\Committee;
 
 /**
@@ -23,17 +24,10 @@ interface CreateCommitteeUseCase
     /**
      * Create a committee under the current active governance epoch.
      *
-     * @param array $command {
-     *     @var string $tenantId
-     *     @var int $levelIndex
-     *     @var string $name
-     *     @var string $code
-     *     @var string|null $operationalGeoReference
-     * }
-     *
+     * @param InternalCreateCommitteeCommand $command Typed command with category
      * @return Committee — with governance snapshot captured at commit time
      * @throws \DomainException if no active structure, invalid level, or geo validation fails
      * @throws \Exception if persistence fails (transaction auto-rolls back)
      */
-    public function execute(array $command): Committee;
+    public function execute(InternalCreateCommitteeCommand $command): Committee;
 }

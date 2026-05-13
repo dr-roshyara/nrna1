@@ -1,0 +1,30 @@
+{
+  "title": "Geographic Units",
+  "description": "Governance-projected geographic hierarchy",
+  "fields": {
+    "level": "Level",
+    "code": "Code",
+    "name": "Name",
+    "type": "Type",
+    "governance_level": "Governance Level",
+    "committee": "Committee",
+    "is_active": "Active",
+    "actions": "Actions"
+  },
+  "actions": {
+    "refresh": "Refresh",
+    "expand_all": "Expand All",
+    "collapse_all": "Collapse All"
+  },
+  "messages": {
+    "loading": "Loading geographic units...",
+    "empty": "No geographic units found. Governance levels must be defined first.",
+    "empty_filtered": "No units match the current filters.",
+    "error": "Failed to load geographic units."
+  },
+  "filter": {
+    "placeholder": "Search by name or code...",
+    "level": "All Levels",
+    "country": "All Countries"
+  }
+}

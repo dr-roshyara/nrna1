@@ -53,6 +53,16 @@ use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeStructureRepo
 use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface as CommitteeAggregateRepositoryInterface;
 use App\Contexts\Membership\Domain\Committee\CommitteeCreationPolicy;
 use App\Contexts\Membership\Domain\Committee\Ports\GeoContextPort;
+use App\Contexts\Membership\Domain\Committee\Ports\GeographicJurisdictionProvider;
+use App\Contexts\Membership\Application\Committee\Services\CommitteeCategoryDerivationService;
+use App\Contexts\Membership\Domain\Committee\Services\CommitteePolicyResolver;
+use App\Contexts\Membership\Domain\Committee\Services\GeoSemanticProjectionBuilder;
+use App\Contexts\Membership\Domain\Committee\Factories\CommitteeGeoIdentityFactory;
+use App\Contexts\Membership\Domain\Committee\Policies\CommitteeClassificationPolicy;
+use App\Contexts\Membership\Domain\Committee\Policies\CommitteeEligibilityPolicy;
+use App\Contexts\Membership\Domain\Committee\Services\GeographicEligibilityValidator;
+use App\Contexts\Membership\Application\Committee\Handlers\AssignMemberToCommitteeHandler;
+use App\Contexts\Membership\Application\Committee\Services\NearbyCommitteesQueryService;
 use App\Contexts\Membership\Infrastructure\Ports\GeographyContextAdapter;
 use App\Contexts\Membership\Domain\Services\IdentityVerificationInterface;
 use App\Contexts\Membership\Domain\Services\TenantUserProvisioningInterface;
@@ -68,6 +78,7 @@ use App\Contexts\Membership\Infrastructure\Persistence\Repositories\EloquentGove
 use App\Contexts\Membership\Infrastructure\Services\TenantUserIdentityVerification;
 use App\Contexts\Membership\Infrastructure\Services\TenantAuthProvisioningAdapter;
 use App\Contexts\Membership\Infrastructure\Services\GeographyValidationAdapter;
+use App\Contexts\Membership\Infrastructure\Services\GeographicJurisdictionProviderAdapter;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -143,6 +154,49 @@ class MembershipServiceProvider extends ServiceProvider
             GeographyContextAdapter::class
         );
 
+        $this->app->bind(
+            GeographicJurisdictionProvider::class,
+            GeographicJurisdictionProviderAdapter::class
+        );
+
+        // Phase 8C.2C: Geo identity, projection builder, and classification policy
+        $this->app->bind(GeoSemanticProjectionBuilder::class, function ($app) {
+            return new GeoSemanticProjectionBuilder(
+                $app->make(GeographicJurisdictionProvider::class)
+            );
+        });
+
+        $this->app->singleton(CommitteeGeoIdentityFactory::class);
+        $this->app->singleton(CommitteeClassificationPolicy::class);
+
+        // Phase 8C.2D: Category derivation service (frontend simplification)
+        $this->app->bind(CommitteeCategoryDerivationService::class, function ($app) {
+            return new CommitteeCategoryDerivationService(
+                $app->make(GeoSemanticProjectionBuilder::class),
+                $app->make(CommitteeClassificationPolicy::class),
+            );
+        });
+
+        // Phase 8E: Geographic eligibility and member assignment
+        $this->app->singleton(CommitteeEligibilityPolicy::class);
+        $this->app->singleton(GeographicEligibilityValidator::class);
+
+        $this->app->bind(NearbyCommitteesQueryService::class, function ($app) {
+            return new NearbyCommitteesQueryService(
+                $app->make(GeoSemanticProjectionBuilder::class),
+            );
+        });
+
+        $this->app->bind(AssignMemberToCommitteeHandler::class, function ($app) {
+            return new AssignMemberToCommitteeHandler(
+                $app->make(GeoSemanticProjectionBuilder::class),
+                $app->make(CommitteeEligibilityPolicy::class),
+                $app->make(MemberRepositoryInterface::class),
+                $app->make(CommitteeRepositoryInterface::class),
+                $app->make(EventBus::class),
+            );
+        });
+
         // CommitteeStructure use case bindings (with transactional decorators)
         $this->app->bind(DefineCommitteeStructure::class, function ($app) {
             return new DefineCommitteeStructure(
@@ -182,7 +236,11 @@ class MembershipServiceProvider extends ServiceProvider
                 $app->make(CommitteeStructureRepositoryInterface::class),
                 $app->make(CommitteeAggregateRepositoryInterface::class),
                 $app->make(CommitteeCreationPolicy::class),
-                $app->make(GovernanceAccessPolicyInterface::class)
+                $app->make(GovernanceAccessPolicyInterface::class),
+                $app->make(CommitteePolicyResolver::class),
+                $app->make(CommitteeGeoIdentityFactory::class),
+                $app->make(GeoSemanticProjectionBuilder::class),
+                $app->make(CommitteeClassificationPolicy::class),
             );
 
             return new TransactionalCreateCommittee($internal);

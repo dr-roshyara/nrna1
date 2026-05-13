@@ -7,6 +7,7 @@ namespace App\Contexts\Membership\Domain\Committee;
 use App\Contexts\Membership\Domain\Events\CommitteeStructureDefined;
 use App\Contexts\Membership\Domain\Events\CommitteeStructureActivated;
 use App\Contexts\Membership\Domain\Committee\Exceptions\CannotEvolveNonActiveStructure;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeCategory;
 use App\Contexts\Shared\Domain\TenantAggregateRoot;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
@@ -188,6 +189,28 @@ final class CommitteeStructure extends TenantAggregateRoot
         }
 
         throw new \DomainException("Level index {$index} not found");
+    }
+
+    /**
+     * Resolve level index from a CommitteeCategory.
+     *
+     * Category→level topology is owned by the structure model, not the resolver.
+     * This prevents hardcoded assumptions like "province => level 2" from
+     * leaking into policy resolution logic.
+     *
+     * Wings map to level 1 (central-equivalent organizational level).
+     */
+    public function getLevelIndexForCategory(CommitteeCategory $category): int
+    {
+        return match ($category) {
+            CommitteeCategory::CENTRAL,
+            CommitteeCategory::YOUTH,
+            CommitteeCategory::WOMEN,
+            CommitteeCategory::STUDENT => 1,
+            CommitteeCategory::PROVINCE => 2,
+            CommitteeCategory::DISTRICT => 3,
+            CommitteeCategory::WARD => 4,
+        };
     }
 
     public function activate(

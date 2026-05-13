@@ -7,9 +7,13 @@ namespace Tests\Unit\Domain\Committee;
 use Tests\TestCase;
 use App\Contexts\Membership\Domain\Committee\Committee;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Committee\CommitteeLevel;
 use App\Contexts\Membership\Domain\Committee\CommitteeStructureId;
 use App\Contexts\Membership\Domain\Committee\GeoPolicy;
 use App\Contexts\Membership\Domain\Committee\GeoScope;
+use App\Contexts\Membership\Domain\Committee\Strategies\CentralCommitteeStructure;
+use App\Contexts\Membership\Domain\Committee\Strategies\GeographicCommitteeStructure;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteePolicy;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeName;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeType;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeStatus;
@@ -27,6 +31,24 @@ final class TemporalSnapshotTest extends TestCase
         $this->structureId = CommitteeStructureId::generate();
     }
 
+    private function makeCentralPolicy(): CommitteePolicy
+    {
+        return new CommitteePolicy(
+            type: CommitteeType::central(),
+            structure: new CentralCommitteeStructure(),
+            level: CommitteeLevel::create(1, null, 'Level 1', GeoPolicy::NONE, null, [], 0, null, null),
+        );
+    }
+
+    private function makeGeographicPolicy(int $levelIndex, string $scope, string $levelName): CommitteePolicy
+    {
+        return new CommitteePolicy(
+            type: CommitteeType::geographic(),
+            structure: new GeographicCommitteeStructure(),
+            level: CommitteeLevel::create($levelIndex, $scope, $levelName, GeoPolicy::REQUIRED, new GeoScope($scope), [], 0, null, null),
+        );
+    }
+
     // ============================================================
     // Temporal Snapshot Tests
     // ============================================================
@@ -36,6 +58,7 @@ final class TemporalSnapshotTest extends TestCase
         $committee = Committee::create(
             id: CommitteeId::generate(),
             tenantId: $this->tenantId,
+            policy: $this->makeCentralPolicy(),
             structureId: $this->structureId,
             levelIndex: 1,
             levelName: 'Level 1',
@@ -56,6 +79,7 @@ final class TemporalSnapshotTest extends TestCase
         $committee = Committee::create(
             id: CommitteeId::generate(),
             tenantId: $this->tenantId,
+            policy: $this->makeCentralPolicy(),
             structureId: $this->structureId,
             levelIndex: 1,
             levelName: 'Level 1',
@@ -78,6 +102,7 @@ final class TemporalSnapshotTest extends TestCase
         $committee = Committee::create(
             id: CommitteeId::generate(),
             tenantId: $this->tenantId,
+            policy: $this->makeGeographicPolicy(1, 'district', 'District Committee'),
             structureId: $structureId1,
             levelIndex: 1,
             levelName: 'District Committee',
@@ -100,6 +125,7 @@ final class TemporalSnapshotTest extends TestCase
         $committee = Committee::create(
             id: CommitteeId::generate(),
             tenantId: $this->tenantId,
+            policy: $this->makeCentralPolicy(),
             structureId: $structureId,
             levelIndex: 1,
             levelName: 'Level 1',
@@ -128,6 +154,7 @@ final class TemporalSnapshotTest extends TestCase
         $committeeFromV1 = Committee::create(
             id: CommitteeId::generate(),
             tenantId: $this->tenantId,
+            policy: $this->makeCentralPolicy(),
             structureId: $structureV1Id,
             levelIndex: 1,
             levelName: 'Central Committee',
@@ -142,6 +169,7 @@ final class TemporalSnapshotTest extends TestCase
         $committeeFromV2 = Committee::create(
             id: CommitteeId::generate(),
             tenantId: $this->tenantId,
+            policy: $this->makeCentralPolicy(),
             structureId: $structureV2Id,
             levelIndex: 1,
             levelName: 'Central Committee v2',
@@ -203,6 +231,7 @@ final class TemporalSnapshotTest extends TestCase
         $committee = Committee::create(
             id: CommitteeId::generate(),
             tenantId: $this->tenantId,
+            policy: $this->makeGeographicPolicy(2, 'district', 'District Committee'),
             structureId: $structureId,
             levelIndex: 2,
             levelName: 'District Committee',
@@ -232,6 +261,7 @@ final class TemporalSnapshotTest extends TestCase
         $olderCommittee = Committee::create(
             id: CommitteeId::generate(),
             tenantId: $this->tenantId,
+            policy: $this->makeGeographicPolicy(1, 'province', 'Province Committee'),
             structureId: $v1StructureId,
             levelIndex: 1,
             levelName: 'Province Committee',
@@ -247,6 +277,7 @@ final class TemporalSnapshotTest extends TestCase
         $newerCommittee = Committee::create(
             id: CommitteeId::generate(),
             tenantId: $this->tenantId,
+            policy: $this->makeGeographicPolicy(1, 'region', 'Bagmati Province'),
             structureId: $v2StructureId,
             levelIndex: 1,
             levelName: 'Bagmati Province',  // Name changed in v2

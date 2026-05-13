@@ -182,6 +182,10 @@ import governanceLevelsTutorialDe from './locales/pages/GovernanceLevelsTutorial
 import governanceLevelsTutorialEn from './locales/pages/GovernanceLevelsTutorial/en.json';
 import governanceLevelsTutorialNp from './locales/pages/GovernanceLevelsTutorial/np.json';
 
+import geoUnitsDe from './locales/pages/GeoUnits/de.json';
+import geoUnitsEn from './locales/pages/GeoUnits/en.json';
+import geoUnitsNp from './locales/pages/GeoUnits/np.json';
+
 // Get locale from multiple sources in priority order
 function getInitialLocale() {
   // 1. Check for server-provided locale (from Inertia props - highest priority)
@@ -270,6 +274,7 @@ const messages = {
       committee: committeeDe,
       'organisation-create-tutorial': organisationCreateTutorialDe,
       'governance-levels': governanceLevelsDe,
+      'geo-units': geoUnitsDe,
     },
     // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
     ...governanceLevelsTutorialDe,
@@ -329,6 +334,7 @@ const messages = {
       committee: committeeEn,
       'organisation-create-tutorial': organisationCreateTutorialEn,
       'governance-levels': governanceLevelsEn,
+      'geo-units': geoUnitsEn,
     },
     // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
     ...governanceLevelsTutorialEn,
@@ -388,6 +394,7 @@ const messages = {
       committee: committeeNp,
       'organisation-create-tutorial': organisationCreateTutorialNp,
       'governance-levels': governanceLevelsNp,
+      'geo-units': geoUnitsNp,
     },
     // Governance Levels Tutorial (flat-spreaded for root-level $t() access)
     ...governanceLevelsTutorialNp,

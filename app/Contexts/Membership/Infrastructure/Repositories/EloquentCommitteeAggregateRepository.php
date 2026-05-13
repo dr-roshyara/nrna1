@@ -10,7 +10,9 @@ use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInt
 use App\Contexts\Membership\Domain\Committee\GeoPolicy;
 use App\Contexts\Membership\Domain\Committee\GeoScope;
 use App\Contexts\Membership\Domain\Committee\CommitteeStructureId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeGeoIdentity;
 use App\Contexts\Membership\Infrastructure\Models\CommitteeModel;
+use App\Contexts\Membership\Infrastructure\Services\CanonicalGeoSerializer;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
 /**
@@ -25,6 +27,10 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
  */
 final class EloquentCommitteeAggregateRepository implements CommitteeRepositoryInterface
 {
+    public function __construct(
+        private readonly CanonicalGeoSerializer $serializer,
+    ) {}
+
     public function persist(Committee $committee): void
     {
         CommitteeModel::updateOrCreate(
@@ -46,6 +52,12 @@ final class EloquentCommitteeAggregateRepository implements CommitteeRepositoryI
                 'snapshot_geo_scope' => $committee->geoScope()?->code,
                 'snapshot_structure_version' => $committee->structureVersion(),
                 'snapshot_taken_at' => now(),
+                'geo_unit_id' => $committee->getGeoUnitId(),
+                'canonical_geo_id' => $this->serializer->serialize(
+                    $committee->getGeoUnitId(),
+                    $committee->getRegionCode(),
+                    $committee->getCountryCode(),
+                ),
             ]
         );
     }
@@ -88,6 +100,12 @@ final class EloquentCommitteeAggregateRepository implements CommitteeRepositoryI
             geoPolicy: $model->snapshot_geo_policy ? GeoPolicy::from($model->snapshot_geo_policy) : null,
             geoScope: $model->snapshot_geo_scope ? new GeoScope($model->snapshot_geo_scope) : null,
             structureVersion: $model->snapshot_structure_version,
+            regionCode: $model->region_code,
+            countryCode: $model->country_code,
+            geoUnitId: $model->geo_unit_id,
+            geoIdentity: $model->geo_unit_id !== null
+                ? new CommitteeGeoIdentity((int) $model->geo_unit_id)
+                : null,
         );
     }
 }

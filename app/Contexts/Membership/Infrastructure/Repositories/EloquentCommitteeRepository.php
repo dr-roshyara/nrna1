@@ -81,7 +81,10 @@ final class EloquentCommitteeRepository implements CommitteeRepositoryInterface
             $geoRef,
             $status,
             $structure,
-            $assignments
+            $assignments,
+            regionCode: $model->region_code,
+            countryCode: $model->country_code,
+            geoUnitId: $model->geo_unit_id,
         );
     }
 
@@ -276,7 +279,10 @@ final class EloquentCommitteeRepository implements CommitteeRepositoryInterface
             $geoRef,
             $status,
             $structure,
-            $assignments
+            $assignments,
+            regionCode: $model->region_code,
+            countryCode: $model->country_code,
+            geoUnitId: $model->geo_unit_id,
         );
     }
 
@@ -307,6 +313,7 @@ final class EloquentCommitteeRepository implements CommitteeRepositoryInterface
             'status' => $committee->getStatus()->value(),
             'region_code' => $committee->getRegionCode(),
             'country_code' => $committee->getCountryCode(),
+            'geo_unit_id' => $committee->getGeoUnitId(),
         ];
     }
 

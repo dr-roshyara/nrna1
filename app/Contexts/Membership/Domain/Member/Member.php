@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Domain\Member;
 
+use App\Contexts\Membership\Domain\Member\ValueObjects\MemberResidenceGeoIdentity;
 use App\Contexts\Membership\Domain\Member\ValueObjects\PersonalInfo;
 use App\Contexts\Membership\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
@@ -23,32 +24,37 @@ final class Member
     private PersonalInfo $personalInfo;
     private MembershipTypeId $membershipTypeId;
     private TenantId $tenantId;
+    private ?MemberResidenceGeoIdentity $residenceGeoIdentity = null;
 
     private function __construct(
         MemberId $id,
         MemberStatus $status,
         PersonalInfo $personalInfo,
         MembershipTypeId $membershipTypeId,
-        TenantId $tenantId
+        TenantId $tenantId,
+        ?MemberResidenceGeoIdentity $residenceGeoIdentity = null
     ) {
         $this->id = $id;
         $this->status = $status;
         $this->personalInfo = $personalInfo;
         $this->membershipTypeId = $membershipTypeId;
         $this->tenantId = $tenantId;
+        $this->residenceGeoIdentity = $residenceGeoIdentity;
     }
 
     public static function register(
         TenantId $tenantId,
         PersonalInfo $personalInfo,
-        MembershipTypeId $membershipTypeId
+        MembershipTypeId $membershipTypeId,
+        ?MemberResidenceGeoIdentity $residenceGeoIdentity = null
     ): self {
         $member = new self(
             MemberId::generate(),
             MemberStatus::active(),
             $personalInfo,
             $membershipTypeId,
-            $tenantId
+            $tenantId,
+            $residenceGeoIdentity
         );
 
         $member->recordThat(new MemberRegistered(
@@ -67,9 +73,10 @@ final class Member
         MemberStatus $status,
         PersonalInfo $personalInfo,
         MembershipTypeId $membershipTypeId,
-        TenantId $tenantId
+        TenantId $tenantId,
+        ?MemberResidenceGeoIdentity $residenceGeoIdentity = null
     ): self {
-        return new self($id, $status, $personalInfo, $membershipTypeId, $tenantId);
+        return new self($id, $status, $personalInfo, $membershipTypeId, $tenantId, $residenceGeoIdentity);
     }
 
     public function activate(): void
@@ -143,6 +150,16 @@ final class Member
     public function getTenantId(): TenantId
     {
         return $this->tenantId;
+    }
+
+    public function getResidenceGeoIdentity(): ?MemberResidenceGeoIdentity
+    {
+        return $this->residenceGeoIdentity;
+    }
+
+    public function setResidenceGeoIdentity(?MemberResidenceGeoIdentity $residenceGeoIdentity): void
+    {
+        $this->residenceGeoIdentity = $residenceGeoIdentity;
     }
 
     public function pullEvents(): array

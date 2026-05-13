@@ -48,6 +48,8 @@ final class CommitteeModel extends Model
         'max_members',
         'region_code',
         'country_code',
+        'geo_unit_id',
+        'canonical_geo_id',
         // Governance snapshot fields (Phase C - immutable temporal identity)
         'created_from_structure_id',
         'snapshot_level_index',

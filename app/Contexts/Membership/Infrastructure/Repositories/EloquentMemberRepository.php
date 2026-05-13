@@ -8,6 +8,7 @@ use App\Contexts\Membership\Domain\Repositories\MemberRepositoryInterface;
 use App\Contexts\Membership\Domain\Member\Member;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Member\MemberStatus;
+use App\Contexts\Membership\Domain\Member\ValueObjects\MemberResidenceGeoIdentity;
 use App\Contexts\Membership\Domain\Member\ValueObjects\PersonalInfo;
 use App\Contexts\Membership\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
@@ -58,6 +59,7 @@ final class EloquentMemberRepository implements MemberRepositoryInterface
         ]);
         $model->membership_type_id = $member->getMembershipTypeId()->value();
         $model->status = $member->getStatus()->value();
+        $model->residence_geo_unit_id = $member->getResidenceGeoIdentity()?->residenceGeoUnitId;
 
         if ($organisationUserId !== null) {
             $model->organisation_user_id = $organisationUserId;
@@ -106,7 +108,10 @@ final class EloquentMemberRepository implements MemberRepositoryInterface
             MemberStatus::fromString($record->status),
             $personalInfo,
             MembershipTypeId::fromString($record->membership_type_id),
-            TenantId::fromOrganisationId($record->organisation_id)
+            TenantId::fromOrganisationId($record->organisation_id),
+            $record->residence_geo_unit_id
+                ? new MemberResidenceGeoIdentity((int) $record->residence_geo_unit_id)
+                : null
         );
     }
 }

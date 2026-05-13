@@ -5,6 +5,7 @@ use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\Committee\CommitteeDashboardController;
 use App\Http\Controllers\Committee\CommitteeManagementController;
 use App\Http\Controllers\Committee\CommitteeMemberController;
+use App\Http\Controllers\Committee\MemberGeographyController;
 use App\Http\Controllers\Committee\MemberSearchController;
 
 // Public routes (no authentication required)
@@ -52,4 +53,12 @@ Route::middleware(['auth', 'verified'])->prefix('organisations/{organisation}')-
     // Member Search
     Route::get('/members/search', [MemberSearchController::class, 'index'])
         ->name('members.search');
+
+    // Member Residence Geography
+    Route::get('/members/{member}/geography', [MemberGeographyController::class, 'show'])
+        ->name('members.geography.show');
+    Route::put('/members/{member}/geography', [MemberGeographyController::class, 'update'])
+        ->name('members.geography.update');
+    Route::get('/members/{member}/nearby-committees', [MemberGeographyController::class, 'nearbyCommittees'])
+        ->name('members.geography.nearby-committees');
 });
