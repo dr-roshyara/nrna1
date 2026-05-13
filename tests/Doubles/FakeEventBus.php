@@ -15,4 +15,14 @@ final class FakeEventBus implements EventBusPort
     {
         $this->publishedEvents[] = $event;
     }
+
+    public function hasPublished(string $eventClassName): bool
+    {
+        foreach ($this->publishedEvents as $event) {
+            if (class_basename($event) === $eventClassName) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -7,21 +7,26 @@ namespace App\Contexts\Membership\Application\Committee\UseCases\CreateCommittee
 use App\Contexts\Membership\Application\Committee\Ports\CommitteeRepositoryPort;
 use App\Contexts\Membership\Application\Committee\Ports\EventBusPort;
 use App\Contexts\Membership\Domain\Committee\ConstitutionalCommittee;
+use App\Contexts\Membership\Domain\Committee\Policies\GovernancePolicy;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
+use DateTimeImmutable;
 
 final readonly class CreateCommitteeHandler
 {
     public function __construct(
         private CommitteeRepositoryPort $repository,
         private EventBusPort $eventBus,
+        private GovernancePolicy $policy,
     ) {}
 
-    public function handle(CreateCommitteeCommand $command): CreateCommitteeResult
+    public function handle(CreateCommitteeCommand $command): string
     {
         $committee = ConstitutionalCommittee::establish(
-            id: $command->committeeId,
+            id: CommitteeId::generate(),
             name: $command->name,
-            jurisdiction: $command->jurisdiction,
-            establishedAt: $command->establishedAt,
+            assignment: $command->assignment,
+            at: new DateTimeImmutable(),
+            policy: $this->policy,
         );
 
         $this->repository->save($committee);
@@ -30,6 +35,6 @@ final readonly class CreateCommitteeHandler
             $this->eventBus->publish($event);
         }
 
-        return new CreateCommitteeResult($committee);
+        return $committee->id()->value();
     }
 }
