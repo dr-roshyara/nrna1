@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Domain\Committee\ValueObjects;
 
+use App\Contexts\Geography\Domain\ValueObjects\GeoUnitId;
 use InvalidArgumentException;
 
 /**
- * @deprecated Use JurisdictionInstance instead.
+ * @deprecated Use GovernanceAssignment + GovernancePolicy instead.
  *
  * This is the legacy jurisdiction VO with semantic scope names.
  * It exists only for migration from the old hardcoded enum model.
- * New code should use JurisdictionInstance (matrix-based, configuration-driven).
+ * New code should use GovernanceAssignment (matrix-based, configuration-driven).
  *
  * Bridge method: toMatrixJurisdiction()
  */
@@ -88,20 +89,21 @@ final readonly class LegacyJurisdiction
     /**
      * Bridge to the new matrix-based model.
      *
-     * The caller must supply the governance level and geo level from the
-     * governance_level_definitions table — this VO cannot query the database itself.
+     * The caller must supply the governance level, geo level, and GeoUnitId
+     * from the governance_level_definitions table — this VO cannot query the database itself.
      * This design removes the diagonal assumption: the caller is responsible for
      * providing the correct levels based on configuration.
      *
      * @param int $governanceLevel The governance level from governance_level_definitions
      * @param int $geoLevel The geographic level (may differ from governance level)
+     * @param GeoUnitId $geoUnitId The geographic unit identifier
      */
-    public function toMatrixJurisdiction(int $governanceLevel, int $geoLevel): JurisdictionInstance
+    public function toMatrixJurisdiction(int $governanceLevel, int $geoLevel, GeoUnitId $geoUnitId): GovernanceAssignment
     {
-        return new JurisdictionInstance(
+        return new GovernanceAssignment(
             governanceLevel: $governanceLevel,
             geoLevel: $geoLevel,
-            geoCode: $this->reference ?? $this->scope,
+            geoUnitId: $geoUnitId,
         );
     }
 }
