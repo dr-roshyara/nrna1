@@ -13,7 +13,7 @@ final readonly class CommitteeDashboardDTO
         public string $id,
         public string $name,
         public string $code,
-        public string $type,
+        public ?string $type,
         public int $level,
         public ?string $geoReference,
         public string $status,

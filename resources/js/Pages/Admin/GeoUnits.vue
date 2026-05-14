@@ -25,6 +25,30 @@
         </div>
       </div>
 
+      <!-- Governance Navigation Tabs -->
+      <div class="mb-8 border-b border-gray-200">
+        <div class="flex gap-8">
+          <a
+            :href="`/organisations/${organisation.slug}/committees`"
+            class="px-4 py-3 text-base font-semibold text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-300 transition-colors"
+          >
+            Committees
+          </a>
+          <a
+            :href="`/organisations/${organisation.slug}/governance/levels`"
+            class="px-4 py-3 text-base font-semibold text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-300 transition-colors"
+          >
+            Governance Levels
+          </a>
+          <a
+            href="#"
+            class="px-4 py-3 text-base font-semibold text-primary-600 border-b-2 border-primary-600"
+          >
+            Geographic Units
+          </a>
+        </div>
+      </div>
+
       <!-- Filter Bar -->
       <Card padding="sm" class="mb-6">
         <div class="flex flex-wrap items-center gap-4">
@@ -163,7 +187,7 @@
       <!-- Create Geo Unit Modal -->
       <GeoUnitCreateModal
         :is-open="showCreateModal"
-        :all-units="treeUnits"
+        :all-units="allUnitsFlat"
         @close="showCreateModal = false"
         @submit="handleCreateUnit"
       />
@@ -192,6 +216,7 @@ const props = defineProps<{
 const apiBase = computed(() => `/organisations/${props.organisation.slug}/geo/units/api`)
 
 const treeUnits = ref<GovernanceGeoUnit[]>([])
+const allUnitsFlat = ref<GovernanceGeoUnit[]>([])
 const loading = ref(false)
 const error = ref<string | null>(null)
 const expandedIds = ref<Set<number>>(new Set())
@@ -320,9 +345,14 @@ async function applyFilters() {
     treeUnits.value = response.data.data || []
     breadcrumb.value = []
     expandedIds.value = new Set()
+
+    // Keep flat list updated for modal (without filters)
+    const flatResponse = await axios.get(`${apiBase.value}/`)
+    allUnitsFlat.value = flatResponse.data.data || []
   } catch (err: any) {
     error.value = err.response?.data?.message || 'Failed to load geographic units'
     treeUnits.value = []
+    allUnitsFlat.value = []
   } finally {
     loading.value = false
   }
@@ -340,9 +370,14 @@ async function fetchUnits() {
     const response = await axios.get(`${apiBase.value}/tree`)
     treeUnits.value = response.data.data || []
     expandedIds.value = new Set()
+
+    // Also fetch a flat list of ALL units for the modal's parent selector
+    const flatResponse = await axios.get(`${apiBase.value}/`)
+    allUnitsFlat.value = flatResponse.data.data || []
   } catch (err: any) {
     error.value = err.response?.data?.message || 'Failed to load geographic units'
     treeUnits.value = []
+    allUnitsFlat.value = []
   } finally {
     loading.value = false
   }

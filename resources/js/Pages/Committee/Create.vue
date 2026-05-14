@@ -110,25 +110,94 @@
             </div>
           </div>
 
-          <!-- Section 2: Geographic Scope -->
+          <!-- Section 2: Governance Assignment -->
           <div>
             <div class="flex items-center gap-2 mb-6">
               <div class="h-1 w-12 bg-gradient-to-r from-accent-600 to-accent-400 rounded-full"></div>
-              <h2 class="text-xs font-semibold uppercase tracking-widest text-neutral-600">Geographic Scope</h2>
+              <h2 class="text-xs font-semibold uppercase tracking-widest text-neutral-600">Governance Assignment</h2>
             </div>
 
-            <div>
-              <!-- Geographic Reference -->
+            <div class="space-y-5">
+              <!-- Governance Level -->
               <div class="group">
-                <label class="block text-sm font-semibold text-neutral-900 mb-2">
-                  {{ $t('pages.committee.create.form.geo_reference') }}
-                  <span class="text-neutral-400 text-xs font-normal ml-1">(Optional)</span>
+                <label for="governanceLevel" class="block text-sm font-semibold text-neutral-900 mb-2">
+                  Governance Level
+                  <span class="text-danger-600">*</span>
                 </label>
-                <GeographyCascader
-                  v-model="form.geo_selections"
-                  :organisation-slug="organisationSlug"
-                />
-                <p v-if="errors.geo_selections" class="text-xs text-danger-600 mt-2">{{ errors.geo_selections }}</p>
+                <div class="relative">
+                  <select
+                    id="governanceLevel"
+                    v-model.number="form.governanceLevel"
+                    :class="[
+                      'w-full px-4 py-3 rounded-lg border transition-all duration-300 appearance-none',
+                      'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-0 focus:border-primary-500',
+                      errors.governanceLevel
+                        ? 'border-danger-300 bg-danger-50 focus:ring-danger-500 focus:border-danger-500'
+                        : 'border-neutral-200 bg-white hover:border-neutral-300'
+                    ]"
+                    @change="clearError('governanceLevel'); form.geoUnitId = null; clearError('geoUnitId')"
+                  >
+                    <option :value="null" disabled>Select governance level…</option>
+                    <option v-for="level in governanceLevels" :key="level.id" :value="level.level">
+                      Level {{ level.level }} — {{ level.committee_name }}
+                    </option>
+                  </select>
+                  <div class="pointer-events-none absolute right-3 top-4">
+                    <svg class="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  <transition name="slideDown">
+                    <span v-if="errors.governanceLevel" class="absolute top-full mt-2 flex items-center gap-1 text-sm text-danger-600">
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18.101 12.93a1 1 0 00-1.414-1.414L10 14.586l-6.687-6.687a1 1 0 00-1.414 1.414l8.101 8.101a1 1 0 001.414 0l8.687-8.687z" clip-rule="evenodd" /></svg>
+                      {{ errors.governanceLevel }}
+                    </span>
+                  </transition>
+                </div>
+                <p class="text-xs text-neutral-500 mt-2">The hierarchical tier this committee operates at</p>
+              </div>
+
+              <!-- Geographic Unit -->
+              <div class="group">
+                <label for="geoUnitId" class="block text-sm font-semibold text-neutral-900 mb-2">
+                  Geographic Unit
+                  <span class="text-danger-600">*</span>
+                </label>
+                <div class="relative">
+                  <select
+                    id="geoUnitId"
+                    v-model="form.geoUnitId"
+                    :disabled="form.governanceLevel === null"
+                    :class="[
+                      'w-full px-4 py-3 rounded-lg border transition-all duration-300 appearance-none',
+                      'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-0 focus:border-primary-500',
+                      form.governanceLevel === null ? 'opacity-50 cursor-not-allowed bg-neutral-50' : '',
+                      errors.geoUnitId
+                        ? 'border-danger-300 bg-danger-50 focus:ring-danger-500 focus:border-danger-500'
+                        : 'border-neutral-200 bg-white hover:border-neutral-300'
+                    ]"
+                    @change="clearError('geoUnitId')"
+                  >
+                    <option :value="null" disabled>
+                      {{ form.governanceLevel === null ? 'Select governance level first…' : 'Select geographic unit…' }}
+                    </option>
+                    <option v-for="unit in filteredGeoUnits" :key="unit.id" :value="unit.id">
+                      {{ unit.name }} ({{ unit.code }})
+                    </option>
+                  </select>
+                  <div class="pointer-events-none absolute right-3 top-4">
+                    <svg class="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  <transition name="slideDown">
+                    <span v-if="errors.geoUnitId" class="absolute top-full mt-2 flex items-center gap-1 text-sm text-danger-600">
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18.101 12.93a1 1 0 00-1.414-1.414L10 14.586l-6.687-6.687a1 1 0 00-1.414 1.414l8.101 8.101a1 1 0 001.414 0l8.687-8.687z" clip-rule="evenodd" /></svg>
+                      {{ errors.geoUnitId }}
+                    </span>
+                  </transition>
+                </div>
+                <p class="text-xs text-neutral-500 mt-2">The geographic unit this committee is responsible for</p>
               </div>
             </div>
           </div>
@@ -168,8 +237,8 @@
             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
           </svg>
           <div>
-            <p class="text-sm font-semibold text-primary-900 mb-1">Committee codes should be unique</p>
-            <p class="text-sm text-primary-700">Use a naming convention like FUNC-001 (function) or GEO-001 (geography) to keep your committees organized.</p>
+            <p class="text-sm font-semibold text-primary-900 mb-1">Governance × Geographic assignment</p>
+            <p class="text-sm text-primary-700">Select a governance level first — the geographic units shown will match that level's administrative scope. Committee codes should be unique (e.g., EXEC-001, YOUTH-NRW).</p>
           </div>
         </div>
       </div>
@@ -181,26 +250,28 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { router } from '@inertiajs/vue3';
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
-import GeographyCascader from '@/Components/Geography/GeographyCascader.vue';
 
-defineProps({
+const props = defineProps({
   organisation: Object,
   organisationSlug: String,
+  governanceLevels: { type: Array, default: () => [] },
+  geoUnits: { type: Array, default: () => [] },
 });
 
 const form = ref({
   name: '',
   code: '',
-  geo_selections: {
-    region: null,
-    country: null,
-    geo: [],
-  },
+  governanceLevel: null,
+  geoUnitId: null,
 });
+
+const filteredGeoUnits = computed(() =>
+  props.geoUnits.filter(unit => unit.admin_level === form.value.governanceLevel)
+);
 
 const errors = ref({});
 const loading = ref(false);
@@ -265,9 +336,14 @@ const handleSubmit = () => {
   if (!form.value.code?.trim()) {
     errors.value.code = 'Committee code is required';
   }
-  // Check if code already exists (prevent submission if it does)
   if (codeExists.value) {
     errors.value.code = `Committee code "${form.value.code}" already exists`;
+  }
+  if (form.value.governanceLevel === null) {
+    errors.value.governanceLevel = 'Governance level is required';
+  }
+  if (form.value.geoUnitId === null) {
+    errors.value.geoUnitId = 'Geographic unit is required';
   }
 
   if (Object.keys(errors.value).length > 0) {

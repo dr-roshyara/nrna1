@@ -1,0 +1,53 @@
+   
+  [30;43;1m WARN [39;49;22m Your XML configuration validates against a deprecated schema. Migrate your XML configuration using "--migrate-configuration"!
+               
+   FAIL  Tests\Feature\Committee\CreateCommitteeWithGovernanceTest
+  ✓ create returns governance levels and geo units                                                                                                                                                        3.87s  
+  ✓ store requires governance level and geo unit id                                                                                                                                                       0.17s  
+  ⨯ store accepts governance level and geo unit id                                                                                                                                                        0.19s  
+  ✓ store rejects invalid governance assignment                                                                                                                                                           0.28s  
+  ⨯ store creates committee with governance assignment                                                                                                                                                    0.17s  
+  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Feature\Committee\CreateCommitteeWithGovernanceTest > store accepts governance level and geo unit id                                                                           QueryException   
+  SQLSTATE[25P02]: In failed sql transaction: 7 FEHLER:  aktuelle Transaktion wurde abgebrochen, Befehle werden bis zum Ende der Transaktion ignoriert (Connection: pgsql, SQL: select * from "committees" where "code" = ICC-001 and "organisation_id" = 3604b36d-f8e0-44ab-96d1-122735c2b11f limit 1)
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:825
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:825
+
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
+      NunoMaduro\Collision\Exceptions\TestException::("SQLSTATE[25P02]: In failed sql transaction: 7 FEHLER:  aktuelle Transaktion wurde abgebrochen, Befehle werden bis zum Ende der Transaktion ignoriert")
+
+  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Feature\Committee\CreateCommitteeWithGovernanceTest > store creates committee with governance assignment                                                                       QueryException   
+  SQLSTATE[25P02]: In failed sql transaction: 7 FEHLER:  aktuelle Transaktion wurde abgebrochen, Befehle werden bis zum Ende der Transaktion ignoriert (Connection: pgsql, SQL: select * from "committees" where "code" = REG-001 and "organisation_id" = 994ee158-8942-4b35-af27-08f326e62582 limit 1)
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:825
+    821▕                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822▕                 );
+    823▕             }
+    824▕ 
+  ➜ 825▕             throw new QueryException(
+    826▕                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827▕             );
+    828▕         }
+    829▕     }
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:825
+
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:412
+      NunoMaduro\Collision\Exceptions\TestException::("SQLSTATE[25P02]: In failed sql transaction: 7 FEHLER:  aktuelle Transaktion wurde abgebrochen, Befehle werden bis zum Ende der Transaktion ignoriert")
+
+
+  Tests:    2 failed, 3 passed (21 assertions)
+  Duration: 4.91s
+

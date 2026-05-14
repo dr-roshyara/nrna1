@@ -72,7 +72,8 @@ final readonly class GovernanceGeoUnitQueryService
                 'children_count'
             )
             ->whereIn('gau.admin_level', $adminLevels)
-            ->where('gau.is_active', true);
+            ->where('gau.is_active', true)
+            ->where('gau.organisation_id', $tenantId);
 
         // Apply level filter
         if ($filter->level !== null) {
@@ -136,6 +137,7 @@ final readonly class GovernanceGeoUnitQueryService
     {
         $unit = DB::table('geo_administrative_units')
             ->where('id', $unitId)
+            ->where('organisation_id', $tenantId)
             ->first(['id', 'code', 'name_local', 'admin_level', 'admin_type', 'parent_id', 'path']);
 
         if (!$unit) {
@@ -152,6 +154,7 @@ final readonly class GovernanceGeoUnitQueryService
         $ancestors = DB::table('geo_administrative_units')
             ->select(['id', 'code', 'name_local', 'admin_level', 'admin_type', 'parent_id', 'path'])
             ->whereIn('id', $ancestorIds)
+            ->where('organisation_id', $tenantId)
             ->orderBy('admin_level')
             ->get();
 
@@ -200,6 +203,7 @@ final readonly class GovernanceGeoUnitQueryService
             ])
             ->whereIn('admin_level', $adminLevels)
             ->where('is_active', true)
+            ->where('organisation_id', $tenantId)
             ->where(function ($q) use ($query) {
                 $q->where('code', 'ilike', "%{$query}%")
                   ->orWhere('name_local->en', 'ilike', "%{$query}%");
@@ -240,9 +244,7 @@ final readonly class GovernanceGeoUnitQueryService
     private function resolveAdminLevels(\Illuminate\Support\Collection $governanceLevels): array
     {
         return $governanceLevels
-            ->pluck('geo_code')
-            ->map(fn (string $code) => self::GEO_CODE_TO_LEVEL[$code] ?? null)
-            ->filter(fn ($value) => $value !== null)
+            ->pluck('level')
             ->values()
             ->all();
     }
@@ -276,10 +278,7 @@ final readonly class GovernanceGeoUnitQueryService
     {
         $map = [];
         foreach ($governanceLevels as $gov) {
-            $adminLevel = self::GEO_CODE_TO_LEVEL[$gov->geo_code] ?? null;
-            if ($adminLevel !== null) {
-                $map[$adminLevel] = $gov->geo_code;
-            }
+            $map[$gov->level] = $gov->geo_code;
         }
 
         return $map;

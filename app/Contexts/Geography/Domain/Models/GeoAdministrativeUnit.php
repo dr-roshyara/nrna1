@@ -41,6 +41,7 @@ class GeoAdministrativeUnit extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'organisation_id',
         'country_code',
         'admin_level',
         'admin_type',

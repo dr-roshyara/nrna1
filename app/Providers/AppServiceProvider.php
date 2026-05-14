@@ -26,6 +26,37 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Membership context: Committee creation ports
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Committee\Ports\CommitteeRepositoryPort::class,
+            \App\Contexts\Membership\Infrastructure\Repositories\CommitteeRepository::class
+        );
+
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Committee\Ports\EventBusPort::class,
+            \App\Contexts\Membership\Infrastructure\Events\LaravelEventBusAdapter::class
+        );
+
+        // Committee creation: canonical handler with matrix-aware governance validation
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Committee\UseCases\CreateCommittee\CreateCommitteeHandler::class,
+            function ($app) {
+                $rows = \Illuminate\Support\Facades\DB::table('governance_level_definitions')
+                    ->select('level', 'is_active')
+                    ->get()
+                    ->map(fn($row) => (array) $row)
+                    ->toArray();
+
+                return new \App\Contexts\Membership\Application\Committee\UseCases\CreateCommittee\CreateCommitteeHandler(
+                    repository: $app->make(\App\Contexts\Membership\Application\Committee\Ports\CommitteeRepositoryPort::class),
+                    eventBus: $app->make(\App\Contexts\Membership\Application\Committee\Ports\EventBusPort::class),
+                    policy: new \App\Contexts\Membership\Domain\Committee\Policies\GovernancePolicy(
+                        \App\Contexts\Membership\Domain\Committee\Policies\GovernanceMatrix::fromRows($rows)
+                    ),
+                );
+            }
+        );
+
         // Register singleton services for dependency injection
         $this->app->singleton(DemoElectionResolver::class, function () {
             return new DemoElectionResolver();

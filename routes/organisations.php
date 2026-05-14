@@ -369,4 +369,11 @@ Route::prefix('organisations/{organisation:slug}')
                 Route::get('/{id}',      [GeoUnitController::class, 'show']);
             });
         });
+
+        // ── Canonical Committee Creation (Governance Matrix + Event Sourcing) ────
+        Route::prefix('/committees/api')->name('organisations.committees.api.')->group(function () {
+            Route::post('/create-canonical',
+                [\App\Http\Controllers\Committee\CreateCommitteeController::class, 'store']
+            )->name('create-canonical');
+        });
     });

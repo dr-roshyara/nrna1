@@ -25,63 +25,45 @@
           </div>
         </div>
 
-        <!-- Committee Levels Grid -->
+        <!-- Governance Navigation Tabs -->
+        <div class="mb-8 border-b border-gray-200">
+          <div class="flex gap-8">
+            <a
+              href="#"
+              class="px-4 py-3 text-base font-semibold text-primary-600 border-b-2 border-primary-600"
+            >
+              Committees
+            </a>
+            <a
+              :href="`/organisations/${organisationSlug}/governance/levels`"
+              class="px-4 py-3 text-base font-semibold text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-300 transition-colors"
+            >
+              Governance Levels
+            </a>
+            <a
+              :href="`/organisations/${organisationSlug}/geo/units`"
+              class="px-4 py-3 text-base font-semibold text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-300 transition-colors"
+            >
+              Geographic Units
+            </a>
+          </div>
+        </div>
+
+        <!-- Committee Levels Grid (Dynamic from Governance Levels) -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <!-- Central Level -->
-          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+          <div
+            v-for="level in governanceLevels"
+            :key="level.level"
+            class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
+          >
             <div class="px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-blue-100">
-              <h2 class="text-xl font-bold text-gray-900">Central Committee</h2>
-              <p class="text-sm text-gray-600 mt-1">National-level governance</p>
+              <h2 class="text-xl font-bold text-gray-900">{{ level.committee_name }}</h2>
+              <p class="text-sm text-gray-600 mt-1">{{ level.geo_name }} governance</p>
             </div>
             <div class="p-6">
               <CommitteeList
-                :committees="committees.central"
-                level="central"
-                :organisation-slug="organisationSlug"
-              />
-            </div>
-          </div>
-
-          <!-- Provincial Level -->
-          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-green-50 to-green-100">
-              <h2 class="text-xl font-bold text-gray-900">Provincial Committees</h2>
-              <p class="text-sm text-gray-600 mt-1">Regional governance structures</p>
-            </div>
-            <div class="p-6">
-              <CommitteeList
-                :committees="committees.province"
-                level="province"
-                :organisation-slug="organisationSlug"
-              />
-            </div>
-          </div>
-
-          <!-- District Level -->
-          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-purple-50 to-purple-100">
-              <h2 class="text-xl font-bold text-gray-900">District Committees</h2>
-              <p class="text-sm text-gray-600 mt-1">District-level committees</p>
-            </div>
-            <div class="p-6">
-              <CommitteeList
-                :committees="committees.district"
-                level="district"
-                :organisation-slug="organisationSlug"
-              />
-            </div>
-          </div>
-
-          <!-- Ward Level -->
-          <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-100">
-              <h2 class="text-xl font-bold text-gray-900">Ward Committees</h2>
-              <p class="text-sm text-gray-600 mt-1">Local-level committees</p>
-            </div>
-            <div class="p-6">
-              <CommitteeList
-                :committees="committees.ward"
-                level="ward"
+                :committees="committees[level.level] || []"
+                :level="String(level.level)"
                 :organisation-slug="organisationSlug"
               />
             </div>
@@ -113,6 +95,10 @@ import CommitteeList from '@/Components/Committee/CommitteeList.vue';
 const props = defineProps({
   committees: {
     type: Object,
+    required: true,
+  },
+  governanceLevels: {
+    type: Array,
     required: true,
   },
   organisationSlug: {

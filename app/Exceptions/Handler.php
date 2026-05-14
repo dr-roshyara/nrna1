@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use App\Exceptions\Voting\VotingException;
+use App\Exceptions\DomainException;
 use Illuminate\Support\Facades\Log;
 
 class Handler extends ExceptionHandler
@@ -29,6 +30,25 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof DomainException) {
+            if ($request->wantsJson() || $request->isJson()) {
+                return response()->json([
+                    'message' => $e->getMessage(),
+                ], 422);
+            }
+
+            return back()->withErrors(['error' => $e->getMessage()]);
+        }
+
+        if ($e instanceof VotingException) {
+            return $this->handleVotingException($e, $request);
+        }
+
+        return parent::render($request, $e);
+    }
+
     /**
      * Register the exception handling callbacks for the application.
      *
@@ -36,11 +56,6 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        // Handle voting exceptions
-        $this->renderable(function (VotingException $e, $request) {
-            return $this->handleVotingException($e, $request);
-        });
-
         $this->reportable(function (Throwable $e) {
             //
         });

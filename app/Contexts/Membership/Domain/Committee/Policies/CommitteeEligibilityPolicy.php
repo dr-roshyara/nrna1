@@ -24,7 +24,7 @@ use App\Contexts\Membership\Domain\Committee\ValueObjects\GeoPathChain;
  * Business Rule GEO-ELIG-3:
  * "Members without residence geography cannot be assigned to geographic committees."
  */
-final readonly class CommitteeEligibilityPolicy
+final readonly class CommitteeEligibilityPolicy implements EligibilityPolicy
 {
     /**
      * Check if a member is eligible for a committee based on geography.

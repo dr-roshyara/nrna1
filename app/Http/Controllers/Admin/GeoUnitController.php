@@ -92,7 +92,7 @@ class GeoUnitController extends Controller
         ]);
 
         $organisation = $request->attributes->get('organisation');
-        $countryCode = $organisation?->base_country_code ?? 'XX';
+        $countryCode = $organisation?->base_country_code;
 
         try {
             $parentPath = '';
@@ -102,13 +102,14 @@ class GeoUnitController extends Controller
             }
 
             $unit = GeoAdministrativeUnit::create([
+                'organisation_id' => $organisation->id,
                 'country_code' => $countryCode,
                 'admin_level'  => $validated['admin_level'],
                 'admin_type'   => $validated['type'],
                 'parent_id'    => $validated['parent_id'] ?? null,
                 'code'         => $validated['code'],
                 'path'         => $parentPath,
-                'name_local'   => json_encode(['en' => $validated['name']]),
+                'name_local'   => ['en' => $validated['name']],
                 'is_active'    => $validated['is_active'] ?? true,
             ]);
 

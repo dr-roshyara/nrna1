@@ -7,6 +7,11 @@ use App\Http\Controllers\Committee\CommitteeManagementController;
 use App\Http\Controllers\Committee\CommitteeMemberController;
 use App\Http\Controllers\Committee\MemberGeographyController;
 use App\Http\Controllers\Committee\MemberSearchController;
+use App\Contexts\Membership\Infrastructure\Http\Controllers\Desktop\CommitteeMembershipApplicationController;
+use App\Models\Organisation;
+
+// Bind organisation model
+Route::model('organisation', Organisation::class);
 
 // Public routes (no authentication required)
 Route::get('/create-committee-tutorial', [CommitteeManagementController::class, 'tutorial'])
@@ -61,4 +66,10 @@ Route::middleware(['auth', 'verified'])->prefix('organisations/{organisation}')-
         ->name('members.geography.update');
     Route::get('/members/{member}/nearby-committees', [MemberGeographyController::class, 'nearbyCommittees'])
         ->name('members.geography.nearby-committees');
+
+    // Committee Membership Applications
+    Route::post('/committee/membership/apply', [CommitteeMembershipApplicationController::class, 'apply'])
+        ->name('committee.membership.apply');
+    Route::post('/committee/membership/review', [CommitteeMembershipApplicationController::class, 'review'])
+        ->name('committee.membership.review');
 });

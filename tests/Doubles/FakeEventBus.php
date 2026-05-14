@@ -25,4 +25,9 @@ final class FakeEventBus implements EventBusPort
         }
         return false;
     }
+
+    public function reset(): void
+    {
+        $this->publishedEvents = [];
+    }
 }

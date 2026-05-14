@@ -12,6 +12,7 @@
     "actions": "Aktionen"
   },
   "actions": {
+    "add": "Geo-Einheit hinzufügen",
     "refresh": "Aktualisieren",
     "expand_all": "Alle erweitern",
     "collapse_all": "Alle einklappen"

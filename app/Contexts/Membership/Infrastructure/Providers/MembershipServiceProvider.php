@@ -122,6 +122,38 @@ class MembershipServiceProvider extends ServiceProvider
             EloquentFeeRepository::class
         );
 
+        // Repository binding (no dependencies in constructor)
+        $this->app->singleton(
+            \App\Contexts\Membership\Application\Membership\Ports\CommitteeAssociationRepositoryPort::class,
+            \App\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeAssociationRepository::class
+        );
+
+        // Lifecycle policy binding (depends on repository for queries)
+        $this->app->singleton(
+            \App\Contexts\Membership\Domain\Membership\CommitteeAssociationLifecyclePolicy::class,
+            function ($app) {
+                return new \App\Contexts\Membership\Domain\Membership\CommitteeAssociationLifecyclePolicy(
+                    $app->make(\App\Contexts\Membership\Application\Membership\Ports\CommitteeAssociationRepositoryPort::class)
+                );
+            }
+        );
+
+        // After repository is resolved, inject the policy
+        $this->app->afterResolving(
+            \App\Contexts\Membership\Application\Membership\Ports\CommitteeAssociationRepositoryPort::class,
+            function ($repository, $app) {
+                $repository->setLifecyclePolicy(
+                    $app->make(\App\Contexts\Membership\Domain\Membership\CommitteeAssociationLifecyclePolicy::class)
+                );
+            }
+        );
+
+        // A2.2: MembershipLineage repository (strangler pattern - new constitutional model)
+        $this->app->singleton(
+            \App\Contexts\Membership\Application\Membership\Ports\MembershipLineageRepositoryPort::class,
+            \App\Contexts\Membership\Infrastructure\Repositories\EloquentMembershipLineageRepository::class
+        );
+
         $this->app->bind(
             CommitteeRepositoryInterface::class,
             EloquentCommitteeRepository::class

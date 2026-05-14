@@ -25,6 +25,30 @@
         </div>
       </div>
 
+      <!-- Governance Navigation Tabs -->
+      <div class="mb-8 border-b border-gray-200">
+        <div class="flex gap-8">
+          <Link
+            :href="`/organisations/${organisation.slug}/committees`"
+            class="px-4 py-3 text-base font-semibold text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-300 transition-colors"
+          >
+            Committees
+          </Link>
+          <a
+            href="#"
+            class="px-4 py-3 text-base font-semibold text-primary-600 border-b-2 border-primary-600"
+          >
+            Governance Levels
+          </a>
+          <Link
+            :href="`/organisations/${organisation.slug}/geo/units`"
+            class="px-4 py-3 text-base font-semibold text-gray-600 hover:text-gray-900 hover:border-b-2 hover:border-gray-300 transition-colors"
+          >
+            Geographic Units
+          </Link>
+        </div>
+      </div>
+
       <!-- Loading State -->
       <div v-if="loading && levels.length === 0" class="text-center py-16">
         <div class="flex justify-center">

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Domain\Committee\Policies;
 
 use App\Contexts\Membership\Domain\Committee\ValueObjects\GovernanceAssignment;
-use DomainException;
+use App\Exceptions\DomainException;
 
 final readonly class GovernancePolicy
 {

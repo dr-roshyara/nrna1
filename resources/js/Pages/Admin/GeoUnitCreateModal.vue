@@ -181,9 +181,12 @@
               <div class="relative">
                 <select
                   v-model.number="form.parent_id"
-                  class="w-full px-4 py-3 border-2 border-neutral-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors bg-white appearance-none cursor-pointer"
+                  :disabled="selectedLevel <= 0"
+                  class="w-full px-4 py-3 border-2 border-neutral-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors bg-white appearance-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <option :value="null">No parent (Top-level unit)</option>
+                  <option :value="null">
+                    {{ selectedLevel <= 0 ? 'Select a geographic level first' : 'Select a parent unit...' }}
+                  </option>
                   <option v-for="unit in availableParents" :key="unit.id" :value="unit.id">
                     {{ unit.name }} (Level {{ unit.admin_level }})
                   </option>
@@ -194,7 +197,10 @@
                   </svg>
                 </div>
               </div>
-              <p class="text-xs text-neutral-500 mt-1">Select the geographic unit that contains this one</p>
+              <p class="text-xs text-neutral-500 mt-1">
+                <span v-if="selectedLevel <= 0">First select a geographic level above to see available parent units</span>
+                <span v-else>Select the geographic unit that contains this one (Level {{ selectedLevel - 1 }} or lower)</span>
+              </p>
             </div>
 
             <!-- Active Status -->
@@ -288,10 +294,10 @@ const isSubmitting = ref(false)
 const selectedLevel = computed(() => form.value.admin_level === '' ? -1 : parseInt(String(form.value.admin_level)))
 
 const availableParents = computed(() => {
-  if (!props.allUnits) return []
-  // Don't allow circular references
+  if (!props.allUnits || selectedLevel.value <= 0) return []
+  // Filter to show only units from exactly one level above
   return props.allUnits.filter(
-    (u) => u.admin_level < selectedLevel.value && u.id !== form.value.parent_id
+    (u) => (u.admin_level ?? u.adminLevel) === selectedLevel.value - 1
   )
 })
 
