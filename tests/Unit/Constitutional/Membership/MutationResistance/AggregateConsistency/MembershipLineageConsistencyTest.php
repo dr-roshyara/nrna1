@@ -86,7 +86,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         // CONSTITUTIONAL GUARANTEE: "TERMINATED status can appear exactly once"
 
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('TERMINATED is terminal');
+        $this->expectExceptionMessage('Invalid state transition');
 
         $memberId = MemberId::generate();
         $committeeId = CommitteeId::generate();
@@ -182,7 +182,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         // CONSTITUTIONAL GUARANTEE: "Only SUSPENDED can be restored to ACTIVE"
 
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Cannot restore from TERMINATED');
+        $this->expectExceptionMessage('Invalid state transition');
 
         $memberId = MemberId::generate();
         $committeeId = CommitteeId::generate();

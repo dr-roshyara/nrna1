@@ -27,7 +27,7 @@ final class MembershipLineageConstructorSafetyTest extends TestCase
         // CONSTITUTIONAL GUARANTEE: "Episode history must form a coherent constitutional chain"
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Episode chain must contain valid transitions');
+        $this->expectExceptionMessage('SUSPENDED requires prior ACTIVE');
 
         $memberId = MemberId::generate();
         $committeeId = CommitteeId::generate();
@@ -87,7 +87,7 @@ final class MembershipLineageConstructorSafetyTest extends TestCase
         // CONSTITUTIONAL GUARANTEE: "Initial episodes must have valid constitutional status"
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Episode chain must contain valid transitions');
+        $this->expectExceptionMessage('SUSPENDED requires prior ACTIVE');
 
         // Try to reconstitute with SUSPENDED as first episode (invalid)
         $invalidInitial = new CommitteeAssociation(

@@ -11,8 +11,9 @@ use App\Contexts\Membership\Domain\Membership\Events\MembershipRestored;
 use App\Contexts\Membership\Domain\Membership\Events\MembershipTerminated;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\MemberId;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use PHPUnit\Framework\TestCase;
 
 final class MembershipEventOrderingTest extends TestCase
@@ -25,18 +26,15 @@ final class MembershipEventOrderingTest extends TestCase
         // CURRENT: Handler might dispatch events before saveForTenant()
         // CONSTITUTIONAL GUARANTEE: "Events are emitted only after persistence succeeds"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
+            tenantId: TenantId::fromString('test-tenant'),
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         $lineage->releaseEvents();
@@ -68,18 +66,15 @@ final class MembershipEventOrderingTest extends TestCase
         // CURRENT: Event emission could happen in arbitrary order
         // CONSTITUTIONAL GUARANTEE: "Event sequence matches transition sequence exactly"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
+            tenantId: TenantId::fromString('test-tenant'),
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         $lineage->releaseEvents();
@@ -119,18 +114,15 @@ final class MembershipEventOrderingTest extends TestCase
         // CURRENT: Event timestamping might not preserve order
         // CONSTITUTIONAL GUARANTEE: "Replay order is identical to transition order"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
+            tenantId: TenantId::fromString('test-tenant'),
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         $lineage->releaseEvents();
@@ -166,7 +158,11 @@ final class MembershipEventOrderingTest extends TestCase
         // CRITICAL: Timestamps are monotonically increasing
         $this->assertLessThan(
             $allEvents[1]->restoredAt->getTimestamp(),
-            $allEvents[0]->suspendedAt->getTimestamp() + 3600
+            $allEvents[0]->suspendedAt->getTimestamp()
+        );
+        $this->assertLessThan(
+            $allEvents[2]->suspendedAt->getTimestamp(),
+            $allEvents[1]->restoredAt->getTimestamp()
         );
     }
 }

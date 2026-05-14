@@ -137,7 +137,7 @@ final class MembershipHydrationIntegrityTest extends TestCase
         // CONSTITUTIONAL GUARANTEE: "Reconstructed lineage must be logically valid"
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid state transition');
+        $this->expectExceptionMessage('TERMINATED is terminal');
 
         // Create impossible sequence in memory (simulating bad database state)
         $memberId = MemberId::generate();

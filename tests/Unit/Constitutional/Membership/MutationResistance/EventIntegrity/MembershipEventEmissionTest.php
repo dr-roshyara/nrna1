@@ -11,8 +11,9 @@ use App\Contexts\Membership\Domain\Membership\Events\MembershipRestored;
 use App\Contexts\Membership\Domain\Membership\Events\MembershipTerminated;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\MemberId;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use PHPUnit\Framework\TestCase;
 
 final class MembershipEventEmissionTest extends TestCase
@@ -25,18 +26,15 @@ final class MembershipEventEmissionTest extends TestCase
         // CURRENT: recordEvent() might not be called in suspend() method
         // CONSTITUTIONAL GUARANTEE: "Every suspension generates exactly one MembershipSuspended event"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
+            tenantId: TenantId::fromString('test-tenant'),
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         // Clear any establishment events
@@ -66,18 +64,15 @@ final class MembershipEventEmissionTest extends TestCase
         // CURRENT: recordEvent() could be called multiple times
         // CONSTITUTIONAL GUARANTEE: "Each transition produces exactly one event"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
+            tenantId: TenantId::fromString('test-tenant'),
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         $lineage->releaseEvents();
@@ -108,18 +103,15 @@ final class MembershipEventEmissionTest extends TestCase
         // CURRENT: restore() might not call recordEvent()
         // CONSTITUTIONAL GUARANTEE: "Every restoration generates exactly one MembershipRestored event"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
+            tenantId: TenantId::fromString('test-tenant'),
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         $lineage->releaseEvents();
@@ -154,18 +146,15 @@ final class MembershipEventEmissionTest extends TestCase
         // CURRENT: terminate() might not call recordEvent()
         // CONSTITUTIONAL GUARANTEE: "Every termination generates exactly one MembershipTerminated event"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
+            tenantId: TenantId::fromString('test-tenant'),
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         $lineage->releaseEvents();
@@ -193,18 +182,15 @@ final class MembershipEventEmissionTest extends TestCase
         // CURRENT: Event constructor doesn't validate required fields
         // CONSTITUTIONAL GUARANTEE: "All events must have complete required payloads"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
+            tenantId: TenantId::fromString('test-tenant'),
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         $lineage->releaseEvents();

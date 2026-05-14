@@ -161,7 +161,7 @@ final class EventReplayIntegrityTest extends TestCase
         $this->assertTrue($lineage->currentStatus()->equals(\App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus::SUSPENDED));
 
         // Attempting to apply the same event again should fail
-        $this->expectException(\App\Contexts\Membership\Domain\Membership\Exceptions\InvalidAssociationTransitionException::class);
+        $this->expectException(\App\Contexts\Membership\Domain\Membership\Exceptions\InvalidLineageTransitionException::class);
 
         // Try to re-suspend (same event applied twice)
         $lineage->suspend(
