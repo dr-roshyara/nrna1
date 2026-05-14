@@ -21,6 +21,19 @@ Membership Context (Write Side)          Governance Context (Read Side)
 
 ---
 
+## 🆕 Phase F1 — Organisation Dashboard Integration
+
+**See:** [Phase F1: Organisation Dashboard Membership Integration](./PHASE_F1_ORGANISATION_DASHBOARD.md)
+
+Phase F1 integrates committee membership data into the organisation dashboard without adding new routes or bounded contexts. The membership widget displays:
+- Active memberships
+- Pending applications  
+- Eligible committees to join
+
+Implementation uses clean constructor injection, stub implementations for Phase F2, and TDD-first validation. Status: ✅ Complete (commit `f2d52d2fa`).
+
+---
+
 ## ⚠️ Current Architecture Decision
 
 **See:** [ADR: Dual Committee Creation Paths](./ADR_COMMITTEE_CREATION_DUAL_PATH.md)
