@@ -10,8 +10,10 @@ use App\Contexts\Membership\Domain\Membership\ValueObjects\AssociationId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\MemberId;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidMembershipConstructionException;
 use PHPUnit\Framework\TestCase;
 
 final class MembershipLineageImmutabilityTest extends TestCase
@@ -24,45 +26,37 @@ final class MembershipLineageImmutabilityTest extends TestCase
         // CURRENT: Private property but not protected from reflection or direct access
         // CONSTITUTIONAL GUARANTEE: "Episode sequence is append-only from authorized operations"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $memberId = MemberId::generate();
+        $committeeId = CommitteeId::generate();
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: TenantId::fromString('test-tenant'),
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         // Get initial episode count
         $initialCount = count($lineage->episodes());
 
-        // Try to mutate episodes directly through reflection
-        $this->expectException(\Error::class);
+        // ATTACK: Try to create invalid episode (TERMINATED without audit fields)
+        // This should fail at constructor time due to invariant validation
+        $this->expectException(InvalidMembershipConstructionException::class);
 
-        $reflectionClass = new \ReflectionClass($lineage);
-        $episodesProperty = $reflectionClass->getProperty('episodes');
-        $episodesProperty->setAccessible(true);
-        $episodes = $episodesProperty->getValue($lineage);
-
-        // Try to add invalid episode directly
         $invalidEpisode = new CommitteeAssociation(
             associationId: AssociationId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: $memberId,
+            committeeId: $committeeId,
             associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 11:00:00'),
+            associatedAt: $now,
             status: MembershipStatus::TERMINATED,
-            actorId: null,  // Invalid - no actor
+            actorId: null,  // ← Invalid: TERMINATED requires actorId
             transitionReason: 'Invalid reason',
-            transitionedAt: new \DateTimeImmutable('2026-05-14 11:30:00'),
+            transitionedAt: $now,
         );
-
-        $episodes[] = $invalidEpisode;  // ← Should fail
     }
 
     /** @test */
@@ -73,29 +67,28 @@ final class MembershipLineageImmutabilityTest extends TestCase
         // CURRENT: Lineage could be mutated externally, breaking temporal consistency
         // CONSTITUTIONAL GUARANTEE: "Lineage state cannot be modified after reconstruction"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $memberId = MemberId::generate();
+        $committeeId = CommitteeId::generate();
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: TenantId::fromString('test-tenant'),
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         // Capture current state
         $currentStatus1 = $lineage->currentStatus();
         $episodeCount1 = count($lineage->episodes());
 
-        // Try to mutate lineage through reflection
+        // Try to mutate lineage through reflection (readonly prevents this)
         $this->expectException(\Error::class);
 
         $reflectionClass = new \ReflectionClass($lineage);
         $memberIdProperty = $reflectionClass->getProperty('memberId');
-        $memberIdProperty->setValue($lineage, 'different-member-uuid');  // ← Should fail
+        $memberIdProperty->setValue($lineage, MemberId::generate());  // ← Should fail
     }
 }

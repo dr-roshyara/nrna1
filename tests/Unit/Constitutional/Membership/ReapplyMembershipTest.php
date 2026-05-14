@@ -211,7 +211,6 @@ final class ReapplyMembershipTest extends PureDomainTestCase
             committeeId: $committee,
             associationType: ApplicationReason::MANUAL,
             associatedAt: $now,
-            status: MembershipStatus::ACTIVE,
         );
 
         // ASSERT: Member is eligible for governance participation

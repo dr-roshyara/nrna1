@@ -91,41 +91,16 @@ final class MembershipLineageTest extends PureDomainTestCase
             at: $now,
         );
 
-        // Capture initial episode to reuse associationId
-        $initialEpisode = $lineage->current();
+        // Perform transitions through the lineage
+        // This demonstrates the full lifecycle while respecting the constitutional model
+        $suspensionTime = $now->modify('+1 hour');
+        $lineage->suspend('test-actor-001', 'Disciplinary suspension', $suspensionTime);
 
-        // Add suspension episode
-        $suspended = new CommitteeAssociation(
-            associationId: $initialEpisode->associationId,
-            memberId: $member,
-            committeeId: $committee,
-            associationType: $initialEpisode->associationType,
-            associatedAt: $initialEpisode->associatedAt,
-            status: MembershipStatus::SUSPENDED,
-        );
-        $lineage->addEpisode($suspended);
+        $restorationTime = $suspensionTime->modify('+1 day');
+        $lineage->restore('test-actor-002', $restorationTime);
 
-        // Add restoration episode
-        $restored = new CommitteeAssociation(
-            associationId: $initialEpisode->associationId,
-            memberId: $member,
-            committeeId: $committee,
-            associationType: $initialEpisode->associationType,
-            associatedAt: $initialEpisode->associatedAt,
-            status: MembershipStatus::ACTIVE,
-        );
-        $lineage->addEpisode($restored);
-
-        // Add termination episode
-        $terminated = new CommitteeAssociation(
-            associationId: $initialEpisode->associationId,
-            memberId: $member,
-            committeeId: $committee,
-            associationType: $initialEpisode->associationType,
-            associatedAt: $initialEpisode->associatedAt,
-            status: MembershipStatus::TERMINATED,
-        );
-        $lineage->addEpisode($terminated);
+        $terminationTime = $restorationTime->modify('+1 week');
+        $lineage->terminate('test-actor-003', 'Expiration of term', $terminationTime);
 
         // ASSERT: Lineage identity unchanged throughout lifecycle
         $this->assertTrue($lineage->lineageId->equals($lineageId));
@@ -161,16 +136,13 @@ final class MembershipLineageTest extends PureDomainTestCase
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::ACTIVE,
         );
 
-        $suspended = new CommitteeAssociation(
-            associationId: $active->associationId,
-            memberId: $member,
-            committeeId: $committee,
-            associationType: $active->associationType,
-            associatedAt: $active->associatedAt,
-            status: MembershipStatus::SUSPENDED,
+        // For reconstitution test, simulate persisted SUSPENDED state via transition
+        $suspended = $active->suspend(
+            actorId: 'test-actor-uuid',
+            reason: 'Test suspension',
+            at: $now->modify('+1 hour'),
         );
 
         $episodes = [$active, $suspended];
@@ -213,20 +185,11 @@ final class MembershipLineageTest extends PureDomainTestCase
             at: $now,
         );
 
-        $initialEpisode = $lineage->current();
-
         $this->assertEquals(MembershipStatus::ACTIVE, $lineage->currentStatus());
 
-        // Add suspension
-        $suspended = new CommitteeAssociation(
-            associationId: $initialEpisode->associationId,
-            memberId: $member,
-            committeeId: $committee,
-            associationType: $initialEpisode->associationType,
-            associatedAt: $initialEpisode->associatedAt,
-            status: MembershipStatus::SUSPENDED,
-        );
-        $lineage->addEpisode($suspended);
+        // Suspend the lineage
+        $suspensionTime = $now->modify('+1 hour');
+        $lineage->suspend('test-actor-001', 'Test suspension', $suspensionTime);
 
         $this->assertEquals(MembershipStatus::SUSPENDED, $lineage->currentStatus());
     }
@@ -256,38 +219,22 @@ final class MembershipLineageTest extends PureDomainTestCase
             at: $now,
         );
 
-        $initialEpisode = $lineage->current();
-
         // ASSERT: Cannot reapply while ACTIVE
         $this->assertFalse($lineage->canBeReapplied());
         $this->assertTrue($lineage->isActive());
 
-        // Add suspension
-        $suspended = new CommitteeAssociation(
-            associationId: $initialEpisode->associationId,
-            memberId: $member,
-            committeeId: $committee,
-            associationType: $initialEpisode->associationType,
-            associatedAt: $initialEpisode->associatedAt,
-            status: MembershipStatus::SUSPENDED,
-        );
-        $lineage->addEpisode($suspended);
+        // Suspend the lineage
+        $suspensionTime = $now->modify('+1 hour');
+        $lineage->suspend('test-actor-001', 'Test suspension', $suspensionTime);
 
         // ASSERT: Cannot reapply while SUSPENDED
         $this->assertFalse($lineage->canBeReapplied());
         $this->assertFalse($lineage->isActive());
         $this->assertTrue($lineage->isSuspended());
 
-        // Add termination
-        $terminated = new CommitteeAssociation(
-            associationId: $initialEpisode->associationId,
-            memberId: $member,
-            committeeId: $committee,
-            associationType: $initialEpisode->associationType,
-            associatedAt: $initialEpisode->associatedAt,
-            status: MembershipStatus::TERMINATED,
-        );
-        $lineage->addEpisode($terminated);
+        // Terminate the lineage
+        $terminationTime = $suspensionTime->modify('+1 day');
+        $lineage->terminate('test-actor-002', 'Test termination', $terminationTime);
 
         // ASSERT: CAN reapply only after TERMINATED
         $this->assertTrue($lineage->canBeReapplied());
@@ -318,22 +265,13 @@ final class MembershipLineageTest extends PureDomainTestCase
             at: $now,
         );
 
-        $initialEpisode = $lineage->current();
-
         // Get episodes reference
         $episodesSnapshot = $lineage->episodes();
         $originalCount = count($episodesSnapshot);
 
-        // Add new episode
-        $suspended = new CommitteeAssociation(
-            associationId: $initialEpisode->associationId,
-            memberId: $member,
-            committeeId: $committee,
-            associationType: $initialEpisode->associationType,
-            associatedAt: $initialEpisode->associatedAt,
-            status: MembershipStatus::SUSPENDED,
-        );
-        $lineage->addEpisode($suspended);
+        // Suspend the lineage (adds new episode)
+        $suspensionTime = $now->modify('+1 hour');
+        $lineage->suspend('test-actor-001', 'Test suspension', $suspensionTime);
 
         // ASSERT: Snapshot unchanged, lineage updated
         $this->assertCount($originalCount, $episodesSnapshot);

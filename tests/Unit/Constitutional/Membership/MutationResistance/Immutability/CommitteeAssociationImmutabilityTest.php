@@ -8,8 +8,11 @@ use App\Contexts\Membership\Domain\Membership\CommitteeAssociation;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\AssociationId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\MemberId;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Contexts\Membership\Domain\Membership\MembershipLineage;
 use PHPUnit\Framework\TestCase;
 
 final class CommitteeAssociationImmutabilityTest extends TestCase
@@ -52,8 +55,8 @@ final class CommitteeAssociationImmutabilityTest extends TestCase
 
         $now = new \DateTimeImmutable('2026-05-14 10:00:00');
         $original = CommitteeAssociation::create(
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
         );
@@ -90,8 +93,8 @@ final class CommitteeAssociationImmutabilityTest extends TestCase
         // CONSTITUTIONAL GUARANTEE: "Episodes cannot be modified through any reference"
 
         $episode = CommitteeAssociation::create(
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable(),
         );
@@ -115,18 +118,17 @@ final class CommitteeAssociationImmutabilityTest extends TestCase
         // CURRENT: episodes() method returns array reference that can be modified
         // CONSTITUTIONAL GUARANTEE: "Episode history is immutable from external access"
 
-        $episode = CommitteeAssociation::create(
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $memberId = MemberId::generate();
+        $committeeId = CommitteeId::generate();
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
-        $lineage = \App\Contexts\Membership\Domain\Membership\MembershipLineage::establish(
-            lineageId: \App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+        $lineage = MembershipLineage::establish(
+            lineageId: LineageId::generate(),
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: TenantId::fromString('test-tenant'),
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         // Get the episodes
@@ -134,12 +136,17 @@ final class CommitteeAssociationImmutabilityTest extends TestCase
         $count1 = count($episodes1);
 
         // Try to mutate through the returned reference
-        $this->expectException(\Error::class);
+        // This modifies the local array, not the lineage's internal state
         $episodes1[] = CommitteeAssociation::create(
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable('2026-05-14 11:00:00'),
         );
+
+        // CRITICAL: Lineage's internal episodes must be unchanged
+        $episodes2 = $lineage->episodes();
+        $count2 = count($episodes2);
+        $this->assertEquals($count1, $count2, 'Episode count must not change from external mutation attempt');
     }
 }

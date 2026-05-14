@@ -122,7 +122,6 @@ final class SuspendMembershipTest extends PureDomainTestCase
             committeeId: $this->createCommitteeId(),
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::ACTIVE,
         );
 
         $suspended = $active->suspend('actor-uuid-001', 'Disciplinary action', $now);
