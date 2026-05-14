@@ -321,7 +321,7 @@ class MembershipServiceProvider extends ServiceProvider
         // Use case bindings
         $this->app->bind(GetCommitteeDashboard::class, function ($app) {
             return new GetCommitteeDashboard(
-                $app->make(CommitteeRepositoryInterface::class),
+                $app->make(\App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface::class),
                 $app->make(MembershipLineageRepositoryPort::class),
                 $app->make(CommitteeMembershipReadModelAdapter::class),
             );
