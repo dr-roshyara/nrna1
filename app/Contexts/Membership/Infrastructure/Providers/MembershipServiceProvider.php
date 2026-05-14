@@ -51,6 +51,7 @@ use App\Contexts\Membership\Domain\Repositories\FeeRepositoryInterface;
 use App\Contexts\Membership\Domain\Repositories\CommitteeRepositoryInterface;
 use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeStructureRepositoryInterface;
 use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface as CommitteeAggregateRepositoryInterface;
+use App\Contexts\Membership\Application\Membership\Ports\MembershipLineageRepositoryPort;
 use App\Contexts\Committee\Application\ReadModel\CommitteeMembershipReadModelAdapter;
 use App\Contexts\Committee\Infrastructure\Persistence\EloquentCommitteeMembershipReadModelAdapter;
 use App\Contexts\Membership\Domain\Committee\CommitteeCreationPolicy;
