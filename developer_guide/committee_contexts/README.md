@@ -21,16 +21,34 @@ Membership Context (Write Side)          Governance Context (Read Side)
 
 ---
 
-## 🆕 Phase F1 — Organisation Dashboard Integration
+## 🆕 Phase F1 & F2 — Organisation Dashboard Integration (COMPLETE)
 
-**See:** [Phase F1: Organisation Dashboard Membership Integration](./PHASE_F1_ORGANISATION_DASHBOARD.md)
+**Comprehensive Guide:** [Phase F1 & F2 Complete Developer Guide](./PHASE_F1_F2_DEVELOPER_GUIDE.md) ← **START HERE**
 
-Phase F1 integrates committee membership data into the organisation dashboard without adding new routes or bounded contexts. The membership widget displays:
-- Active memberships
-- Pending applications  
-- Eligible committees to join
+**Quick Reference:**
+- [Phase F1 Architecture & Stubs](./PHASE_F1_ORGANISATION_DASHBOARD.md) — Composition layer implementation
+- [Architecture Decision Record: Dual Committee Creation](./ADR_COMMITTEE_CREATION_DUAL_PATH.md) — Design rationale
 
-Implementation uses clean constructor injection, stub implementations for Phase F2, and TDD-first validation. Status: ✅ Complete (commit `f2d52d2fa`).
+### What F1 & F2 Deliver
+
+Phase F1+F2 integrates committee membership data into the organisation dashboard without adding new routes or bounded contexts. The membership widget displays:
+- Active memberships (committees you belong to)
+- Pending applications (waiting for approval)
+- Eligible committees (you can join)
+
+**F1 (Composition):** Wires services together with stub implementations, composes Inertia props, renders Vue widget.  
+**F2 (Real Infrastructure):** Replaces stubs with real database-backed repositories and geo providers.
+
+**Status:** ✅ COMPLETE (F2-DONE tag, commit `5b4f282c0`)
+
+**Key Technical Achievements:**
+- Real-time eligibility computation using Phase C service
+- Geographic path resolution for members and committees
+- Membership application tracking in database
+- Multi-tenant isolation enforced at query level
+- Domain aggregates remain pure with private readonly properties
+- Ports & Adapters pattern enables stub↔real implementation swap
+- 75+ tests passing (constitutional + feature tests)
 
 ---
 
