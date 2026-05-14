@@ -170,6 +170,10 @@ import committeeDe from './locales/pages/Committee/de.json';
 import committeeEn from './locales/pages/Committee/en.json';
 import committeeNp from './locales/pages/Committee/np.json';
 
+import committeeMembersDe from './locales/committee/members/de.json';
+import committeeMembersEn from './locales/committee/members/en.json';
+import committeeMembersNp from './locales/committee/members/np.json';
+
 import organisationCreateTutorialDe from './locales/pages/OrganisationCreateTutorial/de.json';
 import organisationCreateTutorialEn from './locales/pages/OrganisationCreateTutorial/en.json';
 import organisationCreateTutorialNp from './locales/pages/OrganisationCreateTutorial/np.json';
@@ -279,7 +283,7 @@ const messages = {
       },
       'voter-import-tutorial': voterImportTutorialDe,
       'member-import-tutorial': memberImportTutorialDe,
-      committee: committeeDe,
+      committee: { ...committeeDe, ...committeeMembersDe.committee },
       'organisation-create-tutorial': organisationCreateTutorialDe,
       'governance-levels': governanceLevelsDe,
       'geo-units': geoUnitsDe,
@@ -341,7 +345,7 @@ const messages = {
       },
       'voter-import-tutorial': voterImportTutorialEn,
       'member-import-tutorial': memberImportTutorialEn,
-      committee: committeeEn,
+      committee: { ...committeeEn, ...committeeMembersEn.committee },
       'organisation-create-tutorial': organisationCreateTutorialEn,
       'governance-levels': governanceLevelsEn,
       'geo-units': geoUnitsEn,
@@ -403,7 +407,7 @@ const messages = {
       },
       'voter-import-tutorial': voterImportTutorialNp,
       'member-import-tutorial': memberImportTutorialNp,
-      committee: committeeNp,
+      committee: { ...committeeNp, ...committeeMembersNp.committee },
       'organisation-create-tutorial': organisationCreateTutorialNp,
       'governance-levels': governanceLevelsNp,
       'geo-units': geoUnitsNp,
