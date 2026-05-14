@@ -237,6 +237,15 @@ final class EloquentMembershipLineageRepository implements MembershipLineageRepo
         return $activeLineages;
     }
 
+    public function findLineageByMemberAndCommitteeForTenant(
+        MemberId $memberId,
+        CommitteeId $committeeId,
+        TenantId $tenantId,
+    ): ?MembershipLineage {
+        // Delegate to existing method (same logic, single result)
+        return $this->findByMemberAndCommitteeForTenant($memberId, $committeeId, $tenantId);
+    }
+
     public function findAllByMemberForTenant(MemberId $memberId, TenantId $tenantId): array
     {
         $models = CommitteeAssociationModel::where('organisation_id', $tenantId->value())

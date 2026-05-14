@@ -213,6 +213,38 @@ class MembershipServiceProvider extends ServiceProvider
         $this->app->singleton(CommitteeEligibilityPolicy::class);
         $this->app->singleton(GeographicEligibilityValidator::class);
 
+        // F1: Member geo path port — resolves member's geo context (session-backed)
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Membership\Ports\MemberGeoPathProviderPort::class,
+            \App\Contexts\Membership\Infrastructure\Query\SessionMemberGeoPathProvider::class
+        );
+
+        // F1: Phase C eligibility service (single source of truth for eligibility)
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService::class,
+            function ($app) {
+                return new \App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryServiceImpl(
+                    $app->make(\App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface::class),
+                    $app->make(\App\Contexts\Membership\Application\Membership\Ports\MembershipLineageRepositoryPort::class),
+                    $app->make(\App\Contexts\Membership\Application\Membership\Ports\MembershipApplicationRepositoryPort::class),
+                    $app->make(\App\Contexts\Membership\Domain\Committee\Policies\CommitteeEligibilityPolicy::class),
+                    $app->make(\App\Contexts\Membership\Application\Membership\Query\Ports\CommitteeGeoPathProviderPort::class),
+                );
+            }
+        );
+
+        // F1: Stub — replace with Eloquent impl in Phase F2
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Membership\Ports\MembershipApplicationRepositoryPort::class,
+            \App\Contexts\Membership\Infrastructure\Query\StubMembershipApplicationRepository::class
+        );
+
+        // F1: Stub — replace with GeoSemanticProjectionBuilder impl in Phase F2
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Membership\Query\Ports\CommitteeGeoPathProviderPort::class,
+            \App\Contexts\Membership\Infrastructure\Query\StubCommitteeGeoPathProvider::class
+        );
+
         $this->app->bind(NearbyCommitteesQueryService::class, function ($app) {
             return new NearbyCommitteesQueryService(
                 $app->make(GeoSemanticProjectionBuilder::class),

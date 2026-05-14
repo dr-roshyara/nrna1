@@ -24,8 +24,8 @@ final class SessionMemberGeoPathProvider implements MemberGeoPathProviderPort
         TenantId $tenantId,
     ): GeoPathChain {
         // TODO: Load from user profile / session
-        // For now: return empty geo path (member not in any geographic region)
+        // For now: return root geo path (member at top level)
         // This makes geographic committees ineligible (safe default)
-        return GeoPathChain::fromString('');
+        return new GeoPathChain(1, '/', [1]);
     }
 }

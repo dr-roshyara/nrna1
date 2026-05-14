@@ -15,10 +15,19 @@ use Illuminate\Http\Request;
 use App\Traits\ChecksElectionAccess;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
+use App\Contexts\Membership\Application\Membership\Ports\MemberGeoPathProviderPort;
+use App\Contexts\Membership\Application\Membership\Query\MyCommitteesQueryService;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
 class OrganisationController extends Controller
 {
     use ChecksElectionAccess;
+
+    public function __construct(
+        private readonly MyCommitteesQueryService $membershipService,
+        private readonly MemberGeoPathProviderPort $geoPathProvider,
+    ) {}
 
     public function index(): Response
     {
@@ -109,6 +118,21 @@ class OrganisationController extends Controller
         // Check if user can manage this organisation (owner or admin role)
         $canManage = in_array($userRole, ['owner', 'admin']);
         $canCreateElection = in_array($userRole, ['owner', 'admin']);
+
+        // F1: Compose membership read model
+        $memberId = MemberId::fromString((string) $user->id);
+        $tenantId = TenantId::fromOrganisationId((string) $organisation->id);
+        $memberGeoPath = $this->geoPathProvider->resolveForMember($memberId, $tenantId);
+        $membershipData = array_map(fn ($view) => [
+            'committee_id'            => $view->committeeId,
+            'committee_name'          => $view->committeeName,
+            'committee_code'          => $view->committeeCode,
+            'governance_level'        => $view->governanceLevel,
+            'has_active_association'  => $view->hasActiveAssociation,
+            'has_pending_application' => $view->hasPendingApplication,
+            'can_apply'               => $view->canApply,
+            'application_status'      => $view->applicationStatus,
+        ], $this->membershipService->getForMember($memberId, $tenantId, $memberGeoPath));
 
         // Load ALL active officer records for this user in this org (one per election they manage)
         $userOfficerRecords = ElectionOfficer::with('election:id,name')
@@ -227,6 +251,7 @@ class OrganisationController extends Controller
             'orgMembers'         => $orgMembers,
             'elections'          => $realElections->values(),
             'voterMemberships'   => $voterMemberships,
+            'membership'         => $membershipData,
         ]);
     }
 
