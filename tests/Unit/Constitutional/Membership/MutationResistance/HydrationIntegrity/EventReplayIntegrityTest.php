@@ -10,9 +10,10 @@ use App\Contexts\Membership\Domain\Membership\Events\MembershipSuspended;
 use App\Contexts\Membership\Domain\Membership\Events\MembershipRestored;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\MemberId;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
 use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidAssociationTransitionException;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use PHPUnit\Framework\TestCase;
 
 final class EventReplayIntegrityTest extends TestCase
@@ -25,18 +26,19 @@ final class EventReplayIntegrityTest extends TestCase
         // CURRENT: No determinism verification
         // CONSTITUTIONAL GUARANTEE: "Event replay is deterministic and matches persistence"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $lineageId = LineageId::generate();
+        $memberId = MemberId::generate();
+        $committeeId = CommitteeId::generate();
+        $tenantId = TenantId::fromString('test-tenant');
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
-            lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            lineageId: $lineageId,
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: $tenantId,
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         $lineage->releaseEvents();
@@ -74,18 +76,19 @@ final class EventReplayIntegrityTest extends TestCase
         // CURRENT: No event count validation
         // CONSTITUTIONAL GUARANTEE: "All state transitions are captured as events"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $lineageId = LineageId::generate();
+        $memberId = MemberId::generate();
+        $committeeId = CommitteeId::generate();
+        $tenantId = TenantId::fromString('test-tenant');
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
-            lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            lineageId: $lineageId,
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: $tenantId,
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         $lineage->releaseEvents();
@@ -124,18 +127,19 @@ final class EventReplayIntegrityTest extends TestCase
         // CURRENT: Replay doesn't detect duplicates
         // CONSTITUTIONAL GUARANTEE: "Each event applies exactly once to state"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $lineageId = LineageId::generate();
+        $memberId = MemberId::generate();
+        $committeeId = CommitteeId::generate();
+        $tenantId = TenantId::fromString('test-tenant');
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
-            lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            lineageId: $lineageId,
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: $tenantId,
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         $lineage->releaseEvents();
@@ -175,18 +179,19 @@ final class EventReplayIntegrityTest extends TestCase
         // CURRENT: Events might not be ordered
         // CONSTITUTIONAL GUARANTEE: "Replay is deterministic (same input → same output)"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $lineageId = LineageId::generate();
+        $memberId = MemberId::generate();
+        $committeeId = CommitteeId::generate();
+        $tenantId = TenantId::fromString('test-tenant');
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
-            lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            lineageId: $lineageId,
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: $tenantId,
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         $lineage->releaseEvents();

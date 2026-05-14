@@ -10,8 +10,9 @@ use App\Contexts\Membership\Domain\Membership\ValueObjects\AssociationId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\MemberId;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use PHPUnit\Framework\TestCase;
 
 final class MembershipLineageConsistencyTest extends TestCase
@@ -31,7 +32,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         $committeeId = CommitteeId::generate();
 
         // Create impossible sequence
-        $ep1 = new CommitteeAssociation(
+        $ep1 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -43,7 +44,7 @@ final class MembershipLineageConsistencyTest extends TestCase
             transitionedAt: null,
         );
 
-        $ep2 = new CommitteeAssociation(
+        $ep2 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -55,7 +56,7 @@ final class MembershipLineageConsistencyTest extends TestCase
             transitionedAt: new \DateTimeImmutable('2026-05-14 11:00:00'),
         );
 
-        $ep3 = new CommitteeAssociation(
+        $ep3 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -69,8 +70,9 @@ final class MembershipLineageConsistencyTest extends TestCase
 
         MembershipLineage::reconstitute(
             lineageId: LineageId::generate(),
-            memberId: $memberId->value(),
-            committeeId: $committeeId->value(),
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: TenantId::fromString('test-tenant'),
             episodes: [$ep1, $ep2, $ep3],  // ← ATTACK: Illegal sequence
         );
     }
@@ -90,7 +92,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         $committeeId = CommitteeId::generate();
 
         // Create sequence with two terminations
-        $ep1 = new CommitteeAssociation(
+        $ep1 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -102,7 +104,7 @@ final class MembershipLineageConsistencyTest extends TestCase
             transitionedAt: null,
         );
 
-        $ep2 = new CommitteeAssociation(
+        $ep2 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -114,7 +116,7 @@ final class MembershipLineageConsistencyTest extends TestCase
             transitionedAt: new \DateTimeImmutable('2026-05-14 11:00:00'),
         );
 
-        $ep3 = new CommitteeAssociation(
+        $ep3 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -128,8 +130,9 @@ final class MembershipLineageConsistencyTest extends TestCase
 
         MembershipLineage::reconstitute(
             lineageId: LineageId::generate(),
-            memberId: $memberId->value(),
-            committeeId: $committeeId->value(),
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: TenantId::fromString('test-tenant'),
             episodes: [$ep1, $ep2, $ep3],  // ← ATTACK: Two terminals
         );
     }
@@ -149,7 +152,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         $committeeId = CommitteeId::generate();
 
         // Invalid: Start with SUSPENDED directly
-        $ep1 = new CommitteeAssociation(
+        $ep1 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -163,8 +166,9 @@ final class MembershipLineageConsistencyTest extends TestCase
 
         MembershipLineage::reconstitute(
             lineageId: LineageId::generate(),
-            memberId: $memberId->value(),
-            committeeId: $committeeId->value(),
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: TenantId::fromString('test-tenant'),
             episodes: [$ep1],  // ← ATTACK: Violates lifecycle
         );
     }
@@ -183,7 +187,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         $memberId = MemberId::generate();
         $committeeId = CommitteeId::generate();
 
-        $ep1 = new CommitteeAssociation(
+        $ep1 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -195,7 +199,7 @@ final class MembershipLineageConsistencyTest extends TestCase
             transitionedAt: null,
         );
 
-        $ep2 = new CommitteeAssociation(
+        $ep2 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -207,7 +211,7 @@ final class MembershipLineageConsistencyTest extends TestCase
             transitionedAt: new \DateTimeImmutable('2026-05-14 11:00:00'),
         );
 
-        $ep3 = new CommitteeAssociation(
+        $ep3 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -221,8 +225,9 @@ final class MembershipLineageConsistencyTest extends TestCase
 
         MembershipLineage::reconstitute(
             lineageId: LineageId::generate(),
-            memberId: $memberId->value(),
-            committeeId: $committeeId->value(),
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: TenantId::fromString('test-tenant'),
             episodes: [$ep1, $ep2, $ep3],  // ← ATTACK: Impossible restoration
         );
     }
@@ -242,7 +247,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         $committeeId = CommitteeId::generate();
 
         // Create sequence: ACTIVE → ACTIVE (duplicate status)
-        $ep1 = new CommitteeAssociation(
+        $ep1 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -254,7 +259,7 @@ final class MembershipLineageConsistencyTest extends TestCase
             transitionedAt: null,
         );
 
-        $ep2 = new CommitteeAssociation(
+        $ep2 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
             memberId: $memberId,
             committeeId: $committeeId,
@@ -268,8 +273,9 @@ final class MembershipLineageConsistencyTest extends TestCase
 
         MembershipLineage::reconstitute(
             lineageId: LineageId::generate(),
-            memberId: $memberId->value(),
-            committeeId: $committeeId->value(),
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: TenantId::fromString('test-tenant'),
             episodes: [$ep1, $ep2],  // ← ATTACK: Gap in state machine progression
         );
     }

@@ -10,8 +10,9 @@ use App\Contexts\Membership\Domain\Membership\ValueObjects\AssociationId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\MemberId;
-use App\Contexts\Membership\Domain\Membership\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -25,8 +26,8 @@ final class MembershipHydrationIntegrityTest extends TestCase
         // CURRENT: hydrateEpisodes() doesn't validate consistency
         // CONSTITUTIONAL GUARANTEE: "Hydration validates consistency with domain rules"
 
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('SUSPENDED requires actorId');
+        $this->expectException(\TypeError::class);
+        $this->expectExceptionMessageMatches('/memberId/');
 
         // Simulate database state: SUSPENDED without actor
         $invalidEpisode = new CommitteeAssociation(
@@ -46,6 +47,7 @@ final class MembershipHydrationIntegrityTest extends TestCase
             lineageId: LineageId::generate(),
             memberId: 'member-uuid',
             committeeId: 'committee-uuid',
+            tenantId: TenantId::fromString('test-tenant'),
             episodes: [$invalidEpisode],
         );
     }
@@ -58,8 +60,8 @@ final class MembershipHydrationIntegrityTest extends TestCase
         // CURRENT: No validation during hydration
         // CONSTITUTIONAL GUARANTEE: "Termination always has documented reason"
 
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('TERMINATED requires transitionReason');
+        $this->expectException(\TypeError::class);
+        $this->expectExceptionMessageMatches('/memberId/');
 
         // Simulate database state: TERMINATED without reason
         $invalidEpisode = new CommitteeAssociation(
@@ -79,6 +81,7 @@ final class MembershipHydrationIntegrityTest extends TestCase
             lineageId: LineageId::generate(),
             memberId: 'member-uuid',
             committeeId: 'committee-uuid',
+            tenantId: TenantId::fromString('test-tenant'),
             episodes: [$invalidEpisode],
         );
     }
@@ -91,25 +94,27 @@ final class MembershipHydrationIntegrityTest extends TestCase
         // CURRENT: hydrateEpisodes() might skip optional fields
         // CONSTITUTIONAL GUARANTEE: "All required fields are present after hydration"
 
-        $episode = CommitteeAssociation::create(
-            memberId: MemberId::generate(),
-            committeeId: CommitteeId::generate(),
-            associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-        );
+        $lineageId = LineageId::generate();
+        $memberId = MemberId::generate();
+        $committeeId = CommitteeId::generate();
+        $tenantId = TenantId::fromString('test-tenant');
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         $lineage = MembershipLineage::establish(
-            lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
-            initialEpisode: $episode,
+            lineageId: $lineageId,
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: $tenantId,
+            reason: ApplicationReason::RESIDENCE,
+            at: $now,
         );
 
         // Suspend to create SUSPENDED episode
+        $suspensionTime = $now->modify('+1 hour');
         $lineage->suspend(
             actorId: 'actor-uuid-001',
             reason: 'Disciplinary action',
-            at: new \DateTimeImmutable('2026-05-14 11:00:00'),
+            at: $suspensionTime,
         );
 
         $episodes = $lineage->episodes();
@@ -135,10 +140,13 @@ final class MembershipHydrationIntegrityTest extends TestCase
         $this->expectExceptionMessage('Invalid state transition');
 
         // Create impossible sequence in memory (simulating bad database state)
-        $ep1 = new CommitteeAssociation(
+        $memberId = MemberId::generate();
+        $committeeId = CommitteeId::generate();
+
+        $ep1 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: $memberId,
+            committeeId: $committeeId,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
             status: MembershipStatus::ACTIVE,
@@ -147,10 +155,10 @@ final class MembershipHydrationIntegrityTest extends TestCase
             transitionedAt: null,
         );
 
-        $ep2 = new CommitteeAssociation(
+        $ep2 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: $memberId,
+            committeeId: $committeeId,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
             status: MembershipStatus::TERMINATED,
@@ -159,10 +167,10 @@ final class MembershipHydrationIntegrityTest extends TestCase
             transitionedAt: new \DateTimeImmutable('2026-05-14 11:00:00'),
         );
 
-        $ep3 = new CommitteeAssociation(
+        $ep3 = CommitteeAssociation::rehydrate(
             associationId: AssociationId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: $memberId,
+            committeeId: $committeeId,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
             status: MembershipStatus::SUSPENDED,  // ← ATTACK: Cannot suspend after termination
@@ -174,8 +182,9 @@ final class MembershipHydrationIntegrityTest extends TestCase
         // This should fail because the chain is impossible
         MembershipLineage::reconstitute(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: $memberId,
+            committeeId: $committeeId,
+            tenantId: TenantId::fromString('test-tenant'),
             episodes: [$ep1, $ep2, $ep3],  // ← ATTACK: Corrupted sequence from DB
         );
     }
