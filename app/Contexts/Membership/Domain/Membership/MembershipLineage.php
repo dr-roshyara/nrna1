@@ -117,10 +117,20 @@ final class MembershipLineage
     }
 
     /**
-     * Is this lineage in ACTIVE status?
+     * Is this lineage's current operational status ACTIVE?
      *
+     * Aggregate Fact: Returns current status, nothing more.
      * CRITICAL: Returns true ONLY when currentStatus() is strictly ACTIVE.
      * Bug fix: Previously returned !isTerminated(), making SUSPENDED members appear active.
+     *
+     * SEMANTIC NOTE: This answers "what is the status?" not "what rights does this enable?"
+     * - Aggregate reports facts: operational status only
+     * - Policy decides meaning: eligibility rules applied to facts
+     *
+     * Usage:
+     * - Domain logic: check operational status for state machine transitions
+     * - Policy evaluation: VotingEligibilityPolicy uses this to evaluate voting rights
+     * - Never use this for authorization — use VotingEligibilityPolicy instead
      */
     public function isActive(): bool
     {
@@ -144,14 +154,21 @@ final class MembershipLineage
     }
 
     /**
-     * Does this lineage exist?
+     * Does this lineage exist historically?
      *
-     * Returns true if lineage has any episodes.
-     * Used to distinguish "no membership" from "terminated membership".
+     * Aggregate Fact: This lineage was once established.
+     * Returns true if lineage has any episodes (has been initialized).
+     * Used to distinguish "no membership relationship" from "terminated membership relationship".
+     *
+     * SEMANTIC NOTE: distinct from isActive() which queries operational status.
+     * - exists() = membership relationship has historical episodes
+     * - isActive() = current operational status is ACTIVE
+     * - Both can be true (lineage exists AND status is ACTIVE)
+     * - Both can be true during SUSPENDED or TERMINATED states too
      */
     public function exists(): bool
     {
-        return !empty($this->episodes);
+        return count($this->episodes) > 0;
     }
 
     /**

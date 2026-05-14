@@ -17,10 +17,21 @@ use App\Contexts\Membership\Domain\Membership\MembershipLineage;
  * - Returns eligibility decisions as result DTOs
  * - Allows Elections context to consume decisions via gateway
  *
- * ARCHITECTURAL PRINCIPLE:
- * Aggregates describe facts. Policies decide meaning.
- * MembershipLineage answers: "What is the status?"
- * VotingEligibilityPolicy answers: "Can this member vote?"
+ * SEMANTIC DISTINCTION (DDD principle):
+ *
+ *   Aggregate Facts (MembershipLineage)
+ *   ├─ exists(): membership relationship has historical episodes
+ *   ├─ isActive(): current operational status is ACTIVE
+ *   ├─ isSuspended(): current operational status is SUSPENDED
+ *   └─ isTerminated(): current operational status is TERMINATED
+ *
+ *   Policy Decision (VotingEligibilityPolicy)
+ *   └─ evaluate(): constitutional eligibility rules applied to facts
+ *      Returns: canVote + reasonCode (governance interpretation)
+ *
+ * The aggregate reports operational facts.
+ * The policy interprets those facts into governance decisions.
+ * Never use aggregate methods for authorization — use policy instead.
  */
 final class VotingEligibilityPolicy
 {
