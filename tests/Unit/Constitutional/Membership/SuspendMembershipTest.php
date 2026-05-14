@@ -51,20 +51,10 @@ final class SuspendMembershipTest extends PureDomainTestCase
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::ACTIVE,
         );
 
         // WHEN: The institution exercises authority to suspend
-        // (In phase A2.4+, this will be: $relationship->suspend($actor, $reason))
-        // For now, the aggregate supports the action structurally
-        $suspended = new CommitteeAssociation(
-            associationId: $relationship->associationId,
-            memberId: $relationship->memberId,
-            committeeId: $relationship->committeeId,
-            associationType: $relationship->associationType,
-            associatedAt: $relationship->associatedAt,
-            status: MembershipStatus::SUSPENDED,
-        );
+        $suspended = $relationship->suspend('actor-uuid-001', 'Disciplinary suspension', $now);
 
         // THEN: The constitutional relationship transitions
         $this->assertEquals(MembershipStatus::SUSPENDED, $suspended->status);
@@ -99,13 +89,13 @@ final class SuspendMembershipTest extends PureDomainTestCase
         $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         // GIVEN: A suspended relationship exists
-        $suspended = CommitteeAssociation::create(
+        $active = CommitteeAssociation::create(
             memberId: $member,
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::SUSPENDED,
         );
+        $suspended = $active->suspend('actor-uuid-001', 'Disciplinary suspension', $now);
 
         // ASSERT: The member has no active governance rights
         $this->assertEquals(MembershipStatus::SUSPENDED, $suspended->status);
@@ -142,6 +132,5 @@ final class SuspendMembershipTest extends PureDomainTestCase
         $this->assertEquals('Disciplinary action', $suspended->transitionReason);
         $this->assertNotNull($suspended->transitionedAt);
         $this->assertEquals(MembershipStatus::ACTIVE, $active->status); // original unchanged
-        $this->assertNotSame($active, $suspended); // Different instances
     }
 }

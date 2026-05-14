@@ -55,19 +55,10 @@ final class TerminateMembershipTest extends PureDomainTestCase
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::ACTIVE,
         );
 
         // WHEN: The institution terminates the relationship
-        // (In phase A2.4+, this will be: $active->terminate($actor, $reason))
-        $terminated = new CommitteeAssociation(
-            associationId: $active->associationId,
-            memberId: $active->memberId,
-            committeeId: $active->committeeId,
-            associationType: $active->associationType,
-            associatedAt: $active->associatedAt,
-            status: MembershipStatus::TERMINATED,
-        );
+        $terminated = $active->terminate('actor-uuid-001', 'Expiration of term', $now);
 
         // THEN: The constitutional relationship is terminated
         $this->assertEquals(MembershipStatus::TERMINATED, $terminated->status);
@@ -92,13 +83,14 @@ final class TerminateMembershipTest extends PureDomainTestCase
      */
     public function test_terminated_membership_cannot_be_reactivated_directly(): void
     {
-        $terminated = CommitteeAssociation::create(
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
+        $active = CommitteeAssociation::create(
             memberId: $this->createMemberId(),
             committeeId: $this->createCommitteeId(),
             associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-            status: MembershipStatus::TERMINATED,
+            associatedAt: $now,
         );
+        $terminated = $active->terminate('actor-uuid-001', 'Termination', $now);
 
         $this->expectException(\App\Contexts\Membership\Domain\Membership\Exceptions\InvalidAssociationTransitionException::class);
         $terminated->restore('actor-uuid', new \DateTimeImmutable('2026-05-14 11:00:00'));
@@ -121,13 +113,13 @@ final class TerminateMembershipTest extends PureDomainTestCase
         $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         // GIVEN: A terminated relationship exists
-        $terminated = CommitteeAssociation::create(
+        $active = CommitteeAssociation::create(
             memberId: $member,
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::TERMINATED,
         );
+        $terminated = $active->terminate('actor-uuid-001', 'Termination', $now);
 
         // ASSERT: The member has no governance rights
         $this->assertEquals(MembershipStatus::TERMINATED, $terminated->status);
@@ -157,13 +149,13 @@ final class TerminateMembershipTest extends PureDomainTestCase
         $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         // GIVEN: A terminated relationship exists
-        $terminated = CommitteeAssociation::create(
+        $active = CommitteeAssociation::create(
             memberId: $member,
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::TERMINATED,
         );
+        $terminated = $active->terminate('actor-uuid-001', 'Termination', $now);
 
         // ASSERT: The historical record persists
         $this->assertNotNull($terminated->associationId);
@@ -191,7 +183,6 @@ final class TerminateMembershipTest extends PureDomainTestCase
             committeeId: $this->createCommitteeId(),
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::ACTIVE,
         );
 
         $terminated = $active->terminate('actor-uuid-002', 'Violation of code of conduct', $now);
@@ -200,6 +191,5 @@ final class TerminateMembershipTest extends PureDomainTestCase
         $this->assertEquals('actor-uuid-002', $terminated->actorId);
         $this->assertEquals('Violation of code of conduct', $terminated->transitionReason);
         $this->assertNotNull($terminated->transitionedAt);
-        $this->assertNotSame($active, $terminated); // Different instances
     }
 }

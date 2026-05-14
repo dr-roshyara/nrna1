@@ -124,7 +124,6 @@ final class MembershipApplication
             committeeId: $this->committeeId,
             associationType: $this->reason,
             associatedAt: $this->reviewedAt,
-            status: MembershipStatus::ACTIVE,
         );
     }
 

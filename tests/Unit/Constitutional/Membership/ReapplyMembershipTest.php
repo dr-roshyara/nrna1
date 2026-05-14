@@ -53,13 +53,13 @@ final class ReapplyMembershipTest extends PureDomainTestCase
         $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         // GIVEN: A terminated relationship exists in institutional history
-        $terminated = CommitteeAssociation::create(
+        $initial = CommitteeAssociation::create(
             memberId: $member,
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::TERMINATED,
         );
+        $terminated = $initial->terminate('actor-uuid-001', 'Termination', $now);
 
         $originalAssociationId = $terminated->associationId->value();
 
@@ -69,7 +69,6 @@ final class ReapplyMembershipTest extends PureDomainTestCase
             committeeId: $committee,
             associationType: ApplicationReason::MANUAL,
             associatedAt: $now->modify('+1 day'),
-            status: MembershipStatus::ACTIVE,
         );
 
         // THEN: A NEW constitutional relationship exists
@@ -111,13 +110,13 @@ final class ReapplyMembershipTest extends PureDomainTestCase
         $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         // GIVEN: A terminated relationship exists
-        $terminated = CommitteeAssociation::create(
+        $initial = CommitteeAssociation::create(
             memberId: $member,
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::TERMINATED,
         );
+        $terminated = $initial->terminate('actor-uuid-001', 'Termination', $now);
 
         // WHEN: We attempt to treat this as restoration (wrong approach)
         // (This would be semantically incorrect)
@@ -128,7 +127,6 @@ final class ReapplyMembershipTest extends PureDomainTestCase
             committeeId: $committee,
             associationType: ApplicationReason::MANUAL,
             associatedAt: $now,
-            status: MembershipStatus::ACTIVE,
         );
 
         // ASSERT: It is a NEW relationship, not a restoration of the old one
@@ -167,13 +165,13 @@ final class ReapplyMembershipTest extends PureDomainTestCase
         $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         // GIVEN: A terminated relationship exists
-        $terminated = CommitteeAssociation::create(
+        $initial = CommitteeAssociation::create(
             memberId: $member,
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::TERMINATED,
         );
+        $terminated = $initial->terminate('actor-uuid-001', 'Termination', $now);
 
         // WHEN: The member reapplies
         $reapplied = CommitteeAssociation::create(
@@ -181,7 +179,6 @@ final class ReapplyMembershipTest extends PureDomainTestCase
             committeeId: $committee,
             associationType: ApplicationReason::MANUAL,
             associatedAt: $now->modify('+1 day'),
-            status: MembershipStatus::ACTIVE,
         );
 
         // ASSERT: Both records should be queryable (future: repository method)

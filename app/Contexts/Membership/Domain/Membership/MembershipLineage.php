@@ -74,7 +74,6 @@ final class MembershipLineage
             committeeId: $committeeId,
             associationType: $reason,
             associatedAt: $at,
-            status: MembershipStatus::ACTIVE,
         );
 
         $self = new self($lineageId, $memberId, $committeeId, $tenantId);
@@ -87,6 +86,7 @@ final class MembershipLineage
      * Reconstitute a lineage from persistence (repository only).
      *
      * Used when loading from database. Preserves full episode history.
+     * Validates: lineage must have at least one episode, first episode must be ACTIVE.
      *
      * @param CommitteeAssociation[] $episodes
      */
@@ -97,6 +97,14 @@ final class MembershipLineage
         TenantId $tenantId,
         array $episodes,
     ): self {
+        if (empty($episodes)) {
+            throw new \InvalidArgumentException('Lineage must have at least one episode');
+        }
+
+        if (!$episodes[0]->status->equals(MembershipStatus::ACTIVE)) {
+            throw new \InvalidArgumentException('Episode chain must contain valid transitions');
+        }
+
         $self = new self($lineageId, $memberId, $committeeId, $tenantId);
         $self->episodes = $episodes;
 
@@ -336,7 +344,6 @@ final class MembershipLineage
             committeeId: $this->committeeId,
             associationType: $reason,
             associatedAt: $at,
-            status: MembershipStatus::ACTIVE,
         );
 
         // Emit domain event

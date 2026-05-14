@@ -111,7 +111,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
 
         $this->repository->saveForTenant($association, $this->tenant1);
@@ -137,7 +137,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
 
         $this->repository->saveForTenant($active1, $this->tenant1);
@@ -148,7 +148,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::MANUAL,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
 
         // This MUST throw — governance invariant violation
@@ -208,7 +208,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::MANUAL,
             associatedAt: \DateTimeImmutable::createFromMutable(now()->addDay()),
-            status: MembershipStatus::ACTIVE,
+            
         );
 
         // This MUST succeed — new association, not overwrite
@@ -258,7 +258,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
 
         // This MUST be allowed via lifecycle transition, not as overwrite
@@ -290,7 +290,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
 
         // This MUST throw — TERMINATED is terminal
@@ -311,7 +311,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
 
         $this->repository->saveForTenant($active, $this->tenant1);
@@ -328,7 +328,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
 
         $this->repository->saveForTenant($active, $this->tenant1);
@@ -348,7 +348,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
 
         $this->repository->saveForTenant($active, $this->tenant1);
@@ -395,7 +395,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
 
         $this->repository->saveForTenant($assoc1, $this->tenant1);
@@ -406,7 +406,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
 
         $this->repository->saveForTenant($assoc2, $this->tenant2);
@@ -449,7 +449,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $this->committee1,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
         $this->repository->saveForTenant($assoc1, $this->tenant1);
 
@@ -471,7 +471,7 @@ final class CommitteeAssociationRepositoryTest extends TestCase
             committeeId: $unrelatedCommittee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: \DateTimeImmutable::createFromMutable(now()),
-            status: MembershipStatus::ACTIVE,
+            
         );
         $this->repository->saveForTenant($assoc3, $tenant3);
 

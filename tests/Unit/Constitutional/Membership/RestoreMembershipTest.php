@@ -50,13 +50,13 @@ final class RestoreMembershipTest extends PureDomainTestCase
         $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         // GIVEN: A suspended relationship exists
-        $suspended = CommitteeAssociation::create(
+        $active = CommitteeAssociation::create(
             memberId: $member,
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::SUSPENDED,
         );
+        $suspended = $active->suspend('actor-uuid-001', 'Test suspension', $now);
 
         // WHEN: The institution resolves the suspension and restores rights
         // (In phase A2.4+, this will be: $suspended->restore($actor))
@@ -100,13 +100,14 @@ final class RestoreMembershipTest extends PureDomainTestCase
         $now = new \DateTimeImmutable('2026-05-14 10:00:00');
 
         // GIVEN: A membership transitions SUSPENDED → ACTIVE
-        $restored = CommitteeAssociation::create(
+        $active = CommitteeAssociation::create(
             memberId: $member,
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::ACTIVE,
         );
+        $suspended = $active->suspend('actor-uuid-001', 'Test suspension', $now);
+        $restored = $suspended->restore('actor-uuid-002', $now);
 
         // ASSERT: The member is eligible for governance participation
         $this->assertEquals(MembershipStatus::ACTIVE, $restored->status);
@@ -124,13 +125,14 @@ final class RestoreMembershipTest extends PureDomainTestCase
      */
     public function test_restoration_is_only_valid_from_suspended_state(): void
     {
-        $terminated = CommitteeAssociation::create(
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
+        $active = CommitteeAssociation::create(
             memberId: $this->createMemberId(),
             committeeId: $this->createCommitteeId(),
             associationType: ApplicationReason::RESIDENCE,
-            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-            status: MembershipStatus::TERMINATED,
+            associatedAt: $now,
         );
+        $terminated = $active->terminate('actor-uuid-001', 'Termination', $now);
 
         $this->expectException(\App\Contexts\Membership\Domain\Membership\Exceptions\InvalidAssociationTransitionException::class);
         $terminated->restore('actor-uuid', new \DateTimeImmutable('2026-05-14 11:00:00'));
