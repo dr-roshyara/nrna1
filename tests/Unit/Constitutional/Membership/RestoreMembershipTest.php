@@ -124,17 +124,15 @@ final class RestoreMembershipTest extends PureDomainTestCase
      */
     public function test_restoration_is_only_valid_from_suspended_state(): void
     {
-        // NOTE: This test is currently aspirational.
-        // After A2.2, the aggregate will have:
-        //   $suspended->restore($actor)
-        // which will throw exception if called on non-SUSPENDED relationship.
-
-        // This codifies the constitutional rule:
-        // "Once terminated, restoration is impossible. Reapplication is required."
-
-        // TODO: Implement in A2.2 as aggregate method
-        $this->markTestIncomplete(
-            'Constitutional validation: restore() only valid on SUSPENDED, not TERMINATED'
+        $terminated = CommitteeAssociation::create(
+            memberId: $this->createMemberId(),
+            committeeId: $this->createCommitteeId(),
+            associationType: ApplicationReason::RESIDENCE,
+            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
+            status: MembershipStatus::TERMINATED,
         );
+
+        $this->expectException(\App\Contexts\Membership\Domain\Membership\Exceptions\InvalidAssociationTransitionException::class);
+        $terminated->restore('actor-uuid', new \DateTimeImmutable('2026-05-14 11:00:00'));
     }
 }

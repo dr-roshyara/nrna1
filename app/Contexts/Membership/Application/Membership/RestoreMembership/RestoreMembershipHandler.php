@@ -36,6 +36,10 @@ final readonly class RestoreMembershipHandler
 
         $this->lineageRepository->saveForTenant($lineage, $tenantId);
 
-        // @todo: Publish domain events when event system is extended
+        // Publish domain events
+        $events = $lineage->releaseEvents();
+        if (!empty($events)) {
+            $this->eventBus->dispatchAll($events);
+        }
     }
 }

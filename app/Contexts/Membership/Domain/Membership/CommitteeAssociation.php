@@ -19,6 +19,9 @@ final readonly class CommitteeAssociation
         public ApplicationReason $associationType,
         public \DateTimeImmutable $associatedAt,
         public MembershipStatus $status,
+        public ?string $actorId = null,
+        public ?string $transitionReason = null,
+        public ?\DateTimeImmutable $transitionedAt = null,
     ) {
     }
 
@@ -39,6 +42,75 @@ final readonly class CommitteeAssociation
             associationType: $associationType,
             associatedAt: $associatedAt,
             status: $status,
+        );
+    }
+
+    /**
+     * Suspend membership with institutional justification
+     * Returns new instance (immutable)
+     */
+    public function suspend(string $actorId, string $reason, \DateTimeImmutable $at): self
+    {
+        if (!$this->status->equals(MembershipStatus::ACTIVE)) {
+            throw Exceptions\InvalidAssociationTransitionException::cannotSuspendFrom($this->status);
+        }
+
+        return new self(
+            associationId: $this->associationId,
+            memberId: $this->memberId,
+            committeeId: $this->committeeId,
+            associationType: $this->associationType,
+            associatedAt: $this->associatedAt,
+            status: MembershipStatus::SUSPENDED,
+            actorId: $actorId,
+            transitionReason: $reason,
+            transitionedAt: $at,
+        );
+    }
+
+    /**
+     * Restore suspended membership
+     * Returns new instance (immutable)
+     */
+    public function restore(string $actorId, \DateTimeImmutable $at): self
+    {
+        if (!$this->status->equals(MembershipStatus::SUSPENDED)) {
+            throw Exceptions\InvalidAssociationTransitionException::cannotRestoreFrom($this->status);
+        }
+
+        return new self(
+            associationId: $this->associationId,
+            memberId: $this->memberId,
+            committeeId: $this->committeeId,
+            associationType: $this->associationType,
+            associatedAt: $this->associatedAt,
+            status: MembershipStatus::ACTIVE,
+            actorId: $actorId,
+            transitionReason: null,
+            transitionedAt: $at,
+        );
+    }
+
+    /**
+     * Terminate membership permanently
+     * Returns new instance (immutable)
+     */
+    public function terminate(string $actorId, string $reason, \DateTimeImmutable $at): self
+    {
+        if ($this->status->equals(MembershipStatus::TERMINATED)) {
+            throw Exceptions\InvalidAssociationTransitionException::cannotTerminateFrom($this->status);
+        }
+
+        return new self(
+            associationId: $this->associationId,
+            memberId: $this->memberId,
+            committeeId: $this->committeeId,
+            associationType: $this->associationType,
+            associatedAt: $this->associatedAt,
+            status: MembershipStatus::TERMINATED,
+            actorId: $actorId,
+            transitionReason: $reason,
+            transitionedAt: $at,
         );
     }
 }

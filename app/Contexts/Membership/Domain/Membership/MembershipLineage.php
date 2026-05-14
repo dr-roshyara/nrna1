@@ -10,6 +10,11 @@ use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Shared\Domain\Concerns\RecordsEvents;
+use App\Contexts\Membership\Domain\Membership\Events\MembershipSuspended;
+use App\Contexts\Membership\Domain\Membership\Events\MembershipRestored;
+use App\Contexts\Membership\Domain\Membership\Events\MembershipTerminated;
+use App\Contexts\Membership\Domain\Membership\Events\MembershipReapplied;
 
 /**
  * MembershipLineage Aggregate Root
@@ -28,6 +33,8 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
  */
 final class MembershipLineage
 {
+    use RecordsEvents;
+
     /** @var CommitteeAssociation[] */
     private array $episodes = [];
 
@@ -213,17 +220,20 @@ final class MembershipLineage
             throw new \InvalidArgumentException('Suspension reason cannot be empty');
         }
 
-        // Create immutable episode with SUSPENDED status
-        $newEpisode = new CommitteeAssociation(
-            associationId: $this->current()->associationId,
-            memberId: $this->current()->memberId,
-            committeeId: $this->current()->committeeId,
-            associationType: $this->current()->associationType,
-            associatedAt: $this->current()->associatedAt,
-            status: MembershipStatus::SUSPENDED,
-        );
+        // Delegate to entity method (returns new instance with guards)
+        $newEpisode = $this->current()->suspend($actorId, $reason, $at);
 
         $this->episodes[] = $newEpisode;
+
+        // Emit domain event
+        $this->recordEvent(new MembershipSuspended(
+            lineageId: $this->lineageId->value(),
+            memberId: $this->memberId->value(),
+            committeeId: $this->committeeId->value(),
+            actorId: $actorId,
+            reason: $reason,
+            suspendedAt: $at,
+        ));
     }
 
     /**
@@ -244,17 +254,19 @@ final class MembershipLineage
             throw \App\Contexts\Membership\Domain\Membership\Exceptions\InvalidLineageTransitionException::cannotRestoreNonSuspended();
         }
 
-        // Create immutable episode with ACTIVE status
-        $newEpisode = new CommitteeAssociation(
-            associationId: $this->current()->associationId,
-            memberId: $this->current()->memberId,
-            committeeId: $this->current()->committeeId,
-            associationType: $this->current()->associationType,
-            associatedAt: $this->current()->associatedAt,
-            status: MembershipStatus::ACTIVE,
-        );
+        // Delegate to entity method (returns new instance with guards)
+        $newEpisode = $this->current()->restore($actorId, $at);
 
         $this->episodes[] = $newEpisode;
+
+        // Emit domain event
+        $this->recordEvent(new MembershipRestored(
+            lineageId: $this->lineageId->value(),
+            memberId: $this->memberId->value(),
+            committeeId: $this->committeeId->value(),
+            actorId: $actorId,
+            restoredAt: $at,
+        ));
     }
 
     /**
@@ -280,17 +292,20 @@ final class MembershipLineage
             throw new \InvalidArgumentException('Termination reason cannot be empty');
         }
 
-        // Create immutable episode with TERMINATED status
-        $newEpisode = new CommitteeAssociation(
-            associationId: $this->current()->associationId,
-            memberId: $this->current()->memberId,
-            committeeId: $this->current()->committeeId,
-            associationType: $this->current()->associationType,
-            associatedAt: $this->current()->associatedAt,
-            status: MembershipStatus::TERMINATED,
-        );
+        // Delegate to entity method (returns new instance with guards)
+        $newEpisode = $this->current()->terminate($actorId, $reason, $at);
 
         $this->episodes[] = $newEpisode;
+
+        // Emit domain event
+        $this->recordEvent(new MembershipTerminated(
+            lineageId: $this->lineageId->value(),
+            memberId: $this->memberId->value(),
+            committeeId: $this->committeeId->value(),
+            actorId: $actorId,
+            reason: $reason,
+            terminatedAt: $at,
+        ));
     }
 
     /**
@@ -316,13 +331,23 @@ final class MembershipLineage
         }
 
         // Return new episode with new AssociationId (new lineage)
-        return CommitteeAssociation::create(
+        $newEpisode = CommitteeAssociation::create(
             memberId: $this->memberId,
             committeeId: $this->committeeId,
             associationType: $reason,
             associatedAt: $at,
             status: MembershipStatus::ACTIVE,
         );
+
+        // Emit domain event
+        $this->recordEvent(new MembershipReapplied(
+            memberId: $this->memberId->value(),
+            committeeId: $this->committeeId->value(),
+            newAssociationId: $newEpisode->associationId->value(),
+            reappliedAt: $at,
+        ));
+
+        return $newEpisode;
     }
 
     /**

@@ -40,6 +40,8 @@ final class EloquentMembershipLineageRepository implements MembershipLineageRepo
         // The full history is loaded via loadEpisodesForLineage() when needed.
 
         $currentEpisode = $lineage->current();
+        $isSuspension = $currentEpisode->status->equals(\App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus::SUSPENDED);
+        $isTermination = $currentEpisode->status->equals(\App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus::TERMINATED);
 
         CommitteeAssociationModel::create([
             'organisation_id' => $tenantId->value(),
@@ -52,12 +54,12 @@ final class EloquentMembershipLineageRepository implements MembershipLineageRepo
             'association_id' => $currentEpisode->associationId->value(),
             'approved_by_actor_id' => null,
             'approved_by_actor_type' => null,
-            'suspended_by_actor_id' => null,
+            'suspended_by_actor_id' => $isSuspension ? $currentEpisode->actorId : null,
             'suspended_by_actor_type' => null,
-            'suspension_reason' => null,
-            'terminated_by_actor_id' => null,
+            'suspension_reason' => $isSuspension ? $currentEpisode->transitionReason : null,
+            'terminated_by_actor_id' => $isTermination ? $currentEpisode->actorId : null,
             'terminated_by_actor_type' => null,
-            'termination_reason' => null,
+            'termination_reason' => $isTermination ? $currentEpisode->transitionReason : null,
         ]);
     }
 
@@ -317,6 +319,9 @@ final class EloquentMembershipLineageRepository implements MembershipLineageRepo
                 associationType: \App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason::from($model->association_type),
                 associatedAt: $model->associated_at,
                 status: \App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus::from($model->status),
+                actorId: $model->suspended_by_actor_id ?? $model->terminated_by_actor_id ?? null,
+                transitionReason: $model->suspension_reason ?? $model->termination_reason ?? null,
+                transitionedAt: null, // Not persisted yet—acceptable gap for F3.1
             );
         }
 

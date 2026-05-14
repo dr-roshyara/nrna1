@@ -126,14 +126,22 @@ final class SuspendMembershipTest extends PureDomainTestCase
      */
     public function test_suspension_requires_institutional_justification(): void
     {
-        // NOTE: This test is currently aspirational.
-        // After A2.6, it will verify that suspend() method requires:
-        //   $relationship->suspend($actorId, $suspensionReason)
-        // and throws exception if called without these parameters.
-
-        // TODO: Implement in A2.6
-        $this->markTestIncomplete(
-            'Audit enforcement deferred to A2.6: Mandatory institutional justification'
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
+        $active = CommitteeAssociation::create(
+            memberId: $this->createMemberId(),
+            committeeId: $this->createCommitteeId(),
+            associationType: ApplicationReason::RESIDENCE,
+            associatedAt: $now,
+            status: MembershipStatus::ACTIVE,
         );
+
+        $suspended = $active->suspend('actor-uuid-001', 'Disciplinary action', $now);
+
+        $this->assertEquals(MembershipStatus::SUSPENDED, $suspended->status);
+        $this->assertEquals('actor-uuid-001', $suspended->actorId);
+        $this->assertEquals('Disciplinary action', $suspended->transitionReason);
+        $this->assertNotNull($suspended->transitionedAt);
+        $this->assertEquals(MembershipStatus::ACTIVE, $active->status); // original unchanged
+        $this->assertNotSame($active, $suspended); // Different instances
     }
 }

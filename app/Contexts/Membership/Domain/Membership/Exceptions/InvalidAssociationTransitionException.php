@@ -19,4 +19,25 @@ final class InvalidAssociationTransitionException extends \DomainException
             "Cannot transition from terminated association. Create new association instead."
         );
     }
+
+    public static function cannotSuspendFrom(\App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus $from): self
+    {
+        return new self(
+            "Cannot suspend: current status is {$from->value}, must be ACTIVE"
+        );
+    }
+
+    public static function cannotRestoreFrom(\App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus $from): self
+    {
+        return new self(
+            "Cannot restore: current status is {$from->value}, must be SUSPENDED"
+        );
+    }
+
+    public static function cannotTerminateFrom(\App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus $from): self
+    {
+        return new self(
+            "Cannot terminate: current status is {$from->value}, termination is only possible from ACTIVE or SUSPENDED"
+        );
+    }
 }

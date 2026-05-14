@@ -92,19 +92,16 @@ final class TerminateMembershipTest extends PureDomainTestCase
      */
     public function test_terminated_membership_cannot_be_reactivated_directly(): void
     {
-        // NOTE: This test is currently aspirational.
-        // After A2.2, the aggregate will have transition validation that ensures:
-        //   $terminated->reactivate() throws exception
-        //   $terminated->restore() throws exception
-        //   $terminated->anyTransition() throws exception
-        //
-        // This codifies:
-        // "TERMINATED is terminal. No transitions are possible from this state."
-
-        // TODO: Implement in A2.2 as aggregate validation
-        $this->markTestIncomplete(
-            'Constitutional law: TERMINATED status allows no further transitions'
+        $terminated = CommitteeAssociation::create(
+            memberId: $this->createMemberId(),
+            committeeId: $this->createCommitteeId(),
+            associationType: ApplicationReason::RESIDENCE,
+            associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
+            status: MembershipStatus::TERMINATED,
         );
+
+        $this->expectException(\App\Contexts\Membership\Domain\Membership\Exceptions\InvalidAssociationTransitionException::class);
+        $terminated->restore('actor-uuid', new \DateTimeImmutable('2026-05-14 11:00:00'));
     }
 
     /**
@@ -188,14 +185,21 @@ final class TerminateMembershipTest extends PureDomainTestCase
      */
     public function test_termination_requires_institutional_justification(): void
     {
-        // NOTE: This test is currently aspirational.
-        // After A2.6, it will verify that terminate() method requires:
-        //   $relationship->terminate($actorId, $terminationReason)
-        // and throws exception if called without these parameters.
-
-        // TODO: Implement in A2.6
-        $this->markTestIncomplete(
-            'Audit enforcement deferred to A2.6: Mandatory institutional justification'
+        $now = new \DateTimeImmutable('2026-05-14 10:00:00');
+        $active = CommitteeAssociation::create(
+            memberId: $this->createMemberId(),
+            committeeId: $this->createCommitteeId(),
+            associationType: ApplicationReason::RESIDENCE,
+            associatedAt: $now,
+            status: MembershipStatus::ACTIVE,
         );
+
+        $terminated = $active->terminate('actor-uuid-002', 'Violation of code of conduct', $now);
+
+        $this->assertEquals(MembershipStatus::TERMINATED, $terminated->status);
+        $this->assertEquals('actor-uuid-002', $terminated->actorId);
+        $this->assertEquals('Violation of code of conduct', $terminated->transitionReason);
+        $this->assertNotNull($terminated->transitionedAt);
+        $this->assertNotSame($active, $terminated); // Different instances
     }
 }

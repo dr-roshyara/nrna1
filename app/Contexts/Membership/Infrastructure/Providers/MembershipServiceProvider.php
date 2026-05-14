@@ -154,6 +154,37 @@ class MembershipServiceProvider extends ServiceProvider
             \App\Contexts\Membership\Infrastructure\Repositories\EloquentMembershipLineageRepository::class
         );
 
+        // F3.1: Constitutional lifecycle handlers
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Membership\SuspendMembership\SuspendMembershipHandler::class,
+            function ($app) {
+                return new \App\Contexts\Membership\Application\Membership\SuspendMembership\SuspendMembershipHandler(
+                    $app->make(\App\Contexts\Membership\Application\Membership\Ports\MembershipLineageRepositoryPort::class),
+                    $app->make(EventBus::class),
+                );
+            }
+        );
+
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Membership\TerminateMembership\TerminateMembershipHandler::class,
+            function ($app) {
+                return new \App\Contexts\Membership\Application\Membership\TerminateMembership\TerminateMembershipHandler(
+                    $app->make(\App\Contexts\Membership\Application\Membership\Ports\MembershipLineageRepositoryPort::class),
+                    $app->make(EventBus::class),
+                );
+            }
+        );
+
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Membership\RestoreMembership\RestoreMembershipHandler::class,
+            function ($app) {
+                return new \App\Contexts\Membership\Application\Membership\RestoreMembership\RestoreMembershipHandler(
+                    $app->make(\App\Contexts\Membership\Application\Membership\Ports\MembershipLineageRepositoryPort::class),
+                    $app->make(EventBus::class),
+                );
+            }
+        );
+
         $this->app->bind(
             CommitteeRepositoryInterface::class,
             EloquentCommitteeRepository::class
