@@ -46,7 +46,6 @@ final class AcceptMemberTest extends PureDomainTestCase
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
-            status: MembershipStatus::ACTIVE,
         );
 
         // ASSERT: The constitutional relationship has been established
@@ -88,7 +87,6 @@ final class AcceptMemberTest extends PureDomainTestCase
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::ACTIVE,
         );
 
         $relationship2 = CommitteeAssociation::create(
@@ -96,7 +94,6 @@ final class AcceptMemberTest extends PureDomainTestCase
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::ACTIVE,
         );
 
         // ASSERT: Each relationship has unique institutional identity
@@ -131,7 +128,6 @@ final class AcceptMemberTest extends PureDomainTestCase
             committeeId: $committee,
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: $now,
-            status: MembershipStatus::ACTIVE,
         );
 
         // ASSERT: The origin is permanently recorded
