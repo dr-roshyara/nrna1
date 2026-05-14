@@ -6,7 +6,7 @@ namespace App\Contexts\Membership\Application\Membership\ApplyForCommitteeMember
 
 use App\Contexts\Membership\Application\Membership\Ports\MembershipApplicationRepositoryPort;
 use App\Contexts\Membership\Application\Membership\Ports\MembershipLineageRepositoryPort;
-use App\Contexts\Membership\Domain\Committee\Policies\EligibilityPolicy;
+use App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService;
 use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Membership\MembershipApplication;
@@ -21,7 +21,7 @@ final readonly class ApplyForCommitteeMembershipHandler
         private MembershipApplicationRepositoryPort $repository,
         private MembershipLineageRepositoryPort $lineageRepository,
         private EventBusPort $eventBus,
-        private EligibilityPolicy $eligibilityPolicy,
+        private EligibleCommitteeQueryService $eligibleCommitteeService,
     ) {
     }
 
@@ -46,13 +46,20 @@ final readonly class ApplyForCommitteeMembershipHandler
             throw new DomainException('Member already has active or suspended membership with this committee');
         }
 
-        // Compute eligibility only for RESIDENCE applications (others ignore it)
-        $isEligible = true;
-        if ($command->reason === ApplicationReason::RESIDENCE) {
-            $isEligible = $this->eligibilityPolicy->isEligible(
-                $command->committeeGeoPath,
-                $command->memberGeoPath,
-            );
+        // PHASE C: Use eligibility service as single source of truth
+        // (replaces inline eligibility policy for consistency across read + write paths)
+        $eligible = $this->eligibleCommitteeService->eligibleForMember(
+            $memberId,
+            $command->tenantId,
+            $command->memberGeoPath,
+        );
+
+        $isEligible = false;
+        foreach ($eligible as $eligibleView) {
+            if ($eligibleView->committeeId === (string) $committeeId) {
+                $isEligible = true;
+                break;
+            }
         }
 
         // Submit application (domain logic validates based on reason)

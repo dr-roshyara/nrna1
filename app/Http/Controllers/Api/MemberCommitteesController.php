@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\API;
 
+use App\Contexts\Membership\Application\Membership\Ports\MemberGeoPathProviderPort;
 use App\Contexts\Membership\Application\Membership\Query\MyCommitteesQueryService;
-use App\Contexts\Membership\Domain\Committee\ValueObjects\GeoPathChain;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Http\Controllers\Controller;
@@ -17,25 +17,36 @@ use Illuminate\Http\Request;
  *
  * API for "My Committees" feature.
  * Shows eligible committees + current memberships + pending applications.
+ *
+ * ARCHITECTURAL NOTE: GeoPathChain resolution delegated to port.
+ * Controller never constructs value objects (CLAUDE.md Rule 2).
  */
 final class MemberCommitteesController extends Controller
 {
     public function __construct(
         private readonly MyCommitteesQueryService $myCommitteesQueryService,
+        private readonly MemberGeoPathProviderPort $geoPathProvider,
     ) {}
 
     /**
-     * GET /api/members/{memberId}/committees
+     * GET /organisations/{organisationId}/my-committees
      *
-     * Returns committees for a member with state.
+     * Returns committees for authenticated member within organisation context.
+     * GeoPathChain resolution delegated to port (not controller).
+     *
+     * TENANT-SCOPED: Everything is organisation-specific.
      */
-    public function index(Request $request, string $memberId): JsonResponse
+    public function index(Request $request, string $organisationId): JsonResponse
     {
-        $tenantId = TenantId::fromString($request->get('tenant_id', 'default'));
-        $memberGeoPath = GeoPathChain::fromString($request->get('geo_path', ''));
+        $tenantId = TenantId::fromString($organisationId);
+        // Implicitly: authenticated user's ID (from auth session)
+        $memberId = new MemberId(auth()->id());
+
+        // Port resolves member's geo context within organisation (no controller construction)
+        $memberGeoPath = $this->geoPathProvider->resolveForMember($memberId, $tenantId);
 
         $committees = $this->myCommitteesQueryService->getForMember(
-            new MemberId($memberId),
+            $memberId,
             $tenantId,
             $memberGeoPath
         );
