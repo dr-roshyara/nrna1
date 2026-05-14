@@ -219,7 +219,20 @@ class MembershipServiceProvider extends ServiceProvider
             \App\Contexts\Membership\Infrastructure\Query\SessionMemberGeoPathProvider::class
         );
 
+        // F1: CRITICAL — Stub bindings MUST be registered BEFORE factory closure below
+        // The factory depends on these stubs being bound
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Membership\Ports\MembershipApplicationRepositoryPort::class,
+            \App\Contexts\Membership\Infrastructure\Query\StubMembershipApplicationRepository::class
+        );
+
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Membership\Query\Ports\CommitteeGeoPathProviderPort::class,
+            \App\Contexts\Membership\Infrastructure\Query\StubCommitteeGeoPathProvider::class
+        );
+
         // F1: Phase C eligibility service (single source of truth for eligibility)
+        // Depends on stubs being bound first (see above)
         $this->app->bind(
             \App\Contexts\Membership\Application\Membership\Query\EligibleCommitteeQueryService::class,
             function ($app) {
@@ -231,18 +244,6 @@ class MembershipServiceProvider extends ServiceProvider
                     $app->make(\App\Contexts\Membership\Application\Membership\Query\Ports\CommitteeGeoPathProviderPort::class),
                 );
             }
-        );
-
-        // F1: Stub — replace with Eloquent impl in Phase F2
-        $this->app->bind(
-            \App\Contexts\Membership\Application\Membership\Ports\MembershipApplicationRepositoryPort::class,
-            \App\Contexts\Membership\Infrastructure\Query\StubMembershipApplicationRepository::class
-        );
-
-        // F1: Stub — replace with GeoSemanticProjectionBuilder impl in Phase F2
-        $this->app->bind(
-            \App\Contexts\Membership\Application\Membership\Query\Ports\CommitteeGeoPathProviderPort::class,
-            \App\Contexts\Membership\Infrastructure\Query\StubCommitteeGeoPathProvider::class
         );
 
         $this->app->bind(NearbyCommitteesQueryService::class, function ($app) {

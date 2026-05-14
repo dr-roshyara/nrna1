@@ -65,4 +65,14 @@ final readonly class GeoPathChain
     {
         return $this->path === '';
     }
+
+    /**
+     * Factory for empty geographic path (no geo context).
+     * Used when member has no geographic assignment.
+     * Note: geoUnitId=1 is a sentinel value; isEmpty() check short-circuits before any ID comparison.
+     */
+    public static function empty(): self
+    {
+        return new self(1, '', []);
+    }
 }
