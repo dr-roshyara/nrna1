@@ -7,7 +7,7 @@ namespace App\Contexts\Committee\Infrastructure\Persistence;
 use App\Contexts\Committee\Application\ReadModel\CommitteeMembershipReadModelAdapter;
 use App\Contexts\Committee\Application\ReadModel\CommitteeMembershipStats;
 use App\Contexts\Committee\Application\ReadModel\CommitteeMemberView;
-use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Infrastructure\Models\CommitteeAssociationModel;
 use App\User;
