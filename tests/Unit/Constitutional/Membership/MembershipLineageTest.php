@@ -275,7 +275,8 @@ final class MembershipLineageTest extends PureDomainTestCase
 
         // ASSERT: Cannot reapply while SUSPENDED
         $this->assertFalse($lineage->canBeReapplied());
-        $this->assertTrue($lineage->isActive());
+        $this->assertFalse($lineage->isActive());
+        $this->assertTrue($lineage->isSuspended());
 
         // Add termination
         $terminated = new CommitteeAssociation(

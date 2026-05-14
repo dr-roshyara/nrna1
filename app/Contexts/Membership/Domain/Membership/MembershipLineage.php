@@ -117,11 +117,41 @@ final class MembershipLineage
     }
 
     /**
-     * Is this lineage still active (not terminated)?
+     * Is this lineage in ACTIVE status?
+     *
+     * CRITICAL: Returns true ONLY when currentStatus() is strictly ACTIVE.
+     * Bug fix: Previously returned !isTerminated(), making SUSPENDED members appear active.
      */
     public function isActive(): bool
     {
-        return !$this->currentStatus()->equals(MembershipStatus::TERMINATED);
+        return $this->currentStatus()->equals(MembershipStatus::ACTIVE);
+    }
+
+    /**
+     * Is this lineage in SUSPENDED status?
+     */
+    public function isSuspended(): bool
+    {
+        return $this->currentStatus()->equals(MembershipStatus::SUSPENDED);
+    }
+
+    /**
+     * Is this lineage in TERMINATED status?
+     */
+    public function isTerminated(): bool
+    {
+        return $this->currentStatus()->equals(MembershipStatus::TERMINATED);
+    }
+
+    /**
+     * Does this lineage exist?
+     *
+     * Returns true if lineage has any episodes.
+     * Used to distinguish "no membership" from "terminated membership".
+     */
+    public function exists(): bool
+    {
+        return !empty($this->episodes);
     }
 
     /**
