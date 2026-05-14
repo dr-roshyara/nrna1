@@ -15,6 +15,7 @@ use App\Contexts\Membership\Domain\Membership\Events\MembershipSuspended;
 use App\Contexts\Membership\Domain\Membership\Events\MembershipRestored;
 use App\Contexts\Membership\Domain\Membership\Events\MembershipTerminated;
 use App\Contexts\Membership\Domain\Membership\Events\MembershipReapplied;
+use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidMembershipLineageException;
 
 /**
  * MembershipLineage Aggregate Root
@@ -89,6 +90,9 @@ final class MembershipLineage
      * Validates: lineage must have at least one episode, first episode must be ACTIVE,
      * and entire episode chain must represent valid state transitions.
      *
+     * TRUST BOUNDARY: Persistence path only.
+     * Validation ensures no invalid states from database corruption.
+     *
      * @param CommitteeAssociation[] $episodes
      */
     public static function reconstitute(
@@ -98,69 +102,84 @@ final class MembershipLineage
         TenantId $tenantId,
         array $episodes,
     ): self {
-        if (empty($episodes)) {
-            throw new \InvalidArgumentException('Lineage must have at least one episode');
-        }
-
-        // Validate first episode is ACTIVE (handles test 3: SUSPENDED alone)
-        if (!$episodes[0]->status->equals(MembershipStatus::ACTIVE)) {
-            if ($episodes[0]->status->equals(MembershipStatus::SUSPENDED)) {
-                throw new \InvalidArgumentException('SUSPENDED requires prior ACTIVE');
-            }
-            throw new \InvalidArgumentException('Episode chain must contain valid transitions');
-        }
-
-        // Validate state machine chain
-        $terminatedFound = false;
-        for ($i = 1; $i < count($episodes); $i++) {
-            $prev = $episodes[$i - 1];
-            $curr = $episodes[$i];
-
-            // Check for duplicate consecutive statuses FIRST (test 5)
-            if ($prev->status->equals($curr->status)) {
-                throw new \InvalidArgumentException('Invalid state transition');
-            }
-
-            // Nothing can follow TERMINATED (test 1, test 4)
-            // Test 1 expects generic "Invalid state transition", test 4 expects "Cannot restore from TERMINATED"
-            // The difference is in how we interpret the violation
-            if ($prev->status->equals(MembershipStatus::TERMINATED)) {
-                // If next status is ACTIVE, it's a restoration violation
-                if ($curr->status->equals(MembershipStatus::ACTIVE)) {
-                    throw new \InvalidArgumentException('Invalid state transition');
-                }
-                throw new \InvalidArgumentException('TERMINATED is terminal');
-            }
-
-            // Check for duplicate TERMINATED (test 2)
-            if ($curr->status->equals(MembershipStatus::TERMINATED) && $terminatedFound) {
-                throw new \InvalidArgumentException('TERMINATED is terminal');
-            }
-
-            // SUSPENDED requires prior ACTIVE (test 3)
-            if ($curr->status->equals(MembershipStatus::SUSPENDED)) {
-                if (!$prev->status->equals(MembershipStatus::ACTIVE)) {
-                    throw new \InvalidArgumentException('SUSPENDED requires prior ACTIVE');
-                }
-            }
-
-            // ACTIVE (restoration) requires prior SUSPENDED (test 4 with ep2/ep3)
-            if ($curr->status->equals(MembershipStatus::ACTIVE)) {
-                if (!$prev->status->equals(MembershipStatus::SUSPENDED)) {
-                    throw new \InvalidArgumentException('Cannot restore from TERMINATED');
-                }
-            }
-
-            // Track TERMINATED
-            if ($curr->status->equals(MembershipStatus::TERMINATED)) {
-                $terminatedFound = true;
-            }
-        }
+        self::assertNonEmptyEpisodeChain($episodes);
+        self::assertInitialEpisodeIsConstitutionallyValid($episodes);
+        self::assertNoImpossibleTransitions($episodes);
+        self::assertTerminalStatesRemainTerminal($episodes);
 
         $self = new self($lineageId, $memberId, $committeeId, $tenantId);
         $self->episodes = $episodes;
 
         return $self;
+    }
+
+    private static function assertNonEmptyEpisodeChain(array $episodes): void
+    {
+        if (empty($episodes)) {
+            throw InvalidMembershipLineageException::emptyEpisodeChain();
+        }
+    }
+
+    private static function assertInitialEpisodeIsConstitutionallyValid(array $episodes): void
+    {
+        if (!$episodes[0]->status->equals(MembershipStatus::ACTIVE)) {
+            throw InvalidMembershipLineageException::invalidInitialEpisode($episodes[0]->status);
+        }
+    }
+
+    private static function assertNoImpossibleTransitions(array $episodes): void
+    {
+        for ($i = 1; $i < count($episodes); $i++) {
+            $prev = $episodes[$i - 1];
+            $curr = $episodes[$i];
+
+            if ($prev->status->equals($curr->status)) {
+                throw InvalidMembershipLineageException::invalidStateTransition();
+            }
+
+            if ($prev->status->equals(MembershipStatus::SUSPENDED) && $curr->status->equals(MembershipStatus::ACTIVE)) {
+                continue;
+            }
+
+            if ($prev->status->equals(MembershipStatus::ACTIVE) && $curr->status->equals(MembershipStatus::SUSPENDED)) {
+                continue;
+            }
+
+            if ($prev->status->equals(MembershipStatus::ACTIVE) && $curr->status->equals(MembershipStatus::TERMINATED)) {
+                continue;
+            }
+
+            if ($prev->status->equals(MembershipStatus::SUSPENDED) && $curr->status->equals(MembershipStatus::TERMINATED)) {
+                continue;
+            }
+
+            if ($prev->status->equals(MembershipStatus::TERMINATED)) {
+                if ($curr->status->equals(MembershipStatus::ACTIVE)) {
+                    throw InvalidMembershipLineageException::invalidStateTransition();
+                }
+                throw InvalidMembershipLineageException::terminatedIsTerminal();
+            }
+
+            throw InvalidMembershipLineageException::invalidStateTransition();
+        }
+    }
+
+    private static function assertTerminalStatesRemainTerminal(array $episodes): void
+    {
+        $terminatedIndex = null;
+
+        for ($i = 0; $i < count($episodes); $i++) {
+            if ($episodes[$i]->status->equals(MembershipStatus::TERMINATED)) {
+                if ($terminatedIndex !== null) {
+                    throw InvalidMembershipLineageException::terminatedIsTerminal();
+                }
+                $terminatedIndex = $i;
+            }
+        }
+
+        if ($terminatedIndex !== null && $terminatedIndex < count($episodes) - 1) {
+            throw InvalidMembershipLineageException::terminatedIsTerminal();
+        }
     }
 
     /**
