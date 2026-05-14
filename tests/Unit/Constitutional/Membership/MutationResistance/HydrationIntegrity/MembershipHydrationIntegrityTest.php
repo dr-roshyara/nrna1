@@ -13,7 +13,7 @@ use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
-use InvalidArgumentException;
+use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidMembershipLineageException;
 use PHPUnit\Framework\TestCase;
 
 final class MembershipHydrationIntegrityTest extends TestCase
@@ -136,7 +136,7 @@ final class MembershipHydrationIntegrityTest extends TestCase
         // CURRENT: loadEpisodesForLineage() doesn't validate chain
         // CONSTITUTIONAL GUARANTEE: "Reconstructed lineage must be logically valid"
 
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(InvalidMembershipLineageException::class);
         $this->expectExceptionMessage('TERMINATED is terminal');
 
         // Create impossible sequence in memory (simulating bad database state)

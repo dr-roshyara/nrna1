@@ -13,6 +13,7 @@ use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidMembershipLineageException;
 use PHPUnit\Framework\TestCase;
 
 final class MembershipLineageConsistencyTest extends TestCase
@@ -25,7 +26,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         // CURRENT: reconstitute() accepts any episode sequence
         // CONSTITUTIONAL GUARANTEE: "Only valid state transitions can exist historically"
 
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidMembershipLineageException::class);
         $this->expectExceptionMessage('Invalid state transition');
 
         $memberId = MemberId::generate();
@@ -85,7 +86,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         // CURRENT: reconstitute() doesn't check for duplicate TERMINATED episodes
         // CONSTITUTIONAL GUARANTEE: "TERMINATED status can appear exactly once"
 
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidMembershipLineageException::class);
         $this->expectExceptionMessage('Invalid state transition');
 
         $memberId = MemberId::generate();
@@ -145,7 +146,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         // CURRENT: Episode chain validation missing
         // CONSTITUTIONAL GUARANTEE: "Suspension requires prior ACTIVE status"
 
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidMembershipLineageException::class);
         $this->expectExceptionMessage('SUSPENDED requires prior ACTIVE');
 
         $memberId = MemberId::generate();
@@ -181,7 +182,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         // CURRENT: reconstitute() doesn't validate restoration rules
         // CONSTITUTIONAL GUARANTEE: "Only SUSPENDED can be restored to ACTIVE"
 
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidMembershipLineageException::class);
         $this->expectExceptionMessage('Invalid state transition');
 
         $memberId = MemberId::generate();
@@ -240,7 +241,7 @@ final class MembershipLineageConsistencyTest extends TestCase
         // CURRENT: No validation of continuous logical progression
         // CONSTITUTIONAL GUARANTEE: "Episode chain represents valid state machine path"
 
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidMembershipLineageException::class);
         $this->expectExceptionMessage('Invalid state transition');
 
         $memberId = MemberId::generate();

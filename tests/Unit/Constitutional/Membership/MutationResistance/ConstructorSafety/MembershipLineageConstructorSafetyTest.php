@@ -13,7 +13,7 @@ use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
-use InvalidArgumentException;
+use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidMembershipLineageException;
 use PHPUnit\Framework\TestCase;
 
 final class MembershipLineageConstructorSafetyTest extends TestCase
@@ -26,7 +26,7 @@ final class MembershipLineageConstructorSafetyTest extends TestCase
         // CURRENT: reconstitute() accepts any array of episodes without validation
         // CONSTITUTIONAL GUARANTEE: "Episode history must form a coherent constitutional chain"
 
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(InvalidMembershipLineageException::class);
         $this->expectExceptionMessage('SUSPENDED requires prior ACTIVE');
 
         $memberId = MemberId::generate();
@@ -86,7 +86,7 @@ final class MembershipLineageConstructorSafetyTest extends TestCase
         // CURRENT: reconstitute() doesn't validate first episode is ACTIVE
         // CONSTITUTIONAL GUARANTEE: "Initial episodes must have valid constitutional status"
 
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(InvalidMembershipLineageException::class);
         $this->expectExceptionMessage('SUSPENDED requires prior ACTIVE');
 
         // Try to reconstitute with SUSPENDED as first episode (invalid)
@@ -119,7 +119,7 @@ final class MembershipLineageConstructorSafetyTest extends TestCase
         // CURRENT: reconstitute() accepts empty episode arrays
         // CONSTITUTIONAL GUARANTEE: "Lineage must always have at least one episode"
 
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(InvalidMembershipLineageException::class);
         $this->expectExceptionMessage('Lineage must have at least one episode');
 
         MembershipLineage::reconstitute(
