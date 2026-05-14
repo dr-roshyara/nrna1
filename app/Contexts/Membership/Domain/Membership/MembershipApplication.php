@@ -75,6 +75,30 @@ final class MembershipApplication
         return $application;
     }
 
+    /**
+     * Reconstitute from persisted state. Does NOT fire domain events.
+     * For use by repository implementations only.
+     */
+    public static function reconstitute(
+        MembershipApplicationId $id,
+        TenantId $tenantId,
+        MemberId $memberId,
+        CommitteeId $committeeId,
+        ApplicationReason $reason,
+        ?string $exceptionJustification,
+        ApplicationStatus $status,
+        \DateTimeImmutable $submittedAt,
+        ?MemberId $reviewedBy,
+        ?\DateTimeImmutable $reviewedAt,
+    ): self {
+        $instance = new self($id, $tenantId, $memberId, $committeeId, $reason, $exceptionJustification);
+        $instance->status      = $status;
+        $instance->submittedAt = $submittedAt;
+        $instance->reviewedBy  = $reviewedBy;
+        $instance->reviewedAt  = $reviewedAt;
+        return $instance;
+    }
+
     public function approve(MemberId $reviewedBy): CommitteeAssociation
     {
         if (!$this->status->canTransitionTo(ApplicationStatus::APPROVED)) {

@@ -95,6 +95,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'facebook_id',
         'voting_ip',              // Voting IP is mass-assignable for audit trail
         'leaderboard_visibility', // Contribution leaderboard privacy preference
+        'residence_geo_unit_id',  // F2: Geographic unit for member context
     ];
 
     /**
