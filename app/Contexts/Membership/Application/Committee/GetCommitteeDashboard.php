@@ -4,22 +4,20 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Application\Committee;
 
-use App\Contexts\Membership\Application\Committee\DTOs\AssignmentDTO;
+use App\Contexts\Committee\Application\ReadModel\CommitteeMembershipReadModelAdapter;
 use App\Contexts\Membership\Application\Committee\DTOs\CommitteeDashboardDTO;
 use App\Contexts\Membership\Application\Membership\Ports\MembershipLineageRepositoryPort;
 use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface;
 use App\Contexts\Membership\Domain\Exceptions\CommitteeNotFoundException;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
-use App\Contexts\Membership\Domain\ValueObjects\RolePath;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
-use App\User;
-use DateTimeImmutable;
 
 final class GetCommitteeDashboard
 {
     public function __construct(
         private readonly CommitteeRepositoryInterface $committeeRepository,
         private readonly MembershipLineageRepositoryPort $membershipLineageRepository,
+        private readonly CommitteeMembershipReadModelAdapter $membershipReadModel,
     ) {}
 
     public function execute(CommitteeId $id, TenantId $tenantId): CommitteeDashboardDTO
@@ -31,31 +29,8 @@ final class GetCommitteeDashboard
             throw new CommitteeNotFoundException($id);
         }
 
-        // Load all active lineages for this committee
-        $lineages = $this->membershipLineageRepository->findActiveLineagesByCommitteeForTenant(
-            $id,
-            $tenantId
-        );
-
-        // Map lineages to AssignmentDTOs with member names resolved
-        $assignments = array_map(function ($lineage) {
-            $currentEpisode = $lineage->current();
-            $user = User::find($currentEpisode->memberId->value());
-            $memberName = $user?->name ?? 'Unknown Member';
-
-            // TODO: Get actual role from application data - for now use default
-            $roleLabel = 'Member';
-            $rolePath = 'member';
-
-            return new AssignmentDTO(
-                id: $lineage->lineageId->value(),
-                memberId: $currentEpisode->memberId->value(),
-                memberName: $memberName,
-                roleLabel: $roleLabel,
-                rolePath: $rolePath,
-                joinedDate: $currentEpisode->associatedAt,
-            );
-        }, $lineages);
+        // Load active members via read model adapter
+        $members = $this->membershipReadModel->getActiveMembers($id);
 
         $level = $committee->levelIndex() ?? 5;
 
@@ -67,7 +42,7 @@ final class GetCommitteeDashboard
             level: $level,
             geoReference: $committee->getGeoUnitId(),
             status: (string) $committee->getStatus(),
-            assignments: $assignments,
+            members: $members,
         );
     }
 }

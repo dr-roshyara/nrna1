@@ -51,6 +51,8 @@ use App\Contexts\Membership\Domain\Repositories\FeeRepositoryInterface;
 use App\Contexts\Membership\Domain\Repositories\CommitteeRepositoryInterface;
 use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeStructureRepositoryInterface;
 use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface as CommitteeAggregateRepositoryInterface;
+use App\Contexts\Committee\Application\ReadModel\CommitteeMembershipReadModelAdapter;
+use App\Contexts\Committee\Infrastructure\Persistence\EloquentCommitteeMembershipReadModelAdapter;
 use App\Contexts\Membership\Domain\Committee\CommitteeCreationPolicy;
 use App\Contexts\Membership\Domain\Committee\Ports\GeoContextPort;
 use App\Contexts\Membership\Domain\Committee\Ports\GeographicJurisdictionProvider;
@@ -106,6 +108,12 @@ class MembershipServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Read model adapters
+        $this->app->bind(
+            CommitteeMembershipReadModelAdapter::class,
+            EloquentCommitteeMembershipReadModelAdapter::class
+        );
+
         // Repository bindings
         $this->app->bind(
             MemberRepositoryInterface::class,
@@ -312,7 +320,9 @@ class MembershipServiceProvider extends ServiceProvider
         // Use case bindings
         $this->app->bind(GetCommitteeDashboard::class, function ($app) {
             return new GetCommitteeDashboard(
-                $app->make(CommitteeRepositoryInterface::class)
+                $app->make(CommitteeRepositoryInterface::class),
+                $app->make(MembershipLineageRepositoryPort::class),
+                $app->make(CommitteeMembershipReadModelAdapter::class),
             );
         });
 

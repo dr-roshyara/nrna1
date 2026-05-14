@@ -9,7 +9,8 @@ final readonly class CommitteeMemberView
     public function __construct(
         public string $memberId,
         public string $displayName,
-        public string $status,
+        public string $statusKey,
+        public string $roleKey,
         public ?\DateTimeImmutable $joinedAt = null,
         public ?\DateTimeImmutable $lastTransitionAt = null,
     ) {}
