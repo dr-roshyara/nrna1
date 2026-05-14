@@ -219,16 +219,15 @@ class MembershipServiceProvider extends ServiceProvider
             \App\Contexts\Membership\Infrastructure\Query\SessionMemberGeoPathProvider::class
         );
 
-        // F1: CRITICAL — Stub bindings MUST be registered BEFORE factory closure below
-        // The factory depends on these stubs being bound
+        // F2: Real implementations — replace F1 stubs
         $this->app->bind(
             \App\Contexts\Membership\Application\Membership\Ports\MembershipApplicationRepositoryPort::class,
-            \App\Contexts\Membership\Infrastructure\Query\StubMembershipApplicationRepository::class
+            \App\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeMembershipApplicationRepository::class
         );
 
         $this->app->bind(
             \App\Contexts\Membership\Application\Membership\Query\Ports\CommitteeGeoPathProviderPort::class,
-            \App\Contexts\Membership\Infrastructure\Query\StubCommitteeGeoPathProvider::class
+            \App\Contexts\Membership\Infrastructure\Query\EloquentCommitteeGeoPathProvider::class
         );
 
         // F1: Phase C eligibility service (single source of truth for eligibility)
