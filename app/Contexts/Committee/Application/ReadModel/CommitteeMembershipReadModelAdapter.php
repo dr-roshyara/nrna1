@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Committee\Application\ReadModel;
 
-use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
 use App\Contexts\Membership\Domain\Member\MemberId;
 
 interface CommitteeMembershipReadModelAdapter
