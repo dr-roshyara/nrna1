@@ -1,1 +1,0 @@
-import{_ as t}from"./Button-OR4lteMf.js";import{A as r,v as s,x as o,D as e,ak as n,al as _}from"./vendor-S9l2cnKT.js";const m={__name:"ActionButton",setup(c){return(a,p)=>(r(),s(t,n(_(a.$attrs)),{default:o(()=>[e(a.$slots,"default")]),_:3},16))}};export{m as _};

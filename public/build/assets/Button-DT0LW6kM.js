@@ -1,0 +1,1 @@
+import{_ as a}from"./Button-D_d0MPzl.js";import{v as r,x as s,D as o,a1 as p,A as n}from"./vendor-Dq8BYBOy.js";const u={__name:"Button",props:{type:{type:String,default:"submit"}},setup(e){return(t,m)=>(n(),r(a,p({type:e.type,variant:"primary"},t.$attrs),{default:s(()=>[o(t.$slots,"default")]),_:3},16,["type"]))}};export{u as _};

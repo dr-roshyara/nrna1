@@ -128,6 +128,9 @@
               </div>
               <div class="portal-card__arrow">→</div>
             </a>
+
+            <!-- Membership & Committees (F1: composition layer) -->
+            <MembershipWidget :membership="membership" />
           </div>
         </div>
       </div>
@@ -432,6 +435,7 @@ import DemoResultsSection from './Partials/DemoResultsSection.vue'
 import SupportSection from './Partials/SupportSection.vue'
 import DemoSetupButton from './Partials/DemoSetupButton.vue'
 import ElectionCard from './Partials/ElectionCard.vue'
+import MembershipWidget from './Partials/MembershipWidget.vue'
 import Button from '@/Components/Button.vue'
 import Card from '@/Components/Card.vue'
 import SectionCard from '@/Components/SectionCard.vue'
@@ -459,6 +463,7 @@ const props = defineProps({
   orgMembers:          { type: Array, default: () => [] },
   elections:           { type: Array, default: () => [] },
   voterMemberships:    { type: Object, default: () => ({}) },
+  membership:          { type: Array, default: () => [] },
 })
 
 const page = usePage()

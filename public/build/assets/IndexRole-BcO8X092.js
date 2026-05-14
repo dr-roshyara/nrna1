@@ -1,1 +1,0 @@
-import{_ as r}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{L as t}from"./vendor-S9l2cnKT.js";const e={props:{roles:Object}};function s(n,c,o,a,p,_){return t(o.roles)}const d=r(e,[["render",s]]);export{d as default};
