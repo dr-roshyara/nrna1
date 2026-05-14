@@ -55,7 +55,7 @@ final class EventReplayIntegrityTest extends TestCase
 
         // Capture the operational state after suspension
         $operationalStatus = $lineage->currentStatus();
-        $operationalActor = $lineage->current()->actorId;
+        $operationalActor = $lineage->current()->actorId?->value();
 
         // CRITICAL: If we were to replay from events, we'd get the same state
         $this->assertTrue($operationalStatus->equals(\App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus::SUSPENDED));

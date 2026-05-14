@@ -11,7 +11,9 @@ use App\Contexts\Membership\Domain\Membership\MembershipLineage;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
+use App\Contexts\Membership\Domain\Membership\ValueObjects\TransitionReason;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\ActorId;
 use Tests\Unit\Constitutional\PureDomainTestCase;
 
 /**
@@ -241,6 +243,9 @@ final class AggregateBoundaryEnforcementTest extends PureDomainTestCase
             associationType: $initialEpisode->associationType,
             associatedAt: $initialEpisode->associatedAt,
             status: MembershipStatus::SUSPENDED,
+            actorId: ActorId::fromString('actor-1'),
+            transitionReason: TransitionReason::fromString('Test suspension'),
+            transitionedAt: $now->modify('+1 day'),
         );
         $lineage->addEpisode($suspended);
 

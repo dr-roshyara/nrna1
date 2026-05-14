@@ -188,8 +188,8 @@ final class TerminateMembershipTest extends PureDomainTestCase
         $terminated = $active->terminate('actor-uuid-002', 'Violation of code of conduct', $now);
 
         $this->assertEquals(MembershipStatus::TERMINATED, $terminated->status);
-        $this->assertEquals('actor-uuid-002', $terminated->actorId);
-        $this->assertEquals('Violation of code of conduct', $terminated->transitionReason);
+        $this->assertEquals('actor-uuid-002', $terminated->actorId?->value());
+        $this->assertEquals('Violation of code of conduct', $terminated->transitionReason?->value());
         $this->assertNotNull($terminated->transitionedAt);
     }
 }

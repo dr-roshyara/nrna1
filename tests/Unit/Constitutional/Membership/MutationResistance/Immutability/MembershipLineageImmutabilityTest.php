@@ -10,6 +10,7 @@ use App\Contexts\Membership\Domain\Membership\ValueObjects\AssociationId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
+use App\Contexts\Membership\Domain\Membership\ValueObjects\TransitionReason;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
@@ -54,7 +55,7 @@ final class MembershipLineageImmutabilityTest extends TestCase
             associatedAt: $now,
             status: MembershipStatus::TERMINATED,
             actorId: null,  // ← Invalid: TERMINATED requires actorId
-            transitionReason: 'Invalid reason',
+            transitionReason: TransitionReason::fromString('Invalid reason'),
             transitionedAt: $now,
         );
     }

@@ -10,6 +10,8 @@ use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidMembershipConstr
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\AssociationId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
+use App\Contexts\Membership\Domain\Membership\ValueObjects\TransitionReason;
+use App\Contexts\Shared\Domain\ValueObjects\ActorId;
 
 final readonly class CommitteeAssociation
 {
@@ -20,33 +22,16 @@ final readonly class CommitteeAssociation
         public ApplicationReason $associationType,
         public \DateTimeImmutable $associatedAt,
         public MembershipStatus $status,
-        public ?string $actorId = null,
-        public ?string $transitionReason = null,
+        public ?ActorId $actorId = null,
+        public ?TransitionReason $transitionReason = null,
         public ?\DateTimeImmutable $transitionedAt = null,
     ) {
-        if ($status->equals(MembershipStatus::SUSPENDED)) {
-            if ($actorId === null) {
-                throw InvalidMembershipConstructionException::suspendedRequiresActorId();
-            }
-            if ($transitionReason === null) {
-                throw InvalidMembershipConstructionException::suspendedRequiresTransitionReason();
-            }
-            if ($transitionedAt === null) {
-                throw InvalidMembershipConstructionException::suspendedRequiresTimestamp();
-            }
-        }
-
-        if ($status->equals(MembershipStatus::TERMINATED)) {
-            if ($actorId === null) {
-                throw InvalidMembershipConstructionException::terminatedRequiresActorId();
-            }
-            if ($transitionReason === null) {
-                throw InvalidMembershipConstructionException::terminatedRequiresTransitionReason();
-            }
-            if ($transitionedAt === null) {
-                throw InvalidMembershipConstructionException::terminatedRequiresTimestamp();
-            }
-        }
+        MembershipTransitionPolicy::assertAuditRequirementsMet(
+            $status,
+            $actorId,
+            $transitionReason,
+            $transitionedAt,
+        );
     }
 
     /**
@@ -75,6 +60,9 @@ final readonly class CommitteeAssociation
      * Explicit rehydration path — semantically distinct from new creation.
      * Applies the same construction invariants: the constitutional system
      * rejects invalid DB state as a hard error.
+     *
+     * TRUST BOUNDARY: Persistence path only.
+     * String parameters are converted to typed VOs for internal consistency.
      */
     public static function rehydrate(
         AssociationId $associationId,
@@ -94,8 +82,8 @@ final readonly class CommitteeAssociation
             associationType: $associationType,
             associatedAt: $associatedAt,
             status: $status,
-            actorId: $actorId,
-            transitionReason: $transitionReason,
+            actorId: $actorId !== null ? ActorId::fromString($actorId) : null,
+            transitionReason: $transitionReason !== null ? TransitionReason::fromString($transitionReason) : null,
             transitionedAt: $transitionedAt,
         );
     }
@@ -117,8 +105,8 @@ final readonly class CommitteeAssociation
             associationType: $this->associationType,
             associatedAt: $this->associatedAt,
             status: MembershipStatus::SUSPENDED,
-            actorId: $actorId,
-            transitionReason: $reason,
+            actorId: ActorId::fromString($actorId),
+            transitionReason: TransitionReason::fromString($reason),
             transitionedAt: $at,
         );
     }
@@ -140,7 +128,7 @@ final readonly class CommitteeAssociation
             associationType: $this->associationType,
             associatedAt: $this->associatedAt,
             status: MembershipStatus::ACTIVE,
-            actorId: $actorId,
+            actorId: ActorId::fromString($actorId),
             transitionReason: null,
             transitionedAt: $at,
         );
@@ -163,8 +151,8 @@ final readonly class CommitteeAssociation
             associationType: $this->associationType,
             associatedAt: $this->associatedAt,
             status: MembershipStatus::TERMINATED,
-            actorId: $actorId,
-            transitionReason: $reason,
+            actorId: ActorId::fromString($actorId),
+            transitionReason: TransitionReason::fromString($reason),
             transitionedAt: $at,
         );
     }

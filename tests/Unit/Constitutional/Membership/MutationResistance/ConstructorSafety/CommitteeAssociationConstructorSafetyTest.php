@@ -9,8 +9,10 @@ use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidMembershipConstr
 use App\Contexts\Membership\Domain\Membership\ValueObjects\AssociationId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
+use App\Contexts\Membership\Domain\Membership\ValueObjects\TransitionReason;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
+use App\Contexts\Shared\Domain\ValueObjects\ActorId;
 use PHPUnit\Framework\TestCase;
 
 final class CommitteeAssociationConstructorSafetyTest extends TestCase
@@ -34,7 +36,7 @@ final class CommitteeAssociationConstructorSafetyTest extends TestCase
             associatedAt: new \DateTimeImmutable(),
             status: MembershipStatus::SUSPENDED,
             actorId: null,  // ← ATTACK: Missing required audit field
-            transitionReason: 'Disciplinary action',
+            transitionReason: TransitionReason::fromString('Disciplinary action'),
             transitionedAt: new \DateTimeImmutable(),
         );
     }
@@ -57,7 +59,7 @@ final class CommitteeAssociationConstructorSafetyTest extends TestCase
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable(),
             status: MembershipStatus::TERMINATED,
-            actorId: 'actor-uuid-001',
+            actorId: ActorId::fromString('actor-uuid-001'),
             transitionReason: null,  // ← ATTACK: Missing justification
             transitionedAt: new \DateTimeImmutable(),
         );
@@ -82,7 +84,7 @@ final class CommitteeAssociationConstructorSafetyTest extends TestCase
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable(),
             status: MembershipStatus::SUSPENDED,
-            actorId: 'actor-uuid-001',  // ← actorId IS provided
+            actorId: ActorId::fromString('actor-uuid-001'),  // ← actorId IS provided
             transitionReason: null,     // ← ATTACK: reason missing
             transitionedAt: new \DateTimeImmutable(),
         );
@@ -107,7 +109,7 @@ final class CommitteeAssociationConstructorSafetyTest extends TestCase
             associatedAt: new \DateTimeImmutable(),
             status: MembershipStatus::TERMINATED,
             actorId: null,  // ← ATTACK: Missing actor
-            transitionReason: 'Some reason',
+            transitionReason: TransitionReason::fromString('Some reason'),
             transitionedAt: new \DateTimeImmutable(),
         );
     }
@@ -130,8 +132,8 @@ final class CommitteeAssociationConstructorSafetyTest extends TestCase
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable(),
             status: MembershipStatus::SUSPENDED,
-            actorId: 'actor-uuid-001',
-            transitionReason: 'Disciplinary action',
+            actorId: ActorId::fromString('actor-uuid-001'),
+            transitionReason: TransitionReason::fromString('Disciplinary action'),
             transitionedAt: null,  // ← ATTACK: Missing required timestamp
         );
     }

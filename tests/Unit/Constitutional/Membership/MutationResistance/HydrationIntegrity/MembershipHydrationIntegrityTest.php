@@ -10,10 +10,13 @@ use App\Contexts\Membership\Domain\Membership\ValueObjects\AssociationId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
+use App\Contexts\Membership\Domain\Membership\ValueObjects\TransitionReason;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\ActorId;
 use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidMembershipLineageException;
+use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidMembershipConstructionException;
 use PHPUnit\Framework\TestCase;
 
 final class MembershipHydrationIntegrityTest extends TestCase
@@ -26,27 +29,30 @@ final class MembershipHydrationIntegrityTest extends TestCase
         // CURRENT: hydrateEpisodes() doesn't validate consistency
         // CONSTITUTIONAL GUARANTEE: "Hydration validates consistency with domain rules"
 
-        $this->expectException(\TypeError::class);
-        $this->expectExceptionMessageMatches('/memberId/');
+        $this->expectException(InvalidMembershipConstructionException::class);
+        $this->expectExceptionMessageMatches('/actorId/');
 
         // Simulate database state: SUSPENDED without actor
         $invalidEpisode = new CommitteeAssociation(
             associationId: AssociationId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
             status: MembershipStatus::SUSPENDED,
             actorId: null,  // ← ATTACK: Database contains null actor
-            transitionReason: 'Some reason',
+            transitionReason: TransitionReason::fromString('Some reason'),
             transitionedAt: new \DateTimeImmutable('2026-05-14 11:00:00'),
         );
 
         // This should fail during hydration
+        $memberId = $invalidEpisode->memberId;
+        $committeeId = $invalidEpisode->committeeId;
+
         MembershipLineage::reconstitute(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: $memberId,
+            committeeId: $committeeId,
             tenantId: TenantId::fromString('test-tenant'),
             episodes: [$invalidEpisode],
         );
@@ -60,27 +66,30 @@ final class MembershipHydrationIntegrityTest extends TestCase
         // CURRENT: No validation during hydration
         // CONSTITUTIONAL GUARANTEE: "Termination always has documented reason"
 
-        $this->expectException(\TypeError::class);
-        $this->expectExceptionMessageMatches('/memberId/');
+        $this->expectException(InvalidMembershipConstructionException::class);
+        $this->expectExceptionMessageMatches('/transitionReason/');
 
         // Simulate database state: TERMINATED without reason
         $invalidEpisode = new CommitteeAssociation(
             associationId: AssociationId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: MemberId::generate(),
+            committeeId: CommitteeId::generate(),
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable('2026-05-14 10:00:00'),
             status: MembershipStatus::TERMINATED,
-            actorId: 'actor-uuid-001',
+            actorId: ActorId::fromString('actor-uuid-001'),
             transitionReason: null,  // ← ATTACK: Database contains null reason
             transitionedAt: new \DateTimeImmutable('2026-05-14 11:00:00'),
         );
 
         // This should fail during hydration
+        $memberId = $invalidEpisode->memberId;
+        $committeeId = $invalidEpisode->committeeId;
+
         MembershipLineage::reconstitute(
             lineageId: LineageId::generate(),
-            memberId: 'member-uuid',
-            committeeId: 'committee-uuid',
+            memberId: $memberId,
+            committeeId: $committeeId,
             tenantId: TenantId::fromString('test-tenant'),
             episodes: [$invalidEpisode],
         );

@@ -10,9 +10,11 @@ use App\Contexts\Membership\Domain\Membership\ValueObjects\AssociationId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason;
+use App\Contexts\Membership\Domain\Membership\ValueObjects\TransitionReason;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\ActorId;
 use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidMembershipLineageException;
 use PHPUnit\Framework\TestCase;
 
@@ -40,8 +42,8 @@ final class MembershipLineageConstructorSafetyTest extends TestCase
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable('2026-01-01 10:00:00'),
             status: MembershipStatus::SUSPENDED,
-            actorId: 'actor-001',
-            transitionReason: 'First suspension',
+            actorId: ActorId::fromString('actor-001'),
+            transitionReason: TransitionReason::fromString('First suspension'),
             transitionedAt: new \DateTimeImmutable('2026-01-01 11:00:00'),
         );
 
@@ -64,8 +66,8 @@ final class MembershipLineageConstructorSafetyTest extends TestCase
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable('2026-01-01 10:00:00'),
             status: MembershipStatus::SUSPENDED,  // ← ATTACK: Cannot suspend again
-            actorId: 'actor-002',
-            transitionReason: 'Second suspension',
+            actorId: ActorId::fromString('actor-002'),
+            transitionReason: TransitionReason::fromString('Second suspension'),
             transitionedAt: new \DateTimeImmutable('2026-01-01 12:00:00'),
         );
 
@@ -97,8 +99,8 @@ final class MembershipLineageConstructorSafetyTest extends TestCase
             associationType: ApplicationReason::RESIDENCE,
             associatedAt: new \DateTimeImmutable(),
             status: MembershipStatus::SUSPENDED,  // ← ATTACK: Cannot start suspended
-            actorId: 'actor-uuid',
-            transitionReason: 'Invalid initial state',
+            actorId: ActorId::fromString('actor-uuid'),
+            transitionReason: TransitionReason::fromString('Invalid initial state'),
             transitionedAt: new \DateTimeImmutable(),
         );
 

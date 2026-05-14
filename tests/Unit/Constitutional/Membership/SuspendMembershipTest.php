@@ -127,8 +127,8 @@ final class SuspendMembershipTest extends PureDomainTestCase
         $suspended = $active->suspend('actor-uuid-001', 'Disciplinary action', $now);
 
         $this->assertEquals(MembershipStatus::SUSPENDED, $suspended->status);
-        $this->assertEquals('actor-uuid-001', $suspended->actorId);
-        $this->assertEquals('Disciplinary action', $suspended->transitionReason);
+        $this->assertEquals('actor-uuid-001', $suspended->actorId?->value());
+        $this->assertEquals('Disciplinary action', $suspended->transitionReason?->value());
         $this->assertNotNull($suspended->transitionedAt);
         $this->assertEquals(MembershipStatus::ACTIVE, $active->status); // original unchanged
     }

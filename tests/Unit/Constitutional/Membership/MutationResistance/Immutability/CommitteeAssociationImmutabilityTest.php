@@ -80,8 +80,8 @@ final class CommitteeAssociationImmutabilityTest extends TestCase
 
         // New instance must have new state
         $this->assertTrue($suspended->status->equals(MembershipStatus::SUSPENDED));
-        $this->assertEquals('actor-uuid-001', $suspended->actorId);
-        $this->assertEquals('Disciplinary action', $suspended->transitionReason);
+        $this->assertEquals('actor-uuid-001', $suspended->actorId?->value());
+        $this->assertEquals('Disciplinary action', $suspended->transitionReason?->value());
     }
 
     /** @test */
