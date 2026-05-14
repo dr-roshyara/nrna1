@@ -7,19 +7,24 @@ namespace App\Contexts\Membership\Domain\Repositories;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Domain\Committee\Committee;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId as CanonicalCommitteeId;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeType;
 use App\Contexts\Membership\Domain\ValueObjects\GeoReference;
+use App\Contexts\Membership\Domain\Shared\Identity\CommitteeIdBridge;
 
 interface CommitteeRepositoryInterface
 {
     /**
      * Find committee by ID for specific tenant.
      *
-     * @param CommitteeId $id Committee identifier
+     * TEMPORARY: Accepts both legacy and canonical CommitteeId types during migration.
+     * After migration complete, will accept only CanonicalCommitteeId.
+     *
+     * @param CommitteeId|CanonicalCommitteeId $id Committee identifier
      * @param TenantId $tenantId Tenant identifier
      * @return Committee|null Returns null if not found
      */
-    public function findForTenant(CommitteeId $id, TenantId $tenantId): ?Committee;
+    public function findForTenant(CommitteeId|CanonicalCommitteeId $id, TenantId $tenantId): ?Committee;
 
     /**
      * Save committee for specific tenant (cascades assignments).
@@ -61,12 +66,13 @@ interface CommitteeRepositoryInterface
      * Check if committee exists for tenant.
      *
      * Used for uniqueness validation before creation.
+     * TEMPORARY: Accepts both legacy and canonical CommitteeId types during migration.
      *
-     * @param CommitteeId $id Committee identifier
+     * @param CommitteeId|CanonicalCommitteeId $id Committee identifier
      * @param TenantId $tenantId Tenant identifier
      * @return bool True if committee exists for this tenant
      */
-    public function existsForTenant(CommitteeId $id, TenantId $tenantId): bool;
+    public function existsForTenant(CommitteeId|CanonicalCommitteeId $id, TenantId $tenantId): bool;
 
     /**
      * Delete committee for specific tenant.
@@ -76,10 +82,12 @@ interface CommitteeRepositoryInterface
      * - Must validate tenant ownership before deletion
      * - Typically soft delete via status change (CommitteeStatus::DELETED)
      *
-     * @param CommitteeId $id Committee identifier
+     * TEMPORARY: Accepts both legacy and canonical CommitteeId types during migration.
+     *
+     * @param CommitteeId|CanonicalCommitteeId $id Committee identifier
      * @param TenantId $tenantId Tenant identifier
      */
-    public function deleteForTenant(CommitteeId $id, TenantId $tenantId): void;
+    public function deleteForTenant(CommitteeId|CanonicalCommitteeId $id, TenantId $tenantId): void;
 
     /**
      * Find all committees for tenant.

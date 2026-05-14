@@ -10,6 +10,8 @@ use App\Contexts\Membership\Domain\Committee\CommitteeStructureRegistry;
 use App\Contexts\Membership\Domain\Repositories\CommitteeRepositoryInterface;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeAssignmentId;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId as CanonicalCommitteeId;
+use App\Contexts\Membership\Domain\Shared\Identity\CommitteeIdBridge;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeName;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeStatus;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeType;
@@ -25,8 +27,11 @@ use DateTimeImmutable;
 
 final class EloquentCommitteeRepository implements CommitteeRepositoryInterface
 {
-    public function findForTenant(CommitteeId $id, TenantId $tenantId): ?Committee
+    public function findForTenant(CommitteeId|CanonicalCommitteeId $id, TenantId $tenantId): ?Committee
     {
+        // Normalize to canonical type (temporary bridge for dual-type support)
+        $id = CommitteeIdBridge::toCanonical($id);
+
         $model = CommitteeModel::withoutGlobalScopes()
             ->where('id', $id->value())
             ->where('organisation_id', $tenantId->value())
@@ -200,8 +205,11 @@ final class EloquentCommitteeRepository implements CommitteeRepositoryInterface
             ->all();
     }
 
-    public function existsForTenant(CommitteeId $id, TenantId $tenantId): bool
+    public function existsForTenant(CommitteeId|CanonicalCommitteeId $id, TenantId $tenantId): bool
     {
+        // Normalize to canonical type (temporary bridge for dual-type support)
+        $id = CommitteeIdBridge::toCanonical($id);
+
         return CommitteeModel::withoutGlobalScopes()
             ->where('id', $id->value())
             ->where('organisation_id', $tenantId->value())
@@ -209,8 +217,11 @@ final class EloquentCommitteeRepository implements CommitteeRepositoryInterface
             ->exists();
     }
 
-    public function deleteForTenant(CommitteeId $id, TenantId $tenantId): void
+    public function deleteForTenant(CommitteeId|CanonicalCommitteeId $id, TenantId $tenantId): void
     {
+        // Normalize to canonical type (temporary bridge for dual-type support)
+        $id = CommitteeIdBridge::toCanonical($id);
+
         CommitteeModel::withoutGlobalScopes()
             ->where('id', $id->value())
             ->where('organisation_id', $tenantId->value())

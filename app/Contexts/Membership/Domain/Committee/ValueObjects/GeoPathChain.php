@@ -56,4 +56,13 @@ final readonly class GeoPathChain
         }
         return str_starts_with($this->path, $pathPrefix);
     }
+
+    /**
+     * Check if the geographic path is empty (no geo context).
+     * Empty paths are ineligible for geographic committees.
+     */
+    public function isEmpty(): bool
+    {
+        return $this->path === '';
+    }
 }
