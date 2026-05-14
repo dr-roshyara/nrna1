@@ -1,0 +1,14 @@
+{
+  "committee": {
+    "members": {
+      "status": {
+        "active": "सक्रिय",
+        "suspended": "निलम्बित",
+        "terminated": "समाप्त"
+      },
+      "role": {
+        "member": "सदस्य"
+      }
+    }
+  }
+}

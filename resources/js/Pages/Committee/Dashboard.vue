@@ -82,7 +82,7 @@
               <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-2a6 6 0 0112 0v2zm0 0h6v-2a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
             </div>
             <div class="text-center">
-              <p class="text-5xl font-black text-primary-600 mb-1">{{ assignments.length }}</p>
+              <p class="text-5xl font-black text-primary-600 mb-1">{{ members.length }}</p>
               <p class="text-sm text-neutral-600 font-medium">Active Office Bearers</p>
             </div>
           </div>
@@ -100,30 +100,36 @@
           </div>
         </div>
 
-        <!-- Active Assignments Table -->
+        <!-- Active Members Table -->
         <div class="bg-white rounded-xl border border-neutral-200 overflow-hidden shadow-sm mb-8">
           <div class="px-8 py-6 border-b border-neutral-100 flex items-center gap-3">
             <div class="h-1 w-12 bg-gradient-to-r from-primary-600 to-primary-400 rounded-full"></div>
             <h3 class="text-lg font-bold text-neutral-900">Active Office Bearers</h3>
           </div>
-          <div v-if="assignments.length > 0" class="overflow-x-auto">
+          <div v-if="members.length > 0" class="overflow-x-auto">
             <table class="w-full text-sm">
               <thead class="bg-neutral-50 border-b border-neutral-100">
                 <tr>
                   <th class="px-8 py-4 text-left text-xs font-semibold uppercase tracking-wider text-neutral-600">Member</th>
                   <th class="px-8 py-4 text-left text-xs font-semibold uppercase tracking-wider text-neutral-600">Role</th>
+                  <th class="px-8 py-4 text-left text-xs font-semibold uppercase tracking-wider text-neutral-600">Status</th>
                   <th class="px-8 py-4 text-left text-xs font-semibold uppercase tracking-wider text-neutral-600">Joined Date</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-neutral-100">
-                <tr v-for="assignment in assignments" :key="assignment.id" class="hover:bg-neutral-50 transition-colors duration-200">
-                  <td class="px-8 py-4 font-medium text-neutral-900">{{ assignment.member_name }}</td>
+                <tr v-for="member in members" :key="member.member_id" class="hover:bg-neutral-50 transition-colors duration-200">
+                  <td class="px-8 py-4 font-medium text-neutral-900">{{ member.display_name }}</td>
                   <td class="px-8 py-4">
                     <span class="inline-flex items-center rounded-full border border-primary-200 bg-primary-50 px-3 py-1 text-xs font-semibold text-primary-700">
-                      {{ formatRole(assignment.role) }}
+                      {{ $t(member.role_key) }}
                     </span>
                   </td>
-                  <td class="px-8 py-4 text-neutral-600">{{ formatDate(assignment.joined_date) }}</td>
+                  <td class="px-8 py-4">
+                    <span class="inline-flex items-center rounded-full border border-success-200 bg-success-50 px-3 py-1 text-xs font-semibold text-success-700">
+                      {{ $t(member.status_key) }}
+                    </span>
+                  </td>
+                  <td class="px-8 py-4 text-neutral-600">{{ formatDate(member.joined_date) }}</td>
                 </tr>
               </tbody>
             </table>
@@ -177,7 +183,7 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-  assignments: {
+  members: {
     type: Array,
     default: () => [],
   },
@@ -194,18 +200,6 @@ const formatCommitteeType = (type) => {
     student: 'Student Wing',
   };
   return types[type] || type;
-};
-
-const formatRole = (role) => {
-  const roles = {
-    chairperson: 'Chairperson',
-    vice_chairperson: 'Vice Chairperson',
-    secretary: 'Secretary',
-    treasurer: 'Treasurer',
-    coordinator: 'Coordinator',
-    member: 'Member',
-  };
-  return roles[role] || role;
 };
 
 const formatDate = (date) => {
