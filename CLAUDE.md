@@ -370,6 +370,32 @@ In an era of increasing remote participation, the ability to conduct **secure, v
 
 ---
 
+## 🗂️ **Development Practices**
+
+### **Plan Storage Convention**
+
+Implementation plans are stored in `./claude/plans/` with datetime-stamped filenames.
+
+**Naming Convention:**
+```
+./claude/plans/YYYYMMDD-HHMM-<phase-or-task-name>.md
+```
+
+**Example:**
+```
+./claude/plans/20260514-1200-phase-b-corrections.md
+./claude/plans/20260514-1430-voting-eligibility-policy.md
+./claude/plans/20260515-0900-elections-gateway-integration.md
+```
+
+**Purpose:**
+- Each major implementation phase gets its own plan document
+- Datetime stamps preserve chronological history
+- Plans are committed to git alongside implementation
+- Enables easy reference in commit messages: "see ./claude/plans/20260514-1200-..."
+
+---
+
 ## 📝 **Project Mantra**
 
 > *"Vote with confidence, audit with certainty, remain completely anonymous."*
