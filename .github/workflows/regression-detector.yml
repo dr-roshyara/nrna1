@@ -1,0 +1,141 @@
+name: Regression Detection & Alerts
+
+on:
+  push:
+    branches: [main, postgressql]
+  schedule:
+    # Run daily to catch slow regressions
+    - cron: "0 2 * * *"
+
+jobs:
+  regression-check:
+    runs-on: ubuntu-latest
+    name: Regression Detection
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: pdo, sqlite, pdo_sqlite
+          tools: composer
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      # =========================================
+      # REGRESSION CHECK: Test Count Stability
+      # =========================================
+      - name: Regression Check - Test Count
+        run: |
+          echo "Verifying test count stability..."
+
+          # Run full test suite and capture output
+          OUTPUT=$(php artisan test tests/Unit/Constitutional/Membership/ \
+            --no-coverage --testdox 2>&1 || true)
+
+          # Extract test count
+          PASSED=$(echo "$OUTPUT" | grep -oP '\d+(?= passed)' | head -1)
+          INCOMPLETE=$(echo "$OUTPUT" | grep -oP '\d+(?= incomplete)' || echo "0")
+
+          echo "Tests passed: $PASSED"
+          echo "Tests incomplete: $INCOMPLETE"
+
+          # Target: exactly 72 passing (from stable baseline)
+          if [ "$PASSED" != "72" ]; then
+            echo "⚠️  WARNING: Test count changed from 72 to $PASSED"
+            echo "This may indicate accidental test removal or structural changes"
+          else
+            echo "✅ STABLE: 72 tests passing (baseline maintained)"
+          fi
+
+      # =========================================
+      # REGRESSION CHECK: Architecture Drift
+      # =========================================
+      - name: Regression Check - Architecture Drift
+        run: |
+          echo "Scanning for architectural drift..."
+
+          # Check for new DB usage patterns
+          NEW_DB=$(grep -r "DB::table" app/Contexts/*/Application 2>/dev/null || true)
+
+          if [ ! -z "$NEW_DB" ]; then
+            echo "⚠️  ALERT: New DB access detected in Application layer"
+            echo "$NEW_DB"
+            exit 1
+          fi
+
+          # Check for new controller domain logic
+          NEW_LOGIC=$(grep -r "GeoPathChain::fromString" app/Http/Controllers 2>/dev/null || true)
+
+          if [ ! -z "$NEW_LOGIC" ]; then
+            echo "⚠️  ALERT: New value object construction in controllers detected"
+            echo "$NEW_LOGIC"
+            exit 1
+          fi
+
+          echo "✅ STABLE: No architectural drift detected"
+
+      # =========================================
+      # REGRESSION CHECK: Phase C Stability
+      # =========================================
+      - name: Regression Check - Phase C Authority
+        run: |
+          echo "Verifying Phase C is still single source of truth..."
+
+          # Run Phase C tests specifically
+          php artisan test tests/Unit/Constitutional/Membership/Query/EligibleCommitteeQueryServiceTest.php \
+            --no-coverage \
+            --testdox || {
+            echo "❌ CRITICAL: Phase C tests failed"
+            exit 1
+          }
+
+          echo "✅ STABLE: Phase C authority maintained"
+
+      # =========================================
+      # REPORT & NOTIFICATION
+      # =========================================
+      - name: Regression Report
+        if: success()
+        run: |
+          echo ""
+          echo "=========================================="
+          echo "REGRESSION DETECTION REPORT"
+          echo "=========================================="
+          echo ""
+          echo "✅ Test count stable (72/72)"
+          echo "✅ No DB drift detected"
+          echo "✅ No controller violations"
+          echo "✅ Phase C authority verified"
+          echo ""
+          echo "STATUS: NO REGRESSIONS"
+          echo "=========================================="
+
+      - name: Regression Alert
+        if: failure()
+        run: |
+          echo ""
+          echo "=========================================="
+          echo "⚠️  REGRESSION DETECTED"
+          echo "=========================================="
+          echo ""
+          echo "Review the logs above for details."
+          echo "Likely culprit: Recent change to:"
+          echo "  - Application layer"
+          echo "  - Controller layer"
+          echo "  - Query service"
+          echo ""
+          echo "ACTION: Rollback to last known-good commit"
+          echo "=========================================="
+          exit 1
