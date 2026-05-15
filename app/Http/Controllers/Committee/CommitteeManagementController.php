@@ -5,15 +5,19 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Committee;
 
 use App\Contexts\Geography\Application\DTOs\CascaderConfigDTO;
+use App\Contexts\Membership\Application\Committee\CommitteeSlugAvailabilityService;
 use App\Contexts\Membership\Application\Committee\DTOs\UpdateCommitteeDetailsCommand;
 use App\Contexts\Membership\Application\Committee\GetCommitteeDashboard;
 use App\Contexts\Membership\Application\Committee\UpdateCommitteeDetails;
+use App\Contexts\Membership\Domain\Committee\Exceptions\InvalidCommitteeSlugException;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeSlug;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
 use App\Http\Requests\Committee\StoreCommitteeRequest;
 use App\Contexts\Membership\Infrastructure\Models\CommitteeModel;
 use App\Models\Organisation;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Http\Controllers\Controller;
@@ -197,5 +201,31 @@ final class CommitteeManagementController extends Controller
             'exists' => $exists,
             'code' => strtoupper($code),
         ]);
+    }
+
+    public function checkSlugExists(
+        Organisation $organisation,
+        CommitteeSlugAvailabilityService $service,
+        Request $request
+    ): JsonResponse {
+        $this->authorize('manageCommittee', $organisation);
+
+        $rawSlug = $request->query('value', '');
+
+        try {
+            $slug = CommitteeSlug::fromString($rawSlug);
+        } catch (InvalidCommitteeSlugException $e) {
+            return response()->json([
+                'exists' => false,
+                'reserved' => false,
+                'slug' => $rawSlug,
+                'suggestions' => [],
+                'error_key' => $e->getMessage(),
+            ], 422);
+        }
+
+        $result = $service->check($organisation->id, $slug);
+
+        return response()->json($result->toArray());
     }
 }

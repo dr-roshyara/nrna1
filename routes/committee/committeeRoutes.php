@@ -31,6 +31,10 @@ Route::middleware(['auth', 'verified'])->prefix('organisations/{organisation}')-
     Route::get('/api/committees/check-code/{code}', [CommitteeManagementController::class, 'checkCodeExists'])
         ->name('committee.check-code');
 
+    // Committee Slug Validation (API endpoint)
+    Route::get('/api/committees/check-slug', [CommitteeManagementController::class, 'checkSlugExists'])
+        ->name('committee.check-slug');
+
     // Committee List & Dashboard
     Route::get('/committees', [CommitteeManagementController::class, 'index'])
         ->name('committees.index');
