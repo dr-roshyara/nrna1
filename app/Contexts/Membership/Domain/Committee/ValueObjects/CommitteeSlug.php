@@ -10,8 +10,9 @@ use Illuminate\Support\Str;
 final readonly class CommitteeSlug
 {
     private const RESERVED = [
-        'admin', 'api', 'dashboard', 'settings', 'create',
-        'new', 'edit', 'delete', 'system', 'root', 'login',
+        'admin', 'api', 'dashboard', 'settings', 'committee',
+        'committees', 'create', 'new', 'edit', 'delete', 'system',
+        'root', 'login', 'logout', 'register',
     ];
 
     private function __construct(private string $value) {}

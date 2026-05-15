@@ -37,6 +37,7 @@ final class CommitteeSlugAvailabilityServiceTest extends TestCase
         CommitteeModel::factory()->create([
             'organisation_id' => $organisation->id,
             'slug' => 'nrna-icc',
+            'code' => 'ICC',
         ]);
         $slug = CommitteeSlug::fromString('nrna-icc');
 
@@ -52,6 +53,7 @@ final class CommitteeSlugAvailabilityServiceTest extends TestCase
         CommitteeModel::factory()->create([
             'organisation_id' => $organisation->id,
             'slug' => 'nrna-icc',
+            'code' => 'ICC',
         ]);
         $slug = CommitteeSlug::fromString('nrna-icc');
 
@@ -68,10 +70,12 @@ final class CommitteeSlugAvailabilityServiceTest extends TestCase
         CommitteeModel::factory()->create([
             'organisation_id' => $organisation->id,
             'slug' => 'nrna-icc',
+            'code' => 'ICC1',
         ]);
         CommitteeModel::factory()->create([
             'organisation_id' => $organisation->id,
             'slug' => 'nrna-icc-2',
+            'code' => 'ICC2',
         ]);
         $slug = CommitteeSlug::fromString('nrna-icc');
 
@@ -117,6 +121,7 @@ final class CommitteeSlugAvailabilityServiceTest extends TestCase
         CommitteeModel::factory()->create([
             'organisation_id' => $organisation->id,
             'slug' => 'test',
+            'code' => 'TEST',
         ]);
         $slug = CommitteeSlug::fromString('test');
 
@@ -135,6 +140,7 @@ final class CommitteeSlugAvailabilityServiceTest extends TestCase
             'organisation_id' => $org1->id,
             'name' => 'NRNA ICC',
             'slug' => 'nrna-icc',
+            'code' => 'ICC',
         ]);
 
         $slug = CommitteeSlug::fromString('nrna-icc');
@@ -146,5 +152,22 @@ final class CommitteeSlugAvailabilityServiceTest extends TestCase
         // But taken in org1
         $result = $this->service->check($org1->id, $slug);
         $this->assertTrue($result->exists);
+    }
+
+    public function test_check_provides_error_key_for_taken_slug(): void
+    {
+        $organisation = \App\Models\Organisation::factory()->create();
+        CommitteeModel::factory()->create([
+            'organisation_id' => $organisation->id,
+            'slug' => 'nrna-icc',
+            'code' => 'ICC',
+        ]);
+        $slug = CommitteeSlug::fromString('nrna-icc');
+
+        $result = $this->service->check($organisation->id, $slug);
+
+        $this->assertTrue($result->exists);
+        $this->assertFalse($result->reserved);
+        $this->assertSame('committee.slug.taken', $result->errorKey);
     }
 }

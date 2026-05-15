@@ -10,9 +10,10 @@ use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeSlug;
 
 final class CommitteeSlugAvailabilityService
 {
+    // Defense-in-depth: VO is canonical enforcer, this is defensive validation
     private const RESERVED = [
         'admin', 'api', 'dashboard', 'settings', 'committee',
-        'committees', 'create', 'edit', 'delete', 'system',
+        'committees', 'create', 'new', 'edit', 'delete', 'system',
         'root', 'login', 'logout', 'register',
     ];
 
@@ -26,20 +27,32 @@ final class CommitteeSlugAvailabilityService
 
         if ($this->isReserved($slugValue)) {
             return new SlugAvailabilityResult(
-                exists: true,
+                exists: false,
                 reserved: true,
                 slug: $slugValue,
                 suggestions: [],
+                errorKey: 'committee.slug.reserved',
             );
         }
 
         $exists = $this->repository->slugExists($tenantId, $slugValue);
 
+        if ($exists) {
+            return new SlugAvailabilityResult(
+                exists: true,
+                reserved: false,
+                slug: $slugValue,
+                suggestions: $this->suggest($tenantId, $slugValue),
+                errorKey: 'committee.slug.taken',
+            );
+        }
+
         return new SlugAvailabilityResult(
-            exists: $exists,
+            exists: false,
             reserved: false,
             slug: $slugValue,
-            suggestions: $exists ? $this->suggest($tenantId, $slugValue) : [],
+            suggestions: [],
+            errorKey: null,
         );
     }
 
@@ -56,7 +69,7 @@ final class CommitteeSlugAvailabilityService
 
         for ($i = 2; $i <= 15 && count($suggestions) < 3; $i++) {
             $candidate = $base . '-' . $i;
-            if (!isset($takenSet[$candidate])) {
+            if (!isset($takenSet[$candidate]) && !$this->isReserved($candidate)) {
                 $suggestions[] = $candidate;
             }
         }
@@ -64,7 +77,7 @@ final class CommitteeSlugAvailabilityService
         foreach (['global', 'central', 'executive', 'main'] as $suffix) {
             if (count($suggestions) >= 3) break;
             $candidate = $base . '-' . $suffix;
-            if (!isset($takenSet[$candidate])) {
+            if (!isset($takenSet[$candidate]) && !$this->isReserved($candidate)) {
                 $suggestions[] = $candidate;
             }
         }
