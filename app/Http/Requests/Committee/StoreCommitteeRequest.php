@@ -32,6 +32,7 @@ final class StoreCommitteeRequest extends FormRequest
                 Rule::unique('committees', 'slug')
                     ->where('organisation_id', $this->route('organisation')->id),
             ],
+            'type' => 'required|string|in:central,province,district,ward,youth_wing,women_wing,student_wing,diaspora,geographic',
             'governanceLevel' => 'required|integer|between:0,100',
             'geoUnitId' => 'required|integer|exists:geo_administrative_units,id',
         ];

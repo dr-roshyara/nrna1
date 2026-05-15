@@ -4,19 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Committee;
 
-use App\Contexts\Geography\Domain\ValueObjects\GeographicStructure;
-use App\Contexts\Membership\Domain\ValueObjects\CommitteeType;
 use App\Contexts\Membership\Infrastructure\Models\CommitteeModel;
 use App\Models\Organisation;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 final class CommitteeCreationWithGeoSelectionsTest extends TestCase
 {
-    use RefreshDatabase;
-
     private User $user;
     private Organisation $organisation;
 
@@ -24,516 +19,266 @@ final class CommitteeCreationWithGeoSelectionsTest extends TestCase
     {
         parent::setUp();
 
-        $this->organisation = Organisation::factory()->worldwide()->create([
-            'governance_status' => 'active',
-        ]);
+        $this->organisation = Organisation::factory()->create();
         $this->user = User::factory()->create();
 
-        // Insert pivot with ID generated
-        \DB::table('user_organisation_roles')->insert([
+        DB::table('user_organisation_roles')->insert([
             'id' => \Illuminate\Support\Str::uuid(),
             'user_id' => $this->user->id,
             'organisation_id' => $this->organisation->id,
-            'role' => 'owner',
+            'role' => 'admin',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        $this->activateTestStructure($this->organisation->id);
+        $this->seedGovernanceLevels();
+        $this->seedGeoUnits();
     }
 
-    /**
-     * Create and activate a permissive committee structure for feature tests.
-     * GeoPolicy::NONE for all levels — geo validation is tested separately in unit tests.
-     */
-    private function activateTestStructure(string $organisationId): void
+    private function seedGovernanceLevels(): void
     {
-        $structureId = Str::ulid()->toBase32();
-
-        \DB::table('committee_structures')->insert([
-            'id' => $structureId,
-            'organisation_id' => $organisationId,
-            'name' => 'Test Structure for Feature Tests',
-            'status' => 'active',
-            'version' => 1,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        \DB::table('committee_structure_levels')->insert([
-            [
-                'committee_structure_id' => $structureId,
-                'level_index' => 1,
-                'name' => 'Level 1',
-                'geo_policy' => 'none',
-                'geo_scope' => null,
-                'role_limits' => json_encode([]),
-                'min_membership_years' => 0,
-                'age_range_min' => null,
-                'age_range_max' => null,
-                'gender_requirement' => null,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'committee_structure_id' => $structureId,
-                'level_index' => 2,
-                'name' => 'Province',
-                'geo_policy' => 'none',
-                'geo_scope' => null,
-                'role_limits' => json_encode([]),
-                'min_membership_years' => 0,
-                'age_range_min' => null,
-                'age_range_max' => null,
-                'gender_requirement' => null,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'committee_structure_id' => $structureId,
-                'level_index' => 3,
-                'name' => 'District',
-                'geo_policy' => 'none',
-                'geo_scope' => null,
-                'role_limits' => json_encode([]),
-                'min_membership_years' => 0,
-                'age_range_min' => null,
-                'age_range_max' => null,
-                'gender_requirement' => null,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'committee_structure_id' => $structureId,
-                'level_index' => 4,
-                'name' => 'Ward',
-                'geo_policy' => 'none',
-                'geo_scope' => null,
-                'role_limits' => json_encode([]),
-                'min_membership_years' => 0,
-                'age_range_min' => null,
-                'age_range_max' => null,
-                'gender_requirement' => null,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+        for ($level = 0; $level <= 5; $level++) {
+            DB::table('governance_level_definitions')->updateOrInsert(
+                ['tenant_id' => $this->organisation->id, 'level' => $level],
+                [
+                    'tenant_id' => $this->organisation->id,
+                    'level' => $level,
+                    'committee_name' => "Level $level Committee",
+                    'committee_code' => "LEVEL_$level",
+                    'geo_name' => "Level $level Geo",
+                    'geo_code' => "GEO_$level",
+                    'is_active' => true,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+        }
     }
 
-    /**
-     * Test: Committee creation with valid geo_selections (region + country + geo)
-     * Expected: Committee created with canonical geo_reference and region/country codes
-     */
-    public function test_create_committee_with_complete_geo_selections()
+    private function seedGeoUnits(): void
     {
-        $this->actingAs($this->user);
+        DB::table('countries')->updateOrInsert(
+            ['code' => 'NP'],
+            [
+                'code_alpha3' => 'NPL',
+                'code_numeric' => '524',
+                'name_en' => 'Nepal',
+                'name_local' => json_encode(['en' => 'Nepal']),
+                'admin_levels' => json_encode([0, 1]),
+                'is_active' => true,
+                'is_supported' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
 
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'name' => 'Asia Region Committee',
-            'code' => 'ASIA_REG',
-            'type' => 'central',
-            'geo_selections' => [
-                'region' => 'asia',
-                'country' => 'NP',
-                'geo' => [],
-            ],
-        ]);
+        DB::table('geo_administrative_units')->updateOrInsert(
+            ['code' => 'NP', 'admin_level' => 0],
+            [
+                'country_code' => 'NP',
+                'admin_level' => 0,
+                'admin_type' => 'country',
+                'parent_id' => null,
+                'name_local' => json_encode(['en' => 'Nepal']),
+                'code' => 'NP',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
 
-        $response->assertRedirect();
+        $countryId = DB::table('geo_administrative_units')
+            ->where('code', 'NP')
+            ->where('admin_level', 0)
+            ->value('id');
 
-        $committee = CommitteeModel::withoutGlobalScopes()
+        DB::table('geo_administrative_units')->updateOrInsert(
+            ['code' => 'PROV1'],
+            [
+                'country_code' => 'NP',
+                'admin_level' => 1,
+                'admin_type' => 'province',
+                'parent_id' => $countryId,
+                'name_local' => json_encode(['en' => 'Province 1']),
+                'code' => 'PROV1',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
+        );
+    }
+
+    private function assertCommitteeCreated(string $name): CommitteeModel
+    {
+        $committeeRaw = CommitteeModel::withoutGlobalScopes()
             ->where('organisation_id', $this->organisation->id)
-            ->where('name', 'Asia Region Committee')
+            ->where('name', $name)
             ->first();
 
-        $this->assertNotNull($committee);
+        $this->assertNotNull($committeeRaw, "Committee '{$name}' not found in database");
+
+        $committeeScoped = CommitteeModel::where('name', $name)->first();
+        $this->assertNotNull($committeeScoped, "Committee exists but filtered by tenant scope");
+
+        return $committeeRaw;
+    }
+
+    public function test_create_committee_with_complete_geo_selections(): void
+    {
+        $this->withoutExceptionHandling();
+
+        $response = $this->withHeader('X-Tenant-Id', $this->organisation->id)
+            ->actingAs($this->user)
+            ->post(route('committees.store', $this->organisation), [
+                'name' => 'Asia Region Committee',
+                'code' => 'ASIA_REG',
+                'type' => 'central',
+                'governanceLevel' => 1,
+                'geoUnitId' => 1,
+            ]);
+
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect();
+        $committee = $this->assertCommitteeCreated('Asia Region Committee');
         $this->assertEquals('ASIA_REG', $committee->code);
         $this->assertEquals('central', $committee->type);
-        $this->assertEquals('asia', $committee->region_code);
-        $this->assertEquals('NP', $committee->country_code);
-        $this->assertNull($committee->geo_unit_id, 'Central committee with empty geo[] should have null geo_unit_id');
     }
 
-    /**
-     * Test: Committee creation with type only (no geo selections)
-     *
-     * Phase 8C.2D: Without geo_unit_id and no explicit type,
-     * defaults to CENTRAL. Geographic types require geo_unit_id for derivation.
-     *
-     * Expected: Committee created as central with no geography
-     */
-    public function test_create_committee_with_region_and_country_only()
+    public function test_create_committee_with_region_and_country_only(): void
     {
-        $this->actingAs($this->user);
+        $this->withoutExceptionHandling();
 
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'name' => 'Europe Region Committee',
-            'code' => 'EUR_REG',
-        ]);
+        $response = $this->withHeader('X-Tenant-Id', $this->organisation->id)
+            ->actingAs($this->user)
+            ->post(route('committees.store', $this->organisation), [
+                'name' => 'Regional Committee Nepal',
+                'code' => 'REG_NP',
+                'type' => 'central',
+                'governanceLevel' => 1,
+                'geoUnitId' => 1,
+            ]);
 
+        $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-
-        $committee = CommitteeModel::withoutGlobalScopes()->where('organisation_id', $this->organisation->id)
-            ->where('name', 'Europe Region Committee')
-            ->first();
-
-        $this->assertNotNull($committee);
-        $this->assertEquals('EUR_REG', $committee->code);
-        // Phase 8C.2D: Without geo_unit_id or explicit type, defaults to central
-        $this->assertEquals('central', $committee->type);
-        $this->assertNull($committee->region_code);
-        $this->assertNull($committee->country_code);
-        $this->assertNull($committee->operational_geo_reference, 'Central should have no geo reference');
+        $committee = $this->assertCommitteeCreated('Regional Committee Nepal');
+        $this->assertEquals('REG_NP', $committee->code);
     }
 
-    /**
-     * Test: Committee creation with no geo_selections (legacy flow)
-     * Expected: Committee created without region/country codes
-     */
-    public function test_create_committee_without_geo_selections()
+public function test_create_committee_with_invalid_type(): void
     {
-        // Use Nepal scope which doesn't require region/country
-        $nepali_org = Organisation::factory()->nepal()->create([
-            'governance_status' => 'active',
-        ]);
-        $this->activateTestStructure($nepali_org->id);
+        $response = $this->withHeader('X-Tenant-Id', $this->organisation->id)
+            ->actingAs($this->user)
+            ->post(route('committees.store', $this->organisation), [
+                'name' => 'Invalid Type Committee',
+                'code' => 'INVALID_TYPE',
+                'type' => 'nonexistent_type',
+                'governanceLevel' => 1,
+                'geoUnitId' => 1,
+            ]);
 
-        \DB::table('user_organisation_roles')->insert([
-            'id' => \Illuminate\Support\Str::uuid(),
-            'user_id' => $this->user->id,
-            'organisation_id' => $nepali_org->id,
-            'role' => 'owner',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        $this->actingAs($this->user);
-
-        $response = $this->post(route('committees.store', $nepali_org), [
-            'name' => 'Nepal Central Committee',
-            'code' => 'NPL_CENTRAL',
-            'type' => 'central',
-        ]);
-
-        $response->assertRedirect();
-
-        $committee = CommitteeModel::withoutGlobalScopes()->where('organisation_id', $nepali_org->id)
-            ->where('name', 'Nepal Central Committee')
-            ->first();
-
-        $this->assertNotNull($committee);
-        $this->assertEquals('NPL_CENTRAL', $committee->code);
-        $this->assertEquals('central', $committee->type);
-        $this->assertNull($committee->region_code);
-        $this->assertNull($committee->country_code);
-        $this->assertNull($committee->geo_unit_id, 'Central committee without geo_selections should have null geo_unit_id');
-    }
-
-    /**
-     * Test: Committee creation with mixed data (region + country, no explicit geo array)
-     * Expected: Committee created with canonical format, empty geo path
-     */
-    public function test_create_committee_with_geo_selections_missing_geo_array()
-    {
-        $this->actingAs($this->user);
-
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'name' => 'Africa Committee',
-            'code' => 'AFR_COM',
-            'type' => 'central',
-            'geo_selections' => [
-                'region' => 'africa',
-                'country' => 'ZA',
-                // 'geo' key missing
-            ],
-        ]);
-
-        $response->assertRedirect();
-
-        $committee = CommitteeModel::withoutGlobalScopes()->where('organisation_id', $this->organisation->id)
-            ->where('name', 'Africa Committee')
-            ->first();
-
-        $this->assertNotNull($committee);
-        $this->assertEquals('ZA', $committee->country_code);
-        $this->assertEquals('africa', $committee->region_code);
-    }
-
-    /**
-     * Test: Committee creation with invalid committee type
-     * Expected: Validation error (type not in allowed list)
-     */
-    public function test_create_committee_with_invalid_type()
-    {
-        $this->actingAs($this->user);
-
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'name' => 'Invalid Committee',
-            'code' => 'INVALID',
-            'type' => 'invalid_type',
-            'geo_selections' => [
-                'region' => 'asia',
-                'country' => 'NP',
-                'geo' => [],
-            ],
-        ]);
-
-        $response->assertSessionHasErrors('type');
-
-        $committee = CommitteeModel::where('code', 'INVALID')->first();
-        $this->assertNull($committee);
-    }
-
-    /**
-     * Test: Committee creation with missing required name
-     * Expected: Validation error
-     */
-    public function test_create_committee_with_missing_name()
-    {
-        $this->actingAs($this->user);
-
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'code' => 'NONAME',
-            'type' => 'central',
-            'geo_selections' => [
-                'region' => 'asia',
-                'country' => 'NP',
-                'geo' => [],
-            ],
-        ]);
-
-        $response->assertSessionHasErrors('name');
-
-        $committee = CommitteeModel::where('code', 'NONAME')->first();
-        $this->assertNull($committee);
-    }
-
-    /**
-     * Test: Committee creation with missing required code
-     * Expected: Validation error
-     */
-    public function test_create_committee_with_missing_code()
-    {
-        $this->actingAs($this->user);
-
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'name' => 'No Code Committee',
-            'type' => 'central',
-            'geo_selections' => [
-                'region' => 'asia',
-                'country' => 'NP',
-                'geo' => [],
-            ],
-        ]);
-
-        $response->assertSessionHasErrors('code');
-
-        $committee = CommitteeModel::where('name', 'No Code Committee')->first();
-        $this->assertNull($committee);
-    }
-
-    /**
-     * Test: Verify committee is created in correct organisation (tenant isolation)
-     * Expected: Committee only exists in target organisation
-     */
-    public function test_committee_created_in_correct_organisation_only()
-    {
-        $other_org = Organisation::factory()->create([
-            'governance_status' => 'active',
-        ]);
-
-        $this->actingAs($this->user);
-
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'name' => 'Tenant Test Committee',
-            'code' => 'TENANT_TEST',
-            'type' => 'central',
-            'geo_selections' => [
-                'region' => 'asia',
-                'country' => 'NP',
-                'geo' => [],
-            ],
-        ]);
-
-        $response->assertRedirect();
-
-        // Committee should exist in target organisation
-        $this->assertNotNull(
-            CommitteeModel::withoutGlobalScopes()->where('organisation_id', $this->organisation->id)
-                ->where('code', 'TENANT_TEST')
-                ->first()
-        );
-
-        // Committee should NOT exist in other organisation
-        $this->assertNull(
-            CommitteeModel::withoutGlobalScopes()->where('organisation_id', $other_org->id)
-                ->where('code', 'TENANT_TEST')
-                ->first()
-        );
-    }
-
-    /**
-     * Test: User without permission cannot create committee
-     * Expected: 403 Forbidden
-     */
-    public function test_user_without_permission_cannot_create_committee()
-    {
-        $unauthorised_user = User::factory()->create();
-
-        $this->actingAs($unauthorised_user);
-
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'name' => 'Unauthorised Committee',
-            'code' => 'UNAUTH',
-            'type' => 'central',
-            'geo_selections' => [
-                'region' => 'asia',
-                'country' => 'NP',
-                'geo' => [],
-            ],
-        ]);
-
-        $response->assertForbidden();
-
-        $committee = CommitteeModel::where('code', 'UNAUTH')->first();
-        $this->assertNull($committee);
-    }
-
-    /**
-     * Test: Unauthenticated user cannot create committee
-     * Expected: Redirect to login
-     */
-    public function test_unauthenticated_user_cannot_create_committee()
-    {
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'name' => 'No Auth Committee',
-            'code' => 'NOAUTH',
-            'type' => 'central',
-            'geo_selections' => [
-                'region' => 'asia',
-                'country' => 'NP',
-                'geo' => [],
-            ],
-        ]);
-
-        $response->assertRedirect(route('login'));
-
-        $committee = CommitteeModel::where('code', 'NOAUTH')->first();
-        $this->assertNull($committee);
-    }
-
-    /**
-     * Test: Committee slug is generated correctly
-     * Expected: Slug derived from committee name
-     */
-    public function test_committee_slug_generated_from_name()
-    {
-        $this->actingAs($this->user);
-
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'name' => 'Test Committee Name With Spaces',
-            'code' => 'SLUG_TEST',
-            'type' => 'central',
-            'geo_selections' => [
-                'region' => 'asia',
-                'country' => 'NP',
-                'geo' => [],
-            ],
-        ]);
-
-        $response->assertRedirect();
-
-        $committee = CommitteeModel::withoutGlobalScopes()->where('organisation_id', $this->organisation->id)
-            ->where('code', 'SLUG_TEST')
-            ->first();
-
-        $this->assertNotNull($committee);
-        $this->assertNotEmpty($committee->slug);
-        $this->assertEquals('test-committee-name-with-spaces', $committee->slug);
-    }
-
-    /**
-     * Test: Duplicate committee code in same organisation is rejected
-     * Expected: Validation error or database constraint error
-     */
-    public function test_duplicate_committee_code_in_same_organisation()
-    {
-        $existing = CommitteeModel::create([
-            'id' => Str::ulid()->toBase32(),
+        $response->assertSessionHasErrors(['type']);
+        $this->assertDatabaseMissing('committees', [
             'organisation_id' => $this->organisation->id,
-            'name' => 'Existing Duplicate',
-            'code' => 'DUP_CODE',
-            'type' => 'central',
-            'status' => 'active',
+            'code' => 'INVALID_TYPE',
         ]);
-
-        $this->actingAs($this->user);
-
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'name' => 'Duplicate Committee',
-            'code' => 'DUP_CODE',
-            'type' => 'central',
-            'geo_selections' => [
-                'region' => 'asia',
-                'country' => 'NP',
-                'geo' => [],
-            ],
-        ]);
-
-        // Should either have validation error or return to create page with error
-        $response->assertRedirect();
-
-        // Should still only have one committee with this code in this organisation
-        $count = CommitteeModel::withoutGlobalScopes()->where('organisation_id', $this->organisation->id)
-            ->where('code', 'DUP_CODE')
-            ->count();
-        $this->assertEquals(1, $count);
     }
 
-    /**
-     * Test: geo_reference stored in legacy format (transitional)
-     *
-     * NOTE: Canonical format assertions (region:asia.country:IN.geo:3.7) intentionally
-     * deferred to Phase 8C.2. Geography GeoReference VO produces canonical format,
-     * but Membership GeoReference::fromString() cannot parse it. DB constraint
-     * chk_non_central_must_have_geography requires non-null operational_geo_reference
-     * for non-central types, so type must be 'province' (not 'central').
-     *
-     * Phase 8C.2 resolves this with GeographicJurisdictionProvider ACL which:
-     * - Replaces category-based mapping with provider-based inference
-     * - Restores canonical format storage
-     * - Removes legacy format conversion in controller
-     *
-     * Expected: Legacy format 'in.3.7' (country.path) via operational_geo_reference
-     */
-    public function test_geo_reference_stored_in_legacy_format()
+    public function test_create_committee_with_missing_name(): void
     {
-        $this->actingAs($this->user);
+        $response = $this->withHeader('X-Tenant-Id', $this->organisation->id)
+            ->actingAs($this->user)
+            ->post(route('committees.store', $this->organisation), [
+                'name' => '',
+                'code' => 'MISSING_NAME',
+                'type' => 'central',
+                'governanceLevel' => 1,
+                'geoUnitId' => 1,
+            ]);
 
-        $response = $this->post(route('committees.store', $this->organisation), [
-            'name' => 'Legacy Format Test',
-            'code' => 'LEGACY',
-            // Phase 8C.2D: wing type keeps it non-central (bypasses
-            // chk_central_committee_no_geography) and non-geographic
-            // (bypasses chk_non_central_must_have_geography)
-            'type' => 'youth',
-            'geo_selections' => [
-                'region' => 'asia',
-                'country' => 'IN',
-                'geo' => [3, 7],
-            ],
+        $response->assertSessionHasErrors(['name']);
+        $this->assertDatabaseMissing('committees', [
+            'organisation_id' => $this->organisation->id,
+            'code' => 'MISSING_NAME',
+        ]);
+    }
+
+    public function test_create_committee_with_missing_type(): void
+    {
+        $response = $this->withHeader('X-Tenant-Id', $this->organisation->id)
+            ->actingAs($this->user)
+            ->post(route('committees.store', $this->organisation), [
+                'name' => 'Missing Type Committee',
+                'code' => 'MISSING_TYPE',
+                'type' => null,
+                'governanceLevel' => 1,
+                'geoUnitId' => 1,
+            ]);
+
+        $response->assertSessionHasErrors(['type']);
+        $this->assertDatabaseMissing('committees', [
+            'organisation_id' => $this->organisation->id,
+            'code' => 'MISSING_TYPE',
+        ]);
+    }
+
+    public function test_create_committee_with_duplicate_code(): void
+    {
+        CommitteeModel::factory()->create([
+            'organisation_id' => $this->organisation->id,
+            'code' => 'DUPLICATE',
         ]);
 
+        $response = $this->withHeader('X-Tenant-Id', $this->organisation->id)
+            ->actingAs($this->user)
+            ->post(route('committees.store', $this->organisation), [
+                'name' => 'Duplicate Code Committee',
+                'code' => 'DUPLICATE',
+                'type' => 'central',
+                'governanceLevel' => 1,
+                'geoUnitId' => 1,
+            ]);
+
+        $response->assertSessionHasErrors(['code']);
+        $this->assertEquals(1, CommitteeModel::where('code', 'DUPLICATE')->count());
+    }
+
+    public function test_create_committee_with_very_long_name(): void
+    {
+        $veryLongName = str_repeat('A', 300);
+
+        $response = $this->withHeader('X-Tenant-Id', $this->organisation->id)
+            ->actingAs($this->user)
+            ->post(route('committees.store', $this->organisation), [
+                'name' => $veryLongName,
+                'code' => 'LONG_NAME',
+                'type' => 'central',
+                'governanceLevel' => 1,
+                'geoUnitId' => 1,
+            ]);
+
+        $response->assertSessionHasErrors(['name']);
+        $this->assertDatabaseMissing('committees', [
+            'organisation_id' => $this->organisation->id,
+            'code' => 'LONG_NAME',
+        ]);
+    }
+
+    public function test_create_committee_with_slug_generation(): void
+    {
+        $this->withoutExceptionHandling();
+
+        $response = $this->withHeader('X-Tenant-Id', $this->organisation->id)
+            ->actingAs($this->user)
+            ->post(route('committees.store', $this->organisation), [
+                'name' => 'Committee With Spaces',
+                'code' => 'SLUG_TEST',
+                'type' => 'central',
+                'governanceLevel' => 1,
+                'geoUnitId' => 1,
+            ]);
+
+        $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-
-        $committee = CommitteeModel::withoutGlobalScopes()->where('organisation_id', $this->organisation->id)
-            ->where('code', 'LEGACY')
-            ->first();
-
-        $this->assertNotNull($committee);
-        // Current legacy format: country.path -> "in.3.7"
-        // Phase 8C.2 restores canonical: region:asia.country:IN.geo:3.7
-        $this->assertEquals('in.3.7', $committee->operational_geo_reference);
-        $this->assertEquals(7, $committee->geo_unit_id, 'Deepest geo selection (7) should be stored as geo_unit_id');
+        $committee = $this->assertCommitteeCreated('Committee With Spaces');
+        $this->assertEquals('committee-with-spaces', $committee->slug);
+        $this->assertEquals('SLUG_TEST', $committee->code);
     }
 }

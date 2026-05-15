@@ -104,6 +104,7 @@ final class CommitteeManagementController extends Controller
                 'organisation_id' => $organisation->id,
                 'code' => $request->input('code'),
                 'name' => $request->input('name'),
+                'type' => $request->input('type'),
                 'level' => (int) $request->input('governanceLevel'),
                 'operational_geo' => (int) $request->input('geoUnitId'),
                 'slug' => $slug->value(),
