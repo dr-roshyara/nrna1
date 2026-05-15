@@ -7,6 +7,7 @@ namespace Tests\Unit\Committee\Application;
 use App\Contexts\Committee\Application\ReadModel\CommitteeMembershipReadModelAdapter;
 use App\Contexts\Committee\Application\ReadModel\CommitteeMemberView;
 use App\Contexts\Membership\Application\Committee\GetCommitteeDashboard;
+use App\Contexts\Membership\Domain\Committee\Committee;
 use App\Contexts\Membership\Infrastructure\Models\CommitteeModel;
 use App\Contexts\Membership\Domain\Committee\Repositories\CommitteeRepositoryInterface;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
@@ -32,23 +33,18 @@ final class GetCommitteeDashboardTest extends TestCase
 
     public function test_execute_returns_dto_with_members(): void
     {
-        // Arrange: Create a mock committee
+        // Arrange: Create a REAL committee aggregate (DDD principle)
         $committeeId = CommitteeId::generate();
         $tenantId = TenantId::fromString('org-' . \Illuminate\Support\Str::uuid());
-        $committeeModel = CommitteeModel::factory()->create();
-        $nameVo = \Mockery::mock();
-        $nameVo->shouldReceive('value')->andReturn($committeeModel->name);
 
-        $committee = \Mockery::mock();
-        $committee->shouldReceive('getId')->andReturn($committeeId);
-        $committee->shouldReceive('getName')->andReturn($nameVo);
-        $committee->shouldReceive('code')->andReturn($committeeModel->code);
-        $committee->shouldReceive('getType')->andReturn($committeeModel->type);
-        $committee->shouldReceive('getGeoUnitId')->andReturn((string) $committeeModel->operational_geo);
-        $committee->shouldReceive('getStatus')->andReturn('active');
-        $committee->shouldReceive('levelIndex')->andReturn($committeeModel->level);
+        $committee = Committee::createCentral(
+            $committeeId,
+            $tenantId,
+            'Test Committee',
+            'TEST'
+        );
 
-        // Mock repository to return committee
+        // Mock repository to return the real committee
         $this->committeeRepository
             ->shouldReceive('findById')
             ->with($committeeId)
@@ -86,34 +82,29 @@ final class GetCommitteeDashboardTest extends TestCase
 
         // Assert: DTO is returned correctly
         $this->assertNotNull($dashboard);
-        $this->assertSame($committee->id, $dashboard->id);
+        $this->assertSame($committeeId->value(), $dashboard->id);
         $this->assertCount(2, $dashboard->members);
     }
 
     public function test_execute_calls_adapter_not_eloquent_directly(): void
     {
-        // Arrange
+        // Arrange: Create a REAL committee aggregate
         $committeeId = CommitteeId::generate();
         $tenantId = TenantId::fromString('org-' . \Illuminate\Support\Str::uuid());
-        $committeeModel = CommitteeModel::factory()->create();
-        $nameVo = \Mockery::mock();
-        $nameVo->shouldReceive('value')->andReturn($committeeModel->name);
 
-        $committee = \Mockery::mock();
-        $committee->shouldReceive('getId')->andReturn($committeeId);
-        $committee->shouldReceive('getName')->andReturn($nameVo);
-        $committee->shouldReceive('code')->andReturn($committeeModel->code);
-        $committee->shouldReceive('getType')->andReturn($committeeModel->type);
-        $committee->shouldReceive('getGeoUnitId')->andReturn((string) $committeeModel->operational_geo);
-        $committee->shouldReceive('getStatus')->andReturn('active');
-        $committee->shouldReceive('levelIndex')->andReturn($committeeModel->level);
+        $committee = Committee::createCentral(
+            $committeeId,
+            $tenantId,
+            'Test Committee',
+            'TEST'
+        );
 
         $this->committeeRepository
             ->shouldReceive('findById')
             ->with($committeeId)
             ->andReturn($committee);
 
-        // Mock adapter returns empty members (no User::find calls)
+        // Mock adapter returns empty members (verifies no direct User::find calls)
         $this->membershipReadModel
             ->shouldReceive('getActiveMembers')
             ->with($committeeId)
@@ -128,7 +119,7 @@ final class GetCommitteeDashboardTest extends TestCase
 
         $dashboard = $service->execute($committeeId, $tenantId);
 
-        // Assert: Adapter was called exactly once
+        // Assert: Adapter was called exactly once (orchestration verified)
         $this->membershipReadModel->shouldHaveReceived('getActiveMembers')->once();
         $this->assertEmpty($dashboard->members);
     }
@@ -157,21 +148,16 @@ final class GetCommitteeDashboardTest extends TestCase
 
     public function test_dto_toarray_returns_correct_structure(): void
     {
-        // Arrange
+        // Arrange: Create a REAL committee aggregate
         $committeeId = CommitteeId::generate();
         $tenantId = TenantId::fromString('org-' . \Illuminate\Support\Str::uuid());
-        $committeeModel = CommitteeModel::factory()->create();
-        $nameVo = \Mockery::mock();
-        $nameVo->shouldReceive('value')->andReturn($committeeModel->name);
 
-        $committee = \Mockery::mock();
-        $committee->shouldReceive('getId')->andReturn($committeeId);
-        $committee->shouldReceive('getName')->andReturn($nameVo);
-        $committee->shouldReceive('code')->andReturn($committeeModel->code);
-        $committee->shouldReceive('getType')->andReturn($committeeModel->type);
-        $committee->shouldReceive('getGeoUnitId')->andReturn((string) $committeeModel->operational_geo);
-        $committee->shouldReceive('getStatus')->andReturn('active');
-        $committee->shouldReceive('levelIndex')->andReturn($committeeModel->level);
+        $committee = Committee::createCentral(
+            $committeeId,
+            $tenantId,
+            'Test Committee',
+            'TEST'
+        );
 
         $this->committeeRepository
             ->shouldReceive('findById')
@@ -227,21 +213,16 @@ final class GetCommitteeDashboardTest extends TestCase
 
     public function test_dto_serialization_has_no_eloquent_leakage(): void
     {
-        // Arrange
+        // Arrange: Create a REAL committee aggregate
         $committeeId = CommitteeId::generate();
         $tenantId = TenantId::fromString('org-' . \Illuminate\Support\Str::uuid());
-        $committeeModel = CommitteeModel::factory()->create();
-        $nameVo = \Mockery::mock();
-        $nameVo->shouldReceive('value')->andReturn($committeeModel->name);
 
-        $committee = \Mockery::mock();
-        $committee->shouldReceive('getId')->andReturn($committeeId);
-        $committee->shouldReceive('getName')->andReturn($nameVo);
-        $committee->shouldReceive('code')->andReturn($committeeModel->code);
-        $committee->shouldReceive('getType')->andReturn($committeeModel->type);
-        $committee->shouldReceive('getGeoUnitId')->andReturn((string) $committeeModel->operational_geo);
-        $committee->shouldReceive('getStatus')->andReturn('active');
-        $committee->shouldReceive('levelIndex')->andReturn($committeeModel->level);
+        $committee = Committee::createCentral(
+            $committeeId,
+            $tenantId,
+            'Test Committee',
+            'TEST'
+        );
 
         $this->committeeRepository
             ->shouldReceive('findById')
@@ -272,9 +253,9 @@ final class GetCommitteeDashboardTest extends TestCase
         $dashboard = $service->execute($committeeId, $tenantId);
         $json = json_encode($dashboard->toArray());
 
-        // Assert: No Laravel model serialization
+        // Assert: No Laravel model serialization leakage
         $this->assertStringNotContainsString('App\\', $json);
-        $this->assertStringNotContainsString('\\', $json);  // No namespaces in output
+        $this->assertStringNotContainsString('\\', $json);
         $this->assertStringNotContainsString('Model', $json);
     }
 }
