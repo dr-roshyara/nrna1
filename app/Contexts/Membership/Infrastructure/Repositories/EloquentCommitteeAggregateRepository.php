@@ -85,7 +85,9 @@ final class EloquentCommitteeAggregateRepository implements CommitteeRepositoryI
         return Committee::reconstruct(
             id: CommitteeId::fromString($model->id),
             tenantId: TenantId::fromString($model->organisation_id),
-            type: \App\Contexts\Membership\Domain\ValueObjects\CommitteeType::fromString($model->type),
+            type: $model->type
+                ? \App\Contexts\Membership\Domain\ValueObjects\CommitteeType::fromString($model->type)
+                : \App\Contexts\Membership\Domain\ValueObjects\CommitteeType::geographic(),
             name: \App\Contexts\Membership\Domain\ValueObjects\CommitteeName::fromString($model->name),
             code: $model->code,
             operationalGeo: $model->operational_geo_reference
