@@ -6,6 +6,8 @@
       "name_placeholder": "उदा. केन्द्रीय समिति",
       "code": "समिति कोड",
       "code_placeholder": "उदा. केस-००१",
+      "slug": "URL स्लग",
+      "slug_placeholder": "samiti-nam",
       "type": "समिति प्रकार",
       "type_label": "समिति प्रकार चुनुहोस्",
       "geo_reference": "भौगोलिक सन्दर्भ",
@@ -93,6 +95,12 @@
       "action_remove": "हटाउनुहोस्"
     },
     "empty_state": "अझै कुनै सक्रिय सदस्य छैन"
+  },
+  "slug": {
+    "empty": "स्लग खाली हुन सक्दैन",
+    "taken": "यो URL स्लग पहिले नै लिइएको छ",
+    "reserved": "यो स्लग एक आरक्षित प्रणाली नाम हो",
+    "suggestions": "यी सुझावहरूमध्ये एक प्रयास गर्नुहोस्:"
   },
   "common": {
     "types": {

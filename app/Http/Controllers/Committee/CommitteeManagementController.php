@@ -91,16 +91,26 @@ final class CommitteeManagementController extends Controller
     {
         $this->authorize('manageCommittee', $organisation);
 
-        $committeeId = CommitteeId::generate();
-        $committeeModel = CommitteeModel::create([
-            'id' => $committeeId->value(),
-            'organisation_id' => $organisation->id,
-            'code' => $request->input('code'),
-            'name' => $request->input('name'),
-            'level' => (int) $request->input('governanceLevel'),
-            'operational_geo' => (int) $request->input('geoUnitId'),
-            'slug' => \Illuminate\Support\Str::slug($request->input('name')),
-        ]);
+        try {
+            $slug = CommitteeSlug::fromString($request->input('slug') ?: $request->input('name'));
+        } catch (InvalidCommitteeSlugException $e) {
+            return back()->withErrors(['slug' => $e->getMessage()]);
+        }
+
+        try {
+            $committeeId = CommitteeId::generate();
+            $committeeModel = CommitteeModel::create([
+                'id' => $committeeId->value(),
+                'organisation_id' => $organisation->id,
+                'code' => $request->input('code'),
+                'name' => $request->input('name'),
+                'level' => (int) $request->input('governanceLevel'),
+                'operational_geo' => (int) $request->input('geoUnitId'),
+                'slug' => $slug->value(),
+            ]);
+        } catch (\Illuminate\Database\UniqueConstraintViolationException $e) {
+            return back()->withErrors(['slug' => 'committee.slug.taken']);
+        }
 
         return redirect()->route('committee.dashboard', [
             'organisation' => $organisation,

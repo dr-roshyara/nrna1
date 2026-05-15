@@ -107,6 +107,67 @@
                 </div>
                 <p class="text-xs text-neutral-500 mt-2">Unique identifier (e.g., EXEC-001, YOUTH-NRW)</p>
               </div>
+
+              <!-- Committee Slug -->
+              <div class="group">
+                <label for="slug" class="block text-sm font-semibold text-neutral-900 mb-2">
+                  URL Slug
+                  <span class="text-neutral-400 font-normal text-xs">(auto-generated from name)</span>
+                </label>
+                <div class="relative">
+                  <div class="absolute left-4 top-3 text-neutral-400 font-semibold">/</div>
+                  <input
+                    id="slug"
+                    v-model="form.slug"
+                    type="text"
+                    placeholder="committee-name"
+                    :class="[
+                      'w-full pl-7 pr-4 py-3 rounded-lg border transition-all duration-300 font-mono text-sm',
+                      'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-0 focus:border-primary-500',
+                      errors.slug
+                        ? 'border-danger-300 bg-danger-50 focus:ring-danger-500 focus:border-danger-500'
+                        : 'border-neutral-200 bg-white hover:border-neutral-300'
+                    ]"
+                    @focus="clearError('slug')"
+                    @input="handleSlugInput"
+                  />
+                  <!-- Validation indicator -->
+                  <div v-if="form.slug && slugValidating" class="absolute right-3 top-3 animate-spin">
+                    <svg class="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                  </div>
+                  <div v-else-if="form.slug && !slugExists && !slugReserved && !errors.slug" class="absolute right-3 top-3.5">
+                    <svg class="w-5 h-5 text-success-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <transition name="slideDown">
+                    <span v-if="errors.slug" class="absolute top-full mt-2 flex items-center gap-1 text-sm text-danger-600">
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18.101 12.93a1 1 0 00-1.414-1.414L10 14.586l-6.687-6.687a1 1 0 00-1.414 1.414l8.101 8.101a1 1 0 001.414 0l8.687-8.687z" clip-rule="evenodd" /></svg>
+                      {{ $t(errors.slug) }}
+                    </span>
+                  </transition>
+                </div>
+                <!-- Suggestions -->
+                <transition name="slideDown">
+                  <div v-if="slugSuggestions.length > 0 && (slugExists || slugReserved)" class="mt-3 p-3 bg-neutral-50 rounded-lg border border-neutral-200">
+                    <p class="text-xs font-semibold text-neutral-600 mb-2">{{ $t('committee.slug.suggestions') || 'Try one of these:' }}</p>
+                    <div class="flex flex-wrap gap-2">
+                      <button
+                        v-for="suggestion in slugSuggestions"
+                        :key="suggestion"
+                        type="button"
+                        @click.prevent="selectSuggestion(suggestion)"
+                        class="px-3 py-1.5 bg-white border border-primary-200 rounded-full text-xs font-medium text-primary-700 hover:bg-primary-50 hover:border-primary-300 transition-all duration-200 cursor-pointer"
+                      >
+                        / {{ suggestion }}
+                      </button>
+                    </div>
+                  </div>
+                </transition>
+                <p class="text-xs text-neutral-500 mt-2">URL-friendly identifier (auto-generated, lowercase, hyphens only)</p>
+              </div>
             </div>
           </div>
 
@@ -250,7 +311,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch, onUnmounted } from 'vue';
 import { router } from '@inertiajs/vue3';
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue';
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue';
@@ -265,6 +326,7 @@ const props = defineProps({
 const form = ref({
   name: '',
   code: '',
+  slug: '',
   governanceLevel: null,
   geoUnitId: null,
 });
@@ -278,6 +340,13 @@ const loading = ref(false);
 const codeValidating = ref(false);
 const codeExists = ref(false);
 let codeValidationTimeout = null;
+
+const slugTouched = ref(false);
+const slugValidating = ref(false);
+const slugExists = ref(false);
+const slugReserved = ref(false);
+const slugSuggestions = ref([]);
+let slugValidationTimeout = null;
 
 const clearError = (field) => {
   delete errors.value[field];
@@ -325,6 +394,83 @@ const handleCodeInput = () => {
   }, 500);
 };
 
+// Auto-generate slug from name (only while untouched)
+watch(() => form.value.name, (newName) => {
+  if (!slugTouched.value) {
+    form.value.slug = newName
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+
+    triggerSlugCheck();
+  }
+});
+
+// Debounced slug validation
+const checkSlugUniqueness = async () => {
+  if (!form.value.slug?.trim()) {
+    slugExists.value = false;
+    slugReserved.value = false;
+    slugSuggestions.value = [];
+    return;
+  }
+
+  slugValidating.value = true;
+
+  try {
+    const url = new URL(route('committee.check-slug', { organisation: route().params.organisation }));
+    url.searchParams.append('value', form.value.slug);
+
+    const response = await fetch(url.toString());
+    const data = await response.json();
+
+    slugExists.value = data.exists;
+    slugReserved.value = data.reserved;
+    slugSuggestions.value = data.suggestions || [];
+
+    if (data.error_key) {
+      errors.value.slug = data.error_key;
+    } else {
+      delete errors.value.slug;
+    }
+  } catch (error) {
+    console.error('Error checking slug uniqueness:', error);
+  } finally {
+    slugValidating.value = false;
+  }
+};
+
+const triggerSlugCheck = () => {
+  clearTimeout(slugValidationTimeout);
+  slugValidationTimeout = setTimeout(() => {
+    checkSlugUniqueness();
+  }, 500);
+};
+
+const handleSlugInput = () => {
+  slugTouched.value = true;
+  clearError('slug');
+  slugExists.value = false;
+  slugReserved.value = false;
+  triggerSlugCheck();
+};
+
+const selectSuggestion = (suggestion) => {
+  form.value.slug = suggestion;
+  slugTouched.value = false;
+  slugSuggestions.value = [];
+  delete errors.value.slug;
+  triggerSlugCheck();
+};
+
+onUnmounted(() => {
+  clearTimeout(codeValidationTimeout);
+  clearTimeout(slugValidationTimeout);
+});
+
 const handleSubmit = () => {
   loading.value = true;
   errors.value = {};
@@ -338,6 +484,15 @@ const handleSubmit = () => {
   }
   if (codeExists.value) {
     errors.value.code = `Committee code "${form.value.code}" already exists`;
+  }
+  if (!form.value.slug?.trim()) {
+    errors.value.slug = 'committee.slug.empty';
+  }
+  if (slugExists.value) {
+    errors.value.slug = 'committee.slug.taken';
+  }
+  if (slugReserved.value) {
+    errors.value.slug = 'committee.slug.reserved';
   }
   if (form.value.governanceLevel === null) {
     errors.value.governanceLevel = 'Governance level is required';

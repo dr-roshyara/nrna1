@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Infrastructure\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\BelongsToTenant;
 
 final class CommitteeAssociationModel extends Model
 {
-    use BelongsToTenant;
+    use BelongsToTenant, HasFactory;
 
     protected $table = 'committee_associations';
 
@@ -47,4 +48,9 @@ final class CommitteeAssociationModel extends Model
     public $timestamps = true;
     public $incrementing = false;
     protected $keyType = 'string';
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\CommitteeAssociationModelFactory::new();
+    }
 }

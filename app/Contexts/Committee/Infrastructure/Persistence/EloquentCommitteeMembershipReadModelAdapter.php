@@ -10,7 +10,7 @@ use App\Contexts\Committee\Application\ReadModel\CommitteeMemberView;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Infrastructure\Models\CommitteeAssociationModel;
-use App\User;
+use App\Models\User;
 
 final class EloquentCommitteeMembershipReadModelAdapter implements CommitteeMembershipReadModelAdapter
 {
@@ -85,7 +85,9 @@ final class EloquentCommitteeMembershipReadModelAdapter implements CommitteeMemb
             displayName: $userNames[$row->member_id] ?? 'Unknown Member',
             statusKey:   'committee.members.status.' . $row->status,
             roleKey:     'committee.members.role.member',
-            joinedAt:    new \DateTimeImmutable($row->associated_at),
+            joinedAt:    $row->associated_at instanceof \DateTimeImmutable
+                ? $row->associated_at
+                : new \DateTimeImmutable($row->associated_at->toDateTimeString()),
         ))->all();
     }
 }

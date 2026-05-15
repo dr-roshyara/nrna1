@@ -43,6 +43,18 @@ class TenantContext
      */
     public function handle(Request $request, Closure $next): mixed
     {
+        // CRITICAL: Reset tenant context at start of request (PHP-FPM/Octane safety)
+        \App\Services\TenantContext::clear();
+
+        // Priority 1: X-Tenant-Id header (tests + API escape hatch)
+        if ($request->hasHeader('X-Tenant-Id')) {
+            $orgId = $request->header('X-Tenant-Id');
+            session(['current_organisation_id' => $orgId]);
+            app()->instance('current.organisation_id', $orgId);
+            \App\Services\TenantContext::set($orgId);
+            return $next($request);
+        }
+
         if (!auth()->check()) {
             return $next($request);
         }
@@ -70,6 +82,7 @@ class TenantContext
         // Store in session and container for downstream use
         session(['current_organisation_id' => $organisationId]);
         app()->instance('current.organisation_id', $organisationId);
+        \App\Services\TenantContext::set($organisationId);
 
         // Log tenant context with safe channel fallback
         $this->logTenantContext($request, $userId, $organisationId);

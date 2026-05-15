@@ -6,6 +6,8 @@
       "name_placeholder": "e.g., Central Committee",
       "code": "Committee Code",
       "code_placeholder": "e.g., NC-001",
+      "slug": "URL Slug",
+      "slug_placeholder": "committee-name",
       "type": "Committee Type",
       "type_label": "Select a committee type",
       "geo_reference": "Geographic Reference",
@@ -93,6 +95,12 @@
       "action_remove": "Remove"
     },
     "empty_state": "No active members yet"
+  },
+  "slug": {
+    "empty": "Slug cannot be empty",
+    "taken": "This URL slug is already taken",
+    "reserved": "This slug is a reserved system name",
+    "suggestions": "Try one of these suggestions:"
   },
   "common": {
     "types": {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Infrastructure\Models;
 
-use App\Models\Traits\BelongsToTenant;
+use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
 
 final class CommitteeMembershipApplicationModel extends Model

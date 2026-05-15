@@ -42,7 +42,8 @@ trait BelongsToTenant
     {
         // Add global scope to all queries
         static::addGlobalScope('tenant', function (Builder $query) {
-            $orgId = session('current_organisation_id');
+            // Priority 1: Read from pure TenantContext, fallback to session for backward compat
+            $orgId = \App\Services\TenantContext::get() ?? session('current_organisation_id');
 
             // ✅ Convert legacy organisation_id=0 to platform org ID for consistency
             // When session org is 0 or null (platform/demo mode), use platform org's actual ID
@@ -65,10 +66,11 @@ trait BelongsToTenant
         static::creating(function (Model $model) {
             // Only set if not already set
             if (is_null($model->organisation_id)) {
-                $sessionOrgId = session('current_organisation_id');
+                // Priority 1: Read from pure TenantContext, fallback to session for backward compat
+                $orgId = \App\Services\TenantContext::get() ?? session('current_organisation_id');
 
                 // If session is null or 0 (demo/platform mode), use platform organisation ID
-                if ($sessionOrgId === null || $sessionOrgId === 0) {
+                if ($orgId === null || $orgId === 0) {
                     // Use static cache instead of hitting DB every time (N+1 fix)
                     if (static::$platformOrgIdCache === null) {
                         static::$platformOrgIdCache = \App\Models\Organisation::withoutGlobalScopes()
@@ -77,8 +79,8 @@ trait BelongsToTenant
                     }
                     $model->organisation_id = static::$platformOrgIdCache ?: null;
                 } else {
-                    // Use the session organisation
-                    $model->organisation_id = $sessionOrgId;
+                    // Use the container/session organisation
+                    $model->organisation_id = $orgId;
                 }
             }
         });

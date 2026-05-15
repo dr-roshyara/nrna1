@@ -6,6 +6,8 @@
       "name_placeholder": "z.B. Zentraler Ausschuss",
       "code": "Ausschusscode",
       "code_placeholder": "z.B. ZA-001",
+      "slug": "URL-Slug",
+      "slug_placeholder": "ausschuss-name",
       "type": "Ausschusstyp",
       "type_label": "Wählen Sie einen Ausschusstyp",
       "geo_reference": "Geografische Referenz",
@@ -93,6 +95,12 @@
       "action_remove": "Entfernen"
     },
     "empty_state": "Noch keine aktiven Mitglieder"
+  },
+  "slug": {
+    "empty": "Der Slug darf nicht leer sein",
+    "taken": "Dieser URL-Slug ist bereits vergeben",
+    "reserved": "Dieser Slug ist ein reservierter Systemname",
+    "suggestions": "Versuchen Sie einen dieser Vorschläge:"
   },
   "common": {
     "types": {

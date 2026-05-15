@@ -1,6 +1,7 @@
 {
+  "plansDirectory": "./claude/plans",  
   "permissions": {
-    "allow": [
+     "allow": [
       "Bash(php artisan test:*)",
       "Bash(php artisan make:test:*)",
       "Bash(git add:*)",
