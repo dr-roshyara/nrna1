@@ -214,6 +214,11 @@ class MembershipServiceProvider extends ServiceProvider
             EloquentGovernanceDecisionStore::class
         );
 
+        $this->app->bind(
+            \App\Contexts\Membership\Domain\Committee\Repository\CommitteeSlugReadRepository::class,
+            \App\Contexts\Membership\Infrastructure\Repository\EloquentCommitteeSlugReadRepository::class
+        );
+
         // Domain service bindings
         $this->app->bind(CommitteeCreationPolicy::class, function ($app) {
             return new CommitteeCreationPolicy(
