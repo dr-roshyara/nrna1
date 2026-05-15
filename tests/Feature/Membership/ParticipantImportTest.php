@@ -204,7 +204,7 @@ class ParticipantImportTest extends TestCase
         $user = User::factory()->create(['email' => 'newstaff@example.com']);
 
         $csv  = "email,participant_type,role,expires_at,permissions\n";
-        $csv .= "newstaff@example.com,staff,coordinator,,\n";
+        $csv .= "newstaff@example.com,staff,organizer,,\n";
 
         $this->actingAs($this->owner)
             ->post(
@@ -217,7 +217,7 @@ class ParticipantImportTest extends TestCase
             'organisation_id'  => $this->org->id,
             'user_id'          => $user->id,
             'participant_type' => 'staff',
-            'role'             => 'coordinator',
+            'role'             => 'organizer',
         ]);
     }
 
@@ -235,7 +235,7 @@ class ParticipantImportTest extends TestCase
         ]);
 
         $csv  = "email,participant_type,role,expires_at,permissions\n";
-        $csv .= "existing@example.com,staff,new-role,,\n";   // type changes
+        $csv .= "existing@example.com,staff,participant,,\n";   // type changes
 
         $this->actingAs($this->owner)
             ->post(
@@ -255,7 +255,7 @@ class ParticipantImportTest extends TestCase
         $this->assertDatabaseHas('organisation_participants', [
             'user_id'          => $user->id,
             'participant_type' => 'staff',
-            'role'             => 'new-role',
+            'role'             => 'participant',
         ]);
     }
 
