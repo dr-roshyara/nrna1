@@ -108,6 +108,44 @@
                 <p class="text-xs text-neutral-500 mt-2">Unique identifier (e.g., EXEC-001, YOUTH-NRW)</p>
               </div>
 
+              <!-- Committee Type -->
+              <div class="group">
+                <label for="type" class="block text-sm font-semibold text-neutral-900 mb-2">
+                  Committee Type
+                  <span class="text-danger-600">*</span>
+                </label>
+                <div class="relative">
+                  <select
+                    id="type"
+                    v-model="form.type"
+                    :class="[
+                      'w-full px-4 py-3 rounded-lg border transition-all duration-300',
+                      'focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-0 focus:border-primary-500 appearance-none',
+                      'bg-white cursor-pointer',
+                      errors.type
+                        ? 'border-danger-300 bg-danger-50 focus:ring-danger-500 focus:border-danger-500'
+                        : 'border-neutral-200 hover:border-neutral-300'
+                    ]"
+                    @change="clearError('type')"
+                  >
+                    <option value="" disabled>Select committee type...</option>
+                    <option v-for="t in committeeTypes" :key="t.value" :value="t.value">
+                      {{ t.label }}
+                    </option>
+                  </select>
+                  <svg class="absolute right-3 top-3.5 w-5 h-5 text-neutral-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                  <transition name="slideDown">
+                    <span v-if="errors.type" class="absolute top-full mt-2 flex items-center gap-1 text-sm text-danger-600">
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18.101 12.93a1 1 0 00-1.414-1.414L10 14.586l-6.687-6.687a1 1 0 00-1.414 1.414l8.101 8.101a1 1 0 001.414 0l8.687-8.687z" clip-rule="evenodd" /></svg>
+                      {{ errors.type }}
+                    </span>
+                  </transition>
+                </div>
+                <p class="text-xs text-neutral-500 mt-2">The type/classification of this committee</p>
+              </div>
+
               <!-- Committee Slug -->
               <div class="group">
                 <label for="slug" class="block text-sm font-semibold text-neutral-900 mb-2">
@@ -327,9 +365,22 @@ const form = ref({
   name: '',
   code: '',
   slug: '',
+  type: '', // Required: central, province, district, ward, youth_wing, women_wing, student_wing, diaspora, geographic
   governanceLevel: null,
   geoUnitId: null,
 });
+
+const committeeTypes = [
+  { value: 'central', label: 'Central Committee' },
+  { value: 'province', label: 'Provincial Committee' },
+  { value: 'district', label: 'District Committee' },
+  { value: 'ward', label: 'Ward Committee' },
+  { value: 'youth_wing', label: 'Youth Wing' },
+  { value: 'women_wing', label: 'Women Wing' },
+  { value: 'student_wing', label: 'Student Wing' },
+  { value: 'diaspora', label: 'Diaspora Committee' },
+  { value: 'geographic', label: 'Geographic Committee' },
+];
 
 const filteredGeoUnits = computed(() =>
   props.geoUnits.filter(unit => unit.admin_level === form.value.governanceLevel)
@@ -484,6 +535,9 @@ const handleSubmit = () => {
   }
   if (codeExists.value) {
     errors.value.code = `Committee code "${form.value.code}" already exists`;
+  }
+  if (!form.value.type?.trim()) {
+    errors.value.type = 'Committee type is required';
   }
   if (!form.value.slug?.trim()) {
     errors.value.slug = 'committee.slug.empty';
