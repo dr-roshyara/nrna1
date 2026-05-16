@@ -86,7 +86,7 @@ final class CommitteeMemberController extends Controller
      * Uses domain aggregate to validate and generate events.
      * Events dispatched to listeners for projection persistence.
      */
-    public function store(string $committeeId, Request $request): \Illuminate\Http\JsonResponse
+    public function store(Request $request, string $committeeId): \Illuminate\Http\JsonResponse
     {
         try {
             $committeeId = CommitteeId::fromString($committeeId);

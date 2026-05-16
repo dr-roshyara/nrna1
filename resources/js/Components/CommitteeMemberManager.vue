@@ -236,7 +236,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import { route } from 'ziggy-js';
 import Button from '@/Components/Button.vue';
@@ -279,17 +279,28 @@ const successMessage = ref('');
 let searchTimeout = null;
 
 const effectiveTenantId = computed(() => {
-  if (props.tenantId) return props.tenantId;
-  if (props.organisationId) return props.organisationId;
-  if (page.props.auth?.user?.current_organisation_id) {
-    return page.props.auth.user.current_organisation_id;
+  // Priority order: explicit props > page props > route context
+  if (props.tenantId) {
+    console.log('[CommitteeMemberManager] Using tenantId from props:', props.tenantId);
+    return props.tenantId;
   }
+
+  if (props.organisationId) {
+    console.log('[CommitteeMemberManager] Using organisationId from props:', props.organisationId);
+    return props.organisationId;
+  }
+
   if (page.props.organisation?.id) {
+    console.log('[CommitteeMemberManager] Using organisation.id from page.props:', page.props.organisation.id);
     return page.props.organisation.id;
   }
-  if (page.props.organisationId) {
-    return page.props.organisationId;
+
+  if (page.props.auth?.user?.current_organisation_id) {
+    console.log('[CommitteeMemberManager] Using current_organisation_id:', page.props.auth.user.current_organisation_id);
+    return page.props.auth.user.current_organisation_id;
   }
+
+  console.warn('[CommitteeMemberManager] NO TENANT ID FOUND. Props:', { tenantId: props.tenantId, organisationId: props.organisationId }, 'Page props:', page.props);
   return null;
 });
 
@@ -314,19 +325,21 @@ const formatDate = (dateString) => {
 
 const fetchMembers = async () => {
   if (!effectiveTenantId.value) {
-    console.warn('No tenant ID available');
+    console.error('[fetchMembers] No tenant ID available. Props:', { tenantId: props.tenantId, organisationId: props.organisationId });
     membersList.value = [];
     return;
   }
 
   isLoadingMembers.value = true;
   try {
+    console.log('[fetchMembers] Fetching with tenant ID:', effectiveTenantId.value);
     const fetchOptions = {
       headers: {
         'X-Tenant-Id': effectiveTenantId.value,
         'Accept': 'application/json',
       },
     };
+    console.log('[fetchMembers] Headers:', fetchOptions.headers);
 
     const response = await fetch(
       `/api/governance/committees/${props.committeeId}/members`,
@@ -407,7 +420,12 @@ const handleAddMember = async () => {
     return;
   }
 
+  console.log('[handleAddMember] Tenant ID:', effectiveTenantId.value);
+  console.log('[handleAddMember] Committee ID:', props.committeeId);
+  console.log('[handleAddMember] Selected Member:', form.value.selectedMember);
+
   if (!effectiveTenantId.value) {
+    console.error('[handleAddMember] Missing tenant context!', { tenantId: props.tenantId, organisationId: props.organisationId, pageProps: page.props });
     errors.value.searchQuery = 'Tenant context is missing';
     return;
   }
@@ -415,19 +433,29 @@ const handleAddMember = async () => {
   isLoading.value = true;
 
   try {
+    const requestBody = {
+      memberId: form.value.selectedMember.id,
+      role: form.value.role,
+    };
+
+    const requestHeaders = {
+      'X-Tenant-Id': effectiveTenantId.value,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
+
+    console.log('[handleAddMember] Sending request:', {
+      url: `/api/governance/committees/${props.committeeId}/members`,
+      headers: requestHeaders,
+      body: requestBody,
+    });
+
     const response = await fetch(
       `/api/governance/committees/${props.committeeId}/members`,
       {
         method: 'POST',
-        headers: {
-          'X-Tenant-Id': effectiveTenantId.value,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          memberId: form.value.selectedMember.id,
-          role: form.value.role,
-        }),
+        headers: requestHeaders,
+        body: JSON.stringify(requestBody),
       }
     );
 
@@ -509,7 +537,17 @@ const resetForm = () => {
   }, 3000);
 };
 
+// Watch for tenant ID changes and log
+watch(effectiveTenantId, (newVal, oldVal) => {
+  console.log('[CommitteeMemberManager] Tenant ID changed:', oldVal, '→', newVal);
+});
+
 onMounted(() => {
+  console.log('[CommitteeMemberManager] Mounted. Tenant ID:', effectiveTenantId.value);
+  if (!effectiveTenantId.value) {
+    console.error('[CommitteeMemberManager] NO TENANT ID! Cannot fetch members.');
+    return;
+  }
   fetchMembers();
 });
 </script>
