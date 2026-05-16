@@ -33,6 +33,9 @@ final class CommitteeDashboardController extends Controller
             abort(404);
         }
 
-        return Inertia::render('Committee/Dashboard', $dashboard->toArray());
+        return Inertia::render('Committee/Dashboard', array_merge(
+            $dashboard->toArray(),
+            ['organisationId' => $organisation->id]
+        ));
     }
 }

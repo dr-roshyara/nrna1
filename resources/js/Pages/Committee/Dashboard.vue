@@ -5,6 +5,48 @@
     <div class="min-h-screen bg-gradient-to-br from-neutral-50 via-primary-50/20 to-neutral-50 py-8 sm:py-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        <!-- Navigation Tabs -->
+        <div class="mb-8 flex gap-2 border-b border-neutral-200">
+          <button
+            @click="activeTab = 'overview'"
+            :class="[
+              'relative px-6 py-4 font-semibold text-sm transition-all duration-300 flex items-center gap-2',
+              activeTab === 'overview'
+                ? 'text-primary-600'
+                : 'text-neutral-600 hover:text-neutral-900'
+            ]"
+          >
+            <svg :class="['w-5 h-5', activeTab === 'overview' ? 'text-primary-600' : 'text-neutral-400']" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            Overview
+            <transition name="slideDown">
+              <div v-if="activeTab === 'overview'" class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-600 to-primary-400 rounded-t-full"></div>
+            </transition>
+          </button>
+
+          <button
+            @click="activeTab = 'members'"
+            :class="[
+              'relative px-6 py-4 font-semibold text-sm transition-all duration-300 flex items-center gap-2',
+              activeTab === 'members'
+                ? 'text-primary-600'
+                : 'text-neutral-600 hover:text-neutral-900'
+            ]"
+          >
+            <svg :class="['w-5 h-5', activeTab === 'members' ? 'text-primary-600' : 'text-neutral-400']" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 10a3 3 0 11-6 0 3 3 0 016 0zM16 20a3 3 0 10-6 0h6z" />
+            </svg>
+            Members
+            <transition name="slideDown">
+              <div v-if="activeTab === 'members'" class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-600 to-primary-400 rounded-t-full"></div>
+            </transition>
+          </button>
+        </div>
+
+        <!-- Overview Tab Content -->
+        <template v-if="activeTab === 'overview'">
+
         <!-- Hero Header Section -->
         <article class="bg-white rounded-xl border border-neutral-200 shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden mb-8">
           <header class="px-8 py-8 border-b border-primary-100 bg-gradient-to-br from-primary-50 via-primary-50 to-white">
@@ -165,14 +207,27 @@
             </div>
           </div>
         </div>
+        </template>
+
+        <!-- Members Tab Content -->
+        <template v-if="activeTab === 'members'">
+          <div class="animate-fade-in">
+            <CommitteeMemberManager
+              :committee-id="committee.id"
+              :organisation-id="organisationId"
+            />
+          </div>
+        </template>
       </div>
     </div>
   </AppLayout>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import CommitteeMemberManager from '@/Components/CommitteeMemberManager.vue';
 
 const props = defineProps({
   committee: {
@@ -187,7 +242,13 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  organisationId: {
+    type: String,
+    required: true,
+  },
 });
+
+const activeTab = ref('overview');
 
 const formatCommitteeType = (type) => {
   const types = {
@@ -244,6 +305,35 @@ article {
 
 .grid > div:nth-child(3) {
   animation-delay: 0.3s;
+}
+
+/* Tab Navigation Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slideDown-enter-active,
+.slideDown-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.slideDown-enter-from {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.slideDown-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
 }
 
 /* Table row hover animations */
