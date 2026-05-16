@@ -9,27 +9,79 @@
       </template>
 
       <form @submit.prevent="handleAddMember" class="space-y-4">
-        <div class="space-y-2">
-          <label for="memberId" class="block text-sm font-medium text-neutral-700">
-            Member ID
+        <!-- Search Field -->
+        <div class="space-y-2 relative">
+          <label for="memberSearch" class="block text-sm font-medium text-neutral-700">
+            Search Member
+            <span class="text-neutral-400 font-normal">(by first name, last name, or email)</span>
           </label>
-          <input
-            id="memberId"
-            v-model="form.memberId"
-            type="text"
-            placeholder="Enter member UUID"
-            class="w-full rounded-lg border border-neutral-300 px-4 py-2 text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all"
-          />
-          <p v-if="errors.memberId" class="text-sm text-danger-600">
-            {{ errors.memberId }}
+          <div class="relative">
+            <input
+              id="memberSearch"
+              v-model="form.searchQuery"
+              type="text"
+              placeholder="e.g. John Smith or john@example.com"
+              class="w-full rounded-lg border border-neutral-300 px-4 py-2 text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all"
+              @input="handleSearch"
+              autocomplete="off"
+            />
+            <svg v-if="form.searchQuery && isSearching" class="absolute right-3 top-2.5 h-5 w-5 animate-spin text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+
+          <!-- Search Results Dropdown -->
+          <transition name="slideDown">
+            <div v-if="form.searchQuery && searchResults.length > 0" class="absolute z-10 w-full mt-1 bg-white border border-neutral-300 rounded-lg shadow-lg">
+              <div class="max-h-48 overflow-y-auto">
+                <button
+                  v-for="result in searchResults"
+                  :key="result.id"
+                  type="button"
+                  @click="selectMember(result)"
+                  class="w-full text-left px-4 py-3 hover:bg-primary-50 border-b border-neutral-100 last:border-b-0 transition-colors duration-200"
+                >
+                  <div class="font-medium text-neutral-900">{{ result.name }}</div>
+                  <div class="text-xs text-neutral-600">{{ result.email }}</div>
+                </button>
+              </div>
+            </div>
+            <div v-else-if="form.searchQuery && !isSearching && searchResults.length === 0" class="absolute z-10 w-full mt-1 bg-white border border-neutral-300 rounded-lg shadow-lg p-4">
+              <p class="text-sm text-neutral-600">No members found</p>
+            </div>
+          </transition>
+
+          <p v-if="errors.searchQuery" class="text-sm text-danger-600">
+            {{ errors.searchQuery }}
           </p>
         </div>
 
+        <!-- Selected Member Preview -->
+        <div v-if="form.selectedMember" class="rounded-lg border border-primary-200 bg-primary-50 p-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-semibold text-neutral-900">Selected Member</p>
+              <p class="text-lg font-bold text-primary-600 mt-1">{{ form.selectedMember.name }}</p>
+              <p class="text-xs text-neutral-600 mt-1">{{ form.selectedMember.email }}</p>
+            </div>
+            <button
+              type="button"
+              @click="form.selectedMember = null"
+              class="text-neutral-400 hover:text-neutral-600"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
         <div class="flex gap-3">
           <Button
             type="submit"
             variant="primary"
-            :disabled="isLoading"
+            :disabled="!form.selectedMember || isLoading"
             class="flex-1"
           >
             <span v-if="!isLoading">Add Member</span>
@@ -92,7 +144,10 @@
           <thead class="bg-neutral-50 border-b border-neutral-100">
             <tr>
               <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-neutral-600">
-                Member ID
+                Member Name
+              </th>
+              <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-neutral-600">
+                Email
               </th>
               <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-neutral-600">
                 Assigned Date
@@ -109,9 +164,10 @@
               class="hover:bg-neutral-50 transition-colors duration-200"
             >
               <td class="px-6 py-4 font-medium text-neutral-900">
-                <code class="text-xs bg-neutral-100 px-2 py-1 rounded">
-                  {{ member.memberId }}
-                </code>
+                {{ member.memberName || 'N/A' }}
+              </td>
+              <td class="px-6 py-4 text-neutral-600">
+                <span class="text-xs bg-neutral-100 px-2 py-1 rounded">{{ member.memberEmail || 'N/A' }}</span>
               </td>
               <td class="px-6 py-4 text-neutral-600">
                 {{ formatDate(member.assignedAt) }}
@@ -144,6 +200,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
+import { route } from '@/ziggy';
 import Button from '@/Components/Button.vue';
 import ActionButton from '@/Components/ActionButton.vue';
 import Card from '@/Components/Card.vue';
@@ -166,16 +223,20 @@ const props = defineProps({
 });
 
 const form = ref({
-  memberId: '',
+  searchQuery: '',
+  selectedMember: null,
 });
 
 const page = usePage();
 const membersList = ref([]);
+const searchResults = ref([]);
 const isLoading = ref(false);
 const isLoadingMembers = ref(false);
+const isSearching = ref(false);
 const removingMemberId = ref(null);
 const errors = ref({});
 const successMessage = ref('');
+let searchTimeout = null;
 
 const effectiveTenantId = computed(() => {
   if (props.tenantId) return props.tenantId;
@@ -237,17 +298,66 @@ const fetchMembers = async () => {
   }
 };
 
+const handleSearch = async () => {
+  const query = form.value.searchQuery.trim();
+
+  // Clear results if query is too short
+  if (query.length < 2) {
+    searchResults.value = [];
+    return;
+  }
+
+  clearTimeout(searchTimeout);
+  isSearching.value = true;
+
+  searchTimeout = setTimeout(async () => {
+    try {
+      const params = new URLSearchParams({
+        q: query,
+        limit: '10',
+      });
+
+      const response = await fetch(
+        `${route('members.search')}?${params.toString()}`,
+        {
+          headers: {
+            'Accept': 'application/json',
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Search failed: ${response.statusText}`);
+      }
+
+      searchResults.value = await response.json();
+    } catch (error) {
+      console.error('Error searching members:', error);
+      searchResults.value = [];
+    } finally {
+      isSearching.value = false;
+    }
+  }, 300); // Debounce by 300ms
+};
+
+const selectMember = (member) => {
+  form.value.selectedMember = member;
+  form.value.searchQuery = '';
+  searchResults.value = [];
+  errors.value.searchQuery = '';
+};
+
 const handleAddMember = async () => {
   errors.value = {};
   successMessage.value = '';
 
-  if (!form.value.memberId.trim()) {
-    errors.value.memberId = 'Member ID is required';
+  if (!form.value.selectedMember) {
+    errors.value.searchQuery = 'Please select a member';
     return;
   }
 
   if (!effectiveTenantId.value) {
-    errors.value.memberId = 'Tenant context is missing';
+    errors.value.searchQuery = 'Tenant context is missing';
     return;
   }
 
@@ -264,7 +374,7 @@ const handleAddMember = async () => {
           'Accept': 'application/json',
         },
         body: JSON.stringify({
-          memberId: form.value.memberId,
+          memberId: form.value.selectedMember.id,
         }),
       }
     );
@@ -274,9 +384,11 @@ const handleAddMember = async () => {
         const errorData = await response.json();
         if (errorData.errors) {
           errors.value = errorData.errors;
+        } else {
+          errors.value.searchQuery = 'This member is already assigned';
         }
       } else {
-        errors.value.memberId = 'Failed to add member';
+        errors.value.searchQuery = 'Failed to add member';
       }
       return;
     }
@@ -288,7 +400,7 @@ const handleAddMember = async () => {
     await fetchMembers();
   } catch (error) {
     console.error('Error adding member:', error);
-    errors.value.memberId = 'An unexpected error occurred';
+    errors.value.searchQuery = 'An unexpected error occurred';
   } finally {
     isLoading.value = false;
   }
@@ -335,7 +447,9 @@ const handleRemoveMember = async (memberId) => {
 };
 
 const resetForm = () => {
-  form.value.memberId = '';
+  form.value.searchQuery = '';
+  form.value.selectedMember = null;
+  searchResults.value = [];
   errors.value = {};
   setTimeout(() => {
     successMessage.value = '';
