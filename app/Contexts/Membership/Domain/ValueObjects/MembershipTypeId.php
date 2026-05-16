@@ -23,9 +23,9 @@ final readonly class MembershipTypeId
         return new self((string) Str::uuid());
     }
 
-    public static function fromString(string $value): self
+    public static function fromString(string|\Stringable $value): self
     {
-        return new self($value);
+        return new self((string) $value);
     }
 
     public function value(): string

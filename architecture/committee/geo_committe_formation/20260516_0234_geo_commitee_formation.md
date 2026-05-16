@@ -2780,3 +2780,347 @@ or adjust:
 * command vs direct dispatch strategy
 
 Just confirm direction and I’ll start implementation.
+#############################################################
+Good question — because at this point the system is stable, so improvements should focus on **domain richness and governance semantics**, not plumbing.
+
+Right now you have a clean “membership assignment system”. The next step is turning it into a **governance-aware model**, where membership is not just a link, but a *regulated relationship*.
+
+---
+
+# 🧭 Current Model (What You Have)
+
+Right now your relationship is:
+
+```yaml
+Committee ↔ Member
+  - assign
+  - remove
+  - list
+```
+
+This is:
+
+* structurally correct
+* event-driven
+* CQRS-safe
+* but semantically flat
+
+👉 Every member is just “attached”, with no meaning beyond existence.
+
+---
+
+# 🚀 What Can Be Enhanced (High-Value Domain Evolution)
+
+## 1. 🧑‍⚖️ Membership Roles (BIGGEST VALUE UPGRADE)
+
+### Problem:
+
+All members are equal in the model.
+
+### Enhancement:
+
+Introduce role within committee context:
+
+```yaml
+roles:
+  - CHAIR
+  - DEPUTY
+  - MEMBER
+  - OBSERVER
+```
+
+### Why this matters:
+
+* Enables governance logic (quorum, voting rights)
+* Unlocks UI differentiation
+* Supports approval workflows later
+
+### Domain impact:
+
+```php
+assignMember(memberId, role)
+```
+
+Event:
+
+```php
+MemberAssignedToCommittee(role: "CHAIR")
+```
+
+---
+
+## 2. ⏳ Membership Lifecycle (Temporal Governance)
+
+### Problem:
+
+Membership is permanent until removed.
+
+### Enhancement:
+
+Add lifecycle:
+
+```yaml
+start_date
+end_date (nullable)
+status: ACTIVE | EXPIRED | REMOVED
+```
+
+### Why:
+
+* committees are often time-bound
+* supports historical audits
+* enables automatic expiry projections
+
+### Event evolution:
+
+* MemberAssignedToCommittee
+* MemberTermExpired
+
+---
+
+## 3. 🧠 Committee Constraints (Business Rules Layer)
+
+Right now:
+
+> Any member can be added anytime
+
+Enhance with rules:
+
+### Examples:
+
+```yaml
+rules:
+  max_members: 10
+  must_have_at_least_one_chair: true
+  prevent_duplicate_roles: true
+```
+
+### Domain impact:
+
+Moves logic into aggregate:
+
+```php
+if ($this->hasChair() && $role === CHAIR) {
+    throw new DomainException();
+}
+```
+
+---
+
+## 4. 🔄 Role Transitions (NOT just assign/remove)
+
+Right now:
+
+* remove → add again
+
+Better model:
+
+```yaml
+changeRole(memberId, newRole)
+```
+
+Event:
+
+```yaml
+MemberRoleChangedInCommittee
+```
+
+### Why this matters:
+
+* avoids noisy event history
+* preserves identity continuity
+* better audit trail
+
+---
+
+## 5. 🧾 Membership History Projection (Audit Layer)
+
+Add read model:
+
+```yaml
+committee_membership_history_projection
+```
+
+Tracks:
+
+* who joined
+* who left
+* role changes
+* timestamps
+
+### Enables:
+
+* governance audit screens
+* compliance reporting
+* timeline UI
+
+---
+
+## 6. 🔍 “Available Members” Context Projection (UX Enhancement)
+
+Right now UI likely:
+
+* manually enters memberId
+
+Enhance:
+
+```yaml
+GET /members/available?committeeId=...
+```
+
+Filters:
+
+* already assigned members excluded
+* tenant-scoped
+
+### UX impact:
+
+Huge improvement for usability.
+
+---
+
+## 7. ⚖️ Quorum / Decision Readiness (Advanced Governance)
+
+Once roles exist:
+
+```yaml
+Committee is “decision ready” if:
+  - at least 1 CHAIR
+  - at least 3 MEMBERS
+```
+
+Projection:
+
+```yaml
+committee_status_projection:
+  is_decision_ready: true
+```
+
+---
+
+## 8. 📊 Committee Health Projection (Strategic Layer)
+
+Derived metrics:
+
+* member count
+* role distribution
+* inactive members
+* turnover rate
+
+Used for dashboards.
+
+---
+
+# 🧠 Architectural Shift You Are Entering
+
+You are moving from:
+
+## Phase 1 — Structural Model
+
+> “We can assign members”
+
+to
+
+## Phase 2 — Semantic Model
+
+> “We can govern a committee”
+
+---
+
+# 🧬 Recommended Next Step (Best ROI)
+
+If we prioritize correctly:
+
+## 🥇 Step 1 (Most important)
+
+👉 **Add Roles inside Committee membership**
+
+Because it unlocks:
+
+* governance logic
+* UI differentiation
+* future workflows (approval systems)
+
+---
+
+## 🥈 Step 2
+
+👉 Lifecycle (start/end dates)
+
+---
+
+## 🥉 Step 3
+
+👉 Membership history projection
+
+---
+
+# 🧭 Final Architectural Insight
+
+Right now your system is:
+
+> A **membership registry**
+
+With these enhancements, it becomes:
+
+> A **governance engine**
+
+---
+
+# ➜ If you want next step
+
+I can implement this in true DDD style:
+
+### “Committee Membership Roles Extension”
+
+Includes:
+
+* aggregate evolution
+* new domain events
+* projection migration
+* API changes
+* Vue UI role selector
+* full TDD suite
+
+Just say:
+
+> “add roles to committee membership”
+
+and I’ll extend the system cleanly without breaking your current CQRS stability.
+● Perfect. I understand the strategy completely:
+
+  ✅ Phase 1: Roles (Full Stack, Minimal Scope)
+  - Domain layer with event + invariant
+  - Projection updated with role column
+  - API enhanced to accept/validate role
+  - UI upgraded with role dropdown
+  - Comprehensive test coverage (TDD-first)
+
+  ✅ Clean boundaries:
+  - Role is immutable per assignment (no transitions yet)
+  - Aggregate prevents duplicates
+  - Projection denormalizes for read queries
+  - API enforces role contract
+
+  ✅ Prevents CQRS collapse:
+  - Every layer stays synchronized
+  - Events are the source of truth
+  - Projection matches domain semantics
+  - UI receives complete information
+
+  ---
+  Ready to proceed:
+
+  Start Phase 1 Roles
+
+  I'll begin with Step 1: Domain Test Suite (TDD)
+
+  This will establish:
+  1. Role value object or enum
+  2. MemberAssignedToCommittee event with role
+  3. Committee aggregate rules (no duplicates)
+  4. Test cases covering success + failure paths
+
+  Then we layer upward: Projection → API → UI → Integration Tests
+
+  Ready to write the first test file?

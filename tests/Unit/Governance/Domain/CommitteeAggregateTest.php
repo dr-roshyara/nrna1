@@ -9,6 +9,7 @@ use Tests\Support\DomainIdFactory;
 
 use App\Contexts\Governance\Domain\Committee\Committee;
 use App\Contexts\Governance\Domain\Committee\CommitteeId;
+use App\Contexts\Governance\Domain\Committee\Enums\CommitteeRole;
 use App\Contexts\Governance\Domain\Committee\Events\MemberAssignedToCommittee;
 use App\Contexts\Governance\Domain\Committee\Events\MemberRemovedFromCommittee;
 use App\Contexts\Membership\Domain\Member\MemberId;
@@ -36,16 +37,16 @@ final class CommitteeAggregateTest extends TestCase
 
         $memberId = MemberId::generate();
 
-        $committee->addMember($memberId);
+        $committee->addMember($memberId, CommitteeRole::MEMBER);
 
         $this->assertTrue($committee->isMemberAssigned($memberId));
     }
 
     /**
-     * INVARIANT: Adding same member twice is idempotent
-     * Second add should be ignored
+     * INVARIANT: Adding same member twice throws exception
+     * Domain enforces uniqueness constraint
      */
-    public function test_adding_duplicate_member_is_idempotent(): void
+    public function test_adding_duplicate_member_throws_exception(): void
     {
         $committee = Committee::create(
             CommitteeId::generate(),
@@ -54,19 +55,19 @@ final class CommitteeAggregateTest extends TestCase
 
         $memberId = MemberId::generate();
 
-        $committee->addMember($memberId);
-        $committee->addMember($memberId); // second add
+        $committee->addMember($memberId, CommitteeRole::MEMBER);
 
-        $members = $committee->getMembers();
-
-        // Should have only ONE member, not two
-        $this->assertCount(1, $members);
+        // Second add should throw exception
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionMessage('Member already assigned to this committee');
+        $committee->addMember($memberId, CommitteeRole::MEMBER);
     }
 
     /**
-     * INVARIANT: Adding same member twice emits event only once
+     * INVARIANT: Duplicate add throws before emitting event
+     * Uniqueness enforced at domain boundary
      */
-    public function test_duplicate_add_emits_event_once(): void
+    public function test_duplicate_add_throws_before_event(): void
     {
         $committee = Committee::create(
             CommitteeId::generate(),
@@ -75,14 +76,15 @@ final class CommitteeAggregateTest extends TestCase
 
         $memberId = MemberId::generate();
 
-        $committee->addMember($memberId);
+        $committee->addMember($memberId, CommitteeRole::MEMBER);
         $events1 = $committee->pullEvents();
 
-        $committee->addMember($memberId); // second add
-        $events2 = $committee->pullEvents();
+        // Second add should throw
+        $this->expectException(\DomainException::class);
+        $committee->addMember($memberId, CommitteeRole::MEMBER);
 
+        // Events should only have the first add
         $this->assertCount(1, $events1);
-        $this->assertCount(0, $events2); // no event on duplicate
     }
 
     /**
@@ -98,7 +100,7 @@ final class CommitteeAggregateTest extends TestCase
 
         $memberId = MemberId::generate();
 
-        $committee->addMember($memberId);
+        $committee->addMember($memberId, CommitteeRole::MEMBER);
         $committee->pullEvents(); // clear events
 
         $committee->removeMember($memberId);
@@ -138,7 +140,7 @@ final class CommitteeAggregateTest extends TestCase
         $memberId = MemberId::generate();
 
         $committee = Committee::create($committeeId, $tenantId);
-        $committee->addMember($memberId);
+        $committee->addMember($memberId, CommitteeRole::MEMBER);
 
         $events = $committee->pullEvents();
 
@@ -166,9 +168,9 @@ final class CommitteeAggregateTest extends TestCase
         $member2 = MemberId::generate();
         $member3 = MemberId::generate();
 
-        $committee->addMember($member1);
-        $committee->addMember($member2);
-        $committee->addMember($member3);
+        $committee->addMember($member1, CommitteeRole::MEMBER);
+        $committee->addMember($member2, CommitteeRole::MEMBER);
+        $committee->addMember($member3, CommitteeRole::MEMBER);
 
         $members = $committee->getMembers();
 
@@ -186,7 +188,7 @@ final class CommitteeAggregateTest extends TestCase
             DomainIdFactory::tenant()
         );
 
-        $committee->addMember(MemberId::generate());
+        $committee->addMember(MemberId::generate(), CommitteeRole::MEMBER);
 
         $events1 = $committee->pullEvents();
         $events2 = $committee->pullEvents();

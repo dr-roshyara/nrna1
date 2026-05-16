@@ -2,17 +2,19 @@
 
 namespace App\Jobs;
 
+use App\Contexts\Membership\Application\Commands\MemberImportCommand;
+use App\Contexts\Membership\Application\Services\MemberImportService;
+use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Models\MemberImportJob;
 use App\Models\MembershipType;
 use App\Models\Organisation;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -23,7 +25,9 @@ class ProcessMemberImportJob implements ShouldQueue
     public int $timeout = 3600; // 1 hour ceiling for 50k-row files
     public int $tries   = 1;    // No retry — partial imports are dangerous
 
-    public function __construct(public readonly string $importJobId) {}
+    public function __construct(
+        public readonly string $importJobId,
+    ) {}
 
     public function handle(): void
     {
@@ -40,6 +44,11 @@ class ProcessMemberImportJob implements ShouldQueue
         } catch (\Throwable $e) {
             $importJob->markFailed($e->getMessage());
         }
+    }
+
+    private function getImportService(): MemberImportService
+    {
+        return app(MemberImportService::class);
     }
 
     public function failed(\Throwable $e): void
@@ -135,7 +144,7 @@ class ProcessMemberImportJob implements ShouldQueue
             $rowNumber++;
 
             if (count($chunk) >= $chunkSize) {
-                [$batchImported, $batchSkipped, $batchErrors] = $this->insertChunk($chunk, $org, $importJob->initiated_by);
+                [$batchImported, $batchSkipped, $batchErrors] = $this->processChunk($chunk, $org);
                 $imported += $batchImported;
                 $skipped  += $batchSkipped;
                 $errors    = array_merge($errors, $batchErrors);
@@ -152,7 +161,7 @@ class ProcessMemberImportJob implements ShouldQueue
 
         // Final partial chunk
         if (!empty($chunk)) {
-            [$batchImported, $batchSkipped, $batchErrors] = $this->insertChunk($chunk, $org, $importJob->initiated_by);
+            [$batchImported, $batchSkipped, $batchErrors] = $this->processChunk($chunk, $org);
             $imported += $batchImported;
             $skipped  += $batchSkipped;
             $errors    = array_merge($errors, $batchErrors);
@@ -172,157 +181,53 @@ class ProcessMemberImportJob implements ShouldQueue
     }
 
     /**
-     * Bulk-insert one chunk — creates users, user_organisation_roles,
-     * organisation_users, and members records.
+     * Process one chunk via DDD MemberImportService
      * Returns [imported, skipped, errors].
      */
-    private function insertChunk(array $chunk, Organisation $org, string $initiatedBy): array
+    private function processChunk(array $chunk, Organisation $org): array
     {
-        $emails = array_column($chunk, 'email');
+        $commands = array_map(function ($row) {
+            return new MemberImportCommand(
+                email: $row['email'],
+                firstName: $row['firstName'],
+                lastName: $row['lastName'],
+                membershipTypeId: null,
+                geoUnitId: null,
+            );
+        }, $chunk);
 
-        // Map email → existing User (platform-wide)
-        $existingUsers = User::whereIn('email', $emails)
-            ->select('id', 'email')
-            ->get()
-            ->keyBy('email');
+        $result = $this->getImportService()->import(
+            TenantId::fromString($org->id),
+            $commands,
+            MembershipTypeId::fromString($this->getDefaultMembershipTypeId($org))
+        );
 
-        // Map email → existing member record for THIS org (for update path)
-        $existingMembers = DB::table('members')
-            ->join('organisation_users', 'members.organisation_user_id', '=', 'organisation_users.id')
-            ->join('users', 'organisation_users.user_id', '=', 'users.id')
-            ->where('members.organisation_id', $org->id)
-            ->whereIn('users.email', $emails)
-            ->select('users.email', 'members.id as member_id')
-            ->get()
-            ->keyBy('email');
+        return [$result->imported, $result->skipped, $result->errors];
+    }
 
-        $imported = 0;
-        $updated  = 0;
-        $skipped  = 0;
-        $errors   = [];
-
-        // Resolve default voting membership type for the org (used when none specified in CSV)
-        $defaultType = MembershipType::where('organisation_id', $org->id)
+    /**
+     * Get the default membership type ID for the organisation
+     * Falls back to global membership type if organisation-specific one doesn't exist
+     */
+    private function getDefaultMembershipTypeId(Organisation $org): string
+    {
+        // First, try organisation-specific membership type
+        $type = MembershipType::where('organisation_id', $org->id)
             ->where('grants_voting_rights', true)
             ->first();
 
-        DB::transaction(function () use (
-            $chunk, $org, $existingUsers, $existingMembers, $initiatedBy, $defaultType,
-            &$imported, &$updated, &$skipped, &$errors
-        ) {
-            foreach ($chunk as $row) {
-                $status = in_array($row['status'], ['active', 'expired', 'suspended', 'ended'])
-                    ? $row['status'] : 'active';
+        // Fall back to global membership type
+        if (!$type) {
+            $type = MembershipType::whereNull('organisation_id')
+                ->where('grants_voting_rights', true)
+                ->first();
+        }
 
-                $feesStatus = in_array($row['feesStatus'], ['paid', 'unpaid', 'partial', 'exempt'])
-                    ? $row['feesStatus'] : 'unpaid';
+        if (!$type) {
+            throw new \RuntimeException("No default membership type found for organisation {$org->id}");
+        }
 
-                $joinedAt  = $this->parseDate($row['joinedAt']) ?? now();
-                $expiresAt = $this->parseDate($row['expiresAt']);
-
-                // ── UPDATE path: member already exists in this org ────────────
-                if (isset($existingMembers[$row['email']])) {
-                    $memberId = $existingMembers[$row['email']]->member_id;
-
-                    $updateData = ['status' => $status, 'fees_status' => $feesStatus, 'updated_at' => now()];
-
-                    // Only overwrite expires_at / joined_at when the CSV provides a value
-                    if ($expiresAt !== null) {
-                        $updateData['membership_expires_at'] = $expiresAt;
-                    }
-                    if (!empty($row['joinedAt'])) {
-                        $updateData['joined_at'] = $joinedAt;
-                    }
-                    if (!empty($row['membershipNumber'])) {
-                        $updateData['membership_number'] = $row['membershipNumber'];
-                    }
-
-                    DB::table('members')->where('id', $memberId)->update($updateData);
-                    $updated++;
-                    continue;
-                }
-
-                // ── CREATE path: new member ───────────────────────────────────
-                $name = trim("{$row['firstName']} {$row['lastName']}") ?: $row['email'];
-
-                // Reuse existing platform user or create a new one
-                if (isset($existingUsers[$row['email']])) {
-                    $userId = $existingUsers[$row['email']]->id;
-                } else {
-                    $userId = (string) Str::uuid();
-
-                    DB::table('users')->insert([
-                        'id'                => $userId,
-                        'organisation_id'   => $org->id,
-                        'name'              => $name,
-                        'first_name'        => $row['firstName'] ?: null,
-                        'last_name'         => $row['lastName']  ?: null,
-                        'region'            => '',
-                        'email'             => $row['email'],
-                        'password'          => bcrypt(Str::random(16)),
-                        'email_verified_at' => now(),
-                        'created_at'        => now(),
-                        'updated_at'        => now(),
-                    ]);
-                }
-
-                // user_organisation_roles (idempotent)
-                $hasOrgRole = DB::table('user_organisation_roles')
-                    ->where('user_id', $userId)
-                    ->where('organisation_id', $org->id)
-                    ->exists();
-
-                if (!$hasOrgRole) {
-                    DB::table('user_organisation_roles')->insert([
-                        'id'              => (string) Str::uuid(),
-                        'user_id'         => $userId,
-                        'organisation_id' => $org->id,
-                        'role'            => 'voter',
-                        'created_at'      => now(),
-                        'updated_at'      => now(),
-                    ]);
-                }
-
-                // organisation_users (idempotent)
-                $orgUserId = DB::table('organisation_users')
-                    ->where('user_id', $userId)
-                    ->where('organisation_id', $org->id)
-                    ->value('id');
-
-                if (!$orgUserId) {
-                    $orgUserId = (string) Str::uuid();
-                    DB::table('organisation_users')->insert([
-                        'id'              => $orgUserId,
-                        'user_id'         => $userId,
-                        'organisation_id' => $org->id,
-                        'created_at'      => now(),
-                        'updated_at'      => now(),
-                    ]);
-                }
-
-                // members record
-                $membershipNumber = $row['membershipNumber'] ?: ('M' . strtoupper(Str::random(8)));
-
-                DB::table('members')->insert([
-                    'id'                    => (string) Str::uuid(),
-                    'organisation_id'       => $org->id,
-                    'organisation_user_id'  => $orgUserId,
-                    'membership_type_id'    => $defaultType?->id,
-                    'membership_number'     => $membershipNumber,
-                    'status'                => $status,
-                    'fees_status'           => $feesStatus,
-                    'joined_at'             => $joinedAt,
-                    'membership_expires_at' => $expiresAt,
-                    'created_by'            => $initiatedBy,
-                    'created_at'            => now(),
-                    'updated_at'            => now(),
-                ]);
-
-                $imported++;
-            }
-        });
-
-        return [$imported + $updated, $skipped, $errors];
+        return $type->id;
     }
 
     // ── Helpers ──────────────────────────────────────────────────────────────

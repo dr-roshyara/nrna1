@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Contexts\Governance\Domain\Committee\Enums\CommitteeRole;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,11 +27,15 @@ class CommitteeMemberProjection extends Model
         'tenant_id',
         'committee_id',
         'member_id',
+        'member_name',
+        'member_email',
+        'role',
         'assigned_at',
     ];
 
     protected $casts = [
         'assigned_at' => 'datetime',
+        'role' => CommitteeRole::class,
     ];
 
     protected $keyType = 'string';

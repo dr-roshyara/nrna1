@@ -24,6 +24,11 @@ final class MemberId
         $this->value = strtoupper(trim($memberId));
     }
 
+    public static function fromString(string $memberId): self
+    {
+        return new self($memberId);
+    }
+
     private function validate(string $memberId): void
     {
         $memberId = trim($memberId);

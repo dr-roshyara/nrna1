@@ -13,8 +13,8 @@ namespace App\Contexts\Membership\Domain\ValueObjects;
  *
  * Business Rule: Every member MUST have a tenant user ID (1:1 required relationship)
  *
- * Format: ULID (26 characters, alphanumeric, uppercase)
- * Example: "01JKUSER1234567890ABCDEFGH"
+ * Format: UUID v4 (8-4-4-4-12 hex format with dashes)
+ * Example: "f2310e9e-40ba-443e-b99a-86531f115528"
  */
 final readonly class TenantUserId
 {
@@ -35,12 +35,17 @@ final readonly class TenantUserId
             );
         }
 
-        // ULID format: 26 characters, alphanumeric
-        if (!preg_match('/^[0-9A-Z]{26}$/', $value)) {
+        // UUID v4 format: 8-4-4-4-12 hex with dashes
+        if (!preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i', $value)) {
             throw new \InvalidArgumentException(
-                "Invalid tenant user ID format: {$value}. Expected ULID (26 alphanumeric characters)"
+                "Invalid tenant user ID format: {$value}. Expected UUID v4 (8-4-4-4-12 hex with dashes)"
             );
         }
+    }
+
+    public static function fromString(string|\Stringable $value): self
+    {
+        return new self((string) $value);
     }
 
     public function value(): string

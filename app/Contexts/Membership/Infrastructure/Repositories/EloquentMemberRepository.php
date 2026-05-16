@@ -95,6 +95,27 @@ final class EloquentMemberRepository implements MemberRepositoryInterface
         return $records->map(fn($record) => $this->reconstitute($record))->all();
     }
 
+    public function existsByEmailForTenant(TenantId $tenantId, string $email): bool
+    {
+        // Check if member with this email exists in tenant
+        $memberExists = $this->model
+            ->withoutGlobalScopes()
+            ->where('organisation_id', $tenantId->value())
+            ->whereHas('organisationUser.user', function ($q) use ($email) {
+                $q->where('email', $email);
+            })
+            ->exists();
+
+        if ($memberExists) {
+            return true;
+        }
+
+        // Check if user exists in this tenant (idempotency guard)
+        return \App\Models\User::where('email', $email)
+            ->where('organisation_id', $tenantId->value())
+            ->exists();
+    }
+
     private function reconstitute(MemberContextModel $record): Member
     {
         $personalInfoData = json_decode($record->personal_info, true) ?? [];

@@ -7,6 +7,7 @@ namespace Tests\Support;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Fee\FeeId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
+use App\Contexts\Membership\Domain\ValueObjects\TenantUserId;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Ramsey\Uuid\Uuid;
 
@@ -42,5 +43,13 @@ final class DomainIdFactory
     public static function membershipType(): MembershipTypeId
     {
         return MembershipTypeId::fromString(Uuid::uuid4()->toString());
+    }
+
+    /**
+     * Generate valid TenantUserId (UUID)
+     */
+    public static function tenantUserId(): TenantUserId
+    {
+        return TenantUserId::fromString(Uuid::uuid4()->toString());
     }
 }

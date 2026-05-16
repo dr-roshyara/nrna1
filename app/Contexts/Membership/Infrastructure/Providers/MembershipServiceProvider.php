@@ -131,18 +131,55 @@ class MembershipServiceProvider extends ServiceProvider
             EloquentFeeRepository::class
         );
 
+        $this->app->bind(
+            \App\Contexts\Membership\Domain\Repositories\MembershipTypeRepositoryInterface::class,
+            \App\Contexts\Membership\Infrastructure\Repositories\EloquentMembershipTypeRepository::class
+        );
+
+        // Member Import (DDD-based refactor)
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Interfaces\TenantUserProvisioningInterface::class,
+            TenantAuthProvisioningAdapter::class
+        );
+
+        // Outbox writer binding
+        $this->app->bind(
+            \App\Contexts\Shared\Infrastructure\Outbox\OutboxWriterInterface::class,
+            OutboxWriter::class
+        );
+
+        // Membership type policy (centralizes business rule validation)
+        $this->app->bind(
+            \App\Contexts\Membership\Domain\Policies\MembershipTypePolicyInterface::class,
+            \App\Contexts\Membership\Application\Policies\MembershipTypePolicy::class
+        );
+
+        // Member import service (pure orchestration)
+        $this->app->bind(
+            \App\Contexts\Membership\Application\Services\MemberImportService::class,
+            function ($app) {
+                return new \App\Contexts\Membership\Application\Services\MemberImportService(
+                    $app->make(MemberRepositoryInterface::class),
+                    $app->make(\App\Contexts\Membership\Application\Interfaces\TenantUserProvisioningInterface::class),
+                    $app->make(\App\Contexts\Shared\Infrastructure\Outbox\OutboxWriterInterface::class),
+                    $app->make(\App\Contexts\Membership\Domain\Policies\MembershipTypePolicyInterface::class),
+                );
+            }
+        );
+
         // Repository binding (no dependencies in constructor)
         $this->app->singleton(
             \App\Contexts\Membership\Application\Membership\Ports\CommitteeAssociationRepositoryPort::class,
             \App\Contexts\Membership\Infrastructure\Repositories\EloquentCommitteeAssociationRepository::class
         );
 
-        // Lifecycle policy binding (depends on repository for queries)
+        // Lifecycle policy binding (enforces Member existence + association rules)
         $this->app->singleton(
             \App\Contexts\Membership\Domain\Membership\CommitteeAssociationLifecyclePolicy::class,
             function ($app) {
                 return new \App\Contexts\Membership\Domain\Membership\CommitteeAssociationLifecyclePolicy(
-                    $app->make(\App\Contexts\Membership\Application\Membership\Ports\CommitteeAssociationRepositoryPort::class)
+                    $app->make(\App\Contexts\Membership\Application\Membership\Ports\CommitteeAssociationRepositoryPort::class),
+                    $app->make(MemberRepositoryInterface::class)
                 );
             }
         );

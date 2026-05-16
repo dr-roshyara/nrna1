@@ -6,7 +6,7 @@ namespace App\Contexts\Shared\Infrastructure\Outbox;
 
 use Illuminate\Support\Str;
 
-final class OutboxWriter
+final class OutboxWriter implements OutboxWriterInterface
 {
     public function store(object $event, string $organisationId): void
     {

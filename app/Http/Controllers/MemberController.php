@@ -32,7 +32,7 @@ final class MemberController extends Controller
 {
     /**
      * Display list of members.
-     * Phase 3D: Read operation - still uses legacy Eloquent for now
+     * Phase 3D: Read operation - now uses member_directories projection for consistency
      */
     public function index(Request $request, Organisation $organisation): Response
     {
@@ -40,29 +40,25 @@ final class MemberController extends Controller
 
         $request->validate([
             'direction' => 'in:asc,desc',
-            'field'     => 'in:name,email,status,joined_at,membership_expires_at,created_at',
+            'field'     => 'in:display_name,email,status,created_at',
         ]);
 
-        $query = LegacyMember::where('organisation_id', $organisation->id)
-            ->with('organisationUser.user');
+        $query = \Illuminate\Support\Facades\DB::table('member_directories')
+            ->where('organisation_id', $organisation->id);
 
         // Filtering
         if ($request->filled('name')) {
-            $query->whereHas('organisationUser.user', fn ($q) =>
-                $q->where('name', 'LIKE', '%' . $request->name . '%')
-            );
+            $query->where('display_name', 'LIKE', '%' . $request->name . '%');
         }
         if ($request->filled('email')) {
-            $query->whereHas('organisationUser.user', fn ($q) =>
-                $q->where('email', 'LIKE', '%' . $request->email . '%')
-            );
+            $query->where('email', 'LIKE', '%' . $request->email . '%');
         }
         if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
 
         // Sorting
-        $allowedFields = ['status', 'joined_at', 'membership_expires_at', 'created_at'];
+        $allowedFields = ['status', 'created_at', 'display_name', 'email'];
         $direction = in_array($request->input('direction'), ['asc', 'desc'])
             ? $request->input('direction') : 'desc';
         $field = in_array($request->input('field'), $allowedFields)
@@ -71,15 +67,15 @@ final class MemberController extends Controller
         $query->orderBy($field, $direction);
 
         $members = $query->paginate(20)->through(fn ($m) => [
-            'id'                    => $m->id,
-            'name'                  => $m->organisationUser?->user?->name ?? '—',
-            'email'                 => $m->organisationUser?->user?->email ?? '—',
+            'id'                    => $m->member_id,
+            'name'                  => $m->display_name ?? '—',
+            'email'                 => $m->email ?? '—',
             'status'                => $m->status,
-            'membership_expires_at' => $m->membership_expires_at?->toIso8601String(),
-            'joined_at'             => $m->joined_at?->toIso8601String(),
-            'pending_fees'          => (float) MembershipFee::where('member_id', $m->id)
+            'membership_expires_at' => null,
+            'joined_at'             => null,
+            'pending_fees'          => (float) MembershipFee::where('member_id', $m->member_id)
                                             ->where('status', 'pending')->sum('amount'),
-            'created_at'            => $m->created_at?->toIso8601String(),
+            'created_at'            => $m->created_at ? \Carbon\Carbon::parse($m->created_at)->toIso8601String() : null,
         ]);
 
         return Inertia::render('Members/Index', [
@@ -128,18 +124,14 @@ final class MemberController extends Controller
      */
     public function export(Request $request, Organisation $organisation): StreamedResponse
     {
-        $query = LegacyMember::where('organisation_id', $organisation->id)
-            ->with('organisationUser.user');
+        $query = \Illuminate\Support\Facades\DB::table('member_directories')
+            ->where('organisation_id', $organisation->id);
 
         if ($request->filled('name')) {
-            $query->whereHas('organisationUser.user', fn ($q) =>
-                $q->where('name', 'LIKE', '%' . $request->name . '%')
-            );
+            $query->where('display_name', 'LIKE', '%' . $request->name . '%');
         }
         if ($request->filled('email')) {
-            $query->whereHas('organisationUser.user', fn ($q) =>
-                $q->where('email', 'LIKE', '%' . $request->email . '%')
-            );
+            $query->where('email', 'LIKE', '%' . $request->email . '%');
         }
         if ($request->filled('status')) {
             $query->where('status', $request->status);
@@ -156,14 +148,13 @@ final class MemberController extends Controller
 
         $callback = function () use ($members) {
             $handle = fopen('php://output', 'w');
-            fputcsv($handle, ['Name', 'Email', 'Status', 'Joined', 'Expires'], ';');
+            fputcsv($handle, ['Name', 'Email', 'Status', 'Membership Type'], ';');
             foreach ($members as $m) {
                 fputcsv($handle, [
-                    $m->organisationUser?->user?->name ?? '—',
-                    $m->organisationUser?->user?->email ?? '—',
+                    $m->display_name ?? '—',
+                    $m->email ?? '—',
                     $m->status,
-                    $m->joined_at?->format('Y-m-d'),
-                    $m->membership_expires_at?->format('Y-m-d') ?? 'Lifetime',
+                    $m->membership_type_name ?? '—',
                 ], ';');
             }
             fclose($handle);
@@ -376,5 +367,29 @@ final class MemberController extends Controller
             'pending_fees'   => (float) MembershipFee::where('organisation_id', $organisation->id)
                                     ->where('status', 'pending')->sum('amount'),
         ];
+    }
+
+    /**
+     * Extract full name from personal_info JSON
+     */
+    private function getNameFromPersonalInfo(?string $personalInfo): ?string
+    {
+        if (!$personalInfo) {
+            return null;
+        }
+        $data = json_decode($personalInfo, true);
+        return $data['fullName'] ?? null;
+    }
+
+    /**
+     * Extract email from personal_info JSON
+     */
+    private function getEmailFromPersonalInfo(?string $personalInfo): ?string
+    {
+        if (!$personalInfo) {
+            return null;
+        }
+        $data = json_decode($personalInfo, true);
+        return $data['email'] ?? null;
     }
 }

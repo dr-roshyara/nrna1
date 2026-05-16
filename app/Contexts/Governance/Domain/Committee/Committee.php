@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Governance\Domain\Committee;
 
+use App\Contexts\Governance\Domain\Committee\Enums\CommitteeRole;
 use App\Contexts\Governance\Domain\Committee\Events\MemberAssignedToCommittee;
 use App\Contexts\Governance\Domain\Committee\Events\MemberRemovedFromCommittee;
 use App\Contexts\Membership\Domain\Member\MemberId;
@@ -11,6 +12,7 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
 final class Committee
 {
+    /** @var array<string, CommitteeRole> member ID => role mapping */
     private array $members = [];
     private array $events = [];
 
@@ -27,27 +29,25 @@ final class Committee
         return new self($id, $tenantId);
     }
 
-    public function addMember(MemberId $memberId): void
+    public function addMember(MemberId $memberId, CommitteeRole $role): void
     {
         if ($this->isMemberAssigned($memberId)) {
-            return; // idempotency: ignore duplicate
+            throw new \DomainException('Member already assigned to this committee');
         }
 
-        $this->members[] = $memberId;
+        $this->members[$memberId->value()] = $role;
 
         $this->recordEvent(new MemberAssignedToCommittee(
             $this->id,
             $memberId,
-            $this->tenantId
+            $this->tenantId,
+            $role
         ));
     }
 
     public function removeMember(MemberId $memberId): void
     {
-        $this->members = array_filter(
-            $this->members,
-            fn (MemberId $id) => !$id->equals($memberId)
-        );
+        unset($this->members[$memberId->value()]);
 
         $this->recordEvent(new MemberRemovedFromCommittee(
             $this->id,
@@ -58,15 +58,17 @@ final class Committee
 
     public function isMemberAssigned(MemberId $memberId): bool
     {
-        foreach ($this->members as $member) {
-            if ($member->equals($memberId)) {
-                return true;
-            }
-        }
-
-        return false;
+        return isset($this->members[$memberId->value()]);
     }
 
+    public function getMemberRole(MemberId $memberId): ?CommitteeRole
+    {
+        return $this->members[$memberId->value()] ?? null;
+    }
+
+    /**
+     * Returns array of member ID => role mappings
+     */
     public function getMembers(): array
     {
         return $this->members;

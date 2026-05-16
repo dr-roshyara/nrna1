@@ -12,9 +12,11 @@ use App\Contexts\Governance\Application\Ports\LockInterface;
 use App\Contexts\Governance\Application\Ports\RebuildRunRepository;
 use App\Contexts\Governance\Application\UseCases\GetCommitteeHierarchy;
 use App\Contexts\Governance\Application\Services\GovernanceProjectionRebuilder;
+use App\Contexts\Governance\Domain\Committee\CommitteeRepositoryInterface;
 use App\Contexts\Governance\Infrastructure\Clock\SystemClock;
 use App\Contexts\Governance\Infrastructure\Projections\CommitteeGovernanceProjector;
 use App\Contexts\Governance\Infrastructure\Repositories\EloquentCommitteeProjectionRebuildRepository;
+use App\Contexts\Governance\Infrastructure\Repositories\EloquentCommitteeRepository;
 use App\Contexts\Governance\Infrastructure\Repositories\EloquentRebuildRunRepository;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Support\ServiceProvider;
@@ -23,6 +25,9 @@ final class GovernanceServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        // Repositories
+        $this->app->bind(CommitteeRepositoryInterface::class, EloquentCommitteeRepository::class);
+
         // Ports
         $this->app->bind(GovernanceClock::class, SystemClock::class);
         $this->app->bind(CommitteeGovernanceProjectorInterface::class, CommitteeGovernanceProjector::class);

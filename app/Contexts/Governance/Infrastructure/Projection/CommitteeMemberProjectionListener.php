@@ -7,6 +7,7 @@ namespace App\Contexts\Governance\Infrastructure\Projection;
 use App\Contexts\Governance\Domain\Committee\Events\MemberAssignedToCommittee;
 use App\Contexts\Governance\Domain\Committee\Events\MemberRemovedFromCommittee;
 use App\Models\CommitteeMemberProjection;
+use Illuminate\Support\Facades\DB;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -21,11 +22,17 @@ use Ramsey\Uuid\Uuid;
  * - No validation
  * - Only event → state transformation
  * - Idempotent via updateOrCreate
+ * - Denormalizes member data for read optimization
  */
 final class CommitteeMemberProjectionListener
 {
     public function onMemberAssigned(MemberAssignedToCommittee $event): void
     {
+        // Fetch member data for denormalization
+        $member = DB::table('users')
+            ->where('id', $event->memberId->value())
+            ->first(['id', 'name', 'email']);
+
         CommitteeMemberProjection::updateOrCreate(
             [
                 'committee_id' => $event->committeeId->value(),
@@ -34,6 +41,9 @@ final class CommitteeMemberProjectionListener
             [
                 'id' => Uuid::uuid4()->toString(),
                 'tenant_id' => $event->tenantId->value(),
+                'member_name' => $member?->name ?? 'N/A',
+                'member_email' => $member?->email ?? 'N/A',
+                'role' => $event->role()->value,
                 'assigned_at' => $event->occurredAt,
             ]
         );

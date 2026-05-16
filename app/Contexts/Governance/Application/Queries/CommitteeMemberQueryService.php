@@ -33,6 +33,9 @@ final readonly class CommitteeMemberQueryService
             ->get()
             ->map(fn ($row) => [
                 'memberId' => $row->member_id,
+                'memberName' => $row->member_name ?? 'N/A',
+                'memberEmail' => $row->member_email ?? 'N/A',
+                'role' => $row->role?->value ?? 'member',
                 'assignedAt' => $row->assigned_at?->toIso8601String(),
             ])
             ->toArray();

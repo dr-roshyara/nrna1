@@ -10,7 +10,9 @@ use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Membership\Exceptions\DuplicateActiveAssociationException;
 use App\Contexts\Membership\Domain\Membership\Exceptions\InvalidAssociationTransitionException;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
+use App\Contexts\Membership\Domain\Repositories\MemberRepositoryInterface;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use DomainException;
 
 final class CommitteeAssociationLifecyclePolicy
 {
@@ -22,6 +24,7 @@ final class CommitteeAssociationLifecyclePolicy
 
     public function __construct(
         private readonly CommitteeAssociationRepositoryPort $repository,
+        private readonly MemberRepositoryInterface $memberRepository,
     ) {}
 
     public function assertCanCreate(
@@ -29,11 +32,19 @@ final class CommitteeAssociationLifecyclePolicy
         CommitteeId $committeeId,
         TenantId $tenantId,
     ): void {
-        // @todo Replace with existsActiveAssociation() for O(1) lookup
-        $actives = $this->repository->findActiveByMemberForTenant($memberId, $tenantId);
+        // Guard 1: Member MUST exist before committee assignment (critical invariant)
+        $member = $this->memberRepository->find($memberId, $tenantId);
+        if (!$member) {
+            throw new DomainException(
+                "Cannot assign member to committee: Member does not exist. " .
+                "Member ID: {$memberId->value()}. " .
+                "Create Member record first via proper provisioning flow."
+            );
+        }
 
         // Rule 1: No duplicate ACTIVE associations
         // (member can have at most one ACTIVE association per committee)
+        $actives = $this->repository->findActiveByMemberForTenant($memberId, $tenantId);
         $duplicate = collect($actives)->first(
             fn($assoc) => $assoc->committeeId->value() === $committeeId->value()
         );

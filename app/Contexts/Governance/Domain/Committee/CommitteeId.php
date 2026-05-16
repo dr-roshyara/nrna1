@@ -10,9 +10,16 @@ final readonly class CommitteeId
 {
     private function __construct(private string $value)
     {
-        if (!Uuid::isValid($value)) {
+        // Accept both UUID and ULID formats
+        if (!Uuid::isValid($value) && !$this->isValidUlid($value)) {
             throw new \InvalidArgumentException("Invalid CommitteeId: {$value}");
         }
+    }
+
+    private function isValidUlid(string $value): bool
+    {
+        // ULID format: 26 alphanumeric characters (Crockford base32)
+        return preg_match('/^[0-7][0-9a-z]{25}$/i', $value) === 1;
     }
 
     public static function fromString(string $value): self

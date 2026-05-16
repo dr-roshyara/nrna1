@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Event;
 
 use App\Contexts\Governance\Domain\Committee\Committee;
 use App\Contexts\Governance\Domain\Committee\CommitteeId;
+use App\Contexts\Governance\Domain\Committee\Enums\CommitteeRole;
 use App\Contexts\Governance\Domain\Committee\Events\MemberAssignedToCommittee;
 use App\Contexts\Governance\Domain\Committee\Events\MemberRemovedFromCommittee;
 use App\Contexts\Membership\Domain\Member\MemberId;
@@ -38,7 +39,8 @@ final class CommitteeMemberProjectionTest extends TestCase
         $event = new MemberAssignedToCommittee(
             $committeeId,
             $memberId,
-            $tenantId
+            $tenantId,
+            CommitteeRole::MEMBER
         );
 
         Event::dispatch($event);
@@ -63,7 +65,8 @@ final class CommitteeMemberProjectionTest extends TestCase
         $event = new MemberAssignedToCommittee(
             $committeeId,
             $memberId,
-            $tenantId
+            $tenantId,
+            CommitteeRole::MEMBER
         );
 
         // Process same event twice (simulates outbox retry)
@@ -91,8 +94,8 @@ final class CommitteeMemberProjectionTest extends TestCase
         $memberId = MemberId::generate();
 
         // Assign same member to committees in different tenants
-        Event::dispatch(new MemberAssignedToCommittee($committeeA, $memberId, $tenantA));
-        Event::dispatch(new MemberAssignedToCommittee($committeeB, $memberId, $tenantB));
+        Event::dispatch(new MemberAssignedToCommittee($committeeA, $memberId, $tenantA, CommitteeRole::MEMBER));
+        Event::dispatch(new MemberAssignedToCommittee($committeeB, $memberId, $tenantB, CommitteeRole::MEMBER));
 
         // Tenant A should see only its assignment
         $tenantARecords = CommitteeMemberProjection::where('tenant_id', $tenantA->value())->count();
@@ -115,7 +118,8 @@ final class CommitteeMemberProjectionTest extends TestCase
         $event = new MemberAssignedToCommittee(
             $committeeId,
             $memberId,
-            $tenantId
+            $tenantId,
+            CommitteeRole::MEMBER
         );
 
         Event::dispatch($event);
@@ -145,7 +149,8 @@ final class CommitteeMemberProjectionTest extends TestCase
         Event::dispatch(new MemberAssignedToCommittee(
             $committeeId,
             $memberId,
-            $tenantId
+            $tenantId,
+            CommitteeRole::MEMBER
         ));
 
         $this->assertDatabaseHas('committee_member_projection', [
@@ -179,9 +184,9 @@ final class CommitteeMemberProjectionTest extends TestCase
         $tenantId = $this->createTenant();
 
         $events = [
-            new MemberAssignedToCommittee($committeeId, $member1, $tenantId),
-            new MemberAssignedToCommittee($committeeId, $member2, $tenantId),
-            new MemberAssignedToCommittee($committeeId, $member3, $tenantId),
+            new MemberAssignedToCommittee($committeeId, $member1, $tenantId, CommitteeRole::MEMBER),
+            new MemberAssignedToCommittee($committeeId, $member2, $tenantId, CommitteeRole::MEMBER),
+            new MemberAssignedToCommittee($committeeId, $member3, $tenantId, CommitteeRole::MEMBER),
             new MemberRemovedFromCommittee($committeeId, $member2, $tenantId),
         ];
 
@@ -223,7 +228,8 @@ final class CommitteeMemberProjectionTest extends TestCase
         $event = new MemberAssignedToCommittee(
             $committeeId,
             $memberId,
-            $tenantId
+            $tenantId,
+            CommitteeRole::MEMBER
         );
 
         // Simulate: event processed, then outbox retries
@@ -255,9 +261,9 @@ final class CommitteeMemberProjectionTest extends TestCase
         $memberId = MemberId::generate();
         $tenantId = $this->createTenant();
 
-        Event::dispatch(new MemberAssignedToCommittee($committee1, $memberId, $tenantId));
-        Event::dispatch(new MemberAssignedToCommittee($committee2, $memberId, $tenantId));
-        Event::dispatch(new MemberAssignedToCommittee($committee3, $memberId, $tenantId));
+        Event::dispatch(new MemberAssignedToCommittee($committee1, $memberId, $tenantId, CommitteeRole::MEMBER));
+        Event::dispatch(new MemberAssignedToCommittee($committee2, $memberId, $tenantId, CommitteeRole::MEMBER));
+        Event::dispatch(new MemberAssignedToCommittee($committee3, $memberId, $tenantId, CommitteeRole::MEMBER));
 
         $count = CommitteeMemberProjection::where('member_id', $memberId->value())
             ->where('tenant_id', $tenantId->value())

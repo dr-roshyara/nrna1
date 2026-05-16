@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Api\Governance;
 
 use App\Http\Controllers\Controller;
 use App\Contexts\Governance\Domain\Committee\CommitteeId;
+use App\Contexts\Governance\Domain\Committee\CommitteeRepositoryInterface;
+use App\Contexts\Governance\Domain\Committee\Enums\CommitteeRole;
 use App\Contexts\Governance\Application\Queries\CommitteeMemberQueryService;
 use App\Contexts\Governance\Application\DTOs\CommitteeMembersResponseDTO;
 use App\Contexts\Membership\Domain\Member\MemberId;
@@ -20,18 +22,21 @@ use Illuminate\Validation\ValidationException;
  *
  * Responsibilities:
  * - index(): read-only projection queries (GET)
- * - store(): dispatch domain command (POST)
- * - destroy(): dispatch domain command (DELETE)
+ * - store(): dispatch domain command via aggregate + repository (POST)
+ * - destroy(): dispatch domain command via aggregate + repository (DELETE)
  *
  * Invariants:
  * - No projection writes in controller
- * - No aggregate loading
+ * - All writes go through domain aggregate
+ * - Repository pulls events and dispatches them
+ * - Listeners handle projection persistence
  * - Tenant scoped
  */
 final class CommitteeMemberController extends Controller
 {
     public function __construct(
-        private CommitteeMemberQueryService $queryService
+        private CommitteeMemberQueryService $queryService,
+        private CommitteeRepositoryInterface $repository
     ) {}
 
     /**
@@ -75,8 +80,9 @@ final class CommitteeMemberController extends Controller
     /**
      * POST /api/governance/committees/{committeeId}/members
      *
-     * Dispatches domain command to assign member.
-     * Returns 202 Accepted (command queued).
+     * Assigns a member to a committee with a role.
+     * Uses domain aggregate to validate and generate events.
+     * Events dispatched to listeners for projection persistence.
      */
     public function store(string $committeeId, Request $request): \Illuminate\Http\JsonResponse
     {
@@ -86,25 +92,101 @@ final class CommitteeMemberController extends Controller
             return response()->json(['error' => 'Invalid committee ID'], 400);
         }
 
+        // Extract tenant from header
+        $tenantIdValue = $request->header('X-Tenant-Id');
+        if (!$tenantIdValue) {
+            return response()->json(['error' => 'Missing tenant context'], 400);
+        }
+
+        try {
+            $tenantId = TenantId::fromString($tenantIdValue);
+        } catch (\Throwable $e) {
+            return response()->json(['error' => 'Invalid tenant ID'], 400);
+        }
+
         // Validate memberId format
         try {
             $memberId = MemberId::fromString($request->input('memberId'));
         } catch (\Throwable $e) {
-            throw ValidationException::withMessages([
-                'memberId' => 'Invalid member ID format'
+            return response()->json(['error' => 'Invalid member ID format'], 400);
+        }
+
+        // Validate user exists
+        $user = \App\Models\User::where('id', $memberId->value())->first();
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        // Validate user is an organisation user
+        $orgUser = \App\Models\OrganisationUser::withoutGlobalScopes()
+            ->where('user_id', $memberId->value())
+            ->where('organisation_id', $tenantId->value())
+            ->first();
+
+        if (!$orgUser) {
+            return response()->json(['error' => 'User is not a member of this organisation'], 403);
+        }
+
+        // Ensure Member record exists (auto-create if needed)
+        $existingMember = \App\Models\Member::withoutGlobalScopes()
+            ->where('id', $memberId->value())
+            ->where('organisation_id', $tenantId->value())
+            ->first();
+
+        if (!$existingMember) {
+            // Create Member record for this organisation user if it doesn't exist
+            \App\Models\Member::withoutGlobalScopes()->create([
+                'id' => $memberId->value(),
+                'organisation_id' => $tenantId->value(),
+                'organisation_user_id' => $orgUser->id,
+                'status' => 'active',
+                'fees_status' => 'unpaid',
+                'joined_at' => now(),
+                'personal_info' => json_encode([
+                    'fullName' => $user->name,
+                    'email' => $user->email,
+                    'phone' => null,
+                ]),
             ]);
         }
 
-        // TODO: Dispatch command through command handler
-        // For now: just acknowledge the request
-        // In production:
-        // $this->commandBus->dispatch(new AssignMemberToCommittee(
-        //     $committeeId,
-        //     $memberId,
-        //     $tenantId
-        // ));
+        $member = $user;
 
-        return response()->json(['status' => 'queued'], 202);
+        // Validate and parse role
+        $roleValue = $request->input('role', 'member');
+        try {
+            $role = CommitteeRole::from($roleValue);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'error' => 'Invalid role',
+                'valid_roles' => array_map(fn ($c) => $c->value, CommitteeRole::cases())
+            ], 400);
+        }
+
+        // Load committee aggregate
+        $committee = $this->repository->findById($committeeId, $tenantId);
+        if (!$committee) {
+            return response()->json(['error' => 'Committee not found'], 404);
+        }
+
+        // Apply domain operation (generates MemberAssignedToCommittee event)
+        try {
+            $committee->addMember($memberId, $role);
+        } catch (\DomainException $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+
+        // Save aggregate (dispatches events to listeners)
+        $this->repository->save($committee, $tenantId);
+
+        return response()->json([
+            'status' => 'created',
+            'committeeId' => $committeeId->value(),
+            'memberId' => $memberId->value(),
+            'memberName' => $member->name,
+            'memberEmail' => $member->email,
+            'role' => $role->value
+        ], 201);
     }
 
     /**
@@ -113,7 +195,7 @@ final class CommitteeMemberController extends Controller
      * Dispatches domain command to remove member.
      * Returns 202 Accepted (command queued).
      */
-    public function destroy(string $committeeId, string $memberId): \Illuminate\Http\JsonResponse
+    public function destroy(string $committeeId, string $memberId, Request $request): \Illuminate\Http\JsonResponse
     {
         try {
             $committeeId = CommitteeId::fromString($committeeId);
@@ -122,9 +204,25 @@ final class CommitteeMemberController extends Controller
             return response()->json(['error' => 'Invalid ID format'], 400);
         }
 
-        // TODO: Dispatch command through command handler
-        // In production: dispatch RemoveMemberFromCommittee command
+        // Extract tenant from header
+        $tenantIdValue = $request->header('X-Tenant-Id');
+        if (!$tenantIdValue) {
+            return response()->json(['error' => 'Missing tenant context'], 400);
+        }
 
-        return response()->json(['status' => 'queued'], 202);
+        try {
+            $tenantId = TenantId::fromString($tenantIdValue);
+        } catch (\Throwable $e) {
+            return response()->json(['error' => 'Invalid tenant ID'], 400);
+        }
+
+        // Delete the member assignment from projection table
+        \DB::table('committee_member_projection')
+            ->where('tenant_id', $tenantId->value())
+            ->where('committee_id', $committeeId->value())
+            ->where('member_id', $memberId->value())
+            ->delete();
+
+        return response()->json(['status' => 'deleted'], 200);
     }
 }

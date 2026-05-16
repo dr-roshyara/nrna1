@@ -18,4 +18,10 @@ interface MemberRepositoryInterface
     public function findByStatusForTenant(MemberStatus $status, TenantId $tenantId): array;
 
     public function findExpiringForTenant(TenantId $tenantId, int $withinDays): array;
+
+    /**
+     * Check if a member with given email already exists for a tenant.
+     * Used for import idempotency — skip duplicate emails without failing the row.
+     */
+    public function existsByEmailForTenant(TenantId $tenantId, string $email): bool;
 }

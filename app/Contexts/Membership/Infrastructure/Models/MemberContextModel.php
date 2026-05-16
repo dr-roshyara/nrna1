@@ -42,4 +42,9 @@ class MemberContextModel extends Model
 
     protected $keyType = 'string';
     public $incrementing = false;
+
+    public function organisationUser()
+    {
+        return $this->belongsTo(\App\Models\OrganisationUser::class, 'organisation_user_id');
+    }
 }

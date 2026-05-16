@@ -76,6 +76,28 @@
           </div>
         </div>
 
+        <!-- Role Selection -->
+        <div v-if="form.selectedMember" class="space-y-2">
+          <label for="memberRole" class="block text-sm font-medium text-neutral-700">
+            Role
+          </label>
+          <select
+            id="memberRole"
+            v-model="form.role"
+            class="w-full rounded-lg border border-neutral-300 px-4 py-2 text-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all"
+          >
+            <option value="member">Member</option>
+            <option value="chair">Chair</option>
+            <option value="deputy">Deputy Chair</option>
+            <option value="observer">Observer</option>
+          </select>
+          <p class="text-xs text-neutral-600">
+            <span v-if="form.role === 'chair'" class="inline-block bg-purple-100 text-purple-700 px-2 py-1 rounded">Leadership Role</span>
+            <span v-else-if="form.role === 'deputy'" class="inline-block bg-blue-100 text-blue-700 px-2 py-1 rounded">Leadership Role</span>
+            <span v-else class="inline-block bg-neutral-100 text-neutral-700 px-2 py-1 rounded">Regular Role</span>
+          </p>
+        </div>
+
         <!-- Action Buttons -->
         <div class="flex gap-3">
           <Button
@@ -150,6 +172,9 @@
                 Email
               </th>
               <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-neutral-600">
+                Role
+              </th>
+              <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-neutral-600">
                 Assigned Date
               </th>
               <th class="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-neutral-600">
@@ -168,6 +193,19 @@
               </td>
               <td class="px-6 py-4 text-neutral-600">
                 <span class="text-xs bg-neutral-100 px-2 py-1 rounded">{{ member.memberEmail || 'N/A' }}</span>
+              </td>
+              <td class="px-6 py-4">
+                <span
+                  :class="[
+                    'inline-block px-3 py-1 rounded-full text-xs font-medium',
+                    member.role === 'chair' ? 'bg-purple-100 text-purple-700' :
+                    member.role === 'deputy' ? 'bg-blue-100 text-blue-700' :
+                    member.role === 'observer' ? 'bg-orange-100 text-orange-700' :
+                    'bg-neutral-100 text-neutral-700'
+                  ]"
+                >
+                  {{ member.role ? member.role.charAt(0).toUpperCase() + member.role.slice(1) : 'Member' }}
+                </span>
               </td>
               <td class="px-6 py-4 text-neutral-600">
                 {{ formatDate(member.assignedAt) }}
@@ -225,9 +263,11 @@ const props = defineProps({
 const form = ref({
   searchQuery: '',
   selectedMember: null,
+  role: 'member',
 });
 
 const page = usePage();
+
 const membersList = ref([]);
 const searchResults = ref([]);
 const isLoading = ref(false);
@@ -247,7 +287,14 @@ const effectiveTenantId = computed(() => {
   if (page.props.organisation?.id) {
     return page.props.organisation.id;
   }
+  if (page.props.organisationId) {
+    return page.props.organisationId;
+  }
   return null;
+});
+
+const effectiveOrganisationSlug = computed(() => {
+  return route().params?.organisation || props.organisationId;
 });
 
 const formatDate = (dateString) => {
@@ -274,17 +321,20 @@ const fetchMembers = async () => {
 
   isLoadingMembers.value = true;
   try {
+    const fetchOptions = {
+      headers: {
+        'X-Tenant-Id': effectiveTenantId.value,
+        'Accept': 'application/json',
+      },
+    };
+
     const response = await fetch(
       `/api/governance/committees/${props.committeeId}/members`,
-      {
-        headers: {
-          'X-Tenant-Id': effectiveTenantId.value,
-          'Accept': 'application/json',
-        },
-      }
+      fetchOptions
     );
 
     if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
       throw new Error(`Failed to fetch members: ${response.statusText}`);
     }
 
@@ -318,7 +368,7 @@ const handleSearch = async () => {
       });
 
       const response = await fetch(
-        `${route('members.search')}?${params.toString()}`,
+        `${route('members.search', { organisation: effectiveOrganisationSlug.value })}?${params.toString()}`,
         {
           headers: {
             'Accept': 'application/json',
@@ -343,6 +393,7 @@ const handleSearch = async () => {
 const selectMember = (member) => {
   form.value.selectedMember = member;
   form.value.searchQuery = '';
+  form.value.role = 'member'; // Reset to default role
   searchResults.value = [];
   errors.value.searchQuery = '';
 };
@@ -375,6 +426,7 @@ const handleAddMember = async () => {
         },
         body: JSON.stringify({
           memberId: form.value.selectedMember.id,
+          role: form.value.role,
         }),
       }
     );
@@ -449,6 +501,7 @@ const handleRemoveMember = async (memberId) => {
 const resetForm = () => {
   form.value.searchQuery = '';
   form.value.selectedMember = null;
+  form.value.role = 'member';
   searchResults.value = [];
   errors.value = {};
   setTimeout(() => {
