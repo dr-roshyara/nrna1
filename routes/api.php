@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Api\OrganizationController;
+use App\Http\Controllers\Api\Governance\CommitteeMemberController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OpenionController;
@@ -52,3 +53,15 @@ Route::group(['middleware'=>['auth:sanctum']], function(){
 });
 
 Route::group([], __DIR__ . '/geography/geographyApiRoutes.php');
+
+// ── Governance API: Committee Member Management ────────────────────────
+Route::group(['prefix' => 'governance', 'as' => 'governance.'], function () {
+    Route::get('/committees/{committeeId}/members', [CommitteeMemberController::class, 'index'])
+        ->name('committee-members.index');
+
+    Route::post('/committees/{committeeId}/members', [CommitteeMemberController::class, 'store'])
+        ->name('committee-members.store');
+
+    Route::delete('/committees/{committeeId}/members/{memberId}', [CommitteeMemberController::class, 'destroy'])
+        ->name('committee-members.destroy');
+});

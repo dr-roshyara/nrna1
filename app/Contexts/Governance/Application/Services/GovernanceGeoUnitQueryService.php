@@ -72,8 +72,7 @@ final readonly class GovernanceGeoUnitQueryService
                 'children_count'
             )
             ->whereIn('gau.admin_level', $adminLevels)
-            ->where('gau.is_active', true)
-            ->where('gau.organisation_id', $tenantId);
+            ->where('gau.is_active', true);
 
         // Apply level filter
         if ($filter->level !== null) {
@@ -137,7 +136,6 @@ final readonly class GovernanceGeoUnitQueryService
     {
         $unit = DB::table('geo_administrative_units')
             ->where('id', $unitId)
-            ->where('organisation_id', $tenantId)
             ->first(['id', 'code', 'name_local', 'admin_level', 'admin_type', 'parent_id', 'path']);
 
         if (!$unit) {
@@ -154,7 +152,6 @@ final readonly class GovernanceGeoUnitQueryService
         $ancestors = DB::table('geo_administrative_units')
             ->select(['id', 'code', 'name_local', 'admin_level', 'admin_type', 'parent_id', 'path'])
             ->whereIn('id', $ancestorIds)
-            ->where('organisation_id', $tenantId)
             ->orderBy('admin_level')
             ->get();
 
@@ -203,7 +200,6 @@ final readonly class GovernanceGeoUnitQueryService
             ])
             ->whereIn('admin_level', $adminLevels)
             ->where('is_active', true)
-            ->where('organisation_id', $tenantId)
             ->where(function ($q) use ($query) {
                 $q->where('code', 'ilike', "%{$query}%")
                   ->orWhere('name_local->en', 'ilike', "%{$query}%");
