@@ -200,7 +200,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
-import { route } from '@/ziggy';
+import { route } from 'ziggy-js';
 import Button from '@/Components/Button.vue';
 import ActionButton from '@/Components/ActionButton.vue';
 import Card from '@/Components/Card.vue';
