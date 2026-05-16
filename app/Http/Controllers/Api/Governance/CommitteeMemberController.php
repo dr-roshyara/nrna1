@@ -11,6 +11,7 @@ use App\Contexts\Governance\Domain\Committee\Enums\CommitteeRole;
 use App\Contexts\Governance\Application\Queries\CommitteeMemberQueryService;
 use App\Contexts\Governance\Application\DTOs\CommitteeMembersResponseDTO;
 use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Membership\Domain\Membership\CommitteeAssociationLifecyclePolicy;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -36,7 +37,8 @@ final class CommitteeMemberController extends Controller
 {
     public function __construct(
         private CommitteeMemberQueryService $queryService,
-        private CommitteeRepositoryInterface $repository
+        private CommitteeRepositoryInterface $repository,
+        private CommitteeAssociationLifecyclePolicy $guard
     ) {}
 
     /**
@@ -127,29 +129,23 @@ final class CommitteeMemberController extends Controller
             return response()->json(['error' => 'User is not a member of this organisation'], 403);
         }
 
-        // Ensure Member record exists (auto-create if needed)
+        // Find Member record via organisation_user_id relationship
+        // memberId parameter is actually the USER ID, so we look up via orgUser
         $existingMember = \App\Models\Member::withoutGlobalScopes()
-            ->where('id', $memberId->value())
+            ->where('organisation_user_id', $orgUser->id)
             ->where('organisation_id', $tenantId->value())
             ->first();
 
         if (!$existingMember) {
-            // Create Member record for this organisation user if it doesn't exist
-            \App\Models\Member::withoutGlobalScopes()->create([
-                'id' => $memberId->value(),
-                'organisation_id' => $tenantId->value(),
-                'organisation_user_id' => $orgUser->id,
-                'status' => 'active',
-                'fees_status' => 'unpaid',
-                'joined_at' => now(),
-                'personal_info' => json_encode([
-                    'fullName' => $user->name,
-                    'email' => $user->email,
-                    'phone' => null,
-                ]),
-            ]);
+            return response()->json([
+                'error' => 'Member record not found. User must be registered as a member first.',
+                'userId' => $memberId->value(),
+                'organisationId' => $tenantId->value()
+            ], 404);
         }
 
+        // Get the actual member ID for domain operation
+        $actualMemberId = MemberId::fromString($existingMember->id);
         $member = $user;
 
         // Validate and parse role
@@ -169,9 +165,16 @@ final class CommitteeMemberController extends Controller
             return response()->json(['error' => 'Committee not found'], 404);
         }
 
+        // Guard: Ensure member exists and can be assigned (prevents orphaned assignments)
+        try {
+            $this->guard->assertCanCreate($actualMemberId, $committeeId, $tenantId);
+        } catch (\DomainException $e) {
+            return response()->json(['error' => $e->getMessage()], 400);
+        }
+
         // Apply domain operation (generates MemberAssignedToCommittee event)
         try {
-            $committee->addMember($memberId, $role);
+            $committee->addMember($actualMemberId, $role);
         } catch (\DomainException $e) {
             return response()->json(['error' => $e->getMessage()], 400);
         }
@@ -182,7 +185,7 @@ final class CommitteeMemberController extends Controller
         return response()->json([
             'status' => 'created',
             'committeeId' => $committeeId->value(),
-            'memberId' => $memberId->value(),
+            'memberId' => $actualMemberId->value(),
             'memberName' => $member->name,
             'memberEmail' => $member->email,
             'role' => $role->value
