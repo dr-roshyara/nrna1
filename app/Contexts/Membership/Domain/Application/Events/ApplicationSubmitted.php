@@ -6,7 +6,7 @@ namespace App\Contexts\Membership\Domain\Application\Events;
 
 use App\Contexts\Membership\Domain\Application\ApplicationId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use DateTimeImmutable;
 
 final readonly class ApplicationSubmitted

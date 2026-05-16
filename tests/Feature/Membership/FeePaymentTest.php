@@ -6,7 +6,7 @@ namespace Tests\Feature\Membership;
 
 use App\Contexts\Membership\Domain\Fee\FeeId;
 use App\Contexts\Membership\Domain\Member\MemberId;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Inertia\Testing\AssertableInertia;
@@ -62,10 +62,10 @@ class FeePaymentTest extends TestCase
     /** @test */
     public function record_payment_marks_fee_as_paid(): void
     {
-        $fee = $this->createTestFee($this->organisation->id);
+        [$member, $fee] = $this->createTestFeeWithMember($this->organisation->id);
 
         $this->actingAs($this->admin)->post(
-            '/organisations/' . $this->organisation->id . '/members/record-payment',
+            '/organisations/' . $this->organisation->id . '/members/' . $member->id . '/record-payment',
             [
                 'fee_id' => $fee->id,
                 'payment_method' => 'bank_transfer',
@@ -80,10 +80,10 @@ class FeePaymentTest extends TestCase
     /** @test */
     public function record_payment_persists_payment_method(): void
     {
-        $fee = $this->createTestFee($this->organisation->id);
+        [$member, $fee] = $this->createTestFeeWithMember($this->organisation->id);
 
         $this->actingAs($this->admin)->post(
-            '/organisations/' . $this->organisation->id . '/members/record-payment',
+            '/organisations/' . $this->organisation->id . '/members/' . $member->id . '/record-payment',
             [
                 'fee_id' => $fee->id,
                 'payment_method' => 'card',
@@ -98,11 +98,11 @@ class FeePaymentTest extends TestCase
     /** @test */
     public function record_payment_persists_transaction_reference(): void
     {
-        $fee = $this->createTestFee($this->organisation->id);
+        [$member, $fee] = $this->createTestFeeWithMember($this->organisation->id);
         $txnRef = 'TXN-789-ABC';
 
         $this->actingAs($this->admin)->post(
-            '/organisations/' . $this->organisation->id . '/members/record-payment',
+            '/organisations/' . $this->organisation->id . '/members/' . $member->id . '/record-payment',
             [
                 'fee_id' => $fee->id,
                 'payment_method' => 'cash',
@@ -117,13 +117,13 @@ class FeePaymentTest extends TestCase
     /** @test */
     public function record_payment_with_duplicate_transaction_reference_throws(): void
     {
-        $fee1 = $this->createTestFee($this->organisation->id);
-        $fee2 = $this->createTestFee($this->organisation->id);
+        [$member1, $fee1] = $this->createTestFeeWithMember($this->organisation->id);
+        [$member2, $fee2] = $this->createTestFeeWithMember($this->organisation->id);
         $txnRef = 'TXN-DUPLICATE';
 
         // Record first payment
         $this->actingAs($this->admin)->post(
-            '/organisations/' . $this->organisation->id . '/members/record-payment',
+            '/organisations/' . $this->organisation->id . '/members/' . $member1->id . '/record-payment',
             [
                 'fee_id' => $fee1->id,
                 'payment_method' => 'bank_transfer',
@@ -133,7 +133,7 @@ class FeePaymentTest extends TestCase
 
         // Attempt to record duplicate transaction reference
         $response = $this->actingAs($this->admin)->post(
-            '/organisations/' . $this->organisation->id . '/members/record-payment',
+            '/organisations/' . $this->organisation->id . '/members/' . $member2->id . '/record-payment',
             [
                 'fee_id' => $fee2->id,
                 'payment_method' => 'bank_transfer',
@@ -153,10 +153,15 @@ class FeePaymentTest extends TestCase
             ->hasAttached($otherOrg, ['role' => 'admin'])
             ->create();
 
-        $fee = $this->createTestFee($this->organisation->id);
+        [$member, $fee] = $this->createTestFeeWithMember($this->organisation->id);
+
+        // Try to pay fee from different org using a member from that org (should not find the fee)
+        $otherMember = \App\Models\Member::factory()
+            ->for($otherOrg)
+            ->create();
 
         $response = $this->actingAs($otherAdmin)->post(
-            '/organisations/' . $otherOrg->id . '/members/record-payment',
+            '/organisations/' . $otherOrg->id . '/members/' . $otherMember->id . '/record-payment',
             [
                 'fee_id' => $fee->id,
                 'payment_method' => 'bank_transfer',
@@ -170,17 +175,25 @@ class FeePaymentTest extends TestCase
     /** @test */
     public function cannot_pay_already_paid_fee(): void
     {
-        $fee = $this->createTestFee($this->organisation->id);
+        [$member, $fee] = $this->createTestFeeWithMember($this->organisation->id);
 
-        // Mark fee as paid first
-        $fee->update(['status' => 'paid']);
-
-        $response = $this->actingAs($this->admin)->post(
-            '/organisations/' . $this->organisation->id . '/members/record-payment',
+        // Mark fee as paid through handler (not direct DB update)
+        $this->actingAs($this->admin)->post(
+            '/organisations/' . $this->organisation->id . '/members/' . $member->id . '/record-payment',
             [
                 'fee_id' => $fee->id,
                 'payment_method' => 'bank_transfer',
                 'transaction_reference' => 'TXN-999',
+            ]
+        );
+
+        // Try to pay again - should fail since fee is already paid
+        $response = $this->actingAs($this->admin)->post(
+            '/organisations/' . $this->organisation->id . '/members/' . $member->id . '/record-payment',
+            [
+                'fee_id' => $fee->id,
+                'payment_method' => 'bank_transfer',
+                'transaction_reference' => 'TXN-999-DUPLICATE',
             ]
         );
 
@@ -199,5 +212,21 @@ class FeePaymentTest extends TestCase
             ->create([
                 'status' => 'pending',
             ]);
+    }
+
+    private function createTestFeeWithMember(string $organisationId): array
+    {
+        $member = \App\Models\Member::factory()
+            ->for(\App\Models\Organisation::find($organisationId))
+            ->create();
+
+        $fee = \App\Models\MembershipFee::factory()
+            ->for($member)
+            ->for(\App\Models\Organisation::find($organisationId))
+            ->create([
+                'status' => 'pending',
+            ]);
+
+        return [$member, $fee];
     }
 }

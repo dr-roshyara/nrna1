@@ -41,12 +41,7 @@ class MemberApprovalCreatesCorrectMemberTest extends TestCase
         session(['current_organisation_id' => $this->org->id]);
 
         $this->admin = User::factory()->create();
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $this->admin->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'admin',
-        ]);
+        $this->assignRole($this->admin, $this->org, 'admin');
 
         $this->applicant = User::factory()->create();
 

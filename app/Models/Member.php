@@ -33,6 +33,7 @@ class Member extends Model
         'newsletter_unsubscribed_at',
         'newsletter_unsubscribe_token',
         'newsletter_bounced_at',
+        'residence_geo_unit_id',
     ];
 
     protected $casts = [

@@ -11,6 +11,7 @@ use App\Contexts\Membership\Domain\Membership\ValueObjects\LineageId;
 use App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Shared\Domain\Concerns\RecordsEvents;
+use App\Contexts\Membership\Domain\Membership\Events\MemberAssignedToCommittee;
 use App\Contexts\Membership\Domain\Membership\Events\MembershipSuspended;
 use App\Contexts\Membership\Domain\Membership\Events\MembershipRestored;
 use App\Contexts\Membership\Domain\Membership\Events\MembershipTerminated;
@@ -49,9 +50,11 @@ final class MembershipLineage
     /**
      * Establish a new membership lineage (initial episode).
      *
-     * Called when a member's application is first approved.
+     * Called when a member's application is first approved or directly assigned.
      * Creates the lineage identity and the initial ACTIVE episode internally.
      * The aggregate enforces: first episode is ALWAYS ACTIVE.
+     *
+     * Emits: MemberAssignedToCommittee domain event
      *
      * @param LineageId $lineageId Constitutional identity
      * @param MemberId $memberId Member of the relationship
@@ -79,6 +82,16 @@ final class MembershipLineage
 
         $self = new self($lineageId, $memberId, $committeeId, $tenantId);
         $self->episodes[] = $initialEpisode;
+
+        // Emit domain event
+        $self->recordEvent(new MemberAssignedToCommittee(
+            lineageId: $lineageId->value(),
+            memberId: $memberId->value(),
+            committeeId: $committeeId->value(),
+            tenantId: $tenantId->value(),
+            nominationType: $reason->value,
+            assignedAt: $at,
+        ));
 
         return $self;
     }

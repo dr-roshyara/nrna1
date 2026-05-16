@@ -57,6 +57,10 @@
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "test": [
+            "@php artisan test",
+            "bash scripts/enforce-tenantid.sh"
         ]
     },
     "config": {

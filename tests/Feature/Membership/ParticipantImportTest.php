@@ -51,12 +51,7 @@ class ParticipantImportTest extends TestCase
             'user_id'         => $user->id,
             'organisation_id' => $this->org->id,
         ]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => $role,
-        ]);
+        $this->assignRole($user, $this->org, $role);
 
         return $user;
     }

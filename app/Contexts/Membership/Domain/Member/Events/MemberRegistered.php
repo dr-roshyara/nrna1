@@ -6,7 +6,7 @@ namespace App\Contexts\Membership\Domain\Member\Events;
 
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Member\ValueObjects\PersonalInfo;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
 use DateTimeImmutable;
 

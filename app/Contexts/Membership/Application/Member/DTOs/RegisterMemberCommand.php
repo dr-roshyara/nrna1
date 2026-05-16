@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Application\Member\DTOs;
 
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
 
 final readonly class RegisterMemberCommand

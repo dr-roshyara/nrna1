@@ -50,12 +50,7 @@ class ParticipantManagementTest extends TestCase
     private function makeOrgUser(string $role): User
     {
         $user = User::factory()->create();
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => $role,
-        ]);
+        $this->assignRole($user, $this->org, $role);
         return $user;
     }
 
@@ -108,14 +103,14 @@ class ParticipantManagementTest extends TestCase
         $this->actingAs($this->admin)->post($this->participantsStoreRoute(), [
             'email'            => $this->targetUser->email,
             'participant_type' => 'staff',
-            'role'             => 'coordinator',
+            'role'             => 'organizer',
         ]);
 
         $this->assertDatabaseHas('organisation_participants', [
             'organisation_id'  => $this->org->id,
             'user_id'          => $this->targetUser->id,
             'participant_type' => 'staff',
-            'role'             => 'coordinator',
+            'role'             => 'organizer',
         ]);
     }
 
@@ -141,7 +136,7 @@ class ParticipantManagementTest extends TestCase
         $this->actingAs($this->admin)->post($this->participantsStoreRoute(), [
             'email'            => $this->targetUser->email,
             'participant_type' => 'election_committee',
-            'role'             => 'scrutineer',
+            'role'             => 'organizer',
         ]);
 
         $this->assertDatabaseHas('organisation_participants', [

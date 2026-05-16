@@ -10,7 +10,8 @@ use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Member\MemberStatus;
 use App\Contexts\Membership\Domain\Member\ValueObjects\MemberResidenceGeoIdentity;
 use App\Contexts\Membership\Domain\Member\ValueObjects\PersonalInfo;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Membership\Domain\Member\ValueObjects\FeeState;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
 use App\Contexts\Membership\Infrastructure\Models\MemberContextModel;
 use DateTimeImmutable;
@@ -60,6 +61,7 @@ final class EloquentMemberRepository implements MemberRepositoryInterface
         $model->membership_type_id = $member->getMembershipTypeId()->value();
         $model->status = $member->getStatus()->value();
         $model->residence_geo_unit_id = $member->getResidenceGeoIdentity()?->residenceGeoUnitId;
+        $model->fee_state = $member->getFeeState()->value;
 
         if ($organisationUserId !== null) {
             $model->organisation_user_id = $organisationUserId;
@@ -103,6 +105,10 @@ final class EloquentMemberRepository implements MemberRepositoryInterface
             $personalInfoData['phone'] ?? ''
         );
 
+        $feeState = $record->fee_state
+            ? FeeState::from($record->fee_state)
+            : FeeState::UNPAID;
+
         return Member::reconstitute(
             MemberId::fromString($record->id),
             MemberStatus::fromString($record->status),
@@ -111,7 +117,8 @@ final class EloquentMemberRepository implements MemberRepositoryInterface
             TenantId::fromOrganisationId($record->organisation_id),
             $record->residence_geo_unit_id
                 ? new MemberResidenceGeoIdentity((int) $record->residence_geo_unit_id)
-                : null
+                : null,
+            $feeState
         );
     }
 }

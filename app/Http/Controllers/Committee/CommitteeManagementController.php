@@ -12,6 +12,7 @@ use App\Contexts\Membership\Application\Committee\UpdateCommitteeDetails;
 use App\Contexts\Membership\Domain\Committee\Exceptions\InvalidCommitteeSlugException;
 use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeSlug;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Http\Requests\Committee\StoreCommitteeRequest;
 use App\Contexts\Membership\Infrastructure\Models\CommitteeModel;
 use App\Models\Organisation;

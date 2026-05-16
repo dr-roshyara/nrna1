@@ -6,7 +6,7 @@ namespace App\Contexts\Membership\Domain\Application;
 
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Domain\Traits\RecordsEvents;
 use App\Contexts\Membership\Domain\Application\Events\ApplicationSubmitted;
 use App\Contexts\Membership\Domain\Application\Events\ApplicationApproved;

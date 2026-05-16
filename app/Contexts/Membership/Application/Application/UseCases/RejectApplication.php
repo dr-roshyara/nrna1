@@ -6,7 +6,7 @@ namespace App\Contexts\Membership\Application\Application\UseCases;
 
 use App\Contexts\Membership\Domain\Repositories\ApplicationRepositoryInterface;
 use App\Contexts\Membership\Domain\Application\ApplicationId;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Shared\Infrastructure\Events\LaravelEventBus;
 
 final class RejectApplication

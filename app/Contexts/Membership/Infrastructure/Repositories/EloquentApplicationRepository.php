@@ -10,7 +10,7 @@ use App\Contexts\Membership\Domain\Application\ApplicationId;
 use App\Contexts\Membership\Domain\Application\ApplicationStatus;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Infrastructure\Models\ApplicationContextModel;
 
 final class EloquentApplicationRepository implements ApplicationRepositoryInterface

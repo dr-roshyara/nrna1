@@ -6,7 +6,7 @@ namespace App\Contexts\Membership\Domain\Fee\Services;
 
 use App\Contexts\Membership\Domain\Fee\Fee;
 use App\Contexts\Membership\Domain\Repositories\FeeRepositoryInterface;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
 final class PaymentPolicy
 {

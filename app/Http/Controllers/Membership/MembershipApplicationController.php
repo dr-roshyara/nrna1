@@ -15,7 +15,7 @@ use App\Models\OrganisationUser;
 use App\Models\User;
 use App\Models\UserOrganisationRole;
 use App\Policies\MembershipPolicy;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
 use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
 use App\Contexts\Membership\Domain\Application\ApplicationId;

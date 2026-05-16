@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Application\Committee\Commands;
 
-use App\Contexts\Membership\Domain\ValueObjects\CommitteeId;
+use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\ValueObjects\NominationType;
 use App\Contexts\Membership\Domain\ValueObjects\RolePath;

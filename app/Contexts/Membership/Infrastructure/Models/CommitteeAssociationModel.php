@@ -17,6 +17,7 @@ final class CommitteeAssociationModel extends Model
     protected $fillable = [
         'id',
         'association_id',
+        'lineage_id',
         'organisation_id',
         'member_id',
         'committee_id',

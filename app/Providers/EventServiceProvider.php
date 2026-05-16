@@ -13,6 +13,11 @@ use App\Listeners\InvalidateMembershipDashboardCache;
 use App\Listeners\CreateIncomeForMembershipFee;
 use App\Listeners\Membership\RecalculateMemberFeeStatus;
 use App\Listeners\Finance\CreateIncomeFromFeePaidProjection;
+use App\Contexts\Membership\Domain\Fee\Events\FeePaid;
+use App\Contexts\Membership\Application\Member\Listeners\MemberFeeStateListener;
+use App\Contexts\Governance\Domain\Committee\Events\MemberAssignedToCommittee;
+use App\Contexts\Governance\Domain\Committee\Events\MemberRemovedFromCommittee;
+use App\Contexts\Governance\Infrastructure\Projection\CommitteeMemberProjectionListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -72,5 +77,12 @@ class EventServiceProvider extends ServiceProvider
 
         // ── Membership fee paid event listeners ───────────────────────────────
         Event::listen(MembershipFeePaid::class, [CreateIncomeForMembershipFee::class, 'handle']);
+
+        // ── Domain fee events → Member fee state synchronization ──────────────
+        Event::listen(FeePaid::class, [MemberFeeStateListener::class, 'handle']);
+
+        // ── Committee domain events → Projection synchronization ──────────────
+        Event::listen(MemberAssignedToCommittee::class, [CommitteeMemberProjectionListener::class, 'onMemberAssigned']);
+        Event::listen(MemberRemovedFromCommittee::class, [CommitteeMemberProjectionListener::class, 'onMemberRemoved']);
     }
 }

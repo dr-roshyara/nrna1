@@ -44,6 +44,7 @@ final class EloquentMembershipLineageRepository implements MembershipLineageRepo
         $isTermination = $currentEpisode->status->equals(\App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus::TERMINATED);
 
         CommitteeAssociationModel::create([
+            'id' => \Illuminate\Support\Str::uuid(),
             'organisation_id' => $tenantId->value(),
             'lineage_id' => $lineage->lineageId->value(),
             'member_id' => $currentEpisode->memberId->value(),
@@ -312,12 +313,17 @@ final class EloquentMembershipLineageRepository implements MembershipLineageRepo
         $episodes = [];
 
         foreach ($models as $model) {
+            $associatedAt = $model->associated_at;
+            if (!$associatedAt instanceof \DateTimeImmutable) {
+                $associatedAt = \DateTimeImmutable::createFromInterface($associatedAt);
+            }
+
             $episodes[] = new CommitteeAssociation(
                 associationId: \App\Contexts\Membership\Domain\Membership\ValueObjects\AssociationId::fromString($model->association_id),
                 memberId: MemberId::fromString($model->member_id),
                 committeeId: CommitteeId::fromString($model->committee_id),
                 associationType: \App\Contexts\Membership\Domain\Membership\ValueObjects\ApplicationReason::from($model->association_type),
-                associatedAt: $model->associated_at,
+                associatedAt: $associatedAt,
                 status: \App\Contexts\Membership\Domain\Membership\ValueObjects\MembershipStatus::from($model->status),
                 actorId: $model->suspended_by_actor_id ?? $model->terminated_by_actor_id ?? null,
                 transitionReason: $model->suspension_reason ?? $model->termination_reason ?? null,

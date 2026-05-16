@@ -7,7 +7,7 @@ namespace App\Contexts\Membership\Domain\Repositories;
 use App\Contexts\Membership\Domain\Application\Application;
 use App\Contexts\Membership\Domain\Application\ApplicationId;
 use App\Contexts\Membership\Domain\Application\ApplicationStatus;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
 interface ApplicationRepositoryInterface
 {

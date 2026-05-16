@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Infrastructure\Services;
 
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use Illuminate\Support\Str;
 
 final class OutboxService

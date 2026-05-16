@@ -82,4 +82,81 @@ class OrganisationPolicy
             ->exists() &&
             $organisation->governance_status === 'governance_configured';
     }
+
+    /**
+     * View membership applications (owner, admin, or commission role).
+     */
+    public function viewApplications(User $user, Organisation $organisation): bool
+    {
+        return UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->whereIn('role', ['owner', 'admin', 'commission'])
+            ->exists();
+    }
+
+    /**
+     * Approve membership applications (owner or admin role).
+     */
+    public function approveApplication(User $user, Organisation $organisation): bool
+    {
+        return UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->whereIn('role', ['owner', 'admin'])
+            ->exists();
+    }
+
+    /**
+     * Reject membership applications (owner or admin role).
+     */
+    public function rejectApplication(User $user, Organisation $organisation): bool
+    {
+        return UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->whereIn('role', ['owner', 'admin'])
+            ->exists();
+    }
+
+    /**
+     * Record fee payments (owner or admin role).
+     */
+    public function recordFeePayment(User $user, Organisation $organisation): bool
+    {
+        return UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->whereIn('role', ['owner', 'admin'])
+            ->exists();
+    }
+
+    /**
+     * Manage membership types (owner only).
+     */
+    public function manageMembershipTypes(User $user, Organisation $organisation): bool
+    {
+        return UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->where('role', 'owner')
+            ->exists();
+    }
+
+    /**
+     * Initiate renewal (admin, owner, or member themselves).
+     */
+    public function initiateRenewal(User $user, Organisation $organisation, bool $isSelf = false): bool
+    {
+        if (UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->whereIn('role', ['owner', 'admin'])
+            ->exists()) {
+            return true;
+        }
+
+        if ($isSelf && UserOrganisationRole::where('user_id', $user->id)
+            ->where('organisation_id', $organisation->id)
+            ->where('role', 'member')
+            ->exists()) {
+            return true;
+        }
+
+        return false;
+    }
 }

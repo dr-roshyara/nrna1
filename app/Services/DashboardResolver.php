@@ -115,15 +115,6 @@ class DashboardResolver
                 ]);
 
                 if ($electionOrg) {
-                    try {
-                        $this->tenantContext->setContext($user, $electionOrg);
-                    } catch (\RuntimeException $e) {
-                        Log::warning('DashboardResolver: TenantContext failed in Priority 3', [
-                            'user_id' => $user->id,
-                            'error'   => $e->getMessage(),
-                        ]);
-                    }
-
                     if ($eligibleCount === 1) {
                         // Single election: go directly to slug-based election show page
                         $targetUrl = route('elections.show', $activeElection->slug);
@@ -185,21 +176,6 @@ class DashboardResolver
         if ($orgRole) {
             $organisation = \App\Models\Organisation::find($orgRole->organisation_id);
             if ($organisation) {
-                // Set TenantContext before redirecting
-                try {
-                    $this->tenantContext->setContext($user, $organisation);
-                    Log::debug('DashboardResolver: TenantContext set for organisation (Priority 5)', [
-                        'user_id' => $user->id,
-                        'organisation_id' => $organisation->id,
-                    ]);
-                } catch (\RuntimeException $e) {
-                    Log::warning('DashboardResolver: Failed to set TenantContext (Priority 5)', [
-                        'user_id' => $user->id,
-                        'organisation_id' => $organisation->id,
-                        'error' => $e->getMessage(),
-                    ]);
-                }
-
                 Log::info('🏢 PRIORITY 5 HIT: User has organisation - redirecting to organisation page', [
                     'user_id' => $user->id,
                     'organisation_id' => $organisation->id,
@@ -672,21 +648,6 @@ class DashboardResolver
                     $organisation = \App\Models\Organisation::find($orgRole->organisation_id);
 
                     if ($organisation) {
-                        // Set TenantContext before redirecting
-                        try {
-                            $this->tenantContext->setContext($user, $organisation);
-                            \Log::debug('DashboardResolver: TenantContext set for organisation admin', [
-                                'user_id' => $user->id,
-                                'organisation_id' => $organisation->id,
-                            ]);
-                        } catch (\RuntimeException $e) {
-                            \Log::warning('DashboardResolver: Failed to set TenantContext for admin', [
-                                'user_id' => $user->id,
-                                'organisation_id' => $organisation->id,
-                                'error' => $e->getMessage(),
-                            ]);
-                        }
-
                         \Log::info('DashboardResolver: organisation admin redirect', [
                             'user_id' => $user->id,
                             'organisation_id' => $organisation->id,
@@ -1034,21 +995,6 @@ class DashboardResolver
                         'organisation_slug' => $ownOrg->slug,
                         'type' => $ownOrg->type,
                     ]);
-
-                    // Set TenantContext before redirecting
-                    try {
-                        $this->tenantContext->setContext($user, $ownOrg);
-                        Log::debug('DashboardResolver: TenantContext set for own organisation', [
-                            'user_id' => $user->id,
-                            'organisation_id' => $ownOrg->id,
-                        ]);
-                    } catch (\RuntimeException $e) {
-                        Log::warning('DashboardResolver: Failed to set TenantContext for own org', [
-                            'user_id' => $user->id,
-                            'organisation_id' => $ownOrg->id,
-                            'error' => $e->getMessage(),
-                        ]);
-                    }
 
                     return redirect()->route('organisations.show', $ownOrg->slug);
                 }

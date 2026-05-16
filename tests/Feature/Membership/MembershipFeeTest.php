@@ -33,11 +33,7 @@ class MembershipFeeTest extends TestCase
         session(['current_organisation_id' => $this->org->id]);
 
         $this->admin = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $this->admin->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'admin',
-        ]);
+        $this->assignRole($this->admin, $this->org, 'admin');
 
         $this->type = MembershipType::create([
             'id'              => (string) Str::uuid(),
@@ -51,11 +47,7 @@ class MembershipFeeTest extends TestCase
         ]);
 
         $memberUser = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $memberUser->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'member',
-        ]);
+        $this->assignRole($memberUser, $this->org, 'member');
         $orgUser = OrganisationUser::create([
             'id'              => (string) Str::uuid(),
             'organisation_id' => $this->org->id,

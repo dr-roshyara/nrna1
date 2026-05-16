@@ -5,12 +5,16 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Domain\Fee\Events;
 
 use App\Contexts\Membership\Domain\Fee\FeeId;
+use App\Contexts\Membership\Domain\Member\MemberId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use DateTimeImmutable;
 
 final readonly class FeePaid
 {
     public function __construct(
         private FeeId $feeId,
+        private MemberId $memberId,
+        private TenantId $tenantId,
         private string $amount,
         private string $paymentMethod,
         private DateTimeImmutable $paidAt,
@@ -22,6 +26,16 @@ final readonly class FeePaid
     public function getFeeId(): FeeId
     {
         return $this->feeId;
+    }
+
+    public function getMemberId(): MemberId
+    {
+        return $this->memberId;
+    }
+
+    public function getTenantId(): TenantId
+    {
+        return $this->tenantId;
     }
 
     public function getAmount(): string

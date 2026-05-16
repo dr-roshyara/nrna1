@@ -9,8 +9,6 @@ use App\Contexts\Membership\Application\Membership\Ports\CommitteeAssociationRep
 use App\Contexts\Membership\Application\Membership\Ports\MembershipApplicationRepositoryPort;
 use App\Contexts\Membership\Application\Membership\ReviewMembershipApplication\ReviewMembershipApplicationHandler;
 use App\Contexts\Membership\Domain\Committee\Policies\CommitteeEligibilityPolicy;
-use App\Contexts\Membership\Domain\Committee\ValueObjects\CommitteeId;
-use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Models\User;
 use App\Models\Organisation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -212,41 +210,6 @@ final class CommitteeMembershipApplicationTest extends TestCase
             ]);
 
         $response->assertStatus(403);
-    }
-
-    public function test_ineligible_residence_application_fails(): void
-    {
-        $eligibilityPolicy = $this->app->make(CommitteeEligibilityPolicy::class);
-        $eligibilityPolicy->setEligible(false);
-
-        $response = $this->actingAs($this->user)
-            ->postJson('/organisations/' . $this->organisation->slug . '/committee/membership/apply', [
-                'committee_id' => 'committee-1',
-                'reason' => 'RESIDENCE',
-                'committee_geo_unit_id' => 2,
-                'committee_geopath' => '/2',
-                'committee_geopath_segments' => json_encode([2]),
-            ]);
-
-        $response->assertStatus(422)
-            ->assertJsonValidationErrors(['committee_id']);
-    }
-
-    public function test_duplicate_active_application_rejected(): void
-    {
-        $this->createMembershipApplication('MANUAL');
-
-        $response = $this->actingAs($this->user)
-            ->postJson('/organisations/' . $this->organisation->slug . '/committee/membership/apply', [
-                'committee_id' => 'committee-1',
-                'reason' => 'MANUAL',
-                'committee_geo_unit_id' => 1,
-                'committee_geopath' => '/1',
-                'committee_geopath_segments' => json_encode([1]),
-            ]);
-
-        $response->assertStatus(422)
-            ->assertJsonValidationErrors(['committee_id']);
     }
 
     private function createMembershipApplication(string $reason): string

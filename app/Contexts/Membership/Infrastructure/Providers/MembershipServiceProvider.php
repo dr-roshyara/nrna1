@@ -303,6 +303,7 @@ class MembershipServiceProvider extends ServiceProvider
                 $app->make(MemberRepositoryInterface::class),
                 $app->make(CommitteeRepositoryInterface::class),
                 $app->make(EventBus::class),
+                $app->make(MembershipLineageRepositoryPort::class),
             );
         });
 

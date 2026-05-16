@@ -42,12 +42,7 @@ class ApplicationApprovedToVoterEligibilityTest extends TestCase
 
         // Setup admin user with owner role
         $this->admin = User::factory()->create(['organisation_id' => $this->org->id, 'email_verified_at' => now()]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $this->admin->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'owner',
-        ]);
+        $this->assignRole($this->admin, $this->org, 'owner');
 
         // Setup applicant user
         $this->applicant = User::factory()->create(['email_verified_at' => now()]);

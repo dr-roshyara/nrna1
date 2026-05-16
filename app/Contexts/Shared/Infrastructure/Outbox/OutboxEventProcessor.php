@@ -23,51 +23,93 @@ final class OutboxEventProcessor
             ->each(fn(OutboxEvent $event) => $this->processEvent($event));
     }
 
-    private function processEvent(OutboxEvent $event): void
+    public function processEvent(OutboxEvent $event): void
     {
         try {
-            DB::transaction(function () use ($event) {
-                // Dispatch integration event to listeners (Finance context, etc.)
-                // This triggers cross-context projections
-                Event::dispatch('outbox.event', [$this->hydrate($event)]);
+            // Rehydrate domain event from stored payload
+            $domainEvent = $this->hydrateDomainEvent($event);
+            $integrationEvent = $this->hydrateIntegrationEvent($event);
 
-                // Mark as processed only after successful dispatch
-                $event->markProcessed();
-            });
+            // Dispatch domain event (class-based listener binding)
+            Event::dispatch($domainEvent);
+
+            // Also dispatch integration event for cross-context listeners
+            event($integrationEvent);
+
+            // Mark as processed only after successful dispatch
+            $event->markProcessed();
         } catch (\Throwable $e) {
+            // Store error in a static variable for debugging in tests
+            static::$lastException = $e;
+
             $this->handleFailure($event, $e);
         }
     }
 
+    public static ?\Throwable $lastException = null;
+
     private function handleFailure(OutboxEvent $event, \Throwable $e): void
     {
-        \Log::error('Outbox event processing failed', [
+        // Store error for debugging (can be queried in tests)
+        $errorData = [
             'event_id' => $event->event_id,
             'event_type' => $event->event_type,
             'aggregate_id' => $event->aggregate_id,
             'organisation_id' => $event->organisation_id,
             'attempts' => $event->attempts,
             'error' => $e->getMessage(),
-        ]);
+            'trace' => $e->getTraceAsString(),
+        ];
 
-        $event->incrementAttempts();
+        \Log::error('Outbox event processing failed', $errorData);
 
-        if ($event->attempts >= self::MAX_ATTEMPTS) {
-            $event->markFailed();
-        } else {
-            $event->reschedule(now()->addMinutes(self::RETRY_DELAY_MINUTES));
+        // Also store in database for test access (temporary)
+        try {
+            \DB::table('outbox_processing_errors')->insert([
+                'outbox_event_id' => $event->id,
+                'error_message' => $e->getMessage(),
+                'error_trace' => $e->getTraceAsString(),
+                'created_at' => now(),
+            ]);
+        } catch (\Throwable) {
+            // Table might not exist or transaction is aborted
+        }
+
+        // Attempt to update outbox event in a fresh transaction
+        // This handles the case where RefreshDatabase test harness aborts the transaction
+        try {
+            DB::transaction(function () use ($event) {
+                $event->incrementAttempts();
+
+                if ($event->attempts >= self::MAX_ATTEMPTS) {
+                    $event->markFailed();
+                } else {
+                    $event->reschedule(now()->addMinutes(self::RETRY_DELAY_MINUTES));
+                }
+            });
+        } catch (\Throwable $updateError) {
+            // If we can't update the outbox event itself, at least log it
+            \Log::error('Failed to update outbox event retry status', [
+                'outbox_event_id' => $event->id,
+                'error' => $updateError->getMessage(),
+            ]);
         }
     }
 
-    private function hydrate(OutboxEvent $event): object
+    private function hydrateDomainEvent(OutboxEvent $event): object
     {
-        // Reconstruct the domain event from payload
-        // This will be expanded as more event types are added
-        $eventClass = $this->resolveEventClass($event->event_type);
         $payload = is_string($event->payload) ? json_decode($event->payload, true) : $event->payload;
 
-        // For now, return a generic integration event
-        // In Phase 4B, this becomes a proper event hydration factory
+        return match($event->event_type) {
+            'FeePaid' => $this->hydrateFeePaid($payload),
+            default => throw new \RuntimeException("Unknown event type: {$event->event_type}"),
+        };
+    }
+
+    private function hydrateIntegrationEvent(OutboxEvent $event): object
+    {
+        $payload = is_string($event->payload) ? json_decode($event->payload, true) : $event->payload;
+
         return new IntegrationEvent(
             eventId: $event->event_id,
             eventType: $event->event_type,
@@ -79,14 +121,23 @@ final class OutboxEventProcessor
         );
     }
 
-    private function resolveEventClass(string $eventType): string
+    private function hydrateFeePaid(array $payload): object
     {
-        // Map event types to their classes
-        $mapping = [
-            'FeePaid' => 'App\Contexts\Membership\Domain\Fee\Events\FeePaid',
-            'FeeWaived' => 'App\Contexts\Membership\Domain\Fee\Events\FeeWaived',
-        ];
+        $feeIdClass = 'App\Contexts\Membership\Domain\Fee\FeeId';
+        $memberIdClass = 'App\Contexts\Membership\Domain\Member\MemberId';
+        $tenantIdClass = 'App\Contexts\Shared\Domain\ValueObjects\TenantId';
 
-        return $mapping[$eventType] ?? IntegrationEvent::class;
+        return new \App\Contexts\Membership\Domain\Fee\Events\FeePaid(
+            feeId: $feeIdClass::fromString($payload['feeId']),
+            memberId: $memberIdClass::fromString($payload['memberId']),
+            tenantId: $tenantIdClass::fromString($payload['tenantId']),
+            amount: $payload['amount'],
+            paymentMethod: $payload['paymentMethod'],
+            paidAt: new \DateTimeImmutable($payload['paidAt']),
+            transactionReference: $payload['transactionReference'] ?? null,
+            recordedByUserId: $payload['recordedByUserId'] ?? null,
+            currency: $payload['currency'] ?? 'EUR',
+        );
     }
+
 }

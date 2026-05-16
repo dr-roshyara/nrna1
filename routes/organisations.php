@@ -189,6 +189,7 @@ Route::prefix('organisations/{organisation:slug}')
         // ── Member Lifecycle (Phase 3D: DDD Use Cases) ────────────────────────────
         Route::prefix('/members/{member}')->name('organisations.members.')->group(function () {
             // Financial operations (DDD use cases)
+            Route::patch('/mark-paid',       [MemberController::class, 'markPaid'])       ->name('mark-paid');
             Route::patch('/waive-fees',      [MemberController::class, 'waiveFees'])      ->name('waive-fees');
             Route::post('/record-payment',   [MemberController::class, 'recordPayment'])  ->name('record-payment');
             Route::get('/finance',           [MemberController::class, 'finance'])        ->name('finance');

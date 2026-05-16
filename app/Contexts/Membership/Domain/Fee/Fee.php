@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Domain\Fee;
 
 use App\Contexts\Membership\Domain\Member\MemberId;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
 use App\Contexts\Membership\Domain\Traits\RecordsEvents;
 use App\Contexts\Membership\Domain\Fee\Events\FeePaid;
@@ -91,6 +91,8 @@ final class Fee
 
         $this->recordThat(new FeePaid(
             feeId: $this->id,
+            memberId: $this->memberId,
+            tenantId: $this->tenantId,
             amount: $this->amount,
             paymentMethod: $payment->method,
             paidAt: $payment->paidAt,

@@ -8,7 +8,7 @@ use App\Contexts\Membership\Domain\Fee\Fee;
 use App\Contexts\Membership\Domain\Fee\FeeId;
 use App\Contexts\Membership\Domain\Fee\FeeStatus;
 use App\Contexts\Membership\Domain\Member\MemberId;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
 interface FeeRepositoryInterface
 {

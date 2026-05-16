@@ -33,35 +33,19 @@ class MembershipDashboardTest extends TestCase
 
         // Owner
         $this->owner = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $this->owner->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'owner',
-        ]);
+        $this->assignRole($this->owner, $this->org, 'owner');
 
         // Admin
         $this->admin = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $this->admin->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'admin',
-        ]);
+        $this->assignRole($this->admin, $this->org, 'admin');
 
         // Commission
         $this->commission = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $this->commission->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'commission',
-        ]);
+        $this->assignRole($this->commission, $this->org, 'commission');
 
         // Member
         $this->member = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $this->member->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'member',
-        ]);
+        $this->assignRole($this->member, $this->org, 'member');
 
         // Outsider — no role in this org
         $this->outsider = User::factory()->create();

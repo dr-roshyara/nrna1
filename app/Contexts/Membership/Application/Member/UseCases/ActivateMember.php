@@ -6,7 +6,7 @@ namespace App\Contexts\Membership\Application\Member\UseCases;
 
 use App\Contexts\Membership\Domain\Repositories\MemberRepositoryInterface;
 use App\Contexts\Membership\Domain\Member\MemberId;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Shared\Infrastructure\Events\LaravelEventBus;
 
 final class ActivateMember

@@ -71,7 +71,7 @@ class MemberImportController extends Controller
         try {
             // Extract tenant context from route
             $tenantSlug = $request->route('tenant');
-            $tenantId = new TenantId($tenantSlug);
+            $tenantId = TenantId::fromString($tenantSlug);
 
             // Get uploaded file
             $file = $request->file('file');
@@ -140,7 +140,7 @@ class MemberImportController extends Controller
         try {
             // Extract tenant context from route
             $tenantSlug = $request->route('tenant');
-            $tenantId = new TenantId($tenantSlug);
+            $tenantId = TenantId::fromString($tenantSlug);
 
             // Get uploaded file
             $file = $request->file('file');

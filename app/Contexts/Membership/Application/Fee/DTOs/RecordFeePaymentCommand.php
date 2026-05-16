@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Contexts\Membership\Application\Fee\DTOs;
 
 use App\Contexts\Membership\Domain\Fee\FeeId;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use DateTimeImmutable;
 
 final readonly class RecordFeePaymentCommand

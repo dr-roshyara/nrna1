@@ -30,12 +30,7 @@ class PublicApplicationApprovalTest extends TestCase
         $this->org = Organisation::factory()->create(['slug' => 'test-org', 'type' => 'tenant']);
 
         $this->admin = User::factory()->create();
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'organisation_id' => $this->org->id,
-            'user_id'         => $this->admin->id,
-            'role'            => 'admin',
-        ]);
+        $this->assignRole($this->admin, $this->org, 'admin');
 
         $this->type = MembershipType::factory()->create([
             'organisation_id' => $this->org->id,

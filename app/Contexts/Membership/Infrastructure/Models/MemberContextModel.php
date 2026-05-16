@@ -21,7 +21,9 @@ class MemberContextModel extends Model
         'membership_type_id',
         'status',
         'fees_status',
+        'fee_state',
         'residence_geo_unit_id',
+        'personal_info',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -34,6 +36,7 @@ class MemberContextModel extends Model
         'membership_type_id' => 'string',
         'status' => 'string',
         'fees_status' => 'string',
+        'fee_state' => 'string',
         'residence_geo_unit_id' => 'integer',
     ];
 

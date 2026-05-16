@@ -288,11 +288,7 @@ class OrganisationParticipantTest extends TestCase
         // A user added via the old invitation flow (UserOrganisationRole only)
         // should NOT appear in organisation_participants unless explicitly added.
         $user = User::factory()->create();
-        \App\Models\UserOrganisationRole::create([
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'member',
-        ]);
+        $this->assignRole($user, $this->org, 'member');
 
         $count = OrganisationParticipant::where('organisation_id', $this->org->id)
             ->where('user_id', $user->id)
@@ -315,11 +311,7 @@ class OrganisationParticipantTest extends TestCase
             'organisation_id'    => $this->org->id,
             'grants_voting_rights' => true,
         ]);
-        \App\Models\UserOrganisationRole::create([
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'member',
-        ]);
+        $this->assignRole($user, $this->org, 'member');
 
         // Create a Member record
         \App\Models\Member::factory()->create([

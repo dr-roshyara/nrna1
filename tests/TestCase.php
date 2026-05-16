@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Organisation;
+use App\Models\User;
+use App\Models\UserOrganisationRole;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -66,5 +68,102 @@ abstract class TestCase extends BaseTestCase
             // Log the error for debugging
             \Log::error('Failed to create platform organisation: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Assign an explicit role to a user in an organisation.
+     *
+     * Uses updateOrCreate() to ensure deterministic authorization state,
+     * overriding any factory-created default roles. Refreshes the user
+     * to clear cached relationships after mutation.
+     *
+     * Domain pattern: Tests must explicitly declare business invariants
+     * (authorization state), not rely on implicit factory defaults.
+     */
+    protected function assignRole(
+        User $user,
+        Organisation $organisation,
+        string $role
+    ): void {
+        UserOrganisationRole::updateOrCreate(
+            [
+                'user_id' => $user->id,
+                'organisation_id' => $organisation->id,
+            ],
+            [
+                'role' => $role,
+            ]
+        );
+
+        $user->refresh();
+    }
+
+    /**
+     * Phase 3 Projection Testing Infrastructure
+     * ==================================================
+     */
+
+    protected function createTenant(): \App\Contexts\Shared\Domain\ValueObjects\TenantId
+    {
+        $scenario = \Tests\Support\Scenario\Scenario::create()->bootstrapMembership();
+        return $scenario->tenantId;
+    }
+
+    protected function createMember(
+        \App\Contexts\Membership\Domain\Member\MemberId $memberId,
+        \App\Contexts\Shared\Domain\ValueObjects\TenantId $tenantId
+    ): \App\Contexts\Membership\Infrastructure\Models\MemberContextModel
+    {
+        // For this tenant, ensure we have org → user → org_user → membership_type
+        $orgId = $tenantId->value();
+
+        // 1. Organisation (use firstOrCreate to avoid duplicate unique constraint)
+        $organisation = \App\Models\Organisation::firstOrCreate(
+            ['id' => $orgId],
+            ['name' => 'Test Organisation', 'slug' => 'test-org-' . substr($orgId, 0, 8), 'type' => 'tenant']
+        );
+
+        // 2. User (create new for this organisation, with unique email)
+        $user = \Tests\Support\Builders\UserBuilder::forOrganisation($orgId)->persist();
+
+        // 3. OrganisationUser link
+        $orgUser = \Tests\Support\Builders\OrganisationUserBuilder::new($orgId, $user->id)->persist();
+
+        // 4. MembershipType for this organisation
+        $membershipType = \Tests\Support\Builders\MembershipTypeBuilder::forOrganisation($orgId)->persist();
+
+        // 5. Member with all FK constraints satisfied
+        return \Tests\Support\Builders\MemberBuilder::new()
+            ->withTenant($tenantId)
+            ->withMemberId($memberId)
+            ->withMembershipType($membershipType->id)
+            ->withOrganisationUserId($orgUser->id)
+            ->persist();
+    }
+
+    protected function createFee(
+        \App\Contexts\Membership\Domain\Member\MemberId $memberId,
+        \App\Contexts\Shared\Domain\ValueObjects\TenantId $tenantId
+    ): \App\Contexts\Membership\Domain\Fee\Fee
+    {
+        return \Tests\Support\Builders\FeeBuilder::new()
+            ->forMember($memberId, $tenantId)
+            ->build();
+    }
+
+    protected function feeId(): \App\Contexts\Membership\Domain\Fee\FeeId
+    {
+        return \App\Contexts\Membership\Domain\Fee\FeeId::generate();
+    }
+
+    protected function memberIdNonExistent(): \App\Contexts\Membership\Domain\Member\MemberId
+    {
+        return \App\Contexts\Membership\Domain\Member\MemberId::generate();
+    }
+
+    protected function runOutboxProcessor(): void
+    {
+        $processor = app(\App\Contexts\Shared\Infrastructure\Outbox\OutboxEventProcessor::class);
+        $processor->handle();
     }
 }

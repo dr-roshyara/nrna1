@@ -24,7 +24,6 @@ final class GeoUnitControllerTest extends TestCase
         parent::setUp();
 
         $this->org = Organisation::factory()->create(['type' => 'tenant']);
-        session(['current_organisation_id' => $this->org->id]);
 
         $this->user = User::factory()->forOrganisation($this->org)->create();
         // UserOrganisationRole auto-created by UserFactory.configure()
@@ -42,6 +41,7 @@ final class GeoUnitControllerTest extends TestCase
         $this->seedGeoUnits();
 
         $response = $this->actingAs($this->user)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api");
 
         $response->assertOk();
@@ -70,6 +70,7 @@ final class GeoUnitControllerTest extends TestCase
         $this->seedGeoUnits();
 
         $response = $this->actingAs($this->user)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api");
 
         $units = $response->json('data');
@@ -87,6 +88,7 @@ final class GeoUnitControllerTest extends TestCase
         $this->seedGeoUnits();
 
         $response = $this->actingAs($this->user)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api");
 
         $units = $response->json('data');
@@ -109,6 +111,7 @@ final class GeoUnitControllerTest extends TestCase
         $otherUser = User::factory()->forOrganisation($otherOrg)->create();
 
         $response = $this->actingAs($otherUser)
+            ->withHeader('X-Tenant-Id', $otherOrg->id)
             ->getJson("/organisations/{$otherOrg->slug}/geo/units/api");
 
         $response->assertOk();
@@ -123,6 +126,7 @@ final class GeoUnitControllerTest extends TestCase
         $this->seedGeoUnits();
 
         $response = $this->actingAs($this->user)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api");
 
         $response->assertOk();
@@ -137,6 +141,7 @@ final class GeoUnitControllerTest extends TestCase
         $this->seedGeoUnits();
 
         $response = $this->actingAs($this->user)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api?level=0");
 
         $response->assertOk();
@@ -156,6 +161,7 @@ final class GeoUnitControllerTest extends TestCase
 
         // Search by code
         $response = $this->actingAs($this->user)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api?search=CONT-ASIA");
 
         $response->assertOk();
@@ -165,6 +171,7 @@ final class GeoUnitControllerTest extends TestCase
 
         // Search by name (partial match)
         $response = $this->actingAs($this->user)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api?search=Asia");
 
         $response->assertOk();
@@ -188,6 +195,7 @@ final class GeoUnitControllerTest extends TestCase
             ->value('id');
 
         $response = $this->actingAs($this->user)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api/{$asiaId}");
 
         $response->assertOk();
@@ -209,6 +217,7 @@ final class GeoUnitControllerTest extends TestCase
         $this->seedGeoUnits();
 
         $response = $this->actingAs($this->user)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api/99999");
 
         $response->assertNotFound();
@@ -226,6 +235,7 @@ final class GeoUnitControllerTest extends TestCase
         $this->seedGeoUnits();
 
         $response = $this->actingAs($this->user)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api/lookup?q=Nepal");
 
         $response->assertOk();
@@ -245,6 +255,7 @@ final class GeoUnitControllerTest extends TestCase
         $this->seedGeoUnits();
 
         $response = $this->actingAs($this->user)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api/lookup?q=NonExistentPlace");
 
         $response->assertOk();
@@ -268,6 +279,7 @@ final class GeoUnitControllerTest extends TestCase
         $nonMember = User::factory()->create();
 
         $response = $this->actingAs($nonMember)
+            ->withHeader('X-Tenant-Id', $this->org->id)
             ->getJson("/organisations/{$this->org->slug}/geo/units/api");
 
         $response->assertForbidden();

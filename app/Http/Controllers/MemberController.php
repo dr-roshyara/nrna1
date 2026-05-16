@@ -11,7 +11,7 @@ use App\Models\Organisation;
 use App\Services\MembershipPaymentService;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Fee\FeeId;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
 use App\Contexts\Membership\Application\Member\UseCases\RegisterMember;
 use App\Contexts\Membership\Application\Member\UseCases\SuspendMember;
@@ -192,6 +192,29 @@ final class MemberController extends Controller
             'paymentHistory' => $service->getPaymentHistory($member),
             'stats' => $service->getDashboardStats($member),
         ]);
+    }
+
+    /**
+     * Mark a member as paid (set fees_status to exempt and waive all pending fees).
+     * Phase 3D: Admin operation to clear all outstanding fees for a member
+     */
+    public function markPaid(
+        Organisation $organisation,
+        LegacyMember $member
+    ): RedirectResponse {
+        $this->authorize('recordFeePayment', $organisation);
+
+        if ($member->organisation_id !== $organisation->id) {
+            abort(404);
+        }
+
+        $member->update(['fees_status' => 'exempt']);
+
+        $member->fees()
+            ->where('status', 'pending')
+            ->update(['status' => 'waived']);
+
+        return redirect()->back()->with('success', 'Member fees marked as paid successfully.');
     }
 
     /**

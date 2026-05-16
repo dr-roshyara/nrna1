@@ -34,11 +34,7 @@ class MembershipRenewalTest extends TestCase
         session(['current_organisation_id' => $this->org->id]);
 
         $this->admin = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $this->admin->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'admin',
-        ]);
+        $this->assignRole($this->admin, $this->org, 'admin');
 
         $this->type = MembershipType::create([
             'id'              => (string) Str::uuid(),
@@ -52,11 +48,7 @@ class MembershipRenewalTest extends TestCase
         ]);
 
         $this->memberUser = User::factory()->create();
-        UserOrganisationRole::create([
-            'user_id'         => $this->memberUser->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'member',
-        ]);
+        $this->assignRole($this->memberUser, $this->org, 'member');
 
         $orgUser = OrganisationUser::create([
             'id'              => (string) Str::uuid(),

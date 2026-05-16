@@ -39,22 +39,20 @@ class MemberControllerIndexTest extends TestCase
         session(['current_organisation_id' => $this->org->id]);
 
         // Setup admin user with owner role
-        $this->admin = User::factory()->create(['organisation_id' => $this->org->id, 'email_verified_at' => now()]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $this->admin->id,
+        $this->admin = User::factory()->create([
             'organisation_id' => $this->org->id,
-            'role'            => 'owner',
+            'email_verified_at' => now(),
         ]);
 
+        $this->assignRole($this->admin, $this->org, 'owner');
+
         // Setup non-admin user with voter role
-        $this->nonAdmin = User::factory()->create(['organisation_id' => $this->org->id, 'email_verified_at' => now()]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $this->nonAdmin->id,
+        $this->nonAdmin = User::factory()->create([
             'organisation_id' => $this->org->id,
-            'role'            => 'voter',
+            'email_verified_at' => now(),
         ]);
+
+        // Factory auto-creates 'voter' role, no explicit creation needed
     }
 
     private function orgSession(): array
@@ -72,10 +70,7 @@ class MemberControllerIndexTest extends TestCase
             ->for($user)
             ->create(['status' => 'active']);
 
-        UserOrganisationRole::firstOrCreate(
-            ['user_id' => $user->id, 'organisation_id' => $this->org->id],
-            ['id' => (string) Str::uuid(), 'role' => 'voter']
-        );
+        $this->assignRole($user, $this->org, 'voter');
 
         $membershipType = MembershipType::factory()
             ->for($this->org)
@@ -248,10 +243,7 @@ class MemberControllerIndexTest extends TestCase
             ->for($expiredUser)
             ->create(['status' => 'active']);
 
-        UserOrganisationRole::firstOrCreate(
-            ['user_id' => $expiredUser->id, 'organisation_id' => $this->org->id],
-            ['id' => (string) Str::uuid(), 'role' => 'voter']
-        );
+        $this->assignRole($expiredUser, $this->org, 'voter');
 
         $membershipType = MembershipType::factory()
             ->for($this->org)

@@ -43,12 +43,7 @@ class ExpireMembershipsCommandTest extends TestCase
             'user_id'         => $user->id,
             'organisation_id' => $this->org->id,
         ]);
-        UserOrganisationRole::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'organisation_id' => $this->org->id,
-            'role'            => 'member',
-        ]);
+        $this->assignRole($user, $this->org, 'member');
         return Member::factory()->create([
             'organisation_id'       => $this->org->id,
             'organisation_user_id'  => $orgUser->id,

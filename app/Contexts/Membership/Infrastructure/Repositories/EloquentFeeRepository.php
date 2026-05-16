@@ -11,7 +11,7 @@ use App\Contexts\Membership\Domain\Fee\FeeStatus;
 use App\Contexts\Membership\Domain\Fee\ValueObjects\PaymentDetails;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Infrastructure\Models\FeeContextModel;
 use DateTimeImmutable;
 

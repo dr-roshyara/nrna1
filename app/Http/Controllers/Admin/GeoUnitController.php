@@ -17,10 +17,16 @@ class GeoUnitController extends Controller
         private readonly GovernanceGeoUnitQueryService $queryService,
     ) {}
 
-    private function getTenantId(Request $request): string
+    private function getTenantIdForGovernance(Request $request): string
     {
-        $organisation = $request->attributes->get('organisation');
-        return $organisation ? $organisation->id : $request->user()->current_organisation_id;
+        // Geo units are SHARED reference data
+        // but governance levels ARE tenant-specific
+        $organisation = $request->route('organisation');
+        if ($organisation) {
+            return $organisation->id;
+        }
+
+        return '';
     }
 
     /**
@@ -29,7 +35,7 @@ class GeoUnitController extends Controller
     public function index(Request $request): JsonResponse
     {
         $filter = GeoUnitQueryFilter::fromRequest($request->all());
-        $units = $this->queryService->fetchFlat($this->getTenantId($request), $filter);
+        $units = $this->queryService->fetchFlat($this->getTenantIdForGovernance($request), $filter);
 
         return response()->json(['data' => $units]);
     }
@@ -40,7 +46,7 @@ class GeoUnitController extends Controller
     public function tree(Request $request): JsonResponse
     {
         $filter = GeoUnitQueryFilter::fromRequest($request->all());
-        $units = $this->queryService->fetchTree($this->getTenantId($request), $filter);
+        $units = $this->queryService->fetchTree($this->getTenantIdForGovernance($request), $filter);
 
         return response()->json(['data' => $units]);
     }
@@ -51,7 +57,7 @@ class GeoUnitController extends Controller
     public function show(Request $request): JsonResponse
     {
         $id = (int) $request->route('id');
-        $tenantId = $this->getTenantId($request);
+        $tenantId = $this->getTenantIdForGovernance($request);
 
         $unit = $this->queryService->fetchById($tenantId, $id);
 
@@ -72,7 +78,7 @@ class GeoUnitController extends Controller
     public function lookup(Request $request): JsonResponse
     {
         $q = $request->get('q', '');
-        $results = $this->queryService->lookup($this->getTenantId($request), $q);
+        $results = $this->queryService->lookup($this->getTenantIdForGovernance($request), $q);
 
         return response()->json(['data' => $results]);
     }

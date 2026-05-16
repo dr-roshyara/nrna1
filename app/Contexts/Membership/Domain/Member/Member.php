@@ -6,7 +6,8 @@ namespace App\Contexts\Membership\Domain\Member;
 
 use App\Contexts\Membership\Domain\Member\ValueObjects\MemberResidenceGeoIdentity;
 use App\Contexts\Membership\Domain\Member\ValueObjects\PersonalInfo;
-use App\Contexts\Membership\Domain\ValueObjects\TenantId;
+use App\Contexts\Membership\Domain\Member\ValueObjects\FeeState;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use App\Contexts\Membership\Domain\ValueObjects\MembershipTypeId;
 use App\Contexts\Membership\Domain\Member\Events\MemberRegistered;
 use App\Contexts\Membership\Domain\Member\Events\MemberActivated;
@@ -25,6 +26,7 @@ final class Member
     private MembershipTypeId $membershipTypeId;
     private TenantId $tenantId;
     private ?MemberResidenceGeoIdentity $residenceGeoIdentity = null;
+    private FeeState $feeState = FeeState::UNPAID;
 
     private function __construct(
         MemberId $id,
@@ -32,7 +34,8 @@ final class Member
         PersonalInfo $personalInfo,
         MembershipTypeId $membershipTypeId,
         TenantId $tenantId,
-        ?MemberResidenceGeoIdentity $residenceGeoIdentity = null
+        ?MemberResidenceGeoIdentity $residenceGeoIdentity = null,
+        FeeState $feeState = FeeState::UNPAID
     ) {
         $this->id = $id;
         $this->status = $status;
@@ -40,6 +43,7 @@ final class Member
         $this->membershipTypeId = $membershipTypeId;
         $this->tenantId = $tenantId;
         $this->residenceGeoIdentity = $residenceGeoIdentity;
+        $this->feeState = $feeState;
     }
 
     public static function register(
@@ -74,9 +78,10 @@ final class Member
         PersonalInfo $personalInfo,
         MembershipTypeId $membershipTypeId,
         TenantId $tenantId,
-        ?MemberResidenceGeoIdentity $residenceGeoIdentity = null
+        ?MemberResidenceGeoIdentity $residenceGeoIdentity = null,
+        FeeState $feeState = FeeState::UNPAID
     ): self {
-        return new self($id, $status, $personalInfo, $membershipTypeId, $tenantId, $residenceGeoIdentity);
+        return new self($id, $status, $personalInfo, $membershipTypeId, $tenantId, $residenceGeoIdentity, $feeState);
     }
 
     public function activate(): void
@@ -160,6 +165,16 @@ final class Member
     public function setResidenceGeoIdentity(?MemberResidenceGeoIdentity $residenceGeoIdentity): void
     {
         $this->residenceGeoIdentity = $residenceGeoIdentity;
+    }
+
+    public function getFeeState(): FeeState
+    {
+        return $this->feeState;
+    }
+
+    public function updateFeeStateSnapshot(FeeState $feeState): void
+    {
+        $this->feeState = $feeState;
     }
 
     public function pullEvents(): array
