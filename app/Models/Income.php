@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\Traits\ScopedByOrganisation;
+use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Income extends Model
 {
-    use HasFactory, ScopedByOrganisation;
+    use HasFactory, BelongsToTenant;
 
     /**
      * The table associated with the model.

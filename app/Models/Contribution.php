@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Traits\ScopedByOrganisation;
+use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Contribution extends Model
 {
-    use HasFactory, HasUuids, SoftDeletes, ScopedByOrganisation;
+    use HasFactory, HasUuids, SoftDeletes, BelongsToTenant;
 
     protected $keyType = 'string';
     public $incrementing = false;
