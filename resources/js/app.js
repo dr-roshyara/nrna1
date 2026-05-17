@@ -9,6 +9,7 @@ import { createPinia } from 'pinia';
 import i18n from './i18n';
 import { useGeoLocation } from './composables/useGeoLocation';
 import { useLocaleDebug } from './composables/useLocaleDebug';
+import { initializeApiClient } from './services/api';
 
 createInertiaApp({
     id: 'app',
@@ -46,6 +47,17 @@ createInertiaApp({
            .use(ZiggyVue) // Modern way: makes route() available in templates & scripts
            .use(createPinia()) // State management
            .mount(el);
+
+        // Initialize API client with tenant context from page props
+        const tenantId = props.initialPage.props.organisation?.id
+          ?? props.initialPage.props.auth?.user?.current_organisation_id;
+        initializeApiClient(tenantId);
+
+        // Listen for auth expiry events from API interceptor
+        window.addEventListener('auth:expired', () => {
+          // For now, redirect to login. Future: could be modal, SSO, etc.
+          window.location.href = '/login';
+        });
 
         // Initialize debug utilities (available in browser console during development)
         useLocaleDebug();

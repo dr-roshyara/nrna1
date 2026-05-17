@@ -263,6 +263,7 @@
 import { ref, onMounted, computed, watch } from 'vue';
 import { usePage, router } from '@inertiajs/vue3';
 import { route } from 'ziggy-js';
+import apiClient from '@/services/api';
 import Button from '@/Components/Button.vue';
 import ActionButton from '@/Components/ActionButton.vue';
 import Card from '@/Components/Card.vue';
@@ -371,48 +372,12 @@ const fetchMembers = async () => {
     return;
   }
 
-  if (!effectiveOrganisationSlug.value) {
-    console.error('[fetchMembers] No organisation slug available. Page props:', page.props);
-    membersList.value = [];
-    return;
-  }
-
   isLoadingMembers.value = true;
   try {
-    console.log('[fetchMembers] Fetching members using /api/v1 with tenant ID:', effectiveTenantId.value);
-    const fetchUrl = `/api/v1/governance/committees/${props.committeeId}/members`;
-    console.log('[fetchMembers] Constructed URL:', fetchUrl);
-
-    const fetchOptions = {
-      credentials: 'include',
-      headers: {
-        'Accept': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-Organisation-ID': effectiveTenantId.value,
-      },
-    };
-    console.log('[fetchMembers] Headers:', fetchOptions.headers);
-
-    const response = await fetch(fetchUrl, fetchOptions);
-
-    // Read the body ONCE into memory
-    const responseText = await response.text();
-
-    if (!response.ok) {
-      console.error('[fetchMembers] Error response body:', responseText);
-      try {
-        const errorData = JSON.parse(responseText);
-        throw new Error(`Failed to fetch members: ${errorData.message || JSON.stringify(errorData)}`);
-      } catch (parseError) {
-        throw new Error(`Failed to fetch members: ${response.status} - ${responseText}`);
-      }
-    }
-
-    // Parse the successful response
-    const data = JSON.parse(responseText);
-    membersList.value = data.members || [];
+    const response = await apiClient.get(`/governance/committees/${props.committeeId}/members`);
+    membersList.value = response.data.members || [];
   } catch (error) {
-    console.error('Error fetching members:', error);
+    console.error('[fetchMembers] Error:', error);
     membersList.value = [];
   } finally {
     isLoadingMembers.value = false;
@@ -479,96 +444,32 @@ const handleAddMember = async () => {
     return;
   }
 
-  console.log('[handleAddMember] Tenant ID:', effectiveTenantId.value);
-  console.log('[handleAddMember] Committee ID:', props.committeeId);
-  console.log('[handleAddMember] Selected Member:', form.value.selectedMember);
-
   if (!effectiveTenantId.value) {
-    console.error('[handleAddMember] Missing tenant context!', { tenantId: props.tenantId, organisationId: props.organisationId, pageProps: page.props });
     errors.value.searchQuery = 'Tenant context is missing';
     return;
   }
 
   isLoading.value = true;
-  errors.value = {};
-
-  const fetchUrl = `/api/v1/governance/committees/${props.committeeId}/members`;
-
-  console.log('[handleAddMember] DEBUG:', {
-    effectiveTenantId: effectiveTenantId.value,
-    committeeId: props.committeeId,
-    selectedMemberId: form.value.selectedMember.id,
-  });
-
-  if (!effectiveTenantId.value) {
-    console.error('[handleAddMember] CRITICAL: Tenant ID is empty!');
-    errors.value.searchQuery = 'Tenant ID is missing. Please refresh the page.';
-    isLoading.value = false;
-    return;
-  }
-
-  console.log('[handleAddMember] POST URL:', fetchUrl);
 
   try {
-    const response = await fetch(fetchUrl, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-Organisation-ID': effectiveTenantId.value,
-      },
-      body: JSON.stringify({
-        memberId: form.value.selectedMember.id,
-        role: form.value.role,
-      }),
+    await apiClient.post(`/governance/committees/${props.committeeId}/members`, {
+      memberId: form.value.selectedMember.id,
+      role: form.value.role,
     });
-
-    console.log('[handleAddMember] Response received:', {
-      status: response.status,
-      tenantHeaderSent: effectiveTenantId.value,
-    });
-
-    const responseText = await response.text();
-    console.log('[handleAddMember] Raw response:', {
-      status: response.status,
-      statusText: response.statusText,
-      contentType: response.headers.get('content-type'),
-      body: responseText.substring(0, 500),
-    });
-
-    // Parse response as JSON (works for both success and error responses)
-    let result;
-    try {
-      result = JSON.parse(responseText);
-    } catch (parseError) {
-      console.error('[handleAddMember] Response is not JSON:', parseError.message);
-      console.error('[handleAddMember] Response body:', responseText);
-      throw new Error(`Invalid response format: ${responseText.substring(0, 200)}`);
-    }
-
-    // Check if API returned an error in the JSON
-    if (!response.ok) {
-      console.error('[handleAddMember] Error response:', result);
-      const errorMsg = result.error || result.message || `Server error (${response.status})`;
-      throw new Error(errorMsg);
-    }
-
-    console.log('[handleAddMember] Success response:', result);
 
     successMessage.value = 'Member added successfully!';
     resetForm();
     fetchMembers();
   } catch (error) {
+    const errorMsg = error.response?.data?.error || error.message || 'Failed to add member. Please try again.';
+    errors.value.searchQuery = errorMsg;
     console.error('[handleAddMember] Error:', error);
-    errors.value.searchQuery = error.message || 'Failed to add member. Please try again.';
   } finally {
     isLoading.value = false;
   }
 };
 
-const handleRemoveMember = (memberId) => {
+const handleRemoveMember = async (memberId) => {
   if (!confirm('Are you sure you want to remove this member?')) {
     return;
   }
@@ -580,34 +481,16 @@ const handleRemoveMember = (memberId) => {
 
   removingMemberId.value = memberId;
 
-  // Use fetch with new /api/v1 endpoint
-  const deleteUrl = `/api/v1/governance/committees/${props.committeeId}/members/${memberId}`;
-
-  fetch(deleteUrl, {
-    method: 'DELETE',
-    credentials: 'include',
-    headers: {
-      'Accept': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest',
-      'X-Organisation-ID': effectiveTenantId.value,
-    },
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Server error: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(() => {
-      successMessage.value = 'Member removed successfully!';
-      fetchMembers();
-      removingMemberId.value = null;
-    })
-    .catch((error) => {
-      console.error('Error removing member:', error);
-      alert('Failed to remove member. Please try again.');
-      removingMemberId.value = null;
-    });
+  try {
+    await apiClient.delete(`/governance/committees/${props.committeeId}/members/${memberId}`);
+    successMessage.value = 'Member removed successfully!';
+    fetchMembers();
+  } catch (error) {
+    console.error('[handleRemoveMember] Error:', error);
+    alert('Failed to remove member. Please try again.');
+  } finally {
+    removingMemberId.value = null;
+  }
 };
 
 const resetForm = () => {
