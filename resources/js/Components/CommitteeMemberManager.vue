@@ -122,6 +122,30 @@
           >
             Clear
           </Button>
+          <Button
+            type="button"
+            variant="secondary"
+            @click="testAuthentication"
+            title="Click to test if you are authenticated for API requests"
+          >
+            🔐 Test Auth
+          </Button>
+          <Button
+            type="button"
+            variant="secondary"
+            @click="testMembership"
+            title="Click to test if you are a member of this organisation"
+          >
+            👥 Test Membership
+          </Button>
+          <Button
+            type="button"
+            variant="secondary"
+            @click="testPostDebug"
+            title="Click to test if POST requests work in the API"
+          >
+            📤 Test POST
+          </Button>
         </div>
 
         <p v-if="successMessage" class="text-sm text-success-600 bg-success-50 border border-success-200 rounded-lg px-4 py-3">
@@ -237,7 +261,7 @@
 
 <script setup>
 import { ref, onMounted, computed, watch } from 'vue';
-import { usePage } from '@inertiajs/vue3';
+import { usePage, router } from '@inertiajs/vue3';
 import { route } from 'ziggy-js';
 import Button from '@/Components/Button.vue';
 import ActionButton from '@/Components/ActionButton.vue';
@@ -305,7 +329,24 @@ const effectiveTenantId = computed(() => {
 });
 
 const effectiveOrganisationSlug = computed(() => {
-  return route().params?.organisation || props.organisationId;
+  // Extract slug from current URL path (most reliable)
+  const path = window.location.pathname;
+  const match = path.match(/\/organisations\/([^\/]+)/);
+  if (match) {
+    const urlSlug = match[1];
+    console.log('[effectiveOrganisationSlug] Extracted from URL path:', urlSlug);
+    return urlSlug;
+  }
+
+  // Fallback to route params
+  const routeOrg = route().params?.organisation;
+  if (routeOrg) {
+    console.log('[effectiveOrganisationSlug] Using route param:', routeOrg);
+    return routeOrg;
+  }
+
+  console.warn('[effectiveOrganisationSlug] No slug found. URL:', window.location.pathname, 'Route params:', route().params);
+  return null;
 });
 
 const formatDate = (dateString) => {
@@ -330,28 +371,45 @@ const fetchMembers = async () => {
     return;
   }
 
+  if (!effectiveOrganisationSlug.value) {
+    console.error('[fetchMembers] No organisation slug available. Page props:', page.props);
+    membersList.value = [];
+    return;
+  }
+
   isLoadingMembers.value = true;
   try {
-    console.log('[fetchMembers] Fetching with tenant ID:', effectiveTenantId.value);
+    console.log('[fetchMembers] Fetching members using /api/v1 with tenant ID:', effectiveTenantId.value);
+    const fetchUrl = `/api/v1/governance/committees/${props.committeeId}/members`;
+    console.log('[fetchMembers] Constructed URL:', fetchUrl);
+
     const fetchOptions = {
+      credentials: 'include',
       headers: {
-        'X-Tenant-Id': effectiveTenantId.value,
         'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-Organisation-ID': effectiveTenantId.value,
       },
     };
     console.log('[fetchMembers] Headers:', fetchOptions.headers);
 
-    const response = await fetch(
-      `/api/governance/committees/${props.committeeId}/members`,
-      fetchOptions
-    );
+    const response = await fetch(fetchUrl, fetchOptions);
+
+    // Read the body ONCE into memory
+    const responseText = await response.text();
 
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(`Failed to fetch members: ${response.statusText}`);
+      console.error('[fetchMembers] Error response body:', responseText);
+      try {
+        const errorData = JSON.parse(responseText);
+        throw new Error(`Failed to fetch members: ${errorData.message || JSON.stringify(errorData)}`);
+      } catch (parseError) {
+        throw new Error(`Failed to fetch members: ${response.status} - ${responseText}`);
+      }
     }
 
-    const data = await response.json();
+    // Parse the successful response
+    const data = JSON.parse(responseText);
     membersList.value = data.members || [];
   } catch (error) {
     console.error('Error fetching members:', error);
@@ -383,6 +441,7 @@ const handleSearch = async () => {
       const response = await fetch(
         `${route('members.search', { organisation: effectiveOrganisationSlug.value })}?${params.toString()}`,
         {
+          credentials: 'include',
           headers: {
             'Accept': 'application/json',
           },
@@ -431,62 +490,85 @@ const handleAddMember = async () => {
   }
 
   isLoading.value = true;
+  errors.value = {};
+
+  const fetchUrl = `/api/v1/governance/committees/${props.committeeId}/members`;
+
+  console.log('[handleAddMember] DEBUG:', {
+    effectiveTenantId: effectiveTenantId.value,
+    committeeId: props.committeeId,
+    selectedMemberId: form.value.selectedMember.id,
+  });
+
+  if (!effectiveTenantId.value) {
+    console.error('[handleAddMember] CRITICAL: Tenant ID is empty!');
+    errors.value.searchQuery = 'Tenant ID is missing. Please refresh the page.';
+    isLoading.value = false;
+    return;
+  }
+
+  console.log('[handleAddMember] POST URL:', fetchUrl);
 
   try {
-    const requestBody = {
-      memberId: form.value.selectedMember.id,
-      role: form.value.role,
-    };
-
-    const requestHeaders = {
-      'X-Tenant-Id': effectiveTenantId.value,
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    };
-
-    console.log('[handleAddMember] Sending request:', {
-      url: `/api/governance/committees/${props.committeeId}/members`,
-      headers: requestHeaders,
-      body: requestBody,
+    const response = await fetch(fetchUrl, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-Organisation-ID': effectiveTenantId.value,
+      },
+      body: JSON.stringify({
+        memberId: form.value.selectedMember.id,
+        role: form.value.role,
+      }),
     });
 
-    const response = await fetch(
-      `/api/governance/committees/${props.committeeId}/members`,
-      {
-        method: 'POST',
-        headers: requestHeaders,
-        body: JSON.stringify(requestBody),
-      }
-    );
+    console.log('[handleAddMember] Response received:', {
+      status: response.status,
+      tenantHeaderSent: effectiveTenantId.value,
+    });
 
-    if (!response.ok) {
-      if (response.status === 422) {
-        const errorData = await response.json();
-        if (errorData.errors) {
-          errors.value = errorData.errors;
-        } else {
-          errors.value.searchQuery = 'This member is already assigned';
-        }
-      } else {
-        errors.value.searchQuery = 'Failed to add member';
-      }
-      return;
+    const responseText = await response.text();
+    console.log('[handleAddMember] Raw response:', {
+      status: response.status,
+      statusText: response.statusText,
+      contentType: response.headers.get('content-type'),
+      body: responseText.substring(0, 500),
+    });
+
+    // Parse response as JSON (works for both success and error responses)
+    let result;
+    try {
+      result = JSON.parse(responseText);
+    } catch (parseError) {
+      console.error('[handleAddMember] Response is not JSON:', parseError.message);
+      console.error('[handleAddMember] Response body:', responseText);
+      throw new Error(`Invalid response format: ${responseText.substring(0, 200)}`);
     }
+
+    // Check if API returned an error in the JSON
+    if (!response.ok) {
+      console.error('[handleAddMember] Error response:', result);
+      const errorMsg = result.error || result.message || `Server error (${response.status})`;
+      throw new Error(errorMsg);
+    }
+
+    console.log('[handleAddMember] Success response:', result);
 
     successMessage.value = 'Member added successfully!';
     resetForm();
-
-    // Refresh the members list
-    await fetchMembers();
+    fetchMembers();
   } catch (error) {
-    console.error('Error adding member:', error);
-    errors.value.searchQuery = 'An unexpected error occurred';
+    console.error('[handleAddMember] Error:', error);
+    errors.value.searchQuery = error.message || 'Failed to add member. Please try again.';
   } finally {
     isLoading.value = false;
   }
 };
 
-const handleRemoveMember = async (memberId) => {
+const handleRemoveMember = (memberId) => {
   if (!confirm('Are you sure you want to remove this member?')) {
     return;
   }
@@ -498,32 +580,34 @@ const handleRemoveMember = async (memberId) => {
 
   removingMemberId.value = memberId;
 
-  try {
-    const response = await fetch(
-      `/api/governance/committees/${props.committeeId}/members/${memberId}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'X-Tenant-Id': effectiveTenantId.value,
-          'Accept': 'application/json',
-        },
+  // Use fetch with new /api/v1 endpoint
+  const deleteUrl = `/api/v1/governance/committees/${props.committeeId}/members/${memberId}`;
+
+  fetch(deleteUrl, {
+    method: 'DELETE',
+    credentials: 'include',
+    headers: {
+      'Accept': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest',
+      'X-Organisation-ID': effectiveTenantId.value,
+    },
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
       }
-    );
-
-    if (!response.ok) {
-      throw new Error(`Failed to remove member: ${response.statusText}`);
-    }
-
-    successMessage.value = 'Member removed successfully!';
-
-    // Refresh the members list
-    await fetchMembers();
-  } catch (error) {
-    console.error('Error removing member:', error);
-    alert('Failed to remove member');
-  } finally {
-    removingMemberId.value = null;
-  }
+      return response.json();
+    })
+    .then(() => {
+      successMessage.value = 'Member removed successfully!';
+      fetchMembers();
+      removingMemberId.value = null;
+    })
+    .catch((error) => {
+      console.error('Error removing member:', error);
+      alert('Failed to remove member. Please try again.');
+      removingMemberId.value = null;
+    });
 };
 
 const resetForm = () => {
@@ -537,6 +621,108 @@ const resetForm = () => {
   }, 3000);
 };
 
+const testAuthentication = async () => {
+  try {
+    console.log('[testAuthentication] Testing authentication via /api/v1...');
+    const response = await fetch(
+      '/api/v1/test-auth',
+      {
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-Organisation-ID': effectiveTenantId.value,
+        },
+      }
+    );
+
+    const data = await response.json();
+    console.log('[testAuthentication] Result:', data);
+
+    if (data.authenticated) {
+      console.log('[testAuthentication] ✓ USER IS AUTHENTICATED:', data.user);
+      alert(`✓ Authentication works!\nUser: ${data.user.email}`);
+    } else {
+      console.error('[testAuthentication] ✗ USER IS NOT AUTHENTICATED');
+      alert('✗ User is NOT authenticated! Cannot use API endpoints.');
+    }
+  } catch (error) {
+    console.error('[testAuthentication] Error:', error);
+    alert(`Authentication test failed: ${error.message}`);
+  }
+};
+
+const testMembership = async () => {
+  try {
+    console.log('[testMembership] Testing organisation membership...');
+    const response = await fetch(
+      `/organisations/${effectiveOrganisationSlug.value}/api/governance/test-membership`,
+      {
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json',
+        },
+      }
+    );
+
+    const data = await response.json();
+    console.log('[testMembership] Result:', data);
+
+    if (data.is_member) {
+      console.log('[testMembership] ✓ USER IS MEMBER:', data.roles);
+      alert(`✓ You ARE a member!\nRoles: ${data.roles.join(', ')}\nOrganisation: ${data.organisation}`);
+    } else {
+      console.error('[testMembership] ✗ USER IS NOT A MEMBER');
+      const orgList = data.all_user_organisations.map(o => o.org_slug).join(', ') || 'None';
+      alert(`✗ You are NOT a member of this organisation!\n\nOrganisations you ARE a member of: ${orgList}`);
+    }
+  } catch (error) {
+    console.error('[testMembership] Error:', error);
+    alert(`Membership test failed: ${error.message}`);
+  }
+};
+
+const testPostDebug = async () => {
+  try {
+    console.log('[testPostDebug] Testing POST request to debug route...');
+
+    // Single unified test: Use new /api/v1 routes with proper headers
+    console.log('[testPostDebug] Testing new /api/v1/test-post-debug...');
+    const response = await fetch(
+      '/api/v1/test-post-debug',
+      {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-Organisation-ID': effectiveTenantId.value,
+        },
+      }
+    );
+
+    console.log('[testPostDebug] Response status:', response.status);
+    console.log('[testPostDebug] Response headers:', {
+      contentType: response.headers.get('content-type'),
+    });
+
+    const text = await response.text();
+    try {
+      const data = JSON.parse(text);
+      console.log('[testPostDebug] ✓ API v1 POST WORKS!', data);
+      alert(`✓ API v1 POST successful!\n\nStatus: ${response.status}\n\n${JSON.stringify(data, null, 2)}`);
+    } catch (e) {
+      console.error('[testPostDebug] Failed to parse response');
+      console.error('[testPostDebug] Response body (first 500 chars):', text.substring(0, 500));
+      alert(`✗ API v1 POST failed!\n\nStatus: ${response.status}\n\nBody:\n${text.substring(0, 200)}`);
+    }
+  } catch (error) {
+    console.error('[testPostDebug] Error:', error);
+    alert(`POST test error: ${error.message}`);
+  }
+};
+
 // Watch for tenant ID changes and log
 watch(effectiveTenantId, (newVal, oldVal) => {
   console.log('[CommitteeMemberManager] Tenant ID changed:', oldVal, '→', newVal);
@@ -544,10 +730,20 @@ watch(effectiveTenantId, (newVal, oldVal) => {
 
 onMounted(() => {
   console.log('[CommitteeMemberManager] Mounted. Tenant ID:', effectiveTenantId.value);
+  console.log('[CommitteeMemberManager] Organisation Slug:', effectiveOrganisationSlug.value);
+  console.log('[CommitteeMemberManager] Page props keys:', Object.keys(page.props));
+  console.log('[CommitteeMemberManager] Full page.props:', page.props);
+
   if (!effectiveTenantId.value) {
     console.error('[CommitteeMemberManager] NO TENANT ID! Cannot fetch members.');
     return;
   }
+
+  if (!effectiveOrganisationSlug.value) {
+    console.error('[CommitteeMemberManager] NO ORGANISATION SLUG! Cannot fetch members.');
+    return;
+  }
+
   fetchMembers();
 });
 </script>

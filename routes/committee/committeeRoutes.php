@@ -10,8 +10,9 @@ use App\Http\Controllers\Committee\MemberSearchController;
 use App\Contexts\Membership\Infrastructure\Http\Controllers\Desktop\CommitteeMembershipApplicationController;
 use App\Models\Organisation;
 
-// Bind organisation model
-Route::model('organisation', Organisation::class);
+// NOTE: Removed global Route::model('organisation') binding
+// It was interfering with organisations.php's {organisation:slug} binding
+// Now using explicit model() binding in the route group instead
 
 // Public routes (no authentication required)
 Route::get('/create-committee-tutorial', [CommitteeManagementController::class, 'tutorial'])
@@ -23,6 +24,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->prefix('organisations/{organisation}')->group(function () {
+    // Local model binding for this group only (doesn't interfere with organisations.php)
+    Route::model('organisation', Organisation::class);
     // Cascader Config (API endpoint)
     Route::get('/api/geography/cascader-config', [CommitteeManagementController::class, 'cascaderConfig'])
         ->name('committee.geography.config');

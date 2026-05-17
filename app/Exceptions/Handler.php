@@ -32,6 +32,24 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $e)
     {
+        // For API requests (detected by X-Requested-With header or Accept header), always return JSON
+        if ($request->header('X-Requested-With') === 'XMLHttpRequest' ||
+            $request->expectsJson() ||
+            str_contains($request->header('Accept', ''), 'application/json')) {
+
+            Log::error('[Exception Handler] API exception', [
+                'exception_class' => get_class($e),
+                'message' => $e->getMessage(),
+                'path' => $request->path(),
+                'method' => $request->method(),
+            ]);
+
+            return response()->json([
+                'error' => $e->getMessage(),
+                'exception' => get_class($e),
+            ], 500);
+        }
+
         if ($e instanceof DomainException) {
             if ($request->wantsJson() || $request->isJson()) {
                 return response()->json([

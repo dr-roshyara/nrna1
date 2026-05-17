@@ -130,6 +130,13 @@ const props = defineProps({
 
 const activeTab = ref('overview');
 
+// Debug: log the committee object
+console.log('[Committee/Dashboard] Received props:', {
+  committee: props.committee,
+  committeeId: props.committee?.id,
+  organisationId: props.organisationId,
+});
+
 const formatCommitteeType = (type) => {
   const types = {
     central: 'Central Committee',

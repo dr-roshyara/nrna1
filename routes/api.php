@@ -54,14 +54,4 @@ Route::group(['middleware'=>['auth:sanctum']], function(){
 
 Route::group([], __DIR__ . '/geography/geographyApiRoutes.php');
 
-// ── Governance API: Committee Member Management ────────────────────────
-Route::group(['prefix' => 'governance', 'as' => 'governance.'], function () {
-    Route::get('/committees/{committeeId}/members', [CommitteeMemberController::class, 'index'])
-        ->name('committee-members.index');
-
-    Route::post('/committees/{committeeId}/members', [CommitteeMemberController::class, 'store'])
-        ->name('committee-members.store');
-
-    Route::delete('/committees/{committeeId}/members/{memberId}', [CommitteeMemberController::class, 'destroy'])
-        ->name('committee-members.destroy');
-});
+// NOTE: Governance API routes moved back to routes/web.php with explicit Inertia exclusion

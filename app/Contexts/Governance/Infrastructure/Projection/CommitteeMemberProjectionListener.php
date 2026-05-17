@@ -28,10 +28,11 @@ final class CommitteeMemberProjectionListener
 {
     public function onMemberAssigned(MemberAssignedToCommittee $event): void
     {
-        // Fetch member data for denormalization
-        $member = DB::table('users')
-            ->where('id', $event->memberId->value())
-            ->first(['id', 'name', 'email']);
+        // Fetch member data from member_directories (denormalized read model)
+        $member = DB::table('member_directories')
+            ->where('member_id', $event->memberId->value())
+            ->where('organisation_id', $event->tenantId->value())
+            ->first(['display_name', 'email']);
 
         CommitteeMemberProjection::updateOrCreate(
             [
@@ -41,7 +42,7 @@ final class CommitteeMemberProjectionListener
             [
                 'id' => Uuid::uuid4()->toString(),
                 'tenant_id' => $event->tenantId->value(),
-                'member_name' => $member?->name ?? 'N/A',
+                'member_name' => $member?->display_name ?? 'N/A',
                 'member_email' => $member?->email ?? 'N/A',
                 'role' => $event->role()->value,
                 'assigned_at' => $event->occurredAt,

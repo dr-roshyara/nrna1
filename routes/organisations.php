@@ -377,4 +377,10 @@ Route::prefix('organisations/{organisation:slug}')
                 [\App\Http\Controllers\Committee\CreateCommitteeController::class, 'store']
             )->name('create-canonical');
         });
+
+        // ── Governance API Routes (session auth, JSON only, NO Inertia) ────────────
+        Route::prefix('/api/governance')
+            ->middleware(['json.api', 'auth', 'verified', 'ensure.organisation'])
+            ->name('api.governance.')
+            ->group(base_path('routes/governance-api.php'));
     });

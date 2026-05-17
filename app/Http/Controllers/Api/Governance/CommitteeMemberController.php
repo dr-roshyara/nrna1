@@ -8,11 +8,14 @@ use App\Http\Controllers\Controller;
 use App\Contexts\Governance\Domain\Committee\CommitteeId;
 use App\Contexts\Governance\Domain\Committee\CommitteeRepositoryInterface;
 use App\Contexts\Governance\Domain\Committee\Enums\CommitteeRole;
+use App\Contexts\Governance\Application\Commands\RemoveCommitteeMemberCommand;
+use App\Contexts\Governance\Application\Handlers\RemoveCommitteeMemberHandler;
 use App\Contexts\Governance\Application\Queries\CommitteeMemberQueryService;
 use App\Contexts\Governance\Application\DTOs\CommitteeMembersResponseDTO;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Membership\Domain\Membership\CommitteeAssociationLifecyclePolicy;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Services\TenantContext;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -38,7 +41,8 @@ final class CommitteeMemberController extends Controller
     public function __construct(
         private CommitteeMemberQueryService $queryService,
         private CommitteeRepositoryInterface $repository,
-        private CommitteeAssociationLifecyclePolicy $guard
+        private CommitteeAssociationLifecyclePolicy $guard,
+        private RemoveCommitteeMemberHandler $removeHandler
     ) {}
 
     /**
@@ -50,16 +54,21 @@ final class CommitteeMemberController extends Controller
     public function index(string $committeeId, Request $request): \Illuminate\Http\JsonResponse
     {
         try {
+            \Log::info('[CommitteeMemberController] Received committee ID', ['committeeId' => $committeeId]);
             $committeeId = CommitteeId::fromString($committeeId);
+            \Log::info('[CommitteeMemberController] Committee ID validated successfully');
         } catch (\Throwable $e) {
-            return response()->json(['error' => 'Invalid committee ID'], 400);
+            \Log::error('[CommitteeMemberController] Committee ID validation failed', [
+                'committeeId' => $committeeId,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            return response()->json(['error' => 'Invalid committee ID: ' . $e->getMessage()], 400);
         }
 
-        // Extract tenant from header (testing) or auth context (production)
-        $tenantIdValue = $request->header('X-Tenant-Id');
+        // Get tenant context from middleware (IdentifyTenantFromHeader)
+        $tenantIdValue = TenantContext::get();
         if (!$tenantIdValue) {
-            // In production: $tenantIdValue = auth()->user()->tenant_id;
-            // For now, return 400 if no tenant context
             return response()->json(['error' => 'Missing tenant context'], 400);
         }
 
@@ -76,7 +85,7 @@ final class CommitteeMemberController extends Controller
             $members
         );
 
-        return response()->json($dto->toArray());
+        return response()->json($dto->toArray()); 
     }
 
     /**
@@ -89,143 +98,145 @@ final class CommitteeMemberController extends Controller
     public function store(Request $request, string $committeeId): \Illuminate\Http\JsonResponse
     {
         try {
+            // Get tenant context from middleware (IdentifyTenantFromHeader)
+            $tenantIdValue = TenantContext::get();
+            if (!$tenantIdValue) {
+                return response()->json(['error' => 'Missing tenant context'], 400);
+            }
+
+            \Log::info('[store] ===== START =====', [
+                'organisation_id' => $tenantIdValue,
+                'committeeId' => $committeeId,
+                'memberId' => $request->input('memberId'),
+            ]);
+
+            // Step 1: Validate Committee ID format
+            \Log::info('[store] Step 1: Validating committee ID');
             $committeeId = CommitteeId::fromString($committeeId);
-        } catch (\Throwable $e) {
-            return response()->json(['error' => 'Invalid committee ID'], 400);
-        }
+            \Log::info('[store] Step 1: ✓ Committee ID valid');
 
-        // Extract tenant from header
-        $tenantIdValue = $request->header('X-Tenant-Id');
-        if (!$tenantIdValue) {
-            return response()->json(['error' => 'Missing tenant context'], 400);
-        }
-
-        try {
+            // Step 2: Resolve tenant
+            \Log::info('[store] Step 2: Resolving tenant');
             $tenantId = TenantId::fromString($tenantIdValue);
-        } catch (\Throwable $e) {
-            return response()->json(['error' => 'Invalid tenant ID'], 400);
-        }
+            \Log::info('[store] Step 2: ✓ Tenant resolved', ['tenantId' => $tenantId->value()]);
 
-        // Validate memberId format
-        try {
+            // Step 3: Validate member ID
+            \Log::info('[store] Step 3: Validating member ID');
             $memberId = MemberId::fromString($request->input('memberId'));
-        } catch (\Throwable $e) {
-            return response()->json(['error' => 'Invalid member ID format'], 400);
-        }
+            \Log::info('[store] Step 3: ✓ Member ID valid');
 
-        // Validate user exists
-        $user = \App\Models\User::where('id', $memberId->value())->first();
-        if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
-        }
+            // Step 4: Find member and resolve to user
+            \Log::info('[store] Step 4: Finding member');
+            $member = \App\Models\Member::withoutGlobalScopes()
+                ->where('id', $memberId->value())
+                ->where('organisation_id', $tenantIdValue)
+                ->first();
 
-        // Validate user is an organisation user
-        $orgUser = \App\Models\OrganisationUser::withoutGlobalScopes()
-            ->where('user_id', $memberId->value())
-            ->where('organisation_id', $tenantId->value())
-            ->first();
+            if (!$member) {
+                \Log::warning('[store] Member not found', ['memberId' => $memberId->value()]);
+                return response()->json(['error' => 'Member not found'], 404);
+            }
 
-        if (!$orgUser) {
-            return response()->json(['error' => 'User is not a member of this organisation'], 403);
-        }
+            // Resolve member to user through organisation_user relationship
+            $user = $member->user;
+            if (!$user) {
+                \Log::error('[store] User not found for member', ['memberId' => $memberId->value(), 'organisationUserId' => $member->organisation_user_id]);
+                return response()->json(['error' => 'User not found for member'], 404);
+            }
+            \Log::info('[store] Step 4: ✓ Member resolved to user', ['user_id' => $user->id, 'member_id' => $member->id]);
 
-        // Find Member record via organisation_user_id relationship
-        // memberId parameter is actually the USER ID, so we look up via orgUser
-        $existingMember = \App\Models\Member::withoutGlobalScopes()
-            ->where('organisation_user_id', $orgUser->id)
-            ->where('organisation_id', $tenantId->value())
-            ->first();
+            // Step 5: Validate role
+            \Log::info('[store] Step 5: Validating role');
+            $role = CommitteeRole::from($request->input('role', 'member'));
+            \Log::info('[store] Step 5: ✓ Role valid');
 
-        if (!$existingMember) {
+            // Step 6: Load committee aggregate
+            \Log::info('[store] Step 6: Loading committee');
+            $committee = $this->repository->findById($committeeId, $tenantId);
+            if (!$committee) {
+                \Log::warning('[store] Committee not found', ['committeeId' => $committeeId->value()]);
+                return response()->json(['error' => 'Committee not found'], 404);
+            }
+            \Log::info('[store] Step 6: ✓ Committee loaded');
+
+            // Step 7: Add member to committee
+            \Log::info('[store] Step 7: Adding member to committee');
+            $committee->addMember($memberId, $role);
+            \Log::info('[store] Step 7: ✓ Member added to aggregate');
+
+            // Step 8: Save aggregate
+            \Log::info('[store] Step 8: Saving aggregate');
+            $this->repository->save($committee, $tenantId);
+            \Log::info('[store] Step 8: ✓ Aggregate saved');
+
+            \Log::info('[store] ===== SUCCESS =====');
+
             return response()->json([
-                'error' => 'Member record not found. User must be registered as a member first.',
-                'userId' => $memberId->value(),
-                'organisationId' => $tenantId->value()
-            ], 404);
-        }
+                'status' => 'created',
+                'committeeId' => $committeeId->value(),
+                'memberId' => $memberId->value(),
+                'memberName' => $user->name,
+                'memberEmail' => $user->email,
+                'role' => $role->value
+            ], 201);
 
-        // Get the actual member ID for domain operation
-        $actualMemberId = MemberId::fromString($existingMember->id);
-        $member = $user;
-
-        // Validate and parse role
-        $roleValue = $request->input('role', 'member');
-        try {
-            $role = CommitteeRole::from($roleValue);
         } catch (\Throwable $e) {
+            \Log::error('[store] ===== EXCEPTION =====', [
+                'error' => $e->getMessage(),
+                'class' => get_class($e),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
             return response()->json([
-                'error' => 'Invalid role',
-                'valid_roles' => array_map(fn ($c) => $c->value, CommitteeRole::cases())
-            ], 400);
+                'error' => 'Failed to add member: ' . $e->getMessage(),
+                'exception_class' => get_class($e),
+            ], 500);
         }
-
-        // Load committee aggregate
-        $committee = $this->repository->findById($committeeId, $tenantId);
-        if (!$committee) {
-            return response()->json(['error' => 'Committee not found'], 404);
-        }
-
-        // Guard: Ensure member exists and can be assigned (prevents orphaned assignments)
-        try {
-            $this->guard->assertCanCreate($actualMemberId, $committeeId, $tenantId);
-        } catch (\DomainException $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
-        }
-
-        // Apply domain operation (generates MemberAssignedToCommittee event)
-        try {
-            $committee->addMember($actualMemberId, $role);
-        } catch (\DomainException $e) {
-            return response()->json(['error' => $e->getMessage()], 400);
-        }
-
-        // Save aggregate (dispatches events to listeners)
-        $this->repository->save($committee, $tenantId);
-
-        return response()->json([
-            'status' => 'created',
-            'committeeId' => $committeeId->value(),
-            'memberId' => $actualMemberId->value(),
-            'memberName' => $member->name,
-            'memberEmail' => $member->email,
-            'role' => $role->value
-        ], 201);
     }
 
     /**
-     * DELETE /api/governance/committees/{committeeId}/members/{memberId}
+     * DELETE /api/v1/governance/committees/{committeeId}/members/{memberId}
      *
-     * Dispatches domain command to remove member.
-     * Returns 202 Accepted (command queued).
+     * HTTP Adapter: Maps request → command → handler → response
+     * The actual domain logic lives in RemoveCommitteeMemberHandler (pure PHP).
      */
     public function destroy(string $committeeId, string $memberId, Request $request): \Illuminate\Http\JsonResponse
     {
         try {
-            $committeeId = CommitteeId::fromString($committeeId);
-            $memberId = MemberId::fromString($memberId);
+            // 1. Extract infrastructure context (tenant from middleware)
+            $tenantIdValue = TenantContext::get();
+            if (!$tenantIdValue) {
+                return response()->json(['error' => 'Missing tenant context'], 400);
+            }
+
+            // 2. Map framework data → pure PHP Command
+            $command = new RemoveCommitteeMemberCommand(
+                tenantId: $tenantIdValue,
+                committeeId: $committeeId,
+                memberId: $memberId
+            );
+
+            // 3. Dispatch to pure PHP handler (no framework knowledge)
+            $this->removeHandler->handle($command);
+
+            // 4. Return infrastructure-specific response
+            return response()->json([
+                'success' => true,
+                'message' => 'Member removal command accepted',
+            ], 202);
+
+        } catch (\DomainException $e) {
+            // Domain rule violation (e.g., committee not found)
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], $e->getCode() ?: 422);
         } catch (\Throwable $e) {
-            return response()->json(['error' => 'Invalid ID format'], 400);
+            // Unexpected error
+            return response()->json([
+                'error' => 'An internal error occurred',
+            ], 500);
         }
-
-        // Extract tenant from header
-        $tenantIdValue = $request->header('X-Tenant-Id');
-        if (!$tenantIdValue) {
-            return response()->json(['error' => 'Missing tenant context'], 400);
-        }
-
-        try {
-            $tenantId = TenantId::fromString($tenantIdValue);
-        } catch (\Throwable $e) {
-            return response()->json(['error' => 'Invalid tenant ID'], 400);
-        }
-
-        // Delete the member assignment from projection table
-        \DB::table('committee_member_projection')
-            ->where('tenant_id', $tenantId->value())
-            ->where('committee_id', $committeeId->value())
-            ->where('member_id', $memberId->value())
-            ->delete();
-
-        return response()->json(['status' => 'deleted'], 200);
     }
 }

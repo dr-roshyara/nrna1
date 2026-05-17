@@ -42,6 +42,15 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('api/v1')
                 ->group(base_path('routes/api/governance_v1.php'));
 
+            // ============================================================
+            // GOVERNANCE API ROUTES (session auth, NO Inertia rendering)
+            // Registered here to bypass Inertia middleware from web.php
+            // ============================================================
+            Route::middleware(['web', 'auth', 'verified', 'ensure.organisation'])
+                ->prefix('organisations/{organisation:slug}/api/governance')
+                ->name('api.governance.')
+                ->group(base_path('routes/governance-api.php'));
+
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });

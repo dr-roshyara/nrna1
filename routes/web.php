@@ -433,7 +433,16 @@ Route::group([], __DIR__.'/election/electionRoutes.php');
 
 //Openion
 // Route::group([], __DIR__.'/openion/openionRoutes.php');
+
+// ============================================================================
+// organisation-SCOPED ROUTES — LOAD FIRST (before committeeRoutes)
+// to ensure API routes are matched before web routes
+// ============================================================================
+require __DIR__.'/organisations.php';
+
 Route::group([], __DIR__.'/committee/committeeRoutes.php');
+
+// NOTE: Governance API routes now registered in RouteServiceProvider with NO Inertia
 // Route::group([], __DIR__.'/openion/openionRoutes.php');
 
 Route::group([], __DIR__.'/openion/openionRoutes.php');
@@ -520,12 +529,8 @@ Route::middleware(['auth'])->group(function () {
          ->name('api.organisations.demo-setup');
 });
 
-// ============================================================================
-// organisation-SCOPED ROUTES (Phase 4 - Voters List)
-// ============================================================================
-// These routes are automatically prefixed with /organisations/{slug}
-// and include EnsureOrganization middleware for security
-require __DIR__.'/organisations.php';
+// NOTE: organisations.php is now loaded EARLIER (before committeeRoutes)
+// to ensure API routes are matched first
 
 // ============================================================================
 // PLATFORM ADMIN ROUTES (Phase 4 - Election Approval)

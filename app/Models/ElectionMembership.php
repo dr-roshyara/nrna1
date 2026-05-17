@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\ScopedByOrganisation;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,7 +28,7 @@ use Illuminate\Support\Str;
  */
 class ElectionMembership extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory, HasUuids, ScopedByOrganisation;
 
     protected $table = 'election_memberships';
 
