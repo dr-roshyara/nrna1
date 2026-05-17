@@ -49,8 +49,20 @@ createInertiaApp({
            .mount(el);
 
         // Initialize API client with tenant context from page props
+        // Try multiple sources since different controllers pass it differently
         const tenantId = props.initialPage.props.organisation?.id
+          ?? props.initialPage.props.organisationId
           ?? props.initialPage.props.auth?.user?.current_organisation_id;
+        console.log('[app.js] Initializing API client with:', {
+          tenantId,
+          organisation: props.initialPage.props.organisation,
+          organisationId: props.initialPage.props.organisationId,
+          authUser: props.initialPage.props.auth?.user ? {
+            id: props.initialPage.props.auth.user.id,
+            name: props.initialPage.props.auth.user.name,
+            current_organisation_id: props.initialPage.props.auth.user.current_organisation_id
+          } : null,
+        });
         initializeApiClient(tenantId);
 
         // Listen for auth expiry events from API interceptor
