@@ -307,12 +307,12 @@
                 <div class="border-t border-primary-200 pt-4">
                   <p class="font-medium text-neutral-900 mb-2">{{ t.info_panel.columns_heading }}</p>
                   <ul class="text-neutral-600 space-y-1">
-                    <li v-for="col in t.info_panel.columns" :key="col">• {{ col }}</li>
+                    <li v-for="col in (uses_full_membership ? t.info_panel.columns_full_membership : t.info_panel.columns_election_only)" :key="col">• {{ col }}</li>
                   </ul>
                 </div>
 
                 <div class="border-t border-primary-200 pt-4">
-                  <p class="text-xs text-amber-700 bg-amber-50 rounded p-2">{{ t.info_panel.note }}</p>
+                  <p class="text-xs text-amber-700 bg-amber-50 rounded p-2">{{ uses_full_membership ? t.info_panel.note_full_membership : t.info_panel.note_election_only }}</p>
                 </div>
 
                 <div class="border-t border-primary-200 pt-4">

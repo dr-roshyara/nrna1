@@ -43,10 +43,16 @@
     "formats_heading": "Supported Formats:",
     "formats": ["CSV (.csv)", "Excel (.xlsx, .xls)"],
     "columns_heading": "Columns:",
-    "columns": [
-      "email (required) — must be an organisation member"
+    "columns_full_membership": [
+      "email (required) — must be an existing organisation member"
     ],
-    "note": "Only existing organisation members can be registered as voters. Non-members are skipped automatically.",
+    "columns_election_only": [
+      "firstname (required)",
+      "lastname (required)",
+      "email (required)"
+    ],
+    "note_full_membership": "Only existing organisation members can be registered as voters. Non-members are skipped automatically.",
+    "note_election_only": "New users will be automatically created and sent an invitation email to set their password.",
     "download_template": "Download Template"
   }
 }
