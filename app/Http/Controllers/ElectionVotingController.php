@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\Election;
 use App\Services\ElectionAuditService;
 use Carbon\Carbon;
-use App\Models\VoterSlug; // still used for active-session reuse in start()
+use App\Models\VoterSlug;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Facades\Log;
 
 class ElectionVotingController extends Controller
 {
@@ -41,15 +43,21 @@ class ElectionVotingController extends Controller
             && $membership->role   === 'voter'
             && $membership->status !== 'removed';
 
-        // Compare end_date as end-of-day: an election ending "on March 23" should
-        // remain open for the full day, regardless of whether it was stored as midnight.
-        $endOfDay = \Carbon\Carbon::parse($election->end_date)->endOfDay();
+        // Evaluate election lifecycle state through SSOT
+        $lifecycle = ElectionLifecycle::of($election);
 
-        $canVote = $isEligible
-            && ! $hasVoted
-            && $election->status === 'active'
-            && $election->start_date <= now()
-            && $endOfDay >= now();
+        // canVote() encapsulates: state machine + voting window + administration completion
+        // Membership eligibility is separate concern (voter role, not removed)
+        $canVote = $isEligible && !$hasVoted && $lifecycle->canVote();
+
+        if (!$lifecycle->canVote()) {
+            Log::channel('voter_audit')->info('Vote creation blocked by election lifecycle', [
+                'election_id' => $election->id,
+                'user_id' => $user->id,
+                'election_state' => $lifecycle->state()->value,
+                'blocked_reason' => $lifecycle->blockedReason(),
+            ]);
+        }
 
         $org = $election->organisation;
 
@@ -62,6 +70,13 @@ class ElectionVotingController extends Controller
             'hasVoted'         => $hasVoted,
             'canVote'          => $canVote,
             'isEligible'       => $isEligible,
+            'lifecycle'        => [
+                'state'           => $lifecycle->state()->value,
+                'canVote'         => $lifecycle->canVote(),
+                'blockedReason'   => $lifecycle->blockedReason(),
+                'isTerminal'      => $lifecycle->isTerminal(),
+                'allowedActions'  => $lifecycle->allowedActions(),
+            ],
             'ipAddress'        => $ip,
             'ipBlocked'        => $ipBlock['blocked'],
             'ipBlockMessage'   => $ipBlock['message'],
@@ -101,6 +116,20 @@ class ElectionVotingController extends Controller
         if ($membership->has_voted) {
             return redirect()->route('elections.show', $slug)
                 ->with('info', 'You have already voted.');
+        }
+
+        // Validate election lifecycle state (SSOT check)
+        $lifecycle = ElectionLifecycle::of($election);
+        if (!$lifecycle->canVote()) {
+            Log::channel('voter_audit')->warning('Voting start blocked by election lifecycle', [
+                'election_id' => $election->id,
+                'user_id' => $user->id,
+                'election_state' => $lifecycle->state()->value,
+                'blocked_reason' => $lifecycle->blockedReason(),
+            ]);
+
+            return redirect()->route('elections.show', $slug)
+                ->with('error', 'Voting is not currently allowed: ' . $lifecycle->blockedReason());
         }
 
         // IP restriction check (replaces bare abort() with friendly redirect)

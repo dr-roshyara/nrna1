@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\Election;
 use App\Services\VoterSlugService;
 use App\Services\DemoElectionResolver;
@@ -39,10 +40,11 @@ class ElectionController extends Controller
             'user_id' => auth()->user()?->id,
         ]);
 
-        // Get all active elections
-        $elections = Election::where('is_active', true)
-            ->orWhere('is_active', 1)
-            ->get();
+        // Get all elections, filter through lifecycle facade (SSOT)
+        // Only show elections that are currently accepting votes
+        $elections = Election::all()
+            ->filter(fn($e) => ElectionLifecycle::of($e)->canVote())
+            ->values();
 
         if ($elections->isEmpty()) {
             return redirect()->route('dashboard')
@@ -94,10 +96,18 @@ class ElectionController extends Controller
 
         $election = Election::findOrFail($validated['election_id']);
 
-        // Verify election is active
-        if (!$election->isCurrentlyActive()) {
+        // Verify election accepts votes through SSOT
+        $lifecycle = ElectionLifecycle::of($election);
+        if (!$lifecycle->canVote()) {
+            Log::warning('Election selection blocked by lifecycle state', [
+                'user_id' => auth()->user()?->id,
+                'election_id' => $election->id,
+                'election_state' => $lifecycle->state()->value,
+                'blocked_reason' => $lifecycle->blockedReason(),
+            ]);
+
             return redirect()->route('election.select')
-                ->with('error', 'This election is not currently active.');
+                ->with('error', 'This election is not currently accepting votes: ' . $lifecycle->blockedReason());
         }
 
         Log::info('Election selected', [
@@ -126,6 +136,10 @@ class ElectionController extends Controller
                     'redirect' => route('slug.code.create', ['vslug' => $slug->slug]),
                     'election_id' => $election->id,
                     'election_type' => $election->type,
+                    'lifecycle' => [
+                        'state' => $lifecycle->state()->value,
+                        'canVote' => $lifecycle->canVote(),
+                    ],
                 ]);
             }
 
@@ -176,13 +190,14 @@ class ElectionController extends Controller
             'request_path' => $request->path(),
         ]);
 
-        // Get first demo election
+        // Get first demo election that accepts votes (SSOT check)
         // CRITICAL: Use withoutGlobalScopes() because demo elections are accessible
         // to ALL users regardless of organisation context
         // Demo elections always have organisation_id = NULL but should be universally accessible
         $demoElection = Election::withoutGlobalScopes()
             ->where('type', 'demo')
-            ->where('is_active', true)
+            ->get()
+            ->filter(fn($e) => ElectionLifecycle::of($e)->canVote())
             ->first();
 
         if (!$demoElection) {
@@ -226,12 +241,19 @@ class ElectionController extends Controller
                 'election_id' => $slug->election_id,
             ]);
 
+            // Get lifecycle snapshot for UI
+            $lifecycle = ElectionLifecycle::of($demoElection);
+
             // For API requests
             if ($request->wantsJson()) {
                 return response()->json([
                     'success' => true,
                     'message' => 'Demo election selected',
                     'redirect' => route('slug.demo-code.create', ['vslug' => $slug->slug]),
+                    'lifecycle' => [
+                        'state' => $lifecycle->state()->value,
+                        'canVote' => $lifecycle->canVote(),
+                    ],
                 ]);
             }
 
