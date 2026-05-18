@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Contexts\Elections\Application\Commands\AssignVoterCommand;
+use App\Contexts\Elections\Application\Handlers\AssignVoterHandler;
+use App\Contexts\Elections\Domain\Exceptions\DuplicateVoterException;
+use App\Contexts\Elections\Domain\Exceptions\VoterNotEligibleException;
+use App\Domain\Election\Enum\ElectionMode;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
@@ -27,7 +32,8 @@ use Inertia\Inertia;
 class ElectionVoterController extends Controller
 {
     public function __construct(
-        private VoterEligibilityService $eligibilityService
+        private VoterEligibilityService $eligibilityService,
+        private AssignVoterHandler $assignVoterHandler,
     ) {}
 
     // =========================================================================
@@ -109,12 +115,14 @@ class ElectionVoterController extends Controller
         ]);
 
         try {
-            ElectionMembership::assignVoter(
-                $request->user_id,
-                $election->id,
-                auth()->id()
-            );
-        } catch (\Exception $e) {
+            $this->assignVoterHandler->handle(new AssignVoterCommand(
+                userId: $request->user_id,
+                electionId: $election->id,
+                organisationId: $organisation->id,
+                mode: ElectionMode::fromOrganisation($organisation),
+                assignedBy: auth()->id(),
+            ));
+        } catch (VoterNotEligibleException | DuplicateVoterException $e) {
             return back()->withErrors(['user_id' => $e->getMessage()]);
         }
 

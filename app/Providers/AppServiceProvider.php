@@ -97,6 +97,12 @@ class AppServiceProvider extends ServiceProvider
         // Membership payment gateway — Phase 1: manual (no-op). Swap for Stripe in Phase 5.
         $this->app->bind(PaymentGateway::class, ManualPaymentGateway::class);
 
+        // Election Context: Voter assignment (Phase C strangler)
+        $this->app->bind(
+            \App\Contexts\Elections\Domain\Repositories\VoterRepositoryInterface::class,
+            \App\Contexts\Elections\Infrastructure\Repositories\EloquentVoterRepository::class
+        );
+
         // Election Context: VoterEligibilityPolicy (Phase B strangler)
         $this->app->bind(
             \App\Contexts\Elections\Domain\Policies\ElectionOnlyPolicy::class,
