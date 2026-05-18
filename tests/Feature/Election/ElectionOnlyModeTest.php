@@ -82,11 +82,11 @@ class ElectionOnlyModeTest extends TestCase
             ->for($this->admin)
             ->create(['status' => 'active']);
 
-        // Create election in election-only org
+        // Create election in election-only org (state must be administration for voter import)
         $this->election = Election::factory()
             ->forOrganisation($this->electionOnlyOrg)
             ->real()
-            ->create(['status' => 'active']);
+            ->create(['state' => Election::STATE_ADMINISTRATION]);
 
         // Add admin as election chief (required to manage voters)
         ElectionOfficer::create([
@@ -265,7 +265,7 @@ class ElectionOnlyModeTest extends TestCase
         // Try to assign user1 to election (no Member record in election-only org)
         $response = $this->actingAs($this->admin)
             ->withSession(['current_organisation_id' => $this->electionOnlyOrg->id])
-            ->post("/organisations/{$this->electionOnlyOrg->slug}/elections/{$this->election->slug}/voters", [
+            ->post("/organisations/{$this->electionOnlyOrg->slug}/elections/{$this->election->slug}/voters/manage", [
                 'user_id' => $this->user1->id,
             ]);
 
@@ -318,7 +318,7 @@ class ElectionOnlyModeTest extends TestCase
         // Try to assign user to election
         $response = $this->actingAs($admin)
             ->withSession(['current_organisation_id' => $this->fullMembershipOrg->id])
-            ->post("/organisations/{$this->fullMembershipOrg->slug}/elections/{$election->slug}/voters", [
+            ->post("/organisations/{$this->fullMembershipOrg->slug}/elections/{$election->slug}/voters/manage", [
                 'user_id' => $user->id,
             ]);
 
@@ -344,7 +344,7 @@ class ElectionOnlyModeTest extends TestCase
         // Bulk assign user1 and user2 to election
         $response = $this->actingAs($this->admin)
             ->withSession(['current_organisation_id' => $this->electionOnlyOrg->id])
-            ->post("/organisations/{$this->electionOnlyOrg->slug}/elections/{$this->election->slug}/voters/bulk", [
+            ->post("/organisations/{$this->electionOnlyOrg->slug}/elections/{$this->election->slug}/voters/manage/bulk", [
                 'user_ids' => [$this->user1->id, $this->user2->id],
             ]);
 

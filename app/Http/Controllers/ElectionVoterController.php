@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Contexts\Elections\Application\Commands\AssignVoterCommand;
+use App\Contexts\Elections\Application\Commands\BulkAssignVotersCommand;
 use App\Contexts\Elections\Application\Handlers\AssignVoterHandler;
+use App\Contexts\Elections\Application\Handlers\BulkAssignVotersHandler;
 use App\Contexts\Elections\Domain\Exceptions\DuplicateVoterException;
 use App\Contexts\Elections\Domain\Exceptions\VoterNotEligibleException;
 use App\Domain\Election\Enum\ElectionMode;
@@ -34,6 +36,7 @@ class ElectionVoterController extends Controller
     public function __construct(
         private VoterEligibilityService $eligibilityService,
         private AssignVoterHandler $assignVoterHandler,
+        private BulkAssignVotersHandler $bulkAssignVotersHandler,
     ) {}
 
     // =========================================================================
@@ -146,44 +149,13 @@ class ElectionVoterController extends Controller
             'user_ids.*' => 'uuid',
         ]);
 
-        // Filter to eligible voters only (depends on organisation's membership mode)
-        if ($organisation->usesFullMembership()) {
-            // Full membership mode: single efficient query
-            $validIds = DB::table('members')
-                ->join('organisation_users',       'members.organisation_user_id', '=', 'organisation_users.id')
-                ->leftJoin('membership_types',     'members.membership_type_id',   '=', 'membership_types.id')
-                ->whereIn('organisation_users.user_id', $request->user_ids)
-                ->where('members.organisation_id', $organisation->id)
-                ->where('members.status', 'active')
-                ->whereIn('members.fees_status', ['paid', 'exempt'])
-                ->where(fn ($q) => $q->whereNull('members.membership_type_id')
-                                     ->orWhere('membership_types.grants_voting_rights', true))
-                ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
-                                     ->orWhere('members.membership_expires_at', '>', now()))
-                ->whereNull('members.deleted_at')
-                ->distinct()
-                ->pluck('organisation_users.user_id')
-                ->toArray();
-        } else {
-            // Election-only mode: single efficient query
-            // Use withoutGlobalScopes() to bypass tenant filtering
-            $validIds = OrganisationUser::withoutGlobalScopes()
-                ->where('organisation_id', $organisation->id)
-                ->whereIn('user_id', $request->user_ids)
-                ->where('status', 'active')
-                ->pluck('user_id')
-                ->toArray();
-        }
-
-        $invalidCount = count($request->user_ids) - count($validIds);
-
-        $result = ElectionMembership::bulkAssignVoters(
-            $validIds,
-            $election->id,
-            auth()->id()
-        );
-
-        $result['invalid'] = ($result['invalid'] ?? 0) + $invalidCount;
+        $result = $this->bulkAssignVotersHandler->handle(new BulkAssignVotersCommand(
+            userIds:        $request->user_ids,
+            electionId:     $election->id,
+            organisationId: $organisation->id,
+            mode:           ElectionMode::fromOrganisation($organisation),
+            assignedBy:     auth()->id(),
+        ));
 
         return redirect()->route('organisations.elections.voters', [
             'organisation' => $organisation->slug,
