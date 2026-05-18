@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\Vote;
 use App\Models\DemoVote;
 use App\Models\DemoCode;
@@ -102,10 +103,10 @@ class VoteController extends Controller
             $election = Election::where('type', 'real')->first();
         }
 
-        // If no real election found, try any active election (including demo)
+        // If no real election found, try any demo election (fallback for demo mode)
         if (!$election) {
             $election = Election::withoutGlobalScopes()
-                ->where('is_active', true)
+                ->where('type', 'demo')
                 ->orderBy('id')
                 ->first();
         }
@@ -209,6 +210,19 @@ public function create(Request $request)
     $auth_user = $this->getUser($request);
     $election = $this->getElection($request);
     $voterSlug = $request->attributes->get('voter_slug');
+
+    // SSOT Check: Verify election state allows voting (Phase 3)
+    $lifecycle = ElectionLifecycle::of($election);
+    if (!$lifecycle->canVote()) {
+        Log::warning('Vote creation blocked by election state', [
+            'user_id' => $auth_user->id,
+            'election_id' => $election->id,
+            'election_state' => $lifecycle->state()->value,
+            'blocked_reason' => $lifecycle->blockedReason(),
+        ]);
+        return redirect()->route('dashboard')
+            ->with('error', 'Voting is not currently allowed: ' . $lifecycle->blockedReason());
+    }
 
     // Layer 0: Membership check (defense-in-depth)
     if ($redirect = $this->ensureVoterMembership($election, $auth_user)) {
@@ -1432,6 +1446,21 @@ private function has_valid_selections($selections)
         // Get user and election context
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
+
+        // SSOT Check: Verify election state allows voting (Phase 3)
+        $lifecycle = ElectionLifecycle::of($election);
+        if (!$lifecycle->canVote()) {
+            DB::rollBack();
+            Log::warning('Vote submission blocked by election state', [
+                'user_id' => $auth_user->id,
+                'election_id' => $election->id,
+                'election_state' => $lifecycle->state()->value,
+                'blocked_reason' => $lifecycle->blockedReason(),
+            ]);
+            return back()->withErrors([
+                'vote' => 'Voting is not currently allowed: ' . $lifecycle->blockedReason()
+            ]);
+        }
 
         // Layer 0: FRESH membership check — no cache, inside active transaction
         if ($redirect = $this->ensureVoterMembership($election, $auth_user, false, true)) {
