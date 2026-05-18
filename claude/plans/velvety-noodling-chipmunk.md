@@ -1,7 +1,374 @@
-# Election-Only Mode Hardening — Strangler Fig Migration Plan
-**Phase: Election Context — Controlled Extraction**  
-**Approach: TDD-First · 3-Phase Strangler Fig · Zero Regression**  
-**Date: 2026-05-18 | Reviews: 3 Passed (Amended)**
+# Election State Machine: Temporal Governance Engine — Refactoring Plan
+**Type:** DDD-First Architecture Refactoring (replaces Election-Only Mode plan — separate concern)
+**Scope:** Three structural constitutional defects in Election lifecycle governance
+**Approach:** TDD-First · Strangler Fig per stream · Zero Regression
+**Date:** 2026-05-18
+
+---
+
+## Context
+
+Ganesh ji's analysis identified three architectural problems in the election state machine. These are not cosmetic bugs — they are **constitutional defects** affecting the legality, fairness, and auditability of elections.
+
+| Problem | Why Constitutional |
+|---------|-------------------|
+| Timezone | "Voting starts at 9 AM" means different things → illegal elections |
+| Dual truth | Votes can be cast outside declared voting window → democratic integrity breach |
+| No verification gates | Elections can transition to voting without completing required setup → invalid election |
+
+### Codebase Exploration Findings
+
+**Problem 1 (Timezone):** CONFIRMED — CRITICAL
+- Zero timezone columns exist on `organisations` or `elections` tables
+- 19+ raw `now()` calls in `Election.php` with no timezone context
+- **Zero time-freezing tests exist** — temporal logic is completely untestable
+- Controllers parse user dates via `Carbon::createFromFormat()` without timezone
+- No `ElectionClockService` or `Clock` abstraction exists anywhere
+
+**Problem 2 (Dual Truth):** CONFIRMED — WORSE THAN DESCRIBED (6 sources of truth, not 2)
+1. `election.state` (state machine) — only `EnsureElectionState` middleware uses it
+2. `election.status` (old enum) — `ElectionVotingController` + `Voter::canVote()` check this
+3. `election.is_active` (boolean) — `ElectionMiddleware` + `VoteController` fallback
+4. `voting_starts_at`/`voting_ends_at` — only in model methods, NOT vote submission path
+5. `VoterSlug.is_active + expires_at` — actual runtime gate for voting flow
+6. `config('election.is_active')` — config-file boolean in VoteEligibility middleware
+- **`VoteController` (actual vote submission) checks NONE of:** state, starts_at, ends_at, status
+
+**Problem 3 (Verification):** CONFIRMED — NO SYSTEM EXISTS
+- `election_phase_verifications` table does NOT exist
+- Only binary `administration_completed`/`nomination_completed` booleans
+- No `ElectionPhaseVerification` model
+- Business counters exist but no checkpoint policy
+
+---
+
+## Target: Temporal Governance Engine
+
+Five architectural concepts become first-class (not helper methods in Eloquent model):
+
+```
+TEMPORAL GOVERNANCE ENGINE
+├─ State        → lifecycle stage (TransitionMatrix) ← exists
+├─ Time         → clock abstraction (ElectionClockService) ← NEW Stream 1
+├─ Lifecycle    → single source of truth (ElectionLifecyclePolicy) ← NEW Stream 2
+├─ Verification → checkpoint completion (PhaseVerificationPolicy) ← NEW Stream 3
+├─ Authorization → who may act (TransitionMatrix roles) ← exists
+└─ Audit        → complete history (ElectionStateTransition) ← exists
+
+GOLDEN RULE:
+  STORE: UTC
+  DISPLAY: organisation timezone
+  COMPUTE: ElectionClockService (context-aware clock)
+  VOTE GATE: ElectionLifecyclePolicy (single source of truth)
+  PHASE GATE: ElectionPhaseVerificationPolicy (checkpoint system)
+```
+
+---
+
+## Stream 1: Temporal Abstraction (Priority 1 — Execute First)
+
+**Goal:** All temporal decisions flow through one abstraction. No raw `now()` in domain logic.
+
+### Architecture
+
+```
+Domain Layer (pure PHP):
+  app/Domain/Election/Contracts/Clock.php           ← NEW interface
+    └── currentTime(): CarbonImmutable
+
+Application Layer:
+  app/Services/ElectionClockService.php             ← NEW
+    ├── getElectionTime(Election): CarbonImmutable  // uses timezone resolver
+    ├── isVotingOpen(Election): bool
+    ├── hasVotingEnded(Election): bool
+    └── isAdministrationWindowActive(Election): bool
+
+Infrastructure Layer:
+  app/Infrastructure/Clock/SystemClock.php          ← NEW (production)
+  app/Infrastructure/Clock/TestClock.php            ← NEW (test injection)
+  app/Infrastructure/Election/ElectionTimezoneResolver.php ← NEW
+    └── resolve(Election): string                   // election.tz → org.tz → UTC
+```
+
+### Database Migration
+
+**File:** `database/migrations/2026_05_19_000001_add_timezone_to_organisations_and_elections.php`
+
+```php
+Schema::table('organisations', fn($t) => $t->string('timezone', 50)->default('UTC')->after('country_code'));
+Schema::table('elections', fn($t) => $t->string('timezone', 50)->nullable()->after('voting_ends_at'));
+```
+
+### Phase 1 RED Tests (Write First — All Failing)
+
+**`tests/Unit/Domain/Election/Clock/ClockContractTest.php`**
+- `clock_returns_carbon_immutable`
+- `test_clock_allows_time_freeze`
+
+**`tests/Unit/Domain/Election/ElectionClockServiceTest.php`** (uses TestClock)
+- `is_voting_open_true_within_window`
+- `is_voting_open_false_before_window_starts`
+- `is_voting_open_false_after_window_ends`
+- `is_voting_open_uses_election_timezone_not_server_time`
+- `is_voting_open_falls_back_to_organisation_timezone`
+- `has_voting_ended_true_after_window`
+- `get_election_time_returns_time_in_election_timezone`
+
+**`tests/Unit/Infrastructure/ElectionTimezoneResolverTest.php`**
+- `resolver_returns_election_timezone_when_set`
+- `resolver_falls_back_to_organisation_timezone`
+- `resolver_falls_back_to_utc_when_both_null`
+
+### Phase 1 Key Modifications
+
+| File | Change |
+|------|--------|
+| `app/Models/Election.php` | Replace `$currentTime = now()` (line 1558) with `ElectionClockService`; replace `now()->lt(...)` guards (lines 990, 1103, 1373, 1457, 1675, 1947, 1964) with clock service calls |
+| `app/Providers/AppServiceProvider.php` | Bind `Clock::class → SystemClock::class` |
+| `database/factories/ElectionFactory.php` | Add `withTimezone(string $tz)` factory state |
+
+### Phase 1 New Files
+
+```
+app/Domain/Election/Contracts/Clock.php
+app/Infrastructure/Clock/SystemClock.php
+app/Infrastructure/Clock/TestClock.php
+app/Infrastructure/Election/ElectionTimezoneResolver.php
+app/Services/ElectionClockService.php
+database/migrations/2026_05_19_000001_add_timezone_to_organisations_and_elections.php
+tests/Unit/Domain/Election/Clock/ClockContractTest.php
+tests/Unit/Domain/Election/ElectionClockServiceTest.php
+tests/Unit/Infrastructure/ElectionTimezoneResolverTest.php
+```
+
+---
+
+## Stream 2: Lifecycle Policy — Single Source of Truth (Priority 2)
+
+**Goal:** Replace 6 independent voting eligibility checks with one policy consumed by all subsystems.
+
+### Architecture
+
+```
+Domain Layer:
+  app/Domain/Election/Policies/ElectionLifecyclePolicy.php   ← NEW
+    ├── canAcceptVotes(Election): bool       // consults state + clock
+    ├── canPublishResults(Election): bool
+    ├── canModifyCandidates(Election): bool
+    └── canImportVoters(Election): bool
+```
+
+### Before vs After
+
+```
+BEFORE (6 sources):
+  VoteController              → Code.can_vote_now flag
+  ElectionVotingController    → election.status === 'active' + start/end dates (inline)
+  EnsureElectionState         → state machine action check
+  VoteEligibility middleware  → config('election.is_active')
+  Voter::canVote()            → election.status === 'active'
+  ValidateVoterSlugWindow     → election.end_date vs now()
+
+AFTER (1 source):
+  All of the above            → ElectionLifecyclePolicy::canAcceptVotes($election)
+```
+
+### Phase 2 RED Tests (Write First — All Failing)
+
+**`tests/Unit/Domain/Election/ElectionLifecyclePolicyTest.php`**
+- `can_accept_votes_true_when_voting_state_and_window_active`
+- `can_accept_votes_false_in_administration_state`
+- `can_accept_votes_false_in_results_pending_state`
+- `can_accept_votes_false_before_voting_window_starts`
+- `can_accept_votes_false_after_voting_window_ends`
+- `can_publish_results_true_only_in_results_pending_state`
+- `can_import_voters_true_only_in_administration_state`
+- `policy_uses_clock_service_not_raw_now`
+
+**`tests/Feature/Election/VoteSubmissionLifecyclePolicyTest.php`** (integration)
+- `vote_rejected_outside_voting_window`
+- `vote_accepted_within_voting_window`
+- `vote_rejected_in_results_pending_state`
+
+### Phase 2 Key Modifications
+
+| File | Change |
+|------|--------|
+| `app/Http/Controllers/VoteController.php` | Replace `Code.can_vote_now` check with `ElectionLifecyclePolicy::canAcceptVotes()` |
+| `app/Http/Controllers/ElectionVotingController.php` | Replace inline `$canVote` (lines 48-52) with policy |
+| `app/Http/Middleware/VoteEligibility.php` | Remove `config('election.is_active')` fallback |
+| `app/Models/Voter.php` | `canVote()` delegates to policy |
+
+### Phase 2 New Files
+
+```
+app/Domain/Election/Policies/ElectionLifecyclePolicy.php
+app/Http/Middleware/EnsureVotingAllowed.php
+tests/Unit/Domain/Election/ElectionLifecyclePolicyTest.php
+tests/Feature/Election/VoteSubmissionLifecyclePolicyTest.php
+```
+
+---
+
+## Stream 3: Phase Verification System (Priority 3)
+
+**Goal:** Replace binary `administration_completed` boolean with normalized workflow checkpoints. Transitions blocked until checkpoints pass.
+
+### Architecture
+
+```
+Database:
+  election_phase_verifications table              ← NEW
+  ├── id, election_id
+  ├── phase (administration | nomination | voting)
+  ├── verification_type (posts_verified | voters_verified |
+  │                      committee_verified | candidates_verified | voting_lock_confirmed)
+  ├── verified_by (uuid, nullable — null = system auto-verified)
+  ├── verified_at (timestamp)
+  └── metadata (json, nullable)
+
+Domain:
+  app/Models/ElectionPhaseVerification.php        ← NEW
+  app/Domain/Election/Policies/ElectionPhaseVerificationPolicy.php ← NEW
+    ├── isAdministrationComplete(Election): bool
+    ├── isNominationReady(Election): bool
+    └── isReadyToOpenVoting(Election): bool
+  app/Domain/Election/ValueObjects/CheckpointRequirement.php ← NEW
+```
+
+### Required Checkpoints
+
+| Transition | Required Checkpoints |
+|------------|---------------------|
+| administration → nomination | `posts_verified` + `voters_verified` + `committee_verified` |
+| nomination → voting | `candidates_verified` (no pending apps + ≥1 approved candidate) |
+
+### Phase 3 RED Tests (Write First — All Failing)
+
+**`tests/Unit/Domain/Election/ElectionPhaseVerificationPolicyTest.php`**
+- `is_administration_complete_true_when_all_three_verified`
+- `is_administration_complete_false_when_committee_missing`
+- `is_nomination_ready_false_when_pending_applications_exist`
+- `is_nomination_ready_true_when_candidates_verified`
+
+**`tests/Feature/Contexts/Elections/ElectionPhaseVerificationTest.php`**
+- `transition_to_nomination_blocked_until_all_checkpoints_pass`
+- `transition_to_nomination_allowed_when_all_checkpoints_pass`
+- `verification_record_written_with_actor_and_timestamp`
+- `open_voting_blocked_without_candidates_verified_checkpoint`
+- `multiple_verifications_do_not_duplicate`
+
+### Phase 3 Migration
+
+**File:** `database/migrations/2026_05_20_000001_create_election_phase_verifications_table.php`
+
+```php
+Schema::create('election_phase_verifications', function (Blueprint $table) {
+    $table->uuid('id')->primary();
+    $table->uuid('election_id');
+    $table->string('phase', 50);
+    $table->string('verification_type', 80);
+    $table->uuid('verified_by')->nullable();
+    $table->timestamp('verified_at');
+    $table->json('metadata')->nullable();
+    $table->timestamps();
+    $table->foreign('election_id')->references('id')->on('elections')->onDelete('cascade');
+    $table->unique(['election_id', 'phase', 'verification_type']); // one per type
+    $table->index(['election_id', 'phase']);
+});
+```
+
+### Phase 3 Key Modifications
+
+| File | Change |
+|------|--------|
+| `app/Models/Election.php` | `validateCompleteAdministration()` consults policy; `validateOpenVoting()` adds `isNominationReady()` |
+| `app/Domain/Election/StateMachine/TransitionMatrix.php` | Add checkpoint policy validation layer (or delegate to guard methods) |
+
+### Phase 3 New Files
+
+```
+database/migrations/2026_05_20_000001_create_election_phase_verifications_table.php
+app/Models/ElectionPhaseVerification.php
+app/Domain/Election/Policies/ElectionPhaseVerificationPolicy.php
+app/Domain/Election/ValueObjects/CheckpointRequirement.php
+tests/Unit/Domain/Election/ElectionPhaseVerificationPolicyTest.php
+tests/Feature/Contexts/Elections/ElectionPhaseVerificationTest.php
+```
+
+---
+
+## TDD Execution Per Stream
+
+```
+RED  → Write contract tests (all failing)
+GREEN → Minimum production code to pass
+REFACTOR → Clean up + zero-regression check
+```
+
+### Zero-Regression Baseline (Run Before Every Stream)
+
+```bash
+php artisan test \
+  tests/Feature/ElectionStateMachineTest.php \
+  tests/Feature/Election/VotingButtonsStateMachineTest.php \
+  tests/Unit/Domain/Election/ \
+  --no-coverage
+# All 50 tests must remain GREEN throughout
+```
+
+### Test Commands Per Stream
+
+```bash
+# Stream 1
+php artisan test tests/Unit/Domain/Election/Clock/ tests/Unit/Domain/Election/ElectionClockServiceTest.php tests/Unit/Infrastructure/ElectionTimezoneResolverTest.php
+
+# Stream 2
+php artisan test tests/Unit/Domain/Election/ElectionLifecyclePolicyTest.php tests/Feature/Election/VoteSubmissionLifecyclePolicyTest.php
+
+# Stream 3
+php artisan test tests/Unit/Domain/Election/ElectionPhaseVerificationPolicyTest.php tests/Feature/Contexts/Elections/ElectionPhaseVerificationTest.php
+
+# Full regression check after each stream
+php artisan test --no-coverage
+```
+
+---
+
+## Definition of Done
+
+### Stream 1
+- [ ] Clock + ElectionClockService + Resolver — all tests GREEN
+- [ ] Zero raw `now()` calls in `app/Domain/Election/` layer
+- [ ] `Election::transitionTo()` uses `ElectionClockService` not `now()`
+- [ ] All 50 existing state machine tests GREEN
+
+### Stream 2
+- [ ] ElectionLifecyclePolicy tests GREEN
+- [ ] VoteController uses policy not code flag
+- [ ] ElectionVotingController uses policy not inline check
+- [ ] VoteEligibility middleware uses policy not config flag
+- [ ] All 50 existing state machine tests GREEN
+
+### Stream 3
+- [ ] PhaseVerification policy tests GREEN
+- [ ] Migration runs cleanly
+- [ ] complete_administration transition blocked without all 3 checkpoints
+- [ ] open_voting transition blocked without candidates_verified checkpoint
+- [ ] Full test suite GREEN (zero regressions)
+
+---
+
+## Anti-Patterns Explicitly Avoided
+
+| Anti-Pattern | Solution |
+|---|---|
+| Scattered `now()->tz(...)` in domain | `ElectionClockService` abstraction |
+| Nullable timestamp explosion (20+ columns) | Normalized `election_phase_verifications` table |
+| Config-file boolean for live voting | `ElectionLifecyclePolicy` |
+| `election.status` parallel to `election.state` | Policy consults `state` only |
+| Removing `Code.can_vote_now` blindly | Deprecate, then remove after policy stable |
+| Big-bang refactor (all at once) | Three independent streams, each shippable |
 
 ---
 

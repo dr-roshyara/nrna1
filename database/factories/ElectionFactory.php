@@ -156,4 +156,17 @@ class ElectionFactory extends Factory
             ];
         });
     }
+
+    public function inResultsState()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'state' => 'results',
+                'voting_locked' => true,
+                'results_locked' => true,
+                'results_published_at' => now(),
+                'results_published_by' => fake()->uuid(),
+            ];
+        });
+    }
 }

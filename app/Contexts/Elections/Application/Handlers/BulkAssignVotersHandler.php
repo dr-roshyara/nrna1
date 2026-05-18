@@ -6,6 +6,7 @@ use App\Contexts\Elections\Application\Commands\BulkAssignVotersCommand;
 use App\Contexts\Elections\Domain\Policies\VoterEligibilityPolicy;
 use App\Contexts\Elections\Domain\Repositories\VoterRepositoryInterface;
 use App\Domain\Election\Events\BulkVotersAssignedToElection;
+use App\Models\DeadLetterEntry;
 use App\Services\ElectionCacheService;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Log;
@@ -90,8 +91,31 @@ final class BulkAssignVotersHandler
                 $this->repository->bulkInsert($rows);
                 $successCount += count($chunk);
             } catch (\Exception $e) {
-                // Dead-letter queue handling (Phase C.6)
+                // Write each row in the failed chunk to dead-letter queue
+                foreach ($chunk as $userId) {
+                    DeadLetterEntry::create([
+                        'queue_name'      => 'voter_bulk_assign',
+                        'payload'         => [
+                            'user_id'         => $userId,
+                            'election_id'     => $cmd->electionId,
+                            'organisation_id' => $cmd->organisationId,
+                        ],
+                        'error_message'   => $e->getMessage(),
+                        'error_class'     => $e::class,
+                        'organisation_id' => $cmd->organisationId,
+                        'election_id'     => $cmd->electionId,
+                    ]);
+                }
+
                 $failedCount += count($chunk);
+
+                Log::channel('voter_failures')->error('Chunk failed in bulk voter assignment', [
+                    'election_id'      => $cmd->electionId,
+                    'organisation_id'  => $cmd->organisationId,
+                    'chunk_size'       => count($chunk),
+                    'error'            => $e->getMessage(),
+                    'error_class'      => $e::class,
+                ]);
             }
         }
 

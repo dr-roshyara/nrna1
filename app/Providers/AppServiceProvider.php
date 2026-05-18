@@ -119,6 +119,27 @@ class AppServiceProvider extends ServiceProvider
             \App\Contexts\Elections\Infrastructure\Policies\EloquentVoterEligibilityQueryService::class
         );
 
+        // Election Lifecycle: SSOT (Single Source of Truth) engine for state derivation
+        $this->app->bind(
+            \App\Domain\Election\Services\ElectionLifecycleEngine::class,
+            \App\Application\Election\Services\ElectionLifecycleEngineImpl::class
+        );
+
+        // Election Constitutional Guard: Hard gate enforcement for state transitions
+        $this->app->singleton(
+            \App\Application\Election\Services\ConstitutionalTransitionGuard::class
+        );
+
+        // Deprecation Enforcement Layer (DEL): Runtime field access control
+        $this->app->singleton(
+            \App\Application\Election\Deprecation\DeprecationAccessGuard::class
+        );
+
+        // Query Policy Guard (DEL): SQL-level deprecation enforcement
+        $this->app->singleton(
+            \App\Application\Election\Deprecation\QueryPolicyGuard::class
+        );
+
         // Register custom Fortify login response
         // This ensures LoginResponse handles post-authentication redirection via DashboardResolver
         $this->app->bind(
