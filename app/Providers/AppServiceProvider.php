@@ -97,6 +97,22 @@ class AppServiceProvider extends ServiceProvider
         // Membership payment gateway — Phase 1: manual (no-op). Swap for Stripe in Phase 5.
         $this->app->bind(PaymentGateway::class, ManualPaymentGateway::class);
 
+        // Election Context: VoterEligibilityPolicy (Phase B strangler)
+        $this->app->bind(
+            \App\Contexts\Elections\Domain\Policies\ElectionOnlyPolicy::class,
+            \App\Contexts\Elections\Domain\Policies\ElectionOnlyPolicy::class
+        );
+
+        $this->app->bind(
+            \App\Contexts\Elections\Domain\Policies\FullMembershipPolicy::class,
+            \App\Contexts\Elections\Domain\Policies\FullMembershipPolicy::class
+        );
+
+        $this->app->bind(
+            \App\Contexts\Elections\Domain\Policies\VoterEligibilityPolicy::class,
+            \App\Contexts\Elections\Infrastructure\Policies\EloquentVoterEligibilityQueryService::class
+        );
+
         // Register custom Fortify login response
         // This ensures LoginResponse handles post-authentication redirection via DashboardResolver
         $this->app->bind(
