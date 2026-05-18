@@ -37,6 +37,7 @@ class ElectionVoterController extends Controller
     public function index(Organisation $organisation, string $election)
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404, 'Voter management is not available for demo elections.');
 
         $this->authorize('view', $election);
@@ -88,6 +89,7 @@ class ElectionVoterController extends Controller
     public function store(Request $request, Organisation $organisation, string $election)
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -126,6 +128,7 @@ class ElectionVoterController extends Controller
     public function bulkStore(Request $request, Organisation $organisation, string $election)
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -187,6 +190,7 @@ class ElectionVoterController extends Controller
     public function destroy(Organisation $organisation, string $election, ElectionMembership $membership)
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -211,6 +215,7 @@ class ElectionVoterController extends Controller
     public function approve(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -236,6 +241,7 @@ class ElectionVoterController extends Controller
     public function suspend(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -261,6 +267,7 @@ class ElectionVoterController extends Controller
     public function export(Organisation $organisation, string $election)
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('view', $election);
@@ -302,6 +309,7 @@ class ElectionVoterController extends Controller
     public function proposeSuspension(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -341,6 +349,7 @@ class ElectionVoterController extends Controller
     public function confirmSuspension(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);
@@ -375,6 +384,7 @@ class ElectionVoterController extends Controller
     public function cancelProposal(Organisation $organisation, string $election, ElectionMembership $membership): RedirectResponse
     {
         $election = Election::withoutGlobalScopes()->where('slug', $election)->firstOrFail();
+        abort_if($election->organisation_id !== $organisation->id, 404);
         abort_if($election->type === 'demo', 404);
 
         $this->authorize('manageVoters', $election);

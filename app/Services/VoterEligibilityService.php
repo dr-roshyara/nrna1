@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Contexts\Elections\Domain\Policies\VoterEligibilityPolicy;
+use App\Domain\Election\Enum\ElectionMode;
 use App\Models\Organisation;
 use App\Models\OrganisationUser;
 use App\Models\User;
@@ -10,8 +12,15 @@ use Illuminate\Support\Facades\DB;
 
 class VoterEligibilityService
 {
+    public function __construct(
+        private readonly VoterEligibilityPolicy $policy,
+    ) {}
+
     /**
      * Check if a single user is eligible to vote in an organisation.
+     *
+     * Phase B: Routes through policy layer (adapter pattern).
+     * Policy governs all eligibility decisions.
      *
      * - Election-only mode (uses_full_membership=false): Any active OrganisationUser can vote
      * - Full membership mode (uses_full_membership=true): Requires active Member with paid/exempt fees
@@ -20,19 +29,11 @@ class VoterEligibilityService
      */
     public function isEligibleVoter(Organisation $org, User $user): bool
     {
-        if (!$org->uses_full_membership) {
-            // Election-only mode: any active organisation user can vote
-            // Use withoutGlobalScopes() to bypass tenant filtering during eligibility check
-            return OrganisationUser::withoutGlobalScopes()
-                ->where('organisation_id', $org->id)
-                ->where('user_id', $user->id)
-                ->where('status', 'active')
-                ->whereNull('deleted_at')
-                ->exists();
-        }
-
-        // Full membership mode: delegate to existing User method
-        return $user->isEligibleVoter($org);
+        return $this->policy->isEligible(
+            $user->id,
+            $org->id,
+            ElectionMode::fromOrganisation($org)
+        );
     }
 
     /**
