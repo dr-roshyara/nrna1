@@ -62,6 +62,67 @@ final class EloquentVoterEligibilityQueryService implements VoterEligibilityPoli
     }
 
     /**
+     * Bulk eligibility filter — returns only qualifying user IDs.
+     * Single DB query per mode. No N+1.
+     */
+    public function qualifyingSubset(
+        array $userIds,
+        string $organisationId,
+        ElectionMode $mode
+    ): array {
+        if (empty($userIds)) {
+            return [];
+        }
+
+        if ($mode->isElectionOnly()) {
+            return $this->qualifyingSubsetElectionOnly($userIds, $organisationId);
+        }
+
+        return $this->qualifyingSubsetFullMembership($userIds, $organisationId);
+    }
+
+    /**
+     * Filter users for election-only mode with single query
+     */
+    private function qualifyingSubsetElectionOnly(
+        array $userIds,
+        string $organisationId
+    ): array {
+        return DB::table('organisation_users')
+            ->whereIn('user_id', $userIds)
+            ->where('organisation_id', $organisationId)
+            ->where('status', 'active')
+            ->whereNull('deleted_at')
+            ->distinct()
+            ->pluck('user_id')
+            ->toArray();
+    }
+
+    /**
+     * Filter users for full membership mode with single query
+     */
+    private function qualifyingSubsetFullMembership(
+        array $userIds,
+        string $organisationId
+    ): array {
+        return DB::table('members')
+            ->join('organisation_users', 'members.organisation_user_id', '=', 'organisation_users.id')
+            ->leftJoin('membership_types', 'members.membership_type_id', '=', 'membership_types.id')
+            ->whereIn('organisation_users.user_id', $userIds)
+            ->where('members.organisation_id', $organisationId)
+            ->where('members.status', 'active')
+            ->whereIn('members.fees_status', ['paid', 'exempt'])
+            ->where(fn ($q) => $q->whereNull('members.membership_type_id')
+                                 ->orWhere('membership_types.grants_voting_rights', true))
+            ->where(fn ($q) => $q->whereNull('members.membership_expires_at')
+                                 ->orWhere('members.membership_expires_at', '>', now()))
+            ->whereNull('members.deleted_at')
+            ->distinct()
+            ->pluck('organisation_users.user_id')
+            ->toArray();
+    }
+
+    /**
      * Build EligibilityContext from database queries
      *
      * No decision logic here — just data gathering.
