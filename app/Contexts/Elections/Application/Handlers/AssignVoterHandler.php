@@ -7,7 +7,10 @@ use App\Contexts\Elections\Domain\Exceptions\DuplicateVoterException;
 use App\Contexts\Elections\Domain\Exceptions\VoterNotEligibleException;
 use App\Contexts\Elections\Domain\Policies\VoterEligibilityPolicy;
 use App\Contexts\Elections\Domain\Repositories\VoterRepositoryInterface;
+use App\Domain\Election\Events\VoterAssignedToElection;
 use App\Models\ElectionMembership;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
 
 /**
  * AssignVoterHandler — Single voter assignment orchestrator
@@ -41,7 +44,8 @@ final class AssignVoterHandler
      *    a. Active + not deleted → DuplicateVoterException
      *    b. Deleted → Restore + update (re-import)
      *    c. None → Create new
-     * 4. Return persisted membership
+     * 4. Persist and return membership
+     * 5. OUTSIDE transaction: dispatch event + audit log
      *
      * @throws VoterNotEligibleException User fails eligibility check
      * @throws DuplicateVoterException User already active in election
@@ -70,23 +74,42 @@ final class AssignVoterHandler
             }
 
             // Soft-deleted or inactive — restore for re-import
-            return $this->repository->restoreAndUpdate($existing, [
+            $membership = $this->repository->restoreAndUpdate($existing, [
                 'status'      => 'active',
                 'assigned_at' => now(),
                 'assigned_by' => $cmd->assignedBy,
             ]);
+        } else {
+            // Step 4: Create new membership
+            $membership = $this->repository->create([
+                'user_id'        => $cmd->userId,
+                'election_id'    => $cmd->electionId,
+                'organisation_id'=> $cmd->organisationId,
+                'role'           => 'voter',
+                'status'         => 'active',
+                'assigned_at'    => now(),
+                'assigned_by'    => $cmd->assignedBy,
+                'metadata'       => $cmd->metadata,
+            ]);
         }
 
-        // Step 4: Create new membership
-        return $this->repository->create([
+        // Step 5: OUTSIDE transaction — dispatch event and audit log
+        Event::dispatch(new VoterAssignedToElection(
+            userId:        $cmd->userId,
+            electionId:    $cmd->electionId,
+            organisationId: $cmd->organisationId,
+            assignedBy:    $cmd->assignedBy,
+            occurredAt:    new \DateTimeImmutable(),
+        ));
+
+        Log::channel('voter_audit')->info('Voter assigned to election', [
             'user_id'        => $cmd->userId,
             'election_id'    => $cmd->electionId,
             'organisation_id'=> $cmd->organisationId,
-            'role'           => 'voter',
-            'status'         => 'active',
-            'assigned_at'    => now(),
             'assigned_by'    => $cmd->assignedBy,
-            'metadata'       => $cmd->metadata,
+            'was_restored'   => $existing !== null,
         ]);
+
+        return $membership;
     }
 }

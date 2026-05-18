@@ -5,6 +5,10 @@ namespace App\Contexts\Elections\Application\Handlers;
 use App\Contexts\Elections\Application\Commands\BulkAssignVotersCommand;
 use App\Contexts\Elections\Domain\Policies\VoterEligibilityPolicy;
 use App\Contexts\Elections\Domain\Repositories\VoterRepositoryInterface;
+use App\Domain\Election\Events\BulkVotersAssignedToElection;
+use App\Services\ElectionCacheService;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 /**
@@ -40,7 +44,8 @@ final class BulkAssignVotersHandler
      *    a. Build row array (id, user_id, election_id, org_id, role, status, created_at, updated_at)
      *    b. Call repository->bulkInsert()
      *    c. On failure: log to dead-letter queue, continue
-     * 6. Return counts: success, already_existing, invalid, failed
+     * 6. OUTSIDE transaction: invalidate cache, dispatch event, audit log
+     * 7. Return counts: success, already_existing, invalid, failed
      *
      * @return array ['success' => int, 'already_existing' => int, 'invalid' => int, 'failed' => int]
      */
@@ -90,11 +95,39 @@ final class BulkAssignVotersHandler
             }
         }
 
-        return [
+        $result = [
             'success'          => $successCount,
             'already_existing' => $alreadyExistingCount,
             'invalid'          => $invalidCount,
             'failed'           => $failedCount,
         ];
+
+        // Step 6: OUTSIDE transaction — cache invalidation, event dispatch, audit log
+        ElectionCacheService::forgetVoterKeys($cmd->organisationId, $cmd->electionId);
+
+        Event::dispatch(new BulkVotersAssignedToElection(
+            electionId:        $cmd->electionId,
+            organisationId:    $cmd->organisationId,
+            successCount:      $result['success'],
+            alreadyExistingCount: $result['already_existing'],
+            invalidCount:      $result['invalid'],
+            failedCount:       $result['failed'],
+            assignedBy:        $cmd->assignedBy,
+            idempotencyKey:    $cmd->idempotencyKey,
+            occurredAt:        new \DateTimeImmutable(),
+        ));
+
+        Log::channel('voter_audit')->info('Bulk voters assigned to election', [
+            'election_id'      => $cmd->electionId,
+            'organisation_id'  => $cmd->organisationId,
+            'success_count'    => $result['success'],
+            'already_existing' => $result['already_existing'],
+            'invalid_count'    => $result['invalid'],
+            'failed_count'     => $result['failed'],
+            'assigned_by'      => $cmd->assignedBy,
+            'idempotency_key'  => $cmd->idempotencyKey,
+        ]);
+
+        return $result;
     }
 }
