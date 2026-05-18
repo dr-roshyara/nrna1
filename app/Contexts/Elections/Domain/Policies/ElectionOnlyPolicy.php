@@ -51,6 +51,21 @@ final class ElectionOnlyPolicy implements VoterEligibilityPolicy
     }
 
     /**
+     * Bulk filter — domain policies don't implement this.
+     * Infrastructure (EloquentVoterEligibilityQueryService) provides the real implementation.
+     * This stub exists only to satisfy interface contract.
+     */
+    public function qualifyingSubset(
+        array $userIds,
+        string $organisationId,
+        ElectionMode $mode
+    ): array {
+        // Domain policies don't implement bulk filtering
+        // Infrastructure handles this with optimized queries
+        return [];
+    }
+
+    /**
      * Internal helper for pure logic testing
      *
      * Infrastructure builds EligibilityContext from database,

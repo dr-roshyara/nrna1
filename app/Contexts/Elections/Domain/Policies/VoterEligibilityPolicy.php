@@ -40,4 +40,20 @@ interface VoterEligibilityPolicy
         string $organisationId,
         ElectionMode $mode
     ): bool;
+
+    /**
+     * Bulk eligibility filter — returns only qualifying user IDs.
+     * Single DB query per mode. No N+1.
+     *
+     * @param array $userIds User IDs to filter
+     * @param string $organisationId Explicit tenancy boundary
+     * @param ElectionMode $mode Election operational mode
+     *
+     * @return array Subset of $userIds containing only eligible users
+     */
+    public function qualifyingSubset(
+        array $userIds,
+        string $organisationId,
+        ElectionMode $mode
+    ): array;
 }

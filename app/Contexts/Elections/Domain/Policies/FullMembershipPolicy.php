@@ -3,6 +3,7 @@
 namespace App\Contexts\Elections\Domain\Policies;
 
 use App\Contexts\Elections\Domain\ValueObjects\EligibilityContext;
+use App\Domain\Election\Enum\ElectionMode;
 
 /**
  * FullMembershipPolicy — Pure logic for full membership mode eligibility
@@ -16,8 +17,35 @@ use App\Contexts\Elections\Domain\ValueObjects\EligibilityContext;
  *
  * This is a PURE DOMAIN SERVICE — no framework, no database, no ORM.
  */
-final class FullMembershipPolicy
+final class FullMembershipPolicy implements VoterEligibilityPolicy
 {
+    /**
+     * Stub implementation for interface contract.
+     * Infrastructure (EloquentVoterEligibilityQueryService) provides the real implementation.
+     */
+    public function isEligible(
+        string $userId,
+        string $organisationId,
+        ElectionMode $mode
+    ): bool {
+        // Placeholder — infrastructure queries DB and calls decideForContext
+        return true;
+    }
+
+    /**
+     * Bulk filter — domain policies don't implement this.
+     * Infrastructure (EloquentVoterEligibilityQueryService) provides the real implementation.
+     * This stub exists only to satisfy interface contract.
+     */
+    public function qualifyingSubset(
+        array $userIds,
+        string $organisationId,
+        ElectionMode $mode
+    ): array {
+        // Domain policies don't implement bulk filtering
+        // Infrastructure handles this with optimized queries
+        return [];
+    }
     /**
      * Decide eligibility based on context
      *
